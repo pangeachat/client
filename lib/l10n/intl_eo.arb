@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:42:07.378085",
+  "@@last_modified": "2026-03-06 14:06:51.518868",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11686,7 +11686,6 @@
   "man": "Viro",
   "otherGender": "Alia",
   "unselectedGender": "Elektu genran opcion",
-  "gender": "Genro",
   "chatParticipantTooltip": "Ĉi tio estas ĉiuj en ĉi tiu konversacio. Klaku sur la avataro de iu ajn kaj \"komenci konversacion\" por sendi DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11705,10 +11704,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12618,6 +12613,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ne vidas, kion vi serĉas? Ili eble bezonas agordi sian profilon al publika en Lernaj Agordoj",
+  "suggestedVocab": "Sugerita vortaro",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mia genro",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, vi kompletigis ĉiujn disponeblajn aktivadojn! Sendu pli da mesaĝoj por malŝlosi pli da praktikaj aktivadoj.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profilo",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

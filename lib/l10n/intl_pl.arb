@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-03-05 11:41:44.762239",
+  "@@last_modified": "2026-03-06 14:06:47.626029",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10589,7 +10589,6 @@
   "man": "Mężczyzna",
   "otherGender": "Inna",
   "unselectedGender": "Wybierz opcję płci",
-  "gender": "Płeć",
   "chatParticipantTooltip": "To wszyscy w tym czacie. Kliknij na avatar dowolnego użytkownika i wybierz „rozpocznij rozmowę”, aby wysłać wiadomość prywatną.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10608,10 +10607,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11517,6 +11512,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Nie widzisz kogo szukasz? Mogą potrzebować ustawić swój profil na publiczny w Ustawieniach nauki",
+  "suggestedVocab": "Sugerowane słownictwo",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Moja płeć",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, ukończyłeś wszystkie dostępne aktywności! Wyślij więcej wiadomości, aby odblokować więcej aktywności do ćwiczeń.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

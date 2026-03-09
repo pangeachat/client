@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:39:53.148601",
+  "@@last_modified": "2026-03-06 14:06:27.231516",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10607,7 +10607,6 @@
   "man": "Uomo",
   "otherGender": "Altro",
   "unselectedGender": "Seleziona un'opzione di genere",
-  "gender": "Genere",
   "chatParticipantTooltip": "Questa è la lista di tutti in questa chat. Clicca sull'avatar di un utente e \"inizia conversazione\" per inviare un DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10626,10 +10625,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11489,6 +11484,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Non vedi chi stai cercando? Potrebbero dover impostare il loro profilo su pubblico nelle Impostazioni di Apprendimento",
+  "suggestedVocab": "Vocabolario suggerito",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Il mio genere",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, hai completato tutte le attività disponibili! Invia più messaggi per sbloccare ulteriori attività di pratica.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profilo",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

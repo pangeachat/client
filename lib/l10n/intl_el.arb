@@ -4475,7 +4475,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-03-05 11:41:53.874367",
+  "@@last_modified": "2026-03-06 14:06:49.272751",
   "@checkList": {
     "type": "String",
     "placeholders": {}
@@ -11612,7 +11612,6 @@
   "man": "Άνδρας",
   "otherGender": "Άλλο",
   "unselectedGender": "Επιλέξτε μια επιλογή φύλου",
-  "gender": "Φύλο",
   "chatParticipantTooltip": "Αυτοί είναι όλοι σε αυτή τη συνομιλία. Κάντε κλικ στο avatar οποιουδήποτε χρήστη και \"ξεκινήστε συνομιλία\" για να στείλετε ένα DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11631,10 +11630,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12554,6 +12549,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Δεν βλέπετε αυτόν που ψάχνετε; Ίσως χρειαστεί να ρυθμίσουν το προφίλ τους σε δημόσιο στις Ρυθμίσεις Μάθησης",
+  "suggestedVocab": "Προτεινόμενη λεξιλογία",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Το φύλο μου",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Ω, έχεις ολοκληρώσει όλες τις διαθέσιμες δραστηριότητες! Στείλε περισσότερα μηνύματα για να ξεκλειδώσεις περισσότερες δραστηριότητες πρακτικής.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Προφίλ",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

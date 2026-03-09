@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:41:12.805715",
+  "@@last_modified": "2026-03-06 14:06:42.503557",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6184,7 +6184,6 @@
   "man": "Nam",
   "otherGender": "Khác",
   "unselectedGender": "Chọn một tùy chọn giới tính",
-  "gender": "Giới tính",
   "chatParticipantTooltip": "Đây là tất cả mọi người trong cuộc trò chuyện này. Nhấp vào avatar của bất kỳ người dùng nào và \"bắt đầu cuộc trò chuyện\" để gửi tin nhắn trực tiếp.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -6203,10 +6202,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -7116,6 +7111,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Không thấy người bạn đang tìm kiếm? Họ có thể cần đặt hồ sơ của mình thành công khai trong Cài đặt Học tập",
+  "suggestedVocab": "Từ vựng gợi ý",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Giới tính của tôi",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, bạn đã hoàn thành tất cả các hoạt động có sẵn! Gửi thêm tin nhắn để mở khóa thêm các hoạt động thực hành.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Hồ sơ",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

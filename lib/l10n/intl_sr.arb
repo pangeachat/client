@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:42:21.485268",
+  "@@last_modified": "2026-03-06 14:06:54.381627",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11693,7 +11693,6 @@
   "man": "Muškarac",
   "otherGender": "Drugo",
   "unselectedGender": "Izaberite opciju pola",
-  "gender": "Pol",
   "chatParticipantTooltip": "Ovo su svi u ovom čatu. Kliknite na avatar bilo kog korisnika i \"započnite razgovor\" da pošaljete DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11712,10 +11711,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12625,6 +12620,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ne vidite koga tražite? Možda treba da postave svoj profil na javno u podešavanjima učenja",
+  "suggestedVocab": "Predloženi rečnik",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Moj pol",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Вау, завршили сте све доступне активности! Пошаљите више порука да откључате више активности за вежбање.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

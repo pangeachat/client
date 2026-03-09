@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:38:29.595106",
+  "@@last_modified": "2026-03-06 14:06:05.538950",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10689,7 +10689,6 @@
   "man": "남성",
   "otherGender": "기타",
   "unselectedGender": "성별 옵션을 선택하세요",
-  "gender": "성별",
   "chatParticipantTooltip": "이 채팅의 모든 사람입니다. 사용자 아바타를 클릭하고 '대화 시작'을 클릭하여 DM을 보내세요.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10708,10 +10707,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11621,6 +11616,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "찾고 있는 사람이 보이지 않나요? 그들은 학습 설정에서 프로필을 공개로 설정해야 할 수도 있습니다.",
+  "suggestedVocab": "추천 어휘",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "내 성별",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "와, 당신은 모든 가능한 활동을 완료했습니다! 더 많은 메시지를 보내서 더 많은 연습 활동을 잠금 해제하세요.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "프로필",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

@@ -4618,7 +4618,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-03-05 11:40:12.094771",
+  "@@last_modified": "2026-03-06 14:06:31.341512",
   "@ignore": {
     "type": "String",
     "placeholders": {}
@@ -10711,7 +10711,6 @@
   "man": "Мужчына",
   "otherGender": "Іншае",
   "unselectedGender": "Выберыце опцыю полу",
-  "gender": "Пол",
   "chatParticipantTooltip": "Гэта ўсе ўдзельнікі гэтага чата. Націсніце на аватар любога карыстальніка і выберыце «пачаць размову», каб адправіць асабістае паведамленне.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10730,10 +10729,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11414,6 +11409,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Не бачыце таго, каго шукаеце? Магчыма, ім трэба наладзіць свой профіль на агульны ў Наладах навучання",
+  "suggestedVocab": "Рэкамендаваны слоўнік",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Мая пол",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Вау, вы завяршылі ўсе даступныя дзейнасці! Адпраўце больш паведамленняў, каб адкрыць больш практыкаванняў.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Профіль",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

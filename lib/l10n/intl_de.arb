@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-03-05 11:39:42.193527",
+  "@@last_modified": "2026-03-06 14:06:24.264442",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10748,7 +10748,6 @@
   "man": "Mann",
   "otherGender": "Sonstiges",
   "unselectedGender": "Wählen Sie eine Geschlechtsoption",
-  "gender": "Geschlecht",
   "chatParticipantTooltip": "Das sind alle in diesem Chat. Klicken Sie auf das Avatar eines Benutzers und \"Gespräch starten\", um eine DM zu senden.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10767,10 +10766,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11384,6 +11379,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Sie sehen nicht, wonach Sie suchen? Möglicherweise müssen sie ihr Profil in den Lern-Einstellungen auf öffentlich setzen.",
+  "suggestedVocab": "Vorgeschlagener Wortschatz",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mein Geschlecht",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, du hast alle verfügbaren Aktivitäten abgeschlossen! Sende mehr Nachrichten, um weitere Übungsaktivitäten freizuschalten.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

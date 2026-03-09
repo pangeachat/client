@@ -23,6 +23,7 @@ class SettingsLearningView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return StreamBuilder(
       stream: Matrix.of(context).client.onSync.stream.where((update) {
         return update.accountData != null &&
@@ -44,124 +45,212 @@ class SettingsLearningView extends StatelessWidget {
                 : null,
           ),
           body: ListTileTheme(
-            iconColor: Theme.of(context).textTheme.bodyLarge!.color,
-            child: MaxWidthBody(
-              withScrolling: false,
-              child: Column(
-                children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      controller: controller.scrollController,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 32.0),
-                        child: Column(
-                          spacing: 16.0,
+            iconColor: theme.colorScheme.onSurface,
+            child: Column(
+              children: [
+                Expanded(
+                  child: MaxWidthBody(
+                    showBorder: !controller.widget.isDialog,
+                    child: Column(
+                      children: [
+                        ExpansionTile(
+                          initiallyExpanded: true,
+                          shape: Border(
+                            top: BorderSide(
+                              width: 1,
+                              color: Colors.transparent,
+                            ),
+                          ),
+                          collapsedShape: Border(
+                            top: BorderSide(
+                              width: 1,
+                              color: Colors.transparent,
+                            ),
+                          ),
+                          title: Text(
+                            L10n.of(context).languages,
+                            style: TextStyle(
+                              color: theme.colorScheme.secondary,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           children: [
+                            SizedBox(height: 8.0),
                             Padding(
-                              padding: const EdgeInsets.symmetric(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 8.0,
                                 horizontal: 16.0,
                               ),
-                              child: Column(
-                                spacing: 16.0,
+                              child: PLanguageDropdown(
+                                onChange: (lang) => controller
+                                    .setSelectedLanguage(sourceLanguage: lang),
+                                initialLanguage:
+                                    controller.selectedSourceLanguage ??
+                                    LanguageModel.unknown,
+                                languages: MatrixState
+                                    .pangeaController
+                                    .pLanguageStore
+                                    .baseOptions,
+                                isL2List: false,
+                                decorationText: L10n.of(context).myBaseLanguage,
+                                hasError: controller.languageMatchError != null,
+                                backgroundColor:
+                                    theme.colorScheme.surfaceContainerHigh,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 8.0,
+                                horizontal: 16.0,
+                              ),
+                              child: PLanguageDropdown(
+                                onChange: (lang) => controller
+                                    .setSelectedLanguage(targetLanguage: lang),
+                                initialLanguage:
+                                    controller.selectedTargetLanguage,
+                                languages: MatrixState
+                                    .pangeaController
+                                    .pLanguageStore
+                                    .targetOptions,
+                                isL2List: true,
+                                decorationText: L10n.of(context).iWantToLearn,
+                                error: controller.languageMatchError,
+                                backgroundColor:
+                                    theme.colorScheme.surfaceContainerHigh,
+                              ),
+                            ),
+                            if (controller.userL1?.langCodeShort ==
+                                controller.userL2?.langCodeShort)
+                              Row(
+                                spacing: 8.0,
                                 children: [
-                                  PLanguageDropdown(
-                                    onChange: (lang) =>
-                                        controller.setSelectedLanguage(
-                                          sourceLanguage: lang,
-                                        ),
-                                    initialLanguage:
-                                        controller.selectedSourceLanguage ??
-                                        LanguageModel.unknown,
-                                    languages: MatrixState
-                                        .pangeaController
-                                        .pLanguageStore
-                                        .baseOptions,
-                                    isL2List: false,
-                                    decorationText: L10n.of(
-                                      context,
-                                    ).myBaseLanguage,
-                                    hasError:
-                                        controller.languageMatchError != null,
-                                    backgroundColor: Theme.of(
-                                      context,
-                                    ).colorScheme.surfaceContainerHigh,
+                                  Icon(
+                                    Icons.info_outlined,
+                                    color: theme.colorScheme.error,
                                   ),
-                                  PLanguageDropdown(
-                                    onChange: (lang) =>
-                                        controller.setSelectedLanguage(
-                                          targetLanguage: lang,
-                                        ),
-                                    initialLanguage:
-                                        controller.selectedTargetLanguage,
-                                    languages: MatrixState
-                                        .pangeaController
-                                        .pLanguageStore
-                                        .targetOptions,
-                                    isL2List: true,
-                                    decorationText: L10n.of(
-                                      context,
-                                    ).iWantToLearn,
-                                    error: controller.languageMatchError,
-                                    backgroundColor: Theme.of(
-                                      context,
-                                    ).colorScheme.surfaceContainerHigh,
-                                  ),
-                                  if (controller.userL1?.langCodeShort ==
-                                      controller.userL2?.langCodeShort)
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 16.0,
-                                      ),
-                                      child: Row(
-                                        spacing: 8.0,
-                                        children: [
-                                          Icon(
-                                            Icons.info_outlined,
-                                            color: Theme.of(
-                                              context,
-                                            ).colorScheme.error,
-                                          ),
-                                          Flexible(
-                                            child: Text(
-                                              L10n.of(
-                                                context,
-                                              ).noIdenticalLanguages,
-                                              style: TextStyle(
-                                                color: Theme.of(
-                                                  context,
-                                                ).colorScheme.error,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                  Flexible(
+                                    child: Text(
+                                      L10n.of(context).noIdenticalLanguages,
+                                      style: TextStyle(
+                                        color: theme.colorScheme.error,
                                       ),
                                     ),
-                                  LanguageLevelDropdown(
-                                    initialLevel: controller.cefrLevel,
-                                    onChanged: controller.setCefrLevel,
-                                  ),
-                                  VoiceDropdown(
-                                    value: controller.selectedVoice,
-                                    language: controller.selectedTargetLanguage,
-                                    onChanged: controller.setVoice,
-                                  ),
-                                  CountryPickerDropdown(controller),
-                                  GenderDropdown(
-                                    initialGender: controller.gender,
-                                    onChanged: controller.setGender,
-                                  ),
-                                  TextField(
-                                    controller: controller.aboutTextController,
-                                    decoration: InputDecoration(
-                                      hintText: L10n.of(context).aboutMeHint,
-                                    ),
-                                    onChanged: (val) =>
-                                        controller.setAbout(val),
-                                    minLines: 1,
-                                    maxLines: 3,
-                                    maxLength: 100,
                                   ),
                                 ],
+                              ),
+                            SizedBox(height: 8.0),
+                          ],
+                        ),
+                        ExpansionTile(
+                          shape: Border(
+                            top: BorderSide(
+                              width: 1,
+                              color: theme.dividerColor,
+                            ),
+                          ),
+                          collapsedShape: Border(
+                            top: BorderSide(
+                              width: 1,
+                              color: theme.dividerColor,
+                            ),
+                          ),
+                          title: Text(
+                            L10n.of(context).profile,
+                            style: TextStyle(
+                              color: theme.colorScheme.secondary,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          children: [
+                            SizedBox(height: 8.0),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 8.0,
+                                horizontal: 16.0,
+                              ),
+                              child: LanguageLevelDropdown(
+                                initialLevel: controller.cefrLevel,
+                                onChanged: controller.setCefrLevel,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 8.0,
+                                horizontal: 16.0,
+                              ),
+                              child: CountryPickerDropdown(controller),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 8.0,
+                                horizontal: 16.0,
+                              ),
+                              child: GenderDropdown(
+                                initialGender: controller.gender,
+                                onChanged: controller.setGender,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 8.0,
+                                horizontal: 16.0,
+                              ),
+                              child: TextField(
+                                controller: controller.aboutTextController,
+                                decoration: InputDecoration(
+                                  hintText: L10n.of(context).aboutMeHint,
+                                  labelText: L10n.of(context).aboutMeHint,
+                                ),
+                                onChanged: (val) => controller.setAbout(val),
+                                minLines: 1,
+                                maxLines: 3,
+                                maxLength: 100,
+                              ),
+                            ),
+                            SwitchListTile.adaptive(
+                              value: controller.publicProfile,
+                              onChanged: controller.setPublicProfile,
+                              title: Text(L10n.of(context).publicProfileTitle),
+                              subtitle: Text(
+                                L10n.of(context).publicProfileDesc,
+                              ),
+                              activeThumbColor: AppConfig.activeToggleColor,
+                            ),
+                            SizedBox(height: 8.0),
+                          ],
+                        ),
+
+                        ExpansionTile(
+                          shape: Border(
+                            top: BorderSide(
+                              width: 1,
+                              color: theme.dividerColor,
+                            ),
+                          ),
+                          collapsedShape: Border(
+                            top: BorderSide(
+                              width: 1,
+                              color: theme.dividerColor,
+                            ),
+                          ),
+                          title: Text(
+                            L10n.of(context).learningSettings,
+                            style: TextStyle(
+                              color: theme.colorScheme.secondary,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          children: [
+                            SizedBox(height: 8.0),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 8.0,
+                                horizontal: 16.0,
+                              ),
+                              child: VoiceDropdown(
+                                value: controller.selectedVoice,
+                                language: controller.selectedTargetLanguage,
+                                onChanged: controller.setVoice,
                               ),
                             ),
                             ...ToolSetting.values
@@ -185,35 +274,28 @@ class SettingsLearningView extends StatelessWidget {
                                     },
                                   ),
                                 ),
-                            SwitchListTile.adaptive(
-                              value: controller.publicProfile,
-                              onChanged: controller.setPublicProfile,
-                              title: Text(L10n.of(context).publicProfileTitle),
-                              subtitle: Text(
-                                L10n.of(context).publicProfileDesc,
-                              ),
-                              activeThumbColor: AppConfig.activeToggleColor,
-                            ),
                             ResetInstructionsListTile(controller: controller),
+                            SizedBox(height: 8.0),
                           ],
                         ),
-                      ),
+                      ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: controller.haveSettingsBeenChanged
-                            ? controller.submit
-                            : null,
-                        child: Text(L10n.of(context).saveChanges),
-                      ),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(16.0),
+                  constraints: BoxConstraints(maxWidth: 600),
+                  child: ElevatedButton(
+                    onPressed: controller.haveSettingsBeenChanged
+                        ? controller.submit
+                        : null,
+                    child: Row(
+                      mainAxisAlignment: .center,
+                      children: [Text(L10n.of(context).saveChanges)],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );

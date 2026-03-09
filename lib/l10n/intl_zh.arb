@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-03-05 11:41:31.078507",
+  "@@last_modified": "2026-03-06 14:06:45.576269",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10716,7 +10716,6 @@
   "man": "男性",
   "otherGender": "其他",
   "unselectedGender": "选择一个性别选项",
-  "gender": "性别",
   "chatParticipantTooltip": "这就是这个聊天中的所有人。点击任何用户的头像并选择“开始对话”以发送私信。",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10735,10 +10734,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11395,6 +11390,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "没有找到您要找的人？他们可能需要在学习设置中将其个人资料设置为公开",
+  "suggestedVocab": "建议词汇",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "我的性别",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "哇，你已经完成了所有可用的活动！发送更多消息以解锁更多练习活动。",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "个人资料",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

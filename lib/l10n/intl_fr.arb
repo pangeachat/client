@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-03-05 11:42:29.399138",
+  "@@last_modified": "2026-03-06 14:06:55.915094",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -10884,7 +10884,6 @@
   "man": "Homme",
   "otherGender": "Autre",
   "unselectedGender": "Sélectionnez une option de genre",
-  "gender": "Genre",
   "chatParticipantTooltip": "Ce sont tous les participants de ce chat. Cliquez sur l'avatar de n'importe quel utilisateur et \"démarrer une conversation\" pour envoyer un message direct.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10903,10 +10902,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11801,6 +11796,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Vous ne voyez pas la personne que vous cherchez ? Elle doit peut-être rendre son profil public dans les paramètres d'apprentissage.",
+  "suggestedVocab": "Vocabulaire suggéré",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mon genre",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, vous avez terminé toutes les activités disponibles ! Envoyez plus de messages pour débloquer plus d'activités de pratique.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

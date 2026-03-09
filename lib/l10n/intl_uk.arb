@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-03-05 11:39:58.451837",
+  "@@last_modified": "2026-03-06 14:06:28.275366",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10716,7 +10716,6 @@
   "man": "Чоловік",
   "otherGender": "Інше",
   "unselectedGender": "Виберіть варіант статі",
-  "gender": "Стать",
   "chatParticipantTooltip": "Це всі учасники цього чату. Натисніть на аватар будь-якого користувача та \"почати розмову\", щоб надіслати особисте повідомлення.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10735,10 +10734,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11395,6 +11390,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Не бачите, кого шукаєте? Можливо, їм потрібно налаштувати свій профіль на публічний у Налаштуваннях навчання",
+  "suggestedVocab": "Рекомендований словник",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Моя стать",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Вау, ви завершили всі доступні активності! Надсилайте більше повідомлень, щоб розблокувати більше практичних активностей.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Профіль",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

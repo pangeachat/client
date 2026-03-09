@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:41:48.511456",
+  "@@last_modified": "2026-03-06 14:06:48.530398",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11075,7 +11075,6 @@
   "man": "Man",
   "otherGender": "Annat",
   "unselectedGender": "Välj ett könsalternativ",
-  "gender": "Kön",
   "chatParticipantTooltip": "Detta är alla i denna chatt. Klicka på vilken användares avatar som helst och \"starta konversation\" för att skicka ett DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11094,10 +11093,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12007,6 +12002,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ser du inte den du letar efter? De kanske behöver ställa in sin profil till offentlig i Lärandeinställningar",
+  "suggestedVocab": "Föreslagen vokabulär",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mitt kön",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, du har slutfört alla tillgängliga aktiviteter! Skicka fler meddelanden för att låsa upp fler övningsaktiviteter.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-03-05 11:40:54.589380",
+  "@@last_modified": "2026-03-06 14:06:39.607647",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10803,7 +10803,6 @@
   "man": "Erkek",
   "otherGender": "Diğer",
   "unselectedGender": "Bir cinsiyet seçeneği seçin",
-  "gender": "Cinsiyet",
   "chatParticipantTooltip": "Bu sohbetin içindeki herkes. Herhangi bir kullanıcının avatarına tıklayın ve \"sohbet başlat\" seçeneği ile DM gönderin.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10822,10 +10821,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11735,6 +11730,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Aradığınız kişiyi göremiyor musunuz? Profil ayarlarını herkese açık hale getirmeleri gerekebilir.",
+  "suggestedVocab": "Önerilen kelime dağarcığı",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Cinsiyetim",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Vay canına, mevcut tüm etkinlikleri tamamladın! Daha fazla pratik etkinliği açmak için daha fazla mesaj gönder.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

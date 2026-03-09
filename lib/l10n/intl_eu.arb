@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-03-05 11:39:32.048932",
+  "@@last_modified": "2026-03-06 14:06:20.892239",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10716,7 +10716,6 @@
   "man": "Gizona",
   "otherGender": "Bestea",
   "unselectedGender": "Aukeratu genero aukera bat",
-  "gender": "Generoa",
   "chatParticipantTooltip": "Hau da txat honetan dena. Egin klik edozein erabiltzaileen irudian eta \"hasieratu elkarrizketa\" DM bat bidaltzeko.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10735,10 +10734,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11395,6 +11390,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ez al duzu bilatzen ari zaren pertsona ikusten? Agian, euren profila publiko ezarri behar dute Ikaskuntza Ezarpenetan",
+  "suggestedVocab": "Proposatutako hiztegia",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Nire generoa",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, guztiak amaitu dituzu eskuragarri dauden jarduerak! Bidali gehiago mezu gehiago praktikatzeko jarduera gehiago irekitzeko.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profila",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

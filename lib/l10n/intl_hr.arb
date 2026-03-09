@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-03-05 11:39:15.767601",
+  "@@last_modified": "2026-03-06 14:06:16.538523",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -10956,7 +10956,6 @@
   "man": "Muškarac",
   "otherGender": "Ostalo",
   "unselectedGender": "Odaberite opciju spola",
-  "gender": "Spol",
   "chatParticipantTooltip": "Ovo su svi u ovom chatu. Kliknite na avatar bilo kojeg korisnika i \"započnite razgovor\" da pošaljete DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10975,10 +10974,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11888,6 +11883,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ne vidite koga tražite? Možda trebaju postaviti svoj profil na javno u postavkama učenja",
+  "suggestedVocab": "Preporučena vokabular",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Moj spol",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, završili ste sve dostupne aktivnosti! Pošaljite više poruka kako biste otključali više aktivnosti za vježbanje.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

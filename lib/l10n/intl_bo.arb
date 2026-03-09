@@ -3781,7 +3781,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2026-03-05 11:41:26.014318",
+  "@@last_modified": "2026-03-06 14:06:44.826950",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -9864,7 +9864,6 @@
   "man": "Baba",
   "otherGender": "Bola",
   "unselectedGender": "Select a gender option",
-  "gender": "Bola",
   "chatParticipantTooltip": "Ita is everybody in this chat. Click on any user’s avatar and “start conversation” to send a DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -9883,10 +9882,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -10796,6 +10791,33 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Nuk e shihni atë që po kërkoni? Ata mund të kenë nevojë të vendosin profilin e tyre në publik në Cilësimet e Mësimit",
+  "suggestedVocab": "Vokabular i sugjeruar",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mí género",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, {username}, you have completed all available activities! Send more messages to unlock more practice activities.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "profile": "Profili",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

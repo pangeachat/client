@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:38:57.752525",
+  "@@last_modified": "2026-03-06 14:06:12.505171",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10599,7 +10599,6 @@
   "man": "Pria",
   "otherGender": "Lainnya",
   "unselectedGender": "Pilih opsi gender",
-  "gender": "Gender",
   "chatParticipantTooltip": "Ini adalah semua orang di obrolan ini. Klik pada avatar pengguna mana pun dan \"mulai percakapan\" untuk mengirim DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10618,10 +10617,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11501,6 +11496,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Tidak melihat orang yang Anda cari? Mereka mungkin perlu mengatur profil mereka menjadi publik di Pengaturan Pembelajaran",
+  "suggestedVocab": "Kosakata yang Disarankan",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Jenis kelamin saya",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, Anda telah menyelesaikan semua aktivitas yang tersedia! Kirim lebih banyak pesan untuk membuka lebih banyak aktivitas latihan.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

@@ -2782,7 +2782,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-03-05 11:40:38.303239",
+  "@@last_modified": "2026-03-06 14:06:37.169369",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11573,7 +11573,6 @@
   "man": "Lalaki",
   "otherGender": "Iba",
   "unselectedGender": "Pumili ng opsyon sa kasarian",
-  "gender": "Kasarian",
   "chatParticipantTooltip": "Ito ang lahat ng tao sa chat na ito. I-click ang avatar ng sinumang user at \"simulan ang pag-uusap\" upang magpadala ng DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11592,10 +11591,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12510,6 +12505,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Hindi mo makita ang hinahanap mo? Maaaring kailanganin nilang itakda ang kanilang profile sa pampubliko sa Mga Setting ng Pagkatuto",
+  "suggestedVocab": "Inirerekomendang bokabularyo",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Ang aking kasarian",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, natapos mo na ang lahat ng available na aktibidad! Magpadala ng higit pang mga mensahe upang makakuha ng higit pang mga aktibidad sa pagsasanay.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profile",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

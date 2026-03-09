@@ -150,7 +150,9 @@ class PressableButtonState extends State<PressableButton>
     }
 
     return MouseRegion(
-      cursor: SystemMouseCursors.click,
+      cursor: widget.onPressed != null
+          ? SystemMouseCursors.click
+          : SystemMouseCursors.basic,
       child: GestureDetector(
         onTapDown: _onTapDown,
         onTapUp: _onTapUp,

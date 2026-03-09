@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-03-05 11:40:03.075754",
+  "@@last_modified": "2026-03-06 14:06:29.297706",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11049,7 +11049,6 @@
   "man": "Muž",
   "otherGender": "Jiné",
   "unselectedGender": "Vyberte možnost pohlaví",
-  "gender": "Pohlaví",
   "chatParticipantTooltip": "Toto jsou všichni v tomto chatu. Klikněte na avatar jakéhokoli uživatele a “začněte konverzaci” pro odeslání DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11068,10 +11067,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11967,6 +11962,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Nevidíte, koho hledáte? Možná si musí nastavit svůj profil na veřejný v Nastavení učení",
+  "suggestedVocab": "Navrhovaná slovní zásoba",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Moje pohlaví",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, dokončili jste všechny dostupné aktivity! Pošlete více zpráv, abyste odemkli další cvičební aktivity.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

@@ -1851,7 +1851,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-03-05 11:39:49.763881",
+  "@@last_modified": "2026-03-06 14:06:26.521110",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11688,7 +11688,6 @@
   "man": "男性",
   "otherGender": "其他",
   "unselectedGender": "選擇一個性別選項",
-  "gender": "性別",
   "chatParticipantTooltip": "這是這個聊天中的所有人。點擊任何用戶的頭像並選擇「開始對話」來發送私信。",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11707,10 +11706,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12625,6 +12620,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "找不到你要找的人？他們可能需要在學習設置中將他們的個人資料設置為公開",
+  "suggestedVocab": "建議詞彙",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "我的性別",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "哇，你已經完成了所有可用的活動！發送更多消息以解鎖更多練習活動。",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "個人資料",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

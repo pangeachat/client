@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:40:16.992977",
+  "@@last_modified": "2026-03-06 14:06:32.319214",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10623,7 +10623,6 @@
   "man": "Home",
   "otherGender": "Altre",
   "unselectedGender": "Selecciona una opció de gènere",
-  "gender": "Gènere",
   "chatParticipantTooltip": "Això és tothom en aquest xat. Fes clic a l'avatar de qualsevol usuari i \"inicia una conversa\" per enviar un DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10642,10 +10641,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11555,6 +11550,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "No veus qui estàs buscant? Potser necessiten configurar el seu perfil com a públic a la Configuració d'Aprenentatge",
+  "suggestedVocab": "Vocab suggerit",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "El meu gènere",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Uau, has completat totes les activitats disponibles! Envia més missatges per desbloquejar més activitats de pràctica.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Perfil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

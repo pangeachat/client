@@ -3856,7 +3856,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-03-05 11:41:07.585688",
+  "@@last_modified": "2026-03-06 14:06:41.789401",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11402,7 +11402,6 @@
   "man": "Vyras",
   "otherGender": "Kitas",
   "unselectedGender": "Pasirinkite lyties parinktį",
-  "gender": "Lytis",
   "chatParticipantTooltip": "Tai visi šioje pokalbyje. Spustelėkite bet kurio vartotojo avatarą ir „pradėti pokalbį“, kad siųstumėte DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11421,10 +11420,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12334,6 +12329,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Nematai, ko ieškai? Galbūt jie turi nustatyti savo profilį kaip viešą Mokymosi nustatymuose",
+  "suggestedVocab": "Siūlomas žodynas",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mano lytis",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, jūs baigėte visas galimas veiklas! Siųskite daugiau žinučių, kad atrakintumėte daugiau praktikos veiklų.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profilis",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

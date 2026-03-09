@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:39:27.752889",
+  "@@last_modified": "2026-03-06 14:06:19.752880",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -10711,7 +10711,6 @@
   "man": "Homem",
   "otherGender": "Outro",
   "unselectedGender": "Selecione uma opção de gênero",
-  "gender": "Gênero",
   "chatParticipantTooltip": "Estas são todas as pessoas neste chat. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10730,10 +10729,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11395,6 +11390,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Não vê quem está procurando? Eles podem precisar definir o perfil como público nas Configurações de Aprendizado",
+  "suggestedVocab": "Vocabulário sugerido",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Meu gênero",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Uau, você completou todas as atividades disponíveis! Envie mais mensagens para desbloquear mais atividades de prática.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Perfil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

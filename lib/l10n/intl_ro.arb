@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:39:01.520097",
+  "@@last_modified": "2026-03-06 14:06:13.467655",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11332,7 +11332,6 @@
   "man": "Bărbat",
   "otherGender": "Altul",
   "unselectedGender": "Selectați o opțiune de gen",
-  "gender": "Gen",
   "chatParticipantTooltip": "Aceasta este toată lumea din acest chat. Faceți clic pe avatarul oricărui utilizator și “începeți conversația” pentru a trimite un DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11351,10 +11350,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12264,6 +12259,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Nu vezi pe cine cauți? Poate că trebuie să își seteze profilul pe public în Setările de Învățare",
+  "suggestedVocab": "Vocabular sugerat",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Genul meu",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, ai completat toate activitățile disponibile! Trimite mai multe mesaje pentru a debloca mai multe activități de practică.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

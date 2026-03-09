@@ -1925,7 +1925,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-03-05 11:38:45.462068",
+  "@@last_modified": "2026-03-06 14:06:10.129738",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11658,7 +11658,6 @@
   "man": "Mand",
   "otherGender": "Andet",
   "unselectedGender": "Vælg en kønsoption",
-  "gender": "Køn",
   "chatParticipantTooltip": "Dette er alle i denne chat. Klik på en brugers avatar og \"start samtale\" for at sende en DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11677,10 +11676,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12595,6 +12590,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ser du ikke den, du leder efter? De skal muligvis indstille deres profil til offentlig i Læringsindstillinger",
+  "suggestedVocab": "Foreslået ordforråd",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mit køn",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, du har gennemført alle tilgængelige aktiviteter! Send flere beskeder for at låse op for flere øvelsesaktiviteter.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

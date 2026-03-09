@@ -130,30 +130,27 @@ class ActivityStatsMenu extends StatelessWidget {
           children: [
             Column(
               spacing: 8.0,
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: .min,
+              crossAxisAlignment: .start,
               children: [
                 ActivitySessionDetailsRow(
                   icon: Symbols.radar,
                   iconSize: 16.0,
                   child: Text(
                     controller.room.activityPlan!.learningObjective,
-                    style: const TextStyle(fontSize: 12.0),
+                    style: theme.textTheme.bodyMedium,
                   ),
                 ),
-                ActivitySessionDetailsRow(
-                  icon: Symbols.dictionary,
-                  iconSize: 16.0,
-                  child: ActivityVocabWidget(
-                    key: ValueKey(
-                      "activity-stats-${controller.room.activityPlan!.activityId}",
-                    ),
-                    vocab: controller.room.activityPlan!.vocab,
-                    langCode: controller.room.activityPlan!.req.targetLanguage,
-                    targetId: "activity-vocab",
-                    usedVocab: controller.activityController.usedVocab,
-                    activityLangCode:
-                        controller.room.activityPlan!.req.targetLanguage,
+                ActivityVocabWidget(
+                  key: ValueKey(
+                    "activity-stats-${controller.room.activityPlan!.activityId}",
                   ),
+                  vocab: controller.room.activityPlan!.vocab,
+                  langCode: controller.room.activityPlan!.req.targetLanguage,
+                  targetId: "activity-vocab",
+                  usedVocab: controller.activityController.usedVocab,
+                  activityLangCode:
+                      controller.room.activityPlan!.req.targetLanguage,
                 ),
               ],
             ),

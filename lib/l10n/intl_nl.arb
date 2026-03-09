@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:41:22.229400",
+  "@@last_modified": "2026-03-06 14:06:44.042679",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10716,7 +10716,6 @@
   "man": "Man",
   "otherGender": "Anders",
   "unselectedGender": "Selecteer een geslachtsoptie",
-  "gender": "Geslacht",
   "chatParticipantTooltip": "Dit zijn alle deelnemers in deze chat. Klik op het avatar van een gebruiker en \"start gesprek\" om een DM te sturen.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10735,10 +10734,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11395,6 +11390,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Zie je niet wie je zoekt? Ze moeten mogelijk hun profiel openbaar maken in de Leerinstellingen",
+  "suggestedVocab": "Voorgestelde vocabulaire",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mijn geslacht",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wauw, je hebt alle beschikbare activiteiten voltooid! Stuur meer berichten om meer oefenactiviteiten te ontgrendelen.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profiel",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

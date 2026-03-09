@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:40:07.170388",
+  "@@last_modified": "2026-03-06 14:06:30.351549",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -10780,7 +10780,6 @@
   "man": "Mann",
   "otherGender": "Annet",
   "unselectedGender": "Velg et kjønnsalternativ",
-  "gender": "Kjønn",
   "chatParticipantTooltip": "Dette er alle i denne chatten. Klikk på hvilken som helst brukers avatar og \"start samtale\" for å sende en DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10799,10 +10798,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11464,6 +11459,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ser du ikke etter den du leter etter? De må kanskje sette profilen sin til offentlig i Læringsinnstillinger",
+  "suggestedVocab": "Foreslått ordforråd",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Kjønnet mitt",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, du har fullført alle tilgjengelige aktiviteter! Send flere meldinger for å låse opp flere øvingsaktiviteter.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

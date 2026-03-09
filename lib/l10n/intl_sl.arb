@@ -2459,7 +2459,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-03-05 11:39:45.949147",
+  "@@last_modified": "2026-03-06 14:06:25.455160",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11678,7 +11678,6 @@
   "man": "Moški",
   "otherGender": "Drugo",
   "unselectedGender": "Izberite možnost spola",
-  "gender": "Spol",
   "chatParticipantTooltip": "To so vsi v tem klepetu. Kliknite na avatar katerega koli uporabnika in \"začnite pogovor\", da pošljete DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11697,10 +11696,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12610,6 +12605,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ne vidite, koga iščete? Morda morajo nastaviti svoj profil na javno v nastavitvah učenja.",
+  "suggestedVocab": "Predlagani besednjak",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Moja spol",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, zaključili ste vse razpoložljive aktivnosti! Pošljite več sporočil, da odklenete več aktivnosti za vadbo.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

@@ -3998,7 +3998,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2026-03-05 11:42:02.677469",
+  "@@last_modified": "2026-03-06 14:06:50.735415",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11210,7 +11210,6 @@
   "man": "पुरुष",
   "otherGender": "अन्य",
   "unselectedGender": "एक लिंग विकल्प चुनें",
-  "gender": "लिंग",
   "chatParticipantTooltip": "यह इस चैट में सभी लोग हैं। किसी भी उपयोगकर्ता के अवतार पर क्लिक करें और \"वार्तालाप शुरू करें\" पर क्लिक करें ताकि एक डीएम भेजा जा सके।",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11229,10 +11228,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12142,6 +12137,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "क्या आप जिस व्यक्ति को ढूंढ रहे हैं, उसे नहीं देख पा रहे हैं? उन्हें लर्निंग सेटिंग्स में अपना प्रोफ़ाइल सार्वजनिक करने की आवश्यकता हो सकती है",
+  "suggestedVocab": "सुझाए गए शब्दावली",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "मेरा लिंग",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "वाह, आपने सभी उपलब्ध गतिविधियाँ पूरी कर ली हैं! अधिक अभ्यास गतिविधियाँ अनलॉक करने के लिए अधिक संदेश भेजें।",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "प्रोफ़ाइल",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

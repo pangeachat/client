@@ -1,8 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import '../../../config/firebase_options.dart';
 
@@ -14,6 +16,10 @@ import '../../../config/firebase_options.dart';
 
 class GoogleAnalytics {
   static FirebaseAnalytics? analytics;
+  static const List<String> _ignoredScreenNamePrefixes = [
+    '/home',
+    '/registration',
+  ];
 
   GoogleAnalytics();
 
@@ -30,6 +36,11 @@ class GoogleAnalytics {
     }
 
     analytics = FirebaseAnalytics.instanceFor(app: app);
+
+    if (Environment.sentryDebugEnabled) {
+      // Note: Doesnt currently work on Web
+      analytics?.setDefaultEventParameters({"traffic_type": "internal"});
+    }
 
     debugPrint("Firebase App Name: ${app.name}");
     debugPrint("Firebase App Options:");
@@ -49,9 +60,15 @@ class GoogleAnalytics {
     analytics?.setUserProperty(name: 'subscribed', value: "$subscribed");
   }
 
-  static void logEvent(String name, {parameters}) {
+  static void logEvent(String name, {Map<String, Object>? parameters}) {
     debugPrint("event: $name - parameters: $parameters");
-    analytics?.logEvent(name: name, parameters: parameters);
+
+    // Add params when possible, web doesnt automatically add as of mar/09/2026
+    final finalParameters = Environment.sentryDebugEnabled && kIsWeb
+        ? {...?parameters, "traffic_type": "internal"}
+        : parameters;
+
+    analytics?.logEvent(name: name, parameters: finalParameters);
   }
 
   static void login(String type, String? userID) {
@@ -145,17 +162,29 @@ class GoogleAnalytics {
     }
     return FirebaseAnalyticsObserver(
       analytics: analytics!,
+      nameExtractor: (settings) {
+        final name = settings.name?.trim();
+        if (name == null || name.isEmpty) {
+          return null;
+        }
+        return name;
+      },
       routeFilter: (route) {
         // By default firebase only tracks page routes
-        if (route is! PageRoute ||
-            // No user logged in, so we dont track
-            route.settings.name == "login" ||
-            route.settings.name == "/home" ||
-            route.settings.name == "connect" ||
-            route.settings.name == "signup") {
+        if (route is! PageRoute) {
           return false;
         }
-        final String? name = route.settings.name;
+
+        final name = route.settings.name?.trim();
+        if (name == null || name.isEmpty) {
+          return false;
+        }
+
+        // Do not log unauthenticated onboarding/auth flow screens.
+        if (_ignoredScreenNamePrefixes.any(name.startsWith)) {
+          return false;
+        }
+
         debugPrint("navigating to route: $name");
         return true;
       },

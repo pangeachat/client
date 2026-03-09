@@ -1953,7 +1953,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2026-03-05 11:39:23.454641",
+  "@@last_modified": "2026-03-06 14:06:18.627681",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11675,7 +11675,6 @@
   "man": "Mascul",
   "otherGender": "Altre",
   "unselectedGender": "Seleziona un'opzione di genere",
-  "gender": "Genere",
   "chatParticipantTooltip": "Ita es tutti in ista chat. Clicca su qualunque avatar de utente e \"inizia conversazione\" pro inviar un DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11694,10 +11693,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12607,6 +12602,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Non vides qui tu quaeris? Illi fortasse debent suum profile in Parametris Discendi ad publicum constituere",
+  "suggestedVocab": "Vocabularium suaditum",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mi gendro",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, tu a completat toti activitatile disponibile! Trimite mai multe mesaje pentru a debloca mai multe activitati de practica.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profilo",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

@@ -435,6 +435,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                                     mode == SelectMode.translate &&
                                     enabled,
                                 borderRadius: BorderRadius.circular(100),
+                                maxOpacity: 0.6,
                                 child: AnimatedContainer(
                                   duration: FluffyThemes.animationDuration,
                                   height: buttonSize,

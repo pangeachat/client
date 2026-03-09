@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-03-05 11:42:11.380114",
+  "@@last_modified": "2026-03-06 14:06:52.336959",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10667,7 +10667,6 @@
   "man": "Мужчина",
   "otherGender": "Другое",
   "unselectedGender": "Выберите вариант пола",
-  "gender": "Пол",
   "chatParticipantTooltip": "Это все участники этого чата. Нажмите на аватар любого пользователя и выберите «начать разговор», чтобы отправить личное сообщение.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10686,10 +10685,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11360,6 +11355,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Не видите, кого ищете? Возможно, им нужно установить свой профиль в открытый режим в Настройках обучения",
+  "suggestedVocab": "Предложенный словарь",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Мой пол",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Ух ты, вы завершили все доступные активности! Отправьте больше сообщений, чтобы разблокировать дополнительные практические занятия.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Профиль",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

@@ -3495,7 +3495,7 @@
   "setupChatBackup": "Chat zaxirasini sozlash",
   "@setupChatBackup": {},
   "@@locale": "uz",
-  "@@last_modified": "2026-03-05 11:40:33.287123",
+  "@@last_modified": "2026-03-06 14:06:36.458620",
   "noMoreResultsFound": "Boshqa natijalar topilmadi",
   "chatSearchedUntil": "Chat {time} gacha qidirildi",
   "federationBaseUrl": "Federatsiya Asos URL",
@@ -4896,7 +4896,6 @@
   "man": "Erkak",
   "otherGender": "Boshqa",
   "unselectedGender": "Gender variantini tanlang",
-  "gender": "Jins",
   "modeDisabled": "O'qitish vositalari sizning maqsad tilingizda bo'lmagan xabarlar uchun o'chirilgan.",
   "courseParticipantTooltip": "Bu kursdagi hamma. Har qanday foydalanuvchining avatariga bosing va «muloqotni boshlash» ni tanlang, shunda DM yuborasiz.",
   "chatParticipantTooltip": "Bu chatdagi hamma. Har qanday foydalanuvchining avatariga bosing va «muloqotni boshlash» ni tanlang, shunda DM yuborasiz.",
@@ -10783,10 +10782,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@gender": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@modeDisabled": {
     "type": "String",
     "placeholders": {}
@@ -11289,6 +11284,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Qidirayotgan odamni ko'rmayapsizmi? Ular o'z profilini O'qish Sozlamalarida ommaga ochiq qilishlari kerak bo'lishi mumkin",
+  "suggestedVocab": "Taklif qilingan lug'at",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mening jinsim",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Vau, siz barcha mavjud faoliyatlarni bajardingiz! Yana ko'proq xabar yuboring, shunda ko'proq amaliy faoliyatlarni ochasiz.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

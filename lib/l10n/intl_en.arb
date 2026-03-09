@@ -5240,7 +5240,6 @@
   "man": "Man",
   "otherGender": "Other",
   "unselectedGender": "Select a gender option",
-  "gender": "Gender",
   "modeDisabled": "Learning tools are disabled for messages that aren't in your target language.",
   "courseParticipantTooltip": "This is everybody in this course. Click on any user’s avatar and “start conversation” to send a DM.",
   "chatParticipantTooltip": "This is everybody in this chat. Click on any user’s avatar and “start conversation” to send a DM.",
@@ -5398,5 +5397,9 @@
   "emptyInviteSearchHint": "Don't see who you're looking for? They may need to set their profile to public in Learning Settings",
   "clickOnEmailLinkDesc": "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.",
   "didntReceiveEmail": "Didn't receive the email?",
-  "resend": "Resend"
+  "resend": "Resend",
+  "suggestedVocab": "Suggested vocab",
+  "myGender": "My gender",
+  "noAnalyticsActivitiesAvailable": "Wow, you've completed all available activities! Send more messages to unlock more practice activities.",
+  "profile": "Profile"
 }

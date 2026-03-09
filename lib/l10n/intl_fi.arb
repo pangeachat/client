@@ -4603,7 +4603,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-03-05 11:38:41.356196",
+  "@@last_modified": "2026-03-06 14:06:08.868495",
   "@notificationRuleJitsi": {
     "type": "String",
     "placeholders": {}
@@ -10696,7 +10696,6 @@
   "man": "Mies",
   "otherGender": "Muu",
   "unselectedGender": "Valitse sukupuoli vaihtoehto",
-  "gender": "Sukupuoli",
   "chatParticipantTooltip": "Tässä ovat kaikki tässä keskustelussa. Napsauta mitä tahansa käyttäjän avatarista ja \"aloita keskustelu\" lähettääksesi yksityisviestin.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10715,10 +10714,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11454,6 +11449,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Etkö näe etsimääsi? Heidän on ehkä asetettava profiilinsa julkiseksi Oppimisasetuksissa",
+  "suggestedVocab": "Ehdotettu sanasto",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Oma sukupuoleni",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Vau, olet suorittanut kaikki saatavilla olevat aktiviteetit! Lähetä lisää viestejä avatakseksesi lisää harjoitustoimintoja.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profiili",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

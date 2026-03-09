@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:41:35.342328",
+  "@@last_modified": "2026-03-06 14:06:46.246717",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11207,7 +11207,6 @@
   "man": "পুরুষ",
   "otherGender": "অন্যান্য",
   "unselectedGender": "একটি লিঙ্গ বিকল্প নির্বাচন করুন",
-  "gender": "লিঙ্গ",
   "chatParticipantTooltip": "এটি এই চ্যাটে সকলেই। যে কোনও ব্যবহারকারীর অ্যাভাটারে ক্লিক করুন এবং \"কথোপকথন শুরু করুন\" ডিএম পাঠাতে।",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11226,10 +11225,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12139,6 +12134,31 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "আপনি যাকে খুঁজছেন তাকে দেখতে পাচ্ছেন না? তাদের হয়তো লার্নিং সেটিংসে তাদের প্রোফাইল পাবলিক করতে হবে",
+  "suggestedVocab": "প্রস্তাবিত শব্দভান্ডার",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "আমার লিঙ্গ",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "ওয়াও, আপনি সমস্ত উপলব্ধ কার্যক্রম সম্পন্ন করেছেন! আরও বার্তা পাঠান যাতে আরও অনুশীলন কার্যক্রম আনলক হয়।",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "প্রোফাইল",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }
