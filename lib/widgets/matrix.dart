@@ -216,6 +216,12 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                   store,
                 );
                 _registerSubs(_loginClientCandidate!.clientName);
+                // #Pangea
+                // Update BackgroundPush with the new client so push
+                // notifications work after logout/login without a restart.
+                backgroundPush?.client = _loginClientCandidate!;
+                backgroundPush?.setupPush();
+                // Pangea#
                 _loginClientCandidate = null;
                 // #Pangea
                 // FluffyChatApp.router.go('/backup');
