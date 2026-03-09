@@ -10,7 +10,6 @@ import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/underline_text_widget.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
-import 'package:fluffychat/widgets/avatar.dart';
 
 class StyleExampleMessage extends StatelessWidget {
   const StyleExampleMessage({super.key});
@@ -18,11 +17,7 @@ class StyleExampleMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
-        left: 12 + 12 + Avatar.defaultSize,
-        right: 12,
-        bottom: 12,
-      ),
+      padding: EdgeInsets.only(right: 12, bottom: 12, top: 12),
       child: Column(
         spacing: 4.0,
         mainAxisSize: MainAxisSize.min,
