@@ -1025,9 +1025,28 @@ abstract class AppRoutes {
     Widget child,
   ) => NoTransitionPage(
     key: state.pageKey,
+    name: analyticsPageName(state),
     restorationId: state.pageKey.value,
     child: child,
   );
+
+  static String analyticsPageName(GoRouterState state) {
+    final fullPath = state.fullPath;
+    if (fullPath != null && fullPath.isNotEmpty) {
+      return fullPath;
+    }
+
+    final routePath = state.path;
+    if (routePath != null && routePath.isNotEmpty) {
+      return routePath;
+    }
+
+    if (state.uri.path.isNotEmpty) {
+      return state.uri.path;
+    }
+
+    return '/';
+  }
 
   static Page defaultPageBuilder(
     BuildContext context,

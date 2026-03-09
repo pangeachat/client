@@ -1101,10 +1101,7 @@ class ChatController extends State<ChatPageWithRoom>
             pangeaEditingEvent = previousEdit;
           }
 
-          final spaceCode = room.classCode;
-          if (spaceCode != null) {
-            GoogleAnalytics.sendMessage(room.id, spaceCode);
-          }
+          GoogleAnalytics.sendMessage(room.id, room.classCode ?? "");
 
           if (msgEventId == null) {
             ErrorHandler.logError(
