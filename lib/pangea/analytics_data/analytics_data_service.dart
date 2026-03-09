@@ -420,10 +420,10 @@ class AnalyticsDataService {
     final addedConstructs = update.addedConstructs
         .where((c) => c.category != 'other')
         .toList();
-    final updateIds = addedConstructs.map((c) => c.identifier).toList();
+    final updateIds = addedConstructs.map((c) => c.identifier).toSet();
 
     final prevData = await derivedData(language);
-    final prevConstructs = await getConstructUses(updateIds, language);
+    final prevConstructs = await getConstructUses(updateIds.toList(), language);
 
     _invalidateCaches();
     await _ensureInitialized();
@@ -439,7 +439,7 @@ class AnalyticsDataService {
       language,
     );
 
-    final newConstructs = await getConstructUses(updateIds, language);
+    final newConstructs = await getConstructUses(updateIds.toList(), language);
 
     int points = 0;
     if (updateIds.isNotEmpty) {
