@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "\u10e8\u10d4\u10e1\u10d5\u10da\u10d0 \u10e9\u10d4\u10db\u10e1 \u10d0\u10dc\u10d2\u10d0\u10e0\u10d8\u10e8\u10d6\u10d4";
     },
-    get$appDescription() {
-      return "\u10e1\u10ec\u10d0\u10d5\u10da\u10d0 \u10d4\u10dc\u10d8\u10e1\n\u10db\u10d4\u10d2\u10dd\u10d1\u10e0\u10d4\u10d1\u10d7\u10d0\u10dc \u10db\u10d4\u10e1\u10d4\u10dc\u10ef\u10d4\u10e0\u10e8\u10d8 \u10e1\u10d0\u10e3\u10d1\u10e0\u10d8\u10e1 \u10d3\u10e0\u10dd\u10e1.";
-    },
     get$languages(_) {
       return "\u10d4\u10dc\u10d4\u10d1\u10d8";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "\u10d3\u10d0\u10db\u10d0\u10da\u10d4 \u10db\u10dd\u10d5\u10da\u10d4\u10dc\u10d4\u10d1\u10d8";
     },
+    get$learnLanguageWhileTexting() {
+      return "\u10e1\u10ec\u10d0\u10d5\u10da\u10d4\u10d7 \u10d4\u10dc\u10d0 \u10db\u10d4\u10d2\u10dd\u10d1\u10e0\u10d4\u10d1\u10d7\u10d0\u10dc \u10e2\u10d4\u10e5\u10e1\u10e2\u10e3\u10e0\u10d8 \u10e8\u10d4\u10e2\u10e7\u10dd\u10d1\u10d8\u10dc\u10d4\u10d1\u10d4\u10d1\u10d8\u10e1 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d8\u10e1\u10d0\u10e1!";
+    },
     get$denyKnockSpace() {
       return "\u10db\u10dd\u10db\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10d4\u10da\u10d8 \u10e3\u10d0\u10e0\u10e7\u10dd\u10e4\u10d8\u10da\u10d8 \u10d8\u10e5\u10dc\u10d4\u10d1\u10d0 \u10d9\u10e3\u10e0\u10e1\u10d8\u10d3\u10d0\u10dc, \u10d7\u10e3\u10db\u10ea\u10d0 \u10d8\u10e1\u10d8\u10dc\u10d8 \u10dc\u10d4\u10d1\u10d8\u10e1\u10db\u10d8\u10d4\u10e0 \u10d3\u10e0\u10dd\u10e1 \u10e8\u10d4\u10eb\u10da\u10d4\u10d1\u10d4\u10dc \u10ee\u10d4\u10da\u10d0\u10ee\u10da\u10d0 \u10d2\u10d0\u10ec\u10d5\u10d3\u10d0\u10e1.";
     },
@@ -5659,7 +5659,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IDIu/et2aVFnWia6R3jgytgHivw="] = d.current;
+  d["JYcVYXl+4xABAUOBFHEeQAYRokI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_769.part.js.map

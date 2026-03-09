@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "\u0423\u0432\u0456\u0439\u0442\u0438 \u0434\u043e \u043c\u043e\u0433\u043e \u043e\u0431\u043b\u0456\u043a\u043e\u0432\u043e\u0433\u043e \u0437\u0430\u043f\u0438\u0441\u0443";
     },
-    get$appDescription() {
-      return "\u0412\u0438\u0432\u0447\u0430\u0439\u0442\u0435 \u043c\u043e\u0432\u0443\n\u043f\u0438\u0448\u0443\u0447\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0434\u0440\u0443\u0437\u044f\u043c.";
-    },
     get$languages(_) {
       return "\u041c\u043e\u0432\u0438";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "\u0421\u0445\u043e\u0432\u0430\u0442\u0438 \u043f\u043e\u0434\u0456\u0457";
     },
+    get$learnLanguageWhileTexting() {
+      return "\u0412\u0438\u0432\u0447\u0430\u0439\u0442\u0435 \u043c\u043e\u0432\u0443, \u0441\u043f\u0456\u043b\u043a\u0443\u044e\u0447\u0438\u0441\u044c \u0437 \u0434\u0440\u0443\u0437\u044f\u043c\u0438!";
+    },
     get$denyKnockSpace() {
       return "\u041a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0431\u0443\u0434\u0435 \u0432\u0456\u0434\u0445\u0438\u043b\u0435\u043d\u043e \u0437 \u043a\u0443\u0440\u0441\u0443, \u043e\u0434\u043d\u0430\u043a \u0432\u0456\u043d \u043c\u043e\u0436\u0435 \u0441\u043f\u0440\u043e\u0431\u0443\u0432\u0430\u0442\u0438 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0437\u043d\u043e\u0432\u0443 \u0432 \u0431\u0443\u0434\u044c-\u044f\u043a\u0438\u0439 \u0447\u0430\u0441 \u043f\u0456\u0437\u043d\u0456\u0448\u0435.";
     },
@@ -5662,7 +5662,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["y/Lqp9bCIRW0dXrY65BQrHT7QZY="] = d.current;
+  d["DhB/SFJpvk1E+bxj+Kofmt4fAl8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_824.part.js.map

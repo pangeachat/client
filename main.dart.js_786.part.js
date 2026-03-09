@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "Logg inn p\xe5 kontoen min";
     },
-    get$appDescription() {
-      return "L\xe6r et spr\xe5k\nmens du sender tekst til vennene dine.";
-    },
     get$languages(_) {
       return "Spr\xe5k";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Skjul hendelser";
     },
+    get$learnLanguageWhileTexting() {
+      return "L\xe6r et spr\xe5k mens du sender tekstmeldinger til vennene dine!";
+    },
     get$denyKnockSpace() {
       return "Bruker vil bli avvist fra kurset, men de kan fors\xf8ke \xe5 bli med igjen n\xe5r som helst senere.";
     },
@@ -5662,7 +5662,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["L/eTNYOb/nanVOaYIuBRAU9R+co="] = d.current;
+  d["Zx8fIX428Ijp4zwJQalwon5qyog="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_786.part.js.map

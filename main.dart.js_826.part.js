@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "\u0110\u0103ng nh\u1eadp v\xe0o t\xe0i kho\u1ea3n c\u1ee7a t\xf4i";
     },
-    get$appDescription() {
-      return "H\u1ecdc m\u1ed9t ng\xf4n ng\u1eef\ntrong khi nh\u1eafn tin v\u1edbi b\u1ea1n b\xe8.";
-    },
     get$languages(_) {
       return "Ng\xf4n ng\u1eef";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "\u1ea8n s\u1ef1 ki\u1ec7n";
     },
+    get$learnLanguageWhileTexting() {
+      return "H\u1ecdc m\u1ed9t ng\xf4n ng\u1eef trong khi nh\u1eafn tin cho b\u1ea1n b\xe8 c\u1ee7a b\u1ea1n!";
+    },
     get$denyKnockSpace() {
       return "Ng\u01b0\u1eddi d\xf9ng s\u1ebd b\u1ecb t\u1eeb ch\u1ed1i tham gia kh\xf3a h\u1ecdc, tuy nhi\xean h\u1ecd c\xf3 th\u1ec3 c\u1ed1 g\u1eafng tham gia l\u1ea1i b\u1ea5t c\u1ee9 l\xfac n\xe0o sau \u0111\xf3.";
     },
@@ -5659,7 +5659,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["SKy3r6U6/A9wY6VD8ryHQaC9TPo="] = d.current;
+  d["g5JLwUc+7AmXXWOI5nido7A9Oxw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_826.part.js.map

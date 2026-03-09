@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "\u092e\u0947\u0930\u0947 \u0916\u093e\u0924\u0947 \u092e\u0947\u0902 \u0932\u0949\u0917\u093f\u0928 \u0915\u0930\u0947\u0902";
     },
-    get$appDescription() {
-      return "\u090f\u0915 \u092d\u093e\u0937\u093e \u0938\u0940\u0916\u0947\u0902\n\u091c\u092c \u0906\u092a \u0905\u092a\u0928\u0947 \u0926\u094b\u0938\u094d\u0924\u094b\u0902 \u0915\u094b \u092e\u0948\u0938\u0947\u091c \u0915\u0930 \u0930\u0939\u0947 \u0939\u094b\u0902\u0964";
-    },
     get$languages(_) {
       return "\u092d\u093e\u0937\u093e\u090f\u0901";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "\u0907\u0935\u0947\u0902\u091f\u094d\u0938 \u091b\u093f\u092a\u093e\u090f\u0901";
     },
+    get$learnLanguageWhileTexting() {
+      return "\u0905\u092a\u0928\u0947 \u0926\u094b\u0938\u094d\u0924\u094b\u0902 \u0915\u094b \u091f\u0947\u0915\u094d\u0938\u094d\u091f \u0915\u0930\u0924\u0947 \u0938\u092e\u092f \u090f\u0915 \u092d\u093e\u0937\u093e \u0938\u0940\u0916\u0947\u0902!";
+    },
     get$denyKnockSpace() {
       return "\u0909\u092a\u092f\u094b\u0917\u0915\u0930\u094d\u0924\u093e \u0915\u094b \u092a\u093e\u0920\u094d\u092f\u0915\u094d\u0930\u092e \u0938\u0947 \u0905\u0938\u094d\u0935\u0940\u0915\u0943\u0924 \u0915\u093f\u092f\u093e \u091c\u093e\u090f\u0917\u093e, \u0939\u093e\u0932\u093e\u0901\u0915\u093f \u0935\u0947 \u0915\u093f\u0938\u0940 \u092d\u0940 \u0938\u092e\u092f \u092c\u093e\u0926 \u092e\u0947\u0902 \u092a\u0941\u0928\u0903 \u0936\u093e\u092e\u093f\u0932 \u0939\u094b\u0928\u0947 \u0915\u093e \u092a\u094d\u0930\u092f\u093e\u0938 \u0915\u0930 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902\u0964";
     },
@@ -5659,7 +5659,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GAtax8YA5t/xGKfRkqsL+DlADPs="] = d.current;
+  d["lfhKe5PAkde0dlgu4Bnx3pSVI9o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_680.part.js.map

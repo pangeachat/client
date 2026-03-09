@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "Ensaluti al mia konto";
     },
-    get$appDescription() {
-      return "Lernu lingvon\ndum tekstdonado al viaj amikojn.";
-    },
     get$languages(_) {
       return "Lingvoj";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Ka\u015di eventojn";
     },
+    get$learnLanguageWhileTexting() {
+      return "Lernu lingvon dum vi sendas mesa\u011dojn al viaj amikoj!";
+    },
     get$denyKnockSpace() {
       return "Uzanto estos malakceptita de la kurso, tamen ili povas provi reiri iam poste.";
     },
@@ -5659,7 +5659,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rS0siTaFxkx+dgrfk9G/J+PZRdc="] = d.current;
+  d["HpmLdpWR9Rgl9A7bm8hvinBKwzo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_507.part.js.map

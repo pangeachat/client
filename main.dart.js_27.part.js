@@ -4449,9 +4449,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "Fa\xe7a login na minha conta";
     },
-    get$appDescription() {
-      return "Aprenda um idioma\nenquanto envia mensagens aos seus amigos.";
-    },
     get$languages(_) {
       return "Idiomas";
     },
@@ -5597,6 +5594,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$hideEvents() {
       return "Ocultar eventos";
+    },
+    get$learnLanguageWhileTexting() {
+      return string$.Aprend;
     },
     get$denyKnockSpace() {
       return string$.O_usu_u;
@@ -10084,9 +10084,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "Fa\xe7a login na minha conta";
     },
-    get$appDescription() {
-      return "Aprenda um idioma\nenquanto envia mensagens para seus amigos.";
-    },
     get$languages(_) {
       return "Idiomas";
     },
@@ -11232,6 +11229,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$hideEvents() {
       return "Ocultar eventos";
+    },
+    get$learnLanguageWhileTexting() {
+      return string$.Aprend;
     },
     get$denyKnockSpace() {
       return string$.O_usu_u;
@@ -15719,9 +15719,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "Entrar na minha conta";
     },
-    get$appDescription() {
-      return "Aprenda uma l\xedngua\nenquanto envia mensagens aos seus amigos.";
-    },
     get$languages(_) {
       return "L\xednguas";
     },
@@ -16868,6 +16865,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Ocultar eventos";
     },
+    get$learnLanguageWhileTexting() {
+      return string$.Aprend;
+    },
     get$denyKnockSpace() {
       return string$.O_usu_u;
     },
@@ -16965,6 +16965,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Ao_ati: "Ao ativar, voc\xea permite que outros usu\xe1rios encontrem seu perfil na barra de busca global e enviem solicita\xe7\xf5es para conversar. Neste momento, voc\xea pode escolher aceitar ou negar a solicita\xe7\xe3o.",
     Ao_sai: "Ao sair do curso, voc\xea deixar\xe1 todos os chats dentro dele. Outros usu\xe1rios ver\xe3o que voc\xea saiu do curso.",
     Apenas: "Apenas o administrador do espa\xe7o pode postar.",
+    Aprend: "Aprenda um idioma enquanto envia mensagens para seus amigos!",
     Aqui_ve: "Aqui voc\xea pode editar o t\xedtulo do curso, descri\xe7\xe3o, etc.",
     Aqui_vm: "Aqui voc\xea pode mudar o plano de curso deste curso.",
     Aqui_vv: "Aqui voc\xea pode ver todos os pontos que voc\xea ganhou e como!",
@@ -17139,7 +17140,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["57wUcRBlXhKt5MENTdpE6VYlowY="] = d.current;
+  d["L5jTLL1+HUtcRKdX933NjRiOXKM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

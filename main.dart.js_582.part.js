@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "Logi sisse oma kontole";
     },
-    get$appDescription() {
-      return "\xd5pi keelt\ns\xf5pradega s\xf5numite saatmise ajal.";
-    },
     get$languages(_) {
       return "Keeled";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Peida \xfcritused";
     },
+    get$learnLanguageWhileTexting() {
+      return "\xd5pi keelt, samal ajal kui saadad s\xf5numit oma s\xf5pradele!";
+    },
     get$denyKnockSpace() {
       return "Kasutaja l\xfckatakse kursusest v\xe4lja, kuid nad v\xf5ivad proovida hiljem uuesti liituda.";
     },
@@ -5659,7 +5659,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1JJdYwoaNUFKgqTqnOHEjHkNFSs="] = d.current;
+  d["go6U+IZ12DLEkntyvRD5c2q5JG0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_582.part.js.map

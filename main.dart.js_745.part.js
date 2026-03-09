@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "Masuk ke akun saya";
     },
-    get$appDescription() {
-      return "Pelajari bahasa\nsambil mengirim pesan kepada teman.";
-    },
     get$languages(_) {
       return "Bahasa";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Sembunyikan acara";
     },
+    get$learnLanguageWhileTexting() {
+      return "Pelajari bahasa sambil mengirim pesan kepada teman-temanmu!";
+    },
     get$denyKnockSpace() {
       return "Pengguna akan ditolak dari kursus, namun mereka dapat mencoba untuk bergabung kembali kapan saja nanti.";
     },
@@ -5662,7 +5662,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OOpoTAPAI2J3099DrKqE0xAsDrE="] = d.current;
+  d["aZRi/EhMD1hNeO0csbHf/LAkBOM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_745.part.js.map

@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "Autentific\u0103-te \xeen contul meu";
     },
-    get$appDescription() {
-      return "\xcenva\u021b\u0103 o limb\u0103\n\xeen timp ce trimi\u021bi mesaje prietenilor.";
-    },
     get$languages(_) {
       return "Limbi";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Ascunde evenimentele";
     },
+    get$learnLanguageWhileTexting() {
+      return "\xcenva\u021b\u0103 o limb\u0103 \xeen timp ce trimi\u021bi mesaje prietenilor t\u0103i!";
+    },
     get$denyKnockSpace() {
       return "Utilizatorul va fi respins din curs, totu\u0219i poate \xeencerca s\u0103 se al\u0103ture din nou oric\xe2nd mai t\xe2rziu.";
     },
@@ -5662,7 +5662,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lvE1tBhN5FAzcMLQRNJ2V8vCnm8="] = d.current;
+  d["AB7hSyzJVyo6mNqE++MnvJu/yoo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_802.part.js.map

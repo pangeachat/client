@@ -4439,9 +4439,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "\u0f44\u0f60\u0f72\u0f0b\u0f41\u0f74\u0f63\u0f0b\u0f42\u0f45\u0f72\u0f42\u0f0b\u0f63\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f63\u0f58\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f60\u0f56\u0f51\u0f0d";
     },
-    get$appDescription() {
-      return "\u0f5a\u0f7c\u0f42\u0f66\u0f0b\u0f5a\u0f7c\u0f42\u0f66\u0f0b\u0f66\u0f90\u0f51\u0f0b\u0f61\u0f72\u0f42\u0f0b\u0f66\u0fb3\u0f7c\u0f56\u0f0b\u0f5a\u0f53\u0f0b\u0f63\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f66\u0f92\u0f7c\u0f58\u0f0d\n\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f0b\u0f42\u0fb2\u0f7c\u0f42\u0f66\u0f0b\u0f58\u0f5a\u0f53\u0f0b\u0f63\u0f0b\u0f62\u0f9f\u0f42\u0f0b\u0f54\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f66\u0f92\u0f7c\u0f58\u0f0b\u0f63\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f66\u0f92\u0f7c\u0f58\u0f0d";
-    },
     get$languages(_) {
       return "\u0f5a\u0f7c\u0f51\u0f0b\u0f63\u0f9f";
     },
@@ -5588,6 +5585,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Hide events";
     },
+    get$learnLanguageWhileTexting() {
+      return "Pelajari bahasa sambil mengirim pesan kepada teman-temanmu!";
+    },
     get$denyKnockSpace() {
       return "K\xe4user wird vom Kurs abgelehnt, jedoch kann er jederzeit sp\xe4ter versuchen, wieder beizutreten.";
     },
@@ -5673,7 +5673,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iMNLI25ZH6aA+kkJpvpan61gNg8="] = d.current;
+  d["c0IDs1/0tANe6j0dSZo5+FIOxS4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_171.part.js.map

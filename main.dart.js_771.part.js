@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "Prisijungti prie mano paskyros";
     },
-    get$appDescription() {
-      return "I\u0161mokite kalb\u0105\nnaudodamiesi tekstais su draugais.";
-    },
     get$languages(_) {
       return "Kalbos";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Sl\u0117pti renginius";
     },
+    get$learnLanguageWhileTexting() {
+      return "I\u0161mokite kalb\u0105, kol ra\u0161ote \u017einutes savo draugams!";
+    },
     get$denyKnockSpace() {
       return "Vartotojas bus atmestas i\u0161 kurso, ta\u010diau jis gali bandyti prisijungti v\u0117liau bet kuriuo metu.";
     },
@@ -5662,7 +5662,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qOwii+fcNpuDmVL4H+Zi6lxZBd4="] = d.current;
+  d["XADeOmjwkOF4fFXFLHnzYzXqVFg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_771.part.js.map

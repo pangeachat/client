@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "Pierakstieties sav\u0101 kont\u0101";
     },
-    get$appDescription() {
-      return "M\u0101cieties valodu\nrakstot zi\u0146as draugiem.";
-    },
     get$languages(_) {
       return "Valodas";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Pasl\u0113pt pas\u0101kumus";
     },
+    get$learnLanguageWhileTexting() {
+      return "M\u0101cieties valodu, kam\u0113r s\u016bt\u0101t zi\u0146as saviem draugiem!";
+    },
     get$denyKnockSpace() {
       return "Lietot\u0101js tiks noraid\u012bts no kursa, tom\u0113r vi\u0146\u0161 var m\u0113\u0123in\u0101t pievienoties v\u0113l\u0101k.";
     },
@@ -5659,7 +5659,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["F4ybc54rhmZYNL29z95iropoElc="] = d.current;
+  d["CsRdKQ+h/HI2+4Fn5XrR9VzHLfM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_781.part.js.map

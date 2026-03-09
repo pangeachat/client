@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "Hisobimga kirish";
     },
-    get$appDescription() {
-      return "Bir til o'rganing\ndo'stlaringiz bilan yozishayotganda.";
-    },
     get$languages(_) {
       return "Tilllar";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Voqealarni yashirish";
     },
+    get$learnLanguageWhileTexting() {
+      return "Do\u2018stlaringizga xabar yozayotganda til o\u2018rganing!";
+    },
     get$denyKnockSpace() {
       return "Foydalanuvchi kursdan rad etiladi, ammo ular keyinchalik qayta qo'shilishga harakat qilishlari mumkin.";
     },
@@ -5663,7 +5663,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Z7jyPtJGu/5+fsFp+mNHSxZ262s="] = d.current;
+  d["FGks4FTqDY7Zi+pX93sRB/3XXtI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_825.part.js.map

@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "In mein Konto einloggen";
     },
-    get$appDescription() {
-      return "Lerne eine Sprache\nw\xe4hrend du deinen Freunden schreibst.";
-    },
     get$languages(_) {
       return "Sprachen";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Ereignisse ausblenden";
     },
+    get$learnLanguageWhileTexting() {
+      return "Lernen Sie eine Sprache, w\xe4hrend Sie mit Ihren Freunden texten!";
+    },
     get$denyKnockSpace() {
       return "Der Benutzer wird vom Kurs abgelehnt, kann jedoch jederzeit sp\xe4ter versuchen, wieder beizutreten.";
     },
@@ -5662,7 +5662,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vwe1lAZKBOAJ/9ls3gEDBxXCpXo="] = d.current;
+  d["Hkg5y2/RPfGl+G9yHCFgHR3gySM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_420.part.js.map

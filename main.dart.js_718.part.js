@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "Jelentkezzen be a fi\xf3komba";
     },
-    get$appDescription() {
-      return "Tanulj egy nyelvet\n\xfczenetk\xfcld\xe9s k\xf6zben a bar\xe1taidnak.";
-    },
     get$languages(_) {
       return "Nyelvek";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Esem\xe9nyek elrejt\xe9se";
     },
+    get$learnLanguageWhileTexting() {
+      return "Tanulj meg egy nyelvet, mik\xf6zben \xfczenetet \xedrsz a bar\xe1taidnak!";
+    },
     get$denyKnockSpace() {
       return "A felhaszn\xe1l\xf3t elutas\xedtj\xe1k a kurzusr\xf3l, azonban b\xe1rmikor k\xe9s\u0151bb megpr\xf3b\xe1lhat \xfajra csatlakozni.";
     },
@@ -5659,7 +5659,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["NqrWakCT21mmcMRz2G7cKzWKJ8g="] = d.current;
+  d["iSAlECJD+GdZiqp5cyXRBfTYPhI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_718.part.js.map

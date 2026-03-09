@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "P\u0159ihl\xe1sit se ke sv\xe9mu \xfa\u010dtu";
     },
-    get$appDescription() {
-      return "U\u010dte se jazyk\np\u0159i psan\xed zpr\xe1v p\u0159\xe1tel\u016fm.";
-    },
     get$languages(_) {
       return "Jazyky";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Skr\xfdt ud\xe1losti";
     },
+    get$learnLanguageWhileTexting() {
+      return "U\u010dte se jazyk p\u0159i psan\xed zpr\xe1v sv\xfdm p\u0159\xe1tel\u016fm!";
+    },
     get$denyKnockSpace() {
       return "U\u017eivatel bude vylou\u010den z kurzu, nicm\xe9n\u011b se m\u016f\u017ee pokusit znovu p\u0159ipojit kdykoli pozd\u011bji.";
     },
@@ -5659,7 +5659,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["4YXOozoJXkJ9tPMrRw5V5jB21io="] = d.current;
+  d["sWZSKxmK8SM9VOo5XFhY2xDV1/Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_270.part.js.map

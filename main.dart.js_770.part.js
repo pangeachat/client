@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "\ub0b4 \uacc4\uc815\uc5d0 \ub85c\uadf8\uc778";
     },
-    get$appDescription() {
-      return "\uce5c\uad6c\ub4e4\uacfc \ubb38\uc790 \uba54\uc2dc\uc9c0\ub97c \ubcf4\ub0b4\uba70 \uc5b8\uc5b4\ub97c \ubc30\uc6b0\uc138\uc694.";
-    },
     get$languages(_) {
       return "\uc5b8\uc5b4";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "\uc774\ubca4\ud2b8 \uc228\uae30\uae30";
     },
+    get$learnLanguageWhileTexting() {
+      return "\uce5c\uad6c\uc5d0\uac8c \ubb38\uc790 \uba54\uc2dc\uc9c0\ub97c \ubcf4\ub0b4\uba74\uc11c \uc5b8\uc5b4\ub97c \ubc30\uc6b0\uc138\uc694!";
+    },
     get$denyKnockSpace() {
       return "\uc0ac\uc6a9\uc790\ub294 \uacfc\uc815\uc5d0\uc11c \uac70\ubd80\ub418\uc9c0\ub9cc, \uc5b8\uc81c\ub4e0\uc9c0 \ub098\uc911\uc5d0 \ub2e4\uc2dc \ucc38\uc5ec\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
@@ -5659,7 +5659,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8TU55Lv3ooyagJtVUMZ7IGqPoT8="] = d.current;
+  d["K/hIKgN2g81NGLt5MPWd5dG69tU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_770.part.js.map

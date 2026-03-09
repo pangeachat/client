@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "Login a mi conto";
     },
-    get$appDescription() {
-      return "Impara un linguage\ndurante scriver a tui amicos.";
-    },
     get$languages(_) {
       return "Linguages";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Ocultar eventos";
     },
+    get$learnLanguageWhileTexting() {
+      return "Ionnsachadh c\xe0nain fhad 's a tha thu a' teacsadh do charaidean!";
+    },
     get$denyKnockSpace() {
       return "L'usuari ser\xe0 rebutjat del curs, tanmateix podr\xe0 intentar tornar a unir-se en qualsevol moment m\xe9s tard.";
     },
@@ -5659,7 +5659,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["C83jMfQ/dVoS0Z/BrG0+Yg7mUGI="] = d.current;
+  d["K07aUC1G4xyCa3oPLSFC+lsoPP0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_756.part.js.map

@@ -4437,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loginToAccount() {
       return "Log\xe1il isteach i mo chuntas";
     },
-    get$appDescription() {
-      return "Foghlaim teanga\nag an am c\xe9anna le do chairde.";
-    },
     get$languages(_) {
       return "Teangacha";
     },
@@ -5586,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Folaigh imeachta\xed";
     },
+    get$learnLanguageWhileTexting() {
+      return "Foghlaim teanga agus t\xfa ag t\xe9acs\xe1il do chairde!";
+    },
     get$denyKnockSpace() {
       return "D\xe9anfar di\xfalt\xfa do null \xf3n gc\xfarsa, \xe1fach, is f\xe9idir leo iarracht a dh\xe9anamh ar\xeds ag am ar bith n\xedos d\xe9ana\xed.";
     },
@@ -5662,7 +5662,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["liIx72DohxAZJfPG86prswixhLk="] = d.current;
+  d["kXj65AfRtn1ALg58Ykd06O6/QHQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_663.part.js.map
