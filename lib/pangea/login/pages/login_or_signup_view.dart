@@ -6,6 +6,7 @@ import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
@@ -19,7 +20,7 @@ class LoginOrSignupView extends StatefulWidget {
 }
 
 class _LoginOrSignupViewState extends State<LoginOrSignupView> {
-  static const _breakpoint = 832.0;
+  static const _mobileRatioBreakpoint = 1.75;
 
   final CarouselSliderController _carouselController =
       CarouselSliderController();
@@ -31,8 +32,9 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final width = MediaQuery.sizeOf(context).width;
-      _isMobile = width <= _breakpoint;
+      final size = MediaQuery.sizeOf(context);
+      final ratio = size.height / size.width;
+      _isMobile = ratio > _mobileRatioBreakpoint;
     });
   }
 
@@ -40,8 +42,9 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    final width = MediaQuery.sizeOf(context).width;
-    final isMobile = width <= _breakpoint;
+    final size = MediaQuery.sizeOf(context);
+    final ratio = size.height / size.width;
+    final isMobile = ratio > _mobileRatioBreakpoint;
 
     final breakpointChanged = _isMobile != isMobile;
     if (breakpointChanged) {
@@ -52,7 +55,7 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
   String? get _cachedSpaceCode => SpaceCodeRepo.spaceCode;
 
   List<String> get _imageFileNames {
-    final ratio = _isMobile ? 'ratio4x5' : 'ratio2x1';
+    final ratio = _isMobile ? 'ratio4x5' : 'ratio2x1_NoPadding';
     return List.generate(6, (i) => 'Carousel_${i + 1}_$ratio.png');
   }
 
@@ -61,7 +64,7 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
       .toList();
 
   List<String> get _labels => [
-    L10n.of(context).appDescription,
+    L10n.of(context).learnLanguageWhileTexting,
     L10n.of(context).writeAndSpeakWorryFree,
     L10n.of(context).joinLearningCommunities,
     L10n.of(context).playConversationGames,
@@ -76,13 +79,36 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
-            final isMobile = constraints.maxWidth <= _breakpoint;
+            final size = MediaQuery.sizeOf(context);
+            final ratio = size.height / size.width;
+            final isMobile = ratio > _mobileRatioBreakpoint;
             final imageUrls = _imageFileNames
                 .map((name) => '${AppConfig.assetsBaseURL}/$name')
                 .toList();
 
             return Column(
               children: [
+                if (!isMobile)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 24.0, top: 32.0),
+                    child: Row(
+                      spacing: 12.0,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        PangeaLogoSvg(
+                          width: 48.0,
+                          forceColor: theme.colorScheme.onSurface,
+                        ),
+                        Text(
+                          AppSettings.applicationName.value,
+                          style: theme.textTheme.displayMedium?.copyWith(
+                            color: theme.colorScheme.onSurface,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 _LoginCarousel(
                   isMobile: isMobile,
                   imageUrls: imageUrls,
@@ -94,27 +120,26 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
                   },
                   controller: _carouselController,
                 ),
-                if (isMobile) ...[
-                  const SizedBox(height: 24.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      imageUrls.length,
-                      (index) => AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
-                        margin: const EdgeInsets.symmetric(horizontal: 4),
-                        height: 8,
-                        width: 8,
-                        decoration: BoxDecoration(
-                          color: _currentIndex == index
-                              ? theme.colorScheme.primary
-                              : theme.colorScheme.outlineVariant,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
+                const SizedBox(height: 24.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    imageUrls.length,
+                    (index) => AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
+                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                      height: 8,
+                      width: 8,
+                      decoration: BoxDecoration(
+                        color: _currentIndex == index
+                            ? theme.colorScheme.primary
+                            : theme.colorScheme.outlineVariant,
+                        borderRadius: BorderRadius.circular(12),
                       ),
                     ),
                   ),
-                ],
+                ),
+                const SizedBox(height: 24.0),
                 Expanded(
                   flex: 1,
                   child: Center(
@@ -123,6 +148,7 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 24),
                         child: Column(
+                          spacing: 8.0,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             ElevatedButton(
@@ -151,16 +177,22 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
                                 ],
                               ),
                             ),
-                            TextButton(
-                              style: TextButton.styleFrom(
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
                                 foregroundColor: theme.colorScheme.onSurface,
+                                backgroundColor: theme.colorScheme.surface,
                               ),
                               onPressed: () => context.go('/home/login'),
-                              child: Text(
-                                L10n.of(context).loginToAccount,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    L10n.of(context).loginToAccount,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
@@ -248,81 +280,43 @@ class _LoginCarousel extends StatelessWidget {
     // Desktop
     return Expanded(
       flex: 2,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Padding(
-            padding: EdgeInsetsGeometry.symmetric(horizontal: 100.0),
-            child: CarouselSlider(
-              items: imageUrls
-                  .mapIndexed(
-                    (index, imageUrl) => SizedBox(
-                      width: screenWidth * 0.8,
-                      child: Stack(
-                        children: [
-                          Container(
-                            alignment: Alignment.center,
-                            padding: const EdgeInsets.only(bottom: 32.0),
-                            child: CachedNetworkImage(
-                              imageUrl: imageUrl,
-                              width: double.infinity,
-                              height: double.infinity,
-                              fit: BoxFit.cover,
-                              errorWidget: (context, url, error) =>
-                                  Center(child: PangeaLogoSvg(width: 256.0)),
-                            ),
-                          ),
-                          Positioned(
-                            bottom: 0,
-                            left: 20,
-                            right: 20,
-                            child: Text(
-                              labels[index],
-                              textAlign: TextAlign.center,
-                              style: theme.textTheme.titleMedium?.copyWith(
-                                color: theme.colorScheme.onSurface,
-                                fontWeight: FontWeight.w800,
-                              ),
-                            ),
-                          ),
-                        ],
+      child: CarouselSlider(
+        items: imageUrls
+            .mapIndexed(
+              (index, imageUrl) => ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 600),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Flexible(
+                      child: CachedNetworkImage(
+                        imageUrl: imageUrl,
+                        width: double.infinity,
+                        errorWidget: (context, url, error) =>
+                            Center(child: PangeaLogoSvg(width: 256.0)),
                       ),
                     ),
-                  )
-                  .toList(),
-              carouselController: controller,
-              options: CarouselOptions(
-                viewportFraction: 1.0,
-                autoPlay: true,
-                onPageChanged: (index, _) {
-                  onPageChange(index);
-                },
+                    SizedBox(height: 24.0),
+                    Text(
+                      labels[index],
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.headlineSmall?.copyWith(
+                        color: theme.colorScheme.onSurface,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ),
-          Positioned(
-            left: 20,
-            child: IconButton(
-              icon: Icon(Icons.chevron_left),
-              onPressed: controller.previousPage,
-              style: IconButton.styleFrom(
-                backgroundColor: theme.colorScheme.surface,
-                foregroundColor: theme.colorScheme.onSurface,
-              ),
-            ),
-          ),
-          Positioned(
-            right: 20,
-            child: IconButton(
-              icon: Icon(Icons.chevron_right),
-              onPressed: controller.nextPage,
-              style: IconButton.styleFrom(
-                backgroundColor: theme.colorScheme.surface,
-                foregroundColor: theme.colorScheme.onSurface,
-              ),
-            ),
-          ),
-        ],
+            )
+            .toList(),
+        carouselController: controller,
+        options: CarouselOptions(
+          viewportFraction: 1.0,
+          autoPlay: true,
+          onPageChanged: (index, _) {
+            onPageChange(index);
+          },
+        ),
       ),
     );
   }
