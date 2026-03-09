@@ -553,8 +553,11 @@ class AnalyticsDatabase with DatabaseFileStorage {
       final lastUpdated = await getLastEventTimestamp(language);
 
       DateTime mostRecent = lastUpdated ?? events.first.event.originServerTs;
-      final existingKeys = (await _serverConstructsBox.getAllKeys())
+      final existingEventIds = (await _serverConstructsBox.getAllKeys())
           .where((key) => _isLanguageKey(key, language))
+          .map((key) => key.split('|'))
+          .where((parts) => parts.length >= 3)
+          .map((parts) => parts[1])
           .toSet();
 
       final List<OneConstructUse> aggregatedVocabUses = [];
@@ -562,18 +565,19 @@ class AnalyticsDatabase with DatabaseFileStorage {
       final Map<String, List<OneConstructUse>> pendingWrites = {};
 
       for (final event in events) {
+        if (existingEventIds.contains(event.event.eventId)) continue;
         final ts = event.event.originServerTs;
         final key = TupleKey(
           event.event.eventId,
           ts.millisecondsSinceEpoch.toString(),
         ).toString();
 
+        final serverEventKey = _langKey(key, language);
         if (lastUpdated != null && ts.isBefore(lastUpdated)) continue;
-        if (existingKeys.contains(_langKey(key, language))) continue;
 
         if (ts.isAfter(mostRecent)) mostRecent = ts;
 
-        pendingWrites[key] = event.content.uses;
+        pendingWrites[serverEventKey] = event.content.uses;
         for (final u in event.content.uses) {
           u.constructType == ConstructTypeEnum.vocab
               ? aggregatedVocabUses.add(u)
@@ -586,7 +590,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
       // Write events sequentially
       for (final e in pendingWrites.entries) {
         _serverConstructsBox.put(
-          _langKey(e.key, language),
+          e.key,
           e.value.map((u) => u.toJson()).toList(),
         );
       }
