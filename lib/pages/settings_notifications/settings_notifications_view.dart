@@ -20,10 +20,18 @@ class SettingsNotificationsView extends StatelessWidget {
   Widget build(BuildContext context) {
     final pushRules = Matrix.of(context).client.globalPushRules;
     final pushCategories = [
-      if (pushRules?.override?.isNotEmpty ?? false)
-        (rules: pushRules?.override ?? [], kind: PushRuleKind.override),
-      if (pushRules?.content?.isNotEmpty ?? false)
-        (rules: pushRules?.content ?? [], kind: PushRuleKind.content),
+      // #Pangea
+      if ((pushRules?.override?.isNotEmpty ?? false) ||
+          (pushRules?.content?.isNotEmpty ?? false))
+        (
+          rules: (pushRules?.override ?? []) + (pushRules?.content ?? []),
+          kind: PushRuleKind.override,
+        ),
+      // if (pushRules?.override?.isNotEmpty ?? false)
+      //   (rules: pushRules?.override ?? [], kind: PushRuleKind.override),
+      // if (pushRules?.content?.isNotEmpty ?? false)
+      //   (rules: pushRules?.content ?? [], kind: PushRuleKind.content),
+      // Pangea#
       if (pushRules?.sender?.isNotEmpty ?? false)
         (rules: pushRules?.sender ?? [], kind: PushRuleKind.sender),
       if (pushRules?.underride?.isNotEmpty ?? false)
