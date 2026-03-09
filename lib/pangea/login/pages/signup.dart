@@ -167,6 +167,10 @@ class SignupPageController extends State<SignupPage> {
       Matrix.of(context).currentClientSecret = DateTime.now()
           .millisecondsSinceEpoch
           .toString();
+      // #Pangea
+      Matrix.of(context).currentRegistrationEmail = email;
+      Matrix.of(context).currentSendAttempt = 0;
+      // Pangea#
       Matrix.of(context).currentThreepidCreds = await client
           .requestTokenToRegisterEmail(
             Matrix.of(context).currentClientSecret,

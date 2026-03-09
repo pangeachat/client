@@ -56,15 +56,17 @@ extension UiaRequestManager on MatrixState {
               UiaException(L10n.of(context).serverRequiresEmail),
             );
           }
-          final auth = AuthenticationThreePidCreds(
-            session: uiaRequest.session,
-            type: AuthenticationTypes.emailIdentity,
-            threepidCreds: ThreepidCreds(
-              sid: currentThreepidCreds!.sid,
-              clientSecret: currentClientSecret,
-            ),
-          );
           // #Pangea
+          // auth is built after the dialog so that a resend (which yields a
+          // new sid) is reflected before completeStage is called.
+          // final auth = AuthenticationThreePidCreds(
+          //   session: uiaRequest.session,
+          //   type: AuthenticationTypes.emailIdentity,
+          //   threepidCreds: ThreepidCreds(
+          //     sid: currentThreepidCreds!.sid,
+          //     clientSecret: currentClientSecret,
+          //   ),
+          // );
           // if (OkCancelResult.ok ==
           //     await showOkCancelAlertDialog(
           //       useRootNavigator: false,
@@ -80,11 +82,26 @@ extension UiaRequestManager on MatrixState {
                 barrierDismissible: false,
                 context: navigatorContext,
                 builder: (context) => RegistrationEmailPopup(
-                  onResendEmail: () {
-                    throw Exception("Test error");
+                  onResendEmail: () async {
+                    if (currentRegistrationEmail == null) return;
+                    currentSendAttempt++;
+                    currentThreepidCreds = await client
+                        .requestTokenToRegisterEmail(
+                          currentClientSecret,
+                          currentRegistrationEmail!,
+                          currentSendAttempt,
+                        );
                   },
                 ),
               )) {
+            final auth = AuthenticationThreePidCreds(
+              session: uiaRequest.session,
+              type: AuthenticationTypes.emailIdentity,
+              threepidCreds: ThreepidCreds(
+                sid: currentThreepidCreds!.sid,
+                clientSecret: currentClientSecret,
+              ),
+            );
             // Pangea#
             return uiaRequest.completeStage(auth);
           }

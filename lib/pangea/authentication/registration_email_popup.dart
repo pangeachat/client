@@ -4,7 +4,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 
 class RegistrationEmailPopup extends StatelessWidget {
-  final VoidCallback onResendEmail;
+  final Future<void> Function() onResendEmail;
   const RegistrationEmailPopup({super.key, required this.onResendEmail});
 
   @override

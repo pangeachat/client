@@ -126,6 +126,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   late String currentClientSecret;
   RequestTokenResponse? currentThreepidCreds;
+  // #Pangea
+  String? currentRegistrationEmail;
+  int currentSendAttempt = 0;
+  // Pangea#
 
   void setActiveClient(Client? cl) {
     final i = widget.clients.indexWhere((c) => c == cl);
