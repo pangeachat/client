@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "Grupo kasama si " + displayname;
     },
-    get$clickOnEmailLink() {
-      return "Pindutin ang link sa email at magpatuloy.\n\nSuriin ang iyong spam folder kung hindi pa dumarating ang email.";
-    },
     get$dontForgetPassword() {
       return "Huwag kalimutan ang iyong password!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "Hindi mo makita ang hinahanap mo? Maaaring kailanganin nilang itakda ang kanilang profile sa pampubliko sa Mga Setting ng Pagkatuto";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "Inirerekomendang bokabularyo";
     },
@@ -5659,7 +5665,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7cb1+F818kJpo8Tvl9jB8uzxL7g="] = d.current;
+  d["Ssx0wK3haohK37nwjEzE0JHzets="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_637.part.js.map

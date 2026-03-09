@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "Nh\xf3m v\u1edbi " + displayname;
     },
-    get$clickOnEmailLink() {
-      return "Vui l\xf2ng nh\u1ea5p v\xe0o li\xean k\u1ebft trong email v\xe0 sau \u0111\xf3 ti\u1ebfp t\u1ee5c. Trong m\u1ed9t s\u1ed1 tr\u01b0\u1eddng h\u1ee3p hi\u1ebfm hoi, email c\xf3 th\u1ec3 b\u1ecb g\u1eedi v\xe0o th\u01b0 r\xe1c ho\u1eb7c m\u1ea5t \u0111\u1ebfn 5 ph\xfat \u0111\u1ec3 \u0111\u1ebfn n\u01a1i.";
-    },
     get$dontForgetPassword() {
       return "\u0110\u1eebng qu\xean m\u1eadt kh\u1ea9u c\u1ee7a b\u1ea1n!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "Kh\xf4ng th\u1ea5y ng\u01b0\u1eddi b\u1ea1n \u0111ang t\xecm ki\u1ebfm? H\u1ecd c\xf3 th\u1ec3 c\u1ea7n \u0111\u1eb7t h\u1ed3 s\u01a1 c\u1ee7a m\xecnh th\xe0nh c\xf4ng khai trong C\xe0i \u0111\u1eb7t H\u1ecdc t\u1eadp";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "T\u1eeb v\u1ef1ng g\u1ee3i \xfd";
     },
@@ -5659,7 +5665,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["g5JLwUc+7AmXXWOI5nido7A9Oxw="] = d.current;
+  d["lZCjRHi6SVZTf3QYpwvZBlCgPyE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_826.part.js.map

@@ -3906,9 +3906,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "Grupo com " + displayname;
     },
-    get$clickOnEmailLink() {
-      return "Por favor, clique no link do e-mail e prossiga.\n\nVerifique sua pasta de spam se o e-mail n\xe3o tiver chegado.";
-    },
     get$dontForgetPassword() {
       return "N\xe3o esque\xe7a sua senha!";
     },
@@ -5645,6 +5642,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$emptyInviteSearchHint() {
       return string$.Nxe3o_v_;
+    },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
     },
     get$suggestedVocab() {
       return "Vocabul\xe1rio sugerido";
@@ -9540,9 +9546,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     chatWith$1(displayname) {
       return "Grupo com " + displayname;
-    },
-    get$clickOnEmailLink() {
-      return "Por favor, clique no link do email e prossiga.\n\nVerifique sua pasta de spam se o email n\xe3o tiver chegado.";
     },
     get$dontForgetPassword() {
       return "N\xe3o esque\xe7a sua senha!";
@@ -15176,9 +15179,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "Grupo com " + displayname;
     },
-    get$clickOnEmailLink() {
-      return "Por favor, clique no link no email e prossiga.\n\nVerifique a pasta de spam se o email n\xe3o tiver chegado.";
-    },
     get$dontForgetPassword() {
       return "N\xe3o se esque\xe7a da sua palavra-passe!";
     },
@@ -17140,7 +17140,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["L5jTLL1+HUtcRKdX933NjRiOXKM="] = d.current;
+  d["cuRUZFdrY/FCp0ki0kafqAnfKbc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "\u0413\u0440\u0443\u043f\u0430 \u0441\u0430 " + displayname;
     },
-    get$clickOnEmailLink() {
-      return "Molimo kliknite na link u emailu i nastavite.\n\nProverite va\u0161u spam fasciklu ako email nije stigao.";
-    },
     get$dontForgetPassword() {
       return "Ne zaboravite va\u0161u lozinku!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "Ne vidite koga tra\u017eite? Mo\u017eda treba da postave svoj profil na javno u pode\u0161avanjima u\u010denja";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "Predlo\u017eeni re\u010dnik";
     },
@@ -5659,7 +5665,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["p9zCYVKxisPPRQ6ftOQtZujXck4="] = d.current;
+  d["oY0/lP4jbSJtJLJPoa3whV4I15Q="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_814.part.js.map

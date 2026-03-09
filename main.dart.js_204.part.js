@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "Grup amb " + displayname;
     },
-    get$clickOnEmailLink() {
-      return "Fes clic a l'enlla\xe7 de l'email i despr\xe9s continua.\n\nRevisa la carpeta de correu no desitjat si no ha arribat l'email.";
-    },
     get$dontForgetPassword() {
       return "No t'oblidis de la teva contrasenya!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "No veus qui est\xe0s buscant? Potser necessiten configurar el seu perfil com a p\xfablic a la Configuraci\xf3 d'Aprenentatge";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "Vocab suggerit";
     },
@@ -5662,7 +5668,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["xNbIBoo3W4BnmMBl69wE2fo96rA="] = d.current;
+  d["85Zixj5aafnQzSR+t1LQ5G1XjQQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_204.part.js.map

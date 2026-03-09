@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "Grup dengan " + displayname;
     },
-    get$clickOnEmailLink() {
-      return "Silakan klik tautan di email dan kemudian lanjutkan.\n\nPeriksa folder spam Anda jika email belum tiba.";
-    },
     get$dontForgetPassword() {
       return "Jangan lupa kata sandi Anda!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "Tidak melihat orang yang Anda cari? Mereka mungkin perlu mengatur profil mereka menjadi publik di Pengaturan Pembelajaran";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "Kosakata yang Disarankan";
     },
@@ -5662,7 +5668,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aZRi/EhMD1hNeO0csbHf/LAkBOM="] = d.current;
+  d["CL3QbcXky0HBLAz8Pux3qj+NRAE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_745.part.js.map

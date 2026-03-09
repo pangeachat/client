@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "Grupa s " + displayname;
     },
-    get$clickOnEmailLink() {
-      return "Molimo kliknite na poveznicu u e-po\u0161ti i nastavite.\n\nProvjerite svoju mapu ne\u017eeljene po\u0161te ako e-po\u0161ta nije stigla.";
-    },
     get$dontForgetPassword() {
       return "Ne zaboravite svoju lozinku!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "Ne vidite koga tra\u017eite? Mo\u017eda trebaju postaviti svoj profil na javno u postavkama u\u010denja";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "Preporu\u010dena vokabular";
     },
@@ -5659,7 +5665,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aWK86sB4BFNBjl4Tn9tX3ufPz10="] = d.current;
+  d["dZd5SnpHiMDFjSkkD5ldg665/Eo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_681.part.js.map

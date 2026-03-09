@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "Grupa ar " + displayname;
     },
-    get$clickOnEmailLink() {
-      return "L\u016bdzu, noklik\u0161\u0137iniet uz saites e-past\u0101 un turpiniet.\n\nP\u0101rbaudiet savu surog\u0101tpasta mapi, ja e-pasts nav ieradies.";
-    },
     get$dontForgetPassword() {
       return "Nepalaidiet gar\u0101m savu paroli!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "Neredzat, ko mekl\u0113jat? Vi\u0146iem var b\u016bt nepiecie\u0161ams iestat\u012bt savu profilu uz publisku M\u0101c\u012bbu iestat\u012bjumos";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "Ieteikt\u0101 v\u0101rdu kr\u0101jums";
     },
@@ -5659,7 +5665,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CsRdKQ+h/HI2+4Fn5XrR9VzHLfM="] = d.current;
+  d["aHFBlszI+bUMOurpml62ug8BYHE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_781.part.js.map

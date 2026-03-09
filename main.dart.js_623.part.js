@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "Ryhm\xe4 " + displayname + " kanssa";
     },
-    get$clickOnEmailLink() {
-      return "Klikkaa s\xe4hk\xf6postin linkki\xe4 ja jatka.\n\nTarkista roskapostikansio, jos s\xe4hk\xf6posti ei ole saapunut.";
-    },
     get$dontForgetPassword() {
       return "\xc4l\xe4 unohda salasanaasi!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "Etk\xf6 n\xe4e etsim\xe4\xe4si? Heid\xe4n on ehk\xe4 asetettava profiilinsa julkiseksi Oppimisasetuksissa";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "Ehdotettu sanasto";
     },
@@ -5659,7 +5665,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wLUFcamSbdjcwvvmj59+SUuD9M0="] = d.current;
+  d["51nMmOZas0NHolzyX5f1GCQ+8tg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_623.part.js.map

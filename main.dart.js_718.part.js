@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "Csoport " + displayname + "-val";
     },
-    get$clickOnEmailLink() {
-      return "K\xe9rj\xfck, kattints az e-mailben tal\xe1lhat\xf3 linkre, majd folytasd.\n\nEllen\u0151rizd a spam mapp\xe1t, ha az e-mail nem \xe9rkezett meg.";
-    },
     get$dontForgetPassword() {
       return "Ne feledd a jelszavad!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "Nem l\xe1tod, akit keresel? Lehet, hogy nyilv\xe1nosra kell \xe1ll\xedtaniuk a profiljukat a Tanul\xe1si be\xe1ll\xedt\xe1sokban";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "Javasolt sz\xf3kincs";
     },
@@ -5659,7 +5665,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iSAlECJD+GdZiqp5cyXRBfTYPhI="] = d.current;
+  d["UkbJn0Iht8RXUanWqLdaCI//KZ4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_718.part.js.map

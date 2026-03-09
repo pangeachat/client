@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return displayname + " ile Grup";
     },
-    get$clickOnEmailLink() {
-      return "L\xfctfen e-postadaki ba\u011flant\u0131ya t\u0131klay\u0131n ve devam edin.\n\nE-posta gelmediyse spam klas\xf6r\xfcn\xfcz\xfc kontrol edin.";
-    },
     get$dontForgetPassword() {
       return "\u015eifrenizi unutmay\u0131n!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "Arad\u0131\u011f\u0131n\u0131z ki\u015fiyi g\xf6remiyor musunuz? Profil ayarlar\u0131n\u0131 herkese a\xe7\u0131k hale getirmeleri gerekebilir.";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "\xd6nerilen kelime da\u011farc\u0131\u011f\u0131";
     },
@@ -5662,7 +5668,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["dW/EWD4wzswz9n2H+LzwAu5t+YM="] = d.current;
+  d["FAoyMx2Oke3E94pnYqoKBa+rXOU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_822.part.js.map

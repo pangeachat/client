@@ -3895,9 +3895,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "\u0413\u0440\u0443\u043f\u0430 \u0437 " + displayname;
     },
-    get$clickOnEmailLink() {
-      return "\u041a\u0430\u043b\u0456 \u043b\u0430\u0441\u043a\u0430, \u043d\u0430\u0446\u0456\u0441\u043d\u0456\u0446\u0435 \u043d\u0430 \u0441\u043f\u0430\u0441\u044b\u043b\u043a\u0443 \u045e \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u0430\u0439 \u043f\u043e\u0448\u0446\u0435 \u0456 \u043f\u0440\u0430\u0446\u044f\u0433\u0432\u0430\u0439\u0446\u0435.\n\n\u041f\u0440\u0430\u0432\u0435\u0440\u0446\u0435 \u043f\u0430\u043f\u043a\u0443 \u0441\u043f\u0430\u043c, \u043a\u0430\u043b\u0456 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u0430\u044f \u043f\u043e\u0448\u0442\u0430 \u043d\u0435 \u043f\u0440\u044b\u0439\u0448\u043b\u0430.";
-    },
     get$dontForgetPassword() {
       return "\u041d\u0435 \u0437\u0430\u0431\u0443\u0434\u0437\u044c\u0446\u0435 \u0441\u0432\u043e\u0439 \u043f\u0430\u0440\u043e\u043b\u044c!";
     },
@@ -5635,6 +5632,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "\u041d\u0435 \u0431\u0430\u0447\u044b\u0446\u0435 \u0442\u0430\u0433\u043e, \u043a\u0430\u0433\u043e \u0448\u0443\u043a\u0430\u0435\u0446\u0435? \u041c\u0430\u0433\u0447\u044b\u043c\u0430, \u0456\u043c \u0442\u0440\u044d\u0431\u0430 \u043d\u0430\u043b\u0430\u0434\u0437\u0456\u0446\u044c \u0441\u0432\u043e\u0439 \u043f\u0440\u043e\u0444\u0456\u043b\u044c \u043d\u0430 \u0430\u0433\u0443\u043b\u044c\u043d\u044b \u045e \u041d\u0430\u043b\u0430\u0434\u0430\u0445 \u043d\u0430\u0432\u0443\u0447\u0430\u043d\u043d\u044f";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "\u0420\u044d\u043a\u0430\u043c\u0435\u043d\u0434\u0430\u0432\u0430\u043d\u044b \u0441\u043b\u043e\u045e\u043d\u0456\u043a";
     },
@@ -5663,7 +5669,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kZavLwChEAT45nfcxRZzWjFQ8aw="] = d.current;
+  d["kO8abFzQ5Y+6zxrK/ca6GXUd73s="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_151.part.js.map

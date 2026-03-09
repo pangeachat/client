@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "Gr\xfapa le " + displayname;
     },
-    get$clickOnEmailLink() {
-      return "Clice\xe1il ar an nasc san r-phost le do thoil agus lean ar aghaidh.\n\nSeice\xe1il do chliabh spam m\xe1 t\xe1 an r-phost f\xf3s gan teacht.";
-    },
     get$dontForgetPassword() {
       return "N\xe1 d\xe9an dearmad ar do phasfhocal!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "N\xedl t\xfa ag feice\xe1il c\xe9 at\xe1 \xe1 lorg agat? B'fh\xe9idir go gcaithfidh siad a bpr\xf3if\xedl a shocr\xfa go poibl\xed i Socruithe Foghlama";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "Vocab molta";
     },
@@ -5662,7 +5668,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kXj65AfRtn1ALg58Ykd06O6/QHQ="] = d.current;
+  d["uJTE2EFutn4XHwzC7LopuvrfpTA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_663.part.js.map

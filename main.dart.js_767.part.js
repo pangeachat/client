@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return displayname + "\u3068\u306e\u30b0\u30eb\u30fc\u30d7";
     },
-    get$clickOnEmailLink() {
-      return "\u30e1\u30fc\u30eb\u5185\u306e\u30ea\u30f3\u30af\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u7d9a\u884c\u3057\u3066\u304f\u3060\u3055\u3044\u3002\n\n\u30e1\u30fc\u30eb\u304c\u5c4a\u304b\u306a\u3044\u5834\u5408\u306f\u8ff7\u60d1\u30e1\u30fc\u30eb\u30d5\u30a9\u30eb\u30c0\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002";
-    },
     get$dontForgetPassword() {
       return "\u30d1\u30b9\u30ef\u30fc\u30c9\u3092\u5fd8\u308c\u306a\u3044\u3067\u304f\u3060\u3055\u3044\uff01";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "\u63a2\u3057\u3066\u3044\u308b\u4eba\u304c\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u304b\uff1f\u5f7c\u3089\u306f\u5b66\u7fd2\u8a2d\u5b9a\u3067\u30d7\u30ed\u30d5\u30a3\u30fc\u30eb\u3092\u516c\u958b\u306b\u8a2d\u5b9a\u3059\u308b\u5fc5\u8981\u304c\u3042\u308b\u304b\u3082\u3057\u308c\u307e\u305b\u3093\u3002";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "\u63d0\u6848\u3055\u308c\u305f\u8a9e\u5f59";
     },
@@ -5659,7 +5665,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["W4Gyu7GNi8CmFZ2GAPIoIQMAgaw="] = d.current;
+  d["8c+iHk317F1jrrTmqxdAbZaojhY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_767.part.js.map

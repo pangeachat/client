@@ -3895,9 +3895,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "\u0645\u062c\u0645\u0648\u0639\u0629 \u0645\u0639 " + displayname;
     },
-    get$clickOnEmailLink() {
-      return "\u064a\u0631\u062c\u0649 \u0627\u0644\u0646\u0642\u0631 \u0639\u0644\u0649 \u0627\u0644\u0631\u0627\u0628\u0637 \u0641\u064a \u0627\u0644\u0628\u0631\u064a\u062f \u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a \u062b\u0645 \u0627\u0644\u0645\u062a\u0627\u0628\u0639\u0629.\n\n\u062a\u062d\u0642\u0642 \u0645\u0646 \u0645\u062c\u0644\u062f \u0627\u0644\u0628\u0631\u064a\u062f \u0627\u0644\u0639\u0634\u0648\u0627\u0626\u064a \u0625\u0630\u0627 \u0644\u0645 \u062a\u0635\u0644 \u0627\u0644\u0631\u0633\u0627\u0644\u0629.";
-    },
     get$dontForgetPassword() {
       return "\u0644\u0627 \u062a\u0646\u0633 \u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631 \u0627\u0644\u062e\u0627\u0635\u0629 \u0628\u0643!";
     },
@@ -5635,6 +5632,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "\u0644\u0627 \u062a\u0631\u0649 \u0645\u0646 \u062a\u0628\u062d\u062b \u0639\u0646\u0647\u061f \u0642\u062f \u064a\u062d\u062a\u0627\u062c\u0648\u0646 \u0625\u0644\u0649 \u0636\u0628\u0637 \u0645\u0644\u0641\u0647\u0645 \u0627\u0644\u0634\u062e\u0635\u064a \u0644\u064a\u0643\u0648\u0646 \u0639\u0627\u0645\u064b\u0627 \u0641\u064a \u0625\u0639\u062f\u0627\u062f\u0627\u062a \u0627\u0644\u062a\u0639\u0644\u0645";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "\u0627\u0644\u0645\u0641\u0631\u062f\u0627\u062a \u0627\u0644\u0645\u0642\u062a\u0631\u062d\u0629";
     },
@@ -5660,7 +5666,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QsbflgsaCRfkMccxRbopPoWDkk8="] = d.current;
+  d["4Rol5pUf2Ci9Pcm1rQof3TRcqxo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_147.part.js.map

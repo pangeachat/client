@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "\u05e7\u05d1\u05d5\u05e6\u05d4 \u05e2\u05dd " + displayname;
     },
-    get$clickOnEmailLink() {
-      return "\u05d0\u05e0\u05d0 \u05dc\u05d7\u05e5 \u05e2\u05dc \u05d4\u05e7\u05d9\u05e9\u05d5\u05e8 \u05d1\u05de\u05d9\u05d9\u05dc \u05d5\u05d4\u05de\u05e9\u05da.\n\n\u05d1\u05d3\u05d5\u05e7 \u05d0\u05ea \u05ea\u05d9\u05e7\u05d9\u05d9\u05ea \u05d4\u05e1\u05e4\u05d0\u05dd \u05d0\u05dd \u05d4\u05de\u05d9\u05d9\u05dc \u05dc\u05d0 \u05d4\u05d2\u05d9\u05e2.";
-    },
     get$dontForgetPassword() {
       return "\u05d0\u05dc \u05ea\u05e9\u05db\u05d7 \u05d0\u05ea \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "\u05dc\u05d0 \u05e8\u05d5\u05d0\u05d9\u05dd \u05d0\u05ea \u05de\u05d9 \u05e9\u05d0\u05ea\u05dd \u05de\u05d7\u05e4\u05e9\u05d9\u05dd? \u05d9\u05d9\u05ea\u05db\u05df \u05e9\u05d4\u05dd \u05e6\u05e8\u05d9\u05db\u05d9\u05dd \u05dc\u05d4\u05d2\u05d3\u05d9\u05e8 \u05d0\u05ea \u05d4\u05e4\u05e8\u05d5\u05e4\u05d9\u05dc \u05e9\u05dc\u05d4\u05dd \u05dc\u05e6\u05d9\u05d1\u05d5\u05e8\u05d9 \u05d1\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05d4\u05dc\u05de\u05d9\u05d3\u05d4";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "\u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd \u05de\u05d5\u05e6\u05e2";
     },
@@ -5659,7 +5665,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iXwJg1wCr4+qJJXCwxc3X/CYeZU="] = d.current;
+  d["r57/1NxRZkzFro8MkDgCEks/+nw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_679.part.js.map

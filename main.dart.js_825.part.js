@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return displayname + " bilan guruh";
     },
-    get$clickOnEmailLink() {
-      return "Iltimos, elektron pochta havolasini bosing va davom eting.\n\nAgar elektron pochta kelmagan bo'lsa, spam papkangizni tekshiring.";
-    },
     get$dontForgetPassword() {
       return "Parolingizni unutmang!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "Qidirayotgan odamni ko'rmayapsizmi? Ular o'z profilini O'qish Sozlamalarida ommaga ochiq qilishlari kerak bo'lishi mumkin";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "Taklif qilingan lug'at";
     },
@@ -5663,7 +5669,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["FGks4FTqDY7Zi+pX93sRB/3XXtI="] = d.current;
+  d["VKv9njUmHVjAcBGXAaYmE/O7rmQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_825.part.js.map

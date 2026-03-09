@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "Grupoj kun " + displayname;
     },
-    get$clickOnEmailLink() {
-      return "Bonvolu klaki la ligilon en la retpo\u015dto kaj poste da\u016drigu.\n\nKontrolu vian spam-dosierujon se la retpo\u015dto ne alvenis.";
-    },
     get$dontForgetPassword() {
       return "Ne forgesu vian pasvorton!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "Ne vidas, kion vi ser\u0109as? Ili eble bezonas agordi sian profilon al publika en Lernaj Agordoj";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "Sugerita vortaro";
     },
@@ -5659,7 +5665,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HpmLdpWR9Rgl9A7bm8hvinBKwzo="] = d.current;
+  d["GYeQlvRHzQe+gYp1LukegUsjy2A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_507.part.js.map

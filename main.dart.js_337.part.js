@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "Gruppe med " + displayname;
     },
-    get$clickOnEmailLink() {
-      return "Klik venligst p\xe5 linket i e-mailen og forts\xe6t.\n\nTjek din spam-mappe, hvis e-mailen ikke er ankommet.";
-    },
     get$dontForgetPassword() {
       return "Glem ikke din adgangskode!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "Ser du ikke den, du leder efter? De skal muligvis indstille deres profil til offentlig i L\xe6ringsindstillinger";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "Foresl\xe5et ordforr\xe5d";
     },
@@ -5659,7 +5665,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["u1SwTXyO5ZrjL8r3n9t3vQULoSc="] = d.current;
+  d["c2+PPZBmmMPbfUNz30UmX9yfxMU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_337.part.js.map

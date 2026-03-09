@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return displayname + " \u0c24\u0c4b \u0c17\u0c4d\u0c30\u0c42\u0c2a\u0c4d";
     },
-    get$clickOnEmailLink() {
-      return "\u0c26\u0c2f\u0c1a\u0c47\u0c38\u0c3f \u0c07\u0c2e\u0c46\u0c2f\u0c3f\u0c32\u0c4d \u0c32\u0c3f\u0c02\u0c15\u0c4d \u0c2a\u0c48 \u0c15\u0c4d\u0c32\u0c3f\u0c15\u0c4d \u0c1a\u0c47\u0c38\u0c3f \u0c15\u0c4a\u0c28\u0c38\u0c3e\u0c17\u0c02\u0c21\u0c3f.\n\n\u0c07\u0c2e\u0c46\u0c2f\u0c3f\u0c32\u0c4d \u0c30\u0c3e\u0c32\u0c47\u0c26\u0c02\u0c1f\u0c47 \u0c38\u0c4d\u0c2a\u0c3e\u0c2e\u0c4d \u0c2b\u0c4b\u0c32\u0c4d\u0c21\u0c30\u0c4d\u200c\u0c28\u0c41 \u0c24\u0c28\u0c3f\u0c16\u0c40 \u0c1a\u0c47\u0c2f\u0c02\u0c21\u0c3f.";
-    },
     get$dontForgetPassword() {
       return "\u0c2e\u0c40 \u0c2a\u0c3e\u0c38\u0c4d\u0c35\u0c30\u0c4d\u0c21\u0c4d \u0c2e\u0c30\u0c4d\u0c1a\u0c3f\u0c2a\u0c4b\u0c15\u0c02\u0c21\u0c3f!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "\u0c2e\u0c40\u0c30\u0c41 \u0c1a\u0c42\u0c38\u0c4d\u0c24\u0c41\u0c28\u0c4d\u0c28 \u0c35\u0c4d\u0c2f\u0c15\u0c4d\u0c24\u0c3f\u0c28\u0c3f \u0c1a\u0c42\u0c21\u0c21\u0c02 \u0c32\u0c47\u0c26\u0c41? \u0c35\u0c3e\u0c30\u0c41 \u0c32\u0c46\u0c30\u0c4d\u0c28\u0c3f\u0c02\u0c17\u0c4d \u0c38\u0c46\u0c1f\u0c4d\u0c1f\u0c3f\u0c02\u0c17\u0c4d\u0c38\u0c4d\u200c\u0c32\u0c4b \u0c35\u0c3e\u0c30\u0c3f \u0c2a\u0c4d\u0c30\u0c4a\u0c2b\u0c48\u0c32\u0c4d\u200c\u0c28\u0c41 \u0c2a\u0c2c\u0c4d\u0c32\u0c3f\u0c15\u0c4d\u200c\u0c17\u0c3e \u0c38\u0c46\u0c1f\u0c4d \u0c1a\u0c47\u0c2f\u0c35\u0c1a\u0c4d\u0c1a\u0c41";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "\u0c38\u0c42\u0c1a\u0c3f\u0c02\u0c1a\u0c3f\u0c28 \u0c2a\u0c26\u0c15\u0c4b\u0c36\u0c02";
     },
@@ -5659,7 +5665,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LmezijHRjeiBoiTizzP2qQbeOKw="] = d.current;
+  d["i4bzBHsN5VwdPDIZcoYDPdiCKqg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_820.part.js.map

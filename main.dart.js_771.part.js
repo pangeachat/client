@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "Grup\u0117 su " + displayname;
     },
-    get$clickOnEmailLink() {
-      return "Pra\u0161ome spustel\u0117ti nuorod\u0105 el. lai\u0161ke ir t\u0119sti.\n\nPatikrinkite savo \u0161lam\u0161to aplank\u0105, jei lai\u0161kas nebuvo gautas.";
-    },
     get$dontForgetPassword() {
       return "Nepamir\u0161kite savo slapta\u017eod\u017eio!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "Nematai, ko ie\u0161kai? Galb\u016bt jie turi nustatyti savo profil\u012f kaip vie\u0161\u0105 Mokymosi nustatymuose";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "Si\u016blomas \u017eodynas";
     },
@@ -5662,7 +5668,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XADeOmjwkOF4fFXFLHnzYzXqVFg="] = d.current;
+  d["0tpAmZZCXP0GE4mDQcpxopZJ9nQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_771.part.js.map

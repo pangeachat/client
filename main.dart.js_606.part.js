@@ -3894,9 +3894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return displayname + " taldearekin";
     },
-    get$clickOnEmailLink() {
-      return "Mesedez, klikatu email-eko estekan eta jarraitu.\n\nEgiaztatu zure spam karpeta, emaila iritsi ez bada.";
-    },
     get$dontForgetPassword() {
       return "Ez ahaztu zure pasahitza!";
     },
@@ -5634,6 +5631,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "Ez al duzu bilatzen ari zaren pertsona ikusten? Agian, euren profila publiko ezarri behar dute Ikaskuntza Ezarpenetan";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "Proposatutako hiztegia";
     },
@@ -5662,7 +5668,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GKOpcg8lQA2VsAGpl3bmrO9BtP0="] = d.current;
+  d["qN5BvNtNcc/65kegJghsSRZPofM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_606.part.js.map

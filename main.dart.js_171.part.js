@@ -3896,9 +3896,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return displayname + " \u0f63\u0f0b\u0f42\u0fb2\u0f7c\u0f66\u0f0b\u0f5a\u0f7c\u0f42\u0f66\u0f0d";
     },
-    get$clickOnEmailLink() {
-      return "\u0f60\u0f51\u0f72\u0f0b\u0f53\u0f66\u0f0b\u0f60\u0f56\u0fb2\u0f7a\u0f63\u0f0b\u0f58\u0f50\u0f74\u0f53\u0f0b\u0f63\u0f7a\u0f56\u0f0b\u0f63\u0f74\u0f0b\u0f63\u0f7c\u0f42\u0f0b\u0f60\u0f56\u0f74\u0f63\u0f0b\u0f60\u0f56\u0f51\u0f0b\u0f51\u0f7a\u0f66\u0f0b\u0f62\u0f9f\u0f7c\u0f42\u0f66\u0f0d\n\n\u0f42\u0f59\u0f7c\u0f0b\u0f56\u0f7c\u0f0b\u0f63\u0f66\u0f0b\u0f56\u0f62\u0f97\u0f7a\u0f0b\u0f56\u0f0b\u0f58\u0f7a\u0f51\u0f0b\u0f58\u0f72\u0f0b\u0f61\u0f7c\u0f51\u0f0b\u0f53\u0f0b\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f0b\u0f66\u0fa4\u0f7c\u0f0b\u0f56\u0f62\u0f97\u0f7a\u0f0b\u0f41\u0f42\u0f0b\u0f63\u0f0b\u0f56\u0f40\u0f7c\u0f51\u0f0b\u0f53\u0f66\u0f0b\u0f56\u0f40\u0f7c\u0f51\u0f0d";
-    },
     get$dontForgetPassword() {
       return "\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f63\u0f58\u0f0b\u0f58\u0f7a\u0f51\u0f0b\u0f58\u0f72\u0f0b\u0f58\u0f7a\u0f51\u0f0d";
     },
@@ -5636,6 +5633,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return "Nuk e shihni at\xeb q\xeb po k\xebrkoni? Ata mund t\xeb ken\xeb nevoj\xeb t\xeb vendosin profilin e tyre n\xeb publik n\xeb Cil\xebsimet e M\xebsimit";
     },
+    get$clickOnEmailLinkDesc() {
+      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+    },
+    get$didntReceiveEmail() {
+      return "Didn't receive the email?";
+    },
+    get$resend() {
+      return "Resend";
+    },
     get$suggestedVocab() {
       return "Vokabular i sugjeruar";
     },
@@ -5673,7 +5679,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["c0IDs1/0tANe6j0dSZo5+FIOxS4="] = d.current;
+  d["ki7AVJXkgy36mcREkNI0CUH31MA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_171.part.js.map
