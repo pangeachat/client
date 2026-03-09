@@ -288,10 +288,11 @@ class _LoginCarousel extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Flexible(
+                    Expanded(
                       child: CachedNetworkImage(
                         imageUrl: imageUrl,
                         width: double.infinity,
+                        fit: BoxFit.contain,
                         errorWidget: (context, url, error) =>
                             Center(child: PangeaLogoSvg(width: 256.0)),
                       ),
