@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-03-10 16:05:48.057297",
+  "@@last_modified": "2026-03-10 16:50:19.651401",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -11449,6 +11449,16 @@
   },
   "joinSpaceOnboardingDesc": "In einer Klasse? Gib hier deinen Beitrittscode ein.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Audio-Nachrichten automatisch hervorheben",
+  "selectAudioMessagesOnPlayDescription": "Audio-Nachrichten automatisch hervorheben, wenn sie abgespielt werden",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

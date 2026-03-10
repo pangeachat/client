@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 16:05:24.361334",
+  "@@last_modified": "2026-03-10 16:49:53.010826",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11686,6 +11686,16 @@
   },
   "joinSpaceOnboardingDesc": "수업 중인가요? 여기에 참여 코드를 입력하세요.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "오디오 메시지 자동 강조",
+  "selectAudioMessagesOnPlayDescription": "재생할 때 오디오 메시지를 자동으로 강조 표시합니다",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

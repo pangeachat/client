@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-03-10 16:05:53.073010",
+  "@@last_modified": "2026-03-10 16:50:26.920681",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -11460,6 +11460,16 @@
   },
   "joinSpaceOnboardingDesc": "У класі? Введіть свій код приєднання тут.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Автоматичне виділення аудіоповідомлень",
+  "selectAudioMessagesOnPlayDescription": "Автоматично виділяти аудіоповідомлення під час відтворення",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

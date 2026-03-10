@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-03-10 16:05:54.409455",
+  "@@last_modified": "2026-03-10 16:50:28.642674",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -12032,6 +12032,16 @@
   },
   "joinSpaceOnboardingDesc": "Ve třídě? Vložte sem svůj kód pro připojení.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Automaticky zvýraznit audio zprávy",
+  "selectAudioMessagesOnPlayDescription": "Automaticky zvýraznit audio zprávy při přehrávání",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

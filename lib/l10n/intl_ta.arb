@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 16:06:15.294406",
+  "@@last_modified": "2026-03-10 16:50:52.716986",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -11580,6 +11580,16 @@
   },
   "joinSpaceOnboardingDesc": "ஒரு வகுப்பில் இருக்கிறீர்களா? உங்கள் சேர்க்கை குறியீட்டை இங்கே வையுங்கள்.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "ஆட்டோ-உயர்த்த audio செய்திகள்",
+  "selectAudioMessagesOnPlayDescription": "விளையாடும் போது audio செய்திகளை தானாக உயர்த்தவும்",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

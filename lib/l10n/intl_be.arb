@@ -4618,7 +4618,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-03-10 16:05:56.761894",
+  "@@last_modified": "2026-03-10 16:50:31.664596",
   "@ignore": {
     "type": "String",
     "placeholders": {}
@@ -11479,6 +11479,16 @@
   },
   "joinSpaceOnboardingDesc": "У класе? Увядзіце свой код для далучэння сюды.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Аўтаматычнае выдзяленне аўдыяпаведамленняў",
+  "selectAudioMessagesOnPlayDescription": "Аўтаматычна выдзяляць аўдыяпаведамленні падчас прайгравання",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

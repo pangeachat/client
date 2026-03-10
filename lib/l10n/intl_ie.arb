@@ -3999,7 +3999,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-03-10 16:05:36.626285",
+  "@@last_modified": "2026-03-10 16:50:08.356071",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12208,6 +12208,16 @@
   },
   "joinSpaceOnboardingDesc": "In a class? Put your join code here.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Auto-highlight audio messages",
+  "selectAudioMessagesOnPlayDescription": "Automatically highlight audio messages when played",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

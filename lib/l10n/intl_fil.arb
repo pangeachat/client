@@ -2782,7 +2782,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-03-10 16:06:04.850704",
+  "@@last_modified": "2026-03-10 16:50:41.010291",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12575,6 +12575,16 @@
   },
   "joinSpaceOnboardingDesc": "Sa isang klase? Ilagay ang iyong join code dito.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Awtomatikong i-highlight ang mga mensaheng audio",
+  "selectAudioMessagesOnPlayDescription": "Awtomatikong i-highlight ang mga mensaheng audio kapag pinatugtog",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

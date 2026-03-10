@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-03-10 16:05:27.145066",
+  "@@last_modified": "2026-03-10 16:49:56.379356",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -11460,6 +11460,16 @@
   },
   "joinSpaceOnboardingDesc": "Nunha clase? Pon o teu código de unión aquí.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Destacar automaticamente os mensaxes de audio",
+  "selectAudioMessagesOnPlayDescription": "Destacar automaticamente os mensaxes de audio cando se reproducen",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

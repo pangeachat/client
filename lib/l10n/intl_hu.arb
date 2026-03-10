@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-03-10 16:05:31.469268",
+  "@@last_modified": "2026-03-10 16:50:01.914653",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -11597,6 +11597,16 @@
   },
   "joinSpaceOnboardingDesc": "Osztályban? Írd be ide a csatlakozási kódodat.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Automatikusan kiemeli az audio üzeneteket",
+  "selectAudioMessagesOnPlayDescription": "Automatikusan kiemeli az audio üzeneteket, amikor lejátszásra kerülnek",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

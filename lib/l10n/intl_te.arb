@@ -1915,7 +1915,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2026-03-10 16:06:12.047339",
+  "@@last_modified": "2026-03-10 16:50:47.301011",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12683,6 +12683,16 @@
   },
   "joinSpaceOnboardingDesc": "ఒక తరగతిలో ఉన్నారా? మీ చేరిక కోడ్‌ను ఇక్కడ ఉంచండి.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "ఆడియో సందేశాలను ఆటో-హైలైట్ చేయండి",
+  "selectAudioMessagesOnPlayDescription": "ఆడినప్పుడు ఆడియో సందేశాలను ఆటోమేటిక్‌గా హైలైట్ చేయండి",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

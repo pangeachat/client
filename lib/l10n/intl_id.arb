@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 16:05:32.696990",
+  "@@last_modified": "2026-03-10 16:50:03.670663",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -11566,6 +11566,16 @@
   },
   "joinSpaceOnboardingDesc": "Dalam kelas? Masukkan kode bergabung Anda di sini.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Sorot otomatis pesan audio",
+  "selectAudioMessagesOnPlayDescription": "Secara otomatis sorot pesan audio saat diputar",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

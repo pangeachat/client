@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-03-10 16:05:35.253189",
+  "@@last_modified": "2026-03-10 16:50:06.848204",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -12678,6 +12678,16 @@
   },
   "joinSpaceOnboardingDesc": "V triede? Zadajte svoj kód na pripojenie sem.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Automaticky zvýrazniť audio správy",
+  "selectAudioMessagesOnPlayDescription": "Automaticky zvýrazniť audio správy pri prehrávaní",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

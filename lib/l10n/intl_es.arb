@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-03-10 16:05:25.290233",
+  "@@last_modified": "2026-03-10 16:49:54.499362",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -8774,6 +8774,16 @@
   },
   "joinSpaceOnboardingDesc": "¿En una clase? Pon tu código de unión aquí.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Resaltar automáticamente los mensajes de audio",
+  "selectAudioMessagesOnPlayDescription": "Resaltar automáticamente los mensajes de audio cuando se reproducen",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

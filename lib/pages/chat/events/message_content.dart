@@ -12,9 +12,11 @@ import 'package:fluffychat/pages/chat/events/video_player.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/toolbar/layout/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import '../../../config/app_config.dart';
 import '../../../utils/platform_infos.dart';
 import '../../../utils/url_launcher.dart';
@@ -194,19 +196,36 @@ class MessageContent extends StatelessWidget {
             // is fixed
             //   || PlatformInfos.isLinux
             ) {
-              return AudioPlayerWidget(
-                event,
-                color: textColor,
-                linkColor: linkColor,
-                fontSize: fontSize,
-                // #Pangea
-                eventId:
-                    "${event.eventId}${overlayController != null ? '_overlay' : ''}",
-                roomId: event.room.id,
-                senderId: event.senderId,
-                autoplay: overlayController != null && isTransitionAnimation,
-                enableClicks: overlayController != null,
-                // Pangea#
+              // #Pangea
+              return StreamBuilder(
+                stream: MatrixState
+                    .pangeaController
+                    .userController
+                    .settingsUpdateStream
+                    .stream,
+                builder: (context, _) {
+                  // Pangea#
+                  return AudioPlayerWidget(
+                    event,
+                    color: textColor,
+                    linkColor: linkColor,
+                    fontSize: fontSize,
+                    // #Pangea
+                    eventId:
+                        "${event.eventId}${overlayController != null ? '_overlay' : ''}",
+                    roomId: event.room.id,
+                    senderId: event.senderId,
+                    autoplay:
+                        overlayController != null && isTransitionAnimation,
+                    enableClicks:
+                        overlayController != null ||
+                        !MatrixState.pangeaController.userController
+                            .isToolEnabled(
+                              ToolSetting.selectAudioMessagesOnPlay,
+                            ),
+                    // Pangea#
+                  );
+                },
               );
             }
             return MessageDownloadContent(

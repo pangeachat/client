@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-03-10 16:06:36.380482",
+  "@@last_modified": "2026-03-10 16:51:19.141949",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11866,6 +11866,16 @@
   },
   "joinSpaceOnboardingDesc": "Dans une classe ? Mettez votre code d'accès ici.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Mise en surbrillance automatique des messages audio",
+  "selectAudioMessagesOnPlayDescription": "Mettre automatiquement en surbrillance les messages audio lorsqu'ils sont lus",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

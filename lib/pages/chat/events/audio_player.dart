@@ -537,10 +537,14 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                                     // #Pangea
                                     // onLongPress: () =>
                                     //     widget.event.saveFile(context),
-                                    onLongPress: () =>
-                                        widget.event?.saveFile(context),
+                                    // onTap: _onButtonTap,
+                                    onLongPress: widget.enableClicks
+                                        ? () => widget.event?.saveFile(context)
+                                        : null,
+                                    onTap: widget.enableClicks
+                                        ? _onButtonTap
+                                        : null,
                                     // Pangea#
-                                    onTap: _onButtonTap,
                                     child: Material(
                                       color: widget.color.withAlpha(64),
                                       borderRadius: BorderRadius.circular(64),

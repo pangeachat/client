@@ -217,6 +217,9 @@ class SettingsLearningController extends State<SettingsLearning> {
       case ToolSetting.enableAutocorrect:
         _profile.toolSettings.enableAutocorrect = value;
         break;
+      case ToolSetting.selectAudioMessagesOnPlay:
+        _profile.toolSettings.selectAudioMessagesOnPlay = value;
+        break;
     }
     if (mounted) setState(() {});
   }
@@ -310,6 +313,8 @@ class SettingsLearningController extends State<SettingsLearning> {
             toolSettings.enableTTS;
       case ToolSetting.enableAutocorrect:
         return toolSettings.enableAutocorrect;
+      case ToolSetting.selectAudioMessagesOnPlay:
+        return toolSettings.selectAudioMessagesOnPlay;
     }
   }
 

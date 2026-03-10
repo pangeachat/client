@@ -5407,5 +5407,7 @@
   "notificationRuleCourseAndActivity": "Course and Activity",
   "notificationRuleCourseAndActivityDescription": "Notifies the user about messages in courses, activities, and chats.",
   "enableEmailNotifications": "Enable email notifications",
-  "joinSpaceOnboardingDesc": "In a class? Put your join code here."
+  "joinSpaceOnboardingDesc": "In a class? Put your join code here.",
+  "selectAudioMessagesOnPlayToolName": "Auto-highlight audio messages",
+  "selectAudioMessagesOnPlayDescription": "Automatically highlight audio messages when played"
 }

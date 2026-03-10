@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 16:06:19.805951",
+  "@@last_modified": "2026-03-10 16:50:58.461394",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -12204,6 +12204,16 @@
   },
   "joinSpaceOnboardingDesc": "একটি ক্লাসে? আপনার যোগদান কোড এখানে দিন।",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "অটো-হাইলাইট অডিও বার্তা",
+  "selectAudioMessagesOnPlayDescription": "অডিও বার্তা বাজানোর সময় স্বয়ংক্রিয়ভাবে হাইলাইট করুন",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

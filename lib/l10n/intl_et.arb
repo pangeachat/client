@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-03-10 16:05:46.640860",
+  "@@last_modified": "2026-03-10 16:50:18.101147",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11734,6 +11734,16 @@
   },
   "joinSpaceOnboardingDesc": "Klassis? Pane oma liitumiskood siia.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Automaatne helisõnumite esiletõstmine",
+  "selectAudioMessagesOnPlayDescription": "Helisõnumid esitatuna automaatselt esile tõsta",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }
