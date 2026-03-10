@@ -318,7 +318,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     }
 
     final height = MediaQuery.heightOf(context);
-    if (height > 500) {
+    if (height > 550) {
       _lastShownPopupHeight = null;
       return;
     }
