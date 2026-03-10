@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-03-06 14:06:11.477872",
+  "@@last_modified": "2026-03-10 13:22:15.863840",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -11552,6 +11552,46 @@
   },
   "profile": "Profil",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Kérjük, kattintson az emailben található linkre, majd folytassa. Ellenőrizze a spam mappáját, ha az email nem érkezett meg.",
+  "didntReceiveEmail": "Nem kapta meg az emailt?",
+  "resend": "Újraküldés",
+  "notificationDeviceSubtitle": "Tekintse meg és kezelje azokat az eszközöket, amelyek push értesítéseket küldenek Önnek.",
+  "notificationRuleDM": "Közvetlen üzenet",
+  "notificationRuleDMDescription": "Értesíti a felhasználót a közvetlen üzenet szobákban érkező üzenetekről.",
+  "notificationRuleCourseAndActivity": "Tanfolyam és tevékenység",
+  "notificationRuleCourseAndActivityDescription": "Értesíti a felhasználót a tanfolyamokban, tevékenységekben és csevegésekben érkező üzenetekről.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

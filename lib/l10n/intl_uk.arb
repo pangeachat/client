@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-03-06 14:06:28.275366",
+  "@@last_modified": "2026-03-10 13:23:15.560032",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -11415,6 +11415,46 @@
   },
   "profile": "Профіль",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Будь ласка, натисніть на посилання в електронному листі, а потім продовжте. Перевірте папку спаму, якщо електронний лист не надійшов.",
+  "didntReceiveEmail": "Не отримали електронний лист?",
+  "resend": "Відправити знову",
+  "notificationDeviceSubtitle": "Перегляньте та керуйте пристроями, які надсилають вам push-сповіщення.",
+  "notificationRuleDM": "Пряме повідомлення",
+  "notificationRuleDMDescription": "Сповіщає користувача про повідомлення в кімнатах прямих повідомлень.",
+  "notificationRuleCourseAndActivity": "Курс та активність",
+  "notificationRuleCourseAndActivityDescription": "Сповіщає користувача про повідомлення в курсах, активностях та чатах.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

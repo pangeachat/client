@@ -4603,7 +4603,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-03-06 14:06:08.868495",
+  "@@last_modified": "2026-03-10 13:22:08.383394",
   "@notificationRuleJitsi": {
     "type": "String",
     "placeholders": {}
@@ -11474,6 +11474,46 @@
   },
   "profile": "Profiili",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Ole hyvä ja napsauta sähköpostin linkkiä ja jatka sitten. Tarkista roskapostikansiosi, jos sähköposti ei ole saapunut.",
+  "didntReceiveEmail": "Et saanut sähköpostia?",
+  "resend": "Lähetä uudelleen",
+  "notificationDeviceSubtitle": "Näytä ja hallitse laitteita, jotka lähettävät sinulle push-ilmoituksia.",
+  "notificationRuleDM": "Suora viesti",
+  "notificationRuleDMDescription": "Ilmoittaa käyttäjälle viesteistä suoran viestin huoneissa.",
+  "notificationRuleCourseAndActivity": "Kurssi ja aktiviteetti",
+  "notificationRuleCourseAndActivityDescription": "Ilmoittaa käyttäjälle viesteistä kursseilla, aktiviteeteissa ja keskusteluissa.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

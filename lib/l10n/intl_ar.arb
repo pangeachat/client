@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-03-06 14:06:38.822800",
+  "@@last_modified": "2026-03-10 13:23:54.967185",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11765,6 +11765,46 @@
   },
   "profile": "الملف الشخصي",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "يرجى النقر على الرابط في البريد الإلكتروني ثم المتابعة. تحقق من مجلد الرسائل غير المرغوب فيها إذا لم يصل البريد الإلكتروني.",
+  "didntReceiveEmail": "لم تستلم البريد الإلكتروني؟",
+  "resend": "إعادة إرسال",
+  "notificationDeviceSubtitle": "عرض وإدارة الأجهزة التي ترسل لك إشعارات الدفع.",
+  "notificationRuleDM": "رسالة مباشرة",
+  "notificationRuleDMDescription": "يُعلم المستخدم بالرسائل في غرف الرسائل المباشرة.",
+  "notificationRuleCourseAndActivity": "الدورة والنشاط",
+  "notificationRuleCourseAndActivityDescription": "يُعلم المستخدم بالرسائل في الدورات والأنشطة والدردشات.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

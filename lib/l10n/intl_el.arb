@@ -4475,7 +4475,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-03-06 14:06:49.272751",
+  "@@last_modified": "2026-03-10 13:24:49.644446",
   "@checkList": {
     "type": "String",
     "placeholders": {}
@@ -12574,6 +12574,46 @@
   },
   "profile": "Προφίλ",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Παρακαλώ κάντε κλικ στον σύνδεσμο στο email και στη συνέχεια προχωρήστε. Ελέγξτε τον φάκελο ανεπιθύμητης αλληλογραφίας αν το email δεν έχει φτάσει.",
+  "didntReceiveEmail": "Δεν λάβατε το email;",
+  "resend": "Αναστολή",
+  "notificationDeviceSubtitle": "Δείτε και διαχειριστείτε τις συσκευές που σας στέλνουν ειδοποιήσεις push.",
+  "notificationRuleDM": "Άμεσο Μήνυμα",
+  "notificationRuleDMDescription": "Ειδοποιεί τον χρήστη για μηνύματα σε δωμάτια άμεσων μηνυμάτων.",
+  "notificationRuleCourseAndActivity": "Μάθημα και Δραστηριότητα",
+  "notificationRuleCourseAndActivityDescription": "Ειδοποιεί τον χρήστη για μηνύματα σε μαθήματα, δραστηριότητες και συνομιλίες.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

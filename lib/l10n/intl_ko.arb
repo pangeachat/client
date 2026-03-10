@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 14:06:05.538950",
+  "@@last_modified": "2026-03-10 13:21:57.509428",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11641,6 +11641,46 @@
   },
   "profile": "프로필",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "이메일의 링크를 클릭한 후 진행해 주세요. 이메일이 도착하지 않았다면 스팸 폴더를 확인해 주세요.",
+  "didntReceiveEmail": "이메일을 받지 못하셨나요?",
+  "resend": "다시 보내기",
+  "notificationDeviceSubtitle": "푸시 알림을 보내는 장치를 보고 관리하세요.",
+  "notificationRuleDM": "다이렉트 메시지",
+  "notificationRuleDMDescription": "다이렉트 메시지 방에서의 메시지에 대해 사용자에게 알림을 보냅니다.",
+  "notificationRuleCourseAndActivity": "코스 및 활동",
+  "notificationRuleCourseAndActivityDescription": "코스, 활동 및 채팅에서의 메시지에 대해 사용자에게 알림을 보냅니다.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

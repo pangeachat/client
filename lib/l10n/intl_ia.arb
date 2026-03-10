@@ -1953,7 +1953,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2026-03-06 14:06:18.627681",
+  "@@last_modified": "2026-03-10 13:22:40.646428",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12627,6 +12627,46 @@
   },
   "profile": "Profilo",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Per favore clicca sul link nell'email e poi procedi. Controlla la tua cartella spam se l'email non è arrivata.",
+  "didntReceiveEmail": "Non hai ricevuto l'email?",
+  "resend": "Reinvia",
+  "notificationDeviceSubtitle": "Visualizza e gestisci i dispositivi che ti inviano notifiche push.",
+  "notificationRuleDM": "Messaggio Diretto",
+  "notificationRuleDMDescription": "Notifica all'utente riguardo ai messaggi nelle stanze di messaggi diretti.",
+  "notificationRuleCourseAndActivity": "Corso e Attività",
+  "notificationRuleCourseAndActivityDescription": "Notifica all'utente riguardo ai messaggi nei corsi, nelle attività e nelle chat.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

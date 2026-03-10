@@ -2459,7 +2459,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-03-06 14:06:25.455160",
+  "@@last_modified": "2026-03-10 13:23:03.580538",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12630,6 +12630,46 @@
   },
   "profile": "Profil",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Prosimo, kliknite na povezavo v e-pošti in nato nadaljujte. Preverite mapo za neželeno pošto, če e-pošta ni prispela.",
+  "didntReceiveEmail": "Niste prejeli e-pošte?",
+  "resend": "Ponovno pošlji",
+  "notificationDeviceSubtitle": "Ogled in upravljanje naprav, ki vam pošiljajo potisna obvestila.",
+  "notificationRuleDM": "Neposredna sporočila",
+  "notificationRuleDMDescription": "Obvešča uporabnika o sporočilih v sobah za neposredna sporočila.",
+  "notificationRuleCourseAndActivity": "Tečaj in dejavnost",
+  "notificationRuleCourseAndActivityDescription": "Obvešča uporabnika o sporočilih v tečajih, dejavnostih in klepetih.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

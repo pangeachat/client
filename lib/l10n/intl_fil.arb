@@ -2782,7 +2782,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-03-06 14:06:37.169369",
+  "@@last_modified": "2026-03-10 13:23:47.614813",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12530,6 +12530,46 @@
   },
   "profile": "Profile",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Mangyaring i-click ang link sa email at pagkatapos ay magpatuloy. Suriin ang iyong spam folder kung hindi pa dumating ang email.",
+  "didntReceiveEmail": "Hindi natanggap ang email?",
+  "resend": "Ipadala muli",
+  "notificationDeviceSubtitle": "Tingnan at pamahalaan ang mga device na nagpapadala sa iyo ng push notifications.",
+  "notificationRuleDM": "Direktang Mensahe",
+  "notificationRuleDMDescription": "Nagbibigay-alam sa gumagamit tungkol sa mga mensahe sa mga direktang mensahe na silid.",
+  "notificationRuleCourseAndActivity": "Kurso at Aktibidad",
+  "notificationRuleCourseAndActivityDescription": "Nagbibigay-alam sa gumagamit tungkol sa mga mensahe sa mga kurso, aktibidad, at chat.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

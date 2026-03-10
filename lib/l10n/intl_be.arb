@@ -4618,7 +4618,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-03-06 14:06:31.341512",
+  "@@last_modified": "2026-03-10 13:23:26.553575",
   "@ignore": {
     "type": "String",
     "placeholders": {}
@@ -11434,6 +11434,46 @@
   },
   "profile": "Профіль",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Калі ласка, націсніце на спасылку ў электронным лісце, а затым працягвайце. Праверце вашу папку са спамам, калі ліст не прыйшоў.",
+  "didntReceiveEmail": "Не атрымалі ліст?",
+  "resend": "Паўторна адправіць",
+  "notificationDeviceSubtitle": "Прагляд і кіраванне прыладамі, якія адпраўляюць вам пуш-апавяшчэнні.",
+  "notificationRuleDM": "Прамое паведамленне",
+  "notificationRuleDMDescription": "Апавяшчае карыстальніка пра паведамленні ў пакоях прамых паведамленняў.",
+  "notificationRuleCourseAndActivity": "Курс і дзейнасць",
+  "notificationRuleCourseAndActivityDescription": "Апавяшчае карыстальніка пра паведамленні ў курсах, дзейнасцях і чатах.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

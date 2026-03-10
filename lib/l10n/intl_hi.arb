@@ -3998,7 +3998,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2026-03-06 14:06:50.735415",
+  "@@last_modified": "2026-03-10 13:24:58.158226",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12162,6 +12162,46 @@
   },
   "profile": "प्रोफ़ाइल",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "कृपया ईमेल में लिंक पर क्लिक करें और फिर आगे बढ़ें। यदि ईमेल नहीं आया है तो अपने स्पैम फ़ोल्डर की जांच करें।",
+  "didntReceiveEmail": "ईमेल नहीं मिला?",
+  "resend": "फिर से भेजें",
+  "notificationDeviceSubtitle": "उन उपकरणों को देखें और प्रबंधित करें जो आपको पुश सूचनाएँ भेजते हैं।",
+  "notificationRuleDM": "प्रत्यक्ष संदेश",
+  "notificationRuleDMDescription": "प्रत्यक्ष संदेश कमरों में संदेशों के बारे में उपयोगकर्ता को सूचित करता है।",
+  "notificationRuleCourseAndActivity": "कोर्स और गतिविधि",
+  "notificationRuleCourseAndActivityDescription": "कोर्स, गतिविधियों और चैट में संदेशों के बारे में उपयोगकर्ता को सूचित करता है।",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-03-06 14:06:45.576269",
+  "@@last_modified": "2026-03-10 13:24:27.550733",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -11415,6 +11415,46 @@
   },
   "profile": "个人资料",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "请点击电子邮件中的链接，然后继续。如果电子邮件没有到达，请检查您的垃圾邮件文件夹。",
+  "didntReceiveEmail": "没有收到电子邮件？",
+  "resend": "重新发送",
+  "notificationDeviceSubtitle": "查看和管理向您发送推送通知的设备。",
+  "notificationRuleDM": "直接消息",
+  "notificationRuleDMDescription": "通知用户有关直接消息房间中的消息。",
+  "notificationRuleCourseAndActivity": "课程和活动",
+  "notificationRuleCourseAndActivityDescription": "通知用户有关课程、活动和聊天中的消息。",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

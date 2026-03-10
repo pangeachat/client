@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-03-06 14:06:29.297706",
+  "@@last_modified": "2026-03-10 13:23:19.348679",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11987,6 +11987,46 @@
   },
   "profile": "Profil",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Prosím, klikněte na odkaz v e-mailu a poté pokračujte. Zkontrolujte svou složku se spamem, pokud e-mail nedorazil.",
+  "didntReceiveEmail": "Nedostali jste e-mail?",
+  "resend": "Znovu odeslat",
+  "notificationDeviceSubtitle": "Zobrazte a spravujte zařízení, která vám posílají push notifikace.",
+  "notificationRuleDM": "Přímá zpráva",
+  "notificationRuleDMDescription": "Upozorňuje uživatele na zprávy v místnostech přímých zpráv.",
+  "notificationRuleCourseAndActivity": "Kurz a aktivita",
+  "notificationRuleCourseAndActivityDescription": "Upozorňuje uživatele na zprávy v kurzech, aktivitách a chatech.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }
