@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-03-10 13:25:05.629947",
+  "@@last_modified": "2026-03-10 15:57:58.142182",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11420,6 +11420,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Включить уведомления по электронной почте",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

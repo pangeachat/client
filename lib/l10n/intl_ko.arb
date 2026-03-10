@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 13:21:57.509428",
+  "@@last_modified": "2026-03-10 15:56:56.034818",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11681,6 +11681,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "이메일 알림 활성화",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

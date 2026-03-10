@@ -3999,7 +3999,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-03-10 13:22:30.391382",
+  "@@last_modified": "2026-03-10 15:57:13.530874",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12203,6 +12203,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Aktivuj e-poštne obvestila",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

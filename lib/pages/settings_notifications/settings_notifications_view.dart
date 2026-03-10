@@ -185,6 +185,20 @@ class SettingsNotificationsView extends StatelessWidget {
                     ),
                     subtitle: Text(L10n.of(context).notificationDeviceSubtitle),
                   ),
+                  // #Pangea
+                  FutureBuilder<bool>(
+                    future: controller.emailNotificationsEnabled,
+                    builder: (context, snapshot) {
+                      return ListTile(
+                        title: Text(L10n.of(context).enableEmailNotifications),
+                        trailing: Switch.adaptive(
+                          value: snapshot.data ?? false,
+                          onChanged: controller.setEmailNotificationsEnabled,
+                        ),
+                      );
+                    },
+                  ),
+                  // Pangea#
                   FutureBuilder<List<Pusher>?>(
                     future: controller.pusherFuture ??= Matrix.of(
                       context,
@@ -204,7 +218,14 @@ class SettingsNotificationsView extends StatelessWidget {
                           ),
                         );
                       }
-                      final pushers = snapshot.data ?? [];
+                      // #Pangea
+                      // final pushers = snapshot.data ?? [];
+                      final pushers =
+                          snapshot.data
+                              ?.where((p) => p.kind != 'email')
+                              .toList() ??
+                          [];
+                      // Pangea#
                       if (pushers.isEmpty) {
                         return Center(
                           child: Padding(

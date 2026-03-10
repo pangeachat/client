@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-03-10 13:23:15.560032",
+  "@@last_modified": "2026-03-10 15:57:25.438089",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -11455,6 +11455,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Увімкнути сповіщення електронною поштою",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 13:23:29.797396",
+  "@@last_modified": "2026-03-10 15:57:29.761329",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -11615,6 +11615,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Activar les notificacions per correu electrònic",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

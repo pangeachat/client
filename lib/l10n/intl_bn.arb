@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 13:24:32.044759",
+  "@@last_modified": "2026-03-10 15:57:50.051984",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -12199,6 +12199,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "ইমেইল বিজ্ঞপ্তি সক্রিয় করুন",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

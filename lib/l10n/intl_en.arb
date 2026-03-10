@@ -5406,5 +5406,6 @@
   "notificationRuleDM": "Direct Message",
   "notificationRuleDMDescription": "Notifies the user about messages in direct message rooms.",
   "notificationRuleCourseAndActivity": "Course and Activity",
-  "notificationRuleCourseAndActivityDescription": "Notifies the user about messages in courses, activities, and chats."
+  "notificationRuleCourseAndActivityDescription": "Notifies the user about messages in courses, activities, and chats.",
+  "enableEmailNotifications": "Enable email notifications"
 }

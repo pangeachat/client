@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 13:24:13.106572",
+  "@@last_modified": "2026-03-10 15:57:41.886483",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -7176,6 +7176,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Bật thông báo qua email",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

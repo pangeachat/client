@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-03-10 13:22:54.755089",
+  "@@last_modified": "2026-03-10 15:57:20.859392",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11729,6 +11729,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Luba e-posti teavitused",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

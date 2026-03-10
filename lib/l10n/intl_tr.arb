@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-03-10 13:23:59.917846",
+  "@@last_modified": "2026-03-10 15:57:38.480852",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11795,6 +11795,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "E-posta bildirimlerini etkinleştir",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 13:22:19.040424",
+  "@@last_modified": "2026-03-10 15:57:03.138786",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -11561,6 +11561,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Aktifkan notifikasi email",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

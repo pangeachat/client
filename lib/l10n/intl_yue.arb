@@ -1851,7 +1851,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-03-10 13:23:06.863255",
+  "@@last_modified": "2026-03-10 15:57:23.628636",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12685,6 +12685,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "啟用電子郵件通知",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

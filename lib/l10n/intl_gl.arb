@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-03-10 13:22:04.590242",
+  "@@last_modified": "2026-03-10 15:56:58.023292",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -11455,6 +11455,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Activar notificacións por correo electrónico",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

@@ -3326,7 +3326,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-03-10 13:23:37.272415",
+  "@@last_modified": "2026-03-10 15:57:31.546339",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12623,6 +12623,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Ativar notificações por e-mail",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

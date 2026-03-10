@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-03-10 13:24:54.679220",
+  "@@last_modified": "2026-03-10 15:57:55.074478",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -12379,6 +12379,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "メール通知を有効にする",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 13:23:40.138925",
+  "@@last_modified": "2026-03-10 15:57:32.540347",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -11594,6 +11594,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "啟用電子郵件通知",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }
