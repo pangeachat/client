@@ -34,16 +34,16 @@ class DeleteAccountResponseModel {
 
   factory DeleteAccountResponseModel.fromJson(Map<String, dynamic> json) {
     return DeleteAccountResponseModel(
-      message: json['message'],
+      message: json['message'] as String,
       action: DeleteAccountAction.values.firstWhere(
         (e) => e.name == json['action'],
-        orElse: () => throw Exception('Unknown action type'),
+        orElse: () => throw Exception('Unknown action type: ${json['action']}'),
       ),
-      userId: json['user_id'],
-      executeAtMs: json['execute_at_ms'],
-      canceled: json['canceled'],
-      deletedExternalIds: json['deleted_external_ids'],
-      deletedThreepids: json['deleted_threepids'],
+      userId: json['user_id'] as String,
+      executeAtMs: json['execute_at_ms'] as int?,
+      canceled: json['canceled'] as bool?,
+      deletedExternalIds: json['deleted_external_ids'] as int?,
+      deletedThreepids: json['deleted_threepids'] as int?,
     );
   }
 }
