@@ -131,6 +131,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 500),
           child: Row(
