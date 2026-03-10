@@ -5401,5 +5401,6 @@
   "suggestedVocab": "Suggested vocab",
   "myGender": "My gender",
   "noAnalyticsActivitiesAvailable": "Wow, you've completed all available activities! Send more messages to unlock more practice activities.",
-  "profile": "Profile"
+  "profile": "Profile",
+  "notificationDeviceSubtitle": "View and manage devices that send you push notifications."
 }

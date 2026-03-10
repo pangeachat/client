@@ -175,6 +175,7 @@ class SettingsNotificationsView extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    subtitle: Text(L10n.of(context).notificationDeviceSubtitle),
                   ),
                   FutureBuilder<List<Pusher>?>(
                     future: controller.pusherFuture ??= Matrix.of(
