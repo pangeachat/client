@@ -122,7 +122,10 @@ void showMemberActionsPopupMenu({
           padding: const EdgeInsets.only(left: 12.0, right: 12.0),
           child: BotChatSettingsDialog(room: room),
         ),
-      const PopupMenuDivider(),
+      // #Pangea
+      if (user.room.client.userID != user.id)
+        // Pangea#
+        const PopupMenuDivider(),
       // #Pangea
       if (user.room.client.userID != user.id)
         PopupMenuItem(
