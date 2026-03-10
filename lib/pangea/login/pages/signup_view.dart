@@ -28,6 +28,7 @@ class SignupPageView extends StatelessWidget {
       key: controller.formKey,
       child: Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: SizedBox(
             width: 450,
             child: Row(
