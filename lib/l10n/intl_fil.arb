@@ -2782,7 +2782,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-03-10 13:23:47.614813",
+  "@@last_modified": "2026-03-10 15:57:34.982831",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12570,6 +12570,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "I-enable ang mga abiso sa email",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-03-10 13:22:59.074637",
+  "@@last_modified": "2026-03-10 15:57:21.873452",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -11444,6 +11444,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "E-Mail-Benachrichtigungen aktivieren",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

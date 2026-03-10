@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 13:22:44.173103",
+  "@@last_modified": "2026-03-10 15:57:18.000304",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -11455,6 +11455,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Ativar notificações por e-mail",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

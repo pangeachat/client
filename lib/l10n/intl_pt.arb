@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 13:22:51.295713",
+  "@@last_modified": "2026-03-10 15:57:19.940043",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -12676,6 +12676,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Ativar notificações por e-mail",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

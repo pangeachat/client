@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 13:25:13.522189",
+  "@@last_modified": "2026-03-10 15:58:00.299281",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12685,6 +12685,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Omogući obaveštenja putem e-pošte",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

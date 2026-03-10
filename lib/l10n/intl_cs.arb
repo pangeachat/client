@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-03-10 13:23:19.348679",
+  "@@last_modified": "2026-03-10 15:57:26.408957",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -12027,6 +12027,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Povolit e-mailová oznámení",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

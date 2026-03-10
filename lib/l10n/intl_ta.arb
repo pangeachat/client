@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 13:24:17.672396",
+  "@@last_modified": "2026-03-10 15:57:43.398012",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -11575,6 +11575,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "மின்னஞ்சல் அறிவிப்புகளை செயல்படுத்தவும்",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

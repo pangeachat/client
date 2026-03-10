@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 13:23:22.932783",
+  "@@last_modified": "2026-03-10 15:57:27.640806",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11524,6 +11524,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Aktiver e-postvarsler",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

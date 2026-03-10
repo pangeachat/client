@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-03-10 13:22:15.863840",
+  "@@last_modified": "2026-03-10 15:57:02.234719",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -11592,6 +11592,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Engedélyezze az e-mail értesítéseket",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

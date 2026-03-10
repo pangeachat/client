@@ -3998,7 +3998,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-03-10 13:23:33.692658",
+  "@@last_modified": "2026-03-10 15:57:30.701734",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12202,6 +12202,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "เปิดการแจ้งเตือนทางอีเมล",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

@@ -4618,7 +4618,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-03-10 13:23:26.553575",
+  "@@last_modified": "2026-03-10 15:57:28.752749",
   "@ignore": {
     "type": "String",
     "placeholders": {}
@@ -11474,6 +11474,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Уключыць апавяшчэнні па электроннай пошце",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

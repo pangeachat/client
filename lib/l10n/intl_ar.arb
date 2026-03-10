@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-03-10 13:23:54.967185",
+  "@@last_modified": "2026-03-10 15:57:37.458589",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11805,6 +11805,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "تفعيل إشعارات البريد الإلكتروني",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

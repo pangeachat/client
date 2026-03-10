@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-03-10 13:22:26.411145",
+  "@@last_modified": "2026-03-10 15:57:05.306714",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -12673,6 +12673,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Povoliť e-mailové upozornenia",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }

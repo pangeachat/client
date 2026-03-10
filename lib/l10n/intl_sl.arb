@@ -2459,7 +2459,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-03-10 13:23:03.580538",
+  "@@last_modified": "2026-03-10 15:57:22.814750",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12670,6 +12670,11 @@
     "placeholders": {}
   },
   "@notificationRuleCourseAndActivityDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableEmailNotifications": "Omogoči obvestila po elektronski pošti",
+  "@enableEmailNotifications": {
     "type": "String",
     "placeholders": {}
   }
