@@ -4604,7 +4604,7 @@
   "playWithAI": "Tagad spēlējiet ar AI",
   "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
   "@@locale": "lv",
-  "@@last_modified": "2026-03-10 15:57:36.409495",
+  "@@last_modified": "2026-03-10 16:06:06.284900",
   "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
   "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
   "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10969,12 +10969,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Vai jums ir uzaicinājuma kods vai saite uz publisku kursu?",
   "welcomeUser": "Laipni lūdzam, {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11455,6 +11450,11 @@
   },
   "enableEmailNotifications": "Iespējot e-pasta paziņojumus",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Klases? Ievietojiet savu pievienošanās kodu šeit.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-03-10 15:57:58.142182",
+  "@@last_modified": "2026-03-10 16:06:30.518059",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10939,12 +10939,7 @@
   "enableTTSToolDescription": "Позволяет приложению генерировать озвучивание текста на вашем целевом языке.",
   "yourUsername": "Ваше имя пользователя",
   "yourEmail": "Ваш email",
-  "joinSpaceOnboardingDesc": "У вас есть код приглашения или ссылка на публичный курс?",
   "welcomeUser": "Добро пожаловать {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11425,6 +11420,11 @@
   },
   "enableEmailNotifications": "Включить уведомления по электронной почте",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "В классе? Введите свой код присоединения здесь.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

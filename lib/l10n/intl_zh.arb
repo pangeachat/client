@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-03-10 15:57:48.926204",
+  "@@last_modified": "2026-03-10 16:06:18.365738",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10974,12 +10974,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "您是否有邀请代码或公共课程的链接？",
   "welcomeUser": "欢迎 {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11460,6 +11455,11 @@
   },
   "enableEmailNotifications": "启用电子邮件通知",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "在课堂上？把你的加入代码放在这里。",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

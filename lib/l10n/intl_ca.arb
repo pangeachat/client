@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 15:57:29.761329",
+  "@@last_modified": "2026-03-10 16:05:58.194795",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10881,12 +10881,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Tens un codi d'invitació o un enllaç a un curs públic?",
   "welcomeUser": "Benvingut {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11620,6 +11615,11 @@
   },
   "enableEmailNotifications": "Activar les notificacions per correu electrònic",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "En una classe? Posar el vostre codi d'unió aquí.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

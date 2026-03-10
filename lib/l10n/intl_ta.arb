@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 15:57:43.398012",
+  "@@last_modified": "2026-03-10 16:06:15.294406",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -10851,12 +10851,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "உங்களுக்கு ஒரு அழைப்பு குறியீடு அல்லது பொது பாடத்திற்கு இணைப்பு உள்ளதா?",
   "welcomeUser": "வரவேற்கிறேன் {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11580,6 +11575,11 @@
   },
   "enableEmailNotifications": "மின்னஞ்சல் அறிவிப்புகளை செயல்படுத்தவும்",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "ஒரு வகுப்பில் இருக்கிறீர்களா? உங்கள் சேர்க்கை குறியீட்டை இங்கே வையுங்கள்.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

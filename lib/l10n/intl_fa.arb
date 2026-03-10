@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 15:57:51.281339",
+  "@@last_modified": "2026-03-10 16:06:20.724877",
   "repeatPassword": "تکرار گذرواژه",
   "@repeatPassword": {},
   "about": "درباره",
@@ -10847,12 +10847,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "آیا کد دعوت یا لینکی به یک دوره عمومی دارید؟",
   "welcomeUser": "خوش آمدید {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11581,6 +11576,11 @@
   },
   "enableEmailNotifications": "فعال‌سازی اعلان‌های ایمیلی",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "در یک کلاس هستید؟ کد پیوستن خود را اینجا وارد کنید.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

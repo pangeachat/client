@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-03-10 15:57:37.458589",
+  "@@last_modified": "2026-03-10 16:06:07.209012",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11071,12 +11071,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "هل لديك رمز دعوة أو رابط لدورة عامة؟",
   "welcomeUser": "مرحبًا {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11810,6 +11805,11 @@
   },
   "enableEmailNotifications": "تفعيل إشعارات البريد الإلكتروني",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "في فصل دراسي؟ ضع رمز الانضمام الخاص بك هنا.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

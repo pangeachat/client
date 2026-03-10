@@ -4475,7 +4475,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-03-10 15:57:54.151086",
+  "@@last_modified": "2026-03-10 16:06:24.209916",
   "@checkList": {
     "type": "String",
     "placeholders": {}
@@ -11880,12 +11880,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Έχετε έναν κωδικό πρόσκλησης ή σύνδεσμο για ένα δημόσιο μάθημα;",
   "welcomeUser": "Καλώς ήρθατε {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -12619,6 +12614,11 @@
   },
   "enableEmailNotifications": "Ενεργοποίηση ειδοποιήσεων μέσω email",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Σε μάθημα; Βάλε τον κωδικό συμμετοχής σου εδώ.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

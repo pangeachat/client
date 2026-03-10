@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 15:57:24.499650",
+  "@@last_modified": "2026-03-10 16:05:52.007523",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10865,12 +10865,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Hai un codice di invito o un link per un corso pubblico?",
   "welcomeUser": "Benvenuto {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11554,6 +11549,11 @@
   },
   "enableEmailNotifications": "Abilita le notifiche email",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "In una classe? Inserisci il tuo codice di accesso qui.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

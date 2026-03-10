@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 15:57:04.074532",
+  "@@last_modified": "2026-03-10 16:05:34.236546",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11590,12 +11590,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Ai un cod de invitație sau un link pentru un curs public?",
   "welcomeUser": "Bine ai venit {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -12329,6 +12324,11 @@
   },
   "enableEmailNotifications": "Activează notificările prin email",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Într-o clasă? Pune codul tău de alăturare aici.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

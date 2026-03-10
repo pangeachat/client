@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-03-10 15:57:55.074478",
+  "@@last_modified": "2026-03-10 16:06:25.232761",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11645,12 +11645,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "招待コードまたは公開コースへのリンクはありますか？",
   "welcomeUser": "ようこそ {user} さん",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -12384,6 +12379,11 @@
   },
   "enableEmailNotifications": "メール通知を有効にする",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "クラスにいますか？ここに参加コードを入力してください。",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 15:57:50.051984",
+  "@@last_modified": "2026-03-10 16:06:19.805951",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11465,12 +11465,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "আপনার কি একটি আমন্ত্রণ কোড বা একটি পাবলিক কোর্সের লিঙ্ক আছে?",
   "welcomeUser": "স্বাগতম {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -12204,6 +12199,11 @@
   },
   "enableEmailNotifications": "ইমেইল বিজ্ঞপ্তি সক্রিয় করুন",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "একটি ক্লাসে? আপনার যোগদান কোড এখানে দিন।",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

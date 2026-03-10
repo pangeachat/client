@@ -3326,7 +3326,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-03-10 15:57:31.546339",
+  "@@last_modified": "2026-03-10 16:06:00.447020",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11884,12 +11884,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Você tem um código de convite ou link para um curso público?",
   "welcomeUser": "Bem-vindo {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -12628,6 +12623,11 @@
   },
   "enableEmailNotifications": "Ativar notificações por e-mail",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Em uma aula? Coloque seu código de entrada aqui.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

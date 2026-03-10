@@ -2782,7 +2782,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-03-10 15:57:34.982831",
+  "@@last_modified": "2026-03-10 16:06:04.850704",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11831,12 +11831,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Mayroon ka bang invite code o link sa isang pampublikong kurso?",
   "welcomeUser": "Maligayang pagdating {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -12575,6 +12570,11 @@
   },
   "enableEmailNotifications": "I-enable ang mga abiso sa email",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Sa isang klase? Ilagay ang iyong join code dito.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

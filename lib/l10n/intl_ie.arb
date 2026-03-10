@@ -3999,7 +3999,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-03-10 15:57:13.530874",
+  "@@last_modified": "2026-03-10 16:05:36.626285",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11469,12 +11469,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "¿Tienes un código de invitación o un enlace a un curso público?",
   "welcomeUser": "Bienvenido {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -12208,6 +12203,11 @@
   },
   "enableEmailNotifications": "Aktivuj e-poštne obvestila",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "In a class? Put your join code here.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

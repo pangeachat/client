@@ -4638,7 +4638,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-03-10 15:58:01.421034",
+  "@@last_modified": "2026-03-10 16:06:35.261986",
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
@@ -10981,12 +10981,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "An bhfuil cód cuireadh nó nasc agat do chúrsa poiblí?",
   "welcomeUser": "Fáilte {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11471,6 +11466,11 @@
   },
   "enableEmailNotifications": "Cuir ar siúl fógraí ríomhphoist",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "I rang? Cuir do chód comhoibrithe anseo.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

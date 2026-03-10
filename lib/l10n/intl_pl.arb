@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-03-10 15:57:52.138256",
+  "@@last_modified": "2026-03-10 16:06:21.744293",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10847,12 +10847,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Czy masz kod zaproszenia lub link do publicznego kursu?",
   "welcomeUser": "Witaj {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11582,6 +11577,11 @@
   },
   "enableEmailNotifications": "Włącz powiadomienia e-mail",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "W klasie? Wpisz tutaj swój kod dołączenia.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

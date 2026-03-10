@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-03-10 15:57:38.480852",
+  "@@last_modified": "2026-03-10 16:06:10.385722",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11061,12 +11061,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Bir davet kodunuz veya halka açık bir kursa bağlantınız var mı?",
   "welcomeUser": "Hoş geldin {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11800,6 +11795,11 @@
   },
   "enableEmailNotifications": "E-posta bildirimlerini etkinleştir",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Bir derste misin? Katılma kodunu buraya yaz.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

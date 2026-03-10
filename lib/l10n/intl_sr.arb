@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 15:58:00.299281",
+  "@@last_modified": "2026-03-10 16:06:34.137675",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11951,12 +11951,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Imate li pozivni kod ili link za javni kurs?",
   "welcomeUser": "Dobrodošli {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -12690,6 +12685,11 @@
   },
   "enableEmailNotifications": "Omogući obaveštenja putem e-pošte",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "U razredu? Stavite svoj kod za pridruživanje ovde.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

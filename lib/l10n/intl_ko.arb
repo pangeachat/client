@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 15:56:56.034818",
+  "@@last_modified": "2026-03-10 16:05:24.361334",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10947,12 +10947,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "공개 과정에 대한 초대 코드나 링크가 있습니까?",
   "welcomeUser": "환영합니다 {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11686,6 +11681,11 @@
   },
   "enableEmailNotifications": "이메일 알림 활성화",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "수업 중인가요? 여기에 참여 코드를 입력하세요.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

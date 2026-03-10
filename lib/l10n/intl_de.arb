@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-03-10 15:57:21.873452",
+  "@@last_modified": "2026-03-10 16:05:48.057297",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -11016,12 +11016,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Haben Sie einen Einladungscode oder einen Link zu einem öffentlichen Kurs?",
   "welcomeUser": "Willkommen {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11449,6 +11444,11 @@
   },
   "enableEmailNotifications": "E-Mail-Benachrichtigungen aktivieren",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "In einer Klasse? Gib hier deinen Beitrittscode ein.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }
