@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-03-06 14:06:16.538523",
+  "@@last_modified": "2026-03-10 13:22:34.379679",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11908,6 +11908,46 @@
   },
   "profile": "Profil",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Molimo vas da kliknete na vezu u e-pošti i zatim nastavite. Provjerite svoju mapu neželjene pošte ako e-pošta nije stigla.",
+  "didntReceiveEmail": "Niste primili e-poštu?",
+  "resend": "Ponovno pošalji",
+  "notificationDeviceSubtitle": "Pogledajte i upravljajte uređajima koji vam šalju obavijesti.",
+  "notificationRuleDM": "Izravna poruka",
+  "notificationRuleDMDescription": "Obavještava korisnika o porukama u sobama za izravne poruke.",
+  "notificationRuleCourseAndActivity": "Tečaj i aktivnost",
+  "notificationRuleCourseAndActivityDescription": "Obavještava korisnika o porukama u tečajevima, aktivnostima i chatovima.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

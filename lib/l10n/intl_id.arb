@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 14:06:12.505171",
+  "@@last_modified": "2026-03-10 13:22:19.040424",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -11521,6 +11521,46 @@
   },
   "profile": "Profil",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Silakan klik tautan di email dan kemudian lanjutkan. Periksa folder spam Anda jika email belum tiba.",
+  "didntReceiveEmail": "Tidak menerima email?",
+  "resend": "Kirim ulang",
+  "notificationDeviceSubtitle": "Lihat dan kelola perangkat yang mengirimkan notifikasi push kepada Anda.",
+  "notificationRuleDM": "Pesan Langsung",
+  "notificationRuleDMDescription": "Memberitahukan pengguna tentang pesan di ruang pesan langsung.",
+  "notificationRuleCourseAndActivity": "Kursus dan Aktivitas",
+  "notificationRuleCourseAndActivityDescription": "Memberitahukan pengguna tentang pesan di kursus, aktivitas, dan obrolan.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

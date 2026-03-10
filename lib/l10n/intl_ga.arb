@@ -4638,7 +4638,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-03-06 14:06:55.202810",
+  "@@last_modified": "2026-03-10 13:25:18.121686",
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
@@ -11426,6 +11426,46 @@
   },
   "profile": "Profíl",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Le do thoil, cliceáil ar an nasc sa ríomhphost agus ansin lean ort. Seiceáil do chatalóg spam más rud é nach bhfuil an ríomhphost tagtha.",
+  "didntReceiveEmail": "Ní bhfuair tú an ríomhphost?",
+  "resend": "Athsheoladh",
+  "notificationDeviceSubtitle": "Féach agus bainistigh na gléasanna a sheolann tú foláirimh push.",
+  "notificationRuleDM": "Teachtaireacht Dhíreach",
+  "notificationRuleDMDescription": "Cuireann sé foláireamh ar an úsáideoir faoi theachtaireachtaí i seomraí teachtaireachta dhíreacha.",
+  "notificationRuleCourseAndActivity": "Cúrsa agus Gníomhaíocht",
+  "notificationRuleCourseAndActivityDescription": "Cuireann sé foláireamh ar an úsáideoir faoi theachtaireachtaí i gcúrsaí, gníomhaíochtaí, agus comhoibrithe.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

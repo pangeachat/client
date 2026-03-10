@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-03-06 14:06:49.982758",
+  "@@last_modified": "2026-03-10 13:24:54.679220",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -12339,6 +12339,46 @@
   },
   "profile": "プロフィール",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "メールのリンクをクリックしてから進んでください。メールが届いていない場合は、迷惑メールフォルダを確認してください。",
+  "didntReceiveEmail": "メールが届きませんでしたか？",
+  "resend": "再送信",
+  "notificationDeviceSubtitle": "プッシュ通知を送信するデバイスを表示および管理します。",
+  "notificationRuleDM": "ダイレクトメッセージ",
+  "notificationRuleDMDescription": "ダイレクトメッセージルーム内のメッセージについてユーザーに通知します。",
+  "notificationRuleCourseAndActivity": "コースとアクティビティ",
+  "notificationRuleCourseAndActivityDescription": "コース、アクティビティ、およびチャット内のメッセージについてユーザーに通知します。",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

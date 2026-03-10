@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 14:06:17.603095",
+  "@@last_modified": "2026-03-10 13:22:37.575355",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12598,6 +12598,46 @@
   },
   "profile": "פרופיל",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "אנא לחץ על הקישור במייל ולאחר מכן המשך. בדוק את תיקיית הספאם שלך אם המייל לא הגיע.",
+  "didntReceiveEmail": "לא קיבלת את המייל?",
+  "resend": "שלח שוב",
+  "notificationDeviceSubtitle": "צפה ונהל מכשירים ששולחים לך התראות פוש.",
+  "notificationRuleDM": "הודעה ישירה",
+  "notificationRuleDMDescription": "מעדכן את המשתמש על הודעות בחדרי הודעות ישירות.",
+  "notificationRuleCourseAndActivity": "קורס ופעילות",
+  "notificationRuleCourseAndActivityDescription": "מעדכן את המשתמש על הודעות בקורסים, פעילויות וצ'אטים.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

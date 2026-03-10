@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-03-06 14:06:06.567646",
+  "@@last_modified": "2026-03-10 13:22:00.344894",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -8729,6 +8729,46 @@
   },
   "profile": "Perfil",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Por favor, haz clic en el enlace del correo electrónico y luego procede. Revisa tu carpeta de spam si el correo no ha llegado.",
+  "didntReceiveEmail": "¿No recibiste el correo electrónico?",
+  "resend": "Reenviar",
+  "notificationDeviceSubtitle": "Ver y gestionar dispositivos que te envían notificaciones push.",
+  "notificationRuleDM": "Mensaje Directo",
+  "notificationRuleDMDescription": "Notifica al usuario sobre mensajes en salas de mensajes directos.",
+  "notificationRuleCourseAndActivity": "Curso y Actividad",
+  "notificationRuleCourseAndActivityDescription": "Notifica al usuario sobre mensajes en cursos, actividades y chats.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

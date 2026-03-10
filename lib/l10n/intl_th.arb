@@ -3998,7 +3998,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-03-06 14:06:33.394004",
+  "@@last_modified": "2026-03-10 13:23:33.692658",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12162,6 +12162,46 @@
   },
   "profile": "โปรไฟล์",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "กรุณาคลิกที่ลิงก์ในอีเมลแล้วดำเนินการต่อ ตรวจสอบโฟลเดอร์สแปมของคุณหากอีเมลยังไม่มาถึง",
+  "didntReceiveEmail": "ไม่ได้รับอีเมลใช่ไหม?",
+  "resend": "ส่งอีกครั้ง",
+  "notificationDeviceSubtitle": "ดูและจัดการอุปกรณ์ที่ส่งการแจ้งเตือนแบบพุชให้คุณ",
+  "notificationRuleDM": "ข้อความตรง",
+  "notificationRuleDMDescription": "แจ้งผู้ใช้เกี่ยวกับข้อความในห้องข้อความตรง",
+  "notificationRuleCourseAndActivity": "หลักสูตรและกิจกรรม",
+  "notificationRuleCourseAndActivityDescription": "แจ้งผู้ใช้เกี่ยวกับข้อความในหลักสูตร กิจกรรม และการสนทนา",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

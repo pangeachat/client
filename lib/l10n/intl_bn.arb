@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 14:06:46.246717",
+  "@@last_modified": "2026-03-10 13:24:32.044759",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -12159,6 +12159,46 @@
   },
   "profile": "প্রোফাইল",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "দয়া করে ইমেইলে লিঙ্কে ক্লিক করুন এবং তারপর এগিয়ে যান। যদি ইমেইলটি না আসে তবে আপনার স্প্যাম ফোল্ডারটি চেক করুন।",
+  "didntReceiveEmail": "ইমেইলটি পাননি?",
+  "resend": "পুনরায় পাঠান",
+  "notificationDeviceSubtitle": "আপনার কাছে পুশ নোটিফিকেশন পাঠানো ডিভাইসগুলি দেখুন এবং পরিচালনা করুন।",
+  "notificationRuleDM": "ডাইরেক্ট মেসেজ",
+  "notificationRuleDMDescription": "ডাইরেক্ট মেসেজ রুমে বার্তা সম্পর্কে ব্যবহারকারীকে জানায়।",
+  "notificationRuleCourseAndActivity": "কোর্স এবং কার্যকলাপ",
+  "notificationRuleCourseAndActivityDescription": "কোর্স, কার্যকলাপ এবং চ্যাটে বার্তা সম্পর্কে ব্যবহারকারীকে জানায়।",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

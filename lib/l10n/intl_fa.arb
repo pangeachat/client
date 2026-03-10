@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 14:06:47.011279",
+  "@@last_modified": "2026-03-10 13:24:35.932423",
   "repeatPassword": "تکرار گذرواژه",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11536,6 +11536,46 @@
   },
   "profile": "پروفایل",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "لطفاً روی لینک در ایمیل کلیک کنید و سپس ادامه دهید. اگر ایمیل نرسیده است، پوشه هرزنامه خود را بررسی کنید.",
+  "didntReceiveEmail": "ایمیل را دریافت نکردید؟",
+  "resend": "دوباره ارسال کنید",
+  "notificationDeviceSubtitle": "دستگاه‌هایی را که به شما اعلان‌های فشار ارسال می‌کنند، مشاهده و مدیریت کنید.",
+  "notificationRuleDM": "پیام مستقیم",
+  "notificationRuleDMDescription": "کاربر را در مورد پیام‌ها در اتاق‌های پیام مستقیم مطلع می‌کند.",
+  "notificationRuleCourseAndActivity": "دوره و فعالیت",
+  "notificationRuleCourseAndActivityDescription": "کاربر را در مورد پیام‌ها در دوره‌ها، فعالیت‌ها و چت‌ها مطلع می‌کند.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

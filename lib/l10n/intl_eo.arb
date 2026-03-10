@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 14:06:51.518868",
+  "@@last_modified": "2026-03-10 13:25:01.752562",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12638,6 +12638,46 @@
   },
   "profile": "Profilo",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Bonvolu klaki la ligilon en la retpoŝto kaj poste daŭrigi. Kontrolu vian spam-folderon se la retpoŝto ne alvenis.",
+  "didntReceiveEmail": "Ĉu ne ricevis la retpoŝton?",
+  "resend": "Sendi denove",
+  "notificationDeviceSubtitle": "Vidi kaj administri aparatojn, kiuj sendas al vi puŝan notifikon.",
+  "notificationRuleDM": "Rekta Mesaĝo",
+  "notificationRuleDMDescription": "Informas la uzanton pri mesaĝoj en rektaj mesaĝaj ĉambroj.",
+  "notificationRuleCourseAndActivity": "Kurso kaj Aktivado",
+  "notificationRuleCourseAndActivityDescription": "Informas la uzanton pri mesaĝoj en kursoj, aktivadoj, kaj babilejoj.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

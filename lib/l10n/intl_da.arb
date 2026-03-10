@@ -1925,7 +1925,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-03-06 14:06:10.129738",
+  "@@last_modified": "2026-03-10 13:22:11.175209",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -12615,6 +12615,46 @@
   },
   "profile": "Profil",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Klik venligst på linket i e-mailen og fortsæt derefter. Tjek din spam-mappe, hvis e-mailen ikke er ankommet.",
+  "didntReceiveEmail": "Modtog ikke e-mailen?",
+  "resend": "Send igen",
+  "notificationDeviceSubtitle": "Se og administrer enheder, der sender dig push-notifikationer.",
+  "notificationRuleDM": "Direkte besked",
+  "notificationRuleDMDescription": "Underretter brugeren om beskeder i direkte beskedrum.",
+  "notificationRuleCourseAndActivity": "Kursus og aktivitet",
+  "notificationRuleCourseAndActivityDescription": "Underretter brugeren om beskeder i kurser, aktiviteter og chats.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

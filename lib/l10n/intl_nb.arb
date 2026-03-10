@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 14:06:30.351549",
+  "@@last_modified": "2026-03-10 13:23:22.932783",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11484,6 +11484,46 @@
   },
   "profile": "Profil",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Vennligst klikk på lenken i e-posten og fortsett deretter. Sjekk spam-mappen din hvis e-posten ikke har kommet.",
+  "didntReceiveEmail": "Mottok ikke e-posten?",
+  "resend": "Send på nytt",
+  "notificationDeviceSubtitle": "Se og administrer enheter som sender deg push-varsler.",
+  "notificationRuleDM": "Direktemelding",
+  "notificationRuleDMDescription": "Varsler brukeren om meldinger i direktemeldingsrom.",
+  "notificationRuleCourseAndActivity": "Kurs og aktivitet",
+  "notificationRuleCourseAndActivityDescription": "Varsler brukeren om meldinger i kurs, aktiviteter og chatter.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -3495,7 +3495,7 @@
   "setupChatBackup": "Chat zaxirasini sozlash",
   "@setupChatBackup": {},
   "@@locale": "uz",
-  "@@last_modified": "2026-03-06 14:06:36.458620",
+  "@@last_modified": "2026-03-10 13:23:43.925184",
   "noMoreResultsFound": "Boshqa natijalar topilmadi",
   "chatSearchedUntil": "Chat {time} gacha qidirildi",
   "federationBaseUrl": "Federatsiya Asos URL",
@@ -11309,6 +11309,46 @@
   },
   "profile": "Profil",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Iltimos, elektron pochta xabaridagi havolani bosing va keyin davom eting. Agar elektron pochta xabari kelmasa, spam papkangizni tekshiring.",
+  "didntReceiveEmail": "Elektron pochta xabarini olmadingizmi?",
+  "resend": "Qayta jo'natish",
+  "notificationDeviceSubtitle": "Sizga push xabarnomalar yuboradigan qurilmalarni ko'ring va boshqaring.",
+  "notificationRuleDM": "To'g'ridan-to'g'ri Xabar",
+  "notificationRuleDMDescription": "Foydalanuvchini to'g'ridan-to'g'ri xabar xonalaridagi xabarlar haqida xabardor qiladi.",
+  "notificationRuleCourseAndActivity": "Kurs va Faoliyat",
+  "notificationRuleCourseAndActivityDescription": "Foydalanuvchini kurslar, faoliyatlar va suhbatlardagi xabarlar haqida xabardor qiladi.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

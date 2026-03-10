@@ -3781,7 +3781,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2026-03-06 14:06:44.826950",
+  "@@last_modified": "2026-03-10 13:24:24.422415",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10818,6 +10818,46 @@
   },
   "profile": "Profili",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Plis klike sou lyen an nan imel la epi apre sa kontinye. Tcheke katab spam ou si imel la pa rive.",
+  "didntReceiveEmail": "Pa resevwa imel la?",
+  "resend": "Reenvwaye",
+  "notificationDeviceSubtitle": "Gade ak jere aparèy ki voye ou notifikasyon pouse.",
+  "notificationRuleDM": "Mesaj Dirèk",
+  "notificationRuleDMDescription": "Notifye itilizatè a sou mesaj nan chanm mesaj dirèk.",
+  "notificationRuleCourseAndActivity": "Kou ak Aktivite",
+  "notificationRuleCourseAndActivityDescription": "Notifye itilizatè a sou mesaj nan kou, aktivite, ak chat.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

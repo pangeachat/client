@@ -1915,7 +1915,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2026-03-06 14:06:40.732759",
+  "@@last_modified": "2026-03-10 13:24:05.487695",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12638,6 +12638,46 @@
   },
   "profile": "ప్రొఫైల్",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "దయచేసి ఇమెయిల్‌లోని లింక్‌పై క్లిక్ చేయండి మరియు తరువాత కొనసాగండి. ఇమెయిల్ రాలేదా అంటే మీ స్పామ్ ఫోల్డర్‌ను తనిఖీ చేయండి.",
+  "didntReceiveEmail": "ఇమెయిల్ రాలేదు?",
+  "resend": "మరల పంపండి",
+  "notificationDeviceSubtitle": "మీకు పుష్ నోటిఫికేషన్లు పంపించే పరికరాలను వీక్షించండి మరియు నిర్వహించండి.",
+  "notificationRuleDM": "ప్రత్యక్ష సందేశం",
+  "notificationRuleDMDescription": "ప్రత్యక్ష సందేశాల గదుల్లో సందేశాల గురించి వినియోగదారుని తెలియజేస్తుంది.",
+  "notificationRuleCourseAndActivity": "కోర్సు మరియు కార్యకలాపం",
+  "notificationRuleCourseAndActivityDescription": "కోర్సులు, కార్యకలాపాలు మరియు చాట్లలో సందేశాల గురించి వినియోగదారుని తెలియజేస్తుంది.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

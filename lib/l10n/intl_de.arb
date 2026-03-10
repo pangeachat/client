@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-03-06 14:06:24.264442",
+  "@@last_modified": "2026-03-10 13:22:59.074637",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -11404,6 +11404,46 @@
   },
   "profile": "Profil",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Bitte klicken Sie auf den Link in der E-Mail und fahren Sie dann fort. Überprüfen Sie Ihren Spam-Ordner, falls die E-Mail nicht angekommen ist.",
+  "didntReceiveEmail": "Haben Sie die E-Mail nicht erhalten?",
+  "resend": "Erneut senden",
+  "notificationDeviceSubtitle": "Geräte anzeigen und verwalten, die Ihnen Push-Benachrichtigungen senden.",
+  "notificationRuleDM": "Direktnachricht",
+  "notificationRuleDMDescription": "Benachrichtigt den Benutzer über Nachrichten in Direktnachricht-Räumen.",
+  "notificationRuleCourseAndActivity": "Kurs und Aktivität",
+  "notificationRuleCourseAndActivityDescription": "Benachrichtigt den Benutzer über Nachrichten in Kursen, Aktivitäten und Chats.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-03-06 14:06:20.892239",
+  "@@last_modified": "2026-03-10 13:22:48.010956",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -11415,6 +11415,46 @@
   },
   "profile": "Profila",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Mesedez, klikatu e-postako estekan eta jarraitu. Begiratu zure spam karpeta e-postak iritsi ez badira.",
+  "didntReceiveEmail": "E-posta jaso al duzu?",
+  "resend": "Berriro bidali",
+  "notificationDeviceSubtitle": "Ikusi eta kudeatu push jakinarazpenak bidaltzen dizkizuten gailuak.",
+  "notificationRuleDM": "Mezu Zuzena",
+  "notificationRuleDMDescription": "Erabiltzaileari mezu zuzenezko gelatan mezuen berri ematen dio.",
+  "notificationRuleCourseAndActivity": "Ikastaroa eta Jarduera",
+  "notificationRuleCourseAndActivityDescription": "Erabiltzaileari ikastaroetan, jardueren eta txatetan mezuen berri ematen dio.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

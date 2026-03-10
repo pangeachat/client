@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 14:06:42.503557",
+  "@@last_modified": "2026-03-10 13:24:13.106572",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -7136,6 +7136,46 @@
   },
   "profile": "Hồ sơ",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Vui lòng nhấp vào liên kết trong email và sau đó tiếp tục. Kiểm tra thư mục spam của bạn nếu email chưa đến.",
+  "didntReceiveEmail": "Chưa nhận được email?",
+  "resend": "Gửi lại",
+  "notificationDeviceSubtitle": "Xem và quản lý các thiết bị gửi cho bạn thông báo đẩy.",
+  "notificationRuleDM": "Tin nhắn trực tiếp",
+  "notificationRuleDMDescription": "Thông báo cho người dùng về các tin nhắn trong các phòng tin nhắn trực tiếp.",
+  "notificationRuleCourseAndActivity": "Khóa học và Hoạt động",
+  "notificationRuleCourseAndActivityDescription": "Thông báo cho người dùng về các tin nhắn trong các khóa học, hoạt động và trò chuyện.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

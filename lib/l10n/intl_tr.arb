@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-03-06 14:06:39.607647",
+  "@@last_modified": "2026-03-10 13:23:59.917846",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11755,6 +11755,46 @@
   },
   "profile": "Profil",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Lütfen e-postadaki bağlantıya tıklayın ve ardından devam edin. E-posta gelmediyse spam klasörünüzü kontrol edin.",
+  "didntReceiveEmail": "E-postayı almadınız mı?",
+  "resend": "Yeniden Gönder",
+  "notificationDeviceSubtitle": "Size push bildirimleri gönderen cihazları görüntüleyin ve yönetin.",
+  "notificationRuleDM": "Doğrudan Mesaj",
+  "notificationRuleDMDescription": "Kullanıcıyı doğrudan mesaj odalarındaki mesajlar hakkında bilgilendirir.",
+  "notificationRuleCourseAndActivity": "Kurs ve Aktivite",
+  "notificationRuleCourseAndActivityDescription": "Kullanıcıyı kurslar, aktiviteler ve sohbetlerdeki mesajlar hakkında bilgilendirir.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

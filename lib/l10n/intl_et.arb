@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-03-06 14:06:23.096023",
+  "@@last_modified": "2026-03-10 13:22:54.755089",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11689,6 +11689,46 @@
   },
   "profile": "Profiil",
   "@profile": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickOnEmailLinkDesc": "Palun klõpsake e-kirjas oleval lingil ja seejärel jätkake. Kontrollige oma rämpsposti kausta, kui e-kiri ei ole saabunud.",
+  "didntReceiveEmail": "Ei saanud e-kirja?",
+  "resend": "Saada uuesti",
+  "notificationDeviceSubtitle": "Vaadake ja hallake seadmeid, mis saadavad teile push-teateid.",
+  "notificationRuleDM": "Otsene sõnum",
+  "notificationRuleDMDescription": "Teavitab kasutajat otsese sõnumi ruumides olevatest sõnumitest.",
+  "notificationRuleCourseAndActivity": "Kursus ja tegevus",
+  "notificationRuleCourseAndActivityDescription": "Teavitab kasutajat sõnumitest kursustes, tegevustes ja vestlustes.",
+  "@clickOnEmailLinkDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@didntReceiveEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resend": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationDeviceSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDM": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleDMDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notificationRuleCourseAndActivityDescription": {
     "type": "String",
     "placeholders": {}
   }

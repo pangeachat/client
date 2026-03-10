@@ -5402,6 +5402,7 @@
   "myGender": "My gender",
   "noAnalyticsActivitiesAvailable": "Wow, you've completed all available activities! Send more messages to unlock more practice activities.",
   "profile": "Profile",
+  "notificationDeviceSubtitle": "View and manage devices that send you push notifications.",
   "notificationRuleDM": "Direct Message",
   "notificationRuleDMDescription": "Notifies the user about messages in direct message rooms.",
   "notificationRuleCourseAndActivity": "Course and Activity",
