@@ -5401,5 +5401,9 @@
   "suggestedVocab": "Suggested vocab",
   "myGender": "My gender",
   "noAnalyticsActivitiesAvailable": "Wow, you've completed all available activities! Send more messages to unlock more practice activities.",
-  "profile": "Profile"
+  "profile": "Profile",
+  "notificationRuleDM": "Direct Message",
+  "notificationRuleDMDescription": "Notifies the user about messages in direct message rooms.",
+  "notificationRuleCourseAndActivity": "Course and Activity",
+  "notificationRuleCourseAndActivityDescription": "Notifies the user about messages in courses, activities, and chats."
 }
