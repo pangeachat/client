@@ -168,7 +168,7 @@ class PracticeSessionController {
       final initialActivity = await _initActivityData(onSkip, onFetch);
       if (initialActivity == null && session.state.currentIndex == 0) {
         // No activities were successfully loaded, and we haven't completed any yet, so throw an error
-        throw Exception("Failed to load any activities");
+        throw InsufficientDataException();
       }
       return initialActivity;
     }
@@ -187,7 +187,7 @@ class PracticeSessionController {
 
     if (session.state.currentIndex == 0) {
       // No activities were successfully loaded, and we haven't completed any yet, so throw an error
-      throw Exception("Failed to load any activities");
+      throw InsufficientDataException();
     }
 
     return null;
