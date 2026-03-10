@@ -100,7 +100,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
         statuses[ActivitySummaryStatus.completed]![roomId] = session;
       } else if (isActivityStarted(roomId)) {
         statuses[ActivitySummaryStatus.inProgress]![roomId] = session;
-      } else {
+      } else if (session.membershipSummary.isNotEmpty) {
         statuses[ActivitySummaryStatus.notStarted]![roomId] = session;
       }
     }
