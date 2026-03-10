@@ -1432,18 +1432,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleEncryptedRoomOneToOneDescription() {
       return "\uc554\ud638\ud654\ub41c 1:1 \ubc29\uc758 \uba54\uc2dc\uc9c0\uc5d0 \ub300\ud574 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc54c\ub9bc\uc744 \ubcf4\ub0c5\ub2c8\ub2e4.";
     },
-    get$notificationRuleRoomOneToOne() {
-      return "1:1 \ubc29";
-    },
-    get$notificationRuleRoomOneToOneDescription() {
-      return "1:1 \ubc29\uc758 \uba54\uc2dc\uc9c0\uc5d0 \ub300\ud574 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc54c\ub9bc\uc744 \ubcf4\ub0c5\ub2c8\ub2e4.";
-    },
-    get$notificationRuleMessage() {
-      return "\uba54\uc2dc\uc9c0";
-    },
-    get$notificationRuleMessageDescription() {
-      return "\uc77c\ubc18 \uba54\uc2dc\uc9c0\uc5d0 \ub300\ud574 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc54c\ub9bc\uc744 \ubcf4\ub0c5\ub2c8\ub2e4.";
-    },
     get$notificationRuleEncrypted() {
       return "\uc554\ud638\ud654\ub428";
     },
@@ -5652,6 +5640,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$profile() {
       return "\ud504\ub85c\ud544";
     },
+    get$notificationRuleDM() {
+      return "Direct Message";
+    },
+    get$notificationRuleDMDescription() {
+      return "Notifies the user about messages in direct message rooms.";
+    },
+    get$notificationRuleCourseAndActivity() {
+      return "Course and Activity";
+    },
+    get$notificationRuleCourseAndActivityDescription() {
+      return "Notifies the user about messages in courses, activities, and chats.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5665,7 +5665,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3QcHDO3uqavYhnbUETqcCOYkO4o="] = d.current;
+  d["XQQLhqcHfXMRetw+njd1yRPC2hg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_770.part.js.map

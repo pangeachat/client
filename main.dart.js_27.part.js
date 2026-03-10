@@ -1444,18 +1444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleEncryptedRoomOneToOneDescription() {
       return "Notifica o usu\xe1rio sobre mensagens em salas encriptadas um-para-um.";
     },
-    get$notificationRuleRoomOneToOne() {
-      return "Sala Um-para-Um";
-    },
-    get$notificationRuleRoomOneToOneDescription() {
-      return "Notifica o usu\xe1rio sobre mensagens em salas um-para-um.";
-    },
-    get$notificationRuleMessage() {
-      return "Mensagem";
-    },
-    get$notificationRuleMessageDescription() {
-      return "Notifica o usu\xe1rio sobre mensagens gerais.";
-    },
     get$notificationRuleEncrypted() {
       return "Encriptado";
     },
@@ -5664,6 +5652,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$profile() {
       return "Perfil";
     },
+    get$notificationRuleDM() {
+      return "Direct Message";
+    },
+    get$notificationRuleDMDescription() {
+      return "Notifies the user about messages in direct message rooms.";
+    },
+    get$notificationRuleCourseAndActivity() {
+      return "Course and Activity";
+    },
+    get$notificationRuleCourseAndActivityDescription() {
+      return "Notifies the user about messages in courses, activities, and chats.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -7084,18 +7084,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
       return "Notifica o usu\xe1rio de mensagens em salas criptografas de 2 pessoas.";
-    },
-    get$notificationRuleRoomOneToOne() {
-      return "Sala de 2 pessoas";
-    },
-    get$notificationRuleRoomOneToOneDescription() {
-      return "Notifica o usu\xe1rio de mensagens em salas de duas pessoas.";
-    },
-    get$notificationRuleMessage() {
-      return "Mensagem";
-    },
-    get$notificationRuleMessageDescription() {
-      return "Notifica o usu\xe1rio de mensagens gerais.";
     },
     get$notificationRuleEncrypted() {
       return "Criptografado";
@@ -12717,18 +12705,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleEncryptedRoomOneToOneDescription() {
       return "Notifica o utilizador sobre mensagens em salas encriptadas um-para-um.";
     },
-    get$notificationRuleRoomOneToOne() {
-      return "Sala Um-para-Um";
-    },
-    get$notificationRuleRoomOneToOneDescription() {
-      return "Notifica o utilizador sobre mensagens em salas um-para-um.";
-    },
-    get$notificationRuleMessage() {
-      return "Mensagem";
-    },
-    get$notificationRuleMessageDescription() {
-      return "Notifica o utilizador sobre mensagens gerais.";
-    },
     get$notificationRuleEncrypted() {
       return "Encriptado";
     },
@@ -17140,7 +17116,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cuRUZFdrY/FCp0ki0kafqAnfKbc="] = d.current;
+  d["FQUXhNCYbQ6/EpEfxIYqHPLBwF8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

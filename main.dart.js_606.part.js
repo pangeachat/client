@@ -1432,18 +1432,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleEncryptedRoomOneToOneDescription() {
       return "Erabiltzailea jakinarazten du zifratutako bien arteko geletako mezuei buruz.";
     },
-    get$notificationRuleRoomOneToOne() {
-      return "Bien arteko gela";
-    },
-    get$notificationRuleRoomOneToOneDescription() {
-      return "Erabiltzailea jakinarazten du bien arteko geletako mezuei buruz.";
-    },
-    get$notificationRuleMessage() {
-      return "Mezua";
-    },
-    get$notificationRuleMessageDescription() {
-      return "Erabiltzailea jakinarazten du mezu orokorrei buruz.";
-    },
     get$notificationRuleEncrypted() {
       return "Zifratuak";
     },
@@ -5652,6 +5640,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$profile() {
       return "Profila";
     },
+    get$notificationRuleDM() {
+      return "Direct Message";
+    },
+    get$notificationRuleDMDescription() {
+      return "Notifies the user about messages in direct message rooms.";
+    },
+    get$notificationRuleCourseAndActivity() {
+      return "Course and Activity";
+    },
+    get$notificationRuleCourseAndActivityDescription() {
+      return "Notifies the user about messages in courses, activities, and chats.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5668,7 +5668,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qN5BvNtNcc/65kegJghsSRZPofM="] = d.current;
+  d["H9thZOmJGRor9yr1CX0Gg0tlOS0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_606.part.js.map

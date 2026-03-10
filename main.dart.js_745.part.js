@@ -1430,19 +1430,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ruangan Terenkripsi Satu ke Satu";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return string$.Member;
-    },
-    get$notificationRuleRoomOneToOne() {
-      return "Ruangan Satu ke Satu";
-    },
-    get$notificationRuleRoomOneToOneDescription() {
-      return string$.Member;
-    },
-    get$notificationRuleMessage() {
-      return "Pesan";
-    },
-    get$notificationRuleMessageDescription() {
-      return "Memberi tahu pengguna tentang pesan umum.";
+      return "Memberi tahu pengguna tentang pesan dalam ruangan satu ke satu.";
     },
     get$notificationRuleEncrypted() {
       return "Terenkripsi";
@@ -5652,6 +5640,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$profile() {
       return "Profil";
     },
+    get$notificationRuleDM() {
+      return "Direct Message";
+    },
+    get$notificationRuleDMDescription() {
+      return "Notifies the user about messages in direct message rooms.";
+    },
+    get$notificationRuleCourseAndActivity() {
+      return "Course and Activity";
+    },
+    get$notificationRuleCourseAndActivityDescription() {
+      return "Notifies the user about messages in courses, activities, and chats.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5662,13 +5662,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     _inherit(A.L10nId, C.L10n);
   })();
   B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nId":{"L10n":[]}}'));
-  var string$ = {
-    Member: "Memberi tahu pengguna tentang pesan dalam ruangan satu ke satu."
-  };
 };
 ;
 (d => {
-  d["CL3QbcXky0HBLAz8Pux3qj+NRAE="] = d.current;
+  d["H4Pby4uuBwIwO7uV/03NyPkA5Rk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_745.part.js.map

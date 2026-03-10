@@ -1433,18 +1433,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleEncryptedRoomOneToOneDescription() {
       return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u044f\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u043f\u0440\u043e \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u0432 \u0437\u0430\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0445 \u043a\u043e\u043c\u043d\u0430\u0442\u0430\u0445 \xab\u041e\u0434\u0438\u043d \u043d\u0430 \u043e\u0434\u0438\u043d\xbb.";
     },
-    get$notificationRuleRoomOneToOne() {
-      return "\u041a\u043e\u043c\u043d\u0430\u0442\u0430 \xab\u041e\u0434\u0438\u043d \u043d\u0430 \u043e\u0434\u0438\u043d\xbb";
-    },
-    get$notificationRuleRoomOneToOneDescription() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u044f\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u043e \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u0445 \u0432 \u0440\u0430\u0437\u0434\u0435\u043b\u0430\u0445 \u043e\u0434\u0438\u043d \u043d\u0430 \u043e\u0434\u0438\u043d.";
-    },
-    get$notificationRuleMessage() {
-      return "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435";
-    },
-    get$notificationRuleMessageDescription() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u044f\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u043e\u0431 \u043e\u0431\u0449\u0438\u0445 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u0445.";
-    },
     get$notificationRuleEncrypted() {
       return "\u0417\u0430\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u043e";
     },
@@ -5653,6 +5641,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$profile() {
       return "\u041f\u0440\u043e\u0444\u0438\u043b\u044c";
     },
+    get$notificationRuleDM() {
+      return "Direct Message";
+    },
+    get$notificationRuleDMDescription() {
+      return "Notifies the user about messages in direct message rooms.";
+    },
+    get$notificationRuleCourseAndActivity() {
+      return "Course and Activity";
+    },
+    get$notificationRuleCourseAndActivityDescription() {
+      return "Notifies the user about messages in courses, activities, and chats.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5666,7 +5666,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6UYFzA1bLJPwmnOssazBP/aL0UM="] = d.current;
+  d["u0Kw+cqRpPyEBlz8XgQnZKu5W2Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_805.part.js.map

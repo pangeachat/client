@@ -1432,18 +1432,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleEncryptedRoomOneToOneDescription() {
       return "Notific\u0103 utilizatorul despre mesajele din camere criptate unu-la-unu.";
     },
-    get$notificationRuleRoomOneToOne() {
-      return "Camer\u0103 unu-la-unu";
-    },
-    get$notificationRuleRoomOneToOneDescription() {
-      return "Notific\u0103 utilizatorul despre mesaje \xeen camere unu-la-unu.";
-    },
-    get$notificationRuleMessage() {
-      return "Mesaj";
-    },
-    get$notificationRuleMessageDescription() {
-      return "Notific\u0103 utilizatorul despre mesaje generale.";
-    },
     get$notificationRuleEncrypted() {
       return "Criptat";
     },
@@ -5652,6 +5640,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$profile() {
       return "Profil";
     },
+    get$notificationRuleDM() {
+      return "Direct Message";
+    },
+    get$notificationRuleDMDescription() {
+      return "Notifies the user about messages in direct message rooms.";
+    },
+    get$notificationRuleCourseAndActivity() {
+      return "Course and Activity";
+    },
+    get$notificationRuleCourseAndActivityDescription() {
+      return "Notifies the user about messages in courses, activities, and chats.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5668,7 +5668,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pNI/uPza0Wjhqzs/5rXKdVrW+xQ="] = d.current;
+  d["XlSgabs5ouGhCHPT/7KcFDuedHQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_802.part.js.map

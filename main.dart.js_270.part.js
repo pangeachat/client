@@ -1432,18 +1432,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleEncryptedRoomOneToOneDescription() {
       return "Upozor\u0148uje u\u017eivatele na zpr\xe1vy v \u0161ifrovan\xfdch m\xedstnostech jeden na jednoho.";
     },
-    get$notificationRuleRoomOneToOne() {
-      return "M\xedstnost Jeden na Jednoho";
-    },
-    get$notificationRuleRoomOneToOneDescription() {
-      return "Upozor\u0148uje u\u017eivatele na zpr\xe1vy v m\xedstnostech jeden na jednoho.";
-    },
-    get$notificationRuleMessage() {
-      return "Zpr\xe1va";
-    },
-    get$notificationRuleMessageDescription() {
-      return "Upozor\u0148uje u\u017eivatele na obecn\xe9 zpr\xe1vy.";
-    },
     get$notificationRuleEncrypted() {
       return "\u0160ifrovan\xe9";
     },
@@ -5652,6 +5640,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$profile() {
       return "Profil";
     },
+    get$notificationRuleDM() {
+      return "Direct Message";
+    },
+    get$notificationRuleDMDescription() {
+      return "Notifies the user about messages in direct message rooms.";
+    },
+    get$notificationRuleCourseAndActivity() {
+      return "Course and Activity";
+    },
+    get$notificationRuleCourseAndActivityDescription() {
+      return "Notifies the user about messages in courses, activities, and chats.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5665,7 +5665,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gJqtYgFUs02PRp8BX7v0+wNo42U="] = d.current;
+  d["oTFLDyJYekrgXDOlST4eseq9Q8I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_270.part.js.map

@@ -1432,18 +1432,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleEncryptedRoomOneToOneDescription() {
       return "\u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u0627\u0632 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627 \u062f\u0631 \u0627\u062a\u0627\u0642\u200c\u0647\u0627\u06cc \u0631\u0645\u0632\u0646\u06af\u0627\u0631\u06cc\u200c\u0634\u062f\u0647 \u06cc\u06a9\u200c\u0628\u0647\u200c\u06cc\u06a9 \u0622\u06af\u0627\u0647 \u0645\u06cc\u06a9\u0646\u062f.";
     },
-    get$notificationRuleRoomOneToOne() {
-      return "\u0627\u062a\u0627\u0642 \u06cc\u06a9\u200c\u0628\u0647\u200c\u06cc\u06a9";
-    },
-    get$notificationRuleRoomOneToOneDescription() {
-      return "\u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u0627\u0632 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627 \u062f\u0631 \u0627\u062a\u0627\u0642\u200c\u0647\u0627\u06cc \u06cc\u06a9\u200c\u0628\u0647\u200c\u06cc\u06a9 \u0622\u06af\u0627\u0647 \u0645\u06cc\u06a9\u0646\u062f.";
-    },
-    get$notificationRuleMessage() {
-      return "\u067e\u06cc\u0627\u0645";
-    },
-    get$notificationRuleMessageDescription() {
-      return "\u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u0627\u0632 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u0639\u0645\u0648\u0645\u06cc \u0622\u06af\u0627\u0647 \u0645\u06cc\u06a9\u0646\u062f.";
-    },
     get$notificationRuleEncrypted() {
       return "\u0631\u0645\u0632\u0646\u06af\u0627\u0631\u06cc\u200c\u0634\u062f\u0647";
     },
@@ -5652,6 +5640,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$profile() {
       return "\u067e\u0631\u0648\u0641\u0627\u06cc\u0644";
     },
+    get$notificationRuleDM() {
+      return "Direct Message";
+    },
+    get$notificationRuleDMDescription() {
+      return "Notifies the user about messages in direct message rooms.";
+    },
+    get$notificationRuleCourseAndActivity() {
+      return "Course and Activity";
+    },
+    get$notificationRuleCourseAndActivityDescription() {
+      return "Notifies the user about messages in courses, activities, and chats.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5665,7 +5665,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RbsdYuJALxay/0+CRro6IZjUuX8="] = d.current;
+  d["U9N3yb2+/GuOpoE5tLDZx2ujGFo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_620.part.js.map
