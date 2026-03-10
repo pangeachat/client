@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-03-10 15:56:58.023292",
+  "@@last_modified": "2026-03-10 16:05:27.145066",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10974,12 +10974,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Tes un código de invitación ou un enlace a un curso público?",
   "welcomeUser": "Benvido {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11460,6 +11455,11 @@
   },
   "enableEmailNotifications": "Activar notificacións por correo electrónico",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Nunha clase? Pon o teu código de unión aquí.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

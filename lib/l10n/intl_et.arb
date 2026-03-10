@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-03-10 15:57:20.859392",
+  "@@last_modified": "2026-03-10 16:05:46.640860",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11262,12 +11262,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Kas sul on kutsekood või link avalikule kursusele?",
   "welcomeUser": "Tere tulemast {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11734,6 +11729,11 @@
   },
   "enableEmailNotifications": "Luba e-posti teavitused",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Klassis? Pane oma liitumiskood siia.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

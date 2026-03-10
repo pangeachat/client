@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 15:57:41.886483",
+  "@@last_modified": "2026-03-10 16:06:14.065444",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6442,12 +6442,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Bạn có mã mời hoặc liên kết đến một khóa học công khai không?",
   "welcomeUser": "Chào mừng {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -7181,6 +7176,11 @@
   },
   "enableEmailNotifications": "Bật thông báo qua email",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Trong một lớp học? Đặt mã tham gia của bạn ở đây.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

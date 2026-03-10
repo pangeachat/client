@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 15:57:32.540347",
+  "@@last_modified": "2026-03-10 16:06:01.572715",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10855,12 +10855,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "您是否有邀請碼或公共課程的鏈接？",
   "welcomeUser": "歡迎 {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11599,6 +11594,11 @@
   },
   "enableEmailNotifications": "啟用電子郵件通知",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "在課堂上？將您的加入代碼放在這裡。",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -3495,7 +3495,7 @@
   "setupChatBackup": "Chat zaxirasini sozlash",
   "@setupChatBackup": {},
   "@@locale": "uz",
-  "@@last_modified": "2026-03-10 15:57:34.160478",
+  "@@last_modified": "2026-03-10 16:06:03.212342",
   "noMoreResultsFound": "Boshqa natijalar topilmadi",
   "chatSearchedUntil": "Chat {time} gacha qidirildi",
   "federationBaseUrl": "Federatsiya Asos URL",
@@ -4944,7 +4944,6 @@
   "languageUpdated": "Maqsadli til yangilandi!",
   "voiceDropdownTitle": "Pangea Bot ovozi",
   "knockDesc": "Sizning so'rovingiz kurs adminiga yuborildi! Ular tasdiqlagan taqdirda sizga kirishga ruxsat beriladi.",
-  "joinSpaceOnboardingDesc": "Sizda ochiq kursga taklif kodi yoki havolasi bormi?",
   "welcomeUser": "Xush kelibsiz {user}",
   "findCourse": "Kurs toping",
   "publicInviteDescChat": "Ushbu chatga taklif qilish uchun foydalanuvchilarni qidiring.",
@@ -10978,10 +10977,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11354,6 +11349,11 @@
   },
   "enableEmailNotifications": "Email xabarnomalarini yoqish",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Sinfdasizmi? Ushbu yerga qo'shilish kodini kiriting.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-03-10 15:57:14.815062",
+  "@@last_modified": "2026-03-10 16:05:37.971346",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11214,12 +11214,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Imate li pozivni kod ili link za javni tečaj?",
   "welcomeUser": "Dobrodošli {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11953,6 +11948,11 @@
   },
   "enableEmailNotifications": "Omogući obavijesti putem e-pošte",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "U razredu? Stavite svoj kod za pridruživanje ovdje.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

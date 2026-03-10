@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-03-10 15:57:26.408957",
+  "@@last_modified": "2026-03-10 16:05:54.409455",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11307,12 +11307,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Máte pozvánkový kód nebo odkaz na veřejný kurz?",
   "welcomeUser": "Vítejte {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -12032,6 +12027,11 @@
   },
   "enableEmailNotifications": "Povolit e-mailová oznámení",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Ve třídě? Vložte sem svůj kód pro připojení.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

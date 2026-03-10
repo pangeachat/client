@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-03-10 15:58:02.340396",
+  "@@last_modified": "2026-03-10 16:06:36.380482",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11142,12 +11142,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Avez-vous un code d'invitation ou un lien vers un cours public ?",
   "welcomeUser": "Bienvenue {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11866,6 +11861,11 @@
   },
   "enableEmailNotifications": "Activer les notifications par e-mail",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Dans une classe ? Mettez votre code d'accès ici.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

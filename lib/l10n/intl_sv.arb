@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 15:57:53.229490",
+  "@@last_modified": "2026-03-10 16:06:23.081864",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11333,12 +11333,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Har du en inbjudningskod eller länk till en offentlig kurs?",
   "welcomeUser": "Välkommen {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -12072,6 +12067,11 @@
   },
   "enableEmailNotifications": "Aktivera e-postaviseringar",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "I en klass? Sätt in din anslutningskod här.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

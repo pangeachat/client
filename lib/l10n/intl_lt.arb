@@ -3856,7 +3856,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-03-10 15:57:41.040875",
+  "@@last_modified": "2026-03-10 16:06:13.055342",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11660,12 +11660,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Ar turite kvietimo kodą arba nuorodą į viešą kursą?",
   "welcomeUser": "Sveiki atvykę, {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -12399,6 +12394,11 @@
   },
   "enableEmailNotifications": "Įjungti el. pašto pranešimus",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Klasėje? Įrašykite savo prisijungimo kodą čia.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

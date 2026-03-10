@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-03-10 15:57:05.306714",
+  "@@last_modified": "2026-03-10 16:05:35.253189",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -11939,12 +11939,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Máte pozývací kód alebo odkaz na verejný kurz?",
   "welcomeUser": "Vitaj {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -12678,6 +12673,11 @@
   },
   "enableEmailNotifications": "Povoliť e-mailové upozornenia",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "V triede? Zadajte svoj kód na pripojenie sem.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

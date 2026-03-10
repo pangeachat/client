@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-03-10 15:57:19.025039",
+  "@@last_modified": "2026-03-10 16:05:44.779046",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10974,12 +10974,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Baduzu gonbidapen kodea edo lotura publiko baten ikastaroarentzako?",
   "welcomeUser": "Ongi etorri {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11460,6 +11455,11 @@
   },
   "enableEmailNotifications": "Gaitu posta elektronikoaren jakinarazpenak",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Klase batean? Jarri zure sartu kodea hemen.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -4603,7 +4603,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-03-10 15:56:59.569720",
+  "@@last_modified": "2026-03-10 16:05:28.412282",
   "@notificationRuleJitsi": {
     "type": "String",
     "placeholders": {}
@@ -10964,12 +10964,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "Onko sinulla kutsukoodia tai linkkiä julkiseen kurssiin?",
   "welcomeUser": "Tervetuloa {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -11519,6 +11514,11 @@
   },
   "enableEmailNotifications": "Ota sähköposti-ilmoitukset käyttöön",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Oletko luokassa? Laita liittymiskoodisi tänne.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }

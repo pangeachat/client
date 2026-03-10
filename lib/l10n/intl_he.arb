@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 15:57:15.648730",
+  "@@last_modified": "2026-03-10 16:05:39.061470",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11904,12 +11904,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "joinSpaceOnboardingDesc": "האם יש לך קוד הזמנה או קישור לקורס ציבורי?",
   "welcomeUser": "ברוך הבא {user}",
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@welcomeUser": {
     "type": "String",
     "placeholders": {
@@ -12643,6 +12638,11 @@
   },
   "enableEmailNotifications": "אפשר התראות דוא\"ל",
   "@enableEmailNotifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "בכיתה? הכנס את קוד ההצטרפות שלך כאן.",
+  "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
   }
