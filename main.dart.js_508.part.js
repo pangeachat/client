@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Informas la uzanton pri mesa\u011doj en kursoj, aktivadoj, kaj babilejoj.";
     },
+    get$enableEmailNotifications() {
+      return "Aktivigi retpo\u015dtajn sciigojn";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5668,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1UpRckpU0Cr+8dtGJOc1hRJJAe0="] = d.current;
+  d["/boICriGq2n8CxQE2QA5HbJRvwQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_508.part.js.map

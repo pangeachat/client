@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Teavitab kasutajat s\xf5numitest kursustes, tegevustes ja vestlustes.";
     },
+    get$enableEmailNotifications() {
+      return "Luba e-posti teavitused";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5668,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZZsdT2Jq84pd5x76MFVxXo7Z9N4="] = d.current;
+  d["gEjMDfNo0EW5RM1oo5TRepLzBjM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_583.part.js.map

@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Cuireann s\xe9 fol\xe1ireamh ar an \xfas\xe1ideoir faoi theachtaireachta\xed i gc\xfarsa\xed, gn\xedomha\xedochta\xed, agus comhoibrithe.";
     },
+    get$enableEmailNotifications() {
+      return "Cuir ar si\xfal f\xf3gra\xed r\xedomhphoist";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5674,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["l9YQClQJvGZNhq6vDrVzJIGDBdA="] = d.current;
+  d["164pWgVeAup5R4j3z6j4T2QluT0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_664.part.js.map

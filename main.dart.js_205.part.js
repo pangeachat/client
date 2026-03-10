@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Notifica a l'usuari sobre missatges en cursos, activitats i xats.";
     },
+    get$enableEmailNotifications() {
+      return "Activar les notificacions per correu electr\xf2nic";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5674,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["51r73SBdI7ytf01jgm7XkaEvy80="] = d.current;
+  d["LLUIz6H+hdRQI1LH3ttYZSYFRyM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_205.part.js.map

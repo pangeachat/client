@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Foydalanuvchini kurslar, faoliyatlar va suhbatlardagi xabarlar haqida xabardor qiladi.";
     },
+    get$enableEmailNotifications() {
+      return "Email xabarnomalarini yoqish";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5672,7 +5675,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["FW+EhKGKEiyRhCq/jenIV/uzyjY="] = d.current;
+  d["qc9xtyTBsAonCwLIb1OALWA15R0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_826.part.js.map

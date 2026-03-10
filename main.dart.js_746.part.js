@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Memberitahukan pengguna tentang pesan di kursus, aktivitas, dan obrolan.";
     },
+    get$enableEmailNotifications() {
+      return "Aktifkan notifikasi email";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5668,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9wzHnPvQFBPK7o9vED40cANYIeo="] = d.current;
+  d["JXUFG9anmNQj1NTLIzsJyfkPhpw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_746.part.js.map

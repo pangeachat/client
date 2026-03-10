@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Meddelar anv\xe4ndaren om meddelanden i kurser, aktiviteter och chattar.";
     },
+    get$enableEmailNotifications() {
+      return "Aktivera e-postaviseringar";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5668,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OkW6rLa9kFsxI9laOiq4PACscpU="] = d.current;
+  d["lClvstsLXTe2oEhX6KOzCV/QZKI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_818.part.js.map

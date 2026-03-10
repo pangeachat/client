@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Notific\u0103 utilizatorul despre mesajele din cursuri, activit\u0103\u021bi \u0219i chat-uri.";
     },
+    get$enableEmailNotifications() {
+      return "Activeaz\u0103 notific\u0103rile prin email";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5674,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nbbZkZTG3GA1bAMBbYWQuZz9IW4="] = d.current;
+  d["ysfEikTAJObzqbcO2j9cM1MYmnM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_803.part.js.map

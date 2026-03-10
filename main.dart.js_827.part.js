@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng v\u1ec1 c\xe1c tin nh\u1eafn trong c\xe1c kh\xf3a h\u1ecdc, ho\u1ea1t \u0111\u1ed9ng v\xe0 tr\xf2 chuy\u1ec7n.";
     },
+    get$enableEmailNotifications() {
+      return "B\u1eadt th\xf4ng b\xe1o qua email";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5668,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RGECVuhFeLNYYjDlJbn4Y8+qgcY="] = d.current;
+  d["/IGhHEWV5g+alIRSRYg8Ukx9gdE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_827.part.js.map

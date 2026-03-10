@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Erabiltzaileari ikastaroetan, jardueren eta txatetan mezuen berri ematen dio.";
     },
+    get$enableEmailNotifications() {
+      return "Gaitu posta elektronikoaren jakinarazpenak";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5674,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["j+jMp+7EdMvTcaPDgCnvVN7EWlI="] = d.current;
+  d["ZFSY8Mmy5q2kU+Lo9+WxnoDansU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_607.part.js.map

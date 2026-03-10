@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Nagbibigay-alam sa gumagamit tungkol sa mga mensahe sa mga kurso, aktibidad, at chat.";
     },
+    get$enableEmailNotifications() {
+      return "I-enable ang mga abiso sa email";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5668,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7aHeUyLGKgb6M1vAFNihidZ8/Og="] = d.current;
+  d["pT9/4V6oBA0DsyVT4xPVtGKHEfc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_638.part.js.map

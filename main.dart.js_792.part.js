@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Stelt de gebruiker op de hoogte van berichten in cursussen, activiteiten en chats.";
     },
+    get$enableEmailNotifications() {
+      return "Schakel e-mailmeldingen in";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5668,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rgYF51dExDB8BVH1vInQeaFcmRc="] = d.current;
+  d["8NGp1K+JbgZroLqSX3RTG/o+KL8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_792.part.js.map

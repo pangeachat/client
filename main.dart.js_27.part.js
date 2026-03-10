@@ -5667,6 +5667,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return string$.Notifisc;
     },
+    get$enableEmailNotifications() {
+      return "Ativar notifica\xe7\xf5es por e-mail";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -11310,6 +11313,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$notificationRuleCourseAndActivityDescription() {
       return string$.Notifisc;
+    },
+    get$enableEmailNotifications() {
+      return "Ativar notifica\xe7\xf5es por e-mail";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -16955,6 +16961,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return string$.Notifisc;
     },
+    get$enableEmailNotifications() {
+      return "Ativar notifica\xe7\xf5es por e-mail";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -17171,7 +17180,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["f5mqSoemWonC1pMCyv0h0x1+8tw="] = d.current;
+  d["PUFYKurB52QhxwBmG83lD1+qHJE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

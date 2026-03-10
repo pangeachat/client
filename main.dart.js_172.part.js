@@ -5657,6 +5657,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Notifye itilizat\xe8 a sou mesaj nan kou, aktivite, ak chat.";
     },
+    get$enableEmailNotifications() {
+      return "Buka notifikasi email";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5682,7 +5685,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Bd6LGRABVgUT+hTejWIyiPjzRyU="] = d.current;
+  d["/HlFLVc1EO9ZVkbN2uqljTHaY+I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_172.part.js.map

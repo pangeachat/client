@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Benachrichtigt den Benutzer \xfcber Nachrichten in Kursen, Aktivit\xe4ten und Chats.";
     },
+    get$enableEmailNotifications() {
+      return "E-Mail-Benachrichtigungen aktivieren";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5674,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["sWkrrNHqvGx4Vi1bNyj1pBrUGlY="] = d.current;
+  d["nNDufbmr82vvEXZqkd15wW7tE2M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_421.part.js.map

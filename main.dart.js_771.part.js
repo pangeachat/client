@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "\ucf54\uc2a4, \ud65c\ub3d9 \ubc0f \ucc44\ud305\uc5d0\uc11c\uc758 \uba54\uc2dc\uc9c0\uc5d0 \ub300\ud574 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc54c\ub9bc\uc744 \ubcf4\ub0c5\ub2c8\ub2e4.";
     },
+    get$enableEmailNotifications() {
+      return "\uc774\uba54\uc77c \uc54c\ub9bc \ud65c\uc131\ud654";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5668,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Q2ZYhMzb4oh/wEHrKWNL3xjAYJw="] = d.current;
+  d["q9+FP7p7wAJUCf1WkwH9jEuCMaE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_771.part.js.map

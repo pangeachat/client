@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Kullan\u0131c\u0131y\u0131 kurslar, aktiviteler ve sohbetlerdeki mesajlar hakk\u0131nda bilgilendirir.";
     },
+    get$enableEmailNotifications() {
+      return "E-posta bildirimlerini etkinle\u015ftir";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5674,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iRv4Ya+nDpB7RNbt1av43HSwq/0="] = d.current;
+  d["il6Xyf/dqBo0B69SBU5i4b8RAPM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_823.part.js.map

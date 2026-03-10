@@ -5656,6 +5656,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "\u0410\u043f\u0430\u0432\u044f\u0448\u0447\u0430\u0435 \u043a\u0430\u0440\u044b\u0441\u0442\u0430\u043b\u044c\u043d\u0456\u043a\u0430 \u043f\u0440\u0430 \u043f\u0430\u0432\u0435\u0434\u0430\u043c\u043b\u0435\u043d\u043d\u0456 \u045e \u043a\u0443\u0440\u0441\u0430\u0445, \u0434\u0437\u0435\u0439\u043d\u0430\u0441\u0446\u044f\u0445 \u0456 \u0447\u0430\u0442\u0430\u0445.";
     },
+    get$enableEmailNotifications() {
+      return "\u0423\u043a\u043b\u044e\u0447\u044b\u0446\u044c \u0430\u043f\u0430\u0432\u044f\u0448\u0447\u044d\u043d\u043d\u0456 \u043f\u0430 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u0430\u0439 \u043f\u043e\u0448\u0446\u0435";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5672,7 +5675,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aWXptQ+Y49Y+uqAYgnCmAF7/nDs="] = d.current;
+  d["kAPZMt+Y+wQUvEG3wjqXk+vi1CM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_152.part.js.map

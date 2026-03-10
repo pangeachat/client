@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Obavje\u0161tava korisnika o porukama u te\u010dajevima, aktivnostima i chatovima.";
     },
+    get$enableEmailNotifications() {
+      return "Omogu\u0107i obavijesti putem e-po\u0161te";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5668,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6bAHg5tLO+a8/CW9AvD8DJvcqcc="] = d.current;
+  d["TXidXdkXhHvUl4PKO7uaTchczes="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_682.part.js.map

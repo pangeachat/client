@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Inform\u0113 lietot\u0101ju par zi\u0146ojumiem kursos, aktivit\u0101t\u0113s un \u010datos.";
     },
+    get$enableEmailNotifications() {
+      return "Iesp\u0113jot e-pasta pazi\u0146ojumus";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5668,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["xTxnbcnAv6MOr8+kfEvMhgnTL4Y="] = d.current;
+  d["0cJiBExbDSq8u8OlJmvDsa0Y0yo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_782.part.js.map

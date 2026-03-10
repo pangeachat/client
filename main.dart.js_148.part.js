@@ -5656,6 +5656,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "\u064a\u064f\u0639\u0644\u0645 \u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645 \u0628\u0627\u0644\u0631\u0633\u0627\u0626\u0644 \u0641\u064a \u0627\u0644\u062f\u0648\u0631\u0627\u062a \u0648\u0627\u0644\u0623\u0646\u0634\u0637\u0629 \u0648\u0627\u0644\u062f\u0631\u062f\u0634\u0627\u062a.";
     },
+    get$enableEmailNotifications() {
+      return "\u062a\u0641\u0639\u064a\u0644 \u0625\u0634\u0639\u0627\u0631\u0627\u062a \u0627\u0644\u0628\u0631\u064a\u062f \u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5669,7 +5672,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QMP49CgjpCedppZh6D1/67P+1jg="] = d.current;
+  d["4/8m/uZb5Kji9KhjVQ98jzxjhAc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_148.part.js.map

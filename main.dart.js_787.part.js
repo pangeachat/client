@@ -5655,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationRuleCourseAndActivityDescription() {
       return "Varsler brukeren om meldinger i kurs, aktiviteter og chatter.";
     },
+    get$enableEmailNotifications() {
+      return "Aktiver e-postvarsler";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5674,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RqMXs7/+PFHSPuPDpZQBOiniceM="] = d.current;
+  d["se2FjixLjgt3jevsv6z1lG9mjrw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_787.part.js.map
