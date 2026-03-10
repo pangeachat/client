@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 16:05:58.194795",
+  "@@last_modified": "2026-03-10 16:50:33.267739",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -11620,6 +11620,16 @@
   },
   "joinSpaceOnboardingDesc": "En una classe? Posar el vostre codi d'unió aquí.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Destacar automàticament els missatges d'àudio",
+  "selectAudioMessagesOnPlayDescription": "Destacar automàticament els missatges d'àudio quan es reprodueixin",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

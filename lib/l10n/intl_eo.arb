@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 16:06:27.179909",
+  "@@last_modified": "2026-03-10 16:51:11.259877",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12683,6 +12683,16 @@
   },
   "joinSpaceOnboardingDesc": "En klaso? Metu vian aliĝkodon ĉi tie.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Aŭtomate emfazi aŭdmesaĝojn",
+  "selectAudioMessagesOnPlayDescription": "Aŭtomate emfazi aŭdmesaĝojn kiam ili estas ludataj",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

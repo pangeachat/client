@@ -3326,7 +3326,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-03-10 16:06:00.447020",
+  "@@last_modified": "2026-03-10 16:50:36.339446",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12628,6 +12628,16 @@
   },
   "joinSpaceOnboardingDesc": "Em uma aula? Coloque seu código de entrada aqui.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Realçar automaticamente mensagens de áudio",
+  "selectAudioMessagesOnPlayDescription": "Realçar automaticamente mensagens de áudio quando reproduzidas",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

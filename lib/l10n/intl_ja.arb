@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-03-10 16:06:25.232761",
+  "@@last_modified": "2026-03-10 16:51:07.161916",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -12384,6 +12384,16 @@
   },
   "joinSpaceOnboardingDesc": "クラスにいますか？ここに参加コードを入力してください。",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "オーディオメッセージを自動ハイライト",
+  "selectAudioMessagesOnPlayDescription": "再生時にオーディオメッセージを自動的にハイライトします",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -1851,7 +1851,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-03-10 16:05:50.782767",
+  "@@last_modified": "2026-03-10 16:50:23.440813",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12690,6 +12690,16 @@
   },
   "joinSpaceOnboardingDesc": "在課堂上？把你的加入代碼放在這裡。",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "自動突出顯示音頻消息",
+  "selectAudioMessagesOnPlayDescription": "播放時自動突出顯示音頻消息",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

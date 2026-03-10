@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 16:06:34.137675",
+  "@@last_modified": "2026-03-10 16:51:16.058820",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12690,6 +12690,16 @@
   },
   "joinSpaceOnboardingDesc": "U razredu? Stavite svoj kod za pridruživanje ovde.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Automatski istakni audio poruke",
+  "selectAudioMessagesOnPlayDescription": "Automatski istakni audio poruke kada se reprodukuju",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

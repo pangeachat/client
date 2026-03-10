@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-03-10 16:06:07.209012",
+  "@@last_modified": "2026-03-10 16:50:43.917320",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11810,6 +11810,16 @@
   },
   "joinSpaceOnboardingDesc": "في فصل دراسي؟ ضع رمز الانضمام الخاص بك هنا.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "تمييز الرسائل الصوتية تلقائيًا",
+  "selectAudioMessagesOnPlayDescription": "تمييز الرسائل الصوتية تلقائيًا عند تشغيلها",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 16:05:39.061470",
+  "@@last_modified": "2026-03-10 16:50:11.083698",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12643,6 +12643,16 @@
   },
   "joinSpaceOnboardingDesc": "בכיתה? הכנס את קוד ההצטרפות שלך כאן.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "הדגש אוטומטית הודעות קוליות",
+  "selectAudioMessagesOnPlayDescription": "הדגש אוטומטית הודעות קוליות כאשר הן מנוגנות",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

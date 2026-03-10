@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-03-10 16:06:30.518059",
+  "@@last_modified": "2026-03-10 16:51:12.836925",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11425,6 +11425,16 @@
   },
   "joinSpaceOnboardingDesc": "В классе? Введите свой код присоединения здесь.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Автовыделение аудиосообщений",
+  "selectAudioMessagesOnPlayDescription": "Автоматически выделять аудиосообщения при воспроизведении",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

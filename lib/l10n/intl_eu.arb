@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-03-10 16:05:44.779046",
+  "@@last_modified": "2026-03-10 16:50:15.239535",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -11460,6 +11460,16 @@
   },
   "joinSpaceOnboardingDesc": "Klase batean? Jarri zure sartu kodea hemen.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Audio mezuak automatikoki nabarmentzea",
+  "selectAudioMessagesOnPlayDescription": "Audio mezuak automatikoki nabarmentzea erreproduzitzen direnean",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

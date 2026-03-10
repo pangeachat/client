@@ -4638,7 +4638,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-03-10 16:06:35.261986",
+  "@@last_modified": "2026-03-10 16:51:17.708504",
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
@@ -11471,6 +11471,16 @@
   },
   "joinSpaceOnboardingDesc": "I rang? Cuir do chód comhoibrithe anseo.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Bailigh teachtaireachtaí gutháin go huathoibríoch",
+  "selectAudioMessagesOnPlayDescription": "Bailigh teachtaireachtaí gutháin go huathoibríoch nuair a chluineann tú iad",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

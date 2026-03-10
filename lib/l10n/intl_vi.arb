@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 16:06:14.065444",
+  "@@last_modified": "2026-03-10 16:50:50.974851",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -7181,6 +7181,16 @@
   },
   "joinSpaceOnboardingDesc": "Trong một lớp học? Đặt mã tham gia của bạn ở đây.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Tự động làm nổi bật tin nhắn âm thanh",
+  "selectAudioMessagesOnPlayDescription": "Tự động làm nổi bật tin nhắn âm thanh khi phát",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

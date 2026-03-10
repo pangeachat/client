@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 16:05:55.372886",
+  "@@last_modified": "2026-03-10 16:50:30.090198",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11529,6 +11529,16 @@
   },
   "joinSpaceOnboardingDesc": "I en klasse? Skriv inn koden din her.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Automatisk utheving av lydmeldinger",
+  "selectAudioMessagesOnPlayDescription": "Automatisk utheve lydmeldinger når de spilles av",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

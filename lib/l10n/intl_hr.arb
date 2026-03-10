@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-03-10 16:05:37.971346",
+  "@@last_modified": "2026-03-10 16:50:09.498716",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11953,6 +11953,16 @@
   },
   "joinSpaceOnboardingDesc": "U razredu? Stavite svoj kod za pridruživanje ovdje.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Automatski istakni audio poruke",
+  "selectAudioMessagesOnPlayDescription": "Automatski istakni audio poruke kada se reproduciraju",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

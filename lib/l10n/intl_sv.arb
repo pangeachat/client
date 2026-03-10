@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 16:06:23.081864",
+  "@@last_modified": "2026-03-10 16:51:03.676549",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -12072,6 +12072,16 @@
   },
   "joinSpaceOnboardingDesc": "I en klass? Sätt in din anslutningskod här.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Automatiskt markera ljudmeddelanden",
+  "selectAudioMessagesOnPlayDescription": "Automatiskt markera ljudmeddelanden när de spelas",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

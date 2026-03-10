@@ -177,6 +177,7 @@ class UserToolSettings {
   bool autoIGC;
   bool enableTTS;
   bool enableAutocorrect;
+  bool selectAudioMessagesOnPlay;
 
   UserToolSettings({
     this.interactiveTranslator = true,
@@ -186,6 +187,7 @@ class UserToolSettings {
     this.autoIGC = true,
     this.enableTTS = true,
     this.enableAutocorrect = false,
+    this.selectAudioMessagesOnPlay = true,
   });
 
   factory UserToolSettings.fromJson(Map<String, dynamic> json) =>
@@ -199,6 +201,7 @@ class UserToolSettings {
         autoIGC: json[ModelKey.autoIGC] ?? true,
         enableTTS: json[ToolSetting.enableTTS.toString()] ?? true,
         enableAutocorrect: json["enableAutocorrect"] ?? false,
+        selectAudioMessagesOnPlay: json["selectAudioMessagesOnPlay"] ?? true,
       );
 
   Map<String, dynamic> toJson() {
@@ -210,6 +213,7 @@ class UserToolSettings {
     data[ModelKey.autoIGC] = autoIGC;
     data[ToolSetting.enableTTS.toString()] = enableTTS;
     data["enableAutocorrect"] = enableAutocorrect;
+    data["selectAudioMessagesOnPlay"] = selectAudioMessagesOnPlay;
     return data;
   }
 
@@ -252,6 +256,7 @@ class UserToolSettings {
       autoIGC: autoIGC,
       enableTTS: enableTTS,
       enableAutocorrect: enableAutocorrect,
+      selectAudioMessagesOnPlay: selectAudioMessagesOnPlay,
     );
   }
 
@@ -266,7 +271,8 @@ class UserToolSettings {
         other.definitions == definitions &&
         other.autoIGC == autoIGC &&
         other.enableTTS == enableTTS &&
-        other.enableAutocorrect == enableAutocorrect;
+        other.enableAutocorrect == enableAutocorrect &&
+        other.selectAudioMessagesOnPlay == selectAudioMessagesOnPlay;
   }
 
   @override
@@ -278,6 +284,7 @@ class UserToolSettings {
     autoIGC.hashCode,
     enableTTS.hashCode,
     enableAutocorrect.hashCode,
+    selectAudioMessagesOnPlay.hashCode,
   ]);
 }
 

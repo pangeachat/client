@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 16:05:34.236546",
+  "@@last_modified": "2026-03-10 16:50:05.106833",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -12329,6 +12329,16 @@
   },
   "joinSpaceOnboardingDesc": "Într-o clasă? Pune codul tău de alăturare aici.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Subliniază automat mesajele audio",
+  "selectAudioMessagesOnPlayDescription": "Subliniază automat mesajele audio atunci când sunt redată",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

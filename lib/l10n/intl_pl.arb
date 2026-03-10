@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-03-10 16:06:21.744293",
+  "@@last_modified": "2026-03-10 16:51:01.310079",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -11582,6 +11582,16 @@
   },
   "joinSpaceOnboardingDesc": "W klasie? Wpisz tutaj swój kod dołączenia.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Automatyczne podświetlanie wiadomości audio",
+  "selectAudioMessagesOnPlayDescription": "Automatycznie podświetlaj wiadomości audio podczas odtwarzania",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

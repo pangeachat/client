@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 16:05:52.007523",
+  "@@last_modified": "2026-03-10 16:50:25.373974",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -11554,6 +11554,16 @@
   },
   "joinSpaceOnboardingDesc": "In una classe? Inserisci il tuo codice di accesso qui.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Evidenzia automaticamente i messaggi audio",
+  "selectAudioMessagesOnPlayDescription": "Evidenzia automaticamente i messaggi audio quando vengono riprodotti",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

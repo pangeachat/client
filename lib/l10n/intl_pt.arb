@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-10 16:05:45.734481",
+  "@@last_modified": "2026-03-10 16:50:16.505360",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -12681,6 +12681,16 @@
   },
   "joinSpaceOnboardingDesc": "Em uma aula? Coloque seu código de entrada aqui.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Realçar automaticamente mensagens de áudio",
+  "selectAudioMessagesOnPlayDescription": "Realçar automaticamente mensagens de áudio quando reproduzidas",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

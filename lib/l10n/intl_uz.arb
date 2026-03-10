@@ -3495,7 +3495,7 @@
   "setupChatBackup": "Chat zaxirasini sozlash",
   "@setupChatBackup": {},
   "@@locale": "uz",
-  "@@last_modified": "2026-03-10 16:06:03.212342",
+  "@@last_modified": "2026-03-10 16:50:39.509509",
   "noMoreResultsFound": "Boshqa natijalar topilmadi",
   "chatSearchedUntil": "Chat {time} gacha qidirildi",
   "federationBaseUrl": "Federatsiya Asos URL",
@@ -11354,6 +11354,16 @@
   },
   "joinSpaceOnboardingDesc": "Sinfdasizmi? Ushbu yerga qo'shilish kodini kiriting.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Avtomatik ravishda audio xabarlarni ajratish",
+  "selectAudioMessagesOnPlayDescription": "Ovoz berilganda audio xabarlarni avtomatik ravishda ajratish",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

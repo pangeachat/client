@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-03-10 16:06:10.385722",
+  "@@last_modified": "2026-03-10 16:50:45.354143",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11800,6 +11800,16 @@
   },
   "joinSpaceOnboardingDesc": "Bir derste misin? Katılma kodunu buraya yaz.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Sesli mesajları otomatik vurgula",
+  "selectAudioMessagesOnPlayDescription": "Oynatıldığında sesli mesajları otomatik olarak vurgula",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -2459,7 +2459,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-03-10 16:05:49.081025",
+  "@@last_modified": "2026-03-10 16:50:22.087887",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12675,6 +12675,16 @@
   },
   "joinSpaceOnboardingDesc": "V razredu? Tukaj vnesite svoj kodo za pridružitev.",
   "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAudioMessagesOnPlayToolName": "Samodejno označevanje avdio sporočil",
+  "selectAudioMessagesOnPlayDescription": "Samodejno označite avdio sporočila, ko se predvajajo",
+  "@selectAudioMessagesOnPlayToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudioMessagesOnPlayDescription": {
     "type": "String",
     "placeholders": {}
   }
