@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
 import 'package:fluffychat/pangea/analytics_practice/completed_activity_session_view.dart';
+import 'package:fluffychat/pangea/analytics_practice/insufficient_data_indicator.dart';
 import 'package:fluffychat/pangea/analytics_practice/ongoing_activity_session_view.dart';
 import 'package:fluffychat/pangea/analytics_practice/practice_timer_widget.dart';
 import 'package:fluffychat/pangea/analytics_practice/unsubscribed_practice_page.dart';
@@ -69,27 +69,7 @@ class AnalyticsPracticeView extends StatelessWidget {
               final error = controller.session.sessionError;
               if (error != null) {
                 if (error is InsufficientDataException) {
-                  return ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 400),
-                    child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        children: [
-                          WidgetSpan(
-                            alignment: PlaceholderAlignment.middle,
-                            child: Icon(Icons.info_outline, size: 24.0),
-                          ),
-                          TextSpan(text: '  '),
-                          TextSpan(
-                            text: L10n.of(
-                              context,
-                            ).noAnalyticsActivitiesAvailable,
-                            style: DefaultTextStyle.of(context).style,
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
+                  return InsufficientDataIndicator();
                 }
 
                 return error is UnsubscribedException

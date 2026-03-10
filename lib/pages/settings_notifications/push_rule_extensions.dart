@@ -36,9 +36,15 @@ extension PushRuleExtension on PushRule {
       case '.m.rule.encrypted_room_one_to_one':
         return l10n.notificationRuleEncryptedRoomOneToOne;
       case '.m.rule.room_one_to_one':
-        return l10n.notificationRuleRoomOneToOne;
+        // #Pangea
+        // return l10n.notificationRuleRoomOneToOne;
+        return l10n.notificationRuleDM;
+      // Pangea#
       case '.m.rule.message':
-        return l10n.notificationRuleMessage;
+        // #Pangea
+        // return l10n.notificationRuleMessage;
+        return l10n.notificationRuleCourseAndActivity;
+      // Pangea#
       case '.m.rule.encrypted':
         return l10n.notificationRuleEncrypted;
       case '.m.rule.room.server_acl':
@@ -83,9 +89,15 @@ extension PushRuleExtension on PushRule {
       case '.m.rule.encrypted_room_one_to_one':
         return l10n.notificationRuleEncryptedRoomOneToOneDescription;
       case '.m.rule.room_one_to_one':
-        return l10n.notificationRuleRoomOneToOneDescription;
+        // #Pangea
+        // return l10n.notificationRuleRoomOneToOneDescription;
+        return l10n.notificationRuleDMDescription;
+      // Pangea#
       case '.m.rule.message':
-        return l10n.notificationRuleMessageDescription;
+        // #Pangea
+        // return l10n.notificationRuleMessageDescription;
+        return l10n.notificationRuleCourseAndActivityDescription;
+      // Pangea#
       case '.m.rule.encrypted':
         return l10n.notificationRuleEncryptedDescription;
       case '.m.rule.room.server_acl':
@@ -104,15 +116,15 @@ extension PushRuleExtension on PushRule {
       '.m.rule.master',
       '.m.rule.suppress_notices',
       '.m.rule.invite_for_me',
-      '.m.rule.member_event',
+      // '.m.rule.member_event',
       '.m.rule.is_user_mention',
       '.m.rule.contains_display_name',
-      '.m.rule.is_room_mention',
-      '.m.rule.roomnotif',
+      // '.m.rule.is_room_mention',
+      // '.m.rule.roomnotif',
       // '.m.rule.tombstone',
-      '.m.rule.reaction',
+      // '.m.rule.reaction',
       // '.m.rule.room_server_acl',
-      '.m.rule.suppress_edits',
+      // '.m.rule.suppress_edits',
       // '.m.rule.call',
       // '.m.rule.encrypted_room_one_to_one',
       '.m.rule.room_one_to_one',
