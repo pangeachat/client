@@ -1394,7 +1394,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Cont\xe9m Nome de Exibi\xe7\xe3o";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return string$.Notifis;
+      return string$.Notifiqs;
     },
     get$notificationRuleIsRoomMention() {
       return "Men\xe7\xe3o na Sala";
@@ -1406,7 +1406,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Notifica\xe7\xe3o da Sala";
     },
     get$notificationRuleRoomnotifDescription() {
-      return string$.Notifi_;
+      return string$.Notifiq_;
     },
     get$notificationRuleTombstone() {
       return "L\xe1pide";
@@ -3925,7 +3925,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return string$.Voc__e;
     },
     get$confirmUserId() {
-      return string$.Por_fac;
+      return string$.Por_faco;
     },
     paidSubscriptionStarts$1(startDate) {
       return "Come\xe7a em " + startDate;
@@ -5632,13 +5632,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return string$.Nxe3o_v_;
     },
     get$clickOnEmailLinkDesc() {
-      return "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.";
+      return string$.Por_facl;
     },
     get$didntReceiveEmail() {
-      return "Didn't receive the email?";
+      return "N\xe3o recebeu o e-mail?";
     },
     get$resend() {
-      return "Resend";
+      return "Reenviar";
     },
     get$suggestedVocab() {
       return "Vocabul\xe1rio sugerido";
@@ -5652,17 +5652,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$profile() {
       return "Perfil";
     },
+    get$notificationDeviceSubtitle() {
+      return string$.Visual;
+    },
     get$notificationRuleDM() {
-      return "Direct Message";
+      return "Mensagem Direta";
     },
     get$notificationRuleDMDescription() {
-      return "Notifies the user about messages in direct message rooms.";
+      return "Notifica o usu\xe1rio sobre mensagens em salas de mensagem direta.";
     },
     get$notificationRuleCourseAndActivity() {
-      return "Course and Activity";
+      return "Curso e Atividade";
     },
     get$notificationRuleCourseAndActivityDescription() {
-      return "Notifies the user about messages in courses, activities, and chats.";
+      return string$.Notifisc;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -7035,7 +7038,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Cont\xe9m o nome de exibi\xe7\xe3o";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return string$.Notifis;
+      return string$.Notifiqs;
     },
     get$notificationRuleIsRoomMention() {
       return "Men\xe7\xe3o de sala";
@@ -7047,7 +7050,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Notifica\xe7\xe3o de sala";
     },
     get$notificationRuleRoomnotifDescription() {
-      return string$.Notifi_;
+      return string$.Notifiq_;
     },
     get$notificationRuleTombstone() {
       return "Morte";
@@ -9566,7 +9569,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return string$.Voc__e;
     },
     get$confirmUserId() {
-      return string$.Por_fac;
+      return string$.Por_faco;
     },
     paidSubscriptionStarts$1(startDate) {
       return "Come\xe7a em " + startDate;
@@ -11272,6 +11275,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return string$.Nxe3o_v_;
     },
+    get$clickOnEmailLinkDesc() {
+      return "Por favor, clique no link no e-mail e, em seguida, prossiga. Verifique sua pasta de spam se o e-mail n\xe3o chegou.";
+    },
+    get$didntReceiveEmail() {
+      return "N\xe3o recebeu o e-mail?";
+    },
+    get$resend() {
+      return "Reenviar";
+    },
     get$suggestedVocab() {
       return "Vocabul\xe1rio sugerido";
     },
@@ -11283,6 +11295,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$profile() {
       return "Perfil";
+    },
+    get$notificationDeviceSubtitle() {
+      return string$.Visual;
+    },
+    get$notificationRuleDM() {
+      return "Mensagem Direta";
+    },
+    get$notificationRuleDMDescription() {
+      return string$.Notifiss;
+    },
+    get$notificationRuleCourseAndActivity() {
+      return "Curso e Atividade";
+    },
+    get$notificationRuleCourseAndActivityDescription() {
+      return string$.Notifisc;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -16892,6 +16919,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyInviteSearchHint() {
       return string$.Nxe3o_v_;
     },
+    get$clickOnEmailLinkDesc() {
+      return string$.Por_facl;
+    },
+    get$didntReceiveEmail() {
+      return "N\xe3o recebeu o e-mail?";
+    },
+    get$resend() {
+      return "Reenviar";
+    },
     get$suggestedVocab() {
       return "Vocabul\xe1rio sugerido";
     },
@@ -16903,6 +16939,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$profile() {
       return "Perfil";
+    },
+    get$notificationDeviceSubtitle() {
+      return "Visualize e gerencie dispositivos que enviam notifica\xe7\xf5es push para voc\xea.";
+    },
+    get$notificationRuleDM() {
+      return "Mensagem Direta";
+    },
+    get$notificationRuleDMDescription() {
+      return string$.Notifiss;
+    },
+    get$notificationRuleCourseAndActivity() {
+      return "Curso e Atividade";
+    },
+    get$notificationRuleCourseAndActivityDescription() {
+      return string$.Notifisc;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -17020,8 +17071,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     NenhumD: "Nenhum DM ou chat encontrado. Certifique-se de que sua busca est\xe1 escrita corretamente.",
     Nenhumch: "Nenhum chat ou curso encontrado com esse c\xf3digo. Por favor, tente novamente.",
     Nenhumcu: "Nenhum curso p\xfablico encontrado. Gostaria de criar um?",
-    Notifi_: "Notifica o usu\xe1rio quando uma mensagem cont\xe9m '@room'.",
-    Notifis: "Notifica o usu\xe1rio quando uma mensagem cont\xe9m seu nome de exibi\xe7\xe3o.",
+    Notifiq_: "Notifica o usu\xe1rio quando uma mensagem cont\xe9m '@room'.",
+    Notifiqs: "Notifica o usu\xe1rio quando uma mensagem cont\xe9m seu nome de exibi\xe7\xe3o.",
+    Notifisc: "Notifica o usu\xe1rio sobre mensagens em cursos, atividades e chats.",
+    Notifiss: "Notifica o usu\xe1rio sobre mensagens em salas de mensagens diretas.",
     Novos_: "Novos usu\xe1rios recebem uma semana de teste gratuito do Pangea Chat",
     Nxe3o_fo: "N\xe3o foi poss\xedvel descriptografar a mensagem: ",
     Nxe3o_v_: "N\xe3o v\xea quem est\xe1 procurando? Eles podem precisar definir o perfil como p\xfablico nas Configura\xe7\xf5es de Aprendizado",
@@ -17050,7 +17103,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Permite: "Permite que o aplicativo gere sa\xedda de texto para fala para trechos de texto no seu idioma de destino.",
     Permiti: "Permitir que meu perfil seja encontrado na busca",
     Por_faa: "Por favor, atualize o aplicativo para continuar.",
-    Por_fac: "Por favor, confirme seu nome de usu\xe1rio no Pangea Chat para excluir sua conta.",
+    Por_facl: "Por favor, clique no link no e-mail e depois prossiga. Verifique sua pasta de spam se o e-mail n\xe3o chegou.",
+    Por_faco: "Por favor, confirme seu nome de usu\xe1rio no Pangea Chat para excluir sua conta.",
     Por_faei: "Por favor, escolha idiomas base e alvo diferentes",
     Por_faeu: "Por favor, escolha um papel predefinido abaixo ou insira um n\xedvel de permiss\xe3o personalizado entre 0 e 100.",
     Por_faf: "Por favor, fa\xe7a login no seu dispositivo original para gerenciar seu plano de assinatura",
@@ -17093,6 +17147,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Usar_i: "Usar imagem da atividade como fundo do chat",
     Uso_de: "Uso de N\xedvel 2 com assist\xeancia de tradu\xe7\xe3o e assist\xeancia gramatical",
     Usu_ri: "Usu\xe1rios inativos que n\xe3o fizeram login desde a introdu\xe7\xe3o deste recurso n\xe3o ver\xe3o sua solicita\xe7\xe3o.\n\nO bot\xe3o Solicitar aparecer\xe1 assim que eles retornarem. Voc\xea pode reenviar a solicita\xe7\xe3o mais tarde clicando no bot\xe3o Solicitar sob o nome deles quando estiver dispon\xedvel.",
+    Visual: "Visualize e gerencie dispositivos que enviam notifica\xe7\xf5es push.",
     Vis_ve: 'Vis\xedvel para a comunidade mais ampla do Pangea Chat via "Encontrar um curso"',
     Voc__ai: "Voc\xea ainda n\xe3o adicionou nenhum endere\xe7o de e-mail.",
     Voc__ati: "Voc\xea atualizou suas configura\xe7\xf5es de aprendizado",
@@ -17116,7 +17171,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["FQUXhNCYbQ6/EpEfxIYqHPLBwF8="] = d.current;
+  d["f5mqSoemWonC1pMCyv0h0x1+8tw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map
