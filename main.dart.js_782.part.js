@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Klases? Ievietojiet savu pievieno\u0161an\u0101s kodu \u0161eit.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Autom\u0101tiski izcelt audio zi\u0146ojumus";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Autom\u0101tiski izcelt audio zi\u0146ojumus, kad tie tiek atska\u0146oti";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["EkgdoJaEWC0ntGyEXypCqST+8q4="] = d.current;
+  d["rHdZtH6H4Wfk+OUzE3ZDKo9gXG4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_782.part.js.map

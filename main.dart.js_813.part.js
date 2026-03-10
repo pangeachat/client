@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "V razredu? Tukaj vnesite svoj kodo za pridru\u017eitev.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Samodejno ozna\u010devanje avdio sporo\u010dil";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Samodejno ozna\u010dite avdio sporo\u010dila, ko se predvajajo";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pFyka2hBQIU8ArDKSGEWGJtrx6Q="] = d.current;
+  d["84xXMBT7a7EoU6Ruh5VID2guLvE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_813.part.js.map

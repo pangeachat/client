@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "In un klas? Meti vian enir kodon \u0109i tie.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Auto-s\xe9lectionner les messages audio";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Mettre automatiquement en surbrillance les messages audio lorsqu'ils sont lus";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["G8XvH7ImpFjFCDQylT7NBFL5wwM="] = d.current;
+  d["htihoLHfyVDyD96uKRFy7IQYjJ4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_727.part.js.map

@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Oletko luokassa? Laita liittymiskoodisi t\xe4nne.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Korosta \xe4\xe4niviestej\xe4 automaattisesti";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Korosta \xe4\xe4niviestej\xe4 automaattisesti, kun niit\xe4 toistetaan";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nHArtvwYupcaPv50nqfzEp9IeBM="] = d.current;
+  d["wnwvXt2R6r/CnvA5gBaPzHJvIYE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_624.part.js.map

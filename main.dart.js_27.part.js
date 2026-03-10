@@ -5670,6 +5670,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return string$.Em_uma;
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return string$.Real_a;
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return string$.Real_a_;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -11316,6 +11322,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$joinSpaceOnboardingDesc() {
       return string$.Em_uma;
+    },
+    get$selectAudioMessagesOnPlayToolName() {
+      return string$.Real_a;
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return string$.Real_a_;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -16964,6 +16976,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return string$.Em_uma;
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return string$.Real_a;
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return string$.Real_a_;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -17135,6 +17153,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Quandoa: "Quando ativado, palavras sublinhadas em azul podem ser clicadas para obter defini\xe7\xf5es. Clique nas mensagens para acessar defini\xe7\xf5es.",
     Quandot: "Quando terminar esta atividade, clique abaixo",
     Quem_p: "Quem pode adicionar novas conversas a este curso",
+    Real_a: "Real\xe7ar automaticamente mensagens de \xe1udio",
+    Real_a_: "Real\xe7ar automaticamente mensagens de \xe1udio quando reproduzidas",
     Remove: "Remover o Pangea Bot ir\xe1 remover o bot de conversa deste chat.",
     Report: "Reportar problema na informa\xe7\xe3o da palavra",
     Sair_d: "Sair deste espa\xe7o e de todas as conversas nele",
@@ -17180,7 +17200,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["U9n8GrLrkO+hwgh3eHljur3zCD4="] = d.current;
+  d["HrYD4w7QGRgvP7XsSqMCOVAcp74="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

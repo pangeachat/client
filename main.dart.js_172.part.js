@@ -5660,6 +5660,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "I na klasi? Stavi svoj join kod ovde.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Auto-highlight audio messages";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Automatically highlight audio messages when played";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5685,7 +5691,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["letkfEePKX//azicDN7ofq+ak4I="] = d.current;
+  d["WVDgtHaK0avtGzWWLk8Mknm56v8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_172.part.js.map

@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "In een klas? Plaats hier je join-code.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Automatisch audio berichten markeren";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Audio berichten automatisch markeren wanneer ze worden afgespeeld";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["06tG49QEDkUIWA0otEBkhyNpSHY="] = d.current;
+  d["u14TFSCB9oSBZlnUNCSPvS5XFbA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_792.part.js.map

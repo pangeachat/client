@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Dalam kelas? Masukkan kode bergabung Anda di sini.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Sorot otomatis pesan audio";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Secara otomatis sorot pesan audio saat diputar";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["eVnbIdLAmHWER65q1SVCPRM906g="] = d.current;
+  d["RKLPaStIFjjri4Fa1V/j5CirAiI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_746.part.js.map

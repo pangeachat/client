@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Sa isang klase? Ilagay ang iyong join code dito.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Awtomatikong i-highlight ang mga mensaheng audio";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Awtomatikong i-highlight ang mga mensaheng audio kapag pinatugtog";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aAndwaQGGVpZx3rwSfX5f0GNmfA="] = d.current;
+  d["3LdhqEvICQwPLpRK3zn4bfZw9To="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_638.part.js.map

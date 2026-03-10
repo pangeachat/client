@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "I en klasse? Skriv inn koden din her.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Automatisk utheving av lydmeldinger";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Automatisk utheve lydmeldinger n\xe5r de spilles av";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5674,7 +5680,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["95pOLCa+A36SRpLsVbe5AcpbCFU="] = d.current;
+  d["HvxdUTS0Ygkdz6TKcM/9hz2FJ0k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_787.part.js.map

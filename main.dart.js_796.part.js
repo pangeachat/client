@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "W klasie? Wpisz tutaj sw\xf3j kod do\u0142\u0105czenia.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Automatyczne pod\u015bwietlanie wiadomo\u015bci audio";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Automatycznie pod\u015bwietlaj wiadomo\u015bci audio podczas odtwarzania";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["AeobFHVfpe1/okHRCY0Jeum3EPQ="] = d.current;
+  d["54vHgbuOm7qGk4dWeb1HdDx9gFQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_796.part.js.map

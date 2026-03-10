@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Klas\u0117je? \u012era\u0161ykite savo prisijungimo kod\u0105 \u010dia.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Automati\u0161kai pary\u0161kinti garso prane\u0161imus";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Automati\u0161kai pary\u0161kinti garso prane\u0161imus, kai jie atkuriami";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5674,7 +5680,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8FjguIHHHeGuyICJI3ZCzMqFFAM="] = d.current;
+  d["pUzysPXxBLMXri5qjs0xtbMmaj8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_772.part.js.map

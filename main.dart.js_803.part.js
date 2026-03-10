@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "\xcentr-o clas\u0103? Pune codul t\u0103u de al\u0103turare aici.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Subliniaz\u0103 automat mesajele audio";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Subliniaz\u0103 automat mesajele audio atunci c\xe2nd sunt redat\u0103";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5674,7 +5680,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["SCOd3zDxoKrQj17UnCj+iRWqUGY="] = d.current;
+  d["RKlmFsAW52sFD9ex5GMdEXGsb1Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_803.part.js.map

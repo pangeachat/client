@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Sinfdasizmi? Ushbu yerga qo'shilish kodini kiriting.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Avtomatik ravishda audio xabarlarni ajratish";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Ovoz berilganda audio xabarlarni avtomatik ravishda ajratish";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5675,7 +5681,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["K9jNYCdiUGqiAB4JuH7n6DJd/Tc="] = d.current;
+  d["Wb2oTNCE6JDdd5N9uxVx8OLCECs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_826.part.js.map

@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Bir derste misin? Kat\u0131lma kodunu buraya yaz.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Sesli mesajlar\u0131 otomatik vurgula";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Oynat\u0131ld\u0131\u011f\u0131nda sesli mesajlar\u0131 otomatik olarak vurgula";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5674,7 +5680,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["n4QW2Hx7bFxvXpSnzGFGQ0DCO5E="] = d.current;
+  d["mrSlV2eyjWxBEjLHLz731w3di38="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_823.part.js.map

@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "I en klass? S\xe4tt in din anslutningskod h\xe4r.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Automatiskt markera ljudmeddelanden";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Automatiskt markera ljudmeddelanden n\xe4r de spelas";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OYUb23GcVe2lqTwWPg2JXKsd6KA="] = d.current;
+  d["AcUitKMbOMxYSUqhC6B6Ib4Y3Bw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_818.part.js.map

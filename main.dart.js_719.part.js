@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Oszt\xe1lyban? \xcdrd be ide a csatlakoz\xe1si k\xf3dodat.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Automatikusan kiemeli az audio \xfczeneteket";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Automatikusan kiemeli az audio \xfczeneteket, amikor lej\xe1tsz\xe1sra ker\xfclnek";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["87pfQMSTMCSmNH2a8jSBoviNQTg="] = d.current;
+  d["UfVNme0DATN0yVX8qzDnWG2UjJo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_719.part.js.map

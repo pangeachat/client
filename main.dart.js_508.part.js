@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "En klaso? Metu vian ali\u011dkodon \u0109i tie.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "A\u016dtomate emfazi a\u016ddmesa\u011dojn";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "A\u016dtomate emfazi a\u016ddmesa\u011dojn kiam ili estas ludataj";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RxwI//F6JuncQM/AQ8x0h0Uy3eo="] = d.current;
+  d["USChLEDCq8FlVm4z7CaQ0Rvssps="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_508.part.js.map

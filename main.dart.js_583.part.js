@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Klassis? Pane oma liitumiskood siia.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Automaatne helis\xf5numite esilet\xf5stmine";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Helis\xf5numid esitatuna automaatselt esile t\xf5sta";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["D8f0lzu+n4qJOkj697x5X9G7kG8="] = d.current;
+  d["AFdxudDbuo+L9j/pROKIPUeHQ5A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_583.part.js.map

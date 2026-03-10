@@ -5658,6 +5658,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "I en klasse? S\xe6t din join-kode her.";
     },
+    get$selectAudioMessagesOnPlayToolName() {
+      return "Automatisk fremh\xe6vning af lydbeskeder";
+    },
+    get$selectAudioMessagesOnPlayDescription() {
+      return "Fremh\xe6v automatisk lydbeskeder, n\xe5r de afspilles";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OJuFNzOXfYAZFSWhJ0qnerP7YT0="] = d.current;
+  d["OZsallr3SbPimoBWKxvq9wfRd6o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_338.part.js.map
