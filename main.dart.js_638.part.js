@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "Tinanggap ang iyong kahilingan na sumali! Maaari ka nang pumasok sa kurso.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Mayroon ka bang invite code o link sa isang pampublikong kurso?";
-    },
     get$findCourse() {
       return "Maghanap ng kurso";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "I-enable ang mga abiso sa email";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Sa isang klase? Ilagay ang iyong join code dito.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pT9/4V6oBA0DsyVT4xPVtGKHEfc="] = d.current;
+  d["aAndwaQGGVpZx3rwSfX5f0GNmfA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_638.part.js.map

@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "Va\u0161 zahtev za pridru\u017eivanje je prihva\u0107en! Sada mo\u017eete u\u0107i u kurs.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Imate li pozivni kod ili link za javni kurs?";
-    },
     get$findCourse() {
       return "\u041f\u0440\u043e\u043d\u0430\u0452\u0438 \u043a\u0443\u0440\u0441";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Omogu\u0107i obave\u0161tenja putem e-po\u0161te";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "U razredu? Stavite svoj kod za pridru\u017eivanje ovde.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nlWh768G8NwkQ+JV+ZJO4A/VuTU="] = d.current;
+  d["T986tCfaBv0IvIJ6CD+CgYAStCY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_815.part.js.map

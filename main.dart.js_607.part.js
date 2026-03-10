@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "Zure parte-hartze eskaera onartu da! Orain ikastaroan sartu zaitezke.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Baduzu gonbidapen kodea edo lotura publiko baten ikastaroarentzako?";
-    },
     get$findCourse() {
       return "Bilatu ikastaroa";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Gaitu posta elektronikoaren jakinarazpenak";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Klase batean? Jarri zure sartu kodea hemen.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5674,7 +5674,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZFSY8Mmy5q2kU+Lo9+WxnoDansU="] = d.current;
+  d["i40Cvk27rkzeA2J0x+V5uBa/ZrY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_607.part.js.map

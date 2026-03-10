@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "Teie liitumissoovitus on vastu v\xf5etud! N\xfc\xfcd saate kursusele siseneda.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Kas sul on kutsekood v\xf5i link avalikule kursusele?";
-    },
     get$findCourse() {
       return "Leia kursus";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Luba e-posti teavitused";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Klassis? Pane oma liitumiskood siia.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gEjMDfNo0EW5RM1oo5TRepLzBjM="] = d.current;
+  d["D8f0lzu+n4qJOkj697x5X9G7kG8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_583.part.js.map

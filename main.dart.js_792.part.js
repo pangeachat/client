@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "Je aanvraag om deel te nemen is geaccepteerd! Je kunt nu de cursus binnenkomen.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Heb je een uitnodigingscode of link naar een openbare cursus?";
-    },
     get$findCourse() {
       return "Vind een cursus";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Schakel e-mailmeldingen in";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "In een klas? Plaats hier je join-code.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8NGp1K+JbgZroLqSX3RTG/o+KL8="] = d.current;
+  d["06tG49QEDkUIWA0otEBkhyNpSHY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_792.part.js.map

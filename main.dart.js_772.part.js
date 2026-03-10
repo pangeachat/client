@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "J\u016bs\u0173 prisijungimo pra\u0161ymas buvo priimtas! Dabar galite patekti \u012f kurs\u0105.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Ar turite kvietimo kod\u0105 arba nuorod\u0105 \u012f vie\u0161\u0105 kurs\u0105?";
-    },
     get$findCourse() {
       return "Rasti kurs\u0105";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "\u012ejungti el. pa\u0161to prane\u0161imus";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Klas\u0117je? \u012era\u0161ykite savo prisijungimo kod\u0105 \u010dia.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5674,7 +5674,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["v+lN4UDiyYstj7Uk1zRgF33B7jU="] = d.current;
+  d["8FjguIHHHeGuyICJI3ZCzMqFFAM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_772.part.js.map

@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "Permintaan bergabung Anda diterima! Anda sekarang dapat memasuki kursus.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Apakah Anda memiliki kode undangan atau tautan ke kursus publik?";
-    },
     get$findCourse() {
       return "Cari kursus";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Aktifkan notifikasi email";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Dalam kelas? Masukkan kode bergabung Anda di sini.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["JXUFG9anmNQj1NTLIzsJyfkPhpw="] = d.current;
+  d["eVnbIdLAmHWER65q1SVCPRM906g="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_746.part.js.map

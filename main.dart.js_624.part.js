@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "Liittymispyynt\xf6si hyv\xe4ksyttiin! Voit nyt liitty\xe4 kurssille.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Onko sinulla kutsukoodia tai linkki\xe4 julkiseen kurssiin?";
-    },
     get$findCourse() {
       return "Etsi kurssi";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Ota s\xe4hk\xf6posti-ilmoitukset k\xe4ytt\xf6\xf6n";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Oletko luokassa? Laita liittymiskoodisi t\xe4nne.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["MJ1iCOfklWvo6OUsZgnvtWUz8RI="] = d.current;
+  d["nHArtvwYupcaPv50nqfzEp9IeBM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_624.part.js.map

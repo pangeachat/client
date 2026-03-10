@@ -5426,9 +5426,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "Tua richiesta di ingresso \xe8 stata accettata! Ora puoi entrare nel corso.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Do you have an invite code or link to a public course?";
-    },
     get$findCourse() {
       return "\u0f5a\u0f7c\u0f44\u0f0b\u0f41\u0f44\u0f0b\u0f56\u0f5f\u0f7c\u0f0b\u0f56\u0f45\u0f7c\u0f66\u0f0d";
     },
@@ -5660,6 +5657,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Buka notifikasi email";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "I na klasi? Stavi svoj join kod ovde.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5685,7 +5685,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/HlFLVc1EO9ZVkbN2uqljTHaY+I="] = d.current;
+  d["letkfEePKX//azicDN7ofq+ak4I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_172.part.js.map

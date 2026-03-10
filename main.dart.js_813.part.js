@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "Va\u0161a pro\u0161nja za vstop je bila sprejeta! Zdaj lahko vstopite v te\u010daj.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Imate kodo za povabilo ali povezavo do javnega te\u010daja?";
-    },
     get$findCourse() {
       return "Najdi te\u010daj";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Omogo\u010di obvestila po elektronski po\u0161ti";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "V razredu? Tukaj vnesite svoj kodo za pridru\u017eitev.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/yFfcVOFA9Lm/6pdTuYQ/bS5wAQ="] = d.current;
+  d["pFyka2hBQIU8ArDKSGEWGJtrx6Q="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_813.part.js.map

@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "Cererea ta de aderare a fost acceptat\u0103! Acum po\u021bi intra \xeen curs.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Ai un cod de invita\u021bie sau un link pentru un curs public?";
-    },
     get$findCourse() {
       return "G\u0103se\u0219te un curs";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Activeaz\u0103 notific\u0103rile prin email";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "\xcentr-o clas\u0103? Pune codul t\u0103u de al\u0103turare aici.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5674,7 +5674,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ysfEikTAJObzqbcO2j9cM1MYmnM="] = d.current;
+  d["SCOd3zDxoKrQj17UnCj+iRWqUGY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_803.part.js.map

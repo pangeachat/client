@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "Sizning qo'shilish so'rovingiz qabul qilindi! Endi kursga kirishingiz mumkin.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Sizda ochiq kursga taklif kodi yoki havolasi bormi?";
-    },
     get$findCourse() {
       return "Kurs toping";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Email xabarnomalarini yoqish";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Sinfdasizmi? Ushbu yerga qo'shilish kodini kiriting.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5675,7 +5675,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qc9xtyTBsAonCwLIb1OALWA15R0="] = d.current;
+  d["K9jNYCdiUGqiAB4JuH7n6DJd/Tc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_826.part.js.map

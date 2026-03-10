@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "Kat\u0131lma iste\u011finiz kabul edildi! Art\u0131k derse girebilirsiniz.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Bir davet kodunuz veya halka a\xe7\u0131k bir kursa ba\u011flant\u0131n\u0131z var m\u0131?";
-    },
     get$findCourse() {
       return "Bir kurs bul";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "E-posta bildirimlerini etkinle\u015ftir";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Bir derste misin? Kat\u0131lma kodunu buraya yaz.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5674,7 +5674,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["il6Xyf/dqBo0B69SBU5i4b8RAPM="] = d.current;
+  d["n4QW2Hx7bFxvXpSnzGFGQ0DCO5E="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_823.part.js.map

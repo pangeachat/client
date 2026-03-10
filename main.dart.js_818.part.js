@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "Din ans\xf6kan om att g\xe5 med har accepterats! Du kan nu g\xe5 in i kursen.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Har du en inbjudningskod eller l\xe4nk till en offentlig kurs?";
-    },
     get$findCourse() {
       return "Hitta en kurs";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Aktivera e-postaviseringar";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "I en klass? S\xe4tt in din anslutningskod h\xe4r.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lClvstsLXTe2oEhX6KOzCV/QZKI="] = d.current;
+  d["OYUb23GcVe2lqTwWPg2JXKsd6KA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_818.part.js.map

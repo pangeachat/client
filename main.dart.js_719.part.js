@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "A csatlakoz\xe1si k\xe9relmedet elfogadt\xe1k! Most m\xe1r bel\xe9phetsz a kurzusra.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Van megh\xedv\xf3 k\xf3dod vagy linked egy nyilv\xe1nos kurzushoz?";
-    },
     get$findCourse() {
       return "Kurzus keres\xe9se";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Enged\xe9lyezze az e-mail \xe9rtes\xedt\xe9seket";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Oszt\xe1lyban? \xcdrd be ide a csatlakoz\xe1si k\xf3dodat.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["SU8T/8Mwky/RsKLbpy9OPuFPPig="] = d.current;
+  d["87pfQMSTMCSmNH2a8jSBoviNQTg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_719.part.js.map

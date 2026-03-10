@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "Via ali\u011dpeticio estis akceptita! Vi nun povas eniri la kurson.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "\u0108u vi havas invitkodon a\u016d ligon al publika kurso?";
-    },
     get$findCourse() {
       return "Trovu kurson";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Aktivigi retpo\u015dtajn sciigojn";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "En klaso? Metu vian ali\u011dkodon \u0109i tie.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/boICriGq2n8CxQE2QA5HbJRvwQ="] = d.current;
+  d["RxwI//F6JuncQM/AQ8x0h0Uy3eo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_508.part.js.map

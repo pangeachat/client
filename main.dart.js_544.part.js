@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "\xa1Tu solicitud de uni\xf3n fue aceptada! Ahora puedes entrar al curso.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "\xbfTienes un c\xf3digo de invitaci\xf3n o un enlace a un curso p\xfablico?";
-    },
     get$findCourse() {
       return "Buscar un curso";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Habilitar notificaciones por correo electr\xf3nico";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "\xbfEn una clase? Pon tu c\xf3digo de uni\xf3n aqu\xed.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ynksCXkX8jPog3Cu+FFTfz+bM28="] = d.current;
+  d["D0Sn1cAnDF9eja8W8IbbaOL8h7s="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_544.part.js.map

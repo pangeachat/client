@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "J\u016bsu pievieno\u0161an\u0101s piepras\u012bjums tika apstiprin\u0101ts! Tagad varat piek\u013c\u016bt kursam.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Vai jums ir uzaicin\u0101juma kods vai saite uz publisku kursu?";
-    },
     get$findCourse() {
       return "Atrodi kursu";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Iesp\u0113jot e-pasta pazi\u0146ojumus";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Klases? Ievietojiet savu pievieno\u0161an\u0101s kodu \u0161eit.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0cJiBExbDSq8u8OlJmvDsa0Y0yo="] = d.current;
+  d["EkgdoJaEWC0ntGyEXypCqST+8q4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_782.part.js.map

@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "Din anmodning om at deltage blev accepteret! Du kan nu deltage i kurset.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Har du en invitationskode eller et link til et offentligt kursus?";
-    },
     get$findCourse() {
       return "Find et kursus";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Aktiv\xe9r e-mail-notifikationer";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "I en klasse? S\xe6t din join-kode her.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["JVuG+OaUuZrVn/SUqpZiCqMWmFY="] = d.current;
+  d["OJuFNzOXfYAZFSWhJ0qnerP7YT0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_338.part.js.map

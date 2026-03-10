@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "Din foresp\xf8rsel om \xe5 bli med ble akseptert! Du kan n\xe5 g\xe5 inn i kurset.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "Har du en invitasjonskode eller lenke til et offentlig kurs?";
-    },
     get$findCourse() {
       return "Finn et kurs";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Aktiver e-postvarsler";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "I en klasse? Skriv inn koden din her.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5674,7 +5674,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["se2FjixLjgt3jevsv6z1lG9mjrw="] = d.current;
+  d["95pOLCa+A36SRpLsVbe5AcpbCFU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_787.part.js.map

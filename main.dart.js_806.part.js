@@ -5425,9 +5425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "\u0412\u0430\u0448 \u0437\u0430\u043f\u0440\u043e\u0441 \u043d\u0430 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u0435 \u0431\u044b\u043b \u043f\u0440\u0438\u043d\u044f\u0442! \u0422\u0435\u043f\u0435\u0440\u044c \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u043e\u0439\u0442\u0438 \u0432 \u043a\u0443\u0440\u0441.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "\u0423 \u0432\u0430\u0441 \u0435\u0441\u0442\u044c \u043a\u043e\u0434 \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u044f \u0438\u043b\u0438 \u0441\u0441\u044b\u043b\u043a\u0430 \u043d\u0430 \u043f\u0443\u0431\u043b\u0438\u0447\u043d\u044b\u0439 \u043a\u0443\u0440\u0441?";
-    },
     get$findCourse() {
       return "\u041d\u0430\u0439\u0442\u0438 \u043a\u0443\u0440\u0441";
     },
@@ -5659,6 +5656,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u043f\u043e \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0439 \u043f\u043e\u0447\u0442\u0435";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "\u0412 \u043a\u043b\u0430\u0441\u0441\u0435? \u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0441\u0432\u043e\u0439 \u043a\u043e\u0434 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u044f \u0437\u0434\u0435\u0441\u044c.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5672,7 +5672,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QVXnd2boHVAA5vfORkG4jG1m4Qs="] = d.current;
+  d["ltO1Oumtb2y5nJU0pGvQAMckNXU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_806.part.js.map

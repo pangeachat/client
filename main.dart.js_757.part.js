@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "T\xfa aontuigh an iarratas comhoibrithe! Is f\xe9idir leat anois dul isteach sa ch\xfarsa.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "\xbfTienes un c\xf3digo de invitaci\xf3n o un enlace a un curso p\xfablico?";
-    },
     get$findCourse() {
       return "Trovar un cors";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Aktivuj e-po\u0161tne obvestila";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "In a class? Put your join code here.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["n3rsmFHPFanUIUNffhQLffa41xE="] = d.current;
+  d["U/EuFm5MPOqdXjpbSVo7OGV0XSg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_757.part.js.map

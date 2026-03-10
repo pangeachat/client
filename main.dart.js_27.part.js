@@ -1603,7 +1603,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Pular backup de chat";
     },
     get$skipChatBackupWarning() {
-      return string$.Voc__tc;
+      return string$.Voc__t;
     },
     get$loadingMessages() {
       return "Carregando mensagens";
@@ -5436,9 +5436,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return string$.Seu_pe;
     },
-    get$joinSpaceOnboardingDesc() {
-      return string$.Voc__tu;
-    },
     get$findCourse() {
       return "Encontrar um curso";
     },
@@ -5669,6 +5666,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enableEmailNotifications() {
       return "Ativar notifica\xe7\xf5es por e-mail";
+    },
+    get$joinSpaceOnboardingDesc() {
+      return string$.Em_uma;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -11083,9 +11083,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return string$.Seu_pe;
     },
-    get$joinSpaceOnboardingDesc() {
-      return string$.Voc__tu;
-    },
     get$findCourse() {
       return "Encontrar um curso";
     },
@@ -11316,6 +11313,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enableEmailNotifications() {
       return "Ativar notifica\xe7\xf5es por e-mail";
+    },
+    get$joinSpaceOnboardingDesc() {
+      return string$.Em_uma;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -12897,7 +12897,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Pular backup de chat";
     },
     get$skipChatBackupWarning() {
-      return string$.Voc__tc;
+      return string$.Voc__t;
     },
     get$loadingMessages() {
       return "Carregando mensagens";
@@ -16730,9 +16730,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return string$.Seu_pe;
     },
-    get$joinSpaceOnboardingDesc() {
-      return string$.Voc__tu;
-    },
     get$findCourse() {
       return "Encontrar um curso";
     },
@@ -16964,6 +16961,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Ativar notifica\xe7\xf5es por e-mail";
     },
+    get$joinSpaceOnboardingDesc() {
+      return string$.Em_uma;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -17042,6 +17042,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Descul: "Desculpe, n\xe3o conseguimos entender sua mensagem...",
     Desliz: "Deslize da direita para a esquerda para responder",
     Dispos: "Dispositivos verificados cruzados se ativado",
+    Em_uma: "Em uma aula? Coloque seu c\xf3digo de entrada aqui.",
     Emotes: "Emotes usados recentemente aparecer\xe3o aqui...",
     Entre_: "Entre na conversa desde o primeiro dia com ferramentas de escrita de IA!",
     Envie_: "Envie mais mensagens para desbloquear a pr\xe1tica",
@@ -17168,8 +17169,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Voc__n: "Voc\xea n\xe3o convidou ningu\xe9m para o seu chat. V\xe1 para Configura\xe7\xf5es de Chat para convidar seus contatos ou o Bot. Voc\xea tamb\xe9m pode fazer isso mais tarde.",
     Voc__p: "Voc\xea pode tornar seu curso aberto ao mundo! Ou, tornar seu curso privado e seguro.",
     Voc__s: "Voc\xea ser\xe1 desconectado deste dispositivo e n\xe3o poder\xe1 mais receber mensagens.",
-    Voc__tc: "Voc\xea tem certeza? Sem ativar o backup de chat, voc\xea pode perder o acesso \xe0s suas mensagens se trocar de dispositivo.",
-    Voc__tu: "Voc\xea tem um c\xf3digo de convite ou link para um curso p\xfablico?",
+    Voc__t: "Voc\xea tem certeza? Sem ativar o backup de chat, voc\xea pode perder o acesso \xe0s suas mensagens se trocar de dispositivo.",
     Volte_: "Volte amanh\xe3 para atualiza\xe7\xf5es da atividade.",
     xc9_aqui: "\xc9 aqui que as palavras de vocabul\xe1rio ir\xe3o aparecer assim que voc\xea as evoluir!",
     u201d_est_: "\u201d est\xe3o solicitando visualizar suas an\xe1lises de aprendizado.\n\nSe voc\xea concordar, eles poder\xe3o visualizar seu:\n    \u2022 vocabul\xe1rio total\n    \u2022 total de conceitos gramaticais\n    \u2022 total de sess\xf5es de atividade conclu\xeddas\n    \u2022 os conceitos gramaticais espec\xedficos usados, corretamente e incorretamente\n\nEles n\xe3o poder\xe3o visualizar seu:\n    \u2022 mensagens em chats fora do curso\n    \u2022 lista de vocabul\xe1rio",
@@ -17180,7 +17180,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PUFYKurB52QhxwBmG83lD1+qHJE="] = d.current;
+  d["U9n8GrLrkO+hwgh3eHljur3zCD4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

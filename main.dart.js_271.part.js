@@ -5424,9 +5424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockAccepted() {
       return "Va\u0161e \u017e\xe1dost o p\u0159ipojen\xed byla p\u0159ijata! Nyn\xed m\u016f\u017eete vstoupit do kurzu.";
     },
-    get$joinSpaceOnboardingDesc() {
-      return "M\xe1te pozv\xe1nkov\xfd k\xf3d nebo odkaz na ve\u0159ejn\xfd kurz?";
-    },
     get$findCourse() {
       return "Naj\xedt kurz";
     },
@@ -5658,6 +5655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableEmailNotifications() {
       return "Povolit e-mailov\xe1 ozn\xe1men\xed";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Ve t\u0159\xedd\u011b? Vlo\u017ete sem sv\u016fj k\xf3d pro p\u0159ipojen\xed.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5671,7 +5671,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["JOd8yYZf0HsP2WEZBKqbgzERk2s="] = d.current;
+  d["Pa8nv3kA/6qnMTyIZb++6MgWIfA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_271.part.js.map
