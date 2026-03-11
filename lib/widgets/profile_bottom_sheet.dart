@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -24,7 +25,7 @@ class ProfileBottomSheet extends StatelessWidget {
       context: context,
       //#Pangea
       // future: () => client.startDirectChat(userId),
-      future: () => client.startDirectChat(userId, enableEncryption: false),
+      future: () => client.createPangeaDirectChat(userId),
       //Pangea#
     );
     if (result.error == null) {
