@@ -1084,9 +1084,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$yourGlobalUserIdIs() {
       return "Zure erabiltzaile-ID orokorra: ";
     },
-    noUsersFoundWithQuery$1(query) {
-      return 'Zoritxarrez ez da "' + query + '" duen erabiltzailerik aurkitu. Egiaztatu zuzen idatzi duzula.';
-    },
     get$knocking() {
       return "Baimena eskatzen";
     },
@@ -5680,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["WdgcopiMs2+yRKkZ8YgdGCGteAg="] = d.current;
+  d["VhBjEUGWUiY1+5gp/0jIcXjX4Ng="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_607.part.js.map

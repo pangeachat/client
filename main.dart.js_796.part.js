@@ -1084,9 +1084,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$yourGlobalUserIdIs() {
       return "Tw\xf3j globalny identyfikator to: ";
     },
-    noUsersFoundWithQuery$1(query) {
-      return 'Niestety nie uda\u0142o si\u0119 nikogo znale\u017a\u0107 poprzez "' + query + '". Prosz\u0119 sprawdzi\u0107, czy w zapytaniu nie ma liter\xf3wek.';
-    },
     get$knocking() {
       return "Pukanie";
     },
@@ -5677,7 +5674,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["54vHgbuOm7qGk4dWeb1HdDx9gFQ="] = d.current;
+  d["AjhlzKPrKORtiAslwVwJVlbvDr0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_796.part.js.map

@@ -1084,9 +1084,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$yourGlobalUserIdIs() {
       return "Je Matrix-ID is: ";
     },
-    noUsersFoundWithQuery$1(query) {
-      return 'Helaas kan er geen persoon gevonden worden met "' + query + '". Controleer of je een typfout hebt gemaakt.';
-    },
     get$knocking() {
       return "Kloppen";
     },
@@ -5677,7 +5674,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["u14TFSCB9oSBZlnUNCSPvS5XFbA="] = d.current;
+  d["7K6gaMbwnIS2cuT2fX2NXNXBxZU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_792.part.js.map

@@ -1084,9 +1084,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$yourGlobalUserIdIs() {
       return "Tvoj globalni korisni\u010dki ID je: ";
     },
-    noUsersFoundWithQuery$1(query) {
-      return "Na\u017ealost nije prona\u0111en nijedan korisnik s \u201e" + query + "\u201d. Provjeri to\u010dnost upisa.";
-    },
     get$knocking() {
       return "Kucanje";
     },
@@ -5677,7 +5674,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["SPlynM95mKIgOHYDiPvz9mOl7WM="] = d.current;
+  d["X+EsBmn/OQSvmL8dCWoHMrK1Mrk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_682.part.js.map

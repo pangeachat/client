@@ -1084,9 +1084,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$yourGlobalUserIdIs() {
       return "La teva ID global \xe9s: ";
     },
-    noUsersFoundWithQuery$1(query) {
-      return "No s'ha trobat cap usu\xe0r\xefi amb \"" + query + '". Revisa si ho has escrit malament.';
-    },
     get$knocking() {
       return "S'est\xe0 picant";
     },
@@ -5680,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wv7/52jzoWplkT2ltWWUi0PC/4c="] = d.current;
+  d["9E6f495mXVaFHSjpV3hb4GdSEFY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_205.part.js.map

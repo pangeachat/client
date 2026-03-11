@@ -1084,9 +1084,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$yourGlobalUserIdIs() {
       return "Yleisesti p\xe4tev\xe4 k\xe4ytt\xe4j\xe4tunnuksesi on: ";
     },
-    noUsersFoundWithQuery$1(query) {
-      return 'Valitettavasti k\xe4ytt\xe4j\xe4\xe4 ei l\xf6ytynyt haulla "' + query + '". Tarkistathan, onko kirjoitusvirhe.';
-    },
     get$knocking() {
       return "Koputetaan";
     },
@@ -5677,7 +5674,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wnwvXt2R6r/CnvA5gBaPzHJvIYE="] = d.current;
+  d["ssA+XmNmnUgVP5xnd0wz49QzGQc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_624.part.js.map

@@ -1096,9 +1096,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$yourGlobalUserIdIs() {
       return "Seu ID de usu\xe1rio global \xe9: ";
     },
-    noUsersFoundWithQuery$1(query) {
-      return 'Infelizmente, nenhum usu\xe1rio foi encontrado com "' + query + '". Por favor, verifique se voc\xea digitou corretamente.';
-    },
     get$knocking() {
       return "Batendo";
     },
@@ -6748,9 +6745,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$yourGlobalUserIdIs() {
       return "Seu ID global de usu\xe1rio \xe9: ";
-    },
-    noUsersFoundWithQuery$1(query) {
-      return 'Infelizmente, n\xe3o foi encontrado usu\xe1rio com "' + query + '". Verifique se digitou corretamente.';
     },
     get$knocking() {
       return "Batendo na porta";
@@ -12402,9 +12396,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$yourGlobalUserIdIs() {
       return "O seu ID de utilizador global \xe9: ";
     },
-    noUsersFoundWithQuery$1(query) {
-      return 'Infelizmente, n\xe3o foi poss\xedvel encontrar nenhum utilizador com "' + query + '". Por favor, verifique se cometeu algum erro de digita\xe7\xe3o.';
-    },
     get$knocking() {
       return "A tocar";
     },
@@ -17200,7 +17191,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HrYD4w7QGRgvP7XsSqMCOVAcp74="] = d.current;
+  d["/QY8UVp5XpgD4Cp63I+Bmb7yMME="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

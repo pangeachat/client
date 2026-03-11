@@ -1084,9 +1084,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$yourGlobalUserIdIs() {
       return "O teu ID-usuaria global \xe9: ";
     },
-    noUsersFoundWithQuery$1(query) {
-      return 'Lamentamos non atopar ningunha usuaria con "' + query + '". Comproba se est\xe1 ben escrito.';
-    },
     get$knocking() {
       return "A solicitar";
     },
@@ -5680,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3iCuD7l84x5zQMBwUQ7HUk/aizk="] = d.current;
+  d["kK4uJ8dQxgcbiSzgvdvhlWUdzeE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_669.part.js.map
