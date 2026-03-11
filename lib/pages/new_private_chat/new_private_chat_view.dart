@@ -261,9 +261,12 @@ class NewPrivateChatView extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(16.0),
                                   child: Text(
-                                    L10n.of(context).noUsersFoundWithQuery(
-                                      controller.controller.text,
-                                    ),
+                                    // #Pangea
+                                    // L10n.of(context).noUsersFoundWithQuery(
+                                    //   controller.controller.text,
+                                    // ),
+                                    L10n.of(context).emptyInviteSearchHint,
+                                    // Pangea#
                                     style: TextStyle(
                                       color: theme.colorScheme.primary,
                                     ),
