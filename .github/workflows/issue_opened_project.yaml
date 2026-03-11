@@ -4,6 +4,9 @@ on:
   issues:
     types:
       - opened
+permissions:
+  contents: read
+
 jobs:
   add_to_project:
     runs-on: ubuntu-latest
