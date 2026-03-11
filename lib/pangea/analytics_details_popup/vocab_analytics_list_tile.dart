@@ -14,6 +14,7 @@ class VocabAnalyticsListTile extends StatelessWidget {
   final ConstructLevelEnum level;
   final Color textColor;
   final bool selected;
+  final bool listen;
 
   const VocabAnalyticsListTile({
     super.key,
@@ -23,6 +24,7 @@ class VocabAnalyticsListTile extends StatelessWidget {
     this.onTap,
     this.onLongPress,
     this.selected = false,
+    this.listen = true,
   });
 
   final double maxWidth = 100;
@@ -52,9 +54,11 @@ class VocabAnalyticsListTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 StreamBuilder(
-                  stream: analyticsService.updateDispatcher.lemmaUpdateStream(
-                    constructId,
-                  ),
+                  stream: listen
+                      ? analyticsService.updateDispatcher.lemmaUpdateStream(
+                          constructId,
+                        )
+                      : null,
                   builder: (context, snapshot) {
                     final emoji =
                         snapshot.data?.emojis?.firstOrNull ??
