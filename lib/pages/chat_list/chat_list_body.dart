@@ -10,12 +10,11 @@ import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_item.dart';
 import 'package:fluffychat/pages/chat_list/dummy_chat_list_item.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
-import 'package:fluffychat/pangea/chat_list/support_client_extension.dart';
 import 'package:fluffychat/pangea/chat_list/widgets/pangea_chat_list_header.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/support/support_client_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/public_room_dialog.dart';
@@ -364,11 +363,9 @@ class ChatListViewBody extends StatelessWidget {
                           await showFutureLoadingDialog(
                             context: context,
                             future: () async {
-                              final roomId = await Matrix.of(context).client
-                                  .startDirectChat(
-                                    Environment.supportUserId,
-                                    enableEncryption: false,
-                                  );
+                              final roomId = await Matrix.of(
+                                context,
+                              ).client.startChatWithSupport();
                               context.go('/rooms/$roomId');
                             },
                           );

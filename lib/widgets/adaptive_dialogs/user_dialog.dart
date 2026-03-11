@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
+import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/user/about_me_display.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
@@ -189,10 +190,7 @@ class UserDialog extends StatelessWidget {
                 context: context,
                 // #Pangea
                 // future: () => client.startDirectChat(profile.userId),
-                future: () => client.startDirectChat(
-                  profile.userId,
-                  enableEncryption: false,
-                ),
+                future: () => client.createPangeaDirectChat(profile.userId),
                 // Pangea#
               );
               final roomId = roomIdResult.result;
