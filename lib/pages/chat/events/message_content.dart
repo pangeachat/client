@@ -311,6 +311,13 @@ class MessageContent extends StatelessWidget {
             }
             var html = AppSettings.renderHtml.value && event.isRichMessage
                 ? event.formattedText
+                // #Pangea
+                // : event.body.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+                : event.text == ''
+                ? L10n.of(
+                    context,
+                  ).redactedBy(event.senderId.localpart ?? event.senderId)
+                // Pangea#
                 : event.body.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
             if (event.messageType == MessageTypes.Emote) {
               html = '* $html';
