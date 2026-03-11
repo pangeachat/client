@@ -54,6 +54,7 @@ mixin LemmaEmojiSetter {
     if (InstructionsEnum.setLemmaEmoji.isToggledOff) return;
     InstructionsEnum.setLemmaEmoji.setToggledOff(true);
 
+    messenger.clearSnackBars();
     messenger.showSnackBar(
       SnackBar(
         showCloseIcon: false,
