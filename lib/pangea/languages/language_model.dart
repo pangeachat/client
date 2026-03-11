@@ -304,9 +304,7 @@ class LanguageModel {
 
     final display = displayNameMap[langKey] ?? displayName;
     if (langCode.contains('-') && localeEmoji != null) {
-      // use regex to replace parentheses content with the locale emoji
-      final regex = RegExp(r'\s*\(.*?\)\s*');
-      return display.replaceFirst(regex, ' $localeEmoji ');
+      return "$display $localeEmoji";
     }
     return display;
   }
