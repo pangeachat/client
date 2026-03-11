@@ -73,12 +73,19 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
   }
 
   Future<void> _setSelectedLanguage(LanguageModel? l) async {
-    setState(() => _selectedLanguage = l);
+    setState(() {
+      _selectedLanguage = l;
+      _error = null;
+    });
     await _cacheLanguages();
   }
 
   Future<void> _setBaseLanguage(LanguageModel? l) async {
-    setState(() => _baseLanguage = l);
+    setState(() {
+      _baseLanguage = l;
+      _error = null;
+    });
+
     await _cacheLanguages();
     if (l != null) {
       // Defer locale change until after the AnimatedSize transition completes.
@@ -293,10 +300,12 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                       : const SizedBox(),
                 ),
                 ShimmerBackground(
-                  enabled: _selectedLanguage != null,
+                  enabled: _selectedLanguage != null && _error == null,
                   borderRadius: BorderRadius.circular(24.0),
                   child: ElevatedButton(
-                    onPressed: _selectedLanguage != null ? _submit : null,
+                    onPressed: _selectedLanguage != null && _error == null
+                        ? _submit
+                        : null,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: theme.colorScheme.primaryContainer,
                       foregroundColor: theme.colorScheme.onPrimaryContainer,
