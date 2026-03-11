@@ -292,88 +292,11 @@ class ChatListViewBody extends StatelessWidget {
                 ),
               // #Pangea
               if (!client.hasBotDM && !controller.isSearchMode)
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 1,
-                    ),
-                    child: Material(
-                      borderRadius: BorderRadius.circular(
-                        AppConfig.borderRadius,
-                      ),
-                      clipBehavior: Clip.hardEdge,
-                      child: ListTile(
-                        leading: const BotFace(
-                          expression: BotExpression.idle,
-                          width: Avatar.defaultSize,
-                        ),
-                        trailing: const Icon(Icons.chat_bubble_outline),
-                        title: Text(L10n.of(context).directMessageBotTitle),
-                        subtitle: Text(L10n.of(context).directMessageBotDesc),
-                        onTap: () async {
-                          final resp = await showFutureLoadingDialog<String>(
-                            context: context,
-                            future: () =>
-                                Matrix.of(context).client.startChatWithBot(),
-                          );
-                          if (resp.isError) return;
-                          context.go("/rooms/${resp.result}");
-                        },
-                      ),
-                    ),
-                  ),
-                ),
+                const SliverToBoxAdapter(child: _BotDMListTile()),
               if (!client.hasSupportDM &&
                   !InstructionsEnum.dismissSupportChat.isToggledOff &&
                   !controller.isSearchMode)
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 1,
-                    ),
-                    child: Material(
-                      borderRadius: BorderRadius.circular(
-                        AppConfig.borderRadius,
-                      ),
-                      clipBehavior: Clip.hardEdge,
-                      child: ListTile(
-                        contentPadding: const EdgeInsets.only(
-                          left: 16,
-                          right: 16,
-                        ),
-                        leading: Container(
-                          alignment: Alignment.center,
-                          height: Avatar.defaultSize,
-                          width: Avatar.defaultSize,
-                          child: const Icon(
-                            Symbols.chat_add_on,
-                            size: Avatar.defaultSize - 16,
-                          ),
-                        ),
-                        trailing: IconButton(
-                          icon: const Icon(Icons.close),
-                          onPressed: () => InstructionsEnum.dismissSupportChat
-                              .setToggledOff(true),
-                        ),
-                        title: Text(L10n.of(context).chatWithSupport),
-                        subtitle: Text(L10n.of(context).supportSubtitle),
-                        onTap: () async {
-                          await showFutureLoadingDialog(
-                            context: context,
-                            future: () async {
-                              final roomId = await Matrix.of(
-                                context,
-                              ).client.startChatWithSupport();
-                              context.go('/rooms/$roomId');
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                ),
+                const SliverToBoxAdapter(child: _SupportDMListTile()),
               const SliverToBoxAdapter(child: SizedBox(height: 75.0)),
               // Pangea#
             ],
@@ -384,6 +307,114 @@ class ChatListViewBody extends StatelessWidget {
   }
 }
 
+// #Pangea
+class _BotDMListTile extends StatefulWidget {
+  const _BotDMListTile();
+
+  @override
+  State<_BotDMListTile> createState() => _BotDMListTileState();
+}
+
+class _BotDMListTileState extends State<_BotDMListTile> {
+  bool _loading = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
+      child: Material(
+        borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+        clipBehavior: Clip.hardEdge,
+        child: ListTile(
+          leading: const BotFace(
+            expression: BotExpression.idle,
+            width: Avatar.defaultSize,
+          ),
+          trailing: const Icon(Icons.chat_bubble_outline),
+          title: Text(L10n.of(context).directMessageBotTitle),
+          subtitle: Text(L10n.of(context).directMessageBotDesc),
+          onTap: _loading
+              ? null
+              : () async {
+                  setState(() => _loading = true);
+                  try {
+                    final resp = await showFutureLoadingDialog<String>(
+                      context: context,
+                      future: () =>
+                          Matrix.of(context).client.startChatWithBot(),
+                    );
+                    if (!mounted) return;
+                    if (resp.isError) return;
+                    context.go("/rooms/${resp.result}");
+                  } finally {
+                    if (mounted) setState(() => _loading = false);
+                  }
+                },
+        ),
+      ),
+    );
+  }
+}
+
+class _SupportDMListTile extends StatefulWidget {
+  const _SupportDMListTile();
+
+  @override
+  State<_SupportDMListTile> createState() => _SupportDMListTileState();
+}
+
+class _SupportDMListTileState extends State<_SupportDMListTile> {
+  bool _loading = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
+      child: Material(
+        borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+        clipBehavior: Clip.hardEdge,
+        child: ListTile(
+          contentPadding: const EdgeInsets.only(left: 16, right: 16),
+          leading: Container(
+            alignment: Alignment.center,
+            height: Avatar.defaultSize,
+            width: Avatar.defaultSize,
+            child: const Icon(
+              Symbols.chat_add_on,
+              size: Avatar.defaultSize - 16,
+            ),
+          ),
+          trailing: IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: () =>
+                InstructionsEnum.dismissSupportChat.setToggledOff(true),
+          ),
+          title: Text(L10n.of(context).chatWithSupport),
+          subtitle: Text(L10n.of(context).supportSubtitle),
+          onTap: _loading
+              ? null
+              : () async {
+                  setState(() => _loading = true);
+                  try {
+                    final resp = await showFutureLoadingDialog<String>(
+                      context: context,
+                      future: () =>
+                          Matrix.of(context).client.startChatWithSupport(),
+                    );
+                    if (!mounted) return;
+                    if (resp.isError) return;
+                    context.go('/rooms/${resp.result}');
+                  } finally {
+                    if (mounted) setState(() => _loading = false);
+                  }
+                },
+        ),
+      ),
+    );
+  }
+}
+
+// Pangea#
 class PublicRoomsHorizontalList extends StatelessWidget {
   const PublicRoomsHorizontalList({super.key, required this.publicRooms});
 
