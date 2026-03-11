@@ -45,12 +45,12 @@ mixin LemmaEmojiSetter {
         .setLemmaInfo(constructId, emoji: emoji);
   }
 
-  void showLemmaEmojiSnackbar(
+  Future<void> showLemmaEmojiSnackbar(
     ScaffoldMessengerState messenger,
     BuildContext context,
     ConstructIdentifier constructId,
     String emoji,
-  ) {
+  ) async {
     if (InstructionsEnum.setLemmaEmoji.isToggledOff) return;
     InstructionsEnum.setLemmaEmoji.setToggledOff(true);
 
@@ -64,6 +64,7 @@ mixin LemmaEmojiSetter {
             VocabAnalyticsListTile(
               constructId: constructId,
               textColor: Theme.of(context).colorScheme.surface,
+              listen: false,
               onTap: () {
                 messenger.hideCurrentSnackBar();
                 AnalyticsNavigationUtil.navigateToAnalytics(
