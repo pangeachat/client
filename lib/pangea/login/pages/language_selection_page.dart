@@ -72,16 +72,30 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
     });
   }
 
-  void _setSelectedLanguage(LanguageModel? l) {
-    setState(() => _selectedLanguage = l);
-    _cacheLanguages();
+  Future<void> _setSelectedLanguage(LanguageModel? l) async {
+    setState(() {
+      _selectedLanguage = l;
+      _error = null;
+    });
+    await _cacheLanguages();
   }
 
-  void _setBaseLanguage(LanguageModel? l) {
-    setState(() => _baseLanguage = l);
-    _cacheLanguages();
+  Future<void> _setBaseLanguage(LanguageModel? l) async {
+    setState(() {
+      _baseLanguage = l;
+      _error = null;
+    });
+
+    await _cacheLanguages();
     if (l != null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) => _setAppLanguage(l));
+      // Defer locale change until after the AnimatedSize transition completes.
+      // Calling setLocale during the animation deactivates InheritedElements
+      // that still have registered dependents, tripping _dependents.isEmpty.
+      await Future.delayed(
+        FluffyThemes.animationDuration + const Duration(milliseconds: 100),
+      );
+      if (!mounted) return;
+      _setAppLanguage(l);
     }
   }
 
@@ -286,10 +300,12 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                       : const SizedBox(),
                 ),
                 ShimmerBackground(
-                  enabled: _selectedLanguage != null,
+                  enabled: _selectedLanguage != null && _error == null,
                   borderRadius: BorderRadius.circular(24.0),
                   child: ElevatedButton(
-                    onPressed: _selectedLanguage != null ? _submit : null,
+                    onPressed: _selectedLanguage != null && _error == null
+                        ? _submit
+                        : null,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: theme.colorScheme.primaryContainer,
                       foregroundColor: theme.colorScheme.onPrimaryContainer,
