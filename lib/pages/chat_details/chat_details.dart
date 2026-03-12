@@ -5,13 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_details/chat_download_provider.dart';
 import 'package:fluffychat/pages/settings/settings.dart';
 import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
+import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_room_details.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
@@ -281,7 +282,7 @@ class ChatDetailsController extends State<ChatDetails>
     final activeSpace = Matrix.of(context).client.getRoomById(roomId!);
     if (activeSpace == null || !activeSpace.isSpace) return;
 
-    final names = await showTextInputDialog(
+    final groupName = await showTextInputDialog(
       context: context,
       title: L10n.of(context).createGroup,
       hintText: L10n.of(context).groupName,
@@ -297,14 +298,13 @@ class ChatDetailsController extends State<ChatDetails>
       okLabel: L10n.of(context).create,
       cancelLabel: L10n.of(context).cancel,
     );
-    if (names == null) return;
+    if (groupName == null) return;
 
     final resp = await showFutureLoadingDialog<String>(
       context: context,
       future: () async {
-        final newRoomId = await Matrix.of(context).client.createGroupChat(
-          visibility: sdk.Visibility.private,
-          groupName: names,
+        final newRoomId = await Matrix.of(context).client.createPangeaGroupChat(
+          groupName,
           initialState: [
             RoomDefaults.defaultPowerLevels(Matrix.of(context).client.userID!),
             await Matrix.of(context).client.pangeaJoinRules(
@@ -316,20 +316,33 @@ class ChatDetailsController extends State<ChatDetails>
                   : null,
             ),
           ],
-          enableEncryption: false,
         );
-        final client = Matrix.of(context).client;
-        Room? room = client.getRoomById(newRoomId);
-        if (room == null) {
-          await client.waitForRoomInSync(newRoomId);
-          room = client.getRoomById(newRoomId);
+
+        try {
+          await activeSpace.addToSpace(newRoomId);
+          final room = Matrix.of(context).client.getRoomById(newRoomId);
+          if (room != null && room.spaceParents.isEmpty) {
+            await Matrix.of(context).client
+                .waitForRoomInSync(newRoomId)
+                .timeout(Duration(seconds: 10));
+          }
+          return newRoomId;
+        } catch (e, s) {
+          ErrorHandler.logError(
+            e: e,
+            s: s,
+            data: {'newRoomId': newRoomId, 'spaceId': roomId},
+            level: e is TimeoutException
+                ? SentryLevel.warning
+                : SentryLevel.error,
+          );
+
+          if (e is TimeoutException) {
+            return newRoomId;
+          } else {
+            rethrow;
+          }
         }
-        if (room == null) newRoomId;
-        await activeSpace.addToSpace(room!.id);
-        if (room.spaceParents.isEmpty) {
-          await client.waitForRoomInSync(newRoomId);
-        }
-        return newRoomId;
       },
     );
 

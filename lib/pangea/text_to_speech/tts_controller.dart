@@ -271,7 +271,7 @@ class TtsController {
           await _speakFromDevice(text, langCode, [token]);
         }
       } else {
-        await _speakFromChoreo(text, langCode, [token]);
+        await _speakFromDevice(text, langCode, [token]);
       }
     } else if (targetID != null && context != null) {
       OverlayUtil.showTTSDisabledPopup(context, targetID);

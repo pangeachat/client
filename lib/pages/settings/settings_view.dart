@@ -10,6 +10,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/settings/settings.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/support/support_client_extension.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -295,11 +296,9 @@ class SettingsView extends StatelessWidget {
                         await showFutureLoadingDialog(
                           context: context,
                           future: () async {
-                            final roomId = await Matrix.of(context).client
-                                .startDirectChat(
-                                  Environment.supportUserId,
-                                  enableEncryption: false,
-                                );
+                            final roomId = await Matrix.of(
+                              context,
+                            ).client.startChatWithSupport();
                             context.go('/rooms/$roomId');
                           },
                         );

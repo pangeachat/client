@@ -2131,7 +2131,11 @@ class ChatController extends State<ChatPageWithRoom>
     Event? nextEvent,
     Event? prevEvent,
   }) async {
-    if (event.redacted || event.status == EventStatus.sending) return;
+    if (event.redacted ||
+        event.text == '' ||
+        event.status == EventStatus.sending) {
+      return;
+    }
 
     // Close emoji picker, if open
     if (showEmojiPicker) {

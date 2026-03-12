@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_item.dart';
 import 'package:fluffychat/pages/chat_list/dummy_chat_list_item.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
-import 'package:fluffychat/pangea/chat_list/support_client_extension.dart';
+import 'package:fluffychat/pangea/chat_list/widgets/dm_list_tile.dart';
 import 'package:fluffychat/pangea/chat_list/widgets/pangea_chat_list_header.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/support/support_client_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/public_room_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../config/themes.dart';
 import '../../widgets/matrix.dart';
 
@@ -294,87 +291,40 @@ class ChatListViewBody extends StatelessWidget {
               // #Pangea
               if (!client.hasBotDM && !controller.isSearchMode)
                 SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 1,
+                  child: DMListTile(
+                    title: L10n.of(context).directMessageBotTitle,
+                    subtitle: L10n.of(context).directMessageBotDesc,
+                    leading: const BotFace(
+                      expression: BotExpression.idle,
+                      width: Avatar.defaultSize,
                     ),
-                    child: Material(
-                      borderRadius: BorderRadius.circular(
-                        AppConfig.borderRadius,
-                      ),
-                      clipBehavior: Clip.hardEdge,
-                      child: ListTile(
-                        leading: const BotFace(
-                          expression: BotExpression.idle,
-                          width: Avatar.defaultSize,
-                        ),
-                        trailing: const Icon(Icons.chat_bubble_outline),
-                        title: Text(L10n.of(context).directMessageBotTitle),
-                        subtitle: Text(L10n.of(context).directMessageBotDesc),
-                        onTap: () async {
-                          final resp = await showFutureLoadingDialog<String>(
-                            context: context,
-                            future: () =>
-                                Matrix.of(context).client.startChatWithBot(),
-                          );
-                          if (resp.isError) return;
-                          context.go("/rooms/${resp.result}");
-                        },
-                      ),
-                    ),
+                    trailing: const Icon(Icons.chat_bubble_outline),
+                    onTap: Matrix.of(context).client.startChatWithBot,
                   ),
                 ),
               if (!client.hasSupportDM &&
                   !InstructionsEnum.dismissSupportChat.isToggledOff &&
                   !controller.isSearchMode)
                 SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 1,
-                    ),
-                    child: Material(
-                      borderRadius: BorderRadius.circular(
-                        AppConfig.borderRadius,
-                      ),
-                      clipBehavior: Clip.hardEdge,
-                      child: ListTile(
-                        contentPadding: const EdgeInsets.only(
-                          left: 16,
-                          right: 16,
-                        ),
-                        leading: Container(
-                          alignment: Alignment.center,
-                          height: Avatar.defaultSize,
-                          width: Avatar.defaultSize,
-                          child: const Icon(
-                            Symbols.chat_add_on,
-                            size: Avatar.defaultSize - 16,
-                          ),
-                        ),
-                        trailing: IconButton(
-                          icon: const Icon(Icons.close),
-                          onPressed: () => InstructionsEnum.dismissSupportChat
-                              .setToggledOff(true),
-                        ),
-                        title: Text(L10n.of(context).chatWithSupport),
-                        subtitle: Text(L10n.of(context).supportSubtitle),
-                        onTap: () async {
-                          await showFutureLoadingDialog(
-                            context: context,
-                            future: () async {
-                              final roomId = await Matrix.of(context).client
-                                  .startDirectChat(
-                                    Environment.supportUserId,
-                                    enableEncryption: false,
-                                  );
-                              context.go('/rooms/$roomId');
-                            },
-                          );
-                        },
+                  child: DMListTile(
+                    title: L10n.of(context).chatWithSupport,
+                    subtitle: L10n.of(context).supportSubtitle,
+                    onTap: Matrix.of(context).client.startChatWithSupport,
+                    leading: Container(
+                      alignment: Alignment.center,
+                      height: Avatar.defaultSize,
+                      width: Avatar.defaultSize,
+                      child: const Icon(
+                        Symbols.chat_add_on,
+                        size: Avatar.defaultSize - 16,
                       ),
                     ),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.close),
+                      onPressed: () => InstructionsEnum.dismissSupportChat
+                          .setToggledOff(true),
+                    ),
+                    contentPadding: const EdgeInsets.only(left: 16, right: 16),
                   ),
                 ),
               const SliverToBoxAdapter(child: SizedBox(height: 75.0)),

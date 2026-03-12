@@ -10,17 +10,20 @@ env:
   WEB_APP_ENV: ${{ vars.WEB_APP_ENV }}
   ENV_OVERRIDES: ${{ vars.ENV_OVERRIDES }}
 
+permissions:
+  contents: write  # peaceiris/actions-gh-pages pushes to gh-pages branch
+
 jobs:
   build_web:
     runs-on: ubuntu-latest
     environment: staging
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
-      - uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
-      - uses: moonrepo/setup-rust@v1
+      - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
       - run: rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
       - name: Prepare web
         run: ./scripts/prepare-web.sh
@@ -34,7 +37,7 @@ jobs:
           flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --profile --source-maps
         
       - name: Upload files
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: web
           path: build/web
@@ -45,7 +48,7 @@ jobs:
     environment: staging
     steps:
       - name: Download web
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: web
           path: build/web
@@ -63,7 +66,7 @@ jobs:
           curl https://app.pangea.chat/.well-known/assetlinks.json \
             -o public/.well-known/assetlinks.json
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4
         with:
           personal_token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
           publish_dir: ./public
@@ -79,13 +82,13 @@ jobs:
       SENTRY_PROJECT: client
       SENTRY_ORG: pangea-chat
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
-      - uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
       - name: Download web
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: web
           path: build/web
