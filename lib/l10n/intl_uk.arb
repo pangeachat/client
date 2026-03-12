@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-03-10 16:50:26.920681",
+    "@@last_modified": "2026-03-12 12:47:00.453482",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10716,6 +10716,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "Аналітика навчання",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

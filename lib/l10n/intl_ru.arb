@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-03-10 16:51:12.836925",
+    "@@last_modified": "2026-03-12 12:47:26.756545",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10716,6 +10716,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "Аналитика обучения",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

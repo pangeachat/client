@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-10 16:50:54.261418",
+    "@@last_modified": "2026-03-12 12:47:18.166585",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10716,6 +10716,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "Leeranalyses",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

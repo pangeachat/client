@@ -1714,7 +1714,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-03-10 16:50:23.440813",
+    "@@last_modified": "2026-03-12 12:46:58.980578",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -11847,6 +11847,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "學習分析",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-10 16:50:52.716986",
+    "@@last_modified": "2026-03-12 12:47:17.542854",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10832,6 +10832,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "கற்றல் பகுப்பாய்வு",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

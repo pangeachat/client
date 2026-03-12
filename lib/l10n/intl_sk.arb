@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-03-10 16:50:06.848204",
+    "@@last_modified": "2026-03-12 12:46:50.718925",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -11832,6 +11832,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "Analytika učenia",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

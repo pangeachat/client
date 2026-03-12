@@ -16,8 +16,9 @@ import 'package:fluffychat/pangea/user/user_model.dart';
 class LearningSettingsViewModel extends ChangeNotifier {
   late Profile _originalProfile;
   late Profile _updatedProfile;
+  final VoidCallback? onUpdateProfile;
 
-  LearningSettingsViewModel(Profile profile) {
+  LearningSettingsViewModel(Profile profile, {this.onUpdateProfile}) {
     _originalProfile = profile;
     _updatedProfile = profile;
   }
@@ -96,8 +97,15 @@ class LearningSettingsViewModel extends ChangeNotifier {
     }
   }
 
+  void _updateProfile(Profile updated) {
+    if (updated == _updatedProfile) return;
+    _updatedProfile = updated;
+    onUpdateProfile?.call();
+    notifyListeners();
+  }
+
   void updateToolSetting(ToolSetting toolSetting, bool value) {
-    _updatedProfile = _updatedProfile.copyWith(
+    final updated = _updatedProfile.copyWith(
       toolSettings: _updatedProfile.toolSettings.copyWith(
         interactiveTranslator: toolSetting == ToolSetting.interactiveTranslator
             ? value
@@ -126,22 +134,23 @@ class LearningSettingsViewModel extends ChangeNotifier {
             : _updatedProfile.toolSettings.selectAudioMessagesOnPlay,
       ),
     );
-    notifyListeners();
+    _updateProfile(updated);
   }
 
   void resetInstructionTooltips() {
-    _updatedProfile = _updatedProfile.copyWith(
+    final updated = _updatedProfile.copyWith(
       instructionSettings: InstructionSettings(),
     );
-    notifyListeners();
+    _updateProfile(updated);
   }
 
   void setSelectedLanguage({
     LanguageModel? sourceLanguage,
     LanguageModel? targetLanguage,
   }) {
+    Profile updated = _updatedProfile;
     if (sourceLanguage != null && sourceLanguage != selectedSourceLanguage) {
-      _updatedProfile = _updatedProfile.copyWith(
+      updated = _updatedProfile.copyWith(
         userSettings: _updatedProfile.userSettings.copyWith(
           sourceLanguage: sourceLanguage.langCode,
         ),
@@ -149,7 +158,7 @@ class LearningSettingsViewModel extends ChangeNotifier {
     }
 
     if (targetLanguage != null && targetLanguage != selectedTargetLanguage) {
-      _updatedProfile = _updatedProfile.copyWith(
+      updated = _updatedProfile.copyWith(
         userSettings: _updatedProfile.userSettings.copyWith(
           targetLanguage: targetLanguage.langCode,
           voice: null,
@@ -159,59 +168,59 @@ class LearningSettingsViewModel extends ChangeNotifier {
       );
     }
 
-    notifyListeners();
+    _updateProfile(updated);
   }
 
   void setGender(GenderEnum? gender) {
-    _updatedProfile = _updatedProfile.copyWith(
+    final updated = _updatedProfile.copyWith(
       userSettings: _updatedProfile.userSettings.copyWith(
         gender: gender ?? GenderEnum.unselected,
       ),
     );
-    notifyListeners();
+    _updateProfile(updated);
   }
 
   void setPublicProfile(bool isPublic) {
-    _updatedProfile = _updatedProfile.copyWith(
+    final updated = _updatedProfile.copyWith(
       userSettings: _updatedProfile.userSettings.copyWith(
         publicProfile: isPublic,
       ),
     );
-    notifyListeners();
+    _updateProfile(updated);
   }
 
   void setCefrLevel(LanguageLevelTypeEnum? cefrLevel) {
-    _updatedProfile = _updatedProfile.copyWith(
+    final updated = _updatedProfile.copyWith(
       userSettings: _updatedProfile.userSettings.copyWith(
         cefrLevel: cefrLevel ?? LanguageLevelTypeEnum.a1,
       ),
     );
-    notifyListeners();
+    _updateProfile(updated);
   }
 
   void setVoice(String? voice) {
-    _updatedProfile = _updatedProfile.copyWith(
+    final updated = _updatedProfile.copyWith(
       userSettings: _updatedProfile.userSettings.copyWith(voice: voice),
     );
-    notifyListeners();
+    _updateProfile(updated);
   }
 
   void setCountry(Country? country) {
-    _updatedProfile = _updatedProfile.copyWith(
+    final updated = _updatedProfile.copyWith(
       userSettings: _updatedProfile.userSettings.copyWith(
         country: country?.name,
       ),
     );
-    notifyListeners();
+    _updateProfile(updated);
   }
 
   void setAbout(String about) {
-    _updatedProfile = _updatedProfile.copyWith(
+    final updated = _updatedProfile.copyWith(
       userSettings: _updatedProfile.userSettings.copyWith(about: about),
     );
     _textDebounce?.cancel();
     _textDebounce = Timer(const Duration(milliseconds: 500), () {
-      notifyListeners();
+      _updateProfile(updated);
     });
   }
 }

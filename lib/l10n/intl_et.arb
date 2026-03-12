@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-03-10 16:50:18.101147",
+    "@@last_modified": "2026-03-12 12:46:56.877110",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10713,6 +10713,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "Õppimise analüüs",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

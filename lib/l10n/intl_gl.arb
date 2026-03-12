@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-03-10 16:49:56.379356",
+    "@@last_modified": "2026-03-12 12:46:45.840032",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10716,6 +10716,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "Analítica de aprendizaxe",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

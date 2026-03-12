@@ -51,6 +51,7 @@ class SpacesNavigationRail extends StatelessWidget {
       context,
     ).routeInformationProvider.value.uri.path.startsWith('/rooms/settings');
     // #Pangea
+    final isUserHome = path?.contains('user_home') ?? false;
     final isAnalytics = path?.contains('analytics') ?? false;
     final isCourse = path?.contains('course') ?? false;
     final isColumnMode = FluffyThemes.isColumnMode(context);
@@ -89,18 +90,16 @@ class SpacesNavigationRail extends StatelessWidget {
                       scrollDirection: Axis.vertical,
                       // #Pangea
                       // itemCount: allSpaces.length + 2,
-                      itemCount: allSpaces.length + 3,
+                      itemCount: allSpaces.length + 4,
                       // Pangea#
                       itemBuilder: (context, i) {
                         // #Pangea
                         if (i == 0) {
                           return NaviRailItem(
-                            isSelected: isAnalytics,
+                            isSelected: isUserHome,
                             onTap: () {
                               collapse();
-                              AnalyticsNavigationUtil.navigateToAnalytics(
-                                context: context,
-                              );
+                              context.go('/rooms/user_home');
                             },
                             backgroundColor: Colors.transparent,
                             icon: FutureBuilder<Profile>(
@@ -146,6 +145,22 @@ class SpacesNavigationRail extends StatelessWidget {
                           );
                         }
                         i--;
+                        if (i == 0) {
+                          return NaviRailItem(
+                            isSelected: isAnalytics,
+                            icon: const Icon(Icons.analytics_outlined),
+                            selectedIcon: const Icon(Icons.analytics),
+                            onTap: () {
+                              collapse();
+                              AnalyticsNavigationUtil.navigateToAnalytics(
+                                context: context,
+                              );
+                            },
+                            toolTip: L10n.of(context).learningAnalytics,
+                            expanded: expanded,
+                          );
+                        }
+                        i--;
                         // Pangea#
                         if (i == 0) {
                           return NaviRailItem(
@@ -155,6 +170,7 @@ class SpacesNavigationRail extends StatelessWidget {
                                 activeSpaceId == null &&
                                 !isSettings &&
                                 !isAnalytics &&
+                                !isUserHome &&
                                 !isCourse,
                             // onTap: onGoToChats,
                             // icon: const Padding(

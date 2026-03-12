@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-10 16:50:11.083698",
+    "@@last_modified": "2026-03-12 12:46:53.270650",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -11795,6 +11795,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "אנליטיקה של למידה",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

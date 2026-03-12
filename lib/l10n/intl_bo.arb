@@ -3499,7 +3499,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-03-10 16:50:55.588695",
+    "@@last_modified": "2026-03-12 12:47:18.896868",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10384,5 +10384,10 @@
     "zhDisplayName": "རྒྱ་མི",
     "zhCNDisplayName": "རྒྱ་མི (བསྡུས་ཡིག)",
     "zhTWDisplayName": "རྒྱ་མི (རྒྱུན་ཡིག)",
-    "zuDisplayName": "ཟུ་ལུ"
+    "zuDisplayName": "ཟུ་ལུ",
+    "learningAnalytics": "Bojan analitika",
+    "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    }
 }

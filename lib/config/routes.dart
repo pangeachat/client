@@ -62,6 +62,7 @@ import 'package:fluffychat/pangea/login/pages/signup.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
+import 'package:fluffychat/pangea/user/user_home_page.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
@@ -561,6 +562,12 @@ abstract class AppRoutes {
                   redirect: loggedOutRedirect,
                 ),
               ],
+            ),
+            GoRoute(
+              path: 'user_home',
+              redirect: loggedOutRedirect,
+              pageBuilder: (context, state) =>
+                  defaultPageBuilder(context, state, UserHomePage()),
             ),
             // Pangea#
             // #Pangea

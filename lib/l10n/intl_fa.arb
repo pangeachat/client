@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-10 16:50:59.993935",
+    "@@last_modified": "2026-03-12 12:47:20.989919",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10828,6 +10828,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "تحلیل یادگیری",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

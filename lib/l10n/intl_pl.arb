@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-03-10 16:51:01.310079",
+    "@@last_modified": "2026-03-12 12:47:21.737743",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10825,6 +10825,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "Analiza uczenia się",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }
