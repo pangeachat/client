@@ -2697,34 +2697,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u0f44\u0f7c\u0f0b\u0f56\u0f7c\u0f60\u0f72\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f63\u0f58\u0f0d";
     },
     get$chatCapacity() {
-      return "Chat capacity";
+      return "\u0f42\u0fb3\u0f7a\u0f44\u0f0b\u0f58\u0f7c\u0f63\u0f0b\u0f5a\u0f51\u0f0b\u0f56\u0f40\u0f42";
     },
     get$roomFull() {
-      return "This room is already at capacity.";
+      return "\u0f41\u0f44\u0f0b\u0f58\u0f72\u0f42\u0f0b\u0f60\u0f51\u0f72\u0f0b\u0f5a\u0f51\u0f0b\u0f56\u0f40\u0f42\u0f0b\u0f63\u0f0b\u0f66\u0fb3\u0f7a\u0f56\u0f66\u0f0b\u0f5f\u0f72\u0f53\u0f0d";
     },
     get$chatCapacityHasBeenChanged() {
-      return "Chat capacity changed";
+      return "\u0f42\u0fb3\u0f7a\u0f44\u0f0b\u0f58\u0f7c\u0f63\u0f0b\u0f5a\u0f51\u0f0b\u0f56\u0f40\u0f42\u0f0b\u0f56\u0f66\u0f92\u0fb1\u0f74\u0f62\u0f0b\u0f5f\u0f72\u0f53\u0f0d";
     },
     chatCapacitySetTooLow$1(count) {
-      return "Chat capacity must be at least " + count + ".";
+      return "\u0f42\u0fb3\u0f7a\u0f44\u0f0b\u0f58\u0f7c\u0f63\u0f0b\u0f5a\u0f51\u0f0b\u0f56\u0f40\u0f42\u0f0b\u0f49\u0f74\u0f44\u0f0b\u0f58\u0f50\u0f62\u0f0b " + count + " \u0f51\u0f42\u0f7c\u0f66\u0f0d";
     },
     get$chatCapacityExplanation() {
-      return "Chat capacity limits the number of members allowed in a chat.";
+      return "\u0f42\u0fb3\u0f7a\u0f44\u0f0b\u0f58\u0f7c\u0f63\u0f0b\u0f5a\u0f51\u0f0b\u0f56\u0f40\u0f42\u0f0b\u0f42\u0f72\u0f66\u0f0b\u0f42\u0fb3\u0f7a\u0f44\u0f0b\u0f58\u0f7c\u0f63\u0f0b\u0f53\u0f44\u0f0b\u0f42\u0f72\u0f0b\u0f5a\u0f7c\u0f42\u0f66\u0f0b\u0f58\u0f72\u0f0b\u0f42\u0fb2\u0f44\u0f66\u0f0b\u0f60\u0f56\u0f7c\u0f62\u0f0b\u0f63\u0f0b\u0f5a\u0f51\u0f0b\u0f56\u0f40\u0f42\u0f0b\u0f56\u0f40\u0f7c\u0f51\u0f0b\u0f46\u0f7c\u0f42";
     },
     get$enterNumber() {
-      return "Please enter a whole number value.";
+      return "\u0f67\u0fb2\u0f72\u0f63\u0f0b\u0f42\u0fb2\u0f44\u0f66\u0f0b\u0f40\u0fb1\u0f72\u0f0b\u0f50\u0f44\u0f0b\u0f42\u0f45\u0f72\u0f42\u0f0b\u0f53\u0f44\u0f0b\u0f60\u0f47\u0f74\u0f42\u0f0b\u0f56\u0fb1\u0f7c\u0f66\u0f0d";
     },
     get$practice() {
-      return "Practice";
+      return "\u0f66\u0fa6\u0fb1\u0f7c\u0f44\u0f0b\u0f56\u0f62\u0fa1\u0f62";
     },
     get$speechToTextBody() {
-      return "For voice messages, you can see a transcript as well as the speaker's Words Per Minute score.";
+      return "\u0f66\u0f90\u0f51\u0f0b\u0f60\u0f55\u0fb2\u0f72\u0f53\u0f0b\u0f42\u0fb1\u0f72\u0f0b\u0f46\u0f7a\u0f51\u0f0b\u0f51\u0f74\u0f0d \u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f66\u0f0b\u0f61\u0f72\u0f42\u0f0b\u0f66\u0f92\u0fb1\u0f74\u0f62\u0f0b\u0f51\u0f44\u0f0b\u0f66\u0fa8\u0fb2\u0f0b\u0f58\u0f41\u0f53\u0f0b\u0f42\u0fb1\u0f72\u0f0b\u0f66\u0f90\u0f51\u0f0b\u0f46\u0f0b\u0f62\u0f7a\u0f0b\u0f62\u0f7a\u0f60\u0f72\u0f0b\u0f5a\u0f72\u0f42\u0f0b\u0f42\u0fb2\u0f44\u0f66\u0f0b\u0f50\u0f7c\u0f56\u0f0b\u0f42\u0fb2\u0f44\u0f66\u0f0b\u0f58\u0f50\u0f7c\u0f44\u0f0b\u0f50\u0f74\u0f56\u0f0d";
     },
     get$versionNotFound() {
-      return "Version Not Found";
+      return "\u0f54\u0f62\u0f0b\u0f42\u0f5e\u0f72\u0f0b\u0f58\u0f0b\u0f62\u0f99\u0f7a\u0f51\u0f0d";
     },
     get$fetchingVersion() {
-      return "Fetching version...";
+      return "\u0f54\u0f62\u0f0b\u0f42\u0f5e\u0f72\u0f0b\u0f63\u0f7a\u0f53\u0f0b\u0f56\u0f5e\u0f72\u0f53\u0f0b\u0f54...";
     },
     get$versionFetchError() {
       return "\u0f62\u0f92\u0fb1\u0f42\u0f0b\u0f62\u0fa9\u0f7c\u0f58\u0f0b\u0f56\u0f62\u0f97\u0f7c\u0f51\u0f0b\u0f60\u0f56\u0f51\u0f0b\u0f53\u0f66\u0f0b\u0f60\u0f42\u0fb1\u0f7c\u0f0b\u0f58\u0f72\u0f0b\u0f5a\u0f74\u0f63\u0f0d";
@@ -3930,28 +3930,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u0f42\u0fb2\u0f74\u0f56\u0f0b\u0f5a\u0f72\u0f42\u0f0b\u0f63\u0f0b\u0f42\u0f45\u0f72\u0f42\u0f0b\u0f63\u0f0b\u0f56\u0f66\u0f90\u0fb1\u0f62\u0f0b\u0f56\u0f62\u0f97\u0f7a\u0f0b\u0f56\u0fb1\u0f7a\u0f51\u0f0b\u0f53\u0f66\u0f0b\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f44\u0f0b\u0f42\u0f72\u0f0b\u0f5a\u0f72\u0f42\u0f0b\u0f42\u0f72\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f63\u0f58\u0f0b\u0f63\u0f0b\u0f60\u0f42\u0fb1\u0f7c\u0f0d \u0f56\u0f62\u0f97\u0f7a\u0f0b\u0f56\u0f45\u0f7c\u0f66\u0f0b\u0f58\u0f7a\u0f51\u0f0b\u0f53\u0f72\u0f0b\u0f63\u0f66\u0f0b\u0f60\u0f42\u0fb1\u0f7c\u0f0b\u0f58\u0f72\u0f0b\u0f60\u0f51\u0f74\u0f42! \u0f58\u0f7a\u0f51\u0f0b\u0f5a\u0f51\u0f0b\u0f58\u0f7a\u0f51\u0f0b\u0f63\u0f66\u0f0b\u0f60\u0f42\u0fb1\u0f7c\u0f0b\u0f58\u0f72\u0f0b\u0f60\u0f51\u0f74\u0f42! \ud83d\ude05";
     },
     get$analyticsVocabListBody() {
-      return "This is all your vocabulary! As you earn XP for each word, they'll go from seedling to full bloom. Click on any word to see more details.";
+      return "\u0f60\u0f51\u0f72\u0f0b\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f0b\u0f5a\u0f72\u0f42\u0f0b\u0f58\u0f5b\u0f7c\u0f51\u0f0b\u0f5a\u0f44\u0f0b\u0f58\u0f0b\u0f62\u0f7a\u0f51\u0f0d \u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f66\u0f0b\u0f5a\u0f72\u0f42\u0f0b\u0f62\u0f7a\u0f0b\u0f62\u0f7a\u0f62\u0f0b\u0f50\u0f7c\u0f56\u0f0b\u0f42\u0fb2\u0f44\u0f66\u0f0b\u0f60\u0f50\u0f7c\u0f56\u0f0b\u0f54\u0f60\u0f72\u0f0b\u0f62\u0f97\u0f7a\u0f66\u0f0b\u0f66\u0f74\u0f0d \u0f51\u0f7a\u0f0b\u0f5a\u0f7c\u0f0b\u0f66\u0f7c\u0f53\u0f0b\u0f54\u0f0b\u0f53\u0f66\u0f0b\u0f58\u0f7a\u0f0b\u0f4f\u0f7c\u0f42\u0f0b\u0f62\u0f92\u0fb1\u0f66\u0f0b\u0f54\u0f62\u0f0b\u0f60\u0f42\u0fb1\u0f74\u0f62\u0f0d \u0f5a\u0f72\u0f42\u0f0b\u0f42\u0f44\u0f0b\u0f62\u0f74\u0f44\u0f0b\u0f63\u0f0b\u0f50\u0f7c\u0f42\u0f0b\u0f42\u0f53\u0f7c\u0f53\u0f0b\u0f42\u0fb1\u0f72\u0f66\u0f0b\u0f63\u0f42\u0f0b\u0f63\u0f7a\u0f53\u0f0b\u0f56\u0f62\u0fa1\u0f62\u0f0b\u0f66\u0fa6\u0fb1\u0f7c\u0f44\u0f0b\u0f56\u0fb1\u0f7c\u0f66\u0f0d";
     },
     get$morphAnalyticsListBody() {
-      return "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.";
+      return "\u0f60\u0f51\u0f72\u0f0b\u0f5a\u0f7c\u0f0b\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f66\u0f0b\u0f66\u0fa6\u0fb1\u0f7c\u0f44\u0f0b\u0f56\u0f5e\u0f72\u0f53\u0f0b\u0f54\u0f60\u0f72\u0f0b\u0f66\u0f90\u0f51\u0f0b\u0f61\u0f72\u0f42\u0f0b\u0f42\u0f72\u0f0b\u0f56\u0f62\u0fa1\u0f0b\u0f66\u0fa4\u0fb2\u0f7c\u0f51\u0f0b\u0f62\u0fa3\u0f58\u0f0b\u0f42\u0f5e\u0f42\u0f0b\u0f5a\u0f44\u0f0b\u0f58\u0f0b\u0f62\u0f7a\u0f51\u0f0d \u0f42\u0fb3\u0f7a\u0f44\u0f0b\u0f58\u0f7c\u0f63\u0f0b\u0f56\u0fb1\u0f7a\u0f51\u0f0b\u0f66\u0f90\u0f56\u0f66\u0f0b\u0f60\u0f55\u0fb2\u0f51\u0f0b\u0f54\u0f60\u0f72\u0f0b\u0f66\u0f92\u0f7c\u0f0b\u0f53\u0f66\u0f0b\u0f41\u0f0b\u0f55\u0fb1\u0f7a\u0f0b\u0f50\u0f74\u0f56\u0f0d";
     },
     get$knockSpaceSuccess() {
-      return "You have requested to join this course! An admin will respond to your request when they receive it \ud83d\ude00";
+      return "\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f66\u0f0b\u0f66\u0fb3\u0f7c\u0f56\u0f0b\u0f5a\u0f53\u0f0b\u0f60\u0f51\u0f72\u0f62\u0f0b\u0f5e\u0f74\u0f42\u0f66\u0f0b\u0f62\u0f92\u0fb1\u0f74\u0f60\u0f72\u0f0b\u0f62\u0f7a\u0f0b\u0f5e\u0f74\u0f0b\u0f56\u0f4f\u0f44\u0f0b\u0f5f\u0f72\u0f53\u0f0d \u0f51\u0f7c\u0f0b\u0f51\u0f58\u0f0b\u0f54\u0f66\u0f0b\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f0b\u0f62\u0f7a\u0f0b\u0f5e\u0f74\u0f62\u0f0b\u0f63\u0f53\u0f0b\u0f60\u0f51\u0f7a\u0f56\u0f66\u0f0b\u0f56\u0fb1\u0f7a\u0f51\u0f0b\u0f66\u0fb2\u0f72\u0f51\u0f0d \ud83d\ude00";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "Listen to the complete message. Then match the audios with the words.";
+      return "\u0f56\u0f62\u0f97\u0f7c\u0f51\u0f0b\u0f5a\u0f44\u0f0b\u0f58\u0f62\u0f0b\u0f49\u0f7c\u0f53\u0f0d \u0f51\u0f7a\u0f0b\u0f53\u0f66\u0f0b\u0f66\u0f92\u0fb2\u0f0b\u0f51\u0f44\u0f0b\u0f5a\u0f72\u0f42\u0f0b\u0f5f\u0f74\u0f44\u0f0b\u0f66\u0fa6\u0fb1\u0f62\u0f0b\u0f56\u0fb1\u0f7c\u0f66\u0f0d";
     },
     get$chooseMorphsInstructionsBody() {
-      return "Click the puzzle pieces for grammar questions!";
+      return "\u0f56\u0f62\u0fa1\u0f0b\u0f66\u0fa4\u0fb2\u0f7c\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f0b\u0f51\u0fb2\u0f72\u0f0b\u0f56\u0f0b\u0f5a\u0f7c\u0f60\u0f72\u0f0b\u0f46\u0f7a\u0f51\u0f0b\u0f51\u0f74\u0f0b\u0f66\u0fa6\u0fb1\u0f7c\u0f62\u0f0b\u0f5a\u0f53\u0f0b\u0f42\u0fb1\u0f72\u0f0b\u0f46\u0f0b\u0f64\u0f66\u0f0b\u0f63\u0f0b\u0f50\u0f7c\u0f42\u0f0b\u0f42\u0f53\u0f7c\u0f53\u0f0b\u0f56\u0fb1\u0f7c\u0f66!";
     },
     get$home() {
-      return "Home";
+      return "\u0f42\u0f59\u0f7c\u0f0b\u0f44\u0f7c\u0f66";
     },
     get$join(_) {
-      return "Join";
+      return "\u0f5e\u0f74\u0f42\u0f66";
     },
     get$readingAssistanceOverviewBody() {
-      return "Click the buttons below for mini-games on matching emojis, audios, word meanings, and grammar concepts. Or click on any word for details.";
+      return "\u0f61\u0f72\u0f0b\u0f42\u0f7a\u0f0b\u0f58\u0f5a\u0f74\u0f44\u0f66\u0f0b\u0f66\u0fa6\u0fb1\u0f7c\u0f62\u0f0d \u0f66\u0f92\u0fb2\u0f0b\u0f58\u0f5a\u0f74\u0f44\u0f66\u0f0d \u0f5a\u0f72\u0f42\u0f0b\u0f51\u0f7c\u0f53\u0f0d \u0f56\u0f62\u0fa1\u0f0b\u0f66\u0fa4\u0fb2\u0f7c\u0f51\u0f0b\u0f62\u0fa3\u0f58\u0f0b\u0f42\u0f5e\u0f42\u0f0b\u0f56\u0f45\u0f66\u0f0b\u0f40\u0fb1\u0f72\u0f0b\u0f62\u0fa9\u0f7a\u0f51\u0f0b\u0f58\u0f7c\u0f0b\u0f46\u0f74\u0f44\u0f0b\u0f46\u0f74\u0f44\u0f0b\u0f56\u0f62\u0fa9\u0f58\u0f0b\u0f54\u0f62\u0f0b\u0f42\u0f64\u0f58\u0f0b\u0f42\u0fb1\u0f72\u0f0b\u0f58\u0f50\u0f7a\u0f56\u0f0b\u0f63\u0f0b\u0f50\u0f7c\u0f42\u0f0b\u0f42\u0f53\u0f7c\u0f53\u0f0b\u0f56\u0fb1\u0f7c\u0f66\u0f0d \u0f61\u0f44\u0f0b\u0f53\u0f0b\u0f5a\u0f72\u0f42\u0f0b\u0f42\u0f44\u0f0b\u0f62\u0f74\u0f44\u0f0b\u0f63\u0f0b\u0f50\u0f7c\u0f42\u0f0b\u0f42\u0f53\u0f7c\u0f53\u0f0b\u0f42\u0fb1\u0f72\u0f66\u0f0d";
     },
     get$resetInstructionTooltipsTitle() {
       return "\u6307\u793a\u5de5\u5177\u63d0\u793a\u3092\u30ea\u30bb\u30c3\u30c8";
@@ -4425,7 +4425,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u0f5a\u0f7c\u0f51\u0f0b\u0f63\u0f9f";
     },
     get$startOwn() {
-      return "Start my own";
+      return "\u0f62\u0f44\u0f0b\u0f42\u0f72\u0f0b\u0f42\u0f66\u0f62\u0f0b\u0f62\u0fa9\u0f7c\u0f58";
     },
     get$courseCodeHint() {
       return "\u182a\u1823\u182f\u1824\u1830\u1824 \u182a\u1823\u182f\u1824\u1830\u1824 \u182a\u1823\u182f\u1824\u1830\u1824 \u182a\u1823\u182f\u1824\u1830\u1824 \u182a\u1823\u182f\u1824\u1830\u1824 \u182a\u1823\u182f\u1824\u1830\u1824";
@@ -4497,7 +4497,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u0e81\u0eb2\u0e99\u0e9a\u0ecd\u0ea5\u0eb4\u0e81\u0eb2\u0e99\u0e9e\u0eb2\u0eaa\u0eb2\u0e9a\u0ecd\u0ec8\u0e95\u0ebb\u0e87\u0e81\u0eb1\u0e99";
     },
     get$emptyChatSearch() {
-      return "No DMs or chats found. Make sure your search is spelled correctly.";
+      return "\u0f42\u0f45\u0f72\u0f42\u0f0b\u0f66\u0f92\u0fb2\u0f72\u0f63\u0f0b\u0f60\u0f55\u0fb2\u0f72\u0f53\u0f0b\u0f51\u0f44\u0f0b\u0f42\u0fb3\u0f7a\u0f44\u0f0b\u0f58\u0f7c\u0f63\u0f0b\u0f58\u0f0b\u0f62\u0f99\u0f7a\u0f51\u0f0d \u0f5a\u0f72\u0f42\u0f0b\u0f66\u0fa6\u0fb1\u0f7c\u0f62\u0f0b\u0f61\u0f44\u0f0b\u0f51\u0f42\u0f0b\u0f61\u0f72\u0f53\u0f0b\u0f58\u0f72\u0f53\u0f0b\u0f5e\u0f72\u0f56\u0f0b\u0f56\u0f64\u0f7a\u0f62\u0f0b\u0f56\u0fb1\u0f7c\u0f66\u0f0d";
     },
     get$languageMismatchDesc() {
       return "\u0e9e\u0eb2\u0eaa\u0eb2\u0edd\u0eb2\u0e8d\u0ec0\u0e9b\u0eb1\u0e99\u0eab\u0e8d\u0eb1\u0e87\u0e9a\u0ecd? \u0e81\u0eb0\u0ea5\u0eb8\u0e99\u0eb2\u0ead\u0eb1\u0e9a\u0ec0\u0e94\u0e94\u0e9e\u0eb2\u0eaa\u0eb2\u0edd\u0eb2\u0e8d\u0e82\u0ead\u0e87\u0e97\u0ec8\u0eb2\u0e99\u0e9a\u0ecd?";
@@ -4530,724 +4530,724 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u0f5a\u0f7c\u0f51\u0f0b\u0f5a\u0f72\u0f42\u0f0b\u0f58\u0f7a\u0f51\u0f0b";
     },
     get$shareCourse() {
-      return "Share course";
+      return "\u0f66\u0fb3\u0f7c\u0f56\u0f0b\u0f5a\u0f53\u0f0b\u0f58\u0f49\u0f58\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51";
     },
     get$vocabLevelsDesc() {
-      return "This is where vocab words will go once you\u2019ve leveled them up!";
+      return "\u0f5a\u0f72\u0f42\u0f0b\u0f58\u0f5b\u0f7c\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f0b\u0f5a\u0f72\u0f42\u0f0b\u0f5a\u0f7c\u0f0b\u0f50\u0f7c\u0f56\u0f0b\u0f42\u0fb2\u0f44\u0f66\u0f0b\u0f61\u0f62\u0f0b\u0f62\u0f92\u0fb1\u0f66\u0f0b\u0f56\u0fb1\u0f66\u0f0b\u0f62\u0f97\u0f7a\u0f66\u0f0b\u0f60\u0f51\u0f72\u0f62\u0f0b\u0f60\u0f7c\u0f44\u0f0b\u0f56\u0f0b\u0f61\u0f72\u0f53\u0f0d";
     },
     get$activityAnalyticsTooltipBody() {
-      return "These are your saved activities for review and practice.";
+      return "\u0f60\u0f51\u0f72\u0f0b\u0f5a\u0f7c\u0f0b\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f66\u0f0b\u0f56\u0f66\u0f90\u0fb1\u0f62\u0f0b\u0f5e\u0f72\u0f56\u0f0b\u0f51\u0f44\u0f0b\u0f66\u0fa6\u0fb1\u0f7c\u0f44\u0f0b\u0f56\u0f62\u0fa1\u0f62\u0f0b\u0f42\u0fb1\u0f72\u0f0b\u0f46\u0f7a\u0f51\u0f0b\u0f51\u0f74\u0f0b\u0f49\u0f62\u0f0b\u0f5a\u0f42\u0f66\u0f0b\u0f56\u0fb1\u0f66\u0f0b\u0f54\u0f60\u0f72\u0f0b\u0f56\u0fb1\u0f0b\u0f60\u0f42\u0f74\u0f63\u0f0b\u0f62\u0f7a\u0f51\u0f0d";
     },
     get$numSavedActivities() {
-      return "Number of saved activities";
+      return "\u0f49\u0f62\u0f0b\u0f5a\u0f42\u0f66\u0f0b\u0f56\u0fb1\u0f66\u0f0b\u0f54\u0f60\u0f72\u0f0b\u0f56\u0fb1\u0f0b\u0f60\u0f42\u0f74\u0f63\u0f0b\u0f42\u0fb2\u0f44\u0f66\u0f0b\u0f60\u0f56\u0f7c\u0f62";
     },
     get$saveActivityTitle() {
-      return "Save activity";
+      return "\u0f56\u0fb1\u0f0b\u0f60\u0f42\u0f74\u0f63\u0f0b\u0f49\u0f62\u0f0b\u0f5a\u0f42\u0f66";
     },
     get$saveActivityDesc() {
-      return "Good job! Save this activity for later review and practice";
+      return "\u0f63\u0f7a\u0f42\u0f66\u0f0b\u0f56\u0fb1\u0f66! \u0f56\u0fb1\u0f0b\u0f60\u0f42\u0f74\u0f63\u0f0b\u0f60\u0f51\u0f72\u0f0b\u0f55\u0fb1\u0f72\u0f66\u0f0b\u0f66\u0f74\u0f0b\u0f56\u0f66\u0f90\u0fb1\u0f62\u0f0b\u0f5e\u0f72\u0f56\u0f0b\u0f51\u0f44\u0f0b\u0f66\u0fa6\u0fb1\u0f7c\u0f44\u0f0b\u0f56\u0f62\u0fa1\u0f62\u0f0b\u0f42\u0fb1\u0f72\u0f0b\u0f46\u0f7a\u0f51\u0f0b\u0f51\u0f74\u0f0b\u0f49\u0f62\u0f0b\u0f5a\u0f42\u0f66\u0f0b\u0f56\u0fb1\u0f7c\u0f66\u0f0d";
     },
     get$levelInfoTooltip() {
-      return "Here you can see all the points you\u2019ve earned and how!";
+      return "\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f66\u0f0b\u0f50\u0f7c\u0f56\u0f0b\u0f54\u0f60\u0f72\u0f0b\u0f50\u0f7c\u0f56\u0f0b\u0f42\u0fb2\u0f44\u0f66\u0f0b\u0f5a\u0f44\u0f0b\u0f58\u0f0b\u0f51\u0f44\u0f0b\u0f47\u0f72\u0f0b\u0f63\u0f9f\u0f62\u0f0b\u0f50\u0f7c\u0f56\u0f0b\u0f54\u0f0b\u0f60\u0f51\u0f72\u0f62\u0f0b\u0f58\u0f50\u0f7c\u0f44\u0f0b\u0f50\u0f74\u0f56!";
     },
     get$alreadyInCourseWithID() {
-      return "You are already in a course with this plan. Do you want to create a course with the same plan, or go to the existing course?";
+      return "\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f60\u0f46\u0f62\u0f0b\u0f42\u0f5e\u0f72\u0f0b\u0f60\u0f51\u0f72\u0f0b\u0f51\u0f44\u0f0b\u0f63\u0fa1\u0f53\u0f0b\u0f54\u0f60\u0f72\u0f0b\u0f66\u0fb3\u0f7c\u0f56\u0f0b\u0f5a\u0f53\u0f0b\u0f5e\u0f72\u0f42\u0f0b\u0f53\u0f44\u0f0b\u0f5f\u0f72\u0f53\u0f0b\u0f60\u0f51\u0f74\u0f42 \u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f66\u0f0b\u0f60\u0f46\u0f62\u0f0b\u0f42\u0f5e\u0f72\u0f0b\u0f42\u0f45\u0f72\u0f42\u0f0b\u0f54\u0f60\u0f72\u0f0b\u0f66\u0fb3\u0f7c\u0f56\u0f0b\u0f5a\u0f53\u0f0b\u0f42\u0f66\u0f62\u0f0b\u0f54\u0f0b\u0f56\u0f5f\u0f7c\u0f0b\u0f60\u0f51\u0f7c\u0f51\u0f0b\u0f51\u0f58\u0f0d \u0f61\u0f44\u0f0b\u0f53\u0f0b\u0f61\u0f7c\u0f51\u0f0b\u0f56\u0f5e\u0f72\u0f53\u0f0b\u0f54\u0f60\u0f72\u0f0b\u0f66\u0fb3\u0f7c\u0f56\u0f0b\u0f5a\u0f53\u0f0b\u0f51\u0f74\u0f0b\u0f60\u0f42\u0fb2\u0f7c\u0f0b\u0f60\u0f51\u0f7c\u0f51?";
     },
     get$goToExistingCourse() {
-      return "Go to existing course";
+      return "\u0f61\u0f7c\u0f51\u0f0b\u0f56\u0f5e\u0f72\u0f53\u0f0b\u0f54\u0f60\u0f72\u0f0b\u0f66\u0fb3\u0f7c\u0f56\u0f0b\u0f5a\u0f53\u0f0b\u0f63\u0f0b\u0f60\u0f42\u0fb2\u0f7c";
     },
     get$emojiView() {
-      return "Emoji view";
+      return "\u0f61\u0f72\u0f0b\u0f42\u0f7a\u0f0b\u0f62\u0f72\u0f66\u0f0b\u0f58\u0f50\u0f7c\u0f44\u0f0b\u0f5a\u0f74\u0f63";
     },
     get$feedbackDialogDesc() {
-      return "I make mistakes too! Anything to help me improve?";
+      return "\u0f44\u0f66\u0f0b\u0f40\u0fb1\u0f44\u0f0b\u0f53\u0f7c\u0f62\u0f0b\u0f60\u0f41\u0fb2\u0f74\u0f63\u0f0b\u0f56\u0fb1\u0f7a\u0f51\u0f0b\u0f66\u0fb2\u0f72\u0f51! \u0f44\u0f0b\u0f61\u0f62\u0f0b\u0f62\u0f92\u0fb1\u0f66\u0f0b\u0f42\u0f4f\u0f7c\u0f44\u0f0b\u0f62\u0f92\u0fb1\u0f74\u0f62\u0f0b\u0f66\u0f90\u0f74\u0f63\u0f0b\u0f58\u0f0b\u0f45\u0f72\u0f0b\u0f5e\u0f72\u0f42\u0f0b\u0f61\u0f7c\u0f51?";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "Contact has been invited to the course";
+      return "\u0f60\u0f56\u0fb2\u0f7a\u0f63\u0f0b\u0f56\u0f0b\u0f5f\u0f72\u0f53\u0f0b\u0f54\u0f62\u0f0b\u0f66\u0fb3\u0f7c\u0f56\u0f0b\u0f5a\u0f53\u0f0b\u0f63\u0f0b\u0f42\u0f51\u0f53\u0f0b\u0f5e\u0f74\u0f0b\u0f56\u0f4f\u0f44\u0f0b\u0f5f\u0f72\u0f53\u0f0d";
     },
     get$inviteFriends() {
       return "\u0f42\u0fb2\u0f7c\u0f42\u0f66\u0f0b\u0f58\u0f47\u0f63\u0f0b\u0f60\u0f56\u0f62\u0f0b\u0f56\u0f0d";
     },
     get$activityStatsButtonTooltip() {
-      return "Activity info";
+      return "\u0f56\u0fb1\u0f0b\u0f60\u0f42\u0f74\u0f63\u0f0b\u0f42\u0fb1\u0f72\u0f0b\u0f46\u0f0b\u0f60\u0f55\u0fb2\u0f72\u0f53";
     },
     get$allow(_) {
-      return "Allow";
+      return "\u0f46\u0f7c\u0f42";
     },
     get$deny() {
-      return "Deny";
+      return "\u0f58\u0f72\u0f0b\u0f46\u0f7c\u0f42";
     },
     get$enabledRenewal() {
-      return "Enable Subscription Renewal";
+      return "\u0f49\u0f7c\u0f0b\u0f61\u0f74\u0f53\u0f0b\u0f42\u0f66\u0f62\u0f0b\u0f56\u0f66\u0f90\u0fb2\u0f74\u0f53\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f42\u0f4f\u0f7c\u0f44";
     },
     get$subscriptionEndsOn() {
-      return "Subscription Ends On";
+      return "\u0f49\u0f7c\u0f0b\u0f61\u0f74\u0f53\u0f0b\u0f58\u0f47\u0f74\u0f42\u0f0b\u0f60\u0f42\u0fb2\u0f72\u0f63\u0f0b\u0f5a\u0f7a\u0f66";
     },
     get$subscriptionRenewsOn() {
-      return "Subscription Renews On";
+      return "\u0f49\u0f7c\u0f0b\u0f61\u0f74\u0f53\u0f0b\u0f42\u0f66\u0f62\u0f0b\u0f56\u0f66\u0f90\u0fb2\u0f74\u0f53\u0f0b\u0f5a\u0f7a\u0f66";
     },
     get$waitForSubscriptionChanges() {
-      return "Changes to your subscription may take a moment to reflect in the app.";
+      return "\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f0b\u0f49\u0f7c\u0f0b\u0f61\u0f74\u0f53\u0f0b\u0f42\u0fb1\u0f72\u0f0b\u0f56\u0f66\u0f92\u0fb1\u0f74\u0f62\u0f0b\u0f56\u0f0b\u0f58\u0f49\u0f7a\u0f53\u0f0b\u0f46\u0f66\u0f0b\u0f53\u0f44\u0f0b\u0f58\u0f44\u0f7c\u0f53\u0f0b\u0f54\u0f62\u0f0b\u0f4f\u0f7c\u0f42\u0f0b\u0f59\u0f58\u0f0b\u0f60\u0f42\u0f7c\u0f62\u0f0b\u0f66\u0fb2\u0f72\u0f51\u0f0d";
     },
     get$subscribeReadingAssistance() {
-      return "Subscribe to unlock message tools";
+      return "\u0f60\u0f55\u0fb2\u0f72\u0f53\u0f0b\u0f46\u0f0b\u0f64\u0f66\u0f0b\u0f40\u0fb1\u0f72\u0f0b\u0f63\u0f42\u0f0b\u0f46\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f54\u0f60\u0f72\u0f0b\u0f46\u0f7a\u0f51\u0f0b\u0f51\u0f74\u0f0b\u0f49\u0f7c\u0f0b\u0f61\u0f74\u0f53\u0f0b\u0f56\u0fb1\u0f7c\u0f66\u0f0d";
     },
     get$aceDisplayName() {
-      return "Achinese";
+      return "\u0f68\u0f0b\u0f45\u0f72\u0f0b\u0f53\u0f72\u0f66";
     },
     get$achDisplayName() {
-      return "Acoli";
+      return "\u0f68\u0f0b\u0f45\u0f7c\u0f0b\u0f63\u0f72";
     },
     get$afDisplayName() {
-      return "Afrikaans";
+      return "\u0f68\u0f55\u0f0b\u0f62\u0f72\u0f0b\u0f40\u0f71\u0f53\u0f66";
     },
     get$akDisplayName() {
-      return "Akan";
+      return "\u0f68\u0f0b\u0f40\u0f53";
     },
     get$alzDisplayName() {
-      return "Alur";
+      return "\u0f68\u0f0b\u0f63\u0f74\u0f62";
     },
     get$amDisplayName() {
-      return "Amharic";
+      return "\u0f68\u0f58\u0f0b\u0f67\u0f0b\u0f62\u0f72\u0f42";
     },
     get$arDisplayName() {
-      return "Arabic";
+      return "\u0f68\u0f0b\u0f62\u0f56";
     },
     get$asDisplayName() {
-      return "Assamese";
+      return "\u0f68\u0f0b\u0f66\u0f0b\u0f58\u0f72\u0f66";
     },
     get$awaDisplayName() {
-      return "Awadhi";
+      return "\u0f68\u0f0b\u0f5d\u0f0b\u0f51\u0fb7\u0f72";
     },
     get$ayDisplayName() {
-      return "Aymara";
+      return "\u0f68\u0f60\u0f72\u0f0b\u0f58\u0f0b\u0f62";
     },
     get$azDisplayName() {
-      return "Azerbaijani";
+      return "\u0f68\u0f0b\u0f5b\u0f62\u0f0b\u0f56\u0f61\u0f7a\u0f0b\u0f47\u0f53";
     },
     get$baDisplayName() {
-      return "Bashkir";
+      return "\u0f56\u0f64\u0f0b\u0f40\u0f72\u0f62";
     },
     get$banDisplayName() {
-      return "Balinese";
+      return "\u0f56\u0f0b\u0f63\u0f72\u0f0b\u0f53\u0f72\u0f66";
     },
     get$bbcDisplayName() {
-      return "Batak Toba";
+      return "\u0f56\u0f0b\u0f4f\u0f42\u0f0b\u0f4f\u0f7c\u0f0b\u0f56";
     },
     get$beDisplayName() {
-      return "Belarusian";
+      return "\u0f56\u0f7a\u0f0b\u0f63\u0f0b\u0f62\u0f74\u0f66";
     },
     get$bemDisplayName() {
-      return "Bemba";
+      return "\u0f56\u0f7a\u0f58\u0f0b\u0f56";
     },
     get$bewDisplayName() {
-      return "Betawi";
+      return "\u0f56\u0f7a\u0f0b\u0f4f\u0f0b\u0f5d\u0f72";
     },
     get$bgDisplayName() {
-      return "Bulgarian";
+      return "\u0f56\u0f74\u0f63\u0f0b\u0f42\u0f0b\u0f62\u0f72\u0f0b\u0f61";
     },
     get$bhoDisplayName() {
-      return "Bhojpuri";
+      return "\u0f56\u0fb7\u0f7c\u0f47\u0f0b\u0f54\u0f74\u0f0b\u0f62\u0f72";
     },
     get$bikDisplayName() {
-      return "Bikol";
+      return "\u0f56\u0f72\u0f0b\u0f40\u0f7c\u0f63";
     },
     get$bmDisplayName() {
-      return "Bambara";
+      return "\u0f56\u0f58\u0f0b\u0f56\u0f0b\u0f62";
     },
     get$bnDisplayName() {
-      return "Bangla";
+      return "\u0f56\u0f44\u0f0b\u0f63";
     },
     get$bnBDDisplayName() {
-      return "Bengali (Bangladesh)";
+      return "\u0f56\u0f44\u0f0b\u0f63 (\u0f56\u0f44\u0f92\u0f0b\u0f63\u0f0b\u0f51\u0f7a\u0f64)";
     },
     get$bnINDisplayName() {
-      return "Bengali (India)";
+      return "\u0f56\u0f44\u0f0b\u0f63 (\u0f62\u0f92\u0fb1\u0f0b\u0f42\u0f62)";
     },
     get$brDisplayName() {
-      return "Breton";
+      return "\u0f56\u0fb2\u0f7a\u0f0b\u0f4f\u0f7c\u0f53";
     },
     get$bsDisplayName() {
-      return "Bosnian";
+      return "\u0f56\u0f7c\u0f66\u0f0b\u0f53\u0f72\u0f0b\u0f61";
     },
     get$btsDisplayName() {
-      return "Batak Simalungun";
+      return "\u0f56\u0f0b\u0f4f\u0f42\u0f0b\u0f66\u0f72\u0f0b\u0f58\u0f0b\u0f63\u0f74\u0f44\u0f0b\u0f42\u0f74\u0f53";
     },
     get$btxDisplayName() {
-      return "Batak Karo";
+      return "\u0f56\u0f0b\u0f4f\u0f42\u0f0b\u0f40\u0f0b\u0f62\u0f7c";
     },
     get$buaDisplayName() {
-      return "Buriat";
+      return "\u0f56\u0f74\u0f0b\u0f62\u0f72\u0f0b\u0f61\u0f4f";
     },
     get$caDisplayName() {
-      return "Catalan";
+      return "\u0f40\u0f0b\u0f4f\u0f0b\u0f63\u0f53";
     },
     get$cebDisplayName() {
-      return "Cebuano";
+      return "\u0f66\u0f7a\u0f0b\u0f56\u0f74\u0f0b\u0f5d\u0f0b\u0f53\u0f7c";
     },
     get$cggDisplayName() {
-      return "Chiga";
+      return "\u0f45\u0f72\u0f0b\u0f42";
     },
     get$chmDisplayName() {
-      return "Mari";
+      return "\u0f58\u0f0b\u0f62\u0f72";
     },
     get$ckbDisplayName() {
-      return "Central Kurdish";
+      return "\u0f51\u0f56\u0f74\u0f66\u0f0b\u0f40\u0f74\u0f62\u0f0b\u0f4c\u0f72\u0f64";
     },
     get$cnhDisplayName() {
-      return "Hakha Chin";
+      return "\u0f67\u0f0b\u0f41\u0f0b\u0f45\u0f72\u0f53";
     },
     get$coDisplayName() {
-      return "Corsican";
+      return "\u0f40\u0f7c\u0f62\u0f0b\u0f66\u0f72\u0f0b\u0f40";
     },
     get$crhDisplayName() {
-      return "Crimean Turkish";
+      return "\u0f41\u0f72\u0f0b\u0f62\u0f72\u0f0b\u0f58\u0f72\u0f0b\u0f61\u0f0b\u0f4f\u0f74\u0f62\u0f0b\u0f40\u0f72";
     },
     get$crsDisplayName() {
-      return "Seselwa Creole French";
+      return "\u0f66\u0f7a\u0f0b\u0f66\u0f7a\u0f63\u0f0b\u0f5d\u0f0b\u0f40\u0fb2\u0f7a\u0f0b\u0f60\u0f7c\u0f63";
     },
     get$csDisplayName() {
-      return "Czech";
+      return "\u0f45\u0f7a\u0f42";
     },
     get$cvDisplayName() {
-      return "Chuvash";
+      return "\u0f45\u0f74\u0f0b\u0f56\u0f64";
     },
     get$cyDisplayName() {
-      return "Welsh";
+      return "\u0f5d\u0f7a\u0f63\u0f64";
     },
     get$daDisplayName() {
-      return "Danish";
+      return "\u0f4c\u0f7a\u0f53\u0f0b\u0f58\u0f42";
     },
     get$deDisplayName() {
-      return "German";
+      return "\u0f60\u0f47\u0f62\u0f0b\u0f58\u0f53";
     },
     get$dinDisplayName() {
-      return "Dinka";
+      return "\u0f4c\u0f72\u0f53\u0f0b\u0f40";
     },
     get$doiDisplayName() {
-      return "Dogri";
+      return "\u0f4c\u0f7c\u0f0b\u0f42\u0fb2\u0f72";
     },
     get$dovDisplayName() {
-      return "Dombe";
+      return "\u0f4c\u0f7c\u0f58\u0f0b\u0f56\u0f7a";
     },
     get$dzDisplayName() {
-      return "Dzongkha";
+      return "\u0f62\u0fab\u0f7c\u0f44\u0f0b\u0f41";
     },
     get$eeDisplayName() {
-      return "Ewe";
+      return "\u0f68\u0f7a\u0f0b\u0f5d\u0f7a";
     },
     get$enDisplayName() {
-      return "English";
+      return "\u0f51\u0f56\u0fb1\u0f72\u0f53\u0f0b\u0f47\u0f72";
     },
     get$enAUDisplayName() {
-      return "English (Australia)";
+      return "\u0f51\u0f56\u0fb1\u0f72\u0f53\u0f0b\u0f47\u0f72 (\u0f68\u0f7c\u0f66\u0f0b\u0f4a\u0fb2\u0f7a\u0f0b\u0f63\u0f72\u0f0b\u0f61)";
     },
     get$enGBDisplayName() {
-      return "English (UK)";
+      return "\u0f51\u0f56\u0fb1\u0f72\u0f53\u0f0b\u0f47\u0f72 (\u0f51\u0f56\u0fb1\u0f72\u0f53\u0f0b\u0f61\u0f74\u0f63)";
     },
     get$enINDisplayName() {
-      return "English (India)";
+      return "\u0f51\u0f56\u0fb1\u0f72\u0f53\u0f0b\u0f47\u0f72 (\u0f62\u0f92\u0fb1\u0f0b\u0f42\u0f62)";
     },
     get$enUSDisplayName() {
-      return "English (US)";
+      return "\u0f51\u0f56\u0fb1\u0f72\u0f53\u0f0b\u0f47\u0f72 (\u0f68\u0f0b\u0f58\u0f7a\u0f0b\u0f62\u0f72\u0f0b\u0f40)";
     },
     get$eoDisplayName() {
-      return "Esperanto";
+      return "\u0f68\u0f7a\u0f66\u0f0b\u0f54\u0f7a\u0f0b\u0f62\u0f53\u0f0b\u0f4f\u0f7c";
     },
     get$esDisplayName() {
-      return "Spanish";
+      return "\u0f68\u0f72\u0f66\u0f0b\u0f54\u0f0b\u0f53\u0f72";
     },
     get$esESDisplayName() {
-      return "Spanish (Spain)";
+      return "\u0f68\u0f72\u0f66\u0f0b\u0f54\u0f0b\u0f53\u0f72 (\u0f66\u0f72\u0f0b\u0f54\u0f53)";
     },
     get$esMXDisplayName() {
-      return "Spanish (Mexico)";
+      return "\u0f68\u0f72\u0f66\u0f0b\u0f54\u0f0b\u0f53\u0f72 (\u0f58\u0f7a\u0f42\u0f0b\u0f66\u0f72\u0f0b\u0f40\u0f7c)";
     },
     get$euDisplayName() {
-      return "Basque";
+      return "\u0f56\u0f66\u0f90\u0f7a";
     },
     get$faDisplayName() {
-      return "Persian";
+      return "\u0f55\u0f62\u0f0b\u0f66\u0f72";
     },
     get$ffDisplayName() {
-      return "Fulah";
+      return "\u0f55\u0f74\u0f0b\u0f63";
     },
     get$fiDisplayName() {
-      return "Finnish";
+      return "\u0f55\u0f72\u0f53\u0f0b\u0f63\u0f53";
     },
     get$filDisplayName() {
-      return "Filipino";
+      return "\u0f55\u0f72\u0f0b\u0f63\u0f72\u0f0b\u0f54\u0f72\u0f0b\u0f53\u0f7c";
     },
     get$fjDisplayName() {
-      return "Fijian";
+      return "\u0f55\u0f72\u0f0b\u0f47\u0f72";
     },
     get$foDisplayName() {
-      return "Faroese";
+      return "\u0f55\u0f7a\u0f0b\u0f62\u0f7c";
     },
     get$frDisplayName() {
-      return "French";
+      return "\u0f55\u0f0b\u0f62\u0f53\u0f0b\u0f66\u0f72";
     },
     get$frCADisplayName() {
-      return "French (Canada)";
+      return "\u0f55\u0f0b\u0f62\u0f53\u0f0b\u0f66\u0f72 (\u0f41\u0f0b\u0f53\u0f0b\u0f4c)";
     },
     get$frFRDisplayName() {
-      return "French (France)";
+      return "\u0f55\u0f0b\u0f62\u0f53\u0f0b\u0f66\u0f72 (\u0f55\u0f0b\u0f62\u0f53\u0f0b\u0f66\u0f72\u0f0b\u0f61\u0f74\u0f63)";
     },
     get$fyDisplayName() {
-      return "Western Frisian";
+      return "\u0f53\u0f74\u0f56\u0f0b\u0f55\u0fb2\u0f72\u0f0b\u0f66\u0f72";
     },
     get$gaDisplayName() {
-      return "Irish";
+      return "\u0f68\u0f61\u0f62\u0f0b\u0f63\u0f53\u0f4c";
     },
     get$gaaDisplayName() {
-      return "Ga";
+      return "\u0f42";
     },
     get$gdDisplayName() {
-      return "Scottish Gaelic";
+      return "\u0f66\u0f72\u0f40\u0f7c\u0f4a\u0f0b\u0f63\u0f53\u0f4c\u0f0b\u0f42\u0f7a\u0f0b\u0f63\u0f72\u0f42";
     },
     get$glDisplayName() {
-      return "Galician";
+      return "\u0f42\u0f0b\u0f63\u0f72\u0f0b\u0f64\u0f72";
     },
     get$gnDisplayName() {
-      return "Guarani";
+      return "\u0f42\u0f74\u0f0b\u0f5d\u0f0b\u0f62\u0f0b\u0f53\u0f72";
     },
     get$gomDisplayName() {
-      return "Goan Konkani";
+      return "\u0f42\u0f7c\u0f0b\u0f5d\u0f0b\u0f40\u0f7c\u0f44\u0f0b\u0f40\u0f0b\u0f53\u0f72";
     },
     get$guDisplayName() {
-      return "Gujarati";
+      return "\u0f42\u0f74\u0f0b\u0f47\u0f0b\u0f62\u0f0b\u0f4f\u0f72";
     },
     get$haDisplayName() {
-      return "Hausa";
+      return "\u0f67\u0f7d\u0f0b\u0f66";
     },
     get$hawDisplayName() {
-      return "Hawaiian";
+      return "\u0f67\u0f0b\u0f5d\u0f60\u0f72";
     },
     get$heDisplayName() {
-      return "Hebrew";
+      return "\u0f67\u0f7a\u0f0b\u0f56\u0fb2\u0f7a";
     },
     get$hiDisplayName() {
-      return "Hindi";
+      return "\u0f67\u0f72\u0f53\u0f0b\u0f51\u0f72";
     },
     get$hilDisplayName() {
-      return "Hiligaynon";
+      return "\u0f67\u0f72\u0f0b\u0f63\u0f72\u0f0b\u0f42\u0f60\u0f72\u0f0b\u0f53\u0f7c\u0f53";
     },
     get$hmnDisplayName() {
-      return "Hmong";
+      return "\u0f58\u0f7c\u0f44";
     },
     get$hneDisplayName() {
-      return "Chhattisgarhi";
+      return "\u0f46\u0f4f\u0f72\u0f66\u0f0b\u0f42\u0f62\u0fb7\u0f72";
     },
     get$hrDisplayName() {
-      return "Croatian";
+      return "\u0f41\u0f7c\u0f62\u0f0b\u0f5d\u0f7a\u0f0b\u0f64";
     },
     get$hrxDisplayName() {
-      return "Hunsrik";
+      return "\u0f67\u0f74\u0f53\u0f0b\u0f66\u0f72\u0f0b\u0f62\u0f72\u0f42";
     },
     get$htDisplayName() {
-      return "Haitian Creole";
+      return "\u0f67\u0f60\u0f72\u0f0b\u0f4f\u0f72\u0f0b\u0f40\u0fb2\u0f7a\u0f0b\u0f60\u0f7c\u0f63";
     },
     get$huDisplayName() {
-      return "Hungarian";
+      return "\u0f67\u0f44\u0f0b\u0f42\u0f0b\u0f62\u0f72";
     },
     get$hyDisplayName() {
-      return "Armenian";
+      return "\u0f68\u0f62\u0f0b\u0f58\u0f7a\u0f0b\u0f53\u0f72";
     },
     get$idDisplayName() {
-      return "Indonesian";
+      return "\u0f68\u0f72\u0f53\u0f0b\u0f4c\u0f7c\u0f0b\u0f53\u0f7a\u0f0b\u0f64";
     },
     get$igDisplayName() {
-      return "Igbo";
+      return "\u0f68\u0f72\u0f42\u0f0b\u0f56\u0f7c";
     },
     get$iloDisplayName() {
-      return "Iloko";
+      return "\u0f68\u0f72\u0f0b\u0f63\u0f7c\u0f0b\u0f40\u0f7c";
     },
     get$isDisplayName() {
-      return "Icelandic";
+      return "\u0f68\u0f61\u0f72\u0f66\u0f0b\u0f63\u0f53\u0f4c";
     },
     get$itDisplayName() {
-      return "Italian";
+      return "\u0f68\u0f72\u0f0b\u0f4f\u0f0b\u0f63\u0f72";
     },
     get$jaDisplayName() {
-      return "Japanese";
+      return "\u0f49\u0f72\u0f0b\u0f67\u0f7c\u0f44";
     },
     get$jvDisplayName() {
-      return "Javanese";
+      return "\u0f47\u0f0b\u0f5d";
     },
     get$kaDisplayName() {
-      return "Georgian";
+      return "\u0f47\u0f7c\u0f62\u0f0b\u0f47\u0f72";
     },
     get$kkDisplayName() {
-      return "Kazakh";
+      return "\u0f40\u0f0b\u0f5b\u0f41";
     },
     get$kmDisplayName() {
-      return "Khmer";
+      return "\u0f41\u0f7a\u0f0b\u0f58\u0f7a\u0f62";
     },
     get$knDisplayName() {
-      return "Kannada";
+      return "\u0f40\u0f53\u0f0b\u0f53\u0f0b\u0f4c";
     },
     get$koDisplayName() {
-      return "Korean";
+      return "\u0f40\u0f7c\u0f0b\u0f62\u0f72\u0f0b\u0f61";
     },
     get$kokDisplayName() {
-      return "Konkani";
+      return "\u0f40\u0f7c\u0f44\u0f0b\u0f40\u0f0b\u0f53\u0f72";
     },
     get$kriDisplayName() {
-      return "Krio";
+      return "\u0f40\u0fb2\u0f72\u0f0b\u0f61\u0f7c";
     },
     get$ksDisplayName() {
-      return "Kashmiri";
+      return "\u0f40\u0f64\u0f0b\u0f58\u0f72\u0f0b\u0f62\u0f72";
     },
     get$ktuDisplayName() {
-      return "Kituba (Democratic Republic of Congo)";
+      return "\u0f40\u0f72\u0f0b\u0f4f\u0f74\u0f0b\u0f56";
     },
     get$kuDisplayName() {
-      return "Kurdish";
+      return "\u0f40\u0f74\u0f62\u0f0b\u0f4c\u0f72\u0f64";
     },
     get$kyDisplayName() {
-      return "Kyrgyz";
+      return "\u0f40\u0f72\u0f62\u0f0b\u0f42\u0f72\u0f5b";
     },
     get$laDisplayName() {
-      return "Latin";
+      return "\u0f63\u0f0b\u0f4f\u0f72\u0f53";
     },
     get$lbDisplayName() {
-      return "Luxembourgish";
+      return "\u0f63\u0f42\u0f0b\u0f66\u0f58\u0f0b\u0f56\u0f7c\u0f62\u0f42";
     },
     get$lgDisplayName() {
-      return "Ganda";
+      return "\u0f42\u0f53\u0f0b\u0f4c";
     },
     get$liDisplayName() {
-      return "Limburgish";
+      return "\u0f63\u0f72\u0f58\u0f0b\u0f56\u0f74\u0f62\u0f0b\u0f42\u0f72\u0f64";
     },
     get$lijDisplayName() {
-      return "Ligurian";
+      return "\u0f63\u0f72\u0f0b\u0f42\u0f74\u0f0b\u0f62\u0f72";
     },
     get$lmoDisplayName() {
-      return "Lombard";
+      return "\u0f63\u0f7c\u0f58\u0f0b\u0f56\u0f62\u0fa1";
     },
     get$lnDisplayName() {
-      return "Lingala";
+      return "\u0f63\u0f72\u0f44\u0f0b\u0f42\u0f0b\u0f63";
     },
     get$loDisplayName() {
-      return "Lao";
+      return "\u0f63\u0f60\u0f7c";
     },
     get$ltDisplayName() {
-      return "Lithuanian";
+      return "\u0f63\u0f72\u0f0b\u0f50\u0f74\u0f0b\u0f5d\u0f7a\u0f0b\u0f53\u0f72";
     },
     get$ltgDisplayName() {
-      return "Latgalian";
+      return "\u0f63\u0f4f\u0f0b\u0f42\u0f0b\u0f63\u0f72";
     },
     get$luoDisplayName() {
-      return "Luo (Kenya and Tanzania)";
+      return "\u0f63\u0f74\u0f0b\u0f5d\u0f7c";
     },
     get$lusDisplayName() {
-      return "Mizo";
+      return "\u0f58\u0f72\u0f0b\u0f5b\u0f7c";
     },
     get$lvDisplayName() {
-      return "Latvian";
+      return "\u0f63\u0f4f\u0f0b\u0f5d\u0f72";
     },
     get$maiDisplayName() {
-      return "Maithili";
+      return "\u0f58\u0f60\u0f72\u0f0b\u0f50\u0f72\u0f0b\u0f63\u0f72";
     },
     get$makDisplayName() {
-      return "Makasar";
+      return "\u0f58\u0f0b\u0f40\u0f0b\u0f66\u0f62";
     },
     get$mgDisplayName() {
-      return "Malagasy";
+      return "\u0f58\u0f0b\u0f63\u0f0b\u0f42\u0f0b\u0f66\u0f72";
     },
     get$miDisplayName() {
-      return "M\u0101ori";
+      return "\u0f58\u0f60\u0f7c\u0f0b\u0f62\u0f72";
     },
     get$minDisplayName() {
-      return "Minangkabau";
+      return "\u0f58\u0f72\u0f0b\u0f53\u0f44\u0f0b\u0f40\u0f0b\u0f56\u0f60\u0f74";
     },
     get$mkDisplayName() {
-      return "Macedonian";
+      return "\u0f58\u0f0b\u0f66\u0f72\u0f0b\u0f4c\u0f7c\u0f0b\u0f53\u0f72";
     },
     get$mlDisplayName() {
-      return "Malayalam";
+      return "\u0f58\u0f0b\u0f63\u0f0b\u0f61\u0f0b\u0f63\u0f58";
     },
     get$mnDisplayName() {
-      return "Mongolian";
+      return "\u0f66\u0f7c\u0f42\u0f0b\u0f54\u0f7c";
     },
     get$mniDisplayName() {
-      return "Manipuri";
+      return "\u0f58\u0f0b\u0f53\u0f72\u0f0b\u0f54\u0f74\u0f0b\u0f62\u0f72";
     },
     get$mrDisplayName() {
-      return "Marathi";
+      return "\u0f58\u0f0b\u0f62\u0f0b\u0f50\u0f72";
     },
     get$msDisplayName() {
-      return "Malay";
+      return "\u0f58\u0f0b\u0f63\u0f7a";
     },
     get$msArabDisplayName() {
-      return "Malay (Arabic)";
+      return "\u0f58\u0f0b\u0f63\u0f7a (\u0f68\u0f0b\u0f62\u0f56)";
     },
     get$msMYDisplayName() {
-      return "Malay (Malaysia)";
+      return "\u0f58\u0f0b\u0f63\u0f7a (\u0f58\u0f0b\u0f63\u0f7a\u0f0b\u0f64)";
     },
     get$mtDisplayName() {
-      return "Maltese";
+      return "\u0f58\u0f63\u0f0b\u0f4f";
     },
     get$mwrDisplayName() {
-      return "Marwari";
+      return "\u0f58\u0f62\u0fad\u0f0b\u0f62\u0f72";
     },
     get$myDisplayName() {
-      return "Burmese";
+      return "\u0f56\u0f62\u0f0b\u0f58";
     },
     get$nanDisplayName() {
-      return "Min Nan";
+      return "\u0f58\u0f72\u0f53\u0f0b\u0f53\u0f53";
     },
     get$nbDisplayName() {
-      return "Norwegian (Bokm\xe5l)";
+      return "\u0f53\u0f7c\u0f62\u0f0b\u0f5d\u0f7a (\u0f56\u0f7c\u0f42\u0f0b\u0f58\u0f71\u0f7c\u0f63)";
     },
     get$neDisplayName() {
-      return "Nepali";
+      return "\u0f53\u0f7a\u0f0b\u0f54\u0f0b\u0f63\u0f72";
     },
     get$newDisplayName() {
-      return "Newari";
+      return "\u0f53\u0f7a\u0f0b\u0f5d\u0f0b\u0f62\u0f72";
     },
     get$nlDisplayName() {
-      return "Dutch";
+      return "\u0f67\u0f7c\u0f0b\u0f63\u0f53";
     },
     get$nlBEDisplayName() {
-      return "Flemish";
+      return "\u0f67\u0f7c\u0f0b\u0f63\u0f53 (\u0f56\u0f7a\u0f63\u0f0b\u0f47\u0f58)";
     },
     get$noDisplayName() {
-      return "Norwegian";
+      return "\u0f53\u0f7c\u0f62\u0f0b\u0f5d\u0f7a";
     },
     get$nrDisplayName() {
-      return "South Ndebele";
+      return "\u0f63\u0fb7\u0f7c\u0f0b\u0f68\u0f7a\u0f53\u0f0b\u0f4c\u0f7a\u0f0b\u0f56\u0f7a\u0f0b\u0f63\u0f7a";
     },
     get$nsoDisplayName() {
-      return "Northern Sotho";
+      return "\u0f56\u0fb1\u0f44\u0f0b\u0f66\u0f7c\u0f0b\u0f50\u0f7c";
     },
     get$nusDisplayName() {
-      return "Nuer";
+      return "\u0f53\u0f74\u0f60\u0f7a\u0f62";
     },
     get$nyDisplayName() {
-      return "Nyanja";
+      return "\u0f49\u0f53\u0f0b\u0f47";
     },
     get$ocDisplayName() {
-      return "Occitan";
+      return "\u0f68\u0f7c\u0f42\u0f0b\u0f66\u0f72\u0f0b\u0f4f\u0f53";
     },
     get$omDisplayName() {
-      return "Oromo";
+      return "\u0f68\u0f7c\u0f0b\u0f62\u0f7c\u0f0b\u0f58\u0f7c";
     },
     get$orDisplayName() {
-      return "Odia";
+      return "\u0f68\u0f7c\u0f0b\u0f4c\u0f72";
     },
     get$paDisplayName() {
-      return "Punjabi";
+      return "\u0f54\u0f53\u0f0b\u0f47\u0f0b\u0f56\u0f72";
     },
     get$paArabDisplayName() {
-      return "Punjabi (Shahmukhi)";
+      return "\u0f54\u0f53\u0f0b\u0f47\u0f0b\u0f56\u0f72 (\u0f64\u0f67\u0f0b\u0f58\u0f74\u0f0b\u0f41\u0f72)";
     },
     get$paINDisplayName() {
-      return "Punjabi (Gurmukhi)";
+      return "\u0f54\u0f53\u0f0b\u0f47\u0f0b\u0f56\u0f72 (\u0f42\u0f74\u0f62\u0f0b\u0f58\u0f74\u0f0b\u0f41\u0f72)";
     },
     get$pagDisplayName() {
-      return "Pangasinan";
+      return "\u0f54\u0f44\u0f0b\u0f42\u0f0b\u0f66\u0f72\u0f0b\u0f53\u0f53";
     },
     get$pamDisplayName() {
-      return "Pampanga";
+      return "\u0f54\u0f58\u0f0b\u0f54\u0f44\u0f0b\u0f42";
     },
     get$papDisplayName() {
-      return "Papiamento";
+      return "\u0f54\u0f0b\u0f54\u0f72\u0f0b\u0f61\u0f0b\u0f58\u0f7a\u0f53\u0f0b\u0f4f\u0f7c";
     },
     get$plDisplayName() {
-      return "Polish";
+      return "\u0f54\u0f7c\u0f0b\u0f63\u0f53";
     },
     get$psDisplayName() {
-      return "Pashto";
+      return "\u0f54\u0f64\u0f0b\u0f4f\u0f7c";
     },
     get$ptDisplayName() {
-      return "Portuguese";
+      return "\u0f54\u0f7c\u0f62\u0f0b\u0f4f\u0f74\u0f0b\u0f42\u0f63";
     },
     get$ptBRDisplayName() {
-      return "Portuguese (Brazil)";
+      return "\u0f54\u0f7c\u0f62\u0f0b\u0f4f\u0f74\u0f0b\u0f42\u0f63 (\u0f56\u0fb2\u0f0b\u0f5b\u0f72\u0f63)";
     },
     get$ptPTDisplayName() {
-      return "Portuguese (Portugal)";
+      return "\u0f54\u0f7c\u0f62\u0f0b\u0f4f\u0f74\u0f0b\u0f42\u0f63 (\u0f54\u0f7c\u0f62\u0f0b\u0f4f\u0f74\u0f0b\u0f42\u0f63\u0f0b\u0f61\u0f74\u0f63)";
     },
     get$quDisplayName() {
-      return "Quechua";
+      return "\u0f40\u0f7a\u0f0b\u0f46\u0f74\u0f0b\u0f5d";
     },
     get$rajDisplayName() {
-      return "Rajasthani";
+      return "\u0f62\u0f0b\u0f47\u0f66\u0f0b\u0f50\u0f0b\u0f53\u0f72";
     },
     get$rnDisplayName() {
-      return "Rundi";
+      return "\u0f62\u0f74\u0f53\u0f0b\u0f4c\u0f72";
     },
     get$roDisplayName() {
-      return "Romanian";
+      return "\u0f62\u0f7c\u0f0b\u0f58\u0f7a\u0f0b\u0f53\u0f72";
     },
     get$roMDDisplayName() {
-      return "Moldovan";
+      return "\u0f58\u0f7c\u0f63\u0f0b\u0f4c\u0f7c\u0f0b\u0f5d";
     },
     get$romDisplayName() {
-      return "Romany";
+      return "\u0f62\u0f7c\u0f0b\u0f58\u0f0b\u0f53\u0f72";
     },
     get$ruDisplayName() {
-      return "Russian";
+      return "\u0f68\u0f74\u0f0b\u0f62\u0f74\u0f0b\u0f66\u0f74";
     },
     get$rwDisplayName() {
-      return "Kinyarwanda";
+      return "\u0f40\u0f72\u0f0b\u0f53\u0f72\u0f62\u0f0b\u0f5d\u0f53\u0f0b\u0f4c";
     },
     get$saDisplayName() {
-      return "Sanskrit";
+      return "\u0f66\u0f53\u0f0b\u0f66\u0f72\u0f0b\u0f40\u0fb2\u0f72";
     },
     get$satDisplayName() {
-      return "Santali";
+      return "\u0f66\u0f53\u0f0b\u0f4f\u0f0b\u0f63\u0f72";
     },
     get$scnDisplayName() {
-      return "Sicilian";
+      return "\u0f66\u0f72\u0f0b\u0f66\u0f72\u0f0b\u0f63\u0f72";
     },
     get$sdDisplayName() {
-      return "Sindhi";
+      return "\u0f66\u0f72\u0f53\u0f0b\u0f51\u0fb7\u0f72";
     },
     get$sgDisplayName() {
-      return "Sango";
+      return "\u0f66\u0f44\u0f0b\u0f42\u0f7c";
     },
     get$shnDisplayName() {
-      return "Shan";
+      return "\u0f64\u0f53";
     },
     get$siDisplayName() {
-      return "Sinhala";
+      return "\u0f66\u0f72\u0f44\u0f0b\u0f67\u0f0b\u0f63";
     },
     get$skDisplayName() {
-      return "Slovak";
+      return "\u0f66\u0f72\u0f63\u0f7c\u0f0b\u0f5d\u0f42";
     },
     get$slDisplayName() {
-      return "Slovenian";
+      return "\u0f66\u0f72\u0f63\u0f7c\u0f0b\u0f5d\u0f7a\u0f0b\u0f53\u0f72";
     },
     get$smDisplayName() {
-      return "Samoan";
+      return "\u0f66\u0f0b\u0f58\u0f7c";
     },
     get$snDisplayName() {
-      return "Shona";
+      return "\u0f64\u0f7c\u0f0b\u0f53";
     },
     get$soDisplayName() {
-      return "Somali";
+      return "\u0f66\u0f7c\u0f0b\u0f58\u0f0b\u0f63\u0f72";
     },
     get$sqDisplayName() {
-      return "Albanian";
+      return "\u0f68\u0f63\u0f0b\u0f56\u0f7a\u0f0b\u0f53\u0f72";
     },
     get$srDisplayName() {
-      return "Serbian";
+      return "\u0f66\u0f7a\u0f62\u0f0b\u0f56\u0f72";
     },
     get$srMEDisplayName() {
-      return "Montenegrin";
+      return "\u0f58\u0f7c\u0f53\u0f0b\u0f4a\u0f7a\u0f0b\u0f53\u0f7a\u0f0b\u0f42\u0fb2\u0f7c";
     },
     get$ssDisplayName() {
-      return "Swati";
+      return "\u0f66\u0f72\u0f0b\u0f5d\u0f0b\u0f4f\u0f72";
     },
     get$stDisplayName() {
-      return "Southern Sotho";
+      return "\u0f63\u0fb7\u0f7c\u0f0b\u0f66\u0f7c\u0f0b\u0f50\u0f7c";
     },
     get$suDisplayName() {
-      return "Sundanese";
+      return "\u0f66\u0f74\u0f53\u0f0b\u0f4c";
     },
     get$svDisplayName() {
-      return "Swedish";
+      return "\u0f66\u0f72\u0f5d\u0f72\u0f0b\u0f4c\u0f53";
     },
     get$swDisplayName() {
-      return "Swahili";
+      return "\u0f66\u0f72\u0f0b\u0f5d\u0f0b\u0f67\u0f72\u0f0b\u0f63\u0f72";
     },
     get$szlDisplayName() {
-      return "Silesian";
+      return "\u0f66\u0f72\u0f0b\u0f63\u0f7a\u0f0b\u0f64";
     },
     get$taDisplayName() {
-      return "Tamil";
+      return "\u0f4f\u0f0b\u0f58\u0f72\u0f63";
     },
     get$teDisplayName() {
-      return "Telugu";
+      return "\u0f4f\u0f7a\u0f0b\u0f63\u0f74\u0f0b\u0f42\u0f74";
     },
     get$tetDisplayName() {
-      return "Tetum";
+      return "\u0f4f\u0f7a\u0f0b\u0f4f\u0f74\u0f58";
     },
     get$tgDisplayName() {
-      return "Tajik";
+      return "\u0f4f\u0f0b\u0f47\u0f72\u0f42";
     },
     get$thDisplayName() {
-      return "Thai";
+      return "\u0f50\u0f60\u0f72";
     },
     get$tiDisplayName() {
-      return "Tigrinya";
+      return "\u0f4f\u0f72\u0f0b\u0f42\u0fb2\u0f72\u0f0b\u0f49";
     },
     get$tkDisplayName() {
-      return "Turkmen";
+      return "\u0f4a\u0f74\u0f62\u0f0b\u0f40\u0f0b\u0f58\u0f53";
     },
     get$tlDisplayName() {
-      return "Tagalog";
+      return "\u0f4f\u0f0b\u0f42\u0f0b\u0f63\u0f7c\u0f42";
     },
     get$tnDisplayName() {
-      return "Tswana";
+      return "\u0f59\u0f72\u0f0b\u0f5d\u0f0b\u0f53";
     },
     get$trDisplayName() {
-      return "Turkish";
+      return "\u0f4a\u0f74\u0f62\u0f0b\u0f40\u0f72";
     },
     get$tsDisplayName() {
-      return "Tsonga";
+      return "\u0f59\u0f7c\u0f44\u0f0b\u0f42";
     },
     get$ttDisplayName() {
-      return "Tatar";
+      return "\u0f4f\u0f0b\u0f4f\u0f62";
     },
     get$ugDisplayName() {
-      return "Uyghur";
+      return "\u0f61\u0f74\u0f0b\u0f42\u0f74\u0f62";
     },
     get$ukDisplayName() {
-      return "Ukrainian";
+      return "\u0f61\u0f74\u0f0b\u0f40\u0fb2\u0f7a\u0f53";
     },
     get$urDisplayName() {
-      return "Urdu";
+      return "\u0f68\u0f74\u0f62\u0f0b\u0f4c\u0f74";
     },
     get$urINDisplayName() {
-      return "Urdu (India)";
+      return "\u0f68\u0f74\u0f62\u0f0b\u0f4c\u0f74 (\u0f62\u0f92\u0fb1\u0f0b\u0f42\u0f62)";
     },
     get$urPKDisplayName() {
-      return "Urdu (Pakistan)";
+      return "\u0f68\u0f74\u0f62\u0f0b\u0f4c\u0f74 (\u0f54\u0f0b\u0f40\u0f72\u0f0b\u0f66\u0f72\u0f0b\u0f50\u0f53)";
     },
     get$uzDisplayName() {
-      return "Uzbek";
+      return "\u0f68\u0f74\u0f5b\u0f0b\u0f56\u0f7a\u0f42";
     },
     get$viDisplayName() {
-      return "Vietnamese";
+      return "\u0f5d\u0f72\u0f0b\u0f61\u0f7a\u0f4a\u0f0b\u0f53\u0f58";
     },
     get$wuuDisplayName() {
-      return "Wu";
+      return "\u0f5d\u0f74";
     },
     get$xhDisplayName() {
-      return "Xhosa";
+      return "\u0f5e\u0f7c\u0f0b\u0f66";
     },
     get$yiDisplayName() {
-      return "Yiddish";
+      return "\u0f61\u0f72\u0f0b\u0f51\u0f72\u0f64";
     },
     get$yoDisplayName() {
-      return "Yoruba";
+      return "\u0f61\u0f7c\u0f0b\u0f62\u0f74\u0f0b\u0f56";
     },
     get$yuaDisplayName() {
-      return "Yucateco";
+      return "\u0f61\u0f74\u0f0b\u0f40\u0f0b\u0f4f\u0f7a\u0f0b\u0f40\u0f7c";
     },
     get$yueDisplayName() {
-      return "Cantonese";
+      return "\u0f42\u0f7c\u0f44\u0f0b\u0f4a\u0f7c\u0f0b\u0f53\u0f72\u0f66";
     },
     get$yueCNDisplayName() {
-      return "Cantonese (China)";
+      return "\u0f42\u0f7c\u0f44\u0f0b\u0f4a\u0f7c\u0f0b\u0f53\u0f72\u0f66 (\u0f62\u0f92\u0fb1\u0f0b\u0f53\u0f42)";
     },
     get$yueHKDisplayName() {
-      return "Cantonese (Hong Kong)";
+      return "\u0f42\u0f7c\u0f44\u0f0b\u0f4a\u0f7c\u0f0b\u0f53\u0f72\u0f66 (\u0f5e\u0f44\u0f0b\u0f40\u0f44)";
     },
     get$zhDisplayName() {
-      return "Chinese";
+      return "\u0f62\u0f92\u0fb1\u0f0b\u0f58\u0f72";
     },
     get$zhCNDisplayName() {
-      return "Chinese (Simplified)";
+      return "\u0f62\u0f92\u0fb1\u0f0b\u0f58\u0f72 (\u0f56\u0f66\u0fa1\u0f74\u0f66\u0f0b\u0f61\u0f72\u0f42)";
     },
     get$zhTWDisplayName() {
-      return "Chinese (Traditional)";
+      return "\u0f62\u0f92\u0fb1\u0f0b\u0f58\u0f72 (\u0f62\u0f92\u0fb1\u0f74\u0f53\u0f0b\u0f61\u0f72\u0f42)";
     },
     get$zuDisplayName() {
-      return "Zulu";
+      return "\u0f5f\u0f74\u0f0b\u0f63\u0f74";
     },
     get$unreadPlus() {
       return "99+";
@@ -5688,7 +5688,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["bz2+JBVhpUL69wT1u3NRVRsxfrU="] = d.current;
+  d["599Q6DlnuVUExrwK7uKOVGlTjVQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_172.part.js.map
