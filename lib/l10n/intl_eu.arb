@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-03-10 16:50:15.239535",
+    "@@last_modified": "2026-03-12 12:46:55.500427",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10716,6 +10716,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "Ikaskuntza analitika",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

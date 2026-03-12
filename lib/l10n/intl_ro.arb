@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-10 16:50:05.106833",
+    "@@last_modified": "2026-03-12 12:46:49.827384",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11541,6 +11541,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "Analitica învățării",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

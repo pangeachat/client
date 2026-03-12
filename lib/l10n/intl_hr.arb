@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-03-10 16:50:09.498716",
+    "@@last_modified": "2026-03-12 12:46:52.451517",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11200,6 +11200,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "Analitika učenja",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

@@ -2565,7 +2565,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-03-10 16:50:41.010291",
+    "@@last_modified": "2026-03-12 12:47:11.783209",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11735,6 +11735,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "Pagsusuri ng pagkatuto",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-03-10 16:50:45.354143",
+    "@@last_modified": "2026-03-12 12:47:14.262293",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11047,6 +11047,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "Öğrenme analitiği",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

@@ -7,14 +7,14 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/learning_settings/country_display.dart';
-import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CountryPickerDropdown extends StatefulWidget {
-  final SettingsLearningController learningController;
+  final Country? country;
+  final Function(Country?) setCountry;
   final PangeaController pangeaController = MatrixState.pangeaController;
 
-  CountryPickerDropdown(this.learningController, {super.key});
+  CountryPickerDropdown(this.country, this.setCountry, {super.key});
 
   @override
   CountryPickerDropdownState createState() => CountryPickerDropdownState();
@@ -34,15 +34,9 @@ class CountryPickerDropdownState extends State<CountryPickerDropdown> {
     final countries = CountryService().getAll();
     return DropdownButtonFormField2<Country>(
       customButton:
-          widget.learningController.country != null &&
-              countries.any(
-                (country) =>
-                    country.name == widget.learningController.country!.name,
-              )
-          ? CountryPickerTile(
-              widget.learningController.country!,
-              isDropdown: true,
-            )
+          widget.country != null &&
+              countries.any((country) => country.name == widget.country!.name)
+          ? CountryPickerTile(widget.country!, isDropdown: true)
           : null,
       menuItemStyleData: const MenuItemStyleData(padding: EdgeInsets.zero),
       isExpanded: true,
@@ -61,7 +55,7 @@ class CountryPickerDropdownState extends State<CountryPickerDropdown> {
           (country) => DropdownMenuItem(
             value: country,
             child: Container(
-              color: widget.learningController.country == country
+              color: widget.country == country
                   ? Theme.of(context).colorScheme.primary.withAlpha(20)
                   : Colors.transparent,
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
@@ -70,8 +64,8 @@ class CountryPickerDropdownState extends State<CountryPickerDropdown> {
           ),
         ),
       ],
-      onChanged: widget.learningController.setCountry,
-      value: widget.learningController.country,
+      onChanged: widget.setCountry,
+      value: widget.country,
       dropdownSearchData: DropdownSearchData(
         searchController: _searchController,
         searchInnerWidgetHeight: 50,

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-10 16:50:58.461394",
+    "@@last_modified": "2026-03-12 12:47:20.220470",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -11431,6 +11431,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "শিক্ষণ বিশ্লেষণ",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

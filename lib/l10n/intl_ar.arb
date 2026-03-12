@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-03-10 16:50:43.917320",
+    "@@last_modified": "2026-03-12 12:47:13.415879",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11056,6 +11056,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "تحليلات التعلم",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

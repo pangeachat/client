@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-03-10 16:50:56.878285",
+    "@@last_modified": "2026-03-12 12:47:19.511970",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10716,6 +10716,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "学习分析",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

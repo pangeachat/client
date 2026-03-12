@@ -12,10 +12,12 @@ class DisableLanguageToolsPopup extends StatelessWidget {
   const DisableLanguageToolsPopup({super.key, required this.overlayId});
 
   Future<void> _disableLanguageTools() async {
-    await MatrixState.pangeaController.userController.updateProfile((profile) {
-      profile.toolSettings.autoIGC = false;
-      return profile;
-    }, waitForDataInSync: true);
+    await MatrixState.pangeaController.userController.updateProfile(
+      (profile) => profile.copyWith(
+        toolSettings: profile.toolSettings.copyWith(autoIGC: false),
+      ),
+      waitForDataInSync: true,
+    );
   }
 
   @override

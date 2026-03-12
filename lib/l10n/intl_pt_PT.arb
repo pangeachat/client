@@ -3084,7 +3084,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-03-10 16:50:36.339446",
+    "@@last_modified": "2026-03-12 12:47:05.315429",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11792,6 +11792,11 @@
         "placeholders": {}
     },
     "@selectAudioMessagesOnPlayDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "learningAnalytics": "Análise de aprendizagem",
+    "@learningAnalytics": {
         "type": "String",
         "placeholders": {}
     }

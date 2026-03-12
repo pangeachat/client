@@ -5019,5 +5019,6 @@
     "enableEmailNotifications": "Enable email notifications",
     "joinSpaceOnboardingDesc": "In a class? Put your join code here.",
     "selectAudioMessagesOnPlayToolName": "Auto-highlight audio messages",
-    "selectAudioMessagesOnPlayDescription": "Automatically highlight audio messages when played"
+    "selectAudioMessagesOnPlayDescription": "Automatically highlight audio messages when played",
+    "learningAnalytics": "Learning analytics"
 }
