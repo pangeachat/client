@@ -156,6 +156,18 @@
             }
         }
     },
+    "changedTheChatNameTo": "{username} שינה את שם הצ'אט ל: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheRoomInvitationLink": "{username} שינה את קישור ההזמנה",
     "@changedTheRoomInvitationLink": {
         "type": "String",
@@ -228,6 +240,18 @@
         "type": "String",
         "placeholders": {
             "username": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatDescriptionTo": "{username} שינה את תיאור הצ'אט ל: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
                 "type": "String"
             }
         }
@@ -561,6 +585,11 @@
     },
     "everythingReady": "הכל מוכן!",
     "@everythingReady": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "שם קובץ",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1022,6 +1051,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "שים לב שאתה צריך Pantalaimon כדי להשתמש בהצפנה מקצה לקצה לעת עתה.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "צ'אט חדש",
     "@newChat": {
         "type": "String",
@@ -1349,6 +1383,7 @@
     "chatPermissions": "הרשאות שיחה",
     "emoteInvalid": "קוד רגש לא חוקי!",
     "emoteKeyboardNoRecents": "רגשות שהיו בשימוש לאחרונה יופיעו כאן...",
+    "emotePacks": "חבילות אימוג'י לחדר",
     "emoteSettings": "הגדרות אימוג'י",
     "globalChatId": "מזהה שיחת גלובלית",
     "accessAndVisibility": "גישה ונראות",
@@ -1385,7 +1420,9 @@
     "pleaseFollowInstructionsOnWeb": "אנא עקוב אחר ההוראות באתר ולחץ על הבא.",
     "privacy": "פרטיות",
     "publicRooms": "חדרים ציבוריים",
+    "pushRules": "כללי התראות",
     "reason": "סיבה",
+    "recording": "הקלטה",
     "redactedBy": "ערוך על ידי {username}",
     "directChat": "שיחת ישירה",
     "redactedByBecause": "ערוך על ידי {username} כי: \"{reason}\"",
@@ -1395,6 +1432,7 @@
     "reject": "דחה",
     "rejectedTheInvitation": "{username} דחה את ההזמנה",
     "removeAllOtherDevices": "הסר את כל המכשירים האחרים",
+    "removedBy": "הוסר על ידי {username}",
     "removeDevice": "הסר מכשיר",
     "unbanFromChat": "בטל חסימה מהשיחה",
     "removeYourAvatar": "הסר את הסמל האישי שלך",
@@ -1534,6 +1572,7 @@
     "youBannedUser": "חסמת את {user}",
     "youHaveWithdrawnTheInvitationFor": "משכת את ההזמנה ל-{user}",
     "youInvitedBy": "📩 הוזמנת על ידי {user}",
+    "invitedBy": "📩 הוזמן על ידי {user}",
     "youInvitedUser": "📩 הזמנת את {user}",
     "youKicked": "👞 הוצאת את {user}",
     "youKickedAndBanned": "🙅 הוצאת והחרמת את {user}",
@@ -1560,6 +1599,7 @@
     "newGroup": "קבוצה חדשה",
     "newSpace": "מרחב חדש",
     "enterSpace": "היכנס למרחב",
+    "allSpaces": "כל המרחבים",
     "hidePresences": "הסתר רשימת סטטוס?",
     "doNotShowAgain": "אל תציג שוב",
     "wasDirectChatDisplayName": "שיחה ריקה (הייתה {oldDisplayName})",
@@ -1689,6 +1729,7 @@
     "oneOfYourDevicesIsNotVerified": "אחד מהמכשירים שלך לא מאומת",
     "noticeChatBackupDeviceVerification": "הערה: כאשר אתה מחבר את כל המכשירים לגיבוי הצ'אט, הם מאומתים אוטומטית.",
     "continueText": "המשך",
+    "welcomeText": "היי היי 👋 זה FluffyChat. תוכל להתחבר לכל שרת בית שתואם ל-https://matrix.org. ואז לתקשר עם כל אחד. זה רשת הודעות מבוזרת עצומה!",
     "blur": "טשטוש:",
     "opacity": "אטימות:",
     "setWallpaper": "הגדר רקע",
@@ -3009,6 +3050,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@emoteSettings": {
         "type": "String",
         "placeholders": {}
@@ -3153,7 +3198,15 @@
         "type": "String",
         "placeholders": {}
     },
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -3211,6 +3264,14 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@removeDevice": {
         "type": "String",
@@ -3871,6 +3932,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@youInvitedUser": {
         "type": "String",
         "placeholders": {
@@ -3996,6 +4065,10 @@
         "placeholders": {}
     },
     "@enterSpace": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@allSpaces": {
         "type": "String",
         "placeholders": {}
     },
@@ -4614,6 +4687,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -11193,6 +11270,7 @@
     "spaceMemberOf": "חבר מרחב של {spaces}",
     "spaceMemberOfCanKnock": "חבר מרחב של {spaces} יכול לדפוק",
     "donate": "תרום",
+    "startedAPoll": "{username} התחיל סקר.",
     "poll": "סקר",
     "startPoll": "התחל סקר",
     "endPoll": "סיים סקר",
@@ -11307,6 +11385,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

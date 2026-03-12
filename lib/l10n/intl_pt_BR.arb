@@ -188,6 +188,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} alterou a descrição da conversa para: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} alterou o nome da conversa para: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} alterou as permissões na conversa",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -649,6 +673,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Pacote de emoji para a sala",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Configuração dos Emoji",
     "@emoteSettings": {
         "type": "String",
@@ -724,6 +753,11 @@
     },
     "extremeOffensive": "Extremamente ofensivo",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Nome do arquivo",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1041,6 +1075,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Esteja ciente que você precisa do Pantalaimon para usar a criptografia de ponta a ponta.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "Nova conversa",
     "@newChat": {
         "type": "String",
@@ -1296,8 +1335,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Regras de push",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Motivo",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Gravação",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1343,6 +1392,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Removido por {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Remover dispositivo",
     "@removeDevice": {
@@ -2160,6 +2218,8 @@
     "@newSpace": {},
     "enterSpace": "Abrir espaço",
     "@enterSpace": {},
+    "allSpaces": "Todos os espaços",
+    "@allSpaces": {},
     "countFiles": "{count} arquivos",
     "@countFiles": {
         "placeholders": {
@@ -2709,6 +2769,14 @@
             }
         }
     },
+    "invitedBy": "📩 Convidado por {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "markAsUnread": "Marcar como não lido",
     "@markAsUnread": {},
     "updateInstalled": "🎉 Atualização da versão {version} instalada!",
@@ -2900,6 +2968,8 @@
             }
         }
     },
+    "welcomeText": "Olá! 👋 Este é o FluffyChat. Você pode se conectar com qualquer servidor que é compatível com o https://matrix.org. E então conversar com qualquer um. É uma rede gigante e descentralizada de conversa!",
+    "@welcomeText": {},
     "notificationRuleRoomServerAclDescription": "Omite notificações de listas de controle de acesso de servidor de uma sala (ACL).",
     "@notificationRuleRoomServerAclDescription": {},
     "appIntroduction": "O FluffyChat permite que você converse com os seus amigos entre mensageiros diferentes. Aprenda mais em https://matrix.org ou toque em *Continuar*.",
@@ -3049,6 +3119,15 @@
     },
     "donate": "Doar",
     "@donate": {},
+    "startedAPoll": "{username} iniciou uma enquete.",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "poll": "Enquete",
     "@poll": {},
     "startPoll": "Abrir enquete",

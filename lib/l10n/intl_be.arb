@@ -292,6 +292,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} змяніў апісанне чата на :'{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} змяніў назву чата на '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} змяніў дазволы чата",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -801,6 +825,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Наборы эмодзі для пакою",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Налады эмодзі",
     "@emoteSettings": {
         "type": "String",
@@ -892,6 +921,11 @@
     },
     "extremeOffensive": "Занадта абражальны",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Назва файла",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1232,6 +1266,11 @@
     },
     "muteChat": "Заглушыць чат",
     "@muteChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "needPantalaimonWarning": "Пераканайцеся, калі ласка, што вы выкарыстоўваеце Pantalaimon для end-to-end шыфравання.",
+    "@needPantalaimonWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -1647,6 +1686,14 @@
             }
         }
     },
+    "invitedBy": "📩 Запрошаны(-а) {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "youInvitedUser": "📩 Вы запрасілі {user}",
     "@youInvitedUser": {
         "placeholders": {
@@ -1735,6 +1782,8 @@
     "@newSpace": {},
     "enterSpace": "Увайсці ў прастору",
     "@enterSpace": {},
+    "allSpaces": "Усе прасторы",
+    "@allSpaces": {},
     "hidePresences": "Хаваць спіс статусаў?",
     "@hidePresences": {},
     "doNotShowAgain": "Не паказваць зноў",
@@ -2113,8 +2162,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Правілы пушэй",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Прычына",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Запіс",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -2178,6 +2237,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Выдалена {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Выдаліць прыладу",
     "@removeDevice": {
@@ -2913,6 +2981,8 @@
     "@oneOfYourDevicesIsNotVerified": {},
     "noticeChatBackupDeviceVerification": "Заўвага: Калі вы падключыце ўсе свае прылады да рэзервовага капіравання, яны аўтаматычна спраўдзяцца.",
     "@noticeChatBackupDeviceVerification": {},
+    "welcomeText": "Вітаначкі 👋 Гэта FluffyChat. Вы можаце ўвайсці на любы дамашні сервер, што сумяшчальны з https://matrix.org, а потым паразмаўляць з кім-небудзь. Гэта вялізная дэцэнтралізаваная сетка абмену паведамленнямі!",
+    "@welcomeText": {},
     "blur": "Размыццё:",
     "@blur": {},
     "opacity": "Празрыстасць:",
@@ -3042,6 +3112,15 @@
     },
     "donate": "Даць грошы",
     "@donate": {},
+    "startedAPoll": "{username} пачаў апытанне.",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "poll": "Апытанне",
     "@poll": {},
     "startPoll": "Пачаць апытанне",

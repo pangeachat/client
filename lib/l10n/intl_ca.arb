@@ -151,6 +151,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} ha canviat la descripció del xat a: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} ha canviat el nom del xat a: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} ha canviat els permisos del xat",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -484,6 +508,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Paquet d'emoticones de la sala",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Paràmetres de les emoticones",
     "@emoteSettings": {
         "type": "String",
@@ -535,6 +564,11 @@
     },
     "enterAnEmailAddress": "Introduïu una adreça electrònica",
     "@enterAnEmailAddress": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Nom del fitxer",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -822,6 +856,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Tingueu en compte que, ara per ara, us cal el Pantalaimon per a poder utilitzar el xifratge d’extrem a extrem.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newMessageInFluffyChat": "💬 Missatge nou al FluffyChat",
     "@newMessageInFluffyChat": {
         "type": "String",
@@ -1005,6 +1044,16 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Regles push",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Enregistrant",
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
+    },
     "redactedAnEvent": "{username} ha estripat un esdeveniment",
     "@redactedAnEvent": {
         "type": "String",
@@ -1037,6 +1086,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Eliminat per {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Elimina dispositiu",
     "@removeDevice": {
@@ -1873,6 +1931,8 @@
     "@oneClientLoggedOut": {},
     "setColorTheme": "Tria el color del tema:",
     "@setColorTheme": {},
+    "allSpaces": "Tots els espais",
+    "@allSpaces": {},
     "supposedMxid": "Això hauria de ser {mxid}",
     "@supposedMxid": {
         "type": "String",
@@ -2533,6 +2593,14 @@
     "@sendCanceled": {},
     "noChatsFoundHere": "Encara no hi ha xats. Obre una conversa amb algú picant al botó de sota. ⤵️",
     "@noChatsFoundHere": {},
+    "invitedBy": "📩 Convidadi per {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "knock": "Pica",
     "@knock": {},
     "knocking": "S'està picant",
@@ -2757,6 +2825,8 @@
     },
     "oneOfYourDevicesIsNotVerified": "Un dels teus dispositius no està verificat",
     "@oneOfYourDevicesIsNotVerified": {},
+    "welcomeText": "Hola hola! 👋 Això és FluffyChat. Pots iniciar sessió en qualsevol servidor compatible amb https://matrix.org. I llavors xatejar amb qualsevol. És una xarxa enorme de missatgeria descentralitzada !",
+    "@welcomeText": {},
     "blur": "Difumina:",
     "@blur": {},
     "opacity": "Opacitat:",
@@ -10272,6 +10342,7 @@
     "spaceMemberOf": "Membre de l'espai de {spaces}",
     "spaceMemberOfCanKnock": "Membre de l'espai de {spaces} pot trucar",
     "donate": "Dona",
+    "startedAPoll": "{username} ha iniciat una enquesta.",
     "poll": "Enquesta",
     "startPoll": "Inicia l'enquesta",
     "endPoll": "Finalitza l'enquesta",
@@ -10386,6 +10457,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

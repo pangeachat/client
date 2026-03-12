@@ -128,6 +128,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "غيَّر {username} وصف المحادثة الى: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "غيَّر {username} اسم المحادثة الى: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "غيَّر {username} أذون المحادثة",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -462,6 +486,11 @@
             }
         }
     },
+    "fileName": "اسم الملف",
+    "@fileName": {
+        "type": "String",
+        "placeholders": {}
+    },
     "fluffychat": "فلافي-شات",
     "@fluffychat": {
         "type": "String",
@@ -716,6 +745,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "اعلم أننا نستخدم بانتاليمون للتشفير طرفا لطرف.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newMessageInFluffyChat": "💬 رسالة جديدة في FluffyChat",
     "@newMessageInFluffyChat": {
         "type": "String",
@@ -835,6 +869,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "recording": "يسجل",
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
+    },
     "redactedAnEvent": "حذف {username} حدثًا",
     "@redactedAnEvent": {
         "type": "String",
@@ -867,6 +906,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "أزاله {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "أزل جهازا",
     "@removeDevice": {
@@ -1368,6 +1416,11 @@
     },
     "enableEncryption": "فعّل التشفير",
     "@enableEncryption": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emotePacks": "حزمة الوجوه التعبيرية للغرفة",
+    "@emotePacks": {
         "type": "String",
         "placeholders": {}
     },
@@ -1963,6 +2016,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "قواعد الإشعارات",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reactedWith": "{sender} تفاعل ب {reaction}",
     "@reactedWith": {
         "type": "String",
@@ -2200,6 +2258,8 @@
     "@report": {},
     "noKeyForThisMessage": "يمكن أن يحدث هذا إذا تم إرسال الرسالة قبل تسجيل الدخول إلى حسابك على هذا الجهاز.\n\nمن الممكن أيضا أن يكون المرسل قد حظر جهازك أو حدث خطأ ما في الاتصال بالإنترنت.\n\nهل يمكنك قراءة الرسالة في جلسة أخرى؟ ثم يمكنك نقل الرسالة منه! انتقل إلى الإعدادات > الأجهزة وتأكد من أن أجهزتك قد تحققت من بعضها البعض. عندما تفتح الغرفة في المرة التالية وتكون كلتا الجلستين في المقدمة ، سيتم إرسال المفاتيح تلقائيا.\n\nألا تريد أن تفقد المفاتيح عند تسجيل الخروج أو تبديل الأجهزة؟ تأكد من تمكين النسخ الاحتياطي للدردشة في الإعدادات.",
     "@noKeyForThisMessage": {},
+    "allSpaces": "كل المساحات",
+    "@allSpaces": {},
     "doNotShowAgain": "لا تظهر مرة أخرى",
     "@doNotShowAgain": {},
     "wasDirectChatDisplayName": "محادثة فارغة (كانت {oldDisplayName})",
@@ -2677,6 +2737,14 @@
     "@sendRoomNotifications": {},
     "changeTheDescriptionOfTheGroup": "تغيير وصف الدردشة",
     "@changeTheDescriptionOfTheGroup": {},
+    "invitedBy": "📩 تمت دعوته من قبل {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "chatPermissionsDescription": "‪حدد مستوى الصلاحية الضروري لإجراءات معينة في هذه الدردشة. عادة ما تمثل مستويات الصلاحية 0 و 50 و 100 المستخدمين والمشرفين ولكن أي تدرج ممكن.",
     "@chatPermissionsDescription": {},
     "changelog": "سجل التغييرات",
@@ -2741,6 +2809,8 @@
     "@noticeChatBackupDeviceVerification": {},
     "continueText": "استمرار",
     "@continueText": {},
+    "welcomeText": "مرحبًا، 👋 معك FluffyChat. يمكنك تسجيل الدخول إلى أي خادم منزلي، وهو متوافق مع https://matrix.org. ثم دردش مع أي شخص. إنها شبكة مراسلة لا مركزية ضخمة!",
+    "@welcomeText": {},
     "blur": "الضبابية:",
     "@blur": {},
     "setWallpaper": "تعيين الخلفية",
@@ -10461,6 +10531,7 @@
     "spaceMemberOf": "عضو في المساحة {spaces}",
     "spaceMemberOfCanKnock": "عضو في المساحة {spaces} يمكنه الطرق",
     "donate": "تبرع",
+    "startedAPoll": "{username} بدأ استطلاع رأي.",
     "poll": "استطلاع رأي",
     "startPoll": "ابدأ استطلاع رأي",
     "endPoll": "إنهاء الاستطلاع",
@@ -10575,6 +10646,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

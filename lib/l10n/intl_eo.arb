@@ -183,6 +183,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} ŝanĝis priskribon de la babilo al: «{description}»",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} ŝanĝis nomon de la babilo al: «{chatname}»",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} ŝanĝis permesojn pri la babilo",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -639,6 +663,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Mienetaroj por la ĉambro",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Agordoj pri mienetoj",
     "@emoteSettings": {
         "type": "String",
@@ -714,6 +743,11 @@
     },
     "extremeOffensive": "Tre ofenda",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Dosiernomo",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1021,6 +1055,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Bonvolu scii, ke vi ankoraŭ bezonas la programon Pantalaimon por uzi tutvojan ĉifradon.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "Nova babilo",
     "@newChat": {
         "type": "String",
@@ -1259,8 +1298,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Reguloj de pasivaj sciigoj",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Kialo",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Registrante",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1306,6 +1355,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Forigita de {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Forigi aparaton",
     "@removeDevice": {
@@ -2006,6 +2064,7 @@
     "youBannedUser": "Vi malpermesis {user}",
     "youHaveWithdrawnTheInvitationFor": "Vi retiriĝis la inviton por {user}",
     "youInvitedBy": "📩 Vi estis invitita de {user}",
+    "invitedBy": "📩 Invitita de {user}",
     "youInvitedUser": "📩 Vi invitis {user}",
     "youKicked": "👞 Vi forpelis {user}",
     "youKickedAndBanned": "🙅‍♀️ Vi forpelis kaj malpermesis {user}",
@@ -2032,6 +2091,7 @@
     "newGroup": "Nova grupo",
     "newSpace": "Nova spaco",
     "enterSpace": "Eniri spacon",
+    "allSpaces": "Ĉiuj spacoj",
     "hidePresences": "Kaŝi Statuso-Liston?",
     "doNotShowAgain": "Ne montri denove",
     "wasDirectChatDisplayName": "Malplena babilejo (antaŭe {oldDisplayName})",
@@ -2161,6 +2221,7 @@
     "oneOfYourDevicesIsNotVerified": "Unu el viaj aparatoj ne estas konfirmita",
     "noticeChatBackupDeviceVerification": "Noto: Kiam vi konektas ĉiujn viajn aparatojn al la bazo de babilado, ili estas aŭtomate konfirmitaj.",
     "continueText": "Daŭrigi",
+    "welcomeText": "Saluton 👋 Ĉi tio estas FluffyChat. Vi povas ensaluti al ajna hejmservo, kiu estas kongrua kun https://matrix.org. Kaj poste babilu kun iu ajn. Ĝi estas granda disigita mesaĝa reto!",
     "blur": "Malfokusigi:",
     "opacity": "Opaco:",
     "setWallpaper": "Agordi fonbildon",
@@ -3911,6 +3972,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@youInvitedUser": {
         "type": "String",
         "placeholders": {
@@ -4036,6 +4105,10 @@
         "placeholders": {}
     },
     "@enterSpace": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@allSpaces": {
         "type": "String",
         "placeholders": {}
     },
@@ -4654,6 +4727,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -11233,6 +11310,7 @@
     "spaceMemberOf": "Spaca membro de {spaces}",
     "spaceMemberOfCanKnock": "Spaca membro de {spaces} povas frapi",
     "donate": "Donaci",
+    "startedAPoll": "{username} komencis enketon.",
     "poll": "Enketo",
     "startPoll": "Komenci enketon",
     "endPoll": "Fini la enketon",
@@ -11347,6 +11425,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

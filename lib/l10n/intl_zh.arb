@@ -170,6 +170,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} 将聊天描述更改为：'{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} 将聊天名称更改为：'{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} 更改了聊天权限",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -626,6 +650,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "聊天室的表情包",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "表情设置",
     "@emoteSettings": {
         "type": "String",
@@ -692,6 +721,11 @@
     },
     "extremeOffensive": "令人极度反感",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "文件名",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -999,6 +1033,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "请注意当前你需要 Pantalaimon 以使用端到端加密功能。",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "新的聊天",
     "@newChat": {
         "type": "String",
@@ -1232,8 +1271,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "推送规则",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "原因",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "录制",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1279,6 +1328,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "被 {username} 移除",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "移除设备",
     "@removeDevice": {
@@ -2144,6 +2202,8 @@
     "@newSpace": {},
     "enterSpace": "进入空间",
     "@enterSpace": {},
+    "allSpaces": "所有空间",
+    "@allSpaces": {},
     "foregroundServiceRunning": "此通知在前台服务运行时出现。",
     "@foregroundServiceRunning": {},
     "screenSharingTitle": "屏幕共享",
@@ -2677,6 +2737,14 @@
     "@changeTheDescriptionOfTheGroup": {},
     "changeGeneralChatSettings": "更改常规聊天设置",
     "@changeGeneralChatSettings": {},
+    "invitedBy": "📩 邀请人 {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "chatPermissionsDescription": "定义此聊天中哪个权限等级对特定操作是必需的。权限等级 0、50 和 100 通常代表用户、主持人和管理员，但你可以自定义任何等级。",
     "@chatPermissionsDescription": {},
     "changelog": "更新记录",
@@ -2739,6 +2807,8 @@
     "@oneOfYourDevicesIsNotVerified": {},
     "noticeChatBackupDeviceVerification": "注意：当你连接所有设备到聊天备份时，这些设备将被自动验证。",
     "@noticeChatBackupDeviceVerification": {},
+    "welcomeText": "你好呀 👋 欢迎来到 FluffyChat。你可以登录任意兼容 https://matrix.org 的 homeserver，然后和任何人聊天。这是个巨大的去中心化消息网络！",
+    "@welcomeText": {},
     "continueText": "继续",
     "@continueText": {},
     "blur": "模糊：",
@@ -3050,6 +3120,15 @@
     },
     "donate": "捐赠",
     "@donate": {},
+    "startedAPoll": "{username} 启动了投票。",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "poll": "投票",
     "@poll": {},
     "startPoll": "启动投票",

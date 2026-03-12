@@ -169,6 +169,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} промени опис ћаскања у: „{description}“",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} промени назив ћаскања у: „{chatname}“",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} измени дозволе ћаскања",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -606,6 +630,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Пакети емотија за собу",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Поставке емотија",
     "@emoteSettings": {
         "type": "String",
@@ -672,6 +701,11 @@
     },
     "extremeOffensive": "Екстремно увредљив",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Назив фајла",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -979,6 +1013,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "За сада, потребан је Пантелејмон (Pantalaimon) да бисте користили шифровање с краја на крај.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "Ново ћаскање",
     "@newChat": {
         "type": "String",
@@ -1212,8 +1251,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Правила протурања",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Разлог",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Снимам",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1259,6 +1308,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Уклонио корисник {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Уклони уређај",
     "@removeDevice": {
@@ -1923,6 +1981,7 @@
     "youBannedUser": "Zabranili ste {user}",
     "youHaveWithdrawnTheInvitationFor": "Opozvali ste pozivnicu za {user}",
     "youInvitedBy": "📩 Pozvani ste od {user}",
+    "invitedBy": "📩 Pozvao {user}",
     "youInvitedUser": "📩 Pozvali ste {user}",
     "youKicked": "👞 Izbacili ste {user}",
     "youKickedAndBanned": "🙅 Izašao si i zabranio {user}",
@@ -1949,6 +2008,7 @@
     "newGroup": "Nova grupa",
     "newSpace": "Novi prostor",
     "enterSpace": "Uđi u prostor",
+    "allSpaces": "Svi prostori",
     "hidePresences": "Sakrij listu statusa?",
     "doNotShowAgain": "Ne prikazuj ponovo",
     "wasDirectChatDisplayName": "Prazan čat (bio {oldDisplayName})",
@@ -2078,6 +2138,7 @@
     "oneOfYourDevicesIsNotVerified": "Једна од ваших уређаја није верификована",
     "noticeChatBackupDeviceVerification": "Напомена: Када повежете све своје уређаје на резервну копију ћаскања, они се аутоматски верификују.",
     "continueText": "Настави",
+    "welcomeText": "Здраво Здраво 👋 Ово је FluffyChat. Можете се пријавити на било који домаћин сервер, који је компатибилан са https://matrix.org. И онда ћаскајте са свима. То је огромна децентрализована мрежа за размену порука!",
     "blur": "Замагљивање:",
     "opacity": "Прозирност:",
     "setWallpaper": "Постави позадину",
@@ -3915,6 +3976,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@youInvitedUser": {
         "type": "String",
         "placeholders": {
@@ -4040,6 +4109,10 @@
         "placeholders": {}
     },
     "@enterSpace": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@allSpaces": {
         "type": "String",
         "placeholders": {}
     },
@@ -4658,6 +4731,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -11237,6 +11314,7 @@
     "spaceMemberOf": "Član prostora {spaces}",
     "spaceMemberOfCanKnock": "Član prostora {spaces} može da pokuca",
     "donate": "Doniraj",
+    "startedAPoll": "{username} je započeo anketu.",
     "poll": "Anketa",
     "startPoll": "Započni anketu",
     "endPoll": "Završi anketu",
@@ -11351,6 +11429,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

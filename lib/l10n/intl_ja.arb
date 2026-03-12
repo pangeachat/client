@@ -170,6 +170,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username}がチャットの説明を「{description}」に変更しました",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username}がチャットの名前を「{chatname}」に変更しました",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username}がチャットの権限を変更しました",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -537,6 +561,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "部屋のEmoteパック",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Emote設定",
     "@emoteSettings": {
         "type": "String",
@@ -603,6 +632,11 @@
     },
     "extremeOffensive": "とても攻撃的",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "ファイル名",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -910,6 +944,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "現時点では、エンドツーエンドの暗号化を使用するにはPantalaimonが必要であることに注意してください。",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "新規チャット",
     "@newChat": {
         "type": "String",
@@ -1128,8 +1167,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "ルールを追加する",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "理由",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "録音中",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1170,6 +1219,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "{username}によって削除されました",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "デバイスの削除",
     "@removeDevice": {
@@ -2126,6 +2184,8 @@
     },
     "doNotShowAgain": "今後表示しない",
     "@doNotShowAgain": {},
+    "allSpaces": "すべてのスペース",
+    "@allSpaces": {},
     "enterSpace": "スペースに入る",
     "@enterSpace": {},
     "newSpace": "新しいスペース",
@@ -2203,6 +2263,7 @@
     "synchronizingPleaseWaitCounter": "同期中… ({percentage}%)",
     "dismiss": "閉じる",
     "widgetEtherpad": "テキストノート",
+    "invitedBy": "📩 {user}によって招待されました",
     "hasKnocked": "🚪 {user}がノックしました",
     "usersMustKnock": "ユーザーはノックする必要があります",
     "noOneCanJoin": "誰も参加できません",
@@ -2329,6 +2390,7 @@
     "oneOfYourDevicesIsNotVerified": "あなたのデバイスの一つが未認証です",
     "noticeChatBackupDeviceVerification": "注意：すべてのデバイスをチャットバックアップに接続すると、自動的に認証されます。",
     "continueText": "続ける",
+    "welcomeText": "やあやあ 👋 これはFluffyChatです。https://matrix.orgに対応した任意のホームサーバーにサインインできます。そして誰とでもチャットできます。これは大規模な分散型メッセージングネットワークです！",
     "blur": "ぼかし:",
     "opacity": "不透明度:",
     "setWallpaper": "壁紙を設定",
@@ -3803,6 +3865,14 @@
         "type": "String",
         "placeholders": {}
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@hasKnocked": {
         "type": "String",
         "placeholders": {
@@ -4406,6 +4476,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -10985,6 +11059,7 @@
     "spaceMemberOf": "{spaces} のスペースメンバー",
     "spaceMemberOfCanKnock": "{spaces} のスペースメンバーはノックできます",
     "donate": "寄付する",
+    "startedAPoll": "{username} が投票を開始しました。",
     "poll": "投票",
     "startPoll": "投票を開始",
     "endPoll": "投票を終了する",
@@ -11099,6 +11174,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

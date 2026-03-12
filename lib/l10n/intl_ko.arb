@@ -138,6 +138,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "fileName": "파일 이름",
+    "@fileName": {
+        "type": "String",
+        "placeholders": {}
+    },
     "extremeOffensive": "매우 공격적임",
     "@extremeOffensive": {
         "type": "String",
@@ -206,6 +211,11 @@
     },
     "emoteSettings": "이모트 설정",
     "@emoteSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emotePacks": "방을 위한 이모트 팩",
+    "@emotePacks": {
         "type": "String",
         "placeholders": {}
     },
@@ -594,6 +604,30 @@
         "type": "String",
         "placeholders": {
             "username": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username}님이 채팅 이름을 '{chatname}' 으로 바꿈",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatDescriptionTo": "{username}님이 채팅 설명을 '{description}' 으로 변경함",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
                 "type": "String"
             }
         }
@@ -1366,6 +1400,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "푸시 규칙",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "lastActiveAgo": "마지막 활동: {localizedTimeShort}",
     "@lastActiveAgo": {
         "type": "String",
@@ -1475,6 +1514,11 @@
     },
     "noConnectionToTheServer": "서버에 연결 없음",
     "@noConnectionToTheServer": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "needPantalaimonWarning": "지금 종단간 암호화를 사용하기 위해서는 Pantalaimon이 필요하다는 것을 알아주세요.",
+    "@needPantalaimonWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -1827,6 +1871,15 @@
         "type": "String",
         "placeholders": {}
     },
+    "removedBy": "{username}에 의해 지워짐",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "removeAllOtherDevices": "모든 다른 기기에서 지우기",
     "@removeAllOtherDevices": {
         "type": "String",
@@ -1869,6 +1922,11 @@
                 "type": "String"
             }
         }
+    },
+    "recording": "녹음",
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
     },
     "pleaseClickOnLink": "이메일의 링크를 클릭하고 진행해주세요.",
     "@pleaseClickOnLink": {
@@ -2033,6 +2091,8 @@
     "@widgetJitsi": {},
     "setColorTheme": "색상 테마 설정:",
     "@setColorTheme": {},
+    "allSpaces": "모든 스페이스",
+    "@allSpaces": {},
     "supposedMxid": "{mxid} 이어야 함",
     "@supposedMxid": {
         "type": "String",
@@ -2653,6 +2713,14 @@
             }
         }
     },
+    "invitedBy": "📩 {user}님이 나를 초대함",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "userLevel": "{level} - 유저",
     "@userLevel": {
         "type": "String",
@@ -2695,6 +2763,8 @@
     },
     "noContactInformationProvided": "서버가 유효한 연락처 정보를 제공하지 않음",
     "@noContactInformationProvided": {},
+    "welcomeText": "안녕하세요 👋 FluffyChat이에요. 당신은 htpps://matrix.org와 호환되는 모든 홈서버를 사용할 수 있어요. 그리고 모두와 대화해보세요. 거대한 분산 대화망이니까요!",
+    "@welcomeText": {},
     "changeGeneralChatSettings": "일반 채팅 설정 번경하기",
     "@changeGeneralChatSettings": {},
     "inviteOtherUsers": "다른 사용자를 이 채팅에 초대하기",
@@ -10338,6 +10408,7 @@
     "spaceMemberOf": "{spaces}의 공간 구성원",
     "spaceMemberOfCanKnock": "{spaces}의 공간 구성원이 노크할 수 있습니다.",
     "donate": "기부하기",
+    "startedAPoll": "{username}이(가) 설문조사를 시작했습니다.",
     "poll": "설문조사",
     "startPoll": "설문조사 시작",
     "endPoll": "투표 종료",
@@ -10452,6 +10523,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

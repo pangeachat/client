@@ -373,6 +373,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} ჩატის ახალი აღწერილობა დააყენა: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} ჩატი გადაარქვა: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} ჩატის უფლებები შეცვალა",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -772,6 +796,7 @@
     "checkList": "შეამოწმეთ სია",
     "countInvited": "{count} მოწვეული",
     "emoteKeyboardNoRecents": "ბოლოს გამოყენებული ემოტები აქ გამოჩნდება...",
+    "emotePacks": "ემოტების პაკეტები ოთახისთვის",
     "accessAndVisibility": "წვდომა და ხილვადობა",
     "accessAndVisibilityDescription": "ვინ არის დაშვებული ამ ჩატის შეუერთებლად და როგორ შეიძლება იპოვოს ეს ჩატი.",
     "calls": "ზარები",
@@ -791,6 +816,7 @@
     "errorObtainingLocation": "შეცდომა მდებარეობის მიღებაში: {error}",
     "everythingReady": "ყველაფერი მზადაა!",
     "extremeOffensive": "მძიმე შეურაცხყოფა",
+    "fileName": "ფაილის სახელი",
     "fluffychat": "ფლუფი ჩატი",
     "fontSize": "ფონტის ზომა",
     "forward": "გაგზავნა წინ",
@@ -858,6 +884,7 @@
     "messagesStyle": "შეტყობინებები:",
     "moderator": "მოდერატორი",
     "muteChat": "ჩუმი საუბარი",
+    "needPantalaimonWarning": "გთხოვთ გაითვალისწინოთ, რომ ახლა საჭიროა Pantalaimon-ის გამოყენება კარიბჭის დაშიფვრისთვის.",
     "newChat": "ახალი საუბარი",
     "newMessageInFluffyChat": "💬 ახალი შეტყობინება FluffyChat-ში",
     "newVerificationRequest": "ახალი დადასტურების მოთხოვნა!",
@@ -921,7 +948,9 @@
     "pleaseFollowInstructionsOnWeb": "გთხოვთ, მიჰყვეთ ინსტრუქციებს ვებგვერდზე და დააჭირეთ შემდეგს.",
     "privacy": "პირადობა",
     "publicRooms": "საზოგადოებრივი ოთახები",
+    "pushRules": "საწვდენი წესები",
     "reason": "მიზეზი",
+    "recording": "ჩაწერა",
     "redactedBy": "წაშლილია {username} მიერ",
     "directChat": "მიმდინარე ჩატი",
     "redactedByBecause": "წაშლილია {username} მიერ, რადგან: \"{reason}\"",
@@ -931,6 +960,7 @@
     "reject": "უარყოფა",
     "rejectedTheInvitation": "{username} უარყო მოწვევა",
     "removeAllOtherDevices": "წაშალეთ ყველა სხვა მოწყობილობა",
+    "removedBy": "წაშლილია {username} მიერ",
     "removeDevice": "წაშალეთ მოწყობილობა",
     "unbanFromChat": "გამოდით ჩათიდან",
     "removeYourAvatar": "წაშალეთ თქვენი ავატარი",
@@ -1070,6 +1100,7 @@
     "youBannedUser": "თქვენ ბლოკეთ {user}",
     "youHaveWithdrawnTheInvitationFor": "თქვენ გააუქმეთ მოწვევა {user} -სთვის",
     "youInvitedBy": "📩 თქვენ მოწვევა მიიღეთ {user}-ის მიერ",
+    "invitedBy": "📩 მოწვევა {user}-ის მიერ",
     "youInvitedUser": "📩 თქვენ მოწვევა გაუგზავნეთ {user}",
     "youKicked": "👞 თქვენ გამოგაგდეთ {user}",
     "youKickedAndBanned": "👥 თქვენ გამოგაგდეთ და ბლოკეთ {user}",
@@ -1096,6 +1127,7 @@
     "newGroup": "ახალი ჯგუფი",
     "newSpace": "ახალი სივრცე",
     "enterSpace": "შეიყვანეთ სივრცე",
+    "allSpaces": "ყველა სივრცე",
     "hidePresences": "დაფარეთ სტატუსის სია?",
     "doNotShowAgain": "მეორედ არ აჩვენოთ",
     "wasDirectChatDisplayName": "ცარიელი ჩატი (იყო {oldDisplayName})",
@@ -1225,6 +1257,7 @@
     "oneOfYourDevicesIsNotVerified": "თქვენს ერთ-ერთ მოწყობილობას ვერ დაუდასტურეს",
     "noticeChatBackupDeviceVerification": "შენიშვნა: როდესაც ყველა თქვენი მოწყობილობა ჩართეთ ჩატის სარეზერვო ასლში, ისინი ავტომატურად დადასტურებული იქნება.",
     "continueText": "გაგრძელება",
+    "welcomeText": "გამარჯობა, ეს არის FluffyChat. შეგიძლიათ შეხვიდეთ ნებისმიერ სახლის სერვერზე, რომელიც თავსებადია https://matrix.org-თან. და შემდეგ ისაუბროთ ნებისმიერ ადამიანთან. ეს არის დიდი დეცენტრალიზებული შეტყობინებების ქსელი!",
     "blur": "დაფარვა:",
     "opacity": "მოჩინვარება:",
     "setWallpaper": "საფონი დაყენება",
@@ -2456,6 +2489,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@accessAndVisibility": {
         "type": "String",
         "placeholders": {}
@@ -2537,6 +2574,10 @@
         "placeholders": {}
     },
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -2867,6 +2908,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@newChat": {
         "type": "String",
         "placeholders": {}
@@ -3134,7 +3179,15 @@
         "type": "String",
         "placeholders": {}
     },
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -3192,6 +3245,14 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@removeDevice": {
         "type": "String",
@@ -3852,6 +3913,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@youInvitedUser": {
         "type": "String",
         "placeholders": {
@@ -3977,6 +4046,10 @@
         "placeholders": {}
     },
     "@enterSpace": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@allSpaces": {
         "type": "String",
         "placeholders": {}
     },
@@ -4595,6 +4668,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -11182,6 +11259,7 @@
     "spaceMemberOf": "სივრცის წევრი {spaces}-ის",
     "spaceMemberOfCanKnock": "სივრცის წევრი {spaces} შეუძლია დააკაკუნოს",
     "donate": "გადარიცხვა",
+    "startedAPoll": "{username} დაიწყო გამოკითხვა.",
     "poll": "გამოკითხვა",
     "startPoll": "დაიწყეთ გამოკითხვა",
     "endPoll": "გამოკითხვის დასრულება",
@@ -11296,6 +11374,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

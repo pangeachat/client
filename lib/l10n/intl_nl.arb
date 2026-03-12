@@ -190,6 +190,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} heeft de chatomschrijving gewijzigd in: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} heeft de chatnaam gewijzigd in: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} heeft de chatrechten gewijzigd",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -651,6 +675,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Emoticonpakketten voor de chat",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Emoticon-instellingen",
     "@emoteSettings": {
         "type": "String",
@@ -726,6 +755,11 @@
     },
     "extremeOffensive": "Extreem beledigend",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Bestandsnaam",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1043,6 +1077,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Houd er rekening mee dat je voorlopig Pantalaimon nodig hebt om eind-tot-eind versleuteling te gebruiken.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "Nieuwe chat",
     "@newChat": {
         "type": "String",
@@ -1298,8 +1337,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Meldingsinstellingen",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Reden",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Opnemen",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1345,6 +1394,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Verwijderd door {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Verwijder apparaat",
     "@removeDevice": {
@@ -2139,6 +2197,8 @@
     "@noKeyForThisMessage": {},
     "enterSpace": "Space betreden",
     "@enterSpace": {},
+    "allSpaces": "Alle spaces",
+    "@allSpaces": {},
     "foregroundServiceRunning": "Deze melding verschijnt wanneer de voorgronddienst draait.",
     "@foregroundServiceRunning": {},
     "screenSharingTitle": "scherm delen",
@@ -2391,6 +2451,14 @@
     "@globalChatId": {},
     "accessAndVisibility": "Toegang en zichtbaarheid",
     "@accessAndVisibility": {},
+    "invitedBy": "📩 Uitgenodigd door: {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "publicSpaces": "Openbare spaces",
     "@publicSpaces": {},
     "blockUsername": "Negeer inlognaam",
@@ -2836,6 +2904,8 @@
     },
     "continueText": "Doorgaan",
     "@continueText": {},
+    "welcomeText": "Hallo hallo 👋 Dit is FluffyChat. Je kan inloggen op elke server die werkt met https://matrix.org. En dan chat je met iedereen. Het is een groot decentraal chat-netwerk!",
+    "@welcomeText": {},
     "appWantsToUseForLogin": "Inloggen met '{server}'",
     "@appWantsToUseForLogin": {
         "type": "String",
@@ -3045,6 +3115,15 @@
         "type": "String",
         "placeholders": {
             "spaces": {
+                "type": "String"
+            }
+        }
+    },
+    "startedAPoll": "{username} is een peiling begonnen.",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
                 "type": "String"
             }
         }

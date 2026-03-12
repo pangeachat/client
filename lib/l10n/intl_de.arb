@@ -188,6 +188,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} hat die Chatbeschreibung geändert in: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} hat den Chatnamen geändert in: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} hat die Chat-Berechtigungen geändert",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -648,6 +672,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Emoticon-Bündel für Raum",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Emoticon-Einstellungen",
     "@emoteSettings": {
         "type": "String",
@@ -723,6 +752,11 @@
     },
     "extremeOffensive": "Extrem beleidigend",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Dateiname",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1040,6 +1074,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Bitte beachte, dass du Pantalaimon brauchst, um Ende-zu-Ende-Verschlüsselung benutzen zu können.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "Neuer Chat",
     "@newChat": {
         "type": "String",
@@ -1283,8 +1322,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Push-Regeln",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Grund",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Aufnahme",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1330,6 +1379,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Entfernt von {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Gerät entfernen",
     "@removeDevice": {
@@ -2076,6 +2134,7 @@
     "newGroup": "Neue Gruppe",
     "newSpace": "Neuer Space",
     "enterSpace": "Raum betreten",
+    "allSpaces": "Alle Spaces",
     "screenSharingDetail": "Du teilst deinen Bildschirm in FuffyChat",
     "newSpaceDescription": "Mit Spaces kannst du deine Chats zusammenfassen und private oder öffentliche Communities aufbauen.",
     "wasDirectChatDisplayName": "Leerer Chat (war {oldDisplayName})",
@@ -2449,6 +2508,14 @@
     "changeTheChatPermissions": "Ändere die Chat-Berechtigungen",
     "changeTheVisibilityOfChatHistory": "Wechsele die Sichtbarkeit der Chat-Historie",
     "chatPermissionsDescription": "Einstellen, welches Level für bestimmte Aktionen in diesem Chat erforderlich ist. Die Level 0, 50 und 100 stehen üblicherweise für Benutzer, Moderatoren und Admins, aber jede Abstufung ist möglich.",
+    "invitedBy": "📩 Eingeladen von {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "adminLevel": "{level} - Administrator",
     "@adminLevel": {
         "type": "String",
@@ -2518,6 +2585,7 @@
     "noticeChatBackupDeviceVerification": "Hinweis: Wenn du alle deine Geräte mit dem Chat-Backup verbindest, sind sie automatisch verifiziert.",
     "setWallpaper": "Hintergrund ändern",
     "opacity": "Deckkraft:",
+    "welcomeText": "Hey Hey 👋 Das ist FluffyChat. Du kannst sich bei jedem Homeserver anmelden, der mit https://matrix.org kompatibel ist. Und dann mit jedem chatten. Das hier ist ein riesiges dezentrales Nachrichtennetzwerk!",
     "blur": "Verwischen:",
     "manageAccount": "Konto verwalten",
     "continueText": "Fortfahren",
@@ -2718,6 +2786,15 @@
     },
     "donate": "Spenden",
     "resume": "Fortsetzen",
+    "startedAPoll": "{username} hat eine Umfrage gestartet.",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "poll": "Umfrage",
     "startPoll": "Umfrage starten",
     "endPoll": "Umfrage beenden",
@@ -2865,6 +2942,7 @@
     "@newGroup": {},
     "@newSpace": {},
     "@enterSpace": {},
+    "@allSpaces": {},
     "@screenSharingDetail": {},
     "@newSpaceDescription": {},
     "@encryptThisChat": {},
@@ -3020,6 +3098,7 @@
     "@noticeChatBackupDeviceVerification": {},
     "@setWallpaper": {},
     "@opacity": {},
+    "@welcomeText": {},
     "@blur": {},
     "@manageAccount": {},
     "@continueText": {},

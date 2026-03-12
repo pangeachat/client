@@ -348,6 +348,30 @@
             }
         }
     },
+    "changedTheChatNameTo": "{username} đã thay đổi tên phòng chat thành: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatDescriptionTo": "{username} đã thay đổi mô tả phòng chat thành: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatAvatar": "{username} đã thay đổi ảnh phòng chat",
     "@changedTheChatAvatar": {
         "type": "String",
@@ -528,6 +552,8 @@
     "@notAnImage": {},
     "importNow": "Nhập vào",
     "@importNow": {},
+    "allSpaces": "Tất cả không gian",
+    "@allSpaces": {},
     "enterSpace": "Nhập không gian",
     "@enterSpace": {},
     "jumpToLastReadMessage": "Đi tới tin nhắn đã đọc mới nhất",
@@ -817,6 +843,7 @@
     "emoteExists": "Biểu tượng cảm xúc đã tồn tại!",
     "emoteInvalid": "Mã biểu tượng cảm xúc không hợp lệ!",
     "emoteKeyboardNoRecents": "Những biểu tượng cảm xúc sử dụng gần đây sẽ xuất hiện ở đây...",
+    "emotePacks": "Gói biểu tượng cho phòng",
     "globalChatId": "ID trò chuyện toàn cục",
     "accessAndVisibility": "Quyền truy cập và hiển thị",
     "accessAndVisibilityDescription": "Ai được phép tham gia cuộc trò chuyện này và cách cuộc trò chuyện có thể được tìm thấy.",
@@ -852,6 +879,7 @@
         }
     },
     "extremeOffensive": "Cực kỳ xúc phạm",
+    "fileName": "Tên tệp",
     "fluffychat": "FluffyChat",
     "fontSize": "Kích thước phông chữ",
     "forward": "Chuyển tiếp",
@@ -1024,6 +1052,7 @@
     "messagesStyle": "Tin nhắn:",
     "moderator": "Điều hành viên",
     "muteChat": "Tắt thông báo trò chuyện",
+    "needPantalaimonWarning": "Bạn cần Pantalaimon để dùng mã hóa đầu-cuối vào lúc này.",
     "newChat": "Cuộc trò chuyện mới",
     "newMessageInFluffyChat": "💬 Tin nhắn mới trong FluffyChat",
     "newVerificationRequest": "Yêu cầu xác minh mới!",
@@ -1110,7 +1139,9 @@
     "pleaseEnterYourUsername": "Vui lòng nhập tên người dùng",
     "privacy": "Quyền riêng tư",
     "publicRooms": "Phòng công khai",
+    "pushRules": "Quy tắc thông báo đẩy",
     "reason": "Lý do",
+    "recording": "Đang ghi âm",
     "redactedBy": "Được gỡ bởi {username}",
     "@redactedBy": {
         "type": "String",
@@ -1155,6 +1186,15 @@
         }
     },
     "removeAllOtherDevices": "Xóa tất cả thiết bị khác",
+    "removedBy": "Đã bị xóa bởi {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "removeDevice": "Xóa thiết bị",
     "unbanFromChat": "Bỏ cấm khỏi trò chuyện",
     "removeYourAvatar": "Gỡ ảnh đại diện của bạn",
@@ -1455,6 +1495,14 @@
     },
     "youInvitedBy": "📩 Bạn được mời bởi {user}",
     "@youInvitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
+    "invitedBy": "📩 Được mời bởi {user}",
+    "@invitedBy": {
         "placeholders": {
             "user": {
                 "type": "String"
@@ -2525,6 +2573,7 @@
     },
     "oneOfYourDevicesIsNotVerified": "Một trong các thiết bị của bạn chưa được xác minh",
     "noticeChatBackupDeviceVerification": "Lưu ý: Khi bạn thêm tất cả thiết bị vào sao lưu trò chuyện, chúng sẽ tự động được xác minh.",
+    "welcomeText": "Chào bạn 👋 Đây là FluffyChat. Bạn có thể đăng nhập vào bất kỳ máy chủ nào tương thích với https://matrix.org, và trò chuyện với mọi người. Đây là một mạng nhắn tin phi tập trung!",
     "blur": "Mờ:",
     "opacity": "Độ trong suốt:",
     "setWallpaper": "Đặt hình nền",
@@ -6057,6 +6106,7 @@
     "spaceMemberOf": "Thành viên không gian của {spaces}",
     "spaceMemberOfCanKnock": "Thành viên không gian của {spaces} có thể gõ cửa",
     "donate": "Đóng góp",
+    "startedAPoll": "{username} đã bắt đầu một cuộc thăm dò.",
     "poll": "Cuộc thăm dò",
     "startPoll": "Bắt đầu cuộc thăm dò",
     "endPoll": "Kết thúc cuộc thăm dò",
@@ -6171,6 +6221,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

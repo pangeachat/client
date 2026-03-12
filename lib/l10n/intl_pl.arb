@@ -160,6 +160,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} zmienił/-a opis czatu na '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} zmienił/-a nazwę czatu na '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} zmienił/-a uprawnienia w czacie",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -586,6 +610,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Paczki emotikonów dla pokoju",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Ustawienia emotikonów",
     "@emoteSettings": {
         "type": "String",
@@ -642,6 +671,11 @@
     },
     "everythingReady": "Wszystko gotowe!",
     "@everythingReady": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Nazwa pliku",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -919,6 +953,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Należy pamiętać, że Pantalaimon wymaga na razie szyfrowania od końca do końca.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "Nowa rozmowa",
     "@newChat": {
         "type": "String",
@@ -1043,6 +1082,16 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Reguły push",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Nagranie",
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
+    },
     "redactedAnEvent": "{username} usunął/-ęła zdarzenie",
     "@redactedAnEvent": {
         "type": "String",
@@ -1075,6 +1124,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Usunięta przez {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Usuń urządzenie",
     "@removeDevice": {
@@ -2189,6 +2247,8 @@
     "@whyIsThisMessageEncrypted": {},
     "enterSpace": "Wejdź do przestrzeni",
     "@enterSpace": {},
+    "allSpaces": "Wszystkie przestrzenie",
+    "@allSpaces": {},
     "doNotShowAgain": "Nie pokazuj ponownie",
     "@doNotShowAgain": {},
     "wasDirectChatDisplayName": "Pusty czat (wcześniej {oldDisplayName})",
@@ -2362,6 +2422,14 @@
     "@hideRedactedMessagesBody": {},
     "passwordRecoverySettings": "Ustawienia odzyskiwania hasła",
     "@passwordRecoverySettings": {},
+    "invitedBy": "Zaproszony/-a przez {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "archiveRoomDescription": "Czat zostanie przeniesiony do archiwum. Pozostali użytkownicy będą mogli zobaczyć, że opuściłeś/-aś czat.",
     "@archiveRoomDescription": {},
     "yourGlobalUserIdIs": "Twój globalny identyfikator to: ",
@@ -2540,6 +2608,8 @@
             }
         }
     },
+    "welcomeText": "No cześć! 👋 Tutaj FluffyChat. Możesz zapisać się do dowolnego serwera domowego, kompatybilnego z https://matrix.org i rozmawiać ze wszystkimi. To duża zdecentralizowana sieć czatów!",
+    "@welcomeText": {},
     "blur": "Rozmazanie:",
     "@blur": {},
     "opacity": "Przezroczystość:",
@@ -10237,6 +10307,7 @@
     "spaceMemberOf": "Członek przestrzeni {spaces}",
     "spaceMemberOfCanKnock": "Członek przestrzeni {spaces} może zapukać",
     "donate": "Darowizna",
+    "startedAPoll": "{username} rozpoczął ankietę.",
     "poll": "Ankieta",
     "startPoll": "Rozpocznij ankietę",
     "endPoll": "Zakończ ankietę",
@@ -10343,6 +10414,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

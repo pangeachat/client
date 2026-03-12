@@ -169,6 +169,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} 變更了聊天室介紹為：「{description}」",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} 把聊天室名稱變更為：「{chatname}」",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} 變更了對話權限",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -524,6 +548,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "聊天室的表情符號",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "表情設定",
     "@emoteSettings": {
         "type": "String",
@@ -590,6 +619,11 @@
     },
     "extremeOffensive": "極端令人反感",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "檔案名稱",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -897,6 +931,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "請注意您需要 Pantalaimon 才能使用點對點加密功能。",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "新聊天",
     "@newChat": {
         "type": "String",
@@ -1105,8 +1144,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "推播規則",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "原因",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "錄音中",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1147,6 +1196,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "被 {username} 移除",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "移除裝置",
     "@removeDevice": {
@@ -2024,6 +2082,8 @@
     },
     "youRejectedTheInvitation": "您拒絕了邀請",
     "@youRejectedTheInvitation": {},
+    "allSpaces": "所有空間",
+    "@allSpaces": {},
     "youKickedAndBanned": "🙅 您踢出並封鎖了 {user}",
     "@youKickedAndBanned": {
         "placeholders": {
@@ -2662,6 +2722,14 @@
             }
         }
     },
+    "invitedBy": "📩 由 {user} 邀請",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "doesNotSeemToBeAValidHomeserver": "似乎不是能匹配的歸屬伺服器。伺服器域名打錯了嗎？",
     "@doesNotSeemToBeAValidHomeserver": {},
     "noticeChatBackupDeviceVerification": "注意：當您將所有裝置連線到聊天備份時，它們會自動驗證。",
@@ -2760,6 +2828,8 @@
             }
         }
     },
+    "welcomeText": "嘿，嘿👋這是FluffyChat。 您可以登入任何與https://matrix.org相容的歸屬伺服器後和任何人聊天。 這是一個巨大的去中心化訊息網路！",
+    "@welcomeText": {},
     "setWallpaper": "設定背景樣式",
     "@setWallpaper": {},
     "noContactInformationProvided": "伺服器沒有提供任何有效的聯絡資訊",
@@ -10246,6 +10316,7 @@
     "spaceMemberOf": "{spaces} 的空間成員",
     "spaceMemberOfCanKnock": "{spaces} 的空間成員可以敲門",
     "donate": "捐贈",
+    "startedAPoll": "{username} 發起了一個投票。",
     "poll": "投票",
     "startPoll": "開始投票",
     "endPoll": "結束投票",
@@ -10360,6 +10431,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

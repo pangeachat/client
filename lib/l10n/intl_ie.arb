@@ -95,6 +95,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "fileName": "Nómine de file",
+    "@fileName": {
+        "type": "String",
+        "placeholders": {}
+    },
     "fontSize": "Dimension de fonde",
     "@fontSize": {
         "type": "String",
@@ -248,6 +253,11 @@
     },
     "pleaseChoose": "Ples selecter",
     "@pleaseChoose": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pushRules": "Regules de push-notificationes",
+    "@pushRules": {
         "type": "String",
         "placeholders": {}
     },
@@ -540,6 +550,11 @@
     },
     "privacy": "Privatie",
     "@privacy": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Registrante",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -988,6 +1003,8 @@
     "@newSpace": {},
     "enterSpace": "Intrar li spacie",
     "@enterSpace": {},
+    "allSpaces": "Omni spacies",
+    "@allSpaces": {},
     "logout": "Cluder li session",
     "@logout": {
         "type": "String",
@@ -1215,6 +1232,17 @@
         "placeholders": {}
     },
     "@removeDevicesDescription": {},
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
     "@separateChatTypes": {
         "type": "String",
         "placeholders": {}
@@ -1356,6 +1384,10 @@
         }
     },
     "@weSentYouAnEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@needPantalaimonWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -1541,6 +1573,17 @@
     },
     "@archiveRoomDescription": {},
     "@exportEmotePack": {},
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "@setAsCanonicalAlias": {
         "type": "String",
         "placeholders": {}
@@ -1554,6 +1597,14 @@
         "placeholders": {}
     },
     "@placeCall": {},
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "@changedTheRoomInvitationLink": {
         "type": "String",
         "placeholders": {
@@ -2078,6 +2129,10 @@
     "@screenSharingDetail": {},
     "@invite": {},
     "@enableMultiAccounts": {},
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@endedTheCall": {
         "type": "String",
         "placeholders": {
@@ -2120,6 +2175,8 @@
     "space": "Spatio",
     "spaces": "Spacios",
     "changedTheChatAvatar": "{username} ha cambiate l'avatar del chat",
+    "changedTheChatDescriptionTo": "{username} ha cambiate le description del chat a: '{description}'",
+    "changedTheChatNameTo": "{username} ha cambiate le nomine del chat a: '{chatname}'",
     "changedTheChatPermissions": "{username} ha cambiate le permissiones del chat",
     "changedTheDisplaynameTo": "{username} ha cambiate lor nomine de visualisation a: '{displayname}'",
     "changedTheGuestAccessRules": "{username} changi li reguli de accesso guest",
@@ -2165,6 +2222,7 @@
     "chatPermissions": "Permissiones de chat",
     "emoteInvalid": "Shortcode de emote invalide!",
     "emoteKeyboardNoRecents": "Emotes usate recentemente apparirà qua...",
+    "emotePacks": "Paches de emote pro sala",
     "globalChatId": "ID global de chat",
     "accessAndVisibility": "Acces e visibilitate",
     "accessAndVisibilityDescription": "Qui es permittit de jónar a ti chat e como le chat pote esser trovate.",
@@ -2212,6 +2270,7 @@
     "locationPermissionDeniedNotice": "Permesso de localisacion es denegate. Per favor, concede los pro poter compartir tu localisacion.",
     "logInTo": "Intra in {homeserver}",
     "messagesStyle": "Messages:",
+    "needPantalaimonWarning": "Per favor, es conscient que tu besona Pantalaimon pro usar cryptage de ponta a ponta pro ora.",
     "newMessageInFluffyChat": "💬 Nov message in FluffyChat",
     "noConnectionToTheServer": "Nulle connection a la servitor",
     "noEmotesFound": "Nulle emotes trovate. 😕",
@@ -2252,6 +2311,7 @@
     "redactedAnEvent": "{username} redactat un eveniment",
     "rejectedTheInvitation": "{username} rejectat l'invitament",
     "removeAllOtherDevices": " remover omne altere dispositivos",
+    "removedBy": "Removet per {username}",
     "unbanFromChat": "De-ban de chat",
     "removeYourAvatar": "Remover tu avatar",
     "replaceRoomWithNewerVersion": "Reemplazar camera con version recent",
@@ -2330,6 +2390,7 @@
     "youBannedUser": "Tu ha bannate {user}",
     "youHaveWithdrawnTheInvitationFor": "Tu ha retractate le invitation pro {user}",
     "youInvitedBy": "🚩 Tu ha essite invitate per {user}",
+    "invitedBy": "🚩 Invitate per {user}",
     "youInvitedUser": "🚩 Tu ha invitate {user}",
     "youKicked": "🚶‍♂️ Tu ha kickate {user}",
     "youKickedAndBanned": "🧑‍🦯 Tu ha expulsà e bannà {user}",
@@ -2477,6 +2538,7 @@
     "oneOfYourDevicesIsNotVerified": "Un de tu dispositivos non es verifyt",
     "noticeChatBackupDeviceVerification": "Nota: Kande tu connecta toti tui dispositivs al backup de chat, illes es automaticmen verificat.",
     "continueText": "Contina",
+    "welcomeText": "Hej Hej 👋 To es FluffyChat. Tu posse signar en a cualsevol homeserver, qui es compatible con https://matrix.org. E poi chatta con cualquiere. Es un enorme rete de messageria decentralisada!",
     "blur": "Blure:",
     "opacity": "Opacitá:",
     "setWallpaper": "Stabilir fond d'ecran",
@@ -3782,6 +3844,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@usersMustKnock": {
         "type": "String",
         "placeholders": {}
@@ -4257,6 +4327,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -10836,6 +10910,7 @@
     "spaceMemberOf": "Membro do espaço de {spaces}",
     "spaceMemberOfCanKnock": "Membro do espaço de {spaces} pode bater",
     "donate": "Doe",
+    "startedAPoll": "{username} iniciou uma enquete.",
     "poll": "Enquete",
     "startPoll": "Iniciar enquete",
     "endPoll": "Críochnaigh an pobal",
@@ -10950,6 +11025,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

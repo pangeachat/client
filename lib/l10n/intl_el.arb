@@ -293,6 +293,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} άλλαξε την περιγραφή συνομιλίας σε: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} άλλαξε το όνομα συνομιλίας σε: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} άλλαξε τα δικαιώματα συνομιλίας",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -635,6 +659,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@allSpaces": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@editDisplayname": {
         "type": "String",
         "placeholders": {}
@@ -856,6 +884,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@fileName": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@unavailable": {
         "type": "String",
         "placeholders": {}
@@ -1047,6 +1079,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@makeAdminDescription": {
         "type": "String",
         "placeholders": {}
@@ -1072,6 +1108,10 @@
         "placeholders": {}
     },
     "@passwordHasBeenChanged": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pushRules": {
         "type": "String",
         "placeholders": {}
     },
@@ -1311,6 +1351,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@moderator": {
         "type": "String",
         "placeholders": {}
@@ -1403,6 +1447,14 @@
     "@placeCall": {
         "type": "String",
         "placeholders": {}
+    },
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@changedTheRoomInvitationLink": {
         "type": "String",
@@ -2334,6 +2386,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@endedTheCall": {
         "type": "String",
         "placeholders": {
@@ -2411,6 +2467,7 @@
     "emoteExists": "Το emoji ήδη υπάρχει!",
     "emoteInvalid": "Μη έγκυρος κωδικός emoji!",
     "emoteKeyboardNoRecents": "Πρόσφατα χρησιμοποιημένα emoji θα εμφανίζονται εδώ...",
+    "emotePacks": "Πακέτα emoji για το δωμάτιο",
     "emoteSettings": "Ρυθμίσεις emoji",
     "globalChatId": "Παγκόσμιο ID συνομιλίας",
     "accessAndVisibility": "Πρόσβαση και ορατότητα",
@@ -2432,6 +2489,7 @@
     "errorObtainingLocation": "Σφάλμα κατά την απόκτηση τοποθεσίας: {error}",
     "everythingReady": "Όλα έτοιμα!",
     "extremeOffensive": "Απολύτως προσβλητικό",
+    "fileName": "Όνομα αρχείου",
     "fluffychat": "FluffyChat",
     "fontSize": "Μέγεθος γραμματοσειράς",
     "forward": "Προώθηση",
@@ -2499,6 +2557,7 @@
     "messagesStyle": "Μηνύματα:",
     "moderator": "Διαχειριστής",
     "muteChat": "Αθόρυβη συνομιλία",
+    "needPantalaimonWarning": "Παρακαλώ να γνωρίζετε ότι χρειάζεστε το Pantalaimon για να χρησιμοποιήσετε κρυπτογράφηση άκρο-σε-άκρο προς το παρόν.",
     "newChat": "Νέα συνομιλία",
     "newMessageInFluffyChat": "🗨️ Νέο μήνυμα στο FluffyChat",
     "newVerificationRequest": "Νέο αίτημα επαλήθευσης!",
@@ -2562,7 +2621,9 @@
     "pleaseFollowInstructionsOnWeb": "Παρακαλούμε ακολουθήστε τις οδηγίες στην ιστοσελίδα και πατήστε επόμενο.",
     "privacy": "Απόρρητο",
     "publicRooms": "Δημόσιες αίθουσες",
+    "pushRules": "Κανόνες ειδοποιήσεων",
     "reason": "Αιτία",
+    "recording": "Εγγραφή",
     "redactedBy": "Επεξεργάστηκε από {username}",
     "directChat": "Άμεσο μήνυμα",
     "redactedByBecause": "Επεξεργάστηκε από {username} επειδή: \"{reason}\"",
@@ -2572,6 +2633,7 @@
     "reject": "Απόρριψη",
     "rejectedTheInvitation": "{username} απέρριψε την πρόσκληση",
     "removeAllOtherDevices": "Αφαίρεση όλων των άλλων συσκευών",
+    "removedBy": "Αφαιρέθηκε από {username}",
     "removeDevice": "Αφαίρεση συσκευής",
     "unbanFromChat": "Άρση αποκλεισμού από τη συνομιλία",
     "removeYourAvatar": "Αφαίρεση του προφίλ σας",
@@ -2711,6 +2773,7 @@
     "youBannedUser": "Αποκλείσατε τον {user}",
     "youHaveWithdrawnTheInvitationFor": "Έχετε αποσύρει την πρόσκληση για τον {user}",
     "youInvitedBy": "📩 Έχετε προσκληθεί από τον {user}",
+    "invitedBy": "📩 Προσκληθείς από τον {user}",
     "youInvitedUser": "📩 Προσκαλέσατε τον {user}",
     "youKicked": "👞 Απομακρύνατε τον {user}",
     "youKickedAndBanned": "🙅‍♀️ Απομακρύνατε και αποκλείσατε τον {user}",
@@ -2737,6 +2800,7 @@
     "newGroup": "Νέα ομάδα",
     "newSpace": "Νέος χώρος",
     "enterSpace": "Εισέλθετε στον χώρο",
+    "allSpaces": "Όλοι οι χώροι",
     "hidePresences": "Απόκρυψη λίστας κατάστασης;",
     "doNotShowAgain": "Μην το εμφανίζετε ξανά",
     "wasDirectChatDisplayName": "Άδειο chat (ήταν {oldDisplayName})",
@@ -2866,6 +2930,7 @@
     "oneOfYourDevicesIsNotVerified": "Ένα από τα συσκευές σας δεν είναι επαληθευμένο",
     "noticeChatBackupDeviceVerification": "Σημείωση: Όταν συνδέσετε όλες τις συσκευές σας στο αντίγραφο ασφαλείας συνομιλίας, αυτομάτως επαληθεύονται.",
     "continueText": "Συνέχεια",
+    "welcomeText": "Γεια Γεια 👋 Αυτό είναι το FluffyChat. Μπορείτε να συνδεθείτε σε οποιονδήποτε διακομιστή σπιτιού, ο οποίος είναι συμβατός με το https://matrix.org. Και στη συνέχεια να συνομιλήσετε με οποιονδήποτε. Είναι ένα τεράστιο αποκεντρωμένο δίκτυο μηνυμάτων!",
     "blur": "Θάμπωμα:",
     "opacity": "Αδιαφάνεια:",
     "setWallpaper": "Ορισμός φόντου",
@@ -4109,6 +4174,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@usersMustKnock": {
         "type": "String",
         "placeholders": {}
@@ -4584,6 +4657,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -11073,6 +11150,7 @@
     "spaceMemberOf": "Μέλος χώρου {spaces}",
     "spaceMemberOfCanKnock": "Μέλος χώρου {spaces} μπορεί να χτυπήσει",
     "donate": "Δωρεά",
+    "startedAPoll": "{username} ξεκίνησε μια δημοσκόπηση.",
     "poll": "Δημοσκόπηση",
     "startPoll": "Ξεκινήστε τη δημοσκόπηση",
     "endPoll": "Τέλος ψηφοφορίας",
@@ -11187,6 +11265,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

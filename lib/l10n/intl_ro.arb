@@ -132,6 +132,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} a schimbat descrierea grupului în '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} a schimbat porecla în '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "commandHint_unban": "Dezinterziceți utilizatorul ales din această cameră",
     "@commandHint_unban": {
         "type": "String",
@@ -297,6 +321,15 @@
         "type": "String",
         "placeholders": {}
     },
+    "removedBy": "Eliminat de {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "removeDevice": "Eliminați dispozitivul",
     "@removeDevice": {
         "type": "String",
@@ -443,6 +476,16 @@
     },
     "privacy": "Confidențialitate",
     "@privacy": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pushRules": "Regulile Push",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Înregistrare",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1188,6 +1231,8 @@
     "@newSpace": {},
     "enterSpace": "Intrați în spațiu",
     "@enterSpace": {},
+    "allSpaces": "Toate spațiile",
+    "@allSpaces": {},
     "doNotShowAgain": "Nu se mai apară din nou",
     "@doNotShowAgain": {},
     "newSpaceDescription": "Spațiile vă permit să vă consolidați chaturile și să stabiliți comunități private sau publice.",
@@ -1217,6 +1262,11 @@
     "@jumpToLastReadMessage": {},
     "guestsCanJoin": "Musafiri pot să se alăture",
     "@guestsCanJoin": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Nume de fișier",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1799,6 +1849,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Pachete de emoturi din cameră",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Configurări Emote",
     "@emoteSettings": {
         "type": "String",
@@ -2057,6 +2112,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Vă rugăm să fiți conștienți că e nevoie de Pantalaimon să folosiți criptare end-to-end deocamdată.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "autoplayImages": "Anima automatic stickere și emote animate",
     "@autoplayImages": {
         "type": "String",
@@ -2290,6 +2350,7 @@
     "setChatDescription": "Setează descrierea chat-ului",
     "presencesToggle": "Afișează mesajele de stare de la alți utilizatori",
     "synchronizingPleaseWaitCounter": "Se sincronizează… ({percentage}%)",
+    "invitedBy": "📩 Invitat de {user}",
     "hasKnocked": "🚪 {user} a bătut la ușă",
     "usersMustKnock": "Utilizatorii trebuie să bată la ușă",
     "noOneCanJoin": "Nimeni nu poate intra",
@@ -2405,6 +2466,7 @@
     "oneOfYourDevicesIsNotVerified": "Unul dintre dispozitivele dvs. nu este verificat",
     "noticeChatBackupDeviceVerification": "Notă: Când conectați toate dispozitivele dvs. la backup-ul de chat, acestea sunt verificate automat.",
     "continueText": "Continuă",
+    "welcomeText": "Salut Salut 👋 Acesta este FluffyChat. Puteți să vă conectați la orice server de acasă, care este compatibil cu https://matrix.org. Și apoi să conversați cu oricine. Este o rețea mare de mesagerie descentralizată!",
     "blur": "Estompare:",
     "opacity": "Opacitate:",
     "setWallpaper": "Setează fundalul de ecran",
@@ -3812,6 +3874,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@hasKnocked": {
         "type": "String",
         "placeholders": {
@@ -4363,6 +4433,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -10942,6 +11016,7 @@
     "spaceMemberOf": "Membru al spațiului {spaces}",
     "spaceMemberOfCanKnock": "Membru al spațiului {spaces} poate bate",
     "donate": "Donează",
+    "startedAPoll": "{username} a început un sondaj.",
     "poll": "Sondaj",
     "startPoll": "Începe sondaj",
     "endPoll": "Încheie sondajul",
@@ -11056,6 +11131,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

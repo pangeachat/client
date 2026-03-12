@@ -60,6 +60,14 @@
     },
     "unsupportedAndroidVersion": "ஆதரிக்கப்படாத ஆண்ட்ராய்டு பதிப்பு",
     "@unsupportedAndroidVersion": {},
+    "invitedBy": "{user} அழைத்தார்",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "startConversation": "உரையாடலைத் தொடங்குங்கள்",
     "@startConversation": {},
     "commandHint_sendraw": "மூல சாதொபொகு ஐ அனுப்புங்கள்",
@@ -139,6 +147,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "fileName": "கோப்பு பெயர்",
+    "@fileName": {
+        "type": "String",
+        "placeholders": {}
+    },
     "hasWithdrawnTheInvitationFor": "{targetName} க்கான அழைப்பை {username} திரும்பப் பெற்றுள்ளார்",
     "@hasWithdrawnTheInvitationFor": {
         "type": "String",
@@ -155,6 +168,15 @@
     "@identity": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "{username} ஆல் அகற்றப்பட்டது",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "requestPermission": "இசைவு கோருங்கள்",
     "@requestPermission": {
@@ -834,6 +856,18 @@
     "@swipeRightToLeftToReply": {},
     "unread": "படிக்காதது",
     "@unread": {},
+    "changedTheChatDescriptionTo": "{username} பயனர்பெயர் the அரட்டை விளக்கத்தை மாற்றியது: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
     "dateAndTimeOfDay": "{date}, {timeOfDay}",
     "@dateAndTimeOfDay": {
         "type": "String",
@@ -878,6 +912,8 @@
     "@sendingAttachment": {},
     "continueText": "தொடரவும்",
     "@continueText": {},
+    "welcomeText": "ஏய் ஏய் 👋 இது பஞ்சுபோன்றது. Https://matrix.org உடன் இணக்கமான எந்த ஓம்சர்வரில் நீங்கள் உள்நுழையலாம். பின்னர் யாருடனும் அரட்டையடிக்கவும். இது ஒரு பெரிய பரவலாக்கப்பட்ட செய்தியிடல் நெட்வொர்க்!",
+    "@welcomeText": {},
     "name": "பெயர்",
     "@name": {},
     "username": "பயனர்பெயர்",
@@ -1207,6 +1243,11 @@
     },
     "messagesStyle": "செய்திகள்:",
     "@messagesStyle": {},
+    "needPantalaimonWarning": "இப்போதைக்கு இறுதி முதல் இறுதி குறியாக்கத்தைப் பயன்படுத்த உங்களுக்கு பாண்டலாயமன் தேவை என்பதை நினைவில் கொள்க.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newMessageInFluffyChat": "Fuf பஞ்சுபோன்ற புதிய செய்தி",
     "@newMessageInFluffyChat": {
         "type": "String",
@@ -1415,6 +1456,8 @@
     "@databaseMigrationTitle": {},
     "usersMustKnock": "பயனர்கள் தட்ட வேண்டும்",
     "@usersMustKnock": {},
+    "allSpaces": "அனைத்து இடங்களும்",
+    "@allSpaces": {},
     "importFromZipFile": ".Zip கோப்பிலிருந்து இறக்குமதி செய்யுங்கள்",
     "@importFromZipFile": {},
     "activatedEndToEndEncryption": "{username} இறுதி குறியாக்கத்திற்கு செயல்படுத்தப்பட்ட முடிவு",
@@ -1503,6 +1546,18 @@
     "@banned": {
         "type": "String",
         "placeholders": {}
+    },
+    "changedTheChatNameTo": "{username} அரட்டை பெயரை மாற்றியது: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
     },
     "changedTheHistoryVisibilityTo": "{username} வரலாற்று தெரிவுநிலையை மாற்றியது: {rules}",
     "@changedTheHistoryVisibilityTo": {
@@ -1680,6 +1735,11 @@
     },
     "emoteKeyboardNoRecents": "அண்மைக் காலத்தில் பயன்படுத்தப்பட்ட உணர்ச்சிகள் இங்கே தோன்றும் ...",
     "@emoteKeyboardNoRecents": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emotePacks": "அறைக்கு எமோட் பொதிகள்",
+    "@emotePacks": {
         "type": "String",
         "placeholders": {}
     },
@@ -2534,6 +2594,16 @@
     },
     "removeFromBundle": "இந்த மூட்டையிலிருந்து அகற்றவும்",
     "@removeFromBundle": {},
+    "pushRules": "தள்ளி விதிகள்",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "பதிவு",
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
+    },
     "redactedBy": "{username} ஆல் திருத்தப்பட்டது",
     "@redactedBy": {
         "type": "String",
@@ -10245,6 +10315,7 @@
     "spaceMemberOf": "{spaces} இடத்தின் உறுப்பினராக",
     "spaceMemberOfCanKnock": "{spaces} இடத்தின் உறுப்பினர்கள் தட்டலாம்",
     "donate": "தானம் செய்யுங்கள்",
+    "startedAPoll": "{username} ஒரு கருத்துக்கணிப்பை தொடங்கினார்.",
     "poll": "கருத்துக்கணிப்பு",
     "startPoll": "கருத்துக்கணிப்பை தொடங்குங்கள்",
     "endPoll": "கேள்வி முடிக்கவும்",
@@ -10351,6 +10422,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

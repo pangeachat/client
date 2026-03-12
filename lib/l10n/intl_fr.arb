@@ -191,6 +191,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} a changé la description de la discussion en : '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} a renommé la discussion en : '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} a changé les permissions de la discussion",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -652,6 +676,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Packs d'émoticônes pour le salon",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Paramètre des émoticônes",
     "@emoteSettings": {
         "type": "String",
@@ -727,6 +756,11 @@
     },
     "extremeOffensive": "Extrêmement offensant",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Nom du ficher",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1044,6 +1078,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Pour l'instant, vous avez besoin de Pantalaimon pour utiliser le chiffrement de bout en bout.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "Nouvelle discussion",
     "@newChat": {
         "type": "String",
@@ -1299,8 +1338,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Règles de notifications",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Motif",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Enregistrement",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1346,6 +1395,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Supprimé par {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Supprimer l'appareil",
     "@removeDevice": {
@@ -2121,6 +2179,8 @@
     },
     "noKeyForThisMessage": "Cela peut se produire si le message a été envoyé avant que vous ne vous soyez connecté à votre compte sur cet appareil.\n\nIl est également possible que l'expéditeur ait bloqué votre appareil ou qu'un problème de connexion Internet se soit produit.\n\nÊtes-vous capable de lire le message sur une autre session ? Vous pouvez alors transférer le message à partir de celle-ci ! Allez dans Paramètres > Appareils et assurez-vous que vos appareils se sont vérifiés mutuellement. Lorsque vous ouvrirez le salon la fois suivante et que les deux sessions seront au premier plan, les clés seront transmises automatiquement.\n\nVous ne voulez pas perdre les clés en vous déconnectant ou en changeant d'appareil ? Assurez-vous que vous avez activé la sauvegarde de la discussion dans les paramètres.",
     "@noKeyForThisMessage": {},
+    "allSpaces": "Tous les espaces",
+    "@allSpaces": {},
     "commandHint_markasdm": "Marquer comme salon de messages directs pour l'identifiant Matrix indiqué",
     "@commandHint_markasdm": {},
     "commandHint_markasgroup": "Marquer comme groupe",
@@ -2662,6 +2722,14 @@
     "@chatPermissionsDescription": {},
     "changeGeneralChatSettings": "Modifier les paramètres généraux de la discussion",
     "@changeGeneralChatSettings": {},
+    "invitedBy": "📩 Invitation par {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "moderatorLevel": "{level} — Modération",
     "@moderatorLevel": {
         "type": "String",
@@ -2794,6 +2862,7 @@
     "doesNotSeemToBeAValidHomeserver": "Il ne semble pas s'agir d'un serveur principal compatible. Mauvaise URL ?",
     "noticeChatBackupDeviceVerification": "Remarque : lorsque vous connectez tous vos appareils à la sauvegarde de chat, ils sont automatiquement vérifiés.",
     "continueText": "Continuer",
+    "welcomeText": "Hé Hé 👋 C'est FluffyChat. Vous pouvez vous connecter à n'importe quel serveur domestique, compatible avec https://matrix.org. Et ensuite discuter avec n'importe qui. C'est un réseau de messagerie décentralisé énorme !",
     "blur": "Flou :",
     "opacity": "Opacité :",
     "setWallpaper": "Définir le fond d'écran",
@@ -3963,6 +4032,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -10529,6 +10602,7 @@
     "spaceMemberOf": "Membre de l'espace {spaces}",
     "spaceMemberOfCanKnock": "Membre de l'espace {spaces} peut frapper",
     "donate": "Faire un don",
+    "startedAPoll": "{username} a lancé un sondage.",
     "poll": "Sondage",
     "startPoll": "Démarrer le sondage",
     "endPoll": "Mettre fin au sondage",
@@ -10637,6 +10711,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

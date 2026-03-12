@@ -370,11 +370,35 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "Pinalitan ni {username} ang deskripsyon ng chat sa: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheProfileAvatar": "Pinalitan ni {username} ang kanilang avatar",
     "@changedTheProfileAvatar": {
         "type": "String",
         "placeholders": {
             "username": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "Pinalitan ni {username} ang pangalan ng chat sa: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
                 "type": "String"
             }
         }
@@ -821,6 +845,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Mga emote pack para sa room",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Mga Setting ng Emote",
     "@emoteSettings": {
         "type": "String",
@@ -845,6 +874,11 @@
                 "type": "String"
             }
         }
+    },
+    "fileName": "Pangalan ng file",
+    "@fileName": {
+        "type": "String",
+        "placeholders": {}
     },
     "fluffychat": "FluffyChat",
     "@fluffychat": {
@@ -997,6 +1031,7 @@
     "messagesStyle": "Mga mensahe:",
     "moderator": "Tagapangasiwa",
     "muteChat": "I-mute ang chat",
+    "needPantalaimonWarning": "Mangyaring maging maalam na kailangan mo ang Pantalaimon upang magamit ang end-to-end encryption sa ngayon.",
     "newChat": "Bagong chat",
     "newMessageInFluffyChat": "💬 Bagong mensahe sa FluffyChat",
     "newVerificationRequest": "Bagong kahilingan sa beripikasyon!",
@@ -1060,7 +1095,9 @@
     "pleaseFollowInstructionsOnWeb": "Mangyaring sundin ang mga tagubilin sa website at i-tap ang susunod.",
     "privacy": "Pribadong buhay",
     "publicRooms": "Mga pampublikong kwarto",
+    "pushRules": "Mga patakaran sa push",
     "reason": "Dahilan",
+    "recording": "Pagre-record",
     "redactedBy": "Binura ni {username}",
     "directChat": "Direktang usapan",
     "redactedByBecause": "Inalis ni {username} dahil sa: \"{reason}\"",
@@ -1070,6 +1107,7 @@
     "reject": "Tanggihan",
     "rejectedTheInvitation": "Tinanggihan ni {username} ang imbitasyon",
     "removeAllOtherDevices": "Tanggalin ang lahat ng iba pang device",
+    "removedBy": "Inalis ni {username}",
     "removeDevice": "Tanggalin ang device",
     "unbanFromChat": "Alisin sa ban mula sa chat",
     "removeYourAvatar": "Tanggalin ang iyong avatar",
@@ -1209,6 +1247,7 @@
     "youBannedUser": "Binansagan mo si {user}",
     "youHaveWithdrawnTheInvitationFor": "Kinansela mo ang paanyaya para kay {user}",
     "youInvitedBy": "📩 Naimbitahan ka ni {user}",
+    "invitedBy": "📩 Inimbitahan ni {user}",
     "youInvitedUser": "📩 Inimbitahan mo si {user}",
     "youKicked": "👞 Inalis mo si {user}",
     "youKickedAndBanned": "🙅‍♀️ Inalis at binansagan mo si {user}",
@@ -1235,6 +1274,7 @@
     "newGroup": "Bagong grupo",
     "newSpace": "Bagong espasyo",
     "enterSpace": "Pumasok sa espasyo",
+    "allSpaces": "Lahat ng espasyo",
     "hidePresences": "Itago ang Listahan ng Status?",
     "doNotShowAgain": "Huwag na ipakita muli",
     "wasDirectChatDisplayName": "Puwang na usapan (dating {oldDisplayName})",
@@ -1364,6 +1404,7 @@
     "oneOfYourDevicesIsNotVerified": "Isa sa iyong mga device ay hindi na-verify",
     "noticeChatBackupDeviceVerification": "Tandaan: Kapag ikinonekta mo ang lahat ng iyong device sa chat backup, awtomatiko silang na-verify.",
     "continueText": "Magpatuloy",
+    "welcomeText": "Hey Hey 👋 Ito ang FluffyChat. Maaari kang mag-sign in sa kahit anong homeserver, na compatible sa https://matrix.org. At pagkatapos ay makipag-chat sa kahit sino. Ito ay isang malaking decentralized messaging network!",
     "blur": "Blur:",
     "opacity": "Opacity:",
     "setWallpaper": "Itakda ang wallpaper",
@@ -2830,6 +2871,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@newChat": {
         "type": "String",
         "placeholders": {}
@@ -3097,7 +3142,15 @@
         "type": "String",
         "placeholders": {}
     },
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -3155,6 +3208,14 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@removeDevice": {
         "type": "String",
@@ -3815,6 +3876,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@youInvitedUser": {
         "type": "String",
         "placeholders": {
@@ -3940,6 +4009,10 @@
         "placeholders": {}
     },
     "@enterSpace": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@allSpaces": {
         "type": "String",
         "placeholders": {}
     },
@@ -4558,6 +4631,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -11128,6 +11205,7 @@
     "spaceMemberOf": "Kabilang sa espasyo ng {spaces}",
     "spaceMemberOfCanKnock": "Kabilang sa espasyo ng {spaces} ay maaaring kumatok",
     "donate": "Mag-donate",
+    "startedAPoll": "Nagsimula ng isang poll si {username}.",
     "poll": "Poll",
     "startPoll": "Magsimula ng poll",
     "endPoll": "Tapusin ang botohan",
@@ -11242,6 +11320,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

@@ -72,6 +72,8 @@
     "cantOpenUri": "URI {uri} ను తెరవలేరు",
     "changeDeviceName": "పరికరం పేరును మార్చండి",
     "changedTheChatAvatar": "{username} చాట్ అవతార్ మార్చారు",
+    "changedTheChatDescriptionTo": "{username} చాట్ వివరణను మార్చారు: '{description}'",
+    "changedTheChatNameTo": "{username} చాట్ పేరును మార్చారు: '{chatname}'",
     "changedTheChatPermissions": "{username} చాట్ అనుమతులను మార్చారు",
     "changedTheDisplaynameTo": "{username} వారి ప్రదర్శన పేరును మార్చారు: '{displayname}'",
     "changedTheGuestAccessRules": "{username} అతిథి ప్రవేశ నియమాలను మార్చారు",
@@ -161,6 +163,7 @@
     "emoteExists": "ఇమోట్ ఇప్పటికే ఉంది!",
     "emoteInvalid": "చెల్లని ఇమోట్ షార్ట్‌కోడ్!",
     "emoteKeyboardNoRecents": "ఇటీవల ఉపయోగించిన ఎమోట్స్ ఇక్కడ కనిపిస్తాయి...",
+    "emotePacks": "గదికి ఎమోట్స్ ప్యాక్స్",
     "emoteSettings": "ఎమోట్స్ సెట్టింగ్స్",
     "globalChatId": "గ్లోబల్ చాట్ ID",
     "accessAndVisibility": "ప్రవేశం మరియు దృశ్యమానత",
@@ -182,6 +185,7 @@
     "errorObtainingLocation": "స్థానం పొందడంలో లోపం: {error}",
     "everythingReady": "అన్నీ సిద్ధంగా ఉన్నాయి!",
     "extremeOffensive": "అత్యంత దుర్వినియోగకరమైనది",
+    "fileName": "ఫైల్ పేరు",
     "fluffychat": "ఫ్లఫీచాట్",
     "fontSize": "అక్షర పరిమాణం",
     "forward": "ముందుకు పంపండి",
@@ -249,6 +253,7 @@
     "messagesStyle": "సందేశాలు:",
     "moderator": "మాడరేటర్",
     "muteChat": "చాట్ మ్యూట్ చేయండి",
+    "needPantalaimonWarning": "ఇప్పటికే ఎండ్-టూ-ఎండ్ ఎన్‌క్రిప్షన్ కోసం మీరు పంటలైమోన్ అవసరం అని దయచేసి జాగ్రత్తగా ఉండండి.",
     "newChat": "కొత్త చాట్",
     "newMessageInFluffyChat": "💬 ఫ్లఫీచాట్‌లో కొత్త సందేశం",
     "newVerificationRequest": "కొత్త ధృవీకరణ అభ్యర్థన!",
@@ -312,7 +317,9 @@
     "pleaseFollowInstructionsOnWeb": "దయచేసి వెబ్‌సైట్‌పై సూచనలను అనుసరించండి మరియు తదుపరి పై ట్యాప్ చేయండి.",
     "privacy": "గోప్యత",
     "publicRooms": "జనసామాన గదులు",
+    "pushRules": "పుష్ నియమాలు",
     "reason": "కారణం",
+    "recording": "రికార్డింగ్",
     "redactedBy": "{username} ద్వారా తొలగించబడింది",
     "directChat": "నేరుగా చాట్",
     "redactedByBecause": "{username} ద్వారా తొలగించబడింది ఎందుకంటే: \"{reason}\"",
@@ -322,6 +329,7 @@
     "reject": "నిరాకరించండి",
     "rejectedTheInvitation": "{username} ఆహ్వానాన్ని తిరస్కరించారు",
     "removeAllOtherDevices": "అన్ని ఇతర పరికరాలను తొలగించండి",
+    "removedBy": "{username} ద్వారా తొలగించబడింది",
     "removeDevice": "పరికరాన్ని తొలగించండి",
     "unbanFromChat": "చాట్ నుండి బాన్ను తీసివేయండి",
     "removeYourAvatar": "మీ అవతారాన్ని తొలగించండి",
@@ -461,6 +469,7 @@
     "youBannedUser": "మీరు {user} ను నిషేధించారు",
     "youHaveWithdrawnTheInvitationFor": "మీరు {user} కోసం ఆహ్వానాన్ని ఉపసంహరించారు",
     "youInvitedBy": "📩 మీరు {user} చేత ఆహ్వానించబడ్డారు",
+    "invitedBy": "📩 {user} చేత ఆహ్వానించబడింది",
     "youInvitedUser": "📩 మీరు {user} ను ఆహ్వానించారు",
     "youKicked": "👞 మీరు {user} ను తొలగించారు",
     "youKickedAndBanned": "🙅 మీరు {user} ను తొలగించి నిషేధించారు",
@@ -487,6 +496,7 @@
     "newGroup": "కొత్త గ్రూప్",
     "newSpace": "కొత్త స్పేస్",
     "enterSpace": "స్పేస్‌లో ప్రవేశించండి",
+    "allSpaces": "అన్ని స్పేసులు",
     "hidePresences": "స్థితి జాబితాను దాచాలా?",
     "doNotShowAgain": "మళ్లీ చూపించవద్దు",
     "wasDirectChatDisplayName": "ఖాళీ చాట్ (పూర్వపు {oldDisplayName})",
@@ -616,6 +626,7 @@
     "oneOfYourDevicesIsNotVerified": "మీ డివైస్‌లలో ఒకటి నిర్ధారించబడలేదు",
     "noticeChatBackupDeviceVerification": "గమనిక: మీరు మీ అన్ని డివైస్‌లను చాట్ బ్యాకప్‌కు కనెక్ట్ చేసినప్పుడు, అవి ఆటోమేటిక్‌గా నిర్ధారించబడతాయి.",
     "continueText": "కొనసాగించండి",
+    "welcomeText": "హే హే 👋 ఇది ఫ్లఫీచాట్. మీరు ఏ హోమ్‌సర్వర్‌తోనైనా సైన్ ఇన్ చేయవచ్చు, ఇది https://matrix.org తో అనుకూలంగా ఉంటుంది. తరువాత ఎవరితోనైనా చాట్ చేయండి. ఇది ఒక పెద్ద డీసెంట్రలైజ్డ్ మెసేజింగ్ నెట్‌వర్క్!",
     "blur": "ధూదం:",
     "opacity": "అపారదర్శకత:",
     "setWallpaper": "వాల్‌పేపర్‌ను సెట్ చేయండి",
@@ -2065,6 +2076,28 @@
             }
         }
     },
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "@changedTheChatPermissions": {
         "type": "String",
         "placeholders": {
@@ -2504,6 +2537,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@emoteSettings": {
         "type": "String",
         "placeholders": {}
@@ -2593,6 +2630,10 @@
         "placeholders": {}
     },
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -2923,6 +2964,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@newChat": {
         "type": "String",
         "placeholders": {}
@@ -3190,7 +3235,15 @@
         "type": "String",
         "placeholders": {}
     },
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -3248,6 +3301,14 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@removeDevice": {
         "type": "String",
@@ -3908,6 +3969,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@youInvitedUser": {
         "type": "String",
         "placeholders": {
@@ -4033,6 +4102,10 @@
         "placeholders": {}
     },
     "@enterSpace": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@allSpaces": {
         "type": "String",
         "placeholders": {}
     },
@@ -4651,6 +4724,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -11235,6 +11312,7 @@
     "spaceMemberOf": "{spaces} స్థలానికి సభ్యుడు",
     "spaceMemberOfCanKnock": "{spaces} స్థలానికి సభ్యుడు తట్టుకోవచ్చు",
     "donate": "దానం చేయండి",
+    "startedAPoll": "{username} ఓటు ప్రారంభించారు.",
     "poll": "ఓటు",
     "startPoll": "ఓటు ప్రారంభించండి",
     "endPoll": "ఘటన ముగించు",
@@ -11349,6 +11427,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

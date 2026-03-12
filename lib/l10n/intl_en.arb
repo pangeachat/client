@@ -295,7 +295,31 @@
         }
     },
     "changedTheChatDescription": "{username} changed the chat description",
+    "changedTheChatDescriptionTo": "{username} changed the chat description to: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatName": "{username} changed the chat name",
+    "changedTheChatNameTo": "{username} changed the chat name to: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} changed the chat permissions",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -803,6 +827,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Emote packs for room",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Emote Settings",
     "@emoteSettings": {
         "type": "String",
@@ -892,6 +921,11 @@
     },
     "extremeOffensive": "Extremely offensive",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "File name",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1235,6 +1269,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Please be aware that you need Pantalaimon to use end-to-end encryption for now.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "New chat",
     "@newChat": {
         "type": "String",
@@ -1523,8 +1562,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Push rules",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Reason",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Recording",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1588,6 +1637,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Removed by {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Remove device",
     "@removeDevice": {
@@ -2267,6 +2325,14 @@
             }
         }
     },
+    "invitedBy": "📩 Invited by {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "youInvitedUser": "📩 You invited {user}",
     "@youInvitedUser": {
         "placeholders": {
@@ -2355,6 +2421,8 @@
     "@newSpace": {},
     "enterSpace": "Enter space",
     "@enterSpace": {},
+    "allSpaces": "All spaces",
+    "@allSpaces": {},
     "hidePresences": "Hide Status List?",
     "@hidePresences": {},
     "doNotShowAgain": "Do not show again",
@@ -2785,6 +2853,8 @@
     "@noticeChatBackupDeviceVerification": {},
     "continueText": "Continue",
     "@continueText": {},
+    "welcomeText": "Hey Hey 👋 This is FluffyChat. You can sign in to any homeserver, which is compatible with https://matrix.org. And then chat with anyone. It's a huge decentralized messaging network!",
+    "@welcomeText": {},
     "blur": "Blur:",
     "@blur": {},
     "opacity": "Opacity:",
@@ -3038,6 +3108,15 @@
         }
     },
     "donate": "Donate",
+    "startedAPoll": "{username} started a poll.",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "poll": "Poll",
     "startPoll": "Start poll",
     "endPoll": "End poll",

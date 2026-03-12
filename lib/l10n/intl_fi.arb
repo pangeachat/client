@@ -184,6 +184,18 @@
             }
         }
     },
+    "changedTheChatNameTo": "{username} asetti keskustelun nimeksi: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheDisplaynameTo": "{username} asetti näyttönimekseen: '{displayname}'",
     "@changedTheDisplaynameTo": {
         "type": "String",
@@ -296,6 +308,18 @@
         "type": "String",
         "placeholders": {
             "uri": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatDescriptionTo": "{username} asetti keskustelun kuvaukseksi: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
                 "type": "String"
             }
         }
@@ -517,6 +541,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Huoneen emote-paketit",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Emote-asetukset",
     "@emoteSettings": {
         "type": "String",
@@ -574,6 +603,11 @@
     },
     "extremeOffensive": "Erittäin loukkaavaa",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Tiedostonimi",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1153,6 +1187,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Tiedäthän tarvitsevasi toistaiseksi Pantalaimonin käyttääksesi päästä-päähän-salausta.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "noEmotesFound": "Emoteja ei löytynyt. 😕",
     "@noEmotesFound": {
         "type": "String",
@@ -1301,6 +1340,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "recording": "Tallenne",
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
+    },
     "redactedAnEvent": "{username} poisti tapahtuman",
     "@redactedAnEvent": {
         "type": "String",
@@ -1343,6 +1387,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Poistanut {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Poista laite",
     "@removeDevice": {
@@ -1795,6 +1848,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Push-säännöt",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Syy",
     "@reason": {
         "type": "String",
@@ -2142,6 +2200,8 @@
     "@newSpace": {},
     "enterSpace": "Siirry tilaan",
     "@enterSpace": {},
+    "allSpaces": "Kaikki tilat",
+    "@allSpaces": {},
     "screenSharingTitle": "ruudunjako",
     "@screenSharingTitle": {},
     "newGroup": "Uusi ryhmä",
@@ -2366,6 +2426,8 @@
     "@changelog": {},
     "continueText": "Jatka",
     "@continueText": {},
+    "welcomeText": "Hei 👋, Tämä on FluffyChat. Voit kirjautua sisään mihin tahansa kotipalvelimeen, joka on yhteensopiva https:/matrix.org:in kanssa. Sitten jutellaan kenen kanssa tahansa. Se on hajautettu viestiverkosto!",
+    "@welcomeText": {},
     "serverInformation": "Palvelimen tiedot:",
     "@serverInformation": {},
     "name": "Nimi",
@@ -2475,6 +2537,14 @@
         "type": "String",
         "placeholders": {
             "percentage": {
+                "type": "String"
+            }
+        }
+    },
+    "invitedBy": "📩 Kutsujana {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
                 "type": "String"
             }
         }
@@ -3048,6 +3118,15 @@
     },
     "donate": "Lahjoita",
     "@donate": {},
+    "startedAPoll": "{username} aloitti kyselyn.",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "startPoll": "Aloita kysely",
     "@startPoll": {},
     "endPoll": "Lopeta kysely",

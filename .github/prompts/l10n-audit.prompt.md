@@ -9,6 +9,7 @@ You are a localization maintenance agent for a Flutter app. Your job is to (1) r
 - All ARB files must remain valid JSON after every edit.
 - Preserve `@@locale` and `@@last_modified` metadata entries.
 - When translating, preserve ICU placeholders (`{name}`, `{count, plural, ...}`, `{type, select, ...}`) exactly as they appear in the English value. Never translate placeholder names.
+- **Never remove keys that exist in FluffyChat upstream** (`upstream/main:lib/l10n/intl_en.arb`). This app is a fork of FluffyChat, and removing upstream keys causes merge conflicts on future upstream merges. Only remove keys that are Pangea-only additions.
 
 ---
 
@@ -63,13 +64,48 @@ PYEOF
 
 Write the result to `.workspace/unused-keys.json`.
 
-### Step 1.3 — Validate the unused list
+### Step 1.3 — Exclude FluffyChat upstream keys
+
+This app is a fork of `krille-chan/fluffychat`. Keys that exist in FluffyChat's upstream `intl_en.arb` must be kept even if unused in Pangea code, to avoid merge conflicts on future upstream merges.
+
+```sh
+python3 << 'PYEOF'
+import json, subprocess
+
+# Fetch upstream if not already available
+subprocess.run(['git', 'fetch', 'upstream', 'main'], capture_output=True)
+
+# Load upstream FluffyChat keys
+upstream_en = subprocess.run(
+    ['git', 'show', 'upstream/main:lib/l10n/intl_en.arb'],
+    capture_output=True, text=True
+)
+upstream_keys = set(k for k in json.loads(upstream_en.stdout) if not k.startswith('@'))
+
+# Load unused keys from previous step
+unused = json.load(open('.workspace/unused-keys.json'))
+
+# Filter: only remove keys NOT in upstream
+pangea_only_unused = [k for k in unused if k not in upstream_keys]
+upstream_kept = [k for k in unused if k in upstream_keys]
+
+print(f'Unused keys: {len(unused)}')
+print(f'Kept (FluffyChat upstream): {len(upstream_kept)}')
+print(f'Safe to remove (Pangea-only): {len(pangea_only_unused)}')
+if upstream_kept:
+    print(f'Upstream keys preserved: {", ".join(sorted(upstream_kept))}')
+
+json.dump(sorted(pangea_only_unused), open('.workspace/unused-keys.json', 'w'), indent=2)
+PYEOF
+```
+
+### Step 1.4 — Validate the unused list
 
 Before removing anything, **spot-check 5-10 keys** from the unused list by grepping for them individually to confirm they truly have zero references outside `lib/l10n/`. Report the spot-check results.
 
 If any key turns out to be used, remove it from the unused list and investigate whether the scan missed a usage pattern. Adjust the scan and re-run if needed.
 
-### Step 1.4 — Remove unused keys from all ARB files
+### Step 1.5 — Remove unused keys from all ARB files
 
 For each key in the validated unused list:
 1. Remove the key entry from `intl_en.arb`
@@ -78,7 +114,7 @@ For each key in the validated unused list:
 
 Write a summary to `.workspace/removed-keys-report.md` listing how many keys were removed total and per file.
 
-### Step 1.5 — Remove orphaned locale keys
+### Step 1.6 — Remove orphaned locale keys
 
 For each non-English `intl_*.arb` file, remove any key (and its `@key` metadata) that does NOT exist in the updated `intl_en.arb`. These are orphaned keys that were removed from English but left behind in other locales.
 

@@ -242,6 +242,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "fileName": "Nama file",
+    "@fileName": {
+        "type": "String",
+        "placeholders": {}
+    },
     "everythingReady": "Semua siap!",
     "@everythingReady": {
         "type": "String",
@@ -293,6 +298,11 @@
     },
     "emoteSettings": "Pengaturan Emote",
     "@emoteSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emotePacks": "Paket emote untuk ruangan",
+    "@emotePacks": {
         "type": "String",
         "placeholders": {}
     },
@@ -577,6 +587,30 @@
         "type": "String",
         "placeholders": {
             "username": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} mengubah nama obrolan ke: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatDescriptionTo": "{username} mengubah deskripsi obrolan ke: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
                 "type": "String"
             }
         }
@@ -888,6 +922,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Perlu diketahui bahwa kamu memerlukan Pantalaimon untuk menggunakan enkripsi ujung-ke-ujung untuk saat ini.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "muteChat": "Bisukan obrolan",
     "@muteChat": {
         "type": "String",
@@ -963,6 +1002,11 @@
     },
     "register": "Daftar",
     "@register": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pushRules": "Aturan push",
+    "@pushRules": {
         "type": "String",
         "placeholders": {}
     },
@@ -1864,8 +1908,22 @@
         "type": "String",
         "placeholders": {}
     },
+    "removedBy": "Dihapus oleh {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "removeAllOtherDevices": "Hapus semua perangkat lain",
     "@removeAllOtherDevices": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Merekam",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -2147,6 +2205,8 @@
     "@newSpace": {},
     "enterSpace": "Masuk space",
     "@enterSpace": {},
+    "allSpaces": "Semua space",
+    "@allSpaces": {},
     "screenSharingDetail": "Kamu membagikan layarmu di FluffyChat",
     "@screenSharingDetail": {},
     "doNotShowAgain": "Jangan tampilkan lagi",
@@ -2622,6 +2682,14 @@
     "@sendCanceled": {},
     "noChatsFoundHere": "Belum ada chat di sini. Mulai chat baru dengan seseorang menggunakan tombol di bawah. ⤵️",
     "@noChatsFoundHere": {},
+    "invitedBy": "📩 Diundang oleh {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "markAsUnread": "Tandai sebagai belum dibaca",
     "@markAsUnread": {},
     "goToSpace": "Pergi ke space: {space}",
@@ -2738,6 +2806,8 @@
     "@oneOfYourDevicesIsNotVerified": {},
     "noticeChatBackupDeviceVerification": "Catatan: Ketika Anda menghubungkan semua perangkat Anda ke cadangan chat, mereka akan diverifikasi secara otomatis.",
     "@noticeChatBackupDeviceVerification": {},
+    "welcomeText": "Halo 👋 Ini FluffyChat. Kamu bisa masuk ke homeserver mana pun, yang kompatibel dengan https://matrix.org. Lalu, chat dengan siapa pun. Ini merupakan jaringan perpesanan besar yang terdesentralisasi!",
+    "@welcomeText": {},
     "continueText": "Lanjutkan",
     "@continueText": {},
     "aboutHomeserver": "Tentang {homeserver}",
@@ -10242,6 +10312,7 @@
     "spaceMemberOf": "Anggota ruang {spaces}",
     "spaceMemberOfCanKnock": "Anggota ruang {spaces} dapat mengetuk",
     "donate": "Donasi",
+    "startedAPoll": "{username} memulai sebuah jajak pendapat.",
     "poll": "Jajak pendapat",
     "startPoll": "Mulai jajak pendapat",
     "endPoll": "Akhiri jajak pendapat",
@@ -10332,6 +10403,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

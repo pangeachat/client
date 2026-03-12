@@ -128,6 +128,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username}(e)k txataren deskribapena aldatu du: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username}(e)k txataren izena '{chatname}'(e)ra aldatu du",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username}(e)k txataren baimenak aldatu ditu",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -452,6 +476,11 @@
             }
         }
     },
+    "fileName": "Fitxategiaren izena",
+    "@fileName": {
+        "type": "String",
+        "placeholders": {}
+    },
     "fluffychat": "FluffyChat",
     "@fluffychat": {
         "type": "String",
@@ -701,6 +730,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Kontuan izan oraingoz Pantalaimon behar duzula ertzetik ertzerako zifratzerako.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newMessageInFluffyChat": "💬 Mezu berria FluffyChaten",
     "@newMessageInFluffyChat": {
         "type": "String",
@@ -810,6 +844,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "recording": "Grabatzen",
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
+    },
     "redactedAnEvent": "{username}(e)k gertaera bat atzera bota du",
     "@redactedAnEvent": {
         "type": "String",
@@ -842,6 +881,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "{username}(e)k kendu du",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Kendu gailua",
     "@removeDevice": {
@@ -1647,6 +1695,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Push arauak",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "pleaseEnter4Digits": "Sartu lau zenbaki edo utzi hutsik aplikazioa babestu nahi ez baduzu.",
     "@pleaseEnter4Digits": {
         "type": "String",
@@ -1763,6 +1816,11 @@
     },
     "deviceId": "Gailuaren IDa",
     "@deviceId": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emotePacks": "Gelarako emote-sortak",
+    "@emotePacks": {
         "type": "String",
         "placeholders": {}
     },
@@ -2125,6 +2183,8 @@
     "@newSpace": {},
     "whyIsThisMessageEncrypted": "Zergatik ezin da mezu hau irakurri?",
     "@whyIsThisMessageEncrypted": {},
+    "allSpaces": "Gune guztiak",
+    "@allSpaces": {},
     "newGroup": "Talde berria",
     "@newGroup": {},
     "enterSpace": "Sartu gunera",
@@ -2677,6 +2737,14 @@
     "@changeTheVisibilityOfChatHistory": {},
     "changeTheCanonicalRoomAlias": "Aldatu txataren helbide publiko nagusia",
     "@changeTheCanonicalRoomAlias": {},
+    "invitedBy": "📩 {user}(e)k gonbidatua",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "updateInstalled": "🎉 {version} bertsioa instalatu da!",
     "@updateInstalled": {
         "type": "String",
@@ -2749,6 +2817,8 @@
     "@blur": {},
     "continueText": "Jarraitu",
     "@continueText": {},
+    "welcomeText": "Ieup 👋 Ongi etorri FluffyChat-era. https://matrix.org-rekin bateragarria den edozein zerbitzaritan hasi dezakezu saioa eta edonorekin txateatu. Mezularitza-sare deszentralizatu eraraldoia da!",
+    "@welcomeText": {},
     "contactServerAdmin": "Jarri harremanetan zerbitzariaren administratzailearekin",
     "@contactServerAdmin": {},
     "aboutHomeserver": "{homeserver}(e)ri buruz",
@@ -3046,6 +3116,15 @@
         "type": "String",
         "placeholders": {
             "spaces": {
+                "type": "String"
+            }
+        }
+    },
+    "startedAPoll": "{username}(e)k bozketa hasi du.",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
                 "type": "String"
             }
         }

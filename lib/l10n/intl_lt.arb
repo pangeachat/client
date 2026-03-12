@@ -39,6 +39,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "fileName": "Failo vardas",
+    "@fileName": {
+        "type": "String",
+        "placeholders": {}
+    },
     "changePassword": "Keisti slaptažodį",
     "@changePassword": {
         "type": "String",
@@ -345,6 +350,11 @@
     },
     "reason": "Priežastis",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Įrašymas",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1222,6 +1232,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Atminkite, kad norint naudoti end-to-end šifravimą, reikalingas Pantalaimon.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "noEncryptionForPublicRooms": "Šifravimą galite suaktyvinti tik tada, kai kambarys nebebus viešai pasiekiamas.",
     "@noEncryptionForPublicRooms": {
         "type": "String",
@@ -1289,6 +1304,15 @@
     },
     "rejectedTheInvitation": "{username} atmetė kvietimą",
     "@rejectedTheInvitation": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
+    "removedBy": "Pašalino vartotojas {username}",
+    "@removedBy": {
         "type": "String",
         "placeholders": {
             "username": {
@@ -1623,6 +1647,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Jaustukų paketai kambariui",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Jaustukų nustatymai",
     "@emoteSettings": {
         "type": "String",
@@ -1789,6 +1818,30 @@
         "type": "String",
         "placeholders": {
             "username": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatDescriptionTo": "{username} pakeitė pokalbio aprašymą į: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} pakeitė pokalbio pavadinimą į: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
                 "type": "String"
             }
         }
@@ -2052,6 +2105,11 @@
     },
     "markAsRead": "Žymėti kaip skaitytą",
     "@markAsRead": {},
+    "pushRules": "Tiesioginių pranešimų taisyklės",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "unreadChats": "{unreadCount, plural, =1{1 unread chat} other{{unreadCount} neperskaityti pokalbiai}}",
     "@unreadChats": {
         "type": "String",
@@ -2091,6 +2149,8 @@
     "@newSpace": {},
     "enterSpace": "Įeiti į erdvę",
     "@enterSpace": {},
+    "allSpaces": "Visos erdvės",
+    "@allSpaces": {},
     "user": "Vartotojas",
     "@user": {},
     "custom": "Pasirinktinis",
@@ -2212,6 +2272,7 @@
     "setChatDescription": "Nustatyti pokalbio aprašymą",
     "presencesToggle": "Rodyti būsenos žinutes iš kitų vartotojų",
     "synchronizingPleaseWaitCounter": "Sinchronizuojama… ({percentage}%)",
+    "invitedBy": "📩 Pakvietė {user}",
     "hasKnocked": "🚪 {user} pasibeldė",
     "usersMustKnock": "Vartotojai turi pasibeldži",
     "noOneCanJoin": "Niekas negali prisijungti",
@@ -2345,6 +2406,7 @@
     "oneOfYourDevicesIsNotVerified": "Vienas iš jūsų įrenginių nėra patvirtintas",
     "noticeChatBackupDeviceVerification": "Pastaba: Kai prijungiate visus savo įrenginius prie pokalbių atsarginės kopijos, jie automatiškai patvirtinami.",
     "continueText": "Tęsti",
+    "welcomeText": "Sveiki Sveiki 👋 Tai yra FluffyChat. Jūs galite prisijungti prie bet kurio namų serverio, kuris yra suderinamas su https://matrix.org. Ir tada kalbėtis su bet kuo. Tai didelė decentralizuota žinučių tinklas!",
     "blur": "Išsklaidymas:",
     "opacity": " Skaidrumas:",
     "setWallpaper": "Nustatyti foną",
@@ -3789,6 +3851,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@hasKnocked": {
         "type": "String",
         "placeholders": {
@@ -4424,6 +4494,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -11003,6 +11077,7 @@
     "spaceMemberOf": "Erdvės narys {spaces}",
     "spaceMemberOfCanKnock": "Erdvės narys {spaces} gali pasibeldti",
     "donate": "Aukoti",
+    "startedAPoll": "{username} pradėjo apklausą.",
     "poll": "Apklausa",
     "startPoll": "Pradėti apklausą",
     "endPoll": "Baigti apklausą",
@@ -11117,6 +11192,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

@@ -341,6 +341,7 @@
         "type": "String",
         "placeholders": {}
     },
+    "@allSpaces": {},
     "@supposedMxid": {
         "type": "String",
         "placeholders": {
@@ -451,6 +452,17 @@
         "placeholders": {}
     },
     "@removeDevicesDescription": {},
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
     "@countParticipants": {
         "type": "String",
         "placeholders": {
@@ -553,6 +565,10 @@
     },
     "@enterSpace": {},
     "@encryptThisChat": {},
+    "@fileName": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@unavailable": {
         "type": "String",
         "placeholders": {}
@@ -731,6 +747,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@makeAdminDescription": {},
     "@loadMore": {
         "type": "String",
@@ -749,6 +769,10 @@
         "placeholders": {}
     },
     "@passwordHasBeenChanged": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pushRules": {
         "type": "String",
         "placeholders": {}
     },
@@ -956,6 +980,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@changedTheChatPermissions": {
         "type": "String",
         "placeholders": {
@@ -1026,6 +1054,17 @@
     },
     "@archiveRoomDescription": {},
     "@exportEmotePack": {},
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "@commandInvalid": {
         "type": "String"
     },
@@ -1040,6 +1079,14 @@
     "@locationDisabledNotice": {
         "type": "String",
         "placeholders": {}
+    },
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@changedTheRoomInvitationLink": {
         "type": "String",
@@ -1853,6 +1900,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@endedTheCall": {
         "type": "String",
         "placeholders": {
@@ -1959,6 +2010,8 @@
     "cantOpenUri": "URI {uri} খোলা যাচ্ছে না",
     "changeDeviceName": "ডিভাইসের নাম পরিবর্তন করুন",
     "changedTheChatAvatar": "{username} চ্যাটের অ্যাভাটার পরিবর্তন করেছেন",
+    "changedTheChatDescriptionTo": "{username} চ্যাটের বিবরণ পরিবর্তন করেছেন: '{description}'",
+    "changedTheChatNameTo": "{username} চ্যাটের নাম পরিবর্তন করেছেন: '{chatname}'",
     "changedTheChatPermissions": "{username} চ্যাটের অনুমতিগুলি পরিবর্তন করেছেন",
     "changedTheDisplaynameTo": "{username} তাদের প্রদর্শন নাম পরিবর্তন করেছেন: '{displayname}'",
     "changedTheGuestAccessRules": "{username} অতিথি প্রবেশের নিয়ম পরিবর্তন করেছেন",
@@ -2038,6 +2091,7 @@
     "emoteExists": "ইমোট ইতিমধ্যে বিদ্যমান!",
     "emoteInvalid": "অবৈধ ইমোট শর্টকোড!",
     "emoteKeyboardNoRecents": "সাম্প্রতিক ব্যবহৃত ইমোটগুলি এখানে দেখাবে...",
+    "emotePacks": "রুমের জন্য ইমোট প্যাক",
     "emoteSettings": "ইমোট সেটিংস",
     "globalChatId": "গ্লোবাল চ্যাট আইডি",
     "accessAndVisibility": "অ্যাক্সেস এবং দৃশ্যমানতা",
@@ -2057,6 +2111,7 @@
     "errorObtainingLocation": "অবস্থান পাওয়ার ত্রুটি: {error}",
     "everythingReady": "সব কিছু প্রস্তুত!",
     "extremeOffensive": "অত্যন্ত আপত্তিজনক",
+    "fileName": "ফাইলের নাম",
     "fontSize": "ফন্টের আকার",
     "fromJoining": "যোগদান থেকে",
     "fromTheInvitation": "নিমন্ত্রণ থেকে",
@@ -2114,6 +2169,7 @@
     "messagesStyle": "বার্তা:",
     "moderator": "মডারেটর",
     "muteChat": "চ্যাট মিউট করুন",
+    "needPantalaimonWarning": "দয়া করে জানুন যে এখনই এন্ড-টু-এন্ড এনক্রিপশনের জন্য আপনাকে Pantalaimon প্রয়োজন।",
     "newChat": "নতুন চ্যাট",
     "newMessageInFluffyChat": "💬 ফ্লাফি চ্যাটে নতুন বার্তা",
     "newVerificationRequest": "নতুন যাচাইকরণ অনুরোধ!",
@@ -2176,7 +2232,9 @@
     "pleaseFollowInstructionsOnWeb": "অনুগ্রহ করে ওয়েবসাইটে নির্দেশনা অনুসরণ করুন এবং পরবর্তী বোতামে ট্যাপ করুন।",
     "privacy": "গোপনীয়তা",
     "publicRooms": "পাবলিক রুম",
+    "pushRules": "পুশ নিয়ম",
     "reason": "কারণ",
+    "recording": "রেকর্ডিং",
     "redactedBy": "{username} দ্বারা সম্পাদিত",
     "directChat": "সরাসরি চ্যাট",
     "redactedByBecause": "{username} দ্বারা সম্পাদিত কারণ: \"{reason}\"",
@@ -2186,6 +2244,7 @@
     "reject": "প্রত্যাখ্যান করুন",
     "rejectedTheInvitation": "{username} আমন্ত্রণ প্রত্যাখ্যান করেছেন",
     "removeAllOtherDevices": "অন্য সব ডিভাইস সরান",
+    "removedBy": "{username} দ্বারা সরানো হয়েছে",
     "removeDevice": "ডিভাইস সরান",
     "unbanFromChat": "চ্যাট থেকে আনব্যান করুন",
     "removeYourAvatar": "আপনার অবতার সরান",
@@ -2325,6 +2384,7 @@
     "youBannedUser": "আপনি {user} কে নিষিদ্ধ করেছেন",
     "youHaveWithdrawnTheInvitationFor": "আপনি {user} এর জন্য আমন্ত্রণ প্রত্যাহার করেছেন",
     "youInvitedBy": "📩 আপনি {user} দ্বারা আমন্ত্রিত হয়েছেন",
+    "invitedBy": "📩 {user} দ্বারা আমন্ত্রিত",
     "youInvitedUser": "📩 আপনি {user} কে আমন্ত্রণ জানিয়েছেন",
     "youKicked": "👞 আপনি {user} কে বহিষ্কার করেছেন",
     "youKickedAndBanned": "🙅 আপনি {user} কে বহিষ্কার ও নিষিদ্ধ করেছেন",
@@ -2351,6 +2411,7 @@
     "newGroup": "নতুন গ্রুপ",
     "newSpace": "নতুন স্পেস",
     "enterSpace": "স্পেসে প্রবেশ করুন",
+    "allSpaces": "সব স্পেস",
     "hidePresences": "স্ট্যাটাস তালিকা লুকান?",
     "doNotShowAgain": "আবার দেখাবেন না",
     "wasDirectChatDisplayName": "খালি চ্যাট (পূর্বে {oldDisplayName})",
@@ -2480,6 +2541,7 @@
     "oneOfYourDevicesIsNotVerified": "আপনার ডিভাইসের একটি যাচাই হয়নি",
     "noticeChatBackupDeviceVerification": "নোট: যখন আপনি আপনার সমস্ত ডিভাইস চ্যাট ব্যাকআপের সাথে সংযুক্ত করবেন, তারা স্বয়ংক্রিয়ভাবে যাচাই হয়।",
     "continueText": "চালিয়ে যান",
+    "welcomeText": "হেই হেই 👋 এটি ফ্লাফি চ্যাট। আপনি যে কোনও হোমসার্ভারে সাইন ইন করতে পারেন, যা https://matrix.org এর সাথে সামঞ্জস্যপূর্ণ। এবং তারপর যে কোনও ব্যক্তির সাথে চ্যাট করুন। এটি একটি বিশাল বিকেন্দ্রীকৃত বার্তা প্রেরণ নেটওয়ার্ক!",
     "blur": "ধূসর:",
     "opacity": "অপেক্ষা:",
     "setWallpaper": "ওয়ালপেপার সেট করুন",
@@ -3778,6 +3840,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@usersMustKnock": {
         "type": "String",
         "placeholders": {}
@@ -4253,6 +4323,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -10832,6 +10906,7 @@
     "spaceMemberOf": "{spaces} এর সদস্য",
     "spaceMemberOfCanKnock": "{spaces} এর সদস্যরা নক করতে পারে",
     "donate": "দান করুন",
+    "startedAPoll": "{username} একটি ভোট শুরু করেছে।",
     "poll": "ভোট",
     "startPoll": "ভোট শুরু করুন",
     "endPoll": "পোল শেষ করুন",
@@ -10946,6 +11021,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

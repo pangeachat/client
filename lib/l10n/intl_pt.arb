@@ -330,6 +330,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@allSpaces": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@supposedMxid": {
         "type": "String",
         "placeholders": {
@@ -459,6 +463,17 @@
     "@removeDevicesDescription": {
         "type": "String",
         "placeholders": {}
+    },
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
     },
     "@countParticipants": {
         "type": "String",
@@ -596,6 +611,10 @@
         "placeholders": {}
     },
     "@encryptThisChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -824,6 +843,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@makeAdminDescription": {
         "type": "String",
         "placeholders": {}
@@ -849,6 +872,10 @@
         "placeholders": {}
     },
     "@passwordHasBeenChanged": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pushRules": {
         "type": "String",
         "placeholders": {}
     },
@@ -1110,6 +1137,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@changedTheChatPermissions": {
         "type": "String",
         "placeholders": {
@@ -1204,6 +1235,17 @@
         "type": "String",
         "placeholders": {}
     },
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "@commandInvalid": {
         "type": "String"
     },
@@ -1218,6 +1260,14 @@
     "@locationDisabledNotice": {
         "type": "String",
         "placeholders": {}
+    },
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@changedTheRoomInvitationLink": {
         "type": "String",
@@ -2221,6 +2271,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@endedTheCall": {
         "type": "String",
         "placeholders": {
@@ -2351,6 +2405,8 @@
     "cantOpenUri": "Não é possível abrir o URI {uri}",
     "changeDeviceName": "Alterar nome do dispositivo",
     "changedTheChatAvatar": "{username} alterou o avatar do chat",
+    "changedTheChatDescriptionTo": "{username} alterou a descrição do chat para: '{description}'",
+    "changedTheChatNameTo": "{username} alterou o nome do chat para: '{chatname}'",
     "changedTheChatPermissions": "{username} alterou as permissões do chat",
     "changedTheDisplaynameTo": "{username} alterou seu nome de exibição para: '{displayname}'",
     "changedTheGuestAccessRules": "{username} alterou as regras de acesso de convidados",
@@ -2436,6 +2492,7 @@
     "emoteExists": "Emote já existe!",
     "emoteInvalid": "Código de emote inválido!",
     "emoteKeyboardNoRecents": "Emotes usados recentemente aparecerão aqui...",
+    "emotePacks": "Pacotes de emotes para o grupo",
     "emoteSettings": "Configurações de Emote",
     "globalChatId": "ID do bate-papo global",
     "accessAndVisibility": "Acesso e visibilidade",
@@ -2457,6 +2514,7 @@
     "errorObtainingLocation": "Erro ao obter localização: {error}",
     "everythingReady": "Tudo pronto!",
     "extremeOffensive": "Extremamente ofensivo",
+    "fileName": "Nome do arquivo",
     "fluffychat": "FluffyChat",
     "fontSize": "Tamanho da fonte",
     "forward": "Encaminhar",
@@ -2520,6 +2578,7 @@
     "messagesStyle": "Mensagens:",
     "moderator": "Moderador",
     "muteChat": "Silenciar chat",
+    "needPantalaimonWarning": "Por favor, esteja ciente de que você precisa do Pantalaimon para usar criptografia de ponta a ponta por enquanto.",
     "newChat": "Novo chat",
     "newMessageInFluffyChat": "💬 Nova mensagem no FluffyChat",
     "newVerificationRequest": "Nova solicitação de verificação!",
@@ -2580,6 +2639,8 @@
     "pleaseEnterYourUsername": "Por favor, insira seu nome de usuário",
     "pleaseFollowInstructionsOnWeb": "Por favor, siga as instruções no site e toque em próximo.",
     "publicRooms": "Salas públicas",
+    "pushRules": "Regras de notificação",
+    "recording": "Gravando",
     "redactedBy": "Redigido por {username}",
     "directChat": "Chat direto",
     "redactedByBecause": "Redigido por {username} porque: \"{reason}\"",
@@ -2589,6 +2650,7 @@
     "reject": "Rejeitar",
     "rejectedTheInvitation": "{username} rejeitou o convite",
     "removeAllOtherDevices": "Remover todos os outros dispositivos",
+    "removedBy": "Removido por {username}",
     "removeDevice": "Remover dispositivo",
     "unbanFromChat": "Desbanir do chat",
     "removeYourAvatar": "Remover seu avatar",
@@ -2726,6 +2788,7 @@
     "youBannedUser": "Você baniu {user}",
     "youHaveWithdrawnTheInvitationFor": "Você retirou o convite para {user}",
     "youInvitedBy": "📩 Você foi convidado por {user}",
+    "invitedBy": "📩 Convidado por {user}",
     "youInvitedUser": "📩 Você convidou {user}",
     "youKicked": "👞 Você expulsou {user}",
     "youKickedAndBanned": "🙅 Você expulsou e baniu {user}",
@@ -2751,6 +2814,7 @@
     "newGroup": "Novo grupo",
     "newSpace": "Novo espaço",
     "enterSpace": "Entrar no espaço",
+    "allSpaces": "Todos os espaços",
     "hidePresences": "Ocultar Lista de Status?",
     "doNotShowAgain": "Não mostrar novamente",
     "wasDirectChatDisplayName": "Chat vazio (era {oldDisplayName})",
@@ -2880,6 +2944,7 @@
     "oneOfYourDevicesIsNotVerified": "Um dos seus dispositivos não está verificado",
     "noticeChatBackupDeviceVerification": "Nota: Quando você conecta todos os seus dispositivos ao backup de chat, eles são automaticamente verificados.",
     "continueText": "Continuar",
+    "welcomeText": "Ei Ei 👋 Esta é a FluffyChat. Você pode fazer login em qualquer servidor doméstico, que seja compatível com https://matrix.org. E então conversar com qualquer pessoa. É uma grande rede de mensagens descentralizada!",
     "blur": "Desfocar:",
     "opacity": "Opacidade:",
     "setWallpaper": "Definir papel de parede",
@@ -4178,6 +4243,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@usersMustKnock": {
         "type": "String",
         "placeholders": {}
@@ -4653,6 +4726,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -11232,6 +11309,7 @@
     "spaceMemberOf": "Membro do espaço {spaces}",
     "spaceMemberOfCanKnock": "Membro do espaço {spaces} pode bater",
     "donate": "Doar",
+    "startedAPoll": "{username} iniciou uma enquete.",
     "poll": "Enquete",
     "startPoll": "Iniciar enquete",
     "endPoll": "Encerrar pesquisa",
@@ -11346,6 +11424,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

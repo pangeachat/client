@@ -428,6 +428,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "changedTheChatDescriptionTo": "{username} je spremenil opis klepeta v: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
     "areGuestsAllowedToJoin": "Ali se lahko gostujoči uporabniki pridružijo",
     "@areGuestsAllowedToJoin": {
         "type": "String",
@@ -437,6 +449,18 @@
     "@admin": {
         "type": "String",
         "placeholders": {}
+    },
+    "changedTheChatNameTo": "{username} je spremenil ime klepeta v: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
     },
     "changeDeviceName": "Spremenite ime naprave",
     "@changeDeviceName": {
@@ -634,6 +658,7 @@
     "emoteExists": "Emote že obstaja!",
     "emoteInvalid": "Neveljaven krajšalec emote!",
     "emoteKeyboardNoRecents": "Nedavno uporabljeni emoti se bodo prikazali tukaj...",
+    "emotePacks": "Paketi emojijev za sobo",
     "emoteSettings": "Nastavitve emojijev",
     "globalChatId": "Globalni ID klepeta",
     "accessAndVisibility": "Dostop in vidljivost",
@@ -655,6 +680,7 @@
     "errorObtainingLocation": "Napaka pri pridobivanju lokacije: {error}",
     "everythingReady": "Vse pripravljeno!",
     "extremeOffensive": "Izjemno žaljivo",
+    "fileName": "Ime datoteke",
     "fluffychat": "FluffyChat",
     "fontSize": "Velikost pisave",
     "forward": "Naprej",
@@ -722,6 +748,7 @@
     "messagesStyle": "Sporočila:",
     "moderator": "Moderator",
     "muteChat": "Utišaj klepet",
+    "needPantalaimonWarning": "Prosimo, zavedajte se, da je za zdaj potrebno uporabljati Pantalaimon za uporabo end-to-end šifriranja.",
     "newChat": "Nov klepet",
     "newMessageInFluffyChat": "📝 Nova sporočilo v FluffyChat",
     "newVerificationRequest": "Nova zahteva za preverjanje!",
@@ -785,7 +812,9 @@
     "pleaseFollowInstructionsOnWeb": "Prosimo, sledite navodilom na spletni strani in tapnite naprej.",
     "privacy": "Zasebnost",
     "publicRooms": "Javne sobe",
+    "pushRules": "Pravila za obvestila",
     "reason": "Razlog",
+    "recording": "Snemanje",
     "redactedBy": "Ukrepljeno s strani {username}",
     "directChat": "Neposredni pogovor",
     "redactedByBecause": "Ukrepljeno s strani {username} zaradi: \"{reason}\"",
@@ -795,6 +824,7 @@
     "reject": "Zavrni",
     "rejectedTheInvitation": "{username} je zavrnil vabilo",
     "removeAllOtherDevices": "Odstrani vse druge naprave",
+    "removedBy": "Odstranjeno s strani {username}",
     "removeDevice": "Odstrani napravo",
     "unbanFromChat": "Odkleni iz klepeta",
     "removeYourAvatar": "Odstrani svoj avatar",
@@ -934,6 +964,7 @@
     "youBannedUser": "Blokirali ste uporabnika {user}",
     "youHaveWithdrawnTheInvitationFor": "Opozorili ste vabilo za {user}",
     "youInvitedBy": "📩 Povabljen/a je bil/a s strani {user}",
+    "invitedBy": "📩 Povabljen/a s strani {user}",
     "youInvitedUser": "📩 Povabil/a si {user}",
     "youKicked": "👞 Izključil/a si {user}",
     "youKickedAndBanned": "🙅‍♀️ Izključil/a in prepovedal/a si {user}",
@@ -960,6 +991,7 @@
     "newGroup": "Nova skupina",
     "newSpace": "Nov prostor",
     "enterSpace": "Vstopi v prostor",
+    "allSpaces": "Vsi prostori",
     "hidePresences": "Skriti seznam statusov?",
     "doNotShowAgain": "Ne prikazuj znova",
     "wasDirectChatDisplayName": "Prazno klepetanje (bilo {oldDisplayName})",
@@ -1089,6 +1121,7 @@
     "oneOfYourDevicesIsNotVerified": "Ena od vaših naprav ni preverjena",
     "noticeChatBackupDeviceVerification": "Opomba: Ko povežete vse svoje naprave s varnostno kopijo klepeta, so samodejno preverjene.",
     "continueText": "Nadaljuj",
+    "welcomeText": "Hej hej 👋 To je FluffyChat. Lahko se prijavite na kateri koli domači strežnik, ki je združljiv z https://matrix.org. In nato klepetajte z vsakim. To je velika decentralizirana mreža za sporočila!",
     "blur": "Zameglitev:",
     "opacity": "Neprosojnost:",
     "setWallpaper": "Nastavi ozadje",
@@ -2496,6 +2529,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@emoteSettings": {
         "type": "String",
         "placeholders": {}
@@ -2585,6 +2622,10 @@
         "placeholders": {}
     },
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -2915,6 +2956,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@newChat": {
         "type": "String",
         "placeholders": {}
@@ -3182,7 +3227,15 @@
         "type": "String",
         "placeholders": {}
     },
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -3240,6 +3293,14 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@removeDevice": {
         "type": "String",
@@ -3900,6 +3961,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@youInvitedUser": {
         "type": "String",
         "placeholders": {
@@ -4025,6 +4094,10 @@
         "placeholders": {}
     },
     "@enterSpace": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@allSpaces": {
         "type": "String",
         "placeholders": {}
     },
@@ -4643,6 +4716,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -11230,6 +11307,7 @@
     "spaceMemberOf": "Član prostora {spaces}",
     "spaceMemberOfCanKnock": "Član prostora {spaces} lahko potrka",
     "donate": "Doniraj",
+    "startedAPoll": "{username} je začel anketo.",
     "poll": "Anketa",
     "startPoll": "Začni anketo",
     "endPoll": "Končaj anketo",
@@ -11344,6 +11422,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

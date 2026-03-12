@@ -119,6 +119,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} zmenili popis chatu na: „{description}“",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} zmenili meno chatu na: „{chatname}“",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} zmenili nastavenie oprávnení chatu",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -434,6 +458,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "fileName": "Názov súboru",
+    "@fileName": {
+        "type": "String",
+        "placeholders": {}
+    },
     "fluffychat": "FluffyChat",
     "@fluffychat": {
         "type": "String",
@@ -678,6 +707,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Prosím berte na vedomie, že na koncové šifrovanie zatiaľ potrebujete Pantalaimon.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newMessageInFluffyChat": "Nová správa v FluffyChate",
     "@newMessageInFluffyChat": {
         "type": "String",
@@ -777,6 +811,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "recording": "Nahrávam",
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
+    },
     "redactedAnEvent": "{username} odstránili udalosť",
     "@redactedAnEvent": {
         "type": "String",
@@ -809,6 +848,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Odstánené užívateľom {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Odstráňiť zariadenie",
     "@removeDevice": {
@@ -1397,6 +1445,7 @@
     "editRoomAliases": "Upraviť aliasy miestností",
     "editRoomAvatar": "Upraviť avatar miestnosti",
     "emoteKeyboardNoRecents": "Nedávno použité emotikony sa tu zobrazia...",
+    "emotePacks": "Balíky emotikonov pre miestnosť",
     "globalChatId": "Globálne ID chatu",
     "accessAndVisibility": "Prístup a viditeľnosť",
     "accessAndVisibilityDescription": "Kto má povolenie pripojiť sa k tomuto chatu a ako môže byť chat objavený.",
@@ -1484,6 +1533,7 @@
     "pleaseEnterYourPin": "Zadajte svoj pin",
     "pleaseFollowInstructionsOnWeb": "Postupujte podľa pokynov na webovej stránke a klepnite na ďalšie.",
     "privacy": "Súkromie",
+    "pushRules": "Pravidlá push notifikácií",
     "reason": "Dôvod",
     "redactedBy": "Redigované {username}",
     "directChat": "Priama konverzácia",
@@ -1561,6 +1611,7 @@
     "youBannedUser": "Zabanoval(a) ste {user}",
     "youHaveWithdrawnTheInvitationFor": "Stiahli ste pozvanie pre {user}",
     "youInvitedBy": "📩 Boli ste pozvaní {user}",
+    "invitedBy": "📩 Pozvaný(a) od {user}",
     "youInvitedUser": "📩 Pozvali ste {user}",
     "youKicked": "👞 Vyhodili ste {user}",
     "youKickedAndBanned": "🙅‍♀️ Vyhodili ste a zabanovali ste {user}",
@@ -1587,6 +1638,7 @@
     "newGroup": "Nová skupina",
     "newSpace": "Nový priestor",
     "enterSpace": "Vstúpiť do priestoru",
+    "allSpaces": "Všetky priestory",
     "hidePresences": "Skryť zoznam stavu?",
     "doNotShowAgain": "Nezobrazovať znova",
     "wasDirectChatDisplayName": "Prázdny chat (bol {oldDisplayName})",
@@ -1716,6 +1768,7 @@
     "oneOfYourDevicesIsNotVerified": "Jedno z vašich zariadení nie je overené",
     "noticeChatBackupDeviceVerification": "Poznámka: Keď pripojíte všetky svoje zariadenia k zálohe chatu, automaticky sa overia.",
     "continueText": "Pokračovať",
+    "welcomeText": "Ahoj Ahoj 👋 Toto je FluffyChat. Môžete sa prihlásiť na akýkoľvek domáci server, ktorý je kompatibilný s https://matrix.org. A potom chatovať s kýmkoľvek. Je to obrovská decentralizovaná sieť správ!",
     "blur": "Rozmazanie:",
     "opacity": "Priehľadnosť:",
     "setWallpaper": "Nastaviť tapetu",
@@ -3187,6 +3240,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@globalChatId": {
         "type": "String",
         "placeholders": {}
@@ -3554,6 +3611,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@reason": {
         "type": "String",
         "placeholders": {}
@@ -3908,6 +3969,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@youInvitedUser": {
         "type": "String",
         "placeholders": {
@@ -4033,6 +4102,10 @@
         "placeholders": {}
     },
     "@enterSpace": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@allSpaces": {
         "type": "String",
         "placeholders": {}
     },
@@ -4651,6 +4724,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -11230,6 +11307,7 @@
     "spaceMemberOf": "Člen priestoru {spaces}",
     "spaceMemberOfCanKnock": "Člen priestoru {spaces} môže zaklopať",
     "donate": "Darovať",
+    "startedAPoll": "{username} začal anketu.",
     "poll": "Anketa",
     "startPoll": "Začať anketu",
     "endPoll": "Ukončiť anketu",
@@ -11344,6 +11422,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

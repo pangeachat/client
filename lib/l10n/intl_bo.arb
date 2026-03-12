@@ -202,6 +202,7 @@
         "type": "String",
         "placeholders": {}
     },
+    "@allSpaces": {},
     "@supposedMxid": {
         "type": "String",
         "placeholders": {
@@ -316,6 +317,17 @@
         "placeholders": {}
     },
     "@removeDevicesDescription": {},
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
     "@countParticipants": {
         "type": "String",
         "placeholders": {
@@ -422,6 +434,10 @@
     },
     "@enterSpace": {},
     "@encryptThisChat": {},
+    "@fileName": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@unavailable": {
         "type": "String",
         "placeholders": {}
@@ -608,6 +624,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@makeAdminDescription": {},
     "@edit": {
         "type": "String",
@@ -630,6 +650,10 @@
         "placeholders": {}
     },
     "@passwordHasBeenChanged": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pushRules": {
         "type": "String",
         "placeholders": {}
     },
@@ -863,6 +887,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@changedTheChatPermissions": {
         "type": "String",
         "placeholders": {
@@ -949,6 +977,17 @@
     },
     "@archiveRoomDescription": {},
     "@exportEmotePack": {},
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "@account": {
         "type": "String",
         "placeholders": {}
@@ -969,6 +1008,14 @@
         "placeholders": {}
     },
     "@placeCall": {},
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "@changedTheRoomInvitationLink": {
         "type": "String",
         "placeholders": {
@@ -1859,6 +1906,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@endedTheCall": {
         "type": "String",
         "placeholders": {
@@ -1913,6 +1964,8 @@
     "cantOpenUri": "URI {uri} མི་སྟོན་པའི་རེད",
     "changeDeviceName": "གཏོང་ཁུངས་མིང་ བསྐྱར་བཟོས་",
     "changedTheChatAvatar": "{username} ཚོད་རིམ་གི་རང་བཞིན་རང་བཞིན་གི་རོལ་བར་བསྐོས་",
+    "changedTheChatDescriptionTo": "{username} ཚོད་རིམ་གི་ཚོད་རིམ་ལ་བསྐོས་: '{description}'",
+    "changedTheChatNameTo": "{username} ཚོད་རིམ་གི་མིང་: '{chatname}'",
     "changedTheChatPermissions": "{username} ཚོད་རིམ་གི་རང་བཞིན་རང་བཞིན་གྱི་དོན་ལུགས་བསྐོས་",
     "changedTheDisplaynameTo": "{username} ཁོང་གི་ལག་ཁྱེར་མིང་: '{displayname}'",
     "changedTheGuestAccessRules": "{username} ཁོང་གི་གནས་ཚུལ་ལུགས་བསྐོས་",
@@ -1982,6 +2035,7 @@
     "emoteExists": "རོལ་བརྗེ་འདི་འདི་འདི་ལས་ཡོད།",
     "emoteInvalid": "མིན་འདི་ལུས་སྤྱོད་མི་ཚུལ་ལས་མེད།",
     "emoteKeyboardNoRecents": "འདི་ལས་སྤྱོད་མི་ཚུལ་ལས་མེད་ལས་འབུལ་བའི་རོལ་བརྗེ་འདི་ལས་སྟོན།...",
+    "emotePacks": "གདམ་ཁང་ལུས་སྤྱོད་ལས་བཟོ་བའི་རོལ་བརྗེ།",
     "emoteSettings": "གདམ་ཁང་ཚུལ་ཁེལ།",
     "globalChatId": "འབྲེལ་མཐར་གྱི་གླེང་བརྗོད་རེད།",
     "accessAndVisibility": "དཀའ་སྤྱོད་དང་ལྟར་སྟོན་བརྗོད།",
@@ -2003,6 +2057,7 @@
     "errorObtainingLocation": "ལོ་གསལ་འདི་བསྐྱར་བཏོན་ནས་འགྱོ་བའི་ཤེས་རེའི་ཤེས་རེ།: {error}",
     "everythingReady": "ཟེར་བཏོན་ཡོད།",
     "extremeOffensive": "མཐར་མཐར་སྤྱོད་མི་ཚུལ་མེད་པ།",
+    "fileName": "ཡིག་སྣོད་མིང་",
     "fluffychat": "ཕླུབ་ཕླུབ་ཆེན་",
     "fontSize": "ཡིག་རྣམ་",
     "forward": "རྒྱག་པ།",
@@ -2056,6 +2111,7 @@
     "messagesStyle": "ཚིག་རྒྱུན།:",
     "moderator": "ལོག་འཛུལ།",
     "muteChat": "ཚིག་རྒྱུན་ལ་མེད་པ།",
+    "needPantalaimonWarning": "ཁྱེད་རང་གིས་དེ་ལས་མངོན་པའི་ལས་ཀ་ལ་ལོག་འདེབས་ལ་སྤྱོད་འཐབ་དགོས་ཡོད།",
     "newChat": "གསར་པའི་ཚིག་རྒྱུན།",
     "newMessageInFluffyChat": "💬 གསར་པའི་ཚིག་རྒྱུན། ནང་གི་ཚིག་རྒྱུན།",
     "newVerificationRequest": "གསར་པའི་བརྡ་འཕྲིན་ཟེར་བ།",
@@ -2119,7 +2175,9 @@
     "pleaseFollowInstructionsOnWeb": "ကျေးဇူးပြု၍ ဝဘ်ဆိုက်ပေါ်ရှိညွှန်ကြားချက်များကိုလိုက်နာပြီးနောက်တစ်ဆင့်ကိုနှိပ်ပါ",
     "privacy": "ကိုယ်ပိုင်အချက်အလက်",
     "publicRooms": "အများပြည်သူအခန်းများ",
+    "pushRules": "ပစ်စည်းကမ်းများ",
     "reason": "အကြောင်းပြချက်",
+    "recording": "မှတ်တမ်းတင်ခြင်း",
     "redactedBy": "{username} မှ ပြင်ဆင်ခဲ့သည်",
     "directChat": "တိုက်ရိုက်စကားပြောခြင်း",
     "redactedByBecause": "{username} မှ {reason} ကြောင့် ပြင်ဆင်ခဲ့သည်",
@@ -2129,6 +2187,7 @@
     "reject": "མིན་སྤྱོད",
     "rejectedTheInvitation": "{username} འདི་ལ་འདེབས་བཏང་བཞག་ཡིན།",
     "removeAllOtherDevices": "གཞི་བཙུགས་ལས་གཞི་བཙུགས་ལ་བཏོན",
+    "removedBy": "{username} འདི་ལ་བཏོན་ཡིན།",
     "removeDevice": "གཞི་བཙུགས་ལ་བཏོན",
     "unbanFromChat": "ལག་ལེན་ལས་བཀལ་བ",
     "removeYourAvatar": "ཁྱེད་རང་གི་རོལ་བར་བཏོན",
@@ -2268,6 +2327,7 @@
     "youBannedUser": "ཁྱེད་རང་གིས {user} ལ་འགན་ཁང་བསྐྱར་བཏང་བྱུང་།",
     "youHaveWithdrawnTheInvitationFor": "ཁྱེད་རང་གིས {user} ལ་འབྲེལ་མཐུད་འདི་རྒྱག་བསྐྱར་བཏང་བྱུང་།",
     "youInvitedBy": "📩 ཁྱེད་རང་གིས {user} ལ་འབྲེལ་མཐུད་འདི་འབད་ཡོད།",
+    "invitedBy": "📩 འབྲེལ་མཐུད་བྱེད་པ། {user}",
     "youInvitedUser": "📩 ཁྱེད་རང་གིས {user} ལ་འབྲེལ་མཐུད་འདི་འབད་ཡོད།",
     "youKicked": "👞 ཁྱེད་རང་གིས {user} ལ་འགན་ཁང་བསྐྱར་བཏང་བྱུང་།",
     "youKickedAndBanned": "🙅 ཁྱེད་རང་གིས {user} ལ་འགན་ཁང་བསྐྱར་བཏང་དང་འགན་ཁང་བསྐྱར་བཏང་བྱུང་།",
@@ -2294,6 +2354,7 @@
     "newGroup": "གཞི་རྟེན་གཞི་རྟེན་",
     "newSpace": "གཞི་རྟེན་ས་ཁང་",
     "enterSpace": "གཞི་རྟེན་ས་ཁང་",
+    "allSpaces": "ཆ་ཚང་གི་ས་ཁུལ།",
     "hidePresences": "རང་བཞིན་སྟེང་ལས་རོགས་སྤོས་བཏང་གི་རེད་?",
     "doNotShowAgain": "ལོག་འབུལ་མི་ལེན་",
     "wasDirectChatDisplayName": "ལོག་འབུལ་མེད་ (ལོག་འབུལ་མི་ལེན་ {oldDisplayName})",
@@ -2388,6 +2449,7 @@
     "oneOfYourDevicesIsNotVerified": "ཁྱེད་རང་གི་གཞུང་ལས་ཁག་གི་རང་བཞིན་མི་བརྟེན་པ།",
     "noticeChatBackupDeviceVerification": "གཙོ་བོ།: ཁྱེད་རང་གི་གཞུང་ལས་ཁག་ཚོད་ལས་སྤྱོད་འབད་ནས་སྤྱོད་ལམ་ལ་བརྟེན་པ་ཡོད།",
     "continueText": "རྒྱབ་",
+    "welcomeText": "བཀྲ་ཤིས་བདེ་ལེགས 👋 འདི་ནི་ཕལུཕི་ཆེད་ཡིག་གི་མིང་། ཁྱེད་རང་གི་གནས་ཚུལ་ལ་འབྲེལ་བ་ཡོད་པའི་སེར་ཧེལ་ལས་སྤྱོད་འབད་ནས་འབྲེལ་བ་འབད་ནི་ཡོད། དེ་ནས་སྐད་རག་ལ་འབྲེལ་བ་འབད། འདི་ནི་རང་བཞིན་གྱི་མངའ་རོལ་འབྲེལ་མཐར་འཁོད་མི་འདུག!",
     "blur": "བརྒྱབ་:",
     "opacity": "མེད་སྟོང་:",
     "setWallpaper": "གདུང་སྒོར་ཁེབས་སྟེང་",
@@ -3568,6 +3630,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@usersMustKnock": {
         "type": "String",
         "placeholders": {}
@@ -3942,6 +4012,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -9504,6 +9578,7 @@
     "spaceMemberOf": "Anggota ruang {spaces}",
     "spaceMemberOfCanKnock": "Anggota ruang {spaces} dapat mengetuk",
     "donate": "Donasi",
+    "startedAPoll": "{username} memulai jajak pendapat.",
     "poll": "Jajak pendapat",
     "startPoll": "Mulai jajak pendapat",
     "endPoll": "Koni poll",
@@ -9618,6 +9693,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

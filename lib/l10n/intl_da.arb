@@ -82,6 +82,8 @@
     "cantOpenUri": "Kan ikke åbne URI {uri}",
     "changeDeviceName": "Skift enhedsnavn",
     "changedTheChatAvatar": "{username} ændrede chat-ikonet",
+    "changedTheChatDescriptionTo": "{username} ændrede chatbeskrivelsen til: '{description}'",
+    "changedTheChatNameTo": "{username} ændrede chatnavnet til: '{chatname}'",
     "changedTheChatPermissions": "{username} ændrede chat tilladelserne",
     "changedTheDisplaynameTo": "{username} ændrede deres visningsnavn til: '{displayname}'",
     "changedTheGuestAccessRules": "{username} ændrede gæsteadgangsreglerne",
@@ -171,6 +173,7 @@
     "emoteExists": "Emote findes allerede!",
     "emoteInvalid": "Ugyldigt emote-kortkode!",
     "emoteKeyboardNoRecents": "Nyligt brugte emotes vises her...",
+    "emotePacks": "Emote-pakker til rum",
     "emoteSettings": "Emote-indstillinger",
     "globalChatId": "Global chat-ID",
     "accessAndVisibility": "Adgang og synlighed",
@@ -192,6 +195,7 @@
     "errorObtainingLocation": "Fejl ved hentning af placering: {error}",
     "everythingReady": "Alt klar!",
     "extremeOffensive": "Ekstremt krænkende",
+    "fileName": "Filnavn",
     "fluffychat": "FluffyChat",
     "fontSize": "Skriftstørrelse",
     "forward": "Videresend",
@@ -259,6 +263,7 @@
     "messagesStyle": "Beskeder:",
     "moderator": "Moderator",
     "muteChat": "Dæmp chat",
+    "needPantalaimonWarning": "Vær opmærksom på, at du skal bruge Pantalaimon for nu at kunne bruge ende-til-ende-kryptering.",
     "newChat": "Ny chat",
     "newMessageInFluffyChat": "💬 Ny besked i FluffyChat",
     "newVerificationRequest": "Ny verifikationsanmodning!",
@@ -322,7 +327,9 @@
     "pleaseFollowInstructionsOnWeb": "Følg venligst instruktionerne på hjemmesiden og tryk på næste.",
     "privacy": "Privatliv",
     "publicRooms": "Offentlige rum",
+    "pushRules": "Push-regler",
     "reason": "Årsag",
+    "recording": "Optagelse",
     "redactedBy": "Redigeret af {username}",
     "directChat": "Direkte chat",
     "redactedByBecause": "Redigeret af {username} fordi: \"{reason}\"",
@@ -332,6 +339,7 @@
     "reject": "Afvis",
     "rejectedTheInvitation": "{username} afviste invitationen",
     "removeAllOtherDevices": "Fjern alle andre enheder",
+    "removedBy": "Fjernet af {username}",
     "removeDevice": "Fjern enhed",
     "unbanFromChat": "Fjern ban fra chat",
     "removeYourAvatar": "Fjern dit avatar",
@@ -471,6 +479,7 @@
     "youBannedUser": "Du bandlyste {user}",
     "youHaveWithdrawnTheInvitationFor": "Du har trukket invitationen tilbage for {user}",
     "youInvitedBy": "📩 Du er blevet inviteret af {user}",
+    "invitedBy": "📩 Inviteret af {user}",
     "youInvitedUser": "📩 Du inviterede {user}",
     "youKicked": "🚮 Du sparkede {user}",
     "youKickedAndBanned": "🙅‍♀️ Du sparkede og bandlyste {user}",
@@ -497,6 +506,7 @@
     "newGroup": "Ny gruppe",
     "newSpace": "Nyt rum",
     "enterSpace": "Indtast rum",
+    "allSpaces": "Alle rum",
     "hidePresences": "Skjul statusliste?",
     "doNotShowAgain": "Vis ikke igen",
     "wasDirectChatDisplayName": "Tom chat (var {oldDisplayName})",
@@ -626,6 +636,7 @@
     "oneOfYourDevicesIsNotVerified": "En af dine enheder er ikke verificeret",
     "noticeChatBackupDeviceVerification": "Bemærk: Når du tilslutter alle dine enheder til chat-sikkerhedskopien, bliver de automatisk verificeret.",
     "continueText": "Fortsæt",
+    "welcomeText": "Hej Hej 👋 Dette er FluffyChat. Du kan logge ind på enhver hjemserver, der er kompatibel med https://matrix.org. Og så chatte med hvem som helst. Det er et stort decentraliseret beskednetværk!",
     "blur": "Udsæt:",
     "opacity": "Gennemsigtighed:",
     "setWallpaper": "Indstil baggrund",
@@ -2035,6 +2046,28 @@
             }
         }
     },
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "@changedTheChatPermissions": {
         "type": "String",
         "placeholders": {
@@ -2474,6 +2507,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@emoteSettings": {
         "type": "String",
         "placeholders": {}
@@ -2563,6 +2600,10 @@
         "placeholders": {}
     },
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -2893,6 +2934,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@newChat": {
         "type": "String",
         "placeholders": {}
@@ -3160,7 +3205,15 @@
         "type": "String",
         "placeholders": {}
     },
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -3218,6 +3271,14 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@removeDevice": {
         "type": "String",
@@ -3878,6 +3939,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@youInvitedUser": {
         "type": "String",
         "placeholders": {
@@ -4003,6 +4072,10 @@
         "placeholders": {}
     },
     "@enterSpace": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@allSpaces": {
         "type": "String",
         "placeholders": {}
     },
@@ -4621,6 +4694,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -11208,6 +11285,7 @@
     "spaceMemberOf": "Rumsmedlem af {spaces}",
     "spaceMemberOfCanKnock": "Rumsmedlem af {spaces} kan banke",
     "donate": "Doner",
+    "startedAPoll": "{username} startede en afstemning.",
     "poll": "Afstemning",
     "startPoll": "Start afstemning",
     "endPoll": "Afslut afstemning",
@@ -11322,6 +11400,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

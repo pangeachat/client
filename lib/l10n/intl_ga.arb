@@ -120,6 +120,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "recording": "Ag Taifeadadh",
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Fáth",
     "@reason": {
         "type": "String",
@@ -815,6 +820,30 @@
             }
         }
     },
+    "changedTheChatNameTo": "D'athraigh {username} an t-ainm comhrá go: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatDescriptionTo": "D'athraigh {username} an cur síos comhrá go: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
     "autoplayImages": "Seinn greamáin agus straoiseog beoite go huathoibríoch",
     "@autoplayImages": {
         "type": "String",
@@ -979,6 +1008,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Rialacha na bhfógraí",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "publicRooms": "Seomraí Poiblí",
     "@publicRooms": {
         "type": "String",
@@ -1080,6 +1114,11 @@
     },
     "currentlyActive": "Gníomhach faoi láthair",
     "@currentlyActive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Ainm an chomhaid",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1206,6 +1245,11 @@
     },
     "newMessageInFluffyChat": "💬 Teachtaireacht nua in FluffyChat",
     "@newMessageInFluffyChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "needPantalaimonWarning": "Bí ar an eolas go dteastaíonn Pantalaimon uait chun criptiú ó cheann go ceann a úsáid anois.",
+    "@needPantalaimonWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -1375,6 +1419,11 @@
     },
     "enableEmotesGlobally": "Cumasaigh pacáiste straoiseoige go huilíoch",
     "@enableEmotesGlobally": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emotePacks": "Pacáistí straoiseoige don seomra",
+    "@emotePacks": {
         "type": "String",
         "placeholders": {}
     },
@@ -1643,6 +1692,15 @@
     "@unbanFromChat": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Bainte de ag {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeAllOtherDevices": "Bain gach gléas eile",
     "@removeAllOtherDevices": {
@@ -1990,6 +2048,8 @@
     "@markAsRead": {},
     "deviceKeys": "Eochracha gléis:",
     "@deviceKeys": {},
+    "allSpaces": "Gach spás",
+    "@allSpaces": {},
     "searchForUsers": "Cuardaigh @users...",
     "@searchForUsers": {},
     "removeFromBundle": "Bain as an mbeart seo",
@@ -2140,6 +2200,14 @@
     "@addWidget": {},
     "widgetUrlError": "Ní URL bailí é seo.",
     "@widgetUrlError": {},
+    "invitedBy": "📩 Cuireadh ó {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "youKicked": "👞 Chiceáil tú {user}",
     "@youKicked": {
         "placeholders": {
@@ -2388,6 +2456,8 @@
     "@noticeChatBackupDeviceVerification": {},
     "continueText": "Lean ar aghaidh",
     "@continueText": {},
+    "welcomeText": "Hey Hey 👋 Is é seo FluffyChat. Is féidir leat síniú isteach in aon fhreastalaí baile, atá comhoiriúnach leis https://matrix.org. Agus ansin comhrá a dhéanamh le duine ar bith. Is líonra teachtaireachtaí díláraithe ollmhór é!",
+    "@welcomeText": {},
     "blur": "Doiléirigh:",
     "@blur": {},
     "opacity": "Teimhneacht:",
@@ -3055,6 +3125,15 @@
     },
     "donate": "Tabhair Síntiús",
     "@donate": {},
+    "startedAPoll": "Chuir {username} tús le pobalbhreith.",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "poll": "Polaitíocht",
     "@poll": {},
     "startPoll": "Tosaigh pobalbhreith",

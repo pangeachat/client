@@ -189,6 +189,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} mudou a descrición da conversa a: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} mudou o nome da charla a: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} mudou os permisos da conversa",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -650,6 +674,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Paquetes de Emotes para a sala",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Axustes de Emote",
     "@emoteSettings": {
         "type": "String",
@@ -725,6 +754,11 @@
     },
     "extremeOffensive": "Extremadamente ofensivo",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Nome do ficheiro",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1042,6 +1076,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Ten en conta que polo de agora precisas Pantalaimon para a cifraxe extremo-a-extremo.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "Nova conversa",
     "@newChat": {
         "type": "String",
@@ -1297,8 +1336,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Regras de envío",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Razón",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Gravando",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1344,6 +1393,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Eliminado por {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Quitar dispositivo",
     "@removeDevice": {
@@ -2148,6 +2206,8 @@
     "@screenSharingTitle": {},
     "enterSpace": "Entrar no espazo",
     "@enterSpace": {},
+    "allSpaces": "Todos os espazos",
+    "@allSpaces": {},
     "screenSharingDetail": "Estás a compartir a túa pantalla en FluffyChat",
     "@screenSharingDetail": {},
     "doNotShowAgain": "Non mostrar outra vez",
@@ -2677,6 +2737,14 @@
     "@sendRoomNotifications": {},
     "changeTheDescriptionOfTheGroup": "Cambiar a descrición da charla",
     "@changeTheDescriptionOfTheGroup": {},
+    "invitedBy": "📩 Convidada por {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "changelog": "Novidades na versión",
     "@changelog": {},
     "chatPermissionsDescription": "Define que nivel de permisos son necesarios para realizar certas accións nesta charla. Os niveis de permiso 0, 50 e 100 normalmente representan, usuarias, moderadoras e administradoras, pero son posibles outras escalas.",
@@ -2754,6 +2822,8 @@
             }
         }
     },
+    "welcomeText": "Ola! 👋 Isto é FluffyChat. Podes iniciar sesión en calquera servidor compatible con https://matrix.org. Poderás conversar con calquera. Unha enorme rede de mensaxería descentralizada!",
+    "@welcomeText": {},
     "setWallpaper": "Establecer fondo",
     "@setWallpaper": {},
     "manageAccount": "Xestionar conta",
@@ -3046,6 +3116,15 @@
         "type": "String",
         "placeholders": {
             "spaces": {
+                "type": "String"
+            }
+        }
+    },
+    "startedAPoll": "{username} publicou unha enquisa.",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
                 "type": "String"
             }
         }

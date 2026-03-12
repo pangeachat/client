@@ -147,6 +147,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} endret chatbeskrivelsen til: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} endret chatnavnet til: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} endret sludretilgangene",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -502,6 +526,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Smilefjespakker for rommet",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Smilefjes-innstillinger",
     "@emoteSettings": {
         "type": "String",
@@ -568,6 +597,11 @@
     },
     "extremeOffensive": "Veldig",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Filnavn",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -875,6 +909,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Merk at du trenger Pantalaimon for å bruke ende-til-ende -kryptering inntil videre.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "Ny sludring",
     "@newChat": {
         "type": "String",
@@ -1063,8 +1102,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Dyttingsregler",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Grunn",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Opptak",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1100,6 +1149,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Fjernet av {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Fjern enhet",
     "@removeDevice": {
@@ -2169,6 +2227,14 @@
             }
         }
     },
+    "invitedBy": "📩 Invitert av {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "youInvitedUser": "📩 Du inviterte {user}",
     "@youInvitedUser": {
         "placeholders": {
@@ -2631,6 +2697,8 @@
     "@generatingVideoThumbnail": {},
     "compressVideo": "Komprimerer video...",
     "@compressVideo": {},
+    "welcomeText": "Hei, hei! 👋 Dette er FluffyChat. Du kan logge på hvilken som helst hjemmeserver som er kompatibel med https://matrix.org. Og deretter chatte med hvem som helst. Det er et stort desentralisert meldingsnettverk!",
+    "@welcomeText": {},
     "notificationRuleIsUserMentionDescription": "Varsler brukeren når de er direkte nevnt i en melding.",
     "@notificationRuleIsUserMentionDescription": {},
     "notificationRuleContainsDisplayName": "Inneholder visningsnavn",
@@ -2800,6 +2868,8 @@
     },
     "newSpace": "Nytt område",
     "@newSpace": {},
+    "allSpaces": "Alle områder",
+    "@allSpaces": {},
     "wasDirectChatDisplayName": "Tom chat (var {oldDisplayName})",
     "@wasDirectChatDisplayName": {
         "type": "String",
@@ -2873,6 +2943,15 @@
     "@foregroundServiceRunning": {},
     "longPressToRecordVoiceMessage": "Langt trykk for å spille inn talemelding.",
     "@longPressToRecordVoiceMessage": {},
+    "startedAPoll": "{username} startet en avstemning.",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "poll": "Avstemning",
     "@poll": {},
     "startPoll": "Start avstemning",

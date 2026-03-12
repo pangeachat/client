@@ -133,6 +133,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} megváltoztatta a csevegés leírást a következőre: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} módosította a csevegés nevét a következőre: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} módosította a csevegési engedélyeket",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -433,6 +457,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Hangulatjel csomagok a szobához",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Hangulatjel Beállítások",
     "@emoteSettings": {
         "type": "String",
@@ -476,6 +505,11 @@
                 "type": "String"
             }
         }
+    },
+    "fileName": "Fájlnév",
+    "@fileName": {
+        "type": "String",
+        "placeholders": {}
     },
     "fluffychat": "FluffyChat",
     "@fluffychat": {
@@ -741,6 +775,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Jelenleg a Pantalaimon szükséges a végpontok közötti titkosítás használatához.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newMessageInFluffyChat": "💬 Új FluffyChat üzenet",
     "@newMessageInFluffyChat": {
         "type": "String",
@@ -870,6 +909,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "recording": "Felvétel",
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
+    },
     "redactedAnEvent": "{username} szerkesztett egy eseményt",
     "@redactedAnEvent": {
         "type": "String",
@@ -902,6 +946,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "{username} által eltávolítva",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Eszköz eltávolítása",
     "@removeDevice": {
@@ -1896,6 +1949,8 @@
     "@oneClientLoggedOut": {},
     "setColorTheme": "Szín séma beállítása:",
     "@setColorTheme": {},
+    "allSpaces": "Minden tér",
+    "@allSpaces": {},
     "supposedMxid": "{mxid}-nek kell lennie",
     "@supposedMxid": {
         "type": "String",
@@ -2027,6 +2082,11 @@
     },
     "transferFromAnotherDevice": "Átvitel másik eszközről",
     "@transferFromAnotherDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pushRules": "Push szabályok",
+    "@pushRules": {
         "type": "String",
         "placeholders": {}
     },
@@ -2619,6 +2679,14 @@
     "@space": {},
     "spaces": "Terek",
     "@spaces": {},
+    "invitedBy": "📩 {user} jóvoltából meghívva",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "markAsUnread": "Olvasatlannak jelölés",
     "@markAsUnread": {},
     "moderatorLevel": "{level} - Moderátor",
@@ -2937,6 +3005,8 @@
     "@continueText": {},
     "opacity": "Átlátszóság:",
     "@opacity": {},
+    "welcomeText": "Üdv 👋 Ez a FluffyChat. Bejelentkezhet bármely matrix-kiszolgálóhoz amely kompatibilis a https://matrix.org címmel. Ezután cseveghet bárkivel. Így képez egy óriási decentralizált üzenetküldő hálózatot!",
+    "@welcomeText": {},
     "addLink": "Hivatkozás hozzáadása",
     "@addLink": {},
     "invalidUrl": "Helytelen hivatkozás",
@@ -10248,6 +10318,7 @@
     "spaceMemberOf": "{spaces} tér tagja",
     "spaceMemberOfCanKnock": "{spaces} tér tagja kopoghat",
     "donate": "Adományozás",
+    "startedAPoll": "{username} szavazást indított.",
     "poll": "Szavazás",
     "startPoll": "Szavazás indítása",
     "endPoll": "Szavazás befejezése",
@@ -10362,6 +10433,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

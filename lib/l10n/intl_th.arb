@@ -431,6 +431,7 @@
         "type": "String",
         "placeholders": {}
     },
+    "@allSpaces": {},
     "@editDisplayname": {
         "type": "String",
         "placeholders": {}
@@ -529,6 +530,17 @@
         "placeholders": {}
     },
     "@removeDevicesDescription": {},
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
     "@countParticipants": {
         "type": "String",
         "placeholders": {
@@ -622,6 +634,10 @@
     },
     "@enterSpace": {},
     "@encryptThisChat": {},
+    "@fileName": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@unavailable": {
         "type": "String",
         "placeholders": {}
@@ -789,6 +805,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@makeAdminDescription": {},
     "@loadMore": {
         "type": "String",
@@ -807,6 +827,10 @@
         "placeholders": {}
     },
     "@passwordHasBeenChanged": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pushRules": {
         "type": "String",
         "placeholders": {}
     },
@@ -1018,6 +1042,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@changedTheChatPermissions": {
         "type": "String",
         "placeholders": {
@@ -1091,6 +1119,17 @@
         "placeholders": {}
     },
     "@archiveRoomDescription": {},
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "@commandInvalid": {
         "type": "String"
     },
@@ -1107,6 +1146,14 @@
         "placeholders": {}
     },
     "@placeCall": {},
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "@changedTheRoomInvitationLink": {
         "type": "String",
         "placeholders": {
@@ -1908,6 +1955,10 @@
     },
     "@invite": {},
     "@enableMultiAccounts": {},
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@endedTheCall": {
         "type": "String",
         "placeholders": {
@@ -1940,6 +1991,8 @@
     "cantOpenUri": "ไม่สามารถเปิด URI {uri}",
     "changeDeviceName": "เปลี่ยนชื่ออุปกรณ์",
     "changedTheChatAvatar": "{username} เปลี่ยนภาพโปรไฟล์แชท",
+    "changedTheChatDescriptionTo": "{username} เปลี่ยนคำอธิบายแชทเป็น: '{description}'",
+    "changedTheChatNameTo": "{username} เปลี่ยนชื่อแชทเป็น: '{chatname}'",
     "changedTheChatPermissions": "{username} เปลี่ยนสิทธิ์การเข้าถึงแชท",
     "changedTheDisplaynameTo": "{username} เปลี่ยนชื่อแสดงเป็น: '{displayname}'",
     "changedTheGuestAccessRules": "{username} เปลี่ยนกฎการเข้าถึงสำหรับแขก",
@@ -2024,6 +2077,7 @@
     "emoteExists": "อีโมจอยังมีอยู่แล้ว!",
     "emoteInvalid": "รหัสอีโมจิไม่ถูกต้อง!",
     "emoteKeyboardNoRecents": "อีโมจิที่ใช้บ่อยจะแสดงที่นี่...",
+    "emotePacks": "แพ็คอีโมจิสำหรับห้อง",
     "emoteSettings": "การตั้งค่าอิโมจิ",
     "globalChatId": "รหัสแชททั่วโลก",
     "accessAndVisibility": "การเข้าถึงและการมองเห็น",
@@ -2045,6 +2099,7 @@
     "errorObtainingLocation": "เกิดข้อผิดพลาดในการรับตำแหน่ง: {error}",
     "everythingReady": "ทุกอย่างพร้อมแล้ว!",
     "extremeOffensive": "รุนแรงมาก",
+    "fileName": "ชื่อไฟล์",
     "fontSize": "ขนาดตัวอักษร",
     "forward": "ส่งต่อ",
     "fromJoining": "จากการเข้าร่วม",
@@ -2110,6 +2165,7 @@
     "messagesStyle": "ข้อความ:",
     "moderator": "ผู้ดูแล",
     "muteChat": "ปิดเสียงแชท",
+    "needPantalaimonWarning": "โปรดทราบว่าคุณจำเป็นต้องใช้ Pantalaimon เพื่อเข้ารหัสแบบปลายทางถึงปลายทางในตอนนี้",
     "newChat": "แชทใหม่",
     "newMessageInFluffyChat": "🗨️ ข้อความใหม่ใน FluffyChat",
     "newVerificationRequest": "คำขอการยืนยันตัวตนใหม่!",
@@ -2172,7 +2228,9 @@
     "pleaseFollowInstructionsOnWeb": "โปรดปฏิบัติตามคำแนะนำบนเว็บไซต์และแตะที่ถัดไป",
     "privacy": "ความเป็นส่วนตัว",
     "publicRooms": "ห้องสาธารณะ",
+    "pushRules": "กฎการแจ้งเตือน",
     "reason": "เหตุผล",
+    "recording": "การบันทึก",
     "redactedBy": "ถูกแก้ไขโดย {username}",
     "directChat": "แชทโดยตรง",
     "redactedByBecause": "ถูกแก้ไขโดย {username} เพราะ: \"{reason}\"",
@@ -2182,6 +2240,7 @@
     "reject": "ปฏิเสธ",
     "rejectedTheInvitation": "{username} ปฏิเสธคำเชิญ",
     "removeAllOtherDevices": "ลบอุปกรณ์อื่นทั้งหมด",
+    "removedBy": "ถูกลบโดย {username}",
     "removeDevice": "ลบอุปกรณ์",
     "unbanFromChat": "ปลดแบนจากแชท",
     "removeYourAvatar": "ลบภาพโปรไฟล์ของคุณ",
@@ -2320,6 +2379,7 @@
     "youBannedUser": "คุณแบน {user}",
     "youHaveWithdrawnTheInvitationFor": "คุณได้ถอนคำเชิญสำหรับ {user}",
     "youInvitedBy": "📩 คุณได้รับเชิญโดย {user}",
+    "invitedBy": "📩 เชิญโดย {user}",
     "youInvitedUser": "📩 คุณเชิญ {user}",
     "youKicked": "👞 คุณเตะ {user}",
     "youKickedAndBanned": "🙅‍♀️ คุณเตะและแบน {user}",
@@ -2346,6 +2406,7 @@
     "newGroup": "กลุ่มใหม่",
     "newSpace": "พื้นที่ใหม่",
     "enterSpace": "เข้าสู่พื้นที่",
+    "allSpaces": "พื้นที่ทั้งหมด",
     "hidePresences": "ซ่อนรายการสถานะ?",
     "doNotShowAgain": "ไม่แสดงอีก",
     "wasDirectChatDisplayName": "แชทว่างเปล่า (เดิม {oldDisplayName})",
@@ -2475,6 +2536,7 @@
     "oneOfYourDevicesIsNotVerified": "อุปกรณ์ของคุณหนึ่งเครื่องยังไม่ได้รับการยืนยัน",
     "noticeChatBackupDeviceVerification": "หมายเหตุ: เมื่อคุณเชื่อมต่ออุปกรณ์ทั้งหมดของคุณกับการสำรองข้อมูลแชท พวกเขาจะได้รับการยืนยันโดยอัตโนมัติ",
     "continueText": "ดำเนินการต่อ",
+    "welcomeText": "สวัสดี สวัสดี 👋 นี่คือ FluffyChat คุณสามารถเข้าสู่ระบบได้ที่ homeserver ใดก็ได้ที่รองรับ https://matrix.org แล้วสนทนากับใครก็ได้ มันคือเครือข่ายส่งข้อความแบบกระจายขนาดใหญ่!",
     "blur": "เบลอ:",
     "opacity": "ความทึบ:",
     "setWallpaper": "ตั้งพื้นหลัง",
@@ -3782,6 +3844,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@usersMustKnock": {
         "type": "String",
         "placeholders": {}
@@ -4257,6 +4327,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -10836,6 +10910,7 @@
     "spaceMemberOf": "สมาชิกพื้นที่ของ {spaces}",
     "spaceMemberOfCanKnock": "สมาชิกพื้นที่ของ {spaces} สามารถเคาะได้",
     "donate": "บริจาค",
+    "startedAPoll": "{username} ได้เริ่มการสำรวจความคิดเห็น",
     "poll": "การสำรวจความคิดเห็น",
     "startPoll": "เริ่มการสำรวจความคิดเห็น",
     "endPoll": "สิ้นสุดการลงคะแนน",
@@ -10950,6 +11025,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

@@ -292,6 +292,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} suhbat tavsifini '{description}'ga oʻzgartirdi",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} suhbat nomini: '{chatname}'ga oʻzgartirdi",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} suhbat ruxsatnomalarini oʻzgartirdi",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -747,6 +771,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Guruh uchun Emote toʻplamlar",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Emote Sozlamalari",
     "@emoteSettings": {
         "type": "String",
@@ -1083,6 +1112,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "fileName": "Fayl nomi",
+    "@fileName": {
+        "type": "String",
+        "placeholders": {}
+    },
     "joinedTheChat": "👋 {username} suhbatga qoʻshildi",
     "@joinedTheChat": {
         "type": "String",
@@ -1223,6 +1257,11 @@
     },
     "muteChat": "Suhbatni ovozsizlantirish",
     "@muteChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "needPantalaimonWarning": "Iltimos, hozircha Pantalaimon boshdan-oyoq shifrlashdan foydalanishi kerakligini yodda tuting.",
+    "@needPantalaimonWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -1514,8 +1553,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Push qoidalari",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Sabab",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Yozilmoqda",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1579,6 +1628,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "{username} tomonidan oʻchirildi",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Qurilmani oʻchirish",
     "@removeDevice": {
@@ -2214,6 +2272,8 @@
     "@newSpace": {},
     "enterSpace": "Maydonga kirish",
     "@enterSpace": {},
+    "allSpaces": "Barcha maydonlar",
+    "@allSpaces": {},
     "hidePresences": "Holat roʻyxati yashirilsinmi?",
     "@hidePresences": {},
     "doNotShowAgain": "Qaytib koʻrsatilmasin",
@@ -2309,6 +2369,8 @@
     "@chatPermissionsDescription": {},
     "noticeChatBackupDeviceVerification": "Eslatma: Barcha qurilmalaringizni suhbat zaxira nusxasiga ulaganingizda, ular avtomatik ravishda tasdiqlanadi.",
     "@noticeChatBackupDeviceVerification": {},
+    "welcomeText": "Hey Hey 👋 Bu FluffyChat. Siz https://matrix.org bilan mos keladigan istalgan uy serveriga kirishingiz mumkin. Va keyin istalgan kishi bilan suhbatlashishingiz mumkin. Bu ulkan markazlashtirilmagan xabar almashish tarmog'i!",
+    "@welcomeText": {},
     "unableToJoinChat": "Chatga qoʻshilib boʻlmadi. Ehtimol, boshqa tomon suhbatni allaqachon yopib qoʻygan.",
     "@unableToJoinChat": {},
     "appIntroduction": "FluffyChat sizga turli messenjerlar orqali doʻstlaringiz bilan suhbatlashish imkonini beradi. Batafsil maʼlumotni https://matrix.org saytida oling yoki shunchaki *Davom etish* tugmasini bosing.",
@@ -2945,6 +3007,15 @@
     },
     "donate": "Xayriya qilmoq",
     "@donate": {},
+    "startedAPoll": "{username} so‘rovnoma boshladi.",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "poll": "So‘rov",
     "@poll": {},
     "startPoll": "So‘rovni boshlash",
@@ -3023,6 +3094,14 @@
     },
     "youInvitedBy": "📩 Sizni {user} taklif qildi",
     "@youInvitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
+    "invitedBy": "📩 {user} taklif qilgan",
+    "@invitedBy": {
         "placeholders": {
             "user": {
                 "type": "String"

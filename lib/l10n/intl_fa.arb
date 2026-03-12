@@ -155,11 +155,35 @@
         "type": "String",
         "placeholders": {}
     },
+    "changedTheChatDescriptionTo": "{username} توضیح گپ را به '{description}' تغییر داد",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} دسترسی‌های گپ را تغییر داد",
     "@changedTheChatPermissions": {
         "type": "String",
         "placeholders": {
             "username": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} نام گپ را به '{chatname}' تغییر داد",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
                 "type": "String"
             }
         }
@@ -600,6 +624,8 @@
         "type": "String",
         "placeholders": {}
     },
+    "allSpaces": "همه فضاها",
+    "@allSpaces": {},
     "commandHint_ban": "محروم کردن کاربر مشخص‌شده از این اتاق",
     "@commandHint_ban": {
         "type": "String",
@@ -790,6 +816,11 @@
     },
     "directChats": "گپ‌های مستقیم",
     "@directChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emotePacks": "بسته‌های شکلک برای اتاق",
+    "@emotePacks": {
         "type": "String",
         "placeholders": {}
     },
@@ -997,6 +1028,11 @@
     },
     "extremeOffensive": "بسیار توهین‌آمیز",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "نام پرونده",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1423,6 +1459,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "لطفاً توجه کنید که برای رمزنگاری سرتاسر به Pantalaimon نیاز دارید.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "next": "بعدی",
     "@next": {
         "type": "String",
@@ -1614,6 +1655,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "recording": "در حال ضبط",
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
+    },
     "redactedAnEvent": "{username} یک رویداد را ویرایش کرد",
     "@redactedAnEvent": {
         "type": "String",
@@ -1633,6 +1679,15 @@
         "type": "String",
         "placeholders": {}
     },
+    "removedBy": "پاک‌شده توسط {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "removeDevice": "پاک کردن دستگاه",
     "@removeDevice": {
         "type": "String",
@@ -1650,6 +1705,11 @@
     },
     "recoveryKey": "کلید بازیابی",
     "@recoveryKey": {},
+    "pushRules": "قوانین آگاه‌ساز",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "دلیل",
     "@reason": {
         "type": "String",
@@ -2401,6 +2461,14 @@
             }
         }
     },
+    "invitedBy": "📩 دعوت‌شده توسط {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "hasKnocked": "🚪 {user} در زده است",
     "@hasKnocked": {
         "placeholders": {
@@ -2786,6 +2854,8 @@
     "@noticeChatBackupDeviceVerification": {},
     "continueText": "ادامه",
     "@continueText": {},
+    "welcomeText": "درود درود 👋 این فلافی‌چت است. میتوانید به هر سرور خانگی سازگار با https://matrix.org وارد شوید و با هر کسی گپ بزنید. این یک شبکه پیام‌رسانی غیرمتمرکز بزرگ است!",
+    "@welcomeText": {},
     "blur": "محو کردن:",
     "@blur": {},
     "opacity": "شفافیت:",
@@ -10237,6 +10307,7 @@
     "spaceMemberOf": "عضو فضا {spaces}",
     "spaceMemberOfCanKnock": "عضو فضا {spaces} می‌تواند در بزند",
     "donate": "اهدا کنید",
+    "startedAPoll": "{username} یک نظرسنجی شروع کرد.",
     "poll": "نظرسنجی",
     "startPoll": "شروع نظرسنجی",
     "endPoll": "پایان نظرسنجی",
@@ -10347,6 +10418,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

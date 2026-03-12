@@ -147,6 +147,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} ändrade chatt-beskrivningen till: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} ändrade sitt chatt-namn till: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} ändrade chatt-rättigheterna",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -487,6 +511,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Dekalpaket för rummet",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Emote inställningar",
     "@emoteSettings": {
         "type": "String",
@@ -548,6 +577,11 @@
     },
     "extremeOffensive": "Extremt stötande",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Filnamn",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -850,6 +884,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Var medveten om att du behöver Pantalaimon för att använda ändpunktskryptering tillsvidare.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "Ny chatt",
     "@newChat": {
         "type": "String",
@@ -1053,8 +1092,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Regler",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Anledning",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Spelar in",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1095,6 +1144,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Bortagen av {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Ta bort enhet",
     "@removeDevice": {
@@ -2196,6 +2254,8 @@
     "@whyIsThisMessageEncrypted": {},
     "newGroup": "Ny grupp",
     "@newGroup": {},
+    "allSpaces": "Alla utrymmen",
+    "@allSpaces": {},
     "doNotShowAgain": "Visa inte igen",
     "@doNotShowAgain": {},
     "wasDirectChatDisplayName": "Tom chatt (var {oldDisplayName})",
@@ -2555,6 +2615,7 @@
     "passwordRecoverySettings": "Inställningar för återställning av lösenord",
     "sendImages": "Skicka {count} bild",
     "synchronizingPleaseWaitCounter": "Synkroniserar… ({percentage}%)",
+    "invitedBy": "📩 Inbjuden av {user}",
     "usersMustKnock": "Användare måste knacka",
     "noOneCanJoin": "Ingen kan gå med",
     "knock": "Knacka",
@@ -2604,6 +2665,7 @@
     "oneOfYourDevicesIsNotVerified": "En av dina enheter är inte verifierad",
     "noticeChatBackupDeviceVerification": "Obs: När du ansluter alla dina enheter till chattbackupen verifieras de automatiskt.",
     "continueText": "Fortsätt",
+    "welcomeText": "Hej Hej 👋 Det här är FluffyChat. Du kan logga in på vilken hemserver som helst som är kompatibel med https://matrix.org. Och sedan chatta med vem som helst. Det är ett stort decentraliserat meddelandenätverk!",
     "blur": "Oskärpa:",
     "opacity": "Opacitet:",
     "setWallpaper": "Ställ in bakgrundsbild",
@@ -3888,6 +3950,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@usersMustKnock": {
         "type": "String",
         "placeholders": {}
@@ -4125,6 +4195,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -10704,6 +10778,7 @@
     "spaceMemberOf": "Rumsmedlem i {spaces}",
     "spaceMemberOfCanKnock": "Rumsmedlem i {spaces} kan knacka",
     "donate": "Donera",
+    "startedAPoll": "{username} startade en omröstning.",
     "poll": "Omröstning",
     "startPoll": "Starta omröstning",
     "endPoll": "Avsluta omröstning",
@@ -10818,6 +10893,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

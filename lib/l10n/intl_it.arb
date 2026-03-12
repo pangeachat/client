@@ -169,6 +169,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} ha cambiato la descrizione della chat in: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} ha cambiato il nome della discussione in: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} ha cambiato i permessi della chat",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -529,6 +553,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Pacchetti emotes della stanza",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Impostazioni emote",
     "@emoteSettings": {
         "type": "String",
@@ -595,6 +624,11 @@
     },
     "extremeOffensive": "Estremamente offensivo",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Nome del file",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -902,6 +936,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Tieni presente che per ora hai bisogno di Pantalaimon per utilizzare la crittografia dall'inizio alla fine.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "Nuova discussione",
     "@newChat": {
         "type": "String",
@@ -1115,8 +1154,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Regole notifiche",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Motivo",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Registrazione",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1157,6 +1206,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Rimosso da {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Rimuovi il dispositivo",
     "@removeDevice": {
@@ -1829,6 +1887,8 @@
         "type": "String",
         "description": "Usage hint for the command /create"
     },
+    "allSpaces": "Tutti gli spazi",
+    "@allSpaces": {},
     "supposedMxid": "Dovrebbe essere {mxid}",
     "@supposedMxid": {
         "type": "String",
@@ -2435,6 +2495,14 @@
     "@space": {},
     "spaces": "Spazi",
     "@spaces": {},
+    "invitedBy": "📩 Invitato da {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "knock": "Bussa",
     "@knock": {},
     "hideInvalidOrUnknownMessageFormats": "Nascondi formati di messaggi non validi o sconosciuti",
@@ -2749,6 +2817,8 @@
     },
     "continueText": "Continua",
     "@continueText": {},
+    "welcomeText": "Hey Hey 👋 Questa è FluffyChat. Puoi accedere a qualsiasi homeserver compatibile con https://matrix.org. E poi chattare con chiunque. È un'enorme rete di messaggistica decentralizzata!",
+    "@welcomeText": {},
     "blur": "Sfocatura:",
     "@blur": {},
     "opacity": "Opacità:",
@@ -10244,6 +10314,7 @@
     "spaceMemberOf": "Membro dello spazio di {spaces}",
     "spaceMemberOfCanKnock": "Membro dello spazio di {spaces} può bussare",
     "donate": "Dona",
+    "startedAPoll": "{username} ha avviato un sondaggio.",
     "poll": "Sondaggio",
     "startPoll": "Avvia sondaggio",
     "endPoll": "Termina il sondaggio",
@@ -10318,6 +10389,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

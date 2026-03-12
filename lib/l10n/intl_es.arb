@@ -160,6 +160,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} cambió la descripción del chat a: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} cambió el nombre del chat a: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} cambió los permisos del chat",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -487,6 +511,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Paquetes de emoticonos para la habitación",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Configuración de emotes",
     "@emoteSettings": {
         "type": "String",
@@ -538,6 +567,11 @@
     },
     "everythingReady": "¡Todo listo!",
     "@everythingReady": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Nombre del archivo",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -805,6 +839,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Tenga en cuenta que necesita Pantalaimon para utilizar el cifrado de extremo a extremo por ahora.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newMessageInFluffyChat": "Nuevo mensaje en FluffyChat",
     "@newMessageInFluffyChat": {
         "type": "String",
@@ -959,6 +998,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "recording": "Grabando",
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
+    },
     "redactedAnEvent": "{username} censuró un suceso",
     "@redactedAnEvent": {
         "type": "String",
@@ -991,6 +1035,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Eliminado por {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Eliminar dispositivo",
     "@removeDevice": {
@@ -1679,6 +1732,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Regla de Push",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "register": "Registrarse",
     "@register": {
         "type": "String",
@@ -1944,6 +2002,8 @@
     "@publish": {},
     "newSpace": "Nuevo espacio",
     "@newSpace": {},
+    "allSpaces": "Todos los espacios",
+    "@allSpaces": {},
     "widgetUrlError": "Esta no es una URL válida.",
     "@widgetUrlError": {},
     "commandHint_markasgroup": "Marcar como grupo",
@@ -2531,6 +2591,14 @@
             }
         }
     },
+    "invitedBy": "📩 Invitado por {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "usersMustKnock": "Los usuarios han de avisar",
     "@usersMustKnock": {},
     "noOneCanJoin": "Nadie puede unirse",
@@ -2693,6 +2761,8 @@
     "@blur": {},
     "continueText": "Continuar",
     "@continueText": {},
+    "welcomeText": "Eh, eh, 👋 Esto es FluffyChat. Puedes acceder a cualquier homeserver, que sea compatible con https://matrix.org. Y luego chatear con cualquiera. ¡Es una red de mensajería descentralizada enorme!",
+    "@welcomeText": {},
     "opacity": "Opacidad:",
     "@opacity": {},
     "version": "Versión",
@@ -3038,6 +3108,15 @@
         "placeholders": {
             "chats": {
                 "type": "int"
+            }
+        }
+    },
+    "startedAPoll": "{username} inició una encuesta.",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
             }
         }
     },

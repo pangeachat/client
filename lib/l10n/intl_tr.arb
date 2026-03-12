@@ -191,6 +191,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} sohbet açıklamasını değiştirdi: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} sohbet adını değiştirdi: '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} sohbet izinlerini değiştirdi",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -652,6 +676,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Oda için ifade paketleri",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "İfade Ayarları",
     "@emoteSettings": {
         "type": "String",
@@ -727,6 +756,11 @@
     },
     "extremeOffensive": "Aşırı rahatsız edici",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Dosya adı",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1044,6 +1078,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Uçtan uca şifreleme kullanmak için şimdilik Pantalaimon'a ihtiyacınız olduğunu lütfen unutmayın.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "Yeni sohbet",
     "@newChat": {
         "type": "String",
@@ -1299,8 +1338,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Gönderme kuralları",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Neden",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Kaydediliyor",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1346,6 +1395,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "{username} tarafından kaldırıldı",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Aygıtı kaldır",
     "@removeDevice": {
@@ -2142,6 +2200,8 @@
     "@screenSharingTitle": {},
     "enterSpace": "Alana gir",
     "@enterSpace": {},
+    "allSpaces": "Tüm alanlar",
+    "@allSpaces": {},
     "foregroundServiceRunning": "Bu bildirim, ön plan hizmeti çalışırken görünür.",
     "@foregroundServiceRunning": {},
     "newGroup": "Yeni grup",
@@ -2677,6 +2737,14 @@
     "@changeGeneralChatSettings": {},
     "changeTheVisibilityOfChatHistory": "Sohbet geçmişinin görünürlüğünü değiştir",
     "@changeTheVisibilityOfChatHistory": {},
+    "invitedBy": "📩 {user} davet etti",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "chatPermissionsDescription": "Bu sohbette belirli eylemler için hangi güç düzeyinin gerekli olduğunu tanımlayın. 0, 50 ve 100 güç düzeyleri genellikle kullanıcıları, moderatörleri ve yöneticileri temsil eder, ancak herhangi bir derecelendirme mümkündür.",
     "@chatPermissionsDescription": {},
     "changelog": "Değişiklik günlüğü",
@@ -2799,6 +2867,8 @@
             }
         }
     },
+    "welcomeText": "Hey Hey 👋 Karşınızda FluffyChat. https://matrix.org ile uyumlu herhangi bir homeserver'a giriş yapabilirsiniz. Ve herkesle konuşabilirsiniz. Bu koca bir merkeziyetsiz mesajlaşma ağı!",
+    "@welcomeText": {},
     "setCustomPermissionLevel": "Özel izin düzeyi ayarla",
     "@setCustomPermissionLevel": {},
     "setPermissionsLevelDescription": "Lütfen aşağıdan önceden tanımlanmış bir rol seçin veya 0 ile 100 arasında bir özel izin seviyesi girin.",
@@ -10452,6 +10522,7 @@
     "spaceMemberOf": "{spaces} alan üyesi",
     "spaceMemberOfCanKnock": "{spaces} alan üyesi kapıyı çalabilir",
     "donate": "Bağış yap",
+    "startedAPoll": "{username} bir anket başlattı.",
     "poll": "Anket",
     "startPoll": "Anket başlat",
     "endPoll": "Anketi bitir",
@@ -10566,6 +10637,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

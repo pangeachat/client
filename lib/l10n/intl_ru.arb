@@ -189,6 +189,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} изменил(а) описание чата на: '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} изменил(а) имя чата на '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} изменил(а) права доступа к чату",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -650,6 +674,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Наборы эмодзи для комнаты",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Настройки эмодзи",
     "@emoteSettings": {
         "type": "String",
@@ -725,6 +754,11 @@
     },
     "extremeOffensive": "Крайне оскорбительный",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Имя файла",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1033,6 +1067,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Помните, что вам нужен Pantalaimon для использования сквозного шифрования.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "Новый чат",
     "@newChat": {
         "type": "String",
@@ -1288,8 +1327,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Правила push",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Причина",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Запись",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1335,6 +1384,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Удалено пользователем {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Удалить устройство",
     "@removeDevice": {
@@ -2116,6 +2174,8 @@
     "@foregroundServiceRunning": {},
     "newGroup": "Новая группа",
     "@newGroup": {},
+    "allSpaces": "Все пространства",
+    "@allSpaces": {},
     "commandHint_markasgroup": "Пометить как группу",
     "@commandHint_markasgroup": {},
     "whyIsThisMessageEncrypted": "Почему это сообщение нечитаемо?",
@@ -2637,6 +2697,14 @@
     },
     "changelog": "Список изменений",
     "@changelog": {},
+    "invitedBy": "📩 Приглашен(а) {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "doesNotSeemToBeAValidHomeserver": "Этот домашний сервер выглядит несовместимым. Нет ли в ссылке опечаток?",
     "@doesNotSeemToBeAValidHomeserver": {},
     "noMoreChatsFound": "Больше чатов не обнаружено...",
@@ -2689,6 +2757,8 @@
             }
         }
     },
+    "welcomeText": "Привет. Это FluffyChat. Вы можете подписаться на любой сервер, который совместим с https://matrix.org. А потом поболтать с кем нибудь. Это огромная децентрализованная сеть обмена сообщениями!",
+    "@welcomeText": {},
     "noContactInformationProvided": "Сервер не предоставляет никакой правдивой контактной информации",
     "@noContactInformationProvided": {},
     "aboutHomeserver": "О сервере {homeserver}",
@@ -2993,6 +3063,15 @@
     },
     "donate": "Пожертвовать",
     "@donate": {},
+    "startedAPoll": "{username} начал опрос.",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "poll": "Опрос",
     "@poll": {},
     "startPoll": "Начать опрос",

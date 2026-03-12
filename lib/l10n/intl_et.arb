@@ -189,6 +189,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} muutis vestluse uueks kirjelduseks '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} muutis vestluse uueks nimeks '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} muutis vestlusega seotud õigusi",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -650,6 +674,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Emotsioonitegevuste pakid jututoa jaoks",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Emotsioonitegevuste seadistused",
     "@emoteSettings": {
         "type": "String",
@@ -725,6 +754,11 @@
     },
     "extremeOffensive": "Äärmiselt solvav",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Faili nimi",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1042,6 +1076,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Palun arvesta, et sa saad hetkel kasutada läbivat krüptimist vaid siis, kui koduserver kasutab Pantalaimon'it.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "Uus vestlus",
     "@newChat": {
         "type": "String",
@@ -1297,8 +1336,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Tõukereeglid",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Põhjus",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Salvestan",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1344,6 +1393,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "{username} eemaldas sündmuse",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Eemalda seade",
     "@removeDevice": {
@@ -2148,6 +2206,8 @@
     "@screenSharingTitle": {},
     "foregroundServiceRunning": "See teavitus toimib siis, kui esiplaaniteenus töötab.",
     "@foregroundServiceRunning": {},
+    "allSpaces": "Kõik kogukonnad",
+    "@allSpaces": {},
     "screenSharingDetail": "Sa jagad oma ekraani FuffyChati vahendusel",
     "@screenSharingDetail": {},
     "doNotShowAgain": "Ära näita uuesti",
@@ -2679,6 +2739,14 @@
     "@changeTheDescriptionOfTheGroup": {},
     "chatPermissionsDescription": "Määra erinevatele kasutajatele selles vestluses vajalikud õigused. Tüüpiliselt on need 0, 50 ja 100 (vastavalt kasutajad, moderaatorid ja peakasutajad), kuid igasugused vahepealsed variatsioonid on ka võimalikud.",
     "@chatPermissionsDescription": {},
+    "invitedBy": "📩 Kutsujaks {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "updateInstalled": "🎉 Versiooniuuendus {version} on paigaldatud!",
     "@updateInstalled": {
         "type": "String",
@@ -2741,6 +2809,8 @@
     "@noticeChatBackupDeviceVerification": {},
     "continueText": "Jätka",
     "@continueText": {},
+    "welcomeText": "Tere, tere 👋 See on FluffyChat. Sa võid sisse logida igasse koduserverisse, mis ühildub https://matrix.org serveriga. Ja seejärel saad suhelda kõigiga. Tegemist on ikka väga suure detsentraliseeritud sõnumivõrguga!",
+    "@welcomeText": {},
     "setWallpaper": "Määra taustapildiks",
     "@setWallpaper": {},
     "manageAccount": "Halda kasutajakontot",
@@ -3050,6 +3120,15 @@
     },
     "donate": "Toeta meid rahaliselt",
     "@donate": {},
+    "startedAPoll": "{username} koostas küsitluse.",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "poll": "Küsitlus",
     "@poll": {},
     "startPoll": "Koosta küsitlus",

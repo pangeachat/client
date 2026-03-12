@@ -189,6 +189,30 @@
             }
         }
     },
+    "changedTheChatDescriptionTo": "{username} změnil/a popis konverzace na: „{description}“",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "changedTheChatNameTo": "{username} změnil/a název konverzace na: „{chatname}“",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheChatPermissions": "{username} změnili nastavení oprávnění v chatu",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -650,6 +674,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Balíček emotikonů pro místnost",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "emoteSettings": "Nastavení emotikonů",
     "@emoteSettings": {
         "type": "String",
@@ -725,6 +754,11 @@
     },
     "extremeOffensive": "Extrémně urážlivé",
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "fileName": "Název souboru",
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1042,6 +1076,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Prosím vezměte na vědomí, že pro použití koncového šifrování je prozatím potřeba použít Pantalaimon.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "newChat": "Nový chat",
     "@newChat": {
         "type": "String",
@@ -1297,8 +1336,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "pushRules": "Pravidla push",
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "reason": "Důvod",
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "recording": "Nahrávání",
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -1344,6 +1393,15 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "removedBy": "Odstraněno {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "removeDevice": "Odstraňit zařízení",
     "@removeDevice": {
@@ -2187,6 +2245,8 @@
     "@optionalRedactReason": {},
     "messagesStyle": "Zprávy:",
     "@messagesStyle": {},
+    "allSpaces": "Všechny prostory",
+    "@allSpaces": {},
     "noOtherDevicesFound": "Žádná ostatní zařízení nebyla nalezena",
     "@noOtherDevicesFound": {},
     "chatDescription": "Popis konverzace",
@@ -2365,6 +2425,14 @@
         "placeholders": {
             "count": {
                 "type": "int"
+            }
+        }
+    },
+    "invitedBy": "📩 Pozván {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
             }
         }
     },
@@ -2565,6 +2633,7 @@
     "oneOfYourDevicesIsNotVerified": "Jedno z vašich zařízení není ověřeno",
     "noticeChatBackupDeviceVerification": "Poznámka: Když připojíte všechna svá zařízení k záloze chatu, jsou automaticky ověřena.",
     "continueText": "Pokračovat",
+    "welcomeText": "Ahoj ahoj 👋 Toto je FluffyChat. Můžete se přihlásit na jakýkoli domácí server, který je kompatibilní s https://matrix.org. A pak si můžete psát s kýmkoli. Je to obrovská decentralizovaná síť pro zasílání zpráv!",
     "blur": "Rozostření:",
     "opacity": "Průhlednost:",
     "setWallpaper": "Nastavit pozadí",
@@ -4107,6 +4176,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -10684,6 +10757,7 @@
     "spaceMemberOf": "Člen prostoru {spaces}",
     "spaceMemberOfCanKnock": "Člen prostoru {spaces} může zaklepat",
     "donate": "Darovat",
+    "startedAPoll": "{username} zahájil anketu.",
     "poll": "Anketa",
     "startPoll": "Zahájit anketu",
     "endPoll": "Ukončit anketu",
@@ -10786,6 +10860,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

@@ -1,5 +1,6 @@
 {
     "ignoreUser": "忽略用戶",
+    "changedTheChatNameTo": "{username} 將對話名稱改為：'{chatname}'",
     "changedTheChatPermissions": "{username} 更改了對話權限",
     "changedTheDisplaynameTo": "{username} 將顯示名稱改為：'{displayname}'",
     "changedTheGuestAccessRules": "{username} 更改了訪客存取規則",
@@ -89,6 +90,7 @@
     "emoteExists": "表情符號已存在！",
     "emoteInvalid": "無效的表情符號短碼！",
     "emoteKeyboardNoRecents": "最近使用的表情符號將顯示在這裡...",
+    "emotePacks": "房間表情包",
     "emoteSettings": "表情符號設定",
     "globalChatId": "全域聊天ID",
     "accessAndVisibility": "存取權限及可見性",
@@ -110,6 +112,7 @@
     "errorObtainingLocation": "獲取位置時出錯：{error}",
     "everythingReady": "一切準備就緒！",
     "extremeOffensive": "極度冒犯",
+    "fileName": "檔案名稱",
     "fluffychat": "FluffyChat",
     "fontSize": "字體大小",
     "forward": "轉發",
@@ -177,6 +180,7 @@
     "messagesStyle": "訊息：",
     "moderator": "版主",
     "muteChat": "靜音聊天",
+    "needPantalaimonWarning": "請注意，您目前需要Pantalaimon來使用端對端加密。",
     "newChat": "新聊天",
     "newMessageInFluffyChat": "📝 FluffyChat中的新訊息",
     "newVerificationRequest": "有一個新的驗證請求！",
@@ -240,7 +244,9 @@
     "pleaseFollowInstructionsOnWeb": "請按照網站上的指示操作，然後點擊下一步。",
     "privacy": "隱私",
     "publicRooms": "公開房間",
+    "pushRules": "推送規則",
     "reason": "原因",
+    "recording": "錄音",
     "redactedBy": "由 {username} 編輯",
     "directChat": "直接聊天",
     "redactedByBecause": "由 {username} 編輯，原因：\"{reason}\"",
@@ -250,6 +256,7 @@
     "reject": "拒絕",
     "rejectedTheInvitation": "{username} 拒絕了邀請",
     "removeAllOtherDevices": "移除所有其他設備",
+    "removedBy": "由 {username} 移除",
     "removeDevice": "移除設備",
     "unbanFromChat": "解除封鎖",
     "removeYourAvatar": "刪除你的頭像",
@@ -389,6 +396,7 @@
     "youBannedUser": "你封鎖咗 {user}",
     "youHaveWithdrawnTheInvitationFor": "你已撤回對 {user} 嘅邀請",
     "youInvitedBy": "📩 你已被 {user} 邀請",
+    "invitedBy": "📩 由 {user} 邀請",
     "youInvitedUser": "📩 你邀請咗 {user}",
     "youKicked": "👞 你踢走咗 {user}",
     "youKickedAndBanned": "🙅 你踢走並封鎖了 {user}",
@@ -415,6 +423,7 @@
     "newGroup": "新群組",
     "newSpace": "新空間",
     "enterSpace": "進入空間",
+    "allSpaces": "所有空間",
     "hidePresences": "隱藏狀態列表？",
     "doNotShowAgain": "唔再顯示",
     "wasDirectChatDisplayName": "空白聊天（曾經係 {oldDisplayName}）",
@@ -544,6 +553,7 @@
     "oneOfYourDevicesIsNotVerified": "你的其中一台裝置未經驗證",
     "noticeChatBackupDeviceVerification": "注意：當你將所有裝置連接到聊天備份時，它們會自動驗證。",
     "continueText": "繼續",
+    "welcomeText": "嘿嘿 👋 這是 FluffyChat。你可以登入任何與 https://matrix.org 兼容的家庭伺服器，然後與任何人聊天。這是一個龐大的去中心化訊息網絡！",
     "blur": "模糊：",
     "opacity": "不透明度：",
     "setWallpaper": "設定壁紙",
@@ -1711,6 +1721,17 @@
         "type": "String",
         "placeholders": {}
     },
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "@changedTheChatPermissions": {
         "type": "String",
         "placeholders": {
@@ -2150,6 +2171,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@emoteSettings": {
         "type": "String",
         "placeholders": {}
@@ -2239,6 +2264,10 @@
         "placeholders": {}
     },
     "@extremeOffensive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@fileName": {
         "type": "String",
         "placeholders": {}
     },
@@ -2569,6 +2598,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@newChat": {
         "type": "String",
         "placeholders": {}
@@ -2836,7 +2869,15 @@
         "type": "String",
         "placeholders": {}
     },
+    "@pushRules": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@reason": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@recording": {
         "type": "String",
         "placeholders": {}
     },
@@ -2894,6 +2935,14 @@
     "@removeAllOtherDevices": {
         "type": "String",
         "placeholders": {}
+    },
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@removeDevice": {
         "type": "String",
@@ -3554,6 +3603,14 @@
             }
         }
     },
+    "@invitedBy": {
+        "type": "String",
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "@youInvitedUser": {
         "type": "String",
         "placeholders": {
@@ -3679,6 +3736,10 @@
         "placeholders": {}
     },
     "@enterSpace": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@allSpaces": {
         "type": "String",
         "placeholders": {}
     },
@@ -4297,6 +4358,10 @@
         "placeholders": {}
     },
     "@continueText": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeText": {
         "type": "String",
         "placeholders": {}
     },
@@ -9199,6 +9264,7 @@
     "cantOpenUri": "無法打開 URI {uri}",
     "changeDeviceName": "更改裝置名稱",
     "changedTheChatAvatar": "{username} 更改了聊天頭像",
+    "changedTheChatDescriptionTo": "{username} 將聊天描述更改為：'{description}'",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9505,6 +9571,17 @@
         "type": "String",
         "placeholders": {
             "username": {
+                "type": "String"
+            }
+        }
+    },
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
                 "type": "String"
             }
         }
@@ -11240,6 +11317,7 @@
     "spaceMemberOf": "{spaces} 的空間成員",
     "spaceMemberOfCanKnock": "{spaces} 的空間成員可以敲門",
     "donate": "捐贈",
+    "startedAPoll": "{username} 開始了一個投票。",
     "poll": "投票",
     "startPoll": "開始投票",
     "endPoll": "結束投票",
@@ -11354,6 +11432,14 @@
     "@donate": {
         "type": "String",
         "placeholders": {}
+    },
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
     },
     "@poll": {
         "type": "String",

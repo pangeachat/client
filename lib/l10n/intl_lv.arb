@@ -254,6 +254,8 @@
         "type": "String",
         "placeholders": {}
     },
+    "allSpaces": "Visas vietas",
+    "@allSpaces": {},
     "supposedMxid": "Tam būtu jābūt {mxid}",
     "@supposedMxid": {
         "type": "String",
@@ -392,6 +394,18 @@
     },
     "removeDevicesDescription": "Tu tiksi izrakstīts no šīs ierīces un vairs nevarēsi saņemt ziņas.",
     "@removeDevicesDescription": {},
+    "changedTheChatDescriptionTo": "{username} nomainīja tērzēšanas aprakstu uz '{description}'",
+    "@changedTheChatDescriptionTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "description": {
+                "type": "String"
+            }
+        }
+    },
     "countParticipants": "{count} dalībnieki",
     "@countParticipants": {
         "type": "String",
@@ -527,6 +541,11 @@
     "@enterSpace": {},
     "encryptThisChat": "Šifrēt šo tērzēšanu",
     "@encryptThisChat": {},
+    "fileName": "Datnes nosaukums",
+    "@fileName": {
+        "type": "String",
+        "placeholders": {}
+    },
     "unavailable": "Nav pieejams",
     "@unavailable": {
         "type": "String",
@@ -756,6 +775,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "needPantalaimonWarning": "Lūgums ņemt vērā, ka pagaidām ir nepieciešams Pantalaimon, lai izmantotu pilnīgu šifrēšanu.",
+    "@needPantalaimonWarning": {
+        "type": "String",
+        "placeholders": {}
+    },
     "makeAdminDescription": "Tiklīdz šis lietotājs tiks padarīts par pārvaldītāju, to vairs nevarēs atdarīt, jo tad tam būs tādas pašas atļaujas kā Tev.",
     "@makeAdminDescription": {},
     "edit": "Labot",
@@ -785,6 +809,11 @@
     },
     "passwordHasBeenChanged": "Parole tikai nomainīta",
     "@passwordHasBeenChanged": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pushRules": "Pašpiegādes nosacījumi",
+    "@pushRules": {
         "type": "String",
         "placeholders": {}
     },
@@ -1070,6 +1099,11 @@
             }
         }
     },
+    "recording": "Ieraksta",
+    "@recording": {
+        "type": "String",
+        "placeholders": {}
+    },
     "changedTheChatPermissions": "{username} nomainīja tērzēšanas atļaujas",
     "@changedTheChatPermissions": {
         "type": "String",
@@ -1177,6 +1211,18 @@
     "@archiveRoomDescription": {},
     "exportEmotePack": "Izgūt emociju paku kā .zip",
     "@exportEmotePack": {},
+    "changedTheChatNameTo": "{username} nomainīja tērzēšanas nosaukumu uz '{chatname}'",
+    "@changedTheChatNameTo": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            },
+            "chatname": {
+                "type": "String"
+            }
+        }
+    },
     "account": "Konts",
     "@account": {
         "type": "String",
@@ -1203,6 +1249,15 @@
     },
     "placeCall": "Veikt zvanu",
     "@placeCall": {},
+    "removedBy": "Noņēma {username}",
+    "@removedBy": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "changedTheRoomInvitationLink": "{username} nomainīja uzaicinājuma saiti",
     "@changedTheRoomInvitationLink": {
         "type": "String",
@@ -2325,6 +2380,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "emotePacks": "Emociju pakas istabai",
+    "@emotePacks": {
+        "type": "String",
+        "placeholders": {}
+    },
     "endedTheCall": "{senderName} beidza zvanu",
     "@endedTheCall": {
         "type": "String",
@@ -2607,6 +2667,14 @@
     "@sendCanceled": {},
     "noChatsFoundHere": "Šeit vēl nav tērzēšanu. Jauna saruna ar kādu ir uzsākama ar zemāk esošo pogu. ⤵️",
     "@noChatsFoundHere": {},
+    "invitedBy": "📩 {user} uzaicināja",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
     "moderatorLevel": "{level} - Moderators",
     "@moderatorLevel": {
         "type": "String",
@@ -2729,6 +2797,8 @@
     "@noticeChatBackupDeviceVerification": {},
     "continueText": "Turpināt",
     "@continueText": {},
+    "welcomeText": "Sveicieni! 👋 Šis ir FluffyChat. Tu vari pieteikties jebkurā mājasserverī, kas ir saderīgs ar https://matrix.org. Tad vari tērzēt ar ikvienu. Tas ir milzīgs decentralizētās saziņas tīkls.",
+    "@welcomeText": {},
     "blur": "Aizmiglojums:",
     "@blur": {},
     "setWallpaper": "Iestatīt ekrāntapeti",
@@ -3038,6 +3108,15 @@
     },
     "donate": "Ziedot",
     "@donate": {},
+    "startedAPoll": "{username} uzsāka aptauju.",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
     "poll": "Aptauja",
     "@poll": {},
     "startPoll": "Sākt aptauju",
