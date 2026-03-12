@@ -53,6 +53,7 @@ class AnalyticsDataService {
   final ConstructMergeTable _mergeTable = ConstructMergeTable();
 
   Completer<void> initCompleter = Completer<void>();
+  Object? initError;
 
   AnalyticsDataService(Client client) {
     updateDispatcher = AnalyticsUpdateDispatcher(this);
@@ -72,6 +73,7 @@ class AnalyticsDataService {
   }
 
   bool get isInitializing => !initCompleter.isCompleted;
+  bool get hasInitError => initError != null;
 
   Future<Room?> getAnalyticsRoom(LanguageModel l2) =>
       _analyticsClientGetter.client.getMyAnalyticsRoom(l2);
@@ -177,6 +179,7 @@ class AnalyticsDataService {
       }
     } catch (e, s) {
       Logs().e("Error initializing analytics: $e, $s");
+      initError = e;
     } finally {
       Logs().i("Analytics database initialized.");
       initCompleter.complete();
@@ -202,8 +205,12 @@ class AnalyticsDataService {
 
   Future<void> reinitialize() async {
     Logs().i("Reinitializing analytics database.");
+    initError = null;
     initCompleter = Completer<void>();
     _clear();
+    // Notify listeners immediately so the UI transitions from error to loading.
+    updateDispatcher.sendEmptyAnalyticsUpdate();
+    updateDispatcher.sendActivityAnalyticsUpdate(null);
     await _initDatabase(_analyticsClientGetter.client);
   }
 
