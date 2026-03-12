@@ -5661,6 +5661,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectAudioMessagesOnPlayDescription() {
       return "Awtomatikong i-highlight ang mga mensaheng audio kapag pinatugtog";
     },
+    get$learningAnalytics() {
+      return "Pagsusuri ng pagkatuto";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5674,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kYsT6KGjS1XVyNGDyclufyo9JbQ="] = d.current;
+  d["DlIH3xjoS/lAibN3bzvTfyAxbRA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_638.part.js.map

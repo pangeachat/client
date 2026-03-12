@@ -5661,6 +5661,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectAudioMessagesOnPlayDescription() {
       return "Automatikusan kiemeli az audio \xfczeneteket, amikor lej\xe1tsz\xe1sra ker\xfclnek";
     },
+    get$learningAnalytics() {
+      return "Tanul\xe1si analitika";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5674,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3d9FFd/vM2GCuCetIDJgAwEu3Ns="] = d.current;
+  d["wWM3W2JMqCF+jjvM4vkKVwZXlPk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_719.part.js.map

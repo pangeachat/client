@@ -5661,6 +5661,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectAudioMessagesOnPlayDescription() {
       return "Samodejno ozna\u010dite avdio sporo\u010dila, ko se predvajajo";
     },
+    get$learningAnalytics() {
+      return "Analitika u\u010denja";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5674,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2xxz64jV7Wf7NMkXCpGkEOVa+wQ="] = d.current;
+  d["6Hh7MSgYCCSLxLQoR8BCliR/ACA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_813.part.js.map

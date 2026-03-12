@@ -5661,6 +5661,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectAudioMessagesOnPlayDescription() {
       return "Secara otomatis sorot pesan audio saat diputar";
     },
+    get$learningAnalytics() {
+      return "Analitik pembelajaran";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5674,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["eFMuK89VfkLqUd8No/8kXxMrzFY="] = d.current;
+  d["tdlIHPwy3wFJGEo1Au6esoHdC+0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_746.part.js.map

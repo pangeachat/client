@@ -5661,6 +5661,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectAudioMessagesOnPlayDescription() {
       return "\u0bb5\u0bbf\u0bb3\u0bc8\u0baf\u0bbe\u0b9f\u0bc1\u0bae\u0bcd \u0baa\u0bcb\u0ba4\u0bc1 audio \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0ba4\u0bbe\u0ba9\u0bbe\u0b95 \u0b89\u0baf\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd";
     },
+    get$learningAnalytics() {
+      return "\u0b95\u0bb1\u0bcd\u0bb1\u0bb2\u0bcd \u0baa\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bbe\u0baf\u0bcd\u0bb5\u0bc1";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5678,7 +5681,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8DkMQA5WyKPc7EH2gGe0wkyW6gA="] = d.current;
+  d["J3MKEVJVvCTHA2sFq/B+mS4zC9o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_820.part.js.map

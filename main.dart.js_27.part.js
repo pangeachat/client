@@ -5673,6 +5673,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectAudioMessagesOnPlayDescription() {
       return string$.Real_a_;
     },
+    get$learningAnalytics() {
+      return "An\xe1lise de aprendizagem";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -11322,6 +11325,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$selectAudioMessagesOnPlayDescription() {
       return string$.Real_a_;
+    },
+    get$learningAnalytics() {
+      return "An\xe1lise de aprendizagem";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -16973,6 +16979,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectAudioMessagesOnPlayDescription() {
       return string$.Real_a_;
     },
+    get$learningAnalytics() {
+      return "An\xe1lise de aprendizagem";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -17191,7 +17200,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/QY8UVp5XpgD4Cp63I+Bmb7yMME="] = d.current;
+  d["oTFr7Gnj4+VNCayNOGEQDXDa27s="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

@@ -5661,6 +5661,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectAudioMessagesOnPlayDescription() {
       return "Fremh\xe6v automatisk lydbeskeder, n\xe5r de afspilles";
     },
+    get$learningAnalytics() {
+      return "L\xe6ring analytics";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5674,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QLi1qlxGPxvq0EnGHJf4Rk5x2bI="] = d.current;
+  d["/QPKi2+RvS0mH/vyR6mC6uYjAQ0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_338.part.js.map

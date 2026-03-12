@@ -5661,6 +5661,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectAudioMessagesOnPlayDescription() {
       return "Helis\xf5numid esitatuna automaatselt esile t\xf5sta";
     },
+    get$learningAnalytics() {
+      return "\xd5ppimise anal\xfc\xfcs";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5674,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["SReUcZdrYW6jC3yVPT8v0lXx+wg="] = d.current;
+  d["CiCZ7uiKe9/hsM/axL90eAwpcgs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_583.part.js.map

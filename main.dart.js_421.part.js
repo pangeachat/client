@@ -5661,6 +5661,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectAudioMessagesOnPlayDescription() {
       return "Audio-Nachrichten automatisch hervorheben, wenn sie abgespielt werden";
     },
+    get$learningAnalytics() {
+      return "Lernanalytik";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5677,7 +5680,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0HLwBoiwXG2yOuSgmIR+fZhxMFk="] = d.current;
+  d["0wHF587c/lHKCS2O1ntZfFVouI0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_421.part.js.map

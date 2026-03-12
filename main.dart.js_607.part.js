@@ -5661,6 +5661,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectAudioMessagesOnPlayDescription() {
       return "Audio mezuak automatikoki nabarmentzea erreproduzitzen direnean";
     },
+    get$learningAnalytics() {
+      return "Ikaskuntza analitika";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5677,7 +5680,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["VhBjEUGWUiY1+5gp/0jIcXjX4Ng="] = d.current;
+  d["GcgWDemQkqXxBofUHH8ehxNxxfg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_607.part.js.map

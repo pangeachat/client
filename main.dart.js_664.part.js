@@ -5661,6 +5661,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectAudioMessagesOnPlayDescription() {
       return "Bailigh teachtaireachta\xed guth\xe1in go huathoibr\xedoch nuair a chluineann t\xfa iad";
     },
+    get$learningAnalytics() {
+      return "Anail\xeds\xedocht foghlama";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5677,7 +5680,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["bFAtxSG4dLe0JRIRMR6Nv4n8Xgg="] = d.current;
+  d["5R10GQGP2hh1X+5qQQvDKshPLX4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_664.part.js.map

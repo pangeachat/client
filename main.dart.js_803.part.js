@@ -5661,6 +5661,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectAudioMessagesOnPlayDescription() {
       return "Subliniaz\u0103 automat mesajele audio atunci c\xe2nd sunt redat\u0103";
     },
+    get$learningAnalytics() {
+      return "Analitica \xeenv\u0103\u021b\u0103rii";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5677,7 +5680,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["crG3KzaF8qkNTyrEniprVCr5xLs="] = d.current;
+  d["fcxrFfFTWloj+Vlva++abGfb1l8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_803.part.js.map

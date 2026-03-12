@@ -5662,6 +5662,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectAudioMessagesOnPlayDescription() {
       return "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438 \u0432\u044b\u0434\u0435\u043b\u044f\u0442\u044c \u0430\u0443\u0434\u0438\u043e\u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f \u043f\u0440\u0438 \u0432\u043e\u0441\u043f\u0440\u043e\u0438\u0437\u0432\u0435\u0434\u0435\u043d\u0438\u0438";
     },
+    get$learningAnalytics() {
+      return "\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0430 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5675,7 +5678,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6n/UvGEn0+dhz4K1Bi0i5srz/MY="] = d.current;
+  d["Vzq7SadH1snHro7emjguhG796sk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_806.part.js.map

@@ -5661,6 +5661,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectAudioMessagesOnPlayDescription() {
       return "Automatski istakni audio poruke kada se reprodukuju";
     },
+    get$learningAnalytics() {
+      return "Analitika u\u010denja";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5674,7 +5677,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ISys8ZqJt5RzvTzEtuXnCgfJ3pQ="] = d.current;
+  d["BCggue0xp4TNfuV8NKBRViKi9fI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_815.part.js.map

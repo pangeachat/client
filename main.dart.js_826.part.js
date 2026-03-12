@@ -5661,6 +5661,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectAudioMessagesOnPlayDescription() {
       return "Ovoz berilganda audio xabarlarni avtomatik ravishda ajratish";
     },
+    get$learningAnalytics() {
+      return "O'qitish tahlillari";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5678,7 +5681,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9sy22Wr88ywJXaSa+qyzmh4bFno="] = d.current;
+  d["8zNYlhfafdhisCFg1YRf88EYTtc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_826.part.js.map
