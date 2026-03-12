@@ -4204,8 +4204,6 @@
     "pingParticipantsNotification": "{user} 正在寻找用户加入 {room} 中的活动会话",
     "course": "课程",
     "courses": "课程",
-    "courseName": "课程名称",
-    "createNewCourse": "新建课程",
     "goToCourse": "前往课程：{course}",
     "activityComplete": "此活动已完成。活动摘要应在下方显示。",
     "startNewSession": "开始新会话",
@@ -8432,14 +8430,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

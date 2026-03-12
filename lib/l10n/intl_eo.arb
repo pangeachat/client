@@ -3321,8 +3321,6 @@
     "pingParticipantsNotification": "{user} serĉas uzantojn por aliĝi al la aktivec-sesio en {room}",
     "course": "Kurso",
     "courses": "Kursoj",
-    "courseName": "Nomo de la kurso",
-    "createNewCourse": "Nova kurso",
     "goToCourse": "Iri al kurso: {course}",
     "activityComplete": "Ĉi tiu aktiveco estas finita. La resumo de la aktiveco devus esti havebla sube.",
     "startNewSession": "Komenci novan sesion",
@@ -9313,14 +9311,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

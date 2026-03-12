@@ -3238,8 +3238,6 @@
     "pingParticipantsNotification": "{user} traži korisnike da se pridruže sesiji aktivnosti u {room}",
     "course": "Kurs",
     "courses": "Kursevi",
-    "courseName": "Naziv kursa",
-    "createNewCourse": "Novi kurs",
     "goToCourse": "Idi na kurs: {course}",
     "activityComplete": "Ova aktivnost je završena. Sažetak aktivnosti bi trebao biti dostupan ispod.",
     "startNewSession": "Započni novu sesiju",
@@ -9317,14 +9315,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

@@ -3490,8 +3490,6 @@
     "pingParticipantsNotification": "{user}が{room}のアクティビティセッションに参加するユーザーを探しています",
     "course": "コース",
     "courses": "コース",
-    "courseName": "コース名",
-    "createNewCourse": "新しいコース",
     "goToCourse": "コースへ移動：{course}",
     "activityComplete": "このアクティビティは完了しました。アクティビティの概要は下に表示されるはずです。",
     "startNewSession": "新しいセッションを開始",
@@ -9062,14 +9060,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

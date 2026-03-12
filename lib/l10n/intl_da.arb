@@ -1738,8 +1738,6 @@
     "pingParticipantsNotification": "{user} leder efter brugere til at deltage i aktivitetssessionen i {room}",
     "course": "Kursus",
     "courses": "Kurser",
-    "courseName": "Kursets navn",
-    "createNewCourse": "Opret nyt kursus",
     "goToCourse": "Gå til kursus: {course}",
     "activityComplete": "Denne aktivitet er fuldført. Resuméet af aktiviteten bør være tilgængeligt nedenfor.",
     "startNewSession": "Start ny session",
@@ -9288,14 +9286,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

@@ -1766,8 +1766,6 @@
     "pingParticipantsNotification": "{user} cerca usatores pro aderir a le session de activitate in {room}",
     "course": "Curso",
     "courses": "Cursus",
-    "courseName": "Nomeno del curso",
-    "createNewCourse": "Nove curso",
     "goToCourse": "Irr a curso: {course}",
     "activityComplete": "Iste activitate ha essite completate. Le summario del activitate debe esser disponibile infra.",
     "startNewSession": "Iniciar nove session",
@@ -9304,14 +9302,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

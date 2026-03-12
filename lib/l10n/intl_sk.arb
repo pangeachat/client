@@ -2868,8 +2868,6 @@
     "pingParticipantsNotification": "{user} hľadá používateľov na pripojenie k relácii aktivity v {room}",
     "course": "Kurz",
     "courses": "Kurzy",
-    "courseName": "Názov kurzu",
-    "createNewCourse": "Nový kurz",
     "goToCourse": "Prejsť na kurz: {course}",
     "activityComplete": "Táto aktivita bola dokončená. Súhrn aktivity by mal byť dostupný nižšie.",
     "startNewSession": "Začať novú reláciu",
@@ -9310,14 +9308,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

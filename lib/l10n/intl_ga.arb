@@ -4209,8 +4209,6 @@
     "pingParticipantsNotification": "{user} ag lorg úsáideoirí chun rannpháirtíocht sa seisiún gníomhaíochta i {room}",
     "course": "Cúrsa",
     "courses": "Cúrsaí",
-    "courseName": "Ainm an chúrsa",
-    "createNewCourse": "Cúrsa nua",
     "goToCourse": "Téigh go cúrsa: {course}",
     "activityComplete": "Tá an ghníomhaíocht seo críochnaithe. Ba chóir go mbeadh achoimre na gníomhaíochta ar fáil thíos.",
     "startNewSession": "Tús a chur le seisiún nua",
@@ -8439,14 +8437,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

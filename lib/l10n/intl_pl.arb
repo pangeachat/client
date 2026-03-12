@@ -4081,8 +4081,6 @@
     "pingParticipantsNotification": "{user} szuka użytkowników do dołączenia do sesji aktywności w {room}",
     "course": "Kurs",
     "courses": "Kursy",
-    "courseName": "Nazwa kursu",
-    "createNewCourse": "Nowy kurs",
     "goToCourse": "Przejdź do kursu: {course}",
     "activityComplete": "Ta aktywność została ukończona. Podsumowanie aktywności powinno być dostępne poniżej.",
     "startNewSession": "Rozpocznij nową sesję",
@@ -8313,14 +8311,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

@@ -3472,8 +3472,6 @@
     "pingParticipantsNotification": "{user} ཚོང་ཁང་ལ་ལོག་བྱེད་ལས་སྤྱོད་ལེན་ལ་འདུག",
     "course": "ཚོང་ཁང།",
     "courses": "ཚོང་ཁང་ཚོད།",
-    "courseName": "ཚོང་ཁང་མིང་",
-    "createNewCourse": "གསར་བརྗེ་ཚོང་ཁང།",
     "goToCourse": "ཚོང་ཁང་ལ་འགྱོ: {course}",
     "activityComplete": "འདི་ལས་བཟོ་བཅོས་ཡོད། ལས་བཟོ་བཅོས་སྤྱོད་ལེན་འདི་ནང་ལ་འབད་ཡོད་མི་སྤྱོད་ལེན་འབད་ནས་འདི་ལས་སྤྱོད་འབད།",
     "startNewSession": "གསར་འཛུལ་སྤྱོད་ལས་སྤྱོད་འགྱོ",
@@ -8263,14 +8261,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

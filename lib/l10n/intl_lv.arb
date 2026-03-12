@@ -4180,8 +4180,6 @@
     "pingParticipantsNotification": "{user} meklē lietotājus, lai pievienotos aktivitātes sesijai {room}",
     "course": "Kursa",
     "courses": "Kursi",
-    "courseName": "Kursa nosaukums",
-    "createNewCourse": "Jauns kurss",
     "goToCourse": "Dodieties uz kursu: {course}",
     "activityComplete": "Šī aktivitāte ir pabeigta. Apakšā ir pieejams aktivitātes kopsavilkums.",
     "startNewSession": "Sākt jaunu sesiju",
@@ -8432,14 +8430,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

@@ -4059,8 +4059,6 @@
     "pingParticipantsNotification": "{user} 正在尋找用戶加入 {room} 的活動會議",
     "course": "課程",
     "courses": "課程",
-    "courseName": "課程名稱",
-    "createNewCourse": "新建課程",
     "goToCourse": "前往課程：{course}",
     "activityComplete": "此活動已完成。活動摘要應在下方提供。",
     "startNewSession": "開始新會話",
@@ -8332,14 +8330,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

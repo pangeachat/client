@@ -4073,8 +4073,6 @@
     "pingParticipantsNotification": "{user} keres felhasználókat a {room} szobában a tevékenységhez",
     "course": "Kurzus",
     "courses": "Kurzusok",
-    "courseName": "Kurzus neve",
-    "createNewCourse": "Új kurzus",
     "goToCourse": "Ugrás a kurzusra: {course}",
     "activityComplete": "Ez a tevékenység befejeződött. Az összefoglaló az alábbiakban érhető el.",
     "startNewSession": "Új szekció indítása",
@@ -8321,14 +8319,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

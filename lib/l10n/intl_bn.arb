@@ -3642,8 +3642,6 @@
     "pingParticipantsNotification": "{user} ব্যবহারকারীদের খুঁজছেন যাতে {room} এ কার্যকলাপ সেশনে যোগ দিতে পারে",
     "course": "কোর্স",
     "courses": "কোর্সসমূহ",
-    "courseName": "কোর্সের নাম",
-    "createNewCourse": "নতুন কোর্স",
     "goToCourse": "কোর্সে যান: {course}",
     "activityComplete": "এই কার্যকলাপটি সম্পন্ন হয়েছে। কার্যকলাপের সারাংশ নিচে পাওয়া যাবে।",
     "startNewSession": "নতুন সেশন শুরু করুন",
@@ -8909,14 +8907,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

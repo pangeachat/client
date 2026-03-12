@@ -4502,8 +4502,6 @@
     },
     "course": "Course",
     "courses": "Courses",
-    "courseName": "Course name",
-    "createNewCourse": "New course",
     "goToCourse": "Go to course: {course}",
     "@goToCourse": {
         "type": "String",

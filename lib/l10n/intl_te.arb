@@ -1728,8 +1728,6 @@
     "pingParticipantsNotification": "{user} {room}లో కార్యకలాప సెషన్‌లో చేరడానికి వినియోగదారులను చూస్తున్నారు",
     "course": "కోర్సు",
     "courses": "కోర్సులు",
-    "courseName": "కోర్సు పేరు",
-    "createNewCourse": "కొత్త కోర్సు",
     "goToCourse": "కోర్సుకు వెళ్లండి: {course}",
     "activityComplete": "ఈ కార్యకలాపం పూర్తయింది. క్రింద కార్యకలాప సారాంశం అందుబాటులో ఉండాలి.",
     "startNewSession": "కొత్త సెషన్ ప్రారంభించండి",
@@ -9315,14 +9313,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

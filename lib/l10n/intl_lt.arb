@@ -3506,8 +3506,6 @@
     "pingParticipantsNotification": "{user} ieško naudotojų prisijungti prie veiklos sesijos {room}",
     "course": "Kursas",
     "courses": "Kursai",
-    "courseName": "Kurso pavadinimas",
-    "createNewCourse": "Naujas kursas",
     "goToCourse": "Eiti į kursą: {course}",
     "activityComplete": "Ši veikla buvo užbaigta. Apžvalga turėtų būti prieinama žemiau.",
     "startNewSession": "Pradėti naują sesiją",
@@ -9080,14 +9078,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

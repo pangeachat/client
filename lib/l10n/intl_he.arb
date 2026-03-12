@@ -2829,8 +2829,6 @@
     "pingParticipantsNotification": "{user} מחפש משתמשים להצטרף למפגש הפעילות ב-{room}",
     "course": "קורס",
     "courses": "קורסים",
-    "courseName": "שם הקורס",
-    "createNewCourse": "קורס חדש",
     "goToCourse": "עבור לקורס: {course}",
     "activityComplete": "הפעילות הזו הושלמה. סיכום הפעילות אמור להיות זמין למטה.",
     "startNewSession": "התחל מפגש חדש",
@@ -9273,14 +9271,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

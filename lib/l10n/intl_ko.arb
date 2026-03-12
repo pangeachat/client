@@ -4023,8 +4023,6 @@
     "pingParticipantsNotification": "{user}님이 {room}에서 활동 세션에 참여할 사용자를 찾고 있습니다",
     "course": "코스",
     "courses": "코스들",
-    "courseName": "코스 이름",
-    "createNewCourse": "새 코스 만들기",
     "goToCourse": "코스로 이동: {course}",
     "activityComplete": "이 활동이 완료되었습니다. 활동 요약은 아래에서 확인하실 수 있습니다.",
     "startNewSession": "새 세션 시작",
@@ -8411,14 +8409,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

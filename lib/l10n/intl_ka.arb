@@ -2359,8 +2359,6 @@
     "pingParticipantsNotification": "{user} ეძებს მომხმარებლებს, რომ შეუერთდნენ აქტივობის სესიას {room}-ში",
     "course": "კურსი",
     "courses": "კურსები",
-    "courseName": "კურსის სახელი",
-    "createNewCourse": "ახალი კურსი",
     "goToCourse": "გადადი კურსზე: {course}",
     "activityComplete": "ეს აქტივობა დასრულებულია. აქტივობის მიმოხილვა უნდა იყოს ხელმისაწვდომი ქვემოთ.",
     "startNewSession": "ახალი სესიის დაწყება",
@@ -9262,14 +9260,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

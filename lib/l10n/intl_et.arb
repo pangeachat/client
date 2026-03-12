@@ -8081,8 +8081,6 @@
     "pingParticipantsNotification": "{user} otsib kasutajaid tegevusnõupidamisse {room}",
     "course": "Kursus",
     "courses": "Kursused",
-    "courseName": "Kursuse nimi",
-    "createNewCourse": "Uus kursus",
     "goToCourse": "Mine kursusele: {course}",
     "activityComplete": "See tegevus on lõpetatud. Tegevuse kokkuvõte peaks olema allpool saadaval.",
     "startNewSession": "Alusta uut sessiooni",
@@ -8438,14 +8436,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

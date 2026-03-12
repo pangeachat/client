@@ -4079,8 +4079,6 @@
     "pingParticipantsNotification": "{user} {room} இல் செயல்பாட்டில் சேர பங்கேற்பாளர்களை தேடுகிறார்",
     "course": "பாடம்",
     "courses": "பாடங்கள்",
-    "courseName": "பாடத்தின் பெயர்",
-    "createNewCourse": "புதிய பாடம்",
     "goToCourse": "பாடத்துக்கு செல்லவும்: {course}",
     "activityComplete": "இந்த செயல்பாடு முடிந்துவிட்டது. செயல்பாட்டின் சுருக்கம் கீழே கிடைக்கும்.",
     "startNewSession": "புதிய அமர்வை தொடங்கவும்",
@@ -8320,14 +8318,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

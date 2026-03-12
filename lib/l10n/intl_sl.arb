@@ -2223,8 +2223,6 @@
     "pingParticipantsNotification": "{user} išče uporabnike za sodelovanje v aktivnosti v {room}",
     "course": "Tečaj",
     "courses": "Tečaji",
-    "courseName": "Ime tečaja",
-    "createNewCourse": "Nov tečaj",
     "goToCourse": "Pojdi na tečaj: {course}",
     "activityComplete": "Ta dejavnost je zaključena. Povzetek dejavnosti bi moral biti na voljo spodaj.",
     "startNewSession": "Začni novo sejo",
@@ -9310,14 +9308,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

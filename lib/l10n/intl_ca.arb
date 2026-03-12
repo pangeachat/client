@@ -4045,8 +4045,6 @@
     "pingParticipantsNotification": "{user} busca usuaris per unir-se a la sessió d'activitat a {room}",
     "course": "Curs",
     "courses": "Cursos",
-    "courseName": "Nom del curs",
-    "createNewCourse": "Nou curs",
     "goToCourse": "Ves al curs: {course}",
     "activityComplete": "Aquesta activitat s'ha completat. El resum de l'activitat hauria d'estar disponible a sota.",
     "startNewSession": "Inicia una nova sessió",
@@ -8345,14 +8343,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

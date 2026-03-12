@@ -4078,8 +4078,6 @@
     "pingParticipantsNotification": "{user} در حال جستجوی کاربران برای پیوستن به جلسه فعالیت در {room} است",
     "course": "دوره",
     "courses": "دوره‌ها",
-    "courseName": "نام دوره",
-    "createNewCourse": "دوره جدید",
     "goToCourse": "برو به دوره: {course}",
     "activityComplete": "این فعالیت کامل شده است. خلاصه فعالیت باید در زیر در دسترس باشد.",
     "startNewSession": "شروع جلسه جدید",
@@ -8311,14 +8309,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

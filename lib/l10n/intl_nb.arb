@@ -4067,8 +4067,6 @@
     "pingParticipantsNotification": "{user} ser etter brukere for å delta i aktivitetsøkten i {room}",
     "course": "Kurs",
     "courses": "Kurs",
-    "courseName": "Kursnavn",
-    "createNewCourse": "Nytt kurs",
     "goToCourse": "Gå til kurset: {course}",
     "activityComplete": "Denne aktiviteten er fullført. Oppsummeringen av aktiviteten skal være tilgjengelig nedenfor.",
     "startNewSession": "Start ny økt",
@@ -8487,14 +8485,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

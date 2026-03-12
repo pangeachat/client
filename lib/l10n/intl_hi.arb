@@ -3638,8 +3638,6 @@
     "pingParticipantsNotification": "{user} गतिविधि सत्र में शामिल होने के लिए उपयोगकर्ताओं की तलाश कर रहा है {room}",
     "course": "कोर्स",
     "courses": "कोर्स",
-    "courseName": "कोर्स का नाम",
-    "createNewCourse": "नया कोर्स",
     "goToCourse": "कोर्स पर जाएं: {course}",
     "activityComplete": "यह गतिविधि पूरी हो गई है। गतिविधि का सारांश नीचे उपलब्ध होना चाहिए।",
     "startNewSession": "नई सत्र शुरू करें",
@@ -8913,14 +8911,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

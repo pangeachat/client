@@ -3959,8 +3959,6 @@
     "pingParticipantsNotification": "{user} يبحث عن مستخدمين للانضمام إلى جلسة النشاط في {room}",
     "course": "دورة",
     "courses": "دورات",
-    "courseName": "اسم الدورة",
-    "createNewCourse": "دورة جديدة",
     "goToCourse": "اذهب إلى الدورة: {course}",
     "activityComplete": "تم إكمال هذا النشاط. يجب أن تتوفر ملخص النشاط أدناه.",
     "startNewSession": "ابدأ جلسة جديدة",
@@ -8534,14 +8532,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

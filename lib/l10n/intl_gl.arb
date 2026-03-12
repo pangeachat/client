@@ -4204,8 +4204,6 @@
     "pingParticipantsNotification": "{user} está a buscar usuarios para unirse á sesión de actividade en {room}",
     "course": "Curso",
     "courses": "Cursos",
-    "courseName": "Nome do curso",
-    "createNewCourse": "Novo curso",
     "goToCourse": "Ir ao curso: {course}",
     "activityComplete": "Esta actividade foi completada. O resumo da actividade debería estar dispoñible a continuación.",
     "startNewSession": "Comezar nova sesión",
@@ -8432,14 +8430,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

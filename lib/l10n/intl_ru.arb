@@ -4191,8 +4191,6 @@
     "pingParticipantsNotification": "{user} ищет участников для присоединения к сессии в {room}",
     "course": "Курс",
     "courses": "Курсы",
-    "courseName": "Название курса",
-    "createNewCourse": "Новый курс",
     "goToCourse": "Перейти к курсу: {course}",
     "activityComplete": "Эта активность завершена. Обзор активности должен быть доступен ниже.",
     "startNewSession": "Начать новую сессию",
@@ -8419,14 +8417,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

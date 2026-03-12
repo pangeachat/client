@@ -3638,8 +3638,6 @@
     "pingParticipantsNotification": "{user} es cercant usatôrs pro jontar a la session de activitât in {room}",
     "course": "Cors",
     "courses": "Cors",
-    "courseName": "Nomen del cors",
-    "createNewCourse": "Nove cors",
     "goToCourse": "Andar a le cors: {course}",
     "activityComplete": "Chest activitât e stada completade. La resumé de l'activitât devess esser disponibil sota.",
     "startNewSession": "Comenciar nove session",
@@ -8913,14 +8911,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

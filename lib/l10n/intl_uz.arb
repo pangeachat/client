@@ -4212,8 +4212,6 @@
     "pingParticipantsNotification": "{user} {room}da faoliyat sessiyasiga qatnashish uchun foydalanuvchilarni qidiryapti",
     "course": "Kurs",
     "courses": "Kurslar",
-    "courseName": "Kurs nomi",
-    "createNewCourse": "Yangi kurs",
     "goToCourse": "Kursga o'tish: {course}",
     "activityComplete": "Ushbu faoliyat yakunlandi. Faoliyat xulosasi quyida bo'lishi kerak.",
     "startNewSession": "Yangi sessiya boshlash",
@@ -8858,14 +8856,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

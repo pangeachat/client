@@ -4174,8 +4174,6 @@
     "pingParticipantsNotification": "{user} etsii käyttäjiä liittymään aktiviteettisessioon {room}",
     "course": "Kurssi",
     "courses": "Kurssit",
-    "courseName": "Kurssin nimi",
-    "createNewCourse": "Uusi kurssi",
     "goToCourse": "Siirry kurssiin: {course}",
     "activityComplete": "Tämä aktiviteetti on suoritettu. Yhteenveto aktiviteetista pitäisi olla saatavilla alla.",
     "startNewSession": "Aloita uusi istunto",
@@ -8412,14 +8410,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },

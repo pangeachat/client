@@ -3638,8 +3638,6 @@
     "pingParticipantsNotification": "{user} กำลังมองหาผู้ใช้เพื่อเข้าร่วมเซสชันกิจกรรมใน {room}",
     "course": "หลักสูตร",
     "courses": "หลักสูตร",
-    "courseName": "ชื่อหลักสูตร",
-    "createNewCourse": "สร้างหลักสูตรใหม่",
     "goToCourse": "ไปที่หลักสูตร: {course}",
     "activityComplete": "กิจกรรมนี้เสร็จสมบูรณ์แล้ว สรุปกิจกรรมควรพร้อมใช้งานด้านล่าง",
     "startNewSession": "เริ่มเซสชันใหม่",
@@ -8913,14 +8911,6 @@
         "placeholders": {}
     },
     "@courses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@courseName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewCourse": {
         "type": "String",
         "placeholders": {}
     },
