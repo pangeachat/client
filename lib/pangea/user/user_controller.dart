@@ -125,7 +125,7 @@ class UserController {
     await initialize();
     final prevHash = profile.hashCode;
 
-    final Profile updatedProfile = update(profile.copy());
+    final Profile updatedProfile = update(profile);
 
     final sourceCodeShort = updatedProfile.userSettings.sourceLanguage
         ?.split("-")

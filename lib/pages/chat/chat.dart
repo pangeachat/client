@@ -2420,8 +2420,9 @@ class ChatController extends State<ChatPageWithRoom>
         await MatrixState.pangeaController.userController.updateProfile((
           profile,
         ) {
-          profile.userSettings.targetLanguage = target;
-          return profile;
+          return profile.copyWith(
+            userSettings: profile.userSettings.copyWith(targetLanguage: target),
+          );
         }, waitForDataInSync: true);
       },
     );

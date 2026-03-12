@@ -97,13 +97,20 @@ Future<void> pLanguageDialog(
                             future: () async {
                               try {
                                 await pangeaController.userController
-                                    .updateProfile((profile) {
-                                      profile.userSettings.sourceLanguage =
-                                          selectedSourceLanguage?.langCode;
-                                      profile.userSettings.targetLanguage =
-                                          selectedTargetLanguage.langCode;
-                                      return profile;
-                                    }, waitForDataInSync: true);
+                                    .updateProfile(
+                                      (profile) => profile.copyWith(
+                                        userSettings: profile.userSettings
+                                            .copyWith(
+                                              sourceLanguage:
+                                                  selectedSourceLanguage
+                                                      ?.langCode,
+                                              targetLanguage:
+                                                  selectedTargetLanguage
+                                                      .langCode,
+                                            ),
+                                      ),
+                                      waitForDataInSync: true,
+                                    );
                                 Navigator.pop(context);
                               } catch (err, s) {
                                 debugger(when: kDebugMode);

@@ -125,11 +125,13 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
     });
 
     await _update(
-      (model) {
-        model.userSettings.targetLanguage = lang.langCode;
-        model.userSettings.voice = null;
-        return model;
-      },
+      (model) => model.copyWith(
+        userSettings: model.userSettings.copyWith(
+          targetLanguage: lang.langCode,
+          voice: null,
+          setVoiceNull: true,
+        ),
+      ),
       () {
         if (mounted) {
           setState(() {
@@ -147,10 +149,9 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
     setState(() => _selectedLevel = level);
 
     await _update(
-      (model) {
-        model.userSettings.cefrLevel = level;
-        return model;
-      },
+      (model) => model.copyWith(
+        userSettings: model.userSettings.copyWith(cefrLevel: level),
+      ),
       () {
         if (mounted) {
           setState(() => _selectedLevel = prevLevel);
@@ -165,10 +166,9 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
 
     setState(() => _selectedVoice = voice);
     await _update(
-      (model) {
-        model.userSettings.voice = voice;
-        return model;
-      },
+      (model) => model.copyWith(
+        userSettings: model.userSettings.copyWith(voice: voice),
+      ),
       () {
         if (mounted) {
           setState(() => _selectedVoice = prevVoice);
