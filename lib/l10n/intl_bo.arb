@@ -3499,7 +3499,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-03-12 12:47:18.896868",
+    "@@last_modified": "2026-03-13 15:15:53.280370",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9414,12 +9414,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Kedua bahasa apa yang Anda pelajari?",
-    "searchLanguagesHint": "Cari bahasa target",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -10387,6 +10382,16 @@
     "zuDisplayName": "ཟུ་ལུ",
     "learningAnalytics": "Bojan analitika",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Mi estu lernante...",
+    "alreadySpeak": "Mi jam parolas...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

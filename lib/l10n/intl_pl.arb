@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-03-12 12:47:21.737743",
+    "@@last_modified": "2026-03-13 15:15:57.464435",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10145,12 +10145,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Jakiego języka się uczysz?",
-    "searchLanguagesHint": "Szukaj języków docelowych",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -10830,6 +10825,16 @@
     },
     "learningAnalytics": "Analiza uczenia się",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Uczę się...",
+    "alreadySpeak": "Już mówię...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-12 12:47:17.542854",
+    "@@last_modified": "2026-03-13 15:15:49.811304",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10153,12 +10153,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "நீங்கள் எது மொழி கற்றுக்கொள்கிறீர்கள்?",
-    "searchLanguagesHint": "இலக்கு மொழிகளை தேடுங்கள்",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -10837,6 +10832,16 @@
     },
     "learningAnalytics": "கற்றல் பகுப்பாய்வு",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "நான் கற்றுக்கொள்கிறேன்...",
+    "alreadySpeak": "நான் ஏற்கனவே பேசுகிறேன்...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

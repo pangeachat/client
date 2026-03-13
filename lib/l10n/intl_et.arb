@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-03-12 12:46:56.877110",
+    "@@last_modified": "2026-03-13 15:15:22.353189",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10276,12 +10276,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Millist keelt sa õpid?",
-    "searchLanguagesHint": "Otsi sihtkeeli",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -10718,6 +10713,16 @@
     },
     "learningAnalytics": "Õppimise analüüs",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Ma õpin...",
+    "alreadySpeak": "Ma juba räägin...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

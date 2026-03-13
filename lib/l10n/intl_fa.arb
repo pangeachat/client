@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-12 12:47:20.989919",
+    "@@last_modified": "2026-03-13 15:15:56.457263",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10144,12 +10144,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "شما در حال یادگیری چه زبانی هستید؟",
-    "searchLanguagesHint": "زبان‌های هدف را جستجو کنید",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -10833,6 +10828,16 @@
     },
     "learningAnalytics": "تحلیل یادگیری",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "من در حال یادگیری هستم...",
+    "alreadySpeak": "من قبلاً صحبت می‌کنم...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

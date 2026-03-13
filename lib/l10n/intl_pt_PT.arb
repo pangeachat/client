@@ -3084,7 +3084,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-03-12 12:47:05.315429",
+    "@@last_modified": "2026-03-13 15:15:38.132395",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11098,12 +11098,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Qual idioma você está aprendendo?",
-    "searchLanguagesHint": "Pesquise idiomas-alvo",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -11797,6 +11792,16 @@
     },
     "learningAnalytics": "Análise de aprendizagem",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Estou aprendendo...",
+    "alreadySpeak": "Eu já falo...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

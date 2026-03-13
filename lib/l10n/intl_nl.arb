@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-12 12:47:18.166585",
+    "@@last_modified": "2026-03-13 15:15:51.135216",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10265,12 +10265,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Welke taal ben je aan het leren?",
-    "searchLanguagesHint": "Zoek doeltalen",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -10721,6 +10716,16 @@
     },
     "learningAnalytics": "Leeranalyses",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Ik ben aan het leren...",
+    "alreadySpeak": "Ik spreek al...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

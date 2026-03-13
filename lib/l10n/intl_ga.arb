@@ -4256,7 +4256,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-03-12 12:47:29.108944",
+    "@@last_modified": "2026-03-13 15:16:07.515779",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10272,12 +10272,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Cén teanga atá á foghlaim agat?",
-    "searchLanguagesHint": "Cuardaigh teangacha sprioc",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -10732,6 +10727,16 @@
     },
     "learningAnalytics": "Anailísíocht foghlama",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Táim ag foghlaim...",
+    "alreadySpeak": "Labhraím cheana...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

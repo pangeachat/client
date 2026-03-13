@@ -1785,7 +1785,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-03-12 12:46:47.526846",
+    "@@last_modified": "2026-03-13 15:15:07.407307",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -11121,12 +11121,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Hvilket sprog lærer du?",
-    "searchLanguagesHint": "Søg efter målsprog",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -11815,6 +11810,16 @@
     },
     "learningAnalytics": "Læring analytics",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Jeg lærer...",
+    "alreadySpeak": "Jeg taler allerede...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

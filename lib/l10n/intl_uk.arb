@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-03-12 12:47:00.453482",
+    "@@last_modified": "2026-03-13 15:15:29.727795",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10265,12 +10265,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Яку мову ви вивчаєте?",
-    "searchLanguagesHint": "Шукати цільові мови",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -10721,6 +10716,16 @@
     },
     "learningAnalytics": "Аналітика навчання",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Я вивчаю...",
+    "alreadySpeak": "Я вже говорю...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

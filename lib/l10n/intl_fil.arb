@@ -2565,7 +2565,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-03-12 12:47:11.783209",
+    "@@last_modified": "2026-03-13 15:15:41.372197",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11041,12 +11041,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Anong wika ang iyong pinag-aaralan?",
-    "searchLanguagesHint": "Maghanap ng mga target na wika",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -11740,6 +11735,16 @@
     },
     "learningAnalytics": "Pagsusuri ng pagkatuto",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Nag-aaral ako ng...",
+    "alreadySpeak": "Nagsasalita na ako ng...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-12 12:47:16.705415",
+    "@@last_modified": "2026-03-13 15:15:47.572564",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -5942,12 +5942,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Bạn đang học ngôn ngữ nào?",
-    "searchLanguagesHint": "Tìm kiếm ngôn ngữ mục tiêu",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -6636,6 +6631,16 @@
     },
     "learningAnalytics": "Phân tích học tập",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Tôi đang học...",
+    "alreadySpeak": "Tôi đã nói...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-12 12:46:49.827384",
+    "@@last_modified": "2026-03-13 15:15:11.506419",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10852,12 +10852,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Ce limbă înveți?",
-    "searchLanguagesHint": "Caută limbi țintă",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -11546,6 +11541,16 @@
     },
     "learningAnalytics": "Analitica învățării",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Învăț...",
+    "alreadySpeak": "Deja vorbesc...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

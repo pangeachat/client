@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-12 12:46:49.078346",
+    "@@last_modified": "2026-03-13 15:15:10.273106",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10154,12 +10154,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Bahasa apa yang Anda pelajari?",
-    "searchLanguagesHint": "Cari bahasa target",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -10818,6 +10813,16 @@
     },
     "learningAnalytics": "Analitik pembelajaran",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Saya sedang belajar...",
+    "alreadySpeak": "Saya sudah bisa berbicara...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

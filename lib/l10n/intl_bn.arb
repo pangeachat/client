@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-12 12:47:20.220470",
+    "@@last_modified": "2026-03-13 15:15:55.241802",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10742,12 +10742,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "আপনি কোন ভাষা শিখছেন?",
-    "searchLanguagesHint": "লক্ষ্য ভাষা অনুসন্ধান করুন",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -11436,6 +11431,16 @@
     },
     "learningAnalytics": "শিক্ষণ বিশ্লেষণ",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "আমি শিখছি...",
+    "alreadySpeak": "আমি ইতিমধ্যে বলি...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

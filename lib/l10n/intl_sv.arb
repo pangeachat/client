@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-12 12:47:22.560551",
+    "@@last_modified": "2026-03-13 15:15:58.450321",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10614,12 +10614,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Vilket språk lär du dig?",
-    "searchLanguagesHint": "Sök efter målspråk",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -11308,6 +11303,16 @@
     },
     "learningAnalytics": "Lärandeanalys",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Jag lär mig...",
+    "alreadySpeak": "Jag talar redan...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

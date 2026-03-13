@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-12 12:46:59.731286",
+    "@@last_modified": "2026-03-13 15:15:27.988279",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10158,12 +10158,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Quale lingua stai imparando?",
-    "searchLanguagesHint": "Cerca lingue target",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -10812,6 +10807,16 @@
     },
     "learningAnalytics": "Analisi dell'apprendimento",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Sto imparando...",
+    "alreadySpeak": "Parlo già...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

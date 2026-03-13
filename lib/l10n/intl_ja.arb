@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-03-12 12:47:24.173934",
+    "@@last_modified": "2026-03-13 15:16:00.656783",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10895,12 +10895,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "どの言語を学んでいますか？",
-    "searchLanguagesHint": "ターゲット言語を検索",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -11589,6 +11584,16 @@
     },
     "learningAnalytics": "学習分析",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "私は学んでいます...",
+    "alreadySpeak": "私はすでに話せます...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

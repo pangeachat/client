@@ -1775,7 +1775,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-03-12 12:47:15.139457",
+    "@@last_modified": "2026-03-13 15:15:45.231365",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11148,12 +11148,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "మీరు ఏ భాష నేర్చుకుంటున్నారు?",
-    "searchLanguagesHint": "లక్ష్య భాషలను శోధించండి",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -11842,6 +11837,16 @@
     },
     "learningAnalytics": "అభ్యాస విశ్లేషణ",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "నేను నేర్చుకుంటున్నాను...",
+    "alreadySpeak": "నేను ఇప్పటికే మాట్లాడుతున్నాను...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }
