@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-03-12 12:47:10.986485",
+    "@@last_modified": "2026-03-13 15:15:40.277127",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -4587,7 +4587,6 @@
     "newCourseAccess": "Standart holda, kurslar ochiq qidiruvda bo'lib, ularga qo'shilish uchun admin tasdiqlashi talab etiladi. Siz bu sozlamalarni istalgan vaqtda o'zgartirishingiz mumkin.",
     "courseLoadingError": "Nimadir noto'g'ri ketdi va biz uni tuzatish uchun qattiq ishlayapmiz. Keyinroq yana tekshiring.",
     "onboardingLanguagesTitle": "Qaysi tilni o'rganmoqdasiz?",
-    "searchLanguagesHint": "Maqsadli tillarni qidiring",
     "supportSubtitle": "Savollaringiz bormi? Biz yordam berishga tayyormiz!",
     "autoIGCToolName": "Yozishni yordamchi qilishni yoqing",
     "autoIGCToolDescription": "Avtomatik ravishda Pangea Chat vositalarini ishga tushirib, yuborilgan xabarlarni maqsadli tilga to'g'ri kelishini tekshiradi.",
@@ -10381,10 +10380,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@searchLanguagesHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@supportSubtitle": {
         "type": "String",
         "placeholders": {}
@@ -10725,6 +10720,16 @@
     },
     "learningAnalytics": "O'qitish tahlillari",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Men o'rganayotganim...",
+    "alreadySpeak": "Men allaqachon gaplashaman...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

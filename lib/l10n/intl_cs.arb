@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-03-12 12:47:01.256917",
+    "@@last_modified": "2026-03-13 15:15:30.755838",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10595,12 +10595,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Jaký jazyk se učíte?",
-    "searchLanguagesHint": "Hledejte cílové jazyky",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -11275,6 +11270,16 @@
     },
     "learningAnalytics": "Analytika učení",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Učím se...",
+    "alreadySpeak": "Už mluvím...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

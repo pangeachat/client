@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-03-12 12:46:45.026898",
+    "@@last_modified": "2026-03-13 15:15:02.489958",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7056,12 +7056,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "¿Qué idioma estás aprendiendo?",
-    "searchLanguagesHint": "Buscar idiomas objetivo",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -7647,6 +7642,16 @@
     },
     "learningAnalytics": "Análisis del aprendizaje",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Estoy aprendiendo...",
+    "alreadySpeak": "Ya hablo...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

@@ -4241,7 +4241,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-03-12 12:47:02.951554",
+    "@@last_modified": "2026-03-13 15:15:32.603793",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10265,12 +10265,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Якую мову вы вывучаеце?",
-    "searchLanguagesHint": "Пошук мэтавых моў",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -10735,6 +10730,16 @@
     },
     "learningAnalytics": "Аналіз навучання",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Я вывучаю...",
+    "alreadySpeak": "Я ўжо размаўляю...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

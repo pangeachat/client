@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-03-12 12:46:52.451517",
+    "@@last_modified": "2026-03-13 15:15:15.395506",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10511,12 +10511,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Koji jezik učite?",
-    "searchLanguagesHint": "Pretraži ciljne jezike",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -11205,6 +11200,16 @@
     },
     "learningAnalytics": "Analitika učenja",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Učim...",
+    "alreadySpeak": "Već govorim...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

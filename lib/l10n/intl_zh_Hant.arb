@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-12 12:47:06.048387",
+    "@@last_modified": "2026-03-13 15:15:39.250978",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10152,12 +10152,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "你正在學習什麼語言？",
-    "searchLanguagesHint": "搜尋目標語言",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -10851,6 +10846,16 @@
     },
     "learningAnalytics": "學習分析",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "我正在學習...",
+    "alreadySpeak": "我已經會說...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

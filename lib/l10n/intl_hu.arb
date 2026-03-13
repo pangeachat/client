@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-03-12 12:46:48.280767",
+    "@@last_modified": "2026-03-13 15:15:08.433779",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10154,12 +10154,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Milyen nyelvet tanulsz?",
-    "searchLanguagesHint": "Keresd a célnyelveket",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -10848,6 +10843,16 @@
     },
     "learningAnalytics": "Tanulási analitika",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Tanulok...",
+    "alreadySpeak": "Már beszélek...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

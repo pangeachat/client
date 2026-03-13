@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-03-12 12:47:19.511970",
+    "@@last_modified": "2026-03-13 15:15:54.306170",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10265,12 +10265,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "你正在学习什么语言？",
-    "searchLanguagesHint": "搜索目标语言",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -10721,6 +10716,16 @@
     },
     "learningAnalytics": "学习分析",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "我正在学习...",
+    "alreadySpeak": "我已经会说...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

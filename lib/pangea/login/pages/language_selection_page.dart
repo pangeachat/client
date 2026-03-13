@@ -292,7 +292,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                           languages: languages,
                           onChange: _setBaseLanguage,
                           initialLanguage: _baseLanguage,
-                          decorationText: L10n.of(context).myBaseLanguage,
+                          decorationText: L10n.of(context).alreadySpeak,
                           error: _error is IdenticalLanguageException
                               ? L10n.of(context).noIdenticalLanguages
                               : null,

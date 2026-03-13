@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-12 12:47:25.734981",
+    "@@last_modified": "2026-03-13 15:16:02.694361",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -11146,12 +11146,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Kian lingvon vi lernas?",
-    "searchLanguagesHint": "Serĉu celajn lingvojn",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -11840,6 +11835,16 @@
     },
     "learningAnalytics": "Lernado-analitiko",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Mi lernas...",
+    "alreadySpeak": "Mi jam parolas...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

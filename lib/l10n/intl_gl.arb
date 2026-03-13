@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-03-12 12:46:45.840032",
+    "@@last_modified": "2026-03-13 15:15:04.110995",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10265,12 +10265,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Que idioma estás aprendendo?",
-    "searchLanguagesHint": "Busca idiomas de destino",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -10721,6 +10716,16 @@
     },
     "learningAnalytics": "Analítica de aprendizaxe",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Estou aprendendo...",
+    "alreadySpeak": "Xa falo...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

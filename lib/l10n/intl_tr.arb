@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-03-12 12:47:14.262293",
+    "@@last_modified": "2026-03-13 15:15:44.258219",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10358,12 +10358,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Hangi dili öğreniyorsunuz?",
-    "searchLanguagesHint": "Hedef dilleri arayın",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -11052,6 +11047,16 @@
     },
     "learningAnalytics": "Öğrenme analitiği",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Ben öğreniyorum...",
+    "alreadySpeak": "Ben zaten konuşuyorum...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

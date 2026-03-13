@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-03-12 12:47:26.756545",
+    "@@last_modified": "2026-03-13 15:16:03.831089",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10265,12 +10265,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Какой язык вы изучаете?",
-    "searchLanguagesHint": "Поиск целевых языков",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -10721,6 +10716,16 @@
     },
     "learningAnalytics": "Аналитика обучения",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Я учу...",
+    "alreadySpeak": "Я уже говорю...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

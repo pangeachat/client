@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-03-12 12:46:57.582450",
+    "@@last_modified": "2026-03-13 15:15:24.601039",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10297,12 +10297,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Welche Sprache lernst du?",
-    "searchLanguagesHint": "Zielsprachen suchen",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -10700,6 +10695,16 @@
     },
     "learningAnalytics": "Lernanalytik",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "Ich lerne gerade...",
+    "alreadySpeak": "Ich spreche bereits...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-03-12 12:47:13.415879",
+    "@@last_modified": "2026-03-13 15:15:43.245674",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10367,12 +10367,7 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "ما اللغة التي تتعلمها؟",
-    "searchLanguagesHint": "ابحث عن اللغات المستهدفة",
     "@onboardingLanguagesTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchLanguagesHint": {
         "type": "String",
         "placeholders": {}
     },
@@ -11061,6 +11056,16 @@
     },
     "learningAnalytics": "تحليلات التعلم",
     "@learningAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "searchLanguagesHint": "أنا أتعلم...",
+    "alreadySpeak": "أنا أتحدث بالفعل...",
+    "@searchLanguagesHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@alreadySpeak": {
         "type": "String",
         "placeholders": {}
     }
