@@ -2,25 +2,27 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:async/async.dart';
 import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
+import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_language_filter.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
+import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_response.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -34,73 +36,96 @@ class FindCoursePage extends StatefulWidget {
 
 class FindCoursePageState extends State<FindCoursePage> {
   final TextEditingController searchController = TextEditingController();
-
-  bool loading = true;
-  bool _fullyLoaded = false;
-  Object? error;
   Timer? _coolDown;
 
-  LanguageModel? targetLanguageFilter;
+  final ValueNotifier<bool> loading = ValueNotifier(false);
+  final ValueNotifier<List<PublicCoursesChunk>> visibleCourses = ValueNotifier(
+    [],
+  );
 
-  List<PublicCoursesChunk> discoveredCourses = [];
+  final ValueNotifier<LanguageModel?> targetLanguageFilter = ValueNotifier(
+    null,
+  );
+
+  final List<PublicCoursesChunk> _resultsCache = [];
   Map<String, CoursePlanModel> coursePlans = {};
   String? nextBatch;
+  bool fullyLoaded = false;
 
   @override
   void initState() {
     super.initState();
-
-    final target = MatrixState.pangeaController.userController.userL2;
-    if (target != null) {
-      setTargetLanguageFilter(target);
-    }
-
-    _loadCourses();
+    targetLanguageFilter.value =
+        MatrixState.pangeaController.userController.userL2;
+    loadMore();
   }
 
   @override
   void dispose() {
     searchController.dispose();
     _coolDown?.cancel();
+    visibleCourses.dispose();
+    loading.dispose();
+    targetLanguageFilter.dispose();
     super.dispose();
   }
 
   void setTargetLanguageFilter(LanguageModel? language) {
-    if (targetLanguageFilter?.langCodeShort == language?.langCodeShort) return;
-    setState(() => targetLanguageFilter = language);
-    _loadCourses();
+    if (targetLanguageFilter.value?.langCodeShort == language?.langCodeShort) {
+      return;
+    }
+    targetLanguageFilter.value = language;
+    visibleCourses.value = [];
+    loading.value = false;
+    loadMore();
   }
 
   void onSearchEnter(String text, {bool globalSearch = true}) {
     if (text.isEmpty) {
-      _loadCourses();
+      visibleCourses.value = [];
+      loading.value = false;
+      loadMore();
       return;
     }
 
     _coolDown?.cancel();
-    _coolDown = Timer(const Duration(milliseconds: 500), _loadCourses);
+    _coolDown = Timer(const Duration(milliseconds: 500), () {
+      visibleCourses.value = [];
+      loading.value = false;
+      loadMore();
+    });
   }
 
-  List<PublicCoursesChunk> get filteredCourses {
-    List<PublicCoursesChunk> filtered = discoveredCourses
-        .where(
-          (c) =>
-              !Matrix.of(context).client.rooms.any(
-                (r) => r.id == c.room.roomId && r.membership == Membership.join,
-              ) &&
-              coursePlans.containsKey(c.courseId),
-        )
-        .toList();
+  /// Get a sorted list of cached courses that:
+  /// 1) Are not already in the list of visible courses
+  /// 2) Are not a course that the user is already in
+  /// 2) Have a course plan that matches the language filter
+  /// 3) Match the search term, if any exists
+  List<PublicCoursesChunk> _filterCourses(String targetLanguage) {
+    final courses = List<PublicCoursesChunk>.from(_resultsCache);
 
-    if (targetLanguageFilter != null) {
-      filtered = filtered.where((chunk) {
-        final course = coursePlans[chunk.courseId];
-        if (course == null) return false;
-        return course.targetLanguage.split('-').first ==
-            targetLanguageFilter!.langCodeShort;
-      }).toList();
-    }
+    // filter out already visible courses
+    final invisibleCourses = courses.where(
+      (c) => !visibleCourses.value.any((v) => v.room.roomId == c.room.roomId),
+    );
 
+    // filter out joined courses
+    final unjoinedCourses = invisibleCourses.where(
+      (c) => !Matrix.of(context).client.rooms.any(
+        (r) => r.id == c.room.roomId && r.membership == Membership.join,
+      ),
+    );
+
+    // filter out courses without relevant plans
+    final targetLanguageCourses = unjoinedCourses.where((chunk) {
+      final course = coursePlans[chunk.courseId];
+      if (course == null) return false;
+      if (targetLanguage == "") return true;
+      return course.targetLanguage.split('-').first == targetLanguage;
+    });
+
+    // filter by search term
+    List<PublicCoursesChunk> filtered = targetLanguageCourses.toList();
     final searchText = searchController.text.trim().toLowerCase();
     if (searchText.isNotEmpty) {
       filtered = filtered.where((chunk) {
@@ -124,85 +149,117 @@ class FindCoursePageState extends State<FindCoursePage> {
     return filtered;
   }
 
-  Future<void> _loadPublicSpaces() async {
+  Future<void> loadMore({bool loadMore = false}) async {
+    if (loading.value) return;
+    loading.value = true;
+
+    final targetLanguage = targetLanguageFilter.value?.langCodeShort ?? "";
+    final searchTerm = searchController.text;
+
+    // First, get any courses from the cache that should be visible and show
+    visibleCourses.value = [
+      ...visibleCourses.value,
+      ..._filterCourses(targetLanguage),
+    ];
+
+    // Then, load until at least 5 courses are visible, or all courses have been loaded
+    int timesLoaded = 0;
+    while (loading.value &&
+        (visibleCourses.value.length < 5 || loadMore) &&
+        timesLoaded < 4 &&
+        !fullyLoaded) {
+      await _loadNextBatch();
+      visibleCourses.value = [
+        ...visibleCourses.value,
+        ..._filterCourses(targetLanguage),
+      ];
+      timesLoaded++;
+    }
+
+    // If the target language filter hasn't changed while we were loading, update the loader
+    // with the new results. If it has changed, it means another load was triggered, so we
+    // don't need to do anything here as that load will update the loader when it completes.
+    final currentFilter = targetLanguageFilter.value?.langCodeShort ?? "";
+    if (mounted &&
+        currentFilter == targetLanguage &&
+        searchController.text == searchTerm) {
+      loading.value = false;
+    }
+  }
+
+  /// Load and cache the next 10 public courses and course plans if applicable
+  Future<void> _loadNextBatch() async {
+    if (fullyLoaded) return;
+    final coursesResult = await _requestPublicCourses();
+    if (coursesResult.isError) {
+      loading.value = false;
+      return;
+    }
+
+    final coursesResp = coursesResult.result!;
+    nextBatch = coursesResp.nextBatch;
+    if (nextBatch == null) {
+      fullyLoaded = true;
+    }
+
+    for (final course in coursesResp.courses) {
+      if (!_resultsCache.any((c) => c.room.roomId == course.room.roomId)) {
+        _resultsCache.add(course);
+      }
+    }
+
+    final undiscoveredCourseIds = coursesResp.courses
+        .where((c) => !coursePlans.containsKey(c.courseId))
+        .map((c) => c.courseId)
+        .toSet()
+        .toList();
+
+    final coursePlansResult = await _requestCoursePlans(undiscoveredCourseIds);
+    if (coursePlansResult.isError) {
+      loading.value = false;
+      return;
+    }
+
+    final searchResult = coursePlansResult.result!.coursePlans;
+    for (final entry in searchResult.entries) {
+      coursePlans[entry.key] = entry.value;
+    }
+  }
+
+  Future<Result<PublicCoursesResponse>> _requestPublicCourses() async {
     try {
       final resp = await Matrix.of(
         context,
       ).client.requestPublicCourses(since: nextBatch);
-
-      for (final room in resp.courses) {
-        if (!discoveredCourses.any((e) => e.room.roomId == room.room.roomId)) {
-          discoveredCourses.add(room);
-        }
-      }
-
-      nextBatch = resp.nextBatch;
+      return Result.value(resp);
     } catch (e, s) {
-      error = e;
       ErrorHandler.logError(e: e, s: s, data: {'nextBatch': nextBatch});
+      return Result.error(e);
     }
   }
 
-  Future<void> _loadCourses() async {
-    if (_fullyLoaded && nextBatch == null) {
-      return;
-    }
-
-    setState(() {
-      loading = true;
-      error = null;
-    });
-
-    await _loadPublicSpaces();
-
-    int timesLoaded = 0;
-    while (error == null && timesLoaded < 5 && nextBatch != null) {
-      await _loadPublicSpaces();
-      timesLoaded++;
-    }
-
-    if (nextBatch == null) {
-      _fullyLoaded = true;
-    }
-
+  Future<Result<GetLocalizedCoursesResponse>> _requestCoursePlans(
+    List<String> courseIds,
+  ) async {
     try {
       final resp = await CoursePlansRepo.search(
         GetLocalizedCoursesRequest(
-          coursePlanIds: discoveredCourses
-              .map((c) => c.courseId)
-              .toSet()
-              .toList(),
+          coursePlanIds: courseIds,
           l1: MatrixState.pangeaController.userController.userL1Code!,
         ),
       );
-      final searchResult = resp.coursePlans;
-
-      coursePlans.clear();
-      for (final entry in searchResult.entries) {
-        coursePlans[entry.key] = entry.value;
-      }
+      return Result.value(resp);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'discoveredCourses': discoveredCourses
-              .map((c) => c.courseId)
-              .toList(),
-        },
-      );
-    } finally {
-      if (mounted) {
-        setState(() => loading = false);
-      }
+      ErrorHandler.logError(e: e, s: s, data: {'courseIds': courseIds});
+      return Result.error(e);
     }
   }
 
   void startNewCourse() {
     String route = "/rooms/course/own";
-    if (targetLanguageFilter != null) {
-      route +=
-          "?lang=${Uri.encodeComponent(targetLanguageFilter!.langCodeShort)}";
+    final targetLanguage = targetLanguageFilter.value?.langCodeShort;
+    if (targetLanguage != null) {
+      route += "?lang=${Uri.encodeComponent(targetLanguage)}";
     }
     context.go(route);
   }
@@ -275,9 +332,12 @@ class FindCoursePageView extends StatelessWidget {
                     spacing: 12.0,
                     children: [
                       Expanded(
-                        child: CourseLanguageFilter(
-                          value: controller.targetLanguageFilter,
-                          onChanged: controller.setTargetLanguageFilter,
+                        child: ValueListenableBuilder(
+                          valueListenable: controller.targetLanguageFilter,
+                          builder: (context, lang, _) => CourseLanguageFilter(
+                            value: lang,
+                            onChanged: controller.setTargetLanguageFilter,
+                          ),
                         ),
                       ),
                       if (constrained.maxWidth >= 500) ...[
@@ -331,20 +391,18 @@ class FindCoursePageView extends StatelessWidget {
                   );
                 },
               ),
-              ValueListenableBuilder(
-                valueListenable: controller.searchController,
-                builder: (context, _, _) {
-                  if (controller.error != null) {
-                    return ErrorIndicator(
-                      message: L10n.of(context).oopsSomethingWentWrong,
-                    );
-                  }
-
-                  if (controller.loading) {
-                    return const CircularProgressIndicator.adaptive();
-                  }
-
-                  if (controller.filteredCourses.isEmpty) {
+              ListenableBuilder(
+                listenable: Listenable.merge([
+                  controller.visibleCourses,
+                  controller.loading,
+                  controller.searchController,
+                ]),
+                builder: (context, _) {
+                  final courses = controller.visibleCourses.value;
+                  final loading = controller.loading.value;
+                  if (courses.isEmpty &&
+                      !loading &&
+                      controller.nextBatch == null) {
                     return Padding(
                       padding: const EdgeInsets.all(32.0),
                       child: Column(
@@ -379,9 +437,22 @@ class FindCoursePageView extends StatelessWidget {
 
                   return Expanded(
                     child: ListView.builder(
-                      itemCount: controller.filteredCourses.length,
+                      itemCount: courses.length + 1,
                       itemBuilder: (context, index) {
-                        final space = controller.filteredCourses[index];
+                        if (index == courses.length) {
+                          return Center(
+                            child: loading
+                                ? CircularProgressIndicator.adaptive()
+                                : !controller.fullyLoaded
+                                ? TextButton(
+                                    onPressed: () =>
+                                        controller.loadMore(loadMore: true),
+                                    child: Text(L10n.of(context).loadMore),
+                                  )
+                                : SizedBox(),
+                          );
+                        }
+                        final space = courses[index];
                         return _PublicCourseTile(
                           chunk: space,
                           course: controller.coursePlans[space.courseId],
