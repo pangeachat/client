@@ -31,12 +31,7 @@ extension KnockClientExtension on Client {
 
   Future<void> _setKnockedRooms(KnockedRoomsModel model) async {
     final prevModel = _knockedRooms;
-    if (model == prevModel) {
-      Logs().w('Knocked rooms model is the same as previous, skipping write.');
-      Logs().w('Model: ${model.toJson()}');
-      Logs().w('Previous Model: ${prevModel.toJson()}');
-      return;
-    }
+    if (model == prevModel) return;
 
     await setAccountData(
       userID!,
