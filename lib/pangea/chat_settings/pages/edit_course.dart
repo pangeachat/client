@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:image_picker/image_picker.dart';
@@ -239,6 +240,9 @@ class EditCourseController extends State<EditCourse> {
                                       ),
                                       hintText: L10n.of(context).courseTitle,
                                     ),
+                                    inputFormatters: [
+                                      LengthLimitingTextInputFormatter(256),
+                                    ],
                                   ),
                                   TextField(
                                     controller: _descController,
