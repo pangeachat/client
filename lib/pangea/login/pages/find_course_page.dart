@@ -76,12 +76,14 @@ class FindCoursePageState extends State<FindCoursePage> {
     }
     targetLanguageFilter.value = language;
     visibleCourses.value = [];
+    loading.value = false;
     loadMore();
   }
 
   void onSearchEnter(String text, {bool globalSearch = true}) {
     if (text.isEmpty) {
       visibleCourses.value = [];
+      loading.value = false;
       loadMore();
       return;
     }
@@ -89,6 +91,7 @@ class FindCoursePageState extends State<FindCoursePage> {
     _coolDown?.cancel();
     _coolDown = Timer(const Duration(milliseconds: 500), () {
       visibleCourses.value = [];
+      loading.value = false;
       loadMore();
     });
   }
@@ -146,10 +149,12 @@ class FindCoursePageState extends State<FindCoursePage> {
     return filtered;
   }
 
-  Future<void> loadMore() async {
+  Future<void> loadMore({bool loadMore = false}) async {
     if (loading.value) return;
     loading.value = true;
+
     final targetLanguage = targetLanguageFilter.value?.langCodeShort ?? "";
+    final searchTerm = searchController.text;
 
     // First, get any courses from the cache that should be visible and show
     visibleCourses.value = [
@@ -159,7 +164,10 @@ class FindCoursePageState extends State<FindCoursePage> {
 
     // Then, load until at least 5 courses are visible, or all courses have been loaded
     int timesLoaded = 0;
-    while (visibleCourses.value.length < 5 && timesLoaded < 4 && !fullyLoaded) {
+    while (loading.value &&
+        (visibleCourses.value.length < 5 || loadMore) &&
+        timesLoaded < 4 &&
+        !fullyLoaded) {
       await _loadNextBatch();
       visibleCourses.value = [
         ...visibleCourses.value,
@@ -172,7 +180,9 @@ class FindCoursePageState extends State<FindCoursePage> {
     // with the new results. If it has changed, it means another load was triggered, so we
     // don't need to do anything here as that load will update the loader when it completes.
     final currentFilter = targetLanguageFilter.value?.langCodeShort ?? "";
-    if (mounted && currentFilter == targetLanguage) {
+    if (mounted &&
+        currentFilter == targetLanguage &&
+        searchController.text == searchTerm) {
       loading.value = false;
     }
   }
@@ -181,7 +191,10 @@ class FindCoursePageState extends State<FindCoursePage> {
   Future<void> _loadNextBatch() async {
     if (fullyLoaded) return;
     final coursesResult = await _requestPublicCourses();
-    if (coursesResult.isError) return;
+    if (coursesResult.isError) {
+      loading.value = false;
+      return;
+    }
 
     final coursesResp = coursesResult.result!;
     nextBatch = coursesResp.nextBatch;
@@ -202,12 +215,14 @@ class FindCoursePageState extends State<FindCoursePage> {
         .toList();
 
     final coursePlansResult = await _requestCoursePlans(undiscoveredCourseIds);
+    if (coursePlansResult.isError) {
+      loading.value = false;
+      return;
+    }
 
-    if (coursePlansResult.result != null) {
-      final searchResult = coursePlansResult.result!.coursePlans;
-      for (final entry in searchResult.entries) {
-        coursePlans[entry.key] = entry.value;
-      }
+    final searchResult = coursePlansResult.result!.coursePlans;
+    for (final entry in searchResult.entries) {
+      coursePlans[entry.key] = entry.value;
     }
   }
 
@@ -430,7 +445,8 @@ class FindCoursePageView extends StatelessWidget {
                                 ? CircularProgressIndicator.adaptive()
                                 : !controller.fullyLoaded
                                 ? TextButton(
-                                    onPressed: controller.loadMore,
+                                    onPressed: () =>
+                                        controller.loadMore(loadMore: true),
                                     child: Text(L10n.of(context).loadMore),
                                   )
                                 : SizedBox(),
