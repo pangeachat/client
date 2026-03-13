@@ -1,13 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:just_audio/just_audio.dart';
-import 'package:material_symbols_icons/symbols.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -20,11 +14,20 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/utils/report_message.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_anchor_widget.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_event_dispatcher.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_events_event.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_manager.dart';
+import 'package:fluffychat/pangea/onboarding/tutorials.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:material_symbols_icons/symbols.dart';
+import 'package:matrix/matrix.dart';
 
 enum SelectMode {
   audio(Icons.volume_up),
@@ -165,6 +168,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     }
 
     controller.playTokenNotifier.addListener(_playToken);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      TutorialManager.instance.start(context, Tutorials.messageToolbarTutorial);
+    });
   }
 
   @override
@@ -216,6 +222,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     }
 
     if (updatedMode == SelectMode.translate) {
+      AppEvents.emit(TutorialEvent.translateUsed);
       if (!InstructionsEnum.shimmerTranslation.isToggledOff) {
         InstructionsEnum.shimmerTranslation.setToggledOff(true);
       }
@@ -415,55 +422,59 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                       final selectedMode = controller.selectedMode.value;
                       return Opacity(
                         opacity: enabled ? 1.0 : 0.75,
-                        child: PressableButton(
-                          borderRadius: BorderRadius.circular(20),
-                          depressed: mode == selectedMode || !enabled,
-                          color: theme.colorScheme.primaryContainer,
-                          onPressed: enabled
-                              ? () => updateMode(mode)
-                              : modeDisabled,
-                          playSound: enabled && mode != SelectMode.audio,
-                          colorFactor: theme.brightness == Brightness.light
-                              ? 0.55
-                              : 0.3,
-                          builder: (context, depressed, shadowColor) =>
-                              ShimmerBackground(
-                                enabled:
-                                    !InstructionsEnum
-                                        .shimmerTranslation
-                                        .isToggledOff &&
-                                    mode == SelectMode.translate &&
-                                    enabled,
-                                borderRadius: BorderRadius.circular(100),
-                                maxOpacity: 0.6,
-                                child: AnimatedContainer(
-                                  duration: FluffyThemes.animationDuration,
-                                  height: buttonSize,
-                                  width: buttonSize,
-                                  decoration: BoxDecoration(
-                                    color: depressed
-                                        ? shadowColor
-                                        : theme.colorScheme.primaryContainer,
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: ValueListenableBuilder(
-                                    valueListenable: _isPlayingNotifier,
-                                    builder: (context, playing, _) =>
-                                        _SelectModeButtonIcon(
-                                          mode: mode,
-                                          loading:
-                                              controller.isLoading &&
-                                              mode == selectedMode,
-                                          playing:
-                                              mode == SelectMode.audio &&
-                                              playing,
-                                          color: theme
-                                              .colorScheme
-                                              .onPrimaryContainer,
-                                        ),
+                        child: TutorialAnchor(
+                          id: "translate_button",
+                          register: mode == SelectMode.translate,
+                          child: PressableButton(
+                            borderRadius: BorderRadius.circular(20),
+                            depressed: mode == selectedMode || !enabled,
+                            color: theme.colorScheme.primaryContainer,
+                            onPressed: enabled
+                                ? () => updateMode(mode)
+                                : modeDisabled,
+                            playSound: enabled && mode != SelectMode.audio,
+                            colorFactor: theme.brightness == Brightness.light
+                                ? 0.55
+                                : 0.3,
+                            builder: (context, depressed, shadowColor) =>
+                                ShimmerBackground(
+                                  enabled:
+                                      !InstructionsEnum
+                                          .shimmerTranslation
+                                          .isToggledOff &&
+                                      mode == SelectMode.translate &&
+                                      enabled,
+                                  borderRadius: BorderRadius.circular(100),
+                                  maxOpacity: 0.6,
+                                  child: AnimatedContainer(
+                                    duration: FluffyThemes.animationDuration,
+                                    height: buttonSize,
+                                    width: buttonSize,
+                                    decoration: BoxDecoration(
+                                      color: depressed
+                                          ? shadowColor
+                                          : theme.colorScheme.primaryContainer,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: ValueListenableBuilder(
+                                      valueListenable: _isPlayingNotifier,
+                                      builder: (context, playing, _) =>
+                                          _SelectModeButtonIcon(
+                                            mode: mode,
+                                            loading:
+                                                controller.isLoading &&
+                                                mode == selectedMode,
+                                            playing:
+                                                mode == SelectMode.audio &&
+                                                playing,
+                                            color: theme
+                                                .colorScheme
+                                                .onPrimaryContainer,
+                                          ),
+                                    ),
                                   ),
                                 ),
-                              ),
+                          ),
                         ),
                       );
                     },

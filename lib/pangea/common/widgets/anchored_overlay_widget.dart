@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/common/utils/cutout_painter.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class AnchoredOverlayWidget extends StatefulWidget {
   final Widget child;
@@ -11,6 +10,7 @@ class AnchoredOverlayWidget extends StatefulWidget {
   final double? borderRadius;
   final double? padding;
   final VoidCallback? onClick;
+  final bool dismissOnClick;
 
   const AnchoredOverlayWidget({
     required this.child,
@@ -19,6 +19,7 @@ class AnchoredOverlayWidget extends StatefulWidget {
     this.borderRadius,
     this.padding,
     this.onClick,
+    this.dismissOnClick = true,
     super.key,
   });
 
@@ -42,6 +43,7 @@ class _AnchoredOverlayWidgetState extends State<AnchoredOverlayWidget> {
   }
 
   Future<void> _closeOverlay() async {
+    if (!widget.dismissOnClick) return;
     if (mounted) {
       setState(() {
         _visible = false;

@@ -1,10 +1,5 @@
 import 'dart:ui' as ui;
 
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-import 'package:swipe_to_action/swipe_to_action.dart';
-
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -20,6 +15,7 @@ import 'package:fluffychat/pangea/chat/widgets/room_creation_state_event.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_anchor_widget.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/file_description.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -27,6 +23,10 @@ import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
+import 'package:swipe_to_action/swipe_to_action.dart';
+
 import '../../../config/app_config.dart';
 import 'message_content.dart';
 import 'reply_content.dart';
@@ -625,231 +625,236 @@ class Message extends StatelessWidget {
                                                 child: MouseRegion(
                                                   cursor:
                                                       SystemMouseCursors.click,
-                                                  child: ValueListenableBuilder(
-                                                    valueListenable: controller
-                                                        .depressMessageButton,
-                                                    builder:
-                                                        (
-                                                          context,
-                                                          depressed,
-                                                          child,
-                                                        ) => PressableButton(
-                                                          buttonHeight: 5,
-                                                          depressed:
-                                                              !isButton ||
-                                                              depressed,
+                                                  child: TutorialAnchor(
+                                                    id: "message_bubble",
+                                                    register: isButton,
+                                                    child: ValueListenableBuilder(
+                                                      valueListenable: controller
+                                                          .depressMessageButton,
+                                                      builder:
+                                                          (
+                                                            context,
+                                                            depressed,
+                                                            child,
+                                                          ) => PressableButton(
+                                                            buttonHeight: 5,
+                                                            depressed:
+                                                                !isButton ||
+                                                                depressed,
+                                                            borderRadius:
+                                                                borderRadius,
+                                                            onPressed: () {
+                                                              showToolbar(
+                                                                pangeaMessageEvent,
+                                                              );
+                                                            },
+                                                            color: color,
+                                                            visible:
+                                                                isButton &&
+                                                                !noBubble,
+                                                            builder:
+                                                                (
+                                                                  context,
+                                                                  _,
+                                                                  _,
+                                                                ) => child!,
+                                                          ),
+
+                                                      // Pangea#
+                                                      child: Container(
+                                                        decoration: BoxDecoration(
+                                                          color: noBubble
+                                                              ? Colors
+                                                                    .transparent
+                                                              : color,
                                                           borderRadius:
                                                               borderRadius,
-                                                          onPressed: () {
-                                                            showToolbar(
-                                                              pangeaMessageEvent,
-                                                            );
-                                                          },
-                                                          color: color,
-                                                          visible:
-                                                              isButton &&
-                                                              !noBubble,
-                                                          builder:
-                                                              (context, _, _) =>
-                                                                  child!,
                                                         ),
-
-                                                    // Pangea#
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                        color: noBubble
-                                                            ? Colors.transparent
-                                                            : color,
-                                                        borderRadius:
-                                                            borderRadius,
-                                                      ),
-                                                      clipBehavior:
-                                                          Clip.antiAlias,
-                                                      // #Pangea
-                                                      child: CompositedTransformTarget(
-                                                        link: MatrixState
-                                                            .pAnyState
-                                                            .layerLinkAndKey(
-                                                              event.eventId,
-                                                            )
-                                                            .link,
-                                                        // Pangea#
-                                                        child: BubbleBackground(
-                                                          colors: colors,
-                                                          // #Pangea
-                                                          // ignore: noBubble ||
-                                                          //     !ownMessage ||
-                                                          //     MediaQuery
-                                                          //         .highContrastOf(
-                                                          //       context,
-                                                          //     ),
-                                                          ignore: true,
+                                                        clipBehavior:
+                                                            Clip.antiAlias,
+                                                        // #Pangea
+                                                        child: CompositedTransformTarget(
+                                                          link: MatrixState
+                                                              .pAnyState
+                                                              .layerLinkAndKey(
+                                                                event.eventId,
+                                                              )
+                                                              .link,
                                                           // Pangea#
-                                                          scrollController:
-                                                              scrollController,
-                                                          child: Container(
+                                                          child: BubbleBackground(
+                                                            colors: colors,
                                                             // #Pangea
-                                                            key: MatrixState
-                                                                .pAnyState
-                                                                .layerLinkAndKey(
-                                                                  event.eventId,
-                                                                )
-                                                                .key,
+                                                            // ignore: noBubble ||
+                                                            //     !ownMessage ||
+                                                            //     MediaQuery
+                                                            //         .highContrastOf(
+                                                            //       context,
+                                                            //     ),
+                                                            ignore: true,
                                                             // Pangea#
-                                                            decoration: BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius.circular(
-                                                                    AppConfig
-                                                                        .borderRadius,
+                                                            scrollController:
+                                                                scrollController,
+                                                            child: Container(
+                                                              // #Pangea
+                                                              key: MatrixState
+                                                                  .pAnyState
+                                                                  .layerLinkAndKey(
+                                                                    event
+                                                                        .eventId,
+                                                                  )
+                                                                  .key,
+                                                              // Pangea#
+                                                              decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius.circular(
+                                                                      AppConfig
+                                                                          .borderRadius,
+                                                                    ),
+                                                              ),
+                                                              constraints:
+                                                                  const BoxConstraints(
+                                                                    maxWidth:
+                                                                        FluffyThemes
+                                                                            .columnWidth *
+                                                                        1.5,
                                                                   ),
-                                                            ),
-                                                            constraints:
-                                                                const BoxConstraints(
-                                                                  maxWidth:
-                                                                      FluffyThemes
-                                                                          .columnWidth *
-                                                                      1.5,
-                                                                ),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  .min,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: <Widget>[
-                                                                if (event.inReplyToEventId(
-                                                                      includingFallback:
-                                                                          false,
-                                                                    ) !=
-                                                                    null)
-                                                                  FutureBuilder<
-                                                                    Event?
-                                                                  >(
-                                                                    future: event
-                                                                        .getReplyEvent(
-                                                                          timeline,
-                                                                        ),
-                                                                    builder:
-                                                                        (
-                                                                          BuildContext
-                                                                          context,
-                                                                          snapshot,
-                                                                        ) {
-                                                                          final replyEvent =
-                                                                              snapshot.hasData
-                                                                              ? snapshot.data!
-                                                                              : Event(
-                                                                                  eventId:
-                                                                                      event.inReplyToEventId() ??
-                                                                                      '\$fake_event_id',
-                                                                                  content: {
-                                                                                    'msgtype': 'm.text',
-                                                                                    'body': '...',
-                                                                                  },
-                                                                                  senderId: event.senderId,
-                                                                                  type: 'm.room.message',
-                                                                                  room: event.room,
-                                                                                  status: EventStatus.sent,
-                                                                                  originServerTs: DateTime.now(),
-                                                                                );
-                                                                          return Padding(
-                                                                            padding: const EdgeInsets.only(
-                                                                              left: 16,
-                                                                              right: 16,
-                                                                              top: 8,
-                                                                            ),
-                                                                            child: Material(
-                                                                              color: Colors.transparent,
-                                                                              borderRadius: ReplyContent.borderRadius,
-                                                                              child: InkWell(
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    .min,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: <Widget>[
+                                                                  if (event.inReplyToEventId(
+                                                                        includingFallback:
+                                                                            false,
+                                                                      ) !=
+                                                                      null)
+                                                                    FutureBuilder<
+                                                                      Event?
+                                                                    >(
+                                                                      future: event
+                                                                          .getReplyEvent(
+                                                                            timeline,
+                                                                          ),
+                                                                      builder:
+                                                                          (
+                                                                            BuildContext
+                                                                            context,
+                                                                            snapshot,
+                                                                          ) {
+                                                                            final replyEvent =
+                                                                                snapshot.hasData
+                                                                                ? snapshot.data!
+                                                                                : Event(
+                                                                                    eventId:
+                                                                                        event.inReplyToEventId() ??
+                                                                                        '\$fake_event_id',
+                                                                                    content: {
+                                                                                      'msgtype': 'm.text',
+                                                                                      'body': '...',
+                                                                                    },
+                                                                                    senderId: event.senderId,
+                                                                                    type: 'm.room.message',
+                                                                                    room: event.room,
+                                                                                    status: EventStatus.sent,
+                                                                                    originServerTs: DateTime.now(),
+                                                                                  );
+                                                                            return Padding(
+                                                                              padding: const EdgeInsets.only(
+                                                                                left: 16,
+                                                                                right: 16,
+                                                                                top: 8,
+                                                                              ),
+                                                                              child: Material(
+                                                                                color: Colors.transparent,
                                                                                 borderRadius: ReplyContent.borderRadius,
-                                                                                onTap: () => scrollToEventId(
-                                                                                  replyEvent.eventId,
-                                                                                ),
-                                                                                child: AbsorbPointer(
-                                                                                  child: ReplyContent(
-                                                                                    replyEvent,
-                                                                                    ownMessage: ownMessage,
-                                                                                    timeline: timeline,
+                                                                                child: InkWell(
+                                                                                  borderRadius: ReplyContent.borderRadius,
+                                                                                  onTap: () => scrollToEventId(
+                                                                                    replyEvent.eventId,
+                                                                                  ),
+                                                                                  child: AbsorbPointer(
+                                                                                    child: ReplyContent(
+                                                                                      replyEvent,
+                                                                                      ownMessage: ownMessage,
+                                                                                      timeline: timeline,
+                                                                                    ),
                                                                                   ),
                                                                                 ),
                                                                               ),
-                                                                            ),
-                                                                          );
-                                                                        },
-                                                                  ),
-                                                                MessageContent(
-                                                                  displayEvent,
-                                                                  textColor:
-                                                                      textColor,
-                                                                  linkColor:
-                                                                      linkColor,
-                                                                  onInfoTab:
-                                                                      onInfoTab,
-                                                                  borderRadius:
-                                                                      borderRadius,
-                                                                  timeline:
-                                                                      timeline,
-                                                                  selected:
-                                                                      selected,
-                                                                  // #Pangea
-                                                                  pangeaMessageEvent:
-                                                                      pangeaMessageEvent,
-                                                                  controller:
-                                                                      controller,
-                                                                  nextEvent:
-                                                                      nextEvent,
-                                                                  prevEvent:
-                                                                      previousEvent,
-                                                                  // Pangea#
-                                                                ),
-                                                                if (event
-                                                                    .hasAggregatedEvents(
-                                                                      timeline,
-                                                                      RelationshipTypes
-                                                                          .edit,
-                                                                    ))
-                                                                  Padding(
-                                                                    padding: const EdgeInsets.only(
-                                                                      bottom:
-                                                                          8.0,
-                                                                      left:
-                                                                          16.0,
-                                                                      right:
-                                                                          16.0,
+                                                                            );
+                                                                          },
                                                                     ),
-                                                                    child: Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .min,
-                                                                      spacing:
-                                                                          4.0,
-                                                                      children: [
-                                                                        Icon(
-                                                                          Icons
-                                                                              .edit_outlined,
-                                                                          color: textColor.withAlpha(
-                                                                            164,
-                                                                          ),
-                                                                          size:
-                                                                              14,
-                                                                        ),
-                                                                        Text(
-                                                                          displayEvent.originServerTs.localizedTimeShort(
-                                                                            context,
-                                                                          ),
-                                                                          style: TextStyle(
+                                                                  MessageContent(
+                                                                    displayEvent,
+                                                                    textColor:
+                                                                        textColor,
+                                                                    linkColor:
+                                                                        linkColor,
+                                                                    onInfoTab:
+                                                                        onInfoTab,
+                                                                    borderRadius:
+                                                                        borderRadius,
+                                                                    timeline:
+                                                                        timeline,
+                                                                    selected:
+                                                                        selected,
+                                                                    // #Pangea
+                                                                    pangeaMessageEvent:
+                                                                        pangeaMessageEvent,
+                                                                    controller:
+                                                                        controller,
+                                                                    nextEvent:
+                                                                        nextEvent,
+                                                                    prevEvent:
+                                                                        previousEvent,
+                                                                    // Pangea#
+                                                                  ),
+                                                                  if (event.hasAggregatedEvents(
+                                                                    timeline,
+                                                                    RelationshipTypes
+                                                                        .edit,
+                                                                  ))
+                                                                    Padding(
+                                                                      padding: const EdgeInsets.only(
+                                                                        bottom:
+                                                                            8.0,
+                                                                        left:
+                                                                            16.0,
+                                                                        right:
+                                                                            16.0,
+                                                                      ),
+                                                                      child: Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.min,
+                                                                        spacing:
+                                                                            4.0,
+                                                                        children: [
+                                                                          Icon(
+                                                                            Icons.edit_outlined,
                                                                             color: textColor.withAlpha(
                                                                               164,
                                                                             ),
-                                                                            fontSize:
-                                                                                11,
+                                                                            size:
+                                                                                14,
                                                                           ),
-                                                                        ),
-                                                                      ],
+                                                                          Text(
+                                                                            displayEvent.originServerTs.localizedTimeShort(
+                                                                              context,
+                                                                            ),
+                                                                            style: TextStyle(
+                                                                              color: textColor.withAlpha(
+                                                                                164,
+                                                                              ),
+                                                                              fontSize: 11,
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
                                                                     ),
-                                                                  ),
-                                                              ],
+                                                                ],
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
