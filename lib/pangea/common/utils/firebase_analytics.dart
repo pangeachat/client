@@ -6,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
 import '../../../config/firebase_options.dart';
 
 // PageRoute import
@@ -61,12 +62,12 @@ class GoogleAnalytics {
   }
 
   static void logEvent(String name, {Map<String, Object>? parameters}) {
-    debugPrint("event: $name - parameters: $parameters");
-
     // Add params when possible, web doesnt automatically add as of mar/09/2026
     final finalParameters = Environment.sentryDebugEnabled && kIsWeb
         ? {...?parameters, "traffic_type": "internal"}
         : parameters;
+
+    debugPrint("event: $name - parameters: $parameters");
 
     analytics?.logEvent(name: name, parameters: finalParameters);
   }
@@ -80,9 +81,37 @@ class GoogleAnalytics {
     logEvent('sign_up', parameters: {'method': type});
   }
 
+  /// User logs out. Removes user from the current GA session.
   static void logout() {
     logEvent('logout');
     analyticsUserUpdate(null);
+  }
+
+  /// User send a message
+  static void sendMessage(String chatRoomId, String classCode) {
+    logEvent(
+      'sent_message',
+      parameters: {"chat_id": chatRoomId, 'group_id': classCode},
+    );
+  }
+
+  /// User opened a word card
+  static void viewWordCard() {
+    logEvent('word_card');
+  }
+
+  /// User opened the message toolbar
+  static void openMessageToolbar() {
+    logEvent('message_toolbar', parameters: {"action": "open"});
+  }
+
+  /// User executed an action on the message tool bar
+  static void messageToolbarAction(SelectMode action) {
+    logEvent('message_toolbar', parameters: {"action": action.name});
+  }
+
+  static void messageTranslate() {
+    logEvent('message_translate');
   }
 
   static void createClass(String className, String classCode) {
@@ -112,21 +141,6 @@ class GoogleAnalytics {
 
   static void joinClass(String classCode) {
     logEvent('join_group', parameters: {'group_id': classCode});
-  }
-
-  static void sendMessage(String chatRoomId, String classCode) {
-    logEvent(
-      'sent_message',
-      parameters: {"chat_id": chatRoomId, 'group_id': classCode},
-    );
-  }
-
-  static void contextualRequest() {
-    logEvent('context_request');
-  }
-
-  static void messageTranslate() {
-    logEvent('message_translate');
   }
 
   static void beginPurchaseSubscription(

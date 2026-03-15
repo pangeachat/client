@@ -2226,6 +2226,8 @@ class ChatController extends State<ChatPageWithRoom>
         overlayKey: "message_toolbar_overlay",
       );
     }
+
+    GoogleAnalytics.openMessageToolbar();
   }
 
   bool get displayChatDetailsColumn {

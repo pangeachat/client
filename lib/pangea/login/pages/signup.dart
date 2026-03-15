@@ -195,6 +195,7 @@ class SignupPageController extends State<SignupPage> {
       throw Exception(L10n.of(context).oopsSomethingWentWrong);
     }
 
+    GoogleAnalytics.signUp("pangea");
     GoogleAnalytics.login("pangea", registerRes?.userId);
 
     if (displayname != localPart && client.userID != null) {

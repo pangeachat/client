@@ -10,6 +10,7 @@ import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/join_codes/knock_space_extension.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/pangea/join_codes/too_many_requests_dialog.dart';
@@ -107,6 +108,7 @@ class SpaceCodeController extends BaseController {
       return null;
     }
 
+    GoogleAnalytics.joinClass(spaceCode);
     return roomIdToJoin;
   }
 
