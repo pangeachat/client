@@ -110,17 +110,10 @@ class GoogleAnalytics {
     logEvent('message_toolbar', parameters: {"action": action.name});
   }
 
-  /// unused
-  static void contextualRequest() {
-    logEvent('context_request');
-  }
-
-  /// unused
   static void messageTranslate() {
     logEvent('message_translate');
   }
 
-  /// unused
   static void createClass(String className, String classCode) {
     logEvent(
       'create_class',
@@ -128,12 +121,10 @@ class GoogleAnalytics {
     );
   }
 
-  /// unused
   static void createChat(String newChatRoomId) {
     logEvent('create_chat', parameters: {"chat_id": newChatRoomId});
   }
 
-  /// unused
   static void addParent(String chatRoomId, String classCode) {
     logEvent(
       'add_room_to_class',
@@ -141,7 +132,6 @@ class GoogleAnalytics {
     );
   }
 
-  /// unused
   static void removeChatFromClass(String chatRoomId, String classCode) {
     logEvent(
       'remove_room_from_class',
@@ -149,7 +139,6 @@ class GoogleAnalytics {
     );
   }
 
-  /// unused
   static void joinClass(String classCode) {
     logEvent('join_group', parameters: {'group_id': classCode});
   }

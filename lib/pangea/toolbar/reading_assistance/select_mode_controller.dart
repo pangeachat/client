@@ -215,6 +215,7 @@ class SelectModeController with LemmaEmojiSetter {
   Future<void> fetchTranslation({String? feedback}) async {
     try {
       _translationLoader.value = AsyncLoading();
+      GoogleAnalytics.messageTranslate();
 
       List<LLMFeedbackModel<FullTextTranslationResponseModel>>? feedbackModel;
       if (feedback != null && _lastTranslationResponse != null) {
