@@ -4,14 +4,25 @@ import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
 
+import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
+
 extension PublicCourseExtension on Api {
   Future<PublicCoursesResponse> getPublicCourses({
     int limit = 10,
     String? since,
+    String? targetLanguage,
+    String? languageOfInstructions,
+    LanguageLevelTypeEnum? cefrLevel,
   }) async {
     final requestUri = Uri(
       path: '/_synapse/client/unstable/org.pangea/public_courses',
-      queryParameters: {'limit': limit.toString(), 'since': since},
+      queryParameters: {
+        'limit': limit.toString(),
+        'since': ?since,
+        'target_language': ?targetLanguage,
+        'language_of_instructions': ?languageOfInstructions,
+        if (cefrLevel != null) 'cefr_level': cefrLevel.string,
+      },
     );
     final request = Request('GET', baseUri!.resolveUri(requestUri));
     request.headers['content-type'] = 'application/json';
@@ -33,11 +44,21 @@ extension PublicCoursesRequest on Client {
   Future<PublicCoursesResponse> requestPublicCourses({
     int limit = 10,
     String? since,
-  }) => getPublicCourses(limit: limit, since: since);
+    String? targetLanguage,
+    String? languageOfInstructions,
+    LanguageLevelTypeEnum? cefrLevel,
+  }) => getPublicCourses(
+    limit: limit,
+    since: since,
+    targetLanguage: targetLanguage,
+    languageOfInstructions: languageOfInstructions,
+    cefrLevel: cefrLevel,
+  );
 }
 
 class PublicCoursesResponse extends GetPublicRoomsResponse {
   final List<PublicCoursesChunk> courses;
+  final String filteringWarning;
 
   PublicCoursesResponse({
     required super.chunk,
@@ -45,30 +66,81 @@ class PublicCoursesResponse extends GetPublicRoomsResponse {
     required super.prevBatch,
     required super.totalRoomCountEstimate,
     required this.courses,
+    required this.filteringWarning,
   });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      ...super.toJson(),
+      'chunk': courses.map((e) => e.toJson()).toList(),
+      'filtering_warning': filteringWarning,
+    };
+  }
 
   @override
   PublicCoursesResponse.fromJson(super.json)
     : courses = (json['chunk'] as List)
           .map((e) => PublicCoursesChunk.fromJson(e))
           .toList(),
+      filteringWarning = json['filtering_warning'] as String,
       super.fromJson();
+
+  PublicCoursesResponse copyWith({
+    List<PublishedRoomsChunk>? chunk,
+    String? nextBatch,
+    String? prevBatch,
+    int? totalRoomCountEstimate,
+    List<PublicCoursesChunk>? courses,
+    String? filteringWarning,
+  }) {
+    return PublicCoursesResponse(
+      chunk: chunk ?? this.chunk,
+      nextBatch: nextBatch ?? this.nextBatch,
+      prevBatch: prevBatch ?? this.prevBatch,
+      totalRoomCountEstimate:
+          totalRoomCountEstimate ?? this.totalRoomCountEstimate,
+      courses: courses ?? this.courses,
+      filteringWarning: filteringWarning ?? this.filteringWarning,
+    );
+  }
 }
 
 class PublicCoursesChunk {
   final PublishedRoomsChunk room;
   final String courseId;
+  final String? targetLanguage;
+  final String? languageOfInstructions;
+  final LanguageLevelTypeEnum? cefrLevel;
 
-  PublicCoursesChunk({required this.room, required this.courseId});
+  PublicCoursesChunk({
+    required this.room,
+    required this.courseId,
+    this.targetLanguage,
+    this.languageOfInstructions,
+    this.cefrLevel,
+  });
 
   factory PublicCoursesChunk.fromJson(Map<String, dynamic> json) {
     return PublicCoursesChunk(
       room: PublishedRoomsChunk.fromJson(json),
       courseId: json['course_id'] as String,
+      targetLanguage: json['target_language'] as String?,
+      languageOfInstructions: json['language_of_instructions'] as String?,
+      cefrLevel: json['cefr_level'] != null
+          ? LanguageLevelTypeEnum.fromString(json['cefr_level'] as String)
+          : null,
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {'room': room.toJson(), 'course_id': courseId};
+    return {
+      'room': room.toJson(),
+      'course_id': courseId,
+      if (targetLanguage != null) 'target_language': targetLanguage,
+      if (languageOfInstructions != null)
+        'language_of_instructions': languageOfInstructions,
+      if (cefrLevel != null) 'cefr_level': cefrLevel!.toString(),
+    };
   }
 }

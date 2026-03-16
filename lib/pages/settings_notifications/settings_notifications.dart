@@ -9,7 +9,7 @@ import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/settings_notifications/push_rule_extensions.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/pangea/notifications/notifications_client_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
@@ -202,111 +202,11 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
     if (mounted) setState(() {});
   }
 
-  List<ThirdPartyIdentifier>? _thirdPartyIds;
-
-  Future<bool> get emailNotificationsEnabled async {
-    List<Pusher> pushers = [];
-    Set<String> emails = {};
-
-    try {
-      pusherFuture ??= Matrix.of(context).client.getPushers();
-      pushers = (await pusherFuture!) ?? [];
-      if (pushers.isEmpty) return false;
-      if (!pushers.any((pusher) => pusher.kind == 'email')) {
-        return false;
-      }
-
-      _thirdPartyIds ??= await Matrix.of(context).client.getAccount3PIDs();
-      emails = _thirdPartyIds!
-          .where((p) => p.medium == ThirdPartyIdentifierMedium.email)
-          .map((p) => p.address)
-          .toSet();
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'pushers': pushers.map((p) => p.toJson()).toList(),
-          'thirdPartyIds': _thirdPartyIds?.map((id) => id.toJson()).toList(),
-        },
-      );
-    }
-
-    if (emails.isEmpty) return false;
-    return emails.every(
-      (email) => pushers.any(
-        (pusher) =>
-            pusher.kind == 'email' &&
-            pusher.pushkey == email &&
-            pusher.appId == 'm.email',
-      ),
-    );
-  }
-
   Future<void> setEmailNotificationsEnabled(bool enable) async {
-    List<Pusher> pushers = [];
-    Set<String> emails = {};
-
     try {
-      pusherFuture ??= Matrix.of(context).client.getPushers();
-      pushers = (await pusherFuture!) ?? [];
-      _thirdPartyIds ??= await Matrix.of(context).client.getAccount3PIDs();
-      emails = _thirdPartyIds!
-          .where((p) => p.medium == ThirdPartyIdentifierMedium.email)
-          .map((p) => p.address)
-          .toSet();
+      await Matrix.of(context).client.setEnableEmailNotifs(enable);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'enable': enable,
-          'pushers': pushers.map((p) => p.toJson()).toList(),
-          'thirdPartyIds': _thirdPartyIds?.map((id) => id.toJson()).toList(),
-        },
-      );
-    }
-
-    try {
-      if (enable) {
-        for (final email in emails) {
-          if (!pushers.any(
-            (pusher) =>
-                pusher.kind == 'email' &&
-                pusher.pushkey == email &&
-                pusher.appId == 'm.email',
-          )) {
-            final pusher = Pusher(
-              kind: 'email',
-              pushkey: email,
-              appId: 'm.email',
-              appDisplayName: 'Email Notifications',
-              deviceDisplayName: email,
-              lang: LanguageKeys.defaultLanguage,
-              data: PusherData(),
-            );
-            await Matrix.of(context).client.postPusher(pusher);
-          }
-        }
-      } else {
-        for (final pusher in pushers.where(
-          (pusher) => pusher.kind == 'email' && pusher.appId == 'm.email',
-        )) {
-          await Matrix.of(context).client.deletePusher(
-            PusherId(appId: pusher.appId, pushkey: pusher.pushkey),
-          );
-        }
-      }
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'enable': enable,
-          'pushers': pushers.map((p) => p.toJson()).toList(),
-          'thirdPartyIds': _thirdPartyIds?.map((id) => id.toJson()).toList(),
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'enable': enable});
 
       if (!mounted) return;
       ScaffoldMessenger.of(context).hideCurrentSnackBar();

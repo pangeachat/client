@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_init_error_indicator.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/saved_analytics_extension.dart';
@@ -55,6 +56,7 @@ class ActivityArchiveState extends State<ActivityArchive> {
         context,
       ).analyticsDataService.updateDispatcher.activityAnalyticsStream.stream,
       builder: (context, _) {
+        final analyticsService = Matrix.of(context).analyticsDataService;
         final Room? analyticsRoom = Matrix.of(
           context,
         ).client.analyticsRoomLocal();
@@ -73,45 +75,52 @@ class ActivityArchiveState extends State<ActivityArchive> {
                     selected: ProgressIndicatorEnum.activities,
                   ),
                   Expanded(
-                    child: MaxWidthBody(
-                      withScrolling: false,
-                      child: ListView.builder(
-                        physics: const ClampingScrollPhysics(),
-                        itemCount: archive.length + 1,
-                        itemBuilder: (BuildContext context, int i) {
-                          if (i == 0) {
-                            return InstructionsInlineTooltip(
-                              instructionsEnum: archive.isEmpty
-                                  ? InstructionsEnum.noSavedActivitiesYet
-                                  : InstructionsEnum.activityAnalyticsList,
-                              richText: archive.isEmpty
-                                  ? [
-                                      TextSpan(
-                                        text: L10n.of(
-                                          context,
-                                        ).noSavedActivitiesYet,
-                                      ),
-                                      TextSpan(text: " "),
-                                      TextSpan(
-                                        text: L10n.of(
-                                          context,
-                                        ).joinCourseForActivities,
-                                        style: TextStyle(color: linkColor),
-                                        recognizer: recognizer,
-                                      ),
-                                    ]
-                                  : null,
-                              padding: const EdgeInsets.all(8.0),
-                            );
-                          }
-                          i--;
-                          return AnalyticsActivityItem(
-                            room: archive[i],
-                            selected: archive[i].id == selectedRoomId,
-                          );
-                        },
-                      ),
-                    ),
+                    child: analyticsService.hasInitError
+                        ? AnalyticsInitErrorIndicator(
+                            reinitialize: analyticsService.reinitialize,
+                          )
+                        : MaxWidthBody(
+                            withScrolling: false,
+                            child: ListView.builder(
+                              physics: const ClampingScrollPhysics(),
+                              itemCount: archive.length + 1,
+                              itemBuilder: (BuildContext context, int i) {
+                                if (i == 0) {
+                                  return InstructionsInlineTooltip(
+                                    instructionsEnum: archive.isEmpty
+                                        ? InstructionsEnum.noSavedActivitiesYet
+                                        : InstructionsEnum
+                                              .activityAnalyticsList,
+                                    richText: archive.isEmpty
+                                        ? [
+                                            TextSpan(
+                                              text: L10n.of(
+                                                context,
+                                              ).noSavedActivitiesYet,
+                                            ),
+                                            TextSpan(text: " "),
+                                            TextSpan(
+                                              text: L10n.of(
+                                                context,
+                                              ).joinCourseForActivities,
+                                              style: TextStyle(
+                                                color: linkColor,
+                                              ),
+                                              recognizer: recognizer,
+                                            ),
+                                          ]
+                                        : null,
+                                    padding: const EdgeInsets.all(8.0),
+                                  );
+                                }
+                                i--;
+                                return AnalyticsActivityItem(
+                                  room: archive[i],
+                                  selected: archive[i].id == selectedRoomId,
+                                );
+                              },
+                            ),
+                          ),
                   ),
                 ],
               ),

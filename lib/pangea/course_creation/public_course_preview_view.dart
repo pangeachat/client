@@ -97,6 +97,8 @@ class PublicCoursePreviewView extends StatelessWidget {
                                     style: const TextStyle(
                                       fontSize: titleFontSize,
                                     ),
+                                    maxLines: 3,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                   if (summary.adminUserIDs.isNotEmpty)
                                     _CourseAdminDisplay(summary),

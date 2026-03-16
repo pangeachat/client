@@ -133,11 +133,12 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
     }
 
     await MatrixState.pangeaController.userController.updateProfile((profile) {
-      profile.userSettings.targetLanguage = target;
-      if (base != null) {
-        profile.userSettings.sourceLanguage = base;
-      }
-      return profile;
+      return profile.copyWith(
+        userSettings: profile.userSettings.copyWith(
+          targetLanguage: target,
+          sourceLanguage: base,
+        ),
+      );
     }, waitForDataInSync: true);
   }
 
@@ -169,12 +170,13 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
       final updateFuture = [
         _setAvatar(),
         MatrixState.pangeaController.userController.updateProfile((profile) {
-          profile.userSettings.targetLanguage = targetLangCode;
-          if (baseLangCode != null) {
-            profile.userSettings.sourceLanguage = baseLangCode;
-          }
-          profile.userSettings.createdAt = DateTime.now();
-          return profile;
+          return profile.copyWith(
+            userSettings: profile.userSettings.copyWith(
+              targetLanguage: targetLangCode,
+              sourceLanguage: baseLangCode,
+              createdAt: DateTime.now(),
+            ),
+          );
         }, waitForDataInSync: true),
         if (targetLangCode != null)
           MatrixState.pangeaController.userController.updateAnalyticsProfile(
