@@ -33,16 +33,7 @@ class ConstructIdentifier {
     required this.lemma,
     required this.type,
     required String category,
-  }) : _category = category {
-    if (type == ConstructTypeEnum.morph &&
-        MorphFeaturesEnumExtension.fromString(category) ==
-            MorphFeaturesEnum.Unknown) {
-      ErrorHandler.logError(
-        e: Exception("Morph feature not found"),
-        data: {"category": category, "lemma": lemma, "type": type},
-      );
-    }
-  }
+  }) : _category = category;
 
   factory ConstructIdentifier.fromJson(Map<String, dynamic> json) {
     final categoryEntry = json['cat'] ?? json['categories'];
