@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
@@ -84,7 +85,9 @@ class PracticeSessionController {
       if (l2 == null) throw Exception('User L2 language not set');
       session = await AnalyticsPracticeSessionRepo.get(type, l2);
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {});
+      if (e is! UnsubscribedException) {
+        ErrorHandler.logError(e: e, s: s, data: {});
+      }
       sessionError = e;
     } finally {
       isLoadingSession = false;

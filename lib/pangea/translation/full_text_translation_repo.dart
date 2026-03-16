@@ -72,7 +72,9 @@ class FullTextTranslationRepo {
       return Result.value(res);
     } catch (e, s) {
       _cache.remove(request.hashCode.toString());
-      ErrorHandler.logError(e: e, s: s, data: request.toJson());
+      if (e is! UnsubscribedException) {
+        ErrorHandler.logError(e: e, s: s, data: request.toJson());
+      }
       return Result.error(e);
     }
   }

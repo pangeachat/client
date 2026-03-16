@@ -472,7 +472,7 @@ class PangeaMessageEvent {
     );
 
     if (result.error != null) {
-      throw Exception("Error getting speech to text: ${result.error}");
+      throw result.error!;
     }
 
     if (sendEvent) {
