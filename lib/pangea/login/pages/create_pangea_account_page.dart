@@ -74,6 +74,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
   Future<void> _joinCachedCourse() async {
     if (_cachedSpaceCode == null) return;
 
+    GetLocalizedCoursesRequest? request;
     try {
       final spaceId = await SpaceCodeController.joinCachedSpaceCode(context);
       if (spaceId == null) {
@@ -95,17 +96,16 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
         throw Exception('No course plan associated with space $spaceId');
       }
 
-      final course = await CoursePlansRepo.get(
-        GetLocalizedCoursesRequest(
-          coursePlanIds: [courseId],
-          l1: MatrixState.pangeaController.userController.userL1Code!,
-        ),
+      request = GetLocalizedCoursesRequest(
+        coursePlanIds: [courseId],
+        l1: MatrixState.pangeaController.userController.userL1Code!,
       );
-
+      final course = await CoursePlansRepo.get(request);
       _spaceId = spaceId;
       _courseLangCode = course.targetLanguage;
-    } catch (err) {
+    } catch (err, s) {
       _courseError = err;
+      ErrorHandler.logError(e: err, s: s, data: {'request': request?.toJson()});
     }
   }
 
