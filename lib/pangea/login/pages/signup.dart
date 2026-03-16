@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/authentication/request_token_client_extension.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/login/pages/signup_view.dart';
 import 'package:fluffychat/pangea/login/pages/signup_with_email_view.dart';
@@ -163,24 +164,26 @@ class SignupPageController extends State<SignupPage> {
   Future<void> _signupFuture() async {
     final client = await Matrix.of(context).getLoginClient();
     final email = emailController.text;
+
+    final displayname = usernameController.text;
+    final localPart = displayname.toLowerCase().replaceAll(' ', '_');
+
     if (email.isNotEmpty) {
       Matrix.of(context).currentClientSecret = DateTime.now()
           .millisecondsSinceEpoch
           .toString();
-      // #Pangea
+
       Matrix.of(context).currentRegistrationEmail = email;
+      Matrix.of(context).currentRegisrationUsername = localPart;
       Matrix.of(context).currentSendAttempt = 0;
-      // Pangea#
       Matrix.of(context).currentThreepidCreds = await client
-          .requestTokenToRegisterEmail(
+          .requestTokenToRegister(
             Matrix.of(context).currentClientSecret,
             email,
+            localPart,
             0,
           );
     }
-
-    final displayname = usernameController.text;
-    final localPart = displayname.toLowerCase().replaceAll(' ', '_');
 
     final registerRes = await client.uiaRequestBackground<RegisterResponse?>(
       (auth) => client.register(
