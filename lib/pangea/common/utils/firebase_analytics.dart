@@ -38,7 +38,7 @@ class GoogleAnalytics {
 
     analytics = FirebaseAnalytics.instanceFor(app: app);
 
-    if (Environment.sentryDebugEnabled) {
+    if (Environment.analyticsDebugEnabled) {
       // Note: Doesnt currently work on Web
       analytics?.setDefaultEventParameters({"traffic_type": "internal"});
     }
@@ -63,14 +63,14 @@ class GoogleAnalytics {
 
   static void logEvent(String name, {Map<String, Object>? parameters}) {
     // Add params when possible, web doesnt automatically add as of mar/09/2026
-    final finalParameters = Environment.sentryDebugEnabled && kIsWeb
+    final finalParameters = Environment.analyticsDebugEnabled && kIsWeb
         ? {...?parameters, "traffic_type": "internal"}
         : parameters;
 
     debugPrint("event: $name - parameters: $parameters");
 
     // Only actually send to sentry if were not in debug mode or dev mode is on
-    if (!kDebugMode || Environment.sentryDebugEnabled) {
+    if (!kDebugMode || Environment.analyticsDebugEnabled) {
       analytics?.logEvent(name: name, parameters: finalParameters);
     }
   }

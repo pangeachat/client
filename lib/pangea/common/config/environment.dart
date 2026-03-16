@@ -97,9 +97,9 @@ class Environment {
         'https://c2fd19ab2cdc4ebb939a32d01c0e9fa1@o225078.ingest.sentry.io/1376295';
   }
 
-  static bool get sentryDebugEnabled {
-    return appConfigOverride?.sentryDebugEnabled ??
-        (dotenv.env["SENTRY_DEBUG_ENABLED"]?.toLowerCase() == 'true');
+  static bool get analyticsDebugEnabled {
+    return appConfigOverride?.analyticsDebugEnabled ??
+        (dotenv.env["GOOGLE_ANALYTICS_DEBUG_ENABLED"]?.toLowerCase() == 'true');
   }
 
   static String get rcGoogleKey {
@@ -202,7 +202,7 @@ class AppConfigOverride {
   final String? choreoApi;
   final String? choreoApiKey;
   final String? sentryDsn;
-  final bool? sentryDebugEnabled;
+  final bool? analyticsDebugEnabled;
   final String? rcGoogleKey;
   final String? rcIosKey;
   final String? rcOfferingName;
@@ -217,7 +217,7 @@ class AppConfigOverride {
     this.choreoApi,
     this.choreoApiKey,
     this.sentryDsn,
-    this.sentryDebugEnabled,
+    this.analyticsDebugEnabled,
     this.rcGoogleKey,
     this.rcIosKey,
     this.rcOfferingName,
@@ -234,7 +234,7 @@ class AppConfigOverride {
       choreoApi: json['choreoApi'] as String?,
       choreoApiKey: json['choreoApiKey'] as String?,
       sentryDsn: json['sentryDsn'] as String?,
-      sentryDebugEnabled: json['sentryDebugEnabled'] as bool?,
+      analyticsDebugEnabled: json['analyticsDebugEnabled'] as bool?,
       rcGoogleKey: json['rcGoogleKey'] as String?,
       rcIosKey: json['rcIosKey'] as String?,
       rcOfferingName: json['rcOfferingName'] as String?,
