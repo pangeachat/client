@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/authentication/request_token_client_extension.dart';
+import 'package:fluffychat/pangea/authentication/store_login_method_repo.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/login/pages/signup_view.dart';
 import 'package:fluffychat/pangea/login/pages/signup_with_email_view.dart';
@@ -35,6 +36,8 @@ class SignupPageController extends State<SignupPage> {
   bool noEmailWarningConfirmed = false;
   bool displaySecondPasswordField = false;
 
+  PreviousLoginInfo? prevInfo;
+
   @override
   void initState() {
     super.initState();
@@ -53,6 +56,8 @@ class SignupPageController extends State<SignupPage> {
       _setStateOnTextChange(emailText, emailController.text);
       emailText = emailController.text;
     });
+
+    _setPreviousLoginMethod();
   }
 
   @override
@@ -198,6 +203,10 @@ class SignupPageController extends State<SignupPage> {
       throw Exception(L10n.of(context).oopsSomethingWentWrong);
     }
 
+    await LoginMethodRepo.storeLoginMethod(
+      userID: client.userID!,
+      method: LoginMethod.email,
+    );
     GoogleAnalytics.login("pangea", registerRes?.userId);
 
     if (displayname != localPart && client.userID != null) {
@@ -206,6 +215,20 @@ class SignupPageController extends State<SignupPage> {
       });
     }
   }
+
+  Future<void> _setPreviousLoginMethod() async {
+    final loginMethod = await LoginMethodRepo.getStoredLoginMethod();
+    if (!mounted) return;
+    if (loginMethod != null) {
+      setState(() => prevInfo = loginMethod);
+    }
+  }
+
+  double buttonOpacity(LoginMethod method) => prevInfo == null
+      ? 1.0
+      : prevInfo!.method == method
+      ? 1.0
+      : 0.6;
 
   @override
   Widget build(BuildContext context) =>

@@ -9,6 +9,7 @@ import 'package:matrix/matrix.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pangea/authentication/store_login_method_repo.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/login/sso_provider_enum.dart';
 import 'package:fluffychat/pangea/login/widgets/p_sso_dialog.dart';
@@ -107,6 +108,11 @@ class PangeaSsoButton extends StatelessWidget {
     } else {
       await redirect;
     }
+
+    await LoginMethodRepo.storeLoginMethod(
+      userID: client.userID!,
+      method: provider.loginMethod,
+    );
 
     GoogleAnalytics.login(provider.name, loginRes.userId);
   }
