@@ -1,4 +1,5 @@
-{  "@@locale": "ru",
+{
+  "@@locale": "ru",
   "@@last_modified": "2026-03-11 11:31:53.384584",
   "about": "О проекте",
   "@about": {
@@ -59,7 +60,10 @@
     "placeholders": {}
   },
   "alreadySpeak": "Я уже говорю...",
-  "@alreadySpeak": {"type": "String", "placeholders": {}},
+  "@alreadySpeak": {
+    "type": "String",
+    "placeholders": {}
+  },
   "answeredTheCall": "{senderName} ответил(а) на звонок",
   "@answeredTheCall": {
     "type": "String",
@@ -71,6 +75,7 @@
   },
   "anyoneCanJoin": "Любой может присоединиться",
   "@anyoneCanJoin": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -101,11 +106,13 @@
   },
   "askSSSSSign": "Чтобы подтвердить личность другого пользователя, введите пароль защищённого хранилища или ключ восстановления.",
   "@askSSSSSign": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
   "askVerificationRequest": "Принять запрос на подтверждение личности от {username}?",
   "@askVerificationRequest": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "username": {
@@ -221,6 +228,7 @@
   },
   "changedTheChatNameTo": "{username} изменил(а) имя чата на: '{chatname}'",
   "@changedTheChatNameTo": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "username": {
@@ -242,6 +250,7 @@
   },
   "changedTheDisplaynameTo": "{username} изменил(а) отображаемое имя на: '{displayname}'",
   "@changedTheDisplaynameTo": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "username": {
@@ -263,6 +272,7 @@
   },
   "changedTheGuestAccessRulesTo": "{username} изменил(а) правила гостевого доступа на: {rules}",
   "@changedTheGuestAccessRulesTo": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "username": {
@@ -284,6 +294,7 @@
   },
   "changedTheHistoryVisibilityTo": "{username} изменил(а) видимость истории на: {rules}",
   "@changedTheHistoryVisibilityTo": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "username": {
@@ -305,6 +316,7 @@
   },
   "changedTheJoinRulesTo": "{username} изменил(а) правила присоединения на: {joinRules}",
   "@changedTheJoinRulesTo": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "username": {
@@ -326,6 +338,7 @@
   },
   "changedTheRoomAliases": "{username} изменил(а) псевдоним комнаты",
   "@changedTheRoomAliases": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "username": {
@@ -335,6 +348,7 @@
   },
   "changedTheRoomInvitationLink": "{username} изменил(а) ссылку приглашения",
   "@changedTheRoomInvitationLink": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "username": {
@@ -384,6 +398,7 @@
   },
   "chatBackupDescription": "Резервная копия старых сообщений защищена ключом восстановления. Пожалуйста, не потеряйте его.",
   "@chatBackupDescription": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -446,6 +461,7 @@
   },
   "commandHint_myroomavatar": "Установите свой аватар для этой комнаты (автор: mxc-uri)",
   "@commandHint_myroomavatar": {
+    "pangea_override": true,
     "type": "String",
     "description": "Usage hint for the command /myroomavatar"
   },
@@ -466,6 +482,7 @@
   },
   "commandHint_react": "Отправить ответ в виде реакции",
   "@commandHint_react": {
+    "pangea_override": true,
     "type": "String",
     "description": "Usage hint for the command /react"
   },
@@ -520,6 +537,7 @@
   },
   "contactHasBeenInvitedToTheGroup": "Контакт был приглашён в группу",
   "@contactHasBeenInvitedToTheGroup": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -564,6 +582,7 @@
   },
   "countParticipants": "{count} участников",
   "@countParticipants": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "count": {
@@ -592,6 +611,7 @@
   },
   "currentlyActive": "В настоящее время активен",
   "@currentlyActive": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -686,6 +706,7 @@
   },
   "displaynameHasBeenChanged": "Отображаемое имя изменено",
   "@displaynameHasBeenChanged": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -883,6 +904,7 @@
   },
   "guestsAreForbidden": "Гости не смогут присоединиться",
   "@guestsAreForbidden": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -991,6 +1013,7 @@
   },
   "invitedUsersOnly": "Только приглашённые пользователи",
   "@invitedUsersOnly": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -1018,6 +1041,7 @@
   },
   "joinedTheChat": "👋 {username} присоединился к чату",
   "@joinedTheChat": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "username": {
@@ -1061,6 +1085,7 @@
   },
   "lastActiveAgo": "Последняя активность: {localizedTimeShort}",
   "@lastActiveAgo": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "localizedTimeShort": {
@@ -1100,11 +1125,13 @@
   },
   "locationDisabledNotice": "Службы геолокации отключены. Пожалуйста, включите их, чтобы делиться своим местоположением.",
   "@locationDisabledNotice": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
   "locationPermissionDeniedNotice": "Доступ к геолокации запрещён. Пожалуйста, разрешите его, чтобы делиться своим местоположением.",
   "@locationPermissionDeniedNotice": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -1164,6 +1191,7 @@
   },
   "newMessageInFluffyChat": "💬 Новое сообщение в FluffyChat",
   "@newMessageInFluffyChat": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -1194,11 +1222,13 @@
   },
   "noEncryptionForPublicRooms": "Вы сможете включить шифрование только после того, как комната перестанет быть публично доступной.",
   "@noEncryptionForPublicRooms": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
   "noGoogleServicesWarning": "Похоже, Firebase Cloud Messaging недоступен на вашем устройстве. Чтобы продолжать получать push-уведомления, мы рекомендуем установить ntfy. С помощью ntfy или другого провайдера Unified Push вы сможете получать push-уведомления безопасным для данных способом. Вы можете скачать ntfy из PlayStore или F-Droid.",
   "@noGoogleServicesWarning": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -1295,6 +1325,7 @@
   },
   "openAppToReadMessages": "Откройте приложение, чтобы прочитать сообщения",
   "@openAppToReadMessages": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -1379,6 +1410,7 @@
   },
   "pleaseClickOnLink": "Пожалуйста, перейдите по ссылке в письме, чтобы продолжить.",
   "@pleaseClickOnLink": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -1394,6 +1426,7 @@
   },
   "pleaseEnterYourPin": "Пожалуйста, введите пин-код",
   "@pleaseEnterYourPin": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -1698,6 +1731,7 @@
   },
   "sharedTheLocation": "{username} поделился местоположением",
   "@sharedTheLocation": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "username": {
@@ -1756,6 +1790,7 @@
   },
   "statusExampleMessage": "Как ваши дела сегодня?",
   "@statusExampleMessage": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -1873,6 +1908,7 @@
   },
   "userAndOthersAreTyping": "{username} и {count} других участников печатают…",
   "@userAndOthersAreTyping": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "username": {
@@ -1982,16 +2018,19 @@
   },
   "waitingPartnerAcceptRequest": "Ждём, пока партнёр примет запроc…",
   "@waitingPartnerAcceptRequest": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
   "waitingPartnerEmoji": "Ждём, пока партнёр примет эмодзи…",
   "@waitingPartnerEmoji": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
   "waitingPartnerNumbers": "Ждём, пока партнёр примет числа…",
   "@waitingPartnerNumbers": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -2007,16 +2046,19 @@
   },
   "weSentYouAnEmail": "Мы отправили вам письмо на электронную почту",
   "@weSentYouAnEmail": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
   "whoCanPerformWhichAction": "Кто и какие действия может выполнять",
   "@whoCanPerformWhichAction": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
   "whoIsAllowedToJoinThisGroup": "Кому разрешено присоединяться к этой группе",
   "@whoIsAllowedToJoinThisGroup": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -2032,6 +2074,7 @@
   },
   "withTheseAddressesRecoveryDescription": "По этим адресам можно восстановить пароль.",
   "@withTheseAddressesRecoveryDescription": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -2072,13 +2115,19 @@
   "scanQrCode": "Сканировать QR-код",
   "@scanQrCode": {},
   "sendOnEnter": "Отправлять при нажатии Enter",
-  "@sendOnEnter": {},
+  "@sendOnEnter": {
+    "pangea_override": true
+  },
   "homeserver": "Домашний сервер",
   "@homeserver": {},
   "serverRequiresEmail": "Для регистрации на этом сервере требуется подтверждение адреса электронной почты.",
-  "@serverRequiresEmail": {},
+  "@serverRequiresEmail": {
+    "pangea_override": true
+  },
   "enableMultiAccounts": "(БЕТА) Включить несколько учётных записей на этом устройстве",
-  "@enableMultiAccounts": {},
+  "@enableMultiAccounts": {
+    "pangea_override": true
+  },
   "bundleName": "Название пакета",
   "@bundleName": {},
   "removeFromBundle": "Удалить из этого пакета",
@@ -2086,9 +2135,13 @@
   "addToBundle": "Добавить в пакет",
   "@addToBundle": {},
   "editBundlesForAccount": "Изменить пакеты для этой учётной записи",
-  "@editBundlesForAccount": {},
+  "@editBundlesForAccount": {
+    "pangea_override": true
+  },
   "addAccount": "Добавить учётную запись",
-  "@addAccount": {},
+  "@addAccount": {
+    "pangea_override": true
+  },
   "link": "Ссылка",
   "@link": {},
   "oneClientLoggedOut": "Один из ваших клиентов вышел",
@@ -2161,6 +2214,7 @@
   "@openChat": {},
   "reactedWith": "{sender} отреагировал(а) {reaction}",
   "@reactedWith": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "sender": {
@@ -2182,7 +2236,9 @@
   "placeCall": "Совершить звонок",
   "@placeCall": {},
   "videoCallsBetaWarning": "Обратите внимание, что видеозвонки в настоящее время находятся в стадии бета-тестирования. Они могут работать нестабильно или не работать на всех платформах вовсе.",
-  "@videoCallsBetaWarning": {},
+  "@videoCallsBetaWarning": {
+    "pangea_override": true
+  },
   "experimentalVideoCalls": "Экспериментальные видеозвонки",
   "@experimentalVideoCalls": {},
   "emailOrUsername": "Адрес электронной почты или имя пользователя",
@@ -2300,13 +2356,17 @@
   "storeSecurlyOnThisDevice": "Сохранить на этом устройстве",
   "@storeSecurlyOnThisDevice": {},
   "saveKeyManuallyDescription": "Сохраните этот ключ вручную, используя системный диалог или буфер обмена.",
-  "@saveKeyManuallyDescription": {},
+  "@saveKeyManuallyDescription": {
+    "pangea_override": true
+  },
   "recoveryKey": "Ключ восстановления",
   "@recoveryKey": {},
   "pleaseEnterRecoveryKey": "Введите ключ восстановления:",
   "@pleaseEnterRecoveryKey": {},
   "pleaseEnterRecoveryKeyDescription": "Чтобы получить доступ к вашим старым сообщениям, введите ключ восстановления, созданный в предыдущей сессии. Ключ восстановления — это НЕ ваш пароль.",
-  "@pleaseEnterRecoveryKeyDescription": {},
+  "@pleaseEnterRecoveryKeyDescription": {
+    "pangea_override": true
+  },
   "storeInAndroidKeystore": "Сохранить в Android KeyStore",
   "@storeInAndroidKeystore": {},
   "storeInAppleKeyChain": "Сохранить в Apple KeyChain",
@@ -2314,7 +2374,9 @@
   "user": "Пользователь",
   "@user": {},
   "confirmMatrixId": "Пожалуйста, подтвердите свой Matrix ID, чтобы удалить свою учётную запись.",
-  "@confirmMatrixId": {},
+  "@confirmMatrixId": {
+    "pangea_override": true
+  },
   "supposedMxid": "Это должно быть {mxid}",
   "@supposedMxid": {
     "type": "String",
@@ -2329,7 +2391,9 @@
   "indexedDbErrorLong": "К сожалению, хранилище сообщений по умолчанию не включено в приватном режиме.\nПожалуйста, перейдите в\n- about:config\n- установите для dom.indexedDB.privateBrowsing.enabled значение true\nВ противном случае запуск FluffyChat будет невозможен.",
   "@indexedDbErrorLong": {},
   "custom": "Пользовательский",
-  "@custom": {},
+  "@custom": {
+    "pangea_override": true
+  },
   "hydrate": "Восстановить из файла резервной копии",
   "@hydrate": {},
   "hydrateTor": "Пользователи TOR: Импорт экспорта сессии",
@@ -2341,7 +2405,9 @@
   "dehydrate": "Экспорт сеанса и очистка устройства",
   "@dehydrate": {},
   "dehydrateWarning": "Это действие не может быть отменено. Убедитесь, что вы надёжно сохранили файл резервной копии.",
-  "@dehydrateWarning": {},
+  "@dehydrateWarning": {
+    "pangea_override": true
+  },
   "indexedDbErrorTitle": "Проблемы с приватным режимом",
   "@indexedDbErrorTitle": {},
   "otherCallingPermissions": "Разрешения FluffyChat: микрофон, камера и другие",
@@ -2361,7 +2427,9 @@
   "appearOnTopDetails": "Разрешает приложению отображаться поверх других приложений (не требуется, если FluffyChat уже настроен как приложение для звонков)",
   "@appearOnTopDetails": {},
   "foregroundServiceRunning": "Это уведомление отображается при работе фонового сервиса.",
-  "@foregroundServiceRunning": {},
+  "@foregroundServiceRunning": {
+    "pangea_override": true
+  },
   "newGroup": "Новая группа",
   "@newGroup": {},
   "enterRoom": "Войти в комнату",
@@ -2377,9 +2445,13 @@
   "whyIsThisMessageEncrypted": "Почему это сообщение нечитаемо?",
   "@whyIsThisMessageEncrypted": {},
   "noKeyForThisMessage": "Это может произойти, если сообщение было отправлено до того, как вы вошли в свой аккаунт на этом устройстве.\n\nТакже возможно, что отправитель заблокировал ваше устройство или возникли проблемы с интернет-соединением.\n\nВы можете прочитать это сообщение в другой сессии? Тогда вы сможете перенести его оттуда. Перейдите в раздел Настройки > Устройства и убедитесь, что ваши устройства были подтверждены друг для друга. Когда вы в следующий раз откроете комнату и обе сессии будут активны, ключи будут переданы автоматически.\n\nНе хотите терять ключи при выходе из аккаунта или смене устройства? Убедитесь, что в настройках включено резервное копирование чатов.",
-  "@noKeyForThisMessage": {},
+  "@noKeyForThisMessage": {
+    "pangea_override": true
+  },
   "screenSharingTitle": "Демонстрация экрана",
-  "@screenSharingTitle": {},
+  "@screenSharingTitle": {
+    "pangea_override": true
+  },
   "numChats": "{number} чатов",
   "@numChats": {
     "type": "number",
@@ -2390,7 +2462,9 @@
     }
   },
   "fileIsTooBigForServer": "Отправка не удалась! Сервер поддерживает вложения размером до {max}.",
-  "@fileIsTooBigForServer": {},
+  "@fileIsTooBigForServer": {
+    "pangea_override": true
+  },
   "hideUnimportantStateEvents": "Скрыть второстепенные системные события",
   "@hideUnimportantStateEvents": {},
   "sorryThatsNotPossible": "Извините... это невозможно",
@@ -2407,11 +2481,15 @@
     }
   },
   "commandHint_cuddle": "Отправить объятия",
-  "@commandHint_cuddle": {},
+  "@commandHint_cuddle": {
+    "pangea_override": true
+  },
   "readUpToHere": "Непрочитанное",
   "@readUpToHere": {},
   "commandHint_hug": "Отправить объятие",
-  "@commandHint_hug": {},
+  "@commandHint_hug": {
+    "pangea_override": true
+  },
   "cuddleContent": "{senderName} обнимает вас",
   "@cuddleContent": {
     "type": "String",
@@ -2423,6 +2501,7 @@
   },
   "hugContent": "{senderName} обнял(а) вас",
   "@hugContent": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "senderName": {
@@ -2431,17 +2510,25 @@
     }
   },
   "jump": "Перейти к сообщению",
-  "@jump": {},
+  "@jump": {
+    "pangea_override": true
+  },
   "doNotShowAgain": "Не показывать снова",
   "@doNotShowAgain": {},
   "newSpaceDescription": "Пространства позволяют объединять ваши чаты и создавать частные или публичные сообщества.",
-  "@newSpaceDescription": {},
+  "@newSpaceDescription": {
+    "pangea_override": true
+  },
   "disableEncryptionWarning": "В целях безопасности вы не можете отключить шифрование в чате, где оно было включено.",
-  "@disableEncryptionWarning": {},
+  "@disableEncryptionWarning": {
+    "pangea_override": true
+  },
   "deviceKeys": "Ключи устройств:",
   "@deviceKeys": {},
   "noBackupWarning": "Внимание! Без включённого резервного копирования чатов вы потеряете доступ к зашифрованным сообщениям. Настоятельно рекомендуется включить резервное копирование перед выходом из аккаунта.",
-  "@noBackupWarning": {},
+  "@noBackupWarning": {
+    "pangea_override": true
+  },
   "noOtherDevicesFound": "Другие устройства не найдены",
   "@noOtherDevicesFound": {},
   "reportErrorDescription": "😭 О, нет. Что-то пошло не так. При желании вы можете сообщить об этой ошибке разработчикам.",
@@ -2471,9 +2558,13 @@
   "reopenChat": "Открыть чат заново",
   "@reopenChat": {},
   "commandHint_googly": "Отправить глазки",
-  "@commandHint_googly": {},
+  "@commandHint_googly": {
+    "pangea_override": true
+  },
   "notAnImage": "Это не изображение.",
-  "@notAnImage": {},
+  "@notAnImage": {
+    "pangea_override": true
+  },
   "importNow": "Импортировать сейчас",
   "@importNow": {},
   "importEmojis": "Импортировать эмодзи",
@@ -2486,6 +2577,7 @@
   "@replace": {},
   "googlyEyesContent": "{senderName} отправил(а) вам глазки",
   "@googlyEyesContent": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "senderName": {
@@ -2508,7 +2600,9 @@
   "addChatDescription": "Добавить описание чата...",
   "@addChatDescription": {},
   "chatPermissions": "Разрешения в чате",
-  "@chatPermissions": {},
+  "@chatPermissions": {
+    "pangea_override": true
+  },
   "chatDescription": "Описание чата",
   "@chatDescription": {},
   "chatDescriptionHasBeenChanged": "Описание чата изменено",
@@ -2518,15 +2612,20 @@
   "invalidServerName": "Недопустимое имя сервера",
   "@invalidServerName": {},
   "optionalRedactReason": "(Необязательно) Причина удаления сообщения...",
-  "@optionalRedactReason": {},
+  "@optionalRedactReason": {
+    "pangea_override": true
+  },
   "redactMessageDescription": "Сообщение будет удалено для всех участников. Это необратимо.",
-  "@redactMessageDescription": {},
+  "@redactMessageDescription": {
+    "pangea_override": true
+  },
   "messagesStyle": "Сообщения:",
   "@messagesStyle": {},
   "shareInviteLink": "Поделиться приглашением",
   "@shareInviteLink": {},
   "redactedBy": "Удалено пользователем {username}",
   "@redactedBy": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "username": {
@@ -2566,6 +2665,7 @@
   "@invalidInput": {},
   "wrongPinEntered": "Введён неверный пин-код! Повторите попытку через {seconds} секунд...",
   "@wrongPinEntered": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "seconds": {
@@ -2579,15 +2679,21 @@
     "placeholders": {}
   },
   "banUserDescription": "Пользователь будет заблокирован в чате и не сможет снова войти в чат, пока не будет разблокирован.",
-  "@banUserDescription": {},
+  "@banUserDescription": {
+    "pangea_override": true
+  },
   "removeDevicesDescription": "Вы выйдете с этого устройства и больше не будете получать сообщения.",
   "@removeDevicesDescription": {},
   "unbanUserDescription": "Пользователь сможет при желании войти в чат снова.",
-  "@unbanUserDescription": {},
+  "@unbanUserDescription": {
+    "pangea_override": true
+  },
   "pushNotificationsNotAvailable": "Push-уведомления недоступны",
   "@pushNotificationsNotAvailable": {},
   "makeAdminDescription": "После назначения этого пользователя администратором вы не сможете отменить это действие, так как у него будут такие же права, как у вас.",
-  "@makeAdminDescription": {},
+  "@makeAdminDescription": {
+    "pangea_override": true
+  },
   "archiveRoomDescription": "Чат переместится в архив. Другим пользователям будет видно, что вы вышли из чата.",
   "@archiveRoomDescription": {},
   "hasKnocked": "🚪 {user} постучался",
@@ -2601,15 +2707,23 @@
   "learnMore": "Узнать больше",
   "@learnMore": {},
   "roomUpgradeDescription": "После этого чат будет пересоздан с новой версией комнаты. Все участники получат уведомление о необходимости перейти в новый чат. Подробнее о версиях комнат можно узнать по адресу: https://spec.matrix.org/latest/rooms/",
-  "@roomUpgradeDescription": {},
+  "@roomUpgradeDescription": {
+    "pangea_override": true
+  },
   "pleaseEnterANumber": "Пожалуйста введите число больше 0",
   "@pleaseEnterANumber": {},
   "kickUserDescription": "Пользователь будет исключён из чата без блокировки. В публичных чатах повторное присоединение возможно в любое время.",
-  "@kickUserDescription": {},
+  "@kickUserDescription": {
+    "pangea_override": true
+  },
   "blockListDescription": "Вы можете заблокировать пользователей, которые вам мешают. Вы не будете получать сообщения или приглашения в чаты от пользователей из вашего чёрного списка.",
-  "@blockListDescription": {},
+  "@blockListDescription": {
+    "pangea_override": true
+  },
   "blockedUsers": "Заблокированные пользователи",
-  "@blockedUsers": {},
+  "@blockedUsers": {
+    "pangea_override": true
+  },
   "block": "Заглушить",
   "@block": {},
   "blockUsername": "Игнорировать имя пользователя",
@@ -2622,6 +2736,7 @@
   "@groupCanBeFoundViaSearch": {},
   "noUsersFoundWithQuery": "К сожалению пользователей с именем \"{query}\" не найдено. Пожалуйста, проверьте, нет ли опечатки.",
   "@noUsersFoundWithQuery": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "query": {
@@ -2630,11 +2745,15 @@
     }
   },
   "yourGlobalUserIdIs": "Ваш глобальный ID пользователя:",
-  "@yourGlobalUserIdIs": {},
+  "@yourGlobalUserIdIs": {
+    "pangea_override": true
+  },
   "commandHint_sendraw": "Отправить сырой json",
   "@commandHint_sendraw": {},
   "wrongRecoveryKey": "Извините… похоже, это неверный ключ восстановления.",
-  "@wrongRecoveryKey": {},
+  "@wrongRecoveryKey": {
+    "pangea_override": true
+  },
   "groupName": "Название группы",
   "@groupName": {},
   "databaseMigrationTitle": "База данных оптимизированна",
@@ -2668,7 +2787,9 @@
   "searchForUsers": "Поиск @пользователей...",
   "@searchForUsers": {},
   "thisDevice": "Это устройство:",
-  "@thisDevice": {},
+  "@thisDevice": {
+    "pangea_override": true
+  },
   "decline": "Отклонить",
   "@decline": {},
   "databaseBuildErrorBody": "Не удалось создать базу данных SQLite. В настоящее время приложение пытается использовать устаревшую версию базы данных. Пожалуйста, сообщите об этой ошибке разработчикам по адресу {url}. Сообщение об ошибке: {error}",
@@ -2712,7 +2833,9 @@
   "subspace": "Подпространство",
   "@subspace": {},
   "addChatOrSubSpace": "Добавить чат или подпространство",
-  "@addChatOrSubSpace": {},
+  "@addChatOrSubSpace": {
+    "pangea_override": true
+  },
   "youInvitedToBy": "📩 Вы были приглашены по ссылке в:\n{alias}",
   "@youInvitedToBy": {
     "placeholders": {
@@ -2722,7 +2845,9 @@
     }
   },
   "sendReadReceipts": "Отправлять отметки о прочтении",
-  "@sendReadReceipts": {},
+  "@sendReadReceipts": {
+    "pangea_override": true
+  },
   "verifyOtherUser": "🔐 Подтвердить другого пользователя",
   "@verifyOtherUser": {},
   "verifyOtherDevice": "🔐 Подтвердить другое устройство",
@@ -2741,9 +2866,13 @@
   "transparent": "Прозрачный",
   "@transparent": {},
   "verifyOtherUserDescription": "Подтвердив другого пользователя, вы можете быть уверены, что точно знаете, с кем общаетесь. 💪\n\nКогда вы начнёте проверку, у вас и у другого пользователя в приложении появится всплывающее окно. В нём вы увидите набор эмодзи или чисел, которые нужно сравнить друг с другом.\n\nЛучший способ сделать это — встретиться лично или начать видеозвонок. 👭",
-  "@verifyOtherUserDescription": {},
+  "@verifyOtherUserDescription": {
+    "pangea_override": true
+  },
   "verifyOtherDeviceDescription": "Когда вы подтверждаете другое устройство, эти устройства могут обмениваться ключами, повышая общий уровень безопасности. 💪 Когда вы начнёте проверку, на обоих устройствах в приложении появится всплывающее окно. В нём вы увидите набор эмодзи или чисел, которые нужно сравнить между собой. Перед началом проверки лучше держать оба устройства под рукой. 🤳",
-  "@verifyOtherDeviceDescription": {},
+  "@verifyOtherDeviceDescription": {
+    "pangea_override": true
+  },
   "formattedMessagesDescription": "Отображать содержимое расширенных сообщений, такой как жирный текст, с помощью Markdown.",
   "@formattedMessagesDescription": {},
   "acceptedKeyVerification": "{sender} принял(а) подтверждение ключей",
@@ -2808,6 +2937,7 @@
   "@incomingMessages": {},
   "presencesToggle": "Отображать статусы других пользователей",
   "@presencesToggle": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -2825,7 +2955,9 @@
   "globalChatId": "ID глобального чата",
   "@globalChatId": {},
   "customEmojisAndStickersBody": "Добавлять или делиться пользовательскими эмодзи и стикерами, которые можно использовать в любом чате.",
-  "@customEmojisAndStickersBody": {},
+  "@customEmojisAndStickersBody": {
+    "pangea_override": true
+  },
   "hideMemberChangesInPublicChatsBody": "Скрывать в ленте чата события входа и выхода пользователей в публичных чатах для повышения читаемости.",
   "@hideMemberChangesInPublicChatsBody": {},
   "knocking": "Стучаться",
@@ -2841,7 +2973,9 @@
   "noDatabaseEncryption": "Шифрование базы данных не поддерживается на этой платформе",
   "@noDatabaseEncryption": {},
   "appLockDescription": "Заблокировать приложение, когда не используется ПИН-код",
-  "@appLockDescription": {},
+  "@appLockDescription": {
+    "pangea_override": true
+  },
   "calls": "Звонки",
   "@calls": {},
   "customEmojisAndStickers": "Пользовательские эмодзи и стикеры",
@@ -2851,7 +2985,9 @@
   "hideInvalidOrUnknownMessageFormats": "Скрыть неправильные или неизвестные форматы сообщения",
   "@hideInvalidOrUnknownMessageFormats": {},
   "hideRedactedMessagesBody": "Если кто-то удалит сообщение, оно больше не будет отображаться в чате.",
-  "@hideRedactedMessagesBody": {},
+  "@hideRedactedMessagesBody": {
+    "pangea_override": true
+  },
   "hideMemberChangesInPublicChats": "Скрыть изменения участников в публичных чатах",
   "@hideMemberChangesInPublicChats": {},
   "overview": "Обзор",
@@ -2871,7 +3007,9 @@
   "knock": "Постучаться",
   "@knock": {},
   "usersMustKnock": "Требуется запрос на вступление",
-  "@usersMustKnock": {},
+  "@usersMustKnock": {
+    "pangea_override": true
+  },
   "noOneCanJoin": "Никто не может присоединиться",
   "@noOneCanJoin": {},
   "noPublicLinkHasBeenCreatedYet": "Публичная ссылка ещё не была создана",
@@ -2914,13 +3052,17 @@
     }
   },
   "searchMore": "Найти ещё...",
-  "@searchMore": {},
+  "@searchMore": {
+    "pangea_override": true
+  },
   "gallery": "Галерея",
   "@gallery": {},
   "files": "Файлы",
   "@files": {},
   "swipeRightToLeftToReply": "Проведите справа налево, чтобы ответить",
-  "@swipeRightToLeftToReply": {},
+  "@swipeRightToLeftToReply": {
+    "pangea_override": true
+  },
   "userLevel": "{level} - Пользователь",
   "@userLevel": {
     "type": "String",
@@ -2974,7 +3116,9 @@
   "sendCanceled": "Отправка отменена",
   "@sendCanceled": {},
   "noChatsFoundHere": "Не было найдено ни одного чата. Начните новый чат с кем-нибудь, нажав кнопку ниже. ⤵️",
-  "@noChatsFoundHere": {},
+  "@noChatsFoundHere": {
+    "pangea_override": true
+  },
   "updateInstalled": "🎉 Обновление {version} успешно установлено!",
   "@updateInstalled": {
     "type": "String",
@@ -2988,6 +3132,7 @@
   "@changelog": {},
   "invitedBy": "📩 Приглашен(а) пользователем {user}",
   "@invitedBy": {
+    "pangea_override": true,
     "placeholders": {
       "user": {
         "type": "String"
@@ -2995,9 +3140,13 @@
     }
   },
   "doesNotSeemToBeAValidHomeserver": "Похоже, это несовместимый сервер. Неверный URL?",
-  "@doesNotSeemToBeAValidHomeserver": {},
+  "@doesNotSeemToBeAValidHomeserver": {
+    "pangea_override": true
+  },
   "noMoreChatsFound": "Больше чатов не найдено...",
-  "@noMoreChatsFound": {},
+  "@noMoreChatsFound": {
+    "pangea_override": true
+  },
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -3007,11 +3156,15 @@
   "oneOfYourDevicesIsNotVerified": "Одно из ваших устройств не подтверждено",
   "@oneOfYourDevicesIsNotVerified": {},
   "chatPermissionsDescription": "Определите, какой уровень прав требуется для выполнения определённых действий в этом чате. Уровни прав 0, 50 и 100 обычно соответствуют пользователям, модераторам и администраторам, однако возможна любая градация.",
-  "@chatPermissionsDescription": {},
+  "@chatPermissionsDescription": {
+    "pangea_override": true
+  },
   "prepareSendingAttachment": "Подготовка к отправке вложения...",
   "@prepareSendingAttachment": {},
   "sendRoomNotifications": "Отправлять уведомления @room",
-  "@sendRoomNotifications": {},
+  "@sendRoomNotifications": {
+    "pangea_override": true
+  },
   "calculatingFileSize": "Вычисление размера файла...",
   "@calculatingFileSize": {},
   "sendingAttachment": "Отправка вложения...",
@@ -3036,6 +3189,7 @@
   "@serverInformation": {},
   "sendingAttachmentCountOfCount": "Отправляю вложение {index} из {length}...",
   "@sendingAttachmentCountOfCount": {
+    "pangea_override": true,
     "type": "integer",
     "placeholders": {
       "index": {
@@ -3047,9 +3201,13 @@
     }
   },
   "welcomeText": "Привет-привет 👋 Это FluffyChat. Вы можете войти на любой homeserver, совместимый с https://matrix.org, и общаться с кем угодно. Это огромная децентрализованная сеть для обмена сообщениями!",
-  "@welcomeText": {},
+  "@welcomeText": {
+    "pangea_override": true
+  },
   "noContactInformationProvided": "Сервер не предоставляет корректной контактной информации",
-  "@noContactInformationProvided": {},
+  "@noContactInformationProvided": {
+    "pangea_override": true
+  },
   "aboutHomeserver": "О сервере {homeserver}",
   "@aboutHomeserver": {
     "type": "String",
@@ -3066,11 +3224,15 @@
   "pleaseFillOut": "Пожалуйста, заполните",
   "@pleaseFillOut": {},
   "invalidUrl": "Неверный URL",
-  "@invalidUrl": {},
+  "@invalidUrl": {
+    "pangea_override": true
+  },
   "addLink": "Добавить ссылку",
   "@addLink": {},
   "italicText": "Курсив",
-  "@italicText": {},
+  "@italicText": {
+    "pangea_override": true
+  },
   "unableToJoinChat": "Невозможно присоединиться к чату. Возможно, другая сторона уже закончила разговор.",
   "@unableToJoinChat": {},
   "continueText": "Продолжить",
@@ -3084,9 +3246,13 @@
   "manageAccount": "Управление аккаунтом",
   "@manageAccount": {},
   "contactServerAdmin": "Связаться с администратором сервера",
-  "@contactServerAdmin": {},
+  "@contactServerAdmin": {
+    "pangea_override": true
+  },
   "contactServerSecurity": "Сообщить о проблемах с безопасностью",
-  "@contactServerSecurity": {},
+  "@contactServerSecurity": {
+    "pangea_override": true
+  },
   "supportPage": "Поддержка",
   "@supportPage": {},
   "name": "Имя",
@@ -3097,6 +3263,7 @@
   "@website": {},
   "sendImages": "Отправить {count} изображений",
   "@sendImages": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "count": {
@@ -3109,7 +3276,9 @@
   "notificationRuleMessage": "Сообщение",
   "@notificationRuleMessage": {},
   "appWantsToUseForLoginDescription": "Вы разрешаете приложению и сайту обмениваться информацией о вас.",
-  "@appWantsToUseForLoginDescription": {},
+  "@appWantsToUseForLoginDescription": {
+    "pangea_override": true
+  },
   "newChatRequest": "📩 Запрос нового чата",
   "@newChatRequest": {},
   "allDevices": "Все устройства",
@@ -3121,7 +3290,9 @@
   "notificationRuleMaster": "Отключить все уведомления",
   "@notificationRuleMaster": {},
   "notificationRuleSuppressNoticesDescription": "Подавляет уведомления от автоматических клиентов, таких как боты.",
-  "@notificationRuleSuppressNoticesDescription": {},
+  "@notificationRuleSuppressNoticesDescription": {
+    "pangea_override": true
+  },
   "notificationRuleInviteForMe": "Приглашение для меня",
   "@notificationRuleInviteForMe": {},
   "notificationRuleMemberEventDescription": "Отключить уведомления о событиях о членстве.",
@@ -3157,7 +3328,9 @@
     }
   },
   "contentNotificationSettings": "Настройки уведомлений о контенте",
-  "@contentNotificationSettings": {},
+  "@contentNotificationSettings": {
+    "pangea_override": true
+  },
   "generalNotificationSettings": "Общие настройки уведомлений",
   "@generalNotificationSettings": {},
   "userSpecificNotificationSettings": "Настроки уведомлений пользователя",
@@ -3165,9 +3338,13 @@
   "otherNotificationSettings": "Другие настройки уведомлений",
   "@otherNotificationSettings": {},
   "notificationRuleContainsUserNameDescription": "Уведомляет пользователя, когда сообщение содержит его имя.",
-  "@notificationRuleContainsUserNameDescription": {},
+  "@notificationRuleContainsUserNameDescription": {
+    "pangea_override": true
+  },
   "notificationRuleMasterDescription": "Игнорирует все другие правила и отключает все уведомления.",
-  "@notificationRuleMasterDescription": {},
+  "@notificationRuleMasterDescription": {
+    "pangea_override": true
+  },
   "notificationRuleSuppressNotices": "Отключить автоматические сообщения",
   "@notificationRuleSuppressNotices": {},
   "notificationRuleIsUserMention": "Упоминание пользователя",
@@ -3181,9 +3358,13 @@
   "recordAVideo": "Записать видео",
   "@recordAVideo": {},
   "enterNewChat": "Войти в новый чат",
-  "@enterNewChat": {},
+  "@enterNewChat": {
+    "pangea_override": true
+  },
   "otherPartyNotLoggedIn": "Собеседник сейчас не в сети и не может получать сообщения!",
-  "@otherPartyNotLoggedIn": {},
+  "@otherPartyNotLoggedIn": {
+    "pangea_override": true
+  },
   "open": "Открыть",
   "@open": {},
   "waitingForServer": "Ожидание сервера...",
@@ -3193,27 +3374,40 @@
   "previous": "Предыдущий",
   "@previous": {},
   "notificationRuleCallDescription": "Уведомляет пользователя о звонках.",
-  "@notificationRuleCallDescription": {},
+  "@notificationRuleCallDescription": {
+    "pangea_override": true
+  },
   "notificationRuleEncryptedRoomOneToOne": "Зашифрованная комната «Тет-а-тет»",
-  "@notificationRuleEncryptedRoomOneToOne": {},
+  "@notificationRuleEncryptedRoomOneToOne": {
+    "pangea_override": true
+  },
   "notificationRuleEncryptedRoomOneToOneDescription": "Уведомляет пользователя о сообщениях в зашифрованных комнатах «Тет-а-тет».",
-  "@notificationRuleEncryptedRoomOneToOneDescription": {},
+  "@notificationRuleEncryptedRoomOneToOneDescription": {
+    "pangea_override": true
+  },
   "notificationRuleRoomOneToOne": "Комната «Тет-а-тет»",
-  "@notificationRuleRoomOneToOne": {},
+  "@notificationRuleRoomOneToOne": {
+    "pangea_override": true
+  },
   "setCustomPermissionLevel": "Установить уровень прав доступа",
   "@setCustomPermissionLevel": {},
   "setPermissionsLevelDescription": "Пожалуйста, выберите одну из представленных ролей ниже или введите пользовательский уровень прав от 0 до 100.",
   "@setPermissionsLevelDescription": {},
   "ignoreUser": "Игнорировать пользователя",
-  "@ignoreUser": {},
+  "@ignoreUser": {
+    "pangea_override": true
+  },
   "normalUser": "Обычный пользователь",
   "@normalUser": {},
   "commandHint_roomupgrade": "Обновить эту комнату до указанной версии",
-  "@commandHint_roomupgrade": {},
+  "@commandHint_roomupgrade": {
+    "pangea_override": true
+  },
   "notificationRuleInviteForMeDescription": "Уведомляет пользователя, когда его приглашают в комнату.",
   "@notificationRuleInviteForMeDescription": {},
   "unknownPushRule": "Неизвестное правило push '{rule}'",
   "@unknownPushRule": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "rule": {
@@ -3222,49 +3416,78 @@
     }
   },
   "checkList": "Чек-лист",
-  "@checkList": {},
+  "@checkList": {
+    "pangea_override": true
+  },
   "changedTheChatDescription": "{username} изменил описание чата",
   "@changedTheChatDescription": {},
   "changedTheChatName": "{username} изменил(а) имя чата",
   "@changedTheChatName": {},
   "notificationRuleMemberEvent": "Событие участника",
-  "@notificationRuleMemberEvent": {},
+  "@notificationRuleMemberEvent": {
+    "pangea_override": true
+  },
   "notificationRuleIsUserMentionDescription": "Уведомляет пользователя, когда его прямо упоминают в сообщении.",
-  "@notificationRuleIsUserMentionDescription": {},
+  "@notificationRuleIsUserMentionDescription": {
+    "pangea_override": true
+  },
   "notificationRuleContainsDisplayNameDescription": "Уведомляет пользователя, когда сообщение содержит его отображаемое имя.",
-  "@notificationRuleContainsDisplayNameDescription": {},
+  "@notificationRuleContainsDisplayNameDescription": {
+    "pangea_override": true
+  },
   "notificationRuleIsRoomMentionDescription": "Уведомляет пользователя, когда есть упоминание комнаты.",
-  "@notificationRuleIsRoomMentionDescription": {},
+  "@notificationRuleIsRoomMentionDescription": {
+    "pangea_override": true
+  },
   "notificationRuleRoomnotif": "Уведомление комнаты",
-  "@notificationRuleRoomnotif": {},
+  "@notificationRuleRoomnotif": {
+    "pangea_override": true
+  },
   "notificationRuleRoomnotifDescription": "Уведомляет пользователя, когда сообщение содержит '@room'.",
   "@notificationRuleRoomnotifDescription": {},
   "notificationRuleTombstone": "Мемориальная метка",
-  "@notificationRuleTombstone": {},
+  "@notificationRuleTombstone": {
+    "pangea_override": true
+  },
   "notificationRuleTombstoneDescription": "Уведомляет пользователя о сообщениях деактивации комнаты.",
-  "@notificationRuleTombstoneDescription": {},
+  "@notificationRuleTombstoneDescription": {
+    "pangea_override": true
+  },
   "notificationRuleRoomServerAcl": "ACL сервера комнаты",
   "@notificationRuleRoomServerAcl": {},
   "notificationRuleRoomServerAclDescription": "Подавляет уведомления, связанные со списками контроля доступа сервера комнаты (ACL).",
-  "@notificationRuleRoomServerAclDescription": {},
+  "@notificationRuleRoomServerAclDescription": {
+    "pangea_override": true
+  },
   "notificationRuleSuppressEdits": "Подавить редактирования",
-  "@notificationRuleSuppressEdits": {},
+  "@notificationRuleSuppressEdits": {
+    "pangea_override": true
+  },
   "notificationRuleRoomOneToOneDescription": "Уведомляет пользователя о сообщениях в комнатах тет-а-тет.",
-  "@notificationRuleRoomOneToOneDescription": {},
+  "@notificationRuleRoomOneToOneDescription": {
+    "pangea_override": true
+  },
   "notificationRuleMessageDescription": "Уведомляет пользователя об общих сообщениях.",
   "@notificationRuleMessageDescription": {},
   "notificationRuleEncryptedDescription": "Уведомляет пользователя о сообщениях в зашифрованных комнатах.",
   "@notificationRuleEncryptedDescription": {},
   "notificationRuleJitsi": "Jitsi",
-  "@notificationRuleJitsi": {},
+  "@notificationRuleJitsi": {
+    "pangea_override": true
+  },
   "notificationRuleJitsiDescription": "Уведомляет пользователя о событиях виджета Jitsi.",
   "@notificationRuleJitsiDescription": {},
   "notificationRuleServerAcl": "Отключить события ACL сервера",
-  "@notificationRuleServerAcl": {},
+  "@notificationRuleServerAcl": {
+    "pangea_override": true
+  },
   "notificationRuleServerAclDescription": "Отключает уведомления о событиях ACL сервера.",
-  "@notificationRuleServerAclDescription": {},
+  "@notificationRuleServerAclDescription": {
+    "pangea_override": true
+  },
   "sentVoiceMessage": "🎙️ {duration} - Голосовое сообщение от {sender}",
   "@sentVoiceMessage": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "sender": {
@@ -3276,23 +3499,35 @@
     }
   },
   "deletePushRuleCanNotBeUndone": "Если вы удалите это уведомление, восстановить его будет невозможно.",
-  "@deletePushRuleCanNotBeUndone": {},
+  "@deletePushRuleCanNotBeUndone": {
+    "pangea_override": true
+  },
   "shareKeysWith": "Поделиться ключами с...",
   "@shareKeysWith": {},
   "shareKeysWithDescription": "Выберите устройства, которым вы доверяете читать ваши сообщения в зашифрованных чатах.",
-  "@shareKeysWithDescription": {},
+  "@shareKeysWithDescription": {
+    "pangea_override": true
+  },
   "crossVerifiedDevicesIfEnabled": "Перекрёстно проверенные устройства, если включено",
-  "@crossVerifiedDevicesIfEnabled": {},
+  "@crossVerifiedDevicesIfEnabled": {
+    "pangea_override": true
+  },
   "crossVerifiedDevices": "Перекрёстно проверенные устройства",
-  "@crossVerifiedDevices": {},
+  "@crossVerifiedDevices": {
+    "pangea_override": true
+  },
   "verifiedDevicesOnly": "Только проверенные устройства",
   "@verifiedDevicesOnly": {},
   "optionalMessage": "(Опционально) сообщение...",
-  "@optionalMessage": {},
+  "@optionalMessage": {
+    "pangea_override": true
+  },
   "notSupportedOnThisDevice": "Не поддерживается на этом устройстве",
   "@notSupportedOnThisDevice": {},
   "approve": "Одобрить",
-  "@approve": {},
+  "@approve": {
+    "pangea_override": true
+  },
   "youHaveKnocked": "Вы постучали",
   "@youHaveKnocked": {},
   "pleaseWaitUntilInvited": "Пожалуйста, подождите, пока кто-нибудь из комнаты не пригласит вас.",
@@ -3300,9 +3535,13 @@
   "commandHint_logout": "Выйти из текущего устройства",
   "@commandHint_logout": {},
   "commandHint_logoutall": "Выйти со всех активных устройств",
-  "@commandHint_logoutall": {},
+  "@commandHint_logoutall": {
+    "pangea_override": true
+  },
   "displayNavigationRail": "Показать панель навигации на мобильном устройстве",
-  "@displayNavigationRail": {},
+  "@displayNavigationRail": {
+    "pangea_override": true
+  },
   "customReaction": "Пользовательская реакция",
   "@customReaction": {},
   "moreEvents": "Больше событий",
@@ -3316,7 +3555,9 @@
   "pause": "Пауза",
   "@pause": {},
   "resume": "Резюмировать",
-  "@resume": {},
+  "@resume": {
+    "pangea_override": true
+  },
   "newSubSpace": "Новое подпространство",
   "@newSubSpace": {},
   "moveToDifferentSpace": "Переместить в другое пространство",
@@ -3388,9 +3629,13 @@
   "answersWillBeVisibleWhenPollHasEnded": "Ответы будут видны после завершения опроса",
   "@answersWillBeVisibleWhenPollHasEnded": {},
   "replyInThread": "Ответить в потоке",
-  "@replyInThread": {},
+  "@replyInThread": {
+    "pangea_override": true
+  },
   "thread": "Нить",
-  "@thread": {},
+  "@thread": {
+    "pangea_override": true
+  },
   "backToMainChat": "Вернуться в основной чат",
   "@backToMainChat": {},
   "saveChanges": "Сохранить изменения",
@@ -3419,6 +3664,7 @@
   "@setupChatBackup": {},
   "loadCountMoreParticipants": "{count, plural, one{Загрузить ещё # участника} few{Загрузить ещё # участников} other{Загрузить ещё # участников}}",
   "@loadCountMoreParticipants": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "count": {
@@ -3483,6 +3729,7 @@
   },
   "countInvited": "{count, plural, one{Приглашён # участник} few{Приглашены # участника} other{Приглашены # участников}}",
   "@countInvited": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "count": {
@@ -4262,7 +4509,10 @@
   "meaningSectionHeader": "Значение:",
   "formSectionHeader": "Формы, используемые в чатах:",
   "learningAnalytics": "Аналитика обучения",
-  "@learningAnalytics": {"type": "String", "placeholders": {}},
+  "@learningAnalytics": {
+    "type": "String",
+    "placeholders": {}
+  },
   "writingExercisesTooltip": "Письмо",
   "listeningExercisesTooltip": "Прослушивание",
   "readingExercisesTooltip": "Чтение",
@@ -11140,6 +11390,7 @@
   "selectAllWords": "Выберите все слова, которые вы слышите в аудио",
   "joinCourseForActivities": "Присоединяйтесь к курсу, чтобы попробовать активности.",
   "@noMoreResultsFound": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
