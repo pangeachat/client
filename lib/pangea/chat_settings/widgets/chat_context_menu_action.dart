@@ -258,7 +258,7 @@ void chatContextMenuAction(
       if (!resp.isError) {
         isSpace
             ? context.go('/rooms')
-            : NavigationUtil.goToSpaceRoute(null, [], context);
+            : NavigationUtil.goToSpaceRoute(null, [], outerContext);
       }
 
       return;
