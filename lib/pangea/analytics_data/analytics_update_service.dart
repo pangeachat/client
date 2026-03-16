@@ -23,15 +23,25 @@ class AnalyticsUpdateService {
 
   final AnalyticsDataService dataService;
 
-  AnalyticsUpdateService(this.dataService) {
-    _periodicTimer = Timer.periodic(
-      const Duration(minutes: 5),
-      (_) => sendLocalAnalyticsToAnalyticsRoom(),
-    );
-  }
+  AnalyticsUpdateService(this.dataService);
 
   Completer<void>? _updateCompleter;
   Timer? _periodicTimer;
+
+  void start() {
+    _periodicTimer?.cancel();
+    _periodicTimer = Timer.periodic(const Duration(minutes: 5), (_) {
+      if (!dataService.isLogged) {
+        ErrorHandler.logError(
+          e: "User not logged in on periodic analytics update",
+          data: {},
+        );
+        _periodicTimer?.cancel();
+        return;
+      }
+      sendLocalAnalyticsToAnalyticsRoom();
+    });
+  }
 
   void dispose() {
     _periodicTimer?.cancel();
