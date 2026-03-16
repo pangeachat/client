@@ -7,14 +7,42 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/login/login.dart';
+import 'package:fluffychat/pangea/authentication/store_login_method_repo.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
 import 'package:fluffychat/pangea/login/sso_provider_enum.dart';
 import 'package:fluffychat/pangea/login/widgets/p_sso_button.dart';
 
-class LoginOptionsView extends StatelessWidget {
+class LoginOptionsView extends StatefulWidget {
   final LoginController controller;
 
   const LoginOptionsView(this.controller, {super.key});
+
+  @override
+  State<LoginOptionsView> createState() => LoginOptionsViewState();
+}
+
+class LoginOptionsViewState extends State<LoginOptionsView> {
+  PreviousLoginInfo? _prevInfo;
+
+  @override
+  void initState() {
+    super.initState();
+    _setPreviousLoginMethod();
+  }
+
+  Future<void> _setPreviousLoginMethod() async {
+    final loginMethod = await LoginMethodRepo.getStoredLoginMethod();
+    if (!mounted) return;
+    if (loginMethod != null) {
+      setState(() => _prevInfo = loginMethod);
+    }
+  }
+
+  double _buttonOpacity(LoginMethod method) => _prevInfo == null
+      ? 1.0
+      : _prevInfo!.method == method
+      ? 1.0
+      : 0.6;
 
   @override
   Widget build(BuildContext context) {
@@ -50,32 +78,48 @@ class LoginOptionsView extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const PangeaSsoButton(
-                  provider: SSOProvider.apple,
-                  title: "Apple",
-                ),
-                const PangeaSsoButton(
-                  provider: SSOProvider.google,
-                  title: "Google",
-                ),
-                ElevatedButton(
-                  onPressed: () => context.go('/home/login/email'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: theme.colorScheme.primaryContainer,
-                    foregroundColor: theme.colorScheme.onPrimaryContainer,
+                if (_prevInfo != null)
+                  Text(
+                    L10n.of(context).welcomeBackLogin(
+                      _prevInfo!.method.label(L10n.of(context)),
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  child: Row(
-                    spacing: 8.0,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      PangeaLogoSvg(
-                        width: 20,
-                        forceColor: Theme.of(
-                          context,
-                        ).colorScheme.onPrimaryContainer,
-                      ),
-                      Text(L10n.of(context).email),
-                    ],
+                Opacity(
+                  opacity: _buttonOpacity(LoginMethod.apple),
+                  child: PangeaSsoButton(
+                    provider: SSOProvider.apple,
+                    title: "Apple",
+                  ),
+                ),
+                Opacity(
+                  opacity: _buttonOpacity(LoginMethod.google),
+                  child: PangeaSsoButton(
+                    provider: SSOProvider.google,
+                    title: "Google",
+                  ),
+                ),
+                Opacity(
+                  opacity: _buttonOpacity(LoginMethod.email),
+                  child: ElevatedButton(
+                    onPressed: () => context.go('/home/login/email'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: theme.colorScheme.primaryContainer,
+                      foregroundColor: theme.colorScheme.onPrimaryContainer,
+                    ),
+                    child: Row(
+                      spacing: 8.0,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        PangeaLogoSvg(
+                          width: 20,
+                          forceColor: Theme.of(
+                            context,
+                          ).colorScheme.onPrimaryContainer,
+                        ),
+                        Text(L10n.of(context).email),
+                      ],
+                    ),
                   ),
                 ),
                 Padding(

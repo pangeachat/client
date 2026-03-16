@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/authentication/store_login_method_repo.dart';
 
 enum SSOProvider {
   google,
@@ -32,4 +33,9 @@ enum SSOProvider {
         return L10n.of(context).withApple;
     }
   }
+
+  LoginMethod get loginMethod => switch (this) {
+    SSOProvider.google => LoginMethod.google,
+    SSOProvider.apple => LoginMethod.apple,
+  };
 }

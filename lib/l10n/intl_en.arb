@@ -5021,5 +5021,15 @@
   "selectAudioMessagesOnPlayDescription": "Automatically highlight audio messages when played",
   "learningAnalytics": "Learning analytics",
   "searchLanguagesHint": "I am learning...",
-  "alreadySpeak": "I already speak..."
+  "alreadySpeak": "I already speak...",
+  "welcomeBackLogin": "Welcome back! You previously signed in with {platform}.",
+  "@welcomeBackLogin": {
+    "type": "String",
+    "placeholders": {
+      "platform": {
+        "type": "String"
+      }
+    }
+  },
+  "emailLoginMethod": "email"
 }
