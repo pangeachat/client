@@ -127,8 +127,24 @@ class ConstructIdentifier {
     return ConstructIdentifier(lemma: lemma, type: type, category: category);
   }
 
-  bool get isContentWord =>
-      PartOfSpeechEnum.fromString(category)?.isContentWord ?? false;
+  bool get isContentWord => _partOfSpeech?.isContentWord ?? false;
+
+  PartOfSpeechEnum? get _partOfSpeech {
+    if (type != ConstructTypeEnum.vocab) return null;
+    final pos = PartOfSpeechEnum.values.firstWhereOrNull(
+      (pos) => pos.name.toLowerCase() == category.toLowerCase(),
+    );
+
+    if (pos == null && category.toLowerCase() != 'other') {
+      ErrorHandler.logError(
+        e: "Missing part of speech",
+        s: StackTrace.current,
+        data: {"construct": toJson()},
+      );
+    }
+
+    return pos;
+  }
 
   LemmaInfoRequest lemmaInfoRequest(Map<String, dynamic> messageInfo) =>
       LemmaInfoRequest(
