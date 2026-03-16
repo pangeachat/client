@@ -69,7 +69,10 @@ class GoogleAnalytics {
 
     debugPrint("event: $name - parameters: $parameters");
 
-    analytics?.logEvent(name: name, parameters: finalParameters);
+    // Only actually send to sentry if were not in debug mode or dev mode is on
+    if (!kDebugMode || Environment.sentryDebugEnabled) {
+      analytics?.logEvent(name: name, parameters: finalParameters);
+    }
   }
 
   static void login(String type, String? userID) {
