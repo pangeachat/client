@@ -129,7 +129,7 @@ class BackgroundPush {
           // #Pangea
           // android: AndroidInitializationSettings('notifications_icon'),
           // iOS: DarwinInitializationSettings(),
-          android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+          android: AndroidInitializationSettings('@mipmap/notification_icon'),
           iOS: DarwinInitializationSettings(
             requestAlertPermission: false,
             requestBadgePermission: false,
