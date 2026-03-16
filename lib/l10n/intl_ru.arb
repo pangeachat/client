@@ -59,11 +59,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "alreadySpeak": "Я уже говорю...",
-  "@alreadySpeak": {
-    "type": "String",
-    "placeholders": {}
-  },
   "answeredTheCall": "{senderName} ответил(а) на звонок",
   "@answeredTheCall": {
     "type": "String",
@@ -532,6 +527,7 @@
   },
   "connect": "Подключиться",
   "@connect": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -1706,6 +1702,7 @@
   },
   "setInvitationLink": "Установить ссылку приглашения",
   "@setInvitationLink": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -1751,6 +1748,7 @@
   },
   "singlesignon": "Единый вход",
   "@singlesignon": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -1832,11 +1830,13 @@
   },
   "toggleMuted": "Выключить уведомления",
   "@toggleMuted": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
   "toggleUnread": "Пометить как прочитанное/непрочитанное",
   "@toggleUnread": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -2179,7 +2179,9 @@
   "sender": "Отправитель",
   "@sender": {},
   "addToSpaceDescription": "Выберите пространство, в которое нужно добавить этот чат.",
-  "@addToSpaceDescription": {},
+  "@addToSpaceDescription": {
+    "pangea_override": true
+  },
   "start": "Начать",
   "@start": {},
   "time": "Время",
@@ -2269,13 +2271,19 @@
   "widgetCustom": "Пользовательский",
   "@widgetCustom": {},
   "widgetJitsi": "Jitsi Meet",
-  "@widgetJitsi": {},
+  "@widgetJitsi": {
+    "pangea_override": true
+  },
   "widgetName": "Название",
-  "@widgetName": {},
+  "@widgetName": {
+    "pangea_override": true
+  },
   "widgetUrlError": "Этот URL не действителен.",
   "@widgetUrlError": {},
   "widgetNameError": "Пожалуйста, укажите название.",
-  "@widgetNameError": {},
+  "@widgetNameError": {
+    "pangea_override": true
+  },
   "errorAddingWidget": "Ошибка при добавлении виджета.",
   "@errorAddingWidget": {},
   "separateChatTypes": "Разделять личные чаты и группы",
@@ -2389,7 +2397,9 @@
   "dehydrateTor": "Пользователи TOR: Экспорт сеанса",
   "@dehydrateTor": {},
   "indexedDbErrorLong": "К сожалению, хранилище сообщений по умолчанию не включено в приватном режиме.\nПожалуйста, перейдите в\n- about:config\n- установите для dom.indexedDB.privateBrowsing.enabled значение true\nВ противном случае запуск FluffyChat будет невозможен.",
-  "@indexedDbErrorLong": {},
+  "@indexedDbErrorLong": {
+    "pangea_override": true
+  },
   "custom": "Пользовательский",
   "@custom": {
     "pangea_override": true
@@ -2411,21 +2421,29 @@
   "indexedDbErrorTitle": "Проблемы с приватным режимом",
   "@indexedDbErrorTitle": {},
   "otherCallingPermissions": "Разрешения FluffyChat: микрофон, камера и другие",
-  "@otherCallingPermissions": {},
+  "@otherCallingPermissions": {
+    "pangea_override": true
+  },
   "enterSpace": "Войти в пространство",
   "@enterSpace": {},
   "screenSharingDetail": "Вы делитесь своим экраном в FuffyChat",
   "@screenSharingDetail": {},
   "callingAccountDetails": "Позволяет FluffyChat использовать встроенное приложение для звонков Android.",
-  "@callingAccountDetails": {},
+  "@callingAccountDetails": {
+    "pangea_override": true
+  },
   "newSpace": "Новое пространство",
   "@newSpace": {},
   "appearOnTop": "Отображаться поверх других приложений",
-  "@appearOnTop": {},
+  "@appearOnTop": {
+    "pangea_override": true
+  },
   "commandHint_markasdm": "Пометить как комнату личных сообщений",
   "@commandHint_markasdm": {},
   "appearOnTopDetails": "Разрешает приложению отображаться поверх других приложений (не требуется, если FluffyChat уже настроен как приложение для звонков)",
-  "@appearOnTopDetails": {},
+  "@appearOnTopDetails": {
+    "pangea_override": true
+  },
   "foregroundServiceRunning": "Это уведомление отображается при работе фонового сервиса.",
   "@foregroundServiceRunning": {
     "pangea_override": true
@@ -2466,7 +2484,9 @@
     "pangea_override": true
   },
   "hideUnimportantStateEvents": "Скрыть второстепенные системные события",
-  "@hideUnimportantStateEvents": {},
+  "@hideUnimportantStateEvents": {
+    "pangea_override": true
+  },
   "sorryThatsNotPossible": "Извините... это невозможно",
   "@sorryThatsNotPossible": {},
   "openLinkInBrowser": "Открыть ссылку в браузере",
@@ -2586,7 +2606,9 @@
     }
   },
   "signInWithPassword": "Войти с паролем",
-  "@signInWithPassword": {},
+  "@signInWithPassword": {
+    "pangea_override": true
+  },
   "pleaseTryAgainLaterOrChooseDifferentServer": "Повторите попытку позже или выберите другой сервер.",
   "@pleaseTryAgainLaterOrChooseDifferentServer": {},
   "sendTypingNotifications": "Отправлять уведомления о наборе текста",
@@ -2636,7 +2658,9 @@
   "directChat": "Личный чат",
   "@directChat": {},
   "profileNotFound": "Пользователь не найден на сервере. Возможно, возникла проблема с подключением или такого пользователя не существует.",
-  "@profileNotFound": {},
+  "@profileNotFound": {
+    "pangea_override": true
+  },
   "setTheme": "Тема:",
   "@setTheme": {},
   "redactedByBecause": "{username} отредактировал это событие. Причина: \"{reason}\"",
@@ -2794,6 +2818,7 @@
   "@decline": {},
   "databaseBuildErrorBody": "Не удалось создать базу данных SQLite. В настоящее время приложение пытается использовать устаревшую версию базы данных. Пожалуйста, сообщите об этой ошибке разработчикам по адресу {url}. Сообщение об ошибке: {error}",
   "@databaseBuildErrorBody": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {
       "url": {
@@ -2831,13 +2856,16 @@
     }
   },
   "subspace": "Подпространство",
-  "@subspace": {},
+  "@subspace": {
+    "pangea_override": true
+  },
   "addChatOrSubSpace": "Добавить чат или подпространство",
   "@addChatOrSubSpace": {
     "pangea_override": true
   },
   "youInvitedToBy": "📩 Вы были приглашены по ссылке в:\n{alias}",
   "@youInvitedToBy": {
+    "pangea_override": true,
     "placeholders": {
       "alias": {
         "type": "String"
@@ -2943,6 +2971,7 @@
   },
   "presenceStyle": "Присутствие:",
   "@presenceStyle": {
+    "pangea_override": true,
     "type": "String",
     "placeholders": {}
   },
@@ -2959,7 +2988,9 @@
     "pangea_override": true
   },
   "hideMemberChangesInPublicChatsBody": "Скрывать в ленте чата события входа и выхода пользователей в публичных чатах для повышения читаемости.",
-  "@hideMemberChangesInPublicChatsBody": {},
+  "@hideMemberChangesInPublicChatsBody": {
+    "pangea_override": true
+  },
   "knocking": "Стучаться",
   "@knocking": {},
   "accessAndVisibility": "Доступность и видимость",
@@ -2998,6 +3029,7 @@
   "@passwordRecoverySettings": {},
   "userWouldLikeToChangeTheChat": "{user} хочет присоединиться к чату.",
   "@userWouldLikeToChangeTheChat": {
+    "pangea_override": true,
     "placeholders": {
       "user": {
         "type": "String"
@@ -3013,7 +3045,9 @@
   "noOneCanJoin": "Никто не может присоединиться",
   "@noOneCanJoin": {},
   "noPublicLinkHasBeenCreatedYet": "Публичная ссылка ещё не была создана",
-  "@noPublicLinkHasBeenCreatedYet": {},
+  "@noPublicLinkHasBeenCreatedYet": {
+    "pangea_override": true
+  },
   "chatCanBeDiscoveredViaSearchOnServer": "Чат может быть обнаружен через поиск в {server}",
   "@chatCanBeDiscoveredViaSearchOnServer": {
     "type": "String",
@@ -3180,11 +3214,15 @@
   "whatIsAHomeserver": "Для чего нужен домашний сервер?",
   "@whatIsAHomeserver": {},
   "homeserverDescription": "Все ваши данные хранятся на домашнем сервере — так же, как у провайдера электронной почты. Вы можете выбрать, какой сервер использовать, и при этом продолжать общаться со всеми. Узнайте больше на https://matrix.org.",
-  "@homeserverDescription": {},
+  "@homeserverDescription": {
+    "pangea_override": true
+  },
   "discoverHomeservers": "Список домашних серверов",
   "@discoverHomeservers": {},
   "joinedChats": "Чаты, в которых вы состоите",
-  "@joinedChats": {},
+  "@joinedChats": {
+    "pangea_override": true
+  },
   "serverInformation": "Информация о сервере:",
   "@serverInformation": {},
   "sendingAttachmentCountOfCount": "Отправляю вложение {index} из {length}...",
@@ -3370,7 +3408,9 @@
   "waitingForServer": "Ожидание сервера...",
   "@waitingForServer": {},
   "appIntroduction": "FluffyChat позволяет общаться с друзьями через разные мессенджеры. Узнайте больше на https://matrix.org или просто нажмите *Продолжить*.",
-  "@appIntroduction": {},
+  "@appIntroduction": {
+    "pangea_override": true
+  },
   "previous": "Предыдущий",
   "@previous": {},
   "notificationRuleCallDescription": "Уведомляет пользователя о звонках.",
@@ -3390,15 +3430,21 @@
     "pangea_override": true
   },
   "setCustomPermissionLevel": "Установить уровень прав доступа",
-  "@setCustomPermissionLevel": {},
+  "@setCustomPermissionLevel": {
+    "pangea_override": true
+  },
   "setPermissionsLevelDescription": "Пожалуйста, выберите одну из представленных ролей ниже или введите пользовательский уровень прав от 0 до 100.",
-  "@setPermissionsLevelDescription": {},
+  "@setPermissionsLevelDescription": {
+    "pangea_override": true
+  },
   "ignoreUser": "Игнорировать пользователя",
   "@ignoreUser": {
     "pangea_override": true
   },
   "normalUser": "Обычный пользователь",
-  "@normalUser": {},
+  "@normalUser": {
+    "pangea_override": true
+  },
   "commandHint_roomupgrade": "Обновить эту комнату до указанной версии",
   "@commandHint_roomupgrade": {
     "pangea_override": true
@@ -11689,6 +11735,11 @@
     "placeholders": {}
   },
   "@selectAudioMessagesOnPlayDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "alreadySpeak": "Я уже говорю...",
+  "@alreadySpeak": {
     "type": "String",
     "placeholders": {}
   }
