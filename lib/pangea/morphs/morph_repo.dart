@@ -76,8 +76,10 @@ class MorphsRepo {
 
       return response;
     } catch (e, s) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(e: e, s: s, data: {"languageCode": languageCode});
+      if (e is! UnsubscribedException) {
+        debugger(when: kDebugMode);
+        ErrorHandler.logError(e: e, s: s, data: {"languageCode": languageCode});
+      }
       return defaultMorphMapping;
     }
   }

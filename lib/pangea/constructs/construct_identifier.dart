@@ -33,16 +33,7 @@ class ConstructIdentifier {
     required this.lemma,
     required this.type,
     required String category,
-  }) : _category = category {
-    if (type == ConstructTypeEnum.morph &&
-        MorphFeaturesEnumExtension.fromString(category) ==
-            MorphFeaturesEnum.Unknown) {
-      ErrorHandler.logError(
-        e: Exception("Morph feature not found"),
-        data: {"category": category, "lemma": lemma, "type": type},
-      );
-    }
-  }
+  }) : _category = category;
 
   factory ConstructIdentifier.fromJson(Map<String, dynamic> json) {
     final categoryEntry = json['cat'] ?? json['categories'];
@@ -127,8 +118,24 @@ class ConstructIdentifier {
     return ConstructIdentifier(lemma: lemma, type: type, category: category);
   }
 
-  bool get isContentWord =>
-      PartOfSpeechEnum.fromString(category)?.isContentWord ?? false;
+  bool get isContentWord => _partOfSpeech?.isContentWord ?? false;
+
+  PartOfSpeechEnum? get _partOfSpeech {
+    if (type != ConstructTypeEnum.vocab) return null;
+    final pos = PartOfSpeechEnum.values.firstWhereOrNull(
+      (pos) => pos.name.toLowerCase() == category.toLowerCase(),
+    );
+
+    if (pos == null && category.toLowerCase() != 'other') {
+      ErrorHandler.logError(
+        e: "Missing part of speech",
+        s: StackTrace.current,
+        data: {"construct": toJson()},
+      );
+    }
+
+    return pos;
+  }
 
   LemmaInfoRequest lemmaInfoRequest(Map<String, dynamic> messageInfo) =>
       LemmaInfoRequest(

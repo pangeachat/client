@@ -554,8 +554,12 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       showError: (e) => e is! TimeoutException,
     );
 
+    if (!mounted) return;
     if (resp.isError && resp.error is TimeoutException) {
-      showDialog(context: context, builder: (_) => const BotJoinErrorDialog());
+      await showDialog(
+        context: context,
+        builder: (_) => const BotJoinErrorDialog(),
+      );
     }
   }
 

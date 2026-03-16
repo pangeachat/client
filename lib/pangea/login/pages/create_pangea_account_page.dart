@@ -74,6 +74,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
   Future<void> _joinCachedCourse() async {
     if (_cachedSpaceCode == null) return;
 
+    GetLocalizedCoursesRequest? request;
     try {
       final spaceId = await SpaceCodeController.joinCachedSpaceCode(context);
       if (spaceId == null) {
@@ -95,33 +96,32 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
         throw Exception('No course plan associated with space $spaceId');
       }
 
-      final course = await CoursePlansRepo.get(
-        GetLocalizedCoursesRequest(
-          coursePlanIds: [courseId],
-          l1: MatrixState.pangeaController.userController.userL1Code!,
-        ),
+      request = GetLocalizedCoursesRequest(
+        coursePlanIds: [courseId],
+        l1: MatrixState.pangeaController.userController.userL1Code!,
       );
-
+      final course = await CoursePlansRepo.get(request);
       _spaceId = spaceId;
       _courseLangCode = course.targetLanguage;
-    } catch (err) {
+    } catch (err, s) {
       _courseError = err;
+      ErrorHandler.logError(e: err, s: s, data: {'request': request?.toJson()});
     }
   }
 
   Future<void> _setAvatar() async {
     final client = Matrix.of(context).client;
+    final random = Random();
+    final selectedAvatarPath = avatarPath(random.nextInt(4) + 1);
+    final avatarUrlString = "${AppConfig.assetsBaseURL}/$selectedAvatarPath";
+
     try {
-      final random = Random();
-      final selectedAvatarPath = avatarPath(random.nextInt(4) + 1);
-      final avatarUrl = Uri.parse(
-        "${AppConfig.assetsBaseURL}/$selectedAvatarPath",
-      );
+      final avatarUrl = Uri.parse(avatarUrlString);
       await client.setProfileField(client.userID!, 'avatar_url', {
-        'avatar_url': avatarUrl,
+        'avatar_url': avatarUrl.toString(),
       });
     } catch (err, s) {
-      ErrorHandler.logError(e: err, s: s, data: {});
+      ErrorHandler.logError(e: err, s: s, data: {'avatarUrl': avatarUrlString});
     }
   }
 

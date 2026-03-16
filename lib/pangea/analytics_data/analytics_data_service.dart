@@ -74,6 +74,7 @@ class AnalyticsDataService {
 
   bool get isInitializing => !initCompleter.isCompleted;
   bool get hasInitError => initError != null;
+  bool get isLogged => _analyticsClientGetter.client.isLogged();
 
   Future<Room?> getAnalyticsRoom(LanguageModel l2) =>
       _analyticsClientGetter.client.getMyAnalyticsRoom(l2);
@@ -173,6 +174,7 @@ class AnalyticsDataService {
       }
 
       _syncController!.start();
+      updateService.start();
 
       if (l2 != null) {
         await _initMergeTable(l2.langCodeShort);

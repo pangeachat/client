@@ -50,12 +50,12 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
   // to change it again. Try and get the cached values if present.
   void _setFromCache() {
     LangCodeRepo.get().then((langSettings) {
-      if (langSettings == null) return;
-      final cachedTargetLang = PLanguageStore.byLangCode(
-        langSettings.targetLangCode,
-      );
-      final cachedBaseLang = langSettings.baseLangCode != null
-          ? PLanguageStore.byLangCode(langSettings.baseLangCode!)
+      final targetLanguage = langSettings?.targetLangCode;
+      final baseLanguage = langSettings?.baseLangCode;
+      if (targetLanguage == null) return;
+      final cachedTargetLang = PLanguageStore.byLangCode(targetLanguage);
+      final cachedBaseLang = baseLanguage != null
+          ? PLanguageStore.byLangCode(baseLanguage)
           : null;
 
       if (cachedTargetLang == _selectedLanguage &&
@@ -131,7 +131,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
   Future<void> _cacheLanguages() async {
     await LangCodeRepo.set(
       LanguageSettings(
-        targetLangCode: _selectedLanguage!.langCode,
+        targetLangCode: _selectedLanguage?.langCode,
         baseLangCode: _baseLanguage?.langCode,
       ),
     );
