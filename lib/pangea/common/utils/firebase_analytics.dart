@@ -61,6 +61,18 @@ class GoogleAnalytics {
     analytics?.setUserProperty(name: 'subscribed', value: "$subscribed");
   }
 
+  static void setUserProperties({
+    required String targetLanguage,
+    required String sourceLanguage,
+    String? userType,
+  }) {
+    analytics?.setUserProperty(name: 'target_language', value: targetLanguage);
+    analytics?.setUserProperty(name: 'source_language', value: sourceLanguage);
+    if (userType != null) {
+      analytics?.setUserProperty(name: 'user_type', value: userType);
+    }
+  }
+
   static void logEvent(String name, {Map<String, Object>? parameters}) {
     // Add params when possible, web doesnt automatically add as of mar/09/2026
     final finalParameters = Environment.analyticsDebugEnabled && kIsWeb
@@ -166,6 +178,20 @@ class GoogleAnalytics {
           },
         ],
       },
+    );
+  }
+
+  static void startActivity(String activityId, String roomId) {
+    logEvent(
+      'start_activity',
+      parameters: {'activity_id': activityId, 'room_id': roomId},
+    );
+  }
+
+  static void completeActivity(String activityId, String roomId) {
+    logEvent(
+      'complete_activity',
+      parameters: {'activity_id': activityId, 'room_id': roomId},
     );
   }
 

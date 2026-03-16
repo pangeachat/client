@@ -11,6 +11,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
@@ -77,6 +78,21 @@ class PangeaController {
     if (client.prevBatch == null) {
       await client.onSync.stream.first;
     }
+
+    // Determine user_type: "teacher" if admin of a course with 7+ members
+    final isTeacher = client.rooms.any(
+      (r) =>
+          r.isSpace &&
+          r.isRoomAdmin &&
+          (r.summary.mJoinedMemberCount ?? 0) >= 7,
+    );
+    GoogleAnalytics.setUserProperties(
+      targetLanguage:
+          userController.profile.userSettings.targetLanguage ?? '',
+      sourceLanguage:
+          userController.profile.userSettings.sourceLanguage ?? '',
+      userType: isTeacher ? 'teacher' : 'learner',
+    );
 
     try {
       final enableEmailNotifs = await client.emailNotificationsEnabled;
@@ -166,6 +182,12 @@ class PangeaController {
   }
 
   Future<void> _onLanguageUpdate(LanguageUpdate update) async {
+    GoogleAnalytics.setUserProperties(
+      targetLanguage: update.baseLang.langCode,
+      sourceLanguage:
+          userController.profile.userSettings.sourceLanguage ?? '',
+    );
+
     final exclude = [
       'course_location_media_storage',
       'course_location_storage',
