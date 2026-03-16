@@ -128,6 +128,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   RequestTokenResponse? currentThreepidCreds;
   // #Pangea
   String? currentRegistrationEmail;
+  String? currentRegisrationUsername;
   int currentSendAttempt = 0;
   // Pangea#
 

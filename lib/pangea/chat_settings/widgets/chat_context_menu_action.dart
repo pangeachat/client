@@ -233,7 +233,7 @@ void chatContextMenuAction(
       );
     case ChatContextAction.leave:
       final confirmed = await showOkCancelAlertDialog(
-        context: context,
+        context: outerContext,
         title: l10n.areYouSure,
         message: room.isSpace
             ? l10n.leaveSpaceDescription
@@ -246,7 +246,7 @@ void chatContextMenuAction(
 
       final isSpace = room.isSpace;
       final resp = await showFutureLoadingDialog(
-        context: context,
+        context: outerContext,
         future: isSpace ? room.leaveSpace : room.leave,
       );
 
@@ -258,16 +258,16 @@ void chatContextMenuAction(
       if (!resp.isError) {
         isSpace
             ? context.go('/rooms')
-            : NavigationUtil.goToSpaceRoute(null, [], context);
+            : NavigationUtil.goToSpaceRoute(null, [], outerContext);
       }
 
       return;
     case ChatContextAction.delete:
       if (room.isSpace) {
-        await DeleteSpaceDialog.show(room, context);
+        await DeleteSpaceDialog.show(room, outerContext);
       } else {
         final confirmed = await showOkCancelAlertDialog(
-          context: context,
+          context: outerContext,
           title: l10n.areYouSure,
           okLabel: l10n.delete,
           cancelLabel: l10n.cancel,
@@ -276,17 +276,17 @@ void chatContextMenuAction(
         );
         if (confirmed != OkCancelResult.ok) return;
         final resp = await showFutureLoadingDialog(
-          context: context,
+          context: outerContext,
           future: room.delete,
         );
         if (!resp.isError) {
-          NavigationUtil.goToSpaceRoute(null, [], context);
+          NavigationUtil.goToSpaceRoute(null, [], outerContext);
         }
       }
       return;
     case ChatContextAction.endActivity:
       await showFutureLoadingDialog(
-        context: context,
+        context: outerContext,
         future: room.finishActivity,
       );
       return;

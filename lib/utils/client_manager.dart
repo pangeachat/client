@@ -198,7 +198,7 @@ abstract class ClientManager {
       const InitializationSettings(
         // #Pangea
         // android: AndroidInitializationSettings('notifications_icon'),
-        android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+        android: AndroidInitializationSettings('@mipmap/notification_icon'),
         // Pangea#
         iOS: DarwinInitializationSettings(),
       ),

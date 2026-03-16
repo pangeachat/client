@@ -216,11 +216,30 @@ class OneConstructUse {
     return xp > 0 ? AppConfig.gold : Colors.red;
   }
 
-  ConstructIdentifier get identifier => ConstructIdentifier(
-    lemma: lemma,
-    type: constructType,
-    category: category,
-  );
+  ConstructIdentifier get identifier {
+    final id = ConstructIdentifier(
+      lemma: lemma,
+      type: constructType,
+      category: category,
+    );
+
+    if (metadata.timeStamp.isAfter(DateTime(2026, 3, 16)) &&
+        constructType == ConstructTypeEnum.morph &&
+        MorphFeaturesEnumExtension.fromString(category) ==
+            MorphFeaturesEnum.Unknown) {
+      ErrorHandler.logError(
+        e: Exception("Morph feature not found"),
+        data: {
+          "category": category,
+          "lemma": lemma,
+          "type": constructType,
+          "metadata": metadata.toJson(),
+        },
+      );
+    }
+
+    return id;
+  }
 }
 
 class ConstructUseMetaData {
@@ -233,4 +252,10 @@ class ConstructUseMetaData {
     required this.timeStamp,
     this.eventId,
   });
+
+  Map<String, dynamic> toJson() => {
+    'eventID': eventId,
+    'roomID': roomId,
+    'timestamp': timeStamp.toIso8601String(),
+  };
 }

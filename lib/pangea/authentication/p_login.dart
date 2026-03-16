@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/login/login.dart';
+import 'package:fluffychat/pangea/authentication/store_login_method_repo.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
@@ -91,5 +92,9 @@ Future<void> _loginFuture({
     await redirect;
   }
 
+  await LoginMethodRepo.storeLoginMethod(
+    userID: client.userID!,
+    method: LoginMethod.email,
+  );
   GoogleAnalytics.login("pangea", loginRes.userId);
 }

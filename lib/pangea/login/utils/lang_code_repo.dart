@@ -1,7 +1,7 @@
 import 'package:get_storage/get_storage.dart';
 
 class LanguageSettings {
-  final String targetLangCode;
+  final String? targetLangCode;
   final String? baseLangCode;
 
   LanguageSettings({required this.targetLangCode, this.baseLangCode});

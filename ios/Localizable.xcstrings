@@ -3,6 +3,7 @@
   "strings" : {
     "%lld unread messages" : {
       "comment" : "Default notification title",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "variations" : {
@@ -44,6 +45,7 @@
     },
     "New message - open app to read" : {
       "comment" : "Default notification body",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

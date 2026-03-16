@@ -6,7 +6,6 @@ import 'package:collection/collection.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 enum MorphFeaturesEnum {
   Pos,
@@ -73,11 +72,6 @@ extension MorphFeaturesEnumExtension on MorphFeaturesEnum {
           category.toLowerCase().replaceAll(RegExp(r'[,\[\]]'), ''),
     );
     if (morph == null) {
-      ErrorHandler.logError(
-        e: "Missing morphological category",
-        s: StackTrace.current,
-        data: {"category": category},
-      );
       return MorphFeaturesEnum.Unknown;
     }
 
