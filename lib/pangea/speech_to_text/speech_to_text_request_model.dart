@@ -18,8 +18,8 @@ class SpeechToTextRequestModel {
   });
 
   Map<String, dynamic> toJson() => {
-    "audio_content": base64Encode(audioContent),
     "config": config.toJson(),
+    "audio_content": base64Encode(audioContent),
   };
 
   @override

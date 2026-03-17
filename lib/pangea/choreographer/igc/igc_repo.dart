@@ -77,7 +77,13 @@ class IgcRepo {
       return Result.value(res);
     } catch (e, s) {
       _igcCache.remove(request.hashCode.toString());
-      ErrorHandler.logError(e: e, s: s, data: request.toJson());
+      if (e is UnsubscribedException) {
+        return Result.error(e);
+      } else if (e is ChoreoException) {
+        ErrorHandler.logError(e: e.errorMessage, s: s, data: request.toJson());
+      } else {
+        ErrorHandler.logError(e: e, s: s, data: request.toJson());
+      }
       return Result.error(e);
     }
   }

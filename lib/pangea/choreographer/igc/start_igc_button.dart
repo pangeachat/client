@@ -131,7 +131,9 @@ class _StartIGCButtonState extends State<StartIGCButton>
 
     _prevSegments = List.from(_currentSegments);
     _currentSegments = List.from(newSegments);
-    _segmentController.forward(from: 0.0);
+    if (mounted) {
+      _segmentController.forward(from: 0.0);
+    }
   }
 
   List<Segment> _segmentsForState(

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/lemma_emoji_setter_mixin.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -100,12 +101,14 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker> {
       widget.form,
     );
     messenger = ScaffoldMessenger.of(context);
-    widget.showLemmaEmojiSnackbar(
-      messenger!,
-      context,
-      widget.constructId,
-      emoji,
-    );
+    widget.showLemmaEmojiSnackbar(messenger!, context, widget.constructId, () {
+      if (!mounted) return;
+      AnalyticsNavigationUtil.navigateToAnalytics(
+        context: context,
+        view: widget.constructId.type.indicator,
+        construct: widget.constructId,
+      );
+    });
   }
 
   Future<void> _sendOrRedactReaction(String emoji) async {

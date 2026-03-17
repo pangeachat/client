@@ -337,6 +337,7 @@ class ChatController extends State<ChatPageWithRoom>
   Future<void> requestHistory() async {
     if (timeline == null) return;
     if (!timeline!.canRequestHistory) return;
+    if (room.membership != Membership.join) return;
     // Pangea#
     Logs().v('Requesting history...');
     await timeline?.requestHistory(historyCount: _loadHistoryCount);

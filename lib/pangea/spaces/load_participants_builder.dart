@@ -49,7 +49,9 @@ class LoadParticipantsBuilderState extends State<LoadParticipantsBuilder> {
   }
 
   Future<void> _loadParticipants() async {
-    if (widget.room == null || widget.room!.participantListComplete) {
+    if (widget.room == null ||
+        widget.room!.membership != Membership.join ||
+        widget.room!.participantListComplete) {
       return;
     }
 

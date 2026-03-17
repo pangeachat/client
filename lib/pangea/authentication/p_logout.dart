@@ -23,12 +23,6 @@ void pLogoutAction(BuildContext context, {bool? isDestructiveAction}) async {
   }
 
   final client = Matrix.of(context).client;
-
-  // before wiping out locally cached construct data, save it to the server
-  await Matrix.of(
-    context,
-  ).analyticsDataService.updateService.sendLocalAnalyticsToAnalyticsRoom();
-
   final redirect = client.onLoginStateChanged.stream
       .where((state) => state != LoginState.loggedIn)
       .first
@@ -42,7 +36,13 @@ void pLogoutAction(BuildContext context, {bool? isDestructiveAction}) async {
 
   await showFutureLoadingDialog(
     context: context,
-    future: () => client.logout(),
+    future: () async {
+      // before wiping out locally cached construct data, save it to the server
+      await Matrix.of(
+        context,
+      ).analyticsDataService.updateService.sendLocalAnalyticsToAnalyticsRoom();
+      await client.logout();
+    },
   );
 
   await redirect;

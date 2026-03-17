@@ -105,7 +105,22 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
       _courseLangCode = course.targetLanguage;
     } catch (err, s) {
       _courseError = err;
-      ErrorHandler.logError(e: err, s: s, data: {'request': request?.toJson()});
+      if (err is MissingCourseTranslationException) {
+        ErrorHandler.logError(
+          e: err.errorMessage,
+          s: s,
+          data: {
+            'request': request?.toJson(),
+            'responseCourseIds': err.response.coursePlans.keys.toList(),
+          },
+        );
+      } else {
+        ErrorHandler.logError(
+          e: err,
+          s: s,
+          data: {'request': request?.toJson()},
+        );
+      }
     }
   }
 
