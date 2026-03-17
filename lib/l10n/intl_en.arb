@@ -5031,5 +5031,6 @@
       }
     }
   },
-  "emailLoginMethod": "email"
+  "emailLoginMethod": "email",
+  "clickToAddEmail": "Click here to add an email address."
 }

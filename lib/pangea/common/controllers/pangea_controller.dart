@@ -93,9 +93,9 @@ class PangeaController {
     );
 
     try {
-      final enableEmailNotifs = await client.emailNotificationsEnabled;
+      final emailNotificationsStatus = await client.emailNotificationsStatus;
       final emailSetting = client.notificationSettings.enableEmailNotifs;
-      if (enableEmailNotifs != emailSetting) {
+      if (emailNotificationsStatus.enabled != emailSetting) {
         await client.setEnableEmailNotifs(emailSetting);
       }
     } catch (e, s) {
