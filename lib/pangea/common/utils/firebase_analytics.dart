@@ -1,12 +1,11 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
-
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
+
 import '../../../config/firebase_options.dart';
 
 // PageRoute import
@@ -17,19 +16,14 @@ import '../../../config/firebase_options.dart';
 
 class GoogleAnalytics {
   static FirebaseAnalytics? analytics;
-  static const List<String> _ignoredScreenNamePrefixes = [
-    '/home',
-    '/registration',
-  ];
+  static const List<String> _ignoredScreenNamePrefixes = ['/home', '/registration'];
 
   GoogleAnalytics();
 
   static Future<void> initialize() async {
     FirebaseApp app;
     try {
-      app = await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-      );
+      app = await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     } on Exception {
       // Android initialises using gradle plugin
       // So we just get the one they added
@@ -61,11 +55,7 @@ class GoogleAnalytics {
     analytics?.setUserProperty(name: 'subscribed', value: "$subscribed");
   }
 
-  static void setUserProperties({
-    required String targetLanguage,
-    required String sourceLanguage,
-    String? userType,
-  }) {
+  static void setUserProperties({required String targetLanguage, required String sourceLanguage, String? userType}) {
     analytics?.setUserProperty(name: 'target_language', value: targetLanguage);
     analytics?.setUserProperty(name: 'source_language', value: sourceLanguage);
     if (userType != null) {
@@ -104,10 +94,7 @@ class GoogleAnalytics {
 
   /// User send a message
   static void sendMessage(String chatRoomId, String classCode) {
-    logEvent(
-      'sent_message',
-      parameters: {"chat_id": chatRoomId, 'group_id': classCode},
-    );
+    logEvent('sent_message', parameters: {"chat_id": chatRoomId, 'group_id': classCode});
   }
 
   /// User opened a word card
@@ -130,10 +117,7 @@ class GoogleAnalytics {
   }
 
   static void createClass(String className, String classCode) {
-    logEvent(
-      'create_class',
-      parameters: {'name': className, 'group_id': classCode},
-    );
+    logEvent('create_class', parameters: {'name': className, 'group_id': classCode});
   }
 
   static void createChat(String newChatRoomId) {
@@ -141,27 +125,18 @@ class GoogleAnalytics {
   }
 
   static void addParent(String chatRoomId, String classCode) {
-    logEvent(
-      'add_room_to_class',
-      parameters: {"chat_id": chatRoomId, 'group_id': classCode},
-    );
+    logEvent('add_room_to_class', parameters: {"chat_id": chatRoomId, 'group_id': classCode});
   }
 
   static void removeChatFromClass(String chatRoomId, String classCode) {
-    logEvent(
-      'remove_room_from_class',
-      parameters: {"chat_id": chatRoomId, 'group_id': classCode},
-    );
+    logEvent('remove_room_from_class', parameters: {"chat_id": chatRoomId, 'group_id': classCode});
   }
 
   static void joinClass(String classCode) {
     logEvent('join_group', parameters: {'group_id': classCode});
   }
 
-  static void beginPurchaseSubscription(
-    SubscriptionDetails details,
-    BuildContext context,
-  ) {
+  static void beginPurchaseSubscription(SubscriptionDetails details, BuildContext context) {
     logEvent(
       'begin_checkout',
       parameters: {
@@ -182,17 +157,11 @@ class GoogleAnalytics {
   }
 
   static void startActivity(String activityId, String roomId) {
-    logEvent(
-      'start_activity',
-      parameters: {'activity_id': activityId, 'room_id': roomId},
-    );
+    logEvent('start_activity', parameters: {'activity_id': activityId, 'room_id': roomId});
   }
 
   static void completeActivity(String activityId, String roomId) {
-    logEvent(
-      'complete_activity',
-      parameters: {'activity_id': activityId, 'room_id': roomId},
-    );
+    logEvent('complete_activity', parameters: {'activity_id': activityId, 'room_id': roomId});
   }
 
   static void failUpdateNotificationBadge() {

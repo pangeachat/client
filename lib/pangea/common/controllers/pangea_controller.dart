@@ -1,19 +1,12 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
-import 'package:get_storage/get_storage.dart';
-import 'package:matrix/matrix.dart';
-import 'package:provider/provider.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/notifications/notifications_client_extension.dart';
@@ -23,6 +16,12 @@ import 'package:fluffychat/pangea/user/pangea_push_rules_extension.dart';
 import 'package:fluffychat/pangea/user/style_settings_repo.dart';
 import 'package:fluffychat/pangea/user/user_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:matrix/matrix.dart';
+import 'package:provider/provider.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import '../utils/firebase_analytics.dart';
 
 class PangeaController {
@@ -70,8 +69,7 @@ class PangeaController {
 
     StyleSettingsRepo.settings(userID!).then((settings) {
       AppSettings.fontSizeFactor.setItem(settings.fontSizeFactor);
-      AppConfig.useActivityImageAsChatBackground =
-          settings.useActivityImageBackground;
+      AppConfig.useActivityImageAsChatBackground = settings.useActivityImageBackground;
     });
 
     final client = matrixState.client;
@@ -80,17 +78,10 @@ class PangeaController {
     }
 
     // Determine user_type: "teacher" if admin of a course with 7+ members
-    final isTeacher = client.rooms.any(
-      (r) =>
-          r.isSpace &&
-          r.isRoomAdmin &&
-          (r.summary.mJoinedMemberCount ?? 0) >= 7,
-    );
+    final isTeacher = client.rooms.any((r) => r.isSpace && r.isRoomAdmin && (r.summary.mJoinedMemberCount ?? 0) >= 7);
     GoogleAnalytics.setUserProperties(
-      targetLanguage:
-          userController.profile.userSettings.targetLanguage ?? '',
-      sourceLanguage:
-          userController.profile.userSettings.sourceLanguage ?? '',
+      targetLanguage: userController.profile.userSettings.targetLanguage ?? '',
+      sourceLanguage: userController.profile.userSettings.sourceLanguage ?? '',
       userType: isTeacher ? 'teacher' : 'learner',
     );
 
@@ -119,11 +110,7 @@ class PangeaController {
     Provider.of<LocaleProvider>(context, listen: false).setLocale(null);
   }
 
-  void handleLoginStateChange(
-    LoginState state,
-    String? userID,
-    BuildContext context,
-  ) {
+  void handleLoginStateChange(LoginState state, String? userID, BuildContext context) {
     switch (state) {
       case LoginState.loggedOut:
       case LoginState.softLoggedOut:
@@ -134,22 +121,16 @@ class PangeaController {
         break;
     }
 
-    Sentry.configureScope(
-      (scope) => scope.setUser(SentryUser(id: userID, name: userID)),
-    );
+    Sentry.configureScope((scope) => scope.setUser(SentryUser(id: userID, name: userID)));
     GoogleAnalytics.analyticsUserUpdate(userID);
   }
 
   void _registerSubscriptions() {
     _languageSubscription?.cancel();
-    _languageSubscription = userController.languageStream.stream.listen(
-      _onLanguageUpdate,
-    );
+    _languageSubscription = userController.languageStream.stream.listen(_onLanguageUpdate);
 
     _settingsSubscription?.cancel();
-    _settingsSubscription = userController.settingsUpdateStream.stream.listen((
-      update,
-    ) async {
+    _settingsSubscription = userController.settingsUpdateStream.stream.listen((update) async {
       await matrixState.client.updateBotOptions(update.userSettings);
       await userController.updatePublicProfile();
     });
@@ -184,29 +165,18 @@ class PangeaController {
   Future<void> _onLanguageUpdate(LanguageUpdate update) async {
     GoogleAnalytics.setUserProperties(
       targetLanguage: update.baseLang.langCode,
-      sourceLanguage:
-          userController.profile.userSettings.sourceLanguage ?? '',
+      sourceLanguage: userController.profile.userSettings.sourceLanguage ?? '',
     );
 
-    final exclude = [
-      'course_location_media_storage',
-      'course_location_storage',
-      'course_media_storage',
-    ];
+    final exclude = ['course_location_media_storage', 'course_location_storage', 'course_media_storage'];
 
     // only clear course data if the base language has changed
     if (update.prevBaseLang == update.baseLang) {
-      exclude.addAll([
-        'course_storage',
-        'course_topic_storage',
-        'course_activity_storage',
-      ]);
+      exclude.addAll(['course_storage', 'course_topic_storage', 'course_activity_storage']);
     }
 
     await _clearCache(exclude: exclude);
-    await matrixState.client.updateBotOptions(
-      userController.profile.userSettings,
-    );
+    await matrixState.client.updateBotOptions(userController.profile.userSettings);
     await userController.updatePublicProfile();
   }
 
