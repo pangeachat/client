@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-03-13 15:15:02.489958",
+    "@@last_modified": "2026-03-17 11:49:19.101825",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7652,6 +7652,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "¡Bienvenido de nuevo! Anteriormente iniciaste sesión con {platform}.",
+    "emailLoginMethod": "correo electrónico",
+    "clickToAddEmail": "Haz clic aquí para agregar una dirección de correo electrónico.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

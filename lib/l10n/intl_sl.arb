@@ -2270,7 +2270,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-03-13 15:15:25.942973",
+    "@@last_modified": "2026-03-17 11:49:52.203629",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11842,6 +11842,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Dobrodošli nazaj! Prej ste se prijavili z {platform}.",
+    "emailLoginMethod": "e-pošta",
+    "clickToAddEmail": "Kliknite tukaj, da dodate e-poštni naslov.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

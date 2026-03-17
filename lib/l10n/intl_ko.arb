@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-13 15:15:01.560697",
+    "@@last_modified": "2026-03-17 11:49:16.604299",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10943,6 +10943,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "다시 오신 것을 환영합니다! 이전에 {platform}으로 로그인하셨습니다.",
+    "emailLoginMethod": "이메일",
+    "clickToAddEmail": "이곳을 클릭하여 이메일 주소를 추가하세요.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

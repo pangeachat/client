@@ -3499,7 +3499,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-03-13 15:15:53.280370",
+    "@@last_modified": "2026-03-17 11:50:30.600983",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10392,6 +10392,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Bongu! U se njiye na {platform}.",
+    "emailLoginMethod": "imeyl",
+    "clickToAddEmail": "Dik klik hia untuk nambah alamat imeyl.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

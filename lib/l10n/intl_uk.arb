@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-03-13 15:15:29.727795",
+    "@@last_modified": "2026-03-17 11:49:57.720895",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10726,6 +10726,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Ласкаво просимо назад! Ви раніше входили за допомогою {platform}.",
+    "emailLoginMethod": "електронна пошта",
+    "clickToAddEmail": "Натисніть тут, щоб додати адресу електронної пошти.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

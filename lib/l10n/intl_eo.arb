@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-13 15:16:02.694361",
+    "@@last_modified": "2026-03-17 11:50:45.856469",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -11845,6 +11845,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Bonvenon reen! Vi antaŭe ensalutis per {platform}.",
+    "emailLoginMethod": "retpoŝto",
+    "clickToAddEmail": "Klaku ĉi tie por aldoni retpoŝtan adreson.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

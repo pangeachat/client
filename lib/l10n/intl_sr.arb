@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-13 15:16:06.391929",
+    "@@last_modified": "2026-03-17 11:50:51.484604",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -11849,6 +11849,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Ponovo dobrodošli! Prethodno ste se prijavili putem {platform}.",
+    "emailLoginMethod": "email",
+    "clickToAddEmail": "Kliknite ovde da dodate adresu e-pošte.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

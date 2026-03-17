@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-03-13 15:15:20.619351",
+    "@@last_modified": "2026-03-17 11:49:45.132090",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10726,6 +10726,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Ongi etorri berriro! Aurretik {platform} erabiliz saioa hasi zenuen.",
+    "emailLoginMethod": "posta elektronikoa",
+    "clickToAddEmail": "Egin klik hemen posta elektroniko helbide bat gehitzeko.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

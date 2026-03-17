@@ -4241,7 +4241,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-03-13 15:15:32.603793",
+    "@@last_modified": "2026-03-17 11:50:02.640365",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10740,6 +10740,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Сардэчна запрашаем назад! Вы раней уваходзілі з {platform}.",
+    "emailLoginMethod": "электронная пошта",
+    "clickToAddEmail": "Націсніце тут, каб дадаць адрас электроннай пошты.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

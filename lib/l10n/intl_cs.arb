@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-03-13 15:15:30.755838",
+    "@@last_modified": "2026-03-17 11:49:59.280563",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -11280,6 +11280,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Vítejte zpět! Předtím jste se přihlásili pomocí {platform}.",
+    "emailLoginMethod": "email",
+    "clickToAddEmail": "Klikněte sem pro přidání e-mailové adresy.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

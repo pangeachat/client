@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-13 15:15:58.450321",
+    "@@last_modified": "2026-03-17 11:50:38.704019",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11313,6 +11313,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Välkommen tillbaka! Du har tidigare loggat in med {platform}.",
+    "emailLoginMethod": "e-post",
+    "clickToAddEmail": "Klicka här för att lägga till en e-postadress.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-13 15:15:21.420950",
+    "@@last_modified": "2026-03-17 11:49:46.506508",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -11844,6 +11844,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Bem-vindo de volta! Você se conectou anteriormente com {platform}.",
+    "emailLoginMethod": "email",
+    "clickToAddEmail": "Clique aqui para adicionar um endereço de e-mail.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

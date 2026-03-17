@@ -1785,7 +1785,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-03-13 15:15:07.407307",
+    "@@last_modified": "2026-03-17 11:49:25.730376",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -11820,6 +11820,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Velkommen tilbage! Du har tidligere logget ind med {platform}.",
+    "emailLoginMethod": "email",
+    "clickToAddEmail": "Klik her for at tilføje en e-mailadresse.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

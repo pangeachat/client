@@ -3685,7 +3685,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-03-13 15:15:37.104575",
+    "@@last_modified": "2026-03-17 11:50:06.435855",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11445,6 +11445,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "ยินดีต้อนรับกลับ! คุณเคยลงชื่อเข้าใช้ด้วย {platform} มาก่อน.",
+    "emailLoginMethod": "อีเมล",
+    "clickToAddEmail": "คลิกที่นี่เพื่อเพิ่มที่อยู่อีเมล.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }
