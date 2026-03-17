@@ -2,6 +2,7 @@ import 'package:async/async.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
@@ -52,6 +53,7 @@ class SvgRepo {
         ErrorHandler.logError(
           e: Exception('Failed to load SVG: ${response.statusCode}'),
           data: {"url": url},
+          level: SentryLevel.warning,
         );
         await _setCached(url, null);
         return Result.error(Exception('Failed to load SVG at $url'));
