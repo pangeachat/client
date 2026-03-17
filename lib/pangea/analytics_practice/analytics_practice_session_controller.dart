@@ -85,7 +85,7 @@ class PracticeSessionController {
       if (l2 == null) throw Exception('User L2 language not set');
       session = await AnalyticsPracticeSessionRepo.get(type, l2);
     } catch (e, s) {
-      if (e is! UnsubscribedException) {
+      if (e is! UnsubscribedException && e is! InsufficientDataException) {
         ErrorHandler.logError(e: e, s: s, data: {});
       }
       sessionError = e;
