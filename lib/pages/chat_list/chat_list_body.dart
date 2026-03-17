@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_item.dart';
 import 'package:fluffychat/pages/chat_list/dummy_chat_list_item.dart';
-import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/chat_list/widgets/dm_list_tile.dart';
 import 'package:fluffychat/pangea/chat_list/widgets/pangea_chat_list_header.dart';
-import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
-import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
-import 'package:fluffychat/pangea/support/support_client_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/public_room_dialog.dart';
@@ -289,44 +284,9 @@ class ChatListViewBody extends StatelessWidget {
                   },
                 ),
               // #Pangea
-              if (!client.hasBotDM && !controller.isSearchMode)
-                SliverToBoxAdapter(
-                  child: DMListTile(
-                    title: L10n.of(context).directMessageBotTitle,
-                    subtitle: L10n.of(context).directMessageBotDesc,
-                    leading: const BotFace(
-                      expression: BotExpression.idle,
-                      width: Avatar.defaultSize,
-                    ),
-                    trailing: const Icon(Icons.chat_bubble_outline),
-                    onTap: Matrix.of(context).client.startChatWithBot,
-                  ),
-                ),
-              if (!client.hasSupportDM &&
-                  !InstructionsEnum.dismissSupportChat.isToggledOff &&
-                  !controller.isSearchMode)
-                SliverToBoxAdapter(
-                  child: DMListTile(
-                    title: L10n.of(context).chatWithSupport,
-                    subtitle: L10n.of(context).supportSubtitle,
-                    onTap: Matrix.of(context).client.startChatWithSupport,
-                    leading: Container(
-                      alignment: Alignment.center,
-                      height: Avatar.defaultSize,
-                      width: Avatar.defaultSize,
-                      child: const Icon(
-                        Symbols.chat_add_on,
-                        size: Avatar.defaultSize - 16,
-                      ),
-                    ),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.close),
-                      onPressed: () => InstructionsEnum.dismissSupportChat
-                          .setToggledOff(true),
-                    ),
-                    contentPadding: const EdgeInsets.only(left: 16, right: 16),
-                  ),
-                ),
+              SliverToBoxAdapter(
+                child: DMListTile(visible: !controller.isSearchMode),
+              ),
               const SliverToBoxAdapter(child: SizedBox(height: 75.0)),
               // Pangea#
             ],
