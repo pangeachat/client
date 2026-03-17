@@ -68,11 +68,13 @@ class PangeaController {
     });
     subscriptionController.reinitialize();
 
-    StyleSettingsRepo.settings(userID!).then((settings) {
-      AppSettings.fontSizeFactor.setItem(settings.fontSizeFactor);
-      AppConfig.useActivityImageAsChatBackground =
-          settings.useActivityImageBackground;
-    });
+    if (userID != null) {
+      StyleSettingsRepo.settings(userID).then((settings) {
+        AppSettings.fontSizeFactor.setItem(settings.fontSizeFactor);
+        AppConfig.useActivityImageAsChatBackground =
+            settings.useActivityImageBackground;
+      });
+    }
 
     final client = matrixState.client;
     if (client.prevBatch == null) {
