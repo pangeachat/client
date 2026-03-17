@@ -32,6 +32,7 @@ mixin CoursePlanProvider<T extends StatefulWidget> on State<T> {
 
   Future<void> loadCourse(String courseId) async {
     await _initStorage();
+    if (!mounted) return;
     setState(() {
       loadingCourse = true;
       courseError = null;
@@ -55,6 +56,7 @@ mixin CoursePlanProvider<T extends StatefulWidget> on State<T> {
   }
 
   Future<void> loadTopics() async {
+    if (!mounted) return;
     setState(() {
       loadingTopics = true;
       topicError = null;
