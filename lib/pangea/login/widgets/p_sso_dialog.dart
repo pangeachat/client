@@ -41,7 +41,7 @@ class SSODialogState extends State<SSODialog> {
       final token = await widget.future();
       Navigator.of(context).pop(token);
     } catch (e) {
-      Navigator.of(context).pop();
+      if (mounted) Navigator.of(context).pop();
     }
   }
 
