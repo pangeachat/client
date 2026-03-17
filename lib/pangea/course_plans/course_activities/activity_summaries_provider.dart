@@ -35,9 +35,28 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
       return;
     }
 
-    final resp = await Matrix.of(context).client.requestRoomSummaries(roomIds);
+    final batchSize = 50;
+    final batches = <List<String>>[];
+
+    for (var i = 0; i < roomIds.length; i += batchSize) {
+      final end = (i + batchSize < roomIds.length)
+          ? i + batchSize
+          : roomIds.length;
+
+      batches.add(roomIds.sublist(i, end));
+    }
+
+    final resp = await Future.wait(
+      batches.map((b) => Matrix.of(context).client.requestRoomSummaries(b)),
+    );
+
+    final Map<String, RoomSummaryResponse> combined = {};
+    for (final entry in resp) {
+      combined.addAll(entry.summaries);
+    }
+
     if (mounted) {
-      setState(() => roomSummaries = resp.summaries);
+      setState(() => roomSummaries = combined);
     }
   }
 
