@@ -187,14 +187,25 @@ class SettingsNotificationsView extends StatelessWidget {
                     subtitle: Text(L10n.of(context).notificationDeviceSubtitle),
                   ),
                   // #Pangea
-                  FutureBuilder<bool>(
-                    future: Matrix.of(context).client.emailNotificationsEnabled,
+                  FutureBuilder<EmailNotificationsStatus>(
+                    future: Matrix.of(context).client.emailNotificationsStatus,
                     builder: (context, snapshot) {
-                      return ListTile(
-                        title: Text(L10n.of(context).enableEmailNotifications),
-                        trailing: Switch.adaptive(
-                          value: snapshot.data ?? false,
-                          onChanged: controller.setEmailNotificationsEnabled,
+                      return GestureDetector(
+                        onTap: snapshot.data != null
+                            ? snapshot.data!.canEnable
+                                  ? null
+                                  : controller.showNoEmailSnackbar
+                            : null,
+                        child: ListTile(
+                          title: Text(
+                            L10n.of(context).enableEmailNotifications,
+                          ),
+                          trailing: Switch.adaptive(
+                            value: snapshot.data?.enabled ?? false,
+                            onChanged: snapshot.data?.canEnable ?? false
+                                ? controller.setEmailNotificationsEnabled
+                                : null,
+                          ),
                         ),
                       );
                     },

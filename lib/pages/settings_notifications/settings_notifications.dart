@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -223,6 +224,43 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
         });
       }
     }
+  }
+
+  void showNoEmailSnackbar() {
+    final messenger = ScaffoldMessenger.of(context);
+    messenger.hideCurrentSnackBar();
+    messenger.showSnackBar(
+      SnackBar(
+        content: RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(text: L10n.of(context).noAddressDescription),
+              const TextSpan(text: ' '),
+              WidgetSpan(
+                alignment: PlaceholderAlignment.baseline,
+                baseline: TextBaseline.alphabetic,
+                child: InkWell(
+                  onTap: () {
+                    messenger.hideCurrentSnackBar();
+                    context.go("/rooms/settings/security/3pid");
+                  },
+                  child: Text(
+                    L10n.of(context).clickToAddEmail,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                      decoration: TextDecoration.underline,
+                      decorationColor: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        duration: Duration(seconds: 15),
+        showCloseIcon: true,
+      ),
+    );
   }
   // Pangea#
 

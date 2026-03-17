@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-13 15:15:11.506419",
+    "@@last_modified": "2026-03-17 11:49:32.360664",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11551,6 +11551,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Bine ai revenit! Te-ai conectat anterior cu {platform}.",
+    "emailLoginMethod": "email",
+    "clickToAddEmail": "Click aici pentru a adăuga o adresă de email.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

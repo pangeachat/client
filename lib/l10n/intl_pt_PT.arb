@@ -3084,7 +3084,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-03-13 15:15:38.132395",
+    "@@last_modified": "2026-03-17 11:50:08.045510",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11802,6 +11802,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Bem-vindo de volta! Você se conectou anteriormente com {platform}.",
+    "emailLoginMethod": "email",
+    "clickToAddEmail": "Clique aqui para adicionar um endereço de e-mail.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

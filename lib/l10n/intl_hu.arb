@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-03-13 15:15:08.433779",
+    "@@last_modified": "2026-03-17 11:49:28.002450",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10853,6 +10853,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Üdvözöljük vissza! Korábban a {platform} platformon jelentkezett be.",
+    "emailLoginMethod": "email",
+    "clickToAddEmail": "Kattintson ide egy email cím hozzáadásához.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-13 15:15:27.988279",
+    "@@last_modified": "2026-03-17 11:49:55.151633",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10817,6 +10817,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Bentornato! Ti sei precedentemente registrato con {platform}.",
+    "emailLoginMethod": "email",
+    "clickToAddEmail": "Clicca qui per aggiungere un indirizzo email.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

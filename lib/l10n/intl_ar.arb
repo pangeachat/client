@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-03-13 15:15:43.245674",
+    "@@last_modified": "2026-03-17 11:50:17.842348",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11066,6 +11066,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "مرحبًا بعودتك! لقد قمت بتسجيل الدخول سابقًا باستخدام {platform}.",
+    "emailLoginMethod": "البريد الإلكتروني",
+    "clickToAddEmail": "انقر هنا لإضافة عنوان بريد إلكتروني.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

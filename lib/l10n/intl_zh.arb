@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-03-13 15:15:54.306170",
+    "@@last_modified": "2026-03-17 11:50:32.440397",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10726,6 +10726,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "欢迎回来！您之前使用 {platform} 登录。",
+    "emailLoginMethod": "电子邮件",
+    "clickToAddEmail": "点击这里添加电子邮件地址。",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

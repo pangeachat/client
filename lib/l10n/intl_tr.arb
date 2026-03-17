@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-03-13 15:15:44.258219",
+    "@@last_modified": "2026-03-17 11:50:19.732597",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11057,6 +11057,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Hoş geldin! Daha önce {platform} ile oturum açtın.",
+    "emailLoginMethod": "e-posta",
+    "clickToAddEmail": "Bir e-posta adresi eklemek için buraya tıklayın.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

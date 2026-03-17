@@ -4221,7 +4221,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-03-13 15:15:05.747494",
+    "@@last_modified": "2026-03-17 11:49:23.421120",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10775,6 +10775,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Tervetuloa takaisin! Kirjauduit aiemmin sisään {platform} kanssa.",
+    "emailLoginMethod": "sähköposti",
+    "clickToAddEmail": "Napsauta tästä lisätäksesi sähköpostiosoitteen.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

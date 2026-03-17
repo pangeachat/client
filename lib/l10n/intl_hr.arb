@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-03-13 15:15:15.395506",
+    "@@last_modified": "2026-03-17 11:49:38.474795",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11210,6 +11210,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Dobrodošli natrag! Prije ste se prijavili s {platform}.",
+    "emailLoginMethod": "e-pošta",
+    "clickToAddEmail": "Kliknite ovdje da dodate adresu e-pošte.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

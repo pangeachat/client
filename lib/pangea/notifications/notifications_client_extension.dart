@@ -8,6 +8,18 @@ import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/notifications/notifications_settings_model.dart';
 
+class EmailNotificationsStatus {
+  final bool enabled;
+  final bool canEnable;
+  final Map<String, bool> emailStatuses;
+
+  const EmailNotificationsStatus({
+    required this.enabled,
+    required this.canEnable,
+    required this.emailStatuses,
+  });
+}
+
 extension NotificationsExtension on Client {
   NotificationsSettingsModel get notificationSettings {
     final data = accountData[PangeaEventTypes.notificationSettings];
@@ -52,17 +64,12 @@ extension NotificationsExtension on Client {
     }
   }
 
-  Future<bool> get emailNotificationsEnabled async {
+  Future<EmailNotificationsStatus> get emailNotificationsStatus async {
     List<Pusher> pushers = [];
     Set<String> emails = {};
 
     try {
       pushers = (await getPushers()) ?? [];
-      if (pushers.isEmpty) return false;
-      if (!pushers.any((pusher) => pusher.kind == 'email')) {
-        return false;
-      }
-
       final thirdPartyIds = (await getAccount3PIDs()) ?? [];
       emails = thirdPartyIds
           .where((p) => p.medium == ThirdPartyIdentifierMedium.email)
@@ -79,14 +86,25 @@ extension NotificationsExtension on Client {
       );
     }
 
-    if (emails.isEmpty) return false;
-    return emails.every(
-      (email) => pushers.any(
-        (pusher) =>
-            pusher.kind == 'email' &&
-            pusher.pushkey == email &&
-            pusher.appId == 'm.email',
-      ),
+    if (emails.isEmpty) {
+      return EmailNotificationsStatus(
+        enabled: false,
+        canEnable: false,
+        emailStatuses: {},
+      );
+    }
+
+    final Map<String, bool> emailStatuses = {};
+    for (final email in emails) {
+      emailStatuses[email] = pushers.any(
+        (p) => p.kind == 'email' && p.pushkey == email && p.appId == 'm.email',
+      );
+    }
+
+    return EmailNotificationsStatus(
+      enabled: emailStatuses.values.every((e) => e),
+      canEnable: true,
+      emailStatuses: emailStatuses,
     );
   }
 

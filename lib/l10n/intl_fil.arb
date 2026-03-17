@@ -2565,7 +2565,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-03-13 15:15:41.372197",
+    "@@last_modified": "2026-03-17 11:50:13.701102",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11745,6 +11745,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Maligayang pagbabalik! Nakapag-sign in ka na dati gamit ang {platform}.",
+    "emailLoginMethod": "email",
+    "clickToAddEmail": "I-click dito upang magdagdag ng email address.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

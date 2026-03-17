@@ -4256,7 +4256,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-03-13 15:16:07.515779",
+    "@@last_modified": "2026-03-17 11:50:53.130811",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10737,6 +10737,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Fáilte ar ais! Sínigh isteach roimhe seo le {platform}.",
+    "emailLoginMethod": "ríomhphost",
+    "clickToAddEmail": "Cliceáil anseo chun seoladh ríomhphoist a chur leis.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }

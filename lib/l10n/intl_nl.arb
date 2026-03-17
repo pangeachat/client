@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-13 15:15:51.135216",
+    "@@last_modified": "2026-03-17 11:50:29.252545",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10726,6 +10726,25 @@
         "placeholders": {}
     },
     "@alreadySpeak": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "welcomeBackLogin": "Welkom terug! Je hebt je eerder aangemeld met {platform}.",
+    "emailLoginMethod": "e-mail",
+    "clickToAddEmail": "Klik hier om een e-mailadres toe te voegen.",
+    "@welcomeBackLogin": {
+        "type": "String",
+        "placeholders": {
+            "platform": {
+                "type": "String"
+            }
+        }
+    },
+    "@emailLoginMethod": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
     }
