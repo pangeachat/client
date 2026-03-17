@@ -11,6 +11,8 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/unread_bubble.dart';
+import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -207,6 +209,10 @@ class _SpaceViewState extends State<SpaceView> {
     );
     if (names == null) return;
     final client = Matrix.of(context).client;
+    // #Pangea
+    String? createdRoomId;
+    final isChat = roomType == AddRoomType.chat;
+    // Pangea#
     final result = await showFutureLoadingDialog(
       context: context,
       future: () async {
@@ -250,10 +256,23 @@ class _SpaceViewState extends State<SpaceView> {
                   ],
           );
         }
+        createdRoomId = roomId;
         await activeSpace.setSpaceChild(roomId);
       },
     );
     if (result.error != null) return;
+    // #Pangea
+    if (createdRoomId != null) {
+      if (isChat) {
+        GoogleAnalytics.createChat(createdRoomId!);
+      }
+      final activeSpace = client.getRoomById(widget.spaceId);
+      final classCode = activeSpace?.classCode;
+      if (classCode != null) {
+        GoogleAnalytics.addParent(createdRoomId!, classCode);
+      }
+    }
+    // Pangea#
     setState(() {
       _nextBatch = null;
       _discoveredChildren.clear();
@@ -374,6 +393,12 @@ class _SpaceViewState extends State<SpaceView> {
           future: () => space.removeSpaceChild(roomId),
         );
         if (result.isError) return;
+        // #Pangea
+        final classCode = space.classCode;
+        if (classCode != null) {
+          GoogleAnalytics.removeChatFromClass(roomId, classCode);
+        }
+        // Pangea#
         if (!mounted) return;
         _nextBatch = null;
         _loadHierarchy();

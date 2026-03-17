@@ -207,6 +207,7 @@ class SignupPageController extends State<SignupPage> {
       userID: client.userID!,
       method: LoginMethod.email,
     );
+    GoogleAnalytics.signUp("pangea");
     GoogleAnalytics.login("pangea", registerRes?.userId);
 
     if (displayname != localPart && client.userID != null) {

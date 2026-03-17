@@ -15,6 +15,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_session_start/bot_j
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/room_summary_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_request.dart';
@@ -431,6 +432,8 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
         NavigationUtil.goToSpaceRoute(resp.result, [], context);
       }
     }
+
+    GoogleAnalytics.startActivity(activity!.activityId, activityRoom?.id ?? '');
   }
 
   Future<void> joinExistingSession() async {

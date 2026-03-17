@@ -9,6 +9,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:fluffychat/pangea/analytics_misc/lemma_emoji_setter_mixin.dart';
 import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
@@ -196,6 +197,11 @@ class SelectModeController with LemmaEmojiSetter {
 
   void setSelectMode(SelectMode? mode) {
     if (selectedMode.value == mode) return;
+
+    if (mode != null) {
+      GoogleAnalytics.messageToolbarAction(mode);
+    }
+
     selectedMode.value = mode;
   }
 
@@ -209,6 +215,7 @@ class SelectModeController with LemmaEmojiSetter {
   Future<void> fetchTranslation({String? feedback}) async {
     try {
       _translationLoader.value = AsyncLoading();
+      GoogleAnalytics.messageTranslate();
 
       List<LLMFeedbackModel<FullTextTranslationResponseModel>>? feedbackModel;
       if (feedback != null && _lastTranslationResponse != null) {

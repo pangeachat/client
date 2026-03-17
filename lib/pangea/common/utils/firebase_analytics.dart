@@ -6,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
 import '../../../config/firebase_options.dart';
 
 // PageRoute import
@@ -37,7 +38,7 @@ class GoogleAnalytics {
 
     analytics = FirebaseAnalytics.instanceFor(app: app);
 
-    if (Environment.sentryDebugEnabled) {
+    if (Environment.analyticsDebugEnabled) {
       // Note: Doesnt currently work on Web
       analytics?.setDefaultEventParameters({"traffic_type": "internal"});
     }
@@ -60,15 +61,30 @@ class GoogleAnalytics {
     analytics?.setUserProperty(name: 'subscribed', value: "$subscribed");
   }
 
-  static void logEvent(String name, {Map<String, Object>? parameters}) {
-    debugPrint("event: $name - parameters: $parameters");
+  static void setUserProperties({
+    required String targetLanguage,
+    required String sourceLanguage,
+    String? userType,
+  }) {
+    analytics?.setUserProperty(name: 'target_language', value: targetLanguage);
+    analytics?.setUserProperty(name: 'source_language', value: sourceLanguage);
+    if (userType != null) {
+      analytics?.setUserProperty(name: 'user_type', value: userType);
+    }
+  }
 
+  static void logEvent(String name, {Map<String, Object>? parameters}) {
     // Add params when possible, web doesnt automatically add as of mar/09/2026
-    final finalParameters = Environment.sentryDebugEnabled && kIsWeb
+    final finalParameters = Environment.analyticsDebugEnabled && kIsWeb
         ? {...?parameters, "traffic_type": "internal"}
         : parameters;
 
-    analytics?.logEvent(name: name, parameters: finalParameters);
+    debugPrint("event: $name - parameters: $parameters");
+
+    // Only actually send to sentry if were not in debug mode or dev mode is on
+    if (!kDebugMode || Environment.analyticsDebugEnabled) {
+      analytics?.logEvent(name: name, parameters: finalParameters);
+    }
   }
 
   static void login(String type, String? userID) {
@@ -80,9 +96,37 @@ class GoogleAnalytics {
     logEvent('sign_up', parameters: {'method': type});
   }
 
+  /// User logs out. Removes user from the current GA session.
   static void logout() {
     logEvent('logout');
     analyticsUserUpdate(null);
+  }
+
+  /// User send a message
+  static void sendMessage(String chatRoomId, String classCode) {
+    logEvent(
+      'sent_message',
+      parameters: {"chat_id": chatRoomId, 'group_id': classCode},
+    );
+  }
+
+  /// User opened a word card
+  static void viewWordCard() {
+    logEvent('word_card');
+  }
+
+  /// User opened the message toolbar
+  static void openMessageToolbar() {
+    logEvent('message_toolbar', parameters: {"action": "open"});
+  }
+
+  /// User executed an action on the message tool bar
+  static void messageToolbarAction(SelectMode action) {
+    logEvent('message_toolbar', parameters: {"action": action.name});
+  }
+
+  static void messageTranslate() {
+    logEvent('message_translate');
   }
 
   static void createClass(String className, String classCode) {
@@ -114,21 +158,6 @@ class GoogleAnalytics {
     logEvent('join_group', parameters: {'group_id': classCode});
   }
 
-  static void sendMessage(String chatRoomId, String classCode) {
-    logEvent(
-      'sent_message',
-      parameters: {"chat_id": chatRoomId, 'group_id': classCode},
-    );
-  }
-
-  static void contextualRequest() {
-    logEvent('context_request');
-  }
-
-  static void messageTranslate() {
-    logEvent('message_translate');
-  }
-
   static void beginPurchaseSubscription(
     SubscriptionDetails details,
     BuildContext context,
@@ -149,6 +178,20 @@ class GoogleAnalytics {
           },
         ],
       },
+    );
+  }
+
+  static void startActivity(String activityId, String roomId) {
+    logEvent(
+      'start_activity',
+      parameters: {'activity_id': activityId, 'room_id': roomId},
+    );
+  }
+
+  static void completeActivity(String activityId, String roomId) {
+    logEvent(
+      'complete_activity',
+      parameters: {'activity_id': activityId, 'room_id': roomId},
     );
   }
 
