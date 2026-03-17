@@ -209,8 +209,10 @@ class _SpaceViewState extends State<SpaceView> {
     );
     if (names == null) return;
     final client = Matrix.of(context).client;
+    // #Pangea
     String? createdRoomId;
     final isChat = roomType == AddRoomType.chat;
+    // Pangea#
     final result = await showFutureLoadingDialog(
       context: context,
       future: () async {
@@ -259,6 +261,7 @@ class _SpaceViewState extends State<SpaceView> {
       },
     );
     if (result.error != null) return;
+    // #Pangea
     if (createdRoomId != null) {
       if (isChat) {
         GoogleAnalytics.createChat(createdRoomId!);
@@ -269,6 +272,7 @@ class _SpaceViewState extends State<SpaceView> {
         GoogleAnalytics.addParent(createdRoomId!, classCode);
       }
     }
+    // Pangea#
     setState(() {
       _nextBatch = null;
       _discoveredChildren.clear();
@@ -389,10 +393,12 @@ class _SpaceViewState extends State<SpaceView> {
           future: () => space.removeSpaceChild(roomId),
         );
         if (result.isError) return;
+        // #Pangea
         final classCode = space.classCode;
         if (classCode != null) {
           GoogleAnalytics.removeChatFromClass(roomId, classCode);
         }
+        // Pangea#
         if (!mounted) return;
         _nextBatch = null;
         _loadHierarchy();

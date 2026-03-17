@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+
+import 'package:go_router/go_router.dart';
+
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
@@ -8,8 +12,6 @@ import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class ActivityFinishedStatusMessage extends StatelessWidget {
   final ChatController controller;
@@ -18,7 +20,9 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
 
   void _onArchive(BuildContext context) {
     _archiveToAnalytics();
-    context.go("/rooms/spaces/${controller.room.courseParent!.id}/details?tab=course");
+    context.go(
+      "/rooms/spaces/${controller.room.courseParent!.id}/details?tab=course",
+    );
   }
 
   Future<void> _archiveToAnalytics() async {
@@ -28,15 +32,20 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
         throw Exception("No activity plan found for room");
       }
 
-      GoogleAnalytics.completeActivity(activityPlan.activityId, controller.room.id);
+      GoogleAnalytics.completeActivity(
+        activityPlan.activityId,
+        controller.room.id,
+      );
 
       final lang = activityPlan.req.targetLanguage.split("-").first;
       final langModel = PLanguageStore.byLangCode(lang)!;
       await controller.room.archiveActivity();
-      await MatrixState.pangeaController.matrixState.analyticsDataService.updateService.sendActivityAnalytics(
-        controller.room.id,
-        langModel,
-      );
+      await MatrixState
+          .pangeaController
+          .matrixState
+          .analyticsDataService
+          .updateService
+          .sendActivityAnalytics(controller.room.id, langModel);
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'roomId': controller.room.id});
     }
@@ -44,16 +53,20 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
 
   ActivitySummaryModel? get summary => controller.room.activitySummary;
 
-  bool get _enableArchive => summary?.summary != null || summary?.hasError == true;
+  bool get _enableArchive =>
+      summary?.summary != null || summary?.hasError == true;
 
   @override
   Widget build(BuildContext context) {
-    if (!controller.room.hasCompletedRole || controller.room.hasArchivedActivity) {
+    if (!controller.room.hasCompletedRole ||
+        controller.room.hasArchivedActivity) {
       return const SizedBox.shrink();
     }
 
     final theme = Theme.of(context);
-    final isSubscribed = MatrixState.pangeaController.subscriptionController.isSubscribed != false;
+    final isSubscribed =
+        MatrixState.pangeaController.subscriptionController.isSubscribed !=
+        false;
 
     return Container(
       padding: const EdgeInsets.all(12.0),
@@ -72,11 +85,19 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
               AnimatedSize(
                 duration: FluffyThemes.animationDuration,
                 alignment: Alignment.topCenter,
-                child: _SummarySection(controller: controller, isSubscribed: isSubscribed),
+                child: _SummarySection(
+                  controller: controller,
+                  isSubscribed: isSubscribed,
+                ),
               ),
-              if (controller.room.isActivityFinished && !controller.room.hasArchivedActivity)
-                _ArchiveSection(enabled: _enableArchive, onArchive: () => _onArchive(context)),
-              if (!controller.room.isActivityFinished) _WaitSection(onContinue: controller.room.continueActivity),
+              if (controller.room.isActivityFinished &&
+                  !controller.room.hasArchivedActivity)
+                _ArchiveSection(
+                  enabled: _enableArchive,
+                  onArchive: () => _onArchive(context),
+                ),
+              if (!controller.room.isActivityFinished)
+                _WaitSection(onContinue: controller.room.continueActivity),
             ],
           ),
         ),
@@ -112,7 +133,11 @@ class _SummarySection extends StatelessWidget {
             style: const TextStyle(fontStyle: FontStyle.italic),
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 36, width: 36, child: CircularProgressIndicator()),
+          const SizedBox(
+            height: 36,
+            width: 36,
+            child: CircularProgressIndicator(),
+          ),
         ],
       );
     }
@@ -121,7 +146,9 @@ class _SummarySection extends StatelessWidget {
       return ErrorIndicator(
         message: L10n.of(context).subscribeToUnlockActivitySummaries,
         onTap: () {
-          MatrixState.pangeaController.subscriptionController.showPaywall(context);
+          MatrixState.pangeaController.subscriptionController.showPaywall(
+            context,
+          );
         },
       );
     }
@@ -135,10 +162,18 @@ class _SummarySection extends StatelessWidget {
             children: [
               const Icon(Icons.school_outlined, size: 24),
               const SizedBox(width: 8),
-              Flexible(child: Text(L10n.of(context).activitySummaryError, textAlign: TextAlign.center)),
+              Flexible(
+                child: Text(
+                  L10n.of(context).activitySummaryError,
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ],
           ),
-          TextButton(onPressed: controller.room.fetchSummaries, child: Text(L10n.of(context).requestSummaries)),
+          TextButton(
+            onPressed: controller.room.fetchSummaries,
+            child: Text(L10n.of(context).requestSummaries),
+          ),
         ],
       );
     }
@@ -177,7 +212,10 @@ class _ArchiveSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Icon(Icons.radar, size: 20),
-              Text(L10n.of(context).saveActivityTitle, style: const TextStyle(fontSize: 12)),
+              Text(
+                L10n.of(context).saveActivityTitle,
+                style: const TextStyle(fontSize: 12),
+              ),
             ],
           ),
         ),
@@ -211,7 +249,10 @@ class _WaitSection extends StatelessWidget {
             backgroundColor: theme.colorScheme.surface,
             side: BorderSide(color: theme.colorScheme.primaryContainer),
           ),
-          child: Text(L10n.of(context).waitNotDone, style: const TextStyle(fontSize: 12)),
+          child: Text(
+            L10n.of(context).waitNotDone,
+            style: const TextStyle(fontSize: 12),
+          ),
         ),
       ],
     );
