@@ -233,6 +233,7 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
       SnackBar(
         content: RichText(
           text: TextSpan(
+            style: TextStyle(color: Theme.of(context).colorScheme.surface),
             children: [
               TextSpan(text: L10n.of(context).noAddressDescription),
               const TextSpan(text: ' '),
@@ -249,7 +250,9 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.primaryContainer,
                       decoration: TextDecoration.underline,
-                      decorationColor: Theme.of(context).colorScheme.primary,
+                      decorationColor: Theme.of(
+                        context,
+                      ).colorScheme.primaryContainer,
                     ),
                   ),
                 ),
