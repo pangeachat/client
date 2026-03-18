@@ -81,4 +81,20 @@ class LoginMethodRepo {
     if (method == null || userID == null) return null;
     return PreviousLoginInfo(userID: userID, method: method);
   }
+
+  static Future<void> clearStoredLoginMethod() async {
+    PreviousLoginInfo? stored;
+    try {
+      stored = await getStoredLoginMethod();
+      final storage = FlutterSecureStorage();
+      await storage.delete(key: LoginMethodConstants.lastLoginUserID);
+      await storage.delete(key: LoginMethodConstants.lastLoginMethod);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'stored_login_method': stored?.toJson()},
+      );
+    }
+  }
 }

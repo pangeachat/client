@@ -167,6 +167,8 @@ class SignupPageController extends State<SignupPage> {
   }
 
   Future<void> _signupFuture() async {
+    await LoginMethodRepo.clearStoredLoginMethod();
+
     final client = await Matrix.of(context).getLoginClient();
     final email = emailController.text;
 
