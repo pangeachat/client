@@ -34,16 +34,14 @@ class ActivityRoleModel {
   }
 
   factory ActivityRoleModel.fromJson(Map<String, dynamic> json) {
+    final archivedEntry = json['archived_at'] ?? json['archivedAt'];
+    final finishedEntry = json['finished_at'] ?? json['finishedAt'];
     return ActivityRoleModel(
       id: json['id'] as String,
-      userId: json['user_id'] as String,
+      userId: (json['user_id'] ?? json['userId']) as String,
       role: json['role'] as String?,
-      finishedAt: json['finished_at'] != null
-          ? DateTime.parse(json['finished_at'])
-          : null,
-      archivedAt: json['archived_at'] != null
-          ? DateTime.parse(json['archived_at'])
-          : null,
+      finishedAt: finishedEntry != null ? DateTime.parse(finishedEntry) : null,
+      archivedAt: archivedEntry != null ? DateTime.parse(archivedEntry) : null,
       dismissedGoalTooltip: json['dismissed_goal_tooltip'] as bool? ?? false,
     );
   }
