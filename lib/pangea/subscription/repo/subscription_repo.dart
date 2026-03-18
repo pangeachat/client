@@ -25,11 +25,14 @@ class SubscriptionRepo {
 
       return SubscriptionAppIds.fromJson(jsonDecode(res.body));
     } catch (err) {
-      ErrorHandler.logError(
-        m: "Failed to fetch app information for revenuecat API",
-        s: StackTrace.current,
-        data: {},
-      );
+      if (err is ChoreoException) {
+        ErrorHandler.logError(e: err.errorMessage, data: {});
+      } else {
+        ErrorHandler.logError(
+          m: "Failed to fetch app information for revenuecat API",
+          data: {},
+        );
+      }
       return null;
     }
   }
@@ -47,7 +50,11 @@ class SubscriptionRepo {
       );
       return resp.allProducts;
     } catch (err, s) {
-      ErrorHandler.logError(e: err, s: s, data: {});
+      if (err is ChoreoException) {
+        ErrorHandler.logError(e: err.errorMessage, data: {});
+      } else {
+        ErrorHandler.logError(e: err, s: s, data: {});
+      }
       return null;
     }
   }
@@ -67,7 +74,11 @@ class SubscriptionRepo {
         return true;
       }
     } catch (err, s) {
-      ErrorHandler.logError(e: err, s: s, data: {});
+      if (err is ChoreoException) {
+        ErrorHandler.logError(e: err.errorMessage, data: {});
+      } else {
+        ErrorHandler.logError(e: err, s: s, data: {});
+      }
       return false;
     }
   }

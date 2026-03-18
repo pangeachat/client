@@ -1,7 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
-
-import 'package:flutter/foundation.dart';
 
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
@@ -76,8 +73,15 @@ class MorphsRepo {
 
       return response;
     } catch (e, s) {
-      if (e is! UnsubscribedException) {
-        debugger(when: kDebugMode);
+      if (e is UnsubscribedException) {
+        return defaultMorphMapping;
+      } else if (e is ChoreoException) {
+        ErrorHandler.logError(
+          e: e.errorMessage,
+          s: s,
+          data: {"languageCode": languageCode},
+        );
+      } else {
         ErrorHandler.logError(e: e, s: s, data: {"languageCode": languageCode});
       }
       return defaultMorphMapping;
