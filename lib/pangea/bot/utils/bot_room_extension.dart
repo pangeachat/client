@@ -25,6 +25,11 @@ extension BotRoomExtension on Room {
   }
 
   Future<void> setBotOptions(BotOptionsModel options) async {
+    if (!canChangeStateEvent(PangeaEventTypes.botOptions)) {
+      Logs().w("User doesn't have permission to set bot options in room $id");
+      return;
+    }
+
     const maxRetries = 3;
     Duration retryDelay = const Duration(seconds: 5);
 
