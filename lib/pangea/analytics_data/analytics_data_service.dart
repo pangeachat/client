@@ -168,6 +168,9 @@ class AnalyticsDataService {
             s: StackTrace.current,
             data: {"offset": xpOffset},
           );
+          await MatrixState.pangeaController.userController.addXPOffset(
+            -xpOffset,
+          );
           xpOffset = 0;
         }
         await updateXPOffset(xpOffset, l2.langCodeShort);
