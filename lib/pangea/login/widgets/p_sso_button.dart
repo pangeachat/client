@@ -93,6 +93,8 @@ class PangeaSsoButton extends StatelessWidget {
         })
         .timeout(const Duration(seconds: 30));
 
+    await LoginMethodRepo.clearStoredLoginMethod();
+
     final loginRes = await client.login(
       LoginType.mLoginToken,
       token: token,
