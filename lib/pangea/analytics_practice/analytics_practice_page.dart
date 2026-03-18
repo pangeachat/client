@@ -117,6 +117,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   final AnalyticsPracticeNotifier notifier = AnalyticsPracticeNotifier();
   final ValueNotifier<double> progress = ValueNotifier<double>(0);
 
+  PracticeTarget? _cachedTarget;
+  List<InlineSpan>? _cachedExampleMessage;
+
   @override
   void initState() {
     super.initState();
@@ -159,18 +162,27 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     final activity = this.activity;
     if (activity == null) return null;
 
-    return switch (activity) {
+    if (activity.practiceTarget == _cachedTarget &&
+        _cachedExampleMessage != null) {
+      return _cachedExampleMessage;
+    }
+
+    final List<InlineSpan>? message = switch (activity) {
       VocabAudioPracticeActivityModel() =>
         activity.exampleMessage.exampleMessage,
       MorphCategoryPracticeActivityModel() =>
         activity.exampleMessageInfo.exampleMessage,
-      _ => ExampleMessageUtil.getExampleMessage(
+      _ => await ExampleMessageUtil.getExampleMessage(
         await _analyticsController.getTargetTokenConstruct(
           activity.practiceTarget,
           _l2!.langCodeShort,
         ),
       ),
     };
+
+    _cachedTarget = activity.practiceTarget;
+    _cachedExampleMessage = message;
+    return message;
   }
 
   bool _autoLaunchNextActivity(MultipleChoicePracticeActivityModel activity) =>
