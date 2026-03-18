@@ -159,7 +159,13 @@ class PTV2Repo {
       final resp = await _fetch(token, request);
       return Result.value(resp);
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: request.toJson());
+      if (e is UnsubscribedException) {
+        return Result.error(e);
+      } else if (e is ChoreoException) {
+        ErrorHandler.logError(e: e.errorMessage, s: s, data: request.toJson());
+      } else {
+        ErrorHandler.logError(e: e, s: s, data: request.toJson());
+      }
       return Result.error(e);
     }
   }

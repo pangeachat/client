@@ -107,8 +107,13 @@ class MorphInfoRepo {
       final resp = await _fetch(token, request);
       return Result.value(resp);
     } catch (e, s) {
-      // Ensure error is logged and converted to a Result
-      ErrorHandler.logError(e: e, s: s, data: request.toJson());
+      if (e is UnsubscribedException) {
+        return Result.error(e);
+      } else if (e is ChoreoException) {
+        ErrorHandler.logError(e: e.errorMessage, s: s, data: request.toJson());
+      } else {
+        ErrorHandler.logError(e: e, s: s, data: request.toJson());
+      }
       return Result.error(e);
     }
   }

@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/subscription/models/base_subscription_info.dart';
 import 'package:fluffychat/pangea/subscription/repo/subscription_repo.dart';
 
@@ -32,6 +34,11 @@ class WebSubscriptionInfo extends CurrentSubscriptionInfo {
             : null;
       }
     } catch (err) {
+      if (err is ChoreoException) {
+        ErrorHandler.logError(e: err.errorMessage, data: {});
+      } else {
+        ErrorHandler.logError(e: err, data: {});
+      }
       currentSubscriptionId = AppConfig.errorSubscriptionId;
     }
 
