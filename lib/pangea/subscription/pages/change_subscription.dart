@@ -25,9 +25,7 @@ class ChangeSubscription extends StatelessWidget {
 
   bool get inTrialWindow => pangeaController.userController.inTrialWindow();
 
-  String get trialEnds => DateFormat.yMMMd().format(
-    DateTime.now().add(const Duration(days: kIsWeb ? 0 : 7)),
-  );
+  String get formattedDate => DateFormat.yMMMd().format(DateTime.now());
 
   @override
   Widget build(BuildContext context) {
@@ -95,45 +93,6 @@ class ChangeSubscription extends StatelessWidget {
                                   margin: const EdgeInsets.all(8.0),
                                   child: Column(
                                     children: [
-                                      if (!kIsWeb)
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            color: Theme.of(
-                                              context,
-                                            ).colorScheme.onPrimary,
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                                  topLeft: Radius.circular(
-                                                    16.0,
-                                                  ),
-                                                  topRight: Radius.circular(
-                                                    16.0,
-                                                  ),
-                                                ),
-                                          ),
-                                          padding: const EdgeInsets.all(16.0),
-                                          child: Row(
-                                            spacing: 4.0,
-                                            children: [
-                                              Expanded(
-                                                flex: 3,
-                                                child: Text(
-                                                  L10n.of(
-                                                    context,
-                                                  ).startingToday,
-                                                ),
-                                              ),
-                                              Expanded(
-                                                flex: 2,
-                                                child: Text(
-                                                  L10n.of(
-                                                    context,
-                                                  ).oneWeekFreeTrial,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
                                       Padding(
                                         padding: const EdgeInsets.all(16.0),
                                         child: Row(
@@ -145,7 +104,7 @@ class ChangeSubscription extends StatelessWidget {
                                                 L10n.of(
                                                   context,
                                                 ).paidSubscriptionStarts(
-                                                  trialEnds,
+                                                  formattedDate,
                                                 ),
                                               ),
                                             ),
@@ -178,12 +137,6 @@ class ChangeSubscription extends StatelessWidget {
                                           context,
                                         ).cancelInSubscriptionSettings,
                                       ),
-                                      if (!kIsWeb)
-                                        Text(
-                                          L10n.of(
-                                            context,
-                                          ).cancelToAvoidCharges(trialEnds),
-                                        ),
                                       const SizedBox(height: 20.0),
                                       ElevatedButton(
                                         onPressed: () => controller

@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:fluffychat/pangea/common/config/environment.dart';
+
 class SubscriptionAppIds {
   String? stripeId;
   String? androidId;
@@ -36,6 +38,12 @@ class SubscriptionAppIds {
     data['apple_id'] = appleId;
     return data;
   }
+
+  Map<String, List<String>> get visibleProductIds => {
+    ?stripeId: Environment.visibleStripeProductIds,
+    ?androidId: Environment.visibleAndroidProductIds,
+    ?appleId: Environment.visibleAppleProductIds,
+  };
 }
 
 enum RCPlatform { stripe, android, apple }

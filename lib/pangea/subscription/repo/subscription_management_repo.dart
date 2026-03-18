@@ -7,10 +7,15 @@ class SubscriptionManagementRepo {
   static final GetStorage _cache = GetStorage("subscription_storage");
 
   static AvailableSubscriptionsInfo? getAvailableSubscriptionsInfo() {
-    final entry = _cache.read(PLocalKey.availableSubscriptionInfo);
-    if (entry == null) return null;
     try {
-      return AvailableSubscriptionsInfo.fromJson(entry);
+      final entry = _cache.read(PLocalKey.availableSubscriptionInfo);
+      if (entry == null) return null;
+      final info = AvailableSubscriptionsInfo.fromJson(entry);
+      if (info.isExpired) {
+        _cache.remove(PLocalKey.availableSubscriptionInfo);
+        return null;
+      }
+      return info;
     } catch (e) {
       _cache.remove(PLocalKey.availableSubscriptionInfo);
       return null;
