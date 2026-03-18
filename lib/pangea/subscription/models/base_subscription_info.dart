@@ -89,10 +89,14 @@ class AvailableSubscriptionsInfo {
       await SubscriptionManagementRepo.setAvailableSubscriptionsInfo(this);
     }
 
+    final visibleProductIds =
+        appIds?.visibleProductIds[appIds!.currentAppId] ?? [];
     availableSubscriptions = (allProducts ?? [])
         .where(
           (product) =>
-              product.appId == appIds!.currentAppId || product.appId == "trial",
+              (product.appId == appIds!.currentAppId &&
+                  visibleProductIds.contains(product.id)) ||
+              product.appId == "trial",
         )
         .sorted((a, b) => a.price.compareTo(b.price))
         .toList();
@@ -135,4 +139,8 @@ class AvailableSubscriptionsInfo {
     data['last_updated'] = (lastUpdated ?? DateTime.now()).toIso8601String();
     return data;
   }
+
+  bool get isExpired =>
+      lastUpdated == null ||
+      DateTime.now().difference(lastUpdated!).inMinutes > 1440; // 24 hours
 }

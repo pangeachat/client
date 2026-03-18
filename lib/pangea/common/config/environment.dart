@@ -123,6 +123,21 @@ class Environment {
             : 'https://billing.stripe.com/p/login/dR6dSkf5p6rBc4EcMM');
   }
 
+  static List<String> get visibleStripeProductIds => [
+    "prod_UAJcYR3NGq3oqP",
+    "prod_UAJbXPZy54R8Lc",
+  ];
+
+  static List<String> get visibleAndroidProductIds => [
+    "pangea.yearly.v2.googleplay:pangea-yearly-googleplay-base-v2",
+    "pangea.monthly.v2.googleplay:pangea-monthly-googleplay-base-v2",
+  ];
+
+  static List<String> get visibleAppleProductIds => [
+    "pangea.yearly.v2.apple",
+    "pangea.monthly.v2.apple",
+  ];
+
   static String get supportUserId {
     return synapseURL.contains('staging')
         ? '@support:staging.pangea.chat'
