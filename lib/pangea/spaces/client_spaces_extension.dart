@@ -19,9 +19,7 @@ extension SpacesClientExtension on Client {
       visibility: visibility,
       name: name.trim(),
       topic: topic?.trim(),
-      powerLevelContentOverride: {'events_default': 100},
       initialState: [
-        RoomDefaults.defaultSpacePowerLevels(userID!, spaceChild: spaceChild),
         await pangeaJoinRules(
           joinRules.toString().replaceAll('JoinRules.', ''),
         ),
@@ -29,6 +27,9 @@ extension SpacesClientExtension on Client {
           StateEvent(type: EventTypes.RoomAvatar, content: {'url': avatarUrl}),
         if (initialState != null) ...initialState,
       ],
+      powerLevelContentOverride: RoomDefaults.defaultSpacePowerLevelsContent(
+        spaceChild: spaceChild,
+      ),
     ),
   );
 }
