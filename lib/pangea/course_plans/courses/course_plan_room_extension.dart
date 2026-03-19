@@ -104,7 +104,6 @@ extension CoursePlanRoomExtension on Room {
                 ),
               }).toJson(),
             ),
-          RoomDefaults.defaultPowerLevels(client.userID!),
           await client.pangeaJoinRules(
             'knock_restricted',
             allow: [
@@ -112,6 +111,7 @@ extension CoursePlanRoomExtension on Room {
             ],
           ),
         ],
+        powerLevelContentOverride: RoomDefaults.defaultPowerLevelsContent,
       ),
     );
 
@@ -210,7 +210,6 @@ extension CoursePlanRoomExtension on Room {
             "${type.alias}_${id.localpart}_${DateTime.now().millisecondsSinceEpoch}",
         initialState: [
           StateEvent(type: EventTypes.RoomAvatar, content: {'url': uploadURL}),
-          type.powerLevels(client.userID!),
           await client.pangeaJoinRules(
             'knock_restricted',
             allow: [
@@ -218,6 +217,7 @@ extension CoursePlanRoomExtension on Room {
             ],
           ),
         ],
+        powerLevelContentOverride: type.powerLevels,
       ),
     );
 

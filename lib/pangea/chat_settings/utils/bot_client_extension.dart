@@ -7,7 +7,6 @@ import 'package:meta/meta.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
-import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/bot_mode.dart';
 import 'package:fluffychat/pangea/chat_settings/models/bot_options_model.dart';
@@ -109,7 +108,6 @@ extension BotClientExtension on Client {
         ).toJson(),
         type: PangeaEventTypes.botOptions,
       ),
-      RoomDefaults.defaultPowerLevels(userID!),
     ],
   );
 

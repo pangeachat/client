@@ -54,6 +54,7 @@ extension CreateRoomExtension on Client {
   Future<String> createPangeaGroupChat(
     String name, {
     List<StateEvent>? initialState,
+    Map<String, dynamic>? powerLevelContentOverride,
   }) => createPangeaRoom(
     createGroupChat(
       visibility: Visibility.private,
@@ -61,6 +62,7 @@ extension CreateRoomExtension on Client {
       initialState: initialState,
       enableEncryption: false,
       waitForSync: false,
+      powerLevelContentOverride: powerLevelContentOverride,
     ),
   );
 }

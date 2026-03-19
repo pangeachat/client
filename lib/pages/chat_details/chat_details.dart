@@ -306,7 +306,6 @@ class ChatDetailsController extends State<ChatDetails>
         final newRoomId = await Matrix.of(context).client.createPangeaGroupChat(
           groupName,
           initialState: [
-            RoomDefaults.defaultPowerLevels(Matrix.of(context).client.userID!),
             await Matrix.of(context).client.pangeaJoinRules(
               'knock_restricted',
               allow: roomId != null
@@ -316,6 +315,7 @@ class ChatDetailsController extends State<ChatDetails>
                   : null,
             ),
           ],
+          powerLevelContentOverride: RoomDefaults.defaultPowerLevelsContent,
         );
 
         try {
