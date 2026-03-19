@@ -58,7 +58,7 @@ extension PublicCoursesRequest on Client {
 
 class PublicCoursesResponse extends GetPublicRoomsResponse {
   final List<PublicCoursesChunk> courses;
-  final String filteringWarning;
+  final String? filteringWarning;
 
   PublicCoursesResponse({
     required super.chunk,
@@ -66,7 +66,7 @@ class PublicCoursesResponse extends GetPublicRoomsResponse {
     required super.prevBatch,
     required super.totalRoomCountEstimate,
     required this.courses,
-    required this.filteringWarning,
+    this.filteringWarning,
   });
 
   @override
@@ -83,7 +83,7 @@ class PublicCoursesResponse extends GetPublicRoomsResponse {
     : courses = (json['chunk'] as List)
           .map((e) => PublicCoursesChunk.fromJson(e))
           .toList(),
-      filteringWarning = json['filtering_warning'] as String,
+      filteringWarning = json['filtering_warning'] as String?,
       super.fromJson();
 
   PublicCoursesResponse copyWith({
