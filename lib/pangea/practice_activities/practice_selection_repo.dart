@@ -1,5 +1,6 @@
 import 'package:get_storage/get_storage.dart';
 
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
@@ -44,12 +45,12 @@ class PracticeSelectionRepo {
       return null;
     }
 
-    final cached = _getCached(eventId);
+    final cached = await _getCached(eventId);
     if (cached != null) return cached;
 
     final newEntry = await _fetch(tokens: tokens, langCode: messageLanguage);
 
-    _setCached(eventId, newEntry);
+    await _setCached(eventId, newEntry);
     return newEntry;
   }
 
@@ -57,24 +58,38 @@ class PracticeSelectionRepo {
     required List<PangeaToken> tokens,
     required String langCode,
   }) async {
-    if (langCode.split("-")[0] !=
-        MatrixState.pangeaController.userController.userL2?.langCodeShort) {
-      return PracticeSelection({});
-    }
+    try {
+      if (langCode.split("-")[0] !=
+          MatrixState.pangeaController.userController.userL2?.langCodeShort) {
+        return PracticeSelection({});
+      }
 
-    final eligibleTokens = tokens.where((t) => t.lemma.saveVocab).toList();
-    if (eligibleTokens.isEmpty) {
+      final eligibleTokens = tokens.where((t) => t.lemma.saveVocab).toList();
+      if (eligibleTokens.isEmpty) {
+        return PracticeSelection({});
+      }
+      final queue = await _fillActivityQueue(
+        eligibleTokens,
+        langCode.split('-')[0],
+      );
+      final selection = PracticeSelection(queue);
+      return selection;
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "messageLanguage": langCode,
+          "userL2":
+              MatrixState.pangeaController.userController.userL2?.langCodeShort,
+          "tokens": tokens.map((t) => t.text.toJson()).toList(),
+        },
+      );
       return PracticeSelection({});
     }
-    final queue = await _fillActivityQueue(
-      eligibleTokens,
-      langCode.split('-')[0],
-    );
-    final selection = PracticeSelection(queue);
-    return selection;
   }
 
-  static PracticeSelection? _getCached(String eventId) {
+  static Future<PracticeSelection?> _getCached(String eventId) async {
     try {
       final keys = List.from(_storage.getKeys());
       for (final String key in keys) {
@@ -82,11 +97,11 @@ class PracticeSelectionRepo {
           _storage.read(key),
         );
         if (cacheEntry.isExpired) {
-          _storage.remove(key);
+          await _storage.remove(key);
         }
       }
     } catch (e) {
-      _storage.erase();
+      await _storage.erase();
       return null;
     }
 
@@ -98,17 +113,28 @@ class PracticeSelectionRepo {
         _storage.read(eventId),
       ).selection;
     } catch (e) {
-      _storage.remove(eventId);
+      await _storage.remove(eventId);
       return null;
     }
   }
 
-  static void _setCached(String eventId, PracticeSelection entry) {
-    final cachedEntry = _PracticeSelectionCacheEntry(
-      selection: entry,
-      timestamp: DateTime.now(),
-    );
-    _storage.write(eventId, cachedEntry.toJson());
+  static Future<void> _setCached(
+    String eventId,
+    PracticeSelection entry,
+  ) async {
+    try {
+      final cachedEntry = _PracticeSelectionCacheEntry(
+        selection: entry,
+        timestamp: DateTime.now(),
+      );
+      await _storage.write(eventId, cachedEntry.toJson());
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"eventId": eventId, "practice_selection": entry.toJson()},
+      );
+    }
   }
 
   static Future<Map<ActivityTypeEnum, List<PracticeTarget>>> _fillActivityQueue(
