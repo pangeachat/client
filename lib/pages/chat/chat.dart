@@ -1444,6 +1444,7 @@ class ChatController extends State<ChatPageWithRoom>
       // #Pangea
       // setState(selectedEvents.clear);
       clearSelectedEvents();
+      await room.refreshLastEvent();
       // Pangea#
     } catch (e, s) {
       ErrorReporter(
