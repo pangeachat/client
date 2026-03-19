@@ -19,9 +19,11 @@ extension SpacesClientExtension on Client {
       visibility: visibility,
       name: name.trim(),
       topic: topic?.trim(),
-      powerLevelContentOverride: {'events_default': 100},
+      powerLevelContentOverride: RoomDefaults.defaultSpacePowerLevels(
+        userID!,
+        spaceChild: spaceChild,
+      ).content,
       initialState: [
-        RoomDefaults.defaultSpacePowerLevels(userID!, spaceChild: spaceChild),
         await pangeaJoinRules(
           joinRules.toString().replaceAll('JoinRules.', ''),
         ),

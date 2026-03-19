@@ -109,8 +109,8 @@ extension BotClientExtension on Client {
         ).toJson(),
         type: PangeaEventTypes.botOptions,
       ),
-      RoomDefaults.defaultPowerLevels(userID!),
     ],
+    powerLevelContentOverride: RoomDefaults.defaultPowerLevels(userID!).content,
   );
 
   Future<void> updateBotOptions(UserSettings userSettings) async {

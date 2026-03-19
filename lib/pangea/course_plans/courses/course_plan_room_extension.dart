@@ -83,6 +83,9 @@ extension CoursePlanRoomExtension on Room {
         visibility: sdk.Visibility.private,
         name: activity.title,
         topic: activity.description,
+        powerLevelContentOverride: RoomDefaults.defaultPowerLevels(
+          client.userID!,
+        ).content,
         initialState: [
           StateEvent(
             type: PangeaEventTypes.activityPlan,
@@ -104,7 +107,6 @@ extension CoursePlanRoomExtension on Room {
                 ),
               }).toJson(),
             ),
-          RoomDefaults.defaultPowerLevels(client.userID!),
           await client.pangeaJoinRules(
             'knock_restricted',
             allow: [
@@ -208,9 +210,9 @@ extension CoursePlanRoomExtension on Room {
         name: name,
         roomAliasName:
             "${type.alias}_${id.localpart}_${DateTime.now().millisecondsSinceEpoch}",
+        powerLevelContentOverride: type.powerLevels(client.userID!),
         initialState: [
           StateEvent(type: EventTypes.RoomAvatar, content: {'url': uploadURL}),
-          type.powerLevels(client.userID!),
           await client.pangeaJoinRules(
             'knock_restricted',
             allow: [
