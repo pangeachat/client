@@ -361,32 +361,18 @@ class FindCoursePageView extends StatelessWidget {
                           ),
                           onPressed: () => context.go("/rooms/course/private"),
                         ),
-                      ] else
-                        PopupMenuButton(
-                          icon: const Icon(Icons.more_vert),
-                          itemBuilder: (context) => [
-                            PopupMenuItem(
-                              onTap: controller.startNewCourse,
-                              child: Row(
-                                spacing: 8.0,
-                                children: [
-                                  const Icon(Icons.add),
-                                  Text(L10n.of(context).newCourse),
-                                ],
-                              ),
-                            ),
-                            PopupMenuItem(
-                              onTap: () => context.go("/rooms/course/private"),
-                              child: Row(
-                                spacing: 8.0,
-                                children: [
-                                  const Icon(Icons.join_full),
-                                  Text(L10n.of(context).joinWithCode),
-                                ],
-                              ),
-                            ),
-                          ],
+                      ] else ...[
+                        IconButton(
+                          icon: Icon(Icons.add),
+                          tooltip: L10n.of(context).newCourse,
+                          onPressed: controller.startNewCourse,
                         ),
+                        IconButton(
+                          icon: Icon(Icons.join_full),
+                          tooltip: L10n.of(context).joinWithCode,
+                          onPressed: () => context.go("/rooms/course/private"),
+                        ),
+                      ],
                     ],
                   );
                 },
