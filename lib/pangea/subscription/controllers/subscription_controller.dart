@@ -322,6 +322,7 @@ class SubscriptionDetails {
   final SubscriptionDuration? duration;
   final String? appId;
   final String id;
+  final bool isVisible;
   Package? package;
   String? localizedPrice;
 
@@ -331,6 +332,7 @@ class SubscriptionDetails {
     this.duration,
     this.package,
     this.appId,
+    this.isVisible = true,
   });
 
   bool get isTrial => appId == "trial";
@@ -367,6 +369,7 @@ class SubscriptionDetails {
     data['id'] = id;
     data['duration'] = duration?.value;
     data['appId'] = appId;
+    data['is_visible'] = isVisible;
     return data;
   }
 
@@ -378,6 +381,7 @@ class SubscriptionDetails {
       ),
       id: json['id'],
       appId: json['appId'],
+      isVisible: json['is_visible'] ?? true,
     );
   }
 }

@@ -112,26 +112,6 @@ class RCProductsResponseModel {
         .cast<SubscriptionDetails>();
     return RCProductsResponseModel(allProducts: res);
   }
-
-  static List<SubscriptionDetails> productsFromPackageDetails(
-    Map<String, dynamic> packageDetails,
-    String packageId,
-    Map<String, dynamic> metadata,
-  ) {
-    return packageDetails['products']['items']
-        .map(
-          (productDetails) => SubscriptionDetails(
-            price: double.parse(metadata['$packageId.price']),
-            duration: SubscriptionDuration.values.firstWhereOrNull(
-              (duration) => duration.value == metadata['$packageId.duration'],
-            ),
-            id: productDetails['product']['store_identifier'],
-            appId: productDetails['product']['app_id'],
-          ),
-        )
-        .toList()
-        .cast<SubscriptionDetails>();
-  }
 }
 
 class RCSubscriptionResponseModel {

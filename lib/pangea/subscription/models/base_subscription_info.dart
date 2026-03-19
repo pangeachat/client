@@ -92,13 +92,10 @@ class AvailableSubscriptionsInfo {
       await SubscriptionManagementRepo.setAvailableSubscriptionsInfo(this);
     }
 
-    final visibleProductIds =
-        appIds?.visibleProductIds[appIds!.currentAppId] ?? [];
     availableSubscriptions = (allProducts ?? [])
         .where(
           (product) =>
-              (product.appId == appIds!.currentAppId &&
-                  visibleProductIds.contains(product.id)) ||
+              (product.appId == appIds!.currentAppId && product.isVisible) ||
               product.appId == "trial",
         )
         .sorted((a, b) => a.price.compareTo(b.price))
