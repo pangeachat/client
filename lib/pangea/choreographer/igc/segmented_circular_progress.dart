@@ -17,7 +17,11 @@ class SegmentedCircularProgress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _SegmentedPainter(segments: segments, strokeWidth: strokeWidth),
+      painter: _SegmentedPainter(
+        segments: segments,
+        strokeWidth: strokeWidth,
+        gapFactor: 1.6,
+      ),
       child: child,
     );
   }
@@ -46,9 +50,13 @@ class Segment {
 class _SegmentedPainter extends CustomPainter {
   final List<Segment> segments;
   final double strokeWidth;
-  final double gapFactor = 1.4;
+  final double gapFactor;
 
-  const _SegmentedPainter({required this.segments, this.strokeWidth = 10});
+  const _SegmentedPainter({
+    required this.segments,
+    this.strokeWidth = 10,
+    this.gapFactor = 1.4,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
