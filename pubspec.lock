@@ -1489,7 +1489,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "96b0d53eb9619620a885d95551aa8cb05eaefd24"
+      resolved-ref: "7f419a77d214315214517b52c5d4337fab196b3a"
       url: "https://github.com/pangeachat/matrix-dart-sdk.git"
     source: git
     version: "4.1.0"
