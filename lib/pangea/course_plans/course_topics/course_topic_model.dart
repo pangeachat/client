@@ -64,8 +64,9 @@ class CourseTopicModel {
         CourseInfoBatchRequest(batchId: uuid, uuids: location.mediaIds),
       );
 
-      allLocationMedia
-          .addAll(mediaResp.mediaUrls.map((e) => e.mediumUrl ?? e.url));
+      allLocationMedia.addAll(
+        mediaResp.mediaUrls.map((e) => e.mediumUrl ?? e.url),
+      );
     }
     return allLocationMedia;
   }
