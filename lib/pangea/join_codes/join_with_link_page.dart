@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix_api_lite/utils/logs.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
@@ -20,6 +21,9 @@ class _JoinClassWithLinkState extends State<JoinClassWithLink> {
   @override
   void initState() {
     super.initState();
+    Logs().i(
+      "JoinClassWithLink initState called with classCode: ${widget.classCode}",
+    );
 
     Future.delayed(Duration.zero, () async {
       if (widget.classCode == null) {
@@ -35,7 +39,7 @@ class _JoinClassWithLinkState extends State<JoinClassWithLink> {
       if (widget.classCode != null) {
         await SpaceCodeRepo.setSpaceCode(widget.classCode!);
       }
-      context.push("/home");
+      context.go("/home");
     });
   }
 
