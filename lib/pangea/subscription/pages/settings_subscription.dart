@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
@@ -170,6 +171,11 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
         isPromo: isPromo,
       );
     } catch (e, s) {
+      if (e is PlatformException &&
+          e.message?.contains("Purchase was cancelled") == true) {
+        return;
+      }
+
       ErrorHandler.logError(
         e: e,
         s: s,
