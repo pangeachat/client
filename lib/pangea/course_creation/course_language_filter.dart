@@ -17,11 +17,12 @@ class CourseLanguageFilter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final langs =
+        MatrixState.pangeaController.pLanguageStore.unlocalizedTargetOptions;
     return CoursePlanFilter<LanguageModel>(
-      value: value,
+      value: value != null && langs.contains(value) ? value : null,
       onChanged: onChanged,
-      items:
-          MatrixState.pangeaController.pLanguageStore.unlocalizedTargetOptions,
+      items: langs,
       displayname: (v) => v.getDisplayName(context),
       enableSearch: true,
       defaultName: L10n.of(context).allLanguages,

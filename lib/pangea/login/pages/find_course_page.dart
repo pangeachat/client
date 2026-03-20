@@ -71,9 +71,7 @@ class FindCoursePageState extends State<FindCoursePage> {
   }
 
   void setTargetLanguageFilter(LanguageModel? language) {
-    if (targetLanguageFilter.value?.langCodeShort == language?.langCodeShort) {
-      return;
-    }
+    if (targetLanguageFilter.value == language) return;
     targetLanguageFilter.value = language;
     visibleCourses.value = [];
     loading.value = false;

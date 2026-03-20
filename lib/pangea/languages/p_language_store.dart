@@ -25,14 +25,26 @@ class PLanguageStore {
 
   List<LanguageModel> get baseOptions => _langList.toList();
 
-  List<LanguageModel> get unlocalizedTargetOptions => _langList
-      .where(
-        (element) =>
-            element.l2 &&
-            (element.langCode == element.langCodeShort ||
-                !element.displayName.contains("(")),
-      )
-      .toList();
+  List<LanguageModel> get unlocalizedTargetOptions {
+    final unlocalized = _langList
+        .where(
+          (element) =>
+              element.l2 &&
+              (element.langCode == element.langCodeShort ||
+                  !element.displayName.contains("(")),
+        )
+        .toList();
+    final normalized = <LanguageModel>[];
+    final seenNames = <String>{};
+    for (final lang in unlocalized) {
+      final name = lang.displayName;
+      if (!seenNames.contains(name)) {
+        seenNames.add(name);
+        normalized.add(lang);
+      }
+    }
+    return normalized;
+  }
 
   static Future<void> initialize({bool forceRefresh = false}) async {
     _langList = await _getCachedLanguages();

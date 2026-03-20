@@ -80,10 +80,7 @@ class NewCoursePageState extends State<NewCoursePage> {
   }
 
   void _setTargetLanguageFilter(LanguageModel? language) {
-    if (_targetLanguageFilter.value?.langCodeShort == language?.langCodeShort) {
-      return;
-    }
-
+    if (_targetLanguageFilter.value == language) return;
     _targetLanguageFilter.value = language;
     _loadCourses();
   }
