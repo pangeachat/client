@@ -31,6 +31,7 @@ class MorphActivityGenerator {
 
     final distractors = token.morphActivityDistractors(morphFeature, morphTag);
     distractors.add(morphTag);
+    final choices = distractors.toList()..shuffle();
 
     debugger(when: kDebugMode && distractors.length < 3);
 
@@ -40,7 +41,7 @@ class MorphActivityGenerator {
         langCode: req.userL2,
         morphFeature: morphFeature,
         multipleChoiceContent: MultipleChoiceActivity(
-          choices: distractors,
+          choices: choices.toSet(),
           answers: {morphTag},
         ),
       ),
