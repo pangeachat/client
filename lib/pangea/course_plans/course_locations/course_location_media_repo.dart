@@ -84,9 +84,21 @@ class CourseLocationMediaRepo {
     final List<CourseMediaInfo> urls = [];
     for (final uuid in request.uuids) {
       try {
-        final url = _storage.read(uuid) as String?;
-        if (url != null) {
-          urls.add(CourseMediaInfo(uuid: uuid, url: url));
+        final cached = _storage.read(uuid);
+        if (cached != null) {
+          if (cached is String) {
+            // Legacy cache format — just the URL string
+            urls.add(CourseMediaInfo(uuid: uuid, url: cached));
+          } else if (cached is Map) {
+            urls.add(
+              CourseMediaInfo(
+                uuid: uuid,
+                url: cached['url'] as String,
+                thumbnailUrl: cached['thumbnailUrl'] as String?,
+                mediumUrl: cached['mediumUrl'] as String?,
+              ),
+            );
+          }
         }
       } catch (e) {
         // If parsing fails, remove the corrupted cache entry
@@ -99,7 +111,13 @@ class CourseLocationMediaRepo {
   static Future<void> _setCached(CourseLocationMediaResponse response) async {
     final List<Future> futures = [];
     for (final entry in response.mediaUrls) {
-      futures.add(_storage.write(entry.uuid, entry.url));
+      futures.add(
+        _storage.write(entry.uuid, {
+          'url': entry.url,
+          'thumbnailUrl': entry.thumbnailUrl,
+          'mediumUrl': entry.mediumUrl,
+        }),
+      );
     }
     await Future.wait(futures);
   }

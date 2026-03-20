@@ -13,7 +13,14 @@ class CourseMediaResponse {
     return CourseMediaResponse(
       mediaUrls: response.docs
           .where((e) => e.url != null)
-          .map((e) => CourseMediaInfo(uuid: e.id, url: e.url!))
+          .map(
+            (e) => CourseMediaInfo(
+              uuid: e.id,
+              url: e.url!,
+              thumbnailUrl: e.sizes?.thumbnail?.url,
+              mediumUrl: e.sizes?.medium?.url,
+            ),
+          )
           .toList(),
     );
   }
