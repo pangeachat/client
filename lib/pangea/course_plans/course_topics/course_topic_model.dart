@@ -53,7 +53,7 @@ class CourseTopicModel {
         ).mediaUrls,
       )
       .expand((e) => e)
-      .map((e) => e.url)
+      .map((e) => e.mediumUrl ?? e.url)
       .toList();
 
   Future<List<String>> fetchLocationMedia() async {
@@ -64,7 +64,8 @@ class CourseTopicModel {
         CourseInfoBatchRequest(batchId: uuid, uuids: location.mediaIds),
       );
 
-      allLocationMedia.addAll(mediaResp.mediaUrls.map((e) => e.url));
+      allLocationMedia
+          .addAll(mediaResp.mediaUrls.map((e) => e.mediumUrl ?? e.url));
     }
     return allLocationMedia;
   }
