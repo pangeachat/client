@@ -69,6 +69,7 @@ class CmsCoursePlanTopicLocationMedia {
       height: json['height'],
       focalX: json['focalX']?.toDouble(),
       focalY: json['focalY']?.toDouble(),
+      sizes: json['sizes'] != null ? ImageSizes.fromJson(json['sizes']) : null,
     );
   }
 
