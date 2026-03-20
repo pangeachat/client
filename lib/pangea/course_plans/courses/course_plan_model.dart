@@ -123,11 +123,14 @@ class CoursePlanModel {
   Future<CourseMediaResponse> fetchMediaUrls() => CourseMediaRepo.get(
     CourseInfoBatchRequest(batchId: uuid, uuids: mediaIds),
   );
-  Uri? get imageUrl => loadedMediaUrls.mediaUrls.isEmpty
-      ? loadedTopics.values
-            .lastWhereOrNull((topic) => topic.imageUrl != null)
-            ?.imageUrl
-      : Uri.tryParse(
-          "${Environment.cmsApi}${loadedMediaUrls.mediaUrls.first.url}",
-        );
+  Uri? get imageUrl {
+    if (loadedMediaUrls.mediaUrls.isEmpty) {
+      return loadedTopics.values
+          .lastWhereOrNull((topic) => topic.imageUrl != null)
+          ?.imageUrl;
+    }
+    final media = loadedMediaUrls.mediaUrls.first;
+    final bestUrl = media.mediumUrl ?? media.url;
+    return Uri.tryParse("${Environment.cmsApi}$bestUrl");
+  }
 }
