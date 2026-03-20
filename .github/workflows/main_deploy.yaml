@@ -34,7 +34,7 @@ jobs:
           flutter config --enable-web
           flutter clean
           flutter pub get
-          flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --profile --source-maps
+          flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --pwa-strategy=none --profile --source-maps
         
       - name: Upload files
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -77,7 +77,20 @@ jobs:
           aws-region: us-east-1
       - name: Deploy to S3
         run: |
-          aws s3 sync ./build/web s3://$WEBAPP_S3_BUCKET
+          # Immutable hashed assets — cache for 1 year
+          aws s3 sync ./build/web s3://$WEBAPP_S3_BUCKET \
+            --cache-control "public, max-age=31536000, immutable" \
+            --exclude "index.html" \
+            --exclude "flutter_service_worker.js" \
+            --exclude "version.json" \
+            --exclude "manifest.json"
+          # Mutable entry points — always revalidate
+          for f in index.html flutter_service_worker.js version.json manifest.json; do
+            if [ -f "./build/web/$f" ]; then
+              aws s3 cp "./build/web/$f" "s3://$WEBAPP_S3_BUCKET/$f" \
+                --cache-control "no-cache, must-revalidate"
+            fi
+          done
       - name: Invalidate CloudFront cache
         run: |
           aws cloudfront create-invalidation --distribution-id $CF_DISTRIBUTION_ID --paths "/*"
