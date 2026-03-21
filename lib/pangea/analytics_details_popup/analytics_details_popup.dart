@@ -6,6 +6,7 @@ import 'package:async/async.dart';
 import 'package:diacritic/diacritic.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
@@ -92,6 +93,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
         e: "No L2 language set for user",
         m: "Cannot set analytics data",
         data: {"view": widget.view, "construct": widget.construct},
+        level: SentryLevel.warning,
       );
       return;
     }
