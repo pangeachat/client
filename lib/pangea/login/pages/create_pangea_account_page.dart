@@ -91,17 +91,18 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
         }
       }
 
-      final courseId = room.coursePlan?.uuid;
-      if (courseId == null) {
-        throw Exception('No course plan associated with space $spaceId');
-      }
+      _spaceId = spaceId;
 
+      final courseId = room.coursePlan?.uuid;
+      if (courseId == null) return;
+
+      final userL1 =
+          MatrixState.pangeaController.userController.userL1Code ?? 'en';
       request = GetLocalizedCoursesRequest(
         coursePlanIds: [courseId],
-        l1: MatrixState.pangeaController.userController.userL1Code!,
+        l1: userL1,
       );
       final course = await CoursePlansRepo.get(request);
-      _spaceId = spaceId;
       _courseLangCode = course.targetLanguage;
     } catch (err, s) {
       _courseError = err;
@@ -180,6 +181,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
       // This can happen if a user creates a new account via login => SSO
       if (targetLangCode == null) {
         context.go('/registration');
+        return;
       }
 
       final updateFuture = [
