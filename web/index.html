@@ -74,6 +74,10 @@
   <!-- #Pangea -->
   <script>
     (function() {
+      // Skip redirect when the URL carries a class code — let the web app
+      // handle join_with_link so the code isn't lost during a store redirect.
+      if (window.location.hash.indexOf('join_with_link') !== -1) return;
+
       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
       const isAndroid = /android/i.test(userAgent);
       const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
