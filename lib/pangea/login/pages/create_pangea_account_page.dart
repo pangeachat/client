@@ -31,7 +31,6 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
   bool _loading = true;
 
   Object? _profileError;
-  Object? _courseError;
 
   @override
   void initState() {
@@ -59,7 +58,6 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
     setState(() {
       _loading = true;
       _profileError = null;
-      _courseError = null;
     });
 
     await _joinCachedCourse();
@@ -90,22 +88,26 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
         }
       }
 
+      _spaceId = spaceId;
+
       final courseId = room.coursePlan?.uuid;
-      if (courseId == null) {
-        throw Exception('No course plan associated with space $spaceId');
-      }
+      if (courseId == null) return;
+
+      final userL1 =
+          MatrixState.pangeaController.userController.userL1Code ?? 'en';
 
       final course = await CoursePlansRepo.get(
         GetLocalizedCoursesRequest(
           coursePlanIds: [courseId],
-          l1: MatrixState.pangeaController.userController.userL1Code!,
+          l1: userL1,
         ),
       );
 
-      _spaceId = spaceId;
       _courseLangCode = course.targetLanguage;
-    } catch (err) {
-      _courseError = err;
+    } catch (err, s) {
+      ErrorHandler.logError(e: err, s: s, data: {
+        'spaceCode': _cachedSpaceCode,
+      });
     }
   }
 
@@ -164,6 +166,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
       // This can happen if a user creates a new account via login => SSO
       if (targetLangCode == null) {
         context.go('/registration');
+        return;
       }
 
       final updateFuture = [
@@ -176,8 +179,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
           profile.userSettings.createdAt = DateTime.now();
           return profile;
         }, waitForDataInSync: true),
-        if (targetLangCode != null)
-          MatrixState.pangeaController.userController.updateAnalyticsProfile(
+        MatrixState.pangeaController.userController.updateAnalyticsProfile(
             targetLanguage: PLanguageStore.byLangCode(targetLangCode),
             baseLanguage: LanguageService.systemLanguage,
             level: 1,
@@ -218,7 +220,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
         child: Center(
           child: _loading
               ? const CircularProgressIndicator.adaptive()
-              : _profileError != null || _courseError != null
+              : _profileError != null
               ? Column(
                   spacing: 8.0,
                   mainAxisSize: MainAxisSize.min,
