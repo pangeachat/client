@@ -68,13 +68,17 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
   }
 
   Future<void> _joinCachedCourse() async {
-    if (_cachedSpaceCode == null) return;
+    final spaceCode = _cachedSpaceCode;
+    if (spaceCode == null) return;
 
     GetLocalizedCoursesRequest? request;
     try {
-      final spaceId = await SpaceCodeController.joinCachedSpaceCode(context);
+      // Use joinSpaceWithCode directly (not joinCachedSpaceCode) to avoid
+      // premature navigation away from the registration page.
+      final spaceId = await SpaceCodeController.joinSpaceWithCode(context, spaceCode);
+      await SpaceCodeRepo.clearSpaceCode();
       if (spaceId == null) {
-        throw Exception('Failed to join space with code $_cachedSpaceCode');
+        throw Exception('Failed to join space with code $spaceCode');
       }
 
       final client = Matrix.of(context).client;
@@ -83,7 +87,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
         await client.waitForRoomInSync(spaceId, join: true);
         room = client.getRoomById(spaceId);
         if (room == null || room.membership != Membership.join) {
-          throw Exception('Failed to join space with code $_cachedSpaceCode');
+          throw Exception('Failed to join space with code $spaceCode');
         }
       }
 
@@ -98,7 +102,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
       _courseLangCode = course.targetLanguage;
     } catch (err, s) {
       _courseError = err;
-      ErrorHandler.logError(e: err, s: s, data: {'spaceCode': _cachedSpaceCode, 'request': request?.toJson()});
+      ErrorHandler.logError(e: err, s: s, data: {'spaceCode': spaceCode, 'request': request?.toJson()});
     }
   }
 
