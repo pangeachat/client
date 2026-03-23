@@ -120,7 +120,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
         "${AppConfig.assetsBaseURL}/$selectedAvatarPath",
       );
       await client.setProfileField(client.userID!, 'avatar_url', {
-        'avatar_url': avatarUrl,
+        'avatar_url': avatarUrl.toString(),
       });
     } catch (err, s) {
       ErrorHandler.logError(e: err, s: s, data: {});
