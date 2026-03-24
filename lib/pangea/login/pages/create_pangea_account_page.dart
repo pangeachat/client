@@ -128,8 +128,11 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
 
     await MatrixState.pangeaController.userController.updateProfile((profile) {
       profile.userSettings.targetLanguage = target;
-      if (base != null) {
+      if (base != null && base != target) {
         profile.userSettings.sourceLanguage = base;
+      } else if (base == target) {
+        // Temporary: avoid IdenticalLanguageException by picking a fallback L1
+        profile.userSettings.sourceLanguage = target == 'en' ? 'es' : 'en';
       }
       return profile;
     }, waitForDataInSync: true);
@@ -165,8 +168,11 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
         _setAvatar(),
         MatrixState.pangeaController.userController.updateProfile((profile) {
           profile.userSettings.targetLanguage = targetLangCode;
-          if (baseLangCode != null) {
+          if (baseLangCode != null && baseLangCode != targetLangCode) {
             profile.userSettings.sourceLanguage = baseLangCode;
+          } else if (baseLangCode == targetLangCode) {
+            // Temporary: avoid IdenticalLanguageException by picking a fallback L1
+            profile.userSettings.sourceLanguage = targetLangCode == 'en' ? 'es' : 'en';
           }
           profile.userSettings.createdAt = DateTime.now();
           return profile;
