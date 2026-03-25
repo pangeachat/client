@@ -148,14 +148,18 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
       return;
     }
 
-    await MatrixState.pangeaController.userController.updateProfile((profile) {
-      return profile.copyWith(
-        userSettings: profile.userSettings.copyWith(
-          targetLanguage: target,
-          sourceLanguage: base,
-        ),
-      );
-    }, waitForDataInSync: true);
+    await MatrixState.pangeaController.userController.updateProfile(
+      (profile) {
+        return profile.copyWith(
+          userSettings: profile.userSettings.copyWith(
+            targetLanguage: target,
+            sourceLanguage: base,
+          ),
+        );
+      },
+      waitForDataInSync: true,
+      overrideIdenticalLanguageCheck: true,
+    );
   }
 
   Future<void> _createUserInPangea() async {
@@ -186,15 +190,19 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
 
       final updateFuture = [
         _setAvatar(),
-        MatrixState.pangeaController.userController.updateProfile((profile) {
-          return profile.copyWith(
-            userSettings: profile.userSettings.copyWith(
-              targetLanguage: targetLangCode,
-              sourceLanguage: baseLangCode,
-              createdAt: DateTime.now(),
-            ),
-          );
-        }, waitForDataInSync: true),
+        MatrixState.pangeaController.userController.updateProfile(
+          (profile) {
+            return profile.copyWith(
+              userSettings: profile.userSettings.copyWith(
+                targetLanguage: targetLangCode,
+                sourceLanguage: baseLangCode,
+                createdAt: DateTime.now(),
+              ),
+            );
+          },
+          waitForDataInSync: true,
+          overrideIdenticalLanguageCheck: true,
+        ),
         MatrixState.pangeaController.userController.updateAnalyticsProfile(
           targetLanguage: PLanguageStore.byLangCode(targetLangCode),
           baseLanguage: LanguageService.systemLanguage,
