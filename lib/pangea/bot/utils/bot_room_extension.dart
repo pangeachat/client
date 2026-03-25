@@ -61,4 +61,22 @@ extension BotRoomExtension on Room {
       }
     }
   }
+
+  Future<void> sendRegenerationRequest(String eventId, {String? reason}) =>
+      sendEvent({
+        "m.relates_to": {
+          "rel_type": PangeaEventTypes.regenerationRequest,
+          "event_id": eventId,
+        },
+        PangeaEventTypes.regenerationRequest: {"reason": reason},
+      }, type: PangeaEventTypes.regenerationRequest);
+
+  Future<void> sendNotificationOpenedEvent(
+    String eventId, {
+    String? checkInType,
+  }) => sendEvent({
+    'notification_event_id': eventId,
+    'check_in_type': checkInType,
+    'opened_at_ts': DateTime.now().millisecondsSinceEpoch,
+  }, type: PangeaEventTypes.botNotificationOpened);
 }

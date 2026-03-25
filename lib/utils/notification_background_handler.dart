@@ -9,6 +9,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/notifications/notification_tap_utils.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -120,23 +121,31 @@ Future<void> notificationTap(
       final roomId = payload.roomId;
       if (roomId == null) return;
 
-      if (router == null) {
-        Logs().v('Ignore select notification action in background mode');
-        return;
-      }
-      Logs().v('Open room from notification tap', roomId);
-      await client.roomsLoading;
-      await client.accountDataLoading;
-      if (client.getRoomById(roomId) == null) {
-        await client
-            .waitForRoomInSync(roomId)
-            .timeout(const Duration(seconds: 30));
-      }
-      router.go(
-        client.getRoomById(roomId)?.membership == Membership.invite
-            ? '/rooms'
-            : '/rooms/$roomId',
+      // #Pangea
+      // if (router == null) {
+      //   Logs().v('Ignore select notification action in background mode');
+      //   return;
+      // }
+      // Logs().v('Open room from notification tap', roomId);
+      // await client.roomsLoading;
+      // await client.accountDataLoading;
+      // if (client.getRoomById(roomId) == null) {
+      //   await client
+      //       .waitForRoomInSync(roomId)
+      //       .timeout(const Duration(seconds: 30));
+      // }
+      // router.go(
+      //   client.getRoomById(roomId)?.membership == Membership.invite
+      //       ? '/rooms'
+      //       : '/rooms/$roomId',
+      // );
+      await NotificationTapUtil.handleNotificationTap(
+        client: client,
+        roomId: roomId,
+        notification: payload.additionalData,
+        router: router,
       );
+    // Pangea#
     case NotificationResponseType.selectedNotificationAction:
       final actionType = FluffyChatNotificationActions.values.singleWhereOrNull(
         (action) => action.name == notificationResponse.actionId,

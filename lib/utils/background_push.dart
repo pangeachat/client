@@ -36,11 +36,11 @@ import 'package:unifiedpush_ui/unifiedpush_ui.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/main.dart';
-import 'package:fluffychat/pangea/bot/utils/bot_notification_tap_utils.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/pangea/notifications/notification_tap_utils.dart';
 import 'package:fluffychat/utils/notification_background_handler.dart';
 import 'package:fluffychat/utils/push_helper.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
@@ -204,14 +204,10 @@ class BackgroundPush {
     // Early return if no room_id.
     final roomId = message?.data['room_id'];
     if (roomId is! String || roomId.isEmpty) return;
-
-    await handleBotNotificationTap(
+    await NotificationTapUtil.handleNotificationTap(
       client: client,
       roomId: roomId,
-      notificationEventId: message?.data['event_id'] as String?,
-      checkInType: message?.data[notificationOpenedCheckInTypeKey] as String?,
-      sessionRoomId: message?.data[notificationOpenedSessionIdKey] as String?,
-      activityId: message?.data[notificationOpenedActivityIdKey] as String?,
+      notification: message?.data,
       router: FluffyChatApp.router,
     );
   }
