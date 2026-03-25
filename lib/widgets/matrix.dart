@@ -598,11 +598,21 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   // #Pangea
   Future<void> _processIncomingUris(Uri? uri) async {
-    if (uri == null || uri.fragment.isEmpty) return;
+    if (uri == null) return;
 
-    final path = uri.fragment.startsWith('/')
-        ? uri.fragment
-        : '/${uri.fragment}';
+    String path;
+    if (uri.fragment.isNotEmpty) {
+      path = uri.fragment.startsWith('/') ? uri.fragment : '/${uri.fragment}';
+    } else {
+      final query = uri.queryParameters;
+      final queryString = query.entries
+          .map((e) => '${e.key}=${e.value}')
+          .join('&');
+      path = '/${uri.pathSegments.join('/')}';
+      if (queryString.isNotEmpty) {
+        path = '$path?$queryString';
+      }
+    }
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       FluffyChatApp.router.go(path);

@@ -496,6 +496,7 @@ class ChatListController extends State<ChatList>
   }
 
   //#Pangea
+  StreamSubscription? _spaceCodeSubscription;
   StreamSubscription? _invitedSpaceSubscription;
   StreamSubscription? _roomCapacitySubscription;
   //Pangea#
@@ -535,6 +536,12 @@ class ChatListController extends State<ChatList>
     });
 
     //#Pangea
+    _spaceCodeSubscription = SpaceCodeController.spaceCodeStream.stream.listen((
+      code,
+    ) {
+      SpaceCodeController.joinCachedSpaceCode(context);
+    });
+
     _invitedSpaceSubscription = Matrix.of(context).client.onSync.stream
         .where((event) => event.rooms?.invite != null)
         .listen(_onInviteSync);
@@ -653,6 +660,7 @@ class ChatListController extends State<ChatList>
     _intentFileStreamSubscription?.cancel();
     //#Pangea
     // _intentUriStreamSubscription?.cancel();
+    _spaceCodeSubscription?.cancel();
     _invitedSpaceSubscription?.cancel();
     _roomCapacitySubscription?.cancel();
     MatrixState.pangeaController.subscriptionController.subscriptionNotifier
