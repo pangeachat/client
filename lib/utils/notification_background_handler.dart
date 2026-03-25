@@ -67,6 +67,69 @@ Future<void> sendBotNotificationOpenedEvent({
   }
 }
 
+Future<void> handleBotNotificationTap({
+  required Client client,
+  required String roomId,
+  required String? notificationEventId,
+  required String? checkInType,
+  required String? sessionRoomId,
+  required String? activityId,
+  GoRouter? router,
+}) async {
+  unawaited(
+    sendBotNotificationOpenedEvent(
+      client: client,
+      roomId: roomId,
+      notificationEventId: notificationEventId,
+      checkInType: checkInType,
+    ),
+  );
+
+  if (router == null) {
+    Logs().v('Ignore select notification action in background mode');
+    return;
+  }
+
+  Logs().v('Open room from notification tap', roomId);
+  await client.roomsLoading;
+  await client.accountDataLoading;
+  if (client.getRoomById(roomId) == null) {
+    await client.waitForRoomInSync(roomId).timeout(const Duration(seconds: 30));
+  }
+
+  if (sessionRoomId != null &&
+      sessionRoomId.isNotEmpty &&
+      activityId != null &&
+      activityId.isNotEmpty) {
+    try {
+      final course = client.getRoomById(roomId);
+      if (course == null) return;
+
+      final session = client.getRoomById(sessionRoomId);
+      if (session?.membership == Membership.join) {
+        router.go('/rooms/$sessionRoomId');
+        return;
+      }
+
+      router.go(
+        '/rooms/spaces/$roomId/activity/$activityId?roomid=$sessionRoomId',
+      );
+      return;
+    } catch (err, s) {
+      ErrorHandler.logError(e: err, s: s, data: {'roomId': sessionRoomId});
+    }
+  }
+
+  final room = client.getRoomById(roomId);
+  if (room?.membership == Membership.invite) {
+    router.go('/rooms');
+  } else if (room?.isSpace == true) {
+    router.go('/rooms/spaces/$roomId');
+  } else {
+    router.go('/rooms/$roomId');
+  }
+}
+
 extension NotificationResponseJson on NotificationResponse {
   String toJsonString() => jsonEncode({
     'type': notificationResponseType.name,
@@ -168,73 +231,15 @@ Future<void> notificationTap(
       final roomId = payload.roomId;
       if (roomId == null) return;
 
-      final checkInType = payload.additionalData[notificationOpenedCheckInTypeKey];
-      unawaited(
-        sendBotNotificationOpenedEvent(
-          client: client,
-          roomId: roomId,
-          notificationEventId: payload.eventId,
-          checkInType: checkInType,
-        ),
+      await handleBotNotificationTap(
+        client: client,
+        roomId: roomId,
+        notificationEventId: payload.eventId,
+        checkInType: payload.additionalData[notificationOpenedCheckInTypeKey],
+        sessionRoomId: payload.additionalData[notificationOpenedSessionIdKey],
+        activityId: payload.additionalData[notificationOpenedActivityIdKey],
+        router: router,
       );
-
-      if (router == null) {
-        Logs().v('Ignore select notification action in background mode');
-        return;
-      }
-      Logs().v('Open room from notification tap', roomId);
-      await client.roomsLoading;
-      await client.accountDataLoading;
-      if (client.getRoomById(roomId) == null) {
-        await client
-            .waitForRoomInSync(roomId)
-            .timeout(const Duration(seconds: 30));
-      }
-
-      // #Pangea
-      final sessionRoomId =
-          payload.additionalData[notificationOpenedSessionIdKey];
-      final activityId =
-          payload.additionalData[notificationOpenedActivityIdKey];
-      if (sessionRoomId != null &&
-          sessionRoomId.isNotEmpty &&
-          activityId != null &&
-          activityId.isNotEmpty) {
-        try {
-          final course = client.getRoomById(roomId);
-          if (course == null) return;
-
-          final session = client.getRoomById(sessionRoomId);
-          if (session?.membership == Membership.join) {
-            router.go('/rooms/$sessionRoomId');
-            return;
-          }
-
-          router.go(
-            '/rooms/spaces/$roomId/activity/$activityId?roomid=$sessionRoomId',
-          );
-          return;
-        } catch (err, s) {
-          ErrorHandler.logError(e: err, s: s, data: {"roomId": sessionRoomId});
-        }
-      }
-      // Pangea#
-
-      // #Pangea
-      // router.go(
-      //   client.getRoomById(roomId)?.membership == Membership.invite
-      //       ? '/rooms'
-      //       : '/rooms/$roomId',
-      // );
-      final room = client.getRoomById(roomId);
-      if (room?.membership == Membership.invite) {
-        router.go('/rooms');
-      } else if (room?.isSpace == true) {
-        router.go('/rooms/spaces/$roomId');
-      } else {
-        router.go('/rooms/$roomId');
-      }
-    // Pangea#
     case NotificationResponseType.selectedNotificationAction:
       final actionType = FluffyChatNotificationActions.values.singleWhereOrNull(
         (action) => action.name == notificationResponse.actionId,
