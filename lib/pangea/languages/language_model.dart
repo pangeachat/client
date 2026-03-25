@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/languages/l2_support_enum.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
@@ -302,11 +303,7 @@ class LanguageModel {
       "zuDisplayName": l10n.zuDisplayName,
     };
 
-    final display = displayNameMap[langKey] ?? displayName;
-    if (langCode.contains('-') && localeEmoji != null) {
-      return "$display $localeEmoji";
-    }
-    return display;
+    return displayNameMap[langKey] ?? displayName;
   }
 
   String get langCodeShort => langCode.split('-').first;
@@ -320,6 +317,9 @@ class LanguageModel {
   TextDirection get textDirection {
     return _textDirection ?? _defaultTextDirection;
   }
+
+  Uri get svgUrl =>
+      Uri.parse("${AppConfig.assetsBaseURL}/language-flags/$langCode.svg");
 
   static bool search(
     LanguageModel? item,
