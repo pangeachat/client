@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_update_dispatcher.dart';
@@ -39,6 +40,8 @@ class AnalyticsUpdateService {
         _periodicTimer?.cancel();
         return;
       }
+      // Skip if user hasn't set their L2 yet (e.g., mid-onboarding)
+      if (_l2 == null) return;
       sendLocalAnalyticsToAnalyticsRoom();
     });
   }
@@ -100,6 +103,7 @@ class AnalyticsUpdateService {
         e: "No L2 language set for user",
         m: "Cannot send local analytics to analytics room",
         data: {"l2Override": l2Override},
+        level: SentryLevel.warning,
       );
       return;
     }
