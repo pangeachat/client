@@ -135,6 +135,11 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
       ],
     );
 
+    // Disable feedback and dragging when the answer is correct to prevent unnecessary interactions
+    if (isCorrect == true) {
+      return content;
+    }
+
     return Draggable<PracticeChoice>(
       data: widget.constructForm,
       feedback: Material(type: MaterialType.transparency, child: content),
