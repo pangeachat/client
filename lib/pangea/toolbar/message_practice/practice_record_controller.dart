@@ -12,8 +12,17 @@ class PracticeRecordController {
   static PracticeRecord _recordByTarget(PracticeTarget target) =>
       PracticeRecordRepo.get(target);
 
-  static bool hasResponse(PracticeTarget target) =>
+  static bool hasAnyResponse(PracticeTarget target) =>
       _recordByTarget(target).responses.isNotEmpty;
+
+  static bool hasResponse(
+    PracticeTarget target,
+    PangeaToken token,
+    String choice,
+  ) {
+    final cId = target.targetTokenConstructID(token);
+    return _recordByTarget(target).alreadyHasMatchResponse(cId, choice);
+  }
 
   static ActivityRecordResponse? lastResponse(PracticeTarget target) {
     final record = _recordByTarget(target);
@@ -88,8 +97,7 @@ class PracticeRecordController {
     final target = activity.practiceTarget;
     final record = _recordByTarget(target);
     final cId = target.targetTokenConstructID(token);
-    if (isCompleteByTarget(target) ||
-        record.alreadyHasMatchResponse(cId, choice)) {
+    if (record.alreadyHasMatchResponse(cId, choice)) {
       return false;
     }
 

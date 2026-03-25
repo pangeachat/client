@@ -61,7 +61,7 @@ class PracticeController with ChangeNotifier {
     if (_activity == null) return false;
     if (_activity is MorphMatchPracticeActivityModel) {
       return _selectedMorph != null &&
-          !PracticeRecordController.hasResponse(_activity!.practiceTarget);
+          !PracticeRecordController.hasAnyResponse(_activity!.practiceTarget);
     }
 
     return _selectedChoice == null &&
@@ -157,9 +157,12 @@ class PracticeController with ChangeNotifier {
     if (activity == null) return;
 
     final target = activity.practiceTarget;
-    final isComplete = PracticeRecordController.isCompleteByTarget(target);
-    final isRepeatedResponse = PracticeRecordController.hasResponse(target);
-    if (isComplete || isRepeatedResponse) return;
+    final isRepeatedResponse = PracticeRecordController.hasResponse(
+      target,
+      token,
+      choice.choiceContent,
+    );
+    if (isRepeatedResponse) return;
 
     final isCorrect = PracticeRecordController.onSelectChoice(
       choice.choiceContent,
