@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 import 'dart:isolate';
 import 'dart:ui';
@@ -10,9 +9,6 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-// #Pangea
-import 'package:fluffychat/utils/bot_notification_tap_utils.dart';
-// Pangea#
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -120,21 +116,27 @@ Future<void> notificationTap(
     notificationResponse.payload ?? '',
   );
   switch (notificationResponse.notificationResponseType) {
-    // #Pangea
     case NotificationResponseType.selectedNotification:
       final roomId = payload.roomId;
       if (roomId == null) return;
 
-      await handleBotNotificationTap(
-        client: client,
-        roomId: roomId,
-        notificationEventId: payload.eventId,
-        checkInType: payload.additionalData[notificationOpenedCheckInTypeKey],
-        sessionRoomId: payload.additionalData[notificationOpenedSessionIdKey],
-        activityId: payload.additionalData[notificationOpenedActivityIdKey],
-        router: router,
+      if (router == null) {
+        Logs().v('Ignore select notification action in background mode');
+        return;
+      }
+      Logs().v('Open room from notification tap', roomId);
+      await client.roomsLoading;
+      await client.accountDataLoading;
+      if (client.getRoomById(roomId) == null) {
+        await client
+            .waitForRoomInSync(roomId)
+            .timeout(const Duration(seconds: 30));
+      }
+      router.go(
+        client.getRoomById(roomId)?.membership == Membership.invite
+            ? '/rooms'
+            : '/rooms/$roomId',
       );
-    // Pangea#
     case NotificationResponseType.selectedNotificationAction:
       final actionType = FluffyChatNotificationActions.values.singleWhereOrNull(
         (action) => action.name == notificationResponse.actionId,
