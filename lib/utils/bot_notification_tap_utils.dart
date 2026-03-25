@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 
+// #Pangea
 const notificationOpenedCheckInTypeKey = 'content_check_in_type';
 const notificationOpenedSessionIdKey =
     'content_pangea.activity.session_room_id';
@@ -113,3 +114,5 @@ Future<void> handleBotNotificationTap({
     router.go('/rooms/$roomId');
   }
 }
+
+// Pangea#

@@ -40,7 +40,9 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
+// #Pangea
 import 'package:fluffychat/utils/bot_notification_tap_utils.dart';
+// Pangea#
 import 'package:fluffychat/utils/notification_background_handler.dart';
 import 'package:fluffychat/utils/push_helper.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
@@ -200,6 +202,7 @@ class BackgroundPush {
   }
 
   Future<void> _onOpenNotification(RemoteMessage? message) async {
+    // #Pangea
     // Early return if no room_id.
     final roomId = message?.data['room_id'];
     if (roomId is! String || roomId.isEmpty) return;
@@ -213,8 +216,8 @@ class BackgroundPush {
       activityId: message?.data[notificationOpenedActivityIdKey] as String?,
       router: FluffyChatApp.router,
     );
+    // Pangea#
   }
-  // Pangea#
 
   factory BackgroundPush.clientOnly(Client client) {
     return _instance ??= BackgroundPush._(client);
