@@ -10,6 +10,7 @@ import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/join_codes/knock_space_extension.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
@@ -21,6 +22,15 @@ import '../common/controllers/base_controller.dart';
 class NotFoundException implements Exception {}
 
 class SpaceCodeController extends BaseController {
+  static bool _joiningWithCode = false;
+
+  static StreamController spaceCodeStream = StreamController.broadcast();
+
+  static Future<void> setSpaceCode(String code) async {
+    await SpaceCodeRepo.setSpaceCode(code);
+    spaceCodeStream.add(code);
+  }
+
   static Future<String?> joinCachedSpaceCode(BuildContext context) async {
     final String? spaceCode = SpaceCodeRepo.spaceCode;
     if (spaceCode == null) return null;
@@ -44,6 +54,28 @@ class SpaceCodeController extends BaseController {
     String spaceCode, {
     String? notFoundError,
   }) async {
+    try {
+      return await _joinSpaceWithCode(
+        context,
+        spaceCode,
+        notFoundError: notFoundError,
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {"spaceCode": spaceCode});
+      return null;
+    } finally {
+      _joiningWithCode = false;
+    }
+  }
+
+  static Future<String?> _joinSpaceWithCode(
+    BuildContext context,
+    String spaceCode, {
+    String? notFoundError,
+  }) async {
+    if (_joiningWithCode) return null;
+    _joiningWithCode = true;
+
     final client = MatrixState.pangeaController.matrixState.client;
     await SpaceCodeRepo.setRecentCode(spaceCode);
 

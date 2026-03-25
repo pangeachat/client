@@ -227,6 +227,16 @@ abstract class AppRoutes {
         ),
       ),
     ),
+    GoRoute(
+      path: '/join',
+      pageBuilder: (context, state) => defaultPageBuilder(
+        context,
+        state,
+        JoinClassWithLink(
+          classCode: state.uri.queryParameters[SpaceConstants.classCode],
+        ),
+      ),
+    ),
     // Pangea#
     GoRoute(
       path: '/backup',
