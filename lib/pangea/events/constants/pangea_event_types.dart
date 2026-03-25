@@ -36,6 +36,7 @@ class PangeaEventTypes {
   static const analyticsSettings = "pangea.analytics_settings";
 
   static const regenerationRequest = "pangea.regeneration_request";
+  static const botNotificationOpened = "p.room.notice.opened";
 
   static const knockedRooms = 'org.pangea.knocked_rooms';
   static const notificationSettings = 'org.pangea.notification_settings';

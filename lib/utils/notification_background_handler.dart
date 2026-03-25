@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:isolate';
 import 'dart:ui';
@@ -9,6 +10,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/client_manager.dart';
@@ -19,6 +21,51 @@ import '../config/app_config.dart';
 import '../config/setting_keys.dart';
 
 bool _vodInitialized = false;
+
+const notificationOpenedCheckInTypeKey = 'content_check_in_type';
+const notificationOpenedSessionIdKey =
+    'content_pangea.activity.session_room_id';
+const notificationOpenedActivityIdKey = 'content_pangea.activity.id';
+
+Future<void> sendBotNotificationOpenedEvent({
+  required Client client,
+  required String roomId,
+  required String? notificationEventId,
+  required String? checkInType,
+}) async {
+  if (notificationEventId == null || notificationEventId.isEmpty) return;
+  if (checkInType == null || checkInType.isEmpty) return;
+
+  try {
+    await client.roomsLoading;
+    await client.accountDataLoading;
+
+    var room = client.getRoomById(roomId);
+    if (room == null) {
+      await client
+          .waitForRoomInSync(roomId)
+          .timeout(const Duration(seconds: 30));
+      room = client.getRoomById(roomId);
+    }
+    if (room == null) return;
+
+    await room.sendEvent({
+      'notification_event_id': notificationEventId,
+      'check_in_type': checkInType,
+      'opened_at_ts': DateTime.now().millisecondsSinceEpoch,
+    }, type: PangeaEventTypes.botNotificationOpened);
+  } catch (err, s) {
+    ErrorHandler.logError(
+      e: err,
+      s: s,
+      data: {
+        'roomId': roomId,
+        'notificationEventId': notificationEventId,
+        'checkInType': checkInType,
+      },
+    );
+  }
+}
 
 extension NotificationResponseJson on NotificationResponse {
   String toJsonString() => jsonEncode({
@@ -121,6 +168,16 @@ Future<void> notificationTap(
       final roomId = payload.roomId;
       if (roomId == null) return;
 
+      final checkInType = payload.additionalData[notificationOpenedCheckInTypeKey];
+      unawaited(
+        sendBotNotificationOpenedEvent(
+          client: client,
+          roomId: roomId,
+          notificationEventId: payload.eventId,
+          checkInType: checkInType,
+        ),
+      );
+
       if (router == null) {
         Logs().v('Ignore select notification action in background mode');
         return;
@@ -135,10 +192,10 @@ Future<void> notificationTap(
       }
 
       // #Pangea
-      const sessionIdKey = "content_pangea.activity.session_room_id";
-      const activityIdKey = "content_pangea.activity.id";
-      final sessionRoomId = payload.additionalData[sessionIdKey];
-      final activityId = payload.additionalData[activityIdKey];
+      final sessionRoomId =
+          payload.additionalData[notificationOpenedSessionIdKey];
+      final activityId =
+          payload.additionalData[notificationOpenedActivityIdKey];
       if (sessionRoomId != null &&
           sessionRoomId.isNotEmpty &&
           activityId != null &&

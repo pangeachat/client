@@ -264,15 +264,23 @@ class BackgroundPush {
   }
 
   Future<void> _onOpenNotification(RemoteMessage? message) async {
-    const sessionIdKey = "content_pangea.activity.session_room_id";
-    const activityIdKey = "content_pangea.activity.id";
-
     // Early return if no room_id.
     final roomId = message?.data['room_id'];
     if (roomId is! String || roomId.isEmpty) return;
 
-    final sessionRoomId = message?.data[sessionIdKey] as String?;
-    final activityId = message?.data[activityIdKey] as String?;
+    unawaited(
+      sendBotNotificationOpenedEvent(
+        client: client,
+        roomId: roomId,
+        notificationEventId: message?.data['event_id'] as String?,
+        checkInType: message?.data[notificationOpenedCheckInTypeKey] as String?,
+      ),
+    );
+
+    final sessionRoomId =
+        message?.data[notificationOpenedSessionIdKey] as String?;
+    final activityId =
+        message?.data[notificationOpenedActivityIdKey] as String?;
 
     await _navigateToActivityOrRoom(
       roomId: roomId,
