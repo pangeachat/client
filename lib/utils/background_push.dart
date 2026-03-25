@@ -39,8 +39,8 @@ import 'package:fluffychat/main.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
-import 'package:fluffychat/pangea/join_codes/knock_room_extension.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/pangea/notifications/notification_tap_utils.dart';
 import 'package:fluffychat/utils/notification_background_handler.dart';
 import 'package:fluffychat/utils/push_helper.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
@@ -200,84 +200,15 @@ class BackgroundPush {
   }
 
   // #Pangea
-  // Helper to ensure a room is loaded or synced.
-  Future<Room?> _ensureRoomLoaded(String id, {Membership? membership}) async {
-    await client.roomsLoading;
-    await client.accountDataLoading;
-
-    var room = client.getRoomById(id);
-    if (room == null || (membership != null && room.membership != membership)) {
-      await client.waitForRoomInSync(id).timeout(const Duration(seconds: 30));
-      room = client.getRoomById(id);
-    }
-    return room;
-  }
-
-  // Navigate to activity session or fallback to room
-  Future<void> _navigateToActivityOrRoom({
-    required String roomId,
-    String? sessionRoomId,
-    String? activityId,
-  }) async {
-    Room? room = await _ensureRoomLoaded(roomId);
-    // Handle session room if provided.
-    if (sessionRoomId != null &&
-        sessionRoomId.isNotEmpty &&
-        activityId != null &&
-        activityId.isNotEmpty) {
-      try {
-        if (room == null) return;
-        final session = client.getRoomById(sessionRoomId);
-        if (session?.membership == Membership.join) {
-          FluffyChatApp.router.go('/rooms/$sessionRoomId');
-          return;
-        }
-
-        FluffyChatApp.router.go(
-          '/rooms/spaces/$roomId/activity/$activityId?roomid=$sessionRoomId',
-        );
-        return;
-      } catch (err, s) {
-        ErrorHandler.logError(e: err, s: s, data: {"roomId": sessionRoomId});
-      }
-    }
-
-    // Fallback: just open the original room.
-    try {
-      final hasKnocked = room?.hasKnocked;
-      if (hasKnocked == true) {
-        await room!.joinKnockedRoom();
-        room = await _ensureRoomLoaded(roomId, membership: Membership.join);
-      }
-
-      if (room == null || room.membership == Membership.invite) {
-        FluffyChatApp.router.go('/rooms');
-        return;
-      }
-
-      FluffyChatApp.router.go(
-        room.isSpace ? '/rooms/spaces/$roomId' : '/rooms/$roomId',
-      );
-    } catch (err, s) {
-      ErrorHandler.logError(e: err, s: s, data: {"roomId": roomId});
-    }
-  }
-
   Future<void> _onOpenNotification(RemoteMessage? message) async {
-    const sessionIdKey = "content_pangea.activity.session_room_id";
-    const activityIdKey = "content_pangea.activity.id";
-
     // Early return if no room_id.
     final roomId = message?.data['room_id'];
     if (roomId is! String || roomId.isEmpty) return;
-
-    final sessionRoomId = message?.data[sessionIdKey] as String?;
-    final activityId = message?.data[activityIdKey] as String?;
-
-    await _navigateToActivityOrRoom(
+    await NotificationTapUtil.handleNotificationTap(
+      client: client,
       roomId: roomId,
-      sessionRoomId: sessionRoomId,
-      activityId: activityId,
+      notification: message?.data,
+      router: FluffyChatApp.router,
     );
   }
   // Pangea#

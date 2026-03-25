@@ -35,6 +35,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_feedback.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
 import 'package:fluffychat/pangea/chat/chat_banner_controller.dart';
 import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
 import 'package:fluffychat/pangea/chat/widgets/level_up_banner.dart';
@@ -54,7 +55,6 @@ import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -2561,13 +2561,7 @@ class ChatController extends State<ChatPageWithRoom>
     clearSelectedEvents();
     await showFutureLoadingDialog(
       context: context,
-      future: () => room.sendEvent({
-        "m.relates_to": {
-          "rel_type": PangeaEventTypes.regenerationRequest,
-          "event_id": eventId,
-        },
-        PangeaEventTypes.regenerationRequest: {"reason": reason},
-      }, type: PangeaEventTypes.regenerationRequest),
+      future: () => room.sendRegenerationRequest(eventId, reason: reason),
     );
   }
   // Pangea#

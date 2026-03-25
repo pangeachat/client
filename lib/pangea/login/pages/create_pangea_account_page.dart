@@ -195,12 +195,11 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
             ),
           );
         }, waitForDataInSync: true),
-        if (targetLangCode != null)
-          MatrixState.pangeaController.userController.updateAnalyticsProfile(
-            targetLanguage: PLanguageStore.byLangCode(targetLangCode),
-            baseLanguage: LanguageService.systemLanguage,
-            level: 1,
-          ),
+        MatrixState.pangeaController.userController.updateAnalyticsProfile(
+          targetLanguage: PLanguageStore.byLangCode(targetLangCode),
+          baseLanguage: LanguageService.systemLanguage,
+          level: 1,
+        ),
       ];
 
       await Future.wait(updateFuture).timeout(
