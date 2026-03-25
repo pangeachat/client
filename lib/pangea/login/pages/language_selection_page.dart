@@ -9,6 +9,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/common/widgets/shrinkable_text.dart';
+import 'package:fluffychat/pangea/languages/language_display_name_widget.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
@@ -142,6 +143,10 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
     final theme = Theme.of(context);
     final languages = MatrixState.pangeaController.pLanguageStore.targetOptions;
     final isColumnMode = FluffyThemes.isColumnMode(context);
+    TextStyle textStyle = DefaultTextStyle.of(context).style;
+    textStyle = textStyle.merge(
+      isColumnMode ? theme.textTheme.bodyLarge : theme.textTheme.bodyMedium,
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -240,11 +245,12 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                                               horizontal: 8.0,
                                               vertical: 4.0,
                                             ),
-                                            label: Text(
-                                              l.getDisplayName(context),
-                                              style: isColumnMode
-                                                  ? theme.textTheme.bodyLarge
-                                                  : theme.textTheme.bodyMedium,
+                                            label: LanguageDisplayNameWidget(
+                                              l,
+                                              style: textStyle,
+                                              iconSize: isColumnMode
+                                                  ? 16.0
+                                                  : 12.0,
                                             ),
                                             onSelected: (selected) {
                                               _setSelectedLanguage(

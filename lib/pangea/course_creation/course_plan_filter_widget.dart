@@ -3,15 +3,13 @@ import 'package:flutter/material.dart';
 
 import 'package:dropdown_button2/dropdown_button2.dart';
 
-import 'package:fluffychat/pangea/common/widgets/dropdown_text_button.dart';
-
 class CoursePlanFilter<T> extends StatefulWidget {
   final T? value;
   final List<T> items;
 
   final void Function(T?) onChanged;
   final String defaultName;
-  final String Function(T) displayname;
+  final Widget Function(T) displayname;
 
   final bool enableSearch;
   final bool Function(DropdownMenuItem<T>, String)? searchMatchFn;
@@ -54,11 +52,12 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                widget.value != null
-                    ? widget.displayname(widget.value as T)
-                    : widget.defaultName,
-              ),
+              widget.value != null
+                  ? widget.displayname(widget.value as T)
+                  : Text(
+                      widget.defaultName,
+                      style: DefaultTextStyle.of(context).style,
+                    ),
               const Icon(Icons.arrow_drop_down),
             ],
           ),
@@ -68,11 +67,20 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
             .map(
               (item) => DropdownMenuItem(
                 value: item,
-                child: DropdownTextButton(
-                  text: item != null
+                child: Container(
+                  color: item == widget.value
+                      ? Theme.of(context).colorScheme.primary.withAlpha(20)
+                      : Colors.transparent,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 12,
+                    horizontal: 12,
+                  ),
+                  child: item != null
                       ? widget.displayname(item)
-                      : widget.defaultName,
-                  isSelected: item == widget.value,
+                      : Text(
+                          widget.defaultName,
+                          style: DefaultTextStyle.of(context).style,
+                        ),
                 ),
               ),
             )
