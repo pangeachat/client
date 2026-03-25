@@ -121,6 +121,7 @@ class UserController {
   Future<void> updateProfile(
     Profile Function(Profile) update, {
     waitForDataInSync = false,
+    overrideIdenticalLanguageCheck = false,
   }) async {
     await initialize();
     final prevHash = profile.hashCode;
@@ -134,7 +135,8 @@ class UserController {
         ?.split("-")
         .first;
 
-    if (sourceCodeShort != null &&
+    if (!overrideIdenticalLanguageCheck &&
+        sourceCodeShort != null &&
         targetCodeShort != null &&
         sourceCodeShort == targetCodeShort) {
       throw IdenticalLanguageException();
