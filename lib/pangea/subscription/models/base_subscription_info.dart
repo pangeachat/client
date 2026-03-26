@@ -42,6 +42,9 @@ class CurrentSubscriptionInfo {
       expirationDate != null &&
       expirationDate!.isAfter(DateTime(2100));
 
+  bool get isFreeTrial =>
+      currentSubscriptionIsPromotional && currentSubscription?.appId == "trial";
+
   String? get purchasePlatformDisplayName {
     if (currentSubscription?.appId == null) return null;
     return availableSubscriptionInfo.appIds?.appDisplayName(

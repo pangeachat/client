@@ -18,83 +18,14 @@ class SettingsSubscriptionView extends StatelessWidget {
   Widget build(BuildContext context) {
     final clickedCancelDate =
         SubscriptionManagementRepo.getClickedCancelSubscription();
-    final List<Widget> managementButtons = [
-      if (controller.currentSubscriptionAvailable)
-        ListTile(
-          title: Text(L10n.of(context).currentSubscription),
-          subtitle: Text(controller.currentSubscriptionTitle),
-          trailing: Text(controller.currentSubscriptionPrice),
-        ),
-      Column(
-        children: [
-          ListTile(
-            title: Text(
-              controller.subscriptionEndDate == null
-                  ? L10n.of(context).cancelSubscription
-                  : L10n.of(context).enabledRenewal,
-            ),
-            enabled: controller.showManagementOptions,
-            onTap: controller.onClickCancelSubscription,
-            trailing: Icon(
-              controller.subscriptionEndDate == null
-                  ? Icons.cancel_outlined
-                  : Icons.refresh_outlined,
-            ),
-          ),
-          const Divider(height: 1),
-          ListTile(
-            title: Text(L10n.of(context).paymentMethod),
-            trailing: const Icon(Icons.credit_card),
-            onTap: () =>
-                controller.launchMangementUrl(ManagementOption.paymentMethod),
-            enabled: controller.showManagementOptions,
-          ),
-          ListTile(
-            title: Text(L10n.of(context).paymentHistory),
-            trailing: const Icon(Icons.keyboard_arrow_right_outlined),
-            onTap: () =>
-                controller.launchMangementUrl(ManagementOption.history),
-            enabled: controller.showManagementOptions,
-          ),
-          if (controller.expirationDate != null) ...[
-            const Divider(height: 1),
-            ListTile(
-              title: Text(
-                controller.subscriptionEndDate != null
-                    ? L10n.of(context).subscriptionEndsOn
-                    : L10n.of(context).subscriptionRenewsOn,
-              ),
-              subtitle: Text(
-                DateFormat.yMMMMd().format(
-                  controller.expirationDate!.toLocal(),
-                ),
-              ),
-            ),
-            if (clickedCancelDate != null &&
-                DateTime.now().difference(clickedCancelDate).inMinutes < 10)
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Row(
-                  spacing: 8.0,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(Icons.info_outline, size: 20),
-                    Flexible(
-                      child: Text(
-                        L10n.of(context).waitForSubscriptionChanges,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(fontStyle: FontStyle.italic),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-          ],
-        ],
-      ),
-    ];
 
     final isSubscribed = controller.subscriptionController.isSubscribed;
+    final hasFreeTrial =
+        controller
+            .subscriptionController
+            .currentSubscriptionInfo
+            ?.isFreeTrial ==
+        true;
 
     return Scaffold(
       appBar: AppBar(
@@ -110,9 +41,90 @@ class SettingsSubscriptionView extends StatelessWidget {
                 const Center(child: CircularProgressIndicator.adaptive())
               else if (isSubscribed && !controller.showManagementOptions)
                 ManagementNotAvailableWarning(controller: controller)
-              else if (isSubscribed && controller.showManagementOptions)
-                ...managementButtons
-              else
+              else if (isSubscribed && controller.showManagementOptions) ...[
+                if (controller.currentSubscriptionAvailable)
+                  ListTile(
+                    title: Text(L10n.of(context).currentSubscription),
+                    subtitle: Text(controller.currentSubscriptionTitle),
+                    trailing: Text(controller.currentSubscriptionPrice),
+                  ),
+                Column(
+                  children: [
+                    ListTile(
+                      title: Text(
+                        controller.subscriptionEndDate == null
+                            ? L10n.of(context).cancelSubscription
+                            : L10n.of(context).enabledRenewal,
+                      ),
+                      enabled: controller.showManagementOptions,
+                      onTap: controller.onClickCancelSubscription,
+                      trailing: Icon(
+                        controller.subscriptionEndDate == null
+                            ? Icons.cancel_outlined
+                            : Icons.refresh_outlined,
+                      ),
+                    ),
+                    const Divider(height: 1),
+                    ListTile(
+                      title: Text(L10n.of(context).paymentMethod),
+                      trailing: const Icon(Icons.credit_card),
+                      onTap: () => controller.launchMangementUrl(
+                        ManagementOption.paymentMethod,
+                      ),
+                      enabled: controller.showManagementOptions,
+                    ),
+                    ListTile(
+                      title: Text(L10n.of(context).paymentHistory),
+                      trailing: const Icon(Icons.keyboard_arrow_right_outlined),
+                      onTap: () => controller.launchMangementUrl(
+                        ManagementOption.history,
+                      ),
+                      enabled: controller.showManagementOptions,
+                    ),
+                    if (controller.expirationDate != null) ...[
+                      const Divider(height: 1),
+                      ListTile(
+                        title: Text(
+                          controller.subscriptionEndDate != null
+                              ? L10n.of(context).subscriptionEndsOn
+                              : L10n.of(context).subscriptionRenewsOn,
+                        ),
+                        subtitle: Text(
+                          DateFormat.yMMMMd().format(
+                            controller.expirationDate!.toLocal(),
+                          ),
+                        ),
+                      ),
+                      if (clickedCancelDate != null &&
+                          DateTime.now()
+                                  .difference(clickedCancelDate)
+                                  .inMinutes <
+                              10)
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Row(
+                            spacing: 8.0,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(Icons.info_outline, size: 20),
+                              Flexible(
+                                child: Text(
+                                  L10n.of(context).waitForSubscriptionChanges,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                    ],
+                  ],
+                ),
+              ],
+              if (hasFreeTrial) ...[Divider(), SizedBox(height: 16.0)],
+              if (isSubscribed == false || hasFreeTrial)
                 ChangeSubscription(controller: controller),
             ],
           ),
