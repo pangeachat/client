@@ -18,6 +18,7 @@ import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/login/utils/lang_code_repo.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CreatePangeaAccountPage extends StatefulWidget {
@@ -76,7 +77,12 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
 
     GetLocalizedCoursesRequest? request;
     try {
-      final spaceId = await SpaceCodeController.joinCachedSpaceCode(context);
+      final result = await SpaceCodeController.joinCachedSpaceCode(
+        context: context,
+        client: Matrix.of(context).client,
+        showLoading: false,
+      );
+      final spaceId = result.result;
       if (spaceId == null) {
         throw Exception('Failed to join space with code $_cachedSpaceCode');
       }

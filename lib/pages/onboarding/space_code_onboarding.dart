@@ -7,6 +7,7 @@ import 'package:fluffychat/pages/onboarding/space_code_onboarding_view.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SpaceCodeOnboarding extends StatefulWidget {
@@ -60,7 +61,13 @@ class SpaceCodeOnboardingState extends State<SpaceCodeOnboarding> {
       debugPrint("Text input is not a URL: $e");
     }
 
-    final roomId = await SpaceCodeController.joinSpaceWithCode(context, code);
+    final result = await SpaceCodeController.joinSpaceWithCode(
+      code,
+      context: context,
+      client: client,
+    );
+
+    final roomId = result.result;
     if (roomId != null) {
       final room = Matrix.of(context).client.getRoomById(roomId);
       room?.isSpace ?? true

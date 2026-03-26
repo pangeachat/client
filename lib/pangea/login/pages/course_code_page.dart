@@ -7,6 +7,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CourseCodePage extends StatefulWidget {
@@ -38,8 +39,12 @@ class CourseCodePageState extends State<CourseCodePage> {
       return;
     }
 
-    final roomId = await SpaceCodeController.joinSpaceWithCode(context, _code);
-
+    final result = await SpaceCodeController.joinSpaceWithCode(
+      _code,
+      context: context,
+      client: Matrix.of(context).client,
+    );
+    final roomId = result.result;
     if (roomId != null) {
       final room = Matrix.of(context).client.getRoomById(roomId);
       room?.isSpace ?? true
