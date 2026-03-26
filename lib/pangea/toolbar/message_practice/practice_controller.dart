@@ -104,6 +104,12 @@ class PracticeController with ChangeNotifier {
           .every((a) => PracticeRecordController.isCompleteByTarget(a)) ==
       true;
 
+  bool isActivityCompleteByToken(PangeaToken token) {
+    final target = practiceTargetForToken(token);
+    if (target == null) return false;
+    return PracticeRecordController.isCompleteByTarget(target);
+  }
+
   bool isPracticeButtonEmpty(PangeaToken token) {
     final target = practiceTargetForToken(token);
     switch (_practiceMode) {
