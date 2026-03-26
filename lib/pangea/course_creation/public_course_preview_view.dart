@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_creation/public_course_preview.dart';
+import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_model.dart';
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/course_settings/pin_clipper.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
@@ -71,7 +72,7 @@ class PublicCoursePreviewView extends StatelessWidget {
                           right: 12.0,
                         ),
                         child: ListView.builder(
-                          itemCount: course.topicIds.length + 2,
+                          itemCount: 2,
                           itemBuilder: (context, index) {
                             if (index == 0) {
                               return Column(
@@ -153,85 +154,102 @@ class PublicCoursePreviewView extends StatelessWidget {
                               );
                             }
 
-                            index--;
-
-                            if (index >= course.topicIds.length) {
-                              return const SizedBox(height: 12.0);
-                            }
-
-                            final topicId = course.topicIds[index];
-                            final topic = course.loadedTopics[topicId];
-
-                            if (topic == null) {
-                              return const SizedBox();
-                            }
-
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 4.0,
-                              ),
-                              child: Row(
-                                spacing: 8.0,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  ClipPath(
-                                    clipper: PinClipper(),
-                                    child: ImageByUrl(
-                                      imageUrl: topic.imageUrl,
-                                      width: 45.0,
-                                      replacement: Container(
-                                        width: 45.0,
-                                        height: 45.0,
-                                        decoration: BoxDecoration(
-                                          color: theme.colorScheme.secondary,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Flexible(
-                                    child: Column(
-                                      spacing: 4.0,
-                                      mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          topic.title,
-                                          style: const TextStyle(
-                                            fontSize: titleFontSize,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsGeometry.symmetric(
-                                                vertical: 2.0,
+                            return course.topicListComplete
+                                ? Column(
+                                    children: [
+                                      ...course.topicIds
+                                          .map((id) => course.loadedTopics[id])
+                                          .whereType<CourseTopicModel>()
+                                          .map(
+                                            (topic) => Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    vertical: 4.0,
+                                                  ),
+                                              child: Row(
+                                                spacing: 8.0,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  ClipPath(
+                                                    clipper: PinClipper(),
+                                                    child: ImageByUrl(
+                                                      imageUrl: topic.imageUrl,
+                                                      width: 45.0,
+                                                      replacement: Container(
+                                                        width: 45.0,
+                                                        height: 45.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                              color: theme
+                                                                  .colorScheme
+                                                                  .secondary,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Flexible(
+                                                    child: Column(
+                                                      spacing: 4.0,
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          topic.title,
+                                                          style: const TextStyle(
+                                                            fontSize:
+                                                                titleFontSize,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsGeometry.symmetric(
+                                                                vertical: 2.0,
+                                                              ),
+                                                          child: Row(
+                                                            spacing: 8.0,
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            children: [
+                                                              if (topic
+                                                                      .location !=
+                                                                  null)
+                                                                CourseInfoChip(
+                                                                  icon: Icons
+                                                                      .location_on,
+                                                                  text: topic
+                                                                      .location!,
+                                                                  fontSize:
+                                                                      descFontSize,
+                                                                  iconSize:
+                                                                      smallIconSize,
+                                                                ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          topic.description,
+                                                          style: const TextStyle(
+                                                            fontSize:
+                                                                descFontSize,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                          child: Row(
-                                            spacing: 8.0,
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              if (topic.location != null)
-                                                CourseInfoChip(
-                                                  icon: Icons.location_on,
-                                                  text: topic.location!,
-                                                  fontSize: descFontSize,
-                                                  iconSize: smallIconSize,
-                                                ),
-                                            ],
+                                            ),
                                           ),
-                                        ),
-                                        Text(
-                                          topic.description,
-                                          style: const TextStyle(
-                                            fontSize: descFontSize,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
+                                    ],
+                                  )
+                                : Center(
+                                    child: CircularProgressIndicator.adaptive(),
+                                  );
                           },
                         ),
                       ),
