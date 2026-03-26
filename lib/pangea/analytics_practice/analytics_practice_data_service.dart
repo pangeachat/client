@@ -148,19 +148,19 @@ class AnalyticsPracticeDataService {
     final eventId = activity.eventId;
     final roomId = activity.roomId;
     if (eventId == null || roomId == null) {
-      throw Exception();
+      throw Exception("Missing eventId or roomId in _prefetchAudioInfo");
     }
 
     final client = MatrixState.pangeaController.matrixState.client;
     final room = client.getRoomById(roomId);
 
     if (room == null) {
-      throw Exception();
+      throw Exception("Room not found in _prefetchAudioInfo");
     }
 
     final event = await room.getEventById(eventId);
     if (event == null) {
-      throw Exception();
+      throw Exception("Event not found in _prefetchAudioInfo");
     }
 
     final pangeaEvent = PangeaMessageEvent(
@@ -169,6 +169,11 @@ class AnalyticsPracticeDataService {
       ownMessage: event.senderId == client.userID,
     );
 
+    final tokens = pangeaEvent.originalSent?.tokens;
+    if (tokens == null || tokens.length > 25) {
+      throw Exception("Too many tokens in _prefetchAudioInfo");
+    }
+
     // Prefetch the audio file
     final audioFile = await pangeaEvent.requestTextToSpeech(
       activity.langCode,
@@ -176,7 +181,7 @@ class AnalyticsPracticeDataService {
     );
 
     if (audioFile.duration == null || audioFile.duration! <= 2000) {
-      throw "Audio file too short";
+      throw Exception("Audio file too short");
     }
 
     // Prefetch the translation
@@ -198,7 +203,7 @@ class AnalyticsPracticeDataService {
       final res = await cId.getLemmaInfo({});
       if (res.isError) {
         LemmaInfoRepo.clearCache(cId.lemmaInfoRequest({}));
-        throw Exception();
+        throw Exception("Failed to fetch lemma info for id $id");
       }
 
       texts[id] = res.result!.meaning;

@@ -150,7 +150,7 @@ class PracticeSessionController {
 
     if (result.isError ||
         result.result is! MultipleChoicePracticeActivityModel) {
-      throw Exception();
+      throw result.error ?? Exception("Failed to fetch activity");
     }
 
     final activityModel = result.result as MultipleChoicePracticeActivityModel;
