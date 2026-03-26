@@ -84,6 +84,7 @@ class MessageMorphInputBarContentState
         ? 8.0
         : 4.0;
 
+    final activityComplete = widget.controller.isActivityCompleteByToken(token);
     return Column(
       spacing: spacing,
       children: [
@@ -124,6 +125,7 @@ class MessageMorphInputBarContentState
               isSelected: selectedTag == choice,
               isCorrect: wasCorrect,
               child: MessageMorphChoiceItem(
+                enabled: !activityComplete,
                 cId: ConstructIdentifier(
                   lemma: choice,
                   type: ConstructTypeEnum.morph,
