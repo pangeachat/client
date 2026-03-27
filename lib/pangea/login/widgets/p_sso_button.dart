@@ -37,6 +37,7 @@ class PangeaSsoButton extends StatelessWidget {
     await showFutureLoadingDialog(
       context: context,
       future: () => _ssoAction(token, context),
+      popOnSuccess: false,
     );
   }
 
