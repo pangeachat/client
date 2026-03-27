@@ -284,9 +284,10 @@ class ChatListViewBody extends StatelessWidget {
                   },
                 ),
               // #Pangea
-              SliverToBoxAdapter(
-                child: DMListTile(visible: !controller.isSearchMode),
-              ),
+              if (client.prevBatch != null)
+                SliverToBoxAdapter(
+                  child: DMListTile(visible: !controller.isSearchMode),
+                ),
               const SliverToBoxAdapter(child: SizedBox(height: 75.0)),
               // Pangea#
             ],
