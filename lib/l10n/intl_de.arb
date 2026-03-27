@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-03-27 14:39:56.843668",
+    "@@last_modified": "2026-03-27 15:03:43.319548",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10738,5 +10738,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Klicken Sie hier, um sich wieder anzumelden.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

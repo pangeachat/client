@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-03-27 14:40:39.758469",
+    "@@last_modified": "2026-03-27 15:04:13.317943",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10868,5 +10868,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Kliknij tutaj, aby ponownie się zalogować.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-03-27 14:39:27.158670",
+    "@@last_modified": "2026-03-27 15:03:22.515707",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7685,5 +7685,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Haga clic aquí para volver a iniciar sesión.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

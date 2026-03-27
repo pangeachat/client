@@ -1714,7 +1714,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-03-27 14:39:59.725659",
+    "@@last_modified": "2026-03-27 15:03:45.258004",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -11890,5 +11890,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "點擊這裡重新登入。",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

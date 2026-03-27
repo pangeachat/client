@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-03-27 14:40:44.779267",
+    "@@last_modified": "2026-03-27 15:04:17.826476",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11627,5 +11627,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "ここをクリックして再度サインインしてください。",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

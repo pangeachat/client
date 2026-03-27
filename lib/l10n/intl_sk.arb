@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-03-27 14:39:41.592452",
+    "@@last_modified": "2026-03-27 15:03:32.563771",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -11875,5 +11875,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Kliknite sem, aby ste sa znova prihlásili.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

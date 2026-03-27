@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-03-27 14:40:04.805515",
+    "@@last_modified": "2026-03-27 15:03:48.770828",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -11313,5 +11313,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Klikněte sem pro opětovné přihlášení.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

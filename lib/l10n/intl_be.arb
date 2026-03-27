@@ -4241,7 +4241,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-03-27 14:40:09.185452",
+    "@@last_modified": "2026-03-27 15:03:51.202481",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10773,5 +10773,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Націсніце тут, каб зноў увайсці.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-03-27 14:40:35.255529",
+    "@@last_modified": "2026-03-27 15:04:09.523997",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10759,5 +10759,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "点击这里重新登录。",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

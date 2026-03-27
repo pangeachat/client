@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-27 14:40:29.622328",
+    "@@last_modified": "2026-03-27 15:04:04.409456",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6674,5 +6674,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Nhấn vào đây để đăng nhập lại.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

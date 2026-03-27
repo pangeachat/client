@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-27 14:40:15.599233",
+    "@@last_modified": "2026-03-27 15:03:55.204961",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10889,5 +10889,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "點擊這裡重新登入。",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-27 14:39:39.946647",
+    "@@last_modified": "2026-03-27 15:03:30.800862",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11584,5 +11584,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Faceți clic aici pentru a vă reconecta.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

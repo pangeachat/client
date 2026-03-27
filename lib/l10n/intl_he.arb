@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-27 14:39:46.209449",
+    "@@last_modified": "2026-03-27 15:03:37.463284",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -11838,5 +11838,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "לחץ כאן כדי להיכנס שוב.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

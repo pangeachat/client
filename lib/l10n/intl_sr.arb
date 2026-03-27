@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-27 14:40:52.356787",
+    "@@last_modified": "2026-03-27 15:04:23.457781",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -11882,5 +11882,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Kliknite ovde da se ponovo prijavite.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

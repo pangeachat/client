@@ -3084,7 +3084,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-03-27 14:40:14.058831",
+    "@@last_modified": "2026-03-27 15:03:54.369913",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11835,5 +11835,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Clique aqui para fazer o login novamente.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

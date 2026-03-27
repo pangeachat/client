@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-27 14:40:31.261036",
+    "@@last_modified": "2026-03-27 15:04:06.249900",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10875,5 +10875,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "மீண்டும் உள்நுழைய இங்கே கிளிக் செய்யவும்.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

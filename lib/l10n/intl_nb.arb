@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-27 14:40:06.171279",
+    "@@last_modified": "2026-03-27 15:03:50.074213",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10819,5 +10819,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Klikk her for å logge inn igjen.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }
