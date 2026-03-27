@@ -1634,6 +1634,16 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void scrollToEventId(String eventId, {bool highlightEvent = true}) async {
+    // #Pangea
+    if (timeline == null) {
+      Sentry.addBreadcrumb(
+        Breadcrumb(
+          message: 'Timeline is null when trying to scroll to event ID',
+        ),
+      );
+      return;
+    }
+    // Pangea#
     final foundEvent = timeline!.events.firstWhereOrNull(
       (event) => event.eventId == eventId,
     );
