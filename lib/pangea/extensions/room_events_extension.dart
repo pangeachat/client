@@ -30,6 +30,7 @@ extension EventsRoomExtension on Room {
     required String parentEventId,
     required String type,
   }) async {
+    final initialMembership = membership;
     try {
       Sentry.addBreadcrumb(Breadcrumb(data: content));
       if (parentEventId.contains("Pangea Chat")) {
@@ -71,6 +72,8 @@ extension EventsRoomExtension on Room {
           "type": type,
           "parentEventId": parentEventId,
           "content": content,
+          "roomMembership": membership.name,
+          "initialMembership": initialMembership.name,
         },
       );
       return null;

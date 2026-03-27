@@ -49,6 +49,17 @@ Future<Result<T>> showFutureLoadingDialog<T>({
     }
   }
 
+  // #Pangea
+  if (!context.mounted) {
+    try {
+      final result = await futureExec;
+      return Result.value(result);
+    } catch (e, s) {
+      return Result.error(e, s);
+    }
+  }
+  // Pangea#
+
   final result = await showAdaptiveDialog<Result<T>>(
     context: context,
     barrierDismissible: barrierDismissible,
