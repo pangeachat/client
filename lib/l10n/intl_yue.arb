@@ -1714,7 +1714,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-03-17 11:49:53.669807",
+    "@@last_modified": "2026-03-27 14:39:59.725659",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -11878,5 +11878,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "這個課程有主題的活動少於 {input} 個。請輸入一個小於或等於 {minValue} 的數字。",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

@@ -3084,7 +3084,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-03-17 11:50:08.045510",
+    "@@last_modified": "2026-03-27 14:40:14.058831",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11823,5 +11823,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Este curso tem tópicos com menos de {input} atividades. Por favor, insira um número menor ou igual a {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

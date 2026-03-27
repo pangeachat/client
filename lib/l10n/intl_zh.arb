@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-03-17 11:50:32.440397",
+    "@@last_modified": "2026-03-27 14:40:35.255529",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10747,5 +10747,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "本课程有主题的活动少于 {input} 个。请您输入一个小于或等于 {minValue} 的数字。",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

@@ -4221,7 +4221,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-03-17 11:49:23.421120",
+    "@@last_modified": "2026-03-27 14:39:31.436280",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10796,5 +10796,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Tässä kurssissa on aiheita, joissa on alle {input} aktiviteettia. Ole hyvä ja syötä numero, joka on pienempi tai yhtä suuri kuin {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

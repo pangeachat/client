@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-03-17 11:50:43.089102",
+    "@@last_modified": "2026-03-27 14:40:44.779267",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11615,5 +11615,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "このコースには、{input} アクティビティ未満のトピックがあります。{minValue} 以下の数を入力してください。",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

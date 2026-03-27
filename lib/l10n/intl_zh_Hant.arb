@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-17 11:50:09.373342",
+    "@@last_modified": "2026-03-27 14:40:15.599233",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10877,5 +10877,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "這門課程有主題的活動數少於 {input}。請輸入一個小於或等於 {minValue} 的數字。",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

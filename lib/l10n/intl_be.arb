@@ -4241,7 +4241,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-03-17 11:50:02.640365",
+    "@@last_modified": "2026-03-27 14:40:09.185452",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10761,5 +10761,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Гэты курс мае тэмы з менш чым {input} актыўнасцямі. Калі ласка, увядзіце лік, які менш або роўны {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

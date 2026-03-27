@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-17 11:50:29.252545",
+    "@@last_modified": "2026-03-27 14:40:32.475102",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10747,5 +10747,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Deze cursus heeft onderwerpen met minder dan {input} activiteiten. Voer alstublieft een getal in dat kleiner is dan of gelijk aan {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

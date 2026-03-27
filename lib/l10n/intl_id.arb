@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-17 11:49:30.653818",
+    "@@last_modified": "2026-03-27 14:39:38.289083",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10844,5 +10844,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Kursus ini memiliki topik dengan kurang dari {input} aktivitas. Silakan masukkan angka yang kurang dari atau sama dengan {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-17 11:49:40.566275",
+    "@@last_modified": "2026-03-27 14:39:46.209449",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -11826,5 +11826,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "לקורס זה יש נושאים עם פחות מ-{input} פעילויות. אנא הזן מספר קטן או שווה ל-{minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

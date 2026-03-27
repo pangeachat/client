@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-17 11:50:00.904669",
+    "@@last_modified": "2026-03-27 14:40:06.171279",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10807,5 +10807,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Dette kurset har emner med færre enn {input} aktiviteter. Vennligst skriv inn et tall som er mindre enn eller lik {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

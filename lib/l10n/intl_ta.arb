@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-17 11:50:27.972552",
+    "@@last_modified": "2026-03-27 14:40:31.261036",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10863,5 +10863,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "இந்த பாடத்தில் {input} செயல்பாடுகளுக்கு குறைவான தலைப்புகள் உள்ளன. தயவுசெய்து {minValue} க்குக் குறைவான அல்லது சமமான எண் உள்ளிடவும்.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

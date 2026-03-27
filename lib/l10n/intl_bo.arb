@@ -3499,7 +3499,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-03-17 11:50:30.600983",
+    "@@last_modified": "2026-03-27 14:40:33.924005",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10413,5 +10413,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Dai kursi na tema zhi fuwi {input} fuwi. Plis enka numar zhi fuwi zhi fuwi {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-03-17 11:49:48.496568",
+    "@@last_modified": "2026-03-27 14:39:54.808145",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10744,5 +10744,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Selles kursuses on teemasid, kus on vähem kui {input} tegevust. Palun sisestage number, mis on väiksem või võrdne {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

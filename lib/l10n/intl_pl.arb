@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-03-17 11:50:37.251639",
+    "@@last_modified": "2026-03-27 14:40:39.758469",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10856,5 +10856,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Ten kurs ma tematy z mniej niż {input} aktywności. Proszę wprowadzić liczbę mniejszą lub równą {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

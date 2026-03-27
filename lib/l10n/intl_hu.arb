@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-03-17 11:49:28.002450",
+    "@@last_modified": "2026-03-27 14:39:36.254965",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10874,5 +10874,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Ez a kurzus olyan témákat tartalmaz, amelyek kevesebb mint {input} tevékenységgel rendelkeznek. Kérjük, adjon meg egy számot, amely kisebb vagy egyenlő {minValue}-val.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

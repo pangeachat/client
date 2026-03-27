@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-17 11:50:04.383644",
+    "@@last_modified": "2026-03-27 14:40:10.779323",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10898,5 +10898,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Aquest curs té temes amb menys de {input} activitats. Si us plau, introdueix un número menor o igual a {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

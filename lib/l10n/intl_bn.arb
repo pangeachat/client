@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-17 11:50:34.035367",
+    "@@last_modified": "2026-03-27 14:40:36.751034",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -11462,5 +11462,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "এই কোর্সে এমন বিষয় রয়েছে যার মধ্যে {input} এর চেয়ে কম কার্যক্রম রয়েছে। দয়া করে এমন একটি সংখ্যা প্রবেশ করুন যা {minValue} এর সমান বা তার কম।",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }
