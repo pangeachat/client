@@ -152,6 +152,8 @@ class SpaceDetailsContent extends StatelessWidget {
             context: context,
             title: L10n.of(context).activitiesToUnlockTopicTitle,
             keyboardType: TextInputType.number,
+            maxLength: 2,
+            maxLines: 1,
             validator: (input) {
               if (input.isEmpty ||
                   int.tryParse(input) == null ||
