@@ -113,16 +113,23 @@ class ChangeSubscription extends StatelessWidget {
                                           ),
                                           padding: const EdgeInsets.all(16.0),
                                           child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                            spacing: 4.0,
                                             children: [
-                                              Text(
-                                                L10n.of(context).startingToday,
+                                              Expanded(
+                                                flex: 3,
+                                                child: Text(
+                                                  L10n.of(
+                                                    context,
+                                                  ).startingToday,
+                                                ),
                                               ),
-                                              Text(
-                                                L10n.of(
-                                                  context,
-                                                ).oneWeekFreeTrial,
+                                              Expanded(
+                                                flex: 2,
+                                                child: Text(
+                                                  L10n.of(
+                                                    context,
+                                                  ).oneWeekFreeTrial,
+                                                ),
                                               ),
                                             ],
                                           ),
@@ -130,20 +137,25 @@ class ChangeSubscription extends StatelessWidget {
                                       Padding(
                                         padding: const EdgeInsets.all(16.0),
                                         child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
+                                          spacing: 4.0,
                                           children: [
-                                            Text(
-                                              L10n.of(
-                                                context,
-                                              ).paidSubscriptionStarts(
-                                                trialEnds,
+                                            Expanded(
+                                              flex: 3,
+                                              child: Text(
+                                                L10n.of(
+                                                  context,
+                                                ).paidSubscriptionStarts(
+                                                  trialEnds,
+                                                ),
                                               ),
                                             ),
-                                            Text(
-                                              "${subscription.displayPrice(context)}/${subscription.duration?.value}",
-                                              style: const TextStyle(
-                                                fontWeight: FontWeight.bold,
+                                            Expanded(
+                                              flex: 2,
+                                              child: Text(
+                                                "${subscription.displayPrice(context)}/${subscription.duration?.value}",
+                                                style: const TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                ),
                                               ),
                                             ),
                                           ],
