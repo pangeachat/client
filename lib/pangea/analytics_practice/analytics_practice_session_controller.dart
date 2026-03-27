@@ -19,7 +19,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class _PracticeQueueEntry {
   final MessageActivityRequest request;
-  final Completer<MultipleChoicePracticeActivityModel> completer;
+  final Completer<MultipleChoicePracticeActivityModel?> completer;
 
   _PracticeQueueEntry({required this.request, required this.completer});
 }
@@ -124,18 +124,16 @@ class PracticeSessionController {
     Future Function(MultipleChoicePracticeActivityModel) onFetch,
   ) async {
     for (final request in requests) {
-      final completer = Completer<MultipleChoicePracticeActivityModel>();
+      final completer = Completer<MultipleChoicePracticeActivityModel?>();
       _queue.add(_PracticeQueueEntry(request: request, completer: completer));
       _fetchActivity(request, onFetch)
           .then((activity) {
             activity != null
                 ? completer.complete(activity)
-                : completer.completeError(
-                    Exception("Failed to fetch activity"),
-                  );
+                : completer.complete(null);
           })
           .catchError((e, s) async {
-            completer.completeError(e);
+            completer.complete(null);
             await onSkip(request.target);
             return null;
           });
@@ -181,7 +179,9 @@ class PracticeSessionController {
 
       try {
         final activity = await nextActivityCompleter.completer.future;
-        return activity;
+        if (activity != null) {
+          return activity;
+        }
       } catch (e) {
         // Completer failed, skip to next
         continue;
