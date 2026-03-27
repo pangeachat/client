@@ -13,7 +13,6 @@ import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
-import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
 import 'package:fluffychat/pangea/user/public_profile_model.dart';
@@ -121,26 +120,10 @@ class UserController {
   Future<void> updateProfile(
     Profile Function(Profile) update, {
     waitForDataInSync = false,
-    overrideIdenticalLanguageCheck = false,
   }) async {
     await initialize();
     final prevHash = profile.hashCode;
-
     final Profile updatedProfile = update(profile);
-
-    final sourceCodeShort = updatedProfile.userSettings.sourceLanguage
-        ?.split("-")
-        .first;
-    final targetCodeShort = updatedProfile.userSettings.targetLanguage
-        ?.split("-")
-        .first;
-
-    if (!overrideIdenticalLanguageCheck &&
-        sourceCodeShort != null &&
-        targetCodeShort != null &&
-        sourceCodeShort == targetCodeShort) {
-      throw IdenticalLanguageException();
-    }
 
     if (updatedProfile.hashCode == prevHash) {
       // no changes were made, so don't save

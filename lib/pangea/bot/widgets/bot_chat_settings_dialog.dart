@@ -128,13 +128,21 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
     });
 
     await _update(
-      (model) => model.copyWith(
-        userSettings: model.userSettings.copyWith(
-          targetLanguage: lang.langCode,
-          voice: null,
-          setVoiceNull: true,
-        ),
-      ),
+      (model) {
+        final baseLang = model.userSettings.sourceLanguage?.split('-').first;
+        final targetLang = lang.langCodeShort;
+        if (baseLang != null && targetLang == baseLang) {
+          throw IdenticalLanguageException();
+        }
+
+        return model.copyWith(
+          userSettings: model.userSettings.copyWith(
+            targetLanguage: lang.langCode,
+            voice: null,
+            setVoiceNull: true,
+          ),
+        );
+      },
       () {
         if (mounted) {
           setState(() {
