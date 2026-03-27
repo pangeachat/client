@@ -255,7 +255,7 @@ class FindCoursePageState extends State<FindCoursePage> {
 
   void startNewCourse() {
     String route = "/rooms/course/own";
-    final targetLanguage = targetLanguageFilter.value?.langCodeShort;
+    final targetLanguage = targetLanguageFilter.value?.langCode;
     if (targetLanguage != null) {
       route += "?lang=${Uri.encodeComponent(targetLanguage)}";
     }
