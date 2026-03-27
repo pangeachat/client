@@ -2565,7 +2565,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-03-17 11:50:13.701102",
+    "@@last_modified": "2026-03-27 14:40:18.873824",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11766,5 +11766,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Ang kursong ito ay may mga paksa na may mas kaunti sa {input} na mga aktibidad. Mangyaring maglagay ng isang numero na mas mababa o katumbas ng {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

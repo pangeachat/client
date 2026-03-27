@@ -3553,7 +3553,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-03-17 11:50:24.795477",
+    "@@last_modified": "2026-03-27 14:40:28.370349",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11633,5 +11633,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Šiame kurse yra temų, turinčių mažiau nei {input} veiklų. Prašome įvesti skaičių, kuris yra mažesnis arba lygus {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

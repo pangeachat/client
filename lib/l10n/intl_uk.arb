@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-03-17 11:49:57.720895",
+    "@@last_modified": "2026-03-27 14:40:02.693964",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10747,5 +10747,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Цей курс має теми з менш ніж {input} активностями. Будь ласка, введіть число, менше або рівне {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

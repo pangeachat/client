@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-03-17 11:49:59.280563",
+    "@@last_modified": "2026-03-27 14:40:04.805515",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -11301,5 +11301,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Tento kurz má témata s méně než {input} aktivitami. Prosím, zadejte číslo menší nebo rovné {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

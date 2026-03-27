@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-17 11:50:26.258501",
+    "@@last_modified": "2026-03-27 14:40:29.622328",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6662,5 +6662,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Khóa học này có các chủ đề với ít hơn {input} hoạt động. Vui lòng nhập một số nhỏ hơn hoặc bằng {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

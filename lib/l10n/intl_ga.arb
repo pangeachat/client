@@ -4256,7 +4256,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-03-17 11:50:53.130811",
+    "@@last_modified": "2026-03-27 14:40:54.816756",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10758,5 +10758,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Tá ábhair sa chúrsa seo le níos lú ná {input} gníomhaíochtaí. Le do thoil, cuir isteach uimhir atá níos lú ná nó comhoiriúnach le {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

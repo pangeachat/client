@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-17 11:49:16.604299",
+    "@@last_modified": "2026-03-27 14:39:24.913745",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10964,5 +10964,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "이 과정에는 {input} 활동보다 적은 주제가 있습니다. {minValue} 이하의 숫자를 입력해 주세요.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

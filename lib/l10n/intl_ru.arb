@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-03-17 11:50:47.188108",
+    "@@last_modified": "2026-03-27 14:40:49.084493",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11761,5 +11761,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "В этом курсе есть темы с менее чем {input} активностями. Пожалуйста, введите число, меньшее или равное {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

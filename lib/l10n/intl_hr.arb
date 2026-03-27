@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-03-17 11:49:38.474795",
+    "@@last_modified": "2026-03-27 14:39:44.877222",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11231,5 +11231,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Ovaj tečaj ima teme s manje od {input} aktivnosti. Molimo unesite broj manji ili jednak {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

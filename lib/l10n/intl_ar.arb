@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-03-17 11:50:17.842348",
+    "@@last_modified": "2026-03-27 14:40:22.851444",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11087,5 +11087,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "تحتوي هذه الدورة على مواضيع بها أقل من {input} نشاطات. يرجى إدخال رقم أقل من أو يساوي {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

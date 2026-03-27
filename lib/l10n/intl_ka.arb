@@ -2406,7 +2406,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-03-17 11:50:49.436671",
+    "@@last_modified": "2026-03-27 14:40:50.928501",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11815,5 +11815,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "ამ კურსში თემებია, რომელთა აქტივობების რაოდენობა {input}-ზე ნაკლებია. გთხოვთ, შეიყვანოთ რიცხვი, რომელიც ნაკლებია ან თანაბარია {minValue}-ს.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

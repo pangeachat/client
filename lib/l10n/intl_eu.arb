@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-03-17 11:49:45.132090",
+    "@@last_modified": "2026-03-27 14:39:51.830069",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10747,5 +10747,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Ikastaro honek {input} jarduera baino gutxiago dituen gaiei buruzko ohartarazpen bat du. Mesedez, sartu {minValue} edo gutxiago den zenbaki bat.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

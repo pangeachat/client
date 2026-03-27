@@ -5032,5 +5032,17 @@
     }
   },
   "emailLoginMethod": "email",
-  "clickToAddEmail": "Click here to add an email address."
+  "clickToAddEmail": "Click here to add an email address.",
+  "minActivitiesPerTopicWarning": "This course has topics with fewer than {input} activities. Please enter a number less than or equal to {minValue}.",
+  "@minActivitiesPerTopicWarning": {
+    "type": "integer",
+    "placeholders": {
+      "input": {
+        "type": "int"
+      },
+      "minValue": {
+        "type": "int"
+      }
+    }
+  }
 }

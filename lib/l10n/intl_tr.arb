@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-03-17 11:50:19.732597",
+    "@@last_modified": "2026-03-27 14:40:24.801940",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11078,5 +11078,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Bu kursun {input} aktiviteden daha az aktiviteye sahip konuları var. Lütfen {minValue} veya daha az bir sayı girin.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

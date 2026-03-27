@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-17 11:49:55.151633",
+    "@@last_modified": "2026-03-27 14:40:01.255154",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10838,5 +10838,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Questo corso ha argomenti con meno di {input} attività. Si prega di inserire un numero minore o uguale a {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }

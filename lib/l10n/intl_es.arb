@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-03-17 11:49:19.101825",
+    "@@last_modified": "2026-03-27 14:39:27.158670",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7673,5 +7673,17 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
+    },
+    "minActivitiesPerTopicWarning": "Este curso tiene temas con menos de {input} actividades. Por favor, ingresa un número menor o igual a {minValue}.",
+    "@minActivitiesPerTopicWarning": {
+        "type": "integer",
+        "placeholders": {
+            "input": {
+                "type": "int"
+            },
+            "minValue": {
+                "type": "int"
+            }
+        }
     }
 }
