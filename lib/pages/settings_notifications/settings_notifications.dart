@@ -30,6 +30,15 @@ class SettingsNotifications extends StatefulWidget {
 
 class SettingsNotificationsController extends State<SettingsNotifications> {
   bool isLoading = false;
+  // #Pangea
+  ScaffoldMessengerState? messenger;
+
+  @override
+  void dispose() {
+    messenger?.hideCurrentSnackBar();
+    super.dispose();
+  }
+  // Pangea#
 
   void onPusherTap(Pusher pusher) async {
     final delete = await showModalActionPopup<bool>(
@@ -227,9 +236,9 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
   }
 
   void showNoEmailSnackbar() {
-    final messenger = ScaffoldMessenger.of(context);
-    messenger.hideCurrentSnackBar();
-    messenger.showSnackBar(
+    messenger ??= ScaffoldMessenger.of(context);
+    messenger!.hideCurrentSnackBar();
+    messenger!.showSnackBar(
       SnackBar(
         content: RichText(
           text: TextSpan(
@@ -242,7 +251,7 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
                 baseline: TextBaseline.alphabetic,
                 child: InkWell(
                   onTap: () {
-                    messenger.hideCurrentSnackBar();
+                    messenger!.hideCurrentSnackBar();
                     context.go("/rooms/settings/security/3pid");
                   },
                   child: Text(
