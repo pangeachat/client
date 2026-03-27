@@ -10,6 +10,7 @@ class CoursePlanFilter<T> extends StatefulWidget {
   final void Function(T?) onChanged;
   final String defaultName;
   final Widget Function(T) displayname;
+  final Widget Function(T)? selectedItemBuilder;
 
   final bool enableSearch;
   final bool Function(DropdownMenuItem<T>, String)? searchMatchFn;
@@ -21,6 +22,7 @@ class CoursePlanFilter<T> extends StatefulWidget {
     required this.onChanged,
     required this.defaultName,
     required this.displayname,
+    this.selectedItemBuilder,
     this.enableSearch = false,
     this.searchMatchFn,
   });
@@ -53,7 +55,9 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               widget.value != null
-                  ? widget.displayname(widget.value as T)
+                  ? (widget.selectedItemBuilder != null
+                        ? widget.selectedItemBuilder!(widget.value as T)
+                        : widget.displayname(widget.value as T))
                   : Text(
                       widget.defaultName,
                       style: DefaultTextStyle.of(context).style,
