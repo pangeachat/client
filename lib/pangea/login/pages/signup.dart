@@ -148,6 +148,7 @@ class SignupPageController extends State<SignupPage> {
     final resp = await showFutureLoadingDialog(
       context: context,
       future: _signupFuture,
+      popOnSuccess: false,
       onError: (e, s) {
         setState(() {
           loadingSignup = false;
