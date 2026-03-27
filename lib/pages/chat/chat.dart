@@ -65,6 +65,7 @@ import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/learning_settings/disable_language_tools_popup.dart';
+import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart';
 import 'package:fluffychat/pangea/learning_settings/p_language_dialog.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
@@ -2434,6 +2435,14 @@ class ChatController extends State<ChatPageWithRoom>
         await MatrixState.pangeaController.userController.updateProfile((
           profile,
         ) {
+          final baseLangShort = profile.userSettings.sourceLanguage
+              ?.split('-')
+              .first;
+          if (baseLangShort != null &&
+              baseLangShort == target.split('-').first) {
+            throw IdenticalLanguageException();
+          }
+
           return profile.copyWith(
             userSettings: profile.userSettings.copyWith(targetLanguage: target),
           );
