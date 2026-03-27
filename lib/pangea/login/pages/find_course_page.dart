@@ -162,7 +162,8 @@ class FindCoursePageState extends State<FindCoursePage> {
 
     // Then, load until at least 5 courses are visible, or all courses have been loaded
     int timesLoaded = 0;
-    while (loading.value &&
+    while (mounted &&
+        loading.value &&
         (visibleCourses.value.length < 5 || loadMore) &&
         timesLoaded < 4 &&
         !fullyLoaded) {
