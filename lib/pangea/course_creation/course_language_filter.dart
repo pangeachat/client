@@ -34,6 +34,14 @@ class CourseLanguageFilter extends StatelessWidget {
           ),
         ],
       ),
+      selectedItemBuilder: (v) => Row(
+        children: [
+          Text(
+            v.getDisplayName(context),
+            style: DefaultTextStyle.of(context).style,
+          ),
+        ],
+      ),
       enableSearch: true,
       defaultName: L10n.of(context).allLanguages,
       searchMatchFn: (item, searchValue) =>
