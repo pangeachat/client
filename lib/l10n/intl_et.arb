@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-03-27 14:39:54.808145",
+    "@@last_modified": "2026-03-27 15:03:42.374025",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10756,5 +10756,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Klõpsa siin, et uuesti sisse logida.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

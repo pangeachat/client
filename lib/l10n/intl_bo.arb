@@ -3499,7 +3499,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-03-27 14:40:33.924005",
+    "@@last_modified": "2026-03-27 15:04:08.585791",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10425,5 +10425,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Klicka här för att logga in igen.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

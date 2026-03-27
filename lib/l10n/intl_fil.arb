@@ -2565,7 +2565,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-03-27 14:40:18.873824",
+    "@@last_modified": "2026-03-27 15:03:58.420645",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11778,5 +11778,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "I-click dito upang muling mag-sign in.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

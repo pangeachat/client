@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-03-27 14:39:44.877222",
+    "@@last_modified": "2026-03-27 15:03:35.930116",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11243,5 +11243,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Kliknite ovdje da se ponovno prijavite.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

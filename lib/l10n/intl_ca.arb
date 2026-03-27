@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-27 14:40:10.779323",
+    "@@last_modified": "2026-03-27 15:03:52.221280",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10910,5 +10910,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Feu clic aquí per tornar a iniciar sessió.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

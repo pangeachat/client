@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-03-27 14:40:24.801940",
+    "@@last_modified": "2026-03-27 15:04:01.418840",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11090,5 +11090,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Tekrar giriş yapmak için buraya tıklayın.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

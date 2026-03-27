@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-03-27 14:40:22.851444",
+    "@@last_modified": "2026-03-27 15:04:00.418468",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11099,5 +11099,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "انقر هنا لتسجيل الدخول مرة أخرى.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

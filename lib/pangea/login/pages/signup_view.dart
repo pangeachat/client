@@ -59,9 +59,30 @@ class SignupPageView extends StatelessWidget {
                     ),
                   ),
                   if (controller.prevInfo != null)
-                    Text(
-                      L10n.of(context).welcomeBackLogin(
-                        controller.prevInfo!.method.label(L10n.of(context)),
+                    RichText(
+                      text: TextSpan(
+                        style: TextStyle(color: theme.colorScheme.onSurface),
+                        children: [
+                          TextSpan(
+                            text: L10n.of(context).welcomeBackLogin(
+                              controller.prevInfo!.method.label(
+                                L10n.of(context),
+                              ),
+                            ),
+                          ),
+                          TextSpan(text: ' '),
+                          TextSpan(
+                            text: L10n.of(context).clickToLogin,
+                            style: TextStyle(
+                              color: theme.colorScheme.primary,
+                              decoration: TextDecoration.underline,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                context.go('/home/login');
+                              },
+                          ),
+                        ],
                       ),
                       textAlign: TextAlign.center,
                     ),

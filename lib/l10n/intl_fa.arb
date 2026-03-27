@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-27 14:40:38.330221",
+    "@@last_modified": "2026-03-27 15:04:12.072746",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10871,5 +10871,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "اینجا کلیک کنید تا دوباره وارد شوید.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

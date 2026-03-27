@@ -5044,5 +5044,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "clickToLogin": "Click here to sign back in."
 }

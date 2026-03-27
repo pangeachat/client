@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-27 14:40:47.566879",
+    "@@last_modified": "2026-03-27 15:04:20.179818",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -11878,5 +11878,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Klaku ĉi tie por reensaluti.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

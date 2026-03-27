@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-27 14:39:24.913745",
+    "@@last_modified": "2026-03-27 15:03:20.769099",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10976,5 +10976,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "여기에 클릭하여 다시 로그인하세요.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

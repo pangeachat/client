@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-03-27 14:40:49.084493",
+    "@@last_modified": "2026-03-27 15:04:21.102513",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11773,5 +11773,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Нажмите здесь, чтобы войти снова.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

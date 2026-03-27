@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-03-27 14:40:02.693964",
+    "@@last_modified": "2026-03-27 15:03:47.603446",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10759,5 +10759,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Натисніть тут, щоб увійти знову.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }

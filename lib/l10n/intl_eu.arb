@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-03-27 14:39:51.830069",
+    "@@last_modified": "2026-03-27 15:03:40.446996",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10759,5 +10759,10 @@
                 "type": "int"
             }
         }
+    },
+    "clickToLogin": "Hemen klikatu berriro saioa hasteko.",
+    "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
     }
 }
