@@ -293,27 +293,83 @@ extension SpanDataTypeEnumExt on ReplacementTypeEnum {
   /// Returns a human-readable display name for this replacement type.
   /// Used in the SpanCard UI to show the error category.
   String displayName(BuildContext context) {
-    if (isGrammarType) {
-      return L10n.of(context).spanTypeGrammar;
-    }
-    if (isWordChoiceType) {
-      return L10n.of(context).spanTypeWordChoice;
-    }
     switch (this) {
-      case ReplacementTypeEnum.spell:
-        return L10n.of(context).spanTypeSpelling;
+      case ReplacementTypeEnum.definition:
+        return L10n.of(context).spanTypeDefinition;
+      case ReplacementTypeEnum.practice:
+        return L10n.of(context).spanTypePractice;
+      case ReplacementTypeEnum.itStart:
+        return L10n.of(context).spanTypeItStart;
+      case ReplacementTypeEnum.verbConjugation:
+        return L10n.of(context).spanTypeVerbConjugation;
+      case ReplacementTypeEnum.verbTense:
+        return L10n.of(context).spanTypeVerbTense;
+      case ReplacementTypeEnum.verbMood:
+        return L10n.of(context).spanTypeVerbMood;
+      case ReplacementTypeEnum.subjectVerbAgreement:
+        return L10n.of(context).spanTypeSubjectVerbAgreement;
+      case ReplacementTypeEnum.genderAgreement:
+        return L10n.of(context).spanTypeGenderAgreement;
+      case ReplacementTypeEnum.numberAgreement:
+        return L10n.of(context).spanTypeNumberAgreement;
+      case ReplacementTypeEnum.caseError:
+        return L10n.of(context).spanTypeCaseError;
+      case ReplacementTypeEnum.article:
+        return L10n.of(context).spanTypeArticle;
+      case ReplacementTypeEnum.preposition:
+        return L10n.of(context).spanTypePreposition;
+      case ReplacementTypeEnum.pronoun:
+        return L10n.of(context).spanTypePronoun;
+      case ReplacementTypeEnum.wordOrder:
+        return L10n.of(context).spanTypeWordOrder;
+      case ReplacementTypeEnum.negation:
+        return L10n.of(context).spanTypeNegation;
+      case ReplacementTypeEnum.questionFormation:
+        return L10n.of(context).spanTypeQuestionFormation;
+      case ReplacementTypeEnum.relativeClause:
+        return L10n.of(context).spanTypeRelativeClause;
+      case ReplacementTypeEnum.connector:
+        return L10n.of(context).spanTypeConnector;
+      case ReplacementTypeEnum.possessive:
+        return L10n.of(context).spanTypePossessive;
+      case ReplacementTypeEnum.comparative:
+        return L10n.of(context).spanTypeComparative;
+      case ReplacementTypeEnum.passiveVoice:
+        return L10n.of(context).spanTypePassiveVoice;
+      case ReplacementTypeEnum.conditional:
+        return L10n.of(context).spanTypeConditional;
+      case ReplacementTypeEnum.infinitiveGerund:
+        return L10n.of(context).spanTypeInfinitiveGerund;
+      case ReplacementTypeEnum.modal:
+        return L10n.of(context).spanTypeModal;
       case ReplacementTypeEnum.punct:
         return L10n.of(context).spanTypePunctuation;
+      case ReplacementTypeEnum.diacritics:
+        return L10n.of(context).spanTypeAccents;
+      case ReplacementTypeEnum.spell:
+        return L10n.of(context).spanTypeSpelling;
+      case ReplacementTypeEnum.cap:
+        return L10n.of(context).spanTypeCapitalization;
+      case ReplacementTypeEnum.falseCognate:
+        return L10n.of(context).spanTypeFalseCognate;
+      case ReplacementTypeEnum.l1Interference:
+        return L10n.of(context).spanTypeL1Interference;
+      case ReplacementTypeEnum.collocation:
+        return L10n.of(context).spanTypeCollocation;
+      case ReplacementTypeEnum.semanticConfusion:
+        return L10n.of(context).spanTypeSemanticConfusion;
+      case ReplacementTypeEnum.transcription:
+        return L10n.of(context).spanTypeTranscription;
       case ReplacementTypeEnum.style:
         return L10n.of(context).spanTypeStyle;
       case ReplacementTypeEnum.fluency:
         return L10n.of(context).spanTypeFluency;
-      case ReplacementTypeEnum.diacritics:
-        return L10n.of(context).spanTypeAccents;
-      case ReplacementTypeEnum.cap:
-        return L10n.of(context).spanTypeCapitalization;
-      default:
-        return L10n.of(context).spanTypeCorrection;
+      case ReplacementTypeEnum.didYouMean:
+        return L10n.of(context).spanTypeDidYouMean;
+      case ReplacementTypeEnum.translation:
+        return L10n.of(context).spanTypeTranslation;
+      case ReplacementTypeEnum.other:
+        return L10n.of(context).spanTypeOther;
     }
   }
 }

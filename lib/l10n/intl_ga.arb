@@ -4256,7 +4256,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-03-27 15:04:24.456187",
+    "@@last_modified": "2026-03-30 13:34:17.419252",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10773,6 +10773,166 @@
     },
     "clickToLogin": "Cliceáil anseo chun logáil isteach arís.",
     "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "spanTypeDefinition": "Sainmhíniú",
+    "spanTypeVerbConjugation": "Conjugation gníomh",
+    "spanTypeVerbTense": "Am gníomh",
+    "spanTypeVerbMood": "Mood gníomh",
+    "spanTypeSubjectVerbAgreement": "Comhoiriúnacht ábhair-ghníomh",
+    "spanTypeGenderAgreement": "Comhoiriúnacht gnéis",
+    "spanTypeNumberAgreement": "Comhoiriúnacht uimhreach",
+    "spanTypeCaseError": "Earráid cás",
+    "spanTypeArticle": "Alt",
+    "spanTypePreposition": "Réamhfhocal",
+    "spanTypePronoun": "Forainm",
+    "spanTypeWordOrder": "Ord na nGiorra",
+    "spanTypeNegation": "Diúltú",
+    "spanTypeQuestionFormation": "Cruthú Ceiste",
+    "spanTypeRelativeClause": "Conradh Gaolmhar",
+    "spanTypeConnector": "Ceanglóir",
+    "spanTypePossessive": "Maoin",
+    "spanTypeComparative": "Comparáideach",
+    "spanTypePassiveVoice": "Guth Pasach",
+    "spanTypeConditional": "Coinníollach",
+    "spanTypeInfinitiveGerund": "Infinitive/Gerund",
+    "spanTypeModal": "Briathar Módúil",
+    "spanTypeFalseCognate": "Cognate Bréagach",
+    "spanTypeL1Interference": "Cur isteach L1",
+    "spanTypeCollocation": "Comhoibriú",
+    "spanTypeSemanticConfusion": "Conspóid Shémantach",
+    "spanTypeTranscription": "Trascríobh",
+    "spanTypePractice": "Cleachtadh",
+    "spanTypeItStart": "Aistriúchán Idirghníomhach",
+    "spanTypeDidYouMean": "An raibh tú ag iarraidh?",
+    "spanTypeTranslation": "Aistriúchán",
+    "spanTypeOther": "Eile",
+    "@spanTypeDefinition": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeVerbConjugation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeVerbTense": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeVerbMood": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeSubjectVerbAgreement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeGenderAgreement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeNumberAgreement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeCaseError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeArticle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePreposition": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePronoun": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeWordOrder": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeNegation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeQuestionFormation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeRelativeClause": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeConnector": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePossessive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeComparative": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePassiveVoice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeConditional": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeInfinitiveGerund": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeModal": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeFalseCognate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeL1Interference": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeCollocation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeSemanticConfusion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeItStart": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeDidYouMean": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeOther": {
         "type": "String",
         "placeholders": {}
     }

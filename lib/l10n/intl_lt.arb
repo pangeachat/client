@@ -3553,7 +3553,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-03-27 15:04:03.385295",
+    "@@last_modified": "2026-03-30 13:31:23.027403",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11648,6 +11648,166 @@
     },
     "clickToLogin": "Paspauskite čia, kad vėl prisijungtumėte.",
     "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "spanTypeDefinition": "Apibrėžimas",
+    "spanTypeVerbConjugation": "Veiksmažodžio linksniavimas",
+    "spanTypeVerbTense": "Veiksmažodžio laikas",
+    "spanTypeVerbMood": "Veiksmažodžio nuotaika",
+    "spanTypeSubjectVerbAgreement": "Subjekto ir veiksmažodžio suderinamumas",
+    "spanTypeGenderAgreement": "Lyties suderinamumas",
+    "spanTypeNumberAgreement": "Skaičiaus suderinamumas",
+    "spanTypeCaseError": "Atvejo klaida",
+    "spanTypeArticle": "Straipsnis",
+    "spanTypePreposition": "Priešdėlis",
+    "spanTypePronoun": "Įvardis",
+    "spanTypeWordOrder": "Žodžių tvarka",
+    "spanTypeNegation": "Neigimas",
+    "spanTypeQuestionFormation": "Klausimo formavimas",
+    "spanTypeRelativeClause": "Santykinis sakinys",
+    "spanTypeConnector": "Jungtukas",
+    "spanTypePossessive": "Nuosavybė",
+    "spanTypeComparative": "Palyginamasis",
+    "spanTypePassiveVoice": "Pasyvioji forma",
+    "spanTypeConditional": "Sąlyginis",
+    "spanTypeInfinitiveGerund": "Infinitivas/Gerundas",
+    "spanTypeModal": "Modalinis veiksmažodis",
+    "spanTypeFalseCognate": "Klaidingas atitikmuo",
+    "spanTypeL1Interference": "L1 trukdymas",
+    "spanTypeCollocation": "Kolekcija",
+    "spanTypeSemanticConfusion": "Semantinė painiava",
+    "spanTypeTranscription": "Transkripcija",
+    "spanTypePractice": "Praktika",
+    "spanTypeItStart": "Interaktyvi vertimas",
+    "spanTypeDidYouMean": "Ar turėjote omenyje?",
+    "spanTypeTranslation": "Vertimas",
+    "spanTypeOther": "Kitas",
+    "@spanTypeDefinition": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeVerbConjugation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeVerbTense": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeVerbMood": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeSubjectVerbAgreement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeGenderAgreement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeNumberAgreement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeCaseError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeArticle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePreposition": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePronoun": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeWordOrder": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeNegation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeQuestionFormation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeRelativeClause": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeConnector": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePossessive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeComparative": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePassiveVoice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeConditional": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeInfinitiveGerund": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeModal": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeFalseCognate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeL1Interference": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeCollocation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeSemanticConfusion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeItStart": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeDidYouMean": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeOther": {
         "type": "String",
         "placeholders": {}
     }
