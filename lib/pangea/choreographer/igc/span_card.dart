@@ -230,6 +230,10 @@ class _MatchContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isOpen = match.updatedMatch.status.isOpen;
+    final currentMatch = match.updatedMatch.match;
+    final descriptionText =
+        currentMatch.selectedChoice?.feedback ??
+        currentMatch.type.defaultPrompt(context);
 
     return Scrollbar(
       controller: scrollController,
@@ -241,15 +245,14 @@ class _MatchContent extends StatelessWidget {
             spacing: 12.0,
             children: [
               Text(
-                match.updatedMatch.match.message ??
-                    match.updatedMatch.match.type.defaultPrompt(context),
+                descriptionText,
                 style: BotStyle.text(context),
                 textAlign: TextAlign.center,
               ),
               isOpen
                   ? ChoicesArray(
                       isLoading: false,
-                      choices: match.updatedMatch.match.choices?.map((e) {
+                      choices: currentMatch.choices?.map((e) {
                         return Choice(
                           text: e.value,
                           color: e.selected ? e.type.color : null,
@@ -261,15 +264,13 @@ class _MatchContent extends StatelessWidget {
                         index,
                         PangeaMatchStatusEnum.accepted,
                       ),
-                      selectedChoiceIndex:
-                          match.updatedMatch.match.selectedChoiceIndex,
+                      selectedChoiceIndex: currentMatch.selectedChoiceIndex,
                       id: match.hashCode.toString(),
                       langCode: MatrixState
                           .pangeaController
                           .userController
                           .userL2Code!,
-                      enabled:
-                          !match.updatedMatch.match.isSelectedChoiceCorrection,
+                      enabled: !currentMatch.isSelectedChoiceCorrection,
                     )
                   : Row(
                       spacing: 16.0,
