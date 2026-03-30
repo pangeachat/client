@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-03-27 15:04:00.418468",
+    "@@last_modified": "2026-03-30 13:30:48.933355",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11102,6 +11102,166 @@
     },
     "clickToLogin": "انقر هنا لتسجيل الدخول مرة أخرى.",
     "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "spanTypeDefinition": "تعريف",
+    "spanTypeVerbConjugation": "تصريف الفعل",
+    "spanTypeVerbTense": "زمن الفعل",
+    "spanTypeVerbMood": "مزاج الفعل",
+    "spanTypeSubjectVerbAgreement": "توافق الفاعل والفعل",
+    "spanTypeGenderAgreement": "توافق الجنس",
+    "spanTypeNumberAgreement": "توافق العدد",
+    "spanTypeCaseError": "خطأ في الحالة",
+    "spanTypeArticle": "مقال",
+    "spanTypePreposition": "حرف جر",
+    "spanTypePronoun": "ضمير",
+    "spanTypeWordOrder": "ترتيب الكلمات",
+    "spanTypeNegation": "نفي",
+    "spanTypeQuestionFormation": "تكوين السؤال",
+    "spanTypeRelativeClause": "جملة وصفية",
+    "spanTypeConnector": "موصل",
+    "spanTypePossessive": "ملكية",
+    "spanTypeComparative": "مقارنة",
+    "spanTypePassiveVoice": "صوت مبني للمجهول",
+    "spanTypeConditional": "شرطية",
+    "spanTypeInfinitiveGerund": "المصدر/المصدر المستمر",
+    "spanTypeModal": "فعل مساعد",
+    "spanTypeFalseCognate": "كلمة مشابهة زائفة",
+    "spanTypeL1Interference": "تداخل اللغة الأولى",
+    "spanTypeCollocation": "تراكيب لغوية",
+    "spanTypeSemanticConfusion": "ارتباك دلالي",
+    "spanTypeTranscription": "نسخ",
+    "spanTypePractice": "تمرين",
+    "spanTypeItStart": "ترجمة تفاعلية",
+    "spanTypeDidYouMean": "هل كنت تقصد؟",
+    "spanTypeTranslation": "ترجمة",
+    "spanTypeOther": "أخرى",
+    "@spanTypeDefinition": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeVerbConjugation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeVerbTense": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeVerbMood": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeSubjectVerbAgreement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeGenderAgreement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeNumberAgreement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeCaseError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeArticle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePreposition": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePronoun": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeWordOrder": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeNegation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeQuestionFormation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeRelativeClause": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeConnector": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePossessive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeComparative": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePassiveVoice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeConditional": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeInfinitiveGerund": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeModal": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeFalseCognate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeL1Interference": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeCollocation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeSemanticConfusion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeItStart": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeDidYouMean": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeOther": {
         "type": "String",
         "placeholders": {}
     }

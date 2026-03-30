@@ -4227,7 +4227,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-03-27 15:03:59.488909",
+    "@@last_modified": "2026-03-30 13:30:37.768612",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10762,6 +10762,166 @@
     },
     "clickToLogin": "Noklikšķiniet šeit, lai atkal pierakstītos.",
     "@clickToLogin": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "spanTypeDefinition": "Definīcija",
+    "spanTypeVerbConjugation": "Darbības vārdu locījums",
+    "spanTypeVerbTense": "Darbības vārdu laiks",
+    "spanTypeVerbMood": "Darbības vārdu noskaņa",
+    "spanTypeSubjectVerbAgreement": "Subjekta un darbības vārda saskaņa",
+    "spanTypeGenderAgreement": "Dzimuma saskaņa",
+    "spanTypeNumberAgreement": "Skaitļa saskaņa",
+    "spanTypeCaseError": "Gada kļūda",
+    "spanTypeArticle": "Raksts",
+    "spanTypePreposition": "Prievārds",
+    "spanTypePronoun": "Ģenitīvs",
+    "spanTypeWordOrder": "Vārdu kārtība",
+    "spanTypeNegation": "Noraidījums",
+    "spanTypeQuestionFormation": "Jautājumu veidošana",
+    "spanTypeRelativeClause": "Attiecību teikums",
+    "spanTypeConnector": "Savienotājs",
+    "spanTypePossessive": "Piederības",
+    "spanTypeComparative": "Salīdzinošs",
+    "spanTypePassiveVoice": "Pasīvais balss",
+    "spanTypeConditional": "Nosacījuma",
+    "spanTypeInfinitiveGerund": "Infinitīvs/Gerunds",
+    "spanTypeModal": "Modalais darbības vārds",
+    "spanTypeFalseCognate": "Viltus līdzskanis",
+    "spanTypeL1Interference": "L1 iejaukšanās",
+    "spanTypeCollocation": "Kollokācija",
+    "spanTypeSemanticConfusion": "Semantiskā neskaidrība",
+    "spanTypeTranscription": "Transkripcija",
+    "spanTypePractice": "Prakse",
+    "spanTypeItStart": "Interaktīvā tulkošana",
+    "spanTypeDidYouMean": "Vai jūs domājāt?",
+    "spanTypeTranslation": "Tulkojums",
+    "spanTypeOther": "Cits",
+    "@spanTypeDefinition": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeVerbConjugation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeVerbTense": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeVerbMood": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeSubjectVerbAgreement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeGenderAgreement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeNumberAgreement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeCaseError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeArticle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePreposition": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePronoun": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeWordOrder": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeNegation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeQuestionFormation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeRelativeClause": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeConnector": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePossessive": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeComparative": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePassiveVoice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeConditional": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeInfinitiveGerund": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeModal": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeFalseCognate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeL1Interference": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeCollocation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeSemanticConfusion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeItStart": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeDidYouMean": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@spanTypeOther": {
         "type": "String",
         "placeholders": {}
     }
