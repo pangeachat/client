@@ -228,12 +228,6 @@ class SignupPageController extends State<SignupPage> {
     }
   }
 
-  double buttonOpacity(LoginMethod method) => prevInfo == null
-      ? 1.0
-      : prevInfo!.method == method
-      ? 1.0
-      : 0.6;
-
   @override
   Widget build(BuildContext context) =>
       widget.withEmail ? SignupWithEmailView(this) : SignupPageView(this);

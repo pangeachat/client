@@ -8,7 +8,6 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/authentication/store_login_method_repo.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
 import 'package:fluffychat/pangea/login/sso_provider_enum.dart';
 import 'package:fluffychat/pangea/login/widgets/p_sso_button.dart';
@@ -86,38 +85,29 @@ class SignupPageView extends StatelessWidget {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                  Opacity(
-                    opacity: controller.buttonOpacity(LoginMethod.apple),
-                    child: PangeaSsoButton(provider: SSOProvider.apple),
-                  ),
-                  Opacity(
-                    opacity: controller.buttonOpacity(LoginMethod.google),
-                    child: PangeaSsoButton(provider: SSOProvider.google),
-                  ),
-                  Opacity(
-                    opacity: controller.buttonOpacity(LoginMethod.email),
-                    child: ElevatedButton(
-                      onPressed: () =>
-                          context.go('/home/language/signup/email'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: theme.colorScheme.primaryContainer,
-                        foregroundColor: theme.colorScheme.onPrimaryContainer,
-                      ),
-                      child: Row(
-                        spacing: 8.0,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          PangeaLogoSvg(
-                            width: 20,
-                            forceColor: Theme.of(
-                              context,
-                            ).colorScheme.onPrimaryContainer,
-                          ),
-                          Text(L10n.of(context).withEmail),
-                        ],
-                      ),
+                  PangeaSsoButton(provider: SSOProvider.apple),
+                  PangeaSsoButton(provider: SSOProvider.google),
+                  ElevatedButton(
+                    onPressed: () => context.go('/home/language/signup/email'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: theme.colorScheme.primaryContainer,
+                      foregroundColor: theme.colorScheme.onPrimaryContainer,
+                    ),
+                    child: Row(
+                      spacing: 8.0,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        PangeaLogoSvg(
+                          width: 20,
+                          forceColor: Theme.of(
+                            context,
+                          ).colorScheme.onPrimaryContainer,
+                        ),
+                        Text(L10n.of(context).withEmail),
+                      ],
                     ),
                   ),
+
                   Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: RichText(
