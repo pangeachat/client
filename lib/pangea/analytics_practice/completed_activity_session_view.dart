@@ -46,132 +46,118 @@ class CompletedActivitySessionView extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(bottom: 16, right: 16, left: 16),
-          child: Column(
-            children: [
-              Text(
-                session.getCompletionMessage(context),
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          child: SingleChildScrollView(
+            child: Column(
+              spacing: 32.0,
+              children: [
+                Text(
+                  session.getCompletionMessage(context),
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                FutureBuilder(
+                  future: Matrix.of(context).client.fetchOwnProfile(),
+                  builder: (context, snapshot) {
+                    final avatarUrl = snapshot.data?.avatarUrl;
+                    return Avatar(
+                      name: username,
+                      showPresence: false,
+                      size: 100,
+                      mxContent: avatarUrl,
+                      userId: Matrix.of(context).client.userID,
+                    );
+                  },
+                ),
+                Column(
+                  spacing: 16.0,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: FutureBuilder(
-                        future: Matrix.of(context).client.fetchOwnProfile(),
-                        builder: (context, snapshot) {
-                          final avatarUrl = snapshot.data?.avatarUrl;
-                          return Avatar(
-                            name: username,
-                            showPresence: false,
-                            size: 100,
-                            mxContent: avatarUrl,
-                            userId: Matrix.of(context).client.userID,
-                          );
-                        },
-                      ),
-                    ),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            top: 16.0,
-                            bottom: 16.0,
-                          ),
-                          child: FutureBuilder(
-                            future: levelProgress,
-                            builder: (context, snapshot) => AnimatedProgressBar(
-                              height: 20.0,
-                              widthPercent: snapshot.data ?? 0.0,
-                              backgroundColor: Theme.of(
-                                context,
-                              ).colorScheme.surfaceContainerHighest,
-                              duration: const Duration(milliseconds: 500),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          "+ ${session.state.allXPGained} XP",
-                          style: Theme.of(context).textTheme.titleLarge
-                              ?.copyWith(
-                                color: AppConfig.goldLight,
-                                fontWeight: FontWeight.bold,
-                              ),
-                        ),
-                      ],
-                    ),
-                    StatCard(
-                      icon: Icons.my_location,
-                      text: "${L10n.of(context).accuracy}: $accuracy%",
-                      isAchievement: accuracyAchievement,
-                      achievementText: "+ ${session.state.accuracyBonusXP} XP",
-                      child: PercentMarkerBar(
+                    FutureBuilder(
+                      future: levelProgress,
+                      builder: (context, snapshot) => AnimatedProgressBar(
                         height: 20.0,
-                        widthPercent: accuracy / 100.0,
-                        markerWidth: 20.0,
-                        markerColor: AppConfig.success,
-                        backgroundColor: !accuracyAchievement
-                            ? Theme.of(
-                                context,
-                              ).colorScheme.surfaceContainerHighest
-                            : Color.alphaBlend(
-                                AppConfig.goldLight.withValues(alpha: 0.3),
-                                Theme.of(
-                                  context,
-                                ).colorScheme.surfaceContainerHighest,
-                              ),
+                        widthPercent: snapshot.data ?? 0.0,
+                        backgroundColor: Theme.of(
+                          context,
+                        ).colorScheme.surfaceContainerHighest,
+                        duration: const Duration(milliseconds: 500),
                       ),
                     ),
-                    StatCard(
-                      icon: Icons.alarm,
-                      text:
-                          "${L10n.of(context).time}: ${_formatTime(elapsedSeconds)}",
-                      isAchievement: timeAchievement,
-                      achievementText: "+ ${session.state.timeBonusXP} XP",
-                      child: TimeStarsWidget(elapsedSeconds: elapsedSeconds),
-                    ),
-                    Column(
-                      children: [
-                        //expanded row button
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12.0,
-                              vertical: 8.0,
-                            ),
-                          ),
-                          onPressed: launchSession,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [Text(L10n.of(context).anotherRound)],
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12.0,
-                              vertical: 8.0,
-                            ),
-                          ),
-                          onPressed: () {
-                            context.go('/rooms/analytics/vocab');
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [Text(L10n.of(context).done)],
-                          ),
-                        ),
-                      ],
+
+                    Text(
+                      "+ ${session.state.allXPGained} XP",
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: AppConfig.goldLight,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ],
                 ),
-              ),
-            ],
+                StatCard(
+                  icon: Icons.my_location,
+                  text: "${L10n.of(context).accuracy}: $accuracy%",
+                  isAchievement: accuracyAchievement,
+                  achievementText: "+ ${session.state.accuracyBonusXP} XP",
+                  child: PercentMarkerBar(
+                    height: 20.0,
+                    widthPercent: accuracy / 100.0,
+                    markerWidth: 20.0,
+                    markerColor: AppConfig.success,
+                    backgroundColor: !accuracyAchievement
+                        ? Theme.of(context).colorScheme.surfaceContainerHighest
+                        : Color.alphaBlend(
+                            AppConfig.goldLight.withValues(alpha: 0.3),
+                            Theme.of(
+                              context,
+                            ).colorScheme.surfaceContainerHighest,
+                          ),
+                  ),
+                ),
+                StatCard(
+                  icon: Icons.alarm,
+                  text:
+                      "${L10n.of(context).time}: ${_formatTime(elapsedSeconds)}",
+                  isAchievement: timeAchievement,
+                  achievementText: "+ ${session.state.timeBonusXP} XP",
+                  child: TimeStarsWidget(elapsedSeconds: elapsedSeconds),
+                ),
+                Column(
+                  spacing: 16.0,
+                  children: [
+                    //expanded row button
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12.0,
+                          vertical: 8.0,
+                        ),
+                      ),
+                      onPressed: launchSession,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [Text(L10n.of(context).anotherRound)],
+                      ),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12.0,
+                          vertical: 8.0,
+                        ),
+                      ),
+                      onPressed: () {
+                        context.go('/rooms/analytics/vocab');
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [Text(L10n.of(context).done)],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
         const StarRainWidget(
