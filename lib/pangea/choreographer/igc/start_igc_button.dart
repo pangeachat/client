@@ -47,7 +47,7 @@ class _StartIGCButtonState extends State<StartIGCButton>
   List<Segment> _prevSegments = [];
   List<Segment> _currentSegments = [];
 
-  final Duration _animationDuration = const Duration(milliseconds: 300);
+  final Duration _animationDuration = const Duration(milliseconds: 500);
 
   @override
   void initState() {
