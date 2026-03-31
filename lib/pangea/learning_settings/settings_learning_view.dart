@@ -38,11 +38,13 @@ class SettingsLearningView extends StatelessWidget {
             children: [
               Expanded(
                 child: MaxWidthBody(
+                  scrollController: controller.scrollController,
                   showBorder: !controller.widget.isDialog,
                   child: LearningSettingsTiles(
                     viewModel: controller.viewModel,
                     languageErrorNotifier: controller.languageMatchError,
                     aboutTextController: controller.aboutTextController,
+                    languageTileController: controller.languageTileController,
                   ),
                 ),
               ),

@@ -10,6 +10,7 @@ class MaxWidthBody extends StatelessWidget {
   // #Pangea
   final bool showBorder;
   final EdgeInsets? padding;
+  final ScrollController? scrollController;
   // Pangea#
 
   const MaxWidthBody({
@@ -20,6 +21,7 @@ class MaxWidthBody extends StatelessWidget {
     // #Pangea
     this.showBorder = true,
     this.padding,
+    this.scrollController,
     // Pangea#
     super.key,
   });
@@ -75,6 +77,9 @@ class MaxWidthBody extends StatelessWidget {
 
           return SingleChildScrollView(
             padding: innerPadding,
+            // #Pangea
+            controller: scrollController,
+            // Pangea#
             physics: const ScrollPhysics(),
             child: body,
           );

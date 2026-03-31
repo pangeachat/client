@@ -26,6 +26,7 @@ class SettingsLearningController extends State<SettingsLearning> {
   final ValueNotifier<String?> languageMatchError = ValueNotifier(null);
   final ScrollController scrollController = ScrollController();
   final TextEditingController aboutTextController = TextEditingController();
+  final ExpansibleController languageTileController = ExpansibleController();
 
   @override
   void initState() {
@@ -46,6 +47,7 @@ class SettingsLearningController extends State<SettingsLearning> {
     aboutTextController.dispose();
     viewModel.dispose();
     languageMatchError.dispose();
+    languageTileController.dispose();
     super.dispose();
   }
 
@@ -70,6 +72,7 @@ class SettingsLearningController extends State<SettingsLearning> {
   Future<void> submit() async {
     if (viewModel.hasIdenticalLanguages) {
       languageMatchError.value = L10n.of(context).noIdenticalLanguages;
+      languageTileController.expand();
       scrollController.animateTo(
         0,
         duration: const Duration(milliseconds: 300),
