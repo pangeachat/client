@@ -5,7 +5,6 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_participant_indicator.dart';
@@ -121,18 +120,16 @@ class ButtonControlledCarouselView extends StatelessWidget {
         )
         .toList();
 
-    final isColumnMode = FluffyThemes.isColumnMode(context);
-
     if (userSummaries.isEmpty) {
       return const SizedBox();
     }
 
-    final cardWidth = isColumnMode ? 400.0 : 350.0;
+    final cardWidth = 335.0;
 
     return Column(
       children: [
         SizedBox(
-          height: 270.0,
+          height: 300.0,
           child: ListView.builder(
             key: PageStorageKey('summaries-carousel-${room.id}'),
             shrinkWrap: true,
