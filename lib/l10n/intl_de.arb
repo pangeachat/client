@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-03-30 13:27:52.300688",
+    "@@last_modified": "2026-03-31 12:47:14.453161",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10901,6 +10901,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Anmelden...",
+    "initializingLabel": "Client wird gestartet...",
+    "migratingDatabaseLabel": "Datenbank wird migriert...",
+    "settingUpEncryptionLabel": "Verschlüsselung wird eingerichtet...",
+    "loadingDataLabel": "Kontodaten werden geladen...",
+    "loginFinishedLabel": "Abschluss...",
+    "loginErrorLabel": "Ein Fehler ist während der Anmeldung aufgetreten",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

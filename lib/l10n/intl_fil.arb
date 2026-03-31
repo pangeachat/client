@@ -2565,7 +2565,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-03-30 13:30:24.661477",
+    "@@last_modified": "2026-03-31 12:47:51.045508",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11941,6 +11941,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Nag-sign in...",
+    "initializingLabel": "Nagsisimula ang kliyente...",
+    "migratingDatabaseLabel": "Nagmimigrate ng database...",
+    "settingUpEncryptionLabel": "Nagsasaayos ng encryption...",
+    "loadingDataLabel": "Naglo-load ng data ng account...",
+    "loginFinishedLabel": "Nagtatapos...",
+    "loginErrorLabel": "Nagkaroon ng error sa panahon ng pag-login",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-03-30 13:32:12.897931",
+    "@@last_modified": "2026-03-31 12:48:16.815728",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10922,6 +10922,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "正在登录...",
+    "initializingLabel": "正在启动客户端...",
+    "migratingDatabaseLabel": "正在迁移数据库...",
+    "settingUpEncryptionLabel": "正在设置加密...",
+    "loadingDataLabel": "正在加载账户数据...",
+    "loginFinishedLabel": "正在完成...",
+    "loginErrorLabel": "登录过程中发生错误",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

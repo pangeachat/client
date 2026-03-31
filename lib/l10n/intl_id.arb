@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-30 13:25:50.230072",
+    "@@last_modified": "2026-03-31 12:46:45.969666",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -11019,6 +11019,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Masuk...",
+    "initializingLabel": "Memulai klien...",
+    "migratingDatabaseLabel": "Memigrasi basis data...",
+    "settingUpEncryptionLabel": "Menyiapkan enkripsi...",
+    "loadingDataLabel": "Memuat data akun...",
+    "loginFinishedLabel": "Menyelesaikan...",
+    "loginErrorLabel": "Terjadi kesalahan selama proses masuk",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

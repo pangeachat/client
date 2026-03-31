@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-30 13:31:33.050564",
+    "@@last_modified": "2026-03-31 12:48:07.184732",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6837,6 +6837,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Đang đăng nhập...",
+    "initializingLabel": "Bắt đầu khởi động ứng dụng...",
+    "migratingDatabaseLabel": "Đang di chuyển cơ sở dữ liệu...",
+    "settingUpEncryptionLabel": "Đang thiết lập mã hóa...",
+    "loadingDataLabel": "Đang tải dữ liệu tài khoản...",
+    "loginFinishedLabel": "Đang hoàn tất...",
+    "loginErrorLabel": "Đã xảy ra lỗi trong quá trình đăng nhập",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-30 13:26:01.097236",
+    "@@last_modified": "2026-03-31 12:46:49.163495",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11747,6 +11747,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Conectare...",
+    "initializingLabel": "Pornire client...",
+    "migratingDatabaseLabel": "Migrare bază de date...",
+    "settingUpEncryptionLabel": "Configurare criptare...",
+    "loadingDataLabel": "Încărcare date cont...",
+    "loginFinishedLabel": "Finalizare...",
+    "loginErrorLabel": "A apărut o eroare în timpul conectării",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

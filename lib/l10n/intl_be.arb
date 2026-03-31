@@ -4241,7 +4241,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-03-30 13:29:09.905942",
+    "@@last_modified": "2026-03-31 12:47:33.712157",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10936,6 +10936,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Уваход у сістэму...",
+    "initializingLabel": "Запуск кліента...",
+    "migratingDatabaseLabel": "Міграцыя базы даных...",
+    "settingUpEncryptionLabel": "Налада шыфравання...",
+    "loadingDataLabel": "Загрузка даных акаўнта...",
+    "loginFinishedLabel": "Завяршэнне...",
+    "loginErrorLabel": "Адбылася памылка падчас уваходу",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

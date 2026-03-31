@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-30 13:33:38.098407",
+    "@@last_modified": "2026-03-31 12:48:39.873216",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -12041,6 +12041,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Ensalutante...",
+    "initializingLabel": "Komencante klienton...",
+    "migratingDatabaseLabel": "Migrante datumbazon...",
+    "settingUpEncryptionLabel": "Agordante ĉifrado...",
+    "loadingDataLabel": "Ŝarĝante kontodatenojn...",
+    "loginFinishedLabel": "Finante...",
+    "loginErrorLabel": "Okazis eraro dum ensalutado",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-03-30 13:31:00.382714",
+    "@@last_modified": "2026-03-31 12:47:58.360464",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11253,6 +11253,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Giriş yapılıyor...",
+    "initializingLabel": "İstemci başlatılıyor...",
+    "migratingDatabaseLabel": "Veritabanı taşınıyor...",
+    "settingUpEncryptionLabel": "Şifreleme ayarlanıyor...",
+    "loadingDataLabel": "Hesap verileri yükleniyor...",
+    "loginFinishedLabel": "Tamamlanıyor...",
+    "loginErrorLabel": "Giriş sırasında bir hata oluştu",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

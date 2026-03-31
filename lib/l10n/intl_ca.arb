@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-30 13:29:31.824394",
+    "@@last_modified": "2026-03-31 12:47:36.881732",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -11073,6 +11073,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Iniciant sessió...",
+    "initializingLabel": "Iniciant client...",
+    "migratingDatabaseLabel": "Migració de la base de dades...",
+    "settingUpEncryptionLabel": "Configurant la xifratge...",
+    "loadingDataLabel": "Carregant dades del compte...",
+    "loginFinishedLabel": "Finalitzant...",
+    "loginErrorLabel": "S'ha produït un error durant l'inici de sessió",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

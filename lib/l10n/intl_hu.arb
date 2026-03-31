@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-03-30 13:25:38.460723",
+    "@@last_modified": "2026-03-31 12:46:41.637341",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -11049,6 +11049,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Bejelentkezés...",
+    "initializingLabel": "Kliens indítása...",
+    "migratingDatabaseLabel": "Adatbázis migrálása...",
+    "settingUpEncryptionLabel": "Titkosítás beállítása...",
+    "loadingDataLabel": "Fiókadatok betöltése...",
+    "loginFinishedLabel": "Befejezés...",
+    "loginErrorLabel": "Hiba történt a bejelentkezés során",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

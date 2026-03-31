@@ -4,18 +4,16 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
-import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pangea/authentication/login_loading_dialog.dart';
 import 'package:fluffychat/pangea/authentication/store_login_method_repo.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/login/sso_provider_enum.dart';
 import 'package:fluffychat/pangea/login/widgets/p_sso_dialog.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
-import 'package:fluffychat/widgets/fluffy_chat_app.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PangeaSsoButton extends StatelessWidget {
@@ -34,11 +32,26 @@ class PangeaSsoButton extends StatelessWidget {
       return;
     }
 
-    await showFutureLoadingDialog(
+    final client = Matrix.of(context).client;
+    await LoginMethodRepo.clearStoredLoginMethod();
+
+    await showAdaptiveDialog(
       context: context,
-      future: () => _ssoAction(token, context),
-      popOnSuccess: false,
+      barrierDismissible: false,
+      builder: (BuildContext context) => LoginLoadingDialog(
+        client: client,
+        loginType: LoginType.mLoginToken,
+        token: token,
+        initialDeviceDisplayName: PlatformInfos.clientName,
+      ),
     );
+
+    await LoginMethodRepo.storeLoginMethod(
+      userID: client.userID!,
+      method: provider.loginMethod,
+    );
+
+    GoogleAnalytics.login(provider.name, client.userID!);
   }
 
   Future<String?> _getSSOToken(BuildContext context) async {
@@ -78,46 +91,6 @@ class PangeaSsoButton extends StatelessWidget {
     final token = Uri.parse(result).queryParameters['loginToken'];
     if (token?.isEmpty ?? false) return null;
     return token;
-  }
-
-  Future<void> _ssoAction(String token, BuildContext context) async {
-    final client = Matrix.of(context).client;
-    final redirect = client.onLoginStateChanged.stream
-        .where((state) => state == LoginState.loggedIn)
-        .first
-        .then((_) {
-          final route = FluffyChatApp.router.state.fullPath;
-          if (route == null ||
-              (!route.contains("/rooms") && !route.contains('registration'))) {
-            context.go('/rooms');
-          }
-        })
-        .timeout(const Duration(seconds: 30));
-
-    await LoginMethodRepo.clearStoredLoginMethod();
-
-    final loginRes = await client.login(
-      LoginType.mLoginToken,
-      token: token,
-      initialDeviceDisplayName: PlatformInfos.clientName,
-    );
-
-    if (client.onLoginStateChanged.value == LoginState.loggedIn) {
-      final route = FluffyChatApp.router.state.fullPath;
-      if (route == null ||
-          (!route.contains("/rooms") && !route.contains('registration'))) {
-        context.go('/rooms');
-      }
-    } else {
-      await redirect;
-    }
-
-    await LoginMethodRepo.storeLoginMethod(
-      userID: client.userID!,
-      method: provider.loginMethod,
-    );
-
-    GoogleAnalytics.login(provider.name, loginRes.userId);
   }
 
   @override

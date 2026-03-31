@@ -4079,7 +4079,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-03-30 13:33:07.679951",
+    "@@last_modified": "2026-03-31 12:48:30.764674",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -11971,6 +11971,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Σύνδεση...",
+    "initializingLabel": "Εκκίνηση πελάτη...",
+    "migratingDatabaseLabel": "Μεταφορά βάσης δεδομένων...",
+    "settingUpEncryptionLabel": "Ρύθμιση κρυπτογράφησης...",
+    "loadingDataLabel": "Φόρτωση δεδομένων λογαριασμού...",
+    "loginFinishedLabel": "Ολοκλήρωση...",
+    "loginErrorLabel": "Παρουσιάστηκε σφάλμα κατά τη διάρκεια της σύνδεσης",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

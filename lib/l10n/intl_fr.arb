@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-03-30 13:34:25.789591",
+    "@@last_modified": "2026-03-31 12:48:53.399495",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -11319,6 +11319,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Connexion en cours...",
+    "initializingLabel": "Démarrage du client...",
+    "migratingDatabaseLabel": "Migration de la base de données...",
+    "settingUpEncryptionLabel": "Configuration du chiffrement...",
+    "loadingDataLabel": "Chargement des données du compte...",
+    "loginFinishedLabel": "Finalisation...",
+    "loginErrorLabel": "Une erreur est survenue lors de la connexion",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -4221,7 +4221,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-03-30 13:25:17.061390",
+    "@@last_modified": "2026-03-31 12:46:33.530750",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10971,6 +10971,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Kirjaudutaan sisään...",
+    "initializingLabel": "Aloitetaan asiakas...",
+    "migratingDatabaseLabel": "Siirretään tietokantaa...",
+    "settingUpEncryptionLabel": "Asetetaan salausta...",
+    "loadingDataLabel": "Ladataan tilitietoja...",
+    "loginFinishedLabel": "Viimeistellään...",
+    "loginErrorLabel": "Kirjautumisen aikana tapahtui virhe",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

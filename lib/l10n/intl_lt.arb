@@ -3553,7 +3553,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-03-30 13:31:23.027403",
+    "@@last_modified": "2026-03-31 12:48:04.625807",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11808,6 +11808,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Prisijungimas...",
+    "initializingLabel": "Kliento paleidimas...",
+    "migratingDatabaseLabel": "Duomenų bazės migracija...",
+    "settingUpEncryptionLabel": "Šifravimo nustatymas...",
+    "loadingDataLabel": "Paskyros duomenų įkėlimas...",
+    "loginFinishedLabel": "Baigiama...",
+    "loginErrorLabel": "Įvyko klaida prisijungiant",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

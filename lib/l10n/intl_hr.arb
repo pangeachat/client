@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-03-30 13:26:34.470653",
+    "@@last_modified": "2026-03-31 12:46:57.556701",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11406,6 +11406,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Prijava u tijeku...",
+    "initializingLabel": "Pokretanje klijenta...",
+    "migratingDatabaseLabel": "Migracija baze podataka...",
+    "settingUpEncryptionLabel": "Postavljanje enkripcije...",
+    "loadingDataLabel": "Učitavanje podataka o računu...",
+    "loginFinishedLabel": "Završavanje...",
+    "loginErrorLabel": "Došlo je do pogreške tijekom prijave",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

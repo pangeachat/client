@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-30 13:30:02.441291",
+    "@@last_modified": "2026-03-31 12:47:45.314987",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -11052,6 +11052,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "登入中...",
+    "initializingLabel": "啟動客戶端...",
+    "migratingDatabaseLabel": "遷移資料庫...",
+    "settingUpEncryptionLabel": "設置加密...",
+    "loadingDataLabel": "載入帳戶資料...",
+    "loginFinishedLabel": "完成中...",
+    "loginErrorLabel": "登入過程中發生錯誤",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -3685,7 +3685,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-03-30 13:29:42.983475",
+    "@@last_modified": "2026-03-31 12:47:40.567935",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11641,6 +11641,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "กำลังเข้าสู่ระบบ...",
+    "initializingLabel": "กำลังเริ่มต้นไคลเอนต์...",
+    "migratingDatabaseLabel": "กำลังย้ายฐานข้อมูล...",
+    "settingUpEncryptionLabel": "กำลังตั้งค่าการเข้ารหัส...",
+    "loadingDataLabel": "กำลังโหลดข้อมูลบัญชี...",
+    "loginFinishedLabel": "กำลังสรุป...",
+    "loginErrorLabel": "เกิดข้อผิดพลาดระหว่างการเข้าสู่ระบบ",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

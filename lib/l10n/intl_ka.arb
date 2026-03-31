@@ -2406,7 +2406,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-03-30 13:33:58.474904",
+    "@@last_modified": "2026-03-31 12:48:45.593070",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11990,6 +11990,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "შესვლის პროცესში...",
+    "initializingLabel": "კლაიენტის დაწყება...",
+    "migratingDatabaseLabel": "მონაცემთა ბაზის მიგრაცია...",
+    "settingUpEncryptionLabel": "შიფრაციის დაყენება...",
+    "loadingDataLabel": "ანგარიშის მონაცემების დატვირთვა...",
+    "loginFinishedLabel": "დასრულება...",
+    "loginErrorLabel": "შესვლის დროს მოხდა შეცდომა",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

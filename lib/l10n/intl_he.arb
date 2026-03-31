@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-30 13:26:44.304982",
+    "@@last_modified": "2026-03-31 12:47:00.000259",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -12001,6 +12001,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "מתחבר...",
+    "initializingLabel": "מתחיל לקוח...",
+    "migratingDatabaseLabel": "מעביר מסד נתונים...",
+    "settingUpEncryptionLabel": "מגדיר הצפנה...",
+    "loadingDataLabel": "טוען נתוני חשבון...",
+    "loginFinishedLabel": "מסיים...",
+    "loginErrorLabel": "אירעה שגיאה במהלך ההתחברות",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

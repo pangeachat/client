@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-30 13:31:53.544727",
+    "@@last_modified": "2026-03-31 12:48:12.004822",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10922,6 +10922,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Aanmelden...",
+    "initializingLabel": "Client starten...",
+    "migratingDatabaseLabel": "Database migreren...",
+    "settingUpEncryptionLabel": "Versleuteling instellen...",
+    "loadingDataLabel": "Accountgegevens laden...",
+    "loginFinishedLabel": "Afronden...",
+    "loginErrorLabel": "Er is een fout opgetreden tijdens het inloggen",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

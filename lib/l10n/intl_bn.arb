@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-30 13:32:23.445123",
+    "@@last_modified": "2026-03-31 12:48:20.513669",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -11637,6 +11637,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "সাইন ইন হচ্ছে...",
+    "initializingLabel": "ক্লায়েন্ট শুরু হচ্ছে...",
+    "migratingDatabaseLabel": "ডেটাবেস স্থানান্তর করা হচ্ছে...",
+    "settingUpEncryptionLabel": "এনক্রিপশন সেট আপ করা হচ্ছে...",
+    "loadingDataLabel": "অ্যাকাউন্টের ডেটা লোড হচ্ছে...",
+    "loginFinishedLabel": "চূড়ান্ত করা হচ্ছে...",
+    "loginErrorLabel": "লগইন করার সময় একটি ত্রুটি ঘটেছে",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -5077,5 +5077,12 @@
   "spanTypeItStart": "Interactive Translation",
   "spanTypeDidYouMean": "Did You Mean?",
   "spanTypeTranslation": "Translation",
-  "spanTypeOther": "Other"
+  "spanTypeOther": "Other",
+  "signingInLabel": "Signing in...",
+  "initializingLabel": "Starting client...",
+  "migratingDatabaseLabel": "Migrating database...",
+  "settingUpEncryptionLabel": "Setting up encryption...",
+  "loadingDataLabel": "Loading account data...",
+  "loginFinishedLabel": "Finalizing...",
+  "loginErrorLabel": "An error occurred during login"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-03-30 13:27:20.291734",
+    "@@last_modified": "2026-03-31 12:47:07.392062",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10922,6 +10922,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Saioa hastea...",
+    "initializingLabel": "Bezeroa abiarazten...",
+    "migratingDatabaseLabel": "Datu-basea migratzen...",
+    "settingUpEncryptionLabel": "Enkriptazioa ezartzen...",
+    "loadingDataLabel": "Kontu datuak kargatzen...",
+    "loginFinishedLabel": "Amaitzen...",
+    "loginErrorLabel": "Saioa hastean errore bat gertatu da",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

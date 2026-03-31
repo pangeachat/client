@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-03-30 13:28:38.784047",
+    "@@last_modified": "2026-03-31 12:47:25.615842",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10922,6 +10922,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Увійти...",
+    "initializingLabel": "Запуск клієнта...",
+    "migratingDatabaseLabel": "Міграція бази даних...",
+    "settingUpEncryptionLabel": "Налаштування шифрування...",
+    "loadingDataLabel": "Завантаження даних облікового запису...",
+    "loginFinishedLabel": "Завершення...",
+    "loginErrorLabel": "Сталася помилка під час входу",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }
