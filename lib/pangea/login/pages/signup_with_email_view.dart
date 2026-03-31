@@ -30,7 +30,8 @@ class SignupWithEmailView extends StatelessWidget {
         ),
         body: SafeArea(
           child: Center(
-            child: ConstrainedBox(
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
               constraints: const BoxConstraints(maxWidth: 300, maxHeight: 600),
               child: Column(
                 spacing: 24.0,
