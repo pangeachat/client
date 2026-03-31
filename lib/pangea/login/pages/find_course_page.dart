@@ -259,6 +259,8 @@ class FindCoursePageState extends State<FindCoursePage> {
     final targetLanguage = targetLanguageFilter.value?.langCode;
     if (targetLanguage != null) {
       route += "?lang=${Uri.encodeComponent(targetLanguage)}";
+    } else {
+      route += "?showAll=true";
     }
     context.go(route);
   }

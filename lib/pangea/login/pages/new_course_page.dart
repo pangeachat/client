@@ -29,6 +29,7 @@ class NewCoursePage extends StatefulWidget {
   final String? spaceId;
   final bool showFilters;
   final String? initialLanguageCode;
+  final bool showAll;
 
   const NewCoursePage({
     super.key,
@@ -36,6 +37,7 @@ class NewCoursePage extends StatefulWidget {
     this.spaceId,
     this.showFilters = true,
     this.initialLanguageCode,
+    this.showAll = false,
   });
 
   @override
@@ -54,15 +56,17 @@ class NewCoursePageState extends State<NewCoursePage> {
   void initState() {
     super.initState();
 
-    if (widget.initialLanguageCode != null) {
-      _targetLanguageFilter.value = PLanguageStore.byLangCode(
-        widget.initialLanguageCode!,
-      );
-    }
+    if (!widget.showAll) {
+      if (widget.initialLanguageCode != null) {
+        _targetLanguageFilter.value = PLanguageStore.byLangCode(
+          widget.initialLanguageCode!,
+        );
+      }
 
-    if (_targetLanguageFilter.value == null) {
-      _targetLanguageFilter.value =
-          MatrixState.pangeaController.userController.userL2;
+      if (_targetLanguageFilter.value == null) {
+        _targetLanguageFilter.value =
+            MatrixState.pangeaController.userController.userL2;
+      }
     }
 
     _loadCourses();

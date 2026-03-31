@@ -360,6 +360,7 @@ abstract class AppRoutes {
                       NewCoursePage(
                         route: 'rooms',
                         initialLanguageCode: state.uri.queryParameters['lang'],
+                        showAll: state.uri.queryParameters['showAll'] == 'true',
                       ),
                     );
                   },
