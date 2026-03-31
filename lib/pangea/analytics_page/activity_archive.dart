@@ -82,6 +82,9 @@ class ActivityArchiveState extends State<ActivityArchive> {
                         : MaxWidthBody(
                             withScrolling: false,
                             child: ListView.builder(
+                              key: const PageStorageKey<String>(
+                                'activity-archive',
+                              ),
                               physics: const ClampingScrollPhysics(),
                               itemCount: archive.length + 1,
                               itemBuilder: (BuildContext context, int i) {
