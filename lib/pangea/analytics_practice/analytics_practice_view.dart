@@ -63,6 +63,8 @@ class AnalyticsPracticeView extends StatelessWidget {
         child: MaxWidthBody(
           withScrolling: false,
           showBorder: false,
+          padding: EdgeInsets.only(left: 32.0, right: 32.0),
+          addVerticalPadding: false,
           child: Builder(
             builder: (context) {
               final error = controller.session.sessionError;

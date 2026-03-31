@@ -93,6 +93,7 @@ class OngoingActivitySessionView extends StatelessWidget {
                         final token = activity.tokens.first;
 
                         return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               isAudioActivity && isVocabType
@@ -128,7 +129,6 @@ class OngoingActivitySessionView extends StatelessWidget {
                           .selectedMorphChoice(activity);
                       return Column(
                         children: [
-                          const SizedBox(height: 16.0),
                           if (activity != null)
                             Center(
                               child: ActivityContent(
@@ -140,7 +140,6 @@ class OngoingActivitySessionView extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          const SizedBox(height: 16.0),
                           if (activity != null)
                             ActivityHintSection(
                               activity: activity,
@@ -151,7 +150,6 @@ class OngoingActivitySessionView extends StatelessWidget {
                                 controller.session.hintsUsed,
                               ),
                             ),
-                          const SizedBox(height: 16.0),
                           switch (state) {
                             AsyncError(error: final error) =>
                               error is InsufficientDataException

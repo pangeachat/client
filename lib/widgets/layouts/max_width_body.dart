@@ -11,6 +11,7 @@ class MaxWidthBody extends StatelessWidget {
   final bool showBorder;
   final EdgeInsets? padding;
   final ScrollController? scrollController;
+  final bool addVerticalPadding;
   // Pangea#
 
   const MaxWidthBody({
@@ -22,6 +23,7 @@ class MaxWidthBody extends StatelessWidget {
     this.showBorder = true,
     this.padding,
     this.scrollController,
+    this.addVerticalPadding = true,
     // Pangea#
     super.key,
   });
@@ -67,7 +69,12 @@ class MaxWidthBody extends StatelessWidget {
                       ),
                       clipBehavior: Clip.hardEdge,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        // #Pangea
+                        // padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        padding: addVerticalPadding
+                            ? const EdgeInsets.symmetric(vertical: 16.0)
+                            : EdgeInsets.zero,
+                        // Pangea#
                         child: child,
                       ),
                     ),
