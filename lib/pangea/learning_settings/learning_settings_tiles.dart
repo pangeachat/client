@@ -19,12 +19,14 @@ class LearningSettingsTiles extends StatelessWidget {
   final LearningSettingsViewModel viewModel;
   final ValueNotifier<String?> languageErrorNotifier;
   final TextEditingController aboutTextController;
+  final ExpansibleController? languageTileController;
 
   const LearningSettingsTiles({
     super.key,
     required this.viewModel,
     required this.languageErrorNotifier,
     required this.aboutTextController,
+    this.languageTileController,
   });
 
   @override
@@ -41,6 +43,7 @@ class LearningSettingsTiles extends StatelessWidget {
               builder: (context, error, _) => _LanguageSettingsExpansionTile(
                 viewModel: viewModel,
                 error: error,
+                tileController: languageTileController,
               ),
             ),
             _UserProfileExpansionTile(
@@ -64,13 +67,19 @@ class LearningSettingsTiles extends StatelessWidget {
 class _LanguageSettingsExpansionTile extends StatelessWidget {
   final LearningSettingsViewModel viewModel;
   final String? error;
+  final ExpansibleController? tileController;
 
-  const _LanguageSettingsExpansionTile({required this.viewModel, this.error});
+  const _LanguageSettingsExpansionTile({
+    required this.viewModel,
+    this.tileController,
+    this.error,
+  });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return ExpansionTile(
+      controller: tileController,
       initiallyExpanded: true,
       shape: Border(top: BorderSide(width: 1, color: Colors.transparent)),
       collapsedShape: Border(
