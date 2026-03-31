@@ -119,6 +119,7 @@ class LoginLoadingDialogState extends State<LoginLoadingDialog> {
         constraints: const BoxConstraints(maxWidth: 256),
         child: Column(
           spacing: 12.0,
+          mainAxisSize: .min,
           crossAxisAlignment: .center,
           children: [
             exception != null
