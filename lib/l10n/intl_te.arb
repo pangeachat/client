@@ -1775,7 +1775,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-03-30 13:31:11.959695",
+    "@@last_modified": "2026-03-31 12:48:01.621814",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -12043,6 +12043,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "సైన్ ఇన్ అవుతున్నది...",
+    "initializingLabel": "క్లయింట్ ప్రారంభిస్తున్నది...",
+    "migratingDatabaseLabel": "డేటాబేస్ మిగ్రేట్ చేస్తున్నది...",
+    "settingUpEncryptionLabel": "ఎన్‌క్రిప్షన్ సెట్ చేస్తున్నది...",
+    "loadingDataLabel": "ఖాతా డేటా లోడ్ చేస్తున్నది...",
+    "loginFinishedLabel": "చివరగా...",
+    "loginErrorLabel": "లాగిన్ సమయంలో ఒక లోపం జరిగింది",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

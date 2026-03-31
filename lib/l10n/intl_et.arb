@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-03-30 13:27:40.894392",
+    "@@last_modified": "2026-03-31 12:47:11.932034",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10919,6 +10919,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Sisselogimine...",
+    "initializingLabel": "Kliendi käivitamine...",
+    "migratingDatabaseLabel": "Andmebaasi migreerimine...",
+    "settingUpEncryptionLabel": "Krüpteerimise seadistamine...",
+    "loadingDataLabel": "Konto andmete laadimine...",
+    "loginFinishedLabel": "Lõpetamine...",
+    "loginErrorLabel": "Sisselogimise ajal tekkis viga",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

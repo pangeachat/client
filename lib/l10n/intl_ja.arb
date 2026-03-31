@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-03-30 13:33:17.211607",
+    "@@last_modified": "2026-03-31 12:48:34.167493",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11790,6 +11790,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "サインイン中...",
+    "initializingLabel": "クライアントを開始しています...",
+    "migratingDatabaseLabel": "データベースを移行しています...",
+    "settingUpEncryptionLabel": "暗号化を設定しています...",
+    "loadingDataLabel": "アカウントデータを読み込んでいます...",
+    "loginFinishedLabel": "最終化中...",
+    "loginErrorLabel": "ログイン中にエラーが発生しました",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

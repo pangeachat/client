@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-03-30 13:25:06.200467",
+    "@@last_modified": "2026-03-31 12:46:30.054436",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10922,6 +10922,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Iniciando sesión...",
+    "initializingLabel": "Comezando cliente...",
+    "migratingDatabaseLabel": "Migrando base de datos...",
+    "settingUpEncryptionLabel": "Configurando cifrado...",
+    "loadingDataLabel": "Cargando datos da conta...",
+    "loginFinishedLabel": "Finalizando...",
+    "loginErrorLabel": "Produciuse un erro durante a sesión",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

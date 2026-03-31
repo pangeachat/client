@@ -1,44 +1,22 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/login/login.dart';
+import 'package:fluffychat/pangea/authentication/login_loading_dialog.dart';
 import 'package:fluffychat/pangea/authentication/store_login_method_repo.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
-import 'package:fluffychat/widgets/fluffy_chat_app.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 void pLoginAction({
-  required LoginController controller,
+  required Function(bool) setLoadingSignIn,
+  required String username,
+  required String password,
   required BuildContext context,
 }) async {
-  final valid = controller.formKey.currentState!.validate();
-  if (!valid) return;
-
-  await showFutureLoadingDialog(
-    context: context,
-    future: () => _loginFuture(controller: controller, context: context),
-    onError: (e, s) {
-      controller.setLoadingSignIn(false);
-      return e is MatrixException
-          ? e.errorMessage
-          : L10n.of(context).oopsSomethingWentWrong;
-    },
-  );
-}
-
-Future<void> _loginFuture({
-  required LoginController controller,
-  required BuildContext context,
-}) async {
-  final matrix = Matrix.of(context);
-  controller.setLoadingSignIn(true);
-
-  String username = controller.usernameController.text.trim();
+  setLoadingSignIn(true);
+  await LoginMethodRepo.clearStoredLoginMethod();
   if (RegExp(r'^@(\w+):').hasMatch(username)) {
     username = RegExp(r'^@(\w+):').allMatches(username).elementAt(0).group(1)!;
   }
@@ -58,45 +36,33 @@ Future<void> _loginFuture({
     identifier = AuthenticationUserIdentifier(user: username);
   }
 
-  final client = await matrix.getLoginClient();
-
-  final redirect = client.onLoginStateChanged.stream
-      .where((state) => state == LoginState.loggedIn)
-      .first
-      .then((_) {
-        final route = FluffyChatApp.router.state.fullPath;
-        if (route == null || !route.contains("/rooms")) {
-          context.go("/rooms");
-        }
-      })
-      .timeout(const Duration(seconds: 30));
-
-  await LoginMethodRepo.clearStoredLoginMethod();
-
-  final loginRes = await client.login(
-    LoginType.mLoginPassword,
-    identifier: identifier,
-    // To stay compatible with older server versions
-    // ignore: deprecated_member_use
-    user: identifier.type == AuthenticationIdentifierTypes.userId
-        ? username
-        : null,
-    password: controller.passwordController.text.trim(),
-    initialDeviceDisplayName: PlatformInfos.clientName,
+  final client = await Matrix.of(context).getLoginClient();
+  await showAdaptiveDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) => LoginLoadingDialog(
+      client: client,
+      loginType: LoginType.mLoginPassword,
+      identifier: identifier,
+      password: password.trim(),
+      initialDeviceDisplayName: PlatformInfos.clientName,
+      onError: () => setLoadingSignIn(false),
+    ),
   );
 
-  if (client.onLoginStateChanged.value == LoginState.loggedIn) {
-    final route = FluffyChatApp.router.state.fullPath;
-    if (route == null || !route.contains("/rooms")) {
-      context.go("/rooms");
-    }
-  } else {
-    await redirect;
+  if (!client.isLogged()) {
+    setLoadingSignIn(false);
+    return;
+  }
+
+  if (client.userID == null) {
+    Logs().e("Login succeeded but userID is null");
+    return;
   }
 
   await LoginMethodRepo.storeLoginMethod(
     userID: client.userID!,
     method: LoginMethod.email,
   );
-  GoogleAnalytics.login("pangea", loginRes.userId);
+  GoogleAnalytics.login("pangea", client.userID!);
 }

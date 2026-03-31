@@ -2270,7 +2270,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-03-30 13:28:04.888018",
+    "@@last_modified": "2026-03-31 12:47:17.634530",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12038,6 +12038,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Prijavljam se...",
+    "initializingLabel": "Zagon odjemalca...",
+    "migratingDatabaseLabel": "Migracija baze podatkov...",
+    "settingUpEncryptionLabel": "Nastavljanje šifriranja...",
+    "loadingDataLabel": "Nalagam podatke računa...",
+    "loginFinishedLabel": "Zaključevanje...",
+    "loginErrorLabel": "Med prijavo je prišlo do napake",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

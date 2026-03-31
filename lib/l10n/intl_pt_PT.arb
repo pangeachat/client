@@ -3084,7 +3084,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-03-30 13:29:52.506825",
+    "@@last_modified": "2026-03-31 12:47:42.997118",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11998,6 +11998,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Entrando...",
+    "initializingLabel": "Iniciando cliente...",
+    "migratingDatabaseLabel": "Migrando banco de dados...",
+    "settingUpEncryptionLabel": "Configurando criptografia...",
+    "loadingDataLabel": "Carregando dados da conta...",
+    "loginFinishedLabel": "Finalizando...",
+    "loginErrorLabel": "Ocorreu um erro durante o login",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

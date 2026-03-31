@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-30 13:32:32.662745",
+    "@@last_modified": "2026-03-31 12:48:22.838831",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -11034,6 +11034,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "در حال ورود...",
+    "initializingLabel": "در حال راه‌اندازی کلاینت...",
+    "migratingDatabaseLabel": "در حال مهاجرت پایگاه داده...",
+    "settingUpEncryptionLabel": "در حال تنظیم رمزنگاری...",
+    "loadingDataLabel": "در حال بارگذاری داده‌های حساب...",
+    "loginFinishedLabel": "در حال نهایی‌سازی...",
+    "loginErrorLabel": "در حین ورود خطایی رخ داد",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

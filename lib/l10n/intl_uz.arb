@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-03-30 13:30:13.500780",
+    "@@last_modified": "2026-03-31 12:47:48.246121",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10926,6 +10926,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Kirish...",
+    "initializingLabel": "Mijozni ishga tushirish...",
+    "migratingDatabaseLabel": "Ma'lumotlar bazasini ko'chirish...",
+    "settingUpEncryptionLabel": "Shifrlashni sozlash...",
+    "loadingDataLabel": "Hisob ma'lumotlarini yuklash...",
+    "loginFinishedLabel": "Yakunlash...",
+    "loginErrorLabel": "Kirish jarayonida xato yuz berdi",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

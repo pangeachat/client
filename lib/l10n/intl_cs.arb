@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-03-30 13:28:49.121817",
+    "@@last_modified": "2026-03-31 12:47:28.586008",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -11476,6 +11476,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Přihlašování...",
+    "initializingLabel": "Spouštění klienta...",
+    "migratingDatabaseLabel": "Migrace databáze...",
+    "settingUpEncryptionLabel": "Nastavení šifrování...",
+    "loadingDataLabel": "Načítání dat účtu...",
+    "loginFinishedLabel": "Dokončování...",
+    "loginErrorLabel": "Během přihlášení došlo k chybě",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-03-30 13:32:44.238728",
+    "@@last_modified": "2026-03-31 12:48:25.420190",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -11031,6 +11031,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Logowanie...",
+    "initializingLabel": "Uruchamianie klienta...",
+    "migratingDatabaseLabel": "Migracja bazy danych...",
+    "settingUpEncryptionLabel": "Konfigurowanie szyfrowania...",
+    "loadingDataLabel": "Ładowanie danych konta...",
+    "loginFinishedLabel": "Finalizowanie...",
+    "loginErrorLabel": "Wystąpił błąd podczas logowania",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

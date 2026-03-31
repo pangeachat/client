@@ -3499,7 +3499,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-03-30 13:32:03.805058",
+    "@@last_modified": "2026-03-31 12:48:14.257409",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10588,6 +10588,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Bohor na...",
+    "initializingLabel": "Bohor client...",
+    "migratingDatabaseLabel": "Bohor database...",
+    "settingUpEncryptionLabel": "Bohor encryption...",
+    "loadingDataLabel": "Bohor account data...",
+    "loginFinishedLabel": "Bohor finalizing...",
+    "loginErrorLabel": "Bohor an error occurred during login",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-30 13:34:07.892321",
+    "@@last_modified": "2026-03-31 12:48:48.564503",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -12045,6 +12045,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Prijavljivanje...",
+    "initializingLabel": "Pokretanje klijenta...",
+    "migratingDatabaseLabel": "Migracija baze podataka...",
+    "settingUpEncryptionLabel": "Postavljanje enkripcije...",
+    "loadingDataLabel": "Učitavanje podataka o nalogu...",
+    "loginFinishedLabel": "Završavanje...",
+    "loginErrorLabel": "Došlo je do greške tokom prijavljivanja",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }

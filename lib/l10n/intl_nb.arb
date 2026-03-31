@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-30 13:28:59.361208",
+    "@@last_modified": "2026-03-31 12:47:31.147932",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10982,6 +10982,41 @@
         "placeholders": {}
     },
     "@spanTypeOther": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signingInLabel": "Logger inn...",
+    "initializingLabel": "Starter klient...",
+    "migratingDatabaseLabel": "Migrerer database...",
+    "settingUpEncryptionLabel": "Setter opp kryptering...",
+    "loadingDataLabel": "Laster inn kontodata...",
+    "loginFinishedLabel": "Ferdigstiller...",
+    "loginErrorLabel": "Det oppstod en feil under innlogging",
+    "@signingInLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@initializingLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@migratingDatabaseLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@settingUpEncryptionLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loadingDataLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginFinishedLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@loginErrorLabel": {
         "type": "String",
         "placeholders": {}
     }
