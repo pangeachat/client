@@ -1,13 +1,11 @@
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_permissions_settings/chat_permissions_settings.dart';
 import 'package:fluffychat/pages/chat_permissions_settings/permission_list_tile.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class ChatPermissionsSettingsView extends StatelessWidget {
   final ChatPermissionsSettingsController controller;
@@ -54,6 +52,8 @@ class ChatPermissionsSettingsView extends StatelessWidget {
               PangeaEventTypes.activityRole,
               PangeaEventTypes.activitySummary,
               PangeaEventTypes.coursePlan,
+              PangeaEventTypes.courseUser,
+              PangeaEventTypes.activityPlan,
             ];
 
             Map<String, dynamic> missingPowerLevels = Map<String, dynamic>.from(
@@ -79,7 +79,22 @@ class ChatPermissionsSettingsView extends StatelessWidget {
             );
 
             powerLevels.addAll(missingPowerLevels);
+            // Filter to only show top-level permissions defined in defaults
+            final defaultTopLevelKeys = defaults.entries
+                .where((e) => e.value is int)
+                .map((e) => e.key)
+                .toSet();
+            powerLevels.removeWhere(
+              (key, value) => !defaultTopLevelKeys.contains(key),
+            );
             eventsPowerLevels.addAll(missingEventsPowerLevels);
+            // Filter to only show event permissions defined in defaults
+            final defaultEventKeys =
+                (defaults.tryGetMap<String, Object?>('events') ?? {}).keys
+                    .toSet();
+            eventsPowerLevels.removeWhere(
+              (key, value) => !defaultEventKeys.contains(key),
+            );
             eventsPowerLevels.removeWhere(
               (key, value) => excludedEvents.contains(key),
             );
@@ -90,6 +105,22 @@ class ChatPermissionsSettingsView extends StatelessWidget {
                 (key, value) => !spaceEvents.contains(key),
               );
             }
+
+            final powerLevelSortOrder = [
+              'invite',
+              'kick',
+              'ban',
+              'events_default',
+              'redact',
+              'state_default',
+              'users_default',
+            ];
+            final sortedPowerLevels = powerLevels.entries.toList()
+              ..sort(
+                (a, b) => powerLevelSortOrder
+                    .indexOf(a.key)
+                    .compareTo(powerLevelSortOrder.indexOf(b.key)),
+              );
             // Pangea#
             return Column(
               children: [
@@ -113,7 +144,10 @@ class ChatPermissionsSettingsView extends StatelessWidget {
                 Column(
                   mainAxisSize: .min,
                   children: [
-                    for (final entry in powerLevels.entries)
+                    // #Pangea
+                    // for (final entry in powerLevels.entries)
+                    for (final entry in sortedPowerLevels)
+                      // Pangea#
                       PermissionsListTile(
                         permissionKey: entry.key,
                         permission: entry.value,
@@ -129,49 +163,48 @@ class ChatPermissionsSettingsView extends StatelessWidget {
                         // Pangea#
                       ),
                     // #Pangea
-                    if (!room.isSpace) ...[
-                      // Pangea#
-                      Divider(color: theme.dividerColor),
-                      ListTile(
-                        title: Text(
-                          L10n.of(context).notifications,
-                          style: TextStyle(
-                            color: theme.colorScheme.primary,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      Builder(
-                        builder: (context) {
-                          const key = 'rooms';
-                          final value =
-                              powerLevelsContent.containsKey('notifications')
-                              ? powerLevelsContent
-                                        .tryGetMap<String, Object?>(
-                                          'notifications',
-                                        )
-                                        ?.tryGet<int>('rooms') ??
-                                    0
-                              : 0;
-                          return PermissionsListTile(
-                            permissionKey: key,
-                            permission: value,
-                            category: 'notifications',
-                            canEdit: room.canChangePowerLevel,
-                            onChanged: (level) => controller.editPowerLevel(
-                              context,
-                              key,
-                              value,
-                              newLevel: level,
-                              category: 'notifications',
-                            ),
-                            // #Pangea
-                            room: room,
-                            // Pangea#
-                          );
-                        },
-                      ),
-                    ],
+                    // https://github.com/pangeachat/client/issues/6206
+                    // Divider(color: theme.dividerColor),
+                    // ListTile(
+                    //   title: Text(
+                    //     L10n.of(context).notifications,
+                    //     style: TextStyle(
+                    //       color: theme.colorScheme.primary,
+                    //       fontWeight: FontWeight.bold,
+                    //     ),
+                    //   ),
+                    // ),
+                    // Builder(
+                    //   builder: (context) {
+                    //     const key = 'rooms';
+                    //     final value =
+                    //         powerLevelsContent.containsKey('notifications')
+                    //         ? powerLevelsContent
+                    //                   .tryGetMap<String, Object?>(
+                    //                     'notifications',
+                    //                   )
+                    //                   ?.tryGet<int>('rooms') ??
+                    //               0
+                    //         : 0;
+                    //     return PermissionsListTile(
+                    //       permissionKey: key,
+                    //       permission: value,
+                    //       category: 'notifications',
+                    //       canEdit: room.canChangePowerLevel,
+                    //       onChanged: (level) => controller.editPowerLevel(
+                    //         context,
+                    //         key,
+                    //         value,
+                    //         newLevel: level,
+                    //         category: 'notifications',
+                    //       ),
+                    //       // #Pangea
+                    //       room: room,
+                    //       // Pangea#
+                    //     );
+                    //   },
+                    // ),
+                    // Pangea#
                     Divider(color: theme.dividerColor),
                     ListTile(
                       title: Text(
