@@ -17,8 +17,9 @@ class WebSubscriptionInfo extends CurrentSubscriptionInfo {
   @override
   Future<void> setCurrentSubscription() async {
     if (currentSubscriptionId != null) return;
+    RCSubscriptionResponseModel? rcResponse;
     try {
-      final rcResponse = await SubscriptionRepo.getCurrentSubscriptionInfo(
+      rcResponse = await SubscriptionRepo.getCurrentSubscriptionInfo(
         availableSubscriptionInfo.allProducts,
       );
 
@@ -28,16 +29,43 @@ class WebSubscriptionInfo extends CurrentSubscriptionInfo {
 
       if (currentSubscription != null) {
         expirationDate = DateTime.tryParse(currentSubscription.expiresDate);
-        unsubscribeDetectedAt =
-            currentSubscription.unsubscribeDetectedAt != null
-            ? DateTime.parse(currentSubscription.unsubscribeDetectedAt!)
-            : null;
+        if (expirationDate == null) {
+          ErrorHandler.logError(
+            m: "Failed to parse expiration date",
+            data: {
+              'expires_date': currentSubscription.expiresDate,
+              'subscription_response': rcResponse.toJson(),
+            },
+          );
+        }
+
+        final unsubscribedAtEntry = currentSubscription.unsubscribeDetectedAt;
+        if (unsubscribedAtEntry != null) {
+          unsubscribeDetectedAt = DateTime.tryParse(unsubscribedAtEntry);
+          if (unsubscribeDetectedAt == null) {
+            ErrorHandler.logError(
+              m: "Failed to parse unsubscribe detected at date",
+              data: {
+                'unsubscribe_detected_at': unsubscribedAtEntry,
+                'subscription_response': rcResponse.toJson(),
+              },
+            );
+          }
+        } else {
+          unsubscribeDetectedAt = null;
+        }
       }
     } catch (err) {
       if (err is ChoreoException) {
-        ErrorHandler.logError(e: err.errorMessage, data: {});
+        ErrorHandler.logError(
+          e: err.errorMessage,
+          data: {'subscription_response': rcResponse?.toJson()},
+        );
       } else {
-        ErrorHandler.logError(e: err, data: {});
+        ErrorHandler.logError(
+          e: err,
+          data: {'subscription_response': rcResponse?.toJson()},
+        );
       }
       currentSubscriptionId = AppConfig.errorSubscriptionId;
     }

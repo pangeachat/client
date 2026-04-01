@@ -185,6 +185,17 @@ class RCSubscriptionResponseModel {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'currentSubscriptionId': currentSubscriptionId,
+      'currentSubscription': currentSubscription?.toJson(),
+      'allEntitlements': allEntitlements,
+      'allSubscriptions': allSubscriptions?.map(
+        (key, value) => MapEntry(key, value.toJson()),
+      ),
+    };
+  }
+
   static List<String> getActiveEntitlements(Map<String, dynamic> json) {
     return json['entitlements'].entries
         .where(
@@ -255,5 +266,22 @@ class RCSubscription {
       storeTransactionId: json['store_transaction_id'],
       unsubscribeDetectedAt: json['unsubscribe_detected_at'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'autoResumeDate': autoResumeDate,
+      'billingIssuesDetectedAt': billingIssuesDetectedAt,
+      'expiresDate': expiresDate,
+      'gracePeriodExpiresDate': gracePeriodExpiresDate,
+      'isSandbox': isSandbox,
+      'originalPurchaseDate': originalPurchaseDate,
+      'periodType': periodType,
+      'purchaseDate': purchaseDate,
+      'refundedAt': refundedAt,
+      'store': store,
+      'storeTransactionId': storeTransactionId,
+      'unsubscribeDetectedAt': unsubscribeDetectedAt,
+    };
   }
 }
