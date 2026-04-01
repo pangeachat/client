@@ -250,6 +250,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   Widget build(BuildContext context) {
     final route = GoRouterState.of(context).fullPath;
     final inPractice = route?.contains("practice") == true;
+    final analyticsService = Matrix.of(context).analyticsDataService;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -260,7 +261,9 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
               if (widget.construct == null)
                 LearningProgressIndicators(selected: widget.view.indicator),
               Expanded(
-                child: widget.view == ConstructTypeEnum.morph
+                child: analyticsService.isInitializing
+                    ? Center(child: CircularProgressIndicator.adaptive())
+                    : widget.view == ConstructTypeEnum.morph
                     ? widget.construct == null
                           ? MorphAnalyticsListView(controller: this)
                           : MorphDetailsView(constructId: widget.construct!)
