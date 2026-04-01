@@ -138,15 +138,7 @@ class LoginLoadingDialogState extends State<LoginLoadingDialog> {
         ),
       ),
       actions: exception == null
-          ? [
-              AdaptiveDialogAction(
-                onPressed: () {
-                  widget.onError?.call();
-                  Navigator.of(context).pop();
-                },
-                child: Text(L10n.of(context).cancel),
-              ),
-            ]
+          ? null
           : [
               AdaptiveDialogAction(
                 onPressed: () => Navigator.of(
