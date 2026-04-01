@@ -4,6 +4,7 @@ import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_update_events.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
@@ -77,8 +78,16 @@ class AnalyticsUpdateDispatcher {
           .where((update) => update.key == constructId)
           .map((update) => update.value);
 
-  void sendActivityAnalyticsUpdate(String? activityAnalytics) =>
-      activityAnalyticsStream.add(activityAnalytics);
+  void sendActivityAnalyticsUpdate(String? activityAnalytics) {
+    if (activityAnalyticsStream.isClosed) {
+      ErrorHandler.logError(
+        e: "Attempted to send activity analytics update after stream was closed",
+        data: {"isLoggedIn": dataService.isLogged},
+      );
+      return;
+    }
+    activityAnalyticsStream.add(activityAnalytics);
+  }
 
   void sendLemmaInfoUpdate(
     ConstructIdentifier constructId,
@@ -97,6 +106,13 @@ class AnalyticsUpdateDispatcher {
   }
 
   void sendEmptyAnalyticsUpdate() {
+    if (constructUpdateStream.isClosed) {
+      ErrorHandler.logError(
+        e: "Attempted to send analytics update after stream was closed",
+        data: {"isLoggedIn": dataService.isLogged},
+      );
+      return;
+    }
     constructUpdateStream.add(AnalyticsStreamUpdate());
   }
 
