@@ -324,9 +324,6 @@ class PangeaMessageEvent {
   }
 
   SpeechToTextResponseModel? getSpeechToTextLocal() {
-    final rep = _speechToTextRepresentation?.content.speechToText;
-    if (rep != null) return rep;
-
     // Check for STT embedded directly in the audio event content
     // (user-sent audio embeds under userStt, bot-sent audio under botTranscription)
     final rawEmbeddedStt =
@@ -349,7 +346,7 @@ class PangeaMessageEvent {
       }
     }
 
-    return null;
+    return _speechToTextRepresentation?.content.speechToText;
   }
 
   SttTranslationModel? _getSttTranslationLocal(String langCode) {
@@ -444,9 +441,8 @@ class PangeaMessageEvent {
 
   Future<SpeechToTextResponseModel> requestSpeechToText(
     String l1Code,
-    String l2Code, {
-    bool sendEvent = true,
-  }) async {
+    String l2Code,
+  ) async {
     if (!isAudioMessage) {
       throw 'Calling getSpeechToText on non-audio message';
     }
@@ -475,10 +471,7 @@ class PangeaMessageEvent {
       throw result.error!;
     }
 
-    if (sendEvent) {
-      sendSttRepresentationEvent(result.result!);
-    }
-
+    _sendSttRepresentationEvent(result.result!);
     return result.result!;
   }
 
@@ -656,7 +649,7 @@ class PangeaMessageEvent {
     return repEvent?.eventId;
   }
 
-  Future<Event?> sendSttRepresentationEvent(
+  Future<Event?> _sendSttRepresentationEvent(
     SpeechToTextResponseModel stt,
   ) async {
     final representation = PangeaRepresentation(
