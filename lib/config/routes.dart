@@ -420,6 +420,7 @@ abstract class AppRoutes {
                     ? const EmptyAnalyticsPage()
                     : const ConstructAnalyticsView(
                         view: ConstructTypeEnum.vocab,
+                        showPracticeButton: true,
                       ),
               ),
               routes: [
@@ -432,6 +433,7 @@ abstract class AppRoutes {
                         ? const EmptyAnalyticsPage()
                         : const ConstructAnalyticsView(
                             view: ConstructTypeEnum.morph,
+                            showPracticeButton: true,
                           ),
                   ),
                   redirect: loggedOutRedirect,
@@ -476,6 +478,7 @@ abstract class AppRoutes {
                         ? const EmptyAnalyticsPage()
                         : const ConstructAnalyticsView(
                             view: ConstructTypeEnum.vocab,
+                            showPracticeButton: true,
                           ),
                   ),
                   redirect: loggedOutRedirect,
