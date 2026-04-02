@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:48:09.646630",
+    "@@last_modified": "2026-04-02 11:04:59.112189",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -3445,7 +3445,6 @@
     "trialPeriodExpired": "உங்கள் சோதனை காலம் முடிவடைந்தது",
     "translations": "மொழிபெயர்ப்புகள்",
     "definitions": "வரையறைகள்",
-    "subscribedToUnlockTools": "இணையமிடும் மொழிபெயர்ப்பு மற்றும் இலக்கண சரிபார்ப்பு, ஒலி வாசிப்பு, தனிப்பட்ட பயிற்சி செயல்பாடுகள் மற்றும் கற்றல் பகுப்பாய்வுகளை திறக்க சந்தா செய்யவும்!",
     "translationTooltip": "மொழிபெயர்ப்பு",
     "kickBotWarning": "பங்கேயா பாண்டியா பாட்டை இச்சந்தையில் இருந்து அகற்றும்.",
     "refresh": "புதுப்பி",
@@ -5665,10 +5664,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -9938,15 +9933,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "{lemma} க்கான எமோஜியை நீங்கள் அமைத்துள்ளீர்கள்! எதிர்காலத்தில் பயிற்சி செயல்களில் அந்த சொல்லை பிரதிநிதித்துவப்படுத்த எமோஜியை நாங்கள் பயன்படுத்துவோம்.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "உள்நுழைவுக்கு காத்திருக்கிறேன்",
     "ssoDialogDesc": "நாங்கள் நீங்கள் பாதுகாப்பாக உள்நுழைய புதிய தாவலை திறந்துள்ளோம்.",
     "ssoDialogHelpText": "🤔 புதிய தாவலை நீங்கள் காணவில்லை என்றால், தயவுசெய்து உங்கள் பாப்-அப் தடுப்பை சரிபார்க்கவும்.",
@@ -10608,12 +10594,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "பயிற்சி செயல்பாடுகளை திறக்கவும்",
     "hideEvents": "நிகழ்வுகளை மறைக்கவும்",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10757,11 +10738,6 @@
     },
     "myGender": "என் பாலினம்",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "வாவ், நீங்கள் அனைத்து கிடைக்கும் செயல்பாடுகளை முடித்துவிட்டீர்கள்! மேலும் பயிற்சி செயல்பாடுகளை திறக்க மேலும் செய்திகளை அனுப்பவும்.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11073,6 +11049,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "இணையதள மொழிபெயர்ப்பு மற்றும் இலக்கண சரிபார்ப்பு, ஒலிப்ப playback, தனிப்பயன் பயிற்சி பயிற்சிகள் மற்றும் கற்றல் பகுப்பாய்வுகளை திறக்க சந்தா செலுத்துங்கள்!",
+    "emojiSelectedSnackbar": "நீங்கள் {lemma} க்கான எமோஜியை அமைத்துள்ளீர்கள்! எதிர்காலத்தில் பயிற்சி பயிற்சிகளில் இந்த எமோஜியை வார்த்தையை பிரதிநிதித்துவப்படுத்த பயன்படுத்துவோம்.",
+    "unlockPracticeActivities": "பயிற்சி பயிற்சிகளை திறக்கவும்",
+    "noAnalyticsActivitiesAvailable": "வாவ், நீங்கள் அனைத்து கிடைக்கக்கூடிய செயல்பாடுகளை முடித்துவிட்டீர்கள்! மேலும் பயிற்சி பயிற்சிகளை திறக்க மேலும் செய்திகளை அனுப்பவும்.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:47:00.000259",
+    "@@last_modified": "2026-04-02 11:03:06.131225",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -2195,7 +2195,6 @@
     "trialPeriodExpired": "תקופת הניסיון שלך תמה",
     "translations": "תרגומים",
     "definitions": "הגדרות",
-    "subscribedToUnlockTools": "הירשם כדי לפתוח תרגום אינטראקטיבי ובדיקת דקדוק, השמעת קול, פעילויות תרגול מותאמות אישית וניתוחי למידה!",
     "translationTooltip": "תרגם",
     "kickBotWarning": "הסרת בוט פנגיאה תסיר את בוט השיחה משיחה זו.",
     "refresh": "רענן",
@@ -6621,10 +6620,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -10891,15 +10886,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "הגדרת את האימוג'י עבור {lemma}! נשתמש באימוג'י הזה כדי לייצג את המילה בפעילויות תרגול מעתה ואילך.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "ממתינים להשלים את הכניסה",
     "ssoDialogDesc": "פתחנו לשונית חדשה כדי שתוכל להיכנס בצורה מאובטחת.",
     "ssoDialogHelpText": "🤔 אם לא ראית את הלשונית החדשה, אנא בדוק את חוסם הפופ-אפ שלך.",
@@ -11571,12 +11557,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "שחרר פעילויות תרגול",
     "hideEvents": "הסתר אירועים",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11720,11 +11701,6 @@
     },
     "myGender": "המגדר שלי",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "וואו, סיימת את כל הפעילויות הזמינות! שלח עוד הודעות כדי לפתוח פעילויות תרגול נוספות.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -12036,6 +12012,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "הירשם כדי לפתוח תרגום אינטראקטיבי ובדיקת דקדוק, השמעת אודיו, תרגילים מותאמים אישית וניתוחי למידה!",
+    "emojiSelectedSnackbar": "בחרת את האימוג'י עבור {lemma}! נשתמש באימוג'י הזה כדי לייצג את המילה בתרגילים המעשיים מעתה ואילך.",
+    "unlockPracticeActivities": "פתח תרגילים מעשיים",
+    "noAnalyticsActivitiesAvailable": "וואו, סיימת את כל הפעילויות הזמינות! שלח עוד הודעות כדי לפתוח עוד תרגילים מעשיים.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

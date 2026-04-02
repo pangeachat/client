@@ -2391,7 +2391,6 @@
     "trialPeriodExpired": "O seu período de teste expirou",
     "translations": "traduções",
     "definitions": "definições",
-    "subscribedToUnlockTools": "Subscreva para desbloquear tradução interativa, verificação gramatical, reprodução de áudio, atividades de prática personalizadas e análises de aprendizagem!",
     "translationTooltip": "Traduzir",
     "kickBotWarning": "Remover o Pangea Bot irá eliminar o bot de conversa desta conversa.",
     "refresh": "Atualizar",
@@ -3084,7 +3083,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-03-31 12:47:42.997118",
+    "@@last_modified": "2026-04-02 11:04:15.876276",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6627,10 +6626,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10883,15 +10878,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Você definiu o emoji para {lemma}! Usaremos este emoji para representar a palavra nas atividades práticas daqui para frente.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Aguardando a conclusão do login",
     "ssoDialogDesc": "Abrimos uma nova aba para que você possa fazer login com segurança.",
     "ssoDialogHelpText": "🤔 Se você não viu a nova aba, verifique seu bloqueador de pop-ups.",
@@ -11568,12 +11554,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Desbloquear atividades de prática",
     "hideEvents": "Ocultar eventos",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11717,11 +11698,6 @@
     },
     "myGender": "Meu gênero",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Uau, você completou todas as atividades disponíveis! Envie mais mensagens para desbloquear mais atividades de prática.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -12033,6 +12009,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Assine para desbloquear tradução interativa e verificação gramatical, reprodução de áudio, exercícios de prática personalizados e análises de aprendizado!",
+    "emojiSelectedSnackbar": "Você definiu o emoji para {lemma}! Usaremos este emoji para representar a palavra nos exercícios de prática daqui em diante.",
+    "unlockPracticeActivities": "Desbloquear exercícios de prática",
+    "noAnalyticsActivitiesAvailable": "Uau, você completou todas as atividades disponíveis! Envie mais mensagens para desbloquear mais exercícios de prática.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

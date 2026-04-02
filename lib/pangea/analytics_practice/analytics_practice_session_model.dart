@@ -49,7 +49,7 @@ class ExampleMessageInfo {
   }
 }
 
-/// An extended example message that includes both formatted display spans and tokens to generate audio practice activities.
+/// An extended example message that includes both formatted display spans and tokens to generate audio analytics practice exercises.
 /// eventId/roomId are needed for audio playback.
 class AudioExampleMessage {
   final List<PangeaToken> tokens;

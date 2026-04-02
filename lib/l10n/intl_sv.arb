@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:48:27.763367",
+    "@@last_modified": "2026-04-02 11:05:26.022306",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -3131,7 +3131,6 @@
     "trialPeriodExpired": "Din provperiod har löpt ut",
     "translations": "översättningar",
     "definitions": "definitioner",
-    "subscribedToUnlockTools": "Prenumerera för att låsa upp interaktiv översättning och grammatikkontroll, ljuduppspelning, personliga övningsaktiviteter och inlärningsanalys!",
     "translationTooltip": "Översätt",
     "kickBotWarning": "Att sparka Pangea Bot kommer att ta bort konversationsboten från denna chatt.",
     "refresh": "Uppdatera",
@@ -6126,10 +6125,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10399,15 +10394,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Du har ställt in emojin för {lemma}! Vi kommer att använda denna emoji för att representera ordet i praktiska aktiviteter framöver.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Väntar på att inloggningen ska slutföras",
     "ssoDialogDesc": "Vi har öppnat en ny flik så att du kan logga in säkert.",
     "ssoDialogHelpText": "🤔 Om du inte såg den nya fliken, vänligen kontrollera din popup-blockerare.",
@@ -11079,12 +11065,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Lås upp övningsaktiviteter",
     "hideEvents": "Dölj evenemang",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11228,11 +11209,6 @@
     },
     "myGender": "Mitt kön",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, du har slutfört alla tillgängliga aktiviteter! Skicka fler meddelanden för att låsa upp fler övningsaktiviteter.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11544,6 +11520,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Prenumerera för att låsa upp interaktiv översättning och grammatikkontroll, ljuduppspelning, personliga övningar och lärandeanalys!",
+    "emojiSelectedSnackbar": "Du har ställt in emojin för {lemma}! Vi kommer att använda denna emoji för att representera ordet i övningar framöver.",
+    "unlockPracticeActivities": "Lås upp övningar",
+    "noAnalyticsActivitiesAvailable": "Wow, du har slutfört alla tillgängliga aktiviteter! Skicka fler meddelanden för att låsa upp fler övningar.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

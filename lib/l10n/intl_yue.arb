@@ -1021,7 +1021,6 @@
     "trialPeriodExpired": "試用期已過",
     "translations": "翻譯",
     "definitions": "定義",
-    "subscribedToUnlockTools": "訂閱以解鎖互動式翻譯同語法檢查、音頻播放、個人化練習活動同學習分析！",
     "translationTooltip": "翻譯",
     "kickBotWarning": "踢走 Pangea 機械人會將對話機械人從呢個聊天中移除。",
     "refresh": "重新整理",
@@ -1714,7 +1713,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-03-31 12:47:20.168960",
+    "@@last_modified": "2026-04-02 11:03:39.941697",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -6297,10 +6296,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10938,15 +10933,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "你已為 {lemma} 設定了表情符號！我們將在未來的練習活動中使用這個表情符號來代表這個詞。",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "等待登錄完成",
     "ssoDialogDesc": "我們已經打開了一個新標籤，以便您可以安全地登錄。",
     "ssoDialogHelpText": "🤔 如果您沒有看到新標籤，請檢查您的彈出窗口阻止程序。",
@@ -11623,12 +11609,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "解鎖練習活動",
     "hideEvents": "隱藏事件",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11772,11 +11753,6 @@
     },
     "myGender": "我的性別",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "哇，你已經完成了所有可用的活動！發送更多消息以解鎖更多練習活動。",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -12088,6 +12064,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "訂閱以解鎖互動翻譯和語法檢查、音頻播放、個性化練習練習和學習分析！",
+    "emojiSelectedSnackbar": "你已為 {lemma} 設置了表情符號！我們將使用這個表情符號來代表這個詞在未來的練習練習中。",
+    "unlockPracticeActivities": "解鎖練習練習",
+    "noAnalyticsActivitiesAvailable": "哇，你已經完成了所有可用的活動！發送更多消息以解鎖更多練習練習。",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

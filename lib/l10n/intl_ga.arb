@@ -3575,7 +3575,6 @@
     "trialPeriodExpired": "Tá do thriail imithe",
     "translations": "aistriúcháin",
     "definitions": "sainmhíniú",
-    "subscribedToUnlockTools": "Cláraigh chun aistriúchán idirghníomhach agus seiceáil gramadach, fuaimrian, gníomhaíochtaí cleachtadh pearsanta, agus anailísíocht foghlama a fháil!",
     "translationTooltip": "Aistriú",
     "kickBotWarning": "Beidh sé i gceist le buille Pangea Bot an bot comhrá a bhaint den chomhrá seo.",
     "refresh": "Athnuachan",
@@ -4256,7 +4255,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-03-31 12:48:51.054555",
+    "@@last_modified": "2026-04-02 11:05:58.582348",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -5784,10 +5783,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10057,15 +10052,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Tá an emoji socraithe agat do {lemma}! Úsáidfimid an emoji seo chun an focal a chur in iúl i ngníomhaíochtaí cleachtais amach anseo.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Ag fanacht le síniú isteach a chríochnú",
     "ssoDialogDesc": "Osclóimid cluaisín nua ionas gur féidir leat síniú isteach go sábháilte.",
     "ssoDialogHelpText": "🤔 Má chonaic tú an cluaisín nua, seiceáil le do thoil do bhacadóir pop-up.",
@@ -10499,12 +10485,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Díghlas gníomhaíochtaí cleachtais",
     "hideEvents": "Folaigh imeachtaí",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10652,11 +10633,6 @@
     },
     "myGender": "Mo ghné",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, tá tú tar éis gach gníomhaíocht atá ar fáil a chríochnú! Seol níos mó teachtaireachtaí chun gníomhaíochtaí cleachtaidh níos mó a dhíghlasáil.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -10968,6 +10944,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Cláraigh chun uirlisí idirghníomhacha a aistriú agus a sheiceáil gramadaí, a chluinstin fuaime, a chleachtadh pearsanta, agus anailísíocht foghlama a dhíghlasáil!",
+    "emojiSelectedSnackbar": "Tá an emoji socraithe agat do {lemma}! Úsáidfimid an emoji seo chun an focal a chur i láthair sna cleachtaí praiticiúla amach anseo.",
+    "unlockPracticeActivities": "Díghlasáil cleachtaí praiticiúla",
+    "noAnalyticsActivitiesAvailable": "Wow, tá gach gníomhaíocht ar fáil críochnaithe agat! Seol níos mó teachtaireachtaí chun níos mó cleachtaí praiticiúla a dhíghlasáil.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

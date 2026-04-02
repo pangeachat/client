@@ -368,7 +368,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
     if (feedback == null || feedback.isEmpty) return;
     ErrorHandler.logError(
-      e: 'Practice activity flagged',
+      e: 'Analytics practice exercise flagged',
       data: {'activity': activity.toJson(), 'feedback': feedback},
     );
 

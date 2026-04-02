@@ -3398,7 +3398,6 @@
     "trialPeriodExpired": "Η δοκιμαστική περίοδος σας έχει λήξει",
     "translations": "μεταφράσεις",
     "definitions": "ορισμοί",
-    "subscribedToUnlockTools": "Εγγραφείτε για να ξεκλειδώσετε διαδραστική μετάφραση και έλεγχο γραμματικής, αναπαραγωγή ήχου, εξατομικευμένες δραστηριότητες πρακτικής και αναλύσεις μάθησης!",
     "translationTooltip": "Μετάφραση",
     "kickBotWarning": "Το κλείσιμο του Pangea Bot θα αφαιρέσει το bot συνομιλίας από αυτήν τη συζήτηση.",
     "refresh": "Ανανέωση",
@@ -4079,7 +4078,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-03-31 12:48:30.764674",
+    "@@last_modified": "2026-04-02 11:05:30.286438",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -6588,10 +6587,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10861,15 +10856,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Έχετε ορίσει το emoji για {lemma}! Θα χρησιμοποιήσουμε αυτό το emoji για να εκπροσωπήσουμε τη λέξη σε πρακτικές δραστηριότητες στο εξής.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Περιμένοντας την ολοκλήρωση της σύνδεσης",
     "ssoDialogDesc": "Ανοίξαμε μια νέα καρτέλα ώστε να μπορέσετε να συνδεθείτε με ασφάλεια.",
     "ssoDialogHelpText": "🤔 Αν δεν είδατε τη νέα καρτέλα, παρακαλώ ελέγξτε τον αποκλειστή αναδυόμενων παραθύρων σας.",
@@ -11541,12 +11527,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Ξεκλειδώστε τις δραστηριότητες πρακτικής",
     "hideEvents": "Απόκρυψη εκδηλώσεων",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11690,11 +11671,6 @@
     },
     "myGender": "Το φύλο μου",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Ω, έχεις ολοκληρώσει όλες τις διαθέσιμες δραστηριότητες! Στείλε περισσότερα μηνύματα για να ξεκλειδώσεις περισσότερες δραστηριότητες πρακτικής.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -12006,6 +11982,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Εγγραφείτε για να ξεκλειδώσετε τη διαδραστική μετάφραση και τον έλεγχο γραμματικής, την αναπαραγωγή ήχου, τις εξατομικευμένες ασκήσεις πρακτικής και την ανάλυση μάθησης!",
+    "emojiSelectedSnackbar": "Έχετε ορίσει το emoji για {lemma}! Θα χρησιμοποιήσουμε αυτό το emoji για να εκπροσωπήσουμε τη λέξη στις ασκήσεις πρακτικής στο εξής.",
+    "unlockPracticeActivities": "Ξεκλειδώστε τις ασκήσεις πρακτικής",
+    "noAnalyticsActivitiesAvailable": "Ω, έχετε ολοκληρώσει όλες τις διαθέσιμες δραστηριότητες! Στείλτε περισσότερα μηνύματα για να ξεκλειδώσετε περισσότερες ασκήσεις πρακτικής.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

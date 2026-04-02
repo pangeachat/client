@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-03-31 12:47:48.246121",
+    "@@last_modified": "2026-04-02 11:04:24.579604",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -3577,7 +3577,6 @@
     "trialPeriodExpired": "Sizning sinov muddatingiz tugadi",
     "translations": "tarjimalar",
     "definitions": "taʼriflar",
-    "subscribedToUnlockTools": "Interaktiv tarjima va grammatik tekshirish, audio ijro, shaxsiy mashgʻulotlar va oʻrganish analitikasi uchun obuna boʻling!",
     "translationTooltip": "Tarjimaga",
     "kickBotWarning": "Pangea Botni chiqarib yuborish bu suhbatdagi botni olib tashlaydi.",
     "refresh": "Yangilash",
@@ -4542,7 +4541,6 @@
     "inOngoingActivity": "Sizda davom etayotgan faoliyat bor!",
     "requestRegeneration": "Qayta yaratishni so'rash",
     "optionalRegenerateReason": "(Ixtiyoriy) Sabab",
-    "emojiSelectedSnackbar": "Siz {lemma} uchun emoji belgiladingiz! Biz bu emojini kelajakdagi amaliyotlarda so'zni ifodalash uchun ishlatamiz.",
     "constructUseCorLMDesc": "To'g'ri so'z ma'nosi amaliyoti",
     "constructUseIncLMDesc": "Noto'g'ri so'z ma'nosi amaliyoti",
     "constructUseCorLADesc": "To'g'ri so'z audio amaliyoti",
@@ -6198,10 +6196,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10196,14 +10190,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@constructUseCorLMDesc": {
         "type": "String",
         "placeholders": {}
@@ -10496,12 +10482,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Amaliyot faoliyatlarini ochish",
     "hideEvents": "Voqealarni yashirish",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10645,11 +10626,6 @@
     },
     "myGender": "Mening jinsim",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Vau, siz barcha mavjud faoliyatlarni bajardingiz! Yana ko'proq xabar yuboring, shunda ko'proq amaliy faoliyatlarni ochasiz.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -10961,6 +10937,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Interaktiv tarjima va grammatika tekshirish, audio ijro, shaxsiy mashq mashqlari va o‘rganish tahlillari uchun obuna bo‘ling!",
+    "emojiSelectedSnackbar": "{lemma} uchun emoji o‘rnating! Biz bu emojini kelajakdagi mashq mashqlarida so‘zni ifodalash uchun ishlatamiz.",
+    "unlockPracticeActivities": "Mashq mashqlarini oching",
+    "noAnalyticsActivitiesAvailable": "Vau, siz barcha mavjud faoliyatlarni bajardingiz! Qo‘shimcha mashq mashqlari uchun ko‘proq xabar yuboring.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

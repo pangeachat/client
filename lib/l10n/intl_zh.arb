@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-03-31 12:48:16.815728",
+    "@@last_modified": "2026-04-02 11:05:10.761005",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -3570,7 +3570,6 @@
     "trialPeriodExpired": "您的试用期已过",
     "translations": "翻译",
     "definitions": "定义",
-    "subscribedToUnlockTools": "订阅以解锁互动翻译和语法检查、音频播放、个性化练习活动和学习分析！",
     "translationTooltip": "翻译",
     "kickBotWarning": "踢出Pangea机器人将会将对话机器人从此聊天中移除。",
     "refresh": "刷新",
@@ -5777,10 +5776,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10050,15 +10045,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "您已为 {lemma} 设置了表情符号！我们将使用此表情符号在今后的实践活动中表示该词。",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "等待登录完成",
     "ssoDialogDesc": "我们打开了一个新标签页，以便您可以安全地登录。",
     "ssoDialogHelpText": "🤔 如果您没有看到新标签页，请检查您的弹出窗口拦截器。",
@@ -10492,12 +10478,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "解锁练习活动",
     "hideEvents": "隐藏事件",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10641,11 +10622,6 @@
     },
     "myGender": "我的性别",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "哇，你已经完成了所有可用的活动！发送更多消息以解锁更多练习活动。",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -10957,6 +10933,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "订阅以解锁互动翻译和语法检查、音频播放、个性化练习和学习分析！",
+    "emojiSelectedSnackbar": "您已为 {lemma} 设置了表情符号！我们将使用此表情符号在今后的练习中表示该词。",
+    "unlockPracticeActivities": "解锁练习活动",
+    "noAnalyticsActivitiesAvailable": "哇，您已完成所有可用活动！发送更多消息以解锁更多练习。",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

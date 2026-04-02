@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:46:24.485516",
+    "@@last_modified": "2026-04-02 11:02:17.913687",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -3389,7 +3389,6 @@
     "trialPeriodExpired": "체험 기간이 만료되었습니다",
     "translations": "번역",
     "definitions": "정의",
-    "subscribedToUnlockTools": "구독하여 인터랙티브 번역, 문법 검사, 오디오 재생, 맞춤 연습 활동, 학습 분석을 이용하세요!",
     "translationTooltip": "번역",
     "kickBotWarning": "Pangea Bot을 제거하면 이 채팅에서 대화 봇이 삭제됩니다.",
     "refresh": "새로 고침",
@@ -5756,10 +5755,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10029,15 +10024,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "{lemma}에 대한 이모지를 설정했습니다! 앞으로 연습 활동에서 이 이모지를 사용하여 단어를 나타낼 것입니다.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "로그인 완료 대기 중",
     "ssoDialogDesc": "안전하게 로그인할 수 있도록 새 탭을 열었습니다.",
     "ssoDialogHelpText": "🤔 새 탭이 보이지 않으면 팝업 차단기를 확인하세요.",
@@ -10709,12 +10695,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "연습 활동 잠금 해제",
     "hideEvents": "이벤트 숨기기",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10858,11 +10839,6 @@
     },
     "myGender": "내 성별",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "와, 당신은 모든 가능한 활동을 완료했습니다! 더 많은 메시지를 보내서 더 많은 연습 활동을 잠금 해제하세요.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11174,6 +11150,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "대화형 번역 및 문법 검사, 오디오 재생, 개인화된 연습 문제 및 학습 분석을 잠금 해제하려면 구독하세요!",
+    "emojiSelectedSnackbar": "{lemma}에 대한 이모지를 설정했습니다! 앞으로 연습 문제에서 이 이모지를 사용하여 단어를 나타낼 것입니다.",
+    "unlockPracticeActivities": "연습 문제 잠금 해제",
+    "noAnalyticsActivitiesAvailable": "와우, 사용 가능한 모든 활동을 완료했습니다! 더 많은 메시지를 보내서 더 많은 연습 문제를 잠금 해제하세요.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

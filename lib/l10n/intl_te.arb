@@ -1094,7 +1094,6 @@
     "trialPeriodExpired": "మీ ట్రయల్ కాలం ముగిసింది",
     "translations": "అనువాదాలు",
     "definitions": "నిర్వచనాలు",
-    "subscribedToUnlockTools": "ఇంటరాక్టివ్ అనువాదం మరియు వ్యాకరణ తనిఖీ, ఆడియో ప్లేబ్యాక్, వ్యక్తిగత అభ్యాస కార్యకలాపాలు, మరియు అభ్యాస విశ్లేషణలను అన్లాక్ చేయడానికి సభ్యత్వం పొందండి!",
     "translationTooltip": "అనువాదం",
     "kickBotWarning": "పాంజియా బాట్‌ను తొలగించడం ఈ చాట్ నుండి సంభాషణ బాట్‌ను తీసివేస్తుంది.",
     "refresh": "పునఃప్రారంభించండి",
@@ -1775,7 +1774,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-03-31 12:48:01.621814",
+    "@@last_modified": "2026-04-02 11:04:47.014865",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6666,10 +6665,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -10933,15 +10928,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "{lemma} కోసం మీరు ఈ ఎమోజీని సెట్ చేసారు! మేము ఈ ఎమోజీని ప్రాక్టీస్ కార్యకలాపాలలో పదాన్ని ప్రాతినిధ్యం వహించడానికి ఉపయోగిస్తాము.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "సైన్ ఇన్ పూర్తి కావడానికి వేచి ఉంది",
     "ssoDialogDesc": "మీరు సురక్షితంగా సైన్ ఇన్ కావడానికి మేము కొత్త టాబ్‌ను తెరిచాము.",
     "ssoDialogHelpText": "🤔 మీరు కొత్త టాబ్‌ను చూడకపోతే, దయచేసి మీ పాప్-అప్ బ్లాకర్‌ను తనిఖీ చేయండి.",
@@ -11613,12 +11599,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "అభ్యాస కార్యకలాపాలను అన్లాక్ చేయండి",
     "hideEvents": "ఈవెంట్లను దాచండి",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11762,11 +11743,6 @@
     },
     "myGender": "నా లింగం",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "వావ్, మీరు అందుబాటులో ఉన్న అన్ని కార్యకలాపాలను పూర్తి చేసారు! మరింత ప్రాక్టీస్ కార్యకలాపాలను అన్లాక్ చేయడానికి మరింత సందేశాలు పంపండి.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -12078,6 +12054,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "ఇంటరాక్టివ్ అనువాదం మరియు వ్యాకరణ తనిఖీ, ఆడియో ప్లేబ్యాక్, వ్యక్తిగత ప్రాక్టీస్ వ్యాయామాలు మరియు అభ్యాస విశ్లేషణలను అన్లాక్ చేయడానికి సబ్‌స్క్రైబ్ చేయండి!",
+    "emojiSelectedSnackbar": "{lemma} కోసం మీరు ఈ ఎమోజీని సెట్ చేశారు! మేము ఈ ఎమోజీని ప్రాక్టీస్ వ్యాయామాలలో పదాన్ని ప్రాతినిధ్యం వహించడానికి ఉపయోగిస్తాము.",
+    "unlockPracticeActivities": "ప్రాక్టీస్ వ్యాయామాలను అన్లాక్ చేయండి",
+    "noAnalyticsActivitiesAvailable": "వావ్, మీరు అందుబాటులో ఉన్న అన్ని కార్యకలాపాలను పూర్తి చేశారు! మరింత ప్రాక్టీస్ వ్యాయామాలను అన్లాక్ చేయడానికి మరింత సందేశాలు పంపండి.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

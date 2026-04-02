@@ -1132,7 +1132,6 @@
     "trialPeriodExpired": "Vostre periodo de prova ha expirati",
     "translations": "traduceres",
     "definitions": "definitiones",
-    "subscribedToUnlockTools": "Subcribe pro unlockar traduction interactive e verification de grammatica, reproduction audio, actividades personalisate de practica, e analytics de apprendimento!",
     "translationTooltip": "Traducer",
     "kickBotWarning": "Expeller le Pangea Bot remove le bot de conversation de iste chat.",
     "refresh": "Recarregar",
@@ -1813,7 +1812,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-03-31 12:47:02.201987",
+    "@@last_modified": "2026-04-02 11:03:09.730703",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6652,10 +6651,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -10922,15 +10917,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Ați setat emoji-ul pentru {lemma}! Vom folosi acest emoji pentru a reprezenta cuvântul în activitățile practice de acum înainte.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Atingindo para a conclusão do login",
     "ssoDialogDesc": "Abrimos uma nova aba para que você possa fazer login com segurança.",
     "ssoDialogHelpText": "🤔 Se você não viu a nova aba, verifique seu bloqueador de pop-ups.",
@@ -11602,12 +11588,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Desbloquea actividades de práctica",
     "hideEvents": "Ocultar eventos",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11751,11 +11732,6 @@
     },
     "myGender": "Mi gendro",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, tu a completat toti activitatile disponibile! Trimite mai multe mesaje pentru a debloca mai multe activitati de practica.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -12067,6 +12043,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Abonează-te pentru a debloca traducerea interactivă și verificarea gramaticii, redarea audio, exerciții de practică personalizate și analize de învățare!",
+    "emojiSelectedSnackbar": "Ai setat emoji-ul pentru {lemma}! Vom folosi acest emoji pentru a reprezenta cuvântul în exercițiile de practică de acum înainte.",
+    "unlockPracticeActivities": "Deblochează exercițiile de practică",
+    "noAnalyticsActivitiesAvailable": "Wow, ai completat toate activitățile disponibile! Trimite mai multe mesaje pentru a debloca mai multe exerciții de practică.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

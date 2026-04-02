@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-03-31 12:47:25.615842",
+    "@@last_modified": "2026-04-02 11:03:47.198302",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -3570,7 +3570,6 @@
     "trialPeriodExpired": "Ваш пробний період закінчився",
     "translations": "переклади",
     "definitions": "визначення",
-    "subscribedToUnlockTools": "Підпишіться, щоб розблокувати інтерактивний переклад і перевірку граматики, відтворення аудіо, персоналізовані вправи та аналітику навчання!",
     "translationTooltip": "Перекласти",
     "kickBotWarning": "Вилучення бота Pangea видалить бота для обговорень з цього чату.",
     "refresh": "Оновити",
@@ -5777,10 +5776,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10050,15 +10045,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Ви встановили емодзі для {lemma}! Ми будемо використовувати цей емодзі для представлення слова в практичних завданнях у майбутньому.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Очікування завершення входу",
     "ssoDialogDesc": "Ми відкрили нову вкладку, щоб ви могли безпечно увійти.",
     "ssoDialogHelpText": "🤔 Якщо ви не побачили нову вкладку, будь ласка, перевірте блокувальник спливаючих вікон.",
@@ -10492,12 +10478,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Розблокувати практичні завдання",
     "hideEvents": "Сховати події",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10641,11 +10622,6 @@
     },
     "myGender": "Моя стать",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Вау, ви завершили всі доступні активності! Надсилайте більше повідомлень, щоб розблокувати більше практичних активностей.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -10957,6 +10933,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Підпишіться, щоб розблокувати інтерактивний переклад і перевірку граматики, відтворення аудіо, персоналізовані вправи та аналітику навчання!",
+    "emojiSelectedSnackbar": "Ви встановили емодзі для {lemma}! Ми будемо використовувати це емодзі для представлення слова у вправи надалі.",
+    "unlockPracticeActivities": "Розблокувати вправи",
+    "noAnalyticsActivitiesAvailable": "Вау, ви завершили всі доступні активності! Надішліть більше повідомлень, щоб розблокувати більше вправ.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

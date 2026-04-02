@@ -2872,7 +2872,6 @@
     "trialPeriodExpired": "Jūsų bandomasis laikotarpis pasibaigė",
     "translations": "vertimai",
     "definitions": "apibrėžimai",
-    "subscribedToUnlockTools": "Prenumeruokite, kad atrakintumėte interaktyvų vertimą ir gramatikos tikrinimą, garso atkūrimą, personalizuotas praktikos veiklas ir mokymosi analitikus!",
     "translationTooltip": "Vertimas",
     "kickBotWarning": "Išmetus Pangea botą, šis pokalbių robotas bus pašalintas iš šio pokalbio.",
     "refresh": "Atnaujinti",
@@ -3553,7 +3552,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-03-31 12:48:04.625807",
+    "@@last_modified": "2026-04-02 11:04:50.637018",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6425,10 +6424,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10698,15 +10693,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Jūs nustatėte emociją {lemma}! Mes naudosime šią emociją, kad atstovautume žodžiui praktinėse veiklose ateityje.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Laukiama, kol prisijungimas bus baigtas",
     "ssoDialogDesc": "Atidarėme naują skirtuką, kad galėtumėte saugiai prisijungti.",
     "ssoDialogHelpText": "🤔 Jei nematėte naujo skirtuko, patikrinkite savo iššokančių langų blokatorių.",
@@ -11378,12 +11364,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Atblokuoti praktikos veiklas",
     "hideEvents": "Slėpti renginius",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11527,11 +11508,6 @@
     },
     "myGender": "Mano lytis",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, jūs baigėte visas galimas veiklas! Siųskite daugiau žinučių, kad atrakintumėte daugiau praktikos veiklų.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11843,6 +11819,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Prenumeruokite, kad atrakintumėte interaktyvią vertimą ir gramatikos tikrinimą, garso atkūrimą, suasmenintus praktikos užsiėmimus ir mokymosi analizę!",
+    "emojiSelectedSnackbar": "Jūs nustatėte emociją {lemma}! Mes naudosime šią emociją, kad atstovautume žodžiui praktikos užsiėmimuose ateityje.",
+    "unlockPracticeActivities": "Atrakinti praktikos užsiėmimus",
+    "noAnalyticsActivitiesAvailable": "Oho, jūs baigėte visus prieinamus užsiėmimus! Siųskite daugiau žinučių, kad atrakintumėte daugiau praktikos užsiėmimų.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

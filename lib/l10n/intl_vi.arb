@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:48:07.184732",
+    "@@last_modified": "2026-04-02 11:04:55.160261",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -2139,7 +2139,6 @@
     "trialPeriodExpired": "Thời gian dùng thử đã hết hạn",
     "translations": "bản dịch",
     "definitions": "định nghĩa",
-    "subscribedToUnlockTools": "Đăng ký để mở khóa dịch tương tác, kiểm tra ngữ pháp, âm thanh, hoạt động và phân tích học tập!",
     "more": "Thêm",
     "translationTooltip": "Dịch",
     "kickBotWarning": "Đá Pangea Bot sẽ xóa bot hội thoại khỏi cuộc trò chuyện này.",
@@ -5727,15 +5726,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Bạn đã đặt biểu tượng cảm xúc cho {lemma}! Chúng tôi sẽ sử dụng biểu tượng cảm xúc này để đại diện cho từ trong các hoạt động thực hành trong tương lai.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Đang chờ hoàn tất đăng nhập",
     "ssoDialogDesc": "Chúng tôi đã mở một tab mới để bạn có thể đăng nhập một cách an toàn.",
     "ssoDialogHelpText": "🤔 Nếu bạn không thấy tab mới, vui lòng kiểm tra trình chặn popup của bạn.",
@@ -6407,12 +6397,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Mở khóa các hoạt động thực hành",
     "hideEvents": "Ẩn sự kiện",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -6556,11 +6541,6 @@
     },
     "myGender": "Giới tính của tôi",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, bạn đã hoàn thành tất cả các hoạt động có sẵn! Gửi thêm tin nhắn để mở khóa thêm các hoạt động thực hành.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -6872,6 +6852,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Đăng ký để mở khóa dịch thuật tương tác và kiểm tra ngữ pháp, phát âm thanh, bài tập thực hành cá nhân hóa và phân tích học tập!",
+    "emojiSelectedSnackbar": "Bạn đã đặt biểu tượng cảm xúc cho {lemma}! Chúng tôi sẽ sử dụng biểu tượng cảm xúc này để đại diện cho từ trong các bài tập thực hành trong tương lai.",
+    "unlockPracticeActivities": "Mở khóa bài tập thực hành",
+    "noAnalyticsActivitiesAvailable": "Wow, bạn đã hoàn thành tất cả các hoạt động có sẵn! Gửi thêm tin nhắn để mở khóa thêm bài tập thực hành.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

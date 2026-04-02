@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-03-31 12:47:11.932034",
+    "@@last_modified": "2026-04-02 11:03:25.270195",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -3580,7 +3580,6 @@
     "trialPeriodExpired": "Teie prooviperiood on lõppenud",
     "translations": "tõlked",
     "definitions": "definitsioonid",
-    "subscribedToUnlockTools": "Telli, et avada interaktiivne tõlge ja grammatika kontroll, heli taasesitus, isikupärastatud harjutustegevused ja õppeanalüütika!",
     "translationTooltip": "Tõlgi",
     "kickBotWarning": "Pangea bot'i eemaldamine eemaldab vestluse bot'i sellest vestlusest.",
     "refresh": "Värskenda",
@@ -5673,10 +5672,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10061,15 +10056,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Oled seadnud emotikoni {lemma} jaoks! Kasutame seda emotikoni sõna esindamiseks praktika tegevustes edaspidi.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Ootame sisselogimise lõpetamist",
     "ssoDialogDesc": "Avasime uue vahekaart, et saaksite turvaliselt sisse logida.",
     "ssoDialogHelpText": "🤔 Kui te ei näinud uut vahekaarti, kontrollige palun oma hüpikakna blokeerijat.",
@@ -10489,12 +10475,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Avage harjutuste tegevused",
     "hideEvents": "Peida üritused",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10638,11 +10619,6 @@
     },
     "myGender": "Minu sugu",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Vau, olete lõpetanud kõik saadaval olevad tegevused! Saatke rohkem sõnumeid, et avada rohkem harjutustegevusi.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -10954,6 +10930,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Telli, et avada interaktiivne tõlge ja grammatika kontroll, helimängimine, isikupärastatud harjutused ja õppimise analüüs!",
+    "emojiSelectedSnackbar": "Oled seadnud emotikoni {lemma} jaoks! Kasutame seda emotikoni sõna esindamiseks harjutustes edaspidi.",
+    "unlockPracticeActivities": "Avage harjutused",
+    "noAnalyticsActivitiesAvailable": "Vau, oled lõpetanud kõik saadaval olevad tegevused! Saada rohkem sõnumeid, et avada rohkem harjutusi.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

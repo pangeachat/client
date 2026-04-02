@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:48:39.873216",
+    "@@last_modified": "2026-04-02 11:05:41.793812",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -2687,7 +2687,6 @@
     "trialPeriodExpired": "Via provperiodo eksvalidiĝis",
     "translations": "tradukoj",
     "definitions": "difinoj",
-    "subscribedToUnlockTools": "Abonu por malŝlosi interagan tradukadon kaj gramatikan kontrolon, sonan ludon, personigitajn praktikajn agadojn kaj lernan analitikadon!",
     "translationTooltip": "Traduki",
     "kickBotWarning": "Forigi Pangea-boton forigos la konversaci-boton de ĉi tiu babilejo.",
     "refresh": "Refreŝigi",
@@ -6658,10 +6657,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10931,15 +10926,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Vi havas metitan la emoji por {lemma}! Ni uzos ĉi tiun emoji por reprezenti la vorton en praktikaj aktivadoj en la estonteco.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Atendante, ke ensaluto finiĝu",
     "ssoDialogDesc": "Ni malfermis novan langeton por ke vi povu ensaluti sekure.",
     "ssoDialogHelpText": "🤔 Se vi ne vidis la novan langeton, bonvolu kontroli vian popup-blokilon.",
@@ -11611,12 +11597,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Malŝlosi praktikajn aktivadojn",
     "hideEvents": "Kaŝi eventojn",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11760,11 +11741,6 @@
     },
     "myGender": "Mia genro",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, vi kompletigis ĉiujn disponeblajn aktivadojn! Sendu pli da mesaĝoj por malŝlosi pli da praktikaj aktivadoj.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -12076,6 +12052,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Abonu por malŝlosi interagajn tradukojn kaj gramatikajn kontroladojn, sonan ludon, personigitajn praktikajn ekzercojn, kaj lernan analitikon!",
+    "emojiSelectedSnackbar": "Vi agordis la emoji por {lemma}! Ni uzos ĉi tiun emoji por reprezenti la vorton en praktikaj ekzercoj en la estonteco.",
+    "unlockPracticeActivities": "Malŝlosi praktikajn ekzercojn",
+    "noAnalyticsActivitiesAvailable": "Ve, vi kompletigis ĉiujn disponeblajn aktivadojn! Sendu pli da mesaĝoj por malŝlosi pli da praktikaj ekzercoj.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

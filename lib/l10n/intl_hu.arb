@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-03-31 12:46:41.637341",
+    "@@last_modified": "2026-04-02 11:02:40.793671",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -3439,7 +3439,6 @@
     "trialPeriodExpired": "A próbaverziód lejárt",
     "translations": "fordítások",
     "definitions": "meghatározások",
-    "subscribedToUnlockTools": "Feliratkozás az interaktív fordítás és nyelvtani ellenőrzés, hang lejátszás, személyre szabott gyakorlati tevékenységek és tanulási elemzések feloldásához!",
     "translationTooltip": "Fordítás",
     "kickBotWarning": "A Pangea Bot kirúgása eltávolítja a beszélgetési botot ebből a csevegésből.",
     "refresh": "Újratöltés",
@@ -5666,10 +5665,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -9939,15 +9934,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Beállítottad a {lemma} emoji-t! Ezt az emojit fogjuk használni a szó képviseletére a gyakorlati tevékenységek során a jövőben.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Várakozás a bejelentkezés befejezésére",
     "ssoDialogDesc": "Megnyitottunk egy új lapot, hogy biztonságosan be tudj jelentkezni.",
     "ssoDialogHelpText": "🤔 Ha nem láttad az új lapot, kérlek ellenőrizd a felugró ablak blokkolódat.",
@@ -10619,12 +10605,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Gyakorlati tevékenységek feloldása",
     "hideEvents": "Események elrejtése",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10768,11 +10749,6 @@
     },
     "myGender": "A nemem",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, már minden elérhető tevékenységet teljesítettél! Küldj több üzenetet, hogy újabb gyakorló tevékenységeket oldhass fel.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11084,6 +11060,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Iratkozzon fel az interaktív fordítás és nyelvtani ellenőrzés, hanglejátszás, személyre szabott gyakorlófeladatok és tanulási elemzések feloldásához!",
+    "emojiSelectedSnackbar": "Beállította a(z) {lemma} emoji-t! Ezt az emojit fogjuk használni a szó képviseletére a jövőbeli gyakorlófeladatokban.",
+    "unlockPracticeActivities": "Gyakorlófeladatok feloldása",
+    "noAnalyticsActivitiesAvailable": "Wow, minden elérhető tevékenységet teljesítettél! Küldj több üzenetet, hogy további gyakorlófeladatokat oldhass fel.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

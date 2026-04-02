@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:47:22.740708",
+    "@@last_modified": "2026-04-02 11:03:43.623113",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -3458,7 +3458,6 @@
     "trialPeriodExpired": "Il tuo periodo di prova è scaduto",
     "translations": "traduzioni",
     "definitions": "definizioni",
-    "subscribedToUnlockTools": "Iscriviti per sbloccare la traduzione interattiva e il controllo grammaticale, la riproduzione audio, le attività di pratica personalizzate e le analisi di apprendimento!",
     "translationTooltip": "Traduci",
     "kickBotWarning": "Espellere il bot Pangea rimuoverà il bot di conversazione da questa chat.",
     "refresh": "Aggiorna",
@@ -5670,10 +5669,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -9943,15 +9938,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Hai impostato l'emoji per {lemma}! Useremo questa emoji per rappresentare la parola nelle attività pratiche in futuro.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "In attesa del completamento dell'accesso",
     "ssoDialogDesc": "Abbiamo aperto una nuova scheda in modo che tu possa accedere in modo sicuro.",
     "ssoDialogHelpText": "🤔 Se non hai visto la nuova scheda, controlla il tuo blocco dei popup.",
@@ -10583,12 +10569,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Sblocca le attività di pratica",
     "hideEvents": "Nascondi eventi",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10732,11 +10713,6 @@
     },
     "myGender": "Il mio genere",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, hai completato tutte le attività disponibili! Invia più messaggi per sbloccare ulteriori attività di pratica.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11048,6 +11024,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Iscriviti per sbloccare la traduzione interattiva e il controllo grammaticale, la riproduzione audio, esercizi di pratica personalizzati e analisi dell'apprendimento!",
+    "emojiSelectedSnackbar": "Hai impostato l'emoji per {lemma}! Useremo questa emoji per rappresentare la parola negli esercizi di pratica d'ora in poi.",
+    "unlockPracticeActivities": "Sblocca esercizi di pratica",
+    "noAnalyticsActivitiesAvailable": "Wow, hai completato tutte le attività disponibili! Invia più messaggi per sbloccare ulteriori esercizi di pratica.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

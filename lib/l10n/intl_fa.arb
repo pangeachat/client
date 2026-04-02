@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:48:22.838831",
+    "@@last_modified": "2026-04-02 11:05:17.423695",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -3444,7 +3444,6 @@
     "trialPeriodExpired": "دوره آزمایشی شما به پایان رسیده است",
     "translations": "ترجمه‌ها",
     "definitions": "تعاریف",
-    "subscribedToUnlockTools": "برای فعال‌سازی ترجمه تعاملی و بررسی گرامر، پخش صدا، فعالیت‌های تمرینی شخصی‌سازی‌شده و تحلیل‌های یادگیری، اشتراک کنید!",
     "translationTooltip": "ترجمه",
     "kickBotWarning": "اخراج ربات پنگئا، ربات گفتگو را از این چت حذف می‌کند.",
     "refresh": "تازه‌سازی",
@@ -5656,10 +5655,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -9929,15 +9924,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "شما ایموجی را برای {lemma} تنظیم کرده‌اید! ما از این ایموجی برای نمایش کلمه در فعالیت‌های عملی در آینده استفاده خواهیم کرد.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "در حال انتظار برای تکمیل ورود",
     "ssoDialogDesc": "ما یک تب جدید باز کردیم تا شما بتوانید به صورت امن وارد شوید.",
     "ssoDialogHelpText": "🤔 اگر تب جدید را ندیدید، لطفاً مسدودکننده پاپ آپ خود را بررسی کنید.",
@@ -10604,12 +10590,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "فعالیت‌های تمرینی را باز کنید",
     "hideEvents": "رویدادها را پنهان کنید",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10753,11 +10734,6 @@
     },
     "myGender": "جنسیت من",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "وای، شما تمام فعالیت‌های موجود را کامل کرده‌اید! پیام‌های بیشتری ارسال کنید تا فعالیت‌های تمرینی بیشتری را باز کنید.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11069,6 +11045,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "برای دسترسی به ترجمه تعاملی و بررسی گرامر، پخش صوتی، تمرینات شخصی‌سازی شده و تجزیه و تحلیل یادگیری، مشترک شوید!",
+    "emojiSelectedSnackbar": "شما ایموجی را برای {lemma} تنظیم کرده‌اید! ما از این ایموجی برای نمایش کلمه در تمرینات آینده استفاده خواهیم کرد.",
+    "unlockPracticeActivities": "دسترسی به تمرینات را باز کنید",
+    "noAnalyticsActivitiesAvailable": "وای، شما تمام فعالیت‌های موجود را کامل کرده‌اید! پیام‌های بیشتری ارسال کنید تا تمرینات بیشتری را باز کنید.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

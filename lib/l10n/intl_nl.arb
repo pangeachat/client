@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:48:12.004822",
+    "@@last_modified": "2026-04-02 11:05:02.775964",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -3569,7 +3569,6 @@
     "trialPeriodExpired": "Je proefperiode is verlopen",
     "translations": "vertalingen",
     "definitions": "definities",
-    "subscribedToUnlockTools": "Abonneer je om interactieve vertalingen en grammatica-controle, audioweergave, gepersonaliseerde oefenactiviteiten en leeranalyses te ontgrendelen!",
     "translationTooltip": "Vertalen",
     "kickBotWarning": "Het verwijderen van de Pangea Bot verwijdert de gesprekbot uit deze chat.",
     "refresh": "Verversen",
@@ -5777,10 +5776,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10050,15 +10045,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Je hebt de emoji voor {lemma} ingesteld! We zullen deze emoji gebruiken om het woord in de praktijkactiviteiten voortaan weer te geven.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Wachten op het voltooien van de aanmelding",
     "ssoDialogDesc": "We hebben een nieuw tabblad geopend zodat je veilig kunt inloggen.",
     "ssoDialogHelpText": "🤔 Als je het nieuwe tabblad niet hebt gezien, controleer dan je pop-up blocker.",
@@ -10492,12 +10478,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Ontgrendel oefenactiviteiten",
     "hideEvents": "Verberg evenementen",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10641,11 +10622,6 @@
     },
     "myGender": "Mijn geslacht",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wauw, je hebt alle beschikbare activiteiten voltooid! Stuur meer berichten om meer oefenactiviteiten te ontgrendelen.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -10957,6 +10933,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Abonneer je om interactieve vertaling en grammatica-controle, audio-afspeelmogelijkheden, gepersonaliseerde oefenopdrachten en leeranalyses te ontgrendelen!",
+    "emojiSelectedSnackbar": "Je hebt de emoji voor {lemma} ingesteld! We zullen deze emoji gebruiken om het woord in de oefenopdrachten voortaan weer te geven.",
+    "unlockPracticeActivities": "Ontgrendel oefenopdrachten",
+    "noAnalyticsActivitiesAvailable": "Wauw, je hebt alle beschikbare activiteiten voltooid! Stuur meer berichten om meer oefenopdrachten te ontgrendelen.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

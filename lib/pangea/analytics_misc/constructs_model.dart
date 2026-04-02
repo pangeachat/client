@@ -59,7 +59,7 @@ class ConstructAnalyticsModel {
 class OneConstructUse {
   String lemma;
 
-  // practice activities do not currently include form in the target_construct info
+  // practice exercises do not currently include form in the target_construct info
   // for that, this is nullable
   String? form;
 

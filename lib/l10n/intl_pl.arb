@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-03-31 12:48:25.420190",
+    "@@last_modified": "2026-04-02 11:05:22.332538",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -3447,7 +3447,6 @@
     "trialPeriodExpired": "Twój okres próbny wygasł",
     "translations": "tłumaczenia",
     "definitions": "definicje",
-    "subscribedToUnlockTools": "Subskrybuj, aby odblokować interaktywny tłumacz i sprawdzanie gramatyki, odtwarzanie dźwięku, spersonalizowane ćwiczenia oraz analitykę nauki!",
     "translationTooltip": "Tłumaczenie",
     "kickBotWarning": "Usunięcie Pangea Bota z tej rozmowy usunie bota konwersacyjnego z tego czatu.",
     "refresh": "Odśwież",
@@ -5658,10 +5657,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -9930,15 +9925,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Ustawiłeś emoji dla {lemma}! Będziemy używać tego emoji do reprezentowania słowa w nadchodzących aktywnościach praktycznych.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Czekam na zakończenie logowania",
     "ssoDialogDesc": "Otworzyliśmy nową kartę, abyś mógł się zalogować bezpiecznie.",
     "ssoDialogHelpText": "🤔 Jeśli nie widzisz nowej karty, sprawdź swój blokadę wyskakujących okienek.",
@@ -10601,12 +10587,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Odblokuj zajęcia praktyczne",
     "hideEvents": "Ukryj wydarzenia",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10750,11 +10731,6 @@
     },
     "myGender": "Moja płeć",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, ukończyłeś wszystkie dostępne aktywności! Wyślij więcej wiadomości, aby odblokować więcej aktywności do ćwiczeń.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11066,6 +11042,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Subskrybuj, aby odblokować interaktywną tłumaczenie i sprawdzanie gramatyki, odtwarzanie audio, spersonalizowane ćwiczenia praktyczne i analitykę uczenia się!",
+    "emojiSelectedSnackbar": "Ustawiłeś emoji dla {lemma}! Będziemy używać tego emoji do reprezentowania słowa w ćwiczeniach praktycznych w przyszłości.",
+    "unlockPracticeActivities": "Odblokuj ćwiczenia praktyczne",
+    "noAnalyticsActivitiesAvailable": "Wow, ukończyłeś wszystkie dostępne aktywności! Wyślij więcej wiadomości, aby odblokować więcej ćwiczeń praktycznych.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

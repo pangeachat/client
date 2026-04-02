@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-03-31 12:47:07.392062",
+    "@@last_modified": "2026-04-02 11:03:18.225420",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -3570,7 +3570,6 @@
     "trialPeriodExpired": "Zure proba epea amaitu da",
     "translations": "itzulpenak",
     "definitions": "definizioak",
-    "subscribedToUnlockTools": "Harpidetu interactiveko itzulpen eta gramatika egiaztapenak, audio jolasak, praktika jarduera pertsonalizatuak eta ikasketa analitikak irekitzeko!",
     "translationTooltip": "Itzuli",
     "kickBotWarning": "Pangea Bot botaren kenduak, elkarrizketa bot-a ezabatuko da this chat-etik.",
     "refresh": "Berrabiatu",
@@ -5777,10 +5776,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10050,15 +10045,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "{lemma} hitzaren emoji-a ezarri duzu! Etorkizuneko praktiketan hitz hori irudikatzeko emoji hau erabiliko dugu.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Saioa hasi arte itxaroten",
     "ssoDialogDesc": "Segurtasunez saioa hasi dezazun, fitxa berri bat ireki dugu.",
     "ssoDialogHelpText": "🤔 Fitxa berri hori ikusi ez baduzu, mesedez, begiratu zure pop-up blokeatzailea.",
@@ -10492,12 +10478,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Desblokeatu praktika jarduerak",
     "hideEvents": "Ezkutatu ekitaldiak",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10641,11 +10622,6 @@
     },
     "myGender": "Nire generoa",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, guztiak amaitu dituzu eskuragarri dauden jarduerak! Bidali gehiago mezu gehiago praktikatzeko jarduera gehiago irekitzeko.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -10957,6 +10933,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Harpidetu interaktiboa itzulpen eta gramatika egiaztapena, audio erreproduzitzeko, praktika pertsonalizatuak eta ikaskuntza analitikak desblokeatzeko!",
+    "emojiSelectedSnackbar": "Emoji hau ezarri duzu {lemma}rako! Praktika ariketetan hitza irudikatzeko emoji hau erabiliko dugu aurrerantzean.",
+    "unlockPracticeActivities": "Desblokeatu praktika ariketak",
+    "noAnalyticsActivitiesAvailable": "Wow, eskuragarri dauden jarduera guztiak osatu dituzu! Bidali gehiago mezu gehiago praktika ariketak desblokeatzeko.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

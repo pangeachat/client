@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-03-31 12:46:57.556701",
+    "@@last_modified": "2026-04-02 11:03:00.204322",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -3219,7 +3219,6 @@
     "trialPeriodExpired": "Vaše probno razdoblje je isteklo",
     "translations": "prijevodi",
     "definitions": "definicije",
-    "subscribedToUnlockTools": "Pretplatite se za otključavanje interaktivnog prijevoda i provjere gramatike, reprodukcije zvuka, personaliziranih aktivnosti vježbanja i analitike učenja!",
     "translationTooltip": "Prevedi",
     "kickBotWarning": "Izbacivanje Pangea Bota uklonit će chat bota iz ovog razgovora.",
     "refresh": "Osvježi",
@@ -6023,10 +6022,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10296,15 +10291,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Postavili ste emoji za {lemma}! Ovaj emoji ćemo koristiti za predstavljanje riječi u praktičnim aktivnostima ubuduće.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Čekanje na dovršetak prijave",
     "ssoDialogDesc": "Otvorili smo novu karticu kako biste se mogli sigurno prijaviti.",
     "ssoDialogHelpText": "🤔 Ako niste vidjeli novu karticu, provjerite svoj blokator iskačućih prozora.",
@@ -10976,12 +10962,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Otključaj aktivnosti vježbanja",
     "hideEvents": "Sakrij događaje",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11125,11 +11106,6 @@
     },
     "myGender": "Moj spol",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, završili ste sve dostupne aktivnosti! Pošaljite više poruka kako biste otključali više aktivnosti za vježbanje.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11441,6 +11417,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Pretplatite se za otključavanje interaktivnog prevođenja i provjere gramatike, reprodukcije zvuka, personaliziranih vježbi i analitike učenja!",
+    "emojiSelectedSnackbar": "Postavili ste emoji za {lemma}! Ovaj emoji ćemo koristiti za predstavljanje riječi u vježbama ubuduće.",
+    "unlockPracticeActivities": "Otključajte vježbe",
+    "noAnalyticsActivitiesAvailable": "Wow, završili ste sve dostupne aktivnosti! Pošaljite više poruka kako biste otključali više vježbi.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

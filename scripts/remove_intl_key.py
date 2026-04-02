@@ -66,7 +66,7 @@ def remove_key_from_arb_file(arb_file_path: str, key_to_remove: str) -> int:
     # Only write back if we actually removed something
     if removed_count > 0:
         with open(arb_file_path, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=2, ensure_ascii=False)
+            json.dump(data, f, indent=4, ensure_ascii=False)
             f.write('\n')  # Add trailing newline
     
     return removed_count

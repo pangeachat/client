@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:47:31.147932",
+    "@@last_modified": "2026-04-02 11:03:55.692000",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -3433,7 +3433,6 @@
     "trialPeriodExpired": "Prøveperioden din har utløpt",
     "translations": "oversettelser",
     "definitions": "definisjoner",
-    "subscribedToUnlockTools": "Abonner for å låse opp interaktiv oversettelse og grammatikkontroll, lydavspilling, tilpassede øvelsesaktiviteter og læringsanalyse!",
     "translationTooltip": "Oversett",
     "kickBotWarning": "Å sparke Pangea Bot vil fjerne samtale-boten fra denne chatten.",
     "refresh": "Oppdater",
@@ -5832,10 +5831,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10105,15 +10100,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Du har satt emoji for {lemma}! Vi vil bruke denne emojien for å representere ordet i praksisaktiviteter fremover.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Venter på at påloggingen skal fullføres",
     "ssoDialogDesc": "Vi åpnet en ny fane slik at du kan logge inn sikkert.",
     "ssoDialogHelpText": "🤔 Hvis du ikke så den nye fanen, vennligst sjekk popup-blokkeringen din.",
@@ -10552,12 +10538,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Lås opp øvingsaktiviteter",
     "hideEvents": "Skjul hendelser",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10701,11 +10682,6 @@
     },
     "myGender": "Kjønnet mitt",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, du har fullført alle tilgjengelige aktiviteter! Send flere meldinger for å låse opp flere øvingsaktiviteter.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11017,6 +10993,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Abonner for å låse opp interaktiv oversettelse og grammatikkontroll, lydavspilling, personlige øvelser og læringsanalyse!",
+    "emojiSelectedSnackbar": "Du har satt emoji for {lemma}! Vi vil bruke denne emojien for å representere ordet i øvelsene fremover.",
+    "unlockPracticeActivities": "Lås opp øvelser",
+    "noAnalyticsActivitiesAvailable": "Wow, du har fullført alle tilgjengelige aktiviteter! Send flere meldinger for å låse opp flere øvelser.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

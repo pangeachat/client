@@ -191,7 +191,7 @@ class PracticeController with ChangeNotifier {
           MatrixState.pangeaController.userController.userL2?.langCodeShort;
       if (l2 == null) {
         ErrorHandler.logError(
-          e: "User L2 is null when trying to log construct use for token ${token.text.content} in practice activity",
+          e: "User L2 is null when trying to log construct use for token ${token.text.content} in practice exercise",
           data: {
             "eventId": pangeaMessageEvent.eventId,
             "token": token.text.content,

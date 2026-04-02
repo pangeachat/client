@@ -3004,7 +3004,6 @@
     "trialPeriodExpired": "आपका परीक्षण अवधि समाप्त हो गई है",
     "translations": "अनुवाद",
     "definitions": "परिभाषाएँ",
-    "subscribedToUnlockTools": "इंटरैक्टिव अनुवाद और व्याकरण जांच, ऑडियो प्लेबैक, व्यक्तिगत अभ्यास गतिविधियों, और सीखने के विश्लेषण को अनलॉक करने के लिए सदस्यता लें!",
     "translationTooltip": "अनुवाद करें",
     "kickBotWarning": "पांगेआ बॉट को निकालने से इस चैट से बातचीत बॉट हटा दिया जाएगा।",
     "refresh": "रिफ्रेश करें",
@@ -3685,7 +3684,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-03-31 12:48:37.153923",
+    "@@last_modified": "2026-04-02 11:05:37.289855",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6258,10 +6257,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10531,15 +10526,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "आपने {lemma} के लिए इमोजी सेट किया है! हम आगे के अभ्यास गतिविधियों में इस इमोजी का उपयोग करेंगे।",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "साइन इन पूरा होने की प्रतीक्षा कर रहे हैं",
     "ssoDialogDesc": "हमने एक नया टैब खोला है ताकि आप सुरक्षित रूप से साइन इन कर सकें।",
     "ssoDialogHelpText": "🤔 यदि आपने नया टैब नहीं देखा, तो कृपया अपने पॉपअप ब्लॉकर की जांच करें।",
@@ -11211,12 +11197,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "प्रैक्टिस गतिविधियों को अनलॉक करें",
     "hideEvents": "इवेंट्स छिपाएँ",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11360,11 +11341,6 @@
     },
     "myGender": "मेरा लिंग",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "वाह, आपने सभी उपलब्ध गतिविधियाँ पूरी कर ली हैं! अधिक अभ्यास गतिविधियाँ अनलॉक करने के लिए अधिक संदेश भेजें।",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11676,6 +11652,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "इंटरएक्टिव अनुवाद और व्याकरण जांच, ऑडियो प्लेबैक, व्यक्तिगत अभ्यास व्यायाम, और सीखने के विश्लेषण को अनलॉक करने के लिए सदस्यता लें!",
+    "emojiSelectedSnackbar": "आपने {lemma} के लिए इमोजी सेट किया है! हम आगे के अभ्यास व्यायाम में इस इमोजी का उपयोग करेंगे।",
+    "unlockPracticeActivities": "अभ्यास व्यायाम अनलॉक करें",
+    "noAnalyticsActivitiesAvailable": "वाह, आपने सभी उपलब्ध गतिविधियाँ पूरी कर ली हैं! अधिक अभ्यास व्यायाम अनलॉक करने के लिए और संदेश भेजें।",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

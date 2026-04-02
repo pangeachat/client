@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-03-31 12:47:58.360464",
+    "@@last_modified": "2026-04-02 11:04:42.343504",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -3344,7 +3344,6 @@
     "trialPeriodExpired": "Deneme süreniz sona erdi",
     "translations": "çeviriler",
     "definitions": "tanımlar",
-    "subscribedToUnlockTools": "Etkileşimli çeviri ve dilbilgisi kontrolü, ses oynatma, kişiselleştirilmiş pratik aktiviteleri ve öğrenme analizlerini açmak için abone olun!",
     "translationTooltip": "Çeviri",
     "kickBotWarning": "Pangea Bot'u uzaklaştırmak bu sohbetteki sohbet botunu kaldıracaktır.",
     "refresh": "Yenile",
@@ -5870,10 +5869,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10143,15 +10138,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "{lemma} için emojiyi ayarladınız! Bu emojiyi, pratik aktivitelerde kelimeyi temsil etmek için kullanacağız.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Girişin tamamlanmasını bekliyoruz",
     "ssoDialogDesc": "Güvenli bir şekilde giriş yapabilmeniz için yeni bir sekme açtık.",
     "ssoDialogHelpText": "🤔 Yeni sekmeyi görmediyseniz, lütfen açılır pencere engelleyicinizi kontrol edin.",
@@ -10823,12 +10809,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Pratik etkinliklerini aç",
     "hideEvents": "Etkinlikleri gizle",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10972,11 +10953,6 @@
     },
     "myGender": "Cinsiyetim",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Vay canına, mevcut tüm etkinlikleri tamamladın! Daha fazla pratik etkinliği açmak için daha fazla mesaj gönder.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11288,6 +11264,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Etkileşimli çeviri ve dilbilgisi kontrolü, sesli oynatma, kişiselleştirilmiş pratik alıştırmalar ve öğrenme analitiği için abone olun!",
+    "emojiSelectedSnackbar": "{lemma} için emojiyi ayarladınız! Bu emojiyi, pratik alıştırmalarda kelimeyi temsil etmek için kullanacağız.",
+    "unlockPracticeActivities": "Pratik alıştırmaları aç",
+    "noAnalyticsActivitiesAvailable": "Vay canına, mevcut tüm aktiviteleri tamamladınız! Daha fazla pratik alıştırma açmak için daha fazla mesaj gönderin.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

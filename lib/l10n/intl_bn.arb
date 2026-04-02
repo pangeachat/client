@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:48:20.513669",
+    "@@last_modified": "2026-04-02 11:05:14.244925",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -3009,7 +3009,6 @@
     "trialPeriodExpired": "আপনার ট্রায়াল সময় শেষ হয়েছে",
     "translations": "অনুবাদ",
     "definitions": "সংজ্ঞা",
-    "subscribedToUnlockTools": "ইন্টারেক্টিভ অনুবাদ এবং ব্যাকরণ পরীক্ষা, অডিও প্লেব্যাক, ব্যক্তিগত অনুশীলন কার্যক্রম, এবং শেখার বিশ্লেষণ আনলক করতে সাবস্ক্রাইব করুন!",
     "translationTooltip": "অনুবাদ করুন",
     "kickBotWarning": "Pangea Bot কে সরিয়ে দিলে এই চ্যাট থেকে কথোপকথন বট সরিয়ে দেওয়া হবে।",
     "refresh": "রিফ্রেশ",
@@ -6254,10 +6253,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10527,15 +10522,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "আপনি {lemma} এর জন্য ইমোজি সেট করেছেন! আমরা ভবিষ্যতে অনুশীলন কার্যক্রমে এই ইমোজিটি শব্দটি উপস্থাপন করতে ব্যবহার করব।",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "সাইন ইন সম্পন্ন হওয়ার জন্য অপেক্ষা করছে",
     "ssoDialogDesc": "আমরা একটি নতুন ট্যাব খুলেছি যাতে আপনি নিরাপদে সাইন ইন করতে পারেন।",
     "ssoDialogHelpText": "🤔 যদি আপনি নতুন ট্যাবটি না দেখেন, দয়া করে আপনার পপআপ ব্লকারটি পরীক্ষা করুন।",
@@ -11207,12 +11193,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "অভ্যাস কার্যক্রম আনলক করুন",
     "hideEvents": "ইভেন্টগুলি লুকান",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11356,11 +11337,6 @@
     },
     "myGender": "আমার লিঙ্গ",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "ওয়াও, আপনি সমস্ত উপলব্ধ কার্যক্রম সম্পন্ন করেছেন! আরও বার্তা পাঠান যাতে আরও অনুশীলন কার্যক্রম আনলক হয়।",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11672,6 +11648,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "ইন্টারেক্টিভ অনুবাদ এবং ব্যাকরণ পরীক্ষা, অডিও প্লেব্যাক, ব্যক্তিগত অনুশীলন কার্যক্রম এবং শেখার বিশ্লেষণ আনলক করতে সাবস্ক্রাইব করুন!",
+    "emojiSelectedSnackbar": "আপনি {lemma} এর জন্য ইমোজি সেট করেছেন! আমরা ভবিষ্যতে অনুশীলন কার্যক্রমে এই ইমোজিটি শব্দটি উপস্থাপন করতে ব্যবহার করব।",
+    "unlockPracticeActivities": "অনুশীলন কার্যক্রম আনলক করুন",
+    "noAnalyticsActivitiesAvailable": "ওয়াও, আপনি সমস্ত উপলব্ধ কার্যক্রম সম্পন্ন করেছেন! আরও অনুশীলন কার্যক্রম আনলক করতে আরও বার্তা পাঠান।",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

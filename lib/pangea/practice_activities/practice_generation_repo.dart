@@ -81,7 +81,7 @@ class PracticeRepo {
         e: e,
         s: s,
         data: {
-          'message': 'Error fetching practice activity',
+          'message': 'Error fetching practice exercise',
           'request': req.toJson(),
         },
       );

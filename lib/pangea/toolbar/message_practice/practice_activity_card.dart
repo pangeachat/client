@@ -15,8 +15,8 @@ import 'package:fluffychat/pangea/toolbar/message_practice/practice_match_card.d
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-/// The wrapper for practice activity content.
-/// Handles the activities associated with a message,
+/// The wrapper for practice exercise content.
+/// Handles the exercises associated with a message,
 /// their navigation, and the management of completion records
 class PracticeActivityCard extends StatefulWidget {
   final PracticeTarget targetTokensAndActivityType;

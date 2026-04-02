@@ -3004,7 +3004,6 @@
     "trialPeriodExpired": "ระยะทดลองใช้งานของคุณหมดอายุแล้ว",
     "translations": "คำแปล",
     "definitions": "คำจำกัดความ",
-    "subscribedToUnlockTools": "สมัครสมาชิกเพื่อปลดล็อกการแปลแบบโต้ตอบและการตรวจสอบไวยากรณ์ การเล่นเสียง การฝึกฝนแบบส่วนตัว และวิเคราะห์การเรียนรู้!",
     "translationTooltip": "แปล",
     "kickBotWarning": "การเตะบอท Pangea จะเป็นการลบบอทสนทนาออกจากแชทนี้",
     "refresh": "รีเฟรช",
@@ -3685,7 +3684,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-03-31 12:47:40.567935",
+    "@@last_modified": "2026-04-02 11:04:12.987579",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6258,10 +6257,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10531,15 +10526,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "คุณได้ตั้งค่าอีโมจิสำหรับ {lemma} แล้ว! เราจะใช้อีโมจินี้เพื่อแทนคำในกิจกรรมการฝึกฝนต่อไป",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "รอการลงชื่อเข้าใช้ให้เสร็จสิ้น",
     "ssoDialogDesc": "เราได้เปิดแท็บใหม่เพื่อให้คุณลงชื่อเข้าใช้ได้อย่างปลอดภัย",
     "ssoDialogHelpText": "🤔 หากคุณไม่เห็นแท็บใหม่ โปรดตรวจสอบตัวบล็อกป๊อปอัปของคุณ",
@@ -11211,12 +11197,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "ปลดล็อกกิจกรรมการฝึก",
     "hideEvents": "ซ่อนกิจกรรม",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11360,11 +11341,6 @@
     },
     "myGender": "เพศของฉัน",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "ว้าว คุณได้ทำกิจกรรมทั้งหมดที่มีอยู่แล้ว! ส่งข้อความเพิ่มเติมเพื่อปลดล็อกกิจกรรมการฝึกฝนเพิ่มเติม.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11676,6 +11652,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "สมัครสมาชิกเพื่อปลดล็อกการแปลเชิงโต้ตอบและการตรวจสอบไวยากรณ์, การเล่นเสียง, แบบฝึกหัดการฝึกฝนที่ปรับให้เหมาะสม, และการวิเคราะห์การเรียนรู้!",
+    "emojiSelectedSnackbar": "คุณได้ตั้งค่าอีโมจิสำหรับ {lemma} แล้ว! เราจะใช้อีโมจินี้เพื่อแทนคำในแบบฝึกหัดการฝึกฝนต่อไป.",
+    "unlockPracticeActivities": "ปลดล็อกแบบฝึกหัดการฝึกฝน",
+    "noAnalyticsActivitiesAvailable": "ว้าว, คุณได้ทำกิจกรรมทั้งหมดที่มีอยู่แล้ว! ส่งข้อความเพิ่มเติมเพื่อปลดล็อกแบบฝึกหัดการฝึกฝนเพิ่มเติม.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

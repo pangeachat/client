@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-03-31 12:47:14.453161",
+    "@@last_modified": "2026-04-02 11:03:29.050173",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -3602,7 +3602,6 @@
     "trialPeriodExpired": "Ihre Testphase ist abgelaufen",
     "translations": "Übersetzungen",
     "definitions": "Definitionen",
-    "subscribedToUnlockTools": "Abonnieren Sie, um interaktive Übersetzungen und Grammatikprüfungen, Audio-Wiedergabe, personalisierte Übungsaktivitäten und Lernanalysen freizuschalten!",
     "translationTooltip": "Übersetzen",
     "kickBotWarning": "Das Entfernen des Pangea-Bots entfernt den Konversationsbot aus diesem Chat.",
     "refresh": "Aktualisieren",
@@ -5809,10 +5808,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10082,15 +10077,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Sie haben das Emoji für {lemma} festgelegt! Wir werden dieses Emoji verwenden, um das Wort in zukünftigen Übungsaktivitäten darzustellen.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Warten auf den Abschluss der Anmeldung",
     "ssoDialogDesc": "Wir haben einen neuen Tab geöffnet, damit Sie sich sicher anmelden können.",
     "ssoDialogHelpText": "🤔 Wenn Sie den neuen Tab nicht gesehen haben, überprüfen Sie bitte Ihren Popup-Blocker.",
@@ -10471,12 +10457,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Übungen freischalten",
     "hideEvents": "Ereignisse ausblenden",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10620,11 +10601,6 @@
     },
     "myGender": "Mein Geschlecht",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, du hast alle verfügbaren Aktivitäten abgeschlossen! Sende mehr Nachrichten, um weitere Übungsaktivitäten freizuschalten.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -10936,6 +10912,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Abonnieren Sie, um interaktive Übersetzungen und Grammatikprüfungen, Audio-Wiedergabe, personalisierte Übungsaufgaben und Lernanalysen freizuschalten!",
+    "emojiSelectedSnackbar": "Sie haben das Emoji für {lemma} festgelegt! Wir werden dieses Emoji verwenden, um das Wort in den zukünftigen Übungsaufgaben darzustellen.",
+    "unlockPracticeActivities": "Übungsaufgaben freischalten",
+    "noAnalyticsActivitiesAvailable": "Wow, Sie haben alle verfügbaren Aktivitäten abgeschlossen! Senden Sie weitere Nachrichten, um mehr Übungsaufgaben freizuschalten.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

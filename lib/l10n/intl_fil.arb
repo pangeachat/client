@@ -1872,7 +1872,6 @@
     "trialPeriodExpired": "Umalis na ang iyong trial period",
     "translations": "mga pagsasalin",
     "definitions": "mga depinisyon",
-    "subscribedToUnlockTools": "Mag-subscribe upang ma-unlock ang interaktibong pagsasalin at pagsusuri ng gramatika, pag-play ng audio, personalisadong mga aktibidad sa praktis, at analytics sa pag-aaral!",
     "translationTooltip": "Isalin",
     "kickBotWarning": "Ang pagtulak sa Pangea Bot ay mag-aalis sa bot ng pag-uusap mula sa chat na ito.",
     "refresh": "I-refresh",
@@ -2565,7 +2564,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-03-31 12:47:51.045508",
+    "@@last_modified": "2026-04-02 11:04:29.392711",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6570,10 +6569,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10826,15 +10821,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Naitakda mo na ang emoji para sa {lemma}! Gagamitin namin ang emoji na ito upang kumatawan sa salita sa mga aktibidad sa pagsasanay mula ngayon.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Naghihintay na makumpleto ang pag-sign in",
     "ssoDialogDesc": "Nagbukas kami ng bagong tab upang makapag-sign in ka nang ligtas.",
     "ssoDialogHelpText": "🤔 Kung hindi mo nakita ang bagong tab, mangyaring suriin ang iyong popup blocker.",
@@ -11511,12 +11497,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "I-unlock ang mga aktibidad sa pagsasanay",
     "hideEvents": "Itago ang mga kaganapan",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11660,11 +11641,6 @@
     },
     "myGender": "Ang aking kasarian",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, natapos mo na ang lahat ng available na aktibidad! Magpadala ng higit pang mga mensahe upang makakuha ng higit pang mga aktibidad sa pagsasanay.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11976,6 +11952,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Mag-subscribe upang i-unlock ang interactive na pagsasalin at pagsusuri ng gramatika, audio playback, personalized na mga ehersisyo sa pagsasanay, at analytics sa pag-aaral!",
+    "emojiSelectedSnackbar": "Naitakda mo na ang emoji para sa {lemma}! Gagamitin namin ang emoji na ito upang kumatawan sa salita sa mga ehersisyo sa pagsasanay mula ngayon.",
+    "unlockPracticeActivities": "I-unlock ang mga ehersisyo sa pagsasanay",
+    "noAnalyticsActivitiesAvailable": "Wow, natapos mo na ang lahat ng available na aktibidad! Magpadala ng higit pang mga mensahe upang i-unlock ang higit pang mga ehersisyo sa pagsasanay.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

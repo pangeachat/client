@@ -3560,7 +3560,6 @@
     "trialPeriodExpired": "Ваш пробны перыяд скончыўся",
     "translations": "пераклады",
     "definitions": "азначэнні",
-    "subscribedToUnlockTools": "Падпішыцеся, каб разблакаваць інтэрактыўны пераклад і праверку граматыкі, прайграванне аўдыё, персаналізаваныя практыкаванні і аналітыку навучання!",
     "translationTooltip": "Перакласці",
     "kickBotWarning": "Выдаленне бота Pangea з гэтага чата выдаліць бота размовы з гэтага чата.",
     "refresh": "Абнавіць",
@@ -4241,7 +4240,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-03-31 12:47:33.712157",
+    "@@last_modified": "2026-04-02 11:04:01.402731",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -5777,10 +5776,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10050,15 +10045,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Вы ўсталявалі эмодзі для {lemma}! Мы будзем выкарыстоўваць гэтае эмодзі для прадстаўлення слова ў практычных дзейнасцях у будучыні.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Чакаем, пакуль ўваход будзе завершаны",
     "ssoDialogDesc": "Мы адкрылі новую ўкладку, каб вы маглі бяспечна ўвайсці.",
     "ssoDialogHelpText": "🤔 Калі вы не ўбачылі новую ўкладку, калі ласка, праверце свой блакіроўшчык усплывальных акнаў.",
@@ -10506,12 +10492,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Разблакаваць практыкаванні",
     "hideEvents": "Схаваць падзеі",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10655,11 +10636,6 @@
     },
     "myGender": "Мая пол",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Вау, вы завяршылі ўсе даступныя дзейнасці! Адпраўце больш паведамленняў, каб адкрыць больш практыкаванняў.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -10971,6 +10947,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Падпішыцеся, каб разблакаваць інтэрактыўны пераклад і праверку граматы, прайграванне аўдыё, персаналізаваныя практыкаванні і аналітыку навучання!",
+    "emojiSelectedSnackbar": "Вы ўсталявалі эмодзі для {lemma}! Мы будзем выкарыстоўваць гэтае эмодзі, каб прадстаўляць слова ў практыкаваннях у будучыні.",
+    "unlockPracticeActivities": "Разблакаваць практыкаванні",
+    "noAnalyticsActivitiesAvailable": "Вау, вы завяршылі ўсе даступныя дзейнасці! Адпраўце больш паведамленняў, каб разблакаваць больш практыкаванняў.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

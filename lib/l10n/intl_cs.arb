@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-03-31 12:47:28.586008",
+    "@@last_modified": "2026-04-02 11:03:51.510954",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -3099,7 +3099,6 @@
     "trialPeriodExpired": "Vaše zkušební období vypršelo",
     "translations": "překlady",
     "definitions": "definice",
-    "subscribedToUnlockTools": "Přihlaste se k odemknutí interaktivního překladu a kontroly gramatiky, přehrávání zvuku, personalizovaných cvičení a analytiky učení!",
     "translationTooltip": "Překlad",
     "kickBotWarning": "Vyhození Pangea Bota odstraní konverzačního bota z tohoto chatu.",
     "refresh": "Obnovit",
@@ -6107,10 +6106,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10380,15 +10375,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Nastavili jste emoji pro {lemma}! Toto emoji použijeme k reprezentaci slova v praktických aktivitách v budoucnu.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Čekání na dokončení přihlášení",
     "ssoDialogDesc": "Otevřeli jsme novou kartu, abyste se mohli bezpečně přihlásit.",
     "ssoDialogHelpText": "🤔 Pokud jste novou kartu neviděli, zkontrolujte prosím blokátor vyskakovacích oken.",
@@ -11046,12 +11032,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Odemknout cvičební aktivity",
     "hideEvents": "Skrýt události",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11195,11 +11176,6 @@
     },
     "myGender": "Moje pohlaví",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, dokončili jste všechny dostupné aktivity! Pošlete více zpráv, abyste odemkli další cvičební aktivity.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11511,6 +11487,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Přihlaste se k odběru, abyste odemkli interaktivní překlad a kontrolu gramatiky, přehrávání zvuku, personalizované cvičení a analytiku učení!",
+    "emojiSelectedSnackbar": "Nastavili jste emoji pro {lemma}! Toto emoji použijeme k reprezentaci slova v cvičeních do budoucna.",
+    "unlockPracticeActivities": "Odemknout cvičení",
+    "noAnalyticsActivitiesAvailable": "Wow, dokončili jste všechny dostupné aktivity! Pošlete více zpráv, abyste odemkli další cvičení.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

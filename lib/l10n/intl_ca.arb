@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:47:36.881732",
+    "@@last_modified": "2026-04-02 11:04:06.460400",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -3411,7 +3411,6 @@
     "trialPeriodExpired": "El període de prova ha expirat",
     "translations": "traduccions",
     "definitions": "definicions",
-    "subscribedToUnlockTools": "Subscriu-te per desbloquejar la traducció interactiva i la comprovació gramatical, reproducció d'àudio, activitats de pràctica personalitzades i anàlisi d'aprenentatge!",
     "translationTooltip": "Tradueix",
     "kickBotWarning": "Treure el bot Pangea eliminarà el bot de conversa d'aquest xat.",
     "refresh": "Actualitza",
@@ -5690,10 +5689,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -9963,15 +9958,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Has establert l'emoji per {lemma}! Utilitzarem aquesta emoji per representar la paraula en les activitats pràctiques d'ara endavant.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Esperant que la signatura es completi",
     "ssoDialogDesc": "Hem obert una nova pestanya perquè puguis iniciar sessió de manera segura.",
     "ssoDialogHelpText": "🤔 Si no has vist la nova pestanya, si us plau, comprova el teu bloquejador de finestres emergents.",
@@ -10643,12 +10629,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Desbloqueja les activitats de pràctica",
     "hideEvents": "Amaga esdeveniments",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10792,11 +10773,6 @@
     },
     "myGender": "El meu gènere",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Uau, has completat totes les activitats disponibles! Envia més missatges per desbloquejar més activitats de pràctica.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11108,6 +11084,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Subscriu-te per desbloquejar la traducció interactiva i la verificació gramatical, la reproducció d'àudio, els exercicis de pràctica personalitzats i l'analítica d'aprenentatge!",
+    "emojiSelectedSnackbar": "Has establert l'emoji per a {lemma}! Utilitzarem aquest emoji per representar la paraula en els exercicis de pràctica d'ara endavant.",
+    "unlockPracticeActivities": "Desbloqueja exercicis de pràctica",
+    "noAnalyticsActivitiesAvailable": "Uau, has completat totes les activitats disponibles! Envia més missatges per desbloquejar més exercicis de pràctica.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

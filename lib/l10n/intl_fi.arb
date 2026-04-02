@@ -3540,7 +3540,6 @@
     "trialPeriodExpired": "Kokeilujaksonne on päättynyt",
     "translations": "käännökset",
     "definitions": "määritelmät",
-    "subscribedToUnlockTools": "Viritä tilaukseen saadaksesi käyttöön vuorovaikutteinen käännös ja kielioppitarkistus, äänen toisto, henkilökohtaiset harjoitustoiminnot ja oppimisanalyyttiset tiedot!",
     "translationTooltip": "Käännä",
     "kickBotWarning": "Pangea-botin poistaminen poistaa keskustelubotin tästä keskustelusta.",
     "refresh": "Päivitä",
@@ -4221,7 +4220,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-03-31 12:46:33.530750",
+    "@@last_modified": "2026-04-02 11:02:31.541407",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -5757,10 +5756,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10030,15 +10025,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Olet asettanut emojin {lemma} varten! Käytämme tätä emojia sanan edustamiseen käytännön aktiviteeteissa tulevaisuudessa.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Odotetaan kirjautumisen valmistumista",
     "ssoDialogDesc": "Avasimme uuden välilehden, jotta voit kirjautua sisään turvallisesti.",
     "ssoDialogHelpText": "🤔 Jos et nähnyt uutta välilehteä, tarkista ponnahdusikkunoiden estäjäsi.",
@@ -10541,12 +10527,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Avaa harjoitustoiminnot",
     "hideEvents": "Piilota tapahtumat",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10690,11 +10671,6 @@
     },
     "myGender": "Oma sukupuoleni",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Vau, olet suorittanut kaikki saatavilla olevat aktiviteetit! Lähetä lisää viestejä avatakseksesi lisää harjoitustoimintoja.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11006,6 +10982,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Tilaa avatakseen interaktiivisen käännöksen ja kieliopin tarkistuksen, äänentoiston, henkilökohtaiset harjoitustehtävät ja oppimisanalytiikan!",
+    "emojiSelectedSnackbar": "Olet asettanut emojin {lemma}! Käytämme tätä emojia edustamaan sanaa harjoitustehtävissä jatkossa.",
+    "unlockPracticeActivities": "Avaa harjoitustehtävät",
+    "noAnalyticsActivitiesAvailable": "Vau, olet suorittanut kaikki saatavilla olevat aktiviteetit! Lähetä lisää viestejä avatakseen lisää harjoitustehtäviä.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

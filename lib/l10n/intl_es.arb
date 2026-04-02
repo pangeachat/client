@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-03-31 12:46:27.241711",
+    "@@last_modified": "2026-04-02 11:02:21.282793",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -3569,7 +3569,6 @@
         }
     },
     "clickMessageBody": "Haz clic en un mensaje para herramientas de idioma como traducción, reproducción y más!",
-    "subscribedToUnlockTools": "¡Suscríbete para desbloquear la traducción interactiva y la verificación gramatical, la reproducción de audio, las actividades de práctica personalizadas y la analítica de aprendizaje!",
     "practice": "Práctica",
     "speechToTextBody": "Para los mensajes de voz, puedes ver una transcripción y la puntuación de palabras por minuto del orador.",
     "l1TranslationBody": "Los mensajes en tu idioma base no serán traducidos.",
@@ -6841,15 +6840,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "¡Has establecido el emoji para {lemma}! Usaremos este emoji para representar la palabra en las actividades prácticas de ahora en adelante.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Esperando a que se complete el inicio de sesión",
     "ssoDialogDesc": "Abrimos una nueva pestaña para que puedas iniciar sesión de forma segura.",
     "ssoDialogHelpText": "🤔 Si no viste la nueva pestaña, por favor revisa tu bloqueador de ventanas emergentes.",
@@ -7418,12 +7408,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Desbloquear actividades de práctica",
     "hideEvents": "Ocultar eventos",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -7567,11 +7552,6 @@
     },
     "myGender": "Mi género",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "¡Vaya, has completado todas las actividades disponibles! Envía más mensajes para desbloquear más actividades de práctica.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -7883,6 +7863,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "¡Suscríbete para desbloquear la traducción interactiva y la verificación gramatical, la reproducción de audio, ejercicios de práctica personalizados y análisis de aprendizaje!",
+    "emojiSelectedSnackbar": "¡Has establecido el emoji para {lemma}! Usaremos este emoji para representar la palabra en los ejercicios de práctica de ahora en adelante.",
+    "unlockPracticeActivities": "Desbloquear ejercicios de práctica",
+    "noAnalyticsActivitiesAvailable": "¡Vaya, has completado todas las actividades disponibles! Envía más mensajes para desbloquear más ejercicios de práctica.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

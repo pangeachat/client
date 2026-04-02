@@ -2878,7 +2878,6 @@
     "trialPeriodExpired": "ཁྱེད་ཀྱི་ལོག་ལོག་ཚེས་བརྒྱབ་ཡོད།",
     "translations": "འབྲེལ་བའི་སྒྲོམ",
     "definitions": "ལོག་སྟོན",
-    "subscribedToUnlockTools": "ལོག་ལས་སྤྱོད་ལོག་ལས་སྤྱོད་ལོག་ལས་སྤྱོད་ལོག་ལས་སྤྱོད་ལོག",
     "translationTooltip": "འབྲེལ་བའི་སྒྲོམ",
     "versionFetchError": "རྒྱག་རྩོམ་བརྗོད་འབད་ནས་འགྱོ་མི་ཚུལ།",
     "versionText": "རྒྱག་རྩོམ།: {version}+{buildNumber}",
@@ -3499,7 +3498,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-03-31 12:48:14.257409",
+    "@@last_modified": "2026-04-02 11:05:07.585871",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -5779,10 +5778,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -9199,15 +9194,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "A’n setti emoji për {lemma}! Ne do ta përdorim këtë emoji për të përfaqësuar fjalën në aktivitetet praktike në vazhdim.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Nunggu kanggo mlebu rampung",
     "ssoDialogDesc": "Kita wis mbukak tab anyar supaya sampeyan bisa mlebu kanthi aman.",
     "ssoDialogHelpText": "🤔 Yen sampeyan ora ndeleng tab anyar, mangga priksa pemblokir popup sampeyan.",
@@ -9879,12 +9865,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Unlock practice activities",
     "hideEvents": "Hide events",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10030,13 +10011,6 @@
     "@myGender": {
         "type": "String",
         "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, {username}, you have completed all available activities! Send more messages to unlock more practice activities.",
-    "@noAnalyticsActivitiesAvailable": {
-        "type": "String",
-        "placeholders": {
-            "username": {}
-        }
     },
     "profile": "Profili",
     "@profile": {
@@ -10623,6 +10597,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Abonezhu na desbloquear tradução interativa e verificação gramatical, reprodução de áudio, exercícios de prática personalizados e análises de aprendizado!",
+    "emojiSelectedSnackbar": "Você definiu o emoji para {lemma}! Usaremos este emoji para representar a palavra nos exercícios de prática daqui para frente.",
+    "unlockPracticeActivities": "Desbloquear exercícios de prática",
+    "noAnalyticsActivitiesAvailable": "Uau, você completou todas as atividades disponíveis! Envie mais mensagens para desbloquear mais exercícios de prática.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }

@@ -39,7 +39,7 @@ enum ConstructUseTypeEnum {
   incIGC,
   ignIGC,
 
-  /// word meaning in context practice activity
+  /// word meaning practice exercise
   corPA,
   ignPA,
   incPA,
@@ -255,7 +255,7 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
   /// Users get slightly negative points for incorrect uses to encourage them to be more careful
   /// They get the most points for direct uses without help.
   /// They get a small amount of points for correct uses in interactions.
-  /// Practice activities get a moderate amount of points.
+  /// Practice exercises get a moderate amount of points.
   int get pointValue {
     switch (this) {
       case ConstructUseTypeEnum.corPA:
@@ -506,7 +506,7 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
     }
   }
 
-  /// Whether this is an incorrect answer in any practice activity.
+  /// Whether this is an incorrect answer in any practice exercise.
   bool get isIncorrectPractice {
     switch (this) {
       case ConstructUseTypeEnum.incPA:

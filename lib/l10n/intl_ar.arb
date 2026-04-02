@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-03-31 12:47:56.014028",
+    "@@last_modified": "2026-04-02 11:04:37.935306",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -3325,7 +3325,6 @@
     "trialPeriodExpired": "انتهت فترة التجربة الخاصة بك",
     "translations": "الترجمات",
     "definitions": "التعريفات",
-    "subscribedToUnlockTools": "اشترك لفتح الترجمة التفاعلية وفحص القواعد، تشغيل الصوت، أنشطة الممارسة الشخصية، وتحليلات التعلم!",
     "translationTooltip": "ترجمة",
     "kickBotWarning": "إزالة بوت بانجيا من الدردشة سيؤدي إلى حذف روبوت المحادثة من هذه الدردشة.",
     "refresh": "تحديث",
@@ -5879,10 +5878,6 @@
         "placeholders": {}
     },
     "@definitions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
     },
@@ -10152,15 +10147,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "لقد قمت بتعيين الرموز التعبيرية لـ {lemma}! سنستخدم هذا الرمز التعبيري لتمثيل الكلمة في أنشطة الممارسة في المستقبل.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "انتظار اكتمال تسجيل الدخول",
     "ssoDialogDesc": "لقد فتحنا علامة تبويب جديدة حتى تتمكن من تسجيل الدخول بأمان.",
     "ssoDialogHelpText": "🤔 إذا لم ترَ علامة التبويب الجديدة، يرجى التحقق من مانع النوافذ المنبثقة.",
@@ -10832,12 +10818,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "فتح أنشطة الممارسة",
     "hideEvents": "إخفاء الأحداث",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10981,11 +10962,6 @@
     },
     "myGender": "جنسى",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "واو، لقد أكملت جميع الأنشطة المتاحة! أرسل المزيد من الرسائل لفتح المزيد من أنشطة الممارسة.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11297,6 +11273,30 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "اشترك لفتح الترجمة التفاعلية وفحص القواعد، وتشغيل الصوت، وتمارين الممارسة الشخصية، وتحليلات التعلم!",
+    "emojiSelectedSnackbar": "لقد قمت بتعيين الرموز التعبيرية لـ {lemma}! سنستخدم هذه الرموز التعبيرية لتمثيل الكلمة في تمارين الممارسة من الآن فصاعدًا.",
+    "unlockPracticeActivities": "فتح تمارين الممارسة",
+    "noAnalyticsActivitiesAvailable": "واو، لقد أكملت جميع الأنشطة المتاحة! أرسل المزيد من الرسائل لفتح المزيد من تمارين الممارسة.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     }
