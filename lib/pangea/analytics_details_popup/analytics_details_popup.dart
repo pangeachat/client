@@ -34,10 +34,16 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ConstructAnalyticsView extends StatefulWidget {
-  const ConstructAnalyticsView({super.key, required this.view, this.construct});
+  const ConstructAnalyticsView({
+    super.key,
+    required this.view,
+    this.construct,
+    this.showPracticeButton = false,
+  });
 
   final ConstructTypeEnum view;
   final ConstructIdentifier? construct;
+  final bool showPracticeButton;
 
   @override
   ConstructAnalyticsViewState createState() => ConstructAnalyticsViewState();
@@ -248,8 +254,6 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
 
   @override
   Widget build(BuildContext context) {
-    final route = GoRouterState.of(context).fullPath;
-    final inPractice = route?.contains("practice") == true;
     final analyticsService = Matrix.of(context).analyticsDataService;
     return Scaffold(
       body: SafeArea(
@@ -278,7 +282,8 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
           ),
         ),
       ),
-      floatingActionButton: widget.construct == null && !inPractice
+      floatingActionButton:
+          widget.construct == null && widget.showPracticeButton
           ? _PracticeButton(view: widget.view)
           : null,
     );
