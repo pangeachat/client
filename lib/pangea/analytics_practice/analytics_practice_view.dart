@@ -82,7 +82,7 @@ class AnalyticsPracticeView extends StatelessWidget {
 
               final session = controller.session.session;
               if (session != null) {
-                return session.isComplete
+                return session.isComplete && !session.loadFailed
                     ? CompletedActivitySessionView(
                         session: session,
                         launchSession: controller.startSession,
