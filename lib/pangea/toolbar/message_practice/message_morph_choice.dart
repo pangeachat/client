@@ -11,8 +11,8 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_choice.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_morph_choice_item.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_controller.dart';
 
@@ -30,7 +30,7 @@ const int numberOfMorphDistractors = 3;
 
 class MessageMorphInputBarContent extends StatefulWidget {
   final PracticeController controller;
-  final MorphPracticeActivityModel activity;
+  final MorphPracticeExerciseModel activity;
   final PangeaToken? selectedToken;
   final double maxWidth;
 
@@ -135,7 +135,7 @@ class MessageMorphInputBarContentState
                   setState(() => selectedTag = choice);
                   widget.controller.onMatch(
                     token,
-                    PracticeChoice(
+                    PracticeExerciseChoice(
                       choiceContent: choice,
                       form: ConstructForm(
                         cId: widget.activity.tokens.first.morphIdByFeature(

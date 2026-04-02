@@ -22,7 +22,7 @@ class AnalyticsPracticeSessionRepo {
       throw UnsubscribedException();
     }
 
-    final List<AnalyticsActivityTarget> targets = [];
+    final List<AnalyticsPracticeTarget> targets = [];
     final analytics =
         MatrixState.pangeaController.matrixState.analyticsDataService;
 

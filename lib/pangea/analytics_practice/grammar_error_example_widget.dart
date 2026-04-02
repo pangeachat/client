@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
 
 class GrammarErrorExampleWidget extends StatelessWidget {
-  final GrammarErrorPracticeActivityModel activity;
+  final GrammarErrorPracticeExerciseModel analyticsPracticeExercise;
   final bool showTranslation;
 
   const GrammarErrorExampleWidget({
     super.key,
-    required this.activity,
+    required this.analyticsPracticeExercise,
     required this.showTranslation,
   });
 
   @override
   Widget build(BuildContext context) {
-    final text = activity.text;
-    final errorOffset = activity.errorOffset;
-    final errorLength = activity.errorLength;
+    final text = analyticsPracticeExercise.text;
+    final errorOffset = analyticsPracticeExercise.errorOffset;
+    final errorLength = analyticsPracticeExercise.errorLength;
 
     const maxContextChars = 50;
 
@@ -115,7 +115,7 @@ class GrammarErrorExampleWidget extends StatelessWidget {
                     children: [
                       const SizedBox(height: 8),
                       Text(
-                        activity.translation,
+                        analyticsPracticeExercise.translation,
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.onPrimaryFixed,
                           fontSize:

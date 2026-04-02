@@ -9,7 +9,7 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/practice_tier_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
 
 /// One lemma and a list of construct uses for that lemma
 class ConstructUses {
@@ -146,16 +146,16 @@ class ConstructUses {
   /// Higher score = higher priority (should be practiced sooner).
   /// Suppressed-tier constructs return 0.
   ///
-  /// When [activityType] is provided, recency is checked against that
-  /// activity's specific use types (e.g., corPA/incPA for wordMeaning).
+  /// When [exerciseType] is provided, recency is checked against that
+  /// exercise's specific use types (e.g., corPA/incPA for wordMeaning).
   /// Otherwise, aggregate recency across all use types is used.
-  int practiceScore({ActivityTypeEnum? activityType}) {
+  int practiceScore({PracticeExerciseTypeEnum? exerciseType}) {
     final tier = practiceTier;
     if (tier == PracticeTier.suppressed) return 0;
 
-    // Per-activity-type recency when available, otherwise aggregate.
-    final DateTime? lastUsedDate = activityType != null
-        ? lastUseByTypes(activityType.associatedUseTypes)
+    // Per-exercise-type recency when available, otherwise aggregate.
+    final DateTime? lastUsedDate = exerciseType != null
+        ? lastUseByTypes(exerciseType.associatedUseTypes)
         : lastUsed;
 
     final daysSince = lastUsedDate == null

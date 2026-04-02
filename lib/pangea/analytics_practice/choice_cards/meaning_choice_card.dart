@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/game_choice_card.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 
-/// Choice card for meaning activity with emoji, and alt text on flip
+/// Choice card for meaning analytics practice exercises with emoji, and alt text on flip
 class MeaningChoiceCard extends StatelessWidget {
   final String choiceId;
   final String targetId;

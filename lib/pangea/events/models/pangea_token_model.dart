@@ -8,7 +8,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_morph_choice.dart';
 import '../../common/constants/model_keys.dart';
 import '../../lemmas/lemma.dart';
@@ -184,7 +184,7 @@ class PangeaToken {
   ConstructForm get vocabForm =>
       ConstructForm(form: text.content, cId: vocabConstructID);
 
-  Set<String> morphActivityDistractors(
+  Set<String> morphPracticeExerciseDistractors(
     MorphFeaturesEnum morphFeature,
     String morphTag,
   ) {
@@ -216,9 +216,9 @@ class PangeaToken {
           })
           .toList();
 
-  bool eligibleForPractice(ActivityTypeEnum activityType) {
-    switch (activityType) {
-      case ActivityTypeEnum.emoji:
+  bool eligibleForPractice(PracticeExerciseTypeEnum exerciseType) {
+    switch (exerciseType) {
+      case PracticeExerciseTypeEnum.emoji:
         return lemma.saveVocab && vocabConstructID.isContentWord;
       default:
         return lemma.saveVocab;

@@ -6,8 +6,8 @@ import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
+import 'package:fluffychat/pangea/practice_exercises/message_practice_exercise_request.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_target.dart';
 
 class ExampleMessageInfo {
   final List<InlineSpan> exampleMessage;
@@ -78,13 +78,13 @@ class AudioExampleMessage {
   }
 }
 
-class AnalyticsActivityTarget {
+class AnalyticsPracticeTarget {
   final PracticeTarget target;
   final GrammarErrorRequestInfo? grammarErrorInfo;
   final ExampleMessageInfo? exampleMessage;
   final AudioExampleMessage? audioExampleMessage;
 
-  AnalyticsActivityTarget({
+  AnalyticsPracticeTarget({
     required this.target,
     this.grammarErrorInfo,
     this.exampleMessage,
@@ -98,8 +98,8 @@ class AnalyticsActivityTarget {
     'audioExampleMessage': audioExampleMessage?.toJson(),
   };
 
-  factory AnalyticsActivityTarget.fromJson(Map<String, dynamic> json) =>
-      AnalyticsActivityTarget(
+  factory AnalyticsPracticeTarget.fromJson(Map<String, dynamic> json) =>
+      AnalyticsPracticeTarget(
         target: PracticeTarget.fromJson(json['target']),
         grammarErrorInfo: json['grammarErrorInfo'] != null
             ? GrammarErrorRequestInfo.fromJson(json['grammarErrorInfo'])
@@ -116,7 +116,7 @@ class AnalyticsActivityTarget {
 class AnalyticsPracticeSessionModel {
   final DateTime startedAt;
   final ConstructTypeEnum type;
-  final List<AnalyticsActivityTarget> practiceTargets;
+  final List<AnalyticsPracticeTarget> practiceTargets;
   final String userL1;
   final String userL2;
 
@@ -163,12 +163,12 @@ class AnalyticsPracticeSessionModel {
         : 1.0;
   }
 
-  List<MessageActivityRequest> get activityRequests {
+  List<MessagePracticeExerciseRequest> get exerciseRequests {
     return practiceTargets.map((target) {
-      return MessageActivityRequest(
+      return MessagePracticeExerciseRequest(
         userL1: userL1,
         userL2: userL2,
-        activityQualityFeedback: null,
+        exerciseQualityFeedback: null,
         target: target.target,
         grammarErrorInfo: target.grammarErrorInfo,
         exampleMessage: target.exampleMessage,
@@ -211,7 +211,7 @@ class AnalyticsPracticeSessionModel {
 
   void finishSession() => state = state.copyWith(finished: true);
 
-  void completeActivity() =>
+  void completeExercise() =>
       state = state.copyWith(currentIndex: state.currentIndex + 1);
 
   void incrementSkippedActivities() =>
@@ -230,8 +230,8 @@ class AnalyticsPracticeSessionModel {
         orElse: () => ConstructTypeEnum.vocab,
       ),
       practiceTargets: (json['practiceTargets'] as List<dynamic>)
-          .map((e) => AnalyticsActivityTarget.fromJson(e))
-          .whereType<AnalyticsActivityTarget>()
+          .map((e) => AnalyticsPracticeTarget.fromJson(e))
+          .whereType<AnalyticsPracticeTarget>()
           .toList(),
       userL1: json['userL1'] as String,
       userL2: json['userL2'] as String,

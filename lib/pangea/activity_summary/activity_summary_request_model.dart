@@ -1,6 +1,6 @@
 // Add this import for the participant summary model
 
-import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_response_model.dart';
 

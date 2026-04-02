@@ -4,15 +4,15 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_animation.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_choice.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_match_item.dart';
 
 class MatchActivityCard extends StatelessWidget {
-  final MatchPracticeActivityModel currentActivity;
+  final MatchPracticeExerciseModel currentActivity;
   final PracticeController controller;
 
   const MatchActivityCard({
@@ -27,8 +27,8 @@ class MatchActivityCard extends StatelessWidget {
     double? fontSize,
   ) {
     switch (currentActivity) {
-      case EmojiPracticeActivityModel():
-      case LemmaMeaningPracticeActivityModel():
+      case EmojiPracticeExerciseModel():
+      case LemmaMeaningPracticeExerciseModel():
         return Padding(
           padding: const EdgeInsets.all(8),
           child: Text(
@@ -37,7 +37,7 @@ class MatchActivityCard extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         );
-      case WordListeningPracticeActivityModel():
+      case WordListeningPracticeExerciseModel():
         return Padding(
           padding: const EdgeInsets.all(8),
           child: Icon(Icons.volume_up, size: fontSize),
@@ -72,7 +72,7 @@ class MatchActivityCard extends StatelessWidget {
           spacing: 4.0,
           runSpacing: 4.0,
           children: currentActivity.matchContent.choices.map((
-            PracticeChoice cf,
+            PracticeExerciseChoice cf,
           ) {
             final bool? wasCorrect = controller.wasCorrectMatch(cf);
             return ChoiceAnimationWidget(
@@ -91,7 +91,7 @@ class MatchActivityCard extends StatelessWidget {
                   fontSize,
                 ),
                 audioContent:
-                    currentActivity is WordListeningPracticeActivityModel
+                    currentActivity is WordListeningPracticeExerciseModel
                     ? cf.choiceContent
                     : null,
                 controller: controller,

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_downloads/space_analytics_summary_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/learning_skills_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
 
 enum ConstructUseTypeEnum {
   /// produced in chat by user, igc was run, and we've judged it to be a correct use
@@ -209,21 +209,21 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.ignPA:
       case ConstructUseTypeEnum.corLM:
       case ConstructUseTypeEnum.incLM:
-        return ActivityTypeEnum.wordMeaning.icon;
+        return PracticeExerciseTypeEnum.wordMeaning.icon;
       case ConstructUseTypeEnum.ignWL:
       case ConstructUseTypeEnum.incWL:
       case ConstructUseTypeEnum.corWL:
       case ConstructUseTypeEnum.corLA:
       case ConstructUseTypeEnum.incLA:
-        return ActivityTypeEnum.wordFocusListening.icon;
+        return PracticeExerciseTypeEnum.wordFocusListening.icon;
       case ConstructUseTypeEnum.incHWL:
       case ConstructUseTypeEnum.ignHWL:
       case ConstructUseTypeEnum.corHWL:
-        return ActivityTypeEnum.hiddenWordListening.icon;
+        return PracticeExerciseTypeEnum.hiddenWordListening.icon;
       case ConstructUseTypeEnum.corL:
       case ConstructUseTypeEnum.incL:
       case ConstructUseTypeEnum.ignL:
-        return ActivityTypeEnum.lemmaId.icon;
+        return PracticeExerciseTypeEnum.lemmaId.icon;
       case ConstructUseTypeEnum.corM:
       case ConstructUseTypeEnum.incM:
       case ConstructUseTypeEnum.ignM:
@@ -231,13 +231,13 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incGC:
       case ConstructUseTypeEnum.corGE:
       case ConstructUseTypeEnum.incGE:
-        return ActivityTypeEnum.morphId.icon;
+        return PracticeExerciseTypeEnum.morphId.icon;
       case ConstructUseTypeEnum.em:
-        return ActivityTypeEnum.emoji.icon;
+        return PracticeExerciseTypeEnum.emoji.icon;
       case ConstructUseTypeEnum.corMM:
       case ConstructUseTypeEnum.incMM:
       case ConstructUseTypeEnum.ignMM:
-        return ActivityTypeEnum.messageMeaning.icon;
+        return PracticeExerciseTypeEnum.messageMeaning.icon;
       case ConstructUseTypeEnum.pvm:
         return Icons.mic;
       case ConstructUseTypeEnum.unk:

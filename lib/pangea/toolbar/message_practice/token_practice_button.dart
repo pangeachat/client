@@ -12,8 +12,8 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_choice.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_target.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/dotted_border_painter.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/morph_selection.dart';
@@ -58,7 +58,7 @@ class TokenPracticeButton extends StatelessWidget {
       controller.selectedMorph?.token == token &&
       controller.selectedMorph?.morph == _activity?.morphFeature;
 
-  void _onMatch(PracticeChoice form) {
+  void _onMatch(PracticeExerciseChoice form) {
     controller.onChoiceSelect(null);
     controller.onMatch(token, form);
   }
@@ -123,10 +123,10 @@ class TokenPracticeButton extends StatelessWidget {
 }
 
 class _StandardMatchButton extends StatelessWidget {
-  final PracticeChoice? selectedChoice;
+  final PracticeExerciseChoice? selectedChoice;
   final double width;
   final Color borderColor;
-  final Function(PracticeChoice choice) onMatch;
+  final Function(PracticeExerciseChoice choice) onMatch;
 
   const _StandardMatchButton({
     required this.selectedChoice,
@@ -137,7 +137,7 @@ class _StandardMatchButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DragTarget<PracticeChoice>(
+    return DragTarget<PracticeExerciseChoice>(
       builder: (BuildContext context, accepted, rejected) {
         final double colorAlpha =
             0.3 +

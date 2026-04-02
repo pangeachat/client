@@ -9,9 +9,9 @@ import 'package:fluffychat/pangea/activity_feedback/activity_feedback_repo.dart'
 import 'package:fluffychat/pangea/activity_feedback/activity_feedback_request.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_button_widget.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_summary_widget.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_button_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_summary_widget.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/room_summary_extension.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';

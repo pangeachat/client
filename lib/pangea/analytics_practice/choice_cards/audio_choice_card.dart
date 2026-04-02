@@ -4,7 +4,7 @@ import 'package:fluffychat/pangea/analytics_practice/choice_cards/game_choice_ca
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 
-/// Choice card for audio activity with phonetic transcription above the word
+/// Choice card for audio analytics practice exercises with phonetic transcription above the word
 class AudioChoiceCard extends StatelessWidget {
   final String choiceId;
   final String targetId;
