@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-03-31 12:48:42.995618",
+    "@@last_modified": "2026-04-02 14:36:40.204165",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11971,6 +11971,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Нажмите здесь, чтобы обновить ваш целевой язык.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

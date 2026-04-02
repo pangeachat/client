@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-03-31 12:47:28.586008",
+    "@@last_modified": "2026-04-02 14:36:01.001930",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -11511,6 +11511,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Klikněte sem pro aktualizaci cílového jazyka.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

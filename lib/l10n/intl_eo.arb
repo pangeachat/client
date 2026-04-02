@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:48:39.873216",
+    "@@last_modified": "2026-04-02 14:36:39.500571",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -12076,6 +12076,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Klaku ĉi tie por ĝisdatigi vian celan lingvon.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

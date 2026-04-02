@@ -3499,7 +3499,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-03-31 12:48:14.257409",
+    "@@last_modified": "2026-04-02 14:36:25.938863",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10623,6 +10623,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Klick hier om je doeltaal bij te werken.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

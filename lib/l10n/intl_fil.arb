@@ -2565,7 +2565,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-03-31 12:47:51.045508",
+    "@@last_modified": "2026-04-02 14:36:15.015859",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11976,6 +11976,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "I-click dito upang i-update ang iyong target na wika.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

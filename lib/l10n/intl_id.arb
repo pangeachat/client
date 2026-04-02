@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:46:45.969666",
+    "@@last_modified": "2026-04-02 14:35:41.450137",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -11054,6 +11054,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Klik di sini untuk memperbarui bahasa target Anda.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:48:09.646630",
+    "@@last_modified": "2026-04-02 14:36:24.254956",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -11073,6 +11073,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "உங்கள் இலக்கு மொழியை புதுப்பிக்க இங்கே கிளிக் செய்யவும்.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:47:36.881732",
+    "@@last_modified": "2026-04-02 14:36:04.279420",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -11108,6 +11108,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Feu clic aquí per actualitzar la vostra llengua objectiu.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

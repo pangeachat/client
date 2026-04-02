@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-03-31 12:47:11.932034",
+    "@@last_modified": "2026-04-02 14:35:53.838400",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10954,6 +10954,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Klõpsa siin, et uuendada oma sihtkeelt.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

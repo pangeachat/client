@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:47:00.000259",
+    "@@last_modified": "2026-04-02 14:35:48.823668",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -12036,6 +12036,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "לחץ כאן כדי לעדכן את שפת היעד שלך.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

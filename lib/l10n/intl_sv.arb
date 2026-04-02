@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:48:27.763367",
+    "@@last_modified": "2026-04-02 14:36:35.204531",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11544,6 +11544,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Klicka här för att uppdatera ditt målspråk.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

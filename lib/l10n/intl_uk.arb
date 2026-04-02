@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-03-31 12:47:25.615842",
+    "@@last_modified": "2026-04-02 14:35:59.876465",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10957,6 +10957,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Натисніть тут, щоб оновити вашу цільову мову.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

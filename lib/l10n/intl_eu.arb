@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-03-31 12:47:07.392062",
+    "@@last_modified": "2026-04-02 14:35:51.918267",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10957,6 +10957,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Egin klik hemen zure helburu hizkuntza eguneratzeko.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }
