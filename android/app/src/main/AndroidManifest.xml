@@ -105,27 +105,28 @@
                 <data android:mimeType="*/*" />
             </intent-filter>
 
+            <!-- Production App Link -->
             <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:scheme="https"
-                    android:host="app.pangea.chat" />
-
-                <data
-                    android:scheme="https"
-                    android:host="app.staging.pangea.chat" />
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="https" android:host="app.pangea.chat"/>
             </intent-filter>
 
+            <!-- Staging App Link -->
             <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="https" android:host="app.staging.pangea.chat"/>
+            </intent-filter>
 
-                <data android:scheme="pangea" />
-                <data android:host="app.pangea.chat" />
+            <!-- Custom scheme (no autoVerify) -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="pangea" android:host="app.pangea.chat"/>
             </intent-filter>
 
             <meta-data
