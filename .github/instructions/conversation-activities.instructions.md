@@ -6,6 +6,16 @@ applyTo: "lib/pangea/activity_planner/**,lib/pangea/activity_sessions/**,lib/pan
 
 Activities are how Pangea Chat turns passive chatting into deliberate language learning. Activities are designed according best practices in task-based language teaching and second language acquisition research, with a focus on maximizing engagement and learning outcomes while minimizing friction.
 
+## Problem
+
+The codebase uses "activity" loosely to mean three distinct concepts. This causes confusion in docs, UI strings, variable names, and cross-team communication.
+
+## Terminology
+
+| Term | Meaning | Code modules |
+|---|---|---|
+| **Conversation activity** | Task-based conversation game in a Matrix room with roles, goals, partners | `activity_planner/`, `activity_sessions/`, `activity_suggestions/`, `activity_summary/` |
+
 ## Design Goals
 
 1. **Conversation games**: We would like user's to think of and describe these experiences as 'games'. That is how we will know we have arrived. 

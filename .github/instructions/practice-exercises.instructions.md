@@ -8,6 +8,12 @@ Practice exercises are multiple-choice exercises that reinforce vocabulary and g
 
 For **conversation activities**, see [conversation-activities.instructions.md](conversation-activities.instructions.md).
 
+## Terminology
+
+| Term | Meaning | Code modules |
+|---|---|---|
+| **Practice exercise** | Multiple-choice quiz reinforcing vocab/grammar from real messages (solo) | `practice_activities/` (legacy name), `analytics_practice/`, `toolbar/message_practice/` |
+
 ## Three Entry Points
 
 | Entry Point | What It Is | Where It Lives | Activity Types Used |
