@@ -370,8 +370,9 @@ class SpaceDetailsContent extends StatelessWidget {
                     client: room.client,
                   );
                 case SpaceSettingsTabs.course:
-                  return SingleChildScrollView(
-                    child: CourseSettings(controller: controller),
+                  return CourseSettings(
+                    controller: controller,
+                    roomId: room.id,
                   );
                 case SpaceSettingsTabs.participants:
                   return SingleChildScrollView(
