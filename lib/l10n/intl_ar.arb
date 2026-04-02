@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-03-31 12:47:56.014028",
+    "@@last_modified": "2026-04-02 14:36:17.003176",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11297,6 +11297,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "انقر هنا لتحديث لغة الهدف الخاصة بك.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

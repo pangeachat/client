@@ -3084,7 +3084,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-03-31 12:47:42.997118",
+    "@@last_modified": "2026-04-02 14:36:07.030628",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12033,6 +12033,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Clique aqui para atualizar seu idioma de destino.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

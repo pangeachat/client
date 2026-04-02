@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:47:09.726163",
+    "@@last_modified": "2026-04-02 14:35:52.817515",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -12075,6 +12075,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Clique aqui para atualizar seu idioma de destino.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

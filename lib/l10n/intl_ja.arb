@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-03-31 12:48:34.167493",
+    "@@last_modified": "2026-04-02 14:36:37.768564",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11825,6 +11825,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "ここをクリックしてターゲット言語を更新してください。",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-03-31 12:48:07.184732",
+    "@@last_modified": "2026-04-02 14:36:22.962646",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6872,6 +6872,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Nhấp vào đây để cập nhật ngôn ngữ mục tiêu của bạn.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

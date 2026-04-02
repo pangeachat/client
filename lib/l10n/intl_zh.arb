@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-03-31 12:48:16.815728",
+    "@@last_modified": "2026-04-02 14:36:28.350625",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10957,6 +10957,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "点击这里更新您的目标语言。",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

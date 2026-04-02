@@ -1714,7 +1714,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-03-31 12:47:20.168960",
+    "@@last_modified": "2026-04-02 14:35:57.001271",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -12088,6 +12088,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "點擊這裡以更新您的目標語言。",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

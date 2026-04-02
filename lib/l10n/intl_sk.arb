@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-03-31 12:46:52.080456",
+    "@@last_modified": "2026-04-02 14:35:44.727853",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -12073,6 +12073,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Kliknite sem pre aktualizáciu cieľového jazyka.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

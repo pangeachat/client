@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-03-31 12:47:58.360464",
+    "@@last_modified": "2026-04-02 14:36:18.066482",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11288,6 +11288,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Hedef dilinizi güncellemek için buraya tıklayın.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-03-31 12:46:27.241711",
+    "@@last_modified": "2026-04-02 14:35:35.403986",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7883,6 +7883,11 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Haga clic aquí para actualizar su idioma objetivo.",
+    "@clickToUpdateTargetLanguage": {
         "type": "String",
         "placeholders": {}
     }
