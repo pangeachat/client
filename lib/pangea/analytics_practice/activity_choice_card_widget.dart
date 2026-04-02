@@ -99,7 +99,10 @@ class ActivityChoiceCard extends StatelessWidget {
           isCorrect: isCorrect,
           height: cardHeight,
           isEnabled: enabled,
-          child: Text(choiceText),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(choiceText),
+          ),
         );
 
       default:
@@ -113,7 +116,10 @@ class ActivityChoiceCard extends StatelessWidget {
           isCorrect: isCorrect,
           height: cardHeight,
           isEnabled: enabled,
-          child: Text(choiceText),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(choiceText),
+          ),
         );
     }
   }

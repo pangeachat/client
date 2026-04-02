@@ -70,6 +70,7 @@ class AudioChoiceCard extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
+          SizedBox(width: 8.0),
         ],
       ),
     );

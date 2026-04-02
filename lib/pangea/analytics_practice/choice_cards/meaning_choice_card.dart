@@ -60,6 +60,7 @@ class MeaningChoiceCard extends StatelessWidget {
               style: TextStyle(fontSize: baseTextSize),
             ),
           ),
+          SizedBox(width: 8.0),
         ],
       ),
       child: Row(
@@ -82,6 +83,7 @@ class MeaningChoiceCard extends StatelessWidget {
               style: TextStyle(fontSize: baseTextSize),
             ),
           ),
+          SizedBox(width: 8.0),
         ],
       ),
     );
