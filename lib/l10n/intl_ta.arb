@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 11:04:59.112189",
+    "@@last_modified": "2026-04-02 12:18:41.276821",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -3460,12 +3460,10 @@
     "tooManyRequest": "மிகவும் அதிகமான கோரிக்கைகள், தயவுசெய்து பின்னர் முயற்சிக்கவும்.",
     "enterNumber": "தயவுசெய்து முழு எண் மதிப்பை உள்ளிடவும்.",
     "practice": "பயிற்சி",
-    "speechToTextBody": "குரல் செய்திகளுக்காக, நீங்கள் உரையாடலின் உரைபடிவத்தையும் பேச்சாளரின் வார்த்தைகள் வீத மதிப்பீட்டையும் பார்க்கலாம்.",
     "versionNotFound": "பதிப்பு காணப்படவில்லை",
     "fetchingVersion": "பதிப்பை பெறுகிறது...",
     "versionFetchError": "பதிப்பை பெறும் போது பிழை",
     "versionText": "பதிப்பு: {version}+{buildNumber}",
-    "l1TranslationBody": "உங்கள் அடிப்படை மொழியில் உள்ள செய்திகள் மொழிபெயர்க்கப்படமாட்டாது.",
     "deleteSubscriptionWarningTitle": "உங்களுக்கு ஒரு செயலில் உள்ள சந்தா உள்ளது",
     "deleteSubscriptionWarningBody": "உங்கள் கணக்கை நீக்குவது தானாகவே உங்கள் சந்தாவை ரத்து செய்யாது.",
     "manageSubscription": "சந்தாவை நிர்வகி",
@@ -3474,7 +3472,6 @@
     "wordsUsed": "பயன்படுத்தப்பட்ட வார்த்தைகள்",
     "level": "நிலை",
     "morphsUsed": "மோர்ப்ஸ் பயன்படுத்தப்பட்டது",
-    "translationChoicesBody": "ஒரு விருப்பத்தை கிளிக் செய்து பிடித்து ஒரு குறிப்பு பெறவும்.",
     "grammar": "வியக்கரம்",
     "contactHasBeenInvitedToTheChat": "தொடர்பு உரையாடலுக்கு அழைக்கப்பட்டது",
     "inviteChat": "📨 உரையாடலை அழைக்கவும்",
@@ -3755,8 +3752,6 @@
     "grammarCopyVOICErcp": "பரஸ்பர",
     "other": "மற்றவை",
     "levelShort": "LVL {level}",
-    "clickBestOption": "உங்கள் செய்தியை மொழிபெயர்க்க சிறந்த விருப்பங்களை தேர்ந்தெடுக்கவும்!",
-    "completeActivitiesToUnlock": "பதிப்பதற்கான குறைந்தபட்ச ஒரு செயல்பாட்டை முடிக்கவும்!",
     "noCapacityLimit": "திறனில் எந்த வரம்பும் இல்லை",
     "downloadGroupText": "குழு உரையை பதிவிறக்கம் செய்யவும்",
     "notificationsOn": "அறிவிப்புகள் இயங்கும்",
@@ -3775,22 +3770,6 @@
     "constructUseIgnIGCDesc": "விருத்தி திருத்தத்தில் புறக்கணிக்கப்பட்டது",
     "constructUseCorIGCDesc": "விருத்தி திருத்தத்தில் சரியானது",
     "constructUseIncIGCDesc": "விருத்தி திருத்தத்தில் தவறானது",
-    "constructUseCorPADesc": "பதிப்பில் சொல் பொருள் செயலியில் சரியானது",
-    "constructUseIgnPADesc": "பதிப்பில் சொல் பொருள் செயலியில் புறக்கணிக்கப்பட்டது",
-    "constructUseIncPADesc": "பதிப்பில் சொல் பொருள் செயலியில் தவறானது",
-    "constructUseCorWLDesc": "பதிப்பில் சொல் கேட்கும் செயலியில் சரியானது",
-    "constructUseIncWLDesc": "பதிப்பில் சொல் கேட்கும் செயலியில் தவறானது",
-    "constructUseIngWLDesc": "பதிப்பில் சொல் கேட்கும் செயலியில் புறக்கணிக்கப்பட்டது",
-    "constructUseCorHWLDesc": "மறைச்சொல் செயலியில் சரியானது",
-    "constructUseIncHWLDesc": "மறைச்சொல் செயலியில் தவறானது",
-    "constructUseIgnHWLDesc": "மறைச்சொல் செயலியில் புறக்கணிக்கப்பட்டது",
-    "constructUseCorLDesc": "லெம்மா செயலியில் சரியானது",
-    "constructUseIncLDesc": "லெம்மா செயலியில் தவறானது",
-    "constructUseIgnLDesc": "லெம்மா செயலியில் புறக்கணிக்கப்பட்டது",
-    "constructUseCorMDesc": "விருத்தி செயலியில் சரியானது",
-    "constructUseIncMDesc": "விதிமுறையில் தவறு",
-    "constructUseIgnMDesc": "விதிமுறையில் புறக்கணிக்கப்பட்டது",
-    "constructUseEmojiDesc": "எமோஜி செயலியில் சரியானது",
     "constructUseCollected": "செயலியில் சேகரிக்கப்பட்டது",
     "constructUseNanDesc": "பயன்படாது",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
@@ -3842,23 +3821,16 @@
     "whatIsMeaning": "'{lemma}' என்றால் என்ன?",
     "chooseLemmaMeaningInstructionsBody": "செய்தியில் உள்ள சொற்களுடன் பொருள்களை பொருத்தவும்!",
     "doubleClickToEdit": "தொட்டச்செய்தி மூலம் திருத்தவும்.",
-    "activityPlannerTitle": "செயல்பாட்டு திட்டக்காரர்",
     "topicLabel": "தலைப்பு",
     "topicPlaceholder": "ஒரு தலைப்பை தேர்ந்தெடுக்கவும்...",
-    "modeLabel": "செயல்பாட்டு வகை",
     "modePlaceholder": "ஒரு முறையை தேர்ந்தெடுக்கவும்...",
     "learningObjectiveLabel": "கற்றல் நோக்கம்",
     "learningObjectivePlaceholder": "ஒரு கற்றல் நோக்கத்தை தேர்ந்தெடுக்கவும்...",
-    "languageOfInstructionsLabel": "செயல்பாட்டு வழிகாட்டியின் மொழி",
     "targetLanguageLabel": "இலக்கு மொழி",
     "cefrLevelLabel": "CEFR நிலை",
-    "generateActivitiesButton": "செயல்பாட்டை உருவாக்கு",
-    "launchActivityButton": "செயல்பாட்டை துவக்கு",
     "image": "படம்",
     "video": "வீடியோ",
     "nan": "பயன்பாடில்லை",
-    "activityPlannerOverviewInstructionsBody": "ஒரு தலைப்பு, முறையை, கற்றல் நோக்கத்தை தேர்ந்தெடுத்து, உரையாடலுக்கான ஒரு செயல்பாட்டை உருவாக்கவும்!",
-    "activityTitle": "செயல்பாட்டின் தலைப்பு",
     "addVocabulary": "பொருளைச் சேர்க்கவும்",
     "instructions": "வழிகாட்டுதல்கள்",
     "numberOfLearners": "கற்றலாளர்களின் எண்ணிக்கை",
@@ -3905,12 +3877,10 @@
     "pleaseEnterInt": "தயவுசெய்து ஒரு எண்ணை உள்ளிடவும்",
     "home": "முகப்பு",
     "join": "சேரவும்",
-    "readingAssistanceOverviewBody": "எமோஜிகள், ஆடியோ, சொல் அர்த்தங்கள் மற்றும் இலக்கண கருத்துக்களை பொருத்த சிறிய விளையாட்டுகளுக்கான பொத்தான்களை கீழே கிளிக் செய்யவும். அல்லது எந்த சொல்லையும் கிளிக் செய்து விவரங்களைப் பாருங்கள்.",
     "resetInstructionTooltipsTitle": "வழிகாட்டல் குறிப்புகளை மீட்டமைக்கவும்",
     "resetInstructionTooltipsDesc": "புதிய பயனராக உள்ளவர்களுக்கு போல வழிகாட்டல் குறிப்புகளை காட்ட கிளிக் செய்யவும்.",
     "randomize": "தற்செயலாக்கு",
     "clear": "அழி",
-    "makeYourOwnActivity": "உங்கள் சொந்த செயல்பாட்டை உருவாக்கவும்",
     "featuredActivities": "சிறப்பானவை",
     "save": "சேமிக்கவும்",
     "startChat": "உரையாடலைத் தொடங்கவும்",
@@ -3967,7 +3937,6 @@
     "announcements": "அறிவிப்புகள்",
     "activities": "செயல்பாடுகள்",
     "access": "அணுகல்",
-    "activitySuggestionTimeoutMessage": "நீங்கள் விரும்பும் மேலும் செயல்பாடுகளை உருவாக்க நாங்கள் கடுமையாக பணியாற்றுகிறோம், தயவுசெய்து ஒரு நிமிடத்தில் மீண்டும் சரிபார்க்கவும்",
     "howSpaceCanBeFound": "இந்த பாடத்திட்டம் எப்படி கண்டுபிடிக்கலாம்",
     "private": "தனிப்பட்ட",
     "cannotBeFoundInSearch": "தேடலில் கண்டுபிடிக்க முடியாது",
@@ -4002,9 +3971,6 @@
     "numInvited": "{count} அழைக்கப்பட்டவர்கள்",
     "saved": "சேமிக்கப்பட்டது",
     "reset": "மீட்டமைக்கவும்",
-    "errorGenerateActivityMessage": "செயல்பாட்டை உருவாக்க முடியவில்லை",
-    "errorRegenerateActivityMessage": "செயல்பாட்டை மீண்டும் உருவாக்க முடியவில்லை",
-    "errorLaunchActivityMessage": "செயலியை துவக்க முடியவில்லை",
     "errorFetchingActivitiesMessage": "செயல்பாடுகளை பெற முடியவில்லை",
     "errorFetchingDefinition": "வரையறையை பெற முடியவில்லை",
     "errorProcessAnalytics": "புள்ளிவிவரங்களை செயலாக்க முடியவில்லை",
@@ -4013,7 +3979,6 @@
     "unexpectedError": "எதிர்பாராத பிழை.",
     "pleaseReload": "தயவுசெய்து மீண்டும் ஏற்றவும் மற்றும் மீண்டும் முயற்சிக்கவும்.",
     "translationError": "பெயர்ப்பு பிழை",
-    "errorFetchingActivity": "செயல்பாட்டை பெற முடியவில்லை",
     "check": "சரிபார்க்கவும்",
     "unableToFindRoom": "அந்த குறியீட்டுடன் எந்த உரையாடலும் அல்லது பாடத்திட்டமும் கிடைக்கவில்லை. மீண்டும் முயற்சிக்கவும்.",
     "numCompletedActivities": "முடித்த செயல்பாடுகளின் எண்ணிக்கை",
@@ -4021,11 +3986,8 @@
     "request": "விண்ணப்பிக்கவும்",
     "requestAll": "அனைத்தையும் கோரவும்",
     "confirmMessageUnpin": "இந்த செய்தியை நீக்க விரும்புகிறீர்களா?",
-    "createActivityPlan": "புதிய செயல்பாட்டு திட்டத்தை உருவாக்கவும்",
     "saveAndLaunch": "சேமித்து துவக்கவும்",
     "launchToSpace": "பாடத்துக்கு துவக்கவும்",
-    "numberOfActivities": "செயல்பாட்டு அமர்வுகளின் எண்ணிக்கை",
-    "maximumActivityParticipants": "ஒவ்வொரு செயல்பாட்டுக்கும் அதிகபட்ச {count} பங்கேற்பாளர்கள் இருக்கலாம்.",
     "pending": "காத்திருக்கிறது",
     "inactive": "செயலற்றது",
     "confirmRole": "பங்கு உறுதிப்படுத்தவும்",
@@ -5731,10 +5693,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@speechToTextBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@versionNotFound": {
         "type": "String",
         "placeholders": {}
@@ -5757,10 +5715,6 @@
                 "type": "String"
             }
         }
-    },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
@@ -5791,10 +5745,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -6922,14 +6872,6 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
         "type": "String",
         "placeholders": {}
@@ -6999,70 +6941,6 @@
         "placeholders": {}
     },
     "@constructUseIncIGCDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7288,19 +7166,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@topicLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -7316,23 +7186,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -7345,14 +7203,6 @@
         "placeholders": {}
     },
     "@nan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -7552,10 +7402,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@readingAssistanceOverviewBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resetInstructionTooltipsTitle": {
         "type": "String",
         "placeholders": {}
@@ -7569,10 +7415,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -7804,10 +7646,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activitySuggestionTimeoutMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@howSpaceCanBeFound": {
         "type": "String",
         "placeholders": {}
@@ -7956,18 +7794,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingActivitiesMessage": {
         "type": "String",
         "placeholders": {}
@@ -7997,10 +7823,6 @@
         "placeholders": {}
     },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8039,10 +7861,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -8050,18 +7868,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -10752,8 +10558,6 @@
     "notificationDeviceSubtitle": "உங்களுக்கு புஷ் அறிவிப்புகளை அனுப்பும் சாதனங்களை காணவும் மற்றும் நிர்வகிக்கவும்.",
     "notificationRuleDM": "நேரடி செய்தி",
     "notificationRuleDMDescription": "நேரடி செய்தி அறைகளில் உள்ள செய்திகளுக்கான பயனருக்கு அறிவிக்கிறது.",
-    "notificationRuleCourseAndActivity": "பாடம் மற்றும் செயல்பாடு",
-    "notificationRuleCourseAndActivityDescription": "பாடங்கள், செயல்பாடுகள் மற்றும் உரையாடல்களில் உள்ள செய்திகளுக்கான பயனருக்கு அறிவிக்கிறது.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -10775,14 +10579,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -11073,6 +10869,101 @@
         "placeholders": {}
     },
     "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "சொல் அர்த்த பயிற்சியில் சரியானது",
+    "constructUseIgnPADesc": "சொல் அர்த்த பயிற்சியில் புறக்கணிக்கப்பட்டது",
+    "constructUseIncPADesc": "சொல் அர்த்த பயிற்சியில் தவறானது",
+    "constructUseCorWLDesc": "சொல் கேட்கும் பயிற்சியில் சரியானது",
+    "constructUseIncWLDesc": "சொல் கேட்கும் பயிற்சியில் தவறானது",
+    "constructUseIngWLDesc": "சொல் கேட்கும் பயிற்சியில் புறக்கணிக்கப்பட்டது",
+    "constructUseCorHWLDesc": "மறைந்த சொல் பயிற்சியில் சரியானது",
+    "constructUseIncHWLDesc": "மறைந்த சொல் பயிற்சியில் தவறானது",
+    "constructUseIgnHWLDesc": "மறைந்த சொல் பயிற்சியில் புறக்கணிக்கப்பட்டது",
+    "constructUseCorLDesc": "லெம்மா பயிற்சியில் சரியானது",
+    "constructUseIncLDesc": "லெம்மா பயிற்சியில் தவறானது",
+    "constructUseIgnLDesc": "லெம்மா பயிற்சியில் புறக்கணிக்கப்பட்டது",
+    "constructUseCorMDesc": "இயல்பியல் பயிற்சியில் சரியானது",
+    "constructUseIncMDesc": "இயல்பியல் பயிற்சியில் தவறானது",
+    "constructUseIgnMDesc": "இயல்பியல் பயிற்சியில் புறக்கணிக்கப்பட்டது",
+    "constructUseEmojiDesc": "எமோஜி பயிற்சியில் சரியானது",
+    "errorFetchingExercise": "பயிற்சியை பெற முடியவில்லை",
+    "notificationRuleCourseAndActivity": "பாடம் மற்றும் செயல்பாடு",
+    "notificationRuleCourseAndActivityDescription": "பாடங்கள், செயல்பாடுகள் மற்றும் உரையாடல்களில் உள்ள செய்திகளைப் பற்றி பயனரை அறிவிக்கிறது.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     }

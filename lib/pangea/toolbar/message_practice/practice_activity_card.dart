@@ -92,7 +92,7 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
             switch (state) {
               AsyncLoading() => const ContentLoadingIndicator(height: 40),
               AsyncError() => CardErrorWidget(
-                L10n.of(context).errorFetchingActivity,
+                L10n.of(context).errorFetchingExercise,
               ),
               AsyncLoaded() => switch (state.value) {
                 MultipleChoicePracticeActivityModel() =>

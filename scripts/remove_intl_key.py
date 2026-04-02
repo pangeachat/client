@@ -1,23 +1,27 @@
 #!/usr/bin/env python3
 """
-Script to remove a specific translation key from all .arb files.
+Script to remove one or more translation keys from all .arb files.
 
 This script:
-1. Takes a key name as a command-line argument
-2. Removes that key and its metadata entry from all .arb files
+1. Takes a key name as a command-line argument, or a file containing key names
+2. Removes those keys and their metadata entries from all .arb files
 3. Preserves the overall order and structure of the files
 
 Usage:
     python3 scripts/remove_intl_key.py <key_name>
+    python3 scripts/remove_intl_key.py --file <keys_file>
 
-Example:
+Examples:
     python3 scripts/remove_intl_key.py "obsoleteKey"
+    python3 scripts/remove_intl_key.py --file keys_to_remove.txt
 
 Input:
-    key_name - The name of the key to remove (without the @ prefix for metadata)
-    
+    key_name  - The name of the key to remove (without the @ prefix for metadata)
+    keys_file - A plain-text file with one key name per line (blank lines and
+                lines starting with # are ignored)
+
 Output:
-    Updates all .arb files in lib/l10n/ by removing the specified key and its metadata
+    Updates all .arb files in lib/l10n/ by removing the specified keys and their metadata
 """
 
 import json
@@ -103,19 +107,60 @@ def validate_key_name(key_name: str) -> str:
     return key_name
 
 
+def load_keys_from_file(file_path: str) -> list[str]:
+    """
+    Load key names from a plain-text file (one key per line).
+
+    Blank lines and lines starting with '#' are ignored.
+
+    Args:
+        file_path: Path to the keys file
+
+    Returns:
+        List of validated key names
+
+    Raises:
+        FileNotFoundError: If the file does not exist
+        ValueError: If any key name is invalid
+    """
+    path = Path(file_path)
+    if not path.exists():
+        raise FileNotFoundError(f"Keys file not found: {file_path}")
+
+    keys = []
+    with open(path, 'r', encoding='utf-8') as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
+            keys.append(validate_key_name(line))
+
+    return keys
+
+
 def main():
-    """Main function to remove a specific key from all .arb files."""
+    """Main function to remove one or more keys from all .arb files."""
     # Check command line arguments
-    if len(sys.argv) != 2:
+    if len(sys.argv) == 3 and sys.argv[1] == '--file':
+        try:
+            keys_to_remove = load_keys_from_file(sys.argv[2])
+        except (FileNotFoundError, ValueError) as e:
+            print(f"Error: {e}")
+            return 1
+        if not keys_to_remove:
+            print("Error: Keys file is empty or contains only comments.")
+            return 1
+    elif len(sys.argv) == 2 and sys.argv[1] != '--file':
+        try:
+            keys_to_remove = [validate_key_name(sys.argv[1])]
+        except ValueError as e:
+            print(f"Error: {e}")
+            return 1
+    else:
         print("Usage: python3 scripts/remove_intl_key.py <key_name>")
+        print("       python3 scripts/remove_intl_key.py --file <keys_file>")
         print("Example: python3 scripts/remove_intl_key.py \"obsoleteKey\"")
-        return 1
-    
-    # Get and validate the key name
-    try:
-        key_to_remove = validate_key_name(sys.argv[1])
-    except ValueError as e:
-        print(f"Error: {e}")
+        print("Example: python3 scripts/remove_intl_key.py --file keys_to_remove.txt")
         return 1
     
     # Get repository root
@@ -129,47 +174,54 @@ def main():
     # Get all .arb files
     arb_files = sorted(l10n_dir.glob('*.arb'))
     print(f"Found {len(arb_files)} .arb files to process.")
-    
+
     if not arb_files:
         print(f"Error: No .arb files found in {l10n_dir}")
         return 1
-    
+
     # Ask for confirmation
-    print(f"\nAbout to remove key '{key_to_remove}' and its metadata '@{key_to_remove}' from all .arb files.")
-    confirm = input("Do you want to continue? (y/N): ").lower().strip()
-    
+    if len(keys_to_remove) == 1:
+        print(f"\nAbout to remove key '{keys_to_remove[0]}' and its metadata '@{keys_to_remove[0]}' from all .arb files.")
+    else:
+        print(f"\nAbout to remove {len(keys_to_remove)} keys (and their metadata) from all .arb files:")
+        for k in keys_to_remove:
+            print(f"  - {k}")
+    confirm = input("\nDo you want to continue? (y/N): ").lower().strip()
+
     if confirm not in ['y', 'yes']:
         print("Operation cancelled.")
         return 0
-    
+
     # Process each .arb file
     total_removed = 0
     files_modified = 0
     print("\nProcessing .arb files...")
     print("=" * 80)
-    
+
     for arb_file in arb_files:
-        removed = remove_key_from_arb_file(str(arb_file), key_to_remove)
-        total_removed += removed
-        if removed > 0:
+        file_removed = 0
+        for key in keys_to_remove:
+            file_removed += remove_key_from_arb_file(str(arb_file), key)
+        total_removed += file_removed
+        if file_removed > 0:
             files_modified += 1
-            entries = "entry" if removed == 1 else "entries"
-            print(f"{arb_file.name}: Removed {removed} {entries}")
+            entries = "entry" if file_removed == 1 else "entries"
+            print(f"{arb_file.name}: Removed {file_removed} {entries}")
         else:
-            print(f"{arb_file.name}: Key not found")
-    
+            print(f"{arb_file.name}: No keys found")
+
     print("=" * 80)
     print(f"\nSummary:")
     print(f"Total entries removed: {total_removed}")
     print(f"Files modified: {files_modified}")
     print(f"Files processed: {len(arb_files)}")
-    
+
     if total_removed == 0:
-        print(f"\nWarning: No occurrences of key '{key_to_remove}' were found in any .arb files.")
-        print("Please check that the key name is correct and exists in the files.")
+        print(f"\nWarning: None of the specified keys were found in any .arb files.")
+        print("Please check that the key names are correct and exist in the files.")
     else:
-        print(f"\nSuccessfully removed key '{key_to_remove}' from all .arb files.")
-    
+        print(f"\nSuccessfully removed {len(keys_to_remove)} key(s) from all .arb files.")
+
     return 0
 
 

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 11:05:17.423695",
+    "@@last_modified": "2026-04-02 12:19:23.673826",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -3459,12 +3459,10 @@
     "tooManyRequest": "تعداد درخواست‌ها زیاد است، لطفاً بعداً تلاش کنید.",
     "enterNumber": "لطفاً یک مقدار عدد صحیح وارد کنید.",
     "practice": "تمرین",
-    "speechToTextBody": "برای پیام‌های صوتی، می‌توانید متن گفتار را ببینید و نمره کلمات در دقیقه سخنران را مشاهده کنید.",
     "versionNotFound": "نسخه پیدا نشد",
     "fetchingVersion": "در حال دریافت نسخه...",
     "versionFetchError": "خطا در دریافت نسخه",
     "versionText": "نسخه: {version}+{buildNumber}",
-    "l1TranslationBody": "پیام‌ها در زبان پایه شما ترجمه نخواهند شد.",
     "deleteSubscriptionWarningTitle": "اشتراک فعال دارید",
     "deleteSubscriptionWarningBody": "حذف حساب شما به طور خودکار اشتراک شما را لغو نمی‌کند.",
     "manageSubscription": "مدیریت اشتراک",
@@ -3473,7 +3471,6 @@
     "wordsUsed": "کلمات استفاده شده",
     "level": "سطح",
     "morphsUsed": "مورف‌ها استفاده شده",
-    "translationChoicesBody": "برای راهنمایی، یک گزینه را نگه دارید و کلیک کنید.",
     "grammar": "دستور زبان",
     "contactHasBeenInvitedToTheChat": "تماس دعوت شده است به چت",
     "inviteChat": "📨 دعوت به چت",
@@ -3754,8 +3751,6 @@
     "grammarCopyVOICErcp": "متقابل",
     "other": "دیگر",
     "levelShort": "سطح {level}",
-    "clickBestOption": "گزینه‌های بهترین را برای ترجمه پیام خود انتخاب کنید!",
-    "completeActivitiesToUnlock": "برای باز کردن قفل ترجمه، حداقل یک فعالیت را کامل کنید!",
     "noCapacityLimit": "محدودیت ظرفیت ندارد",
     "downloadGroupText": "دانلود متن گروه",
     "notificationsOn": "اعلان‌ها فعال است",
@@ -3774,22 +3769,6 @@
     "constructUseIgnIGCDesc": "نادیده گرفته شده در تصحیح گرامر",
     "constructUseCorIGCDesc": "تصحیح در تصحیح گرامر",
     "constructUseIncIGCDesc": "نادرست در تصحیح گرامر",
-    "constructUseCorPADesc": "تصحیح در فعالیت معنای کلمه",
-    "constructUseIgnPADesc": "نادیده گرفته شده در فعالیت معنای کلمه",
-    "constructUseIncPADesc": "نادرست در فعالیت معنای کلمه",
-    "constructUseCorWLDesc": "تصحیح در فعالیت شنیداری کلمه",
-    "constructUseIncWLDesc": "نادرست در فعالیت شنیداری کلمه",
-    "constructUseIngWLDesc": "نادیده گرفته شده در فعالیت شنیداری کلمه",
-    "constructUseCorHWLDesc": "تصحیح در فعالیت کلمه پنهان",
-    "constructUseIncHWLDesc": "نادرست در فعالیت کلمه پنهان",
-    "constructUseIgnHWLDesc": "نادیده گرفته شده در فعالیت کلمه پنهان",
-    "constructUseCorLDesc": "تصحیح در فعالیت لما",
-    "constructUseIncLDesc": "نادرست در فعالیت لما",
-    "constructUseIgnLDesc": "در فعالیت لِمَه نادیده گرفته شده است",
-    "constructUseCorMDesc": "در فعالیت گرامر صحیح است",
-    "constructUseIncMDesc": "در فعالیت گرامر نادرست است",
-    "constructUseIgnMDesc": "در فعالیت گرامر نادیده گرفته شده است",
-    "constructUseEmojiDesc": "در فعالیت ایموجی صحیح است",
     "constructUseCollected": "در چت جمع‌آوری شده است",
     "constructUseNanDesc": "قابل اجرا نیست",
     "xpIntoLevel": "{currentXP} / {maxXP} امتیاز تجربه",
@@ -3841,23 +3820,16 @@
     "whatIsMeaning": "معنای '{lemma}' چیست؟",
     "chooseLemmaMeaningInstructionsBody": "معانی را با کلمات در پیام مطابقت دهید!",
     "doubleClickToEdit": "برای ویرایش، دو بار کلیک کنید.",
-    "activityPlannerTitle": "برنامه‌ریز فعالیت",
     "topicLabel": "موضوع",
     "topicPlaceholder": "یک موضوع انتخاب کنید...",
-    "modeLabel": "نوع فعالیت",
     "modePlaceholder": "یک حالت انتخاب کنید...",
     "learningObjectiveLabel": "هدف یادگیری",
     "learningObjectivePlaceholder": "یک هدف یادگیری انتخاب کنید...",
-    "languageOfInstructionsLabel": "زبان دستورالعمل‌های فعالیت",
     "targetLanguageLabel": "زبان هدف",
     "cefrLevelLabel": "سطح CEFR",
-    "generateActivitiesButton": "تولید فعالیت",
-    "launchActivityButton": "شروع فعالیت",
     "image": "تصویر",
     "video": "ویدئو",
     "nan": "مربوط نمی‌شود",
-    "activityPlannerOverviewInstructionsBody": "یک موضوع، حالت، هدف یادگیری انتخاب کنید و برای چت فعالیت تولید کنید!",
-    "activityTitle": "عنوان فعالیت",
     "addVocabulary": "افزودن واژگان",
     "instructions": "دستورالعمل‌ها",
     "numberOfLearners": "تعداد یادگیرندگان",
@@ -3904,12 +3876,10 @@
     "pleaseEnterInt": "لطفاً یک عدد وارد کنید",
     "home": "خانه",
     "join": "پیوستن",
-    "readingAssistanceOverviewBody": "برای بازی‌های کوچک در مطابقت ایموجی‌ها، صداها، معانی کلمات و مفاهیم گرامری، روی دکمه‌های زیر کلیک کنید. یا روی هر کلمه برای جزئیات کلیک کنید.",
     "resetInstructionTooltipsTitle": "بازنشانی راهنمای ابزار",
     "resetInstructionTooltipsDesc": "برای نمایش راهنمای ابزار مانند کاربر جدید، کلیک کنید.",
     "randomize": "تصادفی کردن",
     "clear": "پاک کردن",
-    "makeYourOwnActivity": "فعالیت خود را بسازید",
     "featuredActivities": "برگزیده",
     "save": "ذخیره",
     "startChat": "شروع چت",
@@ -3966,7 +3936,6 @@
     "announcements": "اعلامیه‌ها",
     "activities": "فعالیت‌ها",
     "access": "دسترسی",
-    "activitySuggestionTimeoutMessage": "ما در حال تلاش برای تولید فعالیت‌های بیشتر برای شما هستیم، لطفاً یک دقیقه دیگر بررسی کنید",
     "howSpaceCanBeFound": "چگونه این دوره قابل پیدا کردن است",
     "private": "خصوصی",
     "cannotBeFoundInSearch": "در جستجو قابل پیدا کردن نیست",
@@ -4001,9 +3970,6 @@
     "numInvited": "{count} دعوت شده",
     "saved": "ذخیره شده",
     "reset": "بازنشانی",
-    "errorGenerateActivityMessage": "خطا در تولید فعالیت",
-    "errorRegenerateActivityMessage": "خطا در بازتولید فعالیت",
-    "errorLaunchActivityMessage": "خطا در راه‌اندازی فعالیت",
     "errorFetchingActivitiesMessage": "خطا در دریافت فعالیت‌ها",
     "errorFetchingDefinition": "خطا در دریافت تعاریف",
     "errorProcessAnalytics": "خطا در پردازش تحلیل‌ها",
@@ -4012,7 +3978,6 @@
     "unexpectedError": "خطای غیرمنتظره.",
     "pleaseReload": "لطفاً صفحه را مجدداً بارگذاری کنید و دوباره تلاش کنید.",
     "translationError": "خطای ترجمه",
-    "errorFetchingActivity": "خطا در دریافت فعالیت",
     "check": "بررسی",
     "unableToFindRoom": "چت یا دوره‌ای با این کد پیدا نشد. لطفاً دوباره تلاش کنید.",
     "numCompletedActivities": "تعداد فعالیت‌های انجام‌شده",
@@ -4020,11 +3985,8 @@
     "request": "درخواست",
     "requestAll": "درخواست همه",
     "confirmMessageUnpin": "آیا مطمئن هستید که می‌خواهید این پیام را از پین خارج کنید؟",
-    "createActivityPlan": "ایجاد برنامه فعالیت جدید",
     "saveAndLaunch": "ذخیره و راه‌اندازی",
     "launchToSpace": "راه‌اندازی در دوره",
-    "numberOfActivities": "تعداد جلسات فعالیت",
-    "maximumActivityParticipants": "هر فعالیت می‌تواند حداکثر {count} شرکت‌کننده داشته باشد.",
     "pending": "در انتظار",
     "inactive": "غیرفعال",
     "confirmRole": "تایید نقش",
@@ -5722,10 +5684,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@speechToTextBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@versionNotFound": {
         "type": "String",
         "placeholders": {}
@@ -5748,10 +5706,6 @@
                 "type": "String"
             }
         }
-    },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
@@ -5782,10 +5736,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -6913,14 +6863,6 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
         "type": "String",
         "placeholders": {}
@@ -6990,70 +6932,6 @@
         "placeholders": {}
     },
     "@constructUseIncIGCDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7279,19 +7157,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@topicLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -7307,23 +7177,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -7336,14 +7194,6 @@
         "placeholders": {}
     },
     "@nan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -7543,10 +7393,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@readingAssistanceOverviewBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resetInstructionTooltipsTitle": {
         "type": "String",
         "placeholders": {}
@@ -7560,10 +7406,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -7795,10 +7637,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activitySuggestionTimeoutMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@howSpaceCanBeFound": {
         "type": "String",
         "placeholders": {}
@@ -7947,18 +7785,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingActivitiesMessage": {
         "type": "String",
         "placeholders": {}
@@ -7988,10 +7814,6 @@
         "placeholders": {}
     },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8030,10 +7852,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -8041,18 +7859,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -10748,8 +10554,6 @@
     "notificationDeviceSubtitle": "دستگاه‌هایی را که به شما اعلان‌های فشار ارسال می‌کنند، مشاهده و مدیریت کنید.",
     "notificationRuleDM": "پیام مستقیم",
     "notificationRuleDMDescription": "کاربر را در مورد پیام‌ها در اتاق‌های پیام مستقیم مطلع می‌کند.",
-    "notificationRuleCourseAndActivity": "دوره و فعالیت",
-    "notificationRuleCourseAndActivityDescription": "کاربر را در مورد پیام‌ها در دوره‌ها، فعالیت‌ها و چت‌ها مطلع می‌کند.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -10771,14 +10575,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -11069,6 +10865,101 @@
         "placeholders": {}
     },
     "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "صحیح در تمرین معنی کلمه",
+    "constructUseIgnPADesc": "نادیده گرفته شده در تمرین معنی کلمه",
+    "constructUseIncPADesc": "نادرست در تمرین معنی کلمه",
+    "constructUseCorWLDesc": "صحیح در تمرین شنیداری کلمه",
+    "constructUseIncWLDesc": "نادرست در تمرین شنیداری کلمه",
+    "constructUseIngWLDesc": "نادیده گرفته شده در تمرین شنیداری کلمه",
+    "constructUseCorHWLDesc": "صحیح در تمرین کلمه پنهان",
+    "constructUseIncHWLDesc": "نادرست در تمرین کلمه پنهان",
+    "constructUseIgnHWLDesc": "نادیده گرفته شده در تمرین کلمه پنهان",
+    "constructUseCorLDesc": "صحیح در تمرین لِما",
+    "constructUseIncLDesc": "نادرست در تمرین لِما",
+    "constructUseIgnLDesc": "نادیده گرفته شده در تمرین لِما",
+    "constructUseCorMDesc": "درست در تمرین گرامر",
+    "constructUseIncMDesc": "نادرست در تمرین گرامر",
+    "constructUseIgnMDesc": "نادیده گرفته شده در تمرین گرامر",
+    "constructUseEmojiDesc": "درست در تمرین ایموجی",
+    "errorFetchingExercise": "خطا در دریافت تمرین عملی",
+    "notificationRuleCourseAndActivity": "دوره و فعالیت",
+    "notificationRuleCourseAndActivityDescription": "کاربر را در مورد پیام‌ها در دوره‌ها، فعالیت‌ها و چت‌ها مطلع می‌کند.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     }
