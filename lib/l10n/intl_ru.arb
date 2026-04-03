@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-04-02 14:36:40.204165",
+    "@@last_modified": "2026-04-03 12:22:37.355528",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11976,6 +11976,11 @@
     },
     "clickToUpdateTargetLanguage": "Нажмите здесь, чтобы обновить ваш целевой язык.",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Закрыть меню эмодзи",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

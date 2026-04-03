@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 14:36:08.174541",
+    "@@last_modified": "2026-04-03 12:22:16.772324",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -11092,6 +11092,11 @@
     },
     "clickToUpdateTargetLanguage": "點擊這裡以更新您的目標語言。",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "關閉表情符號選單",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

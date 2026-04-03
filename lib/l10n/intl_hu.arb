@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-04-02 14:35:40.429135",
+    "@@last_modified": "2026-04-03 12:21:55.065871",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -11089,6 +11089,11 @@
     },
     "clickToUpdateTargetLanguage": "Kattintson ide a célnyelv frissítéséhez.",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Emoji menü bezárása",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

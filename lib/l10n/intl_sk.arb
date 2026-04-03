@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-04-02 14:35:44.727853",
+    "@@last_modified": "2026-04-03 12:21:57.830823",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -12078,6 +12078,11 @@
     },
     "clickToUpdateTargetLanguage": "Kliknite sem pre aktualizáciu cieľového jazyka.",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Zavrieť menu emoji",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

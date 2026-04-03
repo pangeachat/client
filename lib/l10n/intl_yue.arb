@@ -1714,7 +1714,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-04-02 14:35:57.001271",
+    "@@last_modified": "2026-04-03 12:22:09.501868",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -12093,6 +12093,11 @@
     },
     "clickToUpdateTargetLanguage": "點擊這裡以更新您的目標語言。",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "關閉表情符號菜單",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

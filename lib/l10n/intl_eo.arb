@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 14:36:39.500571",
+    "@@last_modified": "2026-04-03 12:22:36.416689",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -12081,6 +12081,11 @@
     },
     "clickToUpdateTargetLanguage": "Klaku ĉi tie por ĝisdatigi vian celan lingvon.",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Fermi emoji-menuon",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

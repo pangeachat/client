@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-04-02 14:35:54.700748",
+    "@@last_modified": "2026-04-03 12:22:07.312816",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10941,6 +10941,11 @@
     },
     "clickToUpdateTargetLanguage": "Klicken Sie hier, um Ihre Zielsprache zu aktualisieren.",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Emoji-Menü schließen",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

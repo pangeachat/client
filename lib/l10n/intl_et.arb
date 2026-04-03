@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-04-02 14:35:53.838400",
+    "@@last_modified": "2026-04-03 12:22:05.918853",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10959,6 +10959,11 @@
     },
     "clickToUpdateTargetLanguage": "Klõpsa siin, et uuendada oma sihtkeelt.",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Sulge emotikonide menüü",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

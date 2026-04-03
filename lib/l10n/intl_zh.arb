@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-04-02 14:36:28.350625",
+    "@@last_modified": "2026-04-03 12:22:26.493606",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10962,6 +10962,11 @@
     },
     "clickToUpdateTargetLanguage": "点击这里更新您的目标语言。",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "关闭表情菜单",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

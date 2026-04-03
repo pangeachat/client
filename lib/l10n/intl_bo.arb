@@ -3499,7 +3499,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-04-02 14:36:25.938863",
+    "@@last_modified": "2026-04-03 12:22:25.575096",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10628,6 +10628,11 @@
     },
     "clickToUpdateTargetLanguage": "Klick hier om je doeltaal bij te werken.",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Tutup menu emoji",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

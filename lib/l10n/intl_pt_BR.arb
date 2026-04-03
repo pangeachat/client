@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 14:35:50.986825",
+    "@@last_modified": "2026-04-03 12:22:02.434893",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -10962,6 +10962,11 @@
     },
     "clickToUpdateTargetLanguage": "Clique aqui para atualizar seu idioma de destino.",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Fechar menu de emojis",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

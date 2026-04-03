@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-04-02 14:35:59.876465",
+    "@@last_modified": "2026-04-03 12:22:11.554209",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10962,6 +10962,11 @@
     },
     "clickToUpdateTargetLanguage": "Натисніть тут, щоб оновити вашу цільову мову.",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Закрити меню емодзі",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

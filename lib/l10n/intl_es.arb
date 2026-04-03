@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-04-02 14:35:35.403986",
+    "@@last_modified": "2026-04-03 12:21:51.095824",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7888,6 +7888,11 @@
     },
     "clickToUpdateTargetLanguage": "Haga clic aquí para actualizar su idioma objetivo.",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Cerrar menú de emojis",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }
