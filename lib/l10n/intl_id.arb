@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 14:35:41.450137",
+    "@@last_modified": "2026-04-03 12:21:55.784279",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -11059,6 +11059,11 @@
     },
     "clickToUpdateTargetLanguage": "Klik di sini untuk memperbarui bahasa target Anda.",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Tutup menu emoji",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

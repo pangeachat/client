@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 14:36:43.307387",
+    "@@last_modified": "2026-04-03 12:22:40.641697",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -12085,6 +12085,11 @@
     },
     "clickToUpdateTargetLanguage": "Kliknite ovde da ažurirate svoj ciljni jezik.",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Zatvori meni sa emojijima",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

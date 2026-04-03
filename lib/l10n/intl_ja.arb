@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-04-02 14:36:37.768564",
+    "@@last_modified": "2026-04-03 12:22:32.643337",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11830,6 +11830,11 @@
     },
     "clickToUpdateTargetLanguage": "ここをクリックしてターゲット言語を更新してください。",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "絵文字メニューを閉じる",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

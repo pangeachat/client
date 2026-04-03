@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-04-02 14:36:45.432203",
+    "@@last_modified": "2026-04-03 12:22:43.707364",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -11359,6 +11359,11 @@
     },
     "clickToUpdateTargetLanguage": "Cliquez ici pour mettre à jour votre langue cible.",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Fermer le menu des émojis",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

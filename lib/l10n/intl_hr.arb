@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-04-02 14:35:46.874560",
+    "@@last_modified": "2026-04-03 12:21:59.367409",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11446,6 +11446,11 @@
     },
     "clickToUpdateTargetLanguage": "Kliknite ovdje za ažuriranje vašeg ciljnog jezika.",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Zatvori izbornik emojija",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

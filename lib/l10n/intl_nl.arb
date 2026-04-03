@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 14:36:24.936450",
+    "@@last_modified": "2026-04-03 12:22:24.762782",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10962,6 +10962,11 @@
     },
     "clickToUpdateTargetLanguage": "Klik hier om je doeltaal bij te werken.",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Sluit emoji-menu",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

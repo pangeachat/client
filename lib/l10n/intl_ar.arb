@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-04-02 14:36:17.003176",
+    "@@last_modified": "2026-04-03 12:22:20.174222",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11302,6 +11302,11 @@
     },
     "clickToUpdateTargetLanguage": "انقر هنا لتحديث لغة الهدف الخاصة بك.",
     "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "إغلاق قائمة الرموز التعبيرية",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }
