@@ -12,6 +12,7 @@ import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_view.dart';
+import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/chat_list/utils/app_version_util.dart';
 import 'package:fluffychat/pangea/chat_list/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/chat_context_menu_action.dart';
@@ -22,6 +23,7 @@ import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/subscription/widgets/subscription_snackbar.dart';
+import 'package:fluffychat/pangea/user/user_invite_link_repo.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -1066,6 +1068,7 @@ class ChatListController extends State<ChatList>
   Future<void> _initPangeaControllers(Client client) async {
     MatrixState.pangeaController.initControllers();
     await _joinCachedSpaceCode(client);
+    await _startDMWithCachedUserId(client);
   }
 
   Future<void> _joinCachedSpaceCode(Client client) async {
@@ -1081,6 +1084,22 @@ class ChatListController extends State<ChatList>
       room?.isSpace ?? true
           ? context.go('/rooms/spaces/$roomId/details')
           : context.go('/rooms/${room?.id}');
+    }
+  }
+
+  Future<void> _startDMWithCachedUserId(Client client) async {
+    final userId = UserInviteLinkRepo.getInviteUser;
+    if (userId == null) return;
+
+    await UserInviteLinkRepo.clearInviteUser();
+    final resp = await showFutureLoadingDialog(
+      context: context,
+      future: () => client.createPangeaDirectChat(userId),
+    );
+    if (!mounted) return;
+    final roomId = resp.result;
+    if (roomId != null) {
+      context.go('/rooms/$roomId');
     }
   }
   // Pangea#

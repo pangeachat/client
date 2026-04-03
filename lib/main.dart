@@ -50,6 +50,7 @@ void main() async {
     GetStorage.init(),
     GetStorage.init("subscription_storage"),
     GetStorage.init('class_storage'),
+    GetStorage.init('user_invite_storage'),
   ];
   await Future.wait(initFutures);
   // Pangea#
