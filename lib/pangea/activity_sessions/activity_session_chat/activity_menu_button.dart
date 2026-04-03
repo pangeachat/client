@@ -71,7 +71,7 @@ class _ActivityMenuButtonState extends State<ActivityMenuButton> {
     );
 
     FocusScope.of(context).unfocus();
-    OverlayUtil.showTutorialOverlay(
+    OverlayUtil.showAnchoredOverlay(
       context,
       overlayContent: TutorialOverlayMessage(
         L10n.of(context).activityStatsButtonInstruction,

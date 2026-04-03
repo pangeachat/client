@@ -5,19 +5,20 @@ import 'package:fluffychat/pangea/common/utils/cutout_painter.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class AnchoredOverlayWidget extends StatefulWidget {
-  final Widget child;
   final Rect anchorRect;
   final String overlayKey;
-  final double? borderRadius;
-  final double? padding;
+
+  final Widget? overlayContent;
+  final double borderRadius;
+  final double padding;
   final VoidCallback? onClick;
 
   const AnchoredOverlayWidget({
-    required this.child,
     required this.anchorRect,
     required this.overlayKey,
-    this.borderRadius,
-    this.padding,
+    this.overlayContent,
+    this.borderRadius = 0.0,
+    this.padding = 6.0,
     this.onClick,
     super.key,
   });
@@ -27,29 +28,33 @@ class AnchoredOverlayWidget extends StatefulWidget {
 }
 
 class _AnchoredOverlayWidgetState extends State<AnchoredOverlayWidget> {
-  bool _visible = false;
+  final ValueNotifier<bool> _visible = ValueNotifier<bool>(false);
 
   static const double overlayWidth = 300.0;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => setState(() {
-        _visible = true;
-      }),
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) => _visible.value = true);
   }
 
-  Future<void> _closeOverlay() async {
+  @override
+  void dispose() {
+    _visible.dispose();
+    super.dispose();
+  }
+
+  Future<void> _onTap(TapDownDetails details) async {
+    final tapPos = details.globalPosition;
+    if (!widget.anchorRect.contains(tapPos)) return;
+
     if (mounted) {
-      setState(() {
-        _visible = false;
-      });
+      _visible.value = false;
       await Future.delayed(FluffyThemes.animationDuration);
     }
 
     MatrixState.pAnyState.closeOverlay(widget.overlayKey);
+    widget.onClick?.call();
   }
 
   @override
@@ -60,45 +65,47 @@ class _AnchoredOverlayWidgetState extends State<AnchoredOverlayWidget> {
                 (overlayWidth / 2))
             .clamp(8.0, MediaQuery.sizeOf(context).width - overlayWidth - 8.0);
 
-    return AnimatedOpacity(
-      opacity: _visible ? 1.0 : 0.0,
-      duration: FluffyThemes.animationDuration,
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          behavior: HitTestBehavior.translucent,
-          onTapDown: (details) {
-            final tapPos = details.globalPosition;
-            if (widget.anchorRect.contains(tapPos)) {
-              _closeOverlay();
-              widget.onClick?.call();
-            }
-          },
-          child: Stack(
-            children: [
-              Positioned.fill(
-                child: CustomPaint(
-                  painter: CutoutBackgroundPainter(
-                    holeRect: widget.anchorRect,
-                    backgroundColor: Colors.black.withAlpha(180),
-                    borderRadius: widget.borderRadius ?? 0.0,
-                    padding: widget.padding ?? 6.0,
+    return ValueListenableBuilder<bool>(
+      valueListenable: _visible,
+      builder: (context, visible, child) {
+        return AnimatedOpacity(
+          opacity: visible ? 1.0 : 0.0,
+          duration: FluffyThemes.animationDuration,
+          child: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTapDown: _onTap,
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: CustomPaint(
+                      painter: CutoutBackgroundPainter(
+                        holeRect: widget.anchorRect,
+                        backgroundColor: Colors.black.withAlpha(180),
+                        borderRadius: widget.borderRadius,
+                        padding: widget.padding,
+                      ),
+                    ),
                   ),
-                ),
+                  Positioned(
+                    left: leftPosition,
+                    top: widget.anchorRect.bottom + widget.padding,
+                    child: Material(
+                      color: Colors.transparent,
+                      elevation: 4,
+                      child: SizedBox(
+                        width: overlayWidth,
+                        child: widget.overlayContent,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              Positioned(
-                left: leftPosition,
-                top: widget.anchorRect.bottom + (widget.padding ?? 6.0),
-                child: Material(
-                  color: Colors.transparent,
-                  elevation: 4,
-                  child: SizedBox(width: overlayWidth, child: widget.child),
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

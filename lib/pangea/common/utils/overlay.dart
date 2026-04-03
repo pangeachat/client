@@ -18,6 +18,7 @@ import 'package:fluffychat/pangea/common/widgets/anchored_overlay_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/card_header.dart';
 import 'package:fluffychat/pangea/common/widgets/overlay_container.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
+import 'package:fluffychat/pangea/common/widgets/tutorial_overlay_widget.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
@@ -248,14 +249,14 @@ class OverlayUtil {
     );
   }
 
-  static void showTutorialOverlay(
+  static void showAnchoredOverlay(
     BuildContext context, {
-    required Widget overlayContent,
     required String overlayKey,
     required Rect anchorRect,
+    Widget? overlayContent,
     double? borderRadius,
     double? padding,
-    final VoidCallback? onClick,
+    VoidCallback? onClick,
   }) {
     // force close all overlays to prevent showing
     // constuct / level up notification on top of tutorial
@@ -264,11 +265,11 @@ class OverlayUtil {
       builder: (context) {
         return AnchoredOverlayWidget(
           anchorRect: anchorRect,
-          borderRadius: borderRadius,
-          padding: padding,
+          borderRadius: borderRadius ?? 0.0,
+          padding: padding ?? 6.0,
           onClick: onClick,
           overlayKey: overlayKey,
-          child: overlayContent,
+          overlayContent: overlayContent,
         );
       },
     );
@@ -377,6 +378,26 @@ class OverlayUtil {
       transformTargetId: targetID,
       closePrevOverlay: false,
       overlayKey: InstructionsEnum.ttsDisabled.toString(),
+    );
+  }
+
+  static void showTutorialOverlay({
+    required BuildContext context,
+    required String overlayKey,
+    required List<TutorialStep> steps,
+  }) {
+    final entry = OverlayEntry(
+      builder: (context) {
+        return TutorialOverlayWidget(overlayKey: overlayKey, steps: steps);
+      },
+    );
+    MatrixState.pAnyState.openOverlay(
+      entry,
+      context,
+      rootOverlay: true,
+      overlayKey: overlayKey,
+      canPop: false,
+      blockOverlay: true,
     );
   }
 }

@@ -51,6 +51,7 @@ class HtmlMessage extends StatelessWidget {
   final bool isTransitionAnimation;
   final bool isPracticeMode;
   final void Function(PangeaToken)? onClick;
+  final bool Function(PangeaToken)? isHighlighted;
   // Pangea#
 
   const HtmlMessage({

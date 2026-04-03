@@ -14,8 +14,10 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
+import 'package:fluffychat/pangea/common/widgets/tutorial_overlay_widget.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/utils/report_message.dart';
@@ -53,6 +55,9 @@ enum SelectMode {
         return l10n.requestRegeneration;
     }
   }
+
+  GlobalKey get buttonKey =>
+      MatrixState.pAnyState.layerLinkAndKey("select_mode_button_$name").key;
 }
 
 enum MessageActions {
@@ -165,6 +170,26 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     }
 
     controller.playTokenNotifier.addListener(_playToken);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || controller.selectedMode.value != null) return;
+      OverlayUtil.showTutorialOverlay(
+        context: context,
+        overlayKey: "select_mode_buttons_tutorial",
+        steps: [
+          TutorialStep(
+            targetKey: SelectMode.translate.buttonKey,
+            onTap: () => updateMode(SelectMode.translate),
+            borderRadius: 100.0,
+          ),
+          TutorialStep(
+            targetKey: SelectMode.audio.buttonKey,
+            onTap: () => updateMode(SelectMode.audio),
+            borderRadius: 100.0,
+          ),
+        ],
+      );
+    });
   }
 
   @override
@@ -427,6 +452,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                       return Opacity(
                         opacity: enabled ? 1.0 : 0.75,
                         child: PressableButton(
+                          key: mode.buttonKey,
                           borderRadius: BorderRadius.circular(20),
                           depressed: mode == selectedMode || !enabled,
                           color: theme.colorScheme.primaryContainer,

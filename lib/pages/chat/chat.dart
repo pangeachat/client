@@ -36,6 +36,7 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_feedback.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
+import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/chat/chat_banner_controller.dart';
 import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
 import 'package:fluffychat/pangea/chat/widgets/level_up_banner.dart';
@@ -54,6 +55,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
+import 'package:fluffychat/pangea/common/widgets/tutorial_overlay_widget.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
@@ -646,6 +648,76 @@ class ChatController extends State<ChatPageWithRoom>
         context,
         () =>
             () => setState(() {}),
+      );
+    });
+
+    Future.delayed(const Duration(seconds: 3), () async {
+      Logs().w(
+        "SHOWING TUTORIAL OVERLAY. Mounted: $mounted, buttonEventID: $buttonEventID",
+      );
+      if (!mounted) return;
+      if (buttonEventID == null) return;
+      final msgAnchor = MatrixState.pAnyState
+          .layerLinkAndKey(buttonEventID!)
+          .key;
+
+      final steps = [
+        TutorialStep(
+          targetKey: msgAnchor,
+          tooltip: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.onSurface,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Row(
+              spacing: 8.0,
+              children: [
+                BotFace(width: 32.0, expression: BotExpression.gold),
+                Expanded(
+                  child: Text(
+                    "Click on message bubble to select them",
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.surface,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        TutorialStep(
+          targetKey: msgAnchor,
+          tooltip: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.onSurface,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Row(
+              spacing: 8.0,
+              children: [
+                BotFace(width: 32.0, expression: BotExpression.gold),
+                Expanded(
+                  child: Text(
+                    "Or select words to get more info",
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.surface,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ];
+
+      OverlayUtil.showTutorialOverlay(
+        context: context,
+        overlayKey: "activity_stats_button_instruction",
+        steps: steps,
       );
     });
   }
@@ -2106,7 +2178,7 @@ class ChatController extends State<ChatPageWithRoom>
   // #Pangea
   ValueNotifier<bool> depressMessageButton = ValueNotifier(false);
 
-  String? get buttonEventID => timeline!.events
+  String? get buttonEventID => timeline?.events
       .firstWhereOrNull(
         (event) =>
             event.isVisibleInGui &&
