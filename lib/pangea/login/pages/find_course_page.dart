@@ -51,6 +51,7 @@ class FindCoursePageState extends State<FindCoursePage> {
   Map<String, CoursePlanModel> coursePlans = {};
   String? nextBatch;
   bool fullyLoaded = false;
+  int _loadGeneration = 0;
 
   @override
   void initState() {
@@ -75,6 +76,7 @@ class FindCoursePageState extends State<FindCoursePage> {
     targetLanguageFilter.value = language;
     visibleCourses.value = [];
     loading.value = false;
+    _loadGeneration++;
     loadMore();
   }
 
@@ -82,6 +84,7 @@ class FindCoursePageState extends State<FindCoursePage> {
     if (text.isEmpty) {
       visibleCourses.value = [];
       loading.value = false;
+      _loadGeneration++;
       loadMore();
       return;
     }
@@ -90,6 +93,7 @@ class FindCoursePageState extends State<FindCoursePage> {
     _coolDown = Timer(const Duration(milliseconds: 500), () {
       visibleCourses.value = [];
       loading.value = false;
+      _loadGeneration++;
       loadMore();
     });
   }
@@ -151,8 +155,8 @@ class FindCoursePageState extends State<FindCoursePage> {
     if (loading.value) return;
     loading.value = true;
 
+    final int generation = _loadGeneration;
     final targetLanguage = targetLanguageFilter.value?.langCodeShort ?? "";
-    final searchTerm = searchController.text;
 
     // First, get any courses from the cache that should be visible and show
     visibleCourses.value = [
@@ -162,12 +166,13 @@ class FindCoursePageState extends State<FindCoursePage> {
 
     // Then, load until at least 5 courses are visible, or all courses have been loaded
     int timesLoaded = 0;
-    while (loading.value &&
+    while (_loadGeneration == generation &&
+        loading.value &&
         (visibleCourses.value.length < 5 || loadMore) &&
         timesLoaded < 4 &&
         !fullyLoaded) {
       await _loadNextBatch();
-      if (!mounted) return;
+      if (!mounted || _loadGeneration != generation) return;
       visibleCourses.value = [
         ...visibleCourses.value,
         ..._filterCourses(targetLanguage),
@@ -175,13 +180,8 @@ class FindCoursePageState extends State<FindCoursePage> {
       timesLoaded++;
     }
 
-    // If the target language filter hasn't changed while we were loading, update the loader
-    // with the new results. If it has changed, it means another load was triggered, so we
-    // don't need to do anything here as that load will update the loader when it completes.
-    final currentFilter = targetLanguageFilter.value?.langCodeShort ?? "";
-    if (mounted &&
-        currentFilter == targetLanguage &&
-        searchController.text == searchTerm) {
+    // Only update loading state if this load is still the current one.
+    if (mounted && _loadGeneration == generation) {
       loading.value = false;
     }
   }
