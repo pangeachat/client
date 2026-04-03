@@ -52,6 +52,8 @@ class NewCoursePageState extends State<NewCoursePage> {
     null,
   );
 
+  int _loadGeneration = 0;
+
   @override
   void initState() {
     super.initState();
@@ -86,13 +88,16 @@ class NewCoursePageState extends State<NewCoursePage> {
   void _setTargetLanguageFilter(LanguageModel? language) {
     if (_targetLanguageFilter.value == language) return;
     _targetLanguageFilter.value = language;
+    _loadGeneration++;
     _loadCourses();
   }
 
   Future<void> _loadCourses() async {
+    final int generation = _loadGeneration;
     try {
       _courses.value = null;
       final resp = await CoursePlansRepo.searchByFilter(filter: _filter);
+      if (!mounted || _loadGeneration != generation) return;
       _courses.value = Result.value(resp);
       if (resp.coursePlans.isEmpty) {
         ErrorHandler.logError(
@@ -101,6 +106,7 @@ class NewCoursePageState extends State<NewCoursePage> {
         );
       }
     } catch (e, s) {
+      if (!mounted || _loadGeneration != generation) return;
       ErrorHandler.logError(e: e, s: s, data: {'filter': _filter.toJson()});
       _courses.value = Result.error(e);
     }
