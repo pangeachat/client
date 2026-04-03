@@ -118,8 +118,13 @@ class FindCoursePageState extends State<FindCoursePage> {
       ),
     );
 
+    // filter out rooms with 0 members
+    final nonEmptyCourses = unjoinedCourses.where(
+      (c) => c.room.numJoinedMembers > 0,
+    );
+
     // filter out courses without relevant plans
-    final targetLanguageCourses = unjoinedCourses.where((chunk) {
+    final targetLanguageCourses = nonEmptyCourses.where((chunk) {
       final course = coursePlans[chunk.courseId];
       if (course == null) return false;
       if (targetLanguage == "") return true;
@@ -139,12 +144,18 @@ class FindCoursePageState extends State<FindCoursePage> {
       }).toList();
     }
 
-    // sort by join rule, with knock rooms at the end
+    // sort by number of participants, and then by join rule (public > knock)
     filtered.sort((a, b) {
-      final aKnock = a.room.joinRule == JoinRules.knock.name;
-      final bKnock = b.room.joinRule == JoinRules.knock.name;
-      if (aKnock && !bKnock) return 1;
-      if (!aKnock && bKnock) return -1;
+      final participantsDiff =
+          b.room.numJoinedMembers - a.room.numJoinedMembers;
+      if (participantsDiff != 0) return participantsDiff;
+      if (a.room.joinRule == JoinRules.public.name &&
+          b.room.joinRule == JoinRules.knock.name) {
+        return -1;
+      } else if (a.room.joinRule == JoinRules.knock.name &&
+          b.room.joinRule == JoinRules.public.name) {
+        return 1;
+      }
       return 0;
     });
 
