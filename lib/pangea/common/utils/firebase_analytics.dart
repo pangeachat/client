@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'package:fluffychat/pangea/bot/bot_target_event_name_enum.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
@@ -197,6 +198,33 @@ class GoogleAnalytics {
 
   static void failUpdateNotificationBadge() {
     logEvent('fail_update_notification_badge');
+  }
+
+  static void openBotNotification({
+    required BotTargetEventName targetEventName,
+    String? variant,
+    String? notificationType,
+    String? chatId,
+    String? groupId,
+    String? activityId,
+    String? roomId,
+    String? action,
+    String? name,
+  }) {
+    logEvent(
+      'bot_notification_opened',
+      parameters: {
+        'target_event_name': targetEventName.name,
+        'variant': ?variant,
+        'notification_type': ?notificationType,
+        'chat_id': ?chatId,
+        'group_id': ?groupId,
+        'activity_id': ?activityId,
+        'room_id': ?roomId,
+        'action': ?action,
+        'name': ?name,
+      },
+    );
   }
 
   static FirebaseAnalyticsObserver getAnalyticsObserver() {
