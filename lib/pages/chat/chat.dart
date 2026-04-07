@@ -54,8 +54,6 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
-import 'package:fluffychat/pangea/common/widgets/tutorial_overlay_widget.dart';
-import 'package:fluffychat/pangea/common/widgets/tutorial_tooltip_widget.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
@@ -71,6 +69,8 @@ import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart';
 import 'package:fluffychat/pangea/learning_settings/p_language_dialog.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_overlay_widget.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_tooltip_widget.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_repo.dart';
@@ -276,9 +276,6 @@ class ChatController extends State<ChatPageWithRoom>
 
   ValueNotifier<Event?> replyEvent = ValueNotifier(null);
   ValueNotifier<Event?> editEvent = ValueNotifier(null);
-
-  GlobalKey get igcButtonKey =>
-      MatrixState.pAnyState.layerLinkAndKey("start_igc_button_${room.id}").key;
   // Pangea#
 
   bool _scrolledUp = false;
@@ -2212,6 +2209,9 @@ class ChatController extends State<ChatPageWithRoom>
     // Pangea#
   });
   // #Pangea
+  GlobalKey get igcButtonKey =>
+      MatrixState.pAnyState.layerLinkAndKey("start_igc_button_${room.id}").key;
+
   ValueNotifier<bool> depressMessageButton = ValueNotifier(false);
 
   String? get buttonEventID => timeline?.events

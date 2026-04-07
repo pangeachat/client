@@ -18,11 +18,11 @@ import 'package:fluffychat/pangea/common/widgets/anchored_overlay_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/card_header.dart';
 import 'package:fluffychat/pangea/common/widgets/overlay_container.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
-import 'package:fluffychat/pangea/common/widgets/tutorial_overlay_widget.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_overlay_widget.dart';
 import '../../../config/themes.dart';
 import '../../../widgets/matrix.dart';
 import 'error_handler.dart';
@@ -255,7 +255,7 @@ class OverlayUtil {
     BuildContext context, {
     required String overlayKey,
     required Rect anchorRect,
-    Widget? overlayContent,
+    required Widget overlayContent,
     double? borderRadius,
     double? padding,
     VoidCallback? onClick,
@@ -271,7 +271,7 @@ class OverlayUtil {
           padding: padding ?? 6.0,
           onClick: onClick,
           overlayKey: overlayKey,
-          overlayContent: overlayContent,
+          child: overlayContent,
         );
       },
     );
