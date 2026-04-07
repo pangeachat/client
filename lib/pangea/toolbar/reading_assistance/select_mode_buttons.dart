@@ -14,15 +14,14 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/utils/report_message.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_overlay_widget.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_tooltip_widget.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
@@ -172,10 +171,12 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
     controller.playTokenNotifier.addListener(_playToken);
 
-    if (widget.overlayController.showTutorial) {
+    if (TutorialOverlayOrchestrator.instance.isTutorialQueued(
+      TutorialEnum.selectModeButtons,
+    )) {
       Future.delayed(Duration(milliseconds: 1000), () {
         if (mounted && controller.selectedMode.value == null) {
-          _showTranslationTutorial();
+          _startSelectModeTutorial();
         }
       });
     }
@@ -202,49 +203,34 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   bool get _canRefresh =>
       messageEvent.eventId == widget.controller.refreshEventID;
 
-  void _showTranslationTutorial() {
-    final overlayKey = "select_mode_buttons_tutorial";
+  void _startSelectModeTutorial() {
     final translateAnchor = SelectMode.translate.buttonKey;
     final audioAnchor = SelectMode.audio.buttonKey;
     final msgAnchor = widget.overlayController.overlayMessageLayerLink.key;
 
-    final steps = [
-      TutorialStep(
-        targetKey: translateAnchor,
-        tooltip: TutorialTooltipWidget(
-          text: "Click here to translate the message",
-        ),
-        tooltipSize: Size(200, 60),
-        onTap: () async {
-          await updateMode(SelectMode.translate);
-          await Future.delayed(Duration(milliseconds: 1000));
-        },
-      ),
-      TutorialStep(
-        targetKey: audioAnchor,
-        tooltip: TutorialTooltipWidget(
-          text: "Click here to listen to the message",
-        ),
-        tooltipSize: Size(200, 60),
-        onTap: () async {
-          await updateMode(SelectMode.audio);
-          await Future.delayed(Duration(milliseconds: 1000));
-        },
-      ),
-      TutorialStep(
-        targetKey: msgAnchor,
-        tooltip: TutorialTooltipWidget(
-          text: "Click the background to go back to chatting",
-        ),
-        tooltipSize: Size(200, 60),
-        onTap: () async => widget.controller.clearSelectedEvents(),
-      ),
-    ];
-
-    OverlayUtil.showTutorialOverlay(
+    TutorialOverlayOrchestrator.instance.openQueuedTutorial(
       context: context,
-      overlayKey: overlayKey,
-      steps: steps,
+      tutorial: TutorialEnum.selectModeButtons,
+      stepData: [
+        TutorialStepWidgetData(
+          anchor: translateAnchor,
+          onTap: () async {
+            await updateMode(SelectMode.translate);
+            await Future.delayed(Duration(milliseconds: 1000));
+          },
+        ),
+        TutorialStepWidgetData(
+          anchor: audioAnchor,
+          onTap: () async {
+            await updateMode(SelectMode.audio);
+            await Future.delayed(Duration(milliseconds: 1000));
+          },
+        ),
+        TutorialStepWidgetData(
+          anchor: msgAnchor,
+          onTap: () async => widget.controller.clearSelectedEvents(),
+        ),
+      ],
     );
   }
 

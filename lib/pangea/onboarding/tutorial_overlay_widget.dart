@@ -5,7 +5,8 @@ import 'package:flutter/scheduler.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/common/utils/cutout_painter.dart';
-import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart';
 
 class TutorialStep {
   final GlobalKey targetKey;
@@ -25,11 +26,11 @@ class TutorialStep {
 }
 
 class TutorialOverlayWidget extends StatefulWidget {
-  final String overlayKey;
+  final TutorialEnum tutorial;
   final List<TutorialStep> steps;
 
   const TutorialOverlayWidget({
-    required this.overlayKey,
+    required this.tutorial,
     required this.steps,
     super.key,
   });
@@ -63,6 +64,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   @override
   void dispose() {
     _visible.dispose();
+    TutorialOverlayOrchestrator.instance.onCloseTutorial(widget.tutorial);
     super.dispose();
   }
 
@@ -133,13 +135,9 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     _visible.value = false;
     await Future.delayed(_duration);
     if (mounted) {
-      // Pop the callback before closing so closeOverlay doesn't cancel it,
-      // then fire it after closing so the overlay no longer blocks new overlays.
-      final onComplete = MatrixState.pAnyState.popTutorialCallback(
-        widget.overlayKey,
+      TutorialOverlayOrchestrator.instance.closeTutorial(
+        tutorial: widget.tutorial,
       );
-      MatrixState.pAnyState.closeOverlay(widget.overlayKey);
-      onComplete?.call();
     }
   }
 

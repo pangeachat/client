@@ -22,7 +22,6 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_overlay_widget.dart';
 import '../../../config/themes.dart';
 import '../../../widgets/matrix.dart';
 import 'error_handler.dart';
@@ -48,7 +47,7 @@ class OverlayUtil {
     bool ignorePointer = false,
     bool canPop = true,
     bool rootOverlay = false,
-    Set<String>? bypassBlockingOverlays,
+    bool bypassBlockingOverlays = false,
   }) {
     try {
       if (position == OverlayPositionEnum.transform) {
@@ -380,26 +379,6 @@ class OverlayUtil {
       transformTargetId: targetID,
       closePrevOverlay: false,
       overlayKey: InstructionsEnum.ttsDisabled.toString(),
-    );
-  }
-
-  static void showTutorialOverlay({
-    required BuildContext context,
-    required String overlayKey,
-    required List<TutorialStep> steps,
-  }) {
-    final entry = OverlayEntry(
-      builder: (context) {
-        return TutorialOverlayWidget(overlayKey: overlayKey, steps: steps);
-      },
-    );
-    MatrixState.pAnyState.openOverlay(
-      entry,
-      context,
-      rootOverlay: true,
-      overlayKey: overlayKey,
-      canPop: false,
-      blockOverlay: true,
     );
   }
 }

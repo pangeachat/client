@@ -69,8 +69,8 @@ import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart';
 import 'package:fluffychat/pangea/learning_settings/p_language_dialog.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_overlay_widget.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_tooltip_widget.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_repo.dart';
@@ -203,7 +203,8 @@ class ChatController extends State<ChatPageWithRoom>
   StreamSubscription? _tokensSubscription;
 
   StreamSubscription? _botAudioSubscription;
-  StreamSubscription? _tutorialSubscription;
+  StreamSubscription? _readingAssistanceTutorialSubscription;
+  StreamSubscription? _writingAssistanceTutorialSubscription;
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
   late final ActivityChatController activityController;
   late final ChatBannerController _bannerController;
@@ -622,7 +623,7 @@ class ChatController extends State<ChatPageWithRoom>
     matrix.audioPlayer!.play();
   }
 
-  Future<void> _tutorialListener(SyncUpdate update) async {
+  Future<void> _readingAssistanceTutorialListener(SyncUpdate update) async {
     final timeline = this.timeline;
     final l2 =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
@@ -659,60 +660,43 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
-  void _startReadingAssistanceTutorial(Event event) {
-    final overlayKey = "click_message_tutorial";
-    final msgAnchor = MatrixState.pAnyState.layerLinkAndKey(event.eventId).key;
-    final steps = [
-      TutorialStep(
-        targetKey: msgAnchor,
-        tooltip: TutorialTooltipWidget(
-          text: "Click on message bubble to select them",
-        ),
-        tooltipSize: Size(200, 60),
-        onTap: () async => showToolbar(
-          event,
-          bypassBlockingOverlays: {overlayKey},
-          showTutorial: true,
-        ),
-      ),
-    ];
+  void _writingAssistanceTutorialListener(TutorialEnum tutorial) {
+    if (tutorial != TutorialEnum.selectModeButtons) return;
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _startWritingAssistanceTutorial(),
+    );
+  }
 
-    OverlayUtil.showTutorialOverlay(
+  void _startReadingAssistanceTutorial(Event event) {
+    final msgAnchor = MatrixState.pAnyState.layerLinkAndKey(event.eventId).key;
+    TutorialOverlayOrchestrator.instance.openTutorial(
       context: context,
-      overlayKey: overlayKey,
-      steps: steps,
+      tutorial: TutorialEnum.readingAssistance,
+      stepData: [
+        TutorialStepWidgetData(
+          anchor: msgAnchor,
+          onTap: () async => showToolbar(event),
+        ),
+      ],
+    );
+
+    TutorialOverlayOrchestrator.instance.queueTutorial(
+      TutorialEnum.selectModeButtons,
     );
   }
 
   void _startWritingAssistanceTutorial() {
-    final overlayKey = "writing_assistance_tutorial";
     final inputAnchor = MatrixState.pAnyState
         .layerLinkAndKey(ChoreoConstants.inputTransformTargetKey)
         .key;
 
-    final steps = [
-      TutorialStep(
-        targetKey: inputAnchor,
-        tooltip: TutorialTooltipWidget(
-          text:
-              "You can write messages in any language. We'll help you write in your target language.",
-        ),
-        tooltipSize: Size(300, 100),
-      ),
-      TutorialStep(
-        targetKey: igcButtonKey,
-        tooltip: TutorialTooltipWidget(
-          text:
-              "After writing your message, click here for writing assistance.",
-        ),
-        tooltipSize: Size(300, 80),
-      ),
-    ];
-
-    OverlayUtil.showTutorialOverlay(
+    TutorialOverlayOrchestrator.instance.openTutorial(
       context: context,
-      overlayKey: overlayKey,
-      steps: steps,
+      tutorial: TutorialEnum.writingAssistance,
+      stepData: [
+        TutorialStepWidgetData(anchor: inputAnchor),
+        TutorialStepWidgetData(anchor: igcButtonKey),
+      ],
     );
   }
 
@@ -732,12 +716,14 @@ class ChatController extends State<ChatPageWithRoom>
 
     _botAudioSubscription = room.client.onSync.stream.listen(_botAudioListener);
 
-    _tutorialSubscription = room.client.onSync.stream.listen(_tutorialListener);
-
-    MatrixState.pAnyState.registerTutorialComplete(
-      "select_mode_buttons_tutorial",
-      _startWritingAssistanceTutorial,
+    _readingAssistanceTutorialSubscription = room.client.onSync.stream.listen(
+      _readingAssistanceTutorialListener,
     );
+
+    _writingAssistanceTutorialSubscription = TutorialOverlayOrchestrator
+        .instance
+        .tutorialCompleteStream
+        .listen(_writingAssistanceTutorialListener);
 
     activityController = ActivityChatController(
       userID: Matrix.of(context).client.userID!,
@@ -1012,7 +998,8 @@ class ChatController extends State<ChatPageWithRoom>
     _constructsSubscription?.cancel();
     _botAudioSubscription?.cancel();
     _tokensSubscription?.cancel();
-    _tutorialSubscription?.cancel();
+    _readingAssistanceTutorialSubscription?.cancel();
+    _writingAssistanceTutorialSubscription?.cancel();
     _bannerController.dispose();
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     scrollController.dispose();
@@ -2251,8 +2238,7 @@ class ChatController extends State<ChatPageWithRoom>
     MessagePracticeMode? mode,
     Event? nextEvent,
     Event? prevEvent,
-    Set<String>? bypassBlockingOverlays,
-    bool showTutorial = false,
+    bool bypassBlockingOverlays = false,
   }) async {
     if (event.redacted ||
         event.text == '' ||
@@ -2279,7 +2265,6 @@ class ChatController extends State<ChatPageWithRoom>
       initialSelectedToken: selectedToken,
       nextEvent: nextEvent,
       prevEvent: prevEvent,
-      showTutorial: showTutorial,
     );
 
     // you've clicked a message so lets turn this off
@@ -2321,7 +2306,7 @@ class ChatController extends State<ChatPageWithRoom>
         ),
         position: OverlayPositionEnum.centered,
         overlayKey: "button_message_backdrop",
-        bypassBlockingOverlays: bypassBlockingOverlays,
+        bypassBlockingOverlays: true,
       );
 
       await Future.delayed(delay);
@@ -2339,7 +2324,7 @@ class ChatController extends State<ChatPageWithRoom>
         blurBackground: true,
         backgroundColor: Colors.black,
         overlayKey: "message_toolbar_overlay",
-        bypassBlockingOverlays: bypassBlockingOverlays,
+        bypassBlockingOverlays: true,
       );
     } else {
       OverlayUtil.showOverlay(
@@ -2350,7 +2335,7 @@ class ChatController extends State<ChatPageWithRoom>
         blurBackground: true,
         backgroundColor: Colors.black,
         overlayKey: "message_toolbar_overlay",
-        bypassBlockingOverlays: bypassBlockingOverlays,
+        bypassBlockingOverlays: true,
       );
     }
 

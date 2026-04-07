@@ -36,7 +36,6 @@ class MessageSelectionOverlay extends StatefulWidget {
   final Event? _prevEvent;
   final PangeaToken? _initialSelectedToken;
   final Timeline _timeline;
-  final bool _showTutorial;
 
   const MessageSelectionOverlay({
     required this.chatController,
@@ -45,14 +44,12 @@ class MessageSelectionOverlay extends StatefulWidget {
     required Event? nextEvent,
     required Event? prevEvent,
     required Timeline timeline,
-    bool showTutorial = false,
     super.key,
   }) : _initialSelectedToken = initialSelectedToken,
        _nextEvent = nextEvent,
        _prevEvent = prevEvent,
        _event = event,
-       _timeline = timeline,
-       _showTutorial = showTutorial;
+       _timeline = timeline;
 
   @override
   MessageOverlayController createState() => MessageOverlayController();
@@ -61,8 +58,6 @@ class MessageSelectionOverlay extends StatefulWidget {
 class MessageOverlayController extends State<MessageSelectionOverlay>
     with SingleTickerProviderStateMixin, AnalyticsUpdater, TokenRenderingMixin {
   Event get event => widget._event;
-
-  bool get showTutorial => widget._showTutorial;
 
   PangeaTokenText? _selectedSpan;
   ValueNotifier<PangeaToken?> selectedTokenNotifier = ValueNotifier(null);
