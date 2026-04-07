@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
+import 'package:matrix/matrix_api_lite/utils/logs.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -22,6 +23,24 @@ class OverlayListEntry {
 class PangeaAnyState {
   final Map<String, LayerLinkAndKey> _layerLinkAndKeys = {};
   List<OverlayListEntry> entries = [];
+  final Map<String, VoidCallback> _tutorialCompleteCallbacks = {};
+
+  /// Register a callback to fire when the tutorial with [overlayKey] completes
+  /// all of its steps naturally. The callback is consumed once and will not
+  /// fire if the overlay is closed forcefully via [closeOverlay].
+  void registerTutorialComplete(String overlayKey, VoidCallback callback) {
+    _tutorialCompleteCallbacks[overlayKey] = callback;
+    debugPrint(
+      "Registered tutorial complete callback for $overlayKey. Registered callbacks: ${_tutorialCompleteCallbacks.keys.toList()}",
+    );
+  }
+
+  /// Extracts and returns the completion callback for [overlayKey] without
+  /// calling it. Used by [TutorialOverlayWidget._close] so it can close the
+  /// overlay first (unblocking it) and then fire the callback.
+  VoidCallback? popTutorialCallback(String overlayKey) {
+    return _tutorialCompleteCallbacks.remove(overlayKey);
+  }
 
   LayerLinkAndKey layerLinkAndKey(
     String transformTargetId, [
@@ -48,13 +67,28 @@ class PangeaAnyState {
     bool canPop = true,
     bool blockOverlay = false,
     bool rootOverlay = false,
+    Set<String>? bypassBlockingOverlays,
   }) {
-    if (entries.any((e) => e.blockOverlay)) {
+    final blockingOverlays = entries
+        .where(
+          (e) =>
+              e.blockOverlay &&
+              (bypassBlockingOverlays == null ||
+                  !bypassBlockingOverlays.contains(e.key)),
+        )
+        .toList();
+
+    if (blockingOverlays.isNotEmpty) {
+      Logs().w(
+        "Cannot open overlay, another overlay is blocking the view: "
+        "${blockingOverlays.map((e) => e.key)}",
+      );
       return false;
     }
 
     if (overlayKey != null &&
         entries.any((element) => element.key == overlayKey)) {
+      Logs().w("Overlay with key $overlayKey already open");
       return false;
     }
 
@@ -78,6 +112,8 @@ class PangeaAnyState {
         : entries.lastWhereOrNull((element) => element.canPop);
 
     if (entry != null) {
+      // Clean up any pending completion callback so it doesn't leak.
+      if (entry.key != null) _tutorialCompleteCallbacks.remove(entry.key);
       try {
         entry.entry.remove();
         entry.entry.dispose();

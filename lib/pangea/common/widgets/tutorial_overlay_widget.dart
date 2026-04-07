@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/common/utils/cutout_painter.dart';
@@ -10,16 +11,16 @@ class TutorialStep {
   final GlobalKey targetKey;
   final double? borderRadius;
   final Widget? tooltip;
+  final Size? tooltipSize;
 
-  final Future Function()? onTap;
-  final Future Function()? onShow;
+  final Future<void> Function()? onTap;
 
   const TutorialStep({
     required this.targetKey,
     this.borderRadius,
     this.tooltip,
+    this.tooltipSize,
     this.onTap,
-    this.onShow,
   });
 }
 
@@ -37,13 +38,9 @@ class TutorialOverlayWidget extends StatefulWidget {
   State<TutorialOverlayWidget> createState() => _TutorialOverlayWidgetState();
 }
 
-class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget>
-    with SingleTickerProviderStateMixin {
+class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   final ValueNotifier<bool> _visible = ValueNotifier<bool>(false);
   late final Queue<TutorialStep> _setQueue;
-
-  late AnimationController _controller;
-  late Animation<Rect?> _rectAnimation;
 
   /// The current step in the tutorial
   TutorialStep? _currentStep;
@@ -55,39 +52,94 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget>
   void initState() {
     super.initState();
     _setQueue = Queue.of(widget.steps);
-    _controller = AnimationController(vsync: this, duration: _duration);
-    _rectAnimation = AlwaysStoppedAnimation(null);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) _visible.value = true;
       _setNextAnchor();
+      _schedulePositionCheck();
     });
   }
 
   @override
   void dispose() {
-    _controller.dispose();
     _visible.dispose();
     super.dispose();
   }
 
   Duration get _duration => FluffyThemes.animationDuration;
 
+  Size get _tooltipSize => _currentStep?.tooltipSize ?? Size(300.0, 100.0);
+
   double? get _tooltipLeftOffset {
     final rect = _currentRect;
     if (rect == null) return null;
 
-    return (rect.left + (rect.width / 2) - (300.0 / 2)).clamp(
+    return (rect.left + (rect.width / 2) - (_tooltipSize.width / 2)).clamp(
       8.0,
-      MediaQuery.sizeOf(context).width - 300.0 - 8.0,
+      MediaQuery.sizeOf(context).width - _tooltipSize.width - 8.0,
     );
+  }
+
+  /// Returns the top offset for the tooltip. Shows below the target widget if
+  /// there is enough vertical space, otherwise shows above it.
+  double? get _tooltipTopOffset {
+    final rect = _currentRect;
+    if (rect == null) return null;
+
+    final screenHeight = MediaQuery.sizeOf(context).height;
+    final spaceBelow = screenHeight - rect.bottom - 8.0;
+    if (spaceBelow >= _tooltipSize.height) {
+      return rect.bottom + 8.0;
+    }
+    return rect.top - _tooltipSize.height - 8.0;
+  }
+
+  /// Re-read the target widget's position every frame and snap the cutout to
+  /// follow it whenever it moves (e.g. due to scroll, layout shift, animation).
+  /// The loop is self-terminating once the widget is unmounted.
+  void _schedulePositionCheck() {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      _checkAndUpdatePosition();
+      _schedulePositionCheck();
+    });
+  }
+
+  void _checkAndUpdatePosition() {
+    // Don't interfere while a step-transition animation is in progress.
+    if (_currentStep == null) return;
+
+    final renderBox =
+        _currentStep!.targetKey.currentContext?.findRenderObject()
+            as RenderBox?;
+    if (renderBox == null || !renderBox.attached) return;
+
+    final offset = renderBox.localToGlobal(Offset.zero);
+    final newRect = Rect.fromLTWH(
+      offset.dx,
+      offset.dy,
+      renderBox.size.width,
+      renderBox.size.height,
+    );
+
+    if (newRect != _currentRect) {
+      setState(() {
+        _currentRect = newRect;
+      });
+    }
   }
 
   Future<void> _close() async {
     _visible.value = false;
     await Future.delayed(_duration);
     if (mounted) {
+      // Pop the callback before closing so closeOverlay doesn't cancel it,
+      // then fire it after closing so the overlay no longer blocks new overlays.
+      final onComplete = MatrixState.pAnyState.popTutorialCallback(
+        widget.overlayKey,
+      );
       MatrixState.pAnyState.closeOverlay(widget.overlayKey);
+      onComplete?.call();
     }
   }
 
@@ -105,6 +157,10 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget>
       return;
     }
 
+    if (!_visible.value) {
+      _visible.value = true;
+    }
+
     final offset = newRenderBox.localToGlobal(Offset.zero);
     final newRect = Rect.fromLTWH(
       offset.dx,
@@ -113,36 +169,22 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget>
       newRenderBox.size.height,
     );
 
-    _currentStep = newStep;
-
-    if (_currentRect == null || newRect == _currentRect) {
-      // First step: skip animation, jump directly to the target rect.
+    setState(() {
+      _currentStep = newStep;
       _currentRect = newRect;
-      _rectAnimation = AlwaysStoppedAnimation(newRect);
-      if (_currentStep?.onShow != null) {
-        await _currentStep?.onShow?.call();
-      }
-    } else {
-      final tween = RectTween(begin: _currentRect, end: newRect);
-      _rectAnimation = tween.animate(
-        CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn),
-      );
-      _currentRect = newRect;
-      _controller.forward(from: 0).then((_) async {
-        if (_currentStep?.onShow != null) {
-          await _currentStep?.onShow?.call();
-        }
-      });
-    }
-
-    setState(() {});
+    });
   }
 
   Future<void> _onTap(TapDownDetails details) async {
     final tapPos = details.globalPosition;
     if (_currentRect == null || !_currentRect!.contains(tapPos)) return;
+
     if (_currentStep?.onTap != null) {
-      await _currentStep?.onTap?.call();
+      _visible.value = false;
+      await Future.wait([
+        _currentStep!.onTap!.call(),
+        Future.delayed(_duration),
+      ]);
     }
     _setNextAnchor();
   }
@@ -152,46 +194,43 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget>
     return ValueListenableBuilder<bool>(
       valueListenable: _visible,
       builder: (context, visible, child) {
-        return AnimatedOpacity(
-          opacity: visible ? 1.0 : 0.0,
-          duration: _duration,
-          child: MouseRegion(
-            cursor: SystemMouseCursors.click,
-            child: GestureDetector(
-              behavior: HitTestBehavior.translucent,
-              onTapDown: _onTap,
-              child: Stack(
-                children: [
-                  Positioned.fill(
-                    child: AnimatedBuilder(
-                      animation: _rectAnimation,
-                      builder: (context, child) {
-                        return CustomPaint(
-                          painter: CutoutBackgroundPainter(
-                            holeRect: _rectAnimation.value,
-                            borderRadius: _currentStep?.borderRadius ?? 16.0,
-                          ),
-                        );
-                      },
+        return Stack(
+          children: [
+            AnimatedOpacity(
+              opacity: visible ? 1.0 : 0.0,
+              duration: _duration,
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  behavior: HitTestBehavior.translucent,
+                  onTapDown: _onTap,
+                  child: CustomPaint(
+                    painter: CutoutBackgroundPainter(
+                      holeRect: _currentRect,
+                      borderRadius: _currentStep?.borderRadius ?? 16.0,
                     ),
+                    child: const SizedBox.expand(),
                   ),
-                  if (_currentStep?.tooltip != null && _currentRect != null)
-                    Positioned(
-                      left: _tooltipLeftOffset,
-                      top: _currentRect!.bottom + 8.0,
-                      child: Material(
-                        color: Colors.transparent,
-                        elevation: 4,
-                        child: SizedBox(
-                          width: 300.0,
-                          child: _currentStep!.tooltip!,
-                        ),
-                      ),
-                    ),
-                ],
+                ),
               ),
             ),
-          ),
+            if (visible &&
+                _currentStep?.tooltip != null &&
+                _currentRect != null)
+              Positioned(
+                left: _tooltipLeftOffset,
+                top: _tooltipTopOffset,
+                child: Material(
+                  color: Colors.transparent,
+                  elevation: 4,
+                  child: SizedBox(
+                    width: _tooltipSize.width,
+                    height: _tooltipSize.height,
+                    child: _currentStep!.tooltip!,
+                  ),
+                ),
+              ),
+          ],
         );
       },
     );

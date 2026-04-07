@@ -8,7 +8,6 @@ import 'package:fluffychat/pangea/toolbar/layout/overlay_center_content.dart';
 import 'package:fluffychat/pangea/toolbar/layout/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_card_switcher.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class OverMessageOverlay extends StatelessWidget {
   final MessageSelectionPositionerState controller;
@@ -40,10 +39,10 @@ class OverMessageOverlay extends StatelessWidget {
                     height: controller.overheadContentHeight,
                   ),
                 CompositedTransformTarget(
-                  link: MatrixState.pAnyState
-                      .layerLinkAndKey(
-                        'overlay_message_${controller.widget.event.eventId}',
-                      )
+                  link: controller
+                      .widget
+                      .overlayController
+                      .overlayMessageLayerLink
                       .link,
                   child: ValueListenableBuilder(
                     valueListenable:

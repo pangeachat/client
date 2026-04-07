@@ -11,6 +11,7 @@ import 'package:matrix/matrix.dart' hide Result;
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
+import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -35,6 +36,7 @@ class MessageSelectionOverlay extends StatefulWidget {
   final Event? _prevEvent;
   final PangeaToken? _initialSelectedToken;
   final Timeline _timeline;
+  final bool _showTutorial;
 
   const MessageSelectionOverlay({
     required this.chatController,
@@ -43,12 +45,14 @@ class MessageSelectionOverlay extends StatefulWidget {
     required Event? nextEvent,
     required Event? prevEvent,
     required Timeline timeline,
+    bool showTutorial = false,
     super.key,
   }) : _initialSelectedToken = initialSelectedToken,
        _nextEvent = nextEvent,
        _prevEvent = prevEvent,
        _event = event,
-       _timeline = timeline;
+       _timeline = timeline,
+       _showTutorial = showTutorial;
 
   @override
   MessageOverlayController createState() => MessageOverlayController();
@@ -57,6 +61,8 @@ class MessageSelectionOverlay extends StatefulWidget {
 class MessageOverlayController extends State<MessageSelectionOverlay>
     with SingleTickerProviderStateMixin, AnalyticsUpdater, TokenRenderingMixin {
   Event get event => widget._event;
+
+  bool get showTutorial => widget._showTutorial;
 
   PangeaTokenText? _selectedSpan;
   ValueNotifier<PangeaToken?> selectedTokenNotifier = ValueNotifier(null);
@@ -71,6 +77,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   late PracticeController practiceController;
   double? screenWidth;
+
+  LayerLinkAndKey get overlayMessageLayerLink => MatrixState.pAnyState
+      .layerLinkAndKey('overlay_message_${widget._event.eventId}');
 
   /////////////////////////////////////
   /// Lifecycle

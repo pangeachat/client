@@ -48,6 +48,7 @@ class OverlayUtil {
     bool ignorePointer = false,
     bool canPop = true,
     bool rootOverlay = false,
+    Set<String>? bypassBlockingOverlays,
   }) {
     try {
       if (position == OverlayPositionEnum.transform) {
@@ -113,6 +114,7 @@ class OverlayUtil {
         overlayKey: overlayKey,
         canPop: canPop,
         rootOverlay: rootOverlay,
+        bypassBlockingOverlays: bypassBlockingOverlays,
       );
     } catch (err, stack) {
       debugger(when: kDebugMode);

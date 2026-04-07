@@ -36,7 +36,6 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_feedback.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
-import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/chat/chat_banner_controller.dart';
 import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
 import 'package:fluffychat/pangea/chat/widgets/level_up_banner.dart';
@@ -56,6 +55,7 @@ import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
 import 'package:fluffychat/pangea/common/widgets/tutorial_overlay_widget.dart';
+import 'package:fluffychat/pangea/common/widgets/tutorial_tooltip_widget.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
@@ -203,6 +203,7 @@ class ChatController extends State<ChatPageWithRoom>
   StreamSubscription? _tokensSubscription;
 
   StreamSubscription? _botAudioSubscription;
+  StreamSubscription? _tutorialSubscription;
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
   late final ActivityChatController activityController;
   late final ChatBannerController _bannerController;
@@ -275,6 +276,9 @@ class ChatController extends State<ChatPageWithRoom>
 
   ValueNotifier<Event?> replyEvent = ValueNotifier(null);
   ValueNotifier<Event?> editEvent = ValueNotifier(null);
+
+  GlobalKey get igcButtonKey =>
+      MatrixState.pAnyState.layerLinkAndKey("start_igc_button_${room.id}").key;
   // Pangea#
 
   bool _scrolledUp = false;
@@ -621,6 +625,100 @@ class ChatController extends State<ChatPageWithRoom>
     matrix.audioPlayer!.play();
   }
 
+  Future<void> _tutorialListener(SyncUpdate update) async {
+    final timeline = this.timeline;
+    final l2 =
+        MatrixState.pangeaController.userController.userL2?.langCodeShort;
+
+    if (timeline == null || l2 == null) return;
+    if (update.rooms?.join?[roomId]?.timeline?.events == null) return;
+    final events = update.rooms!.join![roomId]!.timeline!.events!;
+    for (final e in events) {
+      final event = Event.fromMatrixEvent(e, room);
+      if (event.type != EventTypes.Message) continue;
+      // TODO accept audio messages ?
+      if (event.messageType != MessageTypes.Text) continue;
+      if (event.redacted || !event.status.isSynced) continue;
+
+      final pangeaMessageEvent = PangeaMessageEvent(
+        event: event,
+        timeline: timeline,
+        ownMessage: event.senderId == Matrix.of(context).client.userID,
+      );
+
+      final msgLang = pangeaMessageEvent.originalSent?.langCode
+          .split('-')
+          .first;
+
+      if (msgLang != l2) continue;
+      debugPrint(
+        "Showing tutorial for message ${event.eventId} with lang $msgLang and user L2 $l2",
+      );
+
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) => _startReadingAssistanceTutorial(event),
+      );
+      break;
+    }
+  }
+
+  void _startReadingAssistanceTutorial(Event event) {
+    final overlayKey = "click_message_tutorial";
+    final msgAnchor = MatrixState.pAnyState.layerLinkAndKey(event.eventId).key;
+    final steps = [
+      TutorialStep(
+        targetKey: msgAnchor,
+        tooltip: TutorialTooltipWidget(
+          text: "Click on message bubble to select them",
+        ),
+        tooltipSize: Size(200, 60),
+        onTap: () async => showToolbar(
+          event,
+          bypassBlockingOverlays: {overlayKey},
+          showTutorial: true,
+        ),
+      ),
+    ];
+
+    OverlayUtil.showTutorialOverlay(
+      context: context,
+      overlayKey: overlayKey,
+      steps: steps,
+    );
+  }
+
+  void _startWritingAssistanceTutorial() {
+    final overlayKey = "writing_assistance_tutorial";
+    final inputAnchor = MatrixState.pAnyState
+        .layerLinkAndKey(ChoreoConstants.inputTransformTargetKey)
+        .key;
+
+    final steps = [
+      TutorialStep(
+        targetKey: inputAnchor,
+        tooltip: TutorialTooltipWidget(
+          text:
+              "You can write messages in any language. We'll help you write in your target language.",
+        ),
+        tooltipSize: Size(300, 100),
+      ),
+      TutorialStep(
+        targetKey: igcButtonKey,
+        tooltip: TutorialTooltipWidget(
+          text:
+              "After writing your message, click here for writing assistance.",
+        ),
+        tooltipSize: Size(300, 80),
+      ),
+    ];
+
+    OverlayUtil.showTutorialOverlay(
+      context: context,
+      overlayKey: overlayKey,
+      steps: steps,
+    );
+  }
+
   void _pangeaInit() {
     choreographer = Choreographer(inputFocus);
     final updater = Matrix.of(context).analyticsDataService.updateDispatcher;
@@ -637,6 +735,13 @@ class ChatController extends State<ChatPageWithRoom>
 
     _botAudioSubscription = room.client.onSync.stream.listen(_botAudioListener);
 
+    _tutorialSubscription = room.client.onSync.stream.listen(_tutorialListener);
+
+    MatrixState.pAnyState.registerTutorialComplete(
+      "select_mode_buttons_tutorial",
+      _startWritingAssistanceTutorial,
+    );
+
     activityController = ActivityChatController(
       userID: Matrix.of(context).client.userID!,
       room: room,
@@ -648,76 +753,6 @@ class ChatController extends State<ChatPageWithRoom>
         context,
         () =>
             () => setState(() {}),
-      );
-    });
-
-    Future.delayed(const Duration(seconds: 3), () async {
-      Logs().w(
-        "SHOWING TUTORIAL OVERLAY. Mounted: $mounted, buttonEventID: $buttonEventID",
-      );
-      if (!mounted) return;
-      if (buttonEventID == null) return;
-      final msgAnchor = MatrixState.pAnyState
-          .layerLinkAndKey(buttonEventID!)
-          .key;
-
-      final steps = [
-        TutorialStep(
-          targetKey: msgAnchor,
-          tooltip: Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.onSurface,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Row(
-              spacing: 8.0,
-              children: [
-                BotFace(width: 32.0, expression: BotExpression.gold),
-                Expanded(
-                  child: Text(
-                    "Click on message bubble to select them",
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.surface,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        TutorialStep(
-          targetKey: msgAnchor,
-          tooltip: Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.onSurface,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Row(
-              spacing: 8.0,
-              children: [
-                BotFace(width: 32.0, expression: BotExpression.gold),
-                Expanded(
-                  child: Text(
-                    "Or select words to get more info",
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.surface,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ];
-
-      OverlayUtil.showTutorialOverlay(
-        context: context,
-        overlayKey: "activity_stats_button_instruction",
-        steps: steps,
       );
     });
   }
@@ -980,6 +1015,7 @@ class ChatController extends State<ChatPageWithRoom>
     _constructsSubscription?.cancel();
     _botAudioSubscription?.cancel();
     _tokensSubscription?.cancel();
+    _tutorialSubscription?.cancel();
     _bannerController.dispose();
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     scrollController.dispose();
@@ -2215,6 +2251,8 @@ class ChatController extends State<ChatPageWithRoom>
     MessagePracticeMode? mode,
     Event? nextEvent,
     Event? prevEvent,
+    Set<String>? bypassBlockingOverlays,
+    bool showTutorial = false,
   }) async {
     if (event.redacted ||
         event.text == '' ||
@@ -2241,6 +2279,7 @@ class ChatController extends State<ChatPageWithRoom>
       initialSelectedToken: selectedToken,
       nextEvent: nextEvent,
       prevEvent: prevEvent,
+      showTutorial: showTutorial,
     );
 
     // you've clicked a message so lets turn this off
@@ -2282,6 +2321,7 @@ class ChatController extends State<ChatPageWithRoom>
         ),
         position: OverlayPositionEnum.centered,
         overlayKey: "button_message_backdrop",
+        bypassBlockingOverlays: bypassBlockingOverlays,
       );
 
       await Future.delayed(delay);
@@ -2299,6 +2339,7 @@ class ChatController extends State<ChatPageWithRoom>
         blurBackground: true,
         backgroundColor: Colors.black,
         overlayKey: "message_toolbar_overlay",
+        bypassBlockingOverlays: bypassBlockingOverlays,
       );
     } else {
       OverlayUtil.showOverlay(
@@ -2309,6 +2350,7 @@ class ChatController extends State<ChatPageWithRoom>
         blurBackground: true,
         backgroundColor: Colors.black,
         overlayKey: "message_toolbar_overlay",
+        bypassBlockingOverlays: bypassBlockingOverlays,
       );
     }
 
