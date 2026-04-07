@@ -6,10 +6,15 @@ import 'package:fluffychat/pangea/onboarding/tutorial_overlay_widget.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_tooltip_widget.dart';
 
 class TutorialStepData {
-  final GlobalKey anchor;
+  final GlobalKey targetKey;
+  final LayerLink targetLink;
   final Future<void> Function()? onTap;
 
-  TutorialStepData({required this.anchor, this.onTap});
+  TutorialStepData({
+    required this.targetKey,
+    required this.targetLink,
+    this.onTap,
+  });
 }
 
 sealed class TutorialModel {
@@ -26,7 +31,8 @@ class ReadingAssistantTutorialModel extends TutorialModel {
         tutorialType: TutorialEnum.readingAssistance,
         steps: [
           TutorialStep(
-            targetKey: data[0].anchor,
+            targetLink: data[0].targetLink,
+            targetKey: data[0].targetKey,
             onTap: data[0].onTap,
             tooltip: TutorialTooltipWidget(
               text: "Click on message bubble to select them",
@@ -45,7 +51,8 @@ class WritingAssistantTutorialModel extends TutorialModel {
         tutorialType: TutorialEnum.writingAssistance,
         steps: [
           TutorialStep(
-            targetKey: data[0].anchor,
+            targetLink: data[0].targetLink,
+            targetKey: data[0].targetKey,
             onTap: data[0].onTap,
             tooltip: TutorialTooltipWidget(
               text:
@@ -55,7 +62,8 @@ class WritingAssistantTutorialModel extends TutorialModel {
             borderRadius: 24.0,
           ),
           TutorialStep(
-            targetKey: data[1].anchor,
+            targetLink: data[1].targetLink,
+            targetKey: data[1].targetKey,
             onTap: data[1].onTap,
             tooltip: TutorialTooltipWidget(
               text:
@@ -76,7 +84,8 @@ class SelectModeButtonsTutorialModel extends TutorialModel {
         tutorialType: TutorialEnum.selectModeButtons,
         steps: [
           TutorialStep(
-            targetKey: data[0].anchor,
+            targetLink: data[0].targetLink,
+            targetKey: data[0].targetKey,
             onTap: data[0].onTap,
             tooltip: TutorialTooltipWidget(
               text: "Click here to translate the message",
@@ -86,7 +95,8 @@ class SelectModeButtonsTutorialModel extends TutorialModel {
             padding: 0.0,
           ),
           TutorialStep(
-            targetKey: data[1].anchor,
+            targetLink: data[1].targetLink,
+            targetKey: data[1].targetKey,
             onTap: data[1].onTap,
             tooltip: TutorialTooltipWidget(
               text: "Click here to listen to the message",
@@ -96,7 +106,8 @@ class SelectModeButtonsTutorialModel extends TutorialModel {
             padding: 0.0,
           ),
           TutorialStep(
-            targetKey: data[2].anchor,
+            targetLink: data[2].targetLink,
+            targetKey: data[2].targetKey,
             onTap: data[2].onTap,
             tooltip: TutorialTooltipWidget(
               text: "Click the background to go back to chatting",

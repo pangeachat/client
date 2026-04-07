@@ -50,6 +50,7 @@ import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
+import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
@@ -669,13 +670,14 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void _startReadingAssistanceTutorial(Event event) {
-    final msgAnchor = MatrixState.pAnyState.layerLinkAndKey(event.eventId).key;
+    final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
     TutorialOverlayOrchestrator.instance.openTutorial(
       context: context,
       tutorial: ReadingAssistantTutorialModel(
         data: [
           TutorialStepData(
-            anchor: msgAnchor,
+            targetLink: target.link,
+            targetKey: target.key,
             onTap: () async => showToolbar(event),
           ),
         ],
@@ -688,16 +690,22 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void _startWritingAssistanceTutorial() {
-    final inputAnchor = MatrixState.pAnyState
-        .layerLinkAndKey(ChoreoConstants.inputTransformTargetKey)
-        .key;
+    final inputTarget = MatrixState.pAnyState.layerLinkAndKey(
+      ChoreoConstants.inputTransformTargetKey,
+    );
 
     TutorialOverlayOrchestrator.instance.openTutorial(
       context: context,
       tutorial: WritingAssistantTutorialModel(
         data: [
-          TutorialStepData(anchor: inputAnchor),
-          TutorialStepData(anchor: igcButtonKey),
+          TutorialStepData(
+            targetLink: inputTarget.link,
+            targetKey: inputTarget.key,
+          ),
+          TutorialStepData(
+            targetLink: igcButtonLink.link,
+            targetKey: igcButtonLink.key,
+          ),
         ],
       ),
     );
@@ -2199,8 +2207,8 @@ class ChatController extends State<ChatPageWithRoom>
     // Pangea#
   });
   // #Pangea
-  GlobalKey get igcButtonKey =>
-      MatrixState.pAnyState.layerLinkAndKey("start_igc_button_${room.id}").key;
+  LayerLinkAndKey get igcButtonLink =>
+      MatrixState.pAnyState.layerLinkAndKey("start_igc_button_${room.id}");
 
   ValueNotifier<bool> depressMessageButton = ValueNotifier(false);
 

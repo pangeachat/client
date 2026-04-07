@@ -40,11 +40,11 @@ class TutorialOverlayOrchestrator {
 
     if (_currentTutorial != null) {
       Logs().w(
-        "Trying to open tutorial with key $tutorial while tutorial with key $_currentTutorial is still open",
+        "Trying to open tutorial with key ${tutorial.tutorialType} while tutorial with key $_currentTutorial is still open",
       );
     } else {
       Logs().i(
-        "Opening tutorial with key $tutorial. Current tutorial is $_currentTutorial",
+        "Opening tutorial with key ${tutorial.tutorialType}. Current tutorial is $_currentTutorial",
       );
     }
 

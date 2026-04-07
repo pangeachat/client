@@ -13,6 +13,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
+import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
@@ -57,8 +58,12 @@ enum SelectMode {
     }
   }
 
-  GlobalKey get buttonKey =>
-      MatrixState.pAnyState.layerLinkAndKey("select_mode_button_$name").key;
+  LayerLinkAndKey get buttonTarget =>
+      MatrixState.pAnyState.layerLinkAndKey("select_mode_button_$name");
+
+  GlobalKey get buttonKey => buttonTarget.key;
+
+  LayerLink get buttonLink => buttonTarget.link;
 }
 
 enum MessageActions {
@@ -205,30 +210,33 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       messageEvent.eventId == widget.controller.refreshEventID;
 
   void _startSelectModeTutorial() {
-    final translateAnchor = SelectMode.translate.buttonKey;
-    final audioAnchor = SelectMode.audio.buttonKey;
-    final msgAnchor = widget.overlayController.overlayMessageLayerLink.key;
+    final translateTarget = SelectMode.translate.buttonTarget;
+    final audioTarget = SelectMode.audio.buttonTarget;
+    final msgTarget = widget.overlayController.overlayMessageLayerLink;
 
     TutorialOverlayOrchestrator.instance.openQueuedTutorial(
       context: context,
       tutorial: SelectModeButtonsTutorialModel(
         data: [
           TutorialStepData(
-            anchor: translateAnchor,
+            targetLink: translateTarget.link,
+            targetKey: translateTarget.key,
             onTap: () async {
               await updateMode(SelectMode.translate);
               await Future.delayed(Duration(milliseconds: 1000));
             },
           ),
           TutorialStepData(
-            anchor: audioAnchor,
+            targetLink: audioTarget.link,
+            targetKey: audioTarget.key,
             onTap: () async {
               await updateMode(SelectMode.audio);
               await Future.delayed(Duration(milliseconds: 1000));
             },
           ),
           TutorialStepData(
-            anchor: msgAnchor,
+            targetLink: msgTarget.link,
+            targetKey: msgTarget.key,
             onTap: () async => widget.controller.clearSelectedEvents(),
           ),
         ],
@@ -474,56 +482,59 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                       final selectedMode = controller.selectedMode.value;
                       return Opacity(
                         opacity: enabled ? 1.0 : 0.75,
-                        child: PressableButton(
-                          key: mode.buttonKey,
-                          borderRadius: BorderRadius.circular(20),
-                          depressed: mode == selectedMode || !enabled,
-                          color: theme.colorScheme.primaryContainer,
-                          onPressed: enabled
-                              ? () => updateMode(mode)
-                              : modeDisabled,
-                          playSound: enabled && mode != SelectMode.audio,
-                          colorFactor: theme.brightness == Brightness.light
-                              ? 0.55
-                              : 0.3,
-                          builder: (context, depressed, shadowColor) =>
-                              ShimmerBackground(
-                                enabled:
-                                    !InstructionsEnum
-                                        .shimmerTranslation
-                                        .isToggledOff &&
-                                    mode == SelectMode.translate &&
-                                    enabled,
-                                borderRadius: BorderRadius.circular(100),
-                                maxOpacity: 0.6,
-                                child: AnimatedContainer(
-                                  duration: FluffyThemes.animationDuration,
-                                  height: buttonSize,
-                                  width: buttonSize,
-                                  decoration: BoxDecoration(
-                                    color: depressed
-                                        ? shadowColor
-                                        : theme.colorScheme.primaryContainer,
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: ValueListenableBuilder(
-                                    valueListenable: _isPlayingNotifier,
-                                    builder: (context, playing, _) =>
-                                        _SelectModeButtonIcon(
-                                          mode: mode,
-                                          loading:
-                                              controller.isLoading &&
-                                              mode == selectedMode,
-                                          playing:
-                                              mode == SelectMode.audio &&
-                                              playing,
-                                          color: theme
-                                              .colorScheme
-                                              .onPrimaryContainer,
-                                        ),
+                        child: CompositedTransformTarget(
+                          link: mode.buttonLink,
+                          child: PressableButton(
+                            key: mode.buttonKey,
+                            borderRadius: BorderRadius.circular(20),
+                            depressed: mode == selectedMode || !enabled,
+                            color: theme.colorScheme.primaryContainer,
+                            onPressed: enabled
+                                ? () => updateMode(mode)
+                                : modeDisabled,
+                            playSound: enabled && mode != SelectMode.audio,
+                            colorFactor: theme.brightness == Brightness.light
+                                ? 0.55
+                                : 0.3,
+                            builder: (context, depressed, shadowColor) =>
+                                ShimmerBackground(
+                                  enabled:
+                                      !InstructionsEnum
+                                          .shimmerTranslation
+                                          .isToggledOff &&
+                                      mode == SelectMode.translate &&
+                                      enabled,
+                                  borderRadius: BorderRadius.circular(100),
+                                  maxOpacity: 0.6,
+                                  child: AnimatedContainer(
+                                    duration: FluffyThemes.animationDuration,
+                                    height: buttonSize,
+                                    width: buttonSize,
+                                    decoration: BoxDecoration(
+                                      color: depressed
+                                          ? shadowColor
+                                          : theme.colorScheme.primaryContainer,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: ValueListenableBuilder(
+                                      valueListenable: _isPlayingNotifier,
+                                      builder: (context, playing, _) =>
+                                          _SelectModeButtonIcon(
+                                            mode: mode,
+                                            loading:
+                                                controller.isLoading &&
+                                                mode == selectedMode,
+                                            playing:
+                                                mode == SelectMode.audio &&
+                                                playing,
+                                            color: theme
+                                                .colorScheme
+                                                .onPrimaryContainer,
+                                          ),
+                                    ),
                                   ),
                                 ),
-                              ),
+                          ),
                         ),
                       );
                     },
