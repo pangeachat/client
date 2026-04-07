@@ -83,7 +83,7 @@ class NotificationTapUtil {
     if (targetEventName != null) {
       try {
         final variant = notification[_variantKey] as String?;
-        final notificationType = notification['type'] as String?;
+        final notificationType = notification[_checkInTypeKey] as String?;
         final chatId = notification[_chatIdKey] as String?;
         final groupId = notification[_groupIdKey] as String?;
         final activityId = notification[_botActivityIdKey] as String?;
