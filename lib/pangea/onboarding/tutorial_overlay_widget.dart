@@ -12,9 +12,9 @@ import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart'
 class TutorialStep {
   final LayerLink targetLink;
   final GlobalKey targetKey;
-  final Future<void> Function()? onTap;
   final Widget tooltip;
   final Size tooltipSize;
+  final Future<void> Function()? onTap;
 
   final double? borderRadius;
   final double? padding;
@@ -60,7 +60,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         _visible.value = true;
-        _setNextAnchor();
+        _showNextStep();
       }
     });
   }
@@ -78,47 +78,45 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
 
   Duration get _duration => FluffyThemes.animationDuration;
 
-  Size get _tooltipSize => _currentStep?.tooltipSize ?? const Size(300, 100);
+  Size get _tooltipSize {
+    final baseSize = _currentStep?.tooltipSize ?? const Size(300, 100);
+    return Size(baseSize.width + 8.0, baseSize.height + 12.0);
+  }
 
-  Offset _tooltipOffset(BuildContext context) {
-    const gap = 8.0;
-    final screen = MediaQuery.of(context).size;
+  bool get _tooltipHasBottomOverflow {
+    final screenHeight = MediaQuery.sizeOf(context).height;
     final pos = _currentOffset ?? Offset.zero;
     final targetSize = _currentSize ?? Size.zero;
     final tip = _tooltipSize;
-
-    // Prefer below; flip above if it would go off the bottom
-    final double dy =
-        pos.dy + targetSize.height + gap + tip.height <= screen.height
-        ? targetSize.height + gap
-        : -tip.height - gap;
-
-    // Clamp horizontally so tooltip stays within screen
-    double dx = 0;
-    final rightEdge = pos.dx + tip.width;
-    if (rightEdge > screen.width) {
-      dx = screen.width - pos.dx - tip.width - gap;
-    }
-    if (pos.dx + dx < gap) {
-      dx = gap - pos.dx;
-    }
-
-    return Offset(dx, dy);
+    final tooltipOffset = pos.dy + targetSize.height + 8.0 + tip.height;
+    return tooltipOffset > screenHeight;
   }
 
-  Future<void> _close() async {
-    _visible.value = false;
-
-    await Future.delayed(_duration);
-
-    if (mounted) {
-      TutorialOverlayOrchestrator.instance.closeTutorial(
-        tutorial: widget.tutorial,
-      );
+  double? get _tooltipHorizontalOffset {
+    if (_currentOffset == null || _currentSize == null) return null;
+    final screenWidth = MediaQuery.sizeOf(context).width;
+    final tip = _tooltipSize;
+    if (tip.width >= screenWidth) {
+      return null; // can't fit, just center
     }
+    final pos = _currentOffset!;
+    final size = _currentSize!;
+    final midpoint = pos.dx + size.width / 2;
+
+    final rightEdge = midpoint + tip.width / 2;
+    final leftEdge = midpoint - tip.width / 2;
+    if (rightEdge > screenWidth) {
+      return screenWidth - rightEdge - 8.0; // 8 is the gap
+    }
+
+    // then check for overflow on the left
+    if (leftEdge < 8.0) {
+      return 8.0 - leftEdge; // 8 is the gap
+    }
+    return null;
   }
 
-  Future<void> _setNextAnchor() async {
+  Future<void> _showNextStep() async {
     Logs().i(
       "Setting next anchor for tutorial ${widget.tutorial.tutorialType}",
     );
@@ -155,7 +153,19 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     });
   }
 
-  Future<void> _onTap(TapDownDetails details) async {
+  Future<void> _close() async {
+    _visible.value = false;
+
+    await Future.delayed(_duration);
+
+    if (mounted) {
+      TutorialOverlayOrchestrator.instance.closeTutorial(
+        tutorial: widget.tutorial,
+      );
+    }
+  }
+
+  Future<void> _onTap() async {
     if (_currentStep?.onTap != null) {
       _visible.value = false;
 
@@ -165,15 +175,16 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
       ]);
     }
 
-    _setNextAnchor();
+    _showNextStep();
   }
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<bool>(
       valueListenable: _visible,
-      builder: (context, visible, child) {
+      builder: (context, visible, _) {
         final step = _currentStep;
+        final hasBottomOverflow = _tooltipHasBottomOverflow;
 
         return Stack(
           children: [
@@ -205,7 +216,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
                               cursor: SystemMouseCursors.click,
                               child: GestureDetector(
                                 behavior: HitTestBehavior.translucent,
-                                onTapDown: _onTap,
+                                onTapDown: (_) => _onTap(),
                                 child: Container(
                                   width:
                                       (_currentSize?.width ?? 0.0) +
@@ -233,14 +244,88 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
               CompositedTransformFollower(
                 link: step.targetLink,
                 showWhenUnlinked: false,
-                offset: _tooltipOffset(context),
+                targetAnchor: hasBottomOverflow
+                    ? Alignment.topCenter
+                    : Alignment.bottomCenter,
+                followerAnchor: hasBottomOverflow
+                    ? Alignment.bottomCenter
+                    : Alignment.topCenter,
+                offset: Offset(
+                  _tooltipHorizontalOffset ?? 0,
+                  hasBottomOverflow
+                      ? -8.0
+                      : 8.0, // gap between target and tooltip
+                ),
                 child: Material(
                   color: Colors.transparent,
                   elevation: 4,
                   child: SizedBox(
                     width: _tooltipSize.width,
                     height: _tooltipSize.height,
-                    child: step.tooltip,
+                    child: Stack(
+                      children: [
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: SizedBox(
+                            width: step.tooltipSize.width,
+                            height: step.tooltipSize.height,
+                            child: step.tooltip,
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 0,
+                          right: 0,
+                          child: ElevatedButton(
+                            onPressed: _onTap,
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.zero,
+                              minimumSize: const Size(56, 24),
+                              foregroundColor: Theme.of(
+                                context,
+                              ).colorScheme.onPrimary,
+                              backgroundColor: Theme.of(
+                                context,
+                              ).colorScheme.primary,
+                            ),
+                            child: Text(
+                              "Next",
+                              style: Theme.of(context).textTheme.labelSmall
+                                  ?.copyWith(
+                                    color: Theme.of(
+                                      context,
+                                    ).colorScheme.onPrimary,
+                                  ),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 0,
+                          left: 0,
+                          child: ElevatedButton(
+                            onPressed: _onTap,
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.zero,
+                              minimumSize: const Size(56, 24),
+                              foregroundColor: Theme.of(
+                                context,
+                              ).colorScheme.onSecondary,
+                              backgroundColor: Theme.of(
+                                context,
+                              ).colorScheme.secondary,
+                            ),
+                            child: Text(
+                              "Previous",
+                              style: Theme.of(context).textTheme.labelSmall
+                                  ?.copyWith(
+                                    color: Theme.of(
+                                      context,
+                                    ).colorScheme.onSecondary,
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

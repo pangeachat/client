@@ -37,7 +37,7 @@ class ReadingAssistantTutorialModel extends TutorialModel {
             tooltip: TutorialTooltipWidget(
               text: "Click on message bubble to select them",
             ),
-            tooltipSize: Size(200, 60),
+            tooltipSize: Size(200, 120),
             borderRadius: AppConfig.borderRadius,
           ),
         ],
@@ -58,7 +58,7 @@ class WritingAssistantTutorialModel extends TutorialModel {
               text:
                   "You can write in any language. Don't worry about mistakes! We'll help you correct them.",
             ),
-            tooltipSize: Size(300, 80),
+            tooltipSize: Size(300, 120),
             borderRadius: 24.0,
           ),
           TutorialStep(
@@ -69,7 +69,7 @@ class WritingAssistantTutorialModel extends TutorialModel {
               text:
                   "After writing your message, click this button to start writing assistance",
             ),
-            tooltipSize: Size(300, 60),
+            tooltipSize: Size(300, 120),
             borderRadius: 100.0,
             padding: 4.0,
           ),
@@ -90,7 +90,7 @@ class SelectModeButtonsTutorialModel extends TutorialModel {
             tooltip: TutorialTooltipWidget(
               text: "Click here to translate the message",
             ),
-            tooltipSize: Size(200, 60),
+            tooltipSize: Size(200, 120),
             borderRadius: 100.0,
             padding: 0.0,
           ),
@@ -101,7 +101,7 @@ class SelectModeButtonsTutorialModel extends TutorialModel {
             tooltip: TutorialTooltipWidget(
               text: "Click here to listen to the message",
             ),
-            tooltipSize: Size(200, 60),
+            tooltipSize: Size(200, 120),
             borderRadius: 100.0,
             padding: 0.0,
           ),
@@ -112,7 +112,7 @@ class SelectModeButtonsTutorialModel extends TutorialModel {
             tooltip: TutorialTooltipWidget(
               text: "Click the background to go back to chatting",
             ),
-            tooltipSize: Size(200, 60),
+            tooltipSize: Size(200, 120),
             borderRadius: AppConfig.borderRadius,
           ),
         ],
