@@ -678,7 +678,7 @@ class ChatController extends State<ChatPageWithRoom>
           TutorialStepData(
             targetLink: target.link,
             targetKey: target.key,
-            onTap: () async => showToolbar(event),
+            onTap: () async => showToolbar(event, bypassBlockingOverlays: true),
           ),
         ],
       ),
@@ -705,6 +705,7 @@ class ChatController extends State<ChatPageWithRoom>
           TutorialStepData(
             targetLink: igcButtonLink.link,
             targetKey: igcButtonLink.key,
+            onTap: () async => inputFocus.requestFocus(),
           ),
         ],
       ),
@@ -2317,7 +2318,7 @@ class ChatController extends State<ChatPageWithRoom>
         ),
         position: OverlayPositionEnum.centered,
         overlayKey: "button_message_backdrop",
-        bypassBlockingOverlays: true,
+        bypassBlockingOverlays: bypassBlockingOverlays,
       );
 
       await Future.delayed(delay);
@@ -2335,7 +2336,7 @@ class ChatController extends State<ChatPageWithRoom>
         blurBackground: true,
         backgroundColor: Colors.black,
         overlayKey: "message_toolbar_overlay",
-        bypassBlockingOverlays: true,
+        bypassBlockingOverlays: bypassBlockingOverlays,
       );
     } else {
       OverlayUtil.showOverlay(
@@ -2346,7 +2347,7 @@ class ChatController extends State<ChatPageWithRoom>
         blurBackground: true,
         backgroundColor: Colors.black,
         overlayKey: "message_toolbar_overlay",
-        bypassBlockingOverlays: true,
+        bypassBlockingOverlays: bypassBlockingOverlays,
       );
     }
 
