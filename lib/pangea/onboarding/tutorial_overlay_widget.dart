@@ -10,18 +10,20 @@ import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart'
 
 class TutorialStep {
   final GlobalKey targetKey;
-  final double? borderRadius;
-  final Widget? tooltip;
-  final Size? tooltipSize;
-
   final Future<void> Function()? onTap;
+  final Widget tooltip;
+  final Size tooltipSize;
+
+  final double? borderRadius;
+  final double? padding;
 
   const TutorialStep({
     required this.targetKey,
-    this.borderRadius,
-    this.tooltip,
-    this.tooltipSize,
+    required this.tooltip,
+    required this.tooltipSize,
     this.onTap,
+    this.borderRadius,
+    this.padding,
   });
 }
 
@@ -97,6 +99,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   /// follow it whenever it moves (e.g. due to scroll, layout shift, animation).
   /// The loop is self-terminating once the widget is unmounted.
   void _schedulePositionCheck() {
+    debugPrint("Scheduling position check for tutorial overlay");
     SchedulerBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       _checkAndUpdatePosition();
@@ -203,15 +206,14 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
                     painter: CutoutBackgroundPainter(
                       holeRect: _currentRect,
                       borderRadius: _currentStep?.borderRadius ?? 16.0,
+                      padding: _currentStep?.padding ?? 8.0,
                     ),
                     child: const SizedBox.expand(),
                   ),
                 ),
               ),
             ),
-            if (visible &&
-                _currentStep?.tooltip != null &&
-                _currentRect != null)
+            if (visible && _currentStep != null && _currentRect != null)
               Positioned(
                 left: _tooltipLeftOffset,
                 top: _tooltipTopOffset,
@@ -221,7 +223,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
                   child: SizedBox(
                     width: _tooltipSize.width,
                     height: _tooltipSize.height,
-                    child: _currentStep!.tooltip!,
+                    child: _currentStep!.tooltip,
                   ),
                 ),
               ),
