@@ -5,7 +5,7 @@ import 'package:flutter/scheduler.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/common/utils/cutout_painter.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart';
 
 class TutorialStep {
@@ -26,14 +26,9 @@ class TutorialStep {
 }
 
 class TutorialOverlayWidget extends StatefulWidget {
-  final TutorialEnum tutorial;
-  final List<TutorialStep> steps;
+  final TutorialModel tutorial;
 
-  const TutorialOverlayWidget({
-    required this.tutorial,
-    required this.steps,
-    super.key,
-  });
+  const TutorialOverlayWidget({required this.tutorial, super.key});
 
   @override
   State<TutorialOverlayWidget> createState() => _TutorialOverlayWidgetState();
@@ -52,7 +47,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   @override
   void initState() {
     super.initState();
-    _setQueue = Queue.of(widget.steps);
+    _setQueue = Queue.of(widget.tutorial.steps);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) _visible.value = true;
@@ -64,7 +59,9 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   @override
   void dispose() {
     _visible.dispose();
-    TutorialOverlayOrchestrator.instance.onCloseTutorial(widget.tutorial);
+    TutorialOverlayOrchestrator.instance.onCloseTutorial(
+      widget.tutorial.tutorialType,
+    );
     super.dispose();
   }
 

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
 
 import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_overlay_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -29,20 +30,11 @@ class TutorialOverlayOrchestrator {
 
   void openTutorial({
     required BuildContext context,
-    required TutorialEnum tutorial,
-    required List<TutorialStepWidgetData> stepData,
+    required TutorialModel tutorial,
   }) {
-    List<TutorialStep> steps;
-    try {
-      steps = tutorial.steps(stepData);
-    } catch (e, st) {
-      Logs().e("Error building tutorial steps for tutorial $tutorial", e, st);
-      return;
-    }
-
     final entry = OverlayEntry(
       builder: (context) {
-        return TutorialOverlayWidget(tutorial: tutorial, steps: steps);
+        return TutorialOverlayWidget(tutorial: tutorial);
       },
     );
 
@@ -56,24 +48,24 @@ class TutorialOverlayOrchestrator {
       );
     }
 
-    _currentTutorial = tutorial;
+    _currentTutorial = tutorial.tutorialType;
     MatrixState.pAnyState.openOverlay(
       entry,
       context,
       rootOverlay: true,
-      overlayKey: tutorial.name,
+      overlayKey: tutorial.tutorialType.name,
       canPop: false,
       blockOverlay: true,
     );
   }
 
-  void closeTutorial({required TutorialEnum tutorial}) {
-    if (_currentTutorial != tutorial) {
+  void closeTutorial({required TutorialModel tutorial}) {
+    if (_currentTutorial != tutorial.tutorialType) {
       Logs().w(
         "Trying to close tutorial with key $tutorial but current tutorial is $_currentTutorial",
       );
     }
-    MatrixState.pAnyState.closeOverlay(tutorial.name);
+    MatrixState.pAnyState.closeOverlay(tutorial.tutorialType.name);
   }
 
   void onCloseTutorial(TutorialEnum tutorial) {
@@ -95,10 +87,9 @@ class TutorialOverlayOrchestrator {
 
   void openQueuedTutorial({
     required BuildContext context,
-    required TutorialEnum tutorial,
-    required List<TutorialStepWidgetData> stepData,
+    required TutorialModel tutorial,
   }) {
-    if (tutorial != _nextTutorial) {
+    if (tutorial.tutorialType != _nextTutorial) {
       Logs().w(
         "Trying to open queued tutorial with key $tutorial but next tutorial is $_nextTutorial",
       );
@@ -106,6 +97,6 @@ class TutorialOverlayOrchestrator {
     }
 
     _nextTutorial = null;
-    openTutorial(context: context, tutorial: tutorial, stepData: stepData);
+    openTutorial(context: context, tutorial: tutorial);
   }
 }

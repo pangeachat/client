@@ -70,6 +70,7 @@ import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart'
 import 'package:fluffychat/pangea/learning_settings/p_language_dialog.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
@@ -671,13 +672,14 @@ class ChatController extends State<ChatPageWithRoom>
     final msgAnchor = MatrixState.pAnyState.layerLinkAndKey(event.eventId).key;
     TutorialOverlayOrchestrator.instance.openTutorial(
       context: context,
-      tutorial: TutorialEnum.readingAssistance,
-      stepData: [
-        TutorialStepWidgetData(
-          anchor: msgAnchor,
-          onTap: () async => showToolbar(event),
-        ),
-      ],
+      tutorial: ReadingAssistantTutorialModel(
+        data: [
+          TutorialStepData(
+            anchor: msgAnchor,
+            onTap: () async => showToolbar(event),
+          ),
+        ],
+      ),
     );
 
     TutorialOverlayOrchestrator.instance.queueTutorial(
@@ -692,11 +694,12 @@ class ChatController extends State<ChatPageWithRoom>
 
     TutorialOverlayOrchestrator.instance.openTutorial(
       context: context,
-      tutorial: TutorialEnum.writingAssistance,
-      stepData: [
-        TutorialStepWidgetData(anchor: inputAnchor),
-        TutorialStepWidgetData(anchor: igcButtonKey),
-      ],
+      tutorial: WritingAssistantTutorialModel(
+        data: [
+          TutorialStepData(anchor: inputAnchor),
+          TutorialStepData(anchor: igcButtonKey),
+        ],
+      ),
     );
   }
 
