@@ -670,8 +670,18 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void _startReadingAssistanceTutorial(Event event) {
+    TutorialOverlayOrchestrator.instance.enqueueTutorialSequence(
+      TutorialSequenceModel(
+        tutorials: [
+          TutorialEnum.readingAssistance,
+          TutorialEnum.selectModeButtons,
+          TutorialEnum.writingAssistance,
+        ],
+      ),
+    );
+
     final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
-    TutorialOverlayOrchestrator.instance.openTutorial(
+    TutorialOverlayOrchestrator.instance.launchTutorial(
       context: context,
       tutorial: ReadingAssistantTutorialModel(
         data: [
@@ -683,10 +693,6 @@ class ChatController extends State<ChatPageWithRoom>
         ],
       ),
     );
-
-    TutorialOverlayOrchestrator.instance.queueTutorial(
-      TutorialEnum.selectModeButtons,
-    );
   }
 
   void _startWritingAssistanceTutorial() {
@@ -694,7 +700,7 @@ class ChatController extends State<ChatPageWithRoom>
       ChoreoConstants.inputTransformTargetKey,
     );
 
-    TutorialOverlayOrchestrator.instance.openTutorial(
+    TutorialOverlayOrchestrator.instance.launchTutorial(
       context: context,
       tutorial: WritingAssistantTutorialModel(
         data: [

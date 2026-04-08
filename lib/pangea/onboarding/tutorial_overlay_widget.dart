@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
@@ -8,88 +6,121 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_tooltip_container_widget.dart';
 
-class TutorialStep {
-  final LayerLink targetLink;
-  final GlobalKey targetKey;
-  final Widget tooltip;
-  final Size tooltipSize;
-  final Future<void> Function()? onTap;
-
-  final double? borderRadius;
-  final double? padding;
-
-  const TutorialStep({
-    required this.targetLink,
-    required this.targetKey,
-    required this.tooltip,
-    required this.tooltipSize,
-    this.onTap,
-    this.borderRadius,
-    this.padding,
-  });
-}
+enum TooltipPosition { above, below }
 
 class TutorialOverlayWidget extends StatefulWidget {
   final TutorialModel tutorial;
+  final TooltipPosition preferredPosition;
 
-  const TutorialOverlayWidget({required this.tutorial, super.key});
+  const TutorialOverlayWidget({
+    required this.tutorial,
+    this.preferredPosition = TooltipPosition.above,
+    super.key,
+  });
 
   @override
   State<TutorialOverlayWidget> createState() => _TutorialOverlayWidgetState();
 }
 
 class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
-  final ValueNotifier<bool> _visible = ValueNotifier(false);
-  late final Queue<TutorialStep> _setQueue;
-
-  /// The current step in the tutorial
-  TutorialStep? _currentStep;
-
-  /// The size of the current step's underlying widget
-  Size? _currentSize;
-
-  /// The global position of the current step's underlying widget
-  Offset? _currentOffset;
+  int _currentStepIndex = 0;
+  bool _transitioning = false;
+  bool _visible = false;
 
   @override
   void initState() {
     super.initState();
-    _setQueue = Queue.of(widget.tutorial.steps);
-
+    Logs().i(
+      "Initializing tutorial overlay for tutorial ${widget.tutorial.tutorialType}",
+    );
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
-        _visible.value = true;
-        _showNextStep();
+        _visible = true;
+        _updateStep(_currentStepIndex);
       }
     });
   }
 
   @override
   void dispose() {
-    _visible.dispose();
-
     TutorialOverlayOrchestrator.instance.onCloseTutorial(
       widget.tutorial.tutorialType,
     );
-
     super.dispose();
   }
+
+  static const double _tooltipPadding = 8.0;
+
+  int get _stepsLength => widget.tutorial.steps.length;
+
+  TutorialStep? get _currentStep =>
+      _currentStepIndex >= 0 && _currentStepIndex < _stepsLength
+      ? widget.tutorial.steps[_currentStepIndex]
+      : null;
 
   Duration get _duration => FluffyThemes.animationDuration;
 
   Size get _tooltipSize {
-    final baseSize = _currentStep?.tooltipSize ?? const Size(300, 100);
-    return Size(baseSize.width + 8.0, baseSize.height + 12.0);
+    final baseSize = _currentStep?.style.tooltipSize ?? const Size(300, 100);
+    return Size(
+      baseSize.width + _tooltipPadding,
+      baseSize.height + _tooltipPadding,
+    );
   }
+
+  RenderBox? get _currentRenderBox {
+    final step = _currentStep;
+    if (step == null) return null;
+    final stepKey = step.data.targetKey;
+
+    try {
+      final renderBox =
+          stepKey.currentContext?.findRenderObject() as RenderBox?;
+      if (renderBox == null || !renderBox.attached || !renderBox.hasSize) {
+        return null;
+      }
+      return renderBox;
+    } catch (e) {
+      ErrorHandler.logError(
+        e: "Error finding render box for tutorial step with key $stepKey: $e",
+        data: {"tutorialType": widget.tutorial.tutorialType.name},
+      );
+      return null;
+    }
+  }
+
+  Size? get _currentSize => _currentRenderBox?.size;
+
+  Offset? get _currentOffset => _currentRenderBox?.localToGlobal(Offset.zero);
 
   bool get _tooltipHasBottomOverflow {
     final screenHeight = MediaQuery.sizeOf(context).height;
     final pos = _currentOffset ?? Offset.zero;
     final targetSize = _currentSize ?? Size.zero;
     final tip = _tooltipSize;
-    final tooltipOffset = pos.dy + targetSize.height + 8.0 + tip.height;
+    final tooltipOffset =
+        pos.dy + targetSize.height + tip.height + (_tooltipPadding * 2);
     return tooltipOffset > screenHeight;
+  }
+
+  bool get _tooltipHasTopOverflow {
+    final pos = _currentOffset ?? Offset.zero;
+    final tip = _tooltipSize;
+    final tooltipOffset = pos.dy - tip.height - (_tooltipPadding * 2);
+    return tooltipOffset < 0;
+  }
+
+  bool get _showAbove {
+    final preferAbove = widget.preferredPosition == TooltipPosition.above;
+    if (preferAbove) {
+      // Show above unless top overflow forces below
+      return !_tooltipHasTopOverflow || _tooltipHasBottomOverflow;
+    } else {
+      // Show below unless bottom overflow forces above
+      return _tooltipHasBottomOverflow;
+    }
   }
 
   double? get _tooltipHorizontalOffset {
@@ -103,61 +134,58 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     final size = _currentSize!;
     final midpoint = pos.dx + size.width / 2;
 
-    final rightEdge = midpoint + tip.width / 2;
-    final leftEdge = midpoint - tip.width / 2;
+    final rightEdge = midpoint + tip.width / 2 + _tooltipPadding;
+    final leftEdge = midpoint - tip.width / 2 - _tooltipPadding;
     if (rightEdge > screenWidth) {
-      return screenWidth - rightEdge - 8.0; // 8 is the gap
+      return screenWidth - rightEdge - _tooltipPadding;
     }
 
     // then check for overflow on the left
-    if (leftEdge < 8.0) {
-      return 8.0 - leftEdge; // 8 is the gap
+    if (leftEdge < 0) {
+      return _tooltipPadding - leftEdge;
     }
     return null;
   }
 
-  Future<void> _showNextStep() async {
-    Logs().i(
-      "Setting next anchor for tutorial ${widget.tutorial.tutorialType}",
-    );
-    Logs().i("Current queue length: ${_setQueue.length}");
-    if (_setQueue.isEmpty) {
+  Future<void> _next() async {
+    await _updateStep(_currentStepIndex + 1);
+  }
+
+  Future<void> _previous() async {
+    await _updateStep(_currentStepIndex - 1);
+  }
+
+  Future<void> _updateStep(int updatedIndex) async {
+    Logs().i("Updating tutorial step to index $updatedIndex");
+    if (updatedIndex < 0 || updatedIndex >= _stepsLength) {
       await _close();
       return;
     }
-
-    final TutorialStep newStep = _setQueue.removeFirst();
-    final renderBox =
-        newStep.targetKey.currentContext?.findRenderObject() as RenderBox?;
-    if (renderBox == null || !renderBox.attached) {
-      ErrorHandler.logError(
-        e: "Could not find render box for tutorial step with key ${newStep.targetKey}",
-        data: {},
-      );
-      await _close();
-      return;
-    }
-
-    if (!_visible.value) {
-      _visible.value = true;
-    }
-
-    Logs().i(
-      "Setting next anchor for tutorial ${widget.tutorial.tutorialType} to ${newStep.targetKey}",
-    );
 
     setState(() {
-      _currentStep = newStep;
-      _currentSize = renderBox.size;
-      _currentOffset = renderBox.localToGlobal(Offset.zero);
+      _visible = true;
+      _currentStepIndex = updatedIndex;
     });
   }
 
+  Future<void> _executeStepCallback() async {
+    if (_transitioning) return;
+    _transitioning = true;
+
+    final onTap = _currentStep?.data.onTap;
+
+    if (onTap != null) {
+      setState(() => _visible = false);
+      await Future.wait([onTap.call(), Future.delayed(_duration)]);
+    }
+
+    await _next();
+    _transitioning = false;
+  }
+
   Future<void> _close() async {
-    _visible.value = false;
-
+    setState(() => _visible = false);
     await Future.delayed(_duration);
-
     if (mounted) {
       TutorialOverlayOrchestrator.instance.closeTutorial(
         tutorial: widget.tutorial,
@@ -165,31 +193,21 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     }
   }
 
-  Future<void> _onTap() async {
-    if (_currentStep?.onTap != null) {
-      _visible.value = false;
-
-      await Future.wait([
-        _currentStep!.onTap!.call(),
-        Future.delayed(_duration),
-      ]);
-    }
-
-    _showNextStep();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<bool>(
-      valueListenable: _visible,
-      builder: (context, visible, _) {
-        final step = _currentStep;
-        final hasBottomOverflow = _tooltipHasBottomOverflow;
-
-        return Stack(
+    final step = _currentStep;
+    final showAbove = _showAbove;
+    return MouseRegion(
+      cursor: step != null && _visible
+          ? SystemMouseCursors.click
+          : SystemMouseCursors.basic,
+      child: GestureDetector(
+        behavior: HitTestBehavior.translucent,
+        onTap: step != null && _visible ? _executeStepCallback : null,
+        child: Stack(
           children: [
             AnimatedOpacity(
-              opacity: visible && step != null ? 1.0 : 0.0,
+              opacity: _visible && step != null ? 1.0 : 0.0,
               duration: _duration,
               child: step != null
                   ? ColorFiltered(
@@ -208,28 +226,21 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
 
                           /// The "hole"
                           CompositedTransformFollower(
-                            link: step.targetLink,
+                            link: step.data.targetLink,
                             showWhenUnlinked: false,
                             targetAnchor: Alignment.center,
                             followerAnchor: Alignment.center,
-                            child: MouseRegion(
-                              cursor: SystemMouseCursors.click,
-                              child: GestureDetector(
-                                behavior: HitTestBehavior.translucent,
-                                onTapDown: (_) => _onTap(),
-                                child: Container(
-                                  width:
-                                      (_currentSize?.width ?? 0.0) +
-                                      (step.padding ?? 0) * 2,
-                                  height:
-                                      (_currentSize?.height ?? 0.0) +
-                                      (step.padding ?? 0) * 2,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(
-                                      step.borderRadius ?? 16,
-                                    ),
-                                  ),
+                            child: Container(
+                              width:
+                                  (_currentSize?.width ?? 0.0) +
+                                  (step.style.padding ?? 0) * 2,
+                              height:
+                                  (_currentSize?.height ?? 0.0) +
+                                  (step.style.padding ?? 0) * 2,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(
+                                  step.style.borderRadius ?? 16,
                                 ),
                               ),
                             ),
@@ -240,98 +251,44 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
                   : const SizedBox.shrink(),
             ),
 
-            if (visible && step != null)
+            if (_visible && step != null)
               CompositedTransformFollower(
-                link: step.targetLink,
+                link: step.data.targetLink,
                 showWhenUnlinked: false,
-                targetAnchor: hasBottomOverflow
+                targetAnchor: showAbove
                     ? Alignment.topCenter
                     : Alignment.bottomCenter,
-                followerAnchor: hasBottomOverflow
+                followerAnchor: showAbove
                     ? Alignment.bottomCenter
                     : Alignment.topCenter,
                 offset: Offset(
                   _tooltipHorizontalOffset ?? 0,
-                  hasBottomOverflow
-                      ? -8.0
-                      : 8.0, // gap between target and tooltip
+                  showAbove
+                      ? -_tooltipPadding
+                      : _tooltipPadding, // gap between target and tooltip
                 ),
-                child: Material(
-                  color: Colors.transparent,
-                  elevation: 4,
-                  child: SizedBox(
-                    width: _tooltipSize.width,
-                    height: _tooltipSize.height,
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: Alignment.topCenter,
-                          child: SizedBox(
-                            width: step.tooltipSize.width,
-                            height: step.tooltipSize.height,
-                            child: step.tooltip,
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: ElevatedButton(
-                            onPressed: _onTap,
-                            style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.zero,
-                              minimumSize: const Size(56, 24),
-                              foregroundColor: Theme.of(
-                                context,
-                              ).colorScheme.onPrimary,
-                              backgroundColor: Theme.of(
-                                context,
-                              ).colorScheme.primary,
-                            ),
-                            child: Text(
-                              "Next",
-                              style: Theme.of(context).textTheme.labelSmall
-                                  ?.copyWith(
-                                    color: Theme.of(
-                                      context,
-                                    ).colorScheme.onPrimary,
-                                  ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          left: 0,
-                          child: ElevatedButton(
-                            onPressed: _onTap,
-                            style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.zero,
-                              minimumSize: const Size(56, 24),
-                              foregroundColor: Theme.of(
-                                context,
-                              ).colorScheme.onSecondary,
-                              backgroundColor: Theme.of(
-                                context,
-                              ).colorScheme.secondary,
-                            ),
-                            child: Text(
-                              "Previous",
-                              style: Theme.of(context).textTheme.labelSmall
-                                  ?.copyWith(
-                                    color: Theme.of(
-                                      context,
-                                    ).colorScheme.onSecondary,
-                                  ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                child: TutorialTooltipContainerWidget(
+                  width: step.style.tooltipSize.width,
+                  height: step.style.tooltipSize.height,
+                  padding: _tooltipPadding,
+                  onNext: _executeStepCallback,
+                  onPrevious: _previous,
+                  showPrevious: _currentStepIndex > 0,
+                  currentStep:
+                      TutorialOverlayOrchestrator
+                          .instance
+                          .completedStepsOffset +
+                      _currentStepIndex +
+                      1,
+                  totalSteps: TutorialOverlayOrchestrator
+                      .instance
+                      .totalStepsInCurrentSequence,
+                  child: step.style.tooltip,
                 ),
               ),
           ],
-        );
-      },
+        ),
+      ),
     );
   }
 }

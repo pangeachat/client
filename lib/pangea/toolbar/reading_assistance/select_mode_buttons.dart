@@ -214,7 +214,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     final audioTarget = SelectMode.audio.buttonTarget;
     final msgTarget = widget.overlayController.overlayMessageLayerLink;
 
-    TutorialOverlayOrchestrator.instance.openQueuedTutorial(
+    TutorialOverlayOrchestrator.instance.launchTutorial(
       context: context,
       tutorial: SelectModeButtonsTutorialModel(
         data: [

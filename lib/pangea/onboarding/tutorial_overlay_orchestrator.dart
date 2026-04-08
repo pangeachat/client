@@ -18,37 +18,77 @@ class TutorialOverlayOrchestrator {
   final StreamController<TutorialEnum> _tutorialCompleteStreamController =
       StreamController.broadcast();
 
-  TutorialEnum? _currentTutorial;
-  TutorialEnum? _nextTutorial;
+  TutorialEnum? _activeTutorial;
+  TutorialSequenceModel? _sequence;
+  int _index = 0;
 
   Stream<TutorialEnum> get tutorialCompleteStream =>
       _tutorialCompleteStreamController.stream;
 
-  void dispose() {
-    _tutorialCompleteStreamController.close();
+  int get totalStepsInCurrentSequence {
+    if (_sequence == null) return 0;
+    return _sequence!.tutorials.fold(
+      0,
+      (sum, tutorial) => sum + tutorial.stepCount,
+    );
   }
 
-  void openTutorial({
+  int get completedStepsOffset {
+    final sequence = _sequence;
+    if (sequence == null || _index == 0) return 0;
+
+    return sequence.tutorials
+        .take(_index)
+        .fold(0, (sum, tutorial) => sum + tutorial.stepCount);
+  }
+
+  /// Returns true if [tutorial] is the next tutorial to be opened from the queue.
+  bool isTutorialQueued(TutorialEnum tutorial) {
+    final sequence = _sequence;
+    if (sequence == null) return false;
+    if (_index >= sequence.tutorials.length) return false;
+
+    return sequence.tutorials[_index] == tutorial;
+  }
+
+  /// Adds a single tutorial sequence to the end of the queue.
+  void enqueueTutorialSequence(TutorialSequenceModel tutorialSequence) {
+    if (_sequence != null) {
+      Logs().w(
+        "Trying to enqueue tutorial sequence while previous sequence is still active",
+      );
+      return;
+    }
+
+    Logs().w(
+      "Enqueuing tutorial sequence with tutorials ${tutorialSequence.tutorials}",
+    );
+
+    _sequence = tutorialSequence;
+    _index = 0;
+  }
+
+  void launchTutorial({
     required BuildContext context,
     required TutorialModel tutorial,
   }) {
+    Logs().i("Attempting to launch tutorial ${tutorial.tutorialType}");
+
+    if (!isTutorialQueued(tutorial.tutorialType)) {
+      Logs().w("Tutorial ${tutorial.tutorialType} is not next in queue");
+      return;
+    }
+
+    if (_activeTutorial != null) {
+      Logs().w("Tutorial $_activeTutorial already open");
+    }
+
     final entry = OverlayEntry(
       builder: (context) {
         return TutorialOverlayWidget(tutorial: tutorial);
       },
     );
 
-    if (_currentTutorial != null) {
-      Logs().w(
-        "Trying to open tutorial with key ${tutorial.tutorialType} while tutorial with key $_currentTutorial is still open",
-      );
-    } else {
-      Logs().i(
-        "Opening tutorial with key ${tutorial.tutorialType}. Current tutorial is $_currentTutorial",
-      );
-    }
-
-    _currentTutorial = tutorial.tutorialType;
     MatrixState.pAnyState.openOverlay(
       entry,
       context,
@@ -57,46 +97,27 @@ class TutorialOverlayOrchestrator {
       canPop: false,
       blockOverlay: true,
     );
+
+    _activeTutorial = tutorial.tutorialType;
+    _index++;
   }
 
   void closeTutorial({required TutorialModel tutorial}) {
-    if (_currentTutorial != tutorial.tutorialType) {
-      Logs().w(
-        "Trying to close tutorial with key $tutorial but current tutorial is $_currentTutorial",
-      );
-    }
     MatrixState.pAnyState.closeOverlay(tutorial.tutorialType.name);
   }
 
   void onCloseTutorial(TutorialEnum tutorial) {
-    if (_currentTutorial == tutorial) {
-      _currentTutorial = null;
-    } else {
+    if (_sequence == null) {
       Logs().w(
-        "Trying to close tutorial with key $tutorial but current tutorial is $_currentTutorial",
+        "Received tutorial complete event for tutorial $tutorial but no active tutorial sequence",
       );
+    } else if (_index >= _sequence!.tutorials.length) {
+      Logs().i("Reached end of tutorial sequence");
+      _sequence = null;
+      _index = 0;
     }
+
+    _activeTutorial = null;
     _tutorialCompleteStreamController.add(tutorial);
-  }
-
-  bool isTutorialQueued(TutorialEnum tutorial) => _nextTutorial == tutorial;
-
-  void queueTutorial(TutorialEnum tutorial) {
-    _nextTutorial = tutorial;
-  }
-
-  void openQueuedTutorial({
-    required BuildContext context,
-    required TutorialModel tutorial,
-  }) {
-    if (tutorial.tutorialType != _nextTutorial) {
-      Logs().w(
-        "Trying to open queued tutorial with key $tutorial but next tutorial is $_nextTutorial",
-      );
-      return;
-    }
-
-    _nextTutorial = null;
-    openTutorial(context: context, tutorial: tutorial);
   }
 }

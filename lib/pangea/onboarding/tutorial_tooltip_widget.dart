@@ -4,29 +4,43 @@ import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 
 class TutorialTooltipWidget extends StatelessWidget {
   final String text;
+  final EdgeInsets padding;
+  final BorderRadius borderRadius;
+  final TextStyle? textStyle;
+  final double iconSize;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
 
-  const TutorialTooltipWidget({required this.text, super.key});
+  const TutorialTooltipWidget({
+    required this.text,
+    this.padding = const EdgeInsets.all(8),
+    this.borderRadius = const BorderRadius.all(Radius.circular(8)),
+    this.textStyle,
+    this.iconSize = 32.0,
+    this.backgroundColor,
+    this.foregroundColor,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    final background = backgroundColor ?? theme.colorScheme.onSurface;
+    final foreground = foregroundColor ?? theme.colorScheme.surface;
+
+    final style =
+        textStyle ?? theme.textTheme.bodyMedium?.copyWith(color: foreground);
+
     return Container(
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onSurface,
-        borderRadius: BorderRadius.circular(8),
-      ),
+      padding: padding,
+      decoration: BoxDecoration(color: background, borderRadius: borderRadius),
       child: Row(
         spacing: 8.0,
         children: [
-          BotFace(width: 32.0, expression: BotExpression.gold),
+          BotFace(width: iconSize, expression: BotExpression.gold),
           Expanded(
-            child: Text(
-              text,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(context).colorScheme.surface,
-              ),
-              textAlign: TextAlign.center,
-            ),
+            child: Text(text, style: style, textAlign: TextAlign.center),
           ),
         ],
       ),
