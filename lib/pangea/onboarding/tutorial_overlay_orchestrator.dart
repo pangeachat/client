@@ -75,11 +75,18 @@ class TutorialOverlayOrchestrator {
       return;
     }
 
-    Logs().w(
-      "Enqueuing tutorial sequence with tutorials ${tutorialSequence.tutorials}",
-    );
+    final unseenTutorials = tutorialSequence.tutorials
+        .where((t) => !t.hasBeenSeen)
+        .toList();
 
-    _sequence = tutorialSequence;
+    if (unseenTutorials.isEmpty) {
+      Logs().i("All tutorials in sequence have already been seen, skipping");
+      return;
+    }
+
+    Logs().w("Enqueuing tutorial sequence with tutorials $unseenTutorials");
+
+    _sequence = TutorialSequenceModel(tutorials: unseenTutorials);
     _index = 0;
   }
 
@@ -113,7 +120,7 @@ class TutorialOverlayOrchestrator {
       },
     );
 
-    MatrixState.pAnyState.openOverlay(
+    final success = MatrixState.pAnyState.openOverlay(
       entry,
       context,
       rootOverlay: true,
@@ -121,6 +128,11 @@ class TutorialOverlayOrchestrator {
       canPop: false,
       blockOverlay: true,
     );
+
+    if (!success) {
+      Logs().e("Failed to open tutorial overlay for ${tutorial.tutorialType}");
+      return;
+    }
 
     _activeTutorial = tutorial.tutorialType;
     _index++;
@@ -166,6 +178,8 @@ class TutorialOverlayOrchestrator {
   }
 
   void onCloseTutorial(TutorialEnum tutorial) {
+    tutorial.markSeen();
+
     if (_sequence == null) {
       Logs().w(
         "Received tutorial complete event for tutorial $tutorial but no active tutorial sequence",

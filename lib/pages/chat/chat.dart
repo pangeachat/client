@@ -689,6 +689,7 @@ class ChatController extends State<ChatPageWithRoom>
         await Future.delayed(FluffyThemes.animationDuration);
         if (!mounted) return;
         _relaunchReadingAssistanceTutorial(event);
+        return;
       case TutorialEnum.selectModeButtons:
         final event = _tutorialEvent;
         if (event == null) return;
@@ -696,6 +697,7 @@ class ChatController extends State<ChatPageWithRoom>
         // queued tutorial. The orchestrator's _pendingInitialStepIndex ensures
         // it launches at the last step automatically.
         showToolbar(event, bypassBlockingOverlays: true);
+        return;
       case TutorialEnum.writingAssistance:
         // The writing-assistance tutorial starts from the text input which is
         // always visible, so no extra state preparation is needed.
@@ -704,6 +706,7 @@ class ChatController extends State<ChatPageWithRoom>
             initialStepIndex: TutorialEnum.writingAssistance.stepCount - 1,
           ),
         );
+        return;
     }
   }
 
@@ -736,19 +739,36 @@ class ChatController extends State<ChatPageWithRoom>
       ),
     );
 
-    final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
-    TutorialOverlayOrchestrator.instance.launchTutorial(
-      context: context,
-      tutorial: ReadingAssistantTutorialModel(
-        data: [
-          TutorialStepData(
-            targetLink: target.link,
-            targetKey: target.key,
-            onTap: () async => showToolbar(event, bypassBlockingOverlays: true),
-          ),
-        ],
-      ),
-    );
+    final orchestrator = TutorialOverlayOrchestrator.instance;
+
+    // After filtering to only unseen tutorials, the first queued tutorial may
+    // not be readingAssistance (e.g. the user completed the first two stages
+    // in a previous session). Dispatch to the correct launch path.
+    if (orchestrator.isTutorialQueued(TutorialEnum.readingAssistance)) {
+      final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
+      orchestrator.launchTutorial(
+        context: context,
+        tutorial: ReadingAssistantTutorialModel(
+          data: [
+            TutorialStepData(
+              targetLink: target.link,
+              targetKey: target.key,
+              onTap: () async =>
+                  showToolbar(event, bypassBlockingOverlays: true),
+            ),
+          ],
+        ),
+      );
+    } else if (orchestrator.isTutorialQueued(TutorialEnum.selectModeButtons)) {
+      // selectModeButtons requires the toolbar to be open. Opening it lets
+      // SelectModeButtonsState pick up the queued tutorial automatically.
+      showToolbar(event, bypassBlockingOverlays: true);
+    } else if (orchestrator.isTutorialQueued(TutorialEnum.writingAssistance)) {
+      // writingAssistance only needs the text input, which is always visible.
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) => _startWritingAssistanceTutorial(),
+      );
+    }
   }
 
   void _startWritingAssistanceTutorial({int initialStepIndex = 0}) {

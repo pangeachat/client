@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart';
@@ -39,7 +40,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     super.initState();
     _currentStepIndex = widget.initialStepIndex.clamp(
       0,
-      widget.tutorial.steps.length - 1,
+      widget.tutorial.tutorialType.stepCount - 1,
     );
     Logs().i(
       "Initializing tutorial overlay for tutorial ${widget.tutorial.tutorialType} at step $_currentStepIndex",
@@ -62,11 +63,11 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
 
   static const double _tooltipPadding = 8.0;
 
-  int get _stepsLength => widget.tutorial.steps.length;
+  int get _stepsLength => widget.tutorial.tutorialType.stepCount;
 
   TutorialStep? get _currentStep =>
       _currentStepIndex >= 0 && _currentStepIndex < _stepsLength
-      ? widget.tutorial.steps[_currentStepIndex]
+      ? widget.tutorial.steps(L10n.of(context))[_currentStepIndex]
       : null;
 
   Duration get _duration => FluffyThemes.animationDuration;
@@ -204,15 +205,21 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     if (_transitioning) return;
     _transitioning = true;
 
-    final onTap = _currentStep?.data.onTap;
+    try {
+      final onTap = _currentStep?.data.onTap;
 
-    if (onTap != null) {
-      setState(() => _visible = false);
-      await Future.wait([onTap.call(), Future.delayed(_duration)]);
+      if (onTap != null) {
+        setState(() => _visible = false);
+        await Future.wait([onTap.call(), Future.delayed(_duration)]);
+      }
+
+      await _next();
+    } catch (e, s) {
+      Logs().e('Error executing tutorial step callback: $e\n$s');
+      await _close();
+    } finally {
+      _transitioning = false;
     }
-
-    await _next();
-    _transitioning = false;
   }
 
   Future<void> _close() async {

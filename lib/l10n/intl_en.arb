@@ -5086,5 +5086,11 @@
   "loginFinishedLabel": "Finalizing...",
   "loginErrorLabel": "An error occurred during login",
   "clickToUpdateTargetLanguage": "Click here to update your target language.",
-  "closeEmojiMenu": "Close emoji menu"
+  "closeEmojiMenu": "Close emoji menu",
+  "readingAssistanceTutorialClickMessage": "Click on the message bubble to select it",
+  "writingAssistanceTutorialInputBar": "You can write in any language. Don't worry about mistakes! We'll help you correct them.",
+  "writingAssistanceTutorialIGCButton": "After writing your message, click this button to start writing assistance",
+  "selectModeTutorialTranslate": "Click here to translate the message",
+  "selectModeTutorialAudio": "Click here to listen to the message",
+  "selectModeTutorialExit": "Click the background to go back to chatting"
 }

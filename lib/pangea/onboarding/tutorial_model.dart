@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_tooltip_widget.dart';
 
@@ -43,14 +44,15 @@ sealed class TutorialModel {
 
   const TutorialModel({required this.tutorialType, required this.stepsData});
 
-  List<TutorialStepStyle> get stepStyles {
-    throw UnimplementedError("stepStyles must be implemented by subclasses");
-  }
+  List<TutorialStepStyle> stepStyles(L10n l10n);
 
-  List<TutorialStep> get steps => List.generate(
-    stepsData.length,
-    (index) => TutorialStep(data: stepsData[index], style: stepStyles[index]),
-  );
+  List<TutorialStep> steps(L10n l10n) {
+    final styles = stepStyles(l10n);
+    return List.generate(
+      stepsData.length,
+      (index) => TutorialStep(data: stepsData[index], style: styles[index]),
+    );
+  }
 }
 
 class ReadingAssistantTutorialModel extends TutorialModel {
@@ -59,10 +61,10 @@ class ReadingAssistantTutorialModel extends TutorialModel {
       super(tutorialType: TutorialEnum.readingAssistance, stepsData: data);
 
   @override
-  List<TutorialStepStyle> get stepStyles => [
+  List<TutorialStepStyle> stepStyles(L10n l10n) => [
     TutorialStepStyle(
       tooltip: TutorialTooltipWidget(
-        text: "Click on message bubble to select them",
+        text: l10n.readingAssistanceTutorialClickMessage,
       ),
       tooltipSize: Size(200, 80),
       borderRadius: AppConfig.borderRadius,
@@ -76,19 +78,17 @@ class WritingAssistantTutorialModel extends TutorialModel {
       super(tutorialType: TutorialEnum.writingAssistance, stepsData: data);
 
   @override
-  List<TutorialStepStyle> get stepStyles => [
+  List<TutorialStepStyle> stepStyles(L10n l10n) => [
     TutorialStepStyle(
       tooltip: TutorialTooltipWidget(
-        text:
-            "You can write in any language. Don't worry about mistakes! We'll help you correct them.",
+        text: l10n.writingAssistanceTutorialInputBar,
       ),
       tooltipSize: Size(300, 100),
       borderRadius: 24.0,
     ),
     TutorialStepStyle(
       tooltip: TutorialTooltipWidget(
-        text:
-            "After writing your message, click this button to start writing assistance",
+        text: l10n.writingAssistanceTutorialIGCButton,
       ),
       tooltipSize: Size(300, 100),
       borderRadius: 100.0,
@@ -103,27 +103,21 @@ class SelectModeButtonsTutorialModel extends TutorialModel {
       super(tutorialType: TutorialEnum.selectModeButtons, stepsData: data);
 
   @override
-  List<TutorialStepStyle> get stepStyles => [
+  List<TutorialStepStyle> stepStyles(L10n l10n) => [
     TutorialStepStyle(
-      tooltip: TutorialTooltipWidget(
-        text: "Click here to translate the message",
-      ),
+      tooltip: TutorialTooltipWidget(text: l10n.selectModeTutorialTranslate),
       tooltipSize: Size(200, 80),
       borderRadius: 100.0,
       padding: 0.0,
     ),
     TutorialStepStyle(
-      tooltip: TutorialTooltipWidget(
-        text: "Click here to listen to the message",
-      ),
+      tooltip: TutorialTooltipWidget(text: l10n.selectModeTutorialAudio),
       tooltipSize: Size(200, 80),
       borderRadius: 100.0,
       padding: 0.0,
     ),
     TutorialStepStyle(
-      tooltip: TutorialTooltipWidget(
-        text: "Click the background to go back to chatting",
-      ),
+      tooltip: TutorialTooltipWidget(text: l10n.selectModeTutorialExit),
       tooltipSize: Size(200, 80),
       borderRadius: AppConfig.borderRadius,
     ),
