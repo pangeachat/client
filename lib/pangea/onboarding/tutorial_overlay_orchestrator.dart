@@ -18,12 +18,27 @@ class TutorialOverlayOrchestrator {
   final StreamController<TutorialEnum> _tutorialCompleteStreamController =
       StreamController.broadcast();
 
+  final StreamController<TutorialEnum> _goBackTutorialStreamController =
+      StreamController.broadcast();
+
   TutorialEnum? _activeTutorial;
   TutorialSequenceModel? _sequence;
   int _index = 0;
 
+  /// Set by [requestGoBack] to the last step of the previous tutorial. Consumed
+  /// (and cleared) by the next [launchTutorial] call so that callers which don't
+  /// know about the go-back (e.g. [SelectModeButtonsState.initState]) still
+  /// start at the correct step.
+  int? _pendingInitialStepIndex;
+
   Stream<TutorialEnum> get tutorialCompleteStream =>
       _tutorialCompleteStreamController.stream;
+
+  /// Emits the [TutorialEnum] of the tutorial the user navigated back to.
+  /// Host widgets should listen to this, re-prepare their UI state, and
+  /// call [launchTutorial] with [initialStepIndex] set to the last step.
+  Stream<TutorialEnum> get goBackTutorialStream =>
+      _goBackTutorialStreamController.stream;
 
   int get totalStepsInCurrentSequence {
     if (_sequence == null) return 0;
@@ -38,7 +53,7 @@ class TutorialOverlayOrchestrator {
     if (sequence == null || _index == 0) return 0;
 
     return sequence.tutorials
-        .take(_index)
+        .take(_index - 1)
         .fold(0, (sum, tutorial) => sum + tutorial.stepCount);
   }
 
@@ -71,6 +86,7 @@ class TutorialOverlayOrchestrator {
   void launchTutorial({
     required BuildContext context,
     required TutorialModel tutorial,
+    int initialStepIndex = 0,
   }) {
     Logs().i("Attempting to launch tutorial ${tutorial.tutorialType}");
 
@@ -83,9 +99,17 @@ class TutorialOverlayOrchestrator {
       Logs().w("Tutorial $_activeTutorial already open");
     }
 
+    // _pendingInitialStepIndex is set by requestGoBack for callers that don't
+    // know they need to start at a non-zero step (e.g. SelectModeButtons).
+    final effectiveIndex = _pendingInitialStepIndex ?? initialStepIndex;
+    _pendingInitialStepIndex = null;
+
     final entry = OverlayEntry(
       builder: (context) {
-        return TutorialOverlayWidget(tutorial: tutorial);
+        return TutorialOverlayWidget(
+          tutorial: tutorial,
+          initialStepIndex: effectiveIndex,
+        );
       },
     );
 
@@ -106,6 +130,41 @@ class TutorialOverlayOrchestrator {
     MatrixState.pAnyState.closeOverlay(tutorial.tutorialType.name);
   }
 
+  /// Returns true if there is a previous tutorial in the sequence that the
+  /// user could navigate back to from the given [tutorial].
+  bool hasPreviousTutorial(TutorialEnum tutorial) {
+    if (_sequence == null) return false;
+    // _index is "next to launch"; the active tutorial is at _index - 1.
+    // A previous tutorial exists at _index - 2.
+    return _index >= 2;
+  }
+
+  /// Signals the previous tutorial in the sequence to re-open at its last step.
+  ///
+  /// The [currentTutorial]'s overlay is closed. After the next frame (so
+  /// [onCloseTutorial] has had time to run), [goBackTutorialStream] emits the
+  /// enum of the tutorial to re-open. Host widgets should listen, restore any
+  /// required UI state, then call [launchTutorial] with
+  /// `initialStepIndex: tutorialType.stepCount - 1`.
+  void requestGoBack({required TutorialModel currentTutorial}) {
+    if (!hasPreviousTutorial(currentTutorial.tutorialType)) return;
+
+    // Decrement by 2: undo the last launch increment, then step back one more
+    // so that after the previous tutorial calls launchTutorial (which does
+    // _index++) the index is back to _index - 1.
+    _index -= 2;
+    final previousTutorialEnum = _sequence!.tutorials[_index];
+    _pendingInitialStepIndex = previousTutorialEnum.stepCount - 1;
+
+    closeTutorial(tutorial: currentTutorial);
+
+    // Defer the stream emission to the next frame so that the closing widget's
+    // dispose → onCloseTutorial runs before host widgets try to launch.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _goBackTutorialStreamController.add(previousTutorialEnum);
+    });
+  }
+
   void onCloseTutorial(TutorialEnum tutorial) {
     if (_sequence == null) {
       Logs().w(
@@ -117,7 +176,11 @@ class TutorialOverlayOrchestrator {
       _index = 0;
     }
 
-    _activeTutorial = null;
+    // Only clear _activeTutorial if it still matches this tutorial — a
+    // requestGoBack() may have already set it to a newly launched model.
+    if (_activeTutorial == tutorial) {
+      _activeTutorial = null;
+    }
     _tutorialCompleteStreamController.add(tutorial);
   }
 }

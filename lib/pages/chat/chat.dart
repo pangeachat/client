@@ -207,6 +207,11 @@ class ChatController extends State<ChatPageWithRoom>
   StreamSubscription? _botAudioSubscription;
   StreamSubscription? _readingAssistanceTutorialSubscription;
   StreamSubscription? _writingAssistanceTutorialSubscription;
+  StreamSubscription? _goBackTutorialSubscription;
+
+  /// The event used to start the reading-assistance tutorial. Stored so the
+  /// tutorial can be re-opened when the user navigates back through the sequence.
+  Event? _tutorialEvent;
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
   late final ActivityChatController activityController;
   late final ChatBannerController _bannerController;
@@ -669,7 +674,58 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
+  /// Called when the user navigates back across a tutorial-model boundary.
+  /// Re-prepares the required UI state and re-opens the appropriate tutorial
+  /// at its last step.
+  Future<void> _goBackTutorialListener(TutorialEnum tutorial) async {
+    if (!mounted) return;
+    switch (tutorial) {
+      case TutorialEnum.readingAssistance:
+        final event = _tutorialEvent;
+        if (event == null) return;
+        // Hide the toolbar (if open) before re-showing the reading-assistance
+        // tutorial which points at the message bubble itself.
+        clearSelectedEvents();
+        await Future.delayed(FluffyThemes.animationDuration);
+        if (!mounted) return;
+        _relaunchReadingAssistanceTutorial(event);
+      case TutorialEnum.selectModeButtons:
+        final event = _tutorialEvent;
+        if (event == null) return;
+        // Re-open the toolbar so SelectModeButtons mounts and picks up the
+        // queued tutorial. The orchestrator's _pendingInitialStepIndex ensures
+        // it launches at the last step automatically.
+        showToolbar(event, bypassBlockingOverlays: true);
+      case TutorialEnum.writingAssistance:
+        // The writing-assistance tutorial starts from the text input which is
+        // always visible, so no extra state preparation is needed.
+        WidgetsBinding.instance.addPostFrameCallback(
+          (_) => _startWritingAssistanceTutorial(
+            initialStepIndex: TutorialEnum.writingAssistance.stepCount - 1,
+          ),
+        );
+    }
+  }
+
+  void _relaunchReadingAssistanceTutorial(Event event) {
+    final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
+    TutorialOverlayOrchestrator.instance.launchTutorial(
+      context: context,
+      tutorial: ReadingAssistantTutorialModel(
+        data: [
+          TutorialStepData(
+            targetLink: target.link,
+            targetKey: target.key,
+            onTap: () async => showToolbar(event, bypassBlockingOverlays: true),
+          ),
+        ],
+      ),
+      initialStepIndex: TutorialEnum.readingAssistance.stepCount - 1,
+    );
+  }
+
   void _startReadingAssistanceTutorial(Event event) {
+    _tutorialEvent = event;
     TutorialOverlayOrchestrator.instance.enqueueTutorialSequence(
       TutorialSequenceModel(
         tutorials: [
@@ -695,7 +751,7 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
-  void _startWritingAssistanceTutorial() {
+  void _startWritingAssistanceTutorial({int initialStepIndex = 0}) {
     final inputTarget = MatrixState.pAnyState.layerLinkAndKey(
       ChoreoConstants.inputTransformTargetKey,
     );
@@ -715,6 +771,7 @@ class ChatController extends State<ChatPageWithRoom>
           ),
         ],
       ),
+      initialStepIndex: initialStepIndex,
     );
   }
 
@@ -742,6 +799,11 @@ class ChatController extends State<ChatPageWithRoom>
         .instance
         .tutorialCompleteStream
         .listen(_writingAssistanceTutorialListener);
+
+    _goBackTutorialSubscription = TutorialOverlayOrchestrator
+        .instance
+        .goBackTutorialStream
+        .listen(_goBackTutorialListener);
 
     activityController = ActivityChatController(
       userID: Matrix.of(context).client.userID!,
@@ -1018,6 +1080,7 @@ class ChatController extends State<ChatPageWithRoom>
     _tokensSubscription?.cancel();
     _readingAssistanceTutorialSubscription?.cancel();
     _writingAssistanceTutorialSubscription?.cancel();
+    _goBackTutorialSubscription?.cancel();
     _bannerController.dispose();
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     scrollController.dispose();

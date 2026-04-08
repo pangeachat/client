@@ -14,9 +14,14 @@ class TutorialOverlayWidget extends StatefulWidget {
   final TutorialModel tutorial;
   final TooltipPosition preferredPosition;
 
+  /// The step index to start on. Defaults to 0 (first step). Pass
+  /// `tutorialType.stepCount - 1` when the user navigated back to this model.
+  final int initialStepIndex;
+
   const TutorialOverlayWidget({
     required this.tutorial,
     this.preferredPosition = TooltipPosition.above,
+    this.initialStepIndex = 0,
     super.key,
   });
 
@@ -25,15 +30,19 @@ class TutorialOverlayWidget extends StatefulWidget {
 }
 
 class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
-  int _currentStepIndex = 0;
+  late int _currentStepIndex;
   bool _transitioning = false;
   bool _visible = false;
 
   @override
   void initState() {
     super.initState();
+    _currentStepIndex = widget.initialStepIndex.clamp(
+      0,
+      widget.tutorial.steps.length - 1,
+    );
     Logs().i(
-      "Initializing tutorial overlay for tutorial ${widget.tutorial.tutorialType}",
+      "Initializing tutorial overlay for tutorial ${widget.tutorial.tutorialType} at step $_currentStepIndex",
     );
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
@@ -152,7 +161,30 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   }
 
   Future<void> _previous() async {
+    if (_currentStepIndex == 0) {
+      await _goBackToPreviousTutorial();
+      return;
+    }
     await _updateStep(_currentStepIndex - 1);
+  }
+
+  /// Closes the current tutorial overlay and signals the orchestrator to
+  /// re-open the previous tutorial in the sequence at its last step.
+  Future<void> _goBackToPreviousTutorial() async {
+    if (!TutorialOverlayOrchestrator.instance.hasPreviousTutorial(
+      widget.tutorial.tutorialType,
+    )) {
+      // No previous tutorial — fall back to closing the sequence.
+      await _close();
+      return;
+    }
+    setState(() => _visible = false);
+    await Future.delayed(_duration);
+    if (mounted) {
+      TutorialOverlayOrchestrator.instance.requestGoBack(
+        currentTutorial: widget.tutorial,
+      );
+    }
   }
 
   Future<void> _updateStep(int updatedIndex) async {
@@ -197,6 +229,15 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   Widget build(BuildContext context) {
     final step = _currentStep;
     final showAbove = _showAbove;
+
+    final completedStepsOffset =
+        TutorialOverlayOrchestrator.instance.completedStepsOffset;
+
+    final currentStep = completedStepsOffset + _currentStepIndex + 1;
+
+    final totalSteps =
+        TutorialOverlayOrchestrator.instance.totalStepsInCurrentSequence;
+
     return MouseRegion(
       cursor: step != null && _visible
           ? SystemMouseCursors.click
@@ -273,16 +314,13 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
                   padding: _tooltipPadding,
                   onNext: _executeStepCallback,
                   onPrevious: _previous,
-                  showPrevious: _currentStepIndex > 0,
-                  currentStep:
-                      TutorialOverlayOrchestrator
-                          .instance
-                          .completedStepsOffset +
-                      _currentStepIndex +
-                      1,
-                  totalSteps: TutorialOverlayOrchestrator
-                      .instance
-                      .totalStepsInCurrentSequence,
+                  showPrevious:
+                      _currentStepIndex > 0 ||
+                      TutorialOverlayOrchestrator.instance.hasPreviousTutorial(
+                        widget.tutorial.tutorialType,
+                      ),
+                  currentStep: currentStep,
+                  totalSteps: totalSteps,
                   child: step.style.tooltip,
                 ),
               ),

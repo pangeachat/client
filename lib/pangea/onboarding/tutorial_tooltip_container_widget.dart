@@ -30,6 +30,7 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Material(
       color: Colors.transparent,
       elevation: 4,
@@ -50,13 +51,13 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.zero,
                   minimumSize: const Size(56, 24),
-                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
-                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  foregroundColor: theme.colorScheme.onPrimary,
+                  backgroundColor: theme.colorScheme.primary,
                 ),
                 child: Text(
                   L10n.of(context).next,
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimary,
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: theme.colorScheme.onPrimary,
                   ),
                 ),
               ),
@@ -70,13 +71,13 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.zero,
                     minimumSize: const Size(56, 24),
-                    foregroundColor: Theme.of(context).colorScheme.onSecondary,
-                    backgroundColor: Theme.of(context).colorScheme.secondary,
+                    foregroundColor: theme.colorScheme.onSecondary,
+                    backgroundColor: theme.colorScheme.secondary,
                   ),
                   child: Text(
                     L10n.of(context).previous,
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                      color: Theme.of(context).colorScheme.onSecondary,
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: theme.colorScheme.onSecondary,
                     ),
                   ),
                 ),
@@ -86,10 +87,17 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
               left: 0,
               right: 0,
               child: Center(
-                child: Text(
-                  "$currentStep / $totalSteps",
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.onSurface,
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                  ),
+                  child: Text(
+                    "$currentStep / $totalSteps",
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: theme.colorScheme.surface,
+                    ),
                   ),
                 ),
               ),

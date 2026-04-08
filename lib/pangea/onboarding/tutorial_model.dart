@@ -82,7 +82,7 @@ class WritingAssistantTutorialModel extends TutorialModel {
         text:
             "You can write in any language. Don't worry about mistakes! We'll help you correct them.",
       ),
-      tooltipSize: Size(300, 80),
+      tooltipSize: Size(300, 100),
       borderRadius: 24.0,
     ),
     TutorialStepStyle(
@@ -90,7 +90,7 @@ class WritingAssistantTutorialModel extends TutorialModel {
         text:
             "After writing your message, click this button to start writing assistance",
       ),
-      tooltipSize: Size(300, 80),
+      tooltipSize: Size(300, 100),
       borderRadius: 100.0,
       padding: 4.0,
     ),
