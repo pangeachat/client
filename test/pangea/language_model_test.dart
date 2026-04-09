@@ -14,7 +14,16 @@ void main() {
         'locale_emoji': '🇪🇸',
         'l2_support': 'full',
         'script': 'Latn',
-        'voices': ['es-ES-Standard-A', 'es-ES-Wavenet-B'],
+        'voices': [
+          {
+            'short_name': 'es-ES-Standard-A',
+            'display_name': 'Elena (Spain)',
+          },
+          {
+            'short_name': 'es-ES-Wavenet-B',
+            'display_name': 'Marta (Spain)',
+          },
+        ],
         'createdAt': '2026-01-01T00:00:00.000Z',
         'updatedAt': '2026-01-01T00:00:00.000Z',
       };
@@ -27,6 +36,7 @@ void main() {
       expect(model.l2Support, L2SupportEnum.full);
       expect(model.script, 'Latn');
       expect(model.voices, ['es-ES-Standard-A', 'es-ES-Wavenet-B']);
+      expect(model.displayVoiceName('es-ES-Wavenet-B'), 'Marta (Spain)');
     });
 
     test('parses minimal fields (only required)', () {
@@ -96,6 +106,19 @@ void main() {
       expect(model.voices, isEmpty);
     });
 
+    test('handles legacy string voices', () {
+      final json = {
+        'language_code': 'en',
+        'language_name': 'English',
+        'voices': ['en-US-Neural2-A'],
+      };
+
+      final model = LanguageModel.fromJson(json);
+
+      expect(model.voices, ['en-US-Neural2-A']);
+      expect(model.displayVoiceName('en-US-Neural2-A'), 'Neural 2 A (EN-US)');
+    });
+
     test('handles empty voices list', () {
       final json = {
         'language_code': 'fr',
@@ -151,7 +174,12 @@ void main() {
         'l2_support': 'beta',
         'script': 'Jpan',
         'locale_emoji': '🇯🇵',
-        'voices': ['ja-JP-Standard-A'],
+        'voices': [
+          {
+            'short_name': 'ja-JP-Standard-A',
+            'display_name': 'Hiroshi (Japan)',
+          },
+        ],
       };
 
       final model = LanguageModel.fromJson(original);
@@ -162,7 +190,12 @@ void main() {
       expect(serialized['l2_support'], 'beta');
       expect(serialized['script'], 'Jpan');
       expect(serialized['locale_emoji'], '🇯🇵');
-      expect(serialized['voices'], ['ja-JP-Standard-A']);
+      expect(serialized['voices'], [
+        {
+          'short_name': 'ja-JP-Standard-A',
+          'display_name': 'Hiroshi (Japan)',
+        },
+      ]);
     });
 
     test('serializes default values correctly', () {
