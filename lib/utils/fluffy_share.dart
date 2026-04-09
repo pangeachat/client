@@ -33,14 +33,16 @@ abstract class FluffyShare {
 
   static Future<void> shareInviteLink(BuildContext context) async {
     final client = Matrix.of(context).client;
-    final ownProfile = await client.fetchOwnProfile();
+    // #Pangea
+    // final ownProfile = await client.fetchOwnProfile();
+    // Pangea#
     await FluffyShare.share(
       // #Pangea
       // L10n.of(context).inviteText(
       //   ownProfile.displayName ?? client.userID!,
       //   'https://matrix.to/#/${client.userID}?client=im.fluffychat',
       // ),
-      "${ownProfile.displayName ?? client.userID!} invited you to Pangea Chat.\nOpen the invite link: \n ${Environment.frontendURL}",
+      "${Environment.frontendURL}/#/invite_user/${Uri.encodeComponent(client.userID!)}",
       // Pangea#
       context,
     );

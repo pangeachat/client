@@ -63,6 +63,7 @@ import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
 import 'package:fluffychat/pangea/user/user_home_page.dart';
+import 'package:fluffychat/pangea/user/user_invite_link_page.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
@@ -225,6 +226,14 @@ abstract class AppRoutes {
         JoinClassWithLink(
           classCode: state.uri.queryParameters[SpaceConstants.classCode],
         ),
+      ),
+    ),
+    GoRoute(
+      path: '/invite_user/:userID',
+      pageBuilder: (context, state) => defaultPageBuilder(
+        context,
+        state,
+        UserInviteLink(userID: state.pathParameters['userID']!),
       ),
     ),
     GoRoute(
