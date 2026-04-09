@@ -656,9 +656,6 @@ class ChatController extends State<ChatPageWithRoom>
           .first;
 
       if (msgLang != l2) continue;
-      debugPrint(
-        "Showing tutorial for message ${event.eventId} with lang $msgLang and user L2 $l2",
-      );
 
       WidgetsBinding.instance.addPostFrameCallback(
         (_) => _startReadingAssistanceTutorial(event),
