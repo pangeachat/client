@@ -38,7 +38,7 @@ class CourseSettingsState extends State<CourseSettings> {
   @override
   void didUpdateWidget(covariant CourseSettings oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.roomId != widget.roomId) {
+    if (oldWidget.roomId != widget.roomId && _scrollController.hasClients) {
       _scrollController.jumpTo(0);
     }
   }
@@ -73,10 +73,38 @@ class CourseSettingsState extends State<CourseSettings> {
     if (controller.course == null || controller.courseError != null) {
       if (controller.courseError != null) {
         return Center(
-          child: Text(
-            L10n.of(context).courseLoadingError,
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyLarge,
+          child: Column(
+            spacing: 50.0,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                L10n.of(context).courseLoadingError,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              if (room.canChangeStateEvent(PangeaEventTypes.coursePlan))
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(
+                      context,
+                    ).colorScheme.primaryContainer,
+                    foregroundColor: Theme.of(
+                      context,
+                    ).colorScheme.onPrimaryContainer,
+                  ),
+                  onPressed: () => context.go(
+                    "/rooms/spaces/${controller.roomId}/addcourse",
+                  ),
+                  child: Row(
+                    spacing: 8.0,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.map_outlined),
+                      Text(L10n.of(context).changeCourse),
+                    ],
+                  ),
+                ),
+            ],
           ),
         );
       }
