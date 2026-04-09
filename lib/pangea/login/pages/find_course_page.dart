@@ -36,6 +36,7 @@ class FindCoursePage extends StatefulWidget {
 
 class FindCoursePageState extends State<FindCoursePage> {
   final TextEditingController searchController = TextEditingController();
+  final ScrollController scrollController = ScrollController();
   Timer? _coolDown;
 
   final ValueNotifier<bool> loading = ValueNotifier(false);
@@ -64,6 +65,7 @@ class FindCoursePageState extends State<FindCoursePage> {
   @override
   void dispose() {
     searchController.dispose();
+    scrollController.dispose();
     _coolDown?.cancel();
     visibleCourses.dispose();
     loading.dispose();
@@ -77,6 +79,7 @@ class FindCoursePageState extends State<FindCoursePage> {
     visibleCourses.value = [];
     loading.value = false;
     _loadGeneration++;
+    scrollController.jumpTo(0);
     loadMore();
   }
 
@@ -435,6 +438,7 @@ class FindCoursePageView extends StatelessWidget {
 
                   return Expanded(
                     child: ListView.builder(
+                      controller: controller.scrollController,
                       itemCount: courses.length + 1,
                       itemBuilder: (context, index) {
                         if (index == courses.length) {
