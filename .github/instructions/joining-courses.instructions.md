@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/pangea/join_codes/**,lib/pangea/chat_list/**,lib/pangea/course_creation/**,lib/pangea/spaces/**,lib/pages/chat_list/**,lib/utils/url_launcher.dart,lib/config/routes.dart"
+applyTo: "lib/pangea/join_codes/**,lib/pangea/chat_list/**,lib/pangea/course_creation/**,lib/pangea/spaces/**,lib/pages/chat_list/**,lib/utils/url_launcher.dart,lib/config/routes.dart,web/index.html,ios/Runner/Runner.entitlements,android/app/src/main/AndroidManifest.xml"
 ---
 
 # Joining Courses — Client Design
@@ -118,6 +118,25 @@ Every case where `room.join()` is called without explicit user confirmation:
 | Default chats in a course (announcements, introductions) | Viewing the course                |
 | knock_with_code succeeded                                | Code entry flow                   |
 | User previously knocked on the room                      | Invite received for a prior knock |
+
+---
+
+## Deep Linking — Mobile & Web
+
+Class link URLs (`https://app.pangea.chat/#/join_with_link?classcode=XYZ`) must reach the app on mobile. iOS Universal Links and Android App Links are configured so the OS intercepts `app.pangea.chat` and opens the app directly when installed.
+
+### Key design decisions
+
+- **Mobile redirect bypass for class links**: [`web/index.html`](../../web/index.html) has a redirect script that sends mobile users to `pangea://` (custom scheme) → app store fallback. This is **skipped** when the hash contains `join_with_link`, because the custom scheme loses the URL fragment (and thus the class code). Instead, the Flutter web app loads and handles it.
+- **Web as fallback**: When the app isn't installed, the web app processes the class code directly. No deferred deep linking service (Branch.io, etc.) is used.
+- **Hash-based routing**: The class code lives in the URL fragment (`#/join_with_link?classcode=XYZ`). iOS Universal Links deliver the full URL including fragment to the app.
+
+### Infrastructure touchpoints
+
+- **AASA & assetlinks.json** — served from `app.pangea.chat/.well-known/`, downloaded during CI/CD. Maps the domain to the app on each platform.
+- **Platform config** — [`ios/Runner/Runner.entitlements`](../../ios/Runner/Runner.entitlements), [`android/app/src/main/AndroidManifest.xml`](../../android/app/src/main/AndroidManifest.xml)
+- **URI listener** — [`MatrixState._processIncomingUris`](../../lib/widgets/matrix.dart) receives incoming URLs via `app_links` package, routes to GoRouter.
+- **Custom scheme** — `pangea://` registered on both platforms as a fallback, but cannot carry the fragment through a store install.
 
 ---
 

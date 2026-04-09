@@ -114,8 +114,8 @@ jobs:
           ruby-version: "3.3"
       - name: Update env files to selected environment
         run: |
-          rm .env
-          rm assets/.env
+          rm -f .env
+          rm -f assets/.env
           echo "$WEB_APP_ENV" >> .env
           cp .env assets/.env
       - name: Apply .env patch
