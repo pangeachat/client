@@ -4919,8 +4919,6 @@
   "findCourse": "Find a course",
   "publicInviteDescChat": "Search for users to invite them to this chat.",
   "publicInviteDescSpace": "Search for users to invite them to this space.",
-  "enableNotificationsTitle": "Pangea Chat is a texting app so notifications are important!",
-  "enableNotificationsDesc": "Allow notifications",
   "useActivityImageAsChatBackground": "Use activity image as chat background",
   "chatWithSupport": "Chat with Support",
   "newCourseAccess": "By default, courses are publicly searchable and require admin approval to join. You can edit these settings at any time.",
@@ -5086,5 +5084,8 @@
   "loginFinishedLabel": "Finalizing...",
   "loginErrorLabel": "An error occurred during login",
   "clickToUpdateTargetLanguage": "Click here to update your target language.",
-  "closeEmojiMenu": "Close emoji menu"
+  "closeEmojiMenu": "Close emoji menu",
+  "enableNotificationsTitle": "Never miss a chat!",
+  "enableNotificationsDesc": "Allow notifications for Pangea Chat and stay connected with your language buddies!",
+  "enableNotifications": "Allow notifications"
 }

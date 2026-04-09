@@ -172,7 +172,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
 
     if (l2Set) {
       if (targetLangCode == null) {
-        context.go('/registration/notifications');
+        context.go('/registration/course');
         return;
       }
 
@@ -241,7 +241,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
     context.go(
       _spaceId != null
           ? '/rooms/spaces/$_spaceId/details'
-          : '/registration/notifications',
+          : '/registration/course',
     );
   }
 

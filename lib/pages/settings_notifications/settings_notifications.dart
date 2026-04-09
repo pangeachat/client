@@ -34,6 +34,15 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
   ScaffoldMessengerState? messenger;
 
   @override
+  void initState() {
+    super.initState();
+    // #Pangea
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => Matrix.of(context).showEnableNotificationsDialog(context),
+    );
+  }
+
+  @override
   void dispose() {
     messenger?.hideCurrentSnackBar();
     super.dispose();
@@ -205,11 +214,6 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
   void updateVolume(double value) {
     volumeNotifier.value = value;
     AppSettings.volume.setItem(value);
-  }
-
-  Future<void> requestNotificationPermission() async {
-    await Matrix.of(context).requestNotificationPermission();
-    if (mounted) setState(() {});
   }
 
   Future<void> setEmailNotificationsEnabled(bool enable) async {

@@ -27,6 +27,7 @@ import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/local_notifications_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 enum AliasActions { copy, delete, setCanonical }
@@ -77,6 +78,11 @@ class ChatDetailsController extends State<ChatDetails>
             _loadCourseInfo();
           }
         });
+
+    final room = Matrix.of(context).client.getRoomById(widget.roomId);
+    if (room?.isSpace == true) {
+      Matrix.of(context).showEnableNotificationsDialog(context);
+    }
   }
 
   @override
