@@ -743,6 +743,8 @@ abstract class AppRoutes {
                     const SettingsLearning(isDialog: false),
                   ),
                   redirect: loggedOutRedirect,
+                  onExit: (context, state) =>
+                      SettingsLearningController.handleExit(context),
                 ),
                 GoRoute(
                   path: 'subscription',
