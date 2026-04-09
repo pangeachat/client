@@ -30,7 +30,10 @@ class SettingsIgnoreListController extends State<SettingsIgnoreList> {
 
   String? errorText;
 
-  void ignoreUser(BuildContext context) {
+  // #Pangea
+  // void ignoreUser(BuildContext context) {
+  Future<void> ignoreUser(BuildContext context) async {
+    // Pangea#
     final userId = controller.text.trim();
     if (userId.isEmpty) return;
     if (!userId.isValidMatrixId || userId.sigil != '@') {
@@ -44,10 +47,16 @@ class SettingsIgnoreListController extends State<SettingsIgnoreList> {
     });
 
     final client = Matrix.of(context).client;
-    showFutureLoadingDialog(
+    // #Pangea
+    // showFutureLoadingDialog(
+    //   context: context,
+    //   future: () => client.ignoreUser(userId),
+    // );
+    await showFutureLoadingDialog(
       context: context,
       future: () => client.ignoreUser(userId),
     );
+    // Pangea#
     setState(() {});
     controller.clear();
   }

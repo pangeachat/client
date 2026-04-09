@@ -32,9 +32,11 @@ class SettingsIgnoreListView extends StatelessWidget {
                 false,
           ),
           builder: (context, asyncSnapshot) {
-            if (client.prevBatch == null) {
-              return const Center(child: CircularProgressIndicator.adaptive());
-            }
+            // #Pangea
+            // if (client.prevBatch == null) {
+            //   return const Center(child: CircularProgressIndicator.adaptive());
+            // }
+            // Pangea#
             return Column(
               mainAxisSize: .min,
               children: [
