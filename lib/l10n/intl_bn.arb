@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 12:19:16.205185",
+    "@@last_modified": "2026-04-03 12:22:27.536654",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -11563,6 +11563,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "আপনার লক্ষ্য ভাষা আপডেট করতে এখানে ক্লিক করুন।",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "ইমোজি মেনু বন্ধ করুন",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

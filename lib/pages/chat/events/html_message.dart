@@ -464,7 +464,9 @@ class HtmlMessage extends StatelessWidget {
             controller.buttonEventID == event.eventId &&
             newTokens.first == token.text;
         final showShimmer =
-            !InstructionsEnum.shimmerNewToken.isToggledOff && isFirstNewToken;
+            !InstructionsEnum.shimmerNewToken.isToggledOff &&
+            !isPracticeMode &&
+            isFirstNewToken;
 
         final tokenWidth = renderer.tokenTextWidthForContainer(
           node.text,

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-04-02 12:18:06.455993",
+    "@@last_modified": "2026-04-03 12:22:20.972153",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11179,6 +11179,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Hedef dilinizi güncellemek için buraya tıklayın.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Emoji menüsünü kapat",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

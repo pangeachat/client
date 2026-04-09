@@ -62,6 +62,7 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
   }
 
   Future<void> _fetchActivity() async {
+    final loadedTarget = widget.targetTokensAndActivityType;
     _activityState.value = const AsyncState.loading();
     if (!MatrixState.pangeaController.userController.languagesSet) {
       _activityState.value = const AsyncState.error("Error fetching activity");
@@ -71,6 +72,13 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
     final result = await widget.controller.fetchActivityModel(
       widget.targetTokensAndActivityType,
     );
+
+    if (loadedTarget != widget.targetTokensAndActivityType) {
+      // Target changed while fetching, discard result
+      return;
+    }
+
+    if (!mounted) return;
 
     if (result.isValue) {
       _activityState.value = AsyncState.loaded(result.result!);

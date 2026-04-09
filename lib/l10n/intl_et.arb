@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-04-02 12:15:36.240175",
+    "@@last_modified": "2026-04-03 12:22:05.918853",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10845,6 +10845,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Klõpsa siin, et uuendada oma sihtkeelt.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Sulge emotikonide menüü",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

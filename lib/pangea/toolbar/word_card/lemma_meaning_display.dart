@@ -32,33 +32,43 @@ class LemmaMeaningDisplay extends StatelessWidget {
       messageInfo: messageInfo,
       reloadNotifier: reloadNotifier,
       builder: (context, controller) {
-        return switch (controller.state) {
-          AsyncError() => ErrorIndicator(
-            message: L10n.of(context).errorFetchingDefinition,
-            style: const TextStyle(fontSize: 14.0),
-          ),
-          AsyncLoaded(value: final lemmaInfo) => RichText(
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
-            text: TextSpan(
-              style: DefaultTextStyle.of(
-                context,
-              ).style.copyWith(fontSize: 14.0),
-              children: [
-                TextSpan(
-                  text:
-                      "${constructId.lemma} (${getGrammarCopy(category: "POS", lemma: constructId.category, context: context) ?? L10n.of(context).other})",
-                ),
-                const WidgetSpan(child: SizedBox(width: 8.0)),
-                const TextSpan(text: ":"),
-                const WidgetSpan(child: SizedBox(width: 8.0)),
-                TextSpan(text: lemmaInfo.meaning),
-              ],
-            ),
-          ),
-          _ => const TextLoadingShimmer(width: 125.0, height: 20.0),
-        };
+        switch (controller.state) {
+          case AsyncError():
+            return ErrorIndicator(
+              message: L10n.of(context).errorFetchingDefinition,
+              style: const TextStyle(fontSize: 14.0),
+            );
+          case AsyncLoaded(value: final lemmaInfo):
+            final pos =
+                getGrammarCopy(
+                  category: "POS",
+                  lemma: constructId.category,
+                  context: context,
+                ) ??
+                L10n.of(context).other;
+            final lemma = constructId.lemma;
+            return RichText(
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                style: DefaultTextStyle.of(
+                  context,
+                ).style.copyWith(fontSize: 14.0),
+                children: [
+                  TextSpan(
+                    text: lemma.length > 50 ? "($pos)" : "$lemma ($pos)",
+                  ),
+                  const WidgetSpan(child: SizedBox(width: 8.0)),
+                  const TextSpan(text: ":"),
+                  const WidgetSpan(child: SizedBox(width: 8.0)),
+                  TextSpan(text: lemmaInfo.meaning),
+                ],
+              ),
+            );
+          default:
+            return const TextLoadingShimmer(width: 125.0, height: 20.0);
+        }
       },
     );
   }

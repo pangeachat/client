@@ -52,6 +52,10 @@ class NewCoursePageState extends State<NewCoursePage> {
     null,
   );
 
+  final ScrollController _scrollController = ScrollController();
+
+  int _loadGeneration = 0;
+
   @override
   void initState() {
     super.initState();
@@ -75,6 +79,7 @@ class NewCoursePageState extends State<NewCoursePage> {
   @override
   void dispose() {
     _courses.dispose();
+    _scrollController.dispose();
     _targetLanguageFilter.dispose();
     super.dispose();
   }
@@ -86,13 +91,17 @@ class NewCoursePageState extends State<NewCoursePage> {
   void _setTargetLanguageFilter(LanguageModel? language) {
     if (_targetLanguageFilter.value == language) return;
     _targetLanguageFilter.value = language;
+    _loadGeneration++;
+    _scrollController.jumpTo(0);
     _loadCourses();
   }
 
   Future<void> _loadCourses() async {
+    final int generation = _loadGeneration;
     try {
       _courses.value = null;
       final resp = await CoursePlansRepo.searchByFilter(filter: _filter);
+      if (!mounted || _loadGeneration != generation) return;
       _courses.value = Result.value(resp);
       if (resp.coursePlans.isEmpty) {
         ErrorHandler.logError(
@@ -101,6 +110,7 @@ class NewCoursePageState extends State<NewCoursePage> {
         );
       }
     } catch (e, s) {
+      if (!mounted || _loadGeneration != generation) return;
       ErrorHandler.logError(e: e, s: s, data: {'filter': _filter.toJson()});
       _courses.value = Result.error(e);
     }
@@ -279,6 +289,7 @@ class NewCoursePageState extends State<NewCoursePage> {
 
                     return Expanded(
                       child: ListView.separated(
+                        controller: _scrollController,
                         separatorBuilder: (context, index) =>
                             const SizedBox(height: 10.0),
                         itemCount: courses.length,

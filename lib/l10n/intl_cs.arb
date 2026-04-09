@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-04-02 12:16:29.383517",
+    "@@last_modified": "2026-04-03 12:22:12.370655",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -11402,6 +11402,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Klikněte sem pro aktualizaci cílového jazyka.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Zavřít nabídku emoji",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

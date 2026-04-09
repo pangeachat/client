@@ -5025,6 +5025,8 @@
     "loadingDataLabel": "Loading account data...",
     "loginFinishedLabel": "Finalizing...",
     "loginErrorLabel": "An error occurred during login",
+    "clickToUpdateTargetLanguage": "Click here to update your target language.",
+    "closeEmojiMenu": "Close emoji menu",
     "subscribedToUnlockTools": "Subscribe to unlock interactive translation and grammar checking, audio playback, personalized practice exercises, and learning analytics!",
     "emojiSelectedSnackbar": "You’ve set the emoji for {lemma}! We’ll use this emoji to represent the word in practice exercises going forward.",
     "@emojiSelectedSnackbar": {

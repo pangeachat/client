@@ -152,6 +152,8 @@ class AnalyticsPracticeSessionModel {
     return complete;
   }
 
+  bool get loadFailed => isComplete && state.currentIndex == 0;
+
   double get progress {
     final possibleCompletions =
         (state.currentIndex + _maxAttempts - _totalAttempted).clamp(

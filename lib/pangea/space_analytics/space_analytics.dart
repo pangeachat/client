@@ -152,12 +152,14 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
       false,
       true,
     );
+    if (!mounted) return;
 
     final List<Future> futures = [
       GetStorage.init('analytics_request_storage'),
       _loadProfiles(),
     ];
     await Future.wait(futures);
+    if (!mounted) return;
 
     selectedLanguage =
         availableLanguages.contains(_userL2) || availableLanguages.isEmpty
@@ -174,6 +176,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
     final futures = _availableUsers.map((u) async {
       final resp = await MatrixState.pangeaController.userController
           .getPublicAnalyticsProfile(u.id);
+      if (!mounted) return;
 
       _profiles[u] = resp;
       if (resp.languageAnalytics == null) return;
@@ -191,6 +194,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
   Future<void> refresh() async {
     if (room == null || !room!.isSpace || selectedLanguage == null) return;
     await AnalyticsRequestsRepo.clear();
+    if (!mounted) return;
 
     setState(() {
       downloads = Map.fromEntries(
@@ -231,6 +235,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
         continue;
       }
       await _setAnalyticsModel(analyticsRoom);
+      if (!mounted) return;
     }
 
     if (mounted) {
@@ -251,6 +256,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
     final constructEvents = await analyticsRoom.getAnalyticsEvents(
       userId: userID!,
     );
+    if (!mounted) return;
 
     if (constructEvents == null) {
       downloads[user] = AnalyticsDownload(

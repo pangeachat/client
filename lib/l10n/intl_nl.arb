@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 12:18:48.955459",
+    "@@last_modified": "2026-04-03 12:22:24.762782",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10848,6 +10848,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Klik hier om je doeltaal bij te werken.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Sluit emoji-menu",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

@@ -1774,7 +1774,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-04-02 12:14:59.377606",
+    "@@last_modified": "2026-04-03 12:22:01.751317",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11958,6 +11958,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Clicca qui per aggiornare la tua lingua di destinazione.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Chiri emoji menu",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

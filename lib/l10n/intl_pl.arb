@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-04-02 12:19:34.300708",
+    "@@last_modified": "2026-04-03 12:22:29.034924",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10957,6 +10957,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Kliknij tutaj, aby zaktualizować swój język docelowy.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Zamknij menu emoji",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

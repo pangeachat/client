@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 12:14:03.862495",
+    "@@last_modified": "2026-04-03 12:21:55.784279",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10945,6 +10945,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Klik di sini untuk memperbarui bahasa target Anda.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Tutup menu emoji",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 12:15:07.265131",
+    "@@last_modified": "2026-04-03 12:22:02.434893",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -10848,6 +10848,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Clique aqui para atualizar seu idioma de destino.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Fechar menu de emojis",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 12:16:56.209517",
+    "@@last_modified": "2026-04-03 12:22:14.519060",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10999,6 +10999,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Feu clic aquí per actualitzar la vostra llengua objectiu.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Tanca el menú d'emoji",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

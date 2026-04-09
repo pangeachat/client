@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 12:18:31.410583",
+    "@@last_modified": "2026-04-03 12:22:23.320855",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6863,6 +6863,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Nhấp vào đây để cập nhật ngôn ngữ mục tiêu của bạn.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Đóng menu biểu tượng cảm xúc",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

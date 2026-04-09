@@ -444,7 +444,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                             ? Positioned(
                                 top: 0,
                                 left: _wordCardLeftOffset,
-                                right: messageRightOffset,
+                                right: messageRightOffset ?? 0,
                                 child: WordCardSwitcher(controller: this),
                               )
                             : const SizedBox();

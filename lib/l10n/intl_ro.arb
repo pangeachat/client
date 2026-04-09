@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 12:14:12.754650",
+    "@@last_modified": "2026-04-03 12:21:56.992509",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11673,6 +11673,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Faceți clic aici pentru a actualiza limba țintă.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Închide meniul emoji",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 12:19:23.673826",
+    "@@last_modified": "2026-04-03 12:22:28.347300",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10960,6 +10960,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "اینجا کلیک کنید تا زبان هدف خود را به‌روزرسانی کنید.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "بستن منوی ایموجی",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

@@ -103,7 +103,10 @@ class AnalyticsPracticeExerciseChoiceCard extends StatelessWidget {
           isCorrect: isCorrect,
           height: cardHeight,
           isEnabled: enabled,
-          child: Text(choiceText),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(choiceText),
+          ),
         );
 
       default:
@@ -117,7 +120,10 @@ class AnalyticsPracticeExerciseChoiceCard extends StatelessWidget {
           isCorrect: isCorrect,
           height: cardHeight,
           isEnabled: enabled,
-          child: Text(choiceText),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(choiceText),
+          ),
         );
     }
   }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 12:14:49.994356",
+    "@@last_modified": "2026-04-03 12:22:00.582916",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -11927,6 +11927,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "לחץ כאן כדי לעדכן את שפת היעד שלך.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "סגור תפריט אמוג'י",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

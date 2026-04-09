@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-04-02 12:13:16.970665",
+    "@@last_modified": "2026-04-03 12:21:51.095824",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7874,6 +7874,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Haga clic aquí para actualizar su idioma objetivo.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Cerrar menú de emojis",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

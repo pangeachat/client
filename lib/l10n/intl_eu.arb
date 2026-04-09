@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-04-02 12:15:16.165868",
+    "@@last_modified": "2026-04-03 12:22:03.150969",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10848,6 +10848,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Egin klik hemen zure helburu hizkuntza eguneratzeko.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Itxi emoji menu",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

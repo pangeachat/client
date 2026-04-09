@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 12:18:41.276821",
+    "@@last_modified": "2026-04-03 12:22:24.102091",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10964,6 +10964,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "உங்கள் இலக்கு மொழியை புதுப்பிக்க இங்கே கிளிக் செய்யவும்.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "எமோஜி மெனுவை மூடு",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

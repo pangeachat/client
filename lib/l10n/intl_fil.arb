@@ -2526,7 +2526,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-04-02 12:17:39.102027",
+    "@@last_modified": "2026-04-03 12:22:18.317564",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11867,6 +11867,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "I-click dito upang i-update ang iyong target na wika.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Isara ang menu ng emoji",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

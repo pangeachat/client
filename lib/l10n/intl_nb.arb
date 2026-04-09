@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-02 12:16:36.754825",
+    "@@last_modified": "2026-04-03 12:22:13.187850",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10908,6 +10908,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Klikk her for å oppdatere målspråket ditt.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Lukk emoji-meny",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

@@ -3045,7 +3045,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-04-02 12:17:12.595226",
+    "@@last_modified": "2026-04-03 12:22:15.990667",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11924,6 +11924,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Clique aqui para atualizar seu idioma de destino.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Fechar menu de emojis",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }

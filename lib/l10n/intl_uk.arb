@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-04-02 12:16:19.140869",
+    "@@last_modified": "2026-04-03 12:22:11.554209",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10848,6 +10848,16 @@
         "placeholders": {}
     },
     "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "clickToUpdateTargetLanguage": "Натисніть тут, щоб оновити вашу цільову мову.",
+    "@clickToUpdateTargetLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeEmojiMenu": "Закрити меню емодзі",
+    "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
     }
