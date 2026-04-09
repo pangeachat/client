@@ -4,7 +4,7 @@ class UserInviteLinkRepo {
   static final GetStorage _storage = GetStorage('user_invite_storage');
   static final String _inviteUserKey = 'invite_user';
 
-  static String? get getInviteUser => _storage.read(_inviteUserKey);
+  static String? get inviteUser => _storage.read(_inviteUserKey);
 
   static Future<void> setInviteUser(String value) =>
       _storage.write(_inviteUserKey, value);

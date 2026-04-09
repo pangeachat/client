@@ -23,6 +23,7 @@ import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/subscription/widgets/subscription_snackbar.dart';
+import 'package:fluffychat/pangea/user/user_invite_controller.dart';
 import 'package:fluffychat/pangea/user/user_invite_link_repo.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -499,6 +500,7 @@ class ChatListController extends State<ChatList>
 
   //#Pangea
   StreamSubscription? _spaceCodeSubscription;
+  StreamSubscription? _userInviteSubscription;
   StreamSubscription? _invitedSpaceSubscription;
   StreamSubscription? _roomCapacitySubscription;
   //Pangea#
@@ -548,6 +550,16 @@ class ChatListController extends State<ChatList>
         await _joinCachedSpaceCode(client);
       });
     });
+
+    _userInviteSubscription?.cancel();
+    _userInviteSubscription = UserInviteController.userInviteStream.stream
+        .listen((userID) {
+          WidgetsBinding.instance.addPostFrameCallback((_) async {
+            if (!mounted) return;
+            final client = MatrixState.pangeaController.matrixState.client;
+            await _startDMWithCachedUserId(client);
+          });
+        });
 
     _invitedSpaceSubscription?.cancel();
     _invitedSpaceSubscription = Matrix.of(context).client.onSync.stream
@@ -670,6 +682,7 @@ class ChatListController extends State<ChatList>
     //#Pangea
     // _intentUriStreamSubscription?.cancel();
     _spaceCodeSubscription?.cancel();
+    _userInviteSubscription?.cancel();
     _invitedSpaceSubscription?.cancel();
     _roomCapacitySubscription?.cancel();
     MatrixState.pangeaController.subscriptionController.subscriptionNotifier
@@ -1088,7 +1101,7 @@ class ChatListController extends State<ChatList>
   }
 
   Future<void> _startDMWithCachedUserId(Client client) async {
-    final userId = UserInviteLinkRepo.getInviteUser;
+    final userId = UserInviteLinkRepo.inviteUser;
     if (userId == null) return;
 
     await UserInviteLinkRepo.clearInviteUser();
