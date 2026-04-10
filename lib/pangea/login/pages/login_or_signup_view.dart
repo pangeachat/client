@@ -260,6 +260,8 @@ class _LoginCarousel extends StatelessWidget {
                           color: theme.colorScheme.onSurface,
                           fontWeight: FontWeight.w800,
                         ),
+                        // https://github.com/pangeachat/client/issues/6294
+                        textScaler: TextScaler.noScaling,
                       ),
                     ),
                   ],
@@ -304,6 +306,8 @@ class _LoginCarousel extends StatelessWidget {
                       style: theme.textTheme.headlineSmall?.copyWith(
                         color: theme.colorScheme.onSurface,
                       ),
+                      // https://github.com/pangeachat/client/issues/6294
+                      textScaler: TextScaler.noScaling,
                     ),
                   ],
                 ),
