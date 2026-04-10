@@ -1757,7 +1757,7 @@ class ChatController extends State<ChatPageWithRoom>
   // }
   void clearSelectedEvents() {
     if (!mounted) return;
-    if (!_isToolbarOpen && selectedEvents.isEmpty) return;
+    if (!isToolbarOpen && selectedEvents.isEmpty) return;
     MatrixState.pAnyState.closeAllOverlays();
     depressMessageButton.value = false;
 
@@ -2133,7 +2133,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   final StreamController<void> stopMediaStream = StreamController.broadcast();
 
-  bool get _isToolbarOpen => MatrixState.pAnyState.isOverlayOpen(
+  bool get isToolbarOpen => MatrixState.pAnyState.isOverlayOpen(
     overlayKey: "message_toolbar_overlay",
   );
 
