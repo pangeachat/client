@@ -34,13 +34,15 @@ The `l2` getter on [`LanguageModel`](../../lib/pangea/languages/language_model.d
 
 ## Models
 
-- [`LanguageModel`](../../lib/pangea/languages/language_model.dart) — core model with `langCode`, `displayName`, `l2Support`, `script`, `localeEmoji`, `voices`
+- [`LanguageModel`](../../lib/pangea/languages/language_model.dart) — core model with `langCode`, `displayName`, `l2Support`, `script`, `localeEmoji`, and labeled voice options
 - [`L2SupportEnum`](../../lib/pangea/languages/l2_support_enum.dart) — `na`, `alpha`, `beta`, `full` with localized display strings and badge rendering
 - [`LanguageArc`](../../lib/pangea/languages/language_arc_model.dart) — L1→L2 pair, constructed from user settings
 
 ## Conventions
 
 - Display names are localized via `getDisplayName(context)` using l10n keys, with fallback to CMS `language_name`
+- The CMS `voices` field is hydrated as voice option objects with `short_name` + `display_name`; `LanguageModel.voices` remains a convenience getter that exposes only short names for persisted settings
+- Client hydration must remain backward-compatible with legacy `voices: list[str]` CMS responses until choreographer re-syncs every language row
 - Regional variants show `localeEmoji` in place of parenthesized region: "Portuguese 🇧🇷" instead of "Portuguese (Brazil)"
 - `langCodeShort` strips the territory: `en-US` → `en`
 - RTL detection uses a hardcoded list in `LanguageConstants.rtlLanguageCodes`
