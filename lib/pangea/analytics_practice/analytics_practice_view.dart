@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_init_error_indicator.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
-import 'package:fluffychat/pangea/analytics_practice/completed_activity_session_view.dart';
+import 'package:fluffychat/pangea/analytics_practice/completed_analytics_practice_exercises_view.dart';
 import 'package:fluffychat/pangea/analytics_practice/insufficient_data_indicator.dart';
-import 'package:fluffychat/pangea/analytics_practice/ongoing_activity_session_view.dart';
+import 'package:fluffychat/pangea/analytics_practice/ongoing_analytics_practice_session_view.dart';
 import 'package:fluffychat/pangea/analytics_practice/practice_timer_widget.dart';
 import 'package:fluffychat/pangea/analytics_practice/unsubscribed_practice_page.dart';
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 
 class AnalyticsPracticeView extends StatelessWidget {
@@ -45,14 +45,14 @@ class AnalyticsPracticeView extends StatelessWidget {
               ),
             ),
             ValueListenableBuilder(
-              valueListenable: controller.activityState,
+              valueListenable: controller.practiceExerciseState,
               builder: (context, state, _) => PracticeTimerWidget(
                 key: ValueKey(session?.startedAt ?? DateTime(0)),
                 initialSeconds: session?.state.elapsedSeconds ?? 0,
                 onTimeUpdate: controller.session.updateElapsedTime,
                 isRunning:
                     session?.isComplete != true &&
-                    state is AsyncLoaded<MultipleChoicePracticeActivityModel>,
+                    state is AsyncLoaded<MultipleChoicePracticeExerciseModel>,
               ),
             ),
           ],
@@ -83,12 +83,12 @@ class AnalyticsPracticeView extends StatelessWidget {
               final session = controller.session.session;
               if (session != null) {
                 return session.isComplete && !session.loadFailed
-                    ? CompletedActivitySessionView(
+                    ? CompletedAnalyticsPracticeExercisesView(
                         session: session,
                         launchSession: controller.startSession,
                         levelProgress: controller.levelProgress,
                       )
-                    : OngoingActivitySessionView(controller);
+                    : OngoingAnalyticsPracticeSessionView(controller);
               }
 
               return loading;

@@ -5,7 +5,7 @@ import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 
-/// Choice card for meaning activity with emoji, and alt text on flip
+/// Choice card for meaning analytics practice exercises with emoji, and alt text on flip
 class GrammarChoiceCard extends StatelessWidget {
   final String choiceId;
   final String targetId;

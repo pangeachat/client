@@ -3433,7 +3433,6 @@
     "trialPeriodExpired": "Prøveperioden din har utløpt",
     "translations": "oversettelser",
     "definitions": "definisjoner",
-    "subscribedToUnlockTools": "Abonner for å låse opp interaktiv oversettelse og grammatikkontroll, lydavspilling, tilpassede øvelsesaktiviteter og læringsanalyse!",
     "translationTooltip": "Oversett",
     "kickBotWarning": "Å sparke Pangea Bot vil fjerne samtale-boten fra denne chatten.",
     "refresh": "Oppdater",
@@ -3449,12 +3448,10 @@
     "tooManyRequest": "For mange forespørsler, vennligst prøv igjen senere.",
     "enterNumber": "Vennligst skriv inn en heltallsverdi.",
     "practice": "Øv",
-    "speechToTextBody": "For talebeskjeder kan du se en transkripsjon samt speakerens Words Per Minute-poengsum.",
     "versionNotFound": "Versjon ikke funnet",
     "fetchingVersion": "Henter versjon...",
     "versionFetchError": "Feil ved henting av versjon",
     "versionText": "Versjon: {version}+{buildNumber}",
-    "l1TranslationBody": "Meldinger på ditt grunnspråk vil ikke bli oversatt.",
     "deleteSubscriptionWarningTitle": "Du har et aktivt abonnement",
     "deleteSubscriptionWarningBody": "Sletting av kontoen din vil ikke automatisk kansellere abonnementet ditt.",
     "manageSubscription": "Administrer abonnement",
@@ -3463,7 +3460,6 @@
     "wordsUsed": "Ord brukt",
     "level": "Nivå",
     "morphsUsed": "Morf brukt",
-    "translationChoicesBody": "Klikk og hold et alternativ for en ledetråd.",
     "grammar": "Grammatikk",
     "contactHasBeenInvitedToTheChat": "Kontakt har blitt invitert til chatten",
     "inviteChat": "📨 Inviter til chat",
@@ -3744,8 +3740,6 @@
     "grammarCopyVOICErcp": "Gjensidig",
     "other": "Annet",
     "levelShort": "NIVÅ {level}",
-    "clickBestOption": "Velg de beste alternativene for å oversette meldingen din!",
-    "completeActivitiesToUnlock": "Fullfør minst én aktivitet for å låse opp oversettelsen!",
     "noCapacityLimit": "Ingen kapasitetbegrensning",
     "downloadGroupText": "Last ned gruppe tekst",
     "notificationsOn": "Varslinger på",
@@ -3764,22 +3758,6 @@
     "constructUseIgnIGCDesc": "Ignorert i grammatikkorreksjon",
     "constructUseCorIGCDesc": "Korrekt i grammatikkorreksjon",
     "constructUseIncIGCDesc": "Feil i grammatikkorreksjon",
-    "constructUseCorPADesc": "Korrekt i ords betydningsaktivitet",
-    "constructUseIgnPADesc": "Ignorert i ords betydningsaktivitet",
-    "constructUseIncPADesc": "Feil i ords betydningsaktivitet",
-    "constructUseCorWLDesc": "Korrekt i ordlyttingsaktivitet",
-    "constructUseIncWLDesc": "Feil i ordlyttingsaktivitet",
-    "constructUseIngWLDesc": "Ignorert i ordlyttingsaktivitet",
-    "constructUseCorHWLDesc": "Korrekt i skjult ord-aktivitet",
-    "constructUseIncHWLDesc": "Feil i skjult ord-aktivitet",
-    "constructUseIgnHWLDesc": "Ignorert i skjult ord-aktivitet",
-    "constructUseCorLDesc": "Korrekt i lemmaktivitet",
-    "constructUseIncLDesc": "Feil i lemmaktivitet",
-    "constructUseIgnLDesc": "Ignorert i lemmaktivitet",
-    "constructUseCorMDesc": "Korrekt i grammatikkaktivitet",
-    "constructUseIncMDesc": "Feil i grammatikkaktivitet",
-    "constructUseIgnMDesc": "Ignorert i grammatikkaktivitet",
-    "constructUseEmojiDesc": "Korrekt i emoji-aktivitet",
     "constructUseCollected": "Innsamlet i chat",
     "constructUseNanDesc": "Ikke aktuelt",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
@@ -3831,23 +3809,16 @@
     "whatIsMeaning": "Hva betyr '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Match betydninger med ordene i meldingen!",
     "doubleClickToEdit": "Dobbeltklikk for å redigere.",
-    "activityPlannerTitle": "Aktivitetsplanlegger",
     "topicLabel": "Tema",
     "topicPlaceholder": "Velg et tema...",
-    "modeLabel": "Aktivitetstype",
     "modePlaceholder": "Velg en modus...",
     "learningObjectiveLabel": "Læringsmål",
     "learningObjectivePlaceholder": "Velg et læringsmål...",
-    "languageOfInstructionsLabel": "Språk for aktivitetsinstruksjoner",
     "targetLanguageLabel": "Mål språk",
     "cefrLevelLabel": "CEFR-nivå",
-    "generateActivitiesButton": "Generer aktivitet",
-    "launchActivityButton": "Start aktivitet",
     "image": "Bilde",
     "video": "Video",
     "nan": "Ikke aktuelt",
-    "activityPlannerOverviewInstructionsBody": "Velg et emne, modus, læringsmål og generer en aktivitet for chatten!",
-    "activityTitle": "Aktivitetstittel",
     "addVocabulary": "Legg til vokabular",
     "instructions": "Instruksjoner",
     "numberOfLearners": "Antall elever",
@@ -3894,12 +3865,10 @@
     "pleaseEnterInt": "Vennligst skriv inn et tall",
     "home": "Hjem",
     "join": "Bli med",
-    "readingAssistanceOverviewBody": "Klikk på knappene nedenfor for minispill om å matche emojis, lyder, ords betydninger og grammatikkonsepter. Eller klikk på hvilket som helst ord for detaljer.",
     "resetInstructionTooltipsTitle": "Tilbakestill instruksjonstips",
     "resetInstructionTooltipsDesc": "Klikk for å vise instruksjonstips som for en helt ny bruker.",
     "randomize": "Tilfeldiggjør",
     "clear": "Tøm",
-    "makeYourOwnActivity": "Lag din egen aktivitet",
     "featuredActivities": "Utvalgte",
     "save": "Lagre",
     "startChat": "Start en chat",
@@ -3956,7 +3925,6 @@
     "announcements": "Kunngjøringer",
     "activities": "Aktiviteter",
     "access": "Tilgang",
-    "activitySuggestionTimeoutMessage": "Vi jobber hardt for å generere flere aktiviteter for deg, vennligst sjekk igjen om et minutt",
     "howSpaceCanBeFound": "Hvordan dette kurset kan finnes",
     "private": "Privat",
     "cannotBeFoundInSearch": "Kan ikke finnes i søk",
@@ -3991,9 +3959,6 @@
     "numInvited": "{count} invitert",
     "saved": "Lagret",
     "reset": "Tilbakestill",
-    "errorGenerateActivityMessage": "Mislyktes i å generere aktivitet",
-    "errorRegenerateActivityMessage": "Mislyktes i å regenerere aktivitet",
-    "errorLaunchActivityMessage": "Mislyktes i å starte aktivitet",
     "errorFetchingActivitiesMessage": "Mislyktes i å hente aktiviteter",
     "errorFetchingDefinition": "Mislyktes i å hente definisjon",
     "errorProcessAnalytics": "Mislyktes i å behandle analyse",
@@ -4002,7 +3967,6 @@
     "unexpectedError": "Uventet feil.",
     "pleaseReload": "Vennligst last inn på nytt og prøv igjen.",
     "translationError": "Oversettelsesfeil",
-    "errorFetchingActivity": "Mislyktes i å hente aktivitet",
     "check": "Sjekk",
     "unableToFindRoom": "Ingen chat eller kurs funnet med den koden. Vennligst prøv igjen.",
     "numCompletedActivities": "Antall fullførte aktiviteter",
@@ -4010,11 +3974,8 @@
     "request": "Forespørsel",
     "requestAll": "Forespør alle",
     "confirmMessageUnpin": "Er du sikker på at du vil fjerne festingen av denne meldingen?",
-    "createActivityPlan": "Opprett en ny aktivitetsplan",
     "saveAndLaunch": "Lagre og start",
     "launchToSpace": "Start i kurs",
-    "numberOfActivities": "Antall aktivitetsøkter",
-    "maximumActivityParticipants": "Hver aktivitet kan ha maksimalt {count} deltaker(e).",
     "pending": "Venter",
     "inactive": "Inaktiv",
     "confirmRole": "Bekreft rolle",
@@ -5835,10 +5796,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -5903,10 +5860,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@speechToTextBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@versionNotFound": {
         "type": "String",
         "placeholders": {}
@@ -5929,10 +5882,6 @@
                 "type": "String"
             }
         }
-    },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
@@ -5963,10 +5912,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -7094,14 +7039,6 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
         "type": "String",
         "placeholders": {}
@@ -7171,70 +7108,6 @@
         "placeholders": {}
     },
     "@constructUseIncIGCDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7460,19 +7333,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@topicLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -7488,23 +7353,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -7517,14 +7370,6 @@
         "placeholders": {}
     },
     "@nan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -7724,10 +7569,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@readingAssistanceOverviewBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resetInstructionTooltipsTitle": {
         "type": "String",
         "placeholders": {}
@@ -7741,10 +7582,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -7976,10 +7813,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activitySuggestionTimeoutMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@howSpaceCanBeFound": {
         "type": "String",
         "placeholders": {}
@@ -8128,18 +7961,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingActivitiesMessage": {
         "type": "String",
         "placeholders": {}
@@ -8169,10 +7990,6 @@
         "placeholders": {}
     },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8211,10 +8028,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -8222,18 +8035,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -10105,15 +9906,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Du har satt emoji for {lemma}! Vi vil bruke denne emojien for å representere ordet i praksisaktiviteter fremover.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Venter på at påloggingen skal fullføres",
     "ssoDialogDesc": "Vi åpnet en ny fane slik at du kan logge inn sikkert.",
     "ssoDialogHelpText": "🤔 Hvis du ikke så den nye fanen, vennligst sjekk popup-blokkeringen din.",
@@ -10552,12 +10344,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Lås opp øvingsaktiviteter",
     "hideEvents": "Skjul hendelser",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10704,11 +10491,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noAnalyticsActivitiesAvailable": "Wow, du har fullført alle tilgjengelige aktiviteter! Send flere meldinger for å låse opp flere øvingsaktiviteter.",
-    "@noAnalyticsActivitiesAvailable": {
-        "type": "String",
-        "placeholders": {}
-    },
     "profile": "Profil",
     "@profile": {
         "type": "String",
@@ -10720,8 +10502,6 @@
     "notificationDeviceSubtitle": "Se og administrer enheter som sender deg push-varsler.",
     "notificationRuleDM": "Direktemelding",
     "notificationRuleDMDescription": "Varsler brukeren om meldinger i direktemeldingsrom.",
-    "notificationRuleCourseAndActivity": "Kurs og aktivitet",
-    "notificationRuleCourseAndActivityDescription": "Varsler brukeren om meldinger i kurs, aktiviteter og chatter.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -10743,14 +10523,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -11017,6 +10789,125 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Abonner for å låse opp interaktiv oversettelse og grammatikkontroll, lydavspilling, personlige øvelser og læringsanalyse!",
+    "emojiSelectedSnackbar": "Du har satt emoji for {lemma}! Vi vil bruke denne emojien for å representere ordet i øvelsene fremover.",
+    "unlockPracticeActivities": "Lås opp øvelser",
+    "noAnalyticsActivitiesAvailable": "Wow, du har fullført alle tilgjengelige aktiviteter! Send flere meldinger for å låse opp flere øvelser.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "Korrekt i ordbetydningsøvelse",
+    "constructUseIgnPADesc": "Ignorert i ordbetydningsøvelse",
+    "constructUseIncPADesc": "Feil i ordbetydningsøvelse",
+    "constructUseCorWLDesc": "Korrekt i ordlytteøvelse",
+    "constructUseIncWLDesc": "Feil i ordlytteøvelse",
+    "constructUseIngWLDesc": "Ignorert i ordlytteøvelse",
+    "constructUseCorHWLDesc": "Korrekt i skjult ordøvelse",
+    "constructUseIncHWLDesc": "Feil i skjult ordøvelse",
+    "constructUseIgnHWLDesc": "Ignorert i skjult ordøvelse",
+    "constructUseCorLDesc": "Korrekt i lemmaøvelse",
+    "constructUseIncLDesc": "Feil i lemma-øvelse",
+    "constructUseIgnLDesc": "Ignorert i lemma-øvelse",
+    "constructUseCorMDesc": "Korrekt i grammatikk-øvelse",
+    "constructUseIncMDesc": "Feil i grammatikk-øvelse",
+    "constructUseIgnMDesc": "Ignorert i grammatikk-øvelse",
+    "constructUseEmojiDesc": "Korrekt i emoji-øvelse",
+    "errorFetchingExercise": "Kunne ikke hente praksisøvelse",
+    "notificationRuleCourseAndActivity": "Kurs og Aktivitet",
+    "notificationRuleCourseAndActivityDescription": "Varsler brukeren om meldinger i kurs, aktiviteter og chatter.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },

@@ -2687,7 +2687,6 @@
     "trialPeriodExpired": "Via provperiodo eksvalidiĝis",
     "translations": "tradukoj",
     "definitions": "difinoj",
-    "subscribedToUnlockTools": "Abonu por malŝlosi interagan tradukadon kaj gramatikan kontrolon, sonan ludon, personigitajn praktikajn agadojn kaj lernan analitikadon!",
     "translationTooltip": "Traduki",
     "kickBotWarning": "Forigi Pangea-boton forigos la konversaci-boton de ĉi tiu babilejo.",
     "refresh": "Refreŝigi",
@@ -2703,12 +2702,10 @@
     "tooManyRequest": "Tro da petoj, bonvolu provi denove pli poste.",
     "enterNumber": "Bonvolu enmeti tutan nombrvaloron.",
     "practice": "Praktiko",
-    "speechToTextBody": "Por voĉmesaĝoj, vi povas vidi transskribon same kiel la vortrapideco de la parolanto.",
     "versionNotFound": "Versio Ne Trovebla",
     "fetchingVersion": "Ŝarĝante versionon...",
     "versionFetchError": "Eraro dum akirado de versio",
     "versionText": "Versio: {version}+{buildNumber}",
-    "l1TranslationBody": "Mesaĝoj en via baza lingvo ne estos tradukitaj.",
     "deleteSubscriptionWarningTitle": "Vi havas aktivan abonon",
     "deleteSubscriptionWarningBody": "Forigi vian konton ne nuligos vian abonon aŭtomate.",
     "manageSubscription": "Administri Abonon",
@@ -2717,7 +2714,6 @@
     "wordsUsed": "Vortoj Uziĝis",
     "level": "Nivelo",
     "morphsUsed": "Morfemoj Uziĝis",
-    "translationChoicesBody": "Klaku kaj teni opcion por konsilo.",
     "grammar": "Gramatiko",
     "contactHasBeenInvitedToTheChat": "Kontakto estis invitita al la babilejo",
     "inviteChat": "📨 Inviti babilejon",
@@ -2998,8 +2994,6 @@
     "grammarCopyVOICErcp": "Reciproka",
     "other": "Alia",
     "levelShort": "NIV {level}",
-    "clickBestOption": "Elektu la plej bonajn opciojn por traduki vian mesaĝon!",
-    "completeActivitiesToUnlock": "Plenumigu almenaŭ unu agadon por malŝlosi la tradukon!",
     "noCapacityLimit": "Sen kapacita limigo",
     "downloadGroupText": "Elŝuti grupan tekston",
     "notificationsOn": "Sciigoj aktivigitaj",
@@ -3018,22 +3012,6 @@
     "constructUseIgnIGCDesc": "Ignorita en gramatika korekto",
     "constructUseCorIGCDesc": "Korekte en gramatika korekto",
     "constructUseIncIGCDesc": "Malĝusta en gramatika korekto",
-    "constructUseCorPADesc": "Korekte en vorto signifo agado",
-    "constructUseIgnPADesc": "Ignorita en vorto signifo agado",
-    "constructUseIncPADesc": "Malĝusta en vorto signifo agado",
-    "constructUseCorWLDesc": "Korekte en vorto aŭskultado agado",
-    "constructUseIncWLDesc": "Malĝusta en vorto aŭskultado agado",
-    "constructUseIngWLDesc": "Ignorita en vorto aŭskultado agado",
-    "constructUseCorHWLDesc": "Korekte en kaŝvorto agado",
-    "constructUseIncHWLDesc": "Malĝusta en kaŝvorto agado",
-    "constructUseIgnHWLDesc": " Ignorita en kaŝita vorto-agado",
-    "constructUseCorLDesc": " Korekta en lemma-agado",
-    "constructUseIncLDesc": " Malsaĝa en lemma-agado",
-    "constructUseIgnLDesc": " Ignorita en lemma-agado",
-    "constructUseCorMDesc": " Korekta en gramatika agado",
-    "constructUseIncMDesc": " Malsaĝa en gramatika agado",
-    "constructUseIgnMDesc": " Ignorita en gramatika agado",
-    "constructUseEmojiDesc": " Korekta en emoji-agado",
     "constructUseCollected": " Kolektita en babilejo",
     "constructUseNanDesc": " Ne aplikebla",
     "xpIntoLevel": "{currentXP} / {maxXP} PTS",
@@ -3085,23 +3063,16 @@
     "whatIsMeaning": "Kion signifas '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Harmonii signifojn kun la vortoj en la mesaĝo!",
     "doubleClickToEdit": "Duoble-klaku por redakti.",
-    "activityPlannerTitle": "Agadplaniĝilo",
     "topicLabel": "Temo",
     "topicPlaceholder": "Elektu temon...",
-    "modeLabel": "Ago tipo",
     "modePlaceholder": "Elektu modon...",
     "learningObjectiveLabel": "Lernocelo",
     "learningObjectivePlaceholder": "Elektu lernocelon...",
-    "languageOfInstructionsLabel": "Lingvo de instrukcioj por agado",
     "targetLanguageLabel": "Cel-lingvo",
     "cefrLevelLabel": "CEFR-nivelo",
-    "generateActivitiesButton": "Generi Agadon",
-    "launchActivityButton": "Starti Agadon",
     "image": "Bildo",
     "video": "Video",
     "nan": "Ne aplikebla",
-    "activityPlannerOverviewInstructionsBody": "Elektu temon, maniero, lernocelo kaj generu agadon por la babilejo!",
-    "activityTitle": "Titolo de agado",
     "addVocabulary": "Aldoni vortprovizon",
     "instructions": "Instrukcioj",
     "numberOfLearners": "Nombro de lernantoj",
@@ -3148,12 +3119,10 @@
     "pleaseEnterInt": "Bonvolu enmeti nombron",
     "home": "Hejm",
     "join": "Aliĝi",
-    "readingAssistanceOverviewBody": "Klaku la butonojn sube por mini-ludoj pri kongruantaj emojioj, sonoj, vortsignifoj, kaj gramatikaj konceptoj. Aŭ klaku ajnan vorton por detaloj.",
     "resetInstructionTooltipsTitle": "Restarigi instrukciajn ilustraĵojn",
     "resetInstructionTooltipsDesc": "Klaku por montri instrukciajn ilustraĵojn kiel por tute nova uzanto.",
     "randomize": "Hazardigi",
     "clear": "Forigi",
-    "makeYourOwnActivity": "Kreu vian propran agadon",
     "featuredActivities": "Elstaraj",
     "save": "Konservi",
     "startChat": "Komenci konversacion",
@@ -3210,7 +3179,6 @@
     "announcements": "Anoncoj",
     "activities": "Aktivecoj",
     "access": "Aksesoj",
-    "activitySuggestionTimeoutMessage": "Ni laboras forte por generi pli da aktivecoj por vi, bonvolu reveni post momento",
     "howSpaceCanBeFound": "Kiel ĉi tiu kurso povas esti trovita",
     "private": "Private",
     "cannotBeFoundInSearch": "Ne povas esti trovita en serĉo",
@@ -3245,9 +3213,6 @@
     "numInvited": "{count} invitita",
     "saved": "Konservita",
     "reset": "Restarigi",
-    "errorGenerateActivityMessage": "Malsukcesis generi agadon",
-    "errorRegenerateActivityMessage": "Malsukcesis regeneri agadon",
-    "errorLaunchActivityMessage": "Malsukcesis lanĉi agadon",
     "errorFetchingActivitiesMessage": "Malsukcesis akiri agadojn",
     "errorFetchingDefinition": "Malsukcesis akiri difinon",
     "errorProcessAnalytics": "Malsukcesis prilabori analizojn",
@@ -3256,7 +3221,6 @@
     "unexpectedError": "Nekontata eraro.",
     "pleaseReload": "Bonvolu reŝargi kaj provu denove.",
     "translationError": "Eraro en traduko",
-    "errorFetchingActivity": "Malsukcesis akiri agadon",
     "check": "Kontrolu",
     "unableToFindRoom": "Neniu babilado aŭ kurso trovita kun tiu kodo. Bonvolu provi denove.",
     "numCompletedActivities": "Nombro de kompletigitaj agadoj",
@@ -3264,11 +3228,8 @@
     "request": "Petado",
     "requestAll": "Petu Ĉiujn",
     "confirmMessageUnpin": "Ĉu vi certas, ke vi volas malfiksi ĉi tiun mesaĝon?",
-    "createActivityPlan": "Kreu novan agadplanon",
     "saveAndLaunch": "Konservi kaj Lanĉi",
     "launchToSpace": "Lanĉi al kurso",
-    "numberOfActivities": "Nombro de Agadsesioj",
-    "maximumActivityParticipants": "Ĉiu Ago povas havi maksimume {count} partoprenanton(j)n.",
     "pending": "Atendanta",
     "inactive": "Nekonata",
     "confirmRole": "Konfirmu rolon",
@@ -6661,10 +6622,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -6729,10 +6686,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@speechToTextBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@versionNotFound": {
         "type": "String",
         "placeholders": {}
@@ -6755,10 +6708,6 @@
                 "type": "String"
             }
         }
-    },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
@@ -6789,10 +6738,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -7920,14 +7865,6 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
         "type": "String",
         "placeholders": {}
@@ -7997,70 +7934,6 @@
         "placeholders": {}
     },
     "@constructUseIncIGCDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8286,19 +8159,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@topicLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -8314,23 +8179,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -8343,14 +8196,6 @@
         "placeholders": {}
     },
     "@nan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -8550,10 +8395,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@readingAssistanceOverviewBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resetInstructionTooltipsTitle": {
         "type": "String",
         "placeholders": {}
@@ -8567,10 +8408,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8802,10 +8639,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activitySuggestionTimeoutMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@howSpaceCanBeFound": {
         "type": "String",
         "placeholders": {}
@@ -8954,18 +8787,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingActivitiesMessage": {
         "type": "String",
         "placeholders": {}
@@ -8995,10 +8816,6 @@
         "placeholders": {}
     },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -9037,10 +8854,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -9048,18 +8861,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -10931,15 +10732,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Vi havas metitan la emoji por {lemma}! Ni uzos ĉi tiun emoji por reprezenti la vorton en praktikaj aktivadoj en la estonteco.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Atendante, ke ensaluto finiĝu",
     "ssoDialogDesc": "Ni malfermis novan langeton por ke vi povu ensaluti sekure.",
     "ssoDialogHelpText": "🤔 Se vi ne vidis la novan langeton, bonvolu kontroli vian popup-blokilon.",
@@ -11611,12 +11403,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Malŝlosi praktikajn aktivadojn",
     "hideEvents": "Kaŝi eventojn",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11763,11 +11550,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noAnalyticsActivitiesAvailable": "Wow, vi kompletigis ĉiujn disponeblajn aktivadojn! Sendu pli da mesaĝoj por malŝlosi pli da praktikaj aktivadoj.",
-    "@noAnalyticsActivitiesAvailable": {
-        "type": "String",
-        "placeholders": {}
-    },
     "profile": "Profilo",
     "@profile": {
         "type": "String",
@@ -11779,8 +11561,6 @@
     "notificationDeviceSubtitle": "Vidi kaj administri aparatojn, kiuj sendas al vi puŝan notifikon.",
     "notificationRuleDM": "Rekta Mesaĝo",
     "notificationRuleDMDescription": "Informas la uzanton pri mesaĝoj en rektaj mesaĝaj ĉambroj.",
-    "notificationRuleCourseAndActivity": "Kurso kaj Aktivado",
-    "notificationRuleCourseAndActivityDescription": "Informas la uzanton pri mesaĝoj en kursoj, aktivadoj, kaj babilejoj.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -11802,14 +11582,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -12076,6 +11848,125 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Abonu por malŝlosi interagajn tradukojn kaj gramatikajn kontroladojn, sonan ludon, personigitajn praktikajn ekzercojn, kaj lernan analitikon!",
+    "emojiSelectedSnackbar": "Vi agordis la emoji por {lemma}! Ni uzos ĉi tiun emoji por reprezenti la vorton en praktikaj ekzercoj en la estonteco.",
+    "unlockPracticeActivities": "Malŝlosi praktikajn ekzercojn",
+    "noAnalyticsActivitiesAvailable": "Ve, vi kompletigis ĉiujn disponeblajn aktivadojn! Sendu pli da mesaĝoj por malŝlosi pli da praktikaj ekzercoj.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "Ĝusta en vorto signifopra aktivaĵo",
+    "constructUseIgnPADesc": "Ignorita en vorto signifopra aktivaĵo",
+    "constructUseIncPADesc": "Malĝusta en vorto signifopra aktivaĵo",
+    "constructUseCorWLDesc": "Ĝusta en vorto aŭdanta aktivaĵo",
+    "constructUseIncWLDesc": "Malĝusta en vorto aŭdanta aktivaĵo",
+    "constructUseIngWLDesc": "Ignorita en vorto aŭdanta aktivaĵo",
+    "constructUseCorHWLDesc": "Ĝusta en kaŝita vorto aktivaĵo",
+    "constructUseIncHWLDesc": "Malĝusta en kaŝita vorto aktivaĵo",
+    "constructUseIgnHWLDesc": "Ignorita en kaŝita vorto aktivaĵo",
+    "constructUseCorLDesc": "Ĝusta en lema aktivaĵo",
+    "constructUseIncLDesc": "Malĝusta en lema ekzerco",
+    "constructUseIgnLDesc": "Ignorita en lema ekzerco",
+    "constructUseCorMDesc": "Ĝusta en gramatika ekzerco",
+    "constructUseIncMDesc": "Malĝusta en gramatika ekzerco",
+    "constructUseIgnMDesc": "Ignorita en gramatika ekzerco",
+    "constructUseEmojiDesc": "Ĝusta en emoji ekzerco",
+    "errorFetchingExercise": "Malsukcesis akiri praktikekzercon",
+    "notificationRuleCourseAndActivity": "Kurso kaj Aktivado",
+    "notificationRuleCourseAndActivityDescription": "Informas la uzanton pri mesaĝoj en kursoj, aktivadoj, kaj babilejoj.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },

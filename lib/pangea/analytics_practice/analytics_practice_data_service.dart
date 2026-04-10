@@ -2,7 +2,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -49,31 +49,31 @@ class AnalyticsPracticeDataService {
     return _choiceEmojis[key]?[choiceId];
   }
 
-  PangeaAudioFile? getAudioFile(MultipleChoicePracticeActivityModel activity) {
-    if (activity is! VocabAudioPracticeActivityModel) return null;
-    if (activity.eventId == null) return null;
-    return _audioFiles[activity.eventId];
+  PangeaAudioFile? getAudioFile(MultipleChoicePracticeExerciseModel exercise) {
+    if (exercise is! VocabAudioPracticeExerciseModel) return null;
+    if (exercise.eventId == null) return null;
+    return _audioFiles[exercise.eventId];
   }
 
-  String? getAudioTranslation(MultipleChoicePracticeActivityModel activity) {
-    if (activity is! VocabAudioPracticeActivityModel) return null;
-    if (activity.eventId == null) return null;
-    final translation = _audioTranslations[activity.eventId];
+  String? getAudioTranslation(MultipleChoicePracticeExerciseModel exercise) {
+    if (exercise is! VocabAudioPracticeExerciseModel) return null;
+    if (exercise.eventId == null) return null;
+    final translation = _audioTranslations[exercise.eventId];
     return translation;
   }
 
   List<AnalyticsPracticeChoice> filteredChoices(
-    MultipleChoicePracticeActivityModel activity,
+    MultipleChoicePracticeExerciseModel exercise,
     ConstructTypeEnum type,
   ) {
-    final content = activity.multipleChoiceContent;
+    final content = exercise.multipleChoiceContent;
     final choices = content.choices.toList();
     final answer = content.answers.first;
     final filtered = <AnalyticsPracticeChoice>[];
 
     final seenTexts = <String>{};
     for (final id in choices) {
-      final text = _getChoiceText(activity.storageKey, id, type);
+      final text = _getChoiceText(exercise.storageKey, id, type);
 
       if (seenTexts.contains(text)) {
         if (id != answer) {
@@ -87,7 +87,7 @@ class AnalyticsPracticeDataService {
           filtered[index] = AnalyticsPracticeChoice(
             choiceId: id,
             choiceText: text,
-            choiceEmoji: _getChoiceEmoji(activity.storageKey, id, type),
+            choiceEmoji: _getChoiceEmoji(exercise.storageKey, id, type),
           );
         }
         continue;
@@ -98,7 +98,7 @@ class AnalyticsPracticeDataService {
         AnalyticsPracticeChoice(
           choiceId: id,
           choiceText: text,
-          choiceEmoji: _getChoiceEmoji(activity.storageKey, id, type),
+          choiceEmoji: _getChoiceEmoji(exercise.storageKey, id, type),
         ),
       );
     }
@@ -127,26 +127,26 @@ class AnalyticsPracticeDataService {
     _audioTranslations[eventId] = translation;
   }
 
-  Future<void> prefetchActivityInfo(
-    MultipleChoicePracticeActivityModel activity,
+  Future<void> prefetchExerciseInfo(
+    MultipleChoicePracticeExerciseModel exercise,
   ) async {
     // Prefetch lemma info for meaning activities before marking ready
-    if (activity is VocabMeaningPracticeActivityModel) {
-      final choices = activity.multipleChoiceContent.choices.toList();
-      await _prefetchLemmaInfo(activity.storageKey, choices);
+    if (exercise is VocabMeaningPracticeExerciseModel) {
+      final choices = exercise.multipleChoiceContent.choices.toList();
+      await _prefetchLemmaInfo(exercise.storageKey, choices);
     }
 
     // Prefetch audio for audio activities before marking ready
-    if (activity is VocabAudioPracticeActivityModel) {
-      await _prefetchAudioInfo(activity);
+    if (exercise is VocabAudioPracticeExerciseModel) {
+      await _prefetchAudioInfo(exercise);
     }
   }
 
   Future<void> _prefetchAudioInfo(
-    VocabAudioPracticeActivityModel activity,
+    VocabAudioPracticeExerciseModel exercise,
   ) async {
-    final eventId = activity.eventId;
-    final roomId = activity.roomId;
+    final eventId = exercise.eventId;
+    final roomId = exercise.roomId;
     if (eventId == null || roomId == null) {
       throw Exception("Missing eventId or roomId in _prefetchAudioInfo");
     }
@@ -176,7 +176,7 @@ class AnalyticsPracticeDataService {
 
     // Prefetch the audio file
     final audioFile = await pangeaEvent.requestTextToSpeech(
-      activity.langCode,
+      exercise.langCode,
       MatrixState.pangeaController.userController.voice,
     );
 

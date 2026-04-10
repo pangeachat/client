@@ -8,13 +8,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 enum InstructionsEnum {
   clickMessage,
-  speechToText,
-  l1Translation,
-  translationChoices,
-  clickBestOption,
-  completeActivitiesToUnlock,
   chooseLemmaMeaning,
-  activityPlannerOverview,
   ttsDisabled,
   chooseEmoji,
   chooseWordAudio,
@@ -23,7 +17,6 @@ enum InstructionsEnum {
   morphAnalyticsList,
   activityAnalyticsList,
   levelAnalytics,
-  readingAssistanceOverview,
   emptyChatWarning,
   activityStatsMenu,
   chatParticipantTooltip,
@@ -49,17 +42,10 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.chooseWordAudio:
       case InstructionsEnum.selectMeaning:
       case InstructionsEnum.chooseEmoji:
-      case InstructionsEnum.activityPlannerOverview:
-      case InstructionsEnum.speechToText:
-      case InstructionsEnum.l1Translation:
-      case InstructionsEnum.translationChoices:
-      case InstructionsEnum.clickBestOption:
-      case InstructionsEnum.completeActivitiesToUnlock:
       case InstructionsEnum.chooseLemmaMeaning:
       case InstructionsEnum.chooseMorphs:
       case InstructionsEnum.analyticsVocabList:
       case InstructionsEnum.morphAnalyticsList:
-      case InstructionsEnum.readingAssistanceOverview:
       case InstructionsEnum.activityStatsMenu:
       case InstructionsEnum.chatParticipantTooltip:
       case InstructionsEnum.courseParticipantTooltip:
@@ -89,20 +75,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
     switch (this) {
       case InstructionsEnum.clickMessage:
         return l10n.clickMessageBody;
-      case InstructionsEnum.speechToText:
-        return l10n.speechToTextBody;
-      case InstructionsEnum.l1Translation:
-        return l10n.l1TranslationBody;
-      case InstructionsEnum.translationChoices:
-        return l10n.translationChoicesBody;
-      case InstructionsEnum.clickBestOption:
-        return l10n.clickBestOption;
-      case InstructionsEnum.completeActivitiesToUnlock:
-        return l10n.completeActivitiesToUnlock;
       case InstructionsEnum.chooseLemmaMeaning:
         return l10n.chooseLemmaMeaningInstructionsBody;
-      case InstructionsEnum.activityPlannerOverview:
-        return l10n.activityPlannerOverviewInstructionsBody;
       case InstructionsEnum.chooseEmoji:
         return l10n.chooseEmojiInstructionsBody;
       case InstructionsEnum.ttsDisabled:
@@ -117,8 +91,6 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return l10n.morphAnalyticsListBody;
       case InstructionsEnum.activityAnalyticsList:
         return l10n.activityAnalyticsTooltipBody;
-      case InstructionsEnum.readingAssistanceOverview:
-        return l10n.readingAssistanceOverviewBody;
       case InstructionsEnum.emptyChatWarning:
         return l10n.emptyChatWarningDesc;
       case InstructionsEnum.activityStatsMenu:

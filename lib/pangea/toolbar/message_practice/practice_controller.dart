@@ -9,14 +9,14 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_generation_repo.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_selection.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_selection_repo.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
+import 'package:fluffychat/pangea/practice_exercises/message_practice_exercise_request.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_choice.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_generation_repo.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_selection.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_selection_repo.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_target.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/morph_selection.dart';
@@ -31,23 +31,23 @@ class PracticeController with ChangeNotifier {
     _fetchPracticeSelection();
   }
 
-  PracticeActivityModel? _activity;
+  PracticeExerciseModel? _activity;
 
   MessagePracticeMode _practiceMode = MessagePracticeMode.noneSelected;
 
   MorphSelection? _selectedMorph;
-  PracticeChoice? _selectedChoice;
+  PracticeExerciseChoice? _selectedChoice;
 
   PracticeSelection? practiceSelection;
 
   MessagePracticeMode get practiceMode => _practiceMode;
   MorphSelection? get selectedMorph => _selectedMorph;
-  PracticeChoice? get selectedChoice => _selectedChoice;
+  PracticeExerciseChoice? get selectedChoice => _selectedChoice;
 
   PracticeTarget? get currentTarget {
     final activityType = _practiceMode.associatedActivityType;
     if (activityType == null) return null;
-    if (activityType == ActivityTypeEnum.morphId) {
+    if (activityType == PracticeExerciseTypeEnum.morphId) {
       if (_selectedMorph == null) return null;
       return practiceSelection?.getMorphTarget(
         _selectedMorph!.token,
@@ -59,7 +59,7 @@ class PracticeController with ChangeNotifier {
 
   bool get showChoiceShimmer {
     if (_activity == null) return false;
-    if (_activity is MorphMatchPracticeActivityModel) {
+    if (_activity is MorphMatchPracticeExerciseModel) {
       return _selectedMorph != null &&
           !PracticeRecordController.hasAnyResponse(_activity!.practiceTarget);
     }
@@ -71,10 +71,10 @@ class PracticeController with ChangeNotifier {
   }
 
   bool get isTotallyDone =>
-      isPracticeSessionDone(ActivityTypeEnum.emoji) &&
-      isPracticeSessionDone(ActivityTypeEnum.wordMeaning) &&
-      isPracticeSessionDone(ActivityTypeEnum.wordFocusListening) &&
-      isPracticeSessionDone(ActivityTypeEnum.morphId);
+      isPracticeSessionDone(PracticeExerciseTypeEnum.emoji) &&
+      isPracticeSessionDone(PracticeExerciseTypeEnum.wordMeaning) &&
+      isPracticeSessionDone(PracticeExerciseTypeEnum.wordFocusListening) &&
+      isPracticeSessionDone(PracticeExerciseTypeEnum.morphId);
 
   bool get isCurrentPracticeSessionDone {
     final activityType = _practiceMode.associatedActivityType;
@@ -82,7 +82,7 @@ class PracticeController with ChangeNotifier {
     return isPracticeSessionDone(activityType);
   }
 
-  bool? wasCorrectMatch(PracticeChoice choice) {
+  bool? wasCorrectMatch(PracticeExerciseChoice choice) {
     if (_activity == null) return false;
     return PracticeRecordController.wasCorrectMatch(
       _activity!.practiceTarget,
@@ -98,7 +98,7 @@ class PracticeController with ChangeNotifier {
     );
   }
 
-  bool isPracticeSessionDone(ActivityTypeEnum activityType) =>
+  bool isPracticeSessionDone(PracticeExerciseTypeEnum activityType) =>
       practiceSelection
           ?.activities(activityType)
           .every((a) => PracticeRecordController.isCompleteByTarget(a)) ==
@@ -148,7 +148,7 @@ class PracticeController with ChangeNotifier {
     notifyListeners();
   }
 
-  void onChoiceSelect(PracticeChoice? choice) {
+  void onChoiceSelect(PracticeExerciseChoice? choice) {
     if (_activity == null) return;
     if (_selectedChoice == choice) {
       _selectedChoice = null;
@@ -158,7 +158,7 @@ class PracticeController with ChangeNotifier {
     notifyListeners();
   }
 
-  void onMatch(PangeaToken token, PracticeChoice choice) {
+  void onMatch(PangeaToken token, PracticeExerciseChoice choice) {
     final activity = _activity;
     if (activity == null) return;
 
@@ -186,16 +186,16 @@ class PracticeController with ChangeNotifier {
         .updateService;
 
     // we don't take off points for incorrect emoji matches
-    if (activity is! EmojiPracticeActivityModel || isCorrect) {
+    if (activity is! EmojiPracticeExerciseModel || isCorrect) {
       final l2 =
           MatrixState.pangeaController.userController.userL2?.langCodeShort;
       if (l2 == null) {
         ErrorHandler.logError(
-          e: "User L2 is null when trying to log construct use for token ${token.text.content} in practice activity",
+          e: "User L2 is null when trying to log construct use for token ${token.text.content} in practice exercise",
           data: {
             "eventId": pangeaMessageEvent.eventId,
             "token": token.text.content,
-            "activityType": activity.activityType.toString(),
+            "activityType": activity.exerciseType.toString(),
           },
         );
         return;
@@ -203,7 +203,7 @@ class PracticeController with ChangeNotifier {
 
       final constructUseType = PracticeRecordController.lastResponse(
         activity.practiceTarget,
-      )!.useType(activity.activityType);
+      )!.useType(activity.exerciseType);
 
       final constructs = [
         OneConstructUse(
@@ -226,14 +226,14 @@ class PracticeController with ChangeNotifier {
     }
 
     if (isCorrect) {
-      if (activity is EmojiPracticeActivityModel) {
+      if (activity is EmojiPracticeExerciseModel) {
         updateService.setLemmaInfo(
           choice.form.cId,
           emoji: choice.choiceContent,
         );
       }
 
-      if (activity is LemmaMeaningPracticeActivityModel) {
+      if (activity is LemmaMeaningPracticeExerciseModel) {
         updateService.setLemmaInfo(
           choice.form.cId,
           meaning: choice.choiceContent,
@@ -241,8 +241,8 @@ class PracticeController with ChangeNotifier {
       }
     }
 
-    if (activity is LemmaMeaningPracticeActivityModel ||
-        activity is EmojiPracticeActivityModel) {
+    if (activity is LemmaMeaningPracticeExerciseModel ||
+        activity is EmojiPracticeExerciseModel) {
       TtsController.tryToSpeak(
         token.text.content,
         langCode: MatrixState.pangeaController.userController.userL2!.langCode,
@@ -263,17 +263,17 @@ class PracticeController with ChangeNotifier {
     );
   }
 
-  Future<Result<PracticeActivityModel>> fetchActivityModel(
+  Future<Result<PracticeExerciseModel>> fetchActivityModel(
     PracticeTarget target,
   ) async {
-    final req = MessageActivityRequest(
+    final req = MessagePracticeExerciseRequest(
       userL1: MatrixState.pangeaController.userController.userL1!.langCode,
       userL2: MatrixState.pangeaController.userController.userL2!.langCode,
-      activityQualityFeedback: null,
+      exerciseQualityFeedback: null,
       target: target,
     );
 
-    final result = await PracticeRepo.getPracticeActivity(
+    final result = await PracticeRepo.getPracticeExercise(
       req,
       messageInfo: pangeaMessageEvent.event.content,
     );

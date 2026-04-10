@@ -12,7 +12,7 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/pangea_message_reactions.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_roles_event_widget.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_summary_widget.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_summary_widget.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_settings_language_icon.dart';
 import 'package:fluffychat/pangea/chat/extensions/custom_room_display_extension.dart';

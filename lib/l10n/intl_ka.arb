@@ -1725,7 +1725,6 @@
     "trialPeriodExpired": "საბრძოლო პერიოდი ამოიწურა",
     "translations": "თარგმნები",
     "definitions": "განმარტებები",
-    "subscribedToUnlockTools": "გამოწერით გააქტიურეთ ინტერკტივული თარგმნა და გრამატიკის შემოწმება, აუდიო დაკვრა, პერსონალიზებული პრაქტიკული აქტივობები და სწავლების ანალიტიკა!",
     "translationTooltip": "თარგმნა",
     "kickBotWarning": "პანგეა ბოტის გამოთიშვა ამ საუბრის ბოტს ამოიღებს ამ ჩატიდან.",
     "refresh": "განახლება",
@@ -1741,12 +1740,10 @@
     "tooManyRequest": "ძალიან ბევრი მოთხოვნა, გთხოვთ სცადოთ მოგვიანებით.",
     "enterNumber": "გთხოვთ შეიყვანოთ მთელი რიცხვი.",
     "practice": "ვარჯიში",
-    "speechToTextBody": "ხმოვანი შეტყობინებებისთვის შეგიძლიათ იხილოთ ტრანსკრიპტი და ასევე Sprecher-ის სიტყვების წუთში ქულა.",
     "versionNotFound": "ვერსია ვერ მოიძებნა",
     "fetchingVersion": "ვერსიის მიღება...",
     "versionFetchError": "შეცდომა ვერსიის მიღებისას",
     "versionText": "ვერსია: {version}+{buildNumber}",
-    "l1TranslationBody": "თქვენი ძირითადი ენის შეტყობინებები არ იქნება თარგმნილი.",
     "deleteSubscriptionWarningTitle": "თქვენ გაქვთ აქტიური გამოწერა",
     "deleteSubscriptionWarningBody": "თქვენის ანგარიშის წაშლა ავტომატურად არ გააუქმებს თქვენს გამოწერას.",
     "manageSubscription": "მოწერის მართვა",
@@ -1755,7 +1752,6 @@
     "wordsUsed": "გამოყენებული სიტყვები",
     "level": "საფეხური",
     "morphsUsed": "გამოყენებული მორფები",
-    "translationChoicesBody": "დააჭირეთ და დაჭერით ვარიანტზე რჩევისთვის.",
     "grammar": "სიტყვისმეტყველება",
     "contactHasBeenInvitedToTheChat": "კონტაქტი მოწვეულია ჩათში",
     "inviteChat": "📨 მოწვევა ჩათში",
@@ -2036,8 +2032,6 @@
     "grammarCopyVOICErcp": "ურთიერთსხვა",
     "other": "სხვა",
     "levelShort": "LVL {level}",
-    "clickBestOption": "აირჩიეთ საუკეთესო ვარიანტები თქვენი შეტყობინების თარგმნისთვის!",
-    "completeActivitiesToUnlock": "დასრულეთ მინიმუმ ერთი აქტივობა თარგმანის გასახსნელად!",
     "noCapacityLimit": "შესაძლებლობის შეზღუდვა არ არის",
     "downloadGroupText": "გთხოვთ, ჩამოტვირთოთ ჯგუფის ტექსტი",
     "notificationsOn": "შეტყობინებები ჩართულია",
@@ -2056,22 +2050,6 @@
     "constructUseIgnIGCDesc": "გადახედულია გრამატიკის კორექციაში",
     "constructUseCorIGCDesc": "შესწორება გრამატიკის კორექციაში",
     "constructUseIncIGCDesc": "არასწორია გრამატიკის კორექციაში",
-    "constructUseCorPADesc": "შესწორება სიტყვების მნიშვნელობაში",
-    "constructUseIgnPADesc": "გადახედულია სიტყვების მნიშვნელობაში",
-    "constructUseIncPADesc": "არასწორია სიტყვების მნიშვნელობაში",
-    "constructUseCorWLDesc": "შესწორება სიტყვების მოსმენაში",
-    "constructUseIncWLDesc": "არასწორი სიტყვების მოსმენის აქტივობაში",
-    "constructUseIngWLDesc": "გაუქმებულია სიტყვების მოსმენის აქტივობაში",
-    "constructUseCorHWLDesc": "სწორი დამალული სიტყვების აქტივობაში",
-    "constructUseIncHWLDesc": "არასწორი დამალული სიტყვების აქტივობაში",
-    "constructUseIgnHWLDesc": "გაუქმებულია დამალული სიტყვების აქტივობაში",
-    "constructUseCorLDesc": "სწორი ლემის აქტივობაში",
-    "constructUseIncLDesc": "არასწორი ლემის აქტივობაში",
-    "constructUseIgnLDesc": "გაუქმებულია ლემის აქტივობაში",
-    "constructUseCorMDesc": "სწორი გრამატიკის აქტივობაში",
-    "constructUseIncMDesc": "არასწორი გრამატიკის აქტივობაში",
-    "constructUseIgnMDesc": "გაუქმებულია გრამატიკის აქტივობაში",
-    "constructUseEmojiDesc": "სწორი ემოჯის აქტივობაში",
     "constructUseCollected": "შეაგროვა ჩატში",
     "constructUseNanDesc": "არასამართლებელი",
     "xpIntoLevel": "{currentXP} / {maxXP} გამოცდილება",
@@ -2123,23 +2101,16 @@
     "whatIsMeaning": "რა ნიშნავს '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "შეადარეთ მნიშვნელობები სიტყვებთან შეტყობინებაში!",
     "doubleClickToEdit": "ჩამკეცეთ ორჯერ რედაქტირებისთვის.",
-    "activityPlannerTitle": "აქტივობის დაგეგმვა",
     "topicLabel": "თემა",
     "topicPlaceholder": "აირჩიეთ თემა...",
-    "modeLabel": "აქტივობის ტიპი",
     "modePlaceholder": "აირჩიეთ რეჟიმი...",
     "learningObjectiveLabel": "სწავლების მიზანი",
     "learningObjectivePlaceholder": "აირჩიეთ სასწავლო მიზანი...",
-    "languageOfInstructionsLabel": "შეკითხვების ენა",
     "targetLanguageLabel": "მიზნობრივი ენა",
     "cefrLevelLabel": "CEFR დონე",
-    "generateActivitiesButton": "შექმენით აქტივობა",
-    "launchActivityButton": "შეიწყალეთ აქტივობა",
     "image": "სურათი",
     "video": "ვიდეო",
     "nan": "არ არის გამოყენებადი",
-    "activityPlannerOverviewInstructionsBody": "აირჩიეთ თემა, რეჟიმი, სწავლების მიზანი და შექმენით აქტივობა ჩათისთვის!",
-    "activityTitle": "აქტივობის სათაური",
     "addVocabulary": "დაამატეთ ლექსიკა",
     "instructions": "ინსტრუქციები",
     "numberOfLearners": "სწავლողների რაოდენობა",
@@ -2186,12 +2157,10 @@
     "pleaseEnterInt": "გთხოვთ, შეიყვანეთ რიცხვი",
     "home": "მთავარი",
     "join": "შეერთება",
-    "readingAssistanceOverviewBody": "დააჭირეთ ქვემოთ მყოფ ღილაკებს მინიგეიმებისთვის ემოჯების, აუდიოების, სიტყვების მნიშვნელობებისა და გრამატიკის კონცეპტების შესაბამისობაში. ან დააჭირეთ ნებისმიერ სიტყვას დეტალებისთვის.",
     "resetInstructionTooltipsTitle": "გადატვირთეთ ინსტრუქციის ხატულები",
     "resetInstructionTooltipsDesc": "დააჭირეთ, რათა აჩვენოთ ინსტრუქციის ხატულები, როგორც ახალი მომხმარებლისთვის.",
     "randomize": "შემთხვევითი",
     "clear": "წაშლა",
-    "makeYourOwnActivity": "შექმენით თქვენი საკუთარი აქტივობა",
     "featuredActivities": "გამორჩეული",
     "save": "შენახვა",
     "startChat": "დაიწყეთ ჩათი",
@@ -2248,7 +2217,6 @@
     "announcements": "შეტყობინებები",
     "activities": "აქტივობები",
     "access": "წვდომა",
-    "activitySuggestionTimeoutMessage": "ჩვენ ვმუშაობთ აქტივობების დამატებაზე, გთხოვთ, დაბრუნდეთ ერთ წუთში",
     "howSpaceCanBeFound": "როგორ შეიძლება ამ კურსის მოძებნა",
     "private": "პირადი",
     "cannotBeFoundInSearch": "ძებნაში ვერ მოიძებნება",
@@ -2283,9 +2251,6 @@
     "numInvited": "{count} მოწვეული",
     "saved": "შენახულია",
     "reset": "გადატვირთვა",
-    "errorGenerateActivityMessage": "აქტივობის შექმნა ვერ მოხერხდა",
-    "errorRegenerateActivityMessage": "აქტივობის გადამუშავება ვერ მოხერხდა",
-    "errorLaunchActivityMessage": "აქტივობის დაწყება ვერ მოხერხდა",
     "errorFetchingActivitiesMessage": "აქტივობების მიღება ვერ მოხერხდა",
     "errorFetchingDefinition": "განმარტების მიღება ვერ მოხერხდა",
     "errorProcessAnalytics": "ანალიტიკის დამუშავება ვერ მოხერხდა",
@@ -2294,7 +2259,6 @@
     "unexpectedError": "უცნობი შეცდომა.",
     "pleaseReload": "გთხოვთ, გადატვირთეთ და სცადეთ თავიდან.",
     "translationError": "თარგმნის შეცდომა",
-    "errorFetchingActivity": "ვერ მოხერხდა აქტივობის მიღება",
     "check": "შემოწმება",
     "unableToFindRoom": "ამ კოდით ვერ მოიძებნა ჩატი ან კურსი. სცადეთ თავიდან.",
     "numCompletedActivities": "შესრულებული აქტივობების რაოდენობა",
@@ -2302,11 +2266,8 @@
     "request": "მოთხოვნა",
     "requestAll": "მოთხოვნა ყველა",
     "confirmMessageUnpin": "დარწმუნებული ხართ, რომ გსურთ ამ შეტყობინების განთავსების გაუქმება?",
-    "createActivityPlan": "შექმენით ახალი აქტივობის გეგმა",
     "saveAndLaunch": "შენახვა და დაწყება",
     "launchToSpace": "გახსნა კურსზე",
-    "numberOfActivities": "აქტივობის სესიის რაოდენობა",
-    "maximumActivityParticipants": "ყოველი აქტივობა შეიძლება ჰქონდეს მაქსიმუმ {count} მონაწილე.",
     "pending": "მოლოდინში",
     "inactive": "არაქტიული",
     "confirmRole": "დადასტურება როლი",
@@ -6610,10 +6571,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -6678,10 +6635,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@speechToTextBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@versionNotFound": {
         "type": "String",
         "placeholders": {}
@@ -6704,10 +6657,6 @@
                 "type": "String"
             }
         }
-    },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
@@ -6738,10 +6687,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -7869,14 +7814,6 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
         "type": "String",
         "placeholders": {}
@@ -7946,70 +7883,6 @@
         "placeholders": {}
     },
     "@constructUseIncIGCDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8235,19 +8108,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@topicLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -8263,23 +8128,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -8292,14 +8145,6 @@
         "placeholders": {}
     },
     "@nan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -8499,10 +8344,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@readingAssistanceOverviewBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resetInstructionTooltipsTitle": {
         "type": "String",
         "placeholders": {}
@@ -8516,10 +8357,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8751,10 +8588,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activitySuggestionTimeoutMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@howSpaceCanBeFound": {
         "type": "String",
         "placeholders": {}
@@ -8903,18 +8736,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingActivitiesMessage": {
         "type": "String",
         "placeholders": {}
@@ -8944,10 +8765,6 @@
         "placeholders": {}
     },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8986,10 +8803,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -8997,18 +8810,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -10880,15 +10681,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "თქვენ დააყენეთ ემოჯი {lemma}-ისთვის! ჩვენ ამ ემოჯის გამოყენებას ვაპირებთ სიტყვების პრაქტიკული აქტივობების წარმოსადგენად.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "მოლოდინი შესვლის დასრულებამდე",
     "ssoDialogDesc": "ჩვენ გავხსენით ახალი ჩანართი, რათა უსაფრთხოდ შეხვიდეთ.",
     "ssoDialogHelpText": "🤔 თუ ახალი ჩანართი არ გინახავთ, გთხოვთ შეამოწმოთ თქვენი პოპ-აპ ბლოკერი.",
@@ -11560,12 +11352,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "გახსენი პრაქტიკის აქტივობები",
     "hideEvents": "დამალე მოვლენები",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11712,11 +11499,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noAnalyticsActivitiesAvailable": "ვაუ, თქვენ დაასრულეთ ყველა ხელმისაწვდომი აქტივობა! გაუგზავნეთ მეტი შეტყობინება, რომ გახსნათ მეტი პრაქტიკის აქტივობები.",
-    "@noAnalyticsActivitiesAvailable": {
-        "type": "String",
-        "placeholders": {}
-    },
     "profile": "პროფილი",
     "@profile": {
         "type": "String",
@@ -11728,8 +11510,6 @@
     "notificationDeviceSubtitle": "იხილეთ და მართეთ მოწყობილობები, რომლებიც გაწვდიან პუშ-შეტყობინებებს.",
     "notificationRuleDM": "მباشე შეტყობინება",
     "notificationRuleDMDescription": "შეტყობინებს მომხმარებელს პირდაპირი შეტყობინებების ოთახებში შეტყობინებების შესახებ.",
-    "notificationRuleCourseAndActivity": "კურსი და აქტივობა",
-    "notificationRuleCourseAndActivityDescription": "შეტყობინებს მომხმარებელს კურსებში, აქტივობებში და ჩეთებში შეტყობინებების შესახებ.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -11751,14 +11531,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -12025,6 +11797,125 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "გამოიწერეთ, რომ გახსნათ ინტერაქტიული თარგმანისა და გრამატიკის შემოწმების, აუდიო დაკვრის, პერსონალიზებული პრაქტიკის ვარჯიშების და სასწავლო ანალიტიკის ფუნქციები!",
+    "emojiSelectedSnackbar": "თქვენ დააყენეთ ემოჯი {lemma}-ისთვის! ჩვენ ამ ემოჯის გამოყენებას ვაპირებთ სიტყვას პრაქტიკის ვარჯიშებში.",
+    "unlockPracticeActivities": "გახსენით პრაქტიკის ვარჯიშები",
+    "noAnalyticsActivitiesAvailable": "ვაუ, თქვენ დაასრულეთ ყველა ხელმისაწვდომი აქტივობა! გამოგზავნეთ მეტი შეტყობინება, რომ გახსნათ მეტი პრაქტიკის ვარჯიშები.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "სწორი სიტყვების მნიშვნელობის სავარჯიშოში",
+    "constructUseIgnPADesc": "გაუგებარი სიტყვების მნიშვნელობის სავარჯიშოში",
+    "constructUseIncPADesc": "არასწორი სიტყვების მნიშვნელობის სავარჯიშოში",
+    "constructUseCorWLDesc": "სწორი სიტყვების მოსმენის სავარჯიშოში",
+    "constructUseIncWLDesc": "არასწორი სიტყვების მოსმენის სავარჯიშოში",
+    "constructUseIngWLDesc": "გაუგებარი სიტყვების მოსმენის სავარჯიშოში",
+    "constructUseCorHWLDesc": "სწორი დამალული სიტყვების სავარჯიშოში",
+    "constructUseIncHWLDesc": "არასწორი დამალული სიტყვების სავარჯიშოში",
+    "constructUseIgnHWLDesc": "გაუგებარი დამალული სიტყვების სავარჯიშოში",
+    "constructUseCorLDesc": "სწორი ლემის სავარჯიშოში",
+    "constructUseIncLDesc": "არასწორი ლემის სავარჯიშოში",
+    "constructUseIgnLDesc": "გადავიწყდა ლემის სავარჯიშოში",
+    "constructUseCorMDesc": "მართებული გრამატიკის სავარჯიშოში",
+    "constructUseIncMDesc": "არასწორი გრამატიკის სავარჯიშოში",
+    "constructUseIgnMDesc": "გადავიწყდა გრამატიკის სავარჯიშოში",
+    "constructUseEmojiDesc": "მართებული ემოჯის სავარჯიშოში",
+    "errorFetchingExercise": "ვარჯიშის მიღება ვერ მოხერხდა",
+    "notificationRuleCourseAndActivity": "კურსი და აქტივობა",
+    "notificationRuleCourseAndActivityDescription": "შეტყობინებებს აწვდავს მომხმარებელს კურსებში, აქტივობებში და ჩეთებში.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },

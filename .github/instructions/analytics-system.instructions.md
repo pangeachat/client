@@ -11,7 +11,7 @@ The analytics system tracks learning, rewards progress, visualizes growth, and g
 1. **Instant feedback**: Users should see XP and growth animations the moment they interact with a word, not after a server round-trip. The system is local-first.
 2. **Every interaction counts**: Every interaction, from reading a message to tapping a new word to practice exercises, contributes to the user's progress.
 3. **Engaging visuals**: The seeds→greens→flowers metaphor and per-word emoji associations make progress tangible and fun to track.
-4. **Fun, personalized practice**: Practice activities are generated from the user's actual messages, making them relevant and engaging. The system prioritizes words that need attention, not just random drills.
+4. **Fun, personalized practice**: Practice exercises are generated from the user's actual messages, making them relevant and engaging. The system prioritizes words that need attention, not just random drills.
 5. **Teacher insights**: Teachers can view aggregate analytics for their students, helping them tailor instruction and identify who needs extra support.
 
 ## Constructs
@@ -48,7 +48,7 @@ The same word can appear with different casing or slight variations across messa
 Users can hide specific constructs they consider too easy or irrelevant (e.g., cognates, proper nouns). Blocked constructs:
 - Disappear from all analytics views
 - Stop contributing to XP totals
-- Are excluded from practice activity selection
+- Are excluded from practice exercise selection
 - Persist across sessions via the Matrix analytics room
 
 ## User Levels

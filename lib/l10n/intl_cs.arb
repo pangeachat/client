@@ -3099,7 +3099,6 @@
     "trialPeriodExpired": "Vaše zkušební období vypršelo",
     "translations": "překlady",
     "definitions": "definice",
-    "subscribedToUnlockTools": "Přihlaste se k odemknutí interaktivního překladu a kontroly gramatiky, přehrávání zvuku, personalizovaných cvičení a analytiky učení!",
     "translationTooltip": "Překlad",
     "kickBotWarning": "Vyhození Pangea Bota odstraní konverzačního bota z tohoto chatu.",
     "refresh": "Obnovit",
@@ -3115,12 +3114,10 @@
     "tooManyRequest": "Příliš mnoho požadavků, zkuste to prosím později.",
     "enterNumber": "Zadejte celé číslo.",
     "practice": "Procvičování",
-    "speechToTextBody": "Pro hlasové zprávy můžete vidět přepis i skóre slov za minutu mluvčího.",
     "versionNotFound": "Verze nenalezena",
     "fetchingVersion": "Načítání verze...",
     "versionFetchError": "Chyba při načítání verze",
     "versionText": "Verze: {version}+{buildNumber}",
-    "l1TranslationBody": "Zprávy v základním jazyce nebudou překládány.",
     "deleteSubscriptionWarningTitle": "Máte aktivní předplatné",
     "deleteSubscriptionWarningBody": "Smazání vašeho účtu automaticky nezruší vaše předplatné.",
     "manageSubscription": "Spravovat předplatné",
@@ -3129,7 +3126,6 @@
     "wordsUsed": "Použité slova",
     "level": "Úroveň",
     "morphsUsed": "Použité morfy",
-    "translationChoicesBody": "Klikněte a podržte možnost pro nápovědu.",
     "grammar": "Gramatika",
     "contactHasBeenInvitedToTheChat": "Kontakt byl pozván do chatu",
     "inviteChat": "Pozvat do chatu",
@@ -3410,8 +3406,6 @@
     "grammarCopyVOICErcp": "Vzájemný",
     "other": "Jiné",
     "levelShort": "ÚROVEŇ {level}",
-    "clickBestOption": "Vyberte nejlepší možnosti pro překlad vaší zprávy!",
-    "completeActivitiesToUnlock": "Dokončete alespoň jednu aktivitu pro odemčení překladu!",
     "noCapacityLimit": "Žádný limit kapacity",
     "downloadGroupText": "Stáhnout text skupiny",
     "notificationsOn": "Oznámení zapnuta",
@@ -3430,22 +3424,6 @@
     "constructUseIgnIGCDesc": "Ignorováno v gramatické korekci",
     "constructUseCorIGCDesc": "Správně v gramatické korekci",
     "constructUseIncIGCDesc": "Nesprávně v gramatické korekci",
-    "constructUseCorPADesc": "Správně v aktivitě významu slova",
-    "constructUseIgnPADesc": "Ignorováno v aktivitě významu slova",
-    "constructUseIncPADesc": "Nesprávně v aktivitě významu slova",
-    "constructUseCorWLDesc": "Správně v aktivitě poslechu slov",
-    "constructUseIncWLDesc": "Nesprávně v aktivitě poslechu slov",
-    "constructUseIngWLDesc": "Ignorováno v aktivitě poslechu slov",
-    "constructUseCorHWLDesc": "Správně v aktivitě skrytého slova",
-    "constructUseIncHWLDesc": "Nesprávně v aktivitě skrytého slova",
-    "constructUseIgnHWLDesc": "Ignorováno v aktivitě skrytého slova",
-    "constructUseCorLDesc": "Správně v aktivitě lemma",
-    "constructUseIncLDesc": "Nesprávně v aktivitě lemma",
-    "constructUseIgnLDesc": "Ignorováno v aktivitě lemma",
-    "constructUseCorMDesc": "Správně v aktivitě gramatiky",
-    "constructUseIncMDesc": "Nesprávně v aktivitě gramatiky",
-    "constructUseIgnMDesc": "Ignorováno v aktivitě gramatiky",
-    "constructUseEmojiDesc": "Správně v aktivitě emoji",
     "constructUseCollected": "Sebráno v chatu",
     "constructUseNanDesc": "Nepoužitelné",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
@@ -3497,23 +3475,16 @@
     "whatIsMeaning": "Co znamená '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Spojte významy se slovy ve zprávě!",
     "doubleClickToEdit": "Dvakrát klikněte pro úpravu.",
-    "activityPlannerTitle": "Plánovač aktivit",
     "topicLabel": "Téma",
     "topicPlaceholder": "Vyberte téma...",
-    "modeLabel": "Typ aktivity",
     "modePlaceholder": "Vyberte režim...",
     "learningObjectiveLabel": "Cíl učení",
     "learningObjectivePlaceholder": "Vyberte cíl učení...",
-    "languageOfInstructionsLabel": "Jazyk pokynů k aktivitě",
     "targetLanguageLabel": "Cílový jazyk",
     "cefrLevelLabel": "Úroveň CEFR",
-    "generateActivitiesButton": "Vytvořit aktivitu",
-    "launchActivityButton": "Spustit aktivitu",
     "image": "Obrázek",
     "video": "Video",
     "nan": "Nepoužitelné",
-    "activityPlannerOverviewInstructionsBody": "Vyberte téma, režim, vzdělávací cíl a vygenerujte aktivitu pro chat!",
-    "activityTitle": "Název aktivity",
     "addVocabulary": "Přidat slovní zásobu",
     "instructions": "Pokyny",
     "numberOfLearners": "Počet studentů",
@@ -3560,12 +3531,10 @@
     "pleaseEnterInt": "Zadejte číslo",
     "home": "Domů",
     "join": "Připojit se",
-    "readingAssistanceOverviewBody": "Klikněte na tlačítka níže pro mini-hry na přiřazování emoji, audia, významů slov a gramatických konceptů. Nebo klikněte na jakékoli slovo pro podrobnosti.",
     "resetInstructionTooltipsTitle": "Obnovit instrukční nápovědy",
     "resetInstructionTooltipsDesc": "Klikněte pro zobrazení instrukčních nápověd, jako pro úplného nováčka.",
     "randomize": "Náhodně",
     "clear": "Vymazat",
-    "makeYourOwnActivity": "Vytvořte si vlastní aktivitu",
     "featuredActivities": "Zvýrazněné",
     "save": "Uložit",
     "startChat": "Začít chat",
@@ -3622,7 +3591,6 @@
     "announcements": "Oznámení",
     "activities": "Aktivity",
     "access": "Přístup",
-    "activitySuggestionTimeoutMessage": "Pracujeme tvrdě na generování více aktivit pro vás, prosím, vraťte se za minutu",
     "howSpaceCanBeFound": "Jak lze tento kurz najít",
     "private": "Soukromé",
     "cannotBeFoundInSearch": "Nelze najít ve vyhledávání",
@@ -3657,9 +3625,6 @@
     "numInvited": "{count} pozváno",
     "saved": "Uloženo",
     "reset": "Obnovit",
-    "errorGenerateActivityMessage": "Nepodařilo se vygenerovat aktivitu",
-    "errorRegenerateActivityMessage": "Nepodařilo se znovu vygenerovat aktivitu",
-    "errorLaunchActivityMessage": "Nepodařilo se spustit aktivitu",
     "errorFetchingActivitiesMessage": "Nepodařilo se načíst aktivity",
     "errorFetchingDefinition": "Nepodařilo se načíst definici",
     "errorProcessAnalytics": "Nepodařilo se zpracovat analytiku",
@@ -3668,7 +3633,6 @@
     "unexpectedError": "Neočekávaná chyba.",
     "pleaseReload": "Prosím, načtěte stránku znovu a zkuste to znovu.",
     "translationError": "Chyba překladu",
-    "errorFetchingActivity": "Nepodařilo se načíst aktivitu",
     "check": "Zkontrolovat",
     "unableToFindRoom": "Nebyly nalezeny žádné chaty nebo kurzy s tímto kódem. Zkuste to prosím znovu.",
     "numCompletedActivities": "Počet dokončených aktivit",
@@ -3676,11 +3640,8 @@
     "request": "Žádost",
     "requestAll": "Žádat vše",
     "confirmMessageUnpin": "Jste si jistí, že chcete odpojit tuto zprávu?",
-    "createActivityPlan": "Vytvořit nový plán aktivit",
     "saveAndLaunch": "Uložit a spustit",
     "launchToSpace": "Spustit do kurzu",
-    "numberOfActivities": "Počet sezení aktivit",
-    "maximumActivityParticipants": "Každá aktivita může mít maximálně {count} účastníka(ů).",
     "pending": "Čeká se",
     "inactive": "Neaktivní",
     "confirmRole": "Potvrdit roli",
@@ -6110,10 +6071,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -6178,10 +6135,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@speechToTextBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@versionNotFound": {
         "type": "String",
         "placeholders": {}
@@ -6204,10 +6157,6 @@
                 "type": "String"
             }
         }
-    },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
@@ -6238,10 +6187,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -7369,14 +7314,6 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
         "type": "String",
         "placeholders": {}
@@ -7446,70 +7383,6 @@
         "placeholders": {}
     },
     "@constructUseIncIGCDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7735,19 +7608,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@topicLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -7763,23 +7628,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -7792,14 +7645,6 @@
         "placeholders": {}
     },
     "@nan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -7999,10 +7844,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@readingAssistanceOverviewBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resetInstructionTooltipsTitle": {
         "type": "String",
         "placeholders": {}
@@ -8016,10 +7857,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8251,10 +8088,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activitySuggestionTimeoutMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@howSpaceCanBeFound": {
         "type": "String",
         "placeholders": {}
@@ -8403,18 +8236,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingActivitiesMessage": {
         "type": "String",
         "placeholders": {}
@@ -8444,10 +8265,6 @@
         "placeholders": {}
     },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8486,10 +8303,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -8497,18 +8310,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -10380,15 +10181,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Nastavili jste emoji pro {lemma}! Toto emoji použijeme k reprezentaci slova v praktických aktivitách v budoucnu.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Čekání na dokončení přihlášení",
     "ssoDialogDesc": "Otevřeli jsme novou kartu, abyste se mohli bezpečně přihlásit.",
     "ssoDialogHelpText": "🤔 Pokud jste novou kartu neviděli, zkontrolujte prosím blokátor vyskakovacích oken.",
@@ -11046,12 +10838,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Odemknout cvičební aktivity",
     "hideEvents": "Skrýt události",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11198,11 +10985,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noAnalyticsActivitiesAvailable": "Wow, dokončili jste všechny dostupné aktivity! Pošlete více zpráv, abyste odemkli další cvičební aktivity.",
-    "@noAnalyticsActivitiesAvailable": {
-        "type": "String",
-        "placeholders": {}
-    },
     "profile": "Profil",
     "@profile": {
         "type": "String",
@@ -11214,8 +10996,6 @@
     "notificationDeviceSubtitle": "Zobrazte a spravujte zařízení, která vám posílají push notifikace.",
     "notificationRuleDM": "Přímá zpráva",
     "notificationRuleDMDescription": "Upozorňuje uživatele na zprávy v místnostech přímých zpráv.",
-    "notificationRuleCourseAndActivity": "Kurz a aktivita",
-    "notificationRuleCourseAndActivityDescription": "Upozorňuje uživatele na zprávy v kurzech, aktivitách a chatech.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -11237,14 +11017,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -11511,6 +11283,125 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Přihlaste se k odběru, abyste odemkli interaktivní překlad a kontrolu gramatiky, přehrávání zvuku, personalizované cvičení a analytiku učení!",
+    "emojiSelectedSnackbar": "Nastavili jste emoji pro {lemma}! Toto emoji použijeme k reprezentaci slova v cvičeních do budoucna.",
+    "unlockPracticeActivities": "Odemknout cvičení",
+    "noAnalyticsActivitiesAvailable": "Wow, dokončili jste všechny dostupné aktivity! Pošlete více zpráv, abyste odemkli další cvičení.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "Správně v cvičení významu slova",
+    "constructUseIgnPADesc": "Ignorováno v cvičení významu slova",
+    "constructUseIncPADesc": "Nesprávně v cvičení významu slova",
+    "constructUseCorWLDesc": "Správně v cvičení poslechu slova",
+    "constructUseIncWLDesc": "Nesprávně v cvičení poslechu slova",
+    "constructUseIngWLDesc": "Ignorováno v cvičení poslechu slova",
+    "constructUseCorHWLDesc": "Správně v cvičení skrytého slova",
+    "constructUseIncHWLDesc": "Nesprávně v cvičení skrytého slova",
+    "constructUseIgnHWLDesc": "Ignorováno v cvičení skrytého slova",
+    "constructUseCorLDesc": "Správně v cvičení lemma",
+    "constructUseIncLDesc": "Nesprávné v cvičení lemma",
+    "constructUseIgnLDesc": "Ignorováno v cvičení lemma",
+    "constructUseCorMDesc": "Správné v cvičení gramatiky",
+    "constructUseIncMDesc": "Nesprávné v cvičení gramatiky",
+    "constructUseIgnMDesc": "Ignorováno v cvičení gramatiky",
+    "constructUseEmojiDesc": "Správné v cvičení emoji",
+    "errorFetchingExercise": "Nepodařilo se načíst cvičení",
+    "notificationRuleCourseAndActivity": "Kurz a Aktivita",
+    "notificationRuleCourseAndActivityDescription": "Upozorňuje uživatele na zprávy v kurzech, aktivitách a chatech.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },

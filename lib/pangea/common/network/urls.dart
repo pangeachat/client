@@ -41,7 +41,7 @@ class PApiUrls {
   static String phoneticTranscriptionV2 =
       "${PApiUrls._choreoEndpoint}/phonetic_transcription_v2";
 
-  static String messageActivityGeneration =
+  static String messagePracticeExerciseGeneration =
       "${PApiUrls._choreoEndpoint}/practice";
 
   static String lemmaDictionary =

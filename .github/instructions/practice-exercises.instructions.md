@@ -8,6 +8,12 @@ Practice exercises are multiple-choice exercises that reinforce vocabulary and g
 
 For **conversation activities**, see [conversation-activities.instructions.md](conversation-activities.instructions.md).
 
+## Terminology
+
+| Term | Meaning | Code modules |
+|---|---|---|
+| **Practice exercise** | Multiple-choice quiz reinforcing vocab/grammar from real messages (solo) | `practice_activities/` (legacy name), `analytics_practice/`, `toolbar/message_practice/` |
+
 ## Three Entry Points
 
 | Entry Point | What It Is | Where It Lives | Activity Types Used |
@@ -212,7 +218,7 @@ All expose a `multipleChoiceContent` (choices + answers) and produce a `Practice
 
 - [pangeachat/client#5656](https://github.com/pangeachat/client/issues/5656) — Voice practice ideas
 - [pangeachat/client#3175](https://github.com/pangeachat/client/discussions/3175) — Speaking practice for Voice/Audio message
-- [pangeachat/client#3176](https://github.com/pangeachat/client/discussions/3176) — New type of practice activity
+- [pangeachat/client#3176](https://github.com/pangeachat/client/discussions/3176) — New type of practice exercise
 - [pangeachat/client#2678](https://github.com/pangeachat/client/discussions/2678) — Listening exercises
 - [pangeachat/client#5654](https://github.com/pangeachat/client/issues/5654) — Are there more places where it makes sense to use the word audio?
 

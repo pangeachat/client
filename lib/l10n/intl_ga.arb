@@ -3575,7 +3575,6 @@
     "trialPeriodExpired": "Tá do thriail imithe",
     "translations": "aistriúcháin",
     "definitions": "sainmhíniú",
-    "subscribedToUnlockTools": "Cláraigh chun aistriúchán idirghníomhach agus seiceáil gramadach, fuaimrian, gníomhaíochtaí cleachtadh pearsanta, agus anailísíocht foghlama a fháil!",
     "translationTooltip": "Aistriú",
     "kickBotWarning": "Beidh sé i gceist le buille Pangea Bot an bot comhrá a bhaint den chomhrá seo.",
     "refresh": "Athnuachan",
@@ -3591,12 +3590,10 @@
     "tooManyRequest": "Rogha ró-ard, déan iarracht arís níos déanaí.",
     "enterNumber": "Cuir luach uimhriúil iomlán isteach le do thoil.",
     "practice": "Cleachtadh",
-    "speechToTextBody": "Maidir le teachtaireachtaí gutha, is féidir leat trascríobh a fheiceáil chomh maith le scór Focal in aghaidh an Nóiméidí an chainteora.",
     "versionNotFound": "Níor aimsíodh leagan",
     "fetchingVersion": "Ag fáil leagan...",
     "versionFetchError": "Earráid ag fáil amach an leagan",
     "versionText": "Leagan: {version}+{buildNumber}",
-    "l1TranslationBody": "Ní bheidh teachtaireachtaí i do theanga bhunúsach le haistriú.",
     "deleteSubscriptionWarningTitle": "Tá síntiús gníomhach agat",
     "deleteSubscriptionWarningBody": "Ní chuirfidh scriosadh do chuntais do shíntiús go huathoibríoch ar ceal.",
     "manageSubscription": "Bainistigh Síntiús",
@@ -3605,7 +3602,6 @@
     "wordsUsed": "Focail Úsáidte",
     "level": "Leibhéal",
     "morphsUsed": "Morpheanna Úsáidte",
-    "translationChoicesBody": "Cliceáil agus coinnigh rogha le haghaidh leideanna.",
     "grammar": "Gairme",
     "contactHasBeenInvitedToTheChat": "Tá teagmháil tugtha cuireadh don chomhrá",
     "inviteChat": "Glaoigh ar comhrá",
@@ -3886,8 +3882,6 @@
     "grammarCopyVOICErcp": "Comhoiriúnach",
     "other": "Eile",
     "levelShort": "LEIBHÉAL {level}",
-    "clickBestOption": "Roghnaigh na roghanna is fearr chun do theachtaireacht a aistriú!",
-    "completeActivitiesToUnlock": "Críochnaigh ar a laghad gníomhaíocht amháin chun an t-aistriúchán a dhíghlasáil!",
     "noCapacityLimit": "Gan teorainn acmhainne",
     "downloadGroupText": "Íoslódáil téacs an ghrúpa",
     "notificationsOn": "Fógraí ar siúl",
@@ -3906,22 +3900,6 @@
     "constructUseIgnIGCDesc": "Fágtha i gceartlitriú gramadaí",
     "constructUseCorIGCDesc": "Ceart i gceartlitriú gramadaí",
     "constructUseIncIGCDesc": "Mícheart i gceartlitriú gramadaí",
-    "constructUseCorPADesc": "Ceart i gníomhaíocht brífhocal",
-    "constructUseIgnPADesc": "Fágtha i gníomhaíocht brífhocal",
-    "constructUseIncPADesc": "Mícheart i gníomhaíocht brífhocal",
-    "constructUseCorWLDesc": "Ceart i gníomhaíocht éisteachta focail",
-    "constructUseIncWLDesc": "Mícheart i gníomhaíocht éisteachta focail",
-    "constructUseIngWLDesc": "Fágtha i gníomhaíocht éisteachta focail",
-    "constructUseCorHWLDesc": "Ceart i gníomhaíocht focail i bhfolach",
-    "constructUseIncHWLDesc": "Mícheart i gníomhaíocht focail i bhfolach",
-    "constructUseIgnHWLDesc": "Fágtha i gníomhaíocht focail i bhfolach",
-    "constructUseCorLDesc": "Ceart i ngníomhaíocht leama",
-    "constructUseIncLDesc": "Mícheart i ngníomhaíocht leama",
-    "constructUseIgnLDesc": "Fágtha i ngníomhaíocht leama",
-    "constructUseCorMDesc": "Ceart i ngníomhaíocht gramadaí",
-    "constructUseIncMDesc": "Mícheart i ngníomhaíocht gramadaí",
-    "constructUseIgnMDesc": "Fágtha i ngníomhaíocht gramadaí",
-    "constructUseEmojiDesc": "Ceart i ngníomhaíocht íomhá-gháire",
     "constructUseCollected": "Bailithe i gcomhrá",
     "constructUseNanDesc": "Níl infheidhmithe",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
@@ -3973,23 +3951,16 @@
     "whatIsMeaning": "Cad is brí le '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Comhoiriúnigh bríonna leis na focail sa teachtaireacht!",
     "doubleClickToEdit": "Cliceáil dé-uaire chun eagarthóireacht.",
-    "activityPlannerTitle": "Pleanálaí Gníomhaíochta",
     "topicLabel": "Ábhar",
     "topicPlaceholder": "Roghnaigh ábhar...",
-    "modeLabel": "Cineál gníomhaíochta",
     "modePlaceholder": "Roghnaigh mód...",
     "learningObjectiveLabel": "Cuspóir foghlama",
     "learningObjectivePlaceholder": "Roghnaigh cuspóir foghlama...",
-    "languageOfInstructionsLabel": "Teanga na treoracha gníomhaíochta",
     "targetLanguageLabel": "Teanga sprioc",
     "cefrLevelLabel": "Leveál CEFR",
-    "generateActivitiesButton": "Gineadh Gníomhaíochta",
-    "launchActivityButton": "Tosú ar Gníomhaíocht",
     "image": "Íomhá",
     "video": "Físeán",
     "nan": "Níl infheidhmithe",
-    "activityPlannerOverviewInstructionsBody": "Roghnaigh topaic, mód, cuspóir foghlama agus cruthaigh gníomhaíocht don chomhrá!",
-    "activityTitle": "Teideal Gníomhaíochta",
     "addVocabulary": "Cuir foclóir leis",
     "instructions": "Treoracha",
     "numberOfLearners": "Líon na bhfoghlaimeoirí",
@@ -4036,12 +4007,10 @@
     "pleaseEnterInt": "Cuir isteach uimhir le do thoil",
     "home": "Baile",
     "join": "Bí páirteach",
-    "readingAssistanceOverviewBody": "Cliceáil ar na cnaipeanna thíos le haghaidh cluichí beaga ar mheaitseáil íomhánna, fuaimeanna, brí na bhfocail, agus coincheapa gramadaí. Nó cliceáil ar aon fhocal le haghaidh sonraí.",
     "resetInstructionTooltipsTitle": "Athshocraigh na téacsleabhair treorach",
     "resetInstructionTooltipsDesc": "Cliceáil chun na téacsleabhair treorach a thaispeáint ar nós do úsáideoir nua.",
     "randomize": "Randamach",
     "clear": "Glan",
-    "makeYourOwnActivity": "Cruthaigh do ghnó féin",
     "featuredActivities": "Réamh-mholta",
     "save": "Sábháil",
     "startChat": "Tosaigh comhrá",
@@ -4098,7 +4067,6 @@
     "announcements": "Fógraí",
     "activities": "Gníomhaíochtaí",
     "access": "Rochtain",
-    "activitySuggestionTimeoutMessage": "Táimid ag obair go dian chun tuilleadh gníomhaíochtaí a ghiniúint duit, seiceáil ar ais i nóiméad le do thoil",
     "howSpaceCanBeFound": "Conas is féidir an cúrsa seo a aimsiú",
     "private": "Príobháideach",
     "cannotBeFoundInSearch": "Ní féidir é a aimsiú sa chuardach",
@@ -4133,9 +4101,6 @@
     "numInvited": "{count} cuireadh",
     "saved": "Sábháilte",
     "reset": "Athshocraigh",
-    "errorGenerateActivityMessage": "Theip ar ghiniúint an ghníomhaíochta",
-    "errorRegenerateActivityMessage": "Theip ar athghiniúint an ghníomhaíochta",
-    "errorLaunchActivityMessage": "Theip ar thosú an ghníomhaíochta",
     "errorFetchingActivitiesMessage": "Theip ar fháil na ngníomhaíochtaí",
     "errorFetchingDefinition": "Theip ar fáil an sainmhíniú",
     "errorProcessAnalytics": "Theip ar phróiseáil anailíseachtaí",
@@ -4144,7 +4109,6 @@
     "unexpectedError": "Earráid neamhshocraithe.",
     "pleaseReload": "Le do thoil, luchtigh arís agus bain triail eile astu.",
     "translationError": "Earráid aistriúcháin",
-    "errorFetchingActivity": "Theip ar fáilchur an ghníomhaíochta",
     "check": "Seiceáil",
     "unableToFindRoom": "Níor aimsíodh comhrá nó cúrsa leis an gcód sin. Déan iarracht arís le do thoil.",
     "numCompletedActivities": "Líon na ngníomhaíochtaí críochnaithe",
@@ -4152,11 +4116,8 @@
     "request": "Iarratas",
     "requestAll": "Iarr gach rud",
     "confirmMessageUnpin": "An bhfuil tú cinnte gur mhaith leat an teachtaireacht seo a bhaint den phin?",
-    "createActivityPlan": "Cruthaigh plean gníomhaíochta nua",
     "saveAndLaunch": "Sábháil agus tús a chur",
     "launchToSpace": "Tús a chur chuig an gcúrsa",
-    "numberOfActivities": "Líon na seisiúin gníomhaíochta",
-    "maximumActivityParticipants": "Is féidir le gach Gníomhaíocht a bheith ag max {count} rannpháirtí.",
     "pending": "Iontach",
     "inactive": "Neamhghníomhach",
     "confirmRole": "Deimhnigh ról",
@@ -5787,10 +5748,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -5855,10 +5812,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@speechToTextBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@versionNotFound": {
         "type": "String",
         "placeholders": {}
@@ -5881,10 +5834,6 @@
                 "type": "String"
             }
         }
-    },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
@@ -5915,10 +5864,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -7046,14 +6991,6 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
         "type": "String",
         "placeholders": {}
@@ -7123,70 +7060,6 @@
         "placeholders": {}
     },
     "@constructUseIncIGCDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7412,19 +7285,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@topicLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -7440,23 +7305,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -7469,14 +7322,6 @@
         "placeholders": {}
     },
     "@nan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -7676,10 +7521,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@readingAssistanceOverviewBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resetInstructionTooltipsTitle": {
         "type": "String",
         "placeholders": {}
@@ -7693,10 +7534,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -7928,10 +7765,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activitySuggestionTimeoutMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@howSpaceCanBeFound": {
         "type": "String",
         "placeholders": {}
@@ -8080,18 +7913,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingActivitiesMessage": {
         "type": "String",
         "placeholders": {}
@@ -8121,10 +7942,6 @@
         "placeholders": {}
     },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8163,10 +7980,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -8174,18 +7987,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -10057,15 +9858,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Tá an emoji socraithe agat do {lemma}! Úsáidfimid an emoji seo chun an focal a chur in iúl i ngníomhaíochtaí cleachtais amach anseo.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Ag fanacht le síniú isteach a chríochnú",
     "ssoDialogDesc": "Osclóimid cluaisín nua ionas gur féidir leat síniú isteach go sábháilte.",
     "ssoDialogHelpText": "🤔 Má chonaic tú an cluaisín nua, seiceáil le do thoil do bhacadóir pop-up.",
@@ -10499,12 +10291,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Díghlas gníomhaíochtaí cleachtais",
     "hideEvents": "Folaigh imeachtaí",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10655,11 +10442,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noAnalyticsActivitiesAvailable": "Wow, tá tú tar éis gach gníomhaíocht atá ar fáil a chríochnú! Seol níos mó teachtaireachtaí chun gníomhaíochtaí cleachtaidh níos mó a dhíghlasáil.",
-    "@noAnalyticsActivitiesAvailable": {
-        "type": "String",
-        "placeholders": {}
-    },
     "profile": "Profíl",
     "@profile": {
         "type": "String",
@@ -10671,8 +10453,6 @@
     "notificationDeviceSubtitle": "Féach agus bainistigh na gléasanna a sheolann tú foláirimh push.",
     "notificationRuleDM": "Teachtaireacht Dhíreach",
     "notificationRuleDMDescription": "Cuireann sé foláireamh ar an úsáideoir faoi theachtaireachtaí i seomraí teachtaireachta dhíreacha.",
-    "notificationRuleCourseAndActivity": "Cúrsa agus Gníomhaíocht",
-    "notificationRuleCourseAndActivityDescription": "Cuireann sé foláireamh ar an úsáideoir faoi theachtaireachtaí i gcúrsaí, gníomhaíochtaí, agus comhoibrithe.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -10694,14 +10474,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10968,6 +10740,125 @@
         "placeholders": {}
     },
     "@loginErrorLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "subscribedToUnlockTools": "Cláraigh chun uirlisí idirghníomhacha a aistriú agus a sheiceáil gramadaí, a chluinstin fuaime, a chleachtadh pearsanta, agus anailísíocht foghlama a dhíghlasáil!",
+    "emojiSelectedSnackbar": "Tá an emoji socraithe agat do {lemma}! Úsáidfimid an emoji seo chun an focal a chur i láthair sna cleachtaí praiticiúla amach anseo.",
+    "unlockPracticeActivities": "Díghlasáil cleachtaí praiticiúla",
+    "noAnalyticsActivitiesAvailable": "Wow, tá gach gníomhaíocht ar fáil críochnaithe agat! Seol níos mó teachtaireachtaí chun níos mó cleachtaí praiticiúla a dhíghlasáil.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "Ceart i gcleachtadh brí na bhfocal",
+    "constructUseIgnPADesc": "Díthreabhadh i gcleachtadh brí na bhfocal",
+    "constructUseIncPADesc": "Mícheart i gcleachtadh brí na bhfocal",
+    "constructUseCorWLDesc": "Ceart i gcleachtadh éisteachta na bhfocal",
+    "constructUseIncWLDesc": "Mícheart i gcleachtadh éisteachta na bhfocal",
+    "constructUseIngWLDesc": "Díthreabhadh i gcleachtadh éisteachta na bhfocal",
+    "constructUseCorHWLDesc": "Ceart i gcleachtadh focal folaithe",
+    "constructUseIncHWLDesc": "Mícheart i gcleachtadh focal folaithe",
+    "constructUseIgnHWLDesc": "Díthreabhadh i gcleachtadh focal folaithe",
+    "constructUseCorLDesc": "Ceart i gcleachtadh lemma",
+    "constructUseIncLDesc": "Mícheart i gcleachtadh lemma",
+    "constructUseIgnLDesc": "Díothaithe i gcleachtadh lemma",
+    "constructUseCorMDesc": "Ceart i gcleachtadh gramadaí",
+    "constructUseIncMDesc": "Mícheart i gcleachtadh gramadaí",
+    "constructUseIgnMDesc": "Díothaithe i gcleachtadh gramadaí",
+    "constructUseEmojiDesc": "Ceart i gcleachtadh emoji",
+    "errorFetchingExercise": "Theip ar an gcleachtadh a fháil",
+    "notificationRuleCourseAndActivity": "Cúrsa agus Gníomhaíocht",
+    "notificationRuleCourseAndActivityDescription": "Cuireann sé in iúl don úsáideoir faoi theachtaireachtaí i gcúrsaí, gníomhaíochtaí, agus comhoibrithe.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },

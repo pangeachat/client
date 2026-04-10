@@ -26,7 +26,7 @@ class ChoicesArray extends StatelessWidget {
   final String? langCode;
 
   /// Used to unqiuely identify the keys for choices, in cases where multiple
-  /// choices could have identical text, like in back-to-back practice activities
+  /// choices could have identical text, like in back-to-back practice exercises.
   final String? id;
 
   final String Function(String)? getDisplayCopy;
