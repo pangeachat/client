@@ -130,6 +130,8 @@ class CoursePlansRepo {
 
   static Future<GetLocalizedCoursesResponse> searchByFilter({
     required CourseFilter filter,
+    int page = 1,
+    int limit = 10,
   }) async {
     final PayloadClient payload = PayloadClient(
       baseUrl: Environment.cmsApi,
@@ -140,17 +142,22 @@ class CoursePlansRepo {
     final result = await payload.find(
       "course-plans",
       (json) => json["id"] as String,
-      page: 1,
-      limit: 10,
+      page: page,
+      limit: limit,
       where: filter.whereFilter,
       select: {"id": true},
     );
 
-    return search(
+    final searchResult = await search(
       GetLocalizedCoursesRequest(
         coursePlanIds: result.docs,
         l1: MatrixState.pangeaController.userController.userL1Code!,
       ),
+    );
+
+    return GetLocalizedCoursesResponse(
+      coursePlans: searchResult.coursePlans,
+      hasNextPage: result.hasNextPage,
     );
   }
 
