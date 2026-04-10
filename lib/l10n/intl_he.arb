@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:22:00.582916",
+    "@@last_modified": "2026-04-10 13:53:31.403796",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -12046,6 +12046,11 @@
     },
     "closeEmojiMenu": "סגור תפריט אמוג'י",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "אפשר לאחרים לחפש את הקורס שלך",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:22:23.320855",
+    "@@last_modified": "2026-04-10 13:54:05.901757",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6882,6 +6882,11 @@
     },
     "closeEmojiMenu": "Đóng menu biểu tượng cảm xúc",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Cho phép người khác tìm kiếm khóa học của bạn",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

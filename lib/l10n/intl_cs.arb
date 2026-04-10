@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-04-03 12:22:12.370655",
+    "@@last_modified": "2026-04-10 13:53:45.682532",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -11521,6 +11521,11 @@
     },
     "closeEmojiMenu": "Zavřít nabídku emoji",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Povolit ostatním vyhledávat váš kurz",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }
