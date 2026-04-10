@@ -9,7 +9,9 @@ import 'package:fluffychat/pangea/analytics_practice/activity_feedback_widget.da
 import 'package:fluffychat/pangea/analytics_practice/activity_hint_section_widget.dart';
 import 'package:fluffychat/pangea/analytics_practice/activity_hints_progress_widget.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
 import 'package:fluffychat/pangea/analytics_practice/audio_activity_continue_button_widget.dart';
+import 'package:fluffychat/pangea/analytics_practice/insufficient_data_indicator.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
@@ -69,10 +71,11 @@ class OngoingActivitySessionView extends StatelessWidget {
                       ),
                     ),
                   //per-activity instructions, add switch statement once there are more types
-                  const InstructionsInlineTooltip(
-                    instructionsEnum: InstructionsEnum.selectMeaning,
-                    padding: EdgeInsets.symmetric(vertical: 8.0),
-                  ),
+                  if (activity is VocabMeaningPracticeActivityModel)
+                    const InstructionsInlineTooltip(
+                      instructionsEnum: InstructionsEnum.selectMeaning,
+                      padding: EdgeInsets.symmetric(vertical: 8.0),
+                    ),
                   SizedBox(
                     height: 75.0,
                     child: Builder(
@@ -90,6 +93,7 @@ class OngoingActivitySessionView extends StatelessWidget {
                         final token = activity.tokens.first;
 
                         return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               isAudioActivity && isVocabType
@@ -125,7 +129,6 @@ class OngoingActivitySessionView extends StatelessWidget {
                           .selectedMorphChoice(activity);
                       return Column(
                         children: [
-                          const SizedBox(height: 16.0),
                           if (activity != null)
                             Center(
                               child: ActivityContent(
@@ -137,7 +140,6 @@ class OngoingActivitySessionView extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          const SizedBox(height: 16.0),
                           if (activity != null)
                             ActivityHintSection(
                               activity: activity,
@@ -148,23 +150,30 @@ class OngoingActivitySessionView extends StatelessWidget {
                                 controller.session.hintsUsed,
                               ),
                             ),
-                          const SizedBox(height: 16.0),
                           switch (state) {
-                            AsyncError(error: final error) => Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                //allow try to reload activity in case of error
-                                ErrorIndicator(
-                                  message: error.toLocalizedString(context),
-                                ),
-                                const SizedBox(height: 16),
-                                TextButton.icon(
-                                  onPressed: controller.startSession,
-                                  icon: const Icon(Icons.refresh),
-                                  label: Text(L10n.of(context).tryAgain),
-                                ),
-                              ],
-                            ),
+                            AsyncError(error: final error) =>
+                              error is InsufficientDataException
+                                  ? InsufficientDataIndicator()
+                                  : Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        //allow try to reload activity in case of error
+                                        ErrorIndicator(
+                                          message: error.toLocalizedString(
+                                            context,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 16),
+                                        TextButton.icon(
+                                          onPressed: controller.startSession,
+                                          icon: const Icon(Icons.refresh),
+                                          label: Text(
+                                            L10n.of(context).tryAgain,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                             AsyncLoaded(value: final activity) => Builder(
                               builder: (context) {
                                 List<InlineSpan>? audioExampleMessage;

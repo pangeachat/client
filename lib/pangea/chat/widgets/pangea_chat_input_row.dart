@@ -193,7 +193,9 @@ class PangeaChatInputRow extends StatelessWidget {
                         width: height,
                         alignment: Alignment.center,
                         child: IconButton(
-                          tooltip: L10n.of(context).emojis,
+                          tooltip: controller.showEmojiPicker
+                              ? L10n.of(context).closeEmojiMenu
+                              : L10n.of(context).emojis,
                           icon: PageTransitionSwitcher(
                             transitionBuilder:
                                 (

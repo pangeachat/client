@@ -86,13 +86,15 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
   bool get _isKnockRoom => widget.chunk?.joinRule == 'knock';
 
   Future<void> _joinWithCode() async {
-    final resp = await SpaceCodeController.joinSpaceWithCode(
-      context,
+    final result = await SpaceCodeController.joinSpaceWithCode(
       _codeController.text,
+      context: context,
+      client: client,
       notFoundError: L10n.of(context).notTheCodeError,
     );
-    if (resp != null) {
-      Navigator.of(context).pop(resp);
+    final roomId = result.result;
+    if (roomId != null) {
+      Navigator.of(context).pop(roomId);
     }
   }
 

@@ -243,28 +243,39 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     messenger.hideCurrentSnackBar();
     messenger.showSnackBar(
       SnackBar(
-        content: Row(
-          spacing: 12.0,
-          children: [
-            Flexible(
-              child: Text(
-                L10n.of(context).modeDisabled,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            if (target != null && target != l1)
-              TextButton(
-                style: TextButton.styleFrom(
-                  foregroundColor: Theme.of(
-                    context,
-                  ).colorScheme.primaryContainer,
+        content: RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            style: TextStyle(color: Theme.of(context).colorScheme.surface),
+            children: [
+              TextSpan(text: L10n.of(context).modeDisabled),
+              if (target != null && target != l1) ...[
+                const TextSpan(text: ' '),
+                WidgetSpan(
+                  alignment: PlaceholderAlignment.baseline,
+                  baseline: TextBaseline.alphabetic,
+                  child: InkWell(
+                    onTap: () {
+                      messenger.hideCurrentSnackBar();
+                      widget.controller.updateLanguageOnMismatch(target);
+                    },
+                    child: Text(
+                      L10n.of(context).clickToUpdateTargetLanguage,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                        decoration: TextDecoration.underline,
+                        decorationColor: Theme.of(
+                          context,
+                        ).colorScheme.primaryContainer,
+                      ),
+                    ),
+                  ),
                 ),
-                onPressed: () =>
-                    widget.controller.updateLanguageOnMismatch(target),
-                child: Text(L10n.of(context).learn),
-              ),
-          ],
+              ],
+            ],
+          ),
         ),
+        showCloseIcon: true,
       ),
     );
   }
@@ -435,6 +446,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                                     mode == SelectMode.translate &&
                                     enabled,
                                 borderRadius: BorderRadius.circular(100),
+                                maxOpacity: 0.6,
                                 child: AnimatedContainer(
                                   duration: FluffyThemes.animationDuration,
                                   height: buttonSize,

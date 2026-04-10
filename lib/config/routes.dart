@@ -62,6 +62,7 @@ import 'package:fluffychat/pangea/login/pages/signup.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
+import 'package:fluffychat/pangea/user/user_home_page.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
@@ -200,19 +201,34 @@ abstract class AppRoutes {
             );
             if (redirect != null) return redirect;
             final enabled = await Matrix.of(context).notificationsEnabled;
-            if (enabled) return "/registration/course";
+            if (enabled) return "/registration/notifications/course";
             return null;
           },
-        ),
-        GoRoute(
-          path: 'course',
-          pageBuilder: (context, state) =>
-              defaultPageBuilder(context, state, const SpaceCodeOnboarding()),
+          routes: [
+            GoRoute(
+              path: 'course',
+              pageBuilder: (context, state) => defaultPageBuilder(
+                context,
+                state,
+                const SpaceCodeOnboarding(),
+              ),
+            ),
+          ],
         ),
       ],
     ),
     GoRoute(
       path: '/join_with_link',
+      pageBuilder: (context, state) => defaultPageBuilder(
+        context,
+        state,
+        JoinClassWithLink(
+          classCode: state.uri.queryParameters[SpaceConstants.classCode],
+        ),
+      ),
+    ),
+    GoRoute(
+      path: '/join',
       pageBuilder: (context, state) => defaultPageBuilder(
         context,
         state,
@@ -344,6 +360,7 @@ abstract class AppRoutes {
                       NewCoursePage(
                         route: 'rooms',
                         initialLanguageCode: state.uri.queryParameters['lang'],
+                        showAll: state.uri.queryParameters['showAll'] == 'true',
                       ),
                     );
                   },
@@ -403,6 +420,7 @@ abstract class AppRoutes {
                     ? const EmptyAnalyticsPage()
                     : const ConstructAnalyticsView(
                         view: ConstructTypeEnum.vocab,
+                        showPracticeButton: true,
                       ),
               ),
               routes: [
@@ -415,6 +433,7 @@ abstract class AppRoutes {
                         ? const EmptyAnalyticsPage()
                         : const ConstructAnalyticsView(
                             view: ConstructTypeEnum.morph,
+                            showPracticeButton: true,
                           ),
                   ),
                   redirect: loggedOutRedirect,
@@ -459,6 +478,7 @@ abstract class AppRoutes {
                         ? const EmptyAnalyticsPage()
                         : const ConstructAnalyticsView(
                             view: ConstructTypeEnum.vocab,
+                            showPracticeButton: true,
                           ),
                   ),
                   redirect: loggedOutRedirect,
@@ -556,6 +576,12 @@ abstract class AppRoutes {
                   redirect: loggedOutRedirect,
                 ),
               ],
+            ),
+            GoRoute(
+              path: 'user_home',
+              redirect: loggedOutRedirect,
+              pageBuilder: (context, state) =>
+                  defaultPageBuilder(context, state, UserHomePage()),
             ),
             // Pangea#
             // #Pangea
@@ -1020,9 +1046,28 @@ abstract class AppRoutes {
     Widget child,
   ) => NoTransitionPage(
     key: state.pageKey,
+    name: analyticsPageName(state),
     restorationId: state.pageKey.value,
     child: child,
   );
+
+  static String analyticsPageName(GoRouterState state) {
+    final fullPath = state.fullPath;
+    if (fullPath != null && fullPath.isNotEmpty) {
+      return fullPath;
+    }
+
+    final routePath = state.path;
+    if (routePath != null && routePath.isNotEmpty) {
+      return routePath;
+    }
+
+    if (state.uri.path.isNotEmpty) {
+      return state.uri.path;
+    }
+
+    return '/';
+  }
 
   static Page defaultPageBuilder(
     BuildContext context,

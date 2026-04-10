@@ -11,16 +11,16 @@ import '../languages/language_model.dart';
 
 /// The user's settings learning settings.
 class UserSettings {
-  DateTime? dateOfBirth;
-  DateTime? createdAt;
-  bool? publicProfile;
-  String? targetLanguage;
-  String? sourceLanguage;
-  GenderEnum gender;
-  String? country;
-  String? about;
-  LanguageLevelTypeEnum cefrLevel;
-  String? voice;
+  final DateTime? dateOfBirth;
+  final DateTime? createdAt;
+  final bool? publicProfile;
+  final String? targetLanguage;
+  final String? sourceLanguage;
+  final GenderEnum gender;
+  final String? country;
+  final String? about;
+  final LanguageLevelTypeEnum cefrLevel;
+  final String? voice;
 
   UserSettings({
     this.dateOfBirth,
@@ -121,18 +121,30 @@ class UserSettings {
     );
   }
 
-  UserSettings copy() {
+  UserSettings copyWith({
+    DateTime? dateOfBirth,
+    DateTime? createdAt,
+    bool? publicProfile,
+    String? targetLanguage,
+    String? sourceLanguage,
+    GenderEnum? gender,
+    String? country,
+    String? about,
+    LanguageLevelTypeEnum? cefrLevel,
+    String? voice,
+    bool setVoiceNull = false,
+  }) {
     return UserSettings(
-      dateOfBirth: dateOfBirth,
-      createdAt: createdAt,
-      publicProfile: publicProfile,
-      targetLanguage: targetLanguage,
-      sourceLanguage: sourceLanguage,
-      gender: gender,
-      country: country,
-      about: about,
-      cefrLevel: cefrLevel,
-      voice: voice,
+      dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+      createdAt: createdAt ?? this.createdAt,
+      publicProfile: publicProfile ?? this.publicProfile,
+      targetLanguage: targetLanguage ?? this.targetLanguage,
+      sourceLanguage: sourceLanguage ?? this.sourceLanguage,
+      gender: gender ?? this.gender,
+      country: country ?? this.country,
+      about: about ?? this.about,
+      cefrLevel: cefrLevel ?? this.cefrLevel,
+      voice: setVoiceNull ? null : (voice ?? this.voice),
     );
   }
 
@@ -170,15 +182,16 @@ class UserSettings {
 
 /// The user's language tool settings.
 class UserToolSettings {
-  bool interactiveTranslator;
-  bool interactiveGrammar;
-  bool immersionMode;
-  bool definitions;
-  bool autoIGC;
-  bool enableTTS;
-  bool enableAutocorrect;
+  final bool interactiveTranslator;
+  final bool interactiveGrammar;
+  final bool immersionMode;
+  final bool definitions;
+  final bool autoIGC;
+  final bool enableTTS;
+  final bool enableAutocorrect;
+  final bool selectAudioMessagesOnPlay;
 
-  UserToolSettings({
+  const UserToolSettings({
     this.interactiveTranslator = true,
     this.interactiveGrammar = true,
     this.immersionMode = false,
@@ -186,6 +199,7 @@ class UserToolSettings {
     this.autoIGC = true,
     this.enableTTS = true,
     this.enableAutocorrect = false,
+    this.selectAudioMessagesOnPlay = true,
   });
 
   factory UserToolSettings.fromJson(Map<String, dynamic> json) =>
@@ -199,6 +213,7 @@ class UserToolSettings {
         autoIGC: json[ModelKey.autoIGC] ?? true,
         enableTTS: json[ToolSetting.enableTTS.toString()] ?? true,
         enableAutocorrect: json["enableAutocorrect"] ?? false,
+        selectAudioMessagesOnPlay: json["selectAudioMessagesOnPlay"] ?? true,
       );
 
   Map<String, dynamic> toJson() {
@@ -210,6 +225,7 @@ class UserToolSettings {
     data[ModelKey.autoIGC] = autoIGC;
     data[ToolSetting.enableTTS.toString()] = enableTTS;
     data["enableAutocorrect"] = enableAutocorrect;
+    data["selectAudioMessagesOnPlay"] = selectAudioMessagesOnPlay;
     return data;
   }
 
@@ -243,15 +259,27 @@ class UserToolSettings {
     );
   }
 
-  UserToolSettings copy() {
+  UserToolSettings copyWith({
+    bool? interactiveTranslator,
+    bool? interactiveGrammar,
+    bool? immersionMode,
+    bool? definitions,
+    bool? autoIGC,
+    bool? enableTTS,
+    bool? enableAutocorrect,
+    bool? selectAudioMessagesOnPlay,
+  }) {
     return UserToolSettings(
-      interactiveTranslator: interactiveTranslator,
-      interactiveGrammar: interactiveGrammar,
-      immersionMode: immersionMode,
-      definitions: definitions,
-      autoIGC: autoIGC,
-      enableTTS: enableTTS,
-      enableAutocorrect: enableAutocorrect,
+      interactiveTranslator:
+          interactiveTranslator ?? this.interactiveTranslator,
+      interactiveGrammar: interactiveGrammar ?? this.interactiveGrammar,
+      immersionMode: immersionMode ?? this.immersionMode,
+      definitions: definitions ?? this.definitions,
+      autoIGC: autoIGC ?? this.autoIGC,
+      enableTTS: enableTTS ?? this.enableTTS,
+      enableAutocorrect: enableAutocorrect ?? this.enableAutocorrect,
+      selectAudioMessagesOnPlay:
+          selectAudioMessagesOnPlay ?? this.selectAudioMessagesOnPlay,
     );
   }
 
@@ -266,7 +294,8 @@ class UserToolSettings {
         other.definitions == definitions &&
         other.autoIGC == autoIGC &&
         other.enableTTS == enableTTS &&
-        other.enableAutocorrect == enableAutocorrect;
+        other.enableAutocorrect == enableAutocorrect &&
+        other.selectAudioMessagesOnPlay == selectAudioMessagesOnPlay;
   }
 
   @override
@@ -278,24 +307,22 @@ class UserToolSettings {
     autoIGC.hashCode,
     enableTTS.hashCode,
     enableAutocorrect.hashCode,
+    selectAudioMessagesOnPlay.hashCode,
   ]);
 }
 
 /// A wrapper around the matrix account data for the user profile.
 /// Enables easy access to the profile data and saving new data.
 class Profile {
-  late UserSettings userSettings;
-  late UserToolSettings toolSettings;
-  late InstructionSettings instructionSettings;
+  final UserSettings userSettings;
+  final UserToolSettings toolSettings;
+  final InstructionSettings instructionSettings;
 
-  Profile({
+  const Profile({
     required this.userSettings,
-    UserToolSettings? toolSettings,
-    InstructionSettings? instructionSettings,
-  }) {
-    this.toolSettings = toolSettings ?? UserToolSettings();
-    this.instructionSettings = instructionSettings ?? InstructionSettings();
-  }
+    this.toolSettings = const UserToolSettings(),
+    this.instructionSettings = const InstructionSettings(),
+  });
 
   /// Load an instance of profile from the client's account data.
   static Profile? fromAccountData(Map<String, Object?>? profileData) {
@@ -386,11 +413,15 @@ class Profile {
     );
   }
 
-  Profile copy() {
+  Profile copyWith({
+    UserSettings? userSettings,
+    UserToolSettings? toolSettings,
+    InstructionSettings? instructionSettings,
+  }) {
     return Profile(
-      userSettings: userSettings.copy(),
-      toolSettings: toolSettings.copy(),
-      instructionSettings: instructionSettings.copy(),
+      userSettings: userSettings ?? this.userSettings,
+      toolSettings: toolSettings ?? this.toolSettings,
+      instructionSettings: instructionSettings ?? this.instructionSettings,
     );
   }
 

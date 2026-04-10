@@ -126,6 +126,11 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   late String currentClientSecret;
   RequestTokenResponse? currentThreepidCreds;
+  // #Pangea
+  String? currentRegistrationEmail;
+  String? currentRegisrationUsername;
+  int currentSendAttempt = 0;
+  // Pangea#
 
   void setActiveClient(Client? cl) {
     final i = widget.clients.indexWhere((c) => c == cl);
@@ -212,6 +217,12 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                   store,
                 );
                 _registerSubs(_loginClientCandidate!.clientName);
+                // #Pangea
+                // Update BackgroundPush with the new client so push
+                // notifications work after logout/login without a restart.
+                backgroundPush?.client = _loginClientCandidate!;
+                backgroundPush?.setupPush();
+                // Pangea#
                 _loginClientCandidate = null;
                 // #Pangea
                 // FluffyChatApp.router.go('/backup');
@@ -308,7 +319,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     }
 
     final height = MediaQuery.heightOf(context);
-    if (height > 500) {
+    if (height > 550) {
       _lastShownPopupHeight = null;
       return;
     }
@@ -587,11 +598,21 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   // #Pangea
   Future<void> _processIncomingUris(Uri? uri) async {
-    if (uri == null || uri.fragment.isEmpty) return;
+    if (uri == null) return;
 
-    final path = uri.fragment.startsWith('/')
-        ? uri.fragment
-        : '/${uri.fragment}';
+    String path;
+    if (uri.fragment.isNotEmpty) {
+      path = uri.fragment.startsWith('/') ? uri.fragment : '/${uri.fragment}';
+    } else {
+      final query = uri.queryParameters;
+      final queryString = query.entries
+          .map((e) => '${e.key}=${e.value}')
+          .join('&');
+      path = '/${uri.pathSegments.join('/')}';
+      if (queryString.isNotEmpty) {
+        path = '$path?$queryString';
+      }
+    }
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       FluffyChatApp.router.go(path);

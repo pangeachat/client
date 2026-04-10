@@ -56,12 +56,6 @@
       {{flutter_build_config}}
 
       _flutter.loader.load({
-        // #Pangea
-        entrypointUrl: "main.dart.js?v=" + {{flutter_service_worker_version}},
-        // Pangea#
-        serviceWorker: {
-          serviceWorkerVersion: {{flutter_service_worker_version}},
-        },
       onEntrypointLoaded: function (engineInitializer) {
         engineInitializer.initializeEngine({ useColorEmoji: true }).then(function (appRunner) {
           appRunner.runApp();

@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/authentication/delete_account_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/app_lock.dart';
@@ -104,10 +105,23 @@ class SettingsSecurityController extends State<SettingsSecurity> {
     final resp = await showFutureLoadingDialog(
       context: context,
       delay: false,
-      future: () =>
-          Matrix.of(context).client.uiaRequestBackground<IdServerUnbindResult?>(
-            (auth) => Matrix.of(context).client.deactivateAccount(auth: auth),
-          ),
+      // #Pangea
+      // future: () =>
+      //     Matrix.of(context).client.uiaRequestBackground<IdServerUnbindResult?>(
+      //       (auth) => Matrix.of(
+      //         context,
+      //       ).client.deactivateAccount(auth: auth, erase: true),
+      //     ),
+      future: () async {
+        final client = Matrix.of(context).client;
+        await client.deleteAccount();
+        await client.uiaRequestBackground<IdServerUnbindResult?>(
+          (auth) => Matrix.of(
+            context,
+          ).client.deactivateAccount(auth: auth, erase: true),
+        );
+      },
+      // Pangea#
     );
 
     if (!resp.isError) {

@@ -13,7 +13,9 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/knock_notification_utils.dart';
+import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -132,6 +134,33 @@ Future<void> _tryPushHelper(
     return;
   }
   Logs().v('Push helper got notification event of type ${event.type}.');
+
+  // #Pangea
+  if (event.type == EventTypes.RoomMember) {
+    final membership = event.content.tryGet<String>('membership');
+    if (membership == 'invite') {
+      Room? room = client.getRoomById(event.room.id);
+      if (room == null) {
+        await client.waitForRoomInSync(event.room.id, join: true);
+        room = client.getRoomById(event.room.id);
+        if (room == null) {
+          Logs().e(
+            'Failed to join room ${event.room.id} after receiving join event',
+          );
+          return;
+        }
+      }
+      final recentCode = SpaceCodeRepo.recentCode?.toLowerCase();
+      final spaceCode = room.classCode?.toLowerCase();
+      if (recentCode != null && spaceCode != null && recentCode == spaceCode) {
+        Logs().v(
+          'Received join event for room with matching space code. Auto-joining space.',
+        );
+        return;
+      }
+    }
+  }
+  // Pangea#
 
   if (event.type.startsWith('m.call')) {
     // make sure bg sync is on (needed to update hold, unhold events)

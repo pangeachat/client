@@ -18,6 +18,7 @@ import 'package:fluffychat/pangea/common/widgets/share_room_button.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/course_settings/course_settings.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -29,6 +30,8 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import '../../course_plans/courses/course_plans_repo.dart';
 
 enum SpaceSettingsTabs {
   chat,
@@ -147,16 +150,46 @@ class SpaceDetailsContent extends StatelessWidget {
         description: L10n.of(context).activitiesToUnlockTopicDesc,
         icon: const Icon(Icons.lock_open_outlined, size: 30.0),
         onPressed: () async {
+          int minActivities = 0;
+          final l1 = MatrixState.pangeaController.userController.userL1Code;
+          if (room.coursePlan != null && l1 != null) {
+            final request = GetLocalizedCoursesRequest(
+              coursePlanIds: [room.coursePlan!.uuid],
+              l1: l1,
+            );
+
+            final resp = await showFutureLoadingDialog(
+              context: context,
+              future: () async {
+                final course = await CoursePlansRepo.get(request);
+                await course.fetchTopics();
+                return course.loadedTopics.values
+                    .map((t) => t.activityIds.length)
+                    .min;
+              },
+              showError: (e) => false,
+            );
+
+            if (resp.result != null) {
+              minActivities = resp.result!;
+            }
+          }
           final current = room.teacherMode.activitiesToUnlockTopic;
           final resp = await showTextInputDialog(
             context: context,
             title: L10n.of(context).activitiesToUnlockTopicTitle,
             keyboardType: TextInputType.number,
+            maxLength: 2,
+            maxLines: 1,
             validator: (input) {
-              if (input.isEmpty ||
-                  int.tryParse(input) == null ||
-                  int.parse(input) < 0) {
+              final value = int.tryParse(input);
+              if (value == null || value < 0) {
                 return L10n.of(context).enterNumber;
+              }
+              if (value > minActivities) {
+                return L10n.of(
+                  context,
+                ).minActivitiesPerTopicWarning(value, minActivities);
               }
               return null;
             },
@@ -337,8 +370,9 @@ class SpaceDetailsContent extends StatelessWidget {
                     client: room.client,
                   );
                 case SpaceSettingsTabs.course:
-                  return SingleChildScrollView(
-                    child: CourseSettings(controller: controller),
+                  return CourseSettings(
+                    controller: controller,
+                    roomId: room.id,
                   );
                 case SpaceSettingsTabs.participants:
                   return SingleChildScrollView(

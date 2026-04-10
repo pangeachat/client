@@ -4,15 +4,18 @@ on:
   pull_request:
   merge_group:
 
+permissions:
+  contents: read
+
 jobs:
   code_tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: ./scripts/generate-locale-config.sh
       - run: git diff --exit-code
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
-      - uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
@@ -33,18 +36,18 @@ jobs:
   build_debug_apk:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
-      - uses: actions/setup-java@v5
+      - uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5
         with:
           java-version: ${{ env.JAVA_VERSION }}
           distribution: "zulu"
-      - uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
       - uses: ./.github/actions/free_up_space
-      - uses: moonrepo/setup-rust@v1
+      - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
       - name: Add Firebase Messaging
         run: ./scripts/add-firebase-messaging.sh
       - run: flutter build apk --debug --target-platform android-arm # Pangea change, only build arm to decrease size & time
@@ -52,13 +55,13 @@ jobs:
   build_debug_web:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
-      - uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
-      - uses: moonrepo/setup-rust@v1
+      - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
       - run: rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
       - run: flutter pub get
       - name: Prepare web
@@ -71,7 +74,7 @@ jobs:
         arch: [ x64, arm64 ]
     runs-on: ${{ matrix.arch == 'arm64' && 'ubuntu-24.04-arm' || 'ubuntu-latest'}}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install git wget curl libcurl4-openssl-dev clang cmake ninja-build pkg-config libgtk-3-dev libblkid-dev liblzma-dev libjsoncpp-dev cmake-data libsecret-1-dev libsecret-1-0 librhash0 libssl-dev libwebkit2gtk-4.1-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev -y
@@ -79,23 +82,23 @@ jobs:
         run: |
           git clone --branch ${{ env.FLUTTER_VERSION }} https://github.com/flutter/flutter.git
           ./flutter/bin/flutter doctor
-      - uses: moonrepo/setup-rust@v1
+      - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
       - run: ./flutter/bin/flutter pub get
       - run: ./flutter/bin/flutter build linux --target-platform linux-${{ matrix.arch }}
 
   build_debug_ios:
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
-      - uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
       - name: Use Xcode 16.4
         run: sudo xcode-select --switch /Applications/Xcode_16.4.app
       - run: brew install sqlcipher
-      - uses: moonrepo/setup-rust@v1
+      - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
       - name: Add Firebase Messaging
         run: ./scripts/add-firebase-messaging.sh
       - run: flutter pub get

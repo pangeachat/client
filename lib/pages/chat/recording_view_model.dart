@@ -13,6 +13,7 @@ import 'package:wakelock_plus/wakelock_plus.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -62,7 +63,31 @@ class RecordingViewModelState extends State<RecordingViewModel> {
         return;
       }
     }
-    if (await AudioRecorder().hasPermission() == false) return;
+    // #Pangea
+    // if (await AudioRecorder().hasPermission() == false) return;
+    try {
+      if (await AudioRecorder().hasPermission() == false) {
+        showOkAlertDialog(
+          context: context,
+          title: L10n.of(context).oopsSomethingWentWrong,
+          message: L10n.of(context).emptyAudioError,
+        );
+        return;
+      }
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: "Error while checking audio recording permission: ${e.toString()}",
+        s: s,
+        data: {},
+      );
+      showOkAlertDialog(
+        context: context,
+        title: L10n.of(context).oopsSomethingWentWrong,
+        message: L10n.of(context).emptyAudioError,
+      );
+      return;
+    }
+    // Pangea#
 
     final audioRecorder = _audioRecorder ??= AudioRecorder();
     setState(() {});

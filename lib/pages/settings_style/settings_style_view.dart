@@ -3,19 +3,16 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:dynamic_color/dynamic_color.dart';
-import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pages/chat/events/state_message.dart';
+import 'package:fluffychat/pangea/chat/widgets/style_example_message.dart';
 import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/utils/color_value.dart';
-import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
-import '../../config/app_config.dart';
 import 'settings_style.dart';
 
 class SettingsStyleView extends StatelessWidget {
@@ -40,29 +37,46 @@ class SettingsStyleView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: .stretch,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: SegmentedButton<ThemeMode>(
-                selected: {controller.currentTheme},
-                onSelectionChanged: (selected) =>
-                    controller.switchTheme(selected.single),
-                segments: [
-                  ButtonSegment(
-                    value: ThemeMode.light,
-                    label: Text(L10n.of(context).lightTheme),
-                    icon: const Icon(Icons.light_mode_outlined),
-                  ),
-                  ButtonSegment(
-                    value: ThemeMode.dark,
-                    label: Text(L10n.of(context).darkTheme),
-                    icon: const Icon(Icons.dark_mode_outlined),
-                  ),
-                  ButtonSegment(
-                    value: ThemeMode.system,
-                    label: Text(L10n.of(context).systemTheme),
-                    icon: const Icon(Icons.auto_mode_outlined),
-                  ),
-                ],
+            // #Pangea
+            LayoutBuilder(
+              builder: (context, constraints) => Center(
+                child:
+                    // Pangea#
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: SegmentedButton<ThemeMode>(
+                        // #Pangea
+                        direction: constraints.maxWidth < 350
+                            ? Axis.vertical
+                            : Axis.horizontal,
+                        style: SegmentedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        // Pangea#
+                        selected: {controller.currentTheme},
+                        onSelectionChanged: (selected) =>
+                            controller.switchTheme(selected.single),
+                        segments: [
+                          ButtonSegment(
+                            value: ThemeMode.light,
+                            label: Text(L10n.of(context).lightTheme),
+                            icon: const Icon(Icons.light_mode_outlined),
+                          ),
+                          ButtonSegment(
+                            value: ThemeMode.dark,
+                            label: Text(L10n.of(context).darkTheme),
+                            icon: const Icon(Icons.dark_mode_outlined),
+                          ),
+                          ButtonSegment(
+                            value: ThemeMode.system,
+                            label: Text(L10n.of(context).systemTheme),
+                            icon: const Icon(Icons.auto_mode_outlined),
+                          ),
+                        ],
+                      ),
+                    ),
               ),
             ),
             Divider(color: theme.dividerColor),
@@ -163,7 +177,9 @@ class SettingsStyleView extends StatelessWidget {
                       duration: FluffyThemes.animationDuration,
                       curve: FluffyThemes.animationCurve,
                       decoration: const BoxDecoration(),
-                      clipBehavior: Clip.hardEdge,
+                      // #Pangea
+                      // clipBehavior: Clip.hardEdge,
+                      // Pangea#
                       child: Stack(
                         alignment: Alignment.center,
                         children: [
@@ -181,98 +197,104 @@ class SettingsStyleView extends StatelessWidget {
                                   fit: BoxFit.cover,
                                   isThumbnail: true,
                                   width: FluffyThemes.columnWidth * 2,
-                                  height: 212,
+                                  // #Pangea
+                                  // height: 212,
+                                  height: 375,
+                                  // Pangea#
                                 ),
                               ),
                             ),
-                          Column(
-                            mainAxisSize: .min,
-                            children: [
-                              const SizedBox(height: 16),
-                              StateMessage(
-                                Event(
-                                  eventId: 'style_dummy',
-                                  room: Room(
-                                    id: '!style_dummy',
-                                    client: client,
-                                  ),
-                                  content: {'membership': 'join'},
-                                  type: EventTypes.RoomMember,
-                                  senderId: client.userID!,
-                                  originServerTs: DateTime.now(),
-                                  stateKey: client.userID!,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  left: 12 + 12 + Avatar.defaultSize,
-                                  right: 12,
-                                  top: accountConfig.wallpaperUrl == null
-                                      ? 0
-                                      : 12,
-                                  bottom: 12,
-                                ),
-                                child: DecoratedBox(
-                                  decoration: BoxDecoration(
-                                    color: theme.bubbleColor,
-                                    borderRadius: BorderRadius.circular(
-                                      AppConfig.borderRadius,
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 16,
-                                      vertical: 8,
-                                    ),
-                                    child: Text(
-                                      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor',
-                                      style: TextStyle(
-                                        color: theme.onBubbleColor,
-                                        fontSize:
-                                            AppConfig.messageFontSize *
-                                            AppSettings.fontSizeFactor.value,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                    right: 12,
-                                    left: 12,
-                                    top: accountConfig.wallpaperUrl == null
-                                        ? 0
-                                        : 12,
-                                    bottom: 12,
-                                  ),
-                                  child: Material(
-                                    color:
-                                        theme.colorScheme.surfaceContainerHigh,
-                                    borderRadius: BorderRadius.circular(
-                                      AppConfig.borderRadius,
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 16,
-                                        vertical: 8,
-                                      ),
-                                      child: Text(
-                                        'Lorem ipsum dolor sit amet',
-                                        style: TextStyle(
-                                          color: theme.colorScheme.onSurface,
-                                          fontSize:
-                                              AppConfig.messageFontSize *
-                                              AppSettings.fontSizeFactor.value,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                          // #Pangea
+                          StyleExampleMessage(),
+                          // Column(
+                          //   mainAxisSize: .min,
+                          //   children: [
+                          //     const SizedBox(height: 16),
+                          //     StateMessage(
+                          //       Event(
+                          //         eventId: 'style_dummy',
+                          //         room: Room(
+                          //           id: '!style_dummy',
+                          //           client: client,
+                          //         ),
+                          //         content: {'membership': 'join'},
+                          //         type: EventTypes.RoomMember,
+                          //         senderId: client.userID!,
+                          //         originServerTs: DateTime.now(),
+                          //         stateKey: client.userID!,
+                          //       ),
+                          //     ),
+                          //     Padding(
+                          //       padding: EdgeInsets.only(
+                          //         left: 12 + 12 + Avatar.defaultSize,
+                          //         right: 12,
+                          //         top: accountConfig.wallpaperUrl == null
+                          //             ? 0
+                          //             : 12,
+                          //         bottom: 12,
+                          //       ),
+                          //       child: DecoratedBox(
+                          //         decoration: BoxDecoration(
+                          //           color: theme.bubbleColor,
+                          //           borderRadius: BorderRadius.circular(
+                          //             AppConfig.borderRadius,
+                          //           ),
+                          //         ),
+                          //         child: Padding(
+                          //           padding: const EdgeInsets.symmetric(
+                          //             horizontal: 16,
+                          //             vertical: 8,
+                          //           ),
+                          //           child: Text(
+                          //             'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor',
+                          //             style: TextStyle(
+                          //               color: theme.onBubbleColor,
+                          //               fontSize:
+                          //                   AppConfig.messageFontSize *
+                          //                   AppSettings.fontSizeFactor.value,
+                          //             ),
+                          //           ),
+                          //         ),
+                          //       ),
+                          //     ),
+                          //     Align(
+                          //       alignment: Alignment.centerLeft,
+                          //       child: Padding(
+                          //         padding: EdgeInsets.only(
+                          //           right: 12,
+                          //           left: 12,
+                          //           top: accountConfig.wallpaperUrl == null
+                          //               ? 0
+                          //               : 12,
+                          //           bottom: 12,
+                          //         ),
+                          //         child: Material(
+                          //           color:
+                          //               theme.colorScheme.surfaceContainerHigh,
+                          //           borderRadius: BorderRadius.circular(
+                          //             AppConfig.borderRadius,
+                          //           ),
+                          //           child: Padding(
+                          //             padding: const EdgeInsets.symmetric(
+                          //               horizontal: 16,
+                          //               vertical: 8,
+                          //             ),
+                          //             child: Text(
+                          //               'Lorem ipsum dolor sit amet',
+                          //               style: TextStyle(
+                          //                 color: theme.colorScheme.onSurface,
+                          //                 fontSize:
+                          //                     AppConfig.messageFontSize *
+                          //                     AppSettings.fontSizeFactor.value,
+                          //               ),
+                          //             ),
+                          //           ),
+                          //         ),
+                          //       ),
+                          //     ),
+                          //   ],
+                          // ),
+                          // Pangea#
                         ],
                       ),
                     ),

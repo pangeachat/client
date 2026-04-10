@@ -30,12 +30,16 @@ class PangeaEventTypes {
 
   /// Relates to course plans
   static const coursePlan = "pangea.course_plan";
+  // deprecated, no longer used in client, used to filter out of permissions list
+  static const courseUser = "p.course_user";
   static const teacherMode = "pangea.teacher_mode";
   static const courseChatList = "pangea.course_chat_list";
 
   static const analyticsSettings = "pangea.analytics_settings";
 
   static const regenerationRequest = "pangea.regeneration_request";
+  static const botNotificationOpened = "p.room.notice.opened";
 
   static const knockedRooms = 'org.pangea.knocked_rooms';
+  static const notificationSettings = 'org.pangea.notification_settings';
 }

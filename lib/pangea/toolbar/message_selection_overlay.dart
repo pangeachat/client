@@ -12,6 +12,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -199,6 +200,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     selectedTokenNotifier.value = selectedToken;
     selectModeController.setPlayingToken(selectedToken?.text);
 
+    GoogleAnalytics.viewWordCard();
     if (selectedToken != null &&
         selectModeController.selectedMode.value != SelectMode.audio) {
       TtsController.tryToSpeak(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/course_creation/course_plan_filter_widget.dart';
+import 'package:fluffychat/pangea/languages/language_display_name_widget.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -17,12 +18,30 @@ class CourseLanguageFilter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final langs =
+        MatrixState.pangeaController.pLanguageStore.unlocalizedTargetOptions;
     return CoursePlanFilter<LanguageModel>(
-      value: value,
+      value: value != null && langs.contains(value) ? value : null,
       onChanged: onChanged,
-      items:
-          MatrixState.pangeaController.pLanguageStore.unlocalizedTargetOptions,
-      displayname: (v) => v.getDisplayName(context),
+      items: langs,
+      displayname: (v) => Row(
+        children: [
+          LanguageDisplayNameWidget(
+            v,
+            style: DefaultTextStyle.of(context).style,
+            iconSize: 18.0,
+            spacing: 6.0,
+          ),
+        ],
+      ),
+      selectedItemBuilder: (v) => Row(
+        children: [
+          Text(
+            v.getDisplayName(context),
+            style: DefaultTextStyle.of(context).style,
+          ),
+        ],
+      ),
       enableSearch: true,
       defaultName: L10n.of(context).allLanguages,
       searchMatchFn: (item, searchValue) =>

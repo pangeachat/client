@@ -11,7 +11,6 @@ import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart'
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
-import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -62,21 +61,6 @@ class SelectedCourseController extends State<SelectedCourse>
         return L10n.of(context).createCourse;
       case SelectedCourseMode.addToSpace:
         return L10n.of(context).addCoursePlan;
-    }
-  }
-
-  Future<void> joinWithCode(String code) async {
-    if (code.isEmpty) {
-      return;
-    }
-
-    final roomId = await SpaceCodeController.joinSpaceWithCode(context, code);
-
-    if (roomId != null) {
-      final room = Matrix.of(context).client.getRoomById(roomId);
-      room?.isSpace ?? true
-          ? context.go('/rooms/spaces/$roomId/details')
-          : context.go('/rooms/$roomId');
     }
   }
 

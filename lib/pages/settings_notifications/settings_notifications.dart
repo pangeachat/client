@@ -2,12 +2,15 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/settings_notifications/push_rule_extensions.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/notifications/notifications_client_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
@@ -27,6 +30,15 @@ class SettingsNotifications extends StatefulWidget {
 
 class SettingsNotificationsController extends State<SettingsNotifications> {
   bool isLoading = false;
+  // #Pangea
+  ScaffoldMessengerState? messenger;
+
+  @override
+  void dispose() {
+    messenger?.hideCurrentSnackBar();
+    super.dispose();
+  }
+  // Pangea#
 
   void onPusherTap(Pusher pusher) async {
     final delete = await showModalActionPopup<bool>(
@@ -198,6 +210,69 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
   Future<void> requestNotificationPermission() async {
     await Matrix.of(context).requestNotificationPermission();
     if (mounted) setState(() {});
+  }
+
+  Future<void> setEmailNotificationsEnabled(bool enable) async {
+    try {
+      await Matrix.of(context).client.setEnableEmailNotifs(enable);
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'enable': enable});
+
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.toLocalizedString(context)),
+          showCloseIcon: true,
+        ),
+      );
+    } finally {
+      if (mounted) {
+        setState(() {
+          pusherFuture = null;
+        });
+      }
+    }
+  }
+
+  void showNoEmailSnackbar() {
+    messenger ??= ScaffoldMessenger.of(context);
+    messenger!.hideCurrentSnackBar();
+    messenger!.showSnackBar(
+      SnackBar(
+        content: RichText(
+          text: TextSpan(
+            style: TextStyle(color: Theme.of(context).colorScheme.surface),
+            children: [
+              TextSpan(text: L10n.of(context).noAddressDescription),
+              const TextSpan(text: ' '),
+              WidgetSpan(
+                alignment: PlaceholderAlignment.baseline,
+                baseline: TextBaseline.alphabetic,
+                child: InkWell(
+                  onTap: () {
+                    messenger!.hideCurrentSnackBar();
+                    context.go("/rooms/settings/security/3pid");
+                  },
+                  child: Text(
+                    L10n.of(context).clickToAddEmail,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                      decoration: TextDecoration.underline,
+                      decorationColor: Theme.of(
+                        context,
+                      ).colorScheme.primaryContainer,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        duration: Duration(seconds: 15),
+        showCloseIcon: true,
+      ),
+    );
   }
   // Pangea#
 

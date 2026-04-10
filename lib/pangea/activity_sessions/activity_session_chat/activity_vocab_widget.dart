@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:material_symbols_icons/symbols.dart';
+
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_details_row.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -32,25 +36,38 @@ class ActivityVocabWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (usedVocab == null) {
-      return _VocabChips(
-        vocab: vocab,
-        targetId: targetId,
-        langCode: langCode,
-        usedVocab: const {},
-        activityLangCode: activityLangCode,
-      );
-    }
-
-    return ValueListenableBuilder(
-      valueListenable: usedVocab!,
-      builder: (context, used, _) => _VocabChips(
-        vocab: vocab,
-        targetId: targetId,
-        langCode: langCode,
-        usedVocab: used,
-        activityLangCode: activityLangCode,
-      ),
+    return Column(
+      spacing: 8.0,
+      mainAxisSize: .min,
+      crossAxisAlignment: .start,
+      children: [
+        ActivitySessionDetailsRow(
+          icon: Symbols.dictionary,
+          iconSize: 16.0,
+          child: Text(
+            L10n.of(context).suggestedVocab,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+        ),
+        usedVocab == null
+            ? _VocabChips(
+                vocab: vocab,
+                targetId: targetId,
+                langCode: langCode,
+                usedVocab: const {},
+                activityLangCode: activityLangCode,
+              )
+            : ValueListenableBuilder(
+                valueListenable: usedVocab!,
+                builder: (context, used, _) => _VocabChips(
+                  vocab: vocab,
+                  targetId: targetId,
+                  langCode: langCode,
+                  usedVocab: used,
+                  activityLangCode: activityLangCode,
+                ),
+              ),
+      ],
     );
   }
 }

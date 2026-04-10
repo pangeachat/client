@@ -42,6 +42,9 @@ class CurrentSubscriptionInfo {
       expirationDate != null &&
       expirationDate!.isAfter(DateTime(2100));
 
+  bool get isFreeTrial =>
+      currentSubscriptionIsPromotional && currentSubscription?.appId == "trial";
+
   String? get purchasePlatformDisplayName {
     if (currentSubscription?.appId == null) return null;
     return availableSubscriptionInfo.appIds?.appDisplayName(
@@ -92,7 +95,8 @@ class AvailableSubscriptionsInfo {
     availableSubscriptions = (allProducts ?? [])
         .where(
           (product) =>
-              product.appId == appIds!.currentAppId || product.appId == "trial",
+              (product.appId == appIds!.currentAppId && product.isVisible) ||
+              product.appId == "trial",
         )
         .sorted((a, b) => a.price.compareTo(b.price))
         .toList();
@@ -135,4 +139,8 @@ class AvailableSubscriptionsInfo {
     data['last_updated'] = (lastUpdated ?? DateTime.now()).toIso8601String();
     return data;
   }
+
+  bool get isExpired =>
+      lastUpdated == null ||
+      DateTime.now().difference(lastUpdated!).inMinutes > 1440; // 24 hours
 }

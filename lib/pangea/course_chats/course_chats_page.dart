@@ -13,6 +13,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 import 'package:fluffychat/pangea/chat_list/widgets/public_room_bottom_sheet.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_view.dart';
 import 'package:fluffychat/pangea/course_chats/course_default_chats_enum.dart';
 import 'package:fluffychat/pangea/course_chats/extended_space_rooms_chunk.dart';
@@ -664,6 +665,12 @@ class CourseChatsController extends State<CourseChats>
       type: type,
       name: type.title(L10n.of(context)),
     );
+
+    GoogleAnalytics.createChat(roomId);
+    final classCode = room!.classCode;
+    if (classCode != null) {
+      GoogleAnalytics.addParent(roomId, classCode);
+    }
 
     context.go('/rooms/spaces/${widget.roomId}/$roomId');
   }

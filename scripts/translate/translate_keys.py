@@ -100,7 +100,7 @@ def save_translations(lang_code: str, translations: dict[str, str]) -> None:
             existing_data[key] = value  # new key appended at the end
 
     with open(path_to_translations, "w", encoding="utf-8") as f:
-        f.write(json.dumps(existing_data, indent=2, ensure_ascii=False))
+        f.write(json.dumps(existing_data, indent=4, ensure_ascii=False))
 
 
 def reconcile_metadata(

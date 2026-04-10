@@ -42,7 +42,7 @@ class MorphIcon extends StatelessWidget {
       colorReplacements: theme.brightness == Brightness.dark
           ? {"white": theme.cardColor.hexValue.toString(), "black": "white"}
           : {},
-      errorIcon: Icon(morphFeature.fallbackIcon),
+      errorIcon: Icon(morphFeature.fallbackIcon, size: size?.width ?? 24.0),
       width: size?.width,
       height: size?.height,
     );

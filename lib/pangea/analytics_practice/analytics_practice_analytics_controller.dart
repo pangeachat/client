@@ -70,6 +70,9 @@ class AnalyticsPracticeAnalyticsController {
       MatrixState.pangeaController.initControllers();
       await analyticsService.initCompleter.future;
     }
+    if (analyticsService.initError != null) {
+      throw analyticsService.initError!;
+    }
   }
 
   Future<void> waitForUpdate() => analyticsService

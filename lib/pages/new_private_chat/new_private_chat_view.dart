@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
-import 'package:pretty_qr_code/pretty_qr_code.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/new_private_chat/new_private_chat.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
-import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import '../../widgets/qr_code_viewer.dart';
 
 class NewPrivateChatView extends StatelessWidget {
   final NewPrivateChatController controller;
@@ -158,69 +153,69 @@ class NewPrivateChatView extends StatelessWidget {
                           //   title: Text(L10n.of(context).createGroup),
                           //   onTap: () => context.go('/rooms/newgroup'),
                           // ),
+                          // if (PlatformInfos.isMobile)
+                          //   ListTile(
+                          //     leading: CircleAvatar(
+                          //       backgroundColor:
+                          //           theme.colorScheme.primaryContainer,
+                          //       foregroundColor:
+                          //           theme.colorScheme.onPrimaryContainer,
+                          //       child: const Icon(
+                          //         Icons.qr_code_scanner_outlined,
+                          //       ),
+                          //     ),
+                          //     title: Text(L10n.of(context).scanQrCode),
+                          //     onTap: controller.openScannerAction,
+                          //   ),
+                          // Center(
+                          //   child: Padding(
+                          //     padding: const EdgeInsets.symmetric(
+                          //       horizontal: 64.0,
+                          //       vertical: 24.0,
+                          //     ),
+                          //     child: Material(
+                          //       shape: RoundedRectangleBorder(
+                          //         borderRadius: BorderRadius.circular(
+                          //           AppConfig.borderRadius,
+                          //         ),
+                          //         side: BorderSide(
+                          //           width: 3,
+                          //           color: theme.colorScheme.primary,
+                          //         ),
+                          //       ),
+                          //       color: Colors.transparent,
+                          //       clipBehavior: Clip.hardEdge,
+                          //       child: InkWell(
+                          //         borderRadius: BorderRadius.circular(
+                          //           AppConfig.borderRadius,
+                          //         ),
+                          //         onTap: () =>
+                          //             showQrCodeViewer(context, userId),
+                          //         child: Padding(
+                          //           padding: const EdgeInsets.all(16.0),
+                          //           child: ConstrainedBox(
+                          //             constraints: const BoxConstraints(
+                          //               maxWidth: 200,
+                          //             ),
+                          //             child: PrettyQrView.data(
+                          //               // #Pangea
+                          //               // data: 'https://matrix.to/#/$userId',
+                          //               data: Environment.frontendURL,
+                          //               // Pangea#
+                          //               decoration: PrettyQrDecoration(
+                          //                 shape: PrettyQrSmoothSymbol(
+                          //                   roundFactor: 1,
+                          //                   color: theme.colorScheme.primary,
+                          //                 ),
+                          //               ),
+                          //             ),
+                          //           ),
+                          //         ),
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
                           // Pangea#
-                          if (PlatformInfos.isMobile)
-                            ListTile(
-                              leading: CircleAvatar(
-                                backgroundColor:
-                                    theme.colorScheme.primaryContainer,
-                                foregroundColor:
-                                    theme.colorScheme.onPrimaryContainer,
-                                child: const Icon(
-                                  Icons.qr_code_scanner_outlined,
-                                ),
-                              ),
-                              title: Text(L10n.of(context).scanQrCode),
-                              onTap: controller.openScannerAction,
-                            ),
-                          Center(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 64.0,
-                                vertical: 24.0,
-                              ),
-                              child: Material(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                    AppConfig.borderRadius,
-                                  ),
-                                  side: BorderSide(
-                                    width: 3,
-                                    color: theme.colorScheme.primary,
-                                  ),
-                                ),
-                                color: Colors.transparent,
-                                clipBehavior: Clip.hardEdge,
-                                child: InkWell(
-                                  borderRadius: BorderRadius.circular(
-                                    AppConfig.borderRadius,
-                                  ),
-                                  onTap: () =>
-                                      showQrCodeViewer(context, userId),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(16.0),
-                                    child: ConstrainedBox(
-                                      constraints: const BoxConstraints(
-                                        maxWidth: 200,
-                                      ),
-                                      child: PrettyQrView.data(
-                                        // #Pangea
-                                        // data: 'https://matrix.to/#/$userId',
-                                        data: Environment.frontendURL,
-                                        // Pangea#
-                                        decoration: PrettyQrDecoration(
-                                          shape: PrettyQrSmoothSymbol(
-                                            roundFactor: 1,
-                                            color: theme.colorScheme.primary,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
                         ],
                       )
                     : FutureBuilder(
@@ -261,9 +256,12 @@ class NewPrivateChatView extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(16.0),
                                   child: Text(
-                                    L10n.of(context).noUsersFoundWithQuery(
-                                      controller.controller.text,
-                                    ),
+                                    // #Pangea
+                                    // L10n.of(context).noUsersFoundWithQuery(
+                                    //   controller.controller.text,
+                                    // ),
+                                    L10n.of(context).emptyInviteSearchHint,
+                                    // Pangea#
                                     style: TextStyle(
                                       color: theme.colorScheme.primary,
                                     ),

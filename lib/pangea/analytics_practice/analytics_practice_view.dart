@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/analytics_data/analytics_init_error_indicator.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
 import 'package:fluffychat/pangea/analytics_practice/completed_activity_session_view.dart';
+import 'package:fluffychat/pangea/analytics_practice/insufficient_data_indicator.dart';
 import 'package:fluffychat/pangea/analytics_practice/ongoing_activity_session_view.dart';
 import 'package:fluffychat/pangea/analytics_practice/practice_timer_widget.dart';
 import 'package:fluffychat/pangea/analytics_practice/unsubscribed_practice_page.dart';
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
-import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
-import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 
 class AnalyticsPracticeView extends StatelessWidget {
@@ -62,18 +63,26 @@ class AnalyticsPracticeView extends StatelessWidget {
         child: MaxWidthBody(
           withScrolling: false,
           showBorder: false,
+          padding: EdgeInsets.only(left: 32.0, right: 32.0),
+          addVerticalPadding: false,
           child: Builder(
             builder: (context) {
               final error = controller.session.sessionError;
               if (error != null) {
+                if (error is InsufficientDataException) {
+                  return InsufficientDataIndicator();
+                }
+
                 return error is UnsubscribedException
                     ? const UnsubscribedPracticePage()
-                    : ErrorIndicator(message: error.toLocalizedString(context));
+                    : AnalyticsInitErrorIndicator(
+                        reinitialize: controller.startSession,
+                      );
               }
 
               final session = controller.session.session;
               if (session != null) {
-                return session.isComplete
+                return session.isComplete && !session.loadFailed
                     ? CompletedActivitySessionView(
                         session: session,
                         launchSession: controller.startSession,

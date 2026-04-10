@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 import 'package:meta/meta.dart';
@@ -5,7 +7,7 @@ import 'package:meta/meta.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
-import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
+import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/bot_mode.dart';
 import 'package:fluffychat/pangea/chat_settings/models/bot_options_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -89,9 +91,8 @@ extension BotClientExtension on Client {
         r.getParticipants().any((u) => u.id == BotName.byEnvironment);
   }).toList();
 
-  Future<String> startChatWithBot() => startDirectChat(
+  Future<String> startChatWithBot() => createPangeaDirectChat(
     BotName.byEnvironment,
-    preset: CreateRoomPreset.trustedPrivateChat,
     initialState: [
       StateEvent(
         content: BotOptionsModel(
@@ -107,7 +108,6 @@ extension BotClientExtension on Client {
         ).toJson(),
         type: PangeaEventTypes.botOptions,
       ),
-      RoomDefaults.defaultPowerLevels(userID!),
     ],
   );
 

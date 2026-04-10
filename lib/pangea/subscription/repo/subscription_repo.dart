@@ -25,11 +25,14 @@ class SubscriptionRepo {
 
       return SubscriptionAppIds.fromJson(jsonDecode(res.body));
     } catch (err) {
-      ErrorHandler.logError(
-        m: "Failed to fetch app information for revenuecat API",
-        s: StackTrace.current,
-        data: {},
-      );
+      if (err is ChoreoException) {
+        ErrorHandler.logError(e: err.errorMessage, data: {});
+      } else {
+        ErrorHandler.logError(
+          m: "Failed to fetch app information for revenuecat API",
+          data: {},
+        );
+      }
       return null;
     }
   }
@@ -47,7 +50,11 @@ class SubscriptionRepo {
       );
       return resp.allProducts;
     } catch (err, s) {
-      ErrorHandler.logError(e: err, s: s, data: {});
+      if (err is ChoreoException) {
+        ErrorHandler.logError(e: err.errorMessage, data: {});
+      } else {
+        ErrorHandler.logError(e: err, s: s, data: {});
+      }
       return null;
     }
   }
@@ -67,7 +74,11 @@ class SubscriptionRepo {
         return true;
       }
     } catch (err, s) {
-      ErrorHandler.logError(e: err, s: s, data: {});
+      if (err is ChoreoException) {
+        ErrorHandler.logError(e: err.errorMessage, data: {});
+      } else {
+        ErrorHandler.logError(e: err, s: s, data: {});
+      }
       return false;
     }
   }
@@ -100,26 +111,6 @@ class RCProductsResponseModel {
         .toList()
         .cast<SubscriptionDetails>();
     return RCProductsResponseModel(allProducts: res);
-  }
-
-  static List<SubscriptionDetails> productsFromPackageDetails(
-    Map<String, dynamic> packageDetails,
-    String packageId,
-    Map<String, dynamic> metadata,
-  ) {
-    return packageDetails['products']['items']
-        .map(
-          (productDetails) => SubscriptionDetails(
-            price: double.parse(metadata['$packageId.price']),
-            duration: SubscriptionDuration.values.firstWhereOrNull(
-              (duration) => duration.value == metadata['$packageId.duration'],
-            ),
-            id: productDetails['product']['store_identifier'],
-            appId: productDetails['product']['app_id'],
-          ),
-        )
-        .toList()
-        .cast<SubscriptionDetails>();
   }
 }
 
@@ -172,6 +163,17 @@ class RCSubscriptionResponseModel {
       allEntitlements: activeEntitlements,
       allSubscriptions: history,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'currentSubscriptionId': currentSubscriptionId,
+      'currentSubscription': currentSubscription?.toJson(),
+      'allEntitlements': allEntitlements,
+      'allSubscriptions': allSubscriptions?.map(
+        (key, value) => MapEntry(key, value.toJson()),
+      ),
+    };
   }
 
   static List<String> getActiveEntitlements(Map<String, dynamic> json) {
@@ -244,5 +246,22 @@ class RCSubscription {
       storeTransactionId: json['store_transaction_id'],
       unsubscribeDetectedAt: json['unsubscribe_detected_at'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'autoResumeDate': autoResumeDate,
+      'billingIssuesDetectedAt': billingIssuesDetectedAt,
+      'expiresDate': expiresDate,
+      'gracePeriodExpiresDate': gracePeriodExpiresDate,
+      'isSandbox': isSandbox,
+      'originalPurchaseDate': originalPurchaseDate,
+      'periodType': periodType,
+      'purchaseDate': purchaseDate,
+      'refundedAt': refundedAt,
+      'store': store,
+      'storeTransactionId': storeTransactionId,
+      'unsubscribeDetectedAt': unsubscribeDetectedAt,
+    };
   }
 }

@@ -94,7 +94,16 @@ class LoginController extends State<Login> {
     }
   }
 
-  void login() async => pLoginAction(controller: this, context: context);
+  void login() async {
+    final valid = formKey.currentState!.validate();
+    if (!valid) return;
+    pLoginAction(
+      setLoadingSignIn: setLoadingSignIn,
+      username: usernameController.text.trim(),
+      password: passwordController.text.trim(),
+      context: context,
+    );
+  }
   // void login() async {
   //   final matrix = Matrix.of(context);
   //   if (usernameController.text.isEmpty) {
@@ -315,7 +324,7 @@ class LoginController extends State<Login> {
       title: L10n.of(context).weSentYouAnEmail,
       // #Pangea
       // message: L10n.of(context).pleaseClickOnLink,
-      message: L10n.of(context).clickOnEmailLink,
+      message: L10n.of(context).clickOnEmailLinkDesc,
       // Pangea#
       okLabel: L10n.of(context).iHaveClickedOnLink,
     );

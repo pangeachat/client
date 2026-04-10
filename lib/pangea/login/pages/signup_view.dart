@@ -28,6 +28,7 @@ class SignupPageView extends StatelessWidget {
       key: controller.formKey,
       child: Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: SizedBox(
             width: 450,
             child: Row(
@@ -56,8 +57,36 @@ class SignupPageView extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const PangeaSsoButton(provider: SSOProvider.apple),
-                  const PangeaSsoButton(provider: SSOProvider.google),
+                  if (controller.prevInfo != null)
+                    RichText(
+                      text: TextSpan(
+                        style: TextStyle(color: theme.colorScheme.onSurface),
+                        children: [
+                          TextSpan(
+                            text: L10n.of(context).welcomeBackLogin(
+                              controller.prevInfo!.method.label(
+                                L10n.of(context),
+                              ),
+                            ),
+                          ),
+                          TextSpan(text: ' '),
+                          TextSpan(
+                            text: L10n.of(context).clickToLogin,
+                            style: TextStyle(
+                              color: theme.colorScheme.primary,
+                              decoration: TextDecoration.underline,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                context.go('/home/login');
+                              },
+                          ),
+                        ],
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  PangeaSsoButton(provider: SSOProvider.apple),
+                  PangeaSsoButton(provider: SSOProvider.google),
                   ElevatedButton(
                     onPressed: () => context.go('/home/language/signup/email'),
                     style: ElevatedButton.styleFrom(
@@ -78,6 +107,7 @@ class SignupPageView extends StatelessWidget {
                       ],
                     ),
                   ),
+
                   Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: RichText(

@@ -422,6 +422,7 @@ class InputBar extends StatelessWidget {
 
   void _onInputTap(BuildContext context) {
     if (_shouldShowPaywall(context)) return;
+    if (controller!.text.isEmpty) return;
 
     final baseOffset = controller!.selection.baseOffset;
     final adjustedOffset = _adjustOffsetForNormalization(baseOffset);

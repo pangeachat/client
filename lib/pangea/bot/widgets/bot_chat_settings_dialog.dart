@@ -11,6 +11,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
+import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
 import 'package:fluffychat/pangea/learning_settings/p_language_dropdown.dart';
 import 'package:fluffychat/pangea/learning_settings/voice_dropdown.dart';
 import 'package:fluffychat/pangea/user/user_model.dart' as user;
@@ -65,11 +66,13 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
       ).client.updateBotOptions(_userProfile.userSettings);
     } catch (e, s) {
       reset();
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'roomId': widget.room.id, 'model': _userProfile.toJson()},
-      );
+      if (e is! IdenticalLanguageException) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {'roomId': widget.room.id, 'model': _userProfile.toJson()},
+        );
+      }
       await _showErrorDialog(e);
     }
   }
@@ -126,9 +129,19 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
 
     await _update(
       (model) {
-        model.userSettings.targetLanguage = lang.langCode;
-        model.userSettings.voice = null;
-        return model;
+        final baseLang = model.userSettings.sourceLanguage?.split('-').first;
+        final targetLang = lang.langCodeShort;
+        if (baseLang != null && targetLang == baseLang) {
+          throw IdenticalLanguageException();
+        }
+
+        return model.copyWith(
+          userSettings: model.userSettings.copyWith(
+            targetLanguage: lang.langCode,
+            voice: null,
+            setVoiceNull: true,
+          ),
+        );
       },
       () {
         if (mounted) {
@@ -147,10 +160,9 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
     setState(() => _selectedLevel = level);
 
     await _update(
-      (model) {
-        model.userSettings.cefrLevel = level;
-        return model;
-      },
+      (model) => model.copyWith(
+        userSettings: model.userSettings.copyWith(cefrLevel: level),
+      ),
       () {
         if (mounted) {
           setState(() => _selectedLevel = prevLevel);
@@ -165,10 +177,9 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
 
     setState(() => _selectedVoice = voice);
     await _update(
-      (model) {
-        model.userSettings.voice = voice;
-        return model;
-      },
+      (model) => model.copyWith(
+        userSettings: model.userSettings.copyWith(voice: voice),
+      ),
       () {
         if (mounted) {
           setState(() => _selectedVoice = prevVoice);

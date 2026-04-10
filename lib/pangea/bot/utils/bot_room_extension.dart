@@ -25,6 +25,11 @@ extension BotRoomExtension on Room {
   }
 
   Future<void> setBotOptions(BotOptionsModel options) async {
+    if (!canChangeStateEvent(PangeaEventTypes.botOptions)) {
+      Logs().w("User doesn't have permission to set bot options in room $id");
+      return;
+    }
+
     const maxRetries = 3;
     Duration retryDelay = const Duration(seconds: 5);
 
@@ -56,4 +61,22 @@ extension BotRoomExtension on Room {
       }
     }
   }
+
+  Future<void> sendRegenerationRequest(String eventId, {String? reason}) =>
+      sendEvent({
+        "m.relates_to": {
+          "rel_type": PangeaEventTypes.regenerationRequest,
+          "event_id": eventId,
+        },
+        PangeaEventTypes.regenerationRequest: {"reason": reason},
+      }, type: PangeaEventTypes.regenerationRequest);
+
+  Future<void> sendNotificationOpenedEvent(
+    String eventId, {
+    String? checkInType,
+  }) => sendEvent({
+    'notification_event_id': eventId,
+    'check_in_type': checkInType,
+    'opened_at_ts': DateTime.now().millisecondsSinceEpoch,
+  }, type: PangeaEventTypes.botNotificationOpened);
 }

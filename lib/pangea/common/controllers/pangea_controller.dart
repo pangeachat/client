@@ -11,9 +11,12 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
+import 'package:fluffychat/pangea/notifications/notifications_client_extension.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/user/pangea_push_rules_extension.dart';
@@ -55,7 +58,7 @@ class PangeaController {
     TtsController.setAvailableLanguages();
   }
 
-  void _onLogin(BuildContext context, String? userID) {
+  Future<void> _onLogin(BuildContext context, String? userID) async {
     initControllers();
     _registerSubscriptions();
 
@@ -65,11 +68,41 @@ class PangeaController {
     });
     subscriptionController.reinitialize();
 
-    StyleSettingsRepo.settings(userID!).then((settings) {
-      AppSettings.fontSizeFactor.setItem(settings.fontSizeFactor);
-      AppConfig.useActivityImageAsChatBackground =
-          settings.useActivityImageBackground;
-    });
+    if (userID != null) {
+      StyleSettingsRepo.settings(userID).then((settings) {
+        AppSettings.fontSizeFactor.setItem(settings.fontSizeFactor);
+        AppConfig.useActivityImageAsChatBackground =
+            settings.useActivityImageBackground;
+      });
+    }
+
+    final client = matrixState.client;
+    if (client.prevBatch == null) {
+      await client.onSync.stream.first;
+    }
+
+    // Determine user_type: "teacher" if admin of a course with 7+ members
+    final isTeacher = client.rooms.any(
+      (r) =>
+          r.isSpace &&
+          r.isRoomAdmin &&
+          (r.summary.mJoinedMemberCount ?? 0) >= 7,
+    );
+    GoogleAnalytics.setUserProperties(
+      targetLanguage: userController.profile.userSettings.targetLanguage ?? '',
+      sourceLanguage: userController.profile.userSettings.sourceLanguage ?? '',
+      userType: isTeacher ? 'teacher' : 'learner',
+    );
+
+    try {
+      final emailNotificationsStatus = await client.emailNotificationsStatus;
+      final emailSetting = client.notificationSettings.enableEmailNotifs;
+      if (emailNotificationsStatus.enabled != emailSetting) {
+        await client.setEnableEmailNotifs(emailSetting);
+      }
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    }
   }
 
   void _onLogout(BuildContext context) {
@@ -149,6 +182,11 @@ class PangeaController {
   }
 
   Future<void> _onLanguageUpdate(LanguageUpdate update) async {
+    GoogleAnalytics.setUserProperties(
+      targetLanguage: update.baseLang.langCode,
+      sourceLanguage: userController.profile.userSettings.sourceLanguage ?? '',
+    );
+
     final exclude = [
       'course_location_media_storage',
       'course_location_storage',

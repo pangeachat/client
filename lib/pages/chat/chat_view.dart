@@ -382,10 +382,8 @@ class ChatView extends StatelessWidget {
               //         ),
               //       )
               //     : null,
-              floatingActionButton: Padding(
-                padding: const EdgeInsets.only(bottom: 56.0),
-                child: ChatFloatingActionButton(controller: controller),
-              ),
+              // #Pangea - FAB moved into body Stack to sit above bottom bar
+              // Pangea#
               // body: DropTarget(
               //   onDragDone: controller.onDragDone,
               //   onDragEntered: controller.onDragEntered,
@@ -468,20 +466,39 @@ class ChatView extends StatelessWidget {
                     SafeArea(
                       child: Column(
                         children: <Widget>[
+                          // #Pangea
+                          // Expanded(
+                          //   child: GestureDetector(
+                          //     onTap: controller.clearSingleSelectedEvent,
+                          //     child: ChatEventList(controller: controller),
+                          //   ),
+                          // ),
                           Expanded(
-                            child: GestureDetector(
-                              // #Pangea
-                              // onTap: controller.clearSingleSelectedEvent,
-                              // child: ChatEventList(controller: controller),
-                              child: ListenableBuilder(
-                                listenable: controller.timelineUpdateNotifier,
-                                builder: (context, _) {
-                                  return ChatEventList(controller: controller);
-                                },
-                              ),
-                              // Pangea#
+                            child: Stack(
+                              children: [
+                                GestureDetector(
+                                  child: ListenableBuilder(
+                                    listenable:
+                                        controller.timelineUpdateNotifier,
+                                    builder: (context, _) {
+                                      return ChatEventList(
+                                        controller: controller,
+                                      );
+                                    },
+                                  ),
+                                  // Pangea#
+                                ),
+                                Positioned(
+                                  right: 8,
+                                  bottom: 8,
+                                  child: ChatFloatingActionButton(
+                                    controller: controller,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
+                          // Pangea#
                           // #Pangea
                           // if (controller.showScrollDownButton)
                           //   Divider(height: 1, color: theme.dividerColor),

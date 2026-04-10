@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_list_tile.dart';
-import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -45,14 +44,17 @@ mixin LemmaEmojiSetter {
         .setLemmaInfo(constructId, emoji: emoji);
   }
 
-  void showLemmaEmojiSnackbar(
+  Future<void> showLemmaEmojiSnackbar(
     ScaffoldMessengerState messenger,
     BuildContext context,
     ConstructIdentifier constructId,
-    String emoji,
-  ) {
+    VoidCallback onTap,
+  ) async {
     if (InstructionsEnum.setLemmaEmoji.isToggledOff) return;
     InstructionsEnum.setLemmaEmoji.setToggledOff(true);
+
+    final theme = Theme.of(context);
+    final l10n = L10n.of(context);
 
     messenger.showSnackBar(
       SnackBar(
@@ -63,30 +65,26 @@ mixin LemmaEmojiSetter {
           children: [
             VocabAnalyticsListTile(
               constructId: constructId,
-              textColor: Theme.of(context).colorScheme.surface,
+              textColor: theme.colorScheme.surface,
+              listen: false,
               onTap: () {
                 messenger.hideCurrentSnackBar();
-                AnalyticsNavigationUtil.navigateToAnalytics(
-                  context: context,
-                  view: constructId.type.indicator,
-                  construct: constructId,
-                );
+                onTap();
               },
             ),
             Expanded(
               child: Text(
-                L10n.of(context).emojiSelectedSnackbar(constructId.lemma),
+                l10n.emojiSelectedSnackbar(constructId.lemma),
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.surface,
+                style: theme.textTheme.bodyLarge?.copyWith(
+                  color: theme.colorScheme.surface,
                 ),
               ),
             ),
             IconButton(
               icon: const Icon(Icons.close),
-              color: Theme.of(context).colorScheme.surface,
-              onPressed: () =>
-                  ScaffoldMessenger.of(context).hideCurrentSnackBar(),
+              color: theme.colorScheme.surface,
+              onPressed: () => messenger.hideCurrentSnackBar(),
             ),
           ],
         ),

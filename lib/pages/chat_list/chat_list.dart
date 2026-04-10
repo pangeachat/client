@@ -496,6 +496,7 @@ class ChatListController extends State<ChatList>
   }
 
   //#Pangea
+  StreamSubscription? _spaceCodeSubscription;
   StreamSubscription? _invitedSpaceSubscription;
   StreamSubscription? _roomCapacitySubscription;
   //Pangea#
@@ -535,6 +536,18 @@ class ChatListController extends State<ChatList>
     });
 
     //#Pangea
+    _spaceCodeSubscription?.cancel();
+    _spaceCodeSubscription = SpaceCodeController.spaceCodeStream.stream.listen((
+      code,
+    ) {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        if (!mounted) return;
+        final client = MatrixState.pangeaController.matrixState.client;
+        await _joinCachedSpaceCode(client);
+      });
+    });
+
+    _invitedSpaceSubscription?.cancel();
     _invitedSpaceSubscription = Matrix.of(context).client.onSync.stream
         .where((event) => event.rooms?.invite != null)
         .listen(_onInviteSync);
@@ -548,7 +561,8 @@ class ChatListController extends State<ChatList>
     final client = Matrix.of(context).client;
 
     // listen for room join events and leave room if over capacity
-    _roomCapacitySubscription ??= client.onSync.stream
+    _roomCapacitySubscription?.cancel();
+    _roomCapacitySubscription = client.onSync.stream
         .where((u) => u.rooms?.join != null)
         .listen((update) async {
           final roomUpdates = update.rooms!.join!.entries;
@@ -653,6 +667,7 @@ class ChatListController extends State<ChatList>
     _intentFileStreamSubscription?.cancel();
     //#Pangea
     // _intentUriStreamSubscription?.cancel();
+    _spaceCodeSubscription?.cancel();
     _invitedSpaceSubscription?.cancel();
     _roomCapacitySubscription?.cancel();
     MatrixState.pangeaController.subscriptionController.subscriptionNotifier
@@ -1009,7 +1024,7 @@ class ChatListController extends State<ChatList>
     }
 
     // #Pangea
-    _initPangeaControllers(client);
+    await _initPangeaControllers(client);
     // Pangea#
     if (!mounted) return;
     setState(() {
@@ -1048,10 +1063,24 @@ class ChatListController extends State<ChatList>
   }
 
   // #Pangea
-  void _initPangeaControllers(Client client) {
+  Future<void> _initPangeaControllers(Client client) async {
     MatrixState.pangeaController.initControllers();
-    if (mounted) {
-      SpaceCodeController.joinCachedSpaceCode(context);
+    await _joinCachedSpaceCode(client);
+  }
+
+  Future<void> _joinCachedSpaceCode(Client client) async {
+    final result = await SpaceCodeController.joinCachedSpaceCode(
+      context: context,
+      client: client,
+    );
+    if (!mounted) return;
+
+    final roomId = result.result;
+    if (roomId != null) {
+      final room = client.getRoomById(roomId);
+      room?.isSpace ?? true
+          ? context.go('/rooms/spaces/$roomId/details')
+          : context.go('/rooms/${room?.id}');
     }
   }
   // Pangea#

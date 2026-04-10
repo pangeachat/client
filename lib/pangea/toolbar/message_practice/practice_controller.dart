@@ -61,7 +61,7 @@ class PracticeController with ChangeNotifier {
     if (_activity == null) return false;
     if (_activity is MorphMatchPracticeActivityModel) {
       return _selectedMorph != null &&
-          !PracticeRecordController.hasResponse(_activity!.practiceTarget);
+          !PracticeRecordController.hasAnyResponse(_activity!.practiceTarget);
     }
 
     return _selectedChoice == null &&
@@ -103,6 +103,12 @@ class PracticeController with ChangeNotifier {
           ?.activities(activityType)
           .every((a) => PracticeRecordController.isCompleteByTarget(a)) ==
       true;
+
+  bool isActivityCompleteByToken(PangeaToken token) {
+    final target = practiceTargetForToken(token);
+    if (target == null) return false;
+    return PracticeRecordController.isCompleteByTarget(target);
+  }
 
   bool isPracticeButtonEmpty(PangeaToken token) {
     final target = practiceTargetForToken(token);
@@ -153,11 +159,21 @@ class PracticeController with ChangeNotifier {
   }
 
   void onMatch(PangeaToken token, PracticeChoice choice) {
-    if (_activity == null) return;
+    final activity = _activity;
+    if (activity == null) return;
+
+    final target = activity.practiceTarget;
+    final isRepeatedResponse = PracticeRecordController.hasResponse(
+      target,
+      token,
+      choice.choiceContent,
+    );
+    if (isRepeatedResponse) return;
+
     final isCorrect = PracticeRecordController.onSelectChoice(
       choice.choiceContent,
       token,
-      _activity!,
+      activity,
     );
 
     final targetId =
@@ -170,7 +186,7 @@ class PracticeController with ChangeNotifier {
         .updateService;
 
     // we don't take off points for incorrect emoji matches
-    if (_activity is! EmojiPracticeActivityModel || isCorrect) {
+    if (activity is! EmojiPracticeActivityModel || isCorrect) {
       final l2 =
           MatrixState.pangeaController.userController.userL2?.langCodeShort;
       if (l2 == null) {
@@ -179,15 +195,15 @@ class PracticeController with ChangeNotifier {
           data: {
             "eventId": pangeaMessageEvent.eventId,
             "token": token.text.content,
-            "activityType": _activity!.activityType.toString(),
+            "activityType": activity.activityType.toString(),
           },
         );
         return;
       }
 
       final constructUseType = PracticeRecordController.lastResponse(
-        _activity!.practiceTarget,
-      )!.useType(_activity!.activityType);
+        activity.practiceTarget,
+      )!.useType(activity.activityType);
 
       final constructs = [
         OneConstructUse(
@@ -210,14 +226,14 @@ class PracticeController with ChangeNotifier {
     }
 
     if (isCorrect) {
-      if (_activity is EmojiPracticeActivityModel) {
+      if (activity is EmojiPracticeActivityModel) {
         updateService.setLemmaInfo(
           choice.form.cId,
           emoji: choice.choiceContent,
         );
       }
 
-      if (_activity is LemmaMeaningPracticeActivityModel) {
+      if (activity is LemmaMeaningPracticeActivityModel) {
         updateService.setLemmaInfo(
           choice.form.cId,
           meaning: choice.choiceContent,
@@ -225,8 +241,8 @@ class PracticeController with ChangeNotifier {
       }
     }
 
-    if (_activity is LemmaMeaningPracticeActivityModel ||
-        _activity is EmojiPracticeActivityModel) {
+    if (activity is LemmaMeaningPracticeActivityModel ||
+        activity is EmojiPracticeActivityModel) {
       TtsController.tryToSpeak(
         token.text.content,
         langCode: MatrixState.pangeaController.userController.userL2!.langCode,

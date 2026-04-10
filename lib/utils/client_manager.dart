@@ -169,7 +169,6 @@ abstract class ClientManager {
       shouldReplaceRoomLastEvent: (_, event) => event.isVisibleLastEvent,
       enableLastEventRefresh: false,
       roomPreviewLastEvents: {
-        PangeaEventTypes.botOptions,
         PangeaEventTypes.activityPlan,
         PangeaEventTypes.activitySummary,
         EventTypes.RoomMember,
@@ -199,7 +198,7 @@ abstract class ClientManager {
       const InitializationSettings(
         // #Pangea
         // android: AndroidInitializationSettings('notifications_icon'),
-        android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+        android: AndroidInitializationSettings('@mipmap/notification_icon'),
         // Pangea#
         iOS: DarwinInitializationSettings(),
       ),

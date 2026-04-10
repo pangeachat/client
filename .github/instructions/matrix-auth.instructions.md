@@ -67,7 +67,7 @@ curl -s 'https://matrix.staging.pangea.chat/_matrix/client/v3/joined_rooms' \
 
 ### Synapse Admin API
 
-The test account is **not** a server admin. For admin endpoints, use the bot account or a real admin token.
+The test account is **not** a server admin. For admin endpoints, use the bot account or a real admin token. See [synapse-docs.instructions.md](../../../.github/.github/instructions/synapse-docs.instructions.md) for the full Admin API reference.
 
 ## Common Errors
 

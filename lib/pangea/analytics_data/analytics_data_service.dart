@@ -18,6 +18,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
@@ -52,6 +53,7 @@ class AnalyticsDataService {
   final ConstructMergeTable _mergeTable = ConstructMergeTable();
 
   Completer<void> initCompleter = Completer<void>();
+  Object? initError;
 
   AnalyticsDataService(Client client) {
     updateDispatcher = AnalyticsUpdateDispatcher(this);
@@ -71,6 +73,8 @@ class AnalyticsDataService {
   }
 
   bool get isInitializing => !initCompleter.isCompleted;
+  bool get hasInitError => initError != null;
+  bool get isLogged => _analyticsClientGetter.client.isLogged();
 
   Future<Room?> getAnalyticsRoom(LanguageModel l2) =>
       _analyticsClientGetter.client.getMyAnalyticsRoom(l2);
@@ -157,19 +161,30 @@ class AnalyticsDataService {
       );
 
       if (l2 != null) {
-        await updateXPOffset(
-          analyticsProfile.xpOffsetByLanguage(l2) ?? 0,
-          l2.langCodeShort,
-        );
+        int xpOffset = analyticsProfile.xpOffsetByLanguage(l2) ?? 0;
+        if (xpOffset < 0) {
+          ErrorHandler.logError(
+            e: "Negative XP offset calculated during analytics update",
+            s: StackTrace.current,
+            data: {"offset": xpOffset},
+          );
+          await MatrixState.pangeaController.userController.addXPOffset(
+            -xpOffset,
+          );
+          xpOffset = 0;
+        }
+        await updateXPOffset(xpOffset, l2.langCodeShort);
       }
 
       _syncController!.start();
+      updateService.start();
 
       if (l2 != null) {
         await _initMergeTable(l2.langCodeShort);
       }
     } catch (e, s) {
       Logs().e("Error initializing analytics: $e, $s");
+      initError = e;
     } finally {
       Logs().i("Analytics database initialized.");
       initCompleter.complete();
@@ -195,8 +210,12 @@ class AnalyticsDataService {
 
   Future<void> reinitialize() async {
     Logs().i("Reinitializing analytics database.");
+    initError = null;
     initCompleter = Completer<void>();
     _clear();
+    // Notify listeners immediately so the UI transitions from error to loading.
+    updateDispatcher.sendEmptyAnalyticsUpdate();
+    updateDispatcher.sendActivityAnalyticsUpdate(null);
     await _initDatabase(_analyticsClientGetter.client);
   }
 
@@ -361,10 +380,6 @@ class AnalyticsDataService {
     }
 
     stopwatch.stop();
-    Logs().i(
-      "Merging analytics took: ${stopwatch.elapsedMilliseconds} ms, total constructs: ${cleaned.length}",
-    );
-
     return cleaned;
   }
 
@@ -420,10 +435,10 @@ class AnalyticsDataService {
     final addedConstructs = update.addedConstructs
         .where((c) => c.category != 'other')
         .toList();
-    final updateIds = addedConstructs.map((c) => c.identifier).toList();
+    final updateIds = addedConstructs.map((c) => c.identifier).toSet();
 
     final prevData = await derivedData(language);
-    final prevConstructs = await getConstructUses(updateIds, language);
+    final prevConstructs = await getConstructUses(updateIds.toList(), language);
 
     _invalidateCaches();
     await _ensureInitialized();
@@ -439,7 +454,7 @@ class AnalyticsDataService {
       language,
     );
 
-    final newConstructs = await getConstructUses(updateIds, language);
+    final newConstructs = await getConstructUses(updateIds.toList(), language);
 
     int points = 0;
     if (updateIds.isNotEmpty) {
@@ -464,22 +479,36 @@ class AnalyticsDataService {
 
     if (newData.level > prevData.level) {
       events.add(LevelUpEvent(prevData.level, newData.level));
-    } else if (newData.level < prevData.level) {
-      final lowerLevelXP = DerivedAnalyticsDataModel.calculateXpWithLevel(
-        prevData.level,
-      );
+    } else if (newData.level < prevData.level || newData.totalXP < 0) {
+      final lowerLevelXP = newData.totalXP < 0
+          ? 0
+          : DerivedAnalyticsDataModel.calculateXpWithLevel(prevData.level);
 
       final offset = lowerLevelXP - newData.totalXP;
-      await MatrixState.pangeaController.userController.addXPOffset(offset);
-      await updateXPOffset(
-        MatrixState
-            .pangeaController
-            .userController
-            .publicProfile!
-            .analytics
-            .xpOffset!,
-        language,
-      );
+      if (offset < 0) {
+        ErrorHandler.logError(
+          e: "Negative XP offset calculated during analytics update",
+          s: StackTrace.current,
+          data: {
+            "offset": offset,
+            "prevLevel": prevData.level,
+            "newLevel": newData.level,
+            "prevXP": prevData.totalXP,
+            "newXP": newData.totalXP,
+          },
+        );
+      } else {
+        await MatrixState.pangeaController.userController.addXPOffset(offset);
+        await updateXPOffset(
+          MatrixState
+              .pangeaController
+              .userController
+              .publicProfile!
+              .analytics
+              .xpOffset!,
+          language,
+        );
+      }
     }
 
     final newUnlockedMorphs = updateIds.where((id) {

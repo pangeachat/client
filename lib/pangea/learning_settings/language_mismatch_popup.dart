@@ -24,8 +24,20 @@ class LanguageMismatchPopup extends StatelessWidget {
 
   Future<void> _updateLanguage() async {
     await MatrixState.pangeaController.userController.updateProfile((profile) {
-      profile.userSettings.targetLanguage = targetLanguage;
-      return profile;
+      final targetLangShort = targetLanguage.split("-").first;
+      final baseLangShort = profile.userSettings.sourceLanguage
+          ?.split('-')
+          .first;
+
+      if (baseLangShort != null && targetLangShort == baseLangShort) {
+        throw IdenticalLanguageException();
+      }
+
+      return profile.copyWith(
+        userSettings: profile.userSettings.copyWith(
+          targetLanguage: targetLanguage,
+        ),
+      );
     }, waitForDataInSync: true);
     onConfirm();
   }

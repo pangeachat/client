@@ -3,9 +3,19 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:matrix/matrix_api_lite/utils/logs.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/models/base_request_model.dart';
+
+class ChoreoException implements Exception {
+  final String message;
+  final http.Response response;
+
+  const ChoreoException({required this.message, required this.response});
+
+  String get errorMessage => "${response.statusCode}: $message";
+}
 
 class Requests {
   late String? accessToken;
@@ -57,17 +67,27 @@ class Requests {
   }
 
   void handleError(http.Response response, {Map<dynamic, dynamic>? body}) {
-    if (response.statusCode == 401) {
+    if (response.statusCode < 400) return;
+
+    String? message;
+    try {
       final responseBody = jsonDecode(utf8.decode(response.bodyBytes));
-      if (responseBody['detail'] == 'No active subscription found') {
-        throw UnsubscribedException();
-      }
+      message = responseBody['detail'];
+    } catch (e) {
+      Logs().w("Failed to parse error response body");
+      message = null;
     }
 
-    if (response.statusCode >= 400) {
-      addBreadcrumb(response, body: body);
-      throw response;
+    if (response.statusCode == 401 &&
+        message == 'No active subscription found') {
+      throw UnsubscribedException();
     }
+
+    addBreadcrumb(response, body: body);
+    if (message is String) {
+      throw ChoreoException(message: message, response: response);
+    }
+    throw response;
   }
 
   Map<String, String> get _headers {

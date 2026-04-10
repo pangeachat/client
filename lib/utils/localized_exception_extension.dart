@@ -10,6 +10,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/recording_view_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
+import 'package:fluffychat/pangea/authentication/delete_account_exception.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
 import 'package:fluffychat/utils/other_party_can_receive.dart';
@@ -48,6 +49,16 @@ extension LocalizedExceptionExtension on Object {
 
     if (this is IdenticalLanguageException) {
       return L10n.of(context).noIdenticalLanguages;
+    }
+    if (this is DeleteAccountException) {
+      switch ((this as DeleteAccountException).error) {
+        case DeleteAccountError.P_LIMIT_EXCEEDED:
+          return L10n.of(context).tooManyRequestsWarning;
+        case DeleteAccountError.P_FORBIDDEN:
+          return L10n.of(context).noPermission;
+        default:
+          return (this as DeleteAccountException).errorMessage;
+      }
     }
     // Pangea#
     if (this is FileTooBigMatrixException) {

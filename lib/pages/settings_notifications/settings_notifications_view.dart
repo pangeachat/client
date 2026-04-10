@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/settings_notifications/push_rule_extensions.dart';
+import 'package:fluffychat/pangea/notifications/notifications_client_extension.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/local_notifications_extension.dart';
 import '../../utils/localized_exception_extension.dart';
@@ -20,10 +21,18 @@ class SettingsNotificationsView extends StatelessWidget {
   Widget build(BuildContext context) {
     final pushRules = Matrix.of(context).client.globalPushRules;
     final pushCategories = [
-      if (pushRules?.override?.isNotEmpty ?? false)
-        (rules: pushRules?.override ?? [], kind: PushRuleKind.override),
-      if (pushRules?.content?.isNotEmpty ?? false)
-        (rules: pushRules?.content ?? [], kind: PushRuleKind.content),
+      // #Pangea
+      if ((pushRules?.override?.isNotEmpty ?? false) ||
+          (pushRules?.content?.isNotEmpty ?? false))
+        (
+          rules: (pushRules?.override ?? []) + (pushRules?.content ?? []),
+          kind: PushRuleKind.override,
+        ),
+      // if (pushRules?.override?.isNotEmpty ?? false)
+      //   (rules: pushRules?.override ?? [], kind: PushRuleKind.override),
+      // if (pushRules?.content?.isNotEmpty ?? false)
+      //   (rules: pushRules?.content ?? [], kind: PushRuleKind.content),
+      // Pangea#
       if (pushRules?.sender?.isNotEmpty ?? false)
         (rules: pushRules?.sender ?? [], kind: PushRuleKind.sender),
       if (pushRules?.underride?.isNotEmpty ?? false)
@@ -175,7 +184,33 @@ class SettingsNotificationsView extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    subtitle: Text(L10n.of(context).notificationDeviceSubtitle),
                   ),
+                  // #Pangea
+                  FutureBuilder<EmailNotificationsStatus>(
+                    future: Matrix.of(context).client.emailNotificationsStatus,
+                    builder: (context, snapshot) {
+                      return GestureDetector(
+                        onTap: snapshot.data != null
+                            ? snapshot.data!.canEnable
+                                  ? null
+                                  : controller.showNoEmailSnackbar
+                            : null,
+                        child: ListTile(
+                          title: Text(
+                            L10n.of(context).enableEmailNotifications,
+                          ),
+                          trailing: Switch.adaptive(
+                            value: snapshot.data?.enabled ?? false,
+                            onChanged: snapshot.data?.canEnable ?? false
+                                ? controller.setEmailNotificationsEnabled
+                                : null,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  // Pangea#
                   FutureBuilder<List<Pusher>?>(
                     future: controller.pusherFuture ??= Matrix.of(
                       context,
@@ -195,7 +230,14 @@ class SettingsNotificationsView extends StatelessWidget {
                           ),
                         );
                       }
-                      final pushers = snapshot.data ?? [];
+                      // #Pangea
+                      // final pushers = snapshot.data ?? [];
+                      final pushers =
+                          snapshot.data
+                              ?.where((p) => p.kind != 'email')
+                              .toList() ??
+                          [];
+                      // Pangea#
                       if (pushers.isEmpty) {
                         return Center(
                           child: Padding(

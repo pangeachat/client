@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
@@ -18,7 +19,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class _PracticeQueueEntry {
   final MessageActivityRequest request;
-  final Completer<MultipleChoicePracticeActivityModel> completer;
+  final Completer<MultipleChoicePracticeActivityModel?> completer;
 
   _PracticeQueueEntry({required this.request, required this.completer});
 }
@@ -84,7 +85,9 @@ class PracticeSessionController {
       if (l2 == null) throw Exception('User L2 language not set');
       session = await AnalyticsPracticeSessionRepo.get(type, l2);
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {});
+      if (e is! UnsubscribedException && e is! InsufficientDataException) {
+        ErrorHandler.logError(e: e, s: s, data: {});
+      }
       sessionError = e;
     } finally {
       isLoadingSession = false;
@@ -121,19 +124,23 @@ class PracticeSessionController {
     Future Function(MultipleChoicePracticeActivityModel) onFetch,
   ) async {
     for (final request in requests) {
-      final completer = Completer<MultipleChoicePracticeActivityModel>();
+      final completer = Completer<MultipleChoicePracticeActivityModel?>();
       _queue.add(_PracticeQueueEntry(request: request, completer: completer));
-      try {
-        final res = await _fetchActivity(request, onFetch);
-        completer.complete(res);
-      } catch (e) {
-        completer.completeError(e);
-        await onSkip(request.target);
-      }
+      _fetchActivity(request, onFetch)
+          .then((activity) {
+            activity != null
+                ? completer.complete(activity)
+                : completer.complete(null);
+          })
+          .catchError((e, s) async {
+            completer.complete(null);
+            await onSkip(request.target);
+            return null;
+          });
     }
   }
 
-  Future<MultipleChoicePracticeActivityModel> _fetchActivity(
+  Future<MultipleChoicePracticeActivityModel?> _fetchActivity(
     MessageActivityRequest req,
     Future Function(MultipleChoicePracticeActivityModel) onFetch,
   ) async {
@@ -141,7 +148,7 @@ class PracticeSessionController {
 
     if (result.isError ||
         result.result is! MultipleChoicePracticeActivityModel) {
-      throw Exception();
+      throw result.error ?? Exception("Failed to fetch activity");
     }
 
     final activityModel = result.result as MultipleChoicePracticeActivityModel;
@@ -162,7 +169,7 @@ class PracticeSessionController {
       final initialActivity = await _initActivityData(onSkip, onFetch);
       if (initialActivity == null && session.state.currentIndex == 0) {
         // No activities were successfully loaded, and we haven't completed any yet, so throw an error
-        throw Exception("Failed to load any activities");
+        throw InsufficientDataException();
       }
       return initialActivity;
     }
@@ -172,7 +179,9 @@ class PracticeSessionController {
 
       try {
         final activity = await nextActivityCompleter.completer.future;
-        return activity;
+        if (activity != null) {
+          return activity;
+        }
       } catch (e) {
         // Completer failed, skip to next
         continue;
@@ -181,7 +190,7 @@ class PracticeSessionController {
 
     if (session.state.currentIndex == 0) {
       // No activities were successfully loaded, and we haven't completed any yet, so throw an error
-      throw Exception("Failed to load any activities");
+      throw InsufficientDataException();
     }
 
     return null;

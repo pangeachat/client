@@ -32,22 +32,34 @@ mixin CoursePlanProvider<T extends StatefulWidget> on State<T> {
 
   Future<void> loadCourse(String courseId) async {
     await _initStorage();
+    if (!mounted) return;
     setState(() {
       loadingCourse = true;
       courseError = null;
       course = null;
     });
 
+    final request = GetLocalizedCoursesRequest(
+      coursePlanIds: [courseId],
+      l1: MatrixState.pangeaController.userController.userL1Code!,
+    );
+
     try {
-      course = await CoursePlansRepo.get(
-        GetLocalizedCoursesRequest(
-          coursePlanIds: [courseId],
-          l1: MatrixState.pangeaController.userController.userL1Code!,
-        ),
-      );
+      course = await CoursePlansRepo.get(request);
       await course!.fetchMediaUrls();
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {'courseId': courseId});
+      if (e is MissingCourseTranslationException) {
+        ErrorHandler.logError(
+          e: e.errorMessage,
+          s: s,
+          data: {
+            'request': request.toJson(),
+            'responseCourseIds': e.response.coursePlans.keys.toList(),
+          },
+        );
+      } else {
+        ErrorHandler.logError(e: e, s: s, data: request.toJson());
+      }
       courseError = e;
     } finally {
       if (mounted) setState(() => loadingCourse = false);
@@ -55,6 +67,7 @@ mixin CoursePlanProvider<T extends StatefulWidget> on State<T> {
   }
 
   Future<void> loadTopics() async {
+    if (!mounted) return;
     setState(() {
       loadingTopics = true;
       topicError = null;

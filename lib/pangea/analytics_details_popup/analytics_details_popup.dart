@@ -6,6 +6,7 @@ import 'package:async/async.dart';
 import 'package:diacritic/diacritic.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
@@ -33,10 +34,16 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ConstructAnalyticsView extends StatefulWidget {
-  const ConstructAnalyticsView({super.key, required this.view, this.construct});
+  const ConstructAnalyticsView({
+    super.key,
+    required this.view,
+    this.construct,
+    this.showPracticeButton = false,
+  });
 
   final ConstructTypeEnum view;
   final ConstructIdentifier? construct;
+  final bool showPracticeButton;
 
   @override
   ConstructAnalyticsViewState createState() => ConstructAnalyticsViewState();
@@ -92,6 +99,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
         e: "No L2 language set for user",
         m: "Cannot set analytics data",
         data: {"view": widget.view, "construct": widget.construct},
+        level: SentryLevel.warning,
       );
       return;
     }
@@ -246,6 +254,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
 
   @override
   Widget build(BuildContext context) {
+    final analyticsService = Matrix.of(context).analyticsDataService;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -256,7 +265,9 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
               if (widget.construct == null)
                 LearningProgressIndicators(selected: widget.view.indicator),
               Expanded(
-                child: widget.view == ConstructTypeEnum.morph
+                child: analyticsService.isInitializing
+                    ? Center(child: CircularProgressIndicator.adaptive())
+                    : widget.view == ConstructTypeEnum.morph
                     ? widget.construct == null
                           ? MorphAnalyticsListView(controller: this)
                           : MorphDetailsView(constructId: widget.construct!)
@@ -271,7 +282,8 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
           ),
         ),
       ),
-      floatingActionButton: widget.construct == null
+      floatingActionButton:
+          widget.construct == null && widget.showPracticeButton
           ? _PracticeButton(view: widget.view)
           : null,
     );

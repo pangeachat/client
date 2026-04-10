@@ -117,6 +117,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   final AnalyticsPracticeNotifier notifier = AnalyticsPracticeNotifier();
   final ValueNotifier<double> progress = ValueNotifier<double>(0);
 
+  PracticeTarget? _cachedTarget;
+  List<InlineSpan>? _cachedExampleMessage;
+
   @override
   void initState() {
     super.initState();
@@ -159,18 +162,27 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     final activity = this.activity;
     if (activity == null) return null;
 
-    return switch (activity) {
+    if (activity.practiceTarget == _cachedTarget &&
+        _cachedExampleMessage != null) {
+      return _cachedExampleMessage;
+    }
+
+    final List<InlineSpan>? message = switch (activity) {
       VocabAudioPracticeActivityModel() =>
         activity.exampleMessage.exampleMessage,
       MorphCategoryPracticeActivityModel() =>
         activity.exampleMessageInfo.exampleMessage,
-      _ => ExampleMessageUtil.getExampleMessage(
+      _ => await ExampleMessageUtil.getExampleMessage(
         await _analyticsController.getTargetTokenConstruct(
           activity.practiceTarget,
           _l2!.langCodeShort,
         ),
       ),
     };
+
+    _cachedTarget = activity.practiceTarget;
+    _cachedExampleMessage = message;
+    return message;
   }
 
   bool _autoLaunchNextActivity(MultipleChoicePracticeActivityModel activity) =>
@@ -225,15 +237,28 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   Future<void> startSession() async {
     _clearState();
-    await _analyticsController.waitForAnalytics();
-    await _sessionController.startSession(widget.type);
-    if (mounted) setState(() {});
+    final analyticsService = Matrix.of(context).analyticsDataService;
+    if (analyticsService.hasInitError) {
+      // Trigger reinit so this retry attempt uses a fresh init. If reinit also
+      // fails, initError is set again and waitForAnalytics() below will throw.
+      await analyticsService.reinitialize();
+    }
+    try {
+      await _analyticsController.waitForAnalytics();
+      await _sessionController.startSession(widget.type);
+      if (mounted) setState(() {});
 
-    if (_sessionController.sessionError != null) {
+      if (_sessionController.sessionError != null) {
+        AnalyticsPractice.bypassExitConfirmation = true;
+      } else {
+        progress.value = _sessionController.progress;
+        await _continueSession();
+      }
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+      _sessionController.sessionError = e;
       AnalyticsPractice.bypassExitConfirmation = true;
-    } else {
-      progress.value = _sessionController.progress;
-      await _continueSession();
+      if (mounted) setState(() {});
     }
   }
 

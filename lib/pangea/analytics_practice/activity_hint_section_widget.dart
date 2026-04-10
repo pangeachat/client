@@ -24,15 +24,20 @@ class ActivityHintSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final activity = this.activity;
 
-    return ConstrainedBox(
-      constraints: const BoxConstraints(minHeight: 50.0),
-      child: switch (activity) {
-        VocabAudioPracticeActivityModel() => HintButton(
+    return switch (activity) {
+      VocabAudioPracticeActivityModel() => Container(
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        constraints: const BoxConstraints(minHeight: 50.0),
+        child: HintButton(
           onPressed: onPressed,
           depressed: hintPressed,
           icon: Symbols.text_to_speech,
         ),
-        MorphPracticeActivityModel() => AnimatedCrossFade(
+      ),
+      MorphPracticeActivityModel() => Container(
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        constraints: const BoxConstraints(minHeight: 50.0),
+        child: AnimatedCrossFade(
           duration: const Duration(milliseconds: 200),
           crossFadeState: hintPressed
               ? CrossFadeState.showSecond
@@ -47,13 +52,17 @@ class ActivityHintSection extends StatelessWidget {
             tag: activity.multipleChoiceContent.answers.first,
           ),
         ),
-        GrammarErrorPracticeActivityModel() => HintButton(
+      ),
+      GrammarErrorPracticeActivityModel() => Container(
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        constraints: const BoxConstraints(minHeight: 50.0),
+        child: HintButton(
           icon: Icons.lightbulb_outline,
           onPressed: !enabled ? () {} : onPressed,
           depressed: hintPressed || !enabled,
         ),
-        _ => SizedBox(),
-      },
-    );
+      ),
+      _ => SizedBox(),
+    };
   }
 }

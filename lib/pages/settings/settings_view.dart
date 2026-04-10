@@ -10,9 +10,9 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/settings/settings.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/support/support_chat_list_tile.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/local_notifications_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image_viewer.dart';
@@ -287,24 +287,7 @@ class SettingsView extends StatelessWidget {
                     ),
                     Divider(color: theme.dividerColor),
                     // #Pangea
-                    ListTile(
-                      leading: const Icon(Icons.help_outline_outlined),
-                      title: Text(L10n.of(context).chatWithSupport),
-                      trailing: const Icon(Icons.chat_bubble_outline),
-                      onTap: () async {
-                        await showFutureLoadingDialog(
-                          context: context,
-                          future: () async {
-                            final roomId = await Matrix.of(context).client
-                                .startDirectChat(
-                                  Environment.supportUserId,
-                                  enableEncryption: false,
-                                );
-                            context.go('/rooms/$roomId');
-                          },
-                        );
-                      },
-                    ),
+                    SupportChatListTile(),
                     ListTile(
                       leading: const Icon(Icons.shield_outlined),
                       title: Text(L10n.of(context).termsAndConditions),

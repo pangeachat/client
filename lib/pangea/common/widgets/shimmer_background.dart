@@ -8,6 +8,7 @@ class ShimmerBackground extends StatefulWidget {
   final bool enabled;
   final BorderRadius? borderRadius;
   final Duration delayBetweenPulses;
+  final double maxOpacity;
 
   const ShimmerBackground({
     super.key,
@@ -16,6 +17,7 @@ class ShimmerBackground extends StatefulWidget {
     this.enabled = true,
     this.borderRadius,
     this.delayBetweenPulses = Duration.zero,
+    this.maxOpacity = 0.3,
   });
 
   @override
@@ -35,7 +37,7 @@ class _ShimmerBackgroundState extends State<ShimmerBackground>
 
     _animation = Tween<double>(
       begin: 0.0,
-      end: 0.3,
+      end: widget.maxOpacity,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     if (widget.enabled) {

@@ -7,6 +7,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_chat_settings_dialog.dart';
+import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/knock_room_extension.dart';
 import 'package:fluffychat/pangea/user/about_me_display.dart';
@@ -122,7 +123,10 @@ void showMemberActionsPopupMenu({
           padding: const EdgeInsets.only(left: 12.0, right: 12.0),
           child: BotChatSettingsDialog(room: room),
         ),
-      const PopupMenuDivider(),
+      // #Pangea
+      if (user.room.client.userID != user.id)
+        // Pangea#
+        const PopupMenuDivider(),
       // #Pangea
       if (user.room.client.userID != user.id)
         PopupMenuItem(
@@ -176,7 +180,7 @@ void showMemberActionsPopupMenu({
         ),
       // Pangea#
       // #Pangea
-      if (user.membership == Membership.join)
+      if (user.membership == Membership.join && room?.isDirectChat != true)
         // Pangea#
         PopupMenuItem(
           enabled:
@@ -389,8 +393,7 @@ void showMemberActionsPopupMenu({
       final router = GoRouter.of(context);
       final roomIdResult = await showFutureLoadingDialog(
         context: context,
-        future: () =>
-            user.room.client.startDirectChat(user.id, enableEncryption: false),
+        future: () => user.room.client.createPangeaDirectChat(user.id),
       );
       final roomId = roomIdResult.result;
       if (roomId == null) return;

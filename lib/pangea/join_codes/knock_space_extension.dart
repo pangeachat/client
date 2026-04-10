@@ -13,13 +13,6 @@ extension on Api {
     request.bodyBytes = utf8.encode(jsonEncode({'access_code': code}));
     final response = await httpClient.send(request);
     if (response.statusCode != 200) {
-      if (response.statusCode == 429) {
-        return KnockSpaceResponse(
-          roomIds: [],
-          alreadyJoined: [],
-          rateLimited: true,
-        );
-      }
       throw response;
     }
 
@@ -37,27 +30,17 @@ extension KnockSpaceExtension on Client {
 class KnockSpaceResponse {
   final List<String> roomIds;
   final List<String> alreadyJoined;
-  final bool rateLimited;
 
-  KnockSpaceResponse({
-    required this.roomIds,
-    required this.alreadyJoined,
-    required this.rateLimited,
-  });
+  KnockSpaceResponse({required this.roomIds, required this.alreadyJoined});
 
   factory KnockSpaceResponse.fromJson(Map<String, dynamic> json) {
     return KnockSpaceResponse(
       roomIds: List<String>.from(json['rooms'] ?? []),
       alreadyJoined: List<String>.from(json['already_joined'] ?? []),
-      rateLimited: false,
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'rooms': roomIds,
-      'already_joined': alreadyJoined,
-      'rate_limited': rateLimited,
-    };
+    return {'rooms': roomIds, 'already_joined': alreadyJoined};
   }
 }

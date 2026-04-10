@@ -108,8 +108,12 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       return;
     }
 
-    final roomId = await SpaceCodeController.joinSpaceWithCode(context, code);
-
+    final result = await SpaceCodeController.joinSpaceWithCode(
+      code,
+      context: context,
+      client: Matrix.of(context).client,
+    );
+    final roomId = result.result;
     if (roomId != null) {
       final room = Matrix.of(context).client.getRoomById(roomId);
       room?.isSpace ?? true

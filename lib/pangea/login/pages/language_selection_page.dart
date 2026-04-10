@@ -9,6 +9,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/common/widgets/shrinkable_text.dart';
+import 'package:fluffychat/pangea/languages/language_display_name_widget.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
@@ -50,12 +51,12 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
   // to change it again. Try and get the cached values if present.
   void _setFromCache() {
     LangCodeRepo.get().then((langSettings) {
-      if (langSettings == null) return;
-      final cachedTargetLang = PLanguageStore.byLangCode(
-        langSettings.targetLangCode,
-      );
-      final cachedBaseLang = langSettings.baseLangCode != null
-          ? PLanguageStore.byLangCode(langSettings.baseLangCode!)
+      final targetLanguage = langSettings?.targetLangCode;
+      final baseLanguage = langSettings?.baseLangCode;
+      if (targetLanguage == null) return;
+      final cachedTargetLang = PLanguageStore.byLangCode(targetLanguage);
+      final cachedBaseLang = baseLanguage != null
+          ? PLanguageStore.byLangCode(baseLanguage)
           : null;
 
       if (cachedTargetLang == _selectedLanguage &&
@@ -72,16 +73,30 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
     });
   }
 
-  void _setSelectedLanguage(LanguageModel? l) {
-    setState(() => _selectedLanguage = l);
-    _cacheLanguages();
+  Future<void> _setSelectedLanguage(LanguageModel? l) async {
+    setState(() {
+      _selectedLanguage = l;
+      _error = null;
+    });
+    await _cacheLanguages();
   }
 
-  void _setBaseLanguage(LanguageModel? l) {
-    setState(() => _baseLanguage = l);
-    _cacheLanguages();
+  Future<void> _setBaseLanguage(LanguageModel? l) async {
+    setState(() {
+      _baseLanguage = l;
+      _error = null;
+    });
+
+    await _cacheLanguages();
     if (l != null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) => _setAppLanguage(l));
+      // Defer locale change until after the AnimatedSize transition completes.
+      // Calling setLocale during the animation deactivates InheritedElements
+      // that still have registered dependents, tripping _dependents.isEmpty.
+      await Future.delayed(
+        FluffyThemes.animationDuration + const Duration(milliseconds: 100),
+      );
+      if (!mounted) return;
+      _setAppLanguage(l);
     }
   }
 
@@ -117,7 +132,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
   Future<void> _cacheLanguages() async {
     await LangCodeRepo.set(
       LanguageSettings(
-        targetLangCode: _selectedLanguage!.langCode,
+        targetLangCode: _selectedLanguage?.langCode,
         baseLangCode: _baseLanguage?.langCode,
       ),
     );
@@ -128,9 +143,14 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
     final theme = Theme.of(context);
     final languages = MatrixState.pangeaController.pLanguageStore.targetOptions;
     final isColumnMode = FluffyThemes.isColumnMode(context);
+    TextStyle textStyle = DefaultTextStyle.of(context).style;
+    textStyle = textStyle.merge(
+      isColumnMode ? theme.textTheme.bodyLarge : theme.textTheme.bodyMedium,
+    );
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 500),
           child: Row(
@@ -225,11 +245,12 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                                               horizontal: 8.0,
                                               vertical: 4.0,
                                             ),
-                                            label: Text(
-                                              l.getDisplayName(context),
-                                              style: isColumnMode
-                                                  ? theme.textTheme.bodyLarge
-                                                  : theme.textTheme.bodyMedium,
+                                            label: LanguageDisplayNameWidget(
+                                              l,
+                                              style: textStyle,
+                                              iconSize: isColumnMode
+                                                  ? 16.0
+                                                  : 12.0,
                                             ),
                                             onSelected: (selected) {
                                               _setSelectedLanguage(
@@ -277,7 +298,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                           languages: languages,
                           onChange: _setBaseLanguage,
                           initialLanguage: _baseLanguage,
-                          decorationText: L10n.of(context).myBaseLanguage,
+                          decorationText: L10n.of(context).alreadySpeak,
                           error: _error is IdenticalLanguageException
                               ? L10n.of(context).noIdenticalLanguages
                               : null,
@@ -285,10 +306,12 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                       : const SizedBox(),
                 ),
                 ShimmerBackground(
-                  enabled: _selectedLanguage != null,
+                  enabled: _selectedLanguage != null && _error == null,
                   borderRadius: BorderRadius.circular(24.0),
                   child: ElevatedButton(
-                    onPressed: _selectedLanguage != null ? _submit : null,
+                    onPressed: _selectedLanguage != null && _error == null
+                        ? _submit
+                        : null,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: theme.colorScheme.primaryContainer,
                       foregroundColor: theme.colorScheme.onPrimaryContainer,

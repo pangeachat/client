@@ -1,9 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'package:fluffychat/pangea/bot/bot_target_event_name_enum.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
 import '../../../config/firebase_options.dart';
 
 // PageRoute import
@@ -14,6 +18,10 @@ import '../../../config/firebase_options.dart';
 
 class GoogleAnalytics {
   static FirebaseAnalytics? analytics;
+  static const List<String> _ignoredScreenNamePrefixes = [
+    '/home',
+    '/registration',
+  ];
 
   GoogleAnalytics();
 
@@ -30,6 +38,11 @@ class GoogleAnalytics {
     }
 
     analytics = FirebaseAnalytics.instanceFor(app: app);
+
+    if (Environment.analyticsDebugEnabled) {
+      // Note: Doesnt currently work on Web
+      analytics?.setDefaultEventParameters({"traffic_type": "internal"});
+    }
 
     debugPrint("Firebase App Name: ${app.name}");
     debugPrint("Firebase App Options:");
@@ -49,9 +62,30 @@ class GoogleAnalytics {
     analytics?.setUserProperty(name: 'subscribed', value: "$subscribed");
   }
 
-  static void logEvent(String name, {parameters}) {
+  static void setUserProperties({
+    required String targetLanguage,
+    required String sourceLanguage,
+    String? userType,
+  }) {
+    analytics?.setUserProperty(name: 'target_language', value: targetLanguage);
+    analytics?.setUserProperty(name: 'source_language', value: sourceLanguage);
+    if (userType != null) {
+      analytics?.setUserProperty(name: 'user_type', value: userType);
+    }
+  }
+
+  static void logEvent(String name, {Map<String, Object>? parameters}) {
+    // Add params when possible, web doesnt automatically add as of mar/09/2026
+    final finalParameters = Environment.analyticsDebugEnabled && kIsWeb
+        ? {...?parameters, "traffic_type": "internal"}
+        : parameters;
+
     debugPrint("event: $name - parameters: $parameters");
-    analytics?.logEvent(name: name, parameters: parameters);
+
+    // Only actually send to sentry if were not in debug mode or dev mode is on
+    if (!kDebugMode || Environment.analyticsDebugEnabled) {
+      analytics?.logEvent(name: name, parameters: finalParameters);
+    }
   }
 
   static void login(String type, String? userID) {
@@ -63,9 +97,37 @@ class GoogleAnalytics {
     logEvent('sign_up', parameters: {'method': type});
   }
 
+  /// User logs out. Removes user from the current GA session.
   static void logout() {
     logEvent('logout');
     analyticsUserUpdate(null);
+  }
+
+  /// User send a message
+  static void sendMessage(String chatRoomId, String classCode) {
+    logEvent(
+      'sent_message',
+      parameters: {"chat_id": chatRoomId, 'group_id': classCode},
+    );
+  }
+
+  /// User opened a word card
+  static void viewWordCard() {
+    logEvent('word_card');
+  }
+
+  /// User opened the message toolbar
+  static void openMessageToolbar() {
+    logEvent('message_toolbar', parameters: {"action": "open"});
+  }
+
+  /// User executed an action on the message tool bar
+  static void messageToolbarAction(SelectMode action) {
+    logEvent('message_toolbar', parameters: {"action": action.name});
+  }
+
+  static void messageTranslate() {
+    logEvent('message_translate');
   }
 
   static void createClass(String className, String classCode) {
@@ -97,21 +159,6 @@ class GoogleAnalytics {
     logEvent('join_group', parameters: {'group_id': classCode});
   }
 
-  static void sendMessage(String chatRoomId, String classCode) {
-    logEvent(
-      'sent_message',
-      parameters: {"chat_id": chatRoomId, 'group_id': classCode},
-    );
-  }
-
-  static void contextualRequest() {
-    logEvent('context_request');
-  }
-
-  static void messageTranslate() {
-    logEvent('message_translate');
-  }
-
   static void beginPurchaseSubscription(
     SubscriptionDetails details,
     BuildContext context,
@@ -135,8 +182,49 @@ class GoogleAnalytics {
     );
   }
 
+  static void startActivity(String activityId, String roomId) {
+    logEvent(
+      'start_activity',
+      parameters: {'activity_id': activityId, 'room_id': roomId},
+    );
+  }
+
+  static void completeActivity(String activityId, String roomId) {
+    logEvent(
+      'complete_activity',
+      parameters: {'activity_id': activityId, 'room_id': roomId},
+    );
+  }
+
   static void failUpdateNotificationBadge() {
     logEvent('fail_update_notification_badge');
+  }
+
+  static void openBotNotification({
+    required BotTargetEventName targetEventName,
+    String? variant,
+    String? notificationType,
+    String? chatId,
+    String? groupId,
+    String? activityId,
+    String? roomId,
+    String? action,
+    String? name,
+  }) {
+    logEvent(
+      'bot_notification_opened',
+      parameters: {
+        'target_event_name': targetEventName.name,
+        'variant': ?variant,
+        'notification_type': ?notificationType,
+        'chat_id': ?chatId,
+        'group_id': ?groupId,
+        'activity_id': ?activityId,
+        'room_id': ?roomId,
+        'action': ?action,
+        'name': ?name,
+      },
+    );
   }
 
   static FirebaseAnalyticsObserver getAnalyticsObserver() {
@@ -145,17 +233,29 @@ class GoogleAnalytics {
     }
     return FirebaseAnalyticsObserver(
       analytics: analytics!,
+      nameExtractor: (settings) {
+        final name = settings.name?.trim();
+        if (name == null || name.isEmpty) {
+          return null;
+        }
+        return name;
+      },
       routeFilter: (route) {
         // By default firebase only tracks page routes
-        if (route is! PageRoute ||
-            // No user logged in, so we dont track
-            route.settings.name == "login" ||
-            route.settings.name == "/home" ||
-            route.settings.name == "connect" ||
-            route.settings.name == "signup") {
+        if (route is! PageRoute) {
           return false;
         }
-        final String? name = route.settings.name;
+
+        final name = route.settings.name?.trim();
+        if (name == null || name.isEmpty) {
+          return false;
+        }
+
+        // Do not log unauthenticated onboarding/auth flow screens.
+        if (_ignoredScreenNamePrefixes.any(name.startsWith)) {
+          return false;
+        }
+
         debugPrint("navigating to route: $name");
         return true;
       },

@@ -9,11 +9,17 @@ jobs:
     permissions:
       issues: write
     steps:
-      - run: |
-          gh issue edit "$NUMBER" --add-label "needs iOS testing"
-          gh issue edit "$NUMBER" --add-label "needs android testing"
-          gh issue edit "$NUMBER" --add-label "needs web testing" 
+      - name: Add testing labels (unless opted out)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
+        run: |
+          BODY=$(gh issue view "$NUMBER" --json body -q .body)
+          if echo "$BODY" | grep -qi "no client testing needed"; then
+            echo "Issue opts out of client testing — skipping label."
+            exit 0
+          fi
+          gh issue edit "$NUMBER" --add-label "needs iOS testing"
+          gh issue edit "$NUMBER" --add-label "needs android testing"
+          gh issue edit "$NUMBER" --add-label "needs web testing"

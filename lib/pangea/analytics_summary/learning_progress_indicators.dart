@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_init_error_indicator.dart';
 import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
@@ -50,6 +51,15 @@ class LearningProgressIndicators extends StatelessWidget {
         return StreamBuilder(
           stream: updater.constructUpdateStream.stream,
           builder: (context, _) {
+            if (analyticsService.hasInitError) {
+              return Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: AnalyticsInitErrorIndicator(
+                  reinitialize: analyticsService.reinitialize,
+                ),
+              );
+            }
+
             return Row(
               children: [
                 Expanded(

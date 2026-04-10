@@ -8,6 +8,7 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -30,6 +31,11 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
       if (activityPlan == null) {
         throw Exception("No activity plan found for room");
       }
+
+      GoogleAnalytics.completeActivity(
+        activityPlan.activityId,
+        controller.room.id,
+      );
 
       final lang = activityPlan.req.targetLanguage.split("-").first;
       final langModel = PLanguageStore.byLangCode(lang)!;

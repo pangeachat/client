@@ -5,30 +5,22 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 /// The user's settings for whether or not to show instuction messages.
 class InstructionSettings {
-  Map<String, bool> _instructions = {};
+  final Map<String, bool> instructions;
 
-  InstructionSettings([Map<String, bool>? instructions]) {
-    if (instructions != null) {
-      _instructions = instructions;
-    } else {
-      for (final key in InstructionsEnum.values) {
-        _instructions[key.toString()] = false;
-      }
-    }
-  }
+  const InstructionSettings({this.instructions = const {}});
 
   factory InstructionSettings.fromJson(Map<String, dynamic> json) {
     final Map<String, bool> instructions = {};
     for (final key in InstructionsEnum.values) {
       instructions[key.toString()] = json[key.toString()] ?? false;
     }
-    return InstructionSettings(instructions);
+    return InstructionSettings(instructions: instructions);
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     for (final key in InstructionsEnum.values) {
-      data[key.toString()] = _instructions[key.toString()];
+      data[key.toString()] = instructions[key.toString()];
     }
     return data;
   }
@@ -42,19 +34,15 @@ class InstructionSettings {
           (accountData[key.toString()]?.content[key.toString()] as bool?) ??
           false;
     }
-    return InstructionSettings(instructions);
+    return InstructionSettings(instructions: instructions);
   }
 
   bool getStatus(InstructionsEnum instruction) {
-    return _instructions[instruction.toString()] ?? false;
+    return instructions[instruction.toString()] ?? false;
   }
 
   void setStatus(InstructionsEnum instruction, bool status) {
-    _instructions[instruction.toString()] = status;
-  }
-
-  InstructionSettings copy() {
-    return InstructionSettings(Map<String, bool>.from(_instructions));
+    instructions[instruction.toString()] = status;
   }
 
   @override
@@ -62,10 +50,10 @@ class InstructionSettings {
     if (identical(this, other)) return true;
     if (other is! InstructionSettings) return false;
 
-    final entries = _instructions.entries.toList()
+    final entries = instructions.entries.toList()
       ..sort((a, b) => a.key.hashCode.compareTo(b.key.hashCode));
 
-    final otherEntries = other._instructions.entries.toList()
+    final otherEntries = other.instructions.entries.toList()
       ..sort((a, b) => a.key.hashCode.compareTo(b.key.hashCode));
 
     return listEquals(
@@ -80,7 +68,7 @@ class InstructionSettings {
 
   @override
   int get hashCode {
-    final entries = _instructions.entries.toList()
+    final entries = instructions.entries.toList()
       ..sort((a, b) => a.key.hashCode.compareTo(b.key.hashCode));
 
     return Object.hashAll(entries.map((e) => Object.hash(e.key, e.value)));

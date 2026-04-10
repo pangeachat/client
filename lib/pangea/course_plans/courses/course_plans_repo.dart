@@ -19,6 +19,14 @@ import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_res
 import 'package:fluffychat/pangea/payload_client/payload_client.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+class MissingCourseTranslationException implements Exception {
+  final GetLocalizedCoursesResponse response;
+
+  const MissingCourseTranslationException({required this.response});
+
+  String get errorMessage => "Course plan not found after translation";
+}
+
 class CoursePlansRepo {
   static final Map<String, Completer<CoursePlanModel>> cache = {};
   static final GetStorage _courseStorage = GetStorage("course_storage");
@@ -61,7 +69,7 @@ class CoursePlansRepo {
       final translation = await _fetch(request);
       final coursePlan = translation.coursePlans[uuid];
       if (coursePlan == null) {
-        throw Exception("Course plan not found after translation");
+        throw MissingCourseTranslationException(response: translation);
       }
 
       await _setCached(coursePlan, uuid, request.l1);

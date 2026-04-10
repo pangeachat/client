@@ -58,7 +58,7 @@ class LemmaUseExampleMessages extends StatelessWidget {
           s: s,
           data: {
             "message": example.message,
-            "tokens": example.tokens.map((t) => t.toJson()).toList(),
+            "tokens": example.tokens.map((t) => t.text.toJson()).toList(),
           },
         );
       }

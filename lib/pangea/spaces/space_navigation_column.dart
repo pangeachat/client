@@ -186,9 +186,15 @@ class _MainView extends StatelessWidget {
       } else if (path.contains("analytics/activities")) {
         return const ActivityArchive();
       } else if (path.contains("analytics/${ConstructTypeEnum.morph.string}")) {
-        return const ConstructAnalyticsView(view: ConstructTypeEnum.morph);
+        return ConstructAnalyticsView(
+          view: ConstructTypeEnum.morph,
+          showPracticeButton: !path.contains("practice"),
+        );
       }
-      return const ConstructAnalyticsView(view: ConstructTypeEnum.vocab);
+      return ConstructAnalyticsView(
+        view: ConstructTypeEnum.vocab,
+        showPracticeButton: !path.contains("practice"),
+      );
     }
 
     if (path.contains("settings")) {

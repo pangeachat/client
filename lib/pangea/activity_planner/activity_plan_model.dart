@@ -92,6 +92,10 @@ class ActivityPlanModel {
     }
 
     final activityId = json[ModelKey.activityId] ?? json["bookmark_id"];
+    if (activityId == null) {
+      throw ArgumentError('Activity ID is required');
+    }
+
     return ActivityPlanModel(
       imageURL: json[ModelKey.activityPlanImageURL],
       instructions: json[ModelKey.activityPlanInstructions],

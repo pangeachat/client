@@ -27,6 +27,7 @@ Future<Result<T>> showFutureLoadingDialog<T>({
   Object? Function(Object, StackTrace?)? onError,
   String? Function()? onSuccess,
   VoidCallback? onDismiss,
+  bool popOnSuccess = true,
   // Pangea#
 }) async {
   assert(future != null || futureWithProgress != null);
@@ -48,6 +49,17 @@ Future<Result<T>> showFutureLoadingDialog<T>({
     }
   }
 
+  // #Pangea
+  if (!context.mounted) {
+    try {
+      final result = await futureExec;
+      return Result.value(result);
+    } catch (e, s) {
+      return Result.error(e, s);
+    }
+  }
+  // Pangea#
+
   final result = await showAdaptiveDialog<Result<T>>(
     context: context,
     barrierDismissible: barrierDismissible,
@@ -62,6 +74,7 @@ Future<Result<T>> showFutureLoadingDialog<T>({
       onError: onError,
       onDismiss: onDismiss,
       onSuccess: onSuccess,
+      popOnSuccess: true,
       // Pangea#
     ),
   );
@@ -80,6 +93,7 @@ class LoadingDialog<T> extends StatefulWidget {
   final Object? Function(Object, StackTrace?)? onError;
   final String? Function()? onSuccess;
   final VoidCallback? onDismiss;
+  final bool popOnSuccess;
   // Pangea#
 
   const LoadingDialog({
@@ -94,6 +108,7 @@ class LoadingDialog<T> extends StatefulWidget {
     this.onError,
     this.onSuccess,
     this.onDismiss,
+    this.popOnSuccess = true,
     // Pangea#
   });
 
@@ -128,7 +143,12 @@ class LoadingDialogState<T> extends State<LoadingDialog> {
             _result = result;
             setState(() {});
           } else if (mounted && Navigator.of(context).canPop()) {
-            Navigator.of(context).pop<Result<T>>(Result.value(result));
+            // #Pangea
+            // Navigator.of(context).pop<Result<T>>(Result.value(result));
+            if (widget.popOnSuccess) {
+              Navigator.of(context).pop<Result<T>>(Result.value(result));
+            }
+            // Pangea#
           }
         },
         onError: (e, s) {
