@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:22:10.529103",
+    "@@last_modified": "2026-04-10 13:53:43.914526",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10949,6 +10949,11 @@
     },
     "closeEmojiMenu": "Chiudi il menu emoji",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Consenti ad altri di cercare il tuo corso",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

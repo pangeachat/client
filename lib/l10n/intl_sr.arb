@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:22:40.641697",
+    "@@last_modified": "2026-04-10 13:54:20.434480",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -11981,6 +11981,11 @@
     },
     "closeEmojiMenu": "Zatvori meni sa emojijima",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Dozvolite drugima da pretražuju vaš kurs",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

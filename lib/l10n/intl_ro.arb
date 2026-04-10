@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:21:56.992509",
+    "@@last_modified": "2026-04-10 13:53:27.527798",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11683,6 +11683,11 @@
     },
     "closeEmojiMenu": "Închide meniul emoji",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Permite altora să caute cursul tău",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

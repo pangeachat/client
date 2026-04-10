@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/bot/bot_target_event_name_enum.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 
 class NotificationTapUtil {
   static const _sessionIdKey = 'content_pangea.activity.session_room_id';
@@ -177,6 +178,20 @@ class NotificationTapUtil {
         activityId: activityId,
       );
       return;
+    }
+
+    Logs().w("Notification Body: $notification");
+    if (notification?['type'] == EventTypes.RoomMember &&
+        room.membership == Membership.invite &&
+        !room.isSpace) {
+      final parentCourseId = room.pangeaSpaceParents
+          .firstWhereOrNull((p) => p.membership == Membership.join)
+          ?.id;
+
+      if (parentCourseId != null) {
+        router.go('/rooms/spaces/$parentCourseId');
+        return;
+      }
     }
 
     if (room.membership == Membership.invite) {

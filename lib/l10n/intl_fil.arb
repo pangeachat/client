@@ -2526,7 +2526,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-04-03 12:22:18.317564",
+    "@@last_modified": "2026-04-10 13:53:59.205400",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11877,6 +11877,11 @@
     },
     "closeEmojiMenu": "Isara ang menu ng emoji",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Payagan ang iba na maghanap para sa iyong kurso",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

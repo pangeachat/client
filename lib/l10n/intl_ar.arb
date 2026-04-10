@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-04-03 12:22:20.174222",
+    "@@last_modified": "2026-04-10 13:54:01.072854",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11198,6 +11198,11 @@
     },
     "closeEmojiMenu": "إغلاق قائمة الرموز التعبيرية",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "السماح للآخرين بالبحث عن دورتك",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

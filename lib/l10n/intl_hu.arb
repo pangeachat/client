@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-04-03 12:21:55.065871",
+    "@@last_modified": "2026-04-10 13:53:25.692614",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10985,6 +10985,11 @@
     },
     "closeEmojiMenu": "Emoji menü bezárása",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Engedje meg másoknak, hogy keresni tudjanak a kurzusára",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-04-03 12:22:05.918853",
+    "@@last_modified": "2026-04-10 13:53:38.078990",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10855,6 +10855,11 @@
     },
     "closeEmojiMenu": "Sulge emotikonide menüü",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Luba teistel otsida sinu kursust",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

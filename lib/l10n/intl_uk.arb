@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-04-03 12:22:11.554209",
+    "@@last_modified": "2026-04-10 13:53:44.861119",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10858,6 +10858,11 @@
     },
     "closeEmojiMenu": "Закрити меню емодзі",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Дозволити іншим шукати ваш курс",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

@@ -3646,7 +3646,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-04-03 12:22:15.238492",
+    "@@last_modified": "2026-04-10 13:53:50.576587",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11577,6 +11577,11 @@
     },
     "closeEmojiMenu": "ปิดเมนูอีโมจิ",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "อนุญาตให้ผู้อื่นค้นหาหลักสูตรของคุณ",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

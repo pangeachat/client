@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:22:24.102091",
+    "@@last_modified": "2026-04-10 13:54:06.855031",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10974,6 +10974,11 @@
     },
     "closeEmojiMenu": "எமோஜி மெனுவை மூடு",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "மற்றவர்கள் உங்கள் பாடத்திற்காக தேட அனுமதிக்கவும்",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

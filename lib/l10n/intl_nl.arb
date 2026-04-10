@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:22:24.762782",
+    "@@last_modified": "2026-04-10 13:54:07.760672",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10858,6 +10858,11 @@
     },
     "closeEmojiMenu": "Sluit emoji-menu",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Sta anderen toe om naar je cursus te zoeken",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

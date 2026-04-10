@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-04-03 12:22:29.034924",
+    "@@last_modified": "2026-04-10 13:54:12.995755",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10967,6 +10967,11 @@
     },
     "closeEmojiMenu": "Zamknij menu emoji",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Zezwól innym na wyszukiwanie twojego kursu",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

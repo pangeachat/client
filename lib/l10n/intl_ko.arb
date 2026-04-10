@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:21:50.494830",
+    "@@last_modified": "2026-04-10 13:53:20.062971",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -11075,6 +11075,11 @@
     },
     "closeEmojiMenu": "이모지 메뉴 닫기",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "다른 사람들이 당신의 강좌를 검색할 수 있도록 허용",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

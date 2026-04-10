@@ -3462,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-04-03 12:22:25.575096",
+    "@@last_modified": "2026-04-10 13:54:09.208050",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10530,6 +10530,11 @@
     },
     "closeEmojiMenu": "Tutup menu emoji",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Bolehkah orang lain mencari kursus anda",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-04-03 12:22:37.355528",
+    "@@last_modified": "2026-04-10 13:54:18.502192",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11872,6 +11872,11 @@
     },
     "closeEmojiMenu": "Закрыть меню эмодзи",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Разрешить другим искать ваш курс",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-04-03 12:22:43.707364",
+    "@@last_modified": "2026-04-10 13:54:22.112136",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -11255,6 +11255,11 @@
     },
     "closeEmojiMenu": "Fermer le menu des émojis",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Autoriser les autres à rechercher votre cours",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

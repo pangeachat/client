@@ -33,55 +33,63 @@ class SpaceCodeOnboardingView extends StatelessWidget {
           maxWidth: 300,
           withScrolling: false,
           showBorder: false,
-          child: Container(
-            alignment: .center,
-            padding: const EdgeInsets.symmetric(
-              vertical: 24.0,
-              horizontal: 16.0,
-            ),
-            child: Column(
-              spacing: 32.0,
-              mainAxisSize: .min,
-              children: [
-                PangeaLogoSvg(width: 72),
-                Column(
-                  spacing: 12.0,
-                  mainAxisSize: .min,
+          child: LayoutBuilder(
+            builder: (context, constraints) => SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(
+                vertical: 24.0,
+                horizontal: 16.0,
+              ),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: constraints.maxHeight - 48.0,
+                ),
+                child: Column(
+                  spacing: 32.0,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      L10n.of(context).joinSpaceOnboardingDesc,
-                      style: theme.textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: .center,
+                    PangeaLogoSvg(width: 72),
+                    Column(
+                      spacing: 12.0,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          L10n.of(context).joinSpaceOnboardingDesc,
+                          style: theme.textTheme.titleLarge?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        TextField(
+                          decoration: InputDecoration(
+                            hintText: L10n.of(context).enterCodeToJoin,
+                          ),
+                          controller: controller.codeController,
+                          onSubmitted: (_) => controller.submitCode(),
+                          onTapOutside: (_) => FocusScope.of(context).unfocus(),
+                        ),
+                        ElevatedButton(
+                          onPressed: controller.codeController.text.isNotEmpty
+                              ? controller.submitCode
+                              : null,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: theme.colorScheme.primaryContainer,
+                            foregroundColor:
+                                theme.colorScheme.onPrimaryContainer,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [Text(L10n.of(context).join)],
+                          ),
+                        ),
+                      ],
                     ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: L10n.of(context).enterCodeToJoin,
-                      ),
-                      controller: controller.codeController,
-                      onSubmitted: (_) => controller.submitCode(),
-                    ),
-                    ElevatedButton(
-                      onPressed: controller.codeController.text.isNotEmpty
-                          ? controller.submitCode
-                          : null,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: theme.colorScheme.primaryContainer,
-                        foregroundColor: theme.colorScheme.onPrimaryContainer,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [Text(L10n.of(context).join)],
-                      ),
+                    TextButton(
+                      onPressed: () => context.go("/rooms"),
+                      child: Text(L10n.of(context).skipForNow),
                     ),
                   ],
                 ),
-                TextButton(
-                  onPressed: () => context.go("/rooms"),
-                  child: Text(L10n.of(context).skipForNow),
-                ),
-              ],
+              ),
             ),
           ),
         ),

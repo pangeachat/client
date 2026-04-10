@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:22:28.347300",
+    "@@last_modified": "2026-04-10 13:54:11.975403",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10970,6 +10970,11 @@
     },
     "closeEmojiMenu": "بستن منوی ایموجی",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "اجازه دهید دیگران دوره شما را جستجو کنند",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

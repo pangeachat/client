@@ -1675,7 +1675,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-04-03 12:22:09.501868",
+    "@@last_modified": "2026-04-10 13:53:43.071463",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -11989,6 +11989,11 @@
     },
     "closeEmojiMenu": "關閉表情符號菜單",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "允許其他人搜尋你的課程",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

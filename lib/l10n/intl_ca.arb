@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:22:14.519060",
+    "@@last_modified": "2026-04-10 13:53:49.447738",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -11009,6 +11009,11 @@
     },
     "closeEmojiMenu": "Tanca el menú d'emoji",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Permetre que altres busquin el teu curs",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

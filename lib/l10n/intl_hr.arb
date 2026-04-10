@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-04-03 12:21:59.367409",
+    "@@last_modified": "2026-04-10 13:53:30.487326",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11342,6 +11342,11 @@
     },
     "closeEmojiMenu": "Zatvori izbornik emojija",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Dopusti drugima da pretražuju tvoj tečaj",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

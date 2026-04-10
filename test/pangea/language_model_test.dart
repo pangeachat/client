@@ -15,6 +15,10 @@ void main() {
         'l2_support': 'full',
         'script': 'Latn',
         'voices': ['es-ES-Standard-A', 'es-ES-Wavenet-B'],
+        'voice_options': [
+          {'short_name': 'es-ES-Standard-A', 'display_name': 'Elena (Spain)'},
+          {'short_name': 'es-ES-Wavenet-B', 'display_name': 'Marta (Spain)'},
+        ],
         'createdAt': '2026-01-01T00:00:00.000Z',
         'updatedAt': '2026-01-01T00:00:00.000Z',
       };
@@ -27,6 +31,23 @@ void main() {
       expect(model.l2Support, L2SupportEnum.full);
       expect(model.script, 'Latn');
       expect(model.voices, ['es-ES-Standard-A', 'es-ES-Wavenet-B']);
+      expect(model.displayVoiceName('es-ES-Wavenet-B'), 'Marta (Spain)');
+    });
+
+    test('prefers voice_options over legacy voices for display labels', () {
+      final json = {
+        'language_code': 'es',
+        'language_name': 'Spanish',
+        'voices': ['es-ES-Standard-A'],
+        'voice_options': [
+          {'short_name': 'es-ES-Standard-A', 'display_name': 'Elena (Spain)'},
+        ],
+      };
+
+      final model = LanguageModel.fromJson(json);
+
+      expect(model.voices, ['es-ES-Standard-A']);
+      expect(model.displayVoiceName('es-ES-Standard-A'), 'Elena (Spain)');
     });
 
     test('parses minimal fields (only required)', () {
@@ -96,6 +117,19 @@ void main() {
       expect(model.voices, isEmpty);
     });
 
+    test('handles legacy string voices', () {
+      final json = {
+        'language_code': 'en',
+        'language_name': 'English',
+        'voices': ['en-US-Neural2-A'],
+      };
+
+      final model = LanguageModel.fromJson(json);
+
+      expect(model.voices, ['en-US-Neural2-A']);
+      expect(model.displayVoiceName('en-US-Neural2-A'), 'Neural 2 A (EN-US)');
+    });
+
     test('handles empty voices list', () {
       final json = {
         'language_code': 'fr',
@@ -152,6 +186,9 @@ void main() {
         'script': 'Jpan',
         'locale_emoji': '🇯🇵',
         'voices': ['ja-JP-Standard-A'],
+        'voice_options': [
+          {'short_name': 'ja-JP-Standard-A', 'display_name': 'Hiroshi (Japan)'},
+        ],
       };
 
       final model = LanguageModel.fromJson(original);
@@ -163,6 +200,9 @@ void main() {
       expect(serialized['script'], 'Jpan');
       expect(serialized['locale_emoji'], '🇯🇵');
       expect(serialized['voices'], ['ja-JP-Standard-A']);
+      expect(serialized['voice_options'], [
+        {'short_name': 'ja-JP-Standard-A', 'display_name': 'Hiroshi (Japan)'},
+      ]);
     });
 
     test('serializes default values correctly', () {
