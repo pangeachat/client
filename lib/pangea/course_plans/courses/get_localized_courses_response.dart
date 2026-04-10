@@ -2,8 +2,12 @@ import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 
 class GetLocalizedCoursesResponse {
   final Map<String, CoursePlanModel> coursePlans;
+  final bool hasNextPage;
 
-  GetLocalizedCoursesResponse({required this.coursePlans});
+  GetLocalizedCoursesResponse({
+    required this.coursePlans,
+    this.hasNextPage = false,
+  });
 
   factory GetLocalizedCoursesResponse.fromJson(Map<String, dynamic> json) {
     final plansEntry = json['course_plans'] as Map<String, dynamic>;
