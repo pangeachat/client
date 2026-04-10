@@ -555,7 +555,12 @@ class _PublicCourseTile extends StatelessWidget {
                 ),
                 if (course != null) ...[
                   CourseInfoChips(courseId, iconSize: 12.0, fontSize: 12.0),
-                  Text(course!.description, style: theme.textTheme.bodyMedium),
+                  Text(
+                    course!.description,
+                    style: theme.textTheme.bodyMedium,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ],
                 const SizedBox(height: 12.0),
                 HoverBuilder(
