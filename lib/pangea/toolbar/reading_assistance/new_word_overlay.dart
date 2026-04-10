@@ -7,13 +7,11 @@ import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class NewWordOverlay extends StatefulWidget {
-  final Color overlayColor;
   final String transformTargetId;
   final VoidCallback? onDismiss;
 
   const NewWordOverlay({
     super.key,
-    required this.overlayColor,
     required this.transformTargetId,
     this.onDismiss,
   });

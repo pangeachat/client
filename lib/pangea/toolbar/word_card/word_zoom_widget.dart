@@ -65,7 +65,6 @@ class WordZoomWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool? subscribed =
         MatrixState.pangeaController.subscriptionController.isSubscribed;
-    final overlayColor = Theme.of(context).scaffoldBackgroundColor;
     final showTranscript =
         MatrixState.pangeaController.userController.showTranscription;
 
@@ -186,7 +185,6 @@ class WordZoomWidget extends StatelessWidget {
               TokensUtil.isRecentlyCollected(token)
                   ? NewWordOverlay(
                       key: ValueKey(transformTargetId),
-                      overlayColor: overlayColor,
                       transformTargetId: transformTargetId,
                       onDismiss: onDismissNewWordOverlay,
                     )
