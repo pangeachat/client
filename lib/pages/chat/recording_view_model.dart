@@ -236,6 +236,7 @@ class RecordingViewModelState extends State<RecordingViewModel> {
           message: EmptyAudioException().toLocalizedString(context),
         );
       }
+      cancel();
       return;
     }
     // Pangea#
