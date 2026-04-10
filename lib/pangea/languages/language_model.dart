@@ -68,7 +68,8 @@ class LanguageModel {
     TextDirection? textDirection,
   }) : _textDirection = textDirection;
 
-  List<String> get voices => voiceOptions.map((voice) => voice.shortName).toList();
+  List<String> get voices =>
+      voiceOptions.map((voice) => voice.shortName).toList();
 
   String? displayVoiceName(String shortName) {
     return voiceOptions

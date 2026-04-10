@@ -16,14 +16,8 @@ void main() {
         'script': 'Latn',
         'voices': ['es-ES-Standard-A', 'es-ES-Wavenet-B'],
         'voice_options': [
-          {
-            'short_name': 'es-ES-Standard-A',
-            'display_name': 'Elena (Spain)',
-          },
-          {
-            'short_name': 'es-ES-Wavenet-B',
-            'display_name': 'Marta (Spain)',
-          },
+          {'short_name': 'es-ES-Standard-A', 'display_name': 'Elena (Spain)'},
+          {'short_name': 'es-ES-Wavenet-B', 'display_name': 'Marta (Spain)'},
         ],
         'createdAt': '2026-01-01T00:00:00.000Z',
         'updatedAt': '2026-01-01T00:00:00.000Z',
@@ -46,10 +40,7 @@ void main() {
         'language_name': 'Spanish',
         'voices': ['es-ES-Standard-A'],
         'voice_options': [
-          {
-            'short_name': 'es-ES-Standard-A',
-            'display_name': 'Elena (Spain)',
-          },
+          {'short_name': 'es-ES-Standard-A', 'display_name': 'Elena (Spain)'},
         ],
       };
 
@@ -196,10 +187,7 @@ void main() {
         'locale_emoji': '🇯🇵',
         'voices': ['ja-JP-Standard-A'],
         'voice_options': [
-          {
-            'short_name': 'ja-JP-Standard-A',
-            'display_name': 'Hiroshi (Japan)',
-          },
+          {'short_name': 'ja-JP-Standard-A', 'display_name': 'Hiroshi (Japan)'},
         ],
       };
 
@@ -213,10 +201,7 @@ void main() {
       expect(serialized['locale_emoji'], '🇯🇵');
       expect(serialized['voices'], ['ja-JP-Standard-A']);
       expect(serialized['voice_options'], [
-        {
-          'short_name': 'ja-JP-Standard-A',
-          'display_name': 'Hiroshi (Japan)',
-        },
+        {'short_name': 'ja-JP-Standard-A', 'display_name': 'Hiroshi (Japan)'},
       ]);
     });
 

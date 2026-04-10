@@ -24,8 +24,8 @@ class VoiceDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final voiceOptions = language?.voiceOptions ?? <VoiceOptionModel>[];
-    final selectedVoice = this.value != null
-        ? voiceOptions.firstWhereOrNull((voice) => voice.shortName == this.value)
+    final selectedVoice = value != null
+        ? voiceOptions.firstWhereOrNull((voice) => voice.shortName == value)
         : null;
 
     return DropdownButtonFormField2<String>(
