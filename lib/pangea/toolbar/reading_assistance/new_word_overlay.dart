@@ -131,11 +131,7 @@ class _NewWordOverlayState extends State<NewWordOverlay>
           bottom: 5,
           child: Opacity(
             opacity: _backgroundFadeAnim!.value,
-            child: Container(
-              height: double.infinity,
-              width: double.infinity,
-              color: widget.overlayColor,
-            ),
+            child: SizedBox(height: double.infinity, width: double.infinity),
           ),
         );
       },
