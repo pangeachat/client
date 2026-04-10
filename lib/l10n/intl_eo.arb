@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:22:36.416689",
+    "@@last_modified": "2026-04-10 13:54:17.716289",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -12086,6 +12086,11 @@
     },
     "closeEmojiMenu": "Fermi emoji-menuon",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Permesi aliajn serĉi vian kurson",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

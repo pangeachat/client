@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:22:16.772324",
+    "@@last_modified": "2026-04-10 13:53:52.205208",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -11097,6 +11097,11 @@
     },
     "closeEmojiMenu": "關閉表情符號選單",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "允許他人搜尋您的課程",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

@@ -5086,5 +5086,6 @@
   "loginFinishedLabel": "Finalizing...",
   "loginErrorLabel": "An error occurred during login",
   "clickToUpdateTargetLanguage": "Click here to update your target language.",
-  "closeEmojiMenu": "Close emoji menu"
+  "closeEmojiMenu": "Close emoji menu",
+  "visibilityToggleTitle": "Allow others to search for your course"
 }

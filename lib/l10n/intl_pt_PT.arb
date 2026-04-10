@@ -3084,7 +3084,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-04-03 12:22:15.990667",
+    "@@last_modified": "2026-04-10 13:53:51.393411",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12043,6 +12043,11 @@
     },
     "closeEmojiMenu": "Fechar menu de emojis",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Permitir que outros pesquisem seu curso",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

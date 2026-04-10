@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:22:04.586860",
+    "@@last_modified": "2026-04-10 13:53:37.347076",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -12085,6 +12085,11 @@
     },
     "closeEmojiMenu": "Fechar menu de emojis",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Permitir que outros pesquisem seu curso",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

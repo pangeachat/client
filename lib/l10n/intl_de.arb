@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-04-03 12:22:07.312816",
+    "@@last_modified": "2026-04-10 13:53:39.543945",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10946,6 +10946,11 @@
     },
     "closeEmojiMenu": "Emoji-Menü schließen",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Erlaube anderen, nach deinem Kurs zu suchen",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-04-03 12:22:20.972153",
+    "@@last_modified": "2026-04-10 13:54:02.026151",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11298,6 +11298,11 @@
     },
     "closeEmojiMenu": "Emoji menüsünü kapat",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Diğerlerinin kursunuzu aramasına izin ver",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

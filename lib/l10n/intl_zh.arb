@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-04-03 12:22:26.493606",
+    "@@last_modified": "2026-04-10 13:54:10.017347",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10967,6 +10967,11 @@
     },
     "closeEmojiMenu": "关闭表情菜单",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "允许他人搜索您的课程",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

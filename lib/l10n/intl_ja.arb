@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-04-03 12:22:32.643337",
+    "@@last_modified": "2026-04-10 13:54:15.870490",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11835,6 +11835,11 @@
     },
     "closeEmojiMenu": "絵文字メニューを閉じる",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "他の人があなたのコースを検索できるようにする",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }
