@@ -81,7 +81,7 @@ class LanguageModel {
         json['language_code'] ??
         codeFromNameOrCode(json['language_name'], json['language_flag']);
 
-    final rawVoices = json['voices'];
+    final rawVoices = json['voice_options'] ?? json['voices'];
     final voiceOptions = rawVoices is List
         ? rawVoices.map(VoiceOptionModel.fromJson).toList()
         : <VoiceOptionModel>[];
@@ -99,7 +99,7 @@ class LanguageModel {
             )
           : null,
       localeEmoji: json['locale_emoji'],
-        voiceOptions: voiceOptions,
+      voiceOptions: voiceOptions,
     );
   }
 
@@ -110,7 +110,8 @@ class LanguageModel {
     'l2_support': l2Support.storageString,
     'text_direction': textDirection.name,
     'locale_emoji': localeEmoji,
-    'voices': voiceOptions.map((voice) => voice.toJson()).toList(),
+    'voices': voices,
+    'voice_options': voiceOptions.map((voice) => voice.toJson()).toList(),
   };
 
   bool get l2 => l2Support != L2SupportEnum.na;

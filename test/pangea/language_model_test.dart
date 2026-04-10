@@ -14,7 +14,8 @@ void main() {
         'locale_emoji': '🇪🇸',
         'l2_support': 'full',
         'script': 'Latn',
-        'voices': [
+        'voices': ['es-ES-Standard-A', 'es-ES-Wavenet-B'],
+        'voice_options': [
           {
             'short_name': 'es-ES-Standard-A',
             'display_name': 'Elena (Spain)',
@@ -37,6 +38,25 @@ void main() {
       expect(model.script, 'Latn');
       expect(model.voices, ['es-ES-Standard-A', 'es-ES-Wavenet-B']);
       expect(model.displayVoiceName('es-ES-Wavenet-B'), 'Marta (Spain)');
+    });
+
+    test('prefers voice_options over legacy voices for display labels', () {
+      final json = {
+        'language_code': 'es',
+        'language_name': 'Spanish',
+        'voices': ['es-ES-Standard-A'],
+        'voice_options': [
+          {
+            'short_name': 'es-ES-Standard-A',
+            'display_name': 'Elena (Spain)',
+          },
+        ],
+      };
+
+      final model = LanguageModel.fromJson(json);
+
+      expect(model.voices, ['es-ES-Standard-A']);
+      expect(model.displayVoiceName('es-ES-Standard-A'), 'Elena (Spain)');
     });
 
     test('parses minimal fields (only required)', () {
@@ -174,7 +194,8 @@ void main() {
         'l2_support': 'beta',
         'script': 'Jpan',
         'locale_emoji': '🇯🇵',
-        'voices': [
+        'voices': ['ja-JP-Standard-A'],
+        'voice_options': [
           {
             'short_name': 'ja-JP-Standard-A',
             'display_name': 'Hiroshi (Japan)',
@@ -190,7 +211,8 @@ void main() {
       expect(serialized['l2_support'], 'beta');
       expect(serialized['script'], 'Jpan');
       expect(serialized['locale_emoji'], '🇯🇵');
-      expect(serialized['voices'], [
+      expect(serialized['voices'], ['ja-JP-Standard-A']);
+      expect(serialized['voice_options'], [
         {
           'short_name': 'ja-JP-Standard-A',
           'display_name': 'Hiroshi (Japan)',
