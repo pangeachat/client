@@ -24,7 +24,7 @@ extension SavedAnalyticsExtension on Room {
         .toList();
   }
 
-  int get archivedActivitiesCount => archivedActivities.length;
+  int get archivedActivitiesCount => _activityRoomIds.length;
 
   Future<void> addActivityRoomId(String roomId) async {
     final List<String> ids = List.from(_activityRoomIds);
