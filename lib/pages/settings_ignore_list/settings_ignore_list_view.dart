@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import '../../widgets/matrix.dart';
 import 'settings_ignore_list.dart';
@@ -45,22 +44,41 @@ class SettingsIgnoreListView extends StatelessWidget {
                   child: Column(
                     mainAxisSize: .min,
                     children: [
-                      TextField(
-                        controller: controller.controller,
-                        autocorrect: false,
-                        textInputAction: TextInputAction.done,
-                        onSubmitted: (_) => controller.ignoreUser(context),
-                        decoration: InputDecoration(
-                          errorText: controller.errorText,
-                          hintText: '@bad_guy:domain.abc',
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          labelText: L10n.of(context).blockUsername,
-                          suffixIcon: IconButton(
-                            tooltip: L10n.of(context).block,
-                            icon: const Icon(Icons.add),
-                            onPressed: () => controller.ignoreUser(context),
-                          ),
-                        ),
+                      // #Pangea
+                      ValueListenableBuilder(
+                        valueListenable: controller.ignoring,
+                        builder: (context, ignoring, _) =>
+                            // Pangea#
+                            TextField(
+                              controller: controller.controller,
+                              autocorrect: false,
+                              textInputAction: TextInputAction.done,
+                              // #Pangea
+                              // onSubmitted: (_) =>
+                              //     controller.ignoreUser(context),
+                              onSubmitted: ignoring
+                                  ? null
+                                  : (_) => controller.ignoreUser(context),
+                              // Pangea#
+                              decoration: InputDecoration(
+                                errorText: controller.errorText,
+                                hintText: '@bad_guy:domain.abc',
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.always,
+                                labelText: L10n.of(context).blockUsername,
+                                suffixIcon: IconButton(
+                                  tooltip: L10n.of(context).block,
+                                  icon: const Icon(Icons.add),
+                                  // #Pangea
+                                  // onPressed: () =>
+                                  //     controller.ignoreUser(context),
+                                  onPressed: ignoring
+                                      ? null
+                                      : () => controller.ignoreUser(context),
+                                  // Pangea#
+                                ),
+                              ),
+                            ),
                       ),
                       const SizedBox(height: 16),
                       Text(
@@ -79,11 +97,15 @@ class SettingsIgnoreListView extends StatelessWidget {
                       trailing: IconButton(
                         tooltip: L10n.of(context).delete,
                         icon: const Icon(Icons.delete_outlined),
-                        onPressed: () => showFutureLoadingDialog(
-                          context: context,
-                          future: () =>
-                              client.unignoreUser(client.ignoredUsers[i]),
-                        ),
+                        // #Pangea
+                        // onPressed: () => showFutureLoadingDialog(
+                        //   context: context,
+                        //   future: () =>
+                        //       client.unignoreUser(client.ignoredUsers[i]),
+                        // ),
+                        onPressed: () =>
+                            controller.unignoreUser(client.ignoredUsers[i]),
+                        // Pangea#
                       ),
                     ),
                   ),
