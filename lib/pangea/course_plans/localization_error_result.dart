@@ -4,10 +4,7 @@ class LocalizationErrorResult {
   final String errorCode;
   final String error;
 
-  const LocalizationErrorResult({
-    required this.errorCode,
-    required this.error,
-  });
+  const LocalizationErrorResult({required this.errorCode, required this.error});
 
   factory LocalizationErrorResult.fromJson(Map<String, dynamic> json) {
     return LocalizationErrorResult(

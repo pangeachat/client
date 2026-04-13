@@ -5,10 +5,7 @@ class TranslateTopicResponse {
   final Map<String, CourseTopicModel> topics;
   final Map<String, LocalizationErrorResult> errors;
 
-  TranslateTopicResponse({
-    required this.topics,
-    this.errors = const {},
-  });
+  TranslateTopicResponse({required this.topics, this.errors = const {}});
 
   factory TranslateTopicResponse.fromJson(Map<String, dynamic> json) {
     final topicsEntry = json['topics'] as Map<String, dynamic>;
@@ -24,10 +21,7 @@ class TranslateTopicResponse {
       }
     }
 
-    return TranslateTopicResponse(
-      topics: topics,
-      errors: errors,
-    );
+    return TranslateTopicResponse(topics: topics, errors: errors);
   }
 
   Map<String, dynamic> toJson() => {

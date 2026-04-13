@@ -5,10 +5,7 @@ class TranslateActivityResponse {
   final Map<String, ActivityPlanModel> plans;
   final Map<String, LocalizationErrorResult> errors;
 
-  TranslateActivityResponse({
-    required this.plans,
-    this.errors = const {},
-  });
+  TranslateActivityResponse({required this.plans, this.errors = const {}});
 
   factory TranslateActivityResponse.fromJson(Map<String, dynamic> json) {
     final plansEntry = json['plans'] as Map<String, dynamic>;
@@ -24,10 +21,7 @@ class TranslateActivityResponse {
       }
     }
 
-    return TranslateActivityResponse(
-      plans: plans,
-      errors: errors,
-    );
+    return TranslateActivityResponse(plans: plans, errors: errors);
   }
 
   Map<String, dynamic> toJson() => {
