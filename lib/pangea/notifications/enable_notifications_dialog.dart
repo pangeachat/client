@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:cached_network_image/cached_network_image.dart';
+
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/notifications/notifications_constants.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 
 class EnableNotificationsDialog extends StatelessWidget {
@@ -17,16 +21,19 @@ class EnableNotificationsDialog extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              padding: const EdgeInsets.only(
-                left: 16.0,
-                right: 16.0,
-                top: 32.0,
-                bottom: 24.0,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 24.0,
               ),
               child: Column(
                 spacing: 12.0,
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  CachedNetworkImage(
+                    imageUrl:
+                        "${AppConfig.assetsBaseURL}/${NotificationsConstants.notifRequestImage}",
+                    errorWidget: (_, _, _) => SizedBox(),
+                  ),
                   Text(
                     l10n.enableNotificationsTitle,
                     textAlign: TextAlign.center,
