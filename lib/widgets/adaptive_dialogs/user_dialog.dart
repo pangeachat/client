@@ -216,7 +216,10 @@ class UserDialog extends StatelessWidget {
               );
             },
             child: Text(
-              L10n.of(context).ignoreUser,
+              // #Pangea
+              // L10n.of(context).ignoreUser,
+              L10n.of(context).block,
+              // Pangea#
               style: TextStyle(color: theme.colorScheme.error),
             ),
           ),
