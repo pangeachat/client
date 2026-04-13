@@ -5,6 +5,7 @@ import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_message_widget.dart';
 import 'package:fluffychat/pangea/analytics_practice/grammar_error_example_widget.dart';
+import 'package:fluffychat/pangea/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -15,12 +16,14 @@ class AnalyticsPracticeExerciseContent extends StatelessWidget {
   final bool showHint;
   final Future<List<InlineSpan>?> exampleMessage;
   final PangeaAudioFile? audioFile;
+  final AudioPlaybackSpeedController playbackSpeedController;
 
   const AnalyticsPracticeExerciseContent({
     super.key,
     required this.analyticsPracticeExercise,
     required this.showHint,
     required this.exampleMessage,
+    required this.playbackSpeedController,
     this.audioFile,
   });
 
@@ -56,6 +59,7 @@ class AnalyticsPracticeExerciseContent extends StatelessWidget {
             senderId: Matrix.of(context).client.userID!,
             matrixFile: audioFile,
             autoplay: true,
+            playbackSpeedController: playbackSpeedController,
           ),
         ),
       ),

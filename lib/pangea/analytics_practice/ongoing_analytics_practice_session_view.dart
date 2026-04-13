@@ -138,6 +138,8 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                                 audioFile: controller.data.getAudioFile(
                                   exercise,
                                 ),
+                                playbackSpeedController:
+                                    controller.audioPlaybackSpeedController,
                               ),
                             ),
                           if (exercise != null)

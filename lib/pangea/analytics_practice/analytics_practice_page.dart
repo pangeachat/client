@@ -15,6 +15,7 @@ import 'package:fluffychat/pangea/analytics_practice/analytics_practice_view.dar
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
+import 'package:fluffychat/pangea/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
@@ -120,6 +121,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   PracticeTarget? _cachedTarget;
   List<InlineSpan>? _cachedExampleMessage;
 
+  final AudioPlaybackSpeedController audioPlaybackSpeedController =
+      AudioPlaybackSpeedController();
+
   @override
   void initState() {
     super.initState();
@@ -138,6 +142,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     notifier.dispose();
     practiceExerciseState.dispose();
     progress.dispose();
+    audioPlaybackSpeedController.dispose();
     super.dispose();
   }
 
@@ -225,6 +230,11 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   void onHintPressed({bool increment = true}) {
     if (increment) _sessionController.updateHintsPressed();
+    final currentSpeed = audioPlaybackSpeedController.playbackSpeed.value;
+    if (currentSpeed > 0.75 &&
+        practiceExercise is VocabAudioPracticeExerciseModel) {
+      audioPlaybackSpeedController.setSpeed(0.75);
+    }
     notifier.toggleShowHint();
   }
 
