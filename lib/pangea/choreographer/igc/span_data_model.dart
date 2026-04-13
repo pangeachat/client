@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/choreographer/igc/text_normalization_util.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'replacement_type_enum.dart';
@@ -121,6 +122,17 @@ class SpanData {
 
   bool isOffsetInMatchSpan(int offset) =>
       offset >= this.offset && offset <= this.offset + length;
+
+  /// Returns purple if all choices are alternatives (suggestions),
+  /// or red if any choice is a correction/error.
+  Color get color {
+    if (choices != null &&
+        choices!.isNotEmpty &&
+        choices!.every((c) => c.type == SpanChoiceTypeEnum.alt)) {
+      return AppConfig.primaryColor; // Purple for suggestions
+    }
+    return AppConfig.error; // Red for errors
+  }
 
   SpanChoice? get bestChoice {
     return choices?.firstWhereOrNull((choice) => choice.type.isSuggestion);
