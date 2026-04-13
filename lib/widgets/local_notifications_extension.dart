@@ -14,9 +14,12 @@ import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/join_codes/knock_notification_utils.dart';
+import 'package:fluffychat/pangea/notifications/enable_notifications_dialog.dart';
+import 'package:fluffychat/pangea/notifications/notifications_request_repo.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/push_helper.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -208,6 +211,25 @@ extension LocalNotificationsExtension on MatrixState {
       final permission = await notificationsEnabled;
       ErrorHandler.logError(e: e, s: s, data: {'permission': permission});
     }
+  }
+
+  Future<void> showEnableNotificationsDialog(BuildContext context) async {
+    final enabled = await notificationsEnabled;
+    if (enabled) return;
+
+    final canShow = await NotificationsRequestRepo.canShowRequest();
+    if (!canShow) return;
+
+    final result = await showDialog<OkCancelResult>(
+      context: context,
+      builder: (context) => const EnableNotificationsDialog(),
+    );
+
+    if (result == OkCancelResult.ok) {
+      await requestNotificationPermission();
+    }
+
+    await NotificationsRequestRepo.updateRequestTimestamp();
   }
 
   // Pangea#

@@ -10277,16 +10277,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableNotificationsTitle": "Pangea Chat je aplikacija za slanje poruka, stoga su obavijesti važne!",
-    "enableNotificationsDesc": "Dopusti obavijesti",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata",
     "@useActivityImageAsChatBackground": {
         "type": "String",

@@ -10042,16 +10042,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableNotificationsTitle": "Pangea Chat on sõnumite rakendus, seega on teavitused olulised!",
-    "enableNotificationsDesc": "Luba teavitused",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
     "@useActivityImageAsChatBackground": {
         "type": "String",

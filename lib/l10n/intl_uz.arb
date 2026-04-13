@@ -4540,8 +4540,6 @@
     "findCourse": "Kurs toping",
     "publicInviteDescChat": "Ushbu chatga taklif qilish uchun foydalanuvchilarni qidiring.",
     "publicInviteDescSpace": "Ushbu maydonga taklif qilish uchun foydalanuvchilarni qidiring.",
-    "enableNotificationsTitle": "Pangea Chat matnli ilova bo'lib, bildirishnomalar muhim!",
-    "enableNotificationsDesc": "Bildirishnomalarni ruxsat etish",
     "useActivityImageAsChatBackground": "Faoliyat rasmidan chat fonini foydalanish",
     "chatWithSupport": "Qo'llab-quvvatlash bilan chat",
     "newCourseAccess": "Standart holda, kurslar ochiq qidiruvda bo'lib, ularga qo'shilish uchun admin tasdiqlashi talab etiladi. Siz bu sozlamalarni istalgan vaqtda o'zgartirishingiz mumkin.",
@@ -10141,14 +10139,6 @@
         "placeholders": {}
     },
     "@publicInviteDescSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
         "type": "String",
         "placeholders": {}
     },

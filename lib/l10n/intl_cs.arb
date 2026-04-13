@@ -10361,16 +10361,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableNotificationsTitle": "Pangea Chat je aplikace pro zasílání zpráv, takže jsou oznámení důležitá!",
-    "enableNotificationsDesc": "Povolit oznámení",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "useActivityImageAsChatBackground": "Použít obrázek aktivity jako pozadí chatu",
     "@useActivityImageAsChatBackground": {
         "type": "String",

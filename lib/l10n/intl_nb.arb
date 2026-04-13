@@ -10086,16 +10086,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableNotificationsTitle": "Pangea Chat er en tekstmelding-app, så varsler er viktige!",
-    "enableNotificationsDesc": "Tillat varsler",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
     "@useActivityImageAsChatBackground": {
         "type": "String",

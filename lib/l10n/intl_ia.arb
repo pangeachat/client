@@ -10903,16 +10903,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableNotificationsTitle": "Pangea Chat est un application de messagerie donc les notifications sont importantes !",
-    "enableNotificationsDesc": "Autoriser les notifications",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
     "@useActivityImageAsChatBackground": {
         "type": "String",

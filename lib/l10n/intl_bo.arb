@@ -9190,16 +9190,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableNotificationsTitle": "Pangea Chat je aplikacija za slanje poruka, pa su obaveštenja važna!",
-    "enableNotificationsDesc": "Dozvoli obaveštenja",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
     "@useActivityImageAsChatBackground": {
         "type": "String",

@@ -10887,16 +10887,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableNotificationsTitle": "Pangea Chat er en beskedapp, så notifikationer er vigtige!",
-    "enableNotificationsDesc": "Tillad notifikationer",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "useActivityImageAsChatBackground": "Brug aktivitetsbillede som chatbaggrund",
     "@useActivityImageAsChatBackground": {
         "type": "String",

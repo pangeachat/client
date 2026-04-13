@@ -22,7 +22,6 @@ import 'package:fluffychat/pages/device_settings/device_settings.dart';
 import 'package:fluffychat/pages/login/login.dart';
 import 'package:fluffychat/pages/new_group/new_group.dart';
 import 'package:fluffychat/pages/new_private_chat/new_private_chat.dart';
-import 'package:fluffychat/pages/onboarding/enable_notifications.dart';
 import 'package:fluffychat/pages/onboarding/space_code_onboarding.dart';
 import 'package:fluffychat/pages/settings/settings.dart';
 import 'package:fluffychat/pages/settings_3pid/settings_3pid.dart';
@@ -68,7 +67,6 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
 import 'package:fluffychat/widgets/layouts/two_column_layout.dart';
-import 'package:fluffychat/widgets/local_notifications_extension.dart';
 import 'package:fluffychat/widgets/log_view.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
@@ -192,29 +190,9 @@ abstract class AppRoutes {
           ),
         ),
         GoRoute(
-          path: 'notifications',
+          path: 'course',
           pageBuilder: (context, state) =>
-              defaultPageBuilder(context, state, const EnableNotifications()),
-          redirect: (context, state) async {
-            final redirect = await PAuthGaurd.onboardingRedirect(
-              context,
-              state,
-            );
-            if (redirect != null) return redirect;
-            final enabled = await Matrix.of(context).notificationsEnabled;
-            if (enabled) return "/registration/notifications/course";
-            return null;
-          },
-          routes: [
-            GoRoute(
-              path: 'course',
-              pageBuilder: (context, state) => defaultPageBuilder(
-                context,
-                state,
-                const SpaceCodeOnboarding(),
-              ),
-            ),
-          ],
+              defaultPageBuilder(context, state, const SpaceCodeOnboarding()),
         ),
       ],
     ),
