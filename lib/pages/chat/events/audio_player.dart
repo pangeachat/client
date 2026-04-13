@@ -84,6 +84,9 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
   void dispose() {
     super.dispose();
     // #Pangea
+    widget.playbackSpeedController?.playbackSpeed.removeListener(
+      _onUpdatePlaybackSpeed,
+    );
     // final audioPlayer = matrix.voiceMessageEventId.value != widget.event.eventId
     final audioPlayer = matrix.voiceMessageEventId.value != widget.eventId
         // Pangea#
@@ -154,9 +157,6 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       matrix.voiceMessageEventId.value = matrix.audioPlayer = null;
       // #Pangea
       matrix.voiceMessageEventId.removeListener(_onPlayerChange);
-      widget.playbackSpeedController?.playbackSpeed.removeListener(
-        _onUpdatePlaybackSpeed,
-      );
       _onAudioStateChanged?.cancel();
       // Pangea#
     }
@@ -359,22 +359,30 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       switch (playbackSpeed) {
         case 1.0:
           setState(() => playbackSpeed = 0.75);
+          break;
         case 0.75:
           setState(() => playbackSpeed = 0.5);
+          break;
         case 0.5:
           setState(() => playbackSpeed = 1.25);
+          break;
         case 1.25:
           setState(() => playbackSpeed = 1.5);
+          break;
         default:
           setState(() => playbackSpeed = 1.0);
+          break;
       }
     } else {
       widget.playbackSpeedController!.toggleSpeed();
     }
     if (audioPlayer == null) return;
-    await audioPlayer.setSpeed(playbackSpeed);
+    await audioPlayer.setSpeed(
+      widget.playbackSpeedController?.playbackSpeed.value ?? playbackSpeed,
+    );
     setState(() {});
   }
+  // Pangea#
 
   List<int>? _getWaveform() {
     // #Pangea
