@@ -9,7 +9,6 @@ import 'package:fluffychat/pangea/choreographer/igc/autocorrect_span.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
-import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -43,8 +42,8 @@ class PangeaTextController extends TextEditingController {
       return AppConfig.primaryColor.withAlpha(alpha);
     }
 
-    // Use type-based coloring
-    return match.match.type.color.withAlpha(alpha);
+    // Use choice-based coloring: purple for all-alternative matches, red for errors
+    return match.match.color.withAlpha(alpha);
   }
 
   void setSystemText(String newText, EditTypeEnum type) {
