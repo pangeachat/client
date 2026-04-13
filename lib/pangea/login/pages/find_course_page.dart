@@ -79,7 +79,10 @@ class FindCoursePageState extends State<FindCoursePage> {
     visibleCourses.value = [];
     loading.value = false;
     _loadGeneration++;
-    scrollController.jumpTo(0);
+    if (scrollController.hasClients) {
+      scrollController.jumpTo(0);
+    }
+    searchController.clear();
     loadMore();
   }
 

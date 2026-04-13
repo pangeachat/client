@@ -99,7 +99,9 @@ class NewCoursePageState extends State<NewCoursePage> {
     if (_targetLanguageFilter.value == language) return;
     _targetLanguageFilter.value = language;
     _loadGeneration++;
-    _scrollController.jumpTo(0);
+    if (_scrollController.hasClients) {
+      _scrollController.jumpTo(0);
+    }
     _loadCourses();
   }
 
