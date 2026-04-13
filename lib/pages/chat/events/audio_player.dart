@@ -14,6 +14,7 @@ import 'package:path_provider/path_provider.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/pangea/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
 import 'package:fluffychat/utils/file_description.dart';
@@ -35,6 +36,7 @@ class AudioPlayerWidget extends StatefulWidget {
   final PangeaAudioFile? matrixFile;
   final bool autoplay;
   final bool enableClicks;
+  final AudioPlaybackSpeedController? playbackSpeedController;
   // Pangea#
 
   static const int wavesCount = 40;
@@ -51,6 +53,7 @@ class AudioPlayerWidget extends StatefulWidget {
     this.matrixFile,
     this.autoplay = false,
     this.enableClicks = true,
+    this.playbackSpeedController,
     // Pangea#
     super.key,
   });
@@ -81,6 +84,9 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
   void dispose() {
     super.dispose();
     // #Pangea
+    widget.playbackSpeedController?.playbackSpeed.removeListener(
+      _onUpdatePlaybackSpeed,
+    );
     // final audioPlayer = matrix.voiceMessageEventId.value != widget.event.eventId
     final audioPlayer = matrix.voiceMessageEventId.value != widget.eventId
         // Pangea#
@@ -322,59 +328,61 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     );
   }
 
+  // #Pangea
+  // Future<void> _toggleSpeed() async {
+  //   final audioPlayer = matrix.audioPlayer;
+  //   if (audioPlayer == null) return;
+  //   switch (audioPlayer.speed) {
+  //     case 1.0:
+  //       await audioPlayer.setSpeed(1.25);
+  //       break;
+  //     case 1.25:
+  //       await audioPlayer.setSpeed(1.5);
+  //       break;
+  //     case 1.5:
+  //       await audioPlayer.setSpeed(2.0);
+  //       break;
+  //     case 2.0:
+  //       await audioPlayer.setSpeed(0.5);
+  //       break;
+  //     case 0.5:
+  //     default:
+  //       await audioPlayer.setSpeed(1.0);
+  //       break;
+  //   }
+  //   setState(() {});
+  // }
+
   void _toggleSpeed() async {
     final audioPlayer = matrix.audioPlayer;
-    // #Pangea
-    // if (audioPlayer == null) return;
-    switch (playbackSpeed) {
-      case 1.0:
-        setState(() => playbackSpeed = 0.75);
-      case 0.75:
-        setState(() => playbackSpeed = 0.5);
-      case 0.5:
-        setState(() => playbackSpeed = 1.25);
-      case 1.25:
-        setState(() => playbackSpeed = 1.5);
-      default:
-        setState(() => playbackSpeed = 1.0);
+    if (widget.playbackSpeedController == null) {
+      switch (playbackSpeed) {
+        case 1.0:
+          setState(() => playbackSpeed = 0.75);
+          break;
+        case 0.75:
+          setState(() => playbackSpeed = 0.5);
+          break;
+        case 0.5:
+          setState(() => playbackSpeed = 1.25);
+          break;
+        case 1.25:
+          setState(() => playbackSpeed = 1.5);
+          break;
+        default:
+          setState(() => playbackSpeed = 1.0);
+          break;
+      }
+    } else {
+      widget.playbackSpeedController!.toggleSpeed();
     }
     if (audioPlayer == null) return;
-    // Pangea#
-    switch (audioPlayer.speed) {
-      // #Pangea
-      // case 1.0:
-      //   await audioPlayer.setSpeed(1.25);
-      //   break;
-      // case 1.25:
-      //   await audioPlayer.setSpeed(1.5);
-      //   break;
-      // case 1.5:
-      //   await audioPlayer.setSpeed(2.0);
-      //   break;
-      // case 2.0:
-      //   await audioPlayer.setSpeed(0.5);
-      //   break;
-      // case 0.5:
-      case 1.0:
-        await audioPlayer.setSpeed(0.75);
-        break;
-      case 0.75:
-        await audioPlayer.setSpeed(0.5);
-        break;
-      case 0.5:
-        await audioPlayer.setSpeed(1.25);
-        break;
-      case 1.25:
-        await audioPlayer.setSpeed(1.5);
-        break;
-      case 1.5:
-      // Pangea#
-      default:
-        await audioPlayer.setSpeed(1.0);
-        break;
-    }
+    await audioPlayer.setSpeed(
+      widget.playbackSpeedController?.playbackSpeed.value ?? playbackSpeed,
+    );
     setState(() {});
   }
+  // Pangea#
 
   List<int>? _getWaveform() {
     // #Pangea
@@ -417,6 +425,16 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       }
     });
   }
+
+  void _onUpdatePlaybackSpeed() {
+    if (widget.playbackSpeedController == null) return;
+    setState(
+      () => playbackSpeed = widget.playbackSpeedController!.playbackSpeed.value,
+    );
+    if (matrix.audioPlayer != null) {
+      matrix.audioPlayer!.setSpeed(playbackSpeed);
+    }
+  }
   // Pangea#
 
   @override
@@ -426,6 +444,12 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     // #Pangea
     WidgetsBinding.instance.addPostFrameCallback((_) => _onPlayerChange());
     matrix.voiceMessageEventId.addListener(_onPlayerChange);
+    if (widget.playbackSpeedController != null) {
+      playbackSpeed = widget.playbackSpeedController!.playbackSpeed.value;
+      widget.playbackSpeedController!.playbackSpeed.addListener(
+        _onUpdatePlaybackSpeed,
+      );
+    }
     // Pangea#
     _waveform = _getWaveform();
 
