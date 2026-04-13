@@ -16,15 +16,21 @@ import 'package:fluffychat/pangea/course_plans/courses/course_filter.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_response.dart';
+import 'package:fluffychat/pangea/course_plans/localization_error_result.dart';
 import 'package:fluffychat/pangea/payload_client/payload_client.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class MissingCourseTranslationException implements Exception {
   final GetLocalizedCoursesResponse response;
+  final LocalizationErrorResult? localizationError;
 
-  const MissingCourseTranslationException({required this.response});
+  const MissingCourseTranslationException({
+    required this.response,
+    this.localizationError,
+  });
 
-  String get errorMessage => "Course plan not found after translation";
+  String get errorMessage =>
+      localizationError?.error ?? "Course plan not found after translation";
 }
 
 class CoursePlansRepo {
@@ -69,6 +75,13 @@ class CoursePlansRepo {
       final translation = await _fetch(request);
       final coursePlan = translation.coursePlans[uuid];
       if (coursePlan == null) {
+        final error = translation.errors[uuid];
+        if (error != null) {
+          throw MissingCourseTranslationException(
+            response: translation,
+            localizationError: error,
+          );
+        }
         throw MissingCourseTranslationException(response: translation);
       }
 
