@@ -299,6 +299,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _setAppLanguage();
       _setLanguageListener();
+      _showScreenSizeDialog();
     });
     _uriListener = AppLinks().uriLinkStream.listen(_processIncomingUris);
     // Pangea#
@@ -306,7 +307,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   // #Pangea
   bool _showingScreenSizeDialog = false;
-  double? _lastShownPopupHeight;
+  // Tracks whether the screen was too small on the last check. The popup is
+  // only shown when transitioning from "big enough" → "too small" (or on the
+  // initial frame check), so resizing from small → big never triggers it.
+  bool _screenWasTooSmall = false;
   @override
   void didChangeMetrics() {
     _showScreenSizeDialog();
@@ -314,29 +318,35 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   Future<void> _showScreenSizeDialog() async {
-    if (_showingScreenSizeDialog || !kIsWeb) {
-      return;
-    }
+    if (!kIsWeb) return;
 
     final height = MediaQuery.heightOf(context);
     if (height > 550) {
-      _lastShownPopupHeight = null;
+      // Screen is now big enough — reset so a future shrink can show the popup.
+      _screenWasTooSmall = false;
       return;
     }
 
-    if (_lastShownPopupHeight != null && height >= _lastShownPopupHeight!) {
+    // Screen is too small. Guard against: dialog already open, or screen was
+    // already too small (i.e. we're mid-resize within the too-small range).
+    if (_showingScreenSizeDialog || _screenWasTooSmall) return;
+
+    // The navigator may not be ready on the initial frame — retry next frame.
+    final navigatorContext =
+        FluffyChatApp.router.routerDelegate.navigatorKey.currentContext;
+    if (navigatorContext == null) {
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) => _showScreenSizeDialog(),
+      );
       return;
     }
 
+    _screenWasTooSmall = true;
     _showingScreenSizeDialog = true;
-    _lastShownPopupHeight = height;
     await showOkAlertDialog(
-      context:
-          FluffyChatApp.router.routerDelegate.navigatorKey.currentContext ??
-          context,
+      context: navigatorContext,
       title: L10n.of(context).screenSizeWarning,
     );
-    _lastShownPopupHeight = MediaQuery.heightOf(context);
     _showingScreenSizeDialog = false;
   }
 
