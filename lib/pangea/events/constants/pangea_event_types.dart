@@ -21,7 +21,7 @@ class PangeaEventTypes {
   static const analyticsInviteRule = "p.rule.analytics_invite";
   static const analyticsInviteContent = "p.analytics_request";
 
-  /// A practice activity that is related to a message
+  /// A practice exercise that is related to a message
   static const pangeaActivity = "pangea.activity_res";
 
   /// Profile information related to a user's analytics

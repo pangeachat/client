@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:22:40.641697",
+    "@@last_modified": "2026-04-10 13:54:20.434480",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -2604,7 +2604,6 @@
     "trialPeriodExpired": "Ваш пробни период је истекао",
     "translations": "преводи",
     "definitions": "дефиниције",
-    "subscribedToUnlockTools": "Претплатите се да бисте откључали интерактивни превод и проверу граматике, репродукцију аудио записа, персонализоване активности за вежбање и аналитике учења!",
     "translationTooltip": "Преведи",
     "kickBotWarning": "Искључивање Пангее бота уклонит ће бота за разговор из овог чета.",
     "refresh": "Освежи",
@@ -2620,12 +2619,10 @@
     "tooManyRequest": "Превише захтева, покушајте поново касније.",
     "enterNumber": "Молимо унесите целобројну вредност.",
     "practice": "Vežbajte",
-    "speechToTextBody": "Za glasovne poruke, možete videti transkript kao i rezultat govornika u rečima po minutu.",
     "versionNotFound": "Verzija nije pronađena",
     "fetchingVersion": "Preuzimanje verzije...",
     "versionFetchError": "Greška pri preuzimanju verzije",
     "versionText": "Verzija: {version}+{buildNumber}",
-    "l1TranslationBody": "Poruke na vašem osnovnom jeziku neće biti prevedene.",
     "deleteSubscriptionWarningTitle": "Imate aktivnu pretplatu",
     "deleteSubscriptionWarningBody": "Brisanje vašeg naloga neće automatski otkazati vašu pretplatu.",
     "manageSubscription": "Upravljanje pretplatom",
@@ -2634,7 +2631,6 @@
     "wordsUsed": "Коришћене речи",
     "level": "Ниво",
     "morphsUsed": "Коришћени морфеми",
-    "translationChoicesBody": "Кликните и држите опцију за сугестију.",
     "grammar": "Граматика",
     "contactHasBeenInvitedToTheChat": "Контакт је позван у ћаскање",
     "inviteChat": "📨 Позови ћаскање",
@@ -2915,8 +2911,6 @@
     "grammarCopyVOICErcp": "Recipročno",
     "other": "Друго",
     "levelShort": "Ниво {level}",
-    "clickBestOption": "Изаберите најбоље опције за превођење ваше поруке!",
-    "completeActivitiesToUnlock": "Завршите бар једну активност да бисте откључали превод!",
     "noCapacityLimit": "Нема ограничења капацитета",
     "downloadGroupText": "Преузми текст групе",
     "notificationsOn": "Обавештења укључена",
@@ -2935,22 +2929,6 @@
     "constructUseIgnIGCDesc": "Игнорисано у граматичкој исправци",
     "constructUseCorIGCDesc": "Исправно у граматичкој исправци",
     "constructUseIncIGCDesc": "Грешка у граматичкој исправци",
-    "constructUseCorPADesc": "Исправно у активности значења речи",
-    "constructUseIgnPADesc": "Игнорисано у активности значења речи",
-    "constructUseIncPADesc": "Грешка у активности значења речи",
-    "constructUseCorWLDesc": "Исправно у активности слушања речи",
-    "constructUseIncWLDesc": "Грешка у активности слушања речи",
-    "constructUseIngWLDesc": "Игнорисано у активности слушања речи",
-    "constructUseCorHWLDesc": "Исправно у активности скривене речи",
-    "constructUseIncHWLDesc": "Неправилно у активности скривене речи",
-    "constructUseIgnHWLDesc": "Игнорисано у активности скривене речи",
-    "constructUseCorLDesc": "Тачно у активности лемме",
-    "constructUseIncLDesc": "Неправилно у активности лемме",
-    "constructUseIgnLDesc": "Игнорисано у активности лемме",
-    "constructUseCorMDesc": "Тачно у активности граматике",
-    "constructUseIncMDesc": "Неправилно у активности граматике",
-    "constructUseIgnMDesc": "Игнорисано у активности граматике",
-    "constructUseEmojiDesc": "Тачно у активности емоџија",
     "constructUseCollected": "Прикупљено у ћаскању",
     "constructUseNanDesc": "Није применљиво",
     "xpIntoLevel": "{currentXP} / {maxXP} поена искуства",
@@ -3002,23 +2980,16 @@
     "whatIsMeaning": "Šta znači '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Usklađuj značenja sa rečima u poruci!",
     "doubleClickToEdit": "Dvoklik za uređivanje.",
-    "activityPlannerTitle": "Planer aktivnosti",
     "topicLabel": "Tema",
     "topicPlaceholder": "Izaberi temu...",
-    "modeLabel": "Tip aktivnosti",
     "modePlaceholder": "Izaberi način...",
     "learningObjectiveLabel": "Cilj učenja",
     "learningObjectivePlaceholder": "Izaberi cilj učenja...",
-    "languageOfInstructionsLabel": "Jezik uputstava za aktivnost",
     "targetLanguageLabel": "Ciljni jezik",
     "cefrLevelLabel": "CEFR nivo",
-    "generateActivitiesButton": "Generiši aktivnost",
-    "launchActivityButton": "Pokreni aktivnost",
     "image": "Слика",
     "video": "Видео",
     "nan": "Непримењиво",
-    "activityPlannerOverviewInstructionsBody": "Изаберите тему, режим, циљ учења и генеришите активност за ћаскање!",
-    "activityTitle": "Назив активности",
     "addVocabulary": "Додај речник",
     "instructions": "Упутства",
     "numberOfLearners": "Број ученика",
@@ -3065,12 +3036,10 @@
     "pleaseEnterInt": "Молимо унесите број",
     "home": "Почетна",
     "join": "Придружи се",
-    "readingAssistanceOverviewBody": "Кликните на дугмад испод за мини-игре у којима се поклапају емотикони, аудио записи, значења речи и граматички концепти. Или кликните на било коју реч за детаље.",
     "resetInstructionTooltipsTitle": "Ресетујте упутства",
     "resetInstructionTooltipsDesc": "Кликните да бисте приказали упутства као за потпуно новог корисника.",
     "randomize": "Рандомизуј",
     "clear": "Обриши",
-    "makeYourOwnActivity": "Направите своју активност",
     "featuredActivities": "Истакнуте",
     "save": "Сачувај",
     "startChat": "Почни ћаскање",
@@ -3127,7 +3096,6 @@
     "announcements": "Обавештења",
     "activities": "Активности",
     "access": "Приступ",
-    "activitySuggestionTimeoutMessage": "Трудимо се да генеришемо више активности за вас, молимо вас да проверите поново за минут",
     "howSpaceCanBeFound": "Како се овај курс може пронаћи",
     "private": "Приватно",
     "cannotBeFoundInSearch": "Не може се пронаћи у претрази",
@@ -3162,9 +3130,6 @@
     "numInvited": "{count} pozvan",
     "saved": "Sačuvano",
     "reset": "Resetuj",
-    "errorGenerateActivityMessage": "Neuspešno generisanje aktivnosti",
-    "errorRegenerateActivityMessage": "Neuspešno regenerisanje aktivnosti",
-    "errorLaunchActivityMessage": "Neuspešno pokretanje aktivnosti",
     "errorFetchingActivitiesMessage": "Neuspešno preuzimanje aktivnosti",
     "errorFetchingDefinition": "Neuspešno preuzimanje definicije",
     "errorProcessAnalytics": "Neuspešno procesiranje analitike",
@@ -3173,7 +3138,6 @@
     "unexpectedError": "Nepredviđena greška.",
     "pleaseReload": "Molimo vas, osvežite i pokušajte ponovo.",
     "translationError": "Greška u prevodu",
-    "errorFetchingActivity": "Neuspešno preuzimanje aktivnosti",
     "check": "Proveri",
     "unableToFindRoom": "Nije pronađen ni razgovor ni kurs sa tim kodom. Molimo pokušajte ponovo.",
     "numCompletedActivities": "Broj završenih aktivnosti",
@@ -3181,11 +3145,8 @@
     "request": "Zahtev",
     "requestAll": "Zahtevaj sve",
     "confirmMessageUnpin": "Da li ste sigurni da želite da otpinjete ovu poruku?",
-    "createActivityPlan": "Kreirajte novi plan aktivnosti",
     "saveAndLaunch": "Sačuvaj i pokreni",
     "launchToSpace": "Pokreni u kursu",
-    "numberOfActivities": "Broj sesija aktivnosti",
-    "maximumActivityParticipants": "Svaka aktivnost može imati najviše {count} učesnik(a).",
     "pending": "Na čekanju",
     "inactive": "Neaktivno",
     "confirmRole": "Potvrdi ulogu",
@@ -6665,10 +6626,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -6733,10 +6690,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@speechToTextBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@versionNotFound": {
         "type": "String",
         "placeholders": {}
@@ -6759,10 +6712,6 @@
                 "type": "String"
             }
         }
-    },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
@@ -6793,10 +6742,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -7924,14 +7869,6 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
         "type": "String",
         "placeholders": {}
@@ -8001,70 +7938,6 @@
         "placeholders": {}
     },
     "@constructUseIncIGCDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8290,19 +8163,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@topicLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -8318,23 +8183,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -8347,14 +8200,6 @@
         "placeholders": {}
     },
     "@nan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -8554,10 +8399,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@readingAssistanceOverviewBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resetInstructionTooltipsTitle": {
         "type": "String",
         "placeholders": {}
@@ -8571,10 +8412,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8806,10 +8643,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activitySuggestionTimeoutMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@howSpaceCanBeFound": {
         "type": "String",
         "placeholders": {}
@@ -8958,18 +8791,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingActivitiesMessage": {
         "type": "String",
         "placeholders": {}
@@ -8999,10 +8820,6 @@
         "placeholders": {}
     },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -9041,10 +8858,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -9052,18 +8865,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -10935,15 +10736,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Postavili ste emoji za {lemma}! Ovaj emoji ćemo koristiti da predstavimo reč u praktičnim aktivnostima ubuduće.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Čekanje na završetak prijavljivanja",
     "ssoDialogDesc": "Otvorili smo novu karticu kako biste se mogli sigurno prijaviti.",
     "ssoDialogHelpText": "🤔 Ako niste videli novu karticu, molimo proverite svoj blokator iskačućih prozora.",
@@ -11605,12 +11397,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Otključaj vežbovne aktivnosti",
     "hideEvents": "Sakrij događaje",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11757,11 +11544,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noAnalyticsActivitiesAvailable": "Вау, завршили сте све доступне активности! Пошаљите више порука да откључате више активности за вежбање.",
-    "@noAnalyticsActivitiesAvailable": {
-        "type": "String",
-        "placeholders": {}
-    },
     "profile": "Profil",
     "@profile": {
         "type": "String",
@@ -11773,8 +11555,6 @@
     "notificationDeviceSubtitle": "Pogledajte i upravljajte uređajima koji vam šalju push obaveštenja.",
     "notificationRuleDM": "Direktna poruka",
     "notificationRuleDMDescription": "Obaveštava korisnika o porukama u sobama za direktne poruke.",
-    "notificationRuleCourseAndActivity": "Kurs i Aktivnost",
-    "notificationRuleCourseAndActivityDescription": "Obaveštava korisnika o porukama u kursevima, aktivnostima i čatovima.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -11796,14 +11576,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -12073,6 +11845,125 @@
         "type": "String",
         "placeholders": {}
     },
+    "subscribedToUnlockTools": "Pretplatite se da otključate interaktivno prevođenje i proveru gramatike, audio reprodukciju, personalizovane vežbe i analitiku učenja!",
+    "emojiSelectedSnackbar": "Postavili ste emoji za {lemma}! Ovaj emoji ćemo koristiti da predstavimo reč u vežbama ubuduće.",
+    "unlockPracticeActivities": "Otključajte vežbe",
+    "noAnalyticsActivitiesAvailable": "Vau, završili ste sve dostupne aktivnosti! Pošaljite više poruka da otključate više vežbi.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "Tačno u vežbi značenja reči",
+    "constructUseIgnPADesc": "Ignorisano u vežbi značenja reči",
+    "constructUseIncPADesc": "Netačno u vežbi značenja reči",
+    "constructUseCorWLDesc": "Tačno u vežbi slušanja reči",
+    "constructUseIncWLDesc": "Netačno u vežbi slušanja reči",
+    "constructUseIngWLDesc": "Ignorisano u vežbi slušanja reči",
+    "constructUseCorHWLDesc": "Tačno u vežbi skrivenih reči",
+    "constructUseIncHWLDesc": "Netačno u vežbi skrivenih reči",
+    "constructUseIgnHWLDesc": "Ignorisano u vežbi skrivenih reči",
+    "constructUseCorLDesc": "Tačno u vežbi lemata",
+    "constructUseIncLDesc": "Netačno u vežbi leksike",
+    "constructUseIgnLDesc": "Ignorisano u vežbi leksike",
+    "constructUseCorMDesc": "Tačno u vežbi gramatike",
+    "constructUseIncMDesc": "Netačno u vežbi gramatike",
+    "constructUseIgnMDesc": "Ignorisano u vežbi gramatike",
+    "constructUseEmojiDesc": "Tačno u vežbi sa emojijima",
+    "errorFetchingExercise": "Nije uspelo preuzimanje vežbe",
+    "notificationRuleCourseAndActivity": "Kurs i Aktivnost",
+    "notificationRuleCourseAndActivityDescription": "Obaveštava korisnika o porukama u kursevima, aktivnostima i čatovima.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "clickToUpdateTargetLanguage": "Kliknite ovde da ažurirate svoj ciljni jezik.",
     "@clickToUpdateTargetLanguage": {
         "type": "String",
@@ -12080,6 +11971,11 @@
     },
     "closeEmojiMenu": "Zatvori meni sa emojijima",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Dozvolite drugima da pretražuju vaš kurs",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

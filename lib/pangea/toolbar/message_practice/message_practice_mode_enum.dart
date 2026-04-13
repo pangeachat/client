@@ -5,7 +5,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
 
 enum MessagePracticeMode {
   wordEmoji,
@@ -47,16 +47,16 @@ enum MessagePracticeMode {
   Color iconButtonColor(BuildContext context, bool done) =>
       done ? AppConfig.gold : Theme.of(context).colorScheme.primaryContainer;
 
-  ActivityTypeEnum? get associatedActivityType {
+  PracticeExerciseTypeEnum? get associatedActivityType {
     switch (this) {
       case MessagePracticeMode.wordMeaning:
-        return ActivityTypeEnum.wordMeaning;
+        return PracticeExerciseTypeEnum.wordMeaning;
       case MessagePracticeMode.listening:
-        return ActivityTypeEnum.wordFocusListening;
+        return PracticeExerciseTypeEnum.wordFocusListening;
       case MessagePracticeMode.wordEmoji:
-        return ActivityTypeEnum.emoji;
+        return PracticeExerciseTypeEnum.emoji;
       case MessagePracticeMode.wordMorph:
-        return ActivityTypeEnum.morphId;
+        return PracticeExerciseTypeEnum.morphId;
       case MessagePracticeMode.noneSelected:
         return null;
     }

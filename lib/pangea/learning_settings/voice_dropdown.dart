@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -22,14 +23,14 @@ class VoiceDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final voices = (language?.voices ?? <String>[]);
-    final value = this.value != null && voices.contains(this.value)
-        ? this.value
+    final voiceOptions = language?.voiceOptions ?? <VoiceOptionModel>[];
+    final selectedVoice = value != null
+        ? voiceOptions.firstWhereOrNull((voice) => voice.shortName == value)
         : null;
 
     return DropdownButtonFormField2<String>(
-      customButton: value != null
-          ? CustomDropdownTextButton(text: value)
+      customButton: selectedVoice != null
+          ? CustomDropdownTextButton(text: selectedVoice.displayName)
           : null,
       menuItemStyleData: const MenuItemStyleData(
         padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
@@ -45,11 +46,14 @@ class VoiceDropdown extends StatelessWidget {
           borderRadius: BorderRadius.circular(14.0),
         ),
       ),
-      items: voices.map((voice) {
-        return DropdownMenuItem(value: voice, child: Text(voice));
+      items: voiceOptions.map((voice) {
+        return DropdownMenuItem(
+          value: voice.shortName,
+          child: Text(voice.displayName),
+        );
       }).toList(),
       onChanged: enabled ? onChanged : null,
-      value: voices.contains(value) ? value : null,
+      value: selectedVoice?.shortName,
     );
   }
 }

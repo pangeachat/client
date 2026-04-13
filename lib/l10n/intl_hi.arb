@@ -3004,7 +3004,6 @@
     "trialPeriodExpired": "आपका परीक्षण अवधि समाप्त हो गई है",
     "translations": "अनुवाद",
     "definitions": "परिभाषाएँ",
-    "subscribedToUnlockTools": "इंटरैक्टिव अनुवाद और व्याकरण जांच, ऑडियो प्लेबैक, व्यक्तिगत अभ्यास गतिविधियों, और सीखने के विश्लेषण को अनलॉक करने के लिए सदस्यता लें!",
     "translationTooltip": "अनुवाद करें",
     "kickBotWarning": "पांगेआ बॉट को निकालने से इस चैट से बातचीत बॉट हटा दिया जाएगा।",
     "refresh": "रिफ्रेश करें",
@@ -3020,12 +3019,10 @@
     "tooManyRequest": "बहुत अधिक अनुरोध, कृपया बाद में पुनः प्रयास करें।",
     "enterNumber": "कृपया एक पूर्ण संख्या मान दर्ज करें।",
     "practice": "अभ्यास",
-    "speechToTextBody": "आवाज संदेशों के लिए, आप ट्रांसक्रिप्ट के साथ-साथ वक्ता के शब्द प्रति मिनट स्कोर को भी देख सकते हैं।",
     "versionNotFound": "संस्करण नहीं मिला",
     "fetchingVersion": "संस्करण प्राप्त किया जा रहा है...",
     "versionFetchError": "संस्करण प्राप्त करने में त्रुटि",
     "versionText": "संस्करण: {version}+{buildNumber}",
-    "l1TranslationBody": "आपकी मूल भाषा में संदेश का अनुवाद नहीं किया जाएगा।",
     "deleteSubscriptionWarningTitle": "आपकी एक सक्रिय सदस्यता है",
     "deleteSubscriptionWarningBody": "आपका खाता हटाने से आपकी सदस्यता अपने आप रद्द नहीं होगी।",
     "manageSubscription": "सदस्यता प्रबंधित करें",
@@ -3034,7 +3031,6 @@
     "wordsUsed": "शब्दों का उपयोग किया गया",
     "level": "स्तर",
     "morphsUsed": "मॉर्फ़ का उपयोग किया गया",
-    "translationChoicesBody": "एक विकल्प पर क्लिक करें और होल्ड करें ताकि संकेत मिल सके।",
     "grammar": "व्याकरण",
     "contactHasBeenInvitedToTheChat": "संपर्क को चैट में आमंत्रित किया गया है",
     "inviteChat": "चैट आमंत्रित करें",
@@ -3315,8 +3311,6 @@
     "grammarCopyVOICErcp": "परस्पर",
     "other": "अन्य",
     "levelShort": "LVL {level}",
-    "clickBestOption": "अपना संदेश अनुवाद करने के लिए सबसे अच्छा विकल्प चुनें!",
-    "completeActivitiesToUnlock": "अनुवाद को अनलॉक करने के लिए कम से कम एक गतिविधि पूरी करें!",
     "noCapacityLimit": "कोई क्षमता सीमा नहीं",
     "downloadGroupText": "समूह टेक्स्ट डाउनलोड करें",
     "notificationsOn": "सूचनाएँ चालू हैं",
@@ -3335,22 +3329,6 @@
     "constructUseIgnIGCDesc": "व्याकरण सुधार में अनदेखा किया गया",
     "constructUseCorIGCDesc": "व्याकरण सुधार में सही",
     "constructUseIncIGCDesc": "व्याकरण सुधार में गलत",
-    "constructUseCorPADesc": "शब्द अर्थ गतिविधि में सही",
-    "constructUseIgnPADesc": "शब्द अर्थ गतिविधि में अनदेखा किया गया",
-    "constructUseIncPADesc": "शब्द अर्थ गतिविधि में गलत",
-    "constructUseCorWLDesc": "शब्द सुनने की गतिविधि में सही",
-    "constructUseIncWLDesc": "शब्द सुनने की गतिविधि में गलत",
-    "constructUseIngWLDesc": "शब्द सुनने की गतिविधि में अनदेखा किया गया",
-    "constructUseCorHWLDesc": "छुपे हुए शब्द गतिविधि में सही",
-    "constructUseIncHWLDesc": "छुपे हुए शब्द गतिविधि में गलत",
-    "constructUseIgnHWLDesc": "छुपे हुए शब्द गतिविधि में अनदेखा किया गया",
-    "constructUseCorLDesc": "लेम्मा गतिविधि में सही",
-    "constructUseIncLDesc": "लेम्मा गतिविधि में गलत",
-    "constructUseIgnLDesc": "लेम्मा गतिविधि में अनदेखा किया गया",
-    "constructUseCorMDesc": "व्याकरण गतिविधि में सही",
-    "constructUseIncMDesc": "व्याकरण गतिविधि में गलत",
-    "constructUseIgnMDesc": "व्याकरण गतिविधि में अनदेखा किया गया",
-    "constructUseEmojiDesc": "इमोजी गतिविधि में सही",
     "constructUseCollected": "चैट में संग्रहित",
     "constructUseNanDesc": "लागू नहीं",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
@@ -3402,23 +3380,16 @@
     "whatIsMeaning": "'{lemma}' का अर्थ क्या है?",
     "chooseLemmaMeaningInstructionsBody": "संदेश में शब्दों के साथ अर्थ मिलाएँ!",
     "doubleClickToEdit": "संपादित करने के लिए डबल-क्लिक करें।",
-    "activityPlannerTitle": "गतिविधि योजनाकार",
     "topicLabel": "विषय",
     "topicPlaceholder": "एक विषय चुनें...",
-    "modeLabel": "गतिविधि प्रकार",
     "modePlaceholder": "एक मोड चुनें...",
     "learningObjectiveLabel": "अधिगम उद्देश्य",
     "learningObjectivePlaceholder": "एक अधिगम उद्देश्य चुनें...",
-    "languageOfInstructionsLabel": "गतिविधि निर्देशों की भाषा",
     "targetLanguageLabel": "लक्षित भाषा",
     "cefrLevelLabel": "CEFR स्तर",
-    "generateActivitiesButton": "गतिविधि बनाएं",
-    "launchActivityButton": "गतिविधि शुरू करें",
     "image": "छवि",
     "video": "वीडियो",
     "nan": "लागू नहीं",
-    "activityPlannerOverviewInstructionsBody": "एक विषय, मोड, सीखने का उद्देश्य चुनें और चैट के लिए एक गतिविधि बनाएं!",
-    "activityTitle": "गतिविधि का शीर्षक",
     "addVocabulary": "शब्दावली जोड़ें",
     "instructions": "निर्देश",
     "numberOfLearners": "सीखने वालों की संख्या",
@@ -3465,12 +3436,10 @@
     "pleaseEnterInt": "कृपया एक संख्या दर्ज करें",
     "home": "होम",
     "join": "शामिल हों",
-    "readingAssistanceOverviewBody": "मिनी-खेलों के लिए नीचे दिए गए बटनों पर क्लिक करें, जैसे इमोजी, ऑडियो, शब्द अर्थ, और व्याकरण अवधारणाओं का मिलान। या किसी भी शब्द पर क्लिक करें विवरण के लिए।",
     "resetInstructionTooltipsTitle": "निर्देश टूलटिप्स रीसेट करें",
     "resetInstructionTooltipsDesc": "कृपया निर्देश टूलटिप्स दिखाने के लिए क्लिक करें जैसे कि एक नए उपयोगकर्ता के लिए।",
     "randomize": "यादृच्छिक करें",
     "clear": "साफ़ करें",
-    "makeYourOwnActivity": "अपनी खुद की गतिविधि बनाएं",
     "featuredActivities": "विशेषताएँ",
     "save": "सहेजें",
     "startChat": "चैट शुरू करें",
@@ -3527,7 +3496,6 @@
     "announcements": "घोषणाएँ",
     "activities": "गतिविधियाँ",
     "access": "पहुँच",
-    "activitySuggestionTimeoutMessage": "हम आपके लिए और गतिविधियाँ बनाने में मेहनत कर रहे हैं, कृपया एक मिनट में वापस जांचें",
     "howSpaceCanBeFound": "यह कोर्स कैसे पाया जा सकता है",
     "private": "निजी",
     "cannotBeFoundInSearch": "खोज में नहीं मिल सकता",
@@ -3562,9 +3530,6 @@
     "numInvited": "{count} आमंत्रित",
     "saved": "सहेजा गया",
     "reset": "रीसेट करें",
-    "errorGenerateActivityMessage": "गतिविधि बनाने में विफल",
-    "errorRegenerateActivityMessage": "गतिविधि पुनः बनाने में विफल",
-    "errorLaunchActivityMessage": "गतिविधि शुरू करने में विफल",
     "errorFetchingActivitiesMessage": "गतिविधियों को प्राप्त करने में विफल",
     "errorFetchingDefinition": "परिभाषा प्राप्त करने में विफल",
     "errorProcessAnalytics": "विश्लेषण प्रक्रिया में विफल",
@@ -3573,7 +3538,6 @@
     "unexpectedError": "अप्रत्याशित त्रुटि।",
     "pleaseReload": "कृपया पुनः लोड करें और पुनः प्रयास करें।",
     "translationError": "अनुवाद त्रुटि",
-    "errorFetchingActivity": "गतिविधि प्राप्त करने में विफल",
     "check": "जांचें",
     "unableToFindRoom": "उस कोड के साथ कोई चैट या कोर्स नहीं मिला। कृपया पुनः प्रयास करें।",
     "numCompletedActivities": "पूर्ण की गई गतिविधियों की संख्या",
@@ -3581,11 +3545,8 @@
     "request": "अनुरोध",
     "requestAll": "सभी का अनुरोध करें",
     "confirmMessageUnpin": "क्या आप सुनिश्चित हैं कि आप इस संदेश को अनपिन करना चाहते हैं?",
-    "createActivityPlan": "एक नई गतिविधि योजना बनाएं",
     "saveAndLaunch": "सहेजें और शुरू करें",
     "launchToSpace": "कोर्स में लॉन्च करें",
-    "numberOfActivities": "गतिविधि सत्रों की संख्या",
-    "maximumActivityParticipants": "प्रत्येक गतिविधि में अधिकतम {count} प्रतिभागी हो सकते हैं।",
     "pending": "लंबित",
     "inactive": "निष्क्रिय",
     "confirmRole": "भूमिका की पुष्टि करें",
@@ -3685,7 +3646,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-04-03 12:22:33.474047",
+    "@@last_modified": "2026-04-10 13:54:16.784213",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6261,10 +6222,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -6329,10 +6286,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@speechToTextBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@versionNotFound": {
         "type": "String",
         "placeholders": {}
@@ -6355,10 +6308,6 @@
                 "type": "String"
             }
         }
-    },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
@@ -6389,10 +6338,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -7520,14 +7465,6 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
         "type": "String",
         "placeholders": {}
@@ -7597,70 +7534,6 @@
         "placeholders": {}
     },
     "@constructUseIncIGCDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7886,19 +7759,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@topicLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -7914,23 +7779,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -7943,14 +7796,6 @@
         "placeholders": {}
     },
     "@nan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -8150,10 +7995,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@readingAssistanceOverviewBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resetInstructionTooltipsTitle": {
         "type": "String",
         "placeholders": {}
@@ -8167,10 +8008,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8402,10 +8239,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activitySuggestionTimeoutMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@howSpaceCanBeFound": {
         "type": "String",
         "placeholders": {}
@@ -8554,18 +8387,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingActivitiesMessage": {
         "type": "String",
         "placeholders": {}
@@ -8595,10 +8416,6 @@
         "placeholders": {}
     },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8637,10 +8454,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -8648,18 +8461,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -10531,15 +10332,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "आपने {lemma} के लिए इमोजी सेट किया है! हम आगे के अभ्यास गतिविधियों में इस इमोजी का उपयोग करेंगे।",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "साइन इन पूरा होने की प्रतीक्षा कर रहे हैं",
     "ssoDialogDesc": "हमने एक नया टैब खोला है ताकि आप सुरक्षित रूप से साइन इन कर सकें।",
     "ssoDialogHelpText": "🤔 यदि आपने नया टैब नहीं देखा, तो कृपया अपने पॉपअप ब्लॉकर की जांच करें।",
@@ -11201,12 +10993,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "प्रैक्टिस गतिविधियों को अनलॉक करें",
     "hideEvents": "इवेंट्स छिपाएँ",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11353,11 +11140,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noAnalyticsActivitiesAvailable": "वाह, आपने सभी उपलब्ध गतिविधियाँ पूरी कर ली हैं! अधिक अभ्यास गतिविधियाँ अनलॉक करने के लिए अधिक संदेश भेजें।",
-    "@noAnalyticsActivitiesAvailable": {
-        "type": "String",
-        "placeholders": {}
-    },
     "profile": "प्रोफ़ाइल",
     "@profile": {
         "type": "String",
@@ -11369,8 +11151,6 @@
     "notificationDeviceSubtitle": "उन उपकरणों को देखें और प्रबंधित करें जो आपको पुश सूचनाएँ भेजते हैं।",
     "notificationRuleDM": "प्रत्यक्ष संदेश",
     "notificationRuleDMDescription": "प्रत्यक्ष संदेश कमरों में संदेशों के बारे में उपयोगकर्ता को सूचित करता है।",
-    "notificationRuleCourseAndActivity": "कोर्स और गतिविधि",
-    "notificationRuleCourseAndActivityDescription": "कोर्स, गतिविधियों और चैट में संदेशों के बारे में उपयोगकर्ता को सूचित करता है।",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -11392,14 +11172,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -11669,6 +11441,125 @@
         "type": "String",
         "placeholders": {}
     },
+    "subscribedToUnlockTools": "इंटरएक्टिव अनुवाद और व्याकरण जांच, ऑडियो प्लेबैक, व्यक्तिगत अभ्यास व्यायाम, और सीखने के विश्लेषण को अनलॉक करने के लिए सदस्यता लें!",
+    "emojiSelectedSnackbar": "आपने {lemma} के लिए इमोजी सेट किया है! हम आगे के अभ्यास व्यायाम में इस इमोजी का उपयोग करेंगे।",
+    "unlockPracticeActivities": "अभ्यास व्यायाम अनलॉक करें",
+    "noAnalyticsActivitiesAvailable": "वाह, आपने सभी उपलब्ध गतिविधियाँ पूरी कर ली हैं! अधिक अभ्यास व्यायाम अनलॉक करने के लिए और संदेश भेजें।",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "शब्द अर्थ व्यायाम में सही",
+    "constructUseIgnPADesc": "शब्द अर्थ व्यायाम में अनदेखा",
+    "constructUseIncPADesc": "शब्द अर्थ व्यायाम में गलत",
+    "constructUseCorWLDesc": "शब्द सुनने के व्यायाम में सही",
+    "constructUseIncWLDesc": "शब्द सुनने के व्यायाम में गलत",
+    "constructUseIngWLDesc": "शब्द सुनने के व्यायाम में अनदेखा",
+    "constructUseCorHWLDesc": "छिपे हुए शब्द के व्यायाम में सही",
+    "constructUseIncHWLDesc": "छिपे हुए शब्द के व्यायाम में गलत",
+    "constructUseIgnHWLDesc": "छिपे हुए शब्द के व्यायाम में अनदेखा",
+    "constructUseCorLDesc": "लेम्मा व्यायाम में सही",
+    "constructUseIncLDesc": "लेम्मा व्यायाम में गलत",
+    "constructUseIgnLDesc": "लेम्मा व्यायाम में अनदेखा किया गया",
+    "constructUseCorMDesc": "व्याकरण व्यायाम में सही",
+    "constructUseIncMDesc": "व्याकरण व्यायाम में गलत",
+    "constructUseIgnMDesc": "व्याकरण व्यायाम में अनदेखा किया गया",
+    "constructUseEmojiDesc": "इमोजी व्यायाम में सही",
+    "errorFetchingExercise": "व्यायाम प्राप्त करने में विफल",
+    "notificationRuleCourseAndActivity": "कोर्स और गतिविधि",
+    "notificationRuleCourseAndActivityDescription": "कोर्स, गतिविधियों और चैट में संदेशों के बारे में उपयोगकर्ता को सूचित करता है।",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "clickToUpdateTargetLanguage": "यहाँ क्लिक करें अपने लक्षित भाषा को अपडेट करने के लिए।",
     "@clickToUpdateTargetLanguage": {
         "type": "String",
@@ -11676,6 +11567,11 @@
     },
     "closeEmojiMenu": "इमोजी मेनू बंद करें",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "अन्य लोगों को आपके पाठ्यक्रम को खोजने की अनुमति दें",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

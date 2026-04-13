@@ -52,9 +52,14 @@ class NewCoursePageState extends State<NewCoursePage> {
     null,
   );
 
+  final ValueNotifier<bool> _loadingMore = ValueNotifier(false);
+
   final ScrollController _scrollController = ScrollController();
 
   int _loadGeneration = 0;
+  int _currentPage = 1;
+  bool _fullyLoaded = false;
+  Map<String, CoursePlanModel> _accumulatedCourses = {};
 
   @override
   void initState() {
@@ -81,6 +86,7 @@ class NewCoursePageState extends State<NewCoursePage> {
     _courses.dispose();
     _scrollController.dispose();
     _targetLanguageFilter.dispose();
+    _loadingMore.dispose();
     super.dispose();
   }
 
@@ -98,17 +104,53 @@ class NewCoursePageState extends State<NewCoursePage> {
 
   Future<void> _loadCourses() async {
     final int generation = _loadGeneration;
+    _currentPage = 1;
+    _fullyLoaded = false;
+    _accumulatedCourses = {};
+    _loadingMore.value = false;
+    _courses.value = null;
+    await _fetchAndAppend(generation);
+    if (mounted &&
+        _loadGeneration == generation &&
+        _courses.value != null &&
+        !_courses.value!.isError &&
+        _courses.value!.result!.coursePlans.isEmpty) {
+      ErrorHandler.logError(
+        e: "No courses found",
+        data: {'filter': _filter.toJson()},
+      );
+    }
+  }
+
+  Future<void> _loadMore() async {
+    if (_fullyLoaded || _loadingMore.value) return;
+    final int generation = _loadGeneration;
+    _loadingMore.value = true;
     try {
-      _courses.value = null;
-      final resp = await CoursePlansRepo.searchByFilter(filter: _filter);
-      if (!mounted || _loadGeneration != generation) return;
-      _courses.value = Result.value(resp);
-      if (resp.coursePlans.isEmpty) {
-        ErrorHandler.logError(
-          e: "No courses found",
-          data: {'filter': _filter.toJson()},
-        );
+      await _fetchAndAppend(generation);
+    } finally {
+      if (mounted && _loadGeneration == generation) {
+        _loadingMore.value = false;
       }
+    }
+  }
+
+  Future<void> _fetchAndAppend(int generation) async {
+    try {
+      final resp = await CoursePlansRepo.searchByFilter(
+        filter: _filter,
+        page: _currentPage,
+      );
+      if (!mounted || _loadGeneration != generation) return;
+      _accumulatedCourses = {..._accumulatedCourses, ...resp.coursePlans};
+      _fullyLoaded = !resp.hasNextPage;
+      _currentPage++;
+      _courses.value = Result.value(
+        GetLocalizedCoursesResponse(
+          coursePlans: _accumulatedCourses,
+          hasNextPage: resp.hasNextPage,
+        ),
+      );
     } catch (e, s) {
       if (!mounted || _loadGeneration != generation) return;
       ErrorHandler.logError(e: e, s: s, data: {'filter': _filter.toJson()});
@@ -292,8 +334,20 @@ class NewCoursePageState extends State<NewCoursePage> {
                         controller: _scrollController,
                         separatorBuilder: (context, index) =>
                             const SizedBox(height: 10.0),
-                        itemCount: courses.length,
+                        itemCount: courses.length + 1,
                         itemBuilder: (context, index) {
+                          if (index == courses.length) {
+                            return Center(
+                              child: loading
+                                  ? CircularProgressIndicator.adaptive()
+                                  : !_fullyLoaded
+                                  ? TextButton(
+                                      onPressed: () => _loadMore(),
+                                      child: Text(L10n.of(context).loadMore),
+                                    )
+                                  : SizedBox(),
+                            );
+                          }
                           final course = courses[index];
                           return Material(
                             type: MaterialType.transparency,

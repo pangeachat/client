@@ -6,11 +6,11 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_model.dart';
 import 'package:fluffychat/pangea/course_settings/activity_card_placeholder.dart';
+import 'package:fluffychat/pangea/course_settings/activity_suggestion_card.dart';
 
 class TopicActivitiesList extends StatefulWidget {
   final Room room;

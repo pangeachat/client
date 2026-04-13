@@ -48,6 +48,7 @@ import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.da
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
+import 'package:fluffychat/pangea/choreographer/writing_assistance_room_extension.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -1756,7 +1757,7 @@ class ChatController extends State<ChatPageWithRoom>
   // }
   void clearSelectedEvents() {
     if (!mounted) return;
-    if (!_isToolbarOpen && selectedEvents.isEmpty) return;
+    if (!isToolbarOpen && selectedEvents.isEmpty) return;
     MatrixState.pAnyState.closeAllOverlays();
     depressMessageButton.value = false;
 
@@ -2132,7 +2133,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   final StreamController<void> stopMediaStream = StreamController.broadcast();
 
-  bool get _isToolbarOpen => MatrixState.pAnyState.isOverlayOpen(
+  bool get isToolbarOpen => MatrixState.pAnyState.isOverlayOpen(
     overlayKey: "message_toolbar_overlay",
   );
 
@@ -2385,13 +2386,15 @@ class ChatController extends State<ChatPageWithRoom>
       return showLanguageMismatchPopup(manual: manual, autosend: autosend);
     }
 
-    // If this request should send on a success, and is not a manual request, and assistance
-    // has already been requested, then just send the message instead of requesting assistance again.
-    if (autosend &&
-        !manual &&
-        choreographer.assistanceState != AssistanceStateEnum.notFetched) {
-      await send();
-      return;
+    // If this request should send on a success, and is not a manual request,
+    // and assistance has already been requested or writing assistance should not run automatically in this room,
+    // then just send the message instead of requesting assistance.
+    if (autosend && !manual) {
+      if (choreographer.assistanceState != AssistanceStateEnum.notFetched ||
+          !room.enableAutomaticWritingAssistance) {
+        await send();
+        return;
+      }
     }
 
     feedback == null

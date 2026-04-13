@@ -3398,7 +3398,6 @@
     "trialPeriodExpired": "Η δοκιμαστική περίοδος σας έχει λήξει",
     "translations": "μεταφράσεις",
     "definitions": "ορισμοί",
-    "subscribedToUnlockTools": "Εγγραφείτε για να ξεκλειδώσετε διαδραστική μετάφραση και έλεγχο γραμματικής, αναπαραγωγή ήχου, εξατομικευμένες δραστηριότητες πρακτικής και αναλύσεις μάθησης!",
     "translationTooltip": "Μετάφραση",
     "kickBotWarning": "Το κλείσιμο του Pangea Bot θα αφαιρέσει το bot συνομιλίας από αυτήν τη συζήτηση.",
     "refresh": "Ανανέωση",
@@ -3414,12 +3413,10 @@
     "tooManyRequest": "Πάρα πολλά αιτήματα, παρακαλώ δοκιμάστε ξανά αργότερα.",
     "enterNumber": "Παρακαλώ εισάγετε μια ακέραια τιμή.",
     "practice": "Εξάσκηση",
-    "speechToTextBody": "Για φωνητικά μηνύματα, μπορείτε να δείτε μια μεταγραφή καθώς και το σκορ Λέξεων ανά Λεπτό του ομιλητή.",
     "versionNotFound": "Δεν βρέθηκε έκδοση",
     "fetchingVersion": "Λήψη έκδοσης...",
     "versionFetchError": "Σφάλμα κατά τη λήψη έκδοσης",
     "versionText": "Έκδοση: {version}+{buildNumber}",
-    "l1TranslationBody": "Τα μηνύματα στη βασική σας γλώσσα δεν θα μεταφραστούν.",
     "deleteSubscriptionWarningTitle": "Έχετε ενεργή συνδρομή",
     "deleteSubscriptionWarningBody": "Η διαγραφή του λογαριασμού σας δεν θα ακυρώσει αυτόματα τη συνδρομή σας.",
     "manageSubscription": "Διαχείριση συνδρομής",
@@ -3428,7 +3425,6 @@
     "wordsUsed": "Χρησιμοποιημένες λέξεις",
     "level": "Επίπεδο",
     "morphsUsed": "Χρησιμοποιημένες μορφές",
-    "translationChoicesBody": "Κάντε κλικ και κρατήστε μια επιλογή για μια υπόδειξη.",
     "grammar": "Γραμματική",
     "contactHasBeenInvitedToTheChat": "Ο επαφή έχει προσκληθεί στη συνομιλία",
     "inviteChat": "📨 Προσκαλέστε στη συνομιλία",
@@ -3709,8 +3705,6 @@
     "grammarCopyVOICErcp": "Αμοιβαία",
     "other": "Άλλο",
     "levelShort": "ΕΠΙΠΕΔΟ {level}",
-    "clickBestOption": "Επιλέξτε τις καλύτερες επιλογές για να μεταφράσετε το μήνυμά σας!",
-    "completeActivitiesToUnlock": "Ολοκληρώστε τουλάχιστον μια δραστηριότητα για να ξεκλειδώσετε τη μετάφραση!",
     "noCapacityLimit": "Χωρίς όριο χωρητικότητας",
     "downloadGroupText": "Λήψη κειμένου ομάδας",
     "notificationsOn": "Ειδοποιήσεις ενεργές",
@@ -3729,22 +3723,6 @@
     "constructUseIgnIGCDesc": "Παραβλέπεται στη διόρθωση γραμματικής",
     "constructUseCorIGCDesc": "Ορθό στη διόρθωση γραμματικής",
     "constructUseIncIGCDesc": "Λάθος στη διόρθωση γραμματικής",
-    "constructUseCorPADesc": "Ορθό στη δραστηριότητα σημασίας λέξης",
-    "constructUseIgnPADesc": "Παραβλέπεται στη δραστηριότητα σημασίας λέξης",
-    "constructUseIncPADesc": "Λάθος στη δραστηριότητα σημασίας λέξης",
-    "constructUseCorWLDesc": "Ορθό στη δραστηριότητα ακρόασης λέξης",
-    "constructUseIncWLDesc": "Λάθος στη δραστηριότητα ακρόασης λέξης",
-    "constructUseIngWLDesc": "Παραβλέπεται στη δραστηριότητα ακρόασης λέξης",
-    "constructUseCorHWLDesc": "Ορθό στη δραστηριότητα κρυφής λέξης",
-    "constructUseIncHWLDesc": "Λάθος στην κρυφή δραστηριότητα λέξης",
-    "constructUseIgnHWLDesc": "Αγνοήθηκε στην κρυφή δραστηριότητα λέξης",
-    "constructUseCorLDesc": "Σωστό στην δραστηριότητα λήμματος",
-    "constructUseIncLDesc": "Λάθος στην δραστηριότητα λήμματος",
-    "constructUseIgnLDesc": "Αγνοήθηκε στην δραστηριότητα λήμματος",
-    "constructUseCorMDesc": "Σωστό στην δραστηριότητα γραμματικής",
-    "constructUseIncMDesc": "Λάθος στην δραστηριότητα γραμματικής",
-    "constructUseIgnMDesc": "Αγνοήθηκε στην δραστηριότητα γραμματικής",
-    "constructUseEmojiDesc": "Σωστό στην δραστηριότητα emoji",
     "constructUseCollected": "Συλλέχθηκε στη συνομιλία",
     "constructUseNanDesc": "Μη εφαρμόσιμο",
     "xpIntoLevel": "{currentXP} / {maxXP} Πόντοι XP",
@@ -3796,23 +3774,16 @@
     "whatIsMeaning": "Τι σημαίνει το '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Ταιριάξτε τις σημασίες με τις λέξεις στο μήνυμα!",
     "doubleClickToEdit": "Διπλό κλικ για επεξεργασία.",
-    "activityPlannerTitle": "Προγραμματιστής Δραστηριοτήτων",
     "topicLabel": "Θέμα",
     "topicPlaceholder": "Επιλέξτε ένα θέμα...",
-    "modeLabel": "Τύπος δραστηριότητας",
     "modePlaceholder": "Επιλέξτε μια λειτουργία...",
     "learningObjectiveLabel": "Στόχος μάθησης",
     "learningObjectivePlaceholder": "Επιλέξτε στόχο μάθησης...",
-    "languageOfInstructionsLabel": "Γλώσσα οδηγιών δραστηριότητας",
     "targetLanguageLabel": "Στόχος γλώσσα",
     "cefrLevelLabel": "Επίπεδο CEFR",
-    "generateActivitiesButton": "Δημιουργία Δραστηριότητας",
-    "launchActivityButton": "Έναρξη Δραστηριότητας",
     "image": "Εικόνα",
     "video": "Βίντεο",
     "nan": "Μη εφαρμόσιμο",
-    "activityPlannerOverviewInstructionsBody": "Επιλέξτε ένα θέμα, τρόπο, μαθησιακό στόχο και δημιουργήστε μια δραστηριότητα για τη συνομιλία!",
-    "activityTitle": "Τίτλος Δραστηριότητας",
     "addVocabulary": "Προσθήκη λεξιλογίου",
     "instructions": "Οδηγίες",
     "numberOfLearners": "Αριθμός μαθητών",
@@ -3859,12 +3830,10 @@
     "pleaseEnterInt": "Παρακαλούμε εισάγετε έναν αριθμό",
     "home": "Αρχική",
     "join": "Συμμετοχή",
-    "readingAssistanceOverviewBody": "Κάντε κλικ στα κουμπιά παρακάτω για mini-games με αντιστοίχιση emoji, ήχων, σημασιών λέξεων και γραμματικών εννοιών. Ή κάντε κλικ σε οποιαδήποτε λέξη για λεπτομέρειες.",
     "resetInstructionTooltipsTitle": "Επαναφορά οδηγιών βοήθειας",
     "resetInstructionTooltipsDesc": "Κάντε κλικ για να εμφανίσετε ξανά τις οδηγίες βοήθειας, όπως για έναν ολοκαίνουργιο χρήστη.",
     "randomize": "Τυχαία επιλογή",
     "clear": "Καθαρισμός",
-    "makeYourOwnActivity": "Δημιουργήστε τη δική σας δραστηριότητα",
     "featuredActivities": "Προτεινόμενες",
     "save": "Αποθήκευση",
     "startChat": "Ξεκίνα μια συνομιλία",
@@ -3921,7 +3890,6 @@
     "announcements": "Ανακοινώσεις",
     "activities": "Δραστηριότητες",
     "access": "Πρόσβαση",
-    "activitySuggestionTimeoutMessage": "Δουλεύουμε σκληρά για να δημιουργήσουμε περισσότερες δραστηριότητες για εσάς, παρακαλούμε ελέγξτε ξανά σε ένα λεπτό",
     "howSpaceCanBeFound": "Πώς μπορεί να βρεθεί αυτό το μάθημα",
     "private": "Ιδιωτικό",
     "cannotBeFoundInSearch": "Δεν μπορεί να βρεθεί στην αναζήτηση",
@@ -3956,9 +3924,6 @@
     "numInvited": "{count} προσκεκλημένοι",
     "saved": "Αποθηκευμένο",
     "reset": "Επαναφορά",
-    "errorGenerateActivityMessage": "Αποτυχία δημιουργίας δραστηριότητας",
-    "errorRegenerateActivityMessage": "Αποτυχία αναδημιουργίας δραστηριότητας",
-    "errorLaunchActivityMessage": "Αποτυχία εκκίνησης δραστηριότητας",
     "errorFetchingActivitiesMessage": "Αποτυχία λήψης δραστηριοτήτων",
     "errorFetchingDefinition": "Αποτυχία λήψης ορισμού",
     "errorProcessAnalytics": "Αποτυχία επεξεργασίας αναλυτικών στοιχείων",
@@ -3967,7 +3932,6 @@
     "unexpectedError": "Απρόβλεπτο σφάλμα.",
     "pleaseReload": "Παρακαλώ επαναφορτώστε και δοκιμάστε ξανά.",
     "translationError": "Σφάλμα μετάφρασης",
-    "errorFetchingActivity": "Αποτυχία λήψης δραστηριότητας",
     "check": "Έλεγχος",
     "unableToFindRoom": "Δεν βρέθηκε συνομιλία ή μάθημα με αυτόν τον κωδικό. Παρακαλώ δοκιμάστε ξανά.",
     "numCompletedActivities": "Αριθμός ολοκληρωμένων δραστηριοτήτων",
@@ -3975,11 +3939,8 @@
     "request": "Αίτημα",
     "requestAll": "Ζήτηση Όλα",
     "confirmMessageUnpin": "Είστε σίγουροι ότι θέλετε να αποσυνδέσετε αυτό το μήνυμα;",
-    "createActivityPlan": "Δημιουργία νέου σχεδίου δραστηριότητας",
     "saveAndLaunch": "Αποθήκευση και Εκκίνηση",
     "launchToSpace": "Εκκίνηση στην πορεία",
-    "numberOfActivities": "Αριθμός συνεδριών δραστηριότητας",
-    "maximumActivityParticipants": "Κάθε δραστηριότητα μπορεί να έχει το μέγιστο {count} συμμετέχοντα(ους).",
     "pending": "Εκκρεμεί",
     "inactive": "Ανενεργό",
     "confirmRole": "Επιβεβαίωση ρόλου",
@@ -4079,7 +4040,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-04-03 12:22:31.730703",
+    "@@last_modified": "2026-04-10 13:54:14.831607",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -6591,10 +6552,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -6659,10 +6616,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@speechToTextBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@versionNotFound": {
         "type": "String",
         "placeholders": {}
@@ -6685,10 +6638,6 @@
                 "type": "String"
             }
         }
-    },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
@@ -6719,10 +6668,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -7850,14 +7795,6 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
         "type": "String",
         "placeholders": {}
@@ -7927,70 +7864,6 @@
         "placeholders": {}
     },
     "@constructUseIncIGCDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8216,19 +8089,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@topicLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -8244,23 +8109,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -8273,14 +8126,6 @@
         "placeholders": {}
     },
     "@nan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -8480,10 +8325,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@readingAssistanceOverviewBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resetInstructionTooltipsTitle": {
         "type": "String",
         "placeholders": {}
@@ -8497,10 +8338,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8732,10 +8569,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activitySuggestionTimeoutMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@howSpaceCanBeFound": {
         "type": "String",
         "placeholders": {}
@@ -8884,18 +8717,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingActivitiesMessage": {
         "type": "String",
         "placeholders": {}
@@ -8925,10 +8746,6 @@
         "placeholders": {}
     },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8967,10 +8784,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -8978,18 +8791,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -10861,15 +10662,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Έχετε ορίσει το emoji για {lemma}! Θα χρησιμοποιήσουμε αυτό το emoji για να εκπροσωπήσουμε τη λέξη σε πρακτικές δραστηριότητες στο εξής.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Περιμένοντας την ολοκλήρωση της σύνδεσης",
     "ssoDialogDesc": "Ανοίξαμε μια νέα καρτέλα ώστε να μπορέσετε να συνδεθείτε με ασφάλεια.",
     "ssoDialogHelpText": "🤔 Αν δεν είδατε τη νέα καρτέλα, παρακαλώ ελέγξτε τον αποκλειστή αναδυόμενων παραθύρων σας.",
@@ -11531,12 +11323,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Ξεκλειδώστε τις δραστηριότητες πρακτικής",
     "hideEvents": "Απόκρυψη εκδηλώσεων",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11683,11 +11470,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noAnalyticsActivitiesAvailable": "Ω, έχεις ολοκληρώσει όλες τις διαθέσιμες δραστηριότητες! Στείλε περισσότερα μηνύματα για να ξεκλειδώσεις περισσότερες δραστηριότητες πρακτικής.",
-    "@noAnalyticsActivitiesAvailable": {
-        "type": "String",
-        "placeholders": {}
-    },
     "profile": "Προφίλ",
     "@profile": {
         "type": "String",
@@ -11699,8 +11481,6 @@
     "notificationDeviceSubtitle": "Δείτε και διαχειριστείτε τις συσκευές που σας στέλνουν ειδοποιήσεις push.",
     "notificationRuleDM": "Άμεσο Μήνυμα",
     "notificationRuleDMDescription": "Ειδοποιεί τον χρήστη για μηνύματα σε δωμάτια άμεσων μηνυμάτων.",
-    "notificationRuleCourseAndActivity": "Μάθημα και Δραστηριότητα",
-    "notificationRuleCourseAndActivityDescription": "Ειδοποιεί τον χρήστη για μηνύματα σε μαθήματα, δραστηριότητες και συνομιλίες.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -11722,14 +11502,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -11999,6 +11771,125 @@
         "type": "String",
         "placeholders": {}
     },
+    "subscribedToUnlockTools": "Εγγραφείτε για να ξεκλειδώσετε τη διαδραστική μετάφραση και τον έλεγχο γραμματικής, την αναπαραγωγή ήχου, τις εξατομικευμένες ασκήσεις πρακτικής και την ανάλυση μάθησης!",
+    "emojiSelectedSnackbar": "Έχετε ορίσει το emoji για {lemma}! Θα χρησιμοποιήσουμε αυτό το emoji για να εκπροσωπήσουμε τη λέξη στις ασκήσεις πρακτικής στο εξής.",
+    "unlockPracticeActivities": "Ξεκλειδώστε τις ασκήσεις πρακτικής",
+    "noAnalyticsActivitiesAvailable": "Ω, έχετε ολοκληρώσει όλες τις διαθέσιμες δραστηριότητες! Στείλτε περισσότερα μηνύματα για να ξεκλειδώσετε περισσότερες ασκήσεις πρακτικής.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "Σωστό στην άσκηση σημασίας λέξης",
+    "constructUseIgnPADesc": "Αγνοήθηκε στην άσκηση σημασίας λέξης",
+    "constructUseIncPADesc": "Λάθος στην άσκηση σημασίας λέξης",
+    "constructUseCorWLDesc": "Σωστό στην άσκηση ακρόασης λέξης",
+    "constructUseIncWLDesc": "Λάθος στην άσκηση ακρόασης λέξης",
+    "constructUseIngWLDesc": "Αγνοήθηκε στην άσκηση ακρόασης λέξης",
+    "constructUseCorHWLDesc": "Σωστό στην άσκηση κρυφής λέξης",
+    "constructUseIncHWLDesc": "Λάθος στην άσκηση κρυφής λέξης",
+    "constructUseIgnHWLDesc": "Αγνοήθηκε στην άσκηση κρυφής λέξης",
+    "constructUseCorLDesc": "Σωστό στην άσκηση λεξικού",
+    "constructUseIncLDesc": "Λάθος στην άσκηση λεξιλογίου",
+    "constructUseIgnLDesc": "Αγνοήθηκε στην άσκηση λεξιλογίου",
+    "constructUseCorMDesc": "Σωστό στην άσκηση γραμματικής",
+    "constructUseIncMDesc": "Λάθος στην άσκηση γραμματικής",
+    "constructUseIgnMDesc": "Αγνοήθηκε στην άσκηση γραμματικής",
+    "constructUseEmojiDesc": "Σωστό στην άσκηση emoji",
+    "errorFetchingExercise": "Αποτυχία λήψης άσκησης πρακτικής",
+    "notificationRuleCourseAndActivity": "Μάθημα και Δραστηριότητα",
+    "notificationRuleCourseAndActivityDescription": "Ενημερώνει τον χρήστη για μηνύματα σε μαθήματα, δραστηριότητες και συνομιλίες.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "clickToUpdateTargetLanguage": "Κάντε κλικ εδώ για να ενημερώσετε τη γλώσσα στόχου σας.",
     "@clickToUpdateTargetLanguage": {
         "type": "String",
@@ -12006,6 +11897,11 @@
     },
     "closeEmojiMenu": "Κλείσιμο μενού emoji",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Επιτρέψτε στους άλλους να αναζητούν το μάθημά σας",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

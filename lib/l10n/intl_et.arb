@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-04-03 12:22:05.918853",
+    "@@last_modified": "2026-04-10 13:53:38.078990",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -3580,7 +3580,6 @@
     "trialPeriodExpired": "Teie prooviperiood on lõppenud",
     "translations": "tõlked",
     "definitions": "definitsioonid",
-    "subscribedToUnlockTools": "Telli, et avada interaktiivne tõlge ja grammatika kontroll, heli taasesitus, isikupärastatud harjutustegevused ja õppeanalüütika!",
     "translationTooltip": "Tõlgi",
     "kickBotWarning": "Pangea bot'i eemaldamine eemaldab vestluse bot'i sellest vestlusest.",
     "refresh": "Värskenda",
@@ -3596,12 +3595,10 @@
     "tooManyRequest": "Liiga palju päringuid, proovige hiljem uuesti.",
     "enterNumber": "Palun sisestage täisarvuline väärtus.",
     "practice": "Praktika",
-    "speechToTextBody": "Kõne sõnumite jaoks saate näha transkriptsiooni ning kõneleja sõnade minutis skoori.",
     "versionNotFound": "Versiooni ei leitud",
     "fetchingVersion": "Versiooni toimetamine...",
     "versionFetchError": "Viga versiooni toimetamisel",
     "versionText": "Versioon: {version}+{buildNumber}",
-    "l1TranslationBody": "Teie baaskeeles sõnumeid ei tõlgita.",
     "deleteSubscriptionWarningTitle": "Teil on aktiivne tellimus",
     "deleteSubscriptionWarningBody": "Konto kustutamine ei tühista automaatselt teie tellimust.",
     "manageSubscription": "Halda tellimust",
@@ -3610,7 +3607,6 @@
     "wordsUsed": "Kasutatud sõnad",
     "level": "Tase",
     "morphsUsed": "Kasutatud morfid",
-    "translationChoicesBody": "Vajuta ja hoia valikul, et saada vihje.",
     "grammar": "Grammatika",
     "contactHasBeenInvitedToTheChat": "Kontakt on kutsutud vestlusse",
     "inviteChat": "📨 Kutsu vestlusse",
@@ -3891,7 +3887,6 @@
     "grammarCopyVOICErcp": "Vastastikune",
     "other": "Muu",
     "levelShort": "TASE {level}",
-    "completeActivitiesToUnlock": "Lõpeta vähemalt üks tegevus, et lukustada tõlge!",
     "noCapacityLimit": "Piirangut võimsusele ei ole",
     "downloadGroupText": "Laadige alla grupitekst",
     "notificationsOn": "Teavitused sisse",
@@ -3910,22 +3905,6 @@
     "constructUseIgnIGCDesc": "Ignoreeritud grammatika paranduses",
     "constructUseCorIGCDesc": "Õige grammatika paranduses",
     "constructUseIncIGCDesc": "Vale grammatika paranduses",
-    "constructUseCorPADesc": "Õige sõna tähenduse tegevuses",
-    "constructUseIgnPADesc": "Ignoreeritud sõna tähenduse tegevuses",
-    "constructUseIncPADesc": "Vale sõna tähenduse tegevuses",
-    "constructUseCorWLDesc": "Õige sõna kuulamise tegevuses",
-    "constructUseIncWLDesc": "Vale sõna kuulamise tegevuses",
-    "constructUseIngWLDesc": "Ignoreeritud sõna kuulamise tegevuses",
-    "constructUseCorHWLDesc": "Õige peidetud sõna tegevuses",
-    "constructUseIncHWLDesc": "Vigade sõnaliikumise tegevuses vale",
-    "constructUseIgnHWLDesc": "Ignoreeritud sõnaliikumise tegevuses",
-    "constructUseCorLDesc": "Õige lemma tegevuses",
-    "constructUseIncLDesc": "Vale lemma tegevuses",
-    "constructUseIgnLDesc": "Ignoreeritud lemma tegevuses",
-    "constructUseCorMDesc": "Õige grammatika tegevuses",
-    "constructUseIncMDesc": "Vale grammatika tegevuses",
-    "constructUseIgnMDesc": "Ignoreeritud grammatika tegevuses",
-    "constructUseEmojiDesc": "Õige emotikonide tegevuses",
     "constructUseCollected": "Kogutud vestluses",
     "constructUseNanDesc": "Ei kehti",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
@@ -3977,23 +3956,16 @@
     "whatIsMeaning": "Mida tähendab '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Sobita tähendused sõnadega sõnumis!",
     "doubleClickToEdit": "Kaksklõpsake redigeerimiseks.",
-    "activityPlannerTitle": "Tegevuste planeerija",
     "topicLabel": "Teema",
     "topicPlaceholder": "Valige teema...",
-    "modeLabel": "Tegevuse tüüp",
     "modePlaceholder": "Valige režiim...",
     "learningObjectiveLabel": "Õppeeesmärk",
     "learningObjectivePlaceholder": "Valige õppeeesmärk...",
-    "languageOfInstructionsLabel": "Juhiste keel",
     "targetLanguageLabel": "Eesmärk keel",
     "cefrLevelLabel": "CEFR tase",
-    "generateActivitiesButton": "Loo tegevusi",
-    "launchActivityButton": "Käivita tegevus",
     "image": "Pilt",
     "video": "Video",
     "nan": "Ei kohaldata",
-    "activityPlannerOverviewInstructionsBody": "Valige teema, režiim, õpieesmärk ja looge vestluse jaoks tegevus!",
-    "activityTitle": "Tegevuse pealkiri",
     "addVocabulary": "Lisa sõnavara",
     "instructions": "Juhised",
     "numberOfLearners": "Õppijate arv",
@@ -4040,12 +4012,10 @@
     "pleaseEnterInt": "Palun sisesta number",
     "home": "Kodu",
     "join": "Liitu",
-    "readingAssistanceOverviewBody": "Klikkige allolevatel nuppudel mini-mänge emotikonide, helisalvestiste, sõnade tähenduste ja grammatika kontseptsioonide sobitamiseks. Või klõpsake ükskõik millisel sõnal detailide saamiseks.",
     "resetInstructionTooltipsTitle": "Lähtesta juhiste tööriistaribad",
     "resetInstructionTooltipsDesc": "Klikkige, et näidata juhiste tööriistaribasid nagu uuel kasutajal.",
     "randomize": "Juhuslikuks muutmine",
     "clear": "Puhasta",
-    "makeYourOwnActivity": "Loo oma tegevus",
     "featuredActivities": "Esiletõstetud",
     "save": "Salvesta",
     "startChat": "Alusta vestlust",
@@ -4102,7 +4072,6 @@
     "announcements": "Teated",
     "activities": "Tegevused",
     "access": "Juhtimine",
-    "activitySuggestionTimeoutMessage": "Töötame kõvasti, et genereerida tegevusi teile, palun kontrollige uuesti minut hiljem",
     "howSpaceCanBeFound": "Kuidas seda ruumi leida",
     "private": "Privaatne",
     "cannotBeFoundInSearch": "Ei leia otsingus",
@@ -4137,8 +4106,6 @@
     "numInvited": "{count} kutsutud",
     "saved": "Salvestatud",
     "reset": "Lähtesta",
-    "errorGenerateActivityMessage": "Tegevuse loomine ebaõnnestus",
-    "errorRegenerateActivityMessage": "Tegevuse uuesti loomine ebaõnnestus",
     "errorFetchingActivitiesMessage": "Tegevuste toomine ebaõnnestus",
     "errorFetchingDefinition": "Definitsiooni toomine ebaõnnestus",
     "errorProcessAnalytics": "Analüütika töötlemine ebaõnnestus",
@@ -4147,7 +4114,6 @@
     "unexpectedError": "Ootamatu viga.",
     "pleaseReload": "Palun laadi leht uuesti ja proovi uuesti.",
     "translationError": "Tõlkeviga",
-    "errorFetchingActivity": "Tegevuse toomine ebaõnnestus",
     "check": "Kontrolli",
     "unableToFindRoom": "Selle koodiga vestlust või ruumi ei leitud. Palun proovi uuesti.",
     "@writeAMessageLangCodes": {
@@ -5676,10 +5642,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -5744,10 +5706,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@speechToTextBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@versionNotFound": {
         "type": "String",
         "placeholders": {}
@@ -5770,10 +5728,6 @@
                 "type": "String"
             }
         }
-    },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
@@ -5804,10 +5758,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -6935,10 +6885,6 @@
             }
         }
     },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
         "type": "String",
         "placeholders": {}
@@ -7008,70 +6954,6 @@
         "placeholders": {}
     },
     "@constructUseIncIGCDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7297,19 +7179,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@topicLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -7325,23 +7199,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -7354,14 +7216,6 @@
         "placeholders": {}
     },
     "@nan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -7561,10 +7415,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@readingAssistanceOverviewBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resetInstructionTooltipsTitle": {
         "type": "String",
         "placeholders": {}
@@ -7578,10 +7428,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -7813,10 +7659,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activitySuggestionTimeoutMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@howSpaceCanBeFound": {
         "type": "String",
         "placeholders": {}
@@ -7965,14 +7807,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingActivitiesMessage": {
         "type": "String",
         "placeholders": {}
@@ -8005,10 +7839,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorFetchingActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@check": {
         "type": "String",
         "placeholders": {}
@@ -8018,17 +7848,13 @@
         "placeholders": {}
     },
     "participants": "Osalejad",
-    "errorLaunchActivityMessage": "Ei õnnestunud tegevust käivitada",
     "numCompletedActivities": "Lõpetatud tegevuste arv",
     "viewingAnalytics": "Vaadatakse {visible}/{users} analüütikat",
     "request": "Päring",
     "requestAll": "Pärida kõiki",
     "confirmMessageUnpin": "Oled sa kindel, et soovid selle sõnumi lahti ühendada?",
-    "createActivityPlan": "Loo uus tegevusplaan",
     "saveAndLaunch": "Salvesta ja käivita",
     "launchToSpace": "Käivita kursusele",
-    "numberOfActivities": "Tegevusvoorude arv",
-    "maximumActivityParticipants": "Igal tegevusel võib osaleda maksimaalselt {count} osalejat.",
     "pending": "Ootel",
     "inactive": "Mitteaktiivne",
     "confirmRole": "Kinnita roll",
@@ -8131,10 +7957,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numCompletedActivities": {
         "type": "String",
         "placeholders": {}
@@ -8162,10 +7984,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -8173,18 +7991,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -8694,7 +8500,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "clickBestOption": "Valige parimad valikud oma sõnumi tõlkimiseks! Klõpsake ja hoidke valikuid, et saada vihje.",
     "startOwn": "Alusta oma",
     "joinCourseDesc": "Igal kursusel on 8-10 järjestikust teemat koos erinevate ülesandepõhiste keeleõppetegevustega.",
     "newMessageInPangeaChat": "🗨️ Uus sõnum Pangea vestluses",
@@ -8702,10 +8507,6 @@
     "addCourse": "Lisa kursus",
     "joinPublicCourse": "Liitu avaliku kursusega",
     "vocabLevelsDesc": "Siia lähevad sõnad, kui oled need tasemele tõstnud!",
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@startOwn": {
         "type": "String",
         "placeholders": {}
@@ -10061,15 +9862,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Oled seadnud emotikoni {lemma} jaoks! Kasutame seda emotikoni sõna esindamiseks praktika tegevustes edaspidi.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Ootame sisselogimise lõpetamist",
     "ssoDialogDesc": "Avasime uue vahekaart, et saaksite turvaliselt sisse logida.",
     "ssoDialogHelpText": "🤔 Kui te ei näinud uut vahekaarti, kontrollige palun oma hüpikakna blokeerijat.",
@@ -10479,12 +10271,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Avage harjutuste tegevused",
     "hideEvents": "Peida üritused",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10631,11 +10418,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noAnalyticsActivitiesAvailable": "Vau, olete lõpetanud kõik saadaval olevad tegevused! Saatke rohkem sõnumeid, et avada rohkem harjutustegevusi.",
-    "@noAnalyticsActivitiesAvailable": {
-        "type": "String",
-        "placeholders": {}
-    },
     "profile": "Profiil",
     "@profile": {
         "type": "String",
@@ -10647,8 +10429,6 @@
     "notificationDeviceSubtitle": "Vaadake ja hallake seadmeid, mis saadavad teile push-teateid.",
     "notificationRuleDM": "Otsene sõnum",
     "notificationRuleDMDescription": "Teavitab kasutajat otsese sõnumi ruumides olevatest sõnumitest.",
-    "notificationRuleCourseAndActivity": "Kursus ja tegevus",
-    "notificationRuleCourseAndActivityDescription": "Teavitab kasutajat sõnumitest kursustes, tegevustes ja vestlustes.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -10670,14 +10450,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10947,6 +10719,125 @@
         "type": "String",
         "placeholders": {}
     },
+    "subscribedToUnlockTools": "Telli, et avada interaktiivne tõlge ja grammatika kontroll, helimängimine, isikupärastatud harjutused ja õppimise analüüs!",
+    "emojiSelectedSnackbar": "Oled seadnud emotikoni {lemma} jaoks! Kasutame seda emotikoni sõna esindamiseks harjutustes edaspidi.",
+    "unlockPracticeActivities": "Avage harjutused",
+    "noAnalyticsActivitiesAvailable": "Vau, oled lõpetanud kõik saadaval olevad tegevused! Saada rohkem sõnumeid, et avada rohkem harjutusi.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "Õige sõna tähenduse harjutuses",
+    "constructUseIgnPADesc": "Ignoreeritud sõna tähenduse harjutuses",
+    "constructUseIncPADesc": "Vale sõna tähenduse harjutuses",
+    "constructUseCorWLDesc": "Õige sõna kuulamise harjutuses",
+    "constructUseIncWLDesc": "Vale sõna kuulamise harjutuses",
+    "constructUseIngWLDesc": "Ignoreeritud sõna kuulamise harjutuses",
+    "constructUseCorHWLDesc": "Õige peidetud sõna harjutuses",
+    "constructUseIncHWLDesc": "Vale peidetud sõna harjutuses",
+    "constructUseIgnHWLDesc": "Ignoreeritud peidetud sõna harjutuses",
+    "constructUseCorLDesc": "Õige lemma harjutuses",
+    "constructUseIncLDesc": "Vale lemma harjutuses",
+    "constructUseIgnLDesc": "Ignoreeritud lemma harjutuses",
+    "constructUseCorMDesc": "Õige grammatika harjutuses",
+    "constructUseIncMDesc": "Vale grammatika harjutuses",
+    "constructUseIgnMDesc": "Ignoreeritud grammatika harjutuses",
+    "constructUseEmojiDesc": "Õige emoji harjutuses",
+    "errorFetchingExercise": "Harjutuse toomine ebaõnnestus",
+    "notificationRuleCourseAndActivity": "Kursus ja tegevus",
+    "notificationRuleCourseAndActivityDescription": "Teavitab kasutajat sõnumitest kursustes, tegevustes ja vestlustes.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "clickToUpdateTargetLanguage": "Klõpsa siin, et uuendada oma sihtkeelt.",
     "@clickToUpdateTargetLanguage": {
         "type": "String",
@@ -10954,6 +10845,11 @@
     },
     "closeEmojiMenu": "Sulge emotikonide menüü",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Luba teistel otsida sinu kursust",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }

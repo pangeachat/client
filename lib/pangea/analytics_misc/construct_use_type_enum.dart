@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_downloads/space_analytics_summary_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/learning_skills_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
 
 enum ConstructUseTypeEnum {
   /// produced in chat by user, igc was run, and we've judged it to be a correct use
@@ -39,7 +39,7 @@ enum ConstructUseTypeEnum {
   incIGC,
   ignIGC,
 
-  /// word meaning in context practice activity
+  /// word meaning practice exercise
   corPA,
   ignPA,
   incPA,
@@ -209,21 +209,21 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.ignPA:
       case ConstructUseTypeEnum.corLM:
       case ConstructUseTypeEnum.incLM:
-        return ActivityTypeEnum.wordMeaning.icon;
+        return PracticeExerciseTypeEnum.wordMeaning.icon;
       case ConstructUseTypeEnum.ignWL:
       case ConstructUseTypeEnum.incWL:
       case ConstructUseTypeEnum.corWL:
       case ConstructUseTypeEnum.corLA:
       case ConstructUseTypeEnum.incLA:
-        return ActivityTypeEnum.wordFocusListening.icon;
+        return PracticeExerciseTypeEnum.wordFocusListening.icon;
       case ConstructUseTypeEnum.incHWL:
       case ConstructUseTypeEnum.ignHWL:
       case ConstructUseTypeEnum.corHWL:
-        return ActivityTypeEnum.hiddenWordListening.icon;
+        return PracticeExerciseTypeEnum.hiddenWordListening.icon;
       case ConstructUseTypeEnum.corL:
       case ConstructUseTypeEnum.incL:
       case ConstructUseTypeEnum.ignL:
-        return ActivityTypeEnum.lemmaId.icon;
+        return PracticeExerciseTypeEnum.lemmaId.icon;
       case ConstructUseTypeEnum.corM:
       case ConstructUseTypeEnum.incM:
       case ConstructUseTypeEnum.ignM:
@@ -231,13 +231,13 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incGC:
       case ConstructUseTypeEnum.corGE:
       case ConstructUseTypeEnum.incGE:
-        return ActivityTypeEnum.morphId.icon;
+        return PracticeExerciseTypeEnum.morphId.icon;
       case ConstructUseTypeEnum.em:
-        return ActivityTypeEnum.emoji.icon;
+        return PracticeExerciseTypeEnum.emoji.icon;
       case ConstructUseTypeEnum.corMM:
       case ConstructUseTypeEnum.incMM:
       case ConstructUseTypeEnum.ignMM:
-        return ActivityTypeEnum.messageMeaning.icon;
+        return PracticeExerciseTypeEnum.messageMeaning.icon;
       case ConstructUseTypeEnum.pvm:
         return Icons.mic;
       case ConstructUseTypeEnum.unk:
@@ -255,7 +255,7 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
   /// Users get slightly negative points for incorrect uses to encourage them to be more careful
   /// They get the most points for direct uses without help.
   /// They get a small amount of points for correct uses in interactions.
-  /// Practice activities get a moderate amount of points.
+  /// Practice exercises get a moderate amount of points.
   int get pointValue {
     switch (this) {
       case ConstructUseTypeEnum.corPA:
@@ -506,7 +506,7 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
     }
   }
 
-  /// Whether this is an incorrect answer in any practice activity.
+  /// Whether this is an incorrect answer in any practice exercise.
   bool get isIncorrectPractice {
     switch (this) {
       case ConstructUseTypeEnum.incPA:

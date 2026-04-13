@@ -7,7 +7,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_choice.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -15,7 +15,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class PracticeMatchItem extends StatefulWidget {
   final Widget content;
   final PangeaToken? token;
-  final PracticeChoice constructForm;
+  final PracticeExerciseChoice constructForm;
   final String? audioContent;
   final PracticeController controller;
   final bool? isCorrect;
@@ -140,7 +140,7 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
       return content;
     }
 
-    return Draggable<PracticeChoice>(
+    return Draggable<PracticeExerciseChoice>(
       data: widget.constructForm,
       feedback: Material(type: MaterialType.transparency, child: content),
       onDragStarted: onTap,

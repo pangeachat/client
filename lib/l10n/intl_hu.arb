@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-04-03 12:21:55.065871",
+    "@@last_modified": "2026-04-10 13:53:25.692614",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -3439,7 +3439,6 @@
     "trialPeriodExpired": "A próbaverziód lejárt",
     "translations": "fordítások",
     "definitions": "meghatározások",
-    "subscribedToUnlockTools": "Feliratkozás az interaktív fordítás és nyelvtani ellenőrzés, hang lejátszás, személyre szabott gyakorlati tevékenységek és tanulási elemzések feloldásához!",
     "translationTooltip": "Fordítás",
     "kickBotWarning": "A Pangea Bot kirúgása eltávolítja a beszélgetési botot ebből a csevegésből.",
     "refresh": "Újratöltés",
@@ -3455,12 +3454,10 @@
     "tooManyRequest": "Túl sok kérés, kérjük, próbálja meg később.",
     "enterNumber": "Kérjük, írjon be egy egész szám értéket.",
     "practice": "Gyakorlat",
-    "speechToTextBody": "Hangüzenetek esetén látható egy átirat, valamint a beszélő Szavak Per Perc (WPM) pontszáma.",
     "versionNotFound": "Verzió nem található",
     "fetchingVersion": "Verzió lekérése...",
     "versionFetchError": "Hiba a verzió lekérésekor",
     "versionText": "Verzió: {version}+{buildNumber}",
-    "l1TranslationBody": "Az alapnyelveden írt üzenetek nem lesznek fordítva.",
     "deleteSubscriptionWarningTitle": "Aktív előfizetésed van",
     "deleteSubscriptionWarningBody": "Fiókod törlése nem törli automatikusan az előfizetésedet.",
     "manageSubscription": "Előfizetés kezelése",
@@ -3469,7 +3466,6 @@
     "wordsUsed": "Használt szavak",
     "level": "Szint",
     "morphsUsed": "Használt morfémák",
-    "translationChoicesBody": "Kattintson és tartsa lenyomva a lehetőséget egy tippért.",
     "grammar": "Nyelvtan",
     "contactHasBeenInvitedToTheChat": "A kapcsolatot meghívták a csevegésbe",
     "inviteChat": "📨 Csevegés meghívása",
@@ -3750,8 +3746,6 @@
     "grammarCopyVOICErcp": "Reciproka",
     "other": "Egyéb",
     "levelShort": "SZINT {level}",
-    "clickBestOption": "Válassza ki a legjobb lehetőségeket az üzenet fordításához!",
-    "completeActivitiesToUnlock": "Fejezzen be legalább egy tevékenységet a fordítás feloldásához!",
     "noCapacityLimit": "Nincs kapacitáskorlát",
     "downloadGroupText": "Csoport szöveg letöltése",
     "notificationsOn": "Értesítések be",
@@ -3770,22 +3764,6 @@
     "constructUseIgnIGCDesc": "Figyelmen kívül hagyva nyelvtani javításban",
     "constructUseCorIGCDesc": "Helyes nyelvtani javításban",
     "constructUseIncIGCDesc": "Helytelen nyelvtani javításban",
-    "constructUseCorPADesc": "Helyes szó jelentés aktivitásban",
-    "constructUseIgnPADesc": "Figyelmen kívül hagyva szó jelentés aktivitásban",
-    "constructUseIncPADesc": "Helytelen szó jelentés aktivitásban",
-    "constructUseCorWLDesc": "Helyes szó hallgatási aktivitásban",
-    "constructUseIncWLDesc": "Helytelen szó hallgatási aktivitásban",
-    "constructUseIngWLDesc": "Figyelmen kívül hagyva szó hallgatási aktivitásban",
-    "constructUseCorHWLDesc": "Helyes rejtett szó aktivitásban",
-    "constructUseIncHWLDesc": "Helytelen rejtett szó aktivitásban",
-    "constructUseIgnHWLDesc": "Figyelmen kívül hagyva rejtett szó aktivitásban",
-    "constructUseCorLDesc": "Helyes lemma aktivitásban",
-    "constructUseIncLDesc": "Helytelen lemma aktivitásban",
-    "constructUseIgnLDesc": "Figyelmen kívül hagyva lemma aktivitásban",
-    "constructUseCorMDesc": "Helyes nyelvtani aktivitásban",
-    "constructUseIncMDesc": "Helytelen nyelvtani aktivitásban",
-    "constructUseIgnMDesc": "Figyelmen kívül hagyva a nyelvtani tevékenységben",
-    "constructUseEmojiDesc": "Helyes az emoji tevékenységben",
     "constructUseCollected": "Gyűjtve a chatben",
     "constructUseNanDesc": "Nem alkalmazható",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
@@ -3837,23 +3815,16 @@
     "whatIsMeaning": "Mit jelent '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Egyeztesd a jelentéseket a szavakkal az üzenetben!",
     "doubleClickToEdit": "Dupla kattintással szerkesztheted.",
-    "activityPlannerTitle": "Tevékenységtervező",
     "topicLabel": "Téma",
     "topicPlaceholder": "Válassz egy témát...",
-    "modeLabel": "Tevékenység típusa",
     "modePlaceholder": "Válassz egy módot...",
     "learningObjectiveLabel": "Tanulási cél",
     "learningObjectivePlaceholder": "Válassz egy tanulási célt...",
-    "languageOfInstructionsLabel": "Az utasítások nyelve",
     "targetLanguageLabel": "Cél nyelv",
     "cefrLevelLabel": "CEFR szint",
-    "generateActivitiesButton": "Tevékenység generálása",
-    "launchActivityButton": "Tevékenység indítása",
     "image": "Kép",
     "video": "Videó",
     "nan": "Nem alkalmazható",
-    "activityPlannerOverviewInstructionsBody": "Válassz egy témát, módot, tanulási célt, és generálj egy tevékenységet a csevegéshez!",
-    "activityTitle": "Tevékenység címe",
     "addVocabulary": "Szókincs hozzáadása",
     "instructions": "Utasítások",
     "numberOfLearners": "Tanulók száma",
@@ -3900,12 +3871,10 @@
     "pleaseEnterInt": "Kérjük, írjon be egy számot",
     "home": "Kezdőlap",
     "join": "Csatlakozás",
-    "readingAssistanceOverviewBody": "Kattintson az alábbi gombokra az emojik, audiók, szavak jelentése és nyelvtani fogalmak párosítására mini-játékokhoz. Vagy kattintson bármelyik szóra a részletekért.",
     "resetInstructionTooltipsTitle": "Útmutató eszköztippek visszaállítása",
     "resetInstructionTooltipsDesc": "Kattints az útmutató eszköztippek megjelenítéséhez, mint egy teljesen új felhasználó esetén.",
     "randomize": "Véletlenszerű sorrend",
     "clear": "Törlés",
-    "makeYourOwnActivity": "Hozd létre saját tevékenységedet",
     "featuredActivities": "Kiemelt",
     "save": "Mentés",
     "startChat": "Indíts el egy beszélgetést",
@@ -3962,7 +3931,6 @@
     "announcements": "Bejelentések",
     "activities": "Tevékenységek",
     "access": "Hozzáférés",
-    "activitySuggestionTimeoutMessage": "Keményen dolgozunk azon, hogy több tevékenységet generáljunk Önnek, kérjük, ellenőrizze újra egy perc múlva",
     "howSpaceCanBeFound": "Hogyan található meg ez a kurzus",
     "private": "Privát",
     "cannotBeFoundInSearch": "Nem található meg a keresésben",
@@ -3997,9 +3965,6 @@
     "numInvited": "{count} meghívott",
     "saved": "Mentett",
     "reset": "Visszaállítás",
-    "errorGenerateActivityMessage": "Nem sikerült tevékenységet generálni",
-    "errorRegenerateActivityMessage": "Nem sikerült újragenerálni a tevékenységet",
-    "errorLaunchActivityMessage": "Nem sikerült elindítani a tevékenységet",
     "errorFetchingActivitiesMessage": "Nem sikerült lekérni a tevékenységeket",
     "errorFetchingDefinition": "Nem sikerült lekérni a definíciót",
     "errorProcessAnalytics": "Nem sikerült feldolgozni az elemzéseket",
@@ -4008,7 +3973,6 @@
     "unexpectedError": "Váratlan hiba.",
     "pleaseReload": "Kérjük, töltsd újra az oldalt, és próbáld újra.",
     "translationError": "Fordítási hiba",
-    "errorFetchingActivity": "Nem sikerült lekérni a tevékenységet",
     "check": "Ellenőrizze",
     "unableToFindRoom": "Nem található csevegés vagy kurzus ezzel a kóddal. Kérjük, próbálja újra.",
     "numCompletedActivities": "Befejezett tevékenységek száma",
@@ -4016,11 +3980,8 @@
     "request": "Kérés",
     "requestAll": "Összes kérés",
     "confirmMessageUnpin": "Biztos benne, hogy fel szeretné oldani ezt az üzenetet?",
-    "createActivityPlan": "Új tevékenységi terv létrehozása",
     "saveAndLaunch": "Mentés és indítás",
     "launchToSpace": "Indítás a kurzusra",
-    "numberOfActivities": "Tevékenységi ülések száma",
-    "maximumActivityParticipants": "Minden tevékenységben legfeljebb {count} résztvevő lehet.",
     "pending": "Függőben",
     "inactive": "Inaktív",
     "confirmRole": "Szerep megerősítése",
@@ -5669,10 +5630,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -5737,10 +5694,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@speechToTextBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@versionNotFound": {
         "type": "String",
         "placeholders": {}
@@ -5763,10 +5716,6 @@
                 "type": "String"
             }
         }
-    },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
@@ -5797,10 +5746,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -6928,14 +6873,6 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
         "type": "String",
         "placeholders": {}
@@ -7005,70 +6942,6 @@
         "placeholders": {}
     },
     "@constructUseIncIGCDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7294,19 +7167,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@topicLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -7322,23 +7187,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -7351,14 +7204,6 @@
         "placeholders": {}
     },
     "@nan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -7558,10 +7403,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@readingAssistanceOverviewBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resetInstructionTooltipsTitle": {
         "type": "String",
         "placeholders": {}
@@ -7575,10 +7416,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -7810,10 +7647,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activitySuggestionTimeoutMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@howSpaceCanBeFound": {
         "type": "String",
         "placeholders": {}
@@ -7962,18 +7795,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingActivitiesMessage": {
         "type": "String",
         "placeholders": {}
@@ -8003,10 +7824,6 @@
         "placeholders": {}
     },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8045,10 +7862,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -8056,18 +7869,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -9939,15 +9740,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Beállítottad a {lemma} emoji-t! Ezt az emojit fogjuk használni a szó képviseletére a gyakorlati tevékenységek során a jövőben.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Várakozás a bejelentkezés befejezésére",
     "ssoDialogDesc": "Megnyitottunk egy új lapot, hogy biztonságosan be tudj jelentkezni.",
     "ssoDialogHelpText": "🤔 Ha nem láttad az új lapot, kérlek ellenőrizd a felugró ablak blokkolódat.",
@@ -10609,12 +10401,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Gyakorlati tevékenységek feloldása",
     "hideEvents": "Események elrejtése",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10761,11 +10548,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noAnalyticsActivitiesAvailable": "Wow, már minden elérhető tevékenységet teljesítettél! Küldj több üzenetet, hogy újabb gyakorló tevékenységeket oldhass fel.",
-    "@noAnalyticsActivitiesAvailable": {
-        "type": "String",
-        "placeholders": {}
-    },
     "profile": "Profil",
     "@profile": {
         "type": "String",
@@ -10777,8 +10559,6 @@
     "notificationDeviceSubtitle": "Tekintse meg és kezelje azokat az eszközöket, amelyek push értesítéseket küldenek Önnek.",
     "notificationRuleDM": "Közvetlen üzenet",
     "notificationRuleDMDescription": "Értesíti a felhasználót a közvetlen üzenet szobákban érkező üzenetekről.",
-    "notificationRuleCourseAndActivity": "Tanfolyam és tevékenység",
-    "notificationRuleCourseAndActivityDescription": "Értesíti a felhasználót a tanfolyamokban, tevékenységekben és csevegésekben érkező üzenetekről.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -10800,14 +10580,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -11077,6 +10849,125 @@
         "type": "String",
         "placeholders": {}
     },
+    "subscribedToUnlockTools": "Iratkozzon fel az interaktív fordítás és nyelvtani ellenőrzés, hanglejátszás, személyre szabott gyakorlófeladatok és tanulási elemzések feloldásához!",
+    "emojiSelectedSnackbar": "Beállította a(z) {lemma} emoji-t! Ezt az emojit fogjuk használni a szó képviseletére a jövőbeli gyakorlófeladatokban.",
+    "unlockPracticeActivities": "Gyakorlófeladatok feloldása",
+    "noAnalyticsActivitiesAvailable": "Wow, minden elérhető tevékenységet teljesítettél! Küldj több üzenetet, hogy további gyakorlófeladatokat oldhass fel.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "Helyes a szó jelentésének gyakorlatában",
+    "constructUseIgnPADesc": "Figyelmen kívül hagyva a szó jelentésének gyakorlatában",
+    "constructUseIncPADesc": "Helytelen a szó jelentésének gyakorlatában",
+    "constructUseCorWLDesc": "Helyes a szó hallásának gyakorlatában",
+    "constructUseIncWLDesc": "Helytelen a szó hallásának gyakorlatában",
+    "constructUseIngWLDesc": "Figyelmen kívül hagyva a szó hallásának gyakorlatában",
+    "constructUseCorHWLDesc": "Helyes a rejtett szó gyakorlatában",
+    "constructUseIncHWLDesc": "Helytelen a rejtett szó gyakorlatában",
+    "constructUseIgnHWLDesc": "Figyelmen kívül hagyva a rejtett szó gyakorlatában",
+    "constructUseCorLDesc": "Helyes a lemma gyakorlatában",
+    "constructUseIncLDesc": "Hibás a lemma gyakorlatban",
+    "constructUseIgnLDesc": "Figyelmen kívül hagyva a lemma gyakorlatban",
+    "constructUseCorMDesc": "Helyes a nyelvtani gyakorlatban",
+    "constructUseIncMDesc": "Hibás a nyelvtani gyakorlatban",
+    "constructUseIgnMDesc": "Figyelmen kívül hagyva a nyelvtani gyakorlatban",
+    "constructUseEmojiDesc": "Helyes az emoji gyakorlatban",
+    "errorFetchingExercise": "Nem sikerült lekérni a gyakorló feladatot",
+    "notificationRuleCourseAndActivity": "Tanfolyam és tevékenység",
+    "notificationRuleCourseAndActivityDescription": "Értesíti a felhasználót az üzenetekről a tanfolyamokban, tevékenységekben és csevegésekben.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "clickToUpdateTargetLanguage": "Kattintson ide a célnyelv frissítéséhez.",
     "@clickToUpdateTargetLanguage": {
         "type": "String",
@@ -11084,6 +10975,11 @@
     },
     "closeEmojiMenu": "Emoji menü bezárása",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Engedje meg másoknak, hogy keresni tudjanak a kurzusára",
+    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     }
