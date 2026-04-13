@@ -19,9 +19,7 @@ class SettingsLearning extends StatefulWidget {
 }
 
 class SettingsLearningController extends State<SettingsLearning> {
-  final viewModel = LearningSettingsViewModel(
-    MatrixState.pangeaController.userController.profile,
-  );
+  late final LearningSettingsViewModel viewModel;
 
   final ValueNotifier<String?> languageMatchError = ValueNotifier(null);
   final ScrollController scrollController = ScrollController();
@@ -54,6 +52,15 @@ class SettingsLearningController extends State<SettingsLearning> {
   void initState() {
     super.initState();
     SettingsLearningController._activeInstance = this;
+    viewModel = LearningSettingsViewModel(
+      MatrixState.pangeaController.userController.profile,
+      onUpdateProfile: () {
+        if (languageMatchError.value != null &&
+            !viewModel.hasIdenticalLanguages) {
+          languageMatchError.value = null;
+        }
+      },
+    );
     aboutTextController.text = viewModel.about ?? '';
     if (viewModel.hasIdenticalLanguages) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
