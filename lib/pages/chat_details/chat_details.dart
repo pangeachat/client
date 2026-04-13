@@ -81,7 +81,9 @@ class ChatDetailsController extends State<ChatDetails>
 
     final room = Matrix.of(context).client.getRoomById(widget.roomId);
     if (room?.isSpace == true) {
-      Matrix.of(context).showEnableNotificationsDialog(context);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) Matrix.of(context).showEnableNotificationsDialog(context);
+      });
     }
   }
 

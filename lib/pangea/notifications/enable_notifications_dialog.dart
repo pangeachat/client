@@ -32,7 +32,7 @@ class EnableNotificationsDialog extends StatelessWidget {
                   CachedNetworkImage(
                     imageUrl:
                         "${AppConfig.assetsBaseURL}/${NotificationsConstants.notifRequestImage}",
-                    errorWidget: (_, _, _) => SizedBox(),
+                    errorWidget: (_, _, _) => SizedBox.shrink(),
                   ),
                   Text(
                     l10n.enableNotificationsTitle,
