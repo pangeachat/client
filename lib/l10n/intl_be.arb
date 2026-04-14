@@ -4202,7 +4202,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-04-10 13:53:48.308385",
+    "@@last_modified": "2026-04-14 11:37:54.746152",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10867,6 +10867,26 @@
     },
     "visibilityToggleTitle": "Дазволіць іншым шукаць ваш курс",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Ніколі не прапусціце размову!",
+    "enableNotificationsDesc": "Дазвольце апавяшчэнні для Pangea Chat і заставайцеся на сувязі з вашымі мовнымі сябрамі!",
+    "enableNotifications": "Дазвольце апавяшчэнні",
+    "noActivitiesFound": "Няма даступных актыўнасцяў для гэтай тэмы.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-10 13:53:26.511391",
+    "@@last_modified": "2026-04-14 11:37:11.996447",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10950,6 +10950,26 @@
     },
     "visibilityToggleTitle": "Izinkan orang lain mencari kursus Anda",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Jangan lewatkan obrolan!",
+    "enableNotificationsDesc": "Izinkan notifikasi untuk Pangea Chat dan tetap terhubung dengan teman bahasa Anda!",
+    "enableNotifications": "Izinkan notifikasi",
+    "noActivitiesFound": "Tidak ada aktivitas yang tersedia untuk topik ini.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

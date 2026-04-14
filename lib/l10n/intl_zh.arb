@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-04-10 13:54:10.017347",
+    "@@last_modified": "2026-04-14 11:38:36.378637",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10853,6 +10853,26 @@
     },
     "visibilityToggleTitle": "允许他人搜索您的课程",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "永远不要错过聊天！",
+    "enableNotificationsDesc": "允许 Pangea Chat 的通知，与您的语言伙伴保持联系！",
+    "enableNotifications": "允许通知",
+    "noActivitiesFound": "此主题没有可用的活动。",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

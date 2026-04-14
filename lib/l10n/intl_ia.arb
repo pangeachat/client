@@ -1774,7 +1774,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-04-10 13:53:32.242108",
+    "@@last_modified": "2026-04-14 11:37:27.356135",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11963,6 +11963,26 @@
     },
     "visibilityToggleTitle": "Permet a l'autri de cercar per ton cors",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Nekas neperduokite pokalbio!",
+    "enableNotificationsDesc": "Leiskite pranešimus Pangea pokalbiui ir likite susijungę su savo kalbos draugais!",
+    "enableNotifications": "Leiskite pranešimus",
+    "noActivitiesFound": "Nėra veiklų, susijusių su šia tema.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

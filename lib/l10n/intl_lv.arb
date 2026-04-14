@@ -4188,7 +4188,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-04-10 13:54:00.199070",
+    "@@last_modified": "2026-04-14 11:38:10.719295",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10853,6 +10853,26 @@
     },
     "visibilityToggleTitle": "Atļaut citiem meklēt jūsu kursu",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Nekad nepalaid garām sarunu!",
+    "enableNotificationsDesc": "Atļaut paziņojumus par Pangea Chat un palikt saistītam ar saviem valodas draugiem!",
+    "enableNotifications": "Atļaut paziņojumus",
+    "noActivitiesFound": "Nav pieejamu aktivitāšu šai tēmai.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

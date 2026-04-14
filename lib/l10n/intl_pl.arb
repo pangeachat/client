@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-04-10 13:54:12.995755",
+    "@@last_modified": "2026-04-14 11:38:43.482385",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10962,6 +10962,26 @@
     },
     "visibilityToggleTitle": "Zezwól innym na wyszukiwanie twojego kursu",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Nigdy nie przegap czatu!",
+    "enableNotificationsDesc": "Zezwól na powiadomienia dla Pangea Chat i pozostań w kontakcie ze swoimi językowymi przyjaciółmi!",
+    "enableNotifications": "Zezwól na powiadomienia",
+    "noActivitiesFound": "Brak dostępnych aktywności dla tego tematu.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

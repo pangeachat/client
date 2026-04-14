@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-10 13:53:31.403796",
+    "@@last_modified": "2026-04-14 11:37:25.290330",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -11932,6 +11932,26 @@
     },
     "visibilityToggleTitle": "אפשר לאחרים לחפש את הקורס שלך",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "אל תפספס שיחה לעולם!",
+    "enableNotificationsDesc": "אפשר התראות עבור Pangea Chat והישאר מחובר עם חברי השפה שלך!",
+    "enableNotifications": "אפשר התראות",
+    "noActivitiesFound": "אין פעילויות זמינות לנושא זה.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

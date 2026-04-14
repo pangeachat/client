@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-04-10 13:53:36.474430",
+    "@@last_modified": "2026-04-14 11:37:32.004502",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10853,6 +10853,26 @@
     },
     "visibilityToggleTitle": "Utzi besteek zure ikastaroa bilatzea",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Ez galdu txat bat ere!",
+    "enableNotificationsDesc": "Baieztatu Pangea Chat-eko jakinarazpenak eta mantendu harremanetan zure hizkuntza lagunekin!",
+    "enableNotifications": "Baieztatu jakinarazpenak",
+    "noActivitiesFound": "Ez dago jarduerarik gaia honetarako.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

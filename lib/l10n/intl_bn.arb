@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-10 13:54:10.962483",
+    "@@last_modified": "2026-04-14 11:38:38.887486",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -11568,6 +11568,26 @@
     },
     "visibilityToggleTitle": "অন্যান্যদের আপনার কোর্স খুঁজে পেতে অনুমতি দিন",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "কখনো একটি চ্যাট মিস করবেন না!",
+    "enableNotificationsDesc": "Pangea চ্যাটের জন্য নোটিফিকেশন অনুমোদন করুন এবং আপনার ভাষার বন্ধুদের সাথে সংযুক্ত থাকুন!",
+    "enableNotifications": "নোটিফিকেশন অনুমোদন করুন",
+    "noActivitiesFound": "এই বিষয়ে কোন কার্যকলাপ পাওয়া যায়নি।",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

@@ -3045,7 +3045,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-04-10 13:53:51.393411",
+    "@@last_modified": "2026-04-14 11:38:01.402949",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11929,6 +11929,26 @@
     },
     "visibilityToggleTitle": "Permitir que outros pesquisem seu curso",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Nunca perca um chat!",
+    "enableNotificationsDesc": "Permita notificações para o Pangea Chat e mantenha-se conectado com seus amigos de idioma!",
+    "enableNotifications": "Permitir notificações",
+    "noActivitiesFound": "Nenhuma atividade disponível para este tópico.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

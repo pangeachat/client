@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-10 13:53:27.527798",
+    "@@last_modified": "2026-04-14 11:37:14.198020",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11678,6 +11678,26 @@
     },
     "visibilityToggleTitle": "Permite altora să caute cursul tău",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Nu rata niciun chat!",
+    "enableNotificationsDesc": "Permite notificările pentru Pangea Chat și rămâi conectat cu prietenii tăi de limbă!",
+    "enableNotifications": "Permite notificările",
+    "noActivitiesFound": "Nu sunt disponibile activități pentru acest subiect.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

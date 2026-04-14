@@ -3462,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-04-10 13:54:09.208050",
+    "@@last_modified": "2026-04-14 11:38:34.673801",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10525,6 +10525,26 @@
     },
     "visibilityToggleTitle": "Bolehkah orang lain mencari kursus anda",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Nek se miss a chat!",
+    "enableNotificationsDesc": "Allow notifications for Pangea Chat and stay connected with your language buddies!",
+    "enableNotifications": "Allow notifications",
+    "noActivitiesFound": "No activities available for this topic.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

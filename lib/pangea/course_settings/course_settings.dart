@@ -242,13 +242,11 @@ class CourseSettingsState extends State<CourseSettings> {
                       },
                     ),
                     if (!locked)
-                      SizedBox(
+                      TopicActivitiesList(
+                        room: room,
+                        topic: topic,
+                        hasCompletedActivity: controller.hasCompletedActivity,
                         height: isColumnMode ? 290.0 : 210.0,
-                        child: TopicActivitiesList(
-                          room: room,
-                          topic: topic,
-                          hasCompletedActivity: controller.hasCompletedActivity,
-                        ),
                       ),
                   ],
                 ),

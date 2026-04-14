@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-04-10 13:53:58.227649",
+    "@@last_modified": "2026-04-14 11:38:06.862586",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10857,6 +10857,26 @@
     },
     "visibilityToggleTitle": "Boshqalar sizning kursingizni qidirishiga ruxsat berish",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Hech qachon suhbatni o'tkazib yubormang!",
+    "enableNotificationsDesc": "Pangea Chat uchun bildirishnomalarni ruxsat bering va til do'stlaringiz bilan bog'laning!",
+    "enableNotifications": "Bildirishnomalarni ruxsat berish",
+    "noActivitiesFound": "Ushbu mavzu uchun hech qanday faoliyat mavjud emas.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

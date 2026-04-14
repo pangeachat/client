@@ -4182,7 +4182,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-04-10 13:53:23.638649",
+    "@@last_modified": "2026-04-14 11:37:03.915172",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10902,6 +10902,26 @@
     },
     "visibilityToggleTitle": "Salli muiden etsiä kurssiasi",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Älä koskaan jää ilman keskustelua!",
+    "enableNotificationsDesc": "Salli ilmoitukset Pangea Chatista ja pysy yhteydessä kielikavereihisi!",
+    "enableNotifications": "Salli ilmoitukset",
+    "noActivitiesFound": "Tälle aiheelle ei ole saatavilla aktiviteetteja.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

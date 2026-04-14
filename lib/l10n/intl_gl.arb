@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-04-10 13:53:21.811032",
+    "@@last_modified": "2026-04-14 11:37:01.502593",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10853,6 +10853,26 @@
     },
     "visibilityToggleTitle": "Permitir que outros busquen o teu curso",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "¡Nunca perdas unha charla!",
+    "enableNotificationsDesc": "Permite notificacións para Pangea Chat e mantente conectado cos teus compañeiros de idioma!",
+    "enableNotifications": "Permitir notificacións",
+    "noActivitiesFound": "Non hai actividades dispoñibles para este tema.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

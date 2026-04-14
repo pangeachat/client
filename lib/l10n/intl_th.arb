@@ -3646,7 +3646,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-04-10 13:53:50.576587",
+    "@@last_modified": "2026-04-14 11:37:59.950512",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11572,6 +11572,26 @@
     },
     "visibilityToggleTitle": "อนุญาตให้ผู้อื่นค้นหาหลักสูตรของคุณ",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "ไม่พลาดการสนทนา!",
+    "enableNotificationsDesc": "อนุญาตการแจ้งเตือนสำหรับ Pangea Chat และเชื่อมต่อกับเพื่อนที่พูดภาษาของคุณ!",
+    "enableNotifications": "อนุญาตการแจ้งเตือน",
+    "noActivitiesFound": "ไม่มีกิจกรรมสำหรับหัวข้อนี้.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

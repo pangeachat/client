@@ -5059,5 +5059,6 @@
     "notificationRuleCourseAndActivityDescription": "Notifies the user about messages in courses, activities, and chats.",
     "enableNotificationsTitle": "Never miss a chat!",
     "enableNotificationsDesc": "Allow notifications for Pangea Chat and stay connected with your language buddies!",
-    "enableNotifications": "Allow notifications"
+    "enableNotifications": "Allow notifications",
+    "noActivitiesFound": "No activities available for this topic."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-04-10 13:53:30.487326",
+    "@@last_modified": "2026-04-14 11:37:21.973804",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11337,6 +11337,26 @@
     },
     "visibilityToggleTitle": "Dopusti drugima da pretražuju tvoj tečaj",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Nikada ne propustite razgovor!",
+    "enableNotificationsDesc": "Dopustite obavijesti za Pangea Chat i ostanite povezani sa svojim jezičnim prijateljima!",
+    "enableNotifications": "Dopustite obavijesti",
+    "noActivitiesFound": "Nema dostupnih aktivnosti za ovu temu.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

@@ -1746,7 +1746,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-04-10 13:53:24.666661",
+    "@@last_modified": "2026-04-14 11:37:06.307108",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -11947,6 +11947,26 @@
     },
     "visibilityToggleTitle": "Tillad andre at søge efter dit kursus",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Gå ikke glip af en chat!",
+    "enableNotificationsDesc": "Tillad notifikationer for Pangea Chat og forbliv forbundet med dine sprogvenner!",
+    "enableNotifications": "Tillad notifikationer",
+    "noActivitiesFound": "Ingen aktiviteter tilgængelige for dette emne.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

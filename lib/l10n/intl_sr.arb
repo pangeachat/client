@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-10 13:54:20.434480",
+    "@@last_modified": "2026-04-14 11:38:59.257826",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -11976,6 +11976,26 @@
     },
     "visibilityToggleTitle": "Dozvolite drugima da pretražuju vaš kurs",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Nikada ne propustite razgovor!",
+    "enableNotificationsDesc": "Dozvolite obaveštenja za Pangea Chat i ostanite povezani sa svojim jezičkim prijateljima!",
+    "enableNotifications": "Dozvolite obaveštenja",
+    "noActivitiesFound": "Nema dostupnih aktivnosti za ovu temu.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-10 13:54:05.901757",
+    "@@last_modified": "2026-04-14 11:38:28.284289",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6868,6 +6868,26 @@
     },
     "visibilityToggleTitle": "Cho phép người khác tìm kiếm khóa học của bạn",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Không bao giờ bỏ lỡ một cuộc trò chuyện!",
+    "enableNotificationsDesc": "Cho phép thông báo cho Pangea Chat và giữ kết nối với những người bạn ngôn ngữ của bạn!",
+    "enableNotifications": "Cho phép thông báo",
+    "noActivitiesFound": "Không có hoạt động nào cho chủ đề này.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

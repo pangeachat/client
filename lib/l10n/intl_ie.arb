@@ -3646,7 +3646,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-04-10 13:53:29.577335",
+    "@@last_modified": "2026-04-14 11:37:20.029601",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11572,6 +11572,26 @@
     },
     "visibilityToggleTitle": "Permitir que outros procurem o seu curso",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Ná bíodh caillte ar comhrá!",
+    "enableNotificationsDesc": "Cuir cead do rabhadh do Pangea Chat agus fan i dteagmháil le do chairde teanga!",
+    "enableNotifications": "Cuir cead do rabhadh",
+    "noActivitiesFound": "Níl aon gníomhaíochtaí ar fáil don ábhar seo.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

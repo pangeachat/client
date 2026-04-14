@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-04-10 13:53:25.692614",
+    "@@last_modified": "2026-04-14 11:37:09.467242",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10980,6 +10980,26 @@
     },
     "visibilityToggleTitle": "Engedje meg másoknak, hogy keresni tudjanak a kurzusára",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Soha ne hagyj ki egy csevegést sem!",
+    "enableNotificationsDesc": "Engedélyezd a Pangea Chat értesítéseit, és maradj kapcsolatban a nyelvi barátaiddal!",
+    "enableNotifications": "Értesítések engedélyezése",
+    "noActivitiesFound": "Nincsenek elérhető tevékenységek ehhez a témához.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

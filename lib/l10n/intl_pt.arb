@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-10 13:53:37.347076",
+    "@@last_modified": "2026-04-14 11:37:34.056644",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -11971,6 +11971,26 @@
     },
     "visibilityToggleTitle": "Permitir que outros pesquisem seu curso",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Nunca perca um chat!",
+    "enableNotificationsDesc": "Permita notificações para o Pangea Chat e mantenha-se conectado com seus amigos de idioma!",
+    "enableNotifications": "Permitir notificações",
+    "noActivitiesFound": "Nenhuma atividade disponível para este tópico.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

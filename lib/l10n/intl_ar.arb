@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-04-10 13:54:01.072854",
+    "@@last_modified": "2026-04-14 11:38:13.328943",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11193,6 +11193,26 @@
     },
     "visibilityToggleTitle": "السماح للآخرين بالبحث عن دورتك",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "لا تفوت أي محادثة!",
+    "enableNotificationsDesc": "اسمح بالإشعارات لتطبيق Pangea Chat وابقَ على اتصال مع أصدقائك في اللغة!",
+    "enableNotifications": "اسمح بالإشعارات",
+    "noActivitiesFound": "لا توجد أنشطة متاحة لهذا الموضوع.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

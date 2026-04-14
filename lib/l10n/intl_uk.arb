@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-04-10 13:53:44.861119",
+    "@@last_modified": "2026-04-14 11:37:47.465893",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10853,6 +10853,26 @@
     },
     "visibilityToggleTitle": "Дозволити іншим шукати ваш курс",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Ніколи не пропустіть чат!",
+    "enableNotificationsDesc": "Дозвольте сповіщення для Pangea Chat і залишайтеся на зв'язку зі своїми мовними друзями!",
+    "enableNotifications": "Дозволити сповіщення",
+    "noActivitiesFound": "Немає доступних активностей для цієї теми.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }
