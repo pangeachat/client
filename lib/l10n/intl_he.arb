@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 11:37:25.290330",
+    "@@last_modified": "2026-04-14 12:58:41.758382",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -11952,6 +11952,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "אינך יכול לחסום את עצמך",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 11:38:28.284289",
+    "@@last_modified": "2026-04-14 12:59:09.325743",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6888,6 +6888,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Bạn không thể chặn chính mình",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

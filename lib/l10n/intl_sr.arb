@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 11:38:59.257826",
+    "@@last_modified": "2026-04-14 12:59:29.652330",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -11996,6 +11996,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Не можете блокирати себе",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

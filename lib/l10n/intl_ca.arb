@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 11:37:57.484680",
+    "@@last_modified": "2026-04-14 12:58:55.570538",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -11024,6 +11024,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "No et pots bloquejar a tu mateix",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

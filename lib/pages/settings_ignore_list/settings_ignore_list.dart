@@ -81,6 +81,12 @@ class SettingsIgnoreListController extends State<SettingsIgnoreList> {
         });
         return;
       }
+      if (userId == Matrix.of(context).client.userID) {
+        setState(() {
+          errorText = L10n.of(context).cannotIgnoreYourself;
+        });
+        return;
+      }
       setState(() {
         errorText = null;
       });

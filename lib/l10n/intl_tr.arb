@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-04-14 11:38:15.429302",
+    "@@last_modified": "2026-04-14 12:59:06.251476",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11204,6 +11204,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Kendinizi engelleyemezsiniz",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

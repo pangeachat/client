@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 11:38:30.439715",
+    "@@last_modified": "2026-04-14 12:59:10.332857",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10989,6 +10989,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "நீங்கள் உங்கள் சொந்தத்தை தடுப்பதற்கான உரிமை இல்லை",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

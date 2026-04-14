@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 11:37:45.625035",
+    "@@last_modified": "2026-04-14 12:58:51.190004",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10964,6 +10964,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Non puoi bloccare te stesso",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

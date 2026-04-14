@@ -2526,7 +2526,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-04-14 11:38:08.519175",
+    "@@last_modified": "2026-04-14 12:59:00.924132",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11892,6 +11892,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Hindi mo ma-block ang iyong sarili",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

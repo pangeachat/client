@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 11:38:38.887486",
+    "@@last_modified": "2026-04-14 12:59:14.247721",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -11588,6 +11588,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "আপনি নিজেকে ব্লক করতে পারবেন না",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

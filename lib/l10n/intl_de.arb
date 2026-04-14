@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-04-14 11:37:38.553306",
+    "@@last_modified": "2026-04-14 12:58:48.325082",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10852,6 +10852,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Du kannst dich selbst nicht blockieren",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

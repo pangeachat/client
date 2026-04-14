@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-04-14 11:37:01.502593",
+    "@@last_modified": "2026-04-14 12:58:31.326264",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10873,6 +10873,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Non podes bloquearte a ti mesmo",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

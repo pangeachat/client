@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 11:38:53.723440",
+    "@@last_modified": "2026-04-14 12:59:26.565255",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -11992,6 +11992,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Vi ne povas bloki vin mem",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-04-14 11:38:13.328943",
+    "@@last_modified": "2026-04-14 12:59:02.730960",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11213,6 +11213,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "لا يمكنك حظر نفسك",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

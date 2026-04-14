@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-04-14 11:37:16.544005",
+    "@@last_modified": "2026-04-14 12:58:38.271052",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -11989,6 +11989,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Nemôžete zablokovať seba",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

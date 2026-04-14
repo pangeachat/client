@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-04-14 11:37:47.465893",
+    "@@last_modified": "2026-04-14 12:58:52.121380",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10873,6 +10873,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Ви не можете заблокувати себе",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

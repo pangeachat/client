@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 11:38:41.112815",
+    "@@last_modified": "2026-04-14 12:59:20.788559",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10985,6 +10985,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "شما نمی‌توانید خودتان را مسدود کنید",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }
