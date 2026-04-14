@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-04-14 11:36:59.755381",
+    "@@last_modified": "2026-04-14 12:58:29.659751",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7899,6 +7899,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "No puedes bloquearte a ti mismo",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

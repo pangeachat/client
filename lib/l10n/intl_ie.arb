@@ -3646,7 +3646,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-04-14 11:37:20.029601",
+    "@@last_modified": "2026-04-14 12:58:39.422192",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11592,6 +11592,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Tu non pote bloquear te",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

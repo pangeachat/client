@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 11:37:14.198020",
+    "@@last_modified": "2026-04-14 12:58:37.116267",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11698,6 +11698,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Nu te poți bloca singur",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

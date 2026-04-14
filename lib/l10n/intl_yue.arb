@@ -1675,7 +1675,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-04-14 11:37:43.047882",
+    "@@last_modified": "2026-04-14 12:58:50.266924",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -12004,6 +12004,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "你不能封鎖自己",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-04-14 11:37:49.375724",
+    "@@last_modified": "2026-04-14 12:58:52.974280",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -11427,6 +11427,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Nemůžete zablokovat sami sebe",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

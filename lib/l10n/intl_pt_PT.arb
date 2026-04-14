@@ -3045,7 +3045,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-04-14 11:38:01.402949",
+    "@@last_modified": "2026-04-14 12:58:57.949422",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11949,6 +11949,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Você não pode se bloquear",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-04-14 11:38:36.378637",
+    "@@last_modified": "2026-04-14 12:59:13.396206",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10873,6 +10873,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "您无法屏蔽自己",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 11:37:29.239079",
+    "@@last_modified": "2026-04-14 12:58:43.994869",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -10873,6 +10873,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Você não pode se bloquear",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

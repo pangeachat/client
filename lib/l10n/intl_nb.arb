@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 11:37:51.160095",
+    "@@last_modified": "2026-04-14 12:58:53.740713",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10933,6 +10933,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Du kan ikke blokkere deg selv",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

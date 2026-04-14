@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-04-14 11:37:09.467242",
+    "@@last_modified": "2026-04-14 12:58:34.570308",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -11000,6 +11000,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Nem blokkolhatod önmagadat",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

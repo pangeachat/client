@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-04-14 11:37:32.004502",
+    "@@last_modified": "2026-04-14 12:58:45.285414",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10873,6 +10873,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Ez duzu zure burua blokeatu dezakezu",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

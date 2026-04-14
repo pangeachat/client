@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-04-14 11:37:35.806126",
+    "@@last_modified": "2026-04-14 12:58:47.191605",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10870,6 +10870,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Sa ei saa end blokeerida",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

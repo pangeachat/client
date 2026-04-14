@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-04-14 11:38:55.349442",
+    "@@last_modified": "2026-04-14 12:59:27.427471",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11887,6 +11887,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Вы не можете заблокировать себя",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

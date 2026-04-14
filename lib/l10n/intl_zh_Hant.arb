@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 11:38:04.848887",
+    "@@last_modified": "2026-04-14 12:58:58.708359",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -11003,6 +11003,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "您無法封鎖自己",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

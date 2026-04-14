@@ -4202,7 +4202,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-04-14 11:37:54.746152",
+    "@@last_modified": "2026-04-14 12:58:54.639916",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10887,6 +10887,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Вы не можаце заблакаваць сябе",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

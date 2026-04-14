@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-04-14 11:37:21.973804",
+    "@@last_modified": "2026-04-14 12:58:40.316636",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11357,6 +11357,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Ne možete blokirati sebe",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }

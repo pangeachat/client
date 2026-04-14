@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-04-14 11:38:43.482385",
+    "@@last_modified": "2026-04-14 12:59:21.802216",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10982,6 +10982,11 @@
         "placeholders": {}
     },
     "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Nie możesz zablokować siebie",
+    "@cannotIgnoreYourself": {
         "type": "String",
         "placeholders": {}
     }
