@@ -186,13 +186,20 @@ abstract class AppRoutes {
           pageBuilder: (context, state) => defaultPageBuilder(
             context,
             state,
-            const CreatePangeaAccountPage(),
+            CreatePangeaAccountPage(
+              directFromLanguageSelection:
+                  state.uri.queryParameters['directFromLanguageSelection'] ==
+                  'true',
+            ),
           ),
         ),
         GoRoute(
           path: 'course',
-          pageBuilder: (context, state) =>
-              defaultPageBuilder(context, state, const SpaceCodeOnboarding()),
+          pageBuilder: (context, state) => defaultPageBuilder(
+            context,
+            state,
+            SpaceCodeOnboarding(showBackButton: state.extra == true),
+          ),
         ),
       ],
     ),

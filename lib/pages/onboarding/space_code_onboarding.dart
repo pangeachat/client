@@ -11,7 +11,8 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SpaceCodeOnboarding extends StatefulWidget {
-  const SpaceCodeOnboarding({super.key});
+  final bool showBackButton;
+  const SpaceCodeOnboarding({super.key, this.showBackButton = false});
 
   @override
   State<SpaceCodeOnboarding> createState() => SpaceCodeOnboardingState();
