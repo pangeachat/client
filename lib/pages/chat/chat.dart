@@ -1635,13 +1635,29 @@ class ChatController extends State<ChatPageWithRoom>
     inputFocus.requestFocus();
   }
 
-  void scrollToEventId(String eventId, {bool highlightEvent = true}) async {
+  // #Pangea
+  // void scrollToEventId(String eventId, {bool highlightEvent = true}) async {
+  void scrollToEventId(
+    String eventId, {
+    bool highlightEvent = true,
+    int calls = 0,
+  }) async {
+    // Pangea#
+    Logs().w("Scrolling to event ID $eventId");
     // #Pangea
     if (timeline == null) {
       Sentry.addBreadcrumb(
         Breadcrumb(
           message: 'Timeline is null when trying to scroll to event ID',
         ),
+      );
+      return;
+    }
+
+    if (calls > 2) {
+      ErrorHandler.logError(
+        e: Exception('Too many attempts to scroll to event ID $eventId'),
+        data: {'roomId': roomId, 'eventId': eventId, 'calls': calls},
       );
       return;
     }
@@ -1672,7 +1688,10 @@ class ChatController extends State<ChatPageWithRoom>
       });
       await loadTimelineFuture;
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-        scrollToEventId(eventId);
+        // #Pangea
+        // scrollToEventId(eventId);
+        scrollToEventId(eventId, calls: calls + 1);
+        // Pangea#
       });
       return;
     }
