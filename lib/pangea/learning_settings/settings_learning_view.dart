@@ -22,49 +22,51 @@ class SettingsLearningView extends StatelessWidget {
             );
       }),
       builder: (context, _) {
-        final dialogContent = Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: !controller.widget.isDialog,
-            centerTitle: true,
-            title: Text(L10n.of(context).learningSettings),
-            leading: controller.widget.isDialog
-                ? IconButton(
-                    icon: const Icon(Icons.close),
-                    onPressed: controller.onSettingsClose,
-                  )
-                : null,
-          ),
-          body: Column(
-            children: [
-              Expanded(
-                child: MaxWidthBody(
-                  scrollController: controller.scrollController,
-                  showBorder: !controller.widget.isDialog,
-                  child: LearningSettingsTiles(
-                    viewModel: controller.viewModel,
-                    languageErrorNotifier: controller.languageMatchError,
-                    aboutTextController: controller.aboutTextController,
-                    languageTileController: controller.languageTileController,
-                  ),
-                ),
-              ),
-              ListenableBuilder(
-                listenable: controller.viewModel,
-                builder: (context, _) => Container(
-                  padding: const EdgeInsets.all(16.0),
-                  constraints: BoxConstraints(maxWidth: 600),
-                  child: ElevatedButton(
-                    onPressed: controller.viewModel.haveSettingsChanged
-                        ? controller.submit
-                        : null,
-                    child: Row(
-                      mainAxisAlignment: .center,
-                      children: [Text(L10n.of(context).saveChanges)],
+        final dialogContent = SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              automaticallyImplyLeading: !controller.widget.isDialog,
+              centerTitle: true,
+              title: Text(L10n.of(context).learningSettings),
+              leading: controller.widget.isDialog
+                  ? IconButton(
+                      icon: const Icon(Icons.close),
+                      onPressed: controller.onSettingsClose,
+                    )
+                  : null,
+            ),
+            body: Column(
+              children: [
+                Expanded(
+                  child: MaxWidthBody(
+                    scrollController: controller.scrollController,
+                    showBorder: !controller.widget.isDialog,
+                    child: LearningSettingsTiles(
+                      viewModel: controller.viewModel,
+                      languageErrorNotifier: controller.languageMatchError,
+                      aboutTextController: controller.aboutTextController,
+                      languageTileController: controller.languageTileController,
                     ),
                   ),
                 ),
-              ),
-            ],
+                ListenableBuilder(
+                  listenable: controller.viewModel,
+                  builder: (context, _) => Container(
+                    padding: const EdgeInsets.all(16.0),
+                    constraints: BoxConstraints(maxWidth: 600),
+                    child: ElevatedButton(
+                      onPressed: controller.viewModel.haveSettingsChanged
+                          ? controller.submit
+                          : null,
+                      child: Row(
+                        mainAxisAlignment: .center,
+                        children: [Text(L10n.of(context).saveChanges)],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         );
 
