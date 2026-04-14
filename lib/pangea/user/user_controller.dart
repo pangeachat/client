@@ -184,6 +184,11 @@ class UserController {
     }
 
     if (client.userID == null) return;
+    final accountData = client.accountData[ModelKey.userProfile]?.content;
+    final fromAccountData =
+        Profile.fromAccountData(accountData) ?? Profile.emptyProfile;
+    _cachedProfile ??= fromAccountData;
+
     try {
       final resp = await client.getUserProfile(client.userID!);
       publicProfile = PublicProfileModel.fromJson(resp.additionalProperties);
