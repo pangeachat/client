@@ -61,8 +61,8 @@ class ActivityStatsMenu extends StatelessWidget {
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
     // Completion status variables
-    final bool userComplete =
-        controller.room.hasPickedRole && controller.room.hasCompletedRole;
+    final hasRole = controller.room.hasPickedRole;
+    final hasCompletedRole = controller.room.hasCompletedRole;
 
     final bool activityComplete = controller.room.isActivityFinished;
     bool shouldShowEndForAll = true;
@@ -162,7 +162,8 @@ class ActivityStatsMenu extends StatelessWidget {
                         ),
                       ],
                     ),
-                    if (!userComplete &&
+                    if (hasRole &&
+                        !hasCompletedRole &&
                         (shouldShowImDone || shouldShowEndForAll)) ...[
                       Text(
                         L10n.of(context).activityDropdownDesc,
