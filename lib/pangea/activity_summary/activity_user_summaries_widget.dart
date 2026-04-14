@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -124,165 +126,171 @@ class ButtonControlledCarouselView extends StatelessWidget {
       return const SizedBox();
     }
 
-    final cardWidth = 335.0;
-
-    return Column(
-      children: [
-        SizedBox(
-          height: 300.0,
-          child: ListView.builder(
-            key: PageStorageKey('summaries-carousel-${room.id}'),
-            shrinkWrap: true,
-            controller: controller.activityController.carouselController,
-            scrollDirection: Axis.horizontal,
-            itemCount: userSummaries.length,
-            itemBuilder: (context, i) {
-              final p = userSummaries[i];
-              final user = room.getParticipants().firstWhereOrNull(
-                (u) => u.id == p.participantId,
-              );
-              final userRole = assignedRoles.values.firstWhere(
-                (role) => role.userId == p.participantId,
-              );
-              return Container(
-                width: cardWidth,
-                margin: i == userSummaries.length - 1
-                    ? null
-                    : const EdgeInsets.only(right: 5.0),
-                padding: const EdgeInsets.all(12.0),
-                decoration: ShapeDecoration(
-                  color: Color.alphaBlend(
-                    Theme.of(context).colorScheme.surface.withAlpha(70),
-                    AppConfig.gold,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: Column(
-                  spacing: 4.0,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      spacing: 10.0,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Avatar(
-                          name: p.participantId.localpart,
-                          mxContent: user?.avatarUrl,
-                          size: 40,
-                        ),
-                        Flexible(
-                          child: Text(
-                            "${userRole.role ?? L10n.of(context).participant} | ${user?.calcDisplayname() ?? p.participantId.localpart}",
-                            style: const TextStyle(fontSize: 14.0),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Flexible(
-                      child: _SummaryText(
-                        text: p.displayFeedback(
-                          user?.calcDisplayname() ??
-                              p.participantId.localpart ??
-                              p.participantId,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Wrap(
-                            alignment: WrapAlignment.center,
-                            spacing: 12,
-                            runSpacing: 8,
-                            children: [
-                              Text(
-                                p.cefrLevel,
-                                style: const TextStyle(fontSize: 14.0),
-                              ),
-                              //const SizedBox(width: 8),
-                              if (superlatives != null &&
-                                  (superlatives['vocab']!.contains(
-                                    p.participantId,
-                                  ))) ...[
-                                const SuperlativeTile(icon: Symbols.dictionary),
-                              ],
-                              if (superlatives != null &&
-                                  (superlatives['grammar']!.contains(
-                                    p.participantId,
-                                  ))) ...[
-                                const SuperlativeTile(
-                                  icon: Symbols.toys_and_games,
-                                ),
-                              ],
-                              if (superlatives != null &&
-                                  (superlatives['xp']!.contains(
-                                    p.participantId,
-                                  ))) ...[
-                                const SuperlativeTile(icon: Icons.star),
-                              ],
-                              if (p.superlatives.isNotEmpty) ...[
-                                Text(
-                                  p.superlatives.first,
-                                  style: const TextStyle(fontSize: 14.0),
-                                ),
-                              ],
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-        ),
-        const SizedBox(height: 12),
-        SizedBox(
-          height: 125.0,
-          child: ValueListenableBuilder(
-            valueListenable: controller.activityController.highlightedRole,
-            builder: (context, highlightedRole, _) {
-              return ListView.builder(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        debugPrint("Available width: ${constraints.maxWidth}");
+        final cardWidth = userSummaries.length == 1
+            ? min(500.0, constraints.maxWidth)
+            : 335.0;
+        return Column(
+          children: [
+            SizedBox(
+              height: 300.0,
+              child: ListView.builder(
+                key: PageStorageKey('summaries-carousel-${room.id}'),
                 shrinkWrap: true,
+                controller: controller.activityController.carouselController,
                 scrollDirection: Axis.horizontal,
                 itemCount: userSummaries.length,
-                itemBuilder: (context, index) {
-                  final p = userSummaries[index];
+                itemBuilder: (context, i) {
+                  final p = userSummaries[i];
                   final user = room.getParticipants().firstWhereOrNull(
                     (u) => u.id == p.participantId,
                   );
                   final userRole = assignedRoles.values.firstWhere(
                     (role) => role.userId == p.participantId,
                   );
-                  final userRoleInfo = availableRoles[userRole.id]!;
-                  return SizedBox(
-                    width: 100.0,
-                    height: 125.0,
-                    child: Center(
-                      child: ActivityParticipantIndicator(
-                        name: userRoleInfo.name,
-                        userId: p.participantId,
-                        user: user,
-                        borderRadius: BorderRadius.circular(4),
-                        selected: highlightedRole?.id == userRole.id,
-                        onTap: () => _scrollToUser(userRole, index, cardWidth),
-                        room: controller.room,
+                  return Container(
+                    width: cardWidth,
+                    margin: i == userSummaries.length - 1
+                        ? null
+                        : const EdgeInsets.only(right: 5.0),
+                    padding: const EdgeInsets.all(12.0),
+                    decoration: ShapeDecoration(
+                      color: Color.alphaBlend(
+                        Theme.of(context).colorScheme.surface.withAlpha(70),
+                        AppConfig.gold,
                       ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: Column(
+                      spacing: 4.0,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          spacing: 10.0,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Avatar(
+                              name: p.participantId.localpart,
+                              mxContent: user?.avatarUrl,
+                              size: 40,
+                            ),
+                            Flexible(
+                              child: Text(
+                                "${userRole.role ?? L10n.of(context).participant} | ${user?.calcDisplayname() ?? p.participantId.localpart}",
+                                style: const TextStyle(fontSize: 14.0),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Flexible(
+                          child: _SummaryText(
+                            text: p.displayFeedback(
+                              user?.calcDisplayname() ??
+                                  p.participantId.localpart ??
+                                  p.participantId,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(
+                            child: Wrap(
+                              alignment: WrapAlignment.center,
+                              spacing: 12,
+                              runSpacing: 8,
+                              children: [
+                                Text(
+                                  p.cefrLevel,
+                                  style: const TextStyle(fontSize: 14.0),
+                                ),
+                                //const SizedBox(width: 8),
+                                if (superlatives != null &&
+                                    (superlatives['vocab']!.contains(
+                                      p.participantId,
+                                    ))) ...[
+                                  const SuperlativeTile(
+                                    icon: Symbols.dictionary,
+                                  ),
+                                ],
+                                if (superlatives != null &&
+                                    (superlatives['grammar']!.contains(
+                                      p.participantId,
+                                    ))) ...[
+                                  const SuperlativeTile(
+                                    icon: Symbols.toys_and_games,
+                                  ),
+                                ],
+                                if (superlatives != null &&
+                                    (superlatives['xp']!.contains(
+                                      p.participantId,
+                                    ))) ...[
+                                  const SuperlativeTile(icon: Icons.star),
+                                ],
+                                if (p.superlatives.isNotEmpty) ...[
+                                  Text(
+                                    p.superlatives.first,
+                                    style: const TextStyle(fontSize: 14.0),
+                                  ),
+                                ],
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   );
                 },
-              );
-            },
-          ),
-        ),
-      ],
+              ),
+            ),
+            const SizedBox(height: 12),
+            SizedBox(
+              height: 125.0,
+              child: ValueListenableBuilder(
+                valueListenable: controller.activityController.highlightedRole,
+                builder: (context, highlightedRole, _) {
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: userSummaries.length,
+                    itemBuilder: (context, index) {
+                      final p = userSummaries[index];
+                      final user = room.getParticipants().firstWhereOrNull(
+                        (u) => u.id == p.participantId,
+                      );
+                      final userRole = assignedRoles.values.firstWhere(
+                        (role) => role.userId == p.participantId,
+                      );
+                      final userRoleInfo = availableRoles[userRole.id]!;
+                      return SizedBox(
+                        width: 100.0,
+                        height: 125.0,
+                        child: Center(
+                          child: ActivityParticipantIndicator(
+                            name: userRoleInfo.name,
+                            userId: p.participantId,
+                            user: user,
+                            borderRadius: BorderRadius.circular(4),
+                            selected: highlightedRole?.id == userRole.id,
+                            onTap: () =>
+                                _scrollToUser(userRole, index, cardWidth),
+                            room: controller.room,
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }
