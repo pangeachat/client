@@ -22,7 +22,11 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CreatePangeaAccountPage extends StatefulWidget {
-  const CreatePangeaAccountPage({super.key});
+  final bool directFromLanguageSelection;
+  const CreatePangeaAccountPage({
+    super.key,
+    this.directFromLanguageSelection = false,
+  });
 
   @override
   CreatePangeaAccountPageState createState() => CreatePangeaAccountPageState();
@@ -238,10 +242,14 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
 
   Future<void> _onProfileCreated() async {
     await LangCodeRepo.remove();
+    if (_spaceId != null) {
+      context.go('/rooms/spaces/$_spaceId/details');
+      return;
+    }
+
     context.go(
-      _spaceId != null
-          ? '/rooms/spaces/$_spaceId/details'
-          : '/registration/course',
+      '/registration/course',
+      extra: widget.directFromLanguageSelection,
     );
   }
 

@@ -8,7 +8,6 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
-import 'package:fluffychat/pangea/common/widgets/shrinkable_text.dart';
 import 'package:fluffychat/pangea/languages/language_display_name_widget.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
@@ -125,7 +124,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
     context.go(
       GoRouterState.of(context).fullPath?.contains('home') == true
           ? '/home/language/signup'
-          : '/registration/create',
+          : '/registration/create?directFromLanguageSelection=true',
     );
   }
 
@@ -152,22 +151,18 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
       appBar: AppBar(
         centerTitle: true,
         title: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 500),
+          constraints: const BoxConstraints(maxWidth: 450),
           child: Row(
-            spacing: 12.0,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Navigator.of(context).canPop()
-                  ? BackButton(onPressed: Navigator.of(context).maybePop)
+              GoRouterState.of(context).fullPath?.contains('home') == true
+                  ? BackButton(onPressed: context.pop)
                   : const SizedBox(width: 40.0),
               Expanded(
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    return ShrinkableText(
-                      text: L10n.of(context).onboardingLanguagesTitle,
-                      maxWidth: constraints.maxWidth,
-                      alignment: Alignment.center,
-                    );
-                  },
+                child: Text(
+                  L10n.of(context).onboardingLanguagesTitle,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
                 ),
               ),
               const SizedBox(width: 40.0),

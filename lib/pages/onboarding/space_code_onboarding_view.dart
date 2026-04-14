@@ -21,7 +21,9 @@ class SpaceCodeOnboardingView extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              BackButton(onPressed: Navigator.of(context).pop),
+              controller.widget.showBackButton
+                  ? BackButton(onPressed: context.pop)
+                  : const SizedBox(width: 40.0),
               const SizedBox(width: 40.0),
             ],
           ),
