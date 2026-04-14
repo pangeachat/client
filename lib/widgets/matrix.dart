@@ -331,17 +331,23 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // already too small (i.e. we're mid-resize within the too-small range).
     if (_showingScreenSizeDialog || _screenWasTooSmall) return;
 
-    // The navigator may not be ready on the initial frame — retry next frame.
+    // Mark immediately so any didChangeMetrics calls fired during the navigator
+    // retry loop (e.g. mid-expansion resize events) are blocked by the guard
+    // above and don't trigger a spurious dialog show.
+    _screenWasTooSmall = true;
+
+    // The navigator may not be ready on the initial frame — retry next frame,
+    // resetting the flag so the retry can re-evaluate height and navigator.
     final navigatorContext =
         FluffyChatApp.router.routerDelegate.navigatorKey.currentContext;
     if (navigatorContext == null) {
-      WidgetsBinding.instance.addPostFrameCallback(
-        (_) => _showScreenSizeDialog(),
-      );
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _screenWasTooSmall = false;
+        _showScreenSizeDialog();
+      });
       return;
     }
 
-    _screenWasTooSmall = true;
     _showingScreenSizeDialog = true;
     await showOkAlertDialog(
       context: navigatorContext,
