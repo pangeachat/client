@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-10 13:54:13.848709",
+    "@@last_modified": "2026-04-14 11:38:45.627790",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11440,6 +11440,26 @@
     },
     "visibilityToggleTitle": "Tillåt andra att söka efter din kurs",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Missa aldrig en chatt!",
+    "enableNotificationsDesc": "Tillåt aviseringar för Pangea Chat och håll kontakten med dina språkkompisar!",
+    "enableNotifications": "Tillåt aviseringar",
+    "noActivitiesFound": "Inga aktiviteter tillgängliga för detta ämne.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

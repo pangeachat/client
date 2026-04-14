@@ -1736,7 +1736,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-04-10 13:54:03.069151",
+    "@@last_modified": "2026-04-14 11:38:22.967983",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11974,6 +11974,26 @@
     },
     "visibilityToggleTitle": "ఇతరులకు మీ కోర్సును శోధించడానికి అనుమతించండి",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "చాట్‌ను ఎప్పుడూ మిస్ కాకండి!",
+    "enableNotificationsDesc": "పాంజియా చాట్‌కు నోటిఫికేషన్లు అనుమతించండి మరియు మీ భాషా స్నేహితులతో కనెక్ట్‌లో ఉండండి!",
+    "enableNotifications": "నోటిఫికేషన్లు అనుమతించండి",
+    "noActivitiesFound": "ఈ అంశానికి అందుబాటులో ఉన్న కార్యకలాపాలు లేవు.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

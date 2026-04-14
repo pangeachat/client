@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-10 13:54:17.716289",
+    "@@last_modified": "2026-04-14 11:38:53.723440",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -11972,6 +11972,26 @@
     },
     "visibilityToggleTitle": "Permesi aliajn serĉi vian kurson",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Neniam maltrafu chaton!",
+    "enableNotificationsDesc": "Permesu notifikojn por Pangea Chat kaj restu konektita kun viaj lingvaj amikoj!",
+    "enableNotifications": "Permesu notifikojn",
+    "noActivitiesFound": "Neniuj aktivadoj disponeblas por ĉi tiu temo.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

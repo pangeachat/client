@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-04-10 13:54:02.026151",
+    "@@last_modified": "2026-04-14 11:38:15.429302",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11184,6 +11184,26 @@
     },
     "visibilityToggleTitle": "Diğerlerinin kursunuzu aramasına izin ver",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Sohbeti asla kaçırmayın!",
+    "enableNotificationsDesc": "Pangea Sohbeti için bildirimlere izin verin ve dil arkadaşlarınızla bağlantıda kalın!",
+    "enableNotifications": "Bildirimlere izin ver",
+    "noActivitiesFound": "Bu konu için mevcut etkinlik yok.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

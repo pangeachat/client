@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-10 13:54:07.760672",
+    "@@last_modified": "2026-04-14 11:38:32.699716",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10853,6 +10853,26 @@
     },
     "visibilityToggleTitle": "Sta anderen toe om naar je cursus te zoeken",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Mis nooit een chat!",
+    "enableNotificationsDesc": "Sta meldingen toe voor Pangea Chat en blijf verbonden met je taalkameraadjes!",
+    "enableNotifications": "Sta meldingen toe",
+    "noActivitiesFound": "Geen activiteiten beschikbaar voor dit onderwerp.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

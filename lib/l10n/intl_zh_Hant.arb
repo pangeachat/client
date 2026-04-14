@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-10 13:53:52.205208",
+    "@@last_modified": "2026-04-14 11:38:04.848887",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10983,6 +10983,26 @@
     },
     "visibilityToggleTitle": "允許他人搜尋您的課程",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "永遠不會錯過聊天！",
+    "enableNotificationsDesc": "允許 Pangea Chat 的通知，與你的語言夥伴保持聯繫！",
+    "enableNotifications": "允許通知",
+    "noActivitiesFound": "此主題沒有可用的活動。",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

@@ -4040,7 +4040,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-04-10 13:54:14.831607",
+    "@@last_modified": "2026-04-14 11:38:47.775139",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -11902,6 +11902,26 @@
     },
     "visibilityToggleTitle": "Επιτρέψτε στους άλλους να αναζητούν το μάθημά σας",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Ποτέ μην χάσετε μια συνομιλία!",
+    "enableNotificationsDesc": "Επιτρέψτε τις ειδοποιήσεις για το Pangea Chat και μείνετε συνδεδεμένοι με τους φίλους σας στη γλώσσα!",
+    "enableNotifications": "Επιτρέψτε τις ειδοποιήσεις",
+    "noActivitiesFound": "Δεν υπάρχουν διαθέσιμες δραστηριότητες για αυτό το θέμα.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

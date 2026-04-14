@@ -3646,7 +3646,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-04-10 13:54:16.784213",
+    "@@last_modified": "2026-04-14 11:38:51.909816",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11572,6 +11572,26 @@
     },
     "visibilityToggleTitle": "अन्य लोगों को आपके पाठ्यक्रम को खोजने की अनुमति दें",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "कभी भी चैट न चूकें!",
+    "enableNotificationsDesc": "Pangea चैट के लिए सूचनाएँ अनुमति दें और अपने भाषा मित्रों के साथ जुड़े रहें!",
+    "enableNotifications": "सूचनाएँ अनुमति दें",
+    "noActivitiesFound": "इस विषय के लिए कोई गतिविधियाँ उपलब्ध नहीं हैं।",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

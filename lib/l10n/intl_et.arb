@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-04-10 13:53:38.078990",
+    "@@last_modified": "2026-04-14 11:37:35.806126",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10850,6 +10850,26 @@
     },
     "visibilityToggleTitle": "Luba teistel otsida sinu kursust",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Ära jäta vestlust vahele!",
+    "enableNotificationsDesc": "Luba teavitused Pangea Chati jaoks ja püsige ühenduses oma keelekaaslastega!",
+    "enableNotifications": "Luba teavitused",
+    "noActivitiesFound": "Selle teema jaoks pole tegevusi saadaval.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

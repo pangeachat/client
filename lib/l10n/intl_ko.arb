@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-10 13:53:20.062971",
+    "@@last_modified": "2026-04-14 11:36:57.195525",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -11070,6 +11070,26 @@
     },
     "visibilityToggleTitle": "다른 사람들이 당신의 강좌를 검색할 수 있도록 허용",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "채팅을 놓치지 마세요!",
+    "enableNotificationsDesc": "Pangea Chat의 알림을 허용하고 언어 친구들과 연결 상태를 유지하세요!",
+    "enableNotifications": "알림 허용",
+    "noActivitiesFound": "이 주제에 대한 활동이 없습니다.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

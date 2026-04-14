@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-10 13:54:11.975403",
+    "@@last_modified": "2026-04-14 11:38:41.112815",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10965,6 +10965,26 @@
     },
     "visibilityToggleTitle": "اجازه دهید دیگران دوره شما را جستجو کنند",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "هرگز یک چت را از دست ندهید!",
+    "enableNotificationsDesc": "اجازه دهید اعلان‌ها برای چت Pangea فعال شوند و با دوستان زبان خود در ارتباط باشید!",
+    "enableNotifications": "اجازه دهید اعلان‌ها فعال شوند",
+    "noActivitiesFound": "هیچ فعالیتی برای این موضوع موجود نیست.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

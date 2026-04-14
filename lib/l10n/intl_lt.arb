@@ -3514,7 +3514,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-04-10 13:54:04.808874",
+    "@@last_modified": "2026-04-14 11:38:25.154664",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11739,6 +11739,26 @@
     },
     "visibilityToggleTitle": "Leisti kitiems ieškoti jūsų kurso",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Niekuomet nepraleiskite pokalbio!",
+    "enableNotificationsDesc": "Leiskite pranešimus Pangea Chat ir likite susijungę su savo kalbos draugais!",
+    "enableNotifications": "Leiskite pranešimus",
+    "noActivitiesFound": "Šiam temai nėra prieinamų veiklų.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-04-10 13:53:28.565297",
+    "@@last_modified": "2026-04-14 11:37:16.544005",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -11969,6 +11969,26 @@
     },
     "visibilityToggleTitle": "Povoliť ostatným vyhľadávať váš kurz",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Nikdy nepremeškajte chat!",
+    "enableNotificationsDesc": "Povoľte notifikácie pre Pangea Chat a zostaňte v kontakte so svojimi jazykovými kamarátmi!",
+    "enableNotifications": "Povoľte notifikácie",
+    "noActivitiesFound": "Pre toto téma nie sú k dispozícii žiadne aktivity.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

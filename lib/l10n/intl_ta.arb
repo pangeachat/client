@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-10 13:54:06.855031",
+    "@@last_modified": "2026-04-14 11:38:30.439715",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10969,6 +10969,26 @@
     },
     "visibilityToggleTitle": "மற்றவர்கள் உங்கள் பாடத்திற்காக தேட அனுமதிக்கவும்",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "ஒரு உரையாடலை தவறவிடாதீர்கள்!",
+    "enableNotificationsDesc": "Pangea Chat க்கான அறிவிப்புகளை அனுமதிக்கவும் மற்றும் உங்கள் மொழி நண்பர்களுடன் இணைந்திருங்கள்!",
+    "enableNotifications": "அறிவிப்புகளை அனுமதிக்கவும்",
+    "noActivitiesFound": "இந்த தலைப்பிற்கான செயல்பாடுகள் கிடையாது.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

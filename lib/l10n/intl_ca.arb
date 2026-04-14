@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-10 13:53:49.447738",
+    "@@last_modified": "2026-04-14 11:37:57.484680",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -11004,6 +11004,26 @@
     },
     "visibilityToggleTitle": "Permetre que altres busquin el teu curs",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "No et perdis cap xat!",
+    "enableNotificationsDesc": "Permet notificacions per a Pangea Chat i mantingues't connectat amb els teus companys d'idioma!",
+    "enableNotifications": "Permet notificacions",
+    "noActivitiesFound": "No hi ha activitats disponibles per a aquest tema.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

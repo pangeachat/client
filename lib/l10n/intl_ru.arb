@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-04-10 13:54:18.502192",
+    "@@last_modified": "2026-04-14 11:38:55.349442",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11867,6 +11867,26 @@
     },
     "visibilityToggleTitle": "Разрешить другим искать ваш курс",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Никогда не пропустите чат!",
+    "enableNotificationsDesc": "Разрешите уведомления для Pangea Chat и оставайтесь на связи с вашими языковыми друзьями!",
+    "enableNotifications": "Разрешить уведомления",
+    "noActivitiesFound": "Нет доступных мероприятий по этой теме.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

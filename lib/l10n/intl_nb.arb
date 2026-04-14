@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-10 13:53:47.298002",
+    "@@last_modified": "2026-04-14 11:37:51.160095",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10913,6 +10913,26 @@
     },
     "visibilityToggleTitle": "Tillat andre å søke etter kurset ditt",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Ikke gå glipp av en chat!",
+    "enableNotificationsDesc": "Tillat varsler for Pangea Chat og hold kontakten med språkvennene dine!",
+    "enableNotifications": "Tillat varsler",
+    "noActivitiesFound": "Ingen aktiviteter tilgjengelig for dette emnet.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

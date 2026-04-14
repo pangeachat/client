@@ -2526,7 +2526,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-04-10 13:53:59.205400",
+    "@@last_modified": "2026-04-14 11:38:08.519175",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11872,6 +11872,26 @@
     },
     "visibilityToggleTitle": "Payagan ang iba na maghanap para sa iyong kurso",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Huwag palampasin ang anumang chat!",
+    "enableNotificationsDesc": "Payagan ang mga notification para sa Pangea Chat at manatiling konektado sa iyong mga kaibigan sa wika!",
+    "enableNotifications": "Payagan ang mga notification",
+    "noActivitiesFound": "Walang mga aktibidad na available para sa paksang ito.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

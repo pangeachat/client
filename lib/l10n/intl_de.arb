@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-04-10 13:53:39.543945",
+    "@@last_modified": "2026-04-14 11:37:38.553306",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10832,6 +10832,26 @@
     },
     "visibilityToggleTitle": "Erlaube anderen, nach deinem Kurs zu suchen",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Verpasse keinen Chat!",
+    "enableNotificationsDesc": "Erlaube Benachrichtigungen für Pangea Chat und bleibe mit deinen Sprachfreunden verbunden!",
+    "enableNotifications": "Benachrichtigungen erlauben",
+    "noActivitiesFound": "Keine Aktivitäten zu diesem Thema verfügbar.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

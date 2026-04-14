@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-10 13:53:43.914526",
+    "@@last_modified": "2026-04-14 11:37:45.625035",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10944,6 +10944,26 @@
     },
     "visibilityToggleTitle": "Consenti ad altri di cercare il tuo corso",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Non perdere mai una chat!",
+    "enableNotificationsDesc": "Consenti le notifiche per Pangea Chat e rimani connesso con i tuoi amici linguistici!",
+    "enableNotifications": "Consenti le notifiche",
+    "noActivitiesFound": "Nessuna attività disponibile per questo argomento.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }

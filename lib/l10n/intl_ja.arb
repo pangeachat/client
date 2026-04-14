@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-04-10 13:54:15.870490",
+    "@@last_modified": "2026-04-14 11:38:50.229841",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11721,6 +11721,26 @@
     },
     "visibilityToggleTitle": "他の人があなたのコースを検索できるようにする",
     "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "チャットを見逃さないで！",
+    "enableNotificationsDesc": "Pangea Chatの通知を許可して、言語仲間とつながりましょう！",
+    "enableNotifications": "通知を許可する",
+    "noActivitiesFound": "このトピックに利用可能なアクティビティはありません。",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     }
