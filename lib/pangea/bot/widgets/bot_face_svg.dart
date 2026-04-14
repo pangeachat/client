@@ -29,8 +29,7 @@ class BotFace extends StatefulWidget {
 }
 
 class BotFaceState extends State<BotFace> {
-  Artboard? _artboard;
-  StateMachineController? _controller;
+  RiveWidgetController? _controller;
   final Random _random = Random();
   final String svgURL = "${AppConfig.assetsBaseURL}/bot_face_neutral.png";
 
@@ -46,10 +45,9 @@ class BotFaceState extends State<BotFace> {
   void didUpdateWidget(BotFace oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.useRive && oldWidget.expression != widget.expression) {
-      _controller!.setInputValue(
-        _controller!.stateMachine.inputs[0].id,
-        mapExpressionToInput(widget.expression),
-      );
+      // ignore: deprecated_member_use
+      (_controller?.stateMachine.inputAt(0) as NumberInput?)?.value =
+          mapExpressionToInput(widget.expression);
     }
   }
 
@@ -90,28 +88,28 @@ class BotFaceState extends State<BotFace> {
 
   Future<void> _loadRiveFile() async {
     if (!widget.useRive) return;
+    await RiveNative.init();
 
-    final riveFile = await RiveFile.asset(
+    final file = await File.asset(
       'assets/pangea/bot_faces/pangea_bot.riv',
+      riveFactory: Factory.flutter,
     );
 
-    final artboard = riveFile.mainArtboard;
-    _controller = StateMachineController.fromArtboard(
-      artboard,
-      'BotIconStateMachine',
+    if (file == null) return;
+
+    final controller = RiveWidgetController(
+      file,
+      stateMachineSelector: const StateMachineNamed('BotIconStateMachine'),
     );
 
-    if (_controller != null) {
-      artboard.addController(_controller!);
-      _controller!.setInputValue(
-        _controller!.stateMachine.inputs[0].id,
-        mapExpressionToInput(widget.expression),
-      );
-    }
+    // ignore: deprecated_member_use
+    (controller.stateMachine.inputAt(0) as NumberInput?)?.value =
+        mapExpressionToInput(widget.expression);
 
     if (mounted) {
       setState(() {
-        _artboard = artboard;
+        _controller?.dispose();
+        _controller = controller;
       });
     }
   }
@@ -121,8 +119,8 @@ class BotFaceState extends State<BotFace> {
     return SizedBox(
       width: widget.width,
       height: widget.width,
-      child: _artboard != null
-          ? Rive(artboard: _artboard!, fit: BoxFit.cover)
+      child: _controller != null
+          ? RiveWidget(controller: _controller!, fit: Fit.cover)
           : CachedNetworkImage(
               imageUrl: svgURL,
               placeholder: (context, url) => const CircularProgressIndicator(),

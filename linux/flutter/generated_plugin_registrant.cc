@@ -17,6 +17,7 @@
 #include <handy_window/handy_window_plugin.h>
 #include <open_file_linux/open_file_linux_plugin.h>
 #include <record_linux/record_linux_plugin.h>
+#include <rive_native/rive_native_plugin.h>
 #include <screen_retriever_linux/screen_retriever_linux_plugin.h>
 #include <sentry_flutter/sentry_flutter_plugin.h>
 #include <sqlcipher_flutter_libs/sqlite3_flutter_libs_plugin.h>
@@ -59,6 +60,9 @@ void fl_register_plugins(FlPluginRegistry* registry) {
   g_autoptr(FlPluginRegistrar) record_linux_registrar =
       fl_plugin_registry_get_registrar_for_plugin(registry, "RecordLinuxPlugin");
   record_linux_plugin_register_with_registrar(record_linux_registrar);
+  g_autoptr(FlPluginRegistrar) rive_native_registrar =
+      fl_plugin_registry_get_registrar_for_plugin(registry, "RiveNativePlugin");
+  rive_native_plugin_register_with_registrar(rive_native_registrar);
   g_autoptr(FlPluginRegistrar) screen_retriever_linux_registrar =
       fl_plugin_registry_get_registrar_for_plugin(registry, "ScreenRetrieverLinuxPlugin");
   screen_retriever_linux_plugin_register_with_registrar(screen_retriever_linux_registrar);
