@@ -70,7 +70,7 @@ class PangeaMessageEvent {
 
   DateTime get originServerTs => _event.originServerTs;
 
-  String get eventId => _event.eventId;
+  String get eventId => _latestEdit.eventId;
 
   Room get room => _event.room;
 
