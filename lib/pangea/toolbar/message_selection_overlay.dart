@@ -233,8 +233,10 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     await collectToken(
       token: token,
       tokenCacheKey: event.eventId,
-      targetId: event.room.id,
+      targetId: token.text.wordCardTargetKey,
       langCode: pangeaMessageEvent.messageDisplayLangCode,
+      eventId: event.eventId,
+      roomId: event.roomId,
     );
     if (mounted) setState(() {});
   }

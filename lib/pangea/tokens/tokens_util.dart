@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -168,9 +166,7 @@ class TokensUtil {
 
   void collectToken(String cachedKey, PangeaTokenText token) {
     _newTokenCache[cachedKey]?.tokens.remove(token);
-    debugPrint("Last collected was: ${lastCollected?.content}");
     lastCollected = token;
-    debugPrint("Last collected is now: ${lastCollected?.content}");
   }
 
   bool isRecentlyCollected(PangeaTokenText token) => lastCollected == token;

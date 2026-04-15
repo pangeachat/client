@@ -138,7 +138,7 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
     await collectToken(
       token: token,
       tokenCacheKey: _newTokensCacheKey,
-      targetId: widget.targetId,
+      targetId: _vocabKey(vocab),
       langCode: widget.langCode,
     );
     _computeNewTokens();

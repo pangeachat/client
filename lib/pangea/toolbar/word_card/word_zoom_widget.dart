@@ -19,7 +19,7 @@ import 'package:fluffychat/pangea/toolbar/word_card/message_unsubscribed_card.da
 import 'package:fluffychat/pangea/toolbar/word_card/token_feedback_button.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class WordZoomWidget extends StatefulWidget {
+class WordZoomWidget extends StatelessWidget {
   final PangeaTokenText token;
   final ConstructIdentifier construct;
 
@@ -54,49 +54,48 @@ class WordZoomWidget extends StatefulWidget {
     this.maxWidth,
   });
 
-  @override
-  State<WordZoomWidget> createState() => _WordZoomWidgetState();
-}
-
-class _WordZoomWidgetState extends State<WordZoomWidget> {
-  String get _transformTargetId => "word-zoom-card-${widget.token.uniqueKey}";
-
-  LayerLink get _layerLink =>
-      MatrixState.pAnyState.layerLinkAndKey(_transformTargetId).link;
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (TokensUtil.instance.isRecentlyCollected(widget.token)) {
-        NewWordOverlay.show(
-          context: context,
-          target: _transformTargetId,
-          overlayKey: "new-word-${widget.token.uniqueKey}",
-        );
-      }
-    });
+  void _showNewWordOverlay(BuildContext context) {
+    if (TokensUtil.instance.isRecentlyCollected(token)) {
+      NewWordOverlay.show(
+        context: context,
+        target: token.wordCardTargetKey,
+        overlayKey: "new-word-${token.uniqueKey}",
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _showNewWordOverlay(context);
+    });
+
     final bool? subscribed =
         MatrixState.pangeaController.subscriptionController.isSubscribed;
     final showTranscript =
         MatrixState.pangeaController.userController.showTranscription;
 
-    final Widget content = subscribed != null && !subscribed
-        ? MessageUnsubscribedCard(token: widget.token, onClose: widget.onClose)
-        : Stack(
-            children: [
-              Container(
-                height: AppConfig.toolbarMaxHeight - 8,
-                padding: const EdgeInsets.all(12.0),
-                constraints: BoxConstraints(
-                  maxWidth: widget.maxWidth ?? AppConfig.toolbarMinWidth,
-                ),
-                child: CompositedTransformTarget(
-                  link: _layerLink,
+    final layerLinkAndKey = MatrixState.pAnyState.layerLinkAndKey(
+      token.wordCardTargetKey,
+    );
+
+    final Widget content = CompositedTransformTarget(
+      link: layerLinkAndKey.link,
+      child: subscribed != null && !subscribed
+          ? MessageUnsubscribedCard(
+              key: layerLinkAndKey.key,
+              token: token,
+              onClose: onClose,
+            )
+          : Stack(
+              key: layerLinkAndKey.key,
+              children: [
+                Container(
+                  height: AppConfig.toolbarMaxHeight - 8,
+                  padding: const EdgeInsets.all(12.0),
+                  constraints: BoxConstraints(
+                    maxWidth: maxWidth ?? AppConfig.toolbarMinWidth,
+                  ),
                   child: Column(
                     spacing: 12.0,
                     children: [
@@ -105,11 +104,11 @@ class _WordZoomWidgetState extends State<WordZoomWidget> {
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            widget.onClose != null
+                            onClose != null
                                 ? IconButton(
                                     color: Theme.of(context).iconTheme.color,
                                     icon: const Icon(Icons.close),
-                                    onPressed: widget.onClose,
+                                    onPressed: onClose,
                                   )
                                 : const SizedBox(width: 40.0, height: 40.0),
                             Flexible(
@@ -120,7 +119,7 @@ class _WordZoomWidgetState extends State<WordZoomWidget> {
                                   ),
                                   alignment: Alignment.center,
                                   child: Text(
-                                    widget.token.content,
+                                    token.content,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontSize: 28.0,
@@ -138,17 +137,15 @@ class _WordZoomWidgetState extends State<WordZoomWidget> {
                               ),
                             ),
 
-                            widget.onFlagTokenInfo != null
+                            onFlagTokenInfo != null
                                 ? TokenFeedbackButton(
                                     textLanguage:
-                                        PLanguageStore.byLangCode(
-                                          widget.langCode,
-                                        ) ??
+                                        PLanguageStore.byLangCode(langCode) ??
                                         LanguageModel.unknown,
-                                    constructId: widget.construct,
-                                    text: widget.token.content,
-                                    onFlagTokenInfo: widget.onFlagTokenInfo!,
-                                    messageInfo: widget.event?.content ?? {},
+                                    constructId: construct,
+                                    text: token.content,
+                                    onFlagTokenInfo: onFlagTokenInfo!,
+                                    messageInfo: event?.content ?? {},
                                   )
                                 : const SizedBox(width: 40.0, height: 40.0),
                           ],
@@ -161,41 +158,38 @@ class _WordZoomWidgetState extends State<WordZoomWidget> {
                           children: [
                             showTranscript
                                 ? PhoneticTranscriptionWidget(
-                                    text: widget.token.content,
+                                    text: token.content,
                                     textLanguage:
-                                        PLanguageStore.byLangCode(
-                                          widget.langCode,
-                                        ) ??
+                                        PLanguageStore.byLangCode(langCode) ??
                                         LanguageModel.unknown,
-                                    pos: widget.pos,
-                                    morph: widget.morph,
+                                    pos: pos,
+                                    morph: morph,
                                     style: const TextStyle(fontSize: 14.0),
                                     iconSize: 24.0,
                                     maxLines: 2,
-                                    reloadNotifier: widget.reloadNotifier,
+                                    reloadNotifier: reloadNotifier,
                                   )
                                 : WordAudioButton(
-                                    text: widget.token.content,
-                                    pos: widget.pos,
-                                    morph: widget.morph,
-                                    uniqueID:
-                                        "lemma-content-${widget.token.content}",
-                                    langCode: widget.langCode,
+                                    text: token.content,
+                                    pos: pos,
+                                    morph: morph,
+                                    uniqueID: "lemma-content-${token.content}",
+                                    langCode: langCode,
                                     iconSize: 24.0,
                                   ),
                             LemmaReactionPicker(
-                              constructId: widget.construct,
-                              langCode: widget.langCode,
-                              event: widget.event,
-                              enabled: widget.enableEmojiSelection,
-                              form: widget.token.content,
+                              constructId: construct,
+                              langCode: langCode,
+                              event: event,
+                              enabled: enableEmojiSelection,
+                              form: token.content,
                             ),
                             LemmaMeaningDisplay(
-                              langCode: widget.langCode,
-                              constructId: widget.construct,
-                              text: widget.token.content,
-                              messageInfo: widget.event?.content ?? {},
-                              reloadNotifier: widget.reloadNotifier,
+                              langCode: langCode,
+                              constructId: construct,
+                              text: token.content,
+                              messageInfo: event?.content ?? {},
+                              reloadNotifier: reloadNotifier,
                             ),
                           ],
                         ),
@@ -203,9 +197,9 @@ class _WordZoomWidgetState extends State<WordZoomWidget> {
                     ],
                   ),
                 ),
-              ),
-            ],
-          );
+              ],
+            ),
+    );
 
     return GestureDetector(
       onTap: () {

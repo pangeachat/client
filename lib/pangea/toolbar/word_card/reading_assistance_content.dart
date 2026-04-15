@@ -38,11 +38,6 @@ class ReadingAssistanceContent extends StatelessWidget {
         : -1;
 
     return WordZoomWidget(
-      key: MatrixState.pAnyState
-          .layerLinkAndKey(
-            "word-zoom-card-${overlayController.selectedToken!.text.uniqueKey}",
-          )
-          .key,
       token: overlayController.selectedToken!.text,
       construct: overlayController.selectedToken!.vocabConstructID,
       pos: overlayController.selectedToken!.pos,

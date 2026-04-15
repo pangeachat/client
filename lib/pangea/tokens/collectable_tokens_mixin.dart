@@ -10,6 +10,8 @@ mixin CollectableTokensMixin<T extends StatefulWidget> on State<T> {
     required String tokenCacheKey,
     required String targetId,
     required String langCode,
+    String? eventId,
+    String? roomId,
   }) async {
     TokensUtil.instance.collectToken(tokenCacheKey, token.text);
 
@@ -17,7 +19,7 @@ mixin CollectableTokensMixin<T extends StatefulWidget> on State<T> {
     // cache to ensure the same token isn't marked as new again on the next rebuild
     await Matrix.of(context).analyticsDataService.updateService.addAnalytics(
       targetId,
-      [token.clickUse()],
+      [token.clickUse(eventId: eventId, roomId: roomId)],
       langCode.split('-').first,
     );
     TokensUtil.instance.clearNewTokenCache();

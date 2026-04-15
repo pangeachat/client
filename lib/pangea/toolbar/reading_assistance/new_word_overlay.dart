@@ -73,8 +73,10 @@ class NewWordOverlayState extends State<NewWordOverlay>
       curve: const Interval(0.5, 1.0, curve: Curves.easeOut),
     );
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _controller?.forward().then((_) {
+    _controller?.forward().then((_) {
+      if (!mounted) return;
+
+      WidgetsBinding.instance.addPostFrameCallback((_) {
         MatrixState.pAnyState.closeOverlay(widget.overlayKey);
       });
     });
