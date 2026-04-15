@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-04-14 12:58:47.191605",
+    "@@last_modified": "2026-04-15 11:31:52.006215",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10875,6 +10875,11 @@
     },
     "cannotIgnoreYourself": "Sa ei saa end blokeerida",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Blokeeri kasutajanimi",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

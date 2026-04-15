@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-04-14 12:59:27.427471",
+    "@@last_modified": "2026-04-15 11:32:27.863633",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11892,6 +11892,11 @@
     },
     "cannotIgnoreYourself": "Вы не можете заблокировать себя",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Заблокировать имя пользователя",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

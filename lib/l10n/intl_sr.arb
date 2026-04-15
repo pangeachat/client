@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 12:59:29.652330",
+    "@@last_modified": "2026-04-15 11:32:29.786289",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -12001,6 +12001,11 @@
     },
     "cannotIgnoreYourself": "Не можете блокирати себе",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Blokiraj korisničko ime",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

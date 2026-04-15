@@ -1675,7 +1675,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-04-14 12:58:50.266924",
+    "@@last_modified": "2026-04-15 11:31:58.746579",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -12009,6 +12009,11 @@
     },
     "cannotIgnoreYourself": "你不能封鎖自己",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "封鎖用戶名",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

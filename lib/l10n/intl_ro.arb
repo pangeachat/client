@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 12:58:37.116267",
+    "@@last_modified": "2026-04-15 11:31:44.611312",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11703,6 +11703,11 @@
     },
     "cannotIgnoreYourself": "Nu te poți bloca singur",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Blochează numele de utilizator",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

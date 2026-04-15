@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 12:59:10.332857",
+    "@@last_modified": "2026-04-15 11:32:18.194439",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10994,6 +10994,11 @@
     },
     "cannotIgnoreYourself": "நீங்கள் உங்கள் சொந்தத்தை தடுப்பதற்கான உரிமை இல்லை",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "பூட்டும் பயனர் பெயர்",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

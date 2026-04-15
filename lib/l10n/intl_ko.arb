@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 12:58:28.613209",
+    "@@last_modified": "2026-04-15 11:31:36.871308",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -11095,6 +11095,11 @@
     },
     "cannotIgnoreYourself": "자신을 차단할 수 없습니다",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "사용자 이름 차단",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

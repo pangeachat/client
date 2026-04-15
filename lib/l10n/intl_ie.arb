@@ -3646,7 +3646,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-04-14 12:58:39.422192",
+    "@@last_modified": "2026-04-15 11:31:45.950737",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11597,6 +11597,11 @@
     },
     "cannotIgnoreYourself": "Tu non pote bloquear te",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Blokiraj korisničko ime",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

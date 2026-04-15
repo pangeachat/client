@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 12:59:09.325743",
+    "@@last_modified": "2026-04-15 11:32:17.408712",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6893,6 +6893,11 @@
     },
     "cannotIgnoreYourself": "Bạn không thể chặn chính mình",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Chặn tên người dùng",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-04-14 12:59:06.251476",
+    "@@last_modified": "2026-04-15 11:32:14.347303",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11209,6 +11209,11 @@
     },
     "cannotIgnoreYourself": "Kendinizi engelleyemezsiniz",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Kullanıcı adını engelle",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

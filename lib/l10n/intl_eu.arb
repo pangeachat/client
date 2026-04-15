@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-04-14 12:58:45.285414",
+    "@@last_modified": "2026-04-15 11:31:50.575819",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10878,6 +10878,11 @@
     },
     "cannotIgnoreYourself": "Ez duzu zure burua blokeatu dezakezu",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Blokeatu erabiltzaile izena",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

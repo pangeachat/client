@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-04-14 12:59:24.719294",
+    "@@last_modified": "2026-04-15 11:32:25.095010",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11746,6 +11746,11 @@
     },
     "cannotIgnoreYourself": "自分自身をブロックすることはできません",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "ユーザー名をブロック",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

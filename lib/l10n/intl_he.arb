@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 12:58:41.758382",
+    "@@last_modified": "2026-04-15 11:31:47.671245",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -11957,6 +11957,11 @@
     },
     "cannotIgnoreYourself": "אינך יכול לחסום את עצמך",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "חסום שם משתמש",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

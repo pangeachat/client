@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-04-14 12:58:29.659751",
+    "@@last_modified": "2026-04-15 11:31:38.064076",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7904,6 +7904,11 @@
     },
     "cannotIgnoreYourself": "No puedes bloquearte a ti mismo",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Bloquear nombre de usuario",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

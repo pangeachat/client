@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 12:58:35.544662",
+    "@@last_modified": "2026-04-15 11:31:43.712164",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10975,6 +10975,11 @@
     },
     "cannotIgnoreYourself": "Anda tidak dapat memblokir diri sendiri",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Blokir nama pengguna",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

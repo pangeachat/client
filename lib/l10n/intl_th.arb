@@ -3646,7 +3646,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-04-14 12:58:56.623643",
+    "@@last_modified": "2026-04-15 11:32:08.197394",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11597,6 +11597,11 @@
     },
     "cannotIgnoreYourself": "คุณไม่สามารถบล็อกตัวเองได้",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "บล็อกชื่อผู้ใช้",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

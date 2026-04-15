@@ -65,7 +65,10 @@ class SettingsIgnoreListView extends StatelessWidget {
                                 hintText: '@bad_guy:domain.abc',
                                 floatingLabelBehavior:
                                     FloatingLabelBehavior.always,
-                                labelText: L10n.of(context).blockUsername,
+                                // #Pangea
+                                // labelText: L10n.of(context).blockUsername,
+                                labelText: L10n.of(context).blockUsernameHint,
+                                // Pangea#
                                 suffixIcon: IconButton(
                                   tooltip: L10n.of(context).block,
                                   icon: const Icon(Icons.add),

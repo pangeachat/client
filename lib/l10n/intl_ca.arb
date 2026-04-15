@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 12:58:55.570538",
+    "@@last_modified": "2026-04-15 11:32:07.556523",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -11029,6 +11029,11 @@
     },
     "cannotIgnoreYourself": "No et pots bloquejar a tu mateix",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Bloqueja el nom d'usuari",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }
