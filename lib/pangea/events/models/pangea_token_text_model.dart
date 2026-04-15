@@ -48,4 +48,6 @@ class PangeaTokenText {
   int get hashCode => offset.hashCode ^ content.hashCode ^ length.hashCode;
 
   String get uniqueKey => "$content-$offset-$length";
+
+  String get wordCardTargetKey => "word-zoom-card-$uniqueKey";
 }

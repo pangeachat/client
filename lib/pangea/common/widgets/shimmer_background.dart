@@ -55,6 +55,7 @@ class _ShimmerBackgroundState extends State<ShimmerBackground>
 
   void _pulseOnce() async {
     await _controller.forward();
+    if (!mounted) return;
     await _controller.reverse();
     if (mounted && widget.enabled) {
       await Future.delayed(widget.delayBetweenPulses);

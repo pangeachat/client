@@ -70,6 +70,7 @@ class _GameChoiceCardState extends State<GameChoiceCard>
       if (_controller.isAnimating || _revealed) return;
 
       await _controller.forward();
+      if (!mounted) return;
       setState(() => _revealed = true);
       await _controller.reverse();
     } else {

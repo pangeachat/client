@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance/token_rendering_util.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance/underline_text_widget.dart';
+import 'package:fluffychat/pangea/tokens/token_rendering_util.dart';
+import 'package:fluffychat/pangea/tokens/tokens_util.dart';
+import 'package:fluffychat/pangea/tokens/underline_text_widget.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 
 class SttTranscriptTokens extends StatelessWidget {
@@ -38,13 +38,17 @@ class SttTranscriptTokens extends StatelessWidget {
     }
 
     final messageCharacters = model.transcript.text.characters;
-    final newTokens = TokensUtil.getNewTokens(eventId, tokens, model.langCode);
+    final newTokens = TokensUtil.instance.getNewTokens(
+      eventId,
+      tokens,
+      model.langCode,
+    );
 
     return RichText(
       textScaler: TextScaler.noScaling,
       text: TextSpan(
         style: style ?? DefaultTextStyle.of(context).style,
-        children: TokensUtil.getGlobalTokenPositions(tokens).map((
+        children: TokensUtil.instance.getGlobalTokenPositions(tokens).map((
           tokenPosition,
         ) {
           final text = messageCharacters

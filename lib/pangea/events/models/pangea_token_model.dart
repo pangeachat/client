@@ -157,6 +157,21 @@ class PangeaToken {
     return uses;
   }
 
+  OneConstructUse clickUse({String? roomId, String? eventId}) =>
+      OneConstructUse(
+        useType: ConstructUseTypeEnum.click,
+        lemma: lemma.text,
+        constructType: ConstructTypeEnum.vocab,
+        metadata: ConstructUseMetaData(
+          roomId: roomId,
+          timeStamp: DateTime.now(),
+          eventId: eventId,
+        ),
+        category: pos,
+        form: text.content,
+        xp: ConstructUseTypeEnum.click.pointValue,
+      );
+
   /// Safely get morph tag for a given feature without regard for case
   String? getMorphTag(MorphFeaturesEnum feature) {
     // if the morph contains the feature, return it
