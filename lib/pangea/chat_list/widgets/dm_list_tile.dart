@@ -5,8 +5,10 @@ import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/support/support_client_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -26,10 +28,13 @@ class DMListTileState extends State<DMListTile> {
 
   @override
   Widget build(BuildContext context) {
+    final blockedUsers = Matrix.of(context).client.ignoredUsers;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (!Matrix.of(context).client.hasBotDM && widget.visible)
+        if (!Matrix.of(context).client.hasBotDM &&
+            widget.visible &&
+            !blockedUsers.contains(BotName.byEnvironment))
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
             child: Material(
@@ -64,7 +69,8 @@ class DMListTileState extends State<DMListTile> {
           ),
         if (!Matrix.of(context).client.hasSupportDM &&
             !InstructionsEnum.dismissSupportChat.isToggledOff &&
-            widget.visible)
+            widget.visible &&
+            !blockedUsers.contains(Environment.supportUserId))
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
             child: Material(
