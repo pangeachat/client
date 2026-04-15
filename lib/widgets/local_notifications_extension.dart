@@ -222,6 +222,7 @@ extension LocalNotificationsExtension on MatrixState {
 
     final result = await showDialog<OkCancelResult>(
       context: context,
+      barrierDismissible: false,
       builder: (context) => const EnableNotificationsDialog(),
     );
 
