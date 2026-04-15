@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-04-14 12:58:34.570308",
+    "@@last_modified": "2026-04-15 11:31:42.753614",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -11005,6 +11005,11 @@
     },
     "cannotIgnoreYourself": "Nem blokkolhatod önmagadat",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Felhasználónév blokkolása",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

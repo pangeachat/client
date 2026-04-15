@@ -3462,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-04-14 12:59:12.590803",
+    "@@last_modified": "2026-04-15 11:32:19.668696",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10550,6 +10550,11 @@
     },
     "cannotIgnoreYourself": "I na bɛtɛ nɛ bɛtɛ nɛ",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Blokiraj korisničko ime",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

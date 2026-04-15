@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-04-14 12:58:38.271052",
+    "@@last_modified": "2026-04-15 11:31:45.230461",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -11994,6 +11994,11 @@
     },
     "cannotIgnoreYourself": "Nemôžete zablokovať seba",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Zablokovať používateľské meno",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

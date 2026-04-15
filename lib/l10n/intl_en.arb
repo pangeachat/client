@@ -5061,5 +5061,6 @@
     "enableNotificationsDesc": "Allow notifications for Pangea Chat and stay connected with your language buddies!",
     "enableNotifications": "Allow notifications",
     "noActivitiesFound": "No activities available for this topic.",
-    "cannotIgnoreYourself": "You cannot block yourself"
+    "cannotIgnoreYourself": "You cannot block yourself",
+    "blockUsernameHint": "Block username"
 }

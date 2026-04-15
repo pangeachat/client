@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-04-14 12:58:52.121380",
+    "@@last_modified": "2026-04-15 11:32:00.204636",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10878,6 +10878,11 @@
     },
     "cannotIgnoreYourself": "Ви не можете заблокувати себе",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Заблокувати ім'я користувача",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

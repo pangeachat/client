@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 12:59:11.573452",
+    "@@last_modified": "2026-04-15 11:32:18.907496",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10878,6 +10878,11 @@
     },
     "cannotIgnoreYourself": "Je kunt jezelf niet blokkeren",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Blokkeer gebruikersnaam",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

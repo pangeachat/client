@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 12:59:22.630669",
+    "@@last_modified": "2026-04-15 11:32:23.553399",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11465,6 +11465,11 @@
     },
     "cannotIgnoreYourself": "Du kan inte blockera dig själv",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Blockera användarnamn",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

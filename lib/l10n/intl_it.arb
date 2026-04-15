@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 12:58:51.190004",
+    "@@last_modified": "2026-04-15 11:31:59.477599",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10969,6 +10969,11 @@
     },
     "cannotIgnoreYourself": "Non puoi bloccare te stesso",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Blocca nome utente",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

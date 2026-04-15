@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-04-14 12:58:59.717726",
+    "@@last_modified": "2026-04-15 11:32:11.063387",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10882,6 +10882,11 @@
     },
     "cannotIgnoreYourself": "O'zingizni bloklay olmaysiz",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Foydalanuvchi nomini bloklash",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

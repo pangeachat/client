@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-04-14 12:58:40.316636",
+    "@@last_modified": "2026-04-15 11:31:46.675438",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11362,6 +11362,11 @@
     },
     "cannotIgnoreYourself": "Ne možete blokirati sebe",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Blokiraj korisničko ime",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

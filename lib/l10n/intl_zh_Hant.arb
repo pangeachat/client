@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 12:58:58.708359",
+    "@@last_modified": "2026-04-15 11:32:09.880342",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -11008,6 +11008,11 @@
     },
     "cannotIgnoreYourself": "您無法封鎖自己",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "封鎖用戶名",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

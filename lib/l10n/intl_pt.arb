@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-14 12:58:46.168350",
+    "@@last_modified": "2026-04-15 11:31:51.161930",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -11996,6 +11996,11 @@
     },
     "cannotIgnoreYourself": "Você não pode se bloquear",
     "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Bloquear nome de usuário",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }
