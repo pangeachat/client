@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -13,7 +15,7 @@ class _TokenPositionCacheItem {
 }
 
 class _NewTokenCacheItem {
-  final List<PangeaTokenText> tokens;
+  final Set<PangeaTokenText> tokens;
   final DateTime timestamp;
 
   _NewTokenCacheItem(this.tokens, this.timestamp);
@@ -38,14 +40,17 @@ class TokenPosition {
 }
 
 class TokensUtil {
+  TokensUtil._();
+  static final TokensUtil instance = TokensUtil._();
+
   /// A cache of calculated adjacent token positions
-  static final Map<String, _TokenPositionCacheItem> _tokenPositionCache = {};
-  static final Map<String, _NewTokenCacheItem> _newTokenCache = {};
-  static PangeaTokenText? _lastCollected;
+  final Map<String, _TokenPositionCacheItem> _tokenPositionCache = {};
+  final Map<String, _NewTokenCacheItem> _newTokenCache = {};
+  PangeaTokenText? lastCollected;
 
   static const Duration _cacheDuration = Duration(minutes: 1);
 
-  static List<PangeaTokenText>? _getCachedNewTokens(String cacheKey) {
+  Set<PangeaTokenText>? _getCachedNewTokens(String cacheKey) {
     final cacheItem = _newTokenCache[cacheKey];
     if (cacheItem == null) return null;
     if (cacheItem.timestamp.isBefore(DateTime.now().subtract(_cacheDuration))) {
@@ -56,14 +61,11 @@ class TokensUtil {
     return cacheItem.tokens;
   }
 
-  static void _setCachedNewTokens(
-    String cacheKey,
-    List<PangeaTokenText> tokens,
-  ) {
+  void _setCachedNewTokens(String cacheKey, Set<PangeaTokenText> tokens) {
     _newTokenCache[cacheKey] = _NewTokenCacheItem(tokens, DateTime.now());
   }
 
-  static List<PangeaTokenText> getNewTokens(
+  Set<PangeaTokenText> getNewTokens(
     String cacheKey,
     List<PangeaToken> tokens,
     String tokensLangCode, {
@@ -74,7 +76,7 @@ class TokensUtil {
         .matrixState
         .analyticsDataService
         .isInitializing) {
-      return [];
+      return {};
     }
 
     final messageInUserL2 =
@@ -85,14 +87,14 @@ class TokensUtil {
     if (cached != null) {
       if (!messageInUserL2) {
         _newTokenCache.remove(cacheKey);
-        return [];
+        return {};
       }
       return cached;
     }
 
-    if (!messageInUserL2) return [];
+    if (!messageInUserL2) return {};
 
-    final List<PangeaTokenText> newTokens = [];
+    final Set<PangeaTokenText> newTokens = {};
     final analyticsService =
         MatrixState.pangeaController.matrixState.analyticsDataService;
 
@@ -117,7 +119,7 @@ class TokensUtil {
     return newTokens;
   }
 
-  static List<PangeaTokenText> getNewTokensByEvent(PangeaMessageEvent event) {
+  Set<PangeaTokenText> getNewTokensByEvent(PangeaMessageEvent event) {
     if (!event.eventId.isValidMatrixId ||
         (MatrixState.pangeaController.subscriptionController.isSubscribed ==
             false) ||
@@ -126,7 +128,7 @@ class TokensUtil {
             .matrixState
             .analyticsDataService
             .isInitializing) {
-      return [];
+      return {};
     }
 
     final messageInUserL2 =
@@ -137,14 +139,14 @@ class TokensUtil {
     if (cached != null) {
       if (!messageInUserL2) {
         _newTokenCache.remove(event.eventId);
-        return [];
+        return {};
       }
       return cached;
     }
 
     final tokens = event.messageDisplayRepresentation?.tokens;
     if (!messageInUserL2 || tokens == null || tokens.isEmpty) {
-      return [];
+      return {};
     }
 
     return getNewTokens(
@@ -155,26 +157,27 @@ class TokensUtil {
     );
   }
 
-  static bool isNewTokenByEvent(PangeaToken token, PangeaMessageEvent event) {
+  bool isNewTokenByEvent(PangeaToken token, PangeaMessageEvent event) {
     final newTokens = getNewTokensByEvent(event);
     return newTokens.any((t) => t == token.text);
   }
 
-  static void clearNewTokenCache() {
+  void clearNewTokenCache() {
     _newTokenCache.clear();
   }
 
-  static void collectToken(String cachedKey, PangeaTokenText token) {
+  void collectToken(String cachedKey, PangeaTokenText token) {
     _newTokenCache[cachedKey]?.tokens.remove(token);
-    _lastCollected = token;
+    debugPrint("Last collected was: ${lastCollected?.content}");
+    lastCollected = token;
+    debugPrint("Last collected is now: ${lastCollected?.content}");
   }
 
-  static bool isRecentlyCollected(PangeaTokenText token) =>
-      _lastCollected == token;
+  bool isRecentlyCollected(PangeaTokenText token) => lastCollected == token;
 
-  static void clearRecentlyCollected() => _lastCollected = null;
+  void clearRecentlyCollected() => lastCollected = null;
 
-  static List<TokenPosition>? _getCachedTokenPositions(String cacheKey) {
+  List<TokenPosition>? _getCachedTokenPositions(String cacheKey) {
     final cacheItem = _tokenPositionCache[cacheKey];
     if (cacheItem == null) return null;
     if (cacheItem.timestamp.isBefore(DateTime.now().subtract(_cacheDuration))) {
@@ -185,7 +188,7 @@ class TokensUtil {
     return cacheItem.positions;
   }
 
-  static void _setCachedTokenPositions(
+  void _setCachedTokenPositions(
     String cacheKey,
     List<TokenPosition> positions,
   ) {
@@ -198,7 +201,7 @@ class TokensUtil {
   /// Given a list of tokens, returns a list of positions for tokens and adjacent punctuation
   /// This list may include gaps in the actual message for non-token elements,
   /// so should not be used to fully reconstruct the original message.
-  static List<TokenPosition> getAdjacentTokenPositions(
+  List<TokenPosition> getAdjacentTokenPositions(
     String eventID,
     List<PangeaToken> tokens,
   ) {
@@ -248,7 +251,7 @@ class TokensUtil {
   }
 
   /// Given a list of tokens, reconstructs an original message, including gaps for non-token elements.
-  static List<TokenPosition> getGlobalTokenPositions(List<PangeaToken> tokens) {
+  List<TokenPosition> getGlobalTokenPositions(List<PangeaToken> tokens) {
     final List<TokenPosition> tokenPositions = [];
     int tokenPointer = 0;
     int globalPointer = 0;

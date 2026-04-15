@@ -13,14 +13,15 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/tokens/token_rendering_util.dart';
+import 'package:fluffychat/pangea/tokens/tokens_util.dart';
+import 'package:fluffychat/pangea/tokens/underline_text_widget.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/token_practice_button.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/token_emoji_button.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance/token_rendering_util.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance/underline_text_widget.dart';
 import 'package:fluffychat/utils/code_highlight_theme.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -208,7 +209,7 @@ class HtmlMessage extends StatelessWidget {
 
     int position = 0;
     final tokenPositions = tokens != null
-        ? TokensUtil.getAdjacentTokenPositions(event.eventId, tokens!)
+        ? TokensUtil.instance.getAdjacentTokenPositions(event.eventId, tokens!)
         : [];
 
     for (final TokenPosition tokenPosition in tokenPositions) {
@@ -435,8 +436,8 @@ class HtmlMessage extends StatelessWidget {
 
     final newTokens =
         pangeaMessageEvent != null && !pangeaMessageEvent!.ownMessage
-        ? TokensUtil.getNewTokensByEvent(pangeaMessageEvent!)
-        : [];
+        ? TokensUtil.instance.getNewTokensByEvent(pangeaMessageEvent!)
+        : <PangeaTokenText>{};
 
     final practiceMode = overlayController?.practiceController.practiceMode;
     // Pangea#

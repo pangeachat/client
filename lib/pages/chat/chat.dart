@@ -78,9 +78,9 @@ import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.d
 import 'package:fluffychat/pangea/subscription/widgets/paywall_card.dart';
 import 'package:fluffychat/pangea/token_info_feedback/show_token_feedback_dialog.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
+import 'package:fluffychat/pangea/tokens/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
 import 'package:fluffychat/utils/file_selector.dart';
@@ -578,7 +578,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _onTokenUpdate(Set<ConstructIdentifier> constructs) {
     if (constructs.isEmpty) return;
-    TokensUtil.clearNewTokenCache();
+    TokensUtil.instance.clearNewTokenCache();
   }
 
   Future<void> _botAudioListener(SyncUpdate update) async {
@@ -915,7 +915,7 @@ class ChatController extends State<ChatPageWithRoom>
     inputFocus.dispose();
     depressMessageButton.dispose();
     scrollableNotifier.dispose();
-    TokensUtil.clearNewTokenCache();
+    TokensUtil.instance.clearNewTokenCache();
     //Pangea#
     super.dispose();
   }

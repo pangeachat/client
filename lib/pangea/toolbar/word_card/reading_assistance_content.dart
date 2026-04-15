@@ -52,7 +52,6 @@ class ReadingAssistanceContent extends StatelessWidget {
       event: overlayController.event,
       onClose: () => overlayController.updateSelectedSpan(null),
       langCode: overlayController.pangeaMessageEvent.messageDisplayLangCode,
-      onDismissNewWordOverlay: () => overlayController.setState(() {}),
       onFlagTokenInfo:
           (
             LemmaInfoResponse lemmaInfo,

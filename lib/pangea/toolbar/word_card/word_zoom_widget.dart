@@ -11,15 +11,15 @@ import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
+import 'package:fluffychat/pangea/tokens/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/new_word_overlay.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/lemma_meaning_display.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/lemma_reaction_picker.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/message_unsubscribed_card.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/token_feedback_button.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class WordZoomWidget extends StatelessWidget {
+class WordZoomWidget extends StatefulWidget {
   final PangeaTokenText token;
   final ConstructIdentifier construct;
 
@@ -35,7 +35,6 @@ class WordZoomWidget extends StatelessWidget {
   final Map<String, String>? morph;
 
   final bool enableEmojiSelection;
-  final VoidCallback? onDismissNewWordOverlay;
   final Function(LemmaInfoResponse, PTRequest, PTResponse)? onFlagTokenInfo;
   final ValueNotifier<int>? reloadNotifier;
   final double? maxWidth;
@@ -50,16 +49,34 @@ class WordZoomWidget extends StatelessWidget {
     this.event,
     this.morph,
     this.enableEmojiSelection = true,
-    this.onDismissNewWordOverlay,
     this.onFlagTokenInfo,
     this.reloadNotifier,
     this.maxWidth,
   });
 
-  String get transformTargetId => "word-zoom-card-${token.uniqueKey}";
+  @override
+  State<WordZoomWidget> createState() => _WordZoomWidgetState();
+}
 
-  LayerLink get layerLink =>
-      MatrixState.pAnyState.layerLinkAndKey(transformTargetId).link;
+class _WordZoomWidgetState extends State<WordZoomWidget> {
+  String get _transformTargetId => "word-zoom-card-${widget.token.uniqueKey}";
+
+  LayerLink get _layerLink =>
+      MatrixState.pAnyState.layerLinkAndKey(_transformTargetId).link;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (TokensUtil.instance.isRecentlyCollected(widget.token)) {
+        NewWordOverlay.show(
+          context: context,
+          target: _transformTargetId,
+          overlayKey: "new-word-${widget.token.uniqueKey}",
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,17 +86,17 @@ class WordZoomWidget extends StatelessWidget {
         MatrixState.pangeaController.userController.showTranscription;
 
     final Widget content = subscribed != null && !subscribed
-        ? MessageUnsubscribedCard(token: token, onClose: onClose)
+        ? MessageUnsubscribedCard(token: widget.token, onClose: widget.onClose)
         : Stack(
             children: [
               Container(
                 height: AppConfig.toolbarMaxHeight - 8,
                 padding: const EdgeInsets.all(12.0),
                 constraints: BoxConstraints(
-                  maxWidth: maxWidth ?? AppConfig.toolbarMinWidth,
+                  maxWidth: widget.maxWidth ?? AppConfig.toolbarMinWidth,
                 ),
                 child: CompositedTransformTarget(
-                  link: layerLink,
+                  link: _layerLink,
                   child: Column(
                     spacing: 12.0,
                     children: [
@@ -88,11 +105,11 @@ class WordZoomWidget extends StatelessWidget {
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            onClose != null
+                            widget.onClose != null
                                 ? IconButton(
                                     color: Theme.of(context).iconTheme.color,
                                     icon: const Icon(Icons.close),
-                                    onPressed: onClose,
+                                    onPressed: widget.onClose,
                                   )
                                 : const SizedBox(width: 40.0, height: 40.0),
                             Flexible(
@@ -103,7 +120,7 @@ class WordZoomWidget extends StatelessWidget {
                                   ),
                                   alignment: Alignment.center,
                                   child: Text(
-                                    token.content,
+                                    widget.token.content,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontSize: 28.0,
@@ -121,15 +138,17 @@ class WordZoomWidget extends StatelessWidget {
                               ),
                             ),
 
-                            onFlagTokenInfo != null
+                            widget.onFlagTokenInfo != null
                                 ? TokenFeedbackButton(
                                     textLanguage:
-                                        PLanguageStore.byLangCode(langCode) ??
+                                        PLanguageStore.byLangCode(
+                                          widget.langCode,
+                                        ) ??
                                         LanguageModel.unknown,
-                                    constructId: construct,
-                                    text: token.content,
-                                    onFlagTokenInfo: onFlagTokenInfo!,
-                                    messageInfo: event?.content ?? {},
+                                    constructId: widget.construct,
+                                    text: widget.token.content,
+                                    onFlagTokenInfo: widget.onFlagTokenInfo!,
+                                    messageInfo: widget.event?.content ?? {},
                                   )
                                 : const SizedBox(width: 40.0, height: 40.0),
                           ],
@@ -142,38 +161,41 @@ class WordZoomWidget extends StatelessWidget {
                           children: [
                             showTranscript
                                 ? PhoneticTranscriptionWidget(
-                                    text: token.content,
+                                    text: widget.token.content,
                                     textLanguage:
-                                        PLanguageStore.byLangCode(langCode) ??
+                                        PLanguageStore.byLangCode(
+                                          widget.langCode,
+                                        ) ??
                                         LanguageModel.unknown,
-                                    pos: pos,
-                                    morph: morph,
+                                    pos: widget.pos,
+                                    morph: widget.morph,
                                     style: const TextStyle(fontSize: 14.0),
                                     iconSize: 24.0,
                                     maxLines: 2,
-                                    reloadNotifier: reloadNotifier,
+                                    reloadNotifier: widget.reloadNotifier,
                                   )
                                 : WordAudioButton(
-                                    text: token.content,
-                                    pos: pos,
-                                    morph: morph,
-                                    uniqueID: "lemma-content-${token.content}",
-                                    langCode: langCode,
+                                    text: widget.token.content,
+                                    pos: widget.pos,
+                                    morph: widget.morph,
+                                    uniqueID:
+                                        "lemma-content-${widget.token.content}",
+                                    langCode: widget.langCode,
                                     iconSize: 24.0,
                                   ),
                             LemmaReactionPicker(
-                              constructId: construct,
-                              langCode: langCode,
-                              event: event,
-                              enabled: enableEmojiSelection,
-                              form: token.content,
+                              constructId: widget.construct,
+                              langCode: widget.langCode,
+                              event: widget.event,
+                              enabled: widget.enableEmojiSelection,
+                              form: widget.token.content,
                             ),
                             LemmaMeaningDisplay(
-                              langCode: langCode,
-                              constructId: construct,
-                              text: token.content,
-                              messageInfo: event?.content ?? {},
-                              reloadNotifier: reloadNotifier,
+                              langCode: widget.langCode,
+                              constructId: widget.construct,
+                              text: widget.token.content,
+                              messageInfo: widget.event?.content ?? {},
+                              reloadNotifier: widget.reloadNotifier,
                             ),
                           ],
                         ),
@@ -182,13 +204,6 @@ class WordZoomWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              TokensUtil.isRecentlyCollected(token)
-                  ? NewWordOverlay(
-                      key: ValueKey(transformTargetId),
-                      transformTargetId: transformTargetId,
-                      onDismiss: onDismissNewWordOverlay,
-                    )
-                  : const SizedBox.shrink(),
             ],
           );
 

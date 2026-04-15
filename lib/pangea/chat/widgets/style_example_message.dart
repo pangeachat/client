@@ -7,8 +7,8 @@ import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/pangea/tokens/underline_text_widget.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance/underline_text_widget.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
 
 class StyleExampleMessage extends StatelessWidget {
