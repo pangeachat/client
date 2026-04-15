@@ -1102,9 +1102,9 @@ class ChatListController extends State<ChatList>
 
   Future<void> _startDMWithCachedUserId(Client client) async {
     final userId = UserInviteLinkRepo.inviteUser;
-    if (userId == null) return;
-
     await UserInviteLinkRepo.clearInviteUser();
+    if (userId == null || userId == Matrix.of(context).client.userID) return;
+
     final resp = await showFutureLoadingDialog(
       context: context,
       future: () => client.createPangeaDirectChat(userId),
