@@ -142,6 +142,7 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
       langCode: widget.langCode,
     );
     _computeNewTokens();
+    if (mounted) setState(() {});
   }
 
   void _showWordCard(Vocab vocab) {

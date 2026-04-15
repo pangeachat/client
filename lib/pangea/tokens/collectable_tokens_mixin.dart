@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/tokens/tokens_util.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -13,6 +14,7 @@ mixin CollectableTokensMixin<T extends StatefulWidget> on State<T> {
     String? eventId,
     String? roomId,
   }) async {
+    InstructionsEnum.shimmerNewToken.setToggledOff(true);
     TokensUtil.instance.collectToken(tokenCacheKey, token.text);
 
     // Wait for analytics update to go through before refreshing the tokens

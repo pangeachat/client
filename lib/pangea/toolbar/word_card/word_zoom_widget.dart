@@ -67,6 +67,7 @@ class WordZoomWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!context.mounted) return;
       _showNewWordOverlay(context);
     });
 

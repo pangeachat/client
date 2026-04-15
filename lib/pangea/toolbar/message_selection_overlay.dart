@@ -17,7 +17,6 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
-import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/tokens/collectable_tokens_mixin.dart';
@@ -229,7 +228,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   }
 
   Future<void> _onSelectNewToken(PangeaToken token) async {
-    InstructionsEnum.shimmerNewToken.setToggledOff(true);
     await collectToken(
       token: token,
       tokenCacheKey: event.eventId,
