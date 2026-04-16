@@ -21,8 +21,7 @@ jobs:
             exit 0
           fi
 
-          DUPLICATE_EVENT_COUNT=$(gh api "repos/$GH_REPO/issues/$NUMBER/events" --paginate --jq '[ .[] | select(.event == "marked_as_duplicate") ] | length')
-          if [ "${DUPLICATE_EVENT_COUNT:-0}" -gt 0 ]; then
+          if [ "$STATE_REASON" = "duplicate" ]; then
             echo "Issue was closed as duplicate - skipping labels."
             exit 0
           fi
