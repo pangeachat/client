@@ -131,7 +131,7 @@ class Choreographer extends ChangeNotifier {
     textController.dispose();
     _isFetching.dispose();
 
-    TtsController.stop();
+    TtsController.forceStop();
     super.dispose();
   }
 

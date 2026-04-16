@@ -40,7 +40,6 @@ class WordAudioButton extends StatefulWidget {
 }
 
 class WordAudioButtonState extends State<WordAudioButton> {
-  late TtsController tts;
   bool _isPlaying = false;
   bool _isLoading = false;
   StreamSubscription? _loadingChoreoSubscription;
@@ -65,7 +64,12 @@ class WordAudioButtonState extends State<WordAudioButton> {
 
   @override
   void dispose() {
-    TtsController.stop();
+    TtsController.stop(
+      text: widget.text,
+      langCode: widget.langCode,
+      pos: widget.pos,
+      morph: widget.morph,
+    );
     _loadingChoreoSubscription?.cancel();
     super.dispose();
   }
@@ -92,7 +96,12 @@ class WordAudioButtonState extends State<WordAudioButton> {
                   widget.callbackOverride ??
                   () async {
                     if (_isPlaying) {
-                      await TtsController.stop();
+                      await TtsController.stop(
+                        text: widget.text,
+                        langCode: widget.langCode,
+                        pos: widget.pos,
+                        morph: widget.morph,
+                      );
                     } else {
                       await TtsController.tryToSpeak(
                         widget.text,

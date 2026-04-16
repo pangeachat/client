@@ -58,9 +58,25 @@ class _PhoneticTranscriptionWidgetState
     extends State<PhoneticTranscriptionWidget> {
   bool _isPlaying = false;
 
+  @override
+  void dispose() {
+    TtsController.stop(
+      text: widget.text,
+      langCode: widget.textLanguage.langCode,
+      pos: widget.pos,
+      morph: widget.morph,
+    );
+    super.dispose();
+  }
+
   Future<void> _handleAudioTap(String targetId) async {
     if (_isPlaying) {
-      await TtsController.stop();
+      await TtsController.stop(
+        text: widget.text,
+        langCode: widget.textLanguage.langCode,
+        pos: widget.pos,
+        morph: widget.morph,
+      );
       setState(() => _isPlaying = false);
     } else {
       await TtsController.tryToSpeak(
