@@ -52,7 +52,13 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
     }
 
     if (_isPlaying) {
-      await TtsController.stop();
+      await TtsController.stop(
+        text: widget.audioContent!,
+        langCode:
+            MatrixState.pangeaController.userController.userL2Code ?? 'en',
+        pos: widget.token?.pos,
+        morph: widget.token?.morph.map((k, v) => MapEntry(k.name, v)),
+      );
       if (mounted) {
         setState(() => _isPlaying = false);
       }

@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_tts/flutter_tts.dart' as flutter_tts;
 import 'package:just_audio/just_audio.dart';
-import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pages/chat/chat.dart';
@@ -27,6 +26,37 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart'
     as error_handler;
 
+class _AudioRequest {
+  final String text;
+  final String langCode;
+  final String? pos;
+  final Map<String, String>? morph;
+
+  _AudioRequest({
+    required this.text,
+    required this.langCode,
+    this.pos,
+    this.morph,
+  });
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is _AudioRequest &&
+        other.text == text &&
+        other.langCode == langCode &&
+        other.pos == pos &&
+        const DeepCollectionEquality().equals(other.morph, morph);
+  }
+
+  @override
+  int get hashCode =>
+      text.hashCode ^
+      langCode.hashCode ^
+      (pos?.hashCode ?? 0) ^
+      const DeepCollectionEquality().hash(morph);
+}
+
 class TtsController {
   static List<String> _availableLangCodes = [];
 
@@ -35,6 +65,17 @@ class TtsController {
       StreamController<bool>.broadcast();
 
   static AudioPlayer? audioPlayer;
+  static VoidCallback? _onStop;
+  static _AudioRequest? _currentRequest;
+  static int _requestCounter = 0;
+  static int? _activeRequestId;
+
+  static bool _isCurrentRequestId(int requestId) =>
+      _activeRequestId == requestId;
+
+  static void _log(String message, String tid) {
+    debugPrint('[TTS-DEBUG] [$tid] $message');
+  }
 
   static TextToSpeechRequestModel _request(
     String text,
@@ -88,7 +129,7 @@ class TtsController {
         .toList();
   }
 
-  static Future<void> _setSpeakingLanguage(String langCode) async {
+  static Future<void> _setSpeakingLanguage(String langCode, String tid) async {
     String? selectedLangCode;
     final langCodeShort = langCode.split("-").first;
     if (_availableLangCodes.contains(langCode)) {
@@ -106,12 +147,36 @@ class TtsController {
         'langCode': langCode,
         'availableLangCodes': _availableLangCodes,
       };
-      debugPrint("TTS: Language not supported: $jsonData");
+      _log('Language not supported: $jsonData', tid);
       Sentry.addBreadcrumb(Breadcrumb.fromJson(jsonData));
     }
   }
 
-  static Future<void> stop() async {
+  static Future<void> forceStop() async => _stop();
+
+  static Future<void> stop({
+    required String text,
+    required String langCode,
+    String? pos,
+    Map<String, String>? morph,
+  }) async {
+    final request = _AudioRequest(
+      text: text,
+      langCode: langCode,
+      pos: pos,
+      morph: morph,
+    );
+    if (_currentRequest != null && _currentRequest != request) {
+      _log(
+        'Stop called with different request than current: stopRequest=$request currentRequest=$_currentRequest',
+        'stop-${DateTime.now().millisecondsSinceEpoch}',
+      );
+      return;
+    }
+    await _stop();
+  }
+
+  static Future<void> _stop() async {
     try {
       // return type is dynamic but apparent its supposed to be 1
       // https://pub.dev/packages/flutter_tts
@@ -130,23 +195,24 @@ class TtsController {
     }
   }
 
-  static VoidCallback? _onStop;
-
   /// Look up the PT v2 cache for [text] and return tts_phoneme if the word is a
   /// heteronym that can be disambiguated. Returns null for single-pronunciation
   /// words or when no PT data is cached.
   static String? _resolveTtsPhonemeFromCache(
-    String text,
-    String langCode, {
-    String? pos,
-    Map<String, String>? morph,
+    _AudioRequest request, {
+    required String tid,
   }) {
     final userL1 = MatrixState.pangeaController.userController.userL1Code;
     if (userL1 == null) return null;
 
-    final ptResponse = PTV2Repo.getCachedResponse(text, langCode, userL1);
-    debugPrint(
-      '[TTS-DEBUG] _resolveTtsPhonemeFromCache: text="$text" lang=$langCode cached=${ptResponse != null} count=${ptResponse?.pronunciations.length ?? 0} pos=$pos morph=$morph',
+    final ptResponse = PTV2Repo.getCachedResponse(
+      request.text,
+      request.langCode,
+      userL1,
+    );
+    _log(
+      '_resolveTtsPhonemeFromCache: text="${request.text}" lang=${request.langCode} cached=${ptResponse != null} count=${ptResponse?.pronunciations.length ?? 0} pos=${request.pos} morph=${request.morph}',
+      tid,
     );
     if (ptResponse == null || ptResponse.pronunciations.length <= 1) {
       return null;
@@ -154,8 +220,8 @@ class TtsController {
 
     final result = disambiguate(
       ptResponse.pronunciations,
-      pos: pos,
-      morph: morph,
+      pos: request.pos,
+      morph: request.morph,
     );
     return result.ttsPhoneme;
   }
@@ -180,17 +246,25 @@ class TtsController {
     /// Morph features for disambiguation when resolving tts_phoneme from cache.
     Map<String, String>? morph,
   }) async {
-    // Auto-resolve tts_phoneme from PT cache if not explicitly provided.
-    final explicitPhoneme = ttsPhoneme;
-    ttsPhoneme ??= _resolveTtsPhonemeFromCache(
-      text,
-      langCode,
+    final requestId = ++_requestCounter;
+    final request = _AudioRequest(
+      text: text,
+      langCode: langCode,
       pos: pos,
       morph: morph,
     );
-    debugPrint(
-      '[TTS-DEBUG] tryToSpeak: text="$text" explicitPhoneme=$explicitPhoneme resolvedPhoneme=$ttsPhoneme pos=$pos morph=$morph',
+    _activeRequestId = requestId;
+    _currentRequest = request;
+    final transactionId = DateTime.now().millisecondsSinceEpoch.toString();
+    // Auto-resolve tts_phoneme from PT cache if not explicitly provided.
+    final explicitPhoneme = ttsPhoneme;
+    ttsPhoneme ??= _resolveTtsPhonemeFromCache(request, tid: transactionId);
+    _log(
+      'tryToSpeak: text="${request.text}" explicitPhoneme=$explicitPhoneme resolvedPhoneme=$ttsPhoneme pos=${request.pos} morph=${request.morph}',
+      transactionId,
     );
+
+    await _stop();
 
     final prevOnStop = _onStop;
     _onStop = onStop;
@@ -208,20 +282,29 @@ class TtsController {
 
     await _tryToSpeak(
       text,
+      ttsPhoneme: ttsPhoneme,
+      requestId: requestId,
       langCode: langCode,
       targetID: targetID,
       context: context,
       chatController: chatController,
       onStart: onStart,
       onStop: onStop,
-      ttsPhoneme: ttsPhoneme,
+      tid: transactionId,
     );
+
+    // Only the active request may clear shared request state.
+    if (_isCurrentRequestId(requestId)) {
+      _currentRequest = null;
+      _activeRequestId = null;
+    }
   }
 
   /// A safer version of speak, that handles the case of
   /// the language not being supported by the TTS engine
   static Future<void> _tryToSpeak(
     String text, {
+    required int requestId,
     required String langCode,
     // Target ID for where to show warning popup
     String? targetID,
@@ -230,11 +313,12 @@ class TtsController {
     VoidCallback? onStart,
     VoidCallback? onStop,
     String? ttsPhoneme,
+    required String tid,
   }) async {
     chatController?.stopMediaStream.add(null);
     MatrixState.pangeaController.matrixState.audioPlayer?.stop();
 
-    await _setSpeakingLanguage(langCode);
+    await _setSpeakingLanguage(langCode, tid);
 
     final enableTTS = MatrixState
         .pangeaController
@@ -254,24 +338,50 @@ class TtsController {
 
       onStart?.call();
 
+      if (!_isCurrentRequestId(requestId)) {
+        _log('tryToSpeak: request superseded before playback start', tid);
+        return;
+      }
+
       // When tts_phoneme is provided, skip device TTS and use choreo with phoneme tags.
       if (ttsPhoneme != null || !langSupported) {
         final success = await _speakFromChoreo(
           text,
           langCode,
           [token],
+          requestId: requestId,
           ttsPhoneme: ttsPhoneme,
           timeout: langSupported
               ? const Duration(seconds: 1)
               : const Duration(seconds: 10),
+          tid: tid,
         );
 
         // fallback to device TTS if language is supported but choreo fails (e.g. due to timeout)
-        if (!success && langSupported) {
-          await _speakFromDevice(text, langCode, [token]);
+        if (!success && langSupported && _isCurrentRequestId(requestId)) {
+          _log('tryToSpeak: speaking from device on choreo failure', tid);
+          await _speakFromDevice(
+            text,
+            langCode,
+            [token],
+            tid,
+            requestId: requestId,
+          );
+        } else if (!success && !_isCurrentRequestId(requestId)) {
+          _log('tryToSpeak: skipped fallback for superseded request', tid);
         }
       } else {
-        await _speakFromDevice(text, langCode, [token]);
+        _log(
+          'tryToSpeak: speaking from device, language fully supported, no phoneme provided',
+          tid,
+        );
+        await _speakFromDevice(
+          text,
+          langCode,
+          [token],
+          tid,
+          requestId: requestId,
+        );
       }
     } else if (targetID != null && context != null) {
       OverlayUtil.showTTSDisabledPopup(context, targetID);
@@ -284,18 +394,25 @@ class TtsController {
     String text,
     String langCode,
     List<PangeaTokenText> tokens,
-  ) async {
+    String tid, {
+    required int requestId,
+  }) async {
+    if (!_isCurrentRequestId(requestId)) {
+      _log('Skipping device playback for superseded request', tid);
+      return false;
+    }
+
     try {
-      await stop();
+      _log('Speaking from device: $text, langCode: $langCode', tid);
       text = text.toLowerCase();
       await Future(() => (_tts.speak(text)));
+      _log('Audio playback from device completed', tid);
       return true;
     } catch (e, s) {
+      _log('Error playing audio from device: $e', tid);
       debugger(when: kDebugMode);
       error_handler.ErrorHandler.logError(e: e, s: s, data: {'text': text});
       return false;
-    } finally {
-      await stop();
     }
   }
 
@@ -303,13 +420,14 @@ class TtsController {
     String text,
     String langCode,
     List<PangeaTokenText> tokens, {
+    required int requestId,
     String? ttsPhoneme,
     Duration timeout = const Duration(seconds: 10),
+    required String tid,
   }) async {
-    debugPrint(
-      '[TTS-DEBUG] _speakFromChoreo: text="$text" ttsPhoneme=$ttsPhoneme',
-    );
+    _log('_speakFromChoreo: text="$text" ttsPhoneme=$ttsPhoneme', tid);
     TextToSpeechResponseModel? ttsRes;
+    AudioPlayer? requestPlayer;
 
     loadingChoreoStream.add(true);
     try {
@@ -317,11 +435,17 @@ class TtsController {
         MatrixState.pangeaController.userController.accessToken,
         _request(text, langCode, tokens, ttsPhoneme),
       ).timeout(timeout);
-      if (result.isError) return false;
+      if (result.isError) {
+        _log('Choreo TTS API call failed: ${result.error}', tid);
+        return false;
+      }
+      _log('Choreo TTS API call succeeded', tid);
       ttsRes = result.result!;
     } on TimeoutException catch (_) {
+      _log('Choreo TTS API call timed out', tid);
       return false;
     } catch (e, s) {
+      _log('Error during Choreo TTS API call: $e', tid);
       error_handler.ErrorHandler.logError(
         e: 'Error in TTS API call',
         s: s,
@@ -333,16 +457,39 @@ class TtsController {
     }
 
     try {
-      Logs().i('Speaking from choreo: $text, langCode: $langCode');
+      _log('Speaking from choreo: $text, langCode: $langCode', tid);
+      if (!_isCurrentRequestId(requestId)) {
+        _log('Skipping choreo playback for superseded request', tid);
+        return false;
+      }
       final audioContent = base64Decode(ttsRes.audioContent);
-      audioPlayer?.dispose();
-      audioPlayer = AudioPlayer();
-      await audioPlayer!.setAudioSource(
+      if (audioPlayer != null) {
+        await audioPlayer!.dispose();
+      }
+      requestPlayer = AudioPlayer();
+      audioPlayer = requestPlayer;
+      await requestPlayer.setAudioSource(
         BytesAudioSource(audioContent, ttsRes.mimeType),
       );
-      await audioPlayer!.play();
+      if (!_isCurrentRequestId(requestId)) {
+        _log(
+          'Choreo source loaded but request was superseded before play',
+          tid,
+        );
+        return false;
+      }
+      await requestPlayer.play();
+      _log('Audio playback from choreo completed', tid);
       return true;
     } catch (e, s) {
+      if (e.toString().contains('Loading interrupted')) {
+        _log(
+          'Choreo loading interrupted; treating as expected cancellation',
+          tid,
+        );
+        return true;
+      }
+      _log('Error playing audio from choreo: $e', tid);
       error_handler.ErrorHandler.logError(
         e: 'Error playing audio',
         s: s,
@@ -350,8 +497,12 @@ class TtsController {
       );
       return false;
     } finally {
-      audioPlayer?.dispose();
-      audioPlayer = null;
+      if (requestPlayer != null) {
+        await requestPlayer.dispose();
+      }
+      if (identical(audioPlayer, requestPlayer)) {
+        audioPlayer = null;
+      }
     }
   }
 

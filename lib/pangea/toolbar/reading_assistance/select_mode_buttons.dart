@@ -329,7 +329,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
         );
       }
 
-      TtsController.stop();
+      TtsController.forceStop();
 
       if (seek != null) {
         matrix!.audioPlayer!.seek(seek);
