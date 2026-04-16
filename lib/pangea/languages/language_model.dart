@@ -6,6 +6,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/languages/l2_support_enum.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 
 class VoiceOptionModel {
   final String shortName;
@@ -377,6 +378,9 @@ class LanguageModel {
 
   Uri get svgUrl =>
       Uri.parse("${AppConfig.assetsBaseURL}/language-flags/$langCode.svg");
+
+  LanguageModel get unlocalized =>
+      PLanguageStore.byLangCode(langCodeShort) ?? this;
 
   static bool search(
     LanguageModel? item,

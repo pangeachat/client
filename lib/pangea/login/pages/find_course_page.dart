@@ -57,8 +57,14 @@ class FindCoursePageState extends State<FindCoursePage> {
   @override
   void initState() {
     super.initState();
-    targetLanguageFilter.value =
-        MatrixState.pangeaController.userController.userL2;
+    final l2 = MatrixState.pangeaController.userController.userL2;
+    if (l2 != null) {
+      final availableLanguages =
+          MatrixState.pangeaController.pLanguageStore.unlocalizedTargetOptions;
+      targetLanguageFilter.value = availableLanguages.contains(l2)
+          ? l2
+          : l2.unlocalized;
+    }
     loadMore();
   }
 
