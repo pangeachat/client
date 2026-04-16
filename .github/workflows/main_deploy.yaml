@@ -34,7 +34,7 @@ jobs:
           flutter config --enable-web
           flutter clean
           flutter pub get
-          flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --pwa-strategy=none --profile --source-maps
+          flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --pwa-strategy=none --profile --source-maps --no-tree-shake-icons
         
       - name: Upload files
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
