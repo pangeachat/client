@@ -17,17 +17,12 @@ class VocabMeaningTargetGenerator {
     final sortedConstructs = constructs.practiceSort(exerciseType);
 
     final Set<String> seenLemmas = {};
-    final cutoffTime = DateTime.now().subtract(const Duration(hours: 24));
 
     final targets = <AnalyticsPracticeTarget>[];
     for (final construct in sortedConstructs) {
       if (seenLemmas.contains(construct.lemma)) continue;
 
-      final lastPracticeUse = construct.lastUseByTypes(
-        exerciseType.associatedUseTypes,
-      );
-
-      if (lastPracticeUse != null && lastPracticeUse.isAfter(cutoffTime)) {
+      if (construct.shouldSkipForRecentPractice(exerciseType)) {
         continue;
       }
 

@@ -322,6 +322,129 @@ void main() {
     });
   });
 
+  group('ConstructUses.shouldSkipForRecentPractice', () {
+    test('skips when recent correct has no incorrect attempts', () {
+      final now = DateTime.now();
+      final uses = _makeConstructUses([
+        _makeUse(
+          ConstructUseTypeEnum.corLM,
+          time: now.subtract(const Duration(hours: 2)),
+        ),
+      ]);
+
+      final shouldSkip = uses.shouldSkipForRecentPractice(
+        PracticeExerciseTypeEnum.lemmaMeaning,
+        now: now,
+      );
+
+      expect(shouldSkip, true);
+    });
+
+    test('does not skip when recent incorrect ratio is high', () {
+      final now = DateTime.now();
+      final uses = _makeConstructUses([
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(hours: 3)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(hours: 2)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.corLM,
+          time: now.subtract(const Duration(hours: 1)),
+        ),
+      ]);
+
+      final shouldSkip = uses.shouldSkipForRecentPractice(
+        PracticeExerciseTypeEnum.lemmaMeaning,
+        now: now,
+      );
+
+      expect(shouldSkip, false);
+    });
+
+    test('stays retry-eligible after noisy first success', () {
+      final now = DateTime.now();
+      final uses = _makeConstructUses([
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(hours: 4)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(hours: 3)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(hours: 2)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.corLM,
+          time: now.subtract(const Duration(hours: 1)),
+        ),
+      ]);
+
+      final shouldSkip = uses.shouldSkipForRecentPractice(
+        PracticeExerciseTypeEnum.lemmaMeaning,
+        now: now,
+      );
+
+      expect(shouldSkip, false);
+    });
+
+    test('skips after two consecutive recent correct answers', () {
+      final now = DateTime.now();
+      final uses = _makeConstructUses([
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(hours: 5)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(hours: 4)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(hours: 3)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.corLM,
+          time: now.subtract(const Duration(hours: 2)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.corLM,
+          time: now.subtract(const Duration(hours: 1)),
+        ),
+      ]);
+
+      final shouldSkip = uses.shouldSkipForRecentPractice(
+        PracticeExerciseTypeEnum.lemmaMeaning,
+        now: now,
+      );
+
+      expect(shouldSkip, true);
+    });
+
+    test('does not skip when no recent correct exists', () {
+      final now = DateTime.now();
+      final uses = _makeConstructUses([
+        _makeUse(
+          ConstructUseTypeEnum.corLM,
+          time: now.subtract(const Duration(days: 2)),
+        ),
+      ]);
+
+      final shouldSkip = uses.shouldSkipForRecentPractice(
+        PracticeExerciseTypeEnum.lemmaMeaning,
+        now: now,
+      );
+
+      expect(shouldSkip, false);
+    });
+  });
+
   group('scoring ordering', () {
     test('active-tier words rank above same-age maintenance words', () {
       final now = DateTime.now();
