@@ -19,7 +19,6 @@ class VocabAudioTargetGenerator {
 
     final Set<String> seenLemmas = {};
     final Set<String> seenEventIds = {};
-    final cutoffTime = DateTime.now().subtract(const Duration(hours: 24));
 
     final targets = <AnalyticsPracticeTarget>[];
 
@@ -30,11 +29,7 @@ class VocabAudioTargetGenerator {
 
       if (seenLemmas.contains(construct.lemma)) continue;
 
-      final lastPracticeUse = construct.lastUseByTypes(
-        exerciseType.associatedUseTypes,
-      );
-
-      if (lastPracticeUse != null && lastPracticeUse.isAfter(cutoffTime)) {
+      if (construct.shouldSkipForRecentPractice(exerciseType)) {
         continue;
       }
 
