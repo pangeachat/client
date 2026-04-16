@@ -108,6 +108,7 @@ class BotFaceState extends State<BotFace> {
 
     if (mounted) {
       setState(() {
+        file.dispose();
         _controller?.dispose();
         _controller = controller;
       });
