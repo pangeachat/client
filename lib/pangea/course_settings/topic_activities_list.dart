@@ -167,7 +167,7 @@ class TopicActivitiesListState extends State<TopicActivitiesList> {
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
                         onTap: () => context.go(
-                          "/rooms/spaces/${widget.room.id}/activity/${activityEntry.key}",
+                          "/rooms/spaces/${widget.room.id}/activity/${activityEntry.key}?tab=course",
                         ),
                         child: Stack(
                           children: [
