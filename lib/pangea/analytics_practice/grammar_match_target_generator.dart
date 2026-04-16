@@ -27,7 +27,6 @@ class GrammarMatchTargetGenerator {
     final sortedConstructs = constructs.practiceSort(exerciseType);
 
     final Set<String> seenForms = {};
-    final cutoffTime = DateTime.now().subtract(const Duration(hours: 24));
 
     final morphInfoResult = await MorphsRepo.get(
       MatrixState.pangeaController.userController.userL2,
@@ -54,11 +53,7 @@ class GrammarMatchTargetGenerator {
         continue;
       }
 
-      final lastPracticeUse = construct.lastUseByTypes(
-        exerciseType.associatedUseTypes,
-      );
-
-      if (lastPracticeUse != null && lastPracticeUse.isAfter(cutoffTime)) {
+      if (construct.shouldSkipForRecentPractice(exerciseType)) {
         continue;
       }
 

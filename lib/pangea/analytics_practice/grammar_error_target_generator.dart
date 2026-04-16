@@ -21,15 +21,10 @@ class GrammarErrorTargetGenerator {
   ) async {
     final client = MatrixState.pangeaController.matrixState.client;
     final Map<String, PangeaMessageEvent?> seenEventIDs = {};
-    final cutoffTime = DateTime.now().subtract(const Duration(hours: 24));
 
     final targets = <AnalyticsPracticeTarget>[];
     for (final construct in constructs) {
-      final lastPracticeUse = construct.lastUseByTypes(
-        exerciseType.associatedUseTypes,
-      );
-
-      if (lastPracticeUse != null && lastPracticeUse.isAfter(cutoffTime)) {
+      if (construct.shouldSkipForRecentPractice(exerciseType)) {
         continue;
       }
 
