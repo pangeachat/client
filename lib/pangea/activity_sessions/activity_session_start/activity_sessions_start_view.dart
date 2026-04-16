@@ -84,9 +84,9 @@ class ActivitySessionStartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: Matrix.of(
-        context,
-      ).client.onRoomState.stream.rateLimit(const Duration(seconds: 1)),
+      stream: Matrix.of(context).client.onRoomState.stream
+          .where((update) => update.roomId == controller.widget.roomId)
+          .rateLimit(const Duration(seconds: 1)),
       builder: (context, snapshot) {
         return Scaffold(
           appBar: AppBar(
