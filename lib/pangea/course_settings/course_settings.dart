@@ -54,7 +54,7 @@ class CourseSettingsState extends State<CourseSettings> {
 
   @override
   Widget build(BuildContext context) {
-    if (controller.loadingCourse) {
+    if (controller.loadingCourse || controller.loadingTopics) {
       return const Center(child: CircularProgressIndicator.adaptive());
     }
 
@@ -89,10 +89,12 @@ class CourseSettingsState extends State<CourseSettings> {
       }
     }
 
-    if (controller.loadingCourse ||
-        controller.loadingTopics ||
-        controller.course == null) {
-      return const Center(child: CircularProgressIndicator.adaptive());
+    if (controller.course == null) {
+      return _CourseLoadError(
+        error: L10n.of(context).noCourseFound,
+        buttonText: L10n.of(context).addCoursePlan,
+        room: room,
+      );
     }
 
     final theme = Theme.of(context);
