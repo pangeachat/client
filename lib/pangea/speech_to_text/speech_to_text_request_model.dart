@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
 
 class SpeechToTextRequestModel {
@@ -60,8 +61,8 @@ class SpeechToTextAudioConfigModel {
   Map<String, dynamic> toJson() => {
     "encoding": encoding.value,
     "sample_rate_hertz": sampleRateHertz,
-    "user_l1": userL1,
-    "user_l2": userL2,
+    ModelKey.userL1: userL1,
+    ModelKey.userL2: userL2,
     "enable_word_confidence": enableWordConfidence,
     "enable_automatic_punctuation": enableAutomaticPunctuation,
   };

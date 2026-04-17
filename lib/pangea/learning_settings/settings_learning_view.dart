@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/pangea/learning_settings/learning_settings_tiles.dart';
 import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
+import 'package:fluffychat/pangea/user/user_constants.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -18,7 +18,7 @@ class SettingsLearningView extends StatelessWidget {
       stream: Matrix.of(context).client.onSync.stream.where((update) {
         return update.accountData != null &&
             update.accountData!.any(
-              (event) => event.type == ModelKey.userProfile,
+              (event) => event.type == UserConstants.userProfile,
             );
       }),
       builder: (context, _) {

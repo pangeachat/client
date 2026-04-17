@@ -3,6 +3,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_exercises/match_practice_exercise_model.dart';
@@ -53,7 +54,7 @@ sealed class PracticeExerciseModel {
   }
 
   factory PracticeExerciseModel.fromJson(Map<String, dynamic> json) {
-    if (json['lang_code'] is! String) {
+    if (json[ModelKey.langCode] is! String) {
       Sentry.addBreadcrumb(Breadcrumb(data: {"json": json}));
       throw ("lang_code is not a string in PracticeExerciseModel.fromJson");
     }
@@ -75,7 +76,7 @@ sealed class PracticeExerciseModel {
         .map((e) => PangeaToken.fromJson(e as Map<String, dynamic>))
         .toList();
 
-    final langCode = json['lang_code'] as String;
+    final langCode = json[ModelKey.langCode] as String;
 
     final multipleChoiceContent = json['content'] != null
         ? MultipleChoicePracticeExercise.fromJson(
@@ -210,7 +211,7 @@ sealed class PracticeExerciseModel {
 
   Map<String, dynamic> toJson() {
     return {
-      'lang_code': langCode,
+      ModelKey.langCode: langCode,
       'activity_type': exerciseType.name,
       'target_tokens': tokens.map((e) => e.toJson()).toList(),
     };

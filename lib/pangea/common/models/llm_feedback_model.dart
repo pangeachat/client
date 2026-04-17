@@ -1,4 +1,4 @@
-import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 
 /// Generic feedback schema matching the backend's LLMFeedbackSchema.
 /// Used for providing user corrections to LLM-generated content.
@@ -25,8 +25,8 @@ class LLMFeedbackModel<T> {
   });
 
   Map<String, dynamic> toJson() => {
-    ModelKey.feedback: feedback,
-    ModelKey.content: contentToJson(content),
-    if (score != null) ModelKey.score: score,
+    ChoreoConstants.feedback: feedback,
+    ChoreoConstants.content: contentToJson(content),
+    if (score != null) ChoreoConstants.score: score,
   };
 }

@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_settings/analytics_settings_model.dart';
-import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -120,15 +120,15 @@ class AnalyticsSyncController {
 
   void _onActivityEvents(List<MatrixEvent> events) {
     for (final event in events) {
-      if (event.content[ModelKey.roomIds] is! List) continue;
+      if (event.content[AnalyticsConstants.roomIds] is! List) continue;
       final roomIds = List<String>.from(
-        event.content[ModelKey.roomIds]! as List,
+        event.content[AnalyticsConstants.roomIds]! as List,
       );
       final prevContent =
           event.unsigned?['prev_content'] as Map<String, Object?>?;
       final prevRoomIds =
-          prevContent != null && prevContent[ModelKey.roomIds] is List
-          ? List<String>.from(prevContent[ModelKey.roomIds] as List)
+          prevContent != null && prevContent[AnalyticsConstants.roomIds] is List
+          ? List<String>.from(prevContent[AnalyticsConstants.roomIds] as List)
           : [];
       final newRoomIds = roomIds
           .where((id) => !prevRoomIds.contains(id))

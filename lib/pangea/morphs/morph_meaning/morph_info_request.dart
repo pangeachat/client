@@ -1,3 +1,5 @@
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+
 class MorphInfoRequest {
   final String userL1;
   final String userL2;
@@ -5,7 +7,7 @@ class MorphInfoRequest {
   MorphInfoRequest({required this.userL1, required this.userL2});
 
   Map<String, dynamic> toJson() {
-    return {'user_l1': userL1, 'user_l2': userL2};
+    return {ModelKey.userL1: userL1, ModelKey.userL2: userL2};
   }
 
   @override

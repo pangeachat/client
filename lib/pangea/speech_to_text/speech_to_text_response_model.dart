@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 
 class SpeechToTextResponseModel {
@@ -89,13 +91,13 @@ class Transcript {
 
   factory Transcript.fromJson(Map<String, dynamic> json) => Transcript(
     text: json['transcript'],
-    confidence: json['confidence'] <= 100
-        ? json['confidence']
-        : json['confidence'] / 100,
+    confidence: json[ChoreoConstants.confidence] <= 100
+        ? json[ChoreoConstants.confidence]
+        : json[ChoreoConstants.confidence] / 100,
     sttTokens: (json['stt_tokens'] as List)
         .map((e) => STTToken.fromJson(e))
         .toList(),
-    langCode: json['lang_code'],
+    langCode: json[ModelKey.langCode],
     wordsPerHr: json['words_per_hr'],
   );
 
@@ -141,7 +143,7 @@ class STTToken {
       endTime: json['end_time'] != null
           ? Duration(milliseconds: (json['end_time'] * 1000).round())
           : null,
-      confidence: json['confidence'],
+      confidence: json[ChoreoConstants.confidence],
     );
   }
 

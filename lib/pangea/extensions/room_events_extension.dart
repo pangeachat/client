@@ -221,19 +221,19 @@ extension EventsRoomExtension on Room {
 
     final event = <String, dynamic>{'msgtype': msgtype, 'body': message};
     if (choreo != null) {
-      event[ModelKey.choreoRecord] = choreo.toJson();
+      event[MessageConstants.choreoRecord] = choreo.toJson();
     }
     if (originalWritten != null) {
-      event[ModelKey.originalWritten] = originalWritten.toJson();
+      event[MessageConstants.originalWritten] = originalWritten.toJson();
     }
     if (tokensSent != null) {
-      event[ModelKey.tokensSent] = tokensSent.toJson();
+      event[MessageConstants.tokensSent] = tokensSent.toJson();
     }
     if (tokensWritten != null) {
-      event[ModelKey.tokensWritten] = tokensWritten.toJson();
+      event[MessageConstants.tokensWritten] = tokensWritten.toJson();
     }
     if (messageTag != null) {
-      event[ModelKey.messageTags] = messageTag;
+      event[MessageConstants.messageTags] = messageTag;
     }
 
     if (parseMarkdown) {

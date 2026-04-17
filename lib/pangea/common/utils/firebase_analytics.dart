@@ -6,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'package:fluffychat/pangea/bot/bot_target_event_name_enum.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
 import '../../../config/firebase_options.dart';
@@ -67,8 +68,14 @@ class GoogleAnalytics {
     required String sourceLanguage,
     String? userType,
   }) {
-    analytics?.setUserProperty(name: 'target_language', value: targetLanguage);
-    analytics?.setUserProperty(name: 'source_language', value: sourceLanguage);
+    analytics?.setUserProperty(
+      name: ModelKey.targetLanguage,
+      value: targetLanguage,
+    );
+    analytics?.setUserProperty(
+      name: ModelKey.sourceLanguage,
+      value: sourceLanguage,
+    );
     if (userType != null) {
       analytics?.setUserProperty(name: 'user_type', value: userType);
     }

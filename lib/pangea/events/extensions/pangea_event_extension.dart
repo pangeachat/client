@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/events/constants/message_constants.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/extensions/room_member_change_extension.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
@@ -52,7 +53,7 @@ extension PangeaEvent on Event {
     }
 
     final transcription = content.tryGetMap<String, dynamic>(
-      ModelKey.transcription,
+      MessageConstants.transcription,
     );
     final audioContent = content.tryGetMap<String, dynamic>(
       'org.matrix.msc1767.audio',
@@ -61,10 +62,10 @@ extension PangeaEvent on Event {
     final matrixFile = await downloadAndDecryptAttachment();
 
     final duration =
-        audioContent?.tryGet<int>(ModelKey.duration) ??
+        audioContent?.tryGet<int>(MessageConstants.duration) ??
         content
             .tryGetMap<String, dynamic>('info')
-            ?.tryGet<int>(ModelKey.duration);
+            ?.tryGet<int>(MessageConstants.duration);
 
     final waveform =
         audioContent?.tryGetList<int>('waveform') ??
@@ -90,10 +91,11 @@ extension PangeaEvent on Event {
   }
 
   bool get isActivityMessage =>
-      content[ModelKey.messageTags] == ModelKey.messageTagActivityPlan;
+      content[MessageConstants.messageTags] ==
+      MessageConstants.messageTagActivityPlan;
 
   bool get isVisibleLastEvent {
-    if (content.tryGet(ModelKey.transcription) != null) {
+    if (content.tryGet(MessageConstants.transcription) != null) {
       return false;
     }
 

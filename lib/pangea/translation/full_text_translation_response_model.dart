@@ -1,4 +1,4 @@
-import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 
 class FullTextTranslationResponseModel {
   final List<String> translations;
@@ -18,14 +18,14 @@ class FullTextTranslationResponseModel {
           .map<String>((e) => e)
           .toList()
           .cast<String>(),
-      source: json[ModelKey.srcLang],
+      source: json[ChoreoConstants.srcLang],
     );
   }
 
   Map<String, dynamic> toJson() => {
     'translation': translation,
     'translations': translations,
-    ModelKey.srcLang: source,
+    ChoreoConstants.srcLang: source,
   };
 
   String get bestTranslation => translation;

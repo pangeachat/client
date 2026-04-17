@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 
@@ -28,7 +29,7 @@ class LemmaInfoRequest {
       'lemma': lemma,
       'part_of_speech': partOfSpeech,
       'lemma_lang': lemmaLang,
-      'user_l1': userL1,
+      ModelKey.userL1: userL1,
       'feedback': feedback.map((e) => e.toJson()).toList(),
       'message_info': messageInfo,
     };

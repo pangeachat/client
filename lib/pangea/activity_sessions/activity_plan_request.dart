@@ -1,4 +1,6 @@
 import 'package:fluffychat/pangea/activity_sessions/activity_media_enum.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_constants.dart';
+import 'package:fluffychat/pangea/chat_settings/constants/bot_constants.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 
@@ -29,38 +31,43 @@ class ActivityPlanRequest {
 
   Map<String, dynamic> toJson() {
     return {
-      ModelKey.activityRequestTopic: topic,
-      ModelKey.mode: mode,
-      ModelKey.activityRequestObjective: objective,
-      ModelKey.activityRequestMedia: media.string,
-      ModelKey.activityRequestCefrLevel: cefrLevel.string,
-      ModelKey.activityRequestLanguageOfInstructions: languageOfInstructions,
+      ActivitySessionConstants.activityRequestTopic: topic,
+      BotConstants.mode: mode,
+      ActivitySessionConstants.activityRequestObjective: objective,
+      ActivitySessionConstants.activityRequestMedia: media.string,
+      ActivitySessionConstants.activityRequestCefrLevel: cefrLevel.string,
+      ActivitySessionConstants.activityRequestLanguageOfInstructions:
+          languageOfInstructions,
       ModelKey.targetLanguage: targetLanguage,
-      ModelKey.activityRequestCount: count,
-      ModelKey.activityRequestNumberOfParticipants: numberOfParticipants,
-      ModelKey.activityPlanLocation: location,
+      ActivitySessionConstants.activityRequestCount: count,
+      ActivitySessionConstants.activityRequestNumberOfParticipants:
+          numberOfParticipants,
+      ActivitySessionConstants.activityPlanLocation: location,
     };
   }
 
-  factory ActivityPlanRequest.fromJson(Map<String, dynamic> json) =>
-      ActivityPlanRequest(
-        topic: json[ModelKey.activityRequestTopic],
-        mode: json[ModelKey.mode],
-        objective: json[ModelKey.activityRequestObjective],
-        media: MediaEnum.nan.fromString(json[ModelKey.activityRequestMedia]),
-        cefrLevel: json[ModelKey.activityRequestCefrLevel] != null
-            ? LanguageLevelTypeEnum.fromString(
-                json[ModelKey.activityRequestCefrLevel],
-              )
-            : LanguageLevelTypeEnum.a1,
-        languageOfInstructions:
-            json[ModelKey.activityRequestLanguageOfInstructions],
-        targetLanguage: json[ModelKey.targetLanguage],
-        count: json[ModelKey.activityRequestCount],
-        numberOfParticipants:
-            json[ModelKey.activityRequestNumberOfParticipants],
-        location: json[ModelKey.activityPlanLocation] ?? "any",
-      );
+  factory ActivityPlanRequest.fromJson(
+    Map<String, dynamic> json,
+  ) => ActivityPlanRequest(
+    topic: json[ActivitySessionConstants.activityRequestTopic],
+    mode: json[BotConstants.mode],
+    objective: json[ActivitySessionConstants.activityRequestObjective],
+    media: MediaEnum.nan.fromString(
+      json[ActivitySessionConstants.activityRequestMedia],
+    ),
+    cefrLevel: json[ActivitySessionConstants.activityRequestCefrLevel] != null
+        ? LanguageLevelTypeEnum.fromString(
+            json[ActivitySessionConstants.activityRequestCefrLevel],
+          )
+        : LanguageLevelTypeEnum.a1,
+    languageOfInstructions:
+        json[ActivitySessionConstants.activityRequestLanguageOfInstructions],
+    targetLanguage: json[ModelKey.targetLanguage],
+    count: json[ActivitySessionConstants.activityRequestCount],
+    numberOfParticipants:
+        json[ActivitySessionConstants.activityRequestNumberOfParticipants],
+    location: json[ActivitySessionConstants.activityPlanLocation] ?? "any",
+  );
 
   String get storageKey =>
       '$topic-$mode-$objective-${media.string}-$cefrLevel-$languageOfInstructions-$targetLanguage-$numberOfParticipants';

@@ -4,6 +4,7 @@ import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
 
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 
 extension PublicCourseExtension on Api {
@@ -19,7 +20,7 @@ extension PublicCourseExtension on Api {
       queryParameters: {
         'limit': limit.toString(),
         'since': ?since,
-        'target_language': ?targetLanguage,
+        ModelKey.targetLanguage: ?targetLanguage,
         'language_of_instructions': ?languageOfInstructions,
         if (cefrLevel != null) 'cefr_level': cefrLevel.string,
       },
@@ -125,7 +126,7 @@ class PublicCoursesChunk {
     return PublicCoursesChunk(
       room: PublishedRoomsChunk.fromJson(json),
       courseId: json['course_id'] as String,
-      targetLanguage: json['target_language'] as String?,
+      targetLanguage: json[ModelKey.targetLanguage] as String?,
       languageOfInstructions: json['language_of_instructions'] as String?,
       cefrLevel: json['cefr_level'] != null
           ? LanguageLevelTypeEnum.fromString(json['cefr_level'] as String)
@@ -137,7 +138,7 @@ class PublicCoursesChunk {
     return {
       'room': room.toJson(),
       'course_id': courseId,
-      if (targetLanguage != null) 'target_language': targetLanguage,
+      if (targetLanguage != null) ModelKey.targetLanguage: targetLanguage,
       if (languageOfInstructions != null)
         'language_of_instructions': languageOfInstructions,
       if (cefrLevel != null) 'cefr_level': cefrLevel!.toString(),

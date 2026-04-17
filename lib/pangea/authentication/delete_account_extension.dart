@@ -6,6 +6,7 @@ import 'package:matrix/matrix_api_lite/generated/api.dart';
 import 'package:fluffychat/pangea/authentication/delete_account_action_enum.dart';
 import 'package:fluffychat/pangea/authentication/delete_account_exception.dart';
 import 'package:fluffychat/pangea/authentication/delete_account_response_model.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 extension DeleteAccountExtension on Api {
   Future<DeleteAccountResponseModel> deleteAccount({
@@ -19,7 +20,7 @@ extension DeleteAccountExtension on Api {
     request.bodyBytes = utf8.encode(
       jsonEncode({
         if (action != null) 'action': action.name,
-        'user_id': ?userId,
+        ModelKey.userId: ?userId,
       }),
     );
     final response = await httpClient.send(request);

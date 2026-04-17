@@ -26,4 +26,10 @@ class AnalyticsConstants {
 
   /// Bonus multiplier applied to active-tier constructs.
   static const int activeTierMultiplier = 2;
+
+  static const String analytics = 'analytics';
+  static const String level = 'level';
+  static const String xpOffset = 'xp_offset';
+  static const String analyticsRoomId = 'analytics_room_id';
+  static const String roomIds = 'room_ids';
 }

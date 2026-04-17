@@ -1,6 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/igc/igc_response_model.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 void main() {
   group('IGCResponseModel.fromJson', () {
@@ -16,18 +18,18 @@ void main() {
               'choices': [
                 {'value': 'learn about', 'type': 'bestCorrection'},
               ],
-              'offset': 10,
-              'length': 4,
+              ModelKey.offset: 10,
+              ModelKey.length: 4,
               // Note: no full_text in match - should use original_input
               'type': 'grammar',
             },
             'status': 'open',
           },
         ],
-        'user_l1': 'en',
-        'user_l2': 'es',
-        'enable_it': true,
-        'enable_igc': true,
+        ModelKey.userL1: 'en',
+        ModelKey.userL2: 'es',
+        ChoreoConstants.enableIT: true,
+        ChoreoConstants.enableIGC: true,
       };
 
       final IGCResponseModel response = IGCResponseModel.fromJson(jsonData);
@@ -51,18 +53,19 @@ void main() {
               'choices': [
                 {'value': 'correction', 'type': 'bestCorrection'},
               ],
-              'offset': 0,
-              'length': 5,
-              'full_text': 'Full text from span', // This should take precedence
+              ModelKey.offset: 0,
+              ModelKey.length: 5,
+              ModelKey.fullText:
+                  'Full text from span', // This should take precedence
               'type': 'grammar',
             },
             'status': 'open',
           },
         ],
-        'user_l1': 'en',
-        'user_l2': 'es',
-        'enable_it': true,
-        'enable_igc': true,
+        ModelKey.userL1: 'en',
+        ModelKey.userL2: 'es',
+        ChoreoConstants.enableIT: true,
+        ChoreoConstants.enableIGC: true,
       };
 
       final IGCResponseModel response = IGCResponseModel.fromJson(jsonData);
@@ -76,10 +79,10 @@ void main() {
         'original_input': 'Clean text with no errors',
         'full_text_correction': null,
         'matches': <dynamic>[],
-        'user_l1': 'en',
-        'user_l2': 'es',
-        'enable_it': true,
-        'enable_igc': true,
+        ModelKey.userL1: 'en',
+        ModelKey.userL2: 'es',
+        ChoreoConstants.enableIT: true,
+        ChoreoConstants.enableIGC: true,
       };
 
       final IGCResponseModel response = IGCResponseModel.fromJson(jsonData);
@@ -93,10 +96,10 @@ void main() {
         'original_input': 'Text',
         'full_text_correction': null,
         'matches': null,
-        'user_l1': 'en',
-        'user_l2': 'es',
-        'enable_it': true,
-        'enable_igc': true,
+        ModelKey.userL1: 'en',
+        ModelKey.userL2: 'es',
+        ChoreoConstants.enableIT: true,
+        ChoreoConstants.enableIGC: true,
       };
 
       final IGCResponseModel response = IGCResponseModel.fromJson(jsonData);
@@ -120,13 +123,13 @@ void main() {
                 'feedback': 'Use "encantar" for expressing love',
               },
             ],
-            'offset': 0,
-            'length': 8,
+            ModelKey.offset: 0,
+            ModelKey.length: 8,
             'type': 'vocabulary',
           },
         ],
-        'user_l1': 'en',
-        'user_l2': 'es',
+        ModelKey.userL1: 'en',
+        ModelKey.userL2: 'es',
         // Note: no enable_it, enable_igc in V2 response
       };
 
@@ -147,8 +150,8 @@ void main() {
       final Map<String, dynamic> jsonData = {
         'original_input': 'Perfect sentence with no errors',
         'matches': <dynamic>[],
-        'user_l1': 'en',
-        'user_l2': 'fr',
+        ModelKey.userL1: 'en',
+        ModelKey.userL2: 'fr',
       };
 
       final IGCResponseModel response = IGCResponseModel.fromJson(jsonData);
@@ -171,21 +174,21 @@ void main() {
                 'feedback': 'Use conjugated form',
               },
             ],
-            'offset': 7,
-            'length': 2,
+            ModelKey.offset: 7,
+            ModelKey.length: 2,
             'type': 'grammar',
           },
           {
             'choices': [
               {'value': 'Voy', 'type': 'bestCorrection'},
             ],
-            'offset': 0,
-            'length': 6,
+            ModelKey.offset: 0,
+            ModelKey.length: 6,
             'type': 'grammar',
           },
         ],
-        'user_l1': 'en',
-        'user_l2': 'es',
+        ModelKey.userL1: 'en',
+        ModelKey.userL2: 'es',
       };
 
       final IGCResponseModel response = IGCResponseModel.fromJson(jsonData);
@@ -200,10 +203,10 @@ void main() {
         'original_input': 'Test text',
         'full_text_correction': 'Corrected text',
         'matches': <dynamic>[],
-        'user_l1': 'en',
-        'user_l2': 'es',
-        'enable_it': false,
-        'enable_igc': false,
+        ModelKey.userL1: 'en',
+        ModelKey.userL2: 'es',
+        ChoreoConstants.enableIT: false,
+        ChoreoConstants.enableIGC: false,
       };
 
       final IGCResponseModel response = IGCResponseModel.fromJson(jsonData);
@@ -225,13 +228,13 @@ void main() {
                 'feedback': 'Add accent to past participle',
               },
             ],
-            'offset': 8,
-            'length': 4,
+            ModelKey.offset: 8,
+            ModelKey.length: 4,
             'type': 'diacritics',
           },
         ],
-        'user_l1': 'en',
-        'user_l2': 'fr',
+        ModelKey.userL1: 'en',
+        ModelKey.userL2: 'fr',
       };
 
       final IGCResponseModel response = IGCResponseModel.fromJson(jsonData);

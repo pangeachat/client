@@ -12,9 +12,9 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/chat_list/application_constants.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
-import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -226,28 +226,28 @@ class AppVersionResponse {
   });
 
   factory AppVersionResponse.fromJson(Map<String, dynamic> json) {
-    if (json[ModelKey.mandatoryUpdate] is! bool) {
+    if (json[ApplicationConstants.mandatoryUpdate] is! bool) {
       throw Exception("mandatory_update is not a boolean");
     }
-    if (json[ModelKey.latestVersion] is! String) {
+    if (json[ApplicationConstants.latestVersion] is! String) {
       throw Exception("latest_version is not a string");
     }
-    if (json[ModelKey.latestBuildNumber] is! String) {
+    if (json[ApplicationConstants.latestBuildNumber] is! String) {
       throw Exception("latest_build_number is not a string");
     }
 
     return AppVersionResponse(
-      latestVersion: json[ModelKey.latestVersion],
-      latestBuildNumber: json[ModelKey.latestBuildNumber],
-      mandatoryUpdate: json[ModelKey.mandatoryUpdate],
+      latestVersion: json[ApplicationConstants.latestVersion],
+      latestBuildNumber: json[ApplicationConstants.latestBuildNumber],
+      mandatoryUpdate: json[ApplicationConstants.mandatoryUpdate],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      ModelKey.latestVersion: latestVersion,
-      ModelKey.latestBuildNumber: latestBuildNumber,
-      ModelKey.mandatoryUpdate: mandatoryUpdate,
+      ApplicationConstants.latestVersion: latestVersion,
+      ApplicationConstants.latestBuildNumber: latestBuildNumber,
+      ApplicationConstants.mandatoryUpdate: mandatoryUpdate,
     };
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
@@ -76,7 +77,7 @@ class PracticeTarget {
     }
 
     return PracticeTarget(
-      tokens: (json['tokens'] as List)
+      tokens: (json[ModelKey.tokens] as List)
           .map((e) => PangeaToken.fromJson(e))
           .toList(),
       exerciseType: type,
@@ -88,7 +89,7 @@ class PracticeTarget {
 
   Map<String, dynamic> toJson() {
     return {
-      'tokens': tokens.map((e) => e.toJson()).toList(),
+      ModelKey.tokens: tokens.map((e) => e.toJson()).toList(),
       'activityType': exerciseType.name,
       'morphFeature': morphFeature?.name,
     };

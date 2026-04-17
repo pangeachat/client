@@ -8,6 +8,7 @@ import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -58,7 +59,9 @@ class LemmaUseExampleMessages extends StatelessWidget {
           s: s,
           data: {
             "message": example.message,
-            "tokens": example.tokens.map((t) => t.text.toJson()).toList(),
+            ModelKey.tokens: example.tokens
+                .map((t) => t.text.toJson())
+                .toList(),
           },
         );
       }

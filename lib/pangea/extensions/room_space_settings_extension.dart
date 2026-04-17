@@ -4,7 +4,9 @@ extension SpaceRoomExtension on Room {
   String? get classCode {
     final roomJoinRules = getState(EventTypes.RoomJoinRules, "");
     if (roomJoinRules != null) {
-      final accessCode = roomJoinRules.content.tryGet(ModelKey.accessCode);
+      final accessCode = roomJoinRules.content.tryGet(
+        RoomSettingsConstants.accessCode,
+      );
       if (accessCode is String) {
         return accessCode;
       }

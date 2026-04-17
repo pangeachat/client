@@ -1,5 +1,6 @@
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';
+import 'package:fluffychat/pangea/user/user_constants.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Base request schema matching the backend's BaseRequestSchema.
@@ -18,8 +19,8 @@ mixin BaseRequestModel {
   Map<String, dynamic> toBaseJson() => {
     ModelKey.userL1: userL1,
     ModelKey.userL2: userL2,
-    ModelKey.cefrLevel: userCefr,
-    ModelKey.userGender: MatrixState
+    UserConstants.cefrLevel: userCefr,
+    UserConstants.userGender: MatrixState
         .pangeaController
         .userController
         .profile
@@ -36,8 +37,8 @@ mixin BaseRequestModel {
     try {
       final settings =
           MatrixState.pangeaController.userController.profile.userSettings;
-      result[ModelKey.cefrLevel] ??= settings.cefrLevel.string;
-      result[ModelKey.userGender] ??= settings.gender.string;
+      result[UserConstants.cefrLevel] ??= settings.cefrLevel.string;
+      result[UserConstants.userGender] ??= settings.gender.string;
     } catch (_) {
       // MatrixState not initialized - leave existing values or omit
     }
