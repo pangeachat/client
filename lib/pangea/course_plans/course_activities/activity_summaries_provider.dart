@@ -7,6 +7,7 @@ import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/room_summary_extension.dart';
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 enum ActivitySummaryStatus {
@@ -22,6 +23,16 @@ enum ActivitySummaryStatus {
         return l10n.inProgressActivitiesTitle(count);
       case ActivitySummaryStatus.completed:
         return l10n.completedActivitiesTitle(count);
+    }
+  }
+
+  bool canJoin(Room room) {
+    switch (this) {
+      case ActivitySummaryStatus.notStarted:
+        return true;
+      case ActivitySummaryStatus.inProgress:
+      case ActivitySummaryStatus.completed:
+        return room.isRoomAdmin;
     }
   }
 }
