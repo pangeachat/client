@@ -45,8 +45,46 @@
   <link rel="stylesheet" type="text/css" href="splash/style.css">
   <script src="Imaging.js"></script>
 
+  <script>
+    window.__BUILD_VERSION__ = "__BUILD_VERSION__";
+
+    (function () {
+      const BUILD = window.__BUILD_VERSION__ || "dev";
+
+      const shouldVersion = (url) => {
+        return (
+          url.includes("FontManifest.json") ||
+          url.includes("AssetManifest.json") ||
+          url.includes("assets.json") ||
+          url.includes("version.json")
+        );
+      };
+
+      const addVersion = (url) => {
+        if (!shouldVersion(url)) return url;
+
+        const separator = url.includes("?") ? "&" : "?";
+        return url + separator + "v=" + BUILD;
+      };
+
+      const originalFetch = window.fetch.bind(window);
+
+      window.fetch = function (input, init) {
+        try {
+          if (typeof input === "string") {
+            input = addVersion(input);
+          } else if (input instanceof Request) {
+            input = new Request(addVersion(input.url), input);
+          }
+        } catch (e) { }
+
+        return originalFetch(input, init);
+      };
+    })();
+  </script>
+
   <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js?version=1" defer></script>
+  <script src="flutter.js" defer></script>
 </head>
 
 <body>
