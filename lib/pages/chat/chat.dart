@@ -17,13 +17,13 @@ import 'package:matrix/matrix.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat_view.dart';
 import 'package:fluffychat/pages/chat/event_info_dialog.dart';
-import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pages/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
@@ -612,9 +612,9 @@ class ChatController extends State<ChatPageWithRoom>
       await file.writeAsBytes(audioFile.bytes);
       matrix.audioPlayer!.setFilePath(file.path);
     } else {
-      matrix.audioPlayer!.setAudioSource(
-        BytesAudioSource(audioFile.bytes, audioFile.mimeType),
-      );
+      final blob = html.Blob([audioFile.bytes], 'audio/mpeg');
+      final url = html.Url.createObjectUrlFromBlob(blob);
+      await matrix.audioPlayer!.setAudioSource(AudioSource.uri(Uri.parse(url)));
     }
 
     matrix.audioPlayer!.play();

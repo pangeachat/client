@@ -9,9 +9,9 @@ import 'package:collection/collection.dart';
 import 'package:flutter_tts/flutter_tts.dart' as flutter_tts;
 import 'package:just_audio/just_audio.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
@@ -468,9 +468,9 @@ class TtsController {
       }
       requestPlayer = AudioPlayer();
       audioPlayer = requestPlayer;
-      await requestPlayer.setAudioSource(
-        BytesAudioSource(audioContent, ttsRes.mimeType),
-      );
+      final blob = html.Blob([audioContent], 'audio/mpeg');
+      final url = html.Url.createObjectUrlFromBlob(blob);
+      await requestPlayer.setAudioSource(AudioSource.uri(Uri.parse(url)));
       if (!_isCurrentRequestId(requestId)) {
         _log(
           'Choreo source loaded but request was superseded before play',

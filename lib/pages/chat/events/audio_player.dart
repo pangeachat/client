@@ -11,6 +11,7 @@ import 'package:just_audio/just_audio.dart';
 import 'package:matrix/matrix.dart';
 import 'package:opus_caf_converter_dart/opus_caf_converter_dart.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -308,14 +309,13 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     } else {
       try {
         if (widget.matrixFile != null) {
-          await audioPlayer.setAudioSource(
-            BytesAudioSource(
-              widget.matrixFile!.bytes,
-              widget.matrixFile!.mimeType,
-            ),
-          );
+          final blob = html.Blob([widget.matrixFile!.bytes], 'audio/mpeg');
+          final url = html.Url.createObjectUrlFromBlob(blob);
+          await audioPlayer.setAudioSource(AudioSource.uri(Uri.parse(url)));
         } else {
-          await audioPlayer.setAudioSource(MatrixFileAudioSource(matrixFile!));
+          final blob = html.Blob([matrixFile!.bytes], 'audio/mpeg');
+          final url = html.Url.createObjectUrlFromBlob(blob);
+          await audioPlayer.setAudioSource(AudioSource.uri(Uri.parse(url)));
         }
       } catch (e, _) {
         debugger(when: kDebugMode);
@@ -815,26 +815,6 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
   }
 }
 
-/// To use a MatrixFile as an AudioSource for the just_audio package
-class MatrixFileAudioSource extends StreamAudioSource {
-  final MatrixFile file;
-
-  MatrixFileAudioSource(this.file);
-
-  @override
-  Future<StreamAudioResponse> request([int? start, int? end]) async {
-    start ??= 0;
-    end ??= file.bytes.length;
-    return StreamAudioResponse(
-      sourceLength: file.bytes.length,
-      contentLength: end - start,
-      offset: start,
-      stream: Stream.value(file.bytes.sublist(start, end)),
-      contentType: file.mimeType,
-    );
-  }
-}
-
 extension on AudioPlayer {
   bool get isAtEndPosition {
     final duration = this.duration;
@@ -847,25 +827,3 @@ extension on Duration {
   String get minuteSecondString =>
       '${inMinutes.toString().padLeft(2, '0')}:${(inSeconds % 60).toString().padLeft(2, '0')}';
 }
-
-// #Pangea
-class BytesAudioSource extends StreamAudioSource {
-  final Uint8List bytes;
-  final String mimeType;
-  BytesAudioSource(this.bytes, this.mimeType);
-
-  @override
-  Future<StreamAudioResponse> request([int? start, int? end]) async {
-    start ??= 0;
-    end ??= bytes.length;
-    return StreamAudioResponse(
-      sourceLength: bytes.length,
-      contentLength: end - start,
-      offset: start,
-      stream: Stream.value(bytes.sublist(start, end)),
-      contentType: mimeType,
-    );
-  }
-}
-
-// Pangea#
