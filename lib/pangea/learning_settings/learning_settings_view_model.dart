@@ -12,14 +12,13 @@ import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/user/user_model.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class LearningSettingsViewModel extends ChangeNotifier {
-  late Profile _originalProfile;
   late Profile _updatedProfile;
   final VoidCallback? onUpdateProfile;
 
   LearningSettingsViewModel(Profile profile, {this.onUpdateProfile}) {
-    _originalProfile = profile;
     _updatedProfile = profile;
   }
 
@@ -31,7 +30,10 @@ class LearningSettingsViewModel extends ChangeNotifier {
     super.dispose();
   }
 
-  bool get haveSettingsChanged => _originalProfile != _updatedProfile;
+  bool get haveSettingsChanged {
+    final originalProfile = MatrixState.pangeaController.userController.profile;
+    return originalProfile != _updatedProfile;
+  }
 
   bool get hasIdenticalLanguages =>
       selectedSourceLanguage?.langCodeShort ==
