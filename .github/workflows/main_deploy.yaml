@@ -103,7 +103,7 @@ jobs:
           aws s3 sync ./build/web/assets/fonts s3://$WEBAPP_S3_BUCKET/assets/fonts \
             --cache-control "no-cache, must-revalidate"
           # Mutable entry points — always revalidate
-          for f in index.html flutter_service_worker.js version.json manifest.json; do
+          for f in index.html flutter_service_worker.js version.json manifest.json assets/FontManifest.json; do
             if [ -f "./build/web/$f" ]; then
               aws s3 cp "./build/web/$f" "s3://$WEBAPP_S3_BUCKET/$f" \
                 --cache-control "no-cache, must-revalidate"
