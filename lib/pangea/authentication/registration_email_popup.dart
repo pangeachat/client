@@ -67,7 +67,12 @@ class RegistrationEmailPopup extends StatelessWidget {
                     spacing: 4.0,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(l10n.didntReceiveEmail),
+                      Flexible(
+                        child: Text(
+                          l10n.didntReceiveEmail,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
                       TextButton(
                         onPressed: onResendEmail,
                         child: Text(l10n.resend),
