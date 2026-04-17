@@ -91,21 +91,43 @@ jobs:
           aws-region: us-east-1
       - name: Deploy to S3
         run: |
-          # Immutable hashed assets — cache for 1 year
+          set -e
+
+          # =========================
+          # 1. IMMUTABLE ASSETS (safe hashed outputs only)
+          # =========================
           aws s3 sync ./build/web s3://$WEBAPP_S3_BUCKET \
             --cache-control "public, max-age=31536000, immutable" \
             --exclude "index.html" \
             --exclude "flutter_service_worker.js" \
             --exclude "version.json" \
             --exclude "manifest.json" \
+            --exclude "assets/FontManifest.json" \
+            --exclude "assets/assets.json" \
             --exclude "assets/fonts/*"
-          # Font files — stable filenames, must revalidate each session
+
+          # =========================
+          # 2. FONT FILES (stable filenames but frequently updated)
+          # =========================
           aws s3 sync ./build/web/assets/fonts s3://$WEBAPP_S3_BUCKET/assets/fonts \
             --cache-control "no-cache, must-revalidate"
-          # Mutable entry points — always revalidate
-          for f in index.html flutter_service_worker.js version.json manifest.json assets/FontManifest.json; do
+
+          # =========================
+          # 3. FLUTTER RUNTIME ENTRY FILES (MUST NEVER BE CACHED LONG-TERM)
+          # =========================
+          RUNTIME_FILES=(
+            "index.html"
+            "flutter_service_worker.js"
+            "version.json"
+            "manifest.json"
+            "assets/FontManifest.json"
+            "assets/assets.json"
+          )
+
+          for f in "${RUNTIME_FILES[@]}"; do
             if [ -f "./build/web/$f" ]; then
-              aws s3 cp "./build/web/$f" "s3://$WEBAPP_S3_BUCKET/$f" \
+              aws s3 cp "./build/web/$f" \
+                "s3://$WEBAPP_S3_BUCKET/$f" \
                 --cache-control "no-cache, must-revalidate"
             fi
           done
