@@ -35,6 +35,20 @@ jobs:
           flutter clean
           flutter pub get
           flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --pwa-strategy=none --profile --source-maps --no-tree-shake-icons
+
+      - name: Version Material Icons font
+        run: |
+          VERSION=${GITHUB_SHA::8}
+
+          FONT_DIR="build/web/assets/fonts"
+          OLD_NAME="MaterialIcons-Regular.otf"
+          NEW_NAME="MaterialIcons-Regular-${VERSION}.otf"
+
+          mv "$FONT_DIR/$OLD_NAME" "$FONT_DIR/$NEW_NAME"
+
+          sed -i "s|$OLD_NAME|$NEW_NAME|g" build/web/assets/FontManifest.json
+
+          echo "Renamed $OLD_NAME -> $NEW_NAME"
         
       - name: Upload files
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
