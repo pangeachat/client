@@ -340,7 +340,15 @@ class PangeaInvitationSelectionController
       );
       if (bot != null) contacts.add(bot);
     }
-    return contacts;
+
+    final filtered = <User>[];
+    final seen = <String>{};
+    for (final contact in contacts) {
+      if (seen.contains(contact.id)) continue;
+      seen.add(contact.id);
+      filtered.add(contact);
+    }
+    return filtered;
   }
 
   void searchUserWithCoolDown(String text) async {
