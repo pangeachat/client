@@ -62,10 +62,10 @@ extension PangeaEvent on Event {
     final matrixFile = await downloadAndDecryptAttachment();
 
     final duration =
-        audioContent?.tryGet<int>(ModelKey.duration) ??
+        audioContent?.tryGet<int>(MessageConstants.duration) ??
         content
             .tryGetMap<String, dynamic>('info')
-            ?.tryGet<int>(ModelKey.duration);
+            ?.tryGet<int>(MessageConstants.duration);
 
     final waveform =
         audioContent?.tryGetList<int>('waveform') ??

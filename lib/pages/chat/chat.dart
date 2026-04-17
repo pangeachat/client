@@ -49,13 +49,13 @@ import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dar
 import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/choreographer/writing_assistance_room_extension.dart';
-import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/events/constants/message_constants.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -1290,7 +1290,7 @@ class ChatController extends State<ChatPageWithRoom>
             // #Pangea
             'speaker_l1': pangeaController.userController.userL1Code,
             'speaker_l2': pangeaController.userController.userL2Code,
-            if (stt != null) ModelKey.userStt: stt.toJson(),
+            if (stt != null) MessageConstants.userStt: stt.toJson(),
             // Pangea#
           },
         )

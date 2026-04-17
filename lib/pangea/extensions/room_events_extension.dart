@@ -233,7 +233,7 @@ extension EventsRoomExtension on Room {
       event[MessageConstants.tokensWritten] = tokensWritten.toJson();
     }
     if (messageTag != null) {
-      event[ModelKey.messageTags] = messageTag;
+      event[MessageConstants.messageTags] = messageTag;
     }
 
     if (parseMarkdown) {

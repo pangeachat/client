@@ -123,8 +123,9 @@ class PangeaMessageEvent {
 
   ChoreoRecordModel? get _embeddedChoreo {
     try {
-      if (_latestEdit.content[MessageConstants.choreoRecord] == null)
+      if (_latestEdit.content[MessageConstants.choreoRecord] == null) {
         return null;
+      }
       return ChoreoRecordModel.fromJson(
         _latestEdit.content[MessageConstants.choreoRecord]
             as Map<String, dynamic>,
@@ -424,10 +425,13 @@ class PangeaMessageEvent {
     room.sendFileEvent(
       file,
       extraContent: {
-        'info': {...file.info, ModelKey.duration: response.durationMillis},
+        'info': {
+          ...file.info,
+          MessageConstants.duration: response.durationMillis,
+        },
         'org.matrix.msc3245.voice': {},
         'org.matrix.msc1767.audio': {
-          ModelKey.duration: response.durationMillis,
+          MessageConstants.duration: response.durationMillis,
           'waveform': response.waveform,
         },
         MessageConstants.transcription: response

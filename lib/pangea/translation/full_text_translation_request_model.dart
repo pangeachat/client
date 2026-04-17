@@ -38,7 +38,7 @@ class FullTextTranslationRequestModel {
     ModelKey.offset: offset,
     ModelKey.length: length,
     if (feedback != null)
-      ModelKey.feedback: feedback!.map((f) => f.toJson()).toList(),
+      ChoreoConstants.feedback: feedback!.map((f) => f.toJson()).toList(),
   };
 
   // override equals and hashcode
