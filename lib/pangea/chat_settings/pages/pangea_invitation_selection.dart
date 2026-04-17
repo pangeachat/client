@@ -9,6 +9,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection_view.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -409,7 +410,7 @@ class PangeaInvitationSelectionController
           foundProfiles.indexWhere((profile) => text == profile.userId) == -1) {
         setState(
           () => foundProfiles = [
-            Profile.fromJson({'user_id': text}),
+            Profile.fromJson({ModelKey.userId: text}),
           ],
         );
       }

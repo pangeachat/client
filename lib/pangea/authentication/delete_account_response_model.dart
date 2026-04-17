@@ -1,4 +1,5 @@
 import 'package:fluffychat/pangea/authentication/delete_account_action_enum.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 class DeleteAccountResponseModel {
   final String message;
@@ -23,7 +24,7 @@ class DeleteAccountResponseModel {
     return {
       'message': message,
       'action': action.name,
-      'user_id': userId,
+      ModelKey.userId: userId,
       if (executeAtMs != null) 'execute_at_ms': executeAtMs,
       if (canceled != null) 'canceled': canceled,
       if (deletedExternalIds != null)
@@ -39,7 +40,7 @@ class DeleteAccountResponseModel {
         (e) => e.name == json['action'],
         orElse: () => throw Exception('Unknown action type: ${json['action']}'),
       ),
-      userId: json['user_id'] as String,
+      userId: json[ModelKey.userId] as String,
       executeAtMs: json['execute_at_ms'] as int?,
       canceled: json['canceled'] as bool?,
       deletedExternalIds: json['deleted_external_ids'] as int?,

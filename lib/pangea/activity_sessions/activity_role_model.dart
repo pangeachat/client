@@ -1,4 +1,5 @@
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 class ActivityRoleModel {
   final String id;
@@ -38,7 +39,7 @@ class ActivityRoleModel {
     final finishedEntry = json['finished_at'] ?? json['finishedAt'];
     return ActivityRoleModel(
       id: json['id'] as String,
-      userId: (json['user_id'] ?? json['userId']) as String,
+      userId: (json[ModelKey.userId] ?? json['userId']) as String,
       role: json['role'] as String?,
       finishedAt: finishedEntry != null ? DateTime.parse(finishedEntry) : null,
       archivedAt: archivedEntry != null ? DateTime.parse(archivedEntry) : null,
@@ -49,7 +50,7 @@ class ActivityRoleModel {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'user_id': userId,
+      ModelKey.userId: userId,
       'role': role,
       'finished_at': finishedAt?.toIso8601String(),
       'archived_at': archivedAt?.toIso8601String(),

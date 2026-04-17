@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 
 import 'package:matrix/src/database/database_file_storage_stub.dart'
@@ -176,7 +177,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
   bool _isLanguageKey(String key, String language) =>
       key.startsWith('$language|');
 
-  Future<String?> getUserID() => _lastEventTimestampBox.get('user_id');
+  Future<String?> getUserID() => _lastEventTimestampBox.get(ModelKey.userId);
 
   Future<DateTime?> getLastUpdated(String language) async {
     final entry = await _lastEventTimestampBox.get(
@@ -493,7 +494,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
   Future<void> updateUserID(String userID) {
     return _transaction(() async {
-      await _lastEventTimestampBox.put('user_id', userID);
+      await _lastEventTimestampBox.put(ModelKey.userId, userID);
     });
   }
 

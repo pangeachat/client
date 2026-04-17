@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/choreographer/igc/text_normalization_util.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'replacement_type_enum.dart';
 import 'span_choice_type_enum.dart';
@@ -70,7 +71,7 @@ class SpanData {
 
     // Try to get fullText from span JSON, fall back to parent's original_input
     final String? spanFullText =
-        json['sentence'] ?? json['full_text'] ?? json['fullText'];
+        json['sentence'] ?? json[ModelKey.fullText] ?? json['fullText'];
     final String fullText = spanFullText ?? parentFullText ?? '';
 
     return SpanData(
@@ -81,8 +82,8 @@ class SpanData {
             (e) => SpanChoice.fromJson(e as Map<String, dynamic>),
           )
           .toList(),
-      offset: json['offset'] as int,
-      length: json['length'] as int,
+      offset: json[ModelKey.offset] as int,
+      length: json[ModelKey.length] as int,
       fullText: fullText,
       type:
           SpanDataTypeEnumExt.fromString(typeString) ??
@@ -95,9 +96,9 @@ class SpanData {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {
-      'offset': offset,
-      'length': length,
-      'full_text': fullText,
+      ModelKey.offset: offset,
+      ModelKey.length: length,
+      ModelKey.fullText: fullText,
       'type': type.name,
     };
 

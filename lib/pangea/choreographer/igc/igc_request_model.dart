@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/igc/igc_response_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/models/base_request_model.dart';
@@ -55,15 +56,15 @@ class IGCRequestModel with BaseRequestModel {
       ModelKey.fullText: fullText,
       ModelKey.userL1: userL1,
       ModelKey.userL2: userL2,
-      ModelKey.enableIT: enableIT,
-      ModelKey.enableIGC: enableIGC,
+      ChoreoConstants.enableIT: enableIT,
+      ChoreoConstants.enableIGC: enableIGC,
       ModelKey.userId: userId,
-      ModelKey.prevMessages: jsonEncode(
+      ChoreoConstants.prevMessages: jsonEncode(
         prevMessages.map((x) => x.toJson()).toList(),
       ),
     };
     if (feedback.isNotEmpty) {
-      json[ModelKey.feedback] = feedback.map((f) => f.toJson()).toList();
+      json[ChoreoConstants.feedback] = feedback.map((f) => f.toJson()).toList();
     }
     return json;
   }
@@ -114,17 +115,17 @@ class PreviousMessage {
 
   factory PreviousMessage.fromJson(Map<String, dynamic> json) =>
       PreviousMessage(
-        content: json[ModelKey.prevContent] ?? "",
-        sender: json[ModelKey.prevSender] ?? "",
-        timestamp: json[ModelKey.prevTimestamp] == null
+        content: json[ChoreoConstants.prevContent] ?? "",
+        sender: json[ChoreoConstants.prevSender] ?? "",
+        timestamp: json[ChoreoConstants.prevTimestamp] == null
             ? DateTime.now()
-            : DateTime.parse(json[ModelKey.prevTimestamp]),
+            : DateTime.parse(json[ChoreoConstants.prevTimestamp]),
       );
 
   Map<String, dynamic> toJson() => {
-    ModelKey.prevContent: content,
-    ModelKey.prevSender: sender,
-    ModelKey.prevTimestamp: timestamp.toIso8601String(),
+    ChoreoConstants.prevContent: content,
+    ChoreoConstants.prevSender: sender,
+    ChoreoConstants.prevTimestamp: timestamp.toIso8601String(),
   };
 
   @override

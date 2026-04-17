@@ -1,3 +1,4 @@
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/models/language_detection_model.dart';
 
 class LanguageDetectionResponse {
@@ -13,14 +14,14 @@ class LanguageDetectionResponse {
           (e) => LanguageDetectionModel.fromJson(e),
         ),
       ),
-      fullText: json['full_text'],
+      fullText: json[ModelKey.fullText],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'detections': detections.map((e) => e.toJson()).toList(),
-      'full_text': fullText,
+      ModelKey.fullText: fullText,
     };
   }
 }

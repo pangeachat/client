@@ -2,6 +2,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_target.dart';
 
@@ -94,8 +95,8 @@ class MessagePracticeExerciseRequest {
 
   Map<String, dynamic> toJson() {
     return {
-      'user_l1': userL1,
-      'user_l2': userL2,
+      ModelKey.userL1: userL1,
+      ModelKey.userL2: userL2,
       'activity_quality_feedback': exerciseQualityFeedback?.toJson(),
       'target_tokens': target.tokens.map((e) => e.toJson()).toList(),
       'target_type': target.exerciseType.name,

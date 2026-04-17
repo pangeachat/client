@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_response_model.dart';
@@ -28,12 +29,12 @@ class FullTextTranslationRequestModel {
   });
 
   Map<String, dynamic> toJson() => {
-    ModelKey.text: text,
-    ModelKey.srcLang: srcLang,
-    ModelKey.tgtLang: tgtLang,
+    ChoreoConstants.text: text,
+    ChoreoConstants.srcLang: srcLang,
+    ChoreoConstants.tgtLang: tgtLang,
     ModelKey.userL2: userL2,
     ModelKey.userL1: userL1,
-    ModelKey.deepL: deepL,
+    ChoreoConstants.deepL: deepL,
     ModelKey.offset: offset,
     ModelKey.length: length,
     if (feedback != null)

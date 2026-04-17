@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:fluffychat/pangea/chat_settings/constants/bot_constants.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/bot_mode.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -61,7 +62,7 @@ class BotOptionsModel {
   });
 
   factory BotOptionsModel.fromJson(Map<String, dynamic> json) {
-    final genderEntry = json[ModelKey.targetGender];
+    final genderEntry = json[BotConstants.targetGender];
     Map<String, GenderEnum> targetGenders = {};
     if (genderEntry is Map<String, dynamic>) {
       targetGenders = Map<String, GenderEnum>.fromEntries(
@@ -81,40 +82,41 @@ class BotOptionsModel {
       //////////////////////////////////////////////////////////////////////////
       // General Bot Options
       //////////////////////////////////////////////////////////////////////////
-      languageLevel: json[ModelKey.languageLevel] is int
-          ? LanguageLevelTypeEnum.fromInt(json[ModelKey.languageLevel])
-          : json[ModelKey.languageLevel] is String
-          ? LanguageLevelTypeEnum.fromString(json[ModelKey.languageLevel])
+      languageLevel: json[BotConstants.languageLevel] is int
+          ? LanguageLevelTypeEnum.fromInt(json[BotConstants.languageLevel])
+          : json[BotConstants.languageLevel] is String
+          ? LanguageLevelTypeEnum.fromString(json[BotConstants.languageLevel])
           : LanguageLevelTypeEnum.a1,
-      safetyModeration: json[ModelKey.safetyModeration] ?? true,
-      mode: json[ModelKey.mode] ?? BotMode.discussion,
+      safetyModeration: json[BotConstants.safetyModeration] ?? true,
+      mode: json[BotConstants.mode] ?? BotMode.discussion,
       targetLanguage: json[ModelKey.targetLanguage],
-      targetVoice: json[ModelKey.targetVoice],
+      targetVoice: json[BotConstants.targetVoice],
       userGenders: targetGenders,
 
       //////////////////////////////////////////////////////////////////////////
       // Discussion Mode Options
       //////////////////////////////////////////////////////////////////////////
-      discussionTopic: json[ModelKey.discussionTopic],
-      discussionKeywords: json[ModelKey.discussionKeywords],
+      discussionTopic: json[BotConstants.discussionTopic],
+      discussionKeywords: json[BotConstants.discussionKeywords],
       discussionTriggerReactionEnabled:
-          json[ModelKey.discussionTriggerReactionEnabled] ?? true,
+          json[BotConstants.discussionTriggerReactionEnabled] ?? true,
       discussionTriggerReactionKey:
-          json[ModelKey.discussionTriggerReactionKey] ?? "⏩",
+          json[BotConstants.discussionTriggerReactionKey] ?? "⏩",
 
       //////////////////////////////////////////////////////////////////////////
       // Custom Mode Options
       //////////////////////////////////////////////////////////////////////////
-      customSystemPrompt: json[ModelKey.customSystemPrompt],
+      customSystemPrompt: json[BotConstants.customSystemPrompt],
       customTriggerReactionEnabled:
-          json[ModelKey.customTriggerReactionEnabled] ?? true,
-      customTriggerReactionKey: json[ModelKey.customTriggerReactionKey] ?? "⏩",
+          json[BotConstants.customTriggerReactionEnabled] ?? true,
+      customTriggerReactionKey:
+          json[BotConstants.customTriggerReactionKey] ?? "⏩",
 
       //////////////////////////////////////////////////////////////////////////
       // Text Adventure Mode Options
       //////////////////////////////////////////////////////////////////////////
       textAdventureGameMasterInstructions:
-          json[ModelKey.textAdventureGameMasterInstructions],
+          json[BotConstants.textAdventureGameMasterInstructions],
     );
   }
 
@@ -127,24 +129,25 @@ class BotOptionsModel {
       }
 
       // data[ModelKey.isConversationBotChat] = isConversationBotChat;
-      data[ModelKey.languageLevel] = languageLevel.storageInt;
-      data[ModelKey.safetyModeration] = safetyModeration;
-      data[ModelKey.mode] = mode;
+      data[BotConstants.languageLevel] = languageLevel.storageInt;
+      data[BotConstants.safetyModeration] = safetyModeration;
+      data[BotConstants.mode] = mode;
       data[ModelKey.targetLanguage] = targetLanguage;
-      data[ModelKey.targetVoice] = targetVoice;
-      data[ModelKey.discussionTopic] = discussionTopic;
-      data[ModelKey.discussionKeywords] = discussionKeywords;
-      data[ModelKey.discussionTriggerReactionEnabled] =
+      data[BotConstants.targetVoice] = targetVoice;
+      data[BotConstants.discussionTopic] = discussionTopic;
+      data[BotConstants.discussionKeywords] = discussionKeywords;
+      data[BotConstants.discussionTriggerReactionEnabled] =
           discussionTriggerReactionEnabled ?? true;
-      data[ModelKey.discussionTriggerReactionKey] =
+      data[BotConstants.discussionTriggerReactionKey] =
           discussionTriggerReactionKey ?? "⏩";
-      data[ModelKey.customSystemPrompt] = customSystemPrompt;
-      data[ModelKey.customTriggerReactionEnabled] =
+      data[BotConstants.customSystemPrompt] = customSystemPrompt;
+      data[BotConstants.customTriggerReactionEnabled] =
           customTriggerReactionEnabled ?? true;
-      data[ModelKey.customTriggerReactionKey] = customTriggerReactionKey ?? "⏩";
-      data[ModelKey.textAdventureGameMasterInstructions] =
+      data[BotConstants.customTriggerReactionKey] =
+          customTriggerReactionKey ?? "⏩";
+      data[BotConstants.textAdventureGameMasterInstructions] =
           textAdventureGameMasterInstructions;
-      data[ModelKey.targetGender] = gendersEntry;
+      data[BotConstants.targetGender] = gendersEntry;
       return data;
     } catch (e, s) {
       debugger(when: kDebugMode);

@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/course_plans/course_info_batch_request.dart';
 import 'package:fluffychat/pangea/course_plans/course_media/course_media_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_media/course_media_response.dart';
@@ -55,7 +56,7 @@ class CoursePlanModel {
   /// Deserialize from JSON
   factory CoursePlanModel.fromJson(Map<String, dynamic> json) {
     return CoursePlanModel(
-      targetLanguage: json['target_language'] as String,
+      targetLanguage: json[ModelKey.targetLanguage] as String,
       languageOfInstructions: json['language_of_instructions'] as String,
       cefrLevel: LanguageLevelTypeEnum.fromString(json['cefr_level']),
       title: json['title'] as String,
@@ -79,7 +80,7 @@ class CoursePlanModel {
   /// Serialize to JSON
   Map<String, dynamic> toJson() {
     return {
-      'target_language': targetLanguage,
+      ModelKey.targetLanguage: targetLanguage,
       'language_of_instructions': languageOfInstructions,
       'cefr_level': cefrLevel.string,
       'title': title,

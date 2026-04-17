@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_request.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -78,7 +79,7 @@ class ActivityPlanModel {
 
   factory ActivityPlanModel.fromJson(Map<String, dynamic> json) {
     final req = ActivityPlanRequest.fromJson(
-      json[ModelKey.activityPlanRequest],
+      json[ActivitySessionConstants.activityPlanRequest],
     );
 
     Map<String, ActivityRole>? roles;
@@ -91,31 +92,35 @@ class ActivityPlanModel {
       );
     }
 
-    final activityId = json[ModelKey.activityId] ?? json["bookmark_id"];
+    final activityId =
+        json[ActivitySessionConstants.activityId] ?? json["bookmark_id"];
     if (activityId == null) {
       throw ArgumentError('Activity ID is required');
     }
 
     return ActivityPlanModel(
-      imageURL: json[ModelKey.activityPlanImageURL],
-      instructions: json[ModelKey.activityPlanInstructions],
+      imageURL: json[ActivitySessionConstants.activityPlanImageURL],
+      instructions: json[ActivitySessionConstants.activityPlanInstructions],
       req: req,
-      title: json[ModelKey.activityPlanTitle],
+      title: json[ActivitySessionConstants.activityPlanTitle],
       description:
-          json[ModelKey.description] ??
-          json[ModelKey.activityPlanLearningObjective],
-      learningObjective: json[ModelKey.activityPlanLearningObjective],
+          json[ActivitySessionConstants.description] ??
+          json[ActivitySessionConstants.activityPlanLearningObjective],
+      learningObjective:
+          json[ActivitySessionConstants.activityPlanLearningObjective],
       vocab: List<Vocab>.from(
-        json[ModelKey.activityPlanVocab].map((vocab) => Vocab.fromJson(vocab)),
+        json[ActivitySessionConstants.activityPlanVocab].map(
+          (vocab) => Vocab.fromJson(vocab),
+        ),
       ),
-      endAt: json[ModelKey.activityPlanEndAt] != null
-          ? DateTime.parse(json[ModelKey.activityPlanEndAt])
+      endAt: json[ActivitySessionConstants.activityPlanEndAt] != null
+          ? DateTime.parse(json[ActivitySessionConstants.activityPlanEndAt])
           : null,
-      duration: json[ModelKey.duration] != null
+      duration: json[ActivitySessionConstants.duration] != null
           ? Duration(
-              days: json[ModelKey.duration]['days'] ?? 0,
-              hours: json[ModelKey.duration]['hours'] ?? 0,
-              minutes: json[ModelKey.duration]['minutes'] ?? 0,
+              days: json[ActivitySessionConstants.duration]['days'] ?? 0,
+              hours: json[ActivitySessionConstants.duration]['hours'] ?? 0,
+              minutes: json[ActivitySessionConstants.duration]['minutes'] ?? 0,
             )
           : null,
       roles: roles,
@@ -126,16 +131,18 @@ class ActivityPlanModel {
 
   Map<String, dynamic> toJson() {
     return {
-      ModelKey.activityId: activityId,
-      ModelKey.activityPlanImageURL: _imageURL,
-      ModelKey.activityPlanInstructions: instructions,
-      ModelKey.activityPlanRequest: req.toJson(),
-      ModelKey.activityPlanTitle: title,
-      ModelKey.description: description,
-      ModelKey.activityPlanLearningObjective: learningObjective,
-      ModelKey.activityPlanVocab: vocab.map((vocab) => vocab.toJson()).toList(),
-      ModelKey.activityPlanEndAt: endAt?.toIso8601String(),
-      ModelKey.duration: {
+      ActivitySessionConstants.activityId: activityId,
+      ActivitySessionConstants.activityPlanImageURL: _imageURL,
+      ActivitySessionConstants.activityPlanInstructions: instructions,
+      ActivitySessionConstants.activityPlanRequest: req.toJson(),
+      ActivitySessionConstants.activityPlanTitle: title,
+      ActivitySessionConstants.description: description,
+      ActivitySessionConstants.activityPlanLearningObjective: learningObjective,
+      ActivitySessionConstants.activityPlanVocab: vocab
+          .map((vocab) => vocab.toJson())
+          .toList(),
+      ActivitySessionConstants.activityPlanEndAt: endAt?.toIso8601String(),
+      ActivitySessionConstants.duration: {
         'days': duration?.inDays ?? 0,
         'hours': duration?.inHours.remainder(24) ?? 0,
         'minutes': duration?.inMinutes.remainder(60) ?? 0,

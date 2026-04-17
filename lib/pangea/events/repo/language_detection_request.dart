@@ -1,3 +1,5 @@
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+
 class LanguageDetectionRequest {
   final String text;
   final String? senderl1;
@@ -6,7 +8,11 @@ class LanguageDetectionRequest {
   LanguageDetectionRequest({required this.text, this.senderl1, this.senderl2});
 
   Map<String, dynamic> toJson() {
-    return {'full_text': text, 'sender_l1': senderl1, 'sender_l2': senderl2};
+    return {
+      ModelKey.fullText: text,
+      'sender_l1': senderl1,
+      'sender_l2': senderl2,
+    };
   }
 
   @override

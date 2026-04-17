@@ -1,5 +1,7 @@
 import 'package:collection/collection.dart';
 
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+
 class MorphologicalTag {
   final String code;
   final String l1Title;
@@ -81,16 +83,16 @@ class MorphInfoResponse {
         .toList();
 
     return MorphInfoResponse(
-      userL1: json['user_l1'],
-      userL2: json['user_l2'],
+      userL1: json[ModelKey.userL1],
+      userL2: json[ModelKey.userL2],
       features: featuresList,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'user_l1': userL1,
-      'user_l2': userL2,
+      ModelKey.userL1: userL1,
+      ModelKey.userL2: userL2,
       'features': features.map((feature) => feature.toJson()).toList(),
     };
   }

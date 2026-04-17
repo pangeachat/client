@@ -1,3 +1,4 @@
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/models/language_detection_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -71,8 +72,8 @@ class TokensResponseModel {
             )
             .toList()
             .cast<PangeaToken>(),
-        lang: json[ModelKey.lang],
-        detections: (json[ModelKey.allDetections] as Iterable)
+        lang: json[ChoreoConstants.lang],
+        detections: (json[ChoreoConstants.allDetections] as Iterable)
             .map<LanguageDetectionModel>(
               (e) => LanguageDetectionModel.fromJson(e as Map<String, dynamic>),
             )

@@ -1,5 +1,6 @@
 import 'package:get_storage/get_storage.dart';
 
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
@@ -82,7 +83,7 @@ class PracticeSelectionRepo {
           "messageLanguage": langCode,
           "userL2":
               MatrixState.pangeaController.userController.userL2?.langCodeShort,
-          "tokens": tokens.map((t) => t.text.toJson()).toList(),
+          ModelKey.tokens: tokens.map((t) => t.text.toJson()).toList(),
         },
       );
       return PracticeSelection({});
