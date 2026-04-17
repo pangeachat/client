@@ -49,6 +49,11 @@ jobs:
           sed -i "s|$OLD_NAME|$NEW_NAME|g" build/web/assets/FontManifest.json
 
           echo "Renamed $OLD_NAME -> $NEW_NAME"
+
+      - name: Inject build version into index.html
+        run: |
+          VERSION=${GITHUB_SHA::8}
+          sed -i "s|__BUILD_VERSION__|$VERSION|g" build/web/index.html
         
       - name: Upload files
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
