@@ -262,7 +262,7 @@ class _ActivityStatuses extends StatelessWidget {
                       trailing: space.isRoomAdmin
                           ? const Icon(Icons.arrow_forward)
                           : null,
-                      onTap: space.isRoomAdmin ? () => onTap(roomId) : null,
+                      onTap: status.canJoin(space) ? () => onTap(roomId) : null,
                     );
                   }),
                 ],
