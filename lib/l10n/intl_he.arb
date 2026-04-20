@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-15 11:31:47.671245",
+    "@@last_modified": "2026-04-20 12:32:37.155569",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -11962,6 +11962,11 @@
     },
     "blockUsernameHint": "חסום שם משתמש",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "אנחנו בודקים את זה! אנא נסה שוב מאוחר יותר.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

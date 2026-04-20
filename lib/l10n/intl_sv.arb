@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-15 11:32:23.553399",
+    "@@last_modified": "2026-04-20 12:33:10.745024",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11470,6 +11470,11 @@
     },
     "blockUsernameHint": "Blockera användarnamn",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Vi undersöker det! Vänligen försök igen senare.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

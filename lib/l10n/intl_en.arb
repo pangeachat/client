@@ -5062,5 +5062,6 @@
     "enableNotifications": "Allow notifications",
     "noActivitiesFound": "No activities available for this topic.",
     "cannotIgnoreYourself": "You cannot block yourself",
-    "blockUsernameHint": "Block username"
+    "blockUsernameHint": "Block username",
+    "errorTryAgainLater": "We're looking into it! Please try again later."
 }

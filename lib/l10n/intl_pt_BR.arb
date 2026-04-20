@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-15 11:31:49.352377",
+    "@@last_modified": "2026-04-20 12:32:39.334754",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -10883,6 +10883,11 @@
     },
     "blockUsernameHint": "Bloquear nome de usuário",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Estamos investigando! Por favor, tente novamente mais tarde.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }
