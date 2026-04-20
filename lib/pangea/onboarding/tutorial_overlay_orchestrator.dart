@@ -182,6 +182,8 @@ class TutorialOverlayOrchestrator {
   }
 
   void onCloseTutorial(TutorialEnum tutorial) {
+    tutorial.markSeen();
+
     if (_sequence == null) {
       Logs().w(
         "Received tutorial complete event for tutorial $tutorial but no active tutorial sequence",
