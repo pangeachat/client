@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 12:33:03.605240",
+    "@@last_modified": "2026-04-20 15:04:41.078821",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -11034,6 +11034,11 @@
     },
     "errorTryAgainLater": "நாங்கள் இதைப் பற்றி ஆராய்ந்து கொண்டிருக்கிறோம்! தயவுசெய்து பிறகு மீண்டும் முயற்சிக்கவும்.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "எழுத்து உதவி எதிர்பார்த்ததைவிட கொஞ்சம் அதிக நேரம் எடுக்கிறது. ஒரு நொடியில் மீண்டும் முயற்சிக்கவும்!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

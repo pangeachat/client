@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-04-20 12:33:09.991881",
+    "@@last_modified": "2026-04-20 15:04:48.446152",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -11027,6 +11027,11 @@
     },
     "errorTryAgainLater": "Pracujemy nad tym! Proszę spróbować ponownie później.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Pomoc w pisaniu zajmuje trochę więcej czasu niż oczekiwano. Spróbuj ponownie za chwilę!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-04-20 12:33:19.334293",
+    "@@last_modified": "2026-04-20 15:05:01.561723",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -11315,6 +11315,11 @@
     },
     "errorTryAgainLater": "Nous y travaillons ! Veuillez réessayer plus tard.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "L'assistance à l'écriture prend un peu plus de temps que prévu. Réessayez dans un instant !",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

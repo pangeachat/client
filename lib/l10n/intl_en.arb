@@ -5063,6 +5063,8 @@
     "noActivitiesFound": "No activities available for this topic.",
     "cannotIgnoreYourself": "You cannot block yourself",
     "blockUsernameHint": "Block username",
+    "errorTryAgainLater": "We're looking into it! Please try again later.",
+    "errorTryAgainSoon": "Writing assistance is taking a bit longer than expected. Try again in a second!",
     "closeEmojiMenu": "Close emoji menu",
     "readingAssistanceTutorialClickMessage": "Click on the message bubble to select it",
     "writingAssistanceTutorialInputBar": "You can write in any language. Don't worry about mistakes! We'll help you correct them.",

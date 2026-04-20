@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-04-20 12:32:49.002402",
+    "@@last_modified": "2026-04-20 15:04:19.912626",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -11472,6 +11472,11 @@
     },
     "errorTryAgainLater": "Zkoumáme to! Prosím, zkuste to znovu později.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Pomoc při psaní trvá déle, než se očekávalo. Zkuste to znovu za chvíli!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

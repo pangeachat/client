@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-04-20 12:32:40.827700",
+    "@@last_modified": "2026-04-20 15:04:09.470470",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10918,6 +10918,11 @@
     },
     "errorTryAgainLater": "Hori aztertzen ari gara! Mesedez, saiatu berriro geroago.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Idazteko laguntza espero baino denbora gehiago behar du. Saiatu berriro segundo batean!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

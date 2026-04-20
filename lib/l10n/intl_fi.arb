@@ -4182,7 +4182,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-04-20 12:32:28.985591",
+    "@@last_modified": "2026-04-20 15:03:54.056581",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10967,6 +10967,11 @@
     },
     "errorTryAgainLater": "Tutkimme asiaa! Ole hyvä ja yritä myöhemmin uudelleen.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Kirjoitusapu vie odotettua kauemmin. Yritä uudelleen hetken kuluttua!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

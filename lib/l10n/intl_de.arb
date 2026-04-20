@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-04-20 12:32:43.774883",
+    "@@last_modified": "2026-04-20 15:04:14.217127",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10897,6 +10897,11 @@
     },
     "errorTryAgainLater": "Wir kümmern uns darum! Bitte versuchen Sie es später noch einmal.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Die Schreibunterstützung dauert etwas länger als erwartet. Versuchen Sie es in einer Sekunde erneut!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

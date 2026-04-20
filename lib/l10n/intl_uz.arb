@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-04-20 12:32:55.730740",
+    "@@last_modified": "2026-04-20 15:04:30.096894",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10922,6 +10922,11 @@
     },
     "errorTryAgainLater": "Biz buni o'rganmoqdamiz! Iltimos, keyinroq qayta urinib ko'ring.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Yozish yordamida kutish kutilganidan ko'ra ko'proq vaqt olmoqda. Iltimos, bir soniyadan keyin qaytadan urinib ko'ring!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

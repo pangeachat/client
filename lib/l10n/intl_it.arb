@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 12:32:47.160680",
+    "@@last_modified": "2026-04-20 15:04:17.419934",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -11009,6 +11009,11 @@
     },
     "errorTryAgainLater": "Stiamo indagando! Per favore riprova più tardi.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "L'assistenza alla scrittura sta impiegando un po' più tempo del previsto. Riprova tra un secondo!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 12:32:50.013651",
+    "@@last_modified": "2026-04-20 15:04:21.003226",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10978,6 +10978,11 @@
     },
     "errorTryAgainLater": "Vi ser på det! Vennligst prøv igjen senere.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Skriveassistanse tar litt lengre tid enn forventet. Prøv igjen om et sekund!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

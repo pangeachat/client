@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 12:32:37.155569",
+    "@@last_modified": "2026-04-20 15:04:05.194119",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -11997,6 +11997,11 @@
     },
     "errorTryAgainLater": "אנחנו בודקים את זה! אנא נסה שוב מאוחר יותר.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "סיוע בכתיבה לוקח קצת יותר זמן מהצפוי. נסה שוב בעוד שנייה!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

@@ -4202,7 +4202,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-04-20 12:32:51.048361",
+    "@@last_modified": "2026-04-20 15:04:22.205249",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10932,6 +10932,11 @@
     },
     "errorTryAgainLater": "Мы разглядаем гэта! Калі ласка, паспрабуйце яшчэ раз пазней.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Напісанне дапамогі займае крыху больш часу, чым чакалася. Паспрабуйце яшчэ раз праз секунду!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

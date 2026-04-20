@@ -3646,7 +3646,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-04-20 12:32:52.682200",
+    "@@last_modified": "2026-04-20 15:04:25.304676",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11637,6 +11637,11 @@
     },
     "errorTryAgainLater": "เรากำลังตรวจสอบอยู่! กรุณาลองอีกครั้งในภายหลัง.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "การช่วยเขียนใช้เวลานานกว่าที่คาดไว้เล็กน้อย ลองอีกครั้งในอีกสักครู่!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

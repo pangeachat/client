@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 12:32:32.670482",
+    "@@last_modified": "2026-04-20 15:03:59.842294",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11743,6 +11743,11 @@
     },
     "errorTryAgainLater": "Ne ocupăm de asta! Te rugăm să încerci din nou mai târziu.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Asistența la scriere durează puțin mai mult decât era de așteptat. Încearcă din nou în câteva secunde!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

@@ -78,76 +78,50 @@ class ErrorHandler {
 }
 
 class ErrorCopy {
-  BuildContext context;
-  Object? error;
+  Object error;
+  ErrorCopy(this.error);
 
-  late String title;
-  late String body;
-  int? errorCode;
-
-  ErrorCopy(this.context, {this.error, String? title, String? body}) {
-    if (title != null) this.title = title;
-    if (body != null) this.body = body;
-    if (title == null || body == null) setCopy();
+  int? get errorCode {
+    if (error is http.Response) {
+      return (error as http.Response).statusCode;
+    } else {
+      return null;
+    }
   }
 
-  void _setDefaults() {
-    title = L10n.of(context).unexpectedError;
-    body = L10n.of(context).pleaseReload;
-    errorCode = 400;
-  }
-
-  void setCopy() {
+  String toLocalizedString(BuildContext context) {
     try {
-      if (error is http.Response) {
-        errorCode = (error as http.Response).statusCode;
-      } else {
-        errorCode = null;
-      }
       final L10n l10n = L10n.of(context);
+
+      if (error is TimeoutException) {
+        return l10n.errorTryAgainSoon;
+      }
 
       switch (errorCode) {
         case 502:
         case 504:
         case 500:
-          title = l10n.error502504Title;
-          body = l10n.error502504Desc;
-          break;
+          return l10n.error502504Desc;
         case 520:
-          title = l10n.error520Title;
-          body = l10n.error520Desc;
-          break;
+          return l10n.error520Desc;
         case 404:
-          title = l10n.error404Title;
-          body = l10n.error404Desc;
-          break;
+          return l10n.error404Desc;
         case 405:
-          title = l10n.error405Title;
-          body = l10n.error405Desc;
-          break;
+          return l10n.error405Desc;
         case 601:
-          title = l10n.errorDisableIT;
-          body = l10n.errorDisableITUserDesc;
-          break;
+          return l10n.errorDisableITUserDesc;
         case 602:
-          title = l10n.errorDisableIGC;
-          body = l10n.errorDisableIGCUserDesc;
-          break;
+          return l10n.errorDisableIGCUserDesc;
         case 603:
-          title = l10n.errorDisableIT;
-          body = l10n.errorDisableITClassDesc;
-          break;
+          return l10n.errorDisableITClassDesc;
         case 604:
-          title = l10n.errorDisableIGC;
-          body = l10n.errorDisableIGCClassDesc;
-          break;
+          return l10n.errorDisableIGCClassDesc;
         default:
-          title = l10n.oopsSomethingWentWrong;
-          body = l10n.errorTryAgainLater;
+          return l10n.errorTryAgainLater;
       }
     } catch (e, s) {
-      ErrorHandler.logError(e: s, s: s, data: {});
-      _setDefaults();
+      ErrorHandler.logError(e: e, s: s, data: {});
+      return L10n.of(context).errorTryAgainLater;
     }
   }
 }

@@ -3462,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-04-20 12:33:05.786036",
+    "@@last_modified": "2026-04-20 15:04:43.543636",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10590,6 +10590,11 @@
     },
     "errorTryAgainLater": "Nami se na to! Të lutem, provoni përsëri më vonë.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Bantuan menulis sedang memerlukan sedikit lebih banyak waktu dari yang diharapkan. Coba lagi dalam sesaat!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

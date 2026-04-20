@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 12:32:41.604673",
+    "@@last_modified": "2026-04-20 15:04:12.122570",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -12036,6 +12036,11 @@
     },
     "errorTryAgainLater": "Estamos investigando! Por favor, tente novamente mais tarde.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "A assistência de escrita está demorando um pouco mais do que o esperado. Tente novamente em um segundo!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

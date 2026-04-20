@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-04-20 12:33:06.607160",
+    "@@last_modified": "2026-04-20 15:04:45.064028",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10918,6 +10918,11 @@
     },
     "errorTryAgainLater": "我们正在调查此事！请稍后再试。",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "写作助手的响应时间比预期稍长。请稍后再试！",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

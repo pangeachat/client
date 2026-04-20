@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-04-20 12:33:12.515281",
+    "@@last_modified": "2026-04-20 15:04:52.152040",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11786,6 +11786,11 @@
     },
     "errorTryAgainLater": "私たちは調査中です！後でもう一度お試しください。",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "執筆支援が予想以上に時間がかかっています。少し待ってから再試行してください！",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

@@ -3045,7 +3045,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-04-20 12:32:53.630440",
+    "@@last_modified": "2026-04-20 15:04:26.738528",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11994,6 +11994,11 @@
     },
     "errorTryAgainLater": "Estamos investigando! Por favor, tente novamente mais tarde.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "A assistência de escrita está demorando um pouco mais do que o esperado. Tente novamente em um segundo!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }
