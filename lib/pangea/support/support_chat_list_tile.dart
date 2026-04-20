@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/support/support_client_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -19,6 +20,11 @@ class SupportChatListTileState extends State<SupportChatListTile> {
 
   @override
   Widget build(BuildContext context) {
+    final blockedUsers = Matrix.of(context).client.ignoredUsers;
+    if (blockedUsers.contains(Environment.supportUserId)) {
+      return SizedBox.shrink();
+    }
+
     return ListTile(
       leading: Icon(Icons.help_outline_outlined),
       trailing: const Icon(Icons.chat_bubble_outline),
