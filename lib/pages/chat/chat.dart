@@ -746,7 +746,10 @@ class ChatController extends State<ChatPageWithRoom>
     // in a previous session). Dispatch to the correct launch path.
     if (orchestrator.isTutorialQueued(TutorialEnum.readingAssistance)) {
       final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
-      final success = await scrollToEventId(event.eventId);
+      final success = await scrollToEventId(
+        event.eventId,
+        highlightEvent: false,
+      );
       if (!success) return;
 
       orchestrator.launchTutorial(
@@ -1874,7 +1877,11 @@ class ChatController extends State<ChatPageWithRoom>
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         // #Pangea
         // scrollToEventId(eventId);
-        scrollToEventId(eventId, calls: calls + 1);
+        scrollToEventId(
+          eventId,
+          calls: calls + 1,
+          highlightEvent: highlightEvent,
+        );
         // Pangea#
       });
       // #Pangea
