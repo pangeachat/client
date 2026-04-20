@@ -2526,7 +2526,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-04-15 11:32:11.697815",
+    "@@last_modified": "2026-04-20 09:46:08.344773",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11902,6 +11902,36 @@
     },
     "blockUsernameHint": "I-block ang username",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "I-click ang mensahe na bula upang piliin ito",
+    "writingAssistanceTutorialInputBar": "Maaari kang sumulat sa anumang wika. Huwag mag-alala tungkol sa mga pagkakamali! Tutulungan ka naming ituwid ang mga ito.",
+    "writingAssistanceTutorialIGCButton": "Matapos isulat ang iyong mensahe, i-click ang button na ito upang simulan ang tulong sa pagsusulat",
+    "selectModeTutorialTranslate": "I-click dito upang isalin ang mensahe",
+    "selectModeTutorialAudio": "I-click dito upang pakinggan ang mensahe",
+    "selectModeTutorialExit": "I-click ang background upang bumalik sa pakikipag-chat",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

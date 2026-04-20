@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-15 11:32:07.556523",
+    "@@last_modified": "2026-04-20 09:45:52.013788",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -11034,6 +11034,36 @@
     },
     "blockUsernameHint": "Bloqueja el nom d'usuari",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Feu clic a la bombolla de missatge per seleccionar-la",
+    "writingAssistanceTutorialInputBar": "Podeu escriure en qualsevol idioma. No us preocupeu pels errors! Us ajudarem a corregir-los.",
+    "writingAssistanceTutorialIGCButton": "Després d'escriure el vostre missatge, feu clic a aquest botó per començar l'assistència d'escriptura",
+    "selectModeTutorialTranslate": "Feu clic aquí per traduir el missatge",
+    "selectModeTutorialAudio": "Feu clic aquí per escoltar el missatge",
+    "selectModeTutorialExit": "Feu clic al fons per tornar a xatejar",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

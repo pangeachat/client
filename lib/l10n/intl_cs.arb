@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-04-15 11:32:00.959399",
+    "@@last_modified": "2026-04-20 09:45:42.337810",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -11437,6 +11437,36 @@
     },
     "blockUsernameHint": "Zablokovat uživatelské jméno",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Klikněte na bublinu zprávy, abyste ji vybrali",
+    "writingAssistanceTutorialInputBar": "Můžete psát v jakémkoli jazyce. Nebojte se chyb! Pomůžeme vám je opravit.",
+    "writingAssistanceTutorialIGCButton": "Po napsání zprávy klikněte na toto tlačítko pro zahájení asistence při psaní",
+    "selectModeTutorialTranslate": "Klikněte sem pro překlad zprávy",
+    "selectModeTutorialAudio": "Klikněte sem pro poslech zprávy",
+    "selectModeTutorialExit": "Klikněte na pozadí, abyste se vrátili k chatování",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

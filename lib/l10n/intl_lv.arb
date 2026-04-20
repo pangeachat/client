@@ -4188,7 +4188,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-04-15 11:32:12.493626",
+    "@@last_modified": "2026-04-20 09:46:12.419294",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10883,6 +10883,36 @@
     },
     "blockUsernameHint": "Bloķēt lietotājvārdu",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Noklikšķiniet uz ziņojuma burbuļa, lai to izvēlētos",
+    "writingAssistanceTutorialInputBar": "Jūs varat rakstīt jebkurā valodā. Neuztraucieties par kļūdām! Mēs jums palīdzēsim tās labot.",
+    "writingAssistanceTutorialIGCButton": "Pēc ziņojuma uzrakstīšanas noklikšķiniet uz šīs pogas, lai sāktu rakstīšanas palīdzību",
+    "selectModeTutorialTranslate": "Noklikšķiniet šeit, lai tulkotu ziņojumu",
+    "selectModeTutorialAudio": "Noklikšķiniet šeit, lai klausītos ziņojumu",
+    "selectModeTutorialExit": "Noklikšķiniet uz fona, lai atgrieztos sarunā",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

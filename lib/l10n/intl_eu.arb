@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-04-15 11:31:50.575819",
+    "@@last_modified": "2026-04-20 09:45:14.370794",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10883,6 +10883,36 @@
     },
     "blockUsernameHint": "Blokeatu erabiltzaile izena",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Egin klik mezulari burbuila hautatzeko",
+    "writingAssistanceTutorialInputBar": "Egin dezakezu edozein hizkuntzatan idazteko. Ez kezkatu akatsetaz! Lagunduko dizugu zuzentzen.",
+    "writingAssistanceTutorialIGCButton": "Zure mezua idatzi ondoren, egin klik botoi honetan idazteko laguntza hasteko",
+    "selectModeTutorialTranslate": "Egin klik hemen mezua itzultzeko",
+    "selectModeTutorialAudio": "Egin klik hemen mezua entzuteko",
+    "selectModeTutorialExit": "Egin klik atzeko planoan txatera itzultzeko",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

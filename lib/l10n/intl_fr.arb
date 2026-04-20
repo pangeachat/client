@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-04-15 11:32:31.523227",
+    "@@last_modified": "2026-04-20 09:47:23.993258",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -11280,6 +11280,36 @@
     },
     "blockUsernameHint": "Bloquer le nom d'utilisateur",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Cliquez sur la bulle de message pour la sélectionner",
+    "writingAssistanceTutorialInputBar": "Vous pouvez écrire dans n'importe quelle langue. Ne vous inquiétez pas pour les erreurs ! Nous vous aiderons à les corriger.",
+    "writingAssistanceTutorialIGCButton": "Après avoir écrit votre message, cliquez sur ce bouton pour commencer l'assistance à l'écriture",
+    "selectModeTutorialTranslate": "Cliquez ici pour traduire le message",
+    "selectModeTutorialAudio": "Cliquez ici pour écouter le message",
+    "selectModeTutorialExit": "Cliquez sur l'arrière-plan pour revenir à la discussion",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

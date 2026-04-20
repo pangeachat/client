@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-04-15 11:32:11.063387",
+    "@@last_modified": "2026-04-20 09:46:05.246122",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10887,6 +10887,36 @@
     },
     "blockUsernameHint": "Foydalanuvchi nomini bloklash",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Xabar pufakchasini tanlash uchun bosing",
+    "writingAssistanceTutorialInputBar": "Siz har qanday tilni yozishingiz mumkin. Xatolar haqida xavotir olmang! Biz sizga ularni to'g'rilashda yordam beramiz.",
+    "writingAssistanceTutorialIGCButton": "Xabaringizni yozgandan so'ng, yozish yordamiga kirish uchun ushbu tugmani bosing",
+    "selectModeTutorialTranslate": "Xabarni tarjima qilish uchun bu yerga bosing",
+    "selectModeTutorialAudio": "Xabarni tinglash uchun bu yerga bosing",
+    "selectModeTutorialExit": "Suhbatga qaytish uchun fonni bosing",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

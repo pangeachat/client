@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-04-15 11:32:14.347303",
+    "@@last_modified": "2026-04-20 09:46:18.484620",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11214,6 +11214,36 @@
     },
     "blockUsernameHint": "Kullanıcı adını engelle",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Mesaj balonuna tıklayarak onu seçin",
+    "writingAssistanceTutorialInputBar": "Herhangi bir dilde yazabilirsiniz. Hatalar hakkında endişelenmeyin! Onları düzeltmenize yardımcı olacağız.",
+    "writingAssistanceTutorialIGCButton": "Mesajınızı yazdıktan sonra, yazma yardımını başlatmak için bu düğmeye tıklayın",
+    "selectModeTutorialTranslate": "Mesajı çevirmek için buraya tıklayın",
+    "selectModeTutorialAudio": "Mesajı dinlemek için buraya tıklayın",
+    "selectModeTutorialExit": "Sohbete geri dönmek için arka plana tıklayın",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-15 11:31:47.671245",
+    "@@last_modified": "2026-04-20 09:45:05.238337",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -11962,6 +11962,36 @@
     },
     "blockUsernameHint": "חסום שם משתמש",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "לחץ על בועת ההודעה כדי לבחור אותה",
+    "writingAssistanceTutorialInputBar": "אתה יכול לכתוב בכל שפה. אל תדאג לגבי טעויות! אנחנו נעזור לך לתקן אותן.",
+    "writingAssistanceTutorialIGCButton": "לאחר שכתבת את ההודעה שלך, לחץ על כפתור זה כדי להתחיל בעזרה בכתיבה",
+    "selectModeTutorialTranslate": "לחץ כאן כדי לתרגם את ההודעה",
+    "selectModeTutorialAudio": "לחץ כאן כדי להקשיב להודעה",
+    "selectModeTutorialExit": "לחץ על הרקע כדי לחזור לשיחה",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

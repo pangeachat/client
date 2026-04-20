@@ -4202,7 +4202,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-04-15 11:32:02.450743",
+    "@@last_modified": "2026-04-20 09:45:49.058249",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10897,6 +10897,36 @@
     },
     "blockUsernameHint": "Заблакаваць імя карыстальніка",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Націсніце на паветранае паведамленне, каб выбраць яго",
+    "writingAssistanceTutorialInputBar": "Вы можаце пісаць на любой мове. Не хвалюйцеся пра памылкі! Мы дапаможам вам іх выправіць.",
+    "writingAssistanceTutorialIGCButton": "Пасля таго, як вы напішаце сваё паведамленне, націсніце гэтую кнопку, каб пачаць дапамогу ў пісьме",
+    "selectModeTutorialTranslate": "Націсніце тут, каб перакласці паведамленне",
+    "selectModeTutorialAudio": "Націсніце тут, каб паслухаць паведамленне",
+    "selectModeTutorialExit": "Націсніце на фон, каб вярнуцца да размовы",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

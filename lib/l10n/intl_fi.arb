@@ -4182,7 +4182,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-04-15 11:31:40.422175",
+    "@@last_modified": "2026-04-20 09:44:37.488790",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10932,6 +10932,36 @@
     },
     "blockUsernameHint": "Estä käyttäjänimi",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Napsauta viestikuplaa valitaksesi sen",
+    "writingAssistanceTutorialInputBar": "Voit kirjoittaa millä tahansa kielellä. Älä huoli virheistä! Autamme sinua korjaamaan ne.",
+    "writingAssistanceTutorialIGCButton": "Kirjoitettuasi viestisi, napsauta tätä painiketta aloittaaksesi kirjoitusavun",
+    "selectModeTutorialTranslate": "Napsauta täällä kääntääksesi viestin",
+    "selectModeTutorialAudio": "Napsauta täällä kuunnellaksesi viestiä",
+    "selectModeTutorialExit": "Napsauta taustaa palataksesi keskusteluun",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-15 11:32:23.553399",
+    "@@last_modified": "2026-04-20 09:46:55.499322",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11470,6 +11470,36 @@
     },
     "blockUsernameHint": "Blockera användarnamn",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Klicka på meddelandebubblan för att välja den",
+    "writingAssistanceTutorialInputBar": "Du kan skriva på vilket språk som helst. Oroa dig inte för misstag! Vi hjälper dig att rätta dem.",
+    "writingAssistanceTutorialIGCButton": "Efter att du har skrivit ditt meddelande, klicka på den här knappen för att börja skrivhjälpen",
+    "selectModeTutorialTranslate": "Klicka här för att översätta meddelandet",
+    "selectModeTutorialAudio": "Klicka här för att lyssna på meddelandet",
+    "selectModeTutorialExit": "Klicka på bakgrunden för att gå tillbaka till chattandet",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

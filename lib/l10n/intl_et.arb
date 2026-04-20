@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-04-15 11:31:52.006215",
+    "@@last_modified": "2026-04-20 09:45:19.577082",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10880,6 +10880,36 @@
     },
     "blockUsernameHint": "Blokeeri kasutajanimi",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Klõpsake sõnumi mullile, et see valida",
+    "writingAssistanceTutorialInputBar": "Saate kirjutada igas keeles. Ärge muretsege vigade pärast! Me aitame teil neid parandada.",
+    "writingAssistanceTutorialIGCButton": "Pärast sõnumi kirjutamist klõpsake seda nuppu, et alustada kirjutamisabi",
+    "selectModeTutorialTranslate": "Klõpsake siin, et sõnumit tõlkida",
+    "selectModeTutorialAudio": "Klõpsake siin, et sõnumit kuulata",
+    "selectModeTutorialExit": "Klõpsake taustal, et naasta vestlusse",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

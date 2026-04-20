@@ -1746,7 +1746,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-04-15 11:31:41.973137",
+    "@@last_modified": "2026-04-20 09:44:40.200929",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -11977,6 +11977,36 @@
     },
     "blockUsernameHint": "Bloker brugernavn",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Klik på beskedboblen for at vælge den",
+    "writingAssistanceTutorialInputBar": "Du kan skrive på ethvert sprog. Bekymr dig ikke om fejl! Vi hjælper dig med at rette dem.",
+    "writingAssistanceTutorialIGCButton": "Efter at have skrevet din besked, klik på denne knap for at starte skriveassistance",
+    "selectModeTutorialTranslate": "Klik her for at oversætte beskeden",
+    "selectModeTutorialAudio": "Klik her for at lytte til beskeden",
+    "selectModeTutorialExit": "Klik på baggrunden for at gå tilbage til chatten",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

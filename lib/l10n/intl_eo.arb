@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-15 11:32:26.909628",
+    "@@last_modified": "2026-04-20 09:47:08.365577",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -12002,6 +12002,36 @@
     },
     "blockUsernameHint": "Bloki uzantnomon",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Klaku sur la mesaĝbublo por elekti ĝin",
+    "writingAssistanceTutorialInputBar": "Vi povas skribi en ajna lingvo. Ne zorgu pri eraroj! Ni helpos vin korekti ilin.",
+    "writingAssistanceTutorialIGCButton": "Post skribado de via mesaĝo, klaku ĉi tiun butonon por komenci skriban asistadon",
+    "selectModeTutorialTranslate": "Klaku ĉi tie por traduki la mesaĝon",
+    "selectModeTutorialAudio": "Klaku ĉi tie por aŭdi la mesaĝon",
+    "selectModeTutorialExit": "Klaku la fonon por reveni al babado",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

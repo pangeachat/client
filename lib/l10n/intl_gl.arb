@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-04-15 11:31:39.625165",
+    "@@last_modified": "2026-04-20 09:44:32.272708",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10883,6 +10883,36 @@
     },
     "blockUsernameHint": "Bloquear nome de usuario",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Fai clic na burbulla de mensaxe para seleccionala",
+    "writingAssistanceTutorialInputBar": "Podes escribir en calquera idioma. Non te preocupes polas faltas! Axudarémosche a corrixilas.",
+    "writingAssistanceTutorialIGCButton": "Despois de escribir a túa mensaxe, fai clic neste botón para comezar a asistencia de escritura",
+    "selectModeTutorialTranslate": "Fai clic aquí para traducir a mensaxe",
+    "selectModeTutorialAudio": "Fai clic aquí para escoitar a mensaxe",
+    "selectModeTutorialExit": "Fai clic no fondo para volver a chatear",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

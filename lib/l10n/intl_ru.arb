@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-04-15 11:32:27.863633",
+    "@@last_modified": "2026-04-20 09:47:10.676213",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11897,6 +11897,36 @@
     },
     "blockUsernameHint": "Заблокировать имя пользователя",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Нажмите на пузырь сообщения, чтобы выбрать его",
+    "writingAssistanceTutorialInputBar": "Вы можете писать на любом языке. Не беспокойтесь о ошибках! Мы поможем вам их исправить.",
+    "writingAssistanceTutorialIGCButton": "После написания вашего сообщения нажмите эту кнопку, чтобы начать помощь в написании",
+    "selectModeTutorialTranslate": "Нажмите здесь, чтобы перевести сообщение",
+    "selectModeTutorialAudio": "Нажмите здесь, чтобы прослушать сообщение",
+    "selectModeTutorialExit": "Нажмите на фон, чтобы вернуться к чату",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

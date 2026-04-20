@@ -1675,7 +1675,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-04-15 11:31:58.746579",
+    "@@last_modified": "2026-04-20 09:45:29.819739",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -12014,6 +12014,36 @@
     },
     "blockUsernameHint": "封鎖用戶名",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "點擊消息氣泡以選擇它",
+    "writingAssistanceTutorialInputBar": "你可以用任何語言寫作。不要擔心錯誤！我們會幫你糾正它們。",
+    "writingAssistanceTutorialIGCButton": "寫完你的消息後，點擊這個按鈕開始寫作輔助",
+    "selectModeTutorialTranslate": "點擊這裡翻譯消息",
+    "selectModeTutorialAudio": "點擊這裡收聽消息",
+    "selectModeTutorialExit": "點擊背景以返回聊天",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

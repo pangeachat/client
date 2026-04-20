@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-04-15 11:31:42.753614",
+    "@@last_modified": "2026-04-20 09:44:44.039127",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -11010,6 +11010,36 @@
     },
     "blockUsernameHint": "Felhasználónév blokkolása",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Kattints az üzenetbuborékra a kiválasztáshoz",
+    "writingAssistanceTutorialInputBar": "Bármilyen nyelven írhat. Ne aggódjon a hibák miatt! Segítünk kijavítani őket.",
+    "writingAssistanceTutorialIGCButton": "Üzenete megírása után kattintson erre a gombra az írási asszisztens elindításához",
+    "selectModeTutorialTranslate": "Kattintson ide az üzenet lefordításához",
+    "selectModeTutorialAudio": "Kattintson ide az üzenet meghallgatásához",
+    "selectModeTutorialExit": "Kattintson a háttérre a csevegéshez való visszatéréshez",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

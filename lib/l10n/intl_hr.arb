@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-04-15 11:31:46.675438",
+    "@@last_modified": "2026-04-20 09:45:01.207750",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11367,6 +11367,36 @@
     },
     "blockUsernameHint": "Blokiraj korisničko ime",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Kliknite na balon s porukom da biste ga odabrali",
+    "writingAssistanceTutorialInputBar": "Možete pisati na bilo kojem jeziku. Ne brinite o greškama! Pomoći ćemo vam da ih ispravite.",
+    "writingAssistanceTutorialIGCButton": "Nakon što napišete svoju poruku, kliknite na ovu tipku za početak pomoći pri pisanju",
+    "selectModeTutorialTranslate": "Kliknite ovdje za prevođenje poruke",
+    "selectModeTutorialAudio": "Kliknite ovdje da biste poslušali poruku",
+    "selectModeTutorialExit": "Kliknite na pozadinu da se vratite razgovoru",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

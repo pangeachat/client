@@ -3462,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-04-15 11:32:19.668696",
+    "@@last_modified": "2026-04-20 09:46:40.025925",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10555,6 +10555,36 @@
     },
     "blockUsernameHint": "Blokiraj korisničko ime",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Klik di gelembung pesan untuk memilihnya",
+    "writingAssistanceTutorialInputBar": "Anda dapat menulis dalam bahasa apa pun. Jangan khawatir tentang kesalahan! Kami akan membantu Anda memperbaikinya.",
+    "writingAssistanceTutorialIGCButton": "Setelah menulis pesan Anda, klik tombol ini untuk memulai bantuan penulisan",
+    "selectModeTutorialTranslate": "Klik di sini untuk menerjemahkan pesan",
+    "selectModeTutorialAudio": "Klik di sini untuk mendengarkan pesan",
+    "selectModeTutorialExit": "Klik latar belakang untuk kembali ke obrolan",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

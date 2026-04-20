@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-15 11:32:29.786289",
+    "@@last_modified": "2026-04-20 09:47:17.141196",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -12006,6 +12006,36 @@
     },
     "blockUsernameHint": "Blokiraj korisničko ime",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Kliknite na balon poruke da biste ga odabrali",
+    "writingAssistanceTutorialInputBar": "Možete pisati na bilo kojem jeziku. Ne brinite o greškama! Pomoći ćemo vam da ih ispravite.",
+    "writingAssistanceTutorialIGCButton": "Nakon što napišete svoju poruku, kliknite na ovaj dugme da započnete pomoć pri pisanju",
+    "selectModeTutorialTranslate": "Kliknite ovde da prevedete poruku",
+    "selectModeTutorialAudio": "Kliknite ovde da slušate poruku",
+    "selectModeTutorialExit": "Kliknite na pozadinu da se vratite na čat",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

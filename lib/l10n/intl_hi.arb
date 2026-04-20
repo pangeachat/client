@@ -3646,7 +3646,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-04-15 11:32:26.116600",
+    "@@last_modified": "2026-04-20 09:47:05.573232",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11602,6 +11602,36 @@
     },
     "blockUsernameHint": "उपयोगकर्ता नाम ब्लॉक करें",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "संदेश बबल पर क्लिक करें ताकि आप इसे चुन सकें",
+    "writingAssistanceTutorialInputBar": "आप किसी भी भाषा में लिख सकते हैं। गलतियों की चिंता न करें! हम आपकी मदद करेंगे उन्हें सुधारने में।",
+    "writingAssistanceTutorialIGCButton": "अपने संदेश को लिखने के बाद, लेखन सहायता शुरू करने के लिए इस बटन पर क्लिक करें",
+    "selectModeTutorialTranslate": "संदेश का अनुवाद करने के लिए यहां क्लिक करें",
+    "selectModeTutorialAudio": "संदेश सुनने के लिए यहां क्लिक करें",
+    "selectModeTutorialExit": "चैटिंग पर वापस जाने के लिए पृष्ठभूमि पर क्लिक करें",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

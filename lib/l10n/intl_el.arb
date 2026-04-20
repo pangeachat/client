@@ -4040,7 +4040,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-04-15 11:32:24.333943",
+    "@@last_modified": "2026-04-20 09:46:59.624001",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -11932,6 +11932,36 @@
     },
     "blockUsernameHint": "Αποκλεισμός ονόματος χρήστη",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Κάντε κλικ στη φούσκα μηνύματος για να την επιλέξετε",
+    "writingAssistanceTutorialInputBar": "Μπορείτε να γράψετε σε οποιαδήποτε γλώσσα. Μην ανησυχείτε για τα λάθη! Θα σας βοηθήσουμε να τα διορθώσετε.",
+    "writingAssistanceTutorialIGCButton": "Αφού γράψετε το μήνυμά σας, κάντε κλικ σε αυτό το κουμπί για να ξεκινήσετε τη βοήθεια γραφής",
+    "selectModeTutorialTranslate": "Κάντε κλικ εδώ για να μεταφράσετε το μήνυμα",
+    "selectModeTutorialAudio": "Κάντε κλικ εδώ για να ακούσετε το μήνυμα",
+    "selectModeTutorialExit": "Κάντε κλικ στο φόντο για να επιστρέψετε στη συνομιλία",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

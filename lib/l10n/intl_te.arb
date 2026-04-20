@@ -1736,7 +1736,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-04-15 11:32:15.163147",
+    "@@last_modified": "2026-04-20 09:46:22.148602",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -12004,6 +12004,36 @@
     },
     "blockUsernameHint": "యూజర్‌నేమ్‌ను బ్లాక్ చేయండి",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "సందేశ బబుల్‌ను ఎంచుకోవడానికి క్లిక్ చేయండి",
+    "writingAssistanceTutorialInputBar": "మీరు ఏ భాషలోనైనా రాయవచ్చు. తప్పుల గురించి ఆందోళన చెందవద్దు! మేము వాటిని సరిదిద్దడంలో మీకు సహాయపడుతాము.",
+    "writingAssistanceTutorialIGCButton": "మీ సందేశాన్ని రాసిన తర్వాత, రాయడం సహాయాన్ని ప్రారంభించడానికి ఈ బటన్‌పై క్లిక్ చేయండి",
+    "selectModeTutorialTranslate": "సందేశాన్ని అనువదించడానికి ఇక్కడ క్లిక్ చేయండి",
+    "selectModeTutorialAudio": "సందేశాన్ని వినడానికి ఇక్కడ క్లిక్ చేయండి",
+    "selectModeTutorialExit": "చాటింగ్‌కు తిరిగి వెళ్లడానికి నేపథ్యంపై క్లిక్ చేయండి",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-15 11:31:44.611312",
+    "@@last_modified": "2026-04-20 09:44:50.781980",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11708,6 +11708,36 @@
     },
     "blockUsernameHint": "Blochează numele de utilizator",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Faceți clic pe bula de mesaj pentru a o selecta",
+    "writingAssistanceTutorialInputBar": "Puteți scrie în orice limbă. Nu vă faceți griji cu privire la greșeli! Vă vom ajuta să le corectați.",
+    "writingAssistanceTutorialIGCButton": "După ce ați scris mesajul, faceți clic pe acest buton pentru a începe asistența la scriere",
+    "selectModeTutorialTranslate": "Faceți clic aici pentru a traduce mesajul",
+    "selectModeTutorialAudio": "Faceți clic aici pentru a asculta mesajul",
+    "selectModeTutorialExit": "Faceți clic pe fundal pentru a reveni la chat",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

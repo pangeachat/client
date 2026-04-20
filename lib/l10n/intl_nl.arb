@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-15 11:32:18.907496",
+    "@@last_modified": "2026-04-20 09:46:37.393163",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10883,6 +10883,36 @@
     },
     "blockUsernameHint": "Blokkeer gebruikersnaam",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Klik op de berichtbubble om deze te selecteren",
+    "writingAssistanceTutorialInputBar": "Je kunt in elke taal schrijven. Maak je geen zorgen over fouten! We helpen je ze te corrigeren.",
+    "writingAssistanceTutorialIGCButton": "Klik op deze knop om na het schrijven van je bericht met de schrijfassistentie te beginnen",
+    "selectModeTutorialTranslate": "Klik hier om het bericht te vertalen",
+    "selectModeTutorialAudio": "Klik hier om naar het bericht te luisteren",
+    "selectModeTutorialExit": "Klik op de achtergrond om terug te gaan naar het chatten",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

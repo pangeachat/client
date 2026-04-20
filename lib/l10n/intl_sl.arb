@@ -2231,7 +2231,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-04-15 11:31:58.158965",
+    "@@last_modified": "2026-04-20 09:45:27.156156",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11999,6 +11999,36 @@
     },
     "blockUsernameHint": "Blokiraj uporabniško ime",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Kliknite na mehurček sporočila, da ga izberete",
+    "writingAssistanceTutorialInputBar": "Lahko pišete v katerem koli jeziku. Ne skrbite zaradi napak! Pomagali vam bomo, da jih popravite.",
+    "writingAssistanceTutorialIGCButton": "Po tem, ko napišete svoje sporočilo, kliknite to gumb, da začnete pomoč pri pisanju",
+    "selectModeTutorialTranslate": "Kliknite tukaj, da prevedete sporočilo",
+    "selectModeTutorialAudio": "Kliknite tukaj, da poslušate sporočilo",
+    "selectModeTutorialExit": "Kliknite na ozadje, da se vrnete k klepetu",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

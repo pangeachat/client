@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-04-15 11:32:22.738159",
+    "@@last_modified": "2026-04-20 09:46:52.565143",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10992,6 +10992,36 @@
     },
     "blockUsernameHint": "Zablokuj nazwę użytkownika",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Kliknij na dymek wiadomości, aby go wybrać",
+    "writingAssistanceTutorialInputBar": "Możesz pisać w dowolnym języku. Nie martw się o błędy! Pomożemy Ci je poprawić.",
+    "writingAssistanceTutorialIGCButton": "Po napisaniu wiadomości kliknij ten przycisk, aby rozpocząć pomoc w pisaniu",
+    "selectModeTutorialTranslate": "Kliknij tutaj, aby przetłumaczyć wiadomość",
+    "selectModeTutorialAudio": "Kliknij tutaj, aby posłuchać wiadomości",
+    "selectModeTutorialExit": "Kliknij w tle, aby wrócić do czatu",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }

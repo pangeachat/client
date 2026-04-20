@@ -3514,7 +3514,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-04-15 11:32:16.560328",
+    "@@last_modified": "2026-04-20 09:46:26.034073",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11769,6 +11769,36 @@
     },
     "blockUsernameHint": "Blokuoti vartotojo vardą",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Paspauskite ant pranešimo burbulo, kad jį pasirinktumėte",
+    "writingAssistanceTutorialInputBar": "Galite rašyti bet kuria kalba. Nesijaudinkite dėl klaidų! Mes jums padėsime jas ištaisyti.",
+    "writingAssistanceTutorialIGCButton": "Parašę savo pranešimą, paspauskite šį mygtuką, kad pradėtumėte rašymo pagalbą",
+    "selectModeTutorialTranslate": "Paspauskite čia, kad išverstumėte pranešimą",
+    "selectModeTutorialAudio": "Paspauskite čia, kad išgirstumėte pranešimą",
+    "selectModeTutorialExit": "Paspauskite fono sritį, kad grįžtumėte prie pokalbio",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
         "type": "String",
         "placeholders": {}
     }
