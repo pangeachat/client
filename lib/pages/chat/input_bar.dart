@@ -540,12 +540,12 @@ class InputBar extends StatelessWidget {
                 ),
               ),
             ),
+            // onChanged: (text) {
+            //   // fix for the library for now
+            //   // it sets the types for the callback incorrectly
+            //   onChanged!(text);
+            // },
             // Pangea#
-            onChanged: (text) {
-              // fix for the library for now
-              // it sets the types for the callback incorrectly
-              onChanged!(text);
-            },
             textCapitalization: TextCapitalization.sentences,
           );
         },
