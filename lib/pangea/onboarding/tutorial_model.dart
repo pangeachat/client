@@ -53,6 +53,15 @@ sealed class TutorialModel {
       (index) => TutorialStep(data: stepsData[index], style: styles[index]),
     );
   }
+
+  static TutorialSequenceModel get chatTutorialSequence =>
+      TutorialSequenceModel(
+        tutorials: [
+          TutorialEnum.readingAssistance,
+          TutorialEnum.selectModeButtons,
+          TutorialEnum.writingAssistance,
+        ],
+      );
 }
 
 class ReadingAssistantTutorialModel extends TutorialModel {

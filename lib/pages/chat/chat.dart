@@ -726,18 +726,12 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void _startReadingAssistanceTutorial(Event event) {
-    _tutorialEvent = event;
-    TutorialOverlayOrchestrator.instance.enqueueTutorialSequence(
-      TutorialSequenceModel(
-        tutorials: [
-          TutorialEnum.readingAssistance,
-          TutorialEnum.selectModeButtons,
-          TutorialEnum.writingAssistance,
-        ],
-      ),
-    );
-
     final orchestrator = TutorialOverlayOrchestrator.instance;
+    final tutorialSeq = TutorialModel.chatTutorialSequence;
+    if (orchestrator.hasCompletedTutorialSequence(tutorialSeq)) return;
+
+    _tutorialEvent = event;
+    orchestrator.enqueueTutorialSequence(tutorialSeq);
 
     // After filtering to only unseen tutorials, the first queued tutorial may
     // not be readingAssistance (e.g. the user completed the first two stages
@@ -815,7 +809,7 @@ class ChatController extends State<ChatPageWithRoom>
 
     _writingAssistanceTutorialSubscription = TutorialOverlayOrchestrator
         .instance
-        .tutorialCompleteStream
+        .tutorialNavigationStream
         .listen(_writingAssistanceTutorialListener);
 
     _goBackTutorialSubscription = TutorialOverlayOrchestrator

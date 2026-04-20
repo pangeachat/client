@@ -15,7 +15,7 @@ class TutorialOverlayOrchestrator {
   static final TutorialOverlayOrchestrator instance =
       TutorialOverlayOrchestrator._();
 
-  final StreamController<TutorialEnum> _tutorialCompleteStreamController =
+  final StreamController<TutorialEnum> _tutorialNavigationStreamController =
       StreamController.broadcast();
 
   final StreamController<TutorialEnum> _goBackTutorialStreamController =
@@ -31,8 +31,8 @@ class TutorialOverlayOrchestrator {
   /// start at the correct step.
   int? _pendingInitialStepIndex;
 
-  Stream<TutorialEnum> get tutorialCompleteStream =>
-      _tutorialCompleteStreamController.stream;
+  Stream<TutorialEnum> get tutorialNavigationStream =>
+      _tutorialNavigationStreamController.stream;
 
   /// Emits the [TutorialEnum] of the tutorial the user navigated back to.
   /// Host widgets should listen to this, re-prepare their UI state, and
@@ -66,6 +66,13 @@ class TutorialOverlayOrchestrator {
     return sequence.tutorials[_index] == tutorial;
   }
 
+  bool hasCompletedTutorialSequence(TutorialSequenceModel tutorialSequence) =>
+      unseenTutorialsInSequence(tutorialSequence).isEmpty;
+
+  List<TutorialEnum> unseenTutorialsInSequence(
+    TutorialSequenceModel tutorialSequence,
+  ) => tutorialSequence.tutorials.where((t) => !t.hasBeenSeen).toList();
+
   /// Adds a single tutorial sequence to the end of the queue.
   void enqueueTutorialSequence(TutorialSequenceModel tutorialSequence) {
     if (_sequence != null) {
@@ -75,10 +82,7 @@ class TutorialOverlayOrchestrator {
       return;
     }
 
-    final unseenTutorials = tutorialSequence.tutorials
-        .where((t) => !t.hasBeenSeen)
-        .toList();
-
+    final unseenTutorials = unseenTutorialsInSequence(tutorialSequence);
     if (unseenTutorials.isEmpty) {
       Logs().i("All tutorials in sequence have already been seen, skipping");
       return;
@@ -178,8 +182,6 @@ class TutorialOverlayOrchestrator {
   }
 
   void onCloseTutorial(TutorialEnum tutorial) {
-    tutorial.markSeen();
-
     if (_sequence == null) {
       Logs().w(
         "Received tutorial complete event for tutorial $tutorial but no active tutorial sequence",
@@ -195,6 +197,6 @@ class TutorialOverlayOrchestrator {
     if (_activeTutorial == tutorial) {
       _activeTutorial = null;
     }
-    _tutorialCompleteStreamController.add(tutorial);
+    _tutorialNavigationStreamController.add(tutorial);
   }
 }
