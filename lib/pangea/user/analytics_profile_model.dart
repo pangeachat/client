@@ -1,3 +1,4 @@
+import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
@@ -30,15 +31,15 @@ class AnalyticsProfileModel {
         : null;
 
     final languageAnalytics = <LanguageModel, LanguageAnalyticsProfileEntry>{};
-    if (profileJson[ModelKey.analytics] != null &&
-        profileJson[ModelKey.analytics]!.isNotEmpty) {
-      for (final entry in profileJson[ModelKey.analytics].entries) {
+    if (profileJson[AnalyticsConstants.analytics] != null &&
+        profileJson[AnalyticsConstants.analytics]!.isNotEmpty) {
+      for (final entry in profileJson[AnalyticsConstants.analytics].entries) {
         final lang = PLanguageStore.byLangCode(entry.key);
         if (lang == null) continue;
-        final level = entry.value[ModelKey.level];
-        final xpOffset = entry.value[ModelKey.xpOffset] ?? 0;
+        final level = entry.value[AnalyticsConstants.level];
+        final xpOffset = entry.value[AnalyticsConstants.xpOffset] ?? 0;
         final analyticsRoomId =
-            entry.value[ModelKey.analyticsRoomId] as String?;
+            entry.value[AnalyticsConstants.analyticsRoomId] as String?;
         languageAnalytics[lang] = LanguageAnalyticsProfileEntry(
           level,
           xpOffset,
@@ -70,15 +71,15 @@ class AnalyticsProfileModel {
     if (languageAnalytics != null && languageAnalytics!.isNotEmpty) {
       for (final entry in languageAnalytics!.entries) {
         analytics[entry.key.langCode] = {
-          ModelKey.level: entry.value.level,
-          ModelKey.xpOffset: entry.value.xpOffset,
+          AnalyticsConstants.level: entry.value.level,
+          AnalyticsConstants.xpOffset: entry.value.xpOffset,
           if (entry.value.analyticsRoomId != null)
-            ModelKey.analyticsRoomId: entry.value.analyticsRoomId,
+            AnalyticsConstants.analyticsRoomId: entry.value.analyticsRoomId,
         };
       }
     }
 
-    json[ModelKey.analytics] = analytics;
+    json[AnalyticsConstants.analytics] = analytics;
     return json;
   }
 

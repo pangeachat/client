@@ -38,11 +38,6 @@ class ReadingAssistanceContent extends StatelessWidget {
         : -1;
 
     return WordZoomWidget(
-      key: MatrixState.pAnyState
-          .layerLinkAndKey(
-            "word-zoom-card-${overlayController.selectedToken!.text.uniqueKey}",
-          )
-          .key,
       token: overlayController.selectedToken!.text,
       construct: overlayController.selectedToken!.vocabConstructID,
       pos: overlayController.selectedToken!.pos,
@@ -52,7 +47,6 @@ class ReadingAssistanceContent extends StatelessWidget {
       event: overlayController.event,
       onClose: () => overlayController.updateSelectedSpan(null),
       langCode: overlayController.pangeaMessageEvent.messageDisplayLangCode,
-      onDismissNewWordOverlay: () => overlayController.setState(() {}),
       onFlagTokenInfo:
           (
             LemmaInfoResponse lemmaInfo,

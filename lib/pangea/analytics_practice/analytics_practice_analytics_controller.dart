@@ -2,7 +2,7 @@ import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class AnalyticsPracticeAnalyticsController {
@@ -15,13 +15,13 @@ class AnalyticsPracticeAnalyticsController {
     return derviedData.levelProgress;
   }
 
-  Future<void> addCompletedActivityAnalytics(
+  Future<void> addCompletedExerciseAnalytics(
     List<OneConstructUse> uses,
     String targetId,
     String language,
   ) => analyticsService.updateService.addAnalytics(targetId, uses, language);
 
-  Future<void> addSkippedActivityAnalytics(
+  Future<void> addSkippedExerciseAnalytics(
     PracticeTarget target,
     String language,
   ) async {
@@ -29,7 +29,7 @@ class AnalyticsPracticeAnalyticsController {
         .map(
           (t) => OneConstructUse(
             useType: ConstructUseTypeEnum.ignPA,
-            constructType: target.activityType.constructUsesType,
+            constructType: target.exerciseType.constructUsesType,
             metadata: ConstructUseMetaData(
               roomId: null,
               timeStamp: DateTime.now(),

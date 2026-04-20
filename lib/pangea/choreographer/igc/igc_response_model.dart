@@ -1,3 +1,4 @@
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
@@ -45,8 +46,8 @@ class IGCResponseModel {
       userL1: json[ModelKey.userL1],
       userL2: json[ModelKey.userL2],
       // V2 responses don't include these fields; default to true
-      enableIT: json[ModelKey.enableIT] ?? true,
-      enableIGC: json[ModelKey.enableIGC] ?? true,
+      enableIT: json[ChoreoConstants.enableIT] ?? true,
+      enableIGC: json[ChoreoConstants.enableIGC] ?? true,
     );
   }
 
@@ -57,7 +58,7 @@ class IGCResponseModel {
     "matches": matches.map((e) => e.match.toJson()).toList(),
     ModelKey.userL1: userL1,
     ModelKey.userL2: userL2,
-    ModelKey.enableIT: enableIT,
-    ModelKey.enableIGC: enableIGC,
+    ChoreoConstants.enableIT: enableIT,
+    ChoreoConstants.enableIGC: enableIGC,
   };
 }

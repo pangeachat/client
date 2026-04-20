@@ -36,6 +36,7 @@ class FindCoursePage extends StatefulWidget {
 
 class FindCoursePageState extends State<FindCoursePage> {
   final TextEditingController searchController = TextEditingController();
+  final ScrollController scrollController = ScrollController();
   Timer? _coolDown;
 
   final ValueNotifier<bool> loading = ValueNotifier(false);
@@ -56,14 +57,21 @@ class FindCoursePageState extends State<FindCoursePage> {
   @override
   void initState() {
     super.initState();
-    targetLanguageFilter.value =
-        MatrixState.pangeaController.userController.userL2;
+    final l2 = MatrixState.pangeaController.userController.userL2;
+    if (l2 != null) {
+      final availableLanguages =
+          MatrixState.pangeaController.pLanguageStore.unlocalizedTargetOptions;
+      targetLanguageFilter.value = availableLanguages.contains(l2)
+          ? l2
+          : l2.unlocalized;
+    }
     loadMore();
   }
 
   @override
   void dispose() {
     searchController.dispose();
+    scrollController.dispose();
     _coolDown?.cancel();
     visibleCourses.dispose();
     loading.dispose();
@@ -77,6 +85,10 @@ class FindCoursePageState extends State<FindCoursePage> {
     visibleCourses.value = [];
     loading.value = false;
     _loadGeneration++;
+    if (scrollController.hasClients) {
+      scrollController.jumpTo(0);
+    }
+    searchController.clear();
     loadMore();
   }
 
@@ -435,6 +447,7 @@ class FindCoursePageView extends StatelessWidget {
 
                   return Expanded(
                     child: ListView.builder(
+                      controller: controller.scrollController,
                       itemCount: courses.length + 1,
                       itemBuilder: (context, index) {
                         if (index == courses.length) {
@@ -551,7 +564,12 @@ class _PublicCourseTile extends StatelessWidget {
                 ),
                 if (course != null) ...[
                   CourseInfoChips(courseId, iconSize: 12.0, fontSize: 12.0),
-                  Text(course!.description, style: theme.textTheme.bodyMedium),
+                  Text(
+                    course!.description,
+                    style: theme.textTheme.bodyMedium,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ],
                 const SizedBox(height: 12.0),
                 HoverBuilder(

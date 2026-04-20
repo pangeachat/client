@@ -12,6 +12,7 @@ import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/course_settings/pin_clipper.dart';
 import 'package:fluffychat/pangea/course_settings/topic_activities_list.dart';
 import 'package:fluffychat/pangea/course_settings/topic_participant_list.dart';
@@ -38,7 +39,7 @@ class CourseSettingsState extends State<CourseSettings> {
   @override
   void didUpdateWidget(covariant CourseSettings oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.roomId != widget.roomId) {
+    if (oldWidget.roomId != widget.roomId && _scrollController.hasClients) {
       _scrollController.jumpTo(0);
     }
   }
@@ -53,7 +54,7 @@ class CourseSettingsState extends State<CourseSettings> {
 
   @override
   Widget build(BuildContext context) {
-    if (controller.loadingCourse) {
+    if (controller.loadingCourse || controller.loadingTopics) {
       return const Center(child: CircularProgressIndicator.adaptive());
     }
 
@@ -70,57 +71,30 @@ class CourseSettingsState extends State<CourseSettings> {
       );
     }
 
-    if (controller.course == null || controller.courseError != null) {
-      if (controller.courseError != null) {
-        return Center(
-          child: Text(
-            L10n.of(context).courseLoadingError,
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
+    if (controller.courseError != null) {
+      final error = controller.courseError!;
+      if (error is MissingCourseTranslationException &&
+          error.localizationError?.isNotFound == true) {
+        return _CourseLoadError(
+          error: L10n.of(context).noCourseFound,
+          buttonText: L10n.of(context).addCoursePlan,
+          room: room,
+        );
+      } else {
+        return _CourseLoadError(
+          error: L10n.of(context).courseLoadingError,
+          buttonText: L10n.of(context).changeCourse,
+          room: room,
         );
       }
+    }
 
-      return room.canChangeStateEvent(PangeaEventTypes.coursePlan)
-          ? Column(
-              spacing: 50.0,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  L10n.of(context).noCourseFound,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Theme.of(
-                      context,
-                    ).colorScheme.primaryContainer,
-                    foregroundColor: Theme.of(
-                      context,
-                    ).colorScheme.onPrimaryContainer,
-                  ),
-                  onPressed: () => context.go(
-                    "/rooms/spaces/${controller.roomId}/addcourse",
-                  ),
-                  child: Row(
-                    spacing: 8.0,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Icon(Icons.map_outlined),
-                      Text(L10n.of(context).addCoursePlan),
-                    ],
-                  ),
-                ),
-              ],
-            )
-          : Center(
-              child: Text(
-                L10n.of(context).noCourseFound,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-            );
+    if (controller.course == null) {
+      return _CourseLoadError(
+        error: L10n.of(context).noCourseFound,
+        buttonText: L10n.of(context).addCoursePlan,
+        room: room,
+      );
     }
 
     final theme = Theme.of(context);
@@ -128,10 +102,6 @@ class CourseSettingsState extends State<CourseSettings> {
     final double titleFontSize = isColumnMode ? 24.0 : 12.0;
     final double descFontSize = isColumnMode ? 12.0 : 8.0;
     final double iconSize = isColumnMode ? 16.0 : 12.0;
-
-    if (controller.loadingTopics) {
-      return const Center(child: CircularProgressIndicator.adaptive());
-    }
 
     final activeTopicId = controller.currentTopicId(
       Matrix.of(context).client.userID!,
@@ -274,13 +244,11 @@ class CourseSettingsState extends State<CourseSettings> {
                       },
                     ),
                     if (!locked)
-                      SizedBox(
+                      TopicActivitiesList(
+                        room: room,
+                        topic: topic,
+                        hasCompletedActivity: controller.hasCompletedActivity,
                         height: isColumnMode ? 290.0 : 210.0,
-                        child: TopicActivitiesList(
-                          room: room,
-                          topic: topic,
-                          hasCompletedActivity: controller.hasCompletedActivity,
-                        ),
                       ),
                   ],
                 ),
@@ -288,6 +256,50 @@ class CourseSettingsState extends State<CourseSettings> {
             );
           }),
           const SizedBox(height: 16.0),
+        ],
+      ),
+    );
+  }
+}
+
+class _CourseLoadError extends StatelessWidget {
+  final String error;
+  final String buttonText;
+  final Room room;
+
+  const _CourseLoadError({
+    required this.error,
+    required this.buttonText,
+    required this.room,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        spacing: 50.0,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            error,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          if (room.canChangeStateEvent(PangeaEventTypes.coursePlan))
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                foregroundColor: Theme.of(
+                  context,
+                ).colorScheme.onPrimaryContainer,
+              ),
+              onPressed: () => context.go("/rooms/spaces/${room.id}/addcourse"),
+              child: Row(
+                spacing: 8.0,
+                mainAxisSize: MainAxisSize.min,
+                children: [const Icon(Icons.map_outlined), Text(buttonText)],
+              ),
+            ),
         ],
       ),
     );

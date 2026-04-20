@@ -105,7 +105,7 @@ Key capabilities:
 - Access tokens for the message
 - Get translations and representations
 - Trigger TTS/STT
-- Get associated practice activities
+- Get associated practice exercises
 
 ### PangeaRepresentationEvent (`events/event_wrappers/pangea_representation_event.dart`)
 
@@ -127,4 +127,4 @@ Wraps a `pangea.record` event. Provides typed access to `ChoreoRecordModel` (edi
 
 1. **Writing**: Choreographer gets tokens from `/tokenize` on send
 2. **Saving**: `PangeaMessageContentModel` bundles tokens + choreo record + representations → saved as Matrix child events
-3. **Reading**: `PangeaMessageEvent` loads child events → toolbar uses `PangeaToken` list for word cards, practice activities, analytics
+3. **Reading**: `PangeaMessageEvent` loads child events → toolbar uses `PangeaToken` list for word cards, practice exercises, analytics

@@ -1,3 +1,5 @@
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+
 class ActivityFeedbackRequest {
   final String activityId;
   final String feedbackText;
@@ -17,9 +19,9 @@ class ActivityFeedbackRequest {
     return {
       'activity_id': activityId,
       'feedback_text': feedbackText,
-      'user_id': userId,
-      'user_l1': userL1,
-      'user_l2': userL2,
+      ModelKey.userId: userId,
+      ModelKey.userL1: userL1,
+      ModelKey.userL2: userL2,
     };
   }
 

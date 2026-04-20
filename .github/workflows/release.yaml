@@ -114,8 +114,8 @@ jobs:
           ruby-version: "3.3"
       - name: Update env files to selected environment
         run: |
-          rm .env
-          rm assets/.env
+          rm -f .env
+          rm -f assets/.env
           echo "$WEB_APP_ENV" >> .env
           cp .env assets/.env
       - name: Apply .env patch
@@ -205,7 +205,11 @@ jobs:
             --exclude "index.html" \
             --exclude "flutter_service_worker.js" \
             --exclude "version.json" \
-            --exclude "manifest.json"
+            --exclude "manifest.json" \
+            --exclude "assets/fonts/*"
+          # Font files — stable filenames, must revalidate each session
+          aws s3 sync ./build/web/assets/fonts s3://$WEBAPP_S3_BUCKET/assets/fonts \
+            --cache-control "no-cache, must-revalidate"
           # Mutable entry points — always revalidate
           for f in index.html flutter_service_worker.js version.json manifest.json; do
             if [ -f "./build/web/$f" ]; then

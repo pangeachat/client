@@ -7,11 +7,12 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/events/constants/message_constants.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/extensions/room_member_change_extension.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
 
@@ -35,7 +36,7 @@ extension PangeaEvent on Event {
       case PangeaEventTypes.choreoRecord:
         return ChoreoRecordModel.fromJson(json) as V;
       case PangeaEventTypes.pangeaActivity:
-        return PracticeActivityModel.fromJson(json) as V;
+        return PracticeExerciseModel.fromJson(json) as V;
       default:
         debugger(when: kDebugMode);
         throw Exception("$type events do not have pangea content");
@@ -52,7 +53,7 @@ extension PangeaEvent on Event {
     }
 
     final transcription = content.tryGetMap<String, dynamic>(
-      ModelKey.transcription,
+      MessageConstants.transcription,
     );
     final audioContent = content.tryGetMap<String, dynamic>(
       'org.matrix.msc1767.audio',
@@ -61,10 +62,10 @@ extension PangeaEvent on Event {
     final matrixFile = await downloadAndDecryptAttachment();
 
     final duration =
-        audioContent?.tryGet<int>(ModelKey.duration) ??
+        audioContent?.tryGet<int>(MessageConstants.duration) ??
         content
             .tryGetMap<String, dynamic>('info')
-            ?.tryGet<int>(ModelKey.duration);
+            ?.tryGet<int>(MessageConstants.duration);
 
     final waveform =
         audioContent?.tryGetList<int>('waveform') ??
@@ -90,10 +91,11 @@ extension PangeaEvent on Event {
   }
 
   bool get isActivityMessage =>
-      content[ModelKey.messageTags] == ModelKey.messageTagActivityPlan;
+      content[MessageConstants.messageTags] ==
+      MessageConstants.messageTagActivityPlan;
 
   bool get isVisibleLastEvent {
-    if (content.tryGet(ModelKey.transcription) != null) {
+    if (content.tryGet(MessageConstants.transcription) != null) {
       return false;
     }
 

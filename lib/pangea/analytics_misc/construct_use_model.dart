@@ -7,9 +7,10 @@ import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/practice_tier_enum.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
 
 /// One lemma and a list of construct uses for that lemma
 class ConstructUses {
@@ -138,24 +139,106 @@ class ConstructUses {
     return PracticeTier.maintenance;
   }
 
-  DateTime? lastUseByTypes(List<ConstructUseTypeEnum> types) =>
+  DateTime? _lastUseByType(ConstructUseTypeEnum type) =>
+      _uses.lastWhereOrNull((u) => u.useType == type)?.timeStamp;
+
+  DateTime? _lastUseByTypes(List<ConstructUseTypeEnum> types) =>
       _uses.lastWhereOrNull((u) => types.contains(u.useType))?.timeStamp;
+
+  /// Returns true when this construct should be skipped due to a recent
+  /// correct answer for [exerciseType].
+  ///
+  /// If recent attempts have a high incorrect-answer ratio, the cooldown is
+  /// bypassed so difficult constructs can reappear in the next session.
+  bool shouldSkipForRecentPractice(
+    PracticeExerciseTypeEnum exerciseType, {
+    DateTime? now,
+  }) {
+    final clock = now ?? DateTime.now();
+    final cutoff = clock.subtract(
+      AnalyticsPracticeConstants.recentPracticeCooldown,
+    );
+
+    final lastCorrectUse = _lastUseByType(exerciseType.correctUse);
+    if (lastCorrectUse == null || !lastCorrectUse.isAfter(cutoff)) {
+      return false;
+    }
+
+    final recentAttempts =
+        _uses
+            .where(
+              (use) =>
+                  exerciseType.associatedUseTypes.contains(use.useType) &&
+                  use.timeStamp.isAfter(cutoff),
+            )
+            .toList()
+          ..sort((a, b) => a.timeStamp.compareTo(b.timeStamp));
+
+    // Strong recent success should end retries even if older attempts were
+    // noisy (for example, several wrong taps before eventually getting it).
+    final consecutiveCorrect = _consecutiveCorrectFromEnd(
+      recentAttempts,
+      exerciseType,
+    );
+    if (consecutiveCorrect >=
+        AnalyticsPracticeConstants.consecutiveCorrectToEndRetry) {
+      return true;
+    }
+
+    final attemptsCount = recentAttempts.length;
+    if (attemptsCount <
+        AnalyticsPracticeConstants.minAttemptsToBypassRecentCooldown) {
+      return true;
+    }
+
+    final incorrectCount = recentAttempts
+        .where((use) => use.useType == exerciseType.incorrectUse)
+        .length;
+    final incorrectRatio = incorrectCount / attemptsCount;
+
+    final allowRetry =
+        incorrectRatio >=
+        AnalyticsPracticeConstants.incorrectRatioToBypassRecentCooldown;
+    return !allowRetry;
+  }
+
+  int _consecutiveCorrectFromEnd(
+    List<OneConstructUse> attempts,
+    PracticeExerciseTypeEnum exerciseType,
+  ) {
+    var count = 0;
+
+    for (int i = attempts.length - 1; i >= 0; i--) {
+      final use = attempts[i].useType;
+
+      if (use == exerciseType.correctUse) {
+        count++;
+        continue;
+      }
+
+      if (use == exerciseType.incorrectUse) {
+        break;
+      }
+    }
+
+    return count;
+  }
 
   /// Compute priority score for this construct.
   ///
   /// Higher score = higher priority (should be practiced sooner).
   /// Suppressed-tier constructs return 0.
   ///
-  /// When [activityType] is provided, recency is checked against that
-  /// activity's specific use types (e.g., corPA/incPA for wordMeaning).
+  /// When [exerciseType] is provided, recency is checked against that
+  /// exercise's specific use types (e.g., corPA/incPA for wordMeaning).
   /// Otherwise, aggregate recency across all use types is used.
-  int practiceScore({ActivityTypeEnum? activityType}) {
+  int practiceScore({PracticeExerciseTypeEnum? exerciseType}) {
     final tier = practiceTier;
     if (tier == PracticeTier.suppressed) return 0;
 
-    // Per-activity-type recency when available, otherwise aggregate.
-    final DateTime? lastUsedDate = activityType != null
-        ? lastUseByTypes(activityType.associatedUseTypes)
+    // Per-exercise-type recency when available, otherwise aggregate.
+    final DateTime? lastUsedDate = exerciseType != null
+        ? _lastUseByTypes(exerciseType.associatedUseTypes)
         : lastUsed;
 
     final daysSince = lastUsedDate == null

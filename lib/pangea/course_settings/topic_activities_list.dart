@@ -6,15 +6,16 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_model.dart';
 import 'package:fluffychat/pangea/course_settings/activity_card_placeholder.dart';
+import 'package:fluffychat/pangea/course_settings/activity_suggestion_card.dart';
 
 class TopicActivitiesList extends StatefulWidget {
   final Room room;
   final CourseTopicModel topic;
+  final double height;
   final bool Function(String userId, String activityId) hasCompletedActivity;
 
   const TopicActivitiesList({
@@ -22,6 +23,7 @@ class TopicActivitiesList extends StatefulWidget {
     required this.room,
     required this.topic,
     required this.hasCompletedActivity,
+    required this.height,
   });
   @override
   State<TopicActivitiesList> createState() => TopicActivitiesListState();
@@ -54,7 +56,14 @@ class TopicActivitiesListState extends State<TopicActivitiesList> {
   }
 
   Future<void> _load() async {
-    if (widget.topic.activityListComplete) return;
+    final loadingId = widget.topic.uuid;
+    if (widget.topic.activityListComplete) {
+      setState(() {
+        _loading = false;
+        _error = null;
+      });
+      return;
+    }
 
     setState(() {
       _loading = true;
@@ -67,89 +76,133 @@ class TopicActivitiesListState extends State<TopicActivitiesList> {
       _error = e;
       ErrorHandler.logError(e: e, s: s, data: {'topicId': widget.topic.uuid});
     } finally {
-      if (mounted) setState(() => _loading = false);
+      if (loadingId != widget.topic.uuid) {
+        Logs().w(
+          "Topic changed while loading activities, expected ${widget.topic.uuid} but got $loadingId, skipping setState",
+        );
+      } else {
+        if (mounted) setState(() => _loading = false);
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_loading) {
-      return ActivityCardPlaceholder(
-        activityCount: widget.topic.activityIds.length,
-      );
-    }
+    return AnimatedSize(
+      duration: FluffyThemes.animationDuration,
+      child: Builder(
+        builder: (context) {
+          if (_loading) {
+            return SizedBox(
+              height: widget.height,
+              child: ActivityCardPlaceholder(
+                activityCount: widget.topic.activityIds.length,
+              ),
+            );
+          }
 
-    if (_error != null) {
-      return ErrorIndicator(message: L10n.of(context).oopsSomethingWentWrong);
-    }
+          if (_error != null) {
+            return SizedBox(
+              height: 75.0,
+              child: ErrorIndicator(
+                message: L10n.of(context).oopsSomethingWentWrong,
+              ),
+            );
+          }
 
-    final theme = Theme.of(context);
-    final isColumnMode = FluffyThemes.isColumnMode(context);
+          final theme = Theme.of(context);
+          final isColumnMode = FluffyThemes.isColumnMode(context);
 
-    final activityEntries = widget.topic.loadedActivities.entries.toList();
-    activityEntries.sort(
-      (a, b) => a.value.req.numberOfParticipants.compareTo(
-        b.value.req.numberOfParticipants,
-      ),
-    );
-
-    if (activityEntries.isEmpty) {
-      return SizedBox();
-    }
-
-    return Scrollbar(
-      thumbVisibility: true,
-      controller: _scrollController,
-      child: ListView.builder(
-        controller: _scrollController,
-        scrollDirection: Axis.horizontal,
-        itemCount: activityEntries.length,
-        itemBuilder: (context, index) {
-          final activityEntry = activityEntries[index];
-          final complete = widget.hasCompletedActivity(
-            widget.room.client.userID!,
-            activityEntry.key,
+          final activityEntries = widget.topic.loadedActivities.entries
+              .toList();
+          activityEntries.sort(
+            (a, b) => a.value.req.numberOfParticipants.compareTo(
+              b.value.req.numberOfParticipants,
+            ),
           );
 
-          final activity = activityEntry.value;
-          return Padding(
-            padding: index != (activityEntries.length - 1)
-                ? const EdgeInsets.only(right: 24.0)
-                : EdgeInsets.zero,
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: GestureDetector(
-                onTap: () => context.go(
-                  "/rooms/spaces/${widget.room.id}/activity/${activityEntry.key}",
-                ),
-                child: Stack(
+          if (activityEntries.isEmpty) {
+            return SizedBox(
+              height: 75.0,
+              child: RichText(
+                text: TextSpan(
                   children: [
-                    ActivitySuggestionCard(
-                      activity: activity,
-                      width: isColumnMode ? 160.0 : 120.0,
-                      height: isColumnMode ? 280.0 : 200.0,
-                      fontSize: isColumnMode ? 20.0 : 12.0,
-                      fontSizeSmall: isColumnMode ? 12.0 : 8.0,
-                      iconSize: isColumnMode ? 12.0 : 8.0,
+                    WidgetSpan(
+                      alignment: PlaceholderAlignment.middle,
+                      child: Icon(Icons.info_outline, size: 24.0),
                     ),
-                    if (complete)
-                      Container(
-                        width: isColumnMode ? 160.0 : 120.0,
-                        height: isColumnMode ? 280.0 : 200.0,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12.0),
-                          color: theme.colorScheme.surface.withAlpha(180),
-                        ),
-                        child: Center(
-                          child: SvgPicture.asset(
-                            "assets/pangea/check.svg",
-                            width: 48.0,
-                            height: 48.0,
-                          ),
-                        ),
-                      ),
+                    TextSpan(text: '  '),
+                    TextSpan(
+                      text: L10n.of(context).noActivitiesFound,
+                      style: DefaultTextStyle.of(context).style,
+                    ),
                   ],
                 ),
+              ),
+            );
+          }
+
+          return SizedBox(
+            height: widget.height,
+            child: Scrollbar(
+              thumbVisibility: true,
+              controller: _scrollController,
+              child: ListView.builder(
+                controller: _scrollController,
+                scrollDirection: Axis.horizontal,
+                itemCount: activityEntries.length,
+                itemBuilder: (context, index) {
+                  final activityEntry = activityEntries[index];
+                  final complete = widget.hasCompletedActivity(
+                    widget.room.client.userID!,
+                    activityEntry.key,
+                  );
+
+                  final activity = activityEntry.value;
+                  return Padding(
+                    padding: index != (activityEntries.length - 1)
+                        ? const EdgeInsets.only(right: 24.0)
+                        : EdgeInsets.zero,
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: () => context.go(
+                          "/rooms/spaces/${widget.room.id}/activity/${activityEntry.key}?tab=course",
+                        ),
+                        child: Stack(
+                          children: [
+                            ActivitySuggestionCard(
+                              activity: activity,
+                              width: isColumnMode ? 160.0 : 120.0,
+                              height: isColumnMode ? 280.0 : 200.0,
+                              fontSize: isColumnMode ? 20.0 : 12.0,
+                              fontSizeSmall: isColumnMode ? 12.0 : 8.0,
+                              iconSize: isColumnMode ? 12.0 : 8.0,
+                            ),
+                            if (complete)
+                              Container(
+                                width: isColumnMode ? 160.0 : 120.0,
+                                height: isColumnMode ? 280.0 : 200.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  color: theme.colorScheme.surface.withAlpha(
+                                    180,
+                                  ),
+                                ),
+                                child: Center(
+                                  child: SvgPicture.asset(
+                                    "assets/pangea/check.svg",
+                                    width: 48.0,
+                                    height: 48.0,
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
           );

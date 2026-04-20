@@ -12,6 +12,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
+import 'package:fluffychat/pangea/events/constants/message_constants.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
@@ -70,7 +71,7 @@ class PangeaMessageEvent {
 
   DateTime get originServerTs => _event.originServerTs;
 
-  String get eventId => _event.eventId;
+  String get eventId => _latestEdit.eventId;
 
   Room get room => _event.room;
 
@@ -95,7 +96,7 @@ class PangeaMessageEvent {
       .aggregatedEvents(timeline, PangeaEventTypes.textToSpeech)
       .where((element) {
         return element.content.tryGet<Map<String, dynamic>>(
-              ModelKey.transcription,
+              MessageConstants.transcription,
             ) !=
             null;
       })
@@ -122,9 +123,12 @@ class PangeaMessageEvent {
 
   ChoreoRecordModel? get _embeddedChoreo {
     try {
-      if (_latestEdit.content[ModelKey.choreoRecord] == null) return null;
+      if (_latestEdit.content[MessageConstants.choreoRecord] == null) {
+        return null;
+      }
       return ChoreoRecordModel.fromJson(
-        _latestEdit.content[ModelKey.choreoRecord] as Map<String, dynamic>,
+        _latestEdit.content[MessageConstants.choreoRecord]
+            as Map<String, dynamic>,
         originalWrittenContent,
       );
     } catch (e, s) {
@@ -160,7 +164,8 @@ class PangeaMessageEvent {
     _representations = [];
     try {
       final tokens = _tokensSafe(
-        _latestEdit.content[ModelKey.tokensSent] as Map<String, dynamic>?,
+        _latestEdit.content[MessageConstants.tokensSent]
+            as Map<String, dynamic>?,
       );
 
       // If originalSent has no tokens, there is not way to generate a tokens event
@@ -199,17 +204,17 @@ class PangeaMessageEvent {
       );
     }
 
-    if (_latestEdit.content[ModelKey.originalWritten] != null) {
+    if (_latestEdit.content[MessageConstants.originalWritten] != null) {
       try {
         _representations!.add(
           RepresentationEvent(
             parentMessageEvent: _latestEdit,
             content: PangeaRepresentation.fromJson(
-              _latestEdit.content[ModelKey.originalWritten]
+              _latestEdit.content[MessageConstants.originalWritten]
                   as Map<String, dynamic>,
             ),
             tokens: _tokensSafe(
-              _latestEdit.content[ModelKey.tokensWritten]
+              _latestEdit.content[MessageConstants.tokensWritten]
                   as Map<String, dynamic>?,
             ),
             timeline: timeline,
@@ -297,7 +302,7 @@ class PangeaMessageEvent {
 
   Event? _getTextToSpeechLocal(String langCode, String text, String? voice) {
     for (final audio in ttsEvents) {
-      final dataMap = audio.content.tryGetMap(ModelKey.transcription);
+      final dataMap = audio.content.tryGetMap(MessageConstants.transcription);
       if (dataMap == null || !dataMap.containsKey(ModelKey.tokens)) continue;
 
       try {
@@ -327,8 +332,8 @@ class PangeaMessageEvent {
     // Check for STT embedded directly in the audio event content
     // (user-sent audio embeds under userStt, bot-sent audio under botTranscription)
     final rawEmbeddedStt =
-        event.content.tryGetMap(ModelKey.userStt) ??
-        event.content.tryGetMap(ModelKey.botTranscription);
+        event.content.tryGetMap(MessageConstants.userStt) ??
+        event.content.tryGetMap(MessageConstants.botTranscription);
 
     if (rawEmbeddedStt != null) {
       try {
@@ -420,13 +425,16 @@ class PangeaMessageEvent {
     room.sendFileEvent(
       file,
       extraContent: {
-        'info': {...file.info, ModelKey.duration: response.durationMillis},
+        'info': {
+          ...file.info,
+          MessageConstants.duration: response.durationMillis,
+        },
         'org.matrix.msc3245.voice': {},
         'org.matrix.msc1767.audio': {
-          ModelKey.duration: response.durationMillis,
+          MessageConstants.duration: response.durationMillis,
           'waveform': response.waveform,
         },
-        ModelKey.transcription: response
+        MessageConstants.transcription: response
             .toPangeaAudioEventData(rep?.text ?? body, langCode, voice)
             .toJson(),
         "m.relates_to": {

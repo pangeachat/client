@@ -5,7 +5,7 @@ import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';

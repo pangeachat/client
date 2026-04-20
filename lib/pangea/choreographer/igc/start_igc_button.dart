@@ -10,7 +10,6 @@ import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
-import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/segmented_circular_progress.dart';
 import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
 
@@ -175,7 +174,7 @@ class _StartIGCButtonState extends State<StartIGCButton>
           return Segment(
             segmentPercent,
             m.updatedMatch.status.isOpen
-                ? m.updatedMatch.match.type.color
+                ? m.updatedMatch.match.color
                 : AppConfig.success,
             opacity: opacity,
           );

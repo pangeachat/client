@@ -7,28 +7,24 @@ import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constant
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
+import 'package:fluffychat/pangea/practice_exercises/message_practice_exercise_request.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class GrammarErrorTargetGenerator {
-  static ActivityTypeEnum activityType = ActivityTypeEnum.grammarError;
+  static PracticeExerciseTypeEnum exerciseType =
+      PracticeExerciseTypeEnum.grammarError;
 
-  static Future<List<AnalyticsActivityTarget>> get(
+  static Future<List<AnalyticsPracticeTarget>> get(
     List<ConstructUses> constructs,
   ) async {
     final client = MatrixState.pangeaController.matrixState.client;
     final Map<String, PangeaMessageEvent?> seenEventIDs = {};
-    final cutoffTime = DateTime.now().subtract(const Duration(hours: 24));
 
-    final targets = <AnalyticsActivityTarget>[];
+    final targets = <AnalyticsPracticeTarget>[];
     for (final construct in constructs) {
-      final lastPracticeUse = construct.lastUseByTypes(
-        activityType.associatedUseTypes,
-      );
-
-      if (lastPracticeUse != null && lastPracticeUse.isAfter(cutoffTime)) {
+      if (construct.shouldSkipForRecentPractice(exerciseType)) {
         continue;
       }
 
@@ -69,10 +65,10 @@ class GrammarErrorTargetGenerator {
     return targets;
   }
 
-  static Future<List<AnalyticsActivityTarget>> _getTargetFromEvent(
+  static Future<List<AnalyticsPracticeTarget>> _getTargetFromEvent(
     PangeaMessageEvent event,
   ) async {
-    final List<AnalyticsActivityTarget> targets = [];
+    final List<AnalyticsPracticeTarget> targets = [];
     final l2Code =
         MatrixState.pangeaController.userController.userL2!.langCodeShort;
     final originalSent = event.originalSent;
@@ -153,10 +149,10 @@ class GrammarErrorTargetGenerator {
       }
 
       targets.add(
-        AnalyticsActivityTarget(
+        AnalyticsPracticeTarget(
           target: PracticeTarget(
             tokens: choiceTokens,
-            activityType: activityType,
+            exerciseType: exerciseType,
           ),
           grammarErrorInfo: GrammarErrorRequestInfo(
             choreo: choreo,

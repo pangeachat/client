@@ -1,13 +1,15 @@
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 
 extension SavedAnalyticsExtension on Room {
   List<String> get _activityRoomIds {
     final state = getState(PangeaEventTypes.activityRoomIds);
-    if (state?.content[ModelKey.roomIds] is List) {
-      return List<String>.from(state!.content[ModelKey.roomIds] as List);
+    if (state?.content[AnalyticsConstants.roomIds] is List) {
+      return List<String>.from(
+        state!.content[AnalyticsConstants.roomIds] as List,
+      );
     }
     return [];
   }
@@ -24,7 +26,7 @@ extension SavedAnalyticsExtension on Room {
         .toList();
   }
 
-  int get archivedActivitiesCount => archivedActivities.length;
+  int get archivedActivitiesCount => _activityRoomIds.length;
 
   Future<void> addActivityRoomId(String roomId) async {
     final List<String> ids = List.from(_activityRoomIds);
@@ -35,7 +37,7 @@ extension SavedAnalyticsExtension on Room {
 
     final syncFuture = client.waitForRoomInSync(id, join: true);
     await client.setRoomStateWithKey(id, PangeaEventTypes.activityRoomIds, "", {
-      ModelKey.roomIds: ids,
+      AnalyticsConstants.roomIds: ids,
     });
     final newLength = _activityRoomIds.length;
     if (newLength == prevLength) {

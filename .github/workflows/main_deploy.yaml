@@ -35,6 +35,25 @@ jobs:
           flutter clean
           flutter pub get
           flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --pwa-strategy=none --profile --source-maps
+
+      - name: Version Material Icons font
+        run: |
+          VERSION=${GITHUB_SHA::8}
+
+          FONT_DIR="build/web/assets/fonts"
+          OLD_NAME="MaterialIcons-Regular.otf"
+          NEW_NAME="MaterialIcons-Regular-${VERSION}.otf"
+
+          mv "$FONT_DIR/$OLD_NAME" "$FONT_DIR/$NEW_NAME"
+
+          sed -i "s|$OLD_NAME|$NEW_NAME|g" build/web/assets/FontManifest.json
+
+          echo "Renamed $OLD_NAME -> $NEW_NAME"
+
+      - name: Inject build version into index.html
+        run: |
+          VERSION=${GITHUB_SHA::8}
+          sed -i "s|__BUILD_VERSION__|$VERSION|g" build/web/index.html
         
       - name: Upload files
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -77,17 +96,43 @@ jobs:
           aws-region: us-east-1
       - name: Deploy to S3
         run: |
-          # Immutable hashed assets — cache for 1 year
+          set -e
+
+          # =========================
+          # 1. IMMUTABLE ASSETS (safe hashed outputs only)
+          # =========================
           aws s3 sync ./build/web s3://$WEBAPP_S3_BUCKET \
             --cache-control "public, max-age=31536000, immutable" \
             --exclude "index.html" \
             --exclude "flutter_service_worker.js" \
             --exclude "version.json" \
-            --exclude "manifest.json"
-          # Mutable entry points — always revalidate
-          for f in index.html flutter_service_worker.js version.json manifest.json; do
+            --exclude "manifest.json" \
+            --exclude "assets/FontManifest.json" \
+            --exclude "assets/assets.json" \
+            --exclude "assets/fonts/*"
+
+          # =========================
+          # 2. FONT FILES (stable filenames but frequently updated)
+          # =========================
+          aws s3 sync ./build/web/assets/fonts s3://$WEBAPP_S3_BUCKET/assets/fonts \
+            --cache-control "no-cache, must-revalidate"
+
+          # =========================
+          # 3. FLUTTER RUNTIME ENTRY FILES (MUST NEVER BE CACHED LONG-TERM)
+          # =========================
+          RUNTIME_FILES=(
+            "index.html"
+            "flutter_service_worker.js"
+            "version.json"
+            "manifest.json"
+            "assets/FontManifest.json"
+            "assets/assets.json"
+          )
+
+          for f in "${RUNTIME_FILES[@]}"; do
             if [ -f "./build/web/$f" ]; then
-              aws s3 cp "./build/web/$f" "s3://$WEBAPP_S3_BUCKET/$f" \
+              aws s3 cp "./build/web/$f" \
+                "s3://$WEBAPP_S3_BUCKET/$f" \
                 --cache-control "no-cache, must-revalidate"
             fi
           done

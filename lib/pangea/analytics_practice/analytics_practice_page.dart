@@ -15,10 +15,11 @@ import 'package:fluffychat/pangea/analytics_practice/analytics_practice_view.dar
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
+import 'package:fluffychat/pangea/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SelectedMorphChoice {
@@ -33,43 +34,43 @@ class AnalyticsPracticeNotifier extends ChangeNotifier {
   bool showHint = false;
   final Set<String> _clickedChoices = {};
 
-  int correctAnswersSelected(MultipleChoicePracticeActivityModel? activity) {
-    if (activity == null) return 0;
-    final allAnswers = activity.multipleChoiceContent.answers;
+  int correctAnswersSelected(MultipleChoicePracticeExerciseModel? exercise) {
+    if (exercise == null) return 0;
+    final allAnswers = exercise.multipleChoiceContent.answers;
     return _clickedChoices.where((c) => allAnswers.contains(c)).length;
   }
 
   bool enableHintPress(
-    MultipleChoicePracticeActivityModel? activity,
+    MultipleChoicePracticeExerciseModel? exercise,
     int hintsUsed,
   ) {
     if (showHint) return false;
-    return switch (activity) {
-      VocabAudioPracticeActivityModel() => true,
+    return switch (exercise) {
+      VocabAudioPracticeExerciseModel() => true,
       _ => hintsUsed < AnalyticsPracticeConstants.maxHints,
     };
   }
 
   SelectedMorphChoice? selectedMorphChoice(
-    MultipleChoicePracticeActivityModel? activity,
+    MultipleChoicePracticeExerciseModel? exercise,
   ) {
-    if (activity is! MorphPracticeActivityModel) return null;
+    if (exercise is! MorphPracticeExerciseModel) return null;
     if (_lastSelectedChoice == null) return null;
     return SelectedMorphChoice(
-      feature: activity.morphFeature,
+      feature: exercise.morphFeature,
       tag: _lastSelectedChoice!,
     );
   }
 
-  bool activityComplete(MultipleChoicePracticeActivityModel? activity) {
-    if (activity == null) return false;
-    final allAnswers = activity.multipleChoiceContent.answers;
+  bool exerciseComplete(MultipleChoicePracticeExerciseModel? exercise) {
+    if (exercise == null) return false;
+    final allAnswers = exercise.multipleChoiceContent.answers;
     return allAnswers.every((answer) => _clickedChoices.contains(answer));
   }
 
   bool hasSelectedChoice(String choice) => _clickedChoices.contains(choice);
 
-  void clearActivityState() {
+  void clearExerciseState() {
     _lastSelectedChoice = null;
     _clickedChoices.clear();
     showHint = false;
@@ -87,8 +88,8 @@ class AnalyticsPracticeNotifier extends ChangeNotifier {
   }
 }
 
-typedef ActivityNotifier =
-    ValueNotifier<AsyncState<MultipleChoicePracticeActivityModel>>;
+typedef ExerciseNotifier =
+    ValueNotifier<AsyncState<MultipleChoicePracticeExerciseModel>>;
 
 class AnalyticsPractice extends StatefulWidget {
   static bool bypassExitConfirmation = true;
@@ -111,7 +112,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   late final AnalyticsPracticeAnalyticsController _analyticsController;
   StreamSubscription<void>? _languageStreamSubscription;
 
-  final ActivityNotifier activityState = ActivityNotifier(
+  final ExerciseNotifier practiceExerciseState = ExerciseNotifier(
     const AsyncState.idle(),
   );
   final AnalyticsPracticeNotifier notifier = AnalyticsPracticeNotifier();
@@ -119,6 +120,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   PracticeTarget? _cachedTarget;
   List<InlineSpan>? _cachedExampleMessage;
+
+  final AudioPlaybackSpeedController audioPlaybackSpeedController =
+      AudioPlaybackSpeedController();
 
   @override
   void initState() {
@@ -136,8 +140,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   void dispose() {
     _languageStreamSubscription?.cancel();
     notifier.dispose();
-    activityState.dispose();
+    practiceExerciseState.dispose();
     progress.dispose();
+    audioPlaybackSpeedController.dispose();
     super.dispose();
   }
 
@@ -146,9 +151,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
 
-  MultipleChoicePracticeActivityModel? get activity {
-    final state = activityState.value;
-    if (state is! AsyncLoaded<MultipleChoicePracticeActivityModel>) {
+  MultipleChoicePracticeExerciseModel? get practiceExercise {
+    final state = practiceExerciseState.value;
+    if (state is! AsyncLoaded<MultipleChoicePracticeExerciseModel>) {
       return null;
     }
 
@@ -159,45 +164,45 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       _analyticsController.levelProgress(_l2!.langCodeShort);
 
   Future<List<InlineSpan>?> get exampleMessage async {
-    final activity = this.activity;
-    if (activity == null) return null;
+    final exercise = practiceExercise;
+    if (exercise == null) return null;
 
-    if (activity.practiceTarget == _cachedTarget &&
+    if (exercise.practiceTarget == _cachedTarget &&
         _cachedExampleMessage != null) {
       return _cachedExampleMessage;
     }
 
-    final List<InlineSpan>? message = switch (activity) {
-      VocabAudioPracticeActivityModel() =>
-        activity.exampleMessage.exampleMessage,
-      MorphCategoryPracticeActivityModel() =>
-        activity.exampleMessageInfo.exampleMessage,
+    final List<InlineSpan>? message = switch (exercise) {
+      VocabAudioPracticeExerciseModel() =>
+        exercise.exampleMessage.exampleMessage,
+      MorphCategoryPracticeExerciseModel() =>
+        exercise.exampleMessageInfo.exampleMessage,
       _ => await ExampleMessageUtil.getExampleMessage(
         await _analyticsController.getTargetTokenConstruct(
-          activity.practiceTarget,
+          exercise.practiceTarget,
           _l2!.langCodeShort,
         ),
       ),
     };
 
-    _cachedTarget = activity.practiceTarget;
+    _cachedTarget = exercise.practiceTarget;
     _cachedExampleMessage = message;
     return message;
   }
 
-  bool _autoLaunchNextActivity(MultipleChoicePracticeActivityModel activity) =>
-      activity is! VocabAudioPracticeActivityModel;
+  bool _autoLaunchNextExercise(MultipleChoicePracticeExerciseModel exercise) =>
+      exercise is! VocabAudioPracticeExerciseModel;
 
   void _clearState() {
     _dataService.clear();
     _sessionController.clear();
     AnalyticsPractice.bypassExitConfirmation = true;
-    _clearActivityState();
+    _clearExerciseState();
   }
 
-  void _clearActivityState({bool loadingActivity = false}) {
-    notifier.clearActivityState();
-    activityState.value = loadingActivity
+  void _clearExerciseState({bool loadingExercise = false}) {
+    notifier.clearExerciseState();
+    practiceExerciseState.value = loadingExercise
         ? AsyncState.loading()
         : AsyncState.idle();
   }
@@ -218,19 +223,24 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       await startSession();
     } catch (e) {
       if (mounted) {
-        activityState.value = AsyncState.error(e);
+        practiceExerciseState.value = AsyncState.error(e);
       }
     }
   }
 
   void onHintPressed({bool increment = true}) {
     if (increment) _sessionController.updateHintsPressed();
+    final currentSpeed = audioPlaybackSpeedController.playbackSpeed.value;
+    if (currentSpeed > 0.75 &&
+        practiceExercise is VocabAudioPracticeExerciseModel) {
+      audioPlaybackSpeedController.setSpeed(0.75);
+    }
     notifier.toggleShowHint();
   }
 
-  void _playActivityAudio(MultipleChoicePracticeActivityModel activity) =>
+  void _playExerciseAudio(MultipleChoicePracticeExerciseModel exercise) =>
       AnalyticsPracticeUiController.playTargetAudio(
-        activity,
+        exercise,
         widget.type,
         _l2!.langCodeShort,
       );
@@ -273,8 +283,8 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   }
 
   Future<void> _continueSession() async {
-    if (activityState.value
-        is AsyncLoading<MultipleChoicePracticeActivityModel>) {
+    if (practiceExerciseState.value
+        is AsyncLoading<MultipleChoicePracticeExerciseModel>) {
       return;
     }
 
@@ -283,38 +293,38 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       return;
     }
 
-    _clearActivityState(loadingActivity: true);
+    _clearExerciseState(loadingExercise: true);
 
     try {
-      final resp = await _sessionController.getNextActivity(
-        skipActivity,
-        _dataService.prefetchActivityInfo,
+      final resp = await _sessionController.getNextExercise(
+        skipExercise,
+        _dataService.prefetchExerciseInfo,
       );
 
       if (resp != null) {
-        _playActivityAudio(resp);
+        _playExerciseAudio(resp);
         AnalyticsPractice.bypassExitConfirmation = false;
-        activityState.value = AsyncState.loaded(resp);
+        practiceExerciseState.value = AsyncState.loaded(resp);
       } else {
         await _completeSession();
       }
     } catch (e) {
       AnalyticsPractice.bypassExitConfirmation = true;
-      activityState.value = AsyncState.error(e);
+      practiceExerciseState.value = AsyncState.error(e);
     }
   }
 
   Future<void> onSelectChoice(String choiceContent) async {
-    final activity = this.activity;
-    if (activity == null) return;
+    final exercise = practiceExercise;
+    if (exercise == null) return;
 
     // Mark this choice as clicked so it can't be clicked again
     if (notifier.hasSelectedChoice(choiceContent)) return;
     notifier.selectChoice(choiceContent);
 
-    final uses = activity.constructUses(choiceContent);
+    final uses = exercise.constructUses(choiceContent);
     _sessionController.submitAnswer(uses);
-    await _analyticsController.addCompletedActivityAnalytics(
+    await _analyticsController.addCompletedExerciseAnalytics(
       uses,
       AnalyticsPracticeUiController.getChoiceTargetId(
         choiceContent,
@@ -323,37 +333,37 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       _l2!.langCodeShort,
     );
 
-    if (!notifier.activityComplete(activity)) return;
+    if (!notifier.exerciseComplete(exercise)) return;
 
-    _playActivityAudio(activity);
+    _playExerciseAudio(exercise);
 
-    if (_autoLaunchNextActivity(activity)) {
+    if (_autoLaunchNextExercise(exercise)) {
       await Future.delayed(
         const Duration(milliseconds: 1000),
-        startNextActivity,
+        startNextExercise,
       );
     }
   }
 
-  Future<void> startNextActivity() async {
-    _sessionController.completeActivity();
+  Future<void> startNextExercise() async {
+    _sessionController.completeExercise();
     progress.value = _sessionController.progress;
     await _continueSession();
   }
 
-  Future<void> skipActivity(PracticeTarget target) async {
-    // Record a 0 XP use so that activity isn't chosen again soon
-    _sessionController.skipActivity();
+  Future<void> skipExercise(PracticeTarget target) async {
+    // Record a 0 XP use so that exercise isn't chosen again soon
+    _sessionController.skipExercise();
     progress.value = _sessionController.progress;
 
-    await _analyticsController.addSkippedActivityAnalytics(
+    await _analyticsController.addSkippedExerciseAnalytics(
       target,
       _l2!.langCodeShort,
     );
   }
 
-  Future<void> flagActivity(
-    MultipleChoicePracticeActivityModel activity,
+  Future<void> flagExercise(
+    MultipleChoicePracticeExerciseModel exercise,
   ) async {
     final feedback = await showDialog<String?>(
       context: context,
@@ -368,11 +378,11 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
     if (feedback == null || feedback.isEmpty) return;
     ErrorHandler.logError(
-      e: 'Practice activity flagged',
-      data: {'activity': activity.toJson(), 'feedback': feedback},
+      e: 'Analytics practice exercise flagged',
+      data: {'exercise': exercise.toJson(), 'feedback': feedback},
     );
 
-    await skipActivity(activity.practiceTarget);
+    await skipExercise(exercise.practiceTarget);
     await _continueSession();
   }
 

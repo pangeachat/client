@@ -6,6 +6,7 @@ import 'package:fluffychat/pangea/instructions/instruction_settings.dart';
 import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
+import 'package:fluffychat/pangea/user/user_constants.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../languages/language_model.dart';
 
@@ -36,37 +37,37 @@ class UserSettings {
   });
 
   factory UserSettings.fromJson(Map<String, dynamic> json) => UserSettings(
-    dateOfBirth: json[ModelKey.userDateOfBirth] != null
-        ? DateTime.parse(json[ModelKey.userDateOfBirth])
+    dateOfBirth: json[UserConstants.userDateOfBirth] != null
+        ? DateTime.parse(json[UserConstants.userDateOfBirth])
         : null,
-    createdAt: json[ModelKey.userCreatedAt] != null
-        ? DateTime.parse(json[ModelKey.userCreatedAt])
+    createdAt: json[UserConstants.userCreatedAt] != null
+        ? DateTime.parse(json[UserConstants.userCreatedAt])
         : null,
-    publicProfile: json[ModelKey.publicProfile],
+    publicProfile: json[UserConstants.publicProfile],
     targetLanguage: json[ModelKey.targetLanguage],
     sourceLanguage: json[ModelKey.sourceLanguage],
-    gender: json[ModelKey.userGender] is String
-        ? GenderEnumExtension.fromString(json[ModelKey.userGender])
+    gender: json[UserConstants.userGender] is String
+        ? GenderEnumExtension.fromString(json[UserConstants.userGender])
         : GenderEnum.unselected,
-    country: json[ModelKey.userCountry],
-    about: json[ModelKey.userAbout],
-    cefrLevel: json[ModelKey.cefrLevel] is String
-        ? LanguageLevelTypeEnum.fromString(json[ModelKey.cefrLevel])
+    country: json[UserConstants.userCountry],
+    about: json[UserConstants.userAbout],
+    cefrLevel: json[UserConstants.cefrLevel] is String
+        ? LanguageLevelTypeEnum.fromString(json[UserConstants.cefrLevel])
         : LanguageLevelTypeEnum.a1,
     voice: json[ModelKey.voice],
   );
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data[ModelKey.userDateOfBirth] = dateOfBirth?.toIso8601String();
-    data[ModelKey.userCreatedAt] = createdAt?.toIso8601String();
-    data[ModelKey.publicProfile] = publicProfile;
+    data[UserConstants.userDateOfBirth] = dateOfBirth?.toIso8601String();
+    data[UserConstants.userCreatedAt] = createdAt?.toIso8601String();
+    data[UserConstants.publicProfile] = publicProfile;
     data[ModelKey.targetLanguage] = targetLanguage;
     data[ModelKey.sourceLanguage] = sourceLanguage;
-    data[ModelKey.userGender] = gender.string;
-    data[ModelKey.userCountry] = country;
-    data[ModelKey.userAbout] = about;
-    data[ModelKey.cefrLevel] = cefrLevel.string;
+    data[UserConstants.userGender] = gender.string;
+    data[UserConstants.userCountry] = country;
+    data[UserConstants.userAbout] = about;
+    data[UserConstants.cefrLevel] = cefrLevel.string;
     data[ModelKey.voice] = voice;
     return data;
   }
@@ -75,9 +76,9 @@ class UserSettings {
     final accountData =
         MatrixState.pangeaController.matrixState.client.accountData;
 
-    if (!accountData.containsKey(ModelKey.userDateOfBirth)) return null;
-    final dobContent = accountData[ModelKey.userDateOfBirth]!
-        .content[ModelKey.userDateOfBirth];
+    if (!accountData.containsKey(UserConstants.userDateOfBirth)) return null;
+    final dobContent = accountData[UserConstants.userDateOfBirth]!
+        .content[UserConstants.userDateOfBirth];
 
     String? dobString;
     if (dobContent != null) {
@@ -91,8 +92,8 @@ class UserSettings {
       return null;
     }
 
-    final createdAtContent =
-        accountData[ModelKey.userCreatedAt]?.content[ModelKey.userCreatedAt];
+    final createdAtContent = accountData[UserConstants.userCreatedAt]
+        ?.content[UserConstants.userCreatedAt];
     DateTime? createdAt;
     if (createdAtContent != null) {
       try {
@@ -106,7 +107,8 @@ class UserSettings {
       dateOfBirth: dob,
       createdAt: createdAt,
       publicProfile:
-          (accountData[ModelKey.publicProfile]?.content[ModelKey.publicProfile]
+          (accountData[UserConstants.publicProfile]?.content[UserConstants
+                  .publicProfile]
               as bool?) ??
           false,
       targetLanguage:
@@ -116,7 +118,8 @@ class UserSettings {
           accountData[ModelKey.sourceLanguage]?.content[ModelKey.sourceLanguage]
               as String?,
       country:
-          accountData[ModelKey.userCountry]?.content[ModelKey.userCountry]
+          accountData[UserConstants.userCountry]?.content[UserConstants
+                  .userCountry]
               as String?,
     );
   }
@@ -210,7 +213,7 @@ class UserToolSettings {
             json[ToolSetting.interactiveGrammar.toString()] ?? true,
         immersionMode: false,
         definitions: json[ToolSetting.definitions.toString()] ?? true,
-        autoIGC: json[ModelKey.autoIGC] ?? true,
+        autoIGC: json[UserConstants.autoIGC] ?? true,
         enableTTS: json[ToolSetting.enableTTS.toString()] ?? true,
         enableAutocorrect: json["enableAutocorrect"] ?? false,
         selectAudioMessagesOnPlay: json["selectAudioMessagesOnPlay"] ?? true,
@@ -222,7 +225,7 @@ class UserToolSettings {
     data[ToolSetting.interactiveGrammar.toString()] = interactiveGrammar;
     data[ToolSetting.immersionMode.toString()] = immersionMode;
     data[ToolSetting.definitions.toString()] = definitions;
-    data[ModelKey.autoIGC] = autoIGC;
+    data[UserConstants.autoIGC] = autoIGC;
     data[ToolSetting.enableTTS.toString()] = enableTTS;
     data["enableAutocorrect"] = enableAutocorrect;
     data["selectAudioMessagesOnPlay"] = selectAudioMessagesOnPlay;
@@ -328,12 +331,12 @@ class Profile {
   static Profile? fromAccountData(Map<String, Object?>? profileData) {
     if (profileData == null) return null;
 
-    final userSettingsContent = profileData[ModelKey.userSettings];
+    final userSettingsContent = profileData[UserConstants.userSettings];
     if (userSettingsContent == null) return null;
 
-    final toolSettingsContent = profileData[ModelKey.toolSettings];
+    final toolSettingsContent = profileData[UserConstants.toolSettings];
     final instructionSettingsContent =
-        profileData[ModelKey.instructionsSettings];
+        profileData[UserConstants.instructionsSettings];
 
     return Profile(
       userSettings: UserSettings.fromJson(
@@ -354,9 +357,9 @@ class Profile {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = {
-      ModelKey.userSettings: userSettings.toJson(),
-      ModelKey.toolSettings: toolSettings.toJson(),
-      ModelKey.instructionsSettings: instructionSettings.toJson(),
+      UserConstants.userSettings: userSettings.toJson(),
+      UserConstants.toolSettings: toolSettings.toJson(),
+      UserConstants.instructionsSettings: instructionSettings.toJson(),
     };
     return json;
   }
@@ -383,9 +386,9 @@ class Profile {
     final PangeaController pangeaController = MatrixState.pangeaController;
     final Client client = pangeaController.matrixState.client;
     final List<String> profileKeys = [
-      ModelKey.userSettings,
-      ModelKey.toolSettings,
-      ModelKey.instructionsSettings,
+      UserConstants.userSettings,
+      UserConstants.toolSettings,
+      UserConstants.instructionsSettings,
     ];
 
     Future<SyncUpdate>? waitForUpdate;
@@ -398,7 +401,11 @@ class Profile {
             ),
       );
     }
-    await client.setAccountData(client.userID!, ModelKey.userProfile, toJson());
+    await client.setAccountData(
+      client.userID!,
+      UserConstants.userProfile,
+      toJson(),
+    );
 
     if (waitForDataInSync) {
       await waitForUpdate;
@@ -469,25 +476,25 @@ class PangeaProfile {
     final l1 = LanguageModel.codeFromNameOrCode(json[ModelKey.sourceLanguage]);
 
     return PangeaProfile(
-      createdAt: json[ModelKey.userCreatedAt],
-      pangeaUserId: json[ModelKey.userPangeaUserId],
-      dateOfBirth: json[ModelKey.userDateOfBirth],
+      createdAt: json[UserConstants.userCreatedAt],
+      pangeaUserId: json[UserConstants.userPangeaUserId],
+      dateOfBirth: json[UserConstants.userDateOfBirth],
       targetLanguage: l2,
       sourceLanguage: l1,
-      publicProfile: json[ModelKey.publicProfile],
-      country: json[ModelKey.userCountry],
+      publicProfile: json[UserConstants.publicProfile],
+      country: json[UserConstants.userCountry],
     );
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data[ModelKey.userCreatedAt] = createdAt;
-    data[ModelKey.userPangeaUserId] = pangeaUserId;
-    data[ModelKey.userDateOfBirth] = dateOfBirth;
+    data[UserConstants.userCreatedAt] = createdAt;
+    data[UserConstants.userPangeaUserId] = pangeaUserId;
+    data[UserConstants.userDateOfBirth] = dateOfBirth;
     data[ModelKey.targetLanguage] = targetLanguage;
     data[ModelKey.sourceLanguage] = sourceLanguage;
-    data[ModelKey.publicProfile] = publicProfile;
-    data[ModelKey.userCountry] = country;
+    data[UserConstants.publicProfile] = publicProfile;
+    data[UserConstants.userCountry] = country;
     return data;
   }
 }
@@ -500,8 +507,8 @@ class PangeaProfileResponse {
 
   factory PangeaProfileResponse.fromJson(Map<String, dynamic> json) {
     return PangeaProfileResponse(
-      profile: PangeaProfile.fromJson(json[ModelKey.userProfile]),
-      access: json[ModelKey.userAccess],
+      profile: PangeaProfile.fromJson(json[UserConstants.userProfile]),
+      access: json[UserConstants.userAccess],
     );
   }
 }

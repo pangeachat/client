@@ -35,6 +35,7 @@
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:localeConfig="@xml/locale_config"
+        android:usesCleartextTraffic="true"
     >
         <activity
             android:name=".MainActivity"

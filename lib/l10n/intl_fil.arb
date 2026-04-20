@@ -1872,7 +1872,6 @@
     "trialPeriodExpired": "Umalis na ang iyong trial period",
     "translations": "mga pagsasalin",
     "definitions": "mga depinisyon",
-    "subscribedToUnlockTools": "Mag-subscribe upang ma-unlock ang interaktibong pagsasalin at pagsusuri ng gramatika, pag-play ng audio, personalisadong mga aktibidad sa praktis, at analytics sa pag-aaral!",
     "translationTooltip": "Isalin",
     "kickBotWarning": "Ang pagtulak sa Pangea Bot ay mag-aalis sa bot ng pag-uusap mula sa chat na ito.",
     "refresh": "I-refresh",
@@ -1888,12 +1887,10 @@
     "tooManyRequest": "Sobrang dami ng kahilingan, subukan muli mamaya.",
     "enterNumber": "Mangyaring magpasok ng isang buong bilang.",
     "practice": "Praktis",
-    "speechToTextBody": "Para sa mga mensahe sa boses, makikita mo ang transcript pati na rin ang score na Words Per Minute ng tagapagsalita.",
     "versionNotFound": "Hindi Nahanap ang Bersyon",
     "fetchingVersion": "Kinukuha ang bersyon...",
     "versionFetchError": "Error sa pagkuha ng bersyon",
     "versionText": "Bersyon: {version}+{buildNumber}",
-    "l1TranslationBody": "Ang mga mensahe sa iyong pangunahing wika ay hindi isasalin.",
     "deleteSubscriptionWarningTitle": "May aktibong subscription ka",
     "deleteSubscriptionWarningBody": "Ang pagtanggal ng iyong account ay hindi awtomatikong magcancela ng iyong subscription.",
     "manageSubscription": "Pamahalaan ang Subscription",
@@ -1902,7 +1899,6 @@
     "wordsUsed": "Mga Salitang Ginamit",
     "level": "Antas",
     "morphsUsed": "Mga Morphs na Ginamit",
-    "translationChoicesBody": "Pindutin at hawakan ang isang opsyon para sa isang pahiwatig.",
     "grammar": "Balarila",
     "contactHasBeenInvitedToTheChat": "Naimbitahan na ang contact sa chat",
     "inviteChat": "📨 Imbitahan ang chat",
@@ -2183,8 +2179,6 @@
     "grammarCopyVOICErcp": "Reciprocal",
     "other": "Iba pa",
     "levelShort": "LVL {level}",
-    "clickBestOption": "Piliin ang pinakamahusay na mga opsyon upang isalin ang iyong mensahe!",
-    "completeActivitiesToUnlock": "Kumpletuhin ang hindi bababa sa isang aktibidad upang ma-unlock ang pagsasalin!",
     "noCapacityLimit": "Walang limitasyon sa kapasidad",
     "downloadGroupText": "I-download ang teksto ng grupo",
     "notificationsOn": "Naka-on ang mga notipikasyon",
@@ -2203,22 +2197,6 @@
     "constructUseIgnIGCDesc": "Hindi pinapansin sa grammar correction",
     "constructUseCorIGCDesc": "Tama sa grammar correction",
     "constructUseIncIGCDesc": "Mali sa grammar correction",
-    "constructUseCorPADesc": "Tama sa aktibidad ng kahulugan ng salita",
-    "constructUseIgnPADesc": "Hindi pinapansin sa aktibidad ng kahulugan ng salita",
-    "constructUseIncPADesc": "Mali sa aktibidad ng kahulugan ng salita",
-    "constructUseCorWLDesc": "Tama sa aktibidad ng pakikinig sa salita",
-    "constructUseIncWLDesc": "Mali sa aktibidad ng pakikinig sa salita",
-    "constructUseIngWLDesc": "Hindi pinapansin sa aktibidad ng pakikinig sa salita",
-    "constructUseCorHWLDesc": "Tama sa nakatagong salita na aktibidad",
-    "constructUseIncHWLDesc": "Mali sa nakatagong salita na aktibidad",
-    "constructUseIgnHWLDesc": "Hindi pinapansin sa nakatagong salita na aktibidad",
-    "constructUseCorLDesc": "Tama sa lemma na aktibidad",
-    "constructUseIncLDesc": "Mali sa lemma na aktibidad",
-    "constructUseIgnLDesc": "Hindi pinapansin sa lemma na aktibidad",
-    "constructUseCorMDesc": "Tama sa grammar na aktibidad",
-    "constructUseIncMDesc": "Mali sa grammar na aktibidad",
-    "constructUseIgnMDesc": "Iniwasan sa aktibidad ng gramatika",
-    "constructUseEmojiDesc": "Tama sa aktibidad ng emoji",
     "constructUseCollected": "Nakalap sa chat",
     "constructUseNanDesc": "Hindi naaangkop",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
@@ -2270,23 +2248,16 @@
     "whatIsMeaning": "Ano ang ibig sabihin ng '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Itugma ang mga kahulugan sa mga salita sa mensahe!",
     "doubleClickToEdit": "Mag-double click para i-edit.",
-    "activityPlannerTitle": "Tagaplano ng Gawain",
     "topicLabel": "Paksa",
     "topicPlaceholder": "Pumili ng paksa...",
-    "modeLabel": "Uri ng gawain",
     "modePlaceholder": "Pumili ng uri...",
     "learningObjectiveLabel": "Layunin sa Pagkatuto",
     "learningObjectivePlaceholder": "Pumili ng layunin sa pagkatuto...",
-    "languageOfInstructionsLabel": "Wika ng mga tagubilin sa gawain",
     "targetLanguageLabel": "Target na wika",
     "cefrLevelLabel": "Antas ng CEFR",
-    "generateActivitiesButton": "Gumawa ng Gawain",
-    "launchActivityButton": "Ilunsad ang Gawain",
     "image": "Larawan",
     "video": "Bidyo",
     "nan": "Hindi naaangkop",
-    "activityPlannerOverviewInstructionsBody": "Pumili ng paksa, uri, layunin sa pagkatuto at gumawa ng gawain para sa chat!",
-    "activityTitle": "Pamagat ng Gawain",
     "addVocabulary": "Magdagdag ng bokabularyo",
     "instructions": "Mga tagubilin",
     "numberOfLearners": "Bilang ng mga mag-aaral",
@@ -2333,12 +2304,10 @@
     "pleaseEnterInt": "Mangyaring magpasok ng isang numero",
     "home": "Home",
     "join": "Sumali",
-    "readingAssistanceOverviewBody": "I-click ang mga button sa ibaba para sa mga mini-game sa pagtutugma ng mga emoji, audio, kahulugan ng salita, at mga konsepto sa gramatika. O i-click ang anumang salita para sa mga detalye.",
     "resetInstructionTooltipsTitle": "I-reset ang mga tooltip ng instruksyon",
     "resetInstructionTooltipsDesc": "I-click upang ipakita ang mga tooltip ng instruksyon tulad ng para sa isang bagong user.",
     "randomize": "Randomin",
     "clear": "I-clear",
-    "makeYourOwnActivity": "Gumawa ng sarili mong aktibidad",
     "featuredActivities": "Itinatampok",
     "save": "I-save",
     "startChat": "Simulan ang chat",
@@ -2395,7 +2364,6 @@
     "announcements": "Mga Anunsyo",
     "activities": "Mga Gawain",
     "access": "Access",
-    "activitySuggestionTimeoutMessage": "Nagsusumikap kaming lumikha ng mas maraming aktibidad para sa iyo, mangyaring mag-check muli sa isang minuto",
     "howSpaceCanBeFound": "Paano mahanap ang kursong ito",
     "private": "Pribado",
     "cannotBeFoundInSearch": "Hindi mahanap sa paghahanap",
@@ -2430,9 +2398,6 @@
     "numInvited": "{count} naimbitahan",
     "saved": "Naitabi",
     "reset": "I-reset",
-    "errorGenerateActivityMessage": "Nabigong gumawa ng mensahe ng gawain",
-    "errorRegenerateActivityMessage": "Nabigong muling buuin ang gawain",
-    "errorLaunchActivityMessage": "Nabigong ilunsad ang gawain",
     "errorFetchingActivitiesMessage": "Nabigong makuha ang mga aktibidad",
     "errorFetchingDefinition": "Nabigong makuha ang depinisyon",
     "errorProcessAnalytics": "Nabigong iproseso ang analytics",
@@ -2441,7 +2406,6 @@
     "unexpectedError": "Hindi inaasahang error.",
     "pleaseReload": "Pakiload muli at subukan muli.",
     "translationError": "Error sa pagsasalin",
-    "errorFetchingActivity": "Nabigong makuha ang aktibidad",
     "check": "Suriin",
     "unableToFindRoom": "Walang chat o kurso na nahanap gamit ang code na iyon. Pakisubukan muli.",
     "numCompletedActivities": "Bilang ng natapos na mga aktibidad",
@@ -2449,11 +2413,8 @@
     "request": "Hilingin",
     "requestAll": "Hilingin Lahat",
     "confirmMessageUnpin": "Sigurado ka bang nais mong alisin ang pindutan sa mensaheng ito?",
-    "createActivityPlan": "Lumikha ng bagong plano ng aktibidad",
     "saveAndLaunch": "I-save at Ilunsad",
     "launchToSpace": "Ilunsad sa kurso",
-    "numberOfActivities": "Bilang ng Mga Sesyon ng Gawain",
-    "maximumActivityParticipants": "Bawat Gawain ay maaaring magkaroon ng maximum na {count} na kalahok.",
     "pending": "Naghihintay",
     "inactive": "Hindi Aktibo",
     "confirmRole": "Kumpirmahin ang papel",
@@ -2565,7 +2526,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-04-03 12:22:18.317564",
+    "@@last_modified": "2026-04-15 11:32:11.697815",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6573,10 +6534,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -6641,10 +6598,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@speechToTextBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@versionNotFound": {
         "type": "String",
         "placeholders": {}
@@ -6667,10 +6620,6 @@
                 "type": "String"
             }
         }
-    },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
@@ -6701,10 +6650,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -7832,14 +7777,6 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
         "type": "String",
         "placeholders": {}
@@ -7909,70 +7846,6 @@
         "placeholders": {}
     },
     "@constructUseIncIGCDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8198,19 +8071,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@topicLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -8226,23 +8091,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -8255,14 +8108,6 @@
         "placeholders": {}
     },
     "@nan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -8462,10 +8307,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@readingAssistanceOverviewBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resetInstructionTooltipsTitle": {
         "type": "String",
         "placeholders": {}
@@ -8479,10 +8320,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8714,10 +8551,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activitySuggestionTimeoutMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@howSpaceCanBeFound": {
         "type": "String",
         "placeholders": {}
@@ -8866,18 +8699,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingActivitiesMessage": {
         "type": "String",
         "placeholders": {}
@@ -8907,10 +8728,6 @@
         "placeholders": {}
     },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8949,10 +8766,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -8960,18 +8773,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -10826,15 +10627,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Naitakda mo na ang emoji para sa {lemma}! Gagamitin namin ang emoji na ito upang kumatawan sa salita sa mga aktibidad sa pagsasanay mula ngayon.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Naghihintay na makumpleto ang pag-sign in",
     "ssoDialogDesc": "Nagbukas kami ng bagong tab upang makapag-sign in ka nang ligtas.",
     "ssoDialogHelpText": "🤔 Kung hindi mo nakita ang bagong tab, mangyaring suriin ang iyong popup blocker.",
@@ -11012,16 +10804,6 @@
         "placeholders": {}
     },
     "@publicInviteDescSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "enableNotificationsTitle": "Ang Pangea Chat ay isang texting app kaya't mahalaga ang mga notification!",
-    "enableNotificationsDesc": "Pahintulutan ang mga notification",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -11511,12 +11293,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "I-unlock ang mga aktibidad sa pagsasanay",
     "hideEvents": "Itago ang mga kaganapan",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11663,11 +11440,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noAnalyticsActivitiesAvailable": "Wow, natapos mo na ang lahat ng available na aktibidad! Magpadala ng higit pang mga mensahe upang makakuha ng higit pang mga aktibidad sa pagsasanay.",
-    "@noAnalyticsActivitiesAvailable": {
-        "type": "String",
-        "placeholders": {}
-    },
     "profile": "Profile",
     "@profile": {
         "type": "String",
@@ -11679,8 +11451,6 @@
     "notificationDeviceSubtitle": "Tingnan at pamahalaan ang mga device na nagpapadala sa iyo ng push notifications.",
     "notificationRuleDM": "Direktang Mensahe",
     "notificationRuleDMDescription": "Nagbibigay-alam sa gumagamit tungkol sa mga mensahe sa mga direktang mensahe na silid.",
-    "notificationRuleCourseAndActivity": "Kurso at Aktibidad",
-    "notificationRuleCourseAndActivityDescription": "Nagbibigay-alam sa gumagamit tungkol sa mga mensahe sa mga kurso, aktibidad, at chat.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -11702,14 +11472,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -11979,6 +11741,125 @@
         "type": "String",
         "placeholders": {}
     },
+    "subscribedToUnlockTools": "Mag-subscribe upang i-unlock ang interactive na pagsasalin at pagsusuri ng gramatika, audio playback, personalized na mga ehersisyo sa pagsasanay, at analytics sa pag-aaral!",
+    "emojiSelectedSnackbar": "Naitakda mo na ang emoji para sa {lemma}! Gagamitin namin ang emoji na ito upang kumatawan sa salita sa mga ehersisyo sa pagsasanay mula ngayon.",
+    "unlockPracticeActivities": "I-unlock ang mga ehersisyo sa pagsasanay",
+    "noAnalyticsActivitiesAvailable": "Wow, natapos mo na ang lahat ng available na aktibidad! Magpadala ng higit pang mga mensahe upang i-unlock ang higit pang mga ehersisyo sa pagsasanay.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "Tama sa ehersisyo ng kahulugan ng salita",
+    "constructUseIgnPADesc": "Hindi pinansin sa ehersisyo ng kahulugan ng salita",
+    "constructUseIncPADesc": "Mali sa ehersisyo ng kahulugan ng salita",
+    "constructUseCorWLDesc": "Tama sa ehersisyo ng pakikinig sa salita",
+    "constructUseIncWLDesc": "Mali sa ehersisyo ng pakikinig sa salita",
+    "constructUseIngWLDesc": "Hindi pinansin sa ehersisyo ng pakikinig sa salita",
+    "constructUseCorHWLDesc": "Tama sa ehersisyo ng nakatagong salita",
+    "constructUseIncHWLDesc": "Mali sa ehersisyo ng nakatagong salita",
+    "constructUseIgnHWLDesc": "Hindi pinansin sa ehersisyo ng nakatagong salita",
+    "constructUseCorLDesc": "Tama sa ehersisyo ng lemma",
+    "constructUseIncLDesc": "Mali sa lemma na ehersisyo",
+    "constructUseIgnLDesc": "Nawala sa lemma na ehersisyo",
+    "constructUseCorMDesc": "Tama sa grammar na ehersisyo",
+    "constructUseIncMDesc": "Mali sa grammar na ehersisyo",
+    "constructUseIgnMDesc": "Nawala sa grammar na ehersisyo",
+    "constructUseEmojiDesc": "Tama sa emoji na ehersisyo",
+    "errorFetchingExercise": "Nabigong kunin ang ehersisyo sa pagsasanay",
+    "notificationRuleCourseAndActivity": "Kurso at Aktibidad",
+    "notificationRuleCourseAndActivityDescription": "Nagbibigay-alam sa gumagamit tungkol sa mga mensahe sa mga kurso, aktibidad, at chat.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "clickToUpdateTargetLanguage": "I-click dito upang i-update ang iyong target na wika.",
     "@clickToUpdateTargetLanguage": {
         "type": "String",
@@ -11986,6 +11867,41 @@
     },
     "closeEmojiMenu": "Isara ang menu ng emoji",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Payagan ang iba na maghanap para sa iyong kurso",
+    "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Huwag palampasin ang anumang chat!",
+    "enableNotificationsDesc": "Payagan ang mga notification para sa Pangea Chat at manatiling konektado sa iyong mga kaibigan sa wika!",
+    "enableNotifications": "Payagan ang mga notification",
+    "noActivitiesFound": "Walang mga aktibidad na available para sa paksang ito.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Hindi mo ma-block ang iyong sarili",
+    "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "I-block ang username",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

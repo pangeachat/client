@@ -1,3 +1,4 @@
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
@@ -63,11 +64,11 @@ class TokenInfoFeedbackRequest {
 
   Map<String, dynamic> toJson() {
     return {
-      'user_id': data.userId,
+      ModelKey.userId: data.userId,
       'room_id': data.roomId,
-      'full_text': data.fullText,
+      ModelKey.fullText: data.fullText,
       'detected_language': data.detectedLanguage,
-      'tokens': data.tokens.map((token) => token.toJson()).toList(),
+      ModelKey.tokens: data.tokens.map((token) => token.toJson()).toList(),
       'selected_token': data.selectedToken,
       'lemma_info': data.lemmaInfo.toJson(),
       'pt_request': data.ptRequest?.toJson(),

@@ -7,7 +7,9 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/user/about_me_display.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
@@ -204,22 +206,29 @@ class UserDialog extends StatelessWidget {
                   : L10n.of(context).sendAMessage,
             ),
           ),
-          AdaptiveDialogAction(
-            bigButtons: true,
-            borderRadius: AdaptiveDialogAction.centerRadius,
-            onPressed: () {
-              final router = GoRouter.of(context);
-              Navigator.of(context).pop();
-              router.go(
-                '/rooms/settings/security/ignorelist',
-                extra: profile.userId,
-              );
-            },
-            child: Text(
-              L10n.of(context).ignoreUser,
-              style: TextStyle(color: theme.colorScheme.error),
+          // #Pangea
+          if (profile.userId != BotName.byEnvironment &&
+              profile.userId != Environment.supportUserId)
+            // Pangea#
+            AdaptiveDialogAction(
+              bigButtons: true,
+              borderRadius: AdaptiveDialogAction.centerRadius,
+              onPressed: () {
+                final router = GoRouter.of(context);
+                Navigator.of(context).pop();
+                router.go(
+                  '/rooms/settings/security/ignorelist',
+                  extra: profile.userId,
+                );
+              },
+              child: Text(
+                // #Pangea
+                // L10n.of(context).ignoreUser,
+                L10n.of(context).block,
+                // Pangea#
+                style: TextStyle(color: theme.colorScheme.error),
+              ),
             ),
-          ),
         ],
         AdaptiveDialogAction(
           bigButtons: true,

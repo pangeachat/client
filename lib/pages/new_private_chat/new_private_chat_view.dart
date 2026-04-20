@@ -20,7 +20,9 @@ class NewPrivateChatView extends StatelessWidget {
     final theme = Theme.of(context);
 
     final searchResponse = controller.searchResponse;
-    final userId = Matrix.of(context).client.userID!;
+    // #Pangea
+    // final userId = Matrix.of(context).client.userID!;
+    // Pangea#
     return Scaffold(
       appBar: AppBar(
         scrolledUnderElevation: 0,

@@ -14,7 +14,18 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
+          STATE_REASON: ${{ github.event.issue.state_reason }}
         run: |
+          if [ "$STATE_REASON" = "not_planned" ]; then
+            echo "Issue was closed as not planned - skipping labels."
+            exit 0
+          fi
+
+          if [ "$STATE_REASON" = "duplicate" ]; then
+            echo "Issue was closed as duplicate - skipping labels."
+            exit 0
+          fi
+
           BODY=$(gh issue view "$NUMBER" --json body -q .body)
           if echo "$BODY" | grep -qi "no client testing needed"; then
             echo "Issue opts out of client testing — skipping label."
@@ -23,3 +34,4 @@ jobs:
           gh issue edit "$NUMBER" --add-label "needs iOS testing"
           gh issue edit "$NUMBER" --add-label "needs android testing"
           gh issue edit "$NUMBER" --add-label "needs web testing"
+          gh issue edit "$NUMBER" --add-label "needs iPad testing"

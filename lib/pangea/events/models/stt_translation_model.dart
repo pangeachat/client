@@ -1,5 +1,6 @@
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 
 class SttTranslationModel {
@@ -16,11 +17,11 @@ class SttTranslationModel {
 
     return SttTranslationModel(
       translation: content['translation'] as String,
-      langCode: content['lang_code'] as String,
+      langCode: content[ModelKey.langCode] as String,
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {'translation': translation, 'lang_code': langCode};
+    return {'translation': translation, ModelKey.langCode: langCode};
   }
 }

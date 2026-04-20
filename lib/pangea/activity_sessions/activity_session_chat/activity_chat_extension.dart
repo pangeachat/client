@@ -5,6 +5,7 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 extension ActivityMenuLogic on ChatController {
@@ -15,6 +16,7 @@ extension ActivityMenuLogic on ChatController {
           regex: RegExp(r"^word-zoom-card-.*$"),
         ) ||
         timeline == null ||
+        isToolbarOpen ||
         GoRouterState.of(context).fullPath?.endsWith(':roomid') != true) {
       return false;
     }
@@ -27,7 +29,8 @@ extension ActivityMenuLogic on ChatController {
       return !finishedRoles.any((r) => r.userId == userID);
     }
 
-    final count = timeline!.events
+    final events = timeline!.events.map((e) => Event.fromMatrixEvent(e, room));
+    final count = events
         .where(
           (event) =>
               event.senderId == userID &&
@@ -35,7 +38,9 @@ extension ActivityMenuLogic on ChatController {
               {
                 MessageTypes.Text,
                 MessageTypes.Audio,
-              }.contains(event.messageType),
+              }.contains(event.messageType) &&
+              event.status.isSynced &&
+              event.isVisibleInGui,
         )
         .length;
 

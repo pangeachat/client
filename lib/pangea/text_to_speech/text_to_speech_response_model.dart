@@ -1,3 +1,4 @@
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 
@@ -100,7 +101,7 @@ class PangeaAudioEventData {
   });
 
   factory PangeaAudioEventData.fromJson(dynamic json) => PangeaAudioEventData(
-    text: json[ModelKey.text] as String,
+    text: json[ChoreoConstants.text] as String,
     langCode: json[ModelKey.langCode] as String,
     tokens: List<TTSToken>.from(
       (json[ModelKey.tokens] as Iterable)
@@ -111,7 +112,7 @@ class PangeaAudioEventData {
   );
 
   Map<String, dynamic> toJson() => {
-    ModelKey.text: text,
+    ChoreoConstants.text: text,
     ModelKey.langCode: langCode,
     ModelKey.tokens: List<Map<String, dynamic>>.from(
       tokens.map((x) => x.toJson()),

@@ -11,8 +11,8 @@ import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
+import 'package:fluffychat/pangea/tokens/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/new_word_overlay.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/lemma_meaning_display.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/lemma_reaction_picker.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/message_unsubscribed_card.dart';
@@ -35,7 +35,6 @@ class WordZoomWidget extends StatelessWidget {
   final Map<String, String>? morph;
 
   final bool enableEmojiSelection;
-  final VoidCallback? onDismissNewWordOverlay;
   final Function(LemmaInfoResponse, PTRequest, PTResponse)? onFlagTokenInfo;
   final ValueNotifier<int>? reloadNotifier;
   final double? maxWidth;
@@ -50,37 +49,54 @@ class WordZoomWidget extends StatelessWidget {
     this.event,
     this.morph,
     this.enableEmojiSelection = true,
-    this.onDismissNewWordOverlay,
     this.onFlagTokenInfo,
     this.reloadNotifier,
     this.maxWidth,
   });
 
-  String get transformTargetId => "word-zoom-card-${token.uniqueKey}";
-
-  LayerLink get layerLink =>
-      MatrixState.pAnyState.layerLinkAndKey(transformTargetId).link;
+  void _showNewWordOverlay(BuildContext context) {
+    if (TokensUtil.instance.isRecentlyCollected(token)) {
+      NewWordOverlay.show(
+        context: context,
+        target: token.wordCardTargetKey,
+        overlayKey: "new-word-${token.uniqueKey}",
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!context.mounted) return;
+      _showNewWordOverlay(context);
+    });
+
     final bool? subscribed =
         MatrixState.pangeaController.subscriptionController.isSubscribed;
-    final overlayColor = Theme.of(context).scaffoldBackgroundColor;
     final showTranscript =
         MatrixState.pangeaController.userController.showTranscription;
 
-    final Widget content = subscribed != null && !subscribed
-        ? MessageUnsubscribedCard(token: token, onClose: onClose)
-        : Stack(
-            children: [
-              Container(
-                height: AppConfig.toolbarMaxHeight - 8,
-                padding: const EdgeInsets.all(12.0),
-                constraints: BoxConstraints(
-                  maxWidth: maxWidth ?? AppConfig.toolbarMinWidth,
-                ),
-                child: CompositedTransformTarget(
-                  link: layerLink,
+    final layerLinkAndKey = MatrixState.pAnyState.layerLinkAndKey(
+      token.wordCardTargetKey,
+    );
+
+    final Widget content = CompositedTransformTarget(
+      link: layerLinkAndKey.link,
+      child: subscribed != null && !subscribed
+          ? MessageUnsubscribedCard(
+              key: layerLinkAndKey.key,
+              token: token,
+              onClose: onClose,
+            )
+          : Stack(
+              key: layerLinkAndKey.key,
+              children: [
+                Container(
+                  height: AppConfig.toolbarMaxHeight - 8,
+                  padding: const EdgeInsets.all(12.0),
+                  constraints: BoxConstraints(
+                    maxWidth: maxWidth ?? AppConfig.toolbarMinWidth,
+                  ),
                   child: Column(
                     spacing: 12.0,
                     children: [
@@ -182,17 +198,9 @@ class WordZoomWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
-              TokensUtil.isRecentlyCollected(token)
-                  ? NewWordOverlay(
-                      key: ValueKey(transformTargetId),
-                      overlayColor: overlayColor,
-                      transformTargetId: transformTargetId,
-                      onDismiss: onDismissNewWordOverlay,
-                    )
-                  : const SizedBox.shrink(),
-            ],
-          );
+              ],
+            ),
+    );
 
     return GestureDetector(
       onTap: () {

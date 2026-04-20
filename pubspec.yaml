@@ -6,7 +6,7 @@ description: Learn a language while texting your friends.
 # Pangea#
 publish_to: none
 # On version bump also increase the build number for F-Droid
-version: 4.1.18+3
+version: 4.1.19+6
 
 environment:
   sdk: ">=3.10.0 <4.0.0"
@@ -121,9 +121,9 @@ dependencies:
   material_symbols_icons: ^4.2741.0
   open_file: ^3.3.2
   purchases_flutter: ^8.5.1
-  sentry_flutter: ^8.13.2
+  sentry_flutter: ^9.17.0
   shimmer: ^3.0.0
-  rive: 0.11.11
+  rive: ^0.14.5
   flutter_tts: ^4.2.0
   animated_flip_counter: ^0.3.4
   meta: ^1.17.0
@@ -173,5 +173,12 @@ flutter:
 # 2. Always link an (upstream?) issue
 # 3. Explain how and when this can be removed (overrides must be temporarily)
 dependency_overrides:
+  # To fix 16kb compatiblity in PlayStore. It is fixed in main branch but
+  # not yet published:
+  # https://github.com/google/webcrypto.dart/issues/207
+  webcrypto:
+    git:
+      url: https://github.com/google/webcrypto.dart.git
+      ref: master
   fcm_shared_isolate:
     path: pangea_packages/fcm_shared_isolate

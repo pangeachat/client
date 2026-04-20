@@ -7,16 +7,16 @@ import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/card_error_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/content_loading_indicator.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_target.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_morph_choice.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_match_card.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-/// The wrapper for practice activity content.
-/// Handles the activities associated with a message,
+/// The wrapper for practice exercise content.
+/// Handles the exercises associated with a message,
 /// their navigation, and the management of completion records
 class PracticeActivityCard extends StatefulWidget {
   final PracticeTarget targetTokensAndActivityType;
@@ -37,7 +37,7 @@ class PracticeActivityCard extends StatefulWidget {
 }
 
 class PracticeActivityCardState extends State<PracticeActivityCard> {
-  final ValueNotifier<AsyncState<PracticeActivityModel>> _activityState =
+  final ValueNotifier<AsyncState<PracticeExerciseModel>> _activityState =
       ValueNotifier(const AsyncState.loading());
 
   @override
@@ -100,18 +100,18 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
             switch (state) {
               AsyncLoading() => const ContentLoadingIndicator(height: 40),
               AsyncError() => CardErrorWidget(
-                L10n.of(context).errorFetchingActivity,
+                L10n.of(context).errorFetchingExercise,
               ),
               AsyncLoaded() => switch (state.value) {
-                MultipleChoicePracticeActivityModel() =>
+                MultipleChoicePracticeExerciseModel() =>
                   MessageMorphInputBarContent(
                     controller: widget.controller,
-                    activity: state.value as MorphPracticeActivityModel,
+                    activity: state.value as MorphPracticeExerciseModel,
                     selectedToken: widget.selectedToken,
                     maxWidth: widget.maxWidth,
                   ),
-                MatchPracticeActivityModel() => MatchActivityCard(
-                  currentActivity: state.value as MatchPracticeActivityModel,
+                MatchPracticeExerciseModel() => MatchActivityCard(
+                  currentActivity: state.value as MatchPracticeExerciseModel,
                   controller: widget.controller,
                 ),
               },

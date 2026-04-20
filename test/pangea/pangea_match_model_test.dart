@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 void main() {
   group('PangeaMatch.fromJson', () {
@@ -14,9 +15,9 @@ void main() {
             'choices': [
               {'value': 'correction', 'type': 'bestCorrection'},
             ],
-            'offset': 10,
-            'length': 4,
-            'full_text': 'Some full text',
+            ModelKey.offset: 10,
+            ModelKey.length: 4,
+            ModelKey.fullText: 'Some full text',
             'type': 'grammar',
           },
           'status': 'open',
@@ -37,8 +38,8 @@ void main() {
             'choices': [
               {'value': 'fix', 'type': 'bestCorrection'},
             ],
-            'offset': 5,
-            'length': 3,
+            ModelKey.offset: 5,
+            ModelKey.length: 3,
             'type': 'grammar',
           },
           'status': 'open',
@@ -57,8 +58,8 @@ void main() {
           'match': {
             'message': 'Error',
             'choices': [],
-            'offset': 0,
-            'length': 1,
+            ModelKey.offset: 0,
+            ModelKey.length: 1,
             'type': 'grammar',
           },
           'status': 'accepted',
@@ -78,8 +79,8 @@ void main() {
           'choices': [
             {'value': 'correction', 'type': 'bestCorrection'},
           ],
-          'offset': 10,
-          'length': 4,
+          ModelKey.offset: 10,
+          ModelKey.length: 4,
           'type': 'grammar',
         };
 
@@ -98,8 +99,8 @@ void main() {
           'choices': [
             {'value': 'fix', 'type': 'bestCorrection'},
           ],
-          'offset': 5,
-          'length': 3,
+          ModelKey.offset: 5,
+          ModelKey.length: 3,
           'type': 'vocabulary',
         };
 
@@ -115,8 +116,8 @@ void main() {
         final Map<String, dynamic> jsonData = {
           'message': 'Out of target',
           'choices': [],
-          'offset': 0,
-          'length': 5,
+          ModelKey.offset: 0,
+          ModelKey.length: 5,
           'type': 'itStart', // String type in V2
         };
 
@@ -131,8 +132,8 @@ void main() {
           'choices': [
             {'value': 'went', 'type': 'bestCorrection'},
           ],
-          'offset': 2,
-          'length': 4,
+          ModelKey.offset: 2,
+          ModelKey.length: 4,
           'type': 'grammar', // String type in V2
         };
 
@@ -149,8 +150,8 @@ void main() {
           'match': {
             'message': 'Error',
             'choices': [],
-            'offset': 0,
-            'length': 1,
+            ModelKey.offset: 0,
+            ModelKey.length: 1,
             'type': {'type_name': 'grammar'}, // Old object format
           },
           'status': 'open',
@@ -165,8 +166,8 @@ void main() {
         final Map<String, dynamic> jsonData = {
           'message': 'Error',
           'choices': [],
-          'offset': 0,
-          'length': 1,
+          ModelKey.offset: 0,
+          ModelKey.length: 1,
           'type': 'grammar', // New string format
         };
 

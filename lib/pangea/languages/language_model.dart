@@ -6,6 +6,49 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/languages/l2_support_enum.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
+
+class VoiceOptionModel {
+  final String shortName;
+  final String displayName;
+
+  const VoiceOptionModel({required this.shortName, required this.displayName});
+
+  factory VoiceOptionModel.fromJson(dynamic json) {
+    if (json is String) {
+      return VoiceOptionModel(
+        shortName: json,
+        displayName: _fallbackVoiceDisplayName(json),
+      );
+    }
+
+    final map = json as Map<String, dynamic>;
+    final shortName = (map['short_name'] ?? map['shortName']) as String;
+    final displayName =
+        (map['display_name'] ?? map['displayName']) as String? ??
+        _fallbackVoiceDisplayName(shortName);
+
+    return VoiceOptionModel(shortName: shortName, displayName: displayName);
+  }
+
+  Map<String, dynamic> toJson() => {
+    'short_name': shortName,
+    'display_name': displayName,
+  };
+
+  static String _fallbackVoiceDisplayName(String shortName) {
+    final parts = shortName.split('-');
+    if (parts.length < 3) return shortName;
+
+    final variant = parts.removeLast();
+    final quality = parts.removeLast().replaceAllMapped(
+      RegExp(r'(\d+)'),
+      (match) => ' ${match.group(1)}',
+    );
+    final locale = parts.join('-').toUpperCase();
+    return '$quality $variant ($locale)';
+  }
+}
 
 class LanguageModel {
   final String langCode;
@@ -14,7 +57,7 @@ class LanguageModel {
   final String? localeEmoji;
   final L2SupportEnum l2Support;
   final TextDirection? _textDirection;
-  final List<String> voices;
+  final List<VoiceOptionModel> voiceOptions;
 
   LanguageModel({
     required this.langCode,
@@ -22,14 +65,28 @@ class LanguageModel {
     this.localeEmoji,
     this.script = LanguageKeys.unknownLanguage,
     this.l2Support = L2SupportEnum.na,
-    this.voices = const [],
+    this.voiceOptions = const [],
     TextDirection? textDirection,
   }) : _textDirection = textDirection;
+
+  List<String> get voices =>
+      voiceOptions.map((voice) => voice.shortName).toList();
+
+  String? displayVoiceName(String shortName) {
+    return voiceOptions
+        .firstWhereOrNull((voice) => voice.shortName == shortName)
+        ?.displayName;
+  }
 
   factory LanguageModel.fromJson(Map<String, dynamic> json) {
     final String code =
         json['language_code'] ??
         codeFromNameOrCode(json['language_name'], json['language_flag']);
+
+    final rawVoices = json['voice_options'] ?? json['voices'];
+    final voiceOptions = rawVoices is List
+        ? rawVoices.map(VoiceOptionModel.fromJson).toList()
+        : <VoiceOptionModel>[];
 
     return LanguageModel(
       langCode: code,
@@ -44,7 +101,7 @@ class LanguageModel {
             )
           : null,
       localeEmoji: json['locale_emoji'],
-      voices: json['voices'] != null ? List<String>.from(json['voices']) : [],
+      voiceOptions: voiceOptions,
     );
   }
 
@@ -56,6 +113,7 @@ class LanguageModel {
     'text_direction': textDirection.name,
     'locale_emoji': localeEmoji,
     'voices': voices,
+    'voice_options': voiceOptions.map((voice) => voice.toJson()).toList(),
   };
 
   bool get l2 => l2Support != L2SupportEnum.na;
@@ -320,6 +378,9 @@ class LanguageModel {
 
   Uri get svgUrl =>
       Uri.parse("${AppConfig.assetsBaseURL}/language-flags/$langCode.svg");
+
+  LanguageModel get unlocalized =>
+      PLanguageStore.byLangCode(langCodeShort) ?? this;
 
   static bool search(
     LanguageModel? item,

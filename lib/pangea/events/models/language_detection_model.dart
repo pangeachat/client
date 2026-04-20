@@ -1,3 +1,4 @@
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 class LanguageDetectionModel {
@@ -10,7 +11,7 @@ class LanguageDetectionModel {
   });
 
   factory LanguageDetectionModel.fromJson(Map<String, dynamic> json) {
-    final dynamic confValue = json[ModelKey.confidence];
+    final dynamic confValue = json[ChoreoConstants.confidence];
     double confidence;
     if (confValue is String) {
       confidence = double.parse(confValue);
@@ -29,6 +30,6 @@ class LanguageDetectionModel {
 
   Map<String, dynamic> toJson() => {
     ModelKey.langCode: langCode,
-    ModelKey.confidence: confidence,
+    ChoreoConstants.confidence: confidence,
   };
 }

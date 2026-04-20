@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:21:55.784279",
+    "@@last_modified": "2026-04-15 11:31:43.712164",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -3454,7 +3454,6 @@
     "trialPeriodExpired": "Periode percobaan Anda telah berakhir",
     "translations": "terjemahan",
     "definitions": "definisi",
-    "subscribedToUnlockTools": "Berlangganan untuk membuka kunci terjemahan interaktif dan pemeriksaan tata bahasa, pemutaran audio, aktivitas latihan pribadi, dan analitik pembelajaran!",
     "translationTooltip": "Terjemahkan",
     "kickBotWarning": "Mengeluarkan Pangea Bot akan menghapus bot percakapan dari obrolan ini.",
     "refresh": "Segarkan",
@@ -3470,12 +3469,10 @@
     "tooManyRequest": "Terlalu banyak permintaan, silakan coba lagi nanti.",
     "enterNumber": "Silakan masukkan nilai angka bulat.",
     "practice": "Latihan",
-    "speechToTextBody": "Untuk pesan suara, Anda dapat melihat transkrip serta skor Kata Per Menit dari pembicara.",
     "versionNotFound": "Versi Tidak Ditemukan",
     "fetchingVersion": "Mengambil versi...",
     "versionFetchError": "Kesalahan saat mengambil versi",
     "versionText": "Versi: {version}+{buildNumber}",
-    "l1TranslationBody": "Pesan dalam bahasa dasar Anda tidak akan diterjemahkan.",
     "deleteSubscriptionWarningTitle": "Anda memiliki langganan aktif",
     "deleteSubscriptionWarningBody": "Menghapus akun Anda tidak akan secara otomatis membatalkan langganan Anda.",
     "manageSubscription": "Kelola Langganan",
@@ -3484,7 +3481,6 @@
     "wordsUsed": "Kata yang Digunakan",
     "level": "Level",
     "morphsUsed": "Morf digunakan",
-    "translationChoicesBody": "Klik dan tahan opsi untuk petunjuk.",
     "grammar": "Tata Bahasa",
     "contactHasBeenInvitedToTheChat": "Kontak telah diundang ke obrolan",
     "inviteChat": "📝 Undangan obrolan",
@@ -3765,8 +3761,6 @@
     "grammarCopyVOICErcp": "Timbal Balik",
     "other": "Lainnya",
     "levelShort": "LVL {level}",
-    "clickBestOption": "Pilih opsi terbaik untuk menerjemahkan pesan Anda!",
-    "completeActivitiesToUnlock": "Selesaikan setidaknya satu aktivitas untuk membuka kunci terjemahan!",
     "noCapacityLimit": "Tanpa batas kapasitas",
     "downloadGroupText": "Unduh teks grup",
     "notificationsOn": "Notifikasi aktif",
@@ -3785,22 +3779,6 @@
     "constructUseIgnIGCDesc": "Diabaikan dalam koreksi tata bahasa",
     "constructUseCorIGCDesc": "Benar dalam koreksi tata bahasa",
     "constructUseIncIGCDesc": "Salah dalam koreksi tata bahasa",
-    "constructUseCorPADesc": "Benar dalam aktivitas arti kata",
-    "constructUseIgnPADesc": "Diabaikan dalam aktivitas arti kata",
-    "constructUseIncPADesc": "Salah dalam aktivitas arti kata",
-    "constructUseCorWLDesc": "Benar dalam aktivitas mendengarkan kata",
-    "constructUseIncWLDesc": "Salah dalam aktivitas mendengarkan kata",
-    "constructUseIngWLDesc": "Diabaikan dalam aktivitas mendengarkan kata",
-    "constructUseCorHWLDesc": "Benar dalam aktivitas kata tersembunyi",
-    "constructUseIncHWLDesc": "Salah dalam aktivitas kata tersembunyi",
-    "constructUseIgnHWLDesc": "Diabaikan dalam aktivitas kata tersembunyi",
-    "constructUseCorLDesc": "Benar dalam aktivitas lema",
-    "constructUseIncLDesc": "Salah dalam aktivitas lema",
-    "constructUseIgnLDesc": "Diabaikan dalam aktivitas lema",
-    "constructUseCorMDesc": "Benar dalam aktivitas tata bahasa",
-    "constructUseIncMDesc": "Salah dalam aktivitas tata bahasa",
-    "constructUseIgnMDesc": "Diabaikan dalam aktivitas tata bahasa",
-    "constructUseEmojiDesc": "Benar dalam aktivitas emoji",
     "constructUseCollected": "Terkumpul dalam obrolan",
     "constructUseNanDesc": "Tidak berlaku",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
@@ -3852,23 +3830,16 @@
     "whatIsMeaning": "Apa arti '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Cocokkan arti dengan kata-kata dalam pesan!",
     "doubleClickToEdit": "Klik dua kali untuk mengedit.",
-    "activityPlannerTitle": "Perencana Kegiatan",
     "topicLabel": "Topik",
     "topicPlaceholder": "Pilih topik...",
-    "modeLabel": "Jenis Aktivitas",
     "modePlaceholder": "Pilih mode...",
     "learningObjectiveLabel": "Tujuan Pembelajaran",
     "learningObjectivePlaceholder": "Pilih tujuan pembelajaran...",
-    "languageOfInstructionsLabel": "Bahasa instruksi aktivitas",
     "targetLanguageLabel": "Bahasa target",
     "cefrLevelLabel": "Level CEFR",
-    "generateActivitiesButton": "Hasilkan Aktivitas",
-    "launchActivityButton": "Luncurkan Aktivitas",
     "image": "Gambar",
     "video": "Video",
     "nan": "Tidak berlaku",
-    "activityPlannerOverviewInstructionsBody": "Pilih topik, mode, tujuan pembelajaran dan hasilkan aktivitas untuk obrolan!",
-    "activityTitle": "Judul Aktivitas",
     "addVocabulary": "Tambah kosakata",
     "instructions": "Instruksi",
     "numberOfLearners": "Jumlah pelajar",
@@ -3915,12 +3886,10 @@
     "pleaseEnterInt": "Silakan masukkan angka",
     "home": "Beranda",
     "join": "Gabung",
-    "readingAssistanceOverviewBody": "Klik tombol di bawah untuk permainan mini tentang mencocokkan emoji, audio, arti kata, dan konsep tata bahasa. Atau klik kata apa saja untuk detail.",
     "resetInstructionTooltipsTitle": "Atur ulang tooltip instruksi",
     "resetInstructionTooltipsDesc": "Klik untuk menampilkan tooltip instruksi seperti untuk pengguna baru.",
     "randomize": "Acak",
     "clear": "Hapus",
-    "makeYourOwnActivity": "Buat aktivitas sendiri",
     "featuredActivities": "Unggulan",
     "save": "Simpan",
     "startChat": "Mulai obrolan",
@@ -3977,7 +3946,6 @@
     "announcements": "Pengumuman",
     "activities": "Kegiatan",
     "access": "Akses",
-    "activitySuggestionTimeoutMessage": "Kami sedang bekerja keras untuk menghasilkan lebih banyak kegiatan untuk Anda, silakan periksa kembali dalam satu menit",
     "howSpaceCanBeFound": "Bagaimana kursus ini dapat ditemukan",
     "private": "Pribadi",
     "cannotBeFoundInSearch": "Tidak dapat ditemukan dalam pencarian",
@@ -4012,9 +3980,6 @@
     "numInvited": "{count} diundang",
     "saved": "Tersimpan",
     "reset": "Atur ulang",
-    "errorGenerateActivityMessage": "Gagal menghasilkan aktivitas",
-    "errorRegenerateActivityMessage": "Gagal menghasilkan ulang aktivitas",
-    "errorLaunchActivityMessage": "Gagal meluncurkan aktivitas",
     "errorFetchingActivitiesMessage": "Gagal mengambil aktivitas",
     "errorFetchingDefinition": "Gagal mengambil definisi",
     "errorProcessAnalytics": "Gagal memproses analitik",
@@ -4023,7 +3988,6 @@
     "unexpectedError": "Kesalahan tak terduga.",
     "pleaseReload": "Silakan muat ulang dan coba lagi.",
     "translationError": "Kesalahan terjemahan",
-    "errorFetchingActivity": "Gagal mengambil aktivitas",
     "check": "Periksa",
     "unableToFindRoom": "Tidak ditemukan obrolan atau kursus dengan kode tersebut. Silakan coba lagi.",
     "numCompletedActivities": "Jumlah aktivitas yang telah diselesaikan",
@@ -4031,11 +3995,8 @@
     "request": "Permintaan",
     "requestAll": "Permintaan Semua",
     "confirmMessageUnpin": "Apakah Anda yakin ingin melepas pin pesan ini?",
-    "createActivityPlan": "Buat rencana aktivitas baru",
     "saveAndLaunch": "Simpan dan Luncurkan",
     "launchToSpace": "Luncurkan ke kursus",
-    "numberOfActivities": "Jumlah Sesi Aktivitas",
-    "maximumActivityParticipants": "Setiap Aktivitas dapat memiliki maksimal {count} peserta.",
     "pending": "Menunggu",
     "inactive": "Tidak aktif",
     "confirmRole": "Konfirmasi peran",
@@ -5669,10 +5630,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -5737,10 +5694,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@speechToTextBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@versionNotFound": {
         "type": "String",
         "placeholders": {}
@@ -5763,10 +5716,6 @@
                 "type": "String"
             }
         }
-    },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
@@ -5797,10 +5746,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -6928,14 +6873,6 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
         "type": "String",
         "placeholders": {}
@@ -7005,70 +6942,6 @@
         "placeholders": {}
     },
     "@constructUseIncIGCDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7294,19 +7167,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@topicLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -7322,23 +7187,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -7351,14 +7204,6 @@
         "placeholders": {}
     },
     "@nan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -7558,10 +7403,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@readingAssistanceOverviewBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resetInstructionTooltipsTitle": {
         "type": "String",
         "placeholders": {}
@@ -7575,10 +7416,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -7810,10 +7647,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activitySuggestionTimeoutMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@howSpaceCanBeFound": {
         "type": "String",
         "placeholders": {}
@@ -7962,18 +7795,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingActivitiesMessage": {
         "type": "String",
         "placeholders": {}
@@ -8003,10 +7824,6 @@
         "placeholders": {}
     },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8045,10 +7862,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -8056,18 +7869,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -9939,15 +9740,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Anda telah menetapkan emoji untuk {lemma}! Kami akan menggunakan emoji ini untuk mewakili kata dalam aktivitas praktik ke depan.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Menunggu penyelesaian masuk",
     "ssoDialogDesc": "Kami membuka tab baru agar Anda dapat masuk dengan aman.",
     "ssoDialogHelpText": "🤔 Jika Anda tidak melihat tab baru, silakan periksa pemblokir popup Anda.",
@@ -10125,16 +9917,6 @@
         "placeholders": {}
     },
     "@publicInviteDescSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "enableNotificationsTitle": "Pangea Chat adalah aplikasi pesan, jadi notifikasi itu penting!",
-    "enableNotificationsDesc": "Izinkan notifikasi",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10589,12 +10371,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Buka aktivitas latihan",
     "hideEvents": "Sembunyikan acara",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10741,11 +10518,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noAnalyticsActivitiesAvailable": "Wow, Anda telah menyelesaikan semua aktivitas yang tersedia! Kirim lebih banyak pesan untuk membuka lebih banyak aktivitas latihan.",
-    "@noAnalyticsActivitiesAvailable": {
-        "type": "String",
-        "placeholders": {}
-    },
     "profile": "Profil",
     "@profile": {
         "type": "String",
@@ -10757,8 +10529,6 @@
     "notificationDeviceSubtitle": "Lihat dan kelola perangkat yang mengirimkan notifikasi push kepada Anda.",
     "notificationRuleDM": "Pesan Langsung",
     "notificationRuleDMDescription": "Memberitahukan pengguna tentang pesan di ruang pesan langsung.",
-    "notificationRuleCourseAndActivity": "Kursus dan Aktivitas",
-    "notificationRuleCourseAndActivityDescription": "Memberitahukan pengguna tentang pesan di kursus, aktivitas, dan obrolan.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -10780,14 +10550,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -11057,6 +10819,125 @@
         "type": "String",
         "placeholders": {}
     },
+    "subscribedToUnlockTools": "Berlangganan untuk membuka terjemahan interaktif dan pemeriksaan tata bahasa, pemutaran audio, latihan praktik yang dipersonalisasi, dan analitik pembelajaran!",
+    "emojiSelectedSnackbar": "Anda telah menetapkan emoji untuk {lemma}! Kami akan menggunakan emoji ini untuk mewakili kata dalam latihan praktik ke depan.",
+    "unlockPracticeActivities": "Buka latihan praktik",
+    "noAnalyticsActivitiesAvailable": "Wow, Anda telah menyelesaikan semua aktivitas yang tersedia! Kirim lebih banyak pesan untuk membuka lebih banyak latihan praktik.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "Benar dalam latihan makna kata",
+    "constructUseIgnPADesc": "Diabaikan dalam latihan makna kata",
+    "constructUseIncPADesc": "Salah dalam latihan makna kata",
+    "constructUseCorWLDesc": "Benar dalam latihan mendengarkan kata",
+    "constructUseIncWLDesc": "Salah dalam latihan mendengarkan kata",
+    "constructUseIngWLDesc": "Diabaikan dalam latihan mendengarkan kata",
+    "constructUseCorHWLDesc": "Benar dalam latihan kata tersembunyi",
+    "constructUseIncHWLDesc": "Salah dalam latihan kata tersembunyi",
+    "constructUseIgnHWLDesc": "Diabaikan dalam latihan kata tersembunyi",
+    "constructUseCorLDesc": "Benar dalam latihan lema",
+    "constructUseIncLDesc": "Salah dalam latihan lema",
+    "constructUseIgnLDesc": "Diabaikan dalam latihan lema",
+    "constructUseCorMDesc": "Benar dalam latihan tata bahasa",
+    "constructUseIncMDesc": "Salah dalam latihan tata bahasa",
+    "constructUseIgnMDesc": "Diabaikan dalam latihan tata bahasa",
+    "constructUseEmojiDesc": "Benar dalam latihan emoji",
+    "errorFetchingExercise": "Gagal mengambil latihan praktik",
+    "notificationRuleCourseAndActivity": "Kursus dan Aktivitas",
+    "notificationRuleCourseAndActivityDescription": "Memberitahukan pengguna tentang pesan dalam kursus, aktivitas, dan obrolan.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "clickToUpdateTargetLanguage": "Klik di sini untuk memperbarui bahasa target Anda.",
     "@clickToUpdateTargetLanguage": {
         "type": "String",
@@ -11064,6 +10945,41 @@
     },
     "closeEmojiMenu": "Tutup menu emoji",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Izinkan orang lain mencari kursus Anda",
+    "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Jangan lewatkan obrolan!",
+    "enableNotificationsDesc": "Izinkan notifikasi untuk Pangea Chat dan tetap terhubung dengan teman bahasa Anda!",
+    "enableNotifications": "Izinkan notifikasi",
+    "noActivitiesFound": "Tidak ada aktivitas yang tersedia untuk topik ini.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Anda tidak dapat memblokir diri sendiri",
+    "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Blokir nama pengguna",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

@@ -7,12 +7,12 @@ import 'package:collection/collection.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
+import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
@@ -380,12 +380,14 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       if (audioFile != null) {
         await matrix?.audioPlayer?.setFilePath(audioFile.path);
       } else {
+        final blob = html.Blob([pangeaAudioFile.bytes], 'audio/mpeg');
+        final url = html.Url.createObjectUrlFromBlob(blob);
         await matrix?.audioPlayer?.setAudioSource(
-          BytesAudioSource(pangeaAudioFile.bytes, pangeaAudioFile.mimeType),
+          AudioSource.uri(Uri.parse(url)),
         );
       }
 
-      TtsController.stop();
+      TtsController.forceStop();
 
       if (seek != null) {
         matrix!.audioPlayer!.seek(seek);

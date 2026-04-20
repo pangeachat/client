@@ -5,7 +5,6 @@ import 'package:matrix/matrix.dart' as matrix;
 
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
-import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -16,6 +15,7 @@ import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
 import 'package:fluffychat/pangea/user/public_profile_model.dart';
+import 'package:fluffychat/pangea/user/user_constants.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'user_model.dart';
 
@@ -55,7 +55,7 @@ class UserController {
     final prevTargetLang = userL2;
     final prevBaseLang = userL1;
 
-    final profileData = client.accountData[ModelKey.userProfile]?.content;
+    final profileData = client.accountData[UserConstants.userProfile]?.content;
     final Profile? fromAccountData = Profile.fromAccountData(profileData);
     if (fromAccountData != null && fromAccountData != _cachedProfile) {
       _cachedProfile = fromAccountData;
@@ -103,7 +103,7 @@ class UserController {
 
     /// try to get the account data in the up-to-date format
     final Profile? fromAccountData = Profile.fromAccountData(
-      client.accountData[ModelKey.userProfile]?.content,
+      client.accountData[UserConstants.userProfile]?.content,
     );
 
     if (fromAccountData != null) {
@@ -184,6 +184,11 @@ class UserController {
     }
 
     if (client.userID == null) return;
+    final accountData = client.accountData[UserConstants.userProfile]?.content;
+    final fromAccountData =
+        Profile.fromAccountData(accountData) ?? Profile.emptyProfile;
+    _cachedProfile ??= fromAccountData;
+
     try {
       final resp = await client.getUserProfile(client.userID!);
       publicProfile = PublicProfileModel.fromJson(resp.additionalProperties);

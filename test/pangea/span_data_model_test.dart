@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 void main() {
   test(
@@ -11,9 +12,9 @@ void main() {
         'message': null,
         'short_message': null,
         'choices': <dynamic>[],
-        'offset': 0,
-        'length': 4,
-        'full_text': 'Test',
+        ModelKey.offset: 0,
+        ModelKey.length: 4,
+        ModelKey.fullText: 'Test',
         'type': {'type_name': 'correction'},
       };
 
@@ -29,9 +30,9 @@ void main() {
       'message': null,
       'short_message': null,
       'choices': <dynamic>[],
-      'offset': 0,
-      'length': 4,
-      'full_text': 'Test',
+      ModelKey.offset: 0,
+      ModelKey.length: 4,
+      ModelKey.fullText: 'Test',
       'type': {'typeName': 'itStart'},
     };
 
@@ -45,9 +46,9 @@ void main() {
       'message': null,
       'short_message': null,
       'choices': <dynamic>[],
-      'offset': 0,
-      'length': 4,
-      'full_text': 'Test',
+      ModelKey.offset: 0,
+      ModelKey.length: 4,
+      ModelKey.fullText: 'Test',
       'type': 'did_you_mean',
     };
 
@@ -63,9 +64,9 @@ void main() {
         'message': null,
         'short_message': null,
         'choices': <dynamic>[],
-        'offset': 0,
-        'length': 4,
-        'full_text': 'Test',
+        ModelKey.offset: 0,
+        ModelKey.length: 4,
+        ModelKey.fullText: 'Test',
         'type': 'vocabulary',
       };
 
@@ -80,9 +81,9 @@ void main() {
       'message': null,
       'short_message': null,
       'choices': <dynamic>[],
-      'offset': 0,
-      'length': 4,
-      'full_text': 'Test',
+      ModelKey.offset: 0,
+      ModelKey.length: 4,
+      ModelKey.fullText: 'Test',
       'type': 'grammar',
     };
 
@@ -96,9 +97,9 @@ void main() {
       'message': null,
       'short_message': null,
       'choices': <dynamic>[],
-      'offset': 0,
-      'length': 4,
-      'full_text': 'Test',
+      ModelKey.offset: 0,
+      ModelKey.length: 4,
+      ModelKey.fullText: 'Test',
       'type': 'translation',
     };
 
@@ -113,9 +114,9 @@ void main() {
         'message': null,
         'short_message': null,
         'choices': <dynamic>[],
-        'offset': 0,
-        'length': 4,
-        'full_text': 'Text from span',
+        ModelKey.offset: 0,
+        ModelKey.length: 4,
+        ModelKey.fullText: 'Text from span',
         'type': 'grammar',
       };
 
@@ -131,8 +132,8 @@ void main() {
         'message': null,
         'short_message': null,
         'choices': <dynamic>[],
-        'offset': 0,
-        'length': 4,
+        ModelKey.offset: 0,
+        ModelKey.length: 4,
         // Note: no full_text field
         'type': 'grammar',
       };
@@ -151,8 +152,8 @@ void main() {
           'message': null,
           'short_message': null,
           'choices': <dynamic>[],
-          'offset': 0,
-          'length': 4,
+          ModelKey.offset: 0,
+          ModelKey.length: 4,
           'type': 'grammar',
         };
 
@@ -166,10 +167,10 @@ void main() {
         'message': null,
         'short_message': null,
         'choices': <dynamic>[],
-        'offset': 0,
-        'length': 4,
+        ModelKey.offset: 0,
+        ModelKey.length: 4,
         'sentence': 'Text from sentence field',
-        'full_text': 'Text from full_text field',
+        ModelKey.fullText: 'Text from full_text field',
         'type': 'grammar',
       };
 

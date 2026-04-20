@@ -9,9 +9,9 @@ import 'package:fluffychat/pangea/activity_feedback/activity_feedback_repo.dart'
 import 'package:fluffychat/pangea/activity_feedback/activity_feedback_request.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_button_widget.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_summary_widget.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_button_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_summary_widget.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/room_summary_extension.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
@@ -84,9 +84,9 @@ class ActivitySessionStartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: Matrix.of(
-        context,
-      ).client.onRoomState.stream.rateLimit(const Duration(seconds: 1)),
+      stream: Matrix.of(context).client.onRoomState.stream
+          .where((update) => update.roomId == controller.widget.roomId)
+          .rateLimit(const Duration(seconds: 1)),
       builder: (context, snapshot) {
         return Scaffold(
           appBar: AppBar(
@@ -262,7 +262,7 @@ class _ActivityStatuses extends StatelessWidget {
                       trailing: space.isRoomAdmin
                           ? const Icon(Icons.arrow_forward)
                           : null,
-                      onTap: space.isRoomAdmin ? () => onTap(roomId) : null,
+                      onTap: status.canJoin(space) ? () => onTap(roomId) : null,
                     );
                   }),
                 ],

@@ -232,7 +232,7 @@ class _MatchContent extends StatelessWidget {
     final isOpen = match.updatedMatch.status.isOpen;
     final currentMatch = match.updatedMatch.match;
     final descriptionText =
-        currentMatch.selectedChoice?.feedback ??
+        currentMatch.bestChoice?.feedback ??
         currentMatch.type.defaultPrompt(context);
 
     return Scrollbar(

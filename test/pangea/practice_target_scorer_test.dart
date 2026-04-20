@@ -8,7 +8,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/practice_tier_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
 
 /// Helper to create a [OneConstructUse] with minimal required fields.
 OneConstructUse _makeUse(
@@ -266,7 +266,7 @@ void main() {
         _makeUse(ConstructUseTypeEnum.ga, time: now),
       ]);
       final score = uses.practiceScore(
-        activityType: ActivityTypeEnum.lemmaMeaning,
+        exerciseType: PracticeExerciseTypeEnum.lemmaMeaning,
       );
       // ga is most recent chat use → active tier.
       // No lemmaMeaning uses → defaults to 20 days.
@@ -280,7 +280,7 @@ void main() {
         _makeUse(ConstructUseTypeEnum.corPA, time: now),
       ]);
       final score = uses.practiceScore(
-        activityType: ActivityTypeEnum.wordMeaning,
+        exerciseType: PracticeExerciseTypeEnum.wordMeaning,
       );
       // corPA matches wordMeaning's associatedUseTypes.
       // 0 days × 10 (content) = 0. Maintenance (no chat uses).
@@ -298,11 +298,11 @@ void main() {
       ], category: 'noun');
       // Score for lemmaMeaning: corLM was 1 day ago → 1 × 10 = 10
       final lmScore = uses.practiceScore(
-        activityType: ActivityTypeEnum.lemmaMeaning,
+        exerciseType: PracticeExerciseTypeEnum.lemmaMeaning,
       );
       // Score for wordMeaning: corPA was today → 0 × 10 = 0
       final wmScore = uses.practiceScore(
-        activityType: ActivityTypeEnum.wordMeaning,
+        exerciseType: PracticeExerciseTypeEnum.wordMeaning,
       );
       expect(lmScore, greaterThan(wmScore));
     });
@@ -319,6 +319,129 @@ void main() {
       // No activityType → uses aggregate lastUsed (3 days ago).
       // 3 × 10 (content) = 30.
       expect(score, 30);
+    });
+  });
+
+  group('ConstructUses.shouldSkipForRecentPractice', () {
+    test('skips when recent correct has no incorrect attempts', () {
+      final now = DateTime.now();
+      final uses = _makeConstructUses([
+        _makeUse(
+          ConstructUseTypeEnum.corLM,
+          time: now.subtract(const Duration(hours: 2)),
+        ),
+      ]);
+
+      final shouldSkip = uses.shouldSkipForRecentPractice(
+        PracticeExerciseTypeEnum.lemmaMeaning,
+        now: now,
+      );
+
+      expect(shouldSkip, true);
+    });
+
+    test('does not skip when recent incorrect ratio is high', () {
+      final now = DateTime.now();
+      final uses = _makeConstructUses([
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(hours: 3)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(hours: 2)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.corLM,
+          time: now.subtract(const Duration(hours: 1)),
+        ),
+      ]);
+
+      final shouldSkip = uses.shouldSkipForRecentPractice(
+        PracticeExerciseTypeEnum.lemmaMeaning,
+        now: now,
+      );
+
+      expect(shouldSkip, false);
+    });
+
+    test('stays retry-eligible after noisy first success', () {
+      final now = DateTime.now();
+      final uses = _makeConstructUses([
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(hours: 4)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(hours: 3)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(hours: 2)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.corLM,
+          time: now.subtract(const Duration(hours: 1)),
+        ),
+      ]);
+
+      final shouldSkip = uses.shouldSkipForRecentPractice(
+        PracticeExerciseTypeEnum.lemmaMeaning,
+        now: now,
+      );
+
+      expect(shouldSkip, false);
+    });
+
+    test('skips after two consecutive recent correct answers', () {
+      final now = DateTime.now();
+      final uses = _makeConstructUses([
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(hours: 5)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(hours: 4)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(hours: 3)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.corLM,
+          time: now.subtract(const Duration(hours: 2)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.corLM,
+          time: now.subtract(const Duration(hours: 1)),
+        ),
+      ]);
+
+      final shouldSkip = uses.shouldSkipForRecentPractice(
+        PracticeExerciseTypeEnum.lemmaMeaning,
+        now: now,
+      );
+
+      expect(shouldSkip, true);
+    });
+
+    test('does not skip when no recent correct exists', () {
+      final now = DateTime.now();
+      final uses = _makeConstructUses([
+        _makeUse(
+          ConstructUseTypeEnum.corLM,
+          time: now.subtract(const Duration(days: 2)),
+        ),
+      ]);
+
+      final shouldSkip = uses.shouldSkipForRecentPractice(
+        PracticeExerciseTypeEnum.lemmaMeaning,
+        now: now,
+      );
+
+      expect(shouldSkip, false);
     });
   });
 

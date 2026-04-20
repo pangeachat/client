@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-04-03 12:22:17.486824",
+    "@@last_modified": "2026-04-15 11:32:11.063387",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -3577,7 +3577,6 @@
     "trialPeriodExpired": "Sizning sinov muddatingiz tugadi",
     "translations": "tarjimalar",
     "definitions": "taʼriflar",
-    "subscribedToUnlockTools": "Interaktiv tarjima va grammatik tekshirish, audio ijro, shaxsiy mashgʻulotlar va oʻrganish analitikasi uchun obuna boʻling!",
     "translationTooltip": "Tarjimaga",
     "kickBotWarning": "Pangea Botni chiqarib yuborish bu suhbatdagi botni olib tashlaydi.",
     "refresh": "Yangilash",
@@ -3593,12 +3592,10 @@
     "tooManyRequest": "Juda ko'p so'rov, iltimos, keyinroq urinib ko'ring.",
     "enterNumber": "Iltimos, butun son qiymatini kiriting.",
     "practice": "Amaliyot",
-    "speechToTextBody": "Ovozli xabarlar uchun, siz yozuvni va nutqchi so'zlar soni bahosini ko'rishingiz mumkin.",
     "versionNotFound": "Versiya topilmadi",
     "fetchingVersion": "Versiyani olish...",
     "versionFetchError": "Versiyani olishda xato",
     "versionText": "Versiya: {version}+{buildNumber}",
-    "l1TranslationBody": "Asosiy tilingizdagi xabarlar tarjima qilinmaydi.",
     "deleteSubscriptionWarningTitle": "Sizda faol obuna bor",
     "deleteSubscriptionWarningBody": "Hisobingizni o'chirish avtomatik ravishda obunangizni bekor qilmaydi.",
     "manageSubscription": "Obunani boshqarish",
@@ -3607,7 +3604,6 @@
     "wordsUsed": "Foydalanilgan so'zlar",
     "level": "Daraja",
     "morphsUsed": "Foydalanilgan morflar",
-    "translationChoicesBody": "Bir variantni bosib ushlab turing va maslahat oling.",
     "grammar": "Grammatika",
     "contactHasBeenInvitedToTheChat": "Kontakt suhbatga taklif qilindi",
     "inviteChat": "📨 Suhbatga taklif qilish",
@@ -3891,8 +3887,6 @@
     "grammarCopyVOICErcp": "O'zaro",
     "other": "Boshqa",
     "levelShort": "SAV {level}",
-    "clickBestOption": "Xabaringizni tarjima qilish uchun eng yaxshi variantlarni tanlang! Tavsiya uchun variantlarga bosib ushlab turing.",
-    "completeActivitiesToUnlock": "Tarjimani ochish uchun kamida bir faoliyatni yakunlang!",
     "noCapacityLimit": "Imkoniyat cheklovi yo'q",
     "downloadGroupText": "Guruh matnini yuklab olish",
     "notificationsOn": "Bildirishnomalar yoqilgan",
@@ -3911,22 +3905,6 @@
     "constructUseIgnIGCDesc": "Grammatika tuzatishda e'tiborsiz qilingan",
     "constructUseCorIGCDesc": "Grammatika tuzatishda to'g'ri",
     "constructUseIncIGCDesc": "Grammatika tuzatishda noto'g'ri",
-    "constructUseCorPADesc": "So'z ma'nosi faoliyatida to'g'ri",
-    "constructUseIgnPADesc": "So'z ma'nosi faoliyatida e'tiborsiz qilingan",
-    "constructUseIncPADesc": "So'z ma'nosi faoliyatida noto'g'ri",
-    "constructUseCorWLDesc": "So'z tinglash faoliyatida to'g'ri",
-    "constructUseIncWLDesc": "So'z tinglash faoliyatida noto'g'ri",
-    "constructUseIngWLDesc": "So'z tinglash faoliyatida e'tiborsiz qilingan",
-    "constructUseCorHWLDesc": "Yashirin so'z faoliyatida to'g'ri",
-    "constructUseIncHWLDesc": "Yashirin so'z faoliyatida noto'g'ri",
-    "constructUseIgnHWLDesc": "Yashirin so'z faoliyatida e'tiborsiz qilingan",
-    "constructUseCorLDesc": "Lema faoliyatida to'g'ri",
-    "constructUseIncLDesc": "Lema faoliyatida noto'g'ri",
-    "constructUseIgnLDesc": "Lemma faoliyatida e'tiborga olinmaydi",
-    "constructUseCorMDesc": "Grammatika faoliyatida to'g'ri",
-    "constructUseIncMDesc": "Grammatika faoliyatida noto'g'ri",
-    "constructUseIgnMDesc": "Grammatika faoliyatida e'tiborga olinmaydi",
-    "constructUseEmojiDesc": "Emodzi faoliyatida to'g'ri",
     "constructUseCollected": "Chatda to'plangan",
     "constructUseNanDesc": "Qo'llanilmaydi",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
@@ -3978,23 +3956,16 @@
     "whatIsMeaning": "'{lemma}' ning ma'nosi nima?",
     "chooseLemmaMeaningInstructionsBody": "Xabar ichidagi so'zlar bilan ma'nolarni moslang!",
     "doubleClickToEdit": "Tahrirlash uchun ikki marta bosish.",
-    "activityPlannerTitle": "Faoliyat Rejalashtiruvchi",
     "topicLabel": "Mavzu",
     "topicPlaceholder": "Mavzuni tanlang...",
-    "modeLabel": "Faoliyat turi",
     "modePlaceholder": "Rejimni tanlang...",
     "learningObjectiveLabel": "Oʻrganish maqsadi",
     "learningObjectivePlaceholder": "Oʻrganish maqsadini tanlang...",
-    "languageOfInstructionsLabel": "Koʻrsatmalar tilida",
     "targetLanguageLabel": "Maʼlumot tili",
     "cefrLevelLabel": "CEFR darajasi",
-    "generateActivitiesButton": "Faoliyatni yaratish",
-    "launchActivityButton": "Faoliyatni boshlash",
     "image": "Rasm",
     "video": "Video",
     "nan": "Qoʻllanilmaydi",
-    "activityPlannerOverviewInstructionsBody": "Mavzu, rejim, oʻrganish maqsadini tanlang va suhbat uchun faoliyat yarating!",
-    "activityTitle": "Faoliyat nomi",
     "addVocabulary": "Soʻz boyligini qoʻshish",
     "instructions": "Koʻrsatmalar",
     "numberOfLearners": "Oʻquvchilar soni",
@@ -4041,12 +4012,10 @@
     "pleaseEnterInt": "Iltimos, raqam kiriting",
     "home": "Bosh sahifa",
     "join": "Qo‘shilish",
-    "readingAssistanceOverviewBody": "Emojilar, audiolar, so‘z ma’nolari va grammatika tushunchalarini moslashtirish uchun mini-o‘yinlar uchun quyidagi tugmalarga bosing. Yoki tafsilotlar uchun har qanday so‘zga bosing.",
     "resetInstructionTooltipsTitle": "Ko‘rsatma iplarini tiklash",
     "resetInstructionTooltipsDesc": "Yangi foydalanuvchi uchun ko‘rsatma iplarini ko‘rsatish uchun bosing.",
     "randomize": "Tasodifiy qilish",
     "clear": "Tozalash",
-    "makeYourOwnActivity": "O‘z faoliyatingizni yarating",
     "featuredActivities": "Taqdim etilgan",
     "save": "Saqlash",
     "startChat": "Suhbatni boshlash",
@@ -4103,7 +4072,6 @@
     "announcements": "E'lonlar",
     "activities": "Faoliyatlar",
     "access": "Kirish",
-    "activitySuggestionTimeoutMessage": "Siz uchun ko'proq faoliyatlar yaratish uchun juda ko'p ishlayapmiz, iltimos, bir daqiqadan so'ng qaytib keling",
     "howSpaceCanBeFound": "Bu kurs qanday topilishi mumkin",
     "private": "Maxfiy",
     "cannotBeFoundInSearch": "Qidiruvda topilmaydi",
@@ -4138,9 +4106,6 @@
     "numInvited": "{count} ta taklif qilindi",
     "saved": "Saqlangan",
     "reset": "Qayta boshlash",
-    "errorGenerateActivityMessage": "Faoliyatni yaratishda xato",
-    "errorRegenerateActivityMessage": "Faoliyatni qayta yaratishda xato",
-    "errorLaunchActivityMessage": "Faoliyatni boshlashda xato",
     "errorFetchingActivitiesMessage": "Faoliyatlarni olishda xato",
     "errorFetchingDefinition": "Taqrifni olishda xato",
     "errorProcessAnalytics": "Tahlilni qayta ishlashda xato",
@@ -4149,7 +4114,6 @@
     "unexpectedError": "Kutilmagan xato.",
     "pleaseReload": "Iltimos, yangilang va qayta urinib ko'ring.",
     "translationError": "Tarjimada xato",
-    "errorFetchingActivity": "Faoliyatni olishda xato",
     "check": "Tekshirish",
     "unableToFindRoom": "Ushbu kod bilan chat yoki kurs topilmadi. Iltimos, qayta urinib ko'ring.",
     "numCompletedActivities": "Bajarilgan faoliyatlar soni",
@@ -4157,11 +4121,8 @@
     "request": "So'rov",
     "requestAll": "Hammasini so'rash",
     "confirmMessageUnpin": "Ushbu xabarni pin qilishdan voz kechmoqchimisiz?",
-    "createActivityPlan": "Yangi faoliyat rejasini yaratish",
     "saveAndLaunch": "Saqlash va ishga tushirish",
     "launchToSpace": "Kursga ishga tushirish",
-    "numberOfActivities": "Faoliyat sessiyalari soni",
-    "maximumActivityParticipants": "Har bir faoliyat uchun maksimal {count} ishtirokchi bo'lishi mumkin.",
     "pending": "Kutilmoqda",
     "inactive": "Faol emas",
     "confirmRole": "Rolni tasdiqlash",
@@ -4542,7 +4503,6 @@
     "inOngoingActivity": "Sizda davom etayotgan faoliyat bor!",
     "requestRegeneration": "Qayta yaratishni so'rash",
     "optionalRegenerateReason": "(Ixtiyoriy) Sabab",
-    "emojiSelectedSnackbar": "Siz {lemma} uchun emoji belgiladingiz! Biz bu emojini kelajakdagi amaliyotlarda so'zni ifodalash uchun ishlatamiz.",
     "constructUseCorLMDesc": "To'g'ri so'z ma'nosi amaliyoti",
     "constructUseIncLMDesc": "Noto'g'ri so'z ma'nosi amaliyoti",
     "constructUseCorLADesc": "To'g'ri so'z audio amaliyoti",
@@ -4580,8 +4540,6 @@
     "findCourse": "Kurs toping",
     "publicInviteDescChat": "Ushbu chatga taklif qilish uchun foydalanuvchilarni qidiring.",
     "publicInviteDescSpace": "Ushbu maydonga taklif qilish uchun foydalanuvchilarni qidiring.",
-    "enableNotificationsTitle": "Pangea Chat matnli ilova bo'lib, bildirishnomalar muhim!",
-    "enableNotificationsDesc": "Bildirishnomalarni ruxsat etish",
     "useActivityImageAsChatBackground": "Faoliyat rasmidan chat fonini foydalanish",
     "chatWithSupport": "Qo'llab-quvvatlash bilan chat",
     "newCourseAccess": "Standart holda, kurslar ochiq qidiruvda bo'lib, ularga qo'shilish uchun admin tasdiqlashi talab etiladi. Siz bu sozlamalarni istalgan vaqtda o'zgartirishingiz mumkin.",
@@ -6201,10 +6159,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -6269,10 +6223,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@speechToTextBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@versionNotFound": {
         "type": "String",
         "placeholders": {}
@@ -6295,10 +6245,6 @@
                 "type": "String"
             }
         }
-    },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
@@ -6329,10 +6275,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -7472,14 +7414,6 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
         "type": "String",
         "placeholders": {}
@@ -7549,70 +7483,6 @@
         "placeholders": {}
     },
     "@constructUseIncIGCDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7838,19 +7708,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@topicLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -7866,23 +7728,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -7895,14 +7745,6 @@
         "placeholders": {}
     },
     "@nan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -8102,10 +7944,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@readingAssistanceOverviewBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resetInstructionTooltipsTitle": {
         "type": "String",
         "placeholders": {}
@@ -8119,10 +7957,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8354,10 +8188,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activitySuggestionTimeoutMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@howSpaceCanBeFound": {
         "type": "String",
         "placeholders": {}
@@ -8506,18 +8336,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingActivitiesMessage": {
         "type": "String",
         "placeholders": {}
@@ -8547,10 +8365,6 @@
         "placeholders": {}
     },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8589,10 +8403,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -8600,18 +8410,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -10196,14 +9994,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@constructUseCorLMDesc": {
         "type": "String",
         "placeholders": {}
@@ -10352,14 +10142,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@useActivityImageAsChatBackground": {
         "type": "String",
         "placeholders": {}
@@ -10496,12 +10278,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Amaliyot faoliyatlarini ochish",
     "hideEvents": "Voqealarni yashirish",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10648,11 +10425,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noAnalyticsActivitiesAvailable": "Vau, siz barcha mavjud faoliyatlarni bajardingiz! Yana ko'proq xabar yuboring, shunda ko'proq amaliy faoliyatlarni ochasiz.",
-    "@noAnalyticsActivitiesAvailable": {
-        "type": "String",
-        "placeholders": {}
-    },
     "profile": "Profil",
     "@profile": {
         "type": "String",
@@ -10664,8 +10436,6 @@
     "notificationDeviceSubtitle": "Sizga push xabarnomalar yuboradigan qurilmalarni ko'ring va boshqaring.",
     "notificationRuleDM": "To'g'ridan-to'g'ri Xabar",
     "notificationRuleDMDescription": "Foydalanuvchini to'g'ridan-to'g'ri xabar xonalaridagi xabarlar haqida xabardor qiladi.",
-    "notificationRuleCourseAndActivity": "Kurs va Faoliyat",
-    "notificationRuleCourseAndActivityDescription": "Foydalanuvchini kurslar, faoliyatlar va suhbatlardagi xabarlar haqida xabardor qiladi.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -10687,14 +10457,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10964,6 +10726,125 @@
         "type": "String",
         "placeholders": {}
     },
+    "subscribedToUnlockTools": "Interaktiv tarjima va grammatika tekshirish, audio ijro, shaxsiy mashq mashqlari va o‘rganish tahlillari uchun obuna bo‘ling!",
+    "emojiSelectedSnackbar": "{lemma} uchun emoji o‘rnating! Biz bu emojini kelajakdagi mashq mashqlarida so‘zni ifodalash uchun ishlatamiz.",
+    "unlockPracticeActivities": "Mashq mashqlarini oching",
+    "noAnalyticsActivitiesAvailable": "Vau, siz barcha mavjud faoliyatlarni bajardingiz! Qo‘shimcha mashq mashqlari uchun ko‘proq xabar yuboring.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "So'z ma'nosi mashqida to'g'ri",
+    "constructUseIgnPADesc": "So'z ma'nosi mashqida e'tiborsiz qoldirilgan",
+    "constructUseIncPADesc": "So'z ma'nosi mashqida noto'g'ri",
+    "constructUseCorWLDesc": "So'zni tinglash mashqida to'g'ri",
+    "constructUseIncWLDesc": "So'zni tinglash mashqida noto'g'ri",
+    "constructUseIngWLDesc": "So'zni tinglash mashqida e'tiborsiz qoldirilgan",
+    "constructUseCorHWLDesc": "Yashirin so'z mashqida to'g'ri",
+    "constructUseIncHWLDesc": "Yashirin so'z mashqida noto'g'ri",
+    "constructUseIgnHWLDesc": "Yashirin so'z mashqida e'tiborsiz qoldirilgan",
+    "constructUseCorLDesc": "Lemma mashqida to'g'ri",
+    "constructUseIncLDesc": "Lema mashqida noto'g'ri",
+    "constructUseIgnLDesc": "Lema mashqida e'tiborsiz qoldirilgan",
+    "constructUseCorMDesc": "Grammatika mashqida to'g'ri",
+    "constructUseIncMDesc": "Grammatika mashqida noto'g'ri",
+    "constructUseIgnMDesc": "Grammatika mashqida e'tiborsiz qoldirilgan",
+    "constructUseEmojiDesc": "Emoji mashqida to'g'ri",
+    "errorFetchingExercise": "Amaliy mashqni olishda xato",
+    "notificationRuleCourseAndActivity": "Kurs va Faoliyat",
+    "notificationRuleCourseAndActivityDescription": "Foydalanuvchini kurslar, faoliyatlar va suhbatlardagi xabarlar haqida xabardor qiladi.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "clickToUpdateTargetLanguage": "Maqsadli tilingizni yangilash uchun bu yerga bosing.",
     "@clickToUpdateTargetLanguage": {
         "type": "String",
@@ -10971,6 +10852,41 @@
     },
     "closeEmojiMenu": "Emojilar menyusini yopish",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Boshqalar sizning kursingizni qidirishiga ruxsat berish",
+    "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Hech qachon suhbatni o'tkazib yubormang!",
+    "enableNotificationsDesc": "Pangea Chat uchun bildirishnomalarni ruxsat bering va til do'stlaringiz bilan bog'laning!",
+    "enableNotifications": "Bildirishnomalarni ruxsat berish",
+    "noActivitiesFound": "Ushbu mavzu uchun hech qanday faoliyat mavjud emas.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "O'zingizni bloklay olmaysiz",
+    "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Foydalanuvchi nomini bloklash",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

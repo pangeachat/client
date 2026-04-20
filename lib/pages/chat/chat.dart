@@ -17,13 +17,13 @@ import 'package:matrix/matrix.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat_view.dart';
 import 'package:fluffychat/pages/chat/event_info_dialog.dart';
-import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pages/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
@@ -48,7 +48,7 @@ import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.da
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
-import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/choreographer/writing_assistance_room_extension.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -56,6 +56,7 @@ import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/events/constants/message_constants.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -81,9 +82,9 @@ import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.d
 import 'package:fluffychat/pangea/subscription/widgets/paywall_card.dart';
 import 'package:fluffychat/pangea/token_info_feedback/show_token_feedback_dialog.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
+import 'package:fluffychat/pangea/tokens/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
 import 'package:fluffychat/utils/file_selector.dart';
@@ -588,7 +589,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _onTokenUpdate(Set<ConstructIdentifier> constructs) {
     if (constructs.isEmpty) return;
-    TokensUtil.clearNewTokenCache();
+    TokensUtil.instance.clearNewTokenCache();
   }
 
   Future<void> _botAudioListener(SyncUpdate update) async {
@@ -622,9 +623,9 @@ class ChatController extends State<ChatPageWithRoom>
       await file.writeAsBytes(audioFile.bytes);
       matrix.audioPlayer!.setFilePath(file.path);
     } else {
-      matrix.audioPlayer!.setAudioSource(
-        BytesAudioSource(audioFile.bytes, audioFile.mimeType),
-      );
+      final blob = html.Blob([audioFile.bytes], 'audio/mpeg');
+      final url = html.Url.createObjectUrlFromBlob(blob);
+      await matrix.audioPlayer!.setAudioSource(AudioSource.uri(Uri.parse(url)));
     }
 
     matrix.audioPlayer!.play();
@@ -1104,7 +1105,7 @@ class ChatController extends State<ChatPageWithRoom>
     inputFocus.dispose();
     depressMessageButton.dispose();
     scrollableNotifier.dispose();
-    TokensUtil.clearNewTokenCache();
+    TokensUtil.instance.clearNewTokenCache();
     //Pangea#
     super.dispose();
   }
@@ -1479,7 +1480,7 @@ class ChatController extends State<ChatPageWithRoom>
             // #Pangea
             'speaker_l1': pangeaController.userController.userL1Code,
             'speaker_l2': pangeaController.userController.userL2Code,
-            if (stt != null) ModelKey.userStt: stt.toJson(),
+            if (stt != null) MessageConstants.userStt: stt.toJson(),
             // Pangea#
           },
         )
@@ -1824,13 +1825,29 @@ class ChatController extends State<ChatPageWithRoom>
     inputFocus.requestFocus();
   }
 
-  void scrollToEventId(String eventId, {bool highlightEvent = true}) async {
+  // #Pangea
+  // void scrollToEventId(String eventId, {bool highlightEvent = true}) async {
+  void scrollToEventId(
+    String eventId, {
+    bool highlightEvent = true,
+    int calls = 0,
+  }) async {
+    // Pangea#
+    Logs().w("Scrolling to event ID $eventId");
     // #Pangea
     if (timeline == null) {
       Sentry.addBreadcrumb(
         Breadcrumb(
           message: 'Timeline is null when trying to scroll to event ID',
         ),
+      );
+      return;
+    }
+
+    if (calls > 2) {
+      ErrorHandler.logError(
+        e: Exception('Too many attempts to scroll to event ID $eventId'),
+        data: {'roomId': roomId, 'eventId': eventId, 'calls': calls},
       );
       return;
     }
@@ -1861,7 +1878,10 @@ class ChatController extends State<ChatPageWithRoom>
       });
       await loadTimelineFuture;
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-        scrollToEventId(eventId);
+        // #Pangea
+        // scrollToEventId(eventId);
+        scrollToEventId(eventId, calls: calls + 1);
+        // Pangea#
       });
       return;
     }
@@ -1946,7 +1966,7 @@ class ChatController extends State<ChatPageWithRoom>
   // }
   void clearSelectedEvents() {
     if (!mounted) return;
-    if (!_isToolbarOpen && selectedEvents.isEmpty) return;
+    if (!isToolbarOpen && selectedEvents.isEmpty) return;
     MatrixState.pAnyState.closeAllOverlays();
     depressMessageButton.value = false;
 
@@ -2325,7 +2345,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   final StreamController<void> stopMediaStream = StreamController.broadcast();
 
-  bool get _isToolbarOpen => MatrixState.pAnyState.isOverlayOpen(
+  bool get isToolbarOpen => MatrixState.pAnyState.isOverlayOpen(
     overlayKey: "message_toolbar_overlay",
   );
 
@@ -2582,13 +2602,15 @@ class ChatController extends State<ChatPageWithRoom>
       return showLanguageMismatchPopup(manual: manual, autosend: autosend);
     }
 
-    // If this request should send on a success, and is not a manual request, and assistance
-    // has already been requested, then just send the message instead of requesting assistance again.
-    if (autosend &&
-        !manual &&
-        choreographer.assistanceState != AssistanceStateEnum.notFetched) {
-      await send();
-      return;
+    // If this request should send on a success, and is not a manual request,
+    // and assistance has already been requested or writing assistance should not run automatically in this room,
+    // then just send the message instead of requesting assistance.
+    if (autosend && !manual) {
+      if (choreographer.assistanceState != AssistanceStateEnum.notFetched ||
+          !room.enableAutomaticWritingAssistance) {
+        await send();
+        return;
+      }
     }
 
     feedback == null

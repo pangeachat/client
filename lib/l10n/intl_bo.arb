@@ -2878,11 +2878,9 @@
     "trialPeriodExpired": "ཁྱེད་ཀྱི་ལོག་ལོག་ཚེས་བརྒྱབ་ཡོད།",
     "translations": "འབྲེལ་བའི་སྒྲོམ",
     "definitions": "ལོག་སྟོན",
-    "subscribedToUnlockTools": "ལོག་ལས་སྤྱོད་ལོག་ལས་སྤྱོད་ལོག་ལས་སྤྱོད་ལོག་ལས་སྤྱོད་ལོག",
     "translationTooltip": "འབྲེལ་བའི་སྒྲོམ",
     "versionFetchError": "རྒྱག་རྩོམ་བརྗོད་འབད་ནས་འགྱོ་མི་ཚུལ།",
     "versionText": "རྒྱག་རྩོམ།: {version}+{buildNumber}",
-    "l1TranslationBody": "ཁྱེད་ཀྱི་གཞི་སྐད་ལུས་ནང་ཡོད་པའི་དཔེ་ཚུལ་ལྟར་མི་རྟག་པ་འབྱུང་བ་མེད་པ།",
     "deleteSubscriptionWarningTitle": "ཁྱེད་ཀྱི་དུས་ཚོད་འགྱོ་བའི་དོན་ལས་འགྱོ་མི་ཚུལ།",
     "deleteSubscriptionWarningBody": "ཁྱེད་ཀྱི་ཁུལ་ལས་བཏང་ནས་ཁྱེད་ཀྱི་དུས་ཚོད་འགྱོ་བ་འབད་མི་ཚུལ།",
     "manageSubscription": "དུས་ཚོད་ལུས་སྤྱོད་ལམ་བསྐྱར་བཟོ།",
@@ -2891,7 +2889,6 @@
     "wordsUsed": "ཚིགས་ལུས་སྤྱོད།",
     "level": "ལོངས།",
     "morphsUsed": "མོརཕས་ལུས་སྤྱོད།",
-    "translationChoicesBody": "གདམ་ཁག་ལ་ལོག་འཇུག་གི་སྟེང་ལ་ལོག་འཇུག་འདི་ལ་ལོག་འཇུག་འབད་དེ་ལུས་སྤྱོད།",
     "grammar": "རྣམ་སྣང་",
     "contactHasBeenInvitedToTheChat": "དགོས་མཁོ་ལ་གླེང་བརྗོད་ལ་འདར་བརྗོད་བྱེད་ཡོད།",
     "inviteChat": "📨 འདི་ནས་གནང་བའི་ཆོག",
@@ -3172,8 +3169,6 @@
     "grammarCopyVOICErcp": "རྟག་པའི་འབྲེལ་བ",
     "other": "གཞིའི་ཚིག",
     "levelShort": "LVL {level}",
-    "clickBestOption": "ཁྱེད་ཀྱི་ཚིག་ལེན་ལ་སྤྱོད་འཇུག་ལག་ལེན་ལོག་ལེན་འབད!",
-    "completeActivitiesToUnlock": "རྟག་པའི་ལས་ཀ་ལྟར་སྤྱོད་འཇུག་ལ་འགྱོ་བའི་ལས་ཀ་ལྟར་འབད!",
     "noCapacityLimit": "ལག་ལེན་མེད",
     "downloadGroupText": "དབྱེད་ཁང་གི་ཚིག་རྟགས་རོལ་འདེགས།",
     "notificationsOn": "ཚེད་རིམ་སྒྲིག་བཀལ།",
@@ -3192,22 +3187,6 @@
     "constructUseIgnIGCDesc": "ནང་ལས་སྒྲིག་བསྐྱར་བཟོ་ནས་མེད་པ།",
     "constructUseCorIGCDesc": "ནང་ལས་སྒྲིག་བསྐྱར་བཟོ་ནས་བཟོ་བཅོས།",
     "constructUseIncIGCDesc": "ནང་ལས་སྒྲིག་བསྐྱར་བཟོ་ནས་མེད་པ།",
-    "constructUseCorPADesc": "ཡིག་ཚིག་སྒྲིག་བསྐྱར་བཟོ་ནས་བཟོ་བཅོས།",
-    "constructUseIgnPADesc": "ཡིག་ཚིག་སྒྲིག་བསྐྱར་བཟོ་ནས་མེད་པ།",
-    "constructUseIncPADesc": "ཡིག་ཚིག་སྒྲིག་བསྐྱར་བཟོ་ནས་མེད་པ།",
-    "constructUseCorWLDesc": "ཡིག་སྣོད་སྒྲིག་བསྐྱར་བཟོ་ནས་བཟོ་བཅོས།",
-    "constructUseIncWLDesc": "ཡིག་སྣོད་སྒྲིག་བསྐྱར་བཟོ་ནས་མེད་པ།",
-    "constructUseIngWLDesc": "ཡིག་སྣོད་སྒྲིག་བསྐྱར་བཟོ་ནས་མེད་པ།",
-    "constructUseCorHWLDesc": "མི་སྣང་ཡིག་སྣོད་སྒྲིག་བསྐྱར་བཟོ་ནས་བཟོ་བཅོས།",
-    "constructUseIncHWLDesc": "མི་སྣང་ཡིག་སྣོད་སྒྲིག་བསྐྱར་བཟོ་ནས་མེད་པ།",
-    "constructUseIgnHWLDesc": "མི་སྣང་ཡིག་སྣོད་སྒྲིག་བསྐྱར་བཟོ་ནས་མེད་པ།",
-    "constructUseCorLDesc": "ལེགས་སྟོན་ཡིག་སྣོད་སྒྲིག་བསྐྱར་བཟོ་ནས་བཟོ་བཅོས།",
-    "constructUseIncLDesc": "ལེགས་སྟོན་ཡིག་སྣོད་སྒྲིག་བསྐྱར་བཟོ་ནས་མེད་པ།",
-    "constructUseIgnLDesc": "ལེགས་སྟོན་ཡིག་སྣོད་སྒྲིག་བསྐྱར་བཟོ་ནས་མེད་པ།",
-    "constructUseCorMDesc": "རྒྱན་སྒྲིག་ཡིག་སྣོད་སྒྲིག་བསྐྱར་བཟོ་ནས་བཟོ་བཅོས།",
-    "constructUseIncMDesc": "རྒྱན་སྒྲིག་ཡིག་སྣོད་སྒྲིག་བསྐྱར་བཟོ་ནས་མེད་པ།",
-    "constructUseIgnMDesc": "རྒྱན་སྒྲིག་ཡིག་སྣོད་སྒྲིག་བསྐྱར་བཟོ་ནས་མེད་པ།",
-    "constructUseEmojiDesc": "འདི་ནས་སྒྲིག་བསྐྱར་བཟོ་ནས་བཟོ་བཅོས།",
     "constructUseCollected": "ཚོད་ལྟར་འབྱོར་བྱེད་ནས་གློག་ཆེན་ལ་འདུག",
     "constructUseNanDesc": "མིན་འདུག",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
@@ -3259,23 +3238,16 @@
     "whatIsMeaning": "‘{lemma}’གི་ནང་གསལ་ག་རེ་ཡོད།",
     "chooseLemmaMeaningInstructionsBody": "གསལ་བཀྱོད་ཚུ་ལག་ཁྱེར་གྱིས་ཚིག་ཚིག་ལ་རོལ་བ་བྱེད།",
     "doubleClickToEdit": "ཉེར་ཉེར་གཉིས་མཁོ་ལ་ལོག་གཏོད་ནས་ཁྱེད་རང་གིས་ཁ་སྐད་བསྒྱུར།",
-    "activityPlannerTitle": "ལས་ཀ་རོལ་བ་རོལ་བ།",
     "topicLabel": "ལག་ལེན།",
     "topicPlaceholder": "ལག་ལེན་གཟིགས་ནས་ལེགས་སོ།...",
-    "modeLabel": "ལས་ཀ་གྱི་རེའུ",
     "modePlaceholder": "ལས་ཀ་གཅིག་གི་གནང་བ...",
     "learningObjectiveLabel": "སློངས་སྦྱོང་གནང་བའི་སྒོ་སྐབས",
     "learningObjectivePlaceholder": "སློངས་སྦྱོང་གནང་བའི་སྒོ་སྐབས་གཅིག་གི་གནང་བ...",
-    "languageOfInstructionsLabel": "ལས་ཀ་གི་སྒོ་སྐབས་སྐད་ཡིག",
     "targetLanguageLabel": "ལུས་སྐད",
     "cefrLevelLabel": "CEFR ལོག་ཚད",
-    "generateActivitiesButton": "ལས་ཀ་གཅིག་གི་ལེགས་སྤྱོད",
-    "launchActivityButton": "ལས་ཀ་གཅིག་གི་ལོག་ལེགས",
     "image": "རང་བཞིན",
     "video": "བརྙན་རིམ",
     "nan": "མི་འདུག",
-    "activityPlannerOverviewInstructionsBody": "གནང་བ་གཅིག་གི་དབྱེ་བ་གཅིག་གི་སྒོ་སྐབས་དང་ལས་ཀ་གཅིག་གི་ལེགས་སྤྱོད་ལ་གནང་བ!",
-    "activityTitle": "ལས་ཀ་གཅིག",
     "addVocabulary": "སློངས་སྦྱོང་བཅོས",
     "instructions": "གནང་བ",
     "numberOfLearners": "སློངས་སྦྱོང་བའི་རྟགས",
@@ -3304,7 +3276,6 @@
     "resetInstructionTooltipsDesc": "新しいユーザー向けの指示ツールチップを表示するにはクリックしてください。",
     "randomize": "ランダム化",
     "clear": "クリア",
-    "makeYourOwnActivity": "自分の活動を作成",
     "featuredActivities": "注目の活動",
     "save": "保存",
     "startChat": "チャットを開始",
@@ -3361,7 +3332,6 @@
     "announcements": "सूचना",
     "activities": "क्रियाकलापहरू",
     "access": "प्रवेश",
-    "activitySuggestionTimeoutMessage": "हामी तपाईंको लागि थप गतिविधिहरू सिर्जना गर्न कडा मेहनत गर्दैछौं, कृपया एक मिनेटमा फेरि जाँच गर्नुहोस्",
     "howSpaceCanBeFound": "यस कोर्सलाई कसरी भेट्टाउने",
     "private": "निजी",
     "cannotBeFoundInSearch": "खोजीमा भेट्टाउन सकिँदैन",
@@ -3396,9 +3366,6 @@
     "numInvited": "{count} རྟགས་སྤོངས",
     "saved": "སྲུང་བ",
     "reset": "ལེན་སྤྱོད",
-    "errorGenerateActivityMessage": "ལས་ཀ་ཕྱིར་བསྐྱར་བཟོ་མི་བྱེད",
-    "errorRegenerateActivityMessage": "ལས་ཀ་ལོག་ལོག་བསྐྱར་བཟོ་མི་བྱེད",
-    "errorLaunchActivityMessage": "ལས་ཀ་ལའི་འགྱོ་བ་མི་བྱེད",
     "errorFetchingActivitiesMessage": "ལས་ཀ་ཕེབས་འབོར་མི་བྱེད",
     "errorFetchingDefinition": "བརྗེད་སྟོན་མི་བྱེད",
     "errorProcessAnalytics": "ལས་ཀ་ལས་སྒྲིག་བཅོས་མི་བྱེད",
@@ -3407,7 +3374,6 @@
     "unexpectedError": "མི་འབྲེལ་བར་སྐབས།",
     "pleaseReload": "ཁྱེད་རང་ལ་ལོག་འཇུག་གི་འདི་ལ་ལོག་འཇུག་འབད་དེ་ལས་འགྱོ་གི་ཡོད།",
     "translationError": "ཁྱད་ཆོས་སྐད་ཅིག་འབད་མི་བྱེད།",
-    "errorFetchingActivity": "ལས་ཀ་འབད་མི་བྱེད།",
     "check": "བརྟེན་འབད།",
     "unableToFindRoom": "དེ་ལ་ལོག་འཇུག་གི་ཁོངས་སུ་མེད། ཁྱེད་རང་ལ་ལོག་འཇུག་འབད་དེ་ལས་འགྱོ་གི་ཡོད།",
     "numCompletedActivities": "ལེན་འབད་ཡོད་པའི་ལས་ཀ་གྲངས།",
@@ -3415,11 +3381,8 @@
     "request": "རྒྱུན་རིམ།",
     "requestAll": "ཚོད་རྒྱུན་རིམ།",
     "confirmMessageUnpin": "ཁྱེད་རང་ཚེས་བརྗེ་བརྗོད་འབད་དེ་ལ་མི་འདུག་གི་ཡོད་པས།",
-    "createActivityPlan": "ལས་ཀ་གསར་འབུལ་ལྟར་བྱེད།",
     "saveAndLaunch": "ཁྱེད་རང་ལ་སྲུང་བརྗེ་བཅོས་དང་ལོག་འཇུག།",
     "launchToSpace": "ལས་ཀ་ལ་ལོག་འཇུག།",
-    "numberOfActivities": "ལས་ཀ་ལོག་འཇུག་ཚོད།",
-    "maximumActivityParticipants": "ལས་ཀ་སྤྱོད་ལམ་ལས་སྤྱོད་མི་ཚོད {count} ལུ་ཡོད།",
     "pending": "དབྱར་བ",
     "inactive": "མིན་ལུས་",
     "confirmRole": "ལས་ཀ་རྟག་པ་འབད།",
@@ -3499,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-04-03 12:22:25.575096",
+    "@@last_modified": "2026-04-15 11:32:19.668696",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -5782,10 +5745,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -5804,10 +5763,6 @@
                 "type": "String"
             }
         }
-    },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
@@ -5838,10 +5793,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -6969,14 +6920,6 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
         "type": "String",
         "placeholders": {}
@@ -7046,70 +6989,6 @@
         "placeholders": {}
     },
     "@constructUseIncIGCDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7335,19 +7214,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@topicLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -7363,23 +7234,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -7392,14 +7251,6 @@
         "placeholders": {}
     },
     "@nan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -7520,10 +7371,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -7755,10 +7602,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activitySuggestionTimeoutMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@howSpaceCanBeFound": {
         "type": "String",
         "placeholders": {}
@@ -7907,18 +7750,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingActivitiesMessage": {
         "type": "String",
         "placeholders": {}
@@ -7948,10 +7779,6 @@
         "placeholders": {}
     },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -7990,10 +7817,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -8001,18 +7824,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -9199,15 +9010,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "A’n setti emoji për {lemma}! Ne do ta përdorim këtë emoji për të përfaqësuar fjalën në aktivitetet praktike në vazhdim.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Nunggu kanggo mlebu rampung",
     "ssoDialogDesc": "Kita wis mbukak tab anyar supaya sampeyan bisa mlebu kanthi aman.",
     "ssoDialogHelpText": "🤔 Yen sampeyan ora ndeleng tab anyar, mangga priksa pemblokir popup sampeyan.",
@@ -9385,16 +9187,6 @@
         "placeholders": {}
     },
     "@publicInviteDescSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "enableNotificationsTitle": "Pangea Chat je aplikacija za slanje poruka, pa su obaveštenja važna!",
-    "enableNotificationsDesc": "Dozvoli obaveštenja",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9879,12 +9671,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Unlock practice activities",
     "hideEvents": "Hide events",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10031,13 +9818,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noAnalyticsActivitiesAvailable": "Wow, {username}, you have completed all available activities! Send more messages to unlock more practice activities.",
-    "@noAnalyticsActivitiesAvailable": {
-        "type": "String",
-        "placeholders": {
-            "username": {}
-        }
-    },
     "profile": "Profili",
     "@profile": {
         "type": "String",
@@ -10049,8 +9829,6 @@
     "notificationDeviceSubtitle": "Gade ak jere aparèy ki voye ou notifikasyon pouse.",
     "notificationRuleDM": "Mesaj Dirèk",
     "notificationRuleDMDescription": "Notifye itilizatè a sou mesaj nan chanm mesaj dirèk.",
-    "notificationRuleCourseAndActivity": "Kou ak Aktivite",
-    "notificationRuleCourseAndActivityDescription": "Notifye itilizatè a sou mesaj nan kou, aktivite, ak chat.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -10072,14 +9850,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10119,7 +9889,6 @@
     "tooManyRequest": "རེ་ཞུ་མང་དྲགས། ཏོག་ཙམ་ནས་ཡང་བསྐུར་བཟོས།",
     "enterNumber": "ཧྲིལ་གྲངས་ཀྱི་ཐང་གཅིག་ནང་འཇུག་བྱོས།",
     "practice": "སྦྱོང་བརྡར",
-    "speechToTextBody": "སྐད་འཕྲིན་གྱི་ཆེད་དུ། ཁྱེད་ཀྱིས་ཡིག་སྒྱུར་དང་སྨྲ་མཁན་གྱི་སྐད་ཆ་རེ་རེའི་ཚིག་གྲངས་ཐོབ་གྲངས་མཐོང་ཐུབ།",
     "versionNotFound": "པར་གཞི་མ་རྙེད།",
     "fetchingVersion": "པར་གཞི་ལེན་བཞིན་པ...",
     "analyticsVocabListBody": "འདི་ཁྱེད་ཀྱི་ཚིག་མཛོད་ཚང་མ་རེད། ཁྱེད་ཀྱིས་ཚིག་རེ་རེར་ཐོབ་གྲངས་འཐོབ་པའི་རྗེས་སུ། དེ་ཚོ་སོན་པ་ནས་མེ་ཏོག་རྒྱས་པར་འགྱུར། ཚིག་གང་རུང་ལ་ཐོག་གནོན་གྱིས་ལག་ལེན་བརྡར་སྦྱོང་བྱོས།",
@@ -10130,7 +9899,6 @@
     "pleaseEnterInt": "ཧྲིལ་གྲངས་ཤིག་ནང་འཇུག་བྱོས།",
     "home": "གཙོ་ངོས",
     "join": "ཞུགས",
-    "readingAssistanceOverviewBody": "ཡི་གེ་མཚུངས་སྦྱོར། སྒྲ་མཚུངས། ཚིག་དོན། བརྡ་སྤྲོད་རྣམ་གཞག་བཅས་ཀྱི་རྩེད་མོ་ཆུང་ཆུང་བརྩམ་པར་གཤམ་གྱི་མཐེབ་ལ་ཐོག་གནོན་བྱོས། ཡང་ན་ཚིག་གང་རུང་ལ་ཐོག་གནོན་གྱིས།",
     "startOwn": "རང་གི་གསར་རྩོམ",
     "joinCourseDesc": "སློབ་ཚན་རེར་བརྗོད་གཞི་ 8-10 ཡོད་ལ། ལས་འགན་ལ་གཞི་བཅོལ་བའི་སྐད་ཡིག་སྦྱོང་བརྡར་བྱ་འགུལ་མང་པོ་ཡོད།",
     "emptyChatSearch": "གཅིག་སྒྲིལ་འཕྲིན་དང་གླེང་མོལ་མ་རྙེད། ཚིག་སྦྱོར་ཡང་དག་ཡིན་མིན་ཞིབ་བཤེར་བྱོས།",
@@ -10626,6 +10394,125 @@
         "type": "String",
         "placeholders": {}
     },
+    "subscribedToUnlockTools": "Abonezhu na desbloquear tradução interativa e verificação gramatical, reprodução de áudio, exercícios de prática personalizados e análises de aprendizado!",
+    "emojiSelectedSnackbar": "Você definiu o emoji para {lemma}! Usaremos este emoji para representar a palavra nos exercícios de prática daqui para frente.",
+    "unlockPracticeActivities": "Desbloquear exercícios de prática",
+    "noAnalyticsActivitiesAvailable": "Uau, você completou todas as atividades disponíveis! Envie mais mensagens para desbloquear mais exercícios de prática.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "Sahih dalam latihan makna kata",
+    "constructUseIgnPADesc": "Diabaikan dalam latihan makna kata",
+    "constructUseIncPADesc": "Salah dalam latihan makna kata",
+    "constructUseCorWLDesc": "Sahih dalam latihan mendengarkan kata",
+    "constructUseIncWLDesc": "Salah dalam latihan mendengarkan kata",
+    "constructUseIngWLDesc": "Diabaikan dalam latihan mendengarkan kata",
+    "constructUseCorHWLDesc": "Sahih dalam latihan kata tersembunyi",
+    "constructUseIncHWLDesc": "Salah dalam latihan kata tersembunyi",
+    "constructUseIgnHWLDesc": "Diabaikan dalam latihan kata tersembunyi",
+    "constructUseCorLDesc": "Sahih dalam latihan lema",
+    "constructUseIncLDesc": "Incorrect in lemma exercise",
+    "constructUseIgnLDesc": "Ignored in lemma exercise",
+    "constructUseCorMDesc": "Correct in grammar exercise",
+    "constructUseIncMDesc": "Incorrect in grammar exercise",
+    "constructUseIgnMDesc": "Ignored in grammar exercise",
+    "constructUseEmojiDesc": "Correct in emoji exercise",
+    "errorFetchingExercise": "Failed to fetch practice exercise",
+    "notificationRuleCourseAndActivity": "Course and Activity",
+    "notificationRuleCourseAndActivityDescription": "Notifies the user about messages in courses, activities, and chats.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "clickToUpdateTargetLanguage": "Klick hier om je doeltaal bij te werken.",
     "@clickToUpdateTargetLanguage": {
         "type": "String",
@@ -10633,6 +10520,41 @@
     },
     "closeEmojiMenu": "Tutup menu emoji",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Bolehkah orang lain mencari kursus anda",
+    "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Nek se miss a chat!",
+    "enableNotificationsDesc": "Allow notifications for Pangea Chat and stay connected with your language buddies!",
+    "enableNotifications": "Allow notifications",
+    "noActivitiesFound": "No activities available for this topic.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "I na bɛtɛ nɛ bɛtɛ nɛ",
+    "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Blokiraj korisničko ime",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

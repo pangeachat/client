@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/models/language_detection_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 
@@ -16,7 +17,7 @@ class PangeaMessageTokens {
   factory PangeaMessageTokens.fromJson(Map<String, dynamic> json) {
     // "tokens" was accidentally used as the key in the first implementation
     // _tokensKey is the correct key
-    final something = json[_tokensKey] ?? json["tokens"];
+    final something = json[_tokensKey] ?? json[ModelKey.tokens];
 
     final Iterable tokensIterable = something is Iterable
         ? something

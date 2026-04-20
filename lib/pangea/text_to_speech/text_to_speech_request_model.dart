@@ -1,3 +1,4 @@
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 
@@ -23,7 +24,7 @@ class TextToSpeechRequestModel {
   });
 
   Map<String, dynamic> toJson() => {
-    ModelKey.text: text,
+    ChoreoConstants.text: text,
     ModelKey.langCode: langCode,
     ModelKey.userL1: userL1,
     ModelKey.userL2: userL2,

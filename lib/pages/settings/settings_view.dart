@@ -13,7 +13,6 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/support/support_chat_list_tile.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/local_notifications_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image_viewer.dart';
 
@@ -229,24 +228,6 @@ class SettingsView extends StatelessWidget {
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
                       onTap: () => context.go('/rooms/settings/notifications'),
-                      // #Pangea
-                      trailing: ValueListenableBuilder(
-                        valueListenable: Matrix.of(
-                          context,
-                        ).notifPermissionNotifier,
-                        builder: (context, _, _) => FutureBuilder<bool>(
-                          future: Matrix.of(context).notificationsEnabled,
-                          builder: (context, snapshot) {
-                            return snapshot.data != false
-                                ? const SizedBox()
-                                : Icon(
-                                    Icons.error_outline,
-                                    color: theme.colorScheme.error,
-                                  );
-                          },
-                        ),
-                      ),
-                      // Pangea#
                     ),
                     ListTile(
                       leading: const Icon(Icons.devices_outlined),

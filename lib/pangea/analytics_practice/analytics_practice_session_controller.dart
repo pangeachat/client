@@ -10,16 +10,16 @@ import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_generation_repo.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
+import 'package:fluffychat/pangea/practice_exercises/message_practice_exercise_request.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_generation_repo.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_target.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class _PracticeQueueEntry {
-  final MessageActivityRequest request;
-  final Completer<MultipleChoicePracticeActivityModel?> completer;
+  final MessagePracticeExerciseRequest request;
+  final Completer<MultipleChoicePracticeExerciseModel?> completer;
 
   _PracticeQueueEntry({required this.request, required this.completer});
 }
@@ -37,8 +37,8 @@ class PracticeSessionController {
     _queue.clear();
   }
 
-  List<MessageActivityRequest> get activityRequests =>
-      session?.activityRequests ?? [];
+  List<MessagePracticeExerciseRequest> get exerciseRequests =>
+      session?.exerciseRequests ?? [];
 
   List<OneConstructUse> get bonusUses => session?.state.allBonusUses ?? [];
 
@@ -62,11 +62,11 @@ class PracticeSessionController {
     session?.setElapsedSeconds(seconds);
   }
 
-  void completeActivity() {
-    session?.completeActivity();
+  void completeExercise() {
+    session?.completeExercise();
   }
 
-  void skipActivity() {
+  void skipExercise() {
     session?.incrementSkippedActivities();
   }
 
@@ -98,16 +98,16 @@ class PracticeSessionController {
     session?.finishSession();
   }
 
-  Future<MultipleChoicePracticeActivityModel?> _initActivityData(
+  Future<MultipleChoicePracticeExerciseModel?> _initExerciseData(
     Future Function(PracticeTarget) onSkip,
-    Future Function(MultipleChoicePracticeActivityModel) onFetch,
+    Future Function(MultipleChoicePracticeExerciseModel) onFetch,
   ) async {
-    final requests = activityRequests;
+    final requests = exerciseRequests;
     for (var i = 0; i < requests.length; i++) {
       try {
         final req = requests[i];
-        final res = await _fetchActivity(req, onFetch);
-        _fillActivityQueue(requests.skip(i + 1).toList(), onSkip, onFetch);
+        final res = await _fetchExercise(req, onFetch);
+        _fillExerciseQueue(requests.skip(i + 1).toList(), onSkip, onFetch);
         return res;
       } catch (e) {
         await onSkip(requests[i].target);
@@ -118,18 +118,18 @@ class PracticeSessionController {
     return null;
   }
 
-  Future<void> _fillActivityQueue(
-    List<MessageActivityRequest> requests,
+  Future<void> _fillExerciseQueue(
+    List<MessagePracticeExerciseRequest> requests,
     Future Function(PracticeTarget) onSkip,
-    Future Function(MultipleChoicePracticeActivityModel) onFetch,
+    Future Function(MultipleChoicePracticeExerciseModel) onFetch,
   ) async {
     for (final request in requests) {
-      final completer = Completer<MultipleChoicePracticeActivityModel?>();
+      final completer = Completer<MultipleChoicePracticeExerciseModel?>();
       _queue.add(_PracticeQueueEntry(request: request, completer: completer));
-      _fetchActivity(request, onFetch)
-          .then((activity) {
-            activity != null
-                ? completer.complete(activity)
+      _fetchExercise(request, onFetch)
+          .then((exercise) {
+            exercise != null
+                ? completer.complete(exercise)
                 : completer.complete(null);
           })
           .catchError((e, s) async {
@@ -140,47 +140,47 @@ class PracticeSessionController {
     }
   }
 
-  Future<MultipleChoicePracticeActivityModel?> _fetchActivity(
-    MessageActivityRequest req,
-    Future Function(MultipleChoicePracticeActivityModel) onFetch,
+  Future<MultipleChoicePracticeExerciseModel?> _fetchExercise(
+    MessagePracticeExerciseRequest req,
+    Future Function(MultipleChoicePracticeExerciseModel) onFetch,
   ) async {
-    final result = await PracticeRepo.getPracticeActivity(req, messageInfo: {});
+    final result = await PracticeRepo.getPracticeExercise(req, messageInfo: {});
 
     if (result.isError ||
-        result.result is! MultipleChoicePracticeActivityModel) {
-      throw result.error ?? Exception("Failed to fetch activity");
+        result.result is! MultipleChoicePracticeExerciseModel) {
+      throw result.error ?? Exception("Failed to fetch exercise");
     }
 
-    final activityModel = result.result as MultipleChoicePracticeActivityModel;
-    await onFetch(activityModel);
-    return activityModel;
+    final exerciseModel = result.result as MultipleChoicePracticeExerciseModel;
+    await onFetch(exerciseModel);
+    return exerciseModel;
   }
 
-  Future<MultipleChoicePracticeActivityModel?> getNextActivity(
+  Future<MultipleChoicePracticeExerciseModel?> getNextExercise(
     Future Function(PracticeTarget) onSkip,
-    Future Function(MultipleChoicePracticeActivityModel) onFetch,
+    Future Function(MultipleChoicePracticeExerciseModel) onFetch,
   ) async {
     final session = this.session;
     if (session == null) {
-      throw Exception("Called getNextActivity without loading session");
+      throw Exception("Called getNextExercise without loading session");
     }
 
     if (!session.isComplete && _queue.isEmpty) {
-      final initialActivity = await _initActivityData(onSkip, onFetch);
-      if (initialActivity == null && session.state.currentIndex == 0) {
+      final initialExercise = await _initExerciseData(onSkip, onFetch);
+      if (initialExercise == null && session.state.currentIndex == 0) {
         // No activities were successfully loaded, and we haven't completed any yet, so throw an error
         throw InsufficientDataException();
       }
-      return initialActivity;
+      return initialExercise;
     }
 
     while (_queue.isNotEmpty) {
-      final nextActivityCompleter = _queue.removeFirst();
+      final nextExerciseCompleter = _queue.removeFirst();
 
       try {
-        final activity = await nextActivityCompleter.completer.future;
-        if (activity != null) {
-          return activity;
+        final exercise = await nextExerciseCompleter.completer.future;
+        if (exercise != null) {
+          return exercise;
         }
       } catch (e) {
         // Completer failed, skip to next

@@ -2,31 +2,27 @@ import 'package:fluffychat/pangea/analytics_misc/construct_practice_extension.da
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_target.dart';
 
 class VocabMeaningTargetGenerator {
-  static ActivityTypeEnum activityType = ActivityTypeEnum.lemmaMeaning;
+  static PracticeExerciseTypeEnum exerciseType =
+      PracticeExerciseTypeEnum.lemmaMeaning;
 
-  static Future<List<AnalyticsActivityTarget>> get(
+  static Future<List<AnalyticsPracticeTarget>> get(
     List<ConstructUses> constructs,
   ) async {
     // Score and sort by priority (highest first). Uses shared scorer for
     // consistent prioritization with message practice.
-    final sortedConstructs = constructs.practiceSort(activityType);
+    final sortedConstructs = constructs.practiceSort(exerciseType);
 
     final Set<String> seenLemmas = {};
-    final cutoffTime = DateTime.now().subtract(const Duration(hours: 24));
 
-    final targets = <AnalyticsActivityTarget>[];
+    final targets = <AnalyticsPracticeTarget>[];
     for (final construct in sortedConstructs) {
       if (seenLemmas.contains(construct.lemma)) continue;
 
-      final lastPracticeUse = construct.lastUseByTypes(
-        activityType.associatedUseTypes,
-      );
-
-      if (lastPracticeUse != null && lastPracticeUse.isAfter(cutoffTime)) {
+      if (construct.shouldSkipForRecentPractice(exerciseType)) {
         continue;
       }
 
@@ -40,10 +36,10 @@ class VocabMeaningTargetGenerator {
       }
 
       targets.add(
-        AnalyticsActivityTarget(
+        AnalyticsPracticeTarget(
           target: PracticeTarget(
             tokens: [construct.id.asToken],
-            activityType: activityType,
+            exerciseType: exerciseType,
           ),
         ),
       );

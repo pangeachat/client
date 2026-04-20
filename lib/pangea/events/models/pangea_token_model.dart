@@ -8,7 +8,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_morph_choice.dart';
 import '../../common/constants/model_keys.dart';
 import '../../lemmas/lemma.dart';
@@ -157,6 +157,21 @@ class PangeaToken {
     return uses;
   }
 
+  OneConstructUse clickUse({String? roomId, String? eventId}) =>
+      OneConstructUse(
+        useType: ConstructUseTypeEnum.click,
+        lemma: lemma.text,
+        constructType: ConstructTypeEnum.vocab,
+        metadata: ConstructUseMetaData(
+          roomId: roomId,
+          timeStamp: DateTime.now(),
+          eventId: eventId,
+        ),
+        category: pos,
+        form: text.content,
+        xp: ConstructUseTypeEnum.click.pointValue,
+      );
+
   /// Safely get morph tag for a given feature without regard for case
   String? getMorphTag(MorphFeaturesEnum feature) {
     // if the morph contains the feature, return it
@@ -184,7 +199,7 @@ class PangeaToken {
   ConstructForm get vocabForm =>
       ConstructForm(form: text.content, cId: vocabConstructID);
 
-  Set<String> morphActivityDistractors(
+  Set<String> morphPracticeExerciseDistractors(
     MorphFeaturesEnum morphFeature,
     String morphTag,
   ) {
@@ -216,9 +231,9 @@ class PangeaToken {
           })
           .toList();
 
-  bool eligibleForPractice(ActivityTypeEnum activityType) {
-    switch (activityType) {
-      case ActivityTypeEnum.emoji:
+  bool eligibleForPractice(PracticeExerciseTypeEnum exerciseType) {
+    switch (exerciseType) {
+      case PracticeExerciseTypeEnum.emoji:
         return lemma.saveVocab && vocabConstructID.isContentWord;
       default:
         return lemma.saveVocab;

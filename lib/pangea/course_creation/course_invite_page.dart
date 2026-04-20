@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Visibility;
 
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
@@ -9,6 +9,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
@@ -62,6 +63,52 @@ class CourseInvitePageController extends State<CourseInvitePage>
           .timeout(const Duration(seconds: 10));
     }
     return spaceId;
+  }
+
+  Future<bool> get _isPublic async {
+    String spaceId;
+    try {
+      spaceId = await getSpaceId();
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"created_course_id": widget.courseId},
+      );
+      return true;
+    }
+
+    try {
+      final visibility = await Matrix.of(
+        context,
+      ).client.getRoomVisibilityOnDirectory(spaceId);
+      return visibility == Visibility.public;
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {"space_id": spaceId});
+      return true;
+    }
+  }
+
+  Future<void> _setVisibility(bool value) async {
+    try {
+      debugPrint(
+        "Setting course visibility to ${value ? "public" : "private"}",
+      );
+      final spaceId = await getSpaceId();
+      await Matrix.of(context).client.setRoomVisibilityOnDirectory(
+        spaceId,
+        visibility: value ? Visibility.public : Visibility.private,
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"created_course_id": widget.courseId, "visibility": value},
+      );
+      rethrow;
+    } finally {
+      if (mounted) setState(() {});
+    }
   }
 
   @override
@@ -183,6 +230,33 @@ class CourseInvitePageController extends State<CourseInvitePage>
                   spacing: 24.0,
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    Row(
+                      spacing: 8.0,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            L10n.of(context).visibilityToggleTitle,
+                            style: theme.textTheme.bodyMedium,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        FutureBuilder(
+                          future: _isPublic,
+                          builder: (context, snapshot) {
+                            final value = snapshot.data ?? true;
+                            return Switch(
+                              value: value,
+                              onChanged: (v) => showFutureLoadingDialog(
+                                context: context,
+                                future: () => _setVisibility(v),
+                              ),
+                              activeThumbColor: AppConfig.success,
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                     ElevatedButton(
                       onPressed: () async {
                         final resp = await showFutureLoadingDialog(

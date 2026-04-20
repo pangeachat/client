@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_extension.dart';
@@ -10,6 +12,7 @@ import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/common/widgets/tutorial_overlay_message.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityMenuButton extends StatefulWidget {
@@ -24,17 +27,33 @@ class ActivityMenuButton extends StatefulWidget {
 class _ActivityMenuButtonState extends State<ActivityMenuButton> {
   bool _showShimmer = false;
   StreamSubscription? _rolesSubscription;
-  StreamSubscription? _analyticsSubscription;
+  StreamSubscription? _messageSubscription;
 
   @override
   void initState() {
     super.initState();
 
-    _analyticsSubscription = Matrix.of(context)
-        .analyticsDataService
-        .updateDispatcher
-        .constructUpdateStream
-        .stream
+    final client = Matrix.of(context).client;
+    _messageSubscription = client.onSync.stream
+        .where((update) {
+          final timeline =
+              update.rooms?.join?[widget.controller.room.id]?.timeline?.events;
+
+          if (timeline == null) return false;
+          final events = timeline.map(
+            (e) => Event.fromMatrixEvent(e, widget.controller.room),
+          );
+
+          final newMessages = events.where(
+            (event) =>
+                event.type == EventTypes.Message &&
+                event.senderId == client.userID &&
+                event.status.isSynced &&
+                event.isVisibleInGui,
+          );
+
+          return newMessages.isNotEmpty;
+        })
         .listen(_showStatsMenuDropdownInstructions);
 
     _rolesSubscription = widget.controller.room.client.onRoomState.stream
@@ -48,7 +67,7 @@ class _ActivityMenuButtonState extends State<ActivityMenuButton> {
 
   @override
   void dispose() {
-    _analyticsSubscription?.cancel();
+    _messageSubscription?.cancel();
     _rolesSubscription?.cancel();
     super.dispose();
   }

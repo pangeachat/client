@@ -22,7 +22,11 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CreatePangeaAccountPage extends StatefulWidget {
-  const CreatePangeaAccountPage({super.key});
+  final bool directFromLanguageSelection;
+  const CreatePangeaAccountPage({
+    super.key,
+    this.directFromLanguageSelection = false,
+  });
 
   @override
   CreatePangeaAccountPageState createState() => CreatePangeaAccountPageState();
@@ -73,7 +77,8 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
   }
 
   Future<void> _joinCachedCourse() async {
-    if (_cachedSpaceCode == null) return;
+    final spaceCode = _cachedSpaceCode;
+    if (spaceCode == null) return;
 
     GetLocalizedCoursesRequest? request;
     try {
@@ -84,7 +89,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
       );
       final spaceId = result.result;
       if (spaceId == null) {
-        throw Exception('Failed to join space with code $_cachedSpaceCode');
+        throw Exception('Failed to join space with code $spaceCode');
       }
 
       final client = Matrix.of(context).client;
@@ -93,7 +98,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
         await client.waitForRoomInSync(spaceId, join: true);
         room = client.getRoomById(spaceId);
         if (room == null || room.membership != Membership.join) {
-          throw Exception('Failed to join space with code $_cachedSpaceCode');
+          throw Exception('Failed to join space with code $spaceCode');
         }
       }
 
@@ -171,7 +176,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
 
     if (l2Set) {
       if (targetLangCode == null) {
-        context.go('/registration/notifications');
+        context.go('/registration/course');
         return;
       }
 
@@ -217,7 +222,16 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
 
       await MatrixState.pangeaController.subscriptionController.reinitialize();
       await _onProfileCreated();
-    } catch (err) {
+    } catch (err, s) {
+      ErrorHandler.logError(
+        e: err,
+        s: s,
+        data: {
+          'targetLangCode': targetLangCode,
+          'baseLangCode': baseLangCode,
+          'spaceCode': _cachedSpaceCode,
+        },
+      );
       if (err is MatrixException) {
         _profileError = err.errorMessage;
       } else {
@@ -228,10 +242,14 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
 
   Future<void> _onProfileCreated() async {
     await LangCodeRepo.remove();
+    if (_spaceId != null) {
+      context.go('/rooms/spaces/$_spaceId/details');
+      return;
+    }
+
     context.go(
-      _spaceId != null
-          ? '/rooms/spaces/$_spaceId/details'
-          : '/registration/notifications',
+      '/registration/course',
+      extra: widget.directFromLanguageSelection,
     );
   }
 

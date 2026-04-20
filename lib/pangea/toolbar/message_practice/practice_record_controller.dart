@@ -1,12 +1,12 @@
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_record.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_record_repo.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_choice.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_record.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_record_repo.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_target.dart';
 
 class PracticeRecordController {
   static PracticeRecord _recordByTarget(PracticeTarget target) =>
@@ -24,12 +24,12 @@ class PracticeRecordController {
     return _recordByTarget(target).alreadyHasMatchResponse(cId, choice);
   }
 
-  static ActivityRecordResponse? lastResponse(PracticeTarget target) {
+  static PracticeExerciseRecordResponse? lastResponse(PracticeTarget target) {
     final record = _recordByTarget(target);
     return record.responses.lastOrNull;
   }
 
-  static ActivityRecordResponse? correctResponse(
+  static PracticeExerciseRecordResponse? correctResponse(
     PracticeTarget target,
     PangeaToken token,
   ) {
@@ -39,7 +39,10 @@ class PracticeRecordController {
     );
   }
 
-  static bool? wasCorrectMatch(PracticeTarget target, PracticeChoice choice) {
+  static bool? wasCorrectMatch(
+    PracticeTarget target,
+    PracticeExerciseChoice choice,
+  ) {
     final record = _recordByTarget(target);
     for (final response in record.responses) {
       if (response.text == choice.choiceContent && response.isCorrect) {
@@ -66,7 +69,7 @@ class PracticeRecordController {
 
   static bool isCompleteByTarget(PracticeTarget target) {
     final record = _recordByTarget(target);
-    if (target.activityType == ActivityTypeEnum.morphId) {
+    if (target.exerciseType == PracticeExerciseTypeEnum.morphId) {
       return record.completeResponses > 0;
     }
 
@@ -92,7 +95,7 @@ class PracticeRecordController {
   static bool onSelectChoice(
     String choice,
     PangeaToken token,
-    PracticeActivityModel activity,
+    PracticeExerciseModel activity,
   ) {
     final target = activity.practiceTarget;
     final record = _recordByTarget(target);

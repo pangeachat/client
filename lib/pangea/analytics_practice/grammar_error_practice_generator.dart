@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
-import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_model.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
+import 'package:fluffychat/pangea/practice_exercises/message_practice_exercise_request.dart';
+import 'package:fluffychat/pangea/practice_exercises/multiple_choice_practice_exercise_model.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
 
 class GrammarErrorPracticeGenerator {
-  static Future<MessageActivityResponse> get(MessageActivityRequest req) async {
+  static Future<MessagePracticeExerciseResponse> get(
+    MessagePracticeExerciseRequest req,
+  ) async {
     assert(
       req.grammarErrorInfo != null,
       'Grammar error info must be provided for grammar error practice',
@@ -42,11 +44,11 @@ class GrammarErrorPracticeGenerator {
     }
 
     choices.shuffle();
-    return MessageActivityResponse(
-      activity: GrammarErrorPracticeActivityModel(
+    return MessagePracticeExerciseResponse(
+      exercise: GrammarErrorPracticeExerciseModel(
         tokens: req.target.tokens,
         langCode: req.userL2,
-        multipleChoiceContent: MultipleChoiceActivity(
+        multipleChoiceContent: MultipleChoicePracticeExercise(
           choices: choices.toSet(),
           answers: {correctChoice},
         ),

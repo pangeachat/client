@@ -5,6 +5,8 @@
 /// Response: [PTResponse] with a list of [Pronunciation]s.
 library;
 
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+
 class Pronunciation {
   final String transcription;
   final String ttsPhoneme;
@@ -59,17 +61,17 @@ class PTRequest {
   factory PTRequest.fromJson(Map<String, dynamic> json) {
     return PTRequest(
       surface: json['surface'] as String,
-      langCode: json['lang_code'] as String,
-      userL1: json['user_l1'] as String,
-      userL2: json['user_l2'] as String,
+      langCode: json[ModelKey.langCode] as String,
+      userL1: json[ModelKey.userL1] as String,
+      userL2: json[ModelKey.userL2] as String,
     );
   }
 
   Map<String, dynamic> toJson() => {
     'surface': surface,
-    'lang_code': langCode,
-    'user_l1': userL1,
-    'user_l2': userL2,
+    ModelKey.langCode: langCode,
+    ModelKey.userL1: userL1,
+    ModelKey.userL2: userL2,
   };
 
   /// Cache key excludes userL2 (doesn't affect pronunciation).

@@ -1,8 +1,9 @@
 // Add this import for the participant summary model
 
-import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_response_model.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 class ActivitySummaryResultsMessage {
   final String userId;
@@ -21,7 +22,7 @@ class ActivitySummaryResultsMessage {
 
   factory ActivitySummaryResultsMessage.fromJson(Map<String, dynamic> json) {
     return ActivitySummaryResultsMessage(
-      userId: json['user_id'] as String,
+      userId: json[ModelKey.userId] as String,
       sent: json['sent'] as String,
       written: json['written'] as String?,
       tool: (json['tool'] as List).map((e) => e as String).toList(),
@@ -31,7 +32,7 @@ class ActivitySummaryResultsMessage {
 
   Map<String, dynamic> toJson() {
     return {
-      'user_id': userId,
+      ModelKey.userId: userId,
       'sent': sent,
       if (written != null) 'written': written,
       'tool': tool,

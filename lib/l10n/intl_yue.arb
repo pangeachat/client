@@ -1021,7 +1021,6 @@
     "trialPeriodExpired": "試用期已過",
     "translations": "翻譯",
     "definitions": "定義",
-    "subscribedToUnlockTools": "訂閱以解鎖互動式翻譯同語法檢查、音頻播放、個人化練習活動同學習分析！",
     "translationTooltip": "翻譯",
     "kickBotWarning": "踢走 Pangea 機械人會將對話機械人從呢個聊天中移除。",
     "refresh": "重新整理",
@@ -1037,12 +1036,10 @@
     "tooManyRequest": "請求過多，請稍後再試。",
     "enterNumber": "請輸入整數值。",
     "practice": "練習",
-    "speechToTextBody": "對於語音訊息，您可以看到轉錄內容以及說話者的每分鐘字數得分。",
     "versionNotFound": "找不到版本",
     "fetchingVersion": "正在獲取版本...",
     "versionFetchError": "獲取版本時出錯",
     "versionText": "版本：{version}+{buildNumber}",
-    "l1TranslationBody": "您的基本語言中的訊息將不會被翻譯。",
     "deleteSubscriptionWarningTitle": "您有一個有效的訂閱",
     "deleteSubscriptionWarningBody": "刪除您的帳戶不會自動取消您的訂閱。",
     "manageSubscription": "管理訂閱",
@@ -1051,7 +1048,6 @@
     "wordsUsed": "已用詞彙",
     "level": "等級",
     "morphsUsed": "已用形態",
-    "translationChoicesBody": "點擊並長按選項以獲取提示。",
     "grammar": "語法",
     "contactHasBeenInvitedToTheChat": "聯絡人已被邀請加入聊天",
     "inviteChat": "📝 邀請聊天",
@@ -1332,8 +1328,6 @@
     "grammarCopyVOICErcp": "互惠語態",
     "other": "其他",
     "levelShort": "LVL {level}",
-    "clickBestOption": "選擇最佳選項來翻譯您的訊息！",
-    "completeActivitiesToUnlock": "完成至少一個活動以解鎖翻譯！",
     "noCapacityLimit": "沒有容量限制",
     "downloadGroupText": "下載群組文字",
     "notificationsOn": "通知已開啟",
@@ -1352,22 +1346,6 @@
     "constructUseIgnIGCDesc": "語法更正中忽略",
     "constructUseCorIGCDesc": "語法更正中正確",
     "constructUseIncIGCDesc": "語法更正中不正確",
-    "constructUseCorPADesc": "單詞意義活動中正確",
-    "constructUseIgnPADesc": "單詞意義活動中忽略",
-    "constructUseIncPADesc": "單詞意義活動中不正確",
-    "constructUseCorWLDesc": "單詞聽力活動中正確",
-    "constructUseIncWLDesc": "單詞聽力活動中不正確",
-    "constructUseIngWLDesc": "喺聽詞活動中忽略",
-    "constructUseCorHWLDesc": "喺隱藏詞活動中正確",
-    "constructUseIncHWLDesc": "喺隱藏詞活動中唔啱",
-    "constructUseIgnHWLDesc": "喺隱藏詞活動中忽略",
-    "constructUseCorLDesc": "喺詞根活動中正確",
-    "constructUseIncLDesc": "喺詞根活動中唔啱",
-    "constructUseIgnLDesc": "喺詞根活動中忽略",
-    "constructUseCorMDesc": "喺文法活動中正確",
-    "constructUseIncMDesc": "喺文法活動中唔啱",
-    "constructUseIgnMDesc": "喺文法活動中忽略",
-    "constructUseEmojiDesc": "喺表情符號活動中正確",
     "constructUseCollected": "喺聊天中收集",
     "constructUseNanDesc": "唔適用",
     "xpIntoLevel": "{currentXP} / {maxXP} 經驗值",
@@ -1419,23 +1397,16 @@
     "whatIsMeaning": "'{lemma}' 嘅意思係乜？",
     "chooseLemmaMeaningInstructionsBody": "將意思同訊息入面嘅詞配對！",
     "doubleClickToEdit": "雙擊以編輯。",
-    "activityPlannerTitle": "活動規劃器",
     "topicLabel": "主題",
     "topicPlaceholder": "揀一個主題...",
-    "modeLabel": "活動類型",
     "modePlaceholder": "揀一個模式...",
     "learningObjectiveLabel": "學習目標",
     "learningObjectivePlaceholder": "揀一個學習目標...",
-    "languageOfInstructionsLabel": "活動指示語言",
     "targetLanguageLabel": "目標語言",
     "cefrLevelLabel": "CEFR 級別",
-    "generateActivitiesButton": "生成活動",
-    "launchActivityButton": "啟動活動",
     "image": "圖片",
     "video": "影片",
     "nan": "不適用",
-    "activityPlannerOverviewInstructionsBody": "選擇一個主題、模式、學習目標，並為聊天生成一個活動！",
-    "activityTitle": "活動標題",
     "addVocabulary": "添加詞彙",
     "instructions": "指示",
     "numberOfLearners": "學習者人數",
@@ -1482,12 +1453,10 @@
     "pleaseEnterInt": "請輸入一個數字",
     "home": "首頁",
     "join": "加入",
-    "readingAssistanceOverviewBody": "點擊下面嘅按鈕，玩配對表情符號、音頻、詞義同語法概念嘅迷你遊戲。或者點擊任何詞語睇詳細資料。",
     "resetInstructionTooltipsTitle": "重設指引提示",
     "resetInstructionTooltipsDesc": "點擊顯示新用戶嘅指引提示。",
     "randomize": "隨機",
     "clear": "清除",
-    "makeYourOwnActivity": "Create your own activity",
     "featuredActivities": "Featured",
     "save": "Save",
     "startChat": "Start a chat",
@@ -1544,7 +1513,6 @@
     "announcements": "公告",
     "activities": "活動",
     "access": "存取",
-    "activitySuggestionTimeoutMessage": "我哋正努力為你產生更多活動，請稍候再睇",
     "howSpaceCanBeFound": "呢個課程點樣可以搵到",
     "private": "私人",
     "cannotBeFoundInSearch": "喺搜尋中搵唔到",
@@ -1579,9 +1547,6 @@
     "numInvited": "{count} 已被邀請",
     "saved": "已儲存",
     "reset": "重設",
-    "errorGenerateActivityMessage": "產生活動失敗",
-    "errorRegenerateActivityMessage": "重新產生活動失敗",
-    "errorLaunchActivityMessage": "啟動活動失敗",
     "errorFetchingActivitiesMessage": "獲取活動失敗",
     "errorFetchingDefinition": "獲取定義失敗",
     "errorProcessAnalytics": "處理分析失敗",
@@ -1590,7 +1555,6 @@
     "unexpectedError": "發生未預期的錯誤。",
     "pleaseReload": "請重新載入並重試。",
     "translationError": "翻譯錯誤",
-    "errorFetchingActivity": "獲取活動失敗",
     "check": "檢查",
     "unableToFindRoom": "找不到該代碼的聊天或課程。請再試一次。",
     "numCompletedActivities": "已完成活動數量",
@@ -1598,11 +1562,8 @@
     "request": "請求",
     "requestAll": "全部請求",
     "confirmMessageUnpin": "你確定要取消釘選此訊息嗎？",
-    "createActivityPlan": "建立新活動計劃",
     "saveAndLaunch": "保存並啟動",
     "launchToSpace": "發佈到課程",
-    "numberOfActivities": "活動會話數量",
-    "maximumActivityParticipants": "每個活動最多可有 {count} 位參與者。",
     "pending": "待處理",
     "inactive": "未啟用",
     "confirmRole": "確認角色",
@@ -1714,7 +1675,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-04-03 12:22:09.501868",
+    "@@last_modified": "2026-04-15 11:31:58.746579",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -6300,10 +6261,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -6368,10 +6325,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@speechToTextBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@versionNotFound": {
         "type": "String",
         "placeholders": {}
@@ -6394,10 +6347,6 @@
                 "type": "String"
             }
         }
-    },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
@@ -6428,10 +6377,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -7559,14 +7504,6 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
         "type": "String",
         "placeholders": {}
@@ -7636,70 +7573,6 @@
         "placeholders": {}
     },
     "@constructUseIncIGCDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7925,19 +7798,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@topicLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -7953,23 +7818,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -7982,14 +7835,6 @@
         "placeholders": {}
     },
     "@nan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -8189,10 +8034,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@readingAssistanceOverviewBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resetInstructionTooltipsTitle": {
         "type": "String",
         "placeholders": {}
@@ -8206,10 +8047,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8441,10 +8278,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activitySuggestionTimeoutMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@howSpaceCanBeFound": {
         "type": "String",
         "placeholders": {}
@@ -8593,18 +8426,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingActivitiesMessage": {
         "type": "String",
         "placeholders": {}
@@ -8634,10 +8455,6 @@
         "placeholders": {}
     },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8676,10 +8493,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -8687,18 +8500,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -10938,15 +10739,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "你已為 {lemma} 設定了表情符號！我們將在未來的練習活動中使用這個表情符號來代表這個詞。",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "等待登錄完成",
     "ssoDialogDesc": "我們已經打開了一個新標籤，以便您可以安全地登錄。",
     "ssoDialogHelpText": "🤔 如果您沒有看到新標籤，請檢查您的彈出窗口阻止程序。",
@@ -11124,16 +10916,6 @@
         "placeholders": {}
     },
     "@publicInviteDescSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "enableNotificationsTitle": "Pangea Chat 係一個短信應用程式，所以通知非常重要！",
-    "enableNotificationsDesc": "允許通知",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -11623,12 +11405,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "解鎖練習活動",
     "hideEvents": "隱藏事件",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11775,11 +11552,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noAnalyticsActivitiesAvailable": "哇，你已經完成了所有可用的活動！發送更多消息以解鎖更多練習活動。",
-    "@noAnalyticsActivitiesAvailable": {
-        "type": "String",
-        "placeholders": {}
-    },
     "profile": "個人資料",
     "@profile": {
         "type": "String",
@@ -11791,8 +11563,6 @@
     "notificationDeviceSubtitle": "查看和管理向您發送推送通知的設備。",
     "notificationRuleDM": "直接消息",
     "notificationRuleDMDescription": "通知用戶有關直接消息房間中的消息。",
-    "notificationRuleCourseAndActivity": "課程和活動",
-    "notificationRuleCourseAndActivityDescription": "通知用戶有關課程、活動和聊天中的消息。",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -11814,14 +11584,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -12091,6 +11853,125 @@
         "type": "String",
         "placeholders": {}
     },
+    "subscribedToUnlockTools": "訂閱以解鎖互動翻譯和語法檢查、音頻播放、個性化練習練習和學習分析！",
+    "emojiSelectedSnackbar": "你已為 {lemma} 設置了表情符號！我們將使用這個表情符號來代表這個詞在未來的練習練習中。",
+    "unlockPracticeActivities": "解鎖練習練習",
+    "noAnalyticsActivitiesAvailable": "哇，你已經完成了所有可用的活動！發送更多消息以解鎖更多練習練習。",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "正確的詞義練習",
+    "constructUseIgnPADesc": "在詞義練習中被忽略",
+    "constructUseIncPADesc": "不正確的詞義練習",
+    "constructUseCorWLDesc": "正確的詞聽練習",
+    "constructUseIncWLDesc": "不正確的詞聽練習",
+    "constructUseIngWLDesc": "在詞聽練習中被忽略",
+    "constructUseCorHWLDesc": "正確的隱藏詞練習",
+    "constructUseIncHWLDesc": "不正確的隱藏詞練習",
+    "constructUseIgnHWLDesc": "在隱藏詞練習中被忽略",
+    "constructUseCorLDesc": "正確的詞元練習",
+    "constructUseIncLDesc": "詞條練習中不正確",
+    "constructUseIgnLDesc": "詞條練習中被忽略",
+    "constructUseCorMDesc": "文法練習中正確",
+    "constructUseIncMDesc": "文法練習中不正確",
+    "constructUseIgnMDesc": "文法練習中被忽略",
+    "constructUseEmojiDesc": "表情符號練習中正確",
+    "errorFetchingExercise": "獲取練習題失敗",
+    "notificationRuleCourseAndActivity": "課程和活動",
+    "notificationRuleCourseAndActivityDescription": "通知用戶有關課程、活動和聊天中的消息。",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "clickToUpdateTargetLanguage": "點擊這裡以更新您的目標語言。",
     "@clickToUpdateTargetLanguage": {
         "type": "String",
@@ -12098,6 +11979,41 @@
     },
     "closeEmojiMenu": "關閉表情符號菜單",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "允許其他人搜尋你的課程",
+    "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "永遠不會錯過聊天！",
+    "enableNotificationsDesc": "允許 Pangea Chat 的通知，與你的語言夥伴保持聯繫！",
+    "enableNotifications": "允許通知",
+    "noActivitiesFound": "此主題沒有可用的活動。",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "你不能封鎖自己",
+    "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "封鎖用戶名",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

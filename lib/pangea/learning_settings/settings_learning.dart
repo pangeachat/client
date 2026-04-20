@@ -19,18 +19,48 @@ class SettingsLearning extends StatefulWidget {
 }
 
 class SettingsLearningController extends State<SettingsLearning> {
-  final viewModel = LearningSettingsViewModel(
-    MatrixState.pangeaController.userController.profile,
-  );
+  late final LearningSettingsViewModel viewModel;
 
   final ValueNotifier<String?> languageMatchError = ValueNotifier(null);
   final ScrollController scrollController = ScrollController();
   final TextEditingController aboutTextController = TextEditingController();
   final ExpansibleController languageTileController = ExpansibleController();
 
+  // Used by the GoRoute's onExit to check unsaved changes and optionally save.
+  static SettingsLearningController? _activeInstance;
+
+  static Future<bool> handleExit(BuildContext context) async {
+    final instance = _activeInstance;
+    if (instance == null || !instance.viewModel.haveSettingsChanged) {
+      return true;
+    }
+
+    final resp = await showOkCancelAlertDialog(
+      title: L10n.of(context).exitWithoutSaving,
+      okLabel: L10n.of(context).submit,
+      cancelLabel: L10n.of(context).leave,
+      context: context,
+    );
+
+    if (resp == OkCancelResult.ok) {
+      return instance._saveChanges(context);
+    }
+    return true; // leave without saving
+  }
+
   @override
   void initState() {
     super.initState();
+    SettingsLearningController._activeInstance = this;
+    viewModel = LearningSettingsViewModel(
+      MatrixState.pangeaController.userController.profile,
+      onUpdateProfile: () {
+        if (languageMatchError.value != null &&
+            !viewModel.hasIdenticalLanguages) {
+          languageMatchError.value = null;
+        }
+      },
+    );
     aboutTextController.text = viewModel.about ?? '';
     if (viewModel.hasIdenticalLanguages) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -43,6 +73,9 @@ class SettingsLearningController extends State<SettingsLearning> {
 
   @override
   void dispose() {
+    if (SettingsLearningController._activeInstance == this) {
+      SettingsLearningController._activeInstance = null;
+    }
     scrollController.dispose();
     aboutTextController.dispose();
     viewModel.dispose();
@@ -69,7 +102,8 @@ class SettingsLearningController extends State<SettingsLearning> {
     resp == OkCancelResult.ok ? await submit() : Navigator.of(context).pop();
   }
 
-  Future<void> submit() async {
+  // Saves settings without navigating. Returns true if save succeeded.
+  Future<bool> _saveChanges(BuildContext context) async {
     if (viewModel.hasIdenticalLanguages) {
       languageMatchError.value = L10n.of(context).noIdenticalLanguages;
       languageTileController.expand();
@@ -78,7 +112,7 @@ class SettingsLearningController extends State<SettingsLearning> {
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
-      return;
+      return false;
     }
 
     languageMatchError.value = null;
@@ -91,8 +125,13 @@ class SettingsLearningController extends State<SettingsLearning> {
           )
           .timeout(const Duration(seconds: 15)),
     );
+    return true;
+  }
 
-    Navigator.of(context).pop();
+  Future<void> submit() async {
+    if (await _saveChanges(context)) {
+      Navigator.of(context).pop();
+    }
   }
 
   @override

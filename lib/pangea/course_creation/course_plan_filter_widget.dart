@@ -81,9 +81,13 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
                   ),
                   child: item != null
                       ? widget.displayname(item)
-                      : Text(
-                          widget.defaultName,
-                          style: DefaultTextStyle.of(context).style,
+                      : Row(
+                          children: [
+                            Text(
+                              widget.defaultName,
+                              style: DefaultTextStyle.of(context).style,
+                            ),
+                          ],
                         ),
                 ),
               ),

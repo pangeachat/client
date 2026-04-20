@@ -10,6 +10,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
+import 'package:fluffychat/pangea/chat_settings/constants/room_settings_constants.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -79,7 +80,7 @@ extension AnalyticsClientExtension on Client {
       initialState: [
         StateEvent(
           type: EventTypes.RoomJoinRules,
-          content: {ModelKey.joinRule: JoinRules.knock.name},
+          content: {RoomSettingsConstants.joinRule: JoinRules.knock.name},
         ),
       ],
     );

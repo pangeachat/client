@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:22:23.320855",
+    "@@last_modified": "2026-04-15 11:32:17.408712",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -2139,7 +2139,6 @@
     "trialPeriodExpired": "Thời gian dùng thử đã hết hạn",
     "translations": "bản dịch",
     "definitions": "định nghĩa",
-    "subscribedToUnlockTools": "Đăng ký để mở khóa dịch tương tác, kiểm tra ngữ pháp, âm thanh, hoạt động và phân tích học tập!",
     "more": "Thêm",
     "translationTooltip": "Dịch",
     "kickBotWarning": "Đá Pangea Bot sẽ xóa bot hội thoại khỏi cuộc trò chuyện này.",
@@ -2172,7 +2171,6 @@
     "knockRestricted": "Hạn chế gõ yêu cầu",
     "createNewSpace": "Tạo không gian mới",
     "practice": "Luyện tập",
-    "speechToTextBody": "Với tin nhắn thoại, bạn có thể xem bản chép giọng nói và điểm từ/phút của người nói.",
     "previous": "Trước",
     "versionNotFound": "Không tìm thấy phiên bản",
     "fetchingVersion": "Đang lấy phiên bản...",
@@ -2192,7 +2190,6 @@
             }
         }
     },
-    "l1TranslationBody": "Tin nhắn trong ngôn ngữ gốc sẽ không được dịch.",
     "deleteSubscriptionWarningTitle": "Bạn đang có gói đăng ký hoạt động",
     "deleteSubscriptionWarningBody": "Việc xóa tài khoản sẽ không hủy gói đăng ký của bạn.",
     "manageSubscription": "Quản lý gói đăng ký",
@@ -2201,7 +2198,6 @@
     "wordsUsed": "Từ đã dùng",
     "level": "Cấp độ",
     "morphsUsed": "Hình thái đã sử dụng",
-    "translationChoicesBody": "Giữ lâu một lựa chọn để xem gợi ý.",
     "sendCanceled": "Đã hủy gửi",
     "goToSpace": "Đến không gian: {space}",
     "markAsUnread": "Đánh dấu chưa đọc",
@@ -2606,22 +2602,6 @@
     "constructUseIgnIGCDesc": "Bỏ qua trong sửa ngữ pháp",
     "constructUseCorIGCDesc": "Đúng trong sửa ngữ pháp",
     "constructUseIncIGCDesc": "Chọn sai trong sửa ngữ pháp",
-    "constructUseCorPADesc": "Đúng trong bài tập từ vựng",
-    "constructUseIgnPADesc": "Bỏ qua trong bài tập từ vựng",
-    "constructUseIncPADesc": "Sai trong bài tập từ vựng",
-    "constructUseCorWLDesc": "Đúng trong bài tập nghe từ",
-    "constructUseIncWLDesc": "Sai trong bài tập nghe từ",
-    "constructUseIngWLDesc": "Bỏ qua trong bài tập nghe từ",
-    "constructUseCorHWLDesc": "Đúng trong bài tập từ ẩn",
-    "constructUseIncHWLDesc": "Sai trong bài tập từ ẩn",
-    "constructUseIgnHWLDesc": "Bỏ qua trong bài tập từ ẩn",
-    "constructUseCorLDesc": "Đúng trong bài tập chuyển dạng từ",
-    "constructUseIncLDesc": "Sai trong bài tập chuyển dạng từ",
-    "constructUseIgnLDesc": "Bỏ qua trong bài tập chuyển dạng từ",
-    "constructUseCorMDesc": "Đúng trong bài tập ngữ pháp",
-    "constructUseIncMDesc": "Sai trong bài tập ngữ pháp",
-    "constructUseIgnMDesc": "Bỏ qua trong bài tập ngữ pháp",
-    "constructUseEmojiDesc": "Chọn biểu tượng cảm xúc chính xác",
     "constructUseNanDesc": "Không áp dụng",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
     "@xpIntoLevel": {
@@ -2705,21 +2685,16 @@
     },
     "doubleClickToEdit": "Nhấp đúp để chỉnh sửa.",
     "otherPartyNotLoggedIn": "Bên kia hiện không đăng nhập, không thể nhận tin!",
-    "activityPlannerTitle": "Trình lập hoạt động",
     "topicLabel": "Chủ đề",
     "topicPlaceholder": "Chọn một chủ đề...",
     "modePlaceholder": "Chọn một chế độ...",
     "learningObjectiveLabel": "Mục tiêu học tập",
     "learningObjectivePlaceholder": "Chọn một mục tiêu học tập...",
-    "languageOfInstructionsLabel": "Ngôn ngữ hướng dẫn hoạt động",
     "targetLanguageLabel": "Ngôn ngữ đích",
     "cefrLevelLabel": "Trình độ CEFR",
-    "launchActivityButton": "Khởi chạy hoạt động",
     "image": "Hình ảnh",
     "video": "Video",
     "nan": "Không áp dụng",
-    "activityPlannerOverviewInstructionsBody": "Chọn chủ đề, chế độ, mục tiêu học tập và tạo hoạt động cho cuộc trò chuyện!",
-    "activityTitle": "Tiêu đề hoạt động",
     "addVocabulary": "Thêm từ vựng",
     "instructions": "Hướng dẫn",
     "numberOfLearners": "Số lượng người học",
@@ -2898,7 +2873,6 @@
         "placeholders": {}
     },
     "enterNewChat": "Tham gia trò chuyện mới",
-    "completeActivitiesToUnlock": "Hoàn thành ít nhất một hoạt động để mở khóa bản dịch!",
     "constructUseGaDesc": "Hỗ trợ ngữ pháp",
     "constructUseTaDesc": "Hỗ trợ dịch thuật",
     "chooseLemmaMeaningInstructionsBody": "Khớp nghĩa với các từ trong tin nhắn!",
@@ -2909,7 +2883,6 @@
     "pleaseEnterInt": "Vui lòng nhập một số",
     "home": "Trang chủ",
     "join": "Tham gia",
-    "readingAssistanceOverviewBody": "Nhấp vào các nút bên dưới để chơi mini-game về việc khớp emoji, âm thanh, nghĩa từ và khái niệm ngữ pháp. Hoặc nhấp vào bất kỳ từ nào để xem chi tiết.",
     "resetInstructionTooltipsTitle": "Đặt lại hướng dẫn công cụ",
     "resetInstructionTooltipsDesc": "Nhấp để hiển thị hướng dẫn công cụ như cho một người dùng hoàn toàn mới.",
     "randomize": "Ngẫu nhiên hóa",
@@ -2955,10 +2928,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@constructUseGaDesc": {
         "type": "String",
         "placeholders": {}
@@ -2999,10 +2968,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@readingAssistanceOverviewBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resetInstructionTooltipsTitle": {
         "type": "String",
         "placeholders": {}
@@ -3016,10 +2981,6 @@
         "placeholders": {}
     },
     "@clear": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@makeYourOwnActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -3253,13 +3214,10 @@
     "customReaction": "Phản ứng tùy chỉnh",
     "grammarCopyVERBFORMshrt": "Ngắn",
     "constructUseCollected": "Được thu thập trong trò chuyện",
-    "modeLabel": "Loại hoạt động",
-    "makeYourOwnActivity": "Tạo hoạt động của riêng bạn",
     "deleteChatDesc": "Bạn có chắc chắn muốn xóa trò chuyện này không? Nó sẽ bị xóa cho tất cả người tham gia và tất cả tin nhắn trong trò chuyện sẽ không còn khả dụng cho việc thực hành hoặc phân tích học tập.",
     "maxFifty": "Tối đa 50",
     "activities": "Hoạt động",
     "access": "Truy cập",
-    "activitySuggestionTimeoutMessage": "Chúng tôi đang làm việc chăm chỉ để tạo ra các hoạt động cho bạn, vui lòng quay lại sau một phút",
     "private": "Riêng tư",
     "cannotBeFoundInSearch": "Không thể tìm thấy trong tìm kiếm",
     "public": "Công khai",
@@ -3327,10 +3285,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@modeLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@deleteChatDesc": {
         "type": "String",
         "placeholders": {}
@@ -3344,10 +3298,6 @@
         "placeholders": {}
     },
     "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitySuggestionTimeoutMessage": {
         "type": "String",
         "placeholders": {}
     },
@@ -3457,8 +3407,6 @@
     },
     "chatCapacitySetTooLow": "Dung lượng trò chuyện phải ít nhất là {count}.",
     "reset": "Đặt lại",
-    "errorGenerateActivityMessage": "Không thể tạo hoạt động",
-    "errorRegenerateActivityMessage": "Không thể tái tạo hoạt động",
     "errorFetchingActivitiesMessage": "Không thể lấy hoạt động",
     "errorFetchingDefinition": "Không thể lấy định nghĩa",
     "errorProcessAnalytics": "Không thể xử lý phân tích",
@@ -3467,7 +3415,6 @@
     "unexpectedError": "Lỗi không mong đợi.",
     "pleaseReload": "Vui lòng tải lại và thử lại.",
     "translationError": "Lỗi dịch thuật",
-    "errorFetchingActivity": "Không thể lấy hoạt động",
     "check": "Kiểm tra",
     "unableToFindRoom": "Không tìm thấy trò chuyện hoặc không gian nào với mã đó. Vui lòng thử lại.",
     "@chatCapacitySetTooLow": {
@@ -3479,14 +3426,6 @@
         }
     },
     "@reset": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
         "type": "String",
         "placeholders": {}
     },
@@ -3522,10 +3461,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorFetchingActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@check": {
         "type": "String",
         "placeholders": {}
@@ -3539,7 +3474,6 @@
     "errorDisableIGCClassDesc": "Hỗ trợ ngữ pháp đã tắt cho khóa học mà cuộc trò chuyện này đang diễn ra.",
     "participants": "Tham gia",
     "invitedToSpace": "{user} đã mời bạn tham gia một khóa học: {space}! Bạn có muốn chấp nhận không?",
-    "generateActivitiesButton": "Tạo hoạt động",
     "leaveSpaceDescription": "Bằng cách rời khỏi khóa học, bạn sẽ rời khỏi tất cả các cuộc trò chuyện trong đó. Các người dùng khác sẽ thấy rằng bạn đã rời khỏi khóa học.",
     "noSpaceDescriptionYet": "Chưa tạo mô tả khóa học nào.",
     "knockSpaceSuccess": "Bạn đã yêu cầu tham gia khóa học này! Quản trị viên sẽ phản hồi yêu cầu của bạn khi họ nhận được 😀",
@@ -3557,17 +3491,13 @@
     "inThisSpace": "Trong khóa học này",
     "inviteAllInSpace": "Mời tất cả trong khóa học này",
     "spaceParticipantsHaveBeenInvitedToTheChat": "Tất cả thành viên trong khóa học đã được mời vào trò chuyện",
-    "errorLaunchActivityMessage": "Không thể khởi chạy hoạt động",
     "numCompletedActivities": "Số hoạt động đã hoàn thành",
     "viewingAnalytics": "Đang xem {visible}/{users} Thống kê",
     "request": "Yêu cầu",
     "requestAll": "Yêu cầu tất cả",
     "confirmMessageUnpin": "Bạn có chắc chắn muốn bỏ ghim tin nhắn này không?",
-    "createActivityPlan": "Tạo kế hoạch hoạt động mới",
     "saveAndLaunch": "Lưu và khởi chạy",
     "launchToSpace": "Khởi chạy vào khóa học",
-    "numberOfActivities": "Số buổi hoạt động",
-    "maximumActivityParticipants": "Mỗi hoạt động có tối đa {count} người tham gia.",
     "pending": "Đang chờ",
     "inactive": "Không hoạt động",
     "confirmRole": "Xác nhận vai trò",
@@ -3693,10 +3623,6 @@
             }
         }
     },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@leaveSpaceDescription": {
         "type": "String",
         "placeholders": {}
@@ -3769,10 +3695,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numCompletedActivities": {
         "type": "String",
         "placeholders": {}
@@ -3800,10 +3722,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@saveAndLaunch": {
         "type": "String",
         "placeholders": {}
@@ -3811,18 +3729,6 @@
     "@launchToSpace": {
         "type": "String",
         "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@pending": {
         "type": "String",
@@ -4332,7 +4238,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "clickBestOption": "Chọn các tùy chọn tốt nhất để dịch tin nhắn của bạn! Nhấn và giữ các tùy chọn để xem gợi ý.",
     "startOwn": "Bắt đầu của riêng tôi",
     "joinCourseDesc": "Mỗi khóa học có 8-10 chủ đề theo trình tự với nhiều hoạt động học ngôn ngữ dựa trên nhiệm vụ.",
     "newMessageInPangeaChat": "🔊 Tin nhắn mới trong Pangea Chat",
@@ -4340,10 +4245,6 @@
     "addCourse": "Thêm khóa học",
     "joinPublicCourse": "Tham gia khóa học công khai",
     "vocabLevelsDesc": "Đây là nơi các từ vựng sẽ xuất hiện sau khi bạn nâng cấp chúng!",
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@startOwn": {
         "type": "String",
         "placeholders": {}
@@ -5727,15 +5628,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Bạn đã đặt biểu tượng cảm xúc cho {lemma}! Chúng tôi sẽ sử dụng biểu tượng cảm xúc này để đại diện cho từ trong các hoạt động thực hành trong tương lai.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Đang chờ hoàn tất đăng nhập",
     "ssoDialogDesc": "Chúng tôi đã mở một tab mới để bạn có thể đăng nhập một cách an toàn.",
     "ssoDialogHelpText": "🤔 Nếu bạn không thấy tab mới, vui lòng kiểm tra trình chặn popup của bạn.",
@@ -5913,16 +5805,6 @@
         "placeholders": {}
     },
     "@publicInviteDescSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "enableNotificationsTitle": "Pangea Chat là một ứng dụng nhắn tin nên thông báo là rất quan trọng!",
-    "enableNotificationsDesc": "Cho phép thông báo",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -6407,12 +6289,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Mở khóa các hoạt động thực hành",
     "hideEvents": "Ẩn sự kiện",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -6559,11 +6436,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noAnalyticsActivitiesAvailable": "Wow, bạn đã hoàn thành tất cả các hoạt động có sẵn! Gửi thêm tin nhắn để mở khóa thêm các hoạt động thực hành.",
-    "@noAnalyticsActivitiesAvailable": {
-        "type": "String",
-        "placeholders": {}
-    },
     "profile": "Hồ sơ",
     "@profile": {
         "type": "String",
@@ -6575,8 +6447,6 @@
     "notificationDeviceSubtitle": "Xem và quản lý các thiết bị gửi cho bạn thông báo đẩy.",
     "notificationRuleDM": "Tin nhắn trực tiếp",
     "notificationRuleDMDescription": "Thông báo cho người dùng về các tin nhắn trong các phòng tin nhắn trực tiếp.",
-    "notificationRuleCourseAndActivity": "Khóa học và Hoạt động",
-    "notificationRuleCourseAndActivityDescription": "Thông báo cho người dùng về các tin nhắn trong các khóa học, hoạt động và trò chuyện.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -6598,14 +6468,6 @@
         "placeholders": {}
     },
     "@notificationRuleDMDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -6875,6 +6737,125 @@
         "type": "String",
         "placeholders": {}
     },
+    "subscribedToUnlockTools": "Đăng ký để mở khóa dịch thuật tương tác và kiểm tra ngữ pháp, phát âm thanh, bài tập thực hành cá nhân hóa và phân tích học tập!",
+    "emojiSelectedSnackbar": "Bạn đã đặt biểu tượng cảm xúc cho {lemma}! Chúng tôi sẽ sử dụng biểu tượng cảm xúc này để đại diện cho từ trong các bài tập thực hành trong tương lai.",
+    "unlockPracticeActivities": "Mở khóa bài tập thực hành",
+    "noAnalyticsActivitiesAvailable": "Wow, bạn đã hoàn thành tất cả các hoạt động có sẵn! Gửi thêm tin nhắn để mở khóa thêm bài tập thực hành.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "Đúng trong bài tập nghĩa từ",
+    "constructUseIgnPADesc": "Bị bỏ qua trong bài tập nghĩa từ",
+    "constructUseIncPADesc": "Sai trong bài tập nghĩa từ",
+    "constructUseCorWLDesc": "Đúng trong bài tập nghe từ",
+    "constructUseIncWLDesc": "Sai trong bài tập nghe từ",
+    "constructUseIngWLDesc": "Bị bỏ qua trong bài tập nghe từ",
+    "constructUseCorHWLDesc": "Đúng trong bài tập từ ẩn",
+    "constructUseIncHWLDesc": "Sai trong bài tập từ ẩn",
+    "constructUseIgnHWLDesc": "Bị bỏ qua trong bài tập từ ẩn",
+    "constructUseCorLDesc": "Đúng trong bài tập lemma",
+    "constructUseIncLDesc": "Không chính xác trong bài tập từ vựng",
+    "constructUseIgnLDesc": "Bị bỏ qua trong bài tập từ vựng",
+    "constructUseCorMDesc": "Đúng trong bài tập ngữ pháp",
+    "constructUseIncMDesc": "Không chính xác trong bài tập ngữ pháp",
+    "constructUseIgnMDesc": "Bị bỏ qua trong bài tập ngữ pháp",
+    "constructUseEmojiDesc": "Đúng trong bài tập emoji",
+    "errorFetchingExercise": "Không thể lấy bài tập thực hành",
+    "notificationRuleCourseAndActivity": "Khóa học và Hoạt động",
+    "notificationRuleCourseAndActivityDescription": "Thông báo cho người dùng về các tin nhắn trong các khóa học, hoạt động và trò chuyện.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "clickToUpdateTargetLanguage": "Nhấp vào đây để cập nhật ngôn ngữ mục tiêu của bạn.",
     "@clickToUpdateTargetLanguage": {
         "type": "String",
@@ -6882,6 +6863,41 @@
     },
     "closeEmojiMenu": "Đóng menu biểu tượng cảm xúc",
     "@closeEmojiMenu": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "visibilityToggleTitle": "Cho phép người khác tìm kiếm khóa học của bạn",
+    "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Không bao giờ bỏ lỡ một cuộc trò chuyện!",
+    "enableNotificationsDesc": "Cho phép thông báo cho Pangea Chat và giữ kết nối với những người bạn ngôn ngữ của bạn!",
+    "enableNotifications": "Cho phép thông báo",
+    "noActivitiesFound": "Không có hoạt động nào cho chủ đề này.",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noActivitiesFound": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Bạn không thể chặn chính mình",
+    "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Chặn tên người dùng",
+    "@blockUsernameHint": {
         "type": "String",
         "placeholders": {}
     }

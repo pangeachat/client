@@ -11,22 +11,22 @@ import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
+import 'package:fluffychat/pangea/practice_exercises/practice_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class GrammarMatchTargetGenerator {
-  static ActivityTypeEnum activityType = ActivityTypeEnum.grammarCategory;
+  static PracticeExerciseTypeEnum exerciseType =
+      PracticeExerciseTypeEnum.grammarCategory;
 
-  static Future<List<AnalyticsActivityTarget>> get(
+  static Future<List<AnalyticsPracticeTarget>> get(
     List<ConstructUses> constructs,
   ) async {
     // Score and sort by priority (highest first). Uses shared scorer for
     // consistent prioritization with message practice.
-    final sortedConstructs = constructs.practiceSort(activityType);
+    final sortedConstructs = constructs.practiceSort(exerciseType);
 
     final Set<String> seenForms = {};
-    final cutoffTime = DateTime.now().subtract(const Duration(hours: 24));
 
     final morphInfoResult = await MorphsRepo.get(
       MatrixState.pangeaController.userController.userL2,
@@ -38,7 +38,7 @@ class GrammarMatchTargetGenerator {
         .map((f) => f.feature)
         .toList();
 
-    final targets = <AnalyticsActivityTarget>[];
+    final targets = <AnalyticsPracticeTarget>[];
 
     for (final construct in sortedConstructs) {
       if (targets.length >= AnalyticsPracticeConstants.targetsToGenerate) {
@@ -53,11 +53,7 @@ class GrammarMatchTargetGenerator {
         continue;
       }
 
-      final lastPracticeUse = construct.lastUseByTypes(
-        activityType.associatedUseTypes,
-      );
-
-      if (lastPracticeUse != null && lastPracticeUse.isAfter(cutoffTime)) {
+      if (construct.shouldSkipForRecentPractice(exerciseType)) {
         continue;
       }
 
@@ -89,10 +85,10 @@ class GrammarMatchTargetGenerator {
         );
 
         targets.add(
-          AnalyticsActivityTarget(
+          AnalyticsPracticeTarget(
             target: PracticeTarget(
               tokens: [token],
-              activityType: activityType,
+              exerciseType: exerciseType,
               morphFeature: feature,
             ),
             exampleMessage: ExampleMessageInfo(exampleMessage: exampleMessage),

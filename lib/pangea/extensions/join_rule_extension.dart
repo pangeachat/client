@@ -1,6 +1,6 @@
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/chat_settings/constants/room_settings_constants.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_extension.dart';
 
@@ -16,10 +16,12 @@ extension JoinRuleExtension on Client {
       ErrorHandler.logError(e: e, s: s, data: {'joinRule': joinRule});
     }
 
-    final Map<String, dynamic> content = {ModelKey.joinRule: joinRule};
+    final Map<String, dynamic> content = {
+      RoomSettingsConstants.joinRule: joinRule,
+    };
 
     if (joinCode != null) {
-      content[ModelKey.accessCode] = joinCode;
+      content[RoomSettingsConstants.accessCode] = joinCode;
     }
 
     if (allow != null) {
@@ -37,10 +39,10 @@ extension JoinRuleExtensionOnRoom on Room {
     }
 
     final currentJoinRules = getState(EventTypes.RoomJoinRules)?.content ?? {};
-    if (currentJoinRules[ModelKey.accessCode] != null) return;
+    if (currentJoinRules[RoomSettingsConstants.accessCode] != null) return;
 
     final joinCode = await client.requestSpaceCode();
-    currentJoinRules[ModelKey.accessCode] = joinCode;
+    currentJoinRules[RoomSettingsConstants.accessCode] = joinCode;
 
     await client.setRoomStateWithKey(
       id,
@@ -58,12 +60,12 @@ extension JoinRuleExtensionOnRoom on Room {
   }) async {
     final currentJoinRule = getState(EventTypes.RoomJoinRules)?.content ?? {};
 
-    if (currentJoinRule[ModelKey.joinRule] == joinRule &&
+    if (currentJoinRule[RoomSettingsConstants.joinRule] == joinRule &&
         (currentJoinRule['allow'] == allow)) {
       return; // No change needed
     }
 
-    currentJoinRule[ModelKey.joinRule] = joinRule;
+    currentJoinRule[RoomSettingsConstants.joinRule] = joinRule;
     currentJoinRule['allow'] = allow;
 
     await client.setRoomStateWithKey(

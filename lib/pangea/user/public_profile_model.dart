@@ -2,6 +2,7 @@ import 'package:country_picker/country_picker.dart';
 
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
+import 'package:fluffychat/pangea/user/user_constants.dart';
 
 class PublicProfileModel {
   final AnalyticsProfileModel analytics;
@@ -17,11 +18,11 @@ class PublicProfileModel {
     final json = analytics.toJson();
 
     if (country != null) {
-      json['country'] = country;
+      json[UserConstants.userCountry] = country;
     }
 
     if (about != null) {
-      json['about'] = about;
+      json[UserConstants.userAbout] = about;
     }
 
     return json;
@@ -33,8 +34,12 @@ class PublicProfileModel {
     final profileJson =
         json[PangeaEventTypes.profileAnalytics] as Map<String, dynamic>?;
 
-    final String? country = profileJson != null ? profileJson['country'] : null;
-    final String? about = profileJson != null ? profileJson['about'] : null;
+    final String? country = profileJson != null
+        ? profileJson[UserConstants.userCountry]
+        : null;
+    final String? about = profileJson != null
+        ? profileJson[UserConstants.userAbout]
+        : null;
 
     return PublicProfileModel(
       analytics: analytics,
