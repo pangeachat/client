@@ -725,7 +725,7 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
-  void _startReadingAssistanceTutorial(Event event) {
+  Future<void> _startReadingAssistanceTutorial(Event event) async {
     if (_router.state.path != ':roomid') {
       // The user has navigated away from the chat,
       // so we don't want to show the overlay.
@@ -746,6 +746,9 @@ class ChatController extends State<ChatPageWithRoom>
     // in a previous session). Dispatch to the correct launch path.
     if (orchestrator.isTutorialQueued(TutorialEnum.readingAssistance)) {
       final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
+      final success = await scrollToEventId(event.eventId);
+      if (!success) return;
+
       orchestrator.launchTutorial(
         context: context,
         tutorial: ReadingAssistantTutorialModel(
@@ -1818,7 +1821,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   // #Pangea
   // void scrollToEventId(String eventId, {bool highlightEvent = true}) async {
-  void scrollToEventId(
+  Future<bool> scrollToEventId(
     String eventId, {
     bool highlightEvent = true,
     int calls = 0,
@@ -1832,7 +1835,7 @@ class ChatController extends State<ChatPageWithRoom>
           message: 'Timeline is null when trying to scroll to event ID',
         ),
       );
-      return;
+      return false;
     }
 
     if (calls > 2) {
@@ -1840,7 +1843,7 @@ class ChatController extends State<ChatPageWithRoom>
         e: Exception('Too many attempts to scroll to event ID $eventId'),
         data: {'roomId': roomId, 'eventId': eventId, 'calls': calls},
       );
-      return;
+      return false;
     }
     // Pangea#
     final foundEvent = timeline!.events.firstWhereOrNull(
@@ -1874,7 +1877,10 @@ class ChatController extends State<ChatPageWithRoom>
         scrollToEventId(eventId, calls: calls + 1);
         // Pangea#
       });
-      return;
+      // #Pangea
+      // return;
+      return true;
+      // Pangea#
     }
     if (highlightEvent) {
       setState(() {
@@ -1887,6 +1893,9 @@ class ChatController extends State<ChatPageWithRoom>
       preferPosition: AutoScrollPosition.middle,
     );
     _updateScrollController();
+    // #Pangea
+    return true;
+    // Pangea#
   }
 
   void scrollDown() async {
