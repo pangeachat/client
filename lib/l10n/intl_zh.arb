@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-04-15 11:32:20.391135",
+    "@@last_modified": "2026-04-20 12:33:06.607160",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10883,6 +10883,11 @@
     },
     "blockUsernameHint": "屏蔽用户名",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "我们正在调查此事！请稍后再试。",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

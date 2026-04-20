@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-04-15 11:32:22.738159",
+    "@@last_modified": "2026-04-20 12:33:09.991881",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10992,6 +10992,11 @@
     },
     "blockUsernameHint": "Zablokuj nazwę użytkownika",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Pracujemy nad tym! Proszę spróbować ponownie później.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

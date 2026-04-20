@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-04-15 11:31:50.575819",
+    "@@last_modified": "2026-04-20 12:32:40.827700",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10883,6 +10883,11 @@
     },
     "blockUsernameHint": "Blokeatu erabiltzaile izena",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Hori aztertzen ari gara! Mesedez, saiatu berriro geroago.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

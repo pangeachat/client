@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-04-15 11:32:27.863633",
+    "@@last_modified": "2026-04-20 12:33:14.892307",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11897,6 +11897,11 @@
     },
     "blockUsernameHint": "Заблокировать имя пользователя",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Мы разбираемся с этим! Пожалуйста, попробуйте позже.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

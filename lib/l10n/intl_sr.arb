@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-15 11:32:29.786289",
+    "@@last_modified": "2026-04-20 12:33:16.924601",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -12006,6 +12006,11 @@
     },
     "blockUsernameHint": "Blokiraj korisničko ime",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Radimo na tome! Molimo vas da pokušate ponovo kasnije.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

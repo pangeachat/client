@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-15 11:32:26.909628",
+    "@@last_modified": "2026-04-20 12:33:13.988915",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -12002,6 +12002,11 @@
     },
     "blockUsernameHint": "Bloki uzantnomon",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Ni esploras ĝin! Bonvolu provi denove poste.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

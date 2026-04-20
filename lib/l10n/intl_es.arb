@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-04-15 11:31:38.064076",
+    "@@last_modified": "2026-04-20 12:32:26.257058",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7909,6 +7909,11 @@
     },
     "blockUsernameHint": "Bloquear nombre de usuario",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "¡Estamos investigando! Por favor, inténtalo de nuevo más tarde.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-04-15 11:32:13.502443",
+    "@@last_modified": "2026-04-20 12:32:58.755592",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11223,6 +11223,11 @@
     },
     "blockUsernameHint": "حظر اسم المستخدم",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "نحن نبحث في الأمر! يرجى المحاولة مرة أخرى لاحقًا.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

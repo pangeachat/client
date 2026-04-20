@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-04-15 11:31:52.736231",
+    "@@last_modified": "2026-04-20 12:32:43.774883",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10862,6 +10862,11 @@
     },
     "blockUsernameHint": "Benutzernamen blockieren",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Wir kümmern uns darum! Bitte versuchen Sie es später noch einmal.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

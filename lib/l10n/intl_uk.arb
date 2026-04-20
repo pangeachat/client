@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-04-15 11:32:00.204636",
+    "@@last_modified": "2026-04-20 12:32:48.078645",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10883,6 +10883,11 @@
     },
     "blockUsernameHint": "Заблокувати ім'я користувача",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Ми розглядаємо це! Будь ласка, спробуйте ще раз пізніше.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

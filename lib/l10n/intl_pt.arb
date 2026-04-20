@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-15 11:31:51.161930",
+    "@@last_modified": "2026-04-20 12:32:41.604673",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -12001,6 +12001,11 @@
     },
     "blockUsernameHint": "Bloquear nome de usuário",
     "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Estamos investigando! Por favor, tente novamente mais tarde.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }
