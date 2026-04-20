@@ -8,6 +8,7 @@ import 'package:desktop_notifications/desktop_notifications.dart';
 import 'package:image/image.dart';
 import 'package:matrix/matrix.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/setting_keys.dart';
@@ -217,7 +218,17 @@ extension LocalNotificationsExtension on MatrixState {
     final enabled = await notificationsEnabled;
     if (enabled) return;
 
-    final canShow = await NotificationsRequestRepo.canShowRequest();
+    final userId = client.userID;
+    if (userId == null) {
+      ErrorHandler.logError(
+        e: 'User ID is null when trying to check notification request timestamp',
+        data: {'client_user_id': client.userID},
+        level: SentryLevel.warning,
+      );
+      return;
+    }
+
+    final canShow = await NotificationsRequestRepo.canShowRequest(userId);
     if (!canShow) return;
 
     final result = await showDialog<OkCancelResult>(
@@ -230,7 +241,7 @@ extension LocalNotificationsExtension on MatrixState {
       await requestNotificationPermission();
     }
 
-    await NotificationsRequestRepo.updateRequestTimestamp();
+    await NotificationsRequestRepo.updateRequestTimestamp(userId);
   }
 
   // Pangea#
