@@ -753,15 +753,6 @@ class ChatController extends State<ChatPageWithRoom>
           ],
         ),
       );
-    } else if (orchestrator.isTutorialQueued(TutorialEnum.selectModeButtons)) {
-      // selectModeButtons requires the toolbar to be open. Opening it lets
-      // SelectModeButtonsState pick up the queued tutorial automatically.
-      showToolbar(event, bypassBlockingOverlays: true);
-    } else if (orchestrator.isTutorialQueued(TutorialEnum.writingAssistance)) {
-      // writingAssistance only needs the text input, which is always visible.
-      WidgetsBinding.instance.addPostFrameCallback(
-        (_) => _startWritingAssistanceTutorial(),
-      );
     }
   }
 
@@ -787,6 +778,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _pangeaInit() {
     choreographer = Choreographer(inputFocus);
+    sendController.addListener(onInputBarChanged);
     final updater = Matrix.of(context).analyticsDataService.updateDispatcher;
 
     _bannerController = ChatBannerController();
@@ -1080,6 +1072,7 @@ class ChatController extends State<ChatPageWithRoom>
     typingCoolDown?.cancel();
     typingTimeout?.cancel();
     scrollController.removeListener(_updateScrollController);
+    sendController.removeListener(onInputBarChanged);
     choreographer.dispose();
     activityController.dispose();
     MatrixState.pAnyState.closeAllOverlays(force: true);
@@ -1909,7 +1902,10 @@ class ChatController extends State<ChatPageWithRoom>
 
   void onEmojiSelected(dynamic _, Emoji? emoji) {
     typeEmoji(emoji);
-    onInputBarChanged(sendController.text);
+    // #Pangea
+    // onInputBarChanged(sendController.text);
+    onInputBarChanged();
+    // Pangea#
   }
 
   void typeEmoji(Emoji? emoji) {
@@ -2181,13 +2177,15 @@ class ChatController extends State<ChatPageWithRoom>
   Timer? _storeInputTimeoutTimer;
   static const Duration _storeInputTimeout = Duration(milliseconds: 500);
 
-  void onInputBarChanged(String text) {
-    // #Pangea
+  // #Pangea
+  // void onInputBarChanged(String text) {
+  void onInputBarChanged() {
     // if (_inputTextIsEmpty != text.isEmpty) {
     //   setState(() {
     //     _inputTextIsEmpty = text.isEmpty;
     //   });
     // }
+    final text = sendController.text;
     // Pangea#
     _storeInputTimeoutTimer?.cancel();
     _storeInputTimeoutTimer = Timer(_storeInputTimeout, () async {

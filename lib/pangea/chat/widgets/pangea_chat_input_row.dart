@@ -253,7 +253,9 @@ class PangeaChatInputRow extends StatelessWidget {
                             enabledBorder: InputBorder.none,
                             filled: false,
                           ),
-                          onChanged: controller.onInputBarChanged,
+                          // #Pangea
+                          // onChanged: controller.onInputBarChanged,
+                          // Pangea#
                           choreographer: controller.choreographer,
                           showMatch: (m) => controller.showNextMatch(match: m),
                           onFeedbackSubmitted:
