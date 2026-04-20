@@ -237,5 +237,6 @@ class PangeaController {
     'language_mismatch',
     'phonetic_transcription_storage',
     'phonetic_transcription_v2_storage',
+    'notifications_request_storage',
   ];
 }
