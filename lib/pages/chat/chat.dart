@@ -726,6 +726,12 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void _startReadingAssistanceTutorial(Event event) {
+    if (_router.state.path != ':roomid') {
+      // The user has navigated away from the chat,
+      // so we don't want to show the overlay.
+      return;
+    }
+
     final orchestrator = TutorialOverlayOrchestrator.instance;
     final tutorialSeq = TutorialModel.chatTutorialSequence;
     if (orchestrator.hasCompletedTutorialSequence(tutorialSeq)) return;
