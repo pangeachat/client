@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 12:33:16.924601",
+    "@@last_modified": "2026-04-20 15:04:58.391979",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -12011,6 +12011,11 @@
     },
     "errorTryAgainLater": "Radimo na tome! Molimo vas da pokušate ponovo kasnije.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Pomoć pri pisanju traje malo duže nego što se očekivalo. Pokušajte ponovo za trenutak!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

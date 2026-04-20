@@ -2526,7 +2526,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-04-20 12:32:56.579415",
+    "@@last_modified": "2026-04-20 15:04:31.250083",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11907,6 +11907,11 @@
     },
     "errorTryAgainLater": "Tinutukoy namin ito! Pakisubukan muli mamaya.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Ang tulong sa pagsusulat ay tumatagal ng kaunti pang oras kaysa sa inaasahan. Subukan muli sa isang segundo!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-04-20 12:32:58.755592",
+    "@@last_modified": "2026-04-20 15:04:33.810600",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11228,6 +11228,11 @@
     },
     "errorTryAgainLater": "نحن نبحث في الأمر! يرجى المحاولة مرة أخرى لاحقًا.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "تستغرق المساعدة في الكتابة وقتًا أطول قليلاً مما هو متوقع. حاول مرة أخرى بعد ثوانٍ!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

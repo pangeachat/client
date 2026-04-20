@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 12:33:13.988915",
+    "@@last_modified": "2026-04-20 15:04:55.111215",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -12007,6 +12007,11 @@
     },
     "errorTryAgainLater": "Ni esploras ĝin! Bonvolu provi denove poste.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "La helpo pri skribado daŭras iom pli longe ol atendite. Provu denove en unu sekundo!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 12:33:07.660276",
+    "@@last_modified": "2026-04-20 15:04:46.198723",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -11603,6 +11603,11 @@
     },
     "errorTryAgainLater": "আমরা এটি দেখছি! দয়া করে পরে আবার চেষ্টা করুন।",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "লেখার সহায়তা প্রত্যাশিত সময়ের চেয়ে একটু বেশি সময় নিচ্ছে। এক সেকেন্ড পরে আবার চেষ্টা করুন!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

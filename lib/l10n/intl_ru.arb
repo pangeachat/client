@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-04-20 12:33:14.892307",
+    "@@last_modified": "2026-04-20 15:04:56.231539",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11902,6 +11902,11 @@
     },
     "errorTryAgainLater": "Мы разбираемся с этим! Пожалуйста, попробуйте позже.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Помощь в написании занимает немного больше времени, чем ожидалось. Попробуйте снова через секунду!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

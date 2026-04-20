@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-04-20 12:32:48.078645",
+    "@@last_modified": "2026-04-20 15:04:18.824636",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10888,6 +10888,11 @@
     },
     "errorTryAgainLater": "Ми розглядаємо це! Будь ласка, спробуйте ще раз пізніше.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Допомога у написанні займає трохи більше часу, ніж очікувалося. Спробуйте ще раз через секунду!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

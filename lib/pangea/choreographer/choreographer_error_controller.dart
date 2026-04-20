@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 class ChoreoError {
-  final Object? raw;
+  final Object raw;
 
-  ChoreoError({this.raw});
+  ChoreoError(this.raw);
 
-  String title(BuildContext context) => ErrorCopy(context, error: raw).title;
-
-  String description(BuildContext context) =>
-      ErrorCopy(context, error: raw).body;
+  String toLocalizedString(BuildContext context) =>
+      ErrorCopy(raw).toLocalizedString(context);
 
   IconData get icon => Icons.error_outline;
 }

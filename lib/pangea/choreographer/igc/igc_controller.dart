@@ -324,7 +324,7 @@ class IgcController {
 
     if (res.isError) {
       debugPrint('IgcRepo.get error: ${res.asError}');
-      onError(res.asError!);
+      onError(res.error!);
       clear();
       return false;
     }

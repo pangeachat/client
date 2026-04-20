@@ -75,7 +75,7 @@ class Choreographer extends ChangeNotifier {
 
     igcController = IgcController(
       (e) {
-        errorService.setErrorAndLock(ChoreoError(raw: e));
+        errorService.setErrorAndLock(ChoreoError(e));
         _lastIgcError = DateTime.now();
         _igcErrorBackoff *= 2;
       },
@@ -297,7 +297,7 @@ class Choreographer extends ChangeNotifier {
   void clearMatches(Object error) {
     MatrixState.pAnyState.closeAllOverlays();
     igcController.clearMatches();
-    errorService.setError(ChoreoError(raw: error));
+    errorService.setError(ChoreoError(error));
   }
 
   void _onUpdateMatch(PangeaMatchState match) {

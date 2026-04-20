@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-04-20 12:32:59.746230",
+    "@@last_modified": "2026-04-20 15:04:35.140926",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11219,6 +11219,11 @@
     },
     "errorTryAgainLater": "Bunu inceliyoruz! Lütfen daha sonra tekrar deneyin.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Yazma yardımı beklenenden biraz daha uzun sürüyor. Bir saniye içinde tekrar deneyin!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

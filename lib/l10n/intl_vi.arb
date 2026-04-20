@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 12:33:02.408729",
+    "@@last_modified": "2026-04-20 15:04:39.540531",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6903,6 +6903,11 @@
     },
     "errorTryAgainLater": "Chúng tôi đang xem xét vấn đề này! Vui lòng thử lại sau.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Việc hỗ trợ viết đang mất nhiều thời gian hơn mong đợi. Hãy thử lại trong giây lát!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

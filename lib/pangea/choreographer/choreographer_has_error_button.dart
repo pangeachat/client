@@ -21,9 +21,7 @@ class ChoreographerHasErrorButton extends StatelessWidget {
           SnackBar(
             duration: const Duration(seconds: 5),
             showCloseIcon: true,
-            content: Text(
-              "${error.title(context)} ${error.description(context)}",
-            ),
+            content: Text(error.toLocalizedString(context)),
           ),
         );
         choreographer.errorService.resetError();

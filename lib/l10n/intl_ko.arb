@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 12:32:25.334166",
+    "@@last_modified": "2026-04-20 15:03:50.194045",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -11105,6 +11105,11 @@
     },
     "errorTryAgainLater": "우리가 확인하고 있습니다! 나중에 다시 시도해 주세요.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "작성 지원이 예상보다 조금 더 걸리고 있습니다. 잠시 후에 다시 시도하세요!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

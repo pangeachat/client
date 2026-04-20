@@ -2367,7 +2367,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-04-20 12:33:16.011599",
+    "@@last_modified": "2026-04-20 15:04:57.363496",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11956,6 +11956,11 @@
     },
     "errorTryAgainLater": "ჩვენ ამას ვამოწმებთ! გთხოვთ, სცადოთ მოგვიანებით.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "წერის დახმარება ცოტა ხნით მეტ დროს მოითხოვს, ვიდრე მოსალოდნელი იყო. სცადეთ კიდევ ერთხელ რამდენიმე წამში!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

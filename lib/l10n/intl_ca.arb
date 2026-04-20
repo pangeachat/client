@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 12:32:51.762111",
+    "@@last_modified": "2026-04-20 15:04:23.441260",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -11039,6 +11039,11 @@
     },
     "errorTryAgainLater": "Estem investigant-ho! Si us plau, torna-ho a provar més tard.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "L'assistència d'escriptura està trigant una mica més del que s'esperava. Torna-ho a intentar en un segon!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

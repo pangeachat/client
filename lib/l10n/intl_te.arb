@@ -1736,7 +1736,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-04-20 12:33:00.607862",
+    "@@last_modified": "2026-04-20 15:04:36.655115",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -12009,6 +12009,11 @@
     },
     "errorTryAgainLater": "మేము దీన్ని పరిశీలిస్తున్నాము! దయచేసి తర్వాత మళ్లీ ప్రయత్నించండి.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "రాయడం సహాయం కొంచెం ఎక్కువ సమయం తీసుకుంటోంది. ఒక నిమిషంలో మళ్లీ ప్రయత్నించండి!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     }

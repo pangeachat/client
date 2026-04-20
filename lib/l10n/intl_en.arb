@@ -5063,5 +5063,6 @@
     "noActivitiesFound": "No activities available for this topic.",
     "cannotIgnoreYourself": "You cannot block yourself",
     "blockUsernameHint": "Block username",
-    "errorTryAgainLater": "We're looking into it! Please try again later."
+    "errorTryAgainLater": "We're looking into it! Please try again later.",
+    "errorTryAgainSoon": "Writing assistance is taking a bit longer than expected. Try again in a second!"
 }
