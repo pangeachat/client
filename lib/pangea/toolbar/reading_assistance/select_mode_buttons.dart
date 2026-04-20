@@ -223,7 +223,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
             targetKey: translateTarget.key,
             onTap: () async {
               await updateMode(SelectMode.translate);
-              await Future.delayed(Duration(milliseconds: 1000));
+              await Future.delayed(Duration(milliseconds: 2500));
             },
           ),
           TutorialStepData(

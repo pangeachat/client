@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_tooltip_widget.dart';
 
 class TutorialStepData {
   final GlobalKey targetKey;
@@ -18,7 +17,7 @@ class TutorialStepData {
 }
 
 class TutorialStepStyle {
-  final Widget tooltip;
+  final String tooltip;
   final Size tooltipSize;
   final double? borderRadius;
   final double? padding;
@@ -66,16 +65,14 @@ sealed class TutorialModel {
 
 class ReadingAssistantTutorialModel extends TutorialModel {
   ReadingAssistantTutorialModel({required List<TutorialStepData> data})
-    : assert(data.length == 1),
+    : assert(data.length == TutorialEnum.readingAssistance.stepCount),
       super(tutorialType: TutorialEnum.readingAssistance, stepsData: data);
 
   @override
   List<TutorialStepStyle> stepStyles(L10n l10n) => [
     TutorialStepStyle(
-      tooltip: TutorialTooltipWidget(
-        text: l10n.readingAssistanceTutorialClickMessage,
-      ),
-      tooltipSize: Size(200, 80),
+      tooltip: l10n.readingAssistanceTutorialClickMessage,
+      tooltipSize: Size(250, 100),
       borderRadius: AppConfig.borderRadius,
     ),
   ];
@@ -83,23 +80,19 @@ class ReadingAssistantTutorialModel extends TutorialModel {
 
 class WritingAssistantTutorialModel extends TutorialModel {
   WritingAssistantTutorialModel({required List<TutorialStepData> data})
-    : assert(data.length == 2),
+    : assert(data.length == TutorialEnum.writingAssistance.stepCount),
       super(tutorialType: TutorialEnum.writingAssistance, stepsData: data);
 
   @override
   List<TutorialStepStyle> stepStyles(L10n l10n) => [
     TutorialStepStyle(
-      tooltip: TutorialTooltipWidget(
-        text: l10n.writingAssistanceTutorialInputBar,
-      ),
-      tooltipSize: Size(300, 100),
+      tooltip: l10n.writingAssistanceTutorialInputBar,
+      tooltipSize: Size(300, 120),
       borderRadius: 24.0,
     ),
     TutorialStepStyle(
-      tooltip: TutorialTooltipWidget(
-        text: l10n.writingAssistanceTutorialIGCButton,
-      ),
-      tooltipSize: Size(300, 100),
+      tooltip: l10n.writingAssistanceTutorialIGCButton,
+      tooltipSize: Size(300, 120),
       borderRadius: 100.0,
       padding: 4.0,
     ),
@@ -108,26 +101,26 @@ class WritingAssistantTutorialModel extends TutorialModel {
 
 class SelectModeButtonsTutorialModel extends TutorialModel {
   SelectModeButtonsTutorialModel({required List<TutorialStepData> data})
-    : assert(data.length == 3),
+    : assert(data.length == TutorialEnum.selectModeButtons.stepCount),
       super(tutorialType: TutorialEnum.selectModeButtons, stepsData: data);
 
   @override
   List<TutorialStepStyle> stepStyles(L10n l10n) => [
     TutorialStepStyle(
-      tooltip: TutorialTooltipWidget(text: l10n.selectModeTutorialTranslate),
-      tooltipSize: Size(200, 80),
+      tooltip: l10n.selectModeTutorialTranslate,
+      tooltipSize: Size(250, 100),
       borderRadius: 100.0,
       padding: 0.0,
     ),
     TutorialStepStyle(
-      tooltip: TutorialTooltipWidget(text: l10n.selectModeTutorialAudio),
-      tooltipSize: Size(200, 80),
+      tooltip: l10n.selectModeTutorialAudio,
+      tooltipSize: Size(250, 100),
       borderRadius: 100.0,
       padding: 0.0,
     ),
     TutorialStepStyle(
-      tooltip: TutorialTooltipWidget(text: l10n.selectModeTutorialExit),
-      tooltipSize: Size(200, 80),
+      tooltip: l10n.selectModeTutorialExit,
+      tooltipSize: Size(250, 100),
       borderRadius: AppConfig.borderRadius,
     ),
   ];
