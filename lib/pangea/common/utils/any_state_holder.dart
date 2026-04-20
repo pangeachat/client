@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
+import 'package:matrix/matrix_api_lite/utils/logs.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -48,13 +49,20 @@ class PangeaAnyState {
     bool canPop = true,
     bool blockOverlay = false,
     bool rootOverlay = false,
+    bool bypassBlockingOverlays = false,
   }) {
-    if (entries.any((e) => e.blockOverlay)) {
+    final blockingOverlays = entries.where((e) => e.blockOverlay).toList();
+    if (blockingOverlays.isNotEmpty && !bypassBlockingOverlays) {
+      Logs().w(
+        "Cannot open overlay, another overlay is blocking the view: "
+        "${blockingOverlays.map((e) => e.key)}",
+      );
       return false;
     }
 
     if (overlayKey != null &&
         entries.any((element) => element.key == overlayKey)) {
+      Logs().w("Overlay with key $overlayKey already open");
       return false;
     }
 

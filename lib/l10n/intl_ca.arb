@@ -11037,6 +11037,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Feu clic a la bombolla de missatge per seleccionar-la",
+    "writingAssistanceTutorialInputBar": "Podeu escriure en qualsevol idioma. No us preocupeu pels errors! Us ajudarem a corregir-los.",
+    "writingAssistanceTutorialIGCButton": "Després d'escriure el vostre missatge, feu clic a aquest botó per començar l'assistència d'escriptura",
+    "selectModeTutorialTranslate": "Feu clic aquí per traduir el missatge",
+    "selectModeTutorialAudio": "Feu clic aquí per escoltar el missatge",
+    "selectModeTutorialExit": "Feu clic al fons per tornar a xatejar",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "Estem investigant-ho! Si us plau, torna-ho a provar més tard.",
     "@errorTryAgainLater": {
         "type": "String",

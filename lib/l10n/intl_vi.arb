@@ -6901,6 +6901,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Nhấp vào bong bóng tin nhắn để chọn nó",
+    "writingAssistanceTutorialInputBar": "Bạn có thể viết bằng bất kỳ ngôn ngữ nào. Đừng lo lắng về lỗi! Chúng tôi sẽ giúp bạn sửa chúng.",
+    "writingAssistanceTutorialIGCButton": "Sau khi viết tin nhắn của bạn, nhấp vào nút này để bắt đầu hỗ trợ viết",
+    "selectModeTutorialTranslate": "Nhấp vào đây để dịch tin nhắn",
+    "selectModeTutorialAudio": "Nhấp vào đây để nghe tin nhắn",
+    "selectModeTutorialExit": "Nhấp vào nền để quay lại trò chuyện",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "Chúng tôi đang xem xét vấn đề này! Vui lòng thử lại sau.",
     "@errorTryAgainLater": {
         "type": "String",

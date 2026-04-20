@@ -10886,6 +10886,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Egin klik mezulari burbuila hautatzeko",
+    "writingAssistanceTutorialInputBar": "Egin dezakezu edozein hizkuntzatan idazteko. Ez kezkatu akatsetaz! Lagunduko dizugu zuzentzen.",
+    "writingAssistanceTutorialIGCButton": "Zure mezua idatzi ondoren, egin klik botoi honetan idazteko laguntza hasteko",
+    "selectModeTutorialTranslate": "Egin klik hemen mezua itzultzeko",
+    "selectModeTutorialAudio": "Egin klik hemen mezua entzuteko",
+    "selectModeTutorialExit": "Egin klik atzeko planoan txatera itzultzeko",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "Hori aztertzen ari gara! Mesedez, saiatu berriro geroago.",
     "@errorTryAgainLater": {
         "type": "String",

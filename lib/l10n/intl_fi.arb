@@ -10935,6 +10935,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Napsauta viestikuplaa valitaksesi sen",
+    "writingAssistanceTutorialInputBar": "Voit kirjoittaa millä tahansa kielellä. Älä huoli virheistä! Autamme sinua korjaamaan ne.",
+    "writingAssistanceTutorialIGCButton": "Kirjoitettuasi viestisi, napsauta tätä painiketta aloittaaksesi kirjoitusavun",
+    "selectModeTutorialTranslate": "Napsauta täällä kääntääksesi viestin",
+    "selectModeTutorialAudio": "Napsauta täällä kuunnellaksesi viestiä",
+    "selectModeTutorialExit": "Napsauta taustaa palataksesi keskusteluun",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "Tutkimme asiaa! Ole hyvä ja yritä myöhemmin uudelleen.",
     "@errorTryAgainLater": {
         "type": "String",

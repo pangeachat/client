@@ -10998,6 +10998,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "روی حباب پیام کلیک کنید تا آن را انتخاب کنید",
+    "writingAssistanceTutorialInputBar": "شما می‌توانید به هر زبانی بنویسید. نگران اشتباهات نباشید! ما به شما در اصلاح آن‌ها کمک خواهیم کرد.",
+    "writingAssistanceTutorialIGCButton": "پس از نوشتن پیام خود، روی این دکمه کلیک کنید تا کمک نوشتن شروع شود",
+    "selectModeTutorialTranslate": "اینجا کلیک کنید تا پیام را ترجمه کنید",
+    "selectModeTutorialAudio": "اینجا کلیک کنید تا پیام را بشنوید",
+    "selectModeTutorialExit": "روی پس‌زمینه کلیک کنید تا به چت برگردید",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "ما در حال بررسی آن هستیم! لطفاً بعداً دوباره تلاش کنید.",
     "@errorTryAgainLater": {
         "type": "String",

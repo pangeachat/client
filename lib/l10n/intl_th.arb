@@ -11605,6 +11605,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "คลิกที่ฟองข้อความเพื่อเลือกมัน",
+    "writingAssistanceTutorialInputBar": "คุณสามารถเขียนได้ในทุกภาษา ไม่ต้องกังวลเกี่ยวกับข้อผิดพลาด! เราจะช่วยคุณแก้ไขมัน",
+    "writingAssistanceTutorialIGCButton": "หลังจากเขียนข้อความของคุณแล้ว คลิกปุ่มนี้เพื่อเริ่มการช่วยเขียน",
+    "selectModeTutorialTranslate": "คลิกที่นี่เพื่อแปลข้อความ",
+    "selectModeTutorialAudio": "คลิกที่นี่เพื่อฟังข้อความ",
+    "selectModeTutorialExit": "คลิกที่พื้นหลังเพื่อกลับไปที่การสนทนา",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "เรากำลังตรวจสอบอยู่! กรุณาลองอีกครั้งในภายหลัง.",
     "@errorTryAgainLater": {
         "type": "String",

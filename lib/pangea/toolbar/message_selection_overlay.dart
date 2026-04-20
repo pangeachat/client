@@ -11,6 +11,7 @@ import 'package:matrix/matrix.dart' hide Result;
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
+import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -74,6 +75,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   late PracticeController practiceController;
   double? screenWidth;
+
+  LayerLinkAndKey get overlayMessageLayerLink => MatrixState.pAnyState
+      .layerLinkAndKey('overlay_message_${widget._event.eventId}');
 
   /////////////////////////////////////
   /// Lifecycle

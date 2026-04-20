@@ -12002,6 +12002,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Kliknite na bublinu správy, aby ste ju vybrali",
+    "writingAssistanceTutorialInputBar": "Môžete písať v akomkoľvek jazyku. Nebojte sa chýb! Pomôžeme vám ich opraviť.",
+    "writingAssistanceTutorialIGCButton": "Po napísaní správy kliknite na toto tlačidlo, aby ste spustili pomoc pri písaní",
+    "selectModeTutorialTranslate": "Kliknite sem na preloženie správy",
+    "selectModeTutorialAudio": "Kliknite sem na vypočutie správy",
+    "selectModeTutorialExit": "Kliknite na pozadie, aby ste sa vrátili k chatovaniu",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "Pracujeme na tom! Prosím, skúste to znova neskôr.",
     "@errorTryAgainLater": {
         "type": "String",

@@ -12004,6 +12004,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Clique na bolha de mensagem para selecioná-la",
+    "writingAssistanceTutorialInputBar": "Você pode escrever em qualquer idioma. Não se preocupe com erros! Nós o ajudaremos a corrigi-los.",
+    "writingAssistanceTutorialIGCButton": "Após escrever sua mensagem, clique neste botão para iniciar a assistência de escrita",
+    "selectModeTutorialTranslate": "Clique aqui para traduzir a mensagem",
+    "selectModeTutorialAudio": "Clique aqui para ouvir a mensagem",
+    "selectModeTutorialExit": "Clique no fundo para voltar a conversar",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "Estamos investigando! Por favor, tente novamente mais tarde.",
     "@errorTryAgainLater": {
         "type": "String",
