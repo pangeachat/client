@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 09:46:46.134240",
+    "@@last_modified": "2026-04-20 12:33:07.660276",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -11628,6 +11628,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "আমরা এটি দেখছি! দয়া করে পরে আবার চেষ্টা করুন।",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

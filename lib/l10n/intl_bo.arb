@@ -3462,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-04-20 09:46:40.025925",
+    "@@last_modified": "2026-04-20 12:33:05.786036",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10585,6 +10585,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Nami se na to! Të lutem, provoni përsëri më vonë.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

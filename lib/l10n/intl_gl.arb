@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-04-20 09:44:32.272708",
+    "@@last_modified": "2026-04-20 12:32:27.788222",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10913,6 +10913,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Estamos a investigalo! Por favor, intenta de novo máis tarde.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

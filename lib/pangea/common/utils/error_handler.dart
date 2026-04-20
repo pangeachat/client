@@ -143,7 +143,7 @@ class ErrorCopy {
           break;
         default:
           title = l10n.oopsSomethingWentWrong;
-          body = l10n.errorPleaseRefresh;
+          body = l10n.errorTryAgainLater;
       }
     } catch (e, s) {
       ErrorHandler.logError(e: s, s: s, data: {});

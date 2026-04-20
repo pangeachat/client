@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-04-20 09:47:10.676213",
+    "@@last_modified": "2026-04-20 12:33:14.892307",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11927,6 +11927,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Мы разбираемся с этим! Пожалуйста, попробуйте позже.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

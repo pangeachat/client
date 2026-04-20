@@ -1675,7 +1675,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-04-20 09:45:29.819739",
+    "@@last_modified": "2026-04-20 12:32:46.340497",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -12044,6 +12044,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "我們正在調查！請稍後再試。",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

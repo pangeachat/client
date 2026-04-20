@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 09:44:50.781980",
+    "@@last_modified": "2026-04-20 12:32:32.670482",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11738,6 +11738,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Ne ocupăm de asta! Te rugăm să încerci din nou mai târziu.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

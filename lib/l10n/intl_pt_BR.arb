@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 09:45:10.895631",
+    "@@last_modified": "2026-04-20 12:32:39.334754",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -10913,6 +10913,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Estamos investigando! Por favor, tente novamente mais tarde.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

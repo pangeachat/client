@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-04-20 09:45:14.370794",
+    "@@last_modified": "2026-04-20 12:32:40.827700",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10913,6 +10913,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Hori aztertzen ari gara! Mesedez, saiatu berriro geroago.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

@@ -3045,7 +3045,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-04-20 09:45:58.356698",
+    "@@last_modified": "2026-04-20 12:32:53.630440",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11989,6 +11989,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Estamos investigando! Por favor, tente novamente mais tarde.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

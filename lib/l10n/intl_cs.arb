@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-04-20 09:45:42.337810",
+    "@@last_modified": "2026-04-20 12:32:49.002402",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -11467,6 +11467,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Zkoumáme to! Prosím, zkuste to znovu později.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

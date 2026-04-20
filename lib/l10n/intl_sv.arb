@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 09:46:55.499322",
+    "@@last_modified": "2026-04-20 12:33:10.745024",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11500,6 +11500,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Vi undersöker det! Vänligen försök igen senare.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

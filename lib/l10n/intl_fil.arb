@@ -2526,7 +2526,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-04-20 09:46:08.344773",
+    "@@last_modified": "2026-04-20 12:32:56.579415",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11932,6 +11932,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Tinutukoy namin ito! Pakisubukan muli mamaya.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

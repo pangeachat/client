@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-04-20 09:46:42.440512",
+    "@@last_modified": "2026-04-20 12:33:06.607160",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10913,6 +10913,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "我们正在调查此事！请稍后再试。",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

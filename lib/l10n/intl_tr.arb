@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-04-20 09:46:18.484620",
+    "@@last_modified": "2026-04-20 12:32:59.746230",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11244,6 +11244,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Bunu inceliyoruz! Lütfen daha sonra tekrar deneyin.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

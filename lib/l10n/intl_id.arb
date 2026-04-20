@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 09:44:47.359619",
+    "@@last_modified": "2026-04-20 12:32:31.687919",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -11010,6 +11010,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Kami sedang menyelidikinya! Silakan coba lagi nanti.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

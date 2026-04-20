@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 09:45:16.976797",
+    "@@last_modified": "2026-04-20 12:32:41.604673",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -12031,6 +12031,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Estamos investigando! Por favor, tente novamente mais tarde.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 09:45:52.013788",
+    "@@last_modified": "2026-04-20 12:32:51.762111",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -11064,6 +11064,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Estem investigant-ho! Si us plau, torna-ho a provar més tard.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

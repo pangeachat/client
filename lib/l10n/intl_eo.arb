@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 09:47:08.365577",
+    "@@last_modified": "2026-04-20 12:33:13.988915",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -12032,6 +12032,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Ni esploras ĝin! Bonvolu provi denove poste.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

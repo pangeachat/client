@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 09:46:01.632800",
+    "@@last_modified": "2026-04-20 12:32:54.688368",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -11043,6 +11043,11 @@
         "placeholders": {}
     },
     "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "我們正在調查中！請稍後再試。",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }
