@@ -730,8 +730,10 @@ class ChatController extends State<ChatPageWithRoom>
     final tutorialSeq = TutorialModel.chatTutorialSequence;
     if (orchestrator.hasCompletedTutorialSequence(tutorialSeq)) return;
 
+    final success = orchestrator.enqueueTutorialSequence(tutorialSeq);
+    if (!success) return;
+
     _tutorialEvent = event;
-    orchestrator.enqueueTutorialSequence(tutorialSeq);
 
     // After filtering to only unseen tutorials, the first queued tutorial may
     // not be readingAssistance (e.g. the user completed the first two stages
