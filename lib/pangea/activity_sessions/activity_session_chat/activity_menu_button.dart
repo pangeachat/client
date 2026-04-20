@@ -69,6 +69,7 @@ class _ActivityMenuButtonState extends State<ActivityMenuButton> {
   void dispose() {
     _messageSubscription?.cancel();
     _rolesSubscription?.cancel();
+    MatrixState.pAnyState.closeOverlay("activity_stats_menu_instruction");
     super.dispose();
   }
 
