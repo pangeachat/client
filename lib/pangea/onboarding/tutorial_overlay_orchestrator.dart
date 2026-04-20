@@ -74,24 +74,25 @@ class TutorialOverlayOrchestrator {
   ) => tutorialSequence.tutorials.where((t) => !t.hasBeenSeen).toList();
 
   /// Adds a single tutorial sequence to the end of the queue.
-  void enqueueTutorialSequence(TutorialSequenceModel tutorialSequence) {
+  bool enqueueTutorialSequence(TutorialSequenceModel tutorialSequence) {
     if (_sequence != null) {
       Logs().w(
         "Trying to enqueue tutorial sequence while previous sequence is still active",
       );
-      return;
+      return false;
     }
 
     final unseenTutorials = unseenTutorialsInSequence(tutorialSequence);
     if (unseenTutorials.isEmpty) {
       Logs().i("All tutorials in sequence have already been seen, skipping");
-      return;
+      return false;
     }
 
     Logs().w("Enqueuing tutorial sequence with tutorials $unseenTutorials");
 
     _sequence = TutorialSequenceModel(tutorials: unseenTutorials);
     _index = 0;
+    return true;
   }
 
   void launchTutorial({
