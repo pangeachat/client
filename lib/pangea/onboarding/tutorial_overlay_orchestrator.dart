@@ -67,11 +67,11 @@ class TutorialOverlayOrchestrator {
   }
 
   bool hasCompletedTutorialSequence(TutorialSequenceModel tutorialSequence) =>
-      unseenTutorialsInSequence(tutorialSequence).isEmpty;
+      enabledTutorialsInSequence(tutorialSequence).isEmpty;
 
-  List<TutorialEnum> unseenTutorialsInSequence(
+  List<TutorialEnum> enabledTutorialsInSequence(
     TutorialSequenceModel tutorialSequence,
-  ) => tutorialSequence.tutorials.where((t) => !t.hasBeenSeen).toList();
+  ) => tutorialSequence.tutorials.where((t) => t.enabled).toList();
 
   /// Adds a single tutorial sequence to the end of the queue.
   bool enqueueTutorialSequence(TutorialSequenceModel tutorialSequence) {
@@ -82,15 +82,15 @@ class TutorialOverlayOrchestrator {
       return false;
     }
 
-    final unseenTutorials = unseenTutorialsInSequence(tutorialSequence);
-    if (unseenTutorials.isEmpty) {
-      Logs().i("All tutorials in sequence have already been seen, skipping");
+    final enabledTutorials = enabledTutorialsInSequence(tutorialSequence);
+    if (enabledTutorials.isEmpty) {
+      Logs().i("All tutorials in sequence are disabled, skipping");
       return false;
     }
 
-    Logs().w("Enqueuing tutorial sequence with tutorials $unseenTutorials");
+    Logs().w("Enqueuing tutorial sequence with tutorials $enabledTutorials");
 
-    _sequence = TutorialSequenceModel(tutorials: unseenTutorials);
+    _sequence = TutorialSequenceModel(tutorials: enabledTutorials);
     _index = 0;
     return true;
   }
