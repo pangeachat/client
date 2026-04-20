@@ -775,10 +775,6 @@ class ChatController extends State<ChatPageWithRoom>
           TutorialStepData(
             targetLink: inputTarget.link,
             targetKey: inputTarget.key,
-          ),
-          TutorialStepData(
-            targetLink: igcButtonLink.link,
-            targetKey: igcButtonLink.key,
             onTap: () async => inputFocus.requestFocus(),
           ),
         ],

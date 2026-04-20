@@ -245,6 +245,8 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     final totalSteps =
         TutorialOverlayOrchestrator.instance.totalStepsInCurrentSequence;
 
+    final showNavigation = widget.tutorial.tutorialType.showNavigationButtons;
+
     return MouseRegion(
       cursor: step != null && _visible
           ? SystemMouseCursors.click
@@ -321,14 +323,17 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
                   padding: _tooltipPadding,
                   onNext: _executeStepCallback,
                   onPrevious: _previous,
+                  showNext: showNavigation,
                   showPrevious:
-                      _currentStepIndex > 0 ||
-                      TutorialOverlayOrchestrator.instance.hasPreviousTutorial(
-                        widget.tutorial.tutorialType,
-                      ),
+                      showNavigation &&
+                      (_currentStepIndex > 0 ||
+                          TutorialOverlayOrchestrator.instance
+                              .hasPreviousTutorial(
+                                widget.tutorial.tutorialType,
+                              )),
                   currentStep: currentStep,
                   totalSteps: totalSteps,
-                  child: step.style.tooltip,
+                  text: step.style.tooltip,
                 ),
               ),
           ],

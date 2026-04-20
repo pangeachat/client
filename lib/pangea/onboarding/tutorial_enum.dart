@@ -1,12 +1,17 @@
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 
 enum TutorialEnum {
-  readingAssistance(stepCount: 1),
-  writingAssistance(stepCount: 2),
-  selectModeButtons(stepCount: 3);
+  readingAssistance(stepCount: 1, showNavigationButtons: false),
+  writingAssistance(stepCount: 1, showNavigationButtons: false),
+  selectModeButtons(stepCount: 3, showNavigationButtons: false);
 
-  const TutorialEnum({required this.stepCount});
   final int stepCount;
+  final bool showNavigationButtons;
+
+  const TutorialEnum({
+    required this.stepCount,
+    this.showNavigationButtons = true,
+  });
 }
 
 extension TutorialEnumExtension on TutorialEnum {
