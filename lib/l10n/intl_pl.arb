@@ -10995,6 +10995,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Kliknij na dymek wiadomości, aby go wybrać",
+    "writingAssistanceTutorialInputBar": "Możesz pisać w dowolnym języku. Nie martw się o błędy! Pomożemy Ci je poprawić.",
+    "writingAssistanceTutorialIGCButton": "Po napisaniu wiadomości kliknij ten przycisk, aby rozpocząć pomoc w pisaniu",
+    "selectModeTutorialTranslate": "Kliknij tutaj, aby przetłumaczyć wiadomość",
+    "selectModeTutorialAudio": "Kliknij tutaj, aby posłuchać wiadomości",
+    "selectModeTutorialExit": "Kliknij w tle, aby wrócić do czatu",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "Pracujemy nad tym! Proszę spróbować ponownie później.",
     "@errorTryAgainLater": {
         "type": "String",

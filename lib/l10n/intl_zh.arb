@@ -10886,6 +10886,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "点击消息气泡以选择它",
+    "writingAssistanceTutorialInputBar": "您可以使用任何语言进行书写。不要担心错误！我们会帮助您纠正它们。",
+    "writingAssistanceTutorialIGCButton": "写完您的消息后，点击此按钮以开始写作辅助",
+    "selectModeTutorialTranslate": "点击这里翻译消息",
+    "selectModeTutorialAudio": "点击这里收听消息",
+    "selectModeTutorialExit": "点击背景以返回聊天",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "我们正在调查此事！请稍后再试。",
     "@errorTryAgainLater": {
         "type": "String",

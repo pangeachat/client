@@ -11226,6 +11226,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "انقر على فقاعة الرسالة لتحديدها",
+    "writingAssistanceTutorialInputBar": "يمكنك الكتابة بأي لغة. لا تقلق بشأن الأخطاء! سنساعدك في تصحيحها.",
+    "writingAssistanceTutorialIGCButton": "بعد كتابة رسالتك، انقر على هذا الزر لبدء المساعدة في الكتابة",
+    "selectModeTutorialTranslate": "انقر هنا لترجمة الرسالة",
+    "selectModeTutorialAudio": "انقر هنا للاستماع إلى الرسالة",
+    "selectModeTutorialExit": "انقر على الخلفية للعودة إلى الدردشة",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "نحن نبحث في الأمر! يرجى المحاولة مرة أخرى لاحقًا.",
     "@errorTryAgainLater": {
         "type": "String",

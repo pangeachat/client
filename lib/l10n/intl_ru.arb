@@ -11900,6 +11900,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Нажмите на пузырь сообщения, чтобы выбрать его",
+    "writingAssistanceTutorialInputBar": "Вы можете писать на любом языке. Не беспокойтесь о ошибках! Мы поможем вам их исправить.",
+    "writingAssistanceTutorialIGCButton": "После написания вашего сообщения нажмите эту кнопку, чтобы начать помощь в написании",
+    "selectModeTutorialTranslate": "Нажмите здесь, чтобы перевести сообщение",
+    "selectModeTutorialAudio": "Нажмите здесь, чтобы прослушать сообщение",
+    "selectModeTutorialExit": "Нажмите на фон, чтобы вернуться к чату",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "Мы разбираемся с этим! Пожалуйста, попробуйте позже.",
     "@errorTryAgainLater": {
         "type": "String",

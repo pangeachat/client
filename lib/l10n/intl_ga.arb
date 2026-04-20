@@ -10897,6 +10897,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Cliceáil ar an mbabhta teachtaireachta chun é a roghnú",
+    "writingAssistanceTutorialInputBar": "Is féidir leat scríobh i dteanga ar bith. Ná bíodh imní ort faoi earráidí! Cuirfimid cabhair ort chun iad a cheartú.",
+    "writingAssistanceTutorialIGCButton": "Tar éis duit do theachtaireacht a scríobh, cliceáil ar an gcnaipe seo chun tús a chur le cabhair scríbhneoireachta",
+    "selectModeTutorialTranslate": "Cliceáil anseo chun an teachtaireacht a aistriú",
+    "selectModeTutorialAudio": "Cliceáil anseo chun an teachtaireacht a éisteacht",
+    "selectModeTutorialExit": "Cliceáil ar an gcúlra chun dul ar ais chuig an gcomhrá",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "Táimid ag breathnú air! Le do thoil, déan iarracht arís níos déanaí.",
     "@errorTryAgainLater": {
         "type": "String",

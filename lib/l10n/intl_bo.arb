@@ -10558,6 +10558,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Klik di gelembung pesan untuk memilihnya",
+    "writingAssistanceTutorialInputBar": "Anda dapat menulis dalam bahasa apa pun. Jangan khawatir tentang kesalahan! Kami akan membantu Anda memperbaikinya.",
+    "writingAssistanceTutorialIGCButton": "Setelah menulis pesan Anda, klik tombol ini untuk memulai bantuan penulisan",
+    "selectModeTutorialTranslate": "Klik di sini untuk menerjemahkan pesan",
+    "selectModeTutorialAudio": "Klik di sini untuk mendengarkan pesan",
+    "selectModeTutorialExit": "Klik latar belakang untuk kembali ke obrolan",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "Nami se na to! Të lutem, provoni përsëri më vonë.",
     "@errorTryAgainLater": {
         "type": "String",

@@ -30,6 +30,9 @@ enum InstructionsEnum {
   shimmerTranslation,
   showedActivityMenu,
   courseDescription,
+  readingAssistanceTutorial,
+  writingAssistanceTutorial,
+  selectModeButtonsTutorial,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -59,6 +62,9 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.shimmerTranslation:
       case InstructionsEnum.showedActivityMenu:
       case InstructionsEnum.courseDescription:
+      case InstructionsEnum.readingAssistanceTutorial:
+      case InstructionsEnum.writingAssistanceTutorial:
+      case InstructionsEnum.selectModeButtonsTutorial:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
           m: 'InstructionsEnumExtension.title',
@@ -108,6 +114,9 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.shimmerNewToken:
       case InstructionsEnum.shimmerTranslation:
       case InstructionsEnum.showedActivityMenu:
+      case InstructionsEnum.readingAssistanceTutorial:
+      case InstructionsEnum.writingAssistanceTutorial:
+      case InstructionsEnum.selectModeButtonsTutorial:
         return "";
       case InstructionsEnum.disableLanguageTools:
         return l10n.disableLanguageToolsDesc;

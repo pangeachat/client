@@ -11772,6 +11772,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Paspauskite ant pranešimo burbulo, kad jį pasirinktumėte",
+    "writingAssistanceTutorialInputBar": "Galite rašyti bet kuria kalba. Nesijaudinkite dėl klaidų! Mes jums padėsime jas ištaisyti.",
+    "writingAssistanceTutorialIGCButton": "Parašę savo pranešimą, paspauskite šį mygtuką, kad pradėtumėte rašymo pagalbą",
+    "selectModeTutorialTranslate": "Paspauskite čia, kad išverstumėte pranešimą",
+    "selectModeTutorialAudio": "Paspauskite čia, kad išgirstumėte pranešimą",
+    "selectModeTutorialExit": "Paspauskite fono sritį, kad grįžtumėte prie pokalbio",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "Mes tuo rūpinamės! Prašome bandyti vėliau.",
     "@errorTryAgainLater": {
         "type": "String",

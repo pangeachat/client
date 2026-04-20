@@ -11954,6 +11954,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "დააჭირეთ შეტყობინების ბუშტს, რომ აირჩიოთ იგი",
+    "writingAssistanceTutorialInputBar": "თქვენ შეგიძლიათ დაწეროთ ნებისმიერ ენაზე. ნუ ინერვიულებთ შეცდომებზე! ჩვენ დაგეხმარებით მათი გამოსწორებაში.",
+    "writingAssistanceTutorialIGCButton": "შეტყობინების დაწერის შემდეგ, დააჭირეთ ამ ღილაკს, რომ დაიწყოთ წერის დახმარება",
+    "selectModeTutorialTranslate": "დააჭირეთ აქ, რომ თარგმნოთ შეტყობინება",
+    "selectModeTutorialAudio": "დააჭირეთ აქ, რომ მოისმინოთ შეტყობინება",
+    "selectModeTutorialExit": "დააჭირეთ ფონზე, რომ დაბრუნდეთ ჩატში",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "ჩვენ ამას ვამოწმებთ! გთხოვთ, სცადოთ მოგვიანებით.",
     "@errorTryAgainLater": {
         "type": "String",

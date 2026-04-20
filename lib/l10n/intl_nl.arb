@@ -10886,6 +10886,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Klik op de berichtbubble om deze te selecteren",
+    "writingAssistanceTutorialInputBar": "Je kunt in elke taal schrijven. Maak je geen zorgen over fouten! We helpen je ze te corrigeren.",
+    "writingAssistanceTutorialIGCButton": "Klik op deze knop om na het schrijven van je bericht met de schrijfassistentie te beginnen",
+    "selectModeTutorialTranslate": "Klik hier om het bericht te vertalen",
+    "selectModeTutorialAudio": "Klik hier om naar het bericht te luisteren",
+    "selectModeTutorialExit": "Klik op de achtergrond om terug te gaan naar het chatten",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "We onderzoeken het! Probeer het later nog eens.",
     "@errorTryAgainLater": {
         "type": "String",

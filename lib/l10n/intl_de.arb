@@ -10865,6 +10865,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Klicken Sie auf die Nachrichtenblase, um sie auszuwählen",
+    "writingAssistanceTutorialInputBar": "Sie können in jeder Sprache schreiben. Machen Sie sich keine Sorgen über Fehler! Wir helfen Ihnen, sie zu korrigieren.",
+    "writingAssistanceTutorialIGCButton": "Nachdem Sie Ihre Nachricht geschrieben haben, klicken Sie auf diese Schaltfläche, um die Schreibassistenz zu starten",
+    "selectModeTutorialTranslate": "Klicken Sie hier, um die Nachricht zu übersetzen",
+    "selectModeTutorialAudio": "Klicken Sie hier, um die Nachricht anzuhören",
+    "selectModeTutorialExit": "Klicken Sie auf den Hintergrund, um zum Chat zurückzukehren",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "Wir kümmern uns darum! Bitte versuchen Sie es später noch einmal.",
     "@errorTryAgainLater": {
         "type": "String",

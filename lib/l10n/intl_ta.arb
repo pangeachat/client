@@ -11002,6 +11002,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "செய்தி புளூபிள் மீது கிளிக் செய்து அதை தேர்ந்தெடுக்கவும்",
+    "writingAssistanceTutorialInputBar": "நீங்கள் எந்த மொழியிலும் எழுதலாம். தவறுகள் குறித்து கவலைப்பட வேண்டாம்! அவற்றை சரிசெய்ய நாங்கள் உங்களுக்கு உதவுவோம்.",
+    "writingAssistanceTutorialIGCButton": "உங்கள் செய்தியை எழுதிய பிறகு, எழுதும் உதவியை தொடங்க இந்த பொத்தானை கிளிக் செய்யவும்",
+    "selectModeTutorialTranslate": "செய்தியை மொழிபெயர்க்க இங்கே கிளிக் செய்யவும்",
+    "selectModeTutorialAudio": "செய்தியை கேட்க இங்கே கிளிக் செய்யவும்",
+    "selectModeTutorialExit": "மீண்டும் உரையாடலுக்கு செல்ல பின்னணி மீது கிளிக் செய்யவும்",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "நாங்கள் இதைப் பற்றி ஆராய்ந்து கொண்டிருக்கிறோம்! தயவுசெய்து பிறகு மீண்டும் முயற்சிக்கவும்.",
     "@errorTryAgainLater": {
         "type": "String",

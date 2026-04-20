@@ -11605,6 +11605,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "संदेश बबल पर क्लिक करें ताकि आप इसे चुन सकें",
+    "writingAssistanceTutorialInputBar": "आप किसी भी भाषा में लिख सकते हैं। गलतियों की चिंता न करें! हम आपकी मदद करेंगे उन्हें सुधारने में।",
+    "writingAssistanceTutorialIGCButton": "अपने संदेश को लिखने के बाद, लेखन सहायता शुरू करने के लिए इस बटन पर क्लिक करें",
+    "selectModeTutorialTranslate": "संदेश का अनुवाद करने के लिए यहां क्लिक करें",
+    "selectModeTutorialAudio": "संदेश सुनने के लिए यहां क्लिक करें",
+    "selectModeTutorialExit": "चैटिंग पर वापस जाने के लिए पृष्ठभूमि पर क्लिक करें",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "हम इसे देख रहे हैं! कृपया बाद में फिर से प्रयास करें।",
     "@errorTryAgainLater": {
         "type": "String",

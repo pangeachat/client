@@ -10886,6 +10886,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Натисніть на повідомлення, щоб вибрати його",
+    "writingAssistanceTutorialInputBar": "Ви можете писати будь-якою мовою. Не хвилюйтеся про помилки! Ми допоможемо вам їх виправити.",
+    "writingAssistanceTutorialIGCButton": "Після написання вашого повідомлення натисніть цю кнопку, щоб почати допомогу в написанні",
+    "selectModeTutorialTranslate": "Натисніть тут, щоб перекласти повідомлення",
+    "selectModeTutorialAudio": "Натисніть тут, щоб прослухати повідомлення",
+    "selectModeTutorialExit": "Натисніть на фон, щоб повернутися до чату",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "Ми розглядаємо це! Будь ласка, спробуйте ще раз пізніше.",
     "@errorTryAgainLater": {
         "type": "String",

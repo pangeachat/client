@@ -10886,6 +10886,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Noklikšķiniet uz ziņojuma burbuļa, lai to izvēlētos",
+    "writingAssistanceTutorialInputBar": "Jūs varat rakstīt jebkurā valodā. Neuztraucieties par kļūdām! Mēs jums palīdzēsim tās labot.",
+    "writingAssistanceTutorialIGCButton": "Pēc ziņojuma uzrakstīšanas noklikšķiniet uz šīs pogas, lai sāktu rakstīšanas palīdzību",
+    "selectModeTutorialTranslate": "Noklikšķiniet šeit, lai tulkotu ziņojumu",
+    "selectModeTutorialAudio": "Noklikšķiniet šeit, lai klausītos ziņojumu",
+    "selectModeTutorialExit": "Noklikšķiniet uz fona, lai atgrieztos sarunā",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "Mēs to izpētām! Lūdzu, mēģiniet vēlreiz vēlāk.",
     "@errorTryAgainLater": {
         "type": "String",

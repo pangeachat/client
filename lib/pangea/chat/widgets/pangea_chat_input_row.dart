@@ -276,12 +276,15 @@ class PangeaChatInputRow extends StatelessWidget {
                         ),
                       ),
                     ),
-                    StartIGCButton(
-                      key: ValueKey("start_igc_button_${controller.room.id}"),
-                      onPressed: controller.onManualWritingAssistance,
-                      choreographer: controller.choreographer,
-                      initialState: state,
-                      initialForegroundColor: state.stateColor(context),
+                    CompositedTransformTarget(
+                      link: controller.igcButtonLink.link,
+                      child: StartIGCButton(
+                        key: controller.igcButtonLink.key,
+                        onPressed: controller.onManualWritingAssistance,
+                        choreographer: controller.choreographer,
+                        initialState: state,
+                        initialForegroundColor: state.stateColor(context),
+                      ),
                     ),
                     ValueListenableBuilder(
                       valueListenable: controller.sendController,

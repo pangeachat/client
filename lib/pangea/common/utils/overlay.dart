@@ -47,6 +47,7 @@ class OverlayUtil {
     bool ignorePointer = false,
     bool canPop = true,
     bool rootOverlay = false,
+    bool bypassBlockingOverlays = false,
   }) {
     try {
       if (position == OverlayPositionEnum.transform) {
@@ -112,6 +113,7 @@ class OverlayUtil {
         overlayKey: overlayKey,
         canPop: canPop,
         rootOverlay: rootOverlay,
+        bypassBlockingOverlays: bypassBlockingOverlays,
       );
     } catch (err, stack) {
       debugger(when: kDebugMode);
@@ -248,14 +250,14 @@ class OverlayUtil {
     );
   }
 
-  static void showTutorialOverlay(
+  static void showAnchoredOverlay(
     BuildContext context, {
-    required Widget overlayContent,
     required String overlayKey,
     required Rect anchorRect,
+    required Widget overlayContent,
     double? borderRadius,
     double? padding,
-    final VoidCallback? onClick,
+    VoidCallback? onClick,
   }) {
     // force close all overlays to prevent showing
     // constuct / level up notification on top of tutorial
@@ -264,8 +266,8 @@ class OverlayUtil {
       builder: (context) {
         return AnchoredOverlayWidget(
           anchorRect: anchorRect,
-          borderRadius: borderRadius,
-          padding: padding,
+          borderRadius: borderRadius ?? 0.0,
+          padding: padding ?? 6.0,
           onClick: onClick,
           overlayKey: overlayKey,
           child: overlayContent,

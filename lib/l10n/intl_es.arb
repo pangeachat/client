@@ -7912,6 +7912,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Haz clic en la burbuja de mensaje para seleccionarla",
+    "writingAssistanceTutorialInputBar": "Puedes escribir en cualquier idioma. ¡No te preocupes por los errores! Te ayudaremos a corregirlos.",
+    "writingAssistanceTutorialIGCButton": "Después de escribir tu mensaje, haz clic en este botón para comenzar la asistencia de escritura",
+    "selectModeTutorialTranslate": "Haz clic aquí para traducir el mensaje",
+    "selectModeTutorialAudio": "Haz clic aquí para escuchar el mensaje",
+    "selectModeTutorialExit": "Haz clic en el fondo para volver a chatear",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "¡Estamos investigando! Por favor, inténtalo de nuevo más tarde.",
     "@errorTryAgainLater": {
         "type": "String",

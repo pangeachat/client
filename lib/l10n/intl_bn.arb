@@ -11601,6 +11601,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "বার্তাটি নির্বাচন করতে বার্তা বুদবুদে ক্লিক করুন",
+    "writingAssistanceTutorialInputBar": "আপনি যেকোনো ভাষায় লিখতে পারেন। ভুল নিয়ে চিন্তা করবেন না! আমরা আপনাকে সেগুলি সংশোধন করতে সাহায্য করব।",
+    "writingAssistanceTutorialIGCButton": "আপনার বার্তা লেখার পর, লেখার সহায়তা শুরু করতে এই বোতামে ক্লিক করুন",
+    "selectModeTutorialTranslate": "বার্তাটি অনুবাদ করতে এখানে ক্লিক করুন",
+    "selectModeTutorialAudio": "বার্তাটি শোনার জন্য এখানে ক্লিক করুন",
+    "selectModeTutorialExit": "চ্যাটিংয়ে ফিরে যেতে পটভূমিতে ক্লিক করুন",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "আমরা এটি দেখছি! দয়া করে পরে আবার চেষ্টা করুন।",
     "@errorTryAgainLater": {
         "type": "String",

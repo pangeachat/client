@@ -10890,6 +10890,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Xabar pufakchasini tanlash uchun bosing",
+    "writingAssistanceTutorialInputBar": "Siz har qanday tilni yozishingiz mumkin. Xatolar haqida xavotir olmang! Biz sizga ularni to'g'rilashda yordam beramiz.",
+    "writingAssistanceTutorialIGCButton": "Xabaringizni yozgandan so'ng, yozish yordamiga kirish uchun ushbu tugmani bosing",
+    "selectModeTutorialTranslate": "Xabarni tarjima qilish uchun bu yerga bosing",
+    "selectModeTutorialAudio": "Xabarni tinglash uchun bu yerga bosing",
+    "selectModeTutorialExit": "Suhbatga qaytish uchun fonni bosing",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "Biz buni o'rganmoqdamiz! Iltimos, keyinroq qayta urinib ko'ring.",
     "@errorTryAgainLater": {
         "type": "String",

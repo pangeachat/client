@@ -11440,6 +11440,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Klikněte na bublinu zprávy, abyste ji vybrali",
+    "writingAssistanceTutorialInputBar": "Můžete psát v jakémkoli jazyce. Nebojte se chyb! Pomůžeme vám je opravit.",
+    "writingAssistanceTutorialIGCButton": "Po napsání zprávy klikněte na toto tlačítko pro zahájení asistence při psaní",
+    "selectModeTutorialTranslate": "Klikněte sem pro překlad zprávy",
+    "selectModeTutorialAudio": "Klikněte sem pro poslech zprávy",
+    "selectModeTutorialExit": "Klikněte na pozadí, abyste se vrátili k chatování",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "Zkoumáme to! Prosím, zkuste to znovu později.",
     "@errorTryAgainLater": {
         "type": "String",

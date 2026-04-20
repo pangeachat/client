@@ -50,6 +50,7 @@ import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/choreographer/writing_assistance_room_extension.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
+import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
@@ -70,6 +71,9 @@ import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart';
 import 'package:fluffychat/pangea/learning_settings/p_language_dialog.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_repo.dart';
@@ -202,6 +206,13 @@ class ChatController extends State<ChatPageWithRoom>
   StreamSubscription? _tokensSubscription;
 
   StreamSubscription? _botAudioSubscription;
+  StreamSubscription? _readingAssistanceTutorialSubscription;
+  StreamSubscription? _writingAssistanceTutorialSubscription;
+  StreamSubscription? _goBackTutorialSubscription;
+
+  /// The event used to start the reading-assistance tutorial. Stored so the
+  /// tutorial can be re-opened when the user navigates back through the sequence.
+  Event? _tutorialEvent;
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
   late final ActivityChatController activityController;
   late final ChatBannerController _bannerController;
@@ -620,6 +631,158 @@ class ChatController extends State<ChatPageWithRoom>
     matrix.audioPlayer!.play();
   }
 
+  Future<void> _readingAssistanceTutorialListener(SyncUpdate update) async {
+    final timeline = this.timeline;
+    final l2 =
+        MatrixState.pangeaController.userController.userL2?.langCodeShort;
+
+    if (timeline == null || l2 == null) return;
+    if (update.rooms?.join?[roomId]?.timeline?.events == null) return;
+    final events = update.rooms!.join![roomId]!.timeline!.events!;
+    for (final e in events) {
+      final event = Event.fromMatrixEvent(e, room);
+      if (event.type != EventTypes.Message) continue;
+      // TODO accept audio messages ?
+      if (event.messageType != MessageTypes.Text) continue;
+      if (event.redacted || !event.status.isSynced) continue;
+
+      final pangeaMessageEvent = PangeaMessageEvent(
+        event: event,
+        timeline: timeline,
+        ownMessage: event.senderId == Matrix.of(context).client.userID,
+      );
+
+      final msgLang = pangeaMessageEvent.originalSent?.langCode
+          .split('-')
+          .first;
+
+      if (msgLang != l2) continue;
+
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) => _startReadingAssistanceTutorial(event),
+      );
+      break;
+    }
+  }
+
+  void _writingAssistanceTutorialListener(TutorialEnum tutorial) {
+    if (tutorial != TutorialEnum.selectModeButtons) return;
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _startWritingAssistanceTutorial(),
+    );
+  }
+
+  /// Called when the user navigates back across a tutorial-model boundary.
+  /// Re-prepares the required UI state and re-opens the appropriate tutorial
+  /// at its last step.
+  Future<void> _goBackTutorialListener(TutorialEnum tutorial) async {
+    if (!mounted) return;
+    switch (tutorial) {
+      case TutorialEnum.readingAssistance:
+        final event = _tutorialEvent;
+        if (event == null) return;
+        // Hide the toolbar (if open) before re-showing the reading-assistance
+        // tutorial which points at the message bubble itself.
+        clearSelectedEvents();
+        await Future.delayed(FluffyThemes.animationDuration);
+        if (!mounted) return;
+        _relaunchReadingAssistanceTutorial(event);
+        return;
+      case TutorialEnum.selectModeButtons:
+        final event = _tutorialEvent;
+        if (event == null) return;
+        // Re-open the toolbar so SelectModeButtons mounts and picks up the
+        // queued tutorial. The orchestrator's _pendingInitialStepIndex ensures
+        // it launches at the last step automatically.
+        showToolbar(event, bypassBlockingOverlays: true);
+        return;
+      case TutorialEnum.writingAssistance:
+        // The writing-assistance tutorial starts from the text input which is
+        // always visible, so no extra state preparation is needed.
+        WidgetsBinding.instance.addPostFrameCallback(
+          (_) => _startWritingAssistanceTutorial(
+            initialStepIndex: TutorialEnum.writingAssistance.stepCount - 1,
+          ),
+        );
+        return;
+    }
+  }
+
+  void _relaunchReadingAssistanceTutorial(Event event) {
+    final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
+    TutorialOverlayOrchestrator.instance.launchTutorial(
+      context: context,
+      tutorial: ReadingAssistantTutorialModel(
+        data: [
+          TutorialStepData(
+            targetLink: target.link,
+            targetKey: target.key,
+            onTap: () async => showToolbar(event, bypassBlockingOverlays: true),
+          ),
+        ],
+      ),
+      initialStepIndex: TutorialEnum.readingAssistance.stepCount - 1,
+    );
+  }
+
+  void _startReadingAssistanceTutorial(Event event) {
+    final orchestrator = TutorialOverlayOrchestrator.instance;
+    final tutorialSeq = TutorialModel.chatTutorialSequence;
+    if (orchestrator.hasCompletedTutorialSequence(tutorialSeq)) return;
+
+    _tutorialEvent = event;
+    orchestrator.enqueueTutorialSequence(tutorialSeq);
+
+    // After filtering to only unseen tutorials, the first queued tutorial may
+    // not be readingAssistance (e.g. the user completed the first two stages
+    // in a previous session). Dispatch to the correct launch path.
+    if (orchestrator.isTutorialQueued(TutorialEnum.readingAssistance)) {
+      final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
+      orchestrator.launchTutorial(
+        context: context,
+        tutorial: ReadingAssistantTutorialModel(
+          data: [
+            TutorialStepData(
+              targetLink: target.link,
+              targetKey: target.key,
+              onTap: () async =>
+                  showToolbar(event, bypassBlockingOverlays: true),
+            ),
+          ],
+        ),
+      );
+    } else if (orchestrator.isTutorialQueued(TutorialEnum.selectModeButtons)) {
+      // selectModeButtons requires the toolbar to be open. Opening it lets
+      // SelectModeButtonsState pick up the queued tutorial automatically.
+      showToolbar(event, bypassBlockingOverlays: true);
+    } else if (orchestrator.isTutorialQueued(TutorialEnum.writingAssistance)) {
+      // writingAssistance only needs the text input, which is always visible.
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) => _startWritingAssistanceTutorial(),
+      );
+    }
+  }
+
+  void _startWritingAssistanceTutorial({int initialStepIndex = 0}) {
+    final inputTarget = MatrixState.pAnyState.layerLinkAndKey(
+      ChoreoConstants.inputTransformTargetKey,
+    );
+
+    TutorialOverlayOrchestrator.instance.launchTutorial(
+      context: context,
+      tutorial: WritingAssistantTutorialModel(
+        data: [
+          TutorialStepData(
+            targetLink: inputTarget.link,
+            targetKey: inputTarget.key,
+            onTap: () async => inputFocus.requestFocus(),
+          ),
+        ],
+      ),
+      initialStepIndex: initialStepIndex,
+    );
+  }
+
   void _pangeaInit() {
     choreographer = Choreographer(inputFocus);
     final updater = Matrix.of(context).analyticsDataService.updateDispatcher;
@@ -635,6 +798,20 @@ class ChatController extends State<ChatPageWithRoom>
     );
 
     _botAudioSubscription = room.client.onSync.stream.listen(_botAudioListener);
+
+    _readingAssistanceTutorialSubscription = room.client.onSync.stream.listen(
+      _readingAssistanceTutorialListener,
+    );
+
+    _writingAssistanceTutorialSubscription = TutorialOverlayOrchestrator
+        .instance
+        .tutorialNavigationStream
+        .listen(_writingAssistanceTutorialListener);
+
+    _goBackTutorialSubscription = TutorialOverlayOrchestrator
+        .instance
+        .goBackTutorialStream
+        .listen(_goBackTutorialListener);
 
     activityController = ActivityChatController(
       userID: Matrix.of(context).client.userID!,
@@ -909,6 +1086,9 @@ class ChatController extends State<ChatPageWithRoom>
     _constructsSubscription?.cancel();
     _botAudioSubscription?.cancel();
     _tokensSubscription?.cancel();
+    _readingAssistanceTutorialSubscription?.cancel();
+    _writingAssistanceTutorialSubscription?.cancel();
+    _goBackTutorialSubscription?.cancel();
     _bannerController.dispose();
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     scrollController.dispose();
@@ -2124,9 +2304,12 @@ class ChatController extends State<ChatPageWithRoom>
     // Pangea#
   });
   // #Pangea
+  LayerLinkAndKey get igcButtonLink =>
+      MatrixState.pAnyState.layerLinkAndKey("start_igc_button_${room.id}");
+
   ValueNotifier<bool> depressMessageButton = ValueNotifier(false);
 
-  String? get buttonEventID => timeline!.events
+  String? get buttonEventID => timeline?.events
       .firstWhereOrNull(
         (event) =>
             event.isVisibleInGui &&
@@ -2163,6 +2346,7 @@ class ChatController extends State<ChatPageWithRoom>
     MessagePracticeMode? mode,
     Event? nextEvent,
     Event? prevEvent,
+    bool bypassBlockingOverlays = false,
   }) async {
     if (event.redacted ||
         event.text == '' ||
@@ -2230,6 +2414,7 @@ class ChatController extends State<ChatPageWithRoom>
         ),
         position: OverlayPositionEnum.centered,
         overlayKey: "button_message_backdrop",
+        bypassBlockingOverlays: bypassBlockingOverlays,
       );
 
       await Future.delayed(delay);
@@ -2247,6 +2432,7 @@ class ChatController extends State<ChatPageWithRoom>
         blurBackground: true,
         backgroundColor: Colors.black,
         overlayKey: "message_toolbar_overlay",
+        bypassBlockingOverlays: bypassBlockingOverlays,
       );
     } else {
       OverlayUtil.showOverlay(
@@ -2257,6 +2443,7 @@ class ChatController extends State<ChatPageWithRoom>
         blurBackground: true,
         backgroundColor: Colors.black,
         overlayKey: "message_toolbar_overlay",
+        bypassBlockingOverlays: bypassBlockingOverlays,
       );
     }
 

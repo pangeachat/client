@@ -11754,6 +11754,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "メッセージバブルをクリックして選択します",
+    "writingAssistanceTutorialInputBar": "どの言語でも書くことができます。間違いを心配しないでください！私たちが修正を手伝います。",
+    "writingAssistanceTutorialIGCButton": "メッセージを書いた後、このボタンをクリックしてライティングアシスタンスを開始します",
+    "selectModeTutorialTranslate": "ここをクリックしてメッセージを翻訳します",
+    "selectModeTutorialAudio": "ここをクリックしてメッセージを聞きます",
+    "selectModeTutorialExit": "背景をクリックしてチャットに戻ります",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "私たちは調査中です！後でもう一度お試しください。",
     "@errorTryAgainLater": {
         "type": "String",

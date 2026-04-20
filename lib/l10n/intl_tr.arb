@@ -11217,6 +11217,36 @@
         "type": "String",
         "placeholders": {}
     },
+    "readingAssistanceTutorialClickMessage": "Mesaj balonuna tıklayarak onu seçin",
+    "writingAssistanceTutorialInputBar": "Herhangi bir dilde yazabilirsiniz. Hatalar hakkında endişelenmeyin! Onları düzeltmenize yardımcı olacağız.",
+    "writingAssistanceTutorialIGCButton": "Mesajınızı yazdıktan sonra, yazma yardımını başlatmak için bu düğmeye tıklayın",
+    "selectModeTutorialTranslate": "Mesajı çevirmek için buraya tıklayın",
+    "selectModeTutorialAudio": "Mesajı dinlemek için buraya tıklayın",
+    "selectModeTutorialExit": "Sohbete geri dönmek için arka plana tıklayın",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
     "errorTryAgainLater": "Bunu inceliyoruz! Lütfen daha sonra tekrar deneyin.",
     "@errorTryAgainLater": {
         "type": "String",
