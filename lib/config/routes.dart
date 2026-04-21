@@ -228,8 +228,11 @@ abstract class AppRoutes {
         JoinClassWithLink(classCode: resolveJoinClassCode(state)),
       ),
     ),
+    // Short class links like https://app.pangea.chat/234w9w.
+    // Pattern requires at least one digit and a minimum length of 6 to avoid
+    // shadowing common top-level word routes.
     GoRoute(
-      path: '/:classCode([A-Za-z0-9]*[0-9][A-Za-z0-9]*)',
+      path: '/:classCode((?=.*[0-9])[A-Za-z0-9]{6,})',
       pageBuilder: (context, state) => defaultPageBuilder(
         context,
         state,

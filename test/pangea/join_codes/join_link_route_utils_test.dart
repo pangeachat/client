@@ -60,5 +60,14 @@ void main() {
 
       expect(classCode, 'abc+123');
     });
+
+    test('handles url-decoded short-link path parameter values', () {
+      final classCode = resolveJoinClassCodeFromUri(
+        uri: Uri.parse('/abc%2B123'),
+        pathParameters: const {'classCode': 'abc+123'},
+      );
+
+      expect(classCode, 'abc+123');
+    });
   });
 }
