@@ -69,27 +69,30 @@ class OverlayCenterContent extends StatelessWidget {
                 ? CrossAxisAlignment.end
                 : CrossAxisAlignment.start,
             children: [
-              MeasureRenderBox(
-                onChange: onChangeMessageSize,
-                child: OverlayMessage(
-                  overlayKey: overlayKey,
-                  event,
-                  controller: chatController,
-                  overlayController: overlayController,
-                  nextEvent: nextEvent,
-                  previousEvent: prevEvent,
-                  timeline: chatController.timeline!,
-                  sizeAnimation: sizeAnimation,
-                  // there's a split seconds between when the transition animation starts and
-                  // when the sizeAnimation is set when the original dimensions need to be enforced
-                  messageWidth: messageWidth,
-                  messageHeight: messageHeight,
-                  isTransitionAnimation: isTransitionAnimation,
-                  readingAssistanceMode: readingAssistanceMode,
-                  canRefresh:
-                      (event.eventId == chatController.refreshEventID) &&
-                      (readingAssistanceMode !=
-                          ReadingAssistanceMode.practiceMode),
+              CompositedTransformTarget(
+                link: overlayController.overlayMessageLayerLink.link,
+                child: MeasureRenderBox(
+                  onChange: onChangeMessageSize,
+                  child: OverlayMessage(
+                    overlayKey: overlayKey,
+                    event,
+                    controller: chatController,
+                    overlayController: overlayController,
+                    nextEvent: nextEvent,
+                    previousEvent: prevEvent,
+                    timeline: chatController.timeline!,
+                    sizeAnimation: sizeAnimation,
+                    // there's a split seconds between when the transition animation starts and
+                    // when the sizeAnimation is set when the original dimensions need to be enforced
+                    messageWidth: messageWidth,
+                    messageHeight: messageHeight,
+                    isTransitionAnimation: isTransitionAnimation,
+                    readingAssistanceMode: readingAssistanceMode,
+                    canRefresh:
+                        (event.eventId == chatController.refreshEventID) &&
+                        (readingAssistanceMode !=
+                            ReadingAssistanceMode.practiceMode),
+                  ),
                 ),
               ),
               Padding(

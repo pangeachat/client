@@ -54,6 +54,8 @@ class TutorialOverlayOrchestrator {
         .fold(0, (sum, tutorial) => sum + tutorial.stepCount);
   }
 
+  bool get hasActiveTutorial => _activeTutorial != null;
+
   void dispose() {
     reset();
     _tutorialNavigationStreamController.close();
@@ -84,26 +86,25 @@ class TutorialOverlayOrchestrator {
   ) => tutorialSequence.where((t) => t.globallyEnabled).toList();
 
   /// Adds a single tutorial sequence to the end of the queue.
-  bool enqueueTutorialSequence(TutorialSequence tutorialSequence) {
+  void enqueueTutorialSequence(TutorialSequence tutorialSequence) {
     if (_sequence != null) {
       Logs().w(
         "Trying to enqueue tutorial sequence while previous sequence is still active",
       );
-      return false;
+      return;
     }
 
     final enabledTutorials = enabledTutorialsInSequence(tutorialSequence);
 
     if (enabledTutorials.isEmpty) {
       Logs().i("All tutorials in sequence are disabled, skipping");
-      return false;
+      return;
     }
 
     Logs().w("Enqueuing tutorial sequence with tutorials $enabledTutorials");
 
     _sequence = enabledTutorials;
     _index = 0;
-    return true;
   }
 
   void launchTutorial({
