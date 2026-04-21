@@ -127,19 +127,16 @@ extension InstructionsEnumExtension on InstructionsEnum {
     }
   }
 
-  bool get isToggledOff => MatrixState
-      .pangeaController
-      .userController
-      .profile
-      .instructionSettings
-      .getStatus(this);
+  bool get isToggledOff {
+    final user = MatrixState.pangeaController.userController;
+    // default to having shown the instruction to avoid showing it again
+    if (!user.initCompleter.isCompleted) return true;
+    return user.profile.instructionSettings.getStatus(this);
+  }
 
   void setToggledOff(bool value) {
-    final userController = MatrixState.pangeaController.userController;
-    final instructionSettings = userController.profile.instructionSettings;
-    if (instructionSettings.getStatus(this) == value) return;
-
-    userController.updateProfile((profile) {
+    if (isToggledOff == value) return;
+    MatrixState.pangeaController.userController.updateProfile((profile) {
       profile.instructionSettings.setStatus(this, value);
       return profile;
     });

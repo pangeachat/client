@@ -22,7 +22,7 @@ class TutorialOverlayOrchestrator {
       StreamController.broadcast();
 
   TutorialEnum? _activeTutorial;
-  TutorialSequenceModel? _sequence;
+  TutorialSequence? _sequence;
   int _index = 0;
 
   /// Set by [requestGoBack] to the last step of the previous tutorial. Consumed
@@ -42,39 +42,49 @@ class TutorialOverlayOrchestrator {
 
   int get totalStepsInCurrentSequence {
     if (_sequence == null) return 0;
-    return _sequence!.tutorials.fold(
-      0,
-      (sum, tutorial) => sum + tutorial.stepCount,
-    );
+    return _sequence!.fold(0, (sum, tutorial) => sum + tutorial.stepCount);
   }
 
   int get completedStepsOffset {
     final sequence = _sequence;
     if (sequence == null || _index == 0) return 0;
 
-    return sequence.tutorials
+    return sequence
         .take(_index - 1)
         .fold(0, (sum, tutorial) => sum + tutorial.stepCount);
+  }
+
+  void dispose() {
+    reset();
+    _tutorialNavigationStreamController.close();
+    _goBackTutorialStreamController.close();
+  }
+
+  void reset() {
+    _sequence = null;
+    _index = 0;
+    _activeTutorial = null;
+    _pendingInitialStepIndex = null;
   }
 
   /// Returns true if [tutorial] is the next tutorial to be opened from the queue.
   bool isTutorialQueued(TutorialEnum tutorial) {
     final sequence = _sequence;
     if (sequence == null) return false;
-    if (_index >= sequence.tutorials.length) return false;
+    if (_index >= sequence.length) return false;
 
-    return sequence.tutorials[_index] == tutorial;
+    return sequence[_index] == tutorial;
   }
 
-  bool hasCompletedTutorialSequence(TutorialSequenceModel tutorialSequence) =>
+  bool hasCompletedTutorialSequence(TutorialSequence tutorialSequence) =>
       enabledTutorialsInSequence(tutorialSequence).isEmpty;
 
   List<TutorialEnum> enabledTutorialsInSequence(
-    TutorialSequenceModel tutorialSequence,
-  ) => tutorialSequence.tutorials.where((t) => t.enabled).toList();
+    TutorialSequence tutorialSequence,
+  ) => tutorialSequence.where((t) => t.globallyEnabled).toList();
 
   /// Adds a single tutorial sequence to the end of the queue.
-  bool enqueueTutorialSequence(TutorialSequenceModel tutorialSequence) {
+  bool enqueueTutorialSequence(TutorialSequence tutorialSequence) {
     if (_sequence != null) {
       Logs().w(
         "Trying to enqueue tutorial sequence while previous sequence is still active",
@@ -83,6 +93,7 @@ class TutorialOverlayOrchestrator {
     }
 
     final enabledTutorials = enabledTutorialsInSequence(tutorialSequence);
+
     if (enabledTutorials.isEmpty) {
       Logs().i("All tutorials in sequence are disabled, skipping");
       return false;
@@ -90,7 +101,7 @@ class TutorialOverlayOrchestrator {
 
     Logs().w("Enqueuing tutorial sequence with tutorials $enabledTutorials");
 
-    _sequence = TutorialSequenceModel(tutorials: enabledTutorials);
+    _sequence = enabledTutorials;
     _index = 0;
     return true;
   }
@@ -98,9 +109,14 @@ class TutorialOverlayOrchestrator {
   void launchTutorial({
     required BuildContext context,
     required TutorialModel tutorial,
+    required String? currentRoute,
     int initialStepIndex = 0,
   }) {
     Logs().i("Attempting to launch tutorial ${tutorial.tutorialType}");
+    if (!tutorial.tutorialType.locallyEnabled(currentRoute)) {
+      Logs().w("Tutorial ${tutorial.tutorialType} is not locally enabled");
+      return;
+    }
 
     if (!isTutorialQueued(tutorial.tutorialType)) {
       Logs().w("Tutorial ${tutorial.tutorialType} is not next in queue");
@@ -170,7 +186,7 @@ class TutorialOverlayOrchestrator {
     // so that after the previous tutorial calls launchTutorial (which does
     // _index++) the index is back to _index - 1.
     _index -= 2;
-    final previousTutorialEnum = _sequence!.tutorials[_index];
+    final previousTutorialEnum = _sequence![_index];
     _pendingInitialStepIndex = previousTutorialEnum.stepCount - 1;
 
     closeTutorial(tutorial: currentTutorial);
@@ -189,7 +205,7 @@ class TutorialOverlayOrchestrator {
       Logs().w(
         "Received tutorial complete event for tutorial $tutorial but no active tutorial sequence",
       );
-    } else if (_index >= _sequence!.tutorials.length) {
+    } else if (_index >= _sequence!.length) {
       Logs().i("Reached end of tutorial sequence");
       _sequence = null;
       _index = 0;

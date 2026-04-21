@@ -74,6 +74,8 @@ import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_sequences.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_repo.dart';
@@ -632,37 +634,38 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   Future<void> _readingAssistanceTutorialListener(SyncUpdate update) async {
+    if (!_canLaunchTutorialSequence) return;
+
     final timeline = this.timeline;
     final l2 =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
 
     if (timeline == null || l2 == null) return;
-    if (update.rooms?.join?[roomId]?.timeline?.events == null) return;
-    final events = update.rooms!.join![roomId]!.timeline!.events!;
-    for (final e in events) {
-      final event = Event.fromMatrixEvent(e, room);
-      if (event.type != EventTypes.Message) continue;
-      // TODO accept audio messages ?
-      if (event.messageType != MessageTypes.Text) continue;
-      if (event.redacted || !event.status.isSynced) continue;
 
-      final pangeaMessageEvent = PangeaMessageEvent(
-        event: event,
-        timeline: timeline,
-        ownMessage: event.senderId == Matrix.of(context).client.userID,
-      );
+    final latestEvent = update.rooms?.join?[roomId]?.timeline?.events
+        ?.firstWhereOrNull(
+          (event) => event.eventId == timeline.events.firstOrNull?.eventId,
+        );
+    if (latestEvent == null) return;
 
-      final msgLang = pangeaMessageEvent.originalSent?.langCode
-          .split('-')
-          .first;
+    final event = Event.fromMatrixEvent(latestEvent, room);
+    if (event.type != EventTypes.Message) return;
+    if (event.messageType != MessageTypes.Text) return;
+    if (event.redacted || !event.status.isSynced) return;
 
-      if (msgLang != l2) continue;
+    final pangeaMessageEvent = PangeaMessageEvent(
+      event: event,
+      timeline: timeline,
+      ownMessage: event.senderId == Matrix.of(context).client.userID,
+    );
 
-      WidgetsBinding.instance.addPostFrameCallback(
-        (_) => _startReadingAssistanceTutorial(event),
-      );
-      break;
-    }
+    final msgLang = pangeaMessageEvent.originalSent?.langCode.split('-').first;
+
+    if (msgLang != l2) return;
+
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _startReadingAssistanceTutorial(event),
+    );
   }
 
   void _writingAssistanceTutorialListener(TutorialEnum tutorial) {
@@ -721,21 +724,30 @@ class ChatController extends State<ChatPageWithRoom>
           ),
         ],
       ),
+      currentRoute: _router.state.path,
       initialStepIndex: TutorialEnum.readingAssistance.stepCount - 1,
     );
   }
 
-  Future<void> _startReadingAssistanceTutorial(Event event) async {
-    if (_router.state.path != ':roomid') {
-      // The user has navigated away from the chat,
-      // so we don't want to show the overlay.
-      return;
+  String? get currentRoutePath => _router.state.path;
+
+  bool get _canLaunchTutorialSequence {
+    final orchestrator = TutorialOverlayOrchestrator.instance;
+    final tutorialSeq = TutorialSequences.chatTutorialSequence;
+    if (orchestrator.hasCompletedTutorialSequence(tutorialSeq)) return false;
+
+    if (scrollController.hasClients) {
+      return scrollController.position.pixels == 0;
     }
 
-    final orchestrator = TutorialOverlayOrchestrator.instance;
-    final tutorialSeq = TutorialModel.chatTutorialSequence;
-    if (orchestrator.hasCompletedTutorialSequence(tutorialSeq)) return;
+    return true;
+  }
 
+  Future<void> _startReadingAssistanceTutorial(Event event) async {
+    if (!_canLaunchTutorialSequence) return;
+
+    final orchestrator = TutorialOverlayOrchestrator.instance;
+    final tutorialSeq = TutorialSequences.chatTutorialSequence;
     final success = orchestrator.enqueueTutorialSequence(tutorialSeq);
     if (!success) return;
 
@@ -746,12 +758,6 @@ class ChatController extends State<ChatPageWithRoom>
     // in a previous session). Dispatch to the correct launch path.
     if (orchestrator.isTutorialQueued(TutorialEnum.readingAssistance)) {
       final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
-      final success = await scrollToEventId(
-        event.eventId,
-        highlightEvent: false,
-      );
-      if (!success) return;
-
       orchestrator.launchTutorial(
         context: context,
         tutorial: ReadingAssistantTutorialModel(
@@ -764,6 +770,7 @@ class ChatController extends State<ChatPageWithRoom>
             ),
           ],
         ),
+        currentRoute: _router.state.path,
       );
     }
   }
@@ -785,6 +792,7 @@ class ChatController extends State<ChatPageWithRoom>
         ],
       ),
       initialStepIndex: initialStepIndex,
+      currentRoute: _router.state.path,
     );
   }
 
@@ -1103,6 +1111,7 @@ class ChatController extends State<ChatPageWithRoom>
     depressMessageButton.dispose();
     scrollableNotifier.dispose();
     TokensUtil.instance.clearNewTokenCache();
+    TutorialOverlayOrchestrator.instance.reset();
     //Pangea#
     super.dispose();
   }

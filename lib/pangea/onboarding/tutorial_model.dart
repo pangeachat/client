@@ -3,64 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
 
-class TutorialStepData {
-  final GlobalKey targetKey;
-  final LayerLink targetLink;
-  final Future<void> Function()? onTap;
-
-  TutorialStepData({
-    required this.targetKey,
-    required this.targetLink,
-    this.onTap,
-  });
-}
-
-class TutorialStepStyle {
-  final String tooltip;
-  final Size tooltipSize;
-  final double? borderRadius;
-  final double? padding;
-
-  const TutorialStepStyle({
-    required this.tooltip,
-    required this.tooltipSize,
-    this.borderRadius,
-    this.padding,
-  });
-}
-
-class TutorialStep {
-  final TutorialStepData data;
-  final TutorialStepStyle style;
-
-  const TutorialStep({required this.data, required this.style});
-}
+typedef TutorialSequence = List<TutorialEnum>;
 
 sealed class TutorialModel {
   final TutorialEnum tutorialType;
-  final List<TutorialStepData> stepsData;
+  final List<TutorialStepData> _stepsData;
 
-  const TutorialModel({required this.tutorialType, required this.stepsData});
+  const TutorialModel({
+    required this.tutorialType,
+    required List<TutorialStepData> stepsData,
+  }) : _stepsData = stepsData;
 
-  List<TutorialStepStyle> stepStyles(L10n l10n);
+  List<TutorialStepStyle> _stepStyles(L10n l10n);
 
-  List<TutorialStep> steps(L10n l10n) {
-    final styles = stepStyles(l10n);
-    return List.generate(
-      stepsData.length,
-      (index) => TutorialStep(data: stepsData[index], style: styles[index]),
-    );
+  TutorialStep step(int index, L10n l10n) {
+    final styles = _stepStyles(l10n);
+    return TutorialStep(data: _stepsData[index], style: styles[index]);
   }
-
-  static TutorialSequenceModel get chatTutorialSequence =>
-      TutorialSequenceModel(
-        tutorials: [
-          TutorialEnum.readingAssistance,
-          TutorialEnum.selectModeButtons,
-          TutorialEnum.writingAssistance,
-        ],
-      );
 }
 
 class ReadingAssistantTutorialModel extends TutorialModel {
@@ -69,7 +30,7 @@ class ReadingAssistantTutorialModel extends TutorialModel {
       super(tutorialType: TutorialEnum.readingAssistance, stepsData: data);
 
   @override
-  List<TutorialStepStyle> stepStyles(L10n l10n) => [
+  List<TutorialStepStyle> _stepStyles(L10n l10n) => [
     TutorialStepStyle(
       tooltip: l10n.readingAssistanceTutorialClickMessage,
       tooltipSize: Size(250, 120),
@@ -84,7 +45,7 @@ class WritingAssistantTutorialModel extends TutorialModel {
       super(tutorialType: TutorialEnum.writingAssistance, stepsData: data);
 
   @override
-  List<TutorialStepStyle> stepStyles(L10n l10n) => [
+  List<TutorialStepStyle> _stepStyles(L10n l10n) => [
     TutorialStepStyle(
       tooltip: l10n.writingAssistanceTutorialInputBar,
       tooltipSize: Size(300, 140),
@@ -105,7 +66,7 @@ class SelectModeButtonsTutorialModel extends TutorialModel {
       super(tutorialType: TutorialEnum.selectModeButtons, stepsData: data);
 
   @override
-  List<TutorialStepStyle> stepStyles(L10n l10n) => [
+  List<TutorialStepStyle> _stepStyles(L10n l10n) => [
     TutorialStepStyle(
       tooltip: l10n.selectModeTutorialTranslate,
       tooltipSize: Size(250, 120),
@@ -124,10 +85,4 @@ class SelectModeButtonsTutorialModel extends TutorialModel {
       borderRadius: AppConfig.borderRadius,
     ),
   ];
-}
-
-class TutorialSequenceModel {
-  final List<TutorialEnum> tutorials;
-
-  const TutorialSequenceModel({required this.tutorials});
 }
