@@ -229,7 +229,7 @@ abstract class AppRoutes {
       ),
     ),
     GoRoute(
-      path: '/:classCode([A-Za-z0-9]+)',
+      path: '/:classCode([A-Za-z0-9]*[0-9][A-Za-z0-9]*)',
       pageBuilder: (context, state) => defaultPageBuilder(
         context,
         state,

@@ -29,5 +29,36 @@ void main() {
 
       expect(classCode, 'query99');
     });
+
+    test('ignores empty classcode query parameter', () {
+      final classCode = resolveJoinClassCodeFromUri(
+        uri: Uri.parse('/join?classcode='),
+        pathParameters: const {'classCode': 'path99'},
+      );
+
+      expect(classCode, 'path99');
+    });
+
+    test('ignores whitespace-only classcode query parameter', () {
+      final classCode = resolveJoinClassCodeFromUri(
+        uri: Uri.parse('/join?classcode=%20%20%20'),
+      );
+
+      expect(classCode, isNull);
+    });
+
+    test('returns null when no query or path class code is present', () {
+      final classCode = resolveJoinClassCodeFromUri(uri: Uri.parse('/join'));
+
+      expect(classCode, isNull);
+    });
+
+    test('handles url-encoded classcode values', () {
+      final classCode = resolveJoinClassCodeFromUri(
+        uri: Uri.parse('/join?classcode=abc%2B123'),
+      );
+
+      expect(classCode, 'abc+123');
+    });
   });
 }
