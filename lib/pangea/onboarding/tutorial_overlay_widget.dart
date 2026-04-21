@@ -228,7 +228,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     await Future.delayed(_duration);
     if (mounted) {
       TutorialOverlayOrchestrator.instance.closeTutorial(
-        tutorial: widget.tutorial,
+        widget.tutorial.tutorialType,
       );
     }
   }

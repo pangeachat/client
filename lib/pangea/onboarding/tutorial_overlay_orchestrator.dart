@@ -78,6 +78,8 @@ class TutorialOverlayOrchestrator {
     return sequence[_index] == tutorial;
   }
 
+  bool isTutorialActive(TutorialEnum tutorial) => _activeTutorial == tutorial;
+
   bool hasCompletedTutorialSequence(TutorialSequence tutorialSequence) =>
       enabledTutorialsInSequence(tutorialSequence).isEmpty;
 
@@ -160,8 +162,8 @@ class TutorialOverlayOrchestrator {
     _index++;
   }
 
-  void closeTutorial({required TutorialModel tutorial}) {
-    MatrixState.pAnyState.closeOverlay(tutorial.tutorialType.name);
+  void closeTutorial(TutorialEnum tutorial) {
+    MatrixState.pAnyState.closeOverlay(tutorial.name);
   }
 
   /// Returns true if there is a previous tutorial in the sequence that the
@@ -190,7 +192,7 @@ class TutorialOverlayOrchestrator {
     final previousTutorialEnum = _sequence![_index];
     _pendingInitialStepIndex = previousTutorialEnum.stepCount - 1;
 
-    closeTutorial(tutorial: currentTutorial);
+    closeTutorial(currentTutorial.tutorialType);
 
     // Defer the stream emission to the next frame so that the closing widget's
     // dispose → onCloseTutorial runs before host widgets try to launch.
