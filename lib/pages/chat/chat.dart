@@ -748,31 +748,28 @@ class ChatController extends State<ChatPageWithRoom>
 
     final orchestrator = TutorialOverlayOrchestrator.instance;
     final tutorialSeq = TutorialSequences.chatTutorialSequence;
-    final success = orchestrator.enqueueTutorialSequence(tutorialSeq);
-    if (!success) return;
+    orchestrator.enqueueTutorialSequence(tutorialSeq);
+
+    if (orchestrator.hasActiveTutorial ||
+        !orchestrator.isTutorialQueued(TutorialEnum.readingAssistance)) {
+      return;
+    }
 
     _tutorialEvent = event;
-
-    // After filtering to only unseen tutorials, the first queued tutorial may
-    // not be readingAssistance (e.g. the user completed the first two stages
-    // in a previous session). Dispatch to the correct launch path.
-    if (orchestrator.isTutorialQueued(TutorialEnum.readingAssistance)) {
-      final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
-      orchestrator.launchTutorial(
-        context: context,
-        tutorial: ReadingAssistantTutorialModel(
-          data: [
-            TutorialStepData(
-              targetLink: target.link,
-              targetKey: target.key,
-              onTap: () async =>
-                  showToolbar(event, bypassBlockingOverlays: true),
-            ),
-          ],
-        ),
-        currentRoute: _router.state.path,
-      );
-    }
+    final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
+    orchestrator.launchTutorial(
+      context: context,
+      tutorial: ReadingAssistantTutorialModel(
+        data: [
+          TutorialStepData(
+            targetLink: target.link,
+            targetKey: target.key,
+            onTap: () async => showToolbar(event, bypassBlockingOverlays: true),
+          ),
+        ],
+      ),
+      currentRoute: _router.state.path,
+    );
   }
 
   void _startWritingAssistanceTutorial({int initialStepIndex = 0}) {

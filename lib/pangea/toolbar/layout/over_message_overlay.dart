@@ -38,42 +38,35 @@ class OverMessageOverlay extends StatelessWidget {
                     duration: FluffyThemes.animationDuration,
                     height: controller.overheadContentHeight,
                   ),
-                CompositedTransformTarget(
-                  link: controller
-                      .widget
-                      .overlayController
-                      .overlayMessageLayerLink
-                      .link,
-                  child: ValueListenableBuilder(
-                    valueListenable:
-                        controller.widget.overlayController.selectedMode,
-                    builder: (context, mode, _) {
-                      return OverlayCenterContent(
-                        event: controller.widget.event,
-                        messageHeight: mode != SelectMode.emoji
-                            ? controller.originalMessageSize.height
-                            : null,
-                        messageWidth:
-                            controller
-                                .widget
-                                .overlayController
-                                .selectModeController
-                                .isShowingExtraContent
-                            ? max(controller.originalMessageSize.width, 150)
-                            : controller.originalMessageSize.width,
-                        overlayController: controller.widget.overlayController,
-                        chatController: controller.widget.chatController,
-                        nextEvent: controller.widget.nextEvent,
-                        prevEvent: controller.widget.prevEvent,
-                        hasReactions: controller.hasReactions,
-                        isTransitionAnimation: true,
-                        readingAssistanceMode: controller.readingAssistanceMode,
-                        overlayKey:
-                            'overlay_message_${controller.widget.event.eventId}',
-                        reactionsWidth: controller.reactionNotifier,
-                      );
-                    },
-                  ),
+                ValueListenableBuilder(
+                  valueListenable:
+                      controller.widget.overlayController.selectedMode,
+                  builder: (context, mode, _) {
+                    return OverlayCenterContent(
+                      event: controller.widget.event,
+                      messageHeight: mode != SelectMode.emoji
+                          ? controller.originalMessageSize.height
+                          : null,
+                      messageWidth:
+                          controller
+                              .widget
+                              .overlayController
+                              .selectModeController
+                              .isShowingExtraContent
+                          ? max(controller.originalMessageSize.width, 150)
+                          : controller.originalMessageSize.width,
+                      overlayController: controller.widget.overlayController,
+                      chatController: controller.widget.chatController,
+                      nextEvent: controller.widget.nextEvent,
+                      prevEvent: controller.widget.prevEvent,
+                      hasReactions: controller.hasReactions,
+                      isTransitionAnimation: true,
+                      readingAssistanceMode: controller.readingAssistanceMode,
+                      overlayKey:
+                          'overlay_message_${controller.widget.event.eventId}',
+                      reactionsWidth: controller.reactionNotifier,
+                    );
+                  },
                 ),
                 const SizedBox(height: 4.0),
                 SelectModeButtons(
