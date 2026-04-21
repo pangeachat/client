@@ -73,17 +73,23 @@ class FluffyChatApp extends StatelessWidget {
         // Pangea#
         supportedLocales: L10n.supportedLocales,
         routerConfig: router,
-        builder: (context, child) => AppLockWidget(
-          pincode: pincode,
-          clients: clients,
-          // Need a navigator above the Matrix widget for
-          // displaying dialogs
-          child: Matrix(
+        // #Pangea
+        // builder: (context, child) => AppLockWidget(
+        builder: (context, child) => Directionality(
+          textDirection: TextDirection.ltr,
+          child: AppLockWidget(
+            pincode: pincode,
             clients: clients,
-            store: store,
-            child: testWidget ?? child,
+            // Need a navigator above the Matrix widget for
+            // displaying dialogs
+            child: Matrix(
+              clients: clients,
+              store: store,
+              child: testWidget ?? child,
+            ),
           ),
         ),
+        // Pangea#
       ),
     );
   }

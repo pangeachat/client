@@ -4,7 +4,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
-import 'package:provider/provider.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
@@ -15,8 +14,6 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
-import 'package:fluffychat/pangea/languages/language_constants.dart';
-import 'package:fluffychat/pangea/languages/locale_provider.dart';
 import 'package:fluffychat/pangea/toolbar/layout/over_message_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/layout/practice_mode_transition_animation.dart';
 import 'package:fluffychat/pangea/toolbar/layout/reading_assistance_mode_enum.dart';
@@ -253,25 +250,12 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     );
   }
 
-  bool get isRtl {
-    final locale = Provider.of<LocaleProvider>(
-      context,
-      listen: false,
-    ).locale?.languageCode;
-    return locale != null &&
-        LanguageConstants.rtlLanguageCodes.contains(locale);
-  }
-
   double? get messageLeftOffset {
     if (ownMessage) return null;
 
     final offset = _originalMessageOffset;
     if (offset == null) {
       return Avatar.defaultSize + 16;
-    }
-
-    if (isRtl) {
-      return offset.dx - (showDetails ? FluffyThemes.columnWidth : 0);
     }
 
     if (ownMessage) return null;
@@ -286,13 +270,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       return 8.0;
     }
 
-    if (isRtl) {
-      return screenSize!.width -
-          columnWidth -
-          offset.dx -
-          originalMessageSize.width;
-    }
-
     return screenSize!.width -
         offset.dx -
         originalMessageSize.width -
@@ -304,9 +281,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   CrossAxisAlignment get messageColumnAlignment {
-    if (isRtl) {
-      return ownMessage ? CrossAxisAlignment.start : CrossAxisAlignment.end;
-    }
     return ownMessage ? CrossAxisAlignment.end : CrossAxisAlignment.start;
   }
 

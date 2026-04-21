@@ -55,8 +55,7 @@ class PracticeModeTransitionAnimationState
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final isRtl = widget.controller.isRtl;
-      final columnWidth = isRtl ? 0 : widget.controller.columnWidth;
+      final columnWidth = widget.controller.columnWidth;
 
       final startOffset = Offset(
         widget.controller.ownMessage
