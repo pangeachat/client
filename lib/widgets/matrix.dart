@@ -25,6 +25,7 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_file_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -576,6 +577,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     _languageListener?.cancel();
     _uriListener?.cancel();
     notifPermissionNotifier.dispose();
+    TutorialOverlayOrchestrator.instance.dispose();
     // Pangea#
 
     super.dispose();

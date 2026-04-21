@@ -7,6 +7,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_tooltip_container_widget.dart';
 
 enum TooltipPosition { above, below }
@@ -67,7 +68,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
 
   TutorialStep? get _currentStep =>
       _currentStepIndex >= 0 && _currentStepIndex < _stepsLength
-      ? widget.tutorial.steps(L10n.of(context))[_currentStepIndex]
+      ? widget.tutorial.step(_currentStepIndex, L10n.of(context))
       : null;
 
   Duration get _duration => FluffyThemes.animationDuration;
