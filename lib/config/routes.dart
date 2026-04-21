@@ -49,6 +49,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/course_creation/course_invite_page.dart';
 import 'package:fluffychat/pangea/course_creation/public_course_preview.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_page.dart';
+import 'package:fluffychat/pangea/join_codes/join_link_route_utils.dart';
 import 'package:fluffychat/pangea/join_codes/join_with_link_page.dart';
 import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
 import 'package:fluffychat/pangea/login/pages/course_code_page.dart';
@@ -208,9 +209,7 @@ abstract class AppRoutes {
       pageBuilder: (context, state) => defaultPageBuilder(
         context,
         state,
-        JoinClassWithLink(
-          classCode: state.uri.queryParameters[SpaceConstants.classCode],
-        ),
+        JoinClassWithLink(classCode: resolveJoinClassCode(state)),
       ),
     ),
     GoRoute(
@@ -226,9 +225,15 @@ abstract class AppRoutes {
       pageBuilder: (context, state) => defaultPageBuilder(
         context,
         state,
-        JoinClassWithLink(
-          classCode: state.uri.queryParameters[SpaceConstants.classCode],
-        ),
+        JoinClassWithLink(classCode: resolveJoinClassCode(state)),
+      ),
+    ),
+    GoRoute(
+      path: '/:classCode([A-Za-z0-9]+)',
+      pageBuilder: (context, state) => defaultPageBuilder(
+        context,
+        state,
+        JoinClassWithLink(classCode: resolveJoinClassCode(state)),
       ),
     ),
     // Pangea#
