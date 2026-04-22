@@ -664,14 +664,14 @@ class ChatController extends State<ChatPageWithRoom>
     if (msgLang != l2) return;
 
     WidgetsBinding.instance.addPostFrameCallback(
-      (_) => _startReadingAssistanceTutorial(event),
+      (_) => _startAssistanceTutorialSequence(event),
     );
   }
 
   void _writingAssistanceTutorialListener(TutorialEnum tutorial) {
     if (tutorial != TutorialEnum.selectModeButtons) return;
     WidgetsBinding.instance.addPostFrameCallback(
-      (_) => _startWritingAssistanceTutorial(
+      (_) => _launchWritingAssistanceTutorial(
         initialStepIndex: TutorialEnum.writingAssistance.stepProgress,
       ),
     );
@@ -705,7 +705,7 @@ class ChatController extends State<ChatPageWithRoom>
         // The writing-assistance tutorial starts from the text input which is
         // always visible, so no extra state preparation is needed.
         WidgetsBinding.instance.addPostFrameCallback(
-          (_) => _startWritingAssistanceTutorial(
+          (_) => _launchWritingAssistanceTutorial(
             initialStepIndex: TutorialEnum.writingAssistance.stepCount - 1,
           ),
         );
@@ -713,7 +713,12 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
-  void _relaunchReadingAssistanceTutorial(Event event) {
+  void _launchReadingAssistanceTutorial(Event event, int stepIndex) {
+    if (!kIsWeb) {
+      inputFocus.unfocus();
+    }
+    _tutorialEvent = event;
+
     final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
     TutorialOverlayOrchestrator.instance.launchTutorial(
       context: context,
@@ -727,59 +732,11 @@ class ChatController extends State<ChatPageWithRoom>
         ],
       ),
       currentRoute: _router.state.path,
-      initialStepIndex: TutorialEnum.readingAssistance.stepCount - 1,
+      initialStepIndex: stepIndex,
     );
   }
 
-  String? get currentRoutePath => _router.state.path;
-
-  bool get _canLaunchTutorialSequence {
-    final orchestrator = TutorialOverlayOrchestrator.instance;
-    final tutorialSeq = TutorialSequences.chatTutorialSequence;
-    if (orchestrator.hasCompletedTutorialSequence(tutorialSeq)) return false;
-
-    if (scrollController.hasClients) {
-      return scrollController.position.pixels == 0;
-    }
-
-    return true;
-  }
-
-  void _startReadingAssistanceTutorial(Event event) {
-    if (!_canLaunchTutorialSequence) return;
-
-    final orchestrator = TutorialOverlayOrchestrator.instance;
-    final tutorialSeq = TutorialSequences.chatTutorialSequence;
-    orchestrator.enqueueTutorialSequence(tutorialSeq);
-
-    if (orchestrator.hasActiveTutorial ||
-        !orchestrator.isTutorialQueued(TutorialEnum.readingAssistance)) {
-      return;
-    }
-
-    _tutorialEvent = event;
-    if (!kIsWeb) {
-      inputFocus.unfocus();
-    }
-
-    final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
-    orchestrator.launchTutorial(
-      context: context,
-      tutorial: ReadingAssistantTutorialModel(
-        data: [
-          TutorialStepData(
-            targetLink: target.link,
-            targetKey: target.key,
-            onTap: () async => showToolbar(event, bypassBlockingOverlays: true),
-          ),
-        ],
-      ),
-      currentRoute: _router.state.path,
-      initialStepIndex: TutorialEnum.readingAssistance.stepProgress,
-    );
-  }
-
-  void _startWritingAssistanceTutorial({int initialStepIndex = 0}) {
+  void _launchWritingAssistanceTutorial({int initialStepIndex = 0}) {
     final inputTarget = MatrixState.pAnyState.layerLinkAndKey(
       ChoreoConstants.inputTransformTargetKey,
     );
@@ -798,6 +755,53 @@ class ChatController extends State<ChatPageWithRoom>
       initialStepIndex: initialStepIndex,
       currentRoute: _router.state.path,
     );
+  }
+
+  void _relaunchReadingAssistanceTutorial(Event event) =>
+      _launchReadingAssistanceTutorial(
+        event,
+        TutorialEnum.readingAssistance.stepCount - 1,
+      );
+
+  String? get currentRoutePath => _router.state.path;
+
+  bool get _canLaunchTutorialSequence {
+    final orchestrator = TutorialOverlayOrchestrator.instance;
+    final tutorialSeq = TutorialSequences.chatTutorialSequence;
+    if (orchestrator.hasCompletedTutorialSequence(tutorialSeq)) return false;
+
+    if (scrollController.hasClients) {
+      return scrollController.position.pixels == 0;
+    }
+
+    return true;
+  }
+
+  void _startAssistanceTutorialSequence(Event event) {
+    if (!_canLaunchTutorialSequence) return;
+
+    final orchestrator = TutorialOverlayOrchestrator.instance;
+    final tutorialSeq = TutorialSequences.chatTutorialSequence;
+    orchestrator.enqueueTutorialSequence(tutorialSeq);
+
+    if (orchestrator.hasActiveTutorial) {
+      return;
+    }
+
+    if (orchestrator.isTutorialQueued(TutorialEnum.readingAssistance)) {
+      _launchReadingAssistanceTutorial(
+        event,
+        TutorialEnum.readingAssistance.stepProgress,
+      );
+      return;
+    }
+
+    if (orchestrator.isTutorialQueued(TutorialEnum.writingAssistance)) {
+      _launchWritingAssistanceTutorial(
+        initialStepIndex: TutorialEnum.writingAssistance.stepProgress,
+      );
+      return;
+    }
   }
 
   void _pangeaInit() {
