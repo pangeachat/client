@@ -112,22 +112,19 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
       child: Stack(
         children: [
           if (isColumnMode)
-            Positioned(
+            Positioned.fill(
               left: navRailWidth + 1.0,
-              child: SizedBox(
-                height: MediaQuery.heightOf(context),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(),
-                      width: FluffyThemes.columnWidth,
-                      child: _MainView(state: widget.state),
-                    ),
-                    Container(width: 1.0, color: theme.dividerColor),
-                  ],
-                ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    clipBehavior: Clip.antiAlias,
+                    decoration: const BoxDecoration(),
+                    width: FluffyThemes.columnWidth,
+                    child: _MainView(state: widget.state),
+                  ),
+                  Container(width: 1.0, color: theme.dividerColor),
+                ],
               ),
             ),
           if (widget.showNavRail)
