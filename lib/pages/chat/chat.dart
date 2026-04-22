@@ -714,9 +714,7 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void _launchReadingAssistanceTutorial(Event event, int stepIndex) {
-    if (!kIsWeb) {
-      inputFocus.unfocus();
-    }
+    inputFocus.unfocus();
     _tutorialEvent = event;
 
     final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
