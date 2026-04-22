@@ -46,19 +46,22 @@ class CourseChatsView extends StatelessWidget {
             .toList();
 
         final isColumnMode = FluffyThemes.isColumnMode(context);
-        return Padding(
-          padding: isColumnMode
-              ? const EdgeInsets.only(top: 12.0, left: 8.0, right: 8.0)
-              : const EdgeInsets.all(0.0),
-          child: ListView.builder(
-            shrinkWrap: true,
-            itemCount:
-                joinedChats.length +
-                joinedSessions.length +
-                discoveredGroupChats.length +
-                discoveredSessions.length +
-                9,
-            itemBuilder: (context, i) {
+        final keyboardInset = MediaQuery.viewInsetsOf(context).bottom;
+        return SafeArea(
+          child: Padding(
+            padding: isColumnMode
+                ? const EdgeInsets.only(top: 12.0, left: 8.0, right: 8.0)
+                : const EdgeInsets.all(0.0),
+            child: ListView.builder(
+              padding: EdgeInsets.only(bottom: keyboardInset + 8.0),
+              shrinkWrap: true,
+              itemCount:
+                  joinedChats.length +
+                  joinedSessions.length +
+                  discoveredGroupChats.length +
+                  discoveredSessions.length +
+                  9,
+              itemBuilder: (context, i) {
               // courses chats title
               if (i == 0) {
                 if (isColumnMode) {
@@ -233,7 +236,8 @@ class CourseChatsView extends StatelessWidget {
                       : Text(L10n.of(context).loadMore),
                 ),
               );
-            },
+              },
+            ),
           ),
         );
       },
