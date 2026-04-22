@@ -33,7 +33,7 @@ enum TutorialEnum {
         MatrixState.pangeaController.subscriptionController.isSubscribed !=
         false;
 
-    return subscribed && !_hasBeenSeen;
+    return subscribed && !_hasBeenSeen && stepProgress < stepCount;
   }
 
   bool locallyEnabled(String? currentRoute) {
@@ -51,5 +51,17 @@ enum TutorialEnum {
 
   bool get _hasBeenSeen => _instructionsEnum.isToggledOff;
 
-  void markSeen() => _instructionsEnum.setToggledOff(true);
+  void markSeen() {
+    _instructionsEnum.setToggledOff(true);
+    _instructionsEnum.clearStepProgress();
+  }
+
+  /// The step index to resume from on the next launch of this tutorial.
+  /// Returns 0 if no progress has been saved yet.
+  int get stepProgress => _instructionsEnum.stepProgress;
+
+  /// Persists [stepIndex] so the user can resume mid-tutorial on the next
+  /// launch. Called after each successful step advance in the overlay widget.
+  void saveProgress(int stepIndex) =>
+      _instructionsEnum.setStepProgress(stepIndex);
 }

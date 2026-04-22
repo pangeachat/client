@@ -36,6 +36,11 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   bool _transitioning = false;
   bool _visible = false;
 
+  /// Set to true when the user taps through the final step so that
+  /// [TutorialOverlayOrchestrator.onCloseTutorial] knows to mark the tutorial
+  /// fully seen. Mid-tutorial closes leave this false, allowing a resume.
+  bool _completedAllSteps = false;
+
   @override
   void initState() {
     super.initState();
@@ -58,6 +63,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   void dispose() {
     TutorialOverlayOrchestrator.instance.onCloseTutorial(
       widget.tutorial.tutorialType,
+      completed: _completedAllSteps,
     );
     super.dispose();
   }
@@ -192,6 +198,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   Future<void> _updateStep(int updatedIndex) async {
     Logs().i("Updating tutorial step to index $updatedIndex");
     if (updatedIndex < 0 || updatedIndex >= _stepsLength) {
+      _completedAllSteps = updatedIndex >= _stepsLength;
       await _close();
       return;
     }
@@ -200,6 +207,8 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
       _visible = true;
       _currentStepIndex = updatedIndex;
     });
+
+    widget.tutorial.tutorialType.saveProgress(updatedIndex + 1);
   }
 
   Future<void> _executeStepCallback() async {

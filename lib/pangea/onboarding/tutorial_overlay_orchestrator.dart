@@ -268,7 +268,7 @@ class TutorialOverlayOrchestrator {
     }
   }
 
-  void onCloseTutorial(TutorialEnum tutorial) {
+  void onCloseTutorial(TutorialEnum tutorial, {bool completed = false}) {
     if (_sequence == null) {
       Logs().w(
         "Received tutorial complete event for tutorial $tutorial but no active tutorial sequence",
@@ -286,7 +286,12 @@ class TutorialOverlayOrchestrator {
       activeTutorialNotifier.value = null;
     }
 
-    tutorial.markSeen();
+    // Only mark the tutorial fully seen when all steps were completed.
+    // A mid-tutorial close preserves the saved step progress so the user
+    // can resume from where they left off.
+    if (completed) {
+      tutorial.markSeen();
+    }
     _closedTutorialStream.add(tutorial);
   }
 

@@ -249,6 +249,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
         ],
       ),
       currentRoute: widget.controller.currentRoutePath,
+      initialStepIndex: TutorialEnum.selectModeButtons.stepProgress,
     );
   }
 

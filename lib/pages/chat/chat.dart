@@ -671,7 +671,9 @@ class ChatController extends State<ChatPageWithRoom>
   void _writingAssistanceTutorialListener(TutorialEnum tutorial) {
     if (tutorial != TutorialEnum.selectModeButtons) return;
     WidgetsBinding.instance.addPostFrameCallback(
-      (_) => _startWritingAssistanceTutorial(),
+      (_) => _startWritingAssistanceTutorial(
+        initialStepIndex: TutorialEnum.writingAssistance.stepProgress,
+      ),
     );
   }
 
@@ -773,6 +775,7 @@ class ChatController extends State<ChatPageWithRoom>
         ],
       ),
       currentRoute: _router.state.path,
+      initialStepIndex: TutorialEnum.readingAssistance.stepProgress,
     );
   }
 
