@@ -9,14 +9,12 @@ class FeedbackDialog extends StatefulWidget {
   final String title;
   final Function(String) onSubmit;
 
-  final bool scrollable;
   final Widget? extraContent;
 
   const FeedbackDialog({
     super.key,
     required this.title,
     required this.onSubmit,
-    this.scrollable = true,
     this.extraContent,
   });
 
@@ -101,9 +99,7 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
                   ),
                 ],
               ),
-              widget.scrollable
-                  ? Flexible(child: SingleChildScrollView(child: content))
-                  : content,
+              Flexible(child: SingleChildScrollView(child: content)),
               ValueListenableBuilder<TextEditingValue>(
                 valueListenable: _feedbackController,
                 builder: (context, value, _) {
