@@ -99,12 +99,14 @@ jobs:
           set -e
 
           # =========================
-          # 1. IMMUTABLE ASSETS (safe hashed outputs only)
+          # 1. IMMUTABLE ASSETS
+          # Safe to cache long-term only if filenames are versioned/content-safe
           # =========================
           aws s3 sync ./build/web s3://$WEBAPP_S3_BUCKET \
             --cache-control "public, max-age=31536000, immutable" \
             --exclude "index.html" \
             --exclude "main.dart.js" \
+            --exclude "*.part.js" \
             --exclude "flutter.js" \
             --exclude "flutter_bootstrap.js" \
             --exclude "flutter_service_worker.js" \
@@ -115,13 +117,26 @@ jobs:
             --exclude "assets/fonts/*"
 
           # =========================
-          # 2. FONT FILES (stable filenames but frequently updated)
+          # 2. FONT FILES
+          # Stable names, can change between deploys
           # =========================
           aws s3 sync ./build/web/assets/fonts s3://$WEBAPP_S3_BUCKET/assets/fonts \
             --cache-control "no-cache, must-revalidate"
 
           # =========================
-          # 3. FLUTTER RUNTIME ENTRY FILES (MUST NEVER BE CACHED LONG-TERM)
+          # 3. DEFERRED FLUTTER CHUNKS
+          # Flutter .part.js filenames are NOT content hashed
+          # Must revalidate to avoid stale disk-cache crashes
+          # =========================
+          aws s3 cp ./build/web s3://$WEBAPP_S3_BUCKET \
+            --recursive \
+            --exclude "*" \
+            --include "*.part.js" \
+            --cache-control "no-cache, must-revalidate"
+
+          # =========================
+          # 4. FLUTTER RUNTIME ENTRY FILES
+          # Must always stay fresh
           # =========================
           RUNTIME_FILES=(
             "index.html"
