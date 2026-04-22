@@ -155,19 +155,6 @@ class ChoiceItem extends StatelessWidget {
               .key,
           child: Container(
             margin: const EdgeInsets.all(2),
-            padding: EdgeInsets.zero,
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(
-                Radius.circular(AppConfig.borderRadius),
-              ),
-              border: Border.all(
-                color: isSelected
-                    ? entry.value.color ?? theme.colorScheme.primary
-                    : Colors.transparent,
-                style: BorderStyle.solid,
-                width: 2.0,
-              ),
-            ),
             child: TextButton(
               style: TextButton.styleFrom(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -176,6 +163,12 @@ class ChoiceItem extends StatelessWidget {
                     theme.colorScheme.primary.withAlpha(10),
                 textStyle: BotStyle.text(context),
                 shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    color: isSelected
+                        ? entry.value.color ?? theme.colorScheme.primary
+                        : Colors.transparent,
+                    width: 2.0,
+                  ),
                   borderRadius: BorderRadius.circular(AppConfig.borderRadius),
                 ),
               ),
