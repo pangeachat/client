@@ -48,20 +48,31 @@ class TutorialTooltipWidget extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-            child: Center(
-              child: Row(
-                spacing: 8.0,
-                children: [
-                  BotFace(width: iconSize, expression: BotExpression.gold),
-                  Expanded(
-                    child: Text(
-                      text,
-                      style: style,
-                      textAlign: TextAlign.center,
-                    ),
+            child: Row(
+              spacing: 8.0,
+              children: [
+                BotFace(width: iconSize, expression: BotExpression.gold),
+                Expanded(
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      return SingleChildScrollView(
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            minHeight: constraints.maxHeight,
+                          ),
+                          child: Center(
+                            child: Text(
+                              text,
+                              style: style,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Padding(
