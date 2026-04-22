@@ -37,7 +37,6 @@ enum TutorialEnum {
   }
 
   bool locallyEnabled(String? currentRoute) {
-    if (!globallyEnabled) return false;
     return currentRoute == route;
   }
 

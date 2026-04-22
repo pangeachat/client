@@ -816,12 +816,12 @@ class ChatController extends State<ChatPageWithRoom>
 
     _writingAssistanceTutorialSubscription = TutorialOverlayOrchestrator
         .instance
-        .tutorialNavigationStream
+        .closedTutorialStream
         .listen(_writingAssistanceTutorialListener);
 
     _goBackTutorialSubscription = TutorialOverlayOrchestrator
         .instance
-        .goBackTutorialStream
+        .backNavigationStream
         .listen(_goBackTutorialListener);
 
     activityController = ActivityChatController(
