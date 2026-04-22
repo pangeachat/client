@@ -20,6 +20,12 @@ class ChatFloatingActionButton extends StatelessWidget {
         controller.scrollableNotifier,
       ]),
       builder: (context, _) {
+        if (controller.choreographer.errorService.error != null) {
+          return ChoreographerHasErrorButton(
+            controller.choreographer.errorService.error!,
+            controller.choreographer,
+          );
+        }
         if (controller.scrollController.hasClients &&
             controller.scrollController.position.pixels > 0) {
           return FloatingActionButton(
@@ -27,13 +33,6 @@ class ChatFloatingActionButton extends StatelessWidget {
             heroTag: null,
             mini: true,
             child: const Icon(Icons.arrow_downward_outlined),
-          );
-        }
-
-        if (controller.choreographer.errorService.error != null) {
-          return ChoreographerHasErrorButton(
-            controller.choreographer.errorService.error!,
-            controller.choreographer,
           );
         }
         return const SizedBox.shrink();
