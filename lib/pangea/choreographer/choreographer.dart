@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:async/async.dart';
+import 'package:matrix/matrix_api_lite/utils/logs.dart';
 
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
@@ -199,14 +200,35 @@ class Choreographer extends ChangeNotifier {
     final SubscriptionStatus canSendStatus =
         MatrixState.pangeaController.subscriptionController.subscriptionStatus;
 
-    if (canSendStatus != SubscriptionStatus.subscribed ||
-        MatrixState.pangeaController.userController.userL2 == null ||
-        MatrixState.pangeaController.userController.userL1 == null ||
-        (!ToolSetting.interactiveGrammar.enabled &&
-            !ToolSetting.interactiveTranslator.enabled) ||
-        (!ToolSetting.autoIGC.enabled && !manual) ||
-        _backoffRequest(_lastIgcError, _igcErrorBackoff)) {
+    if (canSendStatus != SubscriptionStatus.subscribed) {
+      Logs().w("User is not subscribed to a plan that allows IGC");
       return;
+    }
+
+    if (MatrixState.pangeaController.userController.userL2 == null ||
+        MatrixState.pangeaController.userController.userL1 == null) {
+      Logs().w("User does not have both L1 and L2 languages set");
+      return;
+    }
+
+    if (!ToolSetting.interactiveGrammar.enabled &&
+        !ToolSetting.interactiveTranslator.enabled) {
+      Logs().w(
+        "Both Interactive Grammar and Interactive Translator are disabled",
+      );
+      return;
+    }
+
+    if (!manual) {
+      if (!ToolSetting.autoIGC.enabled) {
+        Logs().w("Auto IGC is disabled");
+        return;
+      }
+
+      if (_backoffRequest(_lastIgcError, _igcErrorBackoff)) {
+        Logs().w("Backing off IGC request due to recent error");
+        return;
+      }
     }
 
     _resetDebounceTimer();
