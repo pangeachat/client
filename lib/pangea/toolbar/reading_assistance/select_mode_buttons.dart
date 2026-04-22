@@ -192,8 +192,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   @override
   void dispose() {
     final orchestrator = TutorialOverlayOrchestrator.instance;
-    if (orchestrator.isTutorialActive(TutorialEnum.selectModeButtons)) {
-      orchestrator.closeTutorial(TutorialEnum.selectModeButtons);
+    if (orchestrator.isTutorialActive(TutorialEnum.selectModeButtons) &&
+        !orchestrator.isStepTransitioning) {
+      orchestrator.cancelTutorial();
     }
 
     matrix?.audioPlayer?.dispose();

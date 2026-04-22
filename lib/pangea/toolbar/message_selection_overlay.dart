@@ -99,7 +99,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     super.didChangeDependencies();
     final newWidth = MediaQuery.widthOf(context);
     if (screenWidth != null && screenWidth != newWidth) {
-      widget.chatController.clearSelectedEvents();
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) widget.chatController.clearSelectedEvents();
+      });
       return;
     }
     screenWidth = newWidth;

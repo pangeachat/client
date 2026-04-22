@@ -205,6 +205,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   Future<void> _executeStepCallback() async {
     if (_transitioning) return;
     _transitioning = true;
+    TutorialOverlayOrchestrator.instance.beginStepTransition();
 
     try {
       final onTap = _currentStep?.data.onTap;
@@ -220,14 +221,17 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
       await _close();
     } finally {
       _transitioning = false;
+      TutorialOverlayOrchestrator.instance.endStepTransition();
     }
   }
 
   Future<void> _close() async {
+    if (!mounted) return;
+
     setState(() => _visible = false);
     await Future.delayed(_duration);
     if (mounted) {
-      TutorialOverlayOrchestrator.instance.closeTutorial(
+      TutorialOverlayOrchestrator.instance.clearActiveTutorial(
         widget.tutorial.tutorialType,
       );
     }
