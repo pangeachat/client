@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/language_level_dropdown.dart';
-import 'package:fluffychat/pangea/instructions/reset_instructions_list_tile.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/country_picker_tile.dart';
 import 'package:fluffychat/pangea/learning_settings/enable_autocorrect_dialog.dart';
@@ -246,7 +245,12 @@ class _LearningSettingsExpansionTile extends StatelessWidget {
                 },
               ),
             ),
-        ResetInstructionsListTile(viewModel.resetInstructionTooltips),
+        ListTile(
+          leading: const Icon(Icons.lightbulb),
+          title: Text(L10n.of(context).resetInstructionTooltipsTitle),
+          subtitle: Text(L10n.of(context).resetInstructionTooltipsDesc),
+          onTap: viewModel.resetInstructionTooltips,
+        ),
         SizedBox(height: 8.0),
       ],
     );
