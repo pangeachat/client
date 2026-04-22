@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 15:04:23.441260",
+    "@@last_modified": "2026-04-22 11:01:00.401873",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -11067,13 +11067,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Estem investigant-ho! Si us plau, torna-ho a provar més tard.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "L'assistència d'escriptura està trigant una mica més del que s'esperava. Torna-ho a intentar en un segon!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "L'assistència d'escriptura està trigant una mica més del que s'esperava. Torna-ho a intentar en un segon!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Ups, alguna cosa ha anat malament… Estem investigant-ho! Si us plau, torna a provar més tard.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

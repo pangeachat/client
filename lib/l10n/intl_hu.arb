@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-04-20 15:03:56.835999",
+    "@@last_modified": "2026-04-22 11:00:32.439961",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -11043,13 +11043,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Vizsgáljuk! Kérjük, próbálja meg később.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "A írási segítség kicsit tovább tart, mint vártuk. Próbáld meg újra egy másodperc múlva!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "A írási segítség kicsit tovább tart, mint vártuk. Próbáld meg újra egy másodperc múlva!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Hoppá, valami hiba történt… Vizsgáljuk az ügyet! Kérjük, próbálja meg később.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

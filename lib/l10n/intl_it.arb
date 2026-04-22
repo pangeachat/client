@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 15:04:17.419934",
+    "@@last_modified": "2026-04-22 11:00:53.173031",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -11007,13 +11007,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Stiamo indagando! Per favore riprova più tardi.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "L'assistenza alla scrittura sta impiegando un po' più tempo del previsto. Riprova tra un secondo!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "L'assistenza alla scrittura sta impiegando un po' più tempo del previsto. Riprova tra un secondo!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Ops, qualcosa è andato storto… Stiamo indagando! Per favore riprova più tardi.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

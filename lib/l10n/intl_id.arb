@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 15:03:58.377235",
+    "@@last_modified": "2026-04-22 11:00:33.664874",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -11013,13 +11013,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Kami sedang menyelidikinya! Silakan coba lagi nanti.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "Bantuan penulisan memerlukan sedikit lebih banyak waktu dari yang diharapkan. Coba lagi dalam beberapa detik!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "Bantuan penulisan memerlukan sedikit lebih banyak waktu dari yang diharapkan. Coba lagi dalam beberapa detik!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Ups, ada yang salah… Kami sedang menyelidikinya! Silakan coba lagi nanti.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

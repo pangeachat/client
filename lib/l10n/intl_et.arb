@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-04-20 15:04:13.120814",
+    "@@last_modified": "2026-04-22 11:00:47.908986",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10913,13 +10913,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Me uurime seda! Palun proovige hiljem uuesti.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "Kirjutamisabi võtab oodatust kauem aega. Proovi uuesti natuke hiljem!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "Kirjutamisabi võtab oodatust kauem aega. Proovi uuesti natuke hiljem!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Ups, midagi läks valesti… Me uurime seda! Palun proovi hiljem uuesti.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

@@ -1746,7 +1746,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-04-20 15:03:55.311796",
+    "@@last_modified": "2026-04-22 11:00:31.083339",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -12010,13 +12010,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Vi ser på det! Venligst prøv igen senere.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "Skriveassistance tager lidt længere tid end forventet. Prøv igen om et øjeblik!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "Skriveassistance tager lidt længere tid end forventet. Prøv igen om et øjeblik!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Ups, noget gik galt… Vi undersøger det! Prøv venligst igen senere.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

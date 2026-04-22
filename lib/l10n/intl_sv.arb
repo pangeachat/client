@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 15:04:49.469561",
+    "@@last_modified": "2026-04-22 11:01:27.338355",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11503,13 +11503,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Vi undersöker det! Vänligen försök igen senare.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "Skrivhjälpen tar lite längre tid än förväntat. Försök igen om en sekund!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "Skrivhjälpen tar lite längre tid än förväntat. Försök igen om en sekund!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Oj, något gick fel… Vi undersöker det! Vänligen försök igen senare.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

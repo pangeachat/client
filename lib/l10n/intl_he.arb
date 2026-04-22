@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 15:04:05.194119",
+    "@@last_modified": "2026-04-22 11:00:40.625971",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -11995,13 +11995,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "אנחנו בודקים את זה! אנא נסה שוב מאוחר יותר.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "סיוע בכתיבה לוקח קצת יותר זמן מהצפוי. נסה שוב בעוד שנייה!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "סיוע בכתיבה לוקח קצת יותר זמן מהצפוי. נסה שוב בעוד שנייה!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "אופס, משהו השתבש… אנחנו בודקים את זה! אנא נסה שוב מאוחר יותר.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

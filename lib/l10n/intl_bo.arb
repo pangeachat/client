@@ -3462,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-04-20 15:04:43.543636",
+    "@@last_modified": "2026-04-22 11:01:21.492599",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10588,13 +10588,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Nami se na to! Të lutem, provoni përsëri më vonë.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "Bantuan menulis sedang memerlukan sedikit lebih banyak waktu dari yang diharapkan. Coba lagi dalam sesaat!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "Bantuan menulis sedang memerlukan sedikit lebih banyak waktu dari yang diharapkan. Coba lagi dalam sesaat!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Oop, somethin' went wrong… We' re lookin' into it! Please try again later.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

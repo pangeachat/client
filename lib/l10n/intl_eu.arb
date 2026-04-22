@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-04-20 15:04:09.470470",
+    "@@last_modified": "2026-04-22 11:00:44.997785",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10916,13 +10916,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Hori aztertzen ari gara! Mesedez, saiatu berriro geroago.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "Idazteko laguntza espero baino denbora gehiago behar du. Saiatu berriro segundo batean!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "Idazteko laguntza espero baino denbora gehiago behar du. Saiatu berriro segundo batean!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Aizu, zerbait oker joan da… Hori aztertzen ari gara! Mesedez, saiatu berriro geroago.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

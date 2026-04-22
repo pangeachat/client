@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 15:04:47.410722",
+    "@@last_modified": "2026-04-22 11:01:24.968746",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -11028,13 +11028,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "ما در حال بررسی آن هستیم! لطفاً بعداً دوباره تلاش کنید.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "کمک نوشتن کمی بیشتر از حد انتظار طول می‌کشد. لطفاً در یک ثانیه دوباره تلاش کنید!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "کمک نوشتن کمی بیشتر از حد انتظار طول می‌کشد. لطفاً در یک ثانیه دوباره تلاش کنید!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "اوه، مشکلی پیش آمد… ما در حال بررسی آن هستیم! لطفاً بعداً دوباره تلاش کنید.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

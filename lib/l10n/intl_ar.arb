@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-04-20 15:04:33.810600",
+    "@@last_modified": "2026-04-22 11:01:10.121535",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11256,13 +11256,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "نحن نبحث في الأمر! يرجى المحاولة مرة أخرى لاحقًا.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "تستغرق المساعدة في الكتابة وقتًا أطول قليلاً مما هو متوقع. حاول مرة أخرى بعد ثوانٍ!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "تستغرق المساعدة في الكتابة وقتًا أطول قليلاً مما هو متوقع. حاول مرة أخرى بعد ثوانٍ!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "عذرًا، حدث خطأ ما… نحن نبحث في الأمر! يرجى المحاولة مرة أخرى لاحقًا.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

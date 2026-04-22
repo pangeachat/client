@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 15:04:55.111215",
+    "@@last_modified": "2026-04-22 11:01:33.150992",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -12035,13 +12035,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Ni esploras ĝin! Bonvolu provi denove poste.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "La helpo pri skribado daŭras iom pli longe ol atendite. Provu denove en unu sekundo!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "La helpo pri skribado daŭras iom pli longe ol atendite. Provu denove en unu sekundo!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Ho, io ne iris bone… Ni esploras ĝin! Bonvolu provi denove poste.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }
