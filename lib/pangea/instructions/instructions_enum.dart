@@ -141,4 +141,26 @@ extension InstructionsEnumExtension on InstructionsEnum {
       return profile;
     });
   }
+
+  /// The last step index the user reached in this tutorial, or 0 if no
+  /// progress has been saved.
+  int get stepProgress {
+    final user = MatrixState.pangeaController.userController;
+    if (!user.initCompleter.isCompleted) return 0;
+    return user.profile.instructionSettings.getStepProgress(this);
+  }
+
+  void setStepProgress(int step) {
+    MatrixState.pangeaController.userController.updateProfile((profile) {
+      profile.instructionSettings.setStepProgress(this, step);
+      return profile;
+    });
+  }
+
+  void clearStepProgress() {
+    MatrixState.pangeaController.userController.updateProfile((profile) {
+      profile.instructionSettings.clearStepProgress(this);
+      return profile;
+    });
+  }
 }
