@@ -38,7 +38,6 @@ class ActivitySessionStartView extends StatelessWidget {
           onSubmit: (feedback) {
             Navigator.of(context).pop(feedback);
           },
-          scrollable: false,
         );
       },
     );

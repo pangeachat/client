@@ -371,7 +371,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         return FeedbackDialog(
           title: L10n.of(context).feedbackTitle,
           onSubmit: Navigator.of(context).pop,
-          scrollable: false,
         );
       },
     );
