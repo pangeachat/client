@@ -2231,7 +2231,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-04-20 15:04:15.333436",
+    "@@last_modified": "2026-04-22 11:00:50.597680",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12032,13 +12032,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Preverjamo to! Prosimo, poskusite znova kasneje.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "Pomoč pri pisanju traja nekoliko dlje, kot je bilo pričakovano. Poskusite znova čez trenutek!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "Pomoč pri pisanju traja nekoliko dlje, kot je bilo pričakovano. Poskusite znova čez trenutek!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Oups, nekaj je šlo narobe… Preverjamo to! Prosimo, poskusite znova kasneje.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

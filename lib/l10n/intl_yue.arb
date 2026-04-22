@@ -1675,7 +1675,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-04-20 15:04:16.296309",
+    "@@last_modified": "2026-04-22 11:00:51.620239",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -12047,13 +12047,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "我們正在調查！請稍後再試。",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "寫作輔助比預期花了更長的時間。請稍後再試！",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "寫作輔助比預期花了更長的時間。請稍後再試！",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "哎呀，有些事情出錯了……我們正在調查中！請稍後再試。",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

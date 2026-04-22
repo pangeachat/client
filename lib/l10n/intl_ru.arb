@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-04-20 15:04:56.231539",
+    "@@last_modified": "2026-04-22 11:01:35.668997",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11930,13 +11930,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Мы разбираемся с этим! Пожалуйста, попробуйте позже.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "Помощь в написании занимает немного больше времени, чем ожидалось. Попробуйте снова через секунду!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "Помощь в написании занимает немного больше времени, чем ожидалось. Попробуйте снова через секунду!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Упс, что-то пошло не так… Мы разбираемся с этим! Пожалуйста, попробуйте позже.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

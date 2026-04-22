@@ -3514,7 +3514,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-04-20 15:04:38.313478",
+    "@@last_modified": "2026-04-22 11:01:15.247411",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11802,13 +11802,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Mes tuo rūpinamės! Prašome bandyti vėliau.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "Rašymo pagalba užtrunka šiek tiek ilgiau nei tikėtasi. Bandykite dar kartą po sekundės!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "Rašymo pagalba užtrunka šiek tiek ilgiau nei tikėtasi. Bandykite dar kartą po sekundės!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Oi, kažkas nepavyko… Mes tai nagrinėjame! Prašome bandyti vėliau.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

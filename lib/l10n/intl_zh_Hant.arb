@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 15:04:28.374386",
+    "@@last_modified": "2026-04-22 11:01:04.184023",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -11046,13 +11046,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "我們正在調查中！請稍後再試。",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "寫作輔助的時間比預期的要長一些。請稍後再試！",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "寫作輔助的時間比預期的要長一些。請稍後再試！",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "哎呀，發生了一些問題……我們正在調查中！請稍後再試。",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

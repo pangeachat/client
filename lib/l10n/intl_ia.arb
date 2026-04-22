@@ -1774,7 +1774,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-04-20 15:04:06.241296",
+    "@@last_modified": "2026-04-22 11:00:42.274399",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12026,13 +12026,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Nus estem investigant! Per favor, torna a provar més tard.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "La asistente de escritura está tardando un poco más de lo esperado. ¡Intenta de nuevo en un segundo!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "La asistente de escritura está tardando un poco más de lo esperado. ¡Intenta de nuevo en un segundo!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Oups, quicò quòc è andat mal… Nòstrem a l'òbra! Per piaser, pröva de nòu pù tardi.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

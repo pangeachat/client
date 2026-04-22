@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-04-20 15:04:35.140926",
+    "@@last_modified": "2026-04-22 11:01:11.319977",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11247,13 +11247,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Bunu inceliyoruz! Lütfen daha sonra tekrar deneyin.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "Yazma yardımı beklenenden biraz daha uzun sürüyor. Bir saniye içinde tekrar deneyin!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "Yazma yardımı beklenenden biraz daha uzun sürüyor. Bir saniye içinde tekrar deneyin!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Hups, bir şeyler ters gitti… Biz bununla ilgileniyoruz! Lütfen daha sonra tekrar deneyin.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

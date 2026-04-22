@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-04-20 15:04:03.834207",
+    "@@last_modified": "2026-04-22 11:00:38.850743",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11400,13 +11400,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Istražujemo to! Molimo pokušajte ponovo kasnije.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "Pomoć pri pisanju traje malo duže nego što se očekivalo. Pokušajte ponovo za trenutak!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "Pomoć pri pisanju traje malo duže nego što se očekivalo. Pokušajte ponovo za trenutak!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Oprosti, nešto je pošlo po zlu… Istražujemo to! Molimo pokušajte ponovo kasnije.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

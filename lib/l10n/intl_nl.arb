@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 15:04:42.311777",
+    "@@last_modified": "2026-04-22 11:01:19.129852",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10916,13 +10916,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "We onderzoeken het! Probeer het later nog eens.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "Het schrijven van assistentie duurt iets langer dan verwacht. Probeer het over een seconde opnieuw!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "Het schrijven van assistentie duurt iets langer dan verwacht. Probeer het over een seconde opnieuw!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Oeps, er is iets misgegaan… We kijken ernaar! Probeer het later opnieuw.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-04-20 15:03:52.605075",
+    "@@last_modified": "2026-04-22 11:00:27.429329",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10916,13 +10916,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Estamos a investigalo! Por favor, intenta de novo máis tarde.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "A asistencia de escritura está a levar un pouco máis de tempo do esperado. Inténtao de novo en un segundo!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "A asistencia de escritura está a levar un pouco máis de tempo do esperado. Inténtao de novo en un segundo!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Ops, algo saíu mal… Estamos a investigalo! Por favor, intenta de novo máis tarde.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

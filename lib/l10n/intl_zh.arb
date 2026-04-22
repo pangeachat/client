@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-04-20 15:04:45.064028",
+    "@@last_modified": "2026-04-22 11:01:22.555716",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10916,13 +10916,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "我们正在调查此事！请稍后再试。",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "写作助手的响应时间比预期稍长。请稍后再试！",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "写作助手的响应时间比预期稍长。请稍后再试！",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "哎呀，出了点问题……我们正在调查！请稍后再试。",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

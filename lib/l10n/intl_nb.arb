@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 15:04:21.003226",
+    "@@last_modified": "2026-04-22 11:00:57.428974",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10976,13 +10976,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Vi ser på det! Vennligst prøv igjen senere.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "Skriveassistanse tar litt lengre tid enn forventet. Prøv igjen om et sekund!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "Skriveassistanse tar litt lengre tid enn forventet. Prøv igjen om et sekund!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Oops, noe gikk galt… Vi ser på det! Vennligst prøv igjen senere.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

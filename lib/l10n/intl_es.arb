@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-04-20 15:03:51.412244",
+    "@@last_modified": "2026-04-22 11:00:26.078577",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7942,13 +7942,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "¡Estamos investigando! Por favor, inténtalo de nuevo más tarde.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "La asistencia para escribir está tardando un poco más de lo esperado. ¡Inténtalo de nuevo en un segundo!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "La asistencia para escribir está tardando un poco más de lo esperado. ¡Inténtalo de nuevo en un segundo!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Ups, algo salió mal… ¡Estamos investigando! Por favor, inténtalo de nuevo más tarde.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

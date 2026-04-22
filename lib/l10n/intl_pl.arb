@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-04-20 15:04:48.446152",
+    "@@last_modified": "2026-04-22 11:01:26.013520",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -11025,13 +11025,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Pracujemy nad tym! Proszę spróbować ponownie później.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "Pomoc w pisaniu zajmuje trochę więcej czasu niż oczekiwano. Spróbuj ponownie za chwilę!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "Pomoc w pisaniu zajmuje trochę więcej czasu niż oczekiwano. Spróbuj ponownie za chwilę!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Ups, coś poszło nie tak… Zajmujemy się tym! Proszę spróbować ponownie później.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }

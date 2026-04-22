@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-20 15:04:58.391979",
+    "@@last_modified": "2026-04-22 11:01:38.721035",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -12039,13 +12039,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainLater": "Radimo na tome! Molimo vas da pokušate ponovo kasnije.",
-    "@errorTryAgainLater": {
+    "errorTryAgainSoon": "Pomoć pri pisanju traje malo duže nego što se očekivalo. Pokušajte ponovo za trenutak!",
+    "@errorTryAgainSoon": {
         "type": "String",
         "placeholders": {}
     },
-    "errorTryAgainSoon": "Pomoć pri pisanju traje malo duže nego što se očekivalo. Pokušajte ponovo za trenutak!",
-    "@errorTryAgainSoon": {
+    "errorTryAgainLater": "Ups, nešto nije u redu… Istražujemo to! Molimo pokušajte ponovo kasnije.",
+    "@errorTryAgainLater": {
         "type": "String",
         "placeholders": {}
     }
