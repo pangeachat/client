@@ -633,7 +633,7 @@ class ChatController extends State<ChatPageWithRoom>
     matrix.audioPlayer!.play();
   }
 
-  Future<void> _readingAssistanceTutorialListener(SyncUpdate update) async {
+  void _readingAssistanceTutorialListener(SyncUpdate update) {
     if (!_canLaunchTutorialSequence) return;
 
     final timeline = this.timeline;
@@ -743,7 +743,7 @@ class ChatController extends State<ChatPageWithRoom>
     return true;
   }
 
-  Future<void> _startReadingAssistanceTutorial(Event event) async {
+  void _startReadingAssistanceTutorial(Event event) {
     if (!_canLaunchTutorialSequence) return;
 
     final orchestrator = TutorialOverlayOrchestrator.instance;
@@ -756,6 +756,10 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     _tutorialEvent = event;
+    if (!kIsWeb) {
+      inputFocus.unfocus();
+    }
+
     final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
     orchestrator.launchTutorial(
       context: context,
