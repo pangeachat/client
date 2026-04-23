@@ -26,8 +26,8 @@ class EndStepTransitionEvent extends TutorialStateTransitionEvent {
   const EndStepTransitionEvent();
 }
 
-class CompleteTutorialEvent extends TutorialStateTransitionEvent {
-  const CompleteTutorialEvent();
+class CloseTutorialEvent extends TutorialStateTransitionEvent {
+  const CloseTutorialEvent();
 }
 
 class ResetSequenceEvent extends TutorialStateTransitionEvent {

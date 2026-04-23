@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+
+import 'package:matrix/matrix_api_lite/utils/logs.dart';
+
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -5,17 +9,12 @@ import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_tooltip_container_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:matrix/matrix_api_lite/utils/logs.dart';
 
 enum TooltipPosition { above, below }
 
 class TutorialOverlayWidget extends StatefulWidget {
   final TutorialModel tutorial;
   final TooltipPosition preferredPosition;
-
-  /// The step index to start on. Defaults to 0 (first step). Pass
-  /// `tutorialType.stepCount - 1` when the user navigated back to this model.
   final int initialStepIndex;
 
   const TutorialOverlayWidget({
@@ -34,21 +33,20 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   bool _transitioning = false;
   bool _visible = false;
 
-  /// Set to true when the user taps through the final step so that
-  /// [TutorialOverlayOrchestrator.onCloseTutorial] knows to mark the tutorial
-  /// fully seen. Mid-tutorial closes leave this false, allowing a resume.
   bool _completedAllSteps = false;
+  bool _handledClose = false;
+
+  static const double _tooltipPadding = 8.0;
 
   @override
   void initState() {
     super.initState();
+
     _currentStepIndex = widget.initialStepIndex.clamp(
       0,
       widget.tutorial.tutorialType.stepCount - 1,
     );
-    Logs().i(
-      "Initializing tutorial overlay for tutorial ${widget.tutorial.tutorialType} at step $_currentStepIndex",
-    );
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         _visible = true;
@@ -59,14 +57,13 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
 
   @override
   void dispose() {
-    TutorialOverlayOrchestrator.instance.onCloseTutorial(
-      widget.tutorial.tutorialType,
-      completed: _completedAllSteps,
-    );
+    if (!_handledClose) {
+      TutorialOverlayController.instance.handleUnexpectedClose(
+        completed: _completedAllSteps,
+      );
+    }
     super.dispose();
   }
-
-  static const double _tooltipPadding = 8.0;
 
   int get _stepsLength => widget.tutorial.tutorialType.stepCount;
 
@@ -139,14 +136,16 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   }
 
   double? get _tooltipHorizontalOffset {
-    if (_currentOffset == null || _currentSize == null) return null;
+    final size = _currentSize;
+    final pos = _currentOffset;
+
+    if (pos == null || size == null) return null;
     final screenWidth = MediaQuery.sizeOf(context).width;
     final tip = _tooltipSize;
     if (tip.width >= screenWidth) {
       return null; // can't fit, just center
     }
-    final pos = _currentOffset!;
-    final size = _currentSize!;
+
     final midpoint = pos.dx + size.width / 2;
 
     final rightEdge = midpoint + tip.width / 2 + _tooltipPadding;
@@ -161,6 +160,10 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     }
     return null;
   }
+
+  bool get _hasPreviousTutorial =>
+      _currentStepIndex > 0 ||
+      TutorialOverlayController.instance.hasPreviousTutorial;
 
   Future<void> _next() async {
     await _updateStep(_currentStepIndex + 1);
@@ -177,7 +180,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   /// Closes the current tutorial overlay and signals the orchestrator to
   /// re-open the previous tutorial in the sequence at its last step.
   Future<void> _goBackToPreviousTutorial() async {
-    if (!TutorialOverlayOrchestrator.instance.hasPreviousTutorial) {
+    if (!TutorialOverlayController.instance.hasPreviousTutorial) {
       // No previous tutorial — fall back to closing the sequence.
       await _close();
       return;
@@ -185,7 +188,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     setState(() => _visible = false);
     await Future.delayed(_duration);
     if (mounted) {
-      TutorialOverlayOrchestrator.instance.requestGoBack();
+      TutorialOverlayController.instance.launchPreviousTutorial();
     }
   }
 
@@ -197,20 +200,23 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
       return;
     }
 
-    setState(() {
-      _visible = true;
-      _currentStepIndex = updatedIndex;
-    });
+    if (mounted) {
+      setState(() {
+        _visible = true;
+        _currentStepIndex = updatedIndex;
+      });
+    }
 
     widget.tutorial.tutorialType.saveProgress(updatedIndex + 1);
   }
 
   Future<void> _executeStepCallback() async {
     if (_transitioning) return;
-    _transitioning = true;
-    TutorialOverlayOrchestrator.instance.beginStepTransition();
 
     try {
+      _transitioning = true;
+      TutorialOverlayController.instance.beginStepTransition();
+
       final onTap = _currentStep?.data.onTap;
 
       if (onTap != null) {
@@ -224,17 +230,21 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
       await _close();
     } finally {
       _transitioning = false;
-      TutorialOverlayOrchestrator.instance.endStepTransition();
+      TutorialOverlayController.instance.endStepTransition();
     }
   }
 
   Future<void> _close() async {
     if (!mounted) return;
 
-    setState(() => _visible = false);
+    setState(() {
+      _handledClose = true;
+      _visible = false;
+    });
+
     await Future.delayed(_duration);
     if (mounted) {
-      TutorialOverlayOrchestrator.instance.clearActiveTutorial(
+      TutorialOverlayController.instance.completeTutorial(
         widget.tutorial.tutorialType,
       );
     }
@@ -246,14 +256,18 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     final showAbove = _showAbove;
 
     final completedStepsOffset =
-        TutorialOverlayOrchestrator.instance.completedStepsOffset;
+        TutorialOverlayController.instance.completedStepsOffset;
 
     final currentStep = completedStepsOffset + _currentStepIndex + 1;
 
     final totalSteps =
-        TutorialOverlayOrchestrator.instance.totalStepsInCurrentSequence;
+        TutorialOverlayController.instance.totalStepsInCurrentSequence;
 
     final showNavigation = widget.tutorial.tutorialType.showNavigationButtons;
+
+    final size = _currentSize;
+    final holeWidth = (size?.width ?? 0.0) + (step?.style.padding ?? 0) * 2;
+    final holeHeight = (size?.height ?? 0.0) + (step?.style.padding ?? 0) * 2;
 
     return MouseRegion(
       cursor: step != null && _visible
@@ -289,12 +303,8 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
                             targetAnchor: Alignment.center,
                             followerAnchor: Alignment.center,
                             child: Container(
-                              width:
-                                  (_currentSize?.width ?? 0.0) +
-                                  (step.style.padding ?? 0) * 2,
-                              height:
-                                  (_currentSize?.height ?? 0.0) +
-                                  (step.style.padding ?? 0) * 2,
+                              width: holeWidth,
+                              height: holeHeight,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(
@@ -332,12 +342,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
                   onNext: _executeStepCallback,
                   onPrevious: _previous,
                   showNext: showNavigation,
-                  showPrevious:
-                      showNavigation &&
-                      (_currentStepIndex > 0 ||
-                          TutorialOverlayOrchestrator
-                              .instance
-                              .hasPreviousTutorial),
+                  showPrevious: showNavigation && _hasPreviousTutorial,
                   currentStep: currentStep,
                   totalSteps: totalSteps,
                   text: step.style.tooltip,

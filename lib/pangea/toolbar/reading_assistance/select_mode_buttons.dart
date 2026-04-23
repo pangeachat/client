@@ -178,7 +178,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
     controller.playTokenNotifier.addListener(_playToken);
 
-    if (TutorialOverlayOrchestrator.instance.isTutorialQueued(
+    if (TutorialOverlayController.instance.isTutorialQueued(
       TutorialEnum.selectModeButtons,
     )) {
       Future.delayed(Duration(milliseconds: 1000), () {
@@ -191,10 +191,10 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
   @override
   void dispose() {
-    final orchestrator = TutorialOverlayOrchestrator.instance;
+    final orchestrator = TutorialOverlayController.instance;
     if (orchestrator.isTutorialActive(TutorialEnum.selectModeButtons) &&
         !orchestrator.isStepTransitioning) {
-      orchestrator.cancelTutorial();
+      orchestrator.cancelSequence();
     }
 
     matrix?.audioPlayer?.dispose();
@@ -221,7 +221,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     final audioTarget = SelectMode.audio.buttonTarget;
     final msgTarget = widget.overlayController.overlayMessageLayerLink;
 
-    TutorialOverlayOrchestrator.instance.launchTutorial(
+    TutorialOverlayController.instance.launchNextTutorial(
       context: context,
       tutorial: SelectModeButtonsTutorialModel(
         data: [

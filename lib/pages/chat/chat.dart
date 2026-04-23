@@ -1,11 +1,24 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 import 'package:async/async.dart' as async;
 import 'package:collection/collection.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:matrix/matrix.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:universal_html/html.dart' as html;
+
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -89,18 +102,6 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart'
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:just_audio/just_audio.dart';
-import 'package:matrix/matrix.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:universal_html/html.dart' as html;
-
 import '../../utils/localized_exception_extension.dart';
 import 'send_file_dialog.dart';
 import 'send_location_dialog.dart';
@@ -667,7 +668,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _writingAssistanceTutorialListener() {
     final tutorial =
-        TutorialOverlayOrchestrator.instance.closedTutorialNotifier.value;
+        TutorialOverlayController.instance.closedTutorialNotifier.value;
 
     if (tutorial != TutorialEnum.selectModeButtons) return;
     WidgetsBinding.instance.addPostFrameCallback(
@@ -683,7 +684,7 @@ class ChatController extends State<ChatPageWithRoom>
   Future<void> _goBackTutorialListener() async {
     if (!mounted) return;
     final tutorial =
-        TutorialOverlayOrchestrator.instance.backNavigationNotifier.value;
+        TutorialOverlayController.instance.backNavigationNotifier.value;
     if (tutorial == null) return;
 
     switch (tutorial) {
@@ -722,7 +723,7 @@ class ChatController extends State<ChatPageWithRoom>
     _tutorialEvent = event;
 
     final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
-    TutorialOverlayOrchestrator.instance.launchTutorial(
+    TutorialOverlayController.instance.launchNextTutorial(
       context: context,
       tutorial: ReadingAssistantTutorialModel(
         data: [
@@ -743,7 +744,7 @@ class ChatController extends State<ChatPageWithRoom>
       ChoreoConstants.inputTransformTargetKey,
     );
 
-    TutorialOverlayOrchestrator.instance.launchTutorial(
+    TutorialOverlayController.instance.launchNextTutorial(
       context: context,
       tutorial: WritingAssistantTutorialModel(
         data: [
@@ -768,7 +769,7 @@ class ChatController extends State<ChatPageWithRoom>
   String? get currentRoutePath => _router.state.path;
 
   bool get _canLaunchTutorialSequence {
-    final orchestrator = TutorialOverlayOrchestrator.instance;
+    final orchestrator = TutorialOverlayController.instance;
     final tutorialSeq = TutorialSequences.chatTutorialSequence;
     if (orchestrator.hasCompletedTutorialSequence(tutorialSeq)) return false;
 
@@ -782,13 +783,9 @@ class ChatController extends State<ChatPageWithRoom>
   void _startAssistanceTutorialSequence(Event event) {
     if (!_canLaunchTutorialSequence) return;
 
-    final orchestrator = TutorialOverlayOrchestrator.instance;
+    final orchestrator = TutorialOverlayController.instance;
     final tutorialSeq = TutorialSequences.chatTutorialSequence;
     orchestrator.enqueueTutorialSequence(tutorialSeq);
-
-    if (orchestrator.hasActiveTutorial) {
-      return;
-    }
 
     if (orchestrator.isTutorialQueued(TutorialEnum.readingAssistance)) {
       _launchReadingAssistanceTutorial(
@@ -827,11 +824,11 @@ class ChatController extends State<ChatPageWithRoom>
       _readingAssistanceTutorialListener,
     );
 
-    TutorialOverlayOrchestrator.instance.closedTutorialNotifier.addListener(
+    TutorialOverlayController.instance.closedTutorialNotifier.addListener(
       _writingAssistanceTutorialListener,
     );
 
-    TutorialOverlayOrchestrator.instance.backNavigationNotifier.addListener(
+    TutorialOverlayController.instance.backNavigationNotifier.addListener(
       _goBackTutorialListener,
     );
 
@@ -1117,13 +1114,13 @@ class ChatController extends State<ChatPageWithRoom>
     depressMessageButton.dispose();
     scrollableNotifier.dispose();
     TokensUtil.instance.clearNewTokenCache();
-    TutorialOverlayOrchestrator.instance.closedTutorialNotifier.removeListener(
+    TutorialOverlayController.instance.closedTutorialNotifier.removeListener(
       _writingAssistanceTutorialListener,
     );
-    TutorialOverlayOrchestrator.instance.backNavigationNotifier.removeListener(
+    TutorialOverlayController.instance.backNavigationNotifier.removeListener(
       _goBackTutorialListener,
     );
-    TutorialOverlayOrchestrator.instance.reset();
+    TutorialOverlayController.instance.resetState();
     //Pangea#
     super.dispose();
   }

@@ -1,13 +1,13 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/onboarding/tutorial_constants.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_overlay_widget.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_state_transition_events.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:matrix/matrix_api_lite/utils/logs.dart';
 
-class _TutorialOverlayState {
+class TutorialOverlayState {
   /// The current tutorial sequence being processed, if any. Tutorials are held in the queue
   /// until activated by some trigger within the app (i.e. opening message toolbar)
   final TutorialSequence? sequence;
@@ -21,151 +21,100 @@ class _TutorialOverlayState {
   /// True while a tutorial step's [TutorialStepData.onTap] callback is being executed
   final bool isStepTransitioning;
 
-  const _TutorialOverlayState({
+  const TutorialOverlayState({
     this.sequence,
     this.activeTutorialIndex = -1,
     this.activeTutorial,
     this.isStepTransitioning = false,
   });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'sequence': sequence?.map((t) => t.name).toList(),
+      'activeTutorialIndex': activeTutorialIndex,
+      'activeTutorial': activeTutorial?.tutorialType.name,
+      'isStepTransitioning': isStepTransitioning,
+    };
+  }
+
+  TutorialOverlayState copyWith({
+    TutorialSequence? sequence,
+    int? activeTutorialIndex,
+    TutorialModel? activeTutorial,
+    bool? isStepTransitioning,
+    bool resetActiveTutorial = false,
+    bool resetSequence = false,
+  }) {
+    return TutorialOverlayState(
+      sequence: resetSequence ? null : (sequence ?? this.sequence),
+      activeTutorialIndex: activeTutorialIndex ?? this.activeTutorialIndex,
+      activeTutorial: resetActiveTutorial
+          ? null
+          : (activeTutorial ?? this.activeTutorial),
+      isStepTransitioning: isStepTransitioning ?? this.isStepTransitioning,
+    );
+  }
 }
 
-class _TutorialOverlayStateMachine extends ChangeNotifier {
-  _TutorialOverlayState _model = const _TutorialOverlayState();
-
-  bool get hasQueuedTutorial => _model.sequence != null;
-
-  bool get hasActiveTutorial => _model.activeTutorial != null;
-
-  bool get hasPreviousTutorial =>
-      _model.sequence != null &&
-      _model.activeTutorialIndex > 0 &&
-      _model.activeTutorialIndex < _model.sequence!.length;
-
-  bool get isStepTransitioning => _model.isStepTransitioning;
-
-  bool get isSequenceComplete =>
-      _model.sequence != null &&
-      _model.activeTutorialIndex == _model.sequence!.length - 1;
-
-  TutorialModel? get activeTutorial => _model.activeTutorial;
-
-  int get totalStepsInCurrentSequence {
-    final sequence = _model.sequence;
-    if (sequence == null) return 0;
-    return sequence.fold(0, (sum, tutorial) => sum + tutorial.stepCount);
-  }
-
-  int get completedStepsOffset {
-    final sequence = _model.sequence;
-    if (sequence == null || _model.activeTutorialIndex < 0) return 0;
-    return sequence
-        .take(_model.activeTutorialIndex)
-        .fold(0, (sum, tutorial) => sum + tutorial.stepCount);
-  }
-
-  bool isTutorialQueued(TutorialEnum tutorial) {
-    final sequence = _model.sequence;
-    if (sequence == null) return false;
-
-    final nextIndex = _model.activeTutorialIndex + 1;
-    if (nextIndex >= sequence.length) return false;
-    return sequence[nextIndex] == tutorial;
-  }
-
-  bool isTutorialActive(TutorialEnum tutorial) =>
-      _model.activeTutorial?.tutorialType == tutorial;
+class TutorialOverlayStateMachine extends ChangeNotifier {
+  TutorialOverlayState model = const TutorialOverlayState();
 
   void dispatch(TutorialStateTransitionEvent event) {
-    _model = switch (event) {
-      EnqueueSequenceEvent(:final sequence) => enqueue(sequence),
-      LaunchTutorialEvent(:final tutorial) => launch(tutorial),
-      PreviousTutorialEvent() => previous(),
-      BeginStepTransitionEvent() => beginTransition(),
-      EndStepTransitionEvent() => endTransition(),
-      CompleteTutorialEvent() => complete(),
-      ResetSequenceEvent() => const _TutorialOverlayState(),
+    model = switch (event) {
+      EnqueueSequenceEvent(:final sequence) => _enqueue(sequence),
+      LaunchTutorialEvent(:final tutorial) => _launch(tutorial),
+      PreviousTutorialEvent() => _previous(),
+      BeginStepTransitionEvent() => _beginTransition(),
+      EndStepTransitionEvent() => _endTransition(),
+      CloseTutorialEvent() => _finishTutorial(),
+      ResetSequenceEvent() => _resetSequence(),
     };
     notifyListeners();
   }
 
-  _TutorialOverlayState enqueue(TutorialSequence tutorialSequence) {
-    if (_model.sequence != null) {
-      Logs().w(
-        "Tried to enqueue tutorial sequence while another sequence is active",
-      );
-      return _model;
-    }
-
-    return _TutorialOverlayState(
-      sequence: tutorialSequence,
-      activeTutorialIndex: -1,
-      activeTutorial: null,
-      isStepTransitioning: false,
-    );
+  TutorialOverlayState _enqueue(TutorialSequence tutorialSequence) {
+    if (model.sequence != null) return model;
+    return TutorialOverlayState(sequence: tutorialSequence);
   }
 
-  _TutorialOverlayState launch(TutorialModel tutorial) {
-    final updatedIndex = _model.activeTutorialIndex + 1;
-    if (_model.sequence == null) {
-      Logs().w("Tried to launch tutorial while no sequence is active");
-      return _model;
-    }
-
-    return _TutorialOverlayState(
-      sequence: _model.sequence,
+  TutorialOverlayState _launch(TutorialModel tutorial) {
+    if (model.sequence == null) return model;
+    final updatedIndex = model.activeTutorialIndex + 1;
+    return model.copyWith(
       activeTutorialIndex: updatedIndex,
       activeTutorial: tutorial,
-      isStepTransitioning: false,
     );
   }
 
-  _TutorialOverlayState previous() {
-    final updatedIndex = _model.activeTutorialIndex - 1;
-    if (_model.sequence == null || updatedIndex < 0) return _model;
+  TutorialOverlayState _previous() {
+    final updatedIndex = model.activeTutorialIndex - 1;
+    if (model.sequence == null || updatedIndex < 0) return model;
 
-    return _TutorialOverlayState(
-      sequence: _model.sequence,
+    return model.copyWith(
       activeTutorialIndex: updatedIndex,
-      activeTutorial: null,
-      isStepTransitioning: false,
+      resetActiveTutorial: true,
     );
   }
 
-  _TutorialOverlayState beginTransition() {
-    return _TutorialOverlayState(
-      sequence: _model.sequence,
-      activeTutorialIndex: _model.activeTutorialIndex,
-      activeTutorial: _model.activeTutorial,
-      isStepTransitioning: true,
-    );
-  }
+  TutorialOverlayState _beginTransition() =>
+      model.copyWith(isStepTransitioning: true);
 
-  _TutorialOverlayState endTransition() {
-    return _TutorialOverlayState(
-      sequence: _model.sequence,
-      activeTutorialIndex: _model.activeTutorialIndex,
-      activeTutorial: _model.activeTutorial,
-      isStepTransitioning: false,
-    );
-  }
+  TutorialOverlayState _endTransition() =>
+      model.copyWith(isStepTransitioning: false);
 
-  _TutorialOverlayState complete() {
-    return _TutorialOverlayState(
-      sequence: _model.sequence,
-      activeTutorialIndex: _model.activeTutorialIndex,
-      activeTutorial: null,
-      isStepTransitioning: false,
-    );
-  }
+  TutorialOverlayState _finishTutorial() =>
+      model.copyWith(resetActiveTutorial: true);
+
+  TutorialOverlayState _resetSequence() => const TutorialOverlayState();
 }
 
-class TutorialOverlayOrchestrator {
-  TutorialOverlayOrchestrator._();
+class TutorialOverlayController {
+  TutorialOverlayController._();
 
-  static final TutorialOverlayOrchestrator instance =
-      TutorialOverlayOrchestrator._();
+  static final TutorialOverlayController instance =
+      TutorialOverlayController._();
 
-  final _state = _TutorialOverlayStateMachine();
+  final _state = TutorialOverlayStateMachine();
 
   final ValueNotifier<TutorialEnum?> closedTutorialNotifier = ValueNotifier(
     null,
@@ -175,93 +124,101 @@ class TutorialOverlayOrchestrator {
     null,
   );
 
-  bool get isStepTransitioning => _state.isStepTransitioning;
+  bool get hasPreviousTutorial =>
+      _state.model.sequence != null &&
+      _state.model.activeTutorialIndex > 0 &&
+      _state.model.activeTutorialIndex < _state.model.sequence!.length;
 
-  bool get hasActiveTutorial => _state.hasActiveTutorial;
+  bool get isSequenceComplete =>
+      _state.model.sequence != null &&
+      _state.model.activeTutorialIndex == _state.model.sequence!.length - 1;
 
-  bool get hasPreviousTutorial => _state.hasPreviousTutorial;
+  int get totalStepsInCurrentSequence {
+    final sequence = _state.model.sequence;
+    if (sequence == null) return 0;
+    return sequence.fold(0, (sum, tutorial) => sum + tutorial.stepCount);
+  }
 
-  int get totalStepsInCurrentSequence => _state.totalStepsInCurrentSequence;
+  int get completedStepsOffset {
+    final sequence = _state.model.sequence;
+    if (sequence == null || _state.model.activeTutorialIndex < 0) return 0;
+    return sequence
+        .take(_state.model.activeTutorialIndex)
+        .fold(0, (sum, tutorial) => sum + tutorial.stepCount);
+  }
 
-  int get completedStepsOffset => _state.completedStepsOffset;
+  bool get isStepTransitioning => _state.model.isStepTransitioning;
 
-  bool isTutorialQueued(TutorialEnum tutorial) =>
-      _state.isTutorialQueued(tutorial);
+  bool isTutorialQueued(TutorialEnum tutorial) {
+    final sequence = _state.model.sequence;
+    if (sequence == null) return false;
+
+    final nextIndex = _state.model.activeTutorialIndex + 1;
+    if (nextIndex >= sequence.length) return false;
+    return sequence[nextIndex] == tutorial;
+  }
 
   bool isTutorialActive(TutorialEnum tutorial) =>
-      _state.isTutorialActive(tutorial);
+      _state.model.activeTutorial?.tutorialType == tutorial;
+
+  bool hasCompletedTutorialSequence(TutorialSequence tutorialSequence) =>
+      _enabledTutorialsInSequence(tutorialSequence).isEmpty;
+
+  List<TutorialEnum> _enabledTutorialsInSequence(
+    TutorialSequence tutorialSequence,
+  ) => tutorialSequence.where((t) => t.globallyEnabled).toList();
 
   void dispose() {
-    reset();
+    resetState();
     closedTutorialNotifier.dispose();
     backNavigationNotifier.dispose();
     _state.dispose();
   }
 
-  void reset() {
-    MatrixState.pAnyState.closeOverlay(TutorialConstants.sequenceOverlayKey);
-    _state.reset();
-  }
-
-  void beginStepTransition() => _state.beginStepTransition();
-  void endStepTransition() => _state.endStepTransition();
-
-  bool hasCompletedTutorialSequence(TutorialSequence tutorialSequence) =>
-      enabledTutorialsInSequence(tutorialSequence).isEmpty;
-
-  List<TutorialEnum> enabledTutorialsInSequence(
-    TutorialSequence tutorialSequence,
-  ) => tutorialSequence.where((t) => t.globallyEnabled).toList();
-
   /// Adds a single tutorial sequence to the end of the queue.
   void enqueueTutorialSequence(TutorialSequence tutorialSequence) {
-    final enabledTutorials = enabledTutorialsInSequence(tutorialSequence);
-    if (enabledTutorials.isEmpty) {
-      Logs().i("All tutorials in sequence are disabled, skipping");
+    if (_state.model.sequence != null) {
       return;
     }
 
-    Logs().i("Enqueuing tutorial sequence with tutorials $enabledTutorials");
-    _state.enqueueTutorialSequence(enabledTutorials);
+    final enabledTutorials = _enabledTutorialsInSequence(tutorialSequence);
+    if (enabledTutorials.isEmpty) {
+      return;
+    }
+
+    _state.dispatch(EnqueueSequenceEvent(enabledTutorials));
   }
 
-  void launchTutorial({
+  void launchNextTutorial({
     required BuildContext context,
     required TutorialModel tutorial,
     required String? currentRoute,
     int initialStepIndex = 0,
   }) {
-    Logs().i("Attempting to launch tutorial ${tutorial.tutorialType}");
     if (!tutorial.tutorialType.locallyEnabled(currentRoute)) {
-      Logs().w("Tutorial ${tutorial.tutorialType} is not locally enabled");
       return;
     }
 
-    if (!_state.isTutorialQueued(tutorial.tutorialType)) {
-      Logs().w("Tutorial ${tutorial.tutorialType} is not next in queue");
+    if (!isTutorialQueued(tutorial.tutorialType)) {
       return;
     }
 
-    if (_state.hasActiveTutorial) {
-      Logs().w("Tutorial ${_state.activeTutorial?.tutorialType} already open");
+    if (_state.model.activeTutorial != null) {
+      return;
     }
 
     final opened = _openTutorialOverlay(context, stepIndex: initialStepIndex);
     if (!opened) {
-      Logs().e(
-        "Failed to open tutorial overlay for tutorial ${tutorial.tutorialType}",
-      );
       return;
     }
 
-    _state.setActiveTutorial(tutorial);
+    _state.dispatch(LaunchTutorialEvent(tutorial));
   }
 
   bool _openTutorialOverlay(BuildContext context, {int stepIndex = 0}) {
     if (MatrixState.pAnyState.isOverlayOpen(
       overlayKey: TutorialConstants.sequenceOverlayKey,
     )) {
-      Logs().i("Tutorial overlay is already open");
       return true;
     }
 
@@ -273,7 +230,7 @@ class TutorialOverlayOrchestrator {
         return ListenableBuilder(
           listenable: _state,
           builder: (context, _) {
-            final value = _state.activeTutorial;
+            final value = _state.model.activeTutorial;
             if (value == null) {
               // Between tutorials: block all interaction without showing UI.
               return GestureDetector(
@@ -301,14 +258,20 @@ class TutorialOverlayOrchestrator {
     );
   }
 
+  void beginStepTransition() => _state.dispatch(BeginStepTransitionEvent());
+
+  void endStepTransition() => _state.dispatch(EndStepTransitionEvent());
+
   /// Signals the previous tutorial in the sequence to re-open at its last step.
-  void requestGoBack() {
-    final previousTutorialEnum = _state.requestGoBack();
-    if (previousTutorialEnum == null) {
-      Logs().i("No previous tutorial to go back to, closing overlay");
+  void launchPreviousTutorial() {
+    if (!hasPreviousTutorial) {
       _closeOverlay();
       return;
     }
+
+    final updatedIndex = _state.model.activeTutorialIndex - 1;
+    final previousTutorialEnum = _state.model.sequence![updatedIndex];
+    _state.dispatch(PreviousTutorialEvent());
 
     // Defer the stream emission to the next frame so that the closing widget's
     // dispose → onCloseTutorial runs before host widgets try to launch.
@@ -317,51 +280,45 @@ class TutorialOverlayOrchestrator {
     });
   }
 
-  void clearActiveTutorial(TutorialEnum tutorial) {
-    if (!_state.isTutorialActive(tutorial)) {
-      Logs().w(
-        "Trying to clear active tutorial $tutorial but it is not currently active",
-      );
-      return;
-    }
-    _state.clearActiveTutorial(tutorial);
-    closedTutorialNotifier.value = tutorial;
+  void completeTutorial(TutorialEnum tutorial) {
+    if (!isTutorialActive(tutorial)) return;
+    _closeTutorial(completed: true);
   }
 
-  /// Cancels the active tutorial and the whole sequence, immediately closing
-  /// the persistent overlay. Use this when a host widget is unexpectedly
-  /// disposed while a tutorial is active (e.g., the user navigated away from
-  /// the chat room), as opposed to [clearActiveTutorial] which is for natural
-  /// step-by-step completion.
-  void cancelTutorial() {
-    Logs().i("Cancelling tutorial and clearing entire sequence");
-    final tutorial = _state.activeTutorial?.tutorialType;
+  void handleUnexpectedClose({bool completed = false}) {
+    _closeTutorial(completed: completed);
+  }
+
+  void _closeTutorial({bool completed = true}) {
+    final wasFinal = isSequenceComplete;
+    final tutorialType = _state.model.activeTutorial?.tutorialType;
+
+    _state.dispatch(CloseTutorialEvent());
+
+    if (completed) tutorialType?.markSeen();
+    closedTutorialNotifier.value = tutorialType;
+
+    if (wasFinal) {
+      _closeOverlay();
+    }
+  }
+
+  /// Cancels the active tutorial and the whole sequence, immediately closing the persistent overlay.
+  void cancelSequence() {
+    final tutorial = _state.model.activeTutorial?.tutorialType;
     _closeOverlay();
-    reset();
+    resetState();
 
     if (tutorial != null) {
       closedTutorialNotifier.value = tutorial;
     }
   }
 
-  void onCloseTutorial(TutorialEnum tutorial, {bool completed = false}) {
-    final wasFinal = _state.isSequenceComplete;
-    final tutorialType = _state.activeTutorial?.tutorialType;
-
-    _state.onCloseTutorial();
-
-    // Only mark the tutorial fully seen when all steps were completed.
-    // A mid-tutorial close preserves the saved step progress so the user
-    // can resume from where they left off.
-    if (completed && wasFinal) {
-      tutorial.markSeen();
-    }
-    closedTutorialNotifier.value = tutorialType;
+  void resetState() {
+    _state.dispatch(ResetSequenceEvent());
   }
 
   void _closeOverlay() {
-    // Defer the actual overlay removal to avoid removing the overlay entry
-    // while we are still in the middle of a widget rebuild/dispose.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       MatrixState.pAnyState.closeOverlay(TutorialConstants.sequenceOverlayKey);
     });
