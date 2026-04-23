@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix_api_lite/utils/logs.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -9,6 +5,8 @@ import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_tooltip_container_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix_api_lite/utils/logs.dart';
 
 enum TooltipPosition { above, below }
 
@@ -179,9 +177,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   /// Closes the current tutorial overlay and signals the orchestrator to
   /// re-open the previous tutorial in the sequence at its last step.
   Future<void> _goBackToPreviousTutorial() async {
-    if (!TutorialOverlayOrchestrator.instance.hasPreviousTutorial(
-      widget.tutorial.tutorialType,
-    )) {
+    if (!TutorialOverlayOrchestrator.instance.hasPreviousTutorial) {
       // No previous tutorial — fall back to closing the sequence.
       await _close();
       return;
@@ -189,9 +185,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     setState(() => _visible = false);
     await Future.delayed(_duration);
     if (mounted) {
-      TutorialOverlayOrchestrator.instance.requestGoBack(
-        currentTutorial: widget.tutorial,
-      );
+      TutorialOverlayOrchestrator.instance.requestGoBack();
     }
   }
 
@@ -341,10 +335,9 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
                   showPrevious:
                       showNavigation &&
                       (_currentStepIndex > 0 ||
-                          TutorialOverlayOrchestrator.instance
-                              .hasPreviousTutorial(
-                                widget.tutorial.tutorialType,
-                              )),
+                          TutorialOverlayOrchestrator
+                              .instance
+                              .hasPreviousTutorial),
                   currentStep: currentStep,
                   totalSteps: totalSteps,
                   text: step.style.tooltip,

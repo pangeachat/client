@@ -1,24 +1,11 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:async/async.dart' as async;
 import 'package:collection/collection.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:just_audio/just_audio.dart';
-import 'package:matrix/matrix.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:universal_html/html.dart' as html;
-
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -102,6 +89,18 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart'
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:matrix/matrix.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:universal_html/html.dart' as html;
+
 import '../../utils/localized_exception_extension.dart';
 import 'send_file_dialog.dart';
 import 'send_location_dialog.dart';
@@ -209,8 +208,6 @@ class ChatController extends State<ChatPageWithRoom>
 
   StreamSubscription? _botAudioSubscription;
   StreamSubscription? _readingAssistanceTutorialSubscription;
-  StreamSubscription? _writingAssistanceTutorialSubscription;
-  StreamSubscription? _goBackTutorialSubscription;
 
   /// The event used to start the reading-assistance tutorial. Stored so the
   /// tutorial can be re-opened when the user navigates back through the sequence.
@@ -668,7 +665,10 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
-  void _writingAssistanceTutorialListener(TutorialEnum tutorial) {
+  void _writingAssistanceTutorialListener() {
+    final tutorial =
+        TutorialOverlayOrchestrator.instance.closedTutorialNotifier.value;
+
     if (tutorial != TutorialEnum.selectModeButtons) return;
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => _launchWritingAssistanceTutorial(
@@ -680,8 +680,12 @@ class ChatController extends State<ChatPageWithRoom>
   /// Called when the user navigates back across a tutorial-model boundary.
   /// Re-prepares the required UI state and re-opens the appropriate tutorial
   /// at its last step.
-  Future<void> _goBackTutorialListener(TutorialEnum tutorial) async {
+  Future<void> _goBackTutorialListener() async {
     if (!mounted) return;
+    final tutorial =
+        TutorialOverlayOrchestrator.instance.backNavigationNotifier.value;
+    if (tutorial == null) return;
+
     switch (tutorial) {
       case TutorialEnum.readingAssistance:
         final event = _tutorialEvent;
@@ -823,15 +827,13 @@ class ChatController extends State<ChatPageWithRoom>
       _readingAssistanceTutorialListener,
     );
 
-    _writingAssistanceTutorialSubscription = TutorialOverlayOrchestrator
-        .instance
-        .closedTutorialStream
-        .listen(_writingAssistanceTutorialListener);
+    TutorialOverlayOrchestrator.instance.closedTutorialNotifier.addListener(
+      _writingAssistanceTutorialListener,
+    );
 
-    _goBackTutorialSubscription = TutorialOverlayOrchestrator
-        .instance
-        .backNavigationStream
-        .listen(_goBackTutorialListener);
+    TutorialOverlayOrchestrator.instance.backNavigationNotifier.addListener(
+      _goBackTutorialListener,
+    );
 
     activityController = ActivityChatController(
       userID: Matrix.of(context).client.userID!,
@@ -1108,8 +1110,6 @@ class ChatController extends State<ChatPageWithRoom>
     _botAudioSubscription?.cancel();
     _tokensSubscription?.cancel();
     _readingAssistanceTutorialSubscription?.cancel();
-    _writingAssistanceTutorialSubscription?.cancel();
-    _goBackTutorialSubscription?.cancel();
     _bannerController.dispose();
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     scrollController.dispose();
@@ -1117,6 +1117,12 @@ class ChatController extends State<ChatPageWithRoom>
     depressMessageButton.dispose();
     scrollableNotifier.dispose();
     TokensUtil.instance.clearNewTokenCache();
+    TutorialOverlayOrchestrator.instance.closedTutorialNotifier.removeListener(
+      _writingAssistanceTutorialListener,
+    );
+    TutorialOverlayOrchestrator.instance.backNavigationNotifier.removeListener(
+      _goBackTutorialListener,
+    );
     TutorialOverlayOrchestrator.instance.reset();
     //Pangea#
     super.dispose();
