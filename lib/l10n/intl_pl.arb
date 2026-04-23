@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-04-22 11:01:26.013520",
+    "@@last_modified": "2026-04-23 10:45:28.800581",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -11032,6 +11032,11 @@
     },
     "errorTryAgainLater": "Ups, coś poszło nie tak… Zajmujemy się tym! Proszę spróbować ponownie później.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Akceptuj wszystko",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

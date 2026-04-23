@@ -511,6 +511,24 @@ class PangeaInvitationSelectionController
     });
   }
 
+  Future<void> acceptAllKnocking() async {
+    if (_room == null) return;
+
+    final knocking =
+        participants?.where((u) => u.membership == Membership.knock).toList() ??
+        [];
+    if (knocking.isEmpty) return;
+
+    final futures = knocking.map((u) => _room!.invite(u.id)).toList();
+    await showFutureLoadingDialog(
+      context: context,
+      future: () async {
+        await Future.wait(futures);
+        return null;
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) => PangeaInvitationSelectionView(this);
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-04-22 11:00:47.908986",
+    "@@last_modified": "2026-04-23 10:45:01.028365",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10920,6 +10920,11 @@
     },
     "errorTryAgainLater": "Ups, midagi läks valesti… Me uurime seda! Palun proovi hiljem uuesti.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Kinnita kõik",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-04-22 11:01:11.319977",
+    "@@last_modified": "2026-04-23 10:45:19.460196",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11254,6 +11254,11 @@
     },
     "errorTryAgainLater": "Hups, bir şeyler ters gitti… Biz bununla ilgileniyoruz! Lütfen daha sonra tekrar deneyin.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Hepsini kabul et",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

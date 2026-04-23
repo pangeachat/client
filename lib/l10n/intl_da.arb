@@ -1746,7 +1746,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-04-22 11:00:31.083339",
+    "@@last_modified": "2026-04-23 10:44:49.756624",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -12017,6 +12017,11 @@
     },
     "errorTryAgainLater": "Ups, noget gik galt… Vi undersøger det! Prøv venligst igen senere.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Accepter alle",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

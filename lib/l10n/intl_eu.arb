@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-04-22 11:00:44.997785",
+    "@@last_modified": "2026-04-23 10:44:59.385410",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10923,6 +10923,11 @@
     },
     "errorTryAgainLater": "Aizu, zerbait oker joan da… Hori aztertzen ari gara! Mesedez, saiatu berriro geroago.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Onartu dena",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

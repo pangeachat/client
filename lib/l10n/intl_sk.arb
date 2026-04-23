@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-04-22 11:00:36.128702",
+    "@@last_modified": "2026-04-23 10:44:53.446746",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -12039,6 +12039,11 @@
     },
     "errorTryAgainLater": "Ups, niečo sa pokazilo… Skúmame to! Prosím, skúste to znova neskôr.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Prijať všetko",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-04-22 11:00:38.850743",
+    "@@last_modified": "2026-04-23 10:44:55.081389",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11407,6 +11407,11 @@
     },
     "errorTryAgainLater": "Oprosti, nešto je pošlo po zlu… Istražujemo to! Molimo pokušajte ponovo kasnije.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Prihvati sve",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

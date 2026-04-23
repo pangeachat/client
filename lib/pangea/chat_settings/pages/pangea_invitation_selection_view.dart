@@ -141,6 +141,26 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                   ),
                 ),
               ),
+              if (controller.filter == InvitationFilter.knocking &&
+                  contacts.isNotEmpty)
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 0.0),
+                    child: ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: theme.colorScheme.primaryContainer,
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                      ),
+                      icon: Icon(
+                        Icons.check_circle_outline,
+                        color: theme.colorScheme.onPrimaryContainer,
+                      ),
+                      label: Text(L10n.of(context).acceptAll),
+                      onPressed: controller.acceptAllKnocking,
+                    ),
+                  ),
+                ),
               Expanded(
                 child: StreamBuilder<Object>(
                   stream: room.client.onRoomState.stream
