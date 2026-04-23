@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'mxc_image.dart';
+import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 
 class MxcImageViewer extends StatelessWidget {
   final Uri mxContent;
@@ -43,13 +43,21 @@ class MxcImageViewer extends StatelessWidget {
             child: GestureDetector(
               // Ignore taps to not go back here:
               onTap: () {},
-              child: MxcImage(
+              // #Pangea
+              // child: MxcImage(
+              //   key: ValueKey(mxContent.toString()),
+              //   uri: mxContent,
+              //   fit: BoxFit.contain,
+              //   isThumbnail: false,
+              //   animated: true,
+              // ),
+              child: ImageByUrl(
                 key: ValueKey(mxContent.toString()),
-                uri: mxContent,
+                imageUrl: mxContent,
                 fit: BoxFit.contain,
                 isThumbnail: false,
-                animated: true,
               ),
+              // Pangea#
             ),
           ),
         ),
