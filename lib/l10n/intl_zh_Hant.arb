@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-22 11:01:04.184023",
+    "@@last_modified": "2026-04-23 10:45:14.335295",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -11053,6 +11053,11 @@
     },
     "errorTryAgainLater": "哎呀，發生了一些問題……我們正在調查中！請稍後再試。",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "接受所有",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

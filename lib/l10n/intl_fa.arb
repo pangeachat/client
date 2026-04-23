@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-22 11:01:24.968746",
+    "@@last_modified": "2026-04-23 10:45:27.634584",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -11035,6 +11035,11 @@
     },
     "errorTryAgainLater": "اوه، مشکلی پیش آمد… ما در حال بررسی آن هستیم! لطفاً بعداً دوباره تلاش کنید.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "همه را بپذیرید",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-04-22 11:00:32.439961",
+    "@@last_modified": "2026-04-23 10:44:50.680081",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -11050,6 +11050,11 @@
     },
     "errorTryAgainLater": "Hoppá, valami hiba történt… Vizsgáljuk az ügyet! Kérjük, próbálja meg később.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Mindent elfogad",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

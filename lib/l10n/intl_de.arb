@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-04-22 11:00:48.806714",
+    "@@last_modified": "2026-04-23 10:45:01.809800",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10902,6 +10902,11 @@
     },
     "errorTryAgainLater": "Ups, etwas ist schiefgegangen… Wir kümmern uns darum! Bitte versuchen Sie es später noch einmal.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Alle akzeptieren",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

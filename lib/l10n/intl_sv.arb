@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-22 11:01:27.338355",
+    "@@last_modified": "2026-04-23 10:45:29.490345",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11510,6 +11510,11 @@
     },
     "errorTryAgainLater": "Oj, något gick fel… Vi undersöker det! Vänligen försök igen senare.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Acceptera alla",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-04-22 11:00:54.559288",
+    "@@last_modified": "2026-04-23 10:45:05.941763",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10923,6 +10923,11 @@
     },
     "errorTryAgainLater": "Упс, щось пішло не так… Ми розбираємося з цим! Будь ласка, спробуйте ще раз пізніше.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Прийняти все",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

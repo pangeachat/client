@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-22 11:00:40.625971",
+    "@@last_modified": "2026-04-23 10:44:56.197134",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -12002,6 +12002,11 @@
     },
     "errorTryAgainLater": "אופס, משהו השתבש… אנחנו בודקים את זה! אנא נסה שוב מאוחר יותר.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "קבל הכל",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

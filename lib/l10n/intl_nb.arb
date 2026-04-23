@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-22 11:00:57.428974",
+    "@@last_modified": "2026-04-23 10:45:07.973659",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10983,6 +10983,11 @@
     },
     "errorTryAgainLater": "Oops, noe gikk galt… Vi ser på det! Vennligst prøv igjen senere.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Godta alt",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-22 11:01:23.762861",
+    "@@last_modified": "2026-04-23 10:45:26.936059",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -11638,6 +11638,11 @@
     },
     "errorTryAgainLater": "অপস, কিছু ভুল হয়েছে… আমরা এটি দেখছি! দয়া করে পরে আবার চেষ্টা করুন।",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "সব গ্রহণ করুন",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

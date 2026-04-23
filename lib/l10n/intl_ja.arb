@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-04-22 11:01:30.474525",
+    "@@last_modified": "2026-04-23 10:45:31.540686",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11791,6 +11791,11 @@
     },
     "errorTryAgainLater": "おっと、何かがうまくいきませんでした… 私たちはそれを調査しています！後でもう一度お試しください。",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "すべて受け入れる",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

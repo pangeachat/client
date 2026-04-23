@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-04-22 11:01:42.068825",
+    "@@last_modified": "2026-04-23 10:45:38.081934",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -11320,6 +11320,11 @@
     },
     "errorTryAgainLater": "Oups, quelque chose a mal tourné… Nous enquêtons ! Veuillez réessayer plus tard.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Accepter tout",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

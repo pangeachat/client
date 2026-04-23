@@ -2526,7 +2526,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-04-22 11:01:07.254523",
+    "@@last_modified": "2026-04-23 10:45:16.932679",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11942,6 +11942,11 @@
     },
     "errorTryAgainLater": "Ay naku, may nangyaring mali… Tinutukoy namin ito! Pakisubukan muli mamaya.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Tanggapin ang lahat",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

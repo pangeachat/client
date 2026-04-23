@@ -3462,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-04-22 11:01:21.492599",
+    "@@last_modified": "2026-04-23 10:45:25.296890",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10595,6 +10595,11 @@
     },
     "errorTryAgainLater": "Oop, somethin' went wrong… We' re lookin' into it! Please try again later.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Bojan all",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

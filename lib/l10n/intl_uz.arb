@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-04-22 11:01:06.235456",
+    "@@last_modified": "2026-04-23 10:45:15.261746",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10927,6 +10927,11 @@
     },
     "errorTryAgainLater": "Oops, biror narsa noto'g'ri ketdi… Biz buni tekshiryapmiz! Iltimos, keyinroq qayta urinib ko'ring.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Hammasini qabul qilish",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-04-22 11:01:35.668997",
+    "@@last_modified": "2026-04-23 10:45:34.207434",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11937,6 +11937,11 @@
     },
     "errorTryAgainLater": "Упс, что-то пошло не так… Мы разбираемся с этим! Пожалуйста, попробуйте позже.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Принять все",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }
