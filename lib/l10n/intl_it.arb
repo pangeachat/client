@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-22 11:00:53.173031",
+    "@@last_modified": "2026-04-23 10:45:04.436799",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -11014,6 +11014,11 @@
     },
     "errorTryAgainLater": "Ops, qualcosa è andato storto… Stiamo indagando! Per favore riprova più tardi.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Accetta tutto",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }

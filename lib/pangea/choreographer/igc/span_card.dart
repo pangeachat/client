@@ -164,6 +164,7 @@ class SpanCardState extends State<SpanCard> {
                             context,
                             big: true,
                           ).copyWith(fontWeight: FontWeight.bold),
+                          textScaler: TextScaler.noScaling,
                         ),
                       ),
                       IconButton(

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-22 11:01:00.401873",
+    "@@last_modified": "2026-04-23 10:45:09.944907",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -11074,6 +11074,11 @@
     },
     "errorTryAgainLater": "Ups, alguna cosa ha anat malament… Estem investigant-ho! Si us plau, torna a provar més tard.",
     "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Accepta tot",
+    "@acceptAll": {
         "type": "String",
         "placeholders": {}
     }
