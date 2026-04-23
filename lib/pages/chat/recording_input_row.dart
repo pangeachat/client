@@ -25,19 +25,28 @@ class RecordingInputRow extends StatelessWidget {
           tooltip: L10n.of(context).cancel,
           icon: const Icon(Icons.delete_outlined),
           color: theme.colorScheme.error,
-          onPressed: state.cancel,
+          // #Pangea
+          // onPressed: state.cancel,
+          onPressed: state.isSending ? null : state.cancel,
+          // Pangea#
         ),
         if (state.isPaused)
           IconButton(
             tooltip: L10n.of(context).resume,
             icon: const Icon(Icons.play_circle_outline_outlined),
-            onPressed: state.resume,
+            // #Pangea
+            // onPressed: state.resume,
+            onPressed: state.isSending ? null : state.resume,
+            // Pangea#
           )
         else
           IconButton(
             tooltip: L10n.of(context).pause,
             icon: const Icon(Icons.pause_circle_outline_outlined),
-            onPressed: state.pause,
+            // #Pangea
+            // onPressed: state.pause,
+            onPressed: state.isSending ? null : state.pause,
+            // Pangea#
           ),
         Text(time),
         const SizedBox(width: 8),
