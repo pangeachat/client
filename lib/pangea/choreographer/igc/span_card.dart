@@ -249,7 +249,6 @@ class _MatchContent extends StatelessWidget {
                 descriptionText,
                 style: BotStyle.text(context),
                 textAlign: TextAlign.center,
-                textScaler: TextScaler.noScaling,
               ),
               isOpen
                   ? ChoicesArray(
@@ -285,10 +284,7 @@ class _MatchContent extends StatelessWidget {
                             alignment: WrapAlignment.center,
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [
-                              Text(
-                                match.originalMatch.match.errorSpan,
-                                textScaler: TextScaler.noScaling,
-                              ),
+                              Text(match.originalMatch.match.errorSpan),
                               const Icon(Icons.arrow_forward, size: 16.0),
                               Text(
                                 match
@@ -297,7 +293,6 @@ class _MatchContent extends StatelessWidget {
                                         .selectedChoice
                                         ?.value ??
                                     L10n.of(context).nothingFound,
-                                textScaler: TextScaler.noScaling,
                               ),
                             ],
                           ),
