@@ -331,6 +331,9 @@ class NewCoursePageState extends State<NewCoursePage> {
                             return ValueListenableBuilder(
                               valueListenable: _loadingMore,
                               builder: (context, isLoadingMore, _) {
+                                if (!isLoadingMore && _fullyLoaded) {
+                                  return const SizedBox.shrink();
+                                }
                                 return SizedBox(
                                   height:
                                       60, // 👈 KEY: fixed height prevents jump
