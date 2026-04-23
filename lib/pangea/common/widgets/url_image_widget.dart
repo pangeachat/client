@@ -12,16 +12,20 @@ import 'package:fluffychat/widgets/mxc_image.dart';
 
 class ImageByUrl extends StatelessWidget {
   final Uri? imageUrl;
-  final double width;
+  final double? width;
   final BorderRadius borderRadius;
   final Widget? replacement;
+  final BoxFit fit;
+  final bool isThumbnail;
 
   const ImageByUrl({
     super.key,
     required this.imageUrl,
-    required this.width,
+    this.width,
     this.replacement,
     this.borderRadius = const BorderRadius.all(Radius.circular(20.0)),
+    this.fit = BoxFit.cover,
+    this.isThumbnail = true,
   });
 
   @override
@@ -47,12 +51,13 @@ class ImageByUrl extends StatelessWidget {
                 width: width,
                 height: width,
                 cacheKey: imageUrl.toString(),
-                fit: BoxFit.cover,
+                fit: fit,
+                isThumbnail: isThumbnail,
               )
             : CachedNetworkImage(
                 width: width,
                 height: width,
-                fit: BoxFit.cover,
+                fit: fit,
                 imageUrl: imageUrl.toString(),
                 placeholder: (context, url) => Shimmer.fromColors(
                   baseColor: Theme.of(
