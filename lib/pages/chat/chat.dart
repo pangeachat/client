@@ -73,7 +73,7 @@ import 'package:fluffychat/pangea/learning_settings/p_language_dialog.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_overlay_controller.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_sequences.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
@@ -210,11 +210,15 @@ class ChatController extends State<ChatPageWithRoom>
   StreamSubscription? _botAudioSubscription;
   StreamSubscription? _readingAssistanceTutorialSubscription;
 
+  StreamSubscription? _closedTutorialSubscription;
+  StreamSubscription? _goBackTutorialSubscription;
+
   /// The event used to start the reading-assistance tutorial. Stored so the
   /// tutorial can be re-opened when the user navigates back through the sequence.
   Event? _tutorialEvent;
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
   late final ActivityChatController activityController;
+  late final TutorialOverlayController tutorialOverlayController;
   late final ChatBannerController _bannerController;
   final ValueNotifier<bool> scrollableNotifier = ValueNotifier(false);
   // Pangea#
@@ -666,25 +670,18 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
-  void _writingAssistanceTutorialListener() {
-    final tutorial =
-        TutorialOverlayController.instance.closedTutorialNotifier.value;
-
-    if (tutorial != TutorialEnum.selectModeButtons) return;
+  void _writingAssistanceTutorialListener(TutorialEnum? tutorial) {
+    if (tutorial != TutorialEnum.writingAssistance) return;
     WidgetsBinding.instance.addPostFrameCallback(
-      (_) => _launchWritingAssistanceTutorial(
-        initialStepIndex: TutorialEnum.writingAssistance.stepProgress,
-      ),
+      (_) => _launchWritingAssistanceTutorial(),
     );
   }
 
   /// Called when the user navigates back across a tutorial-model boundary.
   /// Re-prepares the required UI state and re-opens the appropriate tutorial
   /// at its last step.
-  Future<void> _goBackTutorialListener() async {
+  Future<void> _goBackTutorialListener(TutorialEnum? tutorial) async {
     if (!mounted) return;
-    final tutorial =
-        TutorialOverlayController.instance.backNavigationNotifier.value;
     if (tutorial == null) return;
 
     switch (tutorial) {
@@ -701,29 +698,25 @@ class ChatController extends State<ChatPageWithRoom>
       case TutorialEnum.selectModeButtons:
         final event = _tutorialEvent;
         if (event == null) return;
-        // Re-open the toolbar so SelectModeButtons mounts and picks up the
-        // queued tutorial. The orchestrator's _pendingInitialStepIndex ensures
-        // it launches at the last step automatically.
+        // Re-open the toolbar so SelectModeButtons mounts and picks up the queued tutorial.
         showToolbar(event, bypassBlockingOverlays: true);
         return;
       case TutorialEnum.writingAssistance:
         // The writing-assistance tutorial starts from the text input which is
         // always visible, so no extra state preparation is needed.
         WidgetsBinding.instance.addPostFrameCallback(
-          (_) => _launchWritingAssistanceTutorial(
-            initialStepIndex: TutorialEnum.writingAssistance.stepCount - 1,
-          ),
+          (_) => _launchWritingAssistanceTutorial(),
         );
         return;
     }
   }
 
-  void _launchReadingAssistanceTutorial(Event event, int stepIndex) {
+  void _launchReadingAssistanceTutorial(Event event) {
     inputFocus.unfocus();
     _tutorialEvent = event;
 
     final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
-    TutorialOverlayController.instance.launchNextTutorial(
+    tutorialOverlayController.launchTutorial(
       context: context,
       tutorial: ReadingAssistantTutorialModel(
         data: [
@@ -735,16 +728,15 @@ class ChatController extends State<ChatPageWithRoom>
         ],
       ),
       currentRoute: _router.state.path,
-      initialStepIndex: stepIndex,
     );
   }
 
-  void _launchWritingAssistanceTutorial({int initialStepIndex = 0}) {
+  void _launchWritingAssistanceTutorial() {
     final inputTarget = MatrixState.pAnyState.layerLinkAndKey(
       ChoreoConstants.inputTransformTargetKey,
     );
 
-    TutorialOverlayController.instance.launchNextTutorial(
+    tutorialOverlayController.launchTutorial(
       context: context,
       tutorial: WritingAssistantTutorialModel(
         data: [
@@ -755,23 +747,20 @@ class ChatController extends State<ChatPageWithRoom>
           ),
         ],
       ),
-      initialStepIndex: initialStepIndex,
       currentRoute: _router.state.path,
     );
   }
 
-  void _relaunchReadingAssistanceTutorial(Event event) =>
-      _launchReadingAssistanceTutorial(
-        event,
-        TutorialEnum.readingAssistance.stepCount - 1,
-      );
+  void _relaunchReadingAssistanceTutorial(Event event) {
+    _launchReadingAssistanceTutorial(event);
+  }
 
   String? get currentRoutePath => _router.state.path;
 
   bool get _canLaunchTutorialSequence {
-    final orchestrator = TutorialOverlayController.instance;
-    final tutorialSeq = TutorialSequences.chatTutorialSequence;
-    if (orchestrator.hasCompletedTutorialSequence(tutorialSeq)) return false;
+    if (tutorialOverlayController.state.hasCompletedSequence) {
+      return false;
+    }
 
     if (scrollController.hasClients) {
       return scrollController.position.pixels == 0;
@@ -781,24 +770,21 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void _startAssistanceTutorialSequence(Event event) {
-    if (!_canLaunchTutorialSequence) return;
-
-    final orchestrator = TutorialOverlayController.instance;
-    final tutorialSeq = TutorialSequences.chatTutorialSequence;
-    orchestrator.enqueueTutorialSequence(tutorialSeq);
-
-    if (orchestrator.isTutorialQueued(TutorialEnum.readingAssistance)) {
-      _launchReadingAssistanceTutorial(
-        event,
-        TutorialEnum.readingAssistance.stepProgress,
-      );
+    if (!_canLaunchTutorialSequence) {
       return;
     }
 
-    if (orchestrator.isTutorialQueued(TutorialEnum.writingAssistance)) {
-      _launchWritingAssistanceTutorial(
-        initialStepIndex: TutorialEnum.writingAssistance.stepProgress,
-      );
+    if (tutorialOverlayController.isTutorialQueued(
+      TutorialEnum.readingAssistance,
+    )) {
+      _launchReadingAssistanceTutorial(event);
+      return;
+    }
+
+    if (tutorialOverlayController.isTutorialQueued(
+      TutorialEnum.writingAssistance,
+    )) {
+      _launchWritingAssistanceTutorial();
       return;
     }
   }
@@ -824,18 +810,21 @@ class ChatController extends State<ChatPageWithRoom>
       _readingAssistanceTutorialListener,
     );
 
-    TutorialOverlayController.instance.closedTutorialNotifier.addListener(
-      _writingAssistanceTutorialListener,
-    );
-
-    TutorialOverlayController.instance.backNavigationNotifier.addListener(
-      _goBackTutorialListener,
-    );
-
     activityController = ActivityChatController(
       userID: Matrix.of(context).client.userID!,
       room: room,
     );
+
+    tutorialOverlayController = TutorialOverlayController(
+      TutorialSequences.chatTutorialSequence,
+    );
+
+    _closedTutorialSubscription = tutorialOverlayController
+        .forwardTutorialStream
+        .listen(_writingAssistanceTutorialListener);
+
+    _goBackTutorialSubscription = tutorialOverlayController.backNavigationStream
+        .listen(_goBackTutorialListener);
 
     Future.delayed(const Duration(seconds: 1), () async {
       if (!mounted) return;
@@ -1114,13 +1103,9 @@ class ChatController extends State<ChatPageWithRoom>
     depressMessageButton.dispose();
     scrollableNotifier.dispose();
     TokensUtil.instance.clearNewTokenCache();
-    TutorialOverlayController.instance.closedTutorialNotifier.removeListener(
-      _writingAssistanceTutorialListener,
-    );
-    TutorialOverlayController.instance.backNavigationNotifier.removeListener(
-      _goBackTutorialListener,
-    );
-    TutorialOverlayController.instance.resetState();
+    _closedTutorialSubscription?.cancel();
+    _goBackTutorialSubscription?.cancel();
+    tutorialOverlayController.dispose();
     //Pangea#
     super.dispose();
   }

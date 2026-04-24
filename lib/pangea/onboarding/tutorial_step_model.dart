@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
+
 class TutorialStep {
+  final TutorialEnum type;
+  final int index;
   final TutorialStepData data;
   final TutorialStepStyle style;
 
-  const TutorialStep({required this.data, required this.style});
+  const TutorialStep({
+    required this.type,
+    required this.index,
+    required this.data,
+    required this.style,
+  });
 }
 
 class TutorialStepData {

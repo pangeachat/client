@@ -23,7 +23,6 @@ import 'package:fluffychat/pangea/events/utils/report_message.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
@@ -163,7 +162,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
   StreamSubscription? _playerStateSub;
   final ValueNotifier<bool> _isPlayingNotifier = ValueNotifier(false);
+
   StreamSubscription? _audioSub;
+  StreamSubscription? _tutorialSub;
 
   MatrixState? matrix;
 
@@ -178,11 +179,20 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
     controller.playTokenNotifier.addListener(_playToken);
 
-    if (TutorialOverlayController.instance.isTutorialQueued(
+    if (widget.controller.tutorialOverlayController.isTutorialQueued(
       TutorialEnum.selectModeButtons,
     )) {
       Future.delayed(Duration(milliseconds: 1000), () {
         if (mounted && controller.selectedMode.value == null) {
+          _startSelectModeTutorial();
+        }
+      });
+    } else {
+      widget.controller.tutorialOverlayController.forwardTutorialStream.listen((
+        tutorial,
+      ) {
+        if (tutorial == TutorialEnum.selectModeButtons &&
+            controller.selectedMode.value == null) {
           _startSelectModeTutorial();
         }
       });
@@ -191,16 +201,17 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
   @override
   void dispose() {
-    final orchestrator = TutorialOverlayController.instance;
-    if (orchestrator.isTutorialActive(TutorialEnum.selectModeButtons) &&
-        !orchestrator.isStepTransitioning) {
-      orchestrator.cancelSequence();
+    final tutorial = widget.controller.tutorialOverlayController;
+    if (tutorial.state.isTutorialActive(TutorialEnum.selectModeButtons) &&
+        !tutorial.state.model.isStepTransitioning) {
+      tutorial.resetTutorial();
     }
 
     matrix?.audioPlayer?.dispose();
     matrix?.audioPlayer = null;
     matrix?.voiceMessageEventId.value = null;
     _audioSub?.cancel();
+    _tutorialSub?.cancel();
     _playerStateSub?.cancel();
     _isPlayingNotifier.dispose();
     controller.playTokenNotifier.removeListener(_playToken);
@@ -221,7 +232,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     final audioTarget = SelectMode.audio.buttonTarget;
     final msgTarget = widget.overlayController.overlayMessageLayerLink;
 
-    TutorialOverlayController.instance.launchNextTutorial(
+    widget.controller.tutorialOverlayController.launchTutorial(
       context: context,
       tutorial: SelectModeButtonsTutorialModel(
         data: [
@@ -249,7 +260,6 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
         ],
       ),
       currentRoute: widget.controller.currentRoutePath,
-      initialStepIndex: TutorialEnum.selectModeButtons.stepProgress,
     );
   }
 
