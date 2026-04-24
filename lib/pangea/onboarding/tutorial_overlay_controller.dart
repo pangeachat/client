@@ -78,9 +78,13 @@ class TutorialOverlayState {
 
 class TutorialOverlayStateMachine extends ChangeNotifier {
   final TutorialSequence _sequence;
-  TutorialOverlayStateMachine(this._sequence);
+  late TutorialOverlayState _model;
 
-  TutorialOverlayState _model = const TutorialOverlayState();
+  TutorialOverlayStateMachine(this._sequence) {
+    _model = TutorialOverlayState(
+      stepIndex: _sequence.isNotEmpty ? _sequence[0].stepProgress : 0,
+    );
+  }
 
   TutorialOverlayState get model => _model;
 
@@ -271,6 +275,9 @@ class TutorialOverlayController {
     }
 
     _state.dispatch(LaunchTutorialEvent(tutorial));
+
+    final updatedStepIndex = _state.model.stepIndex;
+    _state.tutorialType?.saveProgress(updatedStepIndex + 1);
   }
 
   bool _openTutorialOverlay(BuildContext context) {
@@ -323,6 +330,9 @@ class TutorialOverlayController {
     _state.dispatch(ForwardTutorialEvent());
     final updatedType = _state.tutorialType;
 
+    final updatedStepIndex = _state.model.stepIndex;
+    updatedType?.saveProgress(updatedStepIndex + 1);
+
     if (!couldGoForward) {
       resetTutorial();
       return;
@@ -343,6 +353,9 @@ class TutorialOverlayController {
     final previousType = _state.tutorialType;
     _state.dispatch(BackTutorialEvent());
     final updatedType = _state.tutorialType;
+
+    final updatedStepIndex = _state.model.stepIndex;
+    updatedType?.saveProgress(updatedStepIndex + 1);
 
     if (previousType != updatedType) {
       _backNavigationStreamController.add(updatedType);

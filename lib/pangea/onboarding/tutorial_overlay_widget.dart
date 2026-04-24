@@ -174,6 +174,8 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
       final onTap = step.data.onTap;
       if (onTap != null) {
         await Future.wait([onTap.call(), Future.delayed(_duration)]);
+      } else {
+        await Future.delayed(_duration);
       }
     } catch (e, s) {
       ErrorHandler.logError(

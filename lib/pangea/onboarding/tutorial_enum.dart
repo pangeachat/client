@@ -51,7 +51,7 @@ enum TutorialEnum {
 
   bool get _hasBeenSeen => _instructionsEnum.isToggledOff;
 
-  void markSeen() {
+  void _markSeen() {
     _instructionsEnum.setToggledOff(true);
     _instructionsEnum.clearStepProgress();
   }
@@ -62,6 +62,11 @@ enum TutorialEnum {
 
   /// Persists [stepIndex] so the user can resume mid-tutorial on the next
   /// launch. Called after each successful step advance in the overlay widget.
-  void saveProgress(int stepIndex) =>
-      _instructionsEnum.setStepProgress(stepIndex);
+  void saveProgress(int stepIndex) {
+    if (stepIndex >= stepCount) {
+      _markSeen();
+      return;
+    }
+    _instructionsEnum.setStepProgress(stepIndex);
+  }
 }
