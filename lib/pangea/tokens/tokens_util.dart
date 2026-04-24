@@ -1,9 +1,9 @@
-import 'package:characters/characters.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/pangea/tokens/grapheme_offset_index.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class _TokenPositionCacheItem {
@@ -261,7 +261,7 @@ class TokensUtil {
     required String transcript,
   }) {
     final List<TokenPosition> tokenPositions = [];
-    final _GraphemeIndex index = _GraphemeIndex.fromText(transcript);
+    final GraphemeOffsetIndex index = GraphemeOffsetIndex.fromText(transcript);
 
     // Pre-translate each token's code-point range into grapheme indices.
     final int n = tokens.length;
@@ -339,66 +339,5 @@ class TokensUtil {
     }
 
     return tokenPositions;
-  }
-}
-
-/// Maps code-point offsets (the unit used by backend tokenizers) to
-/// grapheme-cluster offsets (the unit used by Dart's `String.characters`).
-///
-/// Built once per transcript; subsequent lookups are O(log n).
-class _GraphemeIndex {
-  /// `_starts[i]` is the code-point index at which grapheme cluster `i`
-  /// begins. Sorted ascending; length equals the grapheme count.
-  final List<int> _starts;
-  final int _codepointCount;
-
-  _GraphemeIndex._(this._starts, this._codepointCount);
-
-  factory _GraphemeIndex.fromText(String text) {
-    final List<int> starts = [];
-    int cp = 0;
-    for (final g in text.characters) {
-      starts.add(cp);
-      cp += g.runes.length;
-    }
-    return _GraphemeIndex._(starts, cp);
-  }
-
-  int get graphemeCount => _starts.length;
-
-  /// Grapheme index containing code-point position `cp`. If `cp` falls inside
-  /// a multi-codepoint grapheme, returns that grapheme's index.
-  int graphemeStartOfCodepoint(int cp) {
-    if (cp <= 0) return 0;
-    if (cp >= _codepointCount) return _starts.length;
-    // Largest i with _starts[i] <= cp.
-    int lo = 0, hi = _starts.length - 1;
-    while (lo < hi) {
-      final int mid = (lo + hi + 1) >> 1;
-      if (_starts[mid] <= cp) {
-        lo = mid;
-      } else {
-        hi = mid - 1;
-      }
-    }
-    return lo;
-  }
-
-  /// Grapheme index (exclusive end) for a range that ends at code-point `cp`.
-  /// An end that falls inside a grapheme rounds up to include that grapheme.
-  int graphemeEndOfCodepoint(int cp) {
-    if (cp <= 0) return 0;
-    if (cp >= _codepointCount) return _starts.length;
-    // Smallest i with _starts[i] >= cp.
-    int lo = 0, hi = _starts.length;
-    while (lo < hi) {
-      final int mid = (lo + hi) >> 1;
-      if (_starts[mid] < cp) {
-        lo = mid + 1;
-      } else {
-        hi = mid;
-      }
-    }
-    return lo;
   }
 }
