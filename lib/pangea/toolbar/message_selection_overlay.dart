@@ -76,8 +76,10 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   late PracticeController practiceController;
   double? screenWidth;
 
-  LayerLinkAndKey get overlayMessageLayerLink => MatrixState.pAnyState
-      .layerLinkAndKey('overlay_message_${widget._event.eventId}');
+  String get overlayMessageKey => 'overlay_message_${widget._event.eventId}';
+
+  LayerLinkAndKey get overlayMessageLayerLink =>
+      MatrixState.pAnyState.layerLinkAndKey(overlayMessageKey);
 
   /////////////////////////////////////
   /// Lifecycle

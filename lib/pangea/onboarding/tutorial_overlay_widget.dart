@@ -1,29 +1,37 @@
 import 'package:flutter/material.dart';
 
-import 'package:matrix/matrix_api_lite/utils/logs.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_overlay_controller.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_tooltip_container_widget.dart';
-
-enum TooltipPosition { above, below }
+import 'package:fluffychat/widgets/matrix.dart';
 
 class TutorialOverlayWidget extends StatefulWidget {
-  final TutorialModel tutorial;
-  final TooltipPosition preferredPosition;
+  final TutorialOverlayState model;
 
-  /// The step index to start on. Defaults to 0 (first step). Pass
-  /// `tutorialType.stepCount - 1` when the user navigated back to this model.
-  final int initialStepIndex;
+  final VoidCallback forward;
+  final VoidCallback back;
+  final VoidCallback reset;
+  final Function(bool) setTutorialTransitioning;
+
+  final bool enabledForward;
+  final bool enabledBack;
+
+  final int completedSteps;
+  final int totalSteps;
 
   const TutorialOverlayWidget({
-    required this.tutorial,
-    this.preferredPosition = TooltipPosition.above,
-    this.initialStepIndex = 0,
+    required this.model,
+    required this.forward,
+    required this.back,
+    required this.reset,
+    required this.setTutorialTransitioning,
+    required this.enabledForward,
+    required this.enabledBack,
+    required this.completedSteps,
+    required this.totalSteps,
     super.key,
   });
 
@@ -32,69 +40,49 @@ class TutorialOverlayWidget extends StatefulWidget {
 }
 
 class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
-  late int _currentStepIndex;
-  bool _transitioning = false;
   bool _visible = false;
-
-  /// Set to true when the user taps through the final step so that
-  /// [TutorialOverlayOrchestrator.onCloseTutorial] knows to mark the tutorial
-  /// fully seen. Mid-tutorial closes leave this false, allowing a resume.
-  bool _completedAllSteps = false;
 
   @override
   void initState() {
     super.initState();
-    _currentStepIndex = widget.initialStepIndex.clamp(
-      0,
-      widget.tutorial.tutorialType.stepCount - 1,
-    );
-    Logs().i(
-      "Initializing tutorial overlay for tutorial ${widget.tutorial.tutorialType} at step $_currentStepIndex",
-    );
+
+    final model = widget.model;
+    final tutorial = model.activeTutorial;
+
+    if (tutorial == null) {
+      ErrorHandler.logError(
+        e: "TutorialOverlayWidget launched with no active tutorial",
+        data: model.toJson(),
+      );
+      widget.reset();
+      return;
+    }
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) {
-        _visible = true;
-        _updateStep(_currentStepIndex);
-      }
+      _setVisible(true);
     });
   }
 
-  @override
-  void dispose() {
-    TutorialOverlayOrchestrator.instance.onCloseTutorial(
-      widget.tutorial.tutorialType,
-      completed: _completedAllSteps,
-    );
-    super.dispose();
-  }
+  Duration get _duration => FluffyThemes.animationDuration;
 
   static const double _tooltipPadding = 8.0;
 
-  int get _stepsLength => widget.tutorial.tutorialType.stepCount;
-
-  TutorialStep? get _currentStep =>
-      _currentStepIndex >= 0 && _currentStepIndex < _stepsLength
-      ? widget.tutorial.step(_currentStepIndex, L10n.of(context))
-      : null;
-
-  Duration get _duration => FluffyThemes.animationDuration;
-
-  Size get _tooltipSize {
-    final baseSize = _currentStep?.style.tooltipSize ?? const Size(300, 100);
+  Size _tooltipSize(TutorialStep? step) {
+    final baseSize = step?.style.tooltipSize ?? const Size(300, 100);
     return Size(
       baseSize.width + _tooltipPadding,
       baseSize.height + _tooltipPadding,
     );
   }
 
-  RenderBox? get _currentRenderBox {
-    final step = _currentStep;
+  RenderBox? _currentRenderBox(TutorialStep? step) {
     if (step == null) return null;
     final stepKey = step.data.targetKey;
 
     try {
+      final target = MatrixState.pAnyState.layerLinkAndKey(stepKey);
       final renderBox =
-          stepKey.currentContext?.findRenderObject() as RenderBox?;
+          target.key.currentContext?.findRenderObject() as RenderBox?;
       if (renderBox == null || !renderBox.attached || !renderBox.hasSize) {
         return null;
       }
@@ -102,53 +90,48 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     } catch (e) {
       ErrorHandler.logError(
         e: "Error finding render box for tutorial step with key $stepKey: $e",
-        data: {"tutorialType": widget.tutorial.tutorialType.name},
+        data: {},
       );
       return null;
     }
   }
 
-  Size? get _currentSize => _currentRenderBox?.size;
+  Size? _currentSize(TutorialStep? step) => _currentRenderBox(step)?.size;
 
-  Offset? get _currentOffset => _currentRenderBox?.localToGlobal(Offset.zero);
+  Offset? _currentOffset(TutorialStep? step) =>
+      _currentRenderBox(step)?.localToGlobal(Offset.zero);
 
-  bool get _tooltipHasBottomOverflow {
+  bool _tooltipHasBottomOverflow(TutorialStep? step) {
     final screenHeight = MediaQuery.sizeOf(context).height;
-    final pos = _currentOffset ?? Offset.zero;
-    final targetSize = _currentSize ?? Size.zero;
-    final tip = _tooltipSize;
+    final pos = _currentOffset(step) ?? Offset.zero;
+    final targetSize = _currentSize(step) ?? Size.zero;
+    final tip = _tooltipSize(step);
     final tooltipOffset =
         pos.dy + targetSize.height + tip.height + (_tooltipPadding * 2);
     return tooltipOffset > screenHeight;
   }
 
-  bool get _tooltipHasTopOverflow {
-    final pos = _currentOffset ?? Offset.zero;
-    final tip = _tooltipSize;
+  bool _tooltipHasTopOverflow(TutorialStep? step) {
+    final pos = _currentOffset(step) ?? Offset.zero;
+    final tip = _tooltipSize(step);
     final tooltipOffset = pos.dy - tip.height - (_tooltipPadding * 2);
     return tooltipOffset < 0;
   }
 
-  bool get _showAbove {
-    final preferAbove = widget.preferredPosition == TooltipPosition.above;
-    if (preferAbove) {
-      // Show above unless top overflow forces below
-      return !_tooltipHasTopOverflow || _tooltipHasBottomOverflow;
-    } else {
-      // Show below unless bottom overflow forces above
-      return _tooltipHasBottomOverflow;
-    }
-  }
+  bool _showAbove(TutorialStep? step) =>
+      !_tooltipHasTopOverflow(step) || _tooltipHasBottomOverflow(step);
 
-  double? get _tooltipHorizontalOffset {
-    if (_currentOffset == null || _currentSize == null) return null;
+  double? _tooltipHorizontalOffset(TutorialStep? step) {
+    final size = _currentSize(step);
+    final pos = _currentOffset(step);
+
+    if (pos == null || size == null) return null;
     final screenWidth = MediaQuery.sizeOf(context).width;
-    final tip = _tooltipSize;
+    final tip = _tooltipSize(step);
     if (tip.width >= screenWidth) {
       return null; // can't fit, just center
     }
-    final pos = _currentOffset!;
-    final size = _currentSize!;
+
     final midpoint = pos.dx + size.width / 2;
 
     final rightEdge = midpoint + tip.width / 2 + _tooltipPadding;
@@ -164,102 +147,64 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     return null;
   }
 
-  Future<void> _next() async {
-    await _updateStep(_currentStepIndex + 1);
+  void _setVisible(bool visible) {
+    if (_visible == visible) return;
+    if (mounted) {
+      setState(() => _visible = visible);
+    }
+  }
+
+  Future<void> _next(TutorialStep step) async {
+    final success = await _executeStepCallback(step);
+    if (success) widget.forward();
   }
 
   Future<void> _previous() async {
-    if (_currentStepIndex == 0) {
-      await _goBackToPreviousTutorial();
-      return;
-    }
-    await _updateStep(_currentStepIndex - 1);
-  }
-
-  /// Closes the current tutorial overlay and signals the orchestrator to
-  /// re-open the previous tutorial in the sequence at its last step.
-  Future<void> _goBackToPreviousTutorial() async {
-    if (!TutorialOverlayOrchestrator.instance.hasPreviousTutorial(
-      widget.tutorial.tutorialType,
-    )) {
-      // No previous tutorial — fall back to closing the sequence.
-      await _close();
-      return;
-    }
-    setState(() => _visible = false);
     await Future.delayed(_duration);
-    if (mounted) {
-      TutorialOverlayOrchestrator.instance.requestGoBack(
-        currentTutorial: widget.tutorial,
-      );
-    }
+    widget.back();
   }
 
-  Future<void> _updateStep(int updatedIndex) async {
-    Logs().i("Updating tutorial step to index $updatedIndex");
-    if (updatedIndex < 0 || updatedIndex >= _stepsLength) {
-      _completedAllSteps = updatedIndex >= _stepsLength;
-      await _close();
-      return;
-    }
-
-    setState(() {
-      _visible = true;
-      _currentStepIndex = updatedIndex;
-    });
-
-    widget.tutorial.tutorialType.saveProgress(updatedIndex + 1);
-  }
-
-  Future<void> _executeStepCallback() async {
-    if (_transitioning) return;
-    _transitioning = true;
-    TutorialOverlayOrchestrator.instance.beginStepTransition();
-
+  Future<bool> _executeStepCallback(TutorialStep step) async {
+    if (widget.model.isStepTransitioning) return false;
     try {
-      final onTap = _currentStep?.data.onTap;
+      _setVisible(false);
+      widget.setTutorialTransitioning(true);
 
+      final onTap = step.data.onTap;
       if (onTap != null) {
-        setState(() => _visible = false);
         await Future.wait([onTap.call(), Future.delayed(_duration)]);
+      } else {
+        await Future.delayed(_duration);
       }
-
-      await _next();
     } catch (e, s) {
-      Logs().e('Error executing tutorial step callback: $e\n$s');
-      await _close();
-    } finally {
-      _transitioning = false;
-      TutorialOverlayOrchestrator.instance.endStepTransition();
-    }
-  }
-
-  Future<void> _close() async {
-    if (!mounted) return;
-
-    setState(() => _visible = false);
-    await Future.delayed(_duration);
-    if (mounted) {
-      TutorialOverlayOrchestrator.instance.clearActiveTutorial(
-        widget.tutorial.tutorialType,
+      ErrorHandler.logError(
+        e: "Error executing tutorial step callback",
+        s: s,
+        data: {"stepType": step.type.name, "stepIndex": step.index},
       );
+      return false;
+    } finally {
+      widget.setTutorialTransitioning(false);
+      _setVisible(true);
     }
+
+    return true;
   }
 
   @override
   Widget build(BuildContext context) {
-    final step = _currentStep;
-    final showAbove = _showAbove;
+    final model = widget.model;
+    final tutorial = model.activeTutorial;
+    final stepIndex = model.stepIndex;
+    final step = tutorial?.step(stepIndex, L10n.of(context));
 
-    final completedStepsOffset =
-        TutorialOverlayOrchestrator.instance.completedStepsOffset;
+    final showNavigation =
+        tutorial?.tutorialType.showNavigationButtons ?? false;
 
-    final currentStep = completedStepsOffset + _currentStepIndex + 1;
-
-    final totalSteps =
-        TutorialOverlayOrchestrator.instance.totalStepsInCurrentSequence;
-
-    final showNavigation = widget.tutorial.tutorialType.showNavigationButtons;
+    final size = _currentSize(step);
+    final holeWidth = (size?.width ?? 0.0) + (step?.style.padding ?? 0) * 2;
+    final holeHeight = (size?.height ?? 0.0) + (step?.style.padding ?? 0) * 2;
+    final showAbove = _showAbove(step);
 
     return MouseRegion(
       cursor: step != null && _visible
@@ -267,7 +212,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
           : SystemMouseCursors.basic,
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
-        onTap: step != null && _visible ? _executeStepCallback : null,
+        onTap: step != null && _visible ? () => _next(step) : null,
         child: Stack(
           children: [
             AnimatedOpacity(
@@ -290,17 +235,15 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
 
                           /// The "hole"
                           CompositedTransformFollower(
-                            link: step.data.targetLink,
+                            link: MatrixState.pAnyState
+                                .layerLinkAndKey(step.data.targetKey)
+                                .link,
                             showWhenUnlinked: false,
                             targetAnchor: Alignment.center,
                             followerAnchor: Alignment.center,
                             child: Container(
-                              width:
-                                  (_currentSize?.width ?? 0.0) +
-                                  (step.style.padding ?? 0) * 2,
-                              height:
-                                  (_currentSize?.height ?? 0.0) +
-                                  (step.style.padding ?? 0) * 2,
+                              width: holeWidth,
+                              height: holeHeight,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(
@@ -317,7 +260,9 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
 
             if (_visible && step != null)
               CompositedTransformFollower(
-                link: step.data.targetLink,
+                link: MatrixState.pAnyState
+                    .layerLinkAndKey(step.data.targetKey)
+                    .link,
                 showWhenUnlinked: false,
                 targetAnchor: showAbove
                     ? Alignment.topCenter
@@ -326,7 +271,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
                     ? Alignment.bottomCenter
                     : Alignment.topCenter,
                 offset: Offset(
-                  _tooltipHorizontalOffset ?? 0,
+                  _tooltipHorizontalOffset(step) ?? 0,
                   showAbove
                       ? -_tooltipPadding
                       : _tooltipPadding, // gap between target and tooltip
@@ -335,18 +280,12 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
                   width: step.style.tooltipSize.width,
                   height: step.style.tooltipSize.height,
                   padding: _tooltipPadding,
-                  onNext: _executeStepCallback,
+                  onNext: () => _next(step),
                   onPrevious: _previous,
-                  showNext: showNavigation,
-                  showPrevious:
-                      showNavigation &&
-                      (_currentStepIndex > 0 ||
-                          TutorialOverlayOrchestrator.instance
-                              .hasPreviousTutorial(
-                                widget.tutorial.tutorialType,
-                              )),
-                  currentStep: currentStep,
-                  totalSteps: totalSteps,
+                  showNext: showNavigation && widget.enabledForward,
+                  showPrevious: showNavigation && widget.enabledBack,
+                  currentStep: widget.completedSteps,
+                  totalSteps: widget.totalSteps,
                   text: step.style.tooltip,
                 ),
               ),

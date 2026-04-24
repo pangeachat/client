@@ -13,7 +13,6 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
@@ -23,7 +22,6 @@ import 'package:fluffychat/pangea/events/utils/report_message.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_overlay_orchestrator.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
@@ -59,12 +57,7 @@ enum SelectMode {
     }
   }
 
-  LayerLinkAndKey get buttonTarget =>
-      MatrixState.pAnyState.layerLinkAndKey("select_mode_button_$name");
-
-  GlobalKey get buttonKey => buttonTarget.key;
-
-  LayerLink get buttonLink => buttonTarget.link;
+  String get buttonTarget => "select_mode_button_$name";
 }
 
 enum MessageActions {
@@ -163,7 +156,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
   StreamSubscription? _playerStateSub;
   final ValueNotifier<bool> _isPlayingNotifier = ValueNotifier(false);
+
   StreamSubscription? _audioSub;
+  StreamSubscription? _tutorialSub;
 
   MatrixState? matrix;
 
@@ -178,7 +173,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
     controller.playTokenNotifier.addListener(_playToken);
 
-    if (TutorialOverlayOrchestrator.instance.isTutorialQueued(
+    if (widget.controller.tutorialOverlayController.isTutorialQueued(
       TutorialEnum.selectModeButtons,
     )) {
       Future.delayed(Duration(milliseconds: 1000), () {
@@ -186,21 +181,34 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
           _startSelectModeTutorial();
         }
       });
+    } else {
+      _tutorialSub = widget
+          .controller
+          .tutorialOverlayController
+          .forwardTutorialStream
+          .listen((tutorial) {
+            if (!mounted) return;
+            if (tutorial == TutorialEnum.selectModeButtons &&
+                controller.selectedMode.value == null) {
+              _startSelectModeTutorial();
+            }
+          });
     }
   }
 
   @override
   void dispose() {
-    final orchestrator = TutorialOverlayOrchestrator.instance;
-    if (orchestrator.isTutorialActive(TutorialEnum.selectModeButtons) &&
-        !orchestrator.isStepTransitioning) {
-      orchestrator.cancelTutorial();
+    final tutorial = widget.controller.tutorialOverlayController;
+    if (tutorial.state.isTutorialActive(TutorialEnum.selectModeButtons) &&
+        !tutorial.state.model.isStepTransitioning) {
+      tutorial.resetTutorial();
     }
 
     matrix?.audioPlayer?.dispose();
     matrix?.audioPlayer = null;
     matrix?.voiceMessageEventId.value = null;
     _audioSub?.cancel();
+    _tutorialSub?.cancel();
     _playerStateSub?.cancel();
     _isPlayingNotifier.dispose();
     controller.playTokenNotifier.removeListener(_playToken);
@@ -219,37 +227,33 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   void _startSelectModeTutorial() {
     final translateTarget = SelectMode.translate.buttonTarget;
     final audioTarget = SelectMode.audio.buttonTarget;
-    final msgTarget = widget.overlayController.overlayMessageLayerLink;
+    final msgTarget = widget.overlayController.overlayMessageKey;
 
-    TutorialOverlayOrchestrator.instance.launchTutorial(
+    widget.controller.tutorialOverlayController.launchTutorial(
       context: context,
       tutorial: SelectModeButtonsTutorialModel(
         data: [
           TutorialStepData(
-            targetLink: translateTarget.link,
-            targetKey: translateTarget.key,
+            targetKey: translateTarget,
             onTap: () async {
               await updateMode(SelectMode.translate);
               await Future.delayed(Duration(milliseconds: 2500));
             },
           ),
           TutorialStepData(
-            targetLink: audioTarget.link,
-            targetKey: audioTarget.key,
+            targetKey: audioTarget,
             onTap: () async {
               await updateMode(SelectMode.audio);
               await Future.delayed(Duration(milliseconds: 1000));
             },
           ),
           TutorialStepData(
-            targetLink: msgTarget.link,
-            targetKey: msgTarget.key,
+            targetKey: msgTarget,
             onTap: () async => widget.controller.clearSelectedEvents(),
           ),
         ],
       ),
       currentRoute: widget.controller.currentRoutePath,
-      initialStepIndex: TutorialEnum.selectModeButtons.stepProgress,
     );
   }
 
@@ -469,6 +473,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     final theme = Theme.of(context);
     final modes = controller.readingAssistanceModes;
     final allModes = controller.allModes(enableRefresh: _canRefresh);
+
     return Material(
       type: MaterialType.transparency,
       child: SizedBox(
@@ -491,12 +496,15 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                     ]),
                     builder: (context, _) {
                       final selectedMode = controller.selectedMode.value;
+                      final target = MatrixState.pAnyState.layerLinkAndKey(
+                        mode.buttonTarget,
+                      );
                       return Opacity(
                         opacity: enabled ? 1.0 : 0.75,
                         child: CompositedTransformTarget(
-                          link: mode.buttonLink,
+                          link: target.link,
                           child: PressableButton(
-                            key: mode.buttonKey,
+                            key: target.key,
                             borderRadius: BorderRadius.circular(20),
                             depressed: mode == selectedMode || !enabled,
                             color: theme.colorScheme.primaryContainer,

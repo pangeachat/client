@@ -20,7 +20,12 @@ sealed class TutorialModel {
 
   TutorialStep step(int index, L10n l10n) {
     final styles = _stepStyles(l10n);
-    return TutorialStep(data: _stepsData[index], style: styles[index]);
+    return TutorialStep(
+      data: _stepsData[index],
+      style: styles[index],
+      type: tutorialType,
+      index: index,
+    );
   }
 }
 
