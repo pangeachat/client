@@ -278,9 +278,6 @@ class TutorialOverlayController {
     }
 
     _state.dispatch(LaunchTutorialEvent(tutorial));
-
-    final updatedStepIndex = _state.model.stepIndex;
-    _state.tutorialType?.saveProgress(updatedStepIndex);
   }
 
   bool _openTutorialOverlay(BuildContext context) {
@@ -330,11 +327,10 @@ class TutorialOverlayController {
     final couldGoForward = _state.canGoForward;
 
     final previousType = _state.tutorialType;
+    previousType?.saveProgress(_state.model.stepIndex + 1);
+
     _state.dispatch(ForwardTutorialEvent());
     final updatedType = _state.tutorialType;
-
-    final updatedStepIndex = _state.model.stepIndex;
-    updatedType?.saveProgress(updatedStepIndex);
 
     if (!couldGoForward) {
       resetTutorial();
@@ -356,9 +352,6 @@ class TutorialOverlayController {
     final previousType = _state.tutorialType;
     _state.dispatch(BackTutorialEvent());
     final updatedType = _state.tutorialType;
-
-    final updatedStepIndex = _state.model.stepIndex;
-    updatedType?.saveProgress(updatedStepIndex);
 
     if (previousType != updatedType) {
       _backNavigationStreamController.add(updatedType);

@@ -8,8 +8,6 @@ import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_tooltip_container_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-enum TooltipPosition { above, below }
-
 class TutorialOverlayWidget extends StatefulWidget {
   final TutorialOverlayState model;
 

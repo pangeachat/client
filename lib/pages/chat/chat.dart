@@ -210,7 +210,7 @@ class ChatController extends State<ChatPageWithRoom>
   StreamSubscription? _botAudioSubscription;
   StreamSubscription? _readingAssistanceTutorialSubscription;
 
-  StreamSubscription? _closedTutorialSubscription;
+  StreamSubscription? _forwardTutorialSubscription;
   StreamSubscription? _goBackTutorialSubscription;
 
   /// The event used to start the reading-assistance tutorial. Stored so the
@@ -812,7 +812,7 @@ class ChatController extends State<ChatPageWithRoom>
       TutorialSequences.chatTutorialSequence,
     );
 
-    _closedTutorialSubscription = tutorialOverlayController
+    _forwardTutorialSubscription = tutorialOverlayController
         .forwardTutorialStream
         .listen(_writingAssistanceTutorialListener);
 
@@ -1096,7 +1096,7 @@ class ChatController extends State<ChatPageWithRoom>
     depressMessageButton.dispose();
     scrollableNotifier.dispose();
     TokensUtil.instance.clearNewTokenCache();
-    _closedTutorialSubscription?.cancel();
+    _forwardTutorialSubscription?.cancel();
     _goBackTutorialSubscription?.cancel();
     tutorialOverlayController.dispose();
     //Pangea#
