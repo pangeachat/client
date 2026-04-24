@@ -466,6 +466,7 @@ class PangeaInvitationSelectionController
                 ? L10n.of(context).contactHasBeenInvitedToTheCourse
                 : L10n.of(context).contactHasBeenInvitedToTheChat,
           ),
+          showCloseIcon: true,
         ),
       );
     }
