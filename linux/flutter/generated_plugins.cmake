@@ -14,6 +14,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   handy_window
   open_file_linux
   record_linux
+  rive_native
   screen_retriever_linux
   sentry_flutter
   sqlcipher_flutter_libs
@@ -25,6 +26,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
   flutter_vodozemac
+  jni
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)
