@@ -17,15 +17,10 @@ class TutorialStep {
 }
 
 class TutorialStepData {
-  final GlobalKey targetKey;
-  final LayerLink targetLink;
+  final String targetKey;
   final Future<void> Function()? onTap;
 
-  TutorialStepData({
-    required this.targetKey,
-    required this.targetLink,
-    this.onTap,
-  });
+  TutorialStepData({required this.targetKey, this.onTap});
 }
 
 class TutorialStepStyle {

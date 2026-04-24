@@ -80,10 +80,8 @@ class TutorialOverlayStateMachine extends ChangeNotifier {
   final TutorialSequence _sequence;
   late TutorialOverlayState _model;
 
-  TutorialOverlayStateMachine(this._sequence) {
-    _model = TutorialOverlayState(
-      stepIndex: _sequence.isNotEmpty ? _sequence[0].stepProgress : 0,
-    );
+  TutorialOverlayStateMachine(this._sequence, {int initialStepIndex = 0}) {
+    _model = TutorialOverlayState(stepIndex: initialStepIndex);
   }
 
   TutorialOverlayState get model => _model;
@@ -197,8 +195,7 @@ class TutorialOverlayStateMachine extends ChangeNotifier {
 
   bool get canGoForward => hasNextStep || hasNextTutorial;
 
-  bool get hasCompletedSequence =>
-      TutorialSequences.hasCompletedSequence(_sequence);
+  bool get hasCompletedSequence => _model.tutorialIndex >= _sequence.length;
 
   TutorialEnum? get tutorialType {
     if (_model.tutorialIndex < 0 || _model.tutorialIndex >= _sequence.length) {
@@ -215,8 +212,14 @@ class TutorialOverlayController {
   late final TutorialOverlayStateMachine _state;
 
   TutorialOverlayController(TutorialSequence sequence) {
+    final enabledSequence = TutorialSequences.enabledTutorialsInSequence(
+      sequence,
+    );
     _state = TutorialOverlayStateMachine(
-      TutorialSequences.enabledTutorialsInSequence(sequence),
+      enabledSequence,
+      initialStepIndex: enabledSequence.isNotEmpty
+          ? enabledSequence[0].stepProgress
+          : 0,
     );
   }
 
@@ -277,7 +280,7 @@ class TutorialOverlayController {
     _state.dispatch(LaunchTutorialEvent(tutorial));
 
     final updatedStepIndex = _state.model.stepIndex;
-    _state.tutorialType?.saveProgress(updatedStepIndex + 1);
+    _state.tutorialType?.saveProgress(updatedStepIndex);
   }
 
   bool _openTutorialOverlay(BuildContext context) {
@@ -297,7 +300,7 @@ class TutorialOverlayController {
           builder: (context, _) => TutorialOverlayWidget(
             model: state.model,
             forward: forwardTutorial,
-            back: backTutoral,
+            back: backTutorial,
             reset: resetTutorial,
             setTutorialTransitioning: setTutorialTransitioning,
             enabledForward: state.canGoForward,
@@ -331,7 +334,7 @@ class TutorialOverlayController {
     final updatedType = _state.tutorialType;
 
     final updatedStepIndex = _state.model.stepIndex;
-    updatedType?.saveProgress(updatedStepIndex + 1);
+    updatedType?.saveProgress(updatedStepIndex);
 
     if (!couldGoForward) {
       resetTutorial();
@@ -344,7 +347,7 @@ class TutorialOverlayController {
   }
 
   // /// Signals the previous tutorial in the sequence to re-open at its last step.
-  void backTutoral() {
+  void backTutorial() {
     if (!state.canGoBack) {
       resetTutorial();
       return;
@@ -355,7 +358,7 @@ class TutorialOverlayController {
     final updatedType = _state.tutorialType;
 
     final updatedStepIndex = _state.model.stepIndex;
-    updatedType?.saveProgress(updatedStepIndex + 1);
+    updatedType?.saveProgress(updatedStepIndex);
 
     if (previousType != updatedType) {
       _backNavigationStreamController.add(updatedType);

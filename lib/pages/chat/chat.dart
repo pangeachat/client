@@ -715,14 +715,12 @@ class ChatController extends State<ChatPageWithRoom>
     inputFocus.unfocus();
     _tutorialEvent = event;
 
-    final target = MatrixState.pAnyState.layerLinkAndKey(event.eventId);
     tutorialOverlayController.launchTutorial(
       context: context,
       tutorial: ReadingAssistantTutorialModel(
         data: [
           TutorialStepData(
-            targetLink: target.link,
-            targetKey: target.key,
+            targetKey: event.eventId,
             onTap: () async => showToolbar(event, bypassBlockingOverlays: true),
           ),
         ],
@@ -732,17 +730,12 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void _launchWritingAssistanceTutorial() {
-    final inputTarget = MatrixState.pAnyState.layerLinkAndKey(
-      ChoreoConstants.inputTransformTargetKey,
-    );
-
     tutorialOverlayController.launchTutorial(
       context: context,
       tutorial: WritingAssistantTutorialModel(
         data: [
           TutorialStepData(
-            targetLink: inputTarget.link,
-            targetKey: inputTarget.key,
+            targetKey: ChoreoConstants.inputTransformTargetKey,
             onTap: () async => inputFocus.requestFocus(),
           ),
         ],

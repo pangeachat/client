@@ -6,6 +6,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_overlay_controller.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_tooltip_container_widget.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 enum TooltipPosition { above, below }
 
@@ -81,8 +82,9 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     final stepKey = step.data.targetKey;
 
     try {
+      final target = MatrixState.pAnyState.layerLinkAndKey(stepKey);
       final renderBox =
-          stepKey.currentContext?.findRenderObject() as RenderBox?;
+          target.key.currentContext?.findRenderObject() as RenderBox?;
       if (renderBox == null || !renderBox.attached || !renderBox.hasSize) {
         return null;
       }
@@ -155,8 +157,8 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   }
 
   Future<void> _next(TutorialStep step) async {
-    await _executeStepCallback(step);
-    widget.forward();
+    final success = await _executeStepCallback(step);
+    if (success) widget.forward();
   }
 
   Future<void> _previous() async {
@@ -164,9 +166,8 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     widget.back();
   }
 
-  Future<void> _executeStepCallback(TutorialStep step) async {
-    if (widget.model.isStepTransitioning) return;
-
+  Future<bool> _executeStepCallback(TutorialStep step) async {
+    if (widget.model.isStepTransitioning) return false;
     try {
       _setVisible(false);
       widget.setTutorialTransitioning(true);
@@ -183,10 +184,13 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
         s: s,
         data: {"stepType": step.type.name, "stepIndex": step.index},
       );
+      return false;
     } finally {
       widget.setTutorialTransitioning(false);
       _setVisible(true);
     }
+
+    return true;
   }
 
   @override
@@ -233,7 +237,9 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
 
                           /// The "hole"
                           CompositedTransformFollower(
-                            link: step.data.targetLink,
+                            link: MatrixState.pAnyState
+                                .layerLinkAndKey(step.data.targetKey)
+                                .link,
                             showWhenUnlinked: false,
                             targetAnchor: Alignment.center,
                             followerAnchor: Alignment.center,
@@ -256,7 +262,9 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
 
             if (_visible && step != null)
               CompositedTransformFollower(
-                link: step.data.targetLink,
+                link: MatrixState.pAnyState
+                    .layerLinkAndKey(step.data.targetKey)
+                    .link,
                 showWhenUnlinked: false,
                 targetAnchor: showAbove
                     ? Alignment.topCenter
