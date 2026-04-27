@@ -25,7 +25,7 @@ class ErrorHandler {
   static Future<void> initialize() async {
     await SentryFlutter.init((options) {
       options.dsn = Environment.sentryDsn;
-      options.tracesSampleRate = 0.1;
+      options.tracesSampleRate = 0.02;
       options.debug = kDebugMode;
       options.environment = kDebugMode
           ? "debug"
