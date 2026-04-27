@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -22,35 +21,11 @@ import 'package:fluffychat/widgets/matrix.dart';
 import '../../config/themes.dart';
 import '../../widgets/avatar.dart';
 
-class ActivityArchive extends StatefulWidget {
+class ActivityArchive extends StatelessWidget {
   const ActivityArchive({super.key});
 
   @override
-  State<ActivityArchive> createState() => ActivityArchiveState();
-}
-
-class ActivityArchiveState extends State<ActivityArchive> {
-  late final TapGestureRecognizer recognizer;
-
-  @override
-  void initState() {
-    super.initState();
-    recognizer = TapGestureRecognizer()
-      ..onTap = () => context.go("/rooms/course");
-  }
-
-  @override
-  void dispose() {
-    recognizer.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final linkColor = theme.brightness == Brightness.dark
-        ? theme.colorScheme.primaryContainer
-        : theme.colorScheme.primary;
     return StreamBuilder(
       stream: Matrix.of(
         context,
@@ -94,26 +69,37 @@ class ActivityArchiveState extends State<ActivityArchive> {
                                         ? InstructionsEnum.noSavedActivitiesYet
                                         : InstructionsEnum
                                               .activityAnalyticsList,
-                                    richText: archive.isEmpty
-                                        ? [
-                                            TextSpan(
-                                              text: L10n.of(
-                                                context,
-                                              ).noSavedActivitiesYet,
-                                            ),
-                                            TextSpan(text: " "),
-                                            TextSpan(
-                                              text: L10n.of(
-                                                context,
-                                              ).joinCourseForActivities,
-                                              style: TextStyle(
-                                                color: linkColor,
-                                              ),
-                                              recognizer: recognizer,
-                                            ),
-                                          ]
-                                        : null,
                                     padding: const EdgeInsets.all(8.0),
+                                    extraContent: archive.isEmpty
+                                        ? ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              padding: EdgeInsets.zero,
+                                            ),
+                                            onPressed: () =>
+                                                context.go("/rooms/course"),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  L10n.of(
+                                                    context,
+                                                  ).joinCourseForActivities,
+                                                  style:
+                                                      FluffyThemes.isColumnMode(
+                                                        context,
+                                                      )
+                                                      ? Theme.of(
+                                                          context,
+                                                        ).textTheme.titleSmall
+                                                      : Theme.of(
+                                                          context,
+                                                        ).textTheme.bodyMedium,
+                                                ),
+                                              ],
+                                            ),
+                                          )
+                                        : null,
                                   );
                                 }
                                 i--;
