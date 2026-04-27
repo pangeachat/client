@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-23 10:45:29.490345",
+    "@@last_modified": "2026-04-27 12:03:57.662800",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11515,6 +11515,11 @@
     },
     "acceptAll": "Acceptera alla",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Att sänka denna användares behörighetsnivå kommer att ta bort administratörsrättigheter.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

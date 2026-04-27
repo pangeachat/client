@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-23 10:44:51.500566",
+    "@@last_modified": "2026-04-27 12:02:20.970639",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -11025,6 +11025,11 @@
     },
     "acceptAll": "Terima semua",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Menurunkan tingkat izin pengguna ini akan menghapus hak istimewa admin.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

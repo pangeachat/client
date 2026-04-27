@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-04-23 10:45:01.028365",
+    "@@last_modified": "2026-04-27 12:02:36.131986",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10925,6 +10925,11 @@
     },
     "acceptAll": "Kinnita kõik",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Selle kasutaja õiguste taseme langetamine eemaldab administraatori õigused.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

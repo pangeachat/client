@@ -1675,7 +1675,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-04-23 10:45:03.485517",
+    "@@last_modified": "2026-04-27 12:02:40.034407",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -12059,6 +12059,11 @@
     },
     "acceptAll": "接受所有",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "降低此用戶的權限級別將會移除管理員特權。",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

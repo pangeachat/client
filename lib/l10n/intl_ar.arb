@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-04-23 10:45:18.637569",
+    "@@last_modified": "2026-04-27 12:03:34.947917",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11268,6 +11268,11 @@
     },
     "acceptAll": "قبول الكل",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "خفض مستوى صلاحيات هذا المستخدم سيؤدي إلى إزالة امتيازات الإدارة.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

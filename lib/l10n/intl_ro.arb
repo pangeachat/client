@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-23 10:44:52.525494",
+    "@@last_modified": "2026-04-27 12:02:22.487752",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11753,6 +11753,11 @@
     },
     "acceptAll": "Acceptă tot",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Scăderea nivelului de permisiune al acestui utilizator va elimina privilegiile de administrator.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

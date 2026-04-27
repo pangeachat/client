@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-23 10:45:14.335295",
+    "@@last_modified": "2026-04-27 12:03:29.559035",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -11058,6 +11058,11 @@
     },
     "acceptAll": "接受所有",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "降低此用戶的權限級別將會移除管理員特權。",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

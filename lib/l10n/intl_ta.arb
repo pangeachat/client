@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-23 10:45:23.967197",
+    "@@last_modified": "2026-04-27 12:03:41.572476",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -11044,6 +11044,11 @@
     },
     "acceptAll": "எல்லாவற்றையும் ஏற்கவும்",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "இந்த பயனரின் அனுமதி நிலையை குறைப்பது நிர்வாக அதிகாரங்களை நீக்கும்.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

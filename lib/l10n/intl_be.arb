@@ -4202,7 +4202,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-04-23 10:45:09.012692",
+    "@@last_modified": "2026-04-27 12:03:22.672259",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10942,6 +10942,11 @@
     },
     "acceptAll": "Прыняць усё",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Паніжэнне ўзроўню дазволаў гэтага карыстальніка прывядзе да адмены адміністрацыйных правоў.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

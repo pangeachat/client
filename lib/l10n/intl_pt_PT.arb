@@ -3045,7 +3045,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-04-23 10:45:13.518196",
+    "@@last_modified": "2026-04-27 12:03:28.143731",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12004,6 +12004,11 @@
     },
     "acceptAll": "Aceitar tudo",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Reduzir o nível de permissão deste usuário removerá privilégios de administrador.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

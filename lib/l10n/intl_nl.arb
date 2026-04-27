@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-23 10:45:24.684214",
+    "@@last_modified": "2026-04-27 12:03:42.582818",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10928,6 +10928,11 @@
     },
     "acceptAll": "Accepteer alles",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Het verlagen van het machtigingsniveau van deze gebruiker zal de adminrechten verwijderen.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

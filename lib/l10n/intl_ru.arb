@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-04-23 10:45:34.207434",
+    "@@last_modified": "2026-04-27 12:04:08.798302",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11942,6 +11942,11 @@
     },
     "acceptAll": "Принять все",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Снижение уровня разрешений этого пользователя приведет к удалению прав администратора.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

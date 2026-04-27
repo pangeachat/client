@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-04-23 10:44:47.401053",
+    "@@last_modified": "2026-04-27 12:02:10.410087",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10928,6 +10928,11 @@
     },
     "acceptAll": "Aceptar todo",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Baixar o nivel de permiso deste usuario eliminará os privilexios de administrador.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

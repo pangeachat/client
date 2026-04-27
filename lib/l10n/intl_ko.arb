@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-23 10:44:45.057569",
+    "@@last_modified": "2026-04-27 12:02:07.075472",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -11145,6 +11145,11 @@
     },
     "acceptAll": "모두 수락",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "이 사용자의 권한 수준을 낮추면 관리자 권한이 제거됩니다.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

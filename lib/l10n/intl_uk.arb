@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-04-23 10:45:05.941763",
+    "@@last_modified": "2026-04-27 12:03:18.828204",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10928,6 +10928,11 @@
     },
     "acceptAll": "Прийняти все",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Зниження рівня доступу цього користувача призведе до видалення адміністративних привілеїв.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

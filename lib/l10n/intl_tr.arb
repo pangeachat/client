@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-04-23 10:45:19.460196",
+    "@@last_modified": "2026-04-27 12:03:35.874372",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11259,6 +11259,11 @@
     },
     "acceptAll": "Hepsini kabul et",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Bu kullanıcının izin seviyesini düşürmek, yönetici ayrıcalıklarını kaldıracaktır.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

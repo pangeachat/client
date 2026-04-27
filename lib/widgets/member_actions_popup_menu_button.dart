@@ -312,7 +312,18 @@ void showMemberActionsPopupMenu({
         );
         if (consent != OkCancelResult.ok) return;
         if (!context.mounted) return;
+      } // #Pangea
+      if (power < 100 && user.powerLevel >= 100) {
+        // If the user is already admin, we are demoting them, so we want to show a different message and get different consent
+        final consent = await showOkCancelAlertDialog(
+          context: context,
+          title: L10n.of(context).areYouSure,
+          message: L10n.of(context).removeAdminDescription,
+        );
+        if (consent != OkCancelResult.ok) return;
+        if (!context.mounted) return;
       }
+      // Pangea#
       await showFutureLoadingDialog(
         context: context,
         future: () => user.setPower(power),

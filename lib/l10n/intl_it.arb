@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-23 10:45:04.436799",
+    "@@last_modified": "2026-04-27 12:02:41.345692",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -11019,6 +11019,11 @@
     },
     "acceptAll": "Accetta tutto",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Abbassare il livello di autorizzazione di questo utente rimuoverà i privilegi di amministratore.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

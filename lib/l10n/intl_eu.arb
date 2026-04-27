@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-04-23 10:44:59.385410",
+    "@@last_modified": "2026-04-27 12:02:33.265539",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10928,6 +10928,11 @@
     },
     "acceptAll": "Onartu dena",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Erabiltzaile honen baimen maila jaistea administratzaileen pribilegioak kentzea izango da.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

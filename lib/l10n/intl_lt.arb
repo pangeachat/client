@@ -3514,7 +3514,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-04-23 10:45:21.609309",
+    "@@last_modified": "2026-04-27 12:03:39.121950",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11814,6 +11814,11 @@
     },
     "acceptAll": "Priimti viską",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Sumažinus šio vartotojo teisių lygį, bus atimtos administratoriaus privilegijos.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }
