@@ -110,7 +110,7 @@ class KnockingUsersIndicatorState extends State<KnockingUsersIndicator> {
                     ],
                   ),
                   onTap: () => context.push(
-                    "/rooms/spaces/${widget.room.id}/details/members?filter=knock",
+                    "/rooms/spaces/${widget.room.id}/details/invite?filter=knock",
                   ),
                 ),
               ),
