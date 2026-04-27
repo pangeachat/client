@@ -61,6 +61,37 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _setVisible(true);
     });
+    WidgetsBinding.instance.addPostFrameCallback(_monitorTargetWidget);
+  }
+
+  /// Polls each frame while the overlay is active.
+  /// If the current step's target widget has been unmounted (and we are not
+  /// mid-transition), closes the overlay so the dark blocking layer does not
+  /// remain visible without any tutorial content.
+  void _monitorTargetWidget(Duration _) {
+    if (!mounted) return;
+
+    final tutorial = widget.model.activeTutorial;
+
+    // Between tutorials in a sequence there is no active tutorial yet —
+    // keep waiting.
+    if (tutorial == null) {
+      WidgetsBinding.instance.addPostFrameCallback(_monitorTargetWidget);
+      return;
+    }
+
+    // Use targetKeyAt to avoid allocating styles or performing an L10n
+    // inherited-widget lookup on every frame.
+    final targetKey = tutorial.targetKeyAt(widget.model.stepIndex);
+    final targetMissing = _isTargetMounted(targetKey) == false;
+    final notTransitioning = !widget.model.isStepTransitioning;
+
+    if (targetMissing && notTransitioning && _visible) {
+      widget.reset();
+      return;
+    }
+
+    WidgetsBinding.instance.addPostFrameCallback(_monitorTargetWidget);
   }
 
   Duration get _duration => FluffyThemes.animationDuration;
@@ -73,6 +104,17 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
       baseSize.width + _tooltipPadding,
       baseSize.height + _tooltipPadding,
     );
+  }
+
+  bool _isTargetMounted(String targetKey) {
+    try {
+      final target = MatrixState.pAnyState.layerLinkAndKey(targetKey);
+      final renderBox =
+          target.key.currentContext?.findRenderObject() as RenderBox?;
+      return renderBox != null && renderBox.attached && renderBox.hasSize;
+    } catch (e) {
+      return false;
+    }
   }
 
   RenderBox? _currentRenderBox(TutorialStep? step) {
