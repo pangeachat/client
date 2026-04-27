@@ -27,45 +27,8 @@ enum InvitationFilter {
   public,
   banned;
 
-  static InvitationFilter? fromString(String value) {
-    switch (value) {
-      case 'space':
-        return InvitationFilter.space;
-      case 'contacts':
-        return InvitationFilter.contacts;
-      case 'invited':
-        return InvitationFilter.invited;
-      case 'knocking':
-        return InvitationFilter.knocking;
-      case 'public':
-        return InvitationFilter.public;
-      case 'participants':
-        return InvitationFilter.participants;
-      case 'banned':
-        return InvitationFilter.banned;
-      default:
-        return null;
-    }
-  }
-
-  String get string {
-    switch (this) {
-      case InvitationFilter.space:
-        return 'space';
-      case InvitationFilter.contacts:
-        return 'contacts';
-      case InvitationFilter.invited:
-        return 'invited';
-      case InvitationFilter.knocking:
-        return 'knocking';
-      case InvitationFilter.public:
-        return 'public';
-      case InvitationFilter.participants:
-        return 'participants';
-      case InvitationFilter.banned:
-        return 'banned';
-    }
-  }
+  static InvitationFilter? fromString(String value) =>
+      InvitationFilter.values.firstWhereOrNull((e) => e.name == value);
 }
 
 class PangeaInvitationSelection extends StatefulWidget {
@@ -520,14 +483,35 @@ class PangeaInvitationSelectionController
         [];
     if (knocking.isEmpty) return;
 
-    final futures = knocking.map((u) => _room!.invite(u.id)).toList();
+    final futures = knocking.map((u) async {
+      _room!.invite(u.id);
+      if (u.membership != Membership.invite) {
+        await _room!.client.onSync.stream.firstWhere(
+          (update) =>
+              update.rooms?.join?[widget.roomId]?.timeline?.events?.any(
+                (event) =>
+                    event.type == EventTypes.RoomMember &&
+                    event.stateKey == u.id &&
+                    event.content['membership'] == 'invite',
+              ) ==
+              true,
+        );
+      }
+    }).toList();
+
     await showFutureLoadingDialog(
       context: context,
-      future: () async {
-        await Future.wait(futures);
-        return null;
-      },
+      future: () => Future.wait(futures),
     );
+
+    if (!mounted) return;
+
+    final updatedContacts = filteredContacts();
+    if (updatedContacts.isEmpty) {
+      setFilter(InvitationFilter.invited);
+    } else {
+      setState(() {});
+    }
   }
 
   @override
