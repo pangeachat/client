@@ -127,17 +127,6 @@ class VocabAnalyticsListView extends StatelessWidget {
         .cast<Widget>()
         .toList();
 
-    filters.add(
-      IconButton(
-        icon: const Icon(Icons.search_outlined),
-        onPressed: controller.toggleSearching,
-      ),
-    );
-
-    if (kIsWeb) {
-      filters.add(const DownloadAnalyticsButton());
-    }
-
     final constructParam = GoRouterState.of(
       context,
     ).pathParameters['construct'];
@@ -154,6 +143,21 @@ class VocabAnalyticsListView extends StatelessWidget {
     }
 
     final filteredVocab = _filteredVocab;
+    final showSearch = filteredVocab != null && filteredVocab.length > 15;
+
+    if (showSearch) {
+      filters.add(
+        IconButton(
+          icon: const Icon(Icons.search_outlined),
+          onPressed: controller.toggleSearching,
+        ),
+      );
+    }
+
+    if (kIsWeb) {
+      filters.add(const DownloadAnalyticsButton());
+    }
+
     return Column(
       children: [
         AnimatedContainer(
@@ -219,7 +223,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                     )
                   : Row(
                       spacing: FluffyThemes.isColumnMode(context) ? 16.0 : 4.0,
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       key: const ValueKey('filters'),
                       children: filters,
                     ),
