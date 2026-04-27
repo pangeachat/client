@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 
@@ -46,7 +47,7 @@ class _LevelUpBannerState extends State<LevelUpBanner> {
   Future<void> _playLevelUpSound() async {
     final player = AudioPlayer();
     try {
-      player.setVolume(AppSettings.volume.value);
+      player.setVolume(min(0.05, AppSettings.volume.value));
       await player.play(
         UrlSource(
           "${AppConfig.assetsBaseURL}/${AnalyticsConstants.levelUpAudioFileName}",
