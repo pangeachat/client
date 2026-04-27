@@ -2611,6 +2611,10 @@ class ChatController extends State<ChatPageWithRoom>
       return showLanguageMismatchPopup(manual: manual, autosend: autosend);
     }
 
+    if (choreographer.assistanceState == AssistanceStateEnum.fetching) {
+      return;
+    }
+
     // If this request should send on a success, and is not a manual request,
     // and assistance has already been requested or writing assistance should not run automatically in this room,
     // then just send the message instead of requesting assistance.
