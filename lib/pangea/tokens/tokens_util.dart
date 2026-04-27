@@ -3,6 +3,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/pangea/tokens/grapheme_offset_index.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class _TokenPositionCacheItem {
@@ -246,29 +247,59 @@ class TokensUtil {
     return positions;
   }
 
-  /// Given a list of tokens, reconstructs an original message, including gaps for non-token elements.
-  List<TokenPosition> getGlobalTokenPositions(List<PangeaToken> tokens) {
+  /// Given a list of tokens and the original transcript, reconstructs the
+  /// message as a sequence of positions — one per token, plus gap positions
+  /// for any non-token text in between (e.g. whitespace).
+  ///
+  /// Backend tokenizers (spaCy, LLM, Google, Whisper) produce `token.text.offset`
+  /// in **Unicode code-point units** (Python `len()` semantics). The returned
+  /// `TokenPosition` indices are in **Dart grapheme-cluster units**, matching
+  /// `String.characters` — which is what the renderer slices by. These units
+  /// differ for Indic scripts with matras, many emoji, and combining marks.
+  List<TokenPosition> getGlobalTokenPositions(
+    List<PangeaToken> tokens, {
+    required String transcript,
+  }) {
     final List<TokenPosition> tokenPositions = [];
+    final GraphemeOffsetIndex index = GraphemeOffsetIndex.fromText(transcript);
+
+    // Pre-translate each token's code-point range into grapheme indices.
+    final int n = tokens.length;
+    final List<int> gStart = List.filled(n, 0);
+    final List<int> gEnd = List.filled(n, 0);
+    for (var i = 0; i < n; i++) {
+      final t = tokens[i];
+      final int cpStart = t.text.offset;
+      // `content.runes.length` is the code-point length (matches the backend's
+      // `len()` semantics); we intentionally ignore `t.text.length` here
+      // because `PangeaTokenText.fromJson` stores it as a grapheme count and
+      // mixing units is the root of issue #1963.
+      final int cpEnd = cpStart + t.text.content.runes.length;
+      gStart[i] = index.graphemeStartOfCodepoint(cpStart);
+      gEnd[i] = index.graphemeEndOfCodepoint(cpEnd);
+    }
+
     int tokenPointer = 0;
     int globalPointer = 0;
 
-    while (tokenPointer < tokens.length) {
+    while (tokenPointer < n) {
       int endIndex = tokenPointer;
       PangeaToken token = tokens[tokenPointer];
 
-      if (token.text.offset > globalPointer) {
-        // If the token starts after the current global pointer, we need to
-        // create a new token position for the gap
+      if (gStart[tokenPointer] > globalPointer) {
+        // Gap between the previous token and this one (usually whitespace).
         tokenPositions.add(
-          TokenPosition(startIndex: globalPointer, endIndex: token.text.offset),
+          TokenPosition(
+            startIndex: globalPointer,
+            endIndex: gStart[tokenPointer],
+          ),
         );
-
-        globalPointer = token.text.offset;
+        globalPointer = gStart[tokenPointer];
       }
 
-      // move the end index if the next token is right next to the current token
-      // and either the current token is punctuation or the next token is punctuation
-      while (endIndex < tokens.length - 1) {
+      // Merge this token with an adjacent punctuation token if either side is
+      // PUNCT and there is no gap between them in grapheme space.
+      while (endIndex < n - 1) {
         final PangeaToken currentToken = tokens[endIndex];
         final PangeaToken nextToken = tokens[endIndex + 1];
 
@@ -279,8 +310,7 @@ class TokensUtil {
             nextToken.pos == 'PUNCT' &&
             nextToken.text.content.trim().isNotEmpty;
 
-        if (currentToken.text.offset + currentToken.text.length !=
-            nextToken.text.offset) {
+        if (gEnd[endIndex] != gStart[endIndex + 1]) {
           break;
         }
 
@@ -290,7 +320,6 @@ class TokensUtil {
           if (token.pos == 'PUNCT' && !nextIsPunct) {
             token = nextToken;
           }
-
           endIndex++;
         } else {
           break;
@@ -300,15 +329,13 @@ class TokensUtil {
       tokenPositions.add(
         TokenPosition(
           token: token,
-          startIndex: tokens[tokenPointer].text.offset,
-          endIndex: tokens[endIndex].text.offset + tokens[endIndex].text.length,
+          startIndex: gStart[tokenPointer],
+          endIndex: gEnd[endIndex],
         ),
       );
 
-      // Move to the next token
       tokenPointer = tokenPointer + (endIndex - tokenPointer) + 1;
-      globalPointer =
-          tokens[endIndex].text.offset + tokens[endIndex].text.length;
+      globalPointer = gEnd[endIndex];
     }
 
     return tokenPositions;

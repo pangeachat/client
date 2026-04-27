@@ -48,46 +48,49 @@ class SttTranscriptTokens extends StatelessWidget {
       textScaler: TextScaler.noScaling,
       text: TextSpan(
         style: style ?? DefaultTextStyle.of(context).style,
-        children: TokensUtil.instance.getGlobalTokenPositions(tokens).map((
-          tokenPosition,
-        ) {
-          final text = messageCharacters
-              .skip(tokenPosition.startIndex)
-              .take(tokenPosition.endIndex - tokenPosition.startIndex)
-              .toString();
+        children: TokensUtil.instance
+            .getGlobalTokenPositions(tokens, transcript: model.transcript.text)
+            .map((tokenPosition) {
+              final text = messageCharacters
+                  .skip(tokenPosition.startIndex)
+                  .take(tokenPosition.endIndex - tokenPosition.startIndex)
+                  .toString();
 
-          if (tokenPosition.token == null) {
-            return TextSpan(
-              text: text,
-              style: style ?? DefaultTextStyle.of(context).style,
-            );
-          }
+              if (tokenPosition.token == null) {
+                return TextSpan(
+                  text: text,
+                  style: style ?? DefaultTextStyle.of(context).style,
+                );
+              }
 
-          final token = tokenPosition.token!;
-          final selected = isSelected?.call(token) ?? false;
+              final token = tokenPosition.token!;
+              final selected = isSelected?.call(token) ?? false;
 
-          return WidgetSpan(
-            child: HoverBuilder(
-              builder: (context, hovered) => MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                  behavior: HitTestBehavior.translucent,
-                  onTap: onClick != null ? () => onClick?.call(token) : null,
-                  child: UnderlineText(
-                    text: text,
-                    style: style ?? DefaultTextStyle.of(context).style,
-                    underlineColor: TokenRenderingUtil.underlineColor(
-                      Theme.of(context).colorScheme.primary.withAlpha(200),
-                      selected: selected,
-                      hovered: hovered,
-                      isNew: newTokens.any((t) => t == token.text),
+              return WidgetSpan(
+                child: HoverBuilder(
+                  builder: (context, hovered) => MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: onClick != null
+                          ? () => onClick?.call(token)
+                          : null,
+                      child: UnderlineText(
+                        text: text,
+                        style: style ?? DefaultTextStyle.of(context).style,
+                        underlineColor: TokenRenderingUtil.underlineColor(
+                          Theme.of(context).colorScheme.primary.withAlpha(200),
+                          selected: selected,
+                          hovered: hovered,
+                          isNew: newTokens.any((t) => t == token.text),
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
-          );
-        }).toList(),
+              );
+            })
+            .toList(),
       ),
     );
   }
