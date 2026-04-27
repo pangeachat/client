@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
 
+import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_constants.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
@@ -328,7 +329,10 @@ class TutorialOverlayController {
     final couldGoForward = _state.canGoForward;
 
     final previousType = _state.tutorialType;
-    previousType?.saveProgress(_state.model.stepIndex + 1);
+    final previousStepIndex = _state.model.stepIndex;
+
+    previousType?.saveProgress(previousStepIndex + 1);
+    GoogleAnalytics.completeTutorialStep(previousType!, previousStepIndex);
 
     _state.dispatch(ForwardTutorialEvent());
     final updatedType = _state.tutorialType;

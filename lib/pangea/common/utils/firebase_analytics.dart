@@ -7,6 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:fluffychat/pangea/bot/bot_target_event_name_enum.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
 import '../../../config/firebase_options.dart';
@@ -231,6 +232,13 @@ class GoogleAnalytics {
         'action': ?action,
         'name': ?name,
       },
+    );
+  }
+
+  static void completeTutorialStep(TutorialEnum type, int step) {
+    logEvent(
+      'tutorial_progress',
+      parameters: {'tutorial_name': type.name, 'tutorial_step': step},
     );
   }
 
