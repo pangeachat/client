@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-04-27 12:04:08.798302",
+    "@@last_modified": "2026-04-27 13:39:48.629064",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11947,6 +11947,11 @@
     },
     "removeAdminDescription": "Снижение уровня разрешений этого пользователя приведет к удалению прав администратора.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Этот режим позволяет вам устанавливать эмодзи для слов! Выберите слово, чтобы связать с ним эмодзи!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

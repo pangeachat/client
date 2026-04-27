@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 12:02:07.075472",
+    "@@last_modified": "2026-04-27 13:38:35.404541",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -11150,6 +11150,11 @@
     },
     "removeAdminDescription": "이 사용자의 권한 수준을 낮추면 관리자 권한이 제거됩니다.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "이 모드는 단어에 이모지를 설정할 수 있게 해줍니다! 이모지를 연결할 단어를 선택하세요!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

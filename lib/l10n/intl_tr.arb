@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-04-27 12:03:35.874372",
+    "@@last_modified": "2026-04-27 13:39:23.234536",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11264,6 +11264,11 @@
     },
     "removeAdminDescription": "Bu kullanıcının izin seviyesini düşürmek, yönetici ayrıcalıklarını kaldıracaktır.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Bu mod, kelimelere emojiler eklemenizi sağlar! Bir kelime seçin ve ona bir emoji ilişkilendirin!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

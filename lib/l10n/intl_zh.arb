@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-04-27 12:03:44.830414",
+    "@@last_modified": "2026-04-27 13:39:33.159068",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10933,6 +10933,11 @@
     },
     "removeAdminDescription": "降低此用户的权限级别将会移除管理员权限。",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "此模式允许您将表情符号与单词关联！选择一个单词以将表情符号与其关联！",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

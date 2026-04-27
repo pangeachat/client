@@ -4202,7 +4202,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-04-27 12:03:22.672259",
+    "@@last_modified": "2026-04-27 13:39:10.734867",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10947,6 +10947,11 @@
     },
     "removeAdminDescription": "Паніжэнне ўзроўню дазволаў гэтага карыстальніка прывядзе да адмены адміністрацыйных правоў.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Гэты рэжым дазваляе вам прыпісваць эмодзі да слоў! Выберыце слова, каб звязаць яго з эмодзі!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

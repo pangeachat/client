@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 12:03:42.582818",
+    "@@last_modified": "2026-04-27 13:39:30.858004",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10933,6 +10933,11 @@
     },
     "removeAdminDescription": "Het verlagen van het machtigingsniveau van deze gebruiker zal de adminrechten verwijderen.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Deze modus stelt je in staat om emoji's aan woorden te koppelen! Selecteer een woord om een emoji eraan te associëren!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

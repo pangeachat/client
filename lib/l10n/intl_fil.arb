@@ -2526,7 +2526,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-04-27 12:03:32.445196",
+    "@@last_modified": "2026-04-27 13:39:18.827621",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11952,6 +11952,11 @@
     },
     "removeAdminDescription": "Ang pagbaba ng antas ng pahintulot ng gumagamit na ito ay aalisin ang mga pribilehiyo ng admin.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Ang mode na ito ay nagbibigay-daan sa iyo upang magtakda ng mga emoji sa mga salita! Pumili ng isang salita upang iugnay ang isang emoji dito!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

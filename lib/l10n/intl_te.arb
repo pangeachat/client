@@ -1736,7 +1736,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-04-27 12:03:37.960291",
+    "@@last_modified": "2026-04-27 13:39:24.796471",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -12054,6 +12054,11 @@
     },
     "removeAdminDescription": "ఈ వినియోగదారుని అనుమతి స్థాయిని తగ్గించడం అడ్మిన్ అధికారం తొలగిస్తుంది.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "ఈ మోడ్ మీకు పదాలకు ఇమోజీలను సెట్ చేయడానికి అనుమతిస్తుంది! ఒక పదాన్ని ఎంచుకోండి, దానికి ఇమోజీని అనుసంధానించండి!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

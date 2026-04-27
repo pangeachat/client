@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-04-27 12:02:19.517916",
+    "@@last_modified": "2026-04-27 13:38:42.119696",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -11060,6 +11060,11 @@
     },
     "removeAdminDescription": "A felhasználó jogosultsági szintjének csökkentése eltávolítja az adminisztrátori jogosultságokat.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Ez a mód lehetővé teszi, hogy emojikat rendelj szavakhoz! Válassz ki egy szót, hogy emojit társíts hozzá!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

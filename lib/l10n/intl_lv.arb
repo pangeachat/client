@@ -4188,7 +4188,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-04-27 12:03:33.835628",
+    "@@last_modified": "2026-04-27 13:39:20.542318",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10933,6 +10933,11 @@
     },
     "removeAdminDescription": "Samazinot šī lietotāja atļauju līmeni, tiks noņemtas administratora privilēģijas.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Šis režīms ļauj jums pievienot emocijzīmes vārdiem! Izvēlieties vārdu, lai tam pievienotu emocijzīmi!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-04-27 12:03:50.105766",
+    "@@last_modified": "2026-04-27 13:39:37.329794",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -11042,6 +11042,11 @@
     },
     "removeAdminDescription": "Obniżenie poziomu uprawnień tego użytkownika spowoduje usunięcie uprawnień administratora.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Ten tryb pozwala na przypisanie emoji do słów! Wybierz słowo, aby powiązać je z emoji!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

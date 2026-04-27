@@ -3646,7 +3646,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-04-27 12:02:26.503185",
+    "@@last_modified": "2026-04-27 13:38:47.957907",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11652,6 +11652,11 @@
     },
     "removeAdminDescription": "Lowersh an leibhéal cead an úsáideora seo, bainfidh sé na pribhléidí riaracháin.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "An modh seo a' leigeil dhut emojis a shuidheachadh ri faclan! Tagh facal gus emoji a cheangal ris!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

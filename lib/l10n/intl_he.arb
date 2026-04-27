@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 12:02:29.267608",
+    "@@last_modified": "2026-04-27 13:38:50.576834",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -12012,6 +12012,11 @@
     },
     "removeAdminDescription": "הורדת רמת ההרשאה של משתמש זה תסיר את זכויות המנהל.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "מצב זה מאפשר לך לקשר אמוג'ים למילים! בחר מילה כדי לקשר לה אמוג'י!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

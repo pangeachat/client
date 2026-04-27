@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-04-27 12:02:23.848153",
+    "@@last_modified": "2026-04-27 13:38:46.365596",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -12049,6 +12049,11 @@
     },
     "removeAdminDescription": "Zníženie úrovne oprávnení tohto používateľa odstráni administrátorské práva.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Tento režim vám umožňuje priradiť emoji k slovám! Vyberte slovo, s ktorým chcete priradiť emoji!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

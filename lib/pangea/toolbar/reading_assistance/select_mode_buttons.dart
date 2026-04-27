@@ -302,6 +302,19 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
         controller.setSelectMode(null);
       }
     }
+
+    if (updatedMode == SelectMode.emoji) {
+      if (!InstructionsEnum.emojiToolbarMode.isToggledOff) {
+        InstructionsEnum.emojiToolbarMode.setToggledOff(true);
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(L10n.of(context).emojiToolbarInstruction),
+            showCloseIcon: true,
+          ),
+        );
+      }
+    }
   }
 
   Future<void> modeDisabled() async {

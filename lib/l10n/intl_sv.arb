@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 12:03:57.662800",
+    "@@last_modified": "2026-04-27 13:39:39.100147",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11520,6 +11520,11 @@
     },
     "removeAdminDescription": "Att sänka denna användares behörighetsnivå kommer att ta bort administratörsrättigheter.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Detta läge låter dig koppla emojis till ord! Välj ett ord för att associera en emoji med det!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }
