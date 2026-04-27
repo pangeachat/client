@@ -763,22 +763,11 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void _startAssistanceTutorialSequence(Event event) {
-    if (!_canLaunchTutorialSequence) {
-      return;
-    }
-
+    if (!_canLaunchTutorialSequence) return;
     if (tutorialOverlayController.isTutorialQueued(
       TutorialEnum.readingAssistance,
     )) {
       _launchReadingAssistanceTutorial(event);
-      return;
-    }
-
-    if (tutorialOverlayController.isTutorialQueued(
-      TutorialEnum.writingAssistance,
-    )) {
-      _launchWritingAssistanceTutorial();
-      return;
     }
   }
 
@@ -818,6 +807,8 @@ class ChatController extends State<ChatPageWithRoom>
 
     _goBackTutorialSubscription = tutorialOverlayController.backNavigationStream
         .listen(_goBackTutorialListener);
+
+    inputFocus.addListener(_inputFocusListener);
 
     Future.delayed(const Duration(seconds: 1), () async {
       if (!mounted) return;
@@ -1070,8 +1061,8 @@ class ChatController extends State<ChatPageWithRoom>
   void dispose() {
     timeline?.cancelSubscriptions();
     timeline = null;
+    inputFocus.removeListener(_inputFocusListener);
     // #Pangea
-    // inputFocus.removeListener(_inputFocusListener);
     WidgetsBinding.instance.removeObserver(this);
     _storeInputTimeoutTimer?.cancel();
     _displayChatDetailsColumn.dispose();
@@ -1530,6 +1521,16 @@ class ChatController extends State<ChatPageWithRoom>
   //     setState(() => showEmojiPicker = false);
   //   }
   // }
+  void _inputFocusListener() {
+    if (!inputFocus.hasFocus) return;
+    if (!tutorialOverlayController.isTutorialQueued(
+      TutorialEnum.writingAssistance,
+    )) {
+      return;
+    }
+
+    _launchWritingAssistanceTutorial();
+  }
   // Pangea#
 
   void sendLocationAction() async {
