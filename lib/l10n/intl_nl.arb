@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 13:39:30.858004",
+    "@@last_modified": "2026-04-27 14:44:18.771049",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10938,6 +10938,16 @@
     },
     "emojiToolbarInstruction": "Deze modus stelt je in staat om emoji's aan woorden te koppelen! Selecteer een woord om een emoji eraan te associëren!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "De vocabulairewoorden die je verzamelt, komen hier. Begin met chatten en interactie om er een paar te verdienen!",
+    "vocabLevelsDescSeed": "Dit is waar nieuwe vocabulairewoorden zullen verschijnen!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

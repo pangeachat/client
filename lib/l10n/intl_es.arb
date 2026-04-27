@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-04-27 13:38:37.181374",
+    "@@last_modified": "2026-04-27 14:43:12.615213",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7964,6 +7964,16 @@
     },
     "emojiToolbarInstruction": "¡Este modo te permite asociar emojis con palabras! ¡Selecciona una palabra para asociarle un emoji!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Las palabras de vocabulario que recojas irán aquí. ¡Comienza a chatear e interactuar para ganar algunas!",
+    "vocabLevelsDescSeed": "¡Aquí es donde aparecerán nuevas palabras de vocabulario!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

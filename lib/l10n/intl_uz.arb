@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-04-27 13:39:17.401078",
+    "@@last_modified": "2026-04-27 14:44:04.311761",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10942,6 +10942,16 @@
     },
     "emojiToolbarInstruction": "Bu rejim sizga so'zlarga emoji qo'shishga imkon beradi! Emoji bilan bog'lash uchun so'zni tanlang!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Siz to'plagan lug'at so'zlari shu yerda bo'ladi. Ba'zi narsalarni olish uchun suhbatlashishni va o'zaro aloqada bo'lishni boshlang!",
+    "vocabLevelsDescSeed": "Bu yerda yangi lug'at so'zlari paydo bo'ladi!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

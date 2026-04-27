@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 13:38:50.576834",
+    "@@last_modified": "2026-04-27 14:43:31.744819",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -12017,6 +12017,16 @@
     },
     "emojiToolbarInstruction": "מצב זה מאפשר לך לקשר אמוג'ים למילים! בחר מילה כדי לקשר לה אמוג'י!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "המילים שאספת יופיעו כאן. התחל לשוחח ולהתמודד כדי להרוויח כמה!",
+    "vocabLevelsDescSeed": "כאן יופיעו מילים חדשות!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

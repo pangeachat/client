@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 13:39:39.100147",
+    "@@last_modified": "2026-04-27 14:44:29.793397",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11525,6 +11525,16 @@
     },
     "emojiToolbarInstruction": "Detta läge låter dig koppla emojis till ord! Välj ett ord för att associera en emoji med det!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "De vokabulärord du samlar in kommer att gå hit. Börja chatta och interagera för att tjäna några!",
+    "vocabLevelsDescSeed": "Detta är där nya vokabulärord kommer att dyka upp!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

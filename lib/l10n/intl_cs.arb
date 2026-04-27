@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-04-27 13:39:07.865729",
+    "@@last_modified": "2026-04-27 14:43:51.298487",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -11492,6 +11492,16 @@
     },
     "emojiToolbarInstruction": "Tento režim vám umožňuje přiřadit emoji k slovům! Vyberte slovo, se kterým chcete emoji spojit!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Slova slovní zásoby, která shromáždíte, se zde objeví. Začněte chatovat a interagovat, abyste něco získali!",
+    "vocabLevelsDescSeed": "Tady se objeví nová slova slovní zásoby!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

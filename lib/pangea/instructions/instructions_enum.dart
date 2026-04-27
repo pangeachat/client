@@ -14,6 +14,7 @@ enum InstructionsEnum {
   chooseWordAudio,
   chooseMorphs,
   analyticsVocabList,
+  analyticsVocabListEmpty,
   morphAnalyticsList,
   activityAnalyticsList,
   levelAnalytics,
@@ -49,6 +50,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.chooseLemmaMeaning:
       case InstructionsEnum.chooseMorphs:
       case InstructionsEnum.analyticsVocabList:
+      case InstructionsEnum.analyticsVocabListEmpty:
       case InstructionsEnum.morphAnalyticsList:
       case InstructionsEnum.activityStatsMenu:
       case InstructionsEnum.chatParticipantTooltip:
@@ -95,6 +97,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return l10n.chooseMorphsInstructionsBody;
       case InstructionsEnum.analyticsVocabList:
         return l10n.analyticsVocabListBody;
+      case InstructionsEnum.analyticsVocabListEmpty:
+        return l10n.analyticsVocabListBodyEmpty;
       case InstructionsEnum.morphAnalyticsList:
         return l10n.morphAnalyticsListBody;
       case InstructionsEnum.activityAnalyticsList:

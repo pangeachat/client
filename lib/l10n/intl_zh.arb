@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-04-27 13:39:33.159068",
+    "@@last_modified": "2026-04-27 14:44:22.376828",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10938,6 +10938,16 @@
     },
     "emojiToolbarInstruction": "此模式允许您将表情符号与单词关联！选择一个单词以将表情符号与其关联！",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "您收集的词汇将出现在这里。开始聊天和互动以赚取一些！",
+    "vocabLevelsDescSeed": "新词汇将在这里出现！",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

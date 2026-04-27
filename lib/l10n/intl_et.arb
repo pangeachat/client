@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-04-27 13:38:57.729567",
+    "@@last_modified": "2026-04-27 14:43:42.090538",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10935,6 +10935,16 @@
     },
     "emojiToolbarInstruction": "See režiim võimaldab sul seostada emotikone sõnadega! Valige sõna, et seostada sellega emotikon!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Siia tulevad sõnavara sõnad, mida kogute. Alustage vestlemist ja suhtlemist, et teenida mõned!",
+    "vocabLevelsDescSeed": "Siin ilmuvad uued sõnavara sõnad!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

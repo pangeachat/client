@@ -5074,5 +5074,7 @@
     "errorTryAgainLater": "Oops, something went wrong… We're looking into it! Please try again later.",
     "acceptAll": "Accept all",
     "removeAdminDescription": "Lowering this user's permission level will remove admin privileges.",
-    "emojiToolbarInstruction": "This mode allows you to set emojis to words! Select a word to associate an emoji with it!"
+    "emojiToolbarInstruction": "This mode allows you to set emojis to words! Select a word to associate an emoji with it!",
+    "analyticsVocabListBodyEmpty": "The vocabulary words you collect will go here. Start chatting and interacting to earn some!",
+    "vocabLevelsDescSeed": "This is where new vocab words will appear!"
 }

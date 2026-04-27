@@ -2526,7 +2526,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-04-27 13:39:18.827621",
+    "@@last_modified": "2026-04-27 14:44:05.888098",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11957,6 +11957,16 @@
     },
     "emojiToolbarInstruction": "Ang mode na ito ay nagbibigay-daan sa iyo upang magtakda ng mga emoji sa mga salita! Pumili ng isang salita upang iugnay ang isang emoji dito!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Ang mga salitang bokabularyo na iyong kinokolekta ay dito lalabas. Mag-umpisa ng makipag-chat at makipag-ugnayan upang kumita!",
+    "vocabLevelsDescSeed": "Dito lalabas ang mga bagong salitang bokabularyo!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 13:39:08.881976",
+    "@@last_modified": "2026-04-27 14:43:52.849836",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10998,6 +10998,16 @@
     },
     "emojiToolbarInstruction": "Denne modusen lar deg sette emojis til ord! Velg et ord for å knytte en emoji til det!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Vokabularordene du samler vil gå her. Begynn å chatte og interagere for å tjene noen!",
+    "vocabLevelsDescSeed": "Dette er hvor nye vokabularord vil vises!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

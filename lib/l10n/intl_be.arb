@@ -4202,7 +4202,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-04-27 13:39:10.734867",
+    "@@last_modified": "2026-04-27 14:43:54.374459",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10952,6 +10952,16 @@
     },
     "emojiToolbarInstruction": "Гэты рэжым дазваляе вам прыпісваць эмодзі да слоў! Выберыце слова, каб звязаць яго з эмодзі!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Словы слоўніка, якія вы збіраеце, будуць тут. Пачніце размаўляць і ўзаемадзейнічаць, каб зарабіць некаторыя!",
+    "vocabLevelsDescSeed": "Тут з'явяцца новыя словы слоўніка!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

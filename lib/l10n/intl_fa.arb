@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 13:39:36.043728",
+    "@@last_modified": "2026-04-27 14:44:26.001790",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -11050,6 +11050,16 @@
     },
     "emojiToolbarInstruction": "این حالت به شما اجازه می‌دهد تا ایموجی‌ها را به کلمات اختصاص دهید! یک کلمه را انتخاب کنید تا یک ایموجی با آن مرتبط شود!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "کلمات واژگان که جمع‌آوری می‌کنید در اینجا قرار می‌گیرند. شروع به چت و تعامل کنید تا مقداری کسب کنید!",
+    "vocabLevelsDescSeed": "این جایی است که کلمات واژگان جدید ظاهر خواهند شد!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

@@ -2367,7 +2367,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-04-27 13:39:50.585137",
+    "@@last_modified": "2026-04-27 14:44:41.693135",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12006,6 +12006,16 @@
     },
     "emojiToolbarInstruction": "ეს რეჟიმი გაწვდით საშუალებას, რომ ემოჯები დაუკავშიროთ სიტყვებს! აირჩიეთ სიტყვა, რომ ემოჯი დაუკავშიროთ მას!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "თქვენი შეგროვებული ლექსიკის სიტყვები აქ გამოჩნდება. დაიწყეთ საუბარი და ურთიერთობა, რომ მოიპოვოთ რამე!",
+    "vocabLevelsDescSeed": "აქ გამოჩნდება ახალი ლექსიკის სიტყვები!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

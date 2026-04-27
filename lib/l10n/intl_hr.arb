@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-04-27 13:38:49.154112",
+    "@@last_modified": "2026-04-27 14:43:29.952296",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11422,6 +11422,16 @@
     },
     "emojiToolbarInstruction": "Ovaj način omogućuje vam da postavite emojije uz riječi! Odaberite riječ s kojom želite povezati emoji!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Riječi vokabulara koje prikupite će ići ovdje. Počnite razgovarati i interagirati kako biste zaradili nešto!",
+    "vocabLevelsDescSeed": "Ovdje će se pojaviti nove riječi vokabulara!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

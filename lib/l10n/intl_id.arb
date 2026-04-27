@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 13:38:43.399712",
+    "@@last_modified": "2026-04-27 14:43:22.640161",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -11035,6 +11035,16 @@
     },
     "emojiToolbarInstruction": "Mode ini memungkinkan Anda untuk mengaitkan emoji dengan kata! Pilih sebuah kata untuk mengasosiasikan emoji dengannya!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Kata-kata kosakata yang Anda kumpulkan akan muncul di sini. Mulailah mengobrol dan berinteraksi untuk mendapatkan beberapa!",
+    "vocabLevelsDescSeed": "Ini adalah tempat kata-kata kosakata baru akan muncul!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

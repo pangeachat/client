@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 13:39:34.589683",
+    "@@last_modified": "2026-04-27 14:44:24.394138",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -11653,6 +11653,16 @@
     },
     "emojiToolbarInstruction": "এই মোডটি আপনাকে শব্দের সাথে ইমোজি সেট করতে দেয়! একটি শব্দ নির্বাচন করুন যাতে একটি ইমোজি যুক্ত করা যায়!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "আপনি যে শব্দভাণ্ডার শব্দগুলি সংগ্রহ করবেন তা এখানে যাবে। কিছু উপার্জন করতে চ্যাটিং এবং ইন্টারঅ্যাক্ট করা শুরু করুন!",
+    "vocabLevelsDescSeed": "এখানে নতুন শব্দভাণ্ডার শব্দগুলি প্রদর্শিত হবে!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

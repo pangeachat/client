@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-04-27 13:38:46.365596",
+    "@@last_modified": "2026-04-27 14:43:26.498667",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -12054,6 +12054,16 @@
     },
     "emojiToolbarInstruction": "Tento režim vám umožňuje priradiť emoji k slovám! Vyberte slovo, s ktorým chcete priradiť emoji!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Slová, ktoré zbierate, sa tu objavia. Začnite chatovať a interagovať, aby ste získali niečo!",
+    "vocabLevelsDescSeed": "Tu sa objavia nové slovíčka!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

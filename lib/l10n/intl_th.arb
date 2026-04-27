@@ -3646,7 +3646,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-04-27 13:39:13.606631",
+    "@@last_modified": "2026-04-27 14:43:58.478434",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11657,6 +11657,16 @@
     },
     "emojiToolbarInstruction": "โหมดนี้ช่วยให้คุณสามารถตั้งอีโมจิให้กับคำได้! เลือกคำเพื่อเชื่อมโยงอีโมจิกับมัน!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "คำศัพท์ที่คุณสะสมจะไปที่นี่ เริ่มแชทและมีปฏิสัมพันธ์เพื่อรับคำศัพท์บางคำ!",
+    "vocabLevelsDescSeed": "นี่คือที่ที่คำศัพท์ใหม่จะปรากฏ!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

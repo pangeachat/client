@@ -3045,7 +3045,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-04-27 13:39:14.834523",
+    "@@last_modified": "2026-04-27 14:44:00.106034",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12014,6 +12014,16 @@
     },
     "emojiToolbarInstruction": "Este modo permite que você associe emojis a palavras! Selecione uma palavra para associar um emoji a ela!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "As palavras de vocabulário que você coletar aparecerão aqui. Comece a conversar e interagir para ganhar algumas!",
+    "vocabLevelsDescSeed": "É aqui que novas palavras de vocabulário aparecerão!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

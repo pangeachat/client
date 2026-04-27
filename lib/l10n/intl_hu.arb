@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-04-27 13:38:42.119696",
+    "@@last_modified": "2026-04-27 14:43:20.784016",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -11065,6 +11065,16 @@
     },
     "emojiToolbarInstruction": "Ez a mód lehetővé teszi, hogy emojikat rendelj szavakhoz! Válassz ki egy szót, hogy emojit társíts hozzá!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "A gyűjtött szókincs szavak itt fognak megjelenni. Kezdj el csevegni és interakcióba lépni, hogy szerezz néhányat!",
+    "vocabLevelsDescSeed": "Itt fognak megjelenni az új szókincs szavak!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }
