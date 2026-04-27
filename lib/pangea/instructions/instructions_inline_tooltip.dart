@@ -10,7 +10,7 @@ class InstructionsInlineTooltip extends StatelessWidget {
   final bool animate;
   final EdgeInsets? padding;
   final TextStyle? textStyle;
-  final List<InlineSpan>? richText;
+  final Widget? extraContent;
 
   const InstructionsInlineTooltip({
     super.key,
@@ -18,7 +18,7 @@ class InstructionsInlineTooltip extends StatelessWidget {
     this.animate = true,
     this.padding,
     this.textStyle,
-    this.richText,
+    this.extraContent,
   });
 
   @override
@@ -30,7 +30,7 @@ class InstructionsInlineTooltip extends StatelessWidget {
       animate: animate,
       padding: padding,
       textStyle: textStyle,
-      richText: richText,
+      extraContent: extraContent,
     );
   }
 }
@@ -45,6 +45,7 @@ class InlineTooltip extends StatefulWidget {
   final bool animate;
 
   final TextStyle? textStyle;
+  final Widget? extraContent;
 
   const InlineTooltip({
     super.key,
@@ -55,6 +56,7 @@ class InlineTooltip extends StatefulWidget {
     this.animate = true,
     this.padding,
     this.textStyle,
+    this.extraContent,
   });
 
   @override
@@ -125,66 +127,77 @@ class InlineTooltipState extends State<InlineTooltip>
   Widget build(BuildContext context) {
     final content = Padding(
       padding: widget.padding ?? const EdgeInsets.all(0),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-          color: Color.alphaBlend(
-            Theme.of(context).colorScheme.surface.withAlpha(70),
-            AppConfig.gold,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          DecoratedBox(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+              color: Color.alphaBlend(
+                Theme.of(context).colorScheme.surface.withAlpha(70),
+                AppConfig.gold,
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 6.0),
+                    child: Icon(
+                      Icons.lightbulb,
+                      size: 20,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                  ),
+                  Flexible(
+                    child: Center(
+                      child: widget.richText != null
+                          ? RichText(
+                              text: TextSpan(
+                                children: widget.richText,
+                                style:
+                                    widget.textStyle ??
+                                    (FluffyThemes.isColumnMode(context)
+                                        ? Theme.of(context).textTheme.titleSmall
+                                        : Theme.of(
+                                            context,
+                                          ).textTheme.bodyMedium),
+                              ),
+                              textAlign: TextAlign.center,
+                            )
+                          : Text(
+                              widget.message,
+                              style:
+                                  widget.textStyle ??
+                                  (FluffyThemes.isColumnMode(context)
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.bodyMedium),
+                              textAlign: TextAlign.center,
+                            ),
+                    ),
+                  ),
+                  IconButton(
+                    padding: const EdgeInsets.only(left: 6.0),
+                    constraints: const BoxConstraints(),
+                    icon: Icon(
+                      Icons.close_outlined,
+                      size: 20,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                    onPressed: _closeTooltip,
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 6.0),
-                child: Icon(
-                  Icons.lightbulb,
-                  size: 20,
-                  color: Theme.of(context).colorScheme.onSurface,
-                ),
-              ),
-              Flexible(
-                child: Center(
-                  child: widget.richText != null
-                      ? RichText(
-                          text: TextSpan(
-                            children: widget.richText,
-                            style:
-                                widget.textStyle ??
-                                (FluffyThemes.isColumnMode(context)
-                                    ? Theme.of(context).textTheme.titleSmall
-                                    : Theme.of(context).textTheme.bodyMedium),
-                          ),
-                          textAlign: TextAlign.center,
-                        )
-                      : Text(
-                          widget.message,
-                          style:
-                              widget.textStyle ??
-                              (FluffyThemes.isColumnMode(context)
-                                  ? Theme.of(context).textTheme.titleSmall
-                                  : Theme.of(context).textTheme.bodyMedium),
-                          textAlign: TextAlign.center,
-                        ),
-                ),
-              ),
-              IconButton(
-                padding: const EdgeInsets.only(left: 6.0),
-                constraints: const BoxConstraints(),
-                icon: Icon(
-                  Icons.close_outlined,
-                  size: 20,
-                  color: Theme.of(context).colorScheme.onSurface,
-                ),
-                onPressed: _closeTooltip,
-              ),
-            ],
-          ),
-        ),
+          if (widget.extraContent != null) ...[
+            const SizedBox(height: 8),
+            widget.extraContent!,
+          ],
+        ],
       ),
     );
 
