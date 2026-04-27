@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-04-23 10:45:28.800581",
+    "@@last_modified": "2026-04-27 12:03:50.105766",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -11037,6 +11037,11 @@
     },
     "acceptAll": "Akceptuj wszystko",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Obniżenie poziomu uprawnień tego użytkownika spowoduje usunięcie uprawnień administratora.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

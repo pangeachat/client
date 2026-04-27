@@ -2526,7 +2526,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-04-23 10:45:16.932679",
+    "@@last_modified": "2026-04-27 12:03:32.445196",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11947,6 +11947,11 @@
     },
     "acceptAll": "Tanggapin ang lahat",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Ang pagbaba ng antas ng pahintulot ng gumagamit na ito ay aalisin ang mga pribilehiyo ng admin.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

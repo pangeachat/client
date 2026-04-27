@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-04-23 10:45:07.127239",
+    "@@last_modified": "2026-04-27 12:03:20.357201",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -11482,6 +11482,11 @@
     },
     "acceptAll": "Přijmout vše",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Snížení úrovně oprávnění tohoto uživatele odstraní administrátorská práva.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

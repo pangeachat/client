@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-04-23 10:44:50.680081",
+    "@@last_modified": "2026-04-27 12:02:19.517916",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -11055,6 +11055,11 @@
     },
     "acceptAll": "Mindent elfogad",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "A felhasználó jogosultsági szintjének csökkentése eltávolítja az adminisztrátori jogosultságokat.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

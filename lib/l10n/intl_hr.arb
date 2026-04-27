@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-04-23 10:44:55.081389",
+    "@@last_modified": "2026-04-27 12:02:28.191707",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11412,6 +11412,11 @@
     },
     "acceptAll": "Prihvati sve",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Smanjenje razine dozvole ovog korisnika uklonit će administratorske privilegije.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

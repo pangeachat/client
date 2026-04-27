@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-04-23 10:45:31.540686",
+    "@@last_modified": "2026-04-27 12:04:00.302531",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11796,6 +11796,11 @@
     },
     "acceptAll": "すべて受け入れる",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "このユーザーの権限レベルを下げると、管理者権限が削除されます。",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

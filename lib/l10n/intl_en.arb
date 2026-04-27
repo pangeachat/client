@@ -5072,5 +5072,6 @@
     "selectModeTutorialAudio": "Click here to listen to the message",
     "selectModeTutorialExit": "Click the background to go back to chatting",
     "errorTryAgainLater": "Oops, something went wrong… We're looking into it! Please try again later.",
-    "acceptAll": "Accept all"
+    "acceptAll": "Accept all",
+    "removeAdminDescription": "Lowering this user's permission level will remove admin privileges."
 }

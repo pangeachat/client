@@ -3462,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-04-23 10:45:25.296890",
+    "@@last_modified": "2026-04-27 12:03:43.705015",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10600,6 +10600,11 @@
     },
     "acceptAll": "Bojan all",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Lowersa sa permission level sa user nga ini magakuha sang admin privileges.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

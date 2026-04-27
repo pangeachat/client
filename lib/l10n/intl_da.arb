@@ -1746,7 +1746,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-04-23 10:44:49.756624",
+    "@@last_modified": "2026-04-27 12:02:14.867577",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -12022,6 +12022,11 @@
     },
     "acceptAll": "Accepter alle",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "At sænke denne brugers tilladelsesniveau vil fjerne administratorrettigheder.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-23 10:44:56.197134",
+    "@@last_modified": "2026-04-27 12:02:29.267608",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -12007,6 +12007,11 @@
     },
     "acceptAll": "קבל הכל",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "הורדת רמת ההרשאה של משתמש זה תסיר את זכויות המנהל.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

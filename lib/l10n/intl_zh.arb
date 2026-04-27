@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-04-23 10:45:26.010124",
+    "@@last_modified": "2026-04-27 12:03:44.830414",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10928,6 +10928,11 @@
     },
     "acceptAll": "接受所有",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "降低此用户的权限级别将会移除管理员权限。",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-04-23 10:44:45.786139",
+    "@@last_modified": "2026-04-27 12:02:08.668405",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7954,6 +7954,11 @@
     },
     "acceptAll": "Aceptar todo",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Bajar el nivel de permiso de este usuario eliminará los privilegios de administrador.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

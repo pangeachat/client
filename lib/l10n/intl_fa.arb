@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-23 10:45:27.634584",
+    "@@last_modified": "2026-04-27 12:03:48.111220",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -11040,6 +11040,11 @@
     },
     "acceptAll": "همه را بپذیرید",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "کاهش سطح دسترسی این کاربر، امتیازات مدیر را حذف خواهد کرد.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

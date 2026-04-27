@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-23 10:45:35.949222",
+    "@@last_modified": "2026-04-27 12:04:11.458126",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -12051,6 +12051,11 @@
     },
     "acceptAll": "Prihvati sve",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Smanjenje nivoa dozvola ovog korisnika ukloniće administratorske privilegije.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-04-23 10:45:38.081934",
+    "@@last_modified": "2026-04-27 12:04:15.114746",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -11325,6 +11325,11 @@
     },
     "acceptAll": "Accepter tout",
     "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Abaisser le niveau de permission de cet utilisateur supprimera les privilèges d'administrateur.",
+    "@removeAdminDescription": {
         "type": "String",
         "placeholders": {}
     }
