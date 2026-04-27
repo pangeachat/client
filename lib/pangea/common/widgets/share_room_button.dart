@@ -8,7 +8,6 @@ import 'package:universal_html/html.dart' as html;
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/spaces/space_constants.dart';
 
 class ShareRoomButton extends StatelessWidget {
   final Room room;
@@ -31,8 +30,10 @@ class ShareRoomButton extends StatelessWidget {
           final String initialUrl = kIsWeb
               ? html.window.origin!
               : Environment.frontendURL;
-          toCopy =
-              "$initialUrl/#/join_with_link?${SpaceConstants.classCode}=${room.classCode}";
+          // CloudFront viewer-request fn at app.{staging.,}pangea.chat 302s
+          // bare 7-char codes to /#/join_with_link?classcode=<code>. See
+          // pangeachat/devops#105.
+          toCopy = "$initialUrl/${room.classCode}";
         }
 
         await Clipboard.setData(ClipboardData(text: toCopy));
