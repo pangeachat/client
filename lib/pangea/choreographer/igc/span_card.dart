@@ -4,7 +4,6 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
@@ -143,6 +142,7 @@ class SpanCardState extends State<SpanCard> {
               }
             }
             _previousOffset = newOffset;
+            final theme = Theme.of(context);
 
             return Column(
               mainAxisSize: .min,
@@ -153,23 +153,24 @@ class SpanCardState extends State<SpanCard> {
                     children: [
                       IconButton(
                         icon: const Icon(Icons.close),
-                        color: Theme.of(context).iconTheme.color,
+                        color: theme.iconTheme.color,
                         onPressed: widget.close,
                       ),
                       Expanded(
                         child: Text(
                           match.updatedMatch.match.type.displayName(context),
                           textAlign: TextAlign.center,
-                          style: BotStyle.text(
-                            context,
-                            big: true,
-                          ).copyWith(fontWeight: FontWeight.bold),
-                          textScaler: TextScaler.noScaling,
+                          style: theme.textTheme.headlineSmall?.merge(
+                            TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: theme.colorScheme.primary,
+                            ),
+                          ),
                         ),
                       ),
                       IconButton(
                         icon: const Icon(Icons.flag_outlined),
-                        color: Theme.of(context).iconTheme.color,
+                        color: theme.iconTheme.color,
                         onPressed: _showFeedbackDialog,
                       ),
                     ],
@@ -247,7 +248,9 @@ class _MatchContent extends StatelessWidget {
             children: [
               Text(
                 descriptionText,
-                style: BotStyle.text(context),
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
                 textAlign: TextAlign.center,
               ),
               isOpen
