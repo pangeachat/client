@@ -27,6 +27,10 @@ sealed class TutorialModel {
       index: index,
     );
   }
+
+  /// Returns the [TutorialStepData.targetKey] for [index] without allocating
+  /// styles or requiring an [L10n] instance. Safe to call every frame.
+  String targetKeyAt(int index) => _stepsData[index].targetKey;
 }
 
 class ReadingAssistantTutorialModel extends TutorialModel {

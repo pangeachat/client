@@ -244,6 +244,7 @@ class TutorialOverlayController {
     _forwardTutorialStreamController.close();
     _backNavigationStreamController.close();
     _state.dispose();
+    _closeOverlay();
   }
 
   void launchTutorial({
