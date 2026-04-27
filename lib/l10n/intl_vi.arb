@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 13:39:27.609483",
+    "@@last_modified": "2026-04-27 14:44:15.890030",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6953,6 +6953,16 @@
     },
     "emojiToolbarInstruction": "Chế độ này cho phép bạn gán biểu tượng cảm xúc cho các từ! Chọn một từ để liên kết một biểu tượng cảm xúc với nó!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Các từ vựng bạn thu thập sẽ xuất hiện ở đây. Bắt đầu trò chuyện và tương tác để kiếm một số từ nhé!",
+    "vocabLevelsDescSeed": "Đây là nơi các từ vựng mới sẽ xuất hiện!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

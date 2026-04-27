@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 13:38:35.404541",
+    "@@last_modified": "2026-04-27 14:43:10.660081",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -11155,6 +11155,16 @@
     },
     "emojiToolbarInstruction": "이 모드는 단어에 이모지를 설정할 수 있게 해줍니다! 이모지를 연결할 단어를 선택하세요!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "수집한 어휘 단어가 여기에 표시됩니다. 채팅하고 상호작용하여 단어를 얻어보세요!",
+    "vocabLevelsDescSeed": "여기에서 새로운 어휘 단어가 나타납니다!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

@@ -2231,7 +2231,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-04-27 13:39:00.619185",
+    "@@last_modified": "2026-04-27 14:43:45.348298",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12054,6 +12054,16 @@
     },
     "emojiToolbarInstruction": "Ta način vam omogoča, da besedam dodelite emojije! Izberite besedo, da ji dodelite emojija!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Besede, ki jih zbirate, bodo tukaj. Začnite klepetati in interagirati, da zaslužite nekaj!",
+    "vocabLevelsDescSeed": "Tukaj se bodo pojavile nove besede!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

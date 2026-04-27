@@ -4182,7 +4182,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-04-27 13:38:39.705129",
+    "@@last_modified": "2026-04-27 14:43:15.876796",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10987,6 +10987,16 @@
     },
     "emojiToolbarInstruction": "Tämä tila antaa sinun liittää emojeja sanoihin! Valitse sana, johon haluat liittää emojin!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Keräämäsi sanastosanat tulevat tänne. Aloita keskustelu ja vuorovaikutus ansaitaksesi niitä!",
+    "vocabLevelsDescSeed": "Tänne ilmestyvät uudet sanastosanat!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

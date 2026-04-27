@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-04-27 13:39:21.791510",
+    "@@last_modified": "2026-04-27 14:44:09.230598",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11278,6 +11278,16 @@
     },
     "emojiToolbarInstruction": "تتيح لك هذه الوضعية تعيين الرموز التعبيرية للكلمات! اختر كلمة لربط رمز تعبيري بها!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "ستظهر هنا كلمات المفردات التي تجمعها. ابدأ الدردشة والتفاعل لكسب بعض النقاط!",
+    "vocabLevelsDescSeed": "هنا ستظهر كلمات المفردات الجديدة!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

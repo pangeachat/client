@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-04-27 13:39:37.329794",
+    "@@last_modified": "2026-04-27 14:44:28.370836",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -11047,6 +11047,16 @@
     },
     "emojiToolbarInstruction": "Ten tryb pozwala na przypisanie emoji do słów! Wybierz słowo, aby powiązać je z emoji!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Słowa słownictwa, które zbierzesz, pojawią się tutaj. Zacznij czatować i wchodzić w interakcje, aby zdobyć trochę!",
+    "vocabLevelsDescSeed": "Tutaj pojawią się nowe słowa słownictwa!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

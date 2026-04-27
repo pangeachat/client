@@ -1736,7 +1736,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-04-27 13:39:24.796471",
+    "@@last_modified": "2026-04-27 14:44:12.151185",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -12059,6 +12059,16 @@
     },
     "emojiToolbarInstruction": "ఈ మోడ్ మీకు పదాలకు ఇమోజీలను సెట్ చేయడానికి అనుమతిస్తుంది! ఒక పదాన్ని ఎంచుకోండి, దానికి ఇమోజీని అనుసంధానించండి!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "మీరు సేకరించే పదకోశ పదాలు ఇక్కడ వస్తాయి. కొంతమంది సంప్రదింపులు మరియు పరస్పర చర్యలు ప్రారంభించండి!",
+    "vocabLevelsDescSeed": "ఇక్కడ కొత్త పదకోశ పదాలు కనిపిస్తాయి!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

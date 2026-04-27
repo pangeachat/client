@@ -3462,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-04-27 13:39:31.905402",
+    "@@last_modified": "2026-04-27 14:44:21.012731",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10610,6 +10610,16 @@
     },
     "emojiToolbarInstruction": "Dhi mode aji bawa to set emojis to words! Select a word to associate an emoji with it!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Dhe fjalët e fjalorit që mbledhni do të shfaqen këtu. Filloni të bisedoni dhe të ndërveproni për të fituar disa!",
+    "vocabLevelsDescSeed": "Këtu do të shfaqen fjalët e reja të fjalorit!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

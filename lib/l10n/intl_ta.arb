@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 13:39:29.188039",
+    "@@last_modified": "2026-04-27 14:44:17.422046",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -11054,6 +11054,16 @@
     },
     "emojiToolbarInstruction": "இந்த முறை நீங்கள் சொற்களுக்கு எமோஜிகளை அமைக்க அனுமதிக்கிறது! ஒரு சொற்றொடரை தேர்ந்தெடுத்து அதுடன் எமோஜியை தொடர்பு கொள்ளுங்கள்!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "நீங்கள் சேகரிக்கும் சொல் வார்த்தைகள் இங்கே வரும். சிலவற்றைப் பெற உரையாடல் மற்றும் தொடர்பு கொள்ள தொடங்குங்கள்!",
+    "vocabLevelsDescSeed": "இங்கே புதிய சொல் வார்த்தைகள் தோன்றும்!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

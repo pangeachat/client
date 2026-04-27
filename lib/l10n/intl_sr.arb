@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 13:39:52.829964",
+    "@@last_modified": "2026-04-27 14:44:43.010226",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -12061,6 +12061,16 @@
     },
     "emojiToolbarInstruction": "Ovaj režim vam omogućava da povežete emotikone sa rečima! Izaberite reč sa kojom želite da povežete emotikon!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Reči koje prikupite će se ovde pojaviti. Počnite da čavrljate i komunicirate da biste zaradili nešto!",
+    "vocabLevelsDescSeed": "Ovde će se pojaviti nove reči!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

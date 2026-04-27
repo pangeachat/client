@@ -4217,7 +4217,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-04-27 13:39:54.981818",
+    "@@last_modified": "2026-04-27 14:44:44.655342",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10949,6 +10949,16 @@
     },
     "emojiToolbarInstruction": "Ceadaíonn an mód seo duit emojis a shocrú le focail! Roghnaigh focal chun emoji a chur in oiriúnacht leis!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Tiocfaidh na focail foclóra a bhailíonn tú anseo. Tosaigh ag comhrá agus ag idirghníomhú chun roinnt a fháil!",
+    "vocabLevelsDescSeed": "Seo an áit a mbeidh na focail foclóra nua le feiceáil!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

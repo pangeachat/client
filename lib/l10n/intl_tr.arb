@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-04-27 13:39:23.234536",
+    "@@last_modified": "2026-04-27 14:44:10.665053",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11269,6 +11269,16 @@
     },
     "emojiToolbarInstruction": "Bu mod, kelimelere emojiler eklemenizi sağlar! Bir kelime seçin ve ona bir emoji ilişkilendirin!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Topladığınız kelime dağarcığı burada görünecek. Biraz sohbet edin ve etkileşimde bulunun, böylece kazanabilirsiniz!",
+    "vocabLevelsDescSeed": "Yeni kelime dağarcığı burada görünecek!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

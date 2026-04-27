@@ -1675,7 +1675,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-04-27 13:39:02.342571",
+    "@@last_modified": "2026-04-27 14:43:46.470641",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -12069,6 +12069,16 @@
     },
     "emojiToolbarInstruction": "此模式允許您將表情符號設置為單詞！選擇一個單詞以將表情符號與其關聯！",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "你收集的詞彙將會出現在這裡。開始聊天和互動以賺取一些！",
+    "vocabLevelsDescSeed": "這裡將會出現新的詞彙！",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

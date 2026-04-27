@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-04-27 13:39:04.872555",
+    "@@last_modified": "2026-04-27 14:43:49.687496",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10938,6 +10938,16 @@
     },
     "emojiToolbarInstruction": "Цей режим дозволяє вам прив'язувати емодзі до слів! Виберіть слово, щоб асоціювати з ним емодзі!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Слова словника, які ви збираєте, з'являться тут. Почніть спілкуватися та взаємодіяти, щоб заробити деякі!",
+    "vocabLevelsDescSeed": "Тут з'являться нові слова словника!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

@@ -235,11 +235,14 @@ class VocabAnalyticsListView extends StatelessWidget {
             key: const PageStorageKey("vocab-analytics-list-view-page-key"),
             slivers: [
               // Full-width tooltip
-              if (!controller.isSearching &&
+              if (filteredVocab != null &&
+                  !controller.isSearching &&
                   controller.selectedConstructLevel == null)
-                const SliverToBoxAdapter(
+                SliverToBoxAdapter(
                   child: InstructionsInlineTooltip(
-                    instructionsEnum: InstructionsEnum.analyticsVocabList,
+                    instructionsEnum: filteredVocab.isEmpty
+                        ? InstructionsEnum.analyticsVocabListEmpty
+                        : InstructionsEnum.analyticsVocabList,
                   ),
                 ),
 
@@ -256,7 +259,10 @@ class VocabAnalyticsListView extends StatelessWidget {
                             ? Padding(
                                 padding: const EdgeInsets.all(24.0),
                                 child: Text(
-                                  L10n.of(context).vocabLevelsDesc,
+                                  controller.selectedConstructLevel ==
+                                          ConstructLevelEnum.seeds
+                                      ? L10n.of(context).vocabLevelsDescSeed
+                                      : L10n.of(context).vocabLevelsDesc,
                                   style: Theme.of(context).textTheme.bodyMedium,
                                   textAlign: TextAlign.center,
                                 ),

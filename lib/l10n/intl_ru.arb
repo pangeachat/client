@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-04-27 13:39:48.629064",
+    "@@last_modified": "2026-04-27 14:44:39.380476",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11952,6 +11952,16 @@
     },
     "emojiToolbarInstruction": "Этот режим позволяет вам устанавливать эмодзи для слов! Выберите слово, чтобы связать с ним эмодзи!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Слова словаря, которые вы собираете, будут появляться здесь. Начните общаться и взаимодействовать, чтобы заработать немного!",
+    "vocabLevelsDescSeed": "Здесь появятся новые слова словаря!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

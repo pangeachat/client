@@ -4040,7 +4040,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-04-27 13:39:41.344569",
+    "@@last_modified": "2026-04-27 14:44:32.731611",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -11987,6 +11987,16 @@
     },
     "emojiToolbarInstruction": "Αυτή η λειτουργία σας επιτρέπει να συνδέσετε emoji με λέξεις! Επιλέξτε μια λέξη για να συσχετίσετε ένα emoji με αυτή!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Οι λέξεις λεξιλογίου που συλλέγετε θα εμφανιστούν εδώ. Ξεκινήστε να συνομιλείτε και να αλληλεπιδράτε για να κερδίσετε μερικές!",
+    "vocabLevelsDescSeed": "Εδώ είναι που θα εμφανιστούν οι νέες λέξεις λεξιλογίου!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

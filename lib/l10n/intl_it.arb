@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 13:39:03.523753",
+    "@@last_modified": "2026-04-27 14:43:48.015963",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -11029,6 +11029,16 @@
     },
     "emojiToolbarInstruction": "Questa modalità ti consente di associare emoji a parole! Seleziona una parola per associare un'emoji ad essa!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Le parole di vocabolario che raccogli andranno qui. Inizia a chattare e interagire per guadagnarne alcune!",
+    "vocabLevelsDescSeed": "Qui appariranno nuove parole di vocabolario!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

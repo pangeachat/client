@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 13:39:11.943354",
+    "@@last_modified": "2026-04-27 14:43:56.527193",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -11089,6 +11089,16 @@
     },
     "emojiToolbarInstruction": "Aquest mode et permet associar emojis amb paraules! Selecciona una paraula per associar-li un emoji!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Les paraules de vocabulari que recopileu aniran aquí. Comenceu a xatejar i interactuar per guanyar-ne algunes!",
+    "vocabLevelsDescSeed": "Aquí és on apareixeran noves paraules de vocabulari!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

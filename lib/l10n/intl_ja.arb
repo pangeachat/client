@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-04-27 13:39:42.668857",
+    "@@last_modified": "2026-04-27 14:44:34.120560",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11806,6 +11806,16 @@
     },
     "emojiToolbarInstruction": "このモードでは、単語に絵文字を設定できます！絵文字を関連付ける単語を選択してください！",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "収集した語彙はここに表示されます。チャットやインタラクションを始めて、いくつか獲得しましょう！",
+    "vocabLevelsDescSeed": "ここに新しい語彙が表示されます！",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

@@ -1746,7 +1746,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-04-27 13:38:40.728934",
+    "@@last_modified": "2026-04-27 14:43:17.638117",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -12032,6 +12032,16 @@
     },
     "emojiToolbarInstruction": "Denne tilstand giver dig mulighed for at knytte emojis til ord! Vælg et ord for at associere en emoji med det!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "De ordforrådsord, du samler, vil komme her. Begynd at chatte og interagere for at tjene nogle!",
+    "vocabLevelsDescSeed": "Dette er, hvor nye ordforrådsord vil dukke op!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-04-27 13:38:54.017666",
+    "@@last_modified": "2026-04-27 14:43:38.762665",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10938,6 +10938,16 @@
     },
     "emojiToolbarInstruction": "Modu honek emojiak hitzei lotzeko aukera ematen dizu! Hautatu hitz bat emoji batekin lotzeko!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Biltzen dituzun hiztegi hitzak hemen agertuko dira. Hasi elkarrizketak eta interakzioak egiten irabazteko!",
+    "vocabLevelsDescSeed": "Hemen agertuko dira hiztegi hitz berriak!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

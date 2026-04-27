@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-04-27 13:38:59.061633",
+    "@@last_modified": "2026-04-27 14:43:43.629744",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10917,6 +10917,16 @@
     },
     "emojiToolbarInstruction": "Dieser Modus ermöglicht es Ihnen, Emojis mit Wörtern zu verknüpfen! Wählen Sie ein Wort aus, um ein Emoji damit zu verknüpfen!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Die Vokabeln, die Sie sammeln, werden hier erscheinen. Beginnen Sie zu chatten und zu interagieren, um einige zu verdienen!",
+    "vocabLevelsDescSeed": "Hier werden neue Vokabeln erscheinen!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }

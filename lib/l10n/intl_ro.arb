@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 13:38:44.686467",
+    "@@last_modified": "2026-04-27 14:43:25.090621",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11763,6 +11763,16 @@
     },
     "emojiToolbarInstruction": "Această mod permite să asociați emoji cu cuvinte! Selectați un cuvânt pentru a asocia un emoji cu acesta!",
     "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Cuvintele de vocabular pe care le colectezi vor apărea aici. Începe să conversezi și să interacționezi pentru a câștiga câteva!",
+    "vocabLevelsDescSeed": "Aici vor apărea cuvintele noi de vocabular!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
         "type": "String",
         "placeholders": {}
     }
