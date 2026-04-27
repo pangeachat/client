@@ -241,6 +241,14 @@ class TutorialOverlayController {
   bool isTutorialQueued(TutorialEnum tutorial) =>
       _state.tutorialType == tutorial;
 
+  bool _hasModalAbove(BuildContext context) {
+    final navigator = Navigator.of(context, rootNavigator: true);
+    final route = ModalRoute.of(context);
+
+    if (route == null) return false;
+    return !route.isCurrent || navigator.canPop();
+  }
+
   void dispose() {
     _forwardTutorialStreamController.close();
     _backNavigationStreamController.close();
@@ -270,6 +278,13 @@ class TutorialOverlayController {
     if (_state.model.activeTutorial != null) {
       Logs().w(
         "Another tutorial is already active: ${_state.model.activeTutorial!.tutorialType}",
+      );
+      return;
+    }
+
+    if (_hasModalAbove(context)) {
+      Logs().w(
+        "Tutorial ${tutorial.tutorialType} blocked because another route/dialog is on top.",
       );
       return;
     }
