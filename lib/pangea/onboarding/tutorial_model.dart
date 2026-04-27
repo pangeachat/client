@@ -16,6 +16,8 @@ sealed class TutorialModel {
     required List<TutorialStepData> stepsData,
   }) : _stepsData = stepsData;
 
+  List<Size> get stepSizes;
+
   List<TutorialStepStyle> _stepStyles(L10n l10n);
 
   TutorialStep step(int index, L10n l10n) {
@@ -31,6 +33,8 @@ sealed class TutorialModel {
   /// Returns the [TutorialStepData.targetKey] for [index] without allocating
   /// styles or requiring an [L10n] instance. Safe to call every frame.
   String targetKeyAt(int index) => _stepsData[index].targetKey;
+
+  Size tooltipSizeAt(int index) => stepSizes[index];
 }
 
 class ReadingAssistantTutorialModel extends TutorialModel {
@@ -39,10 +43,13 @@ class ReadingAssistantTutorialModel extends TutorialModel {
       super(tutorialType: TutorialEnum.readingAssistance, stepsData: data);
 
   @override
+  List<Size> get stepSizes => [Size(250, 120)];
+
+  @override
   List<TutorialStepStyle> _stepStyles(L10n l10n) => [
     TutorialStepStyle(
       tooltip: l10n.readingAssistanceTutorialClickMessage,
-      tooltipSize: Size(250, 120),
+      tooltipSize: stepSizes[0],
       borderRadius: AppConfig.borderRadius,
     ),
   ];
@@ -54,19 +61,25 @@ class WritingAssistantTutorialModel extends TutorialModel {
       super(tutorialType: TutorialEnum.writingAssistance, stepsData: data);
 
   @override
-  List<TutorialStepStyle> _stepStyles(L10n l10n) => [
-    TutorialStepStyle(
-      tooltip: l10n.writingAssistanceTutorialInputBar,
-      tooltipSize: Size(300, 140),
-      borderRadius: 24.0,
-    ),
-    TutorialStepStyle(
-      tooltip: l10n.writingAssistanceTutorialIGCButton,
-      tooltipSize: Size(300, 140),
-      borderRadius: 100.0,
-      padding: 4.0,
-    ),
-  ];
+  List<Size> get stepSizes => [Size(300, 140), Size(300, 140)];
+
+  @override
+  List<TutorialStepStyle> _stepStyles(L10n l10n) {
+    final sizes = stepSizes;
+    return [
+      TutorialStepStyle(
+        tooltip: l10n.writingAssistanceTutorialInputBar,
+        tooltipSize: sizes[0],
+        borderRadius: 24.0,
+      ),
+      TutorialStepStyle(
+        tooltip: l10n.writingAssistanceTutorialIGCButton,
+        tooltipSize: sizes[1],
+        borderRadius: 100.0,
+        padding: 4.0,
+      ),
+    ];
+  }
 }
 
 class SelectModeButtonsTutorialModel extends TutorialModel {
@@ -75,23 +88,29 @@ class SelectModeButtonsTutorialModel extends TutorialModel {
       super(tutorialType: TutorialEnum.selectModeButtons, stepsData: data);
 
   @override
-  List<TutorialStepStyle> _stepStyles(L10n l10n) => [
-    TutorialStepStyle(
-      tooltip: l10n.selectModeTutorialTranslate,
-      tooltipSize: Size(250, 120),
-      borderRadius: 100.0,
-      padding: 0.0,
-    ),
-    TutorialStepStyle(
-      tooltip: l10n.selectModeTutorialAudio,
-      tooltipSize: Size(250, 120),
-      borderRadius: 100.0,
-      padding: 0.0,
-    ),
-    TutorialStepStyle(
-      tooltip: l10n.selectModeTutorialExit,
-      tooltipSize: Size(250, 120),
-      borderRadius: AppConfig.borderRadius,
-    ),
-  ];
+  List<Size> get stepSizes => [Size(250, 120), Size(250, 120), Size(250, 120)];
+
+  @override
+  List<TutorialStepStyle> _stepStyles(L10n l10n) {
+    final sizes = stepSizes;
+    return [
+      TutorialStepStyle(
+        tooltip: l10n.selectModeTutorialTranslate,
+        tooltipSize: sizes[0],
+        borderRadius: 100.0,
+        padding: 0.0,
+      ),
+      TutorialStepStyle(
+        tooltip: l10n.selectModeTutorialAudio,
+        tooltipSize: sizes[1],
+        borderRadius: 100.0,
+        padding: 0.0,
+      ),
+      TutorialStepStyle(
+        tooltip: l10n.selectModeTutorialExit,
+        tooltipSize: sizes[2],
+        borderRadius: AppConfig.borderRadius,
+      ),
+    ];
+  }
 }

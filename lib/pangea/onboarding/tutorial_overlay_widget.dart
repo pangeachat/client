@@ -42,6 +42,9 @@ class TutorialOverlayWidget extends StatefulWidget {
 class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   bool _visible = false;
 
+  Size? _lastTargetSize;
+  Offset? _lastTargetOffset;
+
   @override
   void initState() {
     super.initState();
@@ -73,22 +76,35 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
 
     final tutorial = widget.model.activeTutorial;
 
-    // Between tutorials in a sequence there is no active tutorial yet —
-    // keep waiting.
     if (tutorial == null) {
       WidgetsBinding.instance.addPostFrameCallback(_monitorTargetWidget);
       return;
     }
 
-    // Use targetKeyAt to avoid allocating styles or performing an L10n
-    // inherited-widget lookup on every frame.
-    final targetKey = tutorial.targetKeyAt(widget.model.stepIndex);
-    final targetMissing = _isTargetMounted(targetKey) == false;
-    final notTransitioning = !widget.model.isStepTransitioning;
+    final stepKey = tutorial.targetKeyAt(widget.model.stepIndex);
+    final renderBox = _currentRenderBox(stepKey);
 
-    if (targetMissing && notTransitioning && _visible) {
-      widget.reset();
-      return;
+    if (renderBox == null) {
+      _lastTargetOffset = null;
+      _lastTargetSize = null;
+
+      final notTransitioning = !widget.model.isStepTransitioning;
+      if (notTransitioning && _visible) {
+        widget.reset();
+        return;
+      }
+    } else {
+      final newSize = renderBox.size;
+      final newOffset = renderBox.localToGlobal(Offset.zero);
+
+      final sizeChanged = newSize != _lastTargetSize;
+      final offsetChanged = newOffset != _lastTargetOffset;
+
+      if (sizeChanged || offsetChanged) {
+        _lastTargetSize = newSize;
+        _lastTargetOffset = newOffset;
+        setState(() {});
+      }
     }
 
     WidgetsBinding.instance.addPostFrameCallback(_monitorTargetWidget);
@@ -98,28 +114,16 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
 
   static const double _tooltipPadding = 8.0;
 
-  Size _tooltipSize(TutorialStep? step) {
-    final baseSize = step?.style.tooltipSize ?? const Size(300, 100);
+  Size _tooltipSize(Size? tooltipSize) {
+    final baseSize = tooltipSize ?? const Size(300, 100);
     return Size(
       baseSize.width + _tooltipPadding,
       baseSize.height + _tooltipPadding,
     );
   }
 
-  bool _isTargetMounted(String targetKey) {
-    try {
-      final target = MatrixState.pAnyState.layerLinkAndKey(targetKey);
-      final renderBox =
-          target.key.currentContext?.findRenderObject() as RenderBox?;
-      return renderBox != null && renderBox.attached && renderBox.hasSize;
-    } catch (e) {
-      return false;
-    }
-  }
-
-  RenderBox? _currentRenderBox(TutorialStep? step) {
-    if (step == null) return null;
-    final stepKey = step.data.targetKey;
+  RenderBox? _currentRenderBox(String? stepKey) {
+    if (stepKey == null) return null;
 
     try {
       final target = MatrixState.pAnyState.layerLinkAndKey(stepKey);
@@ -138,38 +142,34 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     }
   }
 
-  Size? _currentSize(TutorialStep? step) => _currentRenderBox(step)?.size;
-
-  Offset? _currentOffset(TutorialStep? step) =>
-      _currentRenderBox(step)?.localToGlobal(Offset.zero);
-
-  bool _tooltipHasBottomOverflow(TutorialStep? step) {
+  bool _tooltipHasBottomOverflow(String? stepKey, Size? tooltipSize) {
     final screenHeight = MediaQuery.sizeOf(context).height;
-    final pos = _currentOffset(step) ?? Offset.zero;
-    final targetSize = _currentSize(step) ?? Size.zero;
-    final tip = _tooltipSize(step);
+    final pos = _lastTargetOffset ?? Offset.zero;
+    final targetSize = _lastTargetSize ?? Size.zero;
+    final tip = _tooltipSize(tooltipSize);
     final tooltipOffset =
         pos.dy + targetSize.height + tip.height + (_tooltipPadding * 2);
     return tooltipOffset > screenHeight;
   }
 
-  bool _tooltipHasTopOverflow(TutorialStep? step) {
-    final pos = _currentOffset(step) ?? Offset.zero;
-    final tip = _tooltipSize(step);
+  bool _tooltipHasTopOverflow(String? stepKey, Size? tooltipSize) {
+    final pos = _lastTargetOffset ?? Offset.zero;
+    final tip = _tooltipSize(tooltipSize);
     final tooltipOffset = pos.dy - tip.height - (_tooltipPadding * 2);
     return tooltipOffset < 0;
   }
 
-  bool _showAbove(TutorialStep? step) =>
-      !_tooltipHasTopOverflow(step) || _tooltipHasBottomOverflow(step);
+  bool _showAbove(String? stepKey, Size? tooltipSize) =>
+      !_tooltipHasTopOverflow(stepKey, tooltipSize) ||
+      _tooltipHasBottomOverflow(stepKey, tooltipSize);
 
-  double? _tooltipHorizontalOffset(TutorialStep? step) {
-    final size = _currentSize(step);
-    final pos = _currentOffset(step);
+  double? _tooltipHorizontalOffset(String? stepKey, Size? tooltipSize) {
+    final size = _lastTargetSize;
+    final pos = _lastTargetOffset;
 
     if (pos == null || size == null) return null;
     final screenWidth = MediaQuery.sizeOf(context).width;
-    final tip = _tooltipSize(step);
+    final tip = _tooltipSize(tooltipSize);
     if (tip.width >= screenWidth) {
       return null; // can't fit, just center
     }
@@ -240,13 +240,16 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     final stepIndex = model.stepIndex;
     final step = tutorial?.step(stepIndex, L10n.of(context));
 
+    final stepKey = tutorial?.targetKeyAt(widget.model.stepIndex);
+    final stepSize = tutorial?.tooltipSizeAt(stepIndex);
+
     final showNavigation =
         tutorial?.tutorialType.showNavigationButtons ?? false;
 
-    final size = _currentSize(step);
+    final size = _lastTargetSize;
     final holeWidth = (size?.width ?? 0.0) + (step?.style.padding ?? 0) * 2;
     final holeHeight = (size?.height ?? 0.0) + (step?.style.padding ?? 0) * 2;
-    final showAbove = _showAbove(step);
+    final showAbove = _showAbove(stepKey, stepSize);
 
     return MouseRegion(
       cursor: step != null && _visible
@@ -313,7 +316,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
                     ? Alignment.bottomCenter
                     : Alignment.topCenter,
                 offset: Offset(
-                  _tooltipHorizontalOffset(step) ?? 0,
+                  _tooltipHorizontalOffset(stepKey, stepSize) ?? 0,
                   showAbove
                       ? -_tooltipPadding
                       : _tooltipPadding, // gap between target and tooltip
