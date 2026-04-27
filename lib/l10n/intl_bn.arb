@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 12:03:46.677227",
+    "@@last_modified": "2026-04-27 13:39:34.589683",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -11648,6 +11648,11 @@
     },
     "removeAdminDescription": "এই ব্যবহারকারীর অনুমতি স্তর কমানো হলে প্রশাসক অধিকারগুলি মুছে ফেলা হবে।",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "এই মোডটি আপনাকে শব্দের সাথে ইমোজি সেট করতে দেয়! একটি শব্দ নির্বাচন করুন যাতে একটি ইমোজি যুক্ত করা যায়!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

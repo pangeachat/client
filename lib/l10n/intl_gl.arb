@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-04-27 12:02:10.410087",
+    "@@last_modified": "2026-04-27 13:38:38.271210",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10933,6 +10933,11 @@
     },
     "removeAdminDescription": "Baixar o nivel de permiso deste usuario eliminará os privilexios de administrador.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Este modo permítelle asociar emojis a palabras! Seleccione unha palabra para asociar un emoji con ela!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

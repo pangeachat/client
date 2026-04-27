@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 12:03:24.637486",
+    "@@last_modified": "2026-04-27 13:39:11.943354",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -11084,6 +11084,11 @@
     },
     "removeAdminDescription": "Baixar el nivell de permís d'aquest usuari eliminarà els privilegis d'administrador.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Aquest mode et permet associar emojis amb paraules! Selecciona una paraula per associar-li un emoji!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

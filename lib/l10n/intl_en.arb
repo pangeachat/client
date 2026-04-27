@@ -5073,5 +5073,6 @@
     "selectModeTutorialExit": "Click the background to go back to chatting",
     "errorTryAgainLater": "Oops, something went wrong… We're looking into it! Please try again later.",
     "acceptAll": "Accept all",
-    "removeAdminDescription": "Lowering this user's permission level will remove admin privileges."
+    "removeAdminDescription": "Lowering this user's permission level will remove admin privileges.",
+    "emojiToolbarInstruction": "This mode allows you to set emojis to words! Select a word to associate an emoji with it!"
 }

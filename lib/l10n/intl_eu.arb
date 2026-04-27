@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-04-27 12:02:33.265539",
+    "@@last_modified": "2026-04-27 13:38:54.017666",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10933,6 +10933,11 @@
     },
     "removeAdminDescription": "Erabiltzaile honen baimen maila jaistea administratzaileen pribilegioak kentzea izango da.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Modu honek emojiak hitzei lotzeko aukera ematen dizu! Hautatu hitz bat emoji batekin lotzeko!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

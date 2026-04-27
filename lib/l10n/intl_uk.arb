@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-04-27 12:03:18.828204",
+    "@@last_modified": "2026-04-27 13:39:04.872555",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10933,6 +10933,11 @@
     },
     "removeAdminDescription": "Зниження рівня доступу цього користувача призведе до видалення адміністративних привілеїв.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Цей режим дозволяє вам прив'язувати емодзі до слів! Виберіть слово, щоб асоціювати з ним емодзі!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

@@ -1675,7 +1675,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-04-27 12:02:40.034407",
+    "@@last_modified": "2026-04-27 13:39:02.342571",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -12064,6 +12064,11 @@
     },
     "removeAdminDescription": "降低此用戶的權限級別將會移除管理員特權。",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "此模式允許您將表情符號設置為單詞！選擇一個單詞以將表情符號與其關聯！",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

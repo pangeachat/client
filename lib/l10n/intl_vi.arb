@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 12:03:40.310609",
+    "@@last_modified": "2026-04-27 13:39:27.609483",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6948,6 +6948,11 @@
     },
     "removeAdminDescription": "Giảm cấp độ quyền của người dùng này sẽ xóa quyền quản trị.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Chế độ này cho phép bạn gán biểu tượng cảm xúc cho các từ! Chọn một từ để liên kết một biểu tượng cảm xúc với nó!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

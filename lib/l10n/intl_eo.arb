@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 12:04:07.158608",
+    "@@last_modified": "2026-04-27 13:39:46.068221",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -12052,6 +12052,11 @@
     },
     "removeAdminDescription": "Malaltigante la permesnivelon de ĉi tiu uzanto, la admin privilegioj estos forigitaj.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Ĉi tiu reĝimo permesas al vi asigni emoji-ojn al vortoj! Elektu vorton por asocii ĝin kun emoji!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

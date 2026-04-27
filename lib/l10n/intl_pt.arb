@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 12:02:34.773767",
+    "@@last_modified": "2026-04-27 13:38:55.378351",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -12051,6 +12051,11 @@
     },
     "removeAdminDescription": "Reduzir o nível de permissão deste usuário removerá privilégios de administrador.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Este modo permite que você associe emojis a palavras! Selecione uma palavra para associar um emoji a ela!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

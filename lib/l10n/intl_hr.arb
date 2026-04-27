@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-04-27 12:02:28.191707",
+    "@@last_modified": "2026-04-27 13:38:49.154112",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11417,6 +11417,11 @@
     },
     "removeAdminDescription": "Smanjenje razine dozvole ovog korisnika uklonit će administratorske privilegije.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Ovaj način omogućuje vam da postavite emojije uz riječi! Odaberite riječ s kojom želite povezati emoji!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 12:02:20.970639",
+    "@@last_modified": "2026-04-27 13:38:43.399712",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -11030,6 +11030,11 @@
     },
     "removeAdminDescription": "Menurunkan tingkat izin pengguna ini akan menghapus hak istimewa admin.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Mode ini memungkinkan Anda untuk mengaitkan emoji dengan kata! Pilih sebuah kata untuk mengasosiasikan emoji dengannya!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

@@ -4182,7 +4182,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-04-27 12:02:12.269027",
+    "@@last_modified": "2026-04-27 13:38:39.705129",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10982,6 +10982,11 @@
     },
     "removeAdminDescription": "Tämän käyttäjän käyttöoikeustason alentaminen poistaa ylläpitäjän oikeudet.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Tämä tila antaa sinun liittää emojeja sanoihin! Valitse sana, johon haluat liittää emojin!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

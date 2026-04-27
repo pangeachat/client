@@ -1746,7 +1746,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-04-27 12:02:14.867577",
+    "@@last_modified": "2026-04-27 13:38:40.728934",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -12027,6 +12027,11 @@
     },
     "removeAdminDescription": "At sænke denne brugers tilladelsesniveau vil fjerne administratorrettigheder.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Denne tilstand giver dig mulighed for at knytte emojis til ord! Vælg et ord for at associere en emoji med det!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 12:04:11.458126",
+    "@@last_modified": "2026-04-27 13:39:52.829964",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -12056,6 +12056,11 @@
     },
     "removeAdminDescription": "Smanjenje nivoa dozvola ovog korisnika ukloniće administratorske privilegije.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Ovaj režim vam omogućava da povežete emotikone sa rečima! Izaberite reč sa kojom želite da povežete emotikon!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

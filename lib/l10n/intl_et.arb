@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-04-27 12:02:36.131986",
+    "@@last_modified": "2026-04-27 13:38:57.729567",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10930,6 +10930,11 @@
     },
     "removeAdminDescription": "Selle kasutaja õiguste taseme langetamine eemaldab administraatori õigused.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "See režiim võimaldab sul seostada emotikone sõnadega! Valige sõna, et seostada sellega emotikon!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 12:02:41.345692",
+    "@@last_modified": "2026-04-27 13:39:03.523753",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -11024,6 +11024,11 @@
     },
     "removeAdminDescription": "Abbassare il livello di autorizzazione di questo utente rimuoverà i privilegi di amministratore.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Questa modalità ti consente di associare emoji a parole! Seleziona una parola per associare un'emoji ad essa!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

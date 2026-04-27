@@ -33,6 +33,7 @@ enum InstructionsEnum {
   readingAssistanceTutorial,
   writingAssistanceTutorial,
   selectModeButtonsTutorial,
+  emojiToolbarMode,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -65,6 +66,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.readingAssistanceTutorial:
       case InstructionsEnum.writingAssistanceTutorial:
       case InstructionsEnum.selectModeButtonsTutorial:
+      case InstructionsEnum.emojiToolbarMode:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
           m: 'InstructionsEnumExtension.title',
@@ -117,6 +119,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.readingAssistanceTutorial:
       case InstructionsEnum.writingAssistanceTutorial:
       case InstructionsEnum.selectModeButtonsTutorial:
+      case InstructionsEnum.emojiToolbarMode:
         return "";
       case InstructionsEnum.disableLanguageTools:
         return l10n.disableLanguageToolsDesc;

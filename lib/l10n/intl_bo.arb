@@ -3462,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-04-27 12:03:43.705015",
+    "@@last_modified": "2026-04-27 13:39:31.905402",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10605,6 +10605,11 @@
     },
     "removeAdminDescription": "Lowersa sa permission level sa user nga ini magakuha sang admin privileges.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Dhi mode aji bawa to set emojis to words! Select a word to associate an emoji with it!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

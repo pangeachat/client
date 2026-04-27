@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-04-27 12:02:37.655457",
+    "@@last_modified": "2026-04-27 13:38:59.061633",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10912,6 +10912,11 @@
     },
     "removeAdminDescription": "Die Herabsetzung der Berechtigungsstufe dieses Benutzers entfernt die Administratorrechte.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Dieser Modus ermöglicht es Ihnen, Emojis mit Wörtern zu verknüpfen! Wählen Sie ein Wort aus, um ein Emoji damit zu verknüpfen!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

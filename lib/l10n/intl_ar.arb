@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-04-27 12:03:34.947917",
+    "@@last_modified": "2026-04-27 13:39:21.791510",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11273,6 +11273,11 @@
     },
     "removeAdminDescription": "خفض مستوى صلاحيات هذا المستخدم سيؤدي إلى إزالة امتيازات الإدارة.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "تتيح لك هذه الوضعية تعيين الرموز التعبيرية للكلمات! اختر كلمة لربط رمز تعبيري بها!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

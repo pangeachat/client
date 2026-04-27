@@ -3646,7 +3646,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-04-27 12:04:01.745119",
+    "@@last_modified": "2026-04-27 13:39:44.434372",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11652,6 +11652,11 @@
     },
     "removeAdminDescription": "इस उपयोगकर्ता के अनुमति स्तर को कम करने से व्यवस्थापक विशेषाधिकार हटा दिए जाएंगे।",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "यह मोड आपको शब्दों के साथ इमोजी सेट करने की अनुमति देता है! एक शब्द चुनें जिससे आप एक इमोजी को जोड़ना चाहते हैं!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

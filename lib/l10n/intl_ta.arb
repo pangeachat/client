@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 12:03:41.572476",
+    "@@last_modified": "2026-04-27 13:39:29.188039",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -11049,6 +11049,11 @@
     },
     "removeAdminDescription": "இந்த பயனரின் அனுமதி நிலையை குறைப்பது நிர்வாக அதிகாரங்களை நீக்கும்.",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "இந்த முறை நீங்கள் சொற்களுக்கு எமோஜிகளை அமைக்க அனுமதிக்கிறது! ஒரு சொற்றொடரை தேர்ந்தெடுத்து அதுடன் எமோஜியை தொடர்பு கொள்ளுங்கள்!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }

@@ -3646,7 +3646,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-04-27 12:03:26.562867",
+    "@@last_modified": "2026-04-27 13:39:13.606631",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11652,6 +11652,11 @@
     },
     "removeAdminDescription": "การลดระดับสิทธิ์ของผู้ใช้คนนี้จะทำให้สิทธิ์ผู้ดูแลระบบถูกลบออก",
     "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "โหมดนี้ช่วยให้คุณสามารถตั้งอีโมจิให้กับคำได้! เลือกคำเพื่อเชื่อมโยงอีโมจิกับมัน!",
+    "@emojiToolbarInstruction": {
         "type": "String",
         "placeholders": {}
     }
