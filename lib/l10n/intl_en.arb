@@ -5065,7 +5065,7 @@
     "blockUsernameHint": "Block username",
     "errorTryAgainSoon": "Writing assistance is taking a bit longer than expected. Try again in a second!",
     "closeEmojiMenu": "Close emoji menu",
-    "readingAssistanceTutorialClickMessage": "Click on the message to access reading assistance tools",
+    "readingAssistanceTutorialClickMessage": "Click on the message bubble to select it",
     "writingAssistanceTutorialInputBar": "You can write in any language. Don't worry about mistakes! We'll help you correct them.",
     "writingAssistanceTutorialIGCButton": "After writing your message, click this button to start writing assistance",
     "selectModeTutorialTranslate": "Click here to translate the message",
