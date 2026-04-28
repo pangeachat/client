@@ -23,4 +23,7 @@ class ChoreoConstants {
 
   static const String enableIGC = 'enable_igc';
   static const String enableIT = 'enable_it';
+
+  static const String incorrectCompleteIgcFeedback =
+      "All corrections have been completed, but the message still contains error.";
 }

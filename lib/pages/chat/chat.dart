@@ -2612,7 +2612,8 @@ class ChatController extends State<ChatPageWithRoom>
       return showLanguageMismatchPopup(manual: manual, autosend: autosend);
     }
 
-    if (choreographer.assistanceState == AssistanceStateEnum.fetching) {
+    final assistanceState = choreographer.assistanceState;
+    if (assistanceState == AssistanceStateEnum.fetching) {
       return;
     }
 
@@ -2620,11 +2621,19 @@ class ChatController extends State<ChatPageWithRoom>
     // and assistance has already been requested or writing assistance should not run automatically in this room,
     // then just send the message instead of requesting assistance.
     if (autosend && !manual) {
-      if (choreographer.assistanceState != AssistanceStateEnum.notFetched ||
+      if (assistanceState != AssistanceStateEnum.notFetched ||
           !room.enableAutomaticWritingAssistance) {
         await send();
         return;
       }
+    }
+
+    // If assistance is complete, but the user manually requests corrections,
+    // update the feedback to say that the message still contains errors
+    if (feedback == null &&
+        manual &&
+        assistanceState == AssistanceStateEnum.complete) {
+      feedback = ChoreoConstants.incorrectCompleteIgcFeedback;
     }
 
     feedback == null

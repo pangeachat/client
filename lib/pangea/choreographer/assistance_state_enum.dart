@@ -47,6 +47,7 @@ enum AssistanceStateEnum {
 
   bool get allowsFeedback => switch (this) {
     AssistanceStateEnum.notFetched => true,
+    AssistanceStateEnum.complete => true,
     _ => false,
   };
 
