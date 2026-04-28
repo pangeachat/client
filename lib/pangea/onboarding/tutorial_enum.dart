@@ -13,7 +13,7 @@ enum TutorialEnum {
     route: ':roomid',
   ),
   selectModeButtons(
-    stepCount: 3,
+    stepCount: 4,
     showNavigationButtons: false,
     route: ':roomid',
   );

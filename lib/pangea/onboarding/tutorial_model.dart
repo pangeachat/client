@@ -88,27 +88,38 @@ class SelectModeButtonsTutorialModel extends TutorialModel {
       super(tutorialType: TutorialEnum.selectModeButtons, stepsData: data);
 
   @override
-  List<Size> get stepSizes => [Size(250, 120), Size(250, 120), Size(250, 120)];
+  List<Size> get stepSizes => [
+    Size(250, 120),
+    Size(250, 120),
+    Size(250, 120),
+    Size(250, 120),
+  ];
 
   @override
   List<TutorialStepStyle> _stepStyles(L10n l10n) {
     final sizes = stepSizes;
     return [
       TutorialStepStyle(
-        tooltip: l10n.selectModeTutorialTranslate,
+        tooltip: l10n.readingAssistanceTutorialCollectToken,
         tooltipSize: sizes[0],
-        borderRadius: 100.0,
-        padding: 0.0,
+        borderRadius: 8.0,
+        padding: 4.0,
       ),
       TutorialStepStyle(
-        tooltip: l10n.selectModeTutorialAudio,
+        tooltip: l10n.selectModeTutorialTranslate,
         tooltipSize: sizes[1],
         borderRadius: 100.0,
         padding: 0.0,
       ),
       TutorialStepStyle(
-        tooltip: l10n.selectModeTutorialExit,
+        tooltip: l10n.selectModeTutorialAudio,
         tooltipSize: sizes[2],
+        borderRadius: 100.0,
+        padding: 0.0,
+      ),
+      TutorialStepStyle(
+        tooltip: l10n.selectModeTutorialExit,
+        tooltipSize: sizes[3],
         borderRadius: AppConfig.borderRadius,
       ),
     ];

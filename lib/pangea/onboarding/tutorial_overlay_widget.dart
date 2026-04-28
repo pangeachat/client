@@ -251,6 +251,11 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     final holeHeight = (size?.height ?? 0.0) + (step?.style.padding ?? 0) * 2;
     final showAbove = _showAbove(stepKey, stepSize);
 
+    // Don't render tooltip until target position is known to avoid
+    // "flying" animation from top-left corner (where Offset.zero defaults to)
+    final hasTargetPosition =
+        _lastTargetOffset != null && _lastTargetSize != null;
+
     return MouseRegion(
       cursor: step != null && _visible
           ? SystemMouseCursors.click
@@ -261,7 +266,9 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
         child: Stack(
           children: [
             AnimatedOpacity(
-              opacity: _visible && step != null ? 1.0 : 0.0,
+              opacity: _visible && step != null && hasTargetPosition
+                  ? 1.0
+                  : 0.0,
               duration: _duration,
               child: step != null
                   ? ColorFiltered(
@@ -303,7 +310,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
                   : const SizedBox.shrink(),
             ),
 
-            if (_visible && step != null)
+            if (_visible && step != null && hasTargetPosition)
               CompositedTransformFollower(
                 link: MatrixState.pAnyState
                     .layerLinkAndKey(step.data.targetKey)

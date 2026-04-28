@@ -476,6 +476,16 @@ class HtmlMessage extends StatelessWidget {
           fontSize,
         );
 
+        final tokenTargetKey = isPracticeMode
+            ? token?.practiceModeTargetKey(event.eventId)
+            : overlayController != null
+            ? token?.overlayTargetKey(event.eventId)
+            : token?.baseTargetKey(event.eventId);
+
+        final layerLinkAndKey = tokenTargetKey != null
+            ? MatrixState.pAnyState.layerLinkAndKey(tokenTargetKey)
+            : null;
+
         return TextSpan(
           children: [
             WidgetSpan(
@@ -505,14 +515,9 @@ class HtmlMessage extends StatelessWidget {
                       textColor: textColor,
                     ),
                   CompositedTransformTarget(
-                    link: token != null && isPracticeMode
-                        ? MatrixState.pAnyState
-                              .layerLinkAndKey(
-                                "message-token-${token.text.uniqueKey}-${event.eventId}",
-                              )
-                              .link
-                        : LayerLink(),
+                    link: layerLinkAndKey?.link ?? LayerLink(),
                     child: MouseRegion(
+                      key: layerLinkAndKey?.key,
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
                         behavior: HitTestBehavior.translucent,

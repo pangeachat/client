@@ -228,11 +228,24 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     final translateTarget = SelectMode.translate.buttonTarget;
     final audioTarget = SelectMode.audio.buttonTarget;
     final msgTarget = widget.overlayController.overlayMessageKey;
+    final tokenTarget = widget.controller.tutorialTokenTargetKey;
+    if (tokenTarget == null) {
+      return;
+    }
 
     widget.controller.tutorialOverlayController.launchTutorial(
       context: context,
       tutorial: SelectModeButtonsTutorialModel(
         data: [
+          TutorialStepData(
+            targetKey: tokenTarget,
+            onTap: () async {
+              widget.overlayController.updateSelectedSpan(
+                widget.controller.tutorialToken!.text,
+              );
+              await Future.delayed(Duration(milliseconds: 2500));
+            },
+          ),
           TutorialStepData(
             targetKey: translateTarget,
             onTap: () async {
@@ -258,6 +271,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   }
 
   Future<void> updateMode(SelectMode? mode) async {
+    widget.overlayController.updateSelectedSpan(null);
     if (mode == null) {
       matrix?.audioPlayer?.stop();
       matrix?.audioPlayer?.seek(null);
