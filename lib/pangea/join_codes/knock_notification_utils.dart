@@ -1,6 +1,6 @@
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pangea/join_codes/knock_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/knocked_rooms_extension.dart';
 
 /// Returns true when a push notification event is an accepted-knock invite —
 /// i.e. an m.room.member invite targeting the current user in a room the user

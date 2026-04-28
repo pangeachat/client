@@ -166,7 +166,7 @@ Future<List<SpaceTeacher>> getReportTeachers(
       .toList();
 
   for (final Room space in reportRoomParentSpaces) {
-    final List<User> spaceTeachers = await space.teachers;
+    final List<User> spaceTeachers = await space.nonBotRoomAdmins;
     for (final User spaceTeacher in spaceTeachers) {
       if (!teachers.any((teacher) => teacher.teacher.id == spaceTeacher.id) &&
           spaceTeacher.id != Matrix.of(context).client.userID) {
@@ -180,7 +180,7 @@ Future<List<SpaceTeacher>> getReportTeachers(
       .toList();
 
   for (final space in otherSpaces) {
-    for (final spaceTeacher in await space.teachers) {
+    for (final spaceTeacher in await space.nonBotRoomAdmins) {
       if (!teachers.any((teacher) => teacher.teacher.id == spaceTeacher.id) &&
           spaceTeacher.id != Matrix.of(context).client.userID) {
         teachers.add(SpaceTeacher(spaceTeacher, space));

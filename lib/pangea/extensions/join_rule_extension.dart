@@ -2,7 +2,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/chat_settings/constants/room_settings_constants.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/join_codes/space_code_extension.dart';
+import 'package:fluffychat/pangea/join_codes/request_room_code_extension.dart';
 
 extension JoinRuleExtension on Client {
   Future<StateEvent> pangeaJoinRules(
@@ -33,25 +33,6 @@ extension JoinRuleExtension on Client {
 }
 
 extension JoinRuleExtensionOnRoom on Room {
-  Future<void> addJoinCode() async {
-    if (!canChangeStateEvent(EventTypes.RoomJoinRules)) {
-      throw Exception('Cannot change join rules for this room');
-    }
-
-    final currentJoinRules = getState(EventTypes.RoomJoinRules)?.content ?? {};
-    if (currentJoinRules[RoomSettingsConstants.accessCode] != null) return;
-
-    final joinCode = await client.requestSpaceCode();
-    currentJoinRules[RoomSettingsConstants.accessCode] = joinCode;
-
-    await client.setRoomStateWithKey(
-      id,
-      EventTypes.RoomJoinRules,
-      '',
-      currentJoinRules,
-    );
-  }
-
   /// Keep the room's current join rule state event content (except for what's intentionally replaced)
   /// since space's access codes were stored there. Don't want to accidentally remove them.
   Future<void> pangeaSetJoinRules(

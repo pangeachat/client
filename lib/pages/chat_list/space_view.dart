@@ -12,7 +12,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/unread_bubble.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/join_code_room_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -267,7 +267,7 @@ class _SpaceViewState extends State<SpaceView> {
         GoogleAnalytics.createChat(createdRoomId!);
       }
       final activeSpace = client.getRoomById(widget.spaceId);
-      final classCode = activeSpace?.classCode;
+      final classCode = activeSpace?.joinCode;
       if (classCode != null) {
         GoogleAnalytics.addParent(createdRoomId!, classCode);
       }
@@ -394,7 +394,7 @@ class _SpaceViewState extends State<SpaceView> {
         );
         if (result.isError) return;
         // #Pangea
-        final classCode = space.classCode;
+        final classCode = space.joinCode;
         if (classCode != null) {
           GoogleAnalytics.removeChatFromClass(roomId, classCode);
         }

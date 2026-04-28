@@ -21,7 +21,8 @@ import 'package:fluffychat/pangea/course_plans/course_activities/activity_summar
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/join_codes/knock_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/join_code_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -667,7 +668,7 @@ class CourseChatsController extends State<CourseChats>
     );
 
     GoogleAnalytics.createChat(roomId);
-    final classCode = room!.classCode;
+    final classCode = room!.joinCode;
     if (classCode != null) {
       GoogleAnalytics.addParent(roomId, classCode);
     }

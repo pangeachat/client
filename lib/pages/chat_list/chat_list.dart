@@ -18,7 +18,8 @@ import 'package:fluffychat/pangea/chat_list/utils/chat_list_handle_space_tap.dar
 import 'package:fluffychat/pangea/chat_settings/widgets/chat_context_menu_action.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/join_codes/knock_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/join_code_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
@@ -666,7 +667,7 @@ class ChatListController extends State<ChatList>
 
       if (isSpace) {
         // If user joined via code, don't show invite popup
-        final roomCode = room.classCode?.toLowerCase();
+        final roomCode = room.joinCode?.toLowerCase();
         final cachedCode = SpaceCodeRepo.recentCode?.toLowerCase();
         if (cachedCode == roomCode) continue;
         await SpaceTapUtil.onTap(context, room);

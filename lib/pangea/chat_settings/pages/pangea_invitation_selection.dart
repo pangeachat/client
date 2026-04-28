@@ -11,8 +11,8 @@ import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection_view.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/join_code_room_extension.dart';
 import 'package:fluffychat/pangea/user/user_search_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -325,7 +325,7 @@ class PangeaInvitationSelectionController
   }
 
   Future<void> _addJoinCode() async {
-    if (_room == null || _room!.classCode != null) return;
+    if (_room == null || _room!.joinCode != null) return;
     if (!_room!.canChangeStateEvent(EventTypes.RoomJoinRules)) return;
 
     try {

@@ -37,7 +37,7 @@ class _JoinClassWithLinkState extends State<JoinClassWithLink> {
       }
 
       if (widget.classCode != null) {
-        await SpaceCodeController.setSpaceCode(widget.classCode!);
+        await SpaceCodeController.cacheRoomCodeToJoin(widget.classCode!);
       }
       context.go("/home");
     });
