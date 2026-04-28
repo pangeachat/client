@@ -16,7 +16,6 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
-import 'package:fluffychat/pangea/chat_settings/constants/room_settings_constants.dart';
 import 'package:fluffychat/pangea/choreographer/igc/igc_request_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -34,7 +33,6 @@ part "room_capacity_extension.dart";
 part "room_children_and_parents_extension.dart";
 part "room_events_extension.dart";
 part "room_information_extension.dart";
-part "room_space_settings_extension.dart";
 part "room_user_permissions_extension.dart";
 
 extension PangeaRoom on Room {

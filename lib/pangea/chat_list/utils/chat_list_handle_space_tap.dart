@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/chat_list/widgets/room_invite_dialog.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/join_codes/knock_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/join_code_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -45,7 +45,7 @@ class SpaceTapUtil {
 
   static Future<void> _onInviteTap(BuildContext context, Room space) async {
     final justInputtedCode = SpaceCodeRepo.recentCode;
-    final spaceCode = space.classCode;
+    final spaceCode = space.joinCode;
     if (spaceCode != null && justInputtedCode == spaceCode) {
       return;
     }

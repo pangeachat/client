@@ -13,7 +13,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/join_code_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/knock_notification_utils.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
@@ -151,7 +151,7 @@ Future<void> _tryPushHelper(
         }
       }
       final recentCode = SpaceCodeRepo.recentCode?.toLowerCase();
-      final spaceCode = room.classCode?.toLowerCase();
+      final spaceCode = room.joinCode?.toLowerCase();
       if (recentCode != null && spaceCode != null && recentCode == spaceCode) {
         Logs().v(
           'Received join event for room with matching space code. Auto-joining space.',

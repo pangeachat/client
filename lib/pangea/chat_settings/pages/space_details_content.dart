@@ -14,7 +14,6 @@ import 'package:fluffychat/pangea/chat_settings/pages/room_details_buttons.dart'
 import 'package:fluffychat/pangea/chat_settings/pages/room_participants_widget.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/space_details_button_row.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/delete_space_dialog.dart';
-import 'package:fluffychat/pangea/common/widgets/share_room_button.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
@@ -24,6 +23,8 @@ import 'package:fluffychat/pangea/course_settings/course_settings.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/pangea/join_codes/join_code_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/share_room_button.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -343,10 +344,14 @@ class SpaceDetailsContent extends StatelessWidget {
                 ],
               ),
             ),
-            if (room.classCode != null)
+            if (room.joinCode != null)
               Padding(
                 padding: const EdgeInsets.only(left: 16.0),
-                child: ShareRoomButton(room: room),
+                child: ShareRoomButton(
+                  room: room,
+                  tooltip: L10n.of(context).shareCourse,
+                  child: const Icon(Icons.share_outlined),
+                ),
               ),
           ],
         ),

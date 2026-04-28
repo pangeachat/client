@@ -64,6 +64,7 @@ import 'package:fluffychat/pangea/events/models/representation_content_model.dar
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/join_codes/join_code_room_extension.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/learning_settings/disable_language_tools_popup.dart';
@@ -1278,7 +1279,7 @@ class ChatController extends State<ChatPageWithRoom>
             pangeaEditingEvent = previousEdit;
           }
 
-          GoogleAnalytics.sendMessage(room.id, room.classCode ?? "");
+          GoogleAnalytics.sendMessage(room.id, room.joinCode ?? "");
 
           if (msgEventId == null) {
             ErrorHandler.logError(

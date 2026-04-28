@@ -13,20 +13,19 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
-import 'package:fluffychat/pangea/join_codes/knock_space_extension.dart';
+import 'package:fluffychat/pangea/join_codes/knock_with_code_extension.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/pangea/join_codes/too_many_requests_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import '../common/controllers/base_controller.dart';
 
 class NotFoundException implements Exception {}
 
-class SpaceCodeController extends BaseController {
+class SpaceCodeController {
   static Completer<Result<String>>? _joinCompleter;
 
   static StreamController spaceCodeStream = StreamController.broadcast();
 
-  static Future<void> setSpaceCode(String code) async {
+  static Future<void> cacheRoomCodeToJoin(String code) async {
     await SpaceCodeRepo.setSpaceCode(code);
     spaceCodeStream.add(code);
   }

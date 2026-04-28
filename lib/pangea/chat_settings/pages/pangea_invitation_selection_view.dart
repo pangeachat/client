@@ -1,22 +1,18 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
-import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/room_settings_constants.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/join_code_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/share_room_button.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
-import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -68,6 +64,7 @@ class PangeaInvitationSelectionView extends StatelessWidget {
       onPressed: () => NavigationUtil.goToSpaceRoute(room.id, [], context),
     );
 
+    final joinCode = room.joinCode;
     return Scaffold(
       appBar: AppBar(
         leading: const Center(child: BackButton()),
@@ -291,10 +288,10 @@ class PangeaInvitationSelectionView extends StatelessWidget {
               Row(
                 spacing: 12.0,
                 children: [
-                  if (room.classCode != null)
+                  if (joinCode != null)
                     Expanded(
-                      child: PopupMenuButton<int>(
-                        borderRadius: BorderRadius.circular(32.0),
+                      child: ShareRoomButton(
+                        room: room,
                         child: IgnorePointer(
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
@@ -325,52 +322,9 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                             onPressed: () {},
                           ),
                         ),
-                        onSelected: (value) async {
-                          final spaceCode = room.classCode!;
-                          String toCopy = spaceCode;
-                          if (value == 0) {
-                            final String initialUrl = kIsWeb
-                                ? html.window.origin!
-                                : Environment.frontendURL;
-                            toCopy =
-                                "$initialUrl/#/join_with_link?${SpaceConstants.classCode}=${room.classCode}";
-                          }
-
-                          await Clipboard.setData(ClipboardData(text: toCopy));
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(L10n.of(context).copiedToClipboard),
-                            ),
-                          );
-                        },
-                        itemBuilder: (BuildContext context) =>
-                            <PopupMenuEntry<int>>[
-                              PopupMenuItem<int>(
-                                value: 0,
-                                child: ListTile(
-                                  leading: const Icon(Icons.share_outlined),
-                                  title: Text(L10n.of(context).shareSpaceLink),
-                                  contentPadding: const EdgeInsets.all(0),
-                                ),
-                              ),
-                              PopupMenuItem<int>(
-                                value: 1,
-                                child: ListTile(
-                                  leading: const Icon(Icons.share_outlined),
-                                  title: Text(
-                                    L10n.of(
-                                      context,
-                                    ).shareInviteCode(room.classCode!),
-                                  ),
-                                  contentPadding: const EdgeInsets.all(0),
-                                ),
-                              ),
-                            ],
                       ),
                     ),
-                  room.classCode != null
-                      ? doneButton
-                      : Expanded(child: doneButton),
+                  joinCode != null ? doneButton : Expanded(child: doneButton),
                 ],
               ),
             ],
