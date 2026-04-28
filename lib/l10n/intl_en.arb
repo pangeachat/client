@@ -5065,7 +5065,7 @@
     "blockUsernameHint": "Block username",
     "errorTryAgainSoon": "Writing assistance is taking a bit longer than expected. Try again in a second!",
     "closeEmojiMenu": "Close emoji menu",
-    "readingAssistanceTutorialClickMessage": "Click on the message to access reading assistance tools...",
+    "readingAssistanceTutorialClickMessage": "Click on the message to access reading assistance tools",
     "writingAssistanceTutorialInputBar": "You can write in any language. Don't worry about mistakes! We'll help you correct them.",
     "writingAssistanceTutorialIGCButton": "After writing your message, click this button to start writing assistance",
     "selectModeTutorialTranslate": "Click here to translate the message",
@@ -5077,5 +5077,5 @@
     "emojiToolbarInstruction": "This mode allows you to set emojis to words! Select a word to associate an emoji with it!",
     "analyticsVocabListBodyEmpty": "The vocabulary words you collect will go here. Start chatting and interacting to earn some!",
     "vocabLevelsDescSeed": "This is where new vocab words will appear!",
-    "readingAssistanceTutorialCollectToken": "Or select words to learn more about them"
+    "readingAssistanceTutorialCollectToken": "Select words to learn more about them"
 }

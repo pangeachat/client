@@ -217,7 +217,7 @@ class ChatController extends State<ChatPageWithRoom>
   /// The event used to start the reading-assistance tutorial. Stored so the
   /// tutorial can be re-opened when the user navigates back through the sequence.
   Event? _tutorialEvent;
-  PangeaToken? _tutorialToken;
+  PangeaToken? tutorialToken;
 
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
   late final ActivityChatController activityController;
@@ -266,6 +266,10 @@ class ChatController extends State<ChatPageWithRoom>
   //     ),
   //   );
   // }
+  String? get tutorialTokenTargetKey =>
+      _tutorialEvent != null && tutorialToken != null
+      ? tutorialToken!.baseTargetKey(_tutorialEvent!.eventId)
+      : null;
   // Pangea#
 
   bool get canSaveSelectedEvent =>
@@ -700,7 +704,7 @@ class ChatController extends State<ChatPageWithRoom>
     switch (tutorial) {
       case TutorialEnum.readingAssistance:
         final event = _tutorialEvent;
-        final token = _tutorialToken;
+        final token = tutorialToken;
         if (event == null || token == null) return;
         // Hide the toolbar (if open) before re-showing the reading-assistance
         // tutorial which points at the message bubble itself.
@@ -711,7 +715,7 @@ class ChatController extends State<ChatPageWithRoom>
         return;
       case TutorialEnum.selectModeButtons:
         final event = _tutorialEvent;
-        final token = _tutorialToken;
+        final token = tutorialToken;
         if (event == null) return;
         // Re-open the toolbar so SelectModeButtons mounts and picks up the queued tutorial.
         showToolbar(event, bypassBlockingOverlays: true, selectedToken: token);
@@ -729,22 +733,16 @@ class ChatController extends State<ChatPageWithRoom>
   void _launchReadingAssistanceTutorial(Event event, PangeaToken token) {
     inputFocus.unfocus();
     _tutorialEvent = event;
-    _tutorialToken = token;
+    tutorialToken = token;
 
     tutorialOverlayController.launchTutorial(
       context: context,
       tutorial: ReadingAssistantTutorialModel(
         data: [
-          TutorialStepData(targetKey: event.eventId),
           TutorialStepData(
-            targetKey: token.baseTargetKey(event.eventId),
+            targetKey: event.eventId,
             onTap: () async {
-              showToolbar(
-                event,
-                bypassBlockingOverlays: true,
-                selectedToken: token,
-              );
-              await Future.delayed(Duration(milliseconds: 2500));
+              showToolbar(event, bypassBlockingOverlays: true);
             },
           ),
         ],
