@@ -25,25 +25,27 @@ class LanguageDisplayNameWidget extends StatelessWidget {
         style: style,
         children: [
           TextSpan(text: language.getDisplayName(context)),
-          WidgetSpan(
-            child: SizedBox(width: spacing),
-          ), // Add some spacing between the text and the icon
-          WidgetSpan(
-            alignment: PlaceholderAlignment.middle,
-            child: SizedBox(
-              width: iconSize,
-              height: iconSize,
-              child: SvgPicture.network(
-                language.svgUrl.toString(),
-                errorBuilder: (_, _, _) => const SizedBox.shrink(),
-                placeholderBuilder: (_) => Center(
-                  child: const CircularProgressIndicator(strokeWidth: 0.5),
-                ),
+          if (language.isLocalized) ...[
+            WidgetSpan(
+              child: SizedBox(width: spacing),
+            ), // Add some spacing between the text and the icon
+            WidgetSpan(
+              alignment: PlaceholderAlignment.middle,
+              child: SizedBox(
                 width: iconSize,
                 height: iconSize,
+                child: SvgPicture.network(
+                  language.svgUrl.toString(),
+                  errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                  placeholderBuilder: (_) => Center(
+                    child: const CircularProgressIndicator(strokeWidth: 0.5),
+                  ),
+                  width: iconSize,
+                  height: iconSize,
+                ),
               ),
             ),
-          ),
+          ],
         ],
       ),
     );
