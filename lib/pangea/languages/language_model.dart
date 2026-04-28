@@ -382,6 +382,8 @@ class LanguageModel {
   LanguageModel get unlocalized =>
       PLanguageStore.byLangCode(langCodeShort) ?? this;
 
+  bool get isLocalized => langCodeShort != langCode;
+
   static bool search(
     LanguageModel? item,
     String searchValue,
