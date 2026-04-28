@@ -217,6 +217,8 @@ class ChatController extends State<ChatPageWithRoom>
   /// The event used to start the reading-assistance tutorial. Stored so the
   /// tutorial can be re-opened when the user navigates back through the sequence.
   Event? _tutorialEvent;
+  PangeaToken? _tutorialToken;
+
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
   late final ActivityChatController activityController;
   late final TutorialOverlayController tutorialOverlayController;
@@ -666,8 +668,18 @@ class ChatController extends State<ChatPageWithRoom>
 
     if (msgLang != l2) return;
 
+    final newTokens = TokensUtil.instance.getNewTokensByEvent(
+      pangeaMessageEvent,
+    );
+    if (newTokens.isEmpty) return;
+    final newTokenText = newTokens.first;
+    final token = pangeaMessageEvent.originalSent?.tokens?.firstWhereOrNull(
+      (t) => newTokenText == t.text,
+    );
+    if (token == null) return;
+
     WidgetsBinding.instance.addPostFrameCallback(
-      (_) => _startAssistanceTutorialSequence(event),
+      (_) => _startAssistanceTutorialSequence(event, token),
     );
   }
 
@@ -688,19 +700,21 @@ class ChatController extends State<ChatPageWithRoom>
     switch (tutorial) {
       case TutorialEnum.readingAssistance:
         final event = _tutorialEvent;
-        if (event == null) return;
+        final token = _tutorialToken;
+        if (event == null || token == null) return;
         // Hide the toolbar (if open) before re-showing the reading-assistance
         // tutorial which points at the message bubble itself.
         clearSelectedEvents();
         await Future.delayed(FluffyThemes.animationDuration);
         if (!mounted) return;
-        _relaunchReadingAssistanceTutorial(event);
+        _relaunchReadingAssistanceTutorial(event, token);
         return;
       case TutorialEnum.selectModeButtons:
         final event = _tutorialEvent;
+        final token = _tutorialToken;
         if (event == null) return;
         // Re-open the toolbar so SelectModeButtons mounts and picks up the queued tutorial.
-        showToolbar(event, bypassBlockingOverlays: true);
+        showToolbar(event, bypassBlockingOverlays: true, selectedToken: token);
         return;
       case TutorialEnum.writingAssistance:
         // The writing-assistance tutorial starts from the text input which is
@@ -712,17 +726,26 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
-  void _launchReadingAssistanceTutorial(Event event) {
+  void _launchReadingAssistanceTutorial(Event event, PangeaToken token) {
     inputFocus.unfocus();
     _tutorialEvent = event;
+    _tutorialToken = token;
 
     tutorialOverlayController.launchTutorial(
       context: context,
       tutorial: ReadingAssistantTutorialModel(
         data: [
+          TutorialStepData(targetKey: event.eventId),
           TutorialStepData(
-            targetKey: event.eventId,
-            onTap: () async => showToolbar(event, bypassBlockingOverlays: true),
+            targetKey: token.baseTargetKey(event.eventId),
+            onTap: () async {
+              showToolbar(
+                event,
+                bypassBlockingOverlays: true,
+                selectedToken: token,
+              );
+              await Future.delayed(Duration(milliseconds: 2500));
+            },
           ),
         ],
       ),
@@ -745,8 +768,8 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
-  void _relaunchReadingAssistanceTutorial(Event event) {
-    _launchReadingAssistanceTutorial(event);
+  void _relaunchReadingAssistanceTutorial(Event event, PangeaToken token) {
+    _launchReadingAssistanceTutorial(event, token);
   }
 
   String? get currentRoutePath => _router.state.path;
@@ -763,12 +786,12 @@ class ChatController extends State<ChatPageWithRoom>
     return true;
   }
 
-  void _startAssistanceTutorialSequence(Event event) {
+  void _startAssistanceTutorialSequence(Event event, PangeaToken token) {
     if (!_canLaunchTutorialSequence) return;
     if (tutorialOverlayController.isTutorialQueued(
       TutorialEnum.readingAssistance,
     )) {
-      _launchReadingAssistanceTutorial(event);
+      _launchReadingAssistanceTutorial(event, token);
     }
   }
 

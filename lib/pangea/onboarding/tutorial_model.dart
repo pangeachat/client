@@ -43,7 +43,7 @@ class ReadingAssistantTutorialModel extends TutorialModel {
       super(tutorialType: TutorialEnum.readingAssistance, stepsData: data);
 
   @override
-  List<Size> get stepSizes => [Size(250, 120)];
+  List<Size> get stepSizes => [Size(250, 120), Size(250, 120)];
 
   @override
   List<TutorialStepStyle> _stepStyles(L10n l10n) => [
@@ -51,6 +51,12 @@ class ReadingAssistantTutorialModel extends TutorialModel {
       tooltip: l10n.readingAssistanceTutorialClickMessage,
       tooltipSize: stepSizes[0],
       borderRadius: AppConfig.borderRadius,
+    ),
+    TutorialStepStyle(
+      tooltip: l10n.readingAssistanceTutorialCollectToken,
+      tooltipSize: stepSizes[1],
+      borderRadius: 8.0,
+      padding: 4.0,
     ),
   ];
 }

@@ -241,4 +241,13 @@ class PangeaToken {
   }
 
   String get uniqueId => "${text.content}::${text.offset}";
+
+  String baseTargetKey(String eventId) =>
+      "message-token-${text.uniqueKey}-$eventId";
+
+  String overlayTargetKey(String eventId) =>
+      "message-token-${text.uniqueKey}-$eventId-overlay";
+
+  String practiceModeTargetKey(String eventId) =>
+      "message-token-${text.uniqueKey}-$eventId-practice";
 }

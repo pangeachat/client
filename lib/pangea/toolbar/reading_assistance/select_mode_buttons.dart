@@ -258,6 +258,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   }
 
   Future<void> updateMode(SelectMode? mode) async {
+    widget.overlayController.updateSelectedSpan(null);
     if (mode == null) {
       matrix?.audioPlayer?.stop();
       matrix?.audioPlayer?.seek(null);

@@ -3,7 +3,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 enum TutorialEnum {
   readingAssistance(
-    stepCount: 1,
+    stepCount: 2,
     showNavigationButtons: false,
     route: ':roomid',
   ),
