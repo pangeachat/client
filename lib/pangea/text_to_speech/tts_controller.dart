@@ -9,9 +9,9 @@ import 'package:collection/collection.dart';
 import 'package:flutter_tts/flutter_tts.dart' as flutter_tts;
 import 'package:just_audio/just_audio.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pangea/audio/multi_platform_audio_player.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
@@ -38,6 +38,13 @@ class _AudioRequest {
     this.pos,
     this.morph,
   });
+
+  Map<String, dynamic> toJson() => {
+    'text': text,
+    'langCode': langCode,
+    'pos': pos,
+    'morph': morph,
+  };
 
   @override
   bool operator ==(Object other) {
@@ -168,7 +175,7 @@ class TtsController {
     );
     if (_currentRequest != null && _currentRequest != request) {
       _log(
-        'Stop called with different request than current: stopRequest=$request currentRequest=$_currentRequest',
+        'Stop called with different request than current: stopRequest=${request.toJson()} currentRequest=${_currentRequest?.toJson()}',
         'stop-${DateTime.now().millisecondsSinceEpoch}',
       );
       return;
@@ -468,9 +475,13 @@ class TtsController {
       }
       requestPlayer = AudioPlayer();
       audioPlayer = requestPlayer;
-      final blob = html.Blob([audioContent], 'audio/mpeg');
-      final url = html.Url.createObjectUrlFromBlob(blob);
-      await requestPlayer.setAudioSource(AudioSource.uri(Uri.parse(url)));
+      final player = MultiPlatformAudioPlayer(
+        audioPlayer: audioPlayer!,
+        bytes: audioContent,
+        name: 'tts_output_${DateTime.now().millisecondsSinceEpoch}.mp3',
+        mimeType: 'audio/mpeg',
+      );
+      await player.setAudioSource();
       if (!_isCurrentRequestId(requestId)) {
         _log(
           'Choreo source loaded but request was superseded before play',
@@ -478,7 +489,7 @@ class TtsController {
         );
         return false;
       }
-      await requestPlayer.play();
+      await player.play();
       _log('Audio playback from choreo completed', tid);
       return true;
     } catch (e, s) {

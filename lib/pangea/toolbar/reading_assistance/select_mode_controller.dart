@@ -1,10 +1,8 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
-import 'package:path_provider/path_provider.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/lemma_emoji_setter_mixin.dart';
 import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
@@ -41,28 +39,16 @@ class _STTTranslationLoader extends AsyncLoader<String> {
   );
 }
 
-class _AudioLoader extends AsyncLoader<(PangeaAudioFile, File?)> {
+class _AudioLoader extends AsyncLoader<PangeaAudioFile> {
   final PangeaMessageEvent messageEvent;
   _AudioLoader(this.messageEvent) : super();
 
   @override
-  Future<(PangeaAudioFile, File?)> fetch() async {
-    final audioBytes = await messageEvent.requestTextToSpeech(
+  Future<PangeaAudioFile> fetch() async {
+    return messageEvent.requestTextToSpeech(
       messageEvent.messageDisplayLangCode,
       MatrixState.pangeaController.userController.voice,
     );
-
-    File? audioFile;
-    if (!kIsWeb) {
-      final tempDir = await getTemporaryDirectory();
-
-      File? file;
-      file = File('${tempDir.path}/${audioBytes.name}');
-      await file.writeAsBytes(audioBytes.bytes);
-      audioFile = file;
-    }
-
-    return (audioBytes, audioFile);
   }
 }
 
@@ -117,7 +103,7 @@ class SelectModeController with LemmaEmojiSetter {
   ValueNotifier<AsyncState<String>> get speechTranslationState =>
       _sttTranslationLoader.state;
 
-  (PangeaAudioFile, File?)? get audioFile => _audioLoader.value;
+  PangeaAudioFile? get audioFile => _audioLoader.value;
 
   List<SelectMode> allModes({bool enableRefresh = false}) {
     final validTypes = {MessageTypes.Text, MessageTypes.Audio};

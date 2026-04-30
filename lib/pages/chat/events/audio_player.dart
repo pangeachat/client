@@ -1,20 +1,15 @@
 import 'dart:async';
-import 'dart:developer';
-import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:async/async.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:matrix/matrix.dart';
-import 'package:opus_caf_converter_dart/opus_caf_converter_dart.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/pangea/audio/multi_platform_audio_player.dart';
 import 'package:fluffychat/pangea/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
@@ -204,7 +199,9 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     matrix.audioPlayer
       ?..stop()
       ..dispose();
-    File? file;
+    // #Pangea
+    // File? file;
+    // Pangea#
     MatrixFile? matrixFile;
 
     setState(() => status = AudioPlayerStatus.downloading);
@@ -232,45 +229,32 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       );
 
       // #Pangea
-      // if (!kIsWeb) {
-      if (!kIsWeb) {
-        if (matrixFile != null) {
-          // Pangea#
-          final tempDir = await getTemporaryDirectory();
-          final fileName = Uri.encodeComponent(
-            // #Pangea
-            // widget.event.attachmentOrThumbnailMxcUrl()!.pathSegments.last,
-            widget.event!.attachmentOrThumbnailMxcUrl()!.pathSegments.last,
-            // Pangea#
-          );
-          file = File('${tempDir.path}/${fileName}_${matrixFile.name}');
+      // final attachmentUrl = widget.event.attachmentOrThumbnailMxcUrl();
 
-          await file.writeAsBytes(matrixFile.bytes);
+      // if (!kIsWeb && attachmentUrl != null) {
+      //   final tempDir = await getTemporaryDirectory();
+      //   final fileName = Uri.encodeComponent(attachmentUrl.pathSegments.last);
+      //   file = File('${tempDir.path}/${fileName}_${matrixFile.name}');
 
-          if (Platform.isIOS &&
-              matrixFile.mimeType.toLowerCase() == 'audio/ogg') {
-            Logs().v('Convert ogg audio file for iOS...');
-            final convertedFile = File('${file.path}.caf');
-            if (await convertedFile.exists() == false) {
-              OpusCaf().convertOpusToCaf(file.path, convertedFile.path);
-            }
-            file = convertedFile;
-          }
-          // #Pangea
-        } else if (widget.matrixFile != null) {
-          final tempDir = await getTemporaryDirectory();
+      //   await file.writeAsBytes(matrixFile.bytes);
 
-          file = File('${tempDir.path}/${widget.matrixFile!.name}');
-          await file.writeAsBytes(widget.matrixFile!.bytes);
-        }
-        // Pangea#
-      }
-
+      //   if (Platform.isIOS &&
+      //       matrixFile.mimeType.toLowerCase() == 'audio/ogg') {
+      //     Logs().v('Convert ogg audio file for iOS...');
+      //     final convertedFile = File('${file.path}.caf');
+      //     if (await convertedFile.exists() == false) {
+      //       OpusCaf().convertOpusToCaf(file.path, convertedFile.path);
+      //     }
+      //     file = convertedFile;
+      //   }
+      // }
+      // Pangea#
       setState(() {
         status = AudioPlayerStatus.downloaded;
       });
     } catch (e, s) {
       Logs().v('Could not download audio file', e, s);
+      if (!mounted) rethrow;
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
@@ -286,46 +270,33 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     final audioPlayer = matrix.audioPlayer = AudioPlayer();
 
     // #Pangea
-    audioPlayer.setSpeed(playbackSpeed);
-    _onAudioStateChanged?.cancel();
-    _onAudioStateChanged = matrix.audioPlayer!.playerStateStream.listen((
-      state,
-    ) {
-      if (state.processingState == ProcessingState.completed) {
-        matrix.audioPlayer!.stop();
-        matrix.audioPlayer!.seek(Duration.zero);
-      }
-    });
-    // Pangea#
-
-    // #Pangea
     // if (file != null) {
     //   audioPlayer.setFilePath(file.path);
     // } else {
-    //   await audioPlayer.setAudioSource(MatrixFileAudioSource(matrixFile));
+    //   await audioPlayer.setAudioSource(
+    //     AudioSource.uri(
+    //       Uri.dataFromBytes(matrixFile.bytes, mimeType: matrixFile.mimeType),
+    //     ),
+    //   );
     // }
-    if (file != null) {
-      audioPlayer.setFilePath(file.path);
-    } else {
-      try {
-        if (widget.matrixFile != null) {
-          final blob = html.Blob([widget.matrixFile!.bytes], 'audio/mpeg');
-          final url = html.Url.createObjectUrlFromBlob(blob);
-          await audioPlayer.setAudioSource(AudioSource.uri(Uri.parse(url)));
-        } else {
-          final blob = html.Blob([matrixFile!.bytes], 'audio/mpeg');
-          final url = html.Url.createObjectUrlFromBlob(blob);
-          await audioPlayer.setAudioSource(AudioSource.uri(Uri.parse(url)));
-        }
-      } catch (e, _) {
-        debugger(when: kDebugMode);
-      }
-    }
     // Pangea#
+    if (!mounted) return;
 
-    audioPlayer.play().onError(
+    // #Pangea
+    // audioPlayer.play().onError(
+    //   ErrorReporter(context, 'Unable to play audio message').onErrorCallback,
+    // );
+    final fileToPlay = widget.matrixFile ?? matrixFile;
+    final matrixFilePlayer = MultiPlatformAudioPlayer(
+      audioPlayer: audioPlayer,
+      bytes: fileToPlay!.bytes,
+      name: fileToPlay.name,
+      mimeType: fileToPlay.mimeType,
+    );
+    matrixFilePlayer.setAudioSourceAndPlay().onError(
       ErrorReporter(context, 'Unable to play audio message').onErrorCallback,
     );
+    // Pangea#
   }
 
   // #Pangea
