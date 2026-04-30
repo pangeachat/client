@@ -114,7 +114,10 @@ class Choreographer extends ChangeNotifier {
     _choreoRecord = null;
     igcController.clear();
     _resetDebounceTimer();
-    notifyListeners();
+
+    // error service's notification will trigger choreo notification,
+    // so don't make a redundant call to notifyListeners here
+    errorService.resetError();
   }
 
   @override
