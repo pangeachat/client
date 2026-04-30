@@ -331,9 +331,16 @@ class Message extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 12.0),
           child: Center(child: Icon(Icons.check_outlined)),
         ),
-        direction: AppSettings.swipeRightToLeftToReply.value
+        // #Pangea
+        // direction: AppSettings.swipeRightToLeftToReply.value
+        //     ? SwipeDirection.endToStart
+        //     : SwipeDirection.startToEnd,
+        direction: event.room.hasArchivedActivity
+            ? SwipeDirection.none
+            : AppSettings.swipeRightToLeftToReply.value
             ? SwipeDirection.endToStart
             : SwipeDirection.startToEnd,
+        // Pangea#
         onSwipe: (_) => onSwipe(),
         child: Container(
           constraints: const BoxConstraints(
