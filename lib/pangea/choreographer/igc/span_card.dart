@@ -46,10 +46,7 @@ class SpanCardState extends State<SpanCard> {
 
   @override
   void dispose() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      widget.choreographer.igcController.clearActiveMatch();
-    });
-
+    widget.choreographer.igcController.clearActiveMatch();
     scrollController.dispose();
     widget.choreographer.removeListener(_onAssistanceStateChange);
     super.dispose();
