@@ -380,7 +380,7 @@ class _MessageSelectModeContent extends StatelessWidget {
           padding: const EdgeInsets.all(12.0),
           constraints: BoxConstraints(
             minHeight: 40.0,
-            maxWidth: maxWidth,
+            maxWidth: max(minWidth, maxWidth),
             minWidth: minWidth,
           ),
           child: switch (state) {

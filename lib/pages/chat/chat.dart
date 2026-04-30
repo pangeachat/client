@@ -14,10 +14,8 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:matrix/matrix.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -34,6 +32,7 @@ import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_feedback.dart';
+import 'package:fluffychat/pangea/audio/multi_platform_audio_player.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
 import 'package:fluffychat/pangea/chat/chat_banner_controller.dart';
@@ -626,20 +625,14 @@ class ChatController extends State<ChatPageWithRoom>
     final audioFile = await event.getPangeaAudioFile();
     if (audioFile == null) return;
 
-    if (!kIsWeb) {
-      final tempDir = await getTemporaryDirectory();
+    final player = MultiPlatformAudioPlayer(
+      audioPlayer: matrix.audioPlayer!,
+      bytes: audioFile.bytes,
+      name: audioFile.name,
+      mimeType: audioFile.mimeType,
+    );
 
-      File? file;
-      file = File('${tempDir.path}/${audioFile.name}');
-      await file.writeAsBytes(audioFile.bytes);
-      matrix.audioPlayer!.setFilePath(file.path);
-    } else {
-      final blob = html.Blob([audioFile.bytes], 'audio/mpeg');
-      final url = html.Url.createObjectUrlFromBlob(blob);
-      await matrix.audioPlayer!.setAudioSource(AudioSource.uri(Uri.parse(url)));
-    }
-
-    matrix.audioPlayer!.play();
+    await player.setAudioSourceAndPlay();
   }
 
   void _readingAssistanceTutorialListener(SyncUpdate update) {

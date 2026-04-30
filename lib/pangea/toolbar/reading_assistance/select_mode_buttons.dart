@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 
@@ -7,12 +6,12 @@ import 'package:collection/collection.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
-import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pangea/audio/multi_platform_audio_player.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
@@ -24,7 +23,6 @@ import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
-import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -391,10 +389,10 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       return;
     }
 
-    await _reloadAudio();
+    await _reloadAndPlayAudio();
   }
 
-  Future<void> _reloadAudio({Duration? seek}) async {
+  Future<void> _reloadAndPlayAudio({Duration? seek}) async {
     matrix?.audioPlayer?.dispose();
     matrix?.audioPlayer = AudioPlayer();
     matrix?.voiceMessageEventId.value = "${messageEvent.eventId}_button";
@@ -414,18 +412,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
       if (controller.audioFile == null) return;
 
-      final (PangeaAudioFile pangeaAudioFile, File? audioFile) =
-          controller.audioFile!;
-
-      if (audioFile != null) {
-        await matrix?.audioPlayer?.setFilePath(audioFile.path);
-      } else {
-        final blob = html.Blob([pangeaAudioFile.bytes], 'audio/mpeg');
-        final url = html.Url.createObjectUrlFromBlob(blob);
-        await matrix?.audioPlayer?.setAudioSource(
-          AudioSource.uri(Uri.parse(url)),
-        );
-      }
+      final audioFile = controller.audioFile!;
 
       TtsController.forceStop();
 
@@ -433,7 +420,13 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
         matrix!.audioPlayer!.seek(seek);
       }
 
-      await matrix?.audioPlayer?.play();
+      final matrixFilePlayer = MultiPlatformAudioPlayer(
+        audioPlayer: matrix!.audioPlayer!,
+        bytes: audioFile.bytes,
+        name: audioFile.name,
+        mimeType: audioFile.mimeType,
+      );
+      await matrixFilePlayer.setAudioSourceAndPlay();
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -445,10 +438,10 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   }
 
   void _onPlayAudio(Duration duration) {
-    if (controller.audioFile?.$1.tokens != null) {
+    if (controller.audioFile?.tokens != null) {
       widget.overlayController.highlightCurrentText(
         duration.inMilliseconds,
-        controller.audioFile!.$1.tokens!,
+        controller.audioFile!.tokens!,
       );
     }
   }
@@ -470,12 +463,12 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     final token = controller.playTokenNotifier.value.$1;
 
     if (token == null ||
-        controller.audioFile?.$1.tokens == null ||
+        controller.audioFile?.tokens == null ||
         controller.selectedMode.value != SelectMode.audio) {
       return;
     }
 
-    final ttsToken = controller.audioFile!.$1.tokens!.firstWhereOrNull(
+    final ttsToken = controller.audioFile!.tokens!.firstWhereOrNull(
       (t) => t.text == token,
     );
 
@@ -491,7 +484,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       matrix!.audioPlayer!.seek(start);
       matrix!.audioPlayer!.play();
     } else {
-      _reloadAudio(seek: start);
+      _reloadAndPlayAudio(seek: start);
     }
   }
 
