@@ -10,7 +10,7 @@ import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/room_settings_constants.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection.dart';
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
-import 'package:fluffychat/pangea/join_codes/join_code_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/join_codes/share_room_button.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/stream_extension.dart';

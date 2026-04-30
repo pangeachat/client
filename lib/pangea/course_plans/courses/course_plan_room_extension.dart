@@ -18,8 +18,8 @@ import 'package:fluffychat/pangea/course_chats/course_default_chats_enum.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/pangea/course_settings/teacher_mode_model.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
-import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 
 extension CoursePlanRoomExtension on Room {
@@ -104,11 +104,9 @@ extension CoursePlanRoomExtension on Room {
                 ),
               }).toJson(),
             ),
-          await client.pangeaJoinRules(
-            'knock_restricted',
-            allow: [
-              {"type": "m.room_membership", "room_id": id},
-            ],
+          await client.generateCustomJoinRules(
+            JoinRules.knockRestricted,
+            allowRoomId: id,
           ),
         ],
         powerLevelContentOverride: RoomDefaults.defaultPowerLevelsContent,
@@ -210,11 +208,9 @@ extension CoursePlanRoomExtension on Room {
             "${type.alias}_${id.localpart}_${DateTime.now().millisecondsSinceEpoch}",
         initialState: [
           StateEvent(type: EventTypes.RoomAvatar, content: {'url': uploadURL}),
-          await client.pangeaJoinRules(
-            'knock_restricted',
-            allow: [
-              {"type": "m.room_membership", "room_id": id},
-            ],
+          await client.generateCustomJoinRules(
+            JoinRules.knockRestricted,
+            allowRoomId: id,
           ),
         ],
         powerLevelContentOverride: type.powerLevels,

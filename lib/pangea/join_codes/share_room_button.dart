@@ -5,7 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/join_codes/join_code_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/join_codes/share_room_code_util.dart';
 
 class ShareRoomButton extends StatelessWidget {

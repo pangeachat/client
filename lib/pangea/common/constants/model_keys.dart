@@ -15,4 +15,6 @@ class ModelKey {
   static const String lemma = 'lemma';
 
   static const String voice = 'voice';
+
+  static const String joinRule = 'join_rule';
 }

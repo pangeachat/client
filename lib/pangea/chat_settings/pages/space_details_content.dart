@@ -23,7 +23,7 @@ import 'package:fluffychat/pangea/course_settings/course_settings.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
-import 'package:fluffychat/pangea/join_codes/join_code_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/join_codes/share_room_button.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
