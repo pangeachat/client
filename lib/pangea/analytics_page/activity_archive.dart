@@ -55,6 +55,7 @@ class ActivityArchive extends StatelessWidget {
                             reinitialize: analyticsService.reinitialize,
                           )
                         : MaxWidthBody(
+                            showBorder: false,
                             withScrolling: false,
                             child: ListView.builder(
                               key: const PageStorageKey<String>(
