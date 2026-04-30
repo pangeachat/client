@@ -18,8 +18,8 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -314,13 +314,9 @@ class ChatDetailsController extends State<ChatDetails>
         final newRoomId = await Matrix.of(context).client.createPangeaGroupChat(
           groupName,
           initialState: [
-            await Matrix.of(context).client.pangeaJoinRules(
-              'knock_restricted',
-              allow: roomId != null
-                  ? [
-                      {"type": "m.room_membership", "room_id": roomId},
-                    ]
-                  : null,
+            await Matrix.of(context).client.generateCustomJoinRules(
+              JoinRules.knockRestricted,
+              allowRoomId: roomId,
             ),
           ],
           powerLevelContentOverride: RoomDefaults.defaultPowerLevelsContent,

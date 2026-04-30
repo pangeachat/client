@@ -12,7 +12,7 @@ import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selectio
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/join_codes/join_code_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/user/user_search_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -329,7 +329,7 @@ class PangeaInvitationSelectionController
     if (!_room!.canChangeStateEvent(EventTypes.RoomJoinRules)) return;
 
     try {
-      await _room!.addJoinCode();
+      await _room!.generateAndSetJoinCode();
       if (mounted) setState(() {});
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'roomId': _room!.id});

@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/chat_list/widgets/room_invite_dialog.dart';
-import 'package:fluffychat/pangea/join_codes/join_code_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';

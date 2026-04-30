@@ -21,7 +21,7 @@ import 'package:fluffychat/pangea/course_plans/course_activities/activity_summar
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/join_codes/join_code_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';

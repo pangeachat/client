@@ -4,7 +4,7 @@ import 'package:matrix/matrix.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/join_codes/join_code_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 
 enum ShareCodeType { code, link }
 
