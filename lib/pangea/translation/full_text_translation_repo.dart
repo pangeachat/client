@@ -71,7 +71,7 @@ class FullTextTranslationRepo {
       final res = await future;
       return Result.value(res);
     } catch (e, s) {
-      _cache.remove(request.hashCode.toString());
+      _cache.remove(request.storageKey);
       if (e is UnsubscribedException) {
         return Result.error(e);
       } else if (e is ChoreoException) {
@@ -93,13 +93,13 @@ class FullTextTranslationRepo {
       }
     }
 
-    return _cache[request.hashCode.toString()]?.response;
+    return _cache[request.storageKey]?.response;
   }
 
   static void _setCached(
     FullTextTranslationRequestModel request,
     Future<FullTextTranslationResponseModel> response,
-  ) => _cache[request.hashCode.toString()] = _TranslateCacheItem(
+  ) => _cache[request.storageKey] = _TranslateCacheItem(
     response: response,
     timestamp: DateTime.now(),
   );
