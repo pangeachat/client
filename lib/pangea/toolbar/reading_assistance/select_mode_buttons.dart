@@ -11,6 +11,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/audio/multi_platform_audio_player.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
@@ -664,7 +665,9 @@ class _MoreButton extends StatelessWidget {
 
     switch (action) {
       case MessageActions.reply:
-        return events.length == 1 && controller.room.canSendDefaultMessages;
+        return events.length == 1 &&
+            controller.room.canSendDefaultMessages &&
+            !controller.room.hasArchivedActivity;
       case MessageActions.edit:
         return controller.canEditSelectedEvents &&
             !events.first.isActivityMessage &&
