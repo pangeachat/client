@@ -15,12 +15,13 @@ import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_room_details.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
+import 'package:fluffychat/pangea/room_summaries/room_summaries_model.dart';
+import 'package:fluffychat/pangea/room_summaries/room_summaries_repo.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -55,16 +56,25 @@ class ChatDetails extends StatefulWidget {
 // #Pangea
 // class ChatDetailsController extends State<ChatDetails> {
 class ChatDetailsController extends State<ChatDetails>
-    with ActivitySummariesProvider, CoursePlanProvider, ChatDownloadProvider {
+    with CoursePlanProvider, ChatDownloadProvider {
   bool loadingCourseInfo = true;
   bool loadingCourseSummary = true;
 
   // listen to language updates to refresh course info
   StreamSubscription? _languageSubscription;
 
+  late CourseInfoSummariesModel roomSummariesModel;
+
   @override
   void initState() {
     super.initState();
+
+    final room = Matrix.of(context).client.getRoomById(widget.roomId);
+    roomSummariesModel = CourseInfoSummariesModel(
+      {},
+      activitiesToCompleteOverride: room?.teacherMode.activitiesToUnlockTopic,
+    );
+
     _loadCourseInfo();
     _loadSummaries();
 
@@ -79,7 +89,6 @@ class ChatDetailsController extends State<ChatDetails>
           }
         });
 
-    final room = Matrix.of(context).client.getRoomById(widget.roomId);
     if (room?.isSpace == true) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) Matrix.of(context).showEnableNotificationsDialog(context);
@@ -376,12 +385,23 @@ class ChatDetailsController extends State<ChatDetails>
 
   Future<void> _loadSummaries() async {
     try {
-      final room = Matrix.of(context).client.getRoomById(roomId!);
+      final client = Matrix.of(context).client;
+      final room = client.getRoomById(roomId!);
       if (room == null || !room.isSpace) return;
 
       if (mounted) setState(() => loadingCourseSummary = true);
-      await loadRoomSummaries(
-        room.spaceChildren.map((c) => c.roomId).whereType<String>().toList(),
+      final roomSummariesRepo = RoomSummariesRepo(client);
+      final roomIds = room.spaceChildren
+          .map((c) => c.roomId)
+          .whereType<String>()
+          .toList();
+
+      final roomSummariesResponse = await roomSummariesRepo.loadRoomSummaries(
+        roomIds,
+      );
+      roomSummariesModel = CourseInfoSummariesModel(
+        roomSummariesResponse,
+        activitiesToCompleteOverride: room.teacherMode.activitiesToUnlockTopic,
       );
     } catch (e, s) {
       ErrorHandler.logError(

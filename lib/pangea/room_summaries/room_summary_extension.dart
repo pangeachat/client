@@ -9,6 +9,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 
@@ -108,6 +109,50 @@ class RoomSummaryResponse {
   int get joinedMemberCount => membershipSummary.values
       .where((membership) => membership == Membership.join.name)
       .length;
+
+  bool get isStarted {
+    if (isFinished) return true;
+    final activityPlan = this.activityPlan;
+    if (activityPlan == null) return false;
+    return activityPlan.roles.length - joinedUsersWithRoles.length <= 0;
+  }
+
+  bool get isFinished {
+    final activityRoles = this.activityRoles;
+    if (activityRoles == null) return false;
+    final roles = activityRoles.roles.values.where(
+      (r) => r.userId != BotName.byEnvironment,
+    );
+
+    if (roles.isEmpty) return false;
+    if (!roles.any((r) => r.isFinished)) return false;
+
+    return roles.every((r) {
+      if (r.isFinished) return true;
+
+      // if the user is in the chat (not null && membership is join),
+      // then the activity is not finished for them
+      final membership = getMembershipForUserId(r.userId);
+      return membership == null || membership != Membership.join;
+    });
+  }
+
+  bool isActivityInstance(String activityId) =>
+      activityPlan?.activityId == activityId;
+
+  bool get isActivityOpenToJoin {
+    if (activityPlan?.activityId == null) return false;
+
+    // if room has no members, attempting to join will cause error, so we consider it not open
+    if (membershipSummary.isEmpty) return false;
+    return !isStarted;
+  }
+
+  bool isCompleteByUserId(String userID) =>
+      activityRoles?.roles.values.any(
+        (v) => v.userId == userID && v.isArchived,
+      ) ==
+      true;
 
   factory RoomSummaryResponse.fromJson(Map<String, dynamic> json) {
     final planEntry =

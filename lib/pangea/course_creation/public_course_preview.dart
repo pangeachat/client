@@ -6,13 +6,13 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/chat_settings/utils/room_summary_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_creation/public_course_preview_view.dart';
-import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
+import 'package:fluffychat/pangea/room_summaries/room_summaries_repo.dart';
+import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -28,7 +28,7 @@ class PublicCoursePreview extends StatefulWidget {
 }
 
 class PublicCoursePreviewController extends State<PublicCoursePreview>
-    with CoursePlanProvider, ActivitySummariesProvider {
+    with CoursePlanProvider {
   RoomSummaryResponse? roomSummary;
   Object? roomSummaryError;
   bool loadingRoomSummary = false;
@@ -55,7 +55,8 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
 
   Future<void> _loadSummary() async {
     try {
-      if (widget.roomID == null) {
+      final roomID = widget.roomID;
+      if (roomID == null) {
         throw Exception("roomID is required");
       }
 
@@ -64,12 +65,18 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
         roomSummaryError = null;
       });
 
-      await loadRoomSummaries([widget.roomID!]);
-      if (roomSummaries == null || !roomSummaries!.containsKey(widget.roomID)) {
+      final roomIds = [roomID];
+      final roomSummariesRepo = RoomSummariesRepo(Matrix.of(context).client);
+      final roomSummariesResponse = await roomSummariesRepo.loadRoomSummaries(
+        roomIds,
+      );
+
+      final roomSummary = roomSummariesResponse[roomID];
+      if (roomSummary == null) {
         throw Exception("Room summary not found");
       }
 
-      roomSummary = roomSummaries![widget.roomID];
+      this.roomSummary = roomSummary;
     } catch (e, s) {
       roomSummaryError = e;
       loadingCourse = false;
