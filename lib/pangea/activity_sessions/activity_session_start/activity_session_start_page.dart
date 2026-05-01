@@ -13,16 +13,18 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_sessions_start_view.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/bot_join_error_dialog.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
-import 'package:fluffychat/pangea/chat_settings/utils/room_summary_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
-import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_request.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
+import 'package:fluffychat/pangea/room_summaries/activity_sessions_status_model.dart';
+import 'package:fluffychat/pangea/room_summaries/room_summaries_model.dart';
+import 'package:fluffychat/pangea/room_summaries/room_summaries_repo.dart';
+import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -63,8 +65,7 @@ class ActivitySessionStartPage extends StatefulWidget {
       ActivitySessionStartController();
 }
 
-class ActivitySessionStartController extends State<ActivitySessionStartPage>
-    with ActivitySummariesProvider {
+class ActivitySessionStartController extends State<ActivitySessionStartPage> {
   ActivityPlanModel? activity;
 
   bool loading = true;
@@ -74,11 +75,19 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   String? _selectedRoleId;
 
   Timer? _pingCooldown;
+
+  late ActivitySessionSummariesModel _roomSummariesModel;
   final ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
+
+    _roomSummariesModel = ActivitySessionSummariesModel(
+      {},
+      activityId: widget.activityId,
+    );
+
     _load();
   }
 
@@ -115,6 +124,10 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
         (p) => p.id == BotName.byEnvironment,
       ) ??
       false;
+
+  RoomSummaryResponse? get _loadedRoomSummary => widget.roomId != null
+      ? _roomSummariesModel.getRoomSummary(widget.roomId!)
+      : null;
 
   SessionState get state {
     // the room exists and user has set their role
@@ -171,7 +184,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     if (activityRoom != null && activityRoom!.membership == Membership.join) {
       return activityRoom!.assignedRoles ?? {};
     }
-    return roomSummaries?[widget.roomId]?.joinedUsersWithRoles ?? {};
+    return _loadedRoomSummary?.joinedUsersWithRoles ?? {};
   }
 
   bool get canSelectRole {
@@ -189,7 +202,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     final availableRoles = activity!.roles;
     final assignedRoles =
         activityRoom?.assignedRoles ??
-        roomSummaries?[widget.roomId]?.joinedUsersWithRoles ??
+        _loadedRoomSummary?.joinedUsersWithRoles ??
         {};
     final unassignedIds = availableRoles.keys
         .where((id) => !assignedRoles.containsKey(id))
@@ -205,7 +218,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     final availableRoles = activity!.roles;
     final assignedRoles =
         activityRoom?.assignedRoles ??
-        roomSummaries?[widget.roomId]?.activityRoles?.roles ??
+        _loadedRoomSummary?.activityRoles?.roles ??
         {};
     final unassignedIds = availableRoles.keys
         .where((id) => !assignedRoles.containsKey(id))
@@ -222,7 +235,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
 
   bool get canJoinExistingSession {
     if (activityRoom != null) return false;
-    return numOpenSessions(widget.activityId) > 0;
+    return _roomSummariesModel.openSessions.isNotEmpty;
   }
 
   String? get joinedActivityRoomId =>
@@ -249,8 +262,8 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     );
   }
 
-  Map<ActivitySummaryStatus, Map<String, RoomSummaryResponse>>
-  get activityStatuses => activitySessionStatuses(widget.activityId);
+  ActivitySessionsStatusModel get activityStatuses =>
+      _roomSummariesModel.activitySessionStatuses;
 
   void toggleInstructions() {
     setState(() {
@@ -339,7 +352,14 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     }
 
     if (roomIds.isEmpty) return;
-    await loadRoomSummaries(roomIds.toList());
+    final roomSummariesRepo = RoomSummariesRepo(Matrix.of(context).client);
+    final roomSummariesResponse = await roomSummariesRepo.loadRoomSummaries(
+      roomIds.toList(),
+    );
+    _roomSummariesModel = ActivitySessionSummariesModel(
+      roomSummariesResponse,
+      activityId: widget.activityId,
+    );
   }
 
   Future<void> _loadActivity() async {
@@ -452,7 +472,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       throw Exception("No existing session to join");
     }
 
-    final sessionIds = openSessions(widget.activityId);
+    final sessionIds = _roomSummariesModel.openSessions;
     String? joinedSessionId;
     for (final sessionId in sessionIds) {
       try {
