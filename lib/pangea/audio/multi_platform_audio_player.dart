@@ -24,6 +24,7 @@ class MultiPlatformAudioPlayer {
     await audioPlayer.processingStateStream.firstWhere(
       (state) =>
           state == ProcessingState.completed || state == ProcessingState.idle,
+      orElse: () => ProcessingState.idle,
     );
   }
 
