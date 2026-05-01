@@ -244,7 +244,6 @@ class NewCoursePageState extends State<NewCoursePage> {
       body: SafeArea(
         child: Center(
           child: Container(
-            padding: const EdgeInsets.all(20.0),
             constraints: const BoxConstraints(maxWidth: 450),
             child: Column(
               children: [
