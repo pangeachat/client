@@ -20,6 +20,7 @@ import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extensio
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import '../activity_summary/activity_summary_repo.dart';
 
 class RoleException implements Exception {
@@ -260,6 +261,17 @@ extension ActivityRoomExtension on Room {
       }
     }
 
+    // Resolve the viewer's L1 from their profile so the choreographer
+    // generates the response in the viewer's language. Server falls back
+    // to activity.req.language_of_instructions when absent.
+    // See pangeachat/.github .github/instructions/activity-summary.instructions.md.
+    final viewerL1 = MatrixState
+        .pangeaController
+        .userController
+        .profile
+        .userSettings
+        .sourceLanguage;
+
     try {
       final resp = await ActivitySummaryRepo.get(
         id,
@@ -268,6 +280,7 @@ extension ActivityRoomExtension on Room {
           activityResults: messages,
           contentFeedback: [],
           roleState: activityRoles,
+          viewerL1: viewerL1,
         ),
       );
 
