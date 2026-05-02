@@ -22,15 +22,26 @@ class ActivitySummaryRepo {
   static final Map<String, _ActivitySummaryCacheItem> _cache = {};
   static const Duration cacheDuration = Duration(minutes: 10);
 
-  static String _storageKey(String roomId, ActivityPlanModel activity) {
-    return '${roomId}_${activity.hashCode}';
+  /// Local cache key. Includes `viewerL1` so two L1-different viewers in
+  /// the same room do not collide on cache — the choreographer returns
+  /// different responses per viewer (group summary in viewer's L1).
+  static String _storageKey(
+    String roomId,
+    ActivityPlanModel activity,
+    String? viewerL1,
+  ) {
+    return '${roomId}_${activity.hashCode}_${viewerL1 ?? "default"}';
   }
 
   static Future<ActivitySummaryResponseModel> get(
     String roomId,
     ActivitySummaryRequestModel request,
   ) async {
-    final storageKey = _storageKey(roomId, request.activity);
+    final storageKey = _storageKey(
+      roomId,
+      request.activity,
+      request.viewerL1,
+    );
     final cached = _cache[storageKey];
     if (cached != null) {
       return _cache[storageKey]!.completer.future;
@@ -69,7 +80,11 @@ class ActivitySummaryRepo {
   }
 
   static void delete(String roomId, ActivityPlanModel activity) async {
-    final storageKey = _storageKey(roomId, activity);
-    _cache.remove(storageKey);
+    // Cache keys now include viewerL1 — clear every viewer's entry for
+    // this (room, activity) on invalidation. In practice only one viewer
+    // ever runs in a single client process, but the prefix sweep is
+    // robust against any future fan-out.
+    final prefix = '${roomId}_${activity.hashCode}_';
+    _cache.removeWhere((key, _) => key.startsWith(prefix));
   }
 }

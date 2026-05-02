@@ -20,6 +20,7 @@ import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extensio
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import '../activity_summary/activity_summary_repo.dart';
 
 class RoleException implements Exception {
@@ -260,6 +261,34 @@ extension ActivityRoomExtension on Room {
       }
     }
 
+    // Resolve the viewer's L1 from their profile and per-participant L1s
+    // from each room member's public analytics profile. Sent on the request
+    // so the choreographer localizes the group summary to the viewer and
+    // each participant's feedback to their own L1, regardless of activity
+    // localization. See pangeachat/.github
+    // .github/instructions/activity-summary.instructions.md.
+    final viewerL1 = MatrixState
+        .pangeaController
+        .userController
+        .profile
+        .userSettings
+        .sourceLanguage;
+
+    final nonBotParticipants = getParticipants().where(
+      (p) => p.id != BotName.byEnvironment,
+    );
+    final l1Lookups = nonBotParticipants.map((p) async {
+      final analyticsProfile = await MatrixState
+          .pangeaController
+          .userController
+          .getPublicAnalyticsProfile(p.id);
+      final l1 = analyticsProfile.baseLanguage?.langCodeShort;
+      return l1 != null ? ParticipantL1(userId: p.id, l1: l1) : null;
+    });
+    final participantsL1 = (await Future.wait(l1Lookups))
+        .whereType<ParticipantL1>()
+        .toList();
+
     try {
       final resp = await ActivitySummaryRepo.get(
         id,
@@ -268,6 +297,8 @@ extension ActivityRoomExtension on Room {
           activityResults: messages,
           contentFeedback: [],
           roleState: activityRoles,
+          viewerL1: viewerL1,
+          participantsL1: participantsL1.isNotEmpty ? participantsL1 : null,
         ),
       );
 
