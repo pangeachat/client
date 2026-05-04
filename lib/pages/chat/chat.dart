@@ -2603,7 +2603,6 @@ class ChatController extends State<ChatPageWithRoom>
 
     if (!isSpanCardOpen) {
       OverlayUtil.showIGCMatch(
-        matchToShow,
         choreographer,
         context,
         onWritingAssistanceFeedback,
@@ -2653,6 +2652,10 @@ class ChatController extends State<ChatPageWithRoom>
     feedback == null
         ? await choreographer.requestWritingAssistance(manual: manual)
         : await choreographer.rerunWithFeedback(feedback);
+
+    Logs().w(
+      "Reran with feedback: $feedback. Assistance state: ${choreographer.assistanceState}",
+    );
 
     if (choreographer.assistanceState == AssistanceStateEnum.fetched) {
       showNextMatch();

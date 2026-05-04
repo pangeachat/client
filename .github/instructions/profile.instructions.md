@@ -11,7 +11,7 @@ How profile settings are structured, stored, propagated, and surfaced to other u
 `Profile` (in [user_model.dart](lib/pangea/user/user_model.dart)) is the top-level container. It wraps three sub-models:
 
 - **`UserSettings`** — learning prefs: target/source language, CEFR level, gender, voice, country, about, etc.
-- **`UserToolSettings`** — per-tool on/off toggles (interactive translator, grammar, immersion mode, definitions, auto-IGC, autocorrect, TTS).
+- **`UserToolSettings`** — per-tool on/off toggles (interactive translator, grammar, immersion mode, definitions, auto-WA, autocorrect, TTS).
 - **`InstructionSettings`** — which instructional tooltips the user has dismissed.
 
 A separate **`PublicProfileModel`** (in [public_profile_model.dart](lib/pangea/user/public_profile_model.dart)) holds data visible to other users: analytics level/XP per language, country, and about. It lives on the Matrix user profile (public), not in account data.
@@ -34,7 +34,7 @@ A separate **`PublicProfileModel`** (in [public_profile_model.dart](lib/pangea/u
 ### Full settings UI (opens `SettingsLearning`)
 
 1. **Settings page → Learning** — full-page at `/settings/learning`
-2. **IGC button long-press** — modal dialog from the writing-assistance button in the chat input
+2. **Writing-assistance button long-press** — modal dialog from the writing-assistance button in the chat input
 3. **IT bar gear icon** — modal dialog from the interactive translation bar
 4. **Analytics language indicator** — modal dialog from the language-pair chip (e.g. "EN → ES") on the learning progress widget
 

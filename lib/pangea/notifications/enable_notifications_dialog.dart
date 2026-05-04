@@ -62,12 +62,12 @@ class EnableNotificationsDialog extends StatelessWidget {
                     onPressed: () => Navigator.of(
                       context,
                     ).pop<OkCancelResult>(OkCancelResult.ok),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    child: Wrap(
                       children: [
                         Text(
                           l10n.enableNotifications,
                           style: Theme.of(context).textTheme.bodyLarge,
+                          textAlign: TextAlign.center,
                         ),
                       ],
                     ),

@@ -46,6 +46,9 @@ class CourseTopicModel {
           .map((e) => e.mediaIds.length)
           .fold(0, (a, b) => a + b);
 
+  int get activitiesToComplete =>
+      activityRoleCounts.entries.where((e) => e.value <= 2).length;
+
   List<String> get loadedLocationMediaIds => loadedLocations.locations
       .map(
         (location) => CourseLocationMediaRepo.getCached(

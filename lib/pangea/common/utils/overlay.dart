@@ -11,7 +11,6 @@ import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart'
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
-import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_card.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/widgets/anchored_overlay_widget.dart';
@@ -226,7 +225,6 @@ class OverlayUtil {
   }
 
   static void showIGCMatch(
-    PangeaMatchState match,
     Choreographer choreographer,
     BuildContext context,
     Future Function(String) onFeedbackSubmitted,

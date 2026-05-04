@@ -103,23 +103,17 @@ class CourseSettingsState extends State<CourseSettings> {
     final double descFontSize = isColumnMode ? 12.0 : 8.0;
     final double iconSize = isColumnMode ? 16.0 : 12.0;
 
-    final activeTopicId = controller.currentTopicId(
+    final activeTopicId = controller.roomSummariesModel.currentTopicIdByUser(
       Matrix.of(context).client.userID!,
       controller.course!,
-      room.teacherMode.activitiesToUnlockTopic,
     );
 
     final int? topicIndex = activeTopicId == null
         ? null
         : controller.course!.topicIds.indexOf(activeTopicId);
 
-    final Map<String, List<User>> userTopics = controller.loadingCourseInfo
-        ? {}
-        : controller.topicsToUsers(
-            room,
-            controller.course!,
-            room.teacherMode.activitiesToUnlockTopic,
-          );
+    final Map<String, List<User>> userTopics = controller.roomSummariesModel
+        .currentTopicIdsToUsers(room.getParticipants(), controller.course!);
 
     final teacherMode = room.isTeacherMode;
 
@@ -247,7 +241,8 @@ class CourseSettingsState extends State<CourseSettings> {
                       TopicActivitiesList(
                         room: room,
                         topic: topic,
-                        hasCompletedActivity: controller.hasCompletedActivity,
+                        hasCompletedActivity:
+                            controller.roomSummariesModel.hasCompletedActivity,
                         height: isColumnMode ? 290.0 : 210.0,
                       ),
                   ],

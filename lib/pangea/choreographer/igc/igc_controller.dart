@@ -35,7 +35,9 @@ class IgcController {
   StreamController<PangeaMatchState> matchUpdateStream =
       StreamController.broadcast();
 
-  ValueNotifier<PangeaMatchState?> activeMatch = ValueNotifier(null);
+  final ValueNotifier<PangeaMatchState?> _activeMatch = ValueNotifier(null);
+
+  ValueNotifier<PangeaMatchState?> get activeMatch => _activeMatch;
 
   String? get currentText => _currentText;
 
@@ -76,7 +78,7 @@ class IgcController {
 
   void dispose() {
     matchUpdateStream.close();
-    activeMatch.dispose();
+    _activeMatch.dispose();
   }
 
   void clear() {
@@ -109,10 +111,10 @@ class IgcController {
     if (match.updatedMatch.status == PangeaMatchStatusEnum.open) {
       updateMatchStatus(match, PangeaMatchStatusEnum.viewed);
     }
-    activeMatch.value = match;
+    _activeMatch.value = match;
   }
 
-  void clearActiveMatch() => activeMatch.value = null;
+  void clearActiveMatch() => _activeMatch.value = null;
 
   PangeaMatchState? getMatchByOffset(int offset) => matches.firstWhereOrNull(
     (match) => match.updatedMatch.match.isOffsetInMatchSpan(offset),

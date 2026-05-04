@@ -46,10 +46,7 @@ class SpanCardState extends State<SpanCard> {
 
   @override
   void dispose() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      widget.choreographer.igcController.clearActiveMatch();
-    });
-
+    widget.choreographer.igcController.clearActiveMatch();
     scrollController.dispose();
     widget.choreographer.removeListener(_onAssistanceStateChange);
     super.dispose();
@@ -157,13 +154,20 @@ class SpanCardState extends State<SpanCard> {
                         onPressed: widget.close,
                       ),
                       Expanded(
-                        child: Text(
-                          match.updatedMatch.match.type.displayName(context),
-                          textAlign: TextAlign.center,
-                          style: theme.textTheme.headlineSmall?.merge(
-                            TextStyle(
-                              fontWeight: FontWeight.w700,
-                              color: theme.colorScheme.primary,
+                        child: Center(
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.vertical,
+                            child: Text(
+                              match.updatedMatch.match.type.displayName(
+                                context,
+                              ),
+                              textAlign: TextAlign.center,
+                              style: theme.textTheme.titleLarge?.merge(
+                                TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: theme.colorScheme.primary,
+                                ),
+                              ),
                             ),
                           ),
                         ),

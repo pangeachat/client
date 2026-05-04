@@ -17,13 +17,14 @@ import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_view.dart';
 import 'package:fluffychat/pangea/course_chats/course_default_chats_enum.dart';
 import 'package:fluffychat/pangea/course_chats/extended_space_rooms_chunk.dart';
-import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
+import 'package:fluffychat/pangea/room_summaries/room_summaries_repo.dart';
+import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -47,8 +48,7 @@ class CourseChats extends StatefulWidget {
   State<CourseChats> createState() => CourseChatsController();
 }
 
-class CourseChatsController extends State<CourseChats>
-    with ActivitySummariesProvider, CoursePlanProvider {
+class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
   String get roomId => widget.roomId;
   Room? get room => widget.client.getRoomById(widget.roomId);
 
@@ -58,8 +58,12 @@ class CourseChatsController extends State<CourseChats>
   bool noMoreRooms = false;
   bool isLoading = false;
 
+  Map<String, RoomSummaryResponse> _roomSummaries = {};
+
   @override
   void initState() {
+    super.initState();
+
     loadHierarchy(reload: true).then((_) => _joinDefaultChats());
 
     // Listen for changes to the activeSpace's hierarchy,
@@ -68,7 +72,6 @@ class CourseChatsController extends State<CourseChats>
     _roomSubscription = widget.client.onSync.stream
         .where(_hasHierarchyUpdate)
         .listen((update) => loadHierarchy(reload: true));
-    super.initState();
   }
 
   @override
@@ -117,7 +120,7 @@ class CourseChatsController extends State<CourseChats>
       .toList();
 
   Map<String, List<ExtendedSpaceRoomsChunk>> discoveredActivities() {
-    if (discoveredChildren == null || roomSummaries == null) return {};
+    if (discoveredChildren == null) return {};
     final Map<String, List<ExtendedSpaceRoomsChunk>> sessionsMap = {};
 
     final validIDs = course?.activityIDs ?? {};
@@ -126,7 +129,7 @@ class CourseChatsController extends State<CourseChats>
         continue;
       }
 
-      final summary = roomSummaries?[chunk.roomId];
+      final summary = _roomSummaries[chunk.roomId];
       if (summary == null) {
         continue;
       }
@@ -213,21 +216,18 @@ class CourseChatsController extends State<CourseChats>
   }
 
   Future<void> loadHierarchy({bool reload = false}) async {
-    final room = widget.client.getRoomById(widget.roomId);
+    final client = Matrix.of(context).client;
+    final room = client.getRoomById(widget.roomId);
     if (room == null) return;
 
     if (mounted) setState(() => isLoading = true);
 
     try {
       await _loadHierarchy(activeSpace: room, reload: reload);
+
       if (mounted) {
         final futures = [
-          loadRoomSummaries(
-            room.spaceChildren
-                .map((c) => c.roomId)
-                .whereType<String>()
-                .toList(),
-          ),
+          _loadRoomSummaries(),
           if (room.coursePlan?.uuid != null) loadCourse(room.coursePlan!.uuid),
         ];
         await Future.wait(futures);
@@ -250,6 +250,23 @@ class CourseChatsController extends State<CourseChats>
         setState(() => isLoading = false);
       }
     }
+  }
+
+  Future<void> _loadRoomSummaries() async {
+    final client = Matrix.of(context).client;
+    final room = client.getRoomById(widget.roomId);
+    if (room == null) return;
+
+    final roomIds = room.spaceChildren
+        .map((c) => c.roomId)
+        .whereType<String>()
+        .toList();
+
+    final roomSummariesRepo = RoomSummariesRepo(client);
+    final roomSummariesResponse = await roomSummariesRepo.loadRoomSummaries(
+      roomIds,
+    );
+    _roomSummaries = roomSummariesResponse;
   }
 
   /// Internal logic of loadHierarchy. It will load the hierarchy of
