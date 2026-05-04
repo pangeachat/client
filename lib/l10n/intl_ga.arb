@@ -4217,7 +4217,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-05-04 09:24:21.653607",
+    "@@last_modified": "2026-05-04 12:42:21.848794",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10964,6 +10964,11 @@
     },
     "moreOptions": "Níos mó roghanna",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Bear cartoonach buí le a lámha ardaithe i gciont.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-05-04 09:24:00.676407",
+    "@@last_modified": "2026-05-04 12:41:56.555152",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11293,6 +11293,11 @@
     },
     "moreOptions": "خيارات أكثر",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "دب أصفر كرتوني يرفع ذراعيه في حماس.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

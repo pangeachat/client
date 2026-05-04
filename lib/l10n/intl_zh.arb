@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-05-04 09:24:06.910961",
+    "@@last_modified": "2026-05-04 12:42:08.248485",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10953,6 +10953,11 @@
     },
     "moreOptions": "更多选项",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "一只卡通风格的黄色熊，兴奋地举起双臂。",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

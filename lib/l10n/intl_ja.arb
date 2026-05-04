@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-05-04 09:24:17.270108",
+    "@@last_modified": "2026-05-04 12:42:15.726781",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11821,6 +11821,11 @@
     },
     "moreOptions": "さらにオプション",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "興奮して腕を上げた漫画風の黄色いクマ。",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 09:24:07.835125",
+    "@@last_modified": "2026-05-04 12:42:09.333594",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -11668,6 +11668,11 @@
     },
     "moreOptions": "আরও বিকল্প",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "একটি কার্টুনের মতো হলুদ ভালুক যার হাত উত্তেজনায় উঁচু করা হয়েছে।",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

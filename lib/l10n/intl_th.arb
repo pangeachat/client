@@ -3646,7 +3646,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-05-04 09:23:56.569280",
+    "@@last_modified": "2026-05-04 12:41:49.097395",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11672,6 +11672,11 @@
     },
     "moreOptions": "ตัวเลือกเพิ่มเติม",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "หมีการ์ตูนสีเหลืองที่ยกแขนขึ้นด้วยความตื่นเต้น",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

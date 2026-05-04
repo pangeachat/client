@@ -3462,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-05-04 09:24:06.196167",
+    "@@last_modified": "2026-05-04 12:42:06.967010",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10625,6 +10625,11 @@
     },
     "moreOptions": "Moro opci",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "A cartoonish yellow bear with its arms raised in excitement.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

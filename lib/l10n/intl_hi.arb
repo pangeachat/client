@@ -3646,7 +3646,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-05-04 09:24:17.868005",
+    "@@last_modified": "2026-05-04 12:42:16.736738",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11672,6 +11672,11 @@
     },
     "moreOptions": "अधिक विकल्प",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "एक कार्टून जैसा पीला भालू जो उत्साह में अपने हाथ उठाए हुए है।",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }
