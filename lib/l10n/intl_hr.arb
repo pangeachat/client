@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-04-27 14:43:29.952296",
+    "@@last_modified": "2026-05-04 12:41:31.476727",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11432,6 +11432,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Više opcija",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Kartonasti žuti medvjed s podignutim rukama u uzbuđenju.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

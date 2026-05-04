@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:44:15.890030",
+    "@@last_modified": "2026-05-04 12:42:04.161394",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6963,6 +6963,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Nhiều tùy chọn",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Một con gấu màu vàng hoạt hình với đôi tay giơ lên trong sự phấn khích.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

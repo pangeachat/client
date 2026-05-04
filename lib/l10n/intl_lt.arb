@@ -3514,7 +3514,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-04-27 14:44:14.046722",
+    "@@last_modified": "2026-05-04 12:42:01.496354",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11834,6 +11834,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Daugiau parinkčių",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Kartoninis geltonas lokys su pakeltomis rankomis džiaugsmu.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

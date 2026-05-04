@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:44:01.957326",
+    "@@last_modified": "2026-05-04 12:41:51.446817",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -11078,6 +11078,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "更多選項",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "一隻卡通風格的黃色熊，興奮地舉起雙臂。",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

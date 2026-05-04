@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-04-27 14:44:39.380476",
+    "@@last_modified": "2026-05-04 12:42:18.765124",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11962,6 +11962,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Больше опций",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Мультяшный жёлтый медведь с поднятыми в восторге руками.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

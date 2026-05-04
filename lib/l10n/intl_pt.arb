@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:43:40.130646",
+    "@@last_modified": "2026-05-04 12:41:36.392208",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -12066,6 +12066,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Mais opções",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Um urso amarelo em estilo de desenho animado com os braços levantados em empolgação.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

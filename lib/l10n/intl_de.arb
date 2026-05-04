@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-04-27 14:43:43.629744",
+    "@@last_modified": "2026-05-04 12:41:38.544942",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10927,6 +10927,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Weitere Optionen",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Ein cartoonartiger gelber Bär mit erhobenen Armen vor Aufregung.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

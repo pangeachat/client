@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:43:56.527193",
+    "@@last_modified": "2026-05-04 12:41:47.559190",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -11099,6 +11099,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Més opcions",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Un ós groc de dibuix animat amb els braços alçats d'emoció.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

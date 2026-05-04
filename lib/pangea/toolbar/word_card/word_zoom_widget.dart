@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
+import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/common/widgets/word_audio_button.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
@@ -35,6 +37,8 @@ class WordZoomWidget extends StatelessWidget {
   final Map<String, String>? morph;
 
   final bool enableEmojiSelection;
+  final bool enableEmojiReactions;
+
   final Function(LemmaInfoResponse, PTRequest, PTResponse)? onFlagTokenInfo;
   final ValueNotifier<int>? reloadNotifier;
   final double? maxWidth;
@@ -49,6 +53,7 @@ class WordZoomWidget extends StatelessWidget {
     this.event,
     this.morph,
     this.enableEmojiSelection = true,
+    this.enableEmojiReactions = true,
     this.onFlagTokenInfo,
     this.reloadNotifier,
     this.maxWidth,
@@ -113,7 +118,14 @@ class WordZoomWidget extends StatelessWidget {
                                   )
                                 : const SizedBox(width: 40.0, height: 40.0),
                             Flexible(
-                              child: SelectionArea(
+                              child: InkWell(
+                                onTap: () =>
+                                    AnalyticsNavigationUtil.navigateToAnalytics(
+                                      context: context,
+                                      view: ProgressIndicatorEnum.wordsUsed,
+                                      construct: construct,
+                                    ),
+                                borderRadius: BorderRadius.circular(8.0),
                                 child: Container(
                                   constraints: const BoxConstraints(
                                     minHeight: 40.0,
@@ -137,7 +149,6 @@ class WordZoomWidget extends StatelessWidget {
                                 ),
                               ),
                             ),
-
                             onFlagTokenInfo != null
                                 ? TokenFeedbackButton(
                                     textLanguage:
@@ -182,7 +193,8 @@ class WordZoomWidget extends StatelessWidget {
                               constructId: construct,
                               langCode: langCode,
                               event: event,
-                              enabled: enableEmojiSelection,
+                              enableSelection: enableEmojiSelection,
+                              enableReactions: enableEmojiReactions,
                               form: token.content,
                             ),
                             LemmaMeaningDisplay(

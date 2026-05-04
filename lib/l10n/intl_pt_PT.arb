@@ -3045,7 +3045,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-04-27 14:44:00.106034",
+    "@@last_modified": "2026-05-04 12:41:50.016460",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12024,6 +12024,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Mais opções",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Um urso amarelo em estilo de desenho animado com os braços levantados em empolgação.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

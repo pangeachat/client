@@ -4202,7 +4202,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-04-27 14:43:54.374459",
+    "@@last_modified": "2026-05-04 12:41:46.268011",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10962,6 +10962,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Больш магчымасцяў",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Мультфільмны жоўты мядзведзь з паднятымі рукамі ў захапленні.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

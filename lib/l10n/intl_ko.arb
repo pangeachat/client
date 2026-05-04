@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:43:10.660081",
+    "@@last_modified": "2026-05-04 12:41:16.625631",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -11165,6 +11165,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "더 많은 옵션",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "흥분한 듯 팔을 들고 있는 만화 같은 노란 곰.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

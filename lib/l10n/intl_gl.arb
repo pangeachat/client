@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-04-27 14:43:14.118927",
+    "@@last_modified": "2026-05-04 12:41:20.911706",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10948,6 +10948,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Máis opcións",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Un oso amarelo de estilo de debuxo animado coas súas mans levantadas en emoción.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

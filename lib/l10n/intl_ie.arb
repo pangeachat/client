@@ -3646,7 +3646,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-04-27 14:43:27.941825",
+    "@@last_modified": "2026-05-04 12:41:30.534616",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11667,6 +11667,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Níos mó roghanna",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Un ursa giallo cartunesco cun i so brazz alzadi in eccitament.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

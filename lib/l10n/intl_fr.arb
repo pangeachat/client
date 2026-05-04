@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-04-27 14:44:46.219305",
+    "@@last_modified": "2026-05-04 12:42:22.977053",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -11345,6 +11345,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Plus d'options",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Un ours jaune de style cartoon avec les bras levés d'excitation.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-04-27 14:43:12.615213",
+    "@@last_modified": "2026-05-04 12:41:19.352795",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7974,6 +7974,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Más opciones",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Un oso amarillo caricaturesco con los brazos levantados en emoción.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }
