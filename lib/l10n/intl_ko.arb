@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:43:10.660081",
+    "@@last_modified": "2026-05-04 09:23:34.687519",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -11165,6 +11165,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "더 많은 옵션",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

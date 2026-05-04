@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:44:17.422046",
+    "@@last_modified": "2026-05-04 09:24:04.655541",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -11064,6 +11064,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "மேலும் விருப்பங்கள்",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

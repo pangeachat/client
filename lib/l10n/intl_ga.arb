@@ -4217,7 +4217,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-04-27 14:44:44.655342",
+    "@@last_modified": "2026-05-04 09:24:21.653607",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10959,6 +10959,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Níos mó roghanna",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

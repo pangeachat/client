@@ -2526,7 +2526,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-04-27 14:44:05.888098",
+    "@@last_modified": "2026-05-04 09:23:59.334892",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11967,6 +11967,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Higit pang mga pagpipilian",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

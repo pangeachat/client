@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-04-27 14:44:28.370836",
+    "@@last_modified": "2026-05-04 09:24:09.288063",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -11057,6 +11057,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Więcej opcji",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

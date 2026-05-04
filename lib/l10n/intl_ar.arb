@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-04-27 14:44:09.230598",
+    "@@last_modified": "2026-05-04 09:24:00.676407",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11288,6 +11288,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "خيارات أكثر",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

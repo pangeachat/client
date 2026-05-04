@@ -3462,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-04-27 14:44:21.012731",
+    "@@last_modified": "2026-05-04 09:24:06.196167",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10620,6 +10620,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Moro opci",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

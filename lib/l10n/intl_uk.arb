@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-04-27 14:43:49.687496",
+    "@@last_modified": "2026-05-04 09:23:52.849536",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10948,6 +10948,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Більше опцій",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }
