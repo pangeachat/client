@@ -71,18 +71,12 @@ class ActivitySummaryRequestModel {
   /// .github/instructions/activity-summary.instructions.md.
   final String? langCode;
 
-  /// Per-participant L1s — one entry per non-bot participant. Each
-  /// participant's `feedback` field is written in their own L1 regardless
-  /// of the viewer.
-  final List<ParticipantL1>? participantsL1;
-
   ActivitySummaryRequestModel({
     required this.activity,
     required this.activityResults,
     required this.contentFeedback,
     this.roleState,
     this.langCode,
-    this.participantsL1,
   });
 
   Map<String, dynamic> toJson() {
@@ -92,20 +86,6 @@ class ActivitySummaryRequestModel {
       'content_feedback': contentFeedback.map((e) => e.toJson()).toList(),
       'role_state': roleState?.toJson() ?? {},
       if (langCode != null) 'viewer_l1': langCode,
-      if (participantsL1 != null)
-        'participants_l1': participantsL1!.map((p) => p.toJson()).toList(),
     };
   }
-}
-
-/// Per-participant L1 mapping. Sent in `participants_l1` so the
-/// choreographer can localize each participant's `feedback` to that
-/// participant's L1, independent of the requesting viewer.
-class ParticipantL1 {
-  final String userId;
-  final String l1;
-
-  ParticipantL1({required this.userId, required this.l1});
-
-  Map<String, dynamic> toJson() => {ModelKey.userId: userId, 'l1': l1};
 }
