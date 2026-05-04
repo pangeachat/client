@@ -269,7 +269,7 @@ class ChatController extends State<ChatPageWithRoom>
   // }
   String? get tutorialTokenTargetKey =>
       _tutorialEvent != null && tutorialToken != null
-      ? tutorialToken!.baseTargetKey(_tutorialEvent!.eventId)
+      ? tutorialToken!.overlayTargetKey(_tutorialEvent!.eventId)
       : null;
   // Pangea#
 
