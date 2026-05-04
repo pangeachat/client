@@ -1675,7 +1675,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-04-27 14:43:46.470641",
+    "@@last_modified": "2026-05-04 12:41:40.773652",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -12079,6 +12079,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "更多選項",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "一隻卡通風格的黃色熊，興奮地舉起雙臂。",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

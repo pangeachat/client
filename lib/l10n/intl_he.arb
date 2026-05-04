@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:43:31.744819",
+    "@@last_modified": "2026-05-04 12:41:32.195189",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -12027,6 +12027,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "עוד אפשרויות",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "דוב צהוב בסגנון קריקטורה עם ידיים מורמות בהתלהבות.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

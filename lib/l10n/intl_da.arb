@@ -1746,7 +1746,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-04-27 14:43:17.638117",
+    "@@last_modified": "2026-05-04 12:41:23.798611",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -12042,6 +12042,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Flere muligheder",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "En tegneserieagtig gul bjørn med armene hævet i begejstring.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

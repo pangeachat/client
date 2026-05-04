@@ -12,6 +12,7 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_participant_indicator.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_response_model.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 
@@ -24,7 +25,7 @@ class ActivityUserSummaries extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final summary = room.activitySummary?.summary;
+    final summary = room.activitySummaryByL1?.summary;
     if (summary == null) return const SizedBox();
 
     return Padding(
@@ -110,7 +111,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final room = controller.room;
-    final superlatives = room.activitySummary?.analytics
+    final superlatives = room.activitySummaryByL1?.analytics
         ?.generateSuperlatives();
     final availableRoles = room.activityPlan!.roles;
     final assignedRoles = room.assignedRoles ?? {};

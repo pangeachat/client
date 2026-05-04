@@ -5079,5 +5079,7 @@
     "vocabLevelsDescSeed": "This is where new vocab words will appear!",
     "readingAssistanceTutorialCollectToken": "Select words to learn more about them",
     "requireAnalyticsAccessTitle": "Require analytics access to join",
-    "requireAnalyticsAccessDesc": "Participants must grant access to their learning analytics to join this course"
+    "requireAnalyticsAccessDesc": "Participants must grant access to their learning analytics to join this course",
+    "moreOptions": "More options",
+    "bearImageDescription": "A cartoonish yellow bear with its arms raised in excitement."
 }

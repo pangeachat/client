@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:43:48.015963",
+    "@@last_modified": "2026-05-04 12:41:41.707619",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -11039,6 +11039,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Ulteriori opzioni",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Un orso giallo in stile cartone animato con le braccia alzate in segno di eccitazione.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

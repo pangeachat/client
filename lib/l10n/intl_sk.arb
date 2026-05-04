@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-04-27 14:43:26.498667",
+    "@@last_modified": "2026-05-04 12:41:29.318475",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -12064,6 +12064,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Viac možností",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Kreslený žltý medveď s vystrčenými rukami v nadšení.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

@@ -1137,6 +1137,7 @@ class Message extends StatelessWidget {
                               'message_reactions_${event.eventId}',
                             )
                             .key,
+                        enabled: !event.room.hasArchivedActivity,
                       ),
                     ),
               // Pangea#

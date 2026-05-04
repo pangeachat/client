@@ -1,5 +1,3 @@
-import 'package:collection/collection.dart';
-
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
@@ -41,32 +39,6 @@ class FullTextTranslationRequestModel {
       ChoreoConstants.feedback: feedback!.map((f) => f.toJson()).toList(),
   };
 
-  // override equals and hashcode
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is FullTextTranslationRequestModel &&
-        other.text == text &&
-        other.srcLang == srcLang &&
-        other.tgtLang == tgtLang &&
-        other.userL2 == userL2 &&
-        other.userL1 == userL1 &&
-        other.deepL == deepL &&
-        other.offset == offset &&
-        other.length == length &&
-        ListEquality().equals(other.feedback, feedback);
-  }
-
-  @override
-  int get hashCode =>
-      text.hashCode ^
-      srcLang.hashCode ^
-      tgtLang.hashCode ^
-      userL2.hashCode ^
-      userL1.hashCode ^
-      deepL.hashCode ^
-      offset.hashCode ^
-      length.hashCode ^
-      ListEquality().hash(feedback);
+  String get storageKey =>
+      "$text-$srcLang-$tgtLang-$userL1-$userL2-$deepL-$offset-$length-${feedback?.join('-')}";
 }

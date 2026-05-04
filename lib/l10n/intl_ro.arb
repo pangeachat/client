@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:43:25.090621",
+    "@@last_modified": "2026-05-04 12:41:28.104325",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11773,6 +11773,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Mai multe opțiuni",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Un urs galben în stil desenat, cu brațele ridicate de entuziasm.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

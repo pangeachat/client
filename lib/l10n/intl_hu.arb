@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-04-27 14:43:20.784016",
+    "@@last_modified": "2026-05-04 12:41:24.822829",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -11075,6 +11075,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "További lehetőségek",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Egy rajzfilmszerű sárga medve, amely izgalmában felemelte a karjait.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

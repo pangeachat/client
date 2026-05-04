@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:44:37.797512",
+    "@@last_modified": "2026-05-04 12:42:17.877215",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -12067,6 +12067,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Pli da opcioj",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Karikatura flava urso kun siaj brakoj levitaj en ekscito.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

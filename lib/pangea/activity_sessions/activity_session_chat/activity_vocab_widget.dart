@@ -281,12 +281,13 @@ class _WordCardWrapperState extends State<_WordCardWrapper> {
 
   @override
   Widget build(BuildContext context) {
+    final token = PangeaTokenText(
+      content: widget.v.lemma,
+      length: widget.v.lemma.characters.length,
+      offset: 0,
+    );
     return WordZoomWidget(
-      token: PangeaTokenText(
-        content: widget.v.lemma,
-        length: widget.v.lemma.characters.length,
-        offset: 0,
-      ),
+      token: token,
       construct: ConstructIdentifier(
         lemma: widget.v.lemma,
         type: ConstructTypeEnum.vocab,

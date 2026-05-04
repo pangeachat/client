@@ -65,17 +65,19 @@ class PangeaMessageEvent {
   //handles getting the latest text from the aggregated events
   Event get event => _event;
 
-  String get body => _event.body;
+  String get body => _latestEdit.body;
 
   String get senderId => _event.senderId;
 
-  DateTime get originServerTs => _event.originServerTs;
+  DateTime get originServerTs => _latestEdit.originServerTs;
 
   String get eventId => _latestEdit.eventId;
 
   Room get room => _event.room;
 
   bool get isAudioMessage => _event.messageType == MessageTypes.Audio;
+
+  bool get isTextMessage => _event.messageType == MessageTypes.Text;
 
   String? get _l2Code => MatrixState.pangeaController.userController.userL2Code;
 

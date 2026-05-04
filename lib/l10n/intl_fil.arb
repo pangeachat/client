@@ -2526,7 +2526,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-04-27 14:44:05.888098",
+    "@@last_modified": "2026-05-04 12:41:53.721838",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11967,6 +11967,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Higit pang mga pagpipilian",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Isang kartunistikong dilaw na oso na may mga braso na itinaas sa kasiyahan.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

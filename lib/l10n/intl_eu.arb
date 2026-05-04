@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-04-27 14:43:38.762665",
+    "@@last_modified": "2026-05-04 12:41:35.127010",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10948,6 +10948,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Gehiago aukera",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Ederki bat den kolore horiko hartz bat, besoak altxatuta pozik.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

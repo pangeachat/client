@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:43:22.640161",
+    "@@last_modified": "2026-05-04 12:41:26.233740",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -11045,6 +11045,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Lebih banyak opsi",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Seekor beruang kuning kartun dengan lengan terangkat dalam kegembiraan.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

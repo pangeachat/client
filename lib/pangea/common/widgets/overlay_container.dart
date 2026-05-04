@@ -8,6 +8,7 @@ class OverlayContainer extends StatelessWidget {
   final double maxHeight;
   final double maxWidth;
   final bool isScrollable;
+  final double padding;
 
   const OverlayContainer({
     super.key,
@@ -16,6 +17,7 @@ class OverlayContainer extends StatelessWidget {
     required this.maxHeight,
     required this.maxWidth,
     this.isScrollable = true,
+    this.padding = 10.0,
   });
 
   @override
@@ -27,10 +29,9 @@ class OverlayContainer extends StatelessWidget {
     );
 
     return Container(
-      padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+      padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
-        // color: Colors.purple,
         border: Border.all(
           width: 2,
           color: borderColor ?? Theme.of(context).colorScheme.primary,

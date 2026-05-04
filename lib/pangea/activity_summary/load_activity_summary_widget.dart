@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_response_model.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class LoadActivitySummaryWidget extends StatefulWidget {
   final Room room;
@@ -24,8 +26,21 @@ class LoadActivitySummaryWidgetState extends State<LoadActivitySummaryWidget> {
     });
   }
 
-  ActivitySummaryModel? get _summaryEvent => widget.room.activitySummary;
+  ActivitySummaryModel? get _summaryEvent => widget.room.activitySummaryByL1;
+
   ActivitySummaryResponseModel? get _summary => _summaryEvent?.summary;
+
+  Future<void> _fetchActivitySummary() async {
+    final l1 = MatrixState.pangeaController.userController.userL1Code;
+    if (l1 == null) {
+      ErrorHandler.logError(
+        e: "Tried to request activity summary with null l1Code",
+        data: {},
+      );
+      return;
+    }
+    await widget.room.fetchSummaries(l1);
+  }
 
   Future<void> _loadActivitySummary() async {
     if (_summary != null) return;
@@ -33,7 +48,7 @@ class LoadActivitySummaryWidgetState extends State<LoadActivitySummaryWidget> {
     // The summary state event is null
     // Wait for 5 seconds. If still null (or not loading), run request.
     if (_summaryEvent == null) {
-      await widget.room.fetchSummaries();
+      await _fetchActivitySummary();
       return;
     }
 
@@ -47,14 +62,14 @@ class LoadActivitySummaryWidgetState extends State<LoadActivitySummaryWidget> {
       await Future.delayed(
         Duration(seconds: remainingTime < 10 ? 10 - remainingTime : 0),
         () async {
-          if (_summary == null) await widget.room.fetchSummaries();
+          if (_summary == null) await _fetchActivitySummary();
         },
       );
       return;
     }
 
     if (_summaryEvent!.errorAt == null) {
-      await widget.room.fetchSummaries();
+      await _fetchActivitySummary();
     }
   }
 

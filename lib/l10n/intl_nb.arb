@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:43:52.849836",
+    "@@last_modified": "2026-05-04 12:41:45.024640",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11008,6 +11008,16 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Flere alternativer",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "En tegneserieaktig gul bjørn med armene hevet i begeistring.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }
