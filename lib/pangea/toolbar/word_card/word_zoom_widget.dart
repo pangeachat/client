@@ -35,6 +35,8 @@ class WordZoomWidget extends StatelessWidget {
   final Map<String, String>? morph;
 
   final bool enableEmojiSelection;
+  final bool enableEmojiReactions;
+
   final Function(LemmaInfoResponse, PTRequest, PTResponse)? onFlagTokenInfo;
   final ValueNotifier<int>? reloadNotifier;
   final double? maxWidth;
@@ -49,6 +51,7 @@ class WordZoomWidget extends StatelessWidget {
     this.event,
     this.morph,
     this.enableEmojiSelection = true,
+    this.enableEmojiReactions = true,
     this.onFlagTokenInfo,
     this.reloadNotifier,
     this.maxWidth,
@@ -182,7 +185,8 @@ class WordZoomWidget extends StatelessWidget {
                               constructId: construct,
                               langCode: langCode,
                               event: event,
-                              enabled: enableEmojiSelection,
+                              enableSelection: enableEmojiSelection,
+                              enableReactions: enableEmojiReactions,
                               form: token.content,
                             ),
                             LemmaMeaningDisplay(
