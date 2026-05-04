@@ -65,11 +65,18 @@ class ActivitySummaryRequestModel {
   final List<ActivitySummaryResultsMessage> activityResults;
   final List<ContentFeedbackModel> contentFeedback;
 
+  /// Calling viewer's L1 from their profile. Drives the language of the
+  /// group `summary`; serves as fallback for participants missing from
+  /// `participantsL1`. See pangeachat/.github
+  /// .github/instructions/activity-summary.instructions.md.
+  final String? langCode;
+
   ActivitySummaryRequestModel({
     required this.activity,
     required this.activityResults,
     required this.contentFeedback,
     this.roleState,
+    this.langCode,
   });
 
   Map<String, dynamic> toJson() {
@@ -78,6 +85,7 @@ class ActivitySummaryRequestModel {
       'activity_results': activityResults.map((e) => e.toJson()).toList(),
       'content_feedback': contentFeedback.map((e) => e.toJson()).toList(),
       'role_state': roleState?.toJson() ?? {},
+      if (langCode != null) 'viewer_l1': langCode,
     };
   }
 }
