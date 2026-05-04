@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:44:24.394138",
+    "@@last_modified": "2026-05-04 09:24:07.835125",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -11663,6 +11663,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "আরও বিকল্প",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

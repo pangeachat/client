@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:44:15.890030",
+    "@@last_modified": "2026-05-04 09:24:03.829913",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6963,6 +6963,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Nhiều tùy chọn",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

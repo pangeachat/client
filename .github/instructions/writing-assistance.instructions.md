@@ -6,7 +6,7 @@ applyTo: "lib/pangea/choreographer/**"
 
 Writing assistance is a friendly, non-judgmental helper that quietly reviews what the user types and offers suggestions. It must never feel like error correction — it's a learning companion.
 
-> **⚠️ IT (Interactive Translation) is deprecated.** Do not add new IT functionality. Translation will become a match type within IGC.
+> **⚠️ IT (Interactive Translation) is deprecated.** Do not add new IT functionality. Translation will become a match type within writing assistance.
 
 ## Design Intent
 
@@ -227,7 +227,7 @@ Choreographer (ChangeNotifier)
 
 | Endpoint                        | Status                                   |
 | ------------------------------- | ---------------------------------------- |
-| `/choreo/grammar_v2`            | ✅ Active — primary IGC endpoint         |
+| `/choreo/grammar_v2`            | ✅ Active — primary writing-assistance endpoint |
 | `/choreo/tokenize`              | ✅ Active — tokenizes final text on send |
 | `/choreo/span_details`          | ❌ Dead code — remove                    |
 | `/choreo/it_initialstep`        | ⚠️ Deprecated — remove with IT           |
@@ -239,7 +239,7 @@ Choreographer (ChangeNotifier)
 
 > **Do not extend. Scheduled for removal.**
 
-The `it/` directory, `ITController`, and all IT-related code (`it_bar.dart`, `it_feedback_card.dart`, `word_data_card.dart`, `choreo_mode_enum.dart`) will be removed. Translation will become a match type within IGC.
+The `it/` directory, `ITController`, and all IT-related code (`it_bar.dart`, `it_feedback_card.dart`, `word_data_card.dart`, `choreo_mode_enum.dart`) will be removed. Translation will become a match type within writing assistance.
 
 ---
 

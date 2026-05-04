@@ -45,6 +45,7 @@ import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
+import 'package:fluffychat/pangea/choreographer/igc/span_card_overlay_manager.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/choreographer/writing_assistance_room_extension.dart';
@@ -222,6 +223,7 @@ class ChatController extends State<ChatPageWithRoom>
   late final ActivityChatController activityController;
   late final TutorialOverlayController tutorialOverlayController;
   late final ChatBannerController _bannerController;
+  late final SpanCardOverlayManager _spanCardOverlayController;
   final ValueNotifier<bool> scrollableNotifier = ValueNotifier(false);
   // Pangea#
   Room get room => sendingClient.getRoomById(roomId) ?? widget.room;
@@ -790,6 +792,11 @@ class ChatController extends State<ChatPageWithRoom>
     choreographer = Choreographer(inputFocus);
     sendController.addListener(onInputBarChanged);
     final updater = Matrix.of(context).analyticsDataService.updateDispatcher;
+
+    _spanCardOverlayController = SpanCardOverlayManager(
+      choreographer: choreographer,
+      onFeedbackSubmitted: onWritingAssistanceFeedback,
+    );
 
     _bannerController = ChatBannerController();
     _levelSubscription = updater.levelUpdateStream.stream.listen(_onLevelUp);
@@ -1841,9 +1848,6 @@ class ChatController extends State<ChatPageWithRoom>
     bool highlightEvent = true,
     int calls = 0,
   }) async {
-    // Pangea#
-    Logs().w("Scrolling to event ID $eventId");
-    // #Pangea
     if (timeline == null) {
       Sentry.addBreadcrumb(
         Breadcrumb(
@@ -2590,23 +2594,17 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
-    final isSpanCardOpen = MatrixState.pAnyState.isOverlayOpen(
-      overlayKey: 'span-card-overlay',
-    );
+    final isSpanCardOpen = _spanCardOverlayController.isOpen;
 
     try {
-      choreographer.igcController.setActiveMatch(match: matchToShow);
+      choreographer.igcController.setMatchToShow(matchToShow);
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'match': matchToShow.toJson()});
       return;
     }
 
     if (!isSpanCardOpen) {
-      OverlayUtil.showIGCMatch(
-        choreographer,
-        context,
-        onWritingAssistanceFeedback,
-      );
+      _spanCardOverlayController.open(context);
     }
   }
 
@@ -2623,6 +2621,10 @@ class ChatController extends State<ChatPageWithRoom>
   }) async {
     if (shouldShowLanguageMismatchPopupByActivity) {
       return showLanguageMismatchPopup(manual: manual, autosend: autosend);
+    }
+
+    if (_spanCardOverlayController.isOpen) {
+      await _spanCardOverlayController.close();
     }
 
     final assistanceState = choreographer.assistanceState;
@@ -2652,10 +2654,6 @@ class ChatController extends State<ChatPageWithRoom>
     feedback == null
         ? await choreographer.requestWritingAssistance(manual: manual)
         : await choreographer.rerunWithFeedback(feedback);
-
-    Logs().w(
-      "Reran with feedback: $feedback. Assistance state: ${choreographer.assistanceState}",
-    );
 
     if (choreographer.assistanceState == AssistanceStateEnum.fetched) {
       showNextMatch();

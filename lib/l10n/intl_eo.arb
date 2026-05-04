@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:44:37.797512",
+    "@@last_modified": "2026-05-04 09:24:18.599045",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -12067,6 +12067,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Pli da opcioj",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

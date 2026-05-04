@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:43:36.662657",
+    "@@last_modified": "2026-05-04 09:23:46.913777",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -10948,6 +10948,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Mais opções",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

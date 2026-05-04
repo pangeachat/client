@@ -89,7 +89,7 @@ Interpretation matrix:
 
 | `originalSent` | `originalWritten` | Meaning |
 |:-:|:-:|---|
-| ✓ | ✗ | Text went through IGC/IT before sending |
+| ✓ | ✗ | Text went through writing assistance / interactive translation before sending |
 | ✗ | ✗ | Added by another user (e.g., translation) |
 | ✓ | ✓ | User wrote and sent as-is (L1 or perfect L2) |
 | ✗ | ✓ | User's original L1 that was then translated via IT |
