@@ -69,7 +69,7 @@ class ActivitySummaryRequestModel {
   /// group `summary`; serves as fallback for participants missing from
   /// `participantsL1`. See pangeachat/.github
   /// .github/instructions/activity-summary.instructions.md.
-  final String? viewerL1;
+  final String? langCode;
 
   /// Per-participant L1s — one entry per non-bot participant. Each
   /// participant's `feedback` field is written in their own L1 regardless
@@ -81,7 +81,7 @@ class ActivitySummaryRequestModel {
     required this.activityResults,
     required this.contentFeedback,
     this.roleState,
-    this.viewerL1,
+    this.langCode,
     this.participantsL1,
   });
 
@@ -91,7 +91,7 @@ class ActivitySummaryRequestModel {
       'activity_results': activityResults.map((e) => e.toJson()).toList(),
       'content_feedback': contentFeedback.map((e) => e.toJson()).toList(),
       'role_state': roleState?.toJson() ?? {},
-      if (viewerL1 != null) 'viewer_l1': viewerL1,
+      if (langCode != null) 'viewer_l1': langCode,
       if (participantsL1 != null)
         'participants_l1': participantsL1!.map((p) => p.toJson()).toList(),
     };

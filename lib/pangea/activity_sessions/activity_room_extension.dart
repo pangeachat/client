@@ -8,20 +8,13 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
-import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
-import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
-import 'package:fluffychat/pangea/activity_summary/activity_summary_request_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
-import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/widgets/matrix.dart';
-import '../activity_summary/activity_summary_repo.dart';
 
 class RoleException implements Exception {
   final String message;
@@ -38,22 +31,6 @@ extension ActivityRoomExtension on Room {
 
     try {
       return ActivityPlanModel.fromJson(stateEvent.content);
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"roomID": id, "stateEvent": stateEvent.content},
-      );
-      return null;
-    }
-  }
-
-  ActivitySummaryModel? get activitySummary {
-    final stateEvent = getState(PangeaEventTypes.activitySummary);
-    if (stateEvent == null) return null;
-
-    try {
-      return ActivitySummaryModel.fromJson(stateEvent.content);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -177,155 +154,6 @@ extension ActivityRoomExtension on Room {
       "",
       currentRoles.toJson(),
     );
-  }
-
-  Future<void> setActivitySummary(ActivitySummaryModel summary) async {
-    await client.setRoomStateWithKey(
-      id,
-      PangeaEventTypes.activitySummary,
-      "",
-      summary.toJson(),
-    );
-  }
-
-  Future<void> fetchSummaries() async {
-    if (activitySummary?.summary != null) {
-      return;
-    }
-    await setActivitySummary(
-      ActivitySummaryModel(
-        requestedAt: DateTime.now(),
-        summary: activitySummary?.summary,
-      ),
-    );
-
-    final events = await getAllEvents();
-    final List<ActivitySummaryResultsMessage> messages = [];
-    final ActivitySummaryAnalyticsModel analytics =
-        activitySummary?.analytics ?? ActivitySummaryAnalyticsModel();
-
-    final timeline = this.timeline ?? await getTimeline();
-    for (final event in events) {
-      if (event.type != EventTypes.Message ||
-          ![
-            MessageTypes.Text,
-            MessageTypes.Audio,
-          ].contains(event.messageType)) {
-        continue;
-      }
-
-      final pangeaMessage = PangeaMessageEvent(
-        event: event,
-        timeline: timeline,
-        ownMessage: client.userID == event.senderId,
-      );
-
-      if (event.messageType == MessageTypes.Audio &&
-          pangeaMessage.getSpeechToTextLocal() == null) {
-        continue;
-      }
-
-      final activityMessage = event.messageType == MessageTypes.Text
-          ? ActivitySummaryResultsMessage(
-              userId: event.senderId,
-              sent: pangeaMessage.originalSent?.text ?? event.body,
-              written: pangeaMessage.originalWrittenContent,
-              time: event.originServerTs,
-              tool: [
-                if (pangeaMessage.originalSent?.choreo?.includedIT == true)
-                  "it",
-                if (pangeaMessage.originalSent?.choreo?.includedIGC == true)
-                  "igc",
-              ],
-            )
-          : ActivitySummaryResultsMessage(
-              userId: event.senderId,
-              sent: pangeaMessage
-                  .getSpeechToTextLocal()!
-                  .transcript
-                  .text
-                  .trim(),
-              written: pangeaMessage
-                  .getSpeechToTextLocal()!
-                  .transcript
-                  .text
-                  .trim(),
-              time: event.originServerTs,
-              tool: [],
-            );
-
-      messages.add(activityMessage);
-
-      if (activitySummary?.analytics == null) {
-        analytics.addMessageConstructs(pangeaMessage);
-      }
-    }
-
-    // Resolve the viewer's L1 from their profile and per-participant L1s
-    // from each room member's public analytics profile. Sent on the request
-    // so the choreographer localizes the group summary to the viewer and
-    // each participant's feedback to their own L1, regardless of activity
-    // localization. See pangeachat/.github
-    // .github/instructions/activity-summary.instructions.md.
-    final viewerL1 = MatrixState
-        .pangeaController
-        .userController
-        .profile
-        .userSettings
-        .sourceLanguage;
-
-    final nonBotParticipants = getParticipants().where(
-      (p) => p.id != BotName.byEnvironment,
-    );
-    final l1Lookups = nonBotParticipants.map((p) async {
-      final analyticsProfile = await MatrixState
-          .pangeaController
-          .userController
-          .getPublicAnalyticsProfile(p.id);
-      final l1 = analyticsProfile.baseLanguage?.langCodeShort;
-      return l1 != null ? ParticipantL1(userId: p.id, l1: l1) : null;
-    });
-    final participantsL1 = (await Future.wait(l1Lookups))
-        .whereType<ParticipantL1>()
-        .toList();
-
-    try {
-      final resp = await ActivitySummaryRepo.get(
-        id,
-        ActivitySummaryRequestModel(
-          activity: activityPlan!,
-          activityResults: messages,
-          contentFeedback: [],
-          roleState: activityRoles,
-          viewerL1: viewerL1,
-          participantsL1: participantsL1.isNotEmpty ? participantsL1 : null,
-        ),
-      );
-
-      await setActivitySummary(
-        ActivitySummaryModel(summary: resp, analytics: analytics),
-      );
-
-      ActivitySummaryRepo.delete(id, activityPlan!);
-    } catch (e, s) {
-      if (e is! UnsubscribedException) {
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: {
-            "roomID": id,
-            "activityPlan": activityPlan?.toJson(),
-            "activityResults": messages.map((m) => m.toJson()).toList(),
-          },
-        );
-      }
-
-      if (activitySummary?.summary == null) {
-        await setActivitySummary(
-          ActivitySummaryModel(errorAt: DateTime.now(), analytics: analytics),
-        );
-      }
-    }
   }
 
   // UI-related helper functions

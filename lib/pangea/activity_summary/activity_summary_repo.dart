@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:async/async.dart';
 import 'package:http/http.dart';
 
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
@@ -9,82 +10,95 @@ import 'package:fluffychat/pangea/activity_summary/activity_summary_response_mod
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class _ActivitySummaryCacheItem {
-  final Completer<ActivitySummaryResponseModel> completer;
+  final Future<Result<ActivitySummaryResponseModel>> future;
   final DateTime timestamp;
 
-  _ActivitySummaryCacheItem(this.completer) : timestamp = DateTime.now();
+  _ActivitySummaryCacheItem(this.future) : timestamp = DateTime.now();
+
+  static const Duration _cacheDuration = Duration(minutes: 10);
+
+  bool get isExpired =>
+      timestamp.isBefore(DateTime.now().subtract(_cacheDuration));
 }
 
 class ActivitySummaryRepo {
   static final Map<String, _ActivitySummaryCacheItem> _cache = {};
-  static const Duration cacheDuration = Duration(minutes: 10);
 
-  /// Local cache key. Includes `viewerL1` so two L1-different viewers in
+  /// Local cache key. Includes `langCode` so two L1-different viewers in
   /// the same room do not collide on cache — the choreographer returns
   /// different responses per viewer (group summary in viewer's L1).
   static String _storageKey(
     String roomId,
     ActivityPlanModel activity,
-    String? viewerL1,
-  ) {
-    return '${roomId}_${activity.hashCode}_${viewerL1 ?? "default"}';
-  }
+    String? langCode,
+  ) => '${roomId}_${activity.activityId}_${langCode ?? "default"}';
 
-  static Future<ActivitySummaryResponseModel> get(
+  static Future<Result<ActivitySummaryResponseModel>> get(
     String roomId,
     ActivitySummaryRequestModel request,
   ) async {
-    final storageKey = _storageKey(
-      roomId,
-      request.activity,
-      request.viewerL1,
-    );
-    final cached = _cache[storageKey];
-    if (cached != null) {
-      return _cache[storageKey]!.completer.future;
-    }
+    final storageKey = _storageKey(roomId, request.activity, request.langCode);
+    final cached = _getCached(storageKey);
+    if (cached != null) return cached;
 
-    _cache[storageKey] = _ActivitySummaryCacheItem(
-      Completer<ActivitySummaryResponseModel>(),
-    );
-
-    try {
-      final response = await _fetch(request);
-      _cache[storageKey]!.completer.complete(response);
-      return response;
-    } catch (e) {
-      _cache[storageKey]!.completer.completeError(e);
+    final future = _fetch(request);
+    _cache[storageKey] = _ActivitySummaryCacheItem(future);
+    final result = await future;
+    if (result.isError) {
       _cache.remove(storageKey);
-      rethrow;
     }
+    return result;
   }
 
-  static Future<ActivitySummaryResponseModel> _fetch(
+  static Future<Result<ActivitySummaryResponseModel>>? _getCached(String key) {
+    final entry = _cache[key];
+    if (entry == null) return null;
+    if (entry.isExpired) {
+      _cache.remove(key);
+      return null;
+    }
+
+    return entry.future;
+  }
+
+  static Future<Result<ActivitySummaryResponseModel>> _fetch(
     ActivitySummaryRequestModel request,
   ) async {
-    final Requests req = Requests(
-      choreoApiKey: Environment.choreoApiKey,
-      accessToken: MatrixState.pangeaController.userController.accessToken,
-    );
+    try {
+      final Requests req = Requests(
+        choreoApiKey: Environment.choreoApiKey,
+        accessToken: MatrixState.pangeaController.userController.accessToken,
+      );
 
-    final Response res = await req.post(
-      url: PApiUrls.activitySummary,
-      body: request.toJson(),
-    );
+      final Response res = await req.post(
+        url: PApiUrls.activitySummary,
+        body: request.toJson(),
+      );
 
-    final decodedBody = jsonDecode(utf8.decode(res.bodyBytes));
-    return ActivitySummaryResponseModel.fromJson(decodedBody);
+      if (res.statusCode != 200) {
+        throw res;
+      }
+
+      final decodedBody = jsonDecode(utf8.decode(res.bodyBytes));
+      return Result.value(ActivitySummaryResponseModel.fromJson(decodedBody));
+    } catch (e, s) {
+      if (e is! UnsubscribedException) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {'activity_summary_request': request.toJson()},
+        );
+      }
+      return Result.error(e);
+    }
   }
 
-  static void delete(String roomId, ActivityPlanModel activity) async {
-    // Cache keys now include viewerL1 — clear every viewer's entry for
-    // this (room, activity) on invalidation. In practice only one viewer
-    // ever runs in a single client process, but the prefix sweep is
-    // robust against any future fan-out.
-    final prefix = '${roomId}_${activity.hashCode}_';
-    _cache.removeWhere((key, _) => key.startsWith(prefix));
+  static void delete(String roomId, ActivitySummaryRequestModel request) {
+    final key = _storageKey(roomId, request.activity, request.langCode);
+    _cache.remove(key);
   }
 }

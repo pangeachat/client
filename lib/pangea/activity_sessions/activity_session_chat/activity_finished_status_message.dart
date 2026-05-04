@@ -6,6 +6,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
@@ -51,7 +52,7 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
     }
   }
 
-  ActivitySummaryModel? get summary => controller.room.activitySummary;
+  ActivitySummaryModel? get summary => controller.room.activitySummaryByL1;
 
   bool get _enableArchive =>
       summary?.summary != null || summary?.hasError == true;
@@ -112,7 +113,7 @@ class _SummarySection extends StatelessWidget {
 
   const _SummarySection({required this.controller, required this.isSubscribed});
 
-  ActivitySummaryModel? get summary => controller.room.activitySummary;
+  ActivitySummaryModel? get summary => controller.room.activitySummaryByL1;
 
   @override
   Widget build(BuildContext context) {
@@ -154,6 +155,7 @@ class _SummarySection extends StatelessWidget {
     }
 
     if (summary?.hasError ?? false) {
+      final l1Code = MatrixState.pangeaController.userController.userL1Code;
       return Column(
         spacing: 8,
         children: [
@@ -171,7 +173,9 @@ class _SummarySection extends StatelessWidget {
             ],
           ),
           TextButton(
-            onPressed: controller.room.fetchSummaries,
+            onPressed: l1Code != null
+                ? () => controller.room.fetchSummaries(l1Code)
+                : null,
             child: Text(L10n.of(context).requestSummaries),
           ),
         ],

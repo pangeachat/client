@@ -42,11 +42,7 @@ class CourseInfoSummariesModel extends RoomSummariesModel {
   CourseInfoSummariesModel(
     super._roomSummaries, {
     this.activitiesToCompleteOverride,
-  }) {
-    Logs().w(
-      "Created course info summary model with complete override: $activitiesToCompleteOverride",
-    );
-  }
+  });
 
   Set<String> _completedActivities(String userID) => _roomSummaries.values
       .where((e) => e.isCompleteByUserId(userID))
