@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
@@ -9,9 +8,6 @@ import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/growth_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
-import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
-import 'package:fluffychat/pangea/choreographer/choreographer.dart';
-import 'package:fluffychat/pangea/choreographer/igc/span_card.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/widgets/anchored_overlay_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/card_header.dart';
@@ -222,30 +218,6 @@ class OverlayUtil {
       debugger(when: kDebugMode);
       ErrorHandler.logError(e: err, s: stack, data: {});
     }
-  }
-
-  static void showIGCMatch(
-    Choreographer choreographer,
-    BuildContext context,
-    Future Function(String) onFeedbackSubmitted,
-  ) {
-    MatrixState.pAnyState.closeAllOverlays();
-    showPositionedCard(
-      overlayKey: 'span-card-overlay',
-      context: context,
-      cardToShow: SpanCard(
-        choreographer: choreographer,
-        onFeedbackSubmitted: onFeedbackSubmitted,
-        close: () => MatrixState.pAnyState.closeOverlay('span-card-overlay'),
-      ),
-      maxHeight: 325,
-      maxWidth: 325,
-      transformTargetId: ChoreoConstants.inputTransformTargetKey,
-      ignorePointer: true,
-      isScrollable: false,
-      targetAnchor: Alignment.topCenter,
-      followerAnchor: Alignment.bottomCenter,
-    );
   }
 
   static void showAnchoredOverlay(
