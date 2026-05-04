@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-04-27 14:44:22.376828",
+    "@@last_modified": "2026-05-04 09:24:06.910961",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10948,6 +10948,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "更多选项",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

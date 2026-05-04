@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-04-27 14:43:29.952296",
+    "@@last_modified": "2026-05-04 09:23:44.648551",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11432,6 +11432,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Više opcija",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

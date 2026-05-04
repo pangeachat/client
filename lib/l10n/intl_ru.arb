@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-04-27 14:44:39.380476",
+    "@@last_modified": "2026-05-04 09:24:19.510511",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11962,6 +11962,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Больше опций",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

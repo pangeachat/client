@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:43:25.090621",
+    "@@last_modified": "2026-05-04 09:23:41.521863",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11773,6 +11773,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Mai multe opțiuni",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

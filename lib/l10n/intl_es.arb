@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-04-27 14:43:12.615213",
+    "@@last_modified": "2026-05-04 09:23:35.343970",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7974,6 +7974,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Más opciones",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

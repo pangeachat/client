@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:43:22.640161",
+    "@@last_modified": "2026-05-04 09:23:40.882212",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -11045,6 +11045,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Lebih banyak opsi",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

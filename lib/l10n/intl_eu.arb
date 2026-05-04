@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-04-27 14:43:38.762665",
+    "@@last_modified": "2026-05-04 09:23:47.825663",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10948,6 +10948,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Gehiago aukera",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-04-27 14:44:10.665053",
+    "@@last_modified": "2026-05-04 09:24:01.517277",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11279,6 +11279,11 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Daha fazla seçenek",
+    "@moreOptions": {
         "type": "String",
         "placeholders": {}
     }
