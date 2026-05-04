@@ -61,7 +61,7 @@ Drill-down for a single tag showing:
 
 ### Grammar practice (`grammar_error_practice_generator.dart`, `morph_category_activity_generator.dart`)
 
-Recent addition: users can practice grammar concepts they've struggled with. `GrammarErrorPracticeGenerator` creates activities from past IGC grammar corrections. `MorphCategoryActivityGenerator` creates practice targeting specific morph categories.
+Recent addition: users can practice grammar concepts they've struggled with. `GrammarErrorPracticeGenerator` creates activities from past writing-assistance grammar corrections. `MorphCategoryActivityGenerator` creates practice targeting specific morph categories.
 
 ## Recent Improvements
 
