@@ -8,7 +8,6 @@ import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/growth_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
-import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/widgets/anchored_overlay_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/card_header.dart';
 import 'package:fluffychat/pangea/common/widgets/overlay_container.dart';
@@ -117,6 +116,47 @@ class OverlayUtil {
     }
   }
 
+  static Offset _getPositionedOffset(
+    BuildContext context,
+    RenderBox renderBox,
+    double maxWidth,
+  ) {
+    final targetOffset = (renderBox).localToGlobal(Offset.zero);
+    final targetSize = renderBox.size;
+
+    final screenWidth = MediaQuery.widthOf(context);
+    final columnWidth = FluffyThemes.isColumnMode(context)
+        ? FluffyThemes.columnWidth + FluffyThemes.navRailWidth
+        : 0;
+
+    final horizontalMidpoint =
+        (targetOffset.dx - columnWidth) + (targetSize.width / 2);
+    final halfMaxWidth = maxWidth / 2;
+
+    final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 10;
+    final hasRightOverflow =
+        (horizontalMidpoint + halfMaxWidth) > (screenWidth - columnWidth - 10);
+
+    if (hasLeftOverflow) {
+      final xOffset = (horizontalMidpoint - halfMaxWidth - 10) * -1;
+      return Offset(xOffset, 0);
+    }
+
+    if (hasRightOverflow) {
+      final xOffset =
+          (screenWidth - columnWidth) -
+          (horizontalMidpoint + halfMaxWidth + 10);
+      return Offset(xOffset, 0);
+    }
+
+    return Offset(0, 0);
+  }
+
+  static bool _hasTopOverflow(RenderBox renderBox, double maxHeight) {
+    final targetOffset = (renderBox).localToGlobal(Offset.zero);
+    return maxHeight + kToolbarHeight > targetOffset.dy;
+  }
+
   static void showPositionedCard({
     required BuildContext context,
     required Widget cardToShow,
@@ -124,62 +164,23 @@ class OverlayUtil {
     required double maxHeight,
     required double maxWidth,
     bool backDropToDismiss = true,
-    Color? borderColor,
     bool closePrevOverlay = true,
     String? overlayKey,
     bool isScrollable = true,
     bool addBorder = true,
-    VoidCallback? onDismiss,
     bool ignorePointer = false,
     Alignment? targetAnchor,
     Alignment? followerAnchor,
   }) {
     try {
-      final LayerLinkAndKey layerLinkAndKey = MatrixState.pAnyState
-          .layerLinkAndKey(transformTargetId);
-      if (layerLinkAndKey.key.currentContext == null) {
+      final renderBox = MatrixState.pAnyState.getRenderBox(transformTargetId);
+      if (renderBox == null) {
         debugPrint("layerLinkAndKey.key.currentContext is null");
         return;
       }
 
-      Offset offset = Offset.zero;
-      final RenderBox? targetRenderBox =
-          layerLinkAndKey.key.currentContext!.findRenderObject() as RenderBox?;
-
-      bool hasTopOverflow = false;
-      if (targetRenderBox != null && targetRenderBox.hasSize) {
-        final Offset transformTargetOffset = (targetRenderBox).localToGlobal(
-          Offset.zero,
-        );
-        final Size transformTargetSize = targetRenderBox.size;
-
-        final columnWidth = FluffyThemes.isColumnMode(context)
-            ? FluffyThemes.columnWidth + FluffyThemes.navRailWidth
-            : 0;
-
-        final horizontalMidpoint =
-            (transformTargetOffset.dx - columnWidth) +
-            (transformTargetSize.width / 2);
-
-        final halfMaxWidth = maxWidth / 2;
-        final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 10;
-        final hasRightOverflow =
-            (horizontalMidpoint + halfMaxWidth) >
-            (MediaQuery.widthOf(context) - columnWidth - 10);
-        hasTopOverflow = maxHeight + kToolbarHeight > transformTargetOffset.dy;
-
-        double xOffset = 0;
-
-        MediaQuery.widthOf(context) - (horizontalMidpoint + halfMaxWidth);
-        if (hasLeftOverflow) {
-          xOffset = (horizontalMidpoint - halfMaxWidth - 10) * -1;
-        } else if (hasRightOverflow) {
-          xOffset =
-              (MediaQuery.of(context).size.width - columnWidth) -
-              (horizontalMidpoint + halfMaxWidth + 10);
-        }
-        offset = Offset(xOffset, 0);
-      }
+      final offset = _getPositionedOffset(context, renderBox, maxWidth);
+      final hasTopOverflow = _hasTopOverflow(renderBox, maxHeight);
 
       final Widget child = addBorder
           ? Material(
@@ -188,7 +189,6 @@ class OverlayUtil {
               clipBehavior: Clip.antiAlias,
               child: OverlayContainer(
                 cardToShow: cardToShow,
-                borderColor: borderColor,
                 maxHeight: maxHeight,
                 maxWidth: maxWidth,
                 isScrollable: isScrollable,
@@ -201,7 +201,6 @@ class OverlayUtil {
         child: child,
         transformTargetId: transformTargetId,
         backDropToDismiss: backDropToDismiss,
-        borderColor: borderColor,
         closePrevOverlay: closePrevOverlay,
         offset: offset,
         overlayKey: overlayKey,
@@ -211,7 +210,6 @@ class OverlayUtil {
         followerAnchor:
             followerAnchor ??
             (hasTopOverflow ? Alignment.topCenter : Alignment.bottomCenter),
-        onDismiss: onDismiss,
         ignorePointer: ignorePointer,
       );
     } catch (err, stack) {
