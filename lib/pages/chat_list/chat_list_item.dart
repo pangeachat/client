@@ -96,8 +96,10 @@ class ChatListItem extends StatelessWidget {
                   duration: FluffyThemes.animationDuration,
                   curve: FluffyThemes.animationCurve,
                   scale: hovered ? 1.1 : 1.0,
+                  // #Pangea
                   child: Tooltip(
                     message: L10n.of(context).moreOptions,
+                    // Pangea#
                     child: SizedBox(
                       width: Avatar.defaultSize,
                       height: Avatar.defaultSize,
