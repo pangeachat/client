@@ -225,12 +225,10 @@ class WordZoomWidget extends StatelessWidget {
           decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
             border: Border.all(
+              width: 2,
               color: Theme.of(context).colorScheme.primary,
-              width: 4.0,
             ),
-            borderRadius: const BorderRadius.all(
-              Radius.circular(AppConfig.borderRadius),
-            ),
+            borderRadius: const BorderRadius.all(Radius.circular(25)),
           ),
           height: AppConfig.toolbarMaxHeight,
           child: Column(
