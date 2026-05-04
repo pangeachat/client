@@ -2367,7 +2367,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-05-04 09:24:20.320659",
+    "@@last_modified": "2026-05-04 12:42:19.716619",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12021,6 +12021,11 @@
     },
     "moreOptions": "მეტი ვარიანტები",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "კარტონული ყვითელი დათვი, რომლის ხელები აღიმართა აღფრთოვანებით.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

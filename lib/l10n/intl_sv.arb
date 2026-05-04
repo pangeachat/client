@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 09:24:14.079612",
+    "@@last_modified": "2026-05-04 12:42:13.178757",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11540,6 +11540,11 @@
     },
     "moreOptions": "Fler alternativ",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "En tecknad gul björn med armarna uppsträckta i förtjusning.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

@@ -4182,7 +4182,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-05-04 09:23:37.112472",
+    "@@last_modified": "2026-05-04 12:41:22.617733",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -11002,6 +11002,11 @@
     },
     "moreOptions": "Lisää vaihtoehtoja",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Sarjakuvamainen keltainen karhu, jonka kädet ovat nostettuina innostuksesta.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

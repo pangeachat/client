@@ -5078,5 +5078,6 @@
     "analyticsVocabListBodyEmpty": "The vocabulary words you collect will go here. Start chatting and interacting to earn some!",
     "vocabLevelsDescSeed": "This is where new vocab words will appear!",
     "readingAssistanceTutorialCollectToken": "Select words to learn more about them",
-    "moreOptions": "More options"
+    "moreOptions": "More options",
+    "bearImageDescription": "A cartoonish yellow bear with its arms raised in excitement."
 }

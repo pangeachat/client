@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 09:24:08.546904",
+    "@@last_modified": "2026-05-04 12:42:10.476111",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -11065,6 +11065,11 @@
     },
     "moreOptions": "گزینه‌های بیشتر",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "یک خرس زرد کارتونی با دستانی بالا برده در هیجان.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

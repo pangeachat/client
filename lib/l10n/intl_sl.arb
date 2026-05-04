@@ -2231,7 +2231,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-05-04 09:23:50.892500",
+    "@@last_modified": "2026-05-04 12:41:39.780913",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12069,6 +12069,11 @@
     },
     "moreOptions": "Več možnosti",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Risani rumeni medved z dvignjenimi rokami v navdušenju.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

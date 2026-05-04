@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-05-04 09:23:52.849536",
+    "@@last_modified": "2026-05-04 12:41:42.764050",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10953,6 +10953,11 @@
     },
     "moreOptions": "Більше опцій",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Мультяшний жовтий ведмідь з піднятими в захват руках.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

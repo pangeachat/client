@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 09:24:20.937885",
+    "@@last_modified": "2026-05-04 12:42:20.954850",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -12076,6 +12076,11 @@
     },
     "moreOptions": "Više opcija",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Crtački žuti medved sa podignutim rukama u uzbuđenju.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

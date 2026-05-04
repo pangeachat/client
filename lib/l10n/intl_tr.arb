@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-05-04 09:24:01.517277",
+    "@@last_modified": "2026-05-04 12:41:59.334122",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11284,6 +11284,11 @@
     },
     "moreOptions": "Daha fazla seçenek",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Heyecanla kollarını kaldırmış, karikatür tarzı sarı bir ayı.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

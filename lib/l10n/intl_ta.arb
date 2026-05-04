@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 09:24:04.655541",
+    "@@last_modified": "2026-05-04 12:42:05.086280",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -11069,6 +11069,11 @@
     },
     "moreOptions": "மேலும் விருப்பங்கள்",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "ஒரு கார்டூன் பாணியில் உருவாக்கப்பட்ட மஞ்சள் கரடி, அதன் கைகள் உற்சாகத்தில் உயர்த்தப்பட்டுள்ளன.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

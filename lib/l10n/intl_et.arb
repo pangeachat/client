@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-05-04 09:23:49.567276",
+    "@@last_modified": "2026-05-04 12:41:37.313979",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10950,6 +10950,11 @@
     },
     "moreOptions": "Rohkem valikuid",
     "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Koomiline kollane karu, kelle käed on elevusest üles tõstetud.",
+    "@bearImageDescription": {
         "type": "String",
         "placeholders": {}
     }

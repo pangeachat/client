@@ -275,10 +275,13 @@ abstract class AppRoutes {
                 // #Pangea
                 // ? const EmptyPage()
                 ? Center(
-                    child: CachedNetworkImage(
-                      width: 250.0,
-                      imageUrl:
-                          "${AppConfig.assetsBaseURL}/${SpaceConstants.sideBearFileName}",
+                    child: Semantics(
+                      label: L10n.of(context).bearImageDescription,
+                      child: CachedNetworkImage(
+                        width: 250.0,
+                        imageUrl:
+                            "${AppConfig.assetsBaseURL}/${SpaceConstants.sideBearFileName}",
+                      ),
                     ),
                   )
                 // Pangea#
