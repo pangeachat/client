@@ -53,11 +53,20 @@ class ChatListItemSubtitle extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         );
       } else if (!room.isActivityStarted) {
-        return OpenRolesIndicator(
-          roles: room.activityPlan!.roles.values.toList(),
-          assignedRoles: room.assignedRoles?.values.toList() ?? [],
-          room: room,
-          space: room.courseParent,
+        return FutureBuilder(
+          future: room.requestParticipants(
+            [Membership.join, Membership.invite, Membership.knock],
+            false,
+            true,
+          ),
+          builder: (context, _) {
+            return OpenRolesIndicator(
+              roles: room.activityPlan!.roles.values.toList(),
+              assignedRoles: room.assignedRoles?.values.toList() ?? [],
+              room: room,
+              space: room.courseParent,
+            );
+          },
         );
       } else if (room.isActivityFinished) {
         return Text(
