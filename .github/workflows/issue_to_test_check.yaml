@@ -1,0 +1,13 @@
+name: Issue TO TEST enforcement
+
+on:
+  issues:
+    types: [opened, edited, closed]
+
+jobs:
+  process:
+    uses: pangeachat/.github/.github/workflows/reusable-issue-to-test-check.yaml@main
+    permissions:
+      issues: write
+    with:
+      needs_testing_labels: 'needs iOS testing,needs android testing,needs web testing,needs iPad testing'
