@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-05-05 13:45:44.385704",
+    "@@last_modified": "2026-05-05 13:53:59.920325",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -11115,6 +11115,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Kérjük, adjon meg egy 0-nál nagyobb vagy egyenlő számot",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

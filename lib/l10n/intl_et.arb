@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-05-05 13:46:26.198114",
+    "@@last_modified": "2026-05-05 13:54:13.278776",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10985,6 +10985,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Palun sisestage number, mis on suurem või võrdne 0-ga",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

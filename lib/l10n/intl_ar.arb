@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-05-05 13:47:27.931227",
+    "@@last_modified": "2026-05-05 13:54:32.818296",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11328,6 +11328,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "يرجى إدخال رقم أكبر من أو يساوي 0",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

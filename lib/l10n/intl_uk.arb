@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-05-05 13:46:51.546915",
+    "@@last_modified": "2026-05-05 13:54:17.946055",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10988,6 +10988,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Будь ласка, введіть число, більше або рівне 0",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

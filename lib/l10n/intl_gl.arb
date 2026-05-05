@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-05-05 13:45:32.066656",
+    "@@last_modified": "2026-05-05 13:53:56.336637",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10988,6 +10988,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Por favor, introduce un número maior ou igual a 0",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

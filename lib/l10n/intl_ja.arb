@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-05-05 13:48:25.721128",
+    "@@last_modified": "2026-05-05 13:54:50.433636",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11856,6 +11856,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "0以上の数を入力してください",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

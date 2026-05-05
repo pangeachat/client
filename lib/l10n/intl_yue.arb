@@ -1675,7 +1675,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-05-05 13:46:43.495768",
+    "@@last_modified": "2026-05-05 13:54:15.955176",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -12119,6 +12119,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "請輸入一個大於或等於 0 的數字",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

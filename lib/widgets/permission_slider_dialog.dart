@@ -43,7 +43,10 @@ Future<int?> showPermissionChooser(
           onPressed: () {
             final level = int.tryParse(controller.text.trim());
             if (level == null) {
-              error.value = L10n.of(context).pleaseEnterANumber;
+              // #Pangea
+              // error.value = L10n.of(context).pleaseEnterANumber;
+              error.value = L10n.of(context).pleaseEnterAPositiveNumber;
+              // Pangea#
               return;
             }
             if (level > maxLevel) {

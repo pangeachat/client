@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:48:03.091407",
+    "@@last_modified": "2026-05-05 13:54:43.768764",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -11703,6 +11703,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "দয়া করে 0 এর সমান বা বড় একটি সংখ্যা প্রবেশ করুন",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-05-05 13:47:59.120041",
+    "@@last_modified": "2026-05-05 13:54:42.923527",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10988,6 +10988,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "请输入一个大于或等于0的数字",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

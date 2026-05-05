@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:45:25.589340",
+    "@@last_modified": "2026-05-05 13:53:54.615999",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -11205,6 +11205,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "0 이상인 숫자를 입력해 주세요",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

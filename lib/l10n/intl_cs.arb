@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-05-05 13:46:54.672797",
+    "@@last_modified": "2026-05-05 13:54:19.299002",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -11542,6 +11542,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Prosím zadejte číslo větší nebo rovno 0",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:46:22.278455",
+    "@@last_modified": "2026-05-05 13:54:12.021090",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -12106,6 +12106,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Por favor, insira um número maior ou igual a 0",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }
