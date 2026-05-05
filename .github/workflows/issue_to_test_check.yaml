@@ -6,7 +6,7 @@ on:
 
 jobs:
   process:
-    uses: pangeachat/.github/.github/workflows/reusable-issue-to-test-check.yaml@b147c12a80922a768e52953050b9eecf3b924099 # main
+    uses: pangeachat/.github/.github/workflows/reusable-issue-to-test-check.yaml@main
     permissions:
       issues: write
     with:
