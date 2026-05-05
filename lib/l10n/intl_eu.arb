@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-05-04 12:41:35.127010",
+    "@@last_modified": "2026-05-05 13:46:19.949386",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10958,6 +10958,36 @@
     },
     "bearImageDescription": "Ederki bat den kolore horiko hartz bat, besoak altxatuta pozik.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Hitzak hautatu ikasteko gehiago jakiteko",
+    "requireAnalyticsAccessTitle": "Analitika sarbidea beharrezkoa da bat egiteko",
+    "requireAnalyticsAccessDesc": "Parte-hartzaileek ikaskuntza analitikaren sarbidea eman behar dute ikastaro honetan parte hartzeko",
+    "analyticsAccessNoticeTitle": "Analitika Sarbidea Beharrezkoa",
+    "analyticsAccessNoticeDesc": "Ikastaro honetan parte hartuz, administratzaileei zure ikaskuntza analitikaren sarbidea emateko ados zaude.",
+    "skipOnboardingClassCodeDesc": "Independently ikasten? Ez kezkatu, egin dezakezu:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

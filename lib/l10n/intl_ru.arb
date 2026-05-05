@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-05-04 12:42:18.765124",
+    "@@last_modified": "2026-05-05 13:48:34.209908",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11972,6 +11972,36 @@
     },
     "bearImageDescription": "Мультяшный жёлтый медведь с поднятыми в восторге руками.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Выберите слова, чтобы узнать о них больше",
+    "requireAnalyticsAccessTitle": "Требуется доступ к аналитике для участия",
+    "requireAnalyticsAccessDesc": "Участники должны предоставить доступ к своей учебной аналитике, чтобы присоединиться к этому курсу",
+    "analyticsAccessNoticeTitle": "Требуется доступ к аналитике",
+    "analyticsAccessNoticeDesc": "Присоединяясь к этому курсу, вы соглашаетесь предоставить администраторам доступ к вашей учебной аналитике.",
+    "skipOnboardingClassCodeDesc": "Учитесь самостоятельно? Не волнуйтесь, вы можете:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

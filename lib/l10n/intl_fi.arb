@@ -4182,7 +4182,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-05-04 12:41:22.617733",
+    "@@last_modified": "2026-05-05 13:45:36.554449",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -11007,6 +11007,36 @@
     },
     "bearImageDescription": "Sarjakuvamainen keltainen karhu, jonka kädet ovat nostettuina innostuksesta.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Valitse sanoja oppiaksesi niistä lisää",
+    "requireAnalyticsAccessTitle": "Vaadi analytiikkapääsy liittymiseen",
+    "requireAnalyticsAccessDesc": "Osallistujien on myönnettävä pääsy oppimisanalyyseihinsa liittyäkseen tähän kurssiin",
+    "analyticsAccessNoticeTitle": "Analytiikkapääsy vaaditaan",
+    "analyticsAccessNoticeDesc": "Liittymällä tähän kurssiin hyväksyt, että ylläpitäjät saavat pääsyn oppimisanalyyseihisi.",
+    "skipOnboardingClassCodeDesc": "Opitko itsenäisesti? Älä huoli, voit:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

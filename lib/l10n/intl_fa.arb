@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 12:42:10.476111",
+    "@@last_modified": "2026-05-05 13:48:07.478500",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -11070,6 +11070,36 @@
     },
     "bearImageDescription": "یک خرس زرد کارتونی با دستانی بالا برده در هیجان.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "کلمات را برای یادگیری بیشتر انتخاب کنید",
+    "requireAnalyticsAccessTitle": "برای پیوستن به دسترسی به تجزیه و تحلیل نیاز است",
+    "requireAnalyticsAccessDesc": "شرکت‌کنندگان باید دسترسی به تجزیه و تحلیل یادگیری خود را برای پیوستن به این دوره اعطا کنند",
+    "analyticsAccessNoticeTitle": "دسترسی به تجزیه و تحلیل مورد نیاز است",
+    "analyticsAccessNoticeDesc": "با پیوستن به این دوره، شما موافقت می‌کنید که به مدیران دسترسی به تجزیه و تحلیل یادگیری خود را اعطا کنید.",
+    "skipOnboardingClassCodeDesc": "به‌طور مستقل یاد می‌گیرید؟ نگران نباشید، شما می‌توانید:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

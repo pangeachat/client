@@ -1746,7 +1746,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-05-04 12:41:23.798611",
+    "@@last_modified": "2026-05-05 13:45:40.428854",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -12052,6 +12052,36 @@
     },
     "bearImageDescription": "En tegneserieagtig gul bjørn med armene hævet i begejstring.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Vælg ord for at lære mere om dem",
+    "requireAnalyticsAccessTitle": "Krav om adgang til analyser for at deltage",
+    "requireAnalyticsAccessDesc": "Deltagere skal give adgang til deres læringsanalyser for at deltage i dette kursus",
+    "analyticsAccessNoticeTitle": "Adgang til analyser kræves",
+    "analyticsAccessNoticeDesc": "Ved at deltage i dette kursus accepterer du at give administratorer adgang til dine læringsanalyser.",
+    "skipOnboardingClassCodeDesc": "Lærer du selvstændigt? Bare rolig, du kan:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

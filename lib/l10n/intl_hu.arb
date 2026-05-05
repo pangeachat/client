@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-05-04 12:41:24.822829",
+    "@@last_modified": "2026-05-05 13:45:44.385704",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -11085,6 +11085,36 @@
     },
     "bearImageDescription": "Egy rajzfilmszerű sárga medve, amely izgalmában felemelte a karjait.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Válassza ki a szavakat, hogy többet tudjon meg róluk",
+    "requireAnalyticsAccessTitle": "Elemzési hozzáférés szükséges a csatlakozáshoz",
+    "requireAnalyticsAccessDesc": "A résztvevőknek engedélyezniük kell az elemzési adataikhoz való hozzáférést a kurzushoz való csatlakozáshoz",
+    "analyticsAccessNoticeTitle": "Elemzési hozzáférés szükséges",
+    "analyticsAccessNoticeDesc": "A kurzushoz való csatlakozással beleegyezését adja, hogy az adminisztrátorok hozzáférjenek az elemzési adataihoz.",
+    "skipOnboardingClassCodeDesc": "Önállóan tanul? Ne aggódjon, megteheti:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

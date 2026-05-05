@@ -2231,7 +2231,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-05-04 12:41:39.780913",
+    "@@last_modified": "2026-05-05 13:46:36.037740",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12074,6 +12074,36 @@
     },
     "bearImageDescription": "Risani rumeni medved z dvignjenimi rokami v navdušenju.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Izberite besede, da se o njih naučite več",
+    "requireAnalyticsAccessTitle": "Zahtevajte dostop do analitike za pridružitev",
+    "requireAnalyticsAccessDesc": "Udeleženci morajo odobriti dostop do svojih učnih analitik, da se pridružijo temu tečaju",
+    "analyticsAccessNoticeTitle": "Zahtevan dostop do analitike",
+    "analyticsAccessNoticeDesc": "Z vstopom v ta tečaj se strinjate, da administratorjem omogočite dostop do vaših učnih analitik.",
+    "skipOnboardingClassCodeDesc": "Učite se neodvisno? Ne skrbite, lahko:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

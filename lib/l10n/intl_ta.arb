@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 12:42:05.086280",
+    "@@last_modified": "2026-05-05 13:47:49.780700",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -11074,6 +11074,36 @@
     },
     "bearImageDescription": "ஒரு கார்டூன் பாணியில் உருவாக்கப்பட்ட மஞ்சள் கரடி, அதன் கைகள் உற்சாகத்தில் உயர்த்தப்பட்டுள்ளன.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "கற்றுக்கொள்ள மேலும் தகவலுக்கு வார்த்தைகளை தேர்ந்தெடுக்கவும்",
+    "requireAnalyticsAccessTitle": "சேர்வதற்கு பகுப்பாய்வு அணுகல் தேவை",
+    "requireAnalyticsAccessDesc": "பங்கேற்பாளர்கள் இந்த பாடத்தில் சேர்வதற்கு தங்கள் கற்றல் பகுப்பாய்வுக்கு அணுகலை வழங்க வேண்டும்",
+    "analyticsAccessNoticeTitle": "பகுப்பாய்வு அணுகல் தேவை",
+    "analyticsAccessNoticeDesc": "இந்த பாடத்தில் சேர்வதன் மூலம், நீங்கள் நிர்வாகிகளுக்கு உங்கள் கற்றல் பகுப்பாய்வுக்கு அணுகலை வழங்க ஒப்புக்கொள்கிறீர்கள்.",
+    "skipOnboardingClassCodeDesc": "சுயமாக கற்றுக்கொள்கிறீர்களா? கவலைப்பட வேண்டாம், நீங்கள்:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

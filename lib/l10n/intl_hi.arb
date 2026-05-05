@@ -3646,7 +3646,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-05-04 12:42:16.736738",
+    "@@last_modified": "2026-05-05 13:48:29.258183",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11677,6 +11677,36 @@
     },
     "bearImageDescription": "एक कार्टून जैसा पीला भालू जो उत्साह में अपने हाथ उठाए हुए है।",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "शब्दों का चयन करें ताकि उनके बारे में अधिक जान सकें",
+    "requireAnalyticsAccessTitle": "शामिल होने के लिए एनालिटिक्स एक्सेस की आवश्यकता है",
+    "requireAnalyticsAccessDesc": "भागीदारों को इस पाठ्यक्रम में शामिल होने के लिए अपने शिक्षण एनालिटिक्स तक पहुंच प्रदान करनी होगी",
+    "analyticsAccessNoticeTitle": "एनालिटिक्स एक्सेस आवश्यक",
+    "analyticsAccessNoticeDesc": "इस पाठ्यक्रम में शामिल होकर, आप प्रशासकों को अपने शिक्षण एनालिटिक्स तक पहुंच प्रदान करने के लिए सहमत होते हैं।",
+    "skipOnboardingClassCodeDesc": "स्वतंत्र रूप से सीख रहे हैं? चिंता न करें, आप:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

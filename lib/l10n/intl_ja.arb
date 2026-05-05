@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-05-04 12:42:15.726781",
+    "@@last_modified": "2026-05-05 13:48:25.721128",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11826,6 +11826,36 @@
     },
     "bearImageDescription": "興奮して腕を上げた漫画風の黄色いクマ。",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "学ぶための単語を選択してください",
+    "requireAnalyticsAccessTitle": "参加するには分析アクセスが必要です",
+    "requireAnalyticsAccessDesc": "参加者はこのコースに参加するために学習分析へのアクセスを許可する必要があります",
+    "analyticsAccessNoticeTitle": "分析アクセスが必要です",
+    "analyticsAccessNoticeDesc": "このコースに参加することで、管理者にあなたの学習分析へのアクセスを許可することに同意します。",
+    "skipOnboardingClassCodeDesc": "独自に学習していますか？心配しないでください、あなたは:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

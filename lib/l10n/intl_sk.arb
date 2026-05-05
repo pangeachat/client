@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-05-04 12:41:29.318475",
+    "@@last_modified": "2026-05-05 13:45:58.662942",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -12074,6 +12074,36 @@
     },
     "bearImageDescription": "Kreslený žltý medveď s vystrčenými rukami v nadšení.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Vyberte slová, aby ste sa o nich dozvedeli viac",
+    "requireAnalyticsAccessTitle": "Vyžaduje sa prístup k analytike na pripojenie",
+    "requireAnalyticsAccessDesc": "Účastníci musia poskytnúť prístup k svojim analytickým údajom o učení, aby sa mohli pripojiť k tomuto kurzu",
+    "analyticsAccessNoticeTitle": "Vyžaduje sa prístup k analytike",
+    "analyticsAccessNoticeDesc": "Pripojením sa k tomuto kurzu súhlasíte s poskytnutím prístupu administrátorom k vašim analytickým údajom o učení.",
+    "skipOnboardingClassCodeDesc": "Učíte sa nezávisle? Nebojte sa, môžete:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 12:41:28.104325",
+    "@@last_modified": "2026-05-05 13:45:53.939308",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11783,6 +11783,36 @@
     },
     "bearImageDescription": "Un urs galben în stil desenat, cu brațele ridicate de entuziasm.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Selectați cuvintele pentru a învăța mai multe despre ele",
+    "requireAnalyticsAccessTitle": "Necesită acces la analize pentru a se alătura",
+    "requireAnalyticsAccessDesc": "Participanții trebuie să acorde acces la analizele lor de învățare pentru a se alătura acestui curs",
+    "analyticsAccessNoticeTitle": "Acces la analize necesar",
+    "analyticsAccessNoticeDesc": "Prin alăturarea acestui curs, sunteți de acord să acordați administratorilor acces la analizele dumneavoastră de învățare.",
+    "skipOnboardingClassCodeDesc": "Învățați independent? Nu vă faceți griji, puteți:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }
