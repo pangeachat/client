@@ -45,12 +45,12 @@ e2e/
 ## CI Integration
 
 GitHub Actions secrets:
-- `STAGING_TEST_EMAIL` — test account email
+- `STAGING_TEST_USER` — test account username
 - `STAGING_TEST_PASSWORD` — test account password
 
 ```yaml
 env:
-  STAGING_TEST_EMAIL: ${{ secrets.STAGING_TEST_EMAIL }}
+  STAGING_TEST_USER: ${{ secrets.STAGING_TEST_USER }}
   STAGING_TEST_PASSWORD: ${{ secrets.STAGING_TEST_PASSWORD }}
   BASE_URL: https://app.staging.pangea.chat
 ```

@@ -43,8 +43,8 @@ Playwright identifies elements via Flutter's **semantics tree** (ARIA roles + na
 
 ### Credential delivery
 
-- **Local**: `STAGING_TEST_EMAIL` and `STAGING_TEST_PASSWORD` from `client/.env` (see [run-playwright-and-axe-local.instructions.md](run-playwright-and-axe-local.instructions.md))
-- **CI**: GitHub Actions secrets `STAGING_TEST_EMAIL`, `STAGING_TEST_PASSWORD`
+- **Local**: `STAGING_TEST_USER` and `STAGING_TEST_PASSWORD` from `client/.env` (see [run-playwright-and-axe-local.instructions.md](run-playwright-and-axe-local.instructions.md))
+- **CI**: GitHub Actions secrets `STAGING_TEST_USER`, `STAGING_TEST_PASSWORD`
 
 ## Flutter-Playwright Patterns (critical)
 

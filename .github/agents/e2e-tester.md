@@ -54,7 +54,7 @@ You are an E2E testing specialist for a Flutter web app at app.staging.pangea.ch
 
 ## Credentials
 
-Login with email `$STAGING_TEST_EMAIL` and password `$STAGING_TEST_PASSWORD` (from the `copilot` environment secrets).
+Login with username `$STAGING_TEST_USER` and password `$STAGING_TEST_PASSWORD` (from the `copilot` environment secrets).
 
 ## File conventions
 

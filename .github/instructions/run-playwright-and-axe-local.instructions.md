@@ -38,7 +38,7 @@ The Playwright config ([`e2e/playwright.config.ts`](../../e2e/playwright.config.
 |---|---|---|
 | `STAGING_TEST_EMAIL` | Login email for the test account | `wykuji@denipl.com` |
 | `STAGING_TEST_PASSWORD` | Password for the test account | *(same as email for test accounts)* |
-| `STAGING_TEST_USER` | Matrix user ID (informational) | `@wykuji:staging.pangea.chat` |
+| `STAGING_TEST_USER` | Matrix user ID | `wykuji` |
 
 If your `.env` already has these from the standard `config.sample.json` setup, no extra config is needed.
 
@@ -109,7 +109,7 @@ npx playwright test --config e2e/playwright.config.ts -g "should display landing
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| `fill: value: expected string, got undefined` | `STAGING_TEST_EMAIL` or `STAGING_TEST_PASSWORD` not set | Verify they exist in `client/.env` (with values, not blank) |
+| `fill: value: expected string, got undefined` | `STAGING_TEST_USER` or `STAGING_TEST_PASSWORD` not set | Verify they exist in `client/.env` (with values, not blank) |
 | `browserType.launch: Executable doesn't exist` | Playwright browsers not installed or version mismatch | Run `npx playwright install chromium` |
 | Login succeeds but `toHaveURL(/\/rooms/)` times out | Test account may need onboarding, or network is slow | Try increasing timeout; check account state manually |
 | `Enable accessibility` button not found | Flutter app not fully loaded, or wrong URL | Verify the app is running and `BASE_URL` is correct |
