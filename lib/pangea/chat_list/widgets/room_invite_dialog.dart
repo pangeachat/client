@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -24,21 +25,19 @@ class RoomInviteDialog extends StatelessWidget {
 
     switch (resp) {
       case CourseInviteAction.accept:
-        final joinResult = await showFutureLoadingDialog(
+        final result = await showFutureLoadingDialog(
           context: context,
           future: room.joinKnockedRoom,
           exceptionContext: ExceptionContext.joinRoom,
         );
 
-        if (joinResult.isError) return;
-        if (room.membership != Membership.join) {
-          await room.client.waitForRoomInSync(room.id, join: true);
-        }
+        final joinResp = result.result;
+        final handler = JoinRoomAnalyticsConsentHandler(joinResp);
+        final roomId = await handler.handle(context);
+        if (roomId == null) return;
 
         context.go(
-          room.isSpace
-              ? "/rooms/spaces/${room.id}/details"
-              : "/rooms/${room.id}",
+          room.isSpace ? "/rooms/spaces/$roomId/details" : "/rooms/$roomId",
         );
         return;
       case CourseInviteAction.decline:

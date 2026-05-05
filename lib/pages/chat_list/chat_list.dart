@@ -634,7 +634,12 @@ class ChatListController extends State<ChatList>
     ).client.rooms.where((r) => r.isSpace && r.membership == Membership.invite);
 
     for (final space in invitedSpaces) {
-      await SpaceTapUtil.onTap(context, space);
+      final joinResp = await SpaceTapUtil.onInviteTap(context, space);
+      final handler = JoinRoomAnalyticsConsentHandler(joinResp);
+      final roomId = await handler.handle(context);
+      if (roomId != null) {
+        context.go("/rooms/spaces/$roomId/details");
+      }
     }
   }
 
@@ -654,7 +659,9 @@ class ChatListController extends State<ChatList>
       // Auto-join analytics rooms or spaces the user has knocked on
       if (isAnalytics || hasKnocked) {
         try {
-          await room.joinKnockedRoom();
+          final joinResp = await room.joinKnockedRoom();
+          final handler = JoinRoomAnalyticsConsentHandler(joinResp);
+          await handler.handle(context);
         } catch (err, s) {
           ErrorHandler.logError(
             m: "Failed to join analytics room",
@@ -671,7 +678,13 @@ class ChatListController extends State<ChatList>
         final roomCode = room.joinCode?.toLowerCase();
         final cachedCode = SpaceCodeRepo.recentCode?.toLowerCase();
         if (cachedCode == roomCode) continue;
-        await SpaceTapUtil.onTap(context, room);
+
+        final joinResp = await SpaceTapUtil.onInviteTap(context, room);
+        final handler = JoinRoomAnalyticsConsentHandler(joinResp);
+        final roomId = await handler.handle(context);
+        if (roomId != null) {
+          context.go("/rooms/spaces/$roomId/details");
+        }
       }
     }
   }

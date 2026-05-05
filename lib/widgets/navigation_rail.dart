@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/navi_rail_item.dart';
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/chat_list/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
@@ -43,6 +44,29 @@ class SpacesNavigationRail extends StatelessWidget {
     // Pangea#
     super.key,
   });
+
+  // #Pangea
+  Future<void> _onTapSpace(BuildContext context, String roomId) async {
+    collapse();
+    final client = Matrix.of(context).client;
+    final room = client.getRoomById(roomId);
+    final membership = room?.membership;
+
+    if (!{Membership.invite, Membership.leave}.contains(membership)) {
+      context.go("/rooms/spaces/$roomId/details");
+      return;
+    }
+
+    final joinResp = room?.membership == Membership.invite
+        ? await SpaceTapUtil.onInviteTap(context, room!)
+        : await SpaceTapUtil.autoJoin(context, room!);
+
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp);
+    final resp = await handler.handle(context);
+    context.go("/rooms/spaces/$resp/details");
+    return;
+  }
+  // Pangea#
 
   @override
   Widget build(BuildContext context) {
@@ -249,17 +273,7 @@ class SpacesNavigationRail extends StatelessWidget {
                           backgroundColor: Colors.transparent,
                           borderRadius: BorderRadius.circular(0),
                           // onTap: () => onGoToSpaceId(allSpaces[i].id),
-                          onTap: () async {
-                            collapse();
-                            final room = client.getRoomById(allSpaces[i].id);
-                            if (room != null) {
-                              await SpaceTapUtil.onTap(context, room);
-                            } else {
-                              context.go(
-                                "/rooms/spaces/${allSpaces[i].id}/details",
-                              );
-                            }
-                          },
+                          onTap: () => _onTapSpace(context, allSpaces[i].id),
                           // Pangea#
                           unreadBadgeFilter: (room) =>
                               spaceChildrenIds.contains(room.id),
