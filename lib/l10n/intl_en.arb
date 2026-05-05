@@ -5081,5 +5081,7 @@
     "requireAnalyticsAccessTitle": "Require analytics access to join",
     "requireAnalyticsAccessDesc": "Participants must grant access to their learning analytics to join this course",
     "moreOptions": "More options",
-    "bearImageDescription": "A cartoonish yellow bear with its arms raised in excitement."
+    "bearImageDescription": "A cartoonish yellow bear with its arms raised in excitement.",
+    "analyticsAccessNoticeTitle": "Analytics Access Required",
+    "analyticsAccessNoticeDesc": "By joining this course, you agree to grant admins access to your learning analytics."
 }
