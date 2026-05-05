@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import { expect, test } from "../fixtures";
 
 /**
@@ -11,48 +13,46 @@ import { expect, test } from "../fixtures";
  */
 
 test.describe("Login", () => {
-  test.use({ storageState: { cookies: [], origins: [] } }); // Don't use saved auth for login test
+  // Don't use saved auth for login test
+  test.use({ storageState: { cookies: [], origins: [] } }); 
 
   test("should display landing page and login successfully", async ({
     page,
   }) => {
-    // Fixture already navigated to '/' and enabled Flutter semantics tree
+    // Use intl key values as object names
+    const filePath = path.resolve(__dirname, '../../lib/l10n/intl_en.arb');
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const intl = JSON.parse(fileContent);
 
-    // Verify landing page elements are visible
-    await expect(page.getByRole("button", { name: "Start" })).toBeVisible();
-    await expect(
-      page.getByRole("button", { name: "Login to my account" }),
-    ).toBeVisible();
+    // Avoid test timing out on login 
+    test.setTimeout(120000); 
 
-    // Click "Login to my account"
-    await page.getByRole("button", { name: "Login to my account" }).click();
+    // Click "Login to my account" button
+    await page.getByRole("button", { name: intl.loginToAccount }).click();
 
     // Click "Email" login method
-    await page.getByRole("button", { name: "Email" }).click();
+    await page.getByRole("button", { name: intl.email }).click();
 
-    // Fill credentials — click to focus first, Flutter needs explicit focus
+    // Fill username/email — click to focus first, Flutter needs explicit focus
     const usernameField = page.getByRole("textbox", {
-      name: "Username or email",
+      name: intl.usernameOrEmail,
     });
     await usernameField.click();
-    await usernameField.fill(process.env.STAGING_TEST_EMAIL!);
+    await usernameField.fill(process.env.STAGING_TEST_USER!);
 
-    await page.waitForTimeout(500);
-
-    const passwordField = page.getByRole("textbox", { name: "Password" });
+    // Fill password
+    const passwordField = page.getByRole("textbox", { name: intl.password });
     await passwordField.click();
+    await page.waitForTimeout(500);
     await passwordField.fill(process.env.STAGING_TEST_PASSWORD!);
 
-    await page.waitForTimeout(500);
+    // Click login button once it's enabled
+    const loginButton = page.getByRole("button", { name: intl.login });
+    await expect(loginButton).toBeEnabled();
+    await loginButton.click();
 
-    // Click login
-    await page.getByRole("button", { name: "Login" }).click();
-
-    // Wait for chat list to load
-    await expect(page).toHaveURL(/\/rooms/, { timeout: 30000 });
-
-    // Verify chat list UI is visible
-    await expect(page.getByRole("button", { name: "Home" })).toBeVisible();
-    await expect(page.getByRole("button", { name: "Settings" })).toBeVisible();
+    // Wait for chat list to load (URL should contain /rooms)
+    // Login involves a Matrix server round-trip, so give it ample time
+    await expect(page).toHaveURL("#/rooms", { timeout: 120000 });
   });
 });

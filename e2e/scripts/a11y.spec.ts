@@ -1,4 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
+import fs from "fs";
+import path from "path";
 import { expect, test } from "../fixtures";
 
 /**
@@ -30,24 +32,27 @@ async function auditPage(page: import("@playwright/test").Page) {
 }
 
 test.describe("Accessibility (axe-core)", () => {
-  test.describe("Unauthenticated pages", () => {
-    test.use({ storageState: { cookies: [], origins: [] } });
+  // Use intl key values as object names
+  const filePath = path.resolve(__dirname, '../../lib/l10n/intl_en.arb');
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  const intl = JSON.parse(fileContent);
 
+  test.describe("Unauthenticated pages", () => {
     test("landing page has no a11y violations", async ({ page }) => {
       // Fixture navigates to '/' and enables semantics
-      await expect(page.getByRole("button", { name: "Start" })).toBeVisible();
+      await expect(page.getByRole("button", { name: intl.start })).toBeVisible();
 
       const violations = await auditPage(page);
       expect(violations, formatViolations(violations)).toHaveLength(0);
     });
 
     test("email login page has no a11y violations", async ({ page }) => {
-      await page.getByRole("button", { name: "Login to my account" }).click();
-      await page.getByRole("button", { name: "Email" }).click();
+      await page.getByRole("button", { name: intl.loginToAccount }).click();
+      await page.getByRole("button", { name: intl.email }).click();
 
       // Wait for form fields to render in semantics tree
       await expect(
-        page.getByRole("textbox", { name: "Username or email" }),
+        page.getByRole("textbox", { name: intl.usernameOrEmail }),
       ).toBeVisible();
 
       const violations = await auditPage(page);
@@ -60,8 +65,11 @@ test.describe("Accessibility (axe-core)", () => {
     test.setTimeout(120_000);
 
     test("chat list has no a11y violations", async ({ page }) => {
+      // Give home button time to load
+      await page.waitForTimeout(500);
+
       // Auth fixture loads saved state → lands on /rooms or /home
-      await expect(page.getByRole("button", { name: "Home" })).toBeVisible({
+      await expect(page.getByRole("button", { name: intl.home })).toBeVisible({
         timeout: 90000,
       });
 
