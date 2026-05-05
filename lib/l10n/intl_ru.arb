@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-05-05 13:48:34.209908",
+    "@@last_modified": "2026-05-05 13:54:54.693607",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -12002,6 +12002,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Пожалуйста, введите число, большее или равное 0",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

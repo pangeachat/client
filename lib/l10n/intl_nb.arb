@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:46:57.534930",
+    "@@last_modified": "2026-05-05 13:54:20.320048",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11048,6 +11048,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Vennligst skriv inn et tall som er større enn eller lik 0",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

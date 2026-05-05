@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-05-05 13:46:28.806982",
+    "@@last_modified": "2026-05-05 13:54:14.158981",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10967,6 +10967,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Bitte geben Sie eine Zahl größer oder gleich 0 ein",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

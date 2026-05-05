@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-05-05 13:47:30.515755",
+    "@@last_modified": "2026-05-05 13:54:33.681346",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11319,6 +11319,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Lütfen 0 veya daha büyük bir sayı girin",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

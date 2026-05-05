@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-05-05 13:48:47.322944",
+    "@@last_modified": "2026-05-05 13:54:58.681199",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -11385,6 +11385,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Veuillez entrer un nombre supérieur ou égal à 0",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

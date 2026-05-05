@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:47:03.993049",
+    "@@last_modified": "2026-05-05 13:54:23.092477",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -11139,6 +11139,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Si us plau, introduïu un número superior o igual a 0",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

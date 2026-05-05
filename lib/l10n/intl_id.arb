@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:45:50.056620",
+    "@@last_modified": "2026-05-05 13:54:01.698188",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -11085,6 +11085,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Silakan masukkan angka yang lebih besar dari atau sama dengan 0",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

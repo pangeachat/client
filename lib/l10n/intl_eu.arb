@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-05-05 13:46:19.949386",
+    "@@last_modified": "2026-05-05 13:54:10.628914",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10988,6 +10988,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Sartu mesedez 0 baino handiagoa edo berdina den zenbaki bat",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

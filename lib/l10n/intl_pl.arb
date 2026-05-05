@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-05-05 13:48:10.380181",
+    "@@last_modified": "2026-05-05 13:54:46.722547",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -11097,6 +11097,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Proszę wprowadzić liczbę większą lub równą 0",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

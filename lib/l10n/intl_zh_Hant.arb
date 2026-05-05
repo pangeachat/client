@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:47:13.211145",
+    "@@last_modified": "2026-05-05 13:54:28.096252",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -11118,6 +11118,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "請輸入一個大於或等於 0 的數字",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

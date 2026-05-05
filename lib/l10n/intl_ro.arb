@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:45:53.939308",
+    "@@last_modified": "2026-05-05 13:54:03.306264",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11813,6 +11813,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Vă rugăm să introduceți un număr mai mare sau egal cu 0",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

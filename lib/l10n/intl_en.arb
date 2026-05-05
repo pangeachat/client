@@ -5084,5 +5084,6 @@
     "bearImageDescription": "A cartoonish yellow bear with its arms raised in excitement.",
     "analyticsAccessNoticeTitle": "Analytics Access Required",
     "analyticsAccessNoticeDesc": "By joining this course, you agree to grant admins access to your learning analytics.",
-    "skipOnboardingClassCodeDesc": "Learning independently? Don't worry, you can:"
+    "skipOnboardingClassCodeDesc": "Learning independently? Don't worry, you can:",
+    "pleaseEnterAPositiveNumber": "Please enter a number greater than or equal to 0"
 }

@@ -3462,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-05-05 13:47:55.600422",
+    "@@last_modified": "2026-05-05 13:54:41.783015",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10660,6 +10660,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Të lutem, fut një numër më të madh se ose të barabartë me 0",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }

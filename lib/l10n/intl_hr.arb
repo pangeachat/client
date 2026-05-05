@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-05-05 13:46:05.829858",
+    "@@last_modified": "2026-05-05 13:54:06.791334",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11472,6 +11472,11 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pleaseEnterAPositiveNumber": "Molimo unesite broj veći ili jednak 0",
+    "@pleaseEnterAPositiveNumber": {
         "type": "String",
         "placeholders": {}
     }
