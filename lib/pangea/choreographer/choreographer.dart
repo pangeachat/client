@@ -76,7 +76,7 @@ class Choreographer extends ChangeNotifier {
 
     igcController = IgcController(
       (e) {
-        errorService.setErrorAndLock(ChoreoError(e));
+        errorService.setError(ChoreoError(e));
         _lastIgcError = DateTime.now();
         _igcErrorBackoff *= 2;
       },
@@ -114,10 +114,8 @@ class Choreographer extends ChangeNotifier {
     _choreoRecord = null;
     igcController.clear();
     _resetDebounceTimer();
-
-    // error service's notification will trigger choreo notification,
-    // so don't make a redundant call to notifyListeners here
-    errorService.resetError();
+    errorService.unblockWritingAssistance();
+    notifyListeners();
   }
 
   @override
@@ -182,7 +180,7 @@ class Choreographer extends ChangeNotifier {
     }
 
     _lastChecked = textController.text;
-    if (errorService.isError) return;
+    if (errorService.blockWritingAssistance) return;
     if (textController.editType == EditTypeEnum.keyboard) {
       if (igcController.currentText != null) {
         igcController.clear();
@@ -235,9 +233,6 @@ class Choreographer extends ChangeNotifier {
     }
 
     _resetDebounceTimer();
-    _startLoading();
-
-    await igcController.getIGCTextData(textController.text, []);
 
     // init choreo record to record the original text before any matches are applied
     _choreoRecord ??= ChoreoRecordModel(
@@ -246,30 +241,30 @@ class Choreographer extends ChangeNotifier {
       openMatches: [],
     );
 
-    if (igcController.openNormalizationMatches.isNotEmpty) {
-      await igcController.acceptNormalizationMatches();
-    } else {
-      // trigger a re-render of the text field to show IGC matches
-      textController.setSystemText(textController.text, EditTypeEnum.igc);
-    }
-
-    _stopLoading();
+    errorService.clear();
+    await _runWritingAssistance();
   }
 
   /// Re-runs IGC with user feedback and updates the UI.
-  Future<bool> rerunWithFeedback(String feedbackText) async {
+  Future<void> rerunWithFeedback(String feedbackText) async {
     igcController.clearMatches();
     igcController.clearCurrentText();
     MatrixState.pAnyState.closeAllOverlays();
+    await _runWritingAssistance(feedbackText: feedbackText);
+  }
 
+  Future<void> _runWritingAssistance({String? feedbackText}) async {
     _startLoading();
-    final success = await igcController.rerunWithFeedback(feedbackText);
-    if (success && igcController.openNormalizationMatches.isNotEmpty) {
+
+    feedbackText != null
+        ? await igcController.rerunWithFeedback(feedbackText)
+        : await igcController.getIGCTextData(textController.text, []);
+
+    if (igcController.openNormalizationMatches.isNotEmpty) {
       await igcController.acceptNormalizationMatches();
     }
-    _stopLoading();
 
-    return success;
+    _stopLoading();
   }
 
   Future<PangeaMessageContentModel> getMessageContent(String message) async {
