@@ -39,7 +39,9 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
     );
 
     final room = await _loadRoom(resp);
-    return room._handleAnalyticsAccessCheck();
+    final joinResp = room._handleAnalyticsAccessCheck();
+    await setSawAccessNotice(resp);
+    return joinResp;
   }
 
   Future<JoinResponse> joinRoomByIdWithAccessCheck(
@@ -53,7 +55,9 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
       thirdPartySigned: thirdPartySigned,
     );
     final room = await _loadRoom(resp);
-    return room._handleAnalyticsAccessCheck();
+    final joinResp = room._handleAnalyticsAccessCheck();
+    await setSawAccessNotice(resp);
+    return joinResp;
   }
 
   Future<Room> _loadRoom(String roomId) async {
@@ -199,7 +203,9 @@ extension JoinRoomAnalyticsAccessRoomExtension on Room {
   Future<JoinResponse> joinWithAccessCheck() async {
     await join();
     final room = await client._loadRoom(id);
-    return room._handleAnalyticsAccessCheck();
+    final joinResp = room._handleAnalyticsAccessCheck();
+    await client.setSawAccessNotice(id);
+    return joinResp;
   }
 
   Future<JoinResponse> _handleAnalyticsAccessCheck() async {
