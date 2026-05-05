@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/growth_animation.dart';
-import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/common/widgets/anchored_overlay_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/card_header.dart';
@@ -249,17 +248,6 @@ class OverlayUtil {
       overlayKey: overlayKey,
       canPop: false,
       blockOverlay: true,
-    );
-  }
-
-  static void showStarRainOverlay(BuildContext context) {
-    showOverlay(
-      context: context,
-      position: OverlayPositionEnum.centered,
-      closePrevOverlay: false,
-      canPop: false,
-      overlayKey: "star_rain_level_up",
-      child: const StarRainWidget(overlayKey: "star_rain_level_up"),
     );
   }
 
