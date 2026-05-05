@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 12:42:17.877215",
+    "@@last_modified": "2026-05-05 13:48:31.546186",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -12077,6 +12077,36 @@
     },
     "bearImageDescription": "Karikatura flava urso kun siaj brakoj levitaj en ekscito.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Elektu vortojn por lerni pli pri ili",
+    "requireAnalyticsAccessTitle": "Postuli aliron al analitiko por aliĝi",
+    "requireAnalyticsAccessDesc": "Partoprenantoj devas doni aliron al siaj lernaj analitiko por aliĝi al ĉi tiu kurso",
+    "analyticsAccessNoticeTitle": "Aldona aliro al analitiko postulata",
+    "analyticsAccessNoticeDesc": "Per aliĝo al ĉi tiu kurso, vi konsentas doni al administrantoj aliron al viaj lernaj analitiko.",
+    "skipOnboardingClassCodeDesc": "Lerni sendepende? Ne zorgu, vi povas:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

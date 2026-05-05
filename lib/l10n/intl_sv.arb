@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 12:42:13.178757",
+    "@@last_modified": "2026-05-05 13:48:14.326925",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11545,6 +11545,36 @@
     },
     "bearImageDescription": "En tecknad gul björn med armarna uppsträckta i förtjusning.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Välj ord för att lära dig mer om dem",
+    "requireAnalyticsAccessTitle": "Kräv analysåtkomst för att delta",
+    "requireAnalyticsAccessDesc": "Deltagare måste ge åtkomst till sina lärandeanalyser för att delta i den här kursen",
+    "analyticsAccessNoticeTitle": "Analysåtkomst krävs",
+    "analyticsAccessNoticeDesc": "Genom att delta i den här kursen godkänner du att ge administratörer åtkomst till dina lärandeanalyser.",
+    "skipOnboardingClassCodeDesc": "Lär dig självständigt? Oroa dig inte, du kan:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

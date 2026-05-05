@@ -4217,7 +4217,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-05-04 12:42:21.848794",
+    "@@last_modified": "2026-05-05 13:48:44.056198",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10969,6 +10969,36 @@
     },
     "bearImageDescription": "Bear cartoonach buí le a lámha ardaithe i gciont.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Roghnaigh focail chun tuilleadh eolais a fháil fúthu",
+    "requireAnalyticsAccessTitle": "Teastaíonn rochtain ar anailísí chun páirt a ghlacadh",
+    "requireAnalyticsAccessDesc": "Caithfidh rannpháirtithe rochtain a thabhairt ar a n-anailísí foghlama chun páirt a ghlacadh sa chúrsa seo",
+    "analyticsAccessNoticeTitle": "Teastaíonn Rochtain ar Anailísí",
+    "analyticsAccessNoticeDesc": "Trí pháirt a ghlacadh sa chúrsa seo, aontaíonn tú rochtain a thabhairt do na hoifigigh ar do n-anailísí foghlama.",
+    "skipOnboardingClassCodeDesc": "Ag foghlaim go neamhspleách? Ná bí buartha, is féidir leat:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

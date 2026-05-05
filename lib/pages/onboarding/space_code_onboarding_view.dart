@@ -85,9 +85,21 @@ class SpaceCodeOnboardingView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    TextButton(
-                      onPressed: () => context.go("/rooms"),
-                      child: Text(L10n.of(context).skipForNow),
+                    Column(
+                      children: [
+                        Text(
+                          L10n.of(context).skipOnboardingClassCodeDesc,
+                          style: theme.textTheme.labelMedium?.copyWith(
+                            fontStyle: FontStyle.italic,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        // SizedBox(height: 8.0),
+                        TextButton(
+                          onPressed: () => context.go("/rooms"),
+                          child: Text(L10n.of(context).skipForNow),
+                        ),
+                      ],
                     ),
                   ],
                 ),

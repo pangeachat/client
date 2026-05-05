@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 12:42:20.954850",
+    "@@last_modified": "2026-05-05 13:48:40.052911",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -12081,6 +12081,36 @@
     },
     "bearImageDescription": "Crtački žuti medved sa podignutim rukama u uzbuđenju.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Izaberite reči da biste saznali više o njima",
+    "requireAnalyticsAccessTitle": "Zahteva se pristup analitici za pridruživanje",
+    "requireAnalyticsAccessDesc": "Učesnici moraju odobriti pristup svojim analitikama učenja da bi se pridružili ovom kursu",
+    "analyticsAccessNoticeTitle": "Zahteva se pristup analitici",
+    "analyticsAccessNoticeDesc": "Pridruživanjem ovom kursu, slažete se da administratorima omogućite pristup vašim analitikama učenja.",
+    "skipOnboardingClassCodeDesc": "Učite samostalno? Ne brinite, možete:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

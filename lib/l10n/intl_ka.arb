@@ -2367,7 +2367,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-05-04 12:42:19.716619",
+    "@@last_modified": "2026-05-05 13:48:37.673880",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12026,6 +12026,36 @@
     },
     "bearImageDescription": "კარტონული ყვითელი დათვი, რომლის ხელები აღიმართა აღფრთოვანებით.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "აირჩიეთ სიტყვები, რომ მეტი გაიგოთ მათზე",
+    "requireAnalyticsAccessTitle": "ანალიტიკის წვდომა საჭიროა გაწვდისთვის",
+    "requireAnalyticsAccessDesc": "მონაწილეებს უნდა მიაწვდონ წვდომა თავიანთი სასწავლო ანალიტიკაზე, რომ ამ კურსში გაწვდონ",
+    "analyticsAccessNoticeTitle": "ანალიტიკის წვდომა საჭიროა",
+    "analyticsAccessNoticeDesc": "ამ კურსში გაწვდით, თქვენ თანხმდებით, რომ ადმინისტრატორებს მიაწვდონ წვდომა თქვენს სასწავლო ანალიტიკაზე.",
+    "skipOnboardingClassCodeDesc": "მარტო სწავლობთ? ნუ ინერვიულებთ, შეგიძლიათ:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

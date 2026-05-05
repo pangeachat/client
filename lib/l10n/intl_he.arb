@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 12:41:32.195189",
+    "@@last_modified": "2026-05-05 13:46:09.430573",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -12037,6 +12037,36 @@
     },
     "bearImageDescription": "דוב צהוב בסגנון קריקטורה עם ידיים מורמות בהתלהבות.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "בחר מילים כדי ללמוד עליהן יותר",
+    "requireAnalyticsAccessTitle": "דרוש גישה לניתוחי נתונים כדי להצטרף",
+    "requireAnalyticsAccessDesc": "משתתפים חייבים להעניק גישה לניתוחי הלמידה שלהם כדי להצטרף לקורס זה",
+    "analyticsAccessNoticeTitle": "דרושה גישה לניתוחי נתונים",
+    "analyticsAccessNoticeDesc": "בהצטרפות לקורס זה, אתה מסכים להעניק למנהלים גישה לניתוחי הלמידה שלך.",
+    "skipOnboardingClassCodeDesc": "לומד באופן עצמאי? אל תדאג, אתה יכול:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

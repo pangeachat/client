@@ -3646,7 +3646,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-05-04 12:41:49.097395",
+    "@@last_modified": "2026-05-05 13:47:08.172800",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11677,6 +11677,36 @@
     },
     "bearImageDescription": "หมีการ์ตูนสีเหลืองที่ยกแขนขึ้นด้วยความตื่นเต้น",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "เลือกคำเพื่อเรียนรู้เพิ่มเติมเกี่ยวกับพวกเขา",
+    "requireAnalyticsAccessTitle": "ต้องการการเข้าถึงการวิเคราะห์เพื่อเข้าร่วม",
+    "requireAnalyticsAccessDesc": "ผู้เข้าร่วมต้องอนุญาตการเข้าถึงการวิเคราะห์การเรียนรู้ของตนเพื่อเข้าร่วมหลักสูตรนี้",
+    "analyticsAccessNoticeTitle": "ต้องการการเข้าถึงการวิเคราะห์",
+    "analyticsAccessNoticeDesc": "โดยการเข้าร่วมหลักสูตรนี้ คุณตกลงที่จะอนุญาตให้ผู้ดูแลระบบเข้าถึงการวิเคราะห์การเรียนรู้ของคุณ",
+    "skipOnboardingClassCodeDesc": "เรียนรู้ด้วยตนเอง? ไม่ต้องกังวล คุณสามารถ:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

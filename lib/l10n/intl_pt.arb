@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 12:41:36.392208",
+    "@@last_modified": "2026-05-05 13:46:22.278455",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -12076,6 +12076,36 @@
     },
     "bearImageDescription": "Um urso amarelo em estilo de desenho animado com os braços levantados em empolgação.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Selecione palavras para saber mais sobre elas",
+    "requireAnalyticsAccessTitle": "Requerer acesso à análise para participar",
+    "requireAnalyticsAccessDesc": "Os participantes devem conceder acesso às suas análises de aprendizado para participar deste curso",
+    "analyticsAccessNoticeTitle": "Acesso à Análise Necessário",
+    "analyticsAccessNoticeDesc": "Ao participar deste curso, você concorda em conceder acesso aos administradores às suas análises de aprendizado.",
+    "skipOnboardingClassCodeDesc": "Aprendendo de forma independente? Não se preocupe, você pode:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

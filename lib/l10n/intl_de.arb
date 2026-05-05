@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-05-04 12:41:38.544942",
+    "@@last_modified": "2026-05-05 13:46:28.806982",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10937,6 +10937,36 @@
     },
     "bearImageDescription": "Ein cartoonartiger gelber Bär mit erhobenen Armen vor Aufregung.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Wählen Sie Wörter aus, um mehr über sie zu erfahren",
+    "requireAnalyticsAccessTitle": "Analytikzugang erforderlich, um beizutreten",
+    "requireAnalyticsAccessDesc": "Teilnehmer müssen den Zugriff auf ihre Lernanalysen gewähren, um an diesem Kurs teilzunehmen",
+    "analyticsAccessNoticeTitle": "Analytikzugang erforderlich",
+    "analyticsAccessNoticeDesc": "Durch die Teilnahme an diesem Kurs stimmen Sie zu, den Administratoren Zugriff auf Ihre Lernanalysen zu gewähren.",
+    "skipOnboardingClassCodeDesc": "Unabhängig lernen? Keine Sorge, Sie können:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

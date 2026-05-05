@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 12:41:41.707619",
+    "@@last_modified": "2026-05-05 13:46:49.422405",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -11049,6 +11049,36 @@
     },
     "bearImageDescription": "Un orso giallo in stile cartone animato con le braccia alzate in segno di eccitazione.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Seleziona le parole per saperne di più",
+    "requireAnalyticsAccessTitle": "Richiedere l'accesso all'analisi per partecipare",
+    "requireAnalyticsAccessDesc": "I partecipanti devono concedere l'accesso alle loro analisi di apprendimento per partecipare a questo corso",
+    "analyticsAccessNoticeTitle": "Accesso all'analisi richiesto",
+    "analyticsAccessNoticeDesc": "Partecipando a questo corso, accetti di concedere agli amministratori l'accesso alle tue analisi di apprendimento.",
+    "skipOnboardingClassCodeDesc": "Stai imparando in modo indipendente? Non preoccuparti, puoi:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

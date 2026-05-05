@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-05-04 12:42:22.977053",
+    "@@last_modified": "2026-05-05 13:48:47.322944",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -11355,6 +11355,36 @@
     },
     "bearImageDescription": "Un ours jaune de style cartoon avec les bras levés d'excitation.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Sélectionnez des mots pour en savoir plus à leur sujet",
+    "requireAnalyticsAccessTitle": "Accès aux analyses requis pour rejoindre",
+    "requireAnalyticsAccessDesc": "Les participants doivent accorder l'accès à leurs analyses d'apprentissage pour rejoindre ce cours",
+    "analyticsAccessNoticeTitle": "Accès aux analyses requis",
+    "analyticsAccessNoticeDesc": "En rejoignant ce cours, vous acceptez d'accorder aux administrateurs l'accès à vos analyses d'apprentissage.",
+    "skipOnboardingClassCodeDesc": "Apprenez de manière autonome ? Ne vous inquiétez pas, vous pouvez :",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }

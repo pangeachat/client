@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-05-04 12:41:37.313979",
+    "@@last_modified": "2026-05-05 13:46:26.198114",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10955,6 +10955,36 @@
     },
     "bearImageDescription": "Koomiline kollane karu, kelle käed on elevusest üles tõstetud.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Vali sõnad, et neist rohkem teada saada",
+    "requireAnalyticsAccessTitle": "Nõua analüütika juurdepääsu liitumiseks",
+    "requireAnalyticsAccessDesc": "Osalejad peavad andma juurdepääsu oma õpikogemuse analüütikale, et liituda selle kursusega",
+    "analyticsAccessNoticeTitle": "Nõutav analüütika juurdepääs",
+    "analyticsAccessNoticeDesc": "Liitudes selle kursusega, nõustute andma administraatoritele juurdepääsu oma õpikogemuse analüütikale.",
+    "skipOnboardingClassCodeDesc": "Õpid iseseisvalt? Ära muretse, sa saad:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     }
