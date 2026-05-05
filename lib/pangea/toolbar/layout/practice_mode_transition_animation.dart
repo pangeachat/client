@@ -166,7 +166,7 @@ class CenteredMessage extends StatelessWidget {
       valueListenable: controller.finishedTransition,
       builder: (context, finished, _) {
         return Opacity(
-          opacity: finished ? 1.0 : 0.5,
+          opacity: finished ? 1.0 : 0.0,
           child: GestureDetector(
             onTap: controller.widget.chatController.clearSelectedEvents,
             child: SingleChildScrollView(
