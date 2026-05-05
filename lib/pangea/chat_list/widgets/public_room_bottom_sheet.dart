@@ -6,6 +6,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_rooms_chunk_extension.dart';
 import 'package:fluffychat/pangea/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
@@ -30,7 +31,7 @@ class PublicRoomBottomSheet extends StatefulWidget {
     assert(roomAlias != null || chunk != null);
   }
 
-  static Future<String?> show({
+  static Future<JoinResponse?> show({
     required BuildContext context,
     String? roomAlias,
     PublishedRoomsChunk? chunk,
@@ -45,7 +46,7 @@ class PublicRoomBottomSheet extends StatefulWidget {
       return null;
     }
 
-    return showAdaptiveBottomSheet(
+    return showAdaptiveBottomSheet<JoinResponse?>(
       context: context,
       builder: (context) => PublicRoomBottomSheet(
         roomAlias: roomAlias,
@@ -92,9 +93,9 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
       client: client,
       notFoundError: L10n.of(context).notTheCodeError,
     );
-    final roomId = result.result;
-    if (roomId != null) {
-      Navigator.of(context).pop(roomId);
+    final joinResp = result.result;
+    if (joinResp != null) {
+      Navigator.of(context).pop(joinResp);
     }
   }
 

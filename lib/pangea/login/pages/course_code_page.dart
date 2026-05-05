@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -44,7 +45,9 @@ class CourseCodePageState extends State<CourseCodePage> {
       context: context,
       client: Matrix.of(context).client,
     );
-    final roomId = result.result;
+    final joinResp = result.result;
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp);
+    final roomId = await handler.handle(context);
     if (roomId != null) {
       final room = Matrix.of(context).client.getRoomById(roomId);
       room?.isSpace ?? true

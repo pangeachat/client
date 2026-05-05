@@ -12,6 +12,7 @@ import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_view.dart';
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/chat_list/utils/app_version_util.dart';
 import 'package:fluffychat/pangea/chat_list/utils/chat_list_handle_space_tap.dart';
@@ -1090,9 +1091,10 @@ class ChatListController extends State<ChatList>
       context: context,
       client: client,
     );
-    if (!mounted) return;
+    final joinResp = result.result;
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp);
+    final roomId = await handler.handle(context);
 
-    final roomId = result.result;
     if (roomId != null) {
       final room = client.getRoomById(roomId);
       room?.isSpace ?? true

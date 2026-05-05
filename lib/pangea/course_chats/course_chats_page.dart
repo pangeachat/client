@@ -10,6 +10,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/pangea/chat_list/widgets/public_room_bottom_sheet.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -485,13 +486,15 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
 
   void joinChildRoom(SpaceRoomsChunk$2 item) async {
     final space = widget.client.getRoomById(widget.roomId);
-    final roomId = await PublicRoomBottomSheet.show(
+    final joinResp = await PublicRoomBottomSheet.show(
       context: context,
       chunk: item,
       via: space?.spaceChildren
           .firstWhereOrNull((child) => child.roomId == item.roomId)
           ?.via,
     );
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp);
+    final roomId = await handler.handle(context);
     if (mounted && roomId != null) {
       setState(() {
         discoveredChildren?.remove(item);

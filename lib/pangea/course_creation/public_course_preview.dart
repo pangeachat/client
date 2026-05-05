@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_creation/public_course_preview_view.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
@@ -120,7 +121,9 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       context: context,
       client: Matrix.of(context).client,
     );
-    final roomId = result.result;
+    final joinResp = result.result;
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp);
+    final roomId = await handler.handle(context);
     if (roomId != null) {
       final room = Matrix.of(context).client.getRoomById(roomId);
       room?.isSpace ?? true
