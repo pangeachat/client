@@ -24,10 +24,10 @@ class ChoreographerHasErrorButton extends StatelessWidget {
             content: Text(error.toLocalizedString(context)),
           ),
         );
-        choreographer.errorService.resetError();
+        choreographer.errorService.clear();
       },
       mini: true,
-      child: Icon(error.icon),
+      child: Icon(Icons.error_outline),
     );
   }
 }

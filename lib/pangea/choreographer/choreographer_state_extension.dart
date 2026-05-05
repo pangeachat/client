@@ -11,7 +11,7 @@ extension ChoregrapherStateExtension on Choreographer {
       return AssistanceStateEnum.noMessage;
     }
 
-    if (errorService.isError) {
+    if (errorService.blockWritingAssistance) {
       return AssistanceStateEnum.error;
     }
 
