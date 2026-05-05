@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
@@ -87,7 +88,9 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
         client: Matrix.of(context).client,
         showLoading: false,
       );
-      final spaceId = result.result;
+      final joinResp = result.result;
+      final handler = JoinRoomAnalyticsConsentHandler(joinResp);
+      final spaceId = await handler.handle(context);
       if (spaceId == null) {
         throw Exception('Failed to join space with code $spaceCode');
       }
