@@ -3,8 +3,6 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/analytics_access/access_notice_extension.dart';
 import 'package:fluffychat/pangea/analytics_access/course_settings_extension.dart';
 
-class RequiredAnalyticsAccessException implements Exception {}
-
 class JoinResponse {
   final String roomId;
   final bool shouldShowAnalyticsAccessNotice;

@@ -105,20 +105,12 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
       return;
     }
 
-    final result = await showFutureLoadingDialog<String>(
+    final result = await showFutureLoadingDialog<JoinResponse>(
       context: context,
-      future: () async {
-        final roomId = await client.joinRoom(
-          roomAlias ?? chunk!.roomId,
-          serverName: via,
-        );
-
-        final room = client.getRoomById(roomId);
-        if (room == null || room.membership != Membership.join) {
-          await client.waitForRoomInSync(roomId, join: true);
-        }
-        return roomId;
-      },
+      future: () => client.joinRoomWithAccessCheck(
+        roomAlias ?? chunk!.roomId,
+        serverName: via,
+      ),
     );
 
     if (result.result != null) {

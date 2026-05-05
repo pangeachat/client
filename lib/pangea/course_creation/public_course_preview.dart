@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_creation/public_course_preview_view.dart';
@@ -149,43 +150,42 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
     }
 
     final knock = roomSummary?.joinRule == JoinRules.knock;
-    final resp = await showFutureLoadingDialog(
+    if (knock) {
+      await showFutureLoadingDialog(
+        context: context,
+        future: () async {
+          try {
+            await client.knockAndRecordRoom(widget.roomID!);
+          } catch (e, s) {
+            ErrorHandler.logError(e: e, s: s, data: {'roomID': widget.roomID});
+            rethrow;
+          }
+        },
+      );
+      await showOkAlertDialog(
+        context: context,
+        title: L10n.of(context).youHaveKnocked,
+        message: L10n.of(context).knockDesc,
+      );
+      return;
+    }
+
+    final accessCheckResp = await showFutureLoadingDialog<JoinResponse>(
       context: context,
-      future: () async {
-        String roomId;
-        try {
-          roomId = knock
-              ? await client.knockAndRecordRoom(widget.roomID!)
-              : await client.joinRoom(widget.roomID!);
-        } catch (e, s) {
-          ErrorHandler.logError(e: e, s: s, data: {'roomID': widget.roomID});
-          rethrow;
-        }
-
-        Room? room = client.getRoomById(roomId);
-        if (!knock && room?.membership != Membership.join) {
-          await client.waitForRoomInSync(roomId, join: true);
-          room = client.getRoomById(roomId);
-        }
-
-        if (knock) return;
-        if (room == null) {
-          ErrorHandler.logError(
-            e: Exception("Failed to load joined room in public course preview"),
-            data: {'roomID': widget.roomID},
-          );
-          throw Exception("Failed to join room");
-        }
-        context.go("/rooms/spaces/$roomId/details");
-      },
+      future: () => client.joinRoomWithAccessCheck(widget.roomID!),
     );
+    final joinResp = accessCheckResp.result;
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp);
+    final roomId = await handler.handle(context);
+    if (roomId == null) {
+      ErrorHandler.logError(
+        e: Exception("Failed to fetch roomID in public course preview"),
+        data: {'roomID': widget.roomID},
+      );
+      throw Exception("Failed to fetch roomID");
+    }
 
-    if (!knock || resp.isError) return;
-    await showOkAlertDialog(
-      context: context,
-      title: L10n.of(context).youHaveKnocked,
-      message: L10n.of(context).knockDesc,
-    );
+    context.go("/rooms/spaces/$roomId/details");
   }
 
   @override
