@@ -6,6 +6,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/example_message_util.dart';
+import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_data_service.dart';
@@ -279,7 +280,13 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
     final bonus = _sessionController.bonusUses;
     await _analyticsController.addSessionAnalytics(bonus, _l2!.langCodeShort);
+
     AnalyticsPractice.bypassExitConfirmation = true;
+    StarRainWidget.show(
+      context,
+      "completed-activity-star-rain",
+      showBlast: true,
+    );
   }
 
   Future<void> _continueSession() async {

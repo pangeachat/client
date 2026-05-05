@@ -159,4 +159,10 @@ extension ActivitySummaryRoomExtension on Room {
 
     ActivitySummaryRepo.delete(id, req);
   }
+
+  Future<void> fetchSummariesByL1() async {
+    final l1 = MatrixState.pangeaController.userController.userL1Code;
+    if (l1 == null) return;
+    return fetchSummaries(l1);
+  }
 }
