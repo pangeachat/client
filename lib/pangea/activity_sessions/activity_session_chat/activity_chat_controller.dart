@@ -28,7 +28,6 @@ class ActivityChatController {
 
   StreamSubscription? _analyticsSubscription;
   bool _disposed = false;
-
   bool _loadingSummary = false;
 
   final ScrollController carouselController = ScrollController();
@@ -71,6 +70,8 @@ class ActivityChatController {
   ActivitySummaryModel? get _summaryEvent => room.activitySummaryByL1;
   ActivitySummaryResponseModel? get _summary => _summaryEvent?.summary;
 
+  bool get hasSummary => _summary != null;
+
   void _setRolesSubscription() {
     _rolesSubscription = room.client.onRoomState.stream
         .where(
@@ -92,12 +93,7 @@ class ActivityChatController {
               event.roomId == room.id &&
               event.state.type == PangeaEventTypes.activitySummary,
         )
-        .listen((e) {
-          if (confettiNotifier.value) return;
-          if (room.activitySummaryByL1?.summary != null) {
-            confettiNotifier.value = true;
-          }
-        });
+        .listen((e) => showConfetti());
   }
 
   void highlightRole(ActivityRoleModel role) {
@@ -115,6 +111,13 @@ class ActivityChatController {
   void toggleShowDropdown() {
     if (!_disposed) {
       showActivityDropdown.value = !showActivityDropdown.value;
+    }
+  }
+
+  void showConfetti() {
+    if (_disposed || confettiNotifier.value) return;
+    if (hasSummary) {
+      confettiNotifier.value = true;
     }
   }
 
