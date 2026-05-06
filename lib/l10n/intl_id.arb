@@ -11087,10 +11087,5 @@
     "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "pleaseEnterAPositiveNumber": "Silakan masukkan angka yang lebih besar dari atau sama dengan 0",
-    "@pleaseEnterAPositiveNumber": {
-        "type": "String",
-        "placeholders": {}
     }
 }

@@ -10990,10 +10990,5 @@
     "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "pleaseEnterAPositiveNumber": "Будь ласка, введіть число, більше або рівне 0",
-    "@pleaseEnterAPositiveNumber": {
-        "type": "String",
-        "placeholders": {}
     }
 }

@@ -11106,10 +11106,5 @@
     "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "pleaseEnterAPositiveNumber": "தயவுசெய்து 0 க்கு சமமான அல்லது அதற்கு மேற்பட்ட எண் ஒன்றை உள்ளிடவும்",
-    "@pleaseEnterAPositiveNumber": {
-        "type": "String",
-        "placeholders": {}
     }
 }

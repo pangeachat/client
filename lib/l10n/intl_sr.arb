@@ -12113,10 +12113,5 @@
     "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "pleaseEnterAPositiveNumber": "Молимо вас да унесете број већи или једнак 0",
-    "@pleaseEnterAPositiveNumber": {
-        "type": "String",
-        "placeholders": {}
     }
 }

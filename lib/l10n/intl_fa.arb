@@ -11102,10 +11102,5 @@
     "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "pleaseEnterAPositiveNumber": "لطفاً یک عدد بزرگتر یا مساوی 0 وارد کنید",
-    "@pleaseEnterAPositiveNumber": {
-        "type": "String",
-        "placeholders": {}
     }
 }

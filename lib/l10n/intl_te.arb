@@ -12111,10 +12111,5 @@
     "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "pleaseEnterAPositiveNumber": "దయచేసి 0 కంటే ఎక్కువ లేదా సమానమైన సంఖ్యను నమోదు చేయండి",
-    "@pleaseEnterAPositiveNumber": {
-        "type": "String",
-        "placeholders": {}
     }
 }
