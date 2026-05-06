@@ -15,8 +15,8 @@ class JoinRoomAnalyticsConsentHandler {
   /// Show the user access consent dialog (if not already shown for this course),
   /// leaves room and return null if rejected, grants access and return roomId if accepted
   Future<String?> handle(BuildContext context) async {
-    final rejectedAccessRequest = await _showNotice(context);
-    if (rejectedAccessRequest) {
+    final acceptedAccessRequest = await _showNotice(context);
+    if (!acceptedAccessRequest) {
       return null;
     }
 

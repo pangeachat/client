@@ -11,10 +11,15 @@ import 'package:fluffychat/pangea/join_codes/knocked_rooms_model.dart';
 extension KnockRoomExtension on Room {
   bool get hasKnocked => client.hasKnockedRoom(id);
 
-  Future<JoinResponse> joinKnockedRoom() async {
-    final resp = await joinWithAccessCheck();
-    await client.onJoinKnockedRoom(id);
-    return resp;
+  Future<JoinResponse?> joinKnockedRoom() async {
+    try {
+      final resp = await joinWithAccessCheck();
+      await client.onJoinKnockedRoom(id);
+      return resp;
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'roomId': id});
+      return null;
+    }
   }
 
   Future<void> acceptKnock(String userID) async {
