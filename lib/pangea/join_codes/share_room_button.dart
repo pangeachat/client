@@ -42,9 +42,15 @@ class ShareRoomButton extends StatelessWidget {
     }
 
     await Clipboard.setData(ClipboardData(text: toCopy));
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(L10n.of(context).copiedToClipboard)));
+
+    final messenger = ScaffoldMessenger.of(context);
+    messenger.hideCurrentSnackBar();
+    messenger.showSnackBar(
+      SnackBar(
+        content: Text(L10n.of(context).copiedToClipboard),
+        showCloseIcon: true,
+      ),
+    );
   }
 
   @override
