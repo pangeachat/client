@@ -37,16 +37,17 @@ String stripEmojis(String text) {
 
 bool _graphemeIsEmoji(String grapheme) => _emojiSignal.hasMatch(grapheme);
 
-final RegExp _emojiSignal = RegExp(
+final String _emojiSignalPattern = [
   // Regional indicators (flag-emoji halves): not Extended_Pictographic.
-  r'[\u{1F1E6}-\u{1F1FF}]'
+  r'[\u{1F1E6}-\u{1F1FF}]',
   // Keycap combining mark: turns 0-9, #, * into emoji when joined.
-  r'|\u{20E3}'
+  r'|\u{20E3}',
   // Skin-tone modifiers: only ever appear on emoji bases.
-  r'|[\u{1F3FB}-\u{1F3FF}]'
+  r'|[\u{1F3FB}-\u{1F3FF}]',
   // Canonical "renders as a picture" property (excludes plain digits/#/*).
   r'|\p{Extended_Pictographic}',
-  unicode: true,
-);
+].join();
+
+final RegExp _emojiSignal = RegExp(_emojiSignalPattern, unicode: true);
 
 final RegExp _whitespaceRun = RegExp(r'\s+');

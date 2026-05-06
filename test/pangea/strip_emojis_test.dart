@@ -23,22 +23,46 @@ void main() {
       _Case('en: single emoji mid-text', 'Hello 👋 world', 'Hello world'),
       _Case('en: leading emoji', '👋 hi', 'hi'),
       _Case('en: trailing emoji', 'bye 👋', 'bye'),
-      _Case('en: emoji adjacent to punctuation', 'I love pizza 🍕!', 'I love pizza !'),
+      _Case(
+        'en: emoji adjacent to punctuation',
+        'I love pizza 🍕!',
+        'I love pizza !',
+      ),
       _Case('es: diacritics + emoji', '¡Hola, España! 🇪🇸', '¡Hola, España!'),
       _Case('es: ñ preserved', 'Mañana 😀 será', 'Mañana será'),
       _Case('fr: accents preserved', 'Café 🇫🇷 préféré', 'Café préféré'),
       _Case('fr: ç preserved', 'garçon 😀', 'garçon'),
-      _Case('de: umlauts + ß preserved', 'Schöne Grüße 👍 München', 'Schöne Grüße München'),
+      _Case(
+        'de: umlauts + ß preserved',
+        'Schöne Grüße 👍 München',
+        'Schöne Grüße München',
+      ),
       _Case('de: ß alone with emoji', 'Straße 🚗', 'Straße'),
       _Case('it: accents preserved', 'È così! 🍝', 'È così!'),
       _Case('pt: tildes preserved', 'São Paulo 🇧🇷', 'São Paulo'),
       _Case('ca: diacritics preserved', 'això és 😀 bo', 'això és bo'),
-      _Case('vi: tone marks preserved', 'tiếng Việt 🇻🇳 đẹp', 'tiếng Việt đẹp'),
-      _Case('tr: dotted/dotless I preserved', 'İstanbul şehri 🌆', 'İstanbul şehri'),
+      _Case(
+        'vi: tone marks preserved',
+        'tiếng Việt 🇻🇳 đẹp',
+        'tiếng Việt đẹp',
+      ),
+      _Case(
+        'tr: dotted/dotless I preserved',
+        'İstanbul şehri 🌆',
+        'İstanbul şehri',
+      ),
       _Case('cs: háček preserved', 'Děkuji 😊 moc', 'Děkuji moc'),
       _Case('pl: ogonek preserved', 'Dziękuję 🙏 bardzo', 'Dziękuję bardzo'),
-      _Case('ro: comma-below preserved', 'București 🇷🇴 mare', 'București mare'),
-      _Case('hu: double-acute ő ű preserved', 'Köszönöm 🙏 szépen', 'Köszönöm szépen'),
+      _Case(
+        'ro: comma-below preserved',
+        'București 🇷🇴 mare',
+        'București mare',
+      ),
+      _Case(
+        'hu: double-acute ő ű preserved',
+        'Köszönöm 🙏 szépen',
+        'Köszönöm szépen',
+      ),
       _Case('sk: caron on l preserved', 'Ďakujem 🙏 veľmi', 'Ďakujem veľmi'),
       _Case('et: õ preserved', 'Tere 👋 hommikust', 'Tere hommikust'),
       _Case('fi: åäö preserved', 'Hyvää päivää 😀', 'Hyvää päivää'),
@@ -48,7 +72,11 @@ void main() {
       _Case('gl: Galician preserved', 'Bo día 🌅', 'Bo día'),
       _Case('id: Indonesian (pure Latin)', 'Selamat 👋 pagi', 'Selamat pagi'),
       _Case('ms: Malay preserved', 'Selamat 👋 datang', 'Selamat datang'),
-      _Case('nl: diaeresis preserved', 'Goedemorgen 🌅 ïn België', 'Goedemorgen ïn België'),
+      _Case(
+        'nl: diaeresis preserved',
+        'Goedemorgen 🌅 ïn België',
+        'Goedemorgen ïn België',
+      ),
 
       // Nordic: tricky because ø is U+00F8 (Latin-1 Supplement); make sure
       // it's not in any emoji range we accidentally over-match.
@@ -66,7 +94,11 @@ void main() {
       _Case('bg: Bulgarian preserved', 'Здравей 👋 свят', 'Здравей свят'),
       _Case('sr: Serbian preserved', 'Београд 🇷🇸 град', 'Београд град'),
       // Mongolian Cyrillic adds Ө (U+04E8) and Ү (U+04AE) to the basic block.
-      _Case('mn: Mongolian Cyrillic Ө/Ү preserved', 'Сайн 👋 байна уу', 'Сайн байна уу'),
+      _Case(
+        'mn: Mongolian Cyrillic Ө/Ү preserved',
+        'Сайн 👋 байна уу',
+        'Сайн байна уу',
+      ),
 
       // Right-to-left scripts: the strip must not flip or mangle order.
       _Case('ar: Arabic preserved', 'مرحبا 👋 بالعالم', 'مرحبا بالعالم'),
@@ -179,17 +211,20 @@ void main() {
       expect(stripEmojis('🏴󠁧󠁢󠁥󠁮󠁧󠁿 cricket'), 'cricket');
     });
 
-    test('strips ©, ®, ™ (Extended_Pictographic, documents current behavior)', () {
-      // ©, ®, ™ are technically Extended_Pictographic (Unicode 11+) and
-      // render as emoji on some platforms. Our function strips them. If we
-      // ever decide TTS should pronounce "copyright" / "trademark", we'll
-      // need to narrow the property; this test pins the current behavior.
-      expect(stripEmojis('Acme © 2026'), 'Acme 2026');
-      expect(stripEmojis('Brand® new'), 'Brand new');
-      expect(stripEmojis('Product™ ships'), 'Product ships');
-      // Same chars with explicit emoji presentation (VS16), also stripped.
-      expect(stripEmojis('Acme ©️ 2026'), 'Acme 2026');
-    });
+    test(
+      'strips ©, ®, ™ (Extended_Pictographic, documents current behavior)',
+      () {
+        // ©, ®, ™ are technically Extended_Pictographic (Unicode 11+) and
+        // render as emoji on some platforms. Our function strips them. If we
+        // ever decide TTS should pronounce "copyright" / "trademark", we'll
+        // need to narrow the property; this test pins the current behavior.
+        expect(stripEmojis('Acme © 2026'), 'Acme 2026');
+        expect(stripEmojis('Brand® new'), 'Brand new');
+        expect(stripEmojis('Product™ ships'), 'Product ships');
+        // Same chars with explicit emoji presentation (VS16), also stripped.
+        expect(stripEmojis('Acme ©️ 2026'), 'Acme 2026');
+      },
+    );
 
     test('preserves bare digits without keycap', () {
       // No keycap mark → not emoji. Plain digits must survive.
@@ -200,11 +235,14 @@ void main() {
       expect(stripEmojis('use #tag and *bold*'), 'use #tag and *bold*');
     });
 
-    test('strips text-style symbols when followed by VS16 (emoji presentation)', () {
-      // ✈ is Extended_Pictographic; with or without VS16 we should drop it.
-      expect(stripEmojis('book ✈️ ticket'), 'book ticket');
-      expect(stripEmojis('book ✈ ticket'), 'book ticket');
-    });
+    test(
+      'strips text-style symbols when followed by VS16 (emoji presentation)',
+      () {
+        // ✈ is Extended_Pictographic; with or without VS16 we should drop it.
+        expect(stripEmojis('book ✈️ ticket'), 'book ticket');
+        expect(stripEmojis('book ✈ ticket'), 'book ticket');
+      },
+    );
 
     test('strips dingbat-range emoji (✨ ❤ ⭐)', () {
       expect(stripEmojis('shine ✨ bright'), 'shine bright');
@@ -243,13 +281,16 @@ void main() {
       expect(stripEmojis('a\t\t👋\t\tb'), 'a b');
     });
 
-    test('collapses NBSP and ideographic-space runs (ECMAScript whitespace)', () {
-      // Dart RegExp \\s matches U+00A0 (NBSP) and U+3000 (ideographic space)
-      // via ECMAScript whitespace semantics. After removing the emoji, runs
-      // collapse to a single ASCII space.
-      expect(stripEmojis('foo 👋 bar'), 'foo bar');
-      expect(stripEmojis('日本　👋　語'), '日本 語');
-    });
+    test(
+      'collapses NBSP and ideographic-space runs (ECMAScript whitespace)',
+      () {
+        // Dart RegExp \\s matches U+00A0 (NBSP) and U+3000 (ideographic space)
+        // via ECMAScript whitespace semantics. After removing the emoji, runs
+        // collapse to a single ASCII space.
+        expect(stripEmojis('foo 👋 bar'), 'foo bar');
+        expect(stripEmojis('日本　👋　語'), '日本 語');
+      },
+    );
 
     test('strips emoji adjacent to digits without affecting digit', () {
       // Common chat: "scored 100💯". 100 must survive; 💯 must drop.
@@ -260,14 +301,8 @@ void main() {
     test('handles mixed RTL + LTR + emoji without mangling order', () {
       // Logical order is preserved (Dart strings are logical-order, not visual).
       // The emoji drops, surrounding bidi runs are untouched.
-      expect(
-        stripEmojis('Hello مرحبا 👋 world'),
-        'Hello مرحبا world',
-      );
-      expect(
-        stripEmojis('שלום world 🌍 again'),
-        'שלום world again',
-      );
+      expect(stripEmojis('Hello مرحبا 👋 world'), 'Hello مرحبا world');
+      expect(stripEmojis('שלום world 🌍 again'), 'שלום world again');
     });
 
     test('preserves NFC and NFD forms of accented Latin equally', () {
@@ -307,8 +342,8 @@ void main() {
       // Extended_Pictographic. Dropping them would mangle bidi rendering.
       expect(stripEmojis('a‎b‏c'), 'a‎b‏c');
       expect(
-        stripEmojis('⁦english⁩ + ⁧arabic⁩'),
-        '⁦english⁩ + ⁧arabic⁩',
+        stripEmojis('\u2066english\u2069 + \u2067arabic\u2069'),
+        '\u2066english\u2069 + \u2067arabic\u2069',
       );
     });
 
