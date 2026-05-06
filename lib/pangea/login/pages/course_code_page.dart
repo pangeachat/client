@@ -40,20 +40,25 @@ class CourseCodePageState extends State<CourseCodePage> {
       return;
     }
 
+    final client = Matrix.of(context).client;
     final result = await SpaceCodeController.joinSpaceWithCode(
       _code,
       context: context,
-      client: Matrix.of(context).client,
+      client: client,
     );
     final joinResp = result.result;
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp);
-    final roomId = await handler.handle(context);
-    if (roomId != null) {
-      final room = Matrix.of(context).client.getRoomById(roomId);
-      room?.isSpace ?? true
-          ? context.go('/rooms/spaces/$roomId/details')
-          : context.go('/rooms/$roomId');
-    }
+    if (joinResp == null) return;
+
+    final room = client.getRoomById(joinResp.roomId);
+    if (room == null) return;
+
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+    final joinedRoomId = await handler.handle(context);
+    if (joinedRoomId == null) return;
+
+    room.isSpace
+        ? context.go('/rooms/spaces/$joinedRoomId/details')
+        : context.go('/rooms/$joinedRoomId');
   }
 
   @override

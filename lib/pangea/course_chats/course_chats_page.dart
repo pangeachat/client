@@ -493,14 +493,18 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
           .firstWhereOrNull((child) => child.roomId == item.roomId)
           ?.via,
     );
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp);
-    final roomId = await handler.handle(context);
-    if (mounted && roomId != null) {
+    if (joinResp == null) return;
+
+    final room = widget.client.getRoomById(joinResp.roomId);
+    if (room == null) return;
+
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+    final joinedRoomId = await handler.handle(context);
+    if (mounted && joinedRoomId != null) {
       setState(() {
         discoveredChildren?.remove(item);
       });
-
-      NavigationUtil.goToSpaceRoute(roomId, [], context);
+      NavigationUtil.goToSpaceRoute(joinedRoomId, [], context);
     }
   }
 

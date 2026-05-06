@@ -14,12 +14,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class JoinResponse {
   final String roomId;
-  final bool shouldShowAnalyticsAccessNotice;
+  final bool shouldShowNotice;
 
-  const JoinResponse({
-    required this.roomId,
-    required this.shouldShowAnalyticsAccessNotice,
-  });
+  const JoinResponse({required this.roomId, required this.shouldShowNotice});
 }
 
 extension JoinRoomAnalyticsAccessClientExtension on Client {
@@ -39,7 +36,10 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
     );
 
     final room = await _loadRoom(resp);
-    final joinResp = room._handleAnalyticsAccessCheck();
+    final joinResp = JoinResponse(
+      roomId: resp,
+      shouldShowNotice: room.shouldShowAnalyticsAccessNotice,
+    );
     await setSawAccessNotice(resp);
     return joinResp;
   }
@@ -55,7 +55,10 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
       thirdPartySigned: thirdPartySigned,
     );
     final room = await _loadRoom(resp);
-    final joinResp = room._handleAnalyticsAccessCheck();
+    final joinResp = JoinResponse(
+      roomId: roomId,
+      shouldShowNotice: room.shouldShowAnalyticsAccessNotice,
+    );
     await setSawAccessNotice(resp);
     return joinResp;
   }
@@ -113,7 +116,7 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
     return output;
   }
 
-  Future<void> _grantAnalyticsAccessByJoinedRoom(String roomId) async {
+  Future<void> grantInstructorsAnalyticsAccess(String roomId) async {
     try {
       final room = getRoomById(roomId);
       if (room == null) {
@@ -200,24 +203,16 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
 }
 
 extension JoinRoomAnalyticsAccessRoomExtension on Room {
+  bool get shouldShowAnalyticsAccessNotice =>
+      requireAnalyticsAccess && !client.sawAccessNotice(id);
+
   Future<JoinResponse> joinWithAccessCheck() async {
     await join();
-    final room = await client._loadRoom(id);
-    final joinResp = room._handleAnalyticsAccessCheck();
+    final joinResp = JoinResponse(
+      roomId: id,
+      shouldShowNotice: shouldShowAnalyticsAccessNotice,
+    );
     await client.setSawAccessNotice(id);
     return joinResp;
-  }
-
-  Future<JoinResponse> _handleAnalyticsAccessCheck() async {
-    final requireAccess = requireAnalyticsAccess;
-    if (requireAccess) {
-      await client._grantAnalyticsAccessByJoinedRoom(id);
-    }
-
-    return JoinResponse(
-      roomId: id,
-      shouldShowAnalyticsAccessNotice:
-          requireAccess && !client.sawAccessNotice(id),
-    );
   }
 }
