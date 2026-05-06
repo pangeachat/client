@@ -206,11 +206,12 @@ extension JoinRoomAnalyticsAccessRoomExtension on Room {
   bool get shouldShowAnalyticsAccessNotice =>
       requireAnalyticsAccess && !client.sawAccessNotice(id);
 
-  Future<JoinResponse> joinWithAccessCheck() async {
+  Future<JoinResponse?> joinWithAccessCheck() async {
     await join();
+    final room = await client._loadRoom(id);
     final joinResp = JoinResponse(
       roomId: id,
-      shouldShowNotice: shouldShowAnalyticsAccessNotice,
+      shouldShowNotice: room.shouldShowAnalyticsAccessNotice,
     );
     await client.setSawAccessNotice(id);
     return joinResp;

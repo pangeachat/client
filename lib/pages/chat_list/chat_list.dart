@@ -665,6 +665,8 @@ class ChatListController extends State<ChatList>
       if (isAnalytics || hasKnocked) {
         try {
           final joinResp = await room.joinKnockedRoom();
+          if (joinResp == null) continue;
+
           final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
           await handler.handle(context);
         } catch (err, s) {
