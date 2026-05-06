@@ -88,24 +88,18 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
         client: Matrix.of(context).client,
         showLoading: false,
       );
-      final joinResp = result.result;
-      final handler = JoinRoomAnalyticsConsentHandler(joinResp);
-      final spaceId = await handler.handle(context);
-      if (spaceId == null) {
-        throw Exception('Failed to join space with code $spaceCode');
-      }
 
       final client = Matrix.of(context).client;
-      Room? room = client.getRoomById(spaceId);
-      if (room == null || room.membership != Membership.join) {
-        await client.waitForRoomInSync(spaceId, join: true);
-        room = client.getRoomById(spaceId);
-        if (room == null || room.membership != Membership.join) {
-          throw Exception('Failed to join space with code $spaceCode');
-        }
-      }
+      final joinResp = result.result;
+      if (joinResp == null) return;
 
-      _spaceId = spaceId;
+      final room = client.getRoomById(joinResp.roomId);
+      if (room == null) return;
+
+      final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+      final joinedRoomId = await handler.handle(context);
+      if (joinedRoomId == null) return;
+      _spaceId = joinedRoomId;
 
       final courseId = room.coursePlan?.uuid;
       if (courseId == null) return;

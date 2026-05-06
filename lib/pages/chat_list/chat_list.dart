@@ -629,17 +629,20 @@ class ChatListController extends State<ChatList>
   }
 
   Future<void> _joinInvitedSpaces() async {
-    final invitedSpaces = Matrix.of(
-      context,
-    ).client.rooms.where((r) => r.isSpace && r.membership == Membership.invite);
+    final client = Matrix.of(context).client;
+    final invitedSpaces = client.rooms.where(
+      (r) => r.isSpace && r.membership == Membership.invite,
+    );
 
     for (final space in invitedSpaces) {
       final joinResp = await SpaceTapUtil.onInviteTap(context, space);
-      final handler = JoinRoomAnalyticsConsentHandler(joinResp);
-      final roomId = await handler.handle(context);
-      if (roomId != null) {
-        context.go("/rooms/spaces/$roomId/details");
-      }
+      if (joinResp == null) continue;
+
+      final handler = JoinRoomAnalyticsConsentHandler(joinResp, space);
+      final joinedRoomId = await handler.handle(context);
+      if (joinedRoomId == null) continue;
+
+      context.go("/rooms/spaces/$joinedRoomId/details");
     }
   }
 
@@ -647,8 +650,10 @@ class ChatListController extends State<ChatList>
     final roomIds =
         update.rooms?.invite?.entries.map((e) => e.key).toSet() ?? {};
 
+    final client = Matrix.of(context).client;
+
     for (final roomId in roomIds) {
-      final room = Matrix.of(context).client.getRoomById(roomId);
+      final room = client.getRoomById(roomId);
       if (room == null) continue;
       final isSpace = room.isSpace;
       final isAnalytics = room.isAnalyticsRoom;
@@ -660,7 +665,7 @@ class ChatListController extends State<ChatList>
       if (isAnalytics || hasKnocked) {
         try {
           final joinResp = await room.joinKnockedRoom();
-          final handler = JoinRoomAnalyticsConsentHandler(joinResp);
+          final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
           await handler.handle(context);
         } catch (err, s) {
           ErrorHandler.logError(
@@ -680,11 +685,13 @@ class ChatListController extends State<ChatList>
         if (cachedCode == roomCode) continue;
 
         final joinResp = await SpaceTapUtil.onInviteTap(context, room);
-        final handler = JoinRoomAnalyticsConsentHandler(joinResp);
-        final roomId = await handler.handle(context);
-        if (roomId != null) {
-          context.go("/rooms/spaces/$roomId/details");
-        }
+        if (joinResp == null) continue;
+
+        final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+        final joinedRoomId = await handler.handle(context);
+        if (joinedRoomId == null) continue;
+
+        context.go("/rooms/spaces/$joinedRoomId/details");
       }
     }
   }
@@ -1105,15 +1112,18 @@ class ChatListController extends State<ChatList>
       client: client,
     );
     final joinResp = result.result;
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp);
-    final roomId = await handler.handle(context);
+    if (joinResp == null) return;
 
-    if (roomId != null) {
-      final room = client.getRoomById(roomId);
-      room?.isSpace ?? true
-          ? context.go('/rooms/spaces/$roomId/details')
-          : context.go('/rooms/${room?.id}');
-    }
+    final room = client.getRoomById(joinResp.roomId);
+    if (room == null) return;
+
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+    final joinedRoomId = await handler.handle(context);
+    if (joinedRoomId == null) return;
+
+    room.isSpace
+        ? context.go('/rooms/spaces/$joinedRoomId/details')
+        : context.go('/rooms/$joinedRoomId');
   }
 
   Future<void> _startDMWithCachedUserId(Client client) async {

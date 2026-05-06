@@ -32,12 +32,16 @@ class RoomInviteDialog extends StatelessWidget {
         );
 
         final joinResp = result.result;
-        final handler = JoinRoomAnalyticsConsentHandler(joinResp);
-        final roomId = await handler.handle(context);
-        if (roomId == null) return;
+        if (joinResp == null) return;
+
+        final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+        final joinedRoomId = await handler.handle(context);
+        if (joinedRoomId == null) return;
 
         context.go(
-          room.isSpace ? "/rooms/spaces/$roomId/details" : "/rooms/$roomId",
+          room.isSpace
+              ? "/rooms/spaces/$joinedRoomId/details"
+              : "/rooms/$joinedRoomId",
         );
         return;
       case CourseInviteAction.decline:

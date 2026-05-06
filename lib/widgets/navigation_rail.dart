@@ -61,9 +61,15 @@ class SpacesNavigationRail extends StatelessWidget {
         ? await SpaceTapUtil.onInviteTap(context, room!)
         : await SpaceTapUtil.autoJoin(context, room!);
 
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp);
-    final resp = await handler.handle(context);
-    context.go("/rooms/spaces/$resp/details");
+    if (joinResp == null) return;
+    final joinedRoom = client.getRoomById(joinResp.roomId);
+    if (joinedRoom == null) return;
+
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp, joinedRoom);
+    final joinedRoomId = await handler.handle(context);
+    if (joinedRoomId == null) return;
+
+    context.go("/rooms/spaces/$joinedRoomId/details");
     return;
   }
   // Pangea#

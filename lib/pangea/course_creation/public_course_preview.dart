@@ -117,20 +117,25 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       return;
     }
 
+    final client = Matrix.of(context).client;
     final result = await SpaceCodeController.joinSpaceWithCode(
       code,
       context: context,
-      client: Matrix.of(context).client,
+      client: client,
     );
     final joinResp = result.result;
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp);
-    final roomId = await handler.handle(context);
-    if (roomId != null) {
-      final room = Matrix.of(context).client.getRoomById(roomId);
-      room?.isSpace ?? true
-          ? context.go('/rooms/spaces/$roomId/details')
-          : context.go('/rooms/$roomId');
-    }
+    if (joinResp == null) return;
+
+    final room = client.getRoomById(joinResp.roomId);
+    if (room == null) return;
+
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+    final joinedRoomId = await handler.handle(context);
+    if (joinedRoomId == null) return;
+
+    room.isSpace
+        ? context.go('/rooms/spaces/$joinedRoomId/details')
+        : context.go('/rooms/$joinedRoomId');
   }
 
   Future<void> joinCourse() async {
@@ -175,9 +180,14 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       future: () => client.joinRoomWithAccessCheck(widget.roomID!),
     );
     final joinResp = accessCheckResp.result;
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp);
-    final roomId = await handler.handle(context);
-    if (roomId == null) {
+    if (joinResp == null) return;
+
+    final room = client.getRoomById(joinResp.roomId);
+    if (room == null) return;
+
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+    final joinedRoomId = await handler.handle(context);
+    if (joinedRoomId == null) {
       ErrorHandler.logError(
         e: Exception("Failed to fetch roomID in public course preview"),
         data: {'roomID': widget.roomID},
@@ -185,7 +195,7 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       throw Exception("Failed to fetch roomID");
     }
 
-    context.go("/rooms/spaces/$roomId/details");
+    context.go("/rooms/spaces/$joinedRoomId/details");
   }
 
   @override

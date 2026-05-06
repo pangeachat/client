@@ -155,10 +155,7 @@ class SpaceCodeController {
       for (final roomId in alreadyJoined) {
         final room = client.getRoomById(roomId);
         if (room?.membership == Membership.join) {
-          return JoinResponse(
-            roomId: roomId,
-            shouldShowAnalyticsAccessNotice: false,
-          );
+          return JoinResponse(roomId: roomId, shouldShowNotice: false);
         } else if (room != null) {
           roomIdToJoin = roomId;
         }
