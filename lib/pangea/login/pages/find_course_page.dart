@@ -151,8 +151,7 @@ class FindCoursePageState extends State<FindCoursePage> {
         final course = coursePlans[chunk.courseId];
         if (course == null) return false;
         final name = chunk.room.name?.toLowerCase() ?? '';
-        final description = course.description.toLowerCase();
-        return name.contains(searchText) || description.contains(searchText);
+        return name.contains(searchText);
       }).toList();
     }
 
