@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-05-05 13:54:54.693607",
+    "@@last_modified": "2026-05-06 14:59:46.709379",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -12002,6 +12002,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Пожалуйста, выберите предопределенную роль ниже или введите пользовательский уровень разрешений. Выберите целое число от 0 до 100.",
+    "reportContentIssue": "Сообщить о проблеме с контентом",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

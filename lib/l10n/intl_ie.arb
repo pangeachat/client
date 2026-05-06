@@ -3646,7 +3646,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-05-05 13:54:05.993769",
+    "@@last_modified": "2026-05-06 14:58:28.779016",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11707,6 +11707,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Tafadhali chagua jukumu lililowekwa hapo chini au ingiza kiwango cha ruhusa cha kawaida. Chagua nambari nzima kati ya 0 na 100.",
+    "reportContentIssue": "Ripoti tatizo la maudhui",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

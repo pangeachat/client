@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:54:39.156861",
+    "@@last_modified": "2026-05-06 14:59:23.861890",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -11104,6 +11104,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "தயவுசெய்து கீழே உள்ள முன்கூட்டிய பாத்திரத்தை தேர்ந்தெடுக்கவும் அல்லது ஒரு தனிப்பயன் அனுமதி நிலையை உள்ளிடவும். 0 மற்றும் 100 இடையே முழு எண்ணை தேர்ந்தெடுக்கவும்.",
+    "reportContentIssue": "உள்ளடக்கம் சிக்கலைப் புகாரளிக்கவும்",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

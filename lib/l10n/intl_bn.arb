@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:54:43.768764",
+    "@@last_modified": "2026-05-06 14:59:30.682154",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -11703,6 +11703,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "দয়া করে নিচে একটি পূর্বনির্ধারিত ভূমিকা নির্বাচন করুন অথবা একটি কাস্টম অনুমতি স্তর প্রবেশ করুন। 0 থেকে 100 এর মধ্যে একটি পূর্ণ সংখ্যা নির্বাচন করুন।",
+    "reportContentIssue": "বিষয়বস্তু সমস্যা রিপোর্ট করুন",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

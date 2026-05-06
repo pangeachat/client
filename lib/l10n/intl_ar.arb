@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-05-05 13:54:32.818296",
+    "@@last_modified": "2026-05-06 14:59:14.198324",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11328,6 +11328,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "يرجى اختيار دور محدد مسبقًا أدناه أو إدخال مستوى إذن مخصص. اختر عددًا صحيحًا بين 0 و 100.",
+    "reportContentIssue": "الإبلاغ عن مشكلة في المحتوى",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

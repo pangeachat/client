@@ -4217,7 +4217,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-05-05 13:54:57.997367",
+    "@@last_modified": "2026-05-06 14:59:54.071855",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10999,6 +10999,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Roghnaigh le do thoil ról réamhshocraithe thíos nó cuir leibhéal cead saincheaptha isteach. Roghnaigh uimhir iomlán idir 0 agus 100.",
+    "reportContentIssue": "Tuairiscigh fadhb ábhair",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

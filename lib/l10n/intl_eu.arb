@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-05-05 13:54:10.628914",
+    "@@last_modified": "2026-05-06 14:58:38.980616",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10988,6 +10988,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Mesedez, aukeratu behean aurrez definitutako rola edo sartu pertsonalizatutako baimen maila. Aukeratu 0 eta 100 bitarteko zenbaki osoa.",
+    "reportContentIssue": "Eraman eduki arazoa",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

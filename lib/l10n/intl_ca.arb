@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:54:23.092477",
+    "@@last_modified": "2026-05-06 14:59:00.718401",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -11139,6 +11139,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Si us plau, trieu un rol predefinit a continuació o introduïu un nivell de permís personalitzat. Trieu un nombre enter entre 0 i 100.",
+    "reportContentIssue": "Informar d'un problema de contingut",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

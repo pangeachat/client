@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-05-05 13:54:13.278776",
+    "@@last_modified": "2026-05-06 14:58:42.498065",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10985,6 +10985,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Palun valige allpool eelnevalt määratud roll või sisestage kohandatud õiguste tase. Valige täisarv vahemikus 0 kuni 100.",
+    "reportContentIssue": "Teata sisu probleemist",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

@@ -3514,7 +3514,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-05-05 13:54:37.010844",
+    "@@last_modified": "2026-05-06 14:59:19.996111",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11874,6 +11874,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Prašome pasirinkti iš anksto nustatytą vaidmenį žemiau arba įvesti pasirinktą leidimo lygį. Pasirinkite sveiką skaičių nuo 0 iki 100.",
+    "reportContentIssue": "Pranešti apie turinio problemą",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

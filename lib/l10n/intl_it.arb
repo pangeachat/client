@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:54:16.975871",
+    "@@last_modified": "2026-05-06 14:58:49.552295",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -11079,6 +11079,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Si prega di scegliere un ruolo predefinito qui sotto o inserire un livello di autorizzazione personalizzato. Scegliere un numero intero tra 0 e 100.",
+    "reportContentIssue": "Segnala problema di contenuto",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

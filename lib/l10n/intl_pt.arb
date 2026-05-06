@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:54:12.021090",
+    "@@last_modified": "2026-05-06 14:58:41.156946",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -12106,6 +12106,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Por favor, escolha um papel predefinido abaixo ou insira um nível de permissão personalizado. Escolha um número inteiro entre 0 e 100.",
+    "reportContentIssue": "Reportar problema de conteúdo",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

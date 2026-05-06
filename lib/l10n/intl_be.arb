@@ -4202,7 +4202,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-05-05 13:54:21.940538",
+    "@@last_modified": "2026-05-06 14:58:57.968739",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -11002,6 +11002,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Калі ласка, выберыце папярэдне вызначаную ролю ніжэй або ўвядзіце карыстацкі ўзровень дазволаў. Выберыце цэлае лік ад 0 да 100.",
+    "reportContentIssue": "Паведаміць пра праблему з кантэнтам",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

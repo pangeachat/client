@@ -1736,7 +1736,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-05-05 13:54:35.065149",
+    "@@last_modified": "2026-05-06 14:59:17.823030",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -12109,6 +12109,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "దయచేసి క్రింద ఒక ముందుగా నిర్వచించబడిన పాత్రను ఎంచుకోండి లేదా ఒక కస్టమ్ అనుమతి స్థాయిని నమోదు చేయండి. 0 మరియు 100 మధ్య ఒక పూర్తి సంఖ్యను ఎంచుకోండి.",
+    "reportContentIssue": "కంటెంట్ సమస్యను నివేదించండి",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

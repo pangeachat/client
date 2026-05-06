@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-05-05 13:54:19.299002",
+    "@@last_modified": "2026-05-06 14:58:54.253185",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -11542,6 +11542,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Vyberte prosím předdefinovanou roli níže nebo zadejte vlastní úroveň oprávnění. Zvolte celé číslo mezi 0 a 100.",
+    "reportContentIssue": "Nahlásit problém s obsahem",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

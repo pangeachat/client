@@ -1,5 +1,3 @@
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
@@ -12,6 +10,7 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:matrix/matrix.dart';
 
 extension ActivitySummaryRoomExtension on Room {
   ActivitySummaryModel? activitySummary(String langCode) {
@@ -50,8 +49,9 @@ extension ActivitySummaryRoomExtension on Room {
 
   ActivitySummaryRequestModel _constructSummaryRequest(
     List<PangeaMessageEvent> messageEvents,
-    String langCode,
-  ) {
+    String langCode, {
+    String? feedback,
+  }) {
     final List<ActivitySummaryResultsMessage> messages = [];
     for (final messageEvent in messageEvents) {
       ActivitySummaryResultsMessage activityMessage;
@@ -82,10 +82,23 @@ extension ActivitySummaryRoomExtension on Room {
       messages.add(activityMessage);
     }
 
+    final List<ContentFeedbackModel> contentFeedback = [];
+    if (feedback != null) {
+      final prevSummary = activitySummary(langCode);
+      if (prevSummary?.summary != null) {
+        contentFeedback.add(
+          ContentFeedbackModel(
+            feedback: feedback,
+            content: prevSummary!.summary!,
+          ),
+        );
+      }
+    }
+
     return ActivitySummaryRequestModel(
       activity: activityPlan!,
       activityResults: messages,
-      contentFeedback: [],
+      contentFeedback: contentFeedback,
       roleState: activityRoles,
       langCode: langCode,
     );
@@ -105,10 +118,7 @@ extension ActivitySummaryRoomExtension on Room {
 
   Future<void> _startRequestingActivitySummary(String langCode) =>
       _setActivitySummary(
-        ActivitySummaryModel(
-          requestedAt: DateTime.now(),
-          summary: activitySummary(langCode)?.summary,
-        ),
+        ActivitySummaryModel(requestedAt: DateTime.now()),
         langCode,
       );
 
@@ -129,8 +139,8 @@ extension ActivitySummaryRoomExtension on Room {
     langCode,
   );
 
-  Future<void> fetchSummaries(String langCode) async {
-    if (activitySummary(langCode)?.summary != null) return;
+  Future<void> fetchSummaries(String langCode, {String? feedback}) async {
+    if (activitySummary(langCode)?.summary != null && feedback == null) return;
     await _startRequestingActivitySummary(langCode);
 
     final events = await getAllEvents();
@@ -141,7 +151,11 @@ extension ActivitySummaryRoomExtension on Room {
       msgtypes: [MessageTypes.Text, MessageTypes.Audio],
     );
 
-    final req = _constructSummaryRequest(messageEvents, langCode);
+    final req = _constructSummaryRequest(
+      messageEvents,
+      langCode,
+      feedback: feedback,
+    );
     final analytics = _constrctSummaryAnalyticsModel(messageEvents, langCode);
 
     final result = await ActivitySummaryRepo.get(id, req);
@@ -160,9 +174,9 @@ extension ActivitySummaryRoomExtension on Room {
     ActivitySummaryRepo.delete(id, req);
   }
 
-  Future<void> fetchSummariesByL1() async {
+  Future<void> fetchSummariesByL1({String? feedback}) async {
     final l1 = MatrixState.pangeaController.userController.userL1Code;
     if (l1 == null) return;
-    return fetchSummaries(l1);
+    return fetchSummaries(l1, feedback: feedback);
   }
 }

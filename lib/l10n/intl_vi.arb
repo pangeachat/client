@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:54:38.132530",
+    "@@last_modified": "2026-05-06 14:59:21.703683",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7003,6 +7003,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Vui lòng chọn một vai trò đã định nghĩa sẵn bên dưới hoặc nhập mức quyền tùy chỉnh. Chọn một số nguyên giữa 0 và 100.",
+    "reportContentIssue": "Báo cáo vấn đề nội dung",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

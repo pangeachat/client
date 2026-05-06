@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-05-05 13:54:06.791334",
+    "@@last_modified": "2026-05-06 14:58:31.122247",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11472,6 +11472,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Molimo odaberite unaprijed definiranu ulogu u nastavku ili unesite prilagođenu razinu dozvola. Odaberite cijeli broj između 0 i 100.",
+    "reportContentIssue": "Prijavite problem s sadržajem",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

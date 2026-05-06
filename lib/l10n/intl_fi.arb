@@ -4182,7 +4182,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-05-05 13:53:57.353721",
+    "@@last_modified": "2026-05-06 14:58:18.124571",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -11037,6 +11037,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Valitse alla oleva ennalta määritetty rooli tai syötä mukautettu käyttöoikeustaso. Valitse kokonaisluku välillä 0 ja 100.",
+    "reportContentIssue": "Ilmoita sisällön ongelmasta",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }
