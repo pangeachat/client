@@ -58,6 +58,7 @@ class ReadingAssistanceContent extends StatelessWidget {
         langCode: overlayController.pangeaMessageEvent.messageDisplayLangCode,
         enableEmojiReactions:
             !overlayController.pangeaMessageEvent.room.hasArchivedActivity,
+        enableAnalyticsNavigation: true,
         onFlagTokenInfo:
             (
               LemmaInfoResponse lemmaInfo,
