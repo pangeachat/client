@@ -38,6 +38,7 @@ class WordZoomWidget extends StatelessWidget {
 
   final bool enableEmojiSelection;
   final bool enableEmojiReactions;
+  final bool enableAnalyticsNavigation;
 
   final Function(LemmaInfoResponse, PTRequest, PTResponse)? onFlagTokenInfo;
   final ValueNotifier<int>? reloadNotifier;
@@ -54,6 +55,7 @@ class WordZoomWidget extends StatelessWidget {
     this.morph,
     this.enableEmojiSelection = true,
     this.enableEmojiReactions = true,
+    this.enableAnalyticsNavigation = false,
     this.onFlagTokenInfo,
     this.reloadNotifier,
     this.maxWidth,
@@ -108,12 +110,14 @@ class WordZoomWidget extends StatelessWidget {
                               : const SizedBox(width: 40.0, height: 40.0),
                           Flexible(
                             child: InkWell(
-                              onTap: () =>
-                                  AnalyticsNavigationUtil.navigateToAnalytics(
-                                    context: context,
-                                    view: ProgressIndicatorEnum.wordsUsed,
-                                    construct: construct,
-                                  ),
+                              onTap: enableAnalyticsNavigation
+                                  ? () =>
+                                        AnalyticsNavigationUtil.navigateToAnalytics(
+                                          context: context,
+                                          view: ProgressIndicatorEnum.wordsUsed,
+                                          construct: construct,
+                                        )
+                                  : null,
                               borderRadius: BorderRadius.circular(8.0),
                               child: Container(
                                 constraints: const BoxConstraints(

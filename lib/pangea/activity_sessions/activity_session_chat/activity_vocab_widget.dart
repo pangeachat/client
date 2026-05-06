@@ -299,6 +299,7 @@ class _WordCardWrapperState extends State<_WordCardWrapper> {
         MatrixState.pAnyState.closeOverlay(widget.target);
         widget.onClose();
       },
+      enableAnalyticsNavigation: true,
     );
   }
 }
