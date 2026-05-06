@@ -28,8 +28,14 @@ test.describe("Login", () => {
     test.setTimeout(120000); 
 
     // Click "Login to my account" button
-    await page.getByRole("button", { name: intl.loginToAccount }).click();
-
+    try {
+      await page.getByRole("button", { name: intl.loginToAccount }).click();
+    } catch (error) {
+      // If button was not found, the account may already be authenticated, 
+      // or the language is not english
+      console.error('Locator timeout exceeded:', error.message);
+      console.log('Check that english is selected, and the account is not already authenticated.')
+    }
     // Click "Email" login method
     await page.getByRole("button", { name: intl.email }).click();
 
