@@ -36,6 +36,7 @@ class StarRainWidget extends StatefulWidget {
       canPop: false,
       overlayKey: overlayKey,
       child: StarRainWidget(overlayKey: overlayKey, showBlast: showBlast),
+      ignorePointer: true,
     );
   }
 
