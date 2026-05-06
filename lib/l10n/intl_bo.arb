@@ -3462,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-05-05 13:54:41.783015",
+    "@@last_modified": "2026-05-06 14:59:27.473183",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10660,6 +10660,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Bokh choos a predefined role below or enter a custom permission level. Pick a whole number between 0 and 100.",
+    "reportContentIssue": "Report content issue",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:54:53.239455",
+    "@@last_modified": "2026-05-06 14:59:44.542134",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -12107,6 +12107,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Bonvolu elekti antaŭdifinitan rolon sube aŭ enigi kutiman permesnivelon. Elektu tutan numeron inter 0 kaj 100.",
+    "reportContentIssue": "Raporti enhavproblemon",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:54:20.320048",
+    "@@last_modified": "2026-05-06 14:58:55.886524",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11048,6 +11048,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Vennligst velg en forhåndsdefinert rolle nedenfor eller skriv inn et tilpasset tillatelsesnivå. Velg et helt tall mellom 0 og 100.",
+    "reportContentIssue": "Rapporter innholdsproblem",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

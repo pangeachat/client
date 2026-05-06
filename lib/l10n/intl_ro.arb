@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:54:03.306264",
+    "@@last_modified": "2026-05-06 14:58:25.636491",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11813,6 +11813,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Vă rugăm să alegeți un rol predefinit mai jos sau să introduceți un nivel de permisiune personalizat. Alegeți un număr întreg între 0 și 100.",
+    "reportContentIssue": "Raportați o problemă de conținut",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

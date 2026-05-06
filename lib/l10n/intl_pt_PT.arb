@@ -3045,7 +3045,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-05-05 13:54:26.919318",
+    "@@last_modified": "2026-05-06 14:59:04.207574",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12064,6 +12064,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Por favor, escolha um papel predefinido abaixo ou insira um nível de permissão personalizado. Escolha um número inteiro entre 0 e 100.",
+    "reportContentIssue": "Reportar problema de conteúdo",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:53:54.615999",
+    "@@last_modified": "2026-05-06 14:58:08.672629",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -11205,6 +11205,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "아래의 미리 정의된 역할 중 하나를 선택하거나 사용자 정의 권한 수준을 입력하십시오. 0과 100 사이의 정수를 선택하십시오.",
+    "reportContentIssue": "콘텐츠 문제 신고",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

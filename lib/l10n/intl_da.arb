@@ -1746,7 +1746,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-05-05 13:53:58.631021",
+    "@@last_modified": "2026-05-06 14:58:20.061366",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -12082,6 +12082,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Vælg venligst en foruddefineret rolle nedenfor eller indtast et brugerdefineret tilladelsesniveau. Vælg et helt tal mellem 0 og 100.",
+    "reportContentIssue": "Rapportér indholdsproblem",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

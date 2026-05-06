@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:54:01.698188",
+    "@@last_modified": "2026-05-06 14:58:24.167936",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -11085,6 +11085,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Silakan pilih peran yang telah ditentukan di bawah ini atau masukkan tingkat izin kustom. Pilih angka bulat antara 0 dan 100.",
+    "reportContentIssue": "Laporkan masalah konten",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

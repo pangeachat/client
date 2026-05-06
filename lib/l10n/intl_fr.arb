@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-05-05 13:54:58.681199",
+    "@@last_modified": "2026-05-06 14:59:55.428074",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -11385,6 +11385,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Veuillez choisir un rôle prédéfini ci-dessous ou entrer un niveau de permission personnalisé. Choisissez un nombre entier entre 0 et 100.",
+    "reportContentIssue": "Signaler un problème de contenu",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

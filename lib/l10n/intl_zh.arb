@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-05-05 13:54:42.923527",
+    "@@last_modified": "2026-05-06 14:59:29.085813",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10988,6 +10988,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "请在下面选择一个预定义角色或输入自定义权限级别。选择一个介于 0 和 100 之间的整数。",
+    "reportContentIssue": "报告内容问题",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

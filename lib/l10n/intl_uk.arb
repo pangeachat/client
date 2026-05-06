@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-05-05 13:54:17.946055",
+    "@@last_modified": "2026-05-06 14:58:51.607666",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10988,6 +10988,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Будь ласка, виберіть заздалегідь визначену роль нижче або введіть власний рівень дозволів. Виберіть ціле число від 0 до 100.",
+    "reportContentIssue": "Повідомити про проблему з контентом",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

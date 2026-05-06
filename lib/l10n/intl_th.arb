@@ -3646,7 +3646,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-05-05 13:54:24.421108",
+    "@@last_modified": "2026-05-06 14:59:02.662171",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11707,6 +11707,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "กรุณาเลือกบทบาทที่กำหนดไว้ล่วงล่วงด้านล่างหรือป้อนระดับสิทธิ์ที่กำหนดเอง เลือกหมายเลขทั้งหมดระหว่าง 0 ถึง 100.",
+    "reportContentIssue": "รายงานปัญหาสิ่งเนื้อหา",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

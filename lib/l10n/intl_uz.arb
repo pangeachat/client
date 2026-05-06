@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-05-05 13:54:28.857943",
+    "@@last_modified": "2026-05-06 14:59:08.684712",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10992,6 +10992,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Iltimos, quyida oldindan belgilangan rolni tanlang yoki maxsus ruxsat darajasini kiriting. 0 dan 100 gacha bo'lgan butun sonni tanlang.",
+    "reportContentIssue": "Kontent muammosini xabar qiling",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

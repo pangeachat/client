@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-05-05 13:54:33.681346",
+    "@@last_modified": "2026-05-06 14:59:15.467582",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11319,6 +11319,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Lütfen aşağıda önceden tanımlanmış bir rol seçin veya özel bir izin seviyesi girin. 0 ile 100 arasında bir tam sayı seçin.",
+    "reportContentIssue": "İçerik sorununu bildir",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

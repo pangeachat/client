@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-05 13:54:28.096252",
+    "@@last_modified": "2026-05-06 14:59:06.755102",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -11118,6 +11118,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "請選擇下面的預定義角色或輸入自定義權限級別。請選擇介於 0 和 100 之間的整數。",
+    "reportContentIssue": "報告內容問題",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

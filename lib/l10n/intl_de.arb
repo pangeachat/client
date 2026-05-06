@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-05-05 13:54:14.158981",
+    "@@last_modified": "2026-05-06 14:58:44.529142",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10967,6 +10967,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Bitte wählen Sie eine vordefinierte Rolle unten aus oder geben Sie ein benutzerdefiniertes Berechtigungsniveau ein. Wählen Sie eine ganze Zahl zwischen 0 und 100.",
+    "reportContentIssue": "Inhaltliches Problem melden",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

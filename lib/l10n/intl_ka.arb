@@ -2367,7 +2367,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-05-05 13:54:55.626624",
+    "@@last_modified": "2026-05-06 14:59:49.328964",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12056,6 +12056,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "გთხოვთ, შეარჩიოთ წინასწარ განსაზღვრული როლი ქვემოთ ან შეიყვანოთ მორგებული უფლებების დონე. აირჩიეთ მთელი რიცხვი 0 და 100 შორის.",
+    "reportContentIssue": "შეტყობინება შინაარსის პრობლემაზე",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

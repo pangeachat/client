@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-05-05 13:53:59.920325",
+    "@@last_modified": "2026-05-06 14:58:22.748484",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -11115,6 +11115,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Kérjük, válasszon egy előre definiált szerepet az alábbiak közül, vagy adjon meg egy egyedi jogosultsági szintet. Válasszon egy egész számot 0 és 100 között.",
+    "reportContentIssue": "Tartalomprobléma jelentése",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

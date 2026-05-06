@@ -2526,7 +2526,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-05-05 13:54:29.822904",
+    "@@last_modified": "2026-05-06 14:59:10.131224",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -12007,6 +12007,16 @@
         "placeholders": {}
     },
     "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Mangyaring pumili ng isang paunang natukoy na papel sa ibaba o magpasok ng isang pasadyang antas ng pahintulot. Pumili ng isang buong numero sa pagitan ng 0 at 100.",
+    "reportContentIssue": "Iulat ang isyu sa nilalaman",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

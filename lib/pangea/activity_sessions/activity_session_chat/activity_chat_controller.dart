@@ -1,9 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_analytics_repo.dart';
@@ -14,9 +11,12 @@ import 'package:fluffychat/pangea/activity_summary/activity_summary_response_mod
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class ActivityChatController {
   final String userID;
@@ -217,5 +217,20 @@ class ActivityChatController {
     } finally {
       _loadingSummary = false;
     }
+  }
+
+  Future<void> submitSummaryFeedback(BuildContext context) async {
+    final resp = await showDialog(
+      context: context,
+      builder: (context) => FeedbackDialog(
+        title: L10n.of(context).reportContentIssue,
+        onSubmit: (feedback) => Navigator.of(context).pop(feedback),
+      ),
+    );
+    if (resp == null || resp.isEmpty) {
+      return;
+    }
+
+    await room.fetchSummariesByL1(feedback: resp);
   }
 }
