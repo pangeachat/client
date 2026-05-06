@@ -13,6 +13,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/audio/multi_platform_audio_player.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/pangea/common/utils/strip_emojis.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_disambiguation.dart';
@@ -254,8 +255,9 @@ class TtsController {
     Map<String, String>? morph,
   }) async {
     final requestId = ++_requestCounter;
+    final strippedText = stripEmojis(text);
     final request = _AudioRequest(
-      text: text,
+      text: strippedText,
       langCode: langCode,
       pos: pos,
       morph: morph,
@@ -288,7 +290,7 @@ class TtsController {
     onStart?.call();
 
     await _tryToSpeak(
-      text,
+      strippedText,
       ttsPhoneme: ttsPhoneme,
       requestId: requestId,
       langCode: langCode,
