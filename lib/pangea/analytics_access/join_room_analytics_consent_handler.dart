@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_access/access_notice_extension.dart';
 import 'package:fluffychat/pangea/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 
@@ -20,6 +21,7 @@ class JoinRoomAnalyticsConsentHandler {
       return null;
     }
 
+    await room.client.setSawAccessNotice(room.id);
     await _grantAccess();
     return room.id;
   }

@@ -40,7 +40,6 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
       roomId: resp,
       shouldShowNotice: room.shouldShowAnalyticsAccessNotice,
     );
-    await setSawAccessNotice(resp);
     return joinResp;
   }
 
@@ -59,7 +58,6 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
       roomId: roomId,
       shouldShowNotice: room.shouldShowAnalyticsAccessNotice,
     );
-    await setSawAccessNotice(resp);
     return joinResp;
   }
 
@@ -213,7 +211,6 @@ extension JoinRoomAnalyticsAccessRoomExtension on Room {
       roomId: id,
       shouldShowNotice: room.shouldShowAnalyticsAccessNotice,
     );
-    await client.setSawAccessNotice(id);
     return joinResp;
   }
 }
