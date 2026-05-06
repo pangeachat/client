@@ -11705,10 +11705,5 @@
     "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "pleaseEnterAPositiveNumber": "দয়া করে 0 এর সমান বা বড় একটি সংখ্যা প্রবেশ করুন",
-    "@pleaseEnterAPositiveNumber": {
-        "type": "String",
-        "placeholders": {}
     }
 }

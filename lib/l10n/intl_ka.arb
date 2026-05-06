@@ -12058,10 +12058,5 @@
     "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "pleaseEnterAPositiveNumber": "გთხოვთ შეიყვანოთ ნომერი, რომელიც მეტია ან ტოლია 0-ს",
-    "@pleaseEnterAPositiveNumber": {
-        "type": "String",
-        "placeholders": {}
     }
 }

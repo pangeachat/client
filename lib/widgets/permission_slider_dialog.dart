@@ -22,7 +22,10 @@ Future<int?> showPermissionChooser(
           crossAxisAlignment: .stretch,
           spacing: 12.0,
           children: [
-            Text(L10n.of(context).setPermissionsLevelDescription),
+            // #Pangea
+            // Text(L10n.of(context).setPermissionsLevelDescription),
+            Text(L10n.of(context).setPermissionsLevelDesc),
+            // Pangea#
             ValueListenableBuilder(
               valueListenable: error,
               builder: (context, errorText, _) => DialogTextField(
@@ -45,10 +48,16 @@ Future<int?> showPermissionChooser(
             if (level == null) {
               // #Pangea
               // error.value = L10n.of(context).pleaseEnterANumber;
-              error.value = L10n.of(context).pleaseEnterAPositiveNumber;
+              error.value = L10n.of(context).invalidInput;
               // Pangea#
               return;
             }
+            // #Pangea
+            if (level > 100 || level < 0) {
+              error.value = L10n.of(context).invalidInput;
+              return;
+            }
+            // Pangea#
             if (level > maxLevel) {
               error.value = L10n.of(context).noPermission;
               return;
