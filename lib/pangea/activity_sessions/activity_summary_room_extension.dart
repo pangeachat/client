@@ -1,3 +1,5 @@
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
@@ -10,7 +12,6 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:matrix/matrix.dart';
 
 extension ActivitySummaryRoomExtension on Room {
   ActivitySummaryModel? activitySummary(String langCode) {
