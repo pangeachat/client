@@ -256,6 +256,14 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   Widget build(BuildContext context) {
     final analyticsService = Matrix.of(context).analyticsDataService;
     return Scaffold(
+      appBar: widget.view == ConstructTypeEnum.morph && widget.construct != null
+          ? AppBar(
+              leading: IconButton(
+                onPressed: Navigator.of(context).pop,
+                icon: Icon(Icons.close),
+              ),
+            )
+          : null,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsetsGeometry.all(16.0),
