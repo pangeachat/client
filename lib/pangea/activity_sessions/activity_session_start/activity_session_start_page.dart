@@ -10,6 +10,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_preview/activity_session_preview_repo.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_sessions_start_view.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/bot_join_error_dialog.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
@@ -527,6 +528,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
     );
 
     if (!resp.isError) {
+      await ActivitySessionPreviewRepo.set(roomId);
       NavigationUtil.goToSpaceRoute(roomId, [], context);
     }
   }

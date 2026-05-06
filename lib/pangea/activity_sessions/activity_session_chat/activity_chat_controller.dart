@@ -8,6 +8,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_analytics_repo.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_preview/activity_session_preview_repo.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
@@ -56,7 +57,7 @@ class ActivityChatController {
         .listen((_) => _updateUsedVocab());
   }
 
-  void dispose() {
+  Future<void> dispose() async {
     _disposed = true;
     carouselController.dispose();
     _analyticsSubscription?.cancel();
@@ -67,6 +68,7 @@ class ActivityChatController {
     confettiNotifier.dispose();
     _rolesSubscription.cancel();
     _summarySubscription.cancel();
+    await _onLeaveActivitySession();
   }
 
   ActivitySummaryModel? get _summaryEvent => room.activitySummaryByL1;
@@ -234,5 +236,29 @@ class ActivityChatController {
     }
 
     await room.fetchSummariesByL1(feedback: resp);
+  }
+
+  Future<void> _onLeaveActivitySession() async {
+    final isPreview = await ActivitySessionPreviewRepo.hasPreviewedRoom(
+      room.id,
+    );
+    if (!isPreview) return;
+
+    final hasRole = room.hasPickedRole;
+    if (hasRole) {
+      await ActivitySessionPreviewRepo.remove(room.id);
+      return;
+    }
+
+    try {
+      await room.leave();
+      await ActivitySessionPreviewRepo.remove(room.id);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: "Failed to leave previewed activty session",
+        s: s,
+        data: {'roomId': room.id},
+      );
+    }
   }
 }
