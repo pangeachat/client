@@ -129,7 +129,6 @@ class ButtonControlledCarouselView extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        debugPrint("Available width: ${constraints.maxWidth}");
         final cardWidth = userSummaries.length == 1
             ? min(500.0, constraints.maxWidth)
             : 335.0;
