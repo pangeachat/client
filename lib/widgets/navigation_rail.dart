@@ -23,7 +23,8 @@ class SpacesNavigationRail extends StatelessWidget {
   // final void Function() onGoToChats;
   // final void Function(String) onGoToSpaceId;
   final String? path;
-  final double railWidth;
+  final double naviRailWidth;
+  final double expandedSectionWidth;
   final bool expanded;
   final VoidCallback collapse;
   final Profile? profile;
@@ -36,7 +37,8 @@ class SpacesNavigationRail extends StatelessWidget {
     // required this.onGoToChats,
     // required this.onGoToSpaceId,
     required this.path,
-    required this.railWidth,
+    required this.naviRailWidth,
+    required this.expandedSectionWidth,
     required this.collapse,
     required this.onProfileUpdate,
     this.expanded = false,
@@ -86,9 +88,6 @@ class SpacesNavigationRail extends StatelessWidget {
     final isCourse = path?.contains('course') ?? false;
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
-    final width = isColumnMode
-        ? FluffyThemes.navRailWidth
-        : FluffyThemes.navRailWidth - 8.0;
     // return StreamBuilder(
     return Material(
       child: SafeArea(
@@ -107,7 +106,9 @@ class SpacesNavigationRail extends StatelessWidget {
             // return SizedBox(
             return AnimatedContainer(
               // width: FluffyThemes.navRailWidth,
-              width: railWidth,
+              width: expanded
+                  ? naviRailWidth + expandedSectionWidth
+                  : naviRailWidth,
               duration: FluffyThemes.animationDuration,
               // Pangea#
               child: Column(
@@ -160,7 +161,7 @@ class SpacesNavigationRail extends StatelessWidget {
                                             snapshot.data?.displayName ??
                                             client.userID!.localpart,
                                         size:
-                                            width -
+                                            naviRailWidth -
                                             (isColumnMode ? 32.0 : 24.0),
                                       ),
                                     ),
@@ -171,6 +172,8 @@ class SpacesNavigationRail extends StatelessWidget {
                             toolTip: L10n.of(context).home,
                             // #Pangea
                             expanded: expanded,
+                            naviRailWidth: naviRailWidth,
+                            expandedSectionWidth: expandedSectionWidth,
                             // Pangea#
                           );
                         }
@@ -188,6 +191,8 @@ class SpacesNavigationRail extends StatelessWidget {
                             },
                             toolTip: L10n.of(context).learningAnalytics,
                             expanded: expanded,
+                            naviRailWidth: naviRailWidth,
+                            expandedSectionWidth: expandedSectionWidth,
                           );
                         }
                         i--;
@@ -223,6 +228,8 @@ class SpacesNavigationRail extends StatelessWidget {
                             unreadBadgeFilter: (room) =>
                                 room.firstSpaceParent == null,
                             expanded: expanded,
+                            naviRailWidth: naviRailWidth,
+                            expandedSectionWidth: expandedSectionWidth,
                             // Pangea#
                           );
                         }
@@ -247,8 +254,12 @@ class SpacesNavigationRail extends StatelessWidget {
                             icon: ClipPath(
                               clipper: MapClipper(),
                               child: Container(
-                                width: width - (isColumnMode ? 32.0 : 24.0),
-                                height: width - (isColumnMode ? 32.0 : 24.0),
+                                width:
+                                    naviRailWidth -
+                                    (isColumnMode ? 32.0 : 24.0),
+                                height:
+                                    naviRailWidth -
+                                    (isColumnMode ? 32.0 : 24.0),
                                 color: isCourse
                                     ? Theme.of(
                                         context,
@@ -261,6 +272,8 @@ class SpacesNavigationRail extends StatelessWidget {
                             ),
                             toolTip: L10n.of(context).addCourse,
                             expanded: expanded,
+                            naviRailWidth: naviRailWidth,
+                            expandedSectionWidth: expandedSectionWidth,
                             // Pangea#
                           );
                         }
@@ -320,37 +333,51 @@ class SpacesNavigationRail extends StatelessWidget {
                                   color: Theme.of(context).dividerColor,
                                 ),
                                 borderRadius: BorderRadius.circular(0),
-                                size: width - (isColumnMode ? 32.0 : 24.0),
+                                size:
+                                    naviRailWidth -
+                                    (isColumnMode ? 32.0 : 24.0),
                               ),
                             ),
                           ),
                           expanded: expanded,
+                          naviRailWidth: naviRailWidth,
+                          expandedSectionWidth: expandedSectionWidth,
                           // Pangea#
                         );
                       },
                     ),
                   ),
-                  NaviRailItem(
-                    isSelected: isSettings,
-                    // #Pangea
-                    // onTap: () => context.go('/rooms/settings'),
-                    // icon: const Padding(
-                    //   padding: EdgeInsets.all(10.0),
-                    //   child: Icon(Icons.settings_outlined),
-                    // ),
-                    // selectedIcon: const Padding(
-                    //   padding: EdgeInsets.all(10.0),
-                    //   child: Icon(Icons.settings),
-                    // ),
-                    onTap: () {
-                      collapse();
-                      context.go('/rooms/settings');
-                    },
-                    icon: const Icon(Icons.settings_outlined),
-                    selectedIcon: const Icon(Icons.settings),
-                    expanded: expanded,
-                    // Pangea#
-                    toolTip: L10n.of(context).settings,
+                  // #Pangea
+                  // NaviRailItem(
+                  SizedBox(
+                    width: expanded
+                        ? naviRailWidth + expandedSectionWidth
+                        : naviRailWidth,
+                    child: NaviRailItem(
+                      // Pangea#
+                      isSelected: isSettings,
+                      // #Pangea
+                      // onTap: () => context.go('/rooms/settings'),
+                      // icon: const Padding(
+                      //   padding: EdgeInsets.all(10.0),
+                      //   child: Icon(Icons.settings_outlined),
+                      // ),
+                      // selectedIcon: const Padding(
+                      //   padding: EdgeInsets.all(10.0),
+                      //   child: Icon(Icons.settings),
+                      // ),
+                      onTap: () {
+                        collapse();
+                        context.go('/rooms/settings');
+                      },
+                      icon: const Icon(Icons.settings_outlined),
+                      selectedIcon: const Icon(Icons.settings),
+                      expanded: expanded,
+                      naviRailWidth: naviRailWidth,
+                      expandedSectionWidth: expandedSectionWidth,
+                      // Pangea#
+                      toolTip: L10n.of(context).settings,
+                    ),
                   ),
                 ],
               ),
