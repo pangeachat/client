@@ -1,5 +1,5 @@
-import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_enum.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_model.dart';
 
 class TutorialSequences {
   static bool hasCompletedSequence(TutorialSequence sequence) =>

@@ -1,6 +1,5 @@
+import 'package:fluffychat/pangea/tutorials/tutorial_enum.dart';
 import 'package:flutter/material.dart';
-
-import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
 
 class TutorialStep {
   final TutorialEnum type;
