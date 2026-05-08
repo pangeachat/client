@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/tutorials/tutorial_tooltip_widget.dart';
-import 'package:flutter/material.dart';
 
 class TutorialTooltipContainerWidget extends StatelessWidget {
   final double width;

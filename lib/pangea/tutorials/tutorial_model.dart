@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/pangea/tutorials/tutorial_step_model.dart';
-import 'package:flutter/material.dart';
 
 typedef TutorialSequence = List<TutorialEnum>;
 

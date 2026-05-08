@@ -58,6 +58,7 @@ import 'package:fluffychat/pangea/login/pages/language_selection_page.dart';
 import 'package:fluffychat/pangea/login/pages/login_or_signup_view.dart';
 import 'package:fluffychat/pangea/login/pages/new_course_page.dart';
 import 'package:fluffychat/pangea/login/pages/signup.dart';
+import 'package:fluffychat/pangea/onboarding/onboarding_page.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
@@ -175,6 +176,12 @@ abstract class AppRoutes {
           defaultPageBuilder(context, state, const ConfigViewer()),
     ),
     // #Pangea
+    GoRoute(
+      path: '/onboarding',
+      pageBuilder: (context, state) =>
+          defaultPageBuilder(context, state, const Onboarding()),
+      redirect: PAuthGaurd.onboardingRedirect,
+    ),
     GoRoute(
       path: '/registration',
       pageBuilder: (context, state) =>

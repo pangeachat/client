@@ -53,9 +53,9 @@ class SpaceCodeController {
 
   static Future<Result<JoinResponse>> joinSpaceWithCode(
     String spaceCode, {
-    required BuildContext context,
     required Client client,
     String? notFoundError,
+    BuildContext? context,
     bool showLoading = true,
   }) async {
     try {
@@ -64,18 +64,14 @@ class SpaceCodeController {
       await SpaceCodeRepo.setRecentCode(spaceCode);
 
       // TODO this should throw error if failed
-      final roomId = showLoading
+      final roomId = showLoading && context != null
           ? await _joinSpaceWithCodeWithLoading(
               spaceCode,
               context: context,
               client: client,
               notFoundError: notFoundError,
             )
-          : await _joinSpaceWithCodeWithoutLoading(
-              spaceCode,
-              context: context,
-              client: client,
-            );
+          : await _joinSpaceWithCodeWithoutLoading(spaceCode, client: client);
 
       GoogleAnalytics.joinClass(spaceCode);
       final result = Result.value(roomId);
@@ -84,7 +80,7 @@ class SpaceCodeController {
     } catch (e, s) {
       _joinCompleter?.complete(Result.error(e, s));
       ErrorHandler.logError(e: e, s: s, data: {"spaceCode": spaceCode});
-      if (e is StreamedResponse && e.statusCode == 429) {
+      if (e is StreamedResponse && e.statusCode == 429 && context != null) {
         await showDialog(
           context: context,
           builder: (context) => const TooManyRequestsDialog(),
@@ -104,11 +100,7 @@ class SpaceCodeController {
   }) async {
     final resp = await showFutureLoadingDialog(
       context: context,
-      future: () => _joinSpaceWithCodeWithoutLoading(
-        spaceCode,
-        context: context,
-        client: client,
-      ),
+      future: () => _joinSpaceWithCodeWithoutLoading(spaceCode, client: client),
       onError: (e, s) => notFoundError ?? L10n.of(context).unableToFindRoom,
       showError: (err) => err is! StreamedResponse || err.statusCode != 429,
     );
@@ -119,7 +111,6 @@ class SpaceCodeController {
 
   static Future<JoinResponse> _joinSpaceWithCodeWithoutLoading(
     String spaceCode, {
-    required BuildContext context,
     required Client client,
   }) async {
     final knockResp = await _knockSpace(spaceCode, client);

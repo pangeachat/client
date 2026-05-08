@@ -1,14 +1,15 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
+
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 import 'package:fluffychat/pangea/bot/bot_target_event_name_enum.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
 import 'package:fluffychat/pangea/tutorials/tutorial_enum.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
-
 import '../../../config/firebase_options.dart';
 
 // PageRoute import

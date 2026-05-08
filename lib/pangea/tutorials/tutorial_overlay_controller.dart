@@ -1,5 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
+import 'package:matrix/matrix_api_lite/utils/logs.dart';
+
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/tutorials/tutorial_constants.dart';
 import 'package:fluffychat/pangea/tutorials/tutorial_enum.dart';
@@ -8,8 +12,6 @@ import 'package:fluffychat/pangea/tutorials/tutorial_overlay_widget.dart';
 import 'package:fluffychat/pangea/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/pangea/tutorials/tutorial_state_transition_events.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:matrix/matrix_api_lite/utils/logs.dart';
 
 class TutorialOverlayState {
   /// The index next / current tutorial
