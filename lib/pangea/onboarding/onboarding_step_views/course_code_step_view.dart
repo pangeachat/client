@@ -9,11 +9,13 @@ import 'package:fluffychat/pangea/onboarding/onboarding_steps/course_code_onboar
 class CourseCodeStepView extends StatefulWidget {
   final CourseCodeOnboardingStep step;
   final VoidCallback onUpdate;
+  final Object? error;
 
   const CourseCodeStepView({
     super.key,
     required this.step,
     required this.onUpdate,
+    required this.error,
   });
 
   @override
@@ -61,15 +63,22 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
       children: [
         BotFace(expression: BotExpression.idle, useRive: true, width: 140.0),
         Text(
-          L10n.of(context).courseCodeStepTitle,
+          widget.error != null
+              ? L10n.of(context).courseCodeStepErrorMessage
+              : L10n.of(context).courseCodeStepTitle,
           style: theme.textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.bold,
+            color: widget.error != null ? theme.colorScheme.error : null,
           ),
         ),
         TextField(
           controller: _codeController,
           decoration: InputDecoration(
             hintText: L10n.of(context).courseCodeStepHint,
+            errorText: widget.error != null ? '' : null,
+            suffixIcon: widget.error != null
+                ? Icon(Icons.error, color: theme.colorScheme.error)
+                : null,
           ),
         ),
       ],

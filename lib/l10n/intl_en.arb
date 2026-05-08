@@ -5096,5 +5096,6 @@
     "pickCefrLevelTeacherStepTitle": "What level do you teach?",
     "pickCefrLevelStudentStepTitle": "What level are you?",
     "customCourseStepTitle": "Fill this form to get a custom course",
-    "aboutYourClass": "About your class"
+    "aboutYourClass": "About your class",
+    "courseCodeStepErrorMessage": "Please check your code and try again"
 }

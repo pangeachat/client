@@ -41,7 +41,7 @@ class OnboardingStepView extends StatelessWidget {
     }
 
     if (step is CourseCodeOnboardingStep) {
-      return CourseCodeStepView(step: step, onUpdate: onUpdate);
+      return CourseCodeStepView(step: step, onUpdate: onUpdate, error: error);
     }
 
     if (step is JoinedCourseOnboardingStep) {
