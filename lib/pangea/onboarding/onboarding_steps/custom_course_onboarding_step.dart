@@ -6,19 +6,18 @@ class CustomCourseOnboardingStep extends OnboardingStep {
     super.stepIndex = 6,
     super.totalSteps = 6,
     required super.prevStep,
-    super.canSkip = true,
+    super.enableSkip = true,
   });
 
-  bool _skip = false;
+  String? _name;
+  String? _about;
 
-  void skip() => _skip = true;
+  void setName(String name) => _name = name;
+  void setAbout(String about) => _about = about;
 
   @override
-  OnboardingStep? get nextStep => null;
+  Future<OnboardingStep?> execute() async => null;
 
   @override
-  Future<void> execute() async {
-    if (_skip) return;
-    // GABBY TODO implement
-  }
+  OnboardingStep? skip() => null;
 }

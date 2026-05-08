@@ -5,14 +5,14 @@ abstract class OnboardingStep {
   final int totalSteps;
   final Client client;
   final OnboardingStep? prevStep;
-  final bool canSkip;
+  final bool enableSkip;
 
   const OnboardingStep({
     required this.stepIndex,
     required this.totalSteps,
     required this.client,
     this.prevStep,
-    this.canSkip = false,
+    this.enableSkip = false,
   });
 
   bool get hasPrevStep => prevStep != null;
@@ -23,11 +23,9 @@ abstract class OnboardingStep {
 
   double get progress => stepIndex / totalSteps;
 
-  OnboardingStep? get nextStep;
-
   String get stepDestination => "/rooms";
 
-  Future<void> execute() async {
-    throw UnimplementedError();
-  }
+  Future<OnboardingStep?> execute();
+
+  OnboardingStep? skip();
 }

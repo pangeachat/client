@@ -4,6 +4,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/pick_cefr_level_onboarding_step.dart';
 import 'package:fluffychat/pangea/onboarding/user_type_enum.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class PickCefrLevelStepView extends StatefulWidget {
   final PickCefrLevelOnboardingStep step;
@@ -27,6 +28,12 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
   void initState() {
     super.initState();
     _step = widget.step;
+    _step.setup(
+      (update) => MatrixState.pangeaController.userController.updateProfile(
+        update,
+        waitForDataInSync: true,
+      ),
+    );
     _selectedLevel = _step.level;
   }
 

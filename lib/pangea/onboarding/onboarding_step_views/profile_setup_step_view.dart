@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,6 +8,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
@@ -44,6 +46,7 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
   void initState() {
     super.initState();
     _step = widget.step;
+    _step.setup(_getRandomAvatarUrl);
 
     _displayNameController.addListener(_setDisplayName);
     _setDefaultProfileInfo();
@@ -58,7 +61,16 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
     super.dispose();
   }
 
-  List<Uri> get _avatarOptions => _step.avatarOptions;
+  List<Uri> get _avatarOptions =>
+      List.generate(5, (index) => Uri.parse(_avatarUrlString(index + 1)));
+
+  String _avatarUrlString(int index) =>
+      "${AppConfig.assetsBaseURL}/avatar_$index.png";
+
+  Uri _getRandomAvatarUrl() {
+    final Random random = Random();
+    return Uri.parse(_avatarUrlString(random.nextInt(4) + 1));
+  }
 
   void _setDisplayName() {
     _debounce?.cancel();

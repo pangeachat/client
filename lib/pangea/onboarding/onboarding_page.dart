@@ -5,12 +5,12 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/onboarding/onboarding_navigation_result.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_step_skip_buttons/onboarding_step_skip_button.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_step_state.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_step_views/onboarding_step_view.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
-import 'package:fluffychat/pangea/onboarding/random_avatar_provider.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class Onboarding extends StatefulWidget {
@@ -32,7 +32,6 @@ class OnboardingController extends State<Onboarding> {
     final initialStep = ProfileSetupOnboardingStep(
       client: Matrix.of(context).client,
     );
-    initialStep.setInititalAvatar(UserAvatarProvider());
     _state = OnboardingStepState(initialStep: initialStep);
     _updateEnableNext();
   }
@@ -43,28 +42,18 @@ class OnboardingController extends State<Onboarding> {
     setState(() {});
   }
 
-  void _navigateBack() {
-    _state.navigateBack();
-    setState(() {});
-  }
-
-  void _navigateForward() {
-    final result = _state.navigateForward();
-    if (result == NavigationResult.reachedEnd) {
-      context.go(_step.stepDestination);
-      return;
-    }
-    setState(() {});
-  }
-
-  Future<void> _executeStep() async {
+  Future<void> _forward() async {
     try {
       setState(() {
         _loading = true;
         _error = null;
       });
 
-      await _step.execute();
+      final result = await _state.forward();
+      if (result is ReachedEndNavigationResult) {
+        context.go(_step.stepDestination);
+        return;
+      }
     } catch (e, s) {
       _error = e;
       ErrorHandler.logError(e: e, s: s, data: {});
@@ -73,10 +62,18 @@ class OnboardingController extends State<Onboarding> {
     }
   }
 
-  Future<void> _executeStepAndMoveForward() async {
-    await _executeStep();
-    if (!mounted || _error != null) return;
-    _navigateForward();
+  void _skip() {
+    final result = _state.skip();
+    if (result is ReachedEndNavigationResult) {
+      context.go(_step.stepDestination);
+      return;
+    }
+    setState(() {});
+  }
+
+  void _back() {
+    _state.back();
+    setState(() {});
   }
 
   @override
@@ -89,9 +86,7 @@ class OnboardingController extends State<Onboarding> {
           child: Row(
             children: [
               _step.hasPrevStep
-                  ? BackButton(
-                      onPressed: _step.enableGoBack ? _navigateBack : null,
-                    )
+                  ? BackButton(onPressed: _step.enableGoBack ? _back : null)
                   : const SizedBox(width: 40.0),
               Expanded(
                 child: AnimatedProgressBar(
@@ -125,15 +120,10 @@ class OnboardingController extends State<Onboarding> {
                 Column(
                   spacing: 12.0,
                   children: [
-                    if (_step.canSkip)
-                      OnboardingStepSkipButton(
-                        step: _step,
-                        onPressed: _executeStepAndMoveForward,
-                      ),
+                    if (_step.enableSkip)
+                      OnboardingStepSkipButton(step: _step, onPressed: _skip),
                     ElevatedButton(
-                      onPressed: _step.enableGoForward
-                          ? _executeStepAndMoveForward
-                          : null,
+                      onPressed: _step.enableGoForward ? _forward : null,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: theme.colorScheme.primaryContainer,
                         foregroundColor: theme.colorScheme.onPrimaryContainer,

@@ -3,7 +3,7 @@ import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/pick_cefr_level_onboarding_step.dart';
 import 'package:fluffychat/pangea/onboarding/user_type_enum.dart';
-import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/pangea/user/user_model.dart';
 
 class PickLanguageOnboardingStep extends OnboardingStep {
   final UserType type;
@@ -18,6 +18,11 @@ class PickLanguageOnboardingStep extends OnboardingStep {
 
   LanguageModel? _baseLanguage;
   LanguageModel? _targetLanguage;
+
+  Future<void> Function(Profile Function(Profile))? updateProfile;
+  void setup(Future<void> Function(Profile Function(Profile)) updateProfile) {
+    this.updateProfile = updateProfile;
+  }
 
   LanguageModel? get baseLanguage => _baseLanguage;
   LanguageModel? get targetLanguage => _targetLanguage;
@@ -36,29 +41,12 @@ class PickLanguageOnboardingStep extends OnboardingStep {
   void selectTargetLanguage(LanguageModel? lang) => _targetLanguage = lang;
 
   @override
-  OnboardingStep? get nextStep {
-    final base = _baseLanguage;
-    final target = _targetLanguage;
-    if (base == null || target == null) {
-      throw StateError(
-        "Cannot go to next step without base and target language set",
-      );
+  Future<OnboardingStep?> execute() async {
+    final updateProfile = this.updateProfile;
+    if (updateProfile == null) {
+      throw StateError("Pick language step is not full set up");
     }
 
-    if (base.langCodeShort == target.langCodeShort) {
-      throw IdenticalLanguageException();
-    }
-
-    return PickCefrLevelOnboardingStep(
-      prevStep: this,
-      totalSteps: totalSteps,
-      type: type,
-      client: client,
-    );
-  }
-
-  @override
-  Future<void> execute() async {
     final target = _targetLanguage;
     final base = _baseLanguage;
 
@@ -70,7 +58,7 @@ class PickLanguageOnboardingStep extends OnboardingStep {
       throw IdenticalLanguageException();
     }
 
-    await MatrixState.pangeaController.userController.updateProfile((profile) {
+    await updateProfile((profile) {
       return profile.copyWith(
         userSettings: profile.userSettings.copyWith(
           targetLanguage: target.langCode,
@@ -78,6 +66,21 @@ class PickLanguageOnboardingStep extends OnboardingStep {
           // GABBY TODO set created at at right time: createdAt: DateTime.now(),
         ),
       );
-    }, waitForDataInSync: true);
+    });
+
+    return PickCefrLevelOnboardingStep(
+      prevStep: this,
+      totalSteps: totalSteps,
+      type: type,
+      client: client,
+    );
   }
+
+  @override
+  OnboardingStep? skip() => PickCefrLevelOnboardingStep(
+    prevStep: this,
+    totalSteps: totalSteps,
+    type: type,
+    client: client,
+  );
 }

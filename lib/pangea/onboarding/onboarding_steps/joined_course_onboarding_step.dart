@@ -15,11 +15,11 @@ class JoinedCourseOnboardingStep extends OnboardingStep {
   });
 
   @override
-  OnboardingStep? get nextStep => null;
-
-  @override
   String get stepDestination => "/rooms/spaces/$roomId";
 
   @override
-  Future<void> execute() async {}
+  Future<OnboardingStep?> execute() async => null;
+
+  @override
+  OnboardingStep? skip() => null;
 }

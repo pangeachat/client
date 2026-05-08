@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/user_type_onboarding_step.dart';
-import 'package:fluffychat/pangea/onboarding/random_avatar_provider.dart';
 
 class ProfileSetupOnboardingStep extends OnboardingStep {
   ProfileSetupOnboardingStep({
@@ -21,8 +20,6 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
     }
   }
 
-  RandomAvatarProvider? _avatarProvider;
-
   String? _displayName;
   Uint8List? _avatarBytes;
   Uri? _avatarUrl;
@@ -31,12 +28,9 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
   Uint8List? get avatarBytes => _avatarBytes;
   Uri? get avatarUrl => _avatarUrl;
 
-  List<Uri> get avatarOptions => _avatarProvider?.avatarOptions ?? [];
-
-  void setInititalAvatar(RandomAvatarProvider avatarProvider) {
-    _avatarProvider = avatarProvider;
+  void setup(Uri Function() getRandomAvatarUrl) {
     if (_avatarBytes == null && _avatarUrl == null) {
-      _avatarUrl = avatarProvider.getRandomAvatarUrl();
+      _avatarUrl = getRandomAvatarUrl();
     }
   }
 
@@ -53,11 +47,7 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
   }
 
   @override
-  OnboardingStep? get nextStep =>
-      UserTypeOnboardingStep(prevStep: this, client: client);
-
-  @override
-  Future<void> execute() async {
+  Future<OnboardingStep?> execute() async {
     Uri? avatarUrl = this.avatarUrl;
     final avatarBytes = this.avatarBytes;
     if (avatarBytes != null && avatarUrl == null) {
@@ -71,17 +61,31 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
     final userID = client.userID;
     final currentProfile = await client.fetchOwnProfile();
 
-    if (avatarUrl != null && avatarUrl != currentProfile.avatarUrl) {
-      await client.setProfileField(userID!, 'avatar_url', {
-        'avatar_url': avatarUrl.toString(),
-      });
+    try {
+      if (avatarUrl != null && avatarUrl != currentProfile.avatarUrl) {
+        await client.setProfileField(userID!, 'avatar_url', {
+          'avatar_url': avatarUrl.toString(),
+        });
+      }
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
     }
 
-    final displayName = this.displayName;
-    if (displayName != null && displayName != currentProfile.displayName) {
-      await client.setProfileField(userID!, 'displayname', {
-        'displayname': displayName,
-      });
+    try {
+      final displayName = this.displayName;
+      if (displayName != null && displayName != currentProfile.displayName) {
+        await client.setProfileField(userID!, 'displayname', {
+          'displayname': displayName,
+        });
+      }
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
     }
+
+    return UserTypeOnboardingStep(prevStep: this, client: client);
   }
+
+  @override
+  OnboardingStep? skip() =>
+      UserTypeOnboardingStep(prevStep: this, client: client);
 }

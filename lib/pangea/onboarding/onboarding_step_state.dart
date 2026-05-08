@@ -1,8 +1,5 @@
-import 'package:matrix/matrix_api_lite/utils/logs.dart';
-
+import 'package:fluffychat/pangea/onboarding/onboarding_navigation_result.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
-
-enum NavigationResult { success, reachedEnd, reachedBeginning, error }
 
 class OnboardingStepState {
   late OnboardingStep _currentStep;
@@ -13,30 +10,41 @@ class OnboardingStepState {
 
   OnboardingStep get step => _currentStep;
 
-  /// Return true if navigation was successful
-  NavigationResult navigateForward() {
+  Future<NavigationResult> forward() async {
     try {
-      final nextStep = _currentStep.nextStep;
+      final nextStep = await _currentStep.execute();
       if (nextStep == null) {
-        return NavigationResult.reachedEnd;
+        return ReachedEndNavigationResult();
       }
 
       _currentStep = nextStep;
-      return NavigationResult.success;
+      return SuccessNavigationResult();
     } catch (e) {
-      Logs().w("Failed to navigate onboarding forward");
-      return NavigationResult.error;
+      return ErrorNavigationResult(e);
     }
   }
 
-  /// Return true if navigation was successful
-  NavigationResult navigateBack() {
+  NavigationResult skip() {
+    try {
+      final nextStep = _currentStep.skip();
+      if (nextStep == null) {
+        return ReachedEndNavigationResult();
+      }
+
+      _currentStep = nextStep;
+      return SuccessNavigationResult();
+    } catch (e) {
+      return ErrorNavigationResult(e);
+    }
+  }
+
+  NavigationResult back() {
     final prevStep = _currentStep.prevStep;
     if (prevStep == null) {
-      return NavigationResult.reachedBeginning;
+      return ReachedBeginningNavigationResult();
     }
 
     _currentStep = prevStep;
-    return NavigationResult.success;
+    return SuccessNavigationResult();
   }
 }

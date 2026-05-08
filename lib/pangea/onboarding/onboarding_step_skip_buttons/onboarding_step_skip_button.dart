@@ -18,7 +18,7 @@ class OnboardingStepSkipButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final step = this.step;
-    if (!step.canSkip) {
+    if (!step.enableSkip) {
       return SizedBox();
     }
 

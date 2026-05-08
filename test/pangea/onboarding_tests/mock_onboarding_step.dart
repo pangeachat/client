@@ -9,5 +9,8 @@ class MockOnboardingStep extends OnboardingStep {
   });
 
   @override
-  OnboardingStep? get nextStep => null;
+  Future<OnboardingStep?> execute() async => null;
+
+  @override
+  OnboardingStep? skip() => null;
 }

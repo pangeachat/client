@@ -19,8 +19,7 @@ class UserTypeOnboardingStep extends OnboardingStep {
   @override
   bool get enableGoForward => _userType != null;
 
-  @override
-  OnboardingStep? get nextStep {
+  OnboardingStep? _getNextStep() {
     final type = _userType;
     if (type == null) {
       throw StateError("Must set user type to move to next step");
@@ -40,7 +39,8 @@ class UserTypeOnboardingStep extends OnboardingStep {
   }
 
   @override
-  Future<void> execute() async {
-    // GABBY TODO: store user type
-  }
+  Future<OnboardingStep?> execute() async => _getNextStep();
+
+  @override
+  OnboardingStep? skip() => _getNextStep();
 }

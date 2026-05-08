@@ -47,6 +47,13 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
   void initState() {
     super.initState();
     _step = widget.step;
+    _step.setup(
+      (update) => MatrixState.pangeaController.userController.updateProfile(
+        update,
+        waitForDataInSync: true,
+      ),
+    );
+
     final userL1 = MatrixState.pangeaController.userController.userL1;
     final userL2 = MatrixState.pangeaController.userController.userL2;
     final systemLanguage = LanguageService.systemLanguage;
@@ -69,6 +76,8 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
     _searchController.dispose();
     super.dispose();
   }
+
+  final _languages = MatrixState.pangeaController.pLanguageStore.targetOptions;
 
   bool get _hasIdenticalLanguages =>
       _selectedTargetLanguage != null &&
@@ -120,7 +129,6 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
       isColumnMode ? theme.textTheme.bodyLarge : theme.textTheme.bodyMedium,
     );
 
-    final languages = MatrixState.pangeaController.pLanguageStore.targetOptions;
     final title = switch (_step.type) {
       UserType.teacher => L10n.of(context).pickLanguageTeacherStepTitle,
       UserType.student => L10n.of(context).onboardingLanguagesTitle,
@@ -147,57 +155,61 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
           child: ValueListenableBuilder(
             valueListenable: _searchController,
             builder: (context, val, _) {
-              return SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 16.0,
-                    right: 16.0,
-                    bottom: 60.0,
-                  ),
-                  child: Wrap(
-                    spacing: 8.0,
-                    runSpacing: 16.0,
-                    alignment: WrapAlignment.center,
-                    children: languages
-                        .where(
-                          (l) => LanguageModel.search(l, val.text, context),
-                        )
-                        .map(
-                          (l) => ShimmerBackground(
-                            enabled: _selectedTargetLanguage == null,
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(16.0),
-                            ),
-                            child: FilterChip(
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                              selected: _selectedTargetLanguage == l,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
+              return CustomScrollView(
+                slivers: [
+                  SliverPadding(
+                    padding: const EdgeInsets.only(
+                      left: 16.0,
+                      right: 16.0,
+                      bottom: 60.0,
+                    ),
+                    sliver: SliverToBoxAdapter(
+                      child: Wrap(
+                        spacing: 8.0,
+                        runSpacing: 16.0,
+                        alignment: WrapAlignment.center,
+                        children: _languages
+                            .where(
+                              (l) => LanguageModel.search(l, val.text, context),
+                            )
+                            .map(
+                              (l) => ShimmerBackground(
+                                enabled: _selectedTargetLanguage == null,
+                                borderRadius: const BorderRadius.all(
                                   Radius.circular(16.0),
                                 ),
+                                child: FilterChip(
+                                  materialTapTargetSize:
+                                      MaterialTapTargetSize.shrinkWrap,
+                                  selected: _selectedTargetLanguage == l,
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(16.0),
+                                    ),
+                                  ),
+                                  backgroundColor: _selectedTargetLanguage == l
+                                      ? theme.colorScheme.primary
+                                      : theme.colorScheme.surfaceContainer,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8.0,
+                                    vertical: 4.0,
+                                  ),
+                                  label: LanguageDisplayNamePrefixWidget(
+                                    l,
+                                    style: textStyle,
+                                    iconSize: isColumnMode ? 16.0 : 12.0,
+                                  ),
+                                  onSelected: (selected) {
+                                    _setTargetLanguage(selected ? l : null);
+                                  },
+                                ),
                               ),
-                              backgroundColor: _selectedTargetLanguage == l
-                                  ? theme.colorScheme.primary
-                                  : theme.colorScheme.surfaceContainer,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8.0,
-                                vertical: 4.0,
-                              ),
-                              label: LanguageDisplayNamePrefixWidget(
-                                l,
-                                style: textStyle,
-                                iconSize: isColumnMode ? 16.0 : 12.0,
-                              ),
-                              onSelected: (selected) {
-                                _setTargetLanguage(selected ? l : null);
-                              },
-                            ),
-                          ),
-                        )
-                        .toList(),
+                            )
+                            .toList(),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               );
             },
           ),
@@ -208,7 +220,7 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
               ? Padding(
                   padding: EdgeInsets.only(top: 12.0),
                   child: PLanguageDropdown(
-                    languages: languages,
+                    languages: _languages,
                     onChange: _setBaseLanguage,
                     initialLanguage: _selectedBaseLanguage,
                     decorationText: L10n.of(context).alreadySpeak,
