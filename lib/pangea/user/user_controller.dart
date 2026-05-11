@@ -485,6 +485,8 @@ class UserController {
 
   LanguageLevelTypeEnum? get userCefrLevel => profile.userSettings.cefrLevel;
 
+  DateTime? get createdAt => profile.userSettings.createdAt;
+
   String? get voice => profile.userSettings.voice;
 
   bool get languagesSet =>
