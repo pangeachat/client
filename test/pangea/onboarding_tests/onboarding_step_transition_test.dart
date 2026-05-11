@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart' hide Result;
 import 'package:fluffychat/pangea/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
+import 'package:fluffychat/pangea/custom_courses/custom_course_response_model.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_navigation_result.dart';
@@ -19,7 +20,6 @@ import 'package:fluffychat/pangea/onboarding/onboarding_steps/user_type_onboardi
 import 'package:fluffychat/pangea/onboarding/user_type_enum.dart';
 import '../get_test_client.dart';
 import 'get_initial_onboarding_step.dart';
-import 'mock_onboarding_step.dart';
 
 void main() async {
   late final Client client;
@@ -75,24 +75,6 @@ void main() async {
     teacherWithoutCode = OnboardingStepState(
       initialStep: getInitialOnboardingStep(client, getRandomAvatarUrl),
     );
-  });
-
-  test("Test initial onboarding step", () {
-    final prevStep = MockOnboardingStep(
-      stepIndex: 4,
-      totalSteps: 5,
-      client: client,
-    );
-
-    final initialStep = PickCefrLevelOnboardingStep(
-      prevStep: prevStep,
-      totalSteps: 5,
-      type: UserType.student,
-      client: client,
-    );
-
-    final localState = OnboardingStepState(initialStep: initialStep);
-    assert(localState.step is PickCefrLevelOnboardingStep);
   });
 
   void testForwardNavigationWithCode(
@@ -185,6 +167,17 @@ void main() async {
       case UserType.teacher:
         assert(await state.forward() is SuccessNavigationResult);
         assert(state.step is CustomCourseOnboardingStep);
+        assert(await state.forward() is ErrorNavigationResult);
+        assert(state.step is CustomCourseOnboardingStep);
+        final step = state.step as CustomCourseOnboardingStep;
+        step.setup(
+          (_) async => Result.value(
+            CustomCourseResponseModel(id: "123", status: "generating"),
+          ),
+        );
+        step.setName("Course Name");
+        step.setInstitution("Test University");
+        step.setGoals("Test goals");
         assert(await state.forward() is ReachedEndNavigationResult);
         return;
     }

@@ -73,14 +73,13 @@ class PickLanguageOnboardingStep extends OnboardingStep {
       totalSteps: totalSteps,
       type: type,
       client: client,
+      baseLanguage: base,
+      targetLanguage: target,
     );
   }
 
   @override
-  OnboardingStep? skip() => PickCefrLevelOnboardingStep(
-    prevStep: this,
-    totalSteps: totalSteps,
-    type: type,
-    client: client,
-  );
+  OnboardingStep? skip() {
+    throw StateError("Cannot skip language selection onboarding step");
+  }
 }

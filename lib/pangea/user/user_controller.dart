@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
+import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
 import 'package:fluffychat/pangea/user/public_profile_model.dart';
@@ -481,6 +482,8 @@ class UserController {
         ? null
         : langModel;
   }
+
+  LanguageLevelTypeEnum? get userCefrLevel => profile.userSettings.cefrLevel;
 
   String? get voice => profile.userSettings.voice;
 

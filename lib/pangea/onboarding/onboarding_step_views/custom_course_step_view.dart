@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/custom_courses/custom_course_repo.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class CustomCourseStepView extends StatefulWidget {
   final CustomCourseOnboardingStep step;
@@ -17,27 +19,40 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
   late final CustomCourseOnboardingStep _step;
 
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _aboutController = TextEditingController();
+  final TextEditingController _institutionController = TextEditingController();
+  final TextEditingController _goalsController = TextEditingController();
 
   Timer? _nameDebounce;
-  Timer? _aboutDebounce;
+  Timer? _institutionDebounce;
+  Timer? _goalsDebounce;
 
   @override
   void initState() {
     super.initState();
     _step = widget.step;
+    _step.setup(
+      (req) => CustomCourseRepo.get(
+        req,
+        MatrixState.pangeaController.userController.accessToken,
+      ),
+    );
+
     _nameController.addListener(_setName);
-    _aboutController.addListener(_setAbout);
+    _institutionController.addListener(_setInstitution);
+    _goalsController.addListener(_setGoals);
   }
 
   @override
   void dispose() {
     _nameController.removeListener(_setName);
-    _aboutController.removeListener(_setAbout);
+    _institutionController.removeListener(_setInstitution);
+    _goalsController.removeListener(_setGoals);
     _nameController.dispose();
-    _aboutController.dispose();
+    _institutionController.dispose();
+    _goalsController.dispose();
     _nameDebounce?.cancel();
-    _aboutDebounce?.cancel();
+    _institutionDebounce?.cancel();
+    _goalsDebounce?.cancel();
     super.dispose();
   }
 
@@ -50,12 +65,21 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
     });
   }
 
-  void _setAbout() {
-    _aboutDebounce?.cancel();
-    _aboutDebounce = Timer(Duration(milliseconds: 300), () {
-      _step.setAbout(_aboutController.text);
-      _aboutDebounce?.cancel();
-      _aboutDebounce = null;
+  void _setInstitution() {
+    _institutionDebounce?.cancel();
+    _institutionDebounce = Timer(Duration(milliseconds: 300), () {
+      _step.setInstitution(_institutionController.text);
+      _institutionDebounce?.cancel();
+      _institutionDebounce = null;
+    });
+  }
+
+  void _setGoals() {
+    _goalsDebounce?.cancel();
+    _goalsDebounce = Timer(Duration(milliseconds: 300), () {
+      _step.setGoals(_goalsController.text);
+      _goalsDebounce?.cancel();
+      _goalsDebounce = null;
     });
   }
 
@@ -76,10 +100,12 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
           decoration: InputDecoration(hintText: L10n.of(context).name),
         ),
         TextField(
-          controller: _aboutController,
-          decoration: InputDecoration(
-            hintText: L10n.of(context).aboutYourClass,
-          ),
+          controller: _institutionController,
+          decoration: InputDecoration(hintText: L10n.of(context).institution),
+        ),
+        TextField(
+          controller: _goalsController,
+          decoration: InputDecoration(hintText: L10n.of(context).courseGoals),
           minLines: 10,
           maxLines: 10,
         ),

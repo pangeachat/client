@@ -1,3 +1,4 @@
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
@@ -6,6 +7,8 @@ import 'package:fluffychat/pangea/user/user_model.dart';
 
 class PickCefrLevelOnboardingStep extends OnboardingStep {
   final UserType type;
+  final LanguageModel baseLanguage;
+  final LanguageModel targetLanguage;
 
   PickCefrLevelOnboardingStep({
     required super.client,
@@ -13,6 +16,8 @@ class PickCefrLevelOnboardingStep extends OnboardingStep {
     required super.totalSteps,
     required super.prevStep,
     required this.type,
+    required this.baseLanguage,
+    required this.targetLanguage,
   });
 
   LanguageLevelTypeEnum? _level;
@@ -36,9 +41,14 @@ class PickCefrLevelOnboardingStep extends OnboardingStep {
       throw StateError("Pick CEFR level step is not fully set up");
     }
 
+    final level = _level;
+    if (level == null) {
+      throw StateError("Cefr level is null");
+    }
+
     await updateProfile((profile) {
       return profile.copyWith(
-        userSettings: profile.userSettings.copyWith(cefrLevel: _level),
+        userSettings: profile.userSettings.copyWith(cefrLevel: level),
       );
     });
 
@@ -47,6 +57,9 @@ class PickCefrLevelOnboardingStep extends OnboardingStep {
       UserType.teacher => CustomCourseOnboardingStep(
         prevStep: this,
         client: client,
+        baseLanguage: baseLanguage,
+        targetLanguage: targetLanguage,
+        languageLevel: level,
       ),
     };
   }

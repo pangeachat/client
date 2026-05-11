@@ -67,6 +67,8 @@ class PApiUrls {
       "${PApiUrls._choreoEndpoint}/topics/localize";
   static String getLocalizedActivity =
       "${PApiUrls._choreoEndpoint}/activity_plan/localize";
+  static String requestCustomCourse =
+      "${PApiUrls._choreoEndpoint}/courses/request";
 
   ///-------------------------------- revenue cat --------------------------
   static String rcAppsChoreo = "${PApiUrls._subscriptionEndpoint}/app_ids";
