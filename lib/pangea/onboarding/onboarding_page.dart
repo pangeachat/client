@@ -142,26 +142,36 @@ class OnboardingController extends State<Onboarding> {
                             backgroundColor: theme.colorScheme.primaryContainer,
                             foregroundColor:
                                 theme.colorScheme.onPrimaryContainer,
+                            minimumSize: const Size.fromHeight(48),
                           ),
-                          child: child,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ValueListenableBuilder(
-                              valueListenable: _loading,
-                              child: Text(
-                                step.hasNextStep
-                                    ? L10n.of(context).next
-                                    : L10n.of(context).letsGo,
+                          child: SizedBox(
+                            height: 24,
+                            child: Center(
+                              child: ValueListenableBuilder(
+                                valueListenable: _loading,
+                                builder: (context, loading, _) =>
+                                    AnimatedSwitcher(
+                                      duration: const Duration(
+                                        milliseconds: 200,
+                                      ),
+                                      child: loading
+                                          ? SizedBox(
+                                              key: const ValueKey('loading'),
+                                              width: double.infinity,
+                                              child:
+                                                  const LinearProgressIndicator(),
+                                            )
+                                          : Text(
+                                              step.hasNextStep
+                                                  ? L10n.of(context).next
+                                                  : L10n.of(context).letsGo,
+                                              key: const ValueKey('text'),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                    ),
                               ),
-                              builder: (context, loading, child) {
-                                return loading
-                                    ? const LinearProgressIndicator()
-                                    : child!;
-                              },
                             ),
-                          ],
+                          ),
                         ),
                       ),
                     ],
