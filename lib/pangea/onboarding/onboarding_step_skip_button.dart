@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/onboarding/onboarding_step_skip_buttons/course_code_step_skip_button.dart';
-import 'package:fluffychat/pangea/onboarding/onboarding_step_skip_buttons/custom_course_step_skip_button.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/course_code_onboarding_step.dart';
-import 'package:fluffychat/pangea/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
 
 class OnboardingStepSkipButton extends StatelessWidget {
@@ -15,6 +13,11 @@ class OnboardingStepSkipButton extends StatelessWidget {
     required this.onPressed,
   });
 
+  void _onPressed() {
+    step.skip();
+    onPressed();
+  }
+
   @override
   Widget build(BuildContext context) {
     final step = this.step;
@@ -22,14 +25,11 @@ class OnboardingStepSkipButton extends StatelessWidget {
       return SizedBox();
     }
 
+    String text = L10n.of(context).skipForNow;
     if (step is CourseCodeOnboardingStep) {
-      return CourseCodeStepSkipButton(step: step, onPressed: onPressed);
+      text = L10n.of(context).courseCodeStepSkip;
     }
 
-    if (step is CustomCourseOnboardingStep) {
-      return CustomCourseStepSkipButton(step: step, onPressed: onPressed);
-    }
-
-    return SizedBox();
+    return TextButton(onPressed: _onPressed, child: Text(text));
   }
 }
