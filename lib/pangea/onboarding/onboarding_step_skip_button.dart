@@ -13,23 +13,13 @@ class OnboardingStepSkipButton extends StatelessWidget {
     required this.onPressed,
   });
 
-  void _onPressed() {
-    step.skip();
-    onPressed();
-  }
-
   @override
-  Widget build(BuildContext context) {
-    final step = this.step;
-    if (!step.enableSkip) {
-      return SizedBox();
-    }
-
-    String text = L10n.of(context).skipForNow;
-    if (step is CourseCodeOnboardingStep) {
-      text = L10n.of(context).courseCodeStepSkip;
-    }
-
-    return TextButton(onPressed: _onPressed, child: Text(text));
-  }
+  Widget build(BuildContext context) => TextButton(
+    onPressed: onPressed,
+    child: Text(
+      step is CourseCodeOnboardingStep
+          ? L10n.of(context).courseCodeStepSkip
+          : L10n.of(context).skipForNow,
+    ),
+  );
 }

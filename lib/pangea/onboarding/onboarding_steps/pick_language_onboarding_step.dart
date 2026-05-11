@@ -32,7 +32,6 @@ class PickLanguageOnboardingStep extends OnboardingStep {
     final base = _baseLanguage;
     final target = _targetLanguage;
     if (base == null || target == null) return false;
-    // if (base.langCodeShort == target.langCodeShort) return false;
     return true;
   }
 
