@@ -4,54 +4,28 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 class ChoreoError {
   final Object raw;
-
   ChoreoError(this.raw);
 
   String toLocalizedString(BuildContext context) =>
       ErrorCopy(raw).toLocalizedString(context);
-
-  IconData get icon => Icons.error_outline;
 }
 
 class ChoreographerErrorController extends ChangeNotifier {
   ChoreoError? _error;
-  int coolDownSeconds = 0;
+  bool _blockWritingAssistance = false;
 
   ChoreographerErrorController();
 
-  bool get isError => _error != null;
   ChoreoError? get error => _error;
-  Duration get defaultCooldown {
-    coolDownSeconds += 3;
-    return Duration(seconds: coolDownSeconds);
-  }
-
-  final List<String> _errorCache = [];
+  bool get blockWritingAssistance => _error != null && _blockWritingAssistance;
 
   void setError(ChoreoError? error) {
-    if (_errorCache.contains(error?.raw.toString())) {
-      return;
-    }
-
-    if (error != null) {
-      _errorCache.add(error.raw.toString());
-    }
-
     _error = error;
-    Future.delayed(defaultCooldown, () {
-      _error = null;
-      notifyListeners();
-    });
+    _blockWritingAssistance = true;
     notifyListeners();
   }
 
-  void setErrorAndLock(ChoreoError? error) {
-    _error = error;
-    notifyListeners();
-  }
+  void unblockWritingAssistance() => _blockWritingAssistance = false;
 
-  void resetError() {
-    _error = null;
-    notifyListeners();
-  }
+  void clear() => setError(null);
 }

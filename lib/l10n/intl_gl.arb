@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-05-04 12:41:20.911706",
+    "@@last_modified": "2026-05-06 14:58:15.054214",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10958,6 +10958,46 @@
     },
     "bearImageDescription": "Un oso amarelo de estilo de debuxo animado coas súas mans levantadas en emoción.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Selecciona palabras para aprender máis sobre elas",
+    "requireAnalyticsAccessTitle": "Require acceso á analítica para unirse",
+    "requireAnalyticsAccessDesc": "Os participantes deben conceder acceso á súa analítica de aprendizaxe para unirse a este curso",
+    "analyticsAccessNoticeTitle": "Acceso á analítica requirido",
+    "analyticsAccessNoticeDesc": "Ao unirte a este curso, aceptas conceder acceso aos administradores á túa analítica de aprendizaxe.",
+    "skipOnboardingClassCodeDesc": "Aprendendo de forma independente? Non te preocupes, podes:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Por favor, elixe un rol predefinido abaixo ou introduce un nivel de permiso personalizado. Escolla un número enteiro entre 0 e 100.",
+    "reportContentIssue": "Informar de un problema de contido",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 12:42:06.048430",
+    "@@last_modified": "2026-05-06 14:59:26.005992",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10958,6 +10958,46 @@
     },
     "bearImageDescription": "Een cartoonachtige gele beer met zijn armen omhoog in opwinding.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Selecteer woorden om er meer over te leren",
+    "requireAnalyticsAccessTitle": "Analytics-toegang vereist om deel te nemen",
+    "requireAnalyticsAccessDesc": "Deelnemers moeten toegang tot hun leeranalyses verlenen om aan deze cursus deel te nemen",
+    "analyticsAccessNoticeTitle": "Analytics-toegang vereist",
+    "analyticsAccessNoticeDesc": "Door deel te nemen aan deze cursus stem je ermee in dat beheerders toegang krijgen tot je leeranalyses.",
+    "skipOnboardingClassCodeDesc": "Leer je zelfstandig? Maak je geen zorgen, je kunt:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Kies alstublieft een vooraf gedefinieerde rol hieronder of voer een aangepast permissieniveau in. Kies een geheel getal tussen 0 en 100.",
+    "reportContentIssue": "Rapporteer inhoudsprobleem",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

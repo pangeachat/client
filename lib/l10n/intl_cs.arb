@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-05-04 12:41:43.631972",
+    "@@last_modified": "2026-05-06 14:58:54.253185",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -11512,6 +11512,46 @@
     },
     "bearImageDescription": "Kreslená žlutá medvěd s rukama vztyčenýma v nadšení.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Vyberte slova, abyste se o nich dozvěděli více",
+    "requireAnalyticsAccessTitle": "Vyžadovat přístup k analytice pro připojení",
+    "requireAnalyticsAccessDesc": "Účastníci musí udělit přístup k jejich analytice učení, aby se mohli připojit k tomuto kurzu",
+    "analyticsAccessNoticeTitle": "Vyžaduje se přístup k analytice",
+    "analyticsAccessNoticeDesc": "Připojením k tomuto kurzu souhlasíte s tím, že udělíte administrátorům přístup k vaší analytice učení.",
+    "skipOnboardingClassCodeDesc": "Učíte se nezávisle? Nebojte se, můžete:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Vyberte prosím předdefinovanou roli níže nebo zadejte vlastní úroveň oprávnění. Zvolte celé číslo mezi 0 a 100.",
+    "reportContentIssue": "Nahlásit problém s obsahem",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

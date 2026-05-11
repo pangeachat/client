@@ -34,6 +34,7 @@ class PangeaEventTypes {
   static const courseUser = "p.course_user";
   static const teacherMode = "pangea.teacher_mode";
   static const courseChatList = "pangea.course_chat_list";
+  static const courseSettings = "pangea.course_settings";
 
   static const analyticsSettings = "pangea.analytics_settings";
 
@@ -42,4 +43,6 @@ class PangeaEventTypes {
 
   static const knockedRooms = 'org.pangea.knocked_rooms';
   static const notificationSettings = 'org.pangea.notification_settings';
+
+  static const accessNoticeShown = 'org.pangea.analytics_access_notice_shown';
 }

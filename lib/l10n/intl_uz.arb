@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-05-04 12:41:52.274905",
+    "@@last_modified": "2026-05-06 14:59:08.684712",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10962,6 +10962,46 @@
     },
     "bearImageDescription": "Hayajonlangan holda qo'llarini ko'targan, karton uslubidagi sariq ayiq.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "O'rganish uchun so'zlarni tanlang",
+    "requireAnalyticsAccessTitle": "Qo'shilish uchun analitika kirishini talab qiladi",
+    "requireAnalyticsAccessDesc": "Ishtirokchilar ushbu kursga qo'shilish uchun o'zlarining o'rganish analitikalariga kirish huquqini berishlari kerak",
+    "analyticsAccessNoticeTitle": "Analitika kirishi talab qilinadi",
+    "analyticsAccessNoticeDesc": "Ushbu kursga qo'shilish orqali siz adminlarga o'z o'rganish analitikangizga kirish huquqini berishga rozi bo'lasiz.",
+    "skipOnboardingClassCodeDesc": "Mustaqil o'rganmoqdamisiz? Xavotir olmang, siz:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Iltimos, quyida oldindan belgilangan rolni tanlang yoki maxsus ruxsat darajasini kiriting. 0 dan 100 gacha bo'lgan butun sonni tanlang.",
+    "reportContentIssue": "Kontent muammosini xabar qiling",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

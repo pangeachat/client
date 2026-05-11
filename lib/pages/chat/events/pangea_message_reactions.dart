@@ -21,12 +21,14 @@ class PangeaMessageReactions extends StatefulWidget {
   final Timeline timeline;
   final ChatController controller;
   final double? width;
+  final bool enabled;
 
   const PangeaMessageReactions(
     this.event,
     this.timeline,
     this.controller, {
     this.width,
+    this.enabled = true,
     super.key,
   });
 
@@ -130,11 +132,15 @@ class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
                 reactionKey: r.key,
                 count: r.count,
                 reacted: r.reacted,
-                onTap: () => _handleReactionTap(r, allReactionEvents),
-                onLongPress: () async => await _AdaptableReactorsDialog(
-                  client: client,
-                  reactionEntry: r,
-                ).show(context),
+                onTap: widget.enabled
+                    ? () => _handleReactionTap(r, allReactionEvents)
+                    : null,
+                onLongPress: widget.enabled
+                    ? () async => await _AdaptableReactorsDialog(
+                        client: client,
+                        reactionEntry: r,
+                      ).show(context)
+                    : null,
               ),
             ),
             if (allReactionEvents.any((e) => e.status.isSending))
@@ -291,6 +297,17 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
     _growController.reset();
   }
 
+  Future<void> _onTap({bool isAnimating = false}) async {
+    if (_isBusy || isAnimating) return;
+    _isBusy = true;
+
+    try {
+      await _animateAndReact();
+    } finally {
+      if (mounted) setState(() => _isBusy = false);
+    }
+  }
+
   Future<void> _animateAndReact() async {
     final bool? wasReacted = widget.reacted;
     final bool wasSingle = (widget.count == 1);
@@ -415,20 +432,12 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
                         ? Padding(
                             padding: const EdgeInsets.only(left: 2, right: 2),
                             child: InkWell(
-                              onTap: () async {
-                                if (_isBusy || isBouncing || isGrowing) {
-                                  return;
-                                }
-                                _isBusy = true;
-                                try {
-                                  await _animateAndReact();
-                                } finally {
-                                  if (mounted) setState(() => _isBusy = false);
-                                }
-                              },
-                              onLongPress: () => widget.onLongPress != null
-                                  ? widget.onLongPress!()
+                              onTap: widget.onTap != null
+                                  ? () => _onTap(
+                                      isAnimating: isBouncing || isGrowing,
+                                    )
                                   : null,
+                              onLongPress: widget.onLongPress,
                               borderRadius: BorderRadius.circular(
                                 AppConfig.borderRadius / 2,
                               ),

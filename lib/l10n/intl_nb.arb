@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 12:41:45.024640",
+    "@@last_modified": "2026-05-06 14:58:55.886524",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11018,6 +11018,46 @@
     },
     "bearImageDescription": "En tegneserieaktig gul bjørn med armene hevet i begeistring.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Velg ord for å lære mer om dem",
+    "requireAnalyticsAccessTitle": "Krever tilgang til analyser for å bli med",
+    "requireAnalyticsAccessDesc": "Deltakere må gi tilgang til sine læringsanalyser for å bli med i dette kurset",
+    "analyticsAccessNoticeTitle": "Tilgang til analyser kreves",
+    "analyticsAccessNoticeDesc": "Ved å bli med i dette kurset, godtar du å gi administratorer tilgang til dine læringsanalyser.",
+    "skipOnboardingClassCodeDesc": "Lærer du uavhengig? Ikke bekymre deg, du kan:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Vennligst velg en forhåndsdefinert rolle nedenfor eller skriv inn et tilpasset tillatelsesnivå. Velg et helt tall mellom 0 og 100.",
+    "reportContentIssue": "Rapporter innholdsproblem",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

@@ -4188,7 +4188,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-05-04 12:41:55.360605",
+    "@@last_modified": "2026-05-06 14:59:12.091296",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10958,6 +10958,46 @@
     },
     "bearImageDescription": "Karikatūrisks dzeltenais lācis ar paceltām rokām sajūsmā.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Izvēlieties vārdus, lai uzzinātu vairāk par tiem",
+    "requireAnalyticsAccessTitle": "Nepieciešama analītikas piekļuve, lai pievienotos",
+    "requireAnalyticsAccessDesc": "Dalībniekiem jāpiešķir piekļuve viņu mācību analītikai, lai pievienotos šim kursam",
+    "analyticsAccessNoticeTitle": "Nepieciešama analītikas piekļuve",
+    "analyticsAccessNoticeDesc": "Pievienojoties šim kursam, jūs piekrītat piešķirt administratoriem piekļuvi jūsu mācību analītikai.",
+    "skipOnboardingClassCodeDesc": "Mācāties patstāvīgi? Neuztraucieties, jūs varat:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Lūdzu, izvēlieties iepriekš noteiktu lomu zemāk vai ievadiet pielāgotu atļauju līmeni. Izvēlieties veselu skaitli no 0 līdz 100.",
+    "reportContentIssue": "Ziņot par satura problēmu",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

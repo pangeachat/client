@@ -9,6 +9,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
+import 'package:fluffychat/pangea/analytics_access/course_settings_extension.dart';
 import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicators.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/room_details_buttons.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/room_participants_widget.dart';
@@ -219,6 +220,19 @@ class SpaceDetailsContent extends StatelessWidget {
                 ),
               )
             : null,
+      ),
+      ButtonDetails(
+        title: l10n.requireAnalyticsAccessTitle,
+        description: l10n.requireAnalyticsAccessDesc,
+        icon: const Icon(Symbols.bar_chart_4_bars, size: 30.0),
+        onPressed: () => showFutureLoadingDialog(
+          context: context,
+          future: () => room.toggleRequireAnalyticsAccess(),
+        ),
+        enabled: room.isRoomAdmin,
+        showInMainView: false,
+        isToggle: true,
+        value: room.requireAnalyticsAccess,
       ),
       ButtonDetails(
         title: l10n.permissions,

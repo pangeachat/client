@@ -7,6 +7,7 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
@@ -89,6 +90,7 @@ extension AnalyticsClientExtension on Client {
     }
 
     addAnalyticsRoomsToSpaces();
+    grantAnalyticsAccessByAnalyticsRoom(roomID, lang.langCodeShort);
     return getRoomById(roomID)!;
   }
 

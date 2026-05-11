@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 12:41:26.233740",
+    "@@last_modified": "2026-05-06 14:58:24.167936",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -11055,6 +11055,46 @@
     },
     "bearImageDescription": "Seekor beruang kuning kartun dengan lengan terangkat dalam kegembiraan.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Pilih kata untuk mempelajari lebih lanjut tentangnya",
+    "requireAnalyticsAccessTitle": "Memerlukan akses analitik untuk bergabung",
+    "requireAnalyticsAccessDesc": "Peserta harus memberikan akses ke analitik pembelajaran mereka untuk bergabung dengan kursus ini",
+    "analyticsAccessNoticeTitle": "Akses Analitik Diperlukan",
+    "analyticsAccessNoticeDesc": "Dengan bergabung dengan kursus ini, Anda setuju untuk memberikan akses kepada admin ke analitik pembelajaran Anda.",
+    "skipOnboardingClassCodeDesc": "Belajar secara mandiri? Jangan khawatir, Anda bisa:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Silakan pilih peran yang telah ditentukan di bawah ini atau masukkan tingkat izin kustom. Pilih angka bulat antara 0 dan 100.",
+    "reportContentIssue": "Laporkan masalah konten",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

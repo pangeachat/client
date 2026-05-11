@@ -4040,7 +4040,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-05-04 12:42:14.571577",
+    "@@last_modified": "2026-05-06 14:59:39.535857",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -12007,6 +12007,46 @@
     },
     "bearImageDescription": "Ένας καρτουνίστικος κίτρινος αρκούδος με τα χέρια του υψωμένα από ενθουσιασμό.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Επιλέξτε λέξεις για να μάθετε περισσότερα γι' αυτές",
+    "requireAnalyticsAccessTitle": "Απαιτείται πρόσβαση σε αναλύσεις για να συμμετάσχετε",
+    "requireAnalyticsAccessDesc": "Οι συμμετέχοντες πρέπει να παραχωρήσουν πρόσβαση στις αναλύσεις μάθησής τους για να συμμετάσχουν σε αυτό το μάθημα",
+    "analyticsAccessNoticeTitle": "Απαιτείται πρόσβαση σε αναλύσεις",
+    "analyticsAccessNoticeDesc": "Με την συμμετοχή σας σε αυτό το μάθημα, συμφωνείτε να παραχωρήσετε στους διαχειριστές πρόσβαση στις αναλύσεις μάθησής σας.",
+    "skipOnboardingClassCodeDesc": "Μαθαίνετε ανεξάρτητα; Μην ανησυχείτε, μπορείτε να:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Παρακαλώ επιλέξτε έναν προκαθορισμένο ρόλο παρακάτω ή εισάγετε ένα προσαρμοσμένο επίπεδο άδειας. Επιλέξτε έναν ακέραιο αριθμό μεταξύ 0 και 100.",
+    "reportContentIssue": "Αναφορά προβλήματος περιεχομένου",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

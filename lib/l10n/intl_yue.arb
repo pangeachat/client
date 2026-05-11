@@ -1675,7 +1675,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-05-04 12:41:40.773652",
+    "@@last_modified": "2026-05-06 14:58:47.903369",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -12089,6 +12089,46 @@
     },
     "bearImageDescription": "一隻卡通風格的黃色熊，興奮地舉起雙臂。",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "選擇單詞以了解更多信息",
+    "requireAnalyticsAccessTitle": "需要分析訪問才能加入",
+    "requireAnalyticsAccessDesc": "參與者必須授予訪問其學習分析的權限才能加入此課程",
+    "analyticsAccessNoticeTitle": "需要分析訪問",
+    "analyticsAccessNoticeDesc": "通過加入此課程，您同意授予管理員訪問您的學習分析的權限。",
+    "skipOnboardingClassCodeDesc": "獨立學習？別擔心，您可以：",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "請選擇下面的預設角色或輸入自定義權限級別。選擇一個介乎 0 和 100 之間的整數。",
+    "reportContentIssue": "報告內容問題",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

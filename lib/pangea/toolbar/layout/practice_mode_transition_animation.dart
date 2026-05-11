@@ -178,17 +178,20 @@ class CenteredMessage extends StatelessWidget {
                         controller.screenSize!.width - controller.columnWidth,
                     height: 20.0,
                   ),
-                  OverlayCenterContent(
-                    event: controller.widget.event,
-                    overlayController: controller.widget.overlayController,
-                    chatController: controller.widget.chatController,
-                    nextEvent: controller.widget.nextEvent,
-                    prevEvent: controller.widget.prevEvent,
-                    hasReactions: controller.hasReactions,
-                    overlayKey:
-                        "overlay_center_message_${controller.widget.event.eventId}",
-                    readingAssistanceMode: controller.readingAssistanceMode,
-                    reactionsWidth: controller.reactionNotifier,
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    child: OverlayCenterContent(
+                      event: controller.widget.event,
+                      overlayController: controller.widget.overlayController,
+                      chatController: controller.widget.chatController,
+                      nextEvent: controller.widget.nextEvent,
+                      prevEvent: controller.widget.prevEvent,
+                      hasReactions: controller.hasReactions,
+                      overlayKey:
+                          "overlay_center_message_${controller.widget.event.eventId}",
+                      readingAssistanceMode: controller.readingAssistanceMode,
+                      reactionsWidth: controller.reactionNotifier,
+                    ),
                   ),
                   const SizedBox(
                     height: AppConfig.readingAssistanceInputBarHeight + 60.0,

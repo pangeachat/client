@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/join_codes/knocked_rooms_model.dart';
@@ -10,9 +11,15 @@ import 'package:fluffychat/pangea/join_codes/knocked_rooms_model.dart';
 extension KnockRoomExtension on Room {
   bool get hasKnocked => client.hasKnockedRoom(id);
 
-  Future<void> joinKnockedRoom() async {
-    await join();
-    await client.onJoinKnockedRoom(id);
+  Future<JoinResponse?> joinKnockedRoom() async {
+    try {
+      final resp = await joinWithAccessCheck();
+      await client.onJoinKnockedRoom(id);
+      return resp;
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'roomId': id});
+      return null;
+    }
   }
 
   Future<void> acceptKnock(String userID) async {

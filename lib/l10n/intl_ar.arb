@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-05-04 12:41:56.555152",
+    "@@last_modified": "2026-05-06 14:59:14.198324",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11298,6 +11298,46 @@
     },
     "bearImageDescription": "دب أصفر كرتوني يرفع ذراعيه في حماس.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "اختر الكلمات لتتعلم المزيد عنها",
+    "requireAnalyticsAccessTitle": "يتطلب الوصول إلى التحليلات للانضمام",
+    "requireAnalyticsAccessDesc": "يجب على المشاركين منح الوصول إلى تحليلات التعلم الخاصة بهم للانضمام إلى هذه الدورة",
+    "analyticsAccessNoticeTitle": "يتطلب الوصول إلى التحليلات",
+    "analyticsAccessNoticeDesc": "من خلال الانضمام إلى هذه الدورة، فإنك توافق على منح المسؤولين الوصول إلى تحليلات التعلم الخاصة بك.",
+    "skipOnboardingClassCodeDesc": "تتعلم بشكل مستقل؟ لا تقلق، يمكنك:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "يرجى اختيار دور محدد مسبقًا أدناه أو إدخال مستوى إذن مخصص. اختر عددًا صحيحًا بين 0 و 100.",
+    "reportContentIssue": "الإبلاغ عن مشكلة في المحتوى",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

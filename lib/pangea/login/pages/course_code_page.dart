@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -39,18 +40,25 @@ class CourseCodePageState extends State<CourseCodePage> {
       return;
     }
 
+    final client = Matrix.of(context).client;
     final result = await SpaceCodeController.joinSpaceWithCode(
       _code,
       context: context,
-      client: Matrix.of(context).client,
+      client: client,
     );
-    final roomId = result.result;
-    if (roomId != null) {
-      final room = Matrix.of(context).client.getRoomById(roomId);
-      room?.isSpace ?? true
-          ? context.go('/rooms/spaces/$roomId/details')
-          : context.go('/rooms/$roomId');
-    }
+    final joinResp = result.result;
+    if (joinResp == null) return;
+
+    final room = client.getRoomById(joinResp.roomId);
+    if (room == null) return;
+
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+    final joinedRoomId = await handler.handle(context);
+    if (joinedRoomId == null) return;
+
+    room.isSpace
+        ? context.go('/rooms/spaces/$joinedRoomId/details')
+        : context.go('/rooms/$joinedRoomId');
   }
 
   @override

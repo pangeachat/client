@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-05-04 12:41:59.334122",
+    "@@last_modified": "2026-05-06 14:59:15.467582",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11289,6 +11289,46 @@
     },
     "bearImageDescription": "Heyecanla kollarını kaldırmış, karikatür tarzı sarı bir ayı.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Daha fazla bilgi edinmek için kelimeleri seçin",
+    "requireAnalyticsAccessTitle": "Katılmak için analiz erişimi gereklidir",
+    "requireAnalyticsAccessDesc": "Katılımcıların bu kursa katılmak için öğrenme analizlerine erişim izni vermesi gerekmektedir",
+    "analyticsAccessNoticeTitle": "Analiz Erişimi Gereklidir",
+    "analyticsAccessNoticeDesc": "Bu kursa katılarak, yöneticilere öğrenme analizlerinize erişim izni vermeyi kabul edersiniz.",
+    "skipOnboardingClassCodeDesc": "Bağımsız öğreniyor musunuz? Endişelenmeyin, şunları yapabilirsiniz:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Lütfen aşağıda önceden tanımlanmış bir rol seçin veya özel bir izin seviyesi girin. 0 ile 100 arasında bir tam sayı seçin.",
+    "reportContentIssue": "İçerik sorununu bildir",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

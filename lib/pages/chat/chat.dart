@@ -31,6 +31,7 @@ import 'package:fluffychat/pangea/analytics_data/analytics_update_dispatcher.dar
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_feedback.dart';
 import 'package:fluffychat/pangea/audio/multi_platform_audio_player.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
@@ -269,7 +270,7 @@ class ChatController extends State<ChatPageWithRoom>
   // }
   String? get tutorialTokenTargetKey =>
       _tutorialEvent != null && tutorialToken != null
-      ? tutorialToken!.baseTargetKey(_tutorialEvent!.eventId)
+      ? tutorialToken!.overlayTargetKey(_tutorialEvent!.eventId)
       : null;
   // Pangea#
 
@@ -765,6 +766,16 @@ class ChatController extends State<ChatPageWithRoom>
     _launchReadingAssistanceTutorial(event, token);
   }
 
+  void _activityConfettiListener() {
+    if (activityController.confettiNotifier.value) {
+      StarRainWidget.show(
+        context,
+        "start-rain-${widget.room.id}",
+        showBlast: true,
+      );
+    }
+  }
+
   String? get currentRoutePath => _router.state.path;
 
   bool get _canLaunchTutorialSequence {
@@ -818,6 +829,13 @@ class ChatController extends State<ChatPageWithRoom>
       userID: Matrix.of(context).client.userID!,
       room: room,
     );
+
+    activityController.confettiNotifier.addListener(_activityConfettiListener);
+    if (activityController.hasSummary) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        activityController.showConfetti();
+      });
+    }
 
     tutorialOverlayController = TutorialOverlayController(
       TutorialSequences.chatTutorialSequence,
@@ -1093,6 +1111,9 @@ class ChatController extends State<ChatPageWithRoom>
     typingTimeout?.cancel();
     scrollController.removeListener(_updateScrollController);
     sendController.removeListener(onInputBarChanged);
+    activityController.confettiNotifier.removeListener(
+      _activityConfettiListener,
+    );
     choreographer.dispose();
     activityController.dispose();
     MatrixState.pAnyState.closeAllOverlays(force: true);
@@ -2628,6 +2649,16 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     final assistanceState = choreographer.assistanceState;
+
+    if (assistanceState == AssistanceStateEnum.noSub) {
+      PaywallCard.show(
+        context,
+        ChoreoConstants.inputTransformTargetKey,
+        force: true,
+      );
+      return;
+    }
+
     if (assistanceState == AssistanceStateEnum.fetching) {
       return;
     }

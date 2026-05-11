@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-05-04 12:41:42.764050",
+    "@@last_modified": "2026-05-06 14:58:51.607666",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10958,6 +10958,46 @@
     },
     "bearImageDescription": "Мультяшний жовтий ведмідь з піднятими в захват руках.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Виберіть слова, щоб дізнатися про них більше",
+    "requireAnalyticsAccessTitle": "Необхідний доступ до аналітики для приєднання",
+    "requireAnalyticsAccessDesc": "Учасники повинні надати доступ до своїх навчальних аналітик, щоб приєднатися до цього курсу",
+    "analyticsAccessNoticeTitle": "Необхідний доступ до аналітики",
+    "analyticsAccessNoticeDesc": "Приєднуючись до цього курсу, ви погоджуєтеся надати адміністраторам доступ до своїх навчальних аналітик.",
+    "skipOnboardingClassCodeDesc": "Навчаєтеся самостійно? Не хвилюйтеся, ви можете:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Будь ласка, виберіть заздалегідь визначену роль нижче або введіть власний рівень дозволів. Виберіть ціле число від 0 до 100.",
+    "reportContentIssue": "Повідомити про проблему з контентом",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-05-04 12:41:24.822829",
+    "@@last_modified": "2026-05-06 14:58:22.748484",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -11085,6 +11085,46 @@
     },
     "bearImageDescription": "Egy rajzfilmszerű sárga medve, amely izgalmában felemelte a karjait.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Válassza ki a szavakat, hogy többet tudjon meg róluk",
+    "requireAnalyticsAccessTitle": "Elemzési hozzáférés szükséges a csatlakozáshoz",
+    "requireAnalyticsAccessDesc": "A résztvevőknek engedélyezniük kell az elemzési adataikhoz való hozzáférést a kurzushoz való csatlakozáshoz",
+    "analyticsAccessNoticeTitle": "Elemzési hozzáférés szükséges",
+    "analyticsAccessNoticeDesc": "A kurzushoz való csatlakozással beleegyezését adja, hogy az adminisztrátorok hozzáférjenek az elemzési adataihoz.",
+    "skipOnboardingClassCodeDesc": "Önállóan tanul? Ne aggódjon, megteheti:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Kérjük, válasszon egy előre definiált szerepet az alábbiak közül, vagy adjon meg egy egyedi jogosultsági szintet. Válasszon egy egész számot 0 és 100 között.",
+    "reportContentIssue": "Tartalomprobléma jelentése",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

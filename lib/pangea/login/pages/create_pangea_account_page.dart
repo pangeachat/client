@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
@@ -87,22 +88,18 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
         client: Matrix.of(context).client,
         showLoading: false,
       );
-      final spaceId = result.result;
-      if (spaceId == null) {
-        throw Exception('Failed to join space with code $spaceCode');
-      }
 
       final client = Matrix.of(context).client;
-      Room? room = client.getRoomById(spaceId);
-      if (room == null || room.membership != Membership.join) {
-        await client.waitForRoomInSync(spaceId, join: true);
-        room = client.getRoomById(spaceId);
-        if (room == null || room.membership != Membership.join) {
-          throw Exception('Failed to join space with code $spaceCode');
-        }
-      }
+      final joinResp = result.result;
+      if (joinResp == null) return;
 
-      _spaceId = spaceId;
+      final room = client.getRoomById(joinResp.roomId);
+      if (room == null) return;
+
+      final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+      final joinedRoomId = await handler.handle(context);
+      if (joinedRoomId == null) return;
+      _spaceId = joinedRoomId;
 
       final courseId = room.coursePlan?.uuid;
       if (courseId == null) return;

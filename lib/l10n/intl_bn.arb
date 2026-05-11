@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-04 12:42:09.333594",
+    "@@last_modified": "2026-05-06 14:59:30.682154",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -11673,6 +11673,46 @@
     },
     "bearImageDescription": "একটি কার্টুনের মতো হলুদ ভালুক যার হাত উত্তেজনায় উঁচু করা হয়েছে।",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "শিখতে আরও জানার জন্য শব্দ নির্বাচন করুন",
+    "requireAnalyticsAccessTitle": "যোগ দিতে বিশ্লেষণ অ্যাক্সেস প্রয়োজন",
+    "requireAnalyticsAccessDesc": "অংশগ্রহণকারীদের এই কোর্সে যোগ দিতে তাদের শেখার বিশ্লেষণে অ্যাক্সেস দিতে হবে",
+    "analyticsAccessNoticeTitle": "বিশ্লেষণ অ্যাক্সেস প্রয়োজন",
+    "analyticsAccessNoticeDesc": "এই কোর্সে যোগ দিয়ে, আপনি প্রশাসকদের আপনার শেখার বিশ্লেষণে অ্যাক্সেস দিতে সম্মত হন।",
+    "skipOnboardingClassCodeDesc": "স্বতন্ত্রভাবে শিখছেন? চিন্তা করবেন না, আপনি:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "দয়া করে নিচে একটি পূর্বনির্ধারিত ভূমিকা নির্বাচন করুন অথবা একটি কাস্টম অনুমতি স্তর প্রবেশ করুন। 0 থেকে 100 এর মধ্যে একটি পূর্ণ সংখ্যা নির্বাচন করুন।",
+    "reportContentIssue": "বিষয়বস্তু সমস্যা রিপোর্ট করুন",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

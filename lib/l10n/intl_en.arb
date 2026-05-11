@@ -5064,7 +5064,6 @@
     "cannotIgnoreYourself": "You cannot block yourself",
     "blockUsernameHint": "Block username",
     "errorTryAgainSoon": "Writing assistance is taking a bit longer than expected. Try again in a second!",
-    "closeEmojiMenu": "Close emoji menu",
     "readingAssistanceTutorialClickMessage": "Click on the message bubble to select it",
     "writingAssistanceTutorialInputBar": "You can write in any language. Don't worry about mistakes! We'll help you correct them.",
     "writingAssistanceTutorialIGCButton": "After writing your message, click this button to start writing assistance",
@@ -5078,6 +5077,13 @@
     "analyticsVocabListBodyEmpty": "The vocabulary words you collect will go here. Start chatting and interacting to earn some!",
     "vocabLevelsDescSeed": "This is where new vocab words will appear!",
     "readingAssistanceTutorialCollectToken": "Select words to learn more about them",
+    "requireAnalyticsAccessTitle": "Require analytics access to join",
+    "requireAnalyticsAccessDesc": "Participants must grant access to their learning analytics to join this course",
     "moreOptions": "More options",
-    "bearImageDescription": "A cartoonish yellow bear with its arms raised in excitement."
+    "bearImageDescription": "A cartoonish yellow bear with its arms raised in excitement.",
+    "analyticsAccessNoticeTitle": "Analytics Access Required",
+    "analyticsAccessNoticeDesc": "By joining this course, you agree to grant admins access to your learning analytics.",
+    "skipOnboardingClassCodeDesc": "Learning independently? Don't worry, you can:",
+    "setPermissionsLevelDesc": "Please choose a predefined role below or enter a custom permission level. Pick a whole number between 0 and 100.",
+    "reportContentIssue": "Report content issue"
 }

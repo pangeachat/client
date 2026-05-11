@@ -4202,7 +4202,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-05-04 12:41:46.268011",
+    "@@last_modified": "2026-05-06 14:58:57.968739",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10972,6 +10972,46 @@
     },
     "bearImageDescription": "Мультфільмны жоўты мядзведзь з паднятымі рукамі ў захапленні.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Выберыце словы, каб даведацца пра іх больш",
+    "requireAnalyticsAccessTitle": "Патрабуецца доступ да аналітыкі для ўдзелу",
+    "requireAnalyticsAccessDesc": "Удзельнікі павінны даць доступ да сваёй навучальнай аналітыкі, каб далучыцца да гэтага курса",
+    "analyticsAccessNoticeTitle": "Патрабуецца доступ да аналітыкі",
+    "analyticsAccessNoticeDesc": "Далучаючыся да гэтага курса, вы згаджаецеся даць адміністратарам доступ да вашай навучальнай аналітыкі.",
+    "skipOnboardingClassCodeDesc": "Навучаецеся самастойна? Не хвалюйцеся, вы можаце:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Калі ласка, выберыце папярэдне вызначаную ролю ніжэй або ўвядзіце карыстацкі ўзровень дазволаў. Выберыце цэлае лік ад 0 да 100.",
+    "reportContentIssue": "Паведаміць пра праблему з кантэнтам",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

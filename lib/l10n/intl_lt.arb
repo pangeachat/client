@@ -3514,7 +3514,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-05-04 12:42:01.496354",
+    "@@last_modified": "2026-05-06 14:59:19.996111",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11844,6 +11844,46 @@
     },
     "bearImageDescription": "Kartoninis geltonas lokys su pakeltomis rankomis džiaugsmu.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Pasirinkite žodžius, kad sužinotumėte daugiau apie juos",
+    "requireAnalyticsAccessTitle": "Reikia analitikos prieigos, kad prisijungtumėte",
+    "requireAnalyticsAccessDesc": "Dalyviai turi suteikti prieigą prie savo mokymosi analitikos, kad galėtų prisijungti prie šio kurso",
+    "analyticsAccessNoticeTitle": "Reikalinga analitikos prieiga",
+    "analyticsAccessNoticeDesc": "Prisijungdami prie šio kurso, sutinkate suteikti administratoriams prieigą prie savo mokymosi analitikos.",
+    "skipOnboardingClassCodeDesc": "Mokotės savarankiškai? Nesijaudinkite, galite:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Prašome pasirinkti iš anksto nustatytą vaidmenį žemiau arba įvesti pasirinktą leidimo lygį. Pasirinkite sveiką skaičių nuo 0 iki 100.",
+    "reportContentIssue": "Pranešti apie turinio problemą",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

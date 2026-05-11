@@ -12,6 +12,7 @@ import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_view.dart';
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/chat_list/utils/app_version_util.dart';
 import 'package:fluffychat/pangea/chat_list/utils/chat_list_handle_space_tap.dart';
@@ -628,12 +629,20 @@ class ChatListController extends State<ChatList>
   }
 
   Future<void> _joinInvitedSpaces() async {
-    final invitedSpaces = Matrix.of(
-      context,
-    ).client.rooms.where((r) => r.isSpace && r.membership == Membership.invite);
+    final client = Matrix.of(context).client;
+    final invitedSpaces = client.rooms.where(
+      (r) => r.isSpace && r.membership == Membership.invite,
+    );
 
     for (final space in invitedSpaces) {
-      await SpaceTapUtil.onTap(context, space);
+      final joinResp = await SpaceTapUtil.onInviteTap(context, space);
+      if (joinResp == null) continue;
+
+      final handler = JoinRoomAnalyticsConsentHandler(joinResp, space);
+      final joinedRoomId = await handler.handle(context);
+      if (joinedRoomId == null) continue;
+
+      context.go("/rooms/spaces/$joinedRoomId/details");
     }
   }
 
@@ -641,8 +650,10 @@ class ChatListController extends State<ChatList>
     final roomIds =
         update.rooms?.invite?.entries.map((e) => e.key).toSet() ?? {};
 
+    final client = Matrix.of(context).client;
+
     for (final roomId in roomIds) {
-      final room = Matrix.of(context).client.getRoomById(roomId);
+      final room = client.getRoomById(roomId);
       if (room == null) continue;
       final isSpace = room.isSpace;
       final isAnalytics = room.isAnalyticsRoom;
@@ -653,7 +664,11 @@ class ChatListController extends State<ChatList>
       // Auto-join analytics rooms or spaces the user has knocked on
       if (isAnalytics || hasKnocked) {
         try {
-          await room.joinKnockedRoom();
+          final joinResp = await room.joinKnockedRoom();
+          if (joinResp == null) continue;
+
+          final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+          await handler.handle(context);
         } catch (err, s) {
           ErrorHandler.logError(
             m: "Failed to join analytics room",
@@ -670,7 +685,15 @@ class ChatListController extends State<ChatList>
         final roomCode = room.joinCode?.toLowerCase();
         final cachedCode = SpaceCodeRepo.recentCode?.toLowerCase();
         if (cachedCode == roomCode) continue;
-        await SpaceTapUtil.onTap(context, room);
+
+        final joinResp = await SpaceTapUtil.onInviteTap(context, room);
+        if (joinResp == null) continue;
+
+        final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+        final joinedRoomId = await handler.handle(context);
+        if (joinedRoomId == null) continue;
+
+        context.go("/rooms/spaces/$joinedRoomId/details");
       }
     }
   }
@@ -1090,15 +1113,19 @@ class ChatListController extends State<ChatList>
       context: context,
       client: client,
     );
-    if (!mounted) return;
+    final joinResp = result.result;
+    if (joinResp == null) return;
 
-    final roomId = result.result;
-    if (roomId != null) {
-      final room = client.getRoomById(roomId);
-      room?.isSpace ?? true
-          ? context.go('/rooms/spaces/$roomId/details')
-          : context.go('/rooms/${room?.id}');
-    }
+    final room = client.getRoomById(joinResp.roomId);
+    if (room == null) return;
+
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+    final joinedRoomId = await handler.handle(context);
+    if (joinedRoomId == null) return;
+
+    room.isSpace
+        ? context.go('/rooms/spaces/$joinedRoomId/details')
+        : context.go('/rooms/$joinedRoomId');
   }
 
   Future<void> _startDMWithCachedUserId(Client client) async {

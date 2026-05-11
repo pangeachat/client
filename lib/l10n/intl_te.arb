@@ -1736,7 +1736,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-05-04 12:42:00.342797",
+    "@@last_modified": "2026-05-06 14:59:17.823030",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -12079,6 +12079,46 @@
     },
     "bearImageDescription": "ఒక కార్టూన్ శైలిలో ఉన్న పసుపు త熊, ఉత్సాహంతో చేతులు ఎత్తి ఉంది.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "వివరంగా తెలుసుకోవడానికి పదాలను ఎంచుకోండి",
+    "requireAnalyticsAccessTitle": "చేరడానికి విశ్లేషణ యాక్సెస్ అవసరం",
+    "requireAnalyticsAccessDesc": "ఈ కోర్సులో చేరడానికి పాల్గొనేవారు తమ అభ్యాస విశ్లేషణకు యాక్సెస్ ఇవ్వాలి",
+    "analyticsAccessNoticeTitle": "విశ్లేషణ యాక్సెస్ అవసరం",
+    "analyticsAccessNoticeDesc": "ఈ కోర్సులో చేరడం ద్వారా, మీరు నిర్వాహకులకు మీ అభ్యాస విశ్లేషణకు యాక్సెస్ ఇవ్వడానికి అంగీకరిస్తున్నారు.",
+    "skipOnboardingClassCodeDesc": "స్వతంత్రంగా అభ్యసిస్తున్నారా? ఆందోళన చెందవద్దు, మీరు:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "దయచేసి క్రింద ఒక ముందుగా నిర్వచించబడిన పాత్రను ఎంచుకోండి లేదా ఒక కస్టమ్ అనుమతి స్థాయిని నమోదు చేయండి. 0 మరియు 100 మధ్య ఒక పూర్తి సంఖ్యను ఎంచుకోండి.",
+    "reportContentIssue": "కంటెంట్ సమస్యను నివేదించండి",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

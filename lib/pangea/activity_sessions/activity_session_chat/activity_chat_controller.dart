@@ -4,13 +4,19 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_analytics_repo.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
+import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
+import 'package:fluffychat/pangea/activity_summary/activity_summary_response_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -24,16 +30,22 @@ class ActivityChatController {
 
   StreamSubscription? _analyticsSubscription;
   bool _disposed = false;
+  bool _loadingSummary = false;
 
   final ScrollController carouselController = ScrollController();
   final ValueNotifier<Set<String>> usedVocab = ValueNotifier({});
   final ValueNotifier<ActivityRoleModel?> highlightedRole = ValueNotifier(null);
   final ValueNotifier<bool> showInstructions = ValueNotifier(false);
   final ValueNotifier<bool> showActivityDropdown = ValueNotifier(false);
-  final ValueNotifier<bool> hasRainedConfetti = ValueNotifier(false);
+  final ValueNotifier<bool> confettiNotifier = ValueNotifier(false);
+
+  late final StreamSubscription _rolesSubscription;
+  late final StreamSubscription _summarySubscription;
 
   void init() {
     _updateUsedVocab();
+    _setRolesSubscription();
+    _setSummarySubscription();
     _analyticsSubscription = MatrixState
         .pangeaController
         .matrixState
@@ -52,7 +64,38 @@ class ActivityChatController {
     highlightedRole.dispose();
     showInstructions.dispose();
     showActivityDropdown.dispose();
-    hasRainedConfetti.dispose();
+    confettiNotifier.dispose();
+    _rolesSubscription.cancel();
+    _summarySubscription.cancel();
+  }
+
+  ActivitySummaryModel? get _summaryEvent => room.activitySummaryByL1;
+  ActivitySummaryResponseModel? get _summary => _summaryEvent?.summary;
+
+  bool get hasSummary => _summary != null;
+
+  void _setRolesSubscription() {
+    _rolesSubscription = room.client.onRoomState.stream
+        .where(
+          (event) =>
+              event.roomId == room.id &&
+              event.state.type == PangeaEventTypes.activityRole,
+        )
+        .listen((e) {
+          if (!_loadingSummary && room.isActivityFinished) {
+            _loadActivitySummary();
+          }
+        });
+  }
+
+  void _setSummarySubscription() {
+    _summarySubscription = room.client.onRoomState.stream
+        .where(
+          (event) =>
+              event.roomId == room.id &&
+              event.state.type == PangeaEventTypes.activitySummary,
+        )
+        .listen((e) => showConfetti());
   }
 
   void highlightRole(ActivityRoleModel role) {
@@ -73,9 +116,10 @@ class ActivityChatController {
     }
   }
 
-  void setHasRainedConfetti(bool show) {
-    if (!_disposed) {
-      hasRainedConfetti.value = show;
+  void showConfetti() {
+    if (_disposed || confettiNotifier.value) return;
+    if (hasSummary) {
+      confettiNotifier.value = true;
     }
   }
 
@@ -136,5 +180,59 @@ class ActivityChatController {
     );
 
     return analytics;
+  }
+
+  Future<void> _loadActivitySummary() async {
+    if (_loadingSummary) return;
+    _loadingSummary = true;
+
+    try {
+      if (_summary != null) return;
+
+      // The summary state event is null
+      if (_summaryEvent == null) {
+        await room.fetchSummariesByL1();
+        return;
+      }
+
+      // The summary state event is waiting (<= 10 seconds since request)
+      // Wait for 10 seconds (or time remaining until not waiting). If summary still not there, run request.
+      if (_summaryEvent!.isLoading) {
+        final remainingTime = DateTime.now()
+            .difference(_summaryEvent!.requestedAt!)
+            .inSeconds;
+
+        await Future.delayed(
+          Duration(seconds: remainingTime < 10 ? 10 - remainingTime : 0),
+          () async {
+            if (_summary == null) await room.fetchSummariesByL1();
+          },
+        );
+        return;
+      }
+
+      if (_summaryEvent!.errorAt == null) {
+        await room.fetchSummariesByL1();
+      }
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    } finally {
+      _loadingSummary = false;
+    }
+  }
+
+  Future<void> submitSummaryFeedback(BuildContext context) async {
+    final resp = await showDialog(
+      context: context,
+      builder: (context) => FeedbackDialog(
+        title: L10n.of(context).reportContentIssue,
+        onSubmit: (feedback) => Navigator.of(context).pop(feedback),
+      ),
+    );
+    if (resp == null || resp.isEmpty) {
+      return;
+    }
+
+    await room.fetchSummariesByL1(feedback: resp);
   }
 }

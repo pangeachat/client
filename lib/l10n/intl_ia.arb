@@ -1774,7 +1774,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-05-04 12:41:33.124004",
+    "@@last_modified": "2026-05-06 14:58:34.290565",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12068,6 +12068,46 @@
     },
     "bearImageDescription": "Un urso amarelo cartunizado com os braços levantados em excitação.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Selecciona palabras para aprender más sobre ellas",
+    "requireAnalyticsAccessTitle": "Requiere acceso a análisis para unirse",
+    "requireAnalyticsAccessDesc": "Los participantes deben otorgar acceso a sus análisis de aprendizaje para unirse a este curso",
+    "analyticsAccessNoticeTitle": "Acceso a Análisis Requerido",
+    "analyticsAccessNoticeDesc": "Al unirte a este curso, aceptas otorgar a los administradores acceso a tus análisis de aprendizaje.",
+    "skipOnboardingClassCodeDesc": "¿Aprendiendo de forma independiente? No te preocupes, puedes:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Per favore scegli un ruolo predefinito qui sotto o inserisci un livello di permesso personalizzato. Scegli un numero intero tra 0 e 100.",
+    "reportContentIssue": "Segnala problema di contenuto",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-05-04 12:42:08.248485",
+    "@@last_modified": "2026-05-06 14:59:29.085813",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10958,6 +10958,46 @@
     },
     "bearImageDescription": "一只卡通风格的黄色熊，兴奋地举起双臂。",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "选择单词以了解更多信息",
+    "requireAnalyticsAccessTitle": "需要分析访问权限才能加入",
+    "requireAnalyticsAccessDesc": "参与者必须授予访问其学习分析的权限才能加入此课程",
+    "analyticsAccessNoticeTitle": "需要分析访问权限",
+    "analyticsAccessNoticeDesc": "通过加入此课程，您同意授予管理员访问您的学习分析的权限。",
+    "skipOnboardingClassCodeDesc": "独立学习？别担心，您可以：",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "请在下面选择一个预定义角色或输入自定义权限级别。选择一个介于 0 和 100 之间的整数。",
+    "reportContentIssue": "报告内容问题",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

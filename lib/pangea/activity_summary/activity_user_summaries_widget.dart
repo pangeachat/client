@@ -12,6 +12,7 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_participant_indicator.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_response_model.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 
@@ -24,46 +25,64 @@ class ActivityUserSummaries extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final summary = room.activitySummary?.summary;
-    if (summary == null) return const SizedBox();
+    final summaryModel = room.activitySummaryByL1;
+    if (summaryModel == null || summaryModel.hasError) {
+      return const SizedBox();
+    }
 
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Column(
-        spacing: 4.0,
-        mainAxisSize: MainAxisSize.min,
+    final summary = summaryModel.summary;
+    return Center(
+      child: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 12.0,
-              vertical: 4.0,
+          Container(
+            padding: const EdgeInsets.all(16.0),
+            margin: const EdgeInsets.all(16.0),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface.withAlpha(128),
+              borderRadius: BorderRadius.circular(12.0),
             ),
-            child: Center(
-              child: Material(
-                color: Theme.of(context).colorScheme.surface.withAlpha(128),
-                borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8.0,
-                    vertical: 4.0,
-                  ),
-                  child: Column(
-                    spacing: 4.0,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(L10n.of(context).activityFinishedMessage),
-                      Text(summary.summary, textAlign: TextAlign.center),
+            child: Column(
+              spacing: 12.0,
+              mainAxisSize: MainAxisSize.min,
+              children: summary != null
+                  ? [
+                      Center(
+                        child: Column(
+                          spacing: 6.0,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(L10n.of(context).activityFinishedMessage),
+                            Text(summary.summary, textAlign: TextAlign.center),
+                          ],
+                        ),
+                      ),
+                      ButtonControlledCarouselView(
+                        summary: summary,
+                        controller: controller,
+                      ),
+                    ]
+                  : [
+                      SizedBox(
+                        height: 120.0,
+                        width: 120.0,
+                        child: Center(
+                          child: CircularProgressIndicator.adaptive(),
+                        ),
+                      ),
                     ],
-                  ),
-                ),
+            ),
+          ),
+
+          if (summary != null)
+            Positioned(
+              right: 18.0,
+              top: 18.0,
+              child: IconButton(
+                icon: const Icon(Icons.flag_outlined),
+                onPressed: () => controller.activityController
+                    .submitSummaryFeedback(context),
               ),
             ),
-          ),
-          const Padding(padding: EdgeInsets.symmetric(vertical: 8.0)),
-          ButtonControlledCarouselView(
-            summary: summary,
-            controller: controller,
-          ),
         ],
       ),
     );
@@ -110,7 +129,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final room = controller.room;
-    final superlatives = room.activitySummary?.analytics
+    final superlatives = room.activitySummaryByL1?.analytics
         ?.generateSuperlatives();
     final availableRoles = room.activityPlan!.roles;
     final assignedRoles = room.assignedRoles ?? {};
@@ -128,7 +147,6 @@ class ButtonControlledCarouselView extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        debugPrint("Available width: ${constraints.maxWidth}");
         final cardWidth = userSummaries.length == 1
             ? min(500.0, constraints.maxWidth)
             : 335.0;

@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-05-04 12:41:19.352795",
+    "@@last_modified": "2026-05-06 14:58:11.150103",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7984,6 +7984,46 @@
     },
     "bearImageDescription": "Un oso amarillo caricaturesco con los brazos levantados en emoción.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Selecciona palabras para aprender más sobre ellas",
+    "requireAnalyticsAccessTitle": "Requiere acceso a análisis para unirse",
+    "requireAnalyticsAccessDesc": "Los participantes deben otorgar acceso a sus análisis de aprendizaje para unirse a este curso",
+    "analyticsAccessNoticeTitle": "Acceso a Análisis Requerido",
+    "analyticsAccessNoticeDesc": "Al unirte a este curso, aceptas otorgar a los administradores acceso a tus análisis de aprendizaje.",
+    "skipOnboardingClassCodeDesc": "¿Aprendiendo de forma independiente? No te preocupes, puedes:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Por favor, elige un rol predefinido a continuación o ingresa un nivel de permiso personalizado. Elige un número entero entre 0 y 100.",
+    "reportContentIssue": "Reportar problema de contenido",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

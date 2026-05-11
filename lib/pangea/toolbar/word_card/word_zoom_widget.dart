@@ -38,6 +38,7 @@ class WordZoomWidget extends StatelessWidget {
 
   final bool enableEmojiSelection;
   final bool enableEmojiReactions;
+  final bool enableAnalyticsNavigation;
 
   final Function(LemmaInfoResponse, PTRequest, PTResponse)? onFlagTokenInfo;
   final ValueNotifier<int>? reloadNotifier;
@@ -54,6 +55,7 @@ class WordZoomWidget extends StatelessWidget {
     this.morph,
     this.enableEmojiSelection = true,
     this.enableEmojiReactions = true,
+    this.enableAnalyticsNavigation = false,
     this.onFlagTokenInfo,
     this.reloadNotifier,
     this.maxWidth,
@@ -81,138 +83,128 @@ class WordZoomWidget extends StatelessWidget {
     final showTranscript =
         MatrixState.pangeaController.userController.showTranscription;
 
-    final layerLinkAndKey = MatrixState.pAnyState.layerLinkAndKey(
-      token.wordCardTargetKey,
-    );
-
-    final Widget content = CompositedTransformTarget(
-      link: layerLinkAndKey.link,
-      child: subscribed != null && !subscribed
-          ? MessageUnsubscribedCard(
-              key: layerLinkAndKey.key,
-              token: token,
-              onClose: onClose,
-            )
-          : Stack(
-              key: layerLinkAndKey.key,
-              children: [
-                Container(
-                  height: AppConfig.toolbarMaxHeight - 8,
-                  padding: const EdgeInsets.all(12.0),
-                  constraints: BoxConstraints(
-                    maxWidth: maxWidth ?? AppConfig.toolbarMinWidth,
-                  ),
-                  child: Column(
-                    spacing: 12.0,
-                    children: [
-                      SizedBox(
-                        height: 40.0,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            onClose != null
-                                ? IconButton(
-                                    color: Theme.of(context).iconTheme.color,
-                                    icon: const Icon(Icons.close),
-                                    onPressed: onClose,
-                                  )
-                                : const SizedBox(width: 40.0, height: 40.0),
-                            Flexible(
-                              child: InkWell(
-                                onTap: () =>
-                                    AnalyticsNavigationUtil.navigateToAnalytics(
-                                      context: context,
-                                      view: ProgressIndicatorEnum.wordsUsed,
-                                      construct: construct,
-                                    ),
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Container(
-                                  constraints: const BoxConstraints(
-                                    minHeight: 40.0,
-                                  ),
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    token.content,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 28.0,
-                                      fontWeight: FontWeight.w600,
-                                      height: 1.2,
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.light
-                                          ? AppConfig.yellowDark
-                                          : AppConfig.yellowLight,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
+    final Widget content = subscribed != null && !subscribed
+        ? MessageUnsubscribedCard(token: token, onClose: onClose)
+        : Stack(
+            children: [
+              Container(
+                height: AppConfig.toolbarMaxHeight - 8,
+                padding: const EdgeInsets.all(12.0),
+                constraints: BoxConstraints(
+                  maxWidth: maxWidth ?? AppConfig.toolbarMinWidth,
+                ),
+                child: Column(
+                  spacing: 12.0,
+                  children: [
+                    SizedBox(
+                      height: 40.0,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          onClose != null
+                              ? IconButton(
+                                  color: Theme.of(context).iconTheme.color,
+                                  icon: const Icon(Icons.close),
+                                  onPressed: onClose,
+                                )
+                              : const SizedBox(width: 40.0, height: 40.0),
+                          Flexible(
+                            child: InkWell(
+                              onTap: enableAnalyticsNavigation
+                                  ? () =>
+                                        AnalyticsNavigationUtil.navigateToAnalytics(
+                                          context: context,
+                                          view: ProgressIndicatorEnum.wordsUsed,
+                                          construct: construct,
+                                        )
+                                  : null,
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Container(
+                                constraints: const BoxConstraints(
+                                  minHeight: 40.0,
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  token.content,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 28.0,
+                                    fontWeight: FontWeight.w600,
+                                    height: 1.2,
+                                    color:
+                                        Theme.of(context).brightness ==
+                                            Brightness.light
+                                        ? AppConfig.yellowDark
+                                        : AppConfig.yellowLight,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                               ),
                             ),
-                            onFlagTokenInfo != null
-                                ? TokenFeedbackButton(
-                                    textLanguage:
-                                        PLanguageStore.byLangCode(langCode) ??
-                                        LanguageModel.unknown,
-                                    constructId: construct,
-                                    text: token.content,
-                                    onFlagTokenInfo: onFlagTokenInfo!,
-                                    messageInfo: event?.content ?? {},
-                                  )
-                                : const SizedBox(width: 40.0, height: 40.0),
-                          ],
-                        ),
+                          ),
+                          onFlagTokenInfo != null
+                              ? TokenFeedbackButton(
+                                  textLanguage:
+                                      PLanguageStore.byLangCode(langCode) ??
+                                      LanguageModel.unknown,
+                                  constructId: construct,
+                                  text: token.content,
+                                  onFlagTokenInfo: onFlagTokenInfo!,
+                                  messageInfo: event?.content ?? {},
+                                )
+                              : const SizedBox(width: 40.0, height: 40.0),
+                        ],
                       ),
-                      Expanded(
-                        child: Column(
-                          spacing: 4.0,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            showTranscript
-                                ? PhoneticTranscriptionWidget(
-                                    text: token.content,
-                                    textLanguage:
-                                        PLanguageStore.byLangCode(langCode) ??
-                                        LanguageModel.unknown,
-                                    pos: pos,
-                                    morph: morph,
-                                    style: const TextStyle(fontSize: 14.0),
-                                    iconSize: 24.0,
-                                    maxLines: 2,
-                                    reloadNotifier: reloadNotifier,
-                                  )
-                                : WordAudioButton(
-                                    text: token.content,
-                                    pos: pos,
-                                    morph: morph,
-                                    uniqueID: "lemma-content-${token.content}",
-                                    langCode: langCode,
-                                    iconSize: 24.0,
-                                  ),
-                            LemmaReactionPicker(
-                              constructId: construct,
-                              langCode: langCode,
-                              event: event,
-                              enableSelection: enableEmojiSelection,
-                              enableReactions: enableEmojiReactions,
-                              form: token.content,
-                            ),
-                            LemmaMeaningDisplay(
-                              langCode: langCode,
-                              constructId: construct,
-                              text: token.content,
-                              messageInfo: event?.content ?? {},
-                              reloadNotifier: reloadNotifier,
-                            ),
-                          ],
-                        ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        spacing: 4.0,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          showTranscript
+                              ? PhoneticTranscriptionWidget(
+                                  text: token.content,
+                                  textLanguage:
+                                      PLanguageStore.byLangCode(langCode) ??
+                                      LanguageModel.unknown,
+                                  pos: pos,
+                                  morph: morph,
+                                  style: const TextStyle(fontSize: 14.0),
+                                  iconSize: 24.0,
+                                  maxLines: 2,
+                                  reloadNotifier: reloadNotifier,
+                                )
+                              : WordAudioButton(
+                                  text: token.content,
+                                  pos: pos,
+                                  morph: morph,
+                                  uniqueID: "lemma-content-${token.content}",
+                                  langCode: langCode,
+                                  iconSize: 24.0,
+                                ),
+                          LemmaReactionPicker(
+                            constructId: construct,
+                            langCode: langCode,
+                            event: event,
+                            enableSelection: enableEmojiSelection,
+                            enableReactions: enableEmojiReactions,
+                            form: token.content,
+                          ),
+                          LemmaMeaningDisplay(
+                            langCode: langCode,
+                            constructId: construct,
+                            text: token.content,
+                            messageInfo: event?.content ?? {},
+                            reloadNotifier: reloadNotifier,
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-    );
+              ),
+            ],
+          );
 
     return GestureDetector(
       onTap: () {
@@ -225,12 +217,10 @@ class WordZoomWidget extends StatelessWidget {
           decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
             border: Border.all(
+              width: 2,
               color: Theme.of(context).colorScheme.primary,
-              width: 4.0,
             ),
-            borderRadius: const BorderRadius.all(
-              Radius.circular(AppConfig.borderRadius),
-            ),
+            borderRadius: const BorderRadius.all(Radius.circular(25)),
           ),
           height: AppConfig.toolbarMaxHeight,
           child: Column(

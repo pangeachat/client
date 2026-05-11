@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-05-04 12:42:11.920373",
+    "@@last_modified": "2026-05-06 14:59:35.594563",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -11067,6 +11067,46 @@
     },
     "bearImageDescription": "Karykaturalny żółty niedźwiedź z uniesionymi w górę rękami w ekscytacji.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Wybierz słowa, aby dowiedzieć się o nich więcej",
+    "requireAnalyticsAccessTitle": "Wymagaj dostępu do analityki, aby dołączyć",
+    "requireAnalyticsAccessDesc": "Uczestnicy muszą przyznać dostęp do swoich analiz uczenia się, aby dołączyć do tego kursu",
+    "analyticsAccessNoticeTitle": "Wymagany dostęp do analityki",
+    "analyticsAccessNoticeDesc": "Dołączając do tego kursu, zgadzasz się na udzielenie administratorom dostępu do swoich analiz uczenia się.",
+    "skipOnboardingClassCodeDesc": "Uczysz się samodzielnie? Nie martw się, możesz:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Proszę wybrać zdefiniowaną rolę poniżej lub wprowadzić niestandardowy poziom uprawnień. Wybierz liczbę całkowitą między 0 a 100.",
+    "reportContentIssue": "Zgłoś problem z treścią",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }

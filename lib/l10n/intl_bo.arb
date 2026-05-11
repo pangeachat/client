@@ -3462,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-05-04 12:42:06.967010",
+    "@@last_modified": "2026-05-06 14:59:27.473183",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10630,6 +10630,46 @@
     },
     "bearImageDescription": "A cartoonish yellow bear with its arms raised in excitement.",
     "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Pilih kata-kata untuk belajar lebih lanjut tentang mereka",
+    "requireAnalyticsAccessTitle": "Memerlukan akses analitik untuk bergabung",
+    "requireAnalyticsAccessDesc": "Peserta harus memberikan akses ke analitik pembelajaran mereka untuk bergabung dengan kursus ini",
+    "analyticsAccessNoticeTitle": "Akses Analitik Diperlukan",
+    "analyticsAccessNoticeDesc": "Dengan bergabung dengan kursus ini, Anda setuju untuk memberikan akses kepada admin ke analitik pembelajaran Anda.",
+    "skipOnboardingClassCodeDesc": "Belajar secara mandiri? Jangan khawatir, Anda bisa:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Bokh choos a predefined role below or enter a custom permission level. Pick a whole number between 0 and 100.",
+    "reportContentIssue": "Report content issue",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
         "type": "String",
         "placeholders": {}
     }
