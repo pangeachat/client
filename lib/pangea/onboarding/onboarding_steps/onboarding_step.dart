@@ -18,10 +18,7 @@ abstract class OnboardingStep {
   bool get hasPrevStep => prevStep != null;
   bool get hasNextStep => stepIndex < totalSteps;
 
-  bool get enableGoBack => hasPrevStep;
   bool get enableGoForward => true;
-
-  double get progress => stepIndex / totalSteps;
 
   String get stepDestination => "/rooms";
 

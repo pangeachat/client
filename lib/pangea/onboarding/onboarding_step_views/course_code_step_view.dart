@@ -16,13 +16,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class CourseCodeStepView extends StatefulWidget {
   final CourseCodeOnboardingStep step;
-  final VoidCallback onUpdate;
+  final VoidCallback updateEnableNext;
   final Object? error;
 
   const CourseCodeStepView({
     super.key,
     required this.step,
-    required this.onUpdate,
+    required this.updateEnableNext,
     required this.error,
   });
 
@@ -67,7 +67,7 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
     _debounce?.cancel();
     _debounce = Timer(Duration(milliseconds: 300), () {
       _step.setCourseCode(_codeController.text);
-      widget.onUpdate();
+      widget.updateEnableNext();
       _debounce?.cancel();
       _debounce = null;
     });

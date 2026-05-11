@@ -1,6 +1,11 @@
+import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
+
 sealed class NavigationResult {}
 
-class SuccessNavigationResult extends NavigationResult {}
+class SuccessNavigationResult extends NavigationResult {
+  final OnboardingStep step;
+  SuccessNavigationResult(this.step);
+}
 
 class ReachedEndNavigationResult extends NavigationResult {}
 

@@ -8,12 +8,12 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class PickCefrLevelStepView extends StatefulWidget {
   final PickCefrLevelOnboardingStep step;
-  final VoidCallback onUpdate;
+  final VoidCallback updateEnableNext;
 
   const PickCefrLevelStepView({
     super.key,
     required this.step,
-    required this.onUpdate,
+    required this.updateEnableNext,
   });
 
   @override
@@ -22,7 +22,9 @@ class PickCefrLevelStepView extends StatefulWidget {
 
 class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
   late PickCefrLevelOnboardingStep _step;
-  LanguageLevelTypeEnum? _selectedLevel;
+  final ValueNotifier<LanguageLevelTypeEnum?> _selectedLevel = ValueNotifier(
+    null,
+  );
 
   @override
   void initState() {
@@ -41,10 +43,16 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
     }
   }
 
+  @override
+  void dispose() {
+    _selectedLevel.dispose();
+    super.dispose();
+  }
+
   void _setLevel(LanguageLevelTypeEnum? level) {
-    _selectedLevel = level;
+    _selectedLevel.value = level;
     _step.selectCefrLevel(level);
-    widget.onUpdate();
+    widget.updateEnableNext();
   }
 
   @override
@@ -66,28 +74,31 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
           ),
         ),
         Expanded(
-          child: ListView.separated(
-            separatorBuilder: (context, i) => SizedBox(height: 4.0),
-            itemCount: levels.length,
-            itemBuilder: (context, i) {
-              final level = levels[i];
-              final selected = _selectedLevel == level;
-              return ElevatedButton(
-                onPressed: () => _setLevel(selected ? null : level),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: selected
-                      ? theme.colorScheme.primaryContainer
-                      : theme.colorScheme.surfaceContainer,
-                  foregroundColor: selected
-                      ? theme.colorScheme.onPrimaryContainer
-                      : theme.colorScheme.onSurface,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+          child: ValueListenableBuilder(
+            valueListenable: _selectedLevel,
+            builder: (context, selectedLevel, _) => ListView.separated(
+              separatorBuilder: (context, i) => SizedBox(height: 4.0),
+              itemCount: levels.length,
+              itemBuilder: (context, i) {
+                final level = levels[i];
+                final selected = selectedLevel == level;
+                return ElevatedButton(
+                  onPressed: () => _setLevel(selected ? null : level),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: selected
+                        ? theme.colorScheme.primaryContainer
+                        : theme.colorScheme.surfaceContainer,
+                    foregroundColor: selected
+                        ? theme.colorScheme.onPrimaryContainer
+                        : theme.colorScheme.onSurface,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
                   ),
-                ),
-                child: Row(children: [Text(level.title(context))]),
-              );
-            },
+                  child: Row(children: [Text(level.title(context))]),
+                );
+              },
+            ),
           ),
         ),
       ],

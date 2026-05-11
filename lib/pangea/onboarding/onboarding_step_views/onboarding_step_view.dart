@@ -18,14 +18,14 @@ import 'package:fluffychat/pangea/onboarding/onboarding_steps/user_type_onboardi
 
 class OnboardingStepView extends StatelessWidget {
   final OnboardingStep step;
-  final VoidCallback onUpdate;
   final Object? error;
+  final VoidCallback updateEnableNext;
 
   const OnboardingStepView({
     super.key,
     required this.step,
-    required this.onUpdate,
     required this.error,
+    required this.updateEnableNext,
   });
 
   @override
@@ -37,11 +37,15 @@ class OnboardingStepView extends StatelessWidget {
     }
 
     if (step is UserTypeOnboardingStep) {
-      return UserTypeStepView(step: step, onUpdate: onUpdate);
+      return UserTypeStepView(step: step, updateEnableNext: updateEnableNext);
     }
 
     if (step is CourseCodeOnboardingStep) {
-      return CourseCodeStepView(step: step, onUpdate: onUpdate, error: error);
+      return CourseCodeStepView(
+        step: step,
+        updateEnableNext: updateEnableNext,
+        error: error,
+      );
     }
 
     if (step is JoinedCourseOnboardingStep) {
@@ -49,11 +53,18 @@ class OnboardingStepView extends StatelessWidget {
     }
 
     if (step is PickLanguageOnboardingStep) {
-      return PickLanguageStepView(step: step, onUpdate: onUpdate, error: error);
+      return PickLanguageStepView(
+        step: step,
+        updateEnableNext: updateEnableNext,
+        error: error,
+      );
     }
 
     if (step is PickCefrLevelOnboardingStep) {
-      return PickCefrLevelStepView(step: step, onUpdate: onUpdate);
+      return PickCefrLevelStepView(
+        step: step,
+        updateEnableNext: updateEnableNext,
+      );
     }
 
     if (step is CustomCourseOnboardingStep) {

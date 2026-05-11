@@ -1,10 +1,11 @@
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_navigation_result.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
 
-class OnboardingStepState {
+class OnboardingNavigationState {
   late OnboardingStep _currentStep;
 
-  OnboardingStepState({required OnboardingStep initialStep}) {
+  OnboardingNavigationState({required OnboardingStep initialStep}) {
     _currentStep = initialStep;
   }
 
@@ -18,8 +19,9 @@ class OnboardingStepState {
       }
 
       _currentStep = nextStep;
-      return SuccessNavigationResult();
-    } catch (e) {
+      return SuccessNavigationResult(nextStep);
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'current_step': _currentStep});
       return ErrorNavigationResult(e);
     }
   }
@@ -32,8 +34,9 @@ class OnboardingStepState {
       }
 
       _currentStep = nextStep;
-      return SuccessNavigationResult();
-    } catch (e) {
+      return SuccessNavigationResult(nextStep);
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'current_step': _currentStep});
       return ErrorNavigationResult(e);
     }
   }
@@ -45,6 +48,6 @@ class OnboardingStepState {
     }
 
     _currentStep = prevStep;
-    return SuccessNavigationResult();
+    return SuccessNavigationResult(prevStep);
   }
 }

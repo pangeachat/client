@@ -4,10 +4,9 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_navigation_result.dart';
+import 'package:fluffychat/pangea/onboarding/onboarding_navigation_state.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_step_skip_buttons/onboarding_step_skip_button.dart';
-import 'package:fluffychat/pangea/onboarding/onboarding_step_state.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_step_views/onboarding_step_view.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
@@ -21,10 +20,12 @@ class Onboarding extends StatefulWidget {
 }
 
 class OnboardingController extends State<Onboarding> {
-  late final OnboardingStepState _state;
+  late final OnboardingNavigationState _navState;
 
-  bool _loading = false;
-  Object? _error;
+  late final ValueNotifier<OnboardingStep> _step;
+  final ValueNotifier<bool> _loading = ValueNotifier(false);
+  final ValueNotifier<Object?> _error = ValueNotifier(null);
+  final ValueNotifier<bool> _enableNext = ValueNotifier(false);
 
   @override
   void initState() {
@@ -32,48 +33,48 @@ class OnboardingController extends State<Onboarding> {
     final initialStep = ProfileSetupOnboardingStep(
       client: Matrix.of(context).client,
     );
-    _state = OnboardingStepState(initialStep: initialStep);
+    _step = ValueNotifier(initialStep);
+    _navState = OnboardingNavigationState(initialStep: initialStep);
     _updateEnableNext();
   }
 
-  OnboardingStep get _step => _state.step;
-
-  void _updateEnableNext() {
-    setState(() {});
+  @override
+  void dispose() {
+    _step.dispose();
+    _loading.dispose();
+    _error.dispose();
+    _enableNext.dispose();
+    super.dispose();
   }
+
+  void _updateEnableNext() => _enableNext.value = _step.value.enableGoForward;
 
   Future<void> _forward() async {
-    try {
-      setState(() {
-        _loading = true;
-        _error = null;
-      });
-
-      final result = await _state.forward();
-      if (result is ReachedEndNavigationResult) {
-        context.go(_step.stepDestination);
-        return;
-      }
-    } catch (e, s) {
-      _error = e;
-      ErrorHandler.logError(e: e, s: s, data: {});
-    } finally {
-      if (mounted) setState(() => _loading = false);
-    }
+    _loading.value = true;
+    _dispatchNavigationResult(await _navState.forward());
   }
 
-  void _skip() {
-    final result = _state.skip();
-    if (result is ReachedEndNavigationResult) {
-      context.go(_step.stepDestination);
-      return;
-    }
-    setState(() {});
-  }
+  void _skip() => _dispatchNavigationResult(_navState.skip());
 
-  void _back() {
-    _state.back();
-    setState(() {});
+  void _back() => _dispatchNavigationResult(_navState.back());
+
+  void _dispatchNavigationResult(NavigationResult result) {
+    if (mounted) _error.value = null;
+
+    switch (result) {
+      case SuccessNavigationResult(step: final OnboardingStep step):
+        _step.value = step;
+      case ErrorNavigationResult(error: final Object error):
+        _error.value = error;
+      case ReachedBeginningNavigationResult():
+      case ReachedEndNavigationResult():
+        context.go(_step.value.stepDestination);
+    }
+
+    if (mounted) {
+      _updateEnableNext();
+      _loading.value = false;
+    }
   }
 
   @override
@@ -85,13 +86,19 @@ class OnboardingController extends State<Onboarding> {
           constraints: const BoxConstraints(maxWidth: 450),
           child: Row(
             children: [
-              _step.hasPrevStep
-                  ? BackButton(onPressed: _step.enableGoBack ? _back : null)
-                  : const SizedBox(width: 40.0),
+              ValueListenableBuilder(
+                valueListenable: _step,
+                builder: (context, step, _) => step.hasPrevStep
+                    ? BackButton(onPressed: _back)
+                    : const SizedBox(width: 40.0),
+              ),
               Expanded(
-                child: AnimatedProgressBar(
-                  height: 25.0,
-                  widthPercent: _step.progress,
+                child: ValueListenableBuilder(
+                  valueListenable: _step,
+                  builder: (context, step, _) => AnimatedProgressBar(
+                    height: 25.0,
+                    widthPercent: step.stepIndex / step.totalSteps,
+                  ),
                 ),
               ),
               const SizedBox(width: 40.0),
@@ -110,38 +117,55 @@ class OnboardingController extends State<Onboarding> {
               children: [
                 Expanded(
                   child: Center(
-                    child: OnboardingStepView(
-                      step: _step,
-                      onUpdate: _updateEnableNext,
-                      error: _error,
+                    child: ListenableBuilder(
+                      listenable: Listenable.merge([_step, _error]),
+                      builder: (context, _) => OnboardingStepView(
+                        step: _step.value,
+                        updateEnableNext: _updateEnableNext,
+                        error: _error.value,
+                      ),
                     ),
                   ),
                 ),
-                Column(
-                  spacing: 12.0,
-                  children: [
-                    if (_step.enableSkip)
-                      OnboardingStepSkipButton(step: _step, onPressed: _skip),
-                    ElevatedButton(
-                      onPressed: _step.enableGoForward ? _forward : null,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: theme.colorScheme.primaryContainer,
-                        foregroundColor: theme.colorScheme.onPrimaryContainer,
+                ValueListenableBuilder(
+                  valueListenable: _step,
+                  builder: (context, step, _) => Column(
+                    spacing: 12.0,
+                    children: [
+                      if (step.enableSkip)
+                        OnboardingStepSkipButton(step: step, onPressed: _skip),
+                      ValueListenableBuilder(
+                        valueListenable: _enableNext,
+                        builder: (context, enableNext, child) => ElevatedButton(
+                          onPressed: enableNext ? _forward : null,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: theme.colorScheme.primaryContainer,
+                            foregroundColor:
+                                theme.colorScheme.onPrimaryContainer,
+                          ),
+                          child: child,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ValueListenableBuilder(
+                              valueListenable: _loading,
+                              child: Text(
+                                step.hasNextStep
+                                    ? L10n.of(context).next
+                                    : L10n.of(context).letsGo,
+                              ),
+                              builder: (context, loading, child) {
+                                return loading
+                                    ? const LinearProgressIndicator()
+                                    : child!;
+                              },
+                            ),
+                          ],
+                        ),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          _loading
-                              ? Expanded(child: LinearProgressIndicator())
-                              : Text(
-                                  _step.hasNextStep
-                                      ? L10n.of(context).next
-                                      : L10n.of(context).letsGo,
-                                ),
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),

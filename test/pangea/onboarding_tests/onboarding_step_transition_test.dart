@@ -9,7 +9,7 @@ import 'package:fluffychat/pangea/custom_courses/custom_course_response_model.da
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_navigation_result.dart';
-import 'package:fluffychat/pangea/onboarding/onboarding_step_state.dart';
+import 'package:fluffychat/pangea/onboarding/onboarding_navigation_state.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/course_code_onboarding_step.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/joined_course_onboarding_step.dart';
@@ -23,10 +23,10 @@ import 'get_initial_onboarding_step.dart';
 
 void main() async {
   late final Client client;
-  late final OnboardingStepState studentWithCode;
-  late final OnboardingStepState studentWithoutCode;
-  late final OnboardingStepState teacherWithCode;
-  late final OnboardingStepState teacherWithoutCode;
+  late final OnboardingNavigationState studentWithCode;
+  late final OnboardingNavigationState studentWithoutCode;
+  late final OnboardingNavigationState teacherWithCode;
+  late final OnboardingNavigationState teacherWithoutCode;
 
   Uri getRandomAvatarUrl() => Uri.parse(
     "https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/avatar_5.png",
@@ -60,25 +60,25 @@ void main() async {
 
   setUpAll(() async {
     client = await getTestClient();
-    studentWithCode = OnboardingStepState(
+    studentWithCode = OnboardingNavigationState(
       initialStep: getInitialOnboardingStep(client, getRandomAvatarUrl),
     );
 
-    studentWithoutCode = OnboardingStepState(
+    studentWithoutCode = OnboardingNavigationState(
       initialStep: getInitialOnboardingStep(client, getRandomAvatarUrl),
     );
 
-    teacherWithCode = OnboardingStepState(
+    teacherWithCode = OnboardingNavigationState(
       initialStep: getInitialOnboardingStep(client, getRandomAvatarUrl),
     );
 
-    teacherWithoutCode = OnboardingStepState(
+    teacherWithoutCode = OnboardingNavigationState(
       initialStep: getInitialOnboardingStep(client, getRandomAvatarUrl),
     );
   });
 
   void testForwardNavigationWithCode(
-    OnboardingStepState state,
+    OnboardingNavigationState state,
     UserType type,
   ) async {
     assert(await state.forward() is SuccessNavigationResult);
@@ -106,7 +106,7 @@ void main() async {
     assert(await state.forward() is ReachedEndNavigationResult);
   }
 
-  void testBackwardNavigationWithCode(OnboardingStepState state) {
+  void testBackwardNavigationWithCode(OnboardingNavigationState state) {
     assert(state.step is JoinedCourseOnboardingStep);
     assert(state.back() is SuccessNavigationResult);
     assert(state.step is CourseCodeOnboardingStep);
@@ -118,7 +118,7 @@ void main() async {
   }
 
   void testForwardNavigationWithoutCode(
-    OnboardingStepState state,
+    OnboardingNavigationState state,
     UserType type,
   ) async {
     assert(await state.forward() is SuccessNavigationResult);
@@ -184,7 +184,7 @@ void main() async {
   }
 
   void testBackwardNavigationWithoutCode(
-    OnboardingStepState state,
+    OnboardingNavigationState state,
     UserType type,
   ) {
     if (type == UserType.teacher) {

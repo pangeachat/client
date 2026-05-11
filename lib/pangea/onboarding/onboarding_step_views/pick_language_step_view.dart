@@ -21,14 +21,14 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class PickLanguageStepView extends StatefulWidget {
   final PickLanguageOnboardingStep step;
-  final VoidCallback onUpdate;
+  final VoidCallback updateEnableNext;
   final Object? error;
 
   @override
   const PickLanguageStepView({
     super.key,
     required this.step,
-    required this.onUpdate,
+    required this.updateEnableNext,
     required this.error,
   });
 
@@ -38,10 +38,15 @@ class PickLanguageStepView extends StatefulWidget {
 
 class PickLanguageStepViewState extends State<PickLanguageStepView> {
   late final PickLanguageOnboardingStep _step;
+
   final TextEditingController _searchController = TextEditingController();
 
-  LanguageModel? _selectedTargetLanguage;
-  LanguageModel? _selectedBaseLanguage;
+  final ValueNotifier<LanguageModel?> _selectedTargetLanguage = ValueNotifier(
+    null,
+  );
+  final ValueNotifier<LanguageModel?> _selectedBaseLanguage = ValueNotifier(
+    null,
+  );
 
   @override
   void initState() {
@@ -74,24 +79,28 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
   @override
   void dispose() {
     _searchController.dispose();
+    _selectedBaseLanguage.dispose();
+    _selectedTargetLanguage.dispose();
     super.dispose();
   }
 
   final _languages = MatrixState.pangeaController.pLanguageStore.targetOptions;
 
-  bool get _hasIdenticalLanguages =>
-      _selectedTargetLanguage != null &&
-      _selectedTargetLanguage?.langCodeShort ==
-          _selectedBaseLanguage?.langCodeShort;
+  bool get _hasIdenticalLanguages {
+    final base = _selectedBaseLanguage.value;
+    final target = _selectedTargetLanguage.value;
+    if (base == null || target == null) return false;
+    return base.langCodeShort == target.langCodeShort;
+  }
 
   void _setBaseLanguage(LanguageModel? lang) {
-    if (_step.baseLanguage == lang && _selectedBaseLanguage == lang) {
+    if (_step.baseLanguage == lang && _selectedBaseLanguage.value == lang) {
       return;
     }
 
     _step.selectBaseLanguage(lang);
-    _selectedBaseLanguage = lang;
-    widget.onUpdate();
+    _selectedBaseLanguage.value = lang;
+    widget.updateEnableNext();
 
     if (lang != null) {
       _setAppLanguage(lang);
@@ -99,13 +108,13 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
   }
 
   void _setTargetLanguage(LanguageModel? lang) {
-    if (_step.targetLanguage == lang && _selectedTargetLanguage == lang) {
+    if (_step.targetLanguage == lang && _selectedTargetLanguage.value == lang) {
       return;
     }
 
     _step.selectTargetLanguage(lang);
-    _selectedTargetLanguage = lang;
-    widget.onUpdate();
+    _selectedTargetLanguage.value = lang;
+    widget.updateEnableNext();
   }
 
   void _setAppLanguage(LanguageModel language) {
@@ -164,48 +173,52 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
                       bottom: 60.0,
                     ),
                     sliver: SliverToBoxAdapter(
-                      child: Wrap(
-                        spacing: 8.0,
-                        runSpacing: 16.0,
-                        alignment: WrapAlignment.center,
-                        children: _languages
-                            .where(
-                              (l) => LanguageModel.search(l, val.text, context),
-                            )
-                            .map(
-                              (l) => ShimmerBackground(
-                                enabled: _selectedTargetLanguage == null,
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(16.0),
-                                ),
-                                child: FilterChip(
-                                  materialTapTargetSize:
-                                      MaterialTapTargetSize.shrinkWrap,
-                                  selected: _selectedTargetLanguage == l,
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(16.0),
+                      child: ValueListenableBuilder(
+                        valueListenable: _selectedTargetLanguage,
+                        builder: (context, selected, _) => Wrap(
+                          spacing: 8.0,
+                          runSpacing: 16.0,
+                          alignment: WrapAlignment.center,
+                          children: _languages
+                              .where(
+                                (l) =>
+                                    LanguageModel.search(l, val.text, context),
+                              )
+                              .map(
+                                (l) => ShimmerBackground(
+                                  enabled: selected == null,
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(16.0),
+                                  ),
+                                  child: FilterChip(
+                                    materialTapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    selected: selected == l,
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(16.0),
+                                      ),
                                     ),
+                                    backgroundColor: selected == l
+                                        ? theme.colorScheme.primary
+                                        : theme.colorScheme.surfaceContainer,
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 8.0,
+                                      vertical: 4.0,
+                                    ),
+                                    label: LanguageDisplayNamePrefixWidget(
+                                      l,
+                                      style: textStyle,
+                                      iconSize: isColumnMode ? 16.0 : 12.0,
+                                    ),
+                                    onSelected: (selected) {
+                                      _setTargetLanguage(selected ? l : null);
+                                    },
                                   ),
-                                  backgroundColor: _selectedTargetLanguage == l
-                                      ? theme.colorScheme.primary
-                                      : theme.colorScheme.surfaceContainer,
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 8.0,
-                                    vertical: 4.0,
-                                  ),
-                                  label: LanguageDisplayNamePrefixWidget(
-                                    l,
-                                    style: textStyle,
-                                    iconSize: isColumnMode ? 16.0 : 12.0,
-                                  ),
-                                  onSelected: (selected) {
-                                    _setTargetLanguage(selected ? l : null);
-                                  },
                                 ),
-                              ),
-                            )
-                            .toList(),
+                              )
+                              .toList(),
+                        ),
                       ),
                     ),
                   ),
@@ -214,22 +227,28 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
             },
           ),
         ),
-        AnimatedSize(
-          duration: FluffyThemes.animationDuration,
-          child: _hasIdenticalLanguages
-              ? Padding(
-                  padding: EdgeInsets.only(top: 12.0),
-                  child: PLanguageDropdown(
-                    languages: _languages,
-                    onChange: _setBaseLanguage,
-                    initialLanguage: _selectedBaseLanguage,
-                    decorationText: L10n.of(context).alreadySpeak,
-                    error: widget.error is IdenticalLanguageException
-                        ? L10n.of(context).noIdenticalLanguages
-                        : null,
-                  ),
-                )
-              : const SizedBox(),
+        ListenableBuilder(
+          listenable: Listenable.merge([
+            _selectedBaseLanguage,
+            _selectedTargetLanguage,
+          ]),
+          builder: (context, _) => AnimatedSize(
+            duration: FluffyThemes.animationDuration,
+            child: _hasIdenticalLanguages
+                ? Padding(
+                    padding: EdgeInsets.only(top: 12.0),
+                    child: PLanguageDropdown(
+                      languages: _languages,
+                      onChange: _setBaseLanguage,
+                      initialLanguage: _selectedBaseLanguage.value,
+                      decorationText: L10n.of(context).alreadySpeak,
+                      error: widget.error is IdenticalLanguageException
+                          ? L10n.of(context).noIdenticalLanguages
+                          : null,
+                    ),
+                  )
+                : const SizedBox(),
+          ),
         ),
       ],
     );
