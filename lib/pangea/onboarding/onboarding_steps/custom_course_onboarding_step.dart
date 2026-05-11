@@ -13,9 +13,7 @@ class CustomCourseOnboardingStep extends OnboardingStep {
 
   CustomCourseOnboardingStep({
     required super.client,
-    super.stepIndex = 6,
-    super.totalSteps = 6,
-    required super.prevStep,
+    required super.maxTotalSteps,
     super.enableSkip = true,
     required this.baseLanguage,
     required this.targetLanguage,

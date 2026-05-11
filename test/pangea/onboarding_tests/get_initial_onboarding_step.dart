@@ -10,6 +10,7 @@ OnboardingStep getInitialOnboardingStep(
   final step = ProfileSetupOnboardingStep(
     displayName: "test_user_1",
     client: client,
+    maxTotalSteps: 6,
   );
   step.setup(getRandomAvatarUrl);
   return step;

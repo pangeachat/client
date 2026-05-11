@@ -18,10 +18,8 @@ class CourseCodeOnboardingStep extends OnboardingStep {
 
   CourseCodeOnboardingStep({
     required super.client,
-    required super.prevStep,
     required this.type,
-    required super.totalSteps,
-    super.stepIndex = 3,
+    required super.maxTotalSteps,
     super.enableSkip = true,
   });
 
@@ -96,18 +94,17 @@ class CourseCodeOnboardingStep extends OnboardingStep {
     });
 
     return JoinedCourseOnboardingStep(
-      prevStep: this,
+      client: client,
+      maxTotalSteps: maxTotalSteps,
       coursePlan: course,
       roomId: roomId,
-      client: client,
     );
   }
 
   @override
   OnboardingStep? skip() => PickLanguageOnboardingStep(
-    prevStep: this,
-    totalSteps: totalSteps,
-    type: type,
     client: client,
+    maxTotalSteps: maxTotalSteps,
+    type: type,
   );
 }

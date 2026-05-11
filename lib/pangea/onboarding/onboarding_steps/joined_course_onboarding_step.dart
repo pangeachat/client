@@ -7,9 +7,7 @@ class JoinedCourseOnboardingStep extends OnboardingStep {
 
   const JoinedCourseOnboardingStep({
     required super.client,
-    super.stepIndex = 4,
-    super.totalSteps = 4,
-    required super.prevStep,
+    required super.maxTotalSteps,
     required this.coursePlan,
     required this.roomId,
   });

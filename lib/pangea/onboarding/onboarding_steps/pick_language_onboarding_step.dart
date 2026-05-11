@@ -10,9 +10,7 @@ class PickLanguageOnboardingStep extends OnboardingStep {
 
   PickLanguageOnboardingStep({
     required super.client,
-    super.stepIndex = 4,
-    required super.totalSteps,
-    required super.prevStep,
+    required super.maxTotalSteps,
     required this.type,
   });
 
@@ -68,10 +66,9 @@ class PickLanguageOnboardingStep extends OnboardingStep {
     });
 
     return PickCefrLevelOnboardingStep(
-      prevStep: this,
-      totalSteps: totalSteps,
       type: type,
       client: client,
+      maxTotalSteps: maxTotalSteps,
       baseLanguage: base,
       targetLanguage: target,
     );

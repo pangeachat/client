@@ -3,12 +3,7 @@ import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.da
 import 'package:fluffychat/pangea/onboarding/user_type_enum.dart';
 
 class UserTypeOnboardingStep extends OnboardingStep {
-  UserTypeOnboardingStep({
-    required super.client,
-    super.stepIndex = 2,
-    super.totalSteps = 6,
-    required super.prevStep,
-  });
+  UserTypeOnboardingStep({required super.client, required super.maxTotalSteps});
 
   UserType? _userType;
 
@@ -31,10 +26,9 @@ class UserTypeOnboardingStep extends OnboardingStep {
     };
 
     return CourseCodeOnboardingStep(
-      prevStep: this,
-      totalSteps: totalSteps,
       type: type,
       client: client,
+      maxTotalSteps: totalSteps,
     );
   }
 

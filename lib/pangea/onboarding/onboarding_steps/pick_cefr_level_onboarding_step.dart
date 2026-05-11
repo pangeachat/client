@@ -12,9 +12,7 @@ class PickCefrLevelOnboardingStep extends OnboardingStep {
 
   PickCefrLevelOnboardingStep({
     required super.client,
-    super.stepIndex = 5,
-    required super.totalSteps,
-    required super.prevStep,
+    required super.maxTotalSteps,
     required this.type,
     required this.baseLanguage,
     required this.targetLanguage,
@@ -55,8 +53,8 @@ class PickCefrLevelOnboardingStep extends OnboardingStep {
     return switch (type) {
       UserType.student => null,
       UserType.teacher => CustomCourseOnboardingStep(
-        prevStep: this,
         client: client,
+        maxTotalSteps: maxTotalSteps,
         baseLanguage: baseLanguage,
         targetLanguage: targetLanguage,
         languageLevel: level,

@@ -32,6 +32,7 @@ class OnboardingController extends State<Onboarding> {
     super.initState();
     final initialStep = ProfileSetupOnboardingStep(
       client: Matrix.of(context).client,
+      maxTotalSteps: 6,
     );
     _step = ValueNotifier(initialStep);
     _navState = OnboardingNavigationState(initialStep: initialStep);
@@ -88,7 +89,7 @@ class OnboardingController extends State<Onboarding> {
             children: [
               ValueListenableBuilder(
                 valueListenable: _step,
-                builder: (context, step, _) => step.hasPrevStep
+                builder: (context, step, _) => _navState.hasPrevStep
                     ? BackButton(onPressed: _back)
                     : const SizedBox(width: 40.0),
               ),
@@ -97,7 +98,7 @@ class OnboardingController extends State<Onboarding> {
                   valueListenable: _step,
                   builder: (context, step, _) => AnimatedProgressBar(
                     height: 25.0,
-                    widthPercent: step.stepIndex / step.totalSteps,
+                    widthPercent: _navState.progress,
                   ),
                 ),
               ),
@@ -162,7 +163,7 @@ class OnboardingController extends State<Onboarding> {
                                                   const LinearProgressIndicator(),
                                             )
                                           : Text(
-                                              step.hasNextStep
+                                              _navState.hasNextStep
                                                   ? L10n.of(context).next
                                                   : L10n.of(context).letsGo,
                                               key: const ValueKey('text'),

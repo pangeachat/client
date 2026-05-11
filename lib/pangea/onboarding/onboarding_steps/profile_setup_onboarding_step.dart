@@ -7,8 +7,7 @@ import 'package:fluffychat/pangea/onboarding/onboarding_steps/user_type_onboardi
 class ProfileSetupOnboardingStep extends OnboardingStep {
   ProfileSetupOnboardingStep({
     required super.client,
-    super.stepIndex = 1,
-    super.totalSteps = 6,
+    required super.maxTotalSteps,
     String? displayName,
     Uint8List? avatarBytes,
     Uri? avatarUrl,
@@ -82,10 +81,10 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
       ErrorHandler.logError(e: e, s: s, data: {});
     }
 
-    return UserTypeOnboardingStep(prevStep: this, client: client);
+    return UserTypeOnboardingStep(client: client, maxTotalSteps: maxTotalSteps);
   }
 
   @override
   OnboardingStep? skip() =>
-      UserTypeOnboardingStep(prevStep: this, client: client);
+      UserTypeOnboardingStep(client: client, maxTotalSteps: maxTotalSteps);
 }
