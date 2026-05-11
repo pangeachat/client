@@ -34,11 +34,10 @@ test.describe("Message Toolbar", () => {
     // playwright todo: move away from hardcoded name?
     await page.getByRole("button", { name: "playwright" }).click();
 
+    // Input bar is automatically selected on chat open
+
     // Type Cantonese message in input bar 
-    var inputBar = await page.getByRole("textbox", { name: intl.writeAMessageLangCodes.substring(0, 7)});
-    await inputBar.click();
-    // playwright todo: This test is flaky (fail to fill properly?)
-    await inputBar.fill("néih hóu");
+    await page.getByRole("textbox", { name: intl.writeAMessageLangCodes.substring(0, 7) }).fill("néih hóu");
 
     // Send message
     await page.getByRole("button", { name: intl.send }).click();
