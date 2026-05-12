@@ -675,7 +675,7 @@ class _MoreButton extends StatelessWidget {
       case MessageActions.reply:
         return events.length == 1 &&
             controller.room.canSendDefaultMessages &&
-            !controller.room.hasArchivedActivity;
+            !controller.room.isActivityFinished;
       case MessageActions.edit:
         return controller.canEditSelectedEvents &&
             !events.first.isActivityMessage &&
