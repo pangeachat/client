@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-05-06 14:58:42.498065",
+    "@@last_modified": "2026-05-12 10:36:28.779795",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10995,6 +10995,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Palun valige kehtivad põhikeel ja sihtkeel",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

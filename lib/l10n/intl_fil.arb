@@ -2526,7 +2526,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-05-06 14:59:10.131224",
+    "@@last_modified": "2026-05-12 10:36:46.901278",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -12017,6 +12017,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Mangyaring pumili ng wastong batayan at target na mga wika",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

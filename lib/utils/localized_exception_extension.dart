@@ -50,6 +50,11 @@ extension LocalizedExceptionExtension on Object {
     if (this is IdenticalLanguageException) {
       return L10n.of(context).noIdenticalLanguages;
     }
+
+    if (this is MissingLanguageException) {
+      return L10n.of(context).missingLanguageException;
+    }
+
     if (this is DeleteAccountException) {
       switch ((this as DeleteAccountException).error) {
         case DeleteAccountError.P_LIMIT_EXCEEDED:

@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-05-06 14:58:51.607666",
+    "@@last_modified": "2026-05-12 10:36:33.375601",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10998,6 +10998,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Будь ласка, виберіть дійсні базову та цільову мови",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

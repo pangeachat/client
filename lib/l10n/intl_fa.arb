@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-06 14:59:33.619657",
+    "@@last_modified": "2026-05-12 10:37:03.692723",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -11110,6 +11110,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "لطفاً زبان‌های پایه و هدف معتبر را انتخاب کنید",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

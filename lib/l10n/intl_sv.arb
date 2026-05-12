@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-06 14:59:36.764844",
+    "@@last_modified": "2026-05-12 10:37:05.523852",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -11585,6 +11585,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Vänligen välj giltiga grund- och målspråk",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }
