@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-06 14:58:25.636491",
+    "@@last_modified": "2026-05-12 10:36:14.486253",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11823,6 +11823,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Vă rugăm să alegeți limbi de bază și țintă valide",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

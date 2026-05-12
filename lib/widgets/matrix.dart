@@ -229,9 +229,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                 // FluffyChatApp.router.go('/backup');
                 final isL2Set =
                     await pangeaController.userController.isUserL2Set;
-                FluffyChatApp.router.go(
-                  isL2Set ? '/rooms' : '/registration/create',
-                );
+                FluffyChatApp.router.go(isL2Set ? '/rooms' : '/registration');
                 // Pangea#
               });
     // #Pangea
@@ -459,7 +457,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // );
         if (state == LoginState.loggedIn) {
           final isL2Set = await pangeaController.userController.isUserL2Set;
-          FluffyChatApp.router.go(isL2Set ? '/rooms' : '/registration/create');
+          FluffyChatApp.router.go(isL2Set ? '/rooms' : '/registration');
         } else {
           FluffyChatApp.router.go('/home');
         }

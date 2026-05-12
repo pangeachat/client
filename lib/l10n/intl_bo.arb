@@ -3462,7 +3462,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-05-06 14:59:27.473183",
+    "@@last_modified": "2026-05-12 10:37:00.393082",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10670,6 +10670,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "请选取有效的基础语言和目标语言",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-05-06 14:59:46.709379",
+    "@@last_modified": "2026-05-12 10:37:11.803635",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -12012,6 +12012,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Пожалуйста, выберите действительные базовый и целевой языки",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

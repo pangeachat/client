@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-06 14:59:26.005992",
+    "@@last_modified": "2026-05-12 10:36:59.309472",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10998,6 +10998,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Kies alstublieft geldige basis- en doeltalen",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

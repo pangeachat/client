@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-05-06 14:58:22.748484",
+    "@@last_modified": "2026-05-12 10:36:12.699114",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -11125,6 +11125,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Kérjük, válasszon érvényes alap- és célnyelvet",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

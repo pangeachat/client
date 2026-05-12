@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-06 14:59:23.861890",
+    "@@last_modified": "2026-05-12 10:36:58.175085",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -11114,6 +11114,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "தயவுசெய்து செல்லுபடியாகும் அடிப்படை மற்றும் இலக்கு மொழிகளை தேர்ந்தெடுக்கவும்",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

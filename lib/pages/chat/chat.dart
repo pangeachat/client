@@ -24,6 +24,7 @@ import 'package:fluffychat/pages/chat/chat_view.dart';
 import 'package:fluffychat/pages/chat/event_info_dialog.dart';
 import 'package:fluffychat/pages/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
+import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_chat_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_extension.dart';
@@ -67,17 +68,13 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/learning_settings/disable_language_tools_popup.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart';
-import 'package:fluffychat/pangea/learning_settings/p_language_dialog.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_overlay_controller.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_sequences.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_repo.dart';
@@ -89,6 +86,11 @@ import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_reques
 import 'package:fluffychat/pangea/tokens/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_enum.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_model.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_overlay_controller.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_sequences.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
 import 'package:fluffychat/utils/file_selector.dart';
@@ -222,6 +224,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
   late final ActivityChatController activityController;
+  late final OrchestratorChatController orchestratorChatController;
   late final TutorialOverlayController tutorialOverlayController;
   late final ChatBannerController _bannerController;
   late final SpanCardOverlayManager _spanCardOverlayController;
@@ -837,6 +840,8 @@ class ChatController extends State<ChatPageWithRoom>
       });
     }
 
+    orchestratorChatController = OrchestratorChatController(room: room);
+
     tutorialOverlayController = TutorialOverlayController(
       TutorialSequences.chatTutorialSequence,
     );
@@ -852,11 +857,8 @@ class ChatController extends State<ChatPageWithRoom>
 
     Future.delayed(const Duration(seconds: 1), () async {
       if (!mounted) return;
-      LanguageService.showDialogOnEmptyLanguage(
-        context,
-        () =>
-            () => setState(() {}),
-      );
+      await LanguageService.showDialogOnEmptyLanguage(context);
+      if (mounted) setState(() {});
     });
   }
   // Pangea#
@@ -1116,6 +1118,7 @@ class ChatController extends State<ChatPageWithRoom>
     );
     choreographer.dispose();
     activityController.dispose();
+    orchestratorChatController.dispose();
     MatrixState.pAnyState.closeAllOverlays(force: true);
     stopMediaStream.close();
     _levelSubscription?.cancel();
@@ -2382,14 +2385,18 @@ class ChatController extends State<ChatPageWithRoom>
       (event) =>
           event.isVisibleInGui &&
           event.senderId != room.client.userID &&
-          event.senderId == BotName.byEnvironment &&
-          !event.redacted,
+          event.senderId == BotName.byEnvironment,
     );
-    if (candidate?.hasAggregatedEvents(timeline!, RelationshipTypes.edit) ==
-        true) {
-      return null;
-    }
-    return candidate?.eventId;
+    if (candidate == null) return null;
+
+    final hasEdit = candidate.hasAggregatedEvents(
+      timeline!,
+      RelationshipTypes.edit,
+    );
+    final isRedacted = candidate.redacted;
+
+    if (hasEdit || isRedacted) return null;
+    return candidate.eventId;
   }
 
   final StreamController<void> stopMediaStream = StreamController.broadcast();
@@ -2421,7 +2428,7 @@ class ChatController extends State<ChatPageWithRoom>
 
     // Check if the user has set their languages. If not, prompt them to do so.
     if (!MatrixState.pangeaController.userController.languagesSet) {
-      pLanguageDialog(context, () {});
+      await LanguageService.showDialogOnEmptyLanguage(context);
       return;
     }
 
@@ -2651,11 +2658,15 @@ class ChatController extends State<ChatPageWithRoom>
     final assistanceState = choreographer.assistanceState;
 
     if (assistanceState == AssistanceStateEnum.noSub) {
-      PaywallCard.show(
-        context,
-        ChoreoConstants.inputTransformTargetKey,
-        force: true,
-      );
+      if (manual) {
+        PaywallCard.show(
+          context,
+          ChoreoConstants.inputTransformTargetKey,
+          force: true,
+        );
+      } else {
+        await send();
+      }
       return;
     }
 
@@ -2700,7 +2711,18 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
-    final targetLanguage = room.activityPlan!.req.targetLanguage;
+    final langCode = room.activityPlan!.req.targetLanguage;
+    final targetLanguage = PLanguageStore.byLangCode(langCode);
+
+    if (targetLanguage == null) {
+      ErrorHandler.logError(
+        e: "Skipping language mismatch popup for missing language",
+        data: {'activity_lang_code': langCode},
+      );
+      _onRequestWritingAssistance(manual: manual, autosend: autosend);
+      return;
+    }
+
     LanguageMismatchRepo.setRoom(roomId);
     OverlayUtil.showLanguageMismatchPopup(
       context: context,
@@ -2713,7 +2735,7 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
-  Future<void> updateLanguageOnMismatch(String target) async {
+  Future<void> updateLanguageOnMismatch(LanguageModel target) async {
     final messenger = ScaffoldMessenger.of(context);
     messenger.hideCurrentSnackBar();
     final resp = await showFutureLoadingDialog(
@@ -2726,13 +2748,13 @@ class ChatController extends State<ChatPageWithRoom>
           final baseLangShort = profile.userSettings.sourceLanguage
               ?.split('-')
               .first;
-          if (baseLangShort != null &&
-              baseLangShort == target.split('-').first) {
+
+          if (baseLangShort != null && baseLangShort == target.langCodeShort) {
             throw IdenticalLanguageException();
           }
 
           return profile.copyWith(
-            userSettings: profile.userSettings.copyWith(targetLanguage: target),
+            userSettings: profile.userSettings.copyWith(targetLanguage: "unk"),
           );
         }, waitForDataInSync: true);
       },

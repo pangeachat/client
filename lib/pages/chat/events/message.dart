@@ -335,7 +335,7 @@ class Message extends StatelessWidget {
         // direction: AppSettings.swipeRightToLeftToReply.value
         //     ? SwipeDirection.endToStart
         //     : SwipeDirection.startToEnd,
-        direction: event.room.hasArchivedActivity
+        direction: event.room.isActivityFinished
             ? SwipeDirection.none
             : AppSettings.swipeRightToLeftToReply.value
             ? SwipeDirection.endToStart
@@ -1137,7 +1137,7 @@ class Message extends StatelessWidget {
                               'message_reactions_${event.eventId}',
                             )
                             .key,
-                        enabled: !event.room.hasArchivedActivity,
+                        enabled: !event.room.isActivityFinished,
                       ),
                     ),
               // Pangea#

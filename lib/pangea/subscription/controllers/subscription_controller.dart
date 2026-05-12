@@ -240,9 +240,8 @@ class SubscriptionController with ChangeNotifier {
 
   /// whether or not the paywall should be shown
   bool get shouldShowPaywall {
-    return initCompleter.isCompleted &&
-        isSubscribed == false &&
-        !SubscriptionManagementRepo.getDismissedPaywall();
+    final dismissed = SubscriptionManagementRepo.getDismissedPaywall();
+    return initCompleter.isCompleted && isSubscribed == false && !dismissed;
   }
 
   Future<void> showPaywall(BuildContext context) async {

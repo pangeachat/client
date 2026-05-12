@@ -7,7 +7,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/languages/l2_support_enum.dart';
-import 'package:fluffychat/pangea/languages/language_display_name_widget.dart';
+import 'package:fluffychat/pangea/languages/language_display_name_postfix_widget.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 
@@ -218,7 +218,7 @@ class LanguageDropDownEntry extends StatelessWidget {
           child: Row(
             children: [
               Flexible(
-                child: LanguageDisplayNameWidget(
+                child: LanguageDisplayNamePostfixWidget(
                   languageModel,
                   style: TextStyle(
                     color: enabled

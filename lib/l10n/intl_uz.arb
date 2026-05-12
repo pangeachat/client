@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-05-06 14:59:08.684712",
+    "@@last_modified": "2026-05-12 10:36:45.045954",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -11002,6 +11002,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Iltimos, to'g'ri asosiy va maqsad tillarni tanlang",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

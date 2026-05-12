@@ -88,7 +88,7 @@ class SignupPageView extends StatelessWidget {
                   PangeaSsoButton(provider: SSOProvider.apple),
                   PangeaSsoButton(provider: SSOProvider.google),
                   ElevatedButton(
-                    onPressed: () => context.go('/home/language/signup/email'),
+                    onPressed: () => context.go('/home/signup/email'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: theme.colorScheme.primaryContainer,
                       foregroundColor: theme.colorScheme.onPrimaryContainer,

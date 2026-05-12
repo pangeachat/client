@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-05-06 14:58:38.980616",
+    "@@last_modified": "2026-05-12 10:36:21.771597",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10998,6 +10998,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Mesedez, aukeratu baliozko oinarrizko eta helburu hizkuntzak",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }
