@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-06 14:58:08.672629",
+    "@@last_modified": "2026-05-12 10:36:07.679503",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -11215,6 +11215,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "유효한 기본 언어와 대상 언어를 선택하십시오",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

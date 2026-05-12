@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
 import '../../../config/themes.dart';
 import '../../../widgets/matrix.dart';
@@ -294,7 +295,7 @@ class OverlayUtil {
     required BuildContext context,
     required String targetId,
     required String message,
-    required String targetLanguage,
+    required LanguageModel targetLanguage,
     required VoidCallback onConfirm,
   }) {
     showPositionedCard(

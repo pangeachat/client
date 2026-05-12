@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-06 14:59:00.718401",
+    "@@last_modified": "2026-05-12 10:36:37.888096",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -11149,6 +11149,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Si us plau, trieu idiomes base i de destí vàlids",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

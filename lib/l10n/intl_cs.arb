@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-05-06 14:58:54.253185",
+    "@@last_modified": "2026-05-12 10:36:34.383166",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -11552,6 +11552,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Prosím vyberte platné základní a cílové jazyky",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-05-06 14:59:41.088597",
+    "@@last_modified": "2026-05-12 10:37:08.094691",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11866,6 +11866,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "有効な基準言語とターゲット言語を選択してください",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

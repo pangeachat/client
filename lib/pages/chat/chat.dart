@@ -67,11 +67,12 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/learning_settings/disable_language_tools_popup.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart';
-import 'package:fluffychat/pangea/learning_settings/p_language_dialog.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
@@ -852,11 +853,8 @@ class ChatController extends State<ChatPageWithRoom>
 
     Future.delayed(const Duration(seconds: 1), () async {
       if (!mounted) return;
-      LanguageService.showDialogOnEmptyLanguage(
-        context,
-        () =>
-            () => setState(() {}),
-      );
+      await LanguageService.showDialogOnEmptyLanguage(context);
+      if (mounted) setState(() {});
     });
   }
   // Pangea#
@@ -2382,14 +2380,18 @@ class ChatController extends State<ChatPageWithRoom>
       (event) =>
           event.isVisibleInGui &&
           event.senderId != room.client.userID &&
-          event.senderId == BotName.byEnvironment &&
-          !event.redacted,
+          event.senderId == BotName.byEnvironment,
     );
-    if (candidate?.hasAggregatedEvents(timeline!, RelationshipTypes.edit) ==
-        true) {
-      return null;
-    }
-    return candidate?.eventId;
+    if (candidate == null) return null;
+
+    final hasEdit = candidate.hasAggregatedEvents(
+      timeline!,
+      RelationshipTypes.edit,
+    );
+    final isRedacted = candidate.redacted;
+
+    if (hasEdit || isRedacted) return null;
+    return candidate.eventId;
   }
 
   final StreamController<void> stopMediaStream = StreamController.broadcast();
@@ -2421,7 +2423,7 @@ class ChatController extends State<ChatPageWithRoom>
 
     // Check if the user has set their languages. If not, prompt them to do so.
     if (!MatrixState.pangeaController.userController.languagesSet) {
-      pLanguageDialog(context, () {});
+      await LanguageService.showDialogOnEmptyLanguage(context);
       return;
     }
 
@@ -2651,11 +2653,15 @@ class ChatController extends State<ChatPageWithRoom>
     final assistanceState = choreographer.assistanceState;
 
     if (assistanceState == AssistanceStateEnum.noSub) {
-      PaywallCard.show(
-        context,
-        ChoreoConstants.inputTransformTargetKey,
-        force: true,
-      );
+      if (manual) {
+        PaywallCard.show(
+          context,
+          ChoreoConstants.inputTransformTargetKey,
+          force: true,
+        );
+      } else {
+        await send();
+      }
       return;
     }
 
@@ -2700,7 +2706,18 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
-    final targetLanguage = room.activityPlan!.req.targetLanguage;
+    final langCode = room.activityPlan!.req.targetLanguage;
+    final targetLanguage = PLanguageStore.byLangCode(langCode);
+
+    if (targetLanguage == null) {
+      ErrorHandler.logError(
+        e: "Skipping language mismatch popup for missing language",
+        data: {'activity_lang_code': langCode},
+      );
+      _onRequestWritingAssistance(manual: manual, autosend: autosend);
+      return;
+    }
+
     LanguageMismatchRepo.setRoom(roomId);
     OverlayUtil.showLanguageMismatchPopup(
       context: context,
@@ -2713,7 +2730,7 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
-  Future<void> updateLanguageOnMismatch(String target) async {
+  Future<void> updateLanguageOnMismatch(LanguageModel target) async {
     final messenger = ScaffoldMessenger.of(context);
     messenger.hideCurrentSnackBar();
     final resp = await showFutureLoadingDialog(
@@ -2726,13 +2743,13 @@ class ChatController extends State<ChatPageWithRoom>
           final baseLangShort = profile.userSettings.sourceLanguage
               ?.split('-')
               .first;
-          if (baseLangShort != null &&
-              baseLangShort == target.split('-').first) {
+
+          if (baseLangShort != null && baseLangShort == target.langCodeShort) {
             throw IdenticalLanguageException();
           }
 
           return profile.copyWith(
-            userSettings: profile.userSettings.copyWith(targetLanguage: target),
+            userSettings: profile.userSettings.copyWith(targetLanguage: "unk"),
           );
         }, waitForDataInSync: true);
       },

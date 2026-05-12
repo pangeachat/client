@@ -5099,5 +5099,6 @@
     "aboutYourClass": "About your class",
     "courseCodeStepErrorMessage": "Please check your code and try again",
     "institution": "Institution",
-    "courseGoals": "Course Goals"
+    "courseGoals": "Course Goals",
+    "missingLanguageException": "Please choose valid base and target languages"
 }

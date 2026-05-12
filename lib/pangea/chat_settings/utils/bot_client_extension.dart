@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/chat_settings/constants/bot_mode.dart';
 import 'package:fluffychat/pangea/chat_settings/models/bot_options_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';
 import 'package:fluffychat/pangea/user/user_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -25,10 +26,15 @@ BotOptionsModel? buildUpdatedBotOptions({
   required String? userId,
 }) {
   final botOptions = currentOptions ?? const BotOptionsModel();
-  final targetLanguage = userSettings.targetLanguage;
-  final languageLevel = userSettings.cefrLevel;
+
   final voice = userSettings.voice;
   final gender = userSettings.gender;
+  final languageLevel = userSettings.cefrLevel;
+
+  final userTargetLang = userSettings.targetLanguage;
+  final targetLanguage = userTargetLang != LanguageKeys.unknownLanguage
+      ? userTargetLang
+      : null;
 
   if (botOptions.targetLanguage == targetLanguage &&
       botOptions.languageLevel == languageLevel &&

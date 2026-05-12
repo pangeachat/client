@@ -25,7 +25,7 @@ class WordCardSwitcher extends StatelessWidget {
                   overlayController: controller.widget.overlayController,
                 )
               : mode != SelectMode.emoji &&
-                    !controller.pangeaMessageEvent.room.hasArchivedActivity
+                    !controller.pangeaMessageEvent.room.isActivityFinished
               ? ValueListenableBuilder(
                   valueListenable: controller.reactionNotifier,
                   builder: (context, _, _) => MessageReactionPicker(

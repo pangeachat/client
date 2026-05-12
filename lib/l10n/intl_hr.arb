@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-05-06 14:58:31.122247",
+    "@@last_modified": "2026-05-12 10:36:17.914598",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -11482,6 +11482,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Molimo odaberite valjane osnovne i ciljne jezike",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

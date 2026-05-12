@@ -3,15 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/common/widgets/card_header.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class IdenticalLanguageException implements Exception {}
 
+class MissingLanguageException implements Exception {}
+
 class LanguageMismatchPopup extends StatelessWidget {
   final String message;
   final String overlayId;
-  final String targetLanguage;
+  final LanguageModel targetLanguage;
   final VoidCallback onConfirm;
 
   const LanguageMismatchPopup({
@@ -24,7 +27,7 @@ class LanguageMismatchPopup extends StatelessWidget {
 
   Future<void> _updateLanguage() async {
     await MatrixState.pangeaController.userController.updateProfile((profile) {
-      final targetLangShort = targetLanguage.split("-").first;
+      final targetLangShort = targetLanguage.langCodeShort;
       final baseLangShort = profile.userSettings.sourceLanguage
           ?.split('-')
           .first;
@@ -35,7 +38,7 @@ class LanguageMismatchPopup extends StatelessWidget {
 
       return profile.copyWith(
         userSettings: profile.userSettings.copyWith(
-          targetLanguage: targetLanguage,
+          targetLanguage: targetLanguage.langCode,
         ),
       );
     }, waitForDataInSync: true);

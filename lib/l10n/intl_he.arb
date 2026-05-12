@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-06 14:58:32.561425",
+    "@@last_modified": "2026-05-12 10:36:18.948444",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -12077,6 +12077,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "אנא בחר שפות בסיס ויעד תקפות",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }
