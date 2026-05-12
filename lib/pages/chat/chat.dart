@@ -2653,11 +2653,15 @@ class ChatController extends State<ChatPageWithRoom>
     final assistanceState = choreographer.assistanceState;
 
     if (assistanceState == AssistanceStateEnum.noSub) {
-      PaywallCard.show(
-        context,
-        ChoreoConstants.inputTransformTargetKey,
-        force: true,
-      );
+      if (manual) {
+        PaywallCard.show(
+          context,
+          ChoreoConstants.inputTransformTargetKey,
+          force: true,
+        );
+      } else {
+        await send();
+      }
       return;
     }
 
