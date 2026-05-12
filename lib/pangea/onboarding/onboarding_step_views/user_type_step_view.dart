@@ -29,7 +29,7 @@ class UserTypeStepViewState extends State<UserTypeStepView> {
   void initState() {
     super.initState();
     _step = widget.step;
-    _selectedType.value = _step.userType;
+    _selectedType.value = _step.state.userType;
   }
 
   @override

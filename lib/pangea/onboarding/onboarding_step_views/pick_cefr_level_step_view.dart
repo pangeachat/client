@@ -30,15 +30,8 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
   void initState() {
     super.initState();
     _step = widget.step;
-    _step.setup(
-      (update) => MatrixState.pangeaController.userController.updateProfile(
-        update,
-        waitForDataInSync: true,
-      ),
-    );
-
     final userLevel = MatrixState.pangeaController.userController.userCefrLevel;
-    if (_step.level == null) {
+    if (_step.state.languageLevel == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) => _setLevel(userLevel));
     }
   }
@@ -58,9 +51,12 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final title = switch (_step.type) {
+    final type = _step.state.userType;
+
+    final title = switch (type) {
       UserType.student => L10n.of(context).pickCefrLevelStudentStepTitle,
       UserType.teacher => L10n.of(context).pickCefrLevelTeacherStepTitle,
+      null => L10n.of(context).pickCefrLevelStudentStepTitle,
     };
 
     final levels = LanguageLevelTypeEnum.values;

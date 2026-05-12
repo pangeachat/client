@@ -5,27 +5,29 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_navigation_result.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
 
-class OnboardingNavigationState {
+class OnboardingNavigationController {
   late OnboardingStep _currentStep;
-  late int _stepIndex;
 
-  OnboardingNavigationState({
-    required OnboardingStep initialStep,
-    int stepIndex = 1,
-  }) {
+  OnboardingNavigationController({required OnboardingStep initialStep}) {
     _currentStep = initialStep;
-    _stepIndex = stepIndex;
   }
+
+  int _currentStepIndex = 1;
 
   final Queue<OnboardingStep> _prevSteps = Queue();
 
   OnboardingStep get step => _currentStep;
 
-  bool get hasNextStep => _stepIndex < _currentStep.maxTotalSteps;
+  bool get hasNextStep => _currentStep.maxRemainingSteps > 0;
   bool get hasPrevStep => _prevSteps.isNotEmpty;
 
-  double get progress =>
-      max(0.0, min(1.0, _stepIndex / _currentStep.maxTotalSteps));
+  double get progress => max(
+    0.0,
+    min(
+      1.0,
+      _currentStepIndex / (_currentStepIndex + _currentStep.maxRemainingSteps),
+    ),
+  );
 
   Future<NavigationResult> forward() async {
     try {
@@ -34,7 +36,7 @@ class OnboardingNavigationState {
         return ReachedEndNavigationResult();
       }
 
-      _stepIndex++;
+      _currentStepIndex++;
       _prevSteps.addLast(_currentStep);
       _currentStep = nextStep;
       return SuccessNavigationResult(nextStep);
@@ -51,7 +53,7 @@ class OnboardingNavigationState {
         return ReachedEndNavigationResult();
       }
 
-      _stepIndex++;
+      _currentStepIndex++;
       _prevSteps.addLast(_currentStep);
       _currentStep = nextStep;
       return SuccessNavigationResult(nextStep);
@@ -68,7 +70,7 @@ class OnboardingNavigationState {
 
     final prevStep = _prevSteps.removeLast();
 
-    _stepIndex--;
+    _currentStepIndex--;
     _currentStep = prevStep;
     return SuccessNavigationResult(prevStep);
   }

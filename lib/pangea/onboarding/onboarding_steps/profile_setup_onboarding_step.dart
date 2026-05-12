@@ -7,16 +7,10 @@ import 'package:fluffychat/pangea/onboarding/onboarding_steps/user_type_onboardi
 class ProfileSetupOnboardingStep extends OnboardingStep {
   ProfileSetupOnboardingStep({
     required super.client,
-    required super.maxTotalSteps,
-    String? displayName,
-    Uint8List? avatarBytes,
-    Uri? avatarUrl,
+    required super.state,
+    required super.maxRemainingSteps,
   }) {
-    _displayName = displayName;
-    _avatarBytes = avatarBytes;
-    if (_avatarBytes == null) {
-      _avatarUrl = avatarUrl;
-    }
+    _avatarUrl = state.avatarProvider.getRandomAvatarUrl();
   }
 
   String? _displayName;
@@ -26,12 +20,6 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
   String? get displayName => _displayName;
   Uint8List? get avatarBytes => _avatarBytes;
   Uri? get avatarUrl => _avatarUrl;
-
-  void setup(Uri Function() getRandomAvatarUrl) {
-    if (_avatarBytes == null && _avatarUrl == null) {
-      _avatarUrl = getRandomAvatarUrl();
-    }
-  }
 
   void setDisplayName(String name) => _displayName = name;
 
@@ -81,10 +69,17 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
       ErrorHandler.logError(e: e, s: s, data: {});
     }
 
-    return UserTypeOnboardingStep(client: client, maxTotalSteps: maxTotalSteps);
+    return UserTypeOnboardingStep(
+      client: client,
+      state: state,
+      maxRemainingSteps: 6,
+    );
   }
 
   @override
-  OnboardingStep? skip() =>
-      UserTypeOnboardingStep(client: client, maxTotalSteps: maxTotalSteps);
+  OnboardingStep? skip() => UserTypeOnboardingStep(
+    client: client,
+    state: state,
+    maxRemainingSteps: 6,
+  );
 }

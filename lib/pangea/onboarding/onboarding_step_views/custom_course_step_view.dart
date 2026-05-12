@@ -3,9 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/custom_courses/custom_course_repo.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class CustomCourseStepView extends StatefulWidget {
   final CustomCourseOnboardingStep step;
@@ -30,12 +28,6 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
   void initState() {
     super.initState();
     _step = widget.step;
-    _step.setup(
-      (req) => CustomCourseRepo.get(
-        req,
-        MatrixState.pangeaController.userController.accessToken,
-      ),
-    );
 
     _nameController.addListener(_setName);
     _institutionController.addListener(_setInstitution);

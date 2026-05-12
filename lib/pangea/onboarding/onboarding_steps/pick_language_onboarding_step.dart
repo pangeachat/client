@@ -3,49 +3,31 @@ import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/pick_cefr_level_onboarding_step.dart';
 import 'package:fluffychat/pangea/onboarding/user_type_enum.dart';
-import 'package:fluffychat/pangea/user/user_model.dart';
 
 class PickLanguageOnboardingStep extends OnboardingStep {
-  final UserType type;
-
   PickLanguageOnboardingStep({
     required super.client,
-    required super.maxTotalSteps,
-    required this.type,
+    required super.state,
+    required super.maxRemainingSteps,
   });
-
-  LanguageModel? _baseLanguage;
-  LanguageModel? _targetLanguage;
-
-  Future<void> Function(Profile Function(Profile))? updateProfile;
-  void setup(Future<void> Function(Profile Function(Profile)) updateProfile) {
-    this.updateProfile = updateProfile;
-  }
-
-  LanguageModel? get baseLanguage => _baseLanguage;
-  LanguageModel? get targetLanguage => _targetLanguage;
 
   @override
   bool get enableGoForward {
-    final base = _baseLanguage;
-    final target = _targetLanguage;
+    final base = state.baseLanguage;
+    final target = state.targetLanguage;
     if (base == null || target == null) return false;
     return true;
   }
 
-  void selectBaseLanguage(LanguageModel? lang) => _baseLanguage = lang;
+  void selectBaseLanguage(LanguageModel? lang) => state.setBaseLanguage(lang);
 
-  void selectTargetLanguage(LanguageModel? lang) => _targetLanguage = lang;
+  void selectTargetLanguage(LanguageModel? lang) =>
+      state.setTargetLanguage(lang);
 
   @override
   Future<OnboardingStep?> execute() async {
-    final updateProfile = this.updateProfile;
-    if (updateProfile == null) {
-      throw StateError("Pick language step is not full set up");
-    }
-
-    final target = _targetLanguage;
-    final base = _baseLanguage;
+    final target = state.targetLanguage;
+    final base = state.baseLanguage;
 
     if (target == null || base == null) {
       throw StateError("Target language or base language is null");
@@ -55,22 +37,25 @@ class PickLanguageOnboardingStep extends OnboardingStep {
       throw IdenticalLanguageException();
     }
 
-    await updateProfile((profile) {
+    await state.accountUpdater.updateProfile((profile) {
       return profile.copyWith(
         userSettings: profile.userSettings.copyWith(
           targetLanguage: target.langCode,
           sourceLanguage: base.langCode,
-          // GABBY TODO set created at at right time: createdAt: DateTime.now(),
         ),
       );
     });
 
+    final maxRemainingSteps = switch (state.userType) {
+      UserType.student => 0,
+      UserType.teacher => 1,
+      null => 0,
+    };
+
     return PickCefrLevelOnboardingStep(
-      type: type,
       client: client,
-      maxTotalSteps: maxTotalSteps,
-      baseLanguage: base,
-      targetLanguage: target,
+      state: state,
+      maxRemainingSteps: maxRemainingSteps,
     );
   }
 

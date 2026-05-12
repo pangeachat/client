@@ -1,17 +1,20 @@
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/onboarding/account_updater.dart';
+import 'package:fluffychat/pangea/onboarding/avatar_provider.dart';
+import 'package:fluffychat/pangea/onboarding/course_provider.dart';
+import 'package:fluffychat/pangea/onboarding/onboarding_state_controller.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
 
-OnboardingStep getInitialOnboardingStep(
-  Client client,
-  Uri Function() getRandomAvatarUrl,
-) {
-  final step = ProfileSetupOnboardingStep(
-    displayName: "test_user_1",
+OnboardingStep getInitialOnboardingStep(Client client) {
+  return ProfileSetupOnboardingStep(
     client: client,
-    maxTotalSteps: 6,
+    state: OnboardingStateController(
+      accountUpdater: MockAccountUpdater(),
+      courseProvider: MockCourseProvider(),
+      avatarProvider: MockAvatarProvider(),
+    ),
+    maxRemainingSteps: 6,
   );
-  step.setup(getRandomAvatarUrl);
-  return step;
 }

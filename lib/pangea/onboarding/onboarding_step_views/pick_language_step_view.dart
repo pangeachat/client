@@ -52,12 +52,6 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
   void initState() {
     super.initState();
     _step = widget.step;
-    _step.setup(
-      (update) => MatrixState.pangeaController.userController.updateProfile(
-        update,
-        waitForDataInSync: true,
-      ),
-    );
 
     final userL1 = MatrixState.pangeaController.userController.userL1;
     final userL2 = MatrixState.pangeaController.userController.userL2;
@@ -66,9 +60,9 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
       LanguageKeys.defaultLanguage,
     );
 
-    final targetLanguage = _step.targetLanguage ?? userL2;
+    final targetLanguage = _step.state.targetLanguage ?? userL2;
     final baseLanguage =
-        _step.baseLanguage ?? userL1 ?? systemLanguage ?? defaultLanguage;
+        _step.state.baseLanguage ?? userL1 ?? systemLanguage ?? defaultLanguage;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _setBaseLanguage(baseLanguage);
@@ -94,7 +88,8 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
   }
 
   void _setBaseLanguage(LanguageModel? lang) {
-    if (_step.baseLanguage == lang && _selectedBaseLanguage.value == lang) {
+    if (_step.state.baseLanguage == lang &&
+        _selectedBaseLanguage.value == lang) {
       return;
     }
 
@@ -108,7 +103,8 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
   }
 
   void _setTargetLanguage(LanguageModel? lang) {
-    if (_step.targetLanguage == lang && _selectedTargetLanguage.value == lang) {
+    if (_step.state.targetLanguage == lang &&
+        _selectedTargetLanguage.value == lang) {
       return;
     }
 
@@ -138,9 +134,11 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
       isColumnMode ? theme.textTheme.bodyLarge : theme.textTheme.bodyMedium,
     );
 
-    final title = switch (_step.type) {
+    final type = _step.state.userType;
+    final title = switch (type) {
       UserType.teacher => L10n.of(context).pickLanguageTeacherStepTitle,
       UserType.student => L10n.of(context).onboardingLanguagesTitle,
+      null => L10n.of(context).pickLanguageTeacherStepTitle,
     };
 
     return Column(

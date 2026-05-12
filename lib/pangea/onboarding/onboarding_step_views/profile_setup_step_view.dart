@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -46,8 +45,6 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
   void initState() {
     super.initState();
     _step = widget.step;
-    _step.setup(_getRandomAvatarUrl);
-
     _displayNameController.addListener(_setDisplayName);
     _setDefaultProfileInfo();
   }
@@ -66,11 +63,6 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
 
   String _avatarUrlString(int index) =>
       "${AppConfig.assetsBaseURL}/avatar_$index.png";
-
-  Uri _getRandomAvatarUrl() {
-    final Random random = Random();
-    return Uri.parse(_avatarUrlString(random.nextInt(4) + 1));
-  }
 
   void _setDisplayName() {
     _debounce?.cancel();

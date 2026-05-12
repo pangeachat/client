@@ -4,8 +4,12 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
+import 'package:fluffychat/pangea/onboarding/account_updater.dart';
+import 'package:fluffychat/pangea/onboarding/avatar_provider.dart';
+import 'package:fluffychat/pangea/onboarding/course_provider.dart';
+import 'package:fluffychat/pangea/onboarding/onboarding_navigation_controller.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_navigation_result.dart';
-import 'package:fluffychat/pangea/onboarding/onboarding_navigation_state.dart';
+import 'package:fluffychat/pangea/onboarding/onboarding_state_controller.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_step_skip_button.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_step_views/onboarding_step_view.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
@@ -20,7 +24,8 @@ class Onboarding extends StatefulWidget {
 }
 
 class OnboardingController extends State<Onboarding> {
-  late final OnboardingNavigationState _navState;
+  late final OnboardingNavigationController _navigation;
+  late final OnboardingStateController _state;
 
   late final ValueNotifier<OnboardingStep> _step;
   final ValueNotifier<bool> _loading = ValueNotifier(false);
@@ -30,12 +35,20 @@ class OnboardingController extends State<Onboarding> {
   @override
   void initState() {
     super.initState();
+    final client = Matrix.of(context).client;
+    _state = OnboardingStateController(
+      accountUpdater: UserAccountUpdater(),
+      courseProvider: ClientCourseProvider(client: client),
+      avatarProvider: RandomAvatarProvider(),
+    );
+
     final initialStep = ProfileSetupOnboardingStep(
-      client: Matrix.of(context).client,
-      maxTotalSteps: 6,
+      client: client,
+      state: _state,
+      maxRemainingSteps: 6,
     );
     _step = ValueNotifier(initialStep);
-    _navState = OnboardingNavigationState(initialStep: initialStep);
+    _navigation = OnboardingNavigationController(initialStep: initialStep);
     _updateEnableNext();
   }
 
@@ -52,12 +65,12 @@ class OnboardingController extends State<Onboarding> {
 
   Future<void> _forward() async {
     _loading.value = true;
-    _dispatchNavigationResult(await _navState.forward());
+    _dispatchNavigationResult(await _navigation.forward());
   }
 
-  void _skip() => _dispatchNavigationResult(_navState.skip());
+  void _skip() => _dispatchNavigationResult(_navigation.skip());
 
-  void _back() => _dispatchNavigationResult(_navState.back());
+  void _back() => _dispatchNavigationResult(_navigation.back());
 
   void _dispatchNavigationResult(NavigationResult result) {
     if (mounted) _error.value = null;
@@ -89,7 +102,7 @@ class OnboardingController extends State<Onboarding> {
             children: [
               ValueListenableBuilder(
                 valueListenable: _step,
-                builder: (context, step, _) => _navState.hasPrevStep
+                builder: (context, step, _) => _navigation.hasPrevStep
                     ? BackButton(onPressed: _back)
                     : const SizedBox(width: 40.0),
               ),
@@ -98,7 +111,7 @@ class OnboardingController extends State<Onboarding> {
                   valueListenable: _step,
                   builder: (context, step, _) => AnimatedProgressBar(
                     height: 25.0,
-                    widthPercent: _navState.progress,
+                    widthPercent: _navigation.progress,
                   ),
                 ),
               ),
@@ -163,7 +176,7 @@ class OnboardingController extends State<Onboarding> {
                                                   const LinearProgressIndicator(),
                                             )
                                           : Text(
-                                              _navState.hasNextStep
+                                              _navigation.hasNextStep
                                                   ? L10n.of(context).next
                                                   : L10n.of(context).letsGo,
                                               key: const ValueKey('text'),
