@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-05-06 14:59:29.085813",
+    "@@last_modified": "2026-05-12 10:37:01.466969",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10998,6 +10998,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "请选择有效的源语言和目标语言",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

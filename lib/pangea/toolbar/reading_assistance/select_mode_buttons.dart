@@ -20,6 +20,8 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/utils/report_message.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
 import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
@@ -331,9 +333,14 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   }
 
   Future<void> modeDisabled() async {
-    final target = controller.messageEvent.originalSent?.langCode;
-    final l1 =
-        MatrixState.pangeaController.userController.userL1?.langCodeShort;
+    final targetLangCode = controller.messageEvent.originalSent?.langCode;
+    LanguageModel? targetLang;
+    if (targetLangCode != null) {
+      targetLang = PLanguageStore.byLangCode(targetLangCode);
+    }
+
+    final l1 = MatrixState.pangeaController.userController.userL1;
+
     final messenger = ScaffoldMessenger.of(context);
     messenger.hideCurrentSnackBar();
     messenger.showSnackBar(
@@ -344,7 +351,8 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
             style: TextStyle(color: Theme.of(context).colorScheme.surface),
             children: [
               TextSpan(text: L10n.of(context).modeDisabled),
-              if (target != null && target != l1) ...[
+              if (targetLang != null &&
+                  targetLang.langCodeShort != l1?.langCodeShort) ...[
                 const TextSpan(text: ' '),
                 WidgetSpan(
                   alignment: PlaceholderAlignment.baseline,
@@ -352,7 +360,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                   child: InkWell(
                     onTap: () {
                       messenger.hideCurrentSnackBar();
-                      widget.controller.updateLanguageOnMismatch(target);
+                      widget.controller.updateLanguageOnMismatch(targetLang!);
                     },
                     child: Text(
                       L10n.of(context).clickToUpdateTargetLanguage,

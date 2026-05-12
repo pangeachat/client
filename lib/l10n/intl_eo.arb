@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-06 14:59:44.542134",
+    "@@last_modified": "2026-05-12 10:37:10.756245",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -12117,6 +12117,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Bonvolu elekti validajn bazan kaj celan lingvojn",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

@@ -4202,7 +4202,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-05-06 14:58:57.968739",
+    "@@last_modified": "2026-05-12 10:36:36.645595",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -11012,6 +11012,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Калі ласка, выберыце сапраўдныя базавыя і мэтавыя мовы",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

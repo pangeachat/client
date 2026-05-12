@@ -1675,7 +1675,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-05-06 14:58:47.903369",
+    "@@last_modified": "2026-05-12 10:36:31.530337",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -12129,6 +12129,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "請選擇有效的基礎語言和目標語言",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }
