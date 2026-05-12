@@ -2380,14 +2380,18 @@ class ChatController extends State<ChatPageWithRoom>
       (event) =>
           event.isVisibleInGui &&
           event.senderId != room.client.userID &&
-          event.senderId == BotName.byEnvironment &&
-          !event.redacted,
+          event.senderId == BotName.byEnvironment,
     );
-    if (candidate?.hasAggregatedEvents(timeline!, RelationshipTypes.edit) ==
-        true) {
-      return null;
-    }
-    return candidate?.eventId;
+    if (candidate == null) return null;
+
+    final hasEdit = candidate.hasAggregatedEvents(
+      timeline!,
+      RelationshipTypes.edit,
+    );
+    final isRedacted = candidate.redacted;
+
+    if (hasEdit || isRedacted) return null;
+    return candidate.eventId;
   }
 
   final StreamController<void> stopMediaStream = StreamController.broadcast();
