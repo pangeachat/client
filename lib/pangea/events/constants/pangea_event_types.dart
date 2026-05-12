@@ -16,6 +16,9 @@ class PangeaEventTypes {
   static const activityRole = "pangea.activity_roles";
   static const activitySummary = "pangea.activity_summary";
 
+  static const orchestratorOutput = "pangea.orchestrator_output";
+  static const orchestratorAwardedGoals = "pangea.orchestrator_awarded_goals";
+
   static const report = 'm.report';
   static const textToSpeechRule = "p.rule.text_to_speech";
   static const analyticsInviteRule = "p.rule.analytics_invite";

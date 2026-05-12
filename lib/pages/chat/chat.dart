@@ -24,6 +24,7 @@ import 'package:fluffychat/pages/chat/chat_view.dart';
 import 'package:fluffychat/pages/chat/event_info_dialog.dart';
 import 'package:fluffychat/pages/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
+import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_chat_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_extension.dart';
@@ -223,6 +224,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
   late final ActivityChatController activityController;
+  late final OrchestratorChatController orchestratorChatController;
   late final TutorialOverlayController tutorialOverlayController;
   late final ChatBannerController _bannerController;
   late final SpanCardOverlayManager _spanCardOverlayController;
@@ -838,6 +840,8 @@ class ChatController extends State<ChatPageWithRoom>
       });
     }
 
+    orchestratorChatController = OrchestratorChatController(room: room);
+
     tutorialOverlayController = TutorialOverlayController(
       TutorialSequences.chatTutorialSequence,
     );
@@ -1114,6 +1118,7 @@ class ChatController extends State<ChatPageWithRoom>
     );
     choreographer.dispose();
     activityController.dispose();
+    orchestratorChatController.dispose();
     MatrixState.pAnyState.closeAllOverlays(force: true);
     stopMediaStream.close();
     _levelSubscription?.cancel();
