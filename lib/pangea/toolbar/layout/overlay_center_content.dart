@@ -108,7 +108,7 @@ class OverlayCenterContent extends StatelessWidget {
                     chatController.timeline!,
                     chatController,
                     width: width != null && width > 0 ? width : null,
-                    enabled: !event.room.hasArchivedActivity,
+                    enabled: !event.room.isActivityFinished,
                   ),
                 ),
               ),
