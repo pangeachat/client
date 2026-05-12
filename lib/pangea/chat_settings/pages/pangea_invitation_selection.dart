@@ -103,6 +103,14 @@ class PangeaInvitationSelectionController
     super.dispose();
   }
 
+  bool get showAcceptAll {
+    if (filter != InvitationFilter.knocking) {
+      return false;
+    }
+
+    return filteredContacts().isNotEmpty;
+  }
+
   String filterLabel(InvitationFilter filter) {
     final l10n = L10n.of(context);
     switch (filter) {
