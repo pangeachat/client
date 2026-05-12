@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_overlay_controller.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_tooltip_container_widget.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_overlay_controller.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_step_model.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_tooltip_container_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class TutorialOverlayWidget extends StatefulWidget {

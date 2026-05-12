@@ -1,4 +1,4 @@
-import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_model.dart';
 
 sealed class TutorialStateTransitionEvent {
   const TutorialStateTransitionEvent();

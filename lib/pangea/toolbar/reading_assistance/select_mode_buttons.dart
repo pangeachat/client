@@ -22,12 +22,12 @@ import 'package:fluffychat/pangea/events/utils/report_message.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_controller.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_enum.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_model.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 enum SelectMode {

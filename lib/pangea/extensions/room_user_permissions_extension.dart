@@ -6,6 +6,13 @@ extension UserPermissionsRoomExtension on Room {
 
   bool get isRoomAdmin => ownPowerLevel >= SpaceConstants.powerLevelOfAdmin;
 
+  List<User> get nonBotRoomAdminsLocal {
+    final List<User> participants = getParticipants();
+    return participants
+        .where((e) => e.powerLevel >= 100 && e.id != BotName.byEnvironment)
+        .toList();
+  }
+
   Future<List<User>> get nonBotRoomAdmins async {
     final List<User> participants = await requestParticipants();
     return participants

@@ -9,7 +9,6 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
-import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
 class LoginOrSignupView extends StatefulWidget {
@@ -51,8 +50,6 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
       _isMobile = isMobile;
     }
   }
-
-  String? get _cachedSpaceCode => SpaceCodeRepo.spaceCode;
 
   List<String> get _imageFileNames {
     final ratio = _isMobile ? 'ratio4x5' : 'ratio2x1_NoPadding';
@@ -152,13 +149,7 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             ElevatedButton(
-                              // push instead of go so the app bar back button doesn't go to the language selection page
-                              // https://github.com/pangeachat/client/issues/4421
-                              onPressed: () => context.push(
-                                _cachedSpaceCode != null
-                                    ? '/home/language/signup'
-                                    : '/home/language',
-                              ),
+                              onPressed: () => context.go('/home/signup'),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor:
                                     theme.colorScheme.primaryContainer,

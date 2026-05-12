@@ -4,13 +4,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:fluffychat/pangea/languages/language_model.dart';
 
-class LanguageDisplayNameWidget extends StatelessWidget {
+class LanguageDisplayNamePostfixWidget extends StatelessWidget {
   final LanguageModel language;
   final TextStyle style;
   final double iconSize;
   final double spacing;
 
-  const LanguageDisplayNameWidget(
+  const LanguageDisplayNamePostfixWidget(
     this.language, {
     super.key,
     required this.style,
