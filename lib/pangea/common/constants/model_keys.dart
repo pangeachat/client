@@ -17,4 +17,6 @@ class ModelKey {
   static const String voice = 'voice';
 
   static const String joinRule = 'join_rule';
+
+  static const String mock = 'mock';
 }

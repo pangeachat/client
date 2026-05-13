@@ -39,6 +39,9 @@ mixin BaseRequestModel {
           MatrixState.pangeaController.userController.profile.userSettings;
       result[UserConstants.cefrLevel] ??= settings.cefrLevel.string;
       result[UserConstants.userGender] ??= settings.gender.string;
+      // Mock paid third-party calls on Playwright runs
+      // Playwright todo: use .env variable instead of hardcoded value
+      result[ModelKey.mock] = true;
     } catch (_) {
       // MatrixState not initialized - leave existing values or omit
     }
