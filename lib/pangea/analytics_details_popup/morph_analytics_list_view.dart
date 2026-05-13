@@ -13,7 +13,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
-import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
+import 'package:fluffychat/pangea/morphs/localized_grammar_constructs_response.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -55,20 +55,18 @@ class MorphAnalyticsListView extends StatelessWidget {
               // Morph feature boxes
               SliverList(
                 delegate: SliverChildBuilderDelegate((context, index) {
-                  final feature = controller.features[index];
-                  return feature.displayTags.isNotEmpty && l2 != null
+                  final feature = controller.morphs.features[index];
+                  return feature.tags.isNotEmpty && l2 != null
                       ? Padding(
                           padding: const EdgeInsets.only(bottom: 16.0),
                           child: MorphFeatureBox(
-                            morphFeature: feature.feature,
-                            allTags: controller.morphs
-                                .getDisplayTags(feature.feature)
-                                .toSet(),
+                            morphFeature: feature.feature.feature,
+                            allTags: feature.tags,
                             language: l2,
                           ),
                         )
                       : const SizedBox.shrink();
-                }, childCount: controller.features.length),
+                }, childCount: controller.morphs.features.length),
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 75.0)),
             ],
@@ -81,7 +79,7 @@ class MorphAnalyticsListView extends StatelessWidget {
 
 class MorphFeatureBox extends StatelessWidget {
   final String morphFeature;
-  final Set<String> allTags;
+  final List<LocalizedGrammarFeatureValue> allTags;
   final String language;
 
   const MorphFeatureBox({
@@ -139,7 +137,7 @@ class MorphFeatureBox extends StatelessWidget {
                   runSpacing: 16.0,
                   children: allTags.map((morphTag) {
                     final id = ConstructIdentifier(
-                      lemma: morphTag,
+                      lemma: morphTag.value,
                       type: ConstructTypeEnum.morph,
                       category: morphFeature,
                     );
@@ -172,7 +170,7 @@ class MorphFeatureBox extends StatelessWidget {
 
 class MorphTagChip extends StatelessWidget {
   final String morphFeature;
-  final String morphTag;
+  final LocalizedGrammarFeatureValue morphTag;
   final ConstructUses? constructAnalytics;
   final VoidCallback? onTap;
 
@@ -233,7 +231,7 @@ class MorphTagChip extends StatelessWidget {
                         padding: const EdgeInsets.all(4),
                         child: MorphIcon(
                           morphFeature: feature,
-                          morphTag: morphTag,
+                          morphTag: morphTag.value,
                           size: Size(16.0, 16.0),
                         ),
                       )
@@ -245,12 +243,7 @@ class MorphTagChip extends StatelessWidget {
 
                 Flexible(
                   child: Text(
-                    getGrammarCopy(
-                          category: morphFeature,
-                          lemma: morphTag,
-                          context: context,
-                        ) ??
-                        morphTag,
+                    morphTag.title,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: theme.brightness == Brightness.dark

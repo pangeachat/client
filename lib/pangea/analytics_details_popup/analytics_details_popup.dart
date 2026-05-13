@@ -21,11 +21,13 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
-import 'package:fluffychat/pangea/morphs/morph_models.dart';
-import 'package:fluffychat/pangea/morphs/morph_repo.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_request.dart';
+import 'package:fluffychat/pangea/morphs/localized_grammar_constructs_repo.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_and_tags_display.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/token_info_feedback/show_token_feedback_dialog.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
@@ -53,8 +55,9 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   final TextEditingController searchController = TextEditingController();
   final List<ConstructIdentifier> selectedConstructs = [];
 
-  MorphFeaturesAndTags morphs = defaultMorphMapping;
-  List<MorphFeature> features = defaultMorphMapping.displayFeatures;
+  // MorphFeaturesAndTags morphs = defaultMorphMapping;
+  // List<MorphFeature> features = defaultMorphMapping.displayFeatures;
+  late LocalizedMorphFeaturesAndTags morphs;
 
   List<ConstructUses>? vocab;
 
@@ -67,6 +70,10 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   @override
   void initState() {
     super.initState();
+    morphs = defaultLocalizedGrammarConstructs(
+      targetLanguage: _targetLanguage,
+      userL1: _userL1,
+    );
     _setAnalyticsData();
 
     searchController.addListener(() {
@@ -91,6 +98,19 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   }
 
   LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
+
+  String get _targetLanguage =>
+      MatrixState.pangeaController.userController.userL2Code ??
+      LanguageKeys.defaultLanguage;
+
+  String get _userL1 =>
+      MatrixState.pangeaController.userController.userL1Code ??
+      LanguageKeys.defaultLanguage;
+
+  GrammarConstructsRequest get _request => GrammarConstructsRequest(
+    targetLanguage: _targetLanguage,
+    userL1: _userL1,
+  );
 
   Future<void> _setAnalyticsData() async {
     final l2 = _l2;
@@ -144,20 +164,15 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   }
 
   Future<void> _setMorphs() async {
-    try {
-      final resp = await MorphsRepo.get();
-      morphs = resp;
-      features = resp.displayFeatures;
-    } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"l2": _l2?.langCode});
-    } finally {
-      features.sort(
-        (a, b) => morphFeatureSortOrder
-            .indexOf(a.feature)
-            .compareTo(morphFeatureSortOrder.indexOf(b.feature)),
-      );
-      if (mounted) setState(() {});
+    final result = await LocalizedGrammarConstructsRepo.instance.get(_request);
+    final response = result.result;
+    if (response != null) {
+      morphs =
+          LocalizedMorphFeaturesAndTags.fromLocalizedGrammarConstructsResponse(
+            response: response,
+          );
     }
+    if (mounted) setState(() {});
   }
 
   Future<Result<void>?> blockConstructs(

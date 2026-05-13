@@ -1,4 +1,10 @@
+import 'package:fluffychat/pangea/morphs/morph_features_and_tags_display.dart';
 import 'package:fluffychat/pangea/morphs/morph_models.dart';
+
+LocalizedMorphFeaturesAndTags defaultLocalizedGrammarConstructs({
+  required String targetLanguage,
+  required String userL1,
+}) => LocalizedMorphFeaturesAndTags(features: []);
 
 final MorphFeaturesAndTags defaultMorphMapping = MorphFeaturesAndTags.fromJson({
   "language_code": "default",
