@@ -4,21 +4,20 @@ import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/base_repo.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_request.dart';
-import 'package:fluffychat/pangea/morphs/localized_grammar_constructs_response.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
-class LocalizedGrammarConstructsRepo
-    extends
-        BaseRepo<GrammarConstructsRequest, LocalizedGrammarConstructsResponse> {
-  static final LocalizedGrammarConstructsRepo _instance =
-      LocalizedGrammarConstructsRepo._internal();
+class GrammarConstructsRepo
+    extends BaseRepo<GrammarConstructsRequest, GrammarConstructsResponse> {
+  static final GrammarConstructsRepo _instance =
+      GrammarConstructsRepo._internal();
 
-  static LocalizedGrammarConstructsRepo get instance => _instance;
+  static GrammarConstructsRepo get instance => _instance;
 
-  LocalizedGrammarConstructsRepo._internal()
+  GrammarConstructsRepo._internal()
     : super(
-        boxName: 'localized_grammar_constructs_storage',
-        responseFromJson: LocalizedGrammarConstructsResponse.fromJson,
+        boxName: 'grammar_constructs_storage',
+        responseFromJson: GrammarConstructsResponse.fromJson,
         cacheDuration: const Duration(days: 1),
       );
 
@@ -26,7 +25,7 @@ class LocalizedGrammarConstructsRepo
   Future<Response> fetch(Requests req, GrammarConstructsRequest request) =>
       req.post(url: PApiUrls.grammarConstructs, body: request.toJson());
 
-  Future<void> setMeaning({
+  Future<void> setTagDescription({
     required GrammarConstructsRequest request,
     required String feature,
     required String tag,
@@ -40,9 +39,9 @@ class LocalizedGrammarConstructsRepo
     if (cachedTag == null) return;
 
     final updatedTag = cachedTag.copyWith(description: description);
-    final updatedMeaning = response.copyWithMeaning(
+    final updatedMeaning = response.copyWithTag(
       feature: feature,
-      meaning: updatedTag,
+      tag: updatedTag,
     );
     await setCached(request, updatedMeaning);
   }

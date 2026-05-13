@@ -8,15 +8,9 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
-import 'package:fluffychat/pangea/morphs/grammar_construct_meaning_repo.dart';
-import 'package:fluffychat/pangea/morphs/grammar_construct_meaning_request.dart';
-import 'package:fluffychat/pangea/morphs/grammar_constructs_request.dart';
-import 'package:fluffychat/pangea/morphs/localized_grammar_constructs_repo.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class MorphMeaningWidget extends StatefulWidget {
   final MorphFeaturesEnum feature;
@@ -70,26 +64,6 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
   String get _blankDescription =>
       widget.blankErrorFeedback ? '' : L10n.of(context).meaningNotFound;
 
-  String get _targetLanguage =>
-      MatrixState.pangeaController.userController.userL2Code ??
-      LanguageKeys.defaultLanguage;
-
-  String get _userL1 =>
-      MatrixState.pangeaController.userController.userL1Code ??
-      LanguageKeys.defaultLanguage;
-
-  GrammarConstructsRequest get _constructsRequest => GrammarConstructsRequest(
-    targetLanguage: _targetLanguage,
-    userL1: _userL1,
-  );
-
-  GrammarConstructMeaningRequest get _meaningRequest =>
-      GrammarConstructMeaningRequest(
-        targetLanguage: _targetLanguage,
-        userL1: _userL1,
-        feature: widget.feature.name,
-      );
-
   Future<void> _loadMorphMeaning() async {
     if (mounted) {
       setState(() {
@@ -98,7 +72,11 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
       });
     }
 
-    final response = await _morphMeaning();
+    final response = await GrammarConstructsProvider.fetchTagDescription(
+      feature: widget.feature.name,
+      tag: widget.tag,
+    );
+
     final description = response ?? _blankDescription;
     _controller.text = description.substring(
       0,
@@ -113,30 +91,6 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
     }
   }
 
-  Future<String?> _morphMeaning() async {
-    String? description;
-    final morphMeaningResult = await GrammarConstructMeaningRepo.instance.get(
-      _meaningRequest,
-      timeout: Duration(seconds: 10),
-    );
-
-    description = morphMeaningResult.result?.getTag(widget.tag)?.description;
-    if (description != null) return description;
-
-    final constructsResult = await LocalizedGrammarConstructsRepo.instance.get(
-      _constructsRequest,
-      timeout: Duration(seconds: 10),
-    );
-
-    description = constructsResult.result
-        ?.getFeature(widget.feature.name)
-        ?.getTag(widget.tag)
-        ?.description;
-
-    if (description != null) return description;
-    return null;
-  }
-
   void _toggleEditMode(bool value) => setState(() => _editMode = value);
 
   Future<void> editMorphMeaning(String userEdit) async {
@@ -144,23 +98,12 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
         ? userEdit.substring(0, maxCharacters)
         : userEdit;
 
-    final futures = [
-      GrammarConstructMeaningRepo.instance.setMeaning(
-        request: _meaningRequest,
-        tag: widget.tag,
-        description: truncatedEdit,
-      ),
-
-      LocalizedGrammarConstructsRepo.instance.setMeaning(
-        request: _constructsRequest,
+    try {
+      await GrammarConstructsProvider.setTagDescription(
         feature: widget.feature.name,
         tag: widget.tag,
         description: truncatedEdit,
-      ),
-    ];
-
-    try {
-      await Future.wait(futures).timeout(Duration(seconds: 10));
+      ).timeout(Duration(seconds: 10));
     } catch (e, s) {
       if (e is TimeoutException) {
         ErrorHandler.logError(e: e, s: s, data: {}, level: SentryLevel.warning);

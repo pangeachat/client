@@ -23,11 +23,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/download/download_file_util.dart';
 import 'package:fluffychat/pangea/download/download_type_enum.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
-import 'package:fluffychat/pangea/morphs/grammar_construct_features_repo.dart';
-import 'package:fluffychat/pangea/morphs/grammar_constructs_request.dart';
-import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class AnalyticsDownloadDialog extends StatefulWidget {
@@ -197,26 +193,15 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
     }
 
     final analyticsService = Matrix.of(context).analyticsDataService;
-
-    final result = await GrammarConstructFeaturesRepo.instance.get(
-      GrammarConstructsRequest(
-        targetLanguage: l2.langCode,
-        userL1: l1.langCode,
-      ),
-    );
-    final morphs = result.result;
-    if (morphs == null) {
-      throw result.asError!;
-    }
+    final morphs = await GrammarConstructsProvider.fetchFeaturesAndTags();
 
     final List<AnalyticsSummaryModel> summaries = [];
     for (final feature in morphs.features) {
-      final allTags = feature.values.map((tag) => tag.value).toSet();
-      for (final morphTag in allTags) {
+      for (final tag in feature.tags) {
         final id = ConstructIdentifier(
-          lemma: morphTag,
+          lemma: tag.value,
           type: ConstructTypeEnum.morph,
-          category: feature.feature,
+          category: feature.feature.value,
         );
 
         final uses = await analyticsService.getConstructUse(
@@ -242,16 +227,10 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
             .whereType<String>()
             .toList();
 
-        final tagCopy = getGrammarCopy(
-          category: feature.feature,
-          lemma: morphTag,
-          context: context,
-        );
+        final tagCopy = tag.title;
 
         final summary = AnalyticsSummaryModel(
-          morphFeature: MorphFeaturesEnumExtension.fromString(
-            feature.feature,
-          ).getDisplayCopy(context),
+          morphFeature: feature.feature.title,
           morphTag: tagCopy,
           xp: xp,
           forms: forms,

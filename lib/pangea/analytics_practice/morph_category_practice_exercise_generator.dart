@@ -1,12 +1,9 @@
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
-import 'package:fluffychat/pangea/morphs/morph_models.dart';
-import 'package:fluffychat/pangea/morphs/morph_repo.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/practice_exercises/message_practice_exercise_request.dart';
 import 'package:fluffychat/pangea/practice_exercises/multiple_choice_practice_exercise_model.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class MorphCategoryPracticeExerciseGenerator {
   static Future<MessagePracticeExerciseResponse> get(
@@ -24,26 +21,19 @@ class MorphCategoryPracticeExerciseGenerator {
       throw ArgumentError("Token does not have the specified morph feature");
     }
 
-    MorphFeaturesAndTags morphs = defaultMorphMapping;
-
-    try {
-      final resp = await MorphsRepo.get();
-      morphs = resp;
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"l2": MatrixState.pangeaController.userController.userL2},
-      );
-    }
-
-    final List<String> allTags = morphs.getDisplayTags(feature.name);
+    final tags = await GrammarConstructsProvider.fetchTags(
+      feature: feature.name,
+    );
+    final allTags = tags.map((t) => t.value);
     final List<String> possibleDistractors = allTags
-        .where(
-          (tag) => tag.toLowerCase() != morphTag.toLowerCase() && tag != "X",
-        )
+        .where((tag) => tag.toLowerCase() != morphTag.toLowerCase())
         .toList();
 
+    if (possibleDistractors.isEmpty) {
+      throw InsufficientDataException();
+    }
+
+    possibleDistractors.shuffle();
     final choices = possibleDistractors.take(3).toList();
     choices.add(morphTag);
     choices.shuffle();

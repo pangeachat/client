@@ -9,11 +9,10 @@ import 'package:fluffychat/pangea/constructs/construct_form.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_target.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class GrammarMatchTargetGenerator {
   static PracticeExerciseTypeEnum exerciseType =
@@ -21,6 +20,8 @@ class GrammarMatchTargetGenerator {
 
   static Future<List<AnalyticsPracticeTarget>> get(
     List<ConstructUses> constructs,
+    // String userL1,
+    // String userL2,
   ) async {
     // Score and sort by priority (highest first). Uses shared scorer for
     // consistent prioritization with message practice.
@@ -28,14 +29,12 @@ class GrammarMatchTargetGenerator {
 
     final Set<String> seenForms = {};
 
-    final morphInfoResult = await MorphsRepo.get(
-      MatrixState.pangeaController.userController.userL2,
-    );
+    final morphs = await GrammarConstructsProvider.fetchFeaturesAndTags();
 
     // Build list of features with multiple tags (valid for practice)
-    final List<String> validFeatures = morphInfoResult.features
+    final List<String> validFeatures = morphs.features
         .where((f) => f.tags.length > 1)
-        .map((f) => f.feature)
+        .map((f) => f.feature.value)
         .toList();
 
     final targets = <AnalyticsPracticeTarget>[];

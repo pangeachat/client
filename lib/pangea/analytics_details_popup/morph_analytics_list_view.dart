@@ -13,7 +13,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
-import 'package:fluffychat/pangea/morphs/localized_grammar_constructs_response.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -60,7 +60,7 @@ class MorphAnalyticsListView extends StatelessWidget {
                       ? Padding(
                           padding: const EdgeInsets.only(bottom: 16.0),
                           child: MorphFeatureBox(
-                            morphFeature: feature.feature.feature,
+                            morphFeature: feature.feature.value,
                             allTags: feature.tags,
                             language: l2,
                           ),
@@ -79,7 +79,7 @@ class MorphAnalyticsListView extends StatelessWidget {
 
 class MorphFeatureBox extends StatelessWidget {
   final String morphFeature;
-  final List<LocalizedGrammarFeatureValue> allTags;
+  final List<GrammarTag> allTags;
   final String language;
 
   const MorphFeatureBox({
@@ -170,7 +170,7 @@ class MorphFeatureBox extends StatelessWidget {
 
 class MorphTagChip extends StatelessWidget {
   final String morphFeature;
-  final LocalizedGrammarFeatureValue morphTag;
+  final GrammarTag morphTag;
   final ConstructUses? constructAnalytics;
   final VoidCallback? onTap;
 
