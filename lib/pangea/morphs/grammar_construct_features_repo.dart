@@ -9,18 +9,12 @@ import 'package:fluffychat/pangea/morphs/grammar_constructs_request.dart';
 class GrammarConstructFeaturesRepo
     extends
         BaseRepo<GrammarConstructsRequest, GrammarConstructFeaturesResponse> {
-  static GrammarConstructFeaturesRepo? _instance;
+  static final GrammarConstructFeaturesRepo _instance =
+      GrammarConstructFeaturesRepo._internal();
 
-  static GrammarConstructFeaturesRepo instance({
-    required void Function(String) registerBoxName,
-  }) {
-    _instance ??= GrammarConstructFeaturesRepo._internal(
-      registerBoxName: registerBoxName,
-    );
-    return _instance!;
-  }
+  static GrammarConstructFeaturesRepo get instance => _instance;
 
-  GrammarConstructFeaturesRepo._internal({required super.registerBoxName})
+  GrammarConstructFeaturesRepo._internal()
     : super(
         boxName: 'grammar_construct_features_storage',
         responseFromJson: GrammarConstructFeaturesResponse.fromJson,

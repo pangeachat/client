@@ -12,18 +12,12 @@ class GrammarConstructMeaningRepo
           GrammarConstructMeaningRequest,
           GrammarConstructMeaningResponse
         > {
-  static GrammarConstructMeaningRepo? _instance;
+  static final GrammarConstructMeaningRepo _instance =
+      GrammarConstructMeaningRepo._internal();
 
-  static GrammarConstructMeaningRepo instance({
-    required void Function(String) registerBoxName,
-  }) {
-    _instance ??= GrammarConstructMeaningRepo._internal(
-      registerBoxName: registerBoxName,
-    );
-    return _instance!;
-  }
+  static GrammarConstructMeaningRepo get instance => _instance;
 
-  GrammarConstructMeaningRepo._internal({required super.registerBoxName})
+  GrammarConstructMeaningRepo._internal()
     : super(
         boxName: 'grammar_construct_meanings_storage',
         responseFromJson: GrammarConstructMeaningResponse.fromJson,

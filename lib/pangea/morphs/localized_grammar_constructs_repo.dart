@@ -9,18 +9,12 @@ import 'package:fluffychat/pangea/morphs/localized_grammar_constructs_response.d
 class LocalizedGrammarConstructsRepo
     extends
         BaseRepo<GrammarConstructsRequest, LocalizedGrammarConstructsResponse> {
-  static LocalizedGrammarConstructsRepo? _instance;
+  static final LocalizedGrammarConstructsRepo _instance =
+      LocalizedGrammarConstructsRepo._internal();
 
-  static LocalizedGrammarConstructsRepo instance({
-    required void Function(String) registerBoxName,
-  }) {
-    _instance ??= LocalizedGrammarConstructsRepo._internal(
-      registerBoxName: registerBoxName,
-    );
-    return _instance!;
-  }
+  static LocalizedGrammarConstructsRepo get instance => _instance;
 
-  LocalizedGrammarConstructsRepo._internal({required super.registerBoxName})
+  LocalizedGrammarConstructsRepo._internal()
     : super(
         boxName: 'localized_grammar_constructs_storage',
         responseFromJson: LocalizedGrammarConstructsResponse.fromJson,

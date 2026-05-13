@@ -11,6 +11,7 @@ import 'package:fluffychat/pangea/common/utils/base_request.dart';
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class RepoCacheItem<TResponse extends BaseResponse> {
   final DateTime timestamp;
@@ -52,10 +53,9 @@ abstract class BaseRepo<
     required String boxName,
     required this.responseFromJson,
     required this.cacheDuration,
-    required void Function(String) registerBoxName,
   }) : _storage = GetStorage(boxName) {
     _storageInit = GetStorage.init(boxName);
-    registerBoxName(boxName);
+    MatrixState.pangeaController.registerStorageKey(boxName);
   }
 
   Future<Result<TResponse>> get(TRequest request, String accessToken) async {
