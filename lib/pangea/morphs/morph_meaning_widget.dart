@@ -1,14 +1,20 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
+import 'package:fluffychat/pangea/morphs/grammar_construct_meaning_repo.dart';
+import 'package:fluffychat/pangea/morphs/grammar_construct_meaning_request.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_request.dart';
+import 'package:fluffychat/pangea/morphs/localized_grammar_constructs_repo.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_repo.dart';
-import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_request.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -61,14 +67,28 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
     super.dispose();
   }
 
-  MorphInfoRequest get _request => MorphInfoRequest(
-    userL1:
-        MatrixState.pangeaController.userController.userL1?.langCode ??
-        LanguageKeys.defaultLanguage,
-    userL2:
-        MatrixState.pangeaController.userController.userL2?.langCode ??
-        LanguageKeys.defaultLanguage,
+  String get _blankDescription =>
+      widget.blankErrorFeedback ? '' : L10n.of(context).meaningNotFound;
+
+  String get _targetLanguage =>
+      MatrixState.pangeaController.userController.userL2Code ??
+      LanguageKeys.defaultLanguage;
+
+  String get _userL1 =>
+      MatrixState.pangeaController.userController.userL1Code ??
+      LanguageKeys.defaultLanguage;
+
+  GrammarConstructsRequest get _constructsRequest => GrammarConstructsRequest(
+    targetLanguage: _targetLanguage,
+    userL1: _userL1,
   );
+
+  GrammarConstructMeaningRequest get _meaningRequest =>
+      GrammarConstructMeaningRequest(
+        targetLanguage: _targetLanguage,
+        userL1: _userL1,
+        feature: widget.feature.name,
+      );
 
   Future<void> _loadMorphMeaning() async {
     if (mounted) {
@@ -79,45 +99,73 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
     }
 
     final response = await _morphMeaning();
-    _controller.text = response.substring(
+    final description = response ?? _blankDescription;
+    _controller.text = description.substring(
       0,
-      min(response.length, maxCharacters),
+      min(description.length, maxCharacters),
     );
-    _definition = response;
 
-    if (mounted) setState(() => _isLoading = false);
+    if (mounted) {
+      setState(() {
+        _isLoading = false;
+        _definition = description;
+      });
+    }
   }
 
-  Future<String> _morphMeaning() async {
-    final result = await MorphInfoRepo.get(
-      MatrixState.pangeaController.userController.accessToken,
-      _request,
+  Future<String?> _morphMeaning() async {
+    String? description;
+    final morphMeaningResult = await GrammarConstructMeaningRepo.instance.get(
+      _meaningRequest,
+      timeout: Duration(seconds: 10),
     );
 
-    if (result.isError) {
-      return widget.blankErrorFeedback ? '' : L10n.of(context).meaningNotFound;
-    }
+    description = morphMeaningResult.result?.getTag(widget.tag)?.description;
+    if (description != null) return description;
 
-    final morph = result.result!.getFeatureByCode(widget.feature.name);
-    final data = morph?.getTagByCode(widget.tag);
-    return data?.l1Description ??
-        (widget.blankErrorFeedback ? '' : L10n.of(context).meaningNotFound);
+    final constructsResult = await LocalizedGrammarConstructsRepo.instance.get(
+      _constructsRequest,
+      timeout: Duration(seconds: 10),
+    );
+
+    description = constructsResult.result
+        ?.getFeature(widget.feature.name)
+        ?.getTag(widget.tag)
+        ?.description;
+
+    if (description != null) return description;
+    return null;
   }
 
   void _toggleEditMode(bool value) => setState(() => _editMode = value);
 
   Future<void> editMorphMeaning(String userEdit) async {
-    // Truncate to max characters if needed
     final truncatedEdit = userEdit.length > maxCharacters
         ? userEdit.substring(0, maxCharacters)
         : userEdit;
 
-    await MorphInfoRepo.update(
-      _request,
-      feature: widget.feature,
-      tag: widget.tag,
-      definition: truncatedEdit,
-    );
+    final futures = [
+      GrammarConstructMeaningRepo.instance.setMeaning(
+        request: _meaningRequest,
+        tag: widget.tag,
+        description: truncatedEdit,
+      ),
+
+      LocalizedGrammarConstructsRepo.instance.setMeaning(
+        request: _constructsRequest,
+        feature: widget.feature.name,
+        tag: widget.tag,
+        description: truncatedEdit,
+      ),
+    ];
+
+    try {
+      await Future.wait(futures).timeout(Duration(seconds: 10));
+    } catch (e, s) {
+      if (e is TimeoutException) {
+        ErrorHandler.logError(e: e, s: s, data: {}, level: SentryLevel.warning);
+      }
+    }
 
     _toggleEditMode(false);
     _loadMorphMeaning();

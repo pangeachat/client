@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_usage_content.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/construct_xp_progress_bar.dart';
-import 'package:fluffychat/pangea/analytics_details_popup/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_feature_display.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/morphs/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/morphs/morph_tag_display.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';

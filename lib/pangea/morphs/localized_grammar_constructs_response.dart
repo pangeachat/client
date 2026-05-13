@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
 
 class LocalizedGrammarConstructsResponse extends BaseResponse {
@@ -12,6 +14,38 @@ class LocalizedGrammarConstructsResponse extends BaseResponse {
     required this.targetLanguage,
     required this.features,
   });
+
+  LocalizedGrammarFeature? getFeature(String feature) =>
+      features.firstWhereOrNull((f) => f.feature == feature);
+
+  LocalizedGrammarConstructsResponse copyWith({
+    String? userL1,
+    String? sourceL1,
+    String? targetLanguage,
+    List<LocalizedGrammarFeature>? features,
+  }) => LocalizedGrammarConstructsResponse(
+    userL1: userL1 ?? this.userL1,
+    sourceL1: sourceL1 ?? this.sourceL1,
+    targetLanguage: targetLanguage ?? this.targetLanguage,
+    features: features ?? this.features,
+  );
+
+  LocalizedGrammarConstructsResponse copyWithMeaning({
+    required String feature,
+    required LocalizedGrammarFeatureValue meaning,
+  }) {
+    final valuesMap = Map<String, LocalizedGrammarFeature>.fromEntries(
+      List<LocalizedGrammarFeature>.from(
+        features,
+      ).map((f) => MapEntry<String, LocalizedGrammarFeature>(f.feature, f)),
+    );
+
+    final currentValue = valuesMap[feature];
+    if (currentValue == null) return this;
+
+    valuesMap[feature] = currentValue.copyWithMeaning(meaning: meaning);
+    return copyWith(features: valuesMap.values.toList());
+  }
 
   @override
   Map<String, dynamic> toJson() => {
@@ -45,6 +79,31 @@ class LocalizedGrammarFeature {
     required this.featureTitle,
     required this.values,
   });
+
+  LocalizedGrammarFeatureValue? getTag(String tag) =>
+      values.firstWhereOrNull((v) => v.value == tag);
+
+  LocalizedGrammarFeature copyWith({
+    String? feature,
+    String? featureTitle,
+    List<LocalizedGrammarFeatureValue>? values,
+  }) => LocalizedGrammarFeature(
+    feature: feature ?? this.feature,
+    featureTitle: featureTitle ?? this.featureTitle,
+    values: values ?? this.values,
+  );
+
+  LocalizedGrammarFeature copyWithMeaning({
+    required LocalizedGrammarFeatureValue meaning,
+  }) {
+    final valuesMap = Map<String, LocalizedGrammarFeatureValue>.fromEntries(
+      List<LocalizedGrammarFeatureValue>.from(
+        values,
+      ).map((v) => MapEntry<String, LocalizedGrammarFeatureValue>(v.value, v)),
+    );
+    valuesMap[meaning.value] = meaning;
+    return copyWith(values: valuesMap.values.toList());
+  }
 
   Map<String, dynamic> toJson() => {
     "feature": feature,
@@ -82,6 +141,22 @@ class LocalizedGrammarFeatureValue {
     required this.title,
     required this.value,
   });
+
+  LocalizedGrammarFeatureValue copyWith({
+    bool? display,
+    String? example,
+    double? sequencePosition,
+    String? value,
+    String? description,
+    String? title,
+  }) => LocalizedGrammarFeatureValue(
+    display: display ?? this.display,
+    example: example ?? this.example,
+    sequencePosition: sequencePosition ?? this.sequencePosition,
+    value: value ?? this.value,
+    description: description ?? this.description,
+    title: title ?? this.title,
+  );
 
   Map<String, dynamic> toJson() => {
     "description": description,

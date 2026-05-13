@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:material_symbols_icons/symbols.dart';
 
-import 'package:fluffychat/pangea/analytics_details_popup/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_hint_button_widget.dart';
+import 'package:fluffychat/pangea/morphs/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
 
 class AnalyticsPracticeExerciseHintSection extends StatelessWidget {
