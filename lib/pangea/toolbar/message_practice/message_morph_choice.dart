@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/common/widgets/choice_animation.dart';
 import 'package:fluffychat/pangea/constructs/construct_form.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/morphs/morph_meaning_widget.dart';
@@ -96,7 +97,10 @@ class MessageMorphInputBarContentState
             Flexible(
               child: Text(
                 L10n.of(context).whatIsTheMorphTag(
-                  morph.getDisplayCopy(context),
+                  GrammarConstructsProvider.getFeature(
+                        feature: morph.name,
+                      )?.title ??
+                      morph.name,
                   token.text.content,
                 ),
                 style: textStyle(context),
