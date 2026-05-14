@@ -37,22 +37,8 @@ enum MorphFeaturesEnum {
   VerbForm,
   VerbType,
   Voice,
-  Unknown,
-}
+  Unknown;
 
-class MorphFeatureUtil {
-  static final Map<String, MorphFeaturesEnum> _morphFeatureCache = {};
-
-  static void set(String key, MorphFeaturesEnum value) {
-    _morphFeatureCache[key] = value;
-  }
-
-  static MorphFeaturesEnum? get(String key) {
-    return _morphFeatureCache[key];
-  }
-}
-
-extension MorphFeaturesEnumExtension on MorphFeaturesEnum {
   /// Convert enum to string
   String toShortString() {
     return toString().split('.').last.toLowerCase();
@@ -227,5 +213,17 @@ extension MorphFeaturesEnumExtension on MorphFeaturesEnum {
       default:
         return Icons.help_outline;
     }
+  }
+}
+
+class MorphFeatureUtil {
+  static final Map<String, MorphFeaturesEnum> _morphFeatureCache = {};
+
+  static void set(String key, MorphFeaturesEnum value) {
+    _morphFeatureCache[key] = value;
+  }
+
+  static MorphFeaturesEnum? get(String key) {
+    return _morphFeatureCache[key];
   }
 }

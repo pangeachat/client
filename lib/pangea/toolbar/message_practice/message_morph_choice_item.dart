@@ -5,7 +5,6 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
-import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 
 class MessageMorphChoiceItem extends StatefulWidget {
@@ -103,10 +102,8 @@ class MessageMorphChoiceItemState extends State<MessageMorphChoiceItem> {
                     width: iconSize,
                     height: iconSize,
                     child: MorphIcon(
-                      morphFeature: MorphFeaturesEnumExtension.fromString(
-                        widget.cId.category,
-                      ),
-                      morphTag: widget.cId.lemma,
+                      feature: widget.cId.category,
+                      tag: widget.cId.lemma,
                       size: Size(iconSize, iconSize),
                     ),
                   ),

@@ -199,7 +199,7 @@ class ConstructIdentifier {
 
   bool get isInvalid =>
       (type == ConstructTypeEnum.morph &&
-          MorphFeaturesEnumExtension.fromString(category) ==
+          MorphFeaturesEnum.fromString(category) ==
               MorphFeaturesEnum.Unknown) ||
       category == 'other' ||
       lemma.isEmpty;

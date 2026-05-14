@@ -26,7 +26,7 @@ class MorphTagDisplay extends StatelessWidget {
         SizedBox(
           width: 32.0,
           height: 32.0,
-          child: MorphIcon(morphFeature: _morphFeature, morphTag: _morphTag),
+          child: MorphIcon(feature: _morphFeature.name, tag: _morphTag),
         ),
         const SizedBox(width: 10.0),
         Text(

@@ -92,11 +92,7 @@ class MessageMorphInputBarContentState
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: spacing,
           children: [
-            MorphIcon(
-              morphFeature: morph,
-              morphTag: null,
-              size: Size(iconSize, iconSize),
-            ),
+            MorphIcon(feature: morph.name, size: Size(iconSize, iconSize)),
             Flexible(
               child: Text(
                 L10n.of(context).whatIsTheMorphTag(

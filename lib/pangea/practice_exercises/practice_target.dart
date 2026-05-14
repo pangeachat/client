@@ -83,7 +83,7 @@ class PracticeTarget {
       exerciseType: type,
       morphFeature: json['morphFeature'] == null
           ? null
-          : MorphFeaturesEnumExtension.fromString(json['morphFeature']),
+          : MorphFeaturesEnum.fromString(json['morphFeature']),
     );
   }
 

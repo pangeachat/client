@@ -16,7 +16,7 @@ class MorphFeatureDisplay extends StatelessWidget {
         SizedBox(
           width: 24.0,
           height: 24.0,
-          child: MorphIcon(morphFeature: morphFeature, morphTag: null),
+          child: MorphIcon(feature: morphFeature.name),
         ),
         const SizedBox(width: 10.0),
         Text(

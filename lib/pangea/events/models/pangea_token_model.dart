@@ -83,10 +83,8 @@ class PangeaToken {
     );
     final morph = json['morph'] != null
         ? (json['morph'] as Map<String, dynamic>).map(
-            (key, value) => MapEntry(
-              MorphFeaturesEnumExtension.fromString(key),
-              value as String,
-            ),
+            (key, value) =>
+                MapEntry(MorphFeaturesEnum.fromString(key), value as String),
           )
         : <MorphFeaturesEnum, String>{};
     return PangeaToken(
@@ -198,7 +196,7 @@ class PangeaToken {
       ConstructForm(form: text.content, cId: vocabConstructID);
 
   List<ConstructIdentifier> get morphsBasicallyEligibleForPracticeByPriority =>
-      MorphFeaturesEnumExtension.eligibleForPractice
+      MorphFeaturesEnum.eligibleForPractice
           .where((f) {
             return morph.containsKey(f);
           })

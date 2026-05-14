@@ -44,7 +44,7 @@ class GrammarMatchTargetGenerator {
         break;
       }
 
-      final feature = MorphFeaturesEnumExtension.fromString(construct.category);
+      final feature = MorphFeaturesEnum.fromString(construct.category);
 
       // Only include features that are in the valid list (have multiple tags)
       if (feature == MorphFeaturesEnum.Unknown ||

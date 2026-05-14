@@ -58,8 +58,8 @@ class GrammarChoiceCard extends StatelessWidget {
             height: height,
             child: Center(
               child: MorphIcon(
-                morphFeature: feature,
-                morphTag: tag,
+                feature: feature.name,
+                tag: tag,
                 size: Size(emojiSize, emojiSize),
               ),
             ),

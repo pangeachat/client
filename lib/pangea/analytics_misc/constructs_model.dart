@@ -224,8 +224,7 @@ class OneConstructUse {
 
     if (metadata.timeStamp.isAfter(DateTime(2026, 3, 16)) &&
         constructType == ConstructTypeEnum.morph &&
-        MorphFeaturesEnumExtension.fromString(category) ==
-            MorphFeaturesEnum.Unknown) {
+        MorphFeaturesEnum.fromString(category) == MorphFeaturesEnum.Unknown) {
       ErrorHandler.logError(
         e: Exception("Morph feature not found"),
         data: {

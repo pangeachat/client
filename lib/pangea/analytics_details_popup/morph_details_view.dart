@@ -18,7 +18,8 @@ class MorphDetailsView extends StatelessWidget {
   const MorphDetailsView({required this.constructId, super.key});
 
   MorphFeaturesEnum get _morphFeature =>
-      MorphFeaturesEnumExtension.fromString(constructId.category);
+      MorphFeaturesEnum.fromString(constructId.category);
+
   String get _morphTag => constructId.lemma;
 
   @override

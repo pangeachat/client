@@ -167,7 +167,7 @@ class PracticeSelectionRepo {
           (m) => PracticeTarget(
             tokens: [t],
             exerciseType: PracticeExerciseTypeEnum.morphId,
-            morphFeature: MorphFeaturesEnumExtension.fromString(m.category),
+            morphFeature: MorphFeaturesEnum.fromString(m.category),
           ),
         )
         .toList();
