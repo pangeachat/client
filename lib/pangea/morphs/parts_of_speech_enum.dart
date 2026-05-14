@@ -1,5 +1,4 @@
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
-import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
 
 /// list ordered by priority
 enum PartOfSpeechEnum {
@@ -39,6 +38,8 @@ enum PartOfSpeechEnum {
     PartOfSpeechEnum.compn,
   ].contains(this);
 
-  GrammarTag? get grammarTag =>
-      GrammarConstructsProvider.getTag(feature: "Pos", tag: name.toUpperCase());
+  String? get copy => GrammarConstructsProvider.getTagTitle(
+    feature: "Pos",
+    tag: name.toUpperCase(),
+  );
 }

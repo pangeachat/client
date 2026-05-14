@@ -38,8 +38,8 @@ class LemmaMeaningDisplay extends StatelessWidget {
               style: const TextStyle(fontSize: 14.0),
             );
           case AsyncLoaded(value: final lemmaInfo):
-            final tag = constructId.partOfSpeech?.grammarTag;
-            final pos = tag?.title ?? L10n.of(context).other;
+            final tagCopy = constructId.partOfSpeech?.copy;
+            final pos = tagCopy ?? L10n.of(context).other;
             final lemma = constructId.lemma;
             return RichText(
               maxLines: 2,

@@ -104,10 +104,10 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
                             if (use.constructType == ConstructTypeEnum.morph) {
                               debugPrint("Use info: ${use.toJson()}");
                               lemmaCopy =
-                                  GrammarConstructsProvider.getTag(
+                                  GrammarConstructsProvider.getTagTitle(
                                     feature: use.category,
                                     tag: use.lemma,
-                                  )?.description ??
+                                  ) ??
                                   use.lemma;
                             }
                             return Padding(

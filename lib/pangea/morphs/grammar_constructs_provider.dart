@@ -28,22 +28,25 @@ class GrammarConstructsProvider {
         userL1: _userL1,
       );
 
+  static String? getTagTitle({required String feature, required String tag}) =>
+      _getTag(feature: feature, tag: tag)?.title;
+
   static Future<String?> fetchTagDescription({
+    required String feature,
+    required String tag,
+  }) async => (await _fetchTag(feature: feature, tag: tag))?.description;
+
+  static GrammarTag? _getTag({required String feature, required String tag}) {
+    final morphs = getFeaturesAndTags();
+    return morphs.getTag(feature, tag);
+  }
+
+  static Future<GrammarTag?> _fetchTag({
     required String feature,
     required String tag,
   }) async {
     final morphs = await fetchFeaturesAndTags();
-    return morphs.getFeature(feature)?.getTag(tag)?.description;
-  }
-
-  static GrammarTag? getTag({required String feature, required String tag}) {
-    final morphs = getFeaturesAndTags();
-    return morphs.getFeature(feature)?.getTag(tag);
-  }
-
-  static Future<List<GrammarTag>> fetchTags({required String feature}) async {
-    final morphs = await fetchFeaturesAndTags();
-    return morphs.getFeature(feature)?.tags ?? [];
+    return morphs.getTag(feature, tag);
   }
 
   static List<GrammarTag> getTags({required String feature}) {
@@ -51,9 +54,13 @@ class GrammarConstructsProvider {
     return morphs.getFeature(feature)?.tags ?? [];
   }
 
-  static Future<LocalizedMorphFeaturesAndTags> fetchFeaturesAndTags() async {
-    final result = await GrammarConstructsRepo.instance.get(_request);
-    final response = result.asValue?.value;
+  static Future<List<GrammarTag>> fetchTags({required String feature}) async {
+    final morphs = await fetchFeaturesAndTags();
+    return morphs.getFeature(feature)?.tags ?? [];
+  }
+
+  static LocalizedMorphFeaturesAndTags getFeaturesAndTags() {
+    final response = GrammarConstructsRepo.instance.getCached(_request);
     if (response != null) {
       return LocalizedMorphFeaturesAndTags.fromLocalizedGrammarConstructsResponse(
         response: response,
@@ -63,8 +70,9 @@ class GrammarConstructsProvider {
     return defaultFeaturesAndTags;
   }
 
-  static LocalizedMorphFeaturesAndTags getFeaturesAndTags() {
-    final response = GrammarConstructsRepo.instance.getCached(_request);
+  static Future<LocalizedMorphFeaturesAndTags> fetchFeaturesAndTags() async {
+    final result = await GrammarConstructsRepo.instance.get(_request);
+    final response = result.asValue?.value;
     if (response != null) {
       return LocalizedMorphFeaturesAndTags.fromLocalizedGrammarConstructsResponse(
         response: response,

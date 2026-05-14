@@ -37,10 +37,10 @@ class GrammarChoiceCard extends StatelessWidget {
         (height / 72.0).clamp(1.0, 1.4);
     final emojiSize = baseTextSize * 1.5;
     final copy =
-        GrammarConstructsProvider.getTag(
+        GrammarConstructsProvider.getTagTitle(
           feature: feature.name,
           tag: tag,
-        )?.title ??
+        ) ??
         tag;
 
     return GameChoiceCard(
