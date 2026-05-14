@@ -9,10 +9,9 @@ import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
-import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 
 class MorphMeaningWidget extends StatefulWidget {
-  final MorphFeaturesEnum feature;
+  final String feature;
   final String tag;
   final TextStyle? style;
   final bool blankErrorFeedback;
@@ -70,7 +69,7 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
     }
 
     final tag = await GrammarConstructsProvider.fetchTag(
-      feature: widget.feature.name,
+      feature: widget.feature,
       tag: widget.tag,
     );
 
@@ -93,7 +92,7 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
 
     try {
       await GrammarConstructsProvider.setTagDescription(
-        feature: widget.feature.name,
+        feature: widget.feature,
         tag: widget.tag,
         description: text,
       ).timeout(Duration(seconds: 10));

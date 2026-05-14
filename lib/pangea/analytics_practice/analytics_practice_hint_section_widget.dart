@@ -48,7 +48,7 @@ class AnalyticsPracticeExerciseHintSection extends StatelessWidget {
             depressed: !enabled,
           ),
           secondChild: MorphMeaningWidget(
-            feature: exercise.morphFeature,
+            feature: exercise.morphFeature.name,
             tag: exercise.multipleChoiceContent.answers.first,
           ),
         ),

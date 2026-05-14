@@ -59,6 +59,11 @@ class GrammarConstructsProvider {
     return morphs.getFeature(feature)?.tags ?? [];
   }
 
+  static GrammarFeature? getFeature({required String feature}) {
+    final morphs = getFeaturesAndTags();
+    return morphs.getFeature(feature);
+  }
+
   static LocalizedMorphFeaturesAndTags getFeaturesAndTags() {
     final response = GrammarConstructsRepo.instance.getCached(_request);
     if (response != null) {

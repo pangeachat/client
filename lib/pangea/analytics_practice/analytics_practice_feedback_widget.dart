@@ -26,7 +26,7 @@ class AnalyticsPracticeExerciseFeedback extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: MorphMeaningWidget(
-        feature: selectedChoice.feature,
+        feature: selectedChoice.feature.name,
         tag: selectedChoice.tag,
         blankErrorFeedback: true,
       ),

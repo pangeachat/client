@@ -155,7 +155,7 @@ class MessageMorphInputBarContentState
             ),
             alignment: Alignment.center,
             child: MorphMeaningWidget(
-              feature: morph,
+              feature: morph.name,
               tag: selectedTag!,
               style: widget.maxWidth > 600
                   ? Theme.of(context).textTheme.bodyLarge

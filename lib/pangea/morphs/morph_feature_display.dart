@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 
 class MorphFeatureDisplay extends StatelessWidget {
-  const MorphFeatureDisplay({super.key, required this.morphFeature});
-
-  final MorphFeaturesEnum morphFeature;
+  final GrammarFeature feature;
+  const MorphFeatureDisplay({super.key, required this.feature});
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +15,10 @@ class MorphFeatureDisplay extends StatelessWidget {
         SizedBox(
           width: 24.0,
           height: 24.0,
-          child: MorphIcon(feature: morphFeature.name),
+          child: MorphIcon(feature: feature.value),
         ),
         const SizedBox(width: 10.0),
-        Text(
-          morphFeature.getDisplayCopy(context),
-          style: Theme.of(context).textTheme.titleMedium,
-        ),
+        Text(feature.title, style: Theme.of(context).textTheme.titleMedium),
       ],
     );
   }

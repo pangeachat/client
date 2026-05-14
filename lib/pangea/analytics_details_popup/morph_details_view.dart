@@ -5,8 +5,8 @@ import 'package:fluffychat/pangea/analytics_details_popup/construct_xp_progress_
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_feature_display.dart';
-import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/morphs/morph_tag_display.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
@@ -17,15 +17,15 @@ class MorphDetailsView extends StatelessWidget {
 
   const MorphDetailsView({required this.constructId, super.key});
 
-  MorphFeaturesEnum get _morphFeature =>
-      MorphFeaturesEnum.fromString(constructId.category);
-
-  String get _morphTag => constructId.lemma;
-
   @override
   Widget build(BuildContext context) {
     final l2 =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
+
+    final feature = GrammarConstructsProvider.getFeature(
+      feature: constructId.category,
+    );
+
     return FutureBuilder(
       future: l2 != null
           ? Matrix.of(
@@ -53,14 +53,14 @@ class MorphDetailsView extends StatelessWidget {
             spacing: 16.0,
             children: [
               MorphTagDisplay(
-                morphFeature: _morphFeature,
-                morphTag: _morphTag,
+                feature: constructId.category,
+                tag: constructId.lemma,
                 textColor: textColor,
               ),
-              MorphFeatureDisplay(morphFeature: _morphFeature),
+              if (feature != null) MorphFeatureDisplay(feature: feature),
               MorphMeaningWidget(
-                feature: _morphFeature,
-                tag: _morphTag,
+                feature: constructId.category,
+                tag: constructId.lemma,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               const Divider(),
