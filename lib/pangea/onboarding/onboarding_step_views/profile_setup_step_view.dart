@@ -135,7 +135,7 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
                         color: theme.disabledColor,
                       ),
                       child: _step.avatarUrl != null
-                          ? ImageByUrl(imageUrl: _step.avatarUrl)
+                          ? ImageByUrl(width: 100.0, imageUrl: _step.avatarUrl)
                           : _step.avatarBytes != null
                           ? Image.memory(_step.avatarBytes!)
                           : SizedBox(),
@@ -169,6 +169,7 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
                           height: 32.0,
                           width: 32.0,
                           child: ImageByUrl(
+                            width: 32.0,
                             imageUrl: avatarUrl,
                             borderRadius: BorderRadius.circular(100.0),
                           ),
