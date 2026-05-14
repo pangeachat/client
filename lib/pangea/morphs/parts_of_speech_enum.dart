@@ -1,5 +1,3 @@
-import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
-
 /// list ordered by priority
 enum PartOfSpeechEnum {
   //Content tokens
@@ -28,7 +26,7 @@ enum PartOfSpeechEnum {
   intj,
   x;
 
-  bool get isContentWord => [
+  static Set<PartOfSpeechEnum> _contentPartsOfSpeech = {
     PartOfSpeechEnum.noun,
     PartOfSpeechEnum.verb,
     PartOfSpeechEnum.adj,
@@ -36,10 +34,7 @@ enum PartOfSpeechEnum {
     PartOfSpeechEnum.idiom,
     PartOfSpeechEnum.phrasalv,
     PartOfSpeechEnum.compn,
-  ].contains(this);
+  };
 
-  String? get copy => GrammarConstructsProvider.getTagTitle(
-    feature: "Pos",
-    tag: name.toUpperCase(),
-  );
+  bool get isContentWord => _contentPartsOfSpeech.contains(this);
 }

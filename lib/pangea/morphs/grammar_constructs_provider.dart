@@ -4,7 +4,7 @@ import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_repo.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_request.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
-import 'package:fluffychat/pangea/morphs/localized_morph_features_and_tags.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_and_tags.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -22,21 +22,21 @@ class GrammarConstructsProvider {
       MatrixState.pangeaController.userController.userL1Code ??
       LanguageKeys.defaultLanguage;
 
-  static LocalizedMorphFeaturesAndTags get defaultFeaturesAndTags =>
-      LocalizedMorphFeaturesAndTags.defaultFeaturesAndTags(
+  static MorphFeaturesAndTags get defaultFeaturesAndTags =>
+      MorphFeaturesAndTags.defaultFeaturesAndTags(
         targetLanguage: _targetLanguage,
         userL1: _userL1,
       );
 
   static String? getTagTitle({required String feature, required String tag}) =>
-      _getTag(feature: feature, tag: tag)?.title;
+      getTag(feature: feature, tag: tag)?.title;
 
   static Future<String?> fetchTagDescription({
     required String feature,
     required String tag,
   }) async => (await fetchTag(feature: feature, tag: tag))?.description;
 
-  static GrammarTag? _getTag({required String feature, required String tag}) {
+  static GrammarTag? getTag({required String feature, required String tag}) {
     final morphs = getFeaturesAndTags();
     return morphs.getTag(feature, tag);
   }
@@ -64,10 +64,10 @@ class GrammarConstructsProvider {
     return morphs.getFeature(feature);
   }
 
-  static LocalizedMorphFeaturesAndTags getFeaturesAndTags() {
+  static MorphFeaturesAndTags getFeaturesAndTags() {
     final response = GrammarConstructsRepo.instance.getCached(_request);
     if (response != null) {
-      return LocalizedMorphFeaturesAndTags.fromLocalizedGrammarConstructsResponse(
+      return MorphFeaturesAndTags.fromGrammarConstructsResponse(
         response: response,
       );
     }
@@ -75,11 +75,11 @@ class GrammarConstructsProvider {
     return defaultFeaturesAndTags;
   }
 
-  static Future<LocalizedMorphFeaturesAndTags> fetchFeaturesAndTags() async {
+  static Future<MorphFeaturesAndTags> fetchFeaturesAndTags() async {
     final result = await GrammarConstructsRepo.instance.get(_request);
     final response = result.asValue?.value;
     if (response != null) {
-      return LocalizedMorphFeaturesAndTags.fromLocalizedGrammarConstructsResponse(
+      return MorphFeaturesAndTags.fromGrammarConstructsResponse(
         response: response,
       );
     }
@@ -128,6 +128,6 @@ class GrammarConstructsProvider {
 
     final updatedConstructs = constructs.copyWith(features: updatedFeatures);
     await GrammarConstructsRepo.instance.setCached(request, updatedConstructs);
-    LocalizedMorphFeaturesAndTags.clearLookupCache();
+    MorphFeaturesAndTags.clearLookupCache();
   }
 }

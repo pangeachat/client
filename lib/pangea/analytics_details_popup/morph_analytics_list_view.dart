@@ -14,7 +14,8 @@ import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
-import 'package:fluffychat/pangea/morphs/localized_morph_features_and_tags.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_and_tags.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -77,7 +78,7 @@ class MorphAnalyticsListView extends StatelessWidget {
 }
 
 class MorphFeatureBox extends StatelessWidget {
-  final LocalizedMorphFeatureTags featureTags;
+  final MorphFeatureTags featureTags;
   final String language;
 
   const MorphFeatureBox({
@@ -93,7 +94,9 @@ class MorphFeatureBox extends StatelessWidget {
     final feature = featureTags.feature;
     final tags = featureTags.tags;
 
+    final featureEnum = MorphFeaturesEnum.fromString(feature.value);
     final analyticsService = Matrix.of(context).analyticsDataService;
+
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
@@ -113,7 +116,7 @@ class MorphFeatureBox extends StatelessWidget {
               SizedBox(
                 height: 30.0,
                 width: 30.0,
-                child: MorphIcon(feature: feature.value),
+                child: MorphIcon(feature: featureEnum),
               ),
               Text(
                 feature.title,
@@ -142,7 +145,7 @@ class MorphFeatureBox extends StatelessWidget {
                     return FutureBuilder(
                       future: analyticsService.getConstructUse(id, language),
                       builder: (context, snapshot) => MorphTagChip(
-                        feature: feature.value,
+                        feature: featureEnum,
                         tag: morphTag,
                         constructAnalytics: snapshot.data,
                         onTap: () {
@@ -166,7 +169,7 @@ class MorphFeatureBox extends StatelessWidget {
 }
 
 class MorphTagChip extends StatelessWidget {
-  final String feature;
+  final MorphFeaturesEnum feature;
   final GrammarTag tag;
   final ConstructUses? constructAnalytics;
   final VoidCallback? onTap;

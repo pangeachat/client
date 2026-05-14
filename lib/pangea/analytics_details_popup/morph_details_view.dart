@@ -6,9 +6,9 @@ import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
-import 'package:fluffychat/pangea/morphs/morph_feature_display.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/morphs/morph_meaning_widget.dart';
-import 'package:fluffychat/pangea/morphs/morph_tag_display.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -22,8 +22,18 @@ class MorphDetailsView extends StatelessWidget {
     final l2 =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
 
-    final feature = GrammarConstructsProvider.getFeature(
-      feature: constructId.category,
+    final tag = constructId.lemma;
+    final feature = constructId.category;
+
+    final featureEnum = MorphFeaturesEnum.fromString(feature);
+
+    final localizedTag = GrammarConstructsProvider.getTag(
+      feature: feature,
+      tag: tag,
+    );
+
+    final localizedFeature = GrammarConstructsProvider.getFeature(
+      feature: feature,
     );
 
     return FutureBuilder(
@@ -52,15 +62,44 @@ class MorphDetailsView extends StatelessWidget {
           child: Column(
             spacing: 16.0,
             children: [
-              MorphTagDisplay(
-                feature: constructId.category,
-                tag: constructId.lemma,
-                textColor: textColor,
-              ),
-              if (feature != null) MorphFeatureDisplay(feature: feature),
+              if (localizedTag != null)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 32.0,
+                      height: 32.0,
+                      child: MorphIcon(feature: featureEnum, tag: tag),
+                    ),
+                    const SizedBox(width: 10.0),
+                    Text(
+                      localizedTag.title,
+                      style: Theme.of(
+                        context,
+                      ).textTheme.titleLarge?.copyWith(color: textColor),
+                    ),
+                  ],
+                ),
+              if (localizedFeature != null)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 24.0,
+                      height: 24.0,
+                      child: MorphIcon(feature: featureEnum),
+                    ),
+                    const SizedBox(width: 10.0),
+                    Text(
+                      localizedFeature.title,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                  ],
+                ),
               MorphMeaningWidget(
-                feature: constructId.category,
-                tag: constructId.lemma,
+                feature: feature,
+                tag: tag,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               const Divider(),

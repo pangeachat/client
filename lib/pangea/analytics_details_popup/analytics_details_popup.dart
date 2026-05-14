@@ -24,7 +24,7 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
-import 'package:fluffychat/pangea/morphs/localized_morph_features_and_tags.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_and_tags.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/token_info_feedback/show_token_feedback_dialog.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
@@ -52,7 +52,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   final TextEditingController searchController = TextEditingController();
   final List<ConstructIdentifier> selectedConstructs = [];
 
-  LocalizedMorphFeaturesAndTags morphs =
+  MorphFeaturesAndTags morphs =
       GrammarConstructsProvider.defaultFeaturesAndTags;
 
   List<ConstructUses>? vocab;

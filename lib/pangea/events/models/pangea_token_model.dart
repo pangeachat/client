@@ -196,17 +196,15 @@ class PangeaToken {
       ConstructForm(form: text.content, cId: vocabConstructID);
 
   List<ConstructIdentifier> get morphsBasicallyEligibleForPracticeByPriority =>
-      MorphFeaturesEnum.eligibleForPractice
-          .where((f) {
-            return morph.containsKey(f);
-          })
-          .map((f) {
-            return ConstructIdentifier(
+      MorphFeaturesEnum.values
+          .where((f) => morph.containsKey(f) && f.isEligibleForPractice)
+          .map(
+            (f) => ConstructIdentifier(
               lemma: getMorphTag(f)!,
               type: ConstructTypeEnum.morph,
               category: f.name,
-            );
-          })
+            ),
+          )
           .toList();
 
   bool eligibleForPractice(PracticeExerciseTypeEnum exerciseType) {

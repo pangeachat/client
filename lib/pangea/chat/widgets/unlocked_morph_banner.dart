@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/chat/widgets/icon_rain.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -42,6 +43,8 @@ class UnlockedMorphBannerState extends State<UnlockedMorphBanner> {
 
   void _showIconRain() {
     if (!mounted) return;
+    final feature = MorphFeaturesEnum.fromString(widget.construct.category);
+    final tag = widget.construct.lemma;
     OverlayUtil.showOverlay(
       overlayKey: "${widget.construct.string}_points",
       followerAnchor: Alignment.topCenter,
@@ -49,11 +52,7 @@ class UnlockedMorphBannerState extends State<UnlockedMorphBanner> {
       context: context,
       child: IconRain(
         addStars: true,
-        icon: MorphIcon(
-          size: const Size(8, 8),
-          feature: widget.construct.category,
-          tag: widget.construct.lemma,
-        ),
+        icon: MorphIcon(size: const Size(8, 8), feature: feature, tag: tag),
       ),
       transformTargetId: "${widget.construct.string}_notification",
       closePrevOverlay: false,
@@ -65,10 +64,15 @@ class UnlockedMorphBannerState extends State<UnlockedMorphBanner> {
   @override
   Widget build(BuildContext context) {
     final isColumnMode = FluffyThemes.isColumnMode(context);
+
+    final feature = widget.construct.category;
+    final tag = widget.construct.lemma;
     final copy = GrammarConstructsProvider.getTagTitle(
-      feature: widget.construct.category,
-      tag: widget.construct.lemma,
+      feature: feature,
+      tag: tag,
     );
+
+    final featureEnum = MorphFeaturesEnum.fromString(feature);
 
     return CompositedTransformTarget(
       link: MatrixState.pAnyState
@@ -106,7 +110,7 @@ class UnlockedMorphBannerState extends State<UnlockedMorphBanner> {
                     ),
                     MorphIcon(
                       size: isColumnMode ? null : const Size(22.0, 22.0),
-                      feature: widget.construct.category,
+                      feature: featureEnum,
                       tag: widget.construct.lemma,
                     ),
                   ],

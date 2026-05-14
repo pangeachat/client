@@ -37,35 +37,34 @@ enum MorphFeaturesEnum {
   Voice,
   Unknown;
 
-  /// Convert enum to string
-  String toShortString() {
-    return toString().split('.').last.toLowerCase();
-  }
+  static final Map<String, MorphFeaturesEnum> _morphFeatureCache = {};
 
   /// Convert string to enum
   static MorphFeaturesEnum fromString(String category) {
     // Repeated regex operations are causing performance issues,
     // so we cache the results in a static map
-    if (MorphFeatureUtil.get(category) != null) {
-      return MorphFeatureUtil.get(category)!;
+    if (_morphFeatureCache.containsKey(category)) {
+      return _morphFeatureCache[category]!;
     }
 
     final morph = MorphFeaturesEnum.values.firstWhereOrNull(
       (e) =>
-          e.toShortString() ==
+          e.name.toLowerCase() ==
           category.toLowerCase().replaceAll(RegExp(r'[,\[\]]'), ''),
     );
     if (morph == null) {
       return MorphFeaturesEnum.Unknown;
     }
 
-    MorphFeatureUtil.set(category, morph);
+    _morphFeatureCache[category] = morph;
     return morph;
   }
 
+  bool get isEligibleForPractice => _eligibleForPractice.contains(this);
+
   /// the subset of morphological categories that are important to practice for learning the language
   /// by order of importance
-  static List<MorphFeaturesEnum> get eligibleForPractice => [
+  static Set<MorphFeaturesEnum> _eligibleForPractice = {
     MorphFeaturesEnum.Pos,
     MorphFeaturesEnum.Tense,
     MorphFeaturesEnum.VerbForm,
@@ -92,11 +91,7 @@ enum MorphFeaturesEnum {
     MorphFeaturesEnum.PrepCase,
     MorphFeaturesEnum.PronType,
     MorphFeaturesEnum.Reflex,
-  ];
-
-  bool get isEligibleForPractice {
-    return eligibleForPractice.contains(this);
-  }
+  };
 
   IconData get fallbackIcon {
     switch (this) {
@@ -146,17 +141,5 @@ enum MorphFeaturesEnum {
       default:
         return Icons.help_outline;
     }
-  }
-}
-
-class MorphFeatureUtil {
-  static final Map<String, MorphFeaturesEnum> _morphFeatureCache = {};
-
-  static void set(String key, MorphFeaturesEnum value) {
-    _morphFeatureCache[key] = value;
-  }
-
-  static MorphFeaturesEnum? get(String key) {
-    return _morphFeatureCache[key];
   }
 }

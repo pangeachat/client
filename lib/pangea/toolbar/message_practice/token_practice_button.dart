@@ -286,7 +286,7 @@ class _NoActivityContentButton extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: MorphIcon(
-                    feature: morphFeature.name,
+                    feature: morphFeature,
                     tag: morphTag.lemma,
                     size: Size.fromWidth(width - 8.0),
                   ),

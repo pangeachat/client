@@ -3,49 +3,47 @@ import 'package:collection/collection.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
 
-class LocalizedMorphFeaturesAndTags {
+class MorphFeaturesAndTags {
   final String _targetLanguage;
   final String _userL1;
-  final List<LocalizedMorphFeatureTags> _features;
+  final List<MorphFeatureTags> _features;
 
   static final Map<String, Map<String, GrammarFeature>> _featureLookup = {};
 
   static final Map<String, Map<String, Map<String, GrammarTag>>> _tagLookup =
       {};
 
-  LocalizedMorphFeaturesAndTags({
+  MorphFeaturesAndTags({
     required String targetLanguage,
     required String userL1,
-    required List<LocalizedMorphFeatureTags> features,
+    required List<MorphFeatureTags> features,
   }) : _targetLanguage = targetLanguage,
        _userL1 = userL1,
        _features = features;
 
-  factory LocalizedMorphFeaturesAndTags.fromLocalizedGrammarConstructsResponse({
+  factory MorphFeaturesAndTags.fromGrammarConstructsResponse({
     required GrammarConstructsResponse response,
   }) {
-    final List<LocalizedMorphFeatureTags> sortedFeatures = [];
+    final List<MorphFeatureTags> sortedFeatures = [];
     for (final feature in response.features) {
       final tags = List<GrammarTag>.from(
         feature.tags,
       ).where((t) => t.display).toList();
 
       tags.sort((a, b) => a.sequencePosition.compareTo(b.sequencePosition));
-      sortedFeatures.add(
-        LocalizedMorphFeatureTags(feature: feature, tags: tags),
-      );
+      sortedFeatures.add(MorphFeatureTags(feature: feature, tags: tags));
     }
-    return LocalizedMorphFeaturesAndTags(
+    return MorphFeaturesAndTags(
       targetLanguage: response.targetLanguage,
       userL1: response.userL1,
       features: sortedFeatures,
     );
   }
 
-  factory LocalizedMorphFeaturesAndTags.defaultFeaturesAndTags({
+  factory MorphFeaturesAndTags.defaultFeaturesAndTags({
     required String targetLanguage,
     required String userL1,
-  }) => LocalizedMorphFeaturesAndTags(
+  }) => MorphFeaturesAndTags(
     targetLanguage: targetLanguage,
     userL1: userL1,
     features: [],
@@ -53,17 +51,16 @@ class LocalizedMorphFeaturesAndTags {
 
   String get _langKey => "$_targetLanguage-$_userL1";
 
-  List<LocalizedMorphFeatureTags> get features => _features;
+  List<MorphFeatureTags> get features => _features;
 
   static void clearLookupCache() {
     _tagLookup.clear();
     _featureLookup.clear();
   }
 
-  LocalizedMorphFeatureTags? _getFeature(String feature) =>
-      _features.firstWhereOrNull(
-        (f) => f.feature.value.toLowerCase() == feature.toLowerCase(),
-      );
+  MorphFeatureTags? _getFeature(String feature) => _features.firstWhereOrNull(
+    (f) => f.feature.value.toLowerCase() == feature.toLowerCase(),
+  );
 
   GrammarFeature? getFeature(String feature) {
     final lookup = _featureLookup[_langKey]?[feature];
@@ -112,11 +109,11 @@ class LocalizedMorphFeaturesAndTags {
   }
 }
 
-class LocalizedMorphFeatureTags {
+class MorphFeatureTags {
   final GrammarFeature feature;
   final List<GrammarTag> tags;
 
-  LocalizedMorphFeatureTags({required this.feature, required this.tags});
+  MorphFeatureTags({required this.feature, required this.tags});
 
   GrammarTag? getTag(String tag) =>
       tags.firstWhereOrNull((t) => t.value.toLowerCase() == tag.toLowerCase());

@@ -118,9 +118,9 @@ class ConstructIdentifier {
     return ConstructIdentifier(lemma: lemma, type: type, category: category);
   }
 
-  bool get isContentWord => partOfSpeech?.isContentWord ?? false;
+  bool get isContentWord => _partOfSpeech?.isContentWord ?? false;
 
-  PartOfSpeechEnum? get partOfSpeech {
+  PartOfSpeechEnum? get _partOfSpeech {
     if (type != ConstructTypeEnum.vocab) return null;
     final pos = PartOfSpeechEnum.values.firstWhereOrNull(
       (pos) => pos.name.toLowerCase() == category.toLowerCase(),
