@@ -6,7 +6,6 @@ import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
-import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 
 class LemmaMeaningDisplay extends StatelessWidget {
   final String langCode;
@@ -39,13 +38,8 @@ class LemmaMeaningDisplay extends StatelessWidget {
               style: const TextStyle(fontSize: 14.0),
             );
           case AsyncLoaded(value: final lemmaInfo):
-            final pos =
-                getGrammarCopy(
-                  category: "POS",
-                  lemma: constructId.category,
-                  context: context,
-                ) ??
-                L10n.of(context).other;
+            final tag = constructId.partOfSpeech?.grammarTag;
+            final pos = tag?.title ?? L10n.of(context).other;
             final lemma = constructId.lemma;
             return RichText(
               maxLines: 2,

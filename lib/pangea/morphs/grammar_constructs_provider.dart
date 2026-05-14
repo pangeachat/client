@@ -1,5 +1,4 @@
 import 'package:fluffychat/pangea/languages/language_constants.dart';
-import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_repo.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_request.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
@@ -20,12 +19,23 @@ class GrammarConstructsProvider {
       MatrixState.pangeaController.userController.userL1Code ??
       LanguageKeys.defaultLanguage;
 
+  static LocalizedMorphFeaturesAndTags get defaultFeaturesAndTags =>
+      LocalizedMorphFeaturesAndTags.defaultFeaturesAndTags(
+        targetLanguage: _targetLanguage,
+        userL1: _userL1,
+      );
+
   static Future<String?> fetchTagDescription({
     required String feature,
     required String tag,
   }) async {
     final morphs = await fetchFeaturesAndTags();
     return morphs.getFeature(feature)?.getTag(tag)?.description;
+  }
+
+  static GrammarTag? getTag({required String feature, required String tag}) {
+    final morphs = getFeaturesAndTags();
+    return morphs.getFeature(feature)?.getTag(tag);
   }
 
   static Future<List<GrammarTag>> fetchTags({required String feature}) async {
@@ -47,7 +57,7 @@ class GrammarConstructsProvider {
       );
     }
 
-    return defaultLocalizedGrammarConstructs;
+    return defaultFeaturesAndTags;
   }
 
   static LocalizedMorphFeaturesAndTags getFeaturesAndTags() {
@@ -58,7 +68,7 @@ class GrammarConstructsProvider {
       );
     }
 
-    return defaultLocalizedGrammarConstructs;
+    return defaultFeaturesAndTags;
   }
 
   static Future<void> setTagDescription({

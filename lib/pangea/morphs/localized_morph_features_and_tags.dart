@@ -4,9 +4,15 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
 
 class LocalizedMorphFeaturesAndTags {
+  final String targetLanguage;
+  final String userL1;
   final List<LocalizedMorphFeatureTags> features;
 
-  const LocalizedMorphFeaturesAndTags({required this.features});
+  const LocalizedMorphFeaturesAndTags({
+    required this.targetLanguage,
+    required this.userL1,
+    required this.features,
+  });
 
   factory LocalizedMorphFeaturesAndTags.fromLocalizedGrammarConstructsResponse({
     required GrammarConstructsResponse response,
@@ -22,8 +28,21 @@ class LocalizedMorphFeaturesAndTags {
         LocalizedMorphFeatureTags(feature: feature, tags: tags),
       );
     }
-    return LocalizedMorphFeaturesAndTags(features: sortedFeatures);
+    return LocalizedMorphFeaturesAndTags(
+      targetLanguage: response.targetLanguage,
+      userL1: response.userL1,
+      features: sortedFeatures,
+    );
   }
+
+  factory LocalizedMorphFeaturesAndTags.defaultFeaturesAndTags({
+    required String targetLanguage,
+    required String userL1,
+  }) => LocalizedMorphFeaturesAndTags(
+    targetLanguage: targetLanguage,
+    userL1: userL1,
+    features: [],
+  );
 
   LocalizedMorphFeatureTags? getFeature(String feature) =>
       features.firstWhereOrNull((f) => f.feature.value == feature);

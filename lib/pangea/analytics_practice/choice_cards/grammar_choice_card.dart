@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/game_choice_card.dart';
-import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 
@@ -37,7 +37,10 @@ class GrammarChoiceCard extends StatelessWidget {
         (height / 72.0).clamp(1.0, 1.4);
     final emojiSize = baseTextSize * 1.5;
     final copy =
-        getGrammarCopy(category: feature.name, lemma: tag, context: context) ??
+        GrammarConstructsProvider.getTag(
+          feature: feature.name,
+          tag: tag,
+        )?.title ??
         tag;
 
     return GameChoiceCard(
