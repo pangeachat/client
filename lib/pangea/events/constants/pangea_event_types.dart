@@ -48,4 +48,6 @@ class PangeaEventTypes {
   static const notificationSettings = 'org.pangea.notification_settings';
 
   static const accessNoticeShown = 'org.pangea.analytics_access_notice_shown';
+
+  static const firstBotDMMessage = "pangea_first_bot_dm_message";
 }
