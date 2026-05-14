@@ -1,8 +1,11 @@
+import 'package:matrix/matrix_api_lite/utils/logs.dart';
+
 import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_repo.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_request.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
 import 'package:fluffychat/pangea/morphs/localized_morph_features_and_tags.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class GrammarConstructsProvider {
@@ -75,10 +78,42 @@ class GrammarConstructsProvider {
     required String feature,
     required String tag,
     required String description,
-  }) => GrammarConstructsRepo.instance.setTagDescription(
-    request: _request,
-    feature: feature,
-    tag: tag,
-    description: description,
-  );
+  }) async {
+    final request = _request;
+    final constructsResult = await GrammarConstructsRepo.instance.get(request);
+    final constructs = constructsResult.result;
+    if (constructs == null) {
+      Logs().w("Failed to fetch grammar constructs in setTagDescription");
+      return;
+    }
+
+    final features = constructs.features;
+    final featureIndex = features.indexWhere((f) => f.value == feature);
+    if (featureIndex == -1) {
+      Logs().w("Feature $feature not found in setTagDescription");
+      return;
+    }
+
+    final tags = features[featureIndex].tags;
+    final tagIndex = tags.indexWhere((t) => t.value == tag);
+    if (tagIndex == -1) {
+      Logs().w("Tag $tag not found in setTagDescription");
+      return;
+    }
+
+    final currentTag = tags[tagIndex];
+    final updatedTag = currentTag.copyWith(description: description);
+
+    final updatedTags = List<GrammarTag>.from(tags);
+    updatedTags[tagIndex] = updatedTag;
+
+    final currentFeature = features[featureIndex];
+    final updatedFeature = currentFeature.copyWith(tags: updatedTags);
+
+    final updatedFeatures = List<GrammarFeature>.from(features);
+    updatedFeatures[featureIndex] = updatedFeature;
+
+    final updatedConstructs = constructs.copyWith(features: updatedFeatures);
+    await GrammarConstructsRepo.instance.setCached(request, updatedConstructs);
+  }
 }

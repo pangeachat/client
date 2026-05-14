@@ -5,7 +5,6 @@ import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/base_repo.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_request.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class GrammarConstructsRepo
     extends BaseRepo<GrammarConstructsRequest, GrammarConstructsResponse> {
@@ -24,25 +23,4 @@ class GrammarConstructsRepo
   @override
   Future<Response> fetch(Requests req, GrammarConstructsRequest request) =>
       req.post(url: PApiUrls.grammarConstructs, body: request.toJson());
-
-  Future<void> setTagDescription({
-    required GrammarConstructsRequest request,
-    required String feature,
-    required String tag,
-    required String description,
-  }) async {
-    final result = await get(request);
-    final response = result.result;
-    if (response == null) return;
-
-    final cachedTag = response.getFeature(feature)?.getTag(tag);
-    if (cachedTag == null) return;
-
-    final updatedTag = cachedTag.copyWith(description: description);
-    final updatedMeaning = response.copyWithTag(
-      feature: feature,
-      tag: updatedTag,
-    );
-    await setCached(request, updatedMeaning);
-  }
 }

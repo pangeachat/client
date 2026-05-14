@@ -1,5 +1,3 @@
-import 'package:collection/collection.dart';
-
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
 
 class GrammarConstructsResponse extends BaseResponse {
@@ -15,9 +13,6 @@ class GrammarConstructsResponse extends BaseResponse {
     required this.features,
   });
 
-  GrammarFeature? getFeature(String feature) =>
-      features.firstWhereOrNull((f) => f.value == feature);
-
   GrammarConstructsResponse copyWith({
     String? userL1,
     String? sourceL1,
@@ -29,23 +24,6 @@ class GrammarConstructsResponse extends BaseResponse {
     targetLanguage: targetLanguage ?? this.targetLanguage,
     features: features ?? this.features,
   );
-
-  GrammarConstructsResponse copyWithTag({
-    required String feature,
-    required GrammarTag tag,
-  }) {
-    final featureMap = Map<String, GrammarFeature>.fromEntries(
-      List<GrammarFeature>.from(
-        features,
-      ).map((f) => MapEntry<String, GrammarFeature>(f.value, f)),
-    );
-
-    final currentFeature = featureMap[feature];
-    if (currentFeature == null) return this;
-
-    featureMap[feature] = currentFeature.copyWithTag(tag: tag);
-    return copyWith(features: featureMap.values.toList());
-  }
 
   @override
   Map<String, dynamic> toJson() => {
@@ -77,9 +55,6 @@ class GrammarFeature {
     required this.tags,
   });
 
-  GrammarTag? getTag(String tag) =>
-      tags.firstWhereOrNull((v) => v.value == tag);
-
   GrammarFeature copyWith({
     String? value,
     String? title,
@@ -89,16 +64,6 @@ class GrammarFeature {
     title: title ?? this.title,
     tags: tags ?? this.tags,
   );
-
-  GrammarFeature copyWithTag({required GrammarTag tag}) {
-    final tagsMap = Map<String, GrammarTag>.fromEntries(
-      List<GrammarTag>.from(
-        tags,
-      ).map((v) => MapEntry<String, GrammarTag>(v.value, v)),
-    );
-    tagsMap[tag.value] = tag;
-    return copyWith(tags: tagsMap.values.toList());
-  }
 
   Map<String, dynamic> toJson() => {
     "feature": value,
