@@ -197,6 +197,7 @@ class PangeaController {
       'course_location_media_storage',
       'course_location_storage',
       'course_media_storage',
+      'grammar_constructs_storage',
     ];
 
     // only clear course data if the base language has changed
