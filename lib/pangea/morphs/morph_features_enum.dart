@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
-import 'package:fluffychat/l10n/l10n.dart';
-
 enum MorphFeaturesEnum {
   Pos,
   AdvType,
@@ -63,71 +61,6 @@ enum MorphFeaturesEnum {
 
     MorphFeatureUtil.set(category, morph);
     return morph;
-  }
-
-  String getDisplayCopy(BuildContext context) {
-    switch (this) {
-      case MorphFeaturesEnum.Pos:
-        return L10n.of(context).grammarCopyPOS;
-      case MorphFeaturesEnum.AdvType:
-        return L10n.of(context).grammarCopyADVTYPE;
-      case MorphFeaturesEnum.Aspect:
-        return L10n.of(context).grammarCopyASPECT;
-      case MorphFeaturesEnum.Case:
-        return L10n.of(context).grammarCopyCASE;
-      case MorphFeaturesEnum.ConjType:
-        return L10n.of(context).grammarCopyCONJTYPE;
-      case MorphFeaturesEnum.Definite:
-        return L10n.of(context).grammarCopyDEFINITE;
-      case MorphFeaturesEnum.Degree:
-        return L10n.of(context).grammarCopyDEGREE;
-      case MorphFeaturesEnum.Evident:
-        return L10n.of(context).grammarCopyEVIDENT;
-      case MorphFeaturesEnum.Foreign:
-        return L10n.of(context).grammarCopyFOREIGN;
-      case MorphFeaturesEnum.Gender:
-        return L10n.of(context).grammarCopyGENDER;
-      case MorphFeaturesEnum.Mood:
-        return L10n.of(context).grammarCopyMOOD;
-      case MorphFeaturesEnum.NounType:
-        return L10n.of(context).grammarCopyNOUNTYPE;
-      case MorphFeaturesEnum.NumForm:
-        return L10n.of(context).grammarCopyNUMFORM;
-      case MorphFeaturesEnum.NumType:
-        return L10n.of(context).grammarCopyNUMTYPE;
-      case MorphFeaturesEnum.Number:
-        return L10n.of(context).grammarCopyNUMBER;
-      case MorphFeaturesEnum.NumberPsor:
-        return L10n.of(context).grammarCopyNUMBERPSOR;
-      case MorphFeaturesEnum.Person:
-        return L10n.of(context).grammarCopyPERSON;
-      case MorphFeaturesEnum.Polarity:
-        return L10n.of(context).grammarCopyPOLARITY;
-      case MorphFeaturesEnum.Polite:
-        return L10n.of(context).grammarCopyPOLITE;
-      case MorphFeaturesEnum.Poss:
-        return L10n.of(context).grammarCopyPOSS;
-      case MorphFeaturesEnum.PrepCase:
-        return L10n.of(context).grammarCopyPREPCASE;
-      case MorphFeaturesEnum.PronType:
-        return L10n.of(context).grammarCopyPRONTYPE;
-      case MorphFeaturesEnum.PunctSide:
-        return L10n.of(context).grammarCopyPUNCTSIDE;
-      case MorphFeaturesEnum.PunctType:
-        return L10n.of(context).grammarCopyPUNCTTYPE;
-      case MorphFeaturesEnum.Reflex:
-        return L10n.of(context).grammarCopyREFLEX;
-      case MorphFeaturesEnum.Tense:
-        return L10n.of(context).grammarCopyTENSE;
-      case MorphFeaturesEnum.VerbForm:
-        return L10n.of(context).grammarCopyVERBFORM;
-      case MorphFeaturesEnum.VerbType:
-        return L10n.of(context).grammarCopyVERBTYPE;
-      case MorphFeaturesEnum.Voice:
-        return L10n.of(context).grammarCopyVOICE;
-      case MorphFeaturesEnum.Unknown:
-        return L10n.of(context).grammarCopyUNKNOWN;
-    }
   }
 
   /// the subset of morphological categories that are important to practice for learning the language
