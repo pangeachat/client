@@ -108,7 +108,6 @@ class MessageMorphChoiceItemState extends State<MessageMorphChoiceItem> {
                       ),
                       morphTag: widget.cId.lemma,
                       size: Size(iconSize, iconSize),
-                      showTooltip: false,
                     ),
                   ),
                   Text(

@@ -34,14 +34,14 @@ class GrammarConstructsProvider {
   static Future<String?> fetchTagDescription({
     required String feature,
     required String tag,
-  }) async => (await _fetchTag(feature: feature, tag: tag))?.description;
+  }) async => (await fetchTag(feature: feature, tag: tag))?.description;
 
   static GrammarTag? _getTag({required String feature, required String tag}) {
     final morphs = getFeaturesAndTags();
     return morphs.getTag(feature, tag);
   }
 
-  static Future<GrammarTag?> _fetchTag({
+  static Future<GrammarTag?> fetchTag({
     required String feature,
     required String tag,
   }) async {
@@ -123,5 +123,6 @@ class GrammarConstructsProvider {
 
     final updatedConstructs = constructs.copyWith(features: updatedFeatures);
     await GrammarConstructsRepo.instance.setCached(request, updatedConstructs);
+    LocalizedMorphFeaturesAndTags.clearLookupCache();
   }
 }

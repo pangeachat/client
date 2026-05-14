@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 
@@ -8,8 +7,8 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 
 class MorphMeaningWidget extends StatefulWidget {
@@ -31,28 +30,22 @@ class MorphMeaningWidget extends StatefulWidget {
 }
 
 class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
-  bool _editMode = false;
-
-  late TextEditingController _controller;
-  static const int maxCharacters = 140;
-
-  String? _definition;
+  GrammarTag? _tag;
   bool _isLoading = true;
-
-  @override
-  void didUpdateWidget(covariant MorphMeaningWidget oldWidget) {
-    if (oldWidget.tag != widget.tag || oldWidget.feature != widget.feature) {
-      _isLoading = true;
-      _loadMorphMeaning();
-    }
-    super.didUpdateWidget(oldWidget);
-  }
+  bool _editMode = false;
 
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController();
     _loadMorphMeaning();
+  }
+
+  @override
+  void didUpdateWidget(covariant MorphMeaningWidget oldWidget) {
+    if (oldWidget.tag != widget.tag || oldWidget.feature != widget.feature) {
+      _loadMorphMeaning();
+    }
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -61,48 +54,48 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
     super.dispose();
   }
 
+  final _controller = TextEditingController();
+
   String get _blankDescription =>
       widget.blankErrorFeedback ? '' : L10n.of(context).meaningNotFound;
+
+  void _setEditMode(bool value) => setState(() => _editMode = value);
 
   Future<void> _loadMorphMeaning() async {
     if (mounted) {
       setState(() {
         _isLoading = true;
-        _definition = null;
+        _tag = null;
       });
     }
 
-    final response = await GrammarConstructsProvider.fetchTagDescription(
+    final tag = await GrammarConstructsProvider.fetchTag(
       feature: widget.feature.name,
       tag: widget.tag,
     );
 
-    final description = response ?? _blankDescription;
-    _controller.text = description.substring(
-      0,
-      min(description.length, maxCharacters),
-    );
+    final description = tag?.description ?? _blankDescription;
+    _controller.text = description;
 
     if (mounted) {
       setState(() {
         _isLoading = false;
-        _definition = description;
+        _tag = tag;
       });
     }
   }
 
-  void _toggleEditMode(bool value) => setState(() => _editMode = value);
-
-  Future<void> editMorphMeaning(String userEdit) async {
-    final truncatedEdit = userEdit.length > maxCharacters
-        ? userEdit.substring(0, maxCharacters)
-        : userEdit;
+  Future<void> _setMorphMeaning() async {
+    final text = _controller.text;
+    if (text.isEmpty || text == _tag?.description) {
+      return;
+    }
 
     try {
       await GrammarConstructsProvider.setTagDescription(
         feature: widget.feature.name,
         tag: widget.tag,
-        description: truncatedEdit,
+        description: text,
       ).timeout(Duration(seconds: 10));
     } catch (e, s) {
       if (e is TimeoutException) {
@@ -110,8 +103,10 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
       }
     }
 
-    _toggleEditMode(false);
-    _loadMorphMeaning();
+    if (mounted) {
+      _setEditMode(false);
+      _loadMorphMeaning();
+    }
   }
 
   @override
@@ -120,14 +115,12 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
       return const TextLoadingShimmer();
     }
 
-    if (_editMode) {
+    if (_editMode && _tag != null) {
       return MorphEditView(
-        morphFeature: widget.feature,
-        morphTag: widget.tag,
-        meaning: _definition ?? "",
+        tag: _tag!,
         controller: _controller,
-        toggleEditMode: _toggleEditMode,
-        editMorphMeaning: editMorphMeaning,
+        exit: () => _setEditMode(false),
+        save: _setMorphMeaning,
       );
     }
 
@@ -135,11 +128,11 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
       triggerMode: TooltipTriggerMode.tap,
       message: L10n.of(context).doubleClickToEdit,
       child: GestureDetector(
-        onLongPress: () => _toggleEditMode(true),
-        onDoubleTap: () => _toggleEditMode(true),
+        onLongPress: () => _setEditMode(true),
+        onDoubleTap: () => _setEditMode(true),
         child: Text(
           textAlign: TextAlign.center,
-          _definition ?? L10n.of(context).meaningNotFound,
+          _tag?.description ?? L10n.of(context).meaningNotFound,
           style: widget.style,
         ),
       ),
@@ -148,49 +141,40 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
 }
 
 class MorphEditView extends StatelessWidget {
-  final MorphFeaturesEnum morphFeature;
-  final String morphTag;
-  final String meaning;
+  final GrammarTag tag;
+  final VoidCallback exit;
+  final VoidCallback save;
   final TextEditingController controller;
-  final void Function(bool) toggleEditMode;
-  final void Function(String) editMorphMeaning;
 
   const MorphEditView({
-    required this.morphFeature,
-    required this.morphTag,
-    required this.meaning,
+    required this.tag,
+    required this.exit,
+    required this.save,
     required this.controller,
-    required this.toggleEditMode,
-    required this.editMorphMeaning,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      spacing: 10.0,
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).whatIsMeaning(getGrammarCopy(category: morphFeature.name, lemma: morphTag, context: context) ?? morphTag, '')}",
+          "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).whatIsMeaning(tag.title, '')}",
           textAlign: TextAlign.center,
           style: const TextStyle(fontStyle: FontStyle.italic),
         ),
-        const SizedBox(height: 10),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: TextField(
-            minLines: 1,
-            maxLines: 3,
-            maxLength: MorphMeaningWidgetState.maxCharacters,
-            controller: controller,
-          ),
+          child: TextField(minLines: 1, maxLines: 3, controller: controller),
         ),
-        const SizedBox(height: 10),
         Row(
+          spacing: 10.0,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () => toggleEditMode(false),
+              onPressed: exit,
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
@@ -199,12 +183,8 @@ class MorphEditView extends StatelessWidget {
               ),
               child: Text(L10n.of(context).cancel),
             ),
-            const SizedBox(width: 10),
             ElevatedButton(
-              onPressed: () =>
-                  controller.text != meaning && controller.text.isNotEmpty
-                  ? editMorphMeaning(controller.text)
-                  : null,
+              onPressed: save,
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),

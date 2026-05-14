@@ -96,7 +96,6 @@ class MessageMorphInputBarContentState
               morphFeature: morph,
               morphTag: null,
               size: Size(iconSize, iconSize),
-              showTooltip: false,
             ),
             Flexible(
               child: Text(

@@ -55,6 +55,11 @@ class LocalizedMorphFeaturesAndTags {
 
   List<LocalizedMorphFeatureTags> get features => _features;
 
+  static void clearLookupCache() {
+    _tagLookup.clear();
+    _featureLookup.clear();
+  }
+
   LocalizedMorphFeatureTags? _getFeature(String feature) =>
       _features.firstWhereOrNull(
         (f) => f.feature.value.toLowerCase() == feature.toLowerCase(),
