@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 
@@ -30,10 +30,9 @@ class MorphTagDisplay extends StatelessWidget {
         ),
         const SizedBox(width: 10.0),
         Text(
-          getGrammarCopy(
-                category: _morphFeature.name,
-                lemma: _morphTag,
-                context: context,
+          GrammarConstructsProvider.getTagTitle(
+                feature: _morphFeature.name,
+                tag: _morphTag,
               ) ??
               _morphTag,
           style: Theme.of(
