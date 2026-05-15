@@ -32,8 +32,8 @@ test.describe("Message Toolbar", () => {
     // playwright todo: move away from hardcoded name?
     await page.getByRole("button", { name: "playwright" }).click();
 
-    // Check that appropriate buttons are enabled on toolbar for message in L1
-    // Select L1 message 
+    // Test toolbar mode behaviors
+    // Select L2 message 
 
     // getByRole and getByText don't seem to work
     // so this clicks a specific spot on the screen 
@@ -44,14 +44,37 @@ test.describe("Message Toolbar", () => {
       await page.mouse.click(viewport.width - 122, viewport.height - 122);
     }
 
-    // Check that toolbar buttons are shown
-    await expect(page.getByRole("button", { name: intl.playAudio, exact: true })).toBeVisible();
-    await expect(page.getByRole("button", { name: intl.translationTooltip, exact: true })).toBeVisible();
-    await expect(page.getByRole("button", { name: intl.practice, exact: true })).toBeVisible();
-    await expect(page.getByRole("button", { name: intl.emojiView, exact: true })).toBeVisible();
     await expect(page.getByRole("button", { name: intl.more, exact: true })).toBeVisible();
 
-    // Playwright todo: Once load testing is set up, test button behavior
+    // Audio mode should not show mode disabled snackbar
+    await page.getByRole("button", { name: intl.playAudio, exact: true }).click();
+    await expect(page.getByText(intl.modeDisabled)).toBeHidden();
 
+    // Translation mode should show translated text
+    // playwright todo: don't hardcode translation?
+    await page.getByRole("button", { name: intl.translationTooltip, exact: true }).click();
+    await expect(page.getByText("Please")).toBeVisible();
+
+    // Emoji mode should show explanation snackbar
+    await page.getByRole("button", { name: intl.emojiView, exact: true }).click();
+    await expect(page.getByText(intl.emojiToolbarInstruction)).toBeVisible();
+
+    // Practice mode should show practice mode buttons
+    await page.getByRole("button", { name: intl.practice, exact: true }).click();
+
+    // Pressing practice mode buttons works
+    // Assumes all modes are available for the message, 
+    // and that instructions are shown
+    await page.getByRole("button", { name: intl.listen, exact: true }).click();
+    await expect(page.getByText(intl.chooseWordAudioInstructionsBody)).toBeVisible();
+
+    await page.getByRole("button", { name: intl.grammar, exact: true }).click();
+    await expect(page.getByText(intl.chooseMorphsInstructionsBody)).toBeVisible();
+
+    await page.getByRole("button", { name: intl.meaning, exact: true }).click();
+    await expect(page.getByText(intl.chooseLemmaMeaningInstructionsBody)).toBeVisible();
+
+    await page.getByRole("button", { name: intl.image, exact: true }).click();
+    await expect(page.getByText(intl.chooseEmojiInstructionsBody)).toBeVisible();
   });
 });
