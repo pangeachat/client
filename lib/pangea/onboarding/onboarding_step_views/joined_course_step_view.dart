@@ -16,8 +16,7 @@ class JoinedCourseStepView extends StatelessWidget {
   Room? get _room {
     final roomId = step.state.joinedRoomId;
     if (roomId == null) return null;
-    step.client.getRoomById(roomId);
-    return null;
+    return step.client.getRoomById(roomId);
   }
 
   @override
