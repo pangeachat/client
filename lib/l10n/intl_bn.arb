@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-06 14:59:30.682154",
+    "@@last_modified": "2026-05-12 10:37:02.460914",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -11713,6 +11713,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "দয়া করে বৈধ ভিত্তি এবং লক্ষ্য ভাষা নির্বাচন করুন",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

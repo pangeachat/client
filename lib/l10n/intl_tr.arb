@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-05-06 14:59:15.467582",
+    "@@last_modified": "2026-05-12 10:36:54.065224",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -11329,6 +11329,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Lütfen geçerli bir temel ve hedef dil seçin",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

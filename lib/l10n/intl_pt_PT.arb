@@ -3045,7 +3045,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-05-06 14:59:04.207574",
+    "@@last_modified": "2026-05-12 10:36:42.702047",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -12074,6 +12074,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Por favor, escolha idiomas base e alvo válidos",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

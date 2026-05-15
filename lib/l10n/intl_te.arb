@@ -1736,7 +1736,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-05-06 14:59:17.823030",
+    "@@last_modified": "2026-05-12 10:36:55.084822",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -12119,6 +12119,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "దయచేసి చెల్లుబాటు అయ్యే ప్రాథమిక మరియు లక్ష్య భాషలను ఎంచుకోండి",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-05-06 14:59:55.428074",
+    "@@last_modified": "2026-05-12 10:37:17.036101",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -11395,6 +11395,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Veuillez choisir des langues de base et cibles valides",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

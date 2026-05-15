@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-05-06 14:59:35.594563",
+    "@@last_modified": "2026-05-12 10:37:04.597489",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -11107,6 +11107,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Proszę wybrać prawidłowe języki bazowe i docelowe",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

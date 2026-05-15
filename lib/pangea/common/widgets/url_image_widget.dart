@@ -6,7 +6,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 import 'package:shimmer/shimmer.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/widgets/blur_hash.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 
@@ -30,6 +32,7 @@ class ImageByUrl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final imageUrl = this.imageUrl;
     if (imageUrl == null) {
       return replacement ?? const SizedBox();
     }
@@ -45,39 +48,50 @@ class ImageByUrl extends StatelessWidget {
       height: width,
       child: ClipRRect(
         borderRadius: borderRadius,
-        child: imageUrl!.toString().startsWith("mxc")
-            ? MxcImage(
-                uri: imageUrl,
+        child: AppConfig.isAllowedImage(imageUrl)
+            ? imageUrl.toString().startsWith("mxc")
+                  ? MxcImage(
+                      uri: imageUrl,
+                      width: width,
+                      height: width,
+                      cacheKey: imageUrl.toString(),
+                      fit: fit,
+                      isThumbnail: isThumbnail,
+                    )
+                  : CachedNetworkImage(
+                      width: width,
+                      height: width,
+                      fit: fit,
+                      imageUrl: imageUrl.toString(),
+                      placeholder: (context, url) => Shimmer.fromColors(
+                        baseColor: Theme.of(
+                          context,
+                        ).colorScheme.primary.withAlpha(20),
+                        highlightColor: Theme.of(
+                          context,
+                        ).colorScheme.primary.withAlpha(50),
+                        child: Container(
+                          width: width,
+                          height: width,
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.surface,
+                          ),
+                        ),
+                      ),
+                      errorWidget: (context, url, error) =>
+                          replacement ?? const SizedBox(),
+                      httpHeaders: headers,
+                      imageRenderMethodForWeb: ImageRenderMethodForWeb.HttpGet,
+                    )
+            : SizedBox(
                 width: width,
                 height: width,
-                cacheKey: imageUrl.toString(),
-                fit: fit,
-                isThumbnail: isThumbnail,
-              )
-            : CachedNetworkImage(
-                width: width,
-                height: width,
-                fit: fit,
-                imageUrl: imageUrl.toString(),
-                placeholder: (context, url) => Shimmer.fromColors(
-                  baseColor: Theme.of(
-                    context,
-                  ).colorScheme.primary.withAlpha(20),
-                  highlightColor: Theme.of(
-                    context,
-                  ).colorScheme.primary.withAlpha(50),
-                  child: Container(
-                    width: width,
-                    height: width,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.surface,
-                    ),
-                  ),
+                child: BlurHash(
+                  blurhash: 'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
+                  width: width ?? 150.0,
+                  height: width ?? 150.0,
+                  fit: fit,
                 ),
-                errorWidget: (context, url, error) =>
-                    replacement ?? const SizedBox(),
-                httpHeaders: headers,
-                imageRenderMethodForWeb: ImageRenderMethodForWeb.HttpGet,
               ),
       ),
     );

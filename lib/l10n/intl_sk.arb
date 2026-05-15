@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-05-06 14:58:27.675425",
+    "@@last_modified": "2026-05-12 10:36:15.463457",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -12114,6 +12114,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Prosím, vyberte platné základné a cieľové jazyky",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

@@ -164,7 +164,7 @@ class SignupPageController extends State<SignupPage> {
       },
     );
 
-    if (!resp.isError) context.go('/registration/create');
+    if (!resp.isError) context.go('/registration');
   }
 
   Future<void> _signupFuture() async {

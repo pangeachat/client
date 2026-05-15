@@ -106,6 +106,16 @@ Once in a room:
 - **Hash routing** — all Flutter routes use `/#/` prefix. Direct navigation works.
 - **Session is ephemeral** — the Playwright browser doesn't share the user's Chrome session. You must log in each time.
 
+## Bypassing Paid Backend Calls
+
+The choreographer supports a per-request `mock` field. When the client sends `mock: true` on a request, choreo runs the full request path (auth, CMS, metering, audits, retries) but swaps every paid third-party call (OpenAI / Anthropic / Vertex chat, embeddings, image-gen, Google TTS, Whisper / Google STT / Deepgram) for a canned, schema-shaped response. Use this to keep Playwright runs deterministic and free.
+
+- Set `MOCK_LLM_LATENCY_OVERRIDE_S=0` in the Playwright env so each mocked response returns instantly (default profiles add realistic latency for load testing).
+- The flag does **not** auto-propagate. Add `mock=true` on the client's choreo request classes when the Playwright run wants mocked responses.
+- Mocked responses are deterministic but obviously bogus (WA returns one double-spaced edit; image-gen returns `mock.pangea.chat/transparent-1x1.png`). Assert on shape, not content.
+
+Full contract, env knobs, and known intentional skips: see [`testing.instructions.md` in `pangeachat/.github`](https://github.com/pangeachat/.github/blob/main/.github/instructions/testing.instructions.md#mock-mode-reqmocktrue).
+
 ## Limitations
 
 - SSO login (Apple/Google) cannot be automated — use email/password login only.

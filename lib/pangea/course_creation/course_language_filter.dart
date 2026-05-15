@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/course_creation/course_plan_filter_widget.dart';
-import 'package:fluffychat/pangea/languages/language_display_name_widget.dart';
+import 'package:fluffychat/pangea/languages/language_display_name_postfix_widget.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -26,7 +26,7 @@ class CourseLanguageFilter extends StatelessWidget {
       items: langs,
       displayname: (v) => Row(
         children: [
-          LanguageDisplayNameWidget(
+          LanguageDisplayNamePostfixWidget(
             v,
             style: DefaultTextStyle.of(context).style,
             iconSize: 18.0,
