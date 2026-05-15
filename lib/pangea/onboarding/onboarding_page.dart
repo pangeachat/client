@@ -96,6 +96,7 @@ class OnboardingController extends State<Onboarding> {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 450),
           child: Row(
