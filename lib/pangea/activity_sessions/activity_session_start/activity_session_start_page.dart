@@ -24,7 +24,6 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/room_summaries/activity_sessions_status_model.dart';
 import 'package:fluffychat/pangea/room_summaries/room_summaries_model.dart';
-import 'package:fluffychat/pangea/room_summaries/room_summaries_repo.dart';
 import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -353,10 +352,9 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
     }
 
     if (roomIds.isEmpty) return;
-    final roomSummariesRepo = RoomSummariesRepo(Matrix.of(context).client);
-    final roomSummariesResponse = await roomSummariesRepo.loadRoomSummaries(
-      roomIds.toList(),
-    );
+    final roomSummariesResponse = await Matrix.of(
+      context,
+    ).client.loadRoomSummaries(roomIds.toList());
     _roomSummariesModel = ActivitySessionSummariesModel(
       roomSummariesResponse,
       activityId: widget.activityId,

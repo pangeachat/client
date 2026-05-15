@@ -36,8 +36,23 @@ extension RoomSummaryExtension on Api {
 }
 
 extension RoomSummaryRequest on Client {
-  Future<RoomSummariesResponse> requestRoomSummaries(List<String> roomIds) =>
-      getRoomSummaries(roomIds);
+  Future<Map<String, RoomSummaryResponse>> loadRoomSummaries(
+    List<String> roomIds,
+  ) async {
+    final batches = _batchRoomIdRequests(roomIds);
+    final responses = await Future.wait(
+      batches.map((b) => getRoomSummaries(roomIds)),
+    );
+    return {for (final r in responses) ...r.summaries};
+  }
+
+  List<List<String>> _batchRoomIdRequests(List<String> roomIds) {
+    const int batchSize = 50;
+    return [
+      for (var i = 0; i < roomIds.length; i += batchSize)
+        roomIds.sublist(i, (i + batchSize).clamp(0, roomIds.length)),
+    ];
+  }
 }
 
 class RoomSummariesResponse {
