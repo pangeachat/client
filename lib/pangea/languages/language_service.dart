@@ -6,16 +6,20 @@ import 'package:universal_io/io.dart';
 
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
+import 'package:fluffychat/pangea/learning_settings/p_language_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import '../learning_settings/p_language_dialog.dart';
 
 class LanguageService {
-  static void showDialogOnEmptyLanguage(
-    BuildContext context,
-    Function callback,
-  ) {
+  static Future<void> showDialogOnEmptyLanguage(BuildContext context) async {
     if (!MatrixState.pangeaController.userController.languagesSet) {
-      pLanguageDialog(context, callback);
+      final l1 = MatrixState.pangeaController.userController.userL1;
+      final l2 = MatrixState.pangeaController.userController.userL2;
+      await showDialog(
+        context: context,
+        builder: (context) =>
+            PLanguageDialog(initialBaseLanguage: l1, initialTargetLanguage: l2),
+        barrierDismissible: false,
+      );
     }
   }
 

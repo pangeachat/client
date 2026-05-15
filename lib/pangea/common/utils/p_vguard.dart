@@ -28,7 +28,7 @@ class PAuthGaurd {
     // If user hasn't set their L2,
     // and their URL doesn’t include ‘course,’ redirect
     final bool hasSetL2 = await pController!.userController.isUserL2Set;
-    return !hasSetL2 ? '/registration/create' : '/rooms';
+    return !hasSetL2 ? '/registration' : '/rooms';
   }
 
   /// Redirect for /rooms routes
@@ -50,7 +50,7 @@ class PAuthGaurd {
     // If user hasn't set their L2,
     // and their URL doesn’t include ‘course,’ redirect
     final bool hasSetL2 = await pController!.userController.isUserL2Set;
-    return !hasSetL2 ? '/registration/create' : null;
+    return !hasSetL2 ? '/registration' : null;
   }
 
   /// Redirect for onboarding routes

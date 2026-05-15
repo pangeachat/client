@@ -15,11 +15,11 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
-import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/choreographer/igc/igc_request_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/message_constants.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -29,7 +29,7 @@ import '../events/constants/pangea_event_types.dart';
 import '../events/models/representation_content_model.dart';
 
 part "../analytics_misc/room_analytics_extension.dart";
-part "room_capacity_extension.dart";
+part "../chat_settings/utils/room_capacity_extension.dart";
 part "room_children_and_parents_extension.dart";
 part "room_events_extension.dart";
 part "room_information_extension.dart";

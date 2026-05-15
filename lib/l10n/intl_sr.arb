@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-06 14:59:51.202317",
+    "@@last_modified": "2026-05-12 10:37:14.626553",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -12121,6 +12121,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Молимо вас да изаберете валидне основне и циљне језике",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

@@ -22,7 +22,6 @@ import 'package:fluffychat/pages/device_settings/device_settings.dart';
 import 'package:fluffychat/pages/login/login.dart';
 import 'package:fluffychat/pages/new_group/new_group.dart';
 import 'package:fluffychat/pages/new_private_chat/new_private_chat.dart';
-import 'package:fluffychat/pages/onboarding/space_code_onboarding.dart';
 import 'package:fluffychat/pages/settings/settings.dart';
 import 'package:fluffychat/pages/settings_3pid/settings_3pid.dart';
 import 'package:fluffychat/pages/settings_chat/settings_chat.dart';
@@ -49,15 +48,15 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/course_creation/course_invite_page.dart';
 import 'package:fluffychat/pangea/course_creation/public_course_preview.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_page.dart';
+import 'package:fluffychat/pangea/course_plans/course_code_page.dart';
+import 'package:fluffychat/pangea/course_plans/find_course_page.dart';
+import 'package:fluffychat/pangea/course_plans/new_course_page.dart';
 import 'package:fluffychat/pangea/join_codes/join_with_link_page.dart';
 import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
-import 'package:fluffychat/pangea/login/pages/course_code_page.dart';
 import 'package:fluffychat/pangea/login/pages/create_pangea_account_page.dart';
-import 'package:fluffychat/pangea/login/pages/find_course_page.dart';
-import 'package:fluffychat/pangea/login/pages/language_selection_page.dart';
 import 'package:fluffychat/pangea/login/pages/login_or_signup_view.dart';
-import 'package:fluffychat/pangea/login/pages/new_course_page.dart';
 import 'package:fluffychat/pangea/login/pages/signup.dart';
+import 'package:fluffychat/pangea/onboarding/onboarding_page.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
@@ -140,24 +139,17 @@ abstract class AppRoutes {
         ),
         // #Pangea
         GoRoute(
-          path: 'language',
+          path: 'signup',
           pageBuilder: (context, state) =>
-              defaultPageBuilder(context, state, const LanguageSelectionPage()),
+              defaultPageBuilder(context, state, const SignupPage()),
           routes: [
             GoRoute(
-              path: 'signup',
-              pageBuilder: (context, state) =>
-                  defaultPageBuilder(context, state, const SignupPage()),
-              routes: [
-                GoRoute(
-                  path: 'email',
-                  pageBuilder: (context, state) => defaultPageBuilder(
-                    context,
-                    state,
-                    const SignupPage(withEmail: true),
-                  ),
-                ),
-              ],
+              path: 'email',
+              pageBuilder: (context, state) => defaultPageBuilder(
+                context,
+                state,
+                const SignupPage(withEmail: true),
+              ),
             ),
           ],
         ),
@@ -176,32 +168,16 @@ abstract class AppRoutes {
     ),
     // #Pangea
     GoRoute(
+      path: '/onboarding',
+      pageBuilder: (context, state) =>
+          defaultPageBuilder(context, state, const Onboarding()),
+      redirect: PAuthGaurd.onboardingRedirect,
+    ),
+    GoRoute(
       path: '/registration',
       pageBuilder: (context, state) =>
-          defaultPageBuilder(context, state, const LanguageSelectionPage()),
+          defaultPageBuilder(context, state, const CreatePangeaAccountPage()),
       redirect: PAuthGaurd.onboardingRedirect,
-      routes: [
-        GoRoute(
-          path: 'create',
-          pageBuilder: (context, state) => defaultPageBuilder(
-            context,
-            state,
-            CreatePangeaAccountPage(
-              directFromLanguageSelection:
-                  state.uri.queryParameters['directFromLanguageSelection'] ==
-                  'true',
-            ),
-          ),
-        ),
-        GoRoute(
-          path: 'course',
-          pageBuilder: (context, state) => defaultPageBuilder(
-            context,
-            state,
-            SpaceCodeOnboarding(showBackButton: state.extra == true),
-          ),
-        ),
-      ],
     ),
     GoRoute(
       path: '/join_with_link',

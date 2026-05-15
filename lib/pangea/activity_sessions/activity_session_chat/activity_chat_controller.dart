@@ -29,7 +29,6 @@ class ActivityChatController {
     init();
   }
 
-  StreamSubscription? _analyticsSubscription;
   bool _disposed = false;
   bool _loadingSummary = false;
 
@@ -40,6 +39,7 @@ class ActivityChatController {
   final ValueNotifier<bool> showActivityDropdown = ValueNotifier(false);
   final ValueNotifier<bool> confettiNotifier = ValueNotifier(false);
 
+  late final StreamSubscription _analyticsSubscription;
   late final StreamSubscription _rolesSubscription;
   late final StreamSubscription _summarySubscription;
 
@@ -47,20 +47,17 @@ class ActivityChatController {
     _updateUsedVocab();
     _setRolesSubscription();
     _setSummarySubscription();
-    _analyticsSubscription = MatrixState
-        .pangeaController
-        .matrixState
-        .analyticsDataService
-        .updateDispatcher
-        .constructUpdateStream
-        .stream
-        .listen((_) => _updateUsedVocab());
+    _setAnalyticsSubscription();
+
+    if (room.isActivityFinished && _summary == null) {
+      _loadActivitySummary();
+    }
   }
 
   Future<void> dispose() async {
     _disposed = true;
     carouselController.dispose();
-    _analyticsSubscription?.cancel();
+    _analyticsSubscription.cancel();
     usedVocab.dispose();
     highlightedRole.dispose();
     showInstructions.dispose();
@@ -84,7 +81,7 @@ class ActivityChatController {
               event.state.type == PangeaEventTypes.activityRole,
         )
         .listen((e) {
-          if (!_loadingSummary && room.isActivityFinished) {
+          if (room.isActivityFinished) {
             _loadActivitySummary();
           }
         });
@@ -98,6 +95,17 @@ class ActivityChatController {
               event.state.type == PangeaEventTypes.activitySummary,
         )
         .listen((e) => showConfetti());
+  }
+
+  void _setAnalyticsSubscription() {
+    _analyticsSubscription = MatrixState
+        .pangeaController
+        .matrixState
+        .analyticsDataService
+        .updateDispatcher
+        .constructUpdateStream
+        .stream
+        .listen((_) => _updateUsedVocab());
   }
 
   void highlightRole(ActivityRoleModel role) {

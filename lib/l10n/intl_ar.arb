@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-05-06 14:59:14.198324",
+    "@@last_modified": "2026-05-12 10:36:53.285384",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -11338,6 +11338,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "يرجى اختيار لغات أساسية وهدف صحيحة",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

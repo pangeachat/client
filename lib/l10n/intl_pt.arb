@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-06 14:58:41.156946",
+    "@@last_modified": "2026-05-12 10:36:23.245995",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -12116,6 +12116,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Por favor, escolha idiomas base e alvo válidos",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

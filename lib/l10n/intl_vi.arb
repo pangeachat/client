@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-06 14:59:21.703683",
+    "@@last_modified": "2026-05-12 10:36:56.752325",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7013,6 +7013,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Vui lòng chọn ngôn ngữ gốc và ngôn ngữ đích hợp lệ",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

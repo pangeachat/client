@@ -36,6 +36,7 @@ class JoinRoomAnalyticsConsentHandler {
       context: context,
       title: L10n.of(context).analyticsAccessNoticeTitle,
       message: L10n.of(context).analyticsAccessNoticeDesc,
+      barrierDismissible: false,
     );
 
     if (noticeResp != OkCancelResult.cancel) {

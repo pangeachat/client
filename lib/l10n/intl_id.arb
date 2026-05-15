@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-06 14:58:24.167936",
+    "@@last_modified": "2026-05-12 10:36:13.475548",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -11095,6 +11095,11 @@
         "placeholders": {}
     },
     "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Silakan pilih bahasa dasar dan target yang valid",
+    "@missingLanguageException": {
         "type": "String",
         "placeholders": {}
     }

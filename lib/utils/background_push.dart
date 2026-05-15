@@ -258,6 +258,24 @@ class BackgroundPush {
     }
   }
 
+  // #Pangea
+  Future<void> cancelAllNotifications() async {
+    Logs().v('Cancel all notifications');
+    await _flutterLocalNotificationsPlugin.cancelAll();
+
+    if ((!Platform.isIOS)) return;
+
+    final enabled = await matrix?.notificationsEnabled;
+    if (enabled != true) return;
+
+    try {
+      FlutterNewBadger.removeBadge();
+    } catch (e) {
+      GoogleAnalytics.failUpdateNotificationBadge();
+    }
+  }
+  // Pangea#
+
   Future<void> setupPusher({
     String? gatewayUrl,
     String? token,

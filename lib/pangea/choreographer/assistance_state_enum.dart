@@ -20,8 +20,9 @@ enum AssistanceStateEnum {
       case AssistanceStateEnum.noSub:
       case AssistanceStateEnum.noMessage:
       case AssistanceStateEnum.fetched:
-      case AssistanceStateEnum.error:
         return Colors.grey[400]!;
+      case AssistanceStateEnum.error:
+        return AppConfig.error;
       case AssistanceStateEnum.notFetched:
       case AssistanceStateEnum.fetching:
         return Theme.of(context).colorScheme.primary;
@@ -49,6 +50,7 @@ enum AssistanceStateEnum {
     AssistanceStateEnum.notFetched => true,
     AssistanceStateEnum.complete => true,
     AssistanceStateEnum.noSub => true,
+    AssistanceStateEnum.error => true,
     _ => false,
   };
 
@@ -59,5 +61,10 @@ enum AssistanceStateEnum {
     AssistanceStateEnum.error => true,
     AssistanceStateEnum.complete => true,
     _ => false,
+  };
+
+  IconData get icon => switch (this) {
+    AssistanceStateEnum.error => Icons.error,
+    _ => Icons.check,
   };
 }
