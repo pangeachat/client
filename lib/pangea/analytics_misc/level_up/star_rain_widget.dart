@@ -98,68 +98,65 @@ class _StarRainWidgetState extends State<StarRainWidget> {
 
   @override
   Widget build(BuildContext context) {
-    const count = 3;
-    const spawnOffsets = [0.2, 0.5, 0.8]; // Relative horizontal positions
-
     return IgnorePointer(
       ignoring: true,
       child: AnimatedOpacity(
         opacity: _fadeOpacity,
         duration: const Duration(milliseconds: 800),
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            // Initial center blast (top center)
-            Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: ConfettiWidget(
-                  confettiController: _blastController,
-                  blastDirectionality: BlastDirectionality.explosive,
-                  shouldLoop: false,
-                  emissionFrequency: .02,
-                  numberOfParticles: 40,
-                  minimumSize: const Size(20, 20),
-                  maximumSize: const Size(25, 25),
-                  minBlastForce: 10,
-                  maxBlastForce: 40,
-                  gravity: 0.07,
-                  colors: const [AppConfig.goldLight, AppConfig.gold],
-                  createParticlePath: drawStar,
-                ),
-              ),
-            ),
-            // Rain confetti from the top (3 fixed spawn points)
-            ...List.generate(count, (index) {
-              return Positioned(
-                top: -30,
-                left: null,
-                right: null,
-                child: FractionallySizedBox(
-                  widthFactor: 0,
-                  alignment: Alignment(spawnOffsets[index] * 2 - 1, -1),
-                  child: ConfettiWidget(
-                    confettiController: _rainController,
-                    blastDirectionality: BlastDirectionality.directional,
-                    blastDirection: 3 * pi / 2,
-                    shouldLoop: false,
-                    maxBlastForce: 5,
-                    minBlastForce: 2,
-                    minimumSize: const Size(20, 20),
-                    maximumSize: const Size(25, 25),
-                    gravity: 0.07,
-                    emissionFrequency: 0.1,
-                    numberOfParticles: numParticles,
-                    colors: const [AppConfig.goldLight, AppConfig.gold],
-                    createParticlePath: drawStar,
+        child: LayoutBuilder(
+          builder: (context, constaints) {
+            final quarterWidth = constaints.maxWidth / 4;
+            return Stack(
+              fit: StackFit.expand,
+              children: [
+                // Initial center blast (top center)
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: ConfettiWidget(
+                      confettiController: _blastController,
+                      blastDirectionality: BlastDirectionality.explosive,
+                      shouldLoop: false,
+                      emissionFrequency: .02,
+                      numberOfParticles: 40,
+                      minimumSize: const Size(20, 20),
+                      maximumSize: const Size(25, 25),
+                      minBlastForce: 10,
+                      maxBlastForce: 40,
+                      gravity: 0.07,
+                      colors: const [AppConfig.goldLight, AppConfig.gold],
+                      createParticlePath: drawStar,
+                    ),
                   ),
                 ),
-              );
-            }),
-          ],
+                // Rain confetti from the top (3 fixed spawn points)
+                ...List.generate(3, (index) {
+                  return Positioned(
+                    top: -30,
+                    left: ((index + 1) * quarterWidth),
+                    child: ConfettiWidget(
+                      confettiController: _rainController,
+                      blastDirectionality: BlastDirectionality.directional,
+                      blastDirection: 3 * pi / 2,
+                      shouldLoop: false,
+                      maxBlastForce: 5,
+                      minBlastForce: 2,
+                      minimumSize: const Size(20, 20),
+                      maximumSize: const Size(25, 25),
+                      gravity: 0.07,
+                      emissionFrequency: 0.1,
+                      numberOfParticles: numParticles,
+                      colors: const [AppConfig.goldLight, AppConfig.gold],
+                      createParticlePath: drawStar,
+                    ),
+                  );
+                }),
+              ],
+            );
+          },
         ),
       ),
     );
