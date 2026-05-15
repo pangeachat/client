@@ -7,7 +7,6 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
@@ -25,7 +24,9 @@ class LemmaUseExampleMessages extends StatelessWidget {
 
   Future<List<List<InlineSpan>>> _getExampleMessages() async {
     final Map<String, _ExampleMessage> examples = {};
-    for (final OneConstructUse use in construct.cappedUses) {
+    final uses = construct.uses;
+    for (int i = uses.length - 1; i >= 0; i--) {
+      final use = uses[i];
       final eventId = use.metadata.eventId;
       final form = use.form;
       if (eventId == null || form == null) continue;

@@ -2769,7 +2769,9 @@ class ChatController extends State<ChatPageWithRoom>
           }
 
           return profile.copyWith(
-            userSettings: profile.userSettings.copyWith(targetLanguage: "unk"),
+            userSettings: profile.userSettings.copyWith(
+              targetLanguage: target.langCode,
+            ),
           );
         }, waitForDataInSync: true);
       },
