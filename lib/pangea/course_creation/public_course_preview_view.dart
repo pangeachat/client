@@ -109,12 +109,28 @@ class PublicCoursePreviewView extends StatelessWidget {
                                       fontSize: descFontSize,
                                     ),
                                   ),
-                                  Row(
+                                  Wrap(
                                     spacing: 8.0,
-                                    mainAxisSize: MainAxisSize.min,
+                                    runSpacing: 8.0,
+                                    alignment: WrapAlignment.center,
                                     children: [
-                                      CourseInfoChips(
-                                        course.uuid,
+                                      CourseInfoChip(
+                                        icon: Icons.language,
+                                        text: course.targetLanguageDisplay,
+                                        fontSize: descFontSize,
+                                        iconSize: smallIconSize,
+                                      ),
+                                      CourseInfoChip(
+                                        icon: Icons.school,
+                                        text: course.cefrLevel.title(context),
+                                        fontSize: descFontSize,
+                                        iconSize: smallIconSize,
+                                      ),
+                                      CourseInfoChip(
+                                        icon: Icons.location_on,
+                                        text: L10n.of(
+                                          context,
+                                        ).numModules(course.topicIds.length),
                                         fontSize: descFontSize,
                                         iconSize: smallIconSize,
                                       ),
