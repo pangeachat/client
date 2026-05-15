@@ -22,7 +22,10 @@ void pLogoutAction(BuildContext context, {bool? isDestructiveAction}) async {
     return;
   }
 
-  final client = Matrix.of(context).client;
+  final matrix = Matrix.of(context);
+  await matrix.backgroundPush?.cancelAllNotifications();
+
+  final client = matrix.client;
   final redirect = client.onLoginStateChanged.stream
       .where((state) => state != LoginState.loggedIn)
       .first
@@ -38,9 +41,8 @@ void pLogoutAction(BuildContext context, {bool? isDestructiveAction}) async {
     context: context,
     future: () async {
       // before wiping out locally cached construct data, save it to the server
-      await Matrix.of(
-        context,
-      ).analyticsDataService.updateService.sendLocalAnalyticsToAnalyticsRoom();
+      await matrix.analyticsDataService.updateService
+          .sendLocalAnalyticsToAnalyticsRoom();
       await client.logout();
     },
   );
