@@ -36,8 +36,8 @@ import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart'
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_feedback.dart';
 import 'package:fluffychat/pangea/audio/multi_platform_audio_player.dart';
 import 'package:fluffychat/pangea/bot/bot_event_extension.dart';
+import 'package:fluffychat/pangea/bot/bot_room_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
-import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
 import 'package:fluffychat/pangea/chat/chat_banner_controller.dart';
 import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
 import 'package:fluffychat/pangea/chat/widgets/level_up_banner.dart';

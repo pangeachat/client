@@ -5,26 +5,48 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/chat_settings/utils/delete_room.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/chat_settings/utils/delete_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class DeleteSpaceDialog extends StatefulWidget {
-  final Room space;
-  const DeleteSpaceDialog({super.key, required this.space});
+  final List<SpaceRoomsChunk$2> roomsChunks;
+  const DeleteSpaceDialog({super.key, required this.roomsChunks});
 
   static Future<void> show(Room room, BuildContext context) async {
-    final resp = await showDialog<List<SpaceRoomsChunk$2>?>(
+    final response = await showOkCancelAlertDialog(
       context: context,
-      builder: (_) => DeleteSpaceDialog(space: room),
+      title: L10n.of(context).areYouSure,
+      message: room.spaceChildCount > 0
+          ? L10n.of(context).deleteSpaceDesc
+          : L10n.of(context).deleteEmptySpaceDesc,
+      isDestructive: true,
     );
-    if (resp == null) return;
+
+    if (response != OkCancelResult.ok) return;
+
+    final resp = await showFutureLoadingDialog<List<SpaceRoomsChunk$2>>(
+      context: context,
+      future: room.getSpaceChildrenToDelete,
+    );
+    final roomChunks = resp.result;
+    if (roomChunks == null) return;
+
+    List<String>? deleteRoomIds;
+    if (roomChunks.isNotEmpty) {
+      final deleteRoomIds = await showDialog<List<String>?>(
+        context: context,
+        builder: (_) => DeleteSpaceDialog(roomsChunks: roomChunks),
+      );
+      if (deleteRoomIds == null) return;
+    }
+
     final result = await showFutureLoadingDialog(
       context: context,
-      future: () => _deleteSpace(room, resp),
+      future: () => room.deleteSpace(deleteRoomIds ?? []),
     );
 
     if (!result.isError) {
@@ -32,52 +54,13 @@ class DeleteSpaceDialog extends StatefulWidget {
     }
   }
 
-  static Future<void> _deleteSpace(
-    Room space,
-    List<SpaceRoomsChunk$2> rooms,
-  ) async {
-    final List<Future<void>> futures = [];
-    for (final room in rooms) {
-      final roomInstance = space.client.getRoomById(room.roomId);
-      if (roomInstance != null) {
-        // Niether delete not leave activities the user has archived,
-        // since they're hidden in the main chat UI.
-        if (roomInstance.isActivitySession) {
-          if (!roomInstance.hasArchivedActivity) {
-            futures.add(roomInstance.leave());
-          }
-        } else {
-          futures.add(roomInstance.delete());
-        }
-      }
-    }
-    await Future.wait(futures);
-    await space.delete();
-  }
-
   @override
   State<DeleteSpaceDialog> createState() => DeleteSpaceDialogState();
 }
 
 class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
-  List<SpaceRoomsChunk$2> _rooms = [];
   final List<SpaceRoomsChunk$2> _roomsToDelete = [];
-
-  bool _loadingRooms = true;
-  String? _roomLoadError;
-
-  final bool _deleting = false;
-  String? _deleteError;
-
   final ScrollController _scrollController = ScrollController();
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => _getSpaceChildrenToDelete(),
-    );
-  }
 
   @override
   void dispose() {
@@ -85,23 +68,17 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
     super.dispose();
   }
 
-  Future<void> _getSpaceChildrenToDelete() async {
-    setState(() {
-      _loadingRooms = true;
-      _roomLoadError = null;
-    });
-
-    try {
-      _rooms = await widget.space.getSpaceChildrenToDelete();
-    } catch (e, s) {
-      _roomLoadError = L10n.of(context).errorLoadingSpaceChildren;
-      ErrorHandler.logError(e: e, s: s, data: {"roomID": widget.space.id});
-    } finally {
-      setState(() {
-        _loadingRooms = false;
-      });
-    }
+  List<SpaceRoomsChunk$2> get _selectableRooms {
+    return widget.roomsChunks.where((chunk) {
+      final room = Matrix.of(context).client.getRoomById(chunk.roomId);
+      return room != null &&
+          room.membership == Membership.join &&
+          room.isRoomAdmin;
+    }).toList();
   }
+
+  List<String> get _selectedRoomIds =>
+      _roomsToDelete.map((r) => r.roomId).toList();
 
   void _onRoomSelected(bool? selected, SpaceRoomsChunk$2 room) {
     if (selected == null ||
@@ -127,185 +104,100 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
     });
   }
 
-  List<SpaceRoomsChunk$2> get _selectableRooms {
-    return _rooms.where((chunk) {
-      final room = widget.space.client.getRoomById(chunk.roomId);
-      return room != null &&
-          room.membership == Membership.join &&
-          room.isRoomAdmin;
-    }).toList();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      shape: RoundedRectangleBorder(
-        side: BorderSide(color: Theme.of(context).colorScheme.error),
-        borderRadius: BorderRadius.circular(32.0),
+    final client = Matrix.of(context).client;
+    final selectableRooms = _selectableRooms;
+    return AlertDialog.adaptive(
+      title: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 256),
+        child: Text(L10n.of(context).selectChats),
       ),
-      child: Container(
-        constraints: const BoxConstraints(maxWidth: 400, maxHeight: 600),
-        padding: const EdgeInsets.symmetric(vertical: 20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              L10n.of(context).areYouSure,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: Theme.of(context).colorScheme.error,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
-                vertical: 8.0,
-              ),
-              child: Text(
-                widget.space.spaceChildCount > 0
-                    ? L10n.of(context).deleteSpaceDesc
-                    : L10n.of(context).deleteEmptySpaceDesc,
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Theme.of(context).colorScheme.error),
-              ),
-            ),
-            if (widget.space.spaceChildCount != 0)
-              Builder(
-                builder: (context) {
-                  if (_loadingRooms) {
-                    return const Center(
-                      child: SizedBox(
-                        height: 20,
-                        width: 20,
-                        child: CircularProgressIndicator.adaptive(),
-                      ),
-                    );
-                  }
-
-                  if (_roomLoadError != null) {
-                    return Center(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 16.0),
-                        child: ErrorIndicator(message: _roomLoadError!),
-                      ),
-                    );
-                  }
-
-                  return Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
+      content: Material(
+        type: MaterialType.transparency,
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: 256, maxHeight: 400),
+          child: widget.roomsChunks.isNotEmpty
+              ? Column(
+                  spacing: 8.0,
+                  children: [
+                    SizedBox(),
+                    if (selectableRooms.length > 1) ...[
+                      Row(
                         children: [
-                          if (_selectableRooms.length > 1) ...[
-                            CheckboxListTile(
-                              value:
-                                  _roomsToDelete.length ==
-                                  _selectableRooms.length,
-                              onChanged: (_) => _toggleSelectAll(),
-                              title: Text(
-                                _roomsToDelete.length == _selectableRooms.length
-                                    ? L10n.of(context).deselectAll
-                                    : L10n.of(context).selectAll,
-                              ),
-                              controlAffinity: ListTileControlAffinity.leading,
-                            ),
-                            Divider(height: 1),
-                          ],
+                          Checkbox(
+                            value:
+                                _roomsToDelete.length == selectableRooms.length,
+                            onChanged: (_) => _toggleSelectAll(),
+                          ),
                           Expanded(
-                            child: Scrollbar(
-                              controller: _scrollController,
-                              thumbVisibility: true,
-                              child: ListView.builder(
-                                controller: _scrollController,
-                                itemCount: _rooms.length,
-                                itemBuilder: (context, index) {
-                                  final chunk = _rooms[index];
+                            child: Text(
+                              _roomsToDelete.length == selectableRooms.length
+                                  ? L10n.of(context).deselectAll
+                                  : L10n.of(context).selectAll,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Divider(height: 1),
+                    ],
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          spacing: 8.0,
+                          children: [
+                            ...widget.roomsChunks.map((chunk) {
+                              final room = client.getRoomById(chunk.roomId);
+                              final isMember =
+                                  room != null &&
+                                  room.membership == Membership.join &&
+                                  room.isRoomAdmin;
 
-                                  final room = widget.space.client.getRoomById(
-                                    chunk.roomId,
-                                  );
-                                  final isMember =
-                                      room != null &&
-                                      room.membership == Membership.join &&
-                                      room.isRoomAdmin;
+                              final displayname =
+                                  chunk.name ??
+                                  chunk.canonicalAlias ??
+                                  L10n.of(context).emptyChat;
 
-                                  final displayname =
-                                      chunk.name ??
-                                      chunk.canonicalAlias ??
-                                      L10n.of(context).emptyChat;
-
-                                  return AnimatedOpacity(
-                                    duration: FluffyThemes.animationDuration,
-                                    opacity: isMember ? 1 : 0.5,
-                                    child: CheckboxListTile(
+                              return AnimatedOpacity(
+                                duration: FluffyThemes.animationDuration,
+                                opacity: isMember ? 1 : 0.5,
+                                child: Row(
+                                  children: [
+                                    Checkbox(
                                       value: _roomsToDelete.contains(chunk),
                                       onChanged: isMember
                                           ? (value) =>
                                                 _onRoomSelected(value, chunk)
                                           : null,
-                                      title: Text(displayname),
-                                      controlAffinity:
-                                          ListTileControlAffinity.leading,
                                     ),
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            Divider(height: 1),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 8.0),
-              child: Row(
-                spacing: 8.0,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  OutlinedButton(
-                    onPressed: Navigator.of(context).pop,
-                    child: Text(L10n.of(context).cancel),
-                  ),
-                  AnimatedSize(
-                    duration: FluffyThemes.animationDuration,
-                    child: OutlinedButton(
-                      onPressed: () =>
-                          Navigator.of(context).pop(_roomsToDelete),
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: Theme.of(context).colorScheme.error,
-                        side: BorderSide(
-                          color: _deleting
-                              ? Theme.of(context).disabledColor
-                              : Theme.of(context).colorScheme.error,
+                                    Expanded(child: Text(displayname)),
+                                  ],
+                                ),
+                              );
+                            }),
+                          ],
                         ),
                       ),
-                      child: _deleting
-                          ? const SizedBox(
-                              height: 10,
-                              width: 100,
-                              child: LinearProgressIndicator(),
-                            )
-                          : Text(L10n.of(context).delete),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            AnimatedSize(
-              duration: FluffyThemes.animationDuration,
-              child: _deleteError != null
-                  ? Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(_deleteError!),
-                    )
-                  : const SizedBox(),
-            ),
-          ],
+                  ],
+                )
+              : SizedBox(),
         ),
       ),
+      actions: [
+        AdaptiveDialogAction(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text(L10n.of(context).cancel),
+        ),
+        AdaptiveDialogAction(
+          onPressed: () => Navigator.of(context).pop(_selectedRoomIds),
+          autofocus: true,
+          child: Text(
+            L10n.of(context).delete,
+            style: TextStyle(color: Theme.of(context).colorScheme.error),
+          ),
+        ),
+      ],
     );
   }
 }

@@ -4,7 +4,8 @@ import 'package:http/http.dart';
 import 'package:matrix/matrix.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
 
-import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_room_types.dart';
 
 extension on Api {
   // Send a POST request to /_synapse/client/pangea/v1/delete_room with JSON body {room_id: string}.
@@ -47,5 +48,25 @@ extension DeleteRoom on Room {
     return rooms
         .where((r) => r.roomType != PangeaRoomTypes.analytics && r.roomId != id)
         .toList();
+  }
+
+  Future<void> deleteSpace(List<String> spaceChildRoomIds) async {
+    final List<Future<void>> futures = [];
+    for (final roomId in spaceChildRoomIds) {
+      final roomInstance = client.getRoomById(roomId);
+      if (roomInstance != null) {
+        // Niether delete not leave activities the user has archived,
+        // since they're hidden in the main chat UI.
+        if (roomInstance.isActivitySession) {
+          if (!roomInstance.hasArchivedActivity) {
+            futures.add(roomInstance.leave());
+          }
+        } else {
+          futures.add(roomInstance.delete());
+        }
+      }
+    }
+    await Future.wait(futures);
+    await delete();
   }
 }
