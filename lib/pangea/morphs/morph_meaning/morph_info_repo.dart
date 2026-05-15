@@ -10,6 +10,7 @@ import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/morphs/morph_meaning/default_morph_info_response.dart';
 import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_request.dart';
 import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_response.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -108,13 +109,13 @@ class MorphInfoRepo {
       return Result.value(resp);
     } catch (e, s) {
       if (e is UnsubscribedException) {
-        return Result.error(e);
+        return Result.value(defaultMorphInfoResponse);
       } else if (e is ChoreoException) {
         ErrorHandler.logError(e: e.errorMessage, s: s, data: request.toJson());
       } else {
         ErrorHandler.logError(e: e, s: s, data: request.toJson());
       }
-      return Result.error(e);
+      return Result.value(defaultMorphInfoResponse);
     }
   }
 
@@ -163,6 +164,9 @@ class MorphInfoRepo {
     final result = await resultFuture; // SAFE: never throws
 
     if (!result.isValue) return; // only cache successful responses
+    // Don't persist the offline fallback or it would be returned forever
+    // once the network comes back.
+    if (identical(result.asValue!.value, defaultMorphInfoResponse)) return;
     await set(request, result.asValue!.value);
   }
 
