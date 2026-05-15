@@ -1,4 +1,4 @@
-part of "pangea_room_extension.dart";
+part of "../../extensions/pangea_room_extension.dart";
 
 extension RoomCapacityExtension on Room {
   Future<void> updateRoomCapacity(int newCapacity) =>

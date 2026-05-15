@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pages/image_viewer/image_viewer.dart';
+import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/utils/file_description.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
-import 'package:fluffychat/widgets/mxc_image.dart';
 import '../../../widgets/blur_hash.dart';
 
 class ImageBubble extends StatelessWidget {
@@ -91,6 +90,11 @@ class ImageBubble extends StatelessWidget {
       );
     }
 
+    // #Pangea
+    final urlContent = event.content['url'];
+    final url = urlContent is String ? Uri.tryParse(urlContent) : null;
+    // Pangea#
+
     return Column(
       mainAxisSize: .min,
       spacing: 8,
@@ -112,27 +116,12 @@ class ImageBubble extends StatelessWidget {
             child: Hero(
               tag: event.eventId,
               // #Pangea
-              child:
-                  event.content['url'] is String &&
-                      !(event.content['url'] as String).startsWith('mxc')
-                  ? CachedNetworkImage(
-                      imageUrl: event.content['url'] as String,
-                      width: width,
-                      height: height,
-                      fit: fit,
-                      placeholder: (context, url) => _buildPlaceholder(context),
-                    )
-                  : MxcImage(
-                      event: event,
-                      width: width,
-                      height: height,
-                      fit: fit,
-                      animated: animated,
-                      isThumbnail: thumbnailOnly,
-                      placeholder: event.messageType == MessageTypes.Sticker
-                          ? null
-                          : _buildPlaceholder,
-                    ),
+              child: ImageByUrl(
+                imageUrl: url,
+                width: width,
+                fit: fit,
+                replacement: _buildPlaceholder(context),
+              ),
               // child: MxcImage(
               //   event: event,
               //   width: width,

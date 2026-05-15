@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
-import 'package:fluffychat/pangea/chat_settings/constants/bot_constants.dart';
-import 'package:fluffychat/pangea/chat_settings/constants/bot_mode.dart';
+import 'package:fluffychat/pangea/bot/bot_constants.dart';
+import 'package:fluffychat/pangea/bot/bot_mode.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';

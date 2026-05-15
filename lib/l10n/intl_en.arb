@@ -4829,5 +4829,6 @@
     "courseCodeStepErrorMessage": "Please check your code and try again",
     "institution": "Institution",
     "courseGoals": "Course Goals",
-    "missingLanguageException": "Please choose valid base and target languages"
+    "missingLanguageException": "Please choose valid base and target languages",
+    "selectChats": "Select Chats"
 }

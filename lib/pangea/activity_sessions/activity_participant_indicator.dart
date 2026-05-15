@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -63,35 +62,22 @@ class ActivityParticipantIndicator extends StatelessWidget {
           child: HoverBuilder(
             builder: (context, hovered) {
               final avatar = userId != null
-                  ? user?.avatarUrl == null ||
-                            user!.avatarUrl!.toString().startsWith("mxc")
-                        ? Avatar(
-                            mxContent: user?.avatarUrl != null
-                                ? user!.avatarUrl!
-                                : null,
-                            name: userId!.localpart,
-                            size: 60.0,
-                            userId: userId,
-                            miniIcon:
-                                room != null &&
-                                    user?.id == BotName.byEnvironment
-                                ? BotSettingsLanguageIcon(user: user!)
-                                : null,
-                            presenceOffset:
-                                room != null &&
-                                    user?.id == BotName.byEnvironment
-                                ? const Offset(0, 0)
-                                : null,
-                          )
-                        : ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: CachedNetworkImage(
-                              imageUrl: user!.avatarUrl!.toString(),
-                              width: 60.0,
-                              height: 60.0,
-                              fit: BoxFit.cover,
-                            ),
-                          )
+                  ? Avatar(
+                      mxContent: user?.avatarUrl != null
+                          ? user!.avatarUrl!
+                          : null,
+                      name: userId!.localpart,
+                      size: 60.0,
+                      userId: userId,
+                      miniIcon:
+                          room != null && user?.id == BotName.byEnvironment
+                          ? BotSettingsLanguageIcon(user: user!)
+                          : null,
+                      presenceOffset:
+                          room != null && user?.id == BotName.byEnvironment
+                          ? const Offset(0, 0)
+                          : null,
+                    )
                   : CircleAvatar(
                       radius: 30.0,
                       backgroundColor: theme.colorScheme.primaryContainer,
