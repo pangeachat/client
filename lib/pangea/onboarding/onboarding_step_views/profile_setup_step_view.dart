@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -144,7 +143,7 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
                       right: 0,
                       bottom: 0,
                       child: IconButton.filled(
-                        icon: Icon(Symbols.upload),
+                        icon: Icon(Icons.file_upload_outlined),
                         onPressed: _uploadAvatarImage,
                         style: IconButton.styleFrom(
                           shape: RoundedRectangleBorder(
