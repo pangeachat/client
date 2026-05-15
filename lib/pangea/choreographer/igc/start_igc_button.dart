@@ -258,7 +258,7 @@ class _StartIGCButtonState extends State<StartIGCButton>
                           opacity: assistanceState.showIcon ? 1.0 : 0.0,
                           child: Icon(
                             size: 18,
-                            Icons.check,
+                            assistanceState.icon,
                             color: assistanceState.stateColor(context),
                           ),
                         ),

@@ -2659,6 +2659,19 @@ class ChatController extends State<ChatPageWithRoom>
 
     final assistanceState = choreographer.assistanceState;
 
+    if (assistanceState == AssistanceStateEnum.error) {
+      final error = choreographer.errorService.error!;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(seconds: 5),
+          showCloseIcon: true,
+          content: Text(error.toLocalizedString(context)),
+        ),
+      );
+      choreographer.errorService.clear();
+      return;
+    }
+
     if (assistanceState == AssistanceStateEnum.noSub) {
       if (manual) {
         PaywallCard.show(
