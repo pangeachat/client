@@ -26,7 +26,7 @@ enum PartOfSpeechEnum {
   intj,
   x;
 
-  bool get isContentWord => [
+  static Set<PartOfSpeechEnum> _contentPartsOfSpeech = {
     PartOfSpeechEnum.noun,
     PartOfSpeechEnum.verb,
     PartOfSpeechEnum.adj,
@@ -34,5 +34,7 @@ enum PartOfSpeechEnum {
     PartOfSpeechEnum.idiom,
     PartOfSpeechEnum.phrasalv,
     PartOfSpeechEnum.compn,
-  ].contains(this);
+  };
+
+  bool get isContentWord => _contentPartsOfSpeech.contains(this);
 }

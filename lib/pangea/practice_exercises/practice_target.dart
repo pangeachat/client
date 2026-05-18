@@ -7,6 +7,8 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
 
@@ -36,13 +38,21 @@ class PracticeTarget {
         morphFeature == null) {
       throw Exception("morphFeature must be defined for morphId activities");
     }
+
+    if (exerciseType == PracticeExerciseTypeEnum.grammarCategory) {
+      _grammarFeature = GrammarConstructsProvider.getFeature(
+        feature: morphFeature!.name,
+      );
+    }
   }
+
+  GrammarFeature? _grammarFeature;
 
   String promptText(BuildContext context) {
     switch (exerciseType) {
       case PracticeExerciseTypeEnum.grammarCategory:
         return L10n.of(context).whatIsTheMorphTag(
-          morphFeature!.getDisplayCopy(context),
+          _grammarFeature?.title ?? morphFeature!.name,
           tokens.first.text.content,
         );
       case PracticeExerciseTypeEnum.grammarError:
@@ -83,7 +93,7 @@ class PracticeTarget {
       exerciseType: type,
       morphFeature: json['morphFeature'] == null
           ? null
-          : MorphFeaturesEnumExtension.fromString(json['morphFeature']),
+          : MorphFeaturesEnum.fromString(json['morphFeature']),
     );
   }
 

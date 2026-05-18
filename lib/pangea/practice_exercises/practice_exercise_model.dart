@@ -69,7 +69,7 @@ sealed class PracticeExerciseModel {
     final type = PracticeExerciseTypeEnum.fromString(json['activity_type']);
 
     final morph = json['morph_feature'] != null
-        ? MorphFeaturesEnumExtension.fromString(json['morph_feature'] as String)
+        ? MorphFeaturesEnum.fromString(json['morph_feature'] as String)
         : null;
 
     final tokens = (json['target_tokens'] as List)

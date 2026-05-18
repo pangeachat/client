@@ -9,8 +9,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
-import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_choice.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_target.dart';
@@ -269,11 +268,12 @@ class _NoActivityContentButton extends StatelessWidget {
       final morphTag = token.morphIdByFeature(morphFeature);
       if (morphTag != null) {
         return Tooltip(
-          message: getGrammarCopy(
-            category: morphFeature.toShortString(),
-            lemma: morphTag.lemma,
-            context: context,
-          ),
+          message:
+              GrammarConstructsProvider.getTagTitle(
+                feature: morphFeature.name,
+                tag: morphTag.lemma,
+              ) ??
+              morphTag.lemma,
           child: SizedBox(
             width: width,
             child: Center(
@@ -286,8 +286,8 @@ class _NoActivityContentButton extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: MorphIcon(
-                    morphFeature: morphFeature,
-                    morphTag: morphTag.lemma,
+                    feature: morphFeature,
+                    tag: morphTag.lemma,
                     size: Size.fromWidth(width - 8.0),
                   ),
                 ),
