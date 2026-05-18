@@ -142,7 +142,7 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
         return;
       }
 
-      final analyticsRoom = analyticsRoomLocal(languageModel);
+      final analyticsRoom = ownAnalyticsRoomLocal(lang: languageModel);
       if (analyticsRoom == null) {
         Logs().w(
           "User has no analytics room for course target language ${languageModel.langCode}",

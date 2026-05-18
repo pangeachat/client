@@ -26,7 +26,7 @@ class CourseChatsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final room = controller.room;
+    final room = controller.space;
     if (room == null) {
       return const Center(child: Icon(Icons.search_outlined, size: 80));
     }

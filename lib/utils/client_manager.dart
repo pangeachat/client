@@ -141,6 +141,7 @@ abstract class ClientManager {
         PangeaEventTypes.activityRole,
         PangeaEventTypes.activitySummary,
         PangeaEventTypes.activityRoomIds,
+        PangeaEventTypes.analyticsStatus,
         PangeaEventTypes.coursePlan,
         PangeaEventTypes.teacherMode,
         PangeaEventTypes.courseChatList,

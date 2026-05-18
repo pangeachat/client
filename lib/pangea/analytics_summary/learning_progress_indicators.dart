@@ -46,7 +46,9 @@ class LearningProgressIndicators extends StatelessWidget {
         final userL1 = MatrixState.pangeaController.userController.userL1;
         final userL2 = MatrixState.pangeaController.userController.userL2;
 
-        final analyticsRoom = Matrix.of(context).client.analyticsRoomLocal();
+        final analyticsRoom = Matrix.of(
+          context,
+        ).client.ownAnalyticsRoomLocalByL2;
         final updater = analyticsService.updateDispatcher;
 
         return StreamBuilder(

@@ -25,6 +25,31 @@ extension UserLemmaInfoExtension on Room {
     }
   }
 
+  Map<String, UserSetLemmaInfo> get allUserSetLemmaInfo {
+    final state = states[PangeaEventTypes.userSetLemmaInfo];
+    if (state == null) return {};
+
+    final Map<String, UserSetLemmaInfo> lemmaInfo = {};
+    for (final entry in state.entries) {
+      try {
+        final userSetLemmaInfo = UserSetLemmaInfo.fromJson(entry.value.content);
+        lemmaInfo[entry.key] = userSetLemmaInfo;
+      } catch (e, s) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {
+            "roomID": id,
+            "stateContent": entry.value.content,
+            "stateKey": entry.key,
+          },
+        );
+      }
+    }
+
+    return lemmaInfo;
+  }
+
   String? constructEmoji(ConstructIdentifier cId) {
     final info = getUserSetLemmaInfo(cId);
     return info.emojis?.firstOrNull;
