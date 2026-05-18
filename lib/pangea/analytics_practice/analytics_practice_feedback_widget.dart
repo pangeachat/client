@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/analytics_details_popup/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
+import 'package:fluffychat/pangea/morphs/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
 
 class AnalyticsPracticeExerciseFeedback extends StatelessWidget {
@@ -26,7 +26,7 @@ class AnalyticsPracticeExerciseFeedback extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: MorphMeaningWidget(
-        feature: selectedChoice.feature,
+        feature: selectedChoice.feature.name,
         tag: selectedChoice.tag,
         blankErrorFeedback: true,
       ),

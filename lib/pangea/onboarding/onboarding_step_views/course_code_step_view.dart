@@ -33,6 +33,7 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
   void initState() {
     super.initState();
     _step = widget.step;
+    _codeController.text = _step.state.courseCode ?? "";
     _codeController.addListener(_setCourseCode);
   }
 

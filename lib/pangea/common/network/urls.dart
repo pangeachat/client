@@ -60,6 +60,13 @@ class PApiUrls {
 
   static String morphFeaturesAndTags = "${PApiUrls._choreoEndpoint}/morphs";
 
+  static String grammarConstructs =
+      "${PApiUrls._choreoEndpoint}/grammar_constructs";
+  static String grammarConstructFeatures =
+      "${PApiUrls._choreoEndpoint}/grammar_constructs/canonical";
+  static String grammarConstructMeaning =
+      "${PApiUrls._choreoEndpoint}/grammar_constructs/meaning";
+
   ///--------------------------- course translations ---------------------------
   static String getLocalizedCourse =
       "${PApiUrls._choreoEndpoint}/course_plans/localize";

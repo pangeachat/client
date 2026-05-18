@@ -23,6 +23,7 @@ class OnboardingStateController {
   LanguageModel? _targetLanguage;
   LanguageLevelTypeEnum? _languageLevel;
 
+  String? _courseCode;
   CoursePlanModel? _joinedCoursePlan;
   String? _joinedRoomId;
 
@@ -32,6 +33,7 @@ class OnboardingStateController {
   LanguageModel? get targetLanguage => _targetLanguage;
   LanguageLevelTypeEnum? get languageLevel => _languageLevel;
 
+  String? get courseCode => _courseCode;
   CoursePlanModel? get joinedCoursePlan => _joinedCoursePlan;
   String? get joinedRoomId => _joinedRoomId;
 
@@ -41,8 +43,8 @@ class OnboardingStateController {
   void setTargetLanguage(LanguageModel? lang) => _targetLanguage = lang;
   void setLanguageLevel(LanguageLevelTypeEnum? level) => _languageLevel = level;
 
+  void setCourseCode(String courseCode) => _courseCode = courseCode;
   void setJoinedCoursePlan(CoursePlanModel coursePlan) =>
       _joinedCoursePlan = coursePlan;
-
   void setJoinedRoomId(String roomId) => _joinedRoomId = roomId;
 }
