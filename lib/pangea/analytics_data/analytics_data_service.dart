@@ -76,8 +76,11 @@ class AnalyticsDataService {
   bool get hasInitError => initError != null;
   bool get isLogged => _analyticsClientGetter.client.isLogged();
 
-  Future<Room?> getAnalyticsRoom(LanguageModel l2) =>
-      _analyticsClientGetter.client.getMyAnalyticsRoom(l2);
+  Room? _getAnalyticsRoomLocal(LanguageModel lang) =>
+      _analyticsClientGetter.client.ownAnalyticsRoomLocal(lang: lang);
+
+  Future<Room?> getAnalyticsRoom(LanguageModel lang) =>
+      _analyticsClientGetter.client.getMyAnalyticsRoom(lang);
 
   void dispose() {
     _syncController?.dispose();
@@ -120,29 +123,45 @@ class AnalyticsDataService {
       _invalidateCaches();
       final l2 = MatrixState.pangeaController.userController.userL2;
       final analyticsUserId = await _analyticsClientGetter.database.getUserID();
-      final analyticsLanguage = await _analyticsClientGetter.database
+      final storedLanguage = await _analyticsClientGetter.database
           .getCurrentLanguage();
 
-      if (analyticsUserId != client.userID || analyticsLanguage == null) {
+      final storedAnalyticsRoomId = l2 != null
+          ? await _analyticsClientGetter.database.getAnalyticsRoomId()
+          : null;
+
+      final analyticsRoomId = l2 != null
+          ? _getAnalyticsRoomLocal(l2)?.id
+          : null;
+
+      if (analyticsUserId != client.userID ||
+          storedLanguage == null ||
+          (storedAnalyticsRoomId == null && analyticsRoomId != null)) {
         // If current language not set, analytics database needs be updated to include language flag, so clear it.
+        // If stored analytics roomID not set, analytics database needs to be updated to include analytics roomID flag, so clear it.
         // If user ID doesn't match, this means that a different user has logged in since the last time the database was initialized,
         // so clear it to avoid showing another user's analytics.
-        _clear();
-        await _analyticsClientGetter.database.clear();
-        await _analyticsClientGetter.database.updateUserID(client.userID!);
-        if (l2 != null) {
-          await _analyticsClientGetter.database.updateCurrentLanguage(
-            l2.langCodeShort,
-          );
-        }
-      } else if (l2 != null && analyticsLanguage != l2.langCodeShort) {
+        _clearLocalCaches();
+        await _hardRefreshDatabase(lang: l2, analyticsRoomId: analyticsRoomId);
+      } else if (l2 != null && storedLanguage != l2.langCodeShort) {
         // If the current language doesn't match the language in the database, this means that
         // the user has switched their L2 since the last time the database was initialized.
         // Clear local cache / merge table data.
-        _clear();
+        _clearLocalCaches();
         await _analyticsClientGetter.database.updateCurrentLanguage(
           l2.langCodeShort,
         );
+        if (analyticsRoomId != null) {
+          await _analyticsClientGetter.database.updateAnalyticsRoomId(
+            analyticsRoomId,
+          );
+        }
+      } else if (analyticsRoomId != null &&
+          analyticsRoomId != storedAnalyticsRoomId) {
+        // Stored language matches L2, but analytics roomIDs do not match.
+        // The data in the database has diverged from the canonical analytics room, and must be fully refreshed.
+        _clearLocalCaches();
+        await _hardRefreshDatabase(lang: l2, analyticsRoomId: analyticsRoomId);
       }
 
       _syncController?.dispose();
@@ -181,6 +200,7 @@ class AnalyticsDataService {
 
       if (l2 != null) {
         await _initMergeTable(l2.langCodeShort);
+        await client.combineAnalyticsRooms(l2);
       }
     } catch (e, s) {
       Logs().e("Error initializing analytics: $e, $s");
@@ -212,22 +232,44 @@ class AnalyticsDataService {
     Logs().i("Reinitializing analytics database.");
     initError = null;
     initCompleter = Completer<void>();
-    _clear();
+    _clearLocalCaches();
     // Notify listeners immediately so the UI transitions from error to loading.
     updateDispatcher.sendEmptyAnalyticsUpdate();
     updateDispatcher.sendActivityAnalyticsUpdate(null);
     await _initDatabase(_analyticsClientGetter.client);
   }
 
-  void _clear() {
+  void _clearLocalCaches() {
     _invalidateCaches();
     _mergeTable.clear();
+  }
+
+  Future<void> _hardRefreshDatabase({
+    required LanguageModel? lang,
+    required String? analyticsRoomId,
+  }) async {
+    await _analyticsClientGetter.database.clear();
+
+    await _analyticsClientGetter.database.updateUserID(
+      _analyticsClientGetter.client.userID!,
+    );
+
+    if (lang == null) return;
+    await _analyticsClientGetter.database.updateCurrentLanguage(
+      lang.langCodeShort,
+    );
+
+    if (analyticsRoomId != null) {
+      await _analyticsClientGetter.database.updateAnalyticsRoomId(
+        analyticsRoomId,
+      );
+    }
   }
 
   Future<void> _closeDatabase() async {
     await _analyticsClient?.database.delete();
     _analyticsClient = null;
-    _clear();
+    _clearLocalCaches();
   }
 
   Future<void> _ensureInitialized() =>

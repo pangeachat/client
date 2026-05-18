@@ -8,7 +8,10 @@ import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/analytics_access/join_room_analytics_access_extension.dart';
+import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/saved_analytics_extension.dart';
+import 'package:fluffychat/pangea/analytics_misc/user_lemma_info_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -16,9 +19,14 @@ import 'package:fluffychat/pangea/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 extension AnalyticsClientExtension on Client {
+  /// Get all my analytics rooms
+  List<Room> get allMyAnalyticsRooms =>
+      rooms.where((e) => e.isAnalyticsRoomOfUser(userID!)).toList();
+
   /// Get the logged in user's analytics room matching
   /// a given langCode. If not present, create it.
   Future<Room?> getMyAnalyticsRoom(LanguageModel lang) async {
@@ -29,17 +37,48 @@ extension AnalyticsClientExtension on Client {
     return _makeAnalyticsRoom(lang);
   }
 
+  List<Room> _analyticsRoomsLocal({
+    required LanguageModel lang,
+    required String userID,
+  }) => rooms
+      .where(
+        (e) => e.isAnalyticsRoomOfUserForLanguage(userID: userID, lang: lang),
+      )
+      .toList();
+
+  Room? _canonicalAnalyticsRoom({
+    required LanguageModel lang,
+    required String userID,
+  }) {
+    final analyticsRooms = _analyticsRoomsLocal(lang: lang, userID: userID);
+    if (analyticsRooms.length <= 1) {
+      return analyticsRooms.firstOrNull;
+    }
+
+    DateTime? oldestCreationDate;
+    Room canonicalAnalyticsRoom = analyticsRooms.first;
+    for (final analyticsRoom in analyticsRooms) {
+      final roomCreationTimestamp = analyticsRoom.creationTimestamp;
+      if (roomCreationTimestamp == null) continue;
+      if (oldestCreationDate == null ||
+          oldestCreationDate.isAfter(roomCreationTimestamp)) {
+        oldestCreationDate = roomCreationTimestamp;
+        canonicalAnalyticsRoom = analyticsRoom;
+      }
+    }
+    return canonicalAnalyticsRoom;
+  }
+
   /// Get local analytics room for a given langCode and userId.
   /// If user is invited to the room, joins the room.
   Room? analyticsRoomLocal({
     required LanguageModel lang,
     required String userID,
   }) {
-    final Room? analyticsRoom = rooms.firstWhereOrNull((e) {
-      return e.isAnalyticsRoom &&
-          e.isAnalyticsRoomOfUser(userID) &&
-          e.isMadeForLang(lang.langCodeShort);
-    });
+    final Room? analyticsRoom = _canonicalAnalyticsRoom(
+      lang: lang,
+      userID: userID,
+    );
 
     if (analyticsRoom != null &&
         analyticsRoom.membership == Membership.invite) {
@@ -51,8 +90,8 @@ extension AnalyticsClientExtension on Client {
           data: {"langCode": lang.langCodeShort, "userID": userID},
         ),
       );
-      return analyticsRoom;
     }
+
     return analyticsRoom;
   }
 
@@ -116,10 +155,6 @@ extension AnalyticsClientExtension on Client {
     grantAnalyticsAccessByAnalyticsRoom(roomID, lang.langCodeShort);
     return getRoomById(roomID)!;
   }
-
-  /// Get all my analytics rooms
-  List<Room> get allMyAnalyticsRooms =>
-      rooms.where((e) => e.isAnalyticsRoomOfUser(userID!)).toList();
 
   /// Update the join rules of all analytics rooms to 'knock'.
   Future<void> updateAnalyticsRoomJoinRules() async {
@@ -245,7 +280,37 @@ extension AnalyticsClientExtension on Client {
     }
   }
 
-  // Future<Room?> _combineAnalyticsRooms(LanguageModel lang) async {
-  //   return null;
-  // }
+  Future<Room?> combineAnalyticsRooms(LanguageModel lang) async {
+    final analyticsRooms = _analyticsRoomsLocal(lang: lang, userID: userID!);
+    final canonicalAnalyticsRoom = _canonicalAnalyticsRoom(
+      lang: lang,
+      userID: userID!,
+    );
+
+    if (canonicalAnalyticsRoom == null || analyticsRooms.length <= 1) {
+      return analyticsRooms.firstOrNull;
+    }
+
+    Logs().w("Canonical analytics room ID: ${canonicalAnalyticsRoom.id}");
+
+    final List<ConstructAnalyticsEvent> constructEvents = [];
+    final List<String> activityRoomIds = [];
+    final Map<String, UserSetLemmaInfo> lemmaInfo = {};
+
+    for (final analyticsRoom in analyticsRooms) {
+      if (analyticsRoom.id == canonicalAnalyticsRoom.id) continue;
+      final roomConstructEvents = await analyticsRoom.getAnalyticsEvents(
+        userId: userID!,
+      );
+
+      constructEvents.addAll(roomConstructEvents ?? []);
+      activityRoomIds.addAll(analyticsRoom.activityRoomIds);
+      lemmaInfo.addAll(analyticsRoom.allUserSetLemmaInfo);
+    }
+
+    Logs().w("Constructs length: ${constructEvents.length}");
+    Logs().w("Activity Room Ids length: ${activityRoomIds.length}");
+    Logs().w("Lemma info: $lemmaInfo");
+    return null;
+  }
 }
