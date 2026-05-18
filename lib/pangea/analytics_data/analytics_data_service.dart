@@ -246,7 +246,8 @@ class AnalyticsDataService {
       _mergeTable.uniqueConstructsByType(type);
 
   Set<ConstructIdentifier> get blockedConstructs {
-    final analyticsRoom = _analyticsClientGetter.client.analyticsRoomLocal();
+    final analyticsRoom =
+        _analyticsClientGetter.client.ownAnalyticsRoomLocalByL2;
     return analyticsRoom?.blockedConstructs ?? {};
   }
 

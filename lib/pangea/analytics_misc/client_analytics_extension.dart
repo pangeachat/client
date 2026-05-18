@@ -22,27 +22,25 @@ extension AnalyticsClientExtension on Client {
   /// Get the logged in user's analytics room matching
   /// a given langCode. If not present, create it.
   Future<Room?> getMyAnalyticsRoom(LanguageModel lang) async {
-    final Room? analyticsRoom = analyticsRoomLocal(lang);
+    if (prevBatch == null) await onSync.stream.first;
+
+    final Room? analyticsRoom = ownAnalyticsRoomLocal(lang: lang);
     if (analyticsRoom != null) return analyticsRoom;
     return _makeAnalyticsRoom(lang);
   }
 
-  /// Get local analytics room for a given langCode and
-  /// optional userId (if not specified, uses current user).
+  /// Get local analytics room for a given langCode and userId.
   /// If user is invited to the room, joins the room.
-  Room? analyticsRoomLocal([LanguageModel? lang, String? userIdParam]) {
-    lang ??= MatrixState.pangeaController.userController.userL2;
-
-    if (lang == null) {
-      debugger(when: kDebugMode);
-      return null;
-    }
-
+  Room? analyticsRoomLocal({
+    required LanguageModel lang,
+    required String userID,
+  }) {
     final Room? analyticsRoom = rooms.firstWhereOrNull((e) {
       return e.isAnalyticsRoom &&
-          e.isAnalyticsRoomOfUser(userIdParam ?? userID!) &&
-          e.isMadeForLang(lang!.langCodeShort);
+          e.isAnalyticsRoomOfUser(userID) &&
+          e.isMadeForLang(lang.langCodeShort);
     });
+
     if (analyticsRoom != null &&
         analyticsRoom.membership == Membership.invite) {
       debugger(when: kDebugMode);
@@ -50,12 +48,37 @@ extension AnalyticsClientExtension on Client {
         (error, stackTrace) => ErrorHandler.logError(
           e: error,
           s: stackTrace,
-          data: {"langCode": lang!.langCodeShort, "userIdParam": userIdParam},
+          data: {"langCode": lang.langCodeShort, "userID": userID},
         ),
       );
       return analyticsRoom;
     }
     return analyticsRoom;
+  }
+
+  Room? ownAnalyticsRoomLocal({required LanguageModel lang}) {
+    final userID = this.userID;
+    if (userID == null) {
+      ErrorHandler.logError(
+        e: "userID null in myAnalyticsRoomLocal",
+        data: {"requested_lang": lang.langCode},
+      );
+      return null;
+    }
+
+    return analyticsRoomLocal(lang: lang, userID: userID);
+  }
+
+  Room? get ownAnalyticsRoomLocalByL2 {
+    final l2 = MatrixState.pangeaController.userController.userL2;
+    if (l2 == null) {
+      ErrorHandler.logError(
+        e: "User L2 null in myAnalyticsRoomLocalByL2",
+        data: {"userID": userID},
+      );
+      return null;
+    }
+    return ownAnalyticsRoomLocal(lang: l2);
   }
 
   /// Creates an analytics room with the specified language code and returns the created room.
@@ -221,4 +244,8 @@ extension AnalyticsClientExtension on Client {
       return null;
     }
   }
+
+  // Future<Room?> _combineAnalyticsRooms(LanguageModel lang) async {
+  //   return null;
+  // }
 }

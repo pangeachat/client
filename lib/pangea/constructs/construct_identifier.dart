@@ -161,8 +161,7 @@ class ConstructIdentifier {
   String? get userSetEmoji => _userLemmaInfo.emojis?.firstOrNull;
 
   UserSetLemmaInfo get _userLemmaInfo =>
-      MatrixState.pangeaController.matrixState.client
-          .analyticsRoomLocal()
+      MatrixState.pangeaController.matrixState.client.ownAnalyticsRoomLocalByL2
           ?.getUserSetLemmaInfo(this) ??
       UserSetLemmaInfo();
 

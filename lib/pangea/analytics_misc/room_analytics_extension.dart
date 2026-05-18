@@ -1,6 +1,11 @@
 part of "../extensions/pangea_room_extension.dart";
 
 extension AnalyticsRoomExtension on Room {
+  bool isAnalyticsRoomOfUser(String userId) =>
+      isAnalyticsRoom && isMadeByUser(userId);
+
+  bool get isAnalyticsRoom => roomType == PangeaRoomTypes.analytics;
+
   String? get madeForLang {
     final creationContent = getState(EventTypes.RoomCreate)?.content;
     return creationContent?.tryGet<String>(ModelKey.langCode) ??

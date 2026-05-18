@@ -35,7 +35,7 @@ class ActivityArchive extends StatelessWidget {
         final analyticsService = Matrix.of(context).analyticsDataService;
         final Room? analyticsRoom = Matrix.of(
           context,
-        ).client.analyticsRoomLocal();
+        ).client.ownAnalyticsRoomLocalByL2;
         final archive = analyticsRoom?.archivedActivities ?? [];
         final selectedRoomId = GoRouterState.of(
           context,
