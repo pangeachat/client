@@ -5,6 +5,7 @@ import 'package:fluffychat/pangea/analytics_details_popup/construct_xp_progress_
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
+import 'package:fluffychat/pangea/morphs/grammar_construct_example.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
@@ -102,6 +103,8 @@ class MorphDetailsView extends StatelessWidget {
                 tag: tag,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
+              if (localizedTag != null)
+                GrammarConstructExample(tag: localizedTag),
               const Divider(),
               if (construct != null) ...[
                 ConstructXPProgressBar(construct: construct.id),
