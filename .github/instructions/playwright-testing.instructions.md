@@ -40,7 +40,7 @@ Then wait 2–3 seconds and take a snapshot — you should now see Flutter widge
 ### Prerequisites
 
 - Flutter web app running locally (e.g. `flutter run -d chrome` on some port)
-- Staging test credentials from `client/.env` (see [matrix-auth.instructions.md](matrix-auth.instructions.md))
+- Staging test credentials for the shared `staging_automated_tests` account (see [matrix-auth.instructions.md](matrix-auth.instructions.md) for the AWS Secrets Manager / `2-step-choreographer/.env` source)
 
 ### Step-by-Step Login
 
@@ -51,7 +51,7 @@ Then wait 2–3 seconds and take a snapshot — you should now see Flutter widge
 5. **Snapshot** — you should see "Sign in with Apple", "Sign in with Google", "Email" options
 6. **Click "Email"** → navigates to `/home/login/email`
 7. **Snapshot** — you should see "Username or Email" and "Password" text fields, and a "Login" button
-8. **Type** the username (just the localpart, e.g. `wykuji`, not the full `@wykuji:staging.pangea.chat`) into the username field
+8. **Type** the username (just the localpart, e.g. `staging_automated_tests`, not the full `@staging_automated_tests:staging.pangea.chat`) into the username field
 9. **Type** the password into the password field
 10. **Click "Login"** button
 11. **Wait** 5–10 seconds for sync to complete
