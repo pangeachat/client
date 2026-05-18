@@ -79,7 +79,6 @@ class CourseInfoChipsState extends State<CourseInfoChips>
     return Wrap(
       spacing: 8.0,
       runSpacing: 8.0,
-      alignment: WrapAlignment.center,
       children: [
         CourseInfoChip(
           icon: Icons.language,
@@ -90,7 +89,7 @@ class CourseInfoChipsState extends State<CourseInfoChips>
         ),
         CourseInfoChip(
           icon: Icons.school,
-          text: course!.cefrLevel.string,
+          text: course!.cefrLevel.title(context),
           fontSize: widget.fontSize,
           iconSize: widget.iconSize,
           padding: widget.padding,

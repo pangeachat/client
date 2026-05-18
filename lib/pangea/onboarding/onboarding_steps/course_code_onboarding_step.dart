@@ -14,16 +14,15 @@ class CourseCodeOnboardingStep extends OnboardingStep {
     super.enableSkip = true,
   });
 
-  String? _courseCode;
-
   @override
-  bool get enableGoForward => _courseCode != null && _courseCode!.isNotEmpty;
+  bool get enableGoForward =>
+      state.courseCode != null && state.courseCode!.isNotEmpty;
 
-  void setCourseCode(String? code) => _courseCode = code;
+  void setCourseCode(String code) => state.setCourseCode(code);
 
   @override
   Future<OnboardingStep?> execute() async {
-    final code = _courseCode;
+    final code = state.courseCode;
     if (code == null) {
       throw StateError("Course code in null");
     }
