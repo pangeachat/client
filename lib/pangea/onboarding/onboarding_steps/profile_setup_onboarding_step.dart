@@ -72,7 +72,7 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
     return UserTypeOnboardingStep(
       client: client,
       state: state,
-      maxRemainingSteps: 6,
+      maxRemainingSteps: 4,
     );
   }
 
@@ -80,6 +80,6 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
   OnboardingStep? skip() => UserTypeOnboardingStep(
     client: client,
     state: state,
-    maxRemainingSteps: 6,
+    maxRemainingSteps: 4,
   );
 }
