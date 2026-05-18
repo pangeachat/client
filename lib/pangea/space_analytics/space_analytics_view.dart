@@ -175,12 +175,12 @@ class SpaceAnalyticsView extends StatelessWidget {
                               mini: mini,
                             ),
                             _TableHeaderCell(
-                              text: L10n.of(context).vocab,
+                              text: L10n.of(context).vocabAnalytics,
                               icon: Symbols.dictionary,
                               mini: mini,
                             ),
                             _TableHeaderCell(
-                              text: L10n.of(context).grammar,
+                              text: L10n.of(context).grammarAnalytics,
                               icon: Symbols.toys_and_games,
                               mini: mini,
                             ),

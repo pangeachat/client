@@ -92,9 +92,12 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
                       spacing: 12.0,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        PangeaLogoSvg(
-                          width: 48.0,
-                          forceColor: theme.colorScheme.onSurface,
+                        Semantics(
+                          label: L10n.of(context).pangeaChatLogo,
+                          child: PangeaLogoSvg(
+                            width: 48.0,
+                            forceColor: theme.colorScheme.onSurface,
+                          ),
                         ),
                         Text(
                           AppSettings.applicationName.value,

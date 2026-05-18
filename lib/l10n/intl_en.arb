@@ -4830,5 +4830,8 @@
     "institution": "Institution",
     "courseGoals": "Course Goals",
     "missingLanguageException": "Please choose valid base and target languages",
-    "selectChats": "Select Chats"
+    "selectChats": "Select Chats",
+    "pangeaChatLogo": "Pangea Chat logo",
+    "vocabAnalytics": "Vocab analytics",
+    "grammarAnalytics": "Grammar analytics"
 }
