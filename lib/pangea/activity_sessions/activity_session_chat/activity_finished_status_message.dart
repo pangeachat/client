@@ -59,73 +59,89 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!controller.room.hasCompletedRole ||
-        controller.room.hasArchivedActivity) {
+    if (!controller.room.hasCompletedRole) {
       return const SizedBox.shrink();
     }
 
     final theme = Theme.of(context);
+
     final isSubscribed =
         MatrixState.pangeaController.subscriptionController.isSubscribed !=
         false;
 
-    return Container(
-      padding: const EdgeInsets.all(12.0),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        border: Border(top: BorderSide(color: theme.dividerColor)),
-      ),
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 400),
-          child: Column(
-            spacing: 12.0,
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              AnimatedSize(
-                duration: FluffyThemes.animationDuration,
-                alignment: Alignment.topCenter,
-                child: _SummarySection(
-                  controller: controller,
-                  isSubscribed: isSubscribed,
+    final l1 = MatrixState.pangeaController.userController.userL1Code;
+
+    final finished = controller.room.isActivityFinished;
+    final archived = controller.room.hasArchivedActivity;
+    final summary = controller.room.activitySummaryByL1;
+
+    final hasContent =
+        !finished || !archived || (summary != null && summary.summary == null);
+
+    return AnimatedSize(
+      duration: FluffyThemes.animationDuration,
+      alignment: Alignment.topCenter,
+      child: hasContent
+          ? Container(
+              padding: const EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.surface,
+                border: Border(top: BorderSide(color: theme.dividerColor)),
+              ),
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 400),
+                  child: Column(
+                    spacing: 12.0,
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      if (finished) ...[
+                        if (summary != null)
+                          _SummarySection(
+                            summary: summary,
+                            isSubscribed: isSubscribed,
+                            fetchSummaries: l1 != null
+                                ? () => controller.room.fetchSummaries(l1)
+                                : null,
+                          ),
+                        if (!archived)
+                          _ArchiveSection(
+                            enabled: _enableArchive,
+                            onArchive: () => _onArchive(context),
+                          ),
+                      ] else
+                        _WaitSection(
+                          onContinue: controller.room.continueActivity,
+                        ),
+                    ],
+                  ),
                 ),
               ),
-              if (controller.room.isActivityFinished &&
-                  !controller.room.hasArchivedActivity)
-                _ArchiveSection(
-                  enabled: _enableArchive,
-                  onArchive: () => _onArchive(context),
-                ),
-              if (!controller.room.isActivityFinished)
-                _WaitSection(onContinue: controller.room.continueActivity),
-            ],
-          ),
-        ),
-      ),
+            )
+          : SizedBox(),
     );
   }
 }
 
 class _SummarySection extends StatelessWidget {
-  final ChatController controller;
   final bool isSubscribed;
+  final ActivitySummaryModel summary;
+  final Future<void> Function()? fetchSummaries;
 
-  const _SummarySection({required this.controller, required this.isSubscribed});
-
-  ActivitySummaryModel? get summary => controller.room.activitySummaryByL1;
+  const _SummarySection({
+    required this.isSubscribed,
+    required this.summary,
+    required this.fetchSummaries,
+  });
 
   @override
   Widget build(BuildContext context) {
-    if (!controller.room.isActivityFinished) {
+    if (summary.summary != null) {
       return const SizedBox.shrink();
     }
 
-    if (summary?.summary != null) {
-      return const SizedBox.shrink();
-    }
-
-    if (summary?.isLoading ?? false) {
+    if (summary.isLoading) {
       return Column(
         spacing: 12,
         children: [
@@ -154,8 +170,7 @@ class _SummarySection extends StatelessWidget {
       );
     }
 
-    if (summary?.hasError ?? false) {
-      final l1Code = MatrixState.pangeaController.userController.userL1Code;
+    if (summary.hasError) {
       return Column(
         spacing: 8,
         children: [
@@ -173,9 +188,7 @@ class _SummarySection extends StatelessWidget {
             ],
           ),
           TextButton(
-            onPressed: l1Code != null
-                ? () => controller.room.fetchSummaries(l1Code)
-                : null,
+            onPressed: fetchSummaries,
             child: Text(L10n.of(context).requestSummaries),
           ),
         ],
