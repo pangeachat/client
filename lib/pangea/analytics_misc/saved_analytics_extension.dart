@@ -14,6 +14,11 @@ extension SavedAnalyticsExtension on Room {
     return [];
   }
 
+  Future<void> _setActivityRoomIds(List<String> activityRoomIds) =>
+      client.setRoomStateWithKey(id, PangeaEventTypes.activityRoomIds, "", {
+        AnalyticsConstants.roomIds: activityRoomIds,
+      });
+
   List<Room> get archivedActivities {
     return activityRoomIds
         .map((id) => client.getRoomById(id))
@@ -28,20 +33,14 @@ extension SavedAnalyticsExtension on Room {
 
   int get archivedActivitiesCount => activityRoomIds.length;
 
-  Future<void> addActivityRoomId(String roomId) async {
-    final List<String> ids = List.from(activityRoomIds);
-    if (ids.contains(roomId)) return;
-
-    final prevLength = ids.length;
-    ids.add(roomId);
+  Future<void> addActivityRoomIds(Set<String> roomIds) async {
+    final activityRoomIds = List.from(this.activityRoomIds);
+    final currentIds = {...activityRoomIds};
+    final newIds = roomIds.difference(currentIds);
+    if (newIds.isEmpty) return;
 
     final syncFuture = client.waitForRoomInSync(id, join: true);
-    await client.setRoomStateWithKey(id, PangeaEventTypes.activityRoomIds, "", {
-      AnalyticsConstants.roomIds: ids,
-    });
-    final newLength = activityRoomIds.length;
-    if (newLength == prevLength) {
-      await syncFuture;
-    }
+    await _setActivityRoomIds([...activityRoomIds, ...newIds]);
+    await syncFuture;
   }
 }

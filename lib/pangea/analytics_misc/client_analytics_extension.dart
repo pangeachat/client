@@ -8,10 +8,10 @@ import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/analytics_access/join_room_analytics_access_extension.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_status_room_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/saved_analytics_extension.dart';
-import 'package:fluffychat/pangea/analytics_misc/user_lemma_info_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -19,7 +19,6 @@ import 'package:fluffychat/pangea/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
-import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 extension AnalyticsClientExtension on Client {
@@ -291,26 +290,34 @@ extension AnalyticsClientExtension on Client {
       return analyticsRooms.firstOrNull;
     }
 
-    Logs().w("Canonical analytics room ID: ${canonicalAnalyticsRoom.id}");
-
-    final List<ConstructAnalyticsEvent> constructEvents = [];
-    final List<String> activityRoomIds = [];
-    final Map<String, UserSetLemmaInfo> lemmaInfo = {};
-
     for (final analyticsRoom in analyticsRooms) {
-      if (analyticsRoom.id == canonicalAnalyticsRoom.id) continue;
-      final roomConstructEvents = await analyticsRoom.getAnalyticsEvents(
-        userId: userID!,
-      );
+      try {
+        if (analyticsRoom.id == canonicalAnalyticsRoom.id) continue;
+        final roomConstructEvents = await analyticsRoom.getAnalyticsEvents(
+          userId: userID!,
+        );
 
-      constructEvents.addAll(roomConstructEvents ?? []);
-      activityRoomIds.addAll(analyticsRoom.activityRoomIds);
-      lemmaInfo.addAll(analyticsRoom.allUserSetLemmaInfo);
+        final constructEvents =
+            roomConstructEvents ?? <ConstructAnalyticsEvent>[];
+        final allUses = constructEvents
+            .map((e) => e.content.uses)
+            .expand((u) => u)
+            .toList();
+        await canonicalAnalyticsRoom.sendConstructsEvent(allUses);
+
+        final activityRoomIds = analyticsRoom.activityRoomIds.toSet();
+        await canonicalAnalyticsRoom.addActivityRoomIds(activityRoomIds);
+
+        await analyticsRoom.markAnalyticsRoomMerged();
+      } catch (e, s) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {'analytics_room_id': analyticsRoom.id},
+        );
+      }
     }
 
-    Logs().w("Constructs length: ${constructEvents.length}");
-    Logs().w("Activity Room Ids length: ${activityRoomIds.length}");
-    Logs().w("Lemma info: $lemmaInfo");
-    return null;
+    return canonicalAnalyticsRoom;
   }
 }

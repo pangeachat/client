@@ -1,7 +1,8 @@
 class PangeaEventTypes {
   static const construct = "pangea.construct";
   static const userSetLemmaInfo = "p.user_lemma_info";
-  static const userChosenEmoji = "p.emoji";
+  static const activityRoomIds = "pangea.activity_room_ids";
+  static const analyticsStatus = "pangea.analytics.status";
 
   static const tokens = "pangea.tokens";
   static const choreoRecord = "pangea.record";
@@ -29,7 +30,6 @@ class PangeaEventTypes {
 
   /// Profile information related to a user's analytics
   static const profileAnalytics = "pangea.analytics_profile";
-  static const activityRoomIds = "pangea.activity_room_ids";
 
   /// Relates to course plans
   static const coursePlan = "pangea.course_plan";

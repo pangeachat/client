@@ -16,7 +16,7 @@ extension AnalyticsRoomExtension on Room {
   }
 
   bool isAnalyticsRoomOfUser(String userId) =>
-      isAnalyticsRoom && isMadeByUser(userId);
+      isAnalyticsRoom && isMadeByUser(userId) && analyticsStatus.isCanonical;
 
   bool isAnalyticsRoomOfUserForLanguage({
     required String userID,
