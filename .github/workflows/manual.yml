@@ -44,7 +44,9 @@ jobs:
           ruby-version: '3.3'
           distribution: 'zulu'
       - name: Add Firebase Messaging
-        run: ./scripts/add-firebase-messaging.sh
+        run: |
+          echo '${{secrets.GOOGLE_SERVICES_JSON}}' | base64 -d > android/app/google-services.json
+          ./scripts/add-firebase-messaging.sh
       - name: Update env files to selected environment
         run: |
           rm .env

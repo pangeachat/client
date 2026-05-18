@@ -43,7 +43,11 @@ class GoogleAnalytics {
 
     if (Environment.analyticsDebugEnabled) {
       // Note: Doesnt currently work on Web
-      analytics?.setDefaultEventParameters({"traffic_type": "internal"});
+      try {
+        analytics?.setDefaultEventParameters({"traffic_type": "internal"});
+      } on Exception {
+        // i guess were on web and have it enabled anyway
+      }
     }
 
     debugPrint("Firebase App Name: ${app.name}");

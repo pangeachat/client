@@ -102,6 +102,11 @@ class Environment {
         (dotenv.env["GOOGLE_ANALYTICS_DEBUG_ENABLED"]?.toLowerCase() == 'true');
   }
 
+  static String? get googleAnalyticsFirebaseOptionsBase64 {
+    return appConfigOverride?.googleAnalyticsFirebaseOptionsBase64 ??
+        dotenv.env["GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64"];
+  }
+
   static String get rcGoogleKey {
     return appConfigOverride?.rcGoogleKey ??
         dotenv.env["RC_GOOGLE_KEY"] ??
@@ -203,6 +208,7 @@ class AppConfigOverride {
   final String? choreoApiKey;
   final String? sentryDsn;
   final bool? analyticsDebugEnabled;
+  final String? googleAnalyticsFirebaseOptionsBase64;
   final String? rcGoogleKey;
   final String? rcIosKey;
   final String? rcOfferingName;
@@ -218,6 +224,7 @@ class AppConfigOverride {
     this.choreoApiKey,
     this.sentryDsn,
     this.analyticsDebugEnabled,
+    this.googleAnalyticsFirebaseOptionsBase64,
     this.rcGoogleKey,
     this.rcIosKey,
     this.rcOfferingName,
@@ -235,6 +242,8 @@ class AppConfigOverride {
       choreoApiKey: json['choreoApiKey'] as String?,
       sentryDsn: json['sentryDsn'] as String?,
       analyticsDebugEnabled: json['analyticsDebugEnabled'] as bool?,
+      googleAnalyticsFirebaseOptionsBase64:
+          json['googleAnalyticsFirebaseOptionsBase64'] as String?,
       rcGoogleKey: json['rcGoogleKey'] as String?,
       rcIosKey: json['rcIosKey'] as String?,
       rcOfferingName: json['rcOfferingName'] as String?,
@@ -252,6 +261,9 @@ class AppConfigOverride {
       'choreoApi': choreoApi,
       'choreoApiKey': choreoApiKey,
       'sentryDsn': sentryDsn,
+      'analyticsDebugEnabled': analyticsDebugEnabled,
+      'googleAnalyticsFirebaseOptionsBase64':
+          googleAnalyticsFirebaseOptionsBase64,
       'rcGoogleKey': rcGoogleKey,
       'rcIosKey': rcIosKey,
       'rcOfferingName': rcOfferingName,
@@ -269,6 +281,8 @@ class AppConfigOverride {
         choreoApi.hashCode ^
         choreoApiKey.hashCode ^
         sentryDsn.hashCode ^
+        analyticsDebugEnabled.hashCode ^
+        googleAnalyticsFirebaseOptionsBase64.hashCode ^
         rcGoogleKey.hashCode ^
         rcIosKey.hashCode ^
         rcOfferingName.hashCode ^
@@ -287,6 +301,9 @@ class AppConfigOverride {
         choreoApi == other.choreoApi &&
         choreoApiKey == other.choreoApiKey &&
         sentryDsn == other.sentryDsn &&
+        analyticsDebugEnabled == other.analyticsDebugEnabled &&
+        googleAnalyticsFirebaseOptionsBase64 ==
+            other.googleAnalyticsFirebaseOptionsBase64 &&
         rcGoogleKey == other.rcGoogleKey &&
         rcIosKey == other.rcIosKey &&
         rcOfferingName == other.rcOfferingName &&
