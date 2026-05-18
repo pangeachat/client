@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/morphs/default_grammar_constructs_response.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
 
 class MorphFeaturesAndTags {
@@ -43,10 +44,10 @@ class MorphFeaturesAndTags {
   factory MorphFeaturesAndTags.defaultFeaturesAndTags({
     required String targetLanguage,
     required String userL1,
-  }) => MorphFeaturesAndTags(
-    targetLanguage: targetLanguage,
-    userL1: userL1,
-    features: [],
+  }) => MorphFeaturesAndTags.fromGrammarConstructsResponse(
+    response: GrammarConstructsResponse.fromJson(
+      defaultGrammarConstructsResponse,
+    ),
   );
 
   String get _langKey => "$_targetLanguage-$_userL1";
