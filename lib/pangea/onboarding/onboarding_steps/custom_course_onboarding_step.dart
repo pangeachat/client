@@ -18,6 +18,12 @@ class CustomCourseOnboardingStep extends OnboardingStep {
   void setGoals(String goals) => _goals = goals;
 
   @override
+  bool get enableGoForward =>
+      _name?.isNotEmpty == true &&
+      _institution?.isNotEmpty == true &&
+      _goals?.isNotEmpty == true;
+
+  @override
   Future<OnboardingStep?> execute() async {
     final baseLanguage = state.baseLanguage;
     final targetLanguage = state.targetLanguage;
