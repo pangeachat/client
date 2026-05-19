@@ -76,6 +76,7 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
           controller: _codeController,
           decoration: InputDecoration(
             hintText: L10n.of(context).courseCodeStepHint,
+            helperText: '', // reserves the error space permanently
             errorText: widget.error != null ? '' : null,
             suffixIcon: widget.error != null
                 ? Icon(Icons.error, color: theme.colorScheme.error)
