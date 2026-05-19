@@ -68,7 +68,10 @@ class OnboardingStepView extends StatelessWidget {
     }
 
     if (step is CustomCourseOnboardingStep) {
-      return CustomCourseStepView(step: step);
+      return CustomCourseStepView(
+        step: step,
+        updateEnableNext: updateEnableNext,
+      );
     }
 
     return SizedBox();
