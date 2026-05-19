@@ -15,7 +15,7 @@ import { expect, test } from "../fixtures";
 // playwright todo: update assumptions
 // Context assumptions:
 // There is a chat named 'playwright' in the chat list
-test.describe("Message Toolbar", () => {
+test.describe("Chat list navigation", () => {
 
   test("should be move to, from, and within the chat list page", async ({
     page,

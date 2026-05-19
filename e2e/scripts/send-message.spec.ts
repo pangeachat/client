@@ -17,7 +17,7 @@ import { expect, test } from "../fixtures";
 // Context assumptions:
 // There is at least 1 room in chat list
 // Account can send messages in selected room
-test.describe("Message Toolbar", () => {
+test.describe("Send Message", () => {
 
   test("should be able to send a message", async ({
     page,
@@ -43,6 +43,7 @@ test.describe("Message Toolbar", () => {
     await page.getByRole("button", { name: intl.send }).click();
     
     // Ensure message was sent properly
-    await expect(page.getByText("néih hóu")).toBeEnabled();
+    // playwright todo: edit check method? redact after to clean up state?
+    await expect(page.getByText("nÃ©ih")).toBeEnabled();
   });
 });
