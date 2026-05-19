@@ -11,7 +11,7 @@ import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicators
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
-import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LevelAnalyticsDetailsContent extends StatelessWidget {
@@ -102,11 +102,11 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
                             final use = uses[index];
                             String lemmaCopy = use.lemma;
                             if (use.constructType == ConstructTypeEnum.morph) {
+                              debugPrint("Use info: ${use.toJson()}");
                               lemmaCopy =
-                                  getGrammarCopy(
-                                    category: use.category,
-                                    lemma: use.lemma,
-                                    context: context,
+                                  GrammarConstructsProvider.getTagTitle(
+                                    feature: use.category,
+                                    tag: use.lemma,
                                   ) ??
                                   use.lemma;
                             }

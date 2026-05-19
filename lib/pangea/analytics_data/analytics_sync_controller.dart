@@ -211,6 +211,6 @@ class AnalyticsSyncController {
   Room? _getAnalyticsRoom() {
     final l2 = _l2;
     if (l2 == null) return null;
-    return client.analyticsRoomLocal(l2);
+    return client.ownAnalyticsRoomLocal(lang: l2);
   }
 }

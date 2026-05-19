@@ -161,8 +161,7 @@ class ConstructIdentifier {
   String? get userSetEmoji => _userLemmaInfo.emojis?.firstOrNull;
 
   UserSetLemmaInfo get _userLemmaInfo =>
-      MatrixState.pangeaController.matrixState.client
-          .analyticsRoomLocal()
+      MatrixState.pangeaController.matrixState.client.ownAnalyticsRoomLocalByL2
           ?.getUserSetLemmaInfo(this) ??
       UserSetLemmaInfo();
 
@@ -199,7 +198,7 @@ class ConstructIdentifier {
 
   bool get isInvalid =>
       (type == ConstructTypeEnum.morph &&
-          MorphFeaturesEnumExtension.fromString(category) ==
+          MorphFeaturesEnum.fromString(category) ==
               MorphFeaturesEnum.Unknown) ||
       category == 'other' ||
       lemma.isEmpty;

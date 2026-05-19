@@ -8,18 +8,8 @@ extension RoomInformationRoomExtension on Room {
     return creationEvent?.originServerTs;
   }
 
-  Future<bool> get botIsInRoom async {
-    final List<User> participants = await requestParticipants();
-    return participants.any((User user) => user.id == BotName.byEnvironment);
-  }
-
   String? get roomType =>
       getState(EventTypes.RoomCreate)?.content.tryGet<String>('type');
-
-  bool isAnalyticsRoomOfUser(String userId) =>
-      isAnalyticsRoom && isMadeByUser(userId);
-
-  bool get isAnalyticsRoom => roomType == PangeaRoomTypes.analytics;
 
   bool get isHiddenRoom => isAnalyticsRoom || hasArchivedActivity;
 }

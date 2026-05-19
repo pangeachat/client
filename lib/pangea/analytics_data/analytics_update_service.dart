@@ -156,7 +156,7 @@ class AnalyticsUpdateService {
     final analyticsRoom = await _getAnalyticsRoom(l2Override: lang);
     if (analyticsRoom == null) return;
 
-    await analyticsRoom.addActivityRoomId(roomId);
+    await analyticsRoom.addActivityRoomIds({roomId});
   }
 
   Future<void> blockConstructs(List<ConstructIdentifier> constructIds) async {

@@ -23,9 +23,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/download/download_file_util.dart';
 import 'package:fluffychat/pangea/download/download_type_enum.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
-import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/morphs/morph_repo.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class AnalyticsDownloadDialog extends StatefulWidget {
@@ -188,25 +186,22 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
   }
 
   Future<List<AnalyticsSummaryModel>> _getMorphAnalytics() async {
+    final l1 = MatrixState.pangeaController.userController.userL1;
     final l2 = MatrixState.pangeaController.userController.userL2;
-    if (l2 == null) {
-      throw Exception("No L2 set for user");
+    if (l1 == null || l2 == null) {
+      throw Exception("Missing base or target language");
     }
+
     final analyticsService = Matrix.of(context).analyticsDataService;
+    final morphs = await GrammarConstructsProvider.fetchFeaturesAndTags();
 
-    final morphs = await MorphsRepo.get();
     final List<AnalyticsSummaryModel> summaries = [];
-    for (final feature in morphs.displayFeatures) {
-      final allTags = morphs
-          .getDisplayTags(feature.feature)
-          .map((tag) => tag.toLowerCase())
-          .toSet();
-
-      for (final morphTag in allTags) {
+    for (final feature in morphs.features) {
+      for (final tag in feature.tags) {
         final id = ConstructIdentifier(
-          lemma: morphTag,
+          lemma: tag.value,
           type: ConstructTypeEnum.morph,
-          category: feature.feature,
+          category: feature.feature.value,
         );
 
         final uses = await analyticsService.getConstructUse(
@@ -232,16 +227,10 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
             .whereType<String>()
             .toList();
 
-        final tagCopy = getGrammarCopy(
-          category: feature.feature,
-          lemma: morphTag,
-          context: context,
-        );
+        final tagCopy = tag.title;
 
         final summary = AnalyticsSummaryModel(
-          morphFeature: MorphFeaturesEnumExtension.fromString(
-            feature.feature,
-          ).getDisplayCopy(context),
+          morphFeature: feature.feature.title,
           morphTag: tagCopy,
           xp: xp,
           forms: forms,

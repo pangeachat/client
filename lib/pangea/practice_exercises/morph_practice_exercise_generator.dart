@@ -3,10 +3,12 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_exercises/message_practice_exercise_request.dart';
 import 'package:fluffychat/pangea/practice_exercises/multiple_choice_practice_exercise_model.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
+import 'package:fluffychat/pangea/toolbar/message_practice/message_morph_choice.dart';
 
 class MorphPracticeExerciseGenerator {
   /// Generate a morphological exercise for a given token and morphological feature
@@ -27,10 +29,19 @@ class MorphPracticeExerciseGenerator {
       throw "No morph tag found for morph feature";
     }
 
-    final distractors = token.morphPracticeExerciseDistractors(
-      morphFeature,
-      morphTag,
-    );
+    final tags = GrammarConstructsProvider.getTags(feature: morphFeature.name);
+    final allTags = tags.map((t) => t.value);
+    final List<String> possibleDistractors = allTags
+        .where(
+          (tag) => tag.toLowerCase() != morphTag.toLowerCase() && tag != "X",
+        )
+        .toList();
+
+    possibleDistractors.shuffle();
+    final distractors = possibleDistractors
+        .take(numberOfMorphDistractors)
+        .toSet();
+
     distractors.add(morphTag);
     final choices = distractors.toList()..shuffle();
 

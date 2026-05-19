@@ -31,6 +31,10 @@ class ActivityUserSummaries extends StatelessWidget {
     }
 
     final summary = summaryModel.summary;
+    if (summary == null) {
+      return SizedBox();
+    }
+
     return Center(
       child: Stack(
         children: [
@@ -44,45 +48,33 @@ class ActivityUserSummaries extends StatelessWidget {
             child: Column(
               spacing: 12.0,
               mainAxisSize: MainAxisSize.min,
-              children: summary != null
-                  ? [
-                      Center(
-                        child: Column(
-                          spacing: 6.0,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(L10n.of(context).activityFinishedMessage),
-                            Text(summary.summary, textAlign: TextAlign.center),
-                          ],
-                        ),
-                      ),
-                      ButtonControlledCarouselView(
-                        summary: summary,
-                        controller: controller,
-                      ),
-                    ]
-                  : [
-                      SizedBox(
-                        height: 120.0,
-                        width: 120.0,
-                        child: Center(
-                          child: CircularProgressIndicator.adaptive(),
-                        ),
-                      ),
+              children: [
+                Center(
+                  child: Column(
+                    spacing: 6.0,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(L10n.of(context).activityFinishedMessage),
+                      Text(summary.summary, textAlign: TextAlign.center),
                     ],
+                  ),
+                ),
+                ButtonControlledCarouselView(
+                  summary: summary,
+                  controller: controller,
+                ),
+              ],
             ),
           ),
-
-          if (summary != null)
-            Positioned(
-              right: 18.0,
-              top: 18.0,
-              child: IconButton(
-                icon: const Icon(Icons.flag_outlined),
-                onPressed: () => controller.activityController
-                    .submitSummaryFeedback(context),
-              ),
+          Positioned(
+            right: 18.0,
+            top: 18.0,
+            child: IconButton(
+              icon: const Icon(Icons.flag_outlined),
+              onPressed: () =>
+                  controller.activityController.submitSummaryFeedback(context),
             ),
+          ),
         ],
       ),
     );

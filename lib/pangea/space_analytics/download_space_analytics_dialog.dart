@@ -19,7 +19,7 @@ import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/download/download_file_util.dart';
 import 'package:fluffychat/pangea/download/download_type_enum.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class DownloadAnalyticsDialog extends StatefulWidget {
@@ -248,10 +248,9 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
   }
 
   String getCopy(ConstructUses use) {
-    return getGrammarCopy(
-          category: use.category,
-          lemma: use.lemma,
-          context: context,
+    return GrammarConstructsProvider.getTagTitle(
+          feature: use.category,
+          tag: use.lemma,
         ) ??
         use.lemma;
   }

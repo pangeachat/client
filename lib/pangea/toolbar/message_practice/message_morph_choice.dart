@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_details_popup/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_animation.dart';
 import 'package:fluffychat/pangea/constructs/construct_form.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
+import 'package:fluffychat/pangea/morphs/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_choice.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_morph_choice_item.dart';
@@ -92,16 +93,14 @@ class MessageMorphInputBarContentState
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: spacing,
           children: [
-            MorphIcon(
-              morphFeature: morph,
-              morphTag: null,
-              size: Size(iconSize, iconSize),
-              showTooltip: false,
-            ),
+            MorphIcon(feature: morph, size: Size(iconSize, iconSize)),
             Flexible(
               child: Text(
                 L10n.of(context).whatIsTheMorphTag(
-                  morph.getDisplayCopy(context),
+                  GrammarConstructsProvider.getFeature(
+                        feature: morph.name,
+                      )?.title ??
+                      morph.name,
                   token.text.content,
                 ),
                 style: textStyle(context),
@@ -160,7 +159,7 @@ class MessageMorphInputBarContentState
             ),
             alignment: Alignment.center,
             child: MorphMeaningWidget(
-              feature: morph,
+              feature: morph.name,
               tag: selectedTag!,
               style: widget.maxWidth > 600
                   ? Theme.of(context).textTheme.bodyLarge

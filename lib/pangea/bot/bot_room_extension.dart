@@ -24,6 +24,11 @@ extension BotRoomExtension on Room {
     return BotOptionsModel.fromJson(stateEvent.content);
   }
 
+  Future<bool> get botIsInRoom async {
+    final List<User> participants = await requestParticipants();
+    return participants.any((User user) => user.id == BotName.byEnvironment);
+  }
+
   Future<void> setBotOptions(BotOptionsModel options) async {
     if (!canChangeStateEvent(PangeaEventTypes.botOptions)) {
       Logs().w("User doesn't have permission to set bot options in room $id");

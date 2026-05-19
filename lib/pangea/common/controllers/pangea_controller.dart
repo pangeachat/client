@@ -162,7 +162,13 @@ class PangeaController {
 
   Future<void> _clearCache({List<String> exclude = const []}) async {
     final List<Future<void>> futures = [];
+
     for (final key in _storageKeys) {
+      if (exclude.contains(key)) continue;
+      futures.add(GetStorage(key).erase());
+    }
+
+    for (final key in _storageKeyRegistry) {
       if (exclude.contains(key)) continue;
       futures.add(GetStorage(key).erase());
     }
@@ -191,6 +197,7 @@ class PangeaController {
       'course_location_media_storage',
       'course_location_storage',
       'course_media_storage',
+      'grammar_constructs_storage',
     ];
 
     // only clear course data if the base language has changed
@@ -208,6 +215,10 @@ class PangeaController {
     );
     await userController.updatePublicProfile();
   }
+
+  void registerStorageKey(String key) => _storageKeyRegistry.add(key);
+
+  final Set<String> _storageKeyRegistry = {};
 
   static final List<String> _storageKeys = [
     'mode_list_storage',
