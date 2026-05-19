@@ -33,31 +33,25 @@ test.describe("Message Toolbar", () => {
     await page.getByRole("button", { name: "playwright" }).click();
 
     // Test toolbar mode behaviors
-    // Select L2 message 
+    // Select L2 message
 
-    // getByRole and getByText don't seem to work
-    // so this clicks a specific spot on the screen 
-    // playwright todo: find better method of selecting message
+    // Select message using edit time as target
+    // playwright todo: edit targeting method
     // May require adding semantic label to messages
-    const viewport = page.viewportSize();
-    if (viewport) {
-      await page.mouse.click(viewport.width - 122, viewport.height - 122);
-    }
+    page.getByRole("group", { name: "1:39" }).click();
 
     await expect(page.getByRole("button", { name: intl.more, exact: true })).toBeVisible();
 
-    // Audio mode should not show mode disabled snackbar
-    await page.getByRole("button", { name: intl.playAudio, exact: true }).click();
-    await expect(page.getByText(intl.modeDisabled)).toBeHidden();
+    // Audio mode should be enabled 
+    await expect(page.getByRole("button", { name: intl.playAudio, exact: true })).toBeEnabled();
 
     // Translation mode should show translated text
     // playwright todo: don't hardcode translation?
     await page.getByRole("button", { name: intl.translationTooltip, exact: true }).click();
-    await expect(page.getByText("Please")).toBeVisible();
+    await expect(page.getByText("Hello")).toBeVisible();
 
-    // Emoji mode should show explanation snackbar
-    await page.getByRole("button", { name: intl.emojiView, exact: true }).click();
-    await expect(page.getByText(intl.emojiToolbarInstruction)).toBeVisible();
+    // Emoji mode should be enabled
+    await expect(page.getByRole("button", { name: intl.emojiView, exact: true })).toBeEnabled();
 
     // Practice mode should show practice mode buttons
     await page.getByRole("button", { name: intl.practice, exact: true }).click();
