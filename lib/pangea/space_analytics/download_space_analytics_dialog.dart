@@ -1,12 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:csv/csv.dart';
 import 'package:excel/excel.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_downloads/space_analytics_summary_enum.dart';
@@ -15,7 +12,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/saved_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/download/download_dialog.dart';
 import 'package:fluffychat/pangea/download/download_file_util.dart';
 import 'package:fluffychat/pangea/download/download_type_enum.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -81,12 +78,6 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
     if (status == 2) return Colors.green;
     if ((status ?? 0) < 0) return Colors.red;
     return Colors.grey;
-  }
-
-  String? get _statusText {
-    if (_downloading) return L10n.of(context).downloading;
-    if (_downloaded) return L10n.of(context).downloadInitiated;
-    return null;
   }
 
   String? get userL2 =>
@@ -257,159 +248,78 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      child: Container(
-        constraints: const BoxConstraints(maxWidth: 400),
-        padding: const EdgeInsets.symmetric(vertical: 20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              L10n.of(context).fileType,
-              style: TextStyle(
-                fontSize:
-                    AppSettings.fontSizeFactor.value *
-                    AppConfig.messageFontSize,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SegmentedButton<DownloadType>(
-                selected: {_downloadType},
-                onSelectionChanged: (c) => _setDownloadType(c.first),
-                segments: [
-                  ButtonSegment(
-                    value: DownloadType.csv,
-                    label: Text(L10n.of(context).commaSeparatedFile),
+    final enableDownload = !_downloading && !_loading && _initialized;
+    final errorMessage = _error != null
+        ? L10n.of(context).errorDownloading
+        : null;
+
+    final content = ConstrainedBox(
+      constraints: const BoxConstraints(maxHeight: 300, minHeight: 0),
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: widget.analyticsRooms.length,
+        itemBuilder: (context, index) {
+          final userId = widget.analyticsRooms[index].creatorId;
+
+          String tooltip = "";
+          if (_downloadStatuses[userId] == -1) {
+            tooltip = L10n.of(context).analyticsNotAvailable;
+          } else if (_downloadStatuses[userId] == -2) {
+            tooltip = L10n.of(context).failedFetchUserAnalytics;
+          }
+
+          return Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: AnimatedOpacity(
+              duration: FluffyThemes.animationDuration,
+              opacity: (_downloadStatuses[userId] ?? 0) > 0 ? 1 : 0.5,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 40,
+                    height: 30,
+                    child: (_downloadStatuses[userId] ?? 0) < 0
+                        ? const Icon(Icons.error_outline, size: 16)
+                        : Center(
+                            child: AnimatedContainer(
+                              duration: FluffyThemes.animationDuration,
+                              height: 12,
+                              width: 12,
+                              decoration: BoxDecoration(
+                                color: _downloadStatusColor(userId!),
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                            ),
+                          ),
                   ),
-                  ButtonSegment(
-                    value: DownloadType.xlsx,
-                    label: Text(L10n.of(context).excelFile),
+                  Flexible(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(userId!),
+                        if (tooltip.isNotEmpty)
+                          Text(tooltip, style: const TextStyle(fontSize: 10)),
+                      ],
+                    ),
                   ),
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxHeight: 300, minHeight: 0),
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: widget.analyticsRooms.length,
-                  itemBuilder: (context, index) {
-                    final userId = widget.analyticsRooms[index].creatorId;
-
-                    String tooltip = "";
-                    if (_downloadStatuses[userId] == -1) {
-                      tooltip = L10n.of(context).analyticsNotAvailable;
-                    } else if (_downloadStatuses[userId] == -2) {
-                      tooltip = L10n.of(context).failedFetchUserAnalytics;
-                    }
-
-                    return Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: AnimatedOpacity(
-                        duration: FluffyThemes.animationDuration,
-                        opacity: (_downloadStatuses[userId] ?? 0) > 0 ? 1 : 0.5,
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 40,
-                              height: 30,
-                              child: (_downloadStatuses[userId] ?? 0) < 0
-                                  ? const Icon(Icons.error_outline, size: 16)
-                                  : Center(
-                                      child: AnimatedContainer(
-                                        duration:
-                                            FluffyThemes.animationDuration,
-                                        height: 12,
-                                        width: 12,
-                                        decoration: BoxDecoration(
-                                          color: _downloadStatusColor(userId!),
-                                          borderRadius: BorderRadius.circular(
-                                            100,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                            ),
-                            Flexible(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(userId!),
-                                  if (tooltip.isNotEmpty)
-                                    Text(
-                                      tooltip,
-                                      style: const TextStyle(fontSize: 10),
-                                    ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
-            if (!_downloaded)
-              Padding(
-                padding: const EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 8.0),
-                child: OutlinedButton(
-                  onPressed: _loading || !_initialized ? null : _runDownload,
-                  child: _initialized && !_loading
-                      ? Text(
-                          _loading
-                              ? L10n.of(context).downloading
-                              : L10n.of(context).download,
-                        )
-                      : const SizedBox(
-                          height: 10,
-                          width: 100,
-                          child: LinearProgressIndicator(),
-                        ),
-                ),
-              ),
-            AnimatedSize(
-              duration: FluffyThemes.animationDuration,
-              child: _statusText != null
-                  ? Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(_statusText!),
-                    )
-                  : const SizedBox(),
-            ),
-            AnimatedSize(
-              duration: FluffyThemes.animationDuration,
-              child: kIsWeb && _downloaded
-                  ? Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Text(
-                        L10n.of(context).webDownloadPermissionMessage,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Theme.of(context).disabledColor,
-                        ),
-                      ),
-                    )
-                  : const SizedBox(),
-            ),
-            AnimatedSize(
-              duration: FluffyThemes.animationDuration,
-              child: _error != null
-                  ? Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ErrorIndicator(
-                        message: L10n.of(context).errorDownloading,
-                      ),
-                    )
-                  : const SizedBox(),
-            ),
-          ],
-        ),
+          );
+        },
       ),
+    );
+
+    return DownloadDialog(
+      downloading: _downloading,
+      downloaded: _downloaded,
+      enableDownload: enableDownload,
+      selectedDownloadType: _downloadType,
+      downloadableTypes: [DownloadType.csv, DownloadType.xlsx],
+      setDownloadType: _setDownloadType,
+      download: _runDownload,
+      error: errorMessage,
+      content: content,
     );
   }
 }

@@ -7,7 +7,12 @@ import 'package:fluffychat/pangea/onboarding/onboarding_steps/custom_course_onbo
 
 class CustomCourseStepView extends StatefulWidget {
   final CustomCourseOnboardingStep step;
-  const CustomCourseStepView({super.key, required this.step});
+  final VoidCallback updateEnableNext;
+  const CustomCourseStepView({
+    super.key,
+    required this.step,
+    required this.updateEnableNext,
+  });
 
   @override
   CustomCourseStepViewState createState() => CustomCourseStepViewState();
@@ -54,6 +59,7 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
       _step.setName(_nameController.text);
       _nameDebounce?.cancel();
       _nameDebounce = null;
+      widget.updateEnableNext();
     });
   }
 
@@ -63,6 +69,7 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
       _step.setInstitution(_institutionController.text);
       _institutionDebounce?.cancel();
       _institutionDebounce = null;
+      widget.updateEnableNext();
     });
   }
 
@@ -72,36 +79,39 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
       _step.setGoals(_goalsController.text);
       _goalsDebounce?.cancel();
       _goalsDebounce = null;
+      widget.updateEnableNext();
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Column(
-      spacing: 8.0,
-      children: [
-        Text(
-          L10n.of(context).customCourseStepTitle,
-          style: theme.textTheme.titleMedium?.copyWith(
-            fontWeight: FontWeight.bold,
+    return SingleChildScrollView(
+      child: Column(
+        spacing: 8.0,
+        children: [
+          Text(
+            L10n.of(context).customCourseStepTitle,
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        TextField(
-          controller: _nameController,
-          decoration: InputDecoration(hintText: L10n.of(context).name),
-        ),
-        TextField(
-          controller: _institutionController,
-          decoration: InputDecoration(hintText: L10n.of(context).institution),
-        ),
-        TextField(
-          controller: _goalsController,
-          decoration: InputDecoration(hintText: L10n.of(context).courseGoals),
-          minLines: 10,
-          maxLines: 10,
-        ),
-      ],
+          TextField(
+            controller: _nameController,
+            decoration: InputDecoration(hintText: L10n.of(context).name),
+          ),
+          TextField(
+            controller: _institutionController,
+            decoration: InputDecoration(hintText: L10n.of(context).institution),
+          ),
+          TextField(
+            controller: _goalsController,
+            decoration: InputDecoration(hintText: L10n.of(context).courseGoals),
+            minLines: 10,
+            maxLines: 10,
+          ),
+        ],
+      ),
     );
   }
 }

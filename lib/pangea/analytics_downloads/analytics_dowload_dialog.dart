@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:csv/csv.dart';
@@ -6,9 +5,6 @@ import 'package:excel/excel.dart';
 import 'package:intl/intl.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_downloads/analytics_summary_enum.dart';
 import 'package:fluffychat/pangea/analytics_downloads/analytics_summary_model.dart';
@@ -18,8 +14,8 @@ import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/learning_skills_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/download/download_dialog.dart';
 import 'package:fluffychat/pangea/download/download_file_util.dart';
 import 'package:fluffychat/pangea/download/download_type_enum.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -39,12 +35,6 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
   bool _downloading = false;
   bool _downloaded = false;
   String? _error;
-
-  String? get _statusText {
-    if (_downloading) return L10n.of(context).downloading;
-    if (_downloaded) return L10n.of(context).downloadInitiated;
-    return null;
-  }
 
   void _setDownloadType(DownloadType type) {
     if (mounted) {
@@ -396,90 +386,18 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      child: Container(
-        constraints: const BoxConstraints(maxWidth: 400),
-        padding: const EdgeInsets.symmetric(vertical: 20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              L10n.of(context).fileType,
-              style: TextStyle(
-                fontSize:
-                    AppSettings.fontSizeFactor.value *
-                    AppConfig.messageFontSize,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SegmentedButton<DownloadType>(
-                selected: {_downloadType},
-                onSelectionChanged: _downloading
-                    ? null
-                    : (c) => _setDownloadType(c.first),
-                segments: [
-                  ButtonSegment(
-                    value: DownloadType.csv,
-                    label: Text(L10n.of(context).commaSeparatedFile),
-                  ),
-                  ButtonSegment(
-                    value: DownloadType.xlsx,
-                    label: Text(L10n.of(context).excelFile),
-                  ),
-                ],
-              ),
-            ),
-            if (!_downloaded)
-              Padding(
-                padding: const EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 8.0),
-                child: OutlinedButton(
-                  onPressed: _downloading ? null : _downloadAnalytics,
-                  child: _downloading
-                      ? const SizedBox(
-                          height: 10,
-                          width: 100,
-                          child: LinearProgressIndicator(),
-                        )
-                      : Text(L10n.of(context).download),
-                ),
-              ),
-            AnimatedSize(
-              duration: FluffyThemes.animationDuration,
-              child: _statusText != null
-                  ? Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(_statusText!),
-                    )
-                  : const SizedBox(),
-            ),
-            AnimatedSize(
-              duration: FluffyThemes.animationDuration,
-              child: kIsWeb && _downloaded
-                  ? Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Text(
-                        L10n.of(context).webDownloadPermissionMessage,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Theme.of(context).disabledColor,
-                        ),
-                      ),
-                    )
-                  : const SizedBox(),
-            ),
-            AnimatedSize(
-              duration: FluffyThemes.animationDuration,
-              child: _error != null
-                  ? Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ErrorIndicator(message: _error!),
-                    )
-                  : const SizedBox(),
-            ),
-          ],
-        ),
-      ),
+    final enableDownload = !_downloading;
+    final errorMessage = _error;
+
+    return DownloadDialog(
+      downloading: _downloading,
+      downloaded: _downloaded,
+      enableDownload: enableDownload,
+      selectedDownloadType: _downloadType,
+      downloadableTypes: [DownloadType.csv, DownloadType.xlsx],
+      setDownloadType: _setDownloadType,
+      download: _downloadAnalytics,
+      error: errorMessage,
     );
   }
 }

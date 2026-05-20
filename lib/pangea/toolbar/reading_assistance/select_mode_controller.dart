@@ -10,6 +10,7 @@ import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
@@ -139,6 +140,8 @@ class SelectModeController with LemmaEmojiSetter {
         lang ==
         MatrixState.pangeaController.userController.userL1!.langCodeShort;
 
+    final invalidLanguage = PLanguageStore.byLangCode(lang) == null;
+
     if (messageEvent.event.messageType == MessageTypes.Text) {
       final matchesL2 =
           lang ==
@@ -146,7 +149,7 @@ class SelectModeController with LemmaEmojiSetter {
 
       modes = matchesL2
           ? _textModes
-          : matchesL1
+          : matchesL1 || invalidLanguage
           ? []
           : [SelectMode.translate];
     } else {

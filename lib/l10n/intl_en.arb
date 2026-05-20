@@ -4830,5 +4830,6 @@
     "institution": "Institution",
     "courseGoals": "Course Goals",
     "missingLanguageException": "Please choose valid base and target languages",
-    "selectChats": "Select Chats"
+    "selectChats": "Select Chats",
+    "plainTextFile": "Text"
 }
