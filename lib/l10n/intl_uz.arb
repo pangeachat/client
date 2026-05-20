@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-05-12 10:36:45.045954",
+    "@@last_modified": "2026-05-20 13:15:18.005615",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9652,6 +9652,86 @@
     },
     "missingLanguageException": "Iltimos, to'g'ri asosiy va maqsad tillarni tanlang",
     "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "Men Pangea Chat'dan foydalanaman",
+    "teach": "O'qitish",
+    "courseCodeStepTitle": "Sizda kursga taklif kodi bormi?",
+    "courseCodeStepHint": "Qo'shilish uchun kodni kiriting",
+    "courseCodeStepSkip": "Menda kod yo'q",
+    "joinedCourseStepTitle": "Xush kelibsiz!",
+    "pickLanguageTeacherStepTitle": "Siz qaysi tilni o'qitasiz?",
+    "pickCefrLevelTeacherStepTitle": "Siz qaysi darajada o'qitasiz?",
+    "pickCefrLevelStudentStepTitle": "Siz qaysi daradasiz?",
+    "customCourseStepTitle": "Maxsus kurs olish uchun ushbu shaklni to'ldiring",
+    "aboutYourClass": "Sizning sinfingiz haqida",
+    "courseCodeStepErrorMessage": "Iltimos, kodingizni tekshirib ko'ring va qayta urinib ko'ring",
+    "institution": "Muassasa",
+    "courseGoals": "Kurs maqsadlari",
+    "selectChats": "Suhbatlarni tanlang",
+    "plainTextFile": "Matn",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
         "type": "String",
         "placeholders": {}
     }

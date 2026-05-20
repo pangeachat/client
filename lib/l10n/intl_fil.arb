@@ -2258,7 +2258,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-05-12 10:36:46.901278",
+    "@@last_modified": "2026-05-20 13:15:26.813469",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10667,6 +10667,86 @@
     },
     "missingLanguageException": "Mangyaring pumili ng wastong batayan at target na mga wika",
     "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "Gumagamit ako ng Pangea Chat upang",
+    "teach": "Magturo",
+    "courseCodeStepTitle": "Mayroon ka bang code ng paanyaya sa kurso?",
+    "courseCodeStepHint": "Ilagay ang code upang sumali",
+    "courseCodeStepSkip": "Wala akong code",
+    "joinedCourseStepTitle": "Maligayang pagdating!",
+    "pickLanguageTeacherStepTitle": "Anong wika ang itinuturo mo?",
+    "pickCefrLevelTeacherStepTitle": "Anong antas ang itinuturo mo?",
+    "pickCefrLevelStudentStepTitle": "Anong antas ka?",
+    "customCourseStepTitle": "Punan ang form na ito upang makakuha ng pasadyang kurso",
+    "aboutYourClass": "Tungkol sa iyong klase",
+    "courseCodeStepErrorMessage": "Pakisuri ang iyong code at subukan muli",
+    "institution": "Institusyon",
+    "courseGoals": "Mga Layunin ng Kurso",
+    "selectChats": "Pumili ng mga Chat",
+    "plainTextFile": "Teksto",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
         "type": "String",
         "placeholders": {}
     }

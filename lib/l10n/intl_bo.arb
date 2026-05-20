@@ -3194,7 +3194,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-05-12 10:37:00.393082",
+    "@@last_modified": "2026-05-20 13:16:23.643099",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9320,6 +9320,86 @@
     },
     "missingLanguageException": "请选取有效的基础语言和目标语言",
     "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "Mi uzas Pangea Chat por",
+    "teach": "Instrui",
+    "courseCodeStepTitle": "Ĉu vi havas kursoinvitan kodon?",
+    "courseCodeStepHint": "Enigu kodon por aliĝi",
+    "courseCodeStepSkip": "Mi ne havas kodon",
+    "joinedCourseStepTitle": "Bonvenon!",
+    "pickLanguageTeacherStepTitle": "Kiun lingvon vi instruas?",
+    "pickCefrLevelTeacherStepTitle": "Kiun nivelon vi instruas?",
+    "pickCefrLevelStudentStepTitle": "Kiun nivelon vi estas?",
+    "customCourseStepTitle": "Plenigu ĉi tiun formularon por ricevi personigitan kurson",
+    "aboutYourClass": "O vašem razredu",
+    "courseCodeStepErrorMessage": "Proszę sprawdzić swój kod i spróbować ponownie",
+    "institution": "Instytucja",
+    "courseGoals": "Ciljevi kursa",
+    "selectChats": "Odaberite razgovore",
+    "plainTextFile": "Tekst",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
         "type": "String",
         "placeholders": {}
     }
