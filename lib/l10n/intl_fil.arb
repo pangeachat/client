@@ -9202,7 +9202,6 @@
     },
     "notStartedActivitiesTitle": "Bukas na sesyon ({num})",
     "inProgressActivitiesTitle": "Nangyayari ngayon ({num})",
-    "completedActivitiesTitle": "Tapos na ({num})",
     "pickDifferentActivity": "Pumili ng ibang aktibidad",
     "inOngoingActivity": "Mayroon kang patuloy na aktibidad!",
     "@notStartedActivitiesTitle": {
@@ -9214,14 +9213,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

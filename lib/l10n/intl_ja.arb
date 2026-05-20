@@ -9056,7 +9056,6 @@
     },
     "notStartedActivitiesTitle": "オープンセッション ({num})",
     "inProgressActivitiesTitle": "現在進行中 ({num})",
-    "completedActivitiesTitle": "完了 ({num})",
     "pickDifferentActivity": "別のアクティビティを選択",
     "inOngoingActivity": "進行中のアクティビティがあります！",
     "@notStartedActivitiesTitle": {
@@ -9068,14 +9067,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

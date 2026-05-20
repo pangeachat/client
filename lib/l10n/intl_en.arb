@@ -4532,15 +4532,6 @@
             }
         }
     },
-    "completedActivitiesTitle": "Done ({num})",
-    "@completedActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "pickDifferentActivity": "Pick a different activity",
     "blockLemmaConfirmation": "This vocab word will be permanently removed from your analytics",
     "woman": "Woman",
@@ -4831,5 +4822,14 @@
     "courseGoals": "Course Goals",
     "missingLanguageException": "Please choose valid base and target languages",
     "selectChats": "Select Chats",
-    "plainTextFile": "Text"
+    "plainTextFile": "Text",
+    "completedActivitiesTitle": "Finished ({num})",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    }
 }

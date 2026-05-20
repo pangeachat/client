@@ -8908,7 +8908,6 @@
     "notStartedActivitiesTitle": "Sesiones abiertas ({num})",
     "pickDifferentActivity": "Elige una actividad diferente",
     "inProgressActivitiesTitle": "Sucedió ahora ({num})",
-    "completedActivitiesTitle": "Hecho ({num})",
     "inOngoingActivity": "¡Tienes una actividad en curso!",
     "@notStartedActivitiesTitle": {
         "type": "String",
@@ -8919,14 +8918,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

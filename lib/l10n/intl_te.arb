@@ -9309,7 +9309,6 @@
     },
     "notStartedActivitiesTitle": "ఓపెన్ సెషన్స్ ({num})",
     "inProgressActivitiesTitle": "ఇప్పుడు జరుగుతోంది ({num})",
-    "completedActivitiesTitle": "చేయబడింది ({num})",
     "pickDifferentActivity": "ఇంకొక కార్యకలాపాన్ని ఎంచుకోండి",
     "inOngoingActivity": "మీకు ఒక కొనసాగుతున్న కార్యకలాపం ఉంది!",
     "@notStartedActivitiesTitle": {
@@ -9321,14 +9320,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

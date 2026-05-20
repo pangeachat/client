@@ -9256,7 +9256,6 @@
     },
     "notStartedActivitiesTitle": "ღია სესიები ({num})",
     "inProgressActivitiesTitle": "მიმდინარე ({num})",
-    "completedActivitiesTitle": "დასრულებულია ({num})",
     "pickDifferentActivity": "აირჩიეთ სხვა აქტივობა",
     "inOngoingActivity": "თქვენ გაქვთ მიმდინარე აქტივობა!",
     "@notStartedActivitiesTitle": {
@@ -9268,14 +9267,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

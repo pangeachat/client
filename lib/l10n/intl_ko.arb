@@ -8405,7 +8405,6 @@
     },
     "notStartedActivitiesTitle": "열린 세션 ({num})",
     "inProgressActivitiesTitle": "현재 진행 중 ({num})",
-    "completedActivitiesTitle": "완료됨 ({num})",
     "pickDifferentActivity": "다른 활동 선택",
     "inOngoingActivity": "진행 중인 활동이 있습니다!",
     "@notStartedActivitiesTitle": {
@@ -8417,14 +8416,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

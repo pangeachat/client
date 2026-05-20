@@ -5271,7 +5271,6 @@
     },
     "notStartedActivitiesTitle": "Phiên mở ({num})",
     "inProgressActivitiesTitle": "Đang diễn ra ({num})",
-    "completedActivitiesTitle": "Đã hoàn thành ({num})",
     "pickDifferentActivity": "Chọn một hoạt động khác",
     "inOngoingActivity": "Bạn có một hoạt động đang diễn ra!",
     "@notStartedActivitiesTitle": {
@@ -5283,14 +5282,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

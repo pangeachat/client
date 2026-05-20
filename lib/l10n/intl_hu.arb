@@ -8315,7 +8315,6 @@
     },
     "notStartedActivitiesTitle": "Nyitott ülések ({num})",
     "inProgressActivitiesTitle": "Jelenleg zajlik ({num})",
-    "completedActivitiesTitle": "Kész ({num})",
     "pickDifferentActivity": "Válassz egy másik tevékenységet",
     "inOngoingActivity": "Folyamatban lévő tevékenységed van!",
     "@notStartedActivitiesTitle": {
@@ -8327,14 +8326,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

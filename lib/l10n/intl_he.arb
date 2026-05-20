@@ -9267,7 +9267,6 @@
     },
     "notStartedActivitiesTitle": "סשנים פתוחים ({num})",
     "inProgressActivitiesTitle": "מתרחש עכשיו ({num})",
-    "completedActivitiesTitle": "בוצע ({num})",
     "pickDifferentActivity": "בחר פעילות שונה",
     "inOngoingActivity": "יש לך פעילות מתמשכת!",
     "@notStartedActivitiesTitle": {
@@ -9279,14 +9278,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

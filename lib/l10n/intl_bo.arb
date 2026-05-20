@@ -7586,7 +7586,6 @@
     "notStartedActivitiesTitle": "Sesyonan e hapura ({num})",
     "inProgressActivitiesTitle": "Po ndodhin tani ({num})",
     "pickDifferentActivity": "Zgjidh një aktivitet tjetër",
-    "completedActivitiesTitle": "Përfunduar ({num})",
     "inOngoingActivity": "Keni një aktivitet në vazhdim!",
     "@notStartedActivitiesTitle": {
         "type": "String",
@@ -7597,14 +7596,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

@@ -8406,7 +8406,6 @@
     },
     "notStartedActivitiesTitle": "Avoimet istunnot ({num})",
     "inProgressActivitiesTitle": "Käynnissä nyt ({num})",
-    "completedActivitiesTitle": "Valmis ({num})",
     "pickDifferentActivity": "Valitse toinen aktiviteetti",
     "inOngoingActivity": "Sinulla on meneillään oleva aktiviteetti!",
     "@notStartedActivitiesTitle": {
@@ -8418,14 +8417,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

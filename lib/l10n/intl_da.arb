@@ -9282,7 +9282,6 @@
     },
     "notStartedActivitiesTitle": "Åbne sessioner ({num})",
     "inProgressActivitiesTitle": "Foregår nu ({num})",
-    "completedActivitiesTitle": "Færdig ({num})",
     "pickDifferentActivity": "Vælg en anden aktivitet",
     "inOngoingActivity": "Du har en igangværende aktivitet!",
     "@notStartedActivitiesTitle": {
@@ -9294,14 +9293,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

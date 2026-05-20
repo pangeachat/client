@@ -8433,7 +8433,6 @@
     },
     "notStartedActivitiesTitle": "Seisiúin oscailte ({num})",
     "inProgressActivitiesTitle": "Ag tarlú anois ({num})",
-    "completedActivitiesTitle": "Críochnaithe ({num})",
     "pickDifferentActivity": "Roghnaigh gníomhaíocht dhifriúil",
     "inOngoingActivity": "Tá gníomhaíocht ar siúl agat!",
     "@notStartedActivitiesTitle": {
@@ -8445,14 +8444,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

@@ -8907,7 +8907,6 @@
     },
     "notStartedActivitiesTitle": "खुले सत्र ({num})",
     "inProgressActivitiesTitle": "अब हो रहा है ({num})",
-    "completedActivitiesTitle": "पूरा हुआ ({num})",
     "pickDifferentActivity": "एक अलग गतिविधि चुनें",
     "inOngoingActivity": "आपके पास एक चल रही गतिविधि है!",
     "@notStartedActivitiesTitle": {
@@ -8919,14 +8918,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
