@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-05-12 10:37:08.094691",
+    "@@last_modified": "2026-05-20 13:17:12.591779",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10516,6 +10516,86 @@
     },
     "missingLanguageException": "有効な基準言語とターゲット言語を選択してください",
     "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "私はPangea Chatを使って",
+    "teach": "教える",
+    "courseCodeStepTitle": "コース招待コードはありますか？",
+    "courseCodeStepHint": "参加するためにコードを入力してください",
+    "courseCodeStepSkip": "コードは持っていません",
+    "joinedCourseStepTitle": "ようこそ！",
+    "pickLanguageTeacherStepTitle": "どの言語を教えていますか？",
+    "pickCefrLevelTeacherStepTitle": "どのレベルを教えていますか？",
+    "pickCefrLevelStudentStepTitle": "あなたはどのレベルですか？",
+    "customCourseStepTitle": "カスタムコースを取得するためにこのフォームに記入してください",
+    "aboutYourClass": "あなたのクラスについて",
+    "courseCodeStepErrorMessage": "コードを確認して再試行してください",
+    "institution": "機関",
+    "courseGoals": "コースの目標",
+    "selectChats": "チャットを選択",
+    "plainTextFile": "テキスト",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
         "type": "String",
         "placeholders": {}
     }

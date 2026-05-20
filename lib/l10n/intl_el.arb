@@ -3772,7 +3772,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-05-12 10:37:06.868979",
+    "@@last_modified": "2026-05-20 13:17:06.652025",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10697,6 +10697,86 @@
     },
     "missingLanguageException": "Παρακαλώ επιλέξτε έγκυρες γλώσσες βάσης και στόχου",
     "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "Χρησιμοποιώ το Pangea Chat για να",
+    "teach": "Διδάξω",
+    "courseCodeStepTitle": "Έχετε κωδικό πρόσκλησης για το μάθημα;",
+    "courseCodeStepHint": "Εισάγετε τον κωδικό για να συμμετάσχετε",
+    "courseCodeStepSkip": "Δεν έχω κωδικό",
+    "joinedCourseStepTitle": "Καλώς ήρθατε!",
+    "pickLanguageTeacherStepTitle": "Ποια γλώσσα διδάσκετε;",
+    "pickCefrLevelTeacherStepTitle": "Ποιο επίπεδο διδάσκετε;",
+    "pickCefrLevelStudentStepTitle": "Ποιο επίπεδο είστε;",
+    "customCourseStepTitle": "Συμπληρώστε αυτή τη φόρμα για να αποκτήσετε ένα προσαρμοσμένο μάθημα",
+    "aboutYourClass": "Σχετικά με την τάξη σας",
+    "courseCodeStepErrorMessage": "Παρακαλώ ελέγξτε τον κωδικό σας και δοκιμάστε ξανά",
+    "institution": "Ίδρυμα",
+    "courseGoals": "Στόχοι Μαθήματος",
+    "selectChats": "Επιλέξτε Συνομιλίες",
+    "plainTextFile": "Κείμενο",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
         "type": "String",
         "placeholders": {}
     }

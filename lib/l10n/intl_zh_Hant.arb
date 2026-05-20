@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-12 10:36:43.824476",
+    "@@last_modified": "2026-05-20 13:15:12.543214",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9778,6 +9778,86 @@
     },
     "missingLanguageException": "請選擇有效的基礎語言和目標語言",
     "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "我使用 Pangea Chat 來",
+    "teach": "教學",
+    "courseCodeStepTitle": "你有課程邀請碼嗎？",
+    "courseCodeStepHint": "輸入代碼以加入",
+    "courseCodeStepSkip": "我沒有代碼",
+    "joinedCourseStepTitle": "歡迎！",
+    "pickLanguageTeacherStepTitle": "你教什麼語言？",
+    "pickCefrLevelTeacherStepTitle": "你教什麼級別？",
+    "pickCefrLevelStudentStepTitle": "你是什麼級別？",
+    "customCourseStepTitle": "填寫此表單以獲得自訂課程",
+    "aboutYourClass": "關於您的課程",
+    "courseCodeStepErrorMessage": "請檢查您的代碼並重試",
+    "institution": "機構",
+    "courseGoals": "課程目標",
+    "selectChats": "選擇聊天",
+    "plainTextFile": "文本",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
         "type": "String",
         "placeholders": {}
     }

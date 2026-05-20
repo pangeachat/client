@@ -1468,7 +1468,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-05-12 10:36:55.084822",
+    "@@last_modified": "2026-05-20 13:15:47.808904",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10769,6 +10769,86 @@
     },
     "missingLanguageException": "దయచేసి చెల్లుబాటు అయ్యే ప్రాథమిక మరియు లక్ష్య భాషలను ఎంచుకోండి",
     "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "నేను పాంజియా చాట్‌ను ఉపయోగిస్తున్నాను",
+    "teach": "బోధించు",
+    "courseCodeStepTitle": "మీ వద్ద కోర్సు ఆహ్వాన కోడ్ ఉందా?",
+    "courseCodeStepHint": "చేరడానికి కోడ్ నమోదు చేయండి",
+    "courseCodeStepSkip": "నాకు కోడ్ లేదు",
+    "joinedCourseStepTitle": "స్వాగతం!",
+    "pickLanguageTeacherStepTitle": "మీరు ఏ భాష బోధిస్తున్నారు?",
+    "pickCefrLevelTeacherStepTitle": "మీరు ఏ స్థాయిలో బోధిస్తున్నారు?",
+    "pickCefrLevelStudentStepTitle": "మీరు ఏ స్థాయిలో ఉన్నారు?",
+    "customCourseStepTitle": "కస్టమ్ కోర్సు పొందడానికి ఈ ఫారమ్‌ను నింపండి",
+    "aboutYourClass": "మీ తరగతి గురించి",
+    "courseCodeStepErrorMessage": "దయచేసి మీ కోడ్‌ను తనిఖీ చేసి మళ్లీ ప్రయత్నించండి",
+    "institution": "సంస్థ",
+    "courseGoals": "కోర్సు లక్ష్యాలు",
+    "selectChats": "చాట్లను ఎంచుకోండి",
+    "plainTextFile": "పాఠ్యం",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
         "type": "String",
         "placeholders": {}
     }

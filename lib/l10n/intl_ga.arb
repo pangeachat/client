@@ -3949,7 +3949,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-05-12 10:37:15.862425",
+    "@@last_modified": "2026-05-20 13:17:48.133711",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9659,6 +9659,86 @@
     },
     "missingLanguageException": "Roghnaigh teangacha bunúsacha agus spriocacha bailí, le do thoil",
     "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "Úsáidim Pangea Chat chun",
+    "teach": "Múineadh",
+    "courseCodeStepTitle": "An bhfuil cód cuireadh cúrsa agat?",
+    "courseCodeStepHint": "Iontráil an cód chun dul isteach",
+    "courseCodeStepSkip": "Níl cód agam",
+    "joinedCourseStepTitle": "Fáilte!",
+    "pickLanguageTeacherStepTitle": "Cén teanga atá tú ag múineadh?",
+    "pickCefrLevelTeacherStepTitle": "Cén leibhéal a mhúineann tú?",
+    "pickCefrLevelStudentStepTitle": "Cén leibhéal atá tú?",
+    "customCourseStepTitle": "Líon an foirm seo chun cúrsa saincheaptha a fháil",
+    "aboutYourClass": "Maidir le do rang",
+    "courseCodeStepErrorMessage": "Le do thoil, seiceáil do chód agus déan iarracht arís",
+    "institution": "Institiúid",
+    "courseGoals": "Cuspóirí an chúrsa",
+    "selectChats": "Roghnaigh comhoibrithe",
+    "plainTextFile": "Téacs",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
         "type": "String",
         "placeholders": {}
     }
