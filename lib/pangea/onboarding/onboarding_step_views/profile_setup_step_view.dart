@@ -127,21 +127,27 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
-                      Container(
-                        width: 100.0,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100.0),
-                          color: theme.disabledColor,
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(100.0),
+                        child: Container(
+                          width: 100.0,
+                          height: 100.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100.0),
+                            color: theme.disabledColor,
+                          ),
+                          child: _step.avatarUrl != null
+                              ? ImageByUrl(
+                                  width: 100.0,
+                                  imageUrl: _step.avatarUrl,
+                                )
+                              : _step.avatarBytes != null
+                              ? Image.memory(
+                                  _step.avatarBytes!,
+                                  fit: BoxFit.cover,
+                                )
+                              : SizedBox(),
                         ),
-                        child: _step.avatarUrl != null
-                            ? ImageByUrl(
-                                width: 100.0,
-                                imageUrl: _step.avatarUrl,
-                              )
-                            : _step.avatarBytes != null
-                            ? Image.memory(_step.avatarBytes!)
-                            : SizedBox(),
                       ),
                       Positioned(
                         right: 0,
