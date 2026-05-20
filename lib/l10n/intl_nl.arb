@@ -8426,7 +8426,6 @@
     },
     "notStartedActivitiesTitle": "Open sessies ({num})",
     "inProgressActivitiesTitle": "Bezig ({num})",
-    "completedActivitiesTitle": "Klaar ({num})",
     "pickDifferentActivity": "Kies een andere activiteit",
     "inOngoingActivity": "Je hebt een lopende activiteit!",
     "@notStartedActivitiesTitle": {
@@ -8438,14 +8437,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

@@ -8315,7 +8315,6 @@
     },
     "notStartedActivitiesTitle": "Sesi terbuka ({num})",
     "inProgressActivitiesTitle": "Sedang berlangsung ({num})",
-    "completedActivitiesTitle": "Selesai ({num})",
     "pickDifferentActivity": "Pilih aktivitas yang berbeda",
     "inOngoingActivity": "Anda memiliki aktivitas yang sedang berlangsung!",
     "@notStartedActivitiesTitle": {
@@ -8327,14 +8326,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

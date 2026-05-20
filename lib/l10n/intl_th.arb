@@ -8908,7 +8908,6 @@
     "notStartedActivitiesTitle": "เปิดเซสชัน ({num})",
     "pickDifferentActivity": "เลือกกิจกรรมอื่น",
     "inProgressActivitiesTitle": "กำลังดำเนินการอยู่ ({num})",
-    "completedActivitiesTitle": "เสร็จสิ้น ({num})",
     "inOngoingActivity": "คุณมีการดำเนินการที่กำลังเกิดขึ้น!",
     "@notStartedActivitiesTitle": {
         "type": "String",
@@ -8919,14 +8918,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

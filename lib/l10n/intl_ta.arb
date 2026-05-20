@@ -8314,7 +8314,6 @@
     },
     "notStartedActivitiesTitle": "திறந்த அமர்வுகள் ({num})",
     "inProgressActivitiesTitle": "இப்போது நடைபெற்று வருகிறது ({num})",
-    "completedActivitiesTitle": "முடிந்தது ({num})",
     "pickDifferentActivity": "மற்றொரு செயல்பாட்டை தேர்ந்தெடுக்கவும்",
     "inOngoingActivity": "உங்களுக்கு ஒரு தொடர்ந்த செயல்பாடு உள்ளது!",
     "@notStartedActivitiesTitle": {
@@ -8326,14 +8325,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

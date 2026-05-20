@@ -9304,7 +9304,6 @@
     },
     "notStartedActivitiesTitle": "Otvorené relácie ({num})",
     "inProgressActivitiesTitle": "Prebieha teraz ({num})",
-    "completedActivitiesTitle": "Hotovo ({num})",
     "pickDifferentActivity": "Vyberte inú aktivitu",
     "inOngoingActivity": "Máte prebiehajúcu aktivitu!",
     "@notStartedActivitiesTitle": {
@@ -9316,14 +9315,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

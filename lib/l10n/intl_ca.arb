@@ -8339,7 +8339,6 @@
     },
     "notStartedActivitiesTitle": "Sessions obertes ({num})",
     "inProgressActivitiesTitle": "Succeint ara ({num})",
-    "completedActivitiesTitle": "Fet ({num})",
     "pickDifferentActivity": "Trieu una activitat diferent",
     "inOngoingActivity": "Tens una activitat en curs!",
     "@notStartedActivitiesTitle": {
@@ -8351,14 +8350,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

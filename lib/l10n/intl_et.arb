@@ -8437,7 +8437,6 @@
     },
     "notStartedActivitiesTitle": "Avatud seansid ({num})",
     "inProgressActivitiesTitle": "Toimub praegu ({num})",
-    "completedActivitiesTitle": "Tehtud ({num})",
     "pickDifferentActivity": "Vali teine tegevus",
     "inOngoingActivity": "Teil on käimasolev tegevus!",
     "@notStartedActivitiesTitle": {
@@ -8449,14 +8448,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

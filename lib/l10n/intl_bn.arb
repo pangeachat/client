@@ -8903,7 +8903,6 @@
     },
     "notStartedActivitiesTitle": "খোলা সেশন ({num})",
     "inProgressActivitiesTitle": "এখন হচ্ছে ({num})",
-    "completedActivitiesTitle": "সম্পন্ন ({num})",
     "pickDifferentActivity": "একটি ভিন্ন কার্যকলাপ বেছে নিন",
     "inOngoingActivity": "আপনার একটি চলমান কার্যক্রম আছে!",
     "@notStartedActivitiesTitle": {
@@ -8915,14 +8914,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

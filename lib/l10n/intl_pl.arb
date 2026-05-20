@@ -8307,7 +8307,6 @@
     },
     "notStartedActivitiesTitle": "Otwarte sesje ({num})",
     "inProgressActivitiesTitle": "Trwa teraz ({num})",
-    "completedActivitiesTitle": "Zrobione ({num})",
     "inOngoingActivity": "Masz trwającą aktywność!",
     "@notStartedActivitiesTitle": {
         "type": "String",
@@ -8318,14 +8317,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

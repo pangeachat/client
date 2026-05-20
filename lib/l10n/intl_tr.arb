@@ -8519,7 +8519,6 @@
     },
     "notStartedActivitiesTitle": "Açık oturumlar ({num})",
     "inProgressActivitiesTitle": "Şu anda gerçekleşiyor ({num})",
-    "completedActivitiesTitle": "Tamamlandı ({num})",
     "pickDifferentActivity": "Farklı bir etkinlik seç",
     "inOngoingActivity": "Devam eden bir etkinliğiniz var!",
     "@notStartedActivitiesTitle": {
@@ -8531,14 +8530,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

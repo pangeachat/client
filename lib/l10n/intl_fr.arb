@@ -8600,7 +8600,6 @@
     },
     "notStartedActivitiesTitle": "Sessions ouvertes ({num})",
     "inProgressActivitiesTitle": "En cours ({num})",
-    "completedActivitiesTitle": "Terminé ({num})",
     "pickDifferentActivity": "Choisissez une activité différente",
     "inOngoingActivity": "Vous avez une activité en cours !",
     "@notStartedActivitiesTitle": {
@@ -8612,14 +8611,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

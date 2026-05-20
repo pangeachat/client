@@ -4219,7 +4219,6 @@
     "announcementsChatDesc": "Faqat joy administratorlari yozishi mumkin.",
     "notStartedActivitiesTitle": "Boshlanmagan sessiyalar ({num})",
     "inProgressActivitiesTitle": "Hozir bo'lib o'tayotgan ({num})",
-    "completedActivitiesTitle": "Tugallangan ({num})",
     "pickDifferentActivity": "Boshqa faoliyatni tanlang",
     "blockLemmaConfirmation": "Ushbu lug'at so'zi sizning tahlil natijalaringizdan doimiy ravishda o'chiriladi",
     "woman": "Ayol",
@@ -8576,14 +8575,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

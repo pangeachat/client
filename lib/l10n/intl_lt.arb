@@ -9075,7 +9075,6 @@
     "notStartedActivitiesTitle": "Atidarytos sesijos ({num})",
     "pickDifferentActivity": "Pasirinkite kitą veiklą",
     "inProgressActivitiesTitle": "Dabar vyksta ({num})",
-    "completedActivitiesTitle": "Baigta ({num})",
     "inOngoingActivity": "Turite vykdomą veiklą!",
     "@notStartedActivitiesTitle": {
         "type": "String",
@@ -9086,14 +9085,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

@@ -9311,7 +9311,6 @@
     },
     "notStartedActivitiesTitle": "Otvorene sesije ({num})",
     "inProgressActivitiesTitle": "Dešava se sada ({num})",
-    "completedActivitiesTitle": "Završeno ({num})",
     "pickDifferentActivity": "Izaberi drugu aktivnost",
     "inOngoingActivity": "Imate aktivnost u toku!",
     "@notStartedActivitiesTitle": {
@@ -9323,14 +9322,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

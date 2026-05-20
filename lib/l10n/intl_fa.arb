@@ -8305,7 +8305,6 @@
     },
     "notStartedActivitiesTitle": "جلسات باز ({num})",
     "inProgressActivitiesTitle": "در حال حاضر ({num})",
-    "completedActivitiesTitle": "انجام شده ({num})",
     "pickDifferentActivity": "یک فعالیت متفاوت انتخاب کنید",
     "inOngoingActivity": "شما یک فعالیت در حال انجام دارید!",
     "@notStartedActivitiesTitle": {
@@ -8317,14 +8316,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

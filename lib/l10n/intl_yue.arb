@@ -9315,7 +9315,6 @@
     "notStartedActivitiesTitle": "開放會議 ({num})",
     "inProgressActivitiesTitle": "正在進行中 ({num})",
     "pickDifferentActivity": "選擇其他活動",
-    "completedActivitiesTitle": "已完成 ({num})",
     "inOngoingActivity": "你有一個正在進行的活動！",
     "@notStartedActivitiesTitle": {
         "type": "String",
@@ -9326,14 +9325,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

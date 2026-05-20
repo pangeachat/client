@@ -9381,7 +9381,6 @@
     },
     "notStartedActivitiesTitle": "Открытые сессии ({num})",
     "inProgressActivitiesTitle": "Идёт сейчас ({num})",
-    "completedActivitiesTitle": "Завершено ({num})",
     "pickDifferentActivity": "Выберите другую активность",
     "inOngoingActivity": "У вас есть текущая активность!",
     "@notStartedActivitiesTitle": {
@@ -9393,14 +9392,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

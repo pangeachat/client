@@ -8776,7 +8776,6 @@
     "notStartedActivitiesTitle": "Öppna sessioner ({num})",
     "inProgressActivitiesTitle": "Pågår nu ({num})",
     "pickDifferentActivity": "Välj en annan aktivitet",
-    "completedActivitiesTitle": "Avklarad ({num})",
     "inOngoingActivity": "Du har en pågående aktivitet!",
     "@notStartedActivitiesTitle": {
         "type": "String",
@@ -8787,14 +8786,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

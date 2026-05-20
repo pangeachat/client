@@ -8528,7 +8528,6 @@
     },
     "notStartedActivitiesTitle": "جلسات مفتوحة ({num})",
     "inProgressActivitiesTitle": "تحدث الآن ({num})",
-    "completedActivitiesTitle": "تم ({num})",
     "pickDifferentActivity": "اختر نشاطًا مختلفًا",
     "inOngoingActivity": "لديك نشاط جارٍ!",
     "@notStartedActivitiesTitle": {
@@ -8540,14 +8539,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

@@ -9307,7 +9307,6 @@
     },
     "notStartedActivitiesTitle": "Malfermitaj sesioj ({num})",
     "inProgressActivitiesTitle": "Okazas nun ({num})",
-    "completedActivitiesTitle": "Finiĝis ({num})",
     "pickDifferentActivity": "Elektu alian aktivon",
     "inOngoingActivity": "Vi havas daŭrantan aktivon!",
     "@notStartedActivitiesTitle": {
@@ -9319,14 +9318,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

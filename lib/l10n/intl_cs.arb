@@ -8756,7 +8756,6 @@
     },
     "notStartedActivitiesTitle": "Otevřené sezení ({num})",
     "inProgressActivitiesTitle": "Probíhá nyní ({num})",
-    "completedActivitiesTitle": "Hotovo ({num})",
     "pickDifferentActivity": "Vyberte jinou aktivitu",
     "inOngoingActivity": "Máte probíhající aktivitu!",
     "@notStartedActivitiesTitle": {
@@ -8768,14 +8767,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

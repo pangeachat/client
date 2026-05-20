@@ -8458,7 +8458,6 @@
     },
     "notStartedActivitiesTitle": "Offene Sitzungen ({num})",
     "inProgressActivitiesTitle": "Gerade jetzt ({num})",
-    "completedActivitiesTitle": "Fertig ({num})",
     "pickDifferentActivity": "Wählen Sie eine andere Aktivität",
     "inOngoingActivity": "Sie haben eine laufende Aktivität!",
     "@notStartedActivitiesTitle": {
@@ -8470,14 +8469,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

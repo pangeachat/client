@@ -9237,7 +9237,6 @@
     },
     "notStartedActivitiesTitle": "Ανοιχτές συνεδρίες ({num})",
     "inProgressActivitiesTitle": "Γίνεται τώρα ({num})",
-    "completedActivitiesTitle": "Ολοκληρώθηκε ({num})",
     "pickDifferentActivity": "Επιλέξτε μια διαφορετική δραστηριότητα",
     "inOngoingActivity": "Έχετε μια τρέχουσα δραστηριότητα!",
     "@notStartedActivitiesTitle": {
@@ -9249,14 +9248,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

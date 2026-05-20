@@ -9013,7 +9013,6 @@
     },
     "notStartedActivitiesTitle": "Sesiuni deschise ({num})",
     "inProgressActivitiesTitle": "Se desfășoară acum ({num})",
-    "completedActivitiesTitle": "Finalizate ({num})",
     "pickDifferentActivity": "Alege o activitate diferită",
     "inOngoingActivity": "Ai o activitate în desfășurare!",
     "@notStartedActivitiesTitle": {
@@ -9025,14 +9024,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

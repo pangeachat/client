@@ -24,7 +24,6 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
-import 'package:fluffychat/pangea/room_summaries/room_summaries_repo.dart';
 import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -266,10 +265,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
         .whereType<String>()
         .toList();
 
-    final roomSummariesRepo = RoomSummariesRepo(client);
-    final roomSummariesResponse = await roomSummariesRepo.loadRoomSummaries(
-      roomIds,
-    );
+    final roomSummariesResponse = await client.loadRoomSummaries(roomIds);
     _roomSummaries = roomSummariesResponse;
   }
 

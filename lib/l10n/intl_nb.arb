@@ -8481,7 +8481,6 @@
     },
     "notStartedActivitiesTitle": "Åpne økter ({num})",
     "inProgressActivitiesTitle": "Pågår nå ({num})",
-    "completedActivitiesTitle": "Ferdig ({num})",
     "pickDifferentActivity": "Velg en annen aktivitet",
     "inOngoingActivity": "Du har en pågående aktivitet!",
     "@notStartedActivitiesTitle": {
@@ -8493,14 +8492,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {

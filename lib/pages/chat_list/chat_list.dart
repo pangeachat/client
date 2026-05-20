@@ -12,6 +12,7 @@ import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_view.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_preview/activity_session_preview_client_extension.dart';
 import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/chat_list/utils/app_version_util.dart';
@@ -619,6 +620,8 @@ class ChatListController extends State<ChatList>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _joinInvitedSpaces();
     });
+
+    client.leavePreviewedActivitySessions();
     // Pangea#
 
     super.initState();
