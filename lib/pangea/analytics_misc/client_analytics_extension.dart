@@ -173,6 +173,7 @@ extension AnalyticsClientExtension on Client {
   /// Space admins join analytics rooms in spaces via the space hierarchy,
   /// so other members of the space need to add their analytics rooms to the space.
   Future<void> addAnalyticsRoomsToSpaces() async {
+    if (prevBatch == null) await onSync.stream.first;
     if (userID == null || userID == BotName.byEnvironment) return;
     final spaces = rooms
         .where((room) => room.isSpace && room.membership == Membership.join)
