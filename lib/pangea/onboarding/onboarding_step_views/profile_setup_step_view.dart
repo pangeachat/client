@@ -5,12 +5,14 @@ import 'package:flutter/services.dart';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:matrix/matrix.dart';
+import 'package:mime/mime.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
 import 'package:fluffychat/utils/file_selector.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class _AvatarInfo {
@@ -103,10 +105,23 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
       allowMultiple: false,
       type: FileType.image,
     );
-    final pickedFile = picked.firstOrNull;
-    if (pickedFile == null) return;
-    final bytes = await pickedFile.readAsBytes();
-    _setAvatarBytes(bytes);
+
+    await showFutureLoadingDialog(
+      context: context,
+      future: () async {
+        final pickedFile = picked.firstOrNull;
+        if (pickedFile == null) return;
+        final bytes = await pickedFile.readAsBytes();
+
+        final mimeType = lookupMimeType(pickedFile.name, headerBytes: bytes);
+
+        if (!AppConfig.allowedMimeTypes.contains(mimeType)) {
+          throw L10n.of(context).invalidInput;
+        }
+
+        _setAvatarBytes(bytes);
+      },
+    );
   }
 
   @override

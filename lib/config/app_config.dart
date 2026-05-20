@@ -148,5 +148,13 @@ abstract class AppConfig {
 
   static bool isAllowedImage(Uri imageUrl) =>
       _allowedImageHosts.contains(imageUrl.host);
+
+  static Set<String> get allowedMimeTypes => {
+    "image/jpeg",
+    "image/jpg",
+    "image/webp",
+    "image/gif",
+    "image/png",
+  };
   // Pangea#
 }
