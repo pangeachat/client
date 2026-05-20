@@ -86,30 +86,32 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Column(
-      spacing: 8.0,
-      children: [
-        Text(
-          L10n.of(context).customCourseStepTitle,
-          style: theme.textTheme.titleMedium?.copyWith(
-            fontWeight: FontWeight.bold,
+    return SingleChildScrollView(
+      child: Column(
+        spacing: 8.0,
+        children: [
+          Text(
+            L10n.of(context).customCourseStepTitle,
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        TextField(
-          controller: _nameController,
-          decoration: InputDecoration(hintText: L10n.of(context).name),
-        ),
-        TextField(
-          controller: _institutionController,
-          decoration: InputDecoration(hintText: L10n.of(context).institution),
-        ),
-        TextField(
-          controller: _goalsController,
-          decoration: InputDecoration(hintText: L10n.of(context).courseGoals),
-          minLines: 10,
-          maxLines: 10,
-        ),
-      ],
+          TextField(
+            controller: _nameController,
+            decoration: InputDecoration(hintText: L10n.of(context).name),
+          ),
+          TextField(
+            controller: _institutionController,
+            decoration: InputDecoration(hintText: L10n.of(context).institution),
+          ),
+          TextField(
+            controller: _goalsController,
+            decoration: InputDecoration(hintText: L10n.of(context).courseGoals),
+            minLines: 10,
+            maxLines: 10,
+          ),
+        ],
+      ),
     );
   }
 }
