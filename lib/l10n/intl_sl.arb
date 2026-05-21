@@ -1963,7 +1963,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-05-12 10:36:30.617709",
+    "@@last_modified": "2026-05-20 13:13:57.306294",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9304,7 +9304,6 @@
     },
     "notStartedActivitiesTitle": "Odprte seje ({num})",
     "inProgressActivitiesTitle": "Poteka zdaj ({num})",
-    "completedActivitiesTitle": "Končano ({num})",
     "pickDifferentActivity": "Izberite drugo dejavnost",
     "inOngoingActivity": "Imate potekajočo dejavnost!",
     "@notStartedActivitiesTitle": {
@@ -9316,14 +9315,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -10764,6 +10755,86 @@
     },
     "missingLanguageException": "Prosimo, izberite veljavne osnovne in ciljne jezike",
     "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "Pangea Chat uporabljam za",
+    "teach": "Učenje",
+    "courseCodeStepTitle": "Imate kodo za vabilo na tečaj?",
+    "courseCodeStepHint": "Vnesite kodo za pridružitev",
+    "courseCodeStepSkip": "Nimam kode",
+    "joinedCourseStepTitle": "Dobrodošli!",
+    "pickLanguageTeacherStepTitle": "Katero jezika učite?",
+    "pickCefrLevelTeacherStepTitle": "Katero raven učite?",
+    "pickCefrLevelStudentStepTitle": "Katero raven ste?",
+    "customCourseStepTitle": "Izpolnite ta obrazec za prilagojen tečaj",
+    "aboutYourClass": "O vaši učni skupini",
+    "courseCodeStepErrorMessage": "Prosimo, preverite svojo kodo in poskusite znova",
+    "institution": "Ustanova",
+    "courseGoals": "Cilji tečaja",
+    "selectChats": "Izberite klepete",
+    "plainTextFile": "Besedilo",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
         "type": "String",
         "placeholders": {}
     }

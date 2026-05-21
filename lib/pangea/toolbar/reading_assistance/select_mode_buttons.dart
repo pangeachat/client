@@ -553,7 +553,10 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                                             .shimmerTranslation
                                             .isToggledOff &&
                                         mode == SelectMode.translate &&
-                                        enabled,
+                                        enabled &&
+                                        widget
+                                            .controller
+                                            .enableTranslateShimmer,
                                     borderRadius: BorderRadius.circular(100),
                                     maxOpacity: 0.6,
                                     child: AnimatedContainer(

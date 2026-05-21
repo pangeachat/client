@@ -13,7 +13,6 @@ import 'package:fluffychat/pangea/course_creation/public_course_preview_view.dar
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
-import 'package:fluffychat/pangea/room_summaries/room_summaries_repo.dart';
 import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -68,10 +67,9 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       });
 
       final roomIds = [roomID];
-      final roomSummariesRepo = RoomSummariesRepo(Matrix.of(context).client);
-      final roomSummariesResponse = await roomSummariesRepo.loadRoomSummaries(
-        roomIds,
-      );
+      final roomSummariesResponse = await Matrix.of(
+        context,
+      ).client.loadRoomSummaries(roomIds);
 
       final roomSummary = roomSummariesResponse[roomID];
       if (roomSummary == null) {

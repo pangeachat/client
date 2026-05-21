@@ -1506,7 +1506,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-05-12 10:36:19.867385",
+    "@@last_modified": "2026-05-20 13:13:18.218363",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9299,7 +9299,6 @@
     "notStartedActivitiesTitle": "Sesiones abiertas ({num})",
     "pickDifferentActivity": "Elige una actividad diferente",
     "inProgressActivitiesTitle": "Sucedendo agora ({num})",
-    "completedActivitiesTitle": "Feito ({num})",
     "inOngoingActivity": "Você tem uma atividade em andamento!",
     "@notStartedActivitiesTitle": {
         "type": "String",
@@ -9310,14 +9309,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -10758,6 +10749,86 @@
     },
     "missingLanguageException": "Per favore scegli lingue di base e di destinazione valide",
     "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "Mi uzas Pangea Chat por",
+    "teach": "Instrui",
+    "courseCodeStepTitle": "Ĉu vi havas kursoinvitan kodon?",
+    "courseCodeStepHint": "Enigu kodon por aliĝi",
+    "courseCodeStepSkip": "Mi ne havas kodon",
+    "joinedCourseStepTitle": "Bonvenon!",
+    "pickLanguageTeacherStepTitle": "Kiun lingvon vi instruas?",
+    "pickCefrLevelTeacherStepTitle": "Kiun nivelon vi instruas?",
+    "pickCefrLevelStudentStepTitle": "Kiun nivelon vi estas?",
+    "customCourseStepTitle": "Plenigu ĉi tiun formularon por ricevi personigitan kurson",
+    "aboutYourClass": "Despre clasa ta",
+    "courseCodeStepErrorMessage": "Te rog verifică codul tău și încearcă din nou",
+    "institution": "Instituție",
+    "courseGoals": "Obiectivele cursului",
+    "selectChats": "Selectează conversațiile",
+    "plainTextFile": "Text",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
         "type": "String",
         "placeholders": {}
     }

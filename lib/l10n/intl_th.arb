@@ -3378,7 +3378,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-05-12 10:36:39.512211",
+    "@@last_modified": "2026-05-20 13:14:59.162285",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8908,7 +8908,6 @@
     "notStartedActivitiesTitle": "เปิดเซสชัน ({num})",
     "pickDifferentActivity": "เลือกกิจกรรมอื่น",
     "inProgressActivitiesTitle": "กำลังดำเนินการอยู่ ({num})",
-    "completedActivitiesTitle": "เสร็จสิ้น ({num})",
     "inOngoingActivity": "คุณมีการดำเนินการที่กำลังเกิดขึ้น!",
     "@notStartedActivitiesTitle": {
         "type": "String",
@@ -8919,14 +8918,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -10367,6 +10358,86 @@
     },
     "missingLanguageException": "กรุณาเลือกภาษาพื้นฐานและภาษาปลายทางที่ถูกต้อง",
     "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "ฉันใช้ Pangea Chat เพื่อ",
+    "teach": "สอน",
+    "courseCodeStepTitle": "คุณมีรหัสเชิญเข้าคอร์สไหม?",
+    "courseCodeStepHint": "กรอกรหัสเพื่อเข้าร่วม",
+    "courseCodeStepSkip": "ฉันไม่มีรหัส",
+    "joinedCourseStepTitle": "ยินดีต้อนรับ!",
+    "pickLanguageTeacherStepTitle": "คุณกำลังสอนภาษาอะไร?",
+    "pickCefrLevelTeacherStepTitle": "คุณสอนระดับไหน?",
+    "pickCefrLevelStudentStepTitle": "คุณอยู่ระดับไหน?",
+    "customCourseStepTitle": "กรอกแบบฟอร์มนี้เพื่อรับคอร์สที่กำหนดเอง",
+    "aboutYourClass": "เกี่ยวกับชั้นเรียนของคุณ",
+    "courseCodeStepErrorMessage": "กรุณาตรวจสอบรหัสของคุณและลองอีกครั้ง",
+    "institution": "สถาบัน",
+    "courseGoals": "เป้าหมายของหลักสูตร",
+    "selectChats": "เลือกการสนทนา",
+    "plainTextFile": "ข้อความ",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
         "type": "String",
         "placeholders": {}
     }

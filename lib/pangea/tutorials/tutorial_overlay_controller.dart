@@ -207,6 +207,9 @@ class TutorialOverlayStateMachine extends ChangeNotifier {
 
   bool isTutorialActive(TutorialEnum tutorial) =>
       _model.activeTutorial?.tutorialType == tutorial;
+
+  bool isTutorialStepActive(TutorialEnum tutorial, int stepIndex) =>
+      isTutorialActive(tutorial) && stepIndex == _model.stepIndex;
 }
 
 class TutorialOverlayController {

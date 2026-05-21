@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-05-12 10:36:08.697390",
+    "@@last_modified": "2026-05-20 13:12:12.447558",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -6386,7 +6386,6 @@
     "notStartedActivitiesTitle": "Sesiones abiertas ({num})",
     "pickDifferentActivity": "Elige una actividad diferente",
     "inProgressActivitiesTitle": "Sucedió ahora ({num})",
-    "completedActivitiesTitle": "Hecho ({num})",
     "inOngoingActivity": "¡Tienes una actividad en curso!",
     "@notStartedActivitiesTitle": {
         "type": "String",
@@ -6397,14 +6396,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -7742,6 +7733,86 @@
     },
     "missingLanguageException": "Por favor, elija idiomas base y de destino válidos",
     "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "Uso Pangea Chat para",
+    "teach": "Enseñar",
+    "courseCodeStepTitle": "¿Tienes un código de invitación para el curso?",
+    "courseCodeStepHint": "Ingresa el código para unirte",
+    "courseCodeStepSkip": "No tengo un código",
+    "joinedCourseStepTitle": "¡Bienvenido!",
+    "pickLanguageTeacherStepTitle": "¿Qué idioma estás enseñando?",
+    "pickCefrLevelTeacherStepTitle": "¿Qué nivel enseñas?",
+    "pickCefrLevelStudentStepTitle": "¿Qué nivel eres?",
+    "customCourseStepTitle": "Completa este formulario para obtener un curso personalizado",
+    "aboutYourClass": "Acerca de tu clase",
+    "courseCodeStepErrorMessage": "Por favor, verifica tu código y vuelve a intentarlo",
+    "institution": "Institución",
+    "courseGoals": "Objetivos del curso",
+    "selectChats": "Seleccionar chats",
+    "plainTextFile": "Texto",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
         "type": "String",
         "placeholders": {}
     }

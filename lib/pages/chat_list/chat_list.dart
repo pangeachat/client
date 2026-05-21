@@ -12,6 +12,7 @@ import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_view.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_preview/activity_session_preview_client_extension.dart';
 import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/chat_list/utils/app_version_util.dart';
@@ -571,10 +572,11 @@ class ChatListController extends State<ChatList>
     MatrixState.pangeaController.subscriptionController.subscriptionNotifier
         .addListener(_onSubscribe);
 
-    // listen for space child updates for any space that is not the active space
-    // so that when the user navigates to the space that was updated, it will
-    // reload any rooms that have been added / removed
+    MatrixState.pangeaController.initControllers();
+
     final client = Matrix.of(context).client;
+    _joinCachedSpaceCode(client);
+    _startDMWithCachedUserId(client);
 
     // listen for room join events and leave room if over capacity
     _roomCapacitySubscription?.cancel();
@@ -618,6 +620,8 @@ class ChatListController extends State<ChatList>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _joinInvitedSpaces();
     });
+
+    client.leavePreviewedActivitySessions();
     // Pangea#
 
     super.initState();
@@ -1062,9 +1066,6 @@ class ChatListController extends State<ChatList>
       });
     }
 
-    // #Pangea
-    await _initPangeaControllers(client);
-    // Pangea#
     if (!mounted) return;
     setState(() {
       waitForFirstSync = true;
@@ -1102,12 +1103,6 @@ class ChatListController extends State<ChatList>
   }
 
   // #Pangea
-  Future<void> _initPangeaControllers(Client client) async {
-    MatrixState.pangeaController.initControllers();
-    await _joinCachedSpaceCode(client);
-    await _startDMWithCachedUserId(client);
-  }
-
   Future<void> _joinCachedSpaceCode(Client client) async {
     final result = await SpaceCodeController.joinCachedSpaceCode(
       context: context,

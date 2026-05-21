@@ -31,7 +31,7 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
     super.initState();
     _step = widget.step;
     final userLevel = MatrixState.pangeaController.userController.userCefrLevel;
-    if (_step.state.languageLevel == null) {
+    if (_step.state.languageLevel != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) => _setLevel(userLevel));
     }
   }

@@ -309,7 +309,7 @@ class UserController {
     baseLanguage ??= userL1;
     if (targetLanguage == null || publicProfile == null) return;
 
-    final analyticsRoom = client.analyticsRoomLocal(targetLanguage);
+    final analyticsRoom = client.ownAnalyticsRoomLocal(lang: targetLanguage);
 
     if (publicProfile!.analytics.targetLanguage == targetLanguage &&
         publicProfile!.analytics.baseLanguage == baseLanguage &&
@@ -376,7 +376,7 @@ class UserController {
     publicProfile!.analytics.addXPOffset(
       targetLanguage,
       offset,
-      client.analyticsRoomLocal(targetLanguage)?.id,
+      client.ownAnalyticsRoomLocal(lang: targetLanguage)?.id,
     );
     await _savePublicProfileUpdate(
       PangeaEventTypes.profileAnalytics,

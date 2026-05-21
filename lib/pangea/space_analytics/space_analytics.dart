@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_downloads/space_analytics_summary_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/saved_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
@@ -364,11 +365,11 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
   }
 
   Room? _analyticsRoomOfUser(User user) {
-    return Matrix.of(context).client.rooms.firstWhereOrNull(
-      (r) =>
-          r.isAnalyticsRoomOfUser(user.id) &&
-          r.madeForLang == selectedLanguage?.langCodeShort,
-    );
+    final lang = selectedLanguage;
+    if (lang == null) return null;
+    return Matrix.of(
+      context,
+    ).client.analyticsRoomLocal(lang: lang, userID: user.id);
   }
 
   void setSelectedLanguage(LanguageModel? lang) {

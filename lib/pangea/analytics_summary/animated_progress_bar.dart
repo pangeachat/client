@@ -26,6 +26,12 @@ class AnimatedProgressBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
+        final barTotalWidth = constraints.maxWidth - 4;
+        final progressWidth = min(
+          barTotalWidth,
+          max(18.0, widthPercent * barTotalWidth),
+        );
+
         return Stack(
           alignment: Alignment.centerLeft,
           children: [
@@ -33,7 +39,7 @@ class AnimatedProgressBar extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 2),
               child: Container(
                 height: height,
-                width: constraints.maxWidth,
+                width: barTotalWidth,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(
                     Radius.circular(AppConfig.borderRadius),
@@ -49,9 +55,7 @@ class AnimatedProgressBar extends StatelessWidget {
               child: AnimatedContainer(
                 duration: duration ?? FluffyThemes.animationDuration,
                 height: height,
-                width: widthPercent == 0
-                    ? 0
-                    : max(18, constraints.maxWidth * widthPercent),
+                width: progressWidth,
                 decoration: BoxDecoration(
                   color: barColor,
                   borderRadius: const BorderRadius.all(

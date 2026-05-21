@@ -4532,15 +4532,6 @@
             }
         }
     },
-    "completedActivitiesTitle": "Done ({num})",
-    "@completedActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "pickDifferentActivity": "Pick a different activity",
     "blockLemmaConfirmation": "This vocab word will be permanently removed from your analytics",
     "woman": "Woman",
@@ -4833,5 +4824,16 @@
     "selectChats": "Select Chats",
     "pangeaChatLogo": "Pangea Chat logo",
     "vocabAnalytics": "Vocab analytics",
-    "grammarAnalytics": "Grammar analytics"
+    "grammarAnalytics": "Grammar analytics",
+    "selectChats": "Select Chats",
+    "plainTextFile": "Text",
+    "completedActivitiesTitle": "Finished ({num})",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    }
 }

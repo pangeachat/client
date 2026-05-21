@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-12 10:36:58.175085",
+    "@@last_modified": "2026-05-20 13:16:13.794848",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -8314,7 +8314,6 @@
     },
     "notStartedActivitiesTitle": "திறந்த அமர்வுகள் ({num})",
     "inProgressActivitiesTitle": "இப்போது நடைபெற்று வருகிறது ({num})",
-    "completedActivitiesTitle": "முடிந்தது ({num})",
     "pickDifferentActivity": "மற்றொரு செயல்பாட்டை தேர்ந்தெடுக்கவும்",
     "inOngoingActivity": "உங்களுக்கு ஒரு தொடர்ந்த செயல்பாடு உள்ளது!",
     "@notStartedActivitiesTitle": {
@@ -8326,14 +8325,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -9764,6 +9755,86 @@
     },
     "missingLanguageException": "தயவுசெய்து செல்லுபடியாகும் அடிப்படை மற்றும் இலக்கு மொழிகளை தேர்ந்தெடுக்கவும்",
     "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "நான் பாஙோ உரையாடலை பயன்படுத்துகிறேன்",
+    "teach": "கற்பிக்க",
+    "courseCodeStepTitle": "உங்களிடம் ஒரு பாடம் அழைப்பு குறியீடு உள்ளதா?",
+    "courseCodeStepHint": "சேர்வதற்கான குறியீட்டை உள்ளிடவும்",
+    "courseCodeStepSkip": "எனக்கு ஒரு குறியீடு இல்லை",
+    "joinedCourseStepTitle": "வரவேற்கிறேன்!",
+    "pickLanguageTeacherStepTitle": "நீங்கள் எது மொழியை கற்பிக்கிறீர்கள்?",
+    "pickCefrLevelTeacherStepTitle": "நீங்கள் எது நிலையை கற்பிக்கிறீர்கள்?",
+    "pickCefrLevelStudentStepTitle": "நீங்கள் எது நிலை?",
+    "customCourseStepTitle": "ஒரு தனிப்பயன் பாடத்திற்கான இந்த படிவத்தை நிரப்பவும்",
+    "aboutYourClass": "உங்கள் வகுப்பைப் பற்றி",
+    "courseCodeStepErrorMessage": "தயவுசெய்து உங்கள் குறியீட்டை சரிபார்க்கவும் மற்றும் மீண்டும் முயற்சிக்கவும்",
+    "institution": "நிறுவனம்",
+    "courseGoals": "பாடத்திட்ட இலக்குகள்",
+    "selectChats": "சாட்களை தேர்ந்தெடுக்கவும்",
+    "plainTextFile": "உரை",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
         "type": "String",
         "placeholders": {}
     }

@@ -71,7 +71,6 @@ class SpanCardOverlayManager {
   void onOverlayClosed() {
     if (_state != _SpanCardOverlayState.closing) {
       Logs().w("Received close callback while not closing");
-      return;
     }
 
     _closingCompleter?.complete();

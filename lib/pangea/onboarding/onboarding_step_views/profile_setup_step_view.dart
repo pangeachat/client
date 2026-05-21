@@ -5,12 +5,14 @@ import 'package:flutter/services.dart';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:matrix/matrix.dart';
+import 'package:mime/mime.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
 import 'package:fluffychat/utils/file_selector.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class _AvatarInfo {
@@ -103,97 +105,121 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
       allowMultiple: false,
       type: FileType.image,
     );
-    final pickedFile = picked.firstOrNull;
-    if (pickedFile == null) return;
-    final bytes = await pickedFile.readAsBytes();
-    _setAvatarBytes(bytes);
+
+    await showFutureLoadingDialog(
+      context: context,
+      future: () async {
+        final pickedFile = picked.firstOrNull;
+        if (pickedFile == null) return;
+        final bytes = await pickedFile.readAsBytes();
+
+        final mimeType = lookupMimeType(pickedFile.name, headerBytes: bytes);
+
+        if (!AppConfig.allowedMimeTypes.contains(mimeType)) {
+          throw L10n.of(context).invalidInput;
+        }
+
+        _setAvatarBytes(bytes);
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        ValueListenableBuilder(
-          valueListenable: _avatarNotifier,
-          builder: (context, _, _) => Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                height: 110.0,
-                width: 110.0,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Container(
-                      width: 100.0,
-                      height: 100.0,
-                      decoration: BoxDecoration(
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ValueListenableBuilder(
+            valueListenable: _avatarNotifier,
+            builder: (context, _, _) => Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  height: 110.0,
+                  width: 110.0,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      ClipRRect(
                         borderRadius: BorderRadius.circular(100.0),
-                        color: theme.disabledColor,
-                      ),
-                      child: _step.avatarUrl != null
-                          ? ImageByUrl(width: 100.0, imageUrl: _step.avatarUrl)
-                          : _step.avatarBytes != null
-                          ? Image.memory(_step.avatarBytes!)
-                          : SizedBox(),
-                    ),
-                    Positioned(
-                      right: 0,
-                      bottom: 0,
-                      child: IconButton.filled(
-                        icon: Icon(Icons.file_upload_outlined),
-                        onPressed: _uploadAvatarImage,
-                        style: IconButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 20.0),
-              Row(
-                spacing: 6.0,
-                mainAxisSize: MainAxisSize.min,
-                children: _avatarOptions
-                    .map(
-                      (avatarUrl) => InkWell(
-                        borderRadius: BorderRadius.circular(100.0),
-                        onTap: () => _setAvatarUrl(avatarUrl),
-                        child: SizedBox(
-                          height: 32.0,
-                          width: 32.0,
-                          child: ImageByUrl(
-                            width: 32.0,
-                            imageUrl: avatarUrl,
+                        child: Container(
+                          width: 100.0,
+                          height: 100.0,
+                          decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100.0),
+                            color: theme.disabledColor,
+                          ),
+                          child: _step.avatarUrl != null
+                              ? ImageByUrl(
+                                  width: 100.0,
+                                  imageUrl: _step.avatarUrl,
+                                )
+                              : _step.avatarBytes != null
+                              ? Image.memory(
+                                  _step.avatarBytes!,
+                                  fit: BoxFit.cover,
+                                )
+                              : SizedBox(),
+                        ),
+                      ),
+                      Positioned(
+                        right: 0,
+                        bottom: 0,
+                        child: IconButton.filled(
+                          icon: Icon(Icons.file_upload_outlined),
+                          onPressed: _uploadAvatarImage,
+                          style: IconButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
                           ),
                         ),
                       ),
-                    )
-                    .toList(),
-              ),
-            ],
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20.0),
+                Row(
+                  spacing: 6.0,
+                  mainAxisSize: MainAxisSize.min,
+                  children: _avatarOptions
+                      .map(
+                        (avatarUrl) => InkWell(
+                          borderRadius: BorderRadius.circular(100.0),
+                          onTap: () => _setAvatarUrl(avatarUrl),
+                          child: SizedBox(
+                            height: 32.0,
+                            width: 32.0,
+                            child: ImageByUrl(
+                              width: 32.0,
+                              imageUrl: avatarUrl,
+                              borderRadius: BorderRadius.circular(100.0),
+                            ),
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
+              ],
+            ),
           ),
-        ),
-        SizedBox(height: 12.0),
-        Text(
-          L10n.of(context).displayName,
-          style: theme.textTheme.titleMedium?.copyWith(
-            fontWeight: FontWeight.bold,
+          SizedBox(height: 12.0),
+          Text(
+            L10n.of(context).displayName,
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        SizedBox(height: 8.0),
-        ValueListenableBuilder(
-          valueListenable: _displayNameController,
-          builder: (context, text, _) =>
-              TextField(controller: _displayNameController),
-        ),
-      ],
+          SizedBox(height: 8.0),
+          ValueListenableBuilder(
+            valueListenable: _displayNameController,
+            builder: (context, text, _) =>
+                TextField(controller: _displayNameController),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1478,7 +1478,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-05-12 10:36:11.357116",
+    "@@last_modified": "2026-05-20 13:12:31.824505",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -9282,7 +9282,6 @@
     },
     "notStartedActivitiesTitle": "Åbne sessioner ({num})",
     "inProgressActivitiesTitle": "Foregår nu ({num})",
-    "completedActivitiesTitle": "Færdig ({num})",
     "pickDifferentActivity": "Vælg en anden aktivitet",
     "inOngoingActivity": "Du har en igangværende aktivitet!",
     "@notStartedActivitiesTitle": {
@@ -9294,14 +9293,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -10742,6 +10733,86 @@
     },
     "missingLanguageException": "Vælg venligst gyldige basis- og målsprog",
     "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "Jeg bruger Pangea Chat til",
+    "teach": "Undervise",
+    "courseCodeStepTitle": "Har du en kursusinvitation kode?",
+    "courseCodeStepHint": "Indtast koden for at deltage",
+    "courseCodeStepSkip": "Jeg har ikke en kode",
+    "joinedCourseStepTitle": "Velkommen!",
+    "pickLanguageTeacherStepTitle": "Hvilket sprog underviser du i?",
+    "pickCefrLevelTeacherStepTitle": "Hvilket niveau underviser du på?",
+    "pickCefrLevelStudentStepTitle": "Hvilket niveau er du på?",
+    "customCourseStepTitle": "Udfyld denne formular for at få et tilpasset kursus",
+    "aboutYourClass": "Om din klasse",
+    "courseCodeStepErrorMessage": "Kontroller venligst din kode og prøv igen",
+    "institution": "Institution",
+    "courseGoals": "Kursusmål",
+    "selectChats": "Vælg chats",
+    "plainTextFile": "Tekst",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
         "type": "String",
         "placeholders": {}
     }

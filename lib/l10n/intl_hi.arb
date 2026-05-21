@@ -3378,7 +3378,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-05-12 10:37:09.219708",
+    "@@last_modified": "2026-05-20 13:17:20.578068",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8907,7 +8907,6 @@
     },
     "notStartedActivitiesTitle": "खुले सत्र ({num})",
     "inProgressActivitiesTitle": "अब हो रहा है ({num})",
-    "completedActivitiesTitle": "पूरा हुआ ({num})",
     "pickDifferentActivity": "एक अलग गतिविधि चुनें",
     "inOngoingActivity": "आपके पास एक चल रही गतिविधि है!",
     "@notStartedActivitiesTitle": {
@@ -8919,14 +8918,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -10367,6 +10358,86 @@
     },
     "missingLanguageException": "कृपया मान्य आधार और लक्ष्य भाषाएँ चुनें",
     "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "मैं Pangea Chat का उपयोग करता हूँ",
+    "teach": "सिखाना",
+    "courseCodeStepTitle": "क्या आपके पास एक पाठ्यक्रम आमंत्रण कोड है?",
+    "courseCodeStepHint": "शामिल होने के लिए कोड डालें",
+    "courseCodeStepSkip": "मेरे पास कोड नहीं है",
+    "joinedCourseStepTitle": "स्वागत है!",
+    "pickLanguageTeacherStepTitle": "आप किस भाषा को सिखा रहे हैं?",
+    "pickCefrLevelTeacherStepTitle": "आप किस स्तर को सिखाते हैं?",
+    "pickCefrLevelStudentStepTitle": "आप किस स्तर पर हैं?",
+    "customCourseStepTitle": "कस्टम पाठ्यक्रम प्राप्त करने के लिए यह फॉर्म भरें",
+    "aboutYourClass": "आपकी कक्षा के बारे में",
+    "courseCodeStepErrorMessage": "कृपया अपना कोड जांचें और फिर से प्रयास करें",
+    "institution": "संस्थान",
+    "courseGoals": "कोर्स के लक्ष्य",
+    "selectChats": "चैट्स चुनें",
+    "plainTextFile": "पाठ",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
         "type": "String",
         "placeholders": {}
     }

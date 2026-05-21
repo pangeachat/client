@@ -58,31 +58,34 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Column(
-      spacing: 12.0,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        BotFace(expression: BotExpression.idle, useRive: true, width: 140.0),
-        Text(
-          widget.error != null
-              ? L10n.of(context).courseCodeStepErrorMessage
-              : L10n.of(context).courseCodeStepTitle,
-          style: theme.textTheme.titleMedium?.copyWith(
-            fontWeight: FontWeight.bold,
-            color: widget.error != null ? theme.colorScheme.error : null,
+    return SingleChildScrollView(
+      child: Column(
+        spacing: 12.0,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          BotFace(expression: BotExpression.idle, useRive: true, width: 140.0),
+          Text(
+            widget.error != null
+                ? L10n.of(context).courseCodeStepErrorMessage
+                : L10n.of(context).courseCodeStepTitle,
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: widget.error != null ? theme.colorScheme.error : null,
+            ),
           ),
-        ),
-        TextField(
-          controller: _codeController,
-          decoration: InputDecoration(
-            hintText: L10n.of(context).courseCodeStepHint,
-            errorText: widget.error != null ? '' : null,
-            suffixIcon: widget.error != null
-                ? Icon(Icons.error, color: theme.colorScheme.error)
-                : null,
+          TextField(
+            controller: _codeController,
+            decoration: InputDecoration(
+              hintText: L10n.of(context).courseCodeStepHint,
+              helperText: '', // reserves the error space permanently
+              errorText: widget.error != null ? '' : null,
+              suffixIcon: widget.error != null
+                  ? Icon(Icons.error, color: theme.colorScheme.error)
+                  : null,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

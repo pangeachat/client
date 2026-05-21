@@ -45,7 +45,7 @@ class OnboardingController extends State<Onboarding> {
     final initialStep = ProfileSetupOnboardingStep(
       client: client,
       state: _state,
-      maxRemainingSteps: 6,
+      maxRemainingSteps: 5,
     );
     _step = ValueNotifier(initialStep);
     _navigation = OnboardingNavigationController(initialStep: initialStep);

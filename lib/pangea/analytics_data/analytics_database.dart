@@ -199,6 +199,10 @@ class AnalyticsDatabase with DatabaseFileStorage {
     return _lastEventTimestampBox.get('current_language');
   }
 
+  Future<String?> getAnalyticsRoomId() async {
+    return _lastEventTimestampBox.get('analytics_room_id');
+  }
+
   Future<DerivedAnalyticsDataModel> getDerivedStats(String language) async {
     final raw = await _derivedStatsBox.get(_langKey('derived_stats', language));
     return raw == null
@@ -501,6 +505,12 @@ class AnalyticsDatabase with DatabaseFileStorage {
   Future<void> updateCurrentLanguage(String language) {
     return _transaction(() async {
       await _lastEventTimestampBox.put('current_language', language);
+    });
+  }
+
+  Future<void> updateAnalyticsRoomId(String roomId) {
+    return _transaction(() async {
+      await _lastEventTimestampBox.put('analytics_room_id', roomId);
     });
   }
 

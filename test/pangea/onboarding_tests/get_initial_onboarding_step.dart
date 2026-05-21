@@ -15,6 +15,6 @@ OnboardingStep getInitialOnboardingStep(Client client) {
       courseProvider: MockCourseProvider(),
       avatarProvider: MockAvatarProvider(),
     ),
-    maxRemainingSteps: 6,
+    maxRemainingSteps: 5,
   );
 }

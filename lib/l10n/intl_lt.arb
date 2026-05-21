@@ -3246,7 +3246,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-05-12 10:36:55.894634",
+    "@@last_modified": "2026-05-20 13:15:59.170269",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9075,7 +9075,6 @@
     "notStartedActivitiesTitle": "Atidarytos sesijos ({num})",
     "pickDifferentActivity": "Pasirinkite kitą veiklą",
     "inProgressActivitiesTitle": "Dabar vyksta ({num})",
-    "completedActivitiesTitle": "Baigta ({num})",
     "inOngoingActivity": "Turite vykdomą veiklą!",
     "@notStartedActivitiesTitle": {
         "type": "String",
@@ -9086,14 +9085,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -10534,6 +10525,86 @@
     },
     "missingLanguageException": "Prašome pasirinkti galimas pagrindines ir tikslines kalbas",
     "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "Aš naudoju Pangea Chat, kad",
+    "teach": "Mokyti",
+    "courseCodeStepTitle": "Ar turite kurso kvietimo kodą?",
+    "courseCodeStepHint": "Įveskite kodą, kad prisijungtumėte",
+    "courseCodeStepSkip": "Neturiu kodo",
+    "joinedCourseStepTitle": "Sveiki atvykę!",
+    "pickLanguageTeacherStepTitle": "Kokią kalbą mokote?",
+    "pickCefrLevelTeacherStepTitle": "Kokį lygį mokote?",
+    "pickCefrLevelStudentStepTitle": "Kokio lygio esate?",
+    "customCourseStepTitle": "Užpildykite šią formą, kad gautumėte individualų kursą",
+    "aboutYourClass": "Apie jūsų klasę",
+    "courseCodeStepErrorMessage": "Prašome patikrinti savo kodą ir bandyti dar kartą",
+    "institution": "Institucija",
+    "courseGoals": "Kurso tikslai",
+    "selectChats": "Pasirinkite pokalbius",
+    "plainTextFile": "Tekstas",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
         "type": "String",
         "placeholders": {}
     }

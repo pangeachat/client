@@ -2099,7 +2099,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-05-12 10:37:13.165459",
+    "@@last_modified": "2026-05-20 13:17:35.305858",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9256,7 +9256,6 @@
     },
     "notStartedActivitiesTitle": "ღია სესიები ({num})",
     "inProgressActivitiesTitle": "მიმდინარე ({num})",
-    "completedActivitiesTitle": "დასრულებულია ({num})",
     "pickDifferentActivity": "აირჩიეთ სხვა აქტივობა",
     "inOngoingActivity": "თქვენ გაქვთ მიმდინარე აქტივობა!",
     "@notStartedActivitiesTitle": {
@@ -9268,14 +9267,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -10716,6 +10707,86 @@
     },
     "missingLanguageException": "გთხოვთ აირჩიოთ ვალიდური საწყისი და მიზნობრივი ენები",
     "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "მე ვიყენებ Pangea Chat-ს რომ",
+    "teach": "შეასწავლო",
+    "courseCodeStepTitle": "გქონიათ კურსის მოწვევის კოდი?",
+    "courseCodeStepHint": "შეიყვანეთ კოდი რომ გაწვდოთ",
+    "courseCodeStepSkip": "მაქვს კოდი",
+    "joinedCourseStepTitle": "კეთილი იყოს თქვენი მობრძანება!",
+    "pickLanguageTeacherStepTitle": "რომელი ენა ასწავლით?",
+    "pickCefrLevelTeacherStepTitle": "რომელი დონე ასწავლით?",
+    "pickCefrLevelStudentStepTitle": "რომელი დონეზე ხართ?",
+    "customCourseStepTitle": "შეავსეთ ეს ფორმა რომ მიიღოთ პერსონალური კურსი",
+    "aboutYourClass": "შენი კლასის შესახებ",
+    "courseCodeStepErrorMessage": "გთხოვთ გადაამოწმოთ თქვენი კოდი და სცადოთ კიდევ ერთხელ",
+    "institution": "ინსტიტუტი",
+    "courseGoals": "კურსის მიზნები",
+    "selectChats": "ჩატების არჩევა",
+    "plainTextFile": "ტექსტი",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
         "type": "String",
         "placeholders": {}
     }

@@ -8,38 +8,40 @@ class ActivitySummaryAnalyticsModel {
 
   ActivitySummaryAnalyticsModel();
 
-  Map<ConstructTypeEnum, int> uniqueConstructCountsByType() {
-    final Map<ConstructTypeEnum, Set<ConstructIdentifier>> typeToIds = {};
+  int totalUniqueConstructCount(ConstructTypeEnum type) {
+    final ids = constructs.values
+        .map((v) => v.usages.values)
+        .expand((v) => v)
+        .map((v) => v.identifier)
+        .where((id) => id.type == type);
 
-    for (final userAnalytics in constructs.values) {
-      for (final usage in userAnalytics.usages.values) {
-        final id = usage.identifier;
-        typeToIds.putIfAbsent(id.type, () => <ConstructIdentifier>{}).add(id);
-      }
-    }
-
-    return {
-      for (final entry in typeToIds.entries) entry.key: entry.value.length,
-    };
+    return ids.toSet().length;
   }
 
-  int uniqueConstructCount(ConstructTypeEnum type) =>
-      uniqueConstructCountsByType()[type] ?? 0;
+  int get totalXP {
+    int total = 0;
+    for (final userAnalytics in constructs.values) {
+      for (final usage in userAnalytics.usages.values) {
+        total += usage.totalXP;
+      }
+    }
+    return total;
+  }
 
   /// Unique constructs of a given type for a specific user
-  int uniqueConstructCountForUser(String userId, ConstructTypeEnum type) {
+  int _uniqueConstructCountForUser(String userId, ConstructTypeEnum type) {
     final userAnalytics = constructs[userId];
     if (userAnalytics == null) return 0;
     return userAnalytics.constructsOfType(type).length;
   }
 
-  int totalXPForUser(String userId) {
+  int _xpForUser(String userId) {
     final userAnalytics = constructs[userId];
     if (userAnalytics == null) return 0;
 
     int totalXP = 0;
     for (final usage in userAnalytics.usages.values) {
-      totalXP += usage.timesUsed;
+      totalXP += usage.totalXP;
     }
     return totalXP;
   }
@@ -53,7 +55,7 @@ class ActivitySummaryAnalyticsModel {
   void addConstructs(String userId, List<OneConstructUse> uses) {
     final user = constructs[userId] ??= UserConstructAnalytics(userId);
     for (final use in uses) {
-      user.addUsage(use.identifier);
+      user.addUsage(use);
     }
 
     constructs[userId] = user;
@@ -79,7 +81,7 @@ class ActivitySummaryAnalyticsModel {
 
     for (final userId in userIds) {
       //vocab
-      final vocabCount = uniqueConstructCountForUser(
+      final vocabCount = _uniqueConstructCountForUser(
         userId,
         ConstructTypeEnum.vocab,
       );
@@ -87,7 +89,7 @@ class ActivitySummaryAnalyticsModel {
       if (vocabCount > maxVocab) maxVocab = vocabCount;
 
       //grammar
-      final grammarCount = uniqueConstructCountForUser(
+      final grammarCount = _uniqueConstructCountForUser(
         userId,
         ConstructTypeEnum.morph,
       );
@@ -95,7 +97,7 @@ class ActivitySummaryAnalyticsModel {
       if (grammarCount > maxGrammar) maxGrammar = grammarCount;
 
       //XP
-      final xpCount = totalXPForUser(userId);
+      final xpCount = _xpForUser(userId);
       allXPs[userId] = xpCount;
       if (xpCount > maxXp) maxXp = xpCount;
     }
@@ -128,7 +130,7 @@ class ActivitySummaryAnalyticsModel {
         final constructId = ConstructIdentifier.fromJson(constructJson);
         final timesUsed = constructJson['times_used'] as int? ?? 0;
 
-        final usage = ConstructUsage(constructId)..timesUsed = timesUsed;
+        final usage = ConstructUsage(constructId)..totalXP = timesUsed;
         userAnalytics.usages[constructId.string] = usage;
       }
 
@@ -145,15 +147,15 @@ class ActivitySummaryAnalyticsModel {
 
 class ConstructUsage {
   final ConstructIdentifier identifier;
-  int timesUsed;
+  int totalXP;
 
-  ConstructUsage(this.identifier) : timesUsed = 0;
+  ConstructUsage(this.identifier) : totalXP = 0;
 
-  void increment() => timesUsed++;
+  void addTotalXP(int points) => totalXP += points;
 
   Map<String, dynamic> toJson() => {
     ...identifier.toJson(),
-    'times_used': timesUsed,
+    'times_used': totalXP,
   };
 }
 
@@ -170,9 +172,10 @@ class UserConstructAnalytics {
       .where((id) => id.type == type)
       .toSet();
 
-  void addUsage(ConstructIdentifier id) {
+  void addUsage(OneConstructUse use) {
+    final id = use.identifier;
     usages[id.string] ??= ConstructUsage(id);
-    usages[id.string]!.increment();
+    usages[id.string]!.addTotalXP(use.xp);
   }
 
   List<Map<String, dynamic>> toJsonList() =>
