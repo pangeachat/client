@@ -6,8 +6,12 @@ extension ChoregrapherStateExtension on Choreographer {
   AssistanceStateEnum get assistanceState {
     final isSubscribed =
         MatrixState.pangeaController.subscriptionController.isSubscribed;
+
     if (isSubscribed == false) return AssistanceStateEnum.noSub;
     if (currentText.trim().isEmpty) {
+      if (orchestratorController.activeSuggestion != null) {
+        return AssistanceStateEnum.suggesting;
+      }
       return AssistanceStateEnum.noMessage;
     }
 
@@ -21,8 +25,11 @@ extension ChoregrapherStateExtension on Choreographer {
 
     if (isFetching.value) return AssistanceStateEnum.fetching;
     if (igcController.currentText == null) {
+      if (orchestratorController.hasAcceptedSuggestion) {
+        return AssistanceStateEnum.suggestionComplete;
+      }
       return AssistanceStateEnum.notFetched;
     }
-    return AssistanceStateEnum.complete;
+    return AssistanceStateEnum.igcComplete;
   }
 }

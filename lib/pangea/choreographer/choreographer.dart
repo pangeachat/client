@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:async/async.dart';
-import 'package:matrix/matrix_api_lite/utils/logs.dart';
+import 'package:matrix/matrix.dart' hide Result;
 
+import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_controller.dart';
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
@@ -27,9 +28,11 @@ import 'choreographer_error_controller.dart';
 
 class Choreographer extends ChangeNotifier {
   final FocusNode inputFocus;
+  final Room room;
 
   late final PangeaTextController textController;
   late final IgcController igcController;
+  late final OrchestratorController orchestratorController;
   late final ChoreographerErrorController errorService;
 
   ChoreoRecordModel? _choreoRecord;
@@ -47,8 +50,9 @@ class Choreographer extends ChangeNotifier {
   StreamSubscription? _languageSub;
   StreamSubscription? _settingsUpdateSub;
   StreamSubscription? _updatedMatchSub;
+  StreamSubscription? _suggestionSub;
 
-  Choreographer(this.inputFocus) {
+  Choreographer({required this.inputFocus, required this.room}) {
     _initialize();
   }
 
@@ -85,13 +89,15 @@ class Choreographer extends ChangeNotifier {
       },
     );
 
+    orchestratorController = OrchestratorController(room: room);
+
     _languageSub ??= MatrixState
         .pangeaController
         .userController
         .languageStream
         .stream
         .listen((update) {
-          clear();
+          clearWritingAssistance();
         });
 
     _settingsUpdateSub ??= MatrixState
@@ -106,9 +112,13 @@ class Choreographer extends ChangeNotifier {
     _updatedMatchSub ??= igcController.matchUpdateStream.stream.listen(
       _onUpdateMatch,
     );
+
+    _suggestionSub ??= orchestratorController.suggestionStream.stream.listen(
+      _onUpdateSuggestion,
+    );
   }
 
-  void clear() {
+  void clearWritingAssistance() {
     _lastChecked = null;
     _isFetching.value = false;
     _choreoRecord = null;
@@ -116,6 +126,15 @@ class Choreographer extends ChangeNotifier {
     _resetDebounceTimer();
     errorService.unblockWritingAssistance();
     notifyListeners();
+  }
+
+  void clearSuggestions() {
+    orchestratorController.clearSuggestionState();
+  }
+
+  void clearWritingAssistanceAndSuggestions() {
+    clearSuggestions();
+    clearWritingAssistance();
   }
 
   @override
@@ -126,9 +145,11 @@ class Choreographer extends ChangeNotifier {
     _languageSub?.cancel();
     _settingsUpdateSub?.cancel();
     _updatedMatchSub?.cancel();
+    _suggestionSub?.cancel();
     _debounceTimer?.cancel();
 
     igcController.dispose();
+    orchestratorController.dispose();
     errorService.dispose();
     textController.dispose();
     _isFetching.dispose();
@@ -171,12 +192,18 @@ class Choreographer extends ChangeNotifier {
       notifyListeners();
     }
 
+    if (textController.editType != EditTypeEnum.suggestion &&
+        orchestratorController.activeSuggestion != null) {
+      orchestratorController.resetSuggestionState();
+      textController.editType = EditTypeEnum.keyboard;
+    }
+
     // if the user cleared the text, reset everything
     if (textController.editType == EditTypeEnum.keyboard &&
         _lastChecked != null &&
         _lastChecked!.isNotEmpty &&
         textController.text.isEmpty) {
-      clear();
+      clearWritingAssistance();
     }
 
     _lastChecked = textController.text;
@@ -338,6 +365,18 @@ class Choreographer extends ChangeNotifier {
     }
 
     inputFocus.requestFocus();
+    notifyListeners();
+  }
+
+  void _onUpdateSuggestion(ActiveSuggestionModel? suggestion) {
+    final acceptedChoice = suggestion?.acceptedChoice;
+    if (acceptedChoice != null) {
+      textController.setSystemText(
+        acceptedChoice.text,
+        EditTypeEnum.suggestion,
+      );
+      inputFocus.requestFocus();
+    }
     notifyListeners();
   }
 }

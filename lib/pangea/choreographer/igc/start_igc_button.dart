@@ -4,6 +4,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+import 'package:async/async.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
@@ -36,7 +38,7 @@ class _StartIGCButtonState extends State<StartIGCButton>
   late final AnimationController _spinController;
   late final Animation<double> _rotation;
 
-  late StreamSubscription _matchSubscription;
+  late StreamSubscription _segmentsSubscription;
 
   late AnimationController _segmentController;
 
@@ -75,9 +77,13 @@ class _StartIGCButtonState extends State<StartIGCButton>
       duration: _animationDuration,
     );
 
+    final choreographer = widget.choreographer;
+    final igc = choreographer.igcController;
+    final orchestator = choreographer.orchestratorController;
+
     _currentSegments = _segmentsForState(
       widget.initialState,
-      widget.choreographer.igcController.activeMatch.value,
+      igc.activeMatch.value,
       overrideColor: widget.initialForegroundColor,
     );
 
@@ -86,14 +92,12 @@ class _StartIGCButtonState extends State<StartIGCButton>
 
     _prevState = widget.initialState;
 
-    widget.choreographer.addListener(_handleStateChange);
-    widget.choreographer.igcController.activeMatch.addListener(_updateSegments);
-    _matchSubscription = widget
-        .choreographer
-        .igcController
-        .matchUpdateStream
-        .stream
-        .listen((_) => _updateSegments());
+    choreographer.addListener(_handleStateChange);
+    igc.activeMatch.addListener(_updateSegments);
+    _segmentsSubscription = StreamGroup.merge([
+      igc.matchUpdateStream.stream,
+      orchestator.suggestionStream.stream,
+    ]).listen((_) => _updateSegments());
   }
 
   @override
@@ -101,7 +105,7 @@ class _StartIGCButtonState extends State<StartIGCButton>
     widget.choreographer.removeListener(_handleStateChange);
     _spinController.dispose();
     _segmentController.dispose();
-    _matchSubscription.cancel();
+    _segmentsSubscription.cancel();
     super.dispose();
   }
 
@@ -153,7 +157,7 @@ class _StartIGCButtonState extends State<StartIGCButton>
           );
         });
       case AssistanceStateEnum.fetched:
-      case AssistanceStateEnum.complete:
+      case AssistanceStateEnum.igcComplete:
         final matches = widget.choreographer.igcController.sortedMatches;
         if (matches.isEmpty) {
           return [Segment(100, AppConfig.success)];
@@ -179,6 +183,13 @@ class _StartIGCButtonState extends State<StartIGCButton>
             opacity: opacity,
           );
         }).toList();
+      case AssistanceStateEnum.suggesting:
+        final segmentPercent = (100 - 2 * 5) / 2; // size of each segment
+        return List.generate(2, (_) {
+          return Segment(segmentPercent, state.stateColor(context));
+        });
+      case AssistanceStateEnum.suggestionComplete:
+        return [Segment(100, AppConfig.success)];
       case AssistanceStateEnum.error:
         break;
     }

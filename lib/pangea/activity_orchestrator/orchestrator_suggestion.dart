@@ -1,4 +1,20 @@
-enum OrchestratorSuggestionType { best, distractor }
+import 'package:flutter/material.dart';
+
+enum OrchestratorSuggestionType {
+  best,
+  distractor;
+
+  bool get isSuggestion => this == OrchestratorSuggestionType.best;
+
+  Color get color {
+    switch (this) {
+      case OrchestratorSuggestionType.best:
+        return Colors.green;
+      case OrchestratorSuggestionType.distractor:
+        return Colors.red;
+    }
+  }
+}
 
 class OrchestratorSuggestion {
   final String text;

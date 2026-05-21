@@ -264,10 +264,9 @@ class _MatchContent extends StatelessWidget {
               ),
               isOpen
                   ? ChoicesArray(
-                      isLoading: false,
                       choices: currentMatch.choices?.map((e) {
                         return Choice(
-                          text: e.value,
+                          value: e.value,
                           color: e.selected ? e.type.color : null,
                           isGold: e.type.isSuggestion,
                         );

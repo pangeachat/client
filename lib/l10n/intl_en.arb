@@ -4831,5 +4831,6 @@
                 "type": "int"
             }
         }
-    }
+    },
+    "suggestion": "Suggestion"
 }
