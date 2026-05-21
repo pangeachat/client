@@ -16,7 +16,6 @@ import 'package:fluffychat/pages/chat/chat_event_list.dart';
 import 'package:fluffychat/pages/chat/pinned_events.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_finished_status_message.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_menu_button.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_session_popup_menu.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_stats_menu.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
@@ -160,7 +159,6 @@ class ChatView extends StatelessWidget {
 
     if (controller.room.showActivityChatUI) {
       return [
-        ActivityMenuButton(controller: controller),
         ActivitySessionPopupMenu(controller.room, onLeave: controller.onLeave),
       ];
     }

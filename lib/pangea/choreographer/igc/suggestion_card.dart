@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_controller.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_suggestion.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_array.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class SuggestionCard extends StatefulWidget {
   final String overlayKey;

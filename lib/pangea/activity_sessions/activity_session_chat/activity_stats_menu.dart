@@ -7,6 +7,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pages/chat/chat_app_bar_list_tile.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_vocab_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_details_row.dart';
@@ -83,6 +84,8 @@ class ActivityStatsMenu extends StatelessWidget {
       shouldShowEndForAll = false;
     }
 
+    final goal = controller.room.ownRole?.goal;
+
     return ValueListenableBuilder(
       valueListenable: controller.activityController.showActivityDropdown,
       builder: (context, showDropdown, child) {
@@ -93,21 +96,51 @@ class ActivityStatsMenu extends StatelessWidget {
           bottom: showDropdown ? 0 : null,
           child: Column(
             children: [
-              ClipRect(
-                child: AnimatedAlign(
-                  duration: FluffyThemes.animationDuration,
-                  curve: Curves.easeInOut,
-                  heightFactor: showDropdown ? 1.0 : 0.0,
-                  alignment: Alignment.topCenter,
-                  child: GestureDetector(
-                    onPanUpdate: (details) {
-                      if (details.delta.dy < -2) {
-                        controller.toggleShowDropdown();
-                      }
-                    },
-                    child: child,
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (goal != null)
+                    InkWell(
+                      onTap: controller.toggleShowDropdown,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 12.0),
+                        height: ChatAppBarListTile.fixedHeight,
+                        decoration: BoxDecoration(
+                          border: Border(
+                            top: BorderSide(color: theme.dividerColor),
+                          ),
+                          color: theme.colorScheme.surface,
+                        ),
+                        child: Row(
+                          spacing: 12.0,
+                          children: [
+                            Icon(Icons.star_border),
+                            Text(
+                              goal,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ClipRect(
+                    child: AnimatedAlign(
+                      duration: FluffyThemes.animationDuration,
+                      curve: Curves.easeInOut,
+                      heightFactor: showDropdown ? 1.0 : 0.0,
+                      alignment: Alignment.topCenter,
+                      child: GestureDetector(
+                        onPanUpdate: (details) {
+                          if (details.delta.dy < -2) {
+                            controller.toggleShowDropdown();
+                          }
+                        },
+                        child: child,
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
               if (showDropdown)
                 Expanded(
