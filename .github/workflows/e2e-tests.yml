@@ -1,6 +1,20 @@
 name: E2E Tests (Staging)
 
 on:
+  # Smoke-test on PRs that touch the e2e harness or its inputs.
+  # Runs against staging — the test account is shared, so be careful with
+  # destructive specs (the smoke mode just logs in).
+  pull_request:
+    branches: [main]
+    paths:
+      - "e2e/**"
+      - ".github/workflows/e2e-tests.yml"
+      - ".github/agents/e2e-tester.md"
+      - ".github/instructions/authoring-playwright-and-axe-tests.instructions.md"
+      - ".github/instructions/run-playwright-and-axe-local.instructions.md"
+      - "package.json"
+      - "package-lock.json"
+
   # After staging deploy completes
   workflow_run:
     workflows: ["Main Deploy Workflow"]
@@ -78,6 +92,9 @@ jobs:
             echo "mode=${{ inputs.mode }}" >> $GITHUB_OUTPUT
           elif [[ "${{ github.event_name }}" == "workflow_run" ]]; then
             echo "mode=diff" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            # PRs run smoke (login only) — cheap, validates OIDC + creds end-to-end
+            echo "mode=smoke" >> $GITHUB_OUTPUT
           fi
 
       - name: Select tests
