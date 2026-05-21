@@ -41,7 +41,7 @@ extension RoomSummaryRequest on Client {
   ) async {
     final batches = _batchRoomIdRequests(roomIds);
     final responses = await Future.wait(
-      batches.map((b) => getRoomSummaries(roomIds)),
+      batches.map((b) => getRoomSummaries(b)),
     );
     return {for (final r in responses) ...r.summaries};
   }
