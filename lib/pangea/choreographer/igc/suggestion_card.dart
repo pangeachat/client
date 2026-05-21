@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_controller.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_suggestion.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_array.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class SuggestionCard extends StatefulWidget {
   final String overlayKey;
@@ -28,16 +28,22 @@ class SuggestionCardState extends State<SuggestionCard> {
     MatrixState.pAnyState.closeOverlay(widget.overlayKey);
   }
 
-  void _showFeedbackDialog() {}
+  // void _showFeedbackDialog() {}
 
   void _onChoiceSelected(OrchestratorSuggestion choice) {
-    widget.controller.selectChoice(choice);
-    if (choice.type.isSuggestion) {
-      widget.controller.acceptChoice();
-      _close();
-      return;
+    try {
+      widget.controller.selectChoice(choice);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "choice": choice.toJson(),
+          "suggestion": suggestionsModel?.suggestion.toJson(),
+        },
+      );
     }
-    setState(() {});
+    if (mounted) _close();
   }
 
   @override
@@ -49,7 +55,7 @@ class SuggestionCardState extends State<SuggestionCard> {
     }
 
     return Container(
-      width: 320.0,
+      constraints: const BoxConstraints(maxWidth: 350),
       padding: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         color: theme.cardColor,
@@ -79,11 +85,12 @@ class SuggestionCardState extends State<SuggestionCard> {
                     ),
                   ),
                 ),
-                IconButton(
-                  icon: const Icon(Icons.flag_outlined),
-                  color: theme.iconTheme.color,
-                  onPressed: _showFeedbackDialog,
-                ),
+                // IconButton(
+                //   icon: const Icon(Icons.flag_outlined),
+                //   color: theme.iconTheme.color,
+                //   onPressed: _showFeedbackDialog,
+                // ),
+                SizedBox(height: 40.0, width: 40.0),
               ],
             ),
           ),
@@ -92,26 +99,13 @@ class SuggestionCardState extends State<SuggestionCard> {
               vertical: 12.0,
               horizontal: 24.0,
             ),
-            child: Column(
-              spacing: 12.0,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ChoicesArray<OrchestratorSuggestion>(
-                  direction: Axis.vertical,
-                  choices: suggestionsModel.suggestion.suggestions.map((e) {
-                    return Choice(
-                      value: e,
-                      color: suggestionsModel.isChoiceSelected(e)
-                          ? e.type.color
-                          : null,
-                      isGold: e.type.isSuggestion,
-                    );
-                  }).toList(),
-                  onPressed: (value, index) => _onChoiceSelected(value),
-                  selectedChoiceIndex: null,
-                  getDisplayCopy: (value) => value.text,
-                ),
-              ],
+            child: ChoicesArray<OrchestratorSuggestion>(
+              choices: suggestionsModel.shuffledChoices
+                  .map((e) => Choice(value: e))
+                  .toList(),
+              onPressed: (value, index) => _onChoiceSelected(value),
+              selectedChoiceIndex: null,
+              getDisplayCopy: (value) => value.text,
             ),
           ),
         ],

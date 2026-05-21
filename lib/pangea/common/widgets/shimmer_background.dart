@@ -26,13 +26,18 @@ class ShimmerBackground extends StatefulWidget {
 
 class _ShimmerBackgroundState extends State<ShimmerBackground>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
-  Duration pulseDuration = const Duration(milliseconds: 1000);
+  late final AnimationController _controller;
+  late final Animation<double> _animation;
+
+  static const Duration pulseDuration = Duration(milliseconds: 1000);
+
+  bool _disposed = false;
+  bool _isPulsing = false;
 
   @override
   void initState() {
     super.initState();
+
     _controller = AnimationController(duration: pulseDuration, vsync: this);
 
     _animation = Tween<double>(
@@ -46,41 +51,64 @@ class _ShimmerBackgroundState extends State<ShimmerBackground>
   }
 
   void _startPulsing() {
+    if (_disposed || !mounted) return;
+
     if (widget.delayBetweenPulses == Duration.zero) {
       _controller.repeat(reverse: true);
-    } else {
-      _pulseOnce();
+      return;
     }
+
+    _pulseLoop();
   }
 
-  void _pulseOnce() async {
-    await _controller.forward();
-    if (!mounted) return;
-    await _controller.reverse();
-    if (mounted && widget.enabled) {
-      await Future.delayed(widget.delayBetweenPulses);
-      if (mounted && widget.enabled) {
-        _pulseOnce();
+  Future<void> _pulseLoop() async {
+    if (_isPulsing) return;
+
+    _isPulsing = true;
+
+    try {
+      while (mounted &&
+          !_disposed &&
+          widget.enabled &&
+          widget.delayBetweenPulses != Duration.zero) {
+        await _controller.forward();
+
+        if (!mounted || _disposed || !widget.enabled) break;
+
+        await _controller.reverse();
+
+        if (!mounted || _disposed || !widget.enabled) break;
+
+        await Future.delayed(widget.delayBetweenPulses);
+
+        if (!mounted || _disposed || !widget.enabled) break;
       }
+    } finally {
+      _isPulsing = false;
     }
   }
 
   @override
   void didUpdateWidget(ShimmerBackground oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.enabled != oldWidget.enabled) {
-      if (widget.enabled) {
-        _startPulsing();
-      } else {
-        _controller.stop();
-        _controller.reset();
-      }
+
+    if (widget.enabled == oldWidget.enabled) return;
+
+    if (widget.enabled) {
+      _startPulsing();
+    } else {
+      _controller.stop();
+      _controller.reset();
     }
   }
 
   @override
   void dispose() {
+    _disposed = true;
+
+    _controller.stop();
     _controller.dispose();
+
     super.dispose();
   }
 
@@ -103,7 +131,7 @@ class _ShimmerBackgroundState extends State<ShimmerBackground>
               child: IgnorePointer(
                 child: ClipRRect(
                   borderRadius: borderRadius,
-                  child: Container(
+                  child: DecoratedBox(
                     decoration: BoxDecoration(
                       color: widget.shimmerColor.withValues(
                         alpha: _animation.value,

@@ -28,7 +28,6 @@ class ChoicesArray<T> extends StatelessWidget {
 
   final String Function(T)? getDisplayCopy;
   final bool enabled;
-  final Axis direction;
 
   const ChoicesArray({
     super.key,
@@ -41,13 +40,11 @@ class ChoicesArray<T> extends StatelessWidget {
     this.getDisplayCopy,
     this.id,
     this.enabled = true,
-    this.direction = Axis.horizontal,
   });
 
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      direction: direction,
       alignment: WrapAlignment.center,
       runAlignment: WrapAlignment.center,
       spacing: 4.0,
