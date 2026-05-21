@@ -24,7 +24,6 @@ import 'package:fluffychat/pages/chat/chat_view.dart';
 import 'package:fluffychat/pages/chat/event_info_dialog.dart';
 import 'package:fluffychat/pages/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
-import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_chat_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_extension.dart';
@@ -49,6 +48,7 @@ import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_card_overlay_manager.dart';
+import 'package:fluffychat/pangea/choreographer/igc/suggestion_card.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/choreographer/writing_assistance_room_extension.dart';
@@ -225,7 +225,6 @@ class ChatController extends State<ChatPageWithRoom>
 
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
   late final ActivityChatController activityController;
-  late final OrchestratorChatController orchestratorChatController;
   late final TutorialOverlayController tutorialOverlayController;
   late final ChatBannerController _bannerController;
   late final SpanCardOverlayManager _spanCardOverlayController;
@@ -804,7 +803,7 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void _pangeaInit() {
-    choreographer = Choreographer(inputFocus);
+    choreographer = Choreographer(inputFocus: inputFocus, room: room);
     sendController.addListener(onInputBarChanged);
     final updater = Matrix.of(context).analyticsDataService.updateDispatcher;
 
@@ -840,8 +839,6 @@ class ChatController extends State<ChatPageWithRoom>
         activityController.showConfetti();
       });
     }
-
-    orchestratorChatController = OrchestratorChatController(room: room);
 
     tutorialOverlayController = TutorialOverlayController(
       TutorialSequences.chatTutorialSequence,
@@ -1119,7 +1116,6 @@ class ChatController extends State<ChatPageWithRoom>
     );
     choreographer.dispose();
     activityController.dispose();
-    orchestratorChatController.dispose();
     MatrixState.pAnyState.closeAllOverlays(force: true);
     stopMediaStream.close();
     _levelSubscription?.cancel();
@@ -1238,7 +1234,7 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     final content = await choreographer.getMessageContent(message);
-    choreographer.clear();
+    choreographer.clearWritingAssistanceAndSuggestions();
 
     if (message.trim().isEmpty) return;
     // Pangea#
@@ -2650,6 +2646,29 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
+  void showSuggestion() {
+    final suggestion = choreographer.orchestratorController.activeSuggestion;
+    if (suggestion == null) {
+      Logs().w("Show suggestion called without active suggestion");
+      return;
+    }
+
+    final overlayKey = "suggestions-overlay";
+    MatrixState.pAnyState.closeAllOverlays();
+    OverlayUtil.showOverlay(
+      overlayKey: overlayKey,
+      context: context,
+      child: SuggestionCard(
+        overlayKey: overlayKey,
+        controller: choreographer.orchestratorController,
+      ),
+      transformTargetId: ChoreoConstants.inputTransformTargetKey,
+      ignorePointer: true,
+      targetAnchor: Alignment.topCenter,
+      followerAnchor: Alignment.bottomCenter,
+    );
+  }
+
   Future<void> onManualWritingAssistance() =>
       _onRequestWritingAssistance(manual: true);
 
@@ -2716,7 +2735,7 @@ class ChatController extends State<ChatPageWithRoom>
     // update the feedback to say that the message still contains errors
     if (feedback == null &&
         manual &&
-        assistanceState == AssistanceStateEnum.complete) {
+        assistanceState == AssistanceStateEnum.igcComplete) {
       feedback = ChoreoConstants.incorrectCompleteIgcFeedback;
     }
 
@@ -2726,6 +2745,9 @@ class ChatController extends State<ChatPageWithRoom>
 
     if (choreographer.assistanceState == AssistanceStateEnum.fetched) {
       showNextMatch();
+    } else if (choreographer.assistanceState ==
+        AssistanceStateEnum.suggesting) {
+      showSuggestion();
     } else if (autosend) {
       await send();
     } else {
