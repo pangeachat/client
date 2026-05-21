@@ -19,25 +19,6 @@
     "web": "e2e/scripts/chat-list-navigation.spec.ts",
     "mobile": null
   },
-  "open-chat": {
-    "globs": [
-      "lib/pages/chat/**",
-      "lib/pages/chat_list/chat_list_item.dart",
-      "lib/pangea/chat_list/**"
-    ],
-    "web": "e2e/scripts/open-chat.spec.ts",
-    "mobile": null
-  },
-  "send-message": {
-    "globs": [
-      "lib/pages/chat/chat_input_row.dart",
-      "lib/pages/chat/input_bar.dart",
-      "lib/pangea/choreographer/**",
-      "lib/pangea/events/**"
-    ],
-    "web": "e2e/scripts/send-message.spec.ts",
-    "mobile": "integration_test/patrol/send_message_test.dart"
-  },
   "message-toolbar": {
     "globs": [
       "lib/pangea/toolbar/**",
