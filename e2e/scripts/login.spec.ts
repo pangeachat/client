@@ -44,13 +44,13 @@ test.describe("Login", () => {
       name: intl.usernameOrEmail,
     });
     await usernameField.click();
-    await usernameField.fill(process.env.STAGING_TEST_USER!);
+    await usernameField.fill(process.env.TEST_MATRIX_USERNAME!);
 
     // Fill password
     const passwordField = page.getByRole("textbox", { name: intl.password });
     await passwordField.click();
     await page.waitForTimeout(500);
-    await passwordField.fill(process.env.STAGING_TEST_PASSWORD!);
+    await passwordField.fill(process.env.TEST_MATRIX_PASSWORD!);
 
     // Click login button once it's enabled
     const loginButton = page.getByRole("button", { name: intl.login });

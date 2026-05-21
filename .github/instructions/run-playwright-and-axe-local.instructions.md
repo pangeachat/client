@@ -30,17 +30,28 @@ This installs `@playwright/test`, `@axe-core/playwright`, and `minimatch`.
 npx playwright install chromium
 ```
 
-### 3. Verify test credentials in `.env`
+### 3. Add test credentials to `client/.env`
 
-The Playwright config ([`e2e/playwright.config.ts`](../../e2e/playwright.config.ts)) auto-loads `client/.env`. The auth setup needs these three variables:
+The Playwright config ([`e2e/playwright.config.ts`](../../e2e/playwright.config.ts)) auto-loads `client/.env`. The auth setup needs two variables for the shared `staging_automated_tests` account:
 
-| Variable | Purpose | Example |
-|---|---|---|
-| `STAGING_TEST_EMAIL` | Login email for the test account | `wykuji@denipl.com` |
-| `STAGING_TEST_PASSWORD` | Password for the test account | *(same as email for test accounts)* |
-| `STAGING_TEST_USER` | Matrix user ID | `wykuji` |
+| Variable | Purpose |
+|---|---|
+| `TEST_MATRIX_USERNAME` | Matrix username (localpart, no `@` or domain) |
+| `TEST_MATRIX_PASSWORD` | Password |
 
-If your `.env` already has these from the standard `config.sample.json` setup, no extra config is needed.
+`client/.env` is gitignored. Get the values one of these ways:
+
+```sh
+# A) From AWS Secrets Manager (if you have staging AWS access)
+aws secretsmanager get-secret-value \
+  --secret-id /staging/test-user/matrix-credentials \
+  --query SecretString --output text | jq -r '.TEST_MATRIX_USERNAME, .TEST_MATRIX_PASSWORD'
+
+# B) From 2-step-choreographer/.env, which mirrors the same values
+grep -E '^TEST_MATRIX_(USERNAME|PASSWORD)=' ../2-step-choreographer/.env
+```
+
+If neither path works, ask Will for the values via a private channel.
 
 ## Running Tests
 
@@ -109,7 +120,7 @@ npx playwright test --config e2e/playwright.config.ts -g "should display landing
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| `fill: value: expected string, got undefined` | `STAGING_TEST_USER` or `STAGING_TEST_PASSWORD` not set | Verify they exist in `client/.env` (with values, not blank) |
+| `fill: value: expected string, got undefined` | `TEST_MATRIX_USERNAME` or `TEST_MATRIX_PASSWORD` not set | Verify they exist in `client/.env` (with values, not blank) |
 | `browserType.launch: Executable doesn't exist` | Playwright browsers not installed or version mismatch | Run `npx playwright install chromium` |
 | Login succeeds but `toHaveURL(/\/rooms/)` times out | Test account may need onboarding, or network is slow | Try increasing timeout; check account state manually |
 | `Enable accessibility` button not found | Flutter app not fully loaded, or wrong URL | Verify the app is running and `BASE_URL` is correct |

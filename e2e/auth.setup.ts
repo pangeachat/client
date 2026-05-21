@@ -5,9 +5,9 @@ import { expect, test } from "./fixtures";
 /**
  * Authentication setup - logs in once and saves auth state for all tests.
  *
- * Uses environment variables from .env:
- * - STAGING_TEST_USER: Matrix username
- * - STAGING_TEST_PASSWORD: Password
+ * Uses environment variables from .env (local) or AWS Secrets Manager (CI):
+ * - TEST_MATRIX_USERNAME: Matrix username (localpart, no @ or domain)
+ * - TEST_MATRIX_PASSWORD: Password
  */
 
 const authFile = path.join(__dirname, ".auth", "user.json");
@@ -41,13 +41,13 @@ test("authenticate", async ({ page }) => {
     name: intl.usernameOrEmail,
   });
   await usernameField.click();
-  await usernameField.fill(process.env.STAGING_TEST_USER!);
+  await usernameField.fill(process.env.TEST_MATRIX_USERNAME!);
 
   // Fill password
   const passwordField = page.getByRole("textbox", { name: intl.password });
   await passwordField.click();
   await page.waitForTimeout(500);
-  await passwordField.fill(process.env.STAGING_TEST_PASSWORD!);
+  await passwordField.fill(process.env.TEST_MATRIX_PASSWORD!);
 
   // Click login button once it's enabled
   const loginButton = page.getByRole("button", { name: intl.login });

@@ -44,16 +44,7 @@ e2e/
 
 ## CI Integration
 
-GitHub Actions secrets:
-- `STAGING_TEST_USER` — test account username
-- `STAGING_TEST_PASSWORD` — test account password
-
-```yaml
-env:
-  STAGING_TEST_USER: ${{ secrets.STAGING_TEST_USER }}
-  STAGING_TEST_PASSWORD: ${{ secrets.STAGING_TEST_PASSWORD }}
-  BASE_URL: https://app.staging.pangea.chat
-```
+CI fetches `TEST_MATRIX_USERNAME` / `TEST_MATRIX_PASSWORD` from AWS Secrets Manager via OIDC (no GitHub-secret mirror). The workflow in [`.github/workflows/e2e-tests.yml`](../.github/workflows/e2e-tests.yml) assumes `AWS_ROLE_ARN_STAGING` and reads the `/staging/test-user/matrix-credentials` JSON secret. The OIDC role's IAM grant lists this repo and secret ARN in `devops/terraform/staging/iam/github-oidc/`.
 
 ## Further Reading
 

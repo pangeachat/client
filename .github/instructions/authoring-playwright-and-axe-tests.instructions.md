@@ -43,8 +43,10 @@ Playwright identifies elements via Flutter's **semantics tree** (ARIA roles + na
 
 ### Credential delivery
 
-- **Local**: `STAGING_TEST_USER` and `STAGING_TEST_PASSWORD` from `client/.env` (see [run-playwright-and-axe-local.instructions.md](run-playwright-and-axe-local.instructions.md))
-- **CI**: GitHub Actions secrets `STAGING_TEST_USER`, `STAGING_TEST_PASSWORD`
+The shared test account is `staging_automated_tests`. Specs read `TEST_MATRIX_USERNAME` / `TEST_MATRIX_PASSWORD` from `process.env`.
+
+- **Local**: from `client/.env` (gitignored) — see [run-playwright-and-axe-local.instructions.md](run-playwright-and-axe-local.instructions.md)
+- **CI**: from AWS Secrets Manager `/staging/test-user/matrix-credentials` via OIDC. The workflow assumes `AWS_ROLE_ARN_STAGING` and expands the JSON secret with `parse-json-secrets: true`. See [`.github/workflows/e2e-tests.yml`](../workflows/e2e-tests.yml).
 
 ## Flutter-Playwright Patterns (critical)
 

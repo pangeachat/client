@@ -83,7 +83,7 @@ Patrol extends Flutter's `integration_test` framework with native OS automation 
 - **Finders**: text-based (`$('Login')`) and type-based (`find.byType(ChatView)`) — matching existing `app_test.dart` style. Do NOT add `ValueKey`s.
 - **App launch**: call `app.main()` directly — Patrol's binding replaces `IntegrationTestWidgetsFlutterBinding` before `main()` runs. Do NOT refactor `main.dart`.
 - **Backend target**: `--dart-define=SYNAPSE_URL=...` — reads via `Environment.synapseURL`, no code change needed.
-- **Credentials**: `--dart-define=TEST_USER=...` at compile time, sourced from GitHub Actions secrets in CI.
+- **Credentials**: `--dart-define=TEST_MATRIX_USERNAME=...` at compile time, fetched from AWS Secrets Manager via OIDC in CI (same path as the web workflow).
 - **Shared infrastructure**: Web and mobile share `trigger-map.json`, `select-tests.js`, GitHub Actions secrets, and the staging backend.
 
 Migration steps and file layout: [mobile-testing-plan.md](mobile-testing-plan.md)

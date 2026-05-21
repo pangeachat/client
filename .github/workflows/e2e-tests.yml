@@ -24,10 +24,6 @@ on:
   schedule:
     - cron: "0 6 * * *" # 6am UTC daily
 
-env:
-  TEST_USER: ${{ secrets.STAGING_TEST_USER }}
-  TEST_PASSWORD: ${{ secrets.STAGING_TEST_PASSWORD }}
-
 jobs:
   e2e:
     # Only run after successful staging deploy, or on manual/schedule triggers
@@ -37,10 +33,31 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
+    permissions:
+      id-token: write # OIDC token for AWS Secrets Manager
+      contents: read
+
     steps:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0 # full history for diff-based test selection
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN_STAGING }}
+          aws-region: us-east-1
+
+      - name: Fetch test credentials from AWS Secrets Manager
+        # Sets TEST_MATRIX_USERNAME / TEST_MATRIX_PASSWORD from the
+        # /staging/test-user/matrix-credentials JSON secret (expanded by
+        # parse-json-secrets). OIDC role's IAM grant lists this repo and
+        # secret ARN — see devops/terraform/staging/iam/github-oidc/.
+        uses: aws-actions/aws-secretsmanager-get-secrets@8493673611c1b9db1ceb7c01340109b83eb5e7d4 # v2
+        with:
+          secret-ids: |
+            TEST_MATRIX, /staging/test-user/matrix-credentials
+          parse-json-secrets: true
 
       - uses: actions/setup-node@v5
         with:

@@ -28,12 +28,12 @@ You are an E2E testing specialist for a Flutter web app at app.staging.pangea.ch
      name: "Username or email",
    });
    await usernameField.click();
-   await usernameField.fill(process.env.TEST_USER!);
+   await usernameField.fill(process.env.TEST_MATRIX_USERNAME!);
    await page.waitForTimeout(500);
 
    const passwordField = page.getByRole("textbox", { name: "Password" });
    await passwordField.click();
-   await passwordField.fill(process.env.TEST_PASSWORD!);
+   await passwordField.fill(process.env.TEST_MATRIX_PASSWORD!);
    await page.waitForTimeout(500);
    ```
 
@@ -54,7 +54,7 @@ You are an E2E testing specialist for a Flutter web app at app.staging.pangea.ch
 
 ## Credentials
 
-Login with username `$STAGING_TEST_USER` and password `$STAGING_TEST_PASSWORD` (from the `copilot` environment secrets).
+Login with username `$TEST_MATRIX_USERNAME` and password `$TEST_MATRIX_PASSWORD`. The CI workflow ([`.github/workflows/e2e-tests.yml`](../workflows/e2e-tests.yml)) fetches these from AWS Secrets Manager via OIDC and exposes them as job env vars. The shared test account is `staging_automated_tests`.
 
 ## File conventions
 
