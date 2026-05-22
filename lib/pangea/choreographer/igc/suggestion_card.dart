@@ -29,6 +29,7 @@ class SuggestionCardState extends State<SuggestionCard> {
     MatrixState.pAnyState.closeOverlay(widget.overlayKey);
   }
 
+  // TODO ORCHESTRATOR: add feedback mechanism
   // void _showFeedbackDialog() {}
 
   void _onChoiceSelected(OrchestratorSuggestion choice) {
@@ -86,6 +87,7 @@ class SuggestionCardState extends State<SuggestionCard> {
                     ),
                   ),
                 ),
+                // TODO ORCHESTRATOR: add feedback mechanism
                 // IconButton(
                 //   icon: const Icon(Icons.flag_outlined),
                 //   color: theme.iconTheme.color,

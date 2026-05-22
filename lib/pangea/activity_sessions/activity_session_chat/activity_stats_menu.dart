@@ -8,8 +8,11 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/chat_app_bar_list_tile.dart';
+import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_vocab_widget.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/goal_status_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_details_row.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -84,7 +87,8 @@ class ActivityStatsMenu extends StatelessWidget {
       shouldShowEndForAll = false;
     }
 
-    final goal = controller.room.ownRole?.goal;
+    final ownRole = controller.room.ownRole;
+    final goals = ownRole?.allGoals ?? [];
 
     return ValueListenableBuilder(
       valueListenable: controller.activityController.showActivityDropdown,
@@ -99,7 +103,7 @@ class ActivityStatsMenu extends StatelessWidget {
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  if (goal != null)
+                  if (goals.isNotEmpty)
                     InkWell(
                       onTap: controller.toggleShowDropdown,
                       child: Container(
@@ -111,16 +115,11 @@ class ActivityStatsMenu extends StatelessWidget {
                           ),
                           color: theme.colorScheme.surface,
                         ),
-                        child: Row(
-                          spacing: 12.0,
-                          children: [
-                            Icon(Icons.star_border),
-                            Text(
-                              goal,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ],
+                        child: GoalStatusWidget(
+                          goal: goals.first,
+                          complete: controller.room.isGoalCompleted(
+                            goals.first.id,
+                          ),
                         ),
                       ),
                     ),
