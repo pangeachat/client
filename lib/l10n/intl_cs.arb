@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-05-20 13:14:24.991686",
+    "@@last_modified": "2026-05-22 12:45:06.025558",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10273,6 +10273,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Dokončeno ({num})",
+    "suggestion": "Návrh",
+    "completeActivityButton": "Jsem hotov!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

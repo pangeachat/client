@@ -3934,7 +3934,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-05-20 13:14:44.949766",
+    "@@last_modified": "2026-05-22 12:45:09.203658",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9733,6 +9733,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Завершана ({num})",
+    "suggestion": "Прапановы",
+    "completeActivityButton": "Я скончыў!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

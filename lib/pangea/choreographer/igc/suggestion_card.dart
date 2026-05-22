@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_controller.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_suggestion.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_array.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class SuggestionCard extends StatefulWidget {
   final String overlayKey;
@@ -28,6 +29,7 @@ class SuggestionCardState extends State<SuggestionCard> {
     MatrixState.pAnyState.closeOverlay(widget.overlayKey);
   }
 
+  // TODO ORCHESTRATOR: add feedback mechanism
   // void _showFeedbackDialog() {}
 
   void _onChoiceSelected(OrchestratorSuggestion choice) {
@@ -85,6 +87,7 @@ class SuggestionCardState extends State<SuggestionCard> {
                     ),
                   ),
                 ),
+                // TODO ORCHESTRATOR: add feedback mechanism
                 // IconButton(
                 //   icon: const Icon(Icons.flag_outlined),
                 //   color: theme.iconTheme.color,

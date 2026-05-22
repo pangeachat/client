@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-05-20 13:16:34.086159",
+    "@@last_modified": "2026-05-22 12:45:34.488586",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9719,6 +9719,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "已完成 ({num})",
+    "suggestion": "建议",
+    "completeActivityButton": "我完成了！",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

@@ -9,7 +9,7 @@ import 'package:fluffychat/pangea/activity_feedback/activity_feedback_repo.dart'
 import 'package:fluffychat/pangea/activity_feedback/activity_feedback_request.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/confirmed_role_session_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/full_session_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/not_started_session_controller.dart';

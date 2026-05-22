@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-20 13:17:25.004649",
+    "@@last_modified": "2026-05-22 12:45:45.669543",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10838,6 +10838,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Finiĝis ({num})",
+    "suggestion": "Sugesto",
+    "completeActivityButton": "Mi finis!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

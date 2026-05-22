@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-05-20 13:14:14.751873",
+    "@@last_modified": "2026-05-22 12:45:04.501712",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9719,6 +9719,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Завершено ({num})",
+    "suggestion": "Пропозиція",
+    "completeActivityButton": "Я закінчив!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

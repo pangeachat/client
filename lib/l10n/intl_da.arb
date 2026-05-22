@@ -1478,7 +1478,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-05-20 13:12:31.824505",
+    "@@last_modified": "2026-05-22 12:44:39.112156",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10813,6 +10813,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Færdig ({num})",
+    "suggestion": "Forslag",
+    "completeActivityButton": "Jeg er færdig!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

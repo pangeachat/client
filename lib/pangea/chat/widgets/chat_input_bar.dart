@@ -5,6 +5,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/chat_emoji_picker.dart';
 import 'package:fluffychat/pages/chat/reply_display.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/chat/widgets/pangea_chat_input_row.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';

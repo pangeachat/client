@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-05-20 13:13:47.789569",
+    "@@last_modified": "2026-05-22 12:44:57.209468",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9716,6 +9716,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Lõpetatud ({num})",
+    "suggestion": "Soovitus",
+    "completeActivityButton": "Olen valmis!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

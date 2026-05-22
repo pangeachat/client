@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-20 13:13:10.607675",
+    "@@last_modified": "2026-05-22 12:44:49.964943",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10798,6 +10798,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "סיים ({num})",
+    "suggestion": "הצעה",
+    "completeActivityButton": "סיימתי!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }
