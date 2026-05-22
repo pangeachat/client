@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_preview/activity_session_preview_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
