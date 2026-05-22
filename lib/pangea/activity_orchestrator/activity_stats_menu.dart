@@ -11,6 +11,7 @@ import 'package:fluffychat/pangea/activity_orchestrator/goal_status_widget.dart'
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -114,6 +115,8 @@ class ActivityStatsMenu extends StatelessWidget {
                               child: GoalStatusWidget(
                                 goal: currentGoal,
                                 complete: room.isGoalCompleted(currentGoal.id),
+                                starTarget: ActivitySessionConstants
+                                    .goalMenuStarTargetId,
                               ),
                             ),
                             if (room.hasCompletedAllGoals)

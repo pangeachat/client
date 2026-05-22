@@ -307,4 +307,14 @@ class ActivityRoleGoal {
 
   factory ActivityRoleGoal.fromJson(Map<String, dynamic> json) =>
       ActivityRoleGoal(id: json["id"], description: json["description"]);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ActivityRoleGoal &&
+          id == other.id &&
+          description == other.description;
+
+  @override
+  int get hashCode => id.hashCode ^ description.hashCode;
 }
