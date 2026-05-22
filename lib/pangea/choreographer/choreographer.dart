@@ -132,11 +132,6 @@ class Choreographer extends ChangeNotifier {
     orchestratorController.clearSuggestionState();
   }
 
-  void clearWritingAssistanceAndSuggestions() {
-    clearSuggestions();
-    clearWritingAssistance();
-  }
-
   @override
   void dispose() {
     errorService.removeListener(notifyListeners);

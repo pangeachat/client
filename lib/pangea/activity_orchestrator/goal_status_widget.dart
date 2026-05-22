@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class GoalStatusWidget extends StatelessWidget {
   final ActivityRoleGoal goal;
   final bool complete;
+  final String? starTarget;
 
   const GoalStatusWidget({
     required this.goal,
     required this.complete,
+    this.starTarget,
     super.key,
   });
 
@@ -17,7 +20,7 @@ class GoalStatusWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final icon = complete
+    Widget icon = complete
         ? Icon(
             Icons.star,
             color: theme.brightness == Brightness.light
@@ -26,6 +29,17 @@ class GoalStatusWidget extends StatelessWidget {
             size: 30.0,
           )
         : Icon(Icons.star_border, size: 30.0);
+
+    final starTarget = this.starTarget;
+    if (starTarget != null) {
+      icon = CompositedTransformTarget(
+        link: MatrixState.pAnyState.layerLinkAndKey(starTarget).link,
+        child: Container(
+          key: MatrixState.pAnyState.layerLinkAndKey(starTarget).key,
+          child: icon,
+        ),
+      );
+    }
 
     return Row(
       spacing: 12.0,

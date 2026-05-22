@@ -5,7 +5,9 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_output.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_role_suggestions.dart';
+import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_suggestion.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
@@ -40,15 +42,22 @@ class OrchestratorController {
 
   OrchestratorController({required this.room}) {
     _setOrchestratorOutputSubscription();
+    _setGoalCompletionSubscription();
     _setInitialSuggestion();
+    _seenAwardedGoals.addAll(room.ownCompletedGoals);
   }
 
   late final StreamSubscription _orchestratorOutputSubscription;
-
-  ActiveSuggestionModel? _activeSuggestion;
+  late final StreamSubscription _goalCompletionSubscription;
 
   final StreamController<ActiveSuggestionModel?> suggestionStream =
       StreamController<ActiveSuggestionModel?>.broadcast();
+
+  final StreamController<List<ActivityRoleGoal>> goalCompletionStream =
+      StreamController<List<ActivityRoleGoal>>.broadcast();
+
+  ActiveSuggestionModel? _activeSuggestion;
+  final Set<ActivityRoleGoal> _seenAwardedGoals = {};
 
   ActiveSuggestionModel? get activeSuggestion => _activeSuggestion;
 
@@ -57,8 +66,10 @@ class OrchestratorController {
   void _log(String message) => Logs().w("[Orchestrator] $message");
 
   void dispose() {
-    suggestionStream.close();
     _orchestratorOutputSubscription.cancel();
+    _goalCompletionSubscription.cancel();
+    suggestionStream.close();
+    goalCompletionStream.close();
   }
 
   Future<void> _setInitialSuggestion() async {
@@ -132,6 +143,24 @@ class OrchestratorController {
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: event.content);
     }
+  }
+
+  void _setGoalCompletionSubscription() {
+    _goalCompletionSubscription = room.client.onRoomState.stream
+        .where(
+          (s) =>
+              s.roomId == room.id &&
+              s.state.type == PangeaEventTypes.orchestratorAwardedGoals,
+        )
+        .listen((_) => _onGoalCompletionEvent());
+  }
+
+  void _onGoalCompletionEvent() {
+    final updatedAwardedGoals = room.ownCompletedGoals.toSet();
+    if (_seenAwardedGoals.length < updatedAwardedGoals.length) {
+      goalCompletionStream.add(room.ownCompletedGoals);
+    }
+    _seenAwardedGoals.addAll(updatedAwardedGoals);
   }
 
   void clearSuggestionState() {

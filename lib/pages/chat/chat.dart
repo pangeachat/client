@@ -24,9 +24,12 @@ import 'package:fluffychat/pages/chat/chat_view.dart';
 import 'package:fluffychat/pages/chat/event_info_dialog.dart';
 import 'package:fluffychat/pages/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
+import 'package:fluffychat/pangea/activity_orchestrator/goal_star_animation.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -217,6 +220,8 @@ class ChatController extends State<ChatPageWithRoom>
 
   StreamSubscription? _forwardTutorialSubscription;
   StreamSubscription? _goBackTutorialSubscription;
+
+  StreamSubscription? _goalCompletionSubscription;
 
   /// The event used to start the reading-assistance tutorial. Stored so the
   /// tutorial can be re-opened when the user navigates back through the sequence.
@@ -779,6 +784,15 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
+  void _goalCompletionListener(List<ActivityRoleGoal> goalIds) {
+    GoalStarAnimation.show(
+      context,
+      overlayKey: "goal-completion-star-${widget.room.id}",
+      startTarget: ChoreoConstants.inputTransformTargetKey,
+      endTarget: ActivitySessionConstants.goalMenuStarTargetId,
+    );
+  }
+
   String? get currentRoutePath => _router.state.path;
 
   bool get _canLaunchTutorialSequence {
@@ -813,17 +827,24 @@ class ChatController extends State<ChatPageWithRoom>
     );
 
     _bannerController = ChatBannerController();
+
+    _levelSubscription?.cancel();
     _levelSubscription = updater.levelUpdateStream.stream.listen(_onLevelUp);
+
+    _constructsSubscription?.cancel();
     _constructsSubscription = updater.unlockedConstructsStream.stream.listen(
       _onUnlockConstructs,
     );
 
+    _tokensSubscription?.cancel();
     _tokensSubscription = updater.newConstructsStream.stream.listen(
       _onTokenUpdate,
     );
 
+    _botAudioSubscription?.cancel();
     _botAudioSubscription = room.client.onSync.stream.listen(_botAudioListener);
 
+    _readingAssistanceTutorialSubscription?.cancel();
     _readingAssistanceTutorialSubscription = room.client.onSync.stream.listen(
       _readingAssistanceTutorialListener,
     );
@@ -840,14 +861,23 @@ class ChatController extends State<ChatPageWithRoom>
       });
     }
 
+    _goalCompletionSubscription?.cancel();
+    _goalCompletionSubscription = choreographer
+        .orchestratorController
+        .goalCompletionStream
+        .stream
+        .listen(_goalCompletionListener);
+
     tutorialOverlayController = TutorialOverlayController(
       TutorialSequences.chatTutorialSequence,
     );
 
+    _forwardTutorialSubscription?.cancel();
     _forwardTutorialSubscription = tutorialOverlayController
         .forwardTutorialStream
         .listen(_writingAssistanceTutorialListener);
 
+    _goBackTutorialSubscription?.cancel();
     _goBackTutorialSubscription = tutorialOverlayController.backNavigationStream
         .listen(_goBackTutorialListener);
 
@@ -1132,6 +1162,7 @@ class ChatController extends State<ChatPageWithRoom>
     TokensUtil.instance.clearNewTokenCache();
     _forwardTutorialSubscription?.cancel();
     _goBackTutorialSubscription?.cancel();
+    _goalCompletionSubscription?.cancel();
     tutorialOverlayController.dispose();
     //Pangea#
     super.dispose();
@@ -1228,13 +1259,14 @@ class ChatController extends State<ChatPageWithRoom>
     replyEvent.value = null;
     pendingText = '';
 
+    choreographer.clearSuggestions();
     final tempEventId = await sendFakeMessage(edit, reply);
     if (!inputFocus.hasFocus) {
       inputFocus.requestFocus();
     }
 
     final content = await choreographer.getMessageContent(message);
-    choreographer.clearWritingAssistanceAndSuggestions();
+    choreographer.clearWritingAssistance();
 
     if (message.trim().isEmpty) return;
     // Pangea#
@@ -2729,6 +2761,13 @@ class ChatController extends State<ChatPageWithRoom>
         await send();
         return;
       }
+    }
+
+    if (assistanceState == AssistanceStateEnum.suggestionComplete) {
+      if (autosend) {
+        await send();
+      }
+      return;
     }
 
     // If assistance is complete, but the user manually requests corrections,
