@@ -99,7 +99,7 @@ class ActivityStatsMenu extends StatelessWidget {
                 children: [
                   if (currentGoal != null)
                     InkWell(
-                      onTap: toggleVisibility,
+                      onTap: _activityComplete ? null : toggleVisibility,
                       child: Container(
                         padding: EdgeInsets.symmetric(horizontal: 12.0),
                         height: 50.0,
@@ -119,7 +119,7 @@ class ActivityStatsMenu extends StatelessWidget {
                                     .goalMenuStarTargetId,
                               ),
                             ),
-                            if (room.hasCompletedAllGoals)
+                            if (!_activityComplete && room.hasCompletedAllGoals)
                               InkWell(
                                 onTap: toggleVisibility,
                                 child: Container(

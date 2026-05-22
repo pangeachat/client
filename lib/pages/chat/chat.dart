@@ -1259,13 +1259,14 @@ class ChatController extends State<ChatPageWithRoom>
     replyEvent.value = null;
     pendingText = '';
 
+    choreographer.clearSuggestions();
     final tempEventId = await sendFakeMessage(edit, reply);
     if (!inputFocus.hasFocus) {
       inputFocus.requestFocus();
     }
 
     final content = await choreographer.getMessageContent(message);
-    choreographer.clearWritingAssistanceAndSuggestions();
+    choreographer.clearWritingAssistance();
 
     if (message.trim().isEmpty) return;
     // Pangea#
@@ -2760,6 +2761,13 @@ class ChatController extends State<ChatPageWithRoom>
         await send();
         return;
       }
+    }
+
+    if (assistanceState == AssistanceStateEnum.suggestionComplete) {
+      if (autosend) {
+        await send();
+      }
+      return;
     }
 
     // If assistance is complete, but the user manually requests corrections,
