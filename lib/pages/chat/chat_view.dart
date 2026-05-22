@@ -14,11 +14,11 @@ import 'package:fluffychat/pages/chat/chat_app_bar_list_tile.dart';
 import 'package:fluffychat/pages/chat/chat_app_bar_title.dart';
 import 'package:fluffychat/pages/chat/chat_event_list.dart';
 import 'package:fluffychat/pages/chat/pinned_events.dart';
+import 'package:fluffychat/pangea/activity_orchestrator/activity_stats_menu.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_finished_status_message.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_session_popup_menu.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_stats_menu.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_floating_action_button.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_input_bar.dart';
@@ -602,7 +602,13 @@ class ChatView extends StatelessWidget {
                       ),
                     ),
                     // #Pangea
-                    ActivityStatsMenu(controller),
+                    ActivityStatsMenu(
+                      room: controller.room,
+                      visibilityNotifier:
+                          controller.activityController.showActivityDropdown,
+                      toggleVisibility:
+                          controller.activityController.toggleShowDropdown,
+                    ),
                     // if (controller.dragging)
                     //   Container(
                     //     color: theme.scaffoldBackgroundColor.withAlpha(230),

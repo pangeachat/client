@@ -127,7 +127,7 @@ class _SelectRoleSessionCTAButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return _CTAButton(
       L10n.of(context).confirm,
-      controller.confirmRoleSelection,
+      controller.canConfirmRole ? controller.confirmRoleSelection : null,
     );
   }
 }

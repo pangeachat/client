@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:async/async.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 
@@ -152,6 +153,7 @@ class LoadingDialogState<T> extends State<LoadingDialog> {
           }
         },
         onError: (e, s) {
+          ErrorHandler.logError(e: e, s: s, data: {});
           if (widget.showError != null && !widget.showError!(e)) {
             if (mounted && Navigator.of(context).canPop()) {
               Navigator.of(context).pop<Result<T>>(Result.error(e, s));

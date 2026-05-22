@@ -4832,5 +4832,6 @@
             }
         }
     },
-    "suggestion": "Suggestion"
+    "suggestion": "Suggestion",
+    "completeActivityButton": "I'm done!"
 }

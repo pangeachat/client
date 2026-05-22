@@ -56,6 +56,10 @@ class SelectRoleSessionController extends State<SelectRoleSession>
       ? Matrix.of(context).client.getRoomById(widget.roomId!)
       : null;
 
+  bool get canConfirmRole =>
+      _selectedRoleId != null &&
+      widget.activity?.roles[_selectedRoleId] != null;
+
   @override
   String get descriptionText {
     if (_selectedRoleId == null) {
@@ -108,11 +112,21 @@ class SelectRoleSessionController extends State<SelectRoleSession>
       return;
     }
 
-    if (activityRoom?.membership == Membership.join) {
+    final selectedRoleId = _selectedRoleId;
+    if (selectedRoleId == null) {
+      ErrorHandler.logError(
+        e: "Cannot confirm role selection without selectedRoleId",
+        data: {},
+      );
+      return;
+    }
+
+    final activityRoom = this.activityRoom;
+    if (activityRoom != null && activityRoom.membership == Membership.join) {
       await showFutureLoadingDialog(
         context: context,
         future: () =>
-            activityRoom!.joinActivity(activity.roles[_selectedRoleId]!),
+            activityRoom.joinActivity(activity.roles[selectedRoleId]!),
       );
     } else if (widget.roomId != null) {
       await showFutureLoadingDialog(context: context, future: _joinActivity);
@@ -121,7 +135,7 @@ class SelectRoleSessionController extends State<SelectRoleSession>
         context: context,
         future: () => widget.course!.launchActivityRoom(
           activity,
-          activity.roles[_selectedRoleId],
+          activity.roles[selectedRoleId],
         ),
       );
 
@@ -141,7 +155,7 @@ class SelectRoleSessionController extends State<SelectRoleSession>
     }
 
     final client = Matrix.of(context).client;
-    if (activityRoom!.membership != Membership.join) {
+    if (activityRoom?.membership != Membership.join) {
       await client.joinRoom(
         widget.roomId!,
         serverName: widget.course?.spaceChildren

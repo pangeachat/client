@@ -15,15 +15,29 @@ class GoalStatusWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     final icon = complete
-        ? Icon(Icons.star, color: AppConfig.goldLight)
-        : Icon(Icons.star_border);
+        ? Icon(
+            Icons.star,
+            color: theme.brightness == Brightness.light
+                ? AppConfig.gold
+                : AppConfig.goldLight,
+            size: 30.0,
+          )
+        : Icon(Icons.star_border, size: 30.0);
 
     return Row(
       spacing: 12.0,
       children: [
         icon,
-        Text(goal.description, maxLines: 1, overflow: TextOverflow.ellipsis),
+        Flexible(
+          child: Text(
+            goal.description,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
       ],
     );
   }

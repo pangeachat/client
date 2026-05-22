@@ -249,6 +249,8 @@ class ActivityRole {
     this.avatarUrl,
   });
 
+  bool get usingDefaultGoalId => goals.isEmpty && goal != null;
+
   List<ActivityRoleGoal> get allGoals {
     if (goals.isNotEmpty) return goals;
     final goal = this.goal;
