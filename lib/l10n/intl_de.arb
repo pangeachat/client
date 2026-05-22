@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-05-20 13:13:53.129220",
+    "@@last_modified": "2026-05-22 12:44:58.054567",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9698,6 +9698,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Fertig ({num})",
+    "suggestion": "Vorschlag",
+    "completeActivityButton": "Ich bin fertig!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

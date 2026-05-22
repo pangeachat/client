@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-05-20 13:13:06.092362",
+    "@@last_modified": "2026-05-22 12:44:48.718661",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10203,6 +10203,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Završeno ({num})",
+    "suggestion": "Prijedlog",
+    "completeActivityButton": "Gotovo sam!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

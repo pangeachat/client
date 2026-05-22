@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-05-20 13:13:32.875272",
+    "@@last_modified": "2026-05-22 12:44:54.057188",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9719,6 +9719,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Amaitu ({num})",
+    "suggestion": "Iragarpena",
+    "completeActivityButton": "Amaitu dut!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

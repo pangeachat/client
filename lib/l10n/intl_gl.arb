@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-05-20 13:12:18.697658",
+    "@@last_modified": "2026-05-22 12:44:35.834521",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9719,6 +9719,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Rematado ({num})",
+    "suggestion": "Suxestión",
+    "completeActivityButton": "¡Rematei!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

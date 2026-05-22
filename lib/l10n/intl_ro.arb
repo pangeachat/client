@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-20 13:12:47.378761",
+    "@@last_modified": "2026-05-22 12:44:44.024829",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10544,6 +10544,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Finalizat ({num})",
+    "suggestion": "Sugestie",
+    "completeActivityButton": "Am terminat!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

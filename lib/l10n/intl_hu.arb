@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-05-20 13:12:37.130047",
+    "@@last_modified": "2026-05-22 12:44:41.565097",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9846,6 +9846,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Befejezett ({num})",
+    "suggestion": "Javaslat",
+    "completeActivityButton": "Kész vagyok!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

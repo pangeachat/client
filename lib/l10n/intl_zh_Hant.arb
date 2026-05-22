@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-20 13:15:12.543214",
+    "@@last_modified": "2026-05-22 12:45:18.637985",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9849,6 +9849,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "已完成 ({num})",
+    "suggestion": "建議",
+    "completeActivityButton": "我完成了！",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }
