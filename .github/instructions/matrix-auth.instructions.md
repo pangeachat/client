@@ -8,13 +8,12 @@ How to obtain a Matrix access token for staging API testing (choreo endpoints, S
 
 ## Credentials
 
-Staging test credentials live in `client/.env`:
+The shared staging test account is `staging_automated_tests`. Credentials live in `client/.env` (gitignored):
 
-- `STAGING_TEST_EMAIL` — email address
-- `STAGING_TEST_USER` — full Matrix user ID (e.g. `@wykuji:staging.pangea.chat`)
-- `STAGING_TEST_PASSWORD` — password
+- `TEST_MATRIX_USERNAME` — Matrix username (localpart, no `@` or domain)
+- `TEST_MATRIX_PASSWORD` — password
 
-Read these values from the file at runtime. **Never hardcode credentials in skills, scripts, or chat output.**
+Read these values from the file at runtime. **Never hardcode credentials in skills, scripts, or chat output.** If `client/.env` is missing them, see [run-playwright-and-axe-local.instructions.md](run-playwright-and-axe-local.instructions.md) for the AWS Secrets Manager / mirrored-env fetch.
 
 ## Get a Matrix Access Token
 
@@ -24,7 +23,7 @@ curl -s -X POST 'https://matrix.staging.pangea.chat/_matrix/client/v3/login' \
   -d '{
     "type": "m.login.password",
     "identifier": {"type": "m.id.user", "user": "<USERNAME_WITHOUT_@_OR_DOMAIN>"},
-    "password": "<STAGING_TEST_PASSWORD>"
+    "password": "<TEST_MATRIX_PASSWORD>"
   }' | python3 -m json.tool
 ```
 
@@ -34,13 +33,13 @@ The response contains `access_token`, `user_id`, `device_id`, and `home_server`.
 
 ```sh
 # Read creds from client/.env
-STAGING_USER=$(grep STAGING_TEST_USER client/.env | sed 's/.*= *"//;s/".*//' | sed 's/@//;s/:.*//')
-STAGING_PASS=$(grep STAGING_TEST_PASSWORD client/.env | sed 's/.*= *"//;s/".*//')
+TEST_USER=$(grep TEST_MATRIX_USERNAME client/.env | sed 's/.*= *"//;s/".*//')
+TEST_PASS=$(grep TEST_MATRIX_PASSWORD client/.env | sed 's/.*= *"//;s/".*//')
 
 # Login and extract token
 MATRIX_TOKEN=$(curl -s -X POST 'https://matrix.staging.pangea.chat/_matrix/client/v3/login' \
   -H 'Content-Type: application/json' \
-  -d "{\"type\":\"m.login.password\",\"identifier\":{\"type\":\"m.id.user\",\"user\":\"$STAGING_USER\"},\"password\":\"$STAGING_PASS\"}" \
+  -d "{\"type\":\"m.login.password\",\"identifier\":{\"type\":\"m.id.user\",\"user\":\"$TEST_USER\"},\"password\":\"$TEST_PASS\"}" \
   | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
 
 echo "$MATRIX_TOKEN"
