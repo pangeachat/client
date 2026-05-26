@@ -42,6 +42,9 @@ test.describe("Course discovery", () => {
     await page.getByRole("button", { name: intl.newCourse, exact: true }).click();
     await page.getByRole("button", { name: intl.numModules.substring(5) }).first().click();
     await page.getByRole("button", { name: intl.createCourse, exact: true }).click();
+    if (await page.getByRole("button", { name: intl.createCourse, exact: true }).isVisible()) {
+      await page.getByRole("button", { name: intl.createCourse, exact: true }).click();
+    }
     await expect(page.getByRole("button", { name: intl.playWithAI, exact: true })).toBeVisible();
   });
 });
