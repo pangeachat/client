@@ -30,7 +30,10 @@
     "mobile": null
   },
   "course-discovery": {
-    "globs": ["lib/pangea/course_creation/**", "lib/pangea/course_plan/**"],
+    "globs": [
+      "lib/pangea/course_creation/**",
+      "lib/pangea/course_plan/**"
+    ],
     "web": "e2e/scripts/course-discovery.spec.ts",
     "mobile": null
   },

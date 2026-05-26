@@ -43,12 +43,10 @@ Each flow maps to a Playwright spec via `e2e/trigger-map.json`.
 | Flow                        | Status | Notes                |
 | --------------------------- | :----: | -------------------- |
 | Login                       |   ✅   |                      |
-| Accessibility (axe-core)    |   🔴   | 2 violations to fix  |
-| Chat list navigation        |   ⬜   |                      |
-| Open chat                   |   ⬜   |                      |
-| Send message                |   ⬜   |                      |
-| Message toolbar (TTS, etc.) |   ⬜   | Needs semantics work |
-| Course discovery            |   ⬜   | Needs semantics work |
+| Accessibility (axe-core)    |   ✅   |                      |
+| Chat list navigation        |   ✅   |                      |
+| Message toolbar (TTS, etc.) |   ✅   |                      |
+| Course discovery            |   ✅   |                      |
 | Settings                    |   ⬜   | Needs semantics work |
 | Analytics                   |   ⬜   | Needs semantics work |
 | Create DM                   |   ⬜   |                      |
