@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-20 13:14:50.158249",
+    "@@last_modified": "2026-05-22 12:45:10.957204",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9870,6 +9870,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Acabat ({num})",
+    "suggestion": "Suggeriment",
+    "completeActivityButton": "He acabat!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

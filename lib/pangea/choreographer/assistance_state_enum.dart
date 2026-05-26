@@ -12,7 +12,9 @@ enum AssistanceStateEnum {
   notFetched,
   fetching,
   fetched,
-  complete,
+  suggesting,
+  suggestionComplete,
+  igcComplete,
   error;
 
   Color stateColor(BuildContext context) {
@@ -25,8 +27,10 @@ enum AssistanceStateEnum {
         return AppConfig.error;
       case AssistanceStateEnum.notFetched:
       case AssistanceStateEnum.fetching:
+      case AssistanceStateEnum.suggesting:
         return Theme.of(context).colorScheme.primary;
-      case AssistanceStateEnum.complete:
+      case AssistanceStateEnum.suggestionComplete:
+      case AssistanceStateEnum.igcComplete:
         return AppConfig.success;
     }
   }
@@ -35,20 +39,23 @@ enum AssistanceStateEnum {
     switch (this) {
       case AssistanceStateEnum.noMessage:
       case AssistanceStateEnum.fetched:
+      case AssistanceStateEnum.suggesting:
         return Theme.of(context).disabledColor;
       case AssistanceStateEnum.noSub:
       case AssistanceStateEnum.error:
       case AssistanceStateEnum.notFetched:
       case AssistanceStateEnum.fetching:
         return Theme.of(context).colorScheme.primary;
-      case AssistanceStateEnum.complete:
+      case AssistanceStateEnum.suggestionComplete:
+      case AssistanceStateEnum.igcComplete:
         return AppConfig.success;
     }
   }
 
   bool get allowsFeedback => switch (this) {
     AssistanceStateEnum.notFetched => true,
-    AssistanceStateEnum.complete => true,
+    AssistanceStateEnum.igcComplete => true,
+    AssistanceStateEnum.suggesting => true,
     AssistanceStateEnum.noSub => true,
     AssistanceStateEnum.error => true,
     _ => false,
@@ -59,12 +66,16 @@ enum AssistanceStateEnum {
     AssistanceStateEnum.noMessage => true,
     AssistanceStateEnum.notFetched => true,
     AssistanceStateEnum.error => true,
-    AssistanceStateEnum.complete => true,
+    AssistanceStateEnum.igcComplete => true,
+    AssistanceStateEnum.suggesting => true,
+    AssistanceStateEnum.suggestionComplete => true,
     _ => false,
   };
 
   IconData get icon => switch (this) {
     AssistanceStateEnum.error => Icons.error,
+    AssistanceStateEnum.suggesting => Icons.lightbulb_outline,
+    AssistanceStateEnum.suggestionComplete => Icons.lightbulb_outline,
     _ => Icons.check,
   };
 }

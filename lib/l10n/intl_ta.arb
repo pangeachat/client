@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-20 13:16:13.794848",
+    "@@last_modified": "2026-05-22 12:45:31.016392",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9835,6 +9835,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "முடிந்தது ({num})",
+    "suggestion": "சூழல்",
+    "completeActivityButton": "நான் முடித்துவிட்டேன்!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-05-20 13:16:51.927101",
+    "@@last_modified": "2026-05-22 12:45:38.276111",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9828,6 +9828,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Zakończone ({num})",
+    "suggestion": "Sugestia",
+    "completeActivityButton": "Skończyłem!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

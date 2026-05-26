@@ -1,6 +1,8 @@
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_awarded_goals.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 
 extension OrchestratorRoomExtension on Room {
@@ -12,5 +14,43 @@ extension OrchestratorRoomExtension on Room {
     } catch (_) {
       return OrchestratorAwardedGoals(goalIds: []);
     }
+  }
+
+  bool isGoalCompleted(String id) {
+    final ownRole = this.ownRole;
+    if (ownRole == null) return false;
+
+    final awardedGoals = orchestratorAwardedGoals;
+    if (ownRole.usingDefaultGoalId) {
+      return awardedGoals.goalIds.isNotEmpty;
+    }
+
+    return awardedGoals.isGoalCompleted(id);
+  }
+
+  bool get hasCompletedAllGoals {
+    final ownRole = this.ownRole;
+    if (ownRole == null) return false;
+
+    final allGoals = ownRole.allGoals;
+    return allGoals.every((r) => isGoalCompleted(r.id));
+  }
+
+  List<ActivityRoleGoal> get ownCompletedGoals {
+    final ownRole = this.ownRole;
+    if (ownRole == null) return [];
+
+    final ownGoals = ownRole.allGoals;
+    final awardedGoals = orchestratorAwardedGoals.goalIds;
+
+    if (ownRole.usingDefaultGoalId) {
+      // TODO ORCHESTRATOR: better mechanism for mapping old string goals to completed goal IDs
+      // (this is assuming that all completed goals were completed by this user, which will not be
+      // true for multi-user activities)
+      if (awardedGoals.isEmpty || ownGoals.isEmpty) return [];
+      return [ownGoals.first];
+    }
+
+    return ownGoals.where((g) => awardedGoals.contains(g.id)).toList();
   }
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-20 13:12:05.801814",
+    "@@last_modified": "2026-05-22 12:44:32.048691",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9936,6 +9936,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "완료됨 ({num})",
+    "suggestion": "제안",
+    "completeActivityButton": "완료했어요!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

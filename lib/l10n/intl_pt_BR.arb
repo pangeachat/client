@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-20 13:13:24.037349",
+    "@@last_modified": "2026-05-22 12:44:52.828456",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9719,6 +9719,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Concluído ({num})",
+    "suggestion": "Sugestão",
+    "completeActivityButton": "Eu terminei!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

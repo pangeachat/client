@@ -14,6 +14,9 @@ class OrchestratorOutput {
     this.flag,
   });
 
+  List<OrchestratorRoleSuggestions> suggestionsByRoleId(String roleId) =>
+      suggestions.where((s) => s.roleId == roleId).toList();
+
   static OrchestratorOutput fromJson(Map<String, dynamic> json) =>
       OrchestratorOutput(
         basedOnEventId: json["based_on_event_id"],

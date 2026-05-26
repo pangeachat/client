@@ -1,5 +1,6 @@
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 
 extension CustomRoomDisplayExtension on Room {

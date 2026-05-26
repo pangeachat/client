@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-05-20 13:15:35.483593",
+    "@@last_modified": "2026-05-22 12:45:23.656449",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10059,6 +10059,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "انتهى ({num})",
+    "suggestion": "اقتراح",
+    "completeActivityButton": "لقد انتهيت!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

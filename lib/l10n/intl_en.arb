@@ -4833,5 +4833,7 @@
                 "type": "int"
             }
         }
-    }
+    },
+    "suggestion": "Suggestion",
+    "completeActivityButton": "I'm done!"
 }

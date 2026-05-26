@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -11,13 +9,12 @@ import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../bot/utils/bot_style.dart';
 
-typedef ChoiceCallback = void Function(String value, int index);
+typedef ChoiceCallback<T> = void Function(T value, int index);
 
-class ChoicesArray extends StatelessWidget {
-  final bool isLoading;
-  final List<Choice>? choices;
-  final ChoiceCallback onPressed;
-  final ChoiceCallback? onLongPress;
+class ChoicesArray<T> extends StatelessWidget {
+  final List<Choice<T>>? choices;
+  final ChoiceCallback<T> onPressed;
+  final ChoiceCallback<T>? onLongPress;
   final int? selectedChoiceIndex;
 
   final bool enableAudio;
@@ -25,16 +22,15 @@ class ChoicesArray extends StatelessWidget {
   /// language code for the TTS
   final String? langCode;
 
-  /// Used to unqiuely identify the keys for choices, in cases where multiple
+  /// Used to uniquely identify the keys for choices, in cases where multiple
   /// choices could have identical text, like in back-to-back practice exercises.
   final String? id;
 
-  final String Function(String)? getDisplayCopy;
+  final String Function(T)? getDisplayCopy;
   final bool enabled;
 
   const ChoicesArray({
     super.key,
-    required this.isLoading,
     required this.choices,
     required this.onPressed,
     required this.selectedChoiceIndex,
@@ -48,78 +44,54 @@ class ChoicesArray extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return isLoading && (choices == null || choices!.length <= 1)
-        ? Wrap(
-            alignment: WrapAlignment.center,
-            spacing: 4,
-            runSpacing: 4,
-            children: List.generate(3, (_) {
-              return ImageFiltered(
-                imageFilter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    minimumSize: const Size(50, 36),
-                    backgroundColor: Theme.of(
-                      context,
-                    ).colorScheme.primary.withAlpha(50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 7),
-                  ),
-                  onPressed: null,
-                  child: const Text(
-                    "          ", // 10 spaces
-                    style: TextStyle(color: Colors.transparent, fontSize: 16),
-                  ),
-                ),
-              );
-            }),
-          )
-        : Wrap(
-            alignment: WrapAlignment.center,
-            spacing: 4.0,
-            children: [
-              ...choices!.mapIndexed(
-                (index, entry) => ChoiceItem(
-                  onLongPress: onLongPress,
-                  onPressed: (String value, int index) {
-                    onPressed(value, index);
-                    if (enableAudio && langCode != null) {
-                      TtsController.tryToSpeak(
-                        value,
-                        targetID: null,
-                        langCode: langCode!,
-                      );
-                    }
-                  },
-                  entry: MapEntry(index, entry),
-                  isSelected: selectedChoiceIndex == index,
-                  id: id,
-                  getDisplayCopy: getDisplayCopy,
-                  enabled: enabled,
-                ),
-              ),
-            ],
-          );
+    return Wrap(
+      alignment: WrapAlignment.center,
+      runAlignment: WrapAlignment.center,
+      spacing: 4.0,
+      children: [
+        ...choices!.mapIndexed(
+          (index, entry) => ChoiceItem<T>(
+            onLongPress: onLongPress,
+            onPressed: (T value, int index) {
+              onPressed(value, index);
+              if (enableAudio && langCode != null) {
+                TtsController.tryToSpeak(
+                  // Display string is used for TTS
+                  getDisplayCopy != null
+                      ? getDisplayCopy!(value)
+                      : value.toString(),
+                  targetID: null,
+                  langCode: langCode!,
+                );
+              }
+            },
+            entry: MapEntry(index, entry),
+            isSelected: selectedChoiceIndex == index,
+            id: id,
+            getDisplayCopy: getDisplayCopy,
+            enabled: enabled,
+          ),
+        ),
+      ],
+    );
   }
 }
 
-class Choice {
-  Choice({this.color, required this.text, this.isGold = false});
+class Choice<T> {
+  Choice({this.color, required this.value, this.isGold = false});
 
   final Color? color;
-  final String text;
+  final T value;
   final bool isGold;
 }
 
-class ChoiceItem extends StatelessWidget {
-  final MapEntry<int, Choice> entry;
-  final ChoiceCallback? onLongPress;
-  final ChoiceCallback onPressed;
+class ChoiceItem<T> extends StatelessWidget {
+  final MapEntry<int, Choice<T>> entry;
+  final ChoiceCallback<T>? onLongPress;
+  final ChoiceCallback<T> onPressed;
   final bool isSelected;
   final String? id;
-  final String Function(String)? getDisplayCopy;
+  final String Function(T)? getDisplayCopy;
   final double? fontSize;
   final bool enabled;
 
@@ -135,6 +107,10 @@ class ChoiceItem extends StatelessWidget {
     this.enabled = true,
   });
 
+  String get _displayText => getDisplayCopy != null
+      ? getDisplayCopy!(entry.value.value)
+      : entry.value.value.toString();
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -144,15 +120,11 @@ class ChoiceItem extends StatelessWidget {
           ? const Duration(milliseconds: 500)
           : const Duration(days: 1),
       child: CompositedTransformTarget(
-        link: MatrixState.pAnyState
-            .layerLinkAndKey("${entry.value.text}$id")
-            .link,
+        link: MatrixState.pAnyState.layerLinkAndKey("$_displayText$id").link,
         child: ChoiceAnimationWidget(
           isSelected: isSelected,
           isCorrect: entry.value.isGold,
-          key: MatrixState.pAnyState
-              .layerLinkAndKey("${entry.value.text}$id")
-              .key,
+          key: MatrixState.pAnyState.layerLinkAndKey("$_displayText$id").key,
           child: Container(
             margin: const EdgeInsets.all(2),
             child: TextButton(
@@ -173,15 +145,13 @@ class ChoiceItem extends StatelessWidget {
                 ),
               ),
               onLongPress: onLongPress != null && enabled
-                  ? () => onLongPress!(entry.value.text, entry.key)
+                  ? () => onLongPress!(entry.value.value, entry.key)
                   : null,
               onPressed: enabled
-                  ? () => onPressed(entry.value.text, entry.key)
+                  ? () => onPressed(entry.value.value, entry.key)
                   : null,
               child: Text(
-                getDisplayCopy != null
-                    ? getDisplayCopy!(entry.value.text)
-                    : entry.value.text,
+                _displayText,
                 style: BotStyle.text(context).copyWith(fontSize: fontSize),
                 textAlign: TextAlign.center,
               ),

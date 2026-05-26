@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-20 13:14:36.635558",
+    "@@last_modified": "2026-05-22 12:45:07.777813",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9779,6 +9779,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Ferdig ({num})",
+    "suggestion": "Forslag",
+    "completeActivityButton": "Jeg er ferdig!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }

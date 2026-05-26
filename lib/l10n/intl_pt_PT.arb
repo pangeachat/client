@@ -2777,7 +2777,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-05-20 13:15:06.537792",
+    "@@last_modified": "2026-05-22 12:45:17.000047",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10795,6 +10795,25 @@
         "placeholders": {}
     },
     "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Concluído ({num})",
+    "suggestion": "Sugestão",
+    "completeActivityButton": "Eu terminei!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
         "type": "String",
         "placeholders": {}
     }
