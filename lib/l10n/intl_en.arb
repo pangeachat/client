@@ -4833,5 +4833,7 @@
         }
     },
     "suggestion": "Suggestion",
-    "completeActivityButton": "I'm done!"
+    "completeActivityButton": "I'm done!",
+    "writingAssistanceNoSub": "Writing assistance",
+    "viewError": "View error"
 }
