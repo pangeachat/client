@@ -17,6 +17,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/join_codes/knock_notification_utils.dart';
 import 'package:fluffychat/pangea/notifications/enable_notifications_dialog.dart';
 import 'package:fluffychat/pangea/notifications/notifications_request_repo.dart';
+import 'package:fluffychat/pangea/notifications/suggest_mobile_dialog.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/push_helper.dart';
@@ -234,7 +235,8 @@ extension LocalNotificationsExtension on MatrixState {
     final result = await showDialog<OkCancelResult>(
       context: context,
       barrierDismissible: false,
-      builder: (context) => const EnableNotificationsDialog(),
+      builder: (context) =>
+          kIsWeb ? SuggestMobileDialog() : EnableNotificationsDialog(),
     );
 
     if (result == OkCancelResult.ok) {

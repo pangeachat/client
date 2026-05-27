@@ -4835,5 +4835,6 @@
         }
     },
     "suggestion": "Suggestion",
-    "completeActivityButton": "I'm done!"
+    "completeActivityButton": "I'm done!",
+    "suggestMobileDesc": "Get the Pangea Chat app to receive notifications!"
 }
