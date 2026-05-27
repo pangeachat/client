@@ -47,10 +47,10 @@ integration_test/
 | Chat list navigation    |   ⬜   |                         |
 | Message toolbar         |   ⬜   |                         |
 | Course discovery        |   ⬜   |                         |
-| Settings                |   ⬜   |                         |
+| Settings                |   ✅   |                         |
 | Analytics               |   ⬜   |                         |
 | Create DM               |   ⬜   |                         |
-| Logout                  |   ⬜   |                         |
+| Logout                  |   ✅   |                         |
 | Permission dialogs      |   ⬜   | Native OS — Patrol-only |
 | Push notifications      |   ⬜   | Native OS — Patrol-only |
 | Background / foreground |   ⬜   | Native OS — Patrol-only |
