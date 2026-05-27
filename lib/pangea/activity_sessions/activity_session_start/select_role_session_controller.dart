@@ -61,14 +61,19 @@ class SelectRoleSessionController extends State<SelectRoleSession>
       widget.activity?.roles[_selectedRoleId] != null;
 
   @override
-  String get descriptionText {
+  String? get descriptionText {
     if (_selectedRoleId == null) {
       return activityRoom?.isRoomAdmin ?? false
           ? L10n.of(context).chooseRole
           : L10n.of(context).chooseRoleToParticipate;
     }
+    // Return null when role is selected - button widget will show goals
+    return null;
+  }
 
-    return widget.activity?.roles[_selectedRoleId]?.goal ?? "";
+  List<ActivityRoleGoal>? get selectedRoleGoals {
+    if (_selectedRoleId == null) return null;
+    return widget.activity?.roles[_selectedRoleId]?.allGoals;
   }
 
   @override

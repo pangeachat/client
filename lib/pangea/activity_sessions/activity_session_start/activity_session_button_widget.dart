@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/activity_orchestrator/goal_status_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_state_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/confirmed_role_session_controller.dart';
@@ -23,6 +24,11 @@ class ActivitySessionButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final description = sessionController.descriptionText;
+
+    final goals = sessionController is SelectRoleSessionController
+        ? (sessionController as SelectRoleSessionController).selectedRoleGoals
+        : null;
+
     return AnimatedSize(
       duration: FluffyThemes.animationDuration,
       child: Container(
@@ -50,6 +56,16 @@ class ActivitySessionButtons extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                         textAlign: TextAlign.center,
+                      ),
+                    if (goals != null && goals.isNotEmpty)
+                      Column(
+                        spacing: 12.0,
+                        children: goals
+                            .map(
+                              (goal) =>
+                                  GoalStatusWidget(goal: goal, complete: false),
+                            )
+                            .toList(),
                       ),
                     _SessionCTAButtons(sessionController),
                   ],

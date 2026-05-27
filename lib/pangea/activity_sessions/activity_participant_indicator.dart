@@ -86,7 +86,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
               return Opacity(
                 opacity: opacity,
                 child: ShimmerBackground(
-                  enabled: shimmer,
+                  enabled: shimmer && !hovered,
                   borderRadius: borderRadius,
                   child: Container(
                     alignment: Alignment.center,

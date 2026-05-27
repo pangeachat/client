@@ -117,39 +117,21 @@ class ActivitySessionStartView extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.all(16.0),
-                                    child: Column(
-                                      spacing: 12.0,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Container(
-                                          padding: EdgeInsets.all(12.0),
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(
-                                              AppConfig.borderRadius,
-                                            ),
-                                            color: theme.colorScheme.surface
-                                                .withAlpha(180),
-                                          ),
-                                          child: Text(
-                                            activity.description,
-                                            style: theme.textTheme.bodyLarge
-                                                ?.copyWith(
-                                                  color: theme
-                                                      .colorScheme
-                                                      .onSurface,
-                                                ),
-                                          ),
-                                        ),
-                                        Row(
+                                  Center(
+                                    child: ConstrainedBox(
+                                      constraints: const BoxConstraints(
+                                        maxWidth: 600.0,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(16.0),
+                                        child: Column(
                                           spacing: 12.0,
+                                          mainAxisSize: MainAxisSize.min,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Container(
-                                              padding: EdgeInsets.symmetric(
-                                                horizontal: 12.0,
-                                                vertical: 6.0,
-                                              ),
+                                              padding: EdgeInsets.all(12.0),
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(
@@ -159,66 +141,121 @@ class ActivitySessionStartView extends StatelessWidget {
                                                     .withAlpha(180),
                                               ),
                                               child: Text(
-                                                activity.req.cefrLevel.string,
+                                                activity.description,
+                                                style: theme.textTheme.bodyLarge
+                                                    ?.copyWith(
+                                                      color: theme
+                                                          .colorScheme
+                                                          .onSurface,
+                                                    ),
                                               ),
                                             ),
-                                            Container(
-                                              padding: EdgeInsets.symmetric(
-                                                horizontal: 12.0,
-                                                vertical: 6.0,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                      AppConfig.borderRadius,
-                                                    ),
-                                                color: theme.colorScheme.surface
-                                                    .withAlpha(180),
-                                              ),
-                                              child: Text(
-                                                L10n.of(
-                                                  context,
-                                                ).countParticipants(
-                                                  activity.roles.length,
+                                            Row(
+                                              spacing: 12.0,
+                                              children: [
+                                                Container(
+                                                  padding: EdgeInsets.symmetric(
+                                                    horizontal: 12.0,
+                                                    vertical: 6.0,
+                                                  ),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          AppConfig
+                                                              .borderRadius,
+                                                        ),
+                                                    color: theme
+                                                        .colorScheme
+                                                        .surface
+                                                        .withAlpha(180),
+                                                  ),
+                                                  child: Text(
+                                                    activity
+                                                        .req
+                                                        .cefrLevel
+                                                        .string,
+                                                  ),
                                                 ),
-                                              ),
-                                            ),
-                                            Container(
-                                              padding: EdgeInsets.symmetric(
-                                                horizontal: 12.0,
-                                                vertical: 6.0,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                      AppConfig.borderRadius,
+                                                Container(
+                                                  padding: EdgeInsets.symmetric(
+                                                    horizontal: 12.0,
+                                                    vertical: 6.0,
+                                                  ),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          AppConfig
+                                                              .borderRadius,
+                                                        ),
+                                                    color: theme
+                                                        .colorScheme
+                                                        .surface
+                                                        .withAlpha(180),
+                                                  ),
+                                                  child: Text(
+                                                    L10n.of(
+                                                      context,
+                                                    ).countParticipants(
+                                                      activity.roles.length,
                                                     ),
-                                                color: theme.colorScheme.surface
-                                                    .withAlpha(180),
-                                              ),
-                                              child: Text(activity.req.mode),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  padding: EdgeInsets.symmetric(
+                                                    horizontal: 12.0,
+                                                    vertical: 6.0,
+                                                  ),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          AppConfig
+                                                              .borderRadius,
+                                                        ),
+                                                    color: theme
+                                                        .colorScheme
+                                                        .surface
+                                                        .withAlpha(180),
+                                                  ),
+                                                  child: Text(
+                                                    activity.req.mode,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         ),
-                                      ],
+                                      ),
                                     ),
                                   ),
                                   Positioned(
                                     top: 250.0,
-                                    left: 16.0,
-                                    right: 16.0,
-                                    child: ActivityParticipantList(
-                                      activity: activity,
-                                      room: controller.activityRoom,
-                                      assignedRoles: controller.assignedRoles,
-                                      course: controller.courseParent,
-                                      onTap: sessionController.selectRole,
-                                      canSelect:
-                                          sessionController.canSelectRole,
-                                      isSelected:
-                                          sessionController.isRoleSelected,
-                                      isShimmering:
-                                          sessionController.isRoleShimmering,
+                                    left: 0,
+                                    right: 0,
+                                    child: Center(
+                                      child: ConstrainedBox(
+                                        constraints: const BoxConstraints(
+                                          maxWidth: 600.0,
+                                        ),
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 16.0,
+                                          ),
+                                          child: ActivityParticipantList(
+                                            activity: activity,
+                                            room: controller.activityRoom,
+                                            assignedRoles:
+                                                controller.assignedRoles,
+                                            course: controller.courseParent,
+                                            onTap: sessionController.selectRole,
+                                            canSelect:
+                                                sessionController.canSelectRole,
+                                            isSelected: sessionController
+                                                .isRoleSelected,
+                                            isShimmering: sessionController
+                                                .isRoleShimmering,
+                                          ),
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ],
