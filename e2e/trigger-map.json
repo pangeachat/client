@@ -9,14 +9,16 @@
     "web": "e2e/scripts/login.spec.ts",
     "mobile": "integration_test/patrol/login_test.dart"
   },
-  "chat-list-navigation": {
+  "course-chat-navigation": {
     "globs": [
       "lib/pages/chat_list/**",
       "lib/pangea/chat_list/**",
       "lib/pangea/common/controllers/pangea_controller.dart",
-      "lib/config/routes.dart"
+      "lib/config/routes.dart",
+      "lib/pangea/course_creation/**",
+      "lib/pangea/course_plan/**"
     ],
-    "web": "e2e/scripts/chat-list-navigation.spec.ts",
+    "web": "e2e/scripts/course-chat-navigation.spec.ts",
     "mobile": null
   },
   "message-toolbar": {
@@ -27,14 +29,6 @@
       "lib/pangea/phonetic_transcription/**"
     ],
     "web": "e2e/scripts/message-toolbar.spec.ts",
-    "mobile": null
-  },
-  "course-discovery": {
-    "globs": [
-      "lib/pangea/course_creation/**",
-      "lib/pangea/course_plan/**"
-    ],
-    "web": "e2e/scripts/course-discovery.spec.ts",
     "mobile": null
   },
   "settings": {
