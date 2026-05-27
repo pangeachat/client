@@ -119,5 +119,6 @@ test.describe("Message Toolbar", () => {
     await page.getByRole("button", { name: intl.chatDetails }).click();
     await page.getByRole("button", { name: "Show menu" }).click();
     await page.getByRole("menuitem", { name: intl.leave }).click();
+    await page.getByRole("button", { name: intl.leave }).click();
   });
 });

@@ -86,5 +86,6 @@ test.describe("Course and chat navigation", () => {
     var leave = page.getByRole("button", { name: intl.leave });
     await leave.scrollIntoViewIfNeeded();
     await leave.click();
+    await page.getByRole("button", { name: intl.leave }).click();
   });
 });
