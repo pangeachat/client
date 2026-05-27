@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/languages/l2_support_enum.dart';
 import 'package:fluffychat/pangea/languages/language_display_name_postfix_widget.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
@@ -155,11 +156,14 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
             searchInnerWidgetHeight: 50,
             searchInnerWidget: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-              child: TextField(
-                autofocus: true,
-                controller: _searchController,
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.search),
+              child: Semantics(
+                label: L10n.of(context).searchLanguagesHint,
+                child: TextField(
+                  autofocus: true,
+                  controller: _searchController,
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.search),
+                  ),
                 ),
               ),
             ),
