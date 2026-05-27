@@ -24,7 +24,17 @@ test.describe("Course discovery", () => {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const intl = JSON.parse(fileContent);
 
-    await page.getByRole("button", { name: intl.addCourse, exact: true }).click();
+    // Set L2 to spanish, if not already
+    if (await page.getByRole("button", { name: "EN ES" }).isHidden()) {
+      await page.getByRole("button", { name: intl.learningSettings }).click();
+      await page.getByRole("button", { name: intl.iWantToLearn }).click();
+      var langSearch = page.getByRole("textbox", { name: intl.searchLanguagesHint });
+      await langSearch.click();
+      await langSearch.fill(intl.esDisplayName);
+      await page.getByRole("button", { name: intl.esMXDisplayName }).click();
+      await page.getByRole("button", { name: intl.saveChanges }).click();
+      await expect(page.getByRole("button", { name: "EN ES" })).toBeVisible({ timeout: 60000 });
+    }
 
     // Select a public course 
     await page.getByRole("button", { name: intl.knock, exact: true }).first().click();
