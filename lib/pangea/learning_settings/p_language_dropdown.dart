@@ -157,7 +157,9 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
             searchInnerWidget: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
               child: Semantics(
-                label: L10n.of(context).searchLanguagesHint,
+                label: widget.isL2List
+                    ? L10n.of(context).searchLanguagesHint
+                    : L10n.of(context).alreadySpeak,
                 child: TextField(
                   autofocus: true,
                   controller: _searchController,
