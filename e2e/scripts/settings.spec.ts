@@ -11,8 +11,6 @@ import { expect, test } from "../fixtures";
  * - lib/pangea/subscription/**
  */
 
-// Prerequisites:
-// L1 is english
 test.describe("Settings", () => {
 
   test("should be able to navigate settings", async ({

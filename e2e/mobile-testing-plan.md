@@ -43,13 +43,12 @@ integration_test/
 
 | Flow                    | Status | Notes                   |
 | ----------------------- | :----: | ----------------------- |
-| Login                   |   ⬜   |                         |
-| Chat list navigation    |   ⬜   |                         |
-| Message toolbar         |   ⬜   |                         |
-| Course discovery        |   ⬜   |                         |
+| Login                   |   ✅   |                         |
+| Chat list navigation    |   ✅   |                         |
+| Message toolbar         |   ✅   |                         |
+| Course discovery        |   ✅   |                         |
 | Settings                |   ✅   |                         |
 | Analytics               |   ⬜   |                         |
-| Create DM               |   ⬜   |                         |
 | Logout                  |   ✅   |                         |
 | Permission dialogs      |   ⬜   | Native OS — Patrol-only |
 | Push notifications      |   ⬜   | Native OS — Patrol-only |

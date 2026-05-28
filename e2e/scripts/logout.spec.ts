@@ -3,19 +3,17 @@ import path from "path";
 import { expect, test } from "../fixtures";
 
 /**
- * Settings flow test
+ * Logout flow test
  *
  * Triggers:
  * - lib/pages/settings/**
- * - lib/pangea/learning_settings/**
- * - lib/pangea/subscription/**
+ * - lib/pangea/login/**
+ * - lib/widgets/matrix.dart
  */
 
-// Prerequisites:
-// L1 is english
-test.describe("Settings", () => {
+test.describe("Logout", () => {
 
-  test("should be able to navigate settings", async ({
+  test("should be able to log out of account", async ({
     page,
   }) => {
 
