@@ -10,8 +10,7 @@ on:
       - "e2e/**"
       - ".github/workflows/e2e-tests.yml"
       - ".github/agents/e2e-tester.md"
-      - ".github/instructions/authoring-playwright-and-axe-tests.instructions.md"
-      - ".github/instructions/run-playwright-and-axe-local.instructions.md"
+      - ".github/instructions/playwright-testing.instructions.md"
       - "package.json"
       - "package-lock.json"
 

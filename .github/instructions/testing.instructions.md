@@ -17,7 +17,7 @@ Follows the [cross-repo testing strategy](../../../.github/instructions/testing.
 
 - **Unit tests**: Dart tests in `test/` and `test/pangea/` — model parsing, schema validation, data transforms
 - **Integration tests**: Two kinds, both integration-tier (only use Matrix auth, an internal service):
-  - **Playwright** (`e2e/scripts/`): Automated specs against Flutter web on staging. Login flow and axe-core WCAG 2.1 AA accessibility audits pass. More flow coverage in progress. Runs in CI post-deploy, nightly, and on manual dispatch. ⚠️ **Not yet merged** — infrastructure is in draft [PR #5665](https://github.com/pangeachat/client/pull/5665). See [authoring-playwright-and-axe-tests.instructions.md](authoring-playwright-and-axe-tests.instructions.md) for conventions and [run-playwright-and-axe-local.instructions.md](run-playwright-and-axe-local.instructions.md) for local setup.
+  - **Playwright** (`e2e/scripts/`): Automated specs against Flutter web on staging. Login flow and axe-core WCAG 2.1 AA accessibility audits pass. More flow coverage in progress. Runs in CI post-deploy, nightly, and on manual dispatch. ⚠️ **Not yet merged** — infrastructure is in draft [PR #5665](https://github.com/pangeachat/client/pull/5665). See [playwright-testing.instructions.md](playwright-testing.instructions.md) for design contracts and [`e2e/README.md`](../../e2e/README.md) for local setup.
   - **Flutter** (`integration_test/app_test.dart`): Exists but not run in CI.
 - **E2E tests**: None. No tests currently call third-party paid APIs (LLMs, Google TTS/STT, etc.)
 

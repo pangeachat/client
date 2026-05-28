@@ -13,7 +13,7 @@ The shared staging test account is `staging_automated_tests`. Credentials live i
 - `TEST_MATRIX_USERNAME` — Matrix username (localpart, no `@` or domain)
 - `TEST_MATRIX_PASSWORD` — password
 
-Read these values from the file at runtime. **Never hardcode credentials in skills, scripts, or chat output.** If `client/.env` is missing them, see [run-playwright-and-axe-local.instructions.md](run-playwright-and-axe-local.instructions.md) for the AWS Secrets Manager / mirrored-env fetch.
+Read these values from the file at runtime. **Never hardcode credentials in skills, scripts, or chat output.** If `client/.env` is missing them, see [`e2e/README.md` § Credentials](../../e2e/README.md#credentials) for the AWS Secrets Manager / mirrored-env fetch.
 
 ## Get a Matrix Access Token
 
