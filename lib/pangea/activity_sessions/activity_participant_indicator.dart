@@ -113,7 +113,6 @@ class ActivityParticipantIndicator extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        avatar,
                         Text(
                           name,
                           style: const TextStyle(fontSize: 12.0),
@@ -121,6 +120,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,
                         ),
+                        avatar,
                         Text(
                           userId?.localpart ?? L10n.of(context).openRoleLabel,
                           style: TextStyle(

@@ -32,6 +32,7 @@ class ActivitySessionStartView extends StatelessWidget {
           .rateLimit(const Duration(seconds: 1)),
       builder: (context, snapshot) {
         final activity = controller.activity;
+
         return Scaffold(
           appBar: AppBar(
             leadingWidth: 52.0,
@@ -113,24 +114,18 @@ class ActivitySessionStartView extends StatelessWidget {
                                   Positioned.fill(
                                     top: 300.0,
                                     child: Container(
-                                      // decoration: BoxDecoration(
-                                      //   gradient: LinearGradient(
-                                      //     begin: Alignment.topCenter,
-                                      //     end: Alignment.bottomCenter,
-                                      //     colors: [
-                                      //       Colors.transparent,
-                                      //       theme.colorScheme.surface.withAlpha(
-                                      //         200,
-                                      //       ),
-                                      //       theme.colorScheme.surface,
-                                      //     ],
-                                      //     stops: [
-                                      //       0.0,
-                                      //       0.1,
-                                      //       0.2,
-                                      //     ], // fade completes very near the top
-                                      //   ),
-                                      // ),
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: [
+                                            theme.colorScheme.surface.withAlpha(
+                                              0,
+                                            ),
+                                            theme.colorScheme.surface,
+                                          ],
+                                        ),
+                                      ),
                                     ),
                                   ),
                                   Center(
