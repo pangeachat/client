@@ -29,6 +29,11 @@ class ActivitySessionButtons extends StatelessWidget {
         ? (sessionController as SelectRoleSessionController).selectedRoleGoals
         : null;
 
+    final completedGoalIds = sessionController is SelectRoleSessionController
+        ? (sessionController as SelectRoleSessionController)
+              .selectedRoleCompletedGoalIds
+        : const <String>{};
+
     return AnimatedSize(
       duration: FluffyThemes.animationDuration,
       child: Container(
@@ -62,8 +67,10 @@ class ActivitySessionButtons extends StatelessWidget {
                         spacing: 12.0,
                         children: goals
                             .map(
-                              (goal) =>
-                                  GoalStatusWidget(goal: goal, complete: false),
+                              (goal) => GoalStatusWidget(
+                                goal: goal,
+                                complete: completedGoalIds.contains(goal.id),
+                              ),
                             )
                             .toList(),
                       ),

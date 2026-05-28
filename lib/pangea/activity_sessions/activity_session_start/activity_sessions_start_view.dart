@@ -91,30 +91,46 @@ class ActivitySessionStartView extends StatelessWidget {
                                             imageUrl: activity.imageURL,
                                             borderRadius: BorderRadius.zero,
                                             width: constraints.maxWidth,
+                                            replacement: Container(
+                                              width: constraints.maxWidth,
+                                              height: 350.0,
+                                              decoration: BoxDecoration(
+                                                gradient: LinearGradient(
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                  colors: [
+                                                    theme
+                                                        .colorScheme
+                                                        .primaryContainer,
+                                                    theme.colorScheme.surface,
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                     ),
                                   ),
                                   Positioned.fill(
                                     top: 300.0,
                                     child: Container(
-                                      decoration: BoxDecoration(
-                                        gradient: LinearGradient(
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter,
-                                          colors: [
-                                            Colors.transparent,
-                                            theme.colorScheme.surface.withAlpha(
-                                              200,
-                                            ),
-                                            theme.colorScheme.surface,
-                                          ],
-                                          stops: [
-                                            0.0,
-                                            0.1,
-                                            0.2,
-                                          ], // fade completes very near the top
-                                        ),
-                                      ),
+                                      // decoration: BoxDecoration(
+                                      //   gradient: LinearGradient(
+                                      //     begin: Alignment.topCenter,
+                                      //     end: Alignment.bottomCenter,
+                                      //     colors: [
+                                      //       Colors.transparent,
+                                      //       theme.colorScheme.surface.withAlpha(
+                                      //         200,
+                                      //       ),
+                                      //       theme.colorScheme.surface,
+                                      //     ],
+                                      //     stops: [
+                                      //       0.0,
+                                      //       0.1,
+                                      //       0.2,
+                                      //     ], // fade completes very near the top
+                                      //   ),
+                                      // ),
                                     ),
                                   ),
                                   Center(

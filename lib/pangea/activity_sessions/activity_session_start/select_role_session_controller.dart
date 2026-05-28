@@ -6,8 +6,10 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_state_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_sessions_start_view.dart';
@@ -74,6 +76,28 @@ class SelectRoleSessionController extends State<SelectRoleSession>
   List<ActivityRoleGoal>? get selectedRoleGoals {
     if (_selectedRoleId == null) return null;
     return widget.activity?.roles[_selectedRoleId]?.allGoals;
+  }
+
+  /// Returns the set of goal IDs the logged-in user has previously completed
+  /// for the currently selected role, across all local activity rooms for this
+  /// activity.
+  Set<String> get selectedRoleCompletedGoalIds {
+    final roleId = _selectedRoleId;
+    final activityId = widget.activity?.activityId;
+    if (roleId == null || activityId == null) return {};
+
+    final role = widget.activity?.roles[roleId];
+    if (role == null) return {};
+
+    final completed = <String>{};
+    for (final room in Matrix.of(context).client.rooms) {
+      if (room.activityId != activityId) continue;
+      if (room.ownRoleState?.id != roleId) continue;
+      for (final goal in role.allGoals) {
+        if (room.isGoalCompleted(goal.id)) completed.add(goal.id);
+      }
+    }
+    return completed;
   }
 
   @override
