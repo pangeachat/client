@@ -1,5 +1,3 @@
-Check the relevant `.github/instructions/` doc before and after coding. If it doesn't exist, create it with the user first. Follow [instructions-authoring.instructions.md](../../.github/instructions/instructions-authoring.instructions.md) for doc standards.
-
 # client - Flutter/Dart Language Learning Chat App
 
 ## Tech Stack
@@ -35,4 +33,3 @@ Check the relevant `.github/instructions/` doc before and after coding. If it do
 - Feature modules follow pattern: `models/`, `repo/` (API calls), `widgets/`, `utils/`, `constants/`
 - API repo files pair with request/response models (e.g., `igc_repo.dart` + `igc_request_model.dart` + `igc_response_model.dart`)
 - Controllers extend `ChangeNotifier` or use `BaseController<T>` (stream-based)
-

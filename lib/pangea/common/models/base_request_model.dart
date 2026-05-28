@@ -1,3 +1,4 @@
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';
 import 'package:fluffychat/pangea/user/user_constants.dart';
@@ -39,6 +40,8 @@ mixin BaseRequestModel {
           MatrixState.pangeaController.userController.profile.userSettings;
       result[UserConstants.cefrLevel] ??= settings.cefrLevel.string;
       result[UserConstants.userGender] ??= settings.gender.string;
+      // Mock paid third-party calls on Playwright runs
+      result[ModelKey.mock] = Environment.isMock;
     } catch (_) {
       // MatrixState not initialized - leave existing values or omit
     }

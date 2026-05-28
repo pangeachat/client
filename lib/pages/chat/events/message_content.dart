@@ -329,46 +329,50 @@ class MessageContent extends StatelessWidget {
                 event.numberEmotes <= 3;
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: HtmlMessage(
-                html: html,
-                textColor: textColor,
-                room: event.room,
-                fontSize:
-                    AppSettings.fontSizeFactor.value *
-                    AppConfig.messageFontSize *
-                    (bigEmotes ? 5 : 1),
-                limitHeight: !selected,
-                linkStyle: TextStyle(
-                  color: linkColor,
+              child: Semantics(
+                label: event.text,
+                child: HtmlMessage(
+                  html: html,
+                  textColor: textColor,
+                  room: event.room,
                   fontSize:
                       AppSettings.fontSizeFactor.value *
-                      AppConfig.messageFontSize,
-                  decoration: TextDecoration.underline,
-                  decorationColor: linkColor,
+                      AppConfig.messageFontSize *
+                      (bigEmotes ? 5 : 1),
+                  limitHeight: !selected,
+                  linkStyle: TextStyle(
+                    color: linkColor,
+                    fontSize:
+                        AppSettings.fontSizeFactor.value *
+                        AppConfig.messageFontSize,
+                    decoration: TextDecoration.underline,
+                    decorationColor: linkColor,
+                  ),
+                  onOpen: (url) => UrlLauncher(context, url.url).launchUrl(),
+                  eventId: event.eventId,
+                  checkboxCheckedEvents: event.aggregatedEvents(
+                    timeline,
+                    EventCheckboxRoomExtension.relationshipType,
+                  ),
+                  // #Pangea
+                  event: event,
+                  overlayController: overlayController,
+                  controller: controller,
+                  pangeaMessageEvent: pangeaMessageEvent,
+                  nextEvent: nextEvent,
+                  prevEvent: prevEvent,
+                  onClick:
+                      event.isActivityMessage ||
+                          readingAssistanceMode ==
+                              ReadingAssistanceMode.practiceMode
+                      ? null
+                      : onClick,
+                  isTransitionAnimation: isTransitionAnimation,
+                  isPracticeMode:
+                      readingAssistanceMode ==
+                      ReadingAssistanceMode.practiceMode,
+                  // Pangea#
                 ),
-                onOpen: (url) => UrlLauncher(context, url.url).launchUrl(),
-                eventId: event.eventId,
-                checkboxCheckedEvents: event.aggregatedEvents(
-                  timeline,
-                  EventCheckboxRoomExtension.relationshipType,
-                ),
-                // #Pangea
-                event: event,
-                overlayController: overlayController,
-                controller: controller,
-                pangeaMessageEvent: pangeaMessageEvent,
-                nextEvent: nextEvent,
-                prevEvent: prevEvent,
-                onClick:
-                    event.isActivityMessage ||
-                        readingAssistanceMode ==
-                            ReadingAssistanceMode.practiceMode
-                    ? null
-                    : onClick,
-                isTransitionAnimation: isTransitionAnimation,
-                isPracticeMode:
-                    readingAssistanceMode == ReadingAssistanceMode.practiceMode,
-                // Pangea#
               ),
             );
         }

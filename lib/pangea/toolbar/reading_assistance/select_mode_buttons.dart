@@ -518,75 +518,82 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                 alignment: Alignment.center,
                 child: Tooltip(
                   message: mode.tooltip(context),
-                  child: ListenableBuilder(
-                    listenable: Listenable.merge([
-                      controller.selectedMode,
-                      controller.modeStateNotifier(mode),
-                    ]),
-                    builder: (context, _) {
-                      final selectedMode = controller.selectedMode.value;
-                      final target = MatrixState.pAnyState.layerLinkAndKey(
-                        mode.buttonTarget,
-                      );
-                      return Opacity(
-                        opacity: enabled ? 1.0 : 0.75,
-                        child: CompositedTransformTarget(
-                          link: target.link,
-                          child: PressableButton(
-                            key: target.key,
-                            borderRadius: BorderRadius.circular(20),
-                            depressed: mode == selectedMode || !enabled,
-                            color: theme.colorScheme.primaryContainer,
-                            onPressed: enabled
-                                ? () => updateMode(mode)
-                                : modeDisabled,
-                            playSound: enabled && mode != SelectMode.audio,
-                            colorFactor: theme.brightness == Brightness.light
-                                ? 0.55
-                                : 0.3,
-                            builder: (context, depressed, shadowColor) =>
-                                ShimmerBackground(
-                                  enabled:
-                                      !InstructionsEnum
-                                          .shimmerTranslation
-                                          .isToggledOff &&
-                                      mode == SelectMode.translate &&
-                                      enabled &&
-                                      widget.controller.enableTranslateShimmer,
-                                  borderRadius: BorderRadius.circular(100),
-                                  maxOpacity: 0.6,
-                                  child: AnimatedContainer(
-                                    duration: FluffyThemes.animationDuration,
-                                    height: buttonSize,
-                                    width: buttonSize,
-                                    decoration: BoxDecoration(
-                                      color: depressed
-                                          ? shadowColor
-                                          : theme.colorScheme.primaryContainer,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: ValueListenableBuilder(
-                                      valueListenable: _isPlayingNotifier,
-                                      builder: (context, playing, _) =>
-                                          _SelectModeButtonIcon(
-                                            mode: mode,
-                                            loading:
-                                                controller.isLoading &&
-                                                mode == selectedMode,
-                                            playing:
-                                                mode == SelectMode.audio &&
-                                                playing,
-                                            color: theme
-                                                .colorScheme
-                                                .onPrimaryContainer,
-                                          ),
+                  child: Semantics(
+                    enabled: enabled,
+                    child: ListenableBuilder(
+                      listenable: Listenable.merge([
+                        controller.selectedMode,
+                        controller.modeStateNotifier(mode),
+                      ]),
+                      builder: (context, _) {
+                        final selectedMode = controller.selectedMode.value;
+                        final target = MatrixState.pAnyState.layerLinkAndKey(
+                          mode.buttonTarget,
+                        );
+                        return Opacity(
+                          opacity: enabled ? 1.0 : 0.75,
+                          child: CompositedTransformTarget(
+                            link: target.link,
+                            child: PressableButton(
+                              key: target.key,
+                              borderRadius: BorderRadius.circular(20),
+                              depressed: mode == selectedMode || !enabled,
+                              color: theme.colorScheme.primaryContainer,
+                              onPressed: enabled
+                                  ? () => updateMode(mode)
+                                  : modeDisabled,
+                              playSound: enabled && mode != SelectMode.audio,
+                              colorFactor: theme.brightness == Brightness.light
+                                  ? 0.55
+                                  : 0.3,
+                              builder: (context, depressed, shadowColor) =>
+                                  ShimmerBackground(
+                                    enabled:
+                                        !InstructionsEnum
+                                            .shimmerTranslation
+                                            .isToggledOff &&
+                                        mode == SelectMode.translate &&
+                                        enabled &&
+                                        widget
+                                            .controller
+                                            .enableTranslateShimmer,
+                                    borderRadius: BorderRadius.circular(100),
+                                    maxOpacity: 0.6,
+                                    child: AnimatedContainer(
+                                      duration: FluffyThemes.animationDuration,
+                                      height: buttonSize,
+                                      width: buttonSize,
+                                      decoration: BoxDecoration(
+                                        color: depressed
+                                            ? shadowColor
+                                            : theme
+                                                  .colorScheme
+                                                  .primaryContainer,
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: ValueListenableBuilder(
+                                        valueListenable: _isPlayingNotifier,
+                                        builder: (context, playing, _) =>
+                                            _SelectModeButtonIcon(
+                                              mode: mode,
+                                              loading:
+                                                  controller.isLoading &&
+                                                  mode == selectedMode,
+                                              playing:
+                                                  mode == SelectMode.audio &&
+                                                  playing,
+                                              color: theme
+                                                  .colorScheme
+                                                  .onPrimaryContainer,
+                                            ),
+                                      ),
                                     ),
                                   ),
-                                ),
+                            ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
                 ),
               );
