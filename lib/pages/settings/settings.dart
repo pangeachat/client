@@ -42,7 +42,15 @@ class SettingsController extends State<Settings> {
       initialText:
           profile?.displayName ?? Matrix.of(context).client.userID!.localpart,
       // #Pangea
-      maxLength: 50,
+      validator: (text) {
+        if (text.isEmpty) {
+          return L10n.of(context).enterAName;
+        }
+        if (text.length > 50) {
+          return L10n.of(context).shorterName;
+        }
+        return null;
+      },
       // Pangea#
     );
     if (input == null) return;
