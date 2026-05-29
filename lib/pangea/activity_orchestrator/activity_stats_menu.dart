@@ -208,8 +208,14 @@ class ActivityStatsMenu extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () => _finishActivityForMe(context),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: theme.colorScheme.primaryContainer,
-                          foregroundColor: theme.colorScheme.onPrimaryContainer,
+                          backgroundColor: room.hasCompletedAllGoals
+                              ? theme.brightness == Brightness.light
+                                    ? AppConfig.gold
+                                    : AppConfig.goldLight
+                              : theme.colorScheme.primaryContainer,
+                          foregroundColor: room.hasCompletedAllGoals
+                              ? theme.colorScheme.surface
+                              : theme.colorScheme.onPrimaryContainer,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -227,8 +233,14 @@ class ActivityStatsMenu extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () => _finishActivityForAll(context),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: theme.colorScheme.errorContainer,
-                          foregroundColor: theme.colorScheme.onErrorContainer,
+                          backgroundColor: room.hasCompletedAllGoals
+                              ? theme.brightness == Brightness.light
+                                    ? AppConfig.gold
+                                    : AppConfig.goldLight
+                              : theme.colorScheme.primaryContainer,
+                          foregroundColor: room.hasCompletedAllGoals
+                              ? theme.colorScheme.surface
+                              : theme.colorScheme.onPrimaryContainer,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
