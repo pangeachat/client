@@ -119,7 +119,9 @@ class ActivityStatsMenu extends StatelessWidget {
                                     .goalMenuStarTargetId,
                               ),
                             ),
-                            if (!_activityComplete && room.hasCompletedAllGoals)
+                            if (!_activityComplete &&
+                                room.hasCompletedAllGoals &&
+                                !showDropdown)
                               InkWell(
                                 onTap: toggleVisibility,
                                 child: Container(
