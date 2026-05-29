@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:45.669543",
+    "@@last_modified": "2026-05-29 15:03:07.655434",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10857,6 +10857,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Bonvolu limigi la longon de la nomo al 50 signoj aŭ malpli.",
+    "enterAName": "Bonvolu enigi nomon.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:44:44.024829",
+    "@@last_modified": "2026-05-29 15:01:50.548119",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10563,6 +10563,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Vă rugăm să limitați lungimea numelui la 50 de caractere sau mai puțin.",
+    "enterAName": "Vă rugăm să introduceți un nume.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

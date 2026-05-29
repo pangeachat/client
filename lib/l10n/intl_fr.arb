@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-05-22 12:45:52.789109",
+    "@@last_modified": "2026-05-29 15:03:14.723707",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10135,6 +10135,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Veuillez limiter la longueur du nom à 50 caractères ou moins.",
+    "enterAName": "Veuillez entrer un nom.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

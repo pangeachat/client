@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-05-22 12:44:54.057188",
+    "@@last_modified": "2026-05-29 15:02:06.825002",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9738,6 +9738,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Mesedez, mugatu izenaren luzera 50 karaktere edo gutxiagora.",
+    "enterAName": "Mesedez, sartu izen bat.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

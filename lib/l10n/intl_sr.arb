@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:49.656979",
+    "@@last_modified": "2026-05-29 15:03:11.854638",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10861,6 +10861,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Молимо вас да ограничите дужину имена на 50 карактера или мање.",
+    "enterAName": "Молимо вас да унесете име.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

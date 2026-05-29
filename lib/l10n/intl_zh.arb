@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-05-22 12:45:34.488586",
+    "@@last_modified": "2026-05-29 15:02:56.291419",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9738,6 +9738,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "请将名称长度限制为50个字符或更少。",
+    "enterAName": "请输入一个名称。",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

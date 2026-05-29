@@ -2258,7 +2258,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-05-22 12:45:21.080963",
+    "@@last_modified": "2026-05-29 15:02:42.953216",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10757,6 +10757,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Mangyaring limitahan ang haba ng pangalan sa 50 karakter o mas kaunti.",
+    "enterAName": "Mangyaring maglagay ng pangalan.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

@@ -3378,7 +3378,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-05-22 12:44:46.879725",
+    "@@last_modified": "2026-05-29 15:01:55.872881",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10457,6 +10457,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Le do thoil, teorainn fad an ainm do 50 carachtar nó níos lú.",
+    "enterAName": "Le do thoil, cuir isteach ainm.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

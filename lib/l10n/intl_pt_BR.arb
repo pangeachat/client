@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:44:52.828456",
+    "@@last_modified": "2026-05-29 15:02:02.213060",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9738,6 +9738,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Por favor, limite o comprimento do nome a 50 caracteres ou menos.",
+    "enterAName": "Por favor, insira um nome.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

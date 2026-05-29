@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:37.168035",
+    "@@last_modified": "2026-05-29 15:02:59.257932",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9850,6 +9850,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "لطفاً طول نام را به ۵۰ کاراکتر یا کمتر محدود کنید.",
+    "enterAName": "لطفاً یک نام وارد کنید.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

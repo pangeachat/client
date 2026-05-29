@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-05-22 12:45:23.656449",
+    "@@last_modified": "2026-05-29 15:02:45.638457",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10078,6 +10078,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "يرجى تحديد طول الاسم إلى 50 حرفًا أو أقل.",
+    "enterAName": "يرجى إدخال اسم.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }
