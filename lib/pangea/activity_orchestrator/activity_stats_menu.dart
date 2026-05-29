@@ -233,14 +233,12 @@ class ActivityStatsMenu extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () => _finishActivityForAll(context),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: room.hasCompletedAllGoals
-                              ? theme.brightness == Brightness.light
-                                    ? AppConfig.gold
-                                    : AppConfig.goldLight
-                              : theme.colorScheme.primaryContainer,
-                          foregroundColor: room.hasCompletedAllGoals
-                              ? theme.colorScheme.surface
-                              : theme.colorScheme.onPrimaryContainer,
+                          side: BorderSide(
+                            color: theme.colorScheme.primaryContainer,
+                            width: 2,
+                          ),
+                          foregroundColor: theme.colorScheme.primary,
+                          backgroundColor: theme.colorScheme.surface,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
