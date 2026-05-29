@@ -154,6 +154,9 @@ class PangeaRepresentation {
 
     final pastedStrings = choreo?.pastedStrings ?? <String>{};
 
+    // Open matches are IGC errors that were detected but not resolved by the user (not accepted, not automatically corrected).
+    final openMatches = choreo?.openMatches ?? [];
+
     return tokensToSave
         .where(
           (token) => !pastedStrings.any(
@@ -161,7 +164,20 @@ class PangeaRepresentation {
                 pasted.toLowerCase().contains(token.text.content.toLowerCase()),
           ),
         )
+        .where(
+          (token) =>
+              !openMatches.any((match) => _tokenOverlapsMatch(token, match)),
+        )
         .toList();
+  }
+
+  /// Returns true if token's character span overlaps with match's span.
+  bool _tokenOverlapsMatch(PangeaToken token, PangeaMatch match) {
+    final tokenStart = token.text.offset;
+    final tokenEnd = tokenStart + token.text.length;
+    final matchStart = match.match.offset;
+    final matchEnd = matchStart + match.match.length;
+    return tokenStart < matchEnd && tokenEnd > matchStart;
   }
 
   ChoreoRecordStepModel? _getStepForToken(

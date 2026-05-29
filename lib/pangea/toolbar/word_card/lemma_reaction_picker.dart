@@ -10,10 +10,14 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/events/reaction_listener.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/lemma_emoji_setter_mixin.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
+import 'package:fluffychat/pangea/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/events/constants/message_constants.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -23,6 +27,7 @@ class LemmaReactionPicker extends StatefulWidget {
   final ConstructIdentifier constructId;
   final String langCode;
   final String? form;
+  final PangeaTokenText? tokenText;
 
   final bool enableSelection;
   final bool enableReactions;
@@ -35,6 +40,7 @@ class LemmaReactionPicker extends StatefulWidget {
     this.enableSelection = true,
     this.enableReactions = true,
     this.form,
+    this.tokenText,
   });
 
   @override
@@ -137,6 +143,20 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
   }
 
   Future<void> _setLemmaEmoji(String emoji, String targetId) async {
+    final tokenText = widget.tokenText;
+    bool skipAnalytics = false;
+    if (tokenText != null && widget.event != null) {
+      final choreoRaw = widget.event!.content
+          .tryGetMap(MessageConstants.choreoRecord)
+          ?.cast<String, dynamic>();
+      if (choreoRaw != null) {
+        final openMatches = ChoreoRecordModel.openMatchesFromJson(choreoRaw);
+        skipAnalytics = openMatches.any(
+          (match) => _tokenTextOverlapsMatch(tokenText, match),
+        );
+      }
+    }
+
     await setLemmaEmoji(
       widget.constructId,
       widget.langCode,
@@ -145,9 +165,18 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
       widget.event?.roomId,
       widget.event?.eventId,
       widget.form,
+      skipAnalytics: skipAnalytics,
     );
 
     _showLemmaEmojiSnackbar();
+  }
+
+  bool _tokenTextOverlapsMatch(PangeaTokenText tokenText, PangeaMatch match) {
+    final tokenStart = tokenText.offset;
+    final tokenEnd = tokenStart + tokenText.length;
+    final matchStart = match.match.offset;
+    final matchEnd = matchStart + match.match.length;
+    return tokenStart < matchEnd && tokenEnd > matchStart;
   }
 
   void _showLemmaEmojiSnackbar() {

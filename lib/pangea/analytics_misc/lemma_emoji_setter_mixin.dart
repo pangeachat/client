@@ -16,8 +16,9 @@ mixin LemmaEmojiSetter {
     String? targetId,
     String? roomId,
     String? eventId,
-    String? form,
-  ) async {
+    String? form, {
+    bool skipAnalytics = false,
+  }) async {
     final userL2 =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
     if (langCode.split("-").first != userL2) {
@@ -25,7 +26,7 @@ mixin LemmaEmojiSetter {
       return;
     }
 
-    if (constructId.userSetEmoji == null) {
+    if (constructId.userSetEmoji == null && !skipAnalytics) {
       _getEmojiAnalytics(
         constructId,
         language: langCode.split("-").first,

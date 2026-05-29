@@ -189,6 +189,7 @@ class WordZoomWidget extends StatelessWidget {
                             enableSelection: enableEmojiSelection,
                             enableReactions: enableEmojiReactions,
                             form: token.content,
+                            tokenText: token,
                           ),
                           LemmaMeaningDisplay(
                             langCode: langCode,

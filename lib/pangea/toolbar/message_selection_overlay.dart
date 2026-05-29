@@ -11,6 +11,7 @@ import 'package:matrix/matrix.dart' hide Result;
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
+import 'package:fluffychat/pangea/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
@@ -236,6 +237,13 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   }
 
   Future<void> _onSelectNewToken(PangeaToken token) async {
+    final List<PangeaMatch> openMatches =
+        pangeaMessageEvent.messageDisplayRepresentation?.choreo?.openMatches ??
+        [];
+    final bool skipAnalytics = openMatches.any(
+      (match) => _tokenOverlapsMatch(token, match),
+    );
+
     await collectToken(
       token: token,
       tokenCacheKey: event.eventId,
@@ -243,8 +251,17 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       langCode: pangeaMessageEvent.messageDisplayLangCode,
       eventId: event.eventId,
       roomId: event.roomId,
+      skipAnalytics: skipAnalytics,
     );
     if (mounted) setState(() {});
+  }
+
+  bool _tokenOverlapsMatch(PangeaToken token, PangeaMatch match) {
+    final tokenStart = token.text.offset;
+    final tokenEnd = tokenStart + token.text.length;
+    final matchStart = match.match.offset;
+    final matchEnd = matchStart + match.match.length;
+    return tokenStart < matchEnd && tokenEnd > matchStart;
   }
 
   PangeaMessageEvent get pangeaMessageEvent => PangeaMessageEvent(
