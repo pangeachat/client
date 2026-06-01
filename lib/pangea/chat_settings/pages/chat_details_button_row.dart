@@ -8,7 +8,6 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/room_details_buttons.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/delete_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -120,14 +119,14 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
         enabled: room.ownPowerLevel >= 50,
         showInMainView: false,
       ),
-      ButtonDetails(
-        title: l10n.chatCapacity,
-        icon: const Icon(Icons.reduce_capacity, size: 30.0),
-        onPressed: widget.controller.setRoomCapacity,
-        visible: !room.showActivityChatUI && !room.isDirectChat,
-        enabled: room.canSendDefaultStates,
-        showInMainView: false,
-      ),
+      // ButtonDetails(
+      //   title: l10n.chatCapacity,
+      //   icon: const Icon(Icons.reduce_capacity, size: 30.0),
+      //   onPressed: widget.controller.setRoomCapacity,
+      //   visible: !room.showActivityChatUI && !room.isDirectChat,
+      //   enabled: room.canSendDefaultStates,
+      //   showInMainView: false,
+      // ),
       ButtonDetails(
         title: l10n.leave,
         icon: const Icon(Icons.logout_outlined, size: 30.0),
