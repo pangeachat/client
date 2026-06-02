@@ -4839,5 +4839,8 @@
     "enterAName": "Please enter a name.",
     "writingAssistanceNoSub": "Writing assistance",
     "viewError": "View error",
-    "suggestMobileDesc": "Get the Pangea Chat app to receive notifications!"
+    "suggestMobileDesc": "Get the Pangea Chat app to receive notifications!",
+    "cefrLevelMatch": "This course matches your language level",
+    "cefrLevelBelow": "This course is below your language level.",
+    "cefrLevelAbove": "This course is above your language level."
 }
