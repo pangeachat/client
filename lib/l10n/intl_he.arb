@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 10:57:28.785306",
+    "@@last_modified": "2026-06-02 11:15:54.171757",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10837,6 +10837,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "קבל את אפליקציית Pangea Chat כדי לקבל התראות!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

@@ -3246,7 +3246,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-06-02 10:58:01.164935",
+    "@@last_modified": "2026-06-02 11:16:19.977897",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10644,6 +10644,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Gaukite Pangea Chat programėlę, kad gautumėte pranešimus!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

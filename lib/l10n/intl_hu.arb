@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-06-02 10:57:21.500742",
+    "@@last_modified": "2026-06-02 11:15:47.309781",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9885,6 +9885,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Töltsd le a Pangea Chat alkalmazást, hogy értesítéseket kapj!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

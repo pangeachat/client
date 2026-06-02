@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 10:58:02.247699",
+    "@@last_modified": "2026-06-02 11:16:21.097376",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6841,6 +6841,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Tải ứng dụng Pangea Chat để nhận thông báo!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

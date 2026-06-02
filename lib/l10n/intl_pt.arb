@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 10:57:32.835944",
+    "@@last_modified": "2026-06-02 11:15:58.324967",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10876,6 +10876,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Baixe o aplicativo Pangea Chat para receber notificações!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

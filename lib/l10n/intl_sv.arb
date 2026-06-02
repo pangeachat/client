@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 10:58:12.193822",
+    "@@last_modified": "2026-06-02 11:16:29.295519",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10345,6 +10345,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Få Pangea Chat-appen för att ta emot meddelanden!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

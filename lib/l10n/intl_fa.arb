@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 10:58:10.003518",
+    "@@last_modified": "2026-06-02 11:16:26.832710",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9870,6 +9870,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "برنامه چت پانگئا را دریافت کنید تا اعلان‌ها را دریافت کنید!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

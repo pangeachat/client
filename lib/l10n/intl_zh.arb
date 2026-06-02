@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-06-02 10:58:07.026745",
+    "@@last_modified": "2026-06-02 11:16:24.972839",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9758,6 +9758,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "获取 Pangea Chat 应用以接收通知！",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

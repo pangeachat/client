@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 10:57:22.594277",
+    "@@last_modified": "2026-06-02 11:15:48.435448",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9855,6 +9855,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Dapatkan aplikasi Pangea Chat untuk menerima notifikasi!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

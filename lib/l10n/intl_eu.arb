@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-02 10:57:31.925529",
+    "@@last_modified": "2026-06-02 11:15:57.241764",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9758,6 +9758,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Lortu Pangea Chat aplikazioa jakinarazpenak jasotzeko!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }
