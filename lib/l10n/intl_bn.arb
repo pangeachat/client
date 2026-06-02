@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 10:58:08.884048",
+    "@@last_modified": "2026-06-02 11:16:25.813946",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10473,6 +10473,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "নোটিফিকেশন পেতে Pangea Chat অ্যাপটি ডাউনলোড করুন!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

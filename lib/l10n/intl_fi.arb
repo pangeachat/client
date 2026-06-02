@@ -3914,7 +3914,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-06-02 10:57:18.089098",
+    "@@last_modified": "2026-06-02 11:15:45.068583",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9807,6 +9807,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Hanki Pangea Chat -sovellus saadaksesi ilmoituksia!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

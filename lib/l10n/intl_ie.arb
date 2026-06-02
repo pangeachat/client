@@ -3378,7 +3378,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-06-02 10:57:26.896242",
+    "@@last_modified": "2026-06-02 11:15:51.817068",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10477,6 +10477,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Obtenha o aplicativo Pangea Chat para receber notificações!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

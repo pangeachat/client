@@ -2258,7 +2258,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-06-02 10:57:53.510683",
+    "@@last_modified": "2026-06-02 11:16:14.453051",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10777,6 +10777,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Kunin ang Pangea Chat app upang makatanggap ng mga abiso!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

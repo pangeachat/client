@@ -1963,7 +1963,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-06-02 10:57:36.624577",
+    "@@last_modified": "2026-06-02 11:16:01.221394",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10874,6 +10874,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Prenesite aplikacijo Pangea Chat, da prejmete obvestila!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

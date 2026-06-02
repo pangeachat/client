@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 10:57:14.431677",
+    "@@last_modified": "2026-06-02 11:15:40.632746",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9975,6 +9975,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "알림을 받으려면 Pangea Chat 앱을 다운로드하세요!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

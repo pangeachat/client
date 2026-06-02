@@ -2777,7 +2777,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-06-02 10:57:49.834708",
+    "@@last_modified": "2026-06-02 11:16:11.064921",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10834,6 +10834,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Baixe o aplicativo Pangea Chat para receber notificações!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

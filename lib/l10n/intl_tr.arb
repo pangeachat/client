@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-02 10:57:58.763709",
+    "@@last_modified": "2026-06-02 11:16:17.751226",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10089,6 +10089,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Bildirim almak için Pangea Chat uygulamasını edinin!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

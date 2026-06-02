@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 10:58:04.590455",
+    "@@last_modified": "2026-06-02 11:16:23.348821",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9758,6 +9758,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Download de Pangea Chat-app om meldingen te ontvangen!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

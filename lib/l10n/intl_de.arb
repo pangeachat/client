@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-06-02 10:57:35.372519",
+    "@@last_modified": "2026-06-02 11:16:00.005975",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9737,6 +9737,11 @@
         "placeholders": {}
     },
     "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Lade die Pangea Chat-App herunter, um Benachrichtigungen zu erhalten!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }
