@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:10.957204",
+    "@@last_modified": "2026-06-02 11:16:08.915087",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9889,6 +9889,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Si us plau, limita la longitud del nom a 50 caràcters o menys.",
+    "enterAName": "Si us plau, introdueix un nom.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Assistència d'escriptura",
+    "viewError": "Veure error",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Obteniu l'aplicació Pangea Chat per rebre notificacions!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

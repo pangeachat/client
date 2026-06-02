@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:29.177454",
+    "@@last_modified": "2026-06-02 11:16:21.097376",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6821,6 +6821,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Vui lòng giới hạn độ dài tên tối đa là 50 ký tự.",
+    "enterAName": "Vui lòng nhập một tên.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Hỗ trợ viết",
+    "viewError": "Xem lỗi",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Tải ứng dụng Pangea Chat để nhận thông báo!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

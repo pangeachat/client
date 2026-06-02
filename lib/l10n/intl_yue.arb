@@ -1407,7 +1407,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-05-22 12:45:00.511700",
+    "@@last_modified": "2026-06-02 11:16:02.467157",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10869,6 +10869,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "請將名稱長度限制為50個字符或更少。",
+    "enterAName": "請輸入一個名稱。",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "寫作協助",
+    "viewError": "查看錯誤",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "下載 Pangea Chat 應用程式以接收通知！",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

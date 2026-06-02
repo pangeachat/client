@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:07.777813",
+    "@@last_modified": "2026-06-02 11:16:06.387534",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9798,6 +9798,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Vennligst begrens navnelengden til 50 tegn eller færre.",
+    "enterAName": "Vennligst skriv inn et navn.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Skrivehjelp",
+    "viewError": "Se feil",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Få Pangea Chat-appen for å motta varsler!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

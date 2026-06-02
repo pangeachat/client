@@ -2258,7 +2258,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-05-22 12:45:21.080963",
+    "@@last_modified": "2026-06-02 11:16:14.453051",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10757,6 +10757,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Mangyaring limitahan ang haba ng pangalan sa 50 karakter o mas kaunti.",
+    "enterAName": "Mangyaring maglagay ng pangalan.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Tulong sa pagsusulat",
+    "viewError": "Tingnan ang error",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Kunin ang Pangea Chat app upang makatanggap ng mga abiso!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

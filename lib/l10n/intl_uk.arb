@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-05-22 12:45:04.501712",
+    "@@last_modified": "2026-06-02 11:16:04.510266",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9738,6 +9738,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Будь ласка, обмежте довжину імені до 50 символів або менше.",
+    "enterAName": "Будь ласка, введіть ім'я.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Допомога в написанні",
+    "viewError": "Переглянути помилку",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Отримайте додаток Pangea Chat, щоб отримувати сповіщення!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

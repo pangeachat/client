@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-05-22 12:45:25.191297",
+    "@@last_modified": "2026-06-02 11:16:17.751226",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10069,6 +10069,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Lütfen isim uzunluğunu 50 karakter veya daha az ile sınırlayın.",
+    "enterAName": "Lütfen bir isim girin.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Yazma yardımı",
+    "viewError": "Hata görüntüle",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Bildirim almak için Pangea Chat uygulamasını edinin!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

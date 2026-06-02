@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-05-22 12:45:42.084329",
+    "@@last_modified": "2026-06-02 11:16:31.705970",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10606,6 +10606,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "名前の長さを50文字以内に制限してください。",
+    "enterAName": "名前を入力してください。",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "ライティングアシスタンス",
+    "viewError": "エラーを表示",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Pangea Chatアプリをダウンロードして通知を受け取りましょう！",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

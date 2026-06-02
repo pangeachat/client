@@ -1963,7 +1963,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-05-22 12:44:59.208209",
+    "@@last_modified": "2026-06-02 11:16:01.221394",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10854,6 +10854,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Prosimo, omejite dolžino imena na 50 znakov ali manj.",
+    "enterAName": "Prosimo, vnesite ime.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Pomoč pri pisanju",
+    "viewError": "Poglej napako",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Prenesite aplikacijo Pangea Chat, da prejmete obvestila!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

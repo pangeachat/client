@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-05-22 12:45:47.006881",
+    "@@last_modified": "2026-06-02 11:16:34.520935",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10752,6 +10752,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Пожалуйста, ограничьте длину имени до 50 символов или меньше.",
+    "enterAName": "Пожалуйста, введите имя.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Помощь в написании",
+    "viewError": "Просмотреть ошибку",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Получите приложение Pangea Chat, чтобы получать уведомления!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

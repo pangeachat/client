@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-05-22 12:45:19.764406",
+    "@@last_modified": "2026-06-02 11:16:13.012796",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9742,6 +9742,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Iltimos, ism uzunligini 50 belgidan kamroq qilib cheklang.",
+    "enterAName": "Iltimos, ism kiriting.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Yozish yordam",
+    "viewError": "Xatoni ko'rish",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Bildirishnomalarni olish uchun Pangea Chat ilovasini oling!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:44:55.594341",
+    "@@last_modified": "2026-06-02 11:15:58.324967",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10842,7 +10842,7 @@
     },
     "completedActivitiesTitle": "Concluído ({num})",
     "suggestion": "Sugestão",
-    "completeActivityButton": "Eu terminei!",
+    "completeActivityButton": "Estou pronto!",
     "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
@@ -10856,6 +10856,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Por favor, limite o comprimento do nome a 50 caracteres ou menos.",
+    "enterAName": "Por favor, insira um nome.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Assistência de escrita",
+    "viewError": "Ver erro",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Baixe o aplicativo Pangea Chat para receber notificações!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

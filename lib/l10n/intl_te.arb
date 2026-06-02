@@ -1468,7 +1468,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-05-22 12:45:26.522139",
+    "@@last_modified": "2026-06-02 11:16:18.715916",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10859,6 +10859,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "దయచేసి పేరు పొడవును 50 అక్షరాల లేదా తక్కువగా పరిమితం చేయండి.",
+    "enterAName": "దయచేసి ఒక పేరు నమోదు చేయండి.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "రాయడం సహాయం",
+    "viewError": "లోపాన్ని చూడండి",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "నోటిఫికేషన్లు పొందడానికి పాంజియా చాట్ యాప్‌ను పొందండి!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

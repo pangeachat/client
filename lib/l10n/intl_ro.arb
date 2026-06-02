@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:44:44.024829",
+    "@@last_modified": "2026-06-02 11:15:49.426807",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10563,6 +10563,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Vă rugăm să limitați lungimea numelui la 50 de caractere sau mai puțin.",
+    "enterAName": "Vă rugăm să introduceți un nume.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Asistență pentru scriere",
+    "viewError": "Vizualizați eroarea",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Obține aplicația Pangea Chat pentru a primi notificări!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

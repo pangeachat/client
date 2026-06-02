@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-05-22 12:44:54.057188",
+    "@@last_modified": "2026-06-02 11:15:57.241764",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9738,6 +9738,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Mesedez, mugatu izenaren luzera 50 karaktere edo gutxiagora.",
+    "enterAName": "Mesedez, sartu izen bat.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Idazteko laguntza",
+    "viewError": "Ikusi errorea",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Lortu Pangea Chat aplikazioa jakinarazpenak jasotzeko!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:31.016392",
+    "@@last_modified": "2026-06-02 11:16:22.022191",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9854,6 +9854,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "தயவுசெய்து பெயரின் நீளத்தை 50 எழுத்துகள் அல்லது அதற்கு குறைவாகக் கட்டுப்படுத்தவும்.",
+    "enterAName": "தயவுசெய்து ஒரு பெயரை உள்ளிடவும்.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "எழுத்து உதவி",
+    "viewError": "பிழையை காண்க",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "அறிக்கைகளை பெற Pangea Chat செயலியைப் பெறுங்கள்!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

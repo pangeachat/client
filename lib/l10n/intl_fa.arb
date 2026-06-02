@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:37.168035",
+    "@@last_modified": "2026-06-02 11:16:26.832710",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9850,6 +9850,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "لطفاً طول نام را به ۵۰ کاراکتر یا کمتر محدود کنید.",
+    "enterAName": "لطفاً یک نام وارد کنید.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "کمک نوشتن",
+    "viewError": "مشاهده خطا",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "برنامه چت پانگئا را دریافت کنید تا اعلان‌ها را دریافت کنید!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

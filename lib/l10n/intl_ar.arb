@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-05-22 12:45:23.656449",
+    "@@last_modified": "2026-06-02 11:16:16.676510",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10078,6 +10078,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "يرجى تحديد طول الاسم إلى 50 حرفًا أو أقل.",
+    "enterAName": "يرجى إدخال اسم.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "مساعدة في الكتابة",
+    "viewError": "عرض الخطأ",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "احصل على تطبيق Pangea Chat لتلقي الإشعارات!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }

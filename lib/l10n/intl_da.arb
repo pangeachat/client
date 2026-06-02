@@ -1478,7 +1478,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-05-22 12:44:39.112156",
+    "@@last_modified": "2026-06-02 11:15:46.186781",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10832,6 +10832,31 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Venligst begræns navnets længde til 50 tegn eller færre.",
+    "enterAName": "Venligst indtast et navn.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Skrivehjælp",
+    "viewError": "Se fejl",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Få Pangea Chat-appen for at modtage meddelelser!",
+    "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
     }
