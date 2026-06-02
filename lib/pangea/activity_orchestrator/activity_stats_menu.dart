@@ -121,7 +121,8 @@ class ActivityStatsMenu extends StatelessWidget {
                             ),
                             if (!_activityComplete &&
                                 room.hasCompletedAllGoals &&
-                                !showDropdown)
+                                !showDropdown &&
+                                !room.hasCompletedRole)
                               InkWell(
                                 onTap: toggleVisibility,
                                 child: Container(
