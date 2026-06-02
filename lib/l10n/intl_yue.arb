@@ -1407,7 +1407,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-05-22 12:45:00.511700",
+    "@@last_modified": "2026-05-29 15:02:18.411531",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10869,6 +10869,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "請將名稱長度限制為50個字符或更少。",
+    "enterAName": "請輸入一個名稱。",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

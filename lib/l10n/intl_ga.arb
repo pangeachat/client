@@ -3949,7 +3949,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-05-22 12:45:51.508550",
+    "@@last_modified": "2026-05-29 15:03:13.695538",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9749,6 +9749,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Le do thoil, teorainn fad an ainm do 50 carachtar nó níos lú.",
+    "enterAName": "Le do thoil, cuir isteach ainm.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

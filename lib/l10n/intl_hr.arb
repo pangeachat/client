@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-05-22 12:44:48.718661",
+    "@@last_modified": "2026-05-29 15:01:56.960791",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10222,6 +10222,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Molimo vas da ograničite duljinu imena na 50 znakova ili manje.",
+    "enterAName": "Molimo unesite ime.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:44:42.695105",
+    "@@last_modified": "2026-05-29 15:01:48.909766",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9835,6 +9835,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Silakan batasi panjang nama hingga 50 karakter atau kurang.",
+    "enterAName": "Silakan masukkan nama.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

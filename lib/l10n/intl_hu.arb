@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-05-22 12:44:41.565097",
+    "@@last_modified": "2026-05-29 15:01:47.681971",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9865,6 +9865,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Kérjük, korlátozza a név hosszát 50 karakterre vagy kevesebbre.",
+    "enterAName": "Kérjük, adjon meg egy nevet.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

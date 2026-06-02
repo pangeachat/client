@@ -3246,7 +3246,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-05-22 12:45:27.751499",
+    "@@last_modified": "2026-05-29 15:02:49.940521",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10624,6 +10624,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Prašome apriboti vardo ilgį iki 50 simbolių arba mažiau.",
+    "enterAName": "Prašome įvesti vardą.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

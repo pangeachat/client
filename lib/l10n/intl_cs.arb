@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-05-22 12:45:06.025558",
+    "@@last_modified": "2026-05-29 15:02:31.610312",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10292,6 +10292,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Omezte prosím délku jména na 50 znaků nebo méně.",
+    "enterAName": "Prosím zadejte jméno.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }
