@@ -188,14 +188,16 @@ class VocabAnalyticsListView extends StatelessWidget {
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
           child: Container(
-            height: 60,
+            height: controller.selectMode && controller.isSearching ? 120 : 60,
             alignment: Alignment.center,
             child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 300),
               transitionBuilder: (child, animation) =>
                   FadeTransition(opacity: animation, child: child),
-              child: controller.isSearching
-                  ? Row(
+              child: Column(
+                children: [
+                  if (controller.isSearching)
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       key: const ValueKey('search'),
                       children: [
@@ -219,9 +221,9 @@ class VocabAnalyticsListView extends StatelessWidget {
                           onPressed: controller.toggleSearching,
                         ),
                       ],
-                    )
-                  : controller.selectMode
-                  ? Row(
+                    ),
+                  if (controller.selectMode)
+                    Row(
                       mainAxisAlignment: .spaceBetween,
                       key: const ValueKey('selection'),
                       children: [
@@ -244,13 +246,16 @@ class VocabAnalyticsListView extends StatelessWidget {
                           color: Theme.of(context).colorScheme.error,
                         ),
                       ],
-                    )
-                  : Row(
+                    ),
+                  if (!controller.selectMode && !controller.isSearching)
+                    Row(
                       spacing: FluffyThemes.isColumnMode(context) ? 16.0 : 4.0,
                       mainAxisAlignment: MainAxisAlignment.center,
                       key: const ValueKey('filters'),
                       children: filters,
                     ),
+                ],
+              ),
             ),
           ),
         ),
