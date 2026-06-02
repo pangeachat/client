@@ -325,9 +325,7 @@ class Choreographer extends ChangeNotifier {
     }
 
     // Snapshot any IGC matches that were detected but not resolved by the user
-    // (neither accepted nor automatically corrected). These will be used to
-    // exclude the covered tokens from analytics — we should not record an
-    // incorrect word as a correct construct use.
+    // (neither accepted nor automatically corrected).
     final openMatchesList = igcController.openMatches
         .map((m) => m.updatedMatch)
         .toList();
