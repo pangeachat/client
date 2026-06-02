@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-05-22 12:45:47.006881",
+    "@@last_modified": "2026-05-29 15:03:09.081293",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10752,6 +10752,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Пожалуйста, ограничьте длину имени до 50 символов или меньше.",
+    "enterAName": "Пожалуйста, введите имя.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

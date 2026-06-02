@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-05-22 12:44:57.209468",
+    "@@last_modified": "2026-05-29 15:02:10.421306",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9735,6 +9735,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Palun piirake nime pikkus 50 tähemärgiga või vähem.",
+    "enterAName": "Palun sisestage nimi.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

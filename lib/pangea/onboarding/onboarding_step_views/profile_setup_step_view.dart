@@ -216,7 +216,7 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
           ValueListenableBuilder(
             valueListenable: _displayNameController,
             builder: (context, text, _) =>
-                TextField(controller: _displayNameController),
+                TextField(controller: _displayNameController, maxLength: 50),
           ),
         ],
       ),

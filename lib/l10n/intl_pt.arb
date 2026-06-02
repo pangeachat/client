@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:44:55.594341",
+    "@@last_modified": "2026-05-29 15:02:08.671820",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10856,6 +10856,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Por favor, limite o comprimento do nome a 50 caracteres ou menos.",
+    "enterAName": "Por favor, insira um nome.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

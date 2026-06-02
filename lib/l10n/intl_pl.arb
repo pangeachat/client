@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-05-22 12:45:38.276111",
+    "@@last_modified": "2026-05-29 15:03:00.692047",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9847,6 +9847,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Proszę ograniczyć długość nazwy do 50 znaków lub mniej.",
+    "enterAName": "Proszę wpisać nazwę.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

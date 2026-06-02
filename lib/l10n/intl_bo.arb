@@ -3194,7 +3194,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-05-22 12:45:33.278401",
+    "@@last_modified": "2026-05-29 15:02:55.058052",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9410,6 +9410,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Tolong batasi panjang nama hingga 50 karakter atau lebih sedikit.",
+    "enterAName": "Tolong masukkan nama.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

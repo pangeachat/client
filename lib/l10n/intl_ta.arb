@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:31.016392",
+    "@@last_modified": "2026-05-29 15:02:53.026705",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9854,6 +9854,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "தயவுசெய்து பெயரின் நீளத்தை 50 எழுத்துகள் அல்லது அதற்கு குறைவாகக் கட்டுப்படுத்தவும்.",
+    "enterAName": "தயவுசெய்து ஒரு பெயரை உள்ளிடவும்.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

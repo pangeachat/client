@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-05-22 12:44:45.665103",
+    "@@last_modified": "2026-05-29 15:01:51.915697",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10854,6 +10854,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Prosím, obmedzte dĺžku mena na 50 znakov alebo menej.",
+    "enterAName": "Prosím, zadajte meno.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

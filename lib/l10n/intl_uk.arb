@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-05-22 12:45:04.501712",
+    "@@last_modified": "2026-05-29 15:02:30.272526",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9738,6 +9738,16 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Будь ласка, обмежте довжину імені до 50 символів або менше.",
+    "enterAName": "Будь ласка, введіть ім'я.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
         "type": "String",
         "placeholders": {}
     }

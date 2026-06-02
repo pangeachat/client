@@ -579,43 +579,43 @@ class ChatListController extends State<ChatList>
     _startDMWithCachedUserId(client);
 
     // listen for room join events and leave room if over capacity
-    _roomCapacitySubscription?.cancel();
-    _roomCapacitySubscription = client.onSync.stream
-        .where((u) => u.rooms?.join != null)
-        .listen((update) async {
-          final roomUpdates = update.rooms!.join!.entries;
-          for (final entry in roomUpdates) {
-            final roomID = entry.key;
-            final roomUpdate = entry.value;
-            if (roomUpdate.timeline?.events == null) continue;
-            final events = roomUpdate.timeline!.events;
-            final memberEvents = events!.where(
-              (event) =>
-                  event.type == EventTypes.RoomMember &&
-                  event.senderId == client.userID,
-            );
-            if (memberEvents.isEmpty) continue;
-            final room = client.getRoomById(roomID);
-            if (room == null ||
-                room.isSpace ||
-                room.isHiddenRoom ||
-                room.capacity == null ||
-                (room.summary.mJoinedMemberCount ?? 1) <= room.capacity!) {
-              continue;
-            }
+    // _roomCapacitySubscription?.cancel();
+    // _roomCapacitySubscription = client.onSync.stream
+    //     .where((u) => u.rooms?.join != null)
+    //     .listen((update) async {
+    //       final roomUpdates = update.rooms!.join!.entries;
+    //       for (final entry in roomUpdates) {
+    //         final roomID = entry.key;
+    //         final roomUpdate = entry.value;
+    //         if (roomUpdate.timeline?.events == null) continue;
+    //         final events = roomUpdate.timeline!.events;
+    //         final memberEvents = events!.where(
+    //           (event) =>
+    //               event.type == EventTypes.RoomMember &&
+    //               event.senderId == client.userID,
+    //         );
+    //         if (memberEvents.isEmpty) continue;
+    //         final room = client.getRoomById(roomID);
+    //         if (room == null ||
+    //             room.isSpace ||
+    //             room.isHiddenRoom ||
+    //             room.capacity == null ||
+    //             (room.summary.mJoinedMemberCount ?? 1) <= room.capacity!) {
+    //           continue;
+    //         }
 
-            await showFutureLoadingDialog(
-              context: context,
-              future: () async {
-                await room.leave();
-                if (GoRouterState.of(context).uri.toString().contains(roomID)) {
-                  NavigationUtil.goToSpaceRoute(null, [], context);
-                }
-                throw L10n.of(context).roomFull;
-              },
-            );
-          }
-        });
+    //         await showFutureLoadingDialog(
+    //           context: context,
+    //           future: () async {
+    //             await room.leave();
+    //             if (GoRouterState.of(context).uri.toString().contains(roomID)) {
+    //               NavigationUtil.goToSpaceRoute(null, [], context);
+    //             }
+    //             throw L10n.of(context).roomFull;
+    //           },
+    //         );
+    //       }
+    //     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _joinInvitedSpaces();

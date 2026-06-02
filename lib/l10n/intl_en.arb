@@ -4822,6 +4822,8 @@
     "courseGoals": "Course Goals",
     "missingLanguageException": "Please choose valid base and target languages",
     "selectChats": "Select Chats",
+    "pangeaChatLogo": "Pangea Chat logo",
+    "selectChats": "Select Chats",
     "plainTextFile": "Text",
     "completedActivitiesTitle": "Finished ({num})",
     "@completedActivitiesTitle": {
@@ -4833,6 +4835,9 @@
         }
     },
     "suggestion": "Suggestion",
+    "completeActivityButton": "I'm done!",
+    "shorterName": "Please limit name length to 50 characters or fewer.",
+    "enterAName": "Please enter a name.",
     "completeActivityButton": "I'm done!",
     "writingAssistanceNoSub": "Writing assistance",
     "viewError": "View error"
