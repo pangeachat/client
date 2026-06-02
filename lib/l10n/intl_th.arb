@@ -3378,7 +3378,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-05-22 12:45:15.731641",
+    "@@last_modified": "2026-06-02 10:57:48.783072",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10443,7 +10443,7 @@
     },
     "completedActivitiesTitle": "เสร็จสิ้น ({num})",
     "suggestion": "ข้อเสนอแนะ",
-    "completeActivityButton": "ฉันทำเสร็จแล้ว!",
+    "completeActivityButton": "ฉันเสร็จแล้ว!",
     "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
@@ -10457,6 +10457,26 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "กรุณาจำกัดความยาวชื่อไม่เกิน 50 ตัวอักษร",
+    "enterAName": "กรุณาใส่ชื่อ",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "ความช่วยเหลือในการเขียน",
+    "viewError": "ดูข้อผิดพลาด",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

@@ -3934,7 +3934,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-05-22 12:45:09.203658",
+    "@@last_modified": "2026-06-02 10:57:45.754411",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9752,6 +9752,26 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Калі ласка, абмяжуйце даўжыню імя да 50 сімвалаў або менш.",
+    "enterAName": "Калі ласка, увядзіце імя.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Дапамога ў напісанні",
+    "viewError": "Паглядзець памылку",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

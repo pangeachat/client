@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:03.174268",
+    "@@last_modified": "2026-06-02 10:57:38.894722",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9829,6 +9829,26 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Si prega di limitare la lunghezza del nome a 50 caratteri o meno.",
+    "enterAName": "Si prega di inserire un nome.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Assistenza alla scrittura",
+    "viewError": "Visualizza errore",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

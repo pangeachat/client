@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-05-22 12:44:57.209468",
+    "@@last_modified": "2026-06-02 10:57:33.859404",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9721,7 +9721,7 @@
     },
     "completedActivitiesTitle": "Lõpetatud ({num})",
     "suggestion": "Soovitus",
-    "completeActivityButton": "Olen valmis!",
+    "completeActivityButton": "Olen lõpetanud!",
     "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
@@ -9735,6 +9735,26 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Palun piirake nime pikkus 50 tähemärgiga või vähem.",
+    "enterAName": "Palun sisestage nimi.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Kirjutamise abi",
+    "viewError": "Vaata viga",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

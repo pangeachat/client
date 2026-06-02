@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:35.666618",
+    "@@last_modified": "2026-06-02 10:58:08.884048",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10453,6 +10453,26 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "দয়া করে নামের দৈর্ঘ্য 50 অক্ষর বা তার কমে সীমাবদ্ধ করুন।",
+    "enterAName": "দয়া করে একটি নাম লিখুন।",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "লেখার সহায়তা",
+    "viewError": "ত্রুটি দেখুন",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

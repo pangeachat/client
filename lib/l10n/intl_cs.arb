@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-05-22 12:45:06.025558",
+    "@@last_modified": "2026-06-02 10:57:42.665048",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10292,6 +10292,26 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Omezte prosím délku jména na 50 znaků nebo méně.",
+    "enterAName": "Prosím zadejte jméno.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Psaní asistence",
+    "viewError": "Zobrazit chybu",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

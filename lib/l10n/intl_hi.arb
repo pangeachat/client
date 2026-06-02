@@ -3378,7 +3378,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-05-22 12:45:43.419268",
+    "@@last_modified": "2026-06-02 10:58:15.562976",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10443,7 +10443,7 @@
     },
     "completedActivitiesTitle": "समाप्त ({num})",
     "suggestion": "सुझाव",
-    "completeActivityButton": "मैंने कर लिया!",
+    "completeActivityButton": "मैं तैयार हूँ!",
     "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
@@ -10457,6 +10457,26 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "कृपया नाम की लंबाई 50 अक्षरों या उससे कम तक सीमित करें।",
+    "enterAName": "कृपया एक नाम दर्ज करें।",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "लेखन सहायता",
+    "viewError": "त्रुटि देखें",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-05-22 12:44:35.834521",
+    "@@last_modified": "2026-06-02 10:57:16.759255",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9738,6 +9738,26 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Por favor, limita a lonxitude do nome a 50 caracteres ou menos.",
+    "enterAName": "Por favor, introduce un nome.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Asistencia na escritura",
+    "viewError": "Ver erro",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

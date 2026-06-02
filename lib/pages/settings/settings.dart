@@ -41,6 +41,17 @@ class SettingsController extends State<Settings> {
       cancelLabel: L10n.of(context).cancel,
       initialText:
           profile?.displayName ?? Matrix.of(context).client.userID!.localpart,
+      // #Pangea
+      validator: (text) {
+        if (text.isEmpty) {
+          return L10n.of(context).enterAName;
+        }
+        if (text.length > 50) {
+          return L10n.of(context).shorterName;
+        }
+        return null;
+      },
+      // Pangea#
     );
     if (input == null) return;
     final matrix = Matrix.of(context);

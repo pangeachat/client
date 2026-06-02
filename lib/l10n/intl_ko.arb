@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:44:32.048691",
+    "@@last_modified": "2026-06-02 10:57:14.431677",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9955,6 +9955,26 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "이름 길이를 50자 이하로 제한해 주세요.",
+    "enterAName": "이름을 입력해 주세요.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "글쓰기 지원",
+    "viewError": "오류 보기",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

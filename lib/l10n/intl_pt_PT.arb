@@ -2777,7 +2777,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-05-22 12:45:17.000047",
+    "@@last_modified": "2026-06-02 10:57:49.834708",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10814,6 +10814,26 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Por favor, limite o comprimento do nome a 50 caracteres ou menos.",
+    "enterAName": "Por favor, insira um nome.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Assistência de escrita",
+    "viewError": "Ver erro",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

@@ -3914,7 +3914,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-05-22 12:44:37.265423",
+    "@@last_modified": "2026-06-02 10:57:18.089098",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9787,6 +9787,26 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Rajoita nimen pituus 50 merkkiin tai vähemmän.",
+    "enterAName": "Ole hyvä ja syötä nimi.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Kirjoitusapu",
+    "viewError": "Näytä virhe",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }
