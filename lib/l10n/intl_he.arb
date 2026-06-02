@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-29 15:01:58.375589",
+    "@@last_modified": "2026-06-02 10:57:28.785306",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10827,6 +10827,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "סיוע בכתיבה",
+    "viewError": "צפה בשגיאה",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-29 15:02:53.026705",
+    "@@last_modified": "2026-06-02 10:58:03.359316",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9864,6 +9864,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "எழுத்து உதவி",
+    "viewError": "பிழையை காண்க",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

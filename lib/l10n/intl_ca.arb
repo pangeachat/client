@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-29 15:02:36.831241",
+    "@@last_modified": "2026-06-02 10:57:46.616122",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9899,6 +9899,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Assistència d'escriptura",
+    "viewError": "Veure error",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

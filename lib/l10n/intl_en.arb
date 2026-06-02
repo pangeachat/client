@@ -4837,5 +4837,8 @@
     "suggestion": "Suggestion",
     "completeActivityButton": "I'm done!",
     "shorterName": "Please limit name length to 50 characters or fewer.",
-    "enterAName": "Please enter a name."
+    "enterAName": "Please enter a name.",
+    "completeActivityButton": "I'm done!",
+    "writingAssistanceNoSub": "Writing assistance",
+    "viewError": "View error"
 }

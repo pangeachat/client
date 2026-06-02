@@ -1506,7 +1506,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-05-29 15:01:59.559037",
+    "@@last_modified": "2026-06-02 10:57:29.719593",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10834,7 +10834,7 @@
     },
     "completedActivitiesTitle": "Finito ({num})",
     "suggestion": "Sugestão",
-    "completeActivityButton": "Terminei!",
+    "completeActivityButton": "Mi es finita!",
     "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
@@ -10858,6 +10858,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Asistenta de scriere",
+    "viewError": "Vede erro",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

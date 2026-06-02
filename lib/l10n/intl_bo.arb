@@ -3194,7 +3194,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-05-29 15:02:55.058052",
+    "@@last_modified": "2026-06-02 10:58:05.724968",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9396,7 +9396,7 @@
     },
     "completedActivitiesTitle": "Finito ({num})",
     "suggestion": "Sugestão",
-    "completeActivityButton": "Terminei!",
+    "completeActivityButton": "Mi finita!",
     "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
@@ -9420,6 +9420,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Assistenza di scrittura",
+    "viewError": "Vedi errore",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

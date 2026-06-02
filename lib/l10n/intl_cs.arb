@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-05-29 15:02:31.610312",
+    "@@last_modified": "2026-06-02 10:57:42.665048",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10302,6 +10302,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Psaní asistence",
+    "viewError": "Zobrazit chybu",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

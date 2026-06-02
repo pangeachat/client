@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-05-29 15:02:46.763489",
+    "@@last_modified": "2026-06-02 10:57:58.763709",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10079,6 +10079,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Yazma yardımı",
+    "viewError": "Hata görüntüle",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

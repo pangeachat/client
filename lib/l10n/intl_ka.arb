@@ -2099,7 +2099,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-05-29 15:03:10.523287",
+    "@@last_modified": "2026-06-02 10:58:19.553855",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10792,7 +10792,7 @@
     },
     "completedActivitiesTitle": "დასრულებული ({num})",
     "suggestion": "შეთავაზება",
-    "completeActivityButton": "მივიღე!",
+    "completeActivityButton": "მე დავასრულე!",
     "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
@@ -10816,6 +10816,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "წერის დახმარება",
+    "viewError": "შედეგების ნახვა",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-05-29 15:02:06.825002",
+    "@@last_modified": "2026-06-02 10:57:31.925529",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9748,6 +9748,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Idazteko laguntza",
+    "viewError": "Ikusi errorea",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

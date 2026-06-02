@@ -2258,7 +2258,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-05-29 15:02:42.953216",
+    "@@last_modified": "2026-06-02 10:57:53.510683",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10767,6 +10767,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Tulong sa pagsusulat",
+    "viewError": "Tingnan ang error",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }
