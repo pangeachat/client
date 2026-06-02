@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-29 15:02:08.671820",
+    "@@last_modified": "2026-06-02 10:57:32.835944",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10842,7 +10842,7 @@
     },
     "completedActivitiesTitle": "Concluído ({num})",
     "suggestion": "Sugestão",
-    "completeActivityButton": "Eu terminei!",
+    "completeActivityButton": "Estou pronto!",
     "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
@@ -10866,6 +10866,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Assistência de escrita",
+    "viewError": "Ver erro",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

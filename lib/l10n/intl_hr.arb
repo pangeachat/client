@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-05-29 15:01:56.960791",
+    "@@last_modified": "2026-06-02 10:57:27.824891",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10232,6 +10232,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Pomoć pri pisanju",
+    "viewError": "Pogledaj grešku",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

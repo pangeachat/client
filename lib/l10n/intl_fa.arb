@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-29 15:02:59.257932",
+    "@@last_modified": "2026-06-02 10:58:10.003518",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9860,6 +9860,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "کمک نوشتن",
+    "viewError": "مشاهده خطا",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-05-29 15:03:05.180225",
+    "@@last_modified": "2026-06-02 10:58:14.549741",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10616,6 +10616,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "ライティングアシスタンス",
+    "viewError": "エラーを表示",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

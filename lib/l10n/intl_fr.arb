@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-05-29 15:03:14.723707",
+    "@@last_modified": "2026-06-02 10:58:23.109763",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10121,7 +10121,7 @@
     },
     "completedActivitiesTitle": "Terminé ({num})",
     "suggestion": "Suggestion",
-    "completeActivityButton": "J'ai fini !",
+    "completeActivityButton": "J'ai terminé !",
     "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
@@ -10145,6 +10145,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Assistance à l'écriture",
+    "viewError": "Voir l'erreur",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

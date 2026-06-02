@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-29 15:02:51.064799",
+    "@@last_modified": "2026-06-02 10:58:02.247699",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6831,6 +6831,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Hỗ trợ viết",
+    "viewError": "Xem lỗi",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

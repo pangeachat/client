@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-29 15:02:54.038487",
+    "@@last_modified": "2026-06-02 10:58:04.590455",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9748,6 +9748,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Schrijfhulp",
+    "viewError": "Bekijk fout",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

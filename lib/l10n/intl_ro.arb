@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-29 15:01:50.548119",
+    "@@last_modified": "2026-06-02 10:57:24.015039",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10573,6 +10573,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Asistență pentru scriere",
+    "viewError": "Vizualizați eroarea",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

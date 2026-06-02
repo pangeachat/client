@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-29 15:02:40.006983",
+    "@@last_modified": "2026-06-02 10:57:51.188006",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9878,6 +9878,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "寫作協助",
+    "viewError": "查看錯誤",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

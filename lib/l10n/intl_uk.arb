@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-05-29 15:02:30.272526",
+    "@@last_modified": "2026-06-02 10:57:40.146027",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9748,6 +9748,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Допомога в написанні",
+    "viewError": "Переглянути помилку",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

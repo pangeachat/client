@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-29 15:02:24.569684",
+    "@@last_modified": "2026-06-02 10:57:38.894722",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9839,6 +9839,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Assistenza alla scrittura",
+    "viewError": "Visualizza errore",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

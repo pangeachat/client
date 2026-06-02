@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-05-29 15:01:47.681971",
+    "@@last_modified": "2026-06-02 10:57:21.500742",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9875,6 +9875,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Írási segítség",
+    "viewError": "Hiba megtekintése",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

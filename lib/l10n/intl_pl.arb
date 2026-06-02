@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-05-29 15:03:00.692047",
+    "@@last_modified": "2026-06-02 10:58:10.978237",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9857,6 +9857,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Pomoc w pisaniu",
+    "viewError": "Zobacz błąd",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

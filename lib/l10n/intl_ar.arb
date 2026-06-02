@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-05-29 15:02:45.638457",
+    "@@last_modified": "2026-06-02 10:57:55.793430",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10088,6 +10088,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "مساعدة في الكتابة",
+    "viewError": "عرض الخطأ",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }

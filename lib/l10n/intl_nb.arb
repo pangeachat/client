@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-29 15:02:33.452936",
+    "@@last_modified": "2026-06-02 10:57:43.917774",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9808,6 +9808,16 @@
         "placeholders": {}
     },
     "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Skrivehjelp",
+    "viewError": "Se feil",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
         "type": "String",
         "placeholders": {}
     }
