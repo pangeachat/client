@@ -119,7 +119,9 @@ class ActivityStatsMenu extends StatelessWidget {
                                     .goalMenuStarTargetId,
                               ),
                             ),
-                            if (!_activityComplete && room.hasCompletedAllGoals)
+                            if (!_activityComplete &&
+                                room.hasCompletedAllGoals &&
+                                !showDropdown)
                               InkWell(
                                 onTap: toggleVisibility,
                                 child: Container(
@@ -137,9 +139,11 @@ class ActivityStatsMenu extends StatelessWidget {
                                   ),
                                   child: Text(
                                     L10n.of(context).completeActivityButton,
-                                    style: TextStyle(
-                                      color: theme.colorScheme.surface,
-                                    ),
+                                    style: theme.brightness == Brightness.light
+                                        ? null
+                                        : TextStyle(
+                                            color: theme.colorScheme.surface,
+                                          ),
                                   ),
                                 ),
                               ),
@@ -206,8 +210,16 @@ class ActivityStatsMenu extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () => _finishActivityForMe(context),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: theme.colorScheme.primaryContainer,
-                          foregroundColor: theme.colorScheme.onPrimaryContainer,
+                          backgroundColor: room.hasCompletedAllGoals
+                              ? theme.brightness == Brightness.light
+                                    ? AppConfig.gold
+                                    : AppConfig.goldLight
+                              : theme.colorScheme.primaryContainer,
+                          foregroundColor: theme.brightness == Brightness.light
+                              ? null
+                              : room.hasCompletedAllGoals
+                              ? theme.colorScheme.surface
+                              : theme.colorScheme.onPrimaryContainer,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -225,8 +237,14 @@ class ActivityStatsMenu extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () => _finishActivityForAll(context),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: theme.colorScheme.errorContainer,
-                          foregroundColor: theme.colorScheme.onErrorContainer,
+                          side: BorderSide(
+                            color: theme.brightness == Brightness.light
+                                ? theme.colorScheme.primary.withAlpha(120)
+                                : theme.colorScheme.primaryContainer,
+                            width: 2,
+                          ),
+                          foregroundColor: theme.colorScheme.primary,
+                          backgroundColor: theme.colorScheme.surface,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
