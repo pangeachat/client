@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:26.832710",
+    "@@last_modified": "2026-06-02 15:25:36.964639",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -3764,7 +3764,7 @@
     "pingParticipants": "ارسال پیام به شرکت‌کنندگان دوره",
     "playWithBot": "بازی با پنگئا بات",
     "inviteFriends": "دعوت دوستان",
-    "waitNotDone": "صبر کن، من تمام نکردم!",
+    "waitNotDone": "صبر کن، من هنوز تمام نکرده‌ام!",
     "waitingForOthersToFinish": "در انتظار پایان دیگران...",
     "generatingSummary": "در حال تحلیل چت و تولید نتایج",
     "findCourse": "پیدا کردن دوره",

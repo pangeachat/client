@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:22.022191",
+    "@@last_modified": "2026-06-02 15:25:32.540263",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -3765,7 +3765,7 @@
     "pingParticipants": "பாடத்திற்கான பங்கேற்பாளர்களை பிங் செய்க",
     "playWithBot": "பாங்கியா பாட்டுடன் விளையாடு",
     "inviteFriends": "நண்பர்களை அழை",
-    "waitNotDone": "காத்திருக்கவும், நான் முடிக்கவில்லை!",
+    "waitNotDone": "காத்திருங்கள், நான் முடிக்கவில்லை!",
     "waitingForOthersToFinish": "மற்றவர்களும் முடிக்க காத்திருக்கிறது...",
     "generatingSummary": "செயல்பாட்டை பகுப்பாய்வு செய்து முடிவுகளை உருவாக்குகிறது",
     "findCourse": "பாடத்தைக் கண்டுபிடி",

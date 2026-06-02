@@ -3324,7 +3324,7 @@
     "pingParticipants": "Pinge le participantes del cors",
     "playWithBot": "Joca con Pangea Bot",
     "inviteFriends": "Invitar amics",
-    "waitNotDone": "Spet, me ne ha finí!",
+    "waitNotDone": "Acht, ich bin noch nicht fertig!",
     "waitingForOthersToFinish": "Spetant que los otros terminen...",
     "generatingSummary": "Analizando le chat e generant resultâts",
     "findCourse": "Trovar un cors",
@@ -3378,7 +3378,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-06-02 11:15:51.817068",
+    "@@last_modified": "2026-06-02 15:25:07.780923",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}

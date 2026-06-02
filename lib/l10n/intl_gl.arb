@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-06-02 11:15:43.213969",
+    "@@last_modified": "2026-06-02 15:25:02.050166",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -3890,7 +3890,7 @@
     "pingParticipants": "Pingar aos participantes do curso",
     "playWithBot": "Xogar con Pangea Bot",
     "inviteFriends": "Invitar amigos",
-    "waitNotDone": "Espera, aínda non rematei!",
+    "waitNotDone": "Espera, non rematei!",
     "waitingForOthersToFinish": "Agardando que o resto remate...",
     "generatingSummary": "Analizando o chat e xerando resultados",
     "findCourse": "Atopa un curso",

@@ -2710,7 +2710,7 @@
     "waitingToFillRole": "Aguardando preencher {num} funções...",
     "pingParticipants": "Avisar participantes do curso",
     "playWithBot": "Jogar com o Pangea Bot",
-    "waitNotDone": "Espera, ainda não terminei!",
+    "waitNotDone": "Espere, eu não terminei!",
     "waitingForOthersToFinish": "Aguardando os restantes terminarem...",
     "generatingSummary": "Analisando o chat e gerando resultados",
     "findCourse": "Encontrar um curso",
@@ -2777,7 +2777,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-06-02 11:16:11.064921",
+    "@@last_modified": "2026-06-02 15:25:23.756395",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}

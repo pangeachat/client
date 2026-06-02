@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:36.774093",
+    "@@last_modified": "2026-06-02 15:25:44.102580",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -2924,7 +2924,7 @@
     "pingParticipants": "Обавести учеснике курса",
     "playWithBot": "Играјте са Пангеијевим ботом",
     "inviteFriends": "Позовите пријатеље",
-    "waitNotDone": "Чекај, нисам завршио!",
+    "waitNotDone": "Čekaj, još nisam gotov!",
     "waitingForOthersToFinish": "Чекамо да остали заврше...",
     "generatingSummary": "Анализирање разговора и генерисање резултата",
     "findCourse": "Пронађи курс",

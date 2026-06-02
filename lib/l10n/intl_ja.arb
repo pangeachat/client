@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-02 11:16:31.705970",
+    "@@last_modified": "2026-06-02 15:25:40.121809",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -3176,7 +3176,7 @@
     "pingParticipants": "コース参加者に通知",
     "playWithBot": "Pangea Botと遊ぶ",
     "inviteFriends": "友達を招待",
-    "waitNotDone": "待って、まだ終わっていません！",
+    "waitNotDone": "待って、私はまだ終わっていません！",
     "waitingForOthersToFinish": "他の人が終わるのを待っています...",
     "generatingSummary": "チャットを分析して結果を生成しています",
     "findCourse": "コースを見つける",

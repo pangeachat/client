@@ -3192,7 +3192,7 @@
     "pingParticipants": "Pranešti kurso dalyviams",
     "playWithBot": "Žaisti su Pangea botu",
     "inviteFriends": "Pakvieskite draugus",
-    "waitNotDone": "Laukite, aš dar nesu baigęs!",
+    "waitNotDone": "Palauk, aš dar nesu baigęs!",
     "waitingForOthersToFinish": "Laukiama kitų pabaigos...",
     "generatingSummary": "Analizuojama pokalbis ir generuojami rezultatai",
     "findCourse": "Rasti kursą",
@@ -3246,7 +3246,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-06-02 11:16:19.977897",
+    "@@last_modified": "2026-06-02 15:25:29.985628",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}

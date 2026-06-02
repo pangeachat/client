@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-02 11:16:34.520935",
+    "@@last_modified": "2026-06-02 15:25:42.706832",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -4535,7 +4535,7 @@
     "pingParticipants": "Пинг участников курса",
     "playWithBot": "Играть с ботом Pangea",
     "inviteFriends": "Пригласить друзей",
-    "waitNotDone": "Подожди, я еще не закончил(а)!",
+    "waitNotDone": "Подождите, я еще не закончил!",
     "waitingForOthersToFinish": "Ждём, пока остальные закончат...",
     "generatingSummary": "Анализ чата и генерация результатов",
     "findCourse": "Найти курс",

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:33.390702",
+    "@@last_modified": "2026-06-02 15:25:41.882265",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -3007,7 +3007,7 @@
     "pingParticipants": "Pingi partoprenantojn de la kurso",
     "playWithBot": "Ludi kun Pangea Bot",
     "inviteFriends": "Inviti amikojn",
-    "waitNotDone": "Atendu, mi ne finis!",
+    "waitNotDone": "Atendu, mi ne finisis!",
     "waitingForOthersToFinish": "Atendas la aliajn finiĝi...",
     "generatingSummary": "Analizante babiladon kaj generante rezultojn",
     "findCourse": "Trovu kurson",

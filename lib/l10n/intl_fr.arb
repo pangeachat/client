@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-06-02 11:16:38.819977",
+    "@@last_modified": "2026-06-02 15:25:46.137096",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -3645,7 +3645,7 @@
     "pingParticipants": "Notifier les participants du cours",
     "playWithBot": "Jouer avec Pangea Bot",
     "inviteFriends": "Inviter des amis",
-    "waitNotDone": "Attends, je n'ai pas fini !",
+    "waitNotDone": "Attendez, je n'ai pas fini !",
     "waitingForOthersToFinish": "En attente que les autres terminent...",
     "generatingSummary": "Analyse de la conversation et génération des résultats",
     "findCourse": "Trouver un cours",

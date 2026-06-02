@@ -2191,7 +2191,7 @@
     "waitingToFillRole": "Naghihintay na punan ang {num} na papel...",
     "pingParticipants": "I-ping ang mga kalahok sa kurso",
     "playWithBot": "Maglaro kasama ang Pangea Bot",
-    "waitNotDone": "Hintay, hindi pa tapos!",
+    "waitNotDone": "Hintayin mo, hindi pa ako tapos!",
     "waitingForOthersToFinish": "Naghihintay na matapos ang iba...",
     "generatingSummary": "Sinusuri ang chat at bumubuo ng mga resulta",
     "findCourse": "Maghanap ng kurso",
@@ -2258,7 +2258,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-06-02 11:16:14.453051",
+    "@@last_modified": "2026-06-02 15:25:25.627432",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}

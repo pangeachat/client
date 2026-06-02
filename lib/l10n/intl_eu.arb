@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-02 11:15:57.241764",
+    "@@last_modified": "2026-06-02 15:25:11.969817",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -3890,7 +3890,7 @@
     "pingParticipants": "Pinga ikastaro parte-hartzaileak",
     "playWithBot": "Jolastu Pangea Bot-ekin",
     "inviteFriends": "Gonbidatu lagunak",
-    "waitNotDone": "Itxaron, ez naiz bukatu!",
+    "waitNotDone": "Itxaron, ez naiz amaitu!",
     "waitingForOthersToFinish": "Itxaron besteek amaitu arte...",
     "generatingSummary": "Txataren analisia eta emaitzak sortzen",
     "findCourse": "Bilatu ikastaroa",

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-06-02 11:15:53.050221",
+    "@@last_modified": "2026-06-02 15:25:08.711526",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -3539,7 +3539,7 @@
     "pingParticipants": "Označi sudionike tečaja",
     "playWithBot": "Igraj s Pangea Botom",
     "inviteFriends": "Pozovi prijatelje",
-    "waitNotDone": "Čekaj, nisam završio!",
+    "waitNotDone": "Čekaj, još nisam gotov!",
     "waitingForOthersToFinish": "Čekam da ostali završe...",
     "generatingSummary": "Analiziranje chata i generiranje rezultata",
     "findCourse": "Pronađi tečaj",

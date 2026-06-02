@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:15:40.632746",
+    "@@last_modified": "2026-06-02 15:24:59.969275",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -3709,7 +3709,7 @@
     "pingParticipants": "코스 참가자에게 알림 보내기",
     "playWithBot": "판게아 봇과 플레이하기",
     "inviteFriends": "친구 초대하기",
-    "waitNotDone": "기다리세요, 아직 끝나지 않았어요!",
+    "waitNotDone": "기다려, 아직 끝나지 않았어!",
     "waitingForOthersToFinish": "나머지 사람들이 끝내기를 기다리는 중...",
     "generatingSummary": "채팅 분석 및 결과 생성 중",
     "findCourse": "코스 찾기",

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:21.097376",
+    "@@last_modified": "2026-06-02 15:25:30.609906",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -3271,7 +3271,7 @@
     "pingParticipants": "Thông báo cho các thành viên trong khóa học",
     "playWithBot": "Chơi với Pangea Bot",
     "inviteFriends": "Mời bạn bè",
-    "waitNotDone": "Chờ tôi chưa xong!",
+    "waitNotDone": "Chờ, tôi chưa xong!",
     "waitingForOthersToFinish": "Đang chờ những người khác hoàn thành...",
     "generatingSummary": "Phân tích cuộc trò chuyện và tạo kết quả",
     "findCourse": "Tìm khóa học",

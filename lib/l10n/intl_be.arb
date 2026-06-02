@@ -3880,7 +3880,7 @@
     "pingParticipants": "Пінгнуць удзельнікаў курса",
     "playWithBot": "Гуляць з ботам Pangea",
     "inviteFriends": "Запрасіць сяброў",
-    "waitNotDone": "Чакай, я яшчэ не скончыў!",
+    "waitNotDone": "Пачакайце, я яшчэ не скончыў!",
     "waitingForOthersToFinish": "Чакаю, пакуль астатнія скончаць...",
     "generatingSummary": "Аналізуючы чат і генеруючы вынікі",
     "findCourse": "Знайсці курс",
@@ -3934,7 +3934,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-06-02 11:16:07.995634",
+    "@@last_modified": "2026-06-02 15:25:20.933224",
     "@ignore": {
         "type": "String",
         "placeholders": {}
