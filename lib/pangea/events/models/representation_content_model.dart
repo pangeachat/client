@@ -165,19 +165,14 @@ class PangeaRepresentation {
           ),
         )
         .where(
-          (token) =>
-              !openMatches.any((match) => _tokenOverlapsMatch(token, match)),
+          (token) => !openMatches.any(
+            (match) => match.overlapsTokenSpan(
+              token.text.offset,
+              token.text.length,
+            ),
+          ),
         )
         .toList();
-  }
-
-  /// Returns true if token's character span overlaps with match's span.
-  bool _tokenOverlapsMatch(PangeaToken token, PangeaMatch match) {
-    final tokenStart = token.text.offset;
-    final tokenEnd = tokenStart + token.text.length;
-    final matchStart = match.match.offset;
-    final matchEnd = matchStart + match.match.length;
-    return tokenStart < matchEnd && tokenEnd > matchStart;
   }
 
   ChoreoRecordStepModel? _getStepForToken(

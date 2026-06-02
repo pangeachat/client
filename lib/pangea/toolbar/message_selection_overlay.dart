@@ -241,9 +241,8 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         pangeaMessageEvent.messageDisplayRepresentation?.choreo?.openMatches ??
         [];
     final bool skipAnalytics = openMatches.any(
-      (match) => _tokenOverlapsMatch(token, match),
+      (match) => match.overlapsTokenSpan(token.text.offset, token.text.length),
     );
-
     await collectToken(
       token: token,
       tokenCacheKey: event.eventId,
@@ -254,14 +253,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       skipAnalytics: skipAnalytics,
     );
     if (mounted) setState(() {});
-  }
-
-  bool _tokenOverlapsMatch(PangeaToken token, PangeaMatch match) {
-    final tokenStart = token.text.offset;
-    final tokenEnd = tokenStart + token.text.length;
-    final matchStart = match.match.offset;
-    final matchEnd = matchStart + match.match.length;
-    return tokenStart < matchEnd && tokenEnd > matchStart;
   }
 
   PangeaMessageEvent get pangeaMessageEvent => PangeaMessageEvent(

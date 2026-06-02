@@ -11,7 +11,6 @@ import 'package:fluffychat/pages/chat/events/reaction_listener.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/lemma_emoji_setter_mixin.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
-import 'package:fluffychat/pangea/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
@@ -152,8 +151,9 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
       if (choreoRaw != null) {
         final openMatches = ChoreoRecordModel.openMatchesFromJson(choreoRaw);
         skipAnalytics = openMatches.any(
-          (match) => _tokenTextOverlapsMatch(tokenText, match),
+          (match) => match.overlapsTokenSpan(tokenText.offset, tokenText.length),
         );
+
       }
     }
 
@@ -169,14 +169,6 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
     );
 
     _showLemmaEmojiSnackbar();
-  }
-
-  bool _tokenTextOverlapsMatch(PangeaTokenText tokenText, PangeaMatch match) {
-    final tokenStart = tokenText.offset;
-    final tokenEnd = tokenStart + tokenText.length;
-    final matchStart = match.match.offset;
-    final matchEnd = matchStart + match.match.length;
-    return tokenStart < matchEnd && tokenEnd > matchStart;
   }
 
   void _showLemmaEmojiSnackbar() {
