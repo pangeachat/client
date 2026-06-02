@@ -25,6 +25,20 @@ test.describe("Course and chat navigation", () => {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const intl = JSON.parse(fileContent);
 
+    // Add 'mock: true' field to requests
+    await page.route('**/choreo/*', (route) => {
+      const headers = {
+        ...route.request().headers(),
+        'mock': 'true',
+      };
+
+      console.log(`bbb API Request: ${route.request().method()} ${route.request().url()}`);
+
+      route.continue({
+        headers: headers
+      });
+    });
+
     // Set L2 to spanish, if it isn't already
     if (await page.getByRole("button", { name: "EN ES" }).isHidden()) {
       await page.getByRole("button", { name: intl.learningSettings }).click();
