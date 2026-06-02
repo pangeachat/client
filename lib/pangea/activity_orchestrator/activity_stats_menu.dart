@@ -139,9 +139,11 @@ class ActivityStatsMenu extends StatelessWidget {
                                   ),
                                   child: Text(
                                     L10n.of(context).completeActivityButton,
-                                    style: TextStyle(
-                                      color: theme.colorScheme.surface,
-                                    ),
+                                    style: theme.brightness == Brightness.light
+                                        ? null
+                                        : TextStyle(
+                                            color: theme.colorScheme.surface,
+                                          ),
                                   ),
                                 ),
                               ),
@@ -213,7 +215,9 @@ class ActivityStatsMenu extends StatelessWidget {
                                     ? AppConfig.gold
                                     : AppConfig.goldLight
                               : theme.colorScheme.primaryContainer,
-                          foregroundColor: room.hasCompletedAllGoals
+                          foregroundColor: theme.brightness == Brightness.light
+                              ? null
+                              : room.hasCompletedAllGoals
                               ? theme.colorScheme.surface
                               : theme.colorScheme.onPrimaryContainer,
                         ),
@@ -234,7 +238,9 @@ class ActivityStatsMenu extends StatelessWidget {
                         onPressed: () => _finishActivityForAll(context),
                         style: ElevatedButton.styleFrom(
                           side: BorderSide(
-                            color: theme.colorScheme.primaryContainer,
+                            color: theme.brightness == Brightness.light
+                                ? theme.colorScheme.primary.withAlpha(120)
+                                : theme.colorScheme.primaryContainer,
                             width: 2,
                           ),
                           foregroundColor: theme.colorScheme.primary,
