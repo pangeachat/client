@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:08.915087",
+    "@@last_modified": "2026-06-03 15:21:37.065148",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9914,6 +9914,11 @@
     },
     "suggestMobileDesc": "Obteniu l'aplicació Pangea Chat per rebre notificacions!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Entesos!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }

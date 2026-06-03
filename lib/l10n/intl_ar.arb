@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-06-02 11:16:16.676510",
+    "@@last_modified": "2026-06-03 15:21:43.174029",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10103,6 +10103,11 @@
     },
     "suggestMobileDesc": "احصل على تطبيق Pangea Chat لتلقي الإشعارات!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "فهمت!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }

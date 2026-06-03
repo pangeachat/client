@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-02 11:16:31.705970",
+    "@@last_modified": "2026-06-03 15:21:53.454205",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10631,6 +10631,11 @@
     },
     "suggestMobileDesc": "Pangea Chatアプリをダウンロードして通知を受け取りましょう！",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "わかりました！",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }

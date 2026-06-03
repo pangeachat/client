@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-02 11:16:34.520935",
+    "@@last_modified": "2026-06-03 15:21:55.877989",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10777,6 +10777,11 @@
     },
     "suggestMobileDesc": "Получите приложение Pangea Chat, чтобы получать уведомления!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Понял!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }

@@ -1407,7 +1407,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-06-02 11:16:02.467157",
+    "@@last_modified": "2026-06-03 15:21:33.045043",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10894,6 +10894,11 @@
     },
     "suggestMobileDesc": "下載 Pangea Chat 應用程式以接收通知！",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "明白了！",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }

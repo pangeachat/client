@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:22.022191",
+    "@@last_modified": "2026-06-03 15:21:47.062971",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9879,6 +9879,11 @@
     },
     "suggestMobileDesc": "அறிக்கைகளை பெற Pangea Chat செயலியைப் பெறுங்கள்!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "அது புரிந்தது!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }

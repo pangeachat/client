@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:36.774093",
+    "@@last_modified": "2026-06-03 15:21:59.025729",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10886,6 +10886,11 @@
     },
     "suggestMobileDesc": "Preuzmite Pangea Chat aplikaciju da biste primali obaveštenja!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Razumem!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }
