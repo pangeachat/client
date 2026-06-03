@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-06-03 15:47:27.125557",
+    "@@last_modified": "2026-06-03 16:10:19.629894",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10176,5 +10176,35 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Télécharge l'historique complet des messages, y compris l'expéditeur, la date d'envoi, le message original, le message envoyé et le type d'utilisation.",
+    "analyticsDownloadDesc": "Télécharge les analyses de vocabulaire et de grammaire personnelles pour la langue sélectionnée.",
+    "courseAnalyticsDownloadDesc": "Télécharge l'usage des lemmes et de la grammaire dans la langue sélectionnée pour tous les participants au cours avec des analyses partagées.",
+    "cefrLevelMatch": "Ce cours correspond à votre niveau de langue",
+    "cefrLevelBelow": "Ce cours est en dessous de votre niveau de langue.",
+    "cefrLevelAbove": "Ce cours est au-dessus de votre niveau de langue.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
     }
 }

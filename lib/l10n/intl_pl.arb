@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-06-03 15:47:16.806885",
+    "@@last_modified": "2026-06-03 16:09:47.394415",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9888,5 +9888,35 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Pobiera pełną historię wiadomości, w tym nadawcę, datę wysłania, oryginalną wiadomość, wysłaną wiadomość i typ użycia.",
+    "analyticsDownloadDesc": "Pobiera osobiste analizy słownictwa i gramatyki dla wybranego języka.",
+    "courseAnalyticsDownloadDesc": "Pobiera lemat i użycie gramatyki w wybranym języku dla wszystkich uczestników kursu z udostępnionymi analizami.",
+    "cefrLevelMatch": "Ten kurs odpowiada twojemu poziomowi językowemu",
+    "cefrLevelBelow": "Ten kurs jest poniżej twojego poziomu językowego.",
+    "cefrLevelAbove": "Ten kurs jest powyżej twojego poziomu językowego.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
     }
 }

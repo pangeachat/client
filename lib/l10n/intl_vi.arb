@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:53:08.028196",
+    "@@last_modified": "2026-06-03 16:09:20.032015",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6875,6 +6875,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Khóa học này phù hợp với trình độ ngôn ngữ của bạn",
+    "cefrLevelBelow": "Khóa học này thấp hơn trình độ ngôn ngữ của bạn.",
+    "cefrLevelAbove": "Khóa học này cao hơn trình độ ngôn ngữ của bạn.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-06-03 15:52:01.148338",
+    "@@last_modified": "2026-06-03 16:07:43.957968",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9909,7 +9909,7 @@
     },
     "chatDownloadDesc": "Letölti a teljes üzenet történetet, beleértve a feladót, a küldés dátumát, az eredeti üzenetet, a küldött üzenetet és a használati típust.",
     "analyticsDownloadDesc": "Letölti a személyes szókincs és nyelvtani elemzéseket a kiválasztott nyelvhez.",
-    "courseAnalyticsDownloadDesc": "Letölti a lemma és nyelvtani használatot a kiválasztott nyelvben az összes kurzus résztvevő számára, akik megosztott elemzésekkel rendelkeznek.",
+    "courseAnalyticsDownloadDesc": "Letölti a lemma és nyelvtani használatot a kiválasztott nyelven az összes kurzus résztvevő számára, megosztott elemzésekkel.",
     "@chatDownloadDesc": {
         "type": "String",
         "placeholders": {}
@@ -9919,6 +9919,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Ez a kurzus megfelel a nyelvi szintednek",
+    "cefrLevelBelow": "Ez a kurzus a nyelvi szinted alatt van.",
+    "cefrLevelAbove": "Ez a kurzus a nyelvi szinted felett van.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

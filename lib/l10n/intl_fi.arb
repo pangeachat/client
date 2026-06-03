@@ -3914,7 +3914,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-06-03 15:51:56.861545",
+    "@@last_modified": "2026-06-03 16:07:36.717984",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9831,7 +9831,7 @@
     },
     "chatDownloadDesc": "Lataa koko viestihistoria, mukaan lukien lähettäjä, lähetetty päivämäärä, alkuperäinen viesti, lähetetty viesti ja käyttötapa.",
     "analyticsDownloadDesc": "Lataa henkilökohtaiset sanasto- ja kielioppianalyysit valitulle kielelle.",
-    "courseAnalyticsDownloadDesc": "Lataa lemma- ja kielioppikäyttö valitussa kielessä kaikille kurssin osallistujille, joilla on jaetut analyysit.",
+    "courseAnalyticsDownloadDesc": "Lataa lemma ja kieliopin käyttö valitussa kielessä kaikille kurssin osallistujille, joilla on jaetut analyysit.",
     "@chatDownloadDesc": {
         "type": "String",
         "placeholders": {}
@@ -9841,6 +9841,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Tämä kurssi vastaa kielitasoasi",
+    "cefrLevelBelow": "Tämä kurssi on alle kielitasosi.",
+    "cefrLevelAbove": "Tämä kurssi on yli kielitasosi.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

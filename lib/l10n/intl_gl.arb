@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-06-03 15:51:54.895465",
+    "@@last_modified": "2026-06-03 16:07:34.264918",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9792,6 +9792,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Este curso coincide co teu nivel de lingua",
+    "cefrLevelBelow": "Este curso está por debaixo do teu nivel de lingua.",
+    "cefrLevelAbove": "Este curso está por riba do teu nivel de lingua.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

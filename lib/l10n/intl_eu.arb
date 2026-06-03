@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-03 15:52:21.655432",
+    "@@last_modified": "2026-06-03 16:08:12.529443",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9780,9 +9780,9 @@
             }
         }
     },
-    "chatDownloadDesc": "Deskargatzen du mezuen historia osoa, bidaltzailea, bidali den data, jatorrizko mezua, bidalitako mezua eta erabilera mota barne.",
-    "analyticsDownloadDesc": "Deskargatzen ditu hautatutako hizkuntzako vocab eta gramatika analitikak.",
-    "courseAnalyticsDownloadDesc": "Deskargatzen ditu hautatutako hizkuntzako lemma eta gramatika erabilera ikastaroan parte hartzen duten guztientzat partekatutako analitikekin.",
+    "chatDownloadDesc": "Mezua historial osoa deskargatzen du, bidaltzailea, bidali den data, jatorrizko mezua, bidalitako mezua eta erabilera mota barne.",
+    "analyticsDownloadDesc": "Hautatutako hizkuntzarako pertsonalizatutako hiztegi eta gramatika analitikak deskargatzen ditu.",
+    "courseAnalyticsDownloadDesc": "Hautatutako hizkuntzan, parte-hartzaile guztientzat partekatutako analitikekin, lema eta gramatika erabilera deskargatzen ditu.",
     "@chatDownloadDesc": {
         "type": "String",
         "placeholders": {}
@@ -9792,6 +9792,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Ikastaro honek zure hizkuntza mailarekin bat dator",
+    "cefrLevelBelow": "Ikastaro honek zure hizkuntza mailatik behera dago.",
+    "cefrLevelAbove": "Ikastaro honek zure hizkuntza mailatik gorakoa da.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

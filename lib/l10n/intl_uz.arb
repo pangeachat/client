@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-06-03 15:52:52.872653",
+    "@@last_modified": "2026-06-03 16:08:54.936435",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9784,9 +9784,9 @@
             }
         }
     },
-    "chatDownloadDesc": "Xabarlar tarixini, jumladan jo‘natuvchi, yuborilgan sana, asl xabar, yuborilgan xabar va foydalanish turini o‘z ichiga olgan holda yuklab oladi.",
-    "analyticsDownloadDesc": "Tanlangan til uchun shaxsiy lug‘at va grammatika tahlillarini yuklab oladi.",
-    "courseAnalyticsDownloadDesc": "Barcha kurs ishtirokchilari uchun tanlangan til bo‘yicha lemma va grammatika foydalanishini umumiy tahlil bilan yuklab oladi.",
+    "chatDownloadDesc": "To'liq xabar tarixini, jumladan jo'natuvchi, yuborilgan sana, asl xabar, yuborilgan xabar va foydalanish turini yuklab oladi.",
+    "analyticsDownloadDesc": "Tanlangan til uchun shaxsiy leksika va grammatika tahlillarini yuklab oladi.",
+    "courseAnalyticsDownloadDesc": "Tanlangan til uchun barcha kurs ishtirokchilari uchun umumiy tahlillar bilan lemma va grammatika foydalanishini yuklab oladi.",
     "@chatDownloadDesc": {
         "type": "String",
         "placeholders": {}
@@ -9796,6 +9796,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Ushbu kurs sizning til darajangizga mos keladi",
+    "cefrLevelBelow": "Ushbu kurs sizning til darajangizdan past.",
+    "cefrLevelAbove": "Ushbu kurs sizning til darajangizdan yuqori.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

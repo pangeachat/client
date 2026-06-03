@@ -3378,7 +3378,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-06-03 15:52:46.505762",
+    "@@last_modified": "2026-06-03 16:08:46.871347",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10500,8 +10500,8 @@
         }
     },
     "chatDownloadDesc": "ดาวน์โหลดประวัติข้อความทั้งหมด รวมถึงผู้ส่ง วันที่ส่ง ข้อความต้นฉบับ ข้อความที่ส่ง และประเภทการใช้งาน",
-    "analyticsDownloadDesc": "ดาวน์โหลดคำศัพท์ส่วนบุคคลและการวิเคราะห์ไวยากรณ์สำหรับภาษาที่เลือก",
-    "courseAnalyticsDownloadDesc": "ดาวน์โหลดเลมมาและการใช้ไวยากรณ์ในภาษาที่เลือกสำหรับผู้เข้าร่วมหลักสูตรทั้งหมดที่มีการวิเคราะห์ร่วมกัน",
+    "analyticsDownloadDesc": "ดาวน์โหลดการวิเคราะห์คำศัพท์และไวยากรณ์ส่วนบุคคลสำหรับภาษาที่เลือก",
+    "courseAnalyticsDownloadDesc": "ดาวน์โหลดเลมมาและการใช้งานไวยากรณ์ในภาษาที่เลือกสำหรับผู้เข้าร่วมหลักสูตรทั้งหมดที่มีการวิเคราะห์ร่วมกัน",
     "@chatDownloadDesc": {
         "type": "String",
         "placeholders": {}
@@ -10511,6 +10511,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "หลักสูตรนี้ตรงกับระดับภาษาของคุณ",
+    "cefrLevelBelow": "หลักสูตรนี้ต่ำกว่าระดับภาษาของคุณ",
+    "cefrLevelAbove": "หลักสูตรนี้สูงกว่าระดับภาษาของคุณ",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

@@ -3378,7 +3378,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-06-03 15:52:12.126262",
+    "@@last_modified": "2026-06-03 16:07:59.526410",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10499,7 +10499,7 @@
             }
         }
     },
-    "chatDownloadDesc": "Baileann an stair iomlán teachtaireachtaí, lena n-áirítear an t-úsáideoir, an dáta a sheoladh, an teachtaireacht bhunaidh, an teachtaireacht a sheoladh, agus an cineál úsáide.",
+    "chatDownloadDesc": "Baileann an stair iomlán teachtaireachtaí, lena n-áirítear an seoltóir, an dáta a sheoladh, an teachtaireacht bhunaidh, an teachtaireacht a sheoladh, agus an cineál úsáide.",
     "analyticsDownloadDesc": "Baileann anailísí pearsanta ar fhocail agus gramadach don teanga roghnaithe.",
     "courseAnalyticsDownloadDesc": "Baileann an lemma agus úsáid gramadaí sa teanga roghnaithe do gach rannpháirtí sa chúrsa le hanailísí comhoibrithe.",
     "@chatDownloadDesc": {
@@ -10511,6 +10511,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Comhoibríonn an cúrsa seo le do leibhéal teanga",
+    "cefrLevelBelow": "Tá an cúrsa seo faoi do leibhéal teanga.",
+    "cefrLevelAbove": "Tá an cúrsa seo os cionn do leibhéal teanga.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:52:44.592390",
+    "@@last_modified": "2026-06-03 16:08:43.918959",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9943,6 +9943,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Aquest curs coincideix amb el teu nivell d'idioma",
+    "cefrLevelBelow": "Aquest curs està per sota del teu nivell d'idioma.",
+    "cefrLevelAbove": "Aquest curs està per sobre del teu nivell d'idioma.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

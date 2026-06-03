@@ -1506,7 +1506,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-06-03 15:52:17.654872",
+    "@@last_modified": "2026-06-03 16:08:07.929483",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10890,9 +10890,9 @@
             }
         }
     },
-    "chatDownloadDesc": "Descarrega tota la història de missatges, incloent l'enviador, la data d'enviament, el missatge original, el missatge enviat i el tipus d'ús.",
-    "analyticsDownloadDesc": "Descarrega l'analítica personal de vocabulari i gramàtica per a la llengua seleccionada.",
-    "courseAnalyticsDownloadDesc": "Descarrega l'ús de lemmas i gramàtica en la llengua seleccionada per a tots els participants del curs amb analítiques compartides.",
+    "chatDownloadDesc": "Descarca la istoria completa de mesaje, inclusiv expeditor, data trimisă, mesajul original, mesajul trimis și tipul de utilizare.",
+    "analyticsDownloadDesc": "Descarcă analiza personală a vocabularului și gramaticii pentru limba selectată.",
+    "courseAnalyticsDownloadDesc": "Descarcă utilizarea lemei și gramaticii în limba selectată pentru toți participanții la curs cu analize partajate.",
     "@chatDownloadDesc": {
         "type": "String",
         "placeholders": {}
@@ -10902,6 +10902,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Acest curs se potrivește cu nivelul tău de limbă",
+    "cefrLevelBelow": "Acest curs este sub nivelul tău de limbă.",
+    "cefrLevelAbove": "Acest curs este peste nivelul tău de limbă.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

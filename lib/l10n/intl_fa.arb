@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:53:21.637867",
+    "@@last_modified": "2026-06-03 16:09:44.109950",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9894,7 +9894,7 @@
     },
     "chatDownloadDesc": "تاریخچه کامل پیام‌ها را دانلود می‌کند، از جمله فرستنده، تاریخ ارسال، پیام اصلی، پیام ارسال شده و نوع استفاده.",
     "analyticsDownloadDesc": "تحلیل‌های شخصی واژگان و گرامر را برای زبان انتخاب شده دانلود می‌کند.",
-    "courseAnalyticsDownloadDesc": "استفاده از لِمّا و گرامر را در زبان انتخاب شده برای تمام شرکت‌کنندگان دوره با تحلیل‌های مشترک دانلود می‌کند.",
+    "courseAnalyticsDownloadDesc": "استعمال لِمّا و گرامر را در زبان انتخاب شده برای تمام شرکت‌کنندگان دوره با تحلیل‌های مشترک دانلود می‌کند.",
     "@chatDownloadDesc": {
         "type": "String",
         "placeholders": {}
@@ -9904,6 +9904,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "این دوره با سطح زبان شما مطابقت دارد",
+    "cefrLevelBelow": "این دوره زیر سطح زبان شما است.",
+    "cefrLevelAbove": "این دوره بالاتر از سطح زبان شما است.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

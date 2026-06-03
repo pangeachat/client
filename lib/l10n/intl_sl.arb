@@ -1963,7 +1963,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-06-03 15:52:29.229224",
+    "@@last_modified": "2026-06-03 16:08:23.202620",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10908,6 +10908,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Ta tečaj ustreza vaši jezikovni ravni",
+    "cefrLevelBelow": "Ta tečaj je pod vašo jezikovno ravnjo.",
+    "cefrLevelAbove": "Ta tečaj je nad vašo jezikovno ravnjo.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

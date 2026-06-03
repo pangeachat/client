@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:52:07.558412",
+    "@@last_modified": "2026-06-03 16:07:49.819254",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10617,6 +10617,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Acest curs se potrivește cu nivelul tău de limbă",
+    "cefrLevelBelow": "Acest curs este sub nivelul tău de limbă.",
+    "cefrLevelAbove": "Acest curs este peste nivelul tău de limbă.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

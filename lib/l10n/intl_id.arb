@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:52:02.805218",
+    "@@last_modified": "2026-06-03 16:07:46.610760",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9889,6 +9889,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Kursus ini sesuai dengan tingkat bahasa Anda",
+    "cefrLevelBelow": "Kursus ini di bawah tingkat bahasa Anda.",
+    "cefrLevelAbove": "Kursus ini di atas tingkat bahasa Anda.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }
