@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
 import 'package:provider/provider.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
-import 'package:fluffychat/pangea/languages/language_display_name_prefix_widget.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
@@ -128,11 +128,7 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isColumnMode = FluffyThemes.isColumnMode(context);
-    TextStyle textStyle = DefaultTextStyle.of(context).style;
-    textStyle = textStyle.merge(
-      isColumnMode ? theme.textTheme.bodyLarge : theme.textTheme.bodyMedium,
-    );
+    final TextStyle textStyle = theme.textTheme.bodyLarge!;
 
     final type = _step.state.userType;
     final title = switch (type) {
@@ -170,54 +166,110 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
                       right: 16.0,
                       bottom: 60.0,
                     ),
-                    sliver: SliverToBoxAdapter(
-                      child: ValueListenableBuilder(
-                        valueListenable: _selectedTargetLanguage,
-                        builder: (context, selected, _) => Wrap(
-                          spacing: 8.0,
-                          runSpacing: 16.0,
-                          alignment: WrapAlignment.center,
-                          children: _languages
-                              .where(
-                                (l) =>
-                                    LanguageModel.search(l, val.text, context),
-                              )
-                              .map(
-                                (l) => ShimmerBackground(
-                                  enabled: selected == null,
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(16.0),
+                    sliver: ValueListenableBuilder(
+                      valueListenable: _selectedTargetLanguage,
+                      builder: (context, selected, _) {
+                        final filtered = _languages
+                            .where(
+                              (l) => LanguageModel.search(l, val.text, context),
+                            )
+                            .toList();
+                        final flagSize = 56.0;
+                        return SliverGrid(
+                          delegate: SliverChildBuilderDelegate((
+                            context,
+                            index,
+                          ) {
+                            final l = filtered[index];
+                            final isSelected = selected == l;
+                            final hasSelection = selected != null;
+                            return Opacity(
+                              opacity: hasSelection && !isSelected ? 0.5 : 1.0,
+                              child: SizedBox.expand(
+                                child: Material(
+                                  color: isSelected
+                                      ? AppConfig.goldLight.withAlpha(100)
+                                      : theme.colorScheme.surfaceContainer,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16.0),
+                                    side: isSelected
+                                        ? BorderSide(
+                                            color: AppConfig.yellowDark
+                                                .withAlpha(100),
+                                            width: 4.0,
+                                          )
+                                        : hasSelection
+                                        ? BorderSide.none
+                                        : BorderSide(
+                                            color: theme
+                                                .colorScheme
+                                                .surfaceContainerHigh,
+                                            width: 2.0,
+                                          ),
                                   ),
-                                  child: FilterChip(
-                                    materialTapTargetSize:
-                                        MaterialTapTargetSize.shrinkWrap,
-                                    selected: selected == l,
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(16.0),
+                                  child: InkWell(
+                                    onTap: () => _setTargetLanguage(
+                                      isSelected ? null : l,
+                                    ),
+                                    borderRadius: BorderRadius.circular(16.0),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 12.0,
+                                        horizontal: 8.0,
+                                      ),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            width: flagSize,
+                                            height: flagSize,
+                                            child: l.isLocalized
+                                                ? SvgPicture.network(
+                                                    l.svgUrl.toString(),
+                                                    width: flagSize,
+                                                    height: flagSize,
+                                                    errorBuilder: (_, _, _) =>
+                                                        const SizedBox.shrink(),
+                                                    placeholderBuilder: (_) =>
+                                                        const Center(
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                                strokeWidth:
+                                                                    0.5,
+                                                              ),
+                                                        ),
+                                                  )
+                                                : Icon(
+                                                    Icons.language,
+                                                    size: flagSize,
+                                                  ),
+                                          ),
+                                          const SizedBox(height: 8.0),
+                                          Text(
+                                            l.getDisplayName(context),
+                                            style: textStyle,
+                                            textAlign: TextAlign.center,
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    backgroundColor: selected == l
-                                        ? theme.colorScheme.primary
-                                        : theme.colorScheme.surfaceContainer,
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 8.0,
-                                      vertical: 4.0,
-                                    ),
-                                    label: LanguageDisplayNamePrefixWidget(
-                                      l,
-                                      style: textStyle,
-                                      iconSize: isColumnMode ? 16.0 : 12.0,
-                                    ),
-                                    onSelected: (selected) {
-                                      _setTargetLanguage(selected ? l : null);
-                                    },
                                   ),
                                 ),
-                              )
-                              .toList(),
-                        ),
-                      ),
+                              ),
+                            );
+                          }, childCount: filtered.length),
+                          gridDelegate:
+                              const SliverGridDelegateWithMaxCrossAxisExtent(
+                                maxCrossAxisExtent: 180.0,
+                                mainAxisSpacing: 12.0,
+                                crossAxisSpacing: 12.0,
+                                childAspectRatio: 1.1,
+                              ),
+                        );
+                      },
                     ),
                   ),
                 ],
