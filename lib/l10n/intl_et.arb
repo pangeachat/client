@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-02 11:15:59.188726",
+    "@@last_modified": "2026-06-03 15:21:30.488627",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9760,6 +9760,11 @@
     },
     "suggestMobileDesc": "Laadi alla Pangea Chat rakendus, et saada teateid!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Sain aru!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }

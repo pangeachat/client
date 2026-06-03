@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-06-02 11:16:13.012796",
+    "@@last_modified": "2026-06-03 15:21:41.126581",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9767,6 +9767,11 @@
     },
     "suggestMobileDesc": "Bildirishnomalarni olish uchun Pangea Chat ilovasini oling!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Tushundim!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }

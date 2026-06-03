@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-06-02 11:15:41.926800",
+    "@@last_modified": "2026-06-03 15:21:18.548293",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7857,6 +7857,11 @@
     },
     "suggestMobileDesc": "¡Obtén la aplicación Pangea Chat para recibir notificaciones!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "¡Entendido!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }

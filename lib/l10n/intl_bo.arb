@@ -3194,7 +3194,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-02 11:16:24.120571",
+    "@@last_modified": "2026-06-03 15:21:48.507490",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9435,6 +9435,11 @@
     },
     "suggestMobileDesc": "Get the Pangea Chat app to receive notifications!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Dapet!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }

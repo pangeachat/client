@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-02 11:16:04.510266",
+    "@@last_modified": "2026-06-03 15:21:34.373850",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9763,6 +9763,11 @@
     },
     "suggestMobileDesc": "Отримайте додаток Pangea Chat, щоб отримувати сповіщення!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Зрозумів!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }

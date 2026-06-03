@@ -1478,7 +1478,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-06-02 11:15:46.186781",
+    "@@last_modified": "2026-06-03 15:21:20.745546",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10857,6 +10857,11 @@
     },
     "suggestMobileDesc": "Få Pangea Chat-appen for at modtage meddelelser!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Forstået!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }

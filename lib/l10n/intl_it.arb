@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:03.490241",
+    "@@last_modified": "2026-06-03 15:21:33.658938",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9854,6 +9854,11 @@
     },
     "suggestMobileDesc": "Scarica l'app Pangea Chat per ricevere notifiche!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Capito!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }
