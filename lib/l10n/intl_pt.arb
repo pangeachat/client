@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:52:23.235792",
+    "@@last_modified": "2026-06-03 16:08:14.883515",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10898,9 +10898,9 @@
             }
         }
     },
-    "chatDownloadDesc": "Baixa o histórico completo de mensagens, incluindo remetente, data de envio, mensagem original, mensagem enviada e tipo de uso.",
+    "chatDownloadDesc": "Baixa todo o histórico de mensagens, incluindo remetente, data de envio, mensagem original, mensagem enviada e tipo de uso.",
     "analyticsDownloadDesc": "Baixa a análise pessoal de vocabulário e gramática para o idioma selecionado.",
-    "courseAnalyticsDownloadDesc": "Baixa o uso de lema e gramática no idioma selecionado para todos os participantes do curso com análises compartilhadas.",
+    "courseAnalyticsDownloadDesc": "Baixa o léxico e o uso da gramática no idioma selecionado para todos os participantes do curso com análises compartilhadas.",
     "@chatDownloadDesc": {
         "type": "String",
         "placeholders": {}
@@ -10910,6 +10910,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Este curso corresponde ao seu nível de idioma",
+    "cefrLevelBelow": "Este curso está abaixo do seu nível de idioma.",
+    "cefrLevelAbove": "Este curso está acima do seu nível de idioma.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

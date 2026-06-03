@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:52:15.807440",
+    "@@last_modified": "2026-06-03 16:08:05.371455",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10871,6 +10871,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "הקורס הזה תואם את רמת השפה שלך",
+    "cefrLevelBelow": "הקורס הזה מתחת לרמת השפה שלך.",
+    "cefrLevelAbove": "הקורס הזה מעל לרמת השפה שלך.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

@@ -3378,7 +3378,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-06-03 15:47:22.739406",
+    "@@last_modified": "2026-06-03 16:10:01.326303",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10498,5 +10498,35 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "पूर्ण संदेश इतिहास को डाउनलोड करता है, जिसमें प्रेषक, भेजी गई तारीख, मूल संदेश, भेजा गया संदेश, और उपयोग प्रकार शामिल हैं।",
+    "analyticsDownloadDesc": "चुने गए भाषा के लिए व्यक्तिगत शब्दावली और व्याकरण विश्लेषण डाउनलोड करता है।",
+    "courseAnalyticsDownloadDesc": "साझा विश्लेषण के साथ सभी पाठ्यक्रम प्रतिभागियों के लिए चुने गए भाषा में lemma और व्याकरण उपयोग डाउनलोड करता है।",
+    "cefrLevelMatch": "यह पाठ्यक्रम आपके भाषा स्तर से मेल खाता है",
+    "cefrLevelBelow": "यह पाठ्यक्रम आपके भाषा स्तर से नीचे है।",
+    "cefrLevelAbove": "यह पाठ्यक्रम आपके भाषा स्तर से ऊपर है।",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
     }
 }

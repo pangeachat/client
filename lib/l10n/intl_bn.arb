@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:53:19.711644",
+    "@@last_modified": "2026-06-03 16:09:40.418172",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10495,7 +10495,7 @@
             }
         }
     },
-    "chatDownloadDesc": "সম্পূর্ণ বার্তা ইতিহাস ডাউনলোড করে, প্রেরক, পাঠানোর তারিখ, মূল বার্তা, পাঠানো বার্তা এবং ব্যবহার প্রকার সহ।",
+    "chatDownloadDesc": "পূর্ণ বার্তা ইতিহাস ডাউনলোড করে, প্রেরক, পাঠানোর তারিখ, মূল বার্তা, পাঠানো বার্তা এবং ব্যবহার প্রকার সহ।",
     "analyticsDownloadDesc": "নির্বাচিত ভাষার জন্য ব্যক্তিগত শব্দভাণ্ডার এবং ব্যাকরণ বিশ্লেষণ ডাউনলোড করে।",
     "courseAnalyticsDownloadDesc": "নির্বাচিত ভাষায় সমস্ত কোর্স অংশগ্রহণকারীদের জন্য শেয়ার করা বিশ্লেষণের সাথে লেমা এবং ব্যাকরণ ব্যবহারের ডাউনলোড করে।",
     "@chatDownloadDesc": {
@@ -10507,6 +10507,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "এই কোর্স আপনার ভাষার স্তরের সাথে মেলে",
+    "cefrLevelBelow": "এই কোর্স আপনার ভাষার স্তরের নিচে।",
+    "cefrLevelAbove": "এই কোর্স আপনার ভাষার স্তরের উপরে।",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

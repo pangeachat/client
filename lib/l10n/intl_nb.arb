@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:52:40.211179",
+    "@@last_modified": "2026-06-03 16:08:38.446447",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9841,8 +9841,8 @@
         }
     },
     "chatDownloadDesc": "Laster ned hele meldingshistorikken, inkludert avsender, dato sendt, original melding, sendt melding og brukstype.",
-    "analyticsDownloadDesc": "Laster ned personlig ordforråd og grammatikk-analyse for det valgte språket.",
-    "courseAnalyticsDownloadDesc": "Laster ned lemma og grammatikkbruk på det valgte språket for alle kursdeltakere med delt analyse.",
+    "analyticsDownloadDesc": "Laster ned personlig ordforråd og grammatikk-analyser for det valgte språket.",
+    "courseAnalyticsDownloadDesc": "Laster ned lemma og grammatikkbruk på det valgte språket for alle kursdeltakere med delte analyser.",
     "@chatDownloadDesc": {
         "type": "String",
         "placeholders": {}
@@ -9852,6 +9852,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Dette kurset samsvarer med ditt språknivå",
+    "cefrLevelBelow": "Dette kurset er under ditt språknivå.",
+    "cefrLevelAbove": "Dette kurset er over ditt språknivå.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

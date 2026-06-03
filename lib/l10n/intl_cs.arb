@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-06-03 15:52:38.647774",
+    "@@last_modified": "2026-06-03 16:08:35.501248",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10346,6 +10346,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Tento kurz odpovídá vaší jazykové úrovni",
+    "cefrLevelBelow": "Tento kurz je pod vaší jazykovou úrovní.",
+    "cefrLevelAbove": "Tento kurz je nad vaší jazykovou úrovní.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

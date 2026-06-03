@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-03 15:53:00.252515",
+    "@@last_modified": "2026-06-03 16:09:10.204539",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10112,8 +10112,8 @@
         }
     },
     "chatDownloadDesc": "Gönderen, gönderim tarihi, orijinal mesaj, gönderilen mesaj ve kullanım türü dahil olmak üzere tam mesaj geçmişini indirir.",
-    "analyticsDownloadDesc": "Seçilen dil için kişisel kelime dağarcığı ve dilbilgisi analizlerini indirir.",
-    "courseAnalyticsDownloadDesc": "Paylaşılan analizlerle birlikte tüm kurs katılımcıları için seçilen dildeki lemma ve dilbilgisi kullanımını indirir.",
+    "analyticsDownloadDesc": "Seçilen dil için kişisel kelime dağarcığı ve dilbilgisi analitiklerini indirir.",
+    "courseAnalyticsDownloadDesc": "Paylaşılan analitiklerle birlikte tüm kurs katılımcıları için seçilen dilde lemma ve dilbilgisi kullanımını indirir.",
     "@chatDownloadDesc": {
         "type": "String",
         "placeholders": {}
@@ -10123,6 +10123,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Bu kurs dil seviyenizle eşleşiyor.",
+    "cefrLevelBelow": "Bu kurs dil seviyenizin altında.",
+    "cefrLevelAbove": "Bu kurs dil seviyenizin üzerinde.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

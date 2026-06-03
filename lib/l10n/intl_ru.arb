@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-03 15:47:23.857389",
+    "@@last_modified": "2026-06-03 16:10:07.541211",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10793,5 +10793,35 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Скачивает полную историю сообщений, включая отправителя, дату отправки, оригинальное сообщение, отправленное сообщение и тип использования.",
+    "analyticsDownloadDesc": "Скачивает личную лексику и грамматическую аналитику для выбранного языка.",
+    "courseAnalyticsDownloadDesc": "Скачивает леммы и использование грамматики на выбранном языке для всех участников курса с общей аналитикой.",
+    "cefrLevelMatch": "Этот курс соответствует вашему уровню языка",
+    "cefrLevelBelow": "Этот курс ниже вашего уровня языка.",
+    "cefrLevelAbove": "Этот курс выше вашего уровня языка.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
     }
 }

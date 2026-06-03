@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:51:50.936743",
+    "@@last_modified": "2026-06-03 16:07:28.902001",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9999,7 +9999,7 @@
     },
     "chatDownloadDesc": "보낸 사람, 발송 날짜, 원본 메시지, 발송된 메시지 및 사용 유형을 포함하여 전체 메시지 기록을 다운로드합니다.",
     "analyticsDownloadDesc": "선택한 언어에 대한 개인 어휘 및 문법 분석을 다운로드합니다.",
-    "courseAnalyticsDownloadDesc": "공유된 분석이 있는 모든 과정 참가자에 대해 선택한 언어의 어근 및 문법 사용을 다운로드합니다.",
+    "courseAnalyticsDownloadDesc": "공유된 분석이 있는 모든 과정 참가자에 대해 선택한 언어의 표제어 및 문법 사용을 다운로드합니다.",
     "@chatDownloadDesc": {
         "type": "String",
         "placeholders": {}
@@ -10009,6 +10009,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "이 과정은 귀하의 언어 수준과 일치합니다.",
+    "cefrLevelBelow": "이 과정은 귀하의 언어 수준보다 낮습니다.",
+    "cefrLevelAbove": "이 과정은 귀하의 언어 수준보다 높습니다.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-06-03 15:52:58.488889",
+    "@@last_modified": "2026-06-03 16:09:07.644281",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10132,6 +10132,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "تتناسب هذه الدورة مع مستوى لغتك",
+    "cefrLevelBelow": "هذه الدورة أقل من مستوى لغتك.",
+    "cefrLevelAbove": "هذه الدورة أعلى من مستوى لغتك.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

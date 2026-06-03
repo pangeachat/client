@@ -1407,7 +1407,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-06-03 15:52:30.762545",
+    "@@last_modified": "2026-06-03 16:08:26.067040",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10913,7 +10913,7 @@
     },
     "chatDownloadDesc": "下載完整的消息歷史，包括發件人、發送日期、原始消息、已發送消息和使用類型。",
     "analyticsDownloadDesc": "下載所選語言的個人詞彙和語法分析。",
-    "courseAnalyticsDownloadDesc": "下載所選語言中所有課程參與者的詞元和語法使用的共享分析。",
+    "courseAnalyticsDownloadDesc": "下載所選語言中所有課程參與者的詞元和語法使用，並共享分析。",
     "@chatDownloadDesc": {
         "type": "String",
         "placeholders": {}
@@ -10923,6 +10923,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "這門課程符合你的語言水平",
+    "cefrLevelBelow": "這門課程低於你的語言水平。",
+    "cefrLevelAbove": "這門課程高於你的語言水平。",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

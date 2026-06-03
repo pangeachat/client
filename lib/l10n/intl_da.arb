@@ -1478,7 +1478,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-06-03 15:51:58.914796",
+    "@@last_modified": "2026-06-03 16:07:38.846326",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10886,6 +10886,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Dette kursus matcher dit sprogniveau",
+    "cefrLevelBelow": "Dette kursus er under dit sprogniveau.",
+    "cefrLevelAbove": "Dette kursus er over dit sprogniveau.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

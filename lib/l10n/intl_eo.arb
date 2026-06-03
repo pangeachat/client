@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:47:23.300692",
+    "@@last_modified": "2026-06-03 16:10:04.372916",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10898,5 +10898,35 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Elŝutas la plenan mesaĝhistorion, inkluzive la sendanton, daton senditan, originalan mesaĝon, senditan mesaĝon, kaj uzotipon.",
+    "analyticsDownloadDesc": "Elŝutas personajn vortaron kaj gramatikajn analitikojn por la elektita lingvo.",
+    "courseAnalyticsDownloadDesc": "Elŝutas la lema kaj gramatika uzado en la elektita lingvo por ĉiuj kurso-partoprenantoj kun dividitaj analitiko.",
+    "cefrLevelMatch": "Ĉi tiu kurso kongruas kun via lingvonivelo",
+    "cefrLevelBelow": "Ĉi tiu kurso estas sub via lingvonivelo.",
+    "cefrLevelAbove": "Ĉi tiu kurso estas super via lingvonivelo.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
     }
 }

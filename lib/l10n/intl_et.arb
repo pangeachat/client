@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-03 15:52:25.131906",
+    "@@last_modified": "2026-06-03 16:08:17.705950",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9777,9 +9777,9 @@
             }
         }
     },
-    "chatDownloadDesc": "Laeb alla kogu sõnumi ajalugu, sealhulgas saatja, saatmise kuupäev, originaalsõnum, saadetud sõnum ja kasutustüüp.",
+    "chatDownloadDesc": "Laeb alla kogu sõnumite ajalugu, sealhulgas saatja, saatmise kuupäev, algne sõnum, saadetud sõnum ja kasutustüüp.",
     "analyticsDownloadDesc": "Laeb alla isiklikud sõnavara ja grammatika analüüsid valitud keele jaoks.",
-    "courseAnalyticsDownloadDesc": "Laeb alla lemma ja grammatika kasutamise valitud keeles kõigi kursuse osalejate jaoks, kellel on jagatud analüüsid.",
+    "courseAnalyticsDownloadDesc": "Laeb alla lemma ja grammatika kasutuse valitud keeles kõigi kursuse osalejate jaoks, kellel on jagatud analüüsid.",
     "@chatDownloadDesc": {
         "type": "String",
         "placeholders": {}
@@ -9789,6 +9789,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "See kursus vastab teie keele tasemele",
+    "cefrLevelBelow": "See kursus on teie keele tasemest madalam.",
+    "cefrLevelAbove": "See kursus on teie keele tasemest kõrgem.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

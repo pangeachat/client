@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-03 15:47:21.770486",
+    "@@last_modified": "2026-06-03 16:09:58.439367",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10647,5 +10647,35 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "送信者、送信日時、元のメッセージ、送信されたメッセージ、使用タイプを含む完全なメッセージ履歴をダウンロードします。",
+    "analyticsDownloadDesc": "選択した言語の個人の語彙と文法分析をダウンロードします。",
+    "courseAnalyticsDownloadDesc": "共有分析を持つすべてのコース参加者のために、選択した言語のレマと文法使用をダウンロードします。",
+    "cefrLevelMatch": "このコースはあなたの言語レベルに合っています",
+    "cefrLevelBelow": "このコースはあなたの言語レベルよりも低いです。",
+    "cefrLevelAbove": "このコースはあなたの言語レベルよりも高いです。",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
     }
 }

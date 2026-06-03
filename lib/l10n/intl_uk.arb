@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-03 15:52:35.266521",
+    "@@last_modified": "2026-06-03 16:08:32.308481",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9792,6 +9792,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Цей курс відповідає вашому рівню мови",
+    "cefrLevelBelow": "Цей курс нижчий за ваш рівень мови.",
+    "cefrLevelAbove": "Цей курс вищий за ваш рівень мови.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-06-03 15:52:13.988467",
+    "@@last_modified": "2026-06-03 16:08:02.396145",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10276,6 +10276,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Ovaj tečaj odgovara vašoj jezičnoj razini",
+    "cefrLevelBelow": "Ovaj tečaj je ispod vaše jezične razine.",
+    "cefrLevelAbove": "Ovaj tečaj je iznad vaše jezične razine.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

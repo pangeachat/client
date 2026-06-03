@@ -2258,7 +2258,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-06-03 15:52:55.134851",
+    "@@last_modified": "2026-06-03 16:08:58.999174",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10811,6 +10811,21 @@
         "placeholders": {}
     },
     "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Ang kursong ito ay tumutugma sa iyong antas ng wika",
+    "cefrLevelBelow": "Ang kursong ito ay mas mababa sa iyong antas ng wika.",
+    "cefrLevelAbove": "Ang kursong ito ay higit sa iyong antas ng wika.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }
