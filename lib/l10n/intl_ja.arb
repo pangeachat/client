@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-02 11:16:31.705970",
+    "@@last_modified": "2026-06-03 15:15:34.528431",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10633,5 +10633,14 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "{lang} で続行",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

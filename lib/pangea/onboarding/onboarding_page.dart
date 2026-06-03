@@ -156,7 +156,10 @@ class OnboardingController extends State<Onboarding> {
                       if (step.enableSkip)
                         OnboardingStepSkipButton(step: step, onPressed: _skip),
                       ListenableBuilder(
-                        listenable: Listenable.merge([_enableNext, _selectedTargetLangCode]),
+                        listenable: Listenable.merge([
+                          _enableNext,
+                          _selectedTargetLangCode,
+                        ]),
                         builder: (context, child) => ElevatedButton(
                           onPressed: _enableNext.value ? _forward : null,
                           style: ElevatedButton.styleFrom(
@@ -170,32 +173,42 @@ class OnboardingController extends State<Onboarding> {
                             child: Center(
                               child: ValueListenableBuilder(
                                 valueListenable: _loading,
-                                builder: (context, loading, _) =>
-                                    AnimatedSwitcher(
-                                      duration: const Duration(
-                                        milliseconds: 200,
-                                      ),
-                                      child: loading
-                                          ? SizedBox(
-                                              key: const ValueKey('loading'),
-                                              width: double.infinity,
-                                              child:
-                                                  const LinearProgressIndicator(),
-                                            )
-                                          : Text(
-                                              _navigation.hasNextStep
-                                                  ? (_step.value is PickLanguageOnboardingStep &&
-                                                            _step.value.state.targetLanguage != null &&
-                                                            _enableNext.value)
-                                                        ? L10n.of(context).continueWithLang(
-                                                            _step.value.state.targetLanguage!.getDisplayName(context),
-                                                          )
-                                                        : L10n.of(context).next
-                                                  : L10n.of(context).letsGo,
-                                              key: const ValueKey('text'),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                    ),
+                                builder: (context, loading, _) => AnimatedSwitcher(
+                                  duration: const Duration(milliseconds: 200),
+                                  child: loading
+                                      ? SizedBox(
+                                          key: const ValueKey('loading'),
+                                          width: double.infinity,
+                                          child:
+                                              const LinearProgressIndicator(),
+                                        )
+                                      : Text(
+                                          _navigation.hasNextStep
+                                              ? (_step.value
+                                                            is PickLanguageOnboardingStep &&
+                                                        _step
+                                                                .value
+                                                                .state
+                                                                .targetLanguage !=
+                                                            null &&
+                                                        _enableNext.value)
+                                                    ? L10n.of(
+                                                        context,
+                                                      ).continueWithLang(
+                                                        _step
+                                                            .value
+                                                            .state
+                                                            .targetLanguage!
+                                                            .getDisplayName(
+                                                              context,
+                                                            ),
+                                                      )
+                                                    : L10n.of(context).next
+                                              : L10n.of(context).letsGo,
+                                          key: const ValueKey('text'),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                ),
                               ),
                             ),
                           ),

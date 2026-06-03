@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:22.022191",
+    "@@last_modified": "2026-06-03 15:15:25.740483",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9881,5 +9881,14 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "{lang} உடன் தொடரவும்",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

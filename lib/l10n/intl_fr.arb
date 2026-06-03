@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-06-02 11:16:38.819977",
+    "@@last_modified": "2026-06-03 15:15:41.753986",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10162,5 +10162,14 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "Continuer avec {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-02 11:16:17.751226",
+    "@@last_modified": "2026-06-03 15:15:21.119347",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10096,5 +10096,14 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "{lang} ile devam et",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

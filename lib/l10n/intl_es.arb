@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-06-02 11:15:41.926800",
+    "@@last_modified": "2026-06-03 15:14:55.114359",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7859,5 +7859,14 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "Continuar con {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

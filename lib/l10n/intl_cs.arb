@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-06-02 11:16:05.646526",
+    "@@last_modified": "2026-06-03 15:15:12.472245",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10319,5 +10319,14 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "Pokračovat s {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

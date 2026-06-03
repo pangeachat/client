@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-06-02 11:15:53.050221",
+    "@@last_modified": "2026-06-03 15:15:02.474584",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10249,5 +10249,14 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "Nastavi s {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

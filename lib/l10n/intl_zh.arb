@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-06-02 11:16:24.972839",
+    "@@last_modified": "2026-06-03 15:15:29.250927",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9765,5 +9765,14 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "继续使用 {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

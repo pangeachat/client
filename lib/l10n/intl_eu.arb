@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-02 11:15:57.241764",
+    "@@last_modified": "2026-06-03 15:15:05.572098",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9765,5 +9765,14 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "Jarraitzea {lang}rekin",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

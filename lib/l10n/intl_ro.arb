@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:15:49.426807",
+    "@@last_modified": "2026-06-03 15:15:00.189784",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10590,5 +10590,14 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "Continuați cu {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

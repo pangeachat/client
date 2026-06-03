@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-02 11:16:34.520935",
+    "@@last_modified": "2026-06-03 15:15:37.309628",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10779,5 +10779,14 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "Продолжить с {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

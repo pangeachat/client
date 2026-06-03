@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:03.490241",
+    "@@last_modified": "2026-06-03 15:15:10.677427",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9856,5 +9856,14 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "Continua con {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

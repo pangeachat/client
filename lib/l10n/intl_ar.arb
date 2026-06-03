@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-06-02 11:16:16.676510",
+    "@@last_modified": "2026-06-03 15:15:20.496556",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10105,5 +10105,14 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "تابع مع {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

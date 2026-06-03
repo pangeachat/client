@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:33.390702",
+    "@@last_modified": "2026-06-03 15:15:36.620050",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10884,5 +10884,14 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "Daŭrigi kun {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }
