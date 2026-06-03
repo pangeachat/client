@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:31:49.581039",
+    "@@last_modified": "2026-06-03 15:47:25.499119",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10846,7 +10846,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Završeno ({num})",
-    "suggestion": "Predlog",
+    "suggestion": "Izaberite najbolji predlog",
     "completeActivityButton": "Završio sam!",
     "@completedActivitiesTitle": {
         "type": "String",

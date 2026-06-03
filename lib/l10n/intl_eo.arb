@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:31:46.826960",
+    "@@last_modified": "2026-06-03 15:47:23.300692",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10842,7 +10842,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Finiĝis ({num})",
-    "suggestion": "Sugesto",
+    "suggestion": "Elektu la plej bonan Suggestion",
     "completeActivityButton": "Mi finas!",
     "@completedActivitiesTitle": {
         "type": "String",

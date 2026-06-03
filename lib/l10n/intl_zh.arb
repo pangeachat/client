@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-06-03 15:31:40.578174",
+    "@@last_modified": "2026-06-03 15:47:14.500338",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9723,7 +9723,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "已完成 ({num})",
-    "suggestion": "建议",
+    "suggestion": "选择最佳建议",
     "completeActivityButton": "我完成了！",
     "@completedActivitiesTitle": {
         "type": "String",

@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-06-03 15:31:01.476144",
+    "@@last_modified": "2026-06-03 15:46:34.812440",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7817,7 +7817,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Terminado ({num})",
-    "suggestion": "Sugerencia",
+    "suggestion": "Elige la mejor sugerencia",
     "completeActivityButton": "¡He terminado!",
     "@completedActivitiesTitle": {
         "type": "String",

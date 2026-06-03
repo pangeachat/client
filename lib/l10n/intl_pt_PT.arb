@@ -2777,7 +2777,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-06-03 15:31:28.608266",
+    "@@last_modified": "2026-06-03 15:47:00.303990",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10799,7 +10799,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Concluído ({num})",
-    "suggestion": "Sugestão",
+    "suggestion": "Escolha a melhor sugestão",
     "completeActivityButton": "Eu terminei!",
     "@completedActivitiesTitle": {
         "type": "String",

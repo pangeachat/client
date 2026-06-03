@@ -3194,7 +3194,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-03 15:31:38.855501",
+    "@@last_modified": "2026-06-03 15:47:13.733112",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9395,7 +9395,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Finito ({num})",
-    "suggestion": "Sugestão",
+    "suggestion": "Pilih Saran Terbaik",
     "completeActivityButton": "Mi finita!",
     "@completedActivitiesTitle": {
         "type": "String",

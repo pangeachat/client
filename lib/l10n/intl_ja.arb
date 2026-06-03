@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-03 15:31:45.285066",
+    "@@last_modified": "2026-06-03 15:47:21.770486",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10591,7 +10591,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "完了しました ({num})",
-    "suggestion": "提案",
+    "suggestion": "最適な提案を選んでください",
     "completeActivityButton": "完了しました！",
     "@completedActivitiesTitle": {
         "type": "String",

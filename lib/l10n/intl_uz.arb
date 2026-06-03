@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-06-03 15:31:30.139785",
+    "@@last_modified": "2026-06-03 15:47:01.628368",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9727,7 +9727,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Tugallandi ({num})",
-    "suggestion": "Taklif",
+    "suggestion": "Eng yaxshi taklifni tanlang",
     "completeActivityButton": "Men tugatdim!",
     "@completedActivitiesTitle": {
         "type": "String",

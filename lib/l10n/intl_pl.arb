@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-06-03 15:31:43.044750",
+    "@@last_modified": "2026-06-03 15:47:16.806885",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9832,7 +9832,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Zakończone ({num})",
-    "suggestion": "Sugestia",
+    "suggestion": "Wybierz najlepszą sugestię",
     "completeActivityButton": "Skończyłem!",
     "@completedActivitiesTitle": {
         "type": "String",

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-03 15:31:17.534986",
+    "@@last_modified": "2026-06-03 15:46:49.590934",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9720,7 +9720,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Lõpetatud ({num})",
-    "suggestion": "Soovitus",
+    "suggestion": "Vali parim ettepanek",
     "completeActivityButton": "Olen lõpetanud!",
     "@completedActivitiesTitle": {
         "type": "String",

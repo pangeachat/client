@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-03 15:31:33.422700",
+    "@@last_modified": "2026-06-03 15:47:04.708477",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10054,7 +10054,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Tamamlandı ({num})",
-    "suggestion": "Öneri",
+    "suggestion": "En iyi öneriyi seçin",
     "completeActivityButton": "Tamamladım!",
     "@completedActivitiesTitle": {
         "type": "String",

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-06-03 15:31:11.928200",
+    "@@last_modified": "2026-06-03 15:46:45.377746",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10207,7 +10207,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Završeno ({num})",
-    "suggestion": "Prijedlog",
+    "suggestion": "Odaberite najbolji prijedlog",
     "completeActivityButton": "Gotovo sam!",
     "@completedActivitiesTitle": {
         "type": "String",

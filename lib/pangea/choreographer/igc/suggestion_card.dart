@@ -67,17 +67,16 @@ class SuggestionCardState extends State<SuggestionCard> {
       child: Column(
         mainAxisSize: .min,
         children: [
-          SizedBox(
-            height: 40.0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.close),
-                  color: theme.iconTheme.color,
-                  onPressed: _close,
-                ),
-                Text(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                icon: const Icon(Icons.close),
+                color: theme.iconTheme.color,
+                onPressed: _close,
+              ),
+              Flexible(
+                child: Text(
                   L10n.of(context).suggestion,
                   textAlign: TextAlign.center,
                   style: theme.textTheme.titleLarge?.merge(
@@ -87,15 +86,15 @@ class SuggestionCardState extends State<SuggestionCard> {
                     ),
                   ),
                 ),
-                // TODO ORCHESTRATOR: add feedback mechanism
-                // IconButton(
-                //   icon: const Icon(Icons.flag_outlined),
-                //   color: theme.iconTheme.color,
-                //   onPressed: _showFeedbackDialog,
-                // ),
-                SizedBox(height: 40.0, width: 40.0),
-              ],
-            ),
+              ),
+              // TODO ORCHESTRATOR: add feedback mechanism
+              // IconButton(
+              //   icon: const Icon(Icons.flag_outlined),
+              //   color: theme.iconTheme.color,
+              //   onPressed: _showFeedbackDialog,
+              // ),
+              SizedBox(height: 40.0, width: 40.0),
+            ],
           ),
           Padding(
             padding: const EdgeInsets.symmetric(

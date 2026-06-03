@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-03 15:31:47.543414",
+    "@@last_modified": "2026-06-03 15:47:23.857389",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10737,7 +10737,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Завершено ({num})",
-    "suggestion": "Предложение",
+    "suggestion": "Выберите лучшее предложение",
     "completeActivityButton": "Я закончил!",
     "@completedActivitiesTitle": {
         "type": "String",

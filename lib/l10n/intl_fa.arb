@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:31:41.989185",
+    "@@last_modified": "2026-06-03 15:47:16.084006",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9835,7 +9835,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "تمام شده ({num})",
-    "suggestion": "پیشنهاد",
+    "suggestion": "بهترین پیشنهاد را انتخاب کنید",
     "completeActivityButton": "من تمام کردم!",
     "@completedActivitiesTitle": {
         "type": "String",

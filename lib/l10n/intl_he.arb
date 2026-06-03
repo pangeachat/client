@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:31:12.839114",
+    "@@last_modified": "2026-06-03 15:46:46.192293",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10802,7 +10802,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "סיים ({num})",
-    "suggestion": "הצעה",
+    "suggestion": "בחר את ההצעה הטובה ביותר",
     "completeActivityButton": "סיימתי!",
     "@completedActivitiesTitle": {
         "type": "String",
