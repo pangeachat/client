@@ -198,14 +198,21 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
                                                 .withAlpha(100),
                                             width: 4.0,
                                           )
-                                        : hasSelection
-                                        ? BorderSide.none
                                         : BorderSide(
                                             color: theme
                                                 .colorScheme
                                                 .surfaceContainerHigh,
                                             width: 2.0,
                                           ),
+                                    //       : hasSelection
+                                    //       ? BorderSide.none
+                                    //       : BorderSide(
+                                    //           color: theme
+                                    //               .colorScheme
+                                    //               .surfaceContainerHigh,
+                                    //           width: .0,
+                                    //         ),
+                                    // ),
                                   ),
                                   child: InkWell(
                                     onTap: () => _setTargetLanguage(
