@@ -1294,6 +1294,15 @@
         "type": "String",
         "placeholders": {}
     },
+    "continueWithLang": "Continue with {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
     "no": "No",
     "@no": {
         "type": "String",
