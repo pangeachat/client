@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-06-03 15:21:19.308143",
+    "@@last_modified": "2026-06-03 15:31:02.382555",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9770,5 +9770,14 @@
     "@gotIt": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "Continuar con {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

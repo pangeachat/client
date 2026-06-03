@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:21:47.782900",
+    "@@last_modified": "2026-06-03 15:31:37.882042",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9770,5 +9770,14 @@
     "@gotIt": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "Doorgaan met {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

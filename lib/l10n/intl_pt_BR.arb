@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:21:28.526443",
+    "@@last_modified": "2026-06-03 15:31:14.512071",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9770,5 +9770,14 @@
     "@gotIt": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "Continuar com {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

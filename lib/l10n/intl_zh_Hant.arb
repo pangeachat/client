@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:21:40.306012",
+    "@@last_modified": "2026-06-03 15:31:29.431253",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9900,5 +9900,14 @@
     "@gotIt": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "繼續使用 {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }
