@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-02 11:15:59.188726",
+    "@@last_modified": "2026-06-03 15:52:25.131906",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9720,7 +9720,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Lõpetatud ({num})",
-    "suggestion": "Soovitus",
+    "suggestion": "Vali parim ettepanek",
     "completeActivityButton": "Olen lõpetanud!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9760,6 +9760,35 @@
     },
     "suggestMobileDesc": "Laadi alla Pangea Chat rakendus, et saada teateid!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Sain aru!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Jätka {lang} keeles",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Laeb alla kogu sõnumi ajalugu, sealhulgas saatja, saatmise kuupäev, originaalsõnum, saadetud sõnum ja kasutustüüp.",
+    "analyticsDownloadDesc": "Laeb alla isiklikud sõnavara ja grammatika analüüsid valitud keele jaoks.",
+    "courseAnalyticsDownloadDesc": "Laeb alla lemma ja grammatika kasutamise valitud keeles kõigi kursuse osalejate jaoks, kellel on jagatud analüüsid.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
         "type": "String",
         "placeholders": {}
     }

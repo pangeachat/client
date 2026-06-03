@@ -3246,7 +3246,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-06-02 11:16:19.977897",
+    "@@last_modified": "2026-06-03 15:53:06.272431",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10609,7 +10609,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Baigta ({num})",
-    "suggestion": "Pasiūlymas",
+    "suggestion": "Pasirinkite geriausią pasiūlymą",
     "completeActivityButton": "Aš baigiau!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10649,6 +10649,35 @@
     },
     "suggestMobileDesc": "Gaukite Pangea Chat programėlę, kad gautumėte pranešimus!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Supratau!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Tęsti su {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Atsisiunčia visą žinučių istoriją, įskaitant siuntėją, siuntimo datą, originalią žinutę, išsiųstą žinutę ir naudojimo tipą.",
+    "analyticsDownloadDesc": "Atsisiunčia asmeninius žodyno ir gramatikos analizės duomenis pasirinktam kalbai.",
+    "courseAnalyticsDownloadDesc": "Atsisiunčia lemą ir gramatikos naudojimą pasirinktam kalbai visiems kurso dalyviams su bendromis analizėmis.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
         "type": "String",
         "placeholders": {}
     }

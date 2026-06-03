@@ -1963,7 +1963,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-06-02 11:16:01.221394",
+    "@@last_modified": "2026-06-03 15:52:29.229224",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10839,7 +10839,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Končano ({num})",
-    "suggestion": "Predlog",
+    "suggestion": "Izberite najboljši predlog",
     "completeActivityButton": "Končal sem!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10879,6 +10879,35 @@
     },
     "suggestMobileDesc": "Prenesite aplikacijo Pangea Chat, da prejmete obvestila!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Razumem!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Nadaljujte z {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Prenese celotno zgodovino sporočil, vključno s pošiljateljem, datumom pošiljanja, izvirnim sporočilom, poslanim sporočilom in vrsto uporabe.",
+    "analyticsDownloadDesc": "Prenese osebne analize besedišča in slovnice za izbrani jezik.",
+    "courseAnalyticsDownloadDesc": "Prenese leme in uporabo slovnice v izbranem jeziku za vse udeležence tečaja z deljenimi analizami.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
         "type": "String",
         "placeholders": {}
     }

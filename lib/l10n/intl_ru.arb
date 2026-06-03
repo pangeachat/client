@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-02 11:16:34.520935",
+    "@@last_modified": "2026-06-03 15:47:23.857389",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10737,7 +10737,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Завершено ({num})",
-    "suggestion": "Предложение",
+    "suggestion": "Выберите лучшее предложение",
     "completeActivityButton": "Я закончил!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10779,5 +10779,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "Понял!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Продолжить с {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

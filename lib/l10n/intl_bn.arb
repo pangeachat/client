@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:25.813946",
+    "@@last_modified": "2026-06-03 15:53:19.711644",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10438,7 +10438,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "সম্পন্ন ({num})",
-    "suggestion": "প্রস্তাবনা",
+    "suggestion": "সেরা পরামর্শটি বেছে নিন",
     "completeActivityButton": "আমি শেষ করেছি!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10478,6 +10478,35 @@
     },
     "suggestMobileDesc": "নোটিফিকেশন পেতে Pangea Chat অ্যাপটি ডাউনলোড করুন!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "বুঝেছি!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang} এর সাথে চালিয়ে যান",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "সম্পূর্ণ বার্তা ইতিহাস ডাউনলোড করে, প্রেরক, পাঠানোর তারিখ, মূল বার্তা, পাঠানো বার্তা এবং ব্যবহার প্রকার সহ।",
+    "analyticsDownloadDesc": "নির্বাচিত ভাষার জন্য ব্যক্তিগত শব্দভাণ্ডার এবং ব্যাকরণ বিশ্লেষণ ডাউনলোড করে।",
+    "courseAnalyticsDownloadDesc": "নির্বাচিত ভাষায় সমস্ত কোর্স অংশগ্রহণকারীদের জন্য শেয়ার করা বিশ্লেষণের সাথে লেমা এবং ব্যাকরণ ব্যবহারের ডাউনলোড করে।",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
         "type": "String",
         "placeholders": {}
     }

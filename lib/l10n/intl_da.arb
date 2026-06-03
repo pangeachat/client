@@ -1478,7 +1478,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-06-02 11:15:46.186781",
+    "@@last_modified": "2026-06-03 15:51:58.914796",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10817,7 +10817,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Færdig ({num})",
-    "suggestion": "Forslag",
+    "suggestion": "Vælg det bedste forslag",
     "completeActivityButton": "Jeg er færdig!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10857,6 +10857,35 @@
     },
     "suggestMobileDesc": "Få Pangea Chat-appen for at modtage meddelelser!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Forstået!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Fortsæt med {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Downloader den fulde beskedhistorik, inklusive afsender, dato sendt, original besked, sendt besked og brugstype.",
+    "analyticsDownloadDesc": "Downloader personlige ordforråd og grammatik-analyser for det valgte sprog.",
+    "courseAnalyticsDownloadDesc": "Downloader lemma og grammatikbrug på det valgte sprog for alle kursusdeltagere med delte analyser.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
         "type": "String",
         "placeholders": {}
     }

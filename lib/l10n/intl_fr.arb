@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-06-02 11:16:38.819977",
+    "@@last_modified": "2026-06-03 15:47:27.125557",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10120,7 +10120,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Terminé ({num})",
-    "suggestion": "Suggestion",
+    "suggestion": "Choisissez la meilleure suggestion",
     "completeActivityButton": "J'ai terminé !",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10162,5 +10162,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "Compris !",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Continuer avec {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

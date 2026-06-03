@@ -1468,7 +1468,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-06-02 11:16:18.715916",
+    "@@last_modified": "2026-06-03 15:53:03.734444",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10844,7 +10844,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "ముగిసిన ({num})",
-    "suggestion": "సూచన",
+    "suggestion": "ఉత్తమ సూచనను ఎంచుకోండి",
     "completeActivityButton": "నేను పూర్తిచేసాను!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10884,6 +10884,35 @@
     },
     "suggestMobileDesc": "నోటిఫికేషన్లు పొందడానికి పాంజియా చాట్ యాప్‌ను పొందండి!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "అర్థమైంది!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang} తో కొనసాగించండి",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "పంపినవాడు, పంపిన తేదీ, అసలు సందేశం, పంపిన సందేశం మరియు ఉపయోగం రకం సహా పూర్తి సందేశాల చరిత్రను డౌన్‌లోడ్ చేస్తుంది.",
+    "analyticsDownloadDesc": "ఎంచుకున్న భాష కోసం వ్యక్తిగత పదకోశ మరియు వ్యాకరణ విశ్లేషణలను డౌన్‌లోడ్ చేస్తుంది.",
+    "courseAnalyticsDownloadDesc": "సाझా విశ్లేషణలతో అన్ని కోర్సు పాల్గొనేవారికి ఎంచుకున్న భాషలో లెమ్మా మరియు వ్యాకరణ వినియోగాన్ని డౌన్‌లోడ్ చేస్తుంది.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
         "type": "String",
         "placeholders": {}
     }

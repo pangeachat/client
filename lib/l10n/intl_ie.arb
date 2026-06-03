@@ -3378,7 +3378,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-06-02 11:15:51.817068",
+    "@@last_modified": "2026-06-03 15:52:12.126262",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10442,7 +10442,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Fini ({num})",
-    "suggestion": "Sugestão",
+    "suggestion": "Roghnaigh an moladh is fearr",
     "completeActivityButton": "Taim críochnaithe!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10482,6 +10482,35 @@
     },
     "suggestMobileDesc": "Obtenha o aplicativo Pangea Chat para receber notificações!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Got it!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Leanaigh le {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Baileann an stair iomlán teachtaireachtaí, lena n-áirítear an t-úsáideoir, an dáta a sheoladh, an teachtaireacht bhunaidh, an teachtaireacht a sheoladh, agus an cineál úsáide.",
+    "analyticsDownloadDesc": "Baileann anailísí pearsanta ar fhocail agus gramadach don teanga roghnaithe.",
+    "courseAnalyticsDownloadDesc": "Baileann an lemma agus úsáid gramadaí sa teanga roghnaithe do gach rannpháirtí sa chúrsa le hanailísí comhoibrithe.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
         "type": "String",
         "placeholders": {}
     }

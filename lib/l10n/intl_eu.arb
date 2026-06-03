@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-02 11:15:57.241764",
+    "@@last_modified": "2026-06-03 15:52:21.655432",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9723,7 +9723,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Amaitu ({num})",
-    "suggestion": "Iragarpena",
+    "suggestion": "Hautatu iradokitzailerik onena",
     "completeActivityButton": "Amaitu dut!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9763,6 +9763,35 @@
     },
     "suggestMobileDesc": "Lortu Pangea Chat aplikazioa jakinarazpenak jasotzeko!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Ulertu dut!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang}rekin jarraitu",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Deskargatzen du mezuen historia osoa, bidaltzailea, bidali den data, jatorrizko mezua, bidalitako mezua eta erabilera mota barne.",
+    "analyticsDownloadDesc": "Deskargatzen ditu hautatutako hizkuntzako vocab eta gramatika analitikak.",
+    "courseAnalyticsDownloadDesc": "Deskargatzen ditu hautatutako hizkuntzako lemma eta gramatika erabilera ikastaroan parte hartzen duten guztientzat partekatutako analitikekin.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
         "type": "String",
         "placeholders": {}
     }

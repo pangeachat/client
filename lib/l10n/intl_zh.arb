@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-06-02 11:16:24.972839",
+    "@@last_modified": "2026-06-03 15:53:17.385838",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9723,7 +9723,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "已完成 ({num})",
-    "suggestion": "建议",
+    "suggestion": "选择最佳建议",
     "completeActivityButton": "我完成了！",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9763,6 +9763,35 @@
     },
     "suggestMobileDesc": "获取 Pangea Chat 应用以接收通知！",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "明白了！",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "继续使用 {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "下载完整的消息历史，包括发件人、发送日期、原始消息、已发送消息和使用类型。",
+    "analyticsDownloadDesc": "下载所选语言的个人词汇和语法分析。",
+    "courseAnalyticsDownloadDesc": "下载所有课程参与者在所选语言中的词元和语法使用情况，带有共享分析。",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
         "type": "String",
         "placeholders": {}
     }

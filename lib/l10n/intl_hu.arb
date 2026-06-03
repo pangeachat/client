@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-06-02 11:15:47.309781",
+    "@@last_modified": "2026-06-03 15:52:01.148338",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9850,7 +9850,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Befejezett ({num})",
-    "suggestion": "Javaslat",
+    "suggestion": "Válaszd a legjobb javaslatot",
     "completeActivityButton": "Kész vagyok!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9890,6 +9890,35 @@
     },
     "suggestMobileDesc": "Töltsd le a Pangea Chat alkalmazást, hogy értesítéseket kapj!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Értettem!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Folytatás a(z) {lang} nyelven",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Letölti a teljes üzenet történetet, beleértve a feladót, a küldés dátumát, az eredeti üzenetet, a küldött üzenetet és a használati típust.",
+    "analyticsDownloadDesc": "Letölti a személyes szókincs és nyelvtani elemzéseket a kiválasztott nyelvhez.",
+    "courseAnalyticsDownloadDesc": "Letölti a lemma és nyelvtani használatot a kiválasztott nyelvben az összes kurzus résztvevő számára, akik megosztott elemzésekkel rendelkeznek.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
         "type": "String",
         "placeholders": {}
     }

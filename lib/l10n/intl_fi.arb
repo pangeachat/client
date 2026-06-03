@@ -3914,7 +3914,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-06-02 11:15:45.068583",
+    "@@last_modified": "2026-06-03 15:51:56.861545",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9772,7 +9772,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Valmis ({num})",
-    "suggestion": "Ehdotus",
+    "suggestion": "Valitse paras ehdotus",
     "completeActivityButton": "Olen valmis!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9812,6 +9812,35 @@
     },
     "suggestMobileDesc": "Hanki Pangea Chat -sovellus saadaksesi ilmoituksia!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Sain sen!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Jatka kielellä {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Lataa koko viestihistoria, mukaan lukien lähettäjä, lähetetty päivämäärä, alkuperäinen viesti, lähetetty viesti ja käyttötapa.",
+    "analyticsDownloadDesc": "Lataa henkilökohtaiset sanasto- ja kielioppianalyysit valitulle kielelle.",
+    "courseAnalyticsDownloadDesc": "Lataa lemma- ja kielioppikäyttö valitussa kielessä kaikille kurssin osallistujille, joilla on jaetut analyysit.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
         "type": "String",
         "placeholders": {}
     }

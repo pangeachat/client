@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:29.295519",
+    "@@last_modified": "2026-06-03 15:47:17.504847",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10310,7 +10310,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Färdig ({num})",
-    "suggestion": "Förslag",
+    "suggestion": "Välj det bästa förslaget",
     "completeActivityButton": "Jag är klar!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10352,5 +10352,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "Förstått!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Fortsätt med {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

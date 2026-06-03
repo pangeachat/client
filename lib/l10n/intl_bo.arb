@@ -3194,7 +3194,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-02 11:16:24.120571",
+    "@@last_modified": "2026-06-03 15:53:15.107021",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9395,7 +9395,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Finito ({num})",
-    "suggestion": "Sugestão",
+    "suggestion": "Pilih Saran Terbaik",
     "completeActivityButton": "Mi finita!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9435,6 +9435,35 @@
     },
     "suggestMobileDesc": "Get the Pangea Chat app to receive notifications!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Dapet!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Fortsæt med {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Mundhëzhet historia e plotë e mesazheve, duke përfshirë dërguesin, datën e dërgimit, mesazhin origjinal, mesazhin e dërguar dhe llojin e përdorimit.",
+    "analyticsDownloadDesc": "Mundhëzhet analiza personale e fjalorit dhe gramatikës për gjuhën e zgjedhur.",
+    "courseAnalyticsDownloadDesc": "Mundhëzhet lemma dhe përdorimi i gramatikës në gjuhën e zgjedhur për të gjithë pjesëmarrësit e kursit me analiza të ndara.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
         "type": "String",
         "placeholders": {}
     }

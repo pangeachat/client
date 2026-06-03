@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:15:54.171757",
+    "@@last_modified": "2026-06-03 15:52:15.807440",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10802,7 +10802,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "סיים ({num})",
-    "suggestion": "הצעה",
+    "suggestion": "בחר את ההצעה הטובה ביותר",
     "completeActivityButton": "סיימתי!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10842,6 +10842,35 @@
     },
     "suggestMobileDesc": "קבל את אפליקציית Pangea Chat כדי לקבל התראות!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "הבנתי!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "המשך עם {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "מוריד את היסטוריית ההודעות המלאה, כולל שולח, תאריך שנשלח, הודעה מקורית, הודעה שנשלחה וסוג שימוש.",
+    "analyticsDownloadDesc": "מוריד אנליטיקות של אוצר מילים ודקדוק אישיים עבור השפה הנבחרת.",
+    "courseAnalyticsDownloadDesc": "מוריד את השורש ושימוש הדקדוק בשפה הנבחרת עבור כל משתתפי הקורס עם אנליטיקות משותפות.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
         "type": "String",
         "placeholders": {}
     }

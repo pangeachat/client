@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-06-02 11:15:41.926800",
+    "@@last_modified": "2026-06-03 15:51:52.855893",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7817,7 +7817,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Terminado ({num})",
-    "suggestion": "Sugerencia",
+    "suggestion": "Elige la mejor sugerencia",
     "completeActivityButton": "¡He terminado!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -7857,6 +7857,35 @@
     },
     "suggestMobileDesc": "¡Obtén la aplicación Pangea Chat para recibir notificaciones!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "¡Entendido!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Continuar con {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Descarga el historial completo de mensajes, incluyendo el remitente, la fecha de envío, el mensaje original, el mensaje enviado y el tipo de uso.",
+    "analyticsDownloadDesc": "Descarga el vocabulario personal y la analítica gramatical para el idioma seleccionado.",
+    "courseAnalyticsDownloadDesc": "Descarga el lema y el uso de la gramática en el idioma seleccionado para todos los participantes del curso con analíticas compartidas.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:33.390702",
+    "@@last_modified": "2026-06-03 15:47:23.300692",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10842,7 +10842,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Finiĝis ({num})",
-    "suggestion": "Sugesto",
+    "suggestion": "Elektu la plej bonan Suggestion",
     "completeActivityButton": "Mi finas!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10884,5 +10884,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "Komprenite!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Daŭrigi kun {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

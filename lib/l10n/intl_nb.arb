@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:06.387534",
+    "@@last_modified": "2026-06-03 15:52:40.211179",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9783,7 +9783,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Ferdig ({num})",
-    "suggestion": "Forslag",
+    "suggestion": "Velg det beste forslaget",
     "completeActivityButton": "Jeg er ferdig!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9823,6 +9823,35 @@
     },
     "suggestMobileDesc": "Få Pangea Chat-appen for å motta varsler!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Fikk det!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Fortsett med {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Laster ned hele meldingshistorikken, inkludert avsender, dato sendt, original melding, sendt melding og brukstype.",
+    "analyticsDownloadDesc": "Laster ned personlig ordforråd og grammatikk-analyse for det valgte språket.",
+    "courseAnalyticsDownloadDesc": "Laster ned lemma og grammatikkbruk på det valgte språket for alle kursdeltakere med delt analyse.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
         "type": "String",
         "placeholders": {}
     }
