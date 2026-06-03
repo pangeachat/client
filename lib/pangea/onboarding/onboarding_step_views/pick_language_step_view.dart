@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
 import 'package:provider/provider.dart';
 
@@ -9,6 +8,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/pangea/languages/language_display_name_prefix_widget.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
@@ -204,15 +204,6 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
                                                 .surfaceContainerHigh,
                                             width: 2.0,
                                           ),
-                                    //       : hasSelection
-                                    //       ? BorderSide.none
-                                    //       : BorderSide(
-                                    //           color: theme
-                                    //               .colorScheme
-                                    //               .surfaceContainerHigh,
-                                    //           width: .0,
-                                    //         ),
-                                    // ),
                                   ),
                                   child: InkWell(
                                     onTap: () => _setTargetLanguage(
@@ -224,43 +215,10 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
                                         vertical: 12.0,
                                         horizontal: 8.0,
                                       ),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          SizedBox(
-                                            width: flagSize,
-                                            height: flagSize,
-                                            child: l.isLocalized
-                                                ? SvgPicture.network(
-                                                    l.svgUrl.toString(),
-                                                    width: flagSize,
-                                                    height: flagSize,
-                                                    errorBuilder: (_, _, _) =>
-                                                        const SizedBox.shrink(),
-                                                    placeholderBuilder: (_) =>
-                                                        const Center(
-                                                          child:
-                                                              CircularProgressIndicator(
-                                                                strokeWidth:
-                                                                    0.5,
-                                                              ),
-                                                        ),
-                                                  )
-                                                : Icon(
-                                                    Icons.language,
-                                                    size: flagSize,
-                                                  ),
-                                          ),
-                                          const SizedBox(height: 8.0),
-                                          Text(
-                                            l.getDisplayName(context),
-                                            style: textStyle,
-                                            textAlign: TextAlign.center,
-                                            maxLines: 2,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ],
+                                      child: LanguageDisplayNamePrefixWidget(
+                                        l,
+                                        style: textStyle,
+                                        iconSize: flagSize,
                                       ),
                                     ),
                                   ),
