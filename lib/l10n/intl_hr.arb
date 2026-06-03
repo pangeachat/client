@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-06-02 11:15:53.050221",
+    "@@last_modified": "2026-06-03 15:21:26.399468",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10247,6 +10247,11 @@
     },
     "suggestMobileDesc": "Preuzmite Pangea Chat aplikaciju kako biste primali obavijesti!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Razumijem!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }

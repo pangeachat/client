@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-06-02 11:15:50.876541",
+    "@@last_modified": "2026-06-03 15:21:24.686913",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10879,6 +10879,11 @@
     },
     "suggestMobileDesc": "Získajte aplikáciu Pangea Chat, aby ste dostávali upozornenia!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Rozumiem!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }

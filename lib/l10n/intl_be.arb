@@ -3934,7 +3934,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-06-02 11:16:07.995634",
+    "@@last_modified": "2026-06-03 15:21:36.426572",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9777,6 +9777,11 @@
     },
     "suggestMobileDesc": "Атрымаеце прыкладанне Pangea Chat, каб атрымліваць апавяшчэнні!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Зразумеў!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }

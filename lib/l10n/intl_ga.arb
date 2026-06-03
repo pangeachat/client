@@ -3949,7 +3949,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-06-02 11:16:38.053726",
+    "@@last_modified": "2026-06-03 15:21:59.967254",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9774,6 +9774,11 @@
     },
     "suggestMobileDesc": "Faigh an aip Pangea Chat chun fógraí a fháil!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Tuigim é!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }

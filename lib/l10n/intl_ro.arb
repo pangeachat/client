@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:15:49.426807",
+    "@@last_modified": "2026-06-03 15:21:23.873017",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10588,6 +10588,11 @@
     },
     "suggestMobileDesc": "Obține aplicația Pangea Chat pentru a primi notificări!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Am înțeles!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }

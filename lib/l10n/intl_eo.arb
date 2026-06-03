@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:33.390702",
+    "@@last_modified": "2026-06-03 15:21:55.036484",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10882,6 +10882,11 @@
     },
     "suggestMobileDesc": "Akiru la Pangea Chat-aplikaĵon por ricevi notifikojn!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Komprenite!",
+    "@gotIt": {
         "type": "String",
         "placeholders": {}
     }
