@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:15:40.632746",
+    "@@last_modified": "2026-06-03 15:31:00.439351",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9982,5 +9982,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "알겠어요!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang}로 계속하기",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

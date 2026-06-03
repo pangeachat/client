@@ -1294,6 +1294,15 @@
         "type": "String",
         "placeholders": {}
     },
+    "continueWithLang": "Continue with {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
     "no": "No",
     "@no": {
         "type": "String",
@@ -4839,5 +4848,6 @@
     "enterAName": "Please enter a name.",
     "writingAssistanceNoSub": "Writing assistance",
     "viewError": "View error",
+    "gotIt": "Got it!",
     "suggestMobileDesc": "Get the Pangea Chat app to receive notifications!"
 }

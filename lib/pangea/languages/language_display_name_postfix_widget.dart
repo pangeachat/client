@@ -25,7 +25,7 @@ class LanguageDisplayNamePostfixWidget extends StatelessWidget {
         style: style,
         children: [
           TextSpan(text: language.getDisplayName(context)),
-          if (language.isLocalized) ...[
+          if (language.shouldShowFlag) ...[
             WidgetSpan(
               child: SizedBox(width: spacing),
             ), // Add some spacing between the text and the icon
