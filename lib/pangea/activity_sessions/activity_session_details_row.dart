@@ -17,7 +17,7 @@ class ActivitySessionDetailsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      padding: const EdgeInsets.only(bottom: 4.0),
       child: Row(
         spacing: 12.0,
         children: [
