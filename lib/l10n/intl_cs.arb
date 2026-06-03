@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-06-03 15:31:23.884519",
+    "@@last_modified": "2026-06-03 15:46:56.523378",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10277,7 +10277,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Dokončeno ({num})",
-    "suggestion": "Návrh",
+    "suggestion": "Vyberte nejlepší návrh",
     "completeActivityButton": "Jsem hotov!",
     "@completedActivitiesTitle": {
         "type": "String",

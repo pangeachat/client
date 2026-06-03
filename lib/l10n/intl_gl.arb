@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-06-03 15:31:02.382555",
+    "@@last_modified": "2026-06-03 15:46:35.415667",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9723,7 +9723,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Rematado ({num})",
-    "suggestion": "Suxestión",
+    "suggestion": "Elixe a mellor suxestión",
     "completeActivityButton": "¡Rematei!",
     "@completedActivitiesTitle": {
         "type": "String",

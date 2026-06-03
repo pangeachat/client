@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-03 15:31:22.045683",
+    "@@last_modified": "2026-06-03 15:46:53.607405",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9723,7 +9723,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Завершено ({num})",
-    "suggestion": "Пропозиція",
+    "suggestion": "Виберіть найкращу пропозицію",
     "completeActivityButton": "Я закінчив!",
     "@completedActivitiesTitle": {
         "type": "String",

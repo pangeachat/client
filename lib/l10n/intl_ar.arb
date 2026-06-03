@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-06-03 15:31:32.716462",
+    "@@last_modified": "2026-06-03 15:47:03.887480",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10063,7 +10063,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "انتهى ({num})",
-    "suggestion": "اقتراح",
+    "suggestion": "اختر أفضل اقتراح",
     "completeActivityButton": "لقد انتهيت!",
     "@completedActivitiesTitle": {
         "type": "String",

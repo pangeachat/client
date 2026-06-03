@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-03 15:31:15.294481",
+    "@@last_modified": "2026-06-03 15:46:48.332502",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9723,7 +9723,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Amaitu ({num})",
-    "suggestion": "Iragarpena",
+    "suggestion": "Hautatu iradokitzailerik onena",
     "completeActivityButton": "Amaitu dut!",
     "@completedActivitiesTitle": {
         "type": "String",

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:31:26.665679",
+    "@@last_modified": "2026-06-03 15:46:58.989379",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9874,7 +9874,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Acabat ({num})",
-    "suggestion": "Suggeriment",
+    "suggestion": "Tria la millor suggerència",
     "completeActivityButton": "He acabat!",
     "@completedActivitiesTitle": {
         "type": "String",

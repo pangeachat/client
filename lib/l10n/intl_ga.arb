@@ -3949,7 +3949,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-06-03 15:31:50.399471",
+    "@@last_modified": "2026-06-03 15:47:26.622051",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9734,7 +9734,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Críochnaithe ({num})",
-    "suggestion": "Moladh",
+    "suggestion": "Roghnaigh an moladh is fearr",
     "completeActivityButton": "Táim críochnaithe!",
     "@completedActivitiesTitle": {
         "type": "String",

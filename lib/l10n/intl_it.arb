@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:31:21.425772",
+    "@@last_modified": "2026-06-03 15:46:52.520769",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9814,7 +9814,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Finiti ({num})",
-    "suggestion": "Suggerimento",
+    "suggestion": "Scegli il miglior suggerimento",
     "completeActivityButton": "Ho finito!",
     "@completedActivitiesTitle": {
         "type": "String",

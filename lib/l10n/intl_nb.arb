@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:31:24.503148",
+    "@@last_modified": "2026-06-03 15:46:57.334608",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9783,7 +9783,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Ferdig ({num})",
-    "suggestion": "Forslag",
+    "suggestion": "Velg det beste forslaget",
     "completeActivityButton": "Jeg er ferdig!",
     "@completedActivitiesTitle": {
         "type": "String",

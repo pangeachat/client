@@ -3914,7 +3914,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-06-03 15:31:03.298989",
+    "@@last_modified": "2026-06-03 15:46:38.796951",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9772,7 +9772,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Valmis ({num})",
-    "suggestion": "Ehdotus",
+    "suggestion": "Valitse paras ehdotus",
     "completeActivityButton": "Olen valmis!",
     "@completedActivitiesTitle": {
         "type": "String",

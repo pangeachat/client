@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-06-03 15:31:18.761525",
+    "@@last_modified": "2026-06-03 15:46:50.376564",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9702,7 +9702,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Fertig ({num})",
-    "suggestion": "Vorschlag",
+    "suggestion": "Wählen Sie den besten Vorschlag",
     "completeActivityButton": "Ich bin fertig!",
     "@completedActivitiesTitle": {
         "type": "String",

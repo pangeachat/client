@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:31:37.111269",
+    "@@last_modified": "2026-06-03 15:47:10.451435",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9839,7 +9839,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "முடிந்தது ({num})",
-    "suggestion": "சூழல்",
+    "suggestion": "சிறந்த பரிந்துரையை தேர்ந்தெடுக்கவும்",
     "completeActivityButton": "நான் முடித்துவிட்டேன்!",
     "@completedActivitiesTitle": {
         "type": "String",

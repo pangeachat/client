@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:31:00.439351",
+    "@@last_modified": "2026-06-03 15:46:33.842462",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9940,7 +9940,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "완료됨 ({num})",
-    "suggestion": "제안",
+    "suggestion": "최고의 제안을 선택하세요",
     "completeActivityButton": "완료했어요!",
     "@completedActivitiesTitle": {
         "type": "String",
