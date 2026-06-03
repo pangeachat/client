@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-02 11:16:04.510266",
+    "@@last_modified": "2026-06-03 15:46:53.607405",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9723,7 +9723,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Завершено ({num})",
-    "suggestion": "Пропозиція",
+    "suggestion": "Виберіть найкращу пропозицію",
     "completeActivityButton": "Я закінчив!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9765,5 +9765,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "Зрозумів!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Продовжити з {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

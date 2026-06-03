@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:15:48.435448",
+    "@@last_modified": "2026-06-03 15:46:42.174847",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9820,7 +9820,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Selesai ({num})",
-    "suggestion": "Saran",
+    "suggestion": "Pilih Saran Terbaik",
     "completeActivityButton": "Saya sudah selesai!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9862,5 +9862,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "Mengerti!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Lanjutkan dengan {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

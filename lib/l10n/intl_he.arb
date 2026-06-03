@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:15:54.171757",
+    "@@last_modified": "2026-06-03 15:46:46.192293",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10802,7 +10802,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "סיים ({num})",
-    "suggestion": "הצעה",
+    "suggestion": "בחר את ההצעה הטובה ביותר",
     "completeActivityButton": "סיימתי!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10844,5 +10844,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "הבנתי!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "המשך עם {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

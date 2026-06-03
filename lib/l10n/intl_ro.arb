@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:15:49.426807",
+    "@@last_modified": "2026-06-03 15:46:42.731842",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10548,7 +10548,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Finalizat ({num})",
-    "suggestion": "Sugestie",
+    "suggestion": "Alege cea mai bună sugestie",
     "completeActivityButton": "Am terminat!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10590,5 +10590,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "Am înțeles!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Continuați cu {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

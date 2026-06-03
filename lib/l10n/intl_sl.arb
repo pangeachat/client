@@ -1963,7 +1963,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-06-02 11:16:01.221394",
+    "@@last_modified": "2026-06-03 15:46:51.091765",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10839,7 +10839,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Končano ({num})",
-    "suggestion": "Predlog",
+    "suggestion": "Izberite najboljši predlog",
     "completeActivityButton": "Končal sem!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10881,5 +10881,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "Razumem!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Nadaljujte z {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

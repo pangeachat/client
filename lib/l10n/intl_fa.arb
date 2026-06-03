@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:26.832710",
+    "@@last_modified": "2026-06-03 15:47:16.084006",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9835,7 +9835,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "تمام شده ({num})",
-    "suggestion": "پیشنهاد",
+    "suggestion": "بهترین پیشنهاد را انتخاب کنید",
     "completeActivityButton": "من تمام کردم!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9877,5 +9877,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "متوجه شدم!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "ادامه با {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

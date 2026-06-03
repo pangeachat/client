@@ -2258,7 +2258,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-06-02 11:16:14.453051",
+    "@@last_modified": "2026-06-03 15:47:02.451357",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10742,7 +10742,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Natapos ({num})",
-    "suggestion": "Mungkahi",
+    "suggestion": "Pumili ng Pinakamahusay na Mungkahi",
     "completeActivityButton": "Tapos na ako!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10784,5 +10784,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "Nakuha ko na!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Magpatuloy sa {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

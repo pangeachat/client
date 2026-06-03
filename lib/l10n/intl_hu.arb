@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-06-02 11:15:47.309781",
+    "@@last_modified": "2026-06-03 15:46:41.565524",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9850,7 +9850,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Befejezett ({num})",
-    "suggestion": "Javaslat",
+    "suggestion": "Válaszd a legjobb javaslatot",
     "completeActivityButton": "Kész vagyok!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9892,5 +9892,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "Értettem!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Folytatás a(z) {lang} nyelven",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

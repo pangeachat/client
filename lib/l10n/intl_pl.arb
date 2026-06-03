@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-06-02 11:16:27.974514",
+    "@@last_modified": "2026-06-03 15:47:16.806885",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9832,7 +9832,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Zakończone ({num})",
-    "suggestion": "Sugestia",
+    "suggestion": "Wybierz najlepszą sugestię",
     "completeActivityButton": "Skończyłem!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9874,5 +9874,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "Rozumiem!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Kontynuuj z {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

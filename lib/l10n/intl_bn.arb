@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:25.813946",
+    "@@last_modified": "2026-06-03 15:47:15.271005",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10438,7 +10438,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "সম্পন্ন ({num})",
-    "suggestion": "প্রস্তাবনা",
+    "suggestion": "সেরা পরামর্শটি বেছে নিন",
     "completeActivityButton": "আমি শেষ করেছি!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10480,5 +10480,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "বুঝেছি!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang} এর সাথে চালিয়ে যান",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

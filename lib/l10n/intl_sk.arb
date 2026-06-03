@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-06-02 11:15:50.876541",
+    "@@last_modified": "2026-06-03 15:46:43.560149",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10839,7 +10839,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Dokončené ({num})",
-    "suggestion": "Návrh",
+    "suggestion": "Vyberte najlepšiu návrh",
     "completeActivityButton": "Som hotový!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10881,5 +10881,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "Rozumiem!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Pokračovať s {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

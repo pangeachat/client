@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:22.022191",
+    "@@last_modified": "2026-06-03 15:47:10.451435",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9839,7 +9839,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "முடிந்தது ({num})",
-    "suggestion": "சூழல்",
+    "suggestion": "சிறந்த பரிந்துரையை தேர்ந்தெடுக்கவும்",
     "completeActivityButton": "நான் முடித்துவிட்டேன்!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9881,5 +9881,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "அது புரிந்தது!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang} உடன் தொடரவும்",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

@@ -1407,7 +1407,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-06-02 11:16:02.467157",
+    "@@last_modified": "2026-06-03 15:46:51.830170",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10854,7 +10854,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "完成 ({num})",
-    "suggestion": "建議",
+    "suggestion": "選擇最佳建議",
     "completeActivityButton": "我完成了！",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10896,5 +10896,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "明白了！",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "繼續使用 {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

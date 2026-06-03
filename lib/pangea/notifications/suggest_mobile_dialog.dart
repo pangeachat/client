@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -48,80 +46,14 @@ class SuggestMobileDialog extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 10.0,
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Theme.of(
-                            context,
-                          ).colorScheme.primaryContainer,
-                          foregroundColor: Theme.of(
-                            context,
-                          ).colorScheme.onPrimaryContainer,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 24,
-                            vertical: 12,
-                          ),
-                        ),
-                        onPressed: () {
-                          Clipboard.setData(
-                            ClipboardData(text: AppConfig.androidUpdateURL),
-                          );
-                          Navigator.of(
-                            context,
-                          ).pop<OkCancelResult>(OkCancelResult.cancel);
-                        },
-                        child: SvgPicture.asset(
-                          "assets/pangea/google.svg",
-                          height: 20,
-                          width: 20,
-                          colorFilter: ColorFilter.mode(
-                            Theme.of(context).colorScheme.onPrimaryContainer,
-                            BlendMode.srcIn,
-                          ),
-                        ),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Theme.of(
-                            context,
-                          ).colorScheme.primaryContainer,
-                          foregroundColor: Theme.of(
-                            context,
-                          ).colorScheme.onPrimaryContainer,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 24,
-                            vertical: 12,
-                          ),
-                        ),
-                        onPressed: () {
-                          Clipboard.setData(
-                            ClipboardData(text: AppConfig.iosUpdateURL),
-                          );
-                          Navigator.of(
-                            context,
-                          ).pop<OkCancelResult>(OkCancelResult.cancel);
-                        },
-                        child: SvgPicture.asset(
-                          "assets/pangea/apple.svg",
-                          height: 20,
-                          width: 20,
-                          colorFilter: ColorFilter.mode(
-                            Theme.of(context).colorScheme.onPrimaryContainer,
-                            BlendMode.srcIn,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Theme.of(
                         context,
-                      ).colorScheme.surfaceContainerHigh,
-                      foregroundColor: Theme.of(context).colorScheme.onSurface,
+                      ).colorScheme.primaryContainer,
+                      foregroundColor: Theme.of(
+                        context,
+                      ).colorScheme.onPrimaryContainer,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 24,
                         vertical: 12,
@@ -133,13 +65,8 @@ class SuggestMobileDialog extends StatelessWidget {
                     child: Wrap(
                       children: [
                         Text(
-                          l10n.skipForNow,
-                          style: Theme.of(context).textTheme.bodyLarge
-                              ?.copyWith(
-                                color: Theme.of(
-                                  context,
-                                ).colorScheme.onSurface.withAlpha(180),
-                              ),
+                          l10n.gotIt,
+                          style: Theme.of(context).textTheme.bodyLarge,
                           textAlign: TextAlign.center,
                         ),
                       ],

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:21.097376",
+    "@@last_modified": "2026-06-03 15:47:08.609566",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6806,7 +6806,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Đã hoàn thành ({num})",
-    "suggestion": "Gợi ý",
+    "suggestion": "Chọn gợi ý tốt nhất",
     "completeActivityButton": "Tôi đã xong!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -6848,5 +6848,19 @@
     "@suggestMobileDesc": {
         "type": "String",
         "placeholders": {}
+    },
+    "gotIt": "Hiểu rồi!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Tiếp tục với {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }
