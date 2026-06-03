@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:47:08.609566",
+    "@@last_modified": "2026-06-03 15:53:08.028196",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6862,5 +6862,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Tải xuống toàn bộ lịch sử tin nhắn, bao gồm người gửi, ngày gửi, tin nhắn gốc, tin nhắn đã gửi và loại sử dụng.",
+    "analyticsDownloadDesc": "Tải xuống phân tích từ vựng và ngữ pháp cá nhân cho ngôn ngữ đã chọn.",
+    "courseAnalyticsDownloadDesc": "Tải xuống các từ gốc và cách sử dụng ngữ pháp trong ngôn ngữ đã chọn cho tất cả người tham gia khóa học với phân tích chung.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:47:00.913945",
+    "@@last_modified": "2026-06-03 15:52:50.464465",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9909,5 +9909,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "下載完整的訊息歷史記錄，包括發件人、發送日期、原始訊息、已發送訊息和使用類型。",
+    "analyticsDownloadDesc": "下載所選語言的個人詞彙和語法分析。",
+    "courseAnalyticsDownloadDesc": "下載所選語言中所有課程參與者的詞元和語法使用情況，並共享分析。",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

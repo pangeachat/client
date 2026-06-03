@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-06-03 15:46:35.415667",
+    "@@last_modified": "2026-06-03 15:51:54.895465",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9779,5 +9779,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Descarga o historial completo de mensaxes, incluíndo o remitente, a data de envío, a mensaxe orixinal, a mensaxe enviada e o tipo de uso.",
+    "analyticsDownloadDesc": "Descarga a analítica de vocabulario e gramática persoal para a lingua seleccionada.",
+    "courseAnalyticsDownloadDesc": "Descarga o lema e o uso da gramática na lingua seleccionada para todos os participantes do curso con analíticas compartidas.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

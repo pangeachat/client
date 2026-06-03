@@ -2258,7 +2258,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-06-03 15:47:02.451357",
+    "@@last_modified": "2026-06-03 15:52:55.134851",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10798,5 +10798,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "I-download ang buong kasaysayan ng mensahe, kasama ang nagpadala, petsa ng pagpapadala, orihinal na mensahe, ipinadalang mensahe, at uri ng paggamit.",
+    "analyticsDownloadDesc": "I-download ang personal na bokabularyo at pagsusuri ng gramatika para sa napiling wika.",
+    "courseAnalyticsDownloadDesc": "I-download ang lemma at paggamit ng gramatika sa napiling wika para sa lahat ng kalahok sa kurso na may ibinahaging pagsusuri.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

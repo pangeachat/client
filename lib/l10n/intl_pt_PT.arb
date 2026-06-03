@@ -2777,7 +2777,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-06-03 15:47:00.303990",
+    "@@last_modified": "2026-06-03 15:52:48.272679",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10855,5 +10855,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Baixa o histórico completo de mensagens, incluindo remetente, data de envio, mensagem original, mensagem enviada e tipo de uso.",
+    "analyticsDownloadDesc": "Baixa a análise pessoal de vocabulário e gramática para o idioma selecionado.",
+    "courseAnalyticsDownloadDesc": "Baixa o uso de lema e gramática no idioma selecionado para todos os participantes do curso com análises compartilhadas.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

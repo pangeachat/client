@@ -1407,7 +1407,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-06-03 15:46:51.830170",
+    "@@last_modified": "2026-06-03 15:52:30.762545",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10910,5 +10910,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "下載完整的消息歷史，包括發件人、發送日期、原始消息、已發送消息和使用類型。",
+    "analyticsDownloadDesc": "下載所選語言的個人詞彙和語法分析。",
+    "courseAnalyticsDownloadDesc": "下載所選語言中所有課程參與者的詞元和語法使用的共享分析。",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

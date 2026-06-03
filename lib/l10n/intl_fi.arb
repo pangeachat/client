@@ -3914,7 +3914,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-06-03 15:46:38.796951",
+    "@@last_modified": "2026-06-03 15:51:56.861545",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9828,5 +9828,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Lataa koko viestihistoria, mukaan lukien lähettäjä, lähetetty päivämäärä, alkuperäinen viesti, lähetetty viesti ja käyttötapa.",
+    "analyticsDownloadDesc": "Lataa henkilökohtaiset sanasto- ja kielioppianalyysit valitulle kielelle.",
+    "courseAnalyticsDownloadDesc": "Lataa lemma- ja kielioppikäyttö valitussa kielessä kaikille kurssin osallistujille, joilla on jaetut analyysit.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

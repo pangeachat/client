@@ -3246,7 +3246,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-06-03 15:47:07.919207",
+    "@@last_modified": "2026-06-03 15:53:06.272431",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10665,5 +10665,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Atsisiunčia visą žinučių istoriją, įskaitant siuntėją, siuntimo datą, originalią žinutę, išsiųstą žinutę ir naudojimo tipą.",
+    "analyticsDownloadDesc": "Atsisiunčia asmeninius žodyno ir gramatikos analizės duomenis pasirinktam kalbai.",
+    "courseAnalyticsDownloadDesc": "Atsisiunčia lemą ir gramatikos naudojimą pasirinktam kalbai visiems kurso dalyviams su bendromis analizėmis.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

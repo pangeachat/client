@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-06-03 15:46:45.377746",
+    "@@last_modified": "2026-06-03 15:52:13.988467",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10263,5 +10263,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Preuzima cijelu povijest poruka, uključujući pošiljatelja, datum slanja, izvorne poruke, poslane poruke i vrstu korištenja.",
+    "analyticsDownloadDesc": "Preuzima osobnu analizu vokabulara i gramatike za odabrani jezik.",
+    "courseAnalyticsDownloadDesc": "Preuzima lemu i korištenje gramatike na odabranom jeziku za sve sudionike tečaja s dijeljenim analizama.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

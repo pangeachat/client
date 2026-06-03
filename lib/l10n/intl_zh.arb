@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-06-03 15:47:14.500338",
+    "@@last_modified": "2026-06-03 15:53:17.385838",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9779,5 +9779,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "下载完整的消息历史，包括发件人、发送日期、原始消息、已发送消息和使用类型。",
+    "analyticsDownloadDesc": "下载所选语言的个人词汇和语法分析。",
+    "courseAnalyticsDownloadDesc": "下载所有课程参与者在所选语言中的词元和语法使用情况，带有共享分析。",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

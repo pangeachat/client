@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:46:57.334608",
+    "@@last_modified": "2026-06-03 15:52:40.211179",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9839,5 +9839,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Laster ned hele meldingshistorikken, inkludert avsender, dato sendt, original melding, sendt melding og brukstype.",
+    "analyticsDownloadDesc": "Laster ned personlig ordforråd og grammatikk-analyse for det valgte språket.",
+    "courseAnalyticsDownloadDesc": "Laster ned lemma og grammatikkbruk på det valgte språket for alle kursdeltakere med delt analyse.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-06-03 15:47:01.628368",
+    "@@last_modified": "2026-06-03 15:52:52.872653",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9783,5 +9783,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Xabarlar tarixini, jumladan jo‘natuvchi, yuborilgan sana, asl xabar, yuborilgan xabar va foydalanish turini o‘z ichiga olgan holda yuklab oladi.",
+    "analyticsDownloadDesc": "Tanlangan til uchun shaxsiy lug‘at va grammatika tahlillarini yuklab oladi.",
+    "courseAnalyticsDownloadDesc": "Barcha kurs ishtirokchilari uchun tanlangan til bo‘yicha lemma va grammatika foydalanishini umumiy tahlil bilan yuklab oladi.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

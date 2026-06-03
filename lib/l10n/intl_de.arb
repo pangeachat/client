@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-06-03 15:46:50.376564",
+    "@@last_modified": "2026-06-03 15:52:27.141226",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9758,5 +9758,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Lädt die vollständige Nachrichtenhistorie herunter, einschließlich Absender, Datum der Sendung, ursprünglicher Nachricht, gesendeter Nachricht und Verwendungstyp.",
+    "analyticsDownloadDesc": "Lädt persönliche Vokabel- und Grammatikanalysen für die ausgewählte Sprache herunter.",
+    "courseAnalyticsDownloadDesc": "Lädt die Lemma- und Grammatiknutzung in der ausgewählten Sprache für alle Kursteilnehmer mit gemeinsamen Analysen herunter.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }
