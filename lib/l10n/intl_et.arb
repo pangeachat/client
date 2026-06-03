@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-03 15:21:30.488627",
+    "@@last_modified": "2026-06-03 15:31:17.534986",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9767,5 +9767,14 @@
     "@gotIt": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "Jätka {lang} keeles",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

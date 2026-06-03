@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:21:50.031367",
+    "@@last_modified": "2026-06-03 15:31:41.297925",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10485,5 +10485,14 @@
     "@gotIt": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "{lang} এর সাথে চালিয়ে যান",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

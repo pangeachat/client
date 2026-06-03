@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:21:59.025729",
+    "@@last_modified": "2026-06-03 15:31:49.581039",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10893,5 +10893,14 @@
     "@gotIt": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "Nastavi sa {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }

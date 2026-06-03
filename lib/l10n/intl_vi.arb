@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:21:46.340654",
+    "@@last_modified": "2026-06-03 15:31:36.380872",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6853,5 +6853,14 @@
     "@gotIt": {
         "type": "String",
         "placeholders": {}
+    },
+    "continueWithLang": "Tiếp tục với {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
     }
 }
