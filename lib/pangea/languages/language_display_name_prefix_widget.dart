@@ -26,7 +26,7 @@ class LanguageDisplayNamePrefixWidget extends StatelessWidget {
         SizedBox(
           width: iconSize,
           height: iconSize,
-          child: language.isLocalized
+          child: language.shouldShowFlag
               ? SvgPicture.network(
                   language.svgUrl.toString(),
                   width: iconSize,
