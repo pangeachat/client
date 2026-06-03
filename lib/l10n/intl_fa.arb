@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:47:16.084006",
+    "@@last_modified": "2026-06-03 15:53:21.637867",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9891,5 +9891,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "تاریخچه کامل پیام‌ها را دانلود می‌کند، از جمله فرستنده، تاریخ ارسال، پیام اصلی، پیام ارسال شده و نوع استفاده.",
+    "analyticsDownloadDesc": "تحلیل‌های شخصی واژگان و گرامر را برای زبان انتخاب شده دانلود می‌کند.",
+    "courseAnalyticsDownloadDesc": "استفاده از لِمّا و گرامر را در زبان انتخاب شده برای تمام شرکت‌کنندگان دوره با تحلیل‌های مشترک دانلود می‌کند.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

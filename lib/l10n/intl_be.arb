@@ -3934,7 +3934,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-06-03 15:46:58.066643",
+    "@@last_modified": "2026-06-03 15:52:42.844422",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9793,5 +9793,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Спампоўвае поўную гісторыю паведамленняў, уключаючы адпраўніка, дату адпраўкі, арыгінальнае паведамленне, адпраўленае паведамленне і тып выкарыстання.",
+    "analyticsDownloadDesc": "Спампоўвае асабістыя аналітыкі лексікі і граматыкі для абранай мовы.",
+    "courseAnalyticsDownloadDesc": "Спампоўвае лемы і выкарыстанне граматыкі ў абранай мове для ўсіх удзельнікаў курса з агульнымі аналітыкамі.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

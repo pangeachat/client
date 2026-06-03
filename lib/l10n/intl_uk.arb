@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-03 15:46:53.607405",
+    "@@last_modified": "2026-06-03 15:52:35.266521",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9779,5 +9779,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Завантажує повну історію повідомлень, включаючи відправника, дату відправлення, оригінальне повідомлення, надіслане повідомлення та тип використання.",
+    "analyticsDownloadDesc": "Завантажує особисту лексику та аналітику граматики для вибраної мови.",
+    "courseAnalyticsDownloadDesc": "Завантажує лемми та використання граматики у вибраній мові для всіх учасників курсу з спільною аналітикою.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

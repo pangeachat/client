@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-03 15:46:49.590934",
+    "@@last_modified": "2026-06-03 15:52:25.131906",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9776,5 +9776,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Laeb alla kogu sõnumi ajalugu, sealhulgas saatja, saatmise kuupäev, originaalsõnum, saadetud sõnum ja kasutustüüp.",
+    "analyticsDownloadDesc": "Laeb alla isiklikud sõnavara ja grammatika analüüsid valitud keele jaoks.",
+    "courseAnalyticsDownloadDesc": "Laeb alla lemma ja grammatika kasutamise valitud keeles kõigi kursuse osalejate jaoks, kellel on jagatud analüüsid.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

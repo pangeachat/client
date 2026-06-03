@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-06-03 15:47:03.887480",
+    "@@last_modified": "2026-06-03 15:52:58.488889",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10119,5 +10119,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "يتم تنزيل سجل الرسائل الكامل، بما في ذلك المرسل، تاريخ الإرسال، الرسالة الأصلية، الرسالة المرسلة، ونوع الاستخدام.",
+    "analyticsDownloadDesc": "يتم تنزيل تحليلات المفردات والقواعد الشخصية للغة المحددة.",
+    "courseAnalyticsDownloadDesc": "يتم تنزيل استخدام اللمّا والقواعد في اللغة المحددة لجميع المشاركين في الدورة مع تحليلات مشتركة.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

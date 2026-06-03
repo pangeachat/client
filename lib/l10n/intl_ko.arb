@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:46:33.842462",
+    "@@last_modified": "2026-06-03 15:51:50.936743",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9996,5 +9996,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "보낸 사람, 발송 날짜, 원본 메시지, 발송된 메시지 및 사용 유형을 포함하여 전체 메시지 기록을 다운로드합니다.",
+    "analyticsDownloadDesc": "선택한 언어에 대한 개인 어휘 및 문법 분석을 다운로드합니다.",
+    "courseAnalyticsDownloadDesc": "공유된 분석이 있는 모든 과정 참가자에 대해 선택한 언어의 어근 및 문법 사용을 다운로드합니다.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

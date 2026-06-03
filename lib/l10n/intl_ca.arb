@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:46:58.989379",
+    "@@last_modified": "2026-06-03 15:52:44.592390",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9930,5 +9930,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Descarrega l'historial complet de missatges, incloent l'emissor, la data d'enviament, el missatge original, el missatge enviat i el tipus d'ús.",
+    "analyticsDownloadDesc": "Descarrega l'analítica personal de vocabulari i gramàtica per a l'idioma seleccionat.",
+    "courseAnalyticsDownloadDesc": "Descarrega l'ús de lemmas i gramàtica en l'idioma seleccionat per a tots els participants del curs amb analítiques compartides.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

@@ -397,6 +397,7 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
       downloadableTypes: [DownloadType.csv, DownloadType.xlsx],
       setDownloadType: _setDownloadType,
       download: _downloadAnalytics,
+      description: L10n.of(context).analyticsDownloadDesc,
       error: errorMessage,
     );
   }

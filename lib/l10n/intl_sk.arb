@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-06-03 15:46:43.560149",
+    "@@last_modified": "2026-06-03 15:52:09.940064",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10895,5 +10895,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Stiahne celú históriu správ, vrátane odosielateľa, dátumu odoslania, pôvodnej správy, odoslanej správy a typu použitia.",
+    "analyticsDownloadDesc": "Stiahne osobnú analýzu slovnej zásoby a gramatiky pre vybraný jazyk.",
+    "courseAnalyticsDownloadDesc": "Stiahne lemá a používanie gramatiky vo vybranom jazyku pre všetkých účastníkov kurzu so zdieľanou analýzou.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

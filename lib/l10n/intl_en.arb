@@ -4849,5 +4849,8 @@
     "writingAssistanceNoSub": "Writing assistance",
     "viewError": "View error",
     "gotIt": "Got it!",
+    "chatDownloadDesc": "Downloads the full message history, including sender, date sent, original message, sent message, and use type.",
+    "analyticsDownloadDesc": "Downloads personal vocab and grammar analytics for the selected language.",
+    "courseAnalyticsDownloadDesc": "Downloads the lemma and grammar usage in the selected language for all course participants with shared analytics.",
     "suggestMobileDesc": "Get the Pangea Chat app to receive notifications!"
 }

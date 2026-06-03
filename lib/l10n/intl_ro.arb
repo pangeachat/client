@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 15:46:42.731842",
+    "@@last_modified": "2026-06-03 15:52:07.558412",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10604,5 +10604,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Descarcă întreaga istorie a mesajelor, inclusiv expeditorul, data trimiterii, mesajul original, mesajul trimis și tipul de utilizare.",
+    "analyticsDownloadDesc": "Descarcă analiza personală a vocabularului și gramaticii pentru limba selectată.",
+    "courseAnalyticsDownloadDesc": "Descarcă utilizarea lemei și gramaticii în limba selectată pentru toți participanții la curs cu analize partajate.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

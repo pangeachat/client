@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-03 15:47:04.708477",
+    "@@last_modified": "2026-06-03 15:53:00.252515",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10110,5 +10110,20 @@
                 "type": "String"
             }
         }
+    },
+    "chatDownloadDesc": "Gönderen, gönderim tarihi, orijinal mesaj, gönderilen mesaj ve kullanım türü dahil olmak üzere tam mesaj geçmişini indirir.",
+    "analyticsDownloadDesc": "Seçilen dil için kişisel kelime dağarcığı ve dilbilgisi analizlerini indirir.",
+    "courseAnalyticsDownloadDesc": "Paylaşılan analizlerle birlikte tüm kurs katılımcıları için seçilen dildeki lemma ve dilbilgisi kullanımını indirir.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }
