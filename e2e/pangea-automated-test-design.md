@@ -6,8 +6,8 @@ Related:
 
 - Web & accessibility: [web-and-accessibility-next-steps.md](web-and-accessibility-next-steps.md)
 - Mobile: [mobile-testing-plan.md](mobile-testing-plan.md)
-- Conventions & patterns: [authoring-playwright-and-axe-tests.instructions.md](../.github/instructions/authoring-playwright-and-axe-tests.instructions.md)
-- Running locally: [run-playwright-and-axe-local.instructions.md](../.github/instructions/run-playwright-and-axe-local.instructions.md)
+- Design contracts: [playwright-testing.instructions.md](../.github/instructions/playwright-testing.instructions.md)
+- Running locally: [README.md](README.md)
 - Guided authoring procedure: [write-e2e-test/SKILL.md](../.github/skills/write-e2e-test/SKILL.md)
 - Cloud agent profile: [e2e-tester.md](../.github/agents/e2e-tester.md)
 
@@ -28,7 +28,7 @@ Related:
 | **Guided authoring**  | `.github/skills/write-e2e-test/SKILL.md`                                  | 9-step procedure for writing a new spec with Copilot (semantics audit → spec → trigger-map).            | ✅ Exists. Not yet used beyond login          |
 | **Cloud agent**       | `.github/agents/e2e-tester.md`                                            | Copilot coding agent — assigned issues to write or fix specs via Playwright MCP, opens a PR.            | ✅ Profile exists. Untested                   |
 | **Agent environment** | `.github/workflows/copilot-setup-steps.yml`                               | Installs Node + Playwright in the Copilot coding agent's sandbox.                                       | ✅                                            |
-| **Conventions**       | `.github/instructions/authoring-playwright-and-axe-tests.instructions.md` | Auto-loaded when editing `e2e/` files — Flutter-Playwright patterns, file layout, semantics rules.      | ✅                                            |
+| **Design contracts**  | `.github/instructions/playwright-testing.instructions.md`                 | Auto-loaded when editing `e2e/` or relevant `lib/` files — canvas/semantics, widget rules, mock-mode, auth state, axe limits. | ✅                                            |
 
 ---
 
@@ -66,7 +66,7 @@ Flutter's `<canvas>` is opaque to Playwright. Flutter exposes an optional **sema
 
 Widgets without tooltips, text children, or `Semantics` wrappers appear as unnamed `generic` nodes and can't be targeted. Expanding coverage to a new flow always starts with auditing and fixing these gaps.
 
-For implementation details (fixture mechanics, selectors, credential delivery): see [authoring-playwright-and-axe-tests.instructions.md](../.github/instructions/authoring-playwright-and-axe-tests.instructions.md).
+For the testability contracts (widget rules, fixture import requirement, credential delivery): see [playwright-testing.instructions.md](../.github/instructions/playwright-testing.instructions.md).
 
 ### Diff-triggered test selection
 
@@ -110,4 +110,4 @@ The semantics work for Playwright testing is the same work that makes the app ac
 
 axe can't check color contrast or visual layout inside Flutter's `<canvas>` — only the semantics overlay is auditable.
 
-Implementation details, `auditPage()` helper usage, and auth-state patterns: see [authoring-playwright-and-axe-tests.instructions.md](../.github/instructions/authoring-playwright-and-axe-tests.instructions.md) § "Accessibility Testing (axe-core)".
+The `auditPage()` helper usage and auth-state patterns: see [playwright-testing.instructions.md § What axe can't check](../.github/instructions/playwright-testing.instructions.md#what-axe-cant-check) and [README § Running tests](README.md#running-tests).
