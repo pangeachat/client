@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 15:25:11.252660",
+    "@@last_modified": "2026-06-02 11:15:56.113330",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -3888,7 +3888,7 @@
     "waitingToFillRole": "Aguardando preencher {num} papéis...",
     "pingParticipants": "Avisar participantes do curso",
     "playWithBot": "Jogar com o Pangea Bot",
-    "waitNotDone": "Espere, eu não terminei!",
+    "waitNotDone": "Espere, ainda não terminei!",
     "waitingForOthersToFinish": "Aguardando os demais terminarem...",
     "generatingSummary": "Analisando o chat e gerando resultados",
     "findCourse": "Encontrar um curso",

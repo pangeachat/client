@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-06-02 15:25:37.663763",
+    "@@last_modified": "2026-06-02 11:16:27.974514",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -3767,7 +3767,7 @@
     "pingParticipants": "Powiadom uczestników kursu",
     "playWithBot": "Graj z Pangea Botem",
     "inviteFriends": "Zaproś znajomych",
-    "waitNotDone": "Czekaj, jeszcze nie skończyłem!",
+    "waitNotDone": "Czekaj, nie skończyłem!",
     "waitingForOthersToFinish": "Czekanie na resztę do ukończenia...",
     "generatingSummary": "Analiza czatu i generowanie wyników",
     "findCourse": "Znajdź kurs",
