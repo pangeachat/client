@@ -24,13 +24,6 @@ class ChatInputBar extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          constraints: const BoxConstraints(
-            maxWidth: FluffyThemes.maxTimelineWidth,
-          ),
-          alignment: Alignment.center,
-          child: SizedBox(),
-        ),
-        Container(
           margin: EdgeInsets.all(
             FluffyThemes.isColumnMode(context) ? 16.0 : 8.0,
           ),
