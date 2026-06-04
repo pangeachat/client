@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:15:48.435448",
+    "@@last_modified": "2026-06-04 09:28:51.108187",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9820,7 +9820,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Selesai ({num})",
-    "suggestion": "Saran",
+    "suggestion": "Pilih Saran Terbaik",
     "completeActivityButton": "Saya sudah selesai!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9860,6 +9860,50 @@
     },
     "suggestMobileDesc": "Dapatkan aplikasi Pangea Chat untuk menerima notifikasi!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Mengerti!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Lanjutkan dengan {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Mengunduh seluruh riwayat pesan, termasuk pengirim, tanggal dikirim, pesan asli, pesan yang dikirim, dan jenis penggunaan.",
+    "analyticsDownloadDesc": "Mengunduh analitik kosakata dan tata bahasa pribadi untuk bahasa yang dipilih.",
+    "courseAnalyticsDownloadDesc": "Mengunduh lema dan penggunaan tata bahasa dalam bahasa yang dipilih untuk semua peserta kursus dengan analitik yang dibagikan.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Kursus ini sesuai dengan tingkat bahasa Anda",
+    "cefrLevelBelow": "Kursus ini di bawah tingkat bahasa Anda.",
+    "cefrLevelAbove": "Kursus ini di atas tingkat bahasa Anda.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

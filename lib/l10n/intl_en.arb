@@ -1294,6 +1294,15 @@
         "type": "String",
         "placeholders": {}
     },
+    "continueWithLang": "Continue with {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
     "no": "No",
     "@no": {
         "type": "String",
@@ -4167,7 +4176,7 @@
     },
     "pingParticipants": "Ping course participants",
     "playWithBot": "Play with Pangea Bot",
-    "waitNotDone": "Wait I’m not done!",
+    "waitNotDone": "Wait, I’m not done!",
     "waitingForOthersToFinish": "Waiting for the rest to finish up...",
     "generatingSummary": "Analyzing chat and generating results",
     "pingParticipantsNotification": "{user} is looking for users to join the activity session in {room}",
@@ -4833,11 +4842,18 @@
             }
         }
     },
-    "suggestion": "Suggestion",
+    "suggestion": "Pick the best Suggestion",
     "completeActivityButton": "I'm done!",
     "shorterName": "Please limit name length to 50 characters or fewer.",
     "enterAName": "Please enter a name.",
     "writingAssistanceNoSub": "Writing assistance",
     "viewError": "View error",
-    "suggestMobileDesc": "Get the Pangea Chat app to receive notifications!"
+    "gotIt": "Got it!",
+    "chatDownloadDesc": "Downloads the full message history, including sender, date sent, original message, sent message, and use type.",
+    "analyticsDownloadDesc": "Downloads personal vocab and grammar analytics for the selected language.",
+    "courseAnalyticsDownloadDesc": "Downloads the lemma and grammar usage in the selected language for all course participants with shared analytics.",
+    "suggestMobileDesc": "Get the Pangea Chat app to receive notifications!",
+    "cefrLevelMatch": "This course matches your language level",
+    "cefrLevelBelow": "This course is below your language level.",
+    "cefrLevelAbove": "This course is above your language level."
 }

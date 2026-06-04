@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:23.348821",
+    "@@last_modified": "2026-06-04 09:29:21.531518",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9723,7 +9723,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Voltooid ({num})",
-    "suggestion": "Suggestie",
+    "suggestion": "Kies de beste suggestie",
     "completeActivityButton": "Ik ben klaar!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9763,6 +9763,50 @@
     },
     "suggestMobileDesc": "Download de Pangea Chat-app om meldingen te ontvangen!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Begrepen!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Doorgaan met {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Download de volledige berichtgeschiedenis, inclusief afzender, verzenddatum, origineel bericht, verzonden bericht en gebruikstype.",
+    "analyticsDownloadDesc": "Download persoonlijke vocabulaire- en grammatica-analyse voor de geselecteerde taal.",
+    "courseAnalyticsDownloadDesc": "Download het lemma en het grammaticaal gebruik in de geselecteerde taal voor alle cursusdeelnemers met gedeelde analyses.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Deze cursus komt overeen met jouw taalniveau",
+    "cefrLevelBelow": "Deze cursus is onder jouw taalniveau.",
+    "cefrLevelAbove": "Deze cursus is boven jouw taalniveau.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

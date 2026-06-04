@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-02 11:16:04.510266",
+    "@@last_modified": "2026-06-04 09:29:02.597776",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -3890,7 +3890,7 @@
     "pingParticipants": "Пінг учасників курсу",
     "playWithBot": "Грати з ботом Pangea",
     "inviteFriends": "Запросити друзів",
-    "waitNotDone": "Зачекайте, я ще не закінчив!",
+    "waitNotDone": "Зачекай, я ще не закінчив!",
     "waitingForOthersToFinish": "Очікування завершення інших...",
     "generatingSummary": "Аналіз чату та створення результатів",
     "findCourse": "Знайти курс",
@@ -9723,7 +9723,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Завершено ({num})",
-    "suggestion": "Пропозиція",
+    "suggestion": "Виберіть найкращу пропозицію",
     "completeActivityButton": "Я закінчив!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9763,6 +9763,50 @@
     },
     "suggestMobileDesc": "Отримайте додаток Pangea Chat, щоб отримувати сповіщення!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Зрозумів!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Продовжити з {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Завантажує повну історію повідомлень, включаючи відправника, дату відправлення, оригінальне повідомлення, надіслане повідомлення та тип використання.",
+    "analyticsDownloadDesc": "Завантажує особисту лексику та аналітику граматики для вибраної мови.",
+    "courseAnalyticsDownloadDesc": "Завантажує лемми та використання граматики у вибраній мові для всіх учасників курсу з спільною аналітикою.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Цей курс відповідає вашому рівню мови",
+    "cefrLevelBelow": "Цей курс нижчий за ваш рівень мови.",
+    "cefrLevelAbove": "Цей курс вищий за ваш рівень мови.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

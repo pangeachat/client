@@ -3324,7 +3324,7 @@
     "pingParticipants": "कोर्स प्रतिभागियों को पिंग करें",
     "playWithBot": "पांगेआ बॉट के साथ खेलें",
     "inviteFriends": "मित्रों को आमंत्रित करें",
-    "waitNotDone": "रुको, मैं अभी पूरा नहीं किया हूँ!",
+    "waitNotDone": "रुको, मैं अभी खत्म नहीं हुआ हूँ!",
     "waitingForOthersToFinish": "बाकियों के समाप्त होने का इंतजार कर रहा हूँ...",
     "generatingSummary": "चैट का विश्लेषण कर रहे हैं और परिणाम उत्पन्न कर रहे हैं",
     "findCourse": "कोर्स खोजें",
@@ -3378,7 +3378,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-06-02 11:16:32.677938",
+    "@@last_modified": "2026-06-04 09:29:29.003390",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10442,7 +10442,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "समाप्त ({num})",
-    "suggestion": "सुझाव",
+    "suggestion": "सर्वश्रेष्ठ सुझाव चुनें",
     "completeActivityButton": "मैं तैयार हूँ!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10482,6 +10482,50 @@
     },
     "suggestMobileDesc": "सूचनाएँ प्राप्त करने के लिए Pangea चैट ऐप प्राप्त करें!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "समझ गया!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang} के साथ जारी रखें",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "पूर्ण संदेश इतिहास को डाउनलोड करता है, जिसमें प्रेषक, भेजी गई तारीख, मूल संदेश, भेजा गया संदेश, और उपयोग प्रकार शामिल हैं।",
+    "analyticsDownloadDesc": "चुने गए भाषा के लिए व्यक्तिगत शब्दावली और व्याकरण विश्लेषण डाउनलोड करता है।",
+    "courseAnalyticsDownloadDesc": "साझा विश्लेषण के साथ सभी पाठ्यक्रम प्रतिभागियों के लिए चुने गए भाषा में lemma और व्याकरण उपयोग डाउनलोड करता है।",
+    "cefrLevelMatch": "यह पाठ्यक्रम आपके भाषा स्तर से मेल खाता है",
+    "cefrLevelBelow": "यह पाठ्यक्रम आपके भाषा स्तर से नीचे है।",
+    "cefrLevelAbove": "यह पाठ्यक्रम आपके भाषा स्तर से ऊपर है।",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

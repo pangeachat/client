@@ -46,6 +46,8 @@ class InlineTooltip extends StatefulWidget {
 
   final TextStyle? textStyle;
   final Widget? extraContent;
+  final Color? backgroundColor;
+  final IconData? icon;
 
   const InlineTooltip({
     super.key,
@@ -57,6 +59,8 @@ class InlineTooltip extends StatefulWidget {
     this.padding,
     this.textStyle,
     this.extraContent,
+    this.backgroundColor,
+    this.icon,
   });
 
   @override
@@ -135,7 +139,7 @@ class InlineTooltipState extends State<InlineTooltip>
               borderRadius: BorderRadius.circular(AppConfig.borderRadius),
               color: Color.alphaBlend(
                 Theme.of(context).colorScheme.surface.withAlpha(70),
-                AppConfig.gold,
+                widget.backgroundColor ?? AppConfig.gold,
               ),
             ),
             child: Padding(
@@ -147,7 +151,7 @@ class InlineTooltipState extends State<InlineTooltip>
                   Padding(
                     padding: const EdgeInsets.only(right: 6.0),
                     child: Icon(
-                      Icons.lightbulb,
+                      widget.icon ?? Icons.lightbulb,
                       size: 20,
                       color: Theme.of(context).colorScheme.onSurface,
                     ),

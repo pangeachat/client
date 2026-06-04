@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:29.295519",
+    "@@last_modified": "2026-06-04 09:29:26.755093",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10310,7 +10310,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Färdig ({num})",
-    "suggestion": "Förslag",
+    "suggestion": "Välj det bästa förslaget",
     "completeActivityButton": "Jag är klar!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10350,6 +10350,50 @@
     },
     "suggestMobileDesc": "Få Pangea Chat-appen för att ta emot meddelanden!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Förstått!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Fortsätt med {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Laddar ner hela meddelandehistoriken, inklusive avsändare, datum som skickades, originalmeddelande, skickat meddelande och användartyp.",
+    "analyticsDownloadDesc": "Laddar ner personlig vokabulär och grammatikanalys för det valda språket.",
+    "courseAnalyticsDownloadDesc": "Laddar ner lemma och grammatikanvändning på det valda språket för alla kursdeltagare med delad analys.",
+    "cefrLevelMatch": "Denna kurs matchar din språknivå",
+    "cefrLevelBelow": "Denna kurs ligger under din språknivå.",
+    "cefrLevelAbove": "Denna kurs ligger över din språknivå.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

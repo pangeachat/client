@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-06-02 11:16:16.676510",
+    "@@last_modified": "2026-06-04 09:29:15.797303",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10063,7 +10063,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "انتهى ({num})",
-    "suggestion": "اقتراح",
+    "suggestion": "اختر أفضل اقتراح",
     "completeActivityButton": "لقد انتهيت!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10103,6 +10103,50 @@
     },
     "suggestMobileDesc": "احصل على تطبيق Pangea Chat لتلقي الإشعارات!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "فهمت!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "تابع مع {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "يتم تنزيل سجل الرسائل الكامل، بما في ذلك المرسل، تاريخ الإرسال، الرسالة الأصلية، الرسالة المرسلة، ونوع الاستخدام.",
+    "analyticsDownloadDesc": "يتم تنزيل تحليلات المفردات والقواعد الشخصية للغة المحددة.",
+    "courseAnalyticsDownloadDesc": "يتم تنزيل استخدام اللمّا والقواعد في اللغة المحددة لجميع المشاركين في الدورة مع تحليلات مشتركة.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "تتناسب هذه الدورة مع مستوى لغتك",
+    "cefrLevelBelow": "هذه الدورة أقل من مستوى لغتك.",
+    "cefrLevelAbove": "هذه الدورة أعلى من مستوى لغتك.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }
