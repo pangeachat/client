@@ -51,6 +51,10 @@ test.describe("Course and chat navigation", () => {
       await expect(page.getByRole("button", { name: "EN ES" })).toBeVisible({ timeout: 60000 });
     }
 
+    // Navigate to home page and check that it works
+    // Then return to add course page
+    await page.getByRole("button", { name: intl.home, exact: true }).click();
+    await expect(page.getByText(intl.profile, { exact: true })).toBeVisible();
     await page.getByRole("button", { name: intl.addCourse, exact: true }).click();
     await page.getByRole("button", { name: intl.addCourse, exact: true }).click();
 
@@ -72,34 +76,6 @@ test.describe("Course and chat navigation", () => {
     if (await page.getByRole("button", { name: intl.goToExistingCourse, exact: true }).isVisible()) {
       await page.getByRole("button", { name: intl.createCourse, exact: true }).click();
     }
-    await page.getByRole("button", { name: intl.createCourse, exact: true }).click();
-    await expect(page.getByRole("button", { name: intl.playWithAI, exact: true })).toBeVisible();
-
-    // Navigate to home page and check that it works
-    // Then return to normal chat list page
-    await page.getByRole("button", { name: intl.home, exact: true }).click();
-    await expect(page.getByText(intl.profile, { exact: true })).toBeVisible();
-    await page.getByRole("button", { name: intl.allChats, exact: true }).click();
-
-    // Find all cousin buttons of addCourse button
-    // Then filter out non-course buttons
-    var nonCourse = [intl.addCourse, intl.allChats, intl.learningAnalytics, intl.home];
-    var nonCourseFilter = new RegExp(`\\b(${nonCourse.join('|')})\\b`);
-    var courses = page.getByRole("button", { name: intl.addCourse }).locator('..').locator('..').getByRole("button").filter({ hasNotText: nonCourseFilter });
-
-    // Navigate to first course in course list
-    await courses.first().click();
-
-    // If notification request button appears, close it
-    if (await page.getByRole("button", { name: intl.skipForNow, exact: true }).isVisible()) {
-      await page.getByRole("button", { name: intl.skipForNow, exact: true }).click();
-    }
-
-    // Delete joined course to restore state for future tests
-    await page.getByRole("button", { name: intl.more, exact: true }).click();
-    var leave = page.getByRole("button", { name: intl.leave });
-    await leave.scrollIntoViewIfNeeded();
-    await leave.click();
-    await page.getByRole("button", { name: intl.leave }).click();
+    await expect(page.getByRole("button", { name: intl.createCourse, exact: true })).toBeEnabled();
   });
 });

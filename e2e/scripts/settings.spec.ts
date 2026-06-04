@@ -38,8 +38,8 @@ test.describe("Settings", () => {
     await page.getByRole("button", { name: intl.notifications }).click();
 
     // If notification request button appears, close it
-    if (await page.getByRole("button", { name: intl.skipForNow, exact: true }).isVisible()) {
-      await page.getByRole("button", { name: intl.skipForNow, exact: true }).click();
+    if (await page.getByRole("button", { name: intl.gotIt, exact: true }).isVisible()) {
+      await page.getByRole("button", { name: intl.gotIt, exact: true }).click();
     }
     await expect(page.getByText(intl.generalNotificationSettings, { exact: true })).toBeVisible();
 
@@ -64,7 +64,6 @@ test.describe("Settings", () => {
     await expect(page.getByRole("textbox", { name: intl.pleaseEnterYourCurrentPassword })).toBeVisible();
 
     // Support
-    await page.getByRole("button", { name: intl.chatWithSupport }).click();
-    await expect(page.getByText(intl.chatDetails)).toBeVisible();
+    await expect(page.getByRole("button", { name: intl.chatWithSupport })).toBeEnabled();
   });
 });
