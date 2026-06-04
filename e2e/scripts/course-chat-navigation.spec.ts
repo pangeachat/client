@@ -32,8 +32,6 @@ test.describe("Course and chat navigation", () => {
         'mock': 'true',
       };
 
-      console.log(`bbb API Request: ${route.request().method()} ${route.request().url()}`);
-
       route.continue({
         headers: headers
       });
