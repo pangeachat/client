@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:36.774093",
+    "@@last_modified": "2026-06-03 16:10:13.911894",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10846,7 +10846,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Završeno ({num})",
-    "suggestion": "Predlog",
+    "suggestion": "Izaberite najbolji predlog",
     "completeActivityButton": "Završio sam!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10886,6 +10886,50 @@
     },
     "suggestMobileDesc": "Preuzmite Pangea Chat aplikaciju da biste primali obaveštenja!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Razumem!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Nastavi sa {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Preuzima celu istoriju poruka, uključujući pošiljaoca, datum slanja, originalnu poruku, poslatu poruku i tip korišćenja.",
+    "analyticsDownloadDesc": "Preuzima ličnu analitiku rečnika i gramatike za odabrani jezik.",
+    "courseAnalyticsDownloadDesc": "Preuzima lemu i upotrebu gramatike na odabranom jeziku za sve učesnike kursa sa deljenom analitikom.",
+    "cefrLevelMatch": "Ovaj kurs odgovara vašem jezičkom nivou",
+    "cefrLevelBelow": "Ovaj kurs je ispod vašeg jezičkog nivoa.",
+    "cefrLevelAbove": "Ovaj kurs je iznad vašeg jezičkog nivoa.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

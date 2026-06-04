@@ -2099,7 +2099,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-06-02 11:16:35.843977",
+    "@@last_modified": "2026-06-03 16:10:11.200280",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10791,7 +10791,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "დასრულებული ({num})",
-    "suggestion": "შეთავაზება",
+    "suggestion": "აირჩიეთ საუკეთესო წინადადება",
     "completeActivityButton": "მე დავასრულე!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10831,6 +10831,50 @@
     },
     "suggestMobileDesc": "მიიღეთ Pangea Chat აპლიკაცია, რომ მიიღოთ შეტყობინებები!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "გაგება!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang} - ით გაგრძელება",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "წერს სრულ შეტყობინების ისტორიას, მათ შორის გამგზავნს, გაგზავნის თარიღს, ორიგინალურ შეტყობინებას, გაგზავნილ შეტყობინებას და გამოყენების ტიპს.",
+    "analyticsDownloadDesc": "წერს პირად ლექსიკასა და გრამატიკის ანალიტიკას არჩეული ენისთვის.",
+    "courseAnalyticsDownloadDesc": "წერს ლემას და გრამატიკის გამოყენებას არჩეული ენისთვის ყველა კურსის მონაწილისთვის გაზიარებული ანალიტიკით.",
+    "cefrLevelMatch": "ეს კურსი შეესაბამება თქვენს ენობრივ დონეს",
+    "cefrLevelBelow": "ეს კურსი არის თქვენი ენობრივი დონის ქვემოთ.",
+    "cefrLevelAbove": "ეს კურსი არის თქვენი ენობრივი დონის ზემოთ.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

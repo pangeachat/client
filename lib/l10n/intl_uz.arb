@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-06-02 11:16:13.012796",
+    "@@last_modified": "2026-06-03 16:08:54.936435",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9727,7 +9727,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Tugallandi ({num})",
-    "suggestion": "Taklif",
+    "suggestion": "Eng yaxshi taklifni tanlang",
     "completeActivityButton": "Men tugatdim!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9767,6 +9767,50 @@
     },
     "suggestMobileDesc": "Bildirishnomalarni olish uchun Pangea Chat ilovasini oling!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Tushundim!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang} bilan davom etish",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "To'liq xabar tarixini, jumladan jo'natuvchi, yuborilgan sana, asl xabar, yuborilgan xabar va foydalanish turini yuklab oladi.",
+    "analyticsDownloadDesc": "Tanlangan til uchun shaxsiy leksika va grammatika tahlillarini yuklab oladi.",
+    "courseAnalyticsDownloadDesc": "Tanlangan til uchun barcha kurs ishtirokchilari uchun umumiy tahlillar bilan lemma va grammatika foydalanishini yuklab oladi.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Ushbu kurs sizning til darajangizga mos keladi",
+    "cefrLevelBelow": "Ushbu kurs sizning til darajangizdan past.",
+    "cefrLevelAbove": "Ushbu kurs sizning til darajangizdan yuqori.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

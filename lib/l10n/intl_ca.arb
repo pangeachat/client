@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-02 11:16:08.915087",
+    "@@last_modified": "2026-06-03 16:08:43.918959",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9874,7 +9874,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Acabat ({num})",
-    "suggestion": "Suggeriment",
+    "suggestion": "Tria la millor suggerència",
     "completeActivityButton": "He acabat!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9914,6 +9914,50 @@
     },
     "suggestMobileDesc": "Obteniu l'aplicació Pangea Chat per rebre notificacions!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Entesos!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Continua amb {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Descarrega l'historial complet de missatges, incloent l'emissor, la data d'enviament, el missatge original, el missatge enviat i el tipus d'ús.",
+    "analyticsDownloadDesc": "Descarrega l'analítica personal de vocabulari i gramàtica per a l'idioma seleccionat.",
+    "courseAnalyticsDownloadDesc": "Descarrega l'ús de lemmas i gramàtica en l'idioma seleccionat per a tots els participants del curs amb analítiques compartides.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Aquest curs coincideix amb el teu nivell d'idioma",
+    "cefrLevelBelow": "Aquest curs està per sota del teu nivell d'idioma.",
+    "cefrLevelAbove": "Aquest curs està per sobre del teu nivell d'idioma.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

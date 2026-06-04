@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-06-02 11:15:50.876541",
+    "@@last_modified": "2026-06-03 16:07:54.614273",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10839,7 +10839,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Dokončené ({num})",
-    "suggestion": "Návrh",
+    "suggestion": "Vyberte najlepšiu návrh",
     "completeActivityButton": "Som hotový!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10879,6 +10879,50 @@
     },
     "suggestMobileDesc": "Získajte aplikáciu Pangea Chat, aby ste dostávali upozornenia!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Rozumiem!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Pokračovať s {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Stiahne celú históriu správ, vrátane odosielateľa, dátumu odoslania, pôvodnej správy, odoslanej správy a typu použitia.",
+    "analyticsDownloadDesc": "Stiahne osobnú analýzu slovnej zásoby a gramatiky pre vybraný jazyk.",
+    "courseAnalyticsDownloadDesc": "Stiahne lemá a používanie gramatiky vo vybranom jazyku pre všetkých účastníkov kurzu so zdieľanou analýzou.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Tento kurz zodpovedá vašej jazykovej úrovni",
+    "cefrLevelBelow": "Tento kurz je pod vašou jazykovou úrovňou.",
+    "cefrLevelAbove": "Tento kurz je nad vašou jazykovou úrovňou.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

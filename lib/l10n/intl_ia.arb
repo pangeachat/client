@@ -1506,7 +1506,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-06-02 11:15:55.106678",
+    "@@last_modified": "2026-06-03 16:08:07.929483",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10833,7 +10833,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Finito ({num})",
-    "suggestion": "Sugestão",
+    "suggestion": "Sèchì l'ùtima Suggerimentu",
     "completeActivityButton": "Mi es finita!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10873,6 +10873,50 @@
     },
     "suggestMobileDesc": "Obtenha o aplicativo Pangea Chat para receber notificações!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Got it!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Continua con {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Descarca la istoria completa de mesaje, inclusiv expeditor, data trimisă, mesajul original, mesajul trimis și tipul de utilizare.",
+    "analyticsDownloadDesc": "Descarcă analiza personală a vocabularului și gramaticii pentru limba selectată.",
+    "courseAnalyticsDownloadDesc": "Descarcă utilizarea lemei și gramaticii în limba selectată pentru toți participanții la curs cu analize partajate.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Acest curs se potrivește cu nivelul tău de limbă",
+    "cefrLevelBelow": "Acest curs este sub nivelul tău de limbă.",
+    "cefrLevelAbove": "Acest curs este peste nivelul tău de limbă.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

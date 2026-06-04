@@ -3194,7 +3194,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-02 11:16:24.120571",
+    "@@last_modified": "2026-06-03 16:09:29.501916",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9395,7 +9395,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Finito ({num})",
-    "suggestion": "Sugestão",
+    "suggestion": "Pilih Saran Terbaik",
     "completeActivityButton": "Mi finita!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9435,6 +9435,50 @@
     },
     "suggestMobileDesc": "Get the Pangea Chat app to receive notifications!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Dapet!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Fortsæt med {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Downloads the full message history, including sender, date sent, original message, sent message, and use type.",
+    "analyticsDownloadDesc": "Downloads personal vocab and grammar analytics for the selected language.",
+    "courseAnalyticsDownloadDesc": "Downloads the lemma and grammar usage in the selected language for all course participants with shared analytics.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "This course matches your language level",
+    "cefrLevelBelow": "This course is below your language level.",
+    "cefrLevelAbove": "This course is above your language level.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

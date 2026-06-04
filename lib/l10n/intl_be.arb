@@ -3934,7 +3934,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-06-02 11:16:07.995634",
+    "@@last_modified": "2026-06-03 16:08:41.433265",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9737,7 +9737,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Завершана ({num})",
-    "suggestion": "Прапановы",
+    "suggestion": "Выберыце лепшую прапанову",
     "completeActivityButton": "Я скончыў!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9777,6 +9777,50 @@
     },
     "suggestMobileDesc": "Атрымаеце прыкладанне Pangea Chat, каб атрымліваць апавяшчэнні!",
     "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Зразумеў!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Працягнуць з {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Загружае поўную гісторыю паведамленняў, уключаючы адпраўніка, дату адпраўкі, арыгінальнае паведамленне, адпраўленае паведамленне і тып выкарыстання.",
+    "analyticsDownloadDesc": "Загружае асабістыя аналітыкі лексікі і граматыкі для абранай мовы.",
+    "courseAnalyticsDownloadDesc": "Загружае лемы і выкарыстанне граматыкі ў абранай мове для ўсіх удзельнікаў курса з агульнай аналітыкай.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Гэты курс адпавядае вашаму ўзроўню мовы",
+    "cefrLevelBelow": "Гэты курс ніжэй за ваш узровень мовы.",
+    "cefrLevelAbove": "Гэты курс вышэй за ваш узровень мовы.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }
