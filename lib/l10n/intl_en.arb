@@ -4176,7 +4176,7 @@
     },
     "pingParticipants": "Ping course participants",
     "playWithBot": "Play with Pangea Bot",
-    "waitNotDone": "Wait I’m not done!",
+    "waitNotDone": "Wait, I’m not done!",
     "waitingForOthersToFinish": "Waiting for the rest to finish up...",
     "generatingSummary": "Analyzing chat and generating results",
     "pingParticipantsNotification": "{user} is looking for users to join the activity session in {room}",

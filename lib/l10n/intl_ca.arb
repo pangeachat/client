@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 16:08:43.918959",
+    "@@last_modified": "2026-06-04 09:29:06.404080",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -3731,7 +3731,7 @@
     "pingParticipants": "Enviar un missatge als participants del curs",
     "playWithBot": "Juga amb Pangea Bot",
     "inviteFriends": "Convida amics",
-    "waitNotDone": "Esperem, encara no he acabat!",
+    "waitNotDone": "Espera, encara no he acabat!",
     "waitingForOthersToFinish": "Esperant que la resta acabi...",
     "generatingSummary": "Analitzant el xat i generant resultats",
     "findCourse": "Troba un curs",

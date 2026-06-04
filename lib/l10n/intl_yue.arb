@@ -1340,7 +1340,7 @@
     "waitingToFillRole": "等緊填滿 {num} 個角色...",
     "pingParticipants": "提醒課程參與者",
     "playWithBot": "同 Pangea 機械人玩",
-    "waitNotDone": "等我完啦！",
+    "waitNotDone": "等我仲未做完！",
     "waitingForOthersToFinish": "等其他人完成...",
     "generatingSummary": "分析聊天並生成結果",
     "findCourse": "尋找課程",
@@ -1407,7 +1407,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-06-03 16:08:26.067040",
+    "@@last_modified": "2026-06-04 09:29:00.841422",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}

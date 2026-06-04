@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-03 16:08:32.308481",
+    "@@last_modified": "2026-06-04 09:29:02.597776",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -3890,7 +3890,7 @@
     "pingParticipants": "Пінг учасників курсу",
     "playWithBot": "Грати з ботом Pangea",
     "inviteFriends": "Запросити друзів",
-    "waitNotDone": "Зачекайте, я ще не закінчив!",
+    "waitNotDone": "Зачекай, я ще не закінчив!",
     "waitingForOthersToFinish": "Очікування завершення інших...",
     "generatingSummary": "Аналіз чату та створення результатів",
     "findCourse": "Знайти курс",

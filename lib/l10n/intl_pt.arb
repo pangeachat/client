@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-03 16:08:14.883515",
+    "@@last_modified": "2026-06-04 09:28:57.733436",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -3732,7 +3732,7 @@
     "pingParticipants": "Avisar participantes do curso",
     "playWithBot": "Jogue com o Pangea Bot",
     "inviteFriends": "Convidar amigos",
-    "waitNotDone": "Espere, ainda não terminei!",
+    "waitNotDone": "Espere, eu não terminei!",
     "waitingForOthersToFinish": "Aguardando os demais terminarem...",
     "generatingSummary": "Analisando o chat e gerando resultados",
     "findCourse": "Encontrar um curso",
