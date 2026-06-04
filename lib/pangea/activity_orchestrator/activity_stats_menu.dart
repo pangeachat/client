@@ -102,7 +102,7 @@ class ActivityStatsMenu extends StatelessWidget {
                       onTap: _activityComplete ? null : toggleVisibility,
                       child: Container(
                         padding: EdgeInsets.symmetric(horizontal: 12.0),
-                        height: 50.0,
+                        height: 55.0,
                         decoration: BoxDecoration(
                           border: Border(
                             top: BorderSide(color: theme.dividerColor),
@@ -190,7 +190,7 @@ class ActivityStatsMenu extends StatelessWidget {
             child: SingleChildScrollView(
               child: Container(
                 width: double.infinity,
-                decoration: BoxDecoration(color: theme.colorScheme.surface),
+                color: theme.colorScheme.surface,
                 padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 24.0),
                 child: Column(
                   spacing: 16.0,

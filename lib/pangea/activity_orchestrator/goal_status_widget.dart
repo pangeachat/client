@@ -48,8 +48,9 @@ class GoalStatusWidget extends StatelessWidget {
         Flexible(
           child: Text(
             goal.description,
-            maxLines: 1,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
+            style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
           ),
         ),
       ],
