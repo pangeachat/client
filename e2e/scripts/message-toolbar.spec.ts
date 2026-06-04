@@ -6,6 +6,8 @@ import { expect, test } from "../fixtures";
  * Message toolbar test
  *
  * Triggers:
+ * - lib/pages/new_private_chat/**
+ * - lib/pangea/chat_list/**
  * - lib/pages/chat/**
  * - lib/pages/chat_list/chat_list_item.dart
  * - lib/pangea/chat_list/**
@@ -19,23 +21,62 @@ import { expect, test } from "../fixtures";
  * - lib/pangea/phonetic_transcription/**
  */
 
-// Prerequisites:
-// User languages are english -> spanish
-// There is at least 1 room in the chat list
-// The test account can send messages in the selected room
 test.describe("Message Toolbar", () => {
 
   test("toolbar works and appropriate buttons are enabled", async ({
     page,
   }) => {
+    // This flow is long - keep it from timing out
+    test.setTimeout(60000); 
 
     // Use intl key values as object names
     const filePath = path.resolve(__dirname, '../../lib/l10n/intl_en.arb');
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const intl = JSON.parse(fileContent);
 
-    // Check for 1+ selectable room in chat list
-    await expect(page.getByRole("button", { name: intl.moreOptions }).first(), { message: 'Chat list must have at least 1 room, and L1 must be english.' }).toBeEnabled();
+    // Add 'mock: true' field to requests
+    await page.route('**/choreo/*', (route) => {
+      const headers = {
+        ...route.request().headers(),
+        'mock': 'true',
+      };
+
+      console.log(`bbb API Request: ${route.request().method()} ${route.request().url()}`);
+
+      route.continue({
+        headers: headers
+      });
+    });
+
+    // Set L2 to spanish, if not already
+    if (await page.getByRole("button", { name: "EN ES" }).isHidden()) {
+      await page.getByRole("button", { name: intl.learningSettings }).click();
+      await page.getByRole("button", { name: intl.iWantToLearn }).click();
+      var langSearch = page.getByRole("textbox", { name: intl.searchLanguagesHint });
+      await langSearch.click();
+      await langSearch.fill(intl.esDisplayName);
+      await page.getByRole("button", { name: intl.esMXDisplayName }).click();
+      await page.getByRole("button", { name: intl.saveChanges }).click();
+      await expect(page.getByRole("button", { name: "EN ES" })).toBeVisible({ timeout: 60000 });
+    }
+
+    // Create a direct message
+    await page.getByRole("button", { name: intl.directMessage, exact: true }).click();
+    const dmSearch = page.getByRole("textbox", { name: intl.searchForUsers });
+    await dmSearch.click();
+    await dmSearch.fill("test");
+    await page.getByRole("button", { name: "pangea.chat" }).first().click();
+
+    // Either start conversation or send a message, 
+    // depending on whether DM already exists
+    if (await page.getByRole("button", { name: intl.startConversation, exact: true }).isVisible()) {
+      await page.getByRole("button", { name: intl.startConversation, exact: true }).click();
+    } else {
+      await page.getByRole("button", { name: intl.sendAMessage, exact: true }).click();
+    }
+
+    await page.getByRole("button", { name: intl.allChats }).click();
+    await page.getByRole("button", { name: intl.allChats }).click();
 
     // Open first chat in chat list
     await page.getByRole("button", { name: intl.moreOptions }).first().click();
@@ -86,5 +127,12 @@ test.describe("Message Toolbar", () => {
 
     await page.getByRole("button", { name: intl.image, exact: true }).click();
     await expect(page.getByText(intl.chooseEmojiInstructionsBody)).toBeVisible();
+
+    // Delete DM to restore state for future tests
+    await page.getByRole("button", { name: intl.moreOptions }).first().click();
+    await page.getByRole("button", { name: intl.chatDetails }).click();
+    await page.getByRole("button", { name: "Show menu" }).click();
+    await page.getByRole("menuitem", { name: intl.leave }).click();
+    await page.getByRole("button", { name: intl.leave }).click();
   });
 });

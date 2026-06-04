@@ -24,6 +24,20 @@ test.describe("Login", () => {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const intl = JSON.parse(fileContent);
 
+    // Add 'mock: true' field to requests
+    await page.route('**/choreo/*', (route) => {
+      const headers = {
+        ...route.request().headers(),
+        'mock': 'true',
+      };
+
+      console.log(`bbb API Request: ${route.request().method()} ${route.request().url()}`);
+
+      route.continue({
+        headers: headers
+      });
+    });
+
     // Avoid test timing out on login 
     test.setTimeout(120000); 
 
