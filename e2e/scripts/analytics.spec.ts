@@ -6,7 +6,9 @@ import { expect, test } from "../fixtures";
  * Analytics flow test
  *
  * Triggers:
- * - 
+ * - lib/pangea/analytics_page/**
+ * - lib/pangea/analytics_practice/**
+ * - lib/pangea/analytics_misc/**
  */
 
 test.describe("Analytics", () => {
@@ -32,43 +34,21 @@ test.describe("Analytics", () => {
       await expect(page.getByRole("button", { name: "EN ES" })).toBeVisible({ timeout: 60000 });
     }
 
-    await page.getByRole("button", { name: intl.vocab }).click();
+    // Go to vocab analytics
+    await page.getByRole("button", { name: intl.learningAnalytics }).click();
+    await page.getByRole("button", { name: intl.learningAnalytics }).click();
+    await expect(page.getByRole("button", { name: intl.download })).toBeVisible();
 
-    // If analytics room does not already have enough lemmas
-    // for practice to be enabled, send a message to get them
-    if (await page.getByRole("button", { name: intl.practiceVocab }).isDisabled()) {
-        // Create a direct message
-        await page.getByRole("button", { name: intl.allChats }).click();
-        await page.getByRole("button", { name: intl.directMessage, exact: true }).click();
-        const dmSearch = page.getByRole("textbox", { name: intl.searchForUsers });
-        await dmSearch.click();
-        await dmSearch.fill("test");
-        await page.getByRole("button", { name: "pangea.chat" }).first().click();
-        if (await page.getByRole("button", { name: intl.startConversation, exact: true }).isVisible()) {
-            await page.getByRole("button", { name: intl.startConversation, exact: true }).click();
-        } else {
-            await page.getByRole("button", { name: intl.sendAMessage, exact: true }).click();
-        }
+    // Go to saved activities
+    await page.getByRole("button", { name: intl.activities }).click();
+    await expect(page.getByRole("button", { name: intl.download })).toBeHidden();
 
-        // Send message with Spanish lemmas to add to analytics
-        var message = "cómo estar gusto nombre ayudar conocer favor llamar placer poder qué";
-        await page.getByRole("textbox", { name: intl.writeAMessageLangCodes.substring(0, 7) }).fill(message);
+    // Go to grammar practice
+    await page.getByRole("button", { name: intl.grammar }).click();
+    await expect(page.getByRole("button", { name: intl.download })).toBeVisible();
 
-        // Send message
-        await page.getByRole("button", { name: intl.send }).click();
-
-        await page.getByRole("button", { name: intl.vocab }).click();
-    }
-
-    await page.getByRole("button", { name: intl.practiceVocab }).click()
-
-    // Delete DM to restore state for future tests
-    await page.getByRole("button", { name: intl.allChats }).click();
-    await page.getByRole("button", { name: intl.allChats }).click();
-    await page.getByRole("button", { name: intl.moreOptions }).first().click();
-    await page.getByRole("button", { name: intl.chatDetails }).click();
-    await page.getByRole("button", { name: "Show menu" }).click();
-    await page.getByRole("menuitem", { name: intl.leave }).click();
-    await page.getByRole("button", { name: intl.leave }).click();
+    // Go to level analytics
+    await page.getByRole("button", { name: intl.level }).click();
+    await expect(page.getByRole("group", { name: intl.levelInfoTooltip })).toBeVisible();
   });
 });
