@@ -38,7 +38,6 @@ Each flow maps to a Playwright spec via `e2e/trigger-map.json`.
 | Login                       |   ✅   |                      |
 | Accessibility (axe-core)    |   ✅   |                      |
 | Course and chat navigation  |   ✅   |                      |
-| Message toolbar (TTS, etc.) |   ✅   |                      |
 | Settings                    |   ✅   |                      |
 | Analytics                   |   ✅   |                      |
 | Logout                      |   ✅   |                      |
