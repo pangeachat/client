@@ -3949,7 +3949,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-05-22 12:45:51.508550",
+    "@@last_modified": "2026-06-04 09:29:32.577741",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9734,7 +9734,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Críochnaithe ({num})",
-    "suggestion": "Moladh",
+    "suggestion": "Roghnaigh an moladh is fearr",
     "completeActivityButton": "Táim críochnaithe!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9749,6 +9749,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Le do thoil, teorainn fad an ainm do 50 carachtar nó níos lú.",
+    "enterAName": "Le do thoil, cuir isteach ainm.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Cúnamh scríbhneoireachta",
+    "viewError": "Féach ar earráid",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Faigh an aip Pangea Chat chun fógraí a fháil!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Tuigim é!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Lean ort le {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Íoslódálann an stair iomlán teachtaireachtaí, lena n-áirítear an seoltóir, an dáta a sheoladh, an teachtaireacht bhunaidh, an teachtaireacht a sheoladh, agus an cineál úsáide.",
+    "analyticsDownloadDesc": "Íoslódálann anailísí pearsanta ar fhocail agus gramadach don teanga roghnaithe.",
+    "courseAnalyticsDownloadDesc": "Íoslódálann an lemma agus úsáid gramadaí sa teanga roghnaithe do gach rannpháirtí sa chúrsa le hanailísí comhoibrithe.",
+    "cefrLevelMatch": "Comhoibríonn an cúrsa seo le do leibhéal teanga",
+    "cefrLevelBelow": "Tá an cúrsa seo faoi do leibhéal teanga.",
+    "cefrLevelAbove": "Tá an cúrsa seo os cionn do leibhéal teanga.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

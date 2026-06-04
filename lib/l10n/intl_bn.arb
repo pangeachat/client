@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:35.666618",
+    "@@last_modified": "2026-06-04 09:29:23.877590",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -3328,7 +3328,7 @@
     "pingParticipants": "কোর্সের অংশগ্রহণকারীদের পিং করুন",
     "playWithBot": "পাঙ্গিয়া বটের সাথে খেলুন",
     "inviteFriends": "বন্ধুদের আমন্ত্রণ জানান",
-    "waitNotDone": "অপেক্ষা করুন আমি শেষ করিনি!",
+    "waitNotDone": "অপেক্ষা করুন, আমি শেষ করিনি!",
     "waitingForOthersToFinish": "অন্যদের শেষ করার জন্য অপেক্ষা করছি...",
     "generatingSummary": "চ্যাট বিশ্লেষণ এবং ফলাফল তৈরি করা হচ্ছে",
     "findCourse": "একটি কোর্স খুঁজুন",
@@ -10438,7 +10438,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "সম্পন্ন ({num})",
-    "suggestion": "প্রস্তাবনা",
+    "suggestion": "সেরা পরামর্শটি বেছে নিন",
     "completeActivityButton": "আমি শেষ করেছি!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10453,6 +10453,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "দয়া করে নামের দৈর্ঘ্য 50 অক্ষর বা তার কমে সীমাবদ্ধ করুন।",
+    "enterAName": "দয়া করে একটি নাম লিখুন।",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "লেখার সহায়তা",
+    "viewError": "ত্রুটি দেখুন",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "নোটিফিকেশন পেতে Pangea Chat অ্যাপটি ডাউনলোড করুন!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "বুঝেছি!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang} এর সাথে চালিয়ে যান",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "পূর্ণ বার্তা ইতিহাস ডাউনলোড করে, প্রেরক, পাঠানোর তারিখ, মূল বার্তা, পাঠানো বার্তা এবং ব্যবহার প্রকার সহ।",
+    "analyticsDownloadDesc": "নির্বাচিত ভাষার জন্য ব্যক্তিগত শব্দভাণ্ডার এবং ব্যাকরণ বিশ্লেষণ ডাউনলোড করে।",
+    "courseAnalyticsDownloadDesc": "নির্বাচিত ভাষায় সমস্ত কোর্স অংশগ্রহণকারীদের জন্য শেয়ার করা বিশ্লেষণের সাথে লেমা এবং ব্যাকরণ ব্যবহারের ডাউনলোড করে।",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "এই কোর্স আপনার ভাষার স্তরের সাথে মেলে",
+    "cefrLevelBelow": "এই কোর্স আপনার ভাষার স্তরের নিচে।",
+    "cefrLevelAbove": "এই কোর্স আপনার ভাষার স্তরের উপরে।",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

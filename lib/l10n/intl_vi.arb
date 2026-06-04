@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:29.177454",
+    "@@last_modified": "2026-06-04 09:29:19.680834",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -3271,7 +3271,7 @@
     "pingParticipants": "Thông báo cho các thành viên trong khóa học",
     "playWithBot": "Chơi với Pangea Bot",
     "inviteFriends": "Mời bạn bè",
-    "waitNotDone": "Chờ tôi chưa xong!",
+    "waitNotDone": "Chờ một chút, tôi chưa xong!",
     "waitingForOthersToFinish": "Đang chờ những người khác hoàn thành...",
     "generatingSummary": "Phân tích cuộc trò chuyện và tạo kết quả",
     "findCourse": "Tìm khóa học",
@@ -6806,7 +6806,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Đã hoàn thành ({num})",
-    "suggestion": "Gợi ý",
+    "suggestion": "Chọn gợi ý tốt nhất",
     "completeActivityButton": "Tôi đã xong!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -6821,6 +6821,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Vui lòng giới hạn độ dài tên tối đa là 50 ký tự.",
+    "enterAName": "Vui lòng nhập một tên.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Hỗ trợ viết",
+    "viewError": "Xem lỗi",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Tải ứng dụng Pangea Chat để nhận thông báo!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Hiểu rồi!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Tiếp tục với {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Tải xuống toàn bộ lịch sử tin nhắn, bao gồm người gửi, ngày gửi, tin nhắn gốc, tin nhắn đã gửi và loại sử dụng.",
+    "analyticsDownloadDesc": "Tải xuống phân tích từ vựng và ngữ pháp cá nhân cho ngôn ngữ đã chọn.",
+    "courseAnalyticsDownloadDesc": "Tải xuống các từ gốc và cách sử dụng ngữ pháp trong ngôn ngữ đã chọn cho tất cả người tham gia khóa học với phân tích chung.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Khóa học này phù hợp với trình độ ngôn ngữ của bạn",
+    "cefrLevelBelow": "Khóa học này thấp hơn trình độ ngôn ngữ của bạn.",
+    "cefrLevelAbove": "Khóa học này cao hơn trình độ ngôn ngữ của bạn.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

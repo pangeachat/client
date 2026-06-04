@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-05-22 12:45:38.276111",
+    "@@last_modified": "2026-06-04 09:29:26.021324",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9832,7 +9832,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Zakończone ({num})",
-    "suggestion": "Sugestia",
+    "suggestion": "Wybierz najlepszą sugestię",
     "completeActivityButton": "Skończyłem!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9847,6 +9847,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Proszę ograniczyć długość nazwy do 50 znaków lub mniej.",
+    "enterAName": "Proszę wpisać nazwę.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Pomoc w pisaniu",
+    "viewError": "Zobacz błąd",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Pobierz aplikację Pangea Chat, aby otrzymywać powiadomienia!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Rozumiem!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Kontynuuj z {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Pobiera pełną historię wiadomości, w tym nadawcę, datę wysłania, oryginalną wiadomość, wysłaną wiadomość i typ użycia.",
+    "analyticsDownloadDesc": "Pobiera osobiste analizy słownictwa i gramatyki dla wybranego języka.",
+    "courseAnalyticsDownloadDesc": "Pobiera lemat i użycie gramatyki w wybranym języku dla wszystkich uczestników kursu z udostępnionymi analizami.",
+    "cefrLevelMatch": "Ten kurs odpowiada twojemu poziomowi językowemu",
+    "cefrLevelBelow": "Ten kurs jest poniżej twojego poziomu językowego.",
+    "cefrLevelAbove": "Ten kurs jest powyżej twojego poziomu językowego.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

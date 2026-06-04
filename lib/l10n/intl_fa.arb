@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:37.168035",
+    "@@last_modified": "2026-06-04 09:29:25.109549",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -3764,7 +3764,7 @@
     "pingParticipants": "ارسال پیام به شرکت‌کنندگان دوره",
     "playWithBot": "بازی با پنگئا بات",
     "inviteFriends": "دعوت دوستان",
-    "waitNotDone": "صبر کن، من تمام نکردم!",
+    "waitNotDone": "صبر کن، من هنوز تمام نکرده‌ام!",
     "waitingForOthersToFinish": "در انتظار پایان دیگران...",
     "generatingSummary": "در حال تحلیل چت و تولید نتایج",
     "findCourse": "پیدا کردن دوره",
@@ -9835,7 +9835,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "تمام شده ({num})",
-    "suggestion": "پیشنهاد",
+    "suggestion": "بهترین پیشنهاد را انتخاب کنید",
     "completeActivityButton": "من تمام کردم!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9850,6 +9850,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "لطفاً طول نام را به ۵۰ کاراکتر یا کمتر محدود کنید.",
+    "enterAName": "لطفاً یک نام وارد کنید.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "کمک نوشتن",
+    "viewError": "مشاهده خطا",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "برنامه چت پانگئا را دریافت کنید تا اعلان‌ها را دریافت کنید!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "متوجه شدم!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "ادامه با {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "تاریخچه کامل پیام‌ها را دانلود می‌کند، از جمله فرستنده، تاریخ ارسال، پیام اصلی، پیام ارسال شده و نوع استفاده.",
+    "analyticsDownloadDesc": "تحلیل‌های شخصی واژگان و گرامر را برای زبان انتخاب شده دانلود می‌کند.",
+    "courseAnalyticsDownloadDesc": "استعمال لِمّا و گرامر را در زبان انتخاب شده برای تمام شرکت‌کنندگان دوره با تحلیل‌های مشترک دانلود می‌کند.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "این دوره با سطح زبان شما مطابقت دارد",
+    "cefrLevelBelow": "این دوره زیر سطح زبان شما است.",
+    "cefrLevelAbove": "این دوره بالاتر از سطح زبان شما است.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

@@ -384,6 +384,9 @@ class LanguageModel {
 
   bool get isLocalized => langCodeShort != langCode;
 
+  bool get shouldShowFlag =>
+      isLocalized || !PLanguageStore.hasLocalizedVariants(langCodeShort);
+
   static bool search(
     LanguageModel? item,
     String searchValue,

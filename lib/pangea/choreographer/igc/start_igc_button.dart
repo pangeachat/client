@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:async/async.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
@@ -232,7 +231,7 @@ class _StartIGCButtonState extends State<StartIGCButton>
         final assistanceState = widget.choreographer.assistanceState;
         final enableFeedback = assistanceState.allowsFeedback;
         return Tooltip(
-          message: enableFeedback ? L10n.of(context).check : "",
+          message: assistanceState.tooltip(context),
           child: Material(
             elevation: enableFeedback ? 4.0 : 0.0,
             shape: const CircleBorder(),

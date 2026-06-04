@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-05-22 12:45:47.006881",
+    "@@last_modified": "2026-06-04 09:29:30.537004",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -4535,7 +4535,7 @@
     "pingParticipants": "Пинг участников курса",
     "playWithBot": "Играть с ботом Pangea",
     "inviteFriends": "Пригласить друзей",
-    "waitNotDone": "Подожди, я еще не закончил(а)!",
+    "waitNotDone": "Подожди, я еще не закончил!",
     "waitingForOthersToFinish": "Ждём, пока остальные закончат...",
     "generatingSummary": "Анализ чата и генерация результатов",
     "findCourse": "Найти курс",
@@ -10737,7 +10737,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Завершено ({num})",
-    "suggestion": "Предложение",
+    "suggestion": "Выберите лучшее предложение",
     "completeActivityButton": "Я закончил!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10752,6 +10752,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Пожалуйста, ограничьте длину имени до 50 символов или меньше.",
+    "enterAName": "Пожалуйста, введите имя.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Помощь в написании",
+    "viewError": "Просмотреть ошибку",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Получите приложение Pangea Chat, чтобы получать уведомления!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Понял!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Продолжить с {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Скачивает полную историю сообщений, включая отправителя, дату отправки, оригинальное сообщение, отправленное сообщение и тип использования.",
+    "analyticsDownloadDesc": "Скачивает личную лексику и грамматическую аналитику для выбранного языка.",
+    "courseAnalyticsDownloadDesc": "Скачивает леммы и использование грамматики на выбранном языке для всех участников курса с общей аналитикой.",
+    "cefrLevelMatch": "Этот курс соответствует вашему уровню языка",
+    "cefrLevelBelow": "Этот курс ниже вашего уровня языка.",
+    "cefrLevelAbove": "Этот курс выше вашего уровня языка.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

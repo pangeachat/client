@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-05-22 12:44:54.057188",
+    "@@last_modified": "2026-06-04 09:28:56.983796",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -3890,7 +3890,7 @@
     "pingParticipants": "Pinga ikastaro parte-hartzaileak",
     "playWithBot": "Jolastu Pangea Bot-ekin",
     "inviteFriends": "Gonbidatu lagunak",
-    "waitNotDone": "Itxaron, ez naiz bukatu!",
+    "waitNotDone": "Itxaron, ez naiz amaitu!",
     "waitingForOthersToFinish": "Itxaron besteek amaitu arte...",
     "generatingSummary": "Txataren analisia eta emaitzak sortzen",
     "findCourse": "Bilatu ikastaroa",
@@ -9723,7 +9723,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Amaitu ({num})",
-    "suggestion": "Iragarpena",
+    "suggestion": "Hautatu iradokitzailerik onena",
     "completeActivityButton": "Amaitu dut!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9738,6 +9738,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Mesedez, mugatu izenaren luzera 50 karaktere edo gutxiagora.",
+    "enterAName": "Mesedez, sartu izen bat.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Idazteko laguntza",
+    "viewError": "Ikusi errorea",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Lortu Pangea Chat aplikazioa jakinarazpenak jasotzeko!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Ulertu dut!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang}rekin jarraitu",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Mezua historial osoa deskargatzen du, bidaltzailea, bidali den data, jatorrizko mezua, bidalitako mezua eta erabilera mota barne.",
+    "analyticsDownloadDesc": "Hautatutako hizkuntzarako pertsonalizatutako hiztegi eta gramatika analitikak deskargatzen ditu.",
+    "courseAnalyticsDownloadDesc": "Hautatutako hizkuntzan, parte-hartzaile guztientzat partekatutako analitikekin, lema eta gramatika erabilera deskargatzen ditu.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Ikastaro honek zure hizkuntza mailarekin bat dator",
+    "cefrLevelBelow": "Ikastaro honek zure hizkuntza mailatik behera dago.",
+    "cefrLevelAbove": "Ikastaro honek zure hizkuntza mailatik gorakoa da.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

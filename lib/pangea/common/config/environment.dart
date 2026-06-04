@@ -15,9 +15,6 @@ class Environment {
   static bool get isStagingEnvironment =>
       dotenv.env["ENVIRONMENT"] == "staging";
 
-  static bool get isMock =>
-      dotenv.env["PLAYWRIGHT_MOCK"]?.toLowerCase() == 'true';
-
   static String get frontendURL {
     return appConfigOverride?.frontendURL ??
         dotenv.env["FRONTEND_URL"] ??

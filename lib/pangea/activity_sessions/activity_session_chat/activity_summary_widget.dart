@@ -4,19 +4,14 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'package:flutter_html/flutter_html.dart';
-import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
-import 'package:matrix/src/utils/markdown.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_participant_list.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_vocab_widget.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_details_row.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 
 class ActivitySummary extends StatelessWidget {
@@ -97,114 +92,27 @@ class ActivitySummary extends StatelessWidget {
                 color: theme.colorScheme.surface.withAlpha(128),
                 borderRadius: BorderRadius.circular(12.0),
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  InkWell(
-                    borderRadius: BorderRadius.circular(12.0),
-                    hoverColor: theme.colorScheme.surfaceTint.withAlpha(55),
-                    onTap: toggleInstructions,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        spacing: 4.0,
-                        children: [
-                          Text(
-                            activity.description,
-                            style: theme.textTheme.bodyMedium,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 4.0),
-                            child: Row(
-                              spacing: 4.0,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  L10n.of(context).details,
-                                  style: theme.textTheme.bodyMedium,
-                                ),
-                                Icon(
-                                  showInstructions
-                                      ? Icons.arrow_drop_up
-                                      : Icons.arrow_drop_down,
-                                  size: 22.0,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: .start,
+                  spacing: 16.0,
+                  children: [
+                    Text(
+                      activity.description,
+                      style: theme.textTheme.bodyMedium,
                     ),
-                  ),
-                  if (showInstructions)
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        crossAxisAlignment: .start,
-                        children: [
-                          Row(
-                            spacing: 8.0,
-                            mainAxisAlignment: .center,
-                            children: [
-                              Text(
-                                activity.req.mode,
-                                style: theme.textTheme.bodyMedium,
-                              ),
-                              Row(
-                                spacing: 4.0,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Icon(Icons.school, size: 12.0),
-                                  Text(
-                                    activity.req.cefrLevel.string,
-                                    style: theme.textTheme.bodyMedium,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          ActivitySessionDetailsRow(
-                            icon: Symbols.target,
-                            iconSize: 16.0,
-                            child: Text(
-                              activity.learningObjective,
-                              style: theme.textTheme.bodyMedium,
-                            ),
-                          ),
-                          ActivitySessionDetailsRow(
-                            icon: Symbols.steps,
-                            iconSize: 16.0,
-                            child: Html(
-                              data: markdown(
-                                activity.instructions
-                                    .replaceAll(RegExp('\n+'), '\n')
-                                    .replaceAll('---', ''),
-                              ),
-                              style: {
-                                "body": Style(
-                                  margin: Margins.all(0),
-                                  padding: HtmlPaddings.all(0),
-                                  fontSize: FontSize(
-                                    theme.textTheme.bodyMedium!.fontSize!,
-                                  ),
-                                ),
-                              },
-                            ),
-                          ),
-                          ActivityVocabWidget(
-                            key: ValueKey(
-                              "activity-summary-${activity.activityId}",
-                            ),
-                            vocab: activity.vocab,
-                            langCode: activity.req.targetLanguage,
-                            targetId: "activity-summary-vocab",
-                            usedVocab: usedVocab,
-                            activityLangCode: activity.req.targetLanguage,
-                          ),
-                        ],
-                      ),
+                    const Divider(height: 1),
+                    ActivityVocabWidget(
+                      key: ValueKey("activity-summary-${activity.activityId}"),
+                      vocab: activity.vocab,
+                      langCode: activity.req.targetLanguage,
+                      targetId: "activity-summary-vocab",
+                      usedVocab: usedVocab,
+                      activityLangCode: activity.req.targetLanguage,
                     ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],

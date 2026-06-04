@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-05-22 12:45:25.191297",
+    "@@last_modified": "2026-06-04 09:29:16.609462",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -3664,7 +3664,7 @@
     "pingParticipants": "Kurs katılımcılarına bildirim gönder",
     "playWithBot": "Pangea Bot ile oyna",
     "inviteFriends": "Arkadaşları davet et",
-    "waitNotDone": "Bekle, bitirmedim!",
+    "waitNotDone": "Bekle, henüz bitirmedim!",
     "waitingForOthersToFinish": "Diğerlerinin bitirmesini bekliyorum...",
     "generatingSummary": "Sohbeti analiz ediyor ve sonuçlar oluşturuyor",
     "findCourse": "Bir kurs bul",
@@ -10054,7 +10054,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Tamamlandı ({num})",
-    "suggestion": "Öneri",
+    "suggestion": "En iyi öneriyi seçin",
     "completeActivityButton": "Tamamladım!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10069,6 +10069,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Lütfen isim uzunluğunu 50 karakter veya daha az ile sınırlayın.",
+    "enterAName": "Lütfen bir isim girin.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Yazma yardımı",
+    "viewError": "Hata görüntüle",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Bildirim almak için Pangea Chat uygulamasını edinin!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Anladım!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang} ile devam et",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Gönderen, gönderim tarihi, orijinal mesaj, gönderilen mesaj ve kullanım türü dahil olmak üzere tam mesaj geçmişini indirir.",
+    "analyticsDownloadDesc": "Seçilen dil için kişisel kelime dağarcığı ve dilbilgisi analitiklerini indirir.",
+    "courseAnalyticsDownloadDesc": "Paylaşılan analitiklerle birlikte tüm kurs katılımcıları için seçilen dilde lemma ve dilbilgisi kullanımını indirir.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Bu kurs dil seviyenizle eşleşiyor.",
+    "cefrLevelBelow": "Bu kurs dil seviyenizin altında.",
+    "cefrLevelAbove": "Bu kurs dil seviyenizin üzerinde.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

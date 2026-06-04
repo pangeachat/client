@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-05-22 12:45:34.488586",
+    "@@last_modified": "2026-06-04 09:29:23.050715",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9723,7 +9723,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "已完成 ({num})",
-    "suggestion": "建议",
+    "suggestion": "选择最佳建议",
     "completeActivityButton": "我完成了！",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9738,6 +9738,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "请将名称长度限制为50个字符或更少。",
+    "enterAName": "请输入一个名称。",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "写作辅助",
+    "viewError": "查看错误",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "获取 Pangea Chat 应用以接收通知！",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "明白了！",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "继续使用 {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "下载完整的消息历史，包括发件人、发送日期、原始消息、发送的消息和使用类型。",
+    "analyticsDownloadDesc": "下载所选语言的个人词汇和语法分析。",
+    "courseAnalyticsDownloadDesc": "下载所有课程参与者的词元和语法使用情况，适用于共享分析的所选语言。",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "该课程与您的语言水平相匹配",
+    "cefrLevelBelow": "该课程低于您的语言水平。",
+    "cefrLevelAbove": "该课程高于您的语言水平。",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

@@ -13,6 +13,7 @@ class DownloadDialog extends StatelessWidget {
   final bool downloaded;
   final bool enableDownload;
   final DownloadType selectedDownloadType;
+  final String? description;
   final List<DownloadType> downloadableTypes;
 
   final void Function(DownloadType) setDownloadType;
@@ -29,6 +30,7 @@ class DownloadDialog extends StatelessWidget {
     required this.downloadableTypes,
     required this.setDownloadType,
     required this.download,
+    this.description,
     this.error,
     this.content,
     super.key,
@@ -76,6 +78,8 @@ class DownloadDialog extends StatelessWidget {
                   ),
                 ],
               ),
+              if (description != null)
+                Text(description!, textAlign: TextAlign.center),
               SizedBox(height: 16.0),
               SegmentedButton<DownloadType>(
                 selected: {selectedDownloadType},

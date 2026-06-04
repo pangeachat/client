@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-05-22 12:44:58.054567",
+    "@@last_modified": "2026-06-04 09:28:59.310263",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9702,7 +9702,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Fertig ({num})",
-    "suggestion": "Vorschlag",
+    "suggestion": "Wählen Sie den besten Vorschlag",
     "completeActivityButton": "Ich bin fertig!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9717,6 +9717,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Bitte beschränken Sie die Länge des Namens auf 50 Zeichen oder weniger.",
+    "enterAName": "Bitte geben Sie einen Namen ein.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Schreibhilfe",
+    "viewError": "Fehler anzeigen",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Lade die Pangea Chat-App herunter, um Benachrichtigungen zu erhalten!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Verstanden!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Fortfahren mit {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Lädt die vollständige Nachrichtenhistorie herunter, einschließlich Absender, Datum der Sendung, ursprünglicher Nachricht, gesendeter Nachricht und Verwendungstyp.",
+    "analyticsDownloadDesc": "Lädt persönliche Vokabel- und Grammatikanalysen für die ausgewählte Sprache herunter.",
+    "courseAnalyticsDownloadDesc": "Lädt die Lemma- und Grammatiknutzung in der ausgewählten Sprache für alle Kursteilnehmer mit gemeinsamen Analysen herunter.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Dieser Kurs entspricht deinem Sprachniveau",
+    "cefrLevelBelow": "Dieser Kurs liegt unter deinem Sprachniveau.",
+    "cefrLevelAbove": "Dieser Kurs liegt über deinem Sprachniveau.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

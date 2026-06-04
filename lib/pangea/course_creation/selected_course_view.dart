@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
+import 'package:fluffychat/pangea/course_creation/cefr_level_match.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
+import 'package:fluffychat/pangea/course_creation/course_topic_list_widget.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_page.dart';
-import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_model.dart';
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
-import 'package:fluffychat/pangea/course_settings/pin_clipper.dart';
+import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class SelectedCourseView extends StatelessWidget {
   final SelectedCourseController controller;
@@ -27,6 +29,18 @@ class SelectedCourseView extends StatelessWidget {
     const double smallIconSize = 12.0;
 
     final course = controller.course;
+
+    final userController = MatrixState.pangeaController.userController;
+    final cefrMatch = course == null
+        ? CefrMatchResult.none
+        : computeCefrMatch(
+            context: context,
+            userLevel: userController.userCefrLevel,
+            courseLevel: course.cefrLevel,
+            courseLanguage: course.targetLanguage,
+            userLanguage: userController.userL2Code,
+          );
+
     return Scaffold(
       appBar: AppBar(title: Text(controller.title)),
       body: SafeArea(
@@ -89,10 +103,32 @@ class SelectedCourseView extends StatelessWidget {
                                         fontSize: descFontSize,
                                       ),
                                     ),
-                                    CourseInfoChips(
-                                      controller.widget.courseId,
-                                      fontSize: descFontSize,
-                                      iconSize: smallIconSize,
+                                    Wrap(
+                                      spacing: 8.0,
+                                      runSpacing: 8.0,
+                                      children: [
+                                        CourseInfoChip(
+                                          icon: Icons.language,
+                                          text: course.targetLanguageDisplay,
+                                          fontSize: descFontSize,
+                                          iconSize: smallIconSize,
+                                        ),
+                                        CourseInfoChip(
+                                          icon: Icons.school,
+                                          text: course.cefrLevel.title(context),
+                                          fontSize: descFontSize,
+                                          iconSize: smallIconSize,
+                                          highlightColor: cefrMatch.chipColor,
+                                        ),
+                                        CourseInfoChip(
+                                          icon: Icons.location_on,
+                                          text: L10n.of(
+                                            context,
+                                          ).numModules(course.topicIds.length),
+                                          fontSize: descFontSize,
+                                          iconSize: smallIconSize,
+                                        ),
+                                      ],
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(
@@ -119,106 +155,7 @@ class SelectedCourseView extends StatelessWidget {
                                 );
                               }
 
-                              return course.topicListComplete
-                                  ? Column(
-                                      children: [
-                                        ...course.topicIds
-                                            .map(
-                                              (id) => course.loadedTopics[id],
-                                            )
-                                            .whereType<CourseTopicModel>()
-                                            .map(
-                                              (topic) => Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                      vertical: 4.0,
-                                                    ),
-                                                child: Row(
-                                                  spacing: 8.0,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    ClipPath(
-                                                      clipper: PinClipper(),
-                                                      child: ImageByUrl(
-                                                        imageUrl:
-                                                            topic.imageUrl,
-                                                        width: 45.0,
-                                                        replacement: Container(
-                                                          width: 45.0,
-                                                          height: 45.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                                color: theme
-                                                                    .colorScheme
-                                                                    .secondary,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Flexible(
-                                                      child: Column(
-                                                        spacing: 4.0,
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            topic.title,
-                                                            style: const TextStyle(
-                                                              fontSize:
-                                                                  titleFontSize,
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsetsGeometry.symmetric(
-                                                                  vertical: 2.0,
-                                                                ),
-                                                            child: Row(
-                                                              spacing: 8.0,
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .min,
-                                                              children: [
-                                                                if (topic
-                                                                        .location !=
-                                                                    null)
-                                                                  CourseInfoChip(
-                                                                    icon: Icons
-                                                                        .location_on,
-                                                                    text: topic
-                                                                        .location!,
-                                                                    fontSize:
-                                                                        descFontSize,
-                                                                    iconSize:
-                                                                        smallIconSize,
-                                                                  ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Text(
-                                                            topic.description,
-                                                            style: const TextStyle(
-                                                              fontSize:
-                                                                  descFontSize,
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                      ],
-                                    )
-                                  : Center(
-                                      child:
-                                          CircularProgressIndicator.adaptive(),
-                                    );
+                              return CourseTopicList(course: course);
                             },
                           ),
                         ),
@@ -238,6 +175,13 @@ class SelectedCourseView extends StatelessWidget {
                           spacing: 8.0,
                           mainAxisSize: MainAxisSize.min,
                           children: [
+                            if (cefrMatch.message != null)
+                              InlineTooltip(
+                                message: cefrMatch.message!,
+                                isClosed: false,
+                                backgroundColor: cefrMatch.chipColor,
+                                icon: cefrMatch.icon,
+                              ),
                             Row(
                               spacing: 12.0,
                               children: [

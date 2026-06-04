@@ -7,8 +7,8 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/notifications/notifications_constants.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 
-class EnableNotificationsDialog extends StatelessWidget {
-  const EnableNotificationsDialog({super.key});
+class SuggestMobileDialog extends StatelessWidget {
+  const SuggestMobileDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class EnableNotificationsDialog extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    l10n.enableNotificationsDesc,
+                    l10n.suggestMobileDesc,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
@@ -61,41 +61,12 @@ class EnableNotificationsDialog extends StatelessWidget {
                     ),
                     onPressed: () => Navigator.of(
                       context,
-                    ).pop<OkCancelResult>(OkCancelResult.ok),
-                    child: Wrap(
-                      children: [
-                        Text(
-                          l10n.enableNotifications,
-                          style: Theme.of(context).textTheme.bodyLarge,
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Theme.of(
-                        context,
-                      ).colorScheme.surfaceContainerHigh,
-                      foregroundColor: Theme.of(context).colorScheme.onSurface,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 12,
-                      ),
-                    ),
-                    onPressed: () => Navigator.of(
-                      context,
                     ).pop<OkCancelResult>(OkCancelResult.cancel),
                     child: Wrap(
                       children: [
                         Text(
-                          l10n.skipForNow,
-                          style: Theme.of(context).textTheme.bodyLarge
-                              ?.copyWith(
-                                color: Theme.of(
-                                  context,
-                                ).colorScheme.onSurface.withAlpha(180),
-                              ),
+                          l10n.gotIt,
+                          style: Theme.of(context).textTheme.bodyLarge,
                           textAlign: TextAlign.center,
                         ),
                       ],

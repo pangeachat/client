@@ -1414,7 +1414,7 @@
     "pingParticipants": "కోర్సు పాల్గొనేవారికి పింగ్ చేయండి",
     "playWithBot": "పాంజియా బాట్‌తో ఆడండి",
     "inviteFriends": "స్నేహితులను ఆహ్వానించండి",
-    "waitNotDone": "అడిగండి నేను పూర్తి చేయలేదు!",
+    "waitNotDone": "కాస్త ఆగండి, నేను ఇంకా పూర్తిగా చేయలేదు!",
     "waitingForOthersToFinish": "మిగతావారు ముగించడానికి వేచివున్నారు...",
     "generatingSummary": "చాట్‌ను విశ్లేషించి ఫలితాలను సృష్టించడం",
     "findCourse": "కోర్సును కనుగొనండి",
@@ -1468,7 +1468,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-05-22 12:45:26.522139",
+    "@@last_modified": "2026-06-04 09:29:18.137565",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10844,7 +10844,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "ముగిసిన ({num})",
-    "suggestion": "సూచన",
+    "suggestion": "ఉత్తమ సూచనను ఎంచుకోండి",
     "completeActivityButton": "నేను పూర్తిచేసాను!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10859,6 +10859,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "దయచేసి పేరు పొడవును 50 అక్షరాల లేదా తక్కువగా పరిమితం చేయండి.",
+    "enterAName": "దయచేసి ఒక పేరు నమోదు చేయండి.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "రాయడం సహాయం",
+    "viewError": "లోపాన్ని చూడండి",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "నోటిఫికేషన్లు పొందడానికి పాంజియా చాట్ యాప్‌ను పొందండి!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "అర్థమైంది!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang} తో కొనసాగించండి",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "సంపూర్ణ సందేశ చరిత్రను డౌన్‌లోడ్ చేస్తుంది, పంపినవాడు, పంపిన తేదీ, అసలు సందేశం, పంపిన సందేశం మరియు ఉపయోగం రకం సహా.",
+    "analyticsDownloadDesc": "ఎంచుకున్న భాష కోసం వ్యక్తిగత పదకోశ మరియు వ్యాకరణ విశ్లేషణలను డౌన్‌లోడ్ చేస్తుంది.",
+    "courseAnalyticsDownloadDesc": "సाझా విశ్లేషణలతో అన్ని కోర్సు పాల్గొనేవారికి ఎంచుకున్న భాషలో లెమ్మా మరియు వ్యాకరణ వినియోగాన్ని డౌన్‌లోడ్ చేస్తుంది.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "ఈ కోర్సు మీ భాషా స్థాయిని సరిపోలుస్తుంది",
+    "cefrLevelBelow": "ఈ కోర్సు మీ భాషా స్థాయికి కింద ఉంది.",
+    "cefrLevelAbove": "ఈ కోర్సు మీ భాషా స్థాయికి పైగా ఉంది.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

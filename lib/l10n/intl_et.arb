@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-05-22 12:44:57.209468",
+    "@@last_modified": "2026-06-04 09:28:58.580381",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9720,8 +9720,8 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Lõpetatud ({num})",
-    "suggestion": "Soovitus",
-    "completeActivityButton": "Olen valmis!",
+    "suggestion": "Vali parim ettepanek",
+    "completeActivityButton": "Olen lõpetanud!",
     "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
@@ -9735,6 +9735,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Palun piirake nime pikkus 50 tähemärgiga või vähem.",
+    "enterAName": "Palun sisestage nimi.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Kirjutamise abi",
+    "viewError": "Vaata viga",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Laadi alla Pangea Chat rakendus, et saada teateid!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Sain aru!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Jätka {lang} keeles",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Laeb alla kogu sõnumite ajalugu, sealhulgas saatja, saatmise kuupäev, algne sõnum, saadetud sõnum ja kasutustüüp.",
+    "analyticsDownloadDesc": "Laeb alla isiklikud sõnavara ja grammatika analüüsid valitud keele jaoks.",
+    "courseAnalyticsDownloadDesc": "Laeb alla lemma ja grammatika kasutuse valitud keeles kõigi kursuse osalejate jaoks, kellel on jagatud analüüsid.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "See kursus vastab teie keele tasemele",
+    "cefrLevelBelow": "See kursus on teie keele tasemest madalam.",
+    "cefrLevelAbove": "See kursus on teie keele tasemest kõrgem.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

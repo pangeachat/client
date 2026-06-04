@@ -47,13 +47,13 @@ class ActivityStatsMenu extends StatelessWidget {
   bool get _showEndForAll =>
       !_activityComplete && room.isRoomAdmin && !_isTwoPersonBotActivity;
 
-  Future<void> _finishActivityForMe(BuildContext context) async {
+  Future<void> _finishActivityForMe(BuildContext context, bool close) async {
     final resp = await showFutureLoadingDialog(
       context: context,
       future: room.finishActivity,
     );
 
-    if (!resp.isError) {
+    if (close && !resp.isError) {
       toggleVisibility();
     }
   }
@@ -119,9 +119,13 @@ class ActivityStatsMenu extends StatelessWidget {
                                     .goalMenuStarTargetId,
                               ),
                             ),
-                            if (!_activityComplete && room.hasCompletedAllGoals)
+                            if (!_activityComplete &&
+                                room.hasCompletedAllGoals &&
+                                !showDropdown &&
+                                !room.hasCompletedRole)
                               InkWell(
-                                onTap: toggleVisibility,
+                                onTap: () =>
+                                    _finishActivityForMe(context, false),
                                 child: Container(
                                   padding: EdgeInsets.symmetric(
                                     vertical: 6.0,
@@ -137,9 +141,11 @@ class ActivityStatsMenu extends StatelessWidget {
                                   ),
                                   child: Text(
                                     L10n.of(context).completeActivityButton,
-                                    style: TextStyle(
-                                      color: theme.colorScheme.surface,
-                                    ),
+                                    style: theme.brightness == Brightness.light
+                                        ? null
+                                        : TextStyle(
+                                            color: theme.colorScheme.surface,
+                                          ),
                                   ),
                                 ),
                               ),
@@ -202,12 +208,47 @@ class ActivityStatsMenu extends StatelessWidget {
                           ),
                         ],
                       ),
+                    if (!_activityComplete &&
+                        room.hasCompletedRole &&
+                        room.hasPickedRole)
+                      ElevatedButton(
+                        onPressed: () => room.continueActivity(),
+                        style: ElevatedButton.styleFrom(
+                          side: BorderSide(
+                            color: theme.brightness == Brightness.light
+                                ? theme.colorScheme.primary.withAlpha(120)
+                                : theme.colorScheme.primaryContainer,
+                            width: 2,
+                          ),
+                          foregroundColor: theme.colorScheme.primary,
+                          backgroundColor: theme.colorScheme.surface,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              L10n.of(context).waitNotDone,
+                              style: TextStyle(
+                                fontSize: isColumnMode ? 16.0 : 12.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     if (_showEndForMe)
                       ElevatedButton(
-                        onPressed: () => _finishActivityForMe(context),
+                        onPressed: () => _finishActivityForMe(context, true),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: theme.colorScheme.primaryContainer,
-                          foregroundColor: theme.colorScheme.onPrimaryContainer,
+                          backgroundColor: room.hasCompletedAllGoals
+                              ? theme.brightness == Brightness.light
+                                    ? AppConfig.gold
+                                    : AppConfig.goldLight
+                              : theme.colorScheme.primaryContainer,
+                          foregroundColor: theme.brightness == Brightness.light
+                              ? null
+                              : room.hasCompletedAllGoals
+                              ? theme.colorScheme.surface
+                              : theme.colorScheme.onPrimaryContainer,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -225,8 +266,14 @@ class ActivityStatsMenu extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () => _finishActivityForAll(context),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: theme.colorScheme.errorContainer,
-                          foregroundColor: theme.colorScheme.onErrorContainer,
+                          side: BorderSide(
+                            color: theme.brightness == Brightness.light
+                                ? theme.colorScheme.primary.withAlpha(120)
+                                : theme.colorScheme.primaryContainer,
+                            width: 2,
+                          ),
+                          foregroundColor: theme.colorScheme.primary,
+                          backgroundColor: theme.colorScheme.surface,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:45.669543",
+    "@@last_modified": "2026-06-04 09:29:29.720673",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -3007,7 +3007,7 @@
     "pingParticipants": "Pingi partoprenantojn de la kurso",
     "playWithBot": "Ludi kun Pangea Bot",
     "inviteFriends": "Inviti amikojn",
-    "waitNotDone": "Atendu, mi ne finis!",
+    "waitNotDone": "Atendu, mi ne finisis!",
     "waitingForOthersToFinish": "Atendas la aliajn finiĝi...",
     "generatingSummary": "Analizante babiladon kaj generante rezultojn",
     "findCourse": "Trovu kurson",
@@ -10842,8 +10842,8 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Finiĝis ({num})",
-    "suggestion": "Sugesto",
-    "completeActivityButton": "Mi finis!",
+    "suggestion": "Elektu la plej bonan Suggestion",
+    "completeActivityButton": "Mi finas!",
     "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
@@ -10857,6 +10857,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Bonvolu limigi la longon de la nomo al 50 signoj aŭ malpli.",
+    "enterAName": "Bonvolu enigi nomon.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Skribado helpo",
+    "viewError": "Vidi eraron",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Akiru la Pangea Chat-aplikaĵon por ricevi notifikojn!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Komprenite!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Daŭrigi kun {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Elŝutas la plenan mesaĝhistorion, inkluzive la sendanton, daton senditan, originalan mesaĝon, senditan mesaĝon, kaj uzotipon.",
+    "analyticsDownloadDesc": "Elŝutas personajn vortaron kaj gramatikajn analitikojn por la elektita lingvo.",
+    "courseAnalyticsDownloadDesc": "Elŝutas la lema kaj gramatika uzado en la elektita lingvo por ĉiuj kurso-partoprenantoj kun dividitaj analitiko.",
+    "cefrLevelMatch": "Ĉi tiu kurso kongruas kun via lingvonivelo",
+    "cefrLevelBelow": "Ĉi tiu kurso estas sub via lingvonivelo.",
+    "cefrLevelAbove": "Ĉi tiu kurso estas super via lingvonivelo.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

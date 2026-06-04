@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-05-22 12:44:48.718661",
+    "@@last_modified": "2026-06-04 09:28:53.992523",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -3539,7 +3539,7 @@
     "pingParticipants": "Označi sudionike tečaja",
     "playWithBot": "Igraj s Pangea Botom",
     "inviteFriends": "Pozovi prijatelje",
-    "waitNotDone": "Čekaj, nisam završio!",
+    "waitNotDone": "Čekaj, još nisam gotov!",
     "waitingForOthersToFinish": "Čekam da ostali završe...",
     "generatingSummary": "Analiziranje chata i generiranje rezultata",
     "findCourse": "Pronađi tečaj",
@@ -10207,7 +10207,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Završeno ({num})",
-    "suggestion": "Prijedlog",
+    "suggestion": "Odaberite najbolji prijedlog",
     "completeActivityButton": "Gotovo sam!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10222,6 +10222,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Molimo vas da ograničite duljinu imena na 50 znakova ili manje.",
+    "enterAName": "Molimo unesite ime.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Pomoć pri pisanju",
+    "viewError": "Pogledaj grešku",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Preuzmite Pangea Chat aplikaciju kako biste primali obavijesti!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Razumijem!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Nastavi s {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Preuzima cijelu povijest poruka, uključujući pošiljatelja, datum slanja, izvorne poruke, poslane poruke i vrstu korištenja.",
+    "analyticsDownloadDesc": "Preuzima osobnu analizu vokabulara i gramatike za odabrani jezik.",
+    "courseAnalyticsDownloadDesc": "Preuzima lemu i korištenje gramatike na odabranom jeziku za sve sudionike tečaja s dijeljenim analizama.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Ovaj tečaj odgovara vašoj jezičnoj razini",
+    "cefrLevelBelow": "Ovaj tečaj je ispod vaše jezične razine.",
+    "cefrLevelAbove": "Ovaj tečaj je iznad vaše jezične razine.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

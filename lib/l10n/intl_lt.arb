@@ -3192,7 +3192,7 @@
     "pingParticipants": "Pranešti kurso dalyviams",
     "playWithBot": "Žaisti su Pangea botu",
     "inviteFriends": "Pakvieskite draugus",
-    "waitNotDone": "Laukite, aš dar nesu baigęs!",
+    "waitNotDone": "Palauk, aš dar nesu baigęs!",
     "waitingForOthersToFinish": "Laukiama kitų pabaigos...",
     "generatingSummary": "Analizuojama pokalbis ir generuojami rezultatai",
     "findCourse": "Rasti kursą",
@@ -3246,7 +3246,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-05-22 12:45:27.751499",
+    "@@last_modified": "2026-06-04 09:29:18.978656",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10609,7 +10609,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Baigta ({num})",
-    "suggestion": "Pasiūlymas",
+    "suggestion": "Pasirinkite geriausią pasiūlymą",
     "completeActivityButton": "Aš baigiau!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10624,6 +10624,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Prašome apriboti vardo ilgį iki 50 simbolių arba mažiau.",
+    "enterAName": "Prašome įvesti vardą.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Rašymo pagalba",
+    "viewError": "Peržiūrėti klaidą",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Gaukite Pangea Chat programėlę, kad gautumėte pranešimus!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Supratau!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Tęsti su {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Atsisiunčia visą žinučių istoriją, įskaitant siuntėją, siuntimo datą, originalią žinutę, išsiųstą žinutę ir naudojimo tipą.",
+    "analyticsDownloadDesc": "Atsisiunčia asmeninius žodyno ir gramatikos analizės duomenis pasirinktam kalbai.",
+    "courseAnalyticsDownloadDesc": "Atsisiunčia lemą ir gramatikos naudojimą pasirinktam kalbai visiems kurso dalyviams su bendromis analizėmis.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Šis kursas atitinka jūsų kalbos lygį",
+    "cefrLevelBelow": "Šis kursas yra žemiau jūsų kalbos lygio.",
+    "cefrLevelAbove": "Šis kursas yra virš jūsų kalbos lygio.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

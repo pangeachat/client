@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-05-22 12:45:06.025558",
+    "@@last_modified": "2026-06-04 09:29:03.189659",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -3419,7 +3419,7 @@
     "pingParticipants": "Oznámit účastníkům kurzu",
     "playWithBot": "Hrajte s Pangea Botem",
     "inviteFriends": "Pozvat přátele",
-    "waitNotDone": "Počkejte, nejsem hotov!",
+    "waitNotDone": "Počkej, ještě nejsem hotový!",
     "waitingForOthersToFinish": "Čekám na ostatní, až dokončí...",
     "generatingSummary": "Analyzuji chat a generuji výsledky",
     "findCourse": "Najít kurz",
@@ -10277,7 +10277,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Dokončeno ({num})",
-    "suggestion": "Návrh",
+    "suggestion": "Vyberte nejlepší návrh",
     "completeActivityButton": "Jsem hotov!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10292,6 +10292,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Omezte prosím délku jména na 50 znaků nebo méně.",
+    "enterAName": "Prosím zadejte jméno.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Psaní asistence",
+    "viewError": "Zobrazit chybu",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Získejte aplikaci Pangea Chat, abyste dostávali oznámení!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Rozumím!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Pokračovat s {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Stáhne celou historii zpráv, včetně odesílatele, data odeslání, původní zprávy, odeslané zprávy a typu použití.",
+    "analyticsDownloadDesc": "Stáhne osobní analýzu slovní zásoby a gramatiky pro vybraný jazyk.",
+    "courseAnalyticsDownloadDesc": "Stáhne lemata a použití gramatiky ve vybraném jazyce pro všechny účastníky kurzu se sdílenou analýzou.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Tento kurz odpovídá vaší jazykové úrovni",
+    "cefrLevelBelow": "Tento kurz je pod vaší jazykovou úrovní.",
+    "cefrLevelAbove": "Tento kurz je nad vaší jazykovou úrovní.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

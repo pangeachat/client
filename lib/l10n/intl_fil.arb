@@ -2191,7 +2191,7 @@
     "waitingToFillRole": "Naghihintay na punan ang {num} na papel...",
     "pingParticipants": "I-ping ang mga kalahok sa kurso",
     "playWithBot": "Maglaro kasama ang Pangea Bot",
-    "waitNotDone": "Hintay, hindi pa tapos!",
+    "waitNotDone": "Hintayin mo, hindi pa ako tapos!",
     "waitingForOthersToFinish": "Naghihintay na matapos ang iba...",
     "generatingSummary": "Sinusuri ang chat at bumubuo ng mga resulta",
     "findCourse": "Maghanap ng kurso",
@@ -2258,7 +2258,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-05-22 12:45:21.080963",
+    "@@last_modified": "2026-06-04 09:29:14.050707",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10742,7 +10742,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Natapos ({num})",
-    "suggestion": "Mungkahi",
+    "suggestion": "Pumili ng Pinakamahusay na Mungkahi",
     "completeActivityButton": "Tapos na ako!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10757,6 +10757,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Mangyaring limitahan ang haba ng pangalan sa 50 karakter o mas kaunti.",
+    "enterAName": "Mangyaring maglagay ng pangalan.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Tulong sa pagsusulat",
+    "viewError": "Tingnan ang error",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Kunin ang Pangea Chat app upang makatanggap ng mga abiso!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Nakuha ko na!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Magpatuloy sa {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "I-download ang buong kasaysayan ng mensahe, kasama ang nagpadala, petsa ng pagpapadala, orihinal na mensahe, ipinadalang mensahe, at uri ng paggamit.",
+    "analyticsDownloadDesc": "I-download ang personal na bokabularyo at pagsusuri ng gramatika para sa napiling wika.",
+    "courseAnalyticsDownloadDesc": "I-download ang lemma at paggamit ng gramatika sa napiling wika para sa lahat ng kalahok sa kurso na may ibinahaging pagsusuri.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Ang kursong ito ay tumutugma sa iyong antas ng wika",
+    "cefrLevelBelow": "Ang kursong ito ay mas mababa sa iyong antas ng wika.",
+    "cefrLevelAbove": "Ang kursong ito ay higit sa iyong antas ng wika.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

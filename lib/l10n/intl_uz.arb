@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-05-22 12:45:19.764406",
+    "@@last_modified": "2026-06-04 09:29:12.931503",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -3896,7 +3896,7 @@
     "waitingToFillRole": "{num} rolni to'ldirish uchun kutmoqda...",
     "pingParticipants": "Kurs ishtirokchilariga xabar yuborish",
     "playWithBot": "Pangea Bot bilan o'ynash",
-    "waitNotDone": "Kutayapman, to'xtang!",
+    "waitNotDone": "Kut, men hali tugatmadim!",
     "waitingForOthersToFinish": "Qolganlar tugashini kutyapman...",
     "generatingSummary": "Chatni tahlil qilmoqda va natijalarni ishlab chiqmoqda",
     "pingParticipantsNotification": "{user} {room}da faoliyat sessiyasiga qatnashish uchun foydalanuvchilarni qidiryapti",
@@ -9727,7 +9727,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Tugallandi ({num})",
-    "suggestion": "Taklif",
+    "suggestion": "Eng yaxshi taklifni tanlang",
     "completeActivityButton": "Men tugatdim!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9742,6 +9742,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Iltimos, ism uzunligini 50 belgidan kamroq qilib cheklang.",
+    "enterAName": "Iltimos, ism kiriting.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Yozish yordam",
+    "viewError": "Xatoni ko'rish",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Bildirishnomalarni olish uchun Pangea Chat ilovasini oling!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Tushundim!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang} bilan davom etish",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "To'liq xabar tarixini, jumladan jo'natuvchi, yuborilgan sana, asl xabar, yuborilgan xabar va foydalanish turini yuklab oladi.",
+    "analyticsDownloadDesc": "Tanlangan til uchun shaxsiy leksika va grammatika tahlillarini yuklab oladi.",
+    "courseAnalyticsDownloadDesc": "Tanlangan til uchun barcha kurs ishtirokchilari uchun umumiy tahlillar bilan lemma va grammatika foydalanishini yuklab oladi.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Ushbu kurs sizning til darajangizga mos keladi",
+    "cefrLevelBelow": "Ushbu kurs sizning til darajangizdan past.",
+    "cefrLevelAbove": "Ushbu kurs sizning til darajangizdan yuqori.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }

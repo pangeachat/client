@@ -26,7 +26,7 @@ Mobile (Patrol) plan: [mobile-testing-plan.md](mobile-testing-plan.md)
 
 For mobile (Patrol) status, see [mobile-testing-plan.md](mobile-testing-plan.md).
 
-For file layout and infrastructure details, see the [authoring doc](../.github/instructions/authoring-playwright-and-axe-tests.instructions.md) § "File Layout" and the [README](README.md).
+For file layout and infrastructure details, see the [README](README.md) and [playwright-testing.instructions.md](../.github/instructions/playwright-testing.instructions.md).
 
 ---
 
@@ -44,12 +44,10 @@ Each flow maps to a Playwright spec via `e2e/trigger-map.json`.
 | --------------------------- | :----: | -------------------- |
 | Login                       |   ✅   |                      |
 | Accessibility (axe-core)    |   ✅   |                      |
-| Chat list navigation        |   ✅   |                      |
+| Course and chat navigation  |   ✅   |                      |
 | Message toolbar (TTS, etc.) |   ✅   |                      |
-| Course discovery            |   ✅   |                      |
 | Settings                    |   ✅   |                      |
-| Analytics                   |   ⬜   | Needs semantics work |
-| Create DM                   |   ⬜   |                      |
+| Analytics                   |   ✅   |                      |
 | Logout                      |   ✅   |                      |
 
 ### Adding a new flow
@@ -60,7 +58,7 @@ Pick a flow from the table above (or add a new row), then invoke the `add-e2e-co
 
 ## Outstanding axe-core violations
 
-For how axe-core audits work, see the [authoring doc](../.github/instructions/authoring-playwright-and-axe-tests.instructions.md) § "Accessibility Testing (axe-core)".
+For how axe-core audits work, see [playwright-testing.instructions.md § What axe can't check](../.github/instructions/playwright-testing.instructions.md#what-axe-cant-check).
 
 ### Example violations (first ones to fix)
 

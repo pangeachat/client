@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-05-22 12:44:41.565097",
+    "@@last_modified": "2026-06-04 09:28:50.323431",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9850,7 +9850,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Befejezett ({num})",
-    "suggestion": "Javaslat",
+    "suggestion": "Válaszd a legjobb javaslatot",
     "completeActivityButton": "Kész vagyok!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9865,6 +9865,75 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Kérjük, korlátozza a név hosszát 50 karakterre vagy kevesebbre.",
+    "enterAName": "Kérjük, adjon meg egy nevet.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Írási segítség",
+    "viewError": "Hiba megtekintése",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Töltsd le a Pangea Chat alkalmazást, hogy értesítéseket kapj!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Értettem!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Folytatás a(z) {lang} nyelven",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Letölti a teljes üzenet történetet, beleértve a feladót, a küldés dátumát, az eredeti üzenetet, a küldött üzenetet és a használati típust.",
+    "analyticsDownloadDesc": "Letölti a személyes szókincs és nyelvtani elemzéseket a kiválasztott nyelvhez.",
+    "courseAnalyticsDownloadDesc": "Letölti a lemma és nyelvtani használatot a kiválasztott nyelven az összes kurzus résztvevő számára, megosztott elemzésekkel.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Ez a kurzus megfelel a nyelvi szintednek",
+    "cefrLevelBelow": "Ez a kurzus a nyelvi szinted alatt van.",
+    "cefrLevelAbove": "Ez a kurzus a nyelvi szinted felett van.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
         "type": "String",
         "placeholders": {}
     }
