@@ -43,9 +43,9 @@ integration_test/
 
 | Flow                      | Status | Notes                   |
 | -----------------------   | :----: | ----------------------- |
-| Login                     |   ✅   |                         |
-| Course and chat navigation|   ✅   |                         |
-| Message toolbar           |   ✅   |                         |
+| Login                     |   ⬜   |                         |
+| Course and chat navigation|   ⬜   |                         |
+| Message toolbar           |   ⬜   |                         |
 | Settings                  |   ⬜   |                         |
 | Analytics                 |   ⬜   |                         |
 | Logout                    |   ⬜   |                         |
