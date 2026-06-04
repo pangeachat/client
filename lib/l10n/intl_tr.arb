@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-03 16:09:10.204539",
+    "@@last_modified": "2026-06-04 09:29:16.609462",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -3664,7 +3664,7 @@
     "pingParticipants": "Kurs katılımcılarına bildirim gönder",
     "playWithBot": "Pangea Bot ile oyna",
     "inviteFriends": "Arkadaşları davet et",
-    "waitNotDone": "Bekle, bitirmedim!",
+    "waitNotDone": "Bekle, henüz bitirmedim!",
     "waitingForOthersToFinish": "Diğerlerinin bitirmesini bekliyorum...",
     "generatingSummary": "Sohbeti analiz ediyor ve sonuçlar oluşturuyor",
     "findCourse": "Bir kurs bul",

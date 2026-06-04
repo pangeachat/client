@@ -3324,7 +3324,7 @@
     "pingParticipants": "कोर्स प्रतिभागियों को पिंग करें",
     "playWithBot": "पांगेआ बॉट के साथ खेलें",
     "inviteFriends": "मित्रों को आमंत्रित करें",
-    "waitNotDone": "रुको, मैं अभी पूरा नहीं किया हूँ!",
+    "waitNotDone": "रुको, मैं अभी खत्म नहीं हुआ हूँ!",
     "waitingForOthersToFinish": "बाकियों के समाप्त होने का इंतजार कर रहा हूँ...",
     "generatingSummary": "चैट का विश्लेषण कर रहे हैं और परिणाम उत्पन्न कर रहे हैं",
     "findCourse": "कोर्स खोजें",
@@ -3378,7 +3378,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-06-03 16:10:01.326303",
+    "@@last_modified": "2026-06-04 09:29:29.003390",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}

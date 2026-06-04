@@ -3160,7 +3160,7 @@
     "pingParticipants": "འབྲེལ་བའི་སྡེ་ཚན་སྤྱོད་ལེན།",
     "playWithBot": "ལོ་གསར་ Pangea Bot ལས་འགྱོ།",
     "inviteFriends": "གྲོགས་མཇལ་འབར་བ།",
-    "waitNotDone": "ངག་དབང་ལ་མེད་པ་ལས་འགྱོ་མི་འདུག!",
+    "waitNotDone": "Aguarda, não terminei!",
     "waitingForOthersToFinish": "མི་ཚེས་བརྒྱབ་ནས་ལོག་བྱེད་འདུག...",
     "generatingSummary": "ཚོད་ལམ་གྱིས་གནད་སྣང་བྱེད་ནས་ལོག་བྱེད།",
     "findCourse": "ཚོང་ཁང་བཟོ་བཅོས།",
@@ -3194,7 +3194,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-03 16:09:29.501916",
+    "@@last_modified": "2026-06-04 09:29:22.191335",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}

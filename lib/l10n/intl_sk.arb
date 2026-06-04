@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-06-03 16:07:54.614273",
+    "@@last_modified": "2026-06-04 09:28:52.646533",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -2554,7 +2554,7 @@
     "pingParticipants": "Oznámiť účastníkom kurzu",
     "playWithBot": "Hrať s Pangea Botom",
     "inviteFriends": "Pozvať priateľov",
-    "waitNotDone": "Počkajte, ešte som nedokončil!",
+    "waitNotDone": "Čakaj, ešte som neskončil!",
     "waitingForOthersToFinish": "Čakáme na ostatných, aby dokončili...",
     "generatingSummary": "Analyzujeme chat a generujeme výsledky",
     "findCourse": "Nájsť kurz",
