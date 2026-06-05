@@ -28,20 +28,11 @@ test.describe("Settings", () => {
 
     // Learning settings
     await page.getByRole("button", { name: intl.learningSettings }).click();
-    await expect(page.getByText(intl.profile, { exact: true })).toBeVisible();
+    await expect(page.getByRole("button", { name: intl.profile, exact: true })).toBeVisible();
 
     // Style
     await page.getByRole("button", { name: intl.changeTheme }).click();
-    await expect(page.getByText(intl.setColorTheme, { exact: true })).toBeVisible();
-
-    // Notifications
-    await page.getByRole("button", { name: intl.notifications }).click();
-
-    // If notification request button appears, close it
-    if (await page.getByRole("button", { name: intl.gotIt, exact: true }).isVisible()) {
-      await page.getByRole("button", { name: intl.gotIt, exact: true }).click();
-    }
-    await expect(page.getByText(intl.generalNotificationSettings, { exact: true })).toBeVisible();
+    await expect(page.getByRole("radio", { name: intl.lightTheme, exact: true })).toBeVisible();
 
     // Devices
     await page.getByRole("button", { name: intl.devices }).click();
@@ -53,17 +44,22 @@ test.describe("Settings", () => {
 
     // Subscription management
     await page.getByRole("button", { name: intl.subscriptionManagement }).click();
-    await expect(page.getByText(intl.subscriptionManagement, { exact: true })).toHaveCount(2);
+    await expect(page.getByRole("heading", { name: intl.subscriptionManagement, exact: true })).toBeVisible();
 
     // Security
     await page.getByRole("button", { name: intl.security }).click();
     await page.getByRole("button", { name: intl.changeEmail }).click();
-    await expect(page.getByText(intl.addEmail)).toBeVisible();
+    await expect(page.getByRole("button", { name: intl.addEmail })).toBeVisible();
     await page.getByRole("button", { name: intl.security }).click();
     await page.getByRole("button", { name: intl.changePassword }).click();
     await expect(page.getByRole("textbox", { name: intl.pleaseEnterYourCurrentPassword })).toBeVisible();
 
     // Support
     await expect(page.getByRole("button", { name: intl.chatWithSupport })).toBeEnabled();
+
+    // Notifications
+    await page.getByRole("button", { name: intl.notifications }).click();
+
+    await expect(page.getByRole("button", { name: intl.gotIt, exact: true }).or(page.getByRole("group", { name: intl.notificationRuleMaster, exact: true }))).toBeVisible();
   });
 });

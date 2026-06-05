@@ -40,19 +40,19 @@ test.describe("Course and chat navigation", () => {
     // Navigate to home page and check that it works
     // Then return to add course page
     await page.getByRole("button", { name: intl.home, exact: true }).click();
-    await expect(page.getByText(intl.profile, { exact: true })).toBeVisible();
+    await expect(page.getByRole("button", { name: intl.profile, exact: true })).toBeVisible();
     await page.getByRole("button", { name: intl.addCourse, exact: true }).click();
     await page.getByRole("button", { name: intl.addCourse, exact: true }).click();
 
     // Select a public course 
     await page.getByRole("button", { name: intl.knock, exact: true }).first().click();
-    await expect(page.getByText(intl.joinWithClassCode, { exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { name: intl.joinWithClassCode, exact: true })).toBeVisible();
     // Return to previous page
     await page.getByRole("button", { name: intl.addCourse, exact: true }).click();
 
     // Select join with code button
     await page.getByRole("button", { name: intl.joinWithCode, exact: true }).click();
-    await expect(page.getByText(intl.joinWithCode, { exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { name: intl.joinWithCode, exact: true })).toBeVisible();
     // Return to previous page
     await page.getByRole("button", { name: intl.addCourse, exact: true }).click();
 
