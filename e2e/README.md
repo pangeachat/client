@@ -12,7 +12,7 @@ e2e/
   trigger-map.json         # Maps file globs → spec files for diff-based CI selection
   select-tests.js          # Diff-based test selector
   scripts/
-    login.spec.ts          # Login flow
+    login-logout.spec.ts          # Login and logout flow
     a11y.spec.ts           # Accessibility audits (axe-core, WCAG 2.1 AA)
 ```
 
@@ -78,7 +78,7 @@ npx playwright test --config e2e/playwright.config.ts
 npx playwright test e2e/scripts/a11y.spec.ts --config e2e/playwright.config.ts
 
 # Single spec
-npx playwright test e2e/scripts/login.spec.ts --config e2e/playwright.config.ts
+npx playwright test e2e/scripts/login-logout.spec.ts --config e2e/playwright.config.ts
 
 # Against deployed staging (no local Flutter needed)
 BASE_URL=https://app.staging.pangea.chat npx playwright test --config e2e/playwright.config.ts
@@ -87,7 +87,7 @@ BASE_URL=https://app.staging.pangea.chat npx playwright test --config e2e/playwr
 npx playwright test --config e2e/playwright.config.ts -g "should display landing page"
 
 # Headed with the Playwright Inspector
-PWDEBUG=1 npx playwright test e2e/scripts/login.spec.ts --config e2e/playwright.config.ts
+PWDEBUG=1 npx playwright test e2e/scripts/login-logout.spec.ts --config e2e/playwright.config.ts
 
 # View the last run's report
 npx playwright show-report

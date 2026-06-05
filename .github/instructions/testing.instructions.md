@@ -25,8 +25,7 @@ integration_test/
   app_test.dart                 # Flutter integration (Matrix auth flows) — not in CI
 e2e/
   scripts/                      # Browser Playwright specs (UI flows)
-    login.spec.ts
-    logout.spec.ts
+    login-logout.spec.ts
     a11y.spec.ts
     settings.spec.ts
     analytics.spec.ts
@@ -113,7 +112,7 @@ flutter test --name "test description" # Run a specific test by name
 # Playwright browser specs (UI flows)
 npm install && npx playwright install chromium           # One-time setup
 npx playwright test --config e2e/playwright.config.ts --project=setup --project=chromium
-npx playwright test e2e/scripts/login.spec.ts --config e2e/playwright.config.ts  # Single spec
+npx playwright test e2e/scripts/login-logout.spec.ts --config e2e/playwright.config.ts  # Single spec
 BASE_URL=https://app.staging.pangea.chat npx playwright test --config e2e/playwright.config.ts --project=setup --project=chromium
 
 # Playwright API specs (direct choreo calls — no browser, no Flutter needed)

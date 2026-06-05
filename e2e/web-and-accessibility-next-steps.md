@@ -10,7 +10,6 @@ Mobile (Patrol) plan: [mobile-testing-plan.md](mobile-testing-plan.md)
 - [ ] Add integration testing
 - [ ] Add a11y testing and fix violations
 - [ ] Test the cloud agent (`e2e-tester`) with a real failure issue
-- [ ] Use the `add-e2e-coverage` skill to author a spec beyond login
 
 ---
 
@@ -35,12 +34,11 @@ Each flow maps to a Playwright spec via `e2e/trigger-map.json`.
 
 | Flow                        | Status | Notes                |
 | --------------------------- | :----: | -------------------- |
-| Login                       |   ✅   |                      |
+| Login and logout            |   ✅   |                      |
 | Accessibility (axe-core)    |   ✅   |                      |
 | Course and chat navigation  |   ✅   |                      |
 | Settings                    |   ✅   |                      |
 | Analytics                   |   ✅   |                      |
-| Logout                      |   ✅   |                      |
 
 ### Adding a new flow
 

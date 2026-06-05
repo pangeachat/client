@@ -17,7 +17,7 @@ Patrol testing depends on web E2E infrastructure being stable first. The `trigge
 
 1. Install Patrol: `flutter pub add patrol --dev`, configure `pubspec.yaml` patrol section, native side setup (Android `AndroidManifest.xml`, iOS test runner)
 2. Write `integration_test/patrol/common.dart` — shared login helper using `$('Login')` finders
-3. Write `login_test.dart` to validate wiring end-to-end
+3. Write `login_logout_test.dart` to validate wiring end-to-end
 4. Incrementally migrate existing `app_test.dart` flows to Patrol format
 5. Add native-only tests (permissions, push notifications, backgrounding)
 6. Add mobile CI workflow — start with Android emulator in GitHub Actions, graduate to Firebase Test Lab
@@ -31,7 +31,7 @@ integration_test/
   app_test.dart              # Existing FluffyChat integration tests
   patrol/
     common.dart              # Shared login helper
-    login_test.dart          # Basic login validation
+    login_logout_test.dart   # Basic login validation
     send_message_test.dart
     permissions_test.dart    # Native permission dialogs
     ...
@@ -43,12 +43,11 @@ integration_test/
 
 | Flow                      | Status | Notes                   |
 | -----------------------   | :----: | ----------------------- |
-| Login                     |   ⬜   |                         |
+| Login and logout          |   ⬜   |                         |
 | Course and chat navigation|   ⬜   |                         |
 | Message toolbar           |   ⬜   |                         |
 | Settings                  |   ⬜   |                         |
 | Analytics                 |   ⬜   |                         |
-| Logout                    |   ⬜   |                         |
 | Permission dialogs        |   ⬜   | Native OS — Patrol-only |
 | Push notifications        |   ⬜   | Native OS — Patrol-only |
 | Background / foreground   |   ⬜   | Native OS — Patrol-only |
