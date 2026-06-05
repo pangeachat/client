@@ -8,6 +8,21 @@ import { test as base, expect } from "@playwright/test";
  */
 export const test = base.extend({
   page: async ({ page }, use) => {
+    // Inject mock: true into all sent choreo requests
+    // And redirect to local choreo server
+    await page.route('**/choreo/*', (route, request) => {
+      const headers = {
+        ...request.headers(),
+        'mock': 'true',
+      };
+      const url = request.url().replace(process.env.BASE_URL, "http://localhost:8000/health");
+      console.log("ccc " + url + "\n" + headers);
+      route.continue({
+        headers: headers,
+        url: url
+      });
+    });
+
     // Navigate to the app and wait for Flutter to render
     await page.goto("/");
 
