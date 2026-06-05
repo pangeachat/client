@@ -14,12 +14,10 @@ export const test = base.extend({
       const headers = {
         ...request.headers(),
         'mock': 'true',
+        'mock_llm_latency_override': '0',
       };
-      const url = request.url().replace(process.env.BASE_URL, "http://localhost:8000/health");
-      console.log("ccc " + url + "\n" + headers);
       route.continue({
-        headers: headers,
-        url: url
+        headers: headers
       });
     });
 

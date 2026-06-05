@@ -61,11 +61,5 @@ export default defineConfig({
       },
       dependencies: ["setup"],
     },
-  ],
-  webServer: {
-    command: "MOCK_LLM_LATENCY_OVERRIDE_S=0 .venv/bin/uvicorn app.main:app --port 8000",
-    url: "http://localhost:8000/health",
-    reuseExistingServer: !process.env.CI,
-    cwd: path.resolve(__dirname, "../../2-step-choreographer"),
-  },
+  ]
 });
