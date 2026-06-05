@@ -98,31 +98,9 @@ Env vars required (add to `client/.env` or export before running):
 
 ## Mock mode — bypassing paid choreo/CMS calls
 
-All choreo POST requests flow through `Requests.post` → `BaseRequestModel.injectUserContext`. The mock seam lives there: when `PANGEA_MOCK_MODE=true` is set as a Dart compile-time define, `injectUserContext` appends `"mock": true` to every request body, which tells the choreographer to run the full handler path but swap every paid third-party call for a canned response. No individual request class needs to be modified.
+When Playwright is run, all choreo requests are intercepted, and `mock: true` is injected. This tells the choreographer to run the full handler path but swap every paid third-party call for a canned response. No individual request class needs to be modified.
 
-**How to enable:**
-```bash
-# Flutter web — local Playwright target
-flutter run -d chrome --web-port 8080 --dart-define=PANGEA_MOCK_MODE=true
-
-# Flutter web — CI build for Playwright
-flutter build web --dart-define=PANGEA_MOCK_MODE=true
-```
-
-**In code** (`base_request_model.dart`):
-```dart
-static const bool _mockMode = bool.fromEnvironment('PANGEA_MOCK_MODE');
-
-static Map<String, dynamic> injectUserContext(...) {
-  ...
-  if (_mockMode) result['mock'] = true;
-  ...
-}
-```
-
-This flag is compile-time only — it's never set in production or development builds, only in test targets.
-
-**Scope**: covers all handlers that go through `Requests.post`. CMS reads use `Requests.get` and do not send `mock`; CMS doesn't have paid third-party calls so this is fine. If a choreo route returns 500 under `mock=true`, the handler likely lacks a registered mock producer — see the [playwright-testing instructions § Bypassing paid backend calls](playwright-testing.instructions.md#bypassing-paid-backend-calls---mocktrue) for how to file and fix.
+**Scope**: CMS reads use `Requests.get` and do not send `mock`; CMS doesn't have paid third-party calls so this is fine. If a choreo route returns 500 under `mock=true`, the handler likely lacks a registered mock producer — see the [playwright-testing instructions § Bypassing paid backend calls](playwright-testing.instructions.md#bypassing-paid-backend-calls---mocktrue) for how to file and fix.
 
 ## Commands
 
@@ -142,11 +120,6 @@ BASE_URL=https://app.staging.pangea.chat npx playwright test --config e2e/playwr
 # Requires SYNAPSE_URL, CHOREO_API, TEST_MATRIX_USERNAME, TEST_MATRIX_PASSWORD in .env
 npx playwright test --config e2e/playwright.config.ts --project=api-setup --project=api
 npx playwright test e2e/api/specs/tokenize.spec.ts --config e2e/playwright.config.ts --project=api-setup --project=api
-
-# Playwright browser specs with mock mode (no LLM costs)
-flutter run -d chrome --web-port 8080 --dart-define=PANGEA_MOCK_MODE=true
-# then in another terminal:
-npx playwright test --config e2e/playwright.config.ts --project=setup --project=chromium
 ```
 
 ## Manual Testing
@@ -156,9 +129,5 @@ npx playwright test --config e2e/playwright.config.ts --project=setup --project=
 
 ## Future Work
 
-- **Wire `PANGEA_MOCK_MODE` into `base_request_model.dart`** — the conditional `mock` flag described above needs to be implemented; right now the mock field is not set in any committed code.
-- **Pass `--dart-define=PANGEA_MOCK_MODE=true` in `e2e-tests.yml`** — once the Dart flag is in place, add it to the `flutter build web` step in the CI workflow so all Playwright browser runs are cost-free by default.
 - **Implement `e2e/api/` infrastructure** — `playwright.config.ts` api projects, `api-auth.setup.ts`, `helpers.ts`, and first specs covering the core endpoints (tokenize, translation, grammar, practice).
-- **Add `mock_x_request.dart` fixtures + `http.MockClient` tests** in `test/pangea/` for each choreo repo, starting with the most-called endpoints.
-- **Expand Playwright browser specs** — once mock mode is wired, specs can exercise LLM-backed flows without cost. Use the `write-e2e-test` skill and update `trigger-map.json`.
 - **Flutter integration CI** — `integration_test/app_test.dart` is not in CI; needs a device/emulator runner. Low priority given Playwright covers the same flows.
