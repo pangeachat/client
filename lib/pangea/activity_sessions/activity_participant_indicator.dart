@@ -81,7 +81,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
                   : CircleAvatar(
                       radius: 30.0,
                       backgroundColor: theme.colorScheme.primaryContainer,
-                      child: const Icon(Icons.question_mark, size: 30.0),
+                      child: const Icon(Icons.person, size: 30.0),
                     );
               return Opacity(
                 opacity: opacity,
