@@ -14,7 +14,7 @@ export const test = base.extend({
       const headers = {
         ...request.headers(),
         'mock': 'true',
-        'mock_llm_latency_override': '0',
+        'mock_llm_latency_override_s': '0',
       };
       route.continue({
         headers: headers
