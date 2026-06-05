@@ -108,7 +108,6 @@ class ActivitySummary extends StatelessWidget {
                       vocab: activity.vocab,
                       langCode: activity.req.targetLanguage,
                       targetId: "activity-summary-vocab",
-                      usedVocab: usedVocab,
                       activityLangCode: activity.req.targetLanguage,
                     ),
                   ],
