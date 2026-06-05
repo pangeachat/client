@@ -58,8 +58,3 @@ Axe assertions are **zero-tolerance**: `violations.toHaveLength(0)`. Fix the wid
 ## Diff-triggered CI
 
 [`e2e/trigger-map.json`](../../e2e/trigger-map.json) maps Dart-source glob patterns to spec files. On a per-deploy run, only the specs whose triggers match the changed files run; the full suite runs nightly. Adding a new spec without wiring `trigger-map.json` means the spec never runs in pre-deploy CI — every new spec must declare its triggers.
-
-## Future Work
-
-- [pangeachat/2-step-choreographer#2230](https://github.com/pangeachat/2-step-choreographer/issues/2230) — original tracking issue for the `mock=true` Playwright bypass (closed).
-- [pangeachat/2-step-choreographer#2485](https://github.com/pangeachat/2-step-choreographer/issues/2485) — canonical example of a missing per-handler mock producer; resolved by `pangeachat/2-step-choreographer#2486`.
