@@ -1,6 +1,6 @@
 ---
 applyTo: "lib/pangea/text_to_speech/**,lib/pangea/common/widgets/word_audio_button.dart"
-description: "Client word-level TTS — Pro gate, known-good-voice gate (native quality field / CMS-served web name patterns) before backend fallback."
+description: "Client word-level TTS — Pro gate, known-good-voice gate (native quality field / client-side web name patterns) before backend fallback."
 ---
 
 # Word-Level Text-to-Speech (Client)
@@ -48,15 +48,13 @@ The gate in (4) is deliberately **check-first, backend-second**: the worst case 
 What counts as "known-good" differs by surface because the quality signal does:
 
 - **Native (iOS/Android):** use the `quality` field from `flutter_tts` `getVoices` (iOS `default`/`enhanced`/`premium`; Android `very-low`…`very-high`). A voice at/above threshold (iOS `enhanced`, Android `high`) is good. No server data needed — the signal is on-device. **Tuning the threshold changes how aggressively we spend backend calls.**
-- **Web (Safari/Chrome):** the Web Speech API exposes no quality field, and flutter_tts on web surfaces only the voice `name` and locale — it drops `localService` and `voiceURI` — so the **name is the only signal available**. "Good" is therefore inferred from name patterns: `Google ` (matches Chrome's network `Google Deutsch`-style voices), `Online (Natural)` (Edge neural), `(Enhanced)` / `(Premium)` (downloaded Apple voices), plus an exclusion list for specific bad voices. The match set is **served from CMS** in the language payload the client already fetches, so it can be tuned in the Payload admin without a client release (release cadence is slow, and these are exactly the values we expect to adjust as field reports arrive). The client keeps a safe baked-in default for first paint and fetch failure. The good web voices are often network voices that load asynchronously, so the availability check must run after the voice list has loaded, not on the first call.
+- **Web (Safari/Chrome):** the Web Speech API exposes no quality field, and flutter_tts on web surfaces only the voice `name` and locale — it drops `localService` and `voiceURI` — so the **name is the only signal available**. "Good" is therefore inferred from name patterns: `Google ` (matches Chrome's network `Google Deutsch`-style voices), `Online (Natural)` (Edge neural), `(Enhanced)` / `(Premium)` (downloaded Apple voices), plus an exclusion list for specific bad voices. These patterns are **hardcoded in the client**, not server-fetched: they are broad vendor naming conventions (the `Google `, `(Enhanced)`, `Online (Natural)` markers have held across many browser/OS releases) rather than per-voice IDs, and the safe fallback means a wrong pattern costs a backend call, not bad audio — so remote tuning isn't worth the cross-repo machinery for v1. Lifting the set (or just the exclusion list) to CMS is a later option if a specific bad voice ever needs excluding without waiting for a client release. The good web voices are often network voices that load asynchronously, so the availability check must run after the voice list has loaded, not on the first call.
 
 This is **not** the per-language quality matrix we rejected: it's a small, mostly language-agnostic set of name patterns, and the safe fallback (no match → backend) means a stale or incomplete set costs backend calls, never quality. Native needs no list at all.
 
 When a known-good voice is found, the controller must **explicitly select it** on the utterance — setting only the language and letting the engine pick its default is what produces poor pronunciation even when a good voice is installed (e.g. on Chrome a flat default voice is chosen over the higher-quality `Google Deutsch`). Active voice selection is the primary fix; backend is the fallback only when no good voice exists.
 
-**Backwards compatibility:** if a language object carries no good-voice pattern data — legacy CMS rows, or a client newer than the CMS deploy — the client **skips the web name check entirely** and uses existing device routing. No regression; the web fix simply doesn't activate until the CMS data is present. Native (quality-field) behavior is unaffected, since it doesn't depend on CMS.
-
-**Validation:** the name patterns and thresholds are platform conventions, not guarantees, so they must be confirmed against real `getVoices` output per target browser/OS before relying on them — the other reason the web set is CMS-tunable rather than fixed.
+**Validation:** the name patterns and thresholds are platform conventions, not guarantees, so they must be confirmed against real `getVoices` output per target browser/OS before relying on them.
 
 ## Phoneme playback
 
