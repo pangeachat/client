@@ -89,7 +89,7 @@ extension LocalizedExceptionExtension on Object {
           return L10n.of(context).emailVerificationFailed;
         case MatrixError.M_BAD_STATE:
           if ((this as MatrixException).errorMessage.contains(
-            "Cannot knock user who was banned",
+            "user who was banned",
           )) {
             return L10n.of(context).cannotJoinBannedRoom;
           }
