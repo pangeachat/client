@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:41:54.595029",
+    "@@last_modified": "2026-06-08 12:05:13.718517",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10069,20 +10069,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "ইন্টারেক্টিভ অনুবাদ এবং ব্যাকরণ পরীক্ষা, অডিও প্লেব্যাক, ব্যক্তিগত অনুশীলন কার্যক্রম এবং শেখার বিশ্লেষণ আনলক করতে সাবস্ক্রাইব করুন!",
-    "emojiSelectedSnackbar": "আপনি {lemma} এর জন্য ইমোজি সেট করেছেন! আমরা ভবিষ্যতে অনুশীলন কার্যক্রমে এই ইমোজিটি শব্দটি উপস্থাপন করতে ব্যবহার করব।",
     "unlockPracticeActivities": "অনুশীলন কার্যক্রম আনলক করুন",
     "noAnalyticsActivitiesAvailable": "ওয়াও, আপনি সমস্ত উপলব্ধ কার্যক্রম সম্পন্ন করেছেন! আরও অনুশীলন কার্যক্রম আনলক করতে আরও বার্তা পাঠান।",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10539,5 +10530,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "এই ইমোজিটি এখন \"{word}\" এর প্রতিনিধিত্ব করবে অনুশীলন কার্যক্রমে",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }

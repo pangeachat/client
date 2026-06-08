@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-06-08 10:41:13.862015",
+    "@@last_modified": "2026-06-08 12:04:59.440344",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9358,20 +9358,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Interaktiv tarjima va grammatika tekshirish, audio ijro, shaxsiy mashq mashqlari va o‘rganish tahlillari uchun obuna bo‘ling!",
-    "emojiSelectedSnackbar": "{lemma} uchun emoji o‘rnating! Biz bu emojini kelajakdagi mashq mashqlarida so‘zni ifodalash uchun ishlatamiz.",
     "unlockPracticeActivities": "Mashq mashqlarini oching",
     "noAnalyticsActivitiesAvailable": "Vau, siz barcha mavjud faoliyatlarni bajardingiz! Qo‘shimcha mashq mashqlari uchun ko‘proq xabar yuboring.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9828,5 +9819,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Bu emoji endi amaliy mashg'ulotlarda \"{word}\" ni ifodalaydi",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }

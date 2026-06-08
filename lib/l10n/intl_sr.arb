@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:42:33.413209",
+    "@@last_modified": "2026-06-08 12:05:28.062082",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10477,20 +10477,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Pretplatite se da otključate interaktivno prevođenje i proveru gramatike, audio reprodukciju, personalizovane vežbe i analitiku učenja!",
-    "emojiSelectedSnackbar": "Postavili ste emoji za {lemma}! Ovaj emoji ćemo koristiti da predstavimo reč u vežbama ubuduće.",
     "unlockPracticeActivities": "Otključajte vežbe",
     "noAnalyticsActivitiesAvailable": "Vau, završili ste sve dostupne aktivnosti! Pošaljite više poruka da otključate više vežbi.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10947,5 +10938,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Ova emotikona će sada predstavljati \"{word}\" u praktičnim vežbama",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }

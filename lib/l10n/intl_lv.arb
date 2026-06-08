@@ -3920,7 +3920,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-06-08 10:41:21.613129",
+    "@@last_modified": "2026-06-08 12:05:02.546083",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9354,20 +9354,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Piesakieties, lai atbloķētu interaktīvo tulkošanu un gramatikas pārbaudi, audio atskaņošanu, personalizētus praktiskos uzdevumus un mācību analītiku!",
-    "emojiSelectedSnackbar": "Jūs esat iestatījis emocijzīmi {lemma}! Mēs izmantosim šo emocijzīmi, lai attēlotu vārdu praktiskajos uzdevumos turpmāk.",
     "unlockPracticeActivities": "Atbloķēt praktiskos uzdevumus",
     "noAnalyticsActivitiesAvailable": "Wow, jūs esat pabeidzis visus pieejamos uzdevumus! Sūtiet vairāk ziņojumu, lai atbloķētu vairāk praktisko uzdevumu.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9824,5 +9815,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Šis emocijzīme tagad pārstāvēs \"{word}\" praktiskajos uzdevumos",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }

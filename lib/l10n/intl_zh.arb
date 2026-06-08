@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-06-08 10:41:48.857921",
+    "@@last_modified": "2026-06-08 12:05:12.627574",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9354,20 +9354,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "订阅以解锁互动翻译和语法检查、音频播放、个性化练习和学习分析！",
-    "emojiSelectedSnackbar": "您已为 {lemma} 设置了表情符号！我们将使用此表情符号在今后的练习中表示该词。",
     "unlockPracticeActivities": "解锁练习活动",
     "noAnalyticsActivitiesAvailable": "哇，您已完成所有可用活动！发送更多消息以解锁更多练习。",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9824,5 +9815,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "这个表情符号现在将在练习中代表 \"{word}\"",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }

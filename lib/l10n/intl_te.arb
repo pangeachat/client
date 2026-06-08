@@ -1468,7 +1468,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-06-08 10:41:30.978940",
+    "@@last_modified": "2026-06-08 12:05:06.092444",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10475,20 +10475,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "ఇంటరాక్టివ్ అనువాదం మరియు వ్యాకరణ తనిఖీ, ఆడియో ప్లేబ్యాక్, వ్యక్తిగత ప్రాక్టీస్ వ్యాయామాలు మరియు అభ్యాస విశ్లేషణలను అన్లాక్ చేయడానికి సబ్‌స్క్రైబ్ చేయండి!",
-    "emojiSelectedSnackbar": "{lemma} కోసం మీరు ఈ ఎమోజీని సెట్ చేశారు! మేము ఈ ఎమోజీని ప్రాక్టీస్ వ్యాయామాలలో పదాన్ని ప్రాతినిధ్యం వహించడానికి ఉపయోగిస్తాము.",
     "unlockPracticeActivities": "ప్రాక్టీస్ వ్యాయామాలను అన్లాక్ చేయండి",
     "noAnalyticsActivitiesAvailable": "వావ్, మీరు అందుబాటులో ఉన్న అన్ని కార్యకలాపాలను పూర్తి చేశారు! మరింత ప్రాక్టీస్ వ్యాయామాలను అన్లాక్ చేయడానికి మరింత సందేశాలు పంపండి.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10945,5 +10936,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "ఈ ఎమోజీ ఇప్పుడు \"{word}\" ప్రాక్టీస్ వ్యాయామాలలో ప్రాతినిధ్యం వహిస్తుంది",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:42:21.352185",
+    "@@last_modified": "2026-06-08 12:05:24.663202",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10473,20 +10473,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Abonu por malŝlosi interagajn tradukojn kaj gramatikajn kontroladojn, sonan ludon, personigitajn praktikajn ekzercojn, kaj lernan analitikon!",
-    "emojiSelectedSnackbar": "Vi agordis la emoji por {lemma}! Ni uzos ĉi tiun emoji por reprezenti la vorton en praktikaj ekzercoj en la estonteco.",
     "unlockPracticeActivities": "Malŝlosi praktikajn ekzercojn",
     "noAnalyticsActivitiesAvailable": "Ve, vi kompletigis ĉiujn disponeblajn aktivadojn! Sendu pli da mesaĝoj por malŝlosi pli da praktikaj ekzercoj.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10943,5 +10934,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Ĉi tiu emoji nun reprezentos \"{word}\" en praktikaj ekzercoj",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }

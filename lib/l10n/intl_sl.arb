@@ -1963,7 +1963,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-06-08 10:40:36.485290",
+    "@@last_modified": "2026-06-08 12:04:47.433476",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10470,20 +10470,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Naročite se, da odklenete interaktivno prevajanje in preverjanje slovnice, predvajanje zvoka, personalizirane vaje in analitiko učenja!",
-    "emojiSelectedSnackbar": "Nastavili ste emoji za {lemma}! Ta emoji bomo uporabili za predstavitev besede v vajah naprej.",
     "unlockPracticeActivities": "Odkleni vaje",
     "noAnalyticsActivitiesAvailable": "Wow, zaključili ste vse razpoložljive aktivnosti! Pošljite več sporočil, da odklenete več vaj.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10940,5 +10931,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Ta emoji bo zdaj predstavljal \"{word}\" v praktičnih vajah",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }

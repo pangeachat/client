@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:39:57.087565",
+    "@@last_modified": "2026-06-08 12:04:32.330532",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10179,20 +10179,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Abonează-te pentru a debloca traducerea interactivă și verificarea gramaticii, redarea audio, exerciții de practică personalizate și analize de învățare!",
-    "emojiSelectedSnackbar": "Ai setat emoji-ul pentru {lemma}! Vom folosi acest emoji pentru a reprezenta cuvântul în exercițiile de practică de acum înainte.",
     "unlockPracticeActivities": "Deblochează exercițiile de practică",
     "noAnalyticsActivitiesAvailable": "Wow, ai completat toate activitățile disponibile! Trimite mai multe mesaje pentru a debloca mai multe exerciții de practică.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10649,5 +10640,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Acest emoji va reprezenta acum \"{word}\" în exercițiile practice",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }

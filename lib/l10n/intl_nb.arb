@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:40:52.157756",
+    "@@last_modified": "2026-06-08 12:04:53.198716",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9414,20 +9414,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Abonner for å låse opp interaktiv oversettelse og grammatikkontroll, lydavspilling, personlige øvelser og læringsanalyse!",
-    "emojiSelectedSnackbar": "Du har satt emoji for {lemma}! Vi vil bruke denne emojien for å representere ordet i øvelsene fremover.",
     "unlockPracticeActivities": "Lås opp øvelser",
     "noAnalyticsActivitiesAvailable": "Wow, du har fullført alle tilgjengelige aktiviteter! Send flere meldinger for å låse opp flere øvelser.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9884,5 +9875,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Denne emojien vil nå representere \"{word}\" i praksisøvelser",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }

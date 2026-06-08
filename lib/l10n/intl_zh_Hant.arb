@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:41:08.024244",
+    "@@last_modified": "2026-06-08 12:04:58.434886",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9484,20 +9484,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "訂閱以解鎖互動翻譯和語法檢查、音頻播放、個性化練習題和學習分析！",
-    "emojiSelectedSnackbar": "您已為 {lemma} 設定了表情符號！我們將在接下來的練習題中使用這個表情符號來表示這個單詞。",
     "unlockPracticeActivities": "解鎖練習題",
     "noAnalyticsActivitiesAvailable": "哇，您已完成所有可用的活動！發送更多消息以解鎖更多練習題。",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9954,5 +9945,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "這個表情符號現在將在練習中代表「{word}」",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }

@@ -3378,7 +3378,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-06-08 10:42:16.897985",
+    "@@last_modified": "2026-06-08 12:05:23.134078",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10073,20 +10073,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "इंटरएक्टिव अनुवाद और व्याकरण जांच, ऑडियो प्लेबैक, व्यक्तिगत अभ्यास व्यायाम, और सीखने के विश्लेषण को अनलॉक करने के लिए सदस्यता लें!",
-    "emojiSelectedSnackbar": "आपने {lemma} के लिए इमोजी सेट किया है! हम आगे के अभ्यास व्यायाम में इस इमोजी का उपयोग करेंगे।",
     "unlockPracticeActivities": "अभ्यास व्यायाम अनलॉक करें",
     "noAnalyticsActivitiesAvailable": "वाह, आपने सभी उपलब्ध गतिविधियाँ पूरी कर ली हैं! अधिक अभ्यास व्यायाम अनलॉक करने के लिए और संदेश भेजें।",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10543,5 +10534,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "यह इमोजी अब \"{word}\" को प्रैक्टिस एक्सरसाइज में दर्शाएगा",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }
