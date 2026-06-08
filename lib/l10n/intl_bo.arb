@@ -3194,7 +3194,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-04 09:29:22.191335",
+    "@@last_modified": "2026-06-08 10:24:08.403818",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7821,11 +7821,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot voz",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Yor requst has been sent to course admin! Yu'll be let in if dey approve.",
     "@knockDesc": {
         "type": "String",
@@ -9479,6 +9474,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot audio message voice",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

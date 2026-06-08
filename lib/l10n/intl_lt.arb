@@ -3246,7 +3246,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-06-04 09:29:18.978656",
+    "@@last_modified": "2026-06-08 10:24:04.637591",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9310,11 +9310,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot balsas",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Jūsų prašymas buvo išsiųstas kurso administratoriui! Būsite įleistas, jei jie patvirtins.",
     "@knockDesc": {
         "type": "String",
@@ -10693,6 +10688,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot garso pranešimo balsas",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

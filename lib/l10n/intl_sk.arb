@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-06-04 09:28:52.646533",
+    "@@last_modified": "2026-06-08 10:23:33.705456",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -9540,11 +9540,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Hlas Pangea Bota",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Vaša žiadosť bola odoslaná administrátorovi kurzu! Budete vpustený, ak ju schvália.",
     "@knockDesc": {
         "type": "String",
@@ -10923,6 +10918,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Hlasová správa Pangea Bot",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

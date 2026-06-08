@@ -3934,7 +3934,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-06-04 09:29:05.735979",
+    "@@last_modified": "2026-06-08 10:23:50.876983",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -8662,11 +8662,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Голас Pangea Bot",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Ваш запыт быў адпраўлены адміністрацыі курса! Вы будзеце дапушчаны, калі яны зацвердзяць.",
     "@knockDesc": {
         "type": "String",
@@ -9821,6 +9816,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Голас аўдыё паведамлення Pangea Bot",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

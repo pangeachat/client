@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-04 09:29:28.294007",
+    "@@last_modified": "2026-06-08 10:24:15.569941",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -9292,11 +9292,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "パンゲアボットの声",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "あなたのリクエストはコース管理者に送信されました！ 彼らが承認すれば、入ることができます。",
     "@knockDesc": {
         "type": "String",
@@ -10675,6 +10670,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "パンゲアボットの音声メッセージの声",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-04 09:28:54.591890",
+    "@@last_modified": "2026-06-08 10:23:36.800933",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -9503,11 +9503,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "קול של פנגיאה בוט",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "הבקשה שלך נשלחה למנהל הקורס! תורשה להיכנס אם הם יאשרו.",
     "@knockDesc": {
         "type": "String",
@@ -10886,6 +10881,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "קול הודעת שמע של פנגיאה בוט",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-04 09:29:30.537004",
+    "@@last_modified": "2026-06-08 10:24:20.021656",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -9657,11 +9657,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Голос бота Pangea",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Ваш запрос отправлен администратору курса! Вы будете допущены, если они одобрят.",
     "@knockDesc": {
         "type": "String",
@@ -10821,6 +10816,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Голосовое сообщение Pangea Bot",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

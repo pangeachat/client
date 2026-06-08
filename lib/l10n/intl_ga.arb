@@ -3949,7 +3949,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-06-04 09:29:32.577741",
+    "@@last_modified": "2026-06-08 10:24:24.609257",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -8669,11 +8669,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "guth Pangea Bot",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Tá do hiarratas curtha chuig an riarachán cúrsa! Cuirfear isteach thú má cheadaíonn siad é.",
     "@knockDesc": {
         "type": "String",
@@ -9818,6 +9813,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Guth teachtaireachta fuaime Pangea Bot",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

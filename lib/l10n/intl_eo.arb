@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-04 09:29:29.720673",
+    "@@last_modified": "2026-06-08 10:24:19.240127",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -9543,11 +9543,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Voĉo de Pangea Bot",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Via peto estis sendita al la kursa administranto! Vi estos enirita se ili aprobas.",
     "@knockDesc": {
         "type": "String",
@@ -10926,6 +10921,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Voĉo de Pangea Bot por aŭdmesaĝo",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }
