@@ -63,7 +63,6 @@ test.describe("Should be able to Login and logout", () => {
     await page.getByRole("button", { name: intl.settings, exact: true }).click();
 
     // Log out
-    await page.getByRole("button", { name: intl.settings, exact: true }).click();
     await page.getByRole("button", { name: intl.logout }).click();
     await page.getByRole("button", { name: intl.logout }).click();
     await expect(page.getByRole("button", {name: intl.loginToAccount })).toBeVisible();
