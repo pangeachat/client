@@ -98,6 +98,13 @@ extension LocalizedExceptionExtension on Object {
           if (exceptionContext == ExceptionContext.joinRoom) {
             return L10n.of(context).unableToJoinChat;
           }
+          // #Pangea
+          if ((this as MatrixException).errorMessage.contains(
+            "No known servers",
+          )) {
+            return L10n.of(context).unableToJoinChat;
+          }
+          // Pangea#
           return (this as MatrixException).errorMessage;
       }
     }
