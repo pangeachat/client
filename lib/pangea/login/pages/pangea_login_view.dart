@@ -46,7 +46,7 @@ class PasswordLoginView extends StatelessWidget {
                         TextFormField(
                           autofocus: true,
                           decoration: InputDecoration(
-                            hintText: L10n.of(context).usernameOrEmail,
+                            labelText: L10n.of(context).usernameOrEmail,
                           ),
                           autofillHints: const [AutofillHints.username],
                           textInputAction: TextInputAction.next,
@@ -82,7 +82,7 @@ class PasswordLoginView extends StatelessWidget {
                               },
                               controller: controller.passwordController,
                               decoration: InputDecoration(
-                                hintText: L10n.of(context).password,
+                                labelText: L10n.of(context).password,
                                 suffixIcon: IconButton(
                                   tooltip: L10n.of(context).showPassword,
                                   icon: Icon(
