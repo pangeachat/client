@@ -2777,7 +2777,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-06-04 09:29:08.218065",
+    "@@last_modified": "2026-06-08 10:23:53.652675",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9495,11 +9495,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Voz do Bot Pangea",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Sua solicitação foi enviada ao administrador do curso! Você será admitido se eles aprovarem.",
     "@knockDesc": {
         "type": "String",
@@ -10883,6 +10878,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Voz da mensagem de áudio do Pangea Bot",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

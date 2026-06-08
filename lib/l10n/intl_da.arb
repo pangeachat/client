@@ -1478,7 +1478,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-06-04 09:28:49.643204",
+    "@@last_modified": "2026-06-08 10:23:28.968253",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -9518,11 +9518,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot stemme",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Din anmodning er sendt til kursusadministratoren! Du vil blive lukket ind, hvis de godkender.",
     "@knockDesc": {
         "type": "String",
@@ -10901,6 +10896,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot lydbesked stemme",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

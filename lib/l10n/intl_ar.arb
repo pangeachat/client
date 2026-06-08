@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-06-04 09:29:15.797303",
+    "@@last_modified": "2026-06-08 10:23:59.620693",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -8764,11 +8764,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "صوت بوت بانجيا",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "تم إرسال طلبك إلى إدارة الدورة! سيتم السماح لك بالدخول إذا وافقوا.",
     "@knockDesc": {
         "type": "String",
@@ -10147,6 +10142,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "صوت رسالة الصوت لروبوت بانجيا",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

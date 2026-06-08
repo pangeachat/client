@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-04 09:28:58.580381",
+    "@@last_modified": "2026-06-08 10:23:41.367494",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -8673,11 +8673,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Boti hääl",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Teie taotlus on saadetud kursuse administraatorile! Teid lastakse sisse, kui nad heaks kiidavad.",
     "@knockDesc": {
         "type": "String",
@@ -9804,6 +9799,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Boti helisõnumi hääl",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

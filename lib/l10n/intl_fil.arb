@@ -2258,7 +2258,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-06-04 09:29:14.050707",
+    "@@last_modified": "2026-06-08 10:23:57.019188",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -9438,11 +9438,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Boses ng Pangea Bot",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Ang iyong kahilingan ay naipadala sa admin ng kurso! Papayagan ka nilang pumasok kung sila ay mag-aapruba.",
     "@knockDesc": {
         "type": "String",
@@ -10826,6 +10821,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Boses ng mensahe ng audio ng Pangea Bot",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

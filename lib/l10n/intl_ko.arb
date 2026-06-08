@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-04 09:28:45.784957",
+    "@@last_modified": "2026-06-08 10:23:21.830539",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -8641,11 +8641,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "판게아 봇 음성",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "귀하의 요청이 과정 관리자에게 전송되었습니다! 그들이 승인하면 들어갈 수 있습니다.",
     "@knockDesc": {
         "type": "String",
@@ -10024,6 +10019,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "판게아 봇 오디오 메시지 음성",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-04 09:29:12.133420",
+    "@@last_modified": "2026-06-08 10:23:54.938750",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -8549,11 +8549,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot 語音",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "您的請求已發送給課程管理員！如果他們批准，您將被允許進入。",
     "@knockDesc": {
         "type": "String",
@@ -9937,6 +9932,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot 音訊訊息語音",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

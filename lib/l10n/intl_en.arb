@@ -4585,7 +4585,6 @@
     "fillInBlank": "Fill in the blank with the correct choice",
     "learn": "Learn",
     "languageUpdated": "Target language updated!",
-    "voiceDropdownTitle": "Pangea Bot voice",
     "knockDesc": "Your request has been sent to course admin! You'll be let in if they approve.",
     "knockAccepted": "Your join request was accepted! You can now enter the course.",
     "@knockAccepted": {},
@@ -4855,5 +4854,6 @@
     "suggestMobileDesc": "Get the Pangea Chat app to receive notifications!",
     "cefrLevelMatch": "This course matches your language level",
     "cefrLevelBelow": "This course is below your language level.",
-    "cefrLevelAbove": "This course is above your language level."
+    "cefrLevelAbove": "This course is above your language level.",
+    "voiceDropdownTitle": "Pangea Bot audio message voice"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-06-04 09:28:48.376282",
+    "@@last_modified": "2026-06-08 10:23:24.075991",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8662,11 +8662,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Voz do bot Pangea",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "A túa solicitude foi enviada ao administrador do curso! Serás admitido se a aproban.",
     "@knockDesc": {
         "type": "String",
@@ -9807,6 +9802,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Voz do mensaxe de audio do Pangea Bot",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

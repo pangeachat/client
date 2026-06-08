@@ -1407,7 +1407,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-06-04 09:29:00.841422",
+    "@@last_modified": "2026-06-08 10:23:44.319234",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -9550,11 +9550,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot 聲音",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "你的請求已經發送給課程管理員！如果他們批准，你將被允許進入。",
     "@knockDesc": {
         "type": "String",
@@ -10938,6 +10933,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot 音訊消息聲音",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

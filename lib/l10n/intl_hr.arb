@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-06-04 09:28:53.992523",
+    "@@last_modified": "2026-06-08 10:23:35.917964",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -8908,11 +8908,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot glas",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Vaš zahtjev je poslan administratoru tečaja! Bit ćete primljeni ako odobre.",
     "@knockDesc": {
         "type": "String",
@@ -10291,6 +10286,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot audio poruka glas",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

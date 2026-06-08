@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-06-04 09:29:23.050715",
+    "@@last_modified": "2026-06-08 10:24:09.145578",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -8662,11 +8662,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "潘吉亚机器人声音",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "您的请求已发送给课程管理员！如果他们批准，您将被允许进入。",
     "@knockDesc": {
         "type": "String",
@@ -9807,6 +9802,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot 音频消息语音",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

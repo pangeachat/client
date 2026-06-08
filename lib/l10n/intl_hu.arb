@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-06-04 09:28:50.323431",
+    "@@last_modified": "2026-06-08 10:23:30.200571",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -8551,11 +8551,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot hang",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "A kérésed el lett küldve a kurzus adminisztrátorának! Be fogsz engedni, ha jóváhagyják.",
     "@knockDesc": {
         "type": "String",
@@ -9934,6 +9929,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot audio üzenet hangja",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

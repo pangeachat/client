@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-06-04 09:29:12.931503",
+    "@@last_modified": "2026-06-08 10:23:55.732092",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -4263,7 +4263,6 @@
     "fillInBlank": "To'g'ri tanlov bilan bo'sh joyni to'ldiring",
     "learn": "O'rganish",
     "languageUpdated": "Maqsadli til yangilandi!",
-    "voiceDropdownTitle": "Pangea Bot ovozi",
     "knockDesc": "Sizning so'rovingiz kurs adminiga yuborildi! Ular tasdiqlagan taqdirda sizga kirishga ruxsat beriladi.",
     "findCourse": "Kurs toping",
     "publicInviteDescChat": "Ushbu chatga taklif qilish uchun foydalanuvchilarni qidiring.",
@@ -8758,10 +8757,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@knockDesc": {
         "type": "String",
         "placeholders": {}
@@ -9811,6 +9806,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot audio xabar ovozi",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

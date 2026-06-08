@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-04 09:29:19.680834",
+    "@@last_modified": "2026-06-08 10:24:05.539595",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -5507,11 +5507,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Giọng nói của Pangea Bot",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Yêu cầu của bạn đã được gửi đến quản trị viên khóa học! Bạn sẽ được cho vào nếu họ chấp thuận.",
     "@knockDesc": {
         "type": "String",
@@ -6890,6 +6885,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Giọng nói tin nhắn âm thanh của Pangea Bot",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

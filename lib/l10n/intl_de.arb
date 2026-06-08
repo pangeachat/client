@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-06-04 09:28:59.310263",
+    "@@last_modified": "2026-06-08 10:23:42.247666",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -8694,11 +8694,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot Stimme",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Ihre Anfrage wurde an den Kursadministrator gesendet! Sie werden eingelassen, wenn sie zustimmen.",
     "@knockDesc": {
         "type": "String",
@@ -9786,6 +9781,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot Audio-Nachricht Stimme",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }

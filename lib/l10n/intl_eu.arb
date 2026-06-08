@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-04 09:28:56.983796",
+    "@@last_modified": "2026-06-08 10:23:39.626495",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -8662,11 +8662,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot ahotsa",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Zure eskaera ikastaroaren administratzaileari bidali zaio! Onartzen badute, sartuko zara.",
     "@knockDesc": {
         "type": "String",
@@ -9807,6 +9802,11 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot audio mezua ahotsa",
+    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     }
