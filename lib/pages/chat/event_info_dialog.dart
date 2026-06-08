@@ -24,12 +24,46 @@ class EventInfoDialog extends StatelessWidget {
 
   const EventInfoDialog({required this.event, required this.l10n, super.key});
 
-  String prettyJson(MatrixEvent event) {
-    const decoder = JsonDecoder();
-    const encoder = JsonEncoder.withIndent('    ');
-    final object = decoder.convert(jsonEncode(event.toJson()));
-    return encoder.convert(object);
+  // #Pangea
+  dynamic normalizeJson(dynamic value) {
+    if (value is Map) {
+      return value.map((key, val) => MapEntry(key, normalizeJson(val)));
+    }
+
+    if (value is List) {
+      return value.map(normalizeJson).toList();
+    }
+
+    if (value is String) {
+      final trimmed = value.trim();
+
+      // Only try to parse strings that look like JSON.
+      if ((trimmed.startsWith('{') && trimmed.endsWith('}')) ||
+          (trimmed.startsWith('[') && trimmed.endsWith(']'))) {
+        try {
+          return normalizeJson(jsonDecode(trimmed));
+        } catch (_) {
+          // Invalid JSON, leave it as a string.
+        }
+      }
+    }
+
+    return value;
   }
+
+  String prettyJson(MatrixEvent event) {
+    const encoder = JsonEncoder.withIndent('    ');
+    final normalized = normalizeJson(event.toJson());
+    return encoder.convert(normalized);
+  }
+
+  // String prettyJson(MatrixEvent event) {
+  //   const decoder = JsonDecoder();
+  //   const encoder = JsonEncoder.withIndent('    ');
+  //   final object = decoder.convert(jsonEncode(event.toJson()));
+  //   return encoder.convert(object);
+  // }
+  // Pangea#
 
   @override
   Widget build(BuildContext context) {
