@@ -158,16 +158,18 @@ class PangeaRepresentation {
 
     return tokensToSave
         .where(
-          (token) => !pastedStrings.any(
-            (pasted) =>
-                pasted.toLowerCase().contains(token.text.content.toLowerCase()),
-          ),
-        )
-        .where(
-          (token) => !openMatches.any(
-            (match) =>
-                match.overlapsTokenSpan(token.text.offset, token.text.length),
-          ),
+          (token) =>
+              !pastedStrings.any(
+                (pasted) => pasted.toLowerCase().contains(
+                  token.text.content.toLowerCase(),
+                ),
+              ) &&
+              !openMatches.any(
+                (match) => match.overlapsTokenSpan(
+                  token.text.offset,
+                  token.text.length,
+                ),
+              ),
         )
         .toList();
   }
