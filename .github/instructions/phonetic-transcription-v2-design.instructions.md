@@ -124,7 +124,7 @@ Keys use **PascalCase** (`Pos`, `Tense`, `VerbForm`). Parse:
 
 PT covers **isolated words** only. PT's responsibility ends at producing a disambiguated `tts_phoneme` (§2–§3): the resulting TTS request carries **at most one** `tts_phoneme`, chosen _before_ playback. A word with a single pronunciation needs no override at all.
 
-Everything about *speaking* the phoneme — routing the override to backend, cache-only resolution at playback time, and the backend's SSML phoneme rendering — is owned by the TTS feature ([text-to-speech.instructions.md](text-to-speech.instructions.md#phoneme-playback)) and the choreographer's [tts.instructions.md](../../../2-step-choreographer/.github/instructions/tts.instructions.md). Kept there as the single source so the playback flow doesn't drift across two docs.
+Everything about *speaking* the phoneme — routing the override to backend, cache-only resolution at playback time, and the backend's SSML phoneme rendering — is owned by the TTS feature ([word-text-to-speech.instructions.md](word-text-to-speech.instructions.md#phoneme-playback)) and the choreographer's [tts.instructions.md](../../../2-step-choreographer/.github/instructions/tts.instructions.md). Kept there as the single source so the playback flow doesn't drift across two docs.
 
 ---
 
