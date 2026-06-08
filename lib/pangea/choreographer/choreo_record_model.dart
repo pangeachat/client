@@ -146,19 +146,6 @@ class ChoreoRecordModel {
     return data;
   }
 
-  /// Parses only the open matches from a choreo record JSON map.
-  /// Safe to call on partial/embedded choreo where originalText may be absent.
-  static List<PangeaMatch> openMatchesFromJson(Map<String, dynamic> json) {
-    try {
-      return (jsonDecode(json[_openMatchesKey] ?? "[]") as Iterable)
-          .map((e) => PangeaMatch.fromJson(e as Map<String, dynamic>))
-          .toList()
-          .cast<PangeaMatch>();
-    } catch (_) {
-      return [];
-    }
-  }
-
   bool get includedIT => choreoSteps.any((step) {
     return step.acceptedOrIgnoredMatch?.status ==
             PangeaMatchStatusEnum.accepted &&
