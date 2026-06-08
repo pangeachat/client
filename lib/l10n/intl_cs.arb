@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-06-08 12:04:51.996474",
+    "@@last_modified": "2026-06-08 14:15:27.861731",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10378,5 +10378,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Zobrazit možnosti vývojáře",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

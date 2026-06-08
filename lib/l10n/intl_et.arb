@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-08 12:04:44.417498",
+    "@@last_modified": "2026-06-08 14:15:22.235509",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9821,5 +9821,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Näita arendaja valikuid",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:05:13.718517",
+    "@@last_modified": "2026-06-08 14:15:47.098324",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10539,5 +10539,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "ডেভেলপার অপশনগুলি দেখান",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

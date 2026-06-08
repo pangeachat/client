@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:04:42.870038",
+    "@@last_modified": "2026-06-08 14:15:21.224478",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10942,5 +10942,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Mostrar opções de desenvolvedor",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:05:24.663202",
+    "@@last_modified": "2026-06-08 14:15:55.080321",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10943,5 +10943,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Montri evoluiga opciojn",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

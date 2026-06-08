@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-06-08 12:04:26.389133",
+    "@@last_modified": "2026-06-08 14:15:11.792221",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9951,5 +9951,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Fejlesztői opciók megjelenítése",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

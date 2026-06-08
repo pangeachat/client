@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-06-08 12:05:18.727697",
+    "@@last_modified": "2026-06-08 14:15:49.476161",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9933,5 +9933,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Pokaż opcje dewelopera",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

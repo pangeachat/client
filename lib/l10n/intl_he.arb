@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:04:38.316979",
+    "@@last_modified": "2026-06-08 14:15:17.315716",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10903,5 +10903,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "הצג אפשרויות מפתחים",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

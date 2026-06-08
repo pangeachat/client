@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-08 12:05:04.797538",
+    "@@last_modified": "2026-06-08 14:15:38.477677",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10155,5 +10155,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Geliştirici seçeneklerini göster",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

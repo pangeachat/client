@@ -3194,7 +3194,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-08 12:05:11.431194",
+    "@@last_modified": "2026-06-08 14:15:44.378927",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9496,5 +9496,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Tunjukkan pilihan pemaju",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

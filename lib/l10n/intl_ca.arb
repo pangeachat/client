@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:04:55.469701",
+    "@@last_modified": "2026-06-08 14:15:30.763491",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9975,5 +9975,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Mostra les opcions de desenvolupador",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

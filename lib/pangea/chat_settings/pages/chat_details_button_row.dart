@@ -115,7 +115,9 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
         title: l10n.download,
         icon: const Icon(Icons.download_outlined, size: 30.0),
         onPressed: () => widget.controller.downloadChatAction(room.id, context),
-        visible: kIsWeb,
+        visible:
+            kIsWeb &&
+            MatrixState.pangeaController.userController.showDeveloperOptions,
         enabled: room.ownPowerLevel >= 50,
         showInMainView: false,
       ),
