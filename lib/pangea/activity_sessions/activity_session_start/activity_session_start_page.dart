@@ -82,7 +82,8 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
   @override
   void didUpdateWidget(covariant ActivitySessionStartPage oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.roomId != widget.roomId) {
+    if (oldWidget.roomId != widget.roomId ||
+        oldWidget.activityId != widget.activityId) {
       setState(() => showInstructions = false);
       _load();
     }
