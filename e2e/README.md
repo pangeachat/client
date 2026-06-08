@@ -14,6 +14,8 @@ e2e/
   scripts/
     login-logout.spec.ts          # Login and logout flow
     a11y.spec.ts           # Accessibility audits (axe-core, WCAG 2.1 AA)
+  api/                     # API tests - outside scope of normal Playwright testing
+    ...
 ```
 
 ## Prerequisites

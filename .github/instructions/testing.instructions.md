@@ -32,11 +32,13 @@ e2e/
     course-chat-navigation.spec.ts
   api/                          # Playwright API specs (direct choreo calls, no browser)
     api-auth.setup.ts           # Matrix login via HTTP API → .auth/api-token.json
+    api.config.ts               # Shared configuration for API tests
     helpers.ts                  # Shared headers builder (auth token + API key)
-    specs/                      # One spec file per endpoint or endpoint group
+    scripts/                    # One spec file per endpoint or endpoint group
       tokenize.spec.ts
       translation.spec.ts
       ...
+  auth.setup.ts                 # Login and save state for testing usage
   fixtures.ts                   # Shared browser fixture
   playwright.config.ts
   trigger-map.json              # CI: maps file globs → which specs to run
@@ -44,7 +46,7 @@ e2e/
 
 **Adding new browser specs** (`e2e/scripts/`): subdirectories are fine, Playwright recurses. Update `trigger-map.json`.
 
-**Adding new API specs** (`e2e/api/specs/`): one file per endpoint or closely related group. No browser setup needed — just `request` fixture + shared headers from `helpers.ts`. No `trigger-map.json` entry needed; API specs always run in `full` and `diff` modes.
+**Adding new API specs** (`e2e/api/scripts/`): one file per endpoint or closely related group. No browser setup needed — just `request` fixture + shared headers from `helpers.ts`. No `trigger-map.json` entry needed; API specs always run in `full` and `diff` modes.
 
 **Adding new Pangea unit tests**: `test/pangea/`. Feature subdirectories are fine — `flutter test` recurses. Don't add files to `test/` root (upstream owns that layer).
 
@@ -55,7 +57,7 @@ The PR runner (`flutter test` via `integrate.yaml`) is a plain ubuntu-latest wit
 | Goal | Location | CI gate | Mock mechanism |
 |---|---|---|---|
 | Client-side logic: request serialization, response parsing, error handling | `test/pangea/` | Every PR | `http.MockClient` in Dart intercepts `Requests.post`/`.get`, returns a canned JSON fixture. No network. |
-| Choreo contract: each endpoint accepts valid requests and returns the expected shape | `e2e/api/specs/` | Post-deploy + nightly | Playwright `request` context calls real staging choreo directly with `mock: true` in the body. No browser. |
+| Choreo contract: each endpoint accepts valid requests and returns the expected shape | `e2e/api/scripts/` | Post-deploy + nightly | Playwright `request` context calls real staging choreo directly with `mock: true` in the body. No browser. |
 | End-to-end UI flows that trigger choreo | `e2e/scripts/` | Post-deploy + nightly | Choreo requests are intercepted by Playwright specs and `mock: true` is inserted. |
 
 ### Integration test — mock request fixtures
@@ -70,7 +72,7 @@ Each choreo endpoint should have a corresponding `mock_<endpoint>_request.json` 
 
 The `e2e/api/` tier calls staging choreo endpoints directly via Playwright's `request` context — no Flutter app, no browser. Auth is a one-time Matrix login via the Matrix client-server API (`/_matrix/client/v3/login`), performed in `api-auth.setup.ts` and cached to `.auth/api-token.json`. Every spec imports shared headers from `helpers.ts` (Matrix bearer token + choreo API key) and data from `mock_<endpoint>_request.json`.
 
-Each spec in `e2e/api/specs/` covers one endpoint or a closely related group. Tests assert on HTTP status and the top-level shape of the response (required fields present, correct types) — not on content, which is canned mock data.
+Each spec in `e2e/api/scripts/` covers one endpoint or a closely related group. Tests assert on HTTP status and the top-level shape of the response (required fields present, correct types) — not on content, which is canned mock data.
 
 Env vars required (add to `client/.env` or export before running):
 - `SYNAPSE_URL` — Matrix homeserver base URL (e.g. `https://matrix.staging.pangea.chat`)
@@ -118,7 +120,7 @@ BASE_URL=https://app.staging.pangea.chat npx playwright test --config e2e/playwr
 # Playwright API specs (direct choreo calls — no browser, no Flutter needed)
 # Requires SYNAPSE_URL, CHOREO_API, TEST_MATRIX_USERNAME, TEST_MATRIX_PASSWORD in .env
 npx playwright test --config e2e/playwright.config.ts --project=api-setup --project=api
-npx playwright test e2e/api/specs/tokenize.spec.ts --config e2e/playwright.config.ts --project=api-setup --project=api
+npx playwright test e2e/api/scripts/tokenize.spec.ts --config e2e/playwright.config.ts --project=api-setup --project=api
 ```
 
 ## Manual Testing
