@@ -1,6 +1,6 @@
 ---
 applyTo: "lib/pangea/text_to_speech/**,lib/pangea/common/widgets/word_audio_button.dart"
-description: "Client word-level TTS feature — Pro gate, device vs backend audio sources, quality-driven routing, phoneme playback, and audio caching."
+description: "Client word-level TTS — Pro gate, known-good-voice gate (native quality field / CMS-served web name patterns) before backend fallback."
 ---
 
 # Word-Level Text-to-Speech (Client)
@@ -30,22 +30,31 @@ This is the crux, and it's why one rule can't cover every surface:
 Two consequences drive the design:
 
 - **Browser ≠ its native cousin for quality.** "Safari ≈ iOS" and "Chrome ≈ Android" hold only for *which languages exist*, not quality: Safari serves the downgraded default tier, and desktop Chrome uses its own voices entirely. So we cannot infer web quality from native behavior.
-- **Web gives us nothing to measure.** The only place we get a real quality reading is the native app.
+- **Only native gives a quality *field*.** On native we read quality directly; web exposes no quality field, so on web quality must be inferred from the voice name (see [Known-good voice](#known-good-voice)).
 
 ### Routing decisions
 
-In priority order:
+In priority order, for a request:
 
-1. **Not subscribed → device, always.** Backend TTS is entitlement-gated server-side (`has_active_entitlement` → 401 for free users), so subscription is the first branch: an unsubscribed user gets device TTS for every case below, read via [`SubscriptionController.isSubscribed`](../../lib/pangea/subscription/controllers/subscription_controller.dart). This keeps audio working rather than erroring silently; the trade-off is free users still hear the weak device voice on the poor-quality and web cases. Whether word-level pronunciation should be free is a separate product question, not decided here. The decisions below apply only to subscribed users.
+1. **Not subscribed → device.** Backend TTS is entitlement-gated server-side (`has_active_entitlement` → 401 for free users), so subscription is the first branch: an unsubscribed user always plays device TTS — using the best voice available per [Known-good voice](#known-good-voice) — read via [`SubscriptionController.isSubscribed`](../../lib/pangea/subscription/controllers/subscription_controller.dart). Audio keeps working rather than erroring; the trade-off is free users hear whatever the device offers. Whether word-level pronunciation should be free is a separate product question, not decided here. The decisions below apply to subscribed users.
 2. **Phoneme override → backend.** A resolved `tts_phoneme` (heteronym disambiguation) can't be honored by device TTS. See [Phoneme playback](#phoneme-playback).
-3. **Language unsupported by device → backend.** No device voice for the L2 leaves backend as the only option.
-4. **Device voice is poor (native) → backend.** On iOS/Android, read the `quality` of the best installed voice for the L2 and route to backend when it's below threshold (iOS below `enhanced`; Android below `high`). This is the only fully accurate quality lever — it sends a user with a good on-device voice to the fast local path and a user with a flat one to Google. **Tuning this threshold changes how aggressively we spend backend calls.**
-5. **Web → backend.** Web exposes no quality signal and is the reliably-weak surface (Safari's default tier, desktop Chrome's own voices), so prefer backend rather than guess.
-6. **Otherwise → device.** Native with a good-quality voice and no phoneme stays local: free, instant, offline.
+3. **No device voice for the L2 → backend.** Nothing local to play.
+4. **Known-good device voice available → device (that voice); otherwise → backend.** Rather than route by platform, check whether the device actually offers a good voice for the L2 and use it, falling back to backend only when it doesn't. This minimizes backend spend and fixes poor pronunciation at the source. See [Known-good voice](#known-good-voice) for how "good" is determined per surface.
 
-### Why no per-language quality matrix
+The gate in (4) is deliberately **check-first, backend-second**: the worst case is a good voice we failed to recognize, which sends the request to backend — extra cost, never bad audio.
 
-A predicted "language × platform" quality table was considered and rejected: native already gives a *real* runtime signal (no need to predict), and web quality depends on which voices the user downloaded plus network state — impossible to predict and stale the day Apple/Google ship new voices. The native `quality` field plus "web prefers backend" covers the same ground without a table to maintain. **Do not reintroduce a hardcoded per-language device-quality list** unless a concrete case proves these two signals insufficient.
+### Known-good voice
+
+What counts as "known-good" differs by surface because the quality signal does:
+
+- **Native (iOS/Android):** use the `quality` field from `flutter_tts` `getVoices` (iOS `default`/`enhanced`/`premium`; Android `very-low`…`very-high`). A voice at/above threshold (iOS `enhanced`, Android `high`) is good. No server data needed — the signal is on-device. **Tuning the threshold changes how aggressively we spend backend calls.**
+- **Web (Safari/Chrome):** the Web Speech API exposes no quality field, so "good" is inferred from the voice **name**. The match set — name patterns (e.g. `Online (Natural)`, `(Enhanced)`, `(Premium)`, `Google `, `-network`) plus an exclusion list for specific bad voices — is **served from CMS** in the language payload the client already fetches, so it can be tuned in the Payload admin without a client release (release cadence is slow, and these are exactly the values we expect to adjust as field reports arrive). The client keeps a safe baked-in default for first paint and fetch failure. Network "good" voices load asynchronously, so the availability check must run after the voice list has loaded, not on the first call.
+
+This is **not** the per-language quality matrix we rejected: it's a small, mostly language-agnostic set of name patterns, and the safe fallback (no match → backend) means a stale or incomplete set costs backend calls, never quality. Native needs no list at all.
+
+**Backwards compatibility:** if a language object carries no good-voice pattern data — legacy CMS rows, or a client newer than the CMS deploy — the client **skips the web name check entirely** and uses existing device routing. No regression; the web fix simply doesn't activate until the CMS data is present. Native (quality-field) behavior is unaffected, since it doesn't depend on CMS.
+
+**Validation:** the name patterns and thresholds are platform conventions, not guarantees, so they must be confirmed against real `getVoices` output per target browser/OS before relying on them — the other reason the web set is CMS-tunable rather than fixed.
 
 ## Phoneme playback
 
@@ -58,7 +67,7 @@ Heteronyms (e.g. 还 → hái vs huán) get arbitrary pronunciation from device 
 
 ## Audio caching
 
-Backend audio is cached client-side in [`text_to_speech_repo.dart`](../../lib/pangea/text_to_speech/text_to_speech_repo.dart) (short TTL) so repeated taps on the same word don't re-hit the network or re-bill. This is what keeps "web prefers backend" and the phoneme path affordable: word audio is short, user-initiated, and highly repeat-tapped. The backend additionally has its own CMS audio cache (choreographer doc).
+Backend audio is cached client-side in [`text_to_speech_repo.dart`](../../lib/pangea/text_to_speech/text_to_speech_repo.dart) (short TTL) so repeated taps on the same word don't re-hit the network or re-bill. This is what keeps the backend-fallback and phoneme paths affordable: word audio is short, user-initiated, and highly repeat-tapped. The backend additionally has its own CMS audio cache (choreographer doc).
 
 ## Optional override setting
 
