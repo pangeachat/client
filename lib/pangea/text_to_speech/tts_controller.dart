@@ -243,6 +243,7 @@ class TtsController {
     ChatController? chatController,
     VoidCallback? onStart,
     VoidCallback? onStop,
+    double speed = 1.0,
 
     /// When provided, skip device TTS and use choreo with phoneme tags.
     /// If omitted, the PT v2 cache is checked automatically.
@@ -300,6 +301,7 @@ class TtsController {
       onStart: onStart,
       onStop: onStop,
       tid: transactionId,
+      speed: speed,
     );
 
     // Only the active request may clear shared request state.
@@ -323,6 +325,7 @@ class TtsController {
     VoidCallback? onStop,
     String? ttsPhoneme,
     required String tid,
+    double speed = 1.0,
   }) async {
     chatController?.stopMediaStream.add(null);
     MatrixState.pangeaController.matrixState.audioPlayer?.stop();
@@ -364,6 +367,7 @@ class TtsController {
               ? const Duration(seconds: 1)
               : const Duration(seconds: 10),
           tid: tid,
+          speed: speed,
         );
 
         // fallback to device TTS if language is supported but choreo fails (e.g. due to timeout)
@@ -375,6 +379,7 @@ class TtsController {
             [token],
             tid,
             requestId: requestId,
+            speed: speed,
           );
         } else if (!success && !_isCurrentRequestId(requestId)) {
           _log('tryToSpeak: skipped fallback for superseded request', tid);
@@ -390,6 +395,7 @@ class TtsController {
           [token],
           tid,
           requestId: requestId,
+          speed: speed,
         );
       }
     } else if (targetID != null && context != null) {
@@ -405,6 +411,7 @@ class TtsController {
     List<PangeaTokenText> tokens,
     String tid, {
     required int requestId,
+    double speed = 1.0,
   }) async {
     if (!_isCurrentRequestId(requestId)) {
       _log('Skipping device playback for superseded request', tid);
@@ -414,6 +421,7 @@ class TtsController {
     try {
       _log('Speaking from device: $text, langCode: $langCode', tid);
       text = text.toLowerCase();
+      _tts.setSpeechRate(speed);
       await Future(() => (_tts.speak(text)));
       _log('Audio playback from device completed', tid);
       return true;
@@ -433,6 +441,7 @@ class TtsController {
     String? ttsPhoneme,
     Duration timeout = const Duration(seconds: 10),
     required String tid,
+    double speed = 1.0,
   }) async {
     _log('_speakFromChoreo: text="$text" ttsPhoneme=$ttsPhoneme', tid);
     TextToSpeechResponseModel? ttsRes;
@@ -477,6 +486,7 @@ class TtsController {
       }
       requestPlayer = AudioPlayer();
       audioPlayer = requestPlayer;
+      audioPlayer!.setSpeed(speed);
       final player = MultiPlatformAudioPlayer(
         audioPlayer: audioPlayer!,
         bytes: audioContent,
