@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-08 10:23:39.626495",
+    "@@last_modified": "2026-06-08 10:40:24.309474",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9807,6 +9807,21 @@
     },
     "voiceDropdownTitle": "Pangea Bot audio mezua ahotsa",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat irudia",
+    "announcementsChatDetails": "Ikastaroaren administratzaileek ikastaro parte-hartzaileentzat iragarkiak sortzeko lekua. Kanal hau guztiak ikusi dezakete, baina administratzaileek bakarrik idatzi dezakete bertan.",
+    "introChatDetails": "Agur esan! Aurkeztu zeure burua ikastaro parte-hartzaileei, aurkitu lagunak, eta jardueren kanpoan hitz egin.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:24:13.895922",
+    "@@last_modified": "2026-06-08 10:42:03.442932",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10394,6 +10394,21 @@
     },
     "voiceDropdownTitle": "Pangea Bot ljudmeddelande röst",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat-logotyp",
+    "announcementsChatDetails": "En plats för kursadministratörer att skapa meddelanden för kursdeltagare. Medan alla kan se denna kanal, kan endast administratörer skriva i den.",
+    "introChatDetails": "Säg hej! Presentera dig för dina kurskamrater, hitta vänner och chatta utanför aktiviteter.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

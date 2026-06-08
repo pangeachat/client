@@ -3772,7 +3772,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-06-08 10:24:14.803098",
+    "@@last_modified": "2026-06-08 10:42:06.377287",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10856,6 +10856,21 @@
     },
     "voiceDropdownTitle": "Φωνή μηνύματος ήχου Pangea Bot",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Λογότυπο Pangea Chat",
+    "announcementsChatDetails": "Ένας χώρος για τους διαχειριστές του μαθήματος να δημιουργούν ανακοινώσεις για τους συμμετέχοντες του μαθήματος. Ενώ όλοι μπορούν να δουν αυτό το κανάλι, μόνο οι διαχειριστές μπορούν να πληκτρολογήσουν σε αυτό.",
+    "introChatDetails": "Πες γειά! Παρουσίασε τον εαυτό σου στους υπόλοιπους συμμετέχοντες του μαθήματος, βρες φίλους και συνομιλήστε εκτός δραστηριοτήτων.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

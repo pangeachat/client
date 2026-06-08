@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-06-08 10:23:30.200571",
+    "@@last_modified": "2026-06-08 10:39:51.884172",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9934,6 +9934,21 @@
     },
     "voiceDropdownTitle": "Pangea Bot audio üzenet hangja",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logó",
+    "announcementsChatDetails": "Hely a kurzus adminisztrátorai számára, hogy bejelentéseket készítsenek a kurzus résztvevői számára. Míg mindenki megtekintheti ezt a csatornát, csak az adminisztrátorok írhatnak bele.",
+    "introChatDetails": "Köszönts! Mutatkozz be a kurzus többi résztvevőjének, találj barátokat, és csevegj a tevékenységeken kívül.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

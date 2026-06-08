@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:24:10.468856",
+    "@@last_modified": "2026-06-08 10:41:54.595029",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10522,6 +10522,21 @@
     },
     "voiceDropdownTitle": "প্যাঙ্গিয়া বট অডিও বার্তার কণ্ঠ",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "প্যাঙ্গিয়া চ্যাট লোগো",
+    "announcementsChatDetails": "কোর্স প্রশাসকদের জন্য একটি স্থান যেখানে তারা কোর্স অংশগ্রহণকারীদের জন্য ঘোষণা তৈরি করতে পারেন। যদিও সবাই এই চ্যানেলটি দেখতে পারে, কেবল প্রশাসকরাই এতে টাইপ করতে পারেন।",
+    "introChatDetails": "হ্যালো বলুন! আপনার সহপাঠীদের সাথে পরিচয় করিয়ে দিন, বন্ধু খুঁজুন, এবং কার্যক্রমের বাইরে চ্যাট করুন।",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

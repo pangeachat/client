@@ -3949,7 +3949,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-06-08 10:24:24.609257",
+    "@@last_modified": "2026-06-08 10:42:37.365682",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9818,6 +9818,21 @@
     },
     "voiceDropdownTitle": "Guth teachtaireachta fuaime Pangea Bot",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Lógó Pangea Chat",
+    "announcementsChatDetails": "Áit do na hoifigigh cúrsa chun fógraí a chruthú do na rannpháirtithe cúrsa. Cé go bhféadfadh gach duine an chanáil seo a fheiceáil, is iad na hoifigigh amháin a fhéadfadh scríobh inti.",
+    "introChatDetails": "Abair dia dhuit! Cuir aithne ort féin do do chomh-rannpháirtithe cúrsa, faigh cairde, agus comhrá lasmuigh de na gníomhaíochtaí.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

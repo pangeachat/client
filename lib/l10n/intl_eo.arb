@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:24:19.240127",
+    "@@last_modified": "2026-06-08 10:42:21.352185",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10926,6 +10926,21 @@
     },
     "voiceDropdownTitle": "Voĉo de Pangea Bot por aŭdmesaĝo",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Ĉatlogo",
+    "announcementsChatDetails": "Loko por kursaj administrantoj por krei anoncojn por kursaj partoprenantoj. Dum ĉiuj povas vidi ĉi tiun kanalon, nur administrantoj povas skribi en ĝi.",
+    "introChatDetails": "Diru saluton! Enkonduku vin al viaj samkursanoj, trovu amikojn, kaj babbadu ekster aktivadoj.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

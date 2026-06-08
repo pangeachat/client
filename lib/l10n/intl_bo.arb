@@ -3194,7 +3194,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-08 10:24:08.403818",
+    "@@last_modified": "2026-06-08 10:41:45.834132",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9479,6 +9479,21 @@
     },
     "voiceDropdownTitle": "Pangea Bot audio message voice",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logo",
+    "announcementsChatDetails": "Ena panga ya kurs admini kuumba matangazo kwa washiriki wa kurs. Wakati wote wanaweza kuona channel hii, ni admin tu wanaweza kuandika ndani yake.",
+    "introChatDetails": "Sema hello! Jitambulishe kwa washiriki wenzako wa kurs, pata marafiki, na zungumza nje ya shughuli.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

@@ -3246,7 +3246,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-06-08 10:24:04.637591",
+    "@@last_modified": "2026-06-08 10:41:33.995269",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10693,6 +10693,21 @@
     },
     "voiceDropdownTitle": "Pangea Bot garso pranešimo balsas",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logotipas",
+    "announcementsChatDetails": "Vieta, kur kursų administratoriai gali kurti pranešimus kursų dalyviams. Nors visi gali matyti šį kanalą, tik administratoriai gali rašyti jame.",
+    "introChatDetails": "Pasakykite labas! Pristatykite save savo kursų dalyviams, raskite draugų ir bendraukite už veiklų ribų.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

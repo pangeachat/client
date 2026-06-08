@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-08 10:23:46.301010",
+    "@@last_modified": "2026-06-08 10:40:45.384315",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9807,6 +9807,21 @@
     },
     "voiceDropdownTitle": "Голосове повідомлення бота Pangea",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Логотип Pangea Chat",
+    "announcementsChatDetails": "Місце для адміністраторів курсу, щоб створювати оголошення для учасників курсу. Хоча всі можуть переглядати цей канал, лише адміністратори можуть писати в ньому.",
+    "introChatDetails": "Скажіть привіт! Познайомтеся з вашими товаришами по курсу, знайдіть друзів і спілкуйтеся поза межами активностей.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

@@ -4855,5 +4855,7 @@
     "cefrLevelMatch": "This course matches your language level",
     "cefrLevelBelow": "This course is below your language level.",
     "cefrLevelAbove": "This course is above your language level.",
-    "voiceDropdownTitle": "Pangea Bot audio message voice"
+    "voiceDropdownTitle": "Pangea Bot audio message voice",
+    "announcementsChatDetails": "A place for course admins to create annoucements for course participants. While all may view this channel, only admins can type in it.",
+    "introChatDetails": "Say hello! Introduce yourself to your fellow course participants, find friends, and chat outside of activities."
 }

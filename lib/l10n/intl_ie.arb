@@ -3378,7 +3378,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-06-08 10:23:34.810582",
+    "@@last_modified": "2026-06-08 10:40:05.834639",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10526,6 +10526,21 @@
     },
     "voiceDropdownTitle": "Pangea Bot áthas guth",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logo",
+    "announcementsChatDetails": "Áit do na hoifigigh cúrsa chun fógraí a chruthú do rannpháirtithe an chúrsa. Cé go bhfuil sé ar fáil do gach duine an cainéal seo a fheiceáil, is iad na hoifigigh amháin a fhéadfaidh scríobh ann.",
+    "introChatDetails": "Abair dia dhuit! Cuir aithne ar do chomh-rannpháirtithe cúrsa, faigh cairde, agus comhrá a dhéanamh lasmuigh de na gníomhaíochtaí.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

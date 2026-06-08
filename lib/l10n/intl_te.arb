@@ -1468,7 +1468,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-06-08 10:24:03.492541",
+    "@@last_modified": "2026-06-08 10:41:30.978940",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10928,6 +10928,21 @@
     },
     "voiceDropdownTitle": "పాంజియా బాట్ ఆడియో సందేశం శబ్దం",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "పాంజియా చాట్ లోగో",
+    "announcementsChatDetails": "కోర్సు నిర్వాహకులు కోర్సు పాల్గొనేవారికి ప్రకటనలు సృష్టించడానికి ఒక స్థలం. అందరూ ఈ చానల్‌ను చూడవచ్చు, కానీ కేవలం నిర్వాహకులు మాత్రమే ఇందులో టైప్ చేయవచ్చు.",
+    "introChatDetails": "హలో చెప్పండి! మీ సహచర కోర్సు పాల్గొనేవారికి మీను పరిచయం చేయండి, స్నేహితులను కనుగొనండి, మరియు కార్యకలాపాల వెలుపల చాట్ చేయండి.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-08 10:24:15.569941",
+    "@@last_modified": "2026-06-08 10:42:13.259370",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10675,6 +10675,21 @@
     },
     "voiceDropdownTitle": "パンゲアボットの音声メッセージの声",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "パングリアチャットロゴ",
+    "announcementsChatDetails": "コース管理者がコース参加者のためにアナウンスを作成する場所です。すべての人がこのチャンネルを閲覧できますが、入力できるのは管理者のみです。",
+    "introChatDetails": "こんにちは！コース参加者の皆さんに自己紹介をし、友達を見つけ、活動の外でチャットしましょう。",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

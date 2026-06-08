@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-06-08 10:23:55.732092",
+    "@@last_modified": "2026-06-08 10:41:13.862015",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9811,6 +9811,21 @@
     },
     "voiceDropdownTitle": "Pangea Bot audio xabar ovozi",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logotipi",
+    "announcementsChatDetails": "Kurs ishtirokchilari uchun e'lonlar yaratish uchun kurs adminlari uchun joy. Barcha foydalanuvchilar ushbu kanalda ko'rishlari mumkin, faqat adminlar yozishlari mumkin.",
+    "introChatDetails": "Salom ayting! O'zingizni kurs ishtirokchilari bilan tanishtiring, do'stlar toping va faoliyatlardan tashqarida suhbatlashing.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

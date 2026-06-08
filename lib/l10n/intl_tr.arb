@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-08 10:24:00.452879",
+    "@@last_modified": "2026-06-08 10:41:26.572502",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10138,6 +10138,21 @@
     },
     "voiceDropdownTitle": "Pangea Bot sesli mesaj sesi",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logosu",
+    "announcementsChatDetails": "Kurs yöneticilerinin kurs katılımcıları için duyurular oluşturabileceği bir yer. Herkes bu kanalı görebilir, ancak yalnızca yöneticiler burada yazabilir.",
+    "introChatDetails": "Merhaba de! Diğer kurs katılımcılarına kendini tanıt, arkadaşlar bul ve etkinliklerin dışında sohbet et.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

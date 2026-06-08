@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:23:54.938750",
+    "@@last_modified": "2026-06-08 10:41:08.024244",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9937,6 +9937,21 @@
     },
     "voiceDropdownTitle": "Pangea Bot 音訊訊息語音",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea 聊天標誌",
+    "announcementsChatDetails": "課程管理員為課程參與者創建公告的地方。雖然所有人都可以查看此頻道，但只有管理員可以在其中輸入。",
+    "introChatDetails": "打聲招呼！向你的課程參與者介紹自己，尋找朋友，並在活動之外聊天。",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

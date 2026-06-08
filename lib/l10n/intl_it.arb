@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:23:45.429227",
+    "@@last_modified": "2026-06-08 10:40:41.500355",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9898,6 +9898,21 @@
     },
     "voiceDropdownTitle": "Voce del messaggio audio del Pangea Bot",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logo di Pangea Chat",
+    "announcementsChatDetails": "Un luogo per gli amministratori del corso per creare annunci per i partecipanti al corso. Mentre tutti possono visualizzare questo canale, solo gli amministratori possono scriverci.",
+    "introChatDetails": "Dì ciao! Presentati ai tuoi compagni di corso, trova amici e chatta al di fuori delle attività.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

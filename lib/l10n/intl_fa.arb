@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:24:11.384770",
+    "@@last_modified": "2026-06-08 10:41:57.450752",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9919,6 +9919,21 @@
     },
     "voiceDropdownTitle": "صدای پیام صوتی ربات پانژیا",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "لوگوی چت پانگه‌آ",
+    "announcementsChatDetails": "محلی برای مدیران دوره تا اعلامیه‌هایی برای شرکت‌کنندگان دوره ایجاد کنند. در حالی که همه می‌توانند این کانال را مشاهده کنند، تنها مدیران می‌توانند در آن تایپ کنند.",
+    "introChatDetails": "سلام بگویید! خود را به سایر شرکت‌کنندگان دوره معرفی کنید، دوستانی پیدا کنید و خارج از فعالیت‌ها چت کنید.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

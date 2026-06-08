@@ -2258,7 +2258,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-06-08 10:23:57.019188",
+    "@@last_modified": "2026-06-08 10:41:18.451383",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10826,6 +10826,21 @@
     },
     "voiceDropdownTitle": "Boses ng mensahe ng audio ng Pangea Bot",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logo",
+    "announcementsChatDetails": "Isang lugar para sa mga admin ng kurso upang lumikha ng mga anunsyo para sa mga kalahok ng kurso. Habang lahat ay maaaring makita ang channel na ito, tanging ang mga admin lamang ang maaaring mag-type dito.",
+    "introChatDetails": "Mag-salita ng hello! Ipakilala ang iyong sarili sa iyong mga kapwa kalahok ng kurso, maghanap ng mga kaibigan, at makipag-chat sa labas ng mga aktibidad.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }
