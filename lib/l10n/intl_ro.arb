@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:04:32.330532",
+    "@@last_modified": "2026-06-08 14:15:13.531380",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10649,5 +10649,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Afișați opțiunile pentru dezvoltatori",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

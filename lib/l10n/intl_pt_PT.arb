@@ -2777,7 +2777,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-06-08 12:04:57.412492",
+    "@@last_modified": "2026-06-08 14:15:32.754092",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10900,5 +10900,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Mostrar opções de desenvolvedor",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

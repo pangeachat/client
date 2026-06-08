@@ -4857,5 +4857,6 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "showDeveloperOptions": "Show developer options"
 }

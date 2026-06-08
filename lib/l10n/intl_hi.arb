@@ -3378,7 +3378,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-06-08 12:05:23.134078",
+    "@@last_modified": "2026-06-08 14:15:53.948694",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10543,5 +10543,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "डेवलपर विकल्प दिखाएँ",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

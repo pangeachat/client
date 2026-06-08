@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-08 12:04:41.492059",
+    "@@last_modified": "2026-06-08 14:15:20.310503",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9824,5 +9824,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Garatzaile aukera guztiak erakutsi",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

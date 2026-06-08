@@ -1407,7 +1407,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-06-08 12:04:48.464262",
+    "@@last_modified": "2026-06-08 14:15:24.982783",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10955,5 +10955,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "顯示開發者選項",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

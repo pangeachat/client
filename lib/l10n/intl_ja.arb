@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-08 12:05:22.102151",
+    "@@last_modified": "2026-06-08 14:15:52.861873",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10692,5 +10692,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "開発者オプションを表示",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

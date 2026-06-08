@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:05:10.330610",
+    "@@last_modified": "2026-06-08 14:15:43.567550",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9824,5 +9824,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Toon ontwikkelaarsopties",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

@@ -245,6 +245,12 @@ class _LearningSettingsExpansionTile extends StatelessWidget {
                 },
               ),
             ),
+        SwitchListTile.adaptive(
+          value: viewModel.showDeveloperOptions,
+          title: Text(L10n.of(context).showDeveloperOptions),
+          activeThumbColor: AppConfig.activeToggleColor,
+          onChanged: viewModel.setShowDeveloperOptions,
+        ),
         ListTile(
           leading: const Icon(Icons.lightbulb),
           title: Text(L10n.of(context).resetInstructionTooltipsTitle),

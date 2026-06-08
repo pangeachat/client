@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-08 12:05:25.636342",
+    "@@last_modified": "2026-06-08 14:15:55.994811",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10838,5 +10838,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Показать параметры разработчика",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

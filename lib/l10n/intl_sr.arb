@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:05:28.062082",
+    "@@last_modified": "2026-06-08 14:15:58.406202",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10947,5 +10947,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Prikaži opcije za programere",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

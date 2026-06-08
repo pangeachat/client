@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:04:58.434886",
+    "@@last_modified": "2026-06-08 14:15:33.537646",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9954,5 +9954,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "顯示開發者選項",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

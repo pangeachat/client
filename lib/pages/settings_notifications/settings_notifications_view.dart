@@ -108,24 +108,31 @@ class SettingsNotificationsView extends StatelessWidget {
                                     L10n.of(context),
                                   ),
                                 ),
-                                const TextSpan(text: ' '),
-                                WidgetSpan(
-                                  child: InkWell(
-                                    onTap: () => controller.editPushRule(
-                                      rule,
-                                      category.kind,
-                                    ),
-                                    child: Text(
-                                      L10n.of(context).more,
-                                      style: TextStyle(
-                                        color: theme.colorScheme.primary,
-                                        decoration: TextDecoration.underline,
-                                        decorationColor:
-                                            theme.colorScheme.primary,
+                                // #Pangea
+                                if (MatrixState
+                                    .pangeaController
+                                    .userController
+                                    .showDeveloperOptions) ...[
+                                  // Pangea#
+                                  const TextSpan(text: ' '),
+                                  WidgetSpan(
+                                    child: InkWell(
+                                      onTap: () => controller.editPushRule(
+                                        rule,
+                                        category.kind,
+                                      ),
+                                      child: Text(
+                                        L10n.of(context).more,
+                                        style: TextStyle(
+                                          color: theme.colorScheme.primary,
+                                          decoration: TextDecoration.underline,
+                                          decorationColor:
+                                              theme.colorScheme.primary,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
+                                ],
                               ],
                             ),
                           ),

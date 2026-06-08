@@ -3914,7 +3914,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-06-08 12:04:23.973617",
+    "@@last_modified": "2026-06-08 14:15:09.757524",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9873,5 +9873,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Näytä kehittäjäasetukset",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

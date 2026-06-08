@@ -2258,7 +2258,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-06-08 12:05:00.611985",
+    "@@last_modified": "2026-06-08 14:15:35.926979",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10843,5 +10843,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Ipakita ang mga pagpipilian ng developer",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }

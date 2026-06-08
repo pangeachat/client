@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:05:14.825861",
+    "@@last_modified": "2026-06-08 14:15:48.239214",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9936,5 +9936,10 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "نمایش گزینه‌های توسعه‌دهنده",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
     }
 }
