@@ -1,3 +1,4 @@
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
@@ -23,6 +24,13 @@ class PickLanguageOnboardingStep extends OnboardingStep {
 
   void selectTargetLanguage(LanguageModel? lang) =>
       state.setTargetLanguage(lang);
+
+  @override
+  String nextStepText(L10n l10n) {
+    final target = state.targetLanguage;
+    if (target == null) return l10n.next;
+    return l10n.continueWithLang(target.getDisplayName(l10n));
+  }
 
   @override
   Future<OnboardingStep?> execute() async {

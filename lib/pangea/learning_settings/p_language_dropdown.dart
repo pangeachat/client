@@ -68,7 +68,9 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
       final bool aIsPriority = languagePriority.contains(a.langCode);
       final bool bIsPriority = languagePriority.contains(b.langCode);
       if (!aIsPriority && !bIsPriority) {
-        return a.getDisplayName(context).compareTo(b.getDisplayName(context));
+        return a
+            .getDisplayName(L10n.of(context))
+            .compareTo(b.getDisplayName(L10n.of(context)));
       }
 
       if (aIsPriority && bIsPriority) {

@@ -9,11 +9,11 @@ import 'package:fluffychat/pangea/onboarding/user_type_enum.dart';
 
 class UserTypeStepView extends StatefulWidget {
   final UserTypeOnboardingStep step;
-  final VoidCallback updateEnableNext;
+  final VoidCallback updateNavigationButton;
   const UserTypeStepView({
     super.key,
     required this.step,
-    required this.updateEnableNext,
+    required this.updateNavigationButton,
   });
 
   @override
@@ -41,7 +41,7 @@ class UserTypeStepViewState extends State<UserTypeStepView> {
   void _setSelectedType(UserType type) {
     _step.setUserType(type);
     _selectedType.value = type;
-    widget.updateEnableNext();
+    widget.updateNavigationButton();
   }
 
   @override

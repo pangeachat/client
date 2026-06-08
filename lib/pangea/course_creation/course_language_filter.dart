@@ -20,6 +20,7 @@ class CourseLanguageFilter extends StatelessWidget {
   Widget build(BuildContext context) {
     final langs =
         MatrixState.pangeaController.pLanguageStore.unlocalizedTargetOptions;
+    final l10n = L10n.of(context);
     return CoursePlanFilter<LanguageModel>(
       value: value != null && langs.contains(value) ? value : null,
       onChanged: onChanged,
@@ -37,13 +38,13 @@ class CourseLanguageFilter extends StatelessWidget {
       selectedItemBuilder: (v) => Row(
         children: [
           Text(
-            v.getDisplayName(context),
+            v.getDisplayName(l10n),
             style: DefaultTextStyle.of(context).style,
           ),
         ],
       ),
       enableSearch: true,
-      defaultName: L10n.of(context).allLanguages,
+      defaultName: l10n.allLanguages,
       searchMatchFn: (item, searchValue) =>
           LanguageModel.search(item.value, searchValue, context),
     );

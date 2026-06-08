@@ -21,14 +21,14 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class PickLanguageStepView extends StatefulWidget {
   final PickLanguageOnboardingStep step;
-  final VoidCallback updateEnableNext;
+  final VoidCallback updateNavigationButton;
   final Object? error;
 
   @override
   const PickLanguageStepView({
     super.key,
     required this.step,
-    required this.updateEnableNext,
+    required this.updateNavigationButton,
     required this.error,
   });
 
@@ -95,7 +95,7 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
 
     _step.selectBaseLanguage(lang);
     _selectedBaseLanguage.value = lang;
-    widget.updateEnableNext();
+    widget.updateNavigationButton();
 
     if (lang != null) {
       _setAppLanguage(lang);
@@ -110,7 +110,7 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
 
     _step.selectTargetLanguage(lang);
     _selectedTargetLanguage.value = lang;
-    widget.updateEnableNext();
+    widget.updateNavigationButton();
   }
 
   void _setAppLanguage(LanguageModel language) {
