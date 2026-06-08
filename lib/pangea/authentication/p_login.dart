@@ -64,5 +64,5 @@ void pLoginAction({
     userID: client.userID!,
     method: LoginMethod.email,
   );
-  GoogleAnalytics.login("pangea", client.userID!);
+  await GoogleAnalytics.login("pangea", client.userID!);
 }

@@ -139,6 +139,9 @@ Future<void> startGui(List<Client> clients, SharedPreferences store) async {
       await firstClient.logout();
     }
   }
+  await GoogleAnalytics.analyticsUserUpdate(
+    firstClient?.isLogged() == true ? firstClient?.userID : null,
+  );
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp, // Lock to portrait mode
   ]);

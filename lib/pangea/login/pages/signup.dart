@@ -193,7 +193,7 @@ class SignupPageController extends State<SignupPage> {
           );
     }
 
-    final registerRes = await client.uiaRequestBackground<RegisterResponse?>(
+    await client.uiaRequestBackground<RegisterResponse?>(
       (auth) => client.register(
         username: localPart,
         password: passwordController.text,
@@ -211,7 +211,7 @@ class SignupPageController extends State<SignupPage> {
       method: LoginMethod.email,
     );
     GoogleAnalytics.signUp("pangea");
-    GoogleAnalytics.login("pangea", registerRes?.userId);
+    await GoogleAnalytics.login("pangea", client.userID);
 
     if (displayname != localPart && client.userID != null) {
       await client.setProfileField(client.userID!, 'displayname', {

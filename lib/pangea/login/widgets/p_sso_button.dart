@@ -51,7 +51,7 @@ class PangeaSsoButton extends StatelessWidget {
       method: provider.loginMethod,
     );
 
-    GoogleAnalytics.login(provider.name, client.userID!);
+    await GoogleAnalytics.login(provider.name, client.userID!);
   }
 
   Future<String?> _getSSOToken(BuildContext context) async {

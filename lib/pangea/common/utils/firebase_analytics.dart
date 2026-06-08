@@ -15,7 +15,7 @@ import '../../../config/firebase_options.dart';
 // PageRoute import
 
 // Add import:
-// import 'package:fluffychat/pangea/utils/firebase_analytics.dart';
+// import 'package:pangea/common/utils/firebase_analytics.dart';
 // Call method: GoogleAnalytics.logout()
 
 class GoogleAnalytics {
@@ -28,22 +28,32 @@ class GoogleAnalytics {
   GoogleAnalytics();
 
   static Future<void> initialize() async {
-    FirebaseApp app;
-    try {
+    final isNativeMobile =
+        !kIsWeb &&
+        {
+          TargetPlatform.android,
+          TargetPlatform.iOS,
+        }.contains(defaultTargetPlatform);
+    final FirebaseApp app;
+    if (isNativeMobile) {
+      app = Firebase.apps.isNotEmpty
+          ? Firebase.app()
+          : await Firebase.initializeApp();
+    } else {
       app = await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
-    } on Exception {
-      // Android initialises using gradle plugin
-      // So we just get the one they added
-      app = Firebase.app();
     }
 
     analytics = FirebaseAnalytics.instanceFor(app: app);
 
     if (Environment.analyticsDebugEnabled) {
       // Note: Doesnt currently work on Web
-      analytics?.setDefaultEventParameters({"traffic_type": "internal"});
+      try {
+        analytics?.setDefaultEventParameters({"traffic_type": "internal"});
+      } catch (_) {
+        // i guess were on web and have it enabled anyway
+      }
     }
 
     debugPrint("Firebase App Name: ${app.name}");
@@ -55,9 +65,9 @@ class GoogleAnalytics {
     debugPrint("  Storage Bucket: ${app.options.storageBucket}");
   }
 
-  static void analyticsUserUpdate(String? userID) {
+  static Future<void> analyticsUserUpdate(String? userID) async {
     debugPrint("user update $userID");
-    analytics?.setUserId(id: userID);
+    await analytics?.setUserId(id: userID);
   }
 
   static void updateUserSubscriptionStatus(bool subscribed) {
@@ -96,9 +106,9 @@ class GoogleAnalytics {
     }
   }
 
-  static void login(String type, String? userID) {
+  static Future<void> login(String type, String? userID) async {
+    await analyticsUserUpdate(userID);
     logEvent('login', parameters: {'method': type});
-    analyticsUserUpdate(userID);
   }
 
   static void signUp(String type) {
