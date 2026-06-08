@@ -39,7 +39,7 @@ class SignupWithEmailView extends StatelessWidget {
                 children: [
                   TextFormField(
                     decoration: InputDecoration(
-                      hintText: L10n.of(context).yourUsername,
+                      labelText: L10n.of(context).yourUsername,
                     ),
                     textInputAction: TextInputAction.next,
                     validator: (text) {
@@ -58,7 +58,7 @@ class SignupWithEmailView extends StatelessWidget {
                     validator: controller.emailTextFieldValidator,
                     controller: controller.emailController,
                     decoration: InputDecoration(
-                      hintText: L10n.of(context).yourEmail,
+                      labelText: L10n.of(context).yourEmail,
                     ),
                     onTapOutside: (_) =>
                         FocusManager.instance.primaryFocus?.unfocus(),
@@ -72,7 +72,7 @@ class SignupWithEmailView extends StatelessWidget {
                         ? controller.signup
                         : null,
                     decoration: InputDecoration(
-                      hintText: L10n.of(context).password,
+                      labelText: L10n.of(context).password,
                       suffixIcon: IconButton(
                         tooltip: L10n.of(context).showPassword,
                         icon: Icon(
