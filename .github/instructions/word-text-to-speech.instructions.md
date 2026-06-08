@@ -52,6 +52,8 @@ What counts as "known-good" differs by surface because the quality signal does:
 
 This is **not** the per-language quality matrix we rejected: it's a small, mostly language-agnostic set of name patterns, and the safe fallback (no match → backend) means a stale or incomplete set costs backend calls, never quality. Native needs no list at all.
 
+When a known-good voice is found, the controller must **explicitly select it** on the utterance — setting only the language and letting the engine pick its default is what produces poor pronunciation even when a good voice is installed (e.g. on Chrome a flat default voice is chosen over the higher-quality `Google Deutsch`). Active voice selection is the primary fix; backend is the fallback only when no good voice exists.
+
 **Backwards compatibility:** if a language object carries no good-voice pattern data — legacy CMS rows, or a client newer than the CMS deploy — the client **skips the web name check entirely** and uses existing device routing. No regression; the web fix simply doesn't activate until the CMS data is present. Native (quality-field) behavior is unaffected, since it doesn't depend on CMS.
 
 **Validation:** the name patterns and thresholds are platform conventions, not guarantees, so they must be confirmed against real `getVoices` output per target browser/OS before relying on them — the other reason the web set is CMS-tunable rather than fixed.
