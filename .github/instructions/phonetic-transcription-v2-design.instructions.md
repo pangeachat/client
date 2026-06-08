@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/pangea/phonetic_transcription/**,lib/pangea/text_to_speech/**, client/controllers/tts_controller.dart"
+applyTo: "lib/pangea/phonetic_transcription/**"
 ---
 
 # Phonetic Transcription v2 Design
@@ -120,65 +120,11 @@ Keys use **PascalCase** (`Pos`, `Tense`, `VerbForm`). Parse:
 
 ---
 
-## 5. TTS with Phoneme Pronunciation
+## 5. TTS Playback
 
-PT covers **isolated words** only. Whole-message audio uses the existing TTS flow (unaffected).
+PT covers **isolated words** only. PT's responsibility ends at producing a disambiguated `tts_phoneme` (§2–§3): the resulting TTS request carries **at most one** `tts_phoneme`, chosen _before_ playback. A word with a single pronunciation needs no override at all.
 
-### Problem
-
-Ambiguous surface forms (e.g., 还 → hái vs huán) get arbitrary pronunciation from device TTS because it has no context.
-
-### Decision Flow
-
-The branch point is **how many entries are in the PT v2 `pronunciations` array** for this word.
-
-```
-PT response has 1 pronunciation? (unambiguous word)
-  → YES: Use surface text for TTS as today (device or server fallback).
-         Device TTS will pronounce it correctly — no phoneme override needed.
-  → NO (2+ pronunciations — heteronym):
-     Can disambiguate to exactly one using UD context? (§3)
-       → YES: Send that pronunciation's tts_phoneme to _speakFromChoreo.
-       → NO:  Send first pronunciation's tts_phoneme to _speakFromChoreo as default,
-              or let user tap a specific pronunciation to play its tts_phoneme.
-```
-
-**The TTS request always contains at most one `tts_phoneme` string.** Disambiguation happens _before_ calling TTS.
-
-### Implementation
-
-**PT v2 handler** (choreo):
-
-1. `tts_phoneme` on every `Pronunciation` — format determined by `lang_code`:
-   - Chinese (`zh`, `cmn-CN`, `cmn-TW`): pinyin with tone numbers (e.g. `hai2`)
-   - Cantonese (`yue`): jyutping with tone numbers (e.g. `sik6`)
-   - Japanese (`ja`): yomigana in hiragana (e.g. `なか`)
-   - All others: IPA (e.g. `ˈʎubja`)
-2. Eval function validates format matches expected type for the language.
-
-**TTS server** (choreo):
-
-1. `tts_phoneme: Optional[str] = None` on `TextToSpeechRequest`.
-2. Resolves SSML `alphabet` from `lang_code` (see table in §2). Client never sends the alphabet.
-3. When `tts_phoneme` is set, wraps text in `<phoneme alphabet="{resolved}" ph="{tts_phoneme}">{text}</phoneme>` inside existing SSML `<speak>` tags.
-4. `tts_phoneme` included in cache key.
-5. Google Cloud TTS suppresses SSML mark timepoints inside `<phoneme>` tags → duration estimated via `estimate_duration_ms()`.
-
-**Client**:
-
-1. `ttsPhoneme` field on `TextToSpeechRequestModel` and `DisambiguationResult`.
-2. `ttsPhoneme` param on `TtsController.tryToSpeak` and `_speakFromChoreo`.
-3. When `ttsPhoneme` is provided, skips device TTS and calls `_speakFromChoreo`.
-4. When `ttsPhoneme` is not provided, behavior unchanged.
-5. Client treats `ttsPhoneme` as an opaque string — no language-specific logic needed.
-
-### Cache-Only Phoneme Resolution
-
-`TtsController.tryToSpeak` resolves `ttsPhoneme` from the **local PT v2 cache** (`_resolveTtsPhonemeFromCache`) rather than making a server call. This is a deliberate tradeoff:
-
-- **Why cache-only**: TTS is latency-sensitive — adding a blocking PT v2 network call before every word playback would degrade the experience. By the time a user taps to play a word, the PT v2 response has almost certainly already been fetched and cached (it was needed to render the transcription overlay).
-- **What if the cache misses**: The word plays without phoneme override, using device TTS or plain server TTS. This is the same behavior as before PT v2 existed — acceptable because heteronyms are ~5% of words. The user still gets audio, just without guaranteed disambiguation.
-- **No silent failures**: A cache miss doesn't block or error — it falls through gracefully.
+Everything about *speaking* the phoneme — routing the override to backend, cache-only resolution at playback time, and the backend's SSML phoneme rendering — is owned by the TTS feature ([text-to-speech.instructions.md](text-to-speech.instructions.md#phoneme-playback)) and the choreographer's [tts.instructions.md](../../../2-step-choreographer/.github/instructions/tts.instructions.md). Kept there as the single source so the playback flow doesn't drift across two docs.
 
 ---
 
