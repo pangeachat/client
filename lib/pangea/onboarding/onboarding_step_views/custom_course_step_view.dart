@@ -7,11 +7,11 @@ import 'package:fluffychat/pangea/onboarding/onboarding_steps/custom_course_onbo
 
 class CustomCourseStepView extends StatefulWidget {
   final CustomCourseOnboardingStep step;
-  final VoidCallback updateEnableNext;
+  final VoidCallback updateNavigationButton;
   const CustomCourseStepView({
     super.key,
     required this.step,
-    required this.updateEnableNext,
+    required this.updateNavigationButton,
   });
 
   @override
@@ -59,7 +59,7 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
       _step.setName(_nameController.text);
       _nameDebounce?.cancel();
       _nameDebounce = null;
-      widget.updateEnableNext();
+      widget.updateNavigationButton();
     });
   }
 
@@ -69,7 +69,7 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
       _step.setInstitution(_institutionController.text);
       _institutionDebounce?.cancel();
       _institutionDebounce = null;
-      widget.updateEnableNext();
+      widget.updateNavigationButton();
     });
   }
 
@@ -79,7 +79,7 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
       _step.setGoals(_goalsController.text);
       _goalsDebounce?.cancel();
       _goalsDebounce = null;
-      widget.updateEnableNext();
+      widget.updateNavigationButton();
     });
   }
 

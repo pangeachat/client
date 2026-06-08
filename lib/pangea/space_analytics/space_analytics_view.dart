@@ -106,7 +106,7 @@ class SpaceAnalyticsView extends StatelessWidget {
                                         ? controller.selectedLanguage!.langCode
                                               .toUpperCase()
                                         : controller.selectedLanguage!
-                                              .getDisplayName(context),
+                                              .getDisplayName(L10n.of(context)),
                                     style: TextStyle(
                                       color:
                                           theme.colorScheme.onPrimaryContainer,
@@ -127,7 +127,7 @@ class SpaceAnalyticsView extends StatelessWidget {
                                 (item) => DropdownMenuItem(
                                   value: item,
                                   child: DropdownTextButton(
-                                    text: item.getDisplayName(context),
+                                    text: item.getDisplayName(L10n.of(context)),
                                     isSelected: false,
                                   ),
                                 ),

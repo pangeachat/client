@@ -7,13 +7,13 @@ import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/onboarding/account_updater.dart';
 import 'package:fluffychat/pangea/onboarding/avatar_provider.dart';
 import 'package:fluffychat/pangea/onboarding/course_provider.dart';
+import 'package:fluffychat/pangea/onboarding/onboarding_navigation_button_state.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_navigation_controller.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_navigation_result.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_state_controller.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_step_skip_button.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_step_views/onboarding_step_view.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
-import 'package:fluffychat/pangea/onboarding/onboarding_steps/pick_language_onboarding_step.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -31,8 +31,10 @@ class OnboardingController extends State<Onboarding> {
   late final ValueNotifier<OnboardingStep> _step;
   final ValueNotifier<bool> _loading = ValueNotifier(false);
   final ValueNotifier<Object?> _error = ValueNotifier(null);
-  final ValueNotifier<bool> _enableNext = ValueNotifier(false);
-  final ValueNotifier<String?> _selectedTargetLangCode = ValueNotifier(null);
+  final ValueNotifier<OnboardingNavigationButtonState>
+  _navigationButtonNotifier = ValueNotifier(
+    OnboardingNavigationButtonState(enabled: false, target: null),
+  );
 
   @override
   void initState() {
@@ -49,9 +51,10 @@ class OnboardingController extends State<Onboarding> {
       state: _state,
       maxRemainingSteps: 5,
     );
+
     _step = ValueNotifier(initialStep);
     _navigation = OnboardingNavigationController(initialStep: initialStep);
-    _updateEnableNext();
+    _updateNavigationButton();
   }
 
   @override
@@ -59,15 +62,15 @@ class OnboardingController extends State<Onboarding> {
     _step.dispose();
     _loading.dispose();
     _error.dispose();
-    _enableNext.dispose();
-    _selectedTargetLangCode.dispose();
+    _navigationButtonNotifier.dispose();
     super.dispose();
   }
 
-  void _updateEnableNext() {
-    _enableNext.value = _step.value.enableGoForward;
-    _selectedTargetLangCode.value = _step.value.state.targetLanguage?.langCode;
-  }
+  void _updateNavigationButton() =>
+      _navigationButtonNotifier.value = OnboardingNavigationButtonState(
+        enabled: _step.value.enableGoForward,
+        target: _state.targetLanguage,
+      );
 
   Future<void> _forward() async {
     _loading.value = true;
@@ -92,7 +95,7 @@ class OnboardingController extends State<Onboarding> {
     }
 
     if (mounted) {
-      _updateEnableNext();
+      _updateNavigationButton();
       _loading.value = false;
     }
   }
@@ -100,6 +103,7 @@ class OnboardingController extends State<Onboarding> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = L10n.of(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -142,7 +146,7 @@ class OnboardingController extends State<Onboarding> {
                       listenable: Listenable.merge([_step, _error]),
                       builder: (context, _) => OnboardingStepView(
                         step: _step.value,
-                        updateEnableNext: _updateEnableNext,
+                        updateNavigationButton: _updateNavigationButton,
                         error: _error.value,
                       ),
                     ),
@@ -155,64 +159,51 @@ class OnboardingController extends State<Onboarding> {
                     children: [
                       if (step.enableSkip)
                         OnboardingStepSkipButton(step: step, onPressed: _skip),
-                      ListenableBuilder(
-                        listenable: Listenable.merge([
-                          _enableNext,
-                          _selectedTargetLangCode,
-                        ]),
-                        builder: (context, child) => ElevatedButton(
-                          onPressed: _enableNext.value ? _forward : null,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: theme.colorScheme.primaryContainer,
-                            foregroundColor:
-                                theme.colorScheme.onPrimaryContainer,
-                            minimumSize: const Size.fromHeight(48),
-                          ),
-                          child: SizedBox(
-                            height: 24,
-                            child: Center(
-                              child: ValueListenableBuilder(
-                                valueListenable: _loading,
-                                builder: (context, loading, _) => AnimatedSwitcher(
-                                  duration: const Duration(milliseconds: 200),
-                                  child: loading
-                                      ? SizedBox(
-                                          key: const ValueKey('loading'),
-                                          width: double.infinity,
-                                          child:
-                                              const LinearProgressIndicator(),
-                                        )
-                                      : Text(
-                                          _navigation.hasNextStep
-                                              ? (_step.value
-                                                            is PickLanguageOnboardingStep &&
-                                                        _step
-                                                                .value
-                                                                .state
-                                                                .targetLanguage !=
-                                                            null &&
-                                                        _enableNext.value)
-                                                    ? L10n.of(
-                                                        context,
-                                                      ).continueWithLang(
-                                                        _step
-                                                            .value
-                                                            .state
-                                                            .targetLanguage!
-                                                            .getDisplayName(
-                                                              context,
-                                                            ),
-                                                      )
-                                                    : L10n.of(context).next
-                                              : L10n.of(context).letsGo,
-                                          key: const ValueKey('text'),
-                                          textAlign: TextAlign.center,
+                      ValueListenableBuilder(
+                        valueListenable: _navigationButtonNotifier,
+                        builder: (context, navigationButtonState, child) =>
+                            ElevatedButton(
+                              onPressed: navigationButtonState.enabled
+                                  ? _forward
+                                  : null,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    theme.colorScheme.primaryContainer,
+                                foregroundColor:
+                                    theme.colorScheme.onPrimaryContainer,
+                                minimumSize: const Size.fromHeight(48),
+                              ),
+                              child: SizedBox(
+                                height: 24,
+                                child: Center(
+                                  child: ValueListenableBuilder(
+                                    valueListenable: _loading,
+                                    builder: (context, loading, _) =>
+                                        AnimatedSwitcher(
+                                          duration: const Duration(
+                                            milliseconds: 200,
+                                          ),
+                                          child: loading
+                                              ? SizedBox(
+                                                  key: const ValueKey(
+                                                    'loading',
+                                                  ),
+                                                  width: double.infinity,
+                                                  child:
+                                                      const LinearProgressIndicator(),
+                                                )
+                                              : Text(
+                                                  _navigation.hasNextStep
+                                                      ? step.nextStepText(l10n)
+                                                      : step.lastStepText(l10n),
+                                                  key: const ValueKey('text'),
+                                                  textAlign: TextAlign.center,
+                                                ),
                                         ),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ),
                       ),
                     ],
                   ),

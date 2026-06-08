@@ -8,12 +8,12 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class PickCefrLevelStepView extends StatefulWidget {
   final PickCefrLevelOnboardingStep step;
-  final VoidCallback updateEnableNext;
+  final VoidCallback updateNavigationButton;
 
   const PickCefrLevelStepView({
     super.key,
     required this.step,
-    required this.updateEnableNext,
+    required this.updateNavigationButton,
   });
 
   @override
@@ -45,7 +45,7 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
   void _setLevel(LanguageLevelTypeEnum? level) {
     _selectedLevel.value = level;
     _step.selectCefrLevel(level);
-    widget.updateEnableNext();
+    widget.updateNavigationButton();
   }
 
   @override
