@@ -3378,7 +3378,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-06-08 10:24:16.555686",
+    "@@last_modified": "2026-06-08 10:42:16.897985",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10526,6 +10526,21 @@
     },
     "voiceDropdownTitle": "Pangea बॉट ऑडियो संदेश आवाज़",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "पैंगिया चैट लोगो",
+    "announcementsChatDetails": "कोर्स प्रशासकों के लिए कोर्स प्रतिभागियों के लिए घोषणाएँ बनाने के लिए एक स्थान। जबकि सभी इस चैनल को देख सकते हैं, केवल प्रशासक इसमें टाइप कर सकते हैं।",
+    "introChatDetails": "नमस्ते कहें! अपने सहपाठियों से परिचय करें, दोस्तों को खोजें, और गतिविधियों के बाहर चैट करें।",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

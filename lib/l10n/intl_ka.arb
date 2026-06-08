@@ -2099,7 +2099,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-06-08 10:24:20.860172",
+    "@@last_modified": "2026-06-08 10:42:30.842950",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10875,6 +10875,21 @@
     },
     "voiceDropdownTitle": "Pangea Bot აუდიო შეტყობინების ხმა",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "პანჯეა ჩატის ლოგო",
+    "announcementsChatDetails": "ადგილმდებარეობა კურსის ადმინისტრატორებისთვის, რათა შექმნან განცხადებები კურსის მონაწილეებისთვის. მიუხედავად იმისა, რომ ყველა შეუძლია ამ არხის ნახვა, მხოლოდ ადმინისტრატორები შეუძლიათ მასში წერილი.",
+    "introChatDetails": "თქვენი გამარჯობა! წარუდგინეთ თავი თქვენს თანაკურსელებს, მოიძიეთ მეგობრები და ისაუბრეთ აქტივობების გარეთ.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-06-08 10:23:59.620693",
+    "@@last_modified": "2026-06-08 10:41:24.095432",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10147,6 +10147,21 @@
     },
     "voiceDropdownTitle": "صوت رسالة الصوت لروبوت بانجيا",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "شعار دردشة بانجيا",
+    "announcementsChatDetails": "مكان لمديري الدورة لإنشاء إعلانات لمشاركي الدورة. بينما يمكن للجميع مشاهدة هذه القناة، يمكن للمديرين فقط الكتابة فيها.",
+    "introChatDetails": "قل مرحبًا! قدم نفسك لمشاركي الدورة الآخرين، وابحث عن أصدقاء، وتحدث خارج الأنشطة.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

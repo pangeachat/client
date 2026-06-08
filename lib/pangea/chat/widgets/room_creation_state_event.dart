@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/course_chats/default_chats_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
@@ -53,9 +55,12 @@ class RoomCreationStateEventState extends State<RoomCreationStateEvent> {
     final matrixLocals = MatrixLocals(l10n);
     final theme = Theme.of(context);
     final roomName = event.room.getLocalizedDisplayname(matrixLocals);
+    final defaultChatType = event.room.defaultChatType;
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 32.0),
       child: Column(
+        spacing: 16.0,
         children: [
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 256),
@@ -90,7 +95,26 @@ class RoomCreationStateEventState extends State<RoomCreationStateEvent> {
               ),
             ),
           ),
-          const SizedBox(height: 16.0),
+          if (defaultChatType != null)
+            Center(
+              child: Container(
+                padding: const EdgeInsets.all(12.0),
+                constraints: const BoxConstraints(
+                  maxWidth: FluffyThemes.columnWidth * 1.5,
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.surfaceContainer.withAlpha(128),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    defaultChatType.details(l10n),
+                    style: theme.textTheme.bodyMedium,
+                  ),
+                ),
+              ),
+            ),
           const InstructionsInlineTooltip(
             instructionsEnum: InstructionsEnum.clickMessage,
             padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),

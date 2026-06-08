@@ -1407,7 +1407,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-06-08 10:23:44.319234",
+    "@@last_modified": "2026-06-08 10:40:38.570694",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10938,6 +10938,21 @@
     },
     "voiceDropdownTitle": "Pangea Bot 音訊消息聲音",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat 標誌",
+    "announcementsChatDetails": "一個讓課程管理員為課程參與者創建公告的地方。雖然所有人都可以查看此頻道，但只有管理員可以在其中輸入。",
+    "introChatDetails": "打個招呼！向你的課程參與者介紹自己，尋找朋友，並在活動之外聊天。",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

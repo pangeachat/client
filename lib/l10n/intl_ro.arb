@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:23:32.376228",
+    "@@last_modified": "2026-06-08 10:39:57.087565",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10632,6 +10632,21 @@
     },
     "voiceDropdownTitle": "Vocea mesajului audio al Pangea Bot",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logo Pangea Chat",
+    "announcementsChatDetails": "Un loc pentru administratorii cursului de a crea anunțuri pentru participanții la curs. Deși toți pot vizualiza acest canal, doar administratorii pot scrie în el.",
+    "introChatDetails": "Spune salut! Prezintă-te colegilor tăi participanți la curs, găsește prieteni și discută în afara activităților.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

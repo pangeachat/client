@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-06-08 10:23:42.247666",
+    "@@last_modified": "2026-06-08 10:40:32.937003",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9786,6 +9786,21 @@
     },
     "voiceDropdownTitle": "Pangea Bot Audio-Nachricht Stimme",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat-Logo",
+    "announcementsChatDetails": "Ein Ort für Kursadministratoren, um Ankündigungen für Kursteilnehmer zu erstellen. Während alle diesen Kanal ansehen können, dürfen nur Administratoren darin schreiben.",
+    "introChatDetails": "Sag Hallo! Stelle dich deinen Mitkursteilnehmern vor, finde Freunde und chatte außerhalb der Aktivitäten.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:24:23.585629",
+    "@@last_modified": "2026-06-08 10:42:33.413209",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10930,6 +10930,21 @@
     },
     "voiceDropdownTitle": "Pangea Bot audio poruka glas",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat логотип",
+    "announcementsChatDetails": "Место за администраторе курса да креирају обавештења за учеснике курса. Док сви могу да виде овај канал, само администратори могу да пишу у њему.",
+    "introChatDetails": "Реци здраво! Представи се својим колегама учесницима курса, пронађи пријатеље и ћаскај ван активности.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

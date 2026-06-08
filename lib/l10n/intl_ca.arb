@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:23:51.884201",
+    "@@last_modified": "2026-06-08 10:40:59.388891",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9958,6 +9958,21 @@
     },
     "voiceDropdownTitle": "Veu del missatge d'àudio del Pangea Bot",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logotip de Pangea Chat",
+    "announcementsChatDetails": "Un lloc per als administradors del curs per crear anuncis per als participants del curs. Mentre que tots poden veure aquest canal, només els administradors poden escriure-hi.",
+    "introChatDetails": "Digues hola! Presenta't als teus companys participants del curs, troba amics i xateja fora de les activitats.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

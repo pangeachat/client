@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-06-08 10:24:09.145578",
+    "@@last_modified": "2026-06-08 10:41:48.857921",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9807,6 +9807,21 @@
     },
     "voiceDropdownTitle": "Pangea Bot 音频消息语音",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat 标志",
+    "announcementsChatDetails": "课程管理员为课程参与者创建公告的地方。虽然所有人都可以查看此频道，但只有管理员可以在其中输入。",
+    "introChatDetails": "打个招呼！向你的同学介绍自己，寻找朋友，并在活动之外聊天。",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

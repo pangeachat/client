@@ -1963,7 +1963,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-06-08 10:23:43.138366",
+    "@@last_modified": "2026-06-08 10:40:36.485290",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10923,6 +10923,21 @@
     },
     "voiceDropdownTitle": "Glas Pangea Bot avdio sporočila",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logo",
+    "announcementsChatDetails": "Kraj za skrbnike tečajev, da ustvarijo obvestila za udeležence tečaja. Medtem ko lahko vsi vidijo ta kanal, lahko vanj pišejo le skrbniki.",
+    "introChatDetails": "Pozdravite se! Predstavite se svojim soudeležencem tečaja, najdite prijatelje in klepetajte zunaj aktivnosti.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

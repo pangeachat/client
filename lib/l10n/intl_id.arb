@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:23:31.232635",
+    "@@last_modified": "2026-06-08 10:39:54.700734",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9904,6 +9904,21 @@
     },
     "voiceDropdownTitle": "Suara pesan audio Pangea Bot",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logo Pangea Chat",
+    "announcementsChatDetails": "Tempat bagi admin kursus untuk membuat pengumuman bagi peserta kursus. Sementara semua orang dapat melihat saluran ini, hanya admin yang dapat mengetik di dalamnya.",
+    "introChatDetails": "Sapa! Perkenalkan diri Anda kepada peserta kursus lainnya, temukan teman, dan mengobrol di luar kegiatan.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

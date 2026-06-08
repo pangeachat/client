@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-08 10:23:41.367494",
+    "@@last_modified": "2026-06-08 10:40:29.782055",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9804,6 +9804,21 @@
     },
     "voiceDropdownTitle": "Pangea Boti helisõnumi hääl",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logo",
+    "announcementsChatDetails": "Koht, kus kursuse administraatorid saavad luua teadandeid kursuse osalejatele. Kuigi kõik saavad seda kanalit vaadata, saavad seal kirjutada ainult administraatorid.",
+    "introChatDetails": "Tere! Tutvustage end oma kursuse kaasosalejatele, leidke sõpru ja vestelge tegevustest väljaspool.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

@@ -1478,7 +1478,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-06-08 10:23:28.968253",
+    "@@last_modified": "2026-06-08 10:39:48.803506",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10901,6 +10901,21 @@
     },
     "voiceDropdownTitle": "Pangea Bot lydbesked stemme",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat-logo",
+    "announcementsChatDetails": "Et sted for kursusadministratorer til at oprette meddelelser til kursusdeltagere. Mens alle kan se denne kanal, kan kun administratorer skrive i den.",
+    "introChatDetails": "Sig hej! Præsenter dig selv for dine medkursusdeltagere, find venner, og chat uden for aktiviteter.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

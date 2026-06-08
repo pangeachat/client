@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:24:07.721883",
+    "@@last_modified": "2026-06-08 10:41:43.438740",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9807,6 +9807,21 @@
     },
     "voiceDropdownTitle": "Pangea Bot audiobericht stem",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat-logo",
+    "announcementsChatDetails": "Een plek voor cursusbeheerders om aankondigingen te maken voor cursusdeelnemers. Terwijl iedereen dit kanaal kan bekijken, kunnen alleen beheerders erin typen.",
+    "introChatDetails": "Zeg hallo! Stel jezelf voor aan je medecursisten, vind vrienden en chat buiten de activiteiten.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

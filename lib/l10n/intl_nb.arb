@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:23:49.468927",
+    "@@last_modified": "2026-06-08 10:40:52.157756",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9867,6 +9867,21 @@
     },
     "voiceDropdownTitle": "Pangea Bot lydmelding stemme",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat-logo",
+    "announcementsChatDetails": "Et sted for kursadministratorer å lage kunngjøringer for kursdeltakere. Mens alle kan se denne kanalen, kan kun administratorer skrive i den.",
+    "introChatDetails": "Si hei! Introduser deg selv for dine medkursdeltakere, finn venner, og chat utenfor aktiviteter.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

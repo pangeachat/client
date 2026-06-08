@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-06-08 10:24:12.267268",
+    "@@last_modified": "2026-06-08 10:42:00.783979",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9916,6 +9916,21 @@
     },
     "voiceDropdownTitle": "Głos wiadomości audio Pangea Bota",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logo Pangea Chat",
+    "announcementsChatDetails": "Miejsce dla administratorów kursu do tworzenia ogłoszeń dla uczestników kursu. Chociaż wszyscy mogą przeglądać ten kanał, tylko administratorzy mogą w nim pisać.",
+    "introChatDetails": "Przywitaj się! Przedstaw się swoim kolegom z kursu, znajdź przyjaciół i rozmawiaj poza zajęciami.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }

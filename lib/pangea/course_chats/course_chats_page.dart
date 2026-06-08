@@ -16,6 +16,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_view.dart';
 import 'package:fluffychat/pangea/course_chats/course_default_chats_enum.dart';
+import 'package:fluffychat/pangea/course_chats/default_chats_room_extension.dart';
 import 'package:fluffychat/pangea/course_chats/extended_space_rooms_chunk.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
@@ -669,13 +670,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
       throw Exception("Room is null");
     }
 
-    final settings = switch (type) {
-      CourseDefaultChatsEnum.introductions =>
-        space!.courseChatsSettings.copyWith(dismissedIntroChat: true),
-      CourseDefaultChatsEnum.announcements =>
-        space!.courseChatsSettings.copyWith(dismissedAnnouncementsChat: true),
-    };
-    await space!.setCourseChatsSettings(settings);
+    await space!.dismissDefaultChatCreation(type);
   }
 
   Future<void> createDefaultChat(CourseDefaultChatsEnum type) async {

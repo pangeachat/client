@@ -3934,7 +3934,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-06-08 10:23:50.876983",
+    "@@last_modified": "2026-06-08 10:40:55.616476",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9821,6 +9821,21 @@
     },
     "voiceDropdownTitle": "Голас аўдыё паведамлення Pangea Bot",
     "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Лагатып Pangea Chat",
+    "announcementsChatDetails": "Месца для адміністратараў курсаў, каб ствараць аб'явы для ўдзельнікаў курсу. Хоць усе могуць бачыць гэты канал, толькі адміністратара могуць пісаць у ім.",
+    "introChatDetails": "Скажыце прывітанне! Пазнаёмцеся з вашымі калегамі па курсу, знайдзіце сяброў і размаўляйце па-за межамі мерапрыемстваў.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
         "type": "String",
         "placeholders": {}
     }
