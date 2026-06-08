@@ -83,9 +83,6 @@ extension ActivityRolesRoomExtension on Room {
 
   bool get hasArchivedActivity => ownRoleState?.isArchived ?? false;
 
-  bool get hasDismissedGoalTooltip =>
-      ownRoleState?.dismissedGoalTooltip ?? false;
-
   bool get isActiveInActivity => hasPickedRole && !hasCompletedRole;
 
   Map<String, ActivityRoleModel>? get assignedRoles {
@@ -176,21 +173,6 @@ extension ActivityRolesRoomExtension on Room {
 
     role.archivedAt = DateTime.now();
     currentRoles.updateRole(role);
-    await client.setRoomStateWithKey(
-      id,
-      PangeaEventTypes.activityRole,
-      "",
-      currentRoles.toJson(),
-    );
-  }
-
-  Future<void> dismissGoalTooltip() async {
-    final currentRoles = activityRoles ?? ActivityRolesModel.empty;
-    final role = ownRoleState;
-    if (role == null) return;
-    role.finishedAt = DateTime.now();
-    currentRoles.dismissTooltip(role);
-
     await client.setRoomStateWithKey(
       id,
       PangeaEventTypes.activityRole,
