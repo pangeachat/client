@@ -309,6 +309,15 @@ class ChoreoRecordStepModel {
 
     return acceptedOrIgnoredMatch?.match.selectedChoice?.value;
   }
+
+  bool get isGrammarErrorPracticeTarget {
+    final match = acceptedOrIgnoredMatch;
+    if (match == null) return false;
+
+    return match.isGrammarMatch &&
+        match.match.bestChoice != null &&
+        match.status == PangeaMatchStatusEnum.accepted;
+  }
 }
 
 // Example flow
