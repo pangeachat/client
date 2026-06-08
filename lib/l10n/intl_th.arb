@@ -3378,7 +3378,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-06-08 10:41:02.787726",
+    "@@last_modified": "2026-06-08 12:04:56.443923",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10073,20 +10073,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "สมัครสมาชิกเพื่อปลดล็อกการแปลเชิงโต้ตอบและการตรวจสอบไวยากรณ์, การเล่นเสียง, แบบฝึกหัดการฝึกฝนที่ปรับให้เหมาะสม, และการวิเคราะห์การเรียนรู้!",
-    "emojiSelectedSnackbar": "คุณได้ตั้งค่าอีโมจิสำหรับ {lemma} แล้ว! เราจะใช้อีโมจินี้เพื่อแทนคำในแบบฝึกหัดการฝึกฝนต่อไป.",
     "unlockPracticeActivities": "ปลดล็อกแบบฝึกหัดการฝึกฝน",
     "noAnalyticsActivitiesAvailable": "ว้าว, คุณได้ทำกิจกรรมทั้งหมดที่มีอยู่แล้ว! ส่งข้อความเพิ่มเติมเพื่อปลดล็อกแบบฝึกหัดการฝึกฝนเพิ่มเติม.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10543,5 +10534,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "อีโมจินี้จะเป็นตัวแทนของ \"{word}\" ในการฝึกปฏิบัติ",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }

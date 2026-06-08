@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:40:16.405705",
+    "@@last_modified": "2026-06-08 12:04:38.316979",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10433,20 +10433,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "הירשם כדי לפתוח תרגום אינטראקטיבי ובדיקת דקדוק, השמעת אודיו, תרגילים מותאמים אישית וניתוחי למידה!",
-    "emojiSelectedSnackbar": "בחרת את האימוג'י עבור {lemma}! נשתמש באימוג'י הזה כדי לייצג את המילה בתרגילים המעשיים מעתה ואילך.",
     "unlockPracticeActivities": "פתח תרגילים מעשיים",
     "noAnalyticsActivitiesAvailable": "וואו, סיימת את כל הפעילויות הזמינות! שלח עוד הודעות כדי לפתוח עוד תרגילים מעשיים.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10903,5 +10894,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "האמוג'י הזה ייצג עכשיו \"{word}\" בתרגילים מעשיים",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }

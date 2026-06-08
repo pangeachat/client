@@ -2099,7 +2099,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-06-08 10:42:30.842950",
+    "@@last_modified": "2026-06-08 12:05:26.828202",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10422,20 +10422,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "გამოიწერეთ, რომ გახსნათ ინტერაქტიული თარგმანისა და გრამატიკის შემოწმების, აუდიო დაკვრის, პერსონალიზებული პრაქტიკის ვარჯიშების და სასწავლო ანალიტიკის ფუნქციები!",
-    "emojiSelectedSnackbar": "თქვენ დააყენეთ ემოჯი {lemma}-ისთვის! ჩვენ ამ ემოჯის გამოყენებას ვაპირებთ სიტყვას პრაქტიკის ვარჯიშებში.",
     "unlockPracticeActivities": "გახსენით პრაქტიკის ვარჯიშები",
     "noAnalyticsActivitiesAvailable": "ვაუ, თქვენ დაასრულეთ ყველა ხელმისაწვდომი აქტივობა! გამოგზავნეთ მეტი შეტყობინება, რომ გახსნათ მეტი პრაქტიკის ვარჯიშები.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10892,5 +10883,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "ამ ემოჯი ახლა \"{word}\"-ს წარმოადგენს პრაქტიკის ვარჯიშებში",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }

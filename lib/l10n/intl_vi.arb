@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:41:37.113198",
+    "@@last_modified": "2026-06-08 12:05:08.077672",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6437,20 +6437,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Đăng ký để mở khóa dịch thuật tương tác và kiểm tra ngữ pháp, phát âm thanh, bài tập thực hành cá nhân hóa và phân tích học tập!",
-    "emojiSelectedSnackbar": "Bạn đã đặt biểu tượng cảm xúc cho {lemma}! Chúng tôi sẽ sử dụng biểu tượng cảm xúc này để đại diện cho từ trong các bài tập thực hành trong tương lai.",
     "unlockPracticeActivities": "Mở khóa bài tập thực hành",
     "noAnalyticsActivitiesAvailable": "Wow, bạn đã hoàn thành tất cả các hoạt động có sẵn! Gửi thêm tin nhắn để mở khóa thêm bài tập thực hành.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -6907,5 +6898,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Biểu tượng cảm xúc này sẽ đại diện cho \"{word}\" trong các bài tập thực hành",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-06-08 10:42:40.221371",
+    "@@last_modified": "2026-06-08 12:05:30.295372",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -9751,20 +9751,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Abonnez-vous pour débloquer la traduction interactive et la vérification grammaticale, la lecture audio, des exercices de pratique personnalisés et des analyses d'apprentissage !",
-    "emojiSelectedSnackbar": "Vous avez défini l'emoji pour {lemma} ! Nous utiliserons cet emoji pour représenter le mot dans les exercices de pratique à l'avenir.",
     "unlockPracticeActivities": "Débloquer des exercices de pratique",
     "noAnalyticsActivitiesAvailable": "Wow, vous avez terminé toutes les activités disponibles ! Envoyez plus de messages pour débloquer plus d'exercices de pratique.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10221,5 +10212,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Cet emoji représentera désormais \"{word}\" dans les exercices pratiques",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }

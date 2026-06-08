@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 10:41:57.450752",
+    "@@last_modified": "2026-06-08 12:05:14.825861",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9466,20 +9466,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "برای دسترسی به ترجمه تعاملی و بررسی گرامر، پخش صوتی، تمرینات شخصی‌سازی شده و تجزیه و تحلیل یادگیری، مشترک شوید!",
-    "emojiSelectedSnackbar": "شما ایموجی را برای {lemma} تنظیم کرده‌اید! ما از این ایموجی برای نمایش کلمه در تمرینات آینده استفاده خواهیم کرد.",
     "unlockPracticeActivities": "دسترسی به تمرینات را باز کنید",
     "noAnalyticsActivitiesAvailable": "وای، شما تمام فعالیت‌های موجود را کامل کرده‌اید! پیام‌های بیشتری ارسال کنید تا تمرینات بیشتری را باز کنید.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9936,5 +9927,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "این ایموجی اکنون نمایانگر \"{word}\" در تمرینات عملی خواهد بود",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }

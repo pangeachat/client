@@ -1478,7 +1478,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-06-08 10:39:48.803506",
+    "@@last_modified": "2026-06-08 12:04:25.019242",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10448,20 +10448,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Abonner for at låse op for interaktiv oversættelse og grammatikcheck, lydafspilning, personlige øvelser og læringsanalyser!",
-    "emojiSelectedSnackbar": "Du har indstillet emoji'en for {lemma}! Vi vil bruge denne emoji til at repræsentere ordet i øvelser fremover.",
     "unlockPracticeActivities": "Lås op for øvelser",
     "noAnalyticsActivitiesAvailable": "Wow, du har gennemført alle tilgængelige aktiviteter! Send flere beskeder for at låse op for flere øvelser.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10918,5 +10909,14 @@
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Denne emoji vil nu repræsentere \"{word}\" i praksisøvelser",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
     }
 }
