@@ -19,6 +19,7 @@ import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_disambiguation.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_repo.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_repo.dart';
+import 'package:fluffychat/pangea/text_to_speech/tts_routing.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_request_model.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -67,6 +68,12 @@ class _AudioRequest {
 
 class TtsController {
   static List<String> _availableLangCodes = [];
+
+  /// Full voice list from flutter_tts `getVoices`. On native each entry carries
+  /// a `quality` field; on web only `name` + `locale` (the engine drops quality
+  /// and localService). Used to select a known-good device voice before falling
+  /// back to backend TTS. See word-text-to-speech.instructions.md.
+  static List<Map<String, String>> _voices = [];
 
   static final _tts = flutter_tts.FlutterTts();
   static final StreamController<bool> loadingChoreoStream =
@@ -125,15 +132,21 @@ class TtsController {
 
   static Future<void> _setAvailableBaseLanguages() async {
     final voices = (await _tts.getVoices) as List?;
-    _availableLangCodes = (voices ?? [])
+    _voices = (voices ?? []).map<Map<String, String>>((v) {
+      final voice = <String, String>{};
+      (v as Map).forEach((key, value) {
+        voice[key.toString()] = value?.toString() ?? '';
+      });
+      return voice;
+    }).toList();
+    _availableLangCodes = _voices
         .map((v) {
           // on iOS / web, the codes are in 'locale', but on Android, they are in 'name'
-          final nameCode = v['name'];
-          final localeCode = v['locale'];
+          final nameCode = v['name'] ?? '';
+          final localeCode = v['locale'] ?? '';
           return localeCode.contains("-") ? localeCode : nameCode;
         })
         .toSet()
-        .cast<String>()
         .toList();
   }
 
@@ -279,7 +292,10 @@ class TtsController {
     final prevOnStop = _onStop;
     _onStop = onStop;
 
-    if (_availableLangCodes.isEmpty) {
+    // On web, network voices (e.g. "Google Deutsch") load asynchronously and may
+    // be absent from the initial list, so refresh each call. See
+    // word-text-to-speech.instructions.md.
+    if (_availableLangCodes.isEmpty || kIsWeb) {
       await setAvailableLanguages();
     }
 
@@ -346,7 +362,30 @@ class TtsController {
         length: text.length,
       );
 
-      final langSupported = _isLangFullySupported(langCode);
+      final selection = TtsRouting.selectVoice(
+        _voices,
+        langCode,
+        isWeb: kIsWeb,
+      );
+      final isSubscribed =
+          MatrixState.pangeaController.subscriptionController.isSubscribed ==
+          true;
+
+      // Routing gate (see word-text-to-speech.instructions.md): a phoneme
+      // override needs backend; else device when it has a known-good voice;
+      // else backend. Backend is Pro-only, so unsubscribed users stay on device.
+      final useBackend = TtsRouting.useBackend(
+        hasPhoneme: ttsPhoneme != null,
+        selection: selection,
+        isSubscribed: isSubscribed,
+      );
+      _log(
+        'tryToSpeak: route=${useBackend ? "backend" : "device"} '
+        'knownGood=${selection.isKnownGood} hasVoice=${selection.hasVoice} '
+        'voice=${selection.voice?['name']} subscribed=$isSubscribed '
+        'phoneme=$ttsPhoneme',
+        tid,
+      );
 
       onStart?.call();
 
@@ -355,24 +394,24 @@ class TtsController {
         return;
       }
 
-      // When tts_phoneme is provided, skip device TTS and use choreo with phoneme tags.
-      if (ttsPhoneme != null || !langSupported) {
+      if (useBackend) {
         final success = await _speakFromChoreo(
           text,
           langCode,
           [token],
           requestId: requestId,
           ttsPhoneme: ttsPhoneme,
-          timeout: langSupported
+          timeout: selection.hasVoice
               ? const Duration(seconds: 1)
               : const Duration(seconds: 10),
           tid: tid,
           speed: speed,
         );
 
-        // fallback to device TTS if language is supported but choreo fails (e.g. due to timeout)
-        if (!success && langSupported && _isCurrentRequestId(requestId)) {
-          _log('tryToSpeak: speaking from device on choreo failure', tid);
+        // Fall back to a device voice if backend fails (e.g. timeout) and the
+        // device has something to play.
+        if (!success && selection.hasVoice && _isCurrentRequestId(requestId)) {
+          _log('tryToSpeak: speaking from device on backend failure', tid);
           await _speakFromDevice(
             text,
             langCode,
@@ -380,15 +419,12 @@ class TtsController {
             tid,
             requestId: requestId,
             speed: speed,
+            voice: selection.voice,
           );
         } else if (!success && !_isCurrentRequestId(requestId)) {
           _log('tryToSpeak: skipped fallback for superseded request', tid);
         }
       } else {
-        _log(
-          'tryToSpeak: speaking from device, language fully supported, no phoneme provided',
-          tid,
-        );
         await _speakFromDevice(
           text,
           langCode,
@@ -396,6 +432,7 @@ class TtsController {
           tid,
           requestId: requestId,
           speed: speed,
+          voice: selection.voice,
         );
       }
     } else if (targetID != null && context != null) {
@@ -412,6 +449,10 @@ class TtsController {
     String tid, {
     required int requestId,
     double speed = 1.0,
+
+    /// The device voice to use, as `{name, locale}`. When omitted, the engine's
+    /// default voice for the language (set via `_setSpeakingLanguage`) is used.
+    Map<String, String>? voice,
   }) async {
     if (!_isCurrentRequestId(requestId)) {
       _log('Skipping device playback for superseded request', tid);
@@ -419,7 +460,13 @@ class TtsController {
     }
 
     try {
-      _log('Speaking from device: $text, langCode: $langCode', tid);
+      _log(
+        'Speaking from device: $text, langCode: $langCode, voice: ${voice?['name']}',
+        tid,
+      );
+      if (voice != null && (voice['name']?.isNotEmpty ?? false)) {
+        await _tts.setVoice(voice);
+      }
       text = text.toLowerCase();
       _tts.setSpeechRate(speed);
       await Future(() => (_tts.speak(text)));
@@ -529,16 +576,4 @@ class TtsController {
     }
   }
 
-  static bool _isLangFullySupported(String langCode) {
-    if (_availableLangCodes.contains(langCode)) {
-      return true;
-    }
-
-    final langCodeShort = langCode.split("-").first;
-    if (langCodeShort.isEmpty) {
-      return false;
-    }
-
-    return _availableLangCodes.any((lang) => lang.startsWith(langCodeShort));
-  }
 }
