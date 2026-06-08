@@ -324,6 +324,13 @@ class Choreographer extends ChangeNotifier {
       tokensResp = res.isValue ? res.result : null;
     }
 
+    // Snapshot any IGC matches that were detected but not resolved by the user
+    // (neither accepted nor automatically corrected).
+    final openMatchesList = igcController.openMatches
+        .map((m) => m.updatedMatch)
+        .toList();
+    _record.openMatches.addAll(openMatchesList);
+
     return PangeaMessageContentModel(
       message: message,
       choreo: _record,
