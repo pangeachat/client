@@ -19,9 +19,9 @@ import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_disambiguation.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_repo.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_repo.dart';
-import 'package:fluffychat/pangea/text_to_speech/tts_routing.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_request_model.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
+import 'package:fluffychat/pangea/text_to_speech/tts_routing.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -575,5 +575,4 @@ class TtsController {
       }
     }
   }
-
 }
