@@ -121,6 +121,12 @@ class ActivityChatController {
     }
   }
 
+  void setShowDropdown(bool value) {
+    if (!_disposed) {
+      showActivityDropdown.value = value;
+    }
+  }
+
   void toggleShowDropdown() {
     if (!_disposed) {
       showActivityDropdown.value = !showActivityDropdown.value;

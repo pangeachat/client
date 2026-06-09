@@ -40,6 +40,9 @@ extension UiaRequestManager on MatrixState {
                 maxLines: 1,
                 obscureText: true,
                 hintText: '******',
+                // #Pangea
+                maxLength: 128,
+                // Pangea#
               ));
           if (input == null || input.isEmpty) {
             return uiaRequest.cancel();
