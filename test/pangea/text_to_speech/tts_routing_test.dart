@@ -35,17 +35,32 @@ void main() {
     });
 
     test('good threshold is enhanced/high and above', () {
-      expect(TtsRouting.qualityRank('enhanced'), greaterThanOrEqualTo(TtsRouting.nativeGoodQualityRank));
-      expect(TtsRouting.qualityRank('high'), greaterThanOrEqualTo(TtsRouting.nativeGoodQualityRank));
-      expect(TtsRouting.qualityRank('normal'), lessThan(TtsRouting.nativeGoodQualityRank));
-      expect(TtsRouting.qualityRank('default'), lessThan(TtsRouting.nativeGoodQualityRank));
+      expect(
+        TtsRouting.qualityRank('enhanced'),
+        greaterThanOrEqualTo(TtsRouting.nativeGoodQualityRank),
+      );
+      expect(
+        TtsRouting.qualityRank('high'),
+        greaterThanOrEqualTo(TtsRouting.nativeGoodQualityRank),
+      );
+      expect(
+        TtsRouting.qualityRank('normal'),
+        lessThan(TtsRouting.nativeGoodQualityRank),
+      );
+      expect(
+        TtsRouting.qualityRank('default'),
+        lessThan(TtsRouting.nativeGoodQualityRank),
+      );
     });
   });
 
   group('isGoodWebVoiceName', () {
     test('matches known-good vendor markers', () {
       expect(TtsRouting.isGoodWebVoiceName('Google Deutsch'), isTrue);
-      expect(TtsRouting.isGoodWebVoiceName('Microsoft Seraphina Online (Natural)'), isTrue);
+      expect(
+        TtsRouting.isGoodWebVoiceName('Microsoft Seraphina Online (Natural)'),
+        isTrue,
+      );
       expect(TtsRouting.isGoodWebVoiceName('Anna (Enhanced)'), isTrue);
       expect(TtsRouting.isGoodWebVoiceName('Anna (Premium)'), isTrue);
     });
@@ -53,7 +68,10 @@ void main() {
     test('rejects flat / novelty voices', () {
       expect(TtsRouting.isGoodWebVoiceName('Anna'), isFalse);
       expect(TtsRouting.isGoodWebVoiceName('Helena'), isFalse);
-      expect(TtsRouting.isGoodWebVoiceName('Grandpa (German (Germany))'), isFalse);
+      expect(
+        TtsRouting.isGoodWebVoiceName('Grandpa (German (Germany))'),
+        isFalse,
+      );
     });
 
     test('is case-insensitive', () {
@@ -75,16 +93,19 @@ void main() {
       expect(s.voice?['name'], 'Google Deutsch');
     });
 
-    test('only flat voices: hasVoice but not known-good, falls to first candidate', () {
-      final s = TtsRouting.selectVoice(
-        [_voice('Anna', 'de-DE'), _voice('Helena', 'de-DE')],
-        'de-DE',
-        isWeb: true,
-      );
-      expect(s.hasVoice, isTrue);
-      expect(s.isKnownGood, isFalse);
-      expect(s.voice?['name'], 'Anna');
-    });
+    test(
+      'only flat voices: hasVoice but not known-good, falls to first candidate',
+      () {
+        final s = TtsRouting.selectVoice(
+          [_voice('Anna', 'de-DE'), _voice('Helena', 'de-DE')],
+          'de-DE',
+          isWeb: true,
+        );
+        expect(s.hasVoice, isTrue);
+        expect(s.isKnownGood, isFalse);
+        expect(s.voice?['name'], 'Anna');
+      },
+    );
 
     test('no voice for the language', () {
       final s = TtsRouting.selectVoice(germanVoices, 'el-GR', isWeb: true);
@@ -94,8 +115,14 @@ void main() {
     });
 
     test('matches by base-language prefix and bare code', () {
-      expect(TtsRouting.selectVoice(germanVoices, 'de', isWeb: true).isKnownGood, isTrue);
-      expect(TtsRouting.selectVoice(germanVoices, 'DE-de', isWeb: true).hasVoice, isTrue);
+      expect(
+        TtsRouting.selectVoice(germanVoices, 'de', isWeb: true).isKnownGood,
+        isTrue,
+      );
+      expect(
+        TtsRouting.selectVoice(germanVoices, 'DE-de', isWeb: true).hasVoice,
+        isTrue,
+      );
     });
 
     test('web ignores the quality field entirely', () {
@@ -159,27 +186,90 @@ void main() {
       isKnownGood: false,
       hasVoice: true,
     );
-    const none = TtsVoiceSelection(voice: null, isKnownGood: false, hasVoice: false);
+    const none = TtsVoiceSelection(
+      voice: null,
+      isKnownGood: false,
+      hasVoice: false,
+    );
 
     test('known-good device voice → device, regardless of subscription', () {
-      expect(TtsRouting.useBackend(hasPhoneme: false, selection: good, isSubscribed: true), isFalse);
-      expect(TtsRouting.useBackend(hasPhoneme: false, selection: good, isSubscribed: false), isFalse);
+      expect(
+        TtsRouting.useBackend(
+          hasPhoneme: false,
+          selection: good,
+          isSubscribed: true,
+        ),
+        isFalse,
+      );
+      expect(
+        TtsRouting.useBackend(
+          hasPhoneme: false,
+          selection: good,
+          isSubscribed: false,
+        ),
+        isFalse,
+      );
     });
 
     test('flat device voice → backend only if subscribed', () {
-      expect(TtsRouting.useBackend(hasPhoneme: false, selection: flat, isSubscribed: true), isTrue);
-      expect(TtsRouting.useBackend(hasPhoneme: false, selection: flat, isSubscribed: false), isFalse);
+      expect(
+        TtsRouting.useBackend(
+          hasPhoneme: false,
+          selection: flat,
+          isSubscribed: true,
+        ),
+        isTrue,
+      );
+      expect(
+        TtsRouting.useBackend(
+          hasPhoneme: false,
+          selection: flat,
+          isSubscribed: false,
+        ),
+        isFalse,
+      );
     });
 
     test('no device voice → backend only if subscribed', () {
-      expect(TtsRouting.useBackend(hasPhoneme: false, selection: none, isSubscribed: true), isTrue);
-      expect(TtsRouting.useBackend(hasPhoneme: false, selection: none, isSubscribed: false), isFalse);
+      expect(
+        TtsRouting.useBackend(
+          hasPhoneme: false,
+          selection: none,
+          isSubscribed: true,
+        ),
+        isTrue,
+      );
+      expect(
+        TtsRouting.useBackend(
+          hasPhoneme: false,
+          selection: none,
+          isSubscribed: false,
+        ),
+        isFalse,
+      );
     });
 
-    test('phoneme override → backend if subscribed, even with a good device voice', () {
-      expect(TtsRouting.useBackend(hasPhoneme: true, selection: good, isSubscribed: true), isTrue);
-      // free user cannot use backend, so a phoneme request falls through to device
-      expect(TtsRouting.useBackend(hasPhoneme: true, selection: good, isSubscribed: false), isFalse);
-    });
+    test(
+      'phoneme override → backend if subscribed, even with a good device voice',
+      () {
+        expect(
+          TtsRouting.useBackend(
+            hasPhoneme: true,
+            selection: good,
+            isSubscribed: true,
+          ),
+          isTrue,
+        );
+        // free user cannot use backend, so a phoneme request falls through to device
+        expect(
+          TtsRouting.useBackend(
+            hasPhoneme: true,
+            selection: good,
+            isSubscribed: false,
+          ),
+          isFalse,
+        );
+      },
+    );
   });
 }
