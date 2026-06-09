@@ -2258,7 +2258,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-06-08 14:15:35.926979",
+    "@@last_modified": "2026-06-09 16:37:23.144575",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10846,6 +10846,11 @@
     },
     "showDeveloperOptions": "Ipakita ang mga pagpipilian ng developer",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "I-on ang mga pagpipilian ng developer upang ipakita ang mga analytics ng pag-download at detalyadong mga pagpipilian sa impormasyon sa buong app.",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }

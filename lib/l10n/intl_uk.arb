@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-08 14:15:27.016340",
+    "@@last_modified": "2026-06-09 16:37:12.573523",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9827,6 +9827,11 @@
     },
     "showDeveloperOptions": "Показати параметри розробника",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Увімкніть параметри розробника, щоб показати аналітику завантажень та детальну інформацію про параметри в додатку.",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }
