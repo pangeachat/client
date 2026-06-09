@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-04 09:29:29.720673",
+    "@@last_modified": "2026-06-08 14:15:55.080321",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -9543,11 +9543,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Voĉo de Pangea Bot",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Via peto estis sendita al la kursa administranto! Vi estos enirita se ili aprobas.",
     "@knockDesc": {
         "type": "String",
@@ -10478,20 +10473,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Abonu por malŝlosi interagajn tradukojn kaj gramatikajn kontroladojn, sonan ludon, personigitajn praktikajn ekzercojn, kaj lernan analitikon!",
-    "emojiSelectedSnackbar": "Vi agordis la emoji por {lemma}! Ni uzos ĉi tiun emoji por reprezenti la vorton en praktikaj ekzercoj en la estonteco.",
     "unlockPracticeActivities": "Malŝlosi praktikajn ekzercojn",
     "noAnalyticsActivitiesAvailable": "Ve, vi kompletigis ĉiujn disponeblajn aktivadojn! Sendu pli da mesaĝoj por malŝlosi pli da praktikaj ekzercoj.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10926,6 +10912,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Voĉo de Pangea Bot por aŭdmesaĝo",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Ĉatlogo",
+    "announcementsChatDetails": "Loko por kursaj administrantoj por krei anoncojn por kursaj partoprenantoj. Dum ĉiuj povas vidi ĉi tiun kanalon, nur administrantoj povas skribi en ĝi.",
+    "introChatDetails": "Diru saluton! Enkonduku vin al viaj samkursanoj, trovu amikojn, kaj babbadu ekster aktivadoj.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Ĉi tiu emoji nun reprezentos \"{word}\" en praktikaj ekzercoj",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Montri evoluiga opciojn",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

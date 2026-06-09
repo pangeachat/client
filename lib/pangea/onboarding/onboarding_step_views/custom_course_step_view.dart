@@ -1,17 +1,18 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
 
 class CustomCourseStepView extends StatefulWidget {
   final CustomCourseOnboardingStep step;
-  final VoidCallback updateEnableNext;
+  final VoidCallback updateNavigationButton;
   const CustomCourseStepView({
     super.key,
     required this.step,
-    required this.updateEnableNext,
+    required this.updateNavigationButton,
   });
 
   @override
@@ -59,7 +60,7 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
       _step.setName(_nameController.text);
       _nameDebounce?.cancel();
       _nameDebounce = null;
-      widget.updateEnableNext();
+      widget.updateNavigationButton();
     });
   }
 
@@ -69,7 +70,7 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
       _step.setInstitution(_institutionController.text);
       _institutionDebounce?.cancel();
       _institutionDebounce = null;
-      widget.updateEnableNext();
+      widget.updateNavigationButton();
     });
   }
 
@@ -79,7 +80,7 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
       _step.setGoals(_goalsController.text);
       _goalsDebounce?.cancel();
       _goalsDebounce = null;
-      widget.updateEnableNext();
+      widget.updateNavigationButton();
     });
   }
 
@@ -99,10 +100,12 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
           TextField(
             controller: _nameController,
             decoration: InputDecoration(hintText: L10n.of(context).name),
+            inputFormatters: [LengthLimitingTextInputFormatter(254)],
           ),
           TextField(
             controller: _institutionController,
             decoration: InputDecoration(hintText: L10n.of(context).institution),
+            inputFormatters: [LengthLimitingTextInputFormatter(254)],
           ),
           TextField(
             controller: _goalsController,

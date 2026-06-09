@@ -87,32 +87,26 @@ class ActivitySummary extends StatelessWidget {
               isShimmering: isParticipantShimmering,
               getOpacity: getParticipantOpacity,
             ),
-            DecoratedBox(
+            Container(
               decoration: BoxDecoration(
                 color: theme.colorScheme.surface.withAlpha(128),
                 borderRadius: BorderRadius.circular(12.0),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: .start,
-                  spacing: 16.0,
-                  children: [
-                    Text(
-                      activity.description,
-                      style: theme.textTheme.bodyMedium,
-                    ),
-                    const Divider(height: 1),
-                    ActivityVocabWidget(
-                      key: ValueKey("activity-summary-${activity.activityId}"),
-                      vocab: activity.vocab,
-                      langCode: activity.req.targetLanguage,
-                      targetId: "activity-summary-vocab",
-                      usedVocab: usedVocab,
-                      activityLangCode: activity.req.targetLanguage,
-                    ),
-                  ],
-                ),
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: .start,
+                spacing: 16.0,
+                children: [
+                  Text(activity.description, style: theme.textTheme.bodyMedium),
+                  const Divider(height: 1),
+                  ActivityVocabWidget(
+                    key: ValueKey("activity-summary-${activity.activityId}"),
+                    vocab: activity.vocab,
+                    langCode: activity.req.targetLanguage,
+                    targetId: "activity-summary-vocab",
+                    activityLangCode: activity.req.targetLanguage,
+                  ),
+                ],
               ),
             ),
           ],

@@ -10,6 +10,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -469,6 +470,15 @@ class HtmlMessage extends StatelessWidget {
             !isPracticeMode &&
             isFirstNewToken;
 
+        final vocabLemmas = controller.room.activityPlan?.vocab
+            .map((v) => v.lemma.toLowerCase())
+            .toSet();
+        final isVocabHighlight =
+            pangeaMessageEvent!.ownMessage &&
+            vocabLemmas != null &&
+            token != null &&
+            vocabLemmas.contains(token.lemma.text.toLowerCase());
+
         final tokenWidth = renderer.tokenTextWidthForContainer(
           node.text,
           Theme.of(context).colorScheme.primary.withAlpha(200),
@@ -526,25 +536,39 @@ class HtmlMessage extends StatelessWidget {
                             : null,
                         child: HoverBuilder(
                           builder: (context, hovered) {
+                            final underlineTextWidget = UnderlineText(
+                              text: node.text.trim(),
+                              style: existingStyle,
+                              linkStyle: linkStyle,
+                              textDirection: pangeaMessageEvent?.textDirection,
+                              underlineColor: TokenRenderingUtil.underlineColor(
+                                underlineColor,
+                                selected: selected,
+                                highlighted: highlighted,
+                                isNew: isNew,
+                                practiceMode: isPracticeMode,
+                                hovered: hovered,
+                              ),
+                            );
                             return ShimmerBackground(
                               enabled: showShimmer,
                               borderRadius: BorderRadius.circular(4.0),
-                              child: UnderlineText(
-                                text: node.text.trim(),
-                                style: existingStyle,
-                                linkStyle: linkStyle,
-                                textDirection:
-                                    pangeaMessageEvent?.textDirection,
-                                underlineColor:
-                                    TokenRenderingUtil.underlineColor(
-                                      underlineColor,
-                                      selected: selected,
-                                      highlighted: highlighted,
-                                      isNew: isNew,
-                                      practiceMode: isPracticeMode,
-                                      hovered: hovered,
-                                    ),
-                              ),
+                              child: isVocabHighlight
+                                  ? DecoratedBox(
+                                      decoration: BoxDecoration(
+                                        color: AppConfig.goldLight.withAlpha(
+                                          100,
+                                        ),
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 4,
+                                        ),
+                                        child: underlineTextWidget,
+                                      ),
+                                    )
+                                  : underlineTextWidget,
                             );
                           },
                         ),

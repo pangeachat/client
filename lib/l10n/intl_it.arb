@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-04 09:29:01.760731",
+    "@@last_modified": "2026-06-08 14:15:25.926378",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -8555,11 +8555,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Voce del bot Pangea",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "La tua richiesta è stata inviata all'amministratore del corso! Sarai ammesso se approvano.",
     "@knockDesc": {
         "type": "String",
@@ -9450,20 +9445,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Iscriviti per sbloccare la traduzione interattiva e il controllo grammaticale, la riproduzione audio, esercizi di pratica personalizzati e analisi dell'apprendimento!",
-    "emojiSelectedSnackbar": "Hai impostato l'emoji per {lemma}! Useremo questa emoji per rappresentare la parola negli esercizi di pratica d'ora in poi.",
     "unlockPracticeActivities": "Sblocca esercizi di pratica",
     "noAnalyticsActivitiesAvailable": "Wow, hai completato tutte le attività disponibili! Invia più messaggi per sbloccare ulteriori esercizi di pratica.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9898,6 +9884,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Voce del messaggio audio del Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logo di Pangea Chat",
+    "announcementsChatDetails": "Un luogo per gli amministratori del corso per creare annunci per i partecipanti al corso. Mentre tutti possono visualizzare questo canale, solo gli amministratori possono scriverci.",
+    "introChatDetails": "Dì ciao! Presentati ai tuoi compagni di corso, trova amici e chatta al di fuori delle attività.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Questa emoji rappresenterà ora \"{word}\" negli esercizi pratici",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Mostra opzioni sviluppatore",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

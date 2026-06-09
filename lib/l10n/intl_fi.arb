@@ -3914,7 +3914,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-06-04 09:28:49.013625",
+    "@@last_modified": "2026-06-08 14:15:09.757524",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -8642,11 +8642,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Botin ääni",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Pyyntösi on lähetetty kurssin ylläpitäjälle! Sinut päästetään sisään, jos he hyväksyvät sen.",
     "@knockDesc": {
         "type": "String",
@@ -9408,20 +9403,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Tilaa avatakseen interaktiivisen käännöksen ja kieliopin tarkistuksen, äänentoiston, henkilökohtaiset harjoitustehtävät ja oppimisanalytiikan!",
-    "emojiSelectedSnackbar": "Olet asettanut emojin {lemma}! Käytämme tätä emojia edustamaan sanaa harjoitustehtävissä jatkossa.",
     "unlockPracticeActivities": "Avaa harjoitustehtävät",
     "noAnalyticsActivitiesAvailable": "Vau, olet suorittanut kaikki saatavilla olevat aktiviteetit! Lähetä lisää viestejä avatakseen lisää harjoitustehtäviä.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9856,6 +9842,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Botin ääniviestin ääni",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat -logo",
+    "announcementsChatDetails": "Paikka kurssin ylläpitäjille luoda ilmoituksia kurssin osallistujille. Vaikka kaikki voivat nähdä tämän kanavan, vain ylläpitäjät voivat kirjoittaa siihen.",
+    "introChatDetails": "Sano hei! Esittele itsesi muille kurssin osallistujille, etsi ystäviä ja keskustele aktiviteettien ulkopuolella.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Tämä emoji edustaa nyt \"{word}\" käytännön harjoituksissa",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Näytä kehittäjäasetukset",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

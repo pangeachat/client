@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 
 class LanguageDisplayNamePrefixWidget extends StatelessWidget {
@@ -40,7 +41,7 @@ class LanguageDisplayNamePrefixWidget extends StatelessWidget {
         ),
         SizedBox(height: spacing),
         Text(
-          language.getDisplayName(context),
+          language.getDisplayName(L10n.of(context)),
           style: style,
           textAlign: TextAlign.center,
           maxLines: 2,

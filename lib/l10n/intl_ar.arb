@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-06-04 09:29:15.797303",
+    "@@last_modified": "2026-06-08 14:15:37.748943",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -8764,11 +8764,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "صوت بوت بانجيا",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "تم إرسال طلبك إلى إدارة الدورة! سيتم السماح لك بالدخول إذا وافقوا.",
     "@knockDesc": {
         "type": "String",
@@ -9699,20 +9694,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "اشترك لفتح الترجمة التفاعلية وفحص القواعد، وتشغيل الصوت، وتمارين الممارسة الشخصية، وتحليلات التعلم!",
-    "emojiSelectedSnackbar": "لقد قمت بتعيين الرموز التعبيرية لـ {lemma}! سنستخدم هذه الرموز التعبيرية لتمثيل الكلمة في تمارين الممارسة من الآن فصاعدًا.",
     "unlockPracticeActivities": "فتح تمارين الممارسة",
     "noAnalyticsActivitiesAvailable": "واو، لقد أكملت جميع الأنشطة المتاحة! أرسل المزيد من الرسائل لفتح المزيد من تمارين الممارسة.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10147,6 +10133,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "صوت رسالة الصوت لروبوت بانجيا",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "شعار دردشة بانجيا",
+    "announcementsChatDetails": "مكان لمديري الدورة لإنشاء إعلانات لمشاركي الدورة. بينما يمكن للجميع مشاهدة هذه القناة، يمكن للمديرين فقط الكتابة فيها.",
+    "introChatDetails": "قل مرحبًا! قدم نفسك لمشاركي الدورة الآخرين، وابحث عن أصدقاء، وتحدث خارج الأنشطة.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "ستمثل هذه الرموز التعبيرية الآن \"{word}\" في تمارين الممارسة",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "عرض خيارات المطور",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

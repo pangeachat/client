@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-04 09:29:25.109549",
+    "@@last_modified": "2026-06-08 14:15:48.239214",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -8541,11 +8541,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "صدای ربات پانژیا",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "درخواست شما به مدیر دوره ارسال شده است! اگر آنها تأیید کنند، شما وارد خواهید شد.",
     "@knockDesc": {
         "type": "String",
@@ -9471,20 +9466,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "برای دسترسی به ترجمه تعاملی و بررسی گرامر، پخش صوتی، تمرینات شخصی‌سازی شده و تجزیه و تحلیل یادگیری، مشترک شوید!",
-    "emojiSelectedSnackbar": "شما ایموجی را برای {lemma} تنظیم کرده‌اید! ما از این ایموجی برای نمایش کلمه در تمرینات آینده استفاده خواهیم کرد.",
     "unlockPracticeActivities": "دسترسی به تمرینات را باز کنید",
     "noAnalyticsActivitiesAvailable": "وای، شما تمام فعالیت‌های موجود را کامل کرده‌اید! پیام‌های بیشتری ارسال کنید تا تمرینات بیشتری را باز کنید.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9919,6 +9905,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "صدای پیام صوتی ربات پانژیا",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "لوگوی چت پانگه‌آ",
+    "announcementsChatDetails": "محلی برای مدیران دوره تا اعلامیه‌هایی برای شرکت‌کنندگان دوره ایجاد کنند. در حالی که همه می‌توانند این کانال را مشاهده کنند، تنها مدیران می‌توانند در آن تایپ کنند.",
+    "introChatDetails": "سلام بگویید! خود را به سایر شرکت‌کنندگان دوره معرفی کنید، دوستانی پیدا کنید و خارج از فعالیت‌ها چت کنید.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "این ایموجی اکنون نمایانگر \"{word}\" در تمرینات عملی خواهد بود",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "نمایش گزینه‌های توسعه‌دهنده",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-04 09:29:20.818869",
+    "@@last_modified": "2026-06-08 14:15:42.684246",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -8550,11 +8550,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "பாஙேஆ பாட்டின் குரல்",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "உங்கள் கோரிக்கை பாடம் நிர்வாகிக்கு அனுப்பப்பட்டுள்ளது! அவர்கள் ஒப்புதலளித்தால் நீங்கள் உள்ளே அனுமதிக்கப்படுவீர்கள்.",
     "@knockDesc": {
         "type": "String",
@@ -9475,20 +9470,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "இணையதள மொழிபெயர்ப்பு மற்றும் இலக்கண சரிபார்ப்பு, ஒலிப்ப playback, தனிப்பயன் பயிற்சி பயிற்சிகள் மற்றும் கற்றல் பகுப்பாய்வுகளை திறக்க சந்தா செலுத்துங்கள்!",
-    "emojiSelectedSnackbar": "நீங்கள் {lemma} க்கான எமோஜியை அமைத்துள்ளீர்கள்! எதிர்காலத்தில் பயிற்சி பயிற்சிகளில் இந்த எமோஜியை வார்த்தையை பிரதிநிதித்துவப்படுத்த பயன்படுத்துவோம்.",
     "unlockPracticeActivities": "பயிற்சி பயிற்சிகளை திறக்கவும்",
     "noAnalyticsActivitiesAvailable": "வாவ், நீங்கள் அனைத்து கிடைக்கக்கூடிய செயல்பாடுகளை முடித்துவிட்டீர்கள்! மேலும் பயிற்சி பயிற்சிகளை திறக்க மேலும் செய்திகளை அனுப்பவும்.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9923,6 +9909,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "பாஙேஆ பாட்டின் ஒலி செய்தி குரல்",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "பாஙேஆ சாட் லோகோ",
+    "announcementsChatDetails": "பாடநெறி நிர்வாகிகள் பாடநெறி பங்கேற்பாளர்களுக்கான அறிவிப்புகளை உருவாக்கும் இடம். இந்த சேனலை அனைவரும் காணலாம், ஆனால் நிர்வாகிகள் மட்டுமே இதில் எழுதலாம்.",
+    "introChatDetails": "வணக்கம் சொல்லுங்கள்! உங்கள் சக பாடநெறி பங்கேற்பாளர்களுக்கு உங்களை அறிமுகப்படுத்துங்கள், நண்பர்களை கண்டுபிடிக்கவும், செயல்பாடுகளுக்கு வெளியே உரையாடவும்.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "இந்த எமோஜி இப்போது \"{word}\" என்றால் பயிற்சி பயிற்சிகளில் பிரதிநிதித்துவம் செய்யும்",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "உருவாக்குநர் விருப்பங்களை காட்டு",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

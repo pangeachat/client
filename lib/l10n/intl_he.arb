@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-04 09:28:54.591890",
+    "@@last_modified": "2026-06-08 14:15:17.315716",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -9503,11 +9503,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "קול של פנגיאה בוט",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "הבקשה שלך נשלחה למנהל הקורס! תורשה להיכנס אם הם יאשרו.",
     "@knockDesc": {
         "type": "String",
@@ -10438,20 +10433,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "הירשם כדי לפתוח תרגום אינטראקטיבי ובדיקת דקדוק, השמעת אודיו, תרגילים מותאמים אישית וניתוחי למידה!",
-    "emojiSelectedSnackbar": "בחרת את האימוג'י עבור {lemma}! נשתמש באימוג'י הזה כדי לייצג את המילה בתרגילים המעשיים מעתה ואילך.",
     "unlockPracticeActivities": "פתח תרגילים מעשיים",
     "noAnalyticsActivitiesAvailable": "וואו, סיימת את כל הפעילויות הזמינות! שלח עוד הודעות כדי לפתוח עוד תרגילים מעשיים.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10886,6 +10872,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "קול הודעת שמע של פנגיאה בוט",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "לוגו פנגיאה צ'אט",
+    "announcementsChatDetails": "מקום עבור מנהלי הקורס ליצור הודעות למשתתפי הקורס. בעוד שכולם יכולים לראות את הערוץ הזה, רק מנהלים יכולים לכתוב בו.",
+    "introChatDetails": "תגיד שלום! הצג את עצמך למשתתפי הקורס שלך, מצא חברים וצ'אט מחוץ לפעילויות.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "האמוג'י הזה ייצג עכשיו \"{word}\" בתרגילים מעשיים",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "הצג אפשרויות מפתחים",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

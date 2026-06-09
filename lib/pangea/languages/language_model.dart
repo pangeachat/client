@@ -135,9 +135,8 @@ class LanguageModel {
     displayName: "Unknown",
   );
 
-  String getDisplayName(BuildContext context) {
+  String getDisplayName(L10n l10n) {
     final langKey = "${langCode.replaceAll("-", "")}DisplayName";
-    final l10n = L10n.of(context);
 
     final displayNameMap = <String, String>{
       "aceDisplayName": l10n.aceDisplayName,
@@ -395,7 +394,9 @@ class LanguageModel {
     if (item == null) return searchValue.isEmpty;
     final search = searchValue.toLowerCase();
     final displayName = item.displayName.toLowerCase();
-    final displayNameLocal = item.getDisplayName(context).toLowerCase();
+    final displayNameLocal = item
+        .getDisplayName(L10n.of(context))
+        .toLowerCase();
     final langCode = item.langCode.toLowerCase();
     return displayName.startsWith(search) ||
         displayNameLocal.startsWith(search) ||

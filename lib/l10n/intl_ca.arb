@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-04 09:29:06.404080",
+    "@@last_modified": "2026-06-08 14:15:30.763491",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -8575,11 +8575,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Veu del bot Pangea",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "La teva sol·licitud s'ha enviat a l'administrador del curs! Et deixaran entrar si ho aproven.",
     "@knockDesc": {
         "type": "String",
@@ -9510,20 +9505,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Subscriu-te per desbloquejar la traducció interactiva i la verificació gramatical, la reproducció d'àudio, els exercicis de pràctica personalitzats i l'analítica d'aprenentatge!",
-    "emojiSelectedSnackbar": "Has establert l'emoji per a {lemma}! Utilitzarem aquest emoji per representar la paraula en els exercicis de pràctica d'ara endavant.",
     "unlockPracticeActivities": "Desbloqueja exercicis de pràctica",
     "noAnalyticsActivitiesAvailable": "Uau, has completat totes les activitats disponibles! Envia més missatges per desbloquejar més exercicis de pràctica.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9958,6 +9944,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Veu del missatge d'àudio del Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logotip de Pangea Chat",
+    "announcementsChatDetails": "Un lloc per als administradors del curs per crear anuncis per als participants del curs. Mentre que tots poden veure aquest canal, només els administradors poden escriure-hi.",
+    "introChatDetails": "Digues hola! Presenta't als teus companys participants del curs, troba amics i xateja fora de les activitats.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Aquest emoji ara representarà \"{word}\" en els exercicis pràctics",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Mostra les opcions de desenvolupador",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

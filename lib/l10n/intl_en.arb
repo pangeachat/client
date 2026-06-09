@@ -4585,7 +4585,6 @@
     "fillInBlank": "Fill in the blank with the correct choice",
     "learn": "Learn",
     "languageUpdated": "Target language updated!",
-    "voiceDropdownTitle": "Pangea Bot voice",
     "knockDesc": "Your request has been sent to course admin! You'll be let in if they approve.",
     "knockAccepted": "Your join request was accepted! You can now enter the course.",
     "@knockAccepted": {},
@@ -4756,15 +4755,6 @@
     "closeEmojiMenu": "Close emoji menu",
     "visibilityToggleTitle": "Allow others to search for your course",
     "subscribedToUnlockTools": "Subscribe to unlock interactive translation and grammar checking, audio playback, personalized practice exercises, and learning analytics!",
-    "emojiSelectedSnackbar": "You’ve set the emoji for {lemma}! We’ll use this emoji to represent the word in practice exercises going forward.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "unlockPracticeActivities": "Unlock practice exercises",
     "noAnalyticsActivitiesAvailable": "Wow, you've completed all available activities! Send more messages to unlock more practice exercises.",
     "constructUseCorPADesc": "Correct in word meaning exercise",
@@ -4855,5 +4845,18 @@
     "suggestMobileDesc": "Get the Pangea Chat app to receive notifications!",
     "cefrLevelMatch": "This course matches your language level",
     "cefrLevelBelow": "This course is below your language level.",
-    "cefrLevelAbove": "This course is above your language level."
+    "cefrLevelAbove": "This course is above your language level.",
+    "voiceDropdownTitle": "Pangea Bot audio message voice",
+    "announcementsChatDetails": "A place for course admins to create annoucements for course participants. While all may view this channel, only admins can type in it.",
+    "introChatDetails": "Say hello! Introduce yourself to your fellow course participants, find friends, and chat outside of activities.",
+    "emojiSelectedSnackbar": "This emoji will now represent \"{word}\" in practice exercises",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Show developer options"
 }

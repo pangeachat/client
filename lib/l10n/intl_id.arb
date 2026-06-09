@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-04 09:28:51.108187",
+    "@@last_modified": "2026-06-08 14:15:12.765759",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -8551,11 +8551,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Suara Pangea Bot",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Permintaan Anda telah dikirim ke admin kursus! Anda akan diizinkan masuk jika mereka menyetujuinya.",
     "@knockDesc": {
         "type": "String",
@@ -9456,20 +9451,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Berlangganan untuk membuka terjemahan interaktif dan pemeriksaan tata bahasa, pemutaran audio, latihan praktik yang dipersonalisasi, dan analitik pembelajaran!",
-    "emojiSelectedSnackbar": "Anda telah menetapkan emoji untuk {lemma}! Kami akan menggunakan emoji ini untuk mewakili kata dalam latihan praktik ke depan.",
     "unlockPracticeActivities": "Buka latihan praktik",
     "noAnalyticsActivitiesAvailable": "Wow, Anda telah menyelesaikan semua aktivitas yang tersedia! Kirim lebih banyak pesan untuk membuka lebih banyak latihan praktik.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9904,6 +9890,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Suara pesan audio Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logo Pangea Chat",
+    "announcementsChatDetails": "Tempat bagi admin kursus untuk membuat pengumuman bagi peserta kursus. Sementara semua orang dapat melihat saluran ini, hanya admin yang dapat mengetik di dalamnya.",
+    "introChatDetails": "Sapa! Perkenalkan diri Anda kepada peserta kursus lainnya, temukan teman, dan mengobrol di luar kegiatan.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Emoji ini sekarang akan mewakili \"{word}\" dalam latihan praktik",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Tampilkan opsi pengembang",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:matrix/matrix.dart';
 
@@ -216,6 +217,9 @@ class PublicCoursePreviewView extends StatelessWidget {
                                   hintText: L10n.of(context).enterCodeToJoin,
                                 ),
                                 onSubmitted: controller.joinWithCode,
+                                inputFormatters: [
+                                  LengthLimitingTextInputFormatter(10),
+                                ],
                               ),
                               Row(
                                 spacing: 8.0,

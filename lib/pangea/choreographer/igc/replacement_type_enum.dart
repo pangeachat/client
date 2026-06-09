@@ -237,21 +237,22 @@ extension SpanDataTypeEnumExt on ReplacementTypeEnum {
   }
 
   String defaultPrompt(BuildContext context) {
+    final l10n = L10n.of(context);
     switch (this) {
       case ReplacementTypeEnum.definition:
-        return L10n.of(context).definitionDefaultPrompt;
+        return l10n.definitionDefaultPrompt;
       case ReplacementTypeEnum.practice:
-        return L10n.of(context).practiceDefaultPrompt;
+        return l10n.practiceDefaultPrompt;
       case ReplacementTypeEnum.itStart:
-        return L10n.of(context).needsItMessage(
+        return l10n.needsItMessage(
           MatrixState.pangeaController.userController.userL2?.getDisplayName(
-                context,
+                l10n,
               ) ??
-              L10n.of(context).targetLanguage,
+              l10n.targetLanguage,
         );
       // All grammar types and other corrections use the same default prompt
       default:
-        return L10n.of(context).correctionDefaultPrompt;
+        return l10n.correctionDefaultPrompt;
     }
   }
 

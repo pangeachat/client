@@ -138,6 +138,8 @@ class _UserHomePageState extends State<UserHomePage> {
       cancelLabel: L10n.of(context).cancel,
       initialText:
           profile?.displayName ?? Matrix.of(context).client.userID!.localpart,
+      maxLength: 50,
+      maxLines: 1,
     );
     if (input == null) return;
     final matrix = Matrix.of(context);

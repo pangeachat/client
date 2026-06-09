@@ -3194,7 +3194,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-04 09:29:22.191335",
+    "@@last_modified": "2026-06-08 14:15:44.378927",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7821,11 +7821,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot voz",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Yor requst has been sent to course admin! Yu'll be let in if dey approve.",
     "@knockDesc": {
         "type": "String",
@@ -9031,20 +9026,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Abonezhu na desbloquear tradução interativa e verificação gramatical, reprodução de áudio, exercícios de prática personalizados e análises de aprendizado!",
-    "emojiSelectedSnackbar": "Você definiu o emoji para {lemma}! Usaremos este emoji para representar a palavra nos exercícios de prática daqui para frente.",
     "unlockPracticeActivities": "Desbloquear exercícios de prática",
     "noAnalyticsActivitiesAvailable": "Uau, você completou todas as atividades disponíveis! Envie mais mensagens para desbloquear mais exercícios de prática.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9479,6 +9465,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot audio message voice",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logo",
+    "announcementsChatDetails": "Ena panga ya kurs admini kuumba matangazo kwa washiriki wa kurs. Wakati wote wanaweza kuona channel hii, ni admin tu wanaweza kuandika ndani yake.",
+    "introChatDetails": "Sema hello! Jitambulishe kwa washiriki wenzako wa kurs, pata marafiki, na zungumza nje ya shughuli.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Emoji ini sekarang akan mewakili \"{word}\" dalam latihan praktik",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Tunjukkan pilihan pemaju",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

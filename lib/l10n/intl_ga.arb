@@ -3949,7 +3949,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-06-04 09:29:32.577741",
+    "@@last_modified": "2026-06-08 14:15:59.100199",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -8669,11 +8669,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "guth Pangea Bot",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Tá do hiarratas curtha chuig an riarachán cúrsa! Cuirfear isteach thú má cheadaíonn siad é.",
     "@knockDesc": {
         "type": "String",
@@ -9370,20 +9365,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Cláraigh chun uirlisí idirghníomhacha a aistriú agus a sheiceáil gramadaí, a chluinstin fuaime, a chleachtadh pearsanta, agus anailísíocht foghlama a dhíghlasáil!",
-    "emojiSelectedSnackbar": "Tá an emoji socraithe agat do {lemma}! Úsáidfimid an emoji seo chun an focal a chur i láthair sna cleachtaí praiticiúla amach anseo.",
     "unlockPracticeActivities": "Díghlasáil cleachtaí praiticiúla",
     "noAnalyticsActivitiesAvailable": "Wow, tá gach gníomhaíocht ar fáil críochnaithe agat! Seol níos mó teachtaireachtaí chun níos mó cleachtaí praiticiúla a dhíghlasáil.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9818,6 +9804,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Guth teachtaireachta fuaime Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Lógó Pangea Chat",
+    "announcementsChatDetails": "Áit do na hoifigigh cúrsa chun fógraí a chruthú do na rannpháirtithe cúrsa. Cé go bhféadfadh gach duine an chanáil seo a fheiceáil, is iad na hoifigigh amháin a fhéadfadh scríobh inti.",
+    "introChatDetails": "Abair dia dhuit! Cuir aithne ort féin do do chomh-rannpháirtithe cúrsa, faigh cairde, agus comhrá lasmuigh de na gníomhaíochtaí.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Beidh an emoji seo ag ionadaíocht ar \"{word}\" anois i gcleachtaí chleachtais",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Taispeáin na roghanna forbróra",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

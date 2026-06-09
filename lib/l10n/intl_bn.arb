@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-04 09:29:23.877590",
+    "@@last_modified": "2026-06-08 14:15:47.098324",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -9139,11 +9139,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "প্যাঙ্গিয়া বটের কণ্ঠ",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "আপনার অনুরোধ কোর্স প্রশাসকের কাছে পাঠানো হয়েছে! তারা অনুমোদন করলে আপনাকে প্রবেশ করতে দেওয়া হবে।",
     "@knockDesc": {
         "type": "String",
@@ -10074,20 +10069,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "ইন্টারেক্টিভ অনুবাদ এবং ব্যাকরণ পরীক্ষা, অডিও প্লেব্যাক, ব্যক্তিগত অনুশীলন কার্যক্রম এবং শেখার বিশ্লেষণ আনলক করতে সাবস্ক্রাইব করুন!",
-    "emojiSelectedSnackbar": "আপনি {lemma} এর জন্য ইমোজি সেট করেছেন! আমরা ভবিষ্যতে অনুশীলন কার্যক্রমে এই ইমোজিটি শব্দটি উপস্থাপন করতে ব্যবহার করব।",
     "unlockPracticeActivities": "অনুশীলন কার্যক্রম আনলক করুন",
     "noAnalyticsActivitiesAvailable": "ওয়াও, আপনি সমস্ত উপলব্ধ কার্যক্রম সম্পন্ন করেছেন! আরও অনুশীলন কার্যক্রম আনলক করতে আরও বার্তা পাঠান।",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10522,6 +10508,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "প্যাঙ্গিয়া বট অডিও বার্তার কণ্ঠ",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "প্যাঙ্গিয়া চ্যাট লোগো",
+    "announcementsChatDetails": "কোর্স প্রশাসকদের জন্য একটি স্থান যেখানে তারা কোর্স অংশগ্রহণকারীদের জন্য ঘোষণা তৈরি করতে পারেন। যদিও সবাই এই চ্যানেলটি দেখতে পারে, কেবল প্রশাসকরাই এতে টাইপ করতে পারেন।",
+    "introChatDetails": "হ্যালো বলুন! আপনার সহপাঠীদের সাথে পরিচয় করিয়ে দিন, বন্ধু খুঁজুন, এবং কার্যক্রমের বাইরে চ্যাট করুন।",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "এই ইমোজিটি এখন \"{word}\" এর প্রতিনিধিত্ব করবে অনুশীলন কার্যক্রমে",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "ডেভেলপার অপশনগুলি দেখান",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

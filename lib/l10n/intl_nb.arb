@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-04 09:29:03.933364",
+    "@@last_modified": "2026-06-08 14:15:28.872983",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -8717,11 +8717,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot-stemme",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Din forespørsel har blitt sendt til kursadministratoren! Du vil bli sluppet inn hvis de godkjenner.",
     "@knockDesc": {
         "type": "String",
@@ -9419,20 +9414,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Abonner for å låse opp interaktiv oversettelse og grammatikkontroll, lydavspilling, personlige øvelser og læringsanalyse!",
-    "emojiSelectedSnackbar": "Du har satt emoji for {lemma}! Vi vil bruke denne emojien for å representere ordet i øvelsene fremover.",
     "unlockPracticeActivities": "Lås opp øvelser",
     "noAnalyticsActivitiesAvailable": "Wow, du har fullført alle tilgjengelige aktiviteter! Send flere meldinger for å låse opp flere øvelser.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9867,6 +9853,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot lydmelding stemme",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat-logo",
+    "announcementsChatDetails": "Et sted for kursadministratorer å lage kunngjøringer for kursdeltakere. Mens alle kan se denne kanalen, kan kun administratorer skrive i den.",
+    "introChatDetails": "Si hei! Introduser deg selv for dine medkursdeltakere, finn venner, og chat utenfor aktiviteter.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Denne emojien vil nå representere \"{word}\" i praksisøvelser",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Vis utvikleralternativer",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

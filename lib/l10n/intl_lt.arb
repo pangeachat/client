@@ -3246,7 +3246,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-06-04 09:29:18.978656",
+    "@@last_modified": "2026-06-08 14:15:40.557802",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9310,11 +9310,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot balsas",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Jūsų prašymas buvo išsiųstas kurso administratoriui! Būsite įleistas, jei jie patvirtins.",
     "@knockDesc": {
         "type": "String",
@@ -10245,20 +10240,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Prenumeruokite, kad atrakintumėte interaktyvią vertimą ir gramatikos tikrinimą, garso atkūrimą, suasmenintus praktikos užsiėmimus ir mokymosi analizę!",
-    "emojiSelectedSnackbar": "Jūs nustatėte emociją {lemma}! Mes naudosime šią emociją, kad atstovautume žodžiui praktikos užsiėmimuose ateityje.",
     "unlockPracticeActivities": "Atrakinti praktikos užsiėmimus",
     "noAnalyticsActivitiesAvailable": "Oho, jūs baigėte visus prieinamus užsiėmimus! Siųskite daugiau žinučių, kad atrakintumėte daugiau praktikos užsiėmimų.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10693,6 +10679,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot garso pranešimo balsas",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logotipas",
+    "announcementsChatDetails": "Vieta, kur kursų administratoriai gali kurti pranešimus kursų dalyviams. Nors visi gali matyti šį kanalą, tik administratoriai gali rašyti jame.",
+    "introChatDetails": "Pasakykite labas! Pristatykite save savo kursų dalyviams, raskite draugų ir bendraukite už veiklų ribų.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Šis emocijų simbolis dabar atstovaus \"{word}\" praktikos užduotyse",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Rodyti kūrėjo parinktis",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

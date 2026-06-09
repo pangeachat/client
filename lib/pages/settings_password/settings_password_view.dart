@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/settings_password/settings_password.dart';
@@ -60,6 +61,9 @@ class SettingsPasswordView extends StatelessWidget {
                     labelText: L10n.of(context).repeatPassword,
                     errorText: controller.newPassword2Error,
                   ),
+                  // #Pangea
+                  inputFormatters: [LengthLimitingTextInputFormatter(128)],
+                  // Pangea#
                 ),
                 const SizedBox(height: 32),
                 SizedBox(

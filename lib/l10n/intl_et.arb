@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-04 09:28:58.580381",
+    "@@last_modified": "2026-06-08 14:15:22.235509",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -8673,11 +8673,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Boti hääl",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Teie taotlus on saadetud kursuse administraatorile! Teid lastakse sisse, kui nad heaks kiidavad.",
     "@knockDesc": {
         "type": "String",
@@ -9356,20 +9351,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Telli, et avada interaktiivne tõlge ja grammatika kontroll, helimängimine, isikupärastatud harjutused ja õppimise analüüs!",
-    "emojiSelectedSnackbar": "Oled seadnud emotikoni {lemma} jaoks! Kasutame seda emotikoni sõna esindamiseks harjutustes edaspidi.",
     "unlockPracticeActivities": "Avage harjutused",
     "noAnalyticsActivitiesAvailable": "Vau, oled lõpetanud kõik saadaval olevad tegevused! Saada rohkem sõnumeid, et avada rohkem harjutusi.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9804,6 +9790,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Boti helisõnumi hääl",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logo",
+    "announcementsChatDetails": "Koht, kus kursuse administraatorid saavad luua teadandeid kursuse osalejatele. Kuigi kõik saavad seda kanalit vaadata, saavad seal kirjutada ainult administraatorid.",
+    "introChatDetails": "Tere! Tutvustage end oma kursuse kaasosalejatele, leidke sõpru ja vestelge tegevustest väljaspool.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "See emoji esindab nüüd \"{word}\" praktika harjutustes",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Näita arendaja valikuid",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

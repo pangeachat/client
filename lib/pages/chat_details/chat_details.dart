@@ -134,6 +134,7 @@ class ChatDetailsController extends State<ChatDetails>
       title: room.isSpace
           ? L10n.of(context).changeTheNameOfTheClass
           : L10n.of(context).changeTheNameOfTheChat,
+      maxLength: 64,
       // Pangea#
       okLabel: L10n.of(context).ok,
       cancelLabel: L10n.of(context).cancel,

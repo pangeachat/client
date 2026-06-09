@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-04 09:29:28.294007",
+    "@@last_modified": "2026-06-08 14:15:52.861873",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -9292,11 +9292,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "パンゲアボットの声",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "あなたのリクエストはコース管理者に送信されました！ 彼らが承認すれば、入ることができます。",
     "@knockDesc": {
         "type": "String",
@@ -10227,20 +10222,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "インタラクティブな翻訳と文法チェック、音声再生、パーソナライズされた練習問題、学習分析をアンロックするために購読してください！",
-    "emojiSelectedSnackbar": "{lemma}の絵文字を設定しました！今後の練習問題ではこの絵文字を使用します。",
     "unlockPracticeActivities": "練習問題をアンロックする",
     "noAnalyticsActivitiesAvailable": "わあ、すべての利用可能なアクティビティを完了しました！さらにメッセージを送信して、もっと練習問題をアンロックしてください。",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10675,6 +10661,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "パンゲアボットの音声メッセージの声",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "パングリアチャットロゴ",
+    "announcementsChatDetails": "コース管理者がコース参加者のためにアナウンスを作成する場所です。すべての人がこのチャンネルを閲覧できますが、入力できるのは管理者のみです。",
+    "introChatDetails": "こんにちは！コース参加者の皆さんに自己紹介をし、友達を見つけ、活動の外でチャットしましょう。",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "この絵文字は、今後の練習問題で「{word}」を表します",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "開発者オプションを表示",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

@@ -2099,7 +2099,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-06-04 09:29:31.210598",
+    "@@last_modified": "2026-06-08 14:15:56.887648",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9492,11 +9492,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "პანჯეა ბოტის ხმა",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "თქვენი მოთხოვნა გაგზავნილია კურსის ადმინისტრატორთან! თქვენ შეგიშვებენ, თუ ისინი დაამტკიცებენ.",
     "@knockDesc": {
         "type": "String",
@@ -10427,20 +10422,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "გამოიწერეთ, რომ გახსნათ ინტერაქტიული თარგმანისა და გრამატიკის შემოწმების, აუდიო დაკვრის, პერსონალიზებული პრაქტიკის ვარჯიშების და სასწავლო ანალიტიკის ფუნქციები!",
-    "emojiSelectedSnackbar": "თქვენ დააყენეთ ემოჯი {lemma}-ისთვის! ჩვენ ამ ემოჯის გამოყენებას ვაპირებთ სიტყვას პრაქტიკის ვარჯიშებში.",
     "unlockPracticeActivities": "გახსენით პრაქტიკის ვარჯიშები",
     "noAnalyticsActivitiesAvailable": "ვაუ, თქვენ დაასრულეთ ყველა ხელმისაწვდომი აქტივობა! გამოგზავნეთ მეტი შეტყობინება, რომ გახსნათ მეტი პრაქტიკის ვარჯიშები.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10875,6 +10861,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot აუდიო შეტყობინების ხმა",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "პანჯეა ჩატის ლოგო",
+    "announcementsChatDetails": "ადგილმდებარეობა კურსის ადმინისტრატორებისთვის, რათა შექმნან განცხადებები კურსის მონაწილეებისთვის. მიუხედავად იმისა, რომ ყველა შეუძლია ამ არხის ნახვა, მხოლოდ ადმინისტრატორები შეუძლიათ მასში წერილი.",
+    "introChatDetails": "თქვენი გამარჯობა! წარუდგინეთ თავი თქვენს თანაკურსელებს, მოიძიეთ მეგობრები და ისაუბრეთ აქტივობების გარეთ.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "ამ ემოჯი ახლა \"{word}\"-ს წარმოადგენს პრაქტიკის ვარჯიშებში",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "მაჩვენე განვითარების პარამეტრები",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

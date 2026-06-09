@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-04 09:28:45.784957",
+    "@@last_modified": "2026-06-08 14:15:06.844996",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -8641,11 +8641,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "판게아 봇 음성",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "귀하의 요청이 과정 관리자에게 전송되었습니다! 그들이 승인하면 들어갈 수 있습니다.",
     "@knockDesc": {
         "type": "String",
@@ -9576,20 +9571,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "대화형 번역 및 문법 검사, 오디오 재생, 개인화된 연습 문제 및 학습 분석을 잠금 해제하려면 구독하세요!",
-    "emojiSelectedSnackbar": "{lemma}에 대한 이모지를 설정했습니다! 앞으로 연습 문제에서 이 이모지를 사용하여 단어를 나타낼 것입니다.",
     "unlockPracticeActivities": "연습 문제 잠금 해제",
     "noAnalyticsActivitiesAvailable": "와우, 사용 가능한 모든 활동을 완료했습니다! 더 많은 메시지를 보내서 더 많은 연습 문제를 잠금 해제하세요.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10024,6 +10010,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "판게아 봇 오디오 메시지 음성",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "판게아 채팅 로고",
+    "announcementsChatDetails": "코스 관리자가 코스 참가자를 위한 공지를 생성할 수 있는 장소입니다. 모든 사용자가 이 채널을 볼 수 있지만, 관리자만 입력할 수 있습니다.",
+    "introChatDetails": "안녕하세요! 동료 코스 참가자에게 자신을 소개하고, 친구를 찾고, 활동 외부에서 채팅하세요.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "이 이모지는 이제 연습 문제에서 \"{word}\"를 나타냅니다",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "개발자 옵션 보기",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

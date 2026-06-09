@@ -2258,7 +2258,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-06-04 09:29:14.050707",
+    "@@last_modified": "2026-06-08 14:15:35.926979",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -9438,11 +9438,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Boses ng Pangea Bot",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Ang iyong kahilingan ay naipadala sa admin ng kurso! Papayagan ka nilang pumasok kung sila ay mag-aapruba.",
     "@knockDesc": {
         "type": "String",
@@ -10378,20 +10373,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Mag-subscribe upang i-unlock ang interactive na pagsasalin at pagsusuri ng gramatika, audio playback, personalized na mga ehersisyo sa pagsasanay, at analytics sa pag-aaral!",
-    "emojiSelectedSnackbar": "Naitakda mo na ang emoji para sa {lemma}! Gagamitin namin ang emoji na ito upang kumatawan sa salita sa mga ehersisyo sa pagsasanay mula ngayon.",
     "unlockPracticeActivities": "I-unlock ang mga ehersisyo sa pagsasanay",
     "noAnalyticsActivitiesAvailable": "Wow, natapos mo na ang lahat ng available na aktibidad! Magpadala ng higit pang mga mensahe upang i-unlock ang higit pang mga ehersisyo sa pagsasanay.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10826,6 +10812,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Boses ng mensahe ng audio ng Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logo",
+    "announcementsChatDetails": "Isang lugar para sa mga admin ng kurso upang lumikha ng mga anunsyo para sa mga kalahok ng kurso. Habang lahat ay maaaring makita ang channel na ito, tanging ang mga admin lamang ang maaaring mag-type dito.",
+    "introChatDetails": "Mag-salita ng hello! Ipakilala ang iyong sarili sa iyong mga kapwa kalahok ng kurso, maghanap ng mga kaibigan, at makipag-chat sa labas ng mga aktibidad.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Ang emoji na ito ay ngayon ay kumakatawan sa \"{word}\" sa mga pagsasanay",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Ipakita ang mga pagpipilian ng developer",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }
