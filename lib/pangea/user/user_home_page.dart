@@ -4,7 +4,9 @@ import 'package:collection/collection.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:matrix/matrix.dart';
+import 'package:mime/mime.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/settings/settings.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -119,6 +121,19 @@ class _UserHomePageState extends State<UserHomePage> {
         name: pickedFile.name,
       );
     }
+
+    final resp = await showFutureLoadingDialog(
+      context: context,
+      future: () async {
+        final bytes = file.bytes;
+        final mimeType = lookupMimeType(file.name, headerBytes: bytes);
+        if (!AppConfig.allowedMimeTypes.contains(mimeType)) {
+          throw L10n.of(context).invalidInput;
+        }
+      },
+    );
+    if (resp.isError) return;
+
     final success = await showFutureLoadingDialog(
       context: context,
       future: () => matrix.client.setAvatar(file),

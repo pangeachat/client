@@ -122,9 +122,9 @@ class ActivityParticipantIndicator extends StatelessWidget {
                                 (Theme.of(context).brightness ==
                                     Brightness.light
                                 ? (userId?.localpart?.darkColor ??
-                                      name.darkColor)
+                                      theme.colorScheme.primary)
                                 : (userId?.localpart?.lightColorText ??
-                                      name.lightColorText)),
+                                      theme.colorScheme.primary)),
                           ),
                           textAlign: TextAlign.center,
                           maxLines: 1,

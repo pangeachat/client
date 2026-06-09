@@ -9,7 +9,6 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/goal_status_widget.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_room_extension.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_vocab_widget.dart';
@@ -20,13 +19,13 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class ActivityStatsMenu extends StatelessWidget {
   final ValueNotifier<bool> visibilityNotifier;
-  final VoidCallback toggleVisibility;
+  final void Function(bool) setVisibility;
   final ValueNotifier<Set<String>> usedVocab;
   final Room room;
 
   const ActivityStatsMenu({
     required this.visibilityNotifier,
-    required this.toggleVisibility,
+    required this.setVisibility,
     required this.usedVocab,
     required this.room,
     super.key,
@@ -45,20 +44,30 @@ class ActivityStatsMenu extends StatelessWidget {
 
   bool get _activityComplete => room.isActivityFinished;
 
+  bool get _showWaitNotDone =>
+      !_activityComplete && room.hasPickedRole && room.hasCompletedRole;
+
   bool get _showEndForMe =>
       !_activityComplete && room.hasPickedRole && !room.hasCompletedRole;
 
   bool get _showEndForAll =>
       !_activityComplete && room.isRoomAdmin && !_isTwoPersonBotActivity;
 
-  Future<void> _finishActivityForMe(BuildContext context, bool close) async {
+  bool get _showDoneButtonHint => _showEndForMe && room.hasCompletedOwnGoals;
+
+  void _toggleVisibility() {
+    final value = visibilityNotifier.value;
+    setVisibility(!value);
+  }
+
+  Future<void> _finishActivityForMe(BuildContext context) async {
     final resp = await showFutureLoadingDialog(
       context: context,
       future: room.finishActivity,
     );
 
-    if (close && !resp.isError) {
-      toggleVisibility();
+    if (!resp.isError) {
+      setVisibility(false);
     }
   }
 
@@ -69,7 +78,7 @@ class ActivityStatsMenu extends StatelessWidget {
     );
 
     if (!resp.isError) {
-      toggleVisibility();
+      setVisibility(false);
     }
   }
 
@@ -83,11 +92,15 @@ class ActivityStatsMenu extends StatelessWidget {
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
     final goals = room.ownRole?.allGoals ?? [];
-    final ActivityPlanModel? activity = room.activityPlan;
+    final activity = room.activityPlan;
 
     // TODO ORCHESTRATOR: show active goal instead of first goal
     final currentGoal = goals.firstOrNull;
     final remainingGoals = goals.skip(1).toList();
+
+    final goldColor = theme.brightness == Brightness.light
+        ? AppConfig.gold
+        : AppConfig.goldLight;
 
     return ValueListenableBuilder(
       valueListenable: visibilityNotifier,
@@ -104,7 +117,7 @@ class ActivityStatsMenu extends StatelessWidget {
                 children: [
                   if (currentGoal != null)
                     InkWell(
-                      onTap: _activityComplete ? null : toggleVisibility,
+                      onTap: _activityComplete ? null : _toggleVisibility,
                       child: Container(
                         padding: EdgeInsets.symmetric(horizontal: 12.0),
                         height: 55.0,
@@ -119,27 +132,23 @@ class ActivityStatsMenu extends StatelessWidget {
                             Expanded(
                               child: GoalStatusWidget(
                                 goal: currentGoal,
-                                complete: room.isGoalCompleted(currentGoal.id),
+                                complete: room.isOwnGoalCompleted(
+                                  currentGoal.id,
+                                ),
                                 starTarget: ActivitySessionConstants
                                     .goalMenuStarTargetId,
                               ),
                             ),
-                            if (!_activityComplete &&
-                                room.hasCompletedAllGoals &&
-                                !showDropdown &&
-                                !room.hasCompletedRole)
+                            if (_showDoneButtonHint && !showDropdown)
                               InkWell(
-                                onTap: () =>
-                                    _finishActivityForMe(context, false),
+                                onTap: () => _finishActivityForMe(context),
                                 child: Container(
                                   padding: EdgeInsets.symmetric(
                                     vertical: 6.0,
                                     horizontal: 12.0,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: theme.brightness == Brightness.light
-                                        ? AppConfig.gold
-                                        : AppConfig.goldLight,
+                                    color: goldColor,
                                     borderRadius: BorderRadius.circular(
                                       AppConfig.borderRadius,
                                     ),
@@ -167,7 +176,7 @@ class ActivityStatsMenu extends StatelessWidget {
                       child: GestureDetector(
                         onPanUpdate: (details) {
                           if (details.delta.dy < -2) {
-                            toggleVisibility();
+                            setVisibility(false);
                           }
                         },
                         child: child,
@@ -179,7 +188,7 @@ class ActivityStatsMenu extends StatelessWidget {
               if (showDropdown)
                 Expanded(
                   child: GestureDetector(
-                    onTap: toggleVisibility,
+                    onTap: _toggleVisibility,
                     child: Container(color: Colors.black.withAlpha(100)),
                   ),
                 ),
@@ -208,27 +217,25 @@ class ActivityStatsMenu extends StatelessWidget {
                             .map(
                               (g) => GoalStatusWidget(
                                 goal: g,
-                                complete: room.isGoalCompleted(g.id),
+                                complete: room.isOwnGoalCompleted(g.id),
                               ),
                             )
                             .toList(),
                       ),
-                    if (activity != null) const Divider(height: 1),
-                    ActivityVocabWidget(
-                      key: ValueKey(
-                        "activity-stats-menu-${activity!.activityId}",
+                    if (activity != null)
+                      ActivityVocabWidget(
+                        key: ValueKey(
+                          "activity-stats-menu-${activity.activityId}",
+                        ),
+                        vocab: activity.vocab,
+                        langCode: activity.req.targetLanguage,
+                        targetId: "activity-stats-menu-vocab",
+                        usedVocab: usedVocab,
+                        activityLangCode: activity.req.targetLanguage,
                       ),
-                      vocab: activity.vocab,
-                      langCode: activity.req.targetLanguage,
-                      targetId: "activity-stats-menu-vocab",
-                      usedVocab: usedVocab,
-                      activityLangCode: activity.req.targetLanguage,
-                    ),
-                    if (!_activityComplete &&
-                        room.hasCompletedRole &&
-                        room.hasPickedRole)
+                    if (_showWaitNotDone)
                       ElevatedButton(
-                        onPressed: () => room.continueActivity(),
+                        onPressed: room.continueActivity,
                         style: ElevatedButton.styleFrom(
                           side: BorderSide(
                             color: theme.brightness == Brightness.light
@@ -253,16 +260,14 @@ class ActivityStatsMenu extends StatelessWidget {
                       ),
                     if (_showEndForMe)
                       ElevatedButton(
-                        onPressed: () => _finishActivityForMe(context, true),
+                        onPressed: () => _finishActivityForMe(context),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: room.hasCompletedAllGoals
-                              ? theme.brightness == Brightness.light
-                                    ? AppConfig.gold
-                                    : AppConfig.goldLight
+                          backgroundColor: room.hasCompletedOwnGoals
+                              ? goldColor
                               : theme.colorScheme.primaryContainer,
                           foregroundColor: theme.brightness == Brightness.light
                               ? null
-                              : room.hasCompletedAllGoals
+                              : room.hasCompletedOwnGoals
                               ? theme.colorScheme.surface
                               : theme.colorScheme.onPrimaryContainer,
                         ),
@@ -283,12 +288,16 @@ class ActivityStatsMenu extends StatelessWidget {
                         onPressed: () => _finishActivityForAll(context),
                         style: ElevatedButton.styleFrom(
                           side: BorderSide(
-                            color: theme.brightness == Brightness.light
+                            color: room.haveAllRolesCompletedAllGoals
+                                ? goldColor
+                                : theme.brightness == Brightness.light
                                 ? theme.colorScheme.primary.withAlpha(120)
                                 : theme.colorScheme.primaryContainer,
                             width: 2,
                           ),
-                          foregroundColor: theme.colorScheme.primary,
+                          foregroundColor: room.haveAllRolesCompletedAllGoals
+                              ? goldColor
+                              : theme.colorScheme.primary,
                           backgroundColor: theme.colorScheme.surface,
                         ),
                         child: Row(

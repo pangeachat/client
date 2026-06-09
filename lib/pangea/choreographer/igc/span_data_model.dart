@@ -129,7 +129,7 @@ class SpanData {
   Color get color {
     if (choices != null &&
         choices!.isNotEmpty &&
-        choices!.every((c) => c.type == SpanChoiceTypeEnum.alt)) {
+        choices!.every((c) => c.type.isSuggestion)) {
       return AppConfig.primaryColor; // Purple for suggestions
     }
     return AppConfig.error; // Red for errors

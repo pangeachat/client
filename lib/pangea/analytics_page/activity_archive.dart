@@ -134,7 +134,10 @@ class AnalyticsActivityItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final objective = room.activityPlan?.learningObjective ?? '';
+    final activity = room.activityPlan;
+    final title = activity?.title ?? '';
+    final objective = activity?.learningObjective ?? '';
+
     final cefrLevel = room.activitySummaryByL1?.summary?.participants
         .firstWhereOrNull((p) => p.participantId == room.client.userID)
         ?.cefrLevel;
@@ -161,11 +164,20 @@ class AnalyticsActivityItem extends StatelessWidget {
               ),
             ),
           ),
-          title: Text(
-            objective,
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(fontSize: 12.0),
+          title: Text(title, maxLines: 1, overflow: TextOverflow.ellipsis),
+          subtitle: Row(
+            crossAxisAlignment: .start,
+            mainAxisAlignment: .center,
+            children: [
+              Expanded(
+                child: Text(
+                  objective,
+                  style: TextStyle(color: theme.colorScheme.onSurfaceVariant),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
           ),
           trailing: cefrLevel != null
               ? Padding(
