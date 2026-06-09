@@ -19,6 +19,7 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -43,12 +44,14 @@ class ActivityChatController {
   late final StreamSubscription _analyticsSubscription;
   late final StreamSubscription _rolesSubscription;
   late final StreamSubscription _summarySubscription;
+  late final StreamSubscription _messageSubscription;
 
   void init() {
     _updateUsedVocab();
     _setRolesSubscription();
     _setSummarySubscription();
     _setAnalyticsSubscription();
+    _setMessageSubscription();
 
     if (room.isActivityFinished && _summary == null) {
       _loadActivitySummary();
@@ -59,6 +62,7 @@ class ActivityChatController {
     _disposed = true;
     carouselController.dispose();
     _analyticsSubscription.cancel();
+    _messageSubscription.cancel();
     usedVocab.dispose();
     highlightedRole.dispose();
     showInstructions.dispose();
@@ -109,6 +113,12 @@ class ActivityChatController {
         .listen((_) => _updateUsedVocab());
   }
 
+  void _setMessageSubscription() {
+    _messageSubscription = room.client.onSync.stream
+        .where((sync) => sync.rooms?.join?.containsKey(room.id) == true)
+        .listen((_) => _updateUsedVocab());
+  }
+
   void highlightRole(ActivityRoleModel role) {
     if (!_disposed) {
       highlightedRole.value = role;
@@ -134,26 +144,33 @@ class ActivityChatController {
     }
   }
 
-  Future<void> _updateUsedVocab() async {
-    try {
-      final analytics = await getActivityAnalytics();
-      if (!_disposed) {
-        usedVocab.value =
-            analytics.constructs[userID]
-                ?.constructsOfType(ConstructTypeEnum.vocab)
-                .map((id) => id.lemma.toLowerCase())
-                .toSet() ??
-            {};
+  void _updateUsedVocab() {
+    final vocab = room.activityPlan?.vocab;
+    if (vocab == null || _disposed) return;
+
+    final vocabLemmas = vocab.map((v) => v.lemma.toLowerCase()).toSet();
+    final used = <String>{};
+
+    final timeline = room.timeline;
+    if (timeline != null) {
+      for (final event in timeline.events) {
+        if (event.type != EventTypes.Message) continue;
+        final uses = PangeaMessageEvent(
+          event: event,
+          timeline: timeline,
+          ownMessage: event.senderId == userID,
+        ).originalSent?.vocabAndMorphUses;
+        if (uses == null) continue;
+        for (final use in uses) {
+          if (use.identifier.type == ConstructTypeEnum.vocab) {
+            final lemma = use.identifier.lemma.toLowerCase();
+            if (vocabLemmas.contains(lemma)) used.add(lemma);
+          }
+        }
       }
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "message": "Failed to update used vocab in ActivityChatController",
-        },
-      );
     }
+
+    usedVocab.value = used;
   }
 
   Future<ActivitySummaryAnalyticsModel> getActivityAnalytics() async {
