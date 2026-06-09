@@ -115,7 +115,6 @@ class ActivityChatController {
 
   void _setMessageSubscription() {
     _messageSubscription = room.client.onSync.stream
-        .where((sync) => sync.rooms?.join?.containsKey(room.id) == true)
         .listen((_) => _updateUsedVocab());
   }
 
