@@ -98,6 +98,9 @@ class SettingsSecurityController extends State<SettingsSecurity> {
       isDestructive: true,
       okLabel: L10n.of(context).delete,
       cancelLabel: L10n.of(context).cancel,
+      // #Pangea
+      maxLength: 128,
+      // Pangea#
     );
     if (mxid == null || mxid.isEmpty || mxid != supposedMxid) {
       return;

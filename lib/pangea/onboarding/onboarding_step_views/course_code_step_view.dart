@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
@@ -83,6 +84,7 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
                   ? Icon(Icons.error, color: theme.colorScheme.error)
                   : null,
             ),
+            inputFormatters: [LengthLimitingTextInputFormatter(10)],
           ),
         ],
       ),

@@ -1,6 +1,7 @@
 // Flutter imports:
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'signup.dart';
@@ -51,6 +52,7 @@ class SignupWithEmailView extends StatelessWidget {
                     controller: controller.usernameController,
                     onTapOutside: (_) =>
                         FocusManager.instance.primaryFocus?.unfocus(),
+                    inputFormatters: [LengthLimitingTextInputFormatter(128)],
                   ),
                   TextFormField(
                     textInputAction: TextInputAction.next,
@@ -62,6 +64,7 @@ class SignupWithEmailView extends StatelessWidget {
                     ),
                     onTapOutside: (_) =>
                         FocusManager.instance.primaryFocus?.unfocus(),
+                    inputFormatters: [LengthLimitingTextInputFormatter(254)],
                   ),
                   TextFormField(
                     textInputAction: TextInputAction.done,
@@ -86,6 +89,7 @@ class SignupWithEmailView extends StatelessWidget {
                     ),
                     onTapOutside: (_) =>
                         FocusManager.instance.primaryFocus?.unfocus(),
+                    inputFormatters: [LengthLimitingTextInputFormatter(128)],
                   ),
                   ElevatedButton(
                     onPressed: controller.enableSignUp
