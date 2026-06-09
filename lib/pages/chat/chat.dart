@@ -2436,18 +2436,6 @@ class ChatController extends State<ChatPageWithRoom>
     overlayKey: "message_toolbar_overlay",
   );
 
-  bool get enableTranslateShimmer {
-    if (tutorialOverlayController.state.isTutorialActive(
-      TutorialEnum.readingAssistance,
-    )) {
-      return tutorialOverlayController.state.isTutorialStepActive(
-        TutorialEnum.readingAssistance,
-        1,
-      );
-    }
-    return true;
-  }
-
   void showToolbar(
     Event event, {
     PangeaMessageEvent? pangeaMessageEvent,
