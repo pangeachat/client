@@ -22,7 +22,7 @@ ReadingAssistantTutorialModel _readingModel() =>
     ReadingAssistantTutorialModel(data: [_stepData()]);
 
 SelectModeButtonsTutorialModel _selectModel() =>
-    SelectModeButtonsTutorialModel(data: List.generate(3, (_) => _stepData()));
+    SelectModeButtonsTutorialModel(data: List.generate(4, (_) => _stepData()));
 
 void main() {
   group('TutorialOverlayStateMachine', () {
@@ -246,10 +246,9 @@ void main() {
         ); // → selectModeButtons (index 1)
         sm.dispatch(const ForwardTutorialEvent()); // step 1
         sm.dispatch(const ForwardTutorialEvent()); // step 2
-        sm.dispatch(
-          const ForwardTutorialEvent(),
-        ); // → writingAssistance (index 2)
-        expect(sm.completedStepsOffset, 4); // 1 + 3
+        sm.dispatch(const ForwardTutorialEvent()); // step 3
+        sm.dispatch(const ForwardTutorialEvent()); // → writingAssistance
+        expect(sm.completedStepsOffset, 5); // 1 + 4
       });
 
       test('returns 0 when tutorialIndex is negative', () {
@@ -272,8 +271,8 @@ void main() {
       });
 
       test('returns sum of all step counts for full sequence', () {
-        // 1 + 3 + 1 = 5
-        expect(TutorialOverlayStateMachine(_full).totalStepsInSequence, 5);
+        // 1 + 4 + 1 = 6
+        expect(TutorialOverlayStateMachine(_full).totalStepsInSequence, 6);
       });
     });
 
