@@ -70,10 +70,7 @@ class OpenRolesIndicator extends StatelessWidget {
           return CircleAvatar(
             radius: size != null ? size! / 2 : 8,
             backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-            child: Icon(
-              Icons.question_mark,
-              size: size != null ? (size! / 2) : 8,
-            ),
+            child: Icon(Icons.person, size: size != null ? (size! / 2) : 8),
           );
         }),
       ],

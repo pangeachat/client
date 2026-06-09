@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
+import 'package:fluffychat/pangea/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_choice.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
@@ -21,6 +22,7 @@ class PracticeMatchItem extends StatefulWidget {
   final bool? isCorrect;
   final bool isSelected;
   final bool shimmer;
+  final AudioPlaybackSpeedController playbackSpeedController;
 
   const PracticeMatchItem({
     super.key,
@@ -32,6 +34,7 @@ class PracticeMatchItem extends StatefulWidget {
     this.audioContent,
     required this.controller,
     this.shimmer = false,
+    required this.playbackSpeedController,
   });
 
   @override
@@ -76,6 +79,7 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
             langCode: l2,
             pos: widget.token?.pos,
             morph: widget.token?.morph.map((k, v) => MapEntry(k.name, v)),
+            speed: widget.playbackSpeedController.playbackSpeed.value,
           );
         }
       } catch (e, s) {

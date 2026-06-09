@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-04 09:29:02.597776",
+    "@@last_modified": "2026-06-08 14:15:27.016340",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -8662,11 +8662,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Голос Pangea Bot",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Ваш запит надіслано адміністратору курсу! Ви будете допущені, якщо вони схвалять.",
     "@knockDesc": {
         "type": "String",
@@ -9359,20 +9354,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Підпишіться, щоб розблокувати інтерактивний переклад і перевірку граматики, відтворення аудіо, персоналізовані вправи та аналітику навчання!",
-    "emojiSelectedSnackbar": "Ви встановили емодзі для {lemma}! Ми будемо використовувати це емодзі для представлення слова у вправи надалі.",
     "unlockPracticeActivities": "Розблокувати вправи",
     "noAnalyticsActivitiesAvailable": "Вау, ви завершили всі доступні активності! Надішліть більше повідомлень, щоб розблокувати більше вправ.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9807,6 +9793,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Голосове повідомлення бота Pangea",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Логотип Pangea Chat",
+    "announcementsChatDetails": "Місце для адміністраторів курсу, щоб створювати оголошення для учасників курсу. Хоча всі можуть переглядати цей канал, лише адміністратори можуть писати в ньому.",
+    "introChatDetails": "Скажіть привіт! Познайомтеся з вашими товаришами по курсу, знайдіть друзів і спілкуйтеся поза межами активностей.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Цей емодзі тепер буде представляти \"{word}\" у практичних вправах",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Показати параметри розробника",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

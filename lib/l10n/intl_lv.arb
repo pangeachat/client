@@ -3920,7 +3920,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-06-04 09:29:14.834380",
+    "@@last_modified": "2026-06-08 14:15:36.890629",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -8662,11 +8662,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot balss",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Jūsu pieprasījums ir nosūtīts kursa administratoram! Jūs tiksiet iekšā, ja viņi apstiprinās.",
     "@knockDesc": {
         "type": "String",
@@ -9359,20 +9354,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Piesakieties, lai atbloķētu interaktīvo tulkošanu un gramatikas pārbaudi, audio atskaņošanu, personalizētus praktiskos uzdevumus un mācību analītiku!",
-    "emojiSelectedSnackbar": "Jūs esat iestatījis emocijzīmi {lemma}! Mēs izmantosim šo emocijzīmi, lai attēlotu vārdu praktiskajos uzdevumos turpmāk.",
     "unlockPracticeActivities": "Atbloķēt praktiskos uzdevumus",
     "noAnalyticsActivitiesAvailable": "Wow, jūs esat pabeidzis visus pieejamos uzdevumus! Sūtiet vairāk ziņojumu, lai atbloķētu vairāk praktisko uzdevumu.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9807,6 +9793,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot audio ziņojuma balss",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logo",
+    "announcementsChatDetails": "Vieta kursu administratoriem, lai izveidotu paziņojumus kursa dalībniekiem. Lai gan visi var skatīt šo kanālu, tikai administratori var tajā rakstīt.",
+    "introChatDetails": "Saki sveiki! Iepazīstini sevi ar citiem kursa dalībniekiem, atrodi draugus un sarunājies ārpus aktivitātēm.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Šis emocijzīme tagad pārstāvēs \"{word}\" praktiskajos uzdevumos",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Rādīt izstrādātāja opcijas",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-06-04 09:29:33.201372",
+    "@@last_modified": "2026-06-08 14:15:59.683549",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -8836,11 +8836,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Voix du bot Pangea",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Votre demande a été envoyée à l'administrateur du cours ! Vous serez admis s'ils approuvent.",
     "@knockDesc": {
         "type": "String",
@@ -9756,20 +9751,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Abonnez-vous pour débloquer la traduction interactive et la vérification grammaticale, la lecture audio, des exercices de pratique personnalisés et des analyses d'apprentissage !",
-    "emojiSelectedSnackbar": "Vous avez défini l'emoji pour {lemma} ! Nous utiliserons cet emoji pour représenter le mot dans les exercices de pratique à l'avenir.",
     "unlockPracticeActivities": "Débloquer des exercices de pratique",
     "noAnalyticsActivitiesAvailable": "Wow, vous avez terminé toutes les activités disponibles ! Envoyez plus de messages pour débloquer plus d'exercices de pratique.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10204,6 +10190,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Voix du message audio du bot Pangea",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logo de Pangea Chat",
+    "announcementsChatDetails": "Un endroit pour que les administrateurs de cours créent des annonces pour les participants au cours. Bien que tous puissent voir ce canal, seuls les administrateurs peuvent y écrire.",
+    "introChatDetails": "Dites bonjour ! Présentez-vous à vos camarades participants au cours, trouvez des amis et discutez en dehors des activités.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Cet emoji représentera désormais \"{word}\" dans les exercices pratiques",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Afficher les options de développement",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

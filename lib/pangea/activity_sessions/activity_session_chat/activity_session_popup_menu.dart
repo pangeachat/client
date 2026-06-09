@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_details/chat_download_provider.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 enum ActivityPopupMenuActions { invite, leave, download }
 
@@ -49,16 +50,17 @@ class ActivitySessionPopupMenuState extends State<ActivitySessionPopupMenu>
             ],
           ),
         ),
-        PopupMenuItem<ActivityPopupMenuActions>(
-          value: ActivityPopupMenuActions.download,
-          child: Row(
-            children: [
-              const Icon(Icons.download_outlined),
-              const SizedBox(width: 12),
-              Text(L10n.of(context).download),
-            ],
+        if (MatrixState.pangeaController.userController.showDeveloperOptions)
+          PopupMenuItem<ActivityPopupMenuActions>(
+            value: ActivityPopupMenuActions.download,
+            child: Row(
+              children: [
+                const Icon(Icons.download_outlined),
+                const SizedBox(width: 12),
+                Text(L10n.of(context).download),
+              ],
+            ),
           ),
-        ),
         PopupMenuItem<ActivityPopupMenuActions>(
           value: ActivityPopupMenuActions.leave,
           child: Row(

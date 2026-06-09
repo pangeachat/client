@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-06-04 09:28:53.992523",
+    "@@last_modified": "2026-06-08 14:15:16.480413",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -8908,11 +8908,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot glas",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Vaš zahtjev je poslan administratoru tečaja! Bit ćete primljeni ako odobre.",
     "@knockDesc": {
         "type": "String",
@@ -9843,20 +9838,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Pretplatite se za otključavanje interaktivnog prevođenja i provjere gramatike, reprodukcije zvuka, personaliziranih vježbi i analitike učenja!",
-    "emojiSelectedSnackbar": "Postavili ste emoji za {lemma}! Ovaj emoji ćemo koristiti za predstavljanje riječi u vježbama ubuduće.",
     "unlockPracticeActivities": "Otključajte vježbe",
     "noAnalyticsActivitiesAvailable": "Wow, završili ste sve dostupne aktivnosti! Pošaljite više poruka kako biste otključali više vježbi.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10291,6 +10277,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot audio poruka glas",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logo",
+    "announcementsChatDetails": "Mjesto za administratore tečaja da kreiraju obavijesti za sudionike tečaja. Dok svi mogu vidjeti ovaj kanal, samo administratori mogu pisati u njemu.",
+    "introChatDetails": "Pozdravite se! Predstavite se svojim kolegama sudionicima tečaja, pronađite prijatelje i razgovarajte izvan aktivnosti.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Ova emoji sada će predstavljati \"{word}\" u praktičnim vježbama",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Prikaži opcije za programere",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

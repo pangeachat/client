@@ -1963,7 +1963,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-06-04 09:29:00.179775",
+    "@@last_modified": "2026-06-08 14:15:24.049455",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9540,11 +9540,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Glas Pangea Bota",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Vaša zahteva je bila poslana skrbniku tečaja! Vstopili boste, če jo odobrijo.",
     "@knockDesc": {
         "type": "String",
@@ -10475,20 +10470,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Naročite se, da odklenete interaktivno prevajanje in preverjanje slovnice, predvajanje zvoka, personalizirane vaje in analitiko učenja!",
-    "emojiSelectedSnackbar": "Nastavili ste emoji za {lemma}! Ta emoji bomo uporabili za predstavitev besede v vajah naprej.",
     "unlockPracticeActivities": "Odkleni vaje",
     "noAnalyticsActivitiesAvailable": "Wow, zaključili ste vse razpoložljive aktivnosti! Pošljite več sporočil, da odklenete več vaj.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10923,6 +10909,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Glas Pangea Bot avdio sporočila",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logo",
+    "announcementsChatDetails": "Kraj za skrbnike tečajev, da ustvarijo obvestila za udeležence tečaja. Medtem ko lahko vsi vidijo ta kanal, lahko vanj pišejo le skrbniki.",
+    "introChatDetails": "Pozdravite se! Predstavite se svojim soudeležencem tečaja, najdite prijatelje in klepetajte zunaj aktivnosti.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Ta emoji bo zdaj predstavljal \"{word}\" v praktičnih vajah",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Prikaži možnosti za razvijalce",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

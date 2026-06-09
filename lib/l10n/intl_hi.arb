@@ -3378,7 +3378,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-06-04 09:29:29.003390",
+    "@@last_modified": "2026-06-08 14:15:53.948694",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9143,11 +9143,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "पैंगिया बॉट की आवाज़",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "आपका अनुरोध पाठ्यक्रम प्रशासन को भेज दिया गया है! यदि वे स्वीकृत करते हैं, तो आपको अंदर जाने दिया जाएगा।",
     "@knockDesc": {
         "type": "String",
@@ -10078,20 +10073,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "इंटरएक्टिव अनुवाद और व्याकरण जांच, ऑडियो प्लेबैक, व्यक्तिगत अभ्यास व्यायाम, और सीखने के विश्लेषण को अनलॉक करने के लिए सदस्यता लें!",
-    "emojiSelectedSnackbar": "आपने {lemma} के लिए इमोजी सेट किया है! हम आगे के अभ्यास व्यायाम में इस इमोजी का उपयोग करेंगे।",
     "unlockPracticeActivities": "अभ्यास व्यायाम अनलॉक करें",
     "noAnalyticsActivitiesAvailable": "वाह, आपने सभी उपलब्ध गतिविधियाँ पूरी कर ली हैं! अधिक अभ्यास व्यायाम अनलॉक करने के लिए और संदेश भेजें।",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10526,6 +10512,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea बॉट ऑडियो संदेश आवाज़",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "पैंगिया चैट लोगो",
+    "announcementsChatDetails": "कोर्स प्रशासकों के लिए कोर्स प्रतिभागियों के लिए घोषणाएँ बनाने के लिए एक स्थान। जबकि सभी इस चैनल को देख सकते हैं, केवल प्रशासक इसमें टाइप कर सकते हैं।",
+    "introChatDetails": "नमस्ते कहें! अपने सहपाठियों से परिचय करें, दोस्तों को खोजें, और गतिविधियों के बाहर चैट करें।",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "यह इमोजी अब \"{word}\" को प्रैक्टिस एक्सरसाइज में दर्शाएगा",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "डेवलपर विकल्प दिखाएँ",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-04 09:29:16.609462",
+    "@@last_modified": "2026-06-08 14:15:38.477677",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -8755,11 +8755,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot sesi",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Talebiniz kurs yöneticisine gönderildi! Onaylarlarsa içeri alınacaksınız.",
     "@knockDesc": {
         "type": "String",
@@ -9690,20 +9685,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Etkileşimli çeviri ve dilbilgisi kontrolü, sesli oynatma, kişiselleştirilmiş pratik alıştırmalar ve öğrenme analitiği için abone olun!",
-    "emojiSelectedSnackbar": "{lemma} için emojiyi ayarladınız! Bu emojiyi, pratik alıştırmalarda kelimeyi temsil etmek için kullanacağız.",
     "unlockPracticeActivities": "Pratik alıştırmaları aç",
     "noAnalyticsActivitiesAvailable": "Vay canına, mevcut tüm aktiviteleri tamamladınız! Daha fazla pratik alıştırma açmak için daha fazla mesaj gönderin.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10138,6 +10124,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot sesli mesaj sesi",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logosu",
+    "announcementsChatDetails": "Kurs yöneticilerinin kurs katılımcıları için duyurular oluşturabileceği bir yer. Herkes bu kanalı görebilir, ancak yalnızca yöneticiler burada yazabilir.",
+    "introChatDetails": "Merhaba de! Diğer kurs katılımcılarına kendini tanıt, arkadaşlar bul ve etkinliklerin dışında sohbet et.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Bu emoji artık pratik alıştırmalarda \"{word}\" olarak temsil edilecektir",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Geliştirici seçeneklerini göster",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

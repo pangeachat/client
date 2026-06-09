@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 
 class LanguageDisplayNamePostfixWidget extends StatelessWidget {
@@ -24,7 +25,7 @@ class LanguageDisplayNamePostfixWidget extends StatelessWidget {
       text: TextSpan(
         style: style,
         children: [
-          TextSpan(text: language.getDisplayName(context)),
+          TextSpan(text: language.getDisplayName(L10n.of(context))),
           if (language.shouldShowFlag) ...[
             WidgetSpan(
               child: SizedBox(width: spacing),

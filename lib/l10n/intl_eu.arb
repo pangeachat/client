@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-04 09:28:56.983796",
+    "@@last_modified": "2026-06-08 14:15:20.310503",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -8662,11 +8662,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot ahotsa",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Zure eskaera ikastaroaren administratzaileari bidali zaio! Onartzen badute, sartuko zara.",
     "@knockDesc": {
         "type": "String",
@@ -9359,20 +9354,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Harpidetu interaktiboa itzulpen eta gramatika egiaztapena, audio erreproduzitzeko, praktika pertsonalizatuak eta ikaskuntza analitikak desblokeatzeko!",
-    "emojiSelectedSnackbar": "Emoji hau ezarri duzu {lemma}rako! Praktika ariketetan hitza irudikatzeko emoji hau erabiliko dugu aurrerantzean.",
     "unlockPracticeActivities": "Desblokeatu praktika ariketak",
     "noAnalyticsActivitiesAvailable": "Wow, eskuragarri dauden jarduera guztiak osatu dituzu! Bidali gehiago mezu gehiago praktika ariketak desblokeatzeko.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9807,6 +9793,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot audio mezua ahotsa",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat irudia",
+    "announcementsChatDetails": "Ikastaroaren administratzaileek ikastaro parte-hartzaileentzat iragarkiak sortzeko lekua. Kanal hau guztiak ikusi dezakete, baina administratzaileek bakarrik idatzi dezakete bertan.",
+    "introChatDetails": "Agur esan! Aurkeztu zeure burua ikastaro parte-hartzaileei, aurkitu lagunak, eta jardueren kanpoan hitz egin.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Emoji honek orain \"{word}\" irakaskuntza ariketetan irudikatuko du",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Garatzaile aukera guztiak erakutsi",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

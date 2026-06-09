@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-04 09:28:51.906580",
+    "@@last_modified": "2026-06-08 14:15:13.531380",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -9249,11 +9249,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Vocea Pangea Bot",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Cererea ta a fost trimisă administratorului cursului! Vei fi lăsat să intri dacă ei aprobă.",
     "@knockDesc": {
         "type": "String",
@@ -10184,20 +10179,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Abonează-te pentru a debloca traducerea interactivă și verificarea gramaticii, redarea audio, exerciții de practică personalizate și analize de învățare!",
-    "emojiSelectedSnackbar": "Ai setat emoji-ul pentru {lemma}! Vom folosi acest emoji pentru a reprezenta cuvântul în exercițiile de practică de acum înainte.",
     "unlockPracticeActivities": "Deblochează exercițiile de practică",
     "noAnalyticsActivitiesAvailable": "Wow, ai completat toate activitățile disponibile! Trimite mai multe mesaje pentru a debloca mai multe exerciții de practică.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10632,6 +10618,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Vocea mesajului audio al Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logo Pangea Chat",
+    "announcementsChatDetails": "Un loc pentru administratorii cursului de a crea anunțuri pentru participanții la curs. Deși toți pot vizualiza acest canal, doar administratorii pot scrie în el.",
+    "introChatDetails": "Spune salut! Prezintă-te colegilor tăi participanți la curs, găsește prieteni și discută în afara activităților.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Acest emoji va reprezenta acum \"{word}\" în exercițiile practice",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Afișați opțiunile pentru dezvoltatori",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

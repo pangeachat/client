@@ -3934,7 +3934,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-06-04 09:29:05.735979",
+    "@@last_modified": "2026-06-08 14:15:29.892058",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -8662,11 +8662,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Голас Pangea Bot",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Ваш запыт быў адпраўлены адміністрацыі курса! Вы будзеце дапушчаны, калі яны зацвердзяць.",
     "@knockDesc": {
         "type": "String",
@@ -9373,20 +9368,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Падпішыцеся, каб разблакаваць інтэрактыўны пераклад і праверку граматы, прайграванне аўдыё, персаналізаваныя практыкаванні і аналітыку навучання!",
-    "emojiSelectedSnackbar": "Вы ўсталявалі эмодзі для {lemma}! Мы будзем выкарыстоўваць гэтае эмодзі, каб прадстаўляць слова ў практыкаваннях у будучыні.",
     "unlockPracticeActivities": "Разблакаваць практыкаванні",
     "noAnalyticsActivitiesAvailable": "Вау, вы завяршылі ўсе даступныя дзейнасці! Адпраўце больш паведамленняў, каб разблакаваць больш практыкаванняў.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9821,6 +9807,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Голас аўдыё паведамлення Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Лагатып Pangea Chat",
+    "announcementsChatDetails": "Месца для адміністратараў курсаў, каб ствараць аб'явы для ўдзельнікаў курсу. Хоць усе могуць бачыць гэты канал, толькі адміністратара могуць пісаць у ім.",
+    "introChatDetails": "Скажыце прывітанне! Пазнаёмцеся з вашымі калегамі па курсу, знайдзіце сяброў і размаўляйце па-за межамі мерапрыемстваў.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Гэты эмодзі цяпер будзе прадстаўляць \"{word}\" у практыкаваннях",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Паказаць параметры распрацоўшчыка",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

@@ -193,6 +193,7 @@ class UserToolSettings {
   final bool enableTTS;
   final bool enableAutocorrect;
   final bool selectAudioMessagesOnPlay;
+  final bool showDeveloperOptions;
 
   const UserToolSettings({
     this.interactiveTranslator = true,
@@ -203,6 +204,7 @@ class UserToolSettings {
     this.enableTTS = true,
     this.enableAutocorrect = false,
     this.selectAudioMessagesOnPlay = true,
+    this.showDeveloperOptions = false,
   });
 
   factory UserToolSettings.fromJson(Map<String, dynamic> json) =>
@@ -217,6 +219,7 @@ class UserToolSettings {
         enableTTS: json[ToolSetting.enableTTS.toString()] ?? true,
         enableAutocorrect: json["enableAutocorrect"] ?? false,
         selectAudioMessagesOnPlay: json["selectAudioMessagesOnPlay"] ?? true,
+        showDeveloperOptions: json["showDeveloperOptions"] ?? false,
       );
 
   Map<String, dynamic> toJson() {
@@ -229,6 +232,7 @@ class UserToolSettings {
     data[ToolSetting.enableTTS.toString()] = enableTTS;
     data["enableAutocorrect"] = enableAutocorrect;
     data["selectAudioMessagesOnPlay"] = selectAudioMessagesOnPlay;
+    data["showDeveloperOptions"] = showDeveloperOptions;
     return data;
   }
 
@@ -271,6 +275,7 @@ class UserToolSettings {
     bool? enableTTS,
     bool? enableAutocorrect,
     bool? selectAudioMessagesOnPlay,
+    bool? showDeveloperOptions,
   }) {
     return UserToolSettings(
       interactiveTranslator:
@@ -283,6 +288,7 @@ class UserToolSettings {
       enableAutocorrect: enableAutocorrect ?? this.enableAutocorrect,
       selectAudioMessagesOnPlay:
           selectAudioMessagesOnPlay ?? this.selectAudioMessagesOnPlay,
+      showDeveloperOptions: showDeveloperOptions ?? this.showDeveloperOptions,
     );
   }
 
@@ -298,7 +304,8 @@ class UserToolSettings {
         other.autoIGC == autoIGC &&
         other.enableTTS == enableTTS &&
         other.enableAutocorrect == enableAutocorrect &&
-        other.selectAudioMessagesOnPlay == selectAudioMessagesOnPlay;
+        other.selectAudioMessagesOnPlay == selectAudioMessagesOnPlay &&
+        other.showDeveloperOptions == showDeveloperOptions;
   }
 
   @override
@@ -311,6 +318,7 @@ class UserToolSettings {
     enableTTS.hashCode,
     enableAutocorrect.hashCode,
     selectAudioMessagesOnPlay.hashCode,
+    showDeveloperOptions.hashCode,
   ]);
 }
 

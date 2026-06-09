@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'package:material_symbols_icons/symbols.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
@@ -17,13 +13,14 @@ import 'package:fluffychat/pangea/tokens/underline_text_widget.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class ActivityVocabWidget extends StatelessWidget {
   final List<Vocab> vocab;
   final String langCode;
   final String targetId;
   final String activityLangCode;
-  final ValueNotifier<Set<String>>? usedVocab;
 
   const ActivityVocabWidget({
     super.key,
@@ -31,7 +28,6 @@ class ActivityVocabWidget extends StatelessWidget {
     required this.langCode,
     required this.targetId,
     required this.activityLangCode,
-    this.usedVocab,
   });
 
   @override
@@ -49,24 +45,12 @@ class ActivityVocabWidget extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyMedium,
           ),
         ),
-        usedVocab == null
-            ? _VocabChips(
-                vocab: vocab,
-                targetId: targetId,
-                langCode: langCode,
-                usedVocab: const {},
-                activityLangCode: activityLangCode,
-              )
-            : ValueListenableBuilder(
-                valueListenable: usedVocab!,
-                builder: (context, used, _) => _VocabChips(
-                  vocab: vocab,
-                  targetId: targetId,
-                  langCode: langCode,
-                  usedVocab: used,
-                  activityLangCode: activityLangCode,
-                ),
-              ),
+        _VocabChips(
+          vocab: vocab,
+          targetId: targetId,
+          langCode: langCode,
+          activityLangCode: activityLangCode,
+        ),
       ],
     );
   }
@@ -77,14 +61,12 @@ class _VocabChips extends StatefulWidget {
   final String targetId;
   final String langCode;
   final String activityLangCode;
-  final Set<String> usedVocab;
 
   const _VocabChips({
     required this.vocab,
     required this.targetId,
     required this.langCode,
     required this.activityLangCode,
-    required this.usedVocab,
   });
 
   @override
@@ -182,7 +164,6 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
 
           return _VocabChip(
             v: v,
-            isUsed: widget.usedVocab.contains(v.lemma.toLowerCase()),
             isNew: isNew,
             isSelected: _selectedVocab == v,
             onTap: () => _selectVocab(v, isNew: isNew),
@@ -196,7 +177,6 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
 
 class _VocabChip extends StatelessWidget {
   final Vocab v;
-  final bool isUsed;
   final bool isNew;
   final bool isSelected;
   final VoidCallback onTap;
@@ -204,7 +184,6 @@ class _VocabChip extends StatelessWidget {
 
   const _VocabChip({
     required this.v,
-    required this.isUsed,
     required this.isNew,
     required this.isSelected,
     required this.onTap,

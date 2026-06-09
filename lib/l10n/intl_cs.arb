@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-06-04 09:29:03.189659",
+    "@@last_modified": "2026-06-08 14:15:27.861731",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -8992,11 +8992,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Hlas Pangea Bota",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Vaše žádost byla odeslána administrátorovi kurzu! Budete vpuštěni, pokud ji schválí.",
     "@knockDesc": {
         "type": "String",
@@ -9913,20 +9908,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Přihlaste se k odběru, abyste odemkli interaktivní překlad a kontrolu gramatiky, přehrávání zvuku, personalizované cvičení a analytiku učení!",
-    "emojiSelectedSnackbar": "Nastavili jste emoji pro {lemma}! Toto emoji použijeme k reprezentaci slova v cvičeních do budoucna.",
     "unlockPracticeActivities": "Odemknout cvičení",
     "noAnalyticsActivitiesAvailable": "Wow, dokončili jste všechny dostupné aktivity! Pošlete více zpráv, abyste odemkli další cvičení.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10361,6 +10347,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Hlasová zpráva Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logo Pangea Chat",
+    "announcementsChatDetails": "Místo pro administrátory kurzu, kde mohou vytvářet oznámení pro účastníky kurzu. I když tento kanál mohou vidět všichni, psát do něj mohou pouze administrátoři.",
+    "introChatDetails": "Pozdravte se! Představte se svým spoluúčastníkům kurzu, najděte přátele a povídejte si mimo aktivity.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Tento emoji nyní bude reprezentovat \"{word}\" v praktických cvičeních",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Zobrazit možnosti vývojáře",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
@@ -8,13 +9,13 @@ import 'package:fluffychat/pangea/onboarding/onboarding_steps/course_code_onboar
 
 class CourseCodeStepView extends StatefulWidget {
   final CourseCodeOnboardingStep step;
-  final VoidCallback updateEnableNext;
+  final VoidCallback updateNavigationButton;
   final Object? error;
 
   const CourseCodeStepView({
     super.key,
     required this.step,
-    required this.updateEnableNext,
+    required this.updateNavigationButton,
     required this.error,
   });
 
@@ -49,7 +50,7 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
     _debounce?.cancel();
     _debounce = Timer(Duration(milliseconds: 300), () {
       _step.setCourseCode(_codeController.text);
-      widget.updateEnableNext();
+      widget.updateNavigationButton();
       _debounce?.cancel();
       _debounce = null;
     });
@@ -83,6 +84,7 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
                   ? Icon(Icons.error, color: theme.colorScheme.error)
                   : null,
             ),
+            inputFormatters: [LengthLimitingTextInputFormatter(10)],
           ),
         ],
       ),

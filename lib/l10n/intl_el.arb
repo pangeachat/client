@@ -3772,7 +3772,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-06-04 09:29:27.578116",
+    "@@last_modified": "2026-06-08 14:15:52.102127",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -9473,11 +9473,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Φωνή Pangea Bot",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Το αίτημά σας έχει σταλεί στον διαχειριστή του μαθήματος! Θα σας επιτρέψουν να μπείτε αν το εγκρίνουν.",
     "@knockDesc": {
         "type": "String",
@@ -10408,20 +10403,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Εγγραφείτε για να ξεκλειδώσετε τη διαδραστική μετάφραση και τον έλεγχο γραμματικής, την αναπαραγωγή ήχου, τις εξατομικευμένες ασκήσεις πρακτικής και την ανάλυση μάθησης!",
-    "emojiSelectedSnackbar": "Έχετε ορίσει το emoji για {lemma}! Θα χρησιμοποιήσουμε αυτό το emoji για να εκπροσωπήσουμε τη λέξη στις ασκήσεις πρακτικής στο εξής.",
     "unlockPracticeActivities": "Ξεκλειδώστε τις ασκήσεις πρακτικής",
     "noAnalyticsActivitiesAvailable": "Ω, έχετε ολοκληρώσει όλες τις διαθέσιμες δραστηριότητες! Στείλτε περισσότερα μηνύματα για να ξεκλειδώσετε περισσότερες ασκήσεις πρακτικής.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10856,6 +10842,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Φωνή μηνύματος ήχου Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Λογότυπο Pangea Chat",
+    "announcementsChatDetails": "Ένας χώρος για τους διαχειριστές του μαθήματος να δημιουργούν ανακοινώσεις για τους συμμετέχοντες του μαθήματος. Ενώ όλοι μπορούν να δουν αυτό το κανάλι, μόνο οι διαχειριστές μπορούν να πληκτρολογήσουν σε αυτό.",
+    "introChatDetails": "Πες γειά! Παρουσίασε τον εαυτό σου στους υπόλοιπους συμμετέχοντες του μαθήματος, βρες φίλους και συνομιλήστε εκτός δραστηριοτήτων.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Αυτό το emoji θα αντιπροσωπεύει τώρα \"{word}\" σε πρακτικές ασκήσεις",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Εμφάνιση επιλογών προγραμματιστή",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

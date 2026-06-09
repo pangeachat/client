@@ -694,7 +694,8 @@ class _MoreButton extends StatelessWidget {
         return events.length == 1 &&
             events.single.messageType == MessageTypes.Text;
       case MessageActions.download:
-        return controller.canSaveSelectedEvent;
+        return controller.canSaveSelectedEvent &&
+            MatrixState.pangeaController.userController.showDeveloperOptions;
       case MessageActions.pin:
         return controller.canPinSelectedEvents && !isPinned;
       case MessageActions.unpin:
@@ -702,7 +703,8 @@ class _MoreButton extends StatelessWidget {
       case MessageActions.forward:
       case MessageActions.report:
       case MessageActions.info:
-        return events.length == 1;
+        return events.length == 1 &&
+            MatrixState.pangeaController.userController.showDeveloperOptions;
       case MessageActions.deleteOnError:
       case MessageActions.sendAgain:
         return false;

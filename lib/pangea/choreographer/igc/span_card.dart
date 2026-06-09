@@ -10,15 +10,16 @@ import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.da
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
-import 'package:fluffychat/pangea/choreographer/igc/span_card_overlay_manager.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_choice_type_enum.dart';
+import 'package:fluffychat/pangea/choreographer/igc/writing_assistance_popup.dart';
+import 'package:fluffychat/pangea/choreographer/igc/writing_asssitance_popup_manager.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_array.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SpanCard extends StatefulWidget {
-  final SpanCardOverlayManager controller;
+  final WritingAssistancePopupManager controller;
 
   const SpanCard({super.key, required this.controller});
 
@@ -46,7 +47,6 @@ class SpanCardState extends State<SpanCard> {
     scrollController.dispose();
     _activeMatch.removeListener(_onActiveMatchUpdate);
     _choreographer.removeListener(_onAssistanceStateChange);
-    widget.controller.onOverlayClosed();
     super.dispose();
   }
 
@@ -128,96 +128,101 @@ class SpanCardState extends State<SpanCard> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: _choreographer.igcController.matchUpdateStream.stream,
-      builder: (context, _) {
-        final match = _activeMatch.value;
-        if (match == null) return SizedBox(height: 200.0);
+    return WritingAssistancePopup(
+      widget.controller,
+      child: StreamBuilder(
+        stream: _choreographer.igcController.matchUpdateStream.stream,
+        builder: (context, _) {
+          final match = _activeMatch.value;
+          if (match == null) return SizedBox(height: 200.0);
 
-        final newOffset = match.updatedMatch.match.offset.toDouble();
-        if (_previousOffset != null) {
-          if (newOffset < _previousOffset!) {
-            // Moving backward → slide from left
-            _slideFrom = const Offset(-0.1, 0);
-          } else if (newOffset > _previousOffset!) {
-            // Moving forward → slide from right
-            _slideFrom = const Offset(0.1, 0);
+          final newOffset = match.updatedMatch.match.offset.toDouble();
+          if (_previousOffset != null) {
+            if (newOffset < _previousOffset!) {
+              // Moving backward → slide from left
+              _slideFrom = const Offset(-0.1, 0);
+            } else if (newOffset > _previousOffset!) {
+              // Moving forward → slide from right
+              _slideFrom = const Offset(0.1, 0);
+            }
           }
-        }
-        _previousOffset = newOffset;
-        final theme = Theme.of(context);
+          _previousOffset = newOffset;
+          final theme = Theme.of(context);
 
-        return SizedBox(
-          height: 200.0,
-          child: Column(
-            mainAxisSize: .min,
-            children: [
-              SizedBox(
-                height: 40.0,
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.close),
-                      color: theme.iconTheme.color,
-                      onPressed: widget.controller.close,
-                    ),
-                    Expanded(
-                      child: Center(
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.vertical,
-                          child: Text(
-                            match.updatedMatch.match.type.displayName(context),
-                            textAlign: TextAlign.center,
-                            style: theme.textTheme.titleLarge?.merge(
-                              TextStyle(
-                                fontWeight: FontWeight.w700,
-                                color: theme.colorScheme.primary,
+          return SizedBox(
+            height: 200.0,
+            child: Column(
+              mainAxisSize: .min,
+              children: [
+                SizedBox(
+                  height: 40.0,
+                  child: Row(
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.close),
+                        color: theme.iconTheme.color,
+                        onPressed: widget.controller.close,
+                      ),
+                      Expanded(
+                        child: Center(
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.vertical,
+                            child: Text(
+                              match.updatedMatch.match.type.displayName(
+                                context,
+                              ),
+                              textAlign: TextAlign.center,
+                              style: theme.textTheme.titleLarge?.merge(
+                                TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: theme.colorScheme.primary,
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.flag_outlined),
-                      color: theme.iconTheme.color,
-                      onPressed: _showFeedbackDialog,
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 300),
-                  switchInCurve: Curves.easeOut,
-                  switchOutCurve: Curves.easeIn,
-                  transitionBuilder: (child, animation) {
-                    final slideAnimation = Tween<Offset>(
-                      begin: _slideFrom,
-                      end: Offset.zero,
-                    ).animate(animation);
-
-                    return FadeTransition(
-                      opacity: animation,
-                      child: SlideTransition(
-                        position: slideAnimation,
-                        child: child,
+                      IconButton(
+                        icon: const Icon(Icons.flag_outlined),
+                        color: theme.iconTheme.color,
+                        onPressed: _showFeedbackDialog,
                       ),
-                    );
-                  },
-                  child: _MatchContent(
-                    key: ValueKey(match.hashCode),
-                    match: match,
-                    scrollController: scrollController,
-                    onChoiceSelect: _onChoiceSelect,
-                    onUpdateMatch: _updateMatch,
+                    ],
                   ),
                 ),
-              ),
-            ],
-          ),
-        );
-      },
+                Expanded(
+                  child: AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 300),
+                    switchInCurve: Curves.easeOut,
+                    switchOutCurve: Curves.easeIn,
+                    transitionBuilder: (child, animation) {
+                      final slideAnimation = Tween<Offset>(
+                        begin: _slideFrom,
+                        end: Offset.zero,
+                      ).animate(animation);
+
+                      return FadeTransition(
+                        opacity: animation,
+                        child: SlideTransition(
+                          position: slideAnimation,
+                          child: child,
+                        ),
+                      );
+                    },
+                    child: _MatchContent(
+                      key: ValueKey(match.hashCode),
+                      match: match,
+                      scrollController: scrollController,
+                      onChoiceSelect: _onChoiceSelect,
+                      onUpdateMatch: _updateMatch,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

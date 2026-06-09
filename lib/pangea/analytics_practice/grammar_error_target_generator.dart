@@ -78,11 +78,7 @@ class GrammarErrorTargetGenerator {
 
     final choreo = originalSent?.choreo;
     if (choreo == null ||
-        !choreo.choreoSteps.any(
-          (step) =>
-              step.acceptedOrIgnoredMatch?.isGrammarMatch == true &&
-              step.acceptedOrIgnoredMatch?.match.bestChoice != null,
-        )) {
+        !choreo.choreoSteps.any((step) => step.isGrammarErrorPracticeTarget)) {
       return targets;
     }
 
@@ -94,11 +90,11 @@ class GrammarErrorTargetGenerator {
     String? translation;
     for (int i = 0; i < choreo.choreoSteps.length; i++) {
       final step = choreo.choreoSteps[i];
-      final igcMatch = step.acceptedOrIgnoredMatch;
-      if (igcMatch?.isGrammarMatch != true ||
-          igcMatch?.match.bestChoice == null) {
+      if (!step.isGrammarErrorPracticeTarget) {
         continue;
       }
+
+      final igcMatch = step.acceptedOrIgnoredMatch;
 
       final stepText = choreo.stepText(stepIndex: i - 1);
       final errorSpan = stepText.characters

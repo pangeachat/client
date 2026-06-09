@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-04 09:29:21.531518",
+    "@@last_modified": "2026-06-08 14:15:43.567550",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -8662,11 +8662,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot stem",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Je verzoek is verzonden naar de cursusbeheerder! Je wordt toegelaten als ze goedkeuren.",
     "@knockDesc": {
         "type": "String",
@@ -9359,20 +9354,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Abonneer je om interactieve vertaling en grammatica-controle, audio-afspeelmogelijkheden, gepersonaliseerde oefenopdrachten en leeranalyses te ontgrendelen!",
-    "emojiSelectedSnackbar": "Je hebt de emoji voor {lemma} ingesteld! We zullen deze emoji gebruiken om het woord in de oefenopdrachten voortaan weer te geven.",
     "unlockPracticeActivities": "Ontgrendel oefenopdrachten",
     "noAnalyticsActivitiesAvailable": "Wauw, je hebt alle beschikbare activiteiten voltooid! Stuur meer berichten om meer oefenopdrachten te ontgrendelen.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9807,6 +9793,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot audiobericht stem",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat-logo",
+    "announcementsChatDetails": "Een plek voor cursusbeheerders om aankondigingen te maken voor cursusdeelnemers. Terwijl iedereen dit kanaal kan bekijken, kunnen alleen beheerders erin typen.",
+    "introChatDetails": "Zeg hallo! Stel jezelf voor aan je medecursisten, vind vrienden en chat buiten de activiteiten.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Deze emoji zal nu \"{word}\" vertegenwoordigen in oefenopdrachten",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Toon ontwikkelaarsopties",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }

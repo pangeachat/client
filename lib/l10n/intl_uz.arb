@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-06-04 09:29:12.931503",
+    "@@last_modified": "2026-06-08 14:15:34.641677",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -4263,7 +4263,6 @@
     "fillInBlank": "To'g'ri tanlov bilan bo'sh joyni to'ldiring",
     "learn": "O'rganish",
     "languageUpdated": "Maqsadli til yangilandi!",
-    "voiceDropdownTitle": "Pangea Bot ovozi",
     "knockDesc": "Sizning so'rovingiz kurs adminiga yuborildi! Ular tasdiqlagan taqdirda sizga kirishga ruxsat beriladi.",
     "findCourse": "Kurs toping",
     "publicInviteDescChat": "Ushbu chatga taklif qilish uchun foydalanuvchilarni qidiring.",
@@ -8758,10 +8757,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@knockDesc": {
         "type": "String",
         "placeholders": {}
@@ -9363,20 +9358,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Interaktiv tarjima va grammatika tekshirish, audio ijro, shaxsiy mashq mashqlari va o‘rganish tahlillari uchun obuna bo‘ling!",
-    "emojiSelectedSnackbar": "{lemma} uchun emoji o‘rnating! Biz bu emojini kelajakdagi mashq mashqlarida so‘zni ifodalash uchun ishlatamiz.",
     "unlockPracticeActivities": "Mashq mashqlarini oching",
     "noAnalyticsActivitiesAvailable": "Vau, siz barcha mavjud faoliyatlarni bajardingiz! Qo‘shimcha mashq mashqlari uchun ko‘proq xabar yuboring.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9811,6 +9797,40 @@
         "placeholders": {}
     },
     "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot audio xabar ovozi",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logotipi",
+    "announcementsChatDetails": "Kurs ishtirokchilari uchun e'lonlar yaratish uchun kurs adminlari uchun joy. Barcha foydalanuvchilar ushbu kanalda ko'rishlari mumkin, faqat adminlar yozishlari mumkin.",
+    "introChatDetails": "Salom ayting! O'zingizni kurs ishtirokchilari bilan tanishtiring, do'stlar toping va faoliyatlardan tashqarida suhbatlashing.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Bu emoji endi amaliy mashg'ulotlarda \"{word}\" ni ifodalaydi",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Dasturchi variantlarini ko'rsatish",
+    "@showDeveloperOptions": {
         "type": "String",
         "placeholders": {}
     }
