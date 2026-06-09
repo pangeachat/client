@@ -9,10 +9,8 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/goal_status_widget.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_room_extension.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_vocab_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -91,7 +89,6 @@ class ActivityStatsMenu extends StatelessWidget {
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
     final goals = room.ownRole?.allGoals ?? [];
-    final ActivityPlanModel? activity = room.activityPlan;
 
     // TODO ORCHESTRATOR: show active goal instead of first goal
     final currentGoal = goals.firstOrNull;
@@ -221,16 +218,6 @@ class ActivityStatsMenu extends StatelessWidget {
                             )
                             .toList(),
                       ),
-                    if (activity != null) const Divider(height: 1),
-                    ActivityVocabWidget(
-                      key: ValueKey(
-                        "activity-stats-menu-${activity!.activityId}",
-                      ),
-                      vocab: activity.vocab,
-                      langCode: activity.req.targetLanguage,
-                      targetId: "activity-stats-menu-vocab",
-                      activityLangCode: activity.req.targetLanguage,
-                    ),
                     if (_showWaitNotDone)
                       ElevatedButton(
                         onPressed: room.continueActivity,
