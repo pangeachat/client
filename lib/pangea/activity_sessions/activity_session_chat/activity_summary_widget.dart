@@ -89,7 +89,7 @@ class ActivitySummary extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                color: theme.colorScheme.surface.withAlpha(128),
+                color: theme.colorScheme.surface.withAlpha(180),
                 borderRadius: BorderRadius.circular(12.0),
               ),
               padding: const EdgeInsets.all(16.0),
@@ -97,7 +97,10 @@ class ActivitySummary extends StatelessWidget {
                 crossAxisAlignment: .start,
                 spacing: 16.0,
                 children: [
-                  Text(activity.description, style: theme.textTheme.bodyMedium),
+                  Text(
+                    activity.description,
+                    style: TextStyle(fontSize: AppConfig.messageFontSize),
+                  ),
                   const Divider(height: 1),
                   ActivityVocabWidget(
                     key: ValueKey("activity-summary-${activity.activityId}"),

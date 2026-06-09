@@ -4066,18 +4066,6 @@
     "inactive": "Inactive",
     "confirmRole": "Confirm role",
     "openRoleLabel": "OPEN",
-    "joinedTheActivity": "👋 {username} joined as {role}",
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "finishedTheActivity": "🎯 {username} wrapped up this activity",
     "@finishedTheActivity": {
         "type": "String",
