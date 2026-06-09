@@ -7,7 +7,7 @@ import 'package:fluffychat/pangea/tutorials/tutorial_state_transition_events.dar
 import 'package:fluffychat/pangea/tutorials/tutorial_step_model.dart';
 
 // Sequences used across tests.
-// readingAssistance: 1 step  |  selectModeButtons: 3 steps  |  writingAssistance: 1 step
+// readingAssistance: 1 step  |  selectModeButtons: 4 steps  |  writingAssistance: 1 step
 const _single = [TutorialEnum.readingAssistance];
 const _multiStep = [TutorialEnum.selectModeButtons];
 const _full = [
@@ -179,19 +179,20 @@ void main() {
       );
 
       test(
-        'goes back to last step (index 2) of a 3-step previous tutorial',
+        'goes back to last step (index 2) of a 4-step previous tutorial',
         () {
           final sm = TutorialOverlayStateMachine(_full);
           // Advance through selectModeButtons into writingAssistance
           sm.dispatch(const ForwardTutorialEvent()); // → selectModeButtons
           sm.dispatch(const ForwardTutorialEvent()); // step 1
           sm.dispatch(const ForwardTutorialEvent()); // step 2
+          sm.dispatch(const ForwardTutorialEvent()); // step 3
           sm.dispatch(
             const ForwardTutorialEvent(),
           ); // → writingAssistance (index 2)
           sm.dispatch(const BackTutorialEvent()); // ← selectModeButtons step 2
           expect(sm.model.tutorialIndex, 1);
-          expect(sm.model.stepIndex, 2);
+          expect(sm.model.stepIndex, 3);
         },
       );
 

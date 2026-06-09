@@ -162,10 +162,10 @@ final List<Map<String, String>> normalizeTestCases = [
   {"input": "Lietuva.", "expected": "lietuva", "language": "lt"},
   {"input": "ačiū", "expected": "aciu", "language": "lt"},
 
-  // 26. Latvian (lt) - beta
-  {"input": "Sveiki!", "expected": "sveiki", "language": "lt"},
-  {"input": "Rīga", "expected": "riga", "language": "lt"},
-  {"input": "Latvija.", "expected": "latvija", "language": "lt"},
+  // 26. Latvian (lv) - beta
+  {"input": "Sveiki!", "expected": "sveiki", "language": "lv"},
+  {"input": "Rīga", "expected": "riga", "language": "lv"},
+  {"input": "Latvija.", "expected": "latvija", "language": "lv"},
 
   // 27. Malay (ms) - beta
   {"input": "Selamat pagi!", "expected": "selamat pagi", "language": "ms"},
