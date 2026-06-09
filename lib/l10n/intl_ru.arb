@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-08 14:15:55.994811",
+    "@@last_modified": "2026-06-09 16:37:45.872902",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10841,6 +10841,11 @@
     },
     "showDeveloperOptions": "Показать параметры разработчика",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Включите параметры разработчика, чтобы показать аналитику загрузок и подробные параметры информации по всему приложению.",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }
