@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
@@ -5,6 +7,13 @@ import 'package:fluffychat/pangea/onboarding/account_updater.dart';
 import 'package:fluffychat/pangea/onboarding/avatar_provider.dart';
 import 'package:fluffychat/pangea/onboarding/course_provider.dart';
 import 'package:fluffychat/pangea/onboarding/user_type_enum.dart';
+
+class AvatarInfo {
+  final Uri? avatarUrl;
+  final Uint8List? avatarBytes;
+
+  const AvatarInfo({this.avatarUrl, this.avatarBytes});
+}
 
 class OnboardingStateController {
   final AccountUpdater accountUpdater;
@@ -17,6 +26,9 @@ class OnboardingStateController {
     required this.avatarProvider,
   });
 
+  AvatarInfo? _avatarInfo;
+  String? _displayName;
+
   UserType? _userType;
 
   LanguageModel? _baseLanguage;
@@ -27,6 +39,9 @@ class OnboardingStateController {
   CoursePlanModel? _joinedCoursePlan;
   String? _joinedRoomId;
 
+  AvatarInfo? get avatarInfo => _avatarInfo;
+  String? get displayName => _displayName;
+
   UserType? get userType => _userType;
 
   LanguageModel? get baseLanguage => _baseLanguage;
@@ -36,6 +51,9 @@ class OnboardingStateController {
   String? get courseCode => _courseCode;
   CoursePlanModel? get joinedCoursePlan => _joinedCoursePlan;
   String? get joinedRoomId => _joinedRoomId;
+
+  void setAvatarInfo(AvatarInfo info) => _avatarInfo = info;
+  void setDisplayName(String displayName) => _displayName = displayName;
 
   void setUserType(UserType type) => _userType = type;
 
