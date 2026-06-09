@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import 'package:fluffychat/pangea/bot/bot_target_event_name_enum.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -20,10 +21,6 @@ import '../../../config/firebase_options.dart';
 
 class GoogleAnalytics {
   static FirebaseAnalytics? analytics;
-  static const List<String> _ignoredScreenNamePrefixes = [
-    '/home',
-    '/registration',
-  ];
 
   GoogleAnalytics();
 
@@ -46,11 +43,13 @@ class GoogleAnalytics {
     }
 
     analytics = FirebaseAnalytics.instanceFor(app: app);
+    // Client is not automatically set on web
+    await _setClientVersion();
 
     if (Environment.analyticsDebugEnabled) {
       // Note: Doesnt currently work on Web
       try {
-        analytics?.setDefaultEventParameters({"traffic_type": "internal"});
+        await analytics?.setDefaultEventParameters({"traffic_type": "internal"});
       } catch (_) {
         // i guess were on web and have it enabled anyway
       }
@@ -63,6 +62,18 @@ class GoogleAnalytics {
     debugPrint("  Database URL: ${app.options.databaseURL}");
     debugPrint("  Messaging Sender ID: ${app.options.messagingSenderId}");
     debugPrint("  Storage Bucket: ${app.options.storageBucket}");
+  }
+
+  static Future<void> _setClientVersion() async {
+    try {
+      final packageInfo = await PackageInfo.fromPlatform();
+      await analytics?.setUserProperty(
+        name: 'client_version',
+        value: packageInfo.version,
+      );
+    } catch (error) {
+      debugPrint('Unable to set analytics client version: $error');
+    }
   }
 
   static Future<void> analyticsUserUpdate(String? userID) async {
@@ -273,11 +284,6 @@ class GoogleAnalytics {
 
         final name = route.settings.name?.trim();
         if (name == null || name.isEmpty) {
-          return false;
-        }
-
-        // Do not log unauthenticated onboarding/auth flow screens.
-        if (_ignoredScreenNamePrefixes.any(name.startsWith)) {
           return false;
         }
 

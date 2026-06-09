@@ -28,6 +28,11 @@ import 'widgets/fluffy_chat_app.dart';
 ReceivePort? mainIsolateReceivePort;
 
 void main() async {
+  // Our background push shared isolate accesses flutter-internal things very early in the startup proccess
+  // To make sure that the parts of flutter needed are started up already, we need to ensure that the
+  // widget bindings are initialized already.
+  WidgetsFlutterBinding.ensureInitialized();
+
   // #Pangea
   try {
     await dotenv.load(fileName: ".env");
@@ -64,11 +69,6 @@ void main() async {
     );
     await waitForPushIsolateDone();
   }
-
-  // Our background push shared isolate accesses flutter-internal things very early in the startup proccess
-  // To make sure that the parts of flutter needed are started up already, we need to ensure that the
-  // widget bindings are initialized already.
-  WidgetsFlutterBinding.ensureInitialized();
 
   final store = await AppSettings.init();
   Logs().i('Welcome to ${AppSettings.applicationName.value} <3');
