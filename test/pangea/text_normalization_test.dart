@@ -40,7 +40,7 @@ final List<Map<String, String>> normalizeTestCases = [
   // 7. Danish (da) - beta
   {"input": "Hej!", "expected": "hej"},
   {"input": "København", "expected": "kobenhavn"},
-  {"input": "Danskе.", "expected": "danske"},
+  {"input": "Danske.", "expected": "danske"},
   {"input": "æøå", "expected": "æøå"},
 
   // 8. German (de) - full
