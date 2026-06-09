@@ -19,13 +19,7 @@ extension OrchestratorRoomExtension on Room {
   bool isGoalCompleted(String id) {
     final ownRole = this.ownRole;
     if (ownRole == null) return false;
-
-    final awardedGoals = orchestratorAwardedGoals;
-    if (ownRole.usingDefaultGoalId) {
-      return awardedGoals.goalIds.isNotEmpty;
-    }
-
-    return awardedGoals.isGoalCompleted(id);
+    return orchestratorAwardedGoals.isGoalCompleted(id);
   }
 
   bool get hasCompletedAllGoals {
@@ -41,16 +35,9 @@ extension OrchestratorRoomExtension on Room {
     if (ownRole == null) return [];
 
     final ownGoals = ownRole.allGoals;
+    Logs().w("Own Goals: ${ownGoals.map((g) => g.toJson()).toList()}");
+    Logs().w("Awarded goals: ${orchestratorAwardedGoals.toJson()}");
     final awardedGoals = orchestratorAwardedGoals.goalIds;
-
-    if (ownRole.usingDefaultGoalId) {
-      // TODO ORCHESTRATOR: better mechanism for mapping old string goals to completed goal IDs
-      // (this is assuming that all completed goals were completed by this user, which will not be
-      // true for multi-user activities)
-      if (awardedGoals.isEmpty || ownGoals.isEmpty) return [];
-      return [ownGoals.first];
-    }
-
     return ownGoals.where((g) => awardedGoals.contains(g.id)).toList();
   }
 }
