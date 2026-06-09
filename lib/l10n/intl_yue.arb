@@ -1407,7 +1407,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-06-08 14:15:24.982783",
+    "@@last_modified": "2026-06-09 16:37:09.912163",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10958,6 +10958,11 @@
     },
     "showDeveloperOptions": "顯示開發者選項",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "打開開發者選項以顯示下載分析和應用程式中的詳細資訊選項。",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }

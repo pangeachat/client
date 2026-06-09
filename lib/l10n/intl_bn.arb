@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 14:15:47.098324",
+    "@@last_modified": "2026-06-09 16:37:35.928664",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10542,6 +10542,11 @@
     },
     "showDeveloperOptions": "ডেভেলপার অপশনগুলি দেখান",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "ডেভেলপার অপশন চালু করুন যাতে অ্যাপের মধ্যে ডাউনলোড বিশ্লেষণ এবং বিস্তারিত তথ্য অপশনগুলি দেখানো হয়।",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }

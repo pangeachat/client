@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 14:15:13.531380",
+    "@@last_modified": "2026-06-09 16:36:54.056610",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10652,6 +10652,11 @@
     },
     "showDeveloperOptions": "Afișați opțiunile pentru dezvoltatori",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Activați opțiunile pentru dezvoltatori pentru a afișa analizele de descărcare și opțiunile de informații detaliate în întreaga aplicație.",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }

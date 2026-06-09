@@ -4858,5 +4858,6 @@
             }
         }
     },
-    "showDeveloperOptions": "Show developer options"
+    "showDeveloperOptions": "Show developer options",
+    "showDeveloperOptionsDesc": "Turn on developer options to show download analytics and detailed info options throughout the app."
 }

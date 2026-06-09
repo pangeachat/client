@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-06-08 14:15:08.782310",
+    "@@last_modified": "2026-06-09 16:36:48.094200",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9827,6 +9827,11 @@
     },
     "showDeveloperOptions": "Amosar opcións de desenvolvedor",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Activa as opcións de desenvolvedor para mostrar análises de descarga e opcións de información detallada en toda a aplicación.",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 14:15:58.406202",
+    "@@last_modified": "2026-06-09 16:37:48.020402",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10950,6 +10950,11 @@
     },
     "showDeveloperOptions": "Prikaži opcije za programere",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Uključite opcije za programere da biste prikazali analitiku preuzimanja i detaljne informacije o opcijama u aplikaciji.",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }

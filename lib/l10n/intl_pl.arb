@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-06-08 14:15:49.476161",
+    "@@last_modified": "2026-06-09 16:37:39.089860",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9936,6 +9936,11 @@
     },
     "showDeveloperOptions": "Pokaż opcje dewelopera",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Włącz opcje dewelopera, aby wyświetlić analizy pobierania i szczegółowe opcje informacji w całej aplikacji.",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }

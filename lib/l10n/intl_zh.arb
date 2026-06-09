@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-06-08 14:15:45.379933",
+    "@@last_modified": "2026-06-09 16:37:34.719157",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9827,6 +9827,11 @@
     },
     "showDeveloperOptions": "显示开发者选项",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "开启开发者选项以在应用程序中显示下载分析和详细信息选项。",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }
