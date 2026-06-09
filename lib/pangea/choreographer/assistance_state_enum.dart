@@ -20,12 +20,12 @@ enum AssistanceStateEnum {
 
   Color stateColor(BuildContext context) {
     switch (this) {
-      case AssistanceStateEnum.noSub:
       case AssistanceStateEnum.noMessage:
       case AssistanceStateEnum.fetched:
         return Colors.grey[400]!;
       case AssistanceStateEnum.error:
         return AppConfig.error;
+      case AssistanceStateEnum.noSub:
       case AssistanceStateEnum.notFetched:
       case AssistanceStateEnum.fetching:
       case AssistanceStateEnum.suggesting:
