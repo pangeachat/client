@@ -2,6 +2,10 @@
 
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
@@ -9,8 +13,6 @@ import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_participant_list.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_vocab_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:matrix/matrix.dart';
 
 class ActivitySummary extends StatelessWidget {
   final ActivityPlanModel activity;
