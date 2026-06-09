@@ -21,11 +21,13 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 class ActivityStatsMenu extends StatelessWidget {
   final ValueNotifier<bool> visibilityNotifier;
   final VoidCallback toggleVisibility;
+  final ValueNotifier<Set<String>> usedVocab;
   final Room room;
 
   const ActivityStatsMenu({
     required this.visibilityNotifier,
     required this.toggleVisibility,
+    required this.usedVocab,
     required this.room,
     super.key,
   });
@@ -219,6 +221,7 @@ class ActivityStatsMenu extends StatelessWidget {
                       vocab: activity.vocab,
                       langCode: activity.req.targetLanguage,
                       targetId: "activity-stats-menu-vocab",
+                      usedVocab: usedVocab,
                       activityLangCode: activity.req.targetLanguage,
                     ),
                     if (!_activityComplete &&

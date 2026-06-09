@@ -44,14 +44,12 @@ class ActivityChatController {
   late final StreamSubscription _analyticsSubscription;
   late final StreamSubscription _rolesSubscription;
   late final StreamSubscription _summarySubscription;
-  late final StreamSubscription _messageSubscription;
 
   void init() {
     _updateUsedVocab();
     _setRolesSubscription();
     _setSummarySubscription();
     _setAnalyticsSubscription();
-    _setMessageSubscription();
 
     if (room.isActivityFinished && _summary == null) {
       _loadActivitySummary();
@@ -62,7 +60,6 @@ class ActivityChatController {
     _disposed = true;
     carouselController.dispose();
     _analyticsSubscription.cancel();
-    _messageSubscription.cancel();
     usedVocab.dispose();
     highlightedRole.dispose();
     showInstructions.dispose();
@@ -113,11 +110,6 @@ class ActivityChatController {
         .listen((_) => _updateUsedVocab());
   }
 
-  void _setMessageSubscription() {
-    _messageSubscription = room.client.onSync.stream
-        .listen((_) => _updateUsedVocab());
-  }
-
   void highlightRole(ActivityRoleModel role) {
     if (!_disposed) {
       highlightedRole.value = role;
@@ -143,28 +135,26 @@ class ActivityChatController {
     }
   }
 
-  void _updateUsedVocab() {
+  Future<void> _updateUsedVocab() async {
     final vocab = room.activityPlan?.vocab;
     if (vocab == null || _disposed) return;
 
     final vocabLemmas = vocab.map((v) => v.lemma.toLowerCase()).toSet();
     final used = <String>{};
 
-    final timeline = room.timeline;
-    if (timeline != null) {
-      for (final event in timeline.events) {
-        if (event.type != EventTypes.Message) continue;
-        final uses = PangeaMessageEvent(
-          event: event,
-          timeline: timeline,
-          ownMessage: event.senderId == userID,
-        ).originalSent?.vocabAndMorphUses;
-        if (uses == null) continue;
-        for (final use in uses) {
-          if (use.identifier.type == ConstructTypeEnum.vocab) {
-            final lemma = use.identifier.lemma.toLowerCase();
-            if (vocabLemmas.contains(lemma)) used.add(lemma);
-          }
+    final timeline = await room.getTimeline();
+    for (final event in timeline.events) {
+      if (event.type != EventTypes.Message) continue;
+      final uses = PangeaMessageEvent(
+        event: event,
+        timeline: timeline,
+        ownMessage: event.senderId == userID,
+      ).originalSent?.vocabAndMorphUses;
+      if (uses == null) continue;
+      for (final use in uses) {
+        if (use.identifier.type == ConstructTypeEnum.vocab) {
+          final lemma = use.identifier.lemma.toLowerCase();
+          if (vocabLemmas.contains(lemma)) used.add(lemma);
         }
       }
     }
