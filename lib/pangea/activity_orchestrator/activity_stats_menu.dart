@@ -9,6 +9,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/goal_status_widget.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_vocab_widget.dart';
@@ -17,10 +18,11 @@ import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
-class ActivityStatsMenu extends StatelessWidget {
+class ActivityStatsMenu extends StatefulWidget {
   final ValueNotifier<bool> visibilityNotifier;
   final void Function(bool) setVisibility;
   final ValueNotifier<Set<String>> usedVocab;
+  final ValueNotifier<ActivityRoleGoal?> activeGoalNotifier;
   final Room room;
 
   const ActivityStatsMenu({
@@ -28,12 +30,33 @@ class ActivityStatsMenu extends StatelessWidget {
     required this.setVisibility,
     required this.usedVocab,
     required this.room,
+    required this.activeGoalNotifier,
     super.key,
   });
 
+  @override
+  ActivityStatsMenuState createState() => ActivityStatsMenuState();
+}
+
+class ActivityStatsMenuState extends State<ActivityStatsMenu> {
+  ActivityRoleGoal? _currentGoal;
+
+  @override
+  void initState() {
+    super.initState();
+    _setCurrentGoal();
+    widget.activeGoalNotifier.addListener(_setCurrentGoal);
+  }
+
+  @override
+  void dispose() {
+    widget.activeGoalNotifier.removeListener(_setCurrentGoal);
+    super.dispose();
+  }
+
   bool get _isTwoPersonBotActivity {
-    final roles = room.activityRoles?.roles;
-    final assignedRoles = room.assignedRoles;
+    final roles = widget.room.activityRoles?.roles;
+    final assignedRoles = widget.room.assignedRoles;
     if (roles == null || assignedRoles == null) return false;
 
     return roles.length == 2 &&
@@ -42,68 +65,83 @@ class ActivityStatsMenu extends StatelessWidget {
         );
   }
 
-  bool get _activityComplete => room.isActivityFinished;
+  bool get _activityComplete => widget.room.isActivityFinished;
 
   bool get _showWaitNotDone =>
-      !_activityComplete && room.hasPickedRole && room.hasCompletedRole;
+      !_activityComplete &&
+      widget.room.hasPickedRole &&
+      widget.room.hasCompletedRole;
 
   bool get _showEndForMe =>
-      !_activityComplete && room.hasPickedRole && !room.hasCompletedRole;
+      !_activityComplete &&
+      widget.room.hasPickedRole &&
+      !widget.room.hasCompletedRole;
 
   bool get _showEndForAll =>
-      !_activityComplete && room.isRoomAdmin && !_isTwoPersonBotActivity;
+      !_activityComplete && widget.room.isRoomAdmin && !_isTwoPersonBotActivity;
 
-  bool get _showDoneButtonHint => _showEndForMe && room.hasCompletedOwnGoals;
+  bool get _showDoneButtonHint =>
+      _showEndForMe && widget.room.hasCompletedOwnGoals;
 
-  void _toggleVisibility() {
-    final value = visibilityNotifier.value;
-    setVisibility(!value);
-  }
+  List<ActivityRoleGoal> get _goals => widget.room.ownRole?.allGoals ?? [];
 
-  Future<void> _finishActivityForMe(BuildContext context) async {
-    final resp = await showFutureLoadingDialog(
-      context: context,
-      future: room.finishActivity,
-    );
+  List<ActivityRoleGoal> get _remainingGoals =>
+      _goals.where((g) => g.id != _currentGoal?.id).toList();
 
-    if (!resp.isError) {
-      setVisibility(false);
+  void _setCurrentGoal() {
+    final currentGoal = widget.room.currentGoal;
+    if (currentGoal == _currentGoal) return;
+    if (mounted) {
+      setState(() => _currentGoal = currentGoal);
     }
   }
 
-  Future<void> _finishActivityForAll(BuildContext context) async {
+  void _toggleVisibility() {
+    final value = widget.visibilityNotifier.value;
+    widget.setVisibility(!value);
+  }
+
+  Future<void> _finishActivityForMe() async {
     final resp = await showFutureLoadingDialog(
       context: context,
-      future: room.finishActivityForAll,
+      future: widget.room.finishActivity,
     );
 
     if (!resp.isError) {
-      setVisibility(false);
+      widget.setVisibility(false);
+    }
+  }
+
+  Future<void> _finishActivityForAll() async {
+    final resp = await showFutureLoadingDialog(
+      context: context,
+      future: widget.room.finishActivityForAll,
+    );
+
+    if (!resp.isError) {
+      widget.setVisibility(false);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (!room.showActivityChatUI) {
+    if (!widget.room.showActivityChatUI) {
       return const SizedBox.shrink();
     }
 
     final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
+    final activity = widget.room.activityPlan;
 
-    final goals = room.ownRole?.allGoals ?? [];
-    final activity = room.activityPlan;
-
-    // TODO ORCHESTRATOR: show active goal instead of first goal
-    final currentGoal = goals.firstOrNull;
-    final remainingGoals = goals.skip(1).toList();
+    final currentGoal = _currentGoal;
+    final remainingGoals = _remainingGoals;
 
     final goldColor = theme.brightness == Brightness.light
         ? AppConfig.gold
         : AppConfig.goldLight;
 
     return ValueListenableBuilder(
-      valueListenable: visibilityNotifier,
+      valueListenable: widget.visibilityNotifier,
       builder: (context, showDropdown, child) {
         return Positioned(
           top: 0,
@@ -132,7 +170,7 @@ class ActivityStatsMenu extends StatelessWidget {
                             Expanded(
                               child: GoalStatusWidget(
                                 goal: currentGoal,
-                                complete: room.isOwnGoalCompleted(
+                                complete: widget.room.isOwnGoalCompleted(
                                   currentGoal.id,
                                 ),
                                 starTarget: ActivitySessionConstants
@@ -141,7 +179,7 @@ class ActivityStatsMenu extends StatelessWidget {
                             ),
                             if (_showDoneButtonHint && !showDropdown)
                               InkWell(
-                                onTap: () => _finishActivityForMe(context),
+                                onTap: _finishActivityForMe,
                                 child: Container(
                                   padding: EdgeInsets.symmetric(
                                     vertical: 6.0,
@@ -176,7 +214,7 @@ class ActivityStatsMenu extends StatelessWidget {
                       child: GestureDetector(
                         onPanUpdate: (details) {
                           if (details.delta.dy < -2) {
-                            setVisibility(false);
+                            widget.setVisibility(false);
                           }
                         },
                         child: child,
@@ -217,7 +255,7 @@ class ActivityStatsMenu extends StatelessWidget {
                             .map(
                               (g) => GoalStatusWidget(
                                 goal: g,
-                                complete: room.isOwnGoalCompleted(g.id),
+                                complete: widget.room.isOwnGoalCompleted(g.id),
                               ),
                             )
                             .toList(),
@@ -230,12 +268,12 @@ class ActivityStatsMenu extends StatelessWidget {
                         vocab: activity.vocab,
                         langCode: activity.req.targetLanguage,
                         targetId: "activity-stats-menu-vocab",
-                        usedVocab: usedVocab,
+                        usedVocab: widget.usedVocab,
                         activityLangCode: activity.req.targetLanguage,
                       ),
                     if (_showWaitNotDone)
                       ElevatedButton(
-                        onPressed: room.continueActivity,
+                        onPressed: widget.room.continueActivity,
                         style: ElevatedButton.styleFrom(
                           side: BorderSide(
                             color: theme.brightness == Brightness.light
@@ -260,14 +298,14 @@ class ActivityStatsMenu extends StatelessWidget {
                       ),
                     if (_showEndForMe)
                       ElevatedButton(
-                        onPressed: () => _finishActivityForMe(context),
+                        onPressed: _finishActivityForMe,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: room.hasCompletedOwnGoals
+                          backgroundColor: widget.room.hasCompletedOwnGoals
                               ? goldColor
                               : theme.colorScheme.primaryContainer,
                           foregroundColor: theme.brightness == Brightness.light
                               ? null
-                              : room.hasCompletedOwnGoals
+                              : widget.room.hasCompletedOwnGoals
                               ? theme.colorScheme.surface
                               : theme.colorScheme.onPrimaryContainer,
                         ),
@@ -285,17 +323,18 @@ class ActivityStatsMenu extends StatelessWidget {
                       ),
                     if (_showEndForAll)
                       ElevatedButton(
-                        onPressed: () => _finishActivityForAll(context),
+                        onPressed: _finishActivityForAll,
                         style: ElevatedButton.styleFrom(
                           side: BorderSide(
-                            color: room.haveAllRolesCompletedAllGoals
+                            color: widget.room.haveAllRolesCompletedAllGoals
                                 ? goldColor
                                 : theme.brightness == Brightness.light
                                 ? theme.colorScheme.primary.withAlpha(120)
                                 : theme.colorScheme.primaryContainer,
                             width: 2,
                           ),
-                          foregroundColor: room.haveAllRolesCompletedAllGoals
+                          foregroundColor:
+                              widget.room.haveAllRolesCompletedAllGoals
                               ? goldColor
                               : theme.colorScheme.primary,
                           backgroundColor: theme.colorScheme.surface,

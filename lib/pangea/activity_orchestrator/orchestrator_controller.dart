@@ -53,8 +53,8 @@ class OrchestratorController {
   final StreamController<ActiveSuggestionModel?> suggestionStream =
       StreamController<ActiveSuggestionModel?>.broadcast();
 
-  final StreamController<List<ActivityRoleGoal>> goalCompletionStream =
-      StreamController<List<ActivityRoleGoal>>.broadcast();
+  final StreamController<void> goalCompletionStream =
+      StreamController<void>.broadcast();
 
   ActiveSuggestionModel? _activeSuggestion;
   final Set<ActivityRoleGoal> _seenAwardedGoals = {};
@@ -158,7 +158,7 @@ class OrchestratorController {
   void _onGoalCompletionEvent() {
     final updatedAwardedGoals = room.ownCompletedGoals.toSet();
     if (_seenAwardedGoals.length < updatedAwardedGoals.length) {
-      goalCompletionStream.add(room.ownCompletedGoals);
+      goalCompletionStream.add(null);
     }
     _seenAwardedGoals.addAll(updatedAwardedGoals);
   }
