@@ -1467,7 +1467,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-06-09 16:37:27.747484",
+    "@@last_modified": "2026-06-10 14:28:40.533228",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10944,6 +10944,11 @@
     },
     "showDeveloperOptionsDesc": "యాప్‌లో డౌన్‌లోడ్ విశ్లేషణలు మరియు వివరమైన సమాచారం ఎంపికలను చూపించడానికి డెవలపర్ ఎంపికలను ఆన్ చేయండి.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "బాట్ చేరడానికి వేచి ఉన్నాం...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

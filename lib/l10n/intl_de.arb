@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-06-09 16:37:07.368845",
+    "@@last_modified": "2026-06-10 14:28:24.732411",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9799,6 +9799,11 @@
     },
     "showDeveloperOptionsDesc": "Aktivieren Sie die Entwickleroptionen, um Download-Analysen und detaillierte Informationsoptionen in der gesamten App anzuzeigen.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Warten auf den Bot, um beizutreten...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

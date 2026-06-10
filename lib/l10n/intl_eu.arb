@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-09 16:37:04.398770",
+    "@@last_modified": "2026-06-10 14:28:22.037559",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9820,6 +9820,11 @@
     },
     "showDeveloperOptionsDesc": "Gaitu garatzaile aukerak aplikazioan zehar deskarga analitikak eta informazio xeheko aukerak erakusteko.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Bot-a jardueran sartzeko itxaroten...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

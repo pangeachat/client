@@ -2776,7 +2776,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-06-09 16:37:19.847496",
+    "@@last_modified": "2026-06-10 14:28:33.797964",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10896,6 +10896,11 @@
     },
     "showDeveloperOptionsDesc": "Ative as opções de desenvolvedor para mostrar análises de download e opções de informações detalhadas em todo o aplicativo.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Aguardando o bot entrar...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

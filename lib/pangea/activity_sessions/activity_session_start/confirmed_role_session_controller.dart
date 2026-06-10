@@ -13,7 +13,6 @@ import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activ
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/bot_join_error_dialog.dart';
 import 'package:fluffychat/pangea/bot/bot_room_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
-import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -142,41 +141,10 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   }
 
   Future<void> playWithBot() async {
-    final resp = await showFutureLoadingDialog(
+    await showDialog(
       context: context,
-      future: _playWithBot,
-      showError: (e) => e is! TimeoutException,
+      builder: (_) => PlayWithBotLoadingDialog(room: widget.room),
     );
-
-    if (!mounted) return;
-    if (resp.isError && resp.error is TimeoutException) {
-      await showDialog(
-        context: context,
-        builder: (_) => const BotJoinErrorDialog(),
-      );
-    }
-  }
-
-  Future<void> _playWithBot() async {
-    if (await isBotRoomMember) {
-      throw Exception("Bot is a member of the room");
-    }
-
-    final Future<({String roomId, StrippedStateEvent state})?> future = widget
-        .room
-        .client
-        .onRoomState
-        .stream
-        .where(
-          (state) =>
-              state.roomId == widget.room.id &&
-              state.state.type == PangeaEventTypes.activityRole &&
-              state.state.senderId == BotName.byEnvironment,
-        )
-        .first;
-
-    widget.room.invite(BotName.byEnvironment);
-    await future.timeout(const Duration(seconds: 5));
   }
 
   @override

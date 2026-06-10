@@ -3193,7 +3193,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-09 16:37:33.876306",
+    "@@last_modified": "2026-06-10 14:28:45.041456",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9492,6 +9492,11 @@
     },
     "showDeveloperOptionsDesc": "Toghe devloper opçions por mostar download analytics e detalhades info opçions throughout a app.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Bidinga bot to join...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

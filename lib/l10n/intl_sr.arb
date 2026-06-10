@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-09 16:37:48.020402",
+    "@@last_modified": "2026-06-10 14:28:55.403868",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10943,6 +10943,11 @@
     },
     "showDeveloperOptionsDesc": "Uključite opcije za programere da biste prikazali analitiku preuzimanja i detaljne informacije o opcijama u aplikaciji.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Čekam da se bot pridruži...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

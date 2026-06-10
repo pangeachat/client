@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-09 16:37:31.739433",
+    "@@last_modified": "2026-06-10 14:28:43.448780",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9936,6 +9936,11 @@
     },
     "showDeveloperOptionsDesc": "அப்ளிகேஷனில் பதிவிறக்கம் பகுப்பாய்வுகள் மற்றும் விரிவான தகவல் விருப்பங்களை காண developer விருப்பங்களை இயக்கவும்.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "போட்டுக்கு இணைவதற்காக காத்திருக்கிறேன்...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }
