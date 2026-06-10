@@ -1,30 +1,32 @@
 {
   "project_info": {
-    "project_number": "501707239068",
-    "project_id": "pangea-chat-staging-analytics",
-    "storage_bucket": "pangea-chat-staging-analytics.firebasestorage.app"
+    "project_number": "545984292675",
+    "firebase_url": "https://pangea-chat-936ee-default-rtdb.firebaseio.com",
+    "project_id": "pangea-chat-936ee",
+    "storage_bucket": "pangea-chat-936ee.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:501707239068:android:9d58554e787bd610904759",
+        "mobilesdk_app_id": "1:545984292675:android:d808acce7a80c20bb931f6",
         "android_client_info": {
           "package_name": "com.talktolearn.chat"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "545984292675-2amsnoan1mt6lec1fld1a7eagu6gej7o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyAlcXcU5qyXNjscVqQupPk0gbIvGDvz7gA"
+          "current_key": "AIzaSyAyWBbl83WXzbVr6txyCmlUsZhpWomQfdg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
-            {
-              "client_id": "545984292675-2amsnoan1mt6lec1fld1a7eagu6gej7o.apps.googleusercontent.com",
-              "client_type": 3
-            },
             {
               "client_id": "545984292675-f5p76l3h9sibsonrct7a8l9ca3c69at0.apps.googleusercontent.com",
               "client_type": 2,
