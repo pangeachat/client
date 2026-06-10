@@ -132,7 +132,7 @@ class PangeaController {
       case LoginState.softLoggedOut:
         GoogleAnalytics.cancelPendingLogin();
         _onLogout(context);
-        await GoogleAnalytics.analyticsUserUpdate(userID);
+        await GoogleAnalytics.analyticsUserUpdate(null);
         break;
       case LoginState.loggedIn:
         await GoogleAnalytics.analyticsUserUpdate(userID);
