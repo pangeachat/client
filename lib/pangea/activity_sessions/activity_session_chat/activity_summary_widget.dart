@@ -89,30 +89,28 @@ class ActivitySummary extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                color: theme.colorScheme.surface.withAlpha(128),
+                color: theme.colorScheme.surface.withAlpha(180),
                 borderRadius: BorderRadius.circular(12.0),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: .start,
-                  spacing: 16.0,
-                  children: [
-                    Text(
-                      activity.description,
-                      style: theme.textTheme.bodyMedium,
-                    ),
-                    const Divider(height: 1),
-                    ActivityVocabWidget(
-                      key: ValueKey("activity-summary-${activity.activityId}"),
-                      vocab: activity.vocab,
-                      langCode: activity.req.targetLanguage,
-                      targetId: "activity-summary-vocab",
-                      activityLangCode: activity.req.targetLanguage,
-                      usedVocab: usedVocab,
-                    ),
-                  ],
-                ),
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: .start,
+                spacing: 16.0,
+                children: [
+                  Text(
+                    activity.description,
+                    style: TextStyle(fontSize: AppConfig.messageFontSize),
+                  ),
+                  const Divider(height: 1),
+                  ActivityVocabWidget(
+                    key: ValueKey("activity-summary-${activity.activityId}"),
+                    vocab: activity.vocab,
+                    langCode: activity.req.targetLanguage,
+                    targetId: "activity-summary-vocab",
+                    activityLangCode: activity.req.targetLanguage,
+                    usedVocab: usedVocab,
+                  ),
+                ],
               ),
             ),
           ],

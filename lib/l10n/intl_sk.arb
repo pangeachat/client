@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-06-08 14:15:14.527182",
+    "@@last_modified": "2026-06-09 16:36:55.289387",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -2513,7 +2513,6 @@
     "inactive": "Neaktívne",
     "confirmRole": "Potvrdiť rolu",
     "openRoleLabel": "OTVORENÁ",
-    "joinedTheActivity": "👋 {username} sa pripojil ako {role}",
     "finishedTheActivity": "🎯 {username} ukončil túto aktivitu",
     "activitySummaryError": "Prehľady aktivít nie sú dostupné",
     "requestSummaries": "Požiadať o prehľady",
@@ -7535,17 +7534,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -10943,6 +10931,11 @@
     },
     "showDeveloperOptions": "Zobraziť možnosti vývojára",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Zapnite možnosti vývojára, aby ste zobrazili analytiku sťahovania a podrobné možnosti informácií v celej aplikácii.",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }

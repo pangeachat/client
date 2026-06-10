@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-06-08 14:15:07.801010",
+    "@@last_modified": "2026-06-09 16:36:46.873629",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -4389,7 +4389,6 @@
     "inactive": "Inactivo",
     "confirmRole": "Confirmar rol",
     "openRoleLabel": "ABIERTO",
-    "joinedTheActivity": "👋 {username} se unió como {role}",
     "finishedTheActivity": "🎯 {username} finalizó esta actividad",
     "activitySummaryError": "Resúmenes de actividades no disponibles",
     "requestSummaries": "Solicitar resúmenes",
@@ -4588,17 +4587,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -7921,6 +7909,11 @@
     },
     "showDeveloperOptions": "Mostrar opciones de desarrollador",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Activa las opciones de desarrollador para mostrar análisis de descargas y opciones de información detallada en toda la aplicación.",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }

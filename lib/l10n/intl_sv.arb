@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 14:15:50.783017",
+    "@@last_modified": "2026-06-09 16:37:40.629413",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -3410,7 +3410,6 @@
     "inactive": "Inaktiv",
     "confirmRole": "Bekräfta roll",
     "openRoleLabel": "ÖPPEN",
-    "joinedTheActivity": "👋 {username} gick med som {role}",
     "finishedTheActivity": "🎯 {username} avslutade denna aktivitet",
     "activitySummaryError": "Sammanfattningar av aktivitet är otillgängliga",
     "requestSummaries": "Begär sammanfattningar",
@@ -7006,17 +7005,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -10414,6 +10402,11 @@
     },
     "showDeveloperOptions": "Visa utvecklaralternativ",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Aktivera utvecklaralternativ för att visa nedladdningsanalys och detaljerade informationsalternativ i hela appen.",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }

@@ -3839,7 +3839,6 @@
     "inactive": "Neaktīvs",
     "confirmRole": "Apstiprināt lomu",
     "openRoleLabel": "ATVĒRTS",
-    "joinedTheActivity": "👋 {username} pievienojās kā {role}",
     "finishedTheActivity": "🎯 {username} pabeidza šo aktivitāti",
     "activitySummaryError": "Aktivitātes kopsavilkumi nav pieejami",
     "requestSummaries": "Pieprasīt kopsavilkumus",
@@ -3920,7 +3919,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-06-08 14:15:36.890629",
+    "@@last_modified": "2026-06-09 16:37:24.471174",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -6656,17 +6655,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9827,6 +9815,11 @@
     },
     "showDeveloperOptions": "Rādīt izstrādātāja opcijas",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Ieslēdziet izstrādātāja opcijas, lai parādītu lejupielādes analītiku un detalizētu informāciju par opcijām visā lietotnē.",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }

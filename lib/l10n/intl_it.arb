@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 14:15:25.926378",
+    "@@last_modified": "2026-06-09 16:37:11.039408",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -3737,7 +3737,6 @@
     "inactive": "Inattivo",
     "confirmRole": "Conferma ruolo",
     "openRoleLabel": "APERTO",
-    "joinedTheActivity": "👋 {username} si è unito come {role}",
     "finishedTheActivity": "🎯 {username} ha concluso questa attività",
     "activitySummaryError": "Riepiloghi dell'attività non disponibili",
     "requestSummaries": "Richiedi riepiloghi",
@@ -6549,17 +6548,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9918,6 +9906,11 @@
     },
     "showDeveloperOptions": "Mostra opzioni sviluppatore",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Attiva le opzioni sviluppatore per mostrare le analisi di download e le opzioni di informazioni dettagliate in tutta l'app.",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }

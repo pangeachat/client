@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-06-08 14:15:23.112821",
+    "@@last_modified": "2026-06-09 16:37:07.368845",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -3881,7 +3881,6 @@
     "inactive": "Inaktiv",
     "confirmRole": "Rolle bestätigen",
     "openRoleLabel": "OFFEN",
-    "joinedTheActivity": "👋 {username} ist als {role} beigetreten",
     "finishedTheActivity": "🎯 {username} hat diese Aktivität beendet",
     "activitySummaryError": "Aktivitätszusammenfassungen nicht verfügbar",
     "requestSummaries": "Zusammenfassungen anfordern",
@@ -6688,17 +6687,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9806,6 +9794,11 @@
     },
     "showDeveloperOptions": "Entwickleroptionen anzeigen",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Aktivieren Sie die Entwickleroptionen, um Download-Analysen und detaillierte Informationsoptionen in der gesamten App anzuzeigen.",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }

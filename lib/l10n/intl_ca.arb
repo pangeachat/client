@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 14:15:30.763491",
+    "@@last_modified": "2026-06-09 16:37:17.591047",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -3690,7 +3690,6 @@
     "inactive": "Inactiu",
     "confirmRole": "Confirma el rol",
     "openRoleLabel": "OBERT",
-    "joinedTheActivity": "👋 {username} s'ha unit com a {role}",
     "finishedTheActivity": "🎯 {username} ha finalitzat aquesta activitat",
     "activitySummaryError": "Resum d'activitats no disponible",
     "requestSummaries": "Sol·licitar resums",
@@ -6569,17 +6568,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9978,6 +9966,11 @@
     },
     "showDeveloperOptions": "Mostra les opcions de desenvolupador",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Activa les opcions de desenvolupador per mostrar l'analítica de descàrregues i les opcions d'informació detallada a tota l'aplicació.",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }

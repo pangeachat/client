@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 14:15:47.098324",
+    "@@last_modified": "2026-06-09 16:37:35.928664",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -3287,7 +3287,6 @@
     "inactive": "অচল",
     "confirmRole": "ভূমিকা নিশ্চিত করুন",
     "openRoleLabel": "খোলা",
-    "joinedTheActivity": "👋 {username} {role} হিসেবে যোগ দিয়েছেন",
     "finishedTheActivity": "🎯 {username} এই কার্যক্রম শেষ করেছেন",
     "activitySummaryError": "কার্যক্রমের সারাংশ উপলব্ধ নয়",
     "requestSummaries": "সারাংশের জন্য অনুরোধ করুন",
@@ -7134,17 +7133,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -10542,6 +10530,11 @@
     },
     "showDeveloperOptions": "ডেভেলপার অপশনগুলি দেখান",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "ডেভেলপার অপশন চালু করুন যাতে অ্যাপের মধ্যে ডাউনলোড বিশ্লেষণ এবং বিস্তারিত তথ্য অপশনগুলি দেখানো হয়।",
+    "@showDeveloperOptionsDesc": {
         "type": "String",
         "placeholders": {}
     }
