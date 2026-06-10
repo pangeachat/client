@@ -32,7 +32,7 @@ class WebEnableAutocorrectDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog.adaptive(
-      title: Text(L10n.of(context).enableAutocorrectWarning),
+      title: Text(L10n.of(context).notAvailable),
       content: SingleChildScrollView(
         child: Column(
           spacing: 8.0,
