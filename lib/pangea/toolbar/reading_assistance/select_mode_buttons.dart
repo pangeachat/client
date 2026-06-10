@@ -711,8 +711,7 @@ class _MoreButton extends StatelessWidget {
         return events.length == 1 &&
             events.single.messageType == MessageTypes.Text;
       case MessageActions.download:
-        return controller.canSaveSelectedEvent &&
-            MatrixState.pangeaController.userController.showDeveloperOptions;
+        return controller.canSaveSelectedEvent;
       case MessageActions.pin:
         return controller.canPinSelectedEvents && !isPinned;
       case MessageActions.unpin:
