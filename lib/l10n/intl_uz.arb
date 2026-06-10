@@ -3856,7 +3856,6 @@
     "inactive": "Faol emas",
     "confirmRole": "Rolni tasdiqlash",
     "openRoleLabel": "OCHIQ",
-    "joinedTheActivity": "👋 {username} {role} sifatida qo'shildi",
     "finishedTheActivity": "🎯 {username} bu faoliyatni yakunladi",
     "activitySummaryError": "Faoliyatlar haqida ma'lumotlar mavjud emas",
     "requestSummaries": "So'rovlar xulosasi",
@@ -7069,17 +7068,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

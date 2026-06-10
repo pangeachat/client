@@ -3690,7 +3690,6 @@
     "inactive": "Inactiu",
     "confirmRole": "Confirma el rol",
     "openRoleLabel": "OBERT",
-    "joinedTheActivity": "👋 {username} s'ha unit com a {role}",
     "finishedTheActivity": "🎯 {username} ha finalitzat aquesta activitat",
     "activitySummaryError": "Resum d'activitats no disponible",
     "requestSummaries": "Sol·licitar resums",
@@ -6569,17 +6568,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

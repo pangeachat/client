@@ -3604,7 +3604,6 @@
     "inactive": "غير نشط",
     "confirmRole": "تأكيد الدور",
     "openRoleLabel": "مفتوح",
-    "joinedTheActivity": "👋 {username} انضم كـ {role}",
     "finishedTheActivity": "🎯 {username} أنهى هذا النشاط",
     "activitySummaryError": "ملخصات النشاط غير متوفرة",
     "requestSummaries": "طلب الملخصات",
@@ -6758,17 +6757,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

@@ -3854,7 +3854,6 @@
     "inactive": "Neamhghníomhach",
     "confirmRole": "Deimhnigh ról",
     "openRoleLabel": "OSCAIL",
-    "joinedTheActivity": "👋 {username} d'fháiltigh isteach mar {role}",
     "finishedTheActivity": "🎯 {username} chríochnaigh an gníomhaíocht seo",
     "activitySummaryError": "Ní féidir achoimrigh gníomhaíochta a fháil",
     "requestSummaries": "Iarr achoimrigh",
@@ -6663,17 +6662,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

@@ -2966,7 +2966,6 @@
     "inactive": "Nekonata",
     "confirmRole": "Konfirmu rolon",
     "openRoleLabel": "Malfermita",
-    "joinedTheActivity": "👋 {username} aliĝis kiel {role}",
     "finishedTheActivity": "🎯 {username} finis ĉi tiun agadon",
     "activitySummaryError": "Aktivitatresumoj ne disponeblas",
     "requestSummaries": "Petaj resumoj",
@@ -7537,17 +7536,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

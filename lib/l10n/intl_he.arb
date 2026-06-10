@@ -2474,7 +2474,6 @@
     "inactive": "לא פעיל",
     "confirmRole": "אשר תפקיד",
     "openRoleLabel": "פתוח",
-    "joinedTheActivity": "👋 {username} הצטרף כ-{role}",
     "finishedTheActivity": "🎯 {username} סיים את הפעילות הזו",
     "activitySummaryError": "סיכומי הפעילות אינם זמינים",
     "requestSummaries": "בקש סיכומים",
@@ -7497,17 +7496,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

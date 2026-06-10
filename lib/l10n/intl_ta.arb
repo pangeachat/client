@@ -3724,7 +3724,6 @@
     "inactive": "செயலற்றது",
     "confirmRole": "பங்கு உறுதிப்படுத்தவும்",
     "openRoleLabel": "திறந்தது",
-    "joinedTheActivity": "👋 {username} {role} ஆக சேர்ந்தார்",
     "finishedTheActivity": "🎯 {username} இந்த செயல்பாட்டை முடித்தார்",
     "activitySummaryError": "செயல்பாட்டு சுருக்கங்கள் கிடைக்கவில்லை",
     "requestSummaries": "சுருக்கங்களை கோரவும்",
@@ -6544,17 +6543,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

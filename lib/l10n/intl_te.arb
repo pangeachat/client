@@ -1373,7 +1373,6 @@
     "inactive": "చురుకైనది కాదు",
     "confirmRole": "పాత్రను నిర్ధారించండి",
     "openRoleLabel": "తెరవుట",
-    "joinedTheActivity": "👋 {username} పాత్రగా చేరారు",
     "finishedTheActivity": "🎯 {username} ఈ కార్యకలాపాన్ని ముగించారు",
     "activitySummaryError": "కార్యకలాప సారాంశాలు అందుబాటులో లేవు",
     "requestSummaries": "సారాంశాలను అభ్యర్థించండి",
@@ -7542,14 +7541,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

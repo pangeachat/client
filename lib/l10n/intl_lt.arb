@@ -3151,7 +3151,6 @@
     "inactive": "Nekeičiama",
     "confirmRole": "Patvirtinti vaidmenį",
     "openRoleLabel": "ATVIRAS",
-    "joinedTheActivity": "👋 {username} prisijungė kaip {role}",
     "finishedTheActivity": "🎯 {username} užbaigė šią veiklą",
     "activitySummaryError": "Veiklos santraukų nėra",
     "requestSummaries": "Prašyti santraukų",
@@ -7304,17 +7303,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

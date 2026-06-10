@@ -3849,7 +3849,6 @@
     "inactive": "Неактивний",
     "confirmRole": "Підтвердити роль",
     "openRoleLabel": "ВІДКРИТА",
-    "joinedTheActivity": "👋 {username} приєднався як {role}",
     "finishedTheActivity": "🎯 {username} завершив цю активність",
     "activitySummaryError": "Зведення активностей недоступне",
     "requestSummaries": "Запитати зведення",
@@ -6656,17 +6655,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

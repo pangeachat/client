@@ -3378,7 +3378,6 @@
     "inactive": "Neaktivní",
     "confirmRole": "Potvrdit roli",
     "openRoleLabel": "Otevřeno",
-    "joinedTheActivity": "👋 {username} se připojil jako {role}",
     "finishedTheActivity": "🎯 {username} ukončil tuto aktivitu",
     "activitySummaryError": "Souhrny aktivit nejsou k dispozici",
     "requestSummaries": "Požádat o souhrny",
@@ -6986,17 +6985,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

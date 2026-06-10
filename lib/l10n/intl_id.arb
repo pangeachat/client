@@ -3733,7 +3733,6 @@
     "inactive": "Tidak aktif",
     "confirmRole": "Konfirmasi peran",
     "openRoleLabel": "TERBUKA",
-    "joinedTheActivity": "👋 {username} bergabung sebagai {role}",
     "finishedTheActivity": "🎯 {username} menyelesaikan aktivitas ini",
     "activitySummaryError": "Ringkasan aktivitas tidak tersedia",
     "requestSummaries": "Minta ringkasan",
@@ -6545,17 +6544,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

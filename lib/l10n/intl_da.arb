@@ -1383,7 +1383,6 @@
     "inactive": "Inaktiv",
     "confirmRole": "Bekræft rolle",
     "openRoleLabel": "ÅBEN",
-    "joinedTheActivity": "👋 {username} deltog som {role}",
     "finishedTheActivity": "🎯 {username} afsluttede denne aktivitet",
     "activitySummaryError": "Aktivitetsoversigter er ikke tilgængelige",
     "requestSummaries": "Anmod om oversigter",
@@ -7512,17 +7511,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

@@ -3623,7 +3623,6 @@
     "inactive": "Pasif",
     "confirmRole": "Rolü onayla",
     "openRoleLabel": "AÇIK",
-    "joinedTheActivity": "👋 {username} {role} olarak katıldı",
     "finishedTheActivity": "🎯 {username} bu etkinliği tamamladı",
     "activitySummaryError": "Etkinlik özetleri kullanılamıyor",
     "requestSummaries": "Özetleri talep et",
@@ -6749,17 +6748,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

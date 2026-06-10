@@ -3712,7 +3712,6 @@
     "inactive": "Inaktiv",
     "confirmRole": "Bekreft rolle",
     "openRoleLabel": "ÅPEN",
-    "joinedTheActivity": "👋 {username} ble med som {role}",
     "finishedTheActivity": "🎯 {username} avsluttet denne aktiviteten",
     "activitySummaryError": "Aktivitetsoppsummeringer er utilgjengelige",
     "requestSummaries": "Be om oppsummeringer",
@@ -6711,17 +6710,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

@@ -3283,7 +3283,6 @@
     "inactive": "निष्क्रिय",
     "confirmRole": "भूमिका की पुष्टि करें",
     "openRoleLabel": "खुली",
-    "joinedTheActivity": "👋 {username} ने {role} के रूप में भाग लिया",
     "finishedTheActivity": "🎯 {username} ने इस गतिविधि को पूरा किया",
     "activitySummaryError": "गतिविधि सारांश उपलब्ध नहीं है",
     "requestSummaries": "सारांश अनुरोध करें",
@@ -7137,17 +7136,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

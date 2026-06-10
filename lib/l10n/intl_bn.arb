@@ -3287,7 +3287,6 @@
     "inactive": "অচল",
     "confirmRole": "ভূমিকা নিশ্চিত করুন",
     "openRoleLabel": "খোলা",
-    "joinedTheActivity": "👋 {username} {role} হিসেবে যোগ দিয়েছেন",
     "finishedTheActivity": "🎯 {username} এই কার্যক্রম শেষ করেছেন",
     "activitySummaryError": "কার্যক্রমের সারাংশ উপলব্ধ নয়",
     "requestSummaries": "সারাংশের জন্য অনুরোধ করুন",
@@ -7133,17 +7132,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

@@ -3283,7 +3283,6 @@
     "inactive": "ไม่ทำงาน",
     "confirmRole": "ยืนยันบทบาท",
     "openRoleLabel": "เปิด",
-    "joinedTheActivity": "👋 {username} เข้าร่วมเป็น {role}",
     "finishedTheActivity": "🎯 {username} สรุปกิจกรรมนี้",
     "activitySummaryError": "ไม่สามารถดูสรุปกิจกรรมได้",
     "requestSummaries": "ขอสรุปข้อมูล",
@@ -7137,17 +7136,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

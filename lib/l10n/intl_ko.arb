@@ -3668,7 +3668,6 @@
     "inactive": "비활성",
     "confirmRole": "역할 확인",
     "openRoleLabel": "오픈",
-    "joinedTheActivity": "👋 {username}님이 {role}로 참여하셨습니다",
     "finishedTheActivity": "🎯 {username}님이 이 활동을 마무리하셨습니다",
     "activitySummaryError": "활동 요약을 사용할 수 없습니다",
     "requestSummaries": "요약 요청",
@@ -6635,17 +6634,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

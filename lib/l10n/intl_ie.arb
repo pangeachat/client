@@ -3283,7 +3283,6 @@
     "inactive": "Inactiv",
     "confirmRole": "Confirma le role",
     "openRoleLabel": "APERTE",
-    "joinedTheActivity": "👋 {username} s'atactivava como {role}",
     "finishedTheActivity": "🎯 {username} ha finita iste activitate",
     "activitySummaryError": "Summarios de activitate non disponibile",
     "requestSummaries": "Requerer summarios",
@@ -7137,17 +7136,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
