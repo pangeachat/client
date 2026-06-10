@@ -2513,7 +2513,6 @@
     "inactive": "Neaktívne",
     "confirmRole": "Potvrdiť rolu",
     "openRoleLabel": "OTVORENÁ",
-    "joinedTheActivity": "👋 {username} sa pripojil ako {role}",
     "finishedTheActivity": "🎯 {username} ukončil túto aktivitu",
     "activitySummaryError": "Prehľady aktivít nie sú dostupné",
     "requestSummaries": "Požiadať o prehľady",
@@ -7534,17 +7533,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

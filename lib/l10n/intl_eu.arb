@@ -3849,7 +3849,6 @@
     "inactive": "Erlaxia",
     "confirmRole": "Berretsi rola",
     "openRoleLabel": "IREKIA",
-    "joinedTheActivity": "👋 {username} {role} bezala batu da",
     "finishedTheActivity": "🎯 {username} jarduera hau amaitu du",
     "activitySummaryError": "Jarduera laburpenak ez daude eskuragarri",
     "requestSummaries": "Eskatu laburpenak",
@@ -6656,17 +6655,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

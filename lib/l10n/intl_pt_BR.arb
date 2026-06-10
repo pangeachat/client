@@ -3848,7 +3848,6 @@
     "inactive": "Inativo",
     "confirmRole": "Confirmar papel",
     "openRoleLabel": "ABERTO",
-    "joinedTheActivity": "👋 {username} entrou como {role}",
     "finishedTheActivity": "🎯 {username} encerrou esta atividade",
     "activitySummaryError": "Resumos de atividades indisponíveis",
     "requestSummaries": "Solicitar resumos",
@@ -6668,17 +6667,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

@@ -2004,7 +2004,6 @@
     "inactive": "არაქტიული",
     "confirmRole": "დადასტურება როლი",
     "openRoleLabel": "ღია",
-    "joinedTheActivity": "👋 {username} შეუერთდა როგორც {role}",
     "finishedTheActivity": "🎯 {username} დასრულდა ეს აქტივობა",
     "activitySummaryError": "აქტივობის მიმოხილვები ხელმისაწვდომი არაა",
     "requestSummaries": "მოთხოვნა მიმოხილვებისთვის",
@@ -7486,17 +7485,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

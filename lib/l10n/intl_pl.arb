@@ -3726,7 +3726,6 @@
     "inactive": "Nieaktywne",
     "confirmRole": "Potwierdź rolę",
     "openRoleLabel": "OTWARTA",
-    "joinedTheActivity": "👋 {username} dołączył jako {role}",
     "finishedTheActivity": "🎯 {username} zakończył tę aktywność",
     "activitySummaryError": "Podsumowania aktywności niedostępne",
     "requestSummaries": "Żądaj podsumowań",
@@ -6537,17 +6536,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

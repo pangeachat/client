@@ -3135,7 +3135,6 @@
     "inactive": "非アクティブ",
     "confirmRole": "役割を確認",
     "openRoleLabel": "開く",
-    "joinedTheActivity": "👋 {username} が {role} として参加しました",
     "finishedTheActivity": "🏆 {username} がこの活動を終了しました",
     "activitySummaryError": "活動の概要を利用できません",
     "requestSummaries": "概要をリクエスト",
@@ -7286,17 +7285,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

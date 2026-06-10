@@ -3230,7 +3230,6 @@
     "inactive": "Không hoạt động",
     "confirmRole": "Xác nhận vai trò",
     "openRoleLabel": "MỞ",
-    "joinedTheActivity": "👋 {username} đã tham gia với vai trò {role}",
     "finishedTheActivity": "🎯 {username} đã kết thúc hoạt động này",
     "activitySummaryError": "Không thể lấy tóm tắt hoạt động",
     "requestSummaries": "Yêu cầu tóm tắt",
@@ -3473,17 +3472,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

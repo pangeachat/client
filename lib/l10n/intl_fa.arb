@@ -3723,7 +3723,6 @@
     "inactive": "غیرفعال",
     "confirmRole": "تایید نقش",
     "openRoleLabel": "باز",
-    "joinedTheActivity": "👋 {username} به عنوان {role} پیوست",
     "finishedTheActivity": "🎯 {username} این فعالیت را پایان داد",
     "activitySummaryError": "خلاصه فعالیت‌ها در دسترس نیست",
     "requestSummaries": "درخواست خلاصه‌ها",
@@ -6535,17 +6534,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

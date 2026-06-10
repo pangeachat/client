@@ -3119,7 +3119,6 @@
     "inactive": "མིན་ལུས་",
     "confirmRole": "ལས་ཀ་རྟག་པ་འབད།",
     "openRoleLabel": "གཙོ་བོ",
-    "joinedTheActivity": "👋 {username} ལས་སྤྱོད་འདི་ལ་ལོག་འགྱོ། {role}",
     "finishedTheActivity": "🎯 {username} འདི་ལ་སྤྱོད་འདུག",
     "activitySummaryError": "ལས་ཀ་རྒྱབ་སྤྱོད་འབད་མི་ཚུལ།",
     "requestSummaries": "ལོག་ལ་དབྱར་བ་འདི་ལ་བཀོད་རོགས།",
@@ -6500,17 +6499,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

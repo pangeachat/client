@@ -3839,7 +3839,6 @@
     "inactive": "Neaktīvs",
     "confirmRole": "Apstiprināt lomu",
     "openRoleLabel": "ATVĒRTS",
-    "joinedTheActivity": "👋 {username} pievienojās kā {role}",
     "finishedTheActivity": "🎯 {username} pabeidza šo aktivitāti",
     "activitySummaryError": "Aktivitātes kopsavilkumi nav pieejami",
     "requestSummaries": "Pieprasīt kopsavilkumus",
@@ -6656,17 +6655,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

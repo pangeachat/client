@@ -3849,7 +3849,6 @@
     "inactive": "不活跃",
     "confirmRole": "确认角色",
     "openRoleLabel": "开放",
-    "joinedTheActivity": "👋 {username} 作为 {role} 加入",
     "finishedTheActivity": "🎯 {username} 完成了此次活动",
     "activitySummaryError": "无法获取活动总结",
     "requestSummaries": "请求总结",
@@ -6656,17 +6655,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

@@ -3604,7 +3604,6 @@
     "inactive": "Inactif",
     "confirmRole": "Confirmer le rôle",
     "openRoleLabel": "OUVERT",
-    "joinedTheActivity": "👋 {username} a rejoint en tant que {role}",
     "finishedTheActivity": "🎯 {username} a terminé cette activité",
     "activitySummaryError": "Résumé des activités indisponible",
     "requestSummaries": "Demander des résumés",
@@ -6830,17 +6829,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

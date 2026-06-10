@@ -1300,7 +1300,6 @@
     "inactive": "未啟用",
     "confirmRole": "確認角色",
     "openRoleLabel": "開放",
-    "joinedTheActivity": "👋 {username} 以 {role} 身份加入",
     "finishedTheActivity": "🎯 {username} 完成了此活動",
     "activitySummaryError": "活動摘要暫時無法取得",
     "requestSummaries": "請求摘要",
@@ -7176,17 +7175,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

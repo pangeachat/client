@@ -3211,7 +3211,6 @@
     "inactive": "Inactiv",
     "confirmRole": "Confirmă rolul",
     "openRoleLabel": "DESCHIS",
-    "joinedTheActivity": "👋 {username} s-a alăturat ca {role}",
     "finishedTheActivity": "🎯 {username} a încheiat această activitate",
     "activitySummaryError": "Rezumatul activităților indisponibil",
     "requestSummaries": "Solicită rezumate",
@@ -7243,17 +7242,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

@@ -3677,7 +3677,6 @@
     "inactive": "Ανενεργό",
     "confirmRole": "Επιβεβαίωση ρόλου",
     "openRoleLabel": "ΑΝΟΙΧΤΟ",
-    "joinedTheActivity": "👋 {username} συμμετείχε ως {role}",
     "finishedTheActivity": "🎯 {username} ολοκλήρωσε αυτήν τη δραστηριότητα",
     "activitySummaryError": "Οι περιλήψεις δραστηριοτήτων δεν είναι διαθέσιμες",
     "requestSummaries": "Αιτήματα περιλήψεων",
@@ -7467,17 +7466,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

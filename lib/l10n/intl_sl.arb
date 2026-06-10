@@ -1868,7 +1868,6 @@
     "inactive": "Neaktivno",
     "confirmRole": "Potrdi vlogo",
     "openRoleLabel": "ODPRTO",
-    "joinedTheActivity": "👋 {username} se je pridružil kot {role}",
     "finishedTheActivity": "🎯 {username} je zaključil to dejavnost",
     "activitySummaryError": "Povzetki dejavnosti niso na voljo",
     "requestSummaries": "Zahtevaj povzetke",
@@ -7534,17 +7533,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

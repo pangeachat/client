@@ -6519,7 +6519,6 @@
     "inactive": "Mitteaktiivne",
     "confirmRole": "Kinnita roll",
     "openRoleLabel": "AVATUD",
-    "joinedTheActivity": "👋 {username} liitus rolliga {role}",
     "finishedTheActivity": "🎯 {username} lõpetas selle tegevuse",
     "activitySummaryError": "Tegevuste kokkuvõtteid pole saadaval",
     "requestSummaries": "Paluda kokkuvõtteid",
@@ -6667,17 +6666,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

@@ -2151,7 +2151,6 @@
     "inactive": "Hindi Aktibo",
     "confirmRole": "Kumpirmahin ang papel",
     "openRoleLabel": "BUKAS",
-    "joinedTheActivity": "👋 {username} ay sumali bilang {role}",
     "finishedTheActivity": "🎯 {username} ay nagtapos sa gawaing ito",
     "activitySummaryError": "Hindi magagamit ang mga buod ng gawain",
     "requestSummaries": "Humiling ng mga buod",
@@ -7449,17 +7448,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",

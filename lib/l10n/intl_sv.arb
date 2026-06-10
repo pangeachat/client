@@ -3410,7 +3410,6 @@
     "inactive": "Inaktiv",
     "confirmRole": "Bekräfta roll",
     "openRoleLabel": "ÖPPEN",
-    "joinedTheActivity": "👋 {username} gick med som {role}",
     "finishedTheActivity": "🎯 {username} avslutade denna aktivitet",
     "activitySummaryError": "Sammanfattningar av aktivitet är otillgängliga",
     "requestSummaries": "Begär sammanfattningar",
@@ -7005,17 +7004,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
