@@ -149,6 +149,8 @@ class ActivityChatController {
     final used = <String>{};
 
     final timeline = await room.getTimeline();
+    await timeline.requestHistory();
+
     for (final event in timeline.events) {
       if (event.type != EventTypes.Message) continue;
       final uses = PangeaMessageEvent(
