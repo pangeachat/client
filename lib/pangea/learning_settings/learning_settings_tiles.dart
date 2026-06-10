@@ -51,10 +51,13 @@ class LearningSettingsTiles extends StatelessWidget {
             ),
             _LearningSettingsExpansionTile(
               viewModel: viewModel,
-              onEnableAutocorrect: () => showDialog(
-                context: context,
-                builder: (context) => EnableAutocorrectDialog(),
-              ),
+              onEnableAutocorrect: () async {
+                final resp = await showDialog(
+                  context: context,
+                  builder: (context) => EnableAutocorrectDialog(),
+                );
+                return resp == false ? false : true;
+              },
             ),
           ],
         ),
@@ -199,7 +202,7 @@ class _UserProfileExpansionTile extends StatelessWidget {
 
 class _LearningSettingsExpansionTile extends StatelessWidget {
   final LearningSettingsViewModel viewModel;
-  final VoidCallback onEnableAutocorrect;
+  final Future<bool> Function() onEnableAutocorrect;
   const _LearningSettingsExpansionTile({
     required this.viewModel,
     required this.onEnableAutocorrect,
@@ -237,14 +240,30 @@ class _LearningSettingsExpansionTile extends StatelessWidget {
                 defaultValue: viewModel.getToolSetting(setting),
                 title: setting.toolName(context),
                 subtitle: setting.toolDescription(context),
-                onChange: (v) {
-                  viewModel.updateToolSetting(setting, v);
+                onChange: (v) async {
                   if (v && setting == ToolSetting.enableAutocorrect) {
-                    onEnableAutocorrect();
+                    final enabled = await onEnableAutocorrect();
+                    if (!enabled) return;
                   }
+                  viewModel.updateToolSetting(setting, v);
                 },
               ),
             ),
+        SwitchListTile.adaptive(
+          value: viewModel.getToolSetting(ToolSetting.enableAutocorrect),
+          title: Text(ToolSetting.enableAutocorrect.toolName(context)),
+          subtitle: Text(
+            ToolSetting.enableAutocorrect.toolDescription(context),
+          ),
+          activeThumbColor: AppConfig.activeToggleColor,
+          onChanged: (v) async {
+            if (v) {
+              final enabled = await onEnableAutocorrect();
+              if (!enabled) return;
+            }
+            viewModel.updateToolSetting(ToolSetting.enableAutocorrect, v);
+          },
+        ),
         SwitchListTile.adaptive(
           value: viewModel.showDeveloperOptions,
           title: Text(L10n.of(context).showDeveloperOptions),

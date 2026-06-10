@@ -469,13 +469,16 @@ class TtsController {
       }
       text = text.toLowerCase();
 
-      try {
-        final speedRange = await _tts.getSpeechRateValidRange;
-        _tts.setSpeechRate(speed * speedRange.normal);
-      } catch (e, s) {
-        error_handler.ErrorHandler.logError(e: e, s: s, data: {'text': text});
+      double setSpeed = speed;
+      if (!kIsWeb) {
+        try {
+          final speedRange = await _tts.getSpeechRateValidRange;
+          setSpeed = speed * speedRange.normal;
+        } catch (e, s) {
+          error_handler.ErrorHandler.logError(e: e, s: s, data: {'text': text});
+        }
       }
-
+      _tts.setSpeechRate(setSpeed);
       await Future(() => (_tts.speak(text)));
       _log('Audio playback from device completed', tid);
       return true;
