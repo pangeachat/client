@@ -468,7 +468,14 @@ class TtsController {
         await _tts.setVoice(voice);
       }
       text = text.toLowerCase();
-      _tts.setSpeechRate(speed);
+
+      try {
+        final speedRange = await _tts.getSpeechRateValidRange;
+        _tts.setSpeechRate(speed * speedRange.normal);
+      } catch (e, s) {
+        error_handler.ErrorHandler.logError(e: e, s: s, data: {'text': text});
+      }
+
       await Future(() => (_tts.speak(text)));
       _log('Audio playback from device completed', tid);
       return true;
