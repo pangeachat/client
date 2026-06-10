@@ -610,6 +610,7 @@ class ChatView extends StatelessWidget {
                           controller.activityController.showActivityDropdown,
                       setVisibility:
                           controller.activityController.setShowDropdown,
+                      usedVocab: controller.activityController.usedVocab,
                     ),
                     // if (controller.dragging)
                     //   Container(
