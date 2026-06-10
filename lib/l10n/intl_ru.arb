@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-09 16:37:45.872902",
+    "@@last_modified": "2026-06-10 14:28:53.484524",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -4492,7 +4492,6 @@
     "inactive": "Неактивно",
     "confirmRole": "Подтвердить роль",
     "openRoleLabel": "ОТКРЫТАЯ",
-    "joinedTheActivity": "👋 {username} присоединился как {role}",
     "finishedTheActivity": "🎯 {username} завершил эту активность",
     "archiveToAnalytics": "Добавить в мои завершённые активности",
     "activitySummaryError": "Сводки по активности недоступны",
@@ -7532,17 +7531,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -10846,6 +10834,11 @@
     },
     "showDeveloperOptionsDesc": "Включите параметры разработчика, чтобы показать аналитику загрузок и подробные параметры информации по всему приложению.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Ожидание подключения бота...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

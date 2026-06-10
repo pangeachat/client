@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-09 16:36:54.056610",
+    "@@last_modified": "2026-06-10 14:28:15.332630",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -3211,7 +3211,6 @@
     "inactive": "Inactiv",
     "confirmRole": "Confirmă rolul",
     "openRoleLabel": "DESCHIS",
-    "joinedTheActivity": "👋 {username} s-a alăturat ca {role}",
     "finishedTheActivity": "🎯 {username} a încheiat această activitate",
     "activitySummaryError": "Rezumatul activităților indisponibil",
     "requestSummaries": "Solicită rezumate",
@@ -7244,17 +7243,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -10657,6 +10645,11 @@
     },
     "showDeveloperOptionsDesc": "Activați opțiunile pentru dezvoltatori pentru a afișa analizele de descărcare și opțiunile de informații detaliate în întreaga aplicație.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Așteptând ca botul să se alăture...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-09 16:37:26.736901",
+    "@@last_modified": "2026-06-10 14:28:39.696568",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -3623,7 +3623,6 @@
     "inactive": "Pasif",
     "confirmRole": "Rolü onayla",
     "openRoleLabel": "AÇIK",
-    "joinedTheActivity": "👋 {username} {role} olarak katıldı",
     "finishedTheActivity": "🎯 {username} bu etkinliği tamamladı",
     "activitySummaryError": "Etkinlik özetleri kullanılamıyor",
     "requestSummaries": "Özetleri talep et",
@@ -6749,17 +6748,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -10163,6 +10151,11 @@
     },
     "showDeveloperOptionsDesc": "Uygulama genelinde indirme analitiği ve ayrıntılı bilgi seçeneklerini göstermek için geliştirici seçeneklerini açın.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Botun katılmasını bekliyorum...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

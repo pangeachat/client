@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-06-09 16:37:25.211146",
+    "@@last_modified": "2026-06-10 14:28:38.511115",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -3604,7 +3604,6 @@
     "inactive": "غير نشط",
     "confirmRole": "تأكيد الدور",
     "openRoleLabel": "مفتوح",
-    "joinedTheActivity": "👋 {username} انضم كـ {role}",
     "finishedTheActivity": "🎯 {username} أنهى هذا النشاط",
     "activitySummaryError": "ملخصات النشاط غير متوفرة",
     "requestSummaries": "طلب الملخصات",
@@ -6758,17 +6757,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -10172,6 +10160,11 @@
     },
     "showDeveloperOptionsDesc": "قم بتشغيل خيارات المطور لعرض تحليلات التنزيل وخيارات المعلومات التفصيلية في جميع أنحاء التطبيق.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "في انتظار انضمام الروبوت...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

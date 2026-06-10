@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-09 16:37:20.886952",
+    "@@last_modified": "2026-06-10 14:28:34.779219",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -3705,7 +3705,6 @@
     "inactive": "未激活",
     "confirmRole": "確認角色",
     "openRoleLabel": "開放",
-    "joinedTheActivity": "👋 {username} 以 {role} 身份加入",
     "finishedTheActivity": "🎯 {username} 完成了此活動",
     "activitySummaryError": "無法取得活動摘要",
     "requestSummaries": "請求摘要",
@@ -6560,17 +6559,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9962,6 +9950,11 @@
     },
     "showDeveloperOptionsDesc": "啟用開發者選項以顯示下載分析和應用程式中的詳細資訊選項。",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "等待機器人加入...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

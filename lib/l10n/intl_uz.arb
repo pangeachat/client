@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-06-09 16:37:21.801480",
+    "@@last_modified": "2026-06-10 14:28:35.764662",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -3856,7 +3856,6 @@
     "inactive": "Faol emas",
     "confirmRole": "Rolni tasdiqlash",
     "openRoleLabel": "OCHIQ",
-    "joinedTheActivity": "👋 {username} {role} sifatida qo'shildi",
     "finishedTheActivity": "🎯 {username} bu faoliyatni yakunladi",
     "activitySummaryError": "Faoliyatlar haqida ma'lumotlar mavjud emas",
     "requestSummaries": "So'rovlar xulosasi",
@@ -7070,17 +7069,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -9836,6 +9824,11 @@
     },
     "showDeveloperOptionsDesc": "Ilovada yuklab olish tahlillari va batafsil ma'lumot variantlarini ko'rsatish uchun dasturchi variantlarini yoqing.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Botning faoliyatga qo'shilishini kutyapman...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

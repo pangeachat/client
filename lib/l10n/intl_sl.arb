@@ -1868,7 +1868,6 @@
     "inactive": "Neaktivno",
     "confirmRole": "Potrdi vlogo",
     "openRoleLabel": "ODPRTO",
-    "joinedTheActivity": "👋 {username} se je pridružil kot {role}",
     "finishedTheActivity": "🎯 {username} je zaključil to dejavnost",
     "activitySummaryError": "Povzetki dejavnosti niso na voljo",
     "requestSummaries": "Zahtevaj povzetke",
@@ -1963,7 +1962,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-06-09 16:37:08.389209",
+    "@@last_modified": "2026-06-10 14:28:25.618853",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7535,17 +7534,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -10948,6 +10936,11 @@
     },
     "showDeveloperOptionsDesc": "Vklopite možnosti razvijalca, da prikažete analitiko prenosa in podrobne informacije o možnostih v celotni aplikaciji.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Čakam, da se bot pridruži...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

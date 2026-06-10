@@ -45,7 +45,6 @@ integration_test/
 | -----------------------   | :----: | ----------------------- |
 | Login                     |   ⬜   |                         |
 | Course and chat navigation|   ⬜   |                         |
-| Message toolbar           |   ⬜   |                         |
 | Settings                  |   ⬜   |                         |
 | Analytics                 |   ⬜   |                         |
 | Logout                    |   ⬜   |                         |

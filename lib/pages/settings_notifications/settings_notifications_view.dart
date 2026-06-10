@@ -187,56 +187,60 @@ class SettingsNotificationsView extends StatelessWidget {
                       );
                     },
                   ),
-                  // Pangea#
-                  FutureBuilder<List<Pusher>?>(
-                    future: controller.pusherFuture ??= Matrix.of(
-                      context,
-                    ).client.getPushers(),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasError) {
-                        Center(
-                          child: Text(
-                            snapshot.error!.toLocalizedString(context),
+                  if (MatrixState
+                      .pangeaController
+                      .userController
+                      .showDeveloperOptions)
+                    // Pangea#
+                    FutureBuilder<List<Pusher>?>(
+                      future: controller.pusherFuture ??= Matrix.of(
+                        context,
+                      ).client.getPushers(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) {
+                          Center(
+                            child: Text(
+                              snapshot.error!.toLocalizedString(context),
+                            ),
+                          );
+                        }
+                        if (snapshot.connectionState != ConnectionState.done) {
+                          const Center(
+                            child: CircularProgressIndicator.adaptive(
+                              strokeWidth: 2,
+                            ),
+                          );
+                        }
+                        // #Pangea
+                        // final pushers = snapshot.data ?? [];
+                        final pushers =
+                            snapshot.data
+                                ?.where((p) => p.kind != 'email')
+                                .toList() ??
+                            [];
+                        // Pangea#
+                        if (pushers.isEmpty) {
+                          return Center(
+                            child: Padding(
+                              padding: const EdgeInsets.only(bottom: 16.0),
+                              child: Text(L10n.of(context).noOtherDevicesFound),
+                            ),
+                          );
+                        }
+                        return ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: pushers.length,
+                          itemBuilder: (_, i) => ListTile(
+                            title: Text(
+                              '${pushers[i].appDisplayName} - ${pushers[i].appId}',
+                            ),
+                            subtitle: Text(pushers[i].data.url.toString()),
+                            onTap: () => controller.onPusherTap(pushers[i]),
                           ),
                         );
-                      }
-                      if (snapshot.connectionState != ConnectionState.done) {
-                        const Center(
-                          child: CircularProgressIndicator.adaptive(
-                            strokeWidth: 2,
-                          ),
-                        );
-                      }
-                      // #Pangea
-                      // final pushers = snapshot.data ?? [];
-                      final pushers =
-                          snapshot.data
-                              ?.where((p) => p.kind != 'email')
-                              .toList() ??
-                          [];
-                      // Pangea#
-                      if (pushers.isEmpty) {
-                        return Center(
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 16.0),
-                            child: Text(L10n.of(context).noOtherDevicesFound),
-                          ),
-                        );
-                      }
-                      return ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: pushers.length,
-                        itemBuilder: (_, i) => ListTile(
-                          title: Text(
-                            '${pushers[i].appDisplayName} - ${pushers[i].appId}',
-                          ),
-                          subtitle: Text(pushers[i].data.url.toString()),
-                          onTap: () => controller.onPusherTap(pushers[i]),
-                        ),
-                      );
-                    },
-                  ),
+                      },
+                    ),
                 ],
               ),
             );

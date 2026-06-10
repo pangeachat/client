@@ -779,7 +779,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (activityController.confettiNotifier.value) {
       StarRainWidget.show(
         context,
-        "start-rain-${widget.room.id}",
+        "star-rain-${widget.room.id}",
         showBlast: true,
       );
     }
@@ -1189,6 +1189,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (!stopMediaStream.isClosed) {
       stopMediaStream.add(null);
     }
+    MatrixState.pAnyState.closeOverlay("star-rain-${widget.room.id}");
     MatrixState.pAnyState.closeAllOverlays();
   }
 

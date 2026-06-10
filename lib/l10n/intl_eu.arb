@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-09 16:37:04.398770",
+    "@@last_modified": "2026-06-10 14:28:22.037559",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -3849,7 +3849,6 @@
     "inactive": "Erlaxia",
     "confirmRole": "Berretsi rola",
     "openRoleLabel": "IREKIA",
-    "joinedTheActivity": "👋 {username} {role} bezala batu da",
     "finishedTheActivity": "🎯 {username} jarduera hau amaitu du",
     "activitySummaryError": "Jarduera laburpenak ez daude eskuragarri",
     "requestSummaries": "Eskatu laburpenak",
@@ -6656,17 +6655,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9832,6 +9820,11 @@
     },
     "showDeveloperOptionsDesc": "Gaitu garatzaile aukerak aplikazioan zehar deskarga analitikak eta informazio xeheko aukerak erakusteko.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Bot-a jardueran sartzeko itxaroten...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

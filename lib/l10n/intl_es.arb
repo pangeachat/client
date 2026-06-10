@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-06-09 16:36:46.873629",
+    "@@last_modified": "2026-06-10 14:28:09.557201",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -4389,7 +4389,6 @@
     "inactive": "Inactivo",
     "confirmRole": "Confirmar rol",
     "openRoleLabel": "ABIERTO",
-    "joinedTheActivity": "👋 {username} se unió como {role}",
     "finishedTheActivity": "🎯 {username} finalizó esta actividad",
     "activitySummaryError": "Resúmenes de actividades no disponibles",
     "requestSummaries": "Solicitar resúmenes",
@@ -4588,17 +4587,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -7926,6 +7914,11 @@
     },
     "showDeveloperOptionsDesc": "Activa las opciones de desarrollador para mostrar análisis de descargas y opciones de información detallada en toda la aplicación.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Esperando a que el bot se una...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

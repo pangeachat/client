@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-09 16:36:52.720465",
+    "@@last_modified": "2026-06-10 14:28:14.081452",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -3733,7 +3733,6 @@
     "inactive": "Tidak aktif",
     "confirmRole": "Konfirmasi peran",
     "openRoleLabel": "TERBUKA",
-    "joinedTheActivity": "👋 {username} bergabung sebagai {role}",
     "finishedTheActivity": "🎯 {username} menyelesaikan aktivitas ini",
     "activitySummaryError": "Ringkasan aktivitas tidak tersedia",
     "requestSummaries": "Minta ringkasan",
@@ -6545,17 +6544,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9929,6 +9917,11 @@
     },
     "showDeveloperOptionsDesc": "Aktifkan opsi pengembang untuk menampilkan analitik unduhan dan opsi info rinci di seluruh aplikasi.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Menunggu bot untuk bergabung...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

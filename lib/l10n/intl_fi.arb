@@ -3819,7 +3819,6 @@
     "inactive": "Ei aktiivinen",
     "confirmRole": "Vahvista rooli",
     "openRoleLabel": "AVOIN",
-    "joinedTheActivity": "👋 {username} liittyi roolilla {role}",
     "finishedTheActivity": "🎯 {username} saatteli aktiviteetin päätökseen",
     "activitySummaryError": "Aktiviteettien yhteenvetoja ei saatavilla",
     "requestSummaries": "Pyydä yhteenvetoja",
@@ -3914,7 +3913,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-06-09 16:36:49.543908",
+    "@@last_modified": "2026-06-10 14:28:11.283363",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -6636,17 +6635,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9881,6 +9869,11 @@
     },
     "showDeveloperOptionsDesc": "Ota kehittäjäasetukset käyttöön, jotta voit näyttää latausanalytiikan ja yksityiskohtaiset tietovaihtoehdot sovelluksessa.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Odotetaan botin liittymistä...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

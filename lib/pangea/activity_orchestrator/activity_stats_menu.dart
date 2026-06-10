@@ -11,6 +11,7 @@ import 'package:fluffychat/pangea/activity_orchestrator/goal_status_widget.dart'
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_vocab_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -19,11 +20,13 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 class ActivityStatsMenu extends StatelessWidget {
   final ValueNotifier<bool> visibilityNotifier;
   final void Function(bool) setVisibility;
+  final ValueNotifier<Set<String>> usedVocab;
   final Room room;
 
   const ActivityStatsMenu({
     required this.visibilityNotifier,
     required this.setVisibility,
+    required this.usedVocab,
     required this.room,
     super.key,
   });
@@ -89,6 +92,7 @@ class ActivityStatsMenu extends StatelessWidget {
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
     final goals = room.ownRole?.allGoals ?? [];
+    final activity = room.activityPlan;
 
     // TODO ORCHESTRATOR: show active goal instead of first goal
     final currentGoal = goals.firstOrNull;
@@ -113,7 +117,7 @@ class ActivityStatsMenu extends StatelessWidget {
                 children: [
                   if (currentGoal != null)
                     InkWell(
-                      onTap: _activityComplete ? null : _toggleVisibility,
+                      onTap: _toggleVisibility,
                       child: Container(
                         padding: EdgeInsets.symmetric(horizontal: 12.0),
                         height: 55.0,
@@ -217,6 +221,17 @@ class ActivityStatsMenu extends StatelessWidget {
                               ),
                             )
                             .toList(),
+                      ),
+                    if (activity != null)
+                      ActivityVocabWidget(
+                        key: ValueKey(
+                          "activity-stats-menu-${activity.activityId}",
+                        ),
+                        vocab: activity.vocab,
+                        langCode: activity.req.targetLanguage,
+                        targetId: "activity-stats-menu-vocab",
+                        usedVocab: usedVocab,
+                        activityLangCode: activity.req.targetLanguage,
                       ),
                     if (_showWaitNotDone)
                       ElevatedButton(

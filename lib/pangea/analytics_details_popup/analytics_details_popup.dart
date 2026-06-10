@@ -118,8 +118,14 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
     final blocked = update.blockedConstructs;
     if (blocked == null) return;
     vocab?.removeWhere((e) => blocked.contains(e.id));
-    if (widget.view == ConstructTypeEnum.vocab && widget.construct == null) {
-      setState(() {});
+    if (widget.view == ConstructTypeEnum.vocab) {
+      if (widget.construct == null) {
+        setState(() {});
+      }
+
+      if (blocked.contains(widget.construct)) {
+        Navigator.of(context).pop();
+      }
     }
   }
 

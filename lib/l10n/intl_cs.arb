@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-06-09 16:37:13.391036",
+    "@@last_modified": "2026-06-10 14:28:29.108363",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -3378,7 +3378,6 @@
     "inactive": "Neaktivní",
     "confirmRole": "Potvrdit roli",
     "openRoleLabel": "Otevřeno",
-    "joinedTheActivity": "👋 {username} se připojil jako {role}",
     "finishedTheActivity": "🎯 {username} ukončil tuto aktivitu",
     "activitySummaryError": "Souhrny aktivit nejsou k dispozici",
     "requestSummaries": "Požádat o souhrny",
@@ -6987,17 +6986,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -10386,6 +10374,11 @@
     },
     "showDeveloperOptionsDesc": "Povolte možnosti vývojáře, abyste zobrazili analytiku stahování a podrobné informace v celé aplikaci.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Čekám, až se bot připojí...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

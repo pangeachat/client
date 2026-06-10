@@ -1300,7 +1300,6 @@
     "inactive": "未啟用",
     "confirmRole": "確認角色",
     "openRoleLabel": "開放",
-    "joinedTheActivity": "👋 {username} 以 {role} 身份加入",
     "finishedTheActivity": "🎯 {username} 完成了此活動",
     "activitySummaryError": "活動摘要暫時無法取得",
     "requestSummaries": "請求摘要",
@@ -1407,7 +1406,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-06-09 16:37:09.912163",
+    "@@last_modified": "2026-06-10 14:28:26.248930",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -7177,17 +7176,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -10963,6 +10951,11 @@
     },
     "showDeveloperOptionsDesc": "打開開發者選項以顯示下載分析和應用程式中的詳細資訊選項。",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "等待機械人加入...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

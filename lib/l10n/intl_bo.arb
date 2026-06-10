@@ -3119,7 +3119,6 @@
     "inactive": "མིན་ལུས་",
     "confirmRole": "ལས་ཀ་རྟག་པ་འབད།",
     "openRoleLabel": "གཙོ་བོ",
-    "joinedTheActivity": "👋 {username} ལས་སྤྱོད་འདི་ལ་ལོག་འགྱོ། {role}",
     "finishedTheActivity": "🎯 {username} འདི་ལ་སྤྱོད་འདུག",
     "activitySummaryError": "ལས་ཀ་རྒྱབ་སྤྱོད་འབད་མི་ཚུལ།",
     "requestSummaries": "ལོག་ལ་དབྱར་བ་འདི་ལ་བཀོད་རོགས།",
@@ -3194,7 +3193,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-09 16:37:33.876306",
+    "@@last_modified": "2026-06-10 14:28:45.041456",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6501,17 +6500,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -9504,6 +9492,11 @@
     },
     "showDeveloperOptionsDesc": "Toghe devloper opçions por mostar download analytics e detalhades info opçions throughout a app.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Bidinga bot to join...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

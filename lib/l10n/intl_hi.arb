@@ -3283,7 +3283,6 @@
     "inactive": "निष्क्रिय",
     "confirmRole": "भूमिका की पुष्टि करें",
     "openRoleLabel": "खुली",
-    "joinedTheActivity": "👋 {username} ने {role} के रूप में भाग लिया",
     "finishedTheActivity": "🎯 {username} ने इस गतिविधि को पूरा किया",
     "activitySummaryError": "गतिविधि सारांश उपलब्ध नहीं है",
     "requestSummaries": "सारांश अनुरोध करें",
@@ -3378,7 +3377,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-06-09 16:37:43.706441",
+    "@@last_modified": "2026-06-10 14:28:51.878011",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7138,17 +7137,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -10551,6 +10539,11 @@
     },
     "showDeveloperOptionsDesc": "डेवलपर विकल्पों को चालू करें ताकि ऐप में डाउनलोड विश्लेषण और विस्तृत जानकारी विकल्प दिखाए जा सकें।",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "बॉट के शामिल होने की प्रतीक्षा कर रहे हैं...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

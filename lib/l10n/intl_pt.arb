@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-09 16:37:05.334528",
+    "@@last_modified": "2026-06-10 14:28:22.855541",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -3691,7 +3691,6 @@
     "inactive": "Inativo",
     "confirmRole": "Confirmar papel",
     "openRoleLabel": "ABERTO",
-    "joinedTheActivity": "👋 {username} entrou como {role}",
     "finishedTheActivity": "🎯 {username} concluiu esta atividade",
     "activitySummaryError": "Resumos de atividades indisponíveis",
     "requestSummaries": "Solicitar resumos",
@@ -7537,17 +7536,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -10950,6 +10938,11 @@
     },
     "showDeveloperOptionsDesc": "Ative as opções de desenvolvedor para mostrar análises de download e opções de informações detalhadas em todo o aplicativo.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Aguardando o bot entrar...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

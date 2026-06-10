@@ -3839,7 +3839,6 @@
     "inactive": "Неактыўны",
     "confirmRole": "Пацвердзіць ролю",
     "openRoleLabel": "АДКРЫТА",
-    "joinedTheActivity": "👋 {username} далучыўся як {role}",
     "finishedTheActivity": "🎯 {username} завяршыў гэтую дзейнасць",
     "activitySummaryError": "Зводкі дзейнасці недаступныя",
     "requestSummaries": "Запытаць зводкі",
@@ -3934,7 +3933,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-06-09 16:37:15.952769",
+    "@@last_modified": "2026-06-10 14:28:31.188539",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -6656,17 +6655,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9846,6 +9834,11 @@
     },
     "showDeveloperOptionsDesc": "Уключыце опцыі распрацоўніка, каб паказаць аналітыку загрузак і падрабязную інфармацыю пра опцыі на працягу ўсяго прыкладання.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Чакаем, пакуль бот далучыцца...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }
