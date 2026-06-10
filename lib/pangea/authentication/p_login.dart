@@ -37,6 +37,7 @@ void pLoginAction({
   }
 
   final client = await Matrix.of(context).getLoginClient();
+  GoogleAnalytics.prepareLogin("pangea");
   await showAdaptiveDialog(
     context: context,
     barrierDismissible: false,
@@ -46,16 +47,21 @@ void pLoginAction({
       identifier: identifier,
       password: password.trim(),
       initialDeviceDisplayName: PlatformInfos.clientName,
-      onError: () => setLoadingSignIn(false),
+      onError: () {
+        GoogleAnalytics.cancelPendingLogin();
+        setLoadingSignIn(false);
+      },
     ),
   );
 
   if (!client.isLogged()) {
+    GoogleAnalytics.cancelPendingLogin();
     setLoadingSignIn(false);
     return;
   }
 
   if (client.userID == null) {
+    GoogleAnalytics.cancelPendingLogin();
     Logs().e("Login succeeded but userID is null");
     return;
   }
@@ -64,5 +70,4 @@ void pLoginAction({
     userID: client.userID!,
     method: LoginMethod.email,
   );
-  await GoogleAnalytics.login("pangea", client.userID!);
 }

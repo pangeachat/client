@@ -21,6 +21,7 @@ import '../../../config/firebase_options.dart';
 
 class GoogleAnalytics {
   static FirebaseAnalytics? analytics;
+  static String? _pendingLoginMethod;
 
   GoogleAnalytics();
 
@@ -49,7 +50,9 @@ class GoogleAnalytics {
     if (Environment.analyticsDebugEnabled) {
       // Note: Doesnt currently work on Web
       try {
-        await analytics?.setDefaultEventParameters({"traffic_type": "internal"});
+        await analytics?.setDefaultEventParameters({
+          "traffic_type": "internal",
+        });
       } catch (_) {
         // i guess were on web and have it enabled anyway
       }
@@ -117,9 +120,20 @@ class GoogleAnalytics {
     }
   }
 
-  static Future<void> login(String type, String? userID) async {
-    await analyticsUserUpdate(userID);
-    logEvent('login', parameters: {'method': type});
+  static void prepareLogin(String method) {
+    _pendingLoginMethod = method;
+  }
+
+  static void cancelPendingLogin() {
+    _pendingLoginMethod = null;
+  }
+
+  static void login() {
+    final method = _pendingLoginMethod;
+    _pendingLoginMethod = null;
+    if (method == null) return;
+
+    logEvent('login', parameters: {'method': method});
   }
 
   static void signUp(String type) {
@@ -129,7 +143,6 @@ class GoogleAnalytics {
   /// User logs out. Removes user from the current GA session.
   static void logout() {
     logEvent('logout');
-    analyticsUserUpdate(null);
   }
 
   /// User send a message

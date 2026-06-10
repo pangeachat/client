@@ -35,6 +35,7 @@ class PangeaSsoButton extends StatelessWidget {
     final client = Matrix.of(context).client;
     await LoginMethodRepo.clearStoredLoginMethod();
 
+    GoogleAnalytics.prepareLogin(provider.name);
     await showAdaptiveDialog(
       context: context,
       barrierDismissible: false,
@@ -46,12 +47,15 @@ class PangeaSsoButton extends StatelessWidget {
       ),
     );
 
+    if (!client.isLogged() || client.userID == null) {
+      GoogleAnalytics.cancelPendingLogin();
+      return;
+    }
+
     await LoginMethodRepo.storeLoginMethod(
       userID: client.userID!,
       method: provider.loginMethod,
     );
-
-    await GoogleAnalytics.login(provider.name, client.userID!);
   }
 
   Future<String?> _getSSOToken(BuildContext context) async {

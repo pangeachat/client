@@ -122,25 +122,28 @@ class PangeaController {
     Provider.of<LocaleProvider>(context, listen: false).setLocale(null);
   }
 
-  void handleLoginStateChange(
+  Future<void> handleLoginStateChange(
     LoginState state,
     String? userID,
     BuildContext context,
-  ) {
+  ) async {
     switch (state) {
       case LoginState.loggedOut:
       case LoginState.softLoggedOut:
+        GoogleAnalytics.cancelPendingLogin();
         _onLogout(context);
+        await GoogleAnalytics.analyticsUserUpdate(userID);
         break;
       case LoginState.loggedIn:
-        _onLogin(context, userID);
+        await GoogleAnalytics.analyticsUserUpdate(userID);
+        GoogleAnalytics.login();
+        await _onLogin(context, userID);
         break;
     }
 
     Sentry.configureScope(
       (scope) => scope.setUser(SentryUser(id: userID, name: userID)),
     );
-    GoogleAnalytics.analyticsUserUpdate(userID);
   }
 
   void _registerSubscriptions() {
