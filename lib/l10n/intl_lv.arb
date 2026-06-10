@@ -3920,7 +3920,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-06-08 12:05:02.546083",
+    "@@last_modified": "2026-06-09 16:37:24.471174",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9824,5 +9824,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Rādīt izstrādātāja opcijas",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Ieslēdziet izstrādātāja opcijas, lai parādītu lejupielādes analītiku un detalizētu informāciju par opcijām visā lietotnē.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

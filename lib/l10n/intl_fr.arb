@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-06-08 12:05:30.295372",
+    "@@last_modified": "2026-06-09 16:37:50.584871",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10221,5 +10221,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Afficher les options de développement",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Activez les options de développement pour afficher les analyses de téléchargement et les options d'informations détaillées dans toute l'application.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

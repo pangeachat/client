@@ -4,7 +4,9 @@ import 'package:collection/collection.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:matrix/matrix.dart';
+import 'package:mime/mime.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/authentication/p_logout.dart';
 import 'package:fluffychat/utils/file_selector.dart';
@@ -42,6 +44,8 @@ class SettingsController extends State<Settings> {
       initialText:
           profile?.displayName ?? Matrix.of(context).client.userID!.localpart,
       // #Pangea
+      maxLength: 50,
+      maxLines: 1,
       validator: (text) {
         if (text.isEmpty) {
           return L10n.of(context).enterAName;
@@ -154,6 +158,19 @@ class SettingsController extends State<Settings> {
         name: pickedFile.name,
       );
     }
+    // #Pangea
+    final resp = await showFutureLoadingDialog(
+      context: context,
+      future: () async {
+        final bytes = file.bytes;
+        final mimeType = lookupMimeType(file.name, headerBytes: bytes);
+        if (!AppConfig.allowedMimeTypes.contains(mimeType)) {
+          throw L10n.of(context).invalidInput;
+        }
+      },
+    );
+    if (resp.isError) return;
+    // Pangea#
     final success = await showFutureLoadingDialog(
       context: context,
       future: () => matrix.client.setAvatar(file),

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:04:38.316979",
+    "@@last_modified": "2026-06-09 16:36:59.592918",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10903,5 +10903,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "הצג אפשרויות מפתחים",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "הפעל אפשרויות מפתחים כדי להציג ניתוחי הורדה ואפשרויות מידע מפורטות ברחבי האפליקציה.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

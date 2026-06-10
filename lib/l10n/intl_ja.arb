@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-08 12:05:22.102151",
+    "@@last_modified": "2026-06-09 16:37:42.690731",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10692,5 +10692,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "開発者オプションを表示",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "開発者オプションをオンにして、アプリ全体でダウンロード分析や詳細情報オプションを表示します。",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

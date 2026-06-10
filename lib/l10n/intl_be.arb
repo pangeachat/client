@@ -3934,7 +3934,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-06-08 12:04:54.401156",
+    "@@last_modified": "2026-06-09 16:37:15.952769",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9838,5 +9838,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Паказаць параметры распрацоўшчыка",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Уключыце опцыі распрацоўніка, каб паказаць аналітыку загрузак і падрабязную інфармацыю пра опцыі на працягу ўсяго прыкладання.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

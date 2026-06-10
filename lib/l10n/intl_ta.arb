@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:05:09.334212",
+    "@@last_modified": "2026-06-09 16:37:31.739433",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9940,5 +9940,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "உருவாக்குநர் விருப்பங்களை காட்டு",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "அப்ளிகேஷனில் பதிவிறக்கம் பகுப்பாய்வுகள் மற்றும் விரிவான தகவல் விருப்பங்களை காண developer விருப்பங்களை இயக்கவும்.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

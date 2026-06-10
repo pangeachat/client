@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:04:58.434886",
+    "@@last_modified": "2026-06-09 16:37:20.886952",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9954,5 +9954,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "顯示開發者選項",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "啟用開發者選項以顯示下載分析和應用程式中的詳細資訊選項。",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

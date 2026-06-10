@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:05:19.631280",
+    "@@last_modified": "2026-06-09 16:37:40.629413",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10411,5 +10411,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Visa utvecklaralternativ",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Aktivera utvecklaralternativ för att visa nedladdningsanalys och detaljerade informationsalternativ i hela appen.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

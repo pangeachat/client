@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-06-08 12:04:26.389133",
+    "@@last_modified": "2026-06-09 16:36:51.736807",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9951,5 +9951,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Fejlesztői opciók megjelenítése",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Kapcsolja be a fejlesztői lehetőségeket a letöltési elemzések és a részletes információs lehetőségek megjelenítéséhez az alkalmazásban.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

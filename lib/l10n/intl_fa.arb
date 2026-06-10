@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:05:14.825861",
+    "@@last_modified": "2026-06-09 16:37:37.048136",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9936,5 +9936,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "نمایش گزینه‌های توسعه‌دهنده",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "گزینه‌های توسعه‌دهنده را فعال کنید تا تجزیه و تحلیل دانلود و گزینه‌های اطلاعات دقیق در سراسر برنامه نمایش داده شود.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

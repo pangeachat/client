@@ -50,8 +50,9 @@ import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
-import 'package:fluffychat/pangea/choreographer/igc/span_card_overlay_manager.dart';
+import 'package:fluffychat/pangea/choreographer/igc/span_card.dart';
 import 'package:fluffychat/pangea/choreographer/igc/suggestion_card.dart';
+import 'package:fluffychat/pangea/choreographer/igc/writing_asssitance_popup_manager.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/choreographer/writing_assistance_room_extension.dart';
@@ -232,7 +233,7 @@ class ChatController extends State<ChatPageWithRoom>
   late final ActivityChatController activityController;
   late final TutorialOverlayController tutorialOverlayController;
   late final ChatBannerController _bannerController;
-  late final SpanCardOverlayManager _spanCardOverlayController;
+  late final WritingAssistancePopupManager _spanCardOverlayController;
   final ValueNotifier<bool> scrollableNotifier = ValueNotifier(false);
   // Pangea#
   Room get room => sendingClient.getRoomById(roomId) ?? widget.room;
@@ -821,7 +822,7 @@ class ChatController extends State<ChatPageWithRoom>
     sendController.addListener(onInputBarChanged);
     final updater = Matrix.of(context).analyticsDataService.updateDispatcher;
 
-    _spanCardOverlayController = SpanCardOverlayManager(
+    _spanCardOverlayController = WritingAssistancePopupManager(
       choreographer: choreographer,
       onFeedbackSubmitted: onWritingAssistanceFeedback,
     );
@@ -2435,18 +2436,6 @@ class ChatController extends State<ChatPageWithRoom>
     overlayKey: "message_toolbar_overlay",
   );
 
-  bool get enableTranslateShimmer {
-    if (tutorialOverlayController.state.isTutorialActive(
-      TutorialEnum.readingAssistance,
-    )) {
-      return tutorialOverlayController.state.isTutorialStepActive(
-        TutorialEnum.readingAssistance,
-        1,
-      );
-    }
-    return true;
-  }
-
   void showToolbar(
     Event event, {
     PangeaMessageEvent? pangeaMessageEvent,
@@ -2674,7 +2663,21 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     if (!isSpanCardOpen) {
-      _spanCardOverlayController.open(context);
+      _spanCardOverlayController.open(
+        context,
+        openOverlay: (overlayKey) => OverlayUtil.showPositionedCard(
+          overlayKey: overlayKey,
+          context: context,
+          cardToShow: SpanCard(controller: _spanCardOverlayController),
+          maxHeight: 325,
+          maxWidth: 325,
+          transformTargetId: ChoreoConstants.inputTransformTargetKey,
+          ignorePointer: true,
+          isScrollable: false,
+          targetAnchor: Alignment.topCenter,
+          followerAnchor: Alignment.bottomCenter,
+        ),
+      );
     }
   }
 
@@ -2685,19 +2688,21 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
-    final overlayKey = "suggestions-overlay";
-    MatrixState.pAnyState.closeAllOverlays();
-    OverlayUtil.showOverlay(
-      overlayKey: overlayKey,
-      context: context,
-      child: SuggestionCard(
+    _spanCardOverlayController.open(
+      context,
+      openOverlay: (overlayKey) => OverlayUtil.showOverlay(
         overlayKey: overlayKey,
-        controller: choreographer.orchestratorController,
+        context: context,
+        child: SuggestionCard(
+          overlayKey: overlayKey,
+          controller: choreographer.orchestratorController,
+          popupManager: _spanCardOverlayController,
+        ),
+        transformTargetId: ChoreoConstants.inputTransformTargetKey,
+        ignorePointer: true,
+        targetAnchor: Alignment.topCenter,
+        followerAnchor: Alignment.bottomCenter,
       ),
-      transformTargetId: ChoreoConstants.inputTransformTargetKey,
-      ignorePointer: true,
-      targetAnchor: Alignment.topCenter,
-      followerAnchor: Alignment.bottomCenter,
     );
   }
 
@@ -2716,7 +2721,7 @@ class ChatController extends State<ChatPageWithRoom>
       return showLanguageMismatchPopup(manual: manual, autosend: autosend);
     }
 
-    if (_spanCardOverlayController.isOpen) {
+    if (_spanCardOverlayController.isOpen && !manual) {
       await _spanCardOverlayController.close();
     }
 
@@ -2786,7 +2791,9 @@ class ChatController extends State<ChatPageWithRoom>
       showNextMatch();
     } else if (choreographer.assistanceState ==
         AssistanceStateEnum.suggesting) {
-      showSuggestion();
+      _spanCardOverlayController.isOpen
+          ? _spanCardOverlayController.close()
+          : showSuggestion();
     } else if (autosend) {
       await send();
     } else {

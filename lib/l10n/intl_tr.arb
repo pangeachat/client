@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-08 12:05:04.797538",
+    "@@last_modified": "2026-06-09 16:37:26.736901",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10155,5 +10155,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Geliştirici seçeneklerini göster",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Uygulama genelinde indirme analitiği ve ayrıntılı bilgi seçeneklerini göstermek için geliştirici seçeneklerini açın.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

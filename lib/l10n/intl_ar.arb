@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-06-08 12:05:03.676450",
+    "@@last_modified": "2026-06-09 16:37:25.211146",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10164,5 +10164,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "عرض خيارات المطور",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "قم بتشغيل خيارات المطور لعرض تحليلات التنزيل وخيارات المعلومات التفصيلية في جميع أنحاء التطبيق.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

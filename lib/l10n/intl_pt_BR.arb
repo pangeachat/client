@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:04:40.169319",
+    "@@last_modified": "2026-06-09 16:37:02.539626",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9824,5 +9824,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Mostrar opções de desenvolvedor",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Ative as opções de desenvolvedor para mostrar análises de download e opções de informações detalhadas em todo o aplicativo.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

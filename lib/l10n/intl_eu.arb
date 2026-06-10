@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-08 12:04:41.492059",
+    "@@last_modified": "2026-06-09 16:37:04.398770",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9824,5 +9824,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Garatzaile aukera guztiak erakutsi",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Gaitu garatzaile aukerak aplikazioan zehar deskarga analitikak eta informazio xeheko aukerak erakusteko.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

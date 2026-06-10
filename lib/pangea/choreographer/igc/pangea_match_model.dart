@@ -62,6 +62,11 @@ class PangeaMatch {
 
   bool get isGrammarMatch => !isOutOfTargetMatch;
 
+  bool overlapsTokenSpan(int tokenOffset, int tokenLength) {
+    return tokenOffset < match.offset + match.length &&
+        tokenOffset + tokenLength > match.offset;
+  }
+
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;

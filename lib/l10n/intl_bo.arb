@@ -3194,7 +3194,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-08 12:05:11.431194",
+    "@@last_modified": "2026-06-09 16:37:33.876306",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9496,5 +9496,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Tunjukkan pilihan pemaju",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Toghe devloper opçions por mostar download analytics e detalhades info opçions throughout a app.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

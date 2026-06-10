@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:04:31.424895",
+    "@@last_modified": "2026-06-09 16:36:52.720465",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9921,5 +9921,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Tampilkan opsi pengembang",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Aktifkan opsi pengembang untuk menampilkan analitik unduhan dan opsi info rinci di seluruh aplikasi.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

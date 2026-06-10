@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-08 12:04:44.417498",
+    "@@last_modified": "2026-06-09 16:37:06.535244",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9821,5 +9821,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Näita arendaja valikuid",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Lülitage arendaja valikud sisse, et näha allalaadimise analüüse ja üksikasjalikke teabevalikuid kogu rakenduses.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

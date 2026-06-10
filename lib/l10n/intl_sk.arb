@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-06-08 12:04:33.455037",
+    "@@last_modified": "2026-06-09 16:36:55.289387",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10940,5 +10940,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Zobraziť možnosti vývojára",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Zapnite možnosti vývojára, aby ste zobrazili analytiku sťahovania a podrobné možnosti informácií v celej aplikácii.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

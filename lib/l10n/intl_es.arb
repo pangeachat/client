@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-06-08 12:04:21.724770",
+    "@@last_modified": "2026-06-09 16:36:46.873629",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7918,5 +7918,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Mostrar opciones de desarrollador",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Activa las opciones de desarrollador para mostrar análisis de descargas y opciones de información detallada en toda la aplicación.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

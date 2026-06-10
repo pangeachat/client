@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:05:08.077672",
+    "@@last_modified": "2026-06-09 16:37:30.826534",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6907,5 +6907,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Hiển thị tùy chọn nhà phát triển",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Bật tùy chọn nhà phát triển để hiển thị phân tích tải xuống và các tùy chọn thông tin chi tiết trong toàn bộ ứng dụng.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

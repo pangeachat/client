@@ -489,6 +489,8 @@ class UserController {
 
   String? get voice => profile.userSettings.voice;
 
+  bool get showDeveloperOptions => profile.toolSettings.showDeveloperOptions;
+
   bool get languagesSet =>
       userL1Code != null &&
       userL2Code != null &&

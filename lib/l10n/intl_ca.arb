@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:04:55.469701",
+    "@@last_modified": "2026-06-09 16:37:17.591047",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9975,5 +9975,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Mostra les opcions de desenvolupador",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Activa les opcions de desenvolupador per mostrar l'analítica de descàrregues i les opcions d'informació detallada a tota l'aplicació.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }

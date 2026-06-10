@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
@@ -99,10 +100,12 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
           TextField(
             controller: _nameController,
             decoration: InputDecoration(hintText: L10n.of(context).name),
+            inputFormatters: [LengthLimitingTextInputFormatter(254)],
           ),
           TextField(
             controller: _institutionController,
             decoration: InputDecoration(hintText: L10n.of(context).institution),
+            inputFormatters: [LengthLimitingTextInputFormatter(254)],
           ),
           TextField(
             controller: _goalsController,

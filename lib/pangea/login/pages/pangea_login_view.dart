@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/login/login.dart';
@@ -46,7 +47,7 @@ class PasswordLoginView extends StatelessWidget {
                         TextFormField(
                           autofocus: true,
                           decoration: InputDecoration(
-                            hintText: L10n.of(context).usernameOrEmail,
+                            labelText: L10n.of(context).usernameOrEmail,
                           ),
                           autofillHints: const [AutofillHints.username],
                           textInputAction: TextInputAction.next,
@@ -59,6 +60,9 @@ class PasswordLoginView extends StatelessWidget {
                           controller: controller.usernameController,
                           onTapOutside: (_) =>
                               FocusManager.instance.primaryFocus?.unfocus(),
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(128),
+                          ],
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,7 +86,7 @@ class PasswordLoginView extends StatelessWidget {
                               },
                               controller: controller.passwordController,
                               decoration: InputDecoration(
-                                hintText: L10n.of(context).password,
+                                labelText: L10n.of(context).password,
                                 suffixIcon: IconButton(
                                   tooltip: L10n.of(context).showPassword,
                                   icon: Icon(
@@ -95,6 +99,9 @@ class PasswordLoginView extends StatelessWidget {
                               ),
                               onTapOutside: (_) =>
                                   FocusManager.instance.primaryFocus?.unfocus(),
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(128),
+                              ],
                             ),
                             TextButton(
                               onPressed:

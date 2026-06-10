@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 12:05:24.663202",
+    "@@last_modified": "2026-06-09 16:37:44.930670",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10943,5 +10943,15 @@
                 "type": "String"
             }
         }
+    },
+    "showDeveloperOptions": "Montri evoluiga opciojn",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Ŝaltu la opciojn por disvolvantoj por montri elŝutanalizojn kaj detalan informon pri opcioj tra la aplikaĵo.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
     }
 }
