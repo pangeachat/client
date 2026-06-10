@@ -117,7 +117,7 @@ class ActivityStatsMenu extends StatelessWidget {
                 children: [
                   if (currentGoal != null)
                     InkWell(
-                      onTap: _activityComplete ? null : _toggleVisibility,
+                      onTap: _toggleVisibility,
                       child: Container(
                         padding: EdgeInsets.symmetric(horizontal: 12.0),
                         height: 55.0,
