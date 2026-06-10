@@ -1189,6 +1189,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (!stopMediaStream.isClosed) {
       stopMediaStream.add(null);
     }
+    MatrixState.pAnyState.closeOverlay("start-rain-${widget.room.id}");
     MatrixState.pAnyState.closeAllOverlays();
   }
 
