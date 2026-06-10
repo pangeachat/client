@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-09 16:37:06.535244",
+    "@@last_modified": "2026-06-10 14:28:23.777199",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9817,6 +9817,11 @@
     },
     "showDeveloperOptionsDesc": "Lülitage arendaja valikud sisse, et näha allalaadimise analüüse ja üksikasjalikke teabevalikuid kogu rakenduses.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Ootan boti liitumist...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

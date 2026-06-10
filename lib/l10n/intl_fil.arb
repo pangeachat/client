@@ -2257,7 +2257,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-06-09 16:37:23.144575",
+    "@@last_modified": "2026-06-10 14:28:36.601856",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10839,6 +10839,11 @@
     },
     "showDeveloperOptionsDesc": "I-on ang mga pagpipilian ng developer upang ipakita ang mga analytics ng pag-download at detalyadong mga pagpipilian sa impormasyon sa buong app.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Naghihintay para sumali ang bot...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

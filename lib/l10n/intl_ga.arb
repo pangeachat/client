@@ -3948,7 +3948,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-06-09 16:37:49.716843",
+    "@@last_modified": "2026-06-10 14:28:56.383595",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9831,6 +9831,11 @@
     },
     "showDeveloperOptionsDesc": "Cuir ar siúl na roghanna forbróra chun anailísí íoslódála agus roghanna faisnéise mionsonraithe a thaispeáint ar fud an aip.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Ag fanacht le bot chun páirt a ghlacadh...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

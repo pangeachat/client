@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-09 16:37:35.928664",
+    "@@last_modified": "2026-06-10 14:28:47.033976",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10535,6 +10535,11 @@
     },
     "showDeveloperOptionsDesc": "ডেভেলপার অপশন চালু করুন যাতে অ্যাপের মধ্যে ডাউনলোড বিশ্লেষণ এবং বিস্তারিত তথ্য অপশনগুলি দেখানো হয়।",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "বটের যোগদানের জন্য অপেক্ষা করা হচ্ছে...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-09 16:37:37.048136",
+    "@@last_modified": "2026-06-10 14:28:47.954423",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9932,6 +9932,11 @@
     },
     "showDeveloperOptionsDesc": "گزینه‌های توسعه‌دهنده را فعال کنید تا تجزیه و تحلیل دانلود و گزینه‌های اطلاعات دقیق در سراسر برنامه نمایش داده شود.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "در حال انتظار برای پیوستن ربات...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-09 16:37:20.886952",
+    "@@last_modified": "2026-06-10 14:28:34.779219",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9950,6 +9950,11 @@
     },
     "showDeveloperOptionsDesc": "啟用開發者選項以顯示下載分析和應用程式中的詳細資訊選項。",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "等待機器人加入...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

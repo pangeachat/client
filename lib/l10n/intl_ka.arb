@@ -2098,7 +2098,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-06-09 16:37:47.212223",
+    "@@last_modified": "2026-06-10 14:28:54.483464",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10888,6 +10888,11 @@
     },
     "showDeveloperOptionsDesc": "გააქტივეთ დეველოპერის პარამეტრები, რათა აჩვენოთ ჩამოტვირთვის ანალიტიკა და დეტალური ინფორმაცია აპლიკაციის განმავლობაში.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "ბოტის გაწვდას ველოდებით...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

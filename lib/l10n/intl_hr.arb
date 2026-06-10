@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-06-09 16:36:58.553678",
+    "@@last_modified": "2026-06-10 14:28:18.313817",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10304,6 +10304,11 @@
     },
     "showDeveloperOptionsDesc": "Uključite opcije za programere kako biste prikazali analitiku preuzimanja i detaljne informacije o opcijama unutar aplikacije.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Čekam da se bot pridruži...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

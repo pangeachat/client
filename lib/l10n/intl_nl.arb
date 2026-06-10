@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-09 16:37:32.875904",
+    "@@last_modified": "2026-06-10 14:28:44.262484",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9820,6 +9820,11 @@
     },
     "showDeveloperOptionsDesc": "Zet de ontwikkelaarsopties aan om downloadanalyses en gedetailleerde informatie-opties door de app heen weer te geven.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Wachten op bot om deel te nemen...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-09 16:37:26.736901",
+    "@@last_modified": "2026-06-10 14:28:39.696568",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10151,6 +10151,11 @@
     },
     "showDeveloperOptionsDesc": "Uygulama genelinde indirme analitiği ve ayrıntılı bilgi seçeneklerini göstermek için geliştirici seçeneklerini açın.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Botun katılmasını bekliyorum...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

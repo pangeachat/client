@@ -3377,7 +3377,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-06-09 16:37:18.718378",
+    "@@last_modified": "2026-06-10 14:28:32.855000",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10539,6 +10539,11 @@
     },
     "showDeveloperOptionsDesc": "เปิดใช้งานตัวเลือกนักพัฒนาเพื่อแสดงการวิเคราะห์การดาวน์โหลดและตัวเลือกข้อมูลรายละเอียดทั่วทั้งแอป",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "รอให้บอทเข้าร่วม...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

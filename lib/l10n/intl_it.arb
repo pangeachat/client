@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-09 16:37:11.039408",
+    "@@last_modified": "2026-06-10 14:28:27.061393",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9911,6 +9911,11 @@
     },
     "showDeveloperOptionsDesc": "Attiva le opzioni sviluppatore per mostrare le analisi di download e le opzioni di informazioni dettagliate in tutta l'app.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "In attesa che il bot si unisca...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

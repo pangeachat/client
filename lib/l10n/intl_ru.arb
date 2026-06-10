@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-09 16:37:45.872902",
+    "@@last_modified": "2026-06-10 14:28:53.484524",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10834,6 +10834,11 @@
     },
     "showDeveloperOptionsDesc": "Включите параметры разработчика, чтобы показать аналитику загрузок и подробные параметры информации по всему приложению.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Ожидание подключения бота...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

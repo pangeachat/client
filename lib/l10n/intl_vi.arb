@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-09 16:37:30.826534",
+    "@@last_modified": "2026-06-10 14:28:42.522642",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6903,6 +6903,11 @@
     },
     "showDeveloperOptionsDesc": "Bật tùy chọn nhà phát triển để hiển thị phân tích tải xuống và các tùy chọn thông tin chi tiết trong toàn bộ ứng dụng.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Đang chờ bot tham gia...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

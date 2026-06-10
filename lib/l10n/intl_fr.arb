@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-06-09 16:37:50.584871",
+    "@@last_modified": "2026-06-10 14:28:57.010409",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10217,6 +10217,11 @@
     },
     "showDeveloperOptionsDesc": "Activez les options de développement pour afficher les analyses de téléchargement et les options d'informations détaillées dans toute l'application.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "En attente que le bot rejoigne...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

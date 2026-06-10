@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-09 16:37:12.573523",
+    "@@last_modified": "2026-06-10 14:28:28.024945",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9820,6 +9820,11 @@
     },
     "showDeveloperOptionsDesc": "Увімкніть параметри розробника, щоб показати аналітику завантажень та детальну інформацію про параметри в додатку.",
     "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Очікування приєднання бота...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }
