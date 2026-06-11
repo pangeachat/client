@@ -470,8 +470,6 @@ class ChatView extends StatelessWidget {
                           //     child: ChatEventList(controller: controller),
                           //   ),
                           // ),
-                          if (controller.room.showActivityChatUI)
-                            SizedBox(height: 50),
                           Expanded(
                             child: Stack(
                               children: [
