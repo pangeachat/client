@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:material_symbols_icons/symbols.dart';
@@ -93,12 +95,22 @@ class _VocabChips extends StatefulWidget {
 
 class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
   Vocab? _selectedVocab;
-  late Set<PangeaTokenText> _newTokens;
+  Set<PangeaTokenText> _newTokens = {};
   static const String _newTokensCacheKey = "activity_tokens";
+
+  late final StreamSubscription _analyticsSubscription;
 
   @override
   void initState() {
     super.initState();
+
+    _analyticsSubscription = Matrix.of(context)
+        .analyticsDataService
+        .updateDispatcher
+        .constructUpdateStream
+        .stream
+        .listen((_) => _computeNewTokens());
+
     _computeNewTokens();
   }
 
@@ -114,17 +126,21 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
   @override
   void dispose() {
     TokensUtil.instance.clearNewTokenCache();
+    _analyticsSubscription.cancel();
     super.dispose();
   }
 
   String _vocabKey(Vocab v) => "${widget.targetId}-${v.lemma}";
 
   void _computeNewTokens() {
-    _newTokens = TokensUtil.instance.getNewTokens(
+    final newTokens = TokensUtil.instance.getNewTokens(
       _newTokensCacheKey,
       widget.vocab.map((v) => v.asToken()).toList(),
       widget.activityLangCode,
     );
+    if (mounted && newTokens.length != _newTokens.length) {
+      setState(() => _newTokens = newTokens);
+    }
   }
 
   void _selectVocab(Vocab vocab, {bool isNew = false}) {
@@ -142,7 +158,6 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
       langCode: widget.langCode,
     );
     _computeNewTokens();
-    if (mounted) setState(() {});
   }
 
   void _showWordCard(Vocab vocab) {
