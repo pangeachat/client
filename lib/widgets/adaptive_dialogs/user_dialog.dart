@@ -11,6 +11,7 @@ import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/user/about_me_display.dart';
+import 'package:fluffychat/pangea/user/country_display.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -77,22 +78,7 @@ class UserDialog extends StatelessWidget {
                 mainAxisSize: .min,
                 crossAxisAlignment: .stretch,
                 children: [
-                  Center(
-                    child: Avatar(
-                      mxContent: avatar,
-                      name: displayname,
-                      size: Avatar.defaultSize * 2,
-                      onTap: avatar != null
-                          ? () => showDialog(
-                              context: context,
-                              builder: (_) => MxcImageViewer(avatar),
-                            )
-                          : null,
-                      // #Pangea
-                      userId: profile.userId,
-                      // Pangea#
-                    ),
-                  ),
+                  // #Pangea
                   HoverBuilder(
                     builder: (context, hovered) => StatefulBuilder(
                       builder: (context, setState) => MouseRegion(
@@ -142,6 +128,74 @@ class UserDialog extends StatelessWidget {
                       ),
                     ),
                   ),
+                  // Pangea#
+                  Center(
+                    child: Avatar(
+                      mxContent: avatar,
+                      name: displayname,
+                      size: Avatar.defaultSize * 2,
+                      onTap: avatar != null
+                          ? () => showDialog(
+                              context: context,
+                              builder: (_) => MxcImageViewer(avatar),
+                            )
+                          : null,
+                      // #Pangea
+                      userId: profile.userId,
+                      // Pangea#
+                    ),
+                  ),
+                  // #Pangea
+                  // HoverBuilder(
+                  //   builder: (context, hovered) => StatefulBuilder(
+                  //     builder: (context, setState) => MouseRegion(
+                  //       cursor: SystemMouseCursors.click,
+                  //       child: GestureDetector(
+                  //         onTap: () {
+                  //           Clipboard.setData(
+                  //             ClipboardData(text: profile.userId),
+                  //           );
+                  //           setState(() {
+                  //             copied = true;
+                  //           });
+                  //         },
+                  //         child: RichText(
+                  //           text: TextSpan(
+                  //             children: [
+                  //               WidgetSpan(
+                  //                 child: Padding(
+                  //                   padding: const EdgeInsets.only(right: 4.0),
+                  //                   child: AnimatedScale(
+                  //                     duration: FluffyThemes.animationDuration,
+                  //                     curve: FluffyThemes.animationCurve,
+                  //                     scale: hovered
+                  //                         ? 1.33
+                  //                         : copied
+                  //                         ? 1.25
+                  //                         : 1.0,
+                  //                     child: Icon(
+                  //                       copied
+                  //                           ? Icons.check_circle
+                  //                           : Icons.copy,
+                  //                       size: 12,
+                  //                       color: copied ? Colors.green : null,
+                  //                     ),
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //               TextSpan(text: profile.userId),
+                  //             ],
+                  //             style: theme.textTheme.bodyMedium?.copyWith(
+                  //               fontSize: 10,
+                  //             ),
+                  //           ),
+                  //           textAlign: TextAlign.center,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  // Pangea#
                   if (presenceText != null)
                     Text(
                       presenceText,
@@ -170,6 +224,7 @@ class UserDialog extends StatelessWidget {
                     child: Column(
                       children: [
                         LevelDisplayName(userId: profile.userId),
+                        CountryDisplay(userId: profile.userId),
                         AboutMeDisplay(userId: profile.userId),
                       ],
                     ),
