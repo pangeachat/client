@@ -787,13 +787,15 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
-  Future<void> _goalCompletionListener(_) async {
+  Future<void> _goalCompletionListener(Set<ActivityRoleGoal> goals) async {
+    if (goals.isEmpty) return;
+
     final completer = Completer();
     GoalStarAnimation.show(
       context,
       overlayKey: "goal-completion-star-${widget.room.id}",
       startTarget: ChoreoConstants.inputTransformTargetKey,
-      endTarget: ActivitySessionConstants.goalMenuStarTargetId,
+      endTarget: ActivitySessionConstants.goalMenuStarTargetId(goals.first.id),
       onClose: () => completer.complete(),
     );
 
