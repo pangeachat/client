@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/login/login.dart';
@@ -59,6 +60,9 @@ class PasswordLoginView extends StatelessWidget {
                           controller: controller.usernameController,
                           onTapOutside: (_) =>
                               FocusManager.instance.primaryFocus?.unfocus(),
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(128),
+                          ],
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,6 +99,9 @@ class PasswordLoginView extends StatelessWidget {
                               ),
                               onTapOutside: (_) =>
                                   FocusManager.instance.primaryFocus?.unfocus(),
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(128),
+                              ],
                             ),
                             TextButton(
                               onPressed:

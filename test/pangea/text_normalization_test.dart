@@ -5,251 +5,263 @@ import 'package:fluffychat/pangea/choreographer/igc/text_normalization_util.dart
 
 final List<Map<String, String>> normalizeTestCases = [
   // 1. Amharic (am) - beta
-  {"input": "ሰላም!", "expected": "ሰላም"},
-  {"input": "ተማሪ።", "expected": "ተማሪ"},
-  {"input": "ኢትዮጵያ...", "expected": "ኢትዮጵያ"},
+  {"input": "ሰላም!", "expected": "ሰላም", "language": "am"},
+  {"input": "ተማሪ።", "expected": "ተማሪ", "language": "am"},
+  {"input": "ኢትዮጵያ...", "expected": "ኢትዮጵያ", "language": "am"},
 
   // 2. Arabic (ar) - beta
-  {"input": "السلام عليكم!", "expected": "السلام عليكم"},
-  {"input": "مرحباً", "expected": "مرحباً"},
-  {"input": "القاهرة.", "expected": "القاهرة"},
-  {"input": "مدرسة؟", "expected": "مدرسة"},
+  {"input": "السلام عليكم!", "expected": "السلام عليكم", "language": "ar"},
+  {"input": "مرحباً", "expected": "مرحباً", "language": "ar"},
+  {"input": "القاهرة.", "expected": "القاهرة", "language": "ar"},
+  {"input": "مدرسة؟", "expected": "مدرسة", "language": "ar"},
 
   // 3. Bengali (bn) - beta
-  {"input": "নমস্কার!", "expected": "নমস্কার"},
-  {"input": "ভালো আছেন?", "expected": "ভালো আছেন"},
-  {"input": "ঢাকা।", "expected": "ঢাকা"},
+  {"input": "নমস্কার!", "expected": "নমস্কার", "language": "bn"},
+  {"input": "ভালো আছেন?", "expected": "ভালো আছেন", "language": "bn"},
+  {"input": "ঢাকা।", "expected": "ঢাকা", "language": "bn"},
 
   // 4. Bulgarian (bg) - beta
-  {"input": "Здравей!", "expected": "здравей"},
-  {"input": "България", "expected": "българия"},
-  {"input": "София.", "expected": "софия"},
+  {"input": "Здравей!", "expected": "здравей", "language": "bg"},
+  {"input": "България", "expected": "българия", "language": "bg"},
+  {"input": "София.", "expected": "софия", "language": "bg"},
 
   // 5. Catalan (ca) - full
-  {"input": "Hola!", "expected": "hola"},
-  {"input": "França", "expected": "franca"},
-  {"input": "Barcelòna...", "expected": "barcelòna"},
-  {"input": "això", "expected": "això"},
+  {"input": "Hola!", "expected": "hola", "language": "ca"},
+  {"input": "França", "expected": "frança", "language": "ca"},
+  {"input": "Barcelòna...", "expected": "barcelòna", "language": "ca"},
+  {"input": "això", "expected": "això", "language": "ca"},
 
   // 6. Czech (cs) - beta
-  {"input": "Dobrý den!", "expected": "dobry den"},
-  {"input": "Děkuji", "expected": "dekuji"},
-  {"input": "Praha.", "expected": "praha"},
-  {"input": "škola?", "expected": "skola"},
+  {"input": "Dobrý den!", "expected": "dobry den", "language": "cs"},
+  {"input": "Děkuji", "expected": "dekuji", "language": "cs"},
+  {"input": "Praha.", "expected": "praha", "language": "cs"},
+  {"input": "škola?", "expected": "skola", "language": "cs"},
 
   // 7. Danish (da) - beta
-  {"input": "Hej!", "expected": "hej"},
-  {"input": "København", "expected": "kobenhavn"},
-  {"input": "Danskе.", "expected": "danske"},
-  {"input": "æøå", "expected": "æøå"},
+  {"input": "Hej!", "expected": "hej", "language": "da"},
+  {"input": "København", "expected": "københavn", "language": "da"},
+  {"input": "Danske.", "expected": "danske", "language": "da"},
+  {"input": "æøå", "expected": "æøå", "language": "da"},
 
   // 8. German (de) - full
-  {"input": "Guten Tag!", "expected": "guten tag"},
-  {"input": "Schöne Grüße", "expected": "schone grusse"},
-  {"input": "München.", "expected": "munchen"},
-  {"input": "Straße?", "expected": "strasse"},
-  {"input": "Hörst du mich?", "expected": "horst du mich"},
+  {"input": "Guten Tag!", "expected": "guten tag", "language": "de"},
+  {"input": "Schöne Grüße", "expected": "schone grusse", "language": "de"},
+  {"input": "München.", "expected": "munchen", "language": "de"},
+  {"input": "Straße?", "expected": "strasse", "language": "de"},
+  {"input": "Hörst du mich?", "expected": "horst du mich", "language": "de"},
 
   // 9. Greek (el) - beta
-  {"input": "Γεια σας!", "expected": "γεια σας"},
-  {"input": "Αθήνα", "expected": "αθηνα"},
-  {"input": "ελληνικά.", "expected": "ελληνικα"},
+  {"input": "Γεια σας!", "expected": "γεια σας", "language": "el"},
+  {"input": "Αθήνα", "expected": "αθηνα", "language": "el"},
+  {"input": "ελληνικά.", "expected": "ελληνικα", "language": "el"},
 
   // 10. English (en) - full
-  {"input": "Hello world!", "expected": "hello world"},
-  {"input": "It's a beautiful day.", "expected": "its a beautiful day"},
-  {"input": "Don't worry, be happy!", "expected": "dont worry be happy"},
-  {"input": "café", "expected": "cafe"},
-  {"input": "résumé", "expected": "resume"},
+  {"input": "Hello world!", "expected": "hello world", "language": "en"},
+  {
+    "input": "It's a beautiful day.",
+    "expected": "its a beautiful day",
+    "language": "en",
+  },
+  {
+    "input": "Don't worry, be happy!",
+    "expected": "dont worry be happy",
+    "language": "en",
+  },
+  {"input": "café", "expected": "cafe", "language": "en"},
+  {"input": "résumé", "expected": "resume", "language": "en"},
 
   // 11. Spanish (es) - full
-  {"input": "¡Hola mundo!", "expected": "hola mundo"},
-  {"input": "Adiós", "expected": "adios"},
-  {"input": "España.", "expected": "espana"},
-  {"input": "niño", "expected": "nino"},
-  {"input": "¿Cómo estás?", "expected": "como estas"},
+  {"input": "¡Hola mundo!", "expected": "hola mundo", "language": "es"},
+  {"input": "Adiós", "expected": "adios", "language": "es"},
+  {"input": "España.", "expected": "espana", "language": "es"},
+  {"input": "niño", "expected": "nino", "language": "es"},
+  {"input": "¿Cómo estás?", "expected": "como estas", "language": "es"},
 
   // 12. Estonian (et) - beta
-  {"input": "Tere!", "expected": "tere"},
-  {"input": "Tallinn", "expected": "tallinn"},
-  {"input": "Eesti.", "expected": "eesti"},
+  {"input": "Tere!", "expected": "tere", "language": "et"},
+  {"input": "Tallinn", "expected": "tallinn", "language": "et"},
+  {"input": "Eesti.", "expected": "eesti", "language": "et"},
 
   // 13. Basque (eu) - beta
-  {"input": "Kaixo!", "expected": "kaixo"},
-  {"input": "Euskera", "expected": "euskera"},
-  {"input": "Bilbo.", "expected": "bilbo"},
+  {"input": "Kaixo!", "expected": "kaixo", "language": "eu"},
+  {"input": "Euskera", "expected": "euskera", "language": "eu"},
+  {"input": "Bilbo.", "expected": "bilbo", "language": "eu"},
 
   // 14. Finnish (fi) - beta
-  {"input": "Hei!", "expected": "hei"},
-  {"input": "Helsinki", "expected": "helsinki"},
-  {"input": "Suomi.", "expected": "suomi"},
-  {"input": "Käännös", "expected": "kaannos"},
+  {"input": "Hei!", "expected": "hei", "language": "fi"},
+  {"input": "Helsinki", "expected": "helsinki", "language": "fi"},
+  {"input": "Suomi.", "expected": "suomi", "language": "fi"},
+  {"input": "Käännös", "expected": "kaannos", "language": "fi"},
 
   // 15. French (fr) - full
-  {"input": "Bonjour!", "expected": "bonjour"},
-  {"input": "À bientôt", "expected": "a bientot"},
-  {"input": "Paris.", "expected": "paris"},
-  {"input": "Français?", "expected": "francais"},
-  {"input": "C'est magnifique!", "expected": "cest magnifique"},
+  {"input": "Bonjour!", "expected": "bonjour", "language": "fr"},
+  {"input": "À bientôt", "expected": "a bientot", "language": "fr"},
+  {"input": "Paris.", "expected": "paris", "language": "fr"},
+  {"input": "Français?", "expected": "francais", "language": "fr"},
+  {
+    "input": "C'est magnifique!",
+    "expected": "cest magnifique",
+    "language": "fr",
+  },
 
   // 16. Galician (gl) - beta
-  {"input": "Ola!", "expected": "ola"},
-  {"input": "Galicia", "expected": "galicia"},
-  {"input": "Santiago.", "expected": "santiago"},
+  {"input": "Ola!", "expected": "ola", "language": "gl"},
+  {"input": "Galicia", "expected": "galicia", "language": "gl"},
+  {"input": "Santiago.", "expected": "santiago", "language": "gl"},
 
   // 17. Gujarati (gu) - beta
-  {"input": "નમસ્તે!", "expected": "નમસ્તે"},
-  {"input": "ગુજરાત", "expected": "ગુજરાત"},
-  {"input": "અમદાવાદ.", "expected": "અમદાવાદ"},
+  {"input": "નમસ્તે!", "expected": "નમસ્તે", "language": "gu"},
+  {"input": "ગુજરાત", "expected": "ગુજરાત", "language": "gu"},
+  {"input": "અમદાવાદ.", "expected": "અમદાવાદ", "language": "gu"},
 
   // 18. Hindi (hi) - beta
-  {"input": "नमस्ते!", "expected": "नमस्ते"},
-  {"input": "भारत", "expected": "भारत"},
-  {"input": "दिल्ली.", "expected": "दिल्ली"},
-  {"input": "शिक्षा?", "expected": "शिक्षा"},
+  {"input": "नमस्ते!", "expected": "नमस्ते", "language": "hi"},
+  {"input": "भारत", "expected": "भारत", "language": "hi"},
+  {"input": "दिल्ली.", "expected": "दिल्ली", "language": "hi"},
+  {"input": "शिक्षा?", "expected": "शिक्षा", "language": "hi"},
 
   // 19. Hungarian (hu) - beta
-  {"input": "Szia!", "expected": "szia"},
-  {"input": "Budapest", "expected": "budapest"},
-  {"input": "Magyar.", "expected": "magyar"},
-  {"input": "köszönöm", "expected": "koszonom"},
+  {"input": "Szia!", "expected": "szia", "language": "hu"},
+  {"input": "Budapest", "expected": "budapest", "language": "hu"},
+  {"input": "Magyar.", "expected": "magyar", "language": "hu"},
+  {"input": "köszönöm", "expected": "koszonom", "language": "hu"},
 
   // 20. Indonesian (id) - beta
-  {"input": "Halo!", "expected": "halo"},
-  {"input": "Jakarta", "expected": "jakarta"},
-  {"input": "Indonesia.", "expected": "indonesia"},
-  {"input": "selamat pagi", "expected": "selamat pagi"},
+  {"input": "Halo!", "expected": "halo", "language": "id"},
+  {"input": "Jakarta", "expected": "jakarta", "language": "id"},
+  {"input": "Indonesia.", "expected": "indonesia", "language": "id"},
+  {"input": "selamat pagi", "expected": "selamat pagi", "language": "id"},
 
   // 21. Italian (it) - full
-  {"input": "Ciao!", "expected": "ciao"},
-  {"input": "Arrivederci", "expected": "arrivederci"},
-  {"input": "Roma.", "expected": "roma"},
-  {"input": "perché?", "expected": "perche"},
-  {"input": "È bellissimo!", "expected": "e bellissimo"},
+  {"input": "Ciao!", "expected": "ciao", "language": "it"},
+  {"input": "Arrivederci", "expected": "arrivederci", "language": "it"},
+  {"input": "Roma.", "expected": "roma", "language": "it"},
+  {"input": "perché?", "expected": "perche", "language": "it"},
+  {"input": "È bellissimo!", "expected": "e bellissimo", "language": "it"},
 
   // 22. Japanese (ja) - full
-  {"input": "こんにちは！", "expected": "こんにちは"},
-  {"input": "東京", "expected": "東京"},
-  {"input": "ありがとう。", "expected": "ありがとう"},
-  {"input": "さようなら？", "expected": "さようなら"},
+  {"input": "こんにちは！", "expected": "こんにちは", "language": "ja"},
+  {"input": "東京", "expected": "東京", "language": "ja"},
+  {"input": "ありがとう。", "expected": "ありがとう", "language": "ja"},
+  {"input": "さようなら？", "expected": "さようなら", "language": "ja"},
 
   // 23. Kannada (kn) - beta
-  {"input": "ನಮಸ್ತೆ!", "expected": "ನಮಸ್ತೆ"},
-  {"input": "ಬೆಂಗಳೂರು", "expected": "ಬೆಂಗಳೂರು"},
-  {"input": "ಕರ್ನಾಟಕ.", "expected": "ಕರ್ನಾಟಕ"},
+  {"input": "ನಮಸ್ತೆ!", "expected": "ನಮಸ್ತೆ", "language": "kn"},
+  {"input": "ಬೆಂಗಳೂರು", "expected": "ಬೆಂಗಳೂರು", "language": "kn"},
+  {"input": "ಕರ್ನಾಟಕ.", "expected": "ಕರ್ನಾಟಕ", "language": "kn"},
 
   // 24. Korean (ko) - full
-  {"input": "안녕하세요!", "expected": "안녕하세요"},
-  {"input": "서울", "expected": "서울"},
-  {"input": "한국어.", "expected": "한국어"},
-  {"input": "감사합니다?", "expected": "감사합니다"},
+  {"input": "안녕하세요!", "expected": "안녕하세요", "language": "ko"},
+  {"input": "서울", "expected": "서울", "language": "ko"},
+  {"input": "한국어.", "expected": "한국어", "language": "ko"},
+  {"input": "감사합니다?", "expected": "감사합니다", "language": "ko"},
 
   // 25. Lithuanian (lt) - beta
-  {"input": "Labas!", "expected": "labas"},
-  {"input": "Vilnius", "expected": "vilnius"},
-  {"input": "Lietuva.", "expected": "lietuva"},
-  {"input": "ačiū", "expected": "aciu"},
+  {"input": "Labas!", "expected": "labas", "language": "lt"},
+  {"input": "Vilnius", "expected": "vilnius", "language": "lt"},
+  {"input": "Lietuva.", "expected": "lietuva", "language": "lt"},
+  {"input": "ačiū", "expected": "aciu", "language": "lt"},
 
   // 26. Latvian (lv) - beta
-  {"input": "Sveiki!", "expected": "sveiki"},
-  {"input": "Rīga", "expected": "riga"},
-  {"input": "Latvija.", "expected": "latvija"},
+  {"input": "Sveiki!", "expected": "sveiki", "language": "lv"},
+  {"input": "Rīga", "expected": "riga", "language": "lv"},
+  {"input": "Latvija.", "expected": "latvija", "language": "lv"},
 
   // 27. Malay (ms) - beta
-  {"input": "Selamat pagi!", "expected": "selamat pagi"},
-  {"input": "Kuala Lumpur", "expected": "kuala lumpur"},
-  {"input": "Malaysia.", "expected": "malaysia"},
+  {"input": "Selamat pagi!", "expected": "selamat pagi", "language": "ms"},
+  {"input": "Kuala Lumpur", "expected": "kuala lumpur", "language": "ms"},
+  {"input": "Malaysia.", "expected": "malaysia", "language": "ms"},
 
   // 28. Mongolian (mn) - beta
-  {"input": "Сайн байна уу!", "expected": "сайн байна уу"},
-  {"input": "Улаанбаатар", "expected": "улаанбаатар"},
-  {"input": "Монгол.", "expected": "монгол"},
+  {"input": "Сайн байна уу!", "expected": "сайн байна уу", "language": "mn"},
+  {"input": "Улаанбаатар", "expected": "улаанбаатар", "language": "mn"},
+  {"input": "Монгол.", "expected": "монгол", "language": "mn"},
 
   // 29. Marathi (mr) - beta
-  {"input": "नमस्कार!", "expected": "नमस्कार"},
-  {"input": "मुंबई", "expected": "मुंबई"},
-  {"input": "महाराष्ट्र.", "expected": "महाराष्ट्र"},
+  {"input": "नमस्कार!", "expected": "नमस्कार", "language": "mr"},
+  {"input": "मुंबई", "expected": "मुंबई", "language": "mr"},
+  {"input": "महाराष्ट्र.", "expected": "महाराष्ट्र", "language": "mr"},
 
   // 30. Dutch (nl) - beta
-  {"input": "Hallo!", "expected": "hallo"},
-  {"input": "Amsterdam", "expected": "amsterdam"},
-  {"input": "Nederland.", "expected": "nederland"},
-  {"input": "dankjewel", "expected": "dankjewel"},
+  {"input": "Hallo!", "expected": "hallo", "language": "nl"},
+  {"input": "Amsterdam", "expected": "amsterdam", "language": "nl"},
+  {"input": "Nederland.", "expected": "nederland", "language": "nl"},
+  {"input": "dankjewel", "expected": "dankjewel", "language": "nl"},
 
   // 31. Punjabi (pa) - beta
-  {"input": "ਸਤਿ ਸ਼੍ਰੀ ਅਕਾਲ!", "expected": "ਸਤਿ ਸ਼੍ਰੀ ਅਕਾਲ"},
-  {"input": "ਪੰਜਾਬ", "expected": "ਪੰਜਾਬ"},
-  {"input": "ਅੰਮ੍ਰਿਤਸਰ.", "expected": "ਅੰਮ੍ਰਿਤਸਰ"},
+  {"input": "ਸਤਿ ਸ਼੍ਰੀ ਅਕਾਲ!", "expected": "ਸਤਿ ਸ਼੍ਰੀ ਅਕਾਲ", "language": "pa"},
+  {"input": "ਪੰਜਾਬ", "expected": "ਪੰਜਾਬ", "language": "pa"},
+  {"input": "ਅੰਮ੍ਰਿਤਸਰ.", "expected": "ਅੰਮ੍ਰਿਤਸਰ", "language": "pa"},
 
   // 32. Polish (pl) - beta
-  {"input": "Cześć!", "expected": "czesc"},
-  {"input": "Warszawa", "expected": "warszawa"},
-  {"input": "Polska.", "expected": "polska"},
-  {"input": "dziękuję", "expected": "dziekuje"},
+  {"input": "Cześć!", "expected": "czesc", "language": "pl"},
+  {"input": "Warszawa", "expected": "warszawa", "language": "pl"},
+  {"input": "Polska.", "expected": "polska", "language": "pl"},
+  {"input": "dziękuję", "expected": "dziekuje", "language": "pl"},
 
   // 33. Portuguese (pt) - full
-  {"input": "Olá!", "expected": "ola"},
-  {"input": "Obrigado", "expected": "obrigado"},
-  {"input": "São Paulo.", "expected": "sao paulo"},
-  {"input": "coração", "expected": "coracao"},
-  {"input": "não?", "expected": "nao"},
+  {"input": "Olá!", "expected": "ola", "language": "pt"},
+  {"input": "Obrigado", "expected": "obrigado", "language": "pt"},
+  {"input": "São Paulo.", "expected": "sao paulo", "language": "pt"},
+  {"input": "coração", "expected": "coracao", "language": "pt"},
+  {"input": "não?", "expected": "nao", "language": "pt"},
 
   // 34. Romanian (ro) - beta
-  {"input": "Salut!", "expected": "salut"},
-  {"input": "București", "expected": "bucuresti"},
-  {"input": "România.", "expected": "romania"},
-  {"input": "mulțumesc", "expected": "multumesc"},
+  {"input": "Salut!", "expected": "salut", "language": "ro"},
+  {"input": "București", "expected": "bucuresti", "language": "ro"},
+  {"input": "România.", "expected": "romania", "language": "ro"},
+  {"input": "mulțumesc", "expected": "multumesc", "language": "ro"},
 
   // 35. Russian (ru) - full
-  {"input": "Привет!", "expected": "привет"},
-  {"input": "Москва", "expected": "москва"},
-  {"input": "Россия.", "expected": "россия"},
-  {"input": "спасибо?", "expected": "спасибо"},
-  {"input": "магазин", "expected": "магазин"},
-  {"input": "магазин.", "expected": "магазин"},
+  {"input": "Привет!", "expected": "привет", "language": "ru"},
+  {"input": "Москва", "expected": "москва", "language": "ru"},
+  {"input": "Россия.", "expected": "россия", "language": "ru"},
+  {"input": "спасибо?", "expected": "спасибо", "language": "ru"},
+  {"input": "магазин", "expected": "магазин", "language": "ru"},
+  {"input": "магазин.", "expected": "магазин", "language": "ru"},
 
   // 36. Slovak (sk) - beta
-  {"input": "Ahoj!", "expected": "ahoj"},
-  {"input": "Bratislava", "expected": "bratislava"},
-  {"input": "Slovensko.", "expected": "slovensko"},
-  {"input": "ďakujem", "expected": "dakujem"},
+  {"input": "Ahoj!", "expected": "ahoj", "language": "sk"},
+  {"input": "Bratislava", "expected": "bratislava", "language": "sk"},
+  {"input": "Slovensko.", "expected": "slovensko", "language": "sk"},
+  {"input": "ďakujem", "expected": "dakujem", "language": "sk"},
 
   // 37. Serbian (sr) - beta
-  {"input": "Здраво!", "expected": "здраво"},
-  {"input": "Београд", "expected": "београд"},
-  {"input": "Србија.", "expected": "србија"},
+  {"input": "Здраво!", "expected": "здраво", "language": "sr"},
+  {"input": "Београд", "expected": "београд", "language": "sr"},
+  {"input": "Србија.", "expected": "србија", "language": "sr"},
 
   // 38. Ukrainian (uk) - beta
-  {"input": "Привіт!", "expected": "привіт"},
-  {"input": "Київ", "expected": "київ"},
-  {"input": "Україна.", "expected": "україна"},
+  {"input": "Привіт!", "expected": "привіт", "language": "uk"},
+  {"input": "Київ", "expected": "київ", "language": "uk"},
+  {"input": "Україна.", "expected": "україна", "language": "uk"},
 
   // 39. Urdu (ur) - beta
-  {"input": "السلام علیکم!", "expected": "السلام علیکم"},
-  {"input": "کراچی", "expected": "کراچی"},
-  {"input": "پاکستان.", "expected": "پاکستان"},
+  {"input": "السلام علیکم!", "expected": "السلام علیکم", "language": "ur"},
+  {"input": "کراچی", "expected": "کراچی", "language": "ur"},
+  {"input": "پاکستان.", "expected": "پاکستان", "language": "ur"},
 
   // 40. Vietnamese (vi) - full
-  {"input": "Xin chào!", "expected": "xin chao"},
-  {"input": "Hà Nội", "expected": "ha noi"},
-  {"input": "Việt Nam.", "expected": "viet nam"},
-  {"input": "cảm ơn?", "expected": "cam on"},
+  {"input": "Xin chào!", "expected": "xin chao", "language": "vi"},
+  {"input": "Hà Nội", "expected": "ha noi", "language": "vi"},
+  {"input": "Việt Nam.", "expected": "viet nam", "language": "vi"},
+  {"input": "cảm ơn?", "expected": "cam on", "language": "vi"},
 
   // 41. Cantonese (yue) - beta
-  {"input": "你好！", "expected": "你好"},
-  {"input": "香港", "expected": "香港"},
-  {"input": "廣東話.", "expected": "廣東話"},
+  {"input": "你好！", "expected": "你好", "language": "yue"},
+  {"input": "香港", "expected": "香港", "language": "yue"},
+  {"input": "廣東話.", "expected": "廣東話", "language": "yue"},
 
   // 42. Chinese Simplified (zh-CN) - full
-  {"input": "你好！", "expected": "你好"},
-  {"input": "北京", "expected": "北京"},
-  {"input": "中国.", "expected": "中国"},
-  {"input": "谢谢?", "expected": "谢谢"},
+  {"input": "你好！", "expected": "你好", "language": "zh-CN"},
+  {"input": "北京", "expected": "北京", "language": "zh-CN"},
+  {"input": "中国.", "expected": "中国", "language": "zh-CN"},
+  {"input": "谢谢?", "expected": "谢谢", "language": "zh-CN"},
 
   // 43. Chinese Traditional (zh-TW) - full
-  {"input": "您好！", "expected": "您好"},
-  {"input": "台北", "expected": "台北"},
-  {"input": "台灣.", "expected": "台灣"},
+  {"input": "您好！", "expected": "您好", "language": "zh-TW"},
+  {"input": "台北", "expected": "台北", "language": "zh-TW"},
+  {"input": "台灣.", "expected": "台灣", "language": "zh-TW"},
 
   // Edge cases and special scenarios
 
@@ -336,12 +348,13 @@ void main() {
     for (int i = 0; i < normalizeTestCases.length; i++) {
       final testCase = normalizeTestCases[i];
       final input = testCase['input']!;
+      final language = testCase['language'] ?? 'en';
       final expected = testCase['expected']!;
 
       test('Test ${i + 1}: "$input" should normalize to "$expected"', () {
         final actual = normalizeString(
           input,
-          'en',
+          language,
         ); // Default to English for tests
         expect(
           actual,

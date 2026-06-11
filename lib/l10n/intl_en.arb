@@ -4066,18 +4066,6 @@
     "inactive": "Inactive",
     "confirmRole": "Confirm role",
     "openRoleLabel": "OPEN",
-    "joinedTheActivity": "👋 {username} joined as {role}",
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "finishedTheActivity": "🎯 {username} wrapped up this activity",
     "@finishedTheActivity": {
         "type": "String",
@@ -4858,5 +4846,7 @@
             }
         }
     },
-    "showDeveloperOptions": "Show developer options"
+    "showDeveloperOptions": "Show developer options",
+    "showDeveloperOptionsDesc": "Turn on developer options to show download analytics and detailed info options throughout the app.",
+    "waitingForBotToJoinActivity": "Waiting for bot to join..."
 }

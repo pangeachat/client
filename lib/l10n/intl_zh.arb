@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-06-08 14:15:45.379933",
+    "@@last_modified": "2026-06-10 14:28:45.786995",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -3849,7 +3849,6 @@
     "inactive": "不活跃",
     "confirmRole": "确认角色",
     "openRoleLabel": "开放",
-    "joinedTheActivity": "👋 {username} 作为 {role} 加入",
     "finishedTheActivity": "🎯 {username} 完成了此次活动",
     "activitySummaryError": "无法获取活动总结",
     "requestSummaries": "请求总结",
@@ -6656,17 +6655,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9827,6 +9815,16 @@
     },
     "showDeveloperOptions": "显示开发者选项",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "开启开发者选项以在应用程序中显示下载分析和详细信息选项。",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "等待机器人加入...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

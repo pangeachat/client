@@ -80,8 +80,8 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
         !finished || !archived || (summary != null && summary.summary == null);
 
     return AnimatedSize(
+      alignment: Alignment.bottomCenter,
       duration: FluffyThemes.animationDuration,
-      alignment: Alignment.topCenter,
       child: hasContent
           ? Container(
               padding: const EdgeInsets.all(12.0),

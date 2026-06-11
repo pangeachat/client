@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 14:15:42.684246",
+    "@@last_modified": "2026-06-10 14:28:43.448780",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -3724,7 +3724,6 @@
     "inactive": "செயலற்றது",
     "confirmRole": "பங்கு உறுதிப்படுத்தவும்",
     "openRoleLabel": "திறந்தது",
-    "joinedTheActivity": "👋 {username} {role} ஆக சேர்ந்தார்",
     "finishedTheActivity": "🎯 {username} இந்த செயல்பாட்டை முடித்தார்",
     "activitySummaryError": "செயல்பாட்டு சுருக்கங்கள் கிடைக்கவில்லை",
     "requestSummaries": "சுருக்கங்களை கோரவும்",
@@ -6544,17 +6543,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9943,6 +9931,16 @@
     },
     "showDeveloperOptions": "உருவாக்குநர் விருப்பங்களை காட்டு",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "அப்ளிகேஷனில் பதிவிறக்கம் பகுப்பாய்வுகள் மற்றும் விரிவான தகவல் விருப்பங்களை காண developer விருப்பங்களை இயக்கவும்.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "போட்டுக்கு இணைவதற்காக காத்திருக்கிறேன்...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

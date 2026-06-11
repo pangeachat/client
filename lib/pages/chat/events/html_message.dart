@@ -474,7 +474,6 @@ class HtmlMessage extends StatelessWidget {
             .map((v) => v.lemma.toLowerCase())
             .toSet();
         final isVocabHighlight =
-            pangeaMessageEvent!.ownMessage &&
             vocabLemmas != null &&
             token != null &&
             vocabLemmas.contains(token.lemma.text.toLowerCase());
@@ -556,9 +555,7 @@ class HtmlMessage extends StatelessWidget {
                               child: isVocabHighlight
                                   ? DecoratedBox(
                                       decoration: BoxDecoration(
-                                        color: AppConfig.goldLight.withAlpha(
-                                          100,
-                                        ),
+                                        color: AppConfig.gold.withAlpha(50),
                                         borderRadius: BorderRadius.circular(12),
                                       ),
                                       child: Padding(
@@ -1105,7 +1102,7 @@ class HtmlMessage extends StatelessWidget {
         ),
         style: TextStyle(fontSize: fontSize, color: textColor),
         maxLines: limitHeight ? 64 : null,
-        overflow: TextOverflow.fade,
+        overflow: TextOverflow.clip,
         selectionColor: textColor.withAlpha(128),
       ),
     );

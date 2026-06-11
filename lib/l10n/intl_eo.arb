@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 14:15:55.080321",
+    "@@last_modified": "2026-06-10 14:28:52.594831",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -2966,7 +2966,6 @@
     "inactive": "Nekonata",
     "confirmRole": "Konfirmu rolon",
     "openRoleLabel": "Malfermita",
-    "joinedTheActivity": "👋 {username} aliĝis kiel {role}",
     "finishedTheActivity": "🎯 {username} finis ĉi tiun agadon",
     "activitySummaryError": "Aktivitatresumoj ne disponeblas",
     "requestSummaries": "Petaj resumoj",
@@ -7538,17 +7537,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -10946,6 +10934,16 @@
     },
     "showDeveloperOptions": "Montri evoluiga opciojn",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Ŝaltu la opciojn por disvolvantoj por montri elŝutanalizojn kaj detalan informon pri opcioj tra la aplikaĵo.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Atendante ke la roboto aliĝu...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

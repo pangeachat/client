@@ -188,7 +188,7 @@ class Choreographer extends ChangeNotifier {
     }
 
     if (textController.editType != EditTypeEnum.suggestion &&
-        orchestratorController.activeSuggestion != null) {
+        orchestratorController.hasAcceptedSuggestion) {
       orchestratorController.resetSuggestionState();
       textController.editType = EditTypeEnum.keyboard;
     }

@@ -24,6 +24,7 @@ class ActivitySessionButtons extends StatelessWidget {
     final theme = Theme.of(context);
     final description = sessionController.descriptionText;
     return AnimatedSize(
+      alignment: Alignment.bottomCenter,
       duration: FluffyThemes.animationDuration,
       child: Container(
         decoration: BoxDecoration(

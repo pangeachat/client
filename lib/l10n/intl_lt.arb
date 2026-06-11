@@ -3151,7 +3151,6 @@
     "inactive": "Nekeičiama",
     "confirmRole": "Patvirtinti vaidmenį",
     "openRoleLabel": "ATVIRAS",
-    "joinedTheActivity": "👋 {username} prisijungė kaip {role}",
     "finishedTheActivity": "🎯 {username} užbaigė šią veiklą",
     "activitySummaryError": "Veiklos santraukų nėra",
     "requestSummaries": "Prašyti santraukų",
@@ -3246,7 +3245,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-06-08 14:15:40.557802",
+    "@@last_modified": "2026-06-10 14:28:41.560884",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7305,17 +7304,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -10713,6 +10701,16 @@
     },
     "showDeveloperOptions": "Rodyti kūrėjo parinktis",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Įjunkite kūrėjo parinktis, kad rodytumėte atsisiuntimo analizę ir išsamią informaciją apie parinktis visoje programoje.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Laukiama, kol robotas prisijungs...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

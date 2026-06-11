@@ -28,6 +28,9 @@ class Settings3PidController extends State<Settings3Pid> {
       cancelLabel: L10n.of(context).cancel,
       hintText: L10n.of(context).enterAnEmailAddress,
       keyboardType: TextInputType.emailAddress,
+      // #Pangea
+      maxLength: 254,
+      // Pangea#
     );
     if (input == null) return;
     final clientSecret = DateTime.now().millisecondsSinceEpoch.toString();

@@ -1411,7 +1411,6 @@
     "inactive": "Inactiv",
     "confirmRole": "Confirma le rolo",
     "openRoleLabel": "APERTE",
-    "joinedTheActivity": "👋 {username} s'aciapava como {role}",
     "finishedTheActivity": "🎯 {username} ha completate iste activitate",
     "activitySummaryError": "Summarios de activitate non disponibile",
     "requestSummaries": "Requerer summarios",
@@ -1506,7 +1505,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-06-08 14:15:18.541796",
+    "@@last_modified": "2026-06-10 14:28:20.069493",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7529,17 +7528,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -10937,6 +10925,16 @@
     },
     "showDeveloperOptions": "Mostra opzioni sviluppatore",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Aktivuj opsi pengembang untuk menampilkan analitik unduhan dan opsi info terperinci di seluruh aplikasi.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Asteptând ca botul să se alăture...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

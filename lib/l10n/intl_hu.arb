@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-06-08 14:15:11.792221",
+    "@@last_modified": "2026-06-10 14:28:13.108340",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -3718,7 +3718,6 @@
     "inactive": "Inaktív",
     "confirmRole": "Szerep megerősítése",
     "openRoleLabel": "NYITOTT",
-    "joinedTheActivity": "👋 {username} csatlakozott {role} szerepben",
     "finishedTheActivity": "🎯 {username} befejezte ezt a tevékenységet",
     "activitySummaryError": "A tevékenység összegzések nem elérhetők",
     "requestSummaries": "Összegzések kérés",
@@ -6545,17 +6544,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9954,6 +9942,16 @@
     },
     "showDeveloperOptions": "Fejlesztői opciók megjelenítése",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Kapcsolja be a fejlesztői lehetőségeket a letöltési elemzések és a részletes információs lehetőségek megjelenítéséhez az alkalmazásban.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Várakozás a bot csatlakozására...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

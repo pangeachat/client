@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-08 14:15:27.016340",
+    "@@last_modified": "2026-06-10 14:28:28.024945",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -3849,7 +3849,6 @@
     "inactive": "Неактивний",
     "confirmRole": "Підтвердити роль",
     "openRoleLabel": "ВІДКРИТА",
-    "joinedTheActivity": "👋 {username} приєднався як {role}",
     "finishedTheActivity": "🎯 {username} завершив цю активність",
     "activitySummaryError": "Зведення активностей недоступне",
     "requestSummaries": "Запитати зведення",
@@ -6656,17 +6655,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9827,6 +9815,16 @@
     },
     "showDeveloperOptions": "Показати параметри розробника",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Увімкніть параметри розробника, щоб показати аналітику завантажень та детальну інформацію про параметри в додатку.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Очікування приєднання бота...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

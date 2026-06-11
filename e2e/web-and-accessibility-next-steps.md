@@ -8,10 +8,7 @@ Mobile (Patrol) plan: [mobile-testing-plan.md](mobile-testing-plan.md)
 ## Major todos
 
 - [ ] Fix the 2 axe-core violations on the chat list page (see § "Example violations" below)
-- [ ] Add semantics coverage to remaining flows (message toolbar, course discovery, settings, analytics)
-- [ ] Write Playwright specs for remaining flows (see coverage table below)
 - [ ] Test the cloud agent (`e2e-tester`) with a real failure issue
-- [ ] Use the `add-e2e-coverage` skill to author a spec beyond login
 
 ---
 
@@ -46,9 +43,9 @@ Each flow maps to a Playwright spec via `e2e/trigger-map.json`.
 | Accessibility (axe-core)    |   ✅   |                      |
 | Course and chat navigation  |   ✅   |                      |
 | Message toolbar (TTS, etc.) |   ✅   |                      |
-| Settings                    |   ⬜   | Needs semantics work |
-| Analytics                   |   ⬜   | Needs semantics work |
-| Logout                      |   ⬜   |                      |
+| Settings                    |   ✅   |                      |
+| Analytics                   |   ✅   |                      |
+| Logout                      |   ✅   |                      |
 
 ### Adding a new flow
 

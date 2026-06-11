@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-06-08 14:15:49.476161",
+    "@@last_modified": "2026-06-10 14:28:48.681836",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -3726,7 +3726,6 @@
     "inactive": "Nieaktywne",
     "confirmRole": "Potwierdź rolę",
     "openRoleLabel": "OTWARTA",
-    "joinedTheActivity": "👋 {username} dołączył jako {role}",
     "finishedTheActivity": "🎯 {username} zakończył tę aktywność",
     "activitySummaryError": "Podsumowania aktywności niedostępne",
     "requestSummaries": "Żądaj podsumowań",
@@ -6537,17 +6536,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9936,6 +9924,16 @@
     },
     "showDeveloperOptions": "Pokaż opcje dewelopera",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Włącz opcje dewelopera, aby wyświetlić analizy pobierania i szczegółowe opcje informacji w całej aplikacji.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Czekam na dołączenie bota...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

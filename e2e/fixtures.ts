@@ -8,6 +8,19 @@ import { test as base, expect } from "@playwright/test";
  */
 export const test = base.extend({
   page: async ({ page }, use) => {
+    // Inject mock: true into all sent choreo requests
+    // And redirect to local choreo server
+    await page.route('**/choreo/*', (route, request) => {
+      const headers = {
+        ...request.headers(),
+        'mock': 'true',
+        'mock_llm_latency_override_s': '0',
+      };
+      route.continue({
+        headers: headers
+      });
+    });
+
     // Navigate to the app and wait for Flutter to render
     await page.goto("/");
 

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-06-08 14:15:59.683549",
+    "@@last_modified": "2026-06-10 14:28:57.010409",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -3604,7 +3604,6 @@
     "inactive": "Inactif",
     "confirmRole": "Confirmer le rôle",
     "openRoleLabel": "OUVERT",
-    "joinedTheActivity": "👋 {username} a rejoint en tant que {role}",
     "finishedTheActivity": "🎯 {username} a terminé cette activité",
     "activitySummaryError": "Résumé des activités indisponible",
     "requestSummaries": "Demander des résumés",
@@ -6830,17 +6829,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -10224,6 +10212,16 @@
     },
     "showDeveloperOptions": "Afficher les options de développement",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Activez les options de développement pour afficher les analyses de téléchargement et les options d'informations détaillées dans toute l'application.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "En attente que le bot rejoigne...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

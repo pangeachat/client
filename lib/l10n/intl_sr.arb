@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 14:15:58.406202",
+    "@@last_modified": "2026-06-10 14:28:55.403868",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -2883,7 +2883,6 @@
     "inactive": "Neaktivno",
     "confirmRole": "Potvrdi ulogu",
     "openRoleLabel": "OTVORENO",
-    "joinedTheActivity": "👋 {username} se pridružio kao {role}",
     "finishedTheActivity": "🎯 {username} završio ovu aktivnost",
     "activitySummaryError": "Sažeci aktivnosti nisu dostupni",
     "requestSummaries": "Zatraži sažetke",
@@ -7542,17 +7541,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -10950,6 +10938,16 @@
     },
     "showDeveloperOptions": "Prikaži opcije za programere",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Uključite opcije za programere da biste prikazali analitiku preuzimanja i detaljne informacije o opcijama u aplikaciji.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Čekam da se bot pridruži...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

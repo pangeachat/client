@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
@@ -98,6 +99,7 @@ class CourseCodePageState extends State<CourseCodePage> {
                         hintText: L10n.of(context).courseCodeHint,
                       ),
                       onFieldSubmitted: (_) => _submit(),
+                      inputFormatters: [LengthLimitingTextInputFormatter(10)],
                     ),
                     ElevatedButton(
                       onPressed: _code.isNotEmpty ? _submit : null,

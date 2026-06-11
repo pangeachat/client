@@ -1383,7 +1383,6 @@
     "inactive": "Inaktiv",
     "confirmRole": "Bekræft rolle",
     "openRoleLabel": "ÅBEN",
-    "joinedTheActivity": "👋 {username} deltog som {role}",
     "finishedTheActivity": "🎯 {username} afsluttede denne aktivitet",
     "activitySummaryError": "Aktivitetsoversigter er ikke tilgængelige",
     "requestSummaries": "Anmod om oversigter",
@@ -1478,7 +1477,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-06-08 14:15:10.769478",
+    "@@last_modified": "2026-06-10 14:28:12.171941",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -7513,17 +7512,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -10921,6 +10909,16 @@
     },
     "showDeveloperOptions": "Vis udviklerindstillinger",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Tænd for udviklerindstillinger for at vise downloadanalyse og detaljerede infoindstillinger i hele appen.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Venter på, at botten deltager...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

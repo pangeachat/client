@@ -779,7 +779,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (activityController.confettiNotifier.value) {
       StarRainWidget.show(
         context,
-        "start-rain-${widget.room.id}",
+        "star-rain-${widget.room.id}",
         showBlast: true,
       );
     }
@@ -1189,6 +1189,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (!stopMediaStream.isClosed) {
       stopMediaStream.add(null);
     }
+    MatrixState.pAnyState.closeOverlay("star-rain-${widget.room.id}");
     MatrixState.pAnyState.closeAllOverlays();
   }
 
@@ -2435,18 +2436,6 @@ class ChatController extends State<ChatPageWithRoom>
   bool get isToolbarOpen => MatrixState.pAnyState.isOverlayOpen(
     overlayKey: "message_toolbar_overlay",
   );
-
-  bool get enableTranslateShimmer {
-    if (tutorialOverlayController.state.isTutorialActive(
-      TutorialEnum.readingAssistance,
-    )) {
-      return tutorialOverlayController.state.isTutorialStepActive(
-        TutorialEnum.readingAssistance,
-        1,
-      );
-    }
-    return true;
-  }
 
   void showToolbar(
     Event event, {
