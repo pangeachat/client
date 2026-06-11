@@ -18,8 +18,17 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class ProfileSetupStepView extends StatefulWidget {
   final ProfileSetupOnboardingStep step;
+  final bool loading;
+  final bool hasNextStep;
+  final VoidCallback forward;
 
-  const ProfileSetupStepView({super.key, required this.step});
+  const ProfileSetupStepView({
+    super.key,
+    required this.step,
+    required this.loading,
+    required this.hasNextStep,
+    required this.forward,
+  });
 
   @override
   ProfileSetupStepViewState createState() => ProfileSetupStepViewState();
@@ -129,99 +138,151 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ValueListenableBuilder(
-            valueListenable: _avatarNotifier,
-            builder: (context, _, _) {
-              final avatarInfo = _step.state.avatarInfo;
-              final avatarBytes = avatarInfo?.avatarBytes;
-              final avatarUrl = avatarInfo?.avatarUrl;
-
-              return Column(
+    return Column(
+      spacing: 32.0,
+      children: [
+        Expanded(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(
-                    height: 110.0,
-                    width: 110.0,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(100.0),
-                          child: Container(
-                            width: 100.0,
-                            height: 100.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100.0),
-                              color: theme.disabledColor,
+                  ValueListenableBuilder(
+                    valueListenable: _avatarNotifier,
+                    builder: (context, _, _) {
+                      final avatarInfo = _step.state.avatarInfo;
+                      final avatarBytes = avatarInfo?.avatarBytes;
+                      final avatarUrl = avatarInfo?.avatarUrl;
+
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                            height: 110.0,
+                            width: 110.0,
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(100.0),
+                                  child: Container(
+                                    width: 100.0,
+                                    height: 100.0,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                        100.0,
+                                      ),
+                                      color: theme.disabledColor,
+                                    ),
+                                    child: avatarUrl != null
+                                        ? ImageByUrl(
+                                            width: 100.0,
+                                            imageUrl: avatarUrl,
+                                          )
+                                        : avatarBytes != null
+                                        ? Image.memory(
+                                            avatarBytes,
+                                            fit: BoxFit.cover,
+                                          )
+                                        : SizedBox(),
+                                  ),
+                                ),
+                                Positioned(
+                                  right: 0,
+                                  bottom: 0,
+                                  child: IconButton.filled(
+                                    icon: Icon(Icons.file_upload_outlined),
+                                    onPressed: _uploadAvatarImage,
+                                    style: IconButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                          12.0,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            child: avatarUrl != null
-                                ? ImageByUrl(width: 100.0, imageUrl: avatarUrl)
-                                : avatarBytes != null
-                                ? Image.memory(avatarBytes, fit: BoxFit.cover)
-                                : SizedBox(),
                           ),
-                        ),
-                        Positioned(
-                          right: 0,
-                          bottom: 0,
-                          child: IconButton.filled(
-                            icon: Icon(Icons.file_upload_outlined),
-                            onPressed: _uploadAvatarImage,
-                            style: IconButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                            ),
+                          SizedBox(height: 20.0),
+                          Row(
+                            spacing: 6.0,
+                            mainAxisSize: MainAxisSize.min,
+                            children: _avatarOptions
+                                .map(
+                                  (avatarUrl) => InkWell(
+                                    borderRadius: BorderRadius.circular(100.0),
+                                    onTap: () => _setAvatarUrl(avatarUrl),
+                                    child: SizedBox(
+                                      height: 32.0,
+                                      width: 32.0,
+                                      child: ImageByUrl(
+                                        width: 32.0,
+                                        imageUrl: avatarUrl,
+                                        borderRadius: BorderRadius.circular(
+                                          100.0,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                                .toList(),
                           ),
-                        ),
-                      ],
+                        ],
+                      );
+                    },
+                  ),
+                  SizedBox(height: 12.0),
+                  Text(
+                    L10n.of(context).displayName,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 20.0),
-                  Row(
-                    spacing: 6.0,
-                    mainAxisSize: MainAxisSize.min,
-                    children: _avatarOptions
-                        .map(
-                          (avatarUrl) => InkWell(
-                            borderRadius: BorderRadius.circular(100.0),
-                            onTap: () => _setAvatarUrl(avatarUrl),
-                            child: SizedBox(
-                              height: 32.0,
-                              width: 32.0,
-                              child: ImageByUrl(
-                                width: 32.0,
-                                imageUrl: avatarUrl,
-                                borderRadius: BorderRadius.circular(100.0),
-                              ),
-                            ),
-                          ),
-                        )
-                        .toList(),
+                  SizedBox(height: 8.0),
+                  ValueListenableBuilder(
+                    valueListenable: _displayNameController,
+                    builder: (context, text, _) => TextField(
+                      controller: _displayNameController,
+                      maxLength: 50,
+                    ),
                   ),
                 ],
-              );
-            },
-          ),
-          SizedBox(height: 12.0),
-          Text(
-            L10n.of(context).displayName,
-            style: theme.textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-          SizedBox(height: 8.0),
-          ValueListenableBuilder(
-            valueListenable: _displayNameController,
-            builder: (context, text, _) =>
-                TextField(controller: _displayNameController, maxLength: 50),
+        ),
+        ElevatedButton(
+          onPressed: _step.enableGoForward ? widget.forward : null,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: theme.colorScheme.primaryContainer,
+            foregroundColor: theme.colorScheme.onPrimaryContainer,
+            minimumSize: const Size.fromHeight(48),
           ),
-        ],
-      ),
+          child: SizedBox(
+            height: 24,
+            child: Center(
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 200),
+                child: widget.loading
+                    ? SizedBox(
+                        key: const ValueKey('loading'),
+                        width: double.infinity,
+                        child: const LinearProgressIndicator(),
+                      )
+                    : Text(
+                        widget.hasNextStep
+                            ? _step.nextStepText(L10n.of(context))
+                            : _step.lastStepText(L10n.of(context)),
+                        key: const ValueKey('text'),
+                        textAlign: TextAlign.center,
+                      ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

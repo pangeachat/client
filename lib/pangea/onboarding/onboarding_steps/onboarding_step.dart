@@ -7,13 +7,11 @@ abstract class OnboardingStep {
   final Client client;
   final OnboardingStateController state;
   final int maxRemainingSteps;
-  final bool enableSkip;
 
   const OnboardingStep({
     required this.client,
     required this.state,
     required this.maxRemainingSteps,
-    this.enableSkip = false,
   });
 
   bool get enableGoForward => true;

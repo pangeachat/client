@@ -11,7 +11,6 @@ class CourseCodeOnboardingStep extends OnboardingStep {
     required super.client,
     required super.state,
     required super.maxRemainingSteps,
-    super.enableSkip = true,
   });
 
   @override
