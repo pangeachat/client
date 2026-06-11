@@ -24,6 +24,14 @@ Production is periodically synced from `main` via merge PRs. Between syncs, the 
 - Staging: app.staging.pangea.chat (S3 + CloudFront)
 - Production: app.pangea.chat (S3 + CloudFront)
 
+## Environment Config (`.env`)
+
+The root `.env` is the **single config source** on every platform. There is no tracked `assets/.env`; don't reintroduce one — a second copy is what previously let web silently ignore the root file.
+
+- **Web**: `.env` is not a bundled asset. [`EnvLoader`](../../lib/pangea/common/config/env_loader.dart) fetches `/.env` from the web root at startup, so deploy jobs must place the env file at the web root (`build/web/.env`). This is what lets one web artifact be stamped with the target env at deploy time without a rebuild.
+- **Native**: `.env` is a bundled asset, but the pubspec declaration stays commented on `main` because a declared-but-missing asset fails the build and `.env` is gitignored. CI writes the file and applies [`enable_mobile_env.patch`](../../scripts/enable_mobile_env.patch) to uncomment it. If the pubspec asset block changes, regenerate the patch or mobile builds break at `git apply`.
+- **Env switcher** (staging builds): `envs.json` / `appConfigOverride` overlays whatever dotenv loaded; it is independent of where the file came from.
+
 ## Production Hotfix Process
 
 When a bug must be fixed on production before the next full sync from `main`:

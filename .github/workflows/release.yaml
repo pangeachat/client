@@ -58,12 +58,13 @@ jobs:
         run: ./scripts/prepare-web.sh
       - name: Update Website files
         run: |
-          touch .env
-          touch assets/.env
           echo "$WEB_APP_ENV" > .env
-          echo "$WEB_APP_ENV" > assets/.env
       - name: Build Release Web
         run: flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --pwa-strategy=none --release --source-maps
+      # The web app fetches /.env from the web root at runtime; it is not a
+      # bundled asset, so the build output needs an explicit copy.
+      - name: Add env to web root
+        run: cp .env build/web/.env
       - name: Create archive
         run: tar -czf pangeachat-web.tar.gz build/web/
       - name: Upload Web Build
@@ -115,9 +116,7 @@ jobs:
       - name: Update env files to selected environment
         run: |
           rm -f .env
-          rm -f assets/.env
-          echo "$WEB_APP_ENV" >> .env
-          cp .env assets/.env
+          echo "$WEB_APP_ENV" > .env
       - name: Apply .env patch
         run: git apply ./scripts/enable_mobile_env.patch
       - name: Remove Emoji Font
