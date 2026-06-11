@@ -1962,7 +1962,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-06-10 14:28:25.618853",
+    "@@last_modified": "2026-06-11 10:21:42.458457",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9271,22 +9271,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Ustvari klepet za uvod",
-    "introChatDesc": "Kdor koli v prostoru lahko objavi.",
     "announcementsChatTitle": "Klepet za obvestila",
-    "announcementsChatDesc": "Samo skrbnik prostora lahko objavi.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10906,13 +10896,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Pangea Chat logo",
-    "announcementsChatDetails": "Kraj za skrbnike tečajev, da ustvarijo obvestila za udeležence tečaja. Medtem ko lahko vsi vidijo ta kanal, lahko vanj pišejo le skrbniki.",
     "introChatDetails": "Pozdravite se! Predstavite se svojim soudeležencem tečaja, najdite prijatelje in klepetajte zunaj aktivnosti.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10941,6 +10926,21 @@
     },
     "waitingForBotToJoinActivity": "Čakam, da se bot pridruži...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Kraj za skrbnike tečaja, da ustvarijo obvestila za udeležence tečaja. Medtem ko lahko vsi vidijo ta kanal, lahko vanj pišejo le skrbniki.",
+    "introChatDesc": "Kdor koli v tečaju lahko objavi.",
+    "announcementsChatDesc": "Le skrbniki tečaja lahko objavljajo.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

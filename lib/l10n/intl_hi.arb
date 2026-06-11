@@ -3377,7 +3377,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-06-10 14:28:51.878011",
+    "@@last_modified": "2026-06-11 10:23:01.209017",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8874,22 +8874,12 @@
         "placeholders": {}
     },
     "introChatTitle": "परिचय चैट बनाएं",
-    "introChatDesc": "इस स्थान में कोई भी पोस्ट कर सकता है।",
     "announcementsChatTitle": "घोषणाएँ चैट",
-    "announcementsChatDesc": "केवल स्थान प्रशासक पोस्ट कर सकता है।",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10509,13 +10499,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "पैंगिया चैट लोगो",
-    "announcementsChatDetails": "कोर्स प्रशासकों के लिए कोर्स प्रतिभागियों के लिए घोषणाएँ बनाने के लिए एक स्थान। जबकि सभी इस चैनल को देख सकते हैं, केवल प्रशासक इसमें टाइप कर सकते हैं।",
     "introChatDetails": "नमस्ते कहें! अपने सहपाठियों से परिचय करें, दोस्तों को खोजें, और गतिविधियों के बाहर चैट करें।",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10544,6 +10529,21 @@
     },
     "waitingForBotToJoinActivity": "बॉट के शामिल होने की प्रतीक्षा कर रहे हैं...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "कोर्स प्रशासकों के लिए कोर्स प्रतिभागियों के लिए घोषणाएँ बनाने के लिए एक स्थान। जबकि सभी इस चैनल को देख सकते हैं, केवल प्रशासक इसमें टाइप कर सकते हैं।",
+    "introChatDesc": "कोर्स में कोई भी पोस्ट कर सकता है।",
+    "announcementsChatDesc": "केवल कोर्स प्रशासक ही पोस्ट कर सकते हैं।",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

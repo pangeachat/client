@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-10 14:28:47.033976",
+    "@@last_modified": "2026-06-11 10:22:47.276584",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -8870,22 +8870,12 @@
         "placeholders": {}
     },
     "introChatTitle": "পরিচয় চ্যাট তৈরি করুন",
-    "introChatDesc": "স্পেসের যে কেউ পোস্ট করতে পারে।",
     "announcementsChatTitle": "ঘোষণার চ্যাট",
-    "announcementsChatDesc": "শুধুমাত্র স্পেস প্রশাসক পোস্ট করতে পারে।",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10505,13 +10495,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "প্যাঙ্গিয়া চ্যাট লোগো",
-    "announcementsChatDetails": "কোর্স প্রশাসকদের জন্য একটি স্থান যেখানে তারা কোর্স অংশগ্রহণকারীদের জন্য ঘোষণা তৈরি করতে পারেন। যদিও সবাই এই চ্যানেলটি দেখতে পারে, কেবল প্রশাসকরাই এতে টাইপ করতে পারেন।",
     "introChatDetails": "হ্যালো বলুন! আপনার সহপাঠীদের সাথে পরিচয় করিয়ে দিন, বন্ধু খুঁজুন, এবং কার্যক্রমের বাইরে চ্যাট করুন।",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10540,6 +10525,21 @@
     },
     "waitingForBotToJoinActivity": "বটের যোগদানের জন্য অপেক্ষা করা হচ্ছে...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "কোর্স প্রশাসকদের জন্য একটি স্থান যেখানে তারা কোর্স অংশগ্রহণকারীদের জন্য ঘোষণা তৈরি করতে পারেন। যদিও সবাই এই চ্যানেলটি দেখতে পারে, কেবল প্রশাসকরাই এতে টাইপ করতে পারেন।",
+    "introChatDesc": "কোর্সে যে কেউ পোস্ট করতে পারে।",
+    "announcementsChatDesc": "শুধুমাত্র কোর্স প্রশাসকরা পোস্ট করতে পারেন।",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

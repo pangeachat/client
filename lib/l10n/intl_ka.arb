@@ -2098,7 +2098,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-06-10 14:28:54.483464",
+    "@@last_modified": "2026-06-11 10:23:07.755948",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9223,22 +9223,12 @@
         "placeholders": {}
     },
     "introChatTitle": "შექმენით გაცნობის ჩატი",
-    "introChatDesc": "ყოველთვის სივრცეში შეუძლია პოსტი.",
     "announcementsChatTitle": "განცხადებების ჩატი",
-    "announcementsChatDesc": "მხოლოდ სივრცის ადმინისტრატორი შეუძლია პოსტი.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10858,13 +10848,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "პანჯეა ჩატის ლოგო",
-    "announcementsChatDetails": "ადგილმდებარეობა კურსის ადმინისტრატორებისთვის, რათა შექმნან განცხადებები კურსის მონაწილეებისთვის. მიუხედავად იმისა, რომ ყველა შეუძლია ამ არხის ნახვა, მხოლოდ ადმინისტრატორები შეუძლიათ მასში წერილი.",
     "introChatDetails": "თქვენი გამარჯობა! წარუდგინეთ თავი თქვენს თანაკურსელებს, მოიძიეთ მეგობრები და ისაუბრეთ აქტივობების გარეთ.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10893,6 +10878,21 @@
     },
     "waitingForBotToJoinActivity": "ბოტის გაწვდას ველოდებით...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "კურსის ადმინისტრატორების ადგილი, სადაც ისინი შეუძლიათ შექმნან განცხადებები კურსის მონაწილეებისთვის. მიუხედავად იმისა, რომ ყველა შეუძლია ამ არხის ნახვა, მხოლოდ ადმინისტრატორები შეუძლიათ მასში წერილი.",
+    "introChatDesc": "კურსში ნებისმიერი ადამიანი შეუძლია გამოაქვეყნოს.",
+    "announcementsChatDesc": "მხოლოდ კურსის ადმინისტრატორები შეუძლიათ გამოაქვეყნონ.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

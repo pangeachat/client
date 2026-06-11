@@ -3933,7 +3933,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-06-10 14:28:31.188539",
+    "@@last_modified": "2026-06-11 10:21:54.029514",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -8393,22 +8393,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Стварыць чат для ўвядзення",
-    "introChatDesc": "Кожны ў прасторы можа публікаваць.",
     "announcementsChatTitle": "Чат аб'яў",
-    "announcementsChatDesc": "Толькі адміністратар прасторы можа публікаваць.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9804,13 +9794,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Лагатып Pangea Chat",
-    "announcementsChatDetails": "Месца для адміністратараў курсаў, каб ствараць аб'явы для ўдзельнікаў курсу. Хоць усе могуць бачыць гэты канал, толькі адміністратара могуць пісаць у ім.",
     "introChatDetails": "Скажыце прывітанне! Пазнаёмцеся з вашымі калегамі па курсу, знайдзіце сяброў і размаўляйце па-за межамі мерапрыемстваў.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -9839,6 +9824,21 @@
     },
     "waitingForBotToJoinActivity": "Чакаем, пакуль бот далучыцца...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Месца для адміністратараў курсаў, каб ствараць аб'явы для ўдзельнікаў курсу. Хоць усе могуць бачыць гэты канал, толькі адміністратара могуць у ім пісаць.",
+    "introChatDesc": "Кожны ў курсе можа публікаваць.",
+    "announcementsChatDesc": "Толькі адміністратара курсаў могуць публікаваць.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

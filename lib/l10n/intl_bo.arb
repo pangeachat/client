@@ -3193,7 +3193,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-10 14:28:45.041456",
+    "@@last_modified": "2026-06-11 10:22:43.183213",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7552,22 +7552,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Buat Obrolan Pengenalan",
-    "introChatDesc": "Sesiapa dalam ruang boleh menghantar.",
     "announcementsChatTitle": "Obrolan Pengumuman",
-    "announcementsChatDesc": "Hanya admin ruang yang boleh menghantar.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9462,13 +9452,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Pangea Chat logo",
-    "announcementsChatDetails": "Ena panga ya kurs admini kuumba matangazo kwa washiriki wa kurs. Wakati wote wanaweza kuona channel hii, ni admin tu wanaweza kuandika ndani yake.",
     "introChatDetails": "Sema hello! Jitambulishe kwa washiriki wenzako wa kurs, pata marafiki, na zungumza nje ya shughuli.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -9497,6 +9482,21 @@
     },
     "waitingForBotToJoinActivity": "Bidinga bot to join...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Ena pja za kurs admina da kreiraju obaveštenja za učesnike kursa. Dok svi mogu da vide ovaj kanal, samo administratori mogu da kucaju u njemu.",
+    "introChatDesc": "Svako u kursu može da objavi.",
+    "announcementsChatDesc": "Samo kurs administratori mogu da objave.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

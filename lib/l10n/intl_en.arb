@@ -4508,9 +4508,7 @@
     "changeCourse": "Change course",
     "changeCourseDesc": "Here you can change this course's course plan.",
     "introChatTitle": "Create Introductions Chat",
-    "introChatDesc": "Anyone in the space can post.",
     "announcementsChatTitle": "Announcements Chat",
-    "announcementsChatDesc": "Only space admin can post.",
     "notStartedActivitiesTitle": "Open sessions ({num})",
     "@notStartedActivitiesTitle": {
         "type": "String",
@@ -4835,7 +4833,6 @@
     "cefrLevelBelow": "This course is below your language level.",
     "cefrLevelAbove": "This course is above your language level.",
     "voiceDropdownTitle": "Pangea Bot audio message voice",
-    "announcementsChatDetails": "A place for course admins to create annoucements for course participants. While all may view this channel, only admins can type in it.",
     "introChatDetails": "Say hello! Introduce yourself to your fellow course participants, find friends, and chat outside of activities.",
     "emojiSelectedSnackbar": "This emoji will now represent \"{word}\" in practice exercises",
     "@emojiSelectedSnackbar": {
@@ -4848,5 +4845,8 @@
     },
     "showDeveloperOptions": "Show developer options",
     "showDeveloperOptionsDesc": "Turn on developer options to show download analytics and detailed info options throughout the app.",
-    "waitingForBotToJoinActivity": "Waiting for bot to join..."
+    "waitingForBotToJoinActivity": "Waiting for bot to join...",
+    "announcementsChatDetails": "A place for course admins to create announcements for course participants. While all may view this channel, only admins can type in it.",
+    "introChatDesc": "Anyone in the course can post.",
+    "announcementsChatDesc": "Only course admins can post."
 }

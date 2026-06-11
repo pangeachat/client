@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-10 14:28:14.081452",
+    "@@last_modified": "2026-06-11 10:21:17.391522",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -8282,22 +8282,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Buat Obrolan Perkenalan",
-    "introChatDesc": "Siapa pun di ruang ini dapat memposting.",
     "announcementsChatTitle": "Obrolan Pengumuman",
-    "announcementsChatDesc": "Hanya admin ruang yang dapat memposting.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9887,13 +9877,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Logo Pangea Chat",
-    "announcementsChatDetails": "Tempat bagi admin kursus untuk membuat pengumuman bagi peserta kursus. Sementara semua orang dapat melihat saluran ini, hanya admin yang dapat mengetik di dalamnya.",
     "introChatDetails": "Sapa! Perkenalkan diri Anda kepada peserta kursus lainnya, temukan teman, dan mengobrol di luar kegiatan.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -9922,6 +9907,21 @@
     },
     "waitingForBotToJoinActivity": "Menunggu bot untuk bergabung...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Tempat bagi admin kursus untuk membuat pengumuman bagi peserta kursus. Sementara semua orang dapat melihat saluran ini, hanya admin yang dapat mengetiknya.",
+    "introChatDesc": "Siapa pun dalam kursus dapat memposting.",
+    "announcementsChatDesc": "Hanya admin kursus yang dapat memposting.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

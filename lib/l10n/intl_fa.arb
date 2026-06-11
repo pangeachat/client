@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-10 14:28:47.954423",
+    "@@last_modified": "2026-06-11 10:22:48.835374",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -8272,22 +8272,12 @@
         "placeholders": {}
     },
     "introChatTitle": "ایجاد چت معرفی",
-    "introChatDesc": "هر کسی در این فضا می‌تواند پست کند.",
     "announcementsChatTitle": "چت اعلامیه‌ها",
-    "announcementsChatDesc": "فقط مدیر فضا می‌تواند پست کند.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9902,13 +9892,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "لوگوی چت پانگه‌آ",
-    "announcementsChatDetails": "محلی برای مدیران دوره تا اعلامیه‌هایی برای شرکت‌کنندگان دوره ایجاد کنند. در حالی که همه می‌توانند این کانال را مشاهده کنند، تنها مدیران می‌توانند در آن تایپ کنند.",
     "introChatDetails": "سلام بگویید! خود را به سایر شرکت‌کنندگان دوره معرفی کنید، دوستانی پیدا کنید و خارج از فعالیت‌ها چت کنید.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -9937,6 +9922,21 @@
     },
     "waitingForBotToJoinActivity": "در حال انتظار برای پیوستن ربات...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "محلی برای مدیران دوره تا اعلامیه‌هایی برای شرکت‌کنندگان دوره ایجاد کنند. در حالی که همه می‌توانند این کانال را مشاهده کنند، تنها مدیران می‌توانند در آن تایپ کنند.",
+    "introChatDesc": "هر کسی در دوره می‌تواند پست بگذارد.",
+    "announcementsChatDesc": "فقط مدیران دوره می‌توانند پست بگذارند.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

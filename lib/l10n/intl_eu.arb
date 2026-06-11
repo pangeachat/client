@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-10 14:28:22.037559",
+    "@@last_modified": "2026-06-11 10:21:36.182405",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -8393,22 +8393,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Sarrera Aurkezpen Txata sortu",
-    "introChatDesc": "Espazioan edonork postatu dezake.",
     "announcementsChatTitle": "Iragarki Txata",
-    "announcementsChatDesc": "Espazioaren administratzaileak bakarrik postatu dezake.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9790,13 +9780,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Pangea Chat irudia",
-    "announcementsChatDetails": "Ikastaroaren administratzaileek ikastaro parte-hartzaileentzat iragarkiak sortzeko lekua. Kanal hau guztiak ikusi dezakete, baina administratzaileek bakarrik idatzi dezakete bertan.",
     "introChatDetails": "Agur esan! Aurkeztu zeure burua ikastaro parte-hartzaileei, aurkitu lagunak, eta jardueren kanpoan hitz egin.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -9825,6 +9810,21 @@
     },
     "waitingForBotToJoinActivity": "Bot-a jardueran sartzeko itxaroten...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Ikastaroaren administratzaileek ikastaro parte-hartzaileentzat iragarkiak sortzeko lekua. Kanal hau ikusi dezaketen arren, administratzaileek bakarrik idatzi dezakete bertan.",
+    "introChatDesc": "Ikastaroan dagoen edonork idatzi dezake.",
+    "announcementsChatDesc": "Ikastaroaren administratzaileek bakarrik idatzi dezakete.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

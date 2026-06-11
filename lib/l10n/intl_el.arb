@@ -3771,7 +3771,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-06-10 14:28:50.513775",
+    "@@last_modified": "2026-06-11 10:22:57.624759",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -9204,22 +9204,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Δημιουργία Συνομιλίας Εισαγωγών",
-    "introChatDesc": "Οποιοσδήποτε στον χώρο μπορεί να δημοσιεύσει.",
     "announcementsChatTitle": "Συνομιλία Ανακοινώσεων",
-    "announcementsChatDesc": "Μόνο ο διαχειριστής του χώρου μπορεί να δημοσιεύσει.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10839,13 +10829,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Λογότυπο Pangea Chat",
-    "announcementsChatDetails": "Ένας χώρος για τους διαχειριστές του μαθήματος να δημιουργούν ανακοινώσεις για τους συμμετέχοντες του μαθήματος. Ενώ όλοι μπορούν να δουν αυτό το κανάλι, μόνο οι διαχειριστές μπορούν να πληκτρολογήσουν σε αυτό.",
     "introChatDetails": "Πες γειά! Παρουσίασε τον εαυτό σου στους υπόλοιπους συμμετέχοντες του μαθήματος, βρες φίλους και συνομιλήστε εκτός δραστηριοτήτων.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10874,6 +10859,21 @@
     },
     "waitingForBotToJoinActivity": "Περιμένοντας τον ρομπότ να συμμετάσχει...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Ένας χώρος για τους διαχειριστές του μαθήματος να δημιουργούν ανακοινώσεις για τους συμμετέχοντες του μαθήματος. Ενώ όλοι μπορούν να δουν αυτό το κανάλι, μόνο οι διαχειριστές μπορούν να γράψουν σε αυτό.",
+    "introChatDesc": "Οποιοσδήποτε στο μάθημα μπορεί να δημοσιεύσει.",
+    "announcementsChatDesc": "Μόνο οι διαχειριστές του μαθήματος μπορούν να δημοσιεύσουν.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }
