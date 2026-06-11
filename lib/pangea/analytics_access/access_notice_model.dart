@@ -1,19 +1,21 @@
 class AccessNoticeModel {
-  final Map<String, bool> noticesShown;
+  final Map<String, bool> noticesAccepted;
 
-  const AccessNoticeModel({required this.noticesShown});
+  const AccessNoticeModel({required this.noticesAccepted});
 
-  Map<String, dynamic> toJson() => {"notices_shown": noticesShown};
+  Map<String, dynamic> toJson() => {"notices_accepted": noticesAccepted};
 
   static AccessNoticeModel fromJson(Map<String, dynamic> json) {
     return AccessNoticeModel(
-      noticesShown: json["notices_shown"] != null
-          ? Map<String, bool>.from(json["notices_shown"])
+      noticesAccepted: json["notices_accepted"] != null
+          ? Map<String, bool>.from(json["notices_accepted"])
           : {},
     );
   }
 
-  AccessNoticeModel copyWith({Map<String, bool>? noticesShown}) {
-    return AccessNoticeModel(noticesShown: noticesShown ?? this.noticesShown);
+  AccessNoticeModel copyWith({Map<String, bool>? noticesAccepted}) {
+    return AccessNoticeModel(
+      noticesAccepted: noticesAccepted ?? this.noticesAccepted,
+    );
   }
 }
