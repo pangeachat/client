@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-10 14:28:32.184615",
+    "@@last_modified": "2026-06-11 10:21:55.509684",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -8306,22 +8306,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Crear xat d'introduccions",
-    "introChatDesc": "Qualsevol persona de l'espai pot publicar.",
     "announcementsChatTitle": "Xat d'anuncis",
-    "announcementsChatDesc": "Només l'administrador de l'espai pot publicar.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9941,13 +9931,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Logotip de Pangea Chat",
-    "announcementsChatDetails": "Un lloc per als administradors del curs per crear anuncis per als participants del curs. Mentre que tots poden veure aquest canal, només els administradors poden escriure-hi.",
     "introChatDetails": "Digues hola! Presenta't als teus companys participants del curs, troba amics i xateja fora de les activitats.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -9976,6 +9961,21 @@
     },
     "waitingForBotToJoinActivity": "Esperant que el bot s'uneixi...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Un lloc per als administradors del curs per crear anuncis per als participants del curs. Mentre que tots poden veure aquest canal, només els administradors poden escriure-hi.",
+    "introChatDesc": "Qualsevol persona del curs pot publicar.",
+    "announcementsChatDesc": "Només els administradors del curs poden publicar.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

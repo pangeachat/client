@@ -1477,7 +1477,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-06-10 14:28:12.171941",
+    "@@last_modified": "2026-06-11 10:21:13.888430",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -9249,22 +9249,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Opret Introduktioner Chat",
-    "introChatDesc": "Alle i rummet kan poste.",
     "announcementsChatTitle": "Meddelelser Chat",
-    "announcementsChatDesc": "Kun rumadmin kan poste.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10884,13 +10874,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Pangea Chat-logo",
-    "announcementsChatDetails": "Et sted for kursusadministratorer til at oprette meddelelser til kursusdeltagere. Mens alle kan se denne kanal, kan kun administratorer skrive i den.",
     "introChatDetails": "Sig hej! Præsenter dig selv for dine medkursusdeltagere, find venner, og chat uden for aktiviteter.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10919,6 +10904,21 @@
     },
     "waitingForBotToJoinActivity": "Venter på, at botten deltager...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Et sted for kursusadministratorer til at oprette meddelelser til kursusdeltagere. Mens alle kan se denne kanal, kan kun administratorer skrive i den.",
+    "introChatDesc": "Enhver i kurset kan poste.",
+    "announcementsChatDesc": "Kun kursusadministratorer kan poste.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

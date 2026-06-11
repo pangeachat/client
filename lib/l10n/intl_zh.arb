@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-06-10 14:28:45.786995",
+    "@@last_modified": "2026-06-11 10:22:44.758053",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -8393,22 +8393,12 @@
         "placeholders": {}
     },
     "introChatTitle": "创建介绍聊天",
-    "introChatDesc": "空间中的任何人都可以发布。",
     "announcementsChatTitle": "公告聊天",
-    "announcementsChatDesc": "只有空间管理员可以发布。",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9790,13 +9780,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Pangea Chat 标志",
-    "announcementsChatDetails": "课程管理员为课程参与者创建公告的地方。虽然所有人都可以查看此频道，但只有管理员可以在其中输入。",
     "introChatDetails": "打个招呼！向你的同学介绍自己，寻找朋友，并在活动之外聊天。",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -9825,6 +9810,21 @@
     },
     "waitingForBotToJoinActivity": "等待机器人加入...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "课程管理员创建公告给课程参与者的地方。虽然所有人都可以查看这个频道，但只有管理员可以在其中输入。",
+    "introChatDesc": "课程中的任何人都可以发布。",
+    "announcementsChatDesc": "只有课程管理员可以发布。",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

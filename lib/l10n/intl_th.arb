@@ -3377,7 +3377,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-06-10 14:28:32.855000",
+    "@@last_modified": "2026-06-11 10:21:57.509324",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8874,22 +8874,12 @@
         "placeholders": {}
     },
     "introChatTitle": "สร้างแชทแนะนำ",
-    "introChatDesc": "ใครก็ได้ในพื้นที่สามารถโพสต์ได้。",
     "announcementsChatTitle": "แชทประกาศ",
-    "announcementsChatDesc": "เฉพาะผู้ดูแลพื้นที่เท่านั้นที่สามารถโพสต์ได้.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10509,13 +10499,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "โลโก้ Pangea Chat",
-    "announcementsChatDetails": "สถานที่สำหรับผู้ดูแลหลักสูตรในการสร้างประกาศสำหรับผู้เข้าร่วมหลักสูตร ขณะที่ทุกคนสามารถดูช่องนี้ได้ แต่เฉพาะผู้ดูแลเท่านั้นที่สามารถพิมพ์ในช่องนี้ได้",
     "introChatDetails": "สวัสดี! แนะนำตัวเองให้เพื่อนร่วมหลักสูตรของคุณรู้จัก หาเพื่อน และสนทนานอกกิจกรรม",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10544,6 +10529,21 @@
     },
     "waitingForBotToJoinActivity": "รอให้บอทเข้าร่วม...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "สถานที่สำหรับผู้ดูแลหลักสูตรในการสร้างประกาศสำหรับผู้เข้าร่วมหลักสูตร ขณะที่ทุกคนสามารถดูช่องนี้ได้ แต่เฉพาะผู้ดูแลเท่านั้นที่สามารถพิมพ์ในนั้นได้",
+    "introChatDesc": "ใครก็ตามในหลักสูตรสามารถโพสต์ได้",
+    "announcementsChatDesc": "เฉพาะผู้ดูแลหลักสูตรเท่านั้นที่สามารถโพสต์ได้",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

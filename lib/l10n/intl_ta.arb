@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-10 14:28:43.448780",
+    "@@last_modified": "2026-06-11 10:22:40.199990",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -8281,22 +8281,12 @@
         "placeholders": {}
     },
     "introChatTitle": "அறிமுக உரையாடல் உருவாக்கவும்",
-    "introChatDesc": "இடத்தில் உள்ள யாரும் பதிவேற்றலாம்.",
     "announcementsChatTitle": "அறிக்கைகள் உரையாடல்",
-    "announcementsChatDesc": "மட்டுமல்லாமல் இட நிர்வாகி பதிவேற்றலாம்.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9906,13 +9896,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "பாஙேஆ சாட் லோகோ",
-    "announcementsChatDetails": "பாடநெறி நிர்வாகிகள் பாடநெறி பங்கேற்பாளர்களுக்கான அறிவிப்புகளை உருவாக்கும் இடம். இந்த சேனலை அனைவரும் காணலாம், ஆனால் நிர்வாகிகள் மட்டுமே இதில் எழுதலாம்.",
     "introChatDetails": "வணக்கம் சொல்லுங்கள்! உங்கள் சக பாடநெறி பங்கேற்பாளர்களுக்கு உங்களை அறிமுகப்படுத்துங்கள், நண்பர்களை கண்டுபிடிக்கவும், செயல்பாடுகளுக்கு வெளியே உரையாடவும்.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -9941,6 +9926,21 @@
     },
     "waitingForBotToJoinActivity": "போட்டுக்கு இணைவதற்காக காத்திருக்கிறேன்...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "பாடம் நிர்வாகிகள் பாடம் பங்கேற்பாளர்களுக்கான அறிவிப்புகளை உருவாக்கும் இடம். இந்த சேனலை அனைவரும் காணலாம், ஆனால் அதில் எழுதுவதற்கு மட்டும் நிர்வாகிகள் அனுமதிக்கப்படுகிறார்கள்.",
+    "introChatDesc": "பாடத்தில் உள்ள யாரும் பதிவேற்றலாம்.",
+    "announcementsChatDesc": "மட்டுமே பாடம் நிர்வாகிகள் பதிவேற்றலாம்.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

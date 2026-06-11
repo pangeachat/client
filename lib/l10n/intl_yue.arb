@@ -1406,7 +1406,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-06-10 14:28:26.248930",
+    "@@last_modified": "2026-06-11 10:21:44.203850",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -9281,22 +9281,12 @@
         "placeholders": {}
     },
     "introChatTitle": "創建介紹聊天",
-    "introChatDesc": "任何人在這個空間都可以發帖。",
     "announcementsChatTitle": "公告聊天",
-    "announcementsChatDesc": "只有空間管理員可以發帖。",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10921,13 +10911,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Pangea Chat 標誌",
-    "announcementsChatDetails": "一個讓課程管理員為課程參與者創建公告的地方。雖然所有人都可以查看此頻道，但只有管理員可以在其中輸入。",
     "introChatDetails": "打個招呼！向你的課程參與者介紹自己，尋找朋友，並在活動之外聊天。",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10956,6 +10941,21 @@
     },
     "waitingForBotToJoinActivity": "等待機械人加入...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "課程管理員用來為課程參加者創建公告的地方。雖然所有人都可以查看這個頻道，但只有管理員可以在其中發言。",
+    "introChatDesc": "課程中的任何人都可以發帖。",
+    "announcementsChatDesc": "只有課程管理員可以發帖。",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

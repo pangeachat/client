@@ -1505,7 +1505,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-06-10 14:28:20.069493",
+    "@@last_modified": "2026-06-11 10:21:31.605314",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9265,22 +9265,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Crea Chat de Introducciones",
-    "introChatDesc": "Cualquiera en el espacio puede publicar.",
     "announcementsChatTitle": "Chat de Anuncios",
-    "announcementsChatDesc": "Solo el administrador del espacio puede publicar.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10900,13 +10890,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Pangea Chat logo",
-    "announcementsChatDetails": "Un lugar para que los administradores del curso creen anuncios para los participantes del curso. Aunque todos pueden ver este canal, solo los administradores pueden escribir en él.",
     "introChatDetails": "¡Di hola! Preséntate a tus compañeros participantes del curso, encuentra amigos y chatea fuera de las actividades.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10935,6 +10920,21 @@
     },
     "waitingForBotToJoinActivity": "Asteptând ca botul să se alăture...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Un luòc per als administradors del curs per crear anuncis per als participants del curs. Mentre que tots poden veure aquest canal, només els administradors poden escriure-hi.",
+    "introChatDesc": "Qualsevol persona del curs pot publicar.",
+    "announcementsChatDesc": "Només els administradors del curs poden publicar.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

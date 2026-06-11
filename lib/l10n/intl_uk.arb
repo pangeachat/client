@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-10 14:28:28.024945",
+    "@@last_modified": "2026-06-11 10:21:48.096913",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -8393,22 +8393,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Створити чат для знайомств",
-    "introChatDesc": "Будь-хто в просторі може публікувати.",
     "announcementsChatTitle": "Чат оголошень",
-    "announcementsChatDesc": "Тільки адміністратор простору може публікувати.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9790,13 +9780,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Логотип Pangea Chat",
-    "announcementsChatDetails": "Місце для адміністраторів курсу, щоб створювати оголошення для учасників курсу. Хоча всі можуть переглядати цей канал, лише адміністратори можуть писати в ньому.",
     "introChatDetails": "Скажіть привіт! Познайомтеся з вашими товаришами по курсу, знайдіть друзів і спілкуйтеся поза межами активностей.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -9825,6 +9810,21 @@
     },
     "waitingForBotToJoinActivity": "Очікування приєднання бота...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Місце для адміністраторів курсу, щоб створювати оголошення для учасників курсу. Хоча всі можуть переглядати цей канал, лише адміністратори можуть писати в ньому.",
+    "introChatDesc": "Будь-хто в курсі може публікувати.",
+    "announcementsChatDesc": "Тільки адміністратори курсу можуть публікувати.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }
