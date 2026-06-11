@@ -8,11 +8,13 @@ class LevelDisplayName extends StatelessWidget {
   final String userId;
   final TextStyle? textStyle;
   final double? iconSize;
+  final bool showFlags;
 
   const LevelDisplayName({
     required this.userId,
     this.textStyle,
     this.iconSize,
+    this.showFlags = true,
     super.key,
   });
 
@@ -46,20 +48,22 @@ class LevelDisplayName extends StatelessWidget {
                 const SizedBox()
               else
                 Row(
-                  spacing: 4.0,
                   children: [
                     if (base != null && target != null) ...[
-                      SvgPicture.network(
-                        base.svgUrl.toString(),
-                        errorBuilder: (_, _, _) => const SizedBox.shrink(),
-                        placeholderBuilder: (_) => Center(
-                          child: const CircularProgressIndicator(
-                            strokeWidth: 0.5,
+                      if (showFlags) ...[
+                        SvgPicture.network(
+                          base.svgUrl.toString(),
+                          errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                          placeholderBuilder: (_) => Center(
+                            child: const CircularProgressIndicator(
+                              strokeWidth: 0.5,
+                            ),
                           ),
+                          width: iconSize ?? 12.0,
+                          height: iconSize ?? 12.0,
                         ),
-                        width: iconSize ?? 12.0,
-                        height: iconSize ?? 12.0,
-                      ),
+                        SizedBox(width: 4.0),
+                      ],
                       Text(
                         base.langCodeShort.toUpperCase(),
                         style:
@@ -75,17 +79,20 @@ class LevelDisplayName extends StatelessWidget {
                       ),
                     ],
                     if (target != null) ...[
-                      SvgPicture.network(
-                        target.svgUrl.toString(),
-                        errorBuilder: (_, _, _) => const SizedBox.shrink(),
-                        placeholderBuilder: (_) => Center(
-                          child: const CircularProgressIndicator(
-                            strokeWidth: 0.5,
+                      if (showFlags) ...[
+                        SvgPicture.network(
+                          target.svgUrl.toString(),
+                          errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                          placeholderBuilder: (_) => Center(
+                            child: const CircularProgressIndicator(
+                              strokeWidth: 0.5,
+                            ),
                           ),
+                          width: iconSize ?? 12.0,
+                          height: iconSize ?? 12.0,
                         ),
-                        width: iconSize ?? 12.0,
-                        height: iconSize ?? 12.0,
-                      ),
+                        SizedBox(width: 4.0),
+                      ],
                       Text(
                         target.langCodeShort.toUpperCase(),
                         style:
