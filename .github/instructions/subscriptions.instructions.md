@@ -73,6 +73,8 @@ Key env values in [`assets/.env`](../../../assets/.env):
 
 ## Discount Codes on Mobile
 
+> **Superseded by [subscriptions-v2.instructions.md](subscriptions-v2.instructions.md)** — v2 removes native IAP entirely. This section records the pre-v2 analysis and current production behavior only.
+
 Stripe promo codes (from conferences, LCB promotions, Google Form webhooks) only work at Stripe Checkout — they cannot be applied to native App Store / Play Store purchases. This is a known friction point.
 
 **Current approach**: Keep native IAP as the default mobile purchase path (higher conversion, 1-tap with Face ID/biometrics). For discount codes, add a "Have a discount code?" link on the mobile subscription paywall that opens the Stripe web checkout in an in-app browser via `getPaymentLink()`. The PaymentLink already has `allow_promotion_codes: True`.
