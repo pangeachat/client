@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 14:15:17.315716",
+    "@@last_modified": "2026-06-10 14:28:19.098817",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -2474,7 +2474,6 @@
     "inactive": "לא פעיל",
     "confirmRole": "אשר תפקיד",
     "openRoleLabel": "פתוח",
-    "joinedTheActivity": "👋 {username} הצטרף כ-{role}",
     "finishedTheActivity": "🎯 {username} סיים את הפעילות הזו",
     "activitySummaryError": "סיכומי הפעילות אינם זמינים",
     "requestSummaries": "בקש סיכומים",
@@ -7498,17 +7497,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -10906,6 +10894,16 @@
     },
     "showDeveloperOptions": "הצג אפשרויות מפתחים",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "הפעל אפשרויות מפתחים כדי להציג ניתוחי הורדה ואפשרויות מידע מפורטות ברחבי האפליקציה.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "ממתין לבוט שיצטרף...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

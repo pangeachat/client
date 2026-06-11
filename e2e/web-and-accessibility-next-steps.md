@@ -39,6 +39,7 @@ Each flow maps to a Playwright spec via `e2e/trigger-map.json`.
 | Course and chat navigation  |   ✅   |                      |
 | Settings                    |   ✅   |                      |
 | Analytics                   |   ✅   |                      |
+| Logout                      |   ✅   |                      |
 
 ### Adding a new flow
 

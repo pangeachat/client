@@ -2004,7 +2004,6 @@
     "inactive": "არაქტიული",
     "confirmRole": "დადასტურება როლი",
     "openRoleLabel": "ღია",
-    "joinedTheActivity": "👋 {username} შეუერთდა როგორც {role}",
     "finishedTheActivity": "🎯 {username} დასრულდა ეს აქტივობა",
     "activitySummaryError": "აქტივობის მიმოხილვები ხელმისაწვდომი არაა",
     "requestSummaries": "მოთხოვნა მიმოხილვებისთვის",
@@ -2099,7 +2098,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-06-08 14:15:56.887648",
+    "@@last_modified": "2026-06-10 14:28:54.483464",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7487,17 +7486,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -10895,6 +10883,16 @@
     },
     "showDeveloperOptions": "მაჩვენე განვითარების პარამეტრები",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "გააქტივეთ დეველოპერის პარამეტრები, რათა აჩვენოთ ჩამოტვირთვის ანალიტიკა და დეტალური ინფორმაცია აპლიკაციის განმავლობაში.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "ბოტის გაწვდას ველოდებით...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

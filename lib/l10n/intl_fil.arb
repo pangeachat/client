@@ -2151,7 +2151,6 @@
     "inactive": "Hindi Aktibo",
     "confirmRole": "Kumpirmahin ang papel",
     "openRoleLabel": "BUKAS",
-    "joinedTheActivity": "👋 {username} ay sumali bilang {role}",
     "finishedTheActivity": "🎯 {username} ay nagtapos sa gawaing ito",
     "activitySummaryError": "Hindi magagamit ang mga buod ng gawain",
     "requestSummaries": "Humiling ng mga buod",
@@ -2258,7 +2257,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-06-08 14:15:35.926979",
+    "@@last_modified": "2026-06-10 14:28:36.601856",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -7450,17 +7449,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -10846,6 +10834,16 @@
     },
     "showDeveloperOptions": "Ipakita ang mga pagpipilian ng developer",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "I-on ang mga pagpipilian ng developer upang ipakita ang mga analytics ng pag-download at detalyadong mga pagpipilian sa impormasyon sa buong app.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Naghihintay para sumali ang bot...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

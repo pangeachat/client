@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-08 14:15:22.235509",
+    "@@last_modified": "2026-06-10 14:28:23.777199",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -6519,7 +6519,6 @@
     "inactive": "Mitteaktiivne",
     "confirmRole": "Kinnita roll",
     "openRoleLabel": "AVATUD",
-    "joinedTheActivity": "👋 {username} liitus rolliga {role}",
     "finishedTheActivity": "🎯 {username} lõpetas selle tegevuse",
     "activitySummaryError": "Tegevuste kokkuvõtteid pole saadaval",
     "requestSummaries": "Paluda kokkuvõtteid",
@@ -6667,17 +6666,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9824,6 +9812,16 @@
     },
     "showDeveloperOptions": "Näita arendaja valikuid",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Lülitage arendaja valikud sisse, et näha allalaadimise analüüse ja üksikasjalikke teabevalikuid kogu rakenduses.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Ootan boti liitumist...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_awarded_goals.dart';
@@ -16,6 +17,14 @@ extension OrchestratorRoomExtension on Room {
     } catch (_) {
       return OrchestratorAwardedGoals(goalIds: []);
     }
+  }
+
+  ActivityRoleGoal? get currentGoal {
+    final goals = ownRole?.allGoals;
+    if (goals == null || goals.isEmpty) return null;
+
+    final awardedGoals = orchestratorAwardedGoals.goalIds;
+    return goals.firstWhereOrNull((g) => !awardedGoals.contains(g.id));
   }
 
   bool isOwnGoalCompleted(String id) {

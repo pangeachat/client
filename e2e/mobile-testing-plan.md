@@ -45,7 +45,6 @@ integration_test/
 | -----------------------   | :----: | ----------------------- |
 | Login and logout          |   ⬜   |                         |
 | Course and chat navigation|   ⬜   |                         |
-| Message toolbar           |   ⬜   |                         |
 | Settings                  |   ⬜   |                         |
 | Analytics                 |   ⬜   |                         |
 | Permission dialogs        |   ⬜   | Native OS — Patrol-only |

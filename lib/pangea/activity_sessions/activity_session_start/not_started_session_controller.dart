@@ -51,7 +51,7 @@ class NotStartedSessionController extends State<NotStartedSession>
 
   @override
   String? get descriptionText =>
-      joinedActivityRoomId != null ? L10n.of(context).inOngoingActivity : "";
+      joinedActivityRoomId != null ? L10n.of(context).inOngoingActivity : null;
 
   @override
   bool isRoleSelected(String id) => false;

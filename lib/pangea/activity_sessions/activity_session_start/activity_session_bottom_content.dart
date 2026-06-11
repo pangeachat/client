@@ -90,6 +90,7 @@ class _ActivitySummaryStatusSection extends StatelessWidget {
         vertical: 16.0,
       ),
       child: Column(
+        spacing: status == ActivitySummaryStatus.completed ? 12.0 : 0,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
@@ -145,176 +146,194 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
     final users = course.getParticipants();
     final theme = Theme.of(context);
 
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: theme.dividerColor),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      child: InkWell(
         borderRadius: BorderRadius.all(Radius.circular(AppConfig.borderRadius)),
-      ),
-      margin: EdgeInsets.symmetric(horizontal: 16.0),
-      padding: EdgeInsets.all(12.0),
-      child: Column(
-        spacing: 24.0,
-        children: [
-          if (activitySummary != null)
-            Row(
-              spacing: 12.0,
-              children: [
-                Expanded(
-                  child: Column(
-                    spacing: 8.0,
-                    children: [
-                      if (textSummary != null) Text(textSummary),
-                      if (analytics != null)
-                        Row(
-                          spacing: 8.0,
-                          children: [
-                            Container(
-                              height: 20.0,
-                              padding: EdgeInsets.symmetric(horizontal: 8.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                  AppConfig.borderRadius,
-                                ),
-                                color: theme.colorScheme.primaryContainer,
-                              ),
-                              child: Row(
-                                spacing: 4.0,
-                                children: [
-                                  Text(
-                                    "XP",
-                                    style: TextStyle(
-                                      fontSize: 12.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    "${analytics.totalXP}",
-                                    style: TextStyle(fontSize: 12.0),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              height: 20.0,
-                              padding: EdgeInsets.symmetric(horizontal: 8.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                  AppConfig.borderRadius,
-                                ),
-                                color: theme.colorScheme.primaryContainer,
-                              ),
-                              child: Row(
-                                spacing: 4.0,
-                                children: [
-                                  Icon(
-                                    ConstructTypeEnum.vocab.indicator.icon,
-                                    size: 14.0,
-                                  ),
-                                  Text(
-                                    "${analytics.totalUniqueConstructCount(ConstructTypeEnum.vocab)}",
-                                    style: TextStyle(fontSize: 12.0),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              height: 20.0,
-                              padding: EdgeInsets.symmetric(horizontal: 8.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                  AppConfig.borderRadius,
-                                ),
-                                color: theme.colorScheme.primaryContainer,
-                              ),
-                              child: Row(
-                                spacing: 4.0,
-                                children: [
-                                  Icon(
-                                    ConstructTypeEnum.morph.indicator.icon,
-                                    size: 14.0,
-                                  ),
-                                  Text(
-                                    "${analytics.totalUniqueConstructCount(ConstructTypeEnum.morph)}",
-                                    style: TextStyle(fontSize: 12.0),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                    ],
-                  ),
-                ),
-                IconButton(icon: Icon(Icons.arrow_forward), onPressed: onTap),
-              ],
+        onTap: onTap,
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: theme.dividerColor),
+            borderRadius: BorderRadius.all(
+              Radius.circular(AppConfig.borderRadius),
             ),
-          Row(
+          ),
+          padding: EdgeInsets.all(12.0),
+          child: Column(
+            spacing: 24.0,
             children: [
-              Expanded(
-                child: Row(
-                  spacing: 16.0,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              if (activitySummary != null)
+                Row(
+                  spacing: 12.0,
                   children: [
-                    ...participants.map((userId) {
-                      final user = users.firstWhereOrNull(
-                        (u) => u.id == userId,
-                      );
-
-                      final displayName =
-                          user?.calcDisplayname() ?? userId.localpart ?? userId;
-
-                      final role = activityRoles?.role(userId);
-
-                      final userSummary = activitySummary?.summary?.userSummary(
-                        userId,
-                      );
-
-                      final superlative = userSummary?.superlatives.firstOrNull;
-
-                      return Opacity(
-                        opacity: role == null ? 0.5 : 1,
-                        child: Column(
-                          spacing: 6.0,
-                          children: [
-                            Text(
-                              displayName,
-                              style: const TextStyle(fontSize: 12.0),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.center,
+                    Expanded(
+                      child: Column(
+                        spacing: 8.0,
+                        children: [
+                          if (textSummary != null) Text(textSummary),
+                          if (analytics != null)
+                            Row(
+                              spacing: 8.0,
+                              children: [
+                                Container(
+                                  height: 20.0,
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 8.0,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                      AppConfig.borderRadius,
+                                    ),
+                                    color: theme.colorScheme.primaryContainer,
+                                  ),
+                                  child: Row(
+                                    spacing: 4.0,
+                                    children: [
+                                      Text(
+                                        "XP",
+                                        style: TextStyle(
+                                          fontSize: 12.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Text(
+                                        "${analytics.totalXP}",
+                                        style: TextStyle(fontSize: 12.0),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  height: 20.0,
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 8.0,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                      AppConfig.borderRadius,
+                                    ),
+                                    color: theme.colorScheme.primaryContainer,
+                                  ),
+                                  child: Row(
+                                    spacing: 4.0,
+                                    children: [
+                                      Icon(
+                                        ConstructTypeEnum.vocab.indicator.icon,
+                                        size: 14.0,
+                                      ),
+                                      Text(
+                                        "${analytics.totalUniqueConstructCount(ConstructTypeEnum.vocab)}",
+                                        style: TextStyle(fontSize: 12.0),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  height: 20.0,
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 8.0,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                      AppConfig.borderRadius,
+                                    ),
+                                    color: theme.colorScheme.primaryContainer,
+                                  ),
+                                  child: Row(
+                                    spacing: 4.0,
+                                    children: [
+                                      Icon(
+                                        ConstructTypeEnum.morph.indicator.icon,
+                                        size: 14.0,
+                                      ),
+                                      Text(
+                                        "${analytics.totalUniqueConstructCount(ConstructTypeEnum.morph)}",
+                                        style: TextStyle(fontSize: 12.0),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                            Avatar(
-                              mxContent: user?.avatarUrl,
-                              name: userId.localpart,
-                              size: 60.0,
-                              userId: userId,
-                            ),
-                            if (userSummary != null)
-                              Text(
-                                userSummary.cefrLevel,
-                                style: const TextStyle(fontSize: 12.0),
-                                textAlign: TextAlign.center,
-                              ),
-                            if (superlative != null)
-                              Text(
-                                superlative,
-                                style: const TextStyle(fontSize: 12.0),
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.center,
-                              ),
-                          ],
-                        ),
-                      );
-                    }),
+                        ],
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.arrow_forward),
+                      onPressed: onTap,
+                    ),
                   ],
                 ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Row(
+                      spacing: 16.0,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ...participants.map((userId) {
+                          final user = users.firstWhereOrNull(
+                            (u) => u.id == userId,
+                          );
+
+                          final displayName =
+                              user?.calcDisplayname() ??
+                              userId.localpart ??
+                              userId;
+
+                          final role = activityRoles?.role(userId);
+
+                          final userSummary = activitySummary?.summary
+                              ?.userSummary(userId);
+
+                          final superlative =
+                              userSummary?.superlatives.firstOrNull;
+
+                          return Opacity(
+                            opacity: role == null ? 0.5 : 1,
+                            child: Column(
+                              spacing: 6.0,
+                              children: [
+                                Text(
+                                  displayName,
+                                  style: const TextStyle(fontSize: 12.0),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.center,
+                                ),
+                                Avatar(
+                                  mxContent: user?.avatarUrl,
+                                  name: userId.localpart,
+                                  size: 60.0,
+                                  userId: userId,
+                                ),
+                                if (userSummary != null)
+                                  Text(
+                                    userSummary.cefrLevel,
+                                    style: const TextStyle(fontSize: 12.0),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                if (superlative != null)
+                                  Text(
+                                    superlative,
+                                    style: const TextStyle(fontSize: 12.0),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.center,
+                                  ),
+                              ],
+                            ),
+                          );
+                        }),
+                      ],
+                    ),
+                  ),
+                  if (activitySummary == null) Icon(Icons.arrow_forward),
+                ],
               ),
-              if (activitySummary == null)
-                IconButton(icon: Icon(Icons.arrow_forward), onPressed: onTap),
             ],
           ),
-        ],
+        ),
       ),
     );
   }

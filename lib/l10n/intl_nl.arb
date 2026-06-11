@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-08 14:15:43.567550",
+    "@@last_modified": "2026-06-10 14:28:44.262484",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -3848,7 +3848,6 @@
     "inactive": "Inactief",
     "confirmRole": "Bevestig rol",
     "openRoleLabel": "OPEN",
-    "joinedTheActivity": "👋 {username} heeft deelgenomen als {role}",
     "finishedTheActivity": "🎯 {username} heeft deze activiteit afgerond",
     "activitySummaryError": "Samenvattingen van activiteiten niet beschikbaar",
     "requestSummaries": "Vraag samenvattingen aan",
@@ -6656,17 +6655,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9827,6 +9815,16 @@
     },
     "showDeveloperOptions": "Toon ontwikkelaarsopties",
     "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Zet de ontwikkelaarsopties aan om downloadanalyses en gedetailleerde informatie-opties door de app heen weer te geven.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Wachten op bot om deel te nemen...",
+    "@waitingForBotToJoinActivity": {
         "type": "String",
         "placeholders": {}
     }

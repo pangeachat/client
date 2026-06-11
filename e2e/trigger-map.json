@@ -24,16 +24,6 @@
     "web": "e2e/scripts/course-chat-navigation.spec.ts",
     "mobile": null
   },
-  "message-toolbar": {
-    "globs": [
-      "lib/pangea/toolbar/**",
-      "lib/pangea/text_to_speech/**",
-      "lib/pangea/token_info_feedback/**",
-      "lib/pangea/phonetic_transcription/**"
-    ],
-    "web": "e2e/scripts/message-toolbar.spec.ts",
-    "mobile": null
-  },
   "settings": {
     "globs": [
       "lib/pages/settings/**",

@@ -25,6 +25,7 @@ import 'package:fluffychat/pages/chat/event_info_dialog.dart';
 import 'package:fluffychat/pages/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/goal_star_animation.dart';
+import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_controller.dart';
@@ -223,6 +224,7 @@ class ChatController extends State<ChatPageWithRoom>
   StreamSubscription? _goBackTutorialSubscription;
 
   StreamSubscription? _goalCompletionSubscription;
+  late final ValueNotifier<ActivityRoleGoal?> activeGoalNotifier;
 
   /// The event used to start the reading-assistance tutorial. Stored so the
   /// tutorial can be re-opened when the user navigates back through the sequence.
@@ -779,19 +781,34 @@ class ChatController extends State<ChatPageWithRoom>
     if (activityController.confettiNotifier.value) {
       StarRainWidget.show(
         context,
-        "start-rain-${widget.room.id}",
+        "star-rain-${widget.room.id}",
         showBlast: true,
       );
     }
   }
 
-  void _goalCompletionListener(List<ActivityRoleGoal> goalIds) {
+  Future<void> _goalCompletionListener(Set<ActivityRoleGoal> goals) async {
+    if (goals.isEmpty) return;
+
+    final completer = Completer();
     GoalStarAnimation.show(
       context,
       overlayKey: "goal-completion-star-${widget.room.id}",
       startTarget: ChoreoConstants.inputTransformTargetKey,
-      endTarget: ActivitySessionConstants.goalMenuStarTargetId,
+      endTarget: ActivitySessionConstants.goalMenuStarTargetId(goals.first.id),
+      onClose: () => completer.complete(),
     );
+
+    await completer.future.timeout(
+      Duration(seconds: 5),
+      onTimeout: () => ErrorHandler.logError(
+        e: "Goal completion star animation timeout",
+        data: {},
+        level: SentryLevel.warning,
+      ),
+    );
+
+    activeGoalNotifier.value = room.currentGoal;
   }
 
   String? get currentRoutePath => _router.state.path;
@@ -861,6 +878,8 @@ class ChatController extends State<ChatPageWithRoom>
         activityController.showConfetti();
       });
     }
+
+    activeGoalNotifier = ValueNotifier(room.currentGoal);
 
     _goalCompletionSubscription?.cancel();
     _goalCompletionSubscription = choreographer
@@ -1165,6 +1184,7 @@ class ChatController extends State<ChatPageWithRoom>
     _goBackTutorialSubscription?.cancel();
     _goalCompletionSubscription?.cancel();
     tutorialOverlayController.dispose();
+    activeGoalNotifier.dispose();
     //Pangea#
     super.dispose();
   }
@@ -1189,6 +1209,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (!stopMediaStream.isClosed) {
       stopMediaStream.add(null);
     }
+    MatrixState.pAnyState.closeOverlay("star-rain-${widget.room.id}");
     MatrixState.pAnyState.closeAllOverlays();
   }
 
@@ -2435,18 +2456,6 @@ class ChatController extends State<ChatPageWithRoom>
   bool get isToolbarOpen => MatrixState.pAnyState.isOverlayOpen(
     overlayKey: "message_toolbar_overlay",
   );
-
-  bool get enableTranslateShimmer {
-    if (tutorialOverlayController.state.isTutorialActive(
-      TutorialEnum.readingAssistance,
-    )) {
-      return tutorialOverlayController.state.isTutorialStepActive(
-        TutorialEnum.readingAssistance,
-        1,
-      );
-    }
-    return true;
-  }
 
   void showToolbar(
     Event event, {

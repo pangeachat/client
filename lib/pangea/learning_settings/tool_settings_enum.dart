@@ -62,10 +62,10 @@ enum ToolSetting {
       case ToolSetting.interactiveGrammar:
       case ToolSetting.definitions:
       case ToolSetting.immersionMode:
+      case ToolSetting.enableAutocorrect:
         return false;
       case ToolSetting.autoIGC:
       case ToolSetting.enableTTS:
-      case ToolSetting.enableAutocorrect:
       case ToolSetting.selectAudioMessagesOnPlay:
         return true;
     }
