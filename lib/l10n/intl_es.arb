@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-06-10 14:28:09.557201",
+    "@@last_modified": "2026-06-11 10:21:06.512929",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -6352,22 +6352,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Crear Chat de Introducciones",
-    "introChatDesc": "Cualquiera en el espacio puede publicar.",
     "announcementsChatTitle": "Chat de Anuncios",
-    "announcementsChatDesc": "Solo el administrador del espacio puede publicar.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7884,13 +7874,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Logo de Pangea Chat",
-    "announcementsChatDetails": "Un lugar para que los administradores del curso creen anuncios para los participantes del curso. Aunque todos pueden ver este canal, solo los administradores pueden escribir en él.",
     "introChatDetails": "¡Di hola! Preséntate a tus compañeros participantes del curso, encuentra amigos y chatea fuera de las actividades.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -7919,6 +7904,21 @@
     },
     "waitingForBotToJoinActivity": "Esperando a que el bot se una...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Un lugar para que los administradores del curso creen anuncios para los participantes del curso. Aunque todos pueden ver este canal, solo los administradores pueden escribir en él.",
+    "introChatDesc": "Cualquiera en el curso puede publicar.",
+    "announcementsChatDesc": "Solo los administradores del curso pueden publicar.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

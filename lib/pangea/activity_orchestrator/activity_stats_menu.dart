@@ -9,6 +9,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/goal_status_widget.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_vocab_widget.dart';
@@ -21,6 +22,7 @@ class ActivityStatsMenu extends StatelessWidget {
   final ValueNotifier<bool> visibilityNotifier;
   final void Function(bool) setVisibility;
   final ValueNotifier<Set<String>> usedVocab;
+  final ValueNotifier<ActivityRoleGoal?> activeGoalNotifier;
   final Room room;
 
   const ActivityStatsMenu({
@@ -28,9 +30,9 @@ class ActivityStatsMenu extends StatelessWidget {
     required this.setVisibility,
     required this.usedVocab,
     required this.room,
+    required this.activeGoalNotifier,
     super.key,
   });
-
   bool get _isTwoPersonBotActivity {
     final roles = room.activityRoles?.roles;
     final assignedRoles = room.assignedRoles;
@@ -54,6 +56,11 @@ class ActivityStatsMenu extends StatelessWidget {
       !_activityComplete && room.isRoomAdmin && !_isTwoPersonBotActivity;
 
   bool get _showDoneButtonHint => _showEndForMe && room.hasCompletedOwnGoals;
+
+  List<ActivityRoleGoal> get _goals => room.ownRole?.allGoals ?? [];
+
+  List<ActivityRoleGoal> _remainingGoals(String? activeGoalId) =>
+      _goals.where((g) => g.id != activeGoalId).toList();
 
   void _toggleVisibility() {
     final value = visibilityNotifier.value;
@@ -89,236 +96,282 @@ class ActivityStatsMenu extends StatelessWidget {
     }
 
     final theme = Theme.of(context);
-    final isColumnMode = FluffyThemes.isColumnMode(context);
-
-    final goals = room.ownRole?.allGoals ?? [];
-    final activity = room.activityPlan;
-
-    // TODO ORCHESTRATOR: show active goal instead of first goal
-    final currentGoal = goals.firstOrNull;
-    final remainingGoals = goals.skip(1).toList();
-
     final goldColor = theme.brightness == Brightness.light
         ? AppConfig.gold
         : AppConfig.goldLight;
 
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+    final activity = room.activityPlan;
+
     return ValueListenableBuilder(
-      valueListenable: visibilityNotifier,
-      builder: (context, showDropdown, child) {
-        return Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: showDropdown ? 0 : null,
-          child: Column(
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.min,
+      valueListenable: activeGoalNotifier,
+      builder: (context, activeGoal, _) {
+        final remainingGoals = _remainingGoals(activeGoal?.id);
+        return ValueListenableBuilder(
+          valueListenable: visibilityNotifier,
+          builder: (context, showDropdown, child) {
+            return Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: showDropdown ? 0 : null,
+              child: Column(
                 children: [
-                  if (currentGoal != null)
-                    InkWell(
-                      onTap: _toggleVisibility,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 12.0),
-                        height: 55.0,
-                        decoration: BoxDecoration(
-                          border: Border(
-                            top: BorderSide(color: theme.dividerColor),
-                          ),
-                          color: theme.colorScheme.surface,
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: GoalStatusWidget(
-                                goal: currentGoal,
-                                complete: room.isOwnGoalCompleted(
-                                  currentGoal.id,
-                                ),
-                                starTarget: ActivitySessionConstants
-                                    .goalMenuStarTargetId,
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (activeGoal != null)
+                        InkWell(
+                          onTap: _toggleVisibility,
+                          child: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 12.0),
+                            height: 55.0,
+                            decoration: BoxDecoration(
+                              border: Border(
+                                top: BorderSide(color: theme.dividerColor),
                               ),
+                              color: theme.colorScheme.surface,
                             ),
-                            if (_showDoneButtonHint && !showDropdown)
-                              InkWell(
-                                onTap: () => _finishActivityForMe(context),
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 6.0,
-                                    horizontal: 12.0,
+                            child: AnimatedSwitcher(
+                              duration: FluffyThemes.animationDuration,
+                              transitionBuilder: (child, animation) {
+                                final isCurrent =
+                                    child.key == ValueKey(activeGoal.id);
+
+                                return ClipRect(
+                                  child: AnimatedBuilder(
+                                    animation: animation,
+                                    child: child,
+                                    builder: (context, child) {
+                                      final offset = isCurrent
+                                          // New item: 1 -> 0
+                                          ? Offset(0, 1 - animation.value)
+                                          // Old item: 0 -> -1
+                                          : Offset(0, animation.value - 1);
+
+                                      return FractionalTranslation(
+                                        translation: offset,
+                                        child: child,
+                                      );
+                                    },
                                   ),
-                                  decoration: BoxDecoration(
-                                    color: goldColor,
-                                    borderRadius: BorderRadius.circular(
-                                      AppConfig.borderRadius,
+                                );
+                              },
+                              layoutBuilder: (currentChild, previousChildren) {
+                                return Stack(
+                                  alignment: Alignment.centerLeft,
+                                  children: [
+                                    ...previousChildren,
+                                    ?currentChild,
+                                  ],
+                                );
+                              },
+                              child: Row(
+                                key: ValueKey(activeGoal.id),
+                                children: [
+                                  Expanded(
+                                    child: GoalStatusWidget(
+                                      goal: activeGoal,
+                                      complete: room.isOwnGoalCompleted(
+                                        activeGoal.id,
+                                      ),
+                                      starTarget:
+                                          ActivitySessionConstants.goalMenuStarTargetId(
+                                            activeGoal.id,
+                                          ),
                                     ),
                                   ),
-                                  child: Text(
-                                    L10n.of(context).completeActivityButton,
-                                    style: theme.brightness == Brightness.light
-                                        ? null
-                                        : TextStyle(
-                                            color: theme.colorScheme.surface,
+                                  if (_showDoneButtonHint && !showDropdown)
+                                    InkWell(
+                                      onTap: () =>
+                                          _finishActivityForMe(context),
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 6.0,
+                                          horizontal: 12.0,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: goldColor,
+                                          borderRadius: BorderRadius.circular(
+                                            AppConfig.borderRadius,
                                           ),
-                                  ),
-                                ),
+                                        ),
+                                        child: Text(
+                                          L10n.of(
+                                            context,
+                                          ).completeActivityButton,
+                                          style:
+                                              theme.brightness ==
+                                                  Brightness.light
+                                              ? null
+                                              : TextStyle(
+                                                  color:
+                                                      theme.colorScheme.surface,
+                                                ),
+                                        ),
+                                      ),
+                                    ),
+                                ],
                               ),
-                          ],
+                            ),
+                          ),
+                        ),
+                      ClipRect(
+                        child: AnimatedAlign(
+                          duration: FluffyThemes.animationDuration,
+                          curve: Curves.easeInOut,
+                          heightFactor: showDropdown ? 1.0 : 0.0,
+                          alignment: Alignment.topCenter,
+                          child: GestureDetector(
+                            onPanUpdate: (details) {
+                              if (details.delta.dy < -2) {
+                                setVisibility(false);
+                              }
+                            },
+                            child: child,
+                          ),
                         ),
                       ),
-                    ),
-                  ClipRect(
-                    child: AnimatedAlign(
-                      duration: FluffyThemes.animationDuration,
-                      curve: Curves.easeInOut,
-                      heightFactor: showDropdown ? 1.0 : 0.0,
-                      alignment: Alignment.topCenter,
+                    ],
+                  ),
+                  if (showDropdown)
+                    Expanded(
                       child: GestureDetector(
-                        onPanUpdate: (details) {
-                          if (details.delta.dy < -2) {
-                            setVisibility(false);
-                          }
-                        },
-                        child: child,
+                        onTap: _toggleVisibility,
+                        child: Container(color: Colors.black.withAlpha(100)),
                       ),
                     ),
-                  ),
                 ],
               ),
-              if (showDropdown)
-                Expanded(
-                  child: GestureDetector(
-                    onTap: _toggleVisibility,
-                    child: Container(color: Colors.black.withAlpha(100)),
+            );
+          },
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              final maxHeight = MediaQuery.of(context).size.height * 0.7;
+              return ConstrainedBox(
+                constraints: BoxConstraints(maxHeight: maxHeight),
+                child: SingleChildScrollView(
+                  child: Container(
+                    width: double.infinity,
+                    color: theme.colorScheme.surface,
+                    padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 24.0),
+                    child: Column(
+                      spacing: 16.0,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (remainingGoals.isNotEmpty)
+                          Column(
+                            spacing: 16.0,
+                            children: remainingGoals
+                                .map(
+                                  (g) => GoalStatusWidget(
+                                    goal: g,
+                                    complete: room.isOwnGoalCompleted(g.id),
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                        if (activity != null)
+                          ActivityVocabWidget(
+                            key: ValueKey(
+                              "activity-stats-menu-${activity.activityId}",
+                            ),
+                            vocab: activity.vocab,
+                            langCode: activity.req.targetLanguage,
+                            targetId: "activity-stats-menu-vocab",
+                            usedVocab: usedVocab,
+                            activityLangCode: activity.req.targetLanguage,
+                          ),
+                        if (_showWaitNotDone)
+                          ElevatedButton(
+                            onPressed: room.continueActivity,
+                            style: ElevatedButton.styleFrom(
+                              side: BorderSide(
+                                color: theme.brightness == Brightness.light
+                                    ? theme.colorScheme.primary.withAlpha(120)
+                                    : theme.colorScheme.primaryContainer,
+                                width: 2,
+                              ),
+                              foregroundColor: theme.colorScheme.primary,
+                              backgroundColor: theme.colorScheme.surface,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  L10n.of(context).waitNotDone,
+                                  style: TextStyle(
+                                    fontSize: isColumnMode ? 16.0 : 12.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        if (_showEndForMe)
+                          ElevatedButton(
+                            onPressed: () => _finishActivityForMe(context),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: room.hasCompletedOwnGoals
+                                  ? goldColor
+                                  : theme.colorScheme.primaryContainer,
+                              foregroundColor:
+                                  theme.brightness == Brightness.light
+                                  ? null
+                                  : room.hasCompletedOwnGoals
+                                  ? theme.colorScheme.surface
+                                  : theme.colorScheme.onPrimaryContainer,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  L10n.of(context).completeActivityButton,
+                                  style: TextStyle(
+                                    fontSize: isColumnMode ? 16.0 : 12.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        if (_showEndForAll)
+                          ElevatedButton(
+                            onPressed: () => _finishActivityForAll(context),
+                            style: ElevatedButton.styleFrom(
+                              side: BorderSide(
+                                color: room.haveAllRolesCompletedAllGoals
+                                    ? goldColor
+                                    : theme.brightness == Brightness.light
+                                    ? theme.colorScheme.primary.withAlpha(120)
+                                    : theme.colorScheme.primaryContainer,
+                                width: 2,
+                              ),
+                              foregroundColor:
+                                  room.haveAllRolesCompletedAllGoals
+                                  ? goldColor
+                                  : theme.colorScheme.primary,
+                              backgroundColor: theme.colorScheme.surface,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  L10n.of(context).endForAll,
+                                  style: TextStyle(
+                                    fontSize: isColumnMode ? 16.0 : 12.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                      ],
+                    ),
                   ),
                 ),
-            ],
+              );
+            },
           ),
         );
       },
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          final maxHeight = MediaQuery.of(context).size.height * 0.7;
-          return ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: maxHeight),
-            child: SingleChildScrollView(
-              child: Container(
-                width: double.infinity,
-                color: theme.colorScheme.surface,
-                padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 24.0),
-                child: Column(
-                  spacing: 16.0,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (remainingGoals.isNotEmpty)
-                      Column(
-                        spacing: 16.0,
-                        children: remainingGoals
-                            .map(
-                              (g) => GoalStatusWidget(
-                                goal: g,
-                                complete: room.isOwnGoalCompleted(g.id),
-                              ),
-                            )
-                            .toList(),
-                      ),
-                    if (activity != null)
-                      ActivityVocabWidget(
-                        key: ValueKey(
-                          "activity-stats-menu-${activity.activityId}",
-                        ),
-                        vocab: activity.vocab,
-                        langCode: activity.req.targetLanguage,
-                        targetId: "activity-stats-menu-vocab",
-                        usedVocab: usedVocab,
-                        activityLangCode: activity.req.targetLanguage,
-                      ),
-                    if (_showWaitNotDone)
-                      ElevatedButton(
-                        onPressed: room.continueActivity,
-                        style: ElevatedButton.styleFrom(
-                          side: BorderSide(
-                            color: theme.brightness == Brightness.light
-                                ? theme.colorScheme.primary.withAlpha(120)
-                                : theme.colorScheme.primaryContainer,
-                            width: 2,
-                          ),
-                          foregroundColor: theme.colorScheme.primary,
-                          backgroundColor: theme.colorScheme.surface,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              L10n.of(context).waitNotDone,
-                              style: TextStyle(
-                                fontSize: isColumnMode ? 16.0 : 12.0,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    if (_showEndForMe)
-                      ElevatedButton(
-                        onPressed: () => _finishActivityForMe(context),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: room.hasCompletedOwnGoals
-                              ? goldColor
-                              : theme.colorScheme.primaryContainer,
-                          foregroundColor: theme.brightness == Brightness.light
-                              ? null
-                              : room.hasCompletedOwnGoals
-                              ? theme.colorScheme.surface
-                              : theme.colorScheme.onPrimaryContainer,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              L10n.of(context).completeActivityButton,
-                              style: TextStyle(
-                                fontSize: isColumnMode ? 16.0 : 12.0,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    if (_showEndForAll)
-                      ElevatedButton(
-                        onPressed: () => _finishActivityForAll(context),
-                        style: ElevatedButton.styleFrom(
-                          side: BorderSide(
-                            color: room.haveAllRolesCompletedAllGoals
-                                ? goldColor
-                                : theme.brightness == Brightness.light
-                                ? theme.colorScheme.primary.withAlpha(120)
-                                : theme.colorScheme.primaryContainer,
-                            width: 2,
-                          ),
-                          foregroundColor: room.haveAllRolesCompletedAllGoals
-                              ? goldColor
-                              : theme.colorScheme.primary,
-                          backgroundColor: theme.colorScheme.surface,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              L10n.of(context).endForAll,
-                              style: TextStyle(
-                                fontSize: isColumnMode ? 16.0 : 12.0,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                  ],
-                ),
-              ),
-            ),
-          );
-        },
-      ),
     );
   }
 }

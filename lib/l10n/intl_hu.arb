@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-06-10 14:28:13.108340",
+    "@@last_modified": "2026-06-11 10:21:15.724203",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -8282,22 +8282,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Bevezető Beszélgetés Létrehozása",
-    "introChatDesc": "A térben bárki posztolhat.",
     "announcementsChatTitle": "Közlemények Beszélgetés",
-    "announcementsChatDesc": "Csak a tér adminisztrátora posztolhat.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9917,13 +9907,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Pangea Chat logó",
-    "announcementsChatDetails": "Hely a kurzus adminisztrátorai számára, hogy bejelentéseket készítsenek a kurzus résztvevői számára. Míg mindenki megtekintheti ezt a csatornát, csak az adminisztrátorok írhatnak bele.",
     "introChatDetails": "Köszönts! Mutatkozz be a kurzus többi résztvevőjének, találj barátokat, és csevegj a tevékenységeken kívül.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -9952,6 +9937,21 @@
     },
     "waitingForBotToJoinActivity": "Várakozás a bot csatlakozására...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Hely a kurzus adminisztrátorai számára, hogy bejelentéseket készítsenek a kurzus résztvevői számára. Míg mindenki megtekintheti ezt a csatornát, csak az adminisztrátorok írhatnak bele.",
+    "introChatDesc": "A kurzusban bárki posztolhat.",
+    "announcementsChatDesc": "Csak a kurzus adminisztrátorai posztolhatnak.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

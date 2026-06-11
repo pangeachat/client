@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-10 14:28:08.738545",
+    "@@last_modified": "2026-06-11 10:21:05.073879",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -8372,22 +8372,12 @@
         "placeholders": {}
     },
     "introChatTitle": "소개 채팅 만들기",
-    "introChatDesc": "공간의 누구나 게시할 수 있습니다.",
     "announcementsChatTitle": "공지사항 채팅",
-    "announcementsChatDesc": "오직 공간 관리자만 게시할 수 있습니다.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10007,13 +9997,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "판게아 채팅 로고",
-    "announcementsChatDetails": "코스 관리자가 코스 참가자를 위한 공지를 생성할 수 있는 장소입니다. 모든 사용자가 이 채널을 볼 수 있지만, 관리자만 입력할 수 있습니다.",
     "introChatDetails": "안녕하세요! 동료 코스 참가자에게 자신을 소개하고, 친구를 찾고, 활동 외부에서 채팅하세요.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10042,6 +10027,21 @@
     },
     "waitingForBotToJoinActivity": "봇이 참여하기를 기다리는 중...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "코스 관리자가 코스 참가자를 위한 공지를 작성할 수 있는 장소입니다. 모든 사용자가 이 채널을 볼 수 있지만, 관리자만 입력할 수 있습니다.",
+    "introChatDesc": "코스에 있는 누구나 게시할 수 있습니다.",
+    "announcementsChatDesc": "오직 코스 관리자만 게시할 수 있습니다.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

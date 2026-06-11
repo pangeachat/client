@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-10 14:28:42.522642",
+    "@@last_modified": "2026-06-11 10:22:37.033359",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -5238,22 +5238,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Tạo trò chuyện giới thiệu",
-    "introChatDesc": "Bất kỳ ai trong không gian đều có thể đăng bài.",
     "announcementsChatTitle": "Trò chuyện thông báo",
-    "announcementsChatDesc": "Chỉ quản trị viên không gian mới có thể đăng bài.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -6873,13 +6863,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Logo Pangea Chat",
-    "announcementsChatDetails": "Nơi cho quản trị viên khóa học tạo thông báo cho người tham gia khóa học. Mặc dù tất cả mọi người đều có thể xem kênh này, chỉ có quản trị viên mới có thể gõ trong đó.",
     "introChatDetails": "Chào bạn! Giới thiệu bản thân với những người tham gia khóa học khác, tìm bạn bè và trò chuyện ngoài các hoạt động.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -6908,6 +6893,21 @@
     },
     "waitingForBotToJoinActivity": "Đang chờ bot tham gia...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Nơi cho quản trị viên khóa học tạo thông báo cho người tham gia khóa học. Mặc dù tất cả mọi người đều có thể xem kênh này, chỉ có quản trị viên mới có thể gõ trong đó.",
+    "introChatDesc": "Bất kỳ ai trong khóa học đều có thể đăng bài.",
+    "announcementsChatDesc": "Chỉ có quản trị viên khóa học mới có thể đăng bài.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

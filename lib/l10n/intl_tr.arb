@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-10 14:28:39.696568",
+    "@@last_modified": "2026-06-11 10:22:31.311340",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -8486,22 +8486,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Tanıtım Sohbeti Oluştur",
-    "introChatDesc": "Mekandaki herkes paylaşımda bulunabilir.",
     "announcementsChatTitle": "Duyurular Sohbeti",
-    "announcementsChatDesc": "Sadece mekan yöneticisi paylaşımda bulunabilir.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10121,13 +10111,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Pangea Chat logosu",
-    "announcementsChatDetails": "Kurs yöneticilerinin kurs katılımcıları için duyurular oluşturabileceği bir yer. Herkes bu kanalı görebilir, ancak yalnızca yöneticiler burada yazabilir.",
     "introChatDetails": "Merhaba de! Diğer kurs katılımcılarına kendini tanıt, arkadaşlar bul ve etkinliklerin dışında sohbet et.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10156,6 +10141,21 @@
     },
     "waitingForBotToJoinActivity": "Botun katılmasını bekliyorum...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Kurs yöneticilerinin kurs katılımcıları için duyurular oluşturabileceği bir yer. Bu kanalı herkes görebilir, ancak yalnızca yöneticiler burada yazabilir.",
+    "introChatDesc": "Kursta bulunan herkes gönderi yapabilir.",
+    "announcementsChatDesc": "Yalnızca kurs yöneticileri gönderi yapabilir.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

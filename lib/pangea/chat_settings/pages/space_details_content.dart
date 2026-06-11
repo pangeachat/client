@@ -209,7 +209,6 @@ class SpaceDetailsContent extends StatelessWidget {
           );
         },
         enabled: room.isRoomAdmin,
-        visible: room.isTeacherMode,
         showInMainView: false,
         trailing: room.teacherMode.activitiesToUnlockTopic != null
             ? Padding(

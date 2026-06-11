@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-06-10 14:28:24.732411",
+    "@@last_modified": "2026-06-11 10:21:40.222257",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -8425,22 +8425,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Erstelle Einführungs-Chat",
-    "introChatDesc": "Jeder im Raum kann posten.",
     "announcementsChatTitle": "Ankündigungen-Chat",
-    "announcementsChatDesc": "Nur der Raum-Administrator kann posten.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9769,13 +9759,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Pangea Chat-Logo",
-    "announcementsChatDetails": "Ein Ort für Kursadministratoren, um Ankündigungen für Kursteilnehmer zu erstellen. Während alle diesen Kanal ansehen können, dürfen nur Administratoren darin schreiben.",
     "introChatDetails": "Sag Hallo! Stelle dich deinen Mitkursteilnehmern vor, finde Freunde und chatte außerhalb der Aktivitäten.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -9804,6 +9789,21 @@
     },
     "waitingForBotToJoinActivity": "Warten auf den Bot, um beizutreten...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Ein Ort für Kursadministratoren, um Ankündigungen für Kursteilnehmer zu erstellen. Während alle diesen Kanal einsehen können, dürfen nur Administratoren darin schreiben.",
+    "introChatDesc": "Jeder im Kurs kann posten.",
+    "announcementsChatDesc": "Nur Kursadministratoren können posten.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

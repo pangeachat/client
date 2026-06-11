@@ -118,10 +118,14 @@ class MorphFeatureBox extends StatelessWidget {
                 width: 30.0,
                 child: MorphIcon(feature: featureEnum),
               ),
-              Text(
-                feature.title,
-                style: theme.textTheme.bodyLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
+              Flexible(
+                child: Text(
+                  feature.title,
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ],

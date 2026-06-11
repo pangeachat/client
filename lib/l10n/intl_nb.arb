@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-10 14:28:30.234071",
+    "@@last_modified": "2026-06-11 10:21:51.454856",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -8448,22 +8448,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Opprett Introduksjoner Chat",
-    "introChatDesc": "Alle i rommet kan legge ut.",
     "announcementsChatTitle": "Kunngjøringer Chat",
-    "announcementsChatDesc": "Bare romadministratoren kan legge ut.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9850,13 +9840,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Pangea Chat-logo",
-    "announcementsChatDetails": "Et sted for kursadministratorer å lage kunngjøringer for kursdeltakere. Mens alle kan se denne kanalen, kan kun administratorer skrive i den.",
     "introChatDetails": "Si hei! Introduser deg selv for dine medkursdeltakere, finn venner, og chat utenfor aktiviteter.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -9885,6 +9870,21 @@
     },
     "waitingForBotToJoinActivity": "Venter på at boten skal bli med...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Et sted for kursadministratorer å lage kunngjøringer for kursdeltakere. Mens alle kan se denne kanalen, kan bare administratorer skrive i den.",
+    "introChatDesc": "Alle i kurset kan legge ut.",
+    "announcementsChatDesc": "Bare kursadministratorer kan legge ut.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

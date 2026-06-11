@@ -3919,7 +3919,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-06-10 14:28:37.829627",
+    "@@last_modified": "2026-06-11 10:22:05.698313",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -8393,22 +8393,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Izveidot Ievada Čatu",
-    "introChatDesc": "Ikviens telpā var publicēt.",
     "announcementsChatTitle": "Paziņojumu Čats",
-    "announcementsChatDesc": "Tikai telpas administrators var publicēt.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9790,13 +9780,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Pangea Chat logo",
-    "announcementsChatDetails": "Vieta kursu administratoriem, lai izveidotu paziņojumus kursa dalībniekiem. Lai gan visi var skatīt šo kanālu, tikai administratori var tajā rakstīt.",
     "introChatDetails": "Saki sveiki! Iepazīstini sevi ar citiem kursa dalībniekiem, atrodi draugus un sarunājies ārpus aktivitātēm.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -9825,6 +9810,21 @@
     },
     "waitingForBotToJoinActivity": "Gaidām, kad bots pievienosies...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Vieta kursu administratoriem, lai izveidotu paziņojumus kursa dalībniekiem. Lai gan visi var skatīt šo kanālu, tikai administratori var tajā rakstīt.",
+    "introChatDesc": "Ikviens kursā var publicēt.",
+    "announcementsChatDesc": "Tikai kursu administratori var publicēt.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

@@ -2257,7 +2257,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-06-10 14:28:36.601856",
+    "@@last_modified": "2026-06-11 10:22:03.955712",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -9169,22 +9169,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Lumikha ng Introductions Chat",
-    "introChatDesc": "Sinuman sa espasyo ay maaaring mag-post.",
     "announcementsChatTitle": "Announcements Chat",
-    "announcementsChatDesc": "Tanging ang admin ng espasyo ang maaaring mag-post.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10809,13 +10799,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Pangea Chat logo",
-    "announcementsChatDetails": "Isang lugar para sa mga admin ng kurso upang lumikha ng mga anunsyo para sa mga kalahok ng kurso. Habang lahat ay maaaring makita ang channel na ito, tanging ang mga admin lamang ang maaaring mag-type dito.",
     "introChatDetails": "Mag-salita ng hello! Ipakilala ang iyong sarili sa iyong mga kapwa kalahok ng kurso, maghanap ng mga kaibigan, at makipag-chat sa labas ng mga aktibidad.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10844,6 +10829,21 @@
     },
     "waitingForBotToJoinActivity": "Naghihintay para sumali ang bot...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Isang lugar para sa mga admin ng kurso upang lumikha ng mga anunsyo para sa mga kalahok ng kurso. Habang lahat ay maaaring tingnan ang channel na ito, tanging ang mga admin lamang ang maaaring mag-type dito.",
+    "introChatDesc": "Sinuman sa kurso ay maaaring mag-post.",
+    "announcementsChatDesc": "Tanging ang mga admin ng kurso ang maaaring mag-post.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

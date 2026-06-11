@@ -3377,7 +3377,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-06-10 14:28:17.542338",
+    "@@last_modified": "2026-06-11 10:21:26.589604",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8874,22 +8874,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Cruthaigh Comhrá Réamhrá",
-    "introChatDesc": "Is féidir le haon duine sa spás post a chur.",
     "announcementsChatTitle": "Comhrá Fógraí",
-    "announcementsChatDesc": "Ní féidir ach le h-ardán an spáis post a chur.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10509,13 +10499,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Pangea Chat logo",
-    "announcementsChatDetails": "Áit do na hoifigigh cúrsa chun fógraí a chruthú do rannpháirtithe an chúrsa. Cé go bhfuil sé ar fáil do gach duine an cainéal seo a fheiceáil, is iad na hoifigigh amháin a fhéadfaidh scríobh ann.",
     "introChatDetails": "Abair dia dhuit! Cuir aithne ar do chomh-rannpháirtithe cúrsa, faigh cairde, agus comhrá a dhéanamh lasmuigh de na gníomhaíochtaí.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10544,6 +10529,21 @@
     },
     "waitingForBotToJoinActivity": "A'cwaiting for bot to join...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Un áit do na hoifigigh chúrsa chun fógraí a chruthú do rannpháirtithe an chúrsa. Cé go bhfuil sé le feiceáil ag gach duine, is iad na hoifigigh amháin a fhéadfadh a scríobh ann.",
+    "introChatDesc": "Is féidir le haon duine sa chúrsa post a chur.",
+    "announcementsChatDesc": "Ní féidir ach do na hoifigigh chúrsa post a chur.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

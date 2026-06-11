@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-10 14:28:51.204449",
+    "@@last_modified": "2026-06-11 10:22:59.480581",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -9023,22 +9023,12 @@
         "placeholders": {}
     },
     "introChatTitle": "紹介チャットを作成",
-    "introChatDesc": "スペース内の誰でも投稿できます。",
     "announcementsChatTitle": "お知らせチャット",
-    "announcementsChatDesc": "スペースの管理者のみが投稿できます。",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10658,13 +10648,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "パングリアチャットロゴ",
-    "announcementsChatDetails": "コース管理者がコース参加者のためにアナウンスを作成する場所です。すべての人がこのチャンネルを閲覧できますが、入力できるのは管理者のみです。",
     "introChatDetails": "こんにちは！コース参加者の皆さんに自己紹介をし、友達を見つけ、活動の外でチャットしましょう。",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10693,6 +10678,21 @@
     },
     "waitingForBotToJoinActivity": "ボットが参加するのを待っています...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "コース管理者がコース参加者のためにアナウンスを作成する場所です。すべての人がこのチャンネルを閲覧できますが、入力できるのは管理者のみです。",
+    "introChatDesc": "コース内の誰でも投稿できます。",
+    "announcementsChatDesc": "コース管理者のみが投稿できます。",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

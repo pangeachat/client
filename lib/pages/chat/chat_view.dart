@@ -470,8 +470,6 @@ class ChatView extends StatelessWidget {
                           //     child: ChatEventList(controller: controller),
                           //   ),
                           // ),
-                          if (controller.room.showActivityChatUI)
-                            SizedBox(height: 50),
                           Expanded(
                             child: Stack(
                               children: [
@@ -611,6 +609,7 @@ class ChatView extends StatelessWidget {
                       setVisibility:
                           controller.activityController.setShowDropdown,
                       usedVocab: controller.activityController.usedVocab,
+                      activeGoalNotifier: controller.activeGoalNotifier,
                     ),
                     // if (controller.dragging)
                     //   Container(
