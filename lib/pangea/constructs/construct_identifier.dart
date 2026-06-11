@@ -100,7 +100,13 @@ class ConstructIdentifier {
     return "$lemma:${type.string}-$category".toLowerCase();
   }
 
+  String get escapedString => "\\$string\\";
+
   static ConstructIdentifier? fromString(String s) {
+    if (s.startsWith('\\') && s.endsWith('\\')) {
+      s = s.substring(1, s.length - 1);
+    }
+
     final parts = s.split(':');
     if (parts.length != 2) return null;
     final lemma = parts[0];
