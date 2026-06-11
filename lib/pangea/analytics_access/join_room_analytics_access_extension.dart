@@ -202,7 +202,7 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
 
 extension JoinRoomAnalyticsAccessRoomExtension on Room {
   bool get shouldShowAnalyticsAccessNotice =>
-      requireAnalyticsAccess && !client.sawAccessNotice(id);
+      requireAnalyticsAccess && !client.acceptedAccessNotice(id);
 
   Future<JoinResponse?> joinWithAccessCheck() async {
     await join();

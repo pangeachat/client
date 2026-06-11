@@ -16,14 +16,21 @@ class JoinRoomAnalyticsConsentHandler {
   /// Show the user access consent dialog (if not already shown for this course),
   /// leaves room and return null if rejected, grants access and return roomId if accepted
   Future<String?> handle(BuildContext context) async {
+    final roomId = room.id;
+    final client = room.client;
+
+    if (!client.acceptedAccessNotice(roomId)) {
+      await client.setAccessNoticePending(roomId);
+    }
+
     final acceptedAccessRequest = await _showNotice(context);
     if (!acceptedAccessRequest) {
       return null;
     }
 
-    await room.client.setSawAccessNotice(room.id);
+    await client.setAccessNoticeAccepted(roomId);
     await _grantAccess();
-    return room.id;
+    return roomId;
   }
 
   /// Returns false if user was shown the dialog and rejected it, meaning they left the room
