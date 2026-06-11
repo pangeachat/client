@@ -25,6 +25,7 @@ import 'package:fluffychat/pages/chat/event_info_dialog.dart';
 import 'package:fluffychat/pages/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/goal_star_animation.dart';
+import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_controller.dart';
@@ -50,8 +51,9 @@ import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
-import 'package:fluffychat/pangea/choreographer/igc/span_card_overlay_manager.dart';
+import 'package:fluffychat/pangea/choreographer/igc/span_card.dart';
 import 'package:fluffychat/pangea/choreographer/igc/suggestion_card.dart';
+import 'package:fluffychat/pangea/choreographer/igc/writing_asssitance_popup_manager.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/choreographer/writing_assistance_room_extension.dart';
@@ -222,6 +224,7 @@ class ChatController extends State<ChatPageWithRoom>
   StreamSubscription? _goBackTutorialSubscription;
 
   StreamSubscription? _goalCompletionSubscription;
+  late final ValueNotifier<ActivityRoleGoal?> activeGoalNotifier;
 
   /// The event used to start the reading-assistance tutorial. Stored so the
   /// tutorial can be re-opened when the user navigates back through the sequence.
@@ -232,7 +235,7 @@ class ChatController extends State<ChatPageWithRoom>
   late final ActivityChatController activityController;
   late final TutorialOverlayController tutorialOverlayController;
   late final ChatBannerController _bannerController;
-  late final SpanCardOverlayManager _spanCardOverlayController;
+  late final WritingAssistancePopupManager _spanCardOverlayController;
   final ValueNotifier<bool> scrollableNotifier = ValueNotifier(false);
   // Pangea#
   Room get room => sendingClient.getRoomById(roomId) ?? widget.room;
@@ -778,19 +781,34 @@ class ChatController extends State<ChatPageWithRoom>
     if (activityController.confettiNotifier.value) {
       StarRainWidget.show(
         context,
-        "start-rain-${widget.room.id}",
+        "star-rain-${widget.room.id}",
         showBlast: true,
       );
     }
   }
 
-  void _goalCompletionListener(List<ActivityRoleGoal> goalIds) {
+  Future<void> _goalCompletionListener(Set<ActivityRoleGoal> goals) async {
+    if (goals.isEmpty) return;
+
+    final completer = Completer();
     GoalStarAnimation.show(
       context,
       overlayKey: "goal-completion-star-${widget.room.id}",
       startTarget: ChoreoConstants.inputTransformTargetKey,
-      endTarget: ActivitySessionConstants.goalMenuStarTargetId,
+      endTarget: ActivitySessionConstants.goalMenuStarTargetId(goals.first.id),
+      onClose: () => completer.complete(),
     );
+
+    await completer.future.timeout(
+      Duration(seconds: 5),
+      onTimeout: () => ErrorHandler.logError(
+        e: "Goal completion star animation timeout",
+        data: {},
+        level: SentryLevel.warning,
+      ),
+    );
+
+    activeGoalNotifier.value = room.currentGoal;
   }
 
   String? get currentRoutePath => _router.state.path;
@@ -821,7 +839,7 @@ class ChatController extends State<ChatPageWithRoom>
     sendController.addListener(onInputBarChanged);
     final updater = Matrix.of(context).analyticsDataService.updateDispatcher;
 
-    _spanCardOverlayController = SpanCardOverlayManager(
+    _spanCardOverlayController = WritingAssistancePopupManager(
       choreographer: choreographer,
       onFeedbackSubmitted: onWritingAssistanceFeedback,
     );
@@ -860,6 +878,8 @@ class ChatController extends State<ChatPageWithRoom>
         activityController.showConfetti();
       });
     }
+
+    activeGoalNotifier = ValueNotifier(room.currentGoal);
 
     _goalCompletionSubscription?.cancel();
     _goalCompletionSubscription = choreographer
@@ -1164,6 +1184,7 @@ class ChatController extends State<ChatPageWithRoom>
     _goBackTutorialSubscription?.cancel();
     _goalCompletionSubscription?.cancel();
     tutorialOverlayController.dispose();
+    activeGoalNotifier.dispose();
     //Pangea#
     super.dispose();
   }
@@ -1188,6 +1209,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (!stopMediaStream.isClosed) {
       stopMediaStream.add(null);
     }
+    MatrixState.pAnyState.closeOverlay("star-rain-${widget.room.id}");
     MatrixState.pAnyState.closeAllOverlays();
   }
 
@@ -2435,18 +2457,6 @@ class ChatController extends State<ChatPageWithRoom>
     overlayKey: "message_toolbar_overlay",
   );
 
-  bool get enableTranslateShimmer {
-    if (tutorialOverlayController.state.isTutorialActive(
-      TutorialEnum.readingAssistance,
-    )) {
-      return tutorialOverlayController.state.isTutorialStepActive(
-        TutorialEnum.readingAssistance,
-        1,
-      );
-    }
-    return true;
-  }
-
   void showToolbar(
     Event event, {
     PangeaMessageEvent? pangeaMessageEvent,
@@ -2674,7 +2684,21 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     if (!isSpanCardOpen) {
-      _spanCardOverlayController.open(context);
+      _spanCardOverlayController.open(
+        context,
+        openOverlay: (overlayKey) => OverlayUtil.showPositionedCard(
+          overlayKey: overlayKey,
+          context: context,
+          cardToShow: SpanCard(controller: _spanCardOverlayController),
+          maxHeight: 325,
+          maxWidth: 325,
+          transformTargetId: ChoreoConstants.inputTransformTargetKey,
+          ignorePointer: true,
+          isScrollable: false,
+          targetAnchor: Alignment.topCenter,
+          followerAnchor: Alignment.bottomCenter,
+        ),
+      );
     }
   }
 
@@ -2685,19 +2709,21 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
-    final overlayKey = "suggestions-overlay";
-    MatrixState.pAnyState.closeAllOverlays();
-    OverlayUtil.showOverlay(
-      overlayKey: overlayKey,
-      context: context,
-      child: SuggestionCard(
+    _spanCardOverlayController.open(
+      context,
+      openOverlay: (overlayKey) => OverlayUtil.showOverlay(
         overlayKey: overlayKey,
-        controller: choreographer.orchestratorController,
+        context: context,
+        child: SuggestionCard(
+          overlayKey: overlayKey,
+          controller: choreographer.orchestratorController,
+          popupManager: _spanCardOverlayController,
+        ),
+        transformTargetId: ChoreoConstants.inputTransformTargetKey,
+        ignorePointer: true,
+        targetAnchor: Alignment.topCenter,
+        followerAnchor: Alignment.bottomCenter,
       ),
-      transformTargetId: ChoreoConstants.inputTransformTargetKey,
-      ignorePointer: true,
-      targetAnchor: Alignment.topCenter,
-      followerAnchor: Alignment.bottomCenter,
     );
   }
 
@@ -2716,7 +2742,7 @@ class ChatController extends State<ChatPageWithRoom>
       return showLanguageMismatchPopup(manual: manual, autosend: autosend);
     }
 
-    if (_spanCardOverlayController.isOpen) {
+    if (_spanCardOverlayController.isOpen && !manual) {
       await _spanCardOverlayController.close();
     }
 
@@ -2786,7 +2812,9 @@ class ChatController extends State<ChatPageWithRoom>
       showNextMatch();
     } else if (choreographer.assistanceState ==
         AssistanceStateEnum.suggesting) {
-      showSuggestion();
+      _spanCardOverlayController.isOpen
+          ? _spanCardOverlayController.close()
+          : showSuggestion();
     } else if (autosend) {
       await send();
     } else {

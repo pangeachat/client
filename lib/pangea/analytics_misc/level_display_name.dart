@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_svg/svg.dart';
+
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LevelDisplayName extends StatelessWidget {
   final String userId;
   final TextStyle? textStyle;
   final double? iconSize;
+  final bool showFlags;
 
   const LevelDisplayName({
     required this.userId,
     this.textStyle,
     this.iconSize,
+    this.showFlags = true,
     super.key,
   });
 
@@ -24,6 +28,10 @@ class LevelDisplayName extends StatelessWidget {
         ),
         builder: (context, snapshot) {
           final analytics = snapshot.data?.analytics;
+          final base = analytics?.baseLanguage;
+          final target = analytics?.targetLanguage;
+          final level = analytics?.level;
+
           return Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -41,18 +49,23 @@ class LevelDisplayName extends StatelessWidget {
               else
                 Row(
                   children: [
-                    if (snapshot.data?.countryEmoji != null)
-                      Padding(
-                        padding: const EdgeInsets.only(right: 4.0),
-                        child: Text(
-                          snapshot.data!.countryEmoji!,
-                          style: textStyle ?? const TextStyle(fontSize: 16.0),
+                    if (base != null && target != null) ...[
+                      if (showFlags) ...[
+                        SvgPicture.network(
+                          base.svgUrl.toString(),
+                          errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                          placeholderBuilder: (_) => Center(
+                            child: const CircularProgressIndicator(
+                              strokeWidth: 0.5,
+                            ),
+                          ),
+                          width: iconSize ?? 12.0,
+                          height: iconSize ?? 12.0,
                         ),
-                      ),
-                    if (analytics?.baseLanguage != null &&
-                        analytics?.targetLanguage != null)
+                        SizedBox(width: 4.0),
+                      ],
                       Text(
-                        analytics!.baseLanguage!.langCodeShort.toUpperCase(),
+                        base.langCodeShort.toUpperCase(),
                         style:
                             textStyle ??
                             TextStyle(
@@ -60,15 +73,28 @@ class LevelDisplayName extends StatelessWidget {
                               color: Theme.of(context).colorScheme.primary,
                             ),
                       ),
-                    if (analytics?.baseLanguage != null &&
-                        analytics?.targetLanguage != null)
                       Icon(
                         Icons.chevron_right_outlined,
                         size: iconSize ?? 16.0,
                       ),
-                    if (analytics?.targetLanguage != null)
+                    ],
+                    if (target != null) ...[
+                      if (showFlags) ...[
+                        SvgPicture.network(
+                          target.svgUrl.toString(),
+                          errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                          placeholderBuilder: (_) => Center(
+                            child: const CircularProgressIndicator(
+                              strokeWidth: 0.5,
+                            ),
+                          ),
+                          width: iconSize ?? 12.0,
+                          height: iconSize ?? 12.0,
+                        ),
+                        SizedBox(width: 4.0),
+                      ],
                       Text(
-                        analytics!.targetLanguage!.langCodeShort.toUpperCase(),
+                        target.langCodeShort.toUpperCase(),
                         style:
                             textStyle ??
                             TextStyle(
@@ -76,11 +102,12 @@ class LevelDisplayName extends StatelessWidget {
                               color: Theme.of(context).colorScheme.primary,
                             ),
                       ),
+                    ],
                     const SizedBox(width: 4.0),
-                    if (analytics?.level != null) Text("⭐", style: textStyle),
-                    if (analytics?.level != null)
+                    if (level != null) ...[
+                      Text("⭐", style: textStyle),
                       Text(
-                        "${analytics!.level!}",
+                        "$level",
                         style:
                             textStyle ??
                             TextStyle(
@@ -88,6 +115,7 @@ class LevelDisplayName extends StatelessWidget {
                               color: Theme.of(context).colorScheme.primary,
                             ),
                       ),
+                    ],
                   ],
                 ),
             ],

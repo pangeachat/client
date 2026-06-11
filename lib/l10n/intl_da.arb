@@ -1383,7 +1383,6 @@
     "inactive": "Inaktiv",
     "confirmRole": "Bekræft rolle",
     "openRoleLabel": "ÅBEN",
-    "joinedTheActivity": "👋 {username} deltog som {role}",
     "finishedTheActivity": "🎯 {username} afsluttede denne aktivitet",
     "activitySummaryError": "Aktivitetsoversigter er ikke tilgængelige",
     "requestSummaries": "Anmod om oversigter",
@@ -1478,7 +1477,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-05-22 12:44:39.112156",
+    "@@last_modified": "2026-06-11 10:21:13.888430",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -7513,17 +7512,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -9261,22 +9249,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Opret Introduktioner Chat",
-    "introChatDesc": "Alle i rummet kan poste.",
     "announcementsChatTitle": "Meddelelser Chat",
-    "announcementsChatDesc": "Kun rumadmin kan poste.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9515,11 +9493,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Pangea Bot stemme",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10453,20 +10426,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Abonner for at låse op for interaktiv oversættelse og grammatikcheck, lydafspilning, personlige øvelser og læringsanalyser!",
-    "emojiSelectedSnackbar": "Du har indstillet emoji'en for {lemma}! Vi vil bruge denne emoji til at repræsentere ordet i øvelser fremover.",
     "unlockPracticeActivities": "Lås op for øvelser",
     "noAnalyticsActivitiesAvailable": "Wow, du har gennemført alle tilgængelige aktiviteter! Send flere beskeder for at låse op for flere øvelser.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10817,7 +10781,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Færdig ({num})",
-    "suggestion": "Forslag",
+    "suggestion": "Vælg det bedste forslag",
     "completeActivityButton": "Jeg er færdig!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10832,6 +10796,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Venligst begræns navnets længde til 50 tegn eller færre.",
+    "enterAName": "Venligst indtast et navn.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Skrivehjælp",
+    "viewError": "Se fejl",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Få Pangea Chat-appen for at modtage meddelelser!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Forstået!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Fortsæt med {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Downloader den fulde beskedhistorik, inklusive afsender, dato sendt, original besked, sendt besked og brugstype.",
+    "analyticsDownloadDesc": "Downloader personlige ordforråd og grammatik-analyser for det valgte sprog.",
+    "courseAnalyticsDownloadDesc": "Downloader lemma og grammatikbrug på det valgte sprog for alle kursusdeltagere med delte analyser.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Dette kursus matcher dit sprogniveau",
+    "cefrLevelBelow": "Dette kursus er under dit sprogniveau.",
+    "cefrLevelAbove": "Dette kursus er over dit sprogniveau.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot lydbesked stemme",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat-logo",
+    "introChatDetails": "Sig hej! Præsenter dig selv for dine medkursusdeltagere, find venner, og chat uden for aktiviteter.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Denne emoji vil nu repræsentere \"{word}\" i praksisøvelser",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Vis udviklerindstillinger",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Tænd for udviklerindstillinger for at vise downloadanalyse og detaljerede infoindstillinger i hele appen.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Venter på, at botten deltager...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Et sted for kursusadministratorer til at oprette meddelelser til kursusdeltagere. Mens alle kan se denne kanal, kan kun administratorer skrive i den.",
+    "introChatDesc": "Enhver i kurset kan poste.",
+    "announcementsChatDesc": "Kun kursusadministratorer kan poste.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

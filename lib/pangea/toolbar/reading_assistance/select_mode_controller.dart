@@ -170,6 +170,7 @@ class SelectModeController with LemmaEmojiSetter {
           _translationLoader.value is AsyncLoaded<String>) ||
       (selectedMode.value == SelectMode.speechTranslation &&
           _sttTranslationLoader.isLoaded) ||
+      (selectedMode.value == SelectMode.emoji) ||
       _transcriptLoader.isLoaded ||
       _transcriptLoader.isError;
 

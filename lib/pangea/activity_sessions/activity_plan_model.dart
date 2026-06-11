@@ -249,18 +249,13 @@ class ActivityRole {
     this.avatarUrl,
   });
 
-  bool get usingDefaultGoalId => goals.isEmpty && goal != null;
+  String get _defaultGoalId => "$id:legacy";
 
   List<ActivityRoleGoal> get allGoals {
     if (goals.isNotEmpty) return goals;
     final goal = this.goal;
     if (goal == null) return [];
-    return [
-      ActivityRoleGoal(
-        id: ActivitySessionConstants.primaryGoalId,
-        description: goal,
-      ),
-    ];
+    return [ActivityRoleGoal(id: _defaultGoalId, description: goal)];
   }
 
   factory ActivityRole.fromJson(Map<String, dynamic> json) {

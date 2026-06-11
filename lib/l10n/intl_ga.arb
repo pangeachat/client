@@ -3854,7 +3854,6 @@
     "inactive": "Neamhghníomhach",
     "confirmRole": "Deimhnigh ról",
     "openRoleLabel": "OSCAIL",
-    "joinedTheActivity": "👋 {username} d'fháiltigh isteach mar {role}",
     "finishedTheActivity": "🎯 {username} chríochnaigh an gníomhaíocht seo",
     "activitySummaryError": "Ní féidir achoimrigh gníomhaíochta a fháil",
     "requestSummaries": "Iarr achoimrigh",
@@ -3949,7 +3948,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-05-22 12:45:51.508550",
+    "@@last_modified": "2026-06-11 10:23:11.546221",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -6664,17 +6663,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8412,22 +8400,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Cruthaigh Comhrá Réamhrá",
-    "introChatDesc": "Is féidir le haon duine sa spás post a chur.",
     "announcementsChatTitle": "Comhrá Fógraí",
-    "announcementsChatDesc": "Ní féidir ach le hoifigeach spáis post a chur.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8666,11 +8644,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "guth Pangea Bot",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9370,20 +9343,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Cláraigh chun uirlisí idirghníomhacha a aistriú agus a sheiceáil gramadaí, a chluinstin fuaime, a chleachtadh pearsanta, agus anailísíocht foghlama a dhíghlasáil!",
-    "emojiSelectedSnackbar": "Tá an emoji socraithe agat do {lemma}! Úsáidfimid an emoji seo chun an focal a chur i láthair sna cleachtaí praiticiúla amach anseo.",
     "unlockPracticeActivities": "Díghlasáil cleachtaí praiticiúla",
     "noAnalyticsActivitiesAvailable": "Wow, tá gach gníomhaíocht ar fáil críochnaithe agat! Seol níos mó teachtaireachtaí chun níos mó cleachtaí praiticiúla a dhíghlasáil.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9734,7 +9698,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Críochnaithe ({num})",
-    "suggestion": "Moladh",
+    "suggestion": "Roghnaigh an moladh is fearr",
     "completeActivityButton": "Táim críochnaithe!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9749,6 +9713,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Le do thoil, teorainn fad an ainm do 50 carachtar nó níos lú.",
+    "enterAName": "Le do thoil, cuir isteach ainm.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Cúnamh scríbhneoireachta",
+    "viewError": "Féach ar earráid",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Faigh an aip Pangea Chat chun fógraí a fháil!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Tuigim é!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Lean ort le {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Íoslódálann an stair iomlán teachtaireachtaí, lena n-áirítear an seoltóir, an dáta a sheoladh, an teachtaireacht bhunaidh, an teachtaireacht a sheoladh, agus an cineál úsáide.",
+    "analyticsDownloadDesc": "Íoslódálann anailísí pearsanta ar fhocail agus gramadach don teanga roghnaithe.",
+    "courseAnalyticsDownloadDesc": "Íoslódálann an lemma agus úsáid gramadaí sa teanga roghnaithe do gach rannpháirtí sa chúrsa le hanailísí comhoibrithe.",
+    "cefrLevelMatch": "Comhoibríonn an cúrsa seo le do leibhéal teanga",
+    "cefrLevelBelow": "Tá an cúrsa seo faoi do leibhéal teanga.",
+    "cefrLevelAbove": "Tá an cúrsa seo os cionn do leibhéal teanga.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Guth teachtaireachta fuaime Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Lógó Pangea Chat",
+    "introChatDetails": "Abair dia dhuit! Cuir aithne ort féin do do chomh-rannpháirtithe cúrsa, faigh cairde, agus comhrá lasmuigh de na gníomhaíochtaí.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Beidh an emoji seo ag ionadaíocht ar \"{word}\" anois i gcleachtaí chleachtais",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Taispeáin na roghanna forbróra",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Cuir ar siúl na roghanna forbróra chun anailísí íoslódála agus roghanna faisnéise mionsonraithe a thaispeáint ar fud an aip.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Ag fanacht le bot chun páirt a ghlacadh...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Áit do na hoifigigh cúrsa chun fógraí a chruthú do rannpháirtithe an chúrsa. Cé go bhféadfadh gach duine an chanáil seo a fheiceáil, is iad na hoifigigh amháin a fhéadfadh scríobh inti.",
+    "introChatDesc": "Is féidir le haon duine sa chúrsa post a chur.",
+    "announcementsChatDesc": "Ní féidir ach le hoifigigh an chúrsa post a chur.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

@@ -3151,7 +3151,6 @@
     "inactive": "Nekeičiama",
     "confirmRole": "Patvirtinti vaidmenį",
     "openRoleLabel": "ATVIRAS",
-    "joinedTheActivity": "👋 {username} prisijungė kaip {role}",
     "finishedTheActivity": "🎯 {username} užbaigė šią veiklą",
     "activitySummaryError": "Veiklos santraukų nėra",
     "requestSummaries": "Prašyti santraukų",
@@ -3192,7 +3191,7 @@
     "pingParticipants": "Pranešti kurso dalyviams",
     "playWithBot": "Žaisti su Pangea botu",
     "inviteFriends": "Pakvieskite draugus",
-    "waitNotDone": "Laukite, aš dar nesu baigęs!",
+    "waitNotDone": "Palauk, aš dar nesu baigęs!",
     "waitingForOthersToFinish": "Laukiama kitų pabaigos...",
     "generatingSummary": "Analizuojama pokalbis ir generuojami rezultatai",
     "findCourse": "Rasti kursą",
@@ -3246,7 +3245,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-05-22 12:45:27.751499",
+    "@@last_modified": "2026-06-11 10:22:34.781919",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7305,17 +7304,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -9053,22 +9041,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Sukurti Įžangų Pokalbį",
-    "introChatDesc": "Bet kas erdvėje gali skelbti.",
     "announcementsChatTitle": "Pranešimų Pokalbis",
-    "announcementsChatDesc": "Tik erdvės administratorius gali skelbti.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9307,11 +9285,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Pangea Bot balsas",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10245,20 +10218,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Prenumeruokite, kad atrakintumėte interaktyvią vertimą ir gramatikos tikrinimą, garso atkūrimą, suasmenintus praktikos užsiėmimus ir mokymosi analizę!",
-    "emojiSelectedSnackbar": "Jūs nustatėte emociją {lemma}! Mes naudosime šią emociją, kad atstovautume žodžiui praktikos užsiėmimuose ateityje.",
     "unlockPracticeActivities": "Atrakinti praktikos užsiėmimus",
     "noAnalyticsActivitiesAvailable": "Oho, jūs baigėte visus prieinamus užsiėmimus! Siųskite daugiau žinučių, kad atrakintumėte daugiau praktikos užsiėmimų.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10609,7 +10573,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Baigta ({num})",
-    "suggestion": "Pasiūlymas",
+    "suggestion": "Pasirinkite geriausią pasiūlymą",
     "completeActivityButton": "Aš baigiau!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10624,6 +10588,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Prašome apriboti vardo ilgį iki 50 simbolių arba mažiau.",
+    "enterAName": "Prašome įvesti vardą.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Rašymo pagalba",
+    "viewError": "Peržiūrėti klaidą",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Gaukite Pangea Chat programėlę, kad gautumėte pranešimus!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Supratau!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Tęsti su {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Atsisiunčia visą žinučių istoriją, įskaitant siuntėją, siuntimo datą, originalią žinutę, išsiųstą žinutę ir naudojimo tipą.",
+    "analyticsDownloadDesc": "Atsisiunčia asmeninius žodyno ir gramatikos analizės duomenis pasirinktam kalbai.",
+    "courseAnalyticsDownloadDesc": "Atsisiunčia lemą ir gramatikos naudojimą pasirinktam kalbai visiems kurso dalyviams su bendromis analizėmis.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Šis kursas atitinka jūsų kalbos lygį",
+    "cefrLevelBelow": "Šis kursas yra žemiau jūsų kalbos lygio.",
+    "cefrLevelAbove": "Šis kursas yra virš jūsų kalbos lygio.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot garso pranešimo balsas",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logotipas",
+    "introChatDetails": "Pasakykite labas! Pristatykite save savo kursų dalyviams, raskite draugų ir bendraukite už veiklų ribų.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Šis emocijų simbolis dabar atstovaus \"{word}\" praktikos užduotyse",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Rodyti kūrėjo parinktis",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Įjunkite kūrėjo parinktis, kad rodytumėte atsisiuntimo analizę ir išsamią informaciją apie parinktis visoje programoje.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Laukiama, kol robotas prisijungs...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Vieta, kur kursų administratoriai gali kurti pranešimus kursų dalyviams. Nors visi gali matyti šį kanalą, tik administratoriai gali rašyti jame.",
+    "introChatDesc": "Bet kas kurse gali skelbti.",
+    "announcementsChatDesc": "Tik kursų administratoriai gali skelbti.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

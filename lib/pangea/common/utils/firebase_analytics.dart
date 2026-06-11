@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import 'package:fluffychat/pangea/bot/bot_target_event_name_enum.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -15,35 +16,46 @@ import '../../../config/firebase_options.dart';
 // PageRoute import
 
 // Add import:
-// import 'package:fluffychat/pangea/utils/firebase_analytics.dart';
+// import 'package:pangea/common/utils/firebase_analytics.dart';
 // Call method: GoogleAnalytics.logout()
 
 class GoogleAnalytics {
   static FirebaseAnalytics? analytics;
-  static const List<String> _ignoredScreenNamePrefixes = [
-    '/home',
-    '/registration',
-  ];
+  static String? _pendingLoginMethod;
 
   GoogleAnalytics();
 
   static Future<void> initialize() async {
-    FirebaseApp app;
-    try {
+    final isNativeMobile =
+        !kIsWeb &&
+        {
+          TargetPlatform.android,
+          TargetPlatform.iOS,
+        }.contains(defaultTargetPlatform);
+    final FirebaseApp app;
+    if (isNativeMobile) {
+      app = Firebase.apps.isNotEmpty
+          ? Firebase.app()
+          : await Firebase.initializeApp();
+    } else {
       app = await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
-    } on Exception {
-      // Android initialises using gradle plugin
-      // So we just get the one they added
-      app = Firebase.app();
     }
 
     analytics = FirebaseAnalytics.instanceFor(app: app);
+    // Client is not automatically set on web
+    await _setClientVersion();
 
     if (Environment.analyticsDebugEnabled) {
       // Note: Doesnt currently work on Web
-      analytics?.setDefaultEventParameters({"traffic_type": "internal"});
+      try {
+        await analytics?.setDefaultEventParameters({
+          "traffic_type": "internal",
+        });
+      } catch (_) {
+        // i guess were on web and have it enabled anyway
+      }
     }
 
     debugPrint("Firebase App Name: ${app.name}");
@@ -55,9 +67,21 @@ class GoogleAnalytics {
     debugPrint("  Storage Bucket: ${app.options.storageBucket}");
   }
 
-  static void analyticsUserUpdate(String? userID) {
+  static Future<void> _setClientVersion() async {
+    try {
+      final packageInfo = await PackageInfo.fromPlatform();
+      await analytics?.setUserProperty(
+        name: 'client_version',
+        value: packageInfo.version,
+      );
+    } catch (error) {
+      debugPrint('Unable to set analytics client version: $error');
+    }
+  }
+
+  static Future<void> analyticsUserUpdate(String? userID) async {
     debugPrint("user update $userID");
-    analytics?.setUserId(id: userID);
+    await analytics?.setUserId(id: userID);
   }
 
   static void updateUserSubscriptionStatus(bool subscribed) {
@@ -96,9 +120,20 @@ class GoogleAnalytics {
     }
   }
 
-  static void login(String type, String? userID) {
-    logEvent('login', parameters: {'method': type});
-    analyticsUserUpdate(userID);
+  static void prepareLogin(String method) {
+    _pendingLoginMethod = method;
+  }
+
+  static void cancelPendingLogin() {
+    _pendingLoginMethod = null;
+  }
+
+  static void login() {
+    final method = _pendingLoginMethod;
+    _pendingLoginMethod = null;
+    if (method == null) return;
+
+    logEvent('login', parameters: {'method': method});
   }
 
   static void signUp(String type) {
@@ -108,7 +143,6 @@ class GoogleAnalytics {
   /// User logs out. Removes user from the current GA session.
   static void logout() {
     logEvent('logout');
-    analyticsUserUpdate(null);
   }
 
   /// User send a message
@@ -263,11 +297,6 @@ class GoogleAnalytics {
 
         final name = route.settings.name?.trim();
         if (name == null || name.isEmpty) {
-          return false;
-        }
-
-        // Do not log unauthenticated onboarding/auth flow screens.
-        if (_ignoredScreenNamePrefixes.any(name.startsWith)) {
           return false;
         }
 

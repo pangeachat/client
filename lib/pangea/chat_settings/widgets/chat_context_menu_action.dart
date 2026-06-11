@@ -153,7 +153,8 @@ void chatContextMenuAction(
             ],
           ),
         ),
-      if (!room.isActivitySession || !room.isActivityStarted)
+      if (room.membership == Membership.join &&
+          (!room.isActivitySession || !room.isActivityStarted))
         PopupMenuItem(
           value: ChatContextAction.leave,
           child: Row(
@@ -165,7 +166,7 @@ void chatContextMenuAction(
               ),
               const SizedBox(width: 12),
               Text(
-                room.membership == Membership.invite ? l10n.delete : l10n.leave,
+                l10n.leave,
                 style: TextStyle(color: theme.colorScheme.onErrorContainer),
               ),
             ],

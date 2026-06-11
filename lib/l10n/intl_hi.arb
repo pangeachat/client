@@ -3283,7 +3283,6 @@
     "inactive": "निष्क्रिय",
     "confirmRole": "भूमिका की पुष्टि करें",
     "openRoleLabel": "खुली",
-    "joinedTheActivity": "👋 {username} ने {role} के रूप में भाग लिया",
     "finishedTheActivity": "🎯 {username} ने इस गतिविधि को पूरा किया",
     "activitySummaryError": "गतिविधि सारांश उपलब्ध नहीं है",
     "requestSummaries": "सारांश अनुरोध करें",
@@ -3324,7 +3323,7 @@
     "pingParticipants": "कोर्स प्रतिभागियों को पिंग करें",
     "playWithBot": "पांगेआ बॉट के साथ खेलें",
     "inviteFriends": "मित्रों को आमंत्रित करें",
-    "waitNotDone": "रुको, मैं अभी पूरा नहीं किया हूँ!",
+    "waitNotDone": "रुको, मैं अभी खत्म नहीं हुआ हूँ!",
     "waitingForOthersToFinish": "बाकियों के समाप्त होने का इंतजार कर रहा हूँ...",
     "generatingSummary": "चैट का विश्लेषण कर रहे हैं और परिणाम उत्पन्न कर रहे हैं",
     "findCourse": "कोर्स खोजें",
@@ -3378,7 +3377,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-05-22 12:45:43.419268",
+    "@@last_modified": "2026-06-11 10:23:01.209017",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7138,17 +7137,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8886,22 +8874,12 @@
         "placeholders": {}
     },
     "introChatTitle": "परिचय चैट बनाएं",
-    "introChatDesc": "इस स्थान में कोई भी पोस्ट कर सकता है।",
     "announcementsChatTitle": "घोषणाएँ चैट",
-    "announcementsChatDesc": "केवल स्थान प्रशासक पोस्ट कर सकता है।",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9140,11 +9118,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "पैंगिया बॉट की आवाज़",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10078,20 +10051,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "इंटरएक्टिव अनुवाद और व्याकरण जांच, ऑडियो प्लेबैक, व्यक्तिगत अभ्यास व्यायाम, और सीखने के विश्लेषण को अनलॉक करने के लिए सदस्यता लें!",
-    "emojiSelectedSnackbar": "आपने {lemma} के लिए इमोजी सेट किया है! हम आगे के अभ्यास व्यायाम में इस इमोजी का उपयोग करेंगे।",
     "unlockPracticeActivities": "अभ्यास व्यायाम अनलॉक करें",
     "noAnalyticsActivitiesAvailable": "वाह, आपने सभी उपलब्ध गतिविधियाँ पूरी कर ली हैं! अधिक अभ्यास व्यायाम अनलॉक करने के लिए और संदेश भेजें।",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10442,8 +10406,8 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "समाप्त ({num})",
-    "suggestion": "सुझाव",
-    "completeActivityButton": "मैंने कर लिया!",
+    "suggestion": "सर्वश्रेष्ठ सुझाव चुनें",
+    "completeActivityButton": "मैं तैयार हूँ!",
     "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
@@ -10457,6 +10421,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "कृपया नाम की लंबाई 50 अक्षरों या उससे कम तक सीमित करें।",
+    "enterAName": "कृपया एक नाम दर्ज करें।",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "लेखन सहायता",
+    "viewError": "त्रुटि देखें",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "सूचनाएँ प्राप्त करने के लिए Pangea चैट ऐप प्राप्त करें!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "समझ गया!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang} के साथ जारी रखें",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "पूर्ण संदेश इतिहास को डाउनलोड करता है, जिसमें प्रेषक, भेजी गई तारीख, मूल संदेश, भेजा गया संदेश, और उपयोग प्रकार शामिल हैं।",
+    "analyticsDownloadDesc": "चुने गए भाषा के लिए व्यक्तिगत शब्दावली और व्याकरण विश्लेषण डाउनलोड करता है।",
+    "courseAnalyticsDownloadDesc": "साझा विश्लेषण के साथ सभी पाठ्यक्रम प्रतिभागियों के लिए चुने गए भाषा में lemma और व्याकरण उपयोग डाउनलोड करता है।",
+    "cefrLevelMatch": "यह पाठ्यक्रम आपके भाषा स्तर से मेल खाता है",
+    "cefrLevelBelow": "यह पाठ्यक्रम आपके भाषा स्तर से नीचे है।",
+    "cefrLevelAbove": "यह पाठ्यक्रम आपके भाषा स्तर से ऊपर है।",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea बॉट ऑडियो संदेश आवाज़",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "पैंगिया चैट लोगो",
+    "introChatDetails": "नमस्ते कहें! अपने सहपाठियों से परिचय करें, दोस्तों को खोजें, और गतिविधियों के बाहर चैट करें।",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "यह इमोजी अब \"{word}\" को प्रैक्टिस एक्सरसाइज में दर्शाएगा",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "डेवलपर विकल्प दिखाएँ",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "डेवलपर विकल्पों को चालू करें ताकि ऐप में डाउनलोड विश्लेषण और विस्तृत जानकारी विकल्प दिखाए जा सकें।",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "बॉट के शामिल होने की प्रतीक्षा कर रहे हैं...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "कोर्स प्रशासकों के लिए कोर्स प्रतिभागियों के लिए घोषणाएँ बनाने के लिए एक स्थान। जबकि सभी इस चैनल को देख सकते हैं, केवल प्रशासक इसमें टाइप कर सकते हैं।",
+    "introChatDesc": "कोर्स में कोई भी पोस्ट कर सकता है।",
+    "announcementsChatDesc": "केवल कोर्स प्रशासक ही पोस्ट कर सकते हैं।",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

@@ -35,6 +35,7 @@ class ActivitySessionButtons extends StatelessWidget {
         : const <String>{};
 
     return AnimatedSize(
+      alignment: Alignment.bottomCenter,
       duration: FluffyThemes.animationDuration,
       child: Container(
         decoration: BoxDecoration(

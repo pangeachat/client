@@ -319,6 +319,7 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
       setDownloadType: _setDownloadType,
       download: _runDownload,
       error: errorMessage,
+      description: L10n.of(context).courseAnalyticsDownloadDesc,
       content: content,
     );
   }

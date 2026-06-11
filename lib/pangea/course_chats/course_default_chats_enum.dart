@@ -28,6 +28,11 @@ enum CourseDefaultChatsEnum {
     CourseDefaultChatsEnum.announcements => l10n.announcementsChatDesc,
   };
 
+  String details(L10n l10n) => switch (this) {
+    CourseDefaultChatsEnum.introductions => l10n.introChatDetails,
+    CourseDefaultChatsEnum.announcements => l10n.announcementsChatDetails,
+  };
+
   Map<String, dynamic> get powerLevels => switch (this) {
     CourseDefaultChatsEnum.introductions =>
       RoomDefaults.defaultPowerLevelsContent,

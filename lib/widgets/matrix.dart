@@ -205,7 +205,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
               .first
               .then((_) async {
                 // #Pangea
-                MatrixState.pangeaController.handleLoginStateChange(
+                await MatrixState.pangeaController.handleLoginStateChange(
                   LoginState.loggedIn,
                   _loginClientCandidate!.userID,
                   context,
@@ -428,7 +428,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       state,
     ) async {
       // #Pangea
-      MatrixState.pangeaController.handleLoginStateChange(
+      await MatrixState.pangeaController.handleLoginStateChange(
         state,
         c.userID,
         context,

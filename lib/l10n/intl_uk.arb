@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-05-22 12:45:04.501712",
+    "@@last_modified": "2026-06-11 10:21:48.096913",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -3849,7 +3849,6 @@
     "inactive": "Неактивний",
     "confirmRole": "Підтвердити роль",
     "openRoleLabel": "ВІДКРИТА",
-    "joinedTheActivity": "👋 {username} приєднався як {role}",
     "finishedTheActivity": "🎯 {username} завершив цю активність",
     "activitySummaryError": "Зведення активностей недоступне",
     "requestSummaries": "Запитати зведення",
@@ -3890,7 +3889,7 @@
     "pingParticipants": "Пінг учасників курсу",
     "playWithBot": "Грати з ботом Pangea",
     "inviteFriends": "Запросити друзів",
-    "waitNotDone": "Зачекайте, я ще не закінчив!",
+    "waitNotDone": "Зачекай, я ще не закінчив!",
     "waitingForOthersToFinish": "Очікування завершення інших...",
     "generatingSummary": "Аналіз чату та створення результатів",
     "findCourse": "Знайти курс",
@@ -6657,17 +6656,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8405,22 +8393,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Створити чат для знайомств",
-    "introChatDesc": "Будь-хто в просторі може публікувати.",
     "announcementsChatTitle": "Чат оголошень",
-    "announcementsChatDesc": "Тільки адміністратор простору може публікувати.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8659,11 +8637,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Голос Pangea Bot",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9359,20 +9332,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Підпишіться, щоб розблокувати інтерактивний переклад і перевірку граматики, відтворення аудіо, персоналізовані вправи та аналітику навчання!",
-    "emojiSelectedSnackbar": "Ви встановили емодзі для {lemma}! Ми будемо використовувати це емодзі для представлення слова у вправи надалі.",
     "unlockPracticeActivities": "Розблокувати вправи",
     "noAnalyticsActivitiesAvailable": "Вау, ви завершили всі доступні активності! Надішліть більше повідомлень, щоб розблокувати більше вправ.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9723,7 +9687,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Завершено ({num})",
-    "suggestion": "Пропозиція",
+    "suggestion": "Виберіть найкращу пропозицію",
     "completeActivityButton": "Я закінчив!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9738,6 +9702,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Будь ласка, обмежте довжину імені до 50 символів або менше.",
+    "enterAName": "Будь ласка, введіть ім'я.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Допомога в написанні",
+    "viewError": "Переглянути помилку",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Отримайте додаток Pangea Chat, щоб отримувати сповіщення!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Зрозумів!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Продовжити з {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Завантажує повну історію повідомлень, включаючи відправника, дату відправлення, оригінальне повідомлення, надіслане повідомлення та тип використання.",
+    "analyticsDownloadDesc": "Завантажує особисту лексику та аналітику граматики для вибраної мови.",
+    "courseAnalyticsDownloadDesc": "Завантажує лемми та використання граматики у вибраній мові для всіх учасників курсу з спільною аналітикою.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Цей курс відповідає вашому рівню мови",
+    "cefrLevelBelow": "Цей курс нижчий за ваш рівень мови.",
+    "cefrLevelAbove": "Цей курс вищий за ваш рівень мови.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Голосове повідомлення бота Pangea",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Логотип Pangea Chat",
+    "introChatDetails": "Скажіть привіт! Познайомтеся з вашими товаришами по курсу, знайдіть друзів і спілкуйтеся поза межами активностей.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Цей емодзі тепер буде представляти \"{word}\" у практичних вправах",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Показати параметри розробника",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Увімкніть параметри розробника, щоб показати аналітику завантажень та детальну інформацію про параметри в додатку.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Очікування приєднання бота...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Місце для адміністраторів курсу, щоб створювати оголошення для учасників курсу. Хоча всі можуть переглядати цей канал, лише адміністратори можуть писати в ньому.",
+    "introChatDesc": "Будь-хто в курсі може публікувати.",
+    "announcementsChatDesc": "Тільки адміністратори курсу можуть публікувати.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

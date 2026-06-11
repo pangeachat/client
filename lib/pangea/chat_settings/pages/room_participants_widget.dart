@@ -201,6 +201,7 @@ class RoomParticipantsSection extends StatelessWidget {
                         child: LevelDisplayName(
                           userId: user.id,
                           textStyle: theme.textTheme.labelSmall,
+                          showFlags: false,
                         ),
                       ),
                       Container(

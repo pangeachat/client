@@ -80,8 +80,8 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
         !finished || !archived || (summary != null && summary.summary == null);
 
     return AnimatedSize(
+      alignment: Alignment.bottomCenter,
       duration: FluffyThemes.animationDuration,
-      alignment: Alignment.topCenter,
       child: hasContent
           ? Container(
               padding: const EdgeInsets.all(12.0),
@@ -263,9 +263,13 @@ class _WaitSection extends StatelessWidget {
           onPressed: onContinue,
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            foregroundColor: theme.colorScheme.onSurface,
+            foregroundColor: theme.colorScheme.primary,
             backgroundColor: theme.colorScheme.surface,
-            side: BorderSide(color: theme.colorScheme.primaryContainer),
+            side: BorderSide(
+              color: theme.brightness == Brightness.light
+                  ? theme.colorScheme.primary.withAlpha(120)
+                  : theme.colorScheme.primaryContainer,
+            ),
           ),
           child: Text(
             L10n.of(context).waitNotDone,

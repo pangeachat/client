@@ -73,6 +73,7 @@ class ChatDownloadDialogState extends State<ChatDownloadDialog> {
       ],
       setDownloadType: _setDownloadType,
       download: _download,
+      description: L10n.of(context).chatDownloadDesc,
       error: _error,
     );
   }

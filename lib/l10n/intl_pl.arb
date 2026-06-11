@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-05-22 12:45:38.276111",
+    "@@last_modified": "2026-06-11 10:22:51.670585",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -3726,7 +3726,6 @@
     "inactive": "Nieaktywne",
     "confirmRole": "Potwierdź rolę",
     "openRoleLabel": "OTWARTA",
-    "joinedTheActivity": "👋 {username} dołączył jako {role}",
     "finishedTheActivity": "🎯 {username} zakończył tę aktywność",
     "activitySummaryError": "Podsumowania aktywności niedostępne",
     "requestSummaries": "Żądaj podsumowań",
@@ -6538,17 +6537,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8286,22 +8274,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Utwórz czat wprowadzający",
-    "introChatDesc": "Każdy w przestrzeni może publikować.",
     "announcementsChatTitle": "Czat ogłoszeń",
-    "announcementsChatDesc": "Tylko administrator przestrzeni może publikować.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8539,11 +8517,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Głos bota Pangea",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9468,20 +9441,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Subskrybuj, aby odblokować interaktywną tłumaczenie i sprawdzanie gramatyki, odtwarzanie audio, spersonalizowane ćwiczenia praktyczne i analitykę uczenia się!",
-    "emojiSelectedSnackbar": "Ustawiłeś emoji dla {lemma}! Będziemy używać tego emoji do reprezentowania słowa w ćwiczeniach praktycznych w przyszłości.",
     "unlockPracticeActivities": "Odblokuj ćwiczenia praktyczne",
     "noAnalyticsActivitiesAvailable": "Wow, ukończyłeś wszystkie dostępne aktywności! Wyślij więcej wiadomości, aby odblokować więcej ćwiczeń praktycznych.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9832,7 +9796,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Zakończone ({num})",
-    "suggestion": "Sugestia",
+    "suggestion": "Wybierz najlepszą sugestię",
     "completeActivityButton": "Skończyłem!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9847,6 +9811,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Proszę ograniczyć długość nazwy do 50 znaków lub mniej.",
+    "enterAName": "Proszę wpisać nazwę.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Pomoc w pisaniu",
+    "viewError": "Zobacz błąd",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Pobierz aplikację Pangea Chat, aby otrzymywać powiadomienia!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Rozumiem!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Kontynuuj z {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Pobiera pełną historię wiadomości, w tym nadawcę, datę wysłania, oryginalną wiadomość, wysłaną wiadomość i typ użycia.",
+    "analyticsDownloadDesc": "Pobiera osobiste analizy słownictwa i gramatyki dla wybranego języka.",
+    "courseAnalyticsDownloadDesc": "Pobiera lemat i użycie gramatyki w wybranym języku dla wszystkich uczestników kursu z udostępnionymi analizami.",
+    "cefrLevelMatch": "Ten kurs odpowiada twojemu poziomowi językowemu",
+    "cefrLevelBelow": "Ten kurs jest poniżej twojego poziomu językowego.",
+    "cefrLevelAbove": "Ten kurs jest powyżej twojego poziomu językowego.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Głos wiadomości audio Pangea Bota",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logo Pangea Chat",
+    "introChatDetails": "Przywitaj się! Przedstaw się swoim kolegom z kursu, znajdź przyjaciół i rozmawiaj poza zajęciami.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Ten emoji będzie teraz reprezentować \"{word}\" w ćwiczeniach praktycznych",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Pokaż opcje dewelopera",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Włącz opcje dewelopera, aby wyświetlić analizy pobierania i szczegółowe opcje informacji w całej aplikacji.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Czekam na dołączenie bota...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Miejsce dla administratorów kursu do tworzenia ogłoszeń dla uczestników kursu. Chociaż wszyscy mogą przeglądać ten kanał, tylko administratorzy mogą w nim pisać.",
+    "introChatDesc": "Każdy w kursie może publikować.",
+    "announcementsChatDesc": "Tylko administratorzy kursu mogą publikować.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

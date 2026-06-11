@@ -3119,7 +3119,6 @@
     "inactive": "མིན་ལུས་",
     "confirmRole": "ལས་ཀ་རྟག་པ་འབད།",
     "openRoleLabel": "གཙོ་བོ",
-    "joinedTheActivity": "👋 {username} ལས་སྤྱོད་འདི་ལ་ལོག་འགྱོ། {role}",
     "finishedTheActivity": "🎯 {username} འདི་ལ་སྤྱོད་འདུག",
     "activitySummaryError": "ལས་ཀ་རྒྱབ་སྤྱོད་འབད་མི་ཚུལ།",
     "requestSummaries": "ལོག་ལ་དབྱར་བ་འདི་ལ་བཀོད་རོགས།",
@@ -3160,7 +3159,7 @@
     "pingParticipants": "འབྲེལ་བའི་སྡེ་ཚན་སྤྱོད་ལེན།",
     "playWithBot": "ལོ་གསར་ Pangea Bot ལས་འགྱོ།",
     "inviteFriends": "གྲོགས་མཇལ་འབར་བ།",
-    "waitNotDone": "ངག་དབང་ལ་མེད་པ་ལས་འགྱོ་མི་འདུག!",
+    "waitNotDone": "Aguarda, não terminei!",
     "waitingForOthersToFinish": "མི་ཚེས་བརྒྱབ་ནས་ལོག་བྱེད་འདུག...",
     "generatingSummary": "ཚོད་ལམ་གྱིས་གནད་སྣང་བྱེད་ནས་ལོག་བྱེད།",
     "findCourse": "ཚོང་ཁང་བཟོ་བཅོས།",
@@ -3194,7 +3193,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-05-22 12:45:33.278401",
+    "@@last_modified": "2026-06-11 10:22:43.183213",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6501,17 +6500,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -7564,22 +7552,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Buat Obrolan Pengenalan",
-    "introChatDesc": "Sesiapa dalam ruang boleh menghantar.",
     "announcementsChatTitle": "Obrolan Pengumuman",
-    "announcementsChatDesc": "Hanya admin ruang yang boleh menghantar.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7818,11 +7796,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Pangea Bot voz",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9031,20 +9004,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Abonezhu na desbloquear tradução interativa e verificação gramatical, reprodução de áudio, exercícios de prática personalizados e análises de aprendizado!",
-    "emojiSelectedSnackbar": "Você definiu o emoji para {lemma}! Usaremos este emoji para representar a palavra nos exercícios de prática daqui para frente.",
     "unlockPracticeActivities": "Desbloquear exercícios de prática",
     "noAnalyticsActivitiesAvailable": "Uau, você completou todas as atividades disponíveis! Envie mais mensagens para desbloquear mais exercícios de prática.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9395,8 +9359,8 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Finito ({num})",
-    "suggestion": "Sugestão",
-    "completeActivityButton": "Terminei!",
+    "suggestion": "Pilih Saran Terbaik",
+    "completeActivityButton": "Mi finita!",
     "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
@@ -9410,6 +9374,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Tolong batasi panjang nama hingga 50 karakter atau lebih sedikit.",
+    "enterAName": "Tolong masukkan nama.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Assistenza di scrittura",
+    "viewError": "Vedi errore",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Get the Pangea Chat app to receive notifications!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Dapet!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Fortsæt med {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Downloads the full message history, including sender, date sent, original message, sent message, and use type.",
+    "analyticsDownloadDesc": "Downloads personal vocab and grammar analytics for the selected language.",
+    "courseAnalyticsDownloadDesc": "Downloads the lemma and grammar usage in the selected language for all course participants with shared analytics.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "This course matches your language level",
+    "cefrLevelBelow": "This course is below your language level.",
+    "cefrLevelAbove": "This course is above your language level.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot audio message voice",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logo",
+    "introChatDetails": "Sema hello! Jitambulishe kwa washiriki wenzako wa kurs, pata marafiki, na zungumza nje ya shughuli.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Emoji ini sekarang akan mewakili \"{word}\" dalam latihan praktik",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Tunjukkan pilihan pemaju",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Toghe devloper opçions por mostar download analytics e detalhades info opçions throughout a app.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Bidinga bot to join...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Ena pja za kurs admina da kreiraju obaveštenja za učesnike kursa. Dok svi mogu da vide ovaj kanal, samo administratori mogu da kucaju u njemu.",
+    "introChatDesc": "Svako u kursu može da objavi.",
+    "announcementsChatDesc": "Samo kurs administratori mogu da objave.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

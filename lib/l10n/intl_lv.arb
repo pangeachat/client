@@ -3839,7 +3839,6 @@
     "inactive": "Neaktīvs",
     "confirmRole": "Apstiprināt lomu",
     "openRoleLabel": "ATVĒRTS",
-    "joinedTheActivity": "👋 {username} pievienojās kā {role}",
     "finishedTheActivity": "🎯 {username} pabeidza šo aktivitāti",
     "activitySummaryError": "Aktivitātes kopsavilkumi nav pieejami",
     "requestSummaries": "Pieprasīt kopsavilkumus",
@@ -3866,7 +3865,7 @@
     "pingParticipants": "Uzaicināt kursa dalībniekus",
     "playWithBot": "Spēlēt ar Pangea botu",
     "inviteFriends": "Aicināt draugus",
-    "waitNotDone": "Gaidiet, es vēl neesmu pabeidzis!",
+    "waitNotDone": "Gaidiet, es neesmu pabeidzis!",
     "waitingForOthersToFinish": "Gaidām, lai pārējie pabeigtu...",
     "generatingSummary": "Analizē čatu un ģenerē rezultātus",
     "findCourse": "Atrodi kursu",
@@ -3920,7 +3919,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-05-22 12:45:22.215640",
+    "@@last_modified": "2026-06-11 10:22:05.698313",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -6657,17 +6656,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8405,22 +8393,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Izveidot Ievada Čatu",
-    "introChatDesc": "Ikviens telpā var publicēt.",
     "announcementsChatTitle": "Paziņojumu Čats",
-    "announcementsChatDesc": "Tikai telpas administrators var publicēt.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8659,11 +8637,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Pangea Bot balss",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9359,20 +9332,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Piesakieties, lai atbloķētu interaktīvo tulkošanu un gramatikas pārbaudi, audio atskaņošanu, personalizētus praktiskos uzdevumus un mācību analītiku!",
-    "emojiSelectedSnackbar": "Jūs esat iestatījis emocijzīmi {lemma}! Mēs izmantosim šo emocijzīmi, lai attēlotu vārdu praktiskajos uzdevumos turpmāk.",
     "unlockPracticeActivities": "Atbloķēt praktiskos uzdevumus",
     "noAnalyticsActivitiesAvailable": "Wow, jūs esat pabeidzis visus pieejamos uzdevumus! Sūtiet vairāk ziņojumu, lai atbloķētu vairāk praktisko uzdevumu.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9723,8 +9687,8 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Pabeigts ({num})",
-    "suggestion": "Ieteikums",
-    "completeActivityButton": "Esmu pabeidzis!",
+    "suggestion": "Izvēlieties labāko ieteikumu",
+    "completeActivityButton": "Es esmu pabeidzis!",
     "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
@@ -9738,6 +9702,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Lūdzu ierobežojiet vārda garumu līdz 50 rakstzīmēm vai mazāk.",
+    "enterAName": "Lūdzu ievadiet vārdu.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Rakstīšanas palīdzība",
+    "viewError": "Skatīt kļūdu",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Iegūstiet Pangea Chat lietotni, lai saņemtu paziņojumus!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Sapratu!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Turpināt ar {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Lejupielādē pilnu ziņu vēsturi, tostarp sūtītāju, nosūtīšanas datumu, oriģinālo ziņu, nosūtīto ziņu un lietošanas veidu.",
+    "analyticsDownloadDesc": "Lejupielādē personīgo vārdu krājumu un gramatikas analīzi izvēlētajā valodā.",
+    "courseAnalyticsDownloadDesc": "Lejupielādē lemmu un gramatikas lietojumu izvēlētajā valodā visiem kursa dalībniekiem ar kopīgu analīzi.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Šis kurss atbilst jūsu valodas līmenim",
+    "cefrLevelBelow": "Šis kurss ir zem jūsu valodas līmeņa.",
+    "cefrLevelAbove": "Šis kurss ir virs jūsu valodas līmeņa.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot audio ziņojuma balss",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logo",
+    "introChatDetails": "Saki sveiki! Iepazīstini sevi ar citiem kursa dalībniekiem, atrodi draugus un sarunājies ārpus aktivitātēm.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Šis emocijzīme tagad pārstāvēs \"{word}\" praktiskajos uzdevumos",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Rādīt izstrādātāja opcijas",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Ieslēdziet izstrādātāja opcijas, lai parādītu lejupielādes analītiku un detalizētu informāciju par opcijām visā lietotnē.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Gaidām, kad bots pievienosies...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Vieta kursu administratoriem, lai izveidotu paziņojumus kursa dalībniekiem. Lai gan visi var skatīt šo kanālu, tikai administratori var tajā rakstīt.",
+    "introChatDesc": "Ikviens kursā var publicēt.",
+    "announcementsChatDesc": "Tikai kursu administratori var publicēt.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

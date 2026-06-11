@@ -3,16 +3,17 @@ import path from "path";
 import { expect, test } from "../fixtures";
 
 /**
- * Login flow test
+ * Login and logout flow test
  *
  * Triggers:
  * - lib/pangea/login/**
  * - lib/pages/login/**
  * - lib/config/routes.dart
  * - lib/widgets/matrix.dart
+ * - lib/pages/settings/**
  */
 
-test.describe("Login", () => {
+test.describe("Should be able to Login and logout", () => {
   // Don't use saved auth for login test
   test.use({ storageState: { cookies: [], origins: [] } }); 
 
@@ -56,5 +57,14 @@ test.describe("Login", () => {
     // Wait for chat list to load (URL should contain /rooms)
     // Login involves a Matrix server round-trip, so give it ample time
     await expect(page).toHaveURL("#/rooms", { timeout: 120000 });
+
+    // Open settings
+    await page.getByRole("button", { name: intl.settings, exact: true }).click();
+    await page.getByRole("button", { name: intl.settings, exact: true }).click();
+
+    // Log out
+    await page.getByRole("button", { name: intl.logout }).click();
+    await page.getByRole("button", { name: intl.logout }).click();
+    await expect(page.getByRole("button", {name: intl.loginToAccount })).toBeVisible();
   });
 });

@@ -18,14 +18,22 @@ import 'package:fluffychat/pangea/onboarding/onboarding_steps/user_type_onboardi
 
 class OnboardingStepView extends StatelessWidget {
   final OnboardingStep step;
+  final bool loading;
   final Object? error;
-  final VoidCallback updateEnableNext;
+  final bool hasNextStep;
+  final VoidCallback forward;
+  final VoidCallback skip;
+  final VoidCallback updateNavigationButton;
 
   const OnboardingStepView({
     super.key,
     required this.step,
+    required this.loading,
     required this.error,
-    required this.updateEnableNext,
+    required this.hasNextStep,
+    required this.forward,
+    required this.skip,
+    required this.updateNavigationButton,
   });
 
   @override
@@ -33,44 +41,69 @@ class OnboardingStepView extends StatelessWidget {
     final step = this.step;
 
     if (step is ProfileSetupOnboardingStep) {
-      return ProfileSetupStepView(step: step);
+      return ProfileSetupStepView(
+        step: step,
+        loading: loading,
+        hasNextStep: hasNextStep,
+        forward: forward,
+      );
     }
 
     if (step is UserTypeOnboardingStep) {
-      return UserTypeStepView(step: step, updateEnableNext: updateEnableNext);
+      return UserTypeStepView(
+        step: step,
+        loading: loading,
+        hasNextStep: hasNextStep,
+        forward: forward,
+      );
     }
 
     if (step is CourseCodeOnboardingStep) {
       return CourseCodeStepView(
         step: step,
-        updateEnableNext: updateEnableNext,
+        loading: loading,
         error: error,
+        hasNextStep: hasNextStep,
+        forward: forward,
+        skip: skip,
       );
     }
 
     if (step is JoinedCourseOnboardingStep) {
-      return JoinedCourseStepView(step: step);
+      return JoinedCourseStepView(
+        step: step,
+        loading: loading,
+        hasNextStep: hasNextStep,
+        forward: forward,
+      );
     }
 
     if (step is PickLanguageOnboardingStep) {
       return PickLanguageStepView(
         step: step,
-        updateEnableNext: updateEnableNext,
+        loading: loading,
         error: error,
+        hasNextStep: hasNextStep,
+        forward: forward,
       );
     }
 
     if (step is PickCefrLevelOnboardingStep) {
       return PickCefrLevelStepView(
         step: step,
-        updateEnableNext: updateEnableNext,
+        loading: loading,
+        hasNextStep: hasNextStep,
+        forward: forward,
       );
     }
 
     if (step is CustomCourseOnboardingStep) {
       return CustomCourseStepView(
         step: step,
-        updateEnableNext: updateEnableNext,
+        loading: loading,
+        hasNextStep: hasNextStep,
+        forward: forward,
+        skip: skip,
       );
     }
 

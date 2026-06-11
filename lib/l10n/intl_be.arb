@@ -3839,7 +3839,6 @@
     "inactive": "Неактыўны",
     "confirmRole": "Пацвердзіць ролю",
     "openRoleLabel": "АДКРЫТА",
-    "joinedTheActivity": "👋 {username} далучыўся як {role}",
     "finishedTheActivity": "🎯 {username} завяршыў гэтую дзейнасць",
     "activitySummaryError": "Зводкі дзейнасці недаступныя",
     "requestSummaries": "Запытаць зводкі",
@@ -3880,7 +3879,7 @@
     "pingParticipants": "Пінгнуць удзельнікаў курса",
     "playWithBot": "Гуляць з ботам Pangea",
     "inviteFriends": "Запрасіць сяброў",
-    "waitNotDone": "Чакай, я яшчэ не скончыў!",
+    "waitNotDone": "Пачакай, я яшчэ не скончыў!",
     "waitingForOthersToFinish": "Чакаю, пакуль астатнія скончаць...",
     "generatingSummary": "Аналізуючы чат і генеруючы вынікі",
     "findCourse": "Знайсці курс",
@@ -3934,7 +3933,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-05-22 12:45:09.203658",
+    "@@last_modified": "2026-06-11 10:21:54.029514",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -6657,17 +6656,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8405,22 +8393,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Стварыць чат для ўвядзення",
-    "introChatDesc": "Кожны ў прасторы можа публікаваць.",
     "announcementsChatTitle": "Чат аб'яў",
-    "announcementsChatDesc": "Толькі адміністратар прасторы можа публікаваць.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8659,11 +8637,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Голас Pangea Bot",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9373,20 +9346,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Падпішыцеся, каб разблакаваць інтэрактыўны пераклад і праверку граматы, прайграванне аўдыё, персаналізаваныя практыкаванні і аналітыку навучання!",
-    "emojiSelectedSnackbar": "Вы ўсталявалі эмодзі для {lemma}! Мы будзем выкарыстоўваць гэтае эмодзі, каб прадстаўляць слова ў практыкаваннях у будучыні.",
     "unlockPracticeActivities": "Разблакаваць практыкаванні",
     "noAnalyticsActivitiesAvailable": "Вау, вы завяршылі ўсе даступныя дзейнасці! Адпраўце больш паведамленняў, каб разблакаваць больш практыкаванняў.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9737,7 +9701,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Завершана ({num})",
-    "suggestion": "Прапановы",
+    "suggestion": "Выберыце лепшую прапанову",
     "completeActivityButton": "Я скончыў!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9752,6 +9716,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Калі ласка, абмяжуйце даўжыню імя да 50 сімвалаў або менш.",
+    "enterAName": "Калі ласка, увядзіце імя.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Дапамога ў напісанні",
+    "viewError": "Паглядзець памылку",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Атрымаеце прыкладанне Pangea Chat, каб атрымліваць апавяшчэнні!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Зразумеў!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Працягнуць з {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Загружае поўную гісторыю паведамленняў, уключаючы адпраўніка, дату адпраўкі, арыгінальнае паведамленне, адпраўленае паведамленне і тып выкарыстання.",
+    "analyticsDownloadDesc": "Загружае асабістыя аналітыкі лексікі і граматыкі для абранай мовы.",
+    "courseAnalyticsDownloadDesc": "Загружае лемы і выкарыстанне граматыкі ў абранай мове для ўсіх удзельнікаў курса з агульнай аналітыкай.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Гэты курс адпавядае вашаму ўзроўню мовы",
+    "cefrLevelBelow": "Гэты курс ніжэй за ваш узровень мовы.",
+    "cefrLevelAbove": "Гэты курс вышэй за ваш узровень мовы.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Голас аўдыё паведамлення Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Лагатып Pangea Chat",
+    "introChatDetails": "Скажыце прывітанне! Пазнаёмцеся з вашымі калегамі па курсу, знайдзіце сяброў і размаўляйце па-за межамі мерапрыемстваў.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Гэты эмодзі цяпер будзе прадстаўляць \"{word}\" у практыкаваннях",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Паказаць параметры распрацоўшчыка",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Уключыце опцыі распрацоўніка, каб паказаць аналітыку загрузак і падрабязную інфармацыю пра опцыі на працягу ўсяго прыкладання.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Чакаем, пакуль бот далучыцца...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Месца для адміністратараў курсаў, каб ствараць аб'явы для ўдзельнікаў курсу. Хоць усе могуць бачыць гэты канал, толькі адміністратара могуць у ім пісаць.",
+    "introChatDesc": "Кожны ў курсе можа публікаваць.",
+    "announcementsChatDesc": "Толькі адміністратара курсаў могуць публікаваць.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

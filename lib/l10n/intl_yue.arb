@@ -1300,7 +1300,6 @@
     "inactive": "未啟用",
     "confirmRole": "確認角色",
     "openRoleLabel": "開放",
-    "joinedTheActivity": "👋 {username} 以 {role} 身份加入",
     "finishedTheActivity": "🎯 {username} 完成了此活動",
     "activitySummaryError": "活動摘要暫時無法取得",
     "requestSummaries": "請求摘要",
@@ -1340,7 +1339,7 @@
     "waitingToFillRole": "等緊填滿 {num} 個角色...",
     "pingParticipants": "提醒課程參與者",
     "playWithBot": "同 Pangea 機械人玩",
-    "waitNotDone": "等我完啦！",
+    "waitNotDone": "等我仲未做完！",
     "waitingForOthersToFinish": "等其他人完成...",
     "generatingSummary": "分析聊天並生成結果",
     "findCourse": "尋找課程",
@@ -1407,7 +1406,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-05-22 12:45:00.511700",
+    "@@last_modified": "2026-06-11 10:21:44.203850",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -7177,17 +7176,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -9293,22 +9281,12 @@
         "placeholders": {}
     },
     "introChatTitle": "創建介紹聊天",
-    "introChatDesc": "任何人在這個空間都可以發帖。",
     "announcementsChatTitle": "公告聊天",
-    "announcementsChatDesc": "只有空間管理員可以發帖。",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9547,11 +9525,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Pangea Bot 聲音",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10490,20 +10463,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "訂閱以解鎖互動翻譯和語法檢查、音頻播放、個性化練習練習和學習分析！",
-    "emojiSelectedSnackbar": "你已為 {lemma} 設置了表情符號！我們將使用這個表情符號來代表這個詞在未來的練習練習中。",
     "unlockPracticeActivities": "解鎖練習練習",
     "noAnalyticsActivitiesAvailable": "哇，你已經完成了所有可用的活動！發送更多消息以解鎖更多練習練習。",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10854,7 +10818,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "完成 ({num})",
-    "suggestion": "建議",
+    "suggestion": "選擇最佳建議",
     "completeActivityButton": "我完成了！",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10869,6 +10833,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "請將名稱長度限制為50個字符或更少。",
+    "enterAName": "請輸入一個名稱。",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "寫作協助",
+    "viewError": "查看錯誤",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "下載 Pangea Chat 應用程式以接收通知！",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "明白了！",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "繼續使用 {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "下載完整的消息歷史，包括發件人、發送日期、原始消息、已發送消息和使用類型。",
+    "analyticsDownloadDesc": "下載所選語言的個人詞彙和語法分析。",
+    "courseAnalyticsDownloadDesc": "下載所選語言中所有課程參與者的詞元和語法使用，並共享分析。",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "這門課程符合你的語言水平",
+    "cefrLevelBelow": "這門課程低於你的語言水平。",
+    "cefrLevelAbove": "這門課程高於你的語言水平。",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot 音訊消息聲音",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat 標誌",
+    "introChatDetails": "打個招呼！向你的課程參與者介紹自己，尋找朋友，並在活動之外聊天。",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "這個表情符號現在將在練習中代表「{word}」",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "顯示開發者選項",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "打開開發者選項以顯示下載分析和應用程式中的詳細資訊選項。",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "等待機械人加入...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "課程管理員用來為課程參加者創建公告的地方。雖然所有人都可以查看這個頻道，但只有管理員可以在其中發言。",
+    "introChatDesc": "課程中的任何人都可以發帖。",
+    "announcementsChatDesc": "只有課程管理員可以發帖。",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 
 enum AssistanceStateEnum {
   noSub,
@@ -19,12 +20,12 @@ enum AssistanceStateEnum {
 
   Color stateColor(BuildContext context) {
     switch (this) {
-      case AssistanceStateEnum.noSub:
       case AssistanceStateEnum.noMessage:
       case AssistanceStateEnum.fetched:
         return Colors.grey[400]!;
       case AssistanceStateEnum.error:
         return AppConfig.error;
+      case AssistanceStateEnum.noSub:
       case AssistanceStateEnum.notFetched:
       case AssistanceStateEnum.fetching:
       case AssistanceStateEnum.suggesting:
@@ -33,6 +34,22 @@ enum AssistanceStateEnum {
       case AssistanceStateEnum.igcComplete:
         return AppConfig.success;
     }
+  }
+
+  String tooltip(BuildContext context) {
+    switch (this) {
+      case AssistanceStateEnum.noSub:
+        return L10n.of(context).writingAssistanceNoSub;
+      case AssistanceStateEnum.error:
+        return L10n.of(context).viewError;
+      case AssistanceStateEnum.notFetched:
+      case AssistanceStateEnum.igcComplete:
+      case AssistanceStateEnum.suggesting:
+        L10n.of(context).check;
+      default:
+        return "";
+    }
+    return "";
   }
 
   Color sendButtonColor(BuildContext context) {

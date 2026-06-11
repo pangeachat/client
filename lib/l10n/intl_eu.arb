@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-05-22 12:44:54.057188",
+    "@@last_modified": "2026-06-11 10:21:36.182405",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -3849,7 +3849,6 @@
     "inactive": "Erlaxia",
     "confirmRole": "Berretsi rola",
     "openRoleLabel": "IREKIA",
-    "joinedTheActivity": "👋 {username} {role} bezala batu da",
     "finishedTheActivity": "🎯 {username} jarduera hau amaitu du",
     "activitySummaryError": "Jarduera laburpenak ez daude eskuragarri",
     "requestSummaries": "Eskatu laburpenak",
@@ -3890,7 +3889,7 @@
     "pingParticipants": "Pinga ikastaro parte-hartzaileak",
     "playWithBot": "Jolastu Pangea Bot-ekin",
     "inviteFriends": "Gonbidatu lagunak",
-    "waitNotDone": "Itxaron, ez naiz bukatu!",
+    "waitNotDone": "Itxaron, ez naiz amaitu!",
     "waitingForOthersToFinish": "Itxaron besteek amaitu arte...",
     "generatingSummary": "Txataren analisia eta emaitzak sortzen",
     "findCourse": "Bilatu ikastaroa",
@@ -6657,17 +6656,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8405,22 +8393,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Sarrera Aurkezpen Txata sortu",
-    "introChatDesc": "Espazioan edonork postatu dezake.",
     "announcementsChatTitle": "Iragarki Txata",
-    "announcementsChatDesc": "Espazioaren administratzaileak bakarrik postatu dezake.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8659,11 +8637,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Pangea Bot ahotsa",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9359,20 +9332,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Harpidetu interaktiboa itzulpen eta gramatika egiaztapena, audio erreproduzitzeko, praktika pertsonalizatuak eta ikaskuntza analitikak desblokeatzeko!",
-    "emojiSelectedSnackbar": "Emoji hau ezarri duzu {lemma}rako! Praktika ariketetan hitza irudikatzeko emoji hau erabiliko dugu aurrerantzean.",
     "unlockPracticeActivities": "Desblokeatu praktika ariketak",
     "noAnalyticsActivitiesAvailable": "Wow, eskuragarri dauden jarduera guztiak osatu dituzu! Bidali gehiago mezu gehiago praktika ariketak desblokeatzeko.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9723,7 +9687,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Amaitu ({num})",
-    "suggestion": "Iragarpena",
+    "suggestion": "Hautatu iradokitzailerik onena",
     "completeActivityButton": "Amaitu dut!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9738,6 +9702,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Mesedez, mugatu izenaren luzera 50 karaktere edo gutxiagora.",
+    "enterAName": "Mesedez, sartu izen bat.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Idazteko laguntza",
+    "viewError": "Ikusi errorea",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Lortu Pangea Chat aplikazioa jakinarazpenak jasotzeko!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Ulertu dut!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang}rekin jarraitu",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Mezua historial osoa deskargatzen du, bidaltzailea, bidali den data, jatorrizko mezua, bidalitako mezua eta erabilera mota barne.",
+    "analyticsDownloadDesc": "Hautatutako hizkuntzarako pertsonalizatutako hiztegi eta gramatika analitikak deskargatzen ditu.",
+    "courseAnalyticsDownloadDesc": "Hautatutako hizkuntzan, parte-hartzaile guztientzat partekatutako analitikekin, lema eta gramatika erabilera deskargatzen ditu.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Ikastaro honek zure hizkuntza mailarekin bat dator",
+    "cefrLevelBelow": "Ikastaro honek zure hizkuntza mailatik behera dago.",
+    "cefrLevelAbove": "Ikastaro honek zure hizkuntza mailatik gorakoa da.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot audio mezua ahotsa",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat irudia",
+    "introChatDetails": "Agur esan! Aurkeztu zeure burua ikastaro parte-hartzaileei, aurkitu lagunak, eta jardueren kanpoan hitz egin.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Emoji honek orain \"{word}\" irakaskuntza ariketetan irudikatuko du",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Garatzaile aukera guztiak erakutsi",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Gaitu garatzaile aukerak aplikazioan zehar deskarga analitikak eta informazio xeheko aukerak erakusteko.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Bot-a jardueran sartzeko itxaroten...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Ikastaroaren administratzaileek ikastaro parte-hartzaileentzat iragarkiak sortzeko lekua. Kanal hau ikusi dezaketen arren, administratzaileek bakarrik idatzi dezakete bertan.",
+    "introChatDesc": "Ikastaroan dagoen edonork idatzi dezake.",
+    "announcementsChatDesc": "Ikastaroaren administratzaileek bakarrik idatzi dezakete.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

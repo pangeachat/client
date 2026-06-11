@@ -41,16 +41,13 @@ integration_test/
 
 ## Coverage matrix
 
-| Flow                    | Status | Notes                   |
-| ----------------------- | :----: | ----------------------- |
-| Login                   |   ⬜   |                         |
-| Chat list navigation    |   ⬜   |                         |
-| Message toolbar         |   ⬜   |                         |
-| Course discovery        |   ⬜   |                         |
-| Settings                |   ⬜   |                         |
-| Analytics               |   ⬜   |                         |
-| Create DM               |   ⬜   |                         |
-| Logout                  |   ⬜   |                         |
-| Permission dialogs      |   ⬜   | Native OS — Patrol-only |
-| Push notifications      |   ⬜   | Native OS — Patrol-only |
-| Background / foreground |   ⬜   | Native OS — Patrol-only |
+| Flow                      | Status | Notes                   |
+| -----------------------   | :----: | ----------------------- |
+| Login                     |   ⬜   |                         |
+| Course and chat navigation|   ⬜   |                         |
+| Settings                  |   ⬜   |                         |
+| Analytics                 |   ⬜   |                         |
+| Logout                    |   ⬜   |                         |
+| Permission dialogs        |   ⬜   | Native OS — Patrol-only |
+| Push notifications        |   ⬜   | Native OS — Patrol-only |
+| Background / foreground   |   ⬜   | Native OS — Patrol-only |

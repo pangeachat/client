@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:31.016392",
+    "@@last_modified": "2026-06-11 10:22:40.199990",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -3724,7 +3724,6 @@
     "inactive": "செயலற்றது",
     "confirmRole": "பங்கு உறுதிப்படுத்தவும்",
     "openRoleLabel": "திறந்தது",
-    "joinedTheActivity": "👋 {username} {role} ஆக சேர்ந்தார்",
     "finishedTheActivity": "🎯 {username} இந்த செயல்பாட்டை முடித்தார்",
     "activitySummaryError": "செயல்பாட்டு சுருக்கங்கள் கிடைக்கவில்லை",
     "requestSummaries": "சுருக்கங்களை கோரவும்",
@@ -3765,7 +3764,7 @@
     "pingParticipants": "பாடத்திற்கான பங்கேற்பாளர்களை பிங் செய்க",
     "playWithBot": "பாங்கியா பாட்டுடன் விளையாடு",
     "inviteFriends": "நண்பர்களை அழை",
-    "waitNotDone": "காத்திருக்கவும், நான் முடிக்கவில்லை!",
+    "waitNotDone": "காத்திருங்கள், நான் முடிக்கவில்லை!",
     "waitingForOthersToFinish": "மற்றவர்களும் முடிக்க காத்திருக்கிறது...",
     "generatingSummary": "செயல்பாட்டை பகுப்பாய்வு செய்து முடிவுகளை உருவாக்குகிறது",
     "findCourse": "பாடத்தைக் கண்டுபிடி",
@@ -6545,17 +6544,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8293,22 +8281,12 @@
         "placeholders": {}
     },
     "introChatTitle": "அறிமுக உரையாடல் உருவாக்கவும்",
-    "introChatDesc": "இடத்தில் உள்ள யாரும் பதிவேற்றலாம்.",
     "announcementsChatTitle": "அறிக்கைகள் உரையாடல்",
-    "announcementsChatDesc": "மட்டுமல்லாமல் இட நிர்வாகி பதிவேற்றலாம்.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8547,11 +8525,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "பாஙேஆ பாட்டின் குரல்",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9475,20 +9448,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "இணையதள மொழிபெயர்ப்பு மற்றும் இலக்கண சரிபார்ப்பு, ஒலிப்ப playback, தனிப்பயன் பயிற்சி பயிற்சிகள் மற்றும் கற்றல் பகுப்பாய்வுகளை திறக்க சந்தா செலுத்துங்கள்!",
-    "emojiSelectedSnackbar": "நீங்கள் {lemma} க்கான எமோஜியை அமைத்துள்ளீர்கள்! எதிர்காலத்தில் பயிற்சி பயிற்சிகளில் இந்த எமோஜியை வார்த்தையை பிரதிநிதித்துவப்படுத்த பயன்படுத்துவோம்.",
     "unlockPracticeActivities": "பயிற்சி பயிற்சிகளை திறக்கவும்",
     "noAnalyticsActivitiesAvailable": "வாவ், நீங்கள் அனைத்து கிடைக்கக்கூடிய செயல்பாடுகளை முடித்துவிட்டீர்கள்! மேலும் பயிற்சி பயிற்சிகளை திறக்க மேலும் செய்திகளை அனுப்பவும்.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9839,7 +9803,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "முடிந்தது ({num})",
-    "suggestion": "சூழல்",
+    "suggestion": "சிறந்த பரிந்துரையை தேர்ந்தெடுக்கவும்",
     "completeActivityButton": "நான் முடித்துவிட்டேன்!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9854,6 +9818,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "தயவுசெய்து பெயரின் நீளத்தை 50 எழுத்துகள் அல்லது அதற்கு குறைவாகக் கட்டுப்படுத்தவும்.",
+    "enterAName": "தயவுசெய்து ஒரு பெயரை உள்ளிடவும்.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "எழுத்து உதவி",
+    "viewError": "பிழையை காண்க",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "அறிக்கைகளை பெற Pangea Chat செயலியைப் பெறுங்கள்!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "அது புரிந்தது!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang} உடன் தொடரவும்",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "முழு செய்தி வரலாற்றை, அனுப்புநர், அனுப்பிய தேதி, முதன்மை செய்தி, அனுப்பிய செய்தி மற்றும் பயன்பாட்டு வகையை உள்ளடக்கியது, பதிவிறக்கம் செய்கிறது.",
+    "analyticsDownloadDesc": "தேர்ந்தெடுக்கப்பட்ட மொழிக்கான தனிப்பட்ட சொல்வழி மற்றும் இலக்கண பகுப்பாய்வுகளை பதிவிறக்கம் செய்கிறது.",
+    "courseAnalyticsDownloadDesc": "பங்கிடப்பட்ட பகுப்பாய்வுகளுடன் அனைத்து பாடநெறி பங்கேற்பாளர்களுக்கான தேர்ந்தெடுக்கப்பட்ட மொழியில் லெம்மா மற்றும் இலக்கண பயன்பாட்டைப் பதிவிறக்கம் செய்கிறது.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "இந்த பாடநெறி உங்கள் மொழி நிலைக்கு பொருந்துகிறது",
+    "cefrLevelBelow": "இந்த பாடநெறி உங்கள் மொழி நிலைக்கு கீழே உள்ளது.",
+    "cefrLevelAbove": "இந்த பாடநெறி உங்கள் மொழி நிலைக்கு மேலே உள்ளது.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "பாஙேஆ பாட்டின் ஒலி செய்தி குரல்",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "பாஙேஆ சாட் லோகோ",
+    "introChatDetails": "வணக்கம் சொல்லுங்கள்! உங்கள் சக பாடநெறி பங்கேற்பாளர்களுக்கு உங்களை அறிமுகப்படுத்துங்கள், நண்பர்களை கண்டுபிடிக்கவும், செயல்பாடுகளுக்கு வெளியே உரையாடவும்.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "இந்த எமோஜி இப்போது \"{word}\" என்றால் பயிற்சி பயிற்சிகளில் பிரதிநிதித்துவம் செய்யும்",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "உருவாக்குநர் விருப்பங்களை காட்டு",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "அப்ளிகேஷனில் பதிவிறக்கம் பகுப்பாய்வுகள் மற்றும் விரிவான தகவல் விருப்பங்களை காண developer விருப்பங்களை இயக்கவும்.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "போட்டுக்கு இணைவதற்காக காத்திருக்கிறேன்...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "பாடம் நிர்வாகிகள் பாடம் பங்கேற்பாளர்களுக்கான அறிவிப்புகளை உருவாக்கும் இடம். இந்த சேனலை அனைவரும் காணலாம், ஆனால் அதில் எழுதுவதற்கு மட்டும் நிர்வாகிகள் அனுமதிக்கப்படுகிறார்கள்.",
+    "introChatDesc": "பாடத்தில் உள்ள யாரும் பதிவேற்றலாம்.",
+    "announcementsChatDesc": "மட்டுமே பாடம் நிர்வாகிகள் பதிவேற்றலாம்.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

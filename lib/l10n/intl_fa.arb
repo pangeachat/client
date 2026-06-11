@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:37.168035",
+    "@@last_modified": "2026-06-11 10:22:48.835374",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -3723,7 +3723,6 @@
     "inactive": "غیرفعال",
     "confirmRole": "تایید نقش",
     "openRoleLabel": "باز",
-    "joinedTheActivity": "👋 {username} به عنوان {role} پیوست",
     "finishedTheActivity": "🎯 {username} این فعالیت را پایان داد",
     "activitySummaryError": "خلاصه فعالیت‌ها در دسترس نیست",
     "requestSummaries": "درخواست خلاصه‌ها",
@@ -3764,7 +3763,7 @@
     "pingParticipants": "ارسال پیام به شرکت‌کنندگان دوره",
     "playWithBot": "بازی با پنگئا بات",
     "inviteFriends": "دعوت دوستان",
-    "waitNotDone": "صبر کن، من تمام نکردم!",
+    "waitNotDone": "صبر کن، من هنوز تمام نکرده‌ام!",
     "waitingForOthersToFinish": "در انتظار پایان دیگران...",
     "generatingSummary": "در حال تحلیل چت و تولید نتایج",
     "findCourse": "پیدا کردن دوره",
@@ -6536,17 +6535,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8284,22 +8272,12 @@
         "placeholders": {}
     },
     "introChatTitle": "ایجاد چت معرفی",
-    "introChatDesc": "هر کسی در این فضا می‌تواند پست کند.",
     "announcementsChatTitle": "چت اعلامیه‌ها",
-    "announcementsChatDesc": "فقط مدیر فضا می‌تواند پست کند.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8538,11 +8516,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "صدای ربات پانژیا",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9471,20 +9444,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "برای دسترسی به ترجمه تعاملی و بررسی گرامر، پخش صوتی، تمرینات شخصی‌سازی شده و تجزیه و تحلیل یادگیری، مشترک شوید!",
-    "emojiSelectedSnackbar": "شما ایموجی را برای {lemma} تنظیم کرده‌اید! ما از این ایموجی برای نمایش کلمه در تمرینات آینده استفاده خواهیم کرد.",
     "unlockPracticeActivities": "دسترسی به تمرینات را باز کنید",
     "noAnalyticsActivitiesAvailable": "وای، شما تمام فعالیت‌های موجود را کامل کرده‌اید! پیام‌های بیشتری ارسال کنید تا تمرینات بیشتری را باز کنید.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9835,7 +9799,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "تمام شده ({num})",
-    "suggestion": "پیشنهاد",
+    "suggestion": "بهترین پیشنهاد را انتخاب کنید",
     "completeActivityButton": "من تمام کردم!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9850,6 +9814,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "لطفاً طول نام را به ۵۰ کاراکتر یا کمتر محدود کنید.",
+    "enterAName": "لطفاً یک نام وارد کنید.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "کمک نوشتن",
+    "viewError": "مشاهده خطا",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "برنامه چت پانگئا را دریافت کنید تا اعلان‌ها را دریافت کنید!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "متوجه شدم!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "ادامه با {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "تاریخچه کامل پیام‌ها را دانلود می‌کند، از جمله فرستنده، تاریخ ارسال، پیام اصلی، پیام ارسال شده و نوع استفاده.",
+    "analyticsDownloadDesc": "تحلیل‌های شخصی واژگان و گرامر را برای زبان انتخاب شده دانلود می‌کند.",
+    "courseAnalyticsDownloadDesc": "استعمال لِمّا و گرامر را در زبان انتخاب شده برای تمام شرکت‌کنندگان دوره با تحلیل‌های مشترک دانلود می‌کند.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "این دوره با سطح زبان شما مطابقت دارد",
+    "cefrLevelBelow": "این دوره زیر سطح زبان شما است.",
+    "cefrLevelAbove": "این دوره بالاتر از سطح زبان شما است.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "صدای پیام صوتی ربات پانژیا",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "لوگوی چت پانگه‌آ",
+    "introChatDetails": "سلام بگویید! خود را به سایر شرکت‌کنندگان دوره معرفی کنید، دوستانی پیدا کنید و خارج از فعالیت‌ها چت کنید.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "این ایموجی اکنون نمایانگر \"{word}\" در تمرینات عملی خواهد بود",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "نمایش گزینه‌های توسعه‌دهنده",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "گزینه‌های توسعه‌دهنده را فعال کنید تا تجزیه و تحلیل دانلود و گزینه‌های اطلاعات دقیق در سراسر برنامه نمایش داده شود.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "در حال انتظار برای پیوستن ربات...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "محلی برای مدیران دوره تا اعلامیه‌هایی برای شرکت‌کنندگان دوره ایجاد کنند. در حالی که همه می‌توانند این کانال را مشاهده کنند، تنها مدیران می‌توانند در آن تایپ کنند.",
+    "introChatDesc": "هر کسی در دوره می‌تواند پست بگذارد.",
+    "announcementsChatDesc": "فقط مدیران دوره می‌توانند پست بگذارند.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

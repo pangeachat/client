@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:35.666618",
+    "@@last_modified": "2026-06-11 10:22:47.276584",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -3287,7 +3287,6 @@
     "inactive": "অচল",
     "confirmRole": "ভূমিকা নিশ্চিত করুন",
     "openRoleLabel": "খোলা",
-    "joinedTheActivity": "👋 {username} {role} হিসেবে যোগ দিয়েছেন",
     "finishedTheActivity": "🎯 {username} এই কার্যক্রম শেষ করেছেন",
     "activitySummaryError": "কার্যক্রমের সারাংশ উপলব্ধ নয়",
     "requestSummaries": "সারাংশের জন্য অনুরোধ করুন",
@@ -3328,7 +3327,7 @@
     "pingParticipants": "কোর্সের অংশগ্রহণকারীদের পিং করুন",
     "playWithBot": "পাঙ্গিয়া বটের সাথে খেলুন",
     "inviteFriends": "বন্ধুদের আমন্ত্রণ জানান",
-    "waitNotDone": "অপেক্ষা করুন আমি শেষ করিনি!",
+    "waitNotDone": "অপেক্ষা করুন, আমি শেষ করিনি!",
     "waitingForOthersToFinish": "অন্যদের শেষ করার জন্য অপেক্ষা করছি...",
     "generatingSummary": "চ্যাট বিশ্লেষণ এবং ফলাফল তৈরি করা হচ্ছে",
     "findCourse": "একটি কোর্স খুঁজুন",
@@ -7134,17 +7133,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8882,22 +8870,12 @@
         "placeholders": {}
     },
     "introChatTitle": "পরিচয় চ্যাট তৈরি করুন",
-    "introChatDesc": "স্পেসের যে কেউ পোস্ট করতে পারে।",
     "announcementsChatTitle": "ঘোষণার চ্যাট",
-    "announcementsChatDesc": "শুধুমাত্র স্পেস প্রশাসক পোস্ট করতে পারে।",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9136,11 +9114,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "প্যাঙ্গিয়া বটের কণ্ঠ",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10074,20 +10047,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "ইন্টারেক্টিভ অনুবাদ এবং ব্যাকরণ পরীক্ষা, অডিও প্লেব্যাক, ব্যক্তিগত অনুশীলন কার্যক্রম এবং শেখার বিশ্লেষণ আনলক করতে সাবস্ক্রাইব করুন!",
-    "emojiSelectedSnackbar": "আপনি {lemma} এর জন্য ইমোজি সেট করেছেন! আমরা ভবিষ্যতে অনুশীলন কার্যক্রমে এই ইমোজিটি শব্দটি উপস্থাপন করতে ব্যবহার করব।",
     "unlockPracticeActivities": "অনুশীলন কার্যক্রম আনলক করুন",
     "noAnalyticsActivitiesAvailable": "ওয়াও, আপনি সমস্ত উপলব্ধ কার্যক্রম সম্পন্ন করেছেন! আরও অনুশীলন কার্যক্রম আনলক করতে আরও বার্তা পাঠান।",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10438,7 +10402,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "সম্পন্ন ({num})",
-    "suggestion": "প্রস্তাবনা",
+    "suggestion": "সেরা পরামর্শটি বেছে নিন",
     "completeActivityButton": "আমি শেষ করেছি!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10453,6 +10417,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "দয়া করে নামের দৈর্ঘ্য 50 অক্ষর বা তার কমে সীমাবদ্ধ করুন।",
+    "enterAName": "দয়া করে একটি নাম লিখুন।",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "লেখার সহায়তা",
+    "viewError": "ত্রুটি দেখুন",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "নোটিফিকেশন পেতে Pangea Chat অ্যাপটি ডাউনলোড করুন!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "বুঝেছি!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang} এর সাথে চালিয়ে যান",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "পূর্ণ বার্তা ইতিহাস ডাউনলোড করে, প্রেরক, পাঠানোর তারিখ, মূল বার্তা, পাঠানো বার্তা এবং ব্যবহার প্রকার সহ।",
+    "analyticsDownloadDesc": "নির্বাচিত ভাষার জন্য ব্যক্তিগত শব্দভাণ্ডার এবং ব্যাকরণ বিশ্লেষণ ডাউনলোড করে।",
+    "courseAnalyticsDownloadDesc": "নির্বাচিত ভাষায় সমস্ত কোর্স অংশগ্রহণকারীদের জন্য শেয়ার করা বিশ্লেষণের সাথে লেমা এবং ব্যাকরণ ব্যবহারের ডাউনলোড করে।",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "এই কোর্স আপনার ভাষার স্তরের সাথে মেলে",
+    "cefrLevelBelow": "এই কোর্স আপনার ভাষার স্তরের নিচে।",
+    "cefrLevelAbove": "এই কোর্স আপনার ভাষার স্তরের উপরে।",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "প্যাঙ্গিয়া বট অডিও বার্তার কণ্ঠ",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "প্যাঙ্গিয়া চ্যাট লোগো",
+    "introChatDetails": "হ্যালো বলুন! আপনার সহপাঠীদের সাথে পরিচয় করিয়ে দিন, বন্ধু খুঁজুন, এবং কার্যক্রমের বাইরে চ্যাট করুন।",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "এই ইমোজিটি এখন \"{word}\" এর প্রতিনিধিত্ব করবে অনুশীলন কার্যক্রমে",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "ডেভেলপার অপশনগুলি দেখান",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "ডেভেলপার অপশন চালু করুন যাতে অ্যাপের মধ্যে ডাউনলোড বিশ্লেষণ এবং বিস্তারিত তথ্য অপশনগুলি দেখানো হয়।",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "বটের যোগদানের জন্য অপেক্ষা করা হচ্ছে...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "কোর্স প্রশাসকদের জন্য একটি স্থান যেখানে তারা কোর্স অংশগ্রহণকারীদের জন্য ঘোষণা তৈরি করতে পারেন। যদিও সবাই এই চ্যানেলটি দেখতে পারে, কেবল প্রশাসকরাই এতে টাইপ করতে পারেন।",
+    "introChatDesc": "কোর্সে যে কেউ পোস্ট করতে পারে।",
+    "announcementsChatDesc": "শুধুমাত্র কোর্স প্রশাসকরা পোস্ট করতে পারেন।",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

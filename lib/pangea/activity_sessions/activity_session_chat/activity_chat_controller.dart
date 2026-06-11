@@ -19,6 +19,7 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -121,6 +122,12 @@ class ActivityChatController {
     }
   }
 
+  void setShowDropdown(bool value) {
+    if (!_disposed) {
+      showActivityDropdown.value = value;
+    }
+  }
+
   void toggleShowDropdown() {
     if (!_disposed) {
       showActivityDropdown.value = !showActivityDropdown.value;
@@ -135,25 +142,32 @@ class ActivityChatController {
   }
 
   Future<void> _updateUsedVocab() async {
-    try {
-      final analytics = await getActivityAnalytics();
-      if (!_disposed) {
-        usedVocab.value =
-            analytics.constructs[userID]
-                ?.constructsOfType(ConstructTypeEnum.vocab)
-                .map((id) => id.lemma.toLowerCase())
-                .toSet() ??
-            {};
+    final vocab = room.activityPlan?.vocab;
+    if (vocab == null || _disposed) return;
+
+    final vocabLemmas = vocab.map((v) => v.lemma.toLowerCase()).toSet();
+    final used = <String>{};
+
+    final timeline = await room.getTimeline();
+    await timeline.requestHistory();
+
+    for (final event in timeline.events) {
+      if (event.type != EventTypes.Message) continue;
+      final uses = PangeaMessageEvent(
+        event: event,
+        timeline: timeline,
+        ownMessage: event.senderId == userID,
+      ).originalSent?.vocabAndMorphUses;
+      if (uses == null) continue;
+      for (final use in uses) {
+        if (use.identifier.type == ConstructTypeEnum.vocab) {
+          final lemma = use.identifier.lemma.toLowerCase();
+          if (vocabLemmas.contains(lemma)) used.add(lemma);
+        }
       }
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "message": "Failed to update used vocab in ActivityChatController",
-        },
-      );
     }
+
+    usedVocab.value = used;
   }
 
   Future<ActivitySummaryAnalyticsModel> getActivityAnalytics() async {

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:44:44.024829",
+    "@@last_modified": "2026-06-11 10:21:19.420261",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -3211,7 +3211,6 @@
     "inactive": "Inactiv",
     "confirmRole": "Confirmă rolul",
     "openRoleLabel": "DESCHIS",
-    "joinedTheActivity": "👋 {username} s-a alăturat ca {role}",
     "finishedTheActivity": "🎯 {username} a încheiat această activitate",
     "activitySummaryError": "Rezumatul activităților indisponibil",
     "requestSummaries": "Solicită rezumate",
@@ -7244,17 +7243,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8992,22 +8980,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Creează chat de introduceri",
-    "introChatDesc": "Oricine din spațiu poate posta.",
     "announcementsChatTitle": "Chat de anunțuri",
-    "announcementsChatDesc": "Numai administratorul spațiului poate posta.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9246,11 +9224,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Vocea Pangea Bot",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10184,20 +10157,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Abonează-te pentru a debloca traducerea interactivă și verificarea gramaticii, redarea audio, exerciții de practică personalizate și analize de învățare!",
-    "emojiSelectedSnackbar": "Ai setat emoji-ul pentru {lemma}! Vom folosi acest emoji pentru a reprezenta cuvântul în exercițiile de practică de acum înainte.",
     "unlockPracticeActivities": "Deblochează exercițiile de practică",
     "noAnalyticsActivitiesAvailable": "Wow, ai completat toate activitățile disponibile! Trimite mai multe mesaje pentru a debloca mai multe exerciții de practică.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10548,7 +10512,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Finalizat ({num})",
-    "suggestion": "Sugestie",
+    "suggestion": "Alege cea mai bună sugestie",
     "completeActivityButton": "Am terminat!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10563,6 +10527,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Vă rugăm să limitați lungimea numelui la 50 de caractere sau mai puțin.",
+    "enterAName": "Vă rugăm să introduceți un nume.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Asistență pentru scriere",
+    "viewError": "Vizualizați eroarea",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Obține aplicația Pangea Chat pentru a primi notificări!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Am înțeles!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Continuați cu {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Descarcă întreaga istorie a mesajelor, inclusiv expeditorul, data trimiterii, mesajul original, mesajul trimis și tipul de utilizare.",
+    "analyticsDownloadDesc": "Descarcă analiza personală a vocabularului și gramaticii pentru limba selectată.",
+    "courseAnalyticsDownloadDesc": "Descarcă utilizarea lemei și gramaticii în limba selectată pentru toți participanții la curs cu analize partajate.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Acest curs se potrivește cu nivelul tău de limbă",
+    "cefrLevelBelow": "Acest curs este sub nivelul tău de limbă.",
+    "cefrLevelAbove": "Acest curs este peste nivelul tău de limbă.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Vocea mesajului audio al Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logo Pangea Chat",
+    "introChatDetails": "Spune salut! Prezintă-te colegilor tăi participanți la curs, găsește prieteni și discută în afara activităților.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Acest emoji va reprezenta acum \"{word}\" în exercițiile practice",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Afișați opțiunile pentru dezvoltatori",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Activați opțiunile pentru dezvoltatori pentru a afișa analizele de descărcare și opțiunile de informații detaliate în întreaga aplicație.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Așteptând ca botul să se alăture...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Un loc pentru administratorii cursului de a crea anunțuri pentru participanții la curs. Deși toți pot vizualiza acest canal, doar administratorii pot scrie în el.",
+    "introChatDesc": "Oricine din curs poate posta.",
+    "announcementsChatDesc": "Numai administratorii cursului pot posta.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:45.669543",
+    "@@last_modified": "2026-06-11 10:23:02.617126",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -2966,7 +2966,6 @@
     "inactive": "Nekonata",
     "confirmRole": "Konfirmu rolon",
     "openRoleLabel": "Malfermita",
-    "joinedTheActivity": "👋 {username} aliĝis kiel {role}",
     "finishedTheActivity": "🎯 {username} finis ĉi tiun agadon",
     "activitySummaryError": "Aktivitatresumoj ne disponeblas",
     "requestSummaries": "Petaj resumoj",
@@ -3007,7 +3006,7 @@
     "pingParticipants": "Pingi partoprenantojn de la kurso",
     "playWithBot": "Ludi kun Pangea Bot",
     "inviteFriends": "Inviti amikojn",
-    "waitNotDone": "Atendu, mi ne finis!",
+    "waitNotDone": "Atendu, mi ne finisis!",
     "waitingForOthersToFinish": "Atendas la aliajn finiĝi...",
     "generatingSummary": "Analizante babiladon kaj generante rezultojn",
     "findCourse": "Trovu kurson",
@@ -7538,17 +7537,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -9286,22 +9274,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Krei Enkondukan Ĉaton",
-    "introChatDesc": "Ĉiu en la spaco povas afiŝi.",
     "announcementsChatTitle": "Afiŝoj Ĉato",
-    "announcementsChatDesc": "Nur la administranto de la spaco povas afiŝi.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9540,11 +9518,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Voĉo de Pangea Bot",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10478,20 +10451,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Abonu por malŝlosi interagajn tradukojn kaj gramatikajn kontroladojn, sonan ludon, personigitajn praktikajn ekzercojn, kaj lernan analitikon!",
-    "emojiSelectedSnackbar": "Vi agordis la emoji por {lemma}! Ni uzos ĉi tiun emoji por reprezenti la vorton en praktikaj ekzercoj en la estonteco.",
     "unlockPracticeActivities": "Malŝlosi praktikajn ekzercojn",
     "noAnalyticsActivitiesAvailable": "Ve, vi kompletigis ĉiujn disponeblajn aktivadojn! Sendu pli da mesaĝoj por malŝlosi pli da praktikaj ekzercoj.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10842,8 +10806,8 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Finiĝis ({num})",
-    "suggestion": "Sugesto",
-    "completeActivityButton": "Mi finis!",
+    "suggestion": "Elektu la plej bonan Suggestion",
+    "completeActivityButton": "Mi finas!",
     "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
@@ -10857,6 +10821,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Bonvolu limigi la longon de la nomo al 50 signoj aŭ malpli.",
+    "enterAName": "Bonvolu enigi nomon.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Skribado helpo",
+    "viewError": "Vidi eraron",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Akiru la Pangea Chat-aplikaĵon por ricevi notifikojn!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Komprenite!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Daŭrigi kun {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Elŝutas la plenan mesaĝhistorion, inkluzive la sendanton, daton senditan, originalan mesaĝon, senditan mesaĝon, kaj uzotipon.",
+    "analyticsDownloadDesc": "Elŝutas personajn vortaron kaj gramatikajn analitikojn por la elektita lingvo.",
+    "courseAnalyticsDownloadDesc": "Elŝutas la lema kaj gramatika uzado en la elektita lingvo por ĉiuj kurso-partoprenantoj kun dividitaj analitiko.",
+    "cefrLevelMatch": "Ĉi tiu kurso kongruas kun via lingvonivelo",
+    "cefrLevelBelow": "Ĉi tiu kurso estas sub via lingvonivelo.",
+    "cefrLevelAbove": "Ĉi tiu kurso estas super via lingvonivelo.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Voĉo de Pangea Bot por aŭdmesaĝo",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Ĉatlogo",
+    "introChatDetails": "Diru saluton! Enkonduku vin al viaj samkursanoj, trovu amikojn, kaj babbadu ekster aktivadoj.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Ĉi tiu emoji nun reprezentos \"{word}\" en praktikaj ekzercoj",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Montri evoluiga opciojn",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Ŝaltu la opciojn por disvolvantoj por montri elŝutanalizojn kaj detalan informon pri opcioj tra la aplikaĵo.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Atendante ke la roboto aliĝu...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Loko por kursaj administrantoj por krei anoncojn por kursaj partoprenantoj. Dum ĉiuj povas vidi ĉi tiun kanalon, nur administrantoj povas skribi en ĝi.",
+    "introChatDesc": "Ĉiu en la kurso povas afiŝi.",
+    "announcementsChatDesc": "Nur kursaj administrantoj povas afiŝi.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-05-22 12:45:42.084329",
+    "@@last_modified": "2026-06-11 10:22:59.480581",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -3135,7 +3135,6 @@
     "inactive": "非アクティブ",
     "confirmRole": "役割を確認",
     "openRoleLabel": "開く",
-    "joinedTheActivity": "👋 {username} が {role} として参加しました",
     "finishedTheActivity": "🏆 {username} がこの活動を終了しました",
     "activitySummaryError": "活動の概要を利用できません",
     "requestSummaries": "概要をリクエスト",
@@ -3176,7 +3175,7 @@
     "pingParticipants": "コース参加者に通知",
     "playWithBot": "Pangea Botと遊ぶ",
     "inviteFriends": "友達を招待",
-    "waitNotDone": "待って、まだ終わっていません！",
+    "waitNotDone": "待って、私はまだ終わっていません！",
     "waitingForOthersToFinish": "他の人が終わるのを待っています...",
     "generatingSummary": "チャットを分析して結果を生成しています",
     "findCourse": "コースを見つける",
@@ -7287,17 +7286,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -9035,22 +9023,12 @@
         "placeholders": {}
     },
     "introChatTitle": "紹介チャットを作成",
-    "introChatDesc": "スペース内の誰でも投稿できます。",
     "announcementsChatTitle": "お知らせチャット",
-    "announcementsChatDesc": "スペースの管理者のみが投稿できます。",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9289,11 +9267,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "パンゲアボットの声",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10227,20 +10200,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "インタラクティブな翻訳と文法チェック、音声再生、パーソナライズされた練習問題、学習分析をアンロックするために購読してください！",
-    "emojiSelectedSnackbar": "{lemma}の絵文字を設定しました！今後の練習問題ではこの絵文字を使用します。",
     "unlockPracticeActivities": "練習問題をアンロックする",
     "noAnalyticsActivitiesAvailable": "わあ、すべての利用可能なアクティビティを完了しました！さらにメッセージを送信して、もっと練習問題をアンロックしてください。",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10591,7 +10555,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "完了しました ({num})",
-    "suggestion": "提案",
+    "suggestion": "最適な提案を選んでください",
     "completeActivityButton": "完了しました！",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10606,6 +10570,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "名前の長さを50文字以内に制限してください。",
+    "enterAName": "名前を入力してください。",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "ライティングアシスタンス",
+    "viewError": "エラーを表示",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Pangea Chatアプリをダウンロードして通知を受け取りましょう！",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "わかりました！",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang} で続行",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "送信者、送信日時、元のメッセージ、送信されたメッセージ、使用タイプを含む完全なメッセージ履歴をダウンロードします。",
+    "analyticsDownloadDesc": "選択した言語の個人の語彙と文法分析をダウンロードします。",
+    "courseAnalyticsDownloadDesc": "共有分析を持つすべてのコース参加者のために、選択した言語のレマと文法使用をダウンロードします。",
+    "cefrLevelMatch": "このコースはあなたの言語レベルに合っています",
+    "cefrLevelBelow": "このコースはあなたの言語レベルよりも低いです。",
+    "cefrLevelAbove": "このコースはあなたの言語レベルよりも高いです。",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "パンゲアボットの音声メッセージの声",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "パングリアチャットロゴ",
+    "introChatDetails": "こんにちは！コース参加者の皆さんに自己紹介をし、友達を見つけ、活動の外でチャットしましょう。",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "この絵文字は、今後の練習問題で「{word}」を表します",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "開発者オプションを表示",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "開発者オプションをオンにして、アプリ全体でダウンロード分析や詳細情報オプションを表示します。",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "ボットが参加するのを待っています...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "コース管理者がコース参加者のためにアナウンスを作成する場所です。すべての人がこのチャンネルを閲覧できますが、入力できるのは管理者のみです。",
+    "introChatDesc": "コース内の誰でも投稿できます。",
+    "announcementsChatDesc": "コース管理者のみが投稿できます。",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

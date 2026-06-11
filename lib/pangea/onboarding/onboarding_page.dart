@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/onboarding/account_updater.dart';
 import 'package:fluffychat/pangea/onboarding/avatar_provider.dart';
 import 'package:fluffychat/pangea/onboarding/course_provider.dart';
+import 'package:fluffychat/pangea/onboarding/onboarding_navigation_button_state.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_navigation_controller.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_navigation_result.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_state_controller.dart';
-import 'package:fluffychat/pangea/onboarding/onboarding_step_skip_button.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_step_views/onboarding_step_view.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
@@ -30,7 +29,10 @@ class OnboardingController extends State<Onboarding> {
   late final ValueNotifier<OnboardingStep> _step;
   final ValueNotifier<bool> _loading = ValueNotifier(false);
   final ValueNotifier<Object?> _error = ValueNotifier(null);
-  final ValueNotifier<bool> _enableNext = ValueNotifier(false);
+  final ValueNotifier<OnboardingNavigationButtonState>
+  _navigationButtonNotifier = ValueNotifier(
+    OnboardingNavigationButtonState(enabled: false, target: null),
+  );
 
   @override
   void initState() {
@@ -47,9 +49,10 @@ class OnboardingController extends State<Onboarding> {
       state: _state,
       maxRemainingSteps: 5,
     );
+
     _step = ValueNotifier(initialStep);
     _navigation = OnboardingNavigationController(initialStep: initialStep);
-    _updateEnableNext();
+    _updateNavigationButton();
   }
 
   @override
@@ -57,11 +60,15 @@ class OnboardingController extends State<Onboarding> {
     _step.dispose();
     _loading.dispose();
     _error.dispose();
-    _enableNext.dispose();
+    _navigationButtonNotifier.dispose();
     super.dispose();
   }
 
-  void _updateEnableNext() => _enableNext.value = _step.value.enableGoForward;
+  void _updateNavigationButton() =>
+      _navigationButtonNotifier.value = OnboardingNavigationButtonState(
+        enabled: _step.value.enableGoForward,
+        target: _state.targetLanguage,
+      );
 
   Future<void> _forward() async {
     _loading.value = true;
@@ -86,14 +93,13 @@ class OnboardingController extends State<Onboarding> {
     }
 
     if (mounted) {
-      _updateEnableNext();
+      _updateNavigationButton();
       _loading.value = false;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -127,72 +133,19 @@ class OnboardingController extends State<Onboarding> {
           child: Container(
             width: 350.0,
             padding: EdgeInsets.symmetric(vertical: 48.0),
-            child: Column(
-              spacing: 32.0,
-              children: [
-                Expanded(
-                  child: Center(
-                    child: ListenableBuilder(
-                      listenable: Listenable.merge([_step, _error]),
-                      builder: (context, _) => OnboardingStepView(
-                        step: _step.value,
-                        updateEnableNext: _updateEnableNext,
-                        error: _error.value,
-                      ),
-                    ),
-                  ),
-                ),
-                ValueListenableBuilder(
-                  valueListenable: _step,
-                  builder: (context, step, _) => Column(
-                    spacing: 12.0,
-                    children: [
-                      if (step.enableSkip)
-                        OnboardingStepSkipButton(step: step, onPressed: _skip),
-                      ValueListenableBuilder(
-                        valueListenable: _enableNext,
-                        builder: (context, enableNext, child) => ElevatedButton(
-                          onPressed: enableNext ? _forward : null,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: theme.colorScheme.primaryContainer,
-                            foregroundColor:
-                                theme.colorScheme.onPrimaryContainer,
-                            minimumSize: const Size.fromHeight(48),
-                          ),
-                          child: SizedBox(
-                            height: 24,
-                            child: Center(
-                              child: ValueListenableBuilder(
-                                valueListenable: _loading,
-                                builder: (context, loading, _) =>
-                                    AnimatedSwitcher(
-                                      duration: const Duration(
-                                        milliseconds: 200,
-                                      ),
-                                      child: loading
-                                          ? SizedBox(
-                                              key: const ValueKey('loading'),
-                                              width: double.infinity,
-                                              child:
-                                                  const LinearProgressIndicator(),
-                                            )
-                                          : Text(
-                                              _navigation.hasNextStep
-                                                  ? L10n.of(context).next
-                                                  : L10n.of(context).letsGo,
-                                              key: const ValueKey('text'),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                    ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+            child: ListenableBuilder(
+              listenable: Listenable.merge([_step, _error, _loading]),
+              builder: (context, _) {
+                return OnboardingStepView(
+                  step: _step.value,
+                  updateNavigationButton: _updateNavigationButton,
+                  error: _error.value,
+                  loading: _loading.value,
+                  hasNextStep: _navigation.hasNextStep,
+                  forward: _forward,
+                  skip: _skip,
+                );
+              },
             ),
           ),
         ),

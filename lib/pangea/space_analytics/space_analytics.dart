@@ -5,6 +5,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_downloads/space_analytics_summary_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/saved_analytics_extension.dart';
@@ -71,10 +72,12 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
       .whereType<Room>()
       .toList();
 
-  List<LanguageModel> get availableLanguages => _langsToUsers.keys.toList()
-    ..sort(
-      (a, b) => a.getDisplayName(context).compareTo(b.getDisplayName(context)),
-    );
+  List<LanguageModel> get availableLanguages =>
+      _langsToUsers.keys.toList()..sort(
+        (a, b) => a
+            .getDisplayName(L10n.of(context))
+            .compareTo(b.getDisplayName(L10n.of(context))),
+      );
 
   int get completedDownloads =>
       downloads.values.where((d) => d.summary != null).length;

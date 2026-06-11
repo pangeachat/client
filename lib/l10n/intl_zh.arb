@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-05-22 12:45:34.488586",
+    "@@last_modified": "2026-06-11 10:22:44.758053",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -3849,7 +3849,6 @@
     "inactive": "不活跃",
     "confirmRole": "确认角色",
     "openRoleLabel": "开放",
-    "joinedTheActivity": "👋 {username} 作为 {role} 加入",
     "finishedTheActivity": "🎯 {username} 完成了此次活动",
     "activitySummaryError": "无法获取活动总结",
     "requestSummaries": "请求总结",
@@ -6657,17 +6656,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8405,22 +8393,12 @@
         "placeholders": {}
     },
     "introChatTitle": "创建介绍聊天",
-    "introChatDesc": "空间中的任何人都可以发布。",
     "announcementsChatTitle": "公告聊天",
-    "announcementsChatDesc": "只有空间管理员可以发布。",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8659,11 +8637,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "潘吉亚机器人声音",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9359,20 +9332,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "订阅以解锁互动翻译和语法检查、音频播放、个性化练习和学习分析！",
-    "emojiSelectedSnackbar": "您已为 {lemma} 设置了表情符号！我们将使用此表情符号在今后的练习中表示该词。",
     "unlockPracticeActivities": "解锁练习活动",
     "noAnalyticsActivitiesAvailable": "哇，您已完成所有可用活动！发送更多消息以解锁更多练习。",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9723,7 +9687,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "已完成 ({num})",
-    "suggestion": "建议",
+    "suggestion": "选择最佳建议",
     "completeActivityButton": "我完成了！",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9738,6 +9702,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "请将名称长度限制为50个字符或更少。",
+    "enterAName": "请输入一个名称。",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "写作辅助",
+    "viewError": "查看错误",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "获取 Pangea Chat 应用以接收通知！",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "明白了！",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "继续使用 {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "下载完整的消息历史，包括发件人、发送日期、原始消息、发送的消息和使用类型。",
+    "analyticsDownloadDesc": "下载所选语言的个人词汇和语法分析。",
+    "courseAnalyticsDownloadDesc": "下载所有课程参与者的词元和语法使用情况，适用于共享分析的所选语言。",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "该课程与您的语言水平相匹配",
+    "cefrLevelBelow": "该课程低于您的语言水平。",
+    "cefrLevelAbove": "该课程高于您的语言水平。",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot 音频消息语音",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat 标志",
+    "introChatDetails": "打个招呼！向你的同学介绍自己，寻找朋友，并在活动之外聊天。",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "这个表情符号现在将在练习中代表 \"{word}\"",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "显示开发者选项",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "开启开发者选项以在应用程序中显示下载分析和详细信息选项。",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "等待机器人加入...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "课程管理员创建公告给课程参与者的地方。虽然所有人都可以查看这个频道，但只有管理员可以在其中输入。",
+    "introChatDesc": "课程中的任何人都可以发布。",
+    "announcementsChatDesc": "只有课程管理员可以发布。",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

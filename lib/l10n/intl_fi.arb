@@ -3819,7 +3819,6 @@
     "inactive": "Ei aktiivinen",
     "confirmRole": "Vahvista rooli",
     "openRoleLabel": "AVOIN",
-    "joinedTheActivity": "👋 {username} liittyi roolilla {role}",
     "finishedTheActivity": "🎯 {username} saatteli aktiviteetin päätökseen",
     "activitySummaryError": "Aktiviteettien yhteenvetoja ei saatavilla",
     "requestSummaries": "Pyydä yhteenvetoja",
@@ -3860,7 +3859,7 @@
     "pingParticipants": "Pingaa kurssin osallistujia",
     "playWithBot": "Leiki Pangea-botin kanssa",
     "inviteFriends": "Kutsu ystäviä",
-    "waitNotDone": "Odotan, en ole valmis!",
+    "waitNotDone": "Odota, en ole vielä valmis!",
     "waitingForOthersToFinish": "Odotetaan muiden valmistumista...",
     "generatingSummary": "Analysoidaan keskustelua ja luodaan tuloksia",
     "findCourse": "Etsi kurssi",
@@ -3914,7 +3913,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-05-22 12:44:37.265423",
+    "@@last_modified": "2026-06-11 10:21:12.558379",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -6637,17 +6636,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8385,22 +8373,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Luo esittelykeskustelu",
-    "introChatDesc": "Kuka tahansa tilassa voi julkaista.",
     "announcementsChatTitle": "Ilmoitukset keskustelu",
-    "announcementsChatDesc": "Vain tilan ylläpitäjä voi julkaista.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8639,11 +8617,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Pangea Botin ääni",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9408,20 +9381,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Tilaa avatakseen interaktiivisen käännöksen ja kieliopin tarkistuksen, äänentoiston, henkilökohtaiset harjoitustehtävät ja oppimisanalytiikan!",
-    "emojiSelectedSnackbar": "Olet asettanut emojin {lemma}! Käytämme tätä emojia edustamaan sanaa harjoitustehtävissä jatkossa.",
     "unlockPracticeActivities": "Avaa harjoitustehtävät",
     "noAnalyticsActivitiesAvailable": "Vau, olet suorittanut kaikki saatavilla olevat aktiviteetit! Lähetä lisää viestejä avatakseen lisää harjoitustehtäviä.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9772,7 +9736,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Valmis ({num})",
-    "suggestion": "Ehdotus",
+    "suggestion": "Valitse paras ehdotus",
     "completeActivityButton": "Olen valmis!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9787,6 +9751,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Rajoita nimen pituus 50 merkkiin tai vähemmän.",
+    "enterAName": "Ole hyvä ja syötä nimi.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Kirjoitusapu",
+    "viewError": "Näytä virhe",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Hanki Pangea Chat -sovellus saadaksesi ilmoituksia!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Sain sen!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Jatka kielellä {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Lataa koko viestihistoria, mukaan lukien lähettäjä, lähetetty päivämäärä, alkuperäinen viesti, lähetetty viesti ja käyttötapa.",
+    "analyticsDownloadDesc": "Lataa henkilökohtaiset sanasto- ja kielioppianalyysit valitulle kielelle.",
+    "courseAnalyticsDownloadDesc": "Lataa lemma ja kieliopin käyttö valitussa kielessä kaikille kurssin osallistujille, joilla on jaetut analyysit.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Tämä kurssi vastaa kielitasoasi",
+    "cefrLevelBelow": "Tämä kurssi on alle kielitasosi.",
+    "cefrLevelAbove": "Tämä kurssi on yli kielitasosi.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Botin ääniviestin ääni",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat -logo",
+    "introChatDetails": "Sano hei! Esittele itsesi muille kurssin osallistujille, etsi ystäviä ja keskustele aktiviteettien ulkopuolella.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Tämä emoji edustaa nyt \"{word}\" käytännön harjoituksissa",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Näytä kehittäjäasetukset",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Ota kehittäjäasetukset käyttöön, jotta voit näyttää latausanalytiikan ja yksityiskohtaiset tietovaihtoehdot sovelluksessa.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Odotetaan botin liittymistä...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Paikka kurssin ylläpitäjille luoda ilmoituksia kurssin osallistujille. Vaikka kaikki voivat nähdä tämän kanavan, vain ylläpitäjät voivat kirjoittaa siihen.",
+    "introChatDesc": "Kuka tahansa kurssilla voi julkaista.",
+    "announcementsChatDesc": "Vain kurssin ylläpitäjät voivat julkaista.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

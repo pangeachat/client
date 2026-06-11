@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:29.177454",
+    "@@last_modified": "2026-06-11 10:22:37.033359",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -3230,7 +3230,6 @@
     "inactive": "Không hoạt động",
     "confirmRole": "Xác nhận vai trò",
     "openRoleLabel": "MỞ",
-    "joinedTheActivity": "👋 {username} đã tham gia với vai trò {role}",
     "finishedTheActivity": "🎯 {username} đã kết thúc hoạt động này",
     "activitySummaryError": "Không thể lấy tóm tắt hoạt động",
     "requestSummaries": "Yêu cầu tóm tắt",
@@ -3271,7 +3270,7 @@
     "pingParticipants": "Thông báo cho các thành viên trong khóa học",
     "playWithBot": "Chơi với Pangea Bot",
     "inviteFriends": "Mời bạn bè",
-    "waitNotDone": "Chờ tôi chưa xong!",
+    "waitNotDone": "Chờ một chút, tôi chưa xong!",
     "waitingForOthersToFinish": "Đang chờ những người khác hoàn thành...",
     "generatingSummary": "Phân tích cuộc trò chuyện và tạo kết quả",
     "findCourse": "Tìm khóa học",
@@ -3473,17 +3472,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -5250,22 +5238,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Tạo trò chuyện giới thiệu",
-    "introChatDesc": "Bất kỳ ai trong không gian đều có thể đăng bài.",
     "announcementsChatTitle": "Trò chuyện thông báo",
-    "announcementsChatDesc": "Chỉ quản trị viên không gian mới có thể đăng bài.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -5504,11 +5482,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Giọng nói của Pangea Bot",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -6442,20 +6415,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Đăng ký để mở khóa dịch thuật tương tác và kiểm tra ngữ pháp, phát âm thanh, bài tập thực hành cá nhân hóa và phân tích học tập!",
-    "emojiSelectedSnackbar": "Bạn đã đặt biểu tượng cảm xúc cho {lemma}! Chúng tôi sẽ sử dụng biểu tượng cảm xúc này để đại diện cho từ trong các bài tập thực hành trong tương lai.",
     "unlockPracticeActivities": "Mở khóa bài tập thực hành",
     "noAnalyticsActivitiesAvailable": "Wow, bạn đã hoàn thành tất cả các hoạt động có sẵn! Gửi thêm tin nhắn để mở khóa thêm bài tập thực hành.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -6806,7 +6770,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Đã hoàn thành ({num})",
-    "suggestion": "Gợi ý",
+    "suggestion": "Chọn gợi ý tốt nhất",
     "completeActivityButton": "Tôi đã xong!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -6821,6 +6785,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Vui lòng giới hạn độ dài tên tối đa là 50 ký tự.",
+    "enterAName": "Vui lòng nhập một tên.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Hỗ trợ viết",
+    "viewError": "Xem lỗi",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Tải ứng dụng Pangea Chat để nhận thông báo!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Hiểu rồi!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Tiếp tục với {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Tải xuống toàn bộ lịch sử tin nhắn, bao gồm người gửi, ngày gửi, tin nhắn gốc, tin nhắn đã gửi và loại sử dụng.",
+    "analyticsDownloadDesc": "Tải xuống phân tích từ vựng và ngữ pháp cá nhân cho ngôn ngữ đã chọn.",
+    "courseAnalyticsDownloadDesc": "Tải xuống các từ gốc và cách sử dụng ngữ pháp trong ngôn ngữ đã chọn cho tất cả người tham gia khóa học với phân tích chung.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Khóa học này phù hợp với trình độ ngôn ngữ của bạn",
+    "cefrLevelBelow": "Khóa học này thấp hơn trình độ ngôn ngữ của bạn.",
+    "cefrLevelAbove": "Khóa học này cao hơn trình độ ngôn ngữ của bạn.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Giọng nói tin nhắn âm thanh của Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logo Pangea Chat",
+    "introChatDetails": "Chào bạn! Giới thiệu bản thân với những người tham gia khóa học khác, tìm bạn bè và trò chuyện ngoài các hoạt động.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Biểu tượng cảm xúc này sẽ đại diện cho \"{word}\" trong các bài tập thực hành",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Hiển thị tùy chọn nhà phát triển",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Bật tùy chọn nhà phát triển để hiển thị phân tích tải xuống và các tùy chọn thông tin chi tiết trong toàn bộ ứng dụng.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Đang chờ bot tham gia...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Nơi cho quản trị viên khóa học tạo thông báo cho người tham gia khóa học. Mặc dù tất cả mọi người đều có thể xem kênh này, chỉ có quản trị viên mới có thể gõ trong đó.",
+    "introChatDesc": "Bất kỳ ai trong khóa học đều có thể đăng bài.",
+    "announcementsChatDesc": "Chỉ có quản trị viên khóa học mới có thể đăng bài.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

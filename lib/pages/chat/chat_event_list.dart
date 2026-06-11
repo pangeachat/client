@@ -115,6 +115,10 @@ class ChatEventList extends StatelessWidget {
 
               // Request history button or progress indicator:
               // #Pangea
+              if (i == events.length + 3) {
+                return SizedBox(height: 50);
+              }
+
               // if (i == events.length + 1) {
               if (i == events.length + 2) {
                 // Pangea#
@@ -260,7 +264,7 @@ class ChatEventList extends StatelessWidget {
             },
             // #Pangea
             // childCount: events.length + 2,
-            childCount: events.length + 3,
+            childCount: events.length + 4,
             // Pangea#
             findChildIndexCallback: (key) =>
                 controller.findChildIndexCallback(key, thisEventsKeyMap),

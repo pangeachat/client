@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-05-22 12:44:45.665103",
+    "@@last_modified": "2026-06-11 10:21:21.095944",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -2513,7 +2513,6 @@
     "inactive": "Neaktívne",
     "confirmRole": "Potvrdiť rolu",
     "openRoleLabel": "OTVORENÁ",
-    "joinedTheActivity": "👋 {username} sa pripojil ako {role}",
     "finishedTheActivity": "🎯 {username} ukončil túto aktivitu",
     "activitySummaryError": "Prehľady aktivít nie sú dostupné",
     "requestSummaries": "Požiadať o prehľady",
@@ -2554,7 +2553,7 @@
     "pingParticipants": "Oznámiť účastníkom kurzu",
     "playWithBot": "Hrať s Pangea Botom",
     "inviteFriends": "Pozvať priateľov",
-    "waitNotDone": "Počkajte, ešte som nedokončil!",
+    "waitNotDone": "Čakaj, ešte som neskončil!",
     "waitingForOthersToFinish": "Čakáme na ostatných, aby dokončili...",
     "generatingSummary": "Analyzujeme chat a generujeme výsledky",
     "findCourse": "Nájsť kurz",
@@ -7535,17 +7534,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -9283,22 +9271,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Vytvoriť chat o predstaveniach",
-    "introChatDesc": "Ktokoľvek v priestore môže prispieť.",
     "announcementsChatTitle": "Chat o oznámeniach",
-    "announcementsChatDesc": "Iba administrátor priestoru môže prispieť.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9537,11 +9515,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Hlas Pangea Bota",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10475,20 +10448,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Prihláste sa na odomknutie interaktívneho prekladu a kontroly gramatiky, prehrávania zvuku, personalizovaných cvičení a analytiky učenia!",
-    "emojiSelectedSnackbar": "Nastavili ste emoji pre {lemma}! Toto emoji použijeme na reprezentáciu slova v cvičeniach v budúcnosti.",
     "unlockPracticeActivities": "Odomknúť cvičenia",
     "noAnalyticsActivitiesAvailable": "Wow, dokončili ste všetky dostupné aktivity! Pošlite viac správ, aby ste odomkli ďalšie cvičenia.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10839,7 +10803,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Dokončené ({num})",
-    "suggestion": "Návrh",
+    "suggestion": "Vyberte najlepšiu návrh",
     "completeActivityButton": "Som hotový!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10854,6 +10818,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Prosím, obmedzte dĺžku mena na 50 znakov alebo menej.",
+    "enterAName": "Prosím, zadajte meno.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Písanie asistencie",
+    "viewError": "Zobraziť chybu",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Získajte aplikáciu Pangea Chat, aby ste dostávali upozornenia!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Rozumiem!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Pokračovať s {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Stiahne celú históriu správ, vrátane odosielateľa, dátumu odoslania, pôvodnej správy, odoslanej správy a typu použitia.",
+    "analyticsDownloadDesc": "Stiahne osobnú analýzu slovnej zásoby a gramatiky pre vybraný jazyk.",
+    "courseAnalyticsDownloadDesc": "Stiahne lemá a používanie gramatiky vo vybranom jazyku pre všetkých účastníkov kurzu so zdieľanou analýzou.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Tento kurz zodpovedá vašej jazykovej úrovni",
+    "cefrLevelBelow": "Tento kurz je pod vašou jazykovou úrovňou.",
+    "cefrLevelAbove": "Tento kurz je nad vašou jazykovou úrovňou.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Hlasová správa Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logo Pangea Chat",
+    "introChatDetails": "Povedz ahoj! Predstav sa svojim spoluúčastníkom kurzu, nájdi priateľov a chatovať mimo aktivít.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Tento emoji teraz bude reprezentovať \"{word}\" v praktických cvičeniach",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Zobraziť možnosti vývojára",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Zapnite možnosti vývojára, aby ste zobrazili analytiku sťahovania a podrobné možnosti informácií v celej aplikácii.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Čakám, kým sa bot pripojí...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Miesto pre administrátorov kurzu na vytváranie oznámení pre účastníkov kurzu. Hoci tento kanál môže vidieť každý, písať do neho môžu iba administrátori.",
+    "introChatDesc": "Každý v kurze môže prispieť.",
+    "announcementsChatDesc": "Iba administrátori kurzu môžu prispieť.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

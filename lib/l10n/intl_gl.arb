@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-05-22 12:44:35.834521",
+    "@@last_modified": "2026-06-11 10:21:07.916943",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -3849,7 +3849,6 @@
     "inactive": "Inactivo",
     "confirmRole": "Confirmar rol",
     "openRoleLabel": "ABERTO",
-    "joinedTheActivity": "👋 {username} uniuse como {role}",
     "finishedTheActivity": "🎯 {username} rematou esta actividade",
     "activitySummaryError": "Resúmenes de actividade non dispoñibles",
     "requestSummaries": "Solicitar resúmenes",
@@ -3890,7 +3889,7 @@
     "pingParticipants": "Pingar aos participantes do curso",
     "playWithBot": "Xogar con Pangea Bot",
     "inviteFriends": "Invitar amigos",
-    "waitNotDone": "Espera, aínda non rematei!",
+    "waitNotDone": "Espera, non rematei!",
     "waitingForOthersToFinish": "Agardando que o resto remate...",
     "generatingSummary": "Analizando o chat e xerando resultados",
     "findCourse": "Atopa un curso",
@@ -6657,17 +6656,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8405,22 +8393,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Crear Chat de Presentación",
-    "introChatDesc": "Qualquera no espazo pode publicar.",
     "announcementsChatTitle": "Chat de Anuncios",
-    "announcementsChatDesc": "Sólo o administrador do espazo pode publicar.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8659,11 +8637,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Voz do bot Pangea",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9359,20 +9332,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Subscríbete para desbloquear a tradución interactiva e a verificación gramatical, a reprodución de audio, os exercicios de práctica personalizados e a analítica de aprendizaxe!",
-    "emojiSelectedSnackbar": "Estás a usar o emoji para {lemma}! Usaremos este emoji para representar a palabra nos exercicios de práctica a partir de agora.",
     "unlockPracticeActivities": "Desbloquear exercicios de práctica",
     "noAnalyticsActivitiesAvailable": "Uau, completaches todas as actividades dispoñibles! Envía máis mensaxes para desbloquear máis exercicios de práctica.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9723,7 +9687,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Rematado ({num})",
-    "suggestion": "Suxestión",
+    "suggestion": "Elixe a mellor suxestión",
     "completeActivityButton": "¡Rematei!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9738,6 +9702,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Por favor, limita a lonxitude do nome a 50 caracteres ou menos.",
+    "enterAName": "Por favor, introduce un nome.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Asistencia na escritura",
+    "viewError": "Ver erro",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Obtén a aplicación Pangea Chat para recibir notificacións!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Entendido!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Continuar con {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Descarga o historial completo de mensaxes, incluíndo o remitente, a data de envío, a mensaxe orixinal, a mensaxe enviada e o tipo de uso.",
+    "analyticsDownloadDesc": "Descarga a analítica de vocabulario e gramática persoal para a lingua seleccionada.",
+    "courseAnalyticsDownloadDesc": "Descarga o lema e o uso da gramática na lingua seleccionada para todos os participantes do curso con analíticas compartidas.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Este curso coincide co teu nivel de lingua",
+    "cefrLevelBelow": "Este curso está por debaixo do teu nivel de lingua.",
+    "cefrLevelAbove": "Este curso está por riba do teu nivel de lingua.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Voz do mensaxe de audio do Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logotipo de Pangea Chat",
+    "introChatDetails": "Di hola! Preséntate aos teus compañeiros de curso, atopa amigos e charla fóra das actividades.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Este emoji agora representará \"{word}\" en exercicios prácticos",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Amosar opcións de desenvolvedor",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Activa as opcións de desenvolvedor para mostrar análises de descarga e opcións de información detallada en toda a aplicación.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "A esperar que o bot se una...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Un lugar para que os administradores do curso creen anuncios para os participantes do curso. Mentres que todos poden ver este canal, só os administradores poden escribir nel.",
+    "introChatDesc": "Calquera no curso pode publicar.",
+    "announcementsChatDesc": "Só os administradores do curso poden publicar.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

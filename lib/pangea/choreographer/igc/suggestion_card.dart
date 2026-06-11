@@ -3,17 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_controller.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_suggestion.dart';
+import 'package:fluffychat/pangea/choreographer/igc/writing_assistance_popup.dart';
+import 'package:fluffychat/pangea/choreographer/igc/writing_asssitance_popup_manager.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_array.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class SuggestionCard extends StatefulWidget {
   final String overlayKey;
   final OrchestratorController controller;
+  final WritingAssistancePopupManager popupManager;
 
   const SuggestionCard({
     required this.overlayKey,
     required this.controller,
+    required this.popupManager,
     super.key,
   });
 
@@ -26,7 +29,7 @@ class SuggestionCardState extends State<SuggestionCard> {
       widget.controller.activeSuggestion;
 
   void _close() {
-    MatrixState.pAnyState.closeOverlay(widget.overlayKey);
+    widget.popupManager.close();
   }
 
   // TODO ORCHESTRATOR: add feedback mechanism
@@ -56,20 +59,20 @@ class SuggestionCardState extends State<SuggestionCard> {
       return SizedBox();
     }
 
-    return Container(
-      constraints: const BoxConstraints(maxWidth: 350),
-      padding: EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-        color: theme.cardColor,
-        border: Border.all(width: 2, color: theme.colorScheme.primary),
-        borderRadius: const BorderRadius.all(Radius.circular(25)),
-      ),
-      child: Column(
-        mainAxisSize: .min,
-        children: [
-          SizedBox(
-            height: 40.0,
-            child: Row(
+    return WritingAssistancePopup(
+      widget.popupManager,
+      child: Container(
+        constraints: const BoxConstraints(maxWidth: 350),
+        padding: EdgeInsets.all(10.0),
+        decoration: BoxDecoration(
+          color: theme.cardColor,
+          border: Border.all(width: 2, color: theme.colorScheme.primary),
+          borderRadius: const BorderRadius.all(Radius.circular(25)),
+        ),
+        child: Column(
+          mainAxisSize: .min,
+          children: [
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
@@ -77,13 +80,15 @@ class SuggestionCardState extends State<SuggestionCard> {
                   color: theme.iconTheme.color,
                   onPressed: _close,
                 ),
-                Text(
-                  L10n.of(context).suggestion,
-                  textAlign: TextAlign.center,
-                  style: theme.textTheme.titleLarge?.merge(
-                    TextStyle(
-                      fontWeight: FontWeight.w700,
-                      color: theme.colorScheme.primary,
+                Flexible(
+                  child: Text(
+                    L10n.of(context).suggestion,
+                    textAlign: TextAlign.center,
+                    style: theme.textTheme.titleLarge?.merge(
+                      TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: theme.colorScheme.primary,
+                      ),
                     ),
                   ),
                 ),
@@ -96,22 +101,22 @@ class SuggestionCardState extends State<SuggestionCard> {
                 SizedBox(height: 40.0, width: 40.0),
               ],
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 12.0,
-              horizontal: 24.0,
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 12.0,
+                horizontal: 24.0,
+              ),
+              child: ChoicesArray<OrchestratorSuggestion>(
+                choices: suggestionsModel.shuffledChoices
+                    .map((e) => Choice(value: e))
+                    .toList(),
+                onPressed: (value, index) => _onChoiceSelected(value),
+                selectedChoiceIndex: null,
+                getDisplayCopy: (value) => value.text,
+              ),
             ),
-            child: ChoicesArray<OrchestratorSuggestion>(
-              choices: suggestionsModel.shuffledChoices
-                  .map((e) => Choice(value: e))
-                  .toList(),
-              onPressed: (value, index) => _onChoiceSelected(value),
-              selectedChoiceIndex: null,
-              getDisplayCopy: (value) => value.text,
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

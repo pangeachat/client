@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-05-22 12:45:23.656449",
+    "@@last_modified": "2026-06-11 10:22:11.955223",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -3604,7 +3604,6 @@
     "inactive": "غير نشط",
     "confirmRole": "تأكيد الدور",
     "openRoleLabel": "مفتوح",
-    "joinedTheActivity": "👋 {username} انضم كـ {role}",
     "finishedTheActivity": "🎯 {username} أنهى هذا النشاط",
     "activitySummaryError": "ملخصات النشاط غير متوفرة",
     "requestSummaries": "طلب الملخصات",
@@ -6759,17 +6758,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8507,22 +8495,12 @@
         "placeholders": {}
     },
     "introChatTitle": "إنشاء دردشة التعريفات",
-    "introChatDesc": "يمكن لأي شخص في المساحة النشر.",
     "announcementsChatTitle": "دردشة الإعلانات",
-    "announcementsChatDesc": "يمكن فقط لمسؤول المساحة النشر.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8761,11 +8739,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "صوت بوت بانجيا",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9699,20 +9672,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "اشترك لفتح الترجمة التفاعلية وفحص القواعد، وتشغيل الصوت، وتمارين الممارسة الشخصية، وتحليلات التعلم!",
-    "emojiSelectedSnackbar": "لقد قمت بتعيين الرموز التعبيرية لـ {lemma}! سنستخدم هذه الرموز التعبيرية لتمثيل الكلمة في تمارين الممارسة من الآن فصاعدًا.",
     "unlockPracticeActivities": "فتح تمارين الممارسة",
     "noAnalyticsActivitiesAvailable": "واو، لقد أكملت جميع الأنشطة المتاحة! أرسل المزيد من الرسائل لفتح المزيد من تمارين الممارسة.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10063,7 +10027,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "انتهى ({num})",
-    "suggestion": "اقتراح",
+    "suggestion": "اختر أفضل اقتراح",
     "completeActivityButton": "لقد انتهيت!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10078,6 +10042,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "يرجى تحديد طول الاسم إلى 50 حرفًا أو أقل.",
+    "enterAName": "يرجى إدخال اسم.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "مساعدة في الكتابة",
+    "viewError": "عرض الخطأ",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "احصل على تطبيق Pangea Chat لتلقي الإشعارات!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "فهمت!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "تابع مع {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "يتم تنزيل سجل الرسائل الكامل، بما في ذلك المرسل، تاريخ الإرسال، الرسالة الأصلية، الرسالة المرسلة، ونوع الاستخدام.",
+    "analyticsDownloadDesc": "يتم تنزيل تحليلات المفردات والقواعد الشخصية للغة المحددة.",
+    "courseAnalyticsDownloadDesc": "يتم تنزيل استخدام اللمّا والقواعد في اللغة المحددة لجميع المشاركين في الدورة مع تحليلات مشتركة.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "تتناسب هذه الدورة مع مستوى لغتك",
+    "cefrLevelBelow": "هذه الدورة أقل من مستوى لغتك.",
+    "cefrLevelAbove": "هذه الدورة أعلى من مستوى لغتك.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "صوت رسالة الصوت لروبوت بانجيا",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "شعار دردشة بانجيا",
+    "introChatDetails": "قل مرحبًا! قدم نفسك لمشاركي الدورة الآخرين، وابحث عن أصدقاء، وتحدث خارج الأنشطة.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "ستمثل هذه الرموز التعبيرية الآن \"{word}\" في تمارين الممارسة",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "عرض خيارات المطور",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "قم بتشغيل خيارات المطور لعرض تحليلات التنزيل وخيارات المعلومات التفصيلية في جميع أنحاء التطبيق.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "في انتظار انضمام الروبوت...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "مكان لمديري الدورة لإنشاء إعلانات لمشاركي الدورة. بينما يمكن للجميع مشاهدة هذه القناة، يمكن للمديرين فقط الكتابة فيها.",
+    "introChatDesc": "يمكن لأي شخص في الدورة النشر.",
+    "announcementsChatDesc": "يمكن لمديري الدورة فقط النشر.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-05-22 12:44:41.565097",
+    "@@last_modified": "2026-06-11 10:21:15.724203",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -3718,7 +3718,6 @@
     "inactive": "Inaktív",
     "confirmRole": "Szerep megerősítése",
     "openRoleLabel": "NYITOTT",
-    "joinedTheActivity": "👋 {username} csatlakozott {role} szerepben",
     "finishedTheActivity": "🎯 {username} befejezte ezt a tevékenységet",
     "activitySummaryError": "A tevékenység összegzések nem elérhetők",
     "requestSummaries": "Összegzések kérés",
@@ -6546,17 +6545,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8294,22 +8282,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Bevezető Beszélgetés Létrehozása",
-    "introChatDesc": "A térben bárki posztolhat.",
     "announcementsChatTitle": "Közlemények Beszélgetés",
-    "announcementsChatDesc": "Csak a tér adminisztrátora posztolhat.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8548,11 +8526,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Pangea Bot hang",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9486,20 +9459,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Iratkozzon fel az interaktív fordítás és nyelvtani ellenőrzés, hanglejátszás, személyre szabott gyakorlófeladatok és tanulási elemzések feloldásához!",
-    "emojiSelectedSnackbar": "Beállította a(z) {lemma} emoji-t! Ezt az emojit fogjuk használni a szó képviseletére a jövőbeli gyakorlófeladatokban.",
     "unlockPracticeActivities": "Gyakorlófeladatok feloldása",
     "noAnalyticsActivitiesAvailable": "Wow, minden elérhető tevékenységet teljesítettél! Küldj több üzenetet, hogy további gyakorlófeladatokat oldhass fel.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9850,7 +9814,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Befejezett ({num})",
-    "suggestion": "Javaslat",
+    "suggestion": "Válaszd a legjobb javaslatot",
     "completeActivityButton": "Kész vagyok!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9865,6 +9829,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Kérjük, korlátozza a név hosszát 50 karakterre vagy kevesebbre.",
+    "enterAName": "Kérjük, adjon meg egy nevet.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Írási segítség",
+    "viewError": "Hiba megtekintése",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Töltsd le a Pangea Chat alkalmazást, hogy értesítéseket kapj!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Értettem!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Folytatás a(z) {lang} nyelven",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Letölti a teljes üzenet történetet, beleértve a feladót, a küldés dátumát, az eredeti üzenetet, a küldött üzenetet és a használati típust.",
+    "analyticsDownloadDesc": "Letölti a személyes szókincs és nyelvtani elemzéseket a kiválasztott nyelvhez.",
+    "courseAnalyticsDownloadDesc": "Letölti a lemma és nyelvtani használatot a kiválasztott nyelven az összes kurzus résztvevő számára, megosztott elemzésekkel.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Ez a kurzus megfelel a nyelvi szintednek",
+    "cefrLevelBelow": "Ez a kurzus a nyelvi szinted alatt van.",
+    "cefrLevelAbove": "Ez a kurzus a nyelvi szinted felett van.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot audio üzenet hangja",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logó",
+    "introChatDetails": "Köszönts! Mutatkozz be a kurzus többi résztvevőjének, találj barátokat, és csevegj a tevékenységeken kívül.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Ez az emoji mostantól a \"{word}\" szót fogja képviselni a gyakorló feladatokban",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Fejlesztői opciók megjelenítése",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Kapcsolja be a fejlesztői lehetőségeket a letöltési elemzések és a részletes információs lehetőségek megjelenítéséhez az alkalmazásban.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Várakozás a bot csatlakozására...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Hely a kurzus adminisztrátorai számára, hogy bejelentéseket készítsenek a kurzus résztvevői számára. Míg mindenki megtekintheti ezt a csatornát, csak az adminisztrátorok írhatnak bele.",
+    "introChatDesc": "A kurzusban bárki posztolhat.",
+    "announcementsChatDesc": "Csak a kurzus adminisztrátorai posztolhatnak.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

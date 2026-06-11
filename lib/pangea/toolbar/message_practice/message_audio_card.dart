@@ -10,6 +10,7 @@ import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -17,8 +18,14 @@ import 'package:fluffychat/widgets/matrix.dart';
 class MessageAudioCard extends StatefulWidget {
   final PangeaMessageEvent messageEvent;
   final VoidCallback? onError;
+  final AudioPlaybackSpeedController playbackSpeedController;
 
-  const MessageAudioCard({super.key, required this.messageEvent, this.onError});
+  const MessageAudioCard({
+    super.key,
+    required this.messageEvent,
+    required this.playbackSpeedController,
+    this.onError,
+  });
 
   @override
   MessageAudioCardState createState() => MessageAudioCardState();
@@ -81,6 +88,7 @@ class MessageAudioCardState extends State<MessageAudioCard> {
               linkColor: Theme.of(context).brightness == Brightness.light
                   ? Theme.of(context).colorScheme.primary
                   : Theme.of(context).colorScheme.onPrimary,
+              playbackSpeedController: widget.playbackSpeedController,
             )
           : const SizedBox(),
     );

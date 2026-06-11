@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:44:42.695105",
+    "@@last_modified": "2026-06-11 10:21:17.391522",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -3733,7 +3733,6 @@
     "inactive": "Tidak aktif",
     "confirmRole": "Konfirmasi peran",
     "openRoleLabel": "TERBUKA",
-    "joinedTheActivity": "👋 {username} bergabung sebagai {role}",
     "finishedTheActivity": "🎯 {username} menyelesaikan aktivitas ini",
     "activitySummaryError": "Ringkasan aktivitas tidak tersedia",
     "requestSummaries": "Minta ringkasan",
@@ -6546,17 +6545,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8294,22 +8282,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Buat Obrolan Perkenalan",
-    "introChatDesc": "Siapa pun di ruang ini dapat memposting.",
     "announcementsChatTitle": "Obrolan Pengumuman",
-    "announcementsChatDesc": "Hanya admin ruang yang dapat memposting.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8548,11 +8526,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Suara Pangea Bot",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9456,20 +9429,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Berlangganan untuk membuka terjemahan interaktif dan pemeriksaan tata bahasa, pemutaran audio, latihan praktik yang dipersonalisasi, dan analitik pembelajaran!",
-    "emojiSelectedSnackbar": "Anda telah menetapkan emoji untuk {lemma}! Kami akan menggunakan emoji ini untuk mewakili kata dalam latihan praktik ke depan.",
     "unlockPracticeActivities": "Buka latihan praktik",
     "noAnalyticsActivitiesAvailable": "Wow, Anda telah menyelesaikan semua aktivitas yang tersedia! Kirim lebih banyak pesan untuk membuka lebih banyak latihan praktik.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9820,7 +9784,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Selesai ({num})",
-    "suggestion": "Saran",
+    "suggestion": "Pilih Saran Terbaik",
     "completeActivityButton": "Saya sudah selesai!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9835,6 +9799,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Silakan batasi panjang nama hingga 50 karakter atau kurang.",
+    "enterAName": "Silakan masukkan nama.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Bantuan menulis",
+    "viewError": "Lihat kesalahan",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Dapatkan aplikasi Pangea Chat untuk menerima notifikasi!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Mengerti!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Lanjutkan dengan {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Mengunduh seluruh riwayat pesan, termasuk pengirim, tanggal dikirim, pesan asli, pesan yang dikirim, dan jenis penggunaan.",
+    "analyticsDownloadDesc": "Mengunduh analitik kosakata dan tata bahasa pribadi untuk bahasa yang dipilih.",
+    "courseAnalyticsDownloadDesc": "Mengunduh lema dan penggunaan tata bahasa dalam bahasa yang dipilih untuk semua peserta kursus dengan analitik yang dibagikan.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Kursus ini sesuai dengan tingkat bahasa Anda",
+    "cefrLevelBelow": "Kursus ini di bawah tingkat bahasa Anda.",
+    "cefrLevelAbove": "Kursus ini di atas tingkat bahasa Anda.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Suara pesan audio Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logo Pangea Chat",
+    "introChatDetails": "Sapa! Perkenalkan diri Anda kepada peserta kursus lainnya, temukan teman, dan mengobrol di luar kegiatan.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Emoji ini sekarang akan mewakili \"{word}\" dalam latihan praktik",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Tampilkan opsi pengembang",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Aktifkan opsi pengembang untuk menampilkan analitik unduhan dan opsi info rinci di seluruh aplikasi.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Menunggu bot untuk bergabung...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Tempat bagi admin kursus untuk membuat pengumuman bagi peserta kursus. Sementara semua orang dapat melihat saluran ini, hanya admin yang dapat mengetiknya.",
+    "introChatDesc": "Siapa pun dalam kursus dapat memposting.",
+    "announcementsChatDesc": "Hanya admin kursus yang dapat memposting.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

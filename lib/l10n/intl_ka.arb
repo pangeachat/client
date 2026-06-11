@@ -2004,7 +2004,6 @@
     "inactive": "არაქტიული",
     "confirmRole": "დადასტურება როლი",
     "openRoleLabel": "ღია",
-    "joinedTheActivity": "👋 {username} შეუერთდა როგორც {role}",
     "finishedTheActivity": "🎯 {username} დასრულდა ეს აქტივობა",
     "activitySummaryError": "აქტივობის მიმოხილვები ხელმისაწვდომი არაა",
     "requestSummaries": "მოთხოვნა მიმოხილვებისთვის",
@@ -2045,7 +2044,7 @@
     "pingParticipants": "შეატყობინეთ კურსის მონაწილეებს",
     "playWithBot": "თამაშეთ Pangea ბოტთან",
     "inviteFriends": "პატიჟეთ მეგობრები",
-    "waitNotDone": "მოვიცადე, არ დამთავრებულა!",
+    "waitNotDone": "მოლოდინი, ჯერ არ დამისრულებია!",
     "waitingForOthersToFinish": "მოსალოდნელია დანარჩენების დასრულება...",
     "generatingSummary": "საუბრის ანალიზი და შედეგების გენერირება",
     "findCourse": "კურსის მოძებნა",
@@ -2099,7 +2098,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-05-22 12:45:48.333358",
+    "@@last_modified": "2026-06-11 10:23:07.755948",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7487,17 +7486,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -9235,22 +9223,12 @@
         "placeholders": {}
     },
     "introChatTitle": "შექმენით გაცნობის ჩატი",
-    "introChatDesc": "ყოველთვის სივრცეში შეუძლია პოსტი.",
     "announcementsChatTitle": "განცხადებების ჩატი",
-    "announcementsChatDesc": "მხოლოდ სივრცის ადმინისტრატორი შეუძლია პოსტი.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9489,11 +9467,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "პანჯეა ბოტის ხმა",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10427,20 +10400,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "გამოიწერეთ, რომ გახსნათ ინტერაქტიული თარგმანისა და გრამატიკის შემოწმების, აუდიო დაკვრის, პერსონალიზებული პრაქტიკის ვარჯიშების და სასწავლო ანალიტიკის ფუნქციები!",
-    "emojiSelectedSnackbar": "თქვენ დააყენეთ ემოჯი {lemma}-ისთვის! ჩვენ ამ ემოჯის გამოყენებას ვაპირებთ სიტყვას პრაქტიკის ვარჯიშებში.",
     "unlockPracticeActivities": "გახსენით პრაქტიკის ვარჯიშები",
     "noAnalyticsActivitiesAvailable": "ვაუ, თქვენ დაასრულეთ ყველა ხელმისაწვდომი აქტივობა! გამოგზავნეთ მეტი შეტყობინება, რომ გახსნათ მეტი პრაქტიკის ვარჯიშები.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10791,8 +10755,8 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "დასრულებული ({num})",
-    "suggestion": "შეთავაზება",
-    "completeActivityButton": "მივიღე!",
+    "suggestion": "აირჩიეთ საუკეთესო წინადადება",
+    "completeActivityButton": "მე დავასრულე!",
     "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
@@ -10806,6 +10770,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "გთხოვთ, დააწესოთ სახელის სიგრძე 50 სიმბოლოს ან ნაკლებზე.",
+    "enterAName": "გთხოვთ, შეიყვანოთ სახელი.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "წერის დახმარება",
+    "viewError": "შედეგების ნახვა",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "მიიღეთ Pangea Chat აპლიკაცია, რომ მიიღოთ შეტყობინებები!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "გაგება!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang} - ით გაგრძელება",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "წერს სრულ შეტყობინების ისტორიას, მათ შორის გამგზავნს, გაგზავნის თარიღს, ორიგინალურ შეტყობინებას, გაგზავნილ შეტყობინებას და გამოყენების ტიპს.",
+    "analyticsDownloadDesc": "წერს პირად ლექსიკასა და გრამატიკის ანალიტიკას არჩეული ენისთვის.",
+    "courseAnalyticsDownloadDesc": "წერს ლემას და გრამატიკის გამოყენებას არჩეული ენისთვის ყველა კურსის მონაწილისთვის გაზიარებული ანალიტიკით.",
+    "cefrLevelMatch": "ეს კურსი შეესაბამება თქვენს ენობრივ დონეს",
+    "cefrLevelBelow": "ეს კურსი არის თქვენი ენობრივი დონის ქვემოთ.",
+    "cefrLevelAbove": "ეს კურსი არის თქვენი ენობრივი დონის ზემოთ.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot აუდიო შეტყობინების ხმა",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "პანჯეა ჩატის ლოგო",
+    "introChatDetails": "თქვენი გამარჯობა! წარუდგინეთ თავი თქვენს თანაკურსელებს, მოიძიეთ მეგობრები და ისაუბრეთ აქტივობების გარეთ.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "ამ ემოჯი ახლა \"{word}\"-ს წარმოადგენს პრაქტიკის ვარჯიშებში",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "მაჩვენე განვითარების პარამეტრები",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "გააქტივეთ დეველოპერის პარამეტრები, რათა აჩვენოთ ჩამოტვირთვის ანალიტიკა და დეტალური ინფორმაცია აპლიკაციის განმავლობაში.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "ბოტის გაწვდას ველოდებით...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "კურსის ადმინისტრატორების ადგილი, სადაც ისინი შეუძლიათ შექმნან განცხადებები კურსის მონაწილეებისთვის. მიუხედავად იმისა, რომ ყველა შეუძლია ამ არხის ნახვა, მხოლოდ ადმინისტრატორები შეუძლიათ მასში წერილი.",
+    "introChatDesc": "კურსში ნებისმიერი ადამიანი შეუძლია გამოაქვეყნოს.",
+    "announcementsChatDesc": "მხოლოდ კურსის ადმინისტრატორები შეუძლიათ გამოაქვეყნონ.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

@@ -86,8 +86,7 @@ class EnableNotificationsDialog extends StatelessWidget {
                     onPressed: () => Navigator.of(
                       context,
                     ).pop<OkCancelResult>(OkCancelResult.cancel),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    child: Wrap(
                       children: [
                         Text(
                           l10n.skipForNow,
@@ -97,6 +96,7 @@ class EnableNotificationsDialog extends StatelessWidget {
                                   context,
                                 ).colorScheme.onSurface.withAlpha(180),
                               ),
+                          textAlign: TextAlign.center,
                         ),
                       ],
                     ),

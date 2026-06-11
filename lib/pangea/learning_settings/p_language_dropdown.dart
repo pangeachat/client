@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/languages/l2_support_enum.dart';
 import 'package:fluffychat/pangea/languages/language_display_name_postfix_widget.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
@@ -67,7 +68,9 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
       final bool aIsPriority = languagePriority.contains(a.langCode);
       final bool bIsPriority = languagePriority.contains(b.langCode);
       if (!aIsPriority && !bIsPriority) {
-        return a.getDisplayName(context).compareTo(b.getDisplayName(context));
+        return a
+            .getDisplayName(L10n.of(context))
+            .compareTo(b.getDisplayName(L10n.of(context)));
       }
 
       if (aIsPriority && bIsPriority) {
@@ -155,11 +158,16 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
             searchInnerWidgetHeight: 50,
             searchInnerWidget: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-              child: TextField(
-                autofocus: true,
-                controller: _searchController,
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.search),
+              child: Semantics(
+                label: widget.isL2List
+                    ? L10n.of(context).searchLanguagesHint
+                    : L10n.of(context).alreadySpeak,
+                child: TextField(
+                  autofocus: true,
+                  controller: _searchController,
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.search),
+                  ),
                 ),
               ),
             ),

@@ -1868,7 +1868,6 @@
     "inactive": "Neaktivno",
     "confirmRole": "Potrdi vlogo",
     "openRoleLabel": "ODPRTO",
-    "joinedTheActivity": "👋 {username} se je pridružil kot {role}",
     "finishedTheActivity": "🎯 {username} je zaključil to dejavnost",
     "activitySummaryError": "Povzetki dejavnosti niso na voljo",
     "requestSummaries": "Zahtevaj povzetke",
@@ -1963,7 +1962,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-05-22 12:44:59.208209",
+    "@@last_modified": "2026-06-11 10:21:42.458457",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7535,17 +7534,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -9283,22 +9271,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Ustvari klepet za uvod",
-    "introChatDesc": "Kdor koli v prostoru lahko objavi.",
     "announcementsChatTitle": "Klepet za obvestila",
-    "announcementsChatDesc": "Samo skrbnik prostora lahko objavi.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9537,11 +9515,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Glas Pangea Bota",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10475,20 +10448,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Naročite se, da odklenete interaktivno prevajanje in preverjanje slovnice, predvajanje zvoka, personalizirane vaje in analitiko učenja!",
-    "emojiSelectedSnackbar": "Nastavili ste emoji za {lemma}! Ta emoji bomo uporabili za predstavitev besede v vajah naprej.",
     "unlockPracticeActivities": "Odkleni vaje",
     "noAnalyticsActivitiesAvailable": "Wow, zaključili ste vse razpoložljive aktivnosti! Pošljite več sporočil, da odklenete več vaj.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10839,7 +10803,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Končano ({num})",
-    "suggestion": "Predlog",
+    "suggestion": "Izberite najboljši predlog",
     "completeActivityButton": "Končal sem!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10854,6 +10818,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Prosimo, omejite dolžino imena na 50 znakov ali manj.",
+    "enterAName": "Prosimo, vnesite ime.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Pomoč pri pisanju",
+    "viewError": "Poglej napako",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Prenesite aplikacijo Pangea Chat, da prejmete obvestila!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Razumem!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Nadaljujte z {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Prenese celotno zgodovino sporočil, vključno s pošiljateljem, datumom pošiljanja, izvirnim sporočilom, poslanim sporočilom in vrsto uporabe.",
+    "analyticsDownloadDesc": "Prenese osebne analize besedišča in slovnice za izbrani jezik.",
+    "courseAnalyticsDownloadDesc": "Prenese leme in uporabo slovnice v izbranem jeziku za vse udeležence tečaja z deljenimi analizami.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Ta tečaj ustreza vaši jezikovni ravni",
+    "cefrLevelBelow": "Ta tečaj je pod vašo jezikovno ravnjo.",
+    "cefrLevelAbove": "Ta tečaj je nad vašo jezikovno ravnjo.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Glas Pangea Bot avdio sporočila",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logo",
+    "introChatDetails": "Pozdravite se! Predstavite se svojim soudeležencem tečaja, najdite prijatelje in klepetajte zunaj aktivnosti.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Ta emoji bo zdaj predstavljal \"{word}\" v praktičnih vajah",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Prikaži možnosti za razvijalce",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Vklopite možnosti razvijalca, da prikažete analitiko prenosa in podrobne informacije o možnostih v celotni aplikaciji.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Čakam, da se bot pridruži...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Kraj za skrbnike tečaja, da ustvarijo obvestila za udeležence tečaja. Medtem ko lahko vsi vidijo ta kanal, lahko vanj pišejo le skrbniki.",
+    "introChatDesc": "Kdor koli v tečaju lahko objavi.",
+    "announcementsChatDesc": "Le skrbniki tečaja lahko objavljajo.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

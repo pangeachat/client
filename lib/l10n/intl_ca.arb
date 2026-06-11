@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-05-22 12:45:10.957204",
+    "@@last_modified": "2026-06-11 10:21:55.509684",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -3690,7 +3690,6 @@
     "inactive": "Inactiu",
     "confirmRole": "Confirma el rol",
     "openRoleLabel": "OBERT",
-    "joinedTheActivity": "👋 {username} s'ha unit com a {role}",
     "finishedTheActivity": "🎯 {username} ha finalitzat aquesta activitat",
     "activitySummaryError": "Resum d'activitats no disponible",
     "requestSummaries": "Sol·licitar resums",
@@ -3731,7 +3730,7 @@
     "pingParticipants": "Enviar un missatge als participants del curs",
     "playWithBot": "Juga amb Pangea Bot",
     "inviteFriends": "Convida amics",
-    "waitNotDone": "Esperem, encara no he acabat!",
+    "waitNotDone": "Espera, encara no he acabat!",
     "waitingForOthersToFinish": "Esperant que la resta acabi...",
     "generatingSummary": "Analitzant el xat i generant resultats",
     "findCourse": "Troba un curs",
@@ -6570,17 +6569,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -8318,22 +8306,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Crear xat d'introduccions",
-    "introChatDesc": "Qualsevol persona de l'espai pot publicar.",
     "announcementsChatTitle": "Xat d'anuncis",
-    "announcementsChatDesc": "Només l'administrador de l'espai pot publicar.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8572,11 +8550,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Veu del bot Pangea",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9510,20 +9483,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Subscriu-te per desbloquejar la traducció interactiva i la verificació gramatical, la reproducció d'àudio, els exercicis de pràctica personalitzats i l'analítica d'aprenentatge!",
-    "emojiSelectedSnackbar": "Has establert l'emoji per a {lemma}! Utilitzarem aquest emoji per representar la paraula en els exercicis de pràctica d'ara endavant.",
     "unlockPracticeActivities": "Desbloqueja exercicis de pràctica",
     "noAnalyticsActivitiesAvailable": "Uau, has completat totes les activitats disponibles! Envia més missatges per desbloquejar més exercicis de pràctica.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -9874,7 +9838,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Acabat ({num})",
-    "suggestion": "Suggeriment",
+    "suggestion": "Tria la millor suggerència",
     "completeActivityButton": "He acabat!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -9889,6 +9853,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Si us plau, limita la longitud del nom a 50 caràcters o menys.",
+    "enterAName": "Si us plau, introdueix un nom.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Assistència d'escriptura",
+    "viewError": "Veure error",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Obteniu l'aplicació Pangea Chat per rebre notificacions!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Entesos!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Continua amb {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Descarrega l'historial complet de missatges, incloent l'emissor, la data d'enviament, el missatge original, el missatge enviat i el tipus d'ús.",
+    "analyticsDownloadDesc": "Descarrega l'analítica personal de vocabulari i gramàtica per a l'idioma seleccionat.",
+    "courseAnalyticsDownloadDesc": "Descarrega l'ús de lemmas i gramàtica en l'idioma seleccionat per a tots els participants del curs amb analítiques compartides.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Aquest curs coincideix amb el teu nivell d'idioma",
+    "cefrLevelBelow": "Aquest curs està per sota del teu nivell d'idioma.",
+    "cefrLevelAbove": "Aquest curs està per sobre del teu nivell d'idioma.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Veu del missatge d'àudio del Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logotip de Pangea Chat",
+    "introChatDetails": "Digues hola! Presenta't als teus companys participants del curs, troba amics i xateja fora de les activitats.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Aquest emoji ara representarà \"{word}\" en els exercicis pràctics",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Mostra les opcions de desenvolupador",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Activa les opcions de desenvolupador per mostrar l'analítica de descàrregues i les opcions d'informació detallada a tota l'aplicació.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Esperant que el bot s'uneixi...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Un lloc per als administradors del curs per crear anuncis per als participants del curs. Mentre que tots poden veure aquest canal, només els administradors poden escriure-hi.",
+    "introChatDesc": "Qualsevol persona del curs pot publicar.",
+    "announcementsChatDesc": "Només els administradors del curs poden publicar.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

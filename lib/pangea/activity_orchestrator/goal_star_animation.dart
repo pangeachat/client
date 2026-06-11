@@ -9,11 +9,13 @@ class GoalStarAnimation extends StatefulWidget {
   final String overlayKey;
   final String startTarget;
   final String endTarget;
+  final VoidCallback onClose;
 
   const GoalStarAnimation({
     required this.overlayKey,
     required this.startTarget,
     required this.endTarget,
+    required this.onClose,
     super.key,
   });
 
@@ -25,6 +27,7 @@ class GoalStarAnimation extends StatefulWidget {
     required String overlayKey,
     required String startTarget,
     required String endTarget,
+    required VoidCallback onClose,
   }) {
     OverlayUtil.showOverlay(
       context: context,
@@ -36,6 +39,7 @@ class GoalStarAnimation extends StatefulWidget {
         overlayKey: overlayKey,
         startTarget: startTarget,
         endTarget: endTarget,
+        onClose: onClose,
       ),
       ignorePointer: true,
     );
@@ -129,6 +133,7 @@ class GoalStarAnimationState extends State<GoalStarAnimation>
   @override
   void dispose() {
     _controller.dispose();
+    widget.onClose();
     super.dispose();
   }
 

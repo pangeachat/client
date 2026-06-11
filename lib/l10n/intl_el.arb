@@ -3677,7 +3677,6 @@
     "inactive": "Ανενεργό",
     "confirmRole": "Επιβεβαίωση ρόλου",
     "openRoleLabel": "ΑΝΟΙΧΤΟ",
-    "joinedTheActivity": "👋 {username} συμμετείχε ως {role}",
     "finishedTheActivity": "🎯 {username} ολοκλήρωσε αυτήν τη δραστηριότητα",
     "activitySummaryError": "Οι περιλήψεις δραστηριοτήτων δεν είναι διαθέσιμες",
     "requestSummaries": "Αιτήματα περιλήψεων",
@@ -3772,7 +3771,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-05-22 12:45:40.552069",
+    "@@last_modified": "2026-06-11 10:22:57.624759",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -7468,17 +7467,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "@finishedTheActivity": {
         "type": "String",
         "placeholders": {
@@ -9216,22 +9204,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Δημιουργία Συνομιλίας Εισαγωγών",
-    "introChatDesc": "Οποιοσδήποτε στον χώρο μπορεί να δημοσιεύσει.",
     "announcementsChatTitle": "Συνομιλία Ανακοινώσεων",
-    "announcementsChatDesc": "Μόνο ο διαχειριστής του χώρου μπορεί να δημοσιεύσει.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9470,11 +9448,6 @@
         "placeholders": {}
     },
     "@languageUpdated": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "voiceDropdownTitle": "Φωνή Pangea Bot",
-    "@voiceDropdownTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10408,20 +10381,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Εγγραφείτε για να ξεκλειδώσετε τη διαδραστική μετάφραση και τον έλεγχο γραμματικής, την αναπαραγωγή ήχου, τις εξατομικευμένες ασκήσεις πρακτικής και την ανάλυση μάθησης!",
-    "emojiSelectedSnackbar": "Έχετε ορίσει το emoji για {lemma}! Θα χρησιμοποιήσουμε αυτό το emoji για να εκπροσωπήσουμε τη λέξη στις ασκήσεις πρακτικής στο εξής.",
     "unlockPracticeActivities": "Ξεκλειδώστε τις ασκήσεις πρακτικής",
     "noAnalyticsActivitiesAvailable": "Ω, έχετε ολοκληρώσει όλες τις διαθέσιμες δραστηριότητες! Στείλτε περισσότερα μηνύματα για να ξεκλειδώσετε περισσότερες ασκήσεις πρακτικής.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10772,7 +10736,7 @@
         "placeholders": {}
     },
     "completedActivitiesTitle": "Ολοκληρώθηκε ({num})",
-    "suggestion": "Πρόταση",
+    "suggestion": "Επιλέξτε την καλύτερη πρόταση",
     "completeActivityButton": "Είμαι έτοιμος!",
     "@completedActivitiesTitle": {
         "type": "String",
@@ -10787,6 +10751,129 @@
         "placeholders": {}
     },
     "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Παρακαλώ περιορίστε το μήκος του ονόματος σε 50 χαρακτήρες ή λιγότερους.",
+    "enterAName": "Παρακαλώ εισάγετε ένα όνομα.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Βοήθεια στη συγγραφή",
+    "viewError": "Δείτε το σφάλμα",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Αποκτήστε την εφαρμογή Pangea Chat για να λαμβάνετε ειδοποιήσεις!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Το κατάλαβα!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Συνέχεια με {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Κατεβάζει το πλήρες ιστορικό μηνυμάτων, συμπεριλαμβανομένου του αποστολέα, της ημερομηνίας αποστολής, του αρχικού μηνύματος, του αποσταλμένου μηνύματος και του τύπου χρήσης.",
+    "analyticsDownloadDesc": "Κατεβάζει προσωπικά λεξιλόγια και αναλύσεις γραμματικής για την επιλεγμένη γλώσσα.",
+    "courseAnalyticsDownloadDesc": "Κατεβάζει τη λέξη-ρίζα και τη χρήση γραμματικής στην επιλεγμένη γλώσσα για όλους τους συμμετέχοντες του μαθήματος με κοινές αναλύσεις.",
+    "cefrLevelMatch": "Αυτό το μάθημα ταιριάζει με το επίπεδο γλώσσας σας",
+    "cefrLevelBelow": "Αυτό το μάθημα είναι κάτω από το επίπεδο γλώσσας σας.",
+    "cefrLevelAbove": "Αυτό το μάθημα είναι πάνω από το επίπεδο γλώσσας σας.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Φωνή μηνύματος ήχου Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Λογότυπο Pangea Chat",
+    "introChatDetails": "Πες γειά! Παρουσίασε τον εαυτό σου στους υπόλοιπους συμμετέχοντες του μαθήματος, βρες φίλους και συνομιλήστε εκτός δραστηριοτήτων.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Αυτό το emoji θα αντιπροσωπεύει τώρα \"{word}\" σε πρακτικές ασκήσεις",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Εμφάνιση επιλογών προγραμματιστή",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Ενεργοποιήστε τις επιλογές προγραμματιστή για να δείτε αναλύσεις λήψης και λεπτομερείς επιλογές πληροφοριών σε όλη την εφαρμογή.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Περιμένοντας τον ρομπότ να συμμετάσχει...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Ένας χώρος για τους διαχειριστές του μαθήματος να δημιουργούν ανακοινώσεις για τους συμμετέχοντες του μαθήματος. Ενώ όλοι μπορούν να δουν αυτό το κανάλι, μόνο οι διαχειριστές μπορούν να γράψουν σε αυτό.",
+    "introChatDesc": "Οποιοσδήποτε στο μάθημα μπορεί να δημοσιεύσει.",
+    "announcementsChatDesc": "Μόνο οι διαχειριστές του μαθήματος μπορούν να δημοσιεύσουν.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }
