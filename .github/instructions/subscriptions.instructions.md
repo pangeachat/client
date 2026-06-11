@@ -4,6 +4,8 @@ applyTo: "lib/pangea/subscription/**"
 
 # Subscription Module — Client
 
+> **Target design is v2 (web-only purchases)** — see [subscriptions-v2.instructions.md](subscriptions-v2.instructions.md). This doc describes current production behavior; new payment work should build toward v2.
+
 Client-side subscription UI, platform branching, and payment flows. For the cross-repo architecture (service roles, price configuration, entitlement flow), see [subscriptions.instructions.md](../../../.github/instructions/subscriptions.instructions.md).
 
 ## Platform Branching
