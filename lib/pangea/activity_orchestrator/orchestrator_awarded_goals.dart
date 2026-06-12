@@ -29,9 +29,9 @@ class OrchestratorAwardedGoals {
       );
     }
     return OrchestratorAwardedGoals(
-      awards: Map<String, dynamic>.from(json["awards"] ?? {}).map(
-        (roleId, goalIds) => MapEntry(roleId, List<String>.from(goalIds)),
-      ),
+      awards: Map<String, dynamic>.from(
+        json["awards"] ?? {},
+      ).map((roleId, goalIds) => MapEntry(roleId, List<String>.from(goalIds))),
       legacyFlatGoalIds: List<String>.from(json["legacy_flat_goal_ids"] ?? []),
     );
   }
