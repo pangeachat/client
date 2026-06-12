@@ -92,17 +92,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   Client get client {
     if (_activeClient < 0 || _activeClient >= widget.clients.length) {
       // #Pangea
-      currentBundle!.first!.homeserver = Uri.parse(
-        "https://${AppConfig.defaultHomeserver}",
-      );
+      currentBundle!.first!.homeserver = AppConfig.defaultHomeserverUri;
       // Pangea#
       return currentBundle!.first!;
     }
 
     // #Pangea
-    widget.clients[_activeClient].homeserver = Uri.parse(
-      "https://${AppConfig.defaultHomeserver}",
-    );
+    widget.clients[_activeClient].homeserver = AppConfig.defaultHomeserverUri;
     // Pangea#
     return widget.clients[_activeClient];
   }
@@ -234,7 +230,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                 // Pangea#
               });
     // #Pangea
-    candidate.homeserver = Uri.parse("https://${AppConfig.defaultHomeserver}");
+    candidate.homeserver = AppConfig.defaultHomeserverUri;
 
     // This listener is not set for the new login client until the user is logged in,
     // but if the user tries to sign up without this listener set, the signup UIA request

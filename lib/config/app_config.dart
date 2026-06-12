@@ -8,6 +8,15 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 abstract class AppConfig {
   // #Pangea
   static String get defaultHomeserver => Environment.synapseURL;
+
+  /// SYNAPSE_URL may carry an explicit scheme (local dev uses
+  /// http://localhost:8008); only default to https when it has none.
+  static Uri get defaultHomeserverUri => Uri.parse(
+        defaultHomeserver.startsWith('http://') ||
+                defaultHomeserver.startsWith('https://')
+            ? defaultHomeserver
+            : 'https://$defaultHomeserver',
+      );
   // Pangea#
   // Const and final configuration values (immutable)
   // #Pangea
