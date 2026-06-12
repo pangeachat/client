@@ -10,9 +10,6 @@ permissions:
 jobs:
   code_tests:
     runs-on: ubuntu-latest
-    env:
-      TEST_MATRIX_USERNAME: ${{ secrets.TEST_MATRIX_USERNAME }}
-      TEST_MATRIX_PASSWORD: ${{ secrets.TEST_MATRIX_PASSWORD }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: ./scripts/generate-locale-config.sh
@@ -34,6 +31,9 @@ jobs:
       - name: Add Firebase Messaging
         run: ./scripts/add-firebase-messaging.sh
       - run: flutter analyze
+      - name: Make .env file
+        run: echo "${{ secrets.TEST_MATRIX_USERNAME }}" >> .env
+        run: echo "${{ secrets.TEST_MATRIX_PASSWORD }}" >> .env
       - run: flutter test
 
   build_debug_apk:
