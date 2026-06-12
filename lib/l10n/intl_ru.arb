@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-10 14:28:53.484524",
+    "@@last_modified": "2026-06-11 10:23:04.790142",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -9348,22 +9348,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Создать чат для представлений",
-    "introChatDesc": "Любой в пространстве может публиковать.",
     "announcementsChatTitle": "Чат объявлений",
-    "announcementsChatDesc": "Только администратор пространства может публиковать.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10804,13 +10794,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Логотип Pangea Chat",
-    "announcementsChatDetails": "Место для администраторов курса, чтобы создавать объявления для участников курса. Хотя все могут просматривать этот канал, только администраторы могут писать в нем.",
     "introChatDetails": "Скажи привет! Представься своим товарищам по курсу, найди друзей и общайся вне занятий.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10839,6 +10824,21 @@
     },
     "waitingForBotToJoinActivity": "Ожидание подключения бота...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Место для администраторов курса для создания объявлений для участников курса. Хотя все могут просматривать этот канал, только администраторы могут писать в нем.",
+    "introChatDesc": "Любой участник курса может публиковать сообщения.",
+    "announcementsChatDesc": "Только администраторы курса могут публиковать сообщения.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

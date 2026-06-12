@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-10 14:28:19.098817",
+    "@@last_modified": "2026-06-11 10:21:30.278953",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -9234,22 +9234,12 @@
         "placeholders": {}
     },
     "introChatTitle": "צור צ'אט היכרות",
-    "introChatDesc": "כל אחד במרחב יכול לפרסם.",
     "announcementsChatTitle": "צ'אט הודעות",
-    "announcementsChatDesc": "רק מנהל המרחב יכול לפרסם.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10869,13 +10859,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "לוגו פנגיאה צ'אט",
-    "announcementsChatDetails": "מקום עבור מנהלי הקורס ליצור הודעות למשתתפי הקורס. בעוד שכולם יכולים לראות את הערוץ הזה, רק מנהלים יכולים לכתוב בו.",
     "introChatDetails": "תגיד שלום! הצג את עצמך למשתתפי הקורס שלך, מצא חברים וצ'אט מחוץ לפעילויות.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10904,6 +10889,21 @@
     },
     "waitingForBotToJoinActivity": "ממתין לבוט שיצטרף...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "מקום שבו מנהלי הקורס יכולים ליצור הודעות למשתתפי הקורס. בעוד שכולם יכולים לראות את הערוץ הזה, רק מנהלים יכולים לכתוב בו.",
+    "introChatDesc": "כל אחד בקורס יכול לפרסם.",
+    "announcementsChatDesc": "רק מנהלי הקורס יכולים לפרסם.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

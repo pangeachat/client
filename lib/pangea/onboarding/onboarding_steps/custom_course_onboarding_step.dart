@@ -6,7 +6,6 @@ class CustomCourseOnboardingStep extends OnboardingStep {
     required super.client,
     required super.state,
     required super.maxRemainingSteps,
-    super.enableSkip = true,
   });
 
   String? _name;

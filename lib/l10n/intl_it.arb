@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-10 14:28:27.061393",
+    "@@last_modified": "2026-06-11 10:21:46.298224",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -8286,22 +8286,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Crea Chat di Introduzioni",
-    "introChatDesc": "Chiunque nello spazio può postare.",
     "announcementsChatTitle": "Chat degli Annunci",
-    "announcementsChatDesc": "Solo l'amministratore dello spazio può postare.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9881,13 +9871,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Logo di Pangea Chat",
-    "announcementsChatDetails": "Un luogo per gli amministratori del corso per creare annunci per i partecipanti al corso. Mentre tutti possono visualizzare questo canale, solo gli amministratori possono scriverci.",
     "introChatDetails": "Dì ciao! Presentati ai tuoi compagni di corso, trova amici e chatta al di fuori delle attività.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -9916,6 +9901,21 @@
     },
     "waitingForBotToJoinActivity": "In attesa che il bot si unisca...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Un luogo per gli amministratori del corso per creare annunci per i partecipanti al corso. Anche se tutti possono visualizzare questo canale, solo gli amministratori possono scriverci.",
+    "introChatDesc": "Chiunque nel corso può pubblicare.",
+    "announcementsChatDesc": "Solo gli amministratori del corso possono pubblicare.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

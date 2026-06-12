@@ -3245,7 +3245,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-06-10 14:28:41.560884",
+    "@@last_modified": "2026-06-11 10:22:34.781919",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9041,22 +9041,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Sukurti Įžangų Pokalbį",
-    "introChatDesc": "Bet kas erdvėje gali skelbti.",
     "announcementsChatTitle": "Pranešimų Pokalbis",
-    "announcementsChatDesc": "Tik erdvės administratorius gali skelbti.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10676,13 +10666,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Pangea Chat logotipas",
-    "announcementsChatDetails": "Vieta, kur kursų administratoriai gali kurti pranešimus kursų dalyviams. Nors visi gali matyti šį kanalą, tik administratoriai gali rašyti jame.",
     "introChatDetails": "Pasakykite labas! Pristatykite save savo kursų dalyviams, raskite draugų ir bendraukite už veiklų ribų.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10711,6 +10696,21 @@
     },
     "waitingForBotToJoinActivity": "Laukiama, kol robotas prisijungs...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Vieta, kur kursų administratoriai gali kurti pranešimus kursų dalyviams. Nors visi gali matyti šį kanalą, tik administratoriai gali rašyti jame.",
+    "introChatDesc": "Bet kas kurse gali skelbti.",
+    "announcementsChatDesc": "Tik kursų administratoriai gali skelbti.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

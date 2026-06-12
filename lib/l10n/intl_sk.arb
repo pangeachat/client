@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-06-10 14:28:16.201381",
+    "@@last_modified": "2026-06-11 10:21:21.095944",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -9271,22 +9271,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Vytvoriť chat o predstaveniach",
-    "introChatDesc": "Ktokoľvek v priestore môže prispieť.",
     "announcementsChatTitle": "Chat o oznámeniach",
-    "announcementsChatDesc": "Iba administrátor priestoru môže prispieť.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10906,13 +10896,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Logo Pangea Chat",
-    "announcementsChatDetails": "Miesto pre administrátorov kurzu na vytváranie oznámení pre účastníkov kurzu. Hoci tento kanál môžu vidieť všetci, písať doň môžu iba administrátori.",
     "introChatDetails": "Povedz ahoj! Predstav sa svojim spoluúčastníkom kurzu, nájdi priateľov a chatovať mimo aktivít.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10941,6 +10926,21 @@
     },
     "waitingForBotToJoinActivity": "Čakám, kým sa bot pripojí...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Miesto pre administrátorov kurzu na vytváranie oznámení pre účastníkov kurzu. Hoci tento kanál môže vidieť každý, písať do neho môžu iba administrátori.",
+    "introChatDesc": "Každý v kurze môže prispieť.",
+    "announcementsChatDesc": "Iba administrátori kurzu môžu prispieť.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

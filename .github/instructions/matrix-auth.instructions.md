@@ -1,5 +1,5 @@
 ---
-applyTo: "**/.env,**/assets/.env*"
+applyTo: "**/.env*"
 ---
 
 # Matrix Auth — Staging Test Tokens

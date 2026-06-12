@@ -8,12 +8,16 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class PickCefrLevelStepView extends StatefulWidget {
   final PickCefrLevelOnboardingStep step;
-  final VoidCallback updateNavigationButton;
+  final bool loading;
+  final bool hasNextStep;
+  final VoidCallback forward;
 
   const PickCefrLevelStepView({
     super.key,
     required this.step,
-    required this.updateNavigationButton,
+    required this.loading,
+    required this.hasNextStep,
+    required this.forward,
   });
 
   @override
@@ -43,9 +47,8 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
   }
 
   void _setLevel(LanguageLevelTypeEnum? level) {
-    _selectedLevel.value = level;
     _step.selectCefrLevel(level);
-    widget.updateNavigationButton();
+    _selectedLevel.value = level;
   }
 
   @override
@@ -61,58 +64,98 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
 
     final levels = LanguageLevelTypeEnum.values;
     return Column(
-      spacing: 12.0,
+      spacing: 32.0,
       children: [
-        Text(
-          title,
-          style: theme.textTheme.titleMedium?.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
         Expanded(
-          child: ValueListenableBuilder(
-            valueListenable: _selectedLevel,
-            builder: (context, selectedLevel, _) => ListView.separated(
-              separatorBuilder: (context, i) => SizedBox(height: 4.0),
-              itemCount: levels.length,
-              itemBuilder: (context, i) {
-                final level = levels[i];
-                final selected = selectedLevel == level;
-                return ElevatedButton(
-                  onPressed: () => _setLevel(selected ? null : level),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: selected
-                        ? theme.colorScheme.primaryContainer
-                        : theme.colorScheme.surfaceContainer,
-                    foregroundColor: selected
-                        ? theme.colorScheme.onPrimaryContainer
-                        : theme.colorScheme.onSurface,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
+          child: Center(
+            child: Column(
+              spacing: 12.0,
+              children: [
+                Text(
+                  title,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
                   ),
-                  child: Column(
-                    spacing: 8.0,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            level.title(context),
-                            style: theme.textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
+                ),
+                Expanded(
+                  child: ValueListenableBuilder(
+                    valueListenable: _selectedLevel,
+                    builder: (context, selectedLevel, _) => ListView.separated(
+                      separatorBuilder: (context, i) => SizedBox(height: 4.0),
+                      itemCount: levels.length,
+                      itemBuilder: (context, i) {
+                        final level = levels[i];
+                        final selected = selectedLevel == level;
+                        return ElevatedButton(
+                          onPressed: () => _setLevel(selected ? null : level),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: selected
+                                ? theme.colorScheme.primaryContainer
+                                : theme.colorScheme.surfaceContainer,
+                            foregroundColor: selected
+                                ? theme.colorScheme.onPrimaryContainer
+                                : theme.colorScheme.onSurface,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
                             ),
                           ),
-                        ],
-                      ),
-                      Text(
-                        level.description(context),
-                        style: theme.textTheme.labelLarge,
-                      ),
-                    ],
+                          child: Column(
+                            spacing: 8.0,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    level.title(context),
+                                    style: theme.textTheme.titleMedium
+                                        ?.copyWith(fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                level.description(context),
+                                style: theme.textTheme.labelLarge,
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                );
-              },
+                ),
+              ],
+            ),
+          ),
+        ),
+        ValueListenableBuilder(
+          valueListenable: _selectedLevel,
+          builder: (context, _, _) => ElevatedButton(
+            onPressed: _step.enableGoForward ? widget.forward : null,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: theme.colorScheme.primaryContainer,
+              foregroundColor: theme.colorScheme.onPrimaryContainer,
+              minimumSize: const Size.fromHeight(48),
+            ),
+            child: SizedBox(
+              height: 24,
+              child: Center(
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 200),
+                  child: widget.loading
+                      ? SizedBox(
+                          key: const ValueKey('loading'),
+                          width: double.infinity,
+                          child: const LinearProgressIndicator(),
+                        )
+                      : Text(
+                          widget.hasNextStep
+                              ? _step.nextStepText(L10n.of(context))
+                              : _step.lastStepText(L10n.of(context)),
+                          key: const ValueKey('text'),
+                          textAlign: TextAlign.center,
+                        ),
+                ),
+              ),
             ),
           ),
         ),

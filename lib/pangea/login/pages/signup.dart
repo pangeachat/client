@@ -193,16 +193,23 @@ class SignupPageController extends State<SignupPage> {
           );
     }
 
-    final registerRes = await client.uiaRequestBackground<RegisterResponse?>(
-      (auth) => client.register(
-        username: localPart,
-        password: passwordController.text,
-        initialDeviceDisplayName: PlatformInfos.clientName,
-        auth: auth,
-      ),
-    );
+    GoogleAnalytics.prepareLogin("pangea");
+    try {
+      await client.uiaRequestBackground<RegisterResponse?>(
+        (auth) => client.register(
+          username: localPart,
+          password: passwordController.text,
+          initialDeviceDisplayName: PlatformInfos.clientName,
+          auth: auth,
+        ),
+      );
+    } catch (_) {
+      GoogleAnalytics.cancelPendingLogin();
+      rethrow;
+    }
 
     if (!client.isLogged()) {
+      GoogleAnalytics.cancelPendingLogin();
       throw Exception(L10n.of(context).oopsSomethingWentWrong);
     }
 
@@ -211,7 +218,6 @@ class SignupPageController extends State<SignupPage> {
       method: LoginMethod.email,
     );
     GoogleAnalytics.signUp("pangea");
-    GoogleAnalytics.login("pangea", registerRes?.userId);
 
     if (displayname != localPart && client.userID != null) {
       await client.setProfileField(client.userID!, 'displayname', {

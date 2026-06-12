@@ -13,6 +13,8 @@ import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_view.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_preview/activity_session_preview_client_extension.dart';
+import 'package:fluffychat/pangea/analytics_access/access_notice_extension.dart';
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/chat_list/utils/app_version_util.dart';
@@ -577,6 +579,7 @@ class ChatListController extends State<ChatList>
     final client = Matrix.of(context).client;
     _joinCachedSpaceCode(client);
     _startDMWithCachedUserId(client);
+    _handlePendingCourseAnalyticsAccessRequests(client);
 
     // listen for room join events and leave room if over capacity
     // _roomCapacitySubscription?.cancel();
@@ -1136,6 +1139,24 @@ class ChatListController extends State<ChatList>
     final roomId = resp.result;
     if (roomId != null) {
       context.go('/rooms/$roomId');
+    }
+  }
+
+  Future<void> _handlePendingCourseAnalyticsAccessRequests(
+    Client client,
+  ) async {
+    final pending = client.pendingAccessNoticeCourseIds;
+    for (final courseId in pending) {
+      final course = client.getRoomById(courseId);
+      if (course == null || !course.isSpace) continue;
+      final handler = JoinRoomAnalyticsConsentHandler(
+        JoinResponse(
+          roomId: course.id,
+          shouldShowNotice: course.shouldShowAnalyticsAccessNotice,
+        ),
+        course,
+      );
+      await handler.handle(context);
     }
   }
   // Pangea#

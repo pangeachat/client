@@ -59,7 +59,7 @@ This means **web users see the price from RC metadata**, not from Stripe directl
 
 ## Environment Configuration
 
-Key env values in [`assets/.env`](../../../assets/.env):
+Key env values in the root `.env` (single config source — see [deployment.instructions.md](deployment.instructions.md#environment-config-env)):
 
 | Key | Purpose |
 |-----|---------|

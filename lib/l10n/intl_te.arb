@@ -1467,7 +1467,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-06-10 14:28:40.533228",
+    "@@last_modified": "2026-06-11 10:22:33.057036",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -9279,22 +9279,12 @@
         "placeholders": {}
     },
     "introChatTitle": "పరిచయాల చాట్ సృష్టించండి",
-    "introChatDesc": "ఈ స్థలంలో ఎవ్వరైనా పోస్ట్ చేయవచ్చు.",
     "announcementsChatTitle": "ప్రకటనల చాట్",
-    "announcementsChatDesc": "కేవలం స్థల నిర్వాహకుడు మాత్రమే పోస్ట్ చేయవచ్చు.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10914,13 +10904,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "పాంజియా చాట్ లోగో",
-    "announcementsChatDetails": "కోర్సు నిర్వాహకులు కోర్సు పాల్గొనేవారికి ప్రకటనలు సృష్టించడానికి ఒక స్థలం. అందరూ ఈ చానల్‌ను చూడవచ్చు, కానీ కేవలం నిర్వాహకులు మాత్రమే ఇందులో టైప్ చేయవచ్చు.",
     "introChatDetails": "హలో చెప్పండి! మీ సహచర కోర్సు పాల్గొనేవారికి మీను పరిచయం చేయండి, స్నేహితులను కనుగొనండి, మరియు కార్యకలాపాల వెలుపల చాట్ చేయండి.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10949,6 +10934,21 @@
     },
     "waitingForBotToJoinActivity": "బాట్ చేరడానికి వేచి ఉన్నాం...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "కోర్సు నిర్వాహకులు కోర్సు పాల్గొనేవారికి ప్రకటనలు సృష్టించడానికి ఒక స్థలం. ఈ చానల్‌ను అందరూ చూడవచ్చు, కానీ అందులో టైప్ చేయడానికి కేవలం నిర్వాహకులే అనుమతించబడతారు.",
+    "introChatDesc": "కోర్సులో ఉన్న ఎవరు అయినా పోస్టు చేయవచ్చు.",
+    "announcementsChatDesc": "కేవలం కోర్సు నిర్వాహకులు మాత్రమే పోస్టు చేయవచ్చు.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-06-10 14:28:38.511115",
+    "@@last_modified": "2026-06-11 10:22:11.955223",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -8495,22 +8495,12 @@
         "placeholders": {}
     },
     "introChatTitle": "إنشاء دردشة التعريفات",
-    "introChatDesc": "يمكن لأي شخص في المساحة النشر.",
     "announcementsChatTitle": "دردشة الإعلانات",
-    "announcementsChatDesc": "يمكن فقط لمسؤول المساحة النشر.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10130,13 +10120,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "شعار دردشة بانجيا",
-    "announcementsChatDetails": "مكان لمديري الدورة لإنشاء إعلانات لمشاركي الدورة. بينما يمكن للجميع مشاهدة هذه القناة، يمكن للمديرين فقط الكتابة فيها.",
     "introChatDetails": "قل مرحبًا! قدم نفسك لمشاركي الدورة الآخرين، وابحث عن أصدقاء، وتحدث خارج الأنشطة.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -10165,6 +10150,21 @@
     },
     "waitingForBotToJoinActivity": "في انتظار انضمام الروبوت...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "مكان لمديري الدورة لإنشاء إعلانات لمشاركي الدورة. بينما يمكن للجميع مشاهدة هذه القناة، يمكن للمديرين فقط الكتابة فيها.",
+    "introChatDesc": "يمكن لأي شخص في الدورة النشر.",
+    "announcementsChatDesc": "يمكن لمديري الدورة فقط النشر.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

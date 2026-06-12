@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:collection/collection.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
@@ -13,6 +12,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pangea/common/config/env_loader.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
@@ -28,9 +28,14 @@ import 'widgets/fluffy_chat_app.dart';
 ReceivePort? mainIsolateReceivePort;
 
 void main() async {
+  // Our background push shared isolate accesses flutter-internal things very early in the startup proccess
+  // To make sure that the parts of flutter needed are started up already, we need to ensure that the
+  // widget bindings are initialized already.
+  WidgetsFlutterBinding.ensureInitialized();
+
   // #Pangea
   try {
-    await dotenv.load(fileName: ".env");
+    await EnvLoader.load();
   } catch (e) {
     Logs().e('Failed to load .env file', e);
   }
@@ -64,11 +69,6 @@ void main() async {
     );
     await waitForPushIsolateDone();
   }
-
-  // Our background push shared isolate accesses flutter-internal things very early in the startup proccess
-  // To make sure that the parts of flutter needed are started up already, we need to ensure that the
-  // widget bindings are initialized already.
-  WidgetsFlutterBinding.ensureInitialized();
 
   final store = await AppSettings.init();
   Logs().i('Welcome to ${AppSettings.applicationName.value} <3');
@@ -139,6 +139,8 @@ Future<void> startGui(List<Client> clients, SharedPreferences store) async {
       await firstClient.logout();
     }
   }
+  final loggedInClient = clients.firstWhereOrNull((c) => c.isLogged());
+  await GoogleAnalytics.analyticsUserUpdate(loggedInClient?.userID);
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp, // Lock to portrait mode
   ]);

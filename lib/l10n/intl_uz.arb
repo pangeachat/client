@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-06-10 14:28:35.764662",
+    "@@last_modified": "2026-06-11 10:22:02.117290",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -4213,9 +4213,7 @@
     "changeCourse": "Kursni o'zgartirish",
     "changeCourseDesc": "Bu yerda siz bu kursning rejasini o'zgartirishingiz mumkin.",
     "introChatTitle": "Tanishuvlar chatini yaratish",
-    "introChatDesc": "Har kim joyda yozishi mumkin.",
     "announcementsChatTitle": "E'lonlar chat",
-    "announcementsChatDesc": "Faqat joy administratorlari yozishi mumkin.",
     "notStartedActivitiesTitle": "Boshlanmagan sessiyalar ({num})",
     "inProgressActivitiesTitle": "Hozir bo'lib o'tayotgan ({num})",
     "pickDifferentActivity": "Boshqa faoliyatni tanlang",
@@ -8541,15 +8539,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9794,13 +9784,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Pangea Chat logotipi",
-    "announcementsChatDetails": "Kurs ishtirokchilari uchun e'lonlar yaratish uchun kurs adminlari uchun joy. Barcha foydalanuvchilar ushbu kanalda ko'rishlari mumkin, faqat adminlar yozishlari mumkin.",
     "introChatDetails": "Salom ayting! O'zingizni kurs ishtirokchilari bilan tanishtiring, do'stlar toping va faoliyatlardan tashqarida suhbatlashing.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -9829,6 +9814,21 @@
     },
     "waitingForBotToJoinActivity": "Botning faoliyatga qo'shilishini kutyapman...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Kurs adminlari uchun kurs ishtirokchilari uchun e'lonlar yaratish joyi. Barcha foydalanuvchilar ushbu kanalni ko'rishi mumkin, lekin faqat adminlar unda yozishlari mumkin.",
+    "introChatDesc": "Kursdagi har kim post qila oladi.",
+    "announcementsChatDesc": "Faqat kurs adminlari post qila oladi.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

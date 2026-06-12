@@ -3913,7 +3913,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-06-10 14:28:11.283363",
+    "@@last_modified": "2026-06-11 10:21:12.558379",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -8373,22 +8373,12 @@
         "placeholders": {}
     },
     "introChatTitle": "Luo esittelykeskustelu",
-    "introChatDesc": "Kuka tahansa tilassa voi julkaista.",
     "announcementsChatTitle": "Ilmoitukset keskustelu",
-    "announcementsChatDesc": "Vain tilan ylläpitäjä voi julkaista.",
     "@introChatTitle": {
         "type": "String",
         "placeholders": {}
     },
-    "@introChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@announcementsChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9839,13 +9829,8 @@
         "placeholders": {}
     },
     "pangeaChatLogo": "Pangea Chat -logo",
-    "announcementsChatDetails": "Paikka kurssin ylläpitäjille luoda ilmoituksia kurssin osallistujille. Vaikka kaikki voivat nähdä tämän kanavan, vain ylläpitäjät voivat kirjoittaa siihen.",
     "introChatDetails": "Sano hei! Esittele itsesi muille kurssin osallistujille, etsi ystäviä ja keskustele aktiviteettien ulkopuolella.",
     "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@announcementsChatDetails": {
         "type": "String",
         "placeholders": {}
     },
@@ -9874,6 +9859,21 @@
     },
     "waitingForBotToJoinActivity": "Odotetaan botin liittymistä...",
     "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Paikka kurssin ylläpitäjille luoda ilmoituksia kurssin osallistujille. Vaikka kaikki voivat nähdä tämän kanavan, vain ylläpitäjät voivat kirjoittaa siihen.",
+    "introChatDesc": "Kuka tahansa kurssilla voi julkaista.",
+    "announcementsChatDesc": "Vain kurssin ylläpitäjät voivat julkaista.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }
