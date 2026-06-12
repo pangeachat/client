@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/pangea/languages/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_result.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/course_code_onboarding_step.dart';
@@ -13,6 +12,7 @@ import 'package:fluffychat/routes/onboarding/onboarding_steps/pick_language_onbo
 import 'package:fluffychat/routes/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/user_type_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import '../get_test_client.dart';
 import 'get_initial_onboarding_step.dart';
 

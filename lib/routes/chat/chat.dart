@@ -20,7 +20,6 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/goal_star_animation.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
@@ -70,9 +69,6 @@ import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
-import 'package:fluffychat/pangea/learning_settings/disable_language_tools_popup.dart';
-import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
-import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_repo.dart';
@@ -90,12 +86,16 @@ import 'package:fluffychat/pangea/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/pangea/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/pangea/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/routes/chat/chat_banner_controller.dart';
+import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_view.dart';
 import 'package:fluffychat/routes/chat/event_info_dialog.dart';
 import 'package:fluffychat/routes/chat/event_too_large_dialog.dart';
 import 'package:fluffychat/routes/chat/level_up_banner.dart';
 import 'package:fluffychat/routes/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/routes/chat/unlocked_morph_banner.dart';
+import 'package:fluffychat/routes/settings/settings_learning/disable_language_tools_popup.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_repo.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
 import 'package:fluffychat/utils/file_selector.dart';
@@ -2357,51 +2357,6 @@ class ChatController extends State<ChatPageWithRoom>
     clearSelectedEvents();
   }
   // Pangea#
-
-  void onPhoneButtonTap() async {
-    // VoIP required Android SDK 21
-    if (PlatformInfos.isAndroid) {
-      DeviceInfoPlugin().androidInfo.then((value) {
-        if (value.version.sdkInt < 21) {
-          Navigator.pop(context);
-          showOkAlertDialog(
-            context: context,
-            title: L10n.of(context).unsupportedAndroidVersion,
-            message: L10n.of(context).unsupportedAndroidVersionLong,
-            okLabel: L10n.of(context).close,
-          );
-        }
-      });
-    }
-    final callType = await showModalActionPopup<CallType>(
-      context: context,
-      title: L10n.of(context).warning,
-      message: L10n.of(context).videoCallsBetaWarning,
-      cancelLabel: L10n.of(context).cancel,
-      actions: [
-        AdaptiveModalAction(
-          label: L10n.of(context).voiceCall,
-          icon: const Icon(Icons.phone_outlined),
-          value: CallType.kVoice,
-        ),
-        AdaptiveModalAction(
-          label: L10n.of(context).videoCall,
-          icon: const Icon(Icons.video_call_outlined),
-          value: CallType.kVideo,
-        ),
-      ],
-    );
-    if (callType == null) return;
-
-    final voipPlugin = Matrix.of(context).voipPlugin;
-    try {
-      await voipPlugin!.voip.inviteToCall(room, callType);
-    } catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
-    }
-  }
 
   void cancelReplyEventAction() => setState(() {
     // #Pangea

@@ -3,10 +3,10 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/instructions/instruction_settings.dart';
-import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';
-import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
-import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/user/user_constants.dart';
+import 'package:fluffychat/routes/settings/settings_learning/gender_enum.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../languages/language_model.dart';
 

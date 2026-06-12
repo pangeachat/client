@@ -1,9 +1,9 @@
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/pick_cefr_level_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 
 class PickLanguageOnboardingStep extends OnboardingStep {
   PickLanguageOnboardingStep({

@@ -13,7 +13,7 @@ import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/blur_hash.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
-import '../../pages/image_viewer/image_viewer.dart';
+import '../../widgets/image_viewer/image_viewer.dart';
 
 class EventVideoPlayer extends StatelessWidget {
   final Event event;

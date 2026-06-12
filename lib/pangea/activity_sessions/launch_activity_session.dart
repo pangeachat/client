@@ -14,7 +14,7 @@ import 'package:fluffychat/pangea/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
-import 'package:fluffychat/pangea/world/activity_course_resolver.dart';
+import 'package:fluffychat/routes/world/activity_course_resolver.dart';
 
 extension LaunchActivitySession on Client {
   /// Create an activity session room and share it into every joined

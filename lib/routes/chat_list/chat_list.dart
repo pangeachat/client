@@ -16,7 +16,6 @@ import 'package:fluffychat/pangea/analytics_access/access_notice_extension.dart'
 import 'package:fluffychat/pangea/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/pangea/app_version/app_version_util.dart';
-import 'package:fluffychat/pangea/chat_settings/widgets/chat_context_menu_action.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -26,6 +25,7 @@ import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/pangea/navigation/route_paths.dart';
 import 'package:fluffychat/pangea/subscription/widgets/subscription_snackbar.dart';
+import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_view.dart';
 import 'package:fluffychat/routes/invite_user/user_invite_controller.dart';
 import 'package:fluffychat/routes/invite_user/user_invite_link_repo.dart';

@@ -30,8 +30,8 @@ import '../choreographer/choreo_record_model.dart';
 import '../events/constants/pangea_event_types.dart';
 import '../events/models/representation_content_model.dart';
 
+part "../../routes/chat/chat_details/room_capacity_extension.dart";
 part "../analytics_misc/room_analytics_extension.dart";
-part "../chat_settings/utils/room_capacity_extension.dart";
 part "room_children_and_parents_extension.dart";
 part "room_events_extension.dart";
 part "room_information_extension.dart";

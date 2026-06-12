@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/pick_cefr_level_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PickCefrLevelStepView extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 
 class CustomCourseRequestModel {
   final String name;

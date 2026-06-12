@@ -14,8 +14,8 @@ import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extensio
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_finished_status_message.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_session_popup_menu.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/chat_app_bar_list_tile.dart';
 import 'package:fluffychat/routes/chat/chat_app_bar_title.dart';

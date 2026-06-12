@@ -13,8 +13,8 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
-import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';
 import 'package:fluffychat/pangea/user/user_model.dart';
+import 'package:fluffychat/routes/settings/settings_learning/gender_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Builds updated [BotOptionsModel] if any bot-relevant user setting differs

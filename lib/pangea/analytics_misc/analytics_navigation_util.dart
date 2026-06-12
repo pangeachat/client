@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/routes/analytics/analytics_details_popup.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 
 class AnalyticsNavigationUtil {

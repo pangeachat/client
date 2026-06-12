@@ -1,0 +1,527 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+
+import 'package:collection/collection.dart';
+import 'package:matrix/matrix.dart';
+
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
+import 'package:fluffychat/pangea/user/user_search_extension.dart';
+import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection_view.dart';
+import 'package:fluffychat/utils/localized_exception_extension.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+
+enum InvitationFilter {
+  participants,
+  space,
+  contacts,
+  knocking,
+  invited,
+  public,
+  banned;
+
+  static InvitationFilter? fromString(String value) =>
+      InvitationFilter.values.firstWhereOrNull((e) => e.name == value);
+}
+
+class PangeaInvitationSelection extends StatefulWidget {
+  final String roomId;
+  final InvitationFilter? initialFilter;
+  const PangeaInvitationSelection({
+    super.key,
+    required this.roomId,
+    this.initialFilter,
+  });
+
+  @override
+  PangeaInvitationSelectionController createState() =>
+      PangeaInvitationSelectionController();
+}
+
+class PangeaInvitationSelectionController
+    extends State<PangeaInvitationSelection> {
+  TextEditingController controller = TextEditingController();
+  ScrollController scrollController = ScrollController();
+
+  bool loading = false;
+
+  List<Profile> foundProfiles = [];
+  Timer? coolDown;
+  String? lastSearch;
+
+  InvitationFilter filter = InvitationFilter.knocking;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _room
+        ?.requestParticipants(
+          [
+            Membership.join,
+            Membership.invite,
+            Membership.knock,
+            Membership.ban,
+          ],
+          false,
+          true,
+        )
+        .then((_) {
+          if (mounted) setState(() {});
+        });
+
+    if (widget.initialFilter != null &&
+        availableFilters.contains(widget.initialFilter)) {
+      filter = widget.initialFilter!;
+    } else if (spaceParent != null) {
+      filter = InvitationFilter.space;
+    } else if (_room?.getParticipants([Membership.knock]).isEmpty ?? true) {
+      filter = InvitationFilter.contacts;
+    }
+
+    if (filter == InvitationFilter.public) {
+      searchUser(context, controller.text);
+    }
+
+    controller.addListener(() {
+      setState(() {});
+    });
+
+    _addJoinCode();
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  bool get showAcceptAll {
+    if (filter != InvitationFilter.knocking) {
+      return false;
+    }
+
+    return filteredContacts().isNotEmpty;
+  }
+
+  String filterLabel(InvitationFilter filter) {
+    final l10n = L10n.of(context);
+    switch (filter) {
+      case InvitationFilter.space:
+        return l10n.inThisSpace;
+      case InvitationFilter.contacts:
+        return l10n.myContacts;
+      case InvitationFilter.invited:
+        return l10n.numInvited(_room?.summary.mInvitedMemberCount ?? 0);
+      case InvitationFilter.knocking:
+        return l10n.numKnocking(
+          participants?.where((u) => u.membership == Membership.knock).length ??
+              0,
+        );
+      case InvitationFilter.public:
+        return l10n.public;
+      case InvitationFilter.participants:
+        return l10n.participants;
+      case InvitationFilter.banned:
+        return l10n.banned;
+    }
+  }
+
+  Room? get _room => Matrix.of(context).client.getRoomById(widget.roomId);
+
+  Room? get spaceParent {
+    final parents = _room?.pangeaSpaceParents;
+    if (parents == null || parents.isEmpty) return null;
+    return parents.first;
+  }
+
+  bool get showInviteAllInSpaceButton {
+    final roomParticipants = participants;
+    if (roomParticipants == null ||
+        filter != InvitationFilter.space ||
+        spaceParent == null) {
+      return false;
+    }
+
+    final spaceParticipants = spaceParent!.getParticipants();
+    return spaceParticipants.any(
+      (participant) => !roomParticipants.any((p) => p.id == participant.id),
+    );
+  }
+
+  List<InvitationFilter> get availableFilters => InvitationFilter.values
+      .where(
+        (f) => switch (f) {
+          InvitationFilter.space => spaceParent != null,
+          InvitationFilter.contacts => true,
+          InvitationFilter.invited =>
+            participants?.any((u) => u.membership == Membership.invite) ??
+                false,
+          InvitationFilter.knocking =>
+            participants?.any((u) => u.membership == Membership.knock) ?? false,
+          InvitationFilter.banned =>
+            participants?.any((u) => u.membership == Membership.ban) ?? false,
+          InvitationFilter.public => true,
+          InvitationFilter.participants => true,
+        },
+      )
+      .toList();
+
+  List<User>? get participants {
+    return _room?.getParticipants([
+      Membership.join,
+      Membership.invite,
+      Membership.knock,
+      Membership.ban,
+    ]);
+  }
+
+  List<Membership> get _membershipOrder => [
+    Membership.join,
+    Membership.invite,
+    Membership.knock,
+    Membership.leave,
+    Membership.ban,
+  ];
+
+  String? membershipCopy(Membership? membership) => switch (membership) {
+    Membership.ban => L10n.of(context).banned,
+    Membership.invite => L10n.of(context).invited,
+    Membership.join => null,
+    Membership.knock => L10n.of(context).knocking,
+    Membership.leave => L10n.of(context).leftTheChat,
+    null => null,
+  };
+
+  int _sortUsers(User a, User b) {
+    // sort yourself to the top
+    final client = Matrix.of(context).client;
+    if (a.id == client.userID) return -1;
+    if (b.id == client.userID) return 1;
+
+    // sort the bot to the top
+    if (a.id == BotName.byEnvironment) return -1;
+    if (b.id == BotName.byEnvironment) return 1;
+
+    if (participants != null) {
+      final participantA = participants!.firstWhereOrNull((u) => u.id == a.id);
+      final participantB = participants!.firstWhereOrNull((u) => u.id == b.id);
+      // sort all participants first, with admins first, then moderators, then the rest
+      if (participantA?.membership == null &&
+          participantB?.membership != null) {
+        return 1;
+      }
+      if (participantA?.membership != null &&
+          participantB?.membership == null) {
+        return -1;
+      }
+      if (participantA?.membership != null &&
+          participantB?.membership != null) {
+        final aIndex = _membershipOrder.indexOf(participantA!.membership);
+        final bIndex = _membershipOrder.indexOf(participantB!.membership);
+        if (aIndex != bIndex) {
+          return aIndex.compareTo(bIndex);
+        }
+      }
+    }
+
+    // finally, sort by displayname
+    final aName = a.calcDisplayname().toLowerCase();
+    final bName = b.calcDisplayname().toLowerCase();
+    return aName.compareTo(bName);
+  }
+
+  void setFilter(InvitationFilter newFilter) {
+    if (filter == newFilter) return;
+    if (newFilter == InvitationFilter.public) {
+      searchUser(context, controller.text);
+    }
+    if (scrollController.hasClients) {
+      scrollController.jumpTo(0);
+    }
+    setState(() => filter = newFilter);
+  }
+
+  List<User> filteredContacts() {
+    List<User> contacts = [];
+    switch (filter) {
+      case InvitationFilter.space:
+        contacts = spaceParent?.getParticipants() ?? [];
+      case InvitationFilter.contacts:
+        contacts = getContacts(context);
+      case InvitationFilter.invited:
+        contacts =
+            participants
+                ?.where((u) => u.membership == Membership.invite)
+                .toList() ??
+            [];
+      case InvitationFilter.knocking:
+        contacts =
+            participants
+                ?.where((u) => u.membership == Membership.knock)
+                .toList() ??
+            [];
+      case InvitationFilter.banned:
+        contacts =
+            participants
+                ?.where((u) => u.membership == Membership.ban)
+                .toList() ??
+            [];
+      default:
+        contacts =
+            participants
+                ?.where((p) => p.membership != Membership.ban)
+                .toList() ??
+            [];
+    }
+
+    final search = controller.text.toLowerCase();
+    contacts = contacts
+        .where(
+          (u) =>
+              u.calcDisplayname().toLowerCase().contains(search) ||
+              u.id.toLowerCase().contains(search),
+        )
+        .toList();
+
+    if (_room?.isSpace ?? false) {
+      contacts.removeWhere((u) => u.id == BotName.byEnvironment);
+    }
+    contacts.sort(_sortUsers);
+    return contacts;
+  }
+
+  List<User> getContacts(BuildContext context) {
+    final client = Matrix.of(context).client;
+    final contacts = client.rooms
+        .where((r) => r.isDirectChat)
+        .map((r) => r.unsafeGetUserFromMemoryOrFallback(r.directChatMatrixID!))
+        .toList();
+
+    if (_room?.isSpace == false &&
+        !contacts.any((u) => u.id == BotName.byEnvironment)) {
+      final bot = _room?.unsafeGetUserFromMemoryOrFallback(
+        BotName.byEnvironment,
+      );
+      if (bot != null) contacts.add(bot);
+    }
+
+    final filtered = <User>[];
+    final seen = <String>{};
+    for (final contact in contacts) {
+      if (seen.contains(contact.id)) continue;
+      seen.add(contact.id);
+      filtered.add(contact);
+    }
+    return filtered;
+  }
+
+  void searchUserWithCoolDown(String text) async {
+    if (filter != InvitationFilter.public) return;
+    coolDown?.cancel();
+    coolDown = Timer(
+      const Duration(milliseconds: 500),
+      () => searchUser(context, text),
+    );
+  }
+
+  Future<void> _addJoinCode() async {
+    if (_room == null || _room!.joinCode != null) return;
+    if (!_room!.canChangeStateEvent(EventTypes.RoomJoinRules)) return;
+
+    try {
+      await _room!.generateAndSetJoinCode();
+      if (mounted) setState(() {});
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'roomId': _room!.id});
+    }
+  }
+
+  Future<void> searchUser(BuildContext context, String text) async {
+    coolDown?.cancel();
+    if (text.isEmpty) {
+      setState(() => foundProfiles = []);
+    }
+
+    setState(() {
+      loading = true;
+      lastSearch = null;
+    });
+    final matrix = Matrix.of(context);
+    SearchUserDirectoryResponse response;
+    try {
+      response = await matrix.client.searchUser(text, limit: 100);
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text((e).toLocalizedString(context))));
+      return;
+    } finally {
+      setState(() {
+        loading = false;
+        lastSearch = text;
+      });
+    }
+
+    final results = response.results;
+    if (_room?.isSpace ?? false) {
+      results.removeWhere((profile) => profile.userId == BotName.byEnvironment);
+    }
+
+    setState(() {
+      foundProfiles = List<Profile>.from(results);
+      if (text.isValidMatrixId &&
+          foundProfiles.indexWhere((profile) => text == profile.userId) == -1) {
+        setState(
+          () => foundProfiles = [
+            Profile.fromJson({ModelKey.userId: text}),
+          ],
+        );
+      }
+
+      final participants = this.participants
+          ?.where(
+            (user) =>
+                [Membership.join, Membership.invite].contains(user.membership),
+          )
+          .toList();
+
+      foundProfiles.removeWhere(
+        (profile) =>
+            participants?.indexWhere((u) => u.id == profile.userId) != -1,
+      );
+    });
+  }
+
+  void inviteAction(String userID) async {
+    final room = Matrix.of(context).client.getRoomById(widget.roomId)!;
+
+    final success = await showFutureLoadingDialog(
+      context: context,
+      future: () async {
+        await room.invite(userID);
+        if (room.courseParent != null && room.courseParent!.canInvite) {
+          await room.courseParent!.requestParticipants(
+            [Membership.join, Membership.invite],
+            false,
+            true,
+          );
+
+          final existingParticipant = room.courseParent!
+              .getParticipants()
+              .firstWhereOrNull((u) => u.id == userID);
+
+          if (existingParticipant == null ||
+              ![
+                Membership.invite,
+                Membership.join,
+              ].contains(existingParticipant.membership)) {
+            await room.courseParent!.invite(userID);
+          }
+        }
+      },
+    );
+    if (success.error == null) {
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            room.isSpace
+                ? L10n.of(context).contactHasBeenInvitedToTheCourse
+                : L10n.of(context).contactHasBeenInvitedToTheChat,
+          ),
+          showCloseIcon: true,
+        ),
+      );
+    }
+  }
+
+  Future<void> inviteAllInSpace() async {
+    if (_room == null) return;
+    final spaceParticipants = spaceParent?.getParticipants() ?? [];
+
+    if (spaceParticipants.isEmpty) return;
+
+    final List<Future> futures = [];
+    for (final user in spaceParticipants) {
+      if (participants?.any((u) => u.id == user.id) ?? false) {
+        // User is already in the room
+        continue;
+      }
+
+      if (user.id == Matrix.of(context).client.userID) continue;
+      futures.add(_room!.invite(user.id));
+    }
+
+    await showFutureLoadingDialog(
+      context: context,
+      future: () async {
+        await Future.wait(futures);
+        return null; // No error
+      },
+    ).then((result) {
+      if (result.error == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              L10n.of(context).spaceParticipantsHaveBeenInvitedToTheChat,
+            ),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(result.error.toString())));
+      }
+    });
+  }
+
+  Future<void> acceptAllKnocking() async {
+    if (_room == null) return;
+
+    final knocking =
+        participants?.where((u) => u.membership == Membership.knock).toList() ??
+        [];
+    if (knocking.isEmpty) return;
+
+    final futures = knocking.map((u) async {
+      _room!.invite(u.id);
+      if (u.membership != Membership.invite) {
+        await _room!.client.onSync.stream.firstWhere(
+          (update) =>
+              update.rooms?.join?[widget.roomId]?.timeline?.events?.any(
+                (event) =>
+                    event.type == EventTypes.RoomMember &&
+                    event.stateKey == u.id &&
+                    event.content['membership'] == 'invite',
+              ) ==
+              true,
+        );
+      }
+    }).toList();
+
+    await showFutureLoadingDialog(
+      context: context,
+      future: () => Future.wait(futures),
+    );
+
+    if (!mounted) return;
+
+    final updatedContacts = filteredContacts();
+    if (updatedContacts.isEmpty) {
+      setFilter(InvitationFilter.invited);
+    } else {
+      setState(() {});
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) => PangeaInvitationSelectionView(this);
+}

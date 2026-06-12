@@ -12,7 +12,7 @@ import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/segmented_circular_progress.dart';
-import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
+import 'package:fluffychat/routes/settings/settings_learning/settings_learning.dart';
 
 class StartIGCButton extends StatefulWidget {
   final VoidCallback onPressed;

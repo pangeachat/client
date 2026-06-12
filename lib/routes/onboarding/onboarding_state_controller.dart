@@ -2,11 +2,11 @@ import 'dart:typed_data';
 
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/routes/onboarding/account_updater.dart';
 import 'package:fluffychat/routes/onboarding/avatar_provider.dart';
 import 'package:fluffychat/routes/onboarding/course_provider.dart';
 import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 
 class AvatarInfo {
   final Uri? avatarUrl;

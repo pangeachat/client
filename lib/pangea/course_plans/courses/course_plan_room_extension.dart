@@ -7,9 +7,9 @@ import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extensio
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/launch_activity_session.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_event.dart';
-import 'package:fluffychat/pangea/course_settings/teacher_mode_model.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/chat/chat_details/teacher_mode_model.dart';
 
 extension CoursePlanRoomExtension on Room {
   CoursePlanEvent? get coursePlan {

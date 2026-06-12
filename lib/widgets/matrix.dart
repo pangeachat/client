@@ -32,12 +32,11 @@ import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_file_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/uia_request_manager.dart';
-import 'package:fluffychat/utils/voip_plugin.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../config/setting_keys.dart';
-import '../pages/key_verification/key_verification_dialog.dart';
+import '../routes/settings/settings_device/key_verification_dialog.dart';
 import '../utils/account_bundles.dart';
 import '../utils/background_push.dart';
 import 'local_notifications_extension.dart';
@@ -116,8 +115,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
   // Pangea#
 
-  VoipPlugin? voipPlugin;
-
   bool get isMultiAccount => widget.clients.length > 1;
 
   int getClientIndexByMatrixId(String matrixId) =>
@@ -135,8 +132,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     final i = widget.clients.indexWhere((c) => c == cl);
     if (i != -1) {
       _activeClient = i;
-      // TODO: Multi-client VoiP support
-      createVoipPlugin();
     } else {
       Logs().w('Tried to set an unknown client ${cl!.userID} as active');
     }
@@ -543,16 +538,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         },
       );
     }
-
-    createVoipPlugin();
-  }
-
-  void createVoipPlugin() async {
-    if (AppSettings.experimentalVoip.value) {
-      voipPlugin = null;
-      return;
-    }
-    voipPlugin = VoipPlugin(this);
   }
 
   @override

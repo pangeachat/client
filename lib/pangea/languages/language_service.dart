@@ -6,7 +6,7 @@ import 'package:universal_io/io.dart';
 
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
-import 'package:fluffychat/pangea/learning_settings/p_language_dialog.dart';
+import 'package:fluffychat/routes/settings/settings_learning/p_language_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LanguageService {

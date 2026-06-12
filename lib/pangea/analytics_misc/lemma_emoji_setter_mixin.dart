@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_list_tile.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/routes/analytics/vocab/vocab_analytics_list_tile.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 mixin LemmaEmojiSetter {

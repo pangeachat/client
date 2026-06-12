@@ -5,9 +5,9 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
-import 'package:fluffychat/pages/image_viewer/image_viewer.dart';
 import 'package:fluffychat/utils/file_description.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
+import 'package:fluffychat/widgets/image_viewer/image_viewer.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
 import '../../widgets/blur_hash.dart';
 

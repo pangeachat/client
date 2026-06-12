@@ -22,7 +22,6 @@ import 'package:fluffychat/pangea/events/repo/language_detection_repo.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_request.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_response.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_request_model.dart';
@@ -34,6 +33,7 @@ import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.da
 import 'package:fluffychat/pangea/translation/full_text_translation_repo.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_response_model.dart';
+import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../../widgets/matrix.dart';
 import '../../common/utils/error_handler.dart';

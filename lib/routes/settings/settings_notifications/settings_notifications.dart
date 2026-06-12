@@ -1,0 +1,294 @@
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
+
+import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/notifications/notifications_client_extension.dart';
+import 'package:fluffychat/routes/settings/settings_notifications/push_rule_extensions.dart';
+import 'package:fluffychat/utils/localized_exception_extension.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/local_notifications_extension.dart';
+import '../../../widgets/matrix.dart';
+import 'settings_notifications_view.dart';
+
+class SettingsNotifications extends StatefulWidget {
+  const SettingsNotifications({super.key});
+
+  @override
+  SettingsNotificationsController createState() =>
+      SettingsNotificationsController();
+}
+
+class SettingsNotificationsController extends State<SettingsNotifications> {
+  bool isLoading = false;
+  // #Pangea
+  ScaffoldMessengerState? messenger;
+
+  @override
+  void initState() {
+    super.initState();
+    // #Pangea
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => Matrix.of(context).showEnableNotificationsDialog(context),
+    );
+  }
+
+  @override
+  void dispose() {
+    messenger?.hideCurrentSnackBar();
+    super.dispose();
+  }
+  // Pangea#
+
+  void onPusherTap(Pusher pusher) async {
+    final delete = await showModalActionPopup<bool>(
+      context: context,
+      title: pusher.deviceDisplayName,
+      message: '${pusher.appDisplayName} (${pusher.appId})',
+      cancelLabel: L10n.of(context).cancel,
+      actions: [
+        AdaptiveModalAction(
+          label: L10n.of(context).delete,
+          isDestructive: true,
+          value: true,
+        ),
+      ],
+    );
+    if (delete != true) return;
+
+    final success = await showFutureLoadingDialog(
+      context: context,
+      future: () => Matrix.of(context).client.deletePusher(
+        PusherId(appId: pusher.appId, pushkey: pusher.pushkey),
+      ),
+    );
+
+    if (success.error != null) return;
+
+    setState(() {
+      pusherFuture = null;
+    });
+  }
+
+  Future<List<Pusher>?>? pusherFuture;
+
+  void togglePushRule(PushRuleKind kind, PushRule pushRule) async {
+    setState(() {
+      isLoading = true;
+    });
+    try {
+      final updateFromSync = Matrix.of(context).client.onSync.stream
+          .where(
+            (syncUpdate) =>
+                syncUpdate.accountData?.any(
+                  (accountData) => accountData.type == 'm.push_rules',
+                ) ??
+                false,
+          )
+          .first;
+      await Matrix.of(
+        context,
+      ).client.setPushRuleEnabled(kind, pushRule.ruleId, !pushRule.enabled);
+      await updateFromSync;
+    } catch (e, s) {
+      Logs().w('Unable to toggle push rule', e, s);
+      if (!mounted) return;
+      // #Pangea
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      // Pangea#
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
+    } finally {
+      if (mounted) {
+        setState(() {
+          isLoading = false;
+        });
+      }
+    }
+  }
+
+  void editPushRule(PushRule rule, PushRuleKind kind) async {
+    final theme = Theme.of(context);
+    final action = await showAdaptiveDialog<PushRuleDialogAction>(
+      context: context,
+      builder: (context) => ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 256),
+        child: AlertDialog.adaptive(
+          title: Text(rule.getPushRuleName(L10n.of(context))),
+          content: Padding(
+            padding: const EdgeInsets.only(top: 16.0),
+            child: Material(
+              borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+              color: theme.colorScheme.surfaceContainer,
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(16),
+                scrollDirection: Axis.horizontal,
+                child: SelectableText(
+                  prettyJson(rule.toJson()),
+                  style: TextStyle(color: theme.colorScheme.onSurface),
+                ),
+              ),
+            ),
+          ),
+          actions: [
+            AdaptiveDialogAction(
+              onPressed: Navigator.of(context).pop,
+              child: Text(L10n.of(context).close),
+            ),
+            if (!rule.ruleId.startsWith('.m.'))
+              AdaptiveDialogAction(
+                onPressed: () =>
+                    Navigator.of(context).pop(PushRuleDialogAction.delete),
+                child: Text(
+                  L10n.of(context).delete,
+                  style: TextStyle(color: theme.colorScheme.error),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+    if (action == null) return;
+    if (!mounted) return;
+    switch (action) {
+      case PushRuleDialogAction.delete:
+        final consent = await showOkCancelAlertDialog(
+          context: context,
+          title: L10n.of(context).areYouSure,
+          message: L10n.of(context).deletePushRuleCanNotBeUndone,
+          okLabel: L10n.of(context).delete,
+          isDestructive: true,
+        );
+        if (consent != OkCancelResult.ok) return;
+        if (!mounted) return;
+        setState(() {
+          isLoading = true;
+        });
+        try {
+          final updateFromSync = Matrix.of(context).client.onSync.stream
+              .where(
+                (syncUpdate) =>
+                    syncUpdate.accountData?.any(
+                      (accountData) => accountData.type == 'm.push_rules',
+                    ) ??
+                    false,
+              )
+              .first;
+          await Matrix.of(context).client.deletePushRule(kind, rule.ruleId);
+          await updateFromSync;
+        } catch (e, s) {
+          Logs().w('Unable to delete push rule', e, s);
+          if (!mounted) return;
+          // #Pangea
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          // Pangea#
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
+        } finally {
+          if (mounted) {
+            setState(() {
+              isLoading = false;
+            });
+          }
+        }
+        return;
+    }
+  }
+
+  // #Pangea
+  final ValueNotifier<double> volumeNotifier = ValueNotifier<double>(
+    AppSettings.volume.value,
+  );
+
+  void updateVolume(double value) {
+    volumeNotifier.value = value;
+    AppSettings.volume.setItem(value);
+  }
+
+  Future<void> setEmailNotificationsEnabled(bool enable) async {
+    try {
+      await Matrix.of(context).client.setEnableEmailNotifs(enable);
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'enable': enable});
+
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.toLocalizedString(context)),
+          showCloseIcon: true,
+        ),
+      );
+    } finally {
+      if (mounted) {
+        setState(() {
+          pusherFuture = null;
+        });
+      }
+    }
+  }
+
+  void showNoEmailSnackbar() {
+    messenger ??= ScaffoldMessenger.of(context);
+    messenger!.hideCurrentSnackBar();
+    messenger!.showSnackBar(
+      SnackBar(
+        content: RichText(
+          text: TextSpan(
+            style: TextStyle(color: Theme.of(context).colorScheme.surface),
+            children: [
+              TextSpan(text: L10n.of(context).noAddressDescription),
+              const TextSpan(text: ' '),
+              WidgetSpan(
+                alignment: PlaceholderAlignment.baseline,
+                baseline: TextBaseline.alphabetic,
+                child: InkWell(
+                  onTap: () {
+                    messenger!.hideCurrentSnackBar();
+                    context.go("/rooms/settings/security/3pid");
+                  },
+                  child: Text(
+                    L10n.of(context).clickToAddEmail,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                      decoration: TextDecoration.underline,
+                      decorationColor: Theme.of(
+                        context,
+                      ).colorScheme.primaryContainer,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        duration: Duration(seconds: 15),
+        showCloseIcon: true,
+      ),
+    );
+  }
+  // Pangea#
+
+  @override
+  Widget build(BuildContext context) => SettingsNotificationsView(this);
+}
+
+enum PushRuleDialogAction { delete }
+
+String prettyJson(Map<String, Object?> json) {
+  const decoder = JsonDecoder();
+  const encoder = JsonEncoder.withIndent('    ');
+  final object = decoder.convert(jsonEncode(json));
+  return encoder.convert(object);
+}

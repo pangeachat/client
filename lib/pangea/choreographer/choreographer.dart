@@ -19,9 +19,9 @@ import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_control
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
 import 'package:fluffychat/pangea/events/repo/tokens_repo.dart';
-import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../widgets/matrix.dart';
 import 'choreographer_error_controller.dart';

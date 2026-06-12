@@ -1,0 +1,176 @@
+// Flutter imports:
+
+import 'package:flutter/material.dart';
+
+import 'package:intl/intl.dart';
+
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/subscription/repo/subscription_management_repo.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/change_subscription.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription.dart';
+import 'package:fluffychat/widgets/layouts/max_width_body.dart';
+
+class SettingsSubscriptionView extends StatelessWidget {
+  final SubscriptionManagementController controller;
+  const SettingsSubscriptionView(this.controller, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final clickedCancelDate =
+        SubscriptionManagementRepo.getClickedCancelSubscription();
+
+    final isSubscribed = controller.subscriptionController.isSubscribed;
+    final hasFreeTrial =
+        controller
+            .subscriptionController
+            .currentSubscriptionInfo
+            ?.isFreeTrial ==
+        true;
+
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(L10n.of(context).subscriptionManagement),
+      ),
+      body: ListTileTheme(
+        iconColor: Theme.of(context).textTheme.bodyLarge!.color,
+        child: MaxWidthBody(
+          child: Column(
+            children: [
+              if (isSubscribed == null)
+                const Center(child: CircularProgressIndicator.adaptive())
+              else if (isSubscribed && !controller.showManagementOptions)
+                ManagementNotAvailableWarning(controller: controller)
+              else if (isSubscribed && controller.showManagementOptions) ...[
+                if (controller.currentSubscriptionAvailable)
+                  ListTile(
+                    title: Text(L10n.of(context).currentSubscription),
+                    subtitle: Text(controller.currentSubscriptionTitle),
+                    trailing: Text(controller.currentSubscriptionPrice),
+                  ),
+                Column(
+                  children: [
+                    ListTile(
+                      title: Text(
+                        controller.subscriptionEndDate == null
+                            ? L10n.of(context).cancelSubscription
+                            : L10n.of(context).enabledRenewal,
+                      ),
+                      enabled: controller.showManagementOptions,
+                      onTap: controller.onClickCancelSubscription,
+                      trailing: Icon(
+                        controller.subscriptionEndDate == null
+                            ? Icons.cancel_outlined
+                            : Icons.refresh_outlined,
+                      ),
+                    ),
+                    const Divider(height: 1),
+                    ListTile(
+                      title: Text(L10n.of(context).paymentMethod),
+                      trailing: const Icon(Icons.credit_card),
+                      onTap: () => controller.launchMangementUrl(
+                        ManagementOption.paymentMethod,
+                      ),
+                      enabled: controller.showManagementOptions,
+                    ),
+                    ListTile(
+                      title: Text(L10n.of(context).paymentHistory),
+                      trailing: const Icon(Icons.keyboard_arrow_right_outlined),
+                      onTap: () => controller.launchMangementUrl(
+                        ManagementOption.history,
+                      ),
+                      enabled: controller.showManagementOptions,
+                    ),
+                    if (controller.expirationDate != null) ...[
+                      const Divider(height: 1),
+                      ListTile(
+                        title: Text(
+                          controller.subscriptionEndDate != null
+                              ? L10n.of(context).subscriptionEndsOn
+                              : L10n.of(context).subscriptionRenewsOn,
+                        ),
+                        subtitle: Text(
+                          DateFormat.yMMMMd().format(
+                            controller.expirationDate!.toLocal(),
+                          ),
+                        ),
+                      ),
+                      if (clickedCancelDate != null &&
+                          DateTime.now()
+                                  .difference(clickedCancelDate)
+                                  .inMinutes <
+                              10)
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Row(
+                            spacing: 8.0,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(Icons.info_outline, size: 20),
+                              Flexible(
+                                child: Text(
+                                  L10n.of(context).waitForSubscriptionChanges,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                    ],
+                  ],
+                ),
+              ],
+              if (hasFreeTrial) ...[Divider(), SizedBox(height: 16.0)],
+              if (isSubscribed == false || hasFreeTrial)
+                ChangeSubscription(controller: controller),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ManagementNotAvailableWarning extends StatelessWidget {
+  final SubscriptionManagementController controller;
+
+  const ManagementNotAvailableWarning({required this.controller, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final currentSubscriptionInfo =
+        controller.subscriptionController.currentSubscriptionInfo;
+
+    String getWarningText() {
+      if (controller.currentSubscriptionIsPromotional) {
+        if (currentSubscriptionInfo?.isLifetimeSubscription ?? false) {
+          return L10n.of(context).promotionalSubscriptionDesc;
+        }
+
+        final DateFormat formatter = DateFormat('yyyy-MM-dd');
+        return L10n.of(context).trialExpiration(
+          formatter.format(currentSubscriptionInfo!.expirationDate!),
+        );
+      }
+      if (controller.currentSubscriptionAvailable) {
+        String warningText = L10n.of(context).subsciptionPlatformTooltip;
+        if (controller.purchasePlatformDisplayName != null) {
+          warningText +=
+              "\n${L10n.of(context).originalSubscriptionPlatform(controller.purchasePlatformDisplayName!)}";
+        }
+        return warningText;
+      }
+      return L10n.of(context).subscriptionManagementUnavailable;
+    }
+
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Text(getWarningText(), textAlign: TextAlign.center),
+      ),
+    );
+  }
+}

@@ -10,7 +10,7 @@ import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_repo.d
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_translation_request.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
-import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Represents a course plan in the course planner response.

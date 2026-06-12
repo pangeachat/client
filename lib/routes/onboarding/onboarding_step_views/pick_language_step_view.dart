@@ -13,10 +13,10 @@ import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
-import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
-import 'package:fluffychat/pangea/learning_settings/p_language_dropdown.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/pick_language_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
+import 'package:fluffychat/routes/settings/settings_learning/p_language_dropdown.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PickLanguageStepView extends StatefulWidget {

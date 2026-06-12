@@ -15,7 +15,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 import '../../../config/themes.dart';
 import '../../../widgets/matrix.dart';
 import 'error_handler.dart';

@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/world/widgets/world_map.dart';
+import 'package:fluffychat/routes/world/world_map.dart';
 
 // #Pangea
 // import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';

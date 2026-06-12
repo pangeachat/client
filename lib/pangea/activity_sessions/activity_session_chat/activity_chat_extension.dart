@@ -4,8 +4,8 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
-import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_repo.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 

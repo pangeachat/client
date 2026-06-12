@@ -7,58 +7,56 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pages/bootstrap/bootstrap_dialog.dart';
-import 'package:fluffychat/pages/chat_access_settings/chat_access_settings_controller.dart';
-import 'package:fluffychat/pages/chat_details/chat_details.dart';
-import 'package:fluffychat/pages/chat_members/chat_members.dart';
-import 'package:fluffychat/pages/chat_permissions_settings/chat_permissions_settings.dart';
-import 'package:fluffychat/pages/chat_search/chat_search_page.dart';
-import 'package:fluffychat/pages/device_settings/device_settings.dart';
-import 'package:fluffychat/pages/settings/settings.dart';
-import 'package:fluffychat/pages/settings_3pid/settings_3pid.dart';
-import 'package:fluffychat/pages/settings_chat/settings_chat.dart';
-import 'package:fluffychat/pages/settings_emotes/settings_emotes.dart';
-import 'package:fluffychat/pages/settings_homeserver/settings_homeserver.dart';
-import 'package:fluffychat/pages/settings_ignore_list/settings_ignore_list.dart';
-import 'package:fluffychat/pages/settings_notifications/settings_notifications.dart';
-import 'package:fluffychat/pages/settings_password/settings_password.dart';
-import 'package:fluffychat/pages/settings_security/settings_security.dart';
-import 'package:fluffychat/pages/settings_style/settings_style.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
-import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_page/activity_archive.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
-import 'package:fluffychat/pangea/analytics_summary/level_analytics_details_content.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
-import 'package:fluffychat/pangea/chat_settings/pages/edit_course.dart';
-import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/course_creation/course_invite_page.dart';
-import 'package:fluffychat/pangea/course_creation/public_course_preview.dart';
-import 'package:fluffychat/pangea/course_creation/selected_course_page.dart';
-import 'package:fluffychat/pangea/course_plans/course_code_page.dart';
-import 'package:fluffychat/pangea/course_plans/find_course_page.dart';
 import 'package:fluffychat/pangea/course_plans/new_course_page.dart';
-import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
-import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
-import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
-import 'package:fluffychat/pangea/user/user_home_page.dart';
-import 'package:fluffychat/pangea/world/pages/activity_map_page.dart';
-import 'package:fluffychat/routes/chat/archive/archive.dart';
+import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
+import 'package:fluffychat/routes/analytics/analytics_details_popup.dart';
+import 'package:fluffychat/routes/analytics/level/level_analytics_details_content.dart';
+import 'package:fluffychat/routes/archive/archive.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
-import 'package:fluffychat/routes/chat/new_private_chat/new_private_chat.dart';
+import 'package:fluffychat/routes/chat/chat_details/access/chat_access_settings_controller.dart';
+import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
+import 'package:fluffychat/routes/chat/chat_details/edit_course/edit_course.dart';
+import 'package:fluffychat/routes/chat/chat_details/emotes/settings_emotes.dart';
+import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
+import 'package:fluffychat/routes/chat/chat_details/permissions/chat_permissions_settings.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_analytics/space_analytics.dart';
+import 'package:fluffychat/routes/chat/chat_search/chat_search_page.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
+import 'package:fluffychat/routes/courses/find_course_page.dart';
+import 'package:fluffychat/routes/courses/own/invite/course_invite_page.dart';
+import 'package:fluffychat/routes/courses/own/selected_course_page.dart';
+import 'package:fluffychat/routes/courses/preview/public_course_preview.dart';
+import 'package:fluffychat/routes/courses/private/course_code_page.dart';
 import 'package:fluffychat/routes/home/login/login.dart';
 import 'package:fluffychat/routes/home/login_or_signup_view.dart';
 import 'package:fluffychat/routes/home/signup/signup.dart';
 import 'package:fluffychat/routes/invite_user/user_invite_link_page.dart';
 import 'package:fluffychat/routes/join_with_link/join_with_link_page.dart';
+import 'package:fluffychat/routes/new_private_chat/new_private_chat.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_page.dart';
+import 'package:fluffychat/routes/profile/user_home_page.dart';
 import 'package:fluffychat/routes/registration/create_pangea_account_page.dart';
+import 'package:fluffychat/routes/settings/settings.dart';
+import 'package:fluffychat/routes/settings/settings_chat/settings_chat.dart';
+import 'package:fluffychat/routes/settings/settings_device/device_settings.dart';
+import 'package:fluffychat/routes/settings/settings_homeserver/settings_homeserver.dart';
+import 'package:fluffychat/routes/settings/settings_learning/settings_learning.dart';
+import 'package:fluffychat/routes/settings/settings_notifications/settings_notifications.dart';
+import 'package:fluffychat/routes/settings/settings_security/settings_3pid/settings_3pid.dart';
+import 'package:fluffychat/routes/settings/settings_security/settings_ignore_list/settings_ignore_list.dart';
+import 'package:fluffychat/routes/settings/settings_security/settings_password/settings_password.dart';
+import 'package:fluffychat/routes/settings/settings_security/settings_security.dart';
+import 'package:fluffychat/routes/settings/settings_style/settings_style.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription.dart';
+import 'package:fluffychat/routes/world/activity_map_page.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
@@ -207,15 +205,6 @@ abstract class AppRoutes {
       ),
     ),
     // Pangea#
-    GoRoute(
-      path: '/backup',
-      redirect: loggedOutRedirect,
-      pageBuilder: (context, state) => defaultPageBuilder(
-        context,
-        state,
-        BootstrapDialog(wipe: state.uri.queryParameters['wipe'] == 'true'),
-      ),
-    ),
     ShellRoute(
       // Never use a transition on the shell route. Changing the PageBuilder
       // here based on a MediaQuery causes the child to briefly be rendered
@@ -1088,18 +1077,6 @@ abstract class AppRoutes {
         context,
         state,
         ChatAccessSettings(roomId: state.pathParameters[roomKey]!),
-      ),
-      redirect: loggedOutRedirect,
-    ),
-    GoRoute(
-      path: 'members',
-      pageBuilder: (context, state) => defaultPageBuilder(
-        context,
-        state,
-        ChatMembersPage(
-          roomId: state.pathParameters[roomKey]!,
-          filter: state.uri.queryParameters['filter'],
-        ),
       ),
       redirect: loggedOutRedirect,
     ),
