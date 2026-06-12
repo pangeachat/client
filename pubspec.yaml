@@ -158,10 +158,11 @@ flutter:
   assets:
     - assets/
     # #Pangea
-    # uncomment this to enable mobile builds
-    # causes error with github actions
+    # CI uncomments this for mobile builds (scripts/enable_mobile_env.patch).
+    # It must stay commented on main: .env is gitignored, and a declared but
+    # missing asset fails the build. Web doesn't bundle .env at all — it is
+    # fetched from the web root at runtime (see lib/pangea/common/config/env_loader.dart).
     # - .env
-    # - assets/.env
     - assets/pangea/
     - assets/pangea/bot_faces/
     # Pangea#
