@@ -11,7 +11,7 @@ description: "Design contracts for Playwright + axe-core testing of the Flutter 
 
 The client renders to a single `<canvas>` element via CanvasKit, not DOM nodes. Standard Playwright selectors (`getByText`, `locator(css)`) cannot find anything. Playwright interacts through Flutter's **semantics tree** — an ARIA-shaped projection of the widget tree, populated from `tooltip:`, `Semantics(label:)`, and text children. Tests reach widgets via `page.getByRole(role, { name })`; pixels remain opaque.
 
-The semantics tree is initially **disabled** for performance. Flutter exposes an off-screen `flt-semantics-placeholder` element that must be clicked to enable it. The shared fixture at [`e2e/fixtures.ts`](../../e2e/fixtures.ts) handles this — every non-api spec must import `{ test, expect }` from `../fixtures`, never from `@playwright/test`, or the activation step is skipped and the run sees an empty tree.
+The semantics tree is initially **disabled** for performance. Flutter exposes an off-screen `flt-semantics-placeholder` element that must be clicked to enable it. The shared fixture at [`e2e/fixtures.ts`](../../e2e/fixtures.ts) handles this — every spec must import `{ test, expect }` from `../fixtures`, never from `@playwright/test`, or the activation step is skipped and the run sees an empty tree.
 
 ## Widget testability — non-negotiable
 

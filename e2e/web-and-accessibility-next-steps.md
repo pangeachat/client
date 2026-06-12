@@ -7,7 +7,6 @@ Mobile (Patrol) plan: [mobile-testing-plan.md](mobile-testing-plan.md)
 
 ## Major todos
 
-- [ ] Add integration testing
 - [ ] Add a11y testing and fix violations
 - [ ] Test the cloud agent (`e2e-tester`) with a real failure issue
 

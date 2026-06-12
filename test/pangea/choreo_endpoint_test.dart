@@ -43,9 +43,14 @@ import 'package:fluffychat/pangea/translation/full_text_translation_response_mod
 void main() {
   String authToken = "";
   String userID = "";
-  const apiKey =
+  String apiKey =
       "e6fa9fa97031ba0c852efe78457922f278a2fbc109752fe18e465337699e9873";
   const choreoApi = "https://api.staging.pangea.chat/choreo";
+
+  // TODO: Use environmental variables instead of hardcoded strings
+  // apiKey -> Environment.choreoApiKey
+  // loginUrl -> "${Environment.synapseURL}/_matrix/client/v3/login"
+  // "$choreoApi/endpoint" -> PApiUrls.endpoint
 
   setUpAll(() {
     return Future(() async {
@@ -53,9 +58,11 @@ void main() {
       dotenv.testLoad(fileInput: File('.env').readAsStringSync());
       assert(Environment.testUsername != null);
       assert(Environment.testPassword != null);
+      apiKey = Environment.choreoApiKey;
 
       // Send login request
-      const url = "https://matrix.staging.pangea.chat/_matrix/client/v3/login";
+      const loginUrl =
+          "https://matrix.staging.pangea.chat/_matrix/client/v3/login";
 
       final Map<String, dynamic> reqJSON = {
         "identifier": {"type": "m.id.user", "user": Environment.testUsername},
@@ -63,7 +70,7 @@ void main() {
         "type": "m.login.password",
       };
 
-      final Response res = await Requests().post(url: url, body: reqJSON);
+      final Response res = await Requests().post(url: loginUrl, body: reqJSON);
 
       // Save received access token
       final Map<String, dynamic> json = jsonDecode(
@@ -92,7 +99,6 @@ void main() {
       );
       final Response res = await req.post(
         url: "$choreoApi/tokenize",
-        // url: PApiUrls.tokenize,
         body: request,
       );
 
