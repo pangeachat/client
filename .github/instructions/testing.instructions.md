@@ -50,14 +50,6 @@ The PR runner (`flutter test` via `integrate.yaml`) is a plain ubuntu-latest wit
 | Client-side logic: request serialization, response parsing, error handling | `test/pangea/` | Every PR | `http.MockClient` in Dart intercepts `Requests.post`/`.get`, returns a canned JSON fixture. No network. |
 | End-to-end UI flows that trigger choreo | `e2e/scripts/` | Post-deploy + nightly | Choreo requests are intercepted by Playwright specs and `mock: true` is inserted. |
 
-### Integration test — mock request fixtures
-
-Each choreo endpoint should have a corresponding `mock_<endpoint>_request.json` file in its parent folder (i.e., client/lib/pangea/activity_feedback). This file exports valid request data (with realistic but static field values) that tests can import directly instead of re-constructing the request inline.
-
-**Naming**: `mock_<endpoint>_request.json` — e.g. `mock_tokenize_request.json`, `mock_translation_request.json`.
-
-**Contents**: json data, with every required field set to a realistic static value.
-
 ### Endpoint tests — `test/pangea/choreo_endpoint_test.dart`
 
 Unit tests in `choreo_endpoint_test.dart` directly send mock requests to the staging choreographer. Endpoint unit tests confirm compatibility between the sent mock requests and `2-step-choreographer`, and between received responses and their corresponding client `Response` classes.
