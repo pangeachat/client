@@ -32,9 +32,9 @@ jobs:
         run: ./scripts/add-firebase-messaging.sh
       - run: flutter analyze
       - name: Make .env file
-+       run: |
-+         echo "TEST_MATRIX_USERNAME=${{ secrets.TEST_MATRIX_USERNAME }}" >> .env
-+         echo "TEST_MATRIX_PASSWORD=${{ secrets.TEST_MATRIX_PASSWORD }}" >> .env
+        run: |
+          echo "TEST_MATRIX_USERNAME=${{ secrets.TEST_MATRIX_USERNAME }}" >> .env
+          echo "TEST_MATRIX_PASSWORD=${{ secrets.TEST_MATRIX_PASSWORD }}" >> .env
       - run: flutter test
 
   build_debug_apk:
