@@ -26,4 +26,7 @@ class ActivitySessionConstants {
   static const String activityRequestCount = 'count';
   static const String activityRequestNumberOfParticipants =
       'number_of_participants';
+
+  static String goalMenuStarTargetId(String goalId) =>
+      "goal-display-star-$goalId";
 }

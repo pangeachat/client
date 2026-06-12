@@ -1,6 +1,6 @@
 import 'package:fluffychat/pangea/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_constants.dart';
-import 'package:fluffychat/pangea/chat_settings/constants/bot_constants.dart';
+import 'package:fluffychat/pangea/bot/bot_constants.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 

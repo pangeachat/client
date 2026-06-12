@@ -62,6 +62,7 @@ class PangeaChatListHeader extends StatelessWidget
                                   color: theme.colorScheme.onPrimaryContainer,
                                 )
                               : IconButton(
+                                  tooltip: L10n.of(context).search,
                                   onPressed: controller.startSearch,
                                   icon: Icon(
                                     Icons.search_outlined,

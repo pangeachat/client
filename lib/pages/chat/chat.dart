@@ -24,17 +24,23 @@ import 'package:fluffychat/pages/chat/chat_view.dart';
 import 'package:fluffychat/pages/chat/event_info_dialog.dart';
 import 'package:fluffychat/pages/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
+import 'package:fluffychat/pangea/activity_orchestrator/goal_star_animation.dart';
+import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_feedback.dart';
 import 'package:fluffychat/pangea/audio/multi_platform_audio_player.dart';
+import 'package:fluffychat/pangea/bot/bot_event_extension.dart';
+import 'package:fluffychat/pangea/bot/bot_room_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
-import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
 import 'package:fluffychat/pangea/chat/chat_banner_controller.dart';
 import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
 import 'package:fluffychat/pangea/chat/widgets/level_up_banner.dart';
@@ -45,6 +51,9 @@ import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
+import 'package:fluffychat/pangea/choreographer/igc/span_card.dart';
+import 'package:fluffychat/pangea/choreographer/igc/suggestion_card.dart';
+import 'package:fluffychat/pangea/choreographer/igc/writing_asssitance_popup_manager.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/choreographer/writing_assistance_room_extension.dart';
@@ -65,17 +74,13 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/learning_settings/disable_language_tools_popup.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart';
-import 'package:fluffychat/pangea/learning_settings/p_language_dialog.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_overlay_controller.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_sequences.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_repo.dart';
@@ -87,6 +92,11 @@ import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_reques
 import 'package:fluffychat/pangea/tokens/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_enum.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_model.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_overlay_controller.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_sequences.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
 import 'package:fluffychat/utils/file_selector.dart';
@@ -213,6 +223,9 @@ class ChatController extends State<ChatPageWithRoom>
   StreamSubscription? _forwardTutorialSubscription;
   StreamSubscription? _goBackTutorialSubscription;
 
+  StreamSubscription? _goalCompletionSubscription;
+  late final ValueNotifier<ActivityRoleGoal?> activeGoalNotifier;
+
   /// The event used to start the reading-assistance tutorial. Stored so the
   /// tutorial can be re-opened when the user navigates back through the sequence.
   Event? _tutorialEvent;
@@ -222,6 +235,7 @@ class ChatController extends State<ChatPageWithRoom>
   late final ActivityChatController activityController;
   late final TutorialOverlayController tutorialOverlayController;
   late final ChatBannerController _bannerController;
+  late final WritingAssistancePopupManager _spanCardOverlayController;
   final ValueNotifier<bool> scrollableNotifier = ValueNotifier(false);
   // Pangea#
   Room get room => sendingClient.getRoomById(roomId) ?? widget.room;
@@ -267,7 +281,7 @@ class ChatController extends State<ChatPageWithRoom>
   // }
   String? get tutorialTokenTargetKey =>
       _tutorialEvent != null && tutorialToken != null
-      ? tutorialToken!.baseTargetKey(_tutorialEvent!.eventId)
+      ? tutorialToken!.overlayTargetKey(_tutorialEvent!.eventId)
       : null;
   // Pangea#
 
@@ -763,6 +777,40 @@ class ChatController extends State<ChatPageWithRoom>
     _launchReadingAssistanceTutorial(event, token);
   }
 
+  void _activityConfettiListener() {
+    if (activityController.confettiNotifier.value) {
+      StarRainWidget.show(
+        context,
+        "star-rain-${widget.room.id}",
+        showBlast: true,
+      );
+    }
+  }
+
+  Future<void> _goalCompletionListener(Set<ActivityRoleGoal> goals) async {
+    if (goals.isEmpty) return;
+
+    final completer = Completer();
+    GoalStarAnimation.show(
+      context,
+      overlayKey: "goal-completion-star-${widget.room.id}",
+      startTarget: ChoreoConstants.inputTransformTargetKey,
+      endTarget: ActivitySessionConstants.goalMenuStarTargetId(goals.first.id),
+      onClose: () => completer.complete(),
+    );
+
+    await completer.future.timeout(
+      Duration(seconds: 5),
+      onTimeout: () => ErrorHandler.logError(
+        e: "Goal completion star animation timeout",
+        data: {},
+        level: SentryLevel.warning,
+      ),
+    );
+
+    activeGoalNotifier.value = room.currentGoal;
+  }
+
   String? get currentRoutePath => _router.state.path;
 
   bool get _canLaunchTutorialSequence {
@@ -787,22 +835,34 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void _pangeaInit() {
-    choreographer = Choreographer(inputFocus);
+    choreographer = Choreographer(inputFocus: inputFocus, room: room);
     sendController.addListener(onInputBarChanged);
     final updater = Matrix.of(context).analyticsDataService.updateDispatcher;
 
+    _spanCardOverlayController = WritingAssistancePopupManager(
+      choreographer: choreographer,
+      onFeedbackSubmitted: onWritingAssistanceFeedback,
+    );
+
     _bannerController = ChatBannerController();
+
+    _levelSubscription?.cancel();
     _levelSubscription = updater.levelUpdateStream.stream.listen(_onLevelUp);
+
+    _constructsSubscription?.cancel();
     _constructsSubscription = updater.unlockedConstructsStream.stream.listen(
       _onUnlockConstructs,
     );
 
+    _tokensSubscription?.cancel();
     _tokensSubscription = updater.newConstructsStream.stream.listen(
       _onTokenUpdate,
     );
 
+    _botAudioSubscription?.cancel();
     _botAudioSubscription = room.client.onSync.stream.listen(_botAudioListener);
 
+    _readingAssistanceTutorialSubscription?.cancel();
     _readingAssistanceTutorialSubscription = room.client.onSync.stream.listen(
       _readingAssistanceTutorialListener,
     );
@@ -812,14 +872,32 @@ class ChatController extends State<ChatPageWithRoom>
       room: room,
     );
 
+    activityController.confettiNotifier.addListener(_activityConfettiListener);
+    if (activityController.hasSummary) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        activityController.showConfetti();
+      });
+    }
+
+    activeGoalNotifier = ValueNotifier(room.currentGoal);
+
+    _goalCompletionSubscription?.cancel();
+    _goalCompletionSubscription = choreographer
+        .orchestratorController
+        .goalCompletionStream
+        .stream
+        .listen(_goalCompletionListener);
+
     tutorialOverlayController = TutorialOverlayController(
       TutorialSequences.chatTutorialSequence,
     );
 
+    _forwardTutorialSubscription?.cancel();
     _forwardTutorialSubscription = tutorialOverlayController
         .forwardTutorialStream
         .listen(_writingAssistanceTutorialListener);
 
+    _goBackTutorialSubscription?.cancel();
     _goBackTutorialSubscription = tutorialOverlayController.backNavigationStream
         .listen(_goBackTutorialListener);
 
@@ -827,11 +905,8 @@ class ChatController extends State<ChatPageWithRoom>
 
     Future.delayed(const Duration(seconds: 1), () async {
       if (!mounted) return;
-      LanguageService.showDialogOnEmptyLanguage(
-        context,
-        () =>
-            () => setState(() {}),
-      );
+      await LanguageService.showDialogOnEmptyLanguage(context);
+      if (mounted) setState(() {});
     });
   }
   // Pangea#
@@ -1086,6 +1161,9 @@ class ChatController extends State<ChatPageWithRoom>
     typingTimeout?.cancel();
     scrollController.removeListener(_updateScrollController);
     sendController.removeListener(onInputBarChanged);
+    activityController.confettiNotifier.removeListener(
+      _activityConfettiListener,
+    );
     choreographer.dispose();
     activityController.dispose();
     MatrixState.pAnyState.closeAllOverlays(force: true);
@@ -1104,7 +1182,9 @@ class ChatController extends State<ChatPageWithRoom>
     TokensUtil.instance.clearNewTokenCache();
     _forwardTutorialSubscription?.cancel();
     _goBackTutorialSubscription?.cancel();
+    _goalCompletionSubscription?.cancel();
     tutorialOverlayController.dispose();
+    activeGoalNotifier.dispose();
     //Pangea#
     super.dispose();
   }
@@ -1129,6 +1209,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (!stopMediaStream.isClosed) {
       stopMediaStream.add(null);
     }
+    MatrixState.pAnyState.closeOverlay("star-rain-${widget.room.id}");
     MatrixState.pAnyState.closeAllOverlays();
   }
 
@@ -1200,13 +1281,14 @@ class ChatController extends State<ChatPageWithRoom>
     replyEvent.value = null;
     pendingText = '';
 
+    choreographer.clearSuggestions();
     final tempEventId = await sendFakeMessage(edit, reply);
     if (!inputFocus.hasFocus) {
       inputFocus.requestFocus();
     }
 
     final content = await choreographer.getMessageContent(message);
-    choreographer.clear();
+    choreographer.clearWritingAssistance();
 
     if (message.trim().isEmpty) return;
     // Pangea#
@@ -1841,9 +1923,6 @@ class ChatController extends State<ChatPageWithRoom>
     bool highlightEvent = true,
     int calls = 0,
   }) async {
-    // Pangea#
-    Logs().w("Scrolling to event ID $eventId");
-    // #Pangea
     if (timeline == null) {
       Sentry.addBreadcrumb(
         Breadcrumb(
@@ -2357,14 +2436,19 @@ class ChatController extends State<ChatPageWithRoom>
       (event) =>
           event.isVisibleInGui &&
           event.senderId != room.client.userID &&
-          event.senderId == BotName.byEnvironment &&
-          !event.redacted,
+          event.senderId == BotName.byEnvironment,
     );
-    if (candidate?.hasAggregatedEvents(timeline!, RelationshipTypes.edit) ==
-        true) {
-      return null;
-    }
-    return candidate?.eventId;
+    if (candidate == null) return null;
+
+    final hasEdit = candidate.hasAggregatedEvents(
+      timeline!,
+      RelationshipTypes.edit,
+    );
+    final isRedacted = candidate.redacted;
+    final isFirstBotDMMessage = candidate.isFirstBotDMMessage;
+
+    if (hasEdit || isRedacted || isFirstBotDMMessage) return null;
+    return candidate.eventId;
   }
 
   final StreamController<void> stopMediaStream = StreamController.broadcast();
@@ -2396,7 +2480,7 @@ class ChatController extends State<ChatPageWithRoom>
 
     // Check if the user has set their languages. If not, prompt them to do so.
     if (!MatrixState.pangeaController.userController.languagesSet) {
-      pLanguageDialog(context, () {});
+      await LanguageService.showDialogOnEmptyLanguage(context);
       return;
     }
 
@@ -2590,24 +2674,57 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
-    final isSpanCardOpen = MatrixState.pAnyState.isOverlayOpen(
-      overlayKey: 'span-card-overlay',
-    );
+    final isSpanCardOpen = _spanCardOverlayController.isOpen;
 
     try {
-      choreographer.igcController.setActiveMatch(match: matchToShow);
+      choreographer.igcController.setMatchToShow(matchToShow);
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'match': matchToShow.toJson()});
       return;
     }
 
     if (!isSpanCardOpen) {
-      OverlayUtil.showIGCMatch(
-        choreographer,
+      _spanCardOverlayController.open(
         context,
-        onWritingAssistanceFeedback,
+        openOverlay: (overlayKey) => OverlayUtil.showPositionedCard(
+          overlayKey: overlayKey,
+          context: context,
+          cardToShow: SpanCard(controller: _spanCardOverlayController),
+          maxHeight: 325,
+          maxWidth: 325,
+          transformTargetId: ChoreoConstants.inputTransformTargetKey,
+          ignorePointer: true,
+          isScrollable: false,
+          targetAnchor: Alignment.topCenter,
+          followerAnchor: Alignment.bottomCenter,
+        ),
       );
     }
+  }
+
+  void showSuggestion() {
+    final suggestion = choreographer.orchestratorController.activeSuggestion;
+    if (suggestion == null) {
+      Logs().w("Show suggestion called without active suggestion");
+      return;
+    }
+
+    _spanCardOverlayController.open(
+      context,
+      openOverlay: (overlayKey) => OverlayUtil.showOverlay(
+        overlayKey: overlayKey,
+        context: context,
+        child: SuggestionCard(
+          overlayKey: overlayKey,
+          controller: choreographer.orchestratorController,
+          popupManager: _spanCardOverlayController,
+        ),
+        transformTargetId: ChoreoConstants.inputTransformTargetKey,
+        ignorePointer: true,
+        targetAnchor: Alignment.topCenter,
+        followerAnchor: Alignment.bottomCenter,
+      ),
+    );
   }
 
   Future<void> onManualWritingAssistance() =>
@@ -2625,7 +2742,38 @@ class ChatController extends State<ChatPageWithRoom>
       return showLanguageMismatchPopup(manual: manual, autosend: autosend);
     }
 
+    if (_spanCardOverlayController.isOpen && !manual) {
+      await _spanCardOverlayController.close();
+    }
+
     final assistanceState = choreographer.assistanceState;
+
+    if (assistanceState == AssistanceStateEnum.error) {
+      final error = choreographer.errorService.error!;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(seconds: 5),
+          showCloseIcon: true,
+          content: Text(error.toLocalizedString(context)),
+        ),
+      );
+      choreographer.errorService.clear();
+      return;
+    }
+
+    if (assistanceState == AssistanceStateEnum.noSub) {
+      if (manual) {
+        PaywallCard.show(
+          context,
+          ChoreoConstants.inputTransformTargetKey,
+          force: true,
+        );
+      } else {
+        await send();
+      }
+      return;
+    }
+
     if (assistanceState == AssistanceStateEnum.fetching) {
       return;
     }
@@ -2641,11 +2789,18 @@ class ChatController extends State<ChatPageWithRoom>
       }
     }
 
+    if (assistanceState == AssistanceStateEnum.suggestionComplete) {
+      if (autosend) {
+        await send();
+      }
+      return;
+    }
+
     // If assistance is complete, but the user manually requests corrections,
     // update the feedback to say that the message still contains errors
     if (feedback == null &&
         manual &&
-        assistanceState == AssistanceStateEnum.complete) {
+        assistanceState == AssistanceStateEnum.igcComplete) {
       feedback = ChoreoConstants.incorrectCompleteIgcFeedback;
     }
 
@@ -2653,12 +2808,13 @@ class ChatController extends State<ChatPageWithRoom>
         ? await choreographer.requestWritingAssistance(manual: manual)
         : await choreographer.rerunWithFeedback(feedback);
 
-    Logs().w(
-      "Reran with feedback: $feedback. Assistance state: ${choreographer.assistanceState}",
-    );
-
     if (choreographer.assistanceState == AssistanceStateEnum.fetched) {
       showNextMatch();
+    } else if (choreographer.assistanceState ==
+        AssistanceStateEnum.suggesting) {
+      _spanCardOverlayController.isOpen
+          ? _spanCardOverlayController.close()
+          : showSuggestion();
     } else if (autosend) {
       await send();
     } else {
@@ -2671,7 +2827,18 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
-    final targetLanguage = room.activityPlan!.req.targetLanguage;
+    final langCode = room.activityPlan!.req.targetLanguage;
+    final targetLanguage = PLanguageStore.byLangCode(langCode);
+
+    if (targetLanguage == null) {
+      ErrorHandler.logError(
+        e: "Skipping language mismatch popup for missing language",
+        data: {'activity_lang_code': langCode},
+      );
+      _onRequestWritingAssistance(manual: manual, autosend: autosend);
+      return;
+    }
+
     LanguageMismatchRepo.setRoom(roomId);
     OverlayUtil.showLanguageMismatchPopup(
       context: context,
@@ -2684,7 +2851,7 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
-  Future<void> updateLanguageOnMismatch(String target) async {
+  Future<void> updateLanguageOnMismatch(LanguageModel target) async {
     final messenger = ScaffoldMessenger.of(context);
     messenger.hideCurrentSnackBar();
     final resp = await showFutureLoadingDialog(
@@ -2697,13 +2864,15 @@ class ChatController extends State<ChatPageWithRoom>
           final baseLangShort = profile.userSettings.sourceLanguage
               ?.split('-')
               .first;
-          if (baseLangShort != null &&
-              baseLangShort == target.split('-').first) {
+
+          if (baseLangShort != null && baseLangShort == target.langCodeShort) {
             throw IdenticalLanguageException();
           }
 
           return profile.copyWith(
-            userSettings: profile.userSettings.copyWith(targetLanguage: target),
+            userSettings: profile.userSettings.copyWith(
+              targetLanguage: target.langCode,
+            ),
           );
         }, waitForDataInSync: true);
       },

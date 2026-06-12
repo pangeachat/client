@@ -1,0 +1,72 @@
+{
+  "login": {
+    "globs": [
+      "lib/pangea/login/**",
+      "lib/pages/login/**",
+      "lib/config/routes.dart",
+      "lib/widgets/matrix.dart"
+    ],
+    "web": "e2e/scripts/login.spec.ts",
+    "mobile": "integration_test/patrol/login_test.dart"
+  },
+  "course-chat-navigation": {
+    "globs": [
+      "lib/pages/chat_list/**",
+      "lib/pangea/chat_list/**",
+      "lib/pangea/common/controllers/pangea_controller.dart",
+      "lib/config/routes.dart",
+      "lib/pangea/course_creation/**",
+      "lib/pangea/course_plan/**"
+    ],
+    "web": "e2e/scripts/course-chat-navigation.spec.ts",
+    "mobile": null
+  },
+  "settings": {
+    "globs": [
+      "lib/pages/settings/**",
+      "lib/pangea/learning_settings/**",
+      "lib/pangea/subscription/**"
+    ],
+    "web": "e2e/scripts/settings.spec.ts",
+    "mobile": null
+  },
+  "analytics": {
+    "globs": [
+      "lib/pangea/analytics_page/**",
+      "lib/pangea/analytics_practice/**",
+      "lib/pangea/analytics_misc/**"
+    ],
+    "web": "e2e/scripts/analytics.spec.ts",
+    "mobile": null
+  },
+  "logout": {
+    "globs": [
+      "lib/pages/settings/**",
+      "lib/pangea/login/**",
+      "lib/widgets/matrix.dart"
+    ],
+    "web": "e2e/scripts/logout.spec.ts",
+    "mobile": null
+  },
+  "permissions": {
+    "globs": [
+      "lib/pangea/common/controllers/pangea_controller.dart",
+      "lib/main.dart",
+      "android/app/**",
+      "ios/Runner/**"
+    ],
+    "web": null,
+    "mobile": "integration_test/patrol/permissions_test.dart"
+  },
+  "a11y": {
+    "globs": [
+      "lib/pangea/login/**",
+      "lib/pages/login/**",
+      "lib/pangea/chat_list/**",
+      "lib/pages/chat_list/**",
+      "e2e/scripts/a11y.spec.ts"
+    ],
+    "web": "e2e/scripts/a11y.spec.ts",
+    "mobile": null
+  }
+}

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-04-27 14:43:42.090538",
+    "@@last_modified": "2026-06-11 10:21:38.905124",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -3617,274 +3617,6 @@
     "l2SupportFull": "Täielik",
     "playAudio": "Esita",
     "stop": "Lõpeta",
-    "grammarCopyPOSsconj": "Alamkonditsioneer",
-    "grammarCopyPOSnum": "Number",
-    "grammarCopyPOSverb": "Verb",
-    "grammarCopyPOSaffix": "Prefiks",
-    "grammarCopyPOSpart": "Partikkel",
-    "grammarCopyPOSadj": "Omadussõna",
-    "grammarCopyPOScconj": "Koondkonditsioneer",
-    "grammarCopyPOSpunct": "Kirjavahemärk",
-    "grammarCopyPOSadv": "Adverb",
-    "grammarCopyPOSaux": "Abitegija",
-    "grammarCopyPOSspace": "Tühi koht",
-    "grammarCopyPOSsym": "Sümbol",
-    "grammarCopyPOSdet": " määrsõna",
-    "grammarCopyPOSpron": "Asesõna",
-    "grammarCopyPOSadp": "Eespositsioon",
-    "grammarCopyPOSpropn": "Õige nimetus",
-    "grammarCopyPOSnoun": "Noun",
-    "grammarCopyPOSintj": "Hüüumärk",
-    "grammarCopyPOSx": "Muu",
-    "grammarCopyGENDERfem": "Naiseline",
-    "grammarCopyPERSON2": "Teine isik",
-    "grammarCopyMOODimp": "Käsuviis",
-    "grammarCopyPUNCTTYPEqest": "Küsimus",
-    "grammarCopyASPECTperf": "Täiuslik",
-    "grammarCopyCASEaccnom": "Olevik, nimetav",
-    "grammarCopyCASEobl": "Kaldkriips",
-    "grammarCopyVOICEact": "Aktiivne",
-    "grammarCopyPUNCTTYPEbrck": "Klamber",
-    "grammarCopyNOUNTYPEart": "Artikkel",
-    "grammarCopyNUMBERsing": "Üksik",
-    "grammarCopyGENDERmasc": "Mehelik",
-    "grammarCopyVERBTYPEmod": "Modaal",
-    "grammarCopyADVTYPEadverbial": "Adverbiaalne",
-    "grammarCopyTENSEperi": "Perifrastiline",
-    "grammarCopyNUMFORMdigit": "Number",
-    "grammarCopyNOUNTYPEnot_proper": "Ei ole õige",
-    "grammarCopyNUMTYPEcard": "Kardinaalne",
-    "grammarCopyNOUNTYPEprop": "Õige",
-    "grammarCopyPUNCTTYPEdash": "Sidekriips",
-    "grammarCopyPUNCTTYPEyes": "Jah",
-    "grammarCopyPUNCTTYPEsemi": "Punktikoma",
-    "grammarCopyPUNCTTYPEcomm": "Koma",
-    "grammarCopyMOODcnd": " Tingimus",
-    "grammarCopyCASEacc": "Akusatiiv",
-    "grammarCopyPARTTYPEpart": "Partitiiv",
-    "grammarCopyTENSEpast": "Minevik",
-    "grammarCopyDEGREEsup": " Üli-",
-    "grammarCopyPUNCTTYPEcolo": "Koolon",
-    "grammarCopyPERSON3": "Kolmas isik",
-    "grammarCopyNUMBERplur": "Mitmus",
-    "grammarCopyPRONTYPEnpr": "Õige nimisõna",
-    "grammarCopyPRONTYPEinterrogative": "Küsimus",
-    "grammarCopyPOLITEinfm": "Mittesõbralik",
-    "grammarCopyADVTYPEtim": "Aeg",
-    "grammarCopyPOLARITYneg": "Negatiivne",
-    "grammarCopyNUMTYPEtot": "Kokku",
-    "grammarCopyADVTYPEadnomial": "Adnominaalne",
-    "grammarCopyASPECTprog": "Progressiivne",
-    "grammarCopyMOODsub": " Alistusvorm",
-    "grammarCopyVERBFORMcomplementive": "Täiendav",
-    "grammarCopyCASEnom": "Nominatiiv",
-    "grammarCopyTENSEfut": "Tulevik",
-    "grammarCopyCASEdat": "Datiiv",
-    "grammarCopyTENSEpres": "Täna",
-    "grammarCopyGENDERneut": "Neutraalne",
-    "grammarCopyPRONTYPErel": "Suhe",
-    "grammarCopyVERBFORMfinalEnding": "Lõpp",
-    "grammarCopyPRONTYPEdem": "Näidissõna",
-    "grammarCopyPREPCASEpre": "Eessõnaliigend",
-    "grammarCopyVERBFORMfin": "Lõplik vorm",
-    "grammarCopyDEGREEpos": "Positiivne",
-    "grammarCopyPUNCTTYPEquot": "Tsitaat",
-    "grammarCopyVERBFORMger": "Gerundium",
-    "grammarCopyVOICEpass": "Passiiv",
-    "grammarCopyCASEgen": "Genitiiv",
-    "grammarCopyTENSEprs": "Täna",
-    "grammarCopyDEFINITEdef": "Kindel",
-    "grammarCopyNUMTYPEord": "Järgarv",
-    "grammarCopyCASEins": "Instrumend",
-    "grammarCopyVERBFORMinf": "Infinitiiv",
-    "grammarCopyVERBFORMaux": "Abiteg",
-    "grammarCopyNUMFORMlong": "Pikk",
-    "grammarCopyCASEloc": "Lokatiiv",
-    "grammarCopyMOODind": "Indikatiiv",
-    "grammarCopyDEGREEcmp": "Võrdlus",
-    "grammarCopyCASErelativeCase": "Suhteline",
-    "grammarCopyPUNCTTYPEexcl": " hüüumärk",
-    "grammarCopyPERSON1": "Esimene isik",
-    "grammarCopyPUNCTSIDEini": "Algus",
-    "grammarCopyGENDERperson": "Isik",
-    "grammarCopyFOREIGNyes": "Võõramaa",
-    "grammarCopyVOICEvoice": "Hääl",
-    "grammarCopyVERBTYPEverbType": "Verb",
-    "grammarCopyPOSSpass": "Omadussõna",
-    "grammarCopyPREPCASEprepCase": "Eessõnaliik",
-    "grammarCopyNUMTYPEnumType": "Numeraal",
-    "grammarCopyNOUNTYPEnounType": "Noun",
-    "grammarCopyREFLEXreflex": "Refleksiivne",
-    "grammarCopyPRONTYPEpronType": "Asesõna",
-    "grammarCopyPUNCTSIDEpunctSide": "Punktuatsiooni pool",
-    "grammarCopyVERBFORMverbForm": "Verb",
-    "grammarCopyGENDERgender": "Sugu",
-    "grammarCopyMOODmood": "Meel",
-    "grammarCopyASPECTaspect": "Aspekt",
-    "grammarCopyPUNCTTYPEpunctType": "Punktuatsioon",
-    "grammarCopyTENSEtense": "Aeg",
-    "grammarCopyDEGREEdegree": "Kraad",
-    "grammarCopyPOLITEpolite": "Austus",
-    "grammarCopyADVTYPEadvType": "Adverb",
-    "grammarCopyNUMFORMnumber": "Number",
-    "grammarCopyCONJTYPEconjType": "Sidekord",
-    "grammarCopyPOLARITYpolarity": "Polaarne",
-    "grammarCopyCASEcase": "Käsk",
-    "grammarCopyDEFINITEdefinite": "Kindlus",
-    "grammarCopyNUMFORMnumForm": "Numeraal",
-    "grammarCopyPRONTYPEadn": "Adnominaalne",
-    "grammarCopyVOCvoc": "Vokaal",
-    "grammarCopyCMPLcmpl": "Täiendaja",
-    "grammarCopyADVadv": "Adverbiaal",
-    "grammarCopyMOODjus": "Kutseviis",
-    "grammarCopyGENDERcom": "Üldine",
-    "grammarCopyREFLEXrflx": "Refleksiivne",
-    "grammarCopyPARTTYPEpar": "Osatis",
-    "grammarCopySPCspc": "Spetsiifiline",
-    "grammarCopyTENSEpqp": "Pluskvamperfekt",
-    "grammarCopyREFLEXref": "Refleksiivne",
-    "grammarCopyPUNCTTYPEnshrt": "Lühike",
-    "grammarCopyNUMBERdual": "Kahearvuline",
-    "grammarCopyNUMFORMlng": "Pikk",
-    "grammarCopyVOICEmid": "Keskmine",
-    "grammarCopyINTRELintRel": "Küsimus, Suhe",
-    "grammarCopyINTint": "Küsimus",
-    "grammarCopyVOICEcaus": "Põhjuslik",
-    "grammarCopyUnknown": "Tundmatu",
-    "grammarCopyEVIDENTevident": "Tõenduslikkus",
-    "grammarCopyNUMFORMnumberPsor": "Omavahelise arvu näitaja",
-    "grammarCopyASPECThab": "Harjumuslik",
-    "grammarCopyCASEabl": "Ablatiiv",
-    "grammarCopyCASEall": "Allatiiv",
-    "grammarCopyCASEess": "Essive",
-    "grammarCopyCASEtra": "Translatiiv",
-    "grammarCopyCASEequ": "Võrdlus",
-    "grammarCopyCASEdis": "Jaotav",
-    "grammarCopyCASEabs": "Absolutiiv",
-    "grammarCopyCASEerg": "Ergatiiv",
-    "grammarCopyCASEcau": "Põhjuslik",
-    "grammarCopyCASEben": "Kasulikkus",
-    "grammarCopyCASEtem": "Ajaliselt",
-    "grammarCopyCONJTYPEcoord": "Koondav",
-    "grammarCopyDEFINITEcons": "Konstruktsioonivorm",
-    "grammarCopyDEGREEabs": "Absoluutne aste",
-    "grammarCopyEVIDENTfh": "Faktiline tõendus",
-    "grammarCopyEVIDENTnfh": "Mittekohane tõendus",
-    "grammarCopyMOODopt": "Optatiiv",
-    "grammarCopyMOODadm": "Austav",
-    "grammarCopyMOODdes": "Sooviv",
-    "grammarCopyMOODnec": "Vajalik",
-    "grammarCopyMOODpot": "Võimalik",
-    "grammarCopyMOODprp": "Propositiiv",
-    "grammarCopyMOODqot": "Tsitaat",
-    "grammarCopyNUMFORMword": "Sõnaliik",
-    "grammarCopyNUMFORMroman": "Rooma arv",
-    "grammarCopyNUMFORMletter": "Tähekuju",
-    "grammarCopyNUMTYPEmult": "Korrutav",
-    "grammarCopyNUMTYPEfrac": "Murdeline",
-    "grammarCopyNUMTYPEsets": "Hulk",
-    "grammarCopyNUMTYPErange": "Ulatus",
-    "grammarCopyNUMTYPEdist": "Jagatav",
-    "grammarCopyNUMBERtri": "Katse",
-    "grammarCopyNUMBERpauc": "Väike arv",
-    "grammarCopyNUMBERgrpa": "Suurem väike arv",
-    "grammarCopyNUMBERgrpl": "Suurem mitmuse",
-    "grammarCopyNUMBERinv": "Vastupidine",
-    "grammarCopyPERSON0": "Null",
-    "grammarCopyPERSON4": "Neljas",
-    "grammarCopyPOLITEform": "Ametlik",
-    "grammarCopyPOLITEelev": "Kõrgendatud",
-    "grammarCopyPOLITEhumb": "Alandlik",
-    "grammarCopyPRONTYPEemp": " rõhutav",
-    "grammarCopyPRONTYPEexc": "Väljendav",
-    "grammarCopyPRONTYPErcp": "Vastastik",
-    "grammarCopyPRONTYPEintRelPronType": "Küsimus-Relatiiv",
-    "grammarCopyTENSEaor": "Aorist",
-    "grammarCopyTENSEeps": "Epistemiline",
-    "grammarCopyTENSEprosp": "Tulevikuline",
-    "grammarCopyVERBFORMpart": "Partitsiip",
-    "grammarCopyVERBFORMconv": "Kogumine",
-    "grammarCopyVERBFORMvnoun": "Verbaalne nimisõna",
-    "grammarCopyVOICEantip": "Antipassiv",
-    "grammarCopyVOICEcauVoice": "Kaasaegne",
-    "grammarCopyVOICedir": "Otse",
-    "grammarCopyVOICEinvVoice": "Vastupidine",
-    "grammarCopyVOICErcpVoice": "Vastastik",
-    "grammarCopyPOS": "Kõnekeelne osa",
-    "grammarCopyGENDER": "Kgender",
-    "grammarCopyPERSON": "Isik",
-    "grammarCopyMOOD": "Meel",
-    "grammarCopyPUNCTTYPE": "Punktuuri tüüp",
-    "grammarCopyASPECT": "Aspekt",
-    "grammarCopyCASE": "Kass",
-    "grammarCopyVOICE": "Häälik",
-    "grammarCopyNOUNTYPE": "Nimeta tüüp",
-    "grammarCopyVERBTYPE": "Verb tüüp",
-    "grammarCopyADVTYPE": "Adverb tüüp",
-    "grammarCopyNUMFORM": "Numbervorm",
-    "grammarCopyNUMTYPE": "Number tüüp",
-    "grammarCopyNUMBER": "Number",
-    "grammarCopyDEFINITE": "Kindluse aste",
-    "grammarCopyDEGREE": "Kraad",
-    "grammarCopyEVIDENT": "Tõenduslikkus",
-    "grammarCopyFOREIGN": "Võõrsõna",
-    "grammarCopyPOLARITY": "Polaarne väärtus",
-    "grammarCopyPOLITE": "Austus",
-    "grammarCopyPREPCASE": "Eessõna kääne",
-    "grammarCopyPRONTYPE": "Asesõna tüüp",
-    "grammarCopyPUNCTSIDE": "Punktuatsiooni pool",
-    "grammarCopyREFLEX": "Refleksiivne",
-    "grammarCopyTENSE": "Aeg",
-    "grammarCopyVERBFORM": "Verbi vorm",
-    "grammarCopyCONJTYPE": "Sidekonnaliik",
-    "grammarCopySPC": "Spetsifikatsioon",
-    "grammarCopyPARTTYPE": "Osaline tüüp",
-    "grammarCopyINTREL": "Küsimus-viit",
-    "grammarCopyUNKNOWN": "Tundmatu",
-    "grammarCopyNUMBERPSOR": "Omandaja arv",
-    "grammarCopyPOSS": "Omadussõna",
-    "grammarCopyASPECTimp": "Ebapiisav aspekt",
-    "grammarCopyCASEvoc": "Vokaal",
-    "grammarCopyCASEcom": "Kooslus",
-    "grammarCopyCASEpar": "Osaline",
-    "grammarCopyCASEadv": "Adverbiaalne",
-    "grammarCopyCASEref": "Viitav",
-    "grammarCopyCASErel": "Seotud",
-    "grammarCopyCASEsub": "Alamvõte",
-    "grammarCopyCASEsup": "Üleval",
-    "grammarCopyCASEaccdat": "Otse- ja Datiiv",
-    "grammarCopyCASEpre": "Eessõnaline",
-    "grammarCopyCONJTYPEsub": "Alamliigend",
-    "grammarCopyCONJTYPEcmp": "Võrdlus",
-    "grammarCopyDEFINITEind": "Määratlemata",
-    "grammarCopyMOODint": "Küsimuslik meeleolu",
-    "grammarCopyNOUNTYPEcomm": "Üldine nimisõna",
-    "grammarCopyNUMBERPSORsing": "Omava nimisõna ainsus",
-    "grammarCopyNUMBERPSORplur": "Omava nimisõna mitmus",
-    "grammarCopyNUMBERPSORdual": "Omava nimisõna dual",
-    "grammarCopyPOLARITYpos": "Positiivne polaarus",
-    "grammarCopyPOSSyes": "Omadussõna",
-    "grammarCopyPREPCASEnpr": "Mitte-eessõnaga",
-    "grammarCopyPRONTYPEprs": "Isikuline",
-    "grammarCopyPRONTYPEint": "Küsimuslik",
-    "grammarCopyPRONTYPEtot": "Kokkuvõte",
-    "grammarCopyPRONTYPEneg": "Negatiivne",
-    "grammarCopyPRONTYPEart": "Artikkel",
-    "grammarCopyPRONTYPEind": "Määratlemata",
-    "grammarCopyPRONTYPEintrel": "Küsimuslik-seotud",
-    "grammarCopyPUNCTSIDEfin": "Lõpp-punktuatsioon",
-    "grammarCopyPUNCTTYPEperi": "Periood",
-    "grammarCopyREFLEXyes": "Refleksiivne",
-    "grammarCopyTENSEimp": "Ebapärase",
-    "grammarCopyVERBFORMsup": "Supine",
-    "grammarCopyVERBFORMadn": "Adnominal",
-    "grammarCopyVERBFORMlng": "Pikk",
-    "grammarCopyVERBFORMshrt": "Lühike",
-    "grammarCopyVERBTYPEcaus": "Kaasuv verb",
-    "grammarCopyVOICEcau": "Kaasuv",
-    "grammarCopyVOICEdir": "Otsene",
-    "grammarCopyVOICEinv": "Vastupidine",
-    "grammarCopyVOICErcp": "Vastastikune",
     "other": "Muu",
     "levelShort": "TASE {level}",
     "noCapacityLimit": "Piirangut võimsusele ei ole",
@@ -5801,1078 +5533,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@grammarCopyPOSsconj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSnum": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSverb": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSaffix": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOScconj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpunct": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSaux": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSspace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSsym": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSdet": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpron": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpropn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSnoun": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSintj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSx": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERfem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON2": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEqest": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTperf": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEaccnom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEobl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEact": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEbrck": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERsing": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERmasc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEmod": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadverbial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEperi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMdigit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEnot_proper": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEcard": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEprop": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEdash": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEsemi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEcomm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODcnd": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEacc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPEpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpast": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEcolo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON3": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERplur": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEnpr": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEinterrogative": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEinfm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEtim": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYneg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEtot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadnomial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTprog": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMcomplementive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEnom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEfut": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEdat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpres": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERneut": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPErel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMfinalEnding": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEdem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEpre": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMfin": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEpos": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEquot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMger": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEpass": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEgen": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEprs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEdef": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEord": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEins": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMinf": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMaux": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMlong": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEloc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEcmp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASErelativeCase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEexcl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON1": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEini": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERperson": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyFOREIGNyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEvoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEverbType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSSpass": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEprepCase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEnumType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEnounType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXreflex": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEpronType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEpunctSide": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMverbForm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERgender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODmood": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTaspect": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEpunctType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEtense": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEdegree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEpolite": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadvType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumber": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEconjType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYpolarity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEdefinite": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumForm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEadn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOCvoc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCMPLcmpl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODjus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERcom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXrflx": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPEpar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopySPCspc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpqp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXref": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEnshrt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERdual": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMlng": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEmid": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTRELintRel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcaus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyUnknown": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTevident": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumberPsor": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECThab": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEabl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEess": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEtra": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEequ": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEdis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEabs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEerg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcau": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEben": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEtem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEcoord": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEcons": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEabs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTfh": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTnfh": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODopt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODadm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODdes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODnec": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODpot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODprp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODqot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMword": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMroman": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMletter": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEmult": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEfrac": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEsets": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPErange": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEdist": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERtri": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERpauc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERgrpa": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERgrpl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERinv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON0": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON4": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEform": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEelev": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEhumb": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEemp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEexc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPErcp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEintRelPronType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEaor": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEeps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEprosp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMconv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMvnoun": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEantip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcauVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICedir": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEinvVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICErcpVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOS": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDER": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOOD": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORM": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBER": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyFOREIGN": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITY": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEX": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORM": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopySPC": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTREL": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyUNKNOWN": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSOR": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSS": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEvoc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEpar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEref": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASErel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEaccdat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEpre": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEcmp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEcomm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORsing": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORplur": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORdual": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYpos": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSSyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEnpr": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEprs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEtot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEneg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEintrel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEfin": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEperi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMadn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMlng": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMshrt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEcaus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcau": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEdir": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEinv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICErcp": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@other": {
         "type": "String",
         "placeholders": {}
@@ -7859,7 +6519,6 @@
     "inactive": "Mitteaktiivne",
     "confirmRole": "Kinnita roll",
     "openRoleLabel": "AVATUD",
-    "joinedTheActivity": "👋 {username} liitus rolliga {role}",
     "finishedTheActivity": "🎯 {username} lõpetas selle tegevuse",
     "activitySummaryError": "Tegevuste kokkuvõtteid pole saadaval",
     "requestSummaries": "Paluda kokkuvõtteid",
@@ -8007,17 +6666,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9756,14 +8404,8 @@
         "placeholders": {}
     },
     "introChatTitle": "Loo tutvustuste vestlus",
-    "introChatDesc": "Igaüks ruumis saab postitada.",
     "announcementsChatTitle": "Teadete vestlus",
-    "announcementsChatDesc": "Ainult ruumi administraator saab postitada.",
     "@introChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@introChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9771,13 +8413,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "@announcementsChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "notStartedActivitiesTitle": "Avatud seansid ({num})",
     "inProgressActivitiesTitle": "Toimub praegu ({num})",
-    "completedActivitiesTitle": "Tehtud ({num})",
     "pickDifferentActivity": "Vali teine tegevus",
     "inOngoingActivity": "Teil on käimasolev tegevus!",
     "@notStartedActivitiesTitle": {
@@ -9789,14 +8426,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -10022,11 +8651,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Boti hääl",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Teie taotlus on saadetud kursuse administraatorile! Teid lastakse sisse, kui nad heaks kiidavad.",
     "@knockDesc": {
         "type": "String",
@@ -10089,21 +8713,6 @@
     },
     "aboutMeHint": "Minust",
     "@aboutMeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "grammarCopyPOSidiom": "Idioom",
-    "grammarCopyPOSphrasalv": "Fraasi Verb",
-    "grammarCopyPOScompn": "Kompleks",
-    "@grammarCopyPOSidiom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSphrasalv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOScompn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10720,20 +9329,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Telli, et avada interaktiivne tõlge ja grammatika kontroll, helimängimine, isikupärastatud harjutused ja õppimise analüüs!",
-    "emojiSelectedSnackbar": "Oled seadnud emotikoni {lemma} jaoks! Kasutame seda emotikoni sõna esindamiseks harjutustes edaspidi.",
     "unlockPracticeActivities": "Avage harjutused",
     "noAnalyticsActivitiesAvailable": "Vau, oled lõpetanud kõik saadaval olevad tegevused! Saada rohkem sõnumeid, et avada rohkem harjutusi.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -10945,6 +9545,283 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Rohkem valikuid",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Koomiline kollane karu, kelle käed on elevusest üles tõstetud.",
+    "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Vali sõnad, et neist rohkem teada saada",
+    "requireAnalyticsAccessTitle": "Nõua analüütika juurdepääsu liitumiseks",
+    "requireAnalyticsAccessDesc": "Osalejad peavad andma juurdepääsu oma õpikogemuse analüütikale, et liituda selle kursusega",
+    "analyticsAccessNoticeTitle": "Nõutav analüütika juurdepääs",
+    "analyticsAccessNoticeDesc": "Liitudes selle kursusega, nõustute andma administraatoritele juurdepääsu oma õpikogemuse analüütikale.",
+    "skipOnboardingClassCodeDesc": "Õpid iseseisvalt? Ära muretse, sa saad:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Palun valige allpool eelnevalt määratud roll või sisestage kohandatud õiguste tase. Valige täisarv vahemikus 0 kuni 100.",
+    "reportContentIssue": "Teata sisu probleemist",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Palun valige kehtivad põhikeel ja sihtkeel",
+    "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "Ma kasutan Pangea Chat'i, et",
+    "teach": "Koolitada",
+    "courseCodeStepTitle": "Kas sul on kursuse kutse kood?",
+    "courseCodeStepHint": "Sisesta kood, et liituda",
+    "courseCodeStepSkip": "Mul ei ole koodi",
+    "joinedCourseStepTitle": "Tere tulemast!",
+    "pickLanguageTeacherStepTitle": "Millist keelt sa õpetad?",
+    "pickCefrLevelTeacherStepTitle": "Millisel tasemel sa õpetad?",
+    "pickCefrLevelStudentStepTitle": "Millisel tasemel sa oled?",
+    "customCourseStepTitle": "Täida see vorm, et saada kohandatud kursus",
+    "aboutYourClass": "Teie klassist",
+    "courseCodeStepErrorMessage": "Palun kontrollige oma koodi ja proovige uuesti",
+    "institution": "Asutus",
+    "courseGoals": "Kursuse eesmärgid",
+    "selectChats": "Valige vestlused",
+    "plainTextFile": "Tekst",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Lõpetatud ({num})",
+    "suggestion": "Vali parim ettepanek",
+    "completeActivityButton": "Olen lõpetanud!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Palun piirake nime pikkus 50 tähemärgiga või vähem.",
+    "enterAName": "Palun sisestage nimi.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Kirjutamise abi",
+    "viewError": "Vaata viga",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Laadi alla Pangea Chat rakendus, et saada teateid!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Sain aru!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Jätka {lang} keeles",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Laeb alla kogu sõnumite ajalugu, sealhulgas saatja, saatmise kuupäev, algne sõnum, saadetud sõnum ja kasutustüüp.",
+    "analyticsDownloadDesc": "Laeb alla isiklikud sõnavara ja grammatika analüüsid valitud keele jaoks.",
+    "courseAnalyticsDownloadDesc": "Laeb alla lemma ja grammatika kasutuse valitud keeles kõigi kursuse osalejate jaoks, kellel on jagatud analüüsid.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "See kursus vastab teie keele tasemele",
+    "cefrLevelBelow": "See kursus on teie keele tasemest madalam.",
+    "cefrLevelAbove": "See kursus on teie keele tasemest kõrgem.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Boti helisõnumi hääl",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Pangea Chat logo",
+    "introChatDetails": "Tere! Tutvustage end oma kursuse kaasosalejatele, leidke sõpru ja vestelge tegevustest väljaspool.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "See emoji esindab nüüd \"{word}\" praktika harjutustes",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Näita arendaja valikuid",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Lülitage arendaja valikud sisse, et näha allalaadimise analüüse ja üksikasjalikke teabevalikuid kogu rakenduses.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Ootan boti liitumist...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Koht kursuse administraatoritele, et luua teadandeid kursuse osalejatele. Kuigi kõik saavad seda kanalit vaadata, saavad seal kirjutada ainult administraatorid.",
+    "introChatDesc": "Kursusel olevad inimesed saavad postitada.",
+    "announcementsChatDesc": "Ainult kursuse administraatorid saavad postitada.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

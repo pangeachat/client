@@ -16,9 +16,15 @@ Future<OkCancelResult?> showOkCancelAlertDialog({
   String? cancelLabel,
   bool isDestructive = false,
   bool useRootNavigator = true,
+  // #Pangea
+  bool? barrierDismissible,
+  // Pangea#
 }) => showAdaptiveDialog<OkCancelResult>(
   context: context,
   useRootNavigator: useRootNavigator,
+  // #Pangea
+  barrierDismissible: barrierDismissible,
+  // Pangea#
   builder: (context) => AlertDialog.adaptive(
     title: ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: 256),

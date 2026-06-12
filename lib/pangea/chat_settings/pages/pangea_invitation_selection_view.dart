@@ -138,13 +138,18 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                   ),
                 ),
               ),
-              if (controller.filter == InvitationFilter.knocking &&
-                  contacts.isNotEmpty)
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 0.0),
-                    child: ElevatedButton.icon(
+              Align(
+                alignment: Alignment.centerLeft,
+                child: StreamBuilder<Object>(
+                  stream: room.client.onRoomState.stream
+                      .where((update) => update.roomId == room.id)
+                      .rateLimit(const Duration(seconds: 1)),
+                  builder: (context, snapshot) {
+                    if (!controller.showAcceptAll) {
+                      return SizedBox.shrink();
+                    }
+
+                    return ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: theme.colorScheme.primaryContainer,
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -155,9 +160,10 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                       ),
                       label: Text(L10n.of(context).acceptAll),
                       onPressed: controller.acceptAllKnocking,
-                    ),
-                  ),
+                    );
+                  },
                 ),
+              ),
               Expanded(
                 child: StreamBuilder<Object>(
                   stream: room.client.onRoomState.stream

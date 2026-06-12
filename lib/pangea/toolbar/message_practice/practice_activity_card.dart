@@ -6,6 +6,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/card_error_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/content_loading_indicator.dart';
+import 'package:fluffychat/pangea/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_target.dart';
@@ -40,6 +41,8 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
   final ValueNotifier<AsyncState<PracticeExerciseModel>> _activityState =
       ValueNotifier(const AsyncState.loading());
 
+  final _playbackSpeedController = AudioPlaybackSpeedController();
+
   @override
   void initState() {
     super.initState();
@@ -58,6 +61,7 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
   @override
   void dispose() {
     _activityState.dispose();
+    _playbackSpeedController.dispose();
     super.dispose();
   }
 
@@ -113,6 +117,7 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
                 MatchPracticeExerciseModel() => MatchActivityCard(
                   currentActivity: state.value as MatchPracticeExerciseModel,
                   controller: widget.controller,
+                  playbackSpeedController: _playbackSpeedController,
                 ),
               },
               _ => const SizedBox.shrink(),

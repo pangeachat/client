@@ -71,6 +71,7 @@ class ActivityPlanModel {
         id: 'role_$i',
         name: 'Participant',
         goal: learningObjective,
+        goals: [],
         avatarUrl: null,
       );
     }
@@ -237,14 +238,25 @@ class ActivityRole {
   final String id;
   final String name;
   final String? goal;
+  final List<ActivityRoleGoal> goals;
   final String? avatarUrl;
 
   ActivityRole({
     required this.id,
     required this.name,
     required this.goal,
+    required this.goals,
     this.avatarUrl,
   });
+
+  String get _defaultGoalId => "$id:legacy";
+
+  List<ActivityRoleGoal> get allGoals {
+    if (goals.isNotEmpty) return goals;
+    final goal = this.goal;
+    if (goal == null) return [];
+    return [ActivityRoleGoal(id: _defaultGoalId, description: goal)];
+  }
 
   factory ActivityRole.fromJson(Map<String, dynamic> json) {
     final urlContent = json['avatar_url'] as String?;
@@ -257,11 +269,47 @@ class ActivityRole {
       id: json['id'] as String,
       name: json['name'] as String,
       goal: json['goal'] as String?,
+      goals: json["goals"] != null
+          ? List.from(json["goals"])
+                .map(
+                  (e) =>
+                      ActivityRoleGoal.fromJson(Map<String, dynamic>.from(e)),
+                )
+                .toList()
+          : [],
       avatarUrl: avatarUrl,
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {'id': id, 'name': name, 'goal': goal, 'avatar_url': avatarUrl};
+    return {
+      'id': id,
+      'name': name,
+      'goal': goal,
+      'avatar_url': avatarUrl,
+      "goals": goals.map((g) => g.toJson()).toList(),
+    };
   }
+}
+
+class ActivityRoleGoal {
+  final String id;
+  final String description;
+
+  const ActivityRoleGoal({required this.id, required this.description});
+
+  Map<String, dynamic> toJson() => {"id": id, "description": description};
+
+  factory ActivityRoleGoal.fromJson(Map<String, dynamic> json) =>
+      ActivityRoleGoal(id: json["id"], description: json["description"]);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ActivityRoleGoal &&
+          id == other.id &&
+          description == other.description;
+
+  @override
+  int get hashCode => id.hashCode ^ description.hashCode;
 }

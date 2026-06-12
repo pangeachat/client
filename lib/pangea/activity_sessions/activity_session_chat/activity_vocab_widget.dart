@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:material_symbols_icons/symbols.dart';
@@ -31,7 +33,7 @@ class ActivityVocabWidget extends StatelessWidget {
     required this.langCode,
     required this.targetId,
     required this.activityLangCode,
-    this.usedVocab,
+    required this.usedVocab,
   });
 
   @override
@@ -77,14 +79,14 @@ class _VocabChips extends StatefulWidget {
   final String targetId;
   final String langCode;
   final String activityLangCode;
-  final Set<String> usedVocab;
+  final Set<String>? usedVocab;
 
   const _VocabChips({
     required this.vocab,
     required this.targetId,
     required this.langCode,
     required this.activityLangCode,
-    required this.usedVocab,
+    this.usedVocab,
   });
 
   @override
@@ -93,12 +95,22 @@ class _VocabChips extends StatefulWidget {
 
 class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
   Vocab? _selectedVocab;
-  late Set<PangeaTokenText> _newTokens;
+  Set<PangeaTokenText> _newTokens = {};
   static const String _newTokensCacheKey = "activity_tokens";
+
+  late final StreamSubscription _analyticsSubscription;
 
   @override
   void initState() {
     super.initState();
+
+    _analyticsSubscription = Matrix.of(context)
+        .analyticsDataService
+        .updateDispatcher
+        .constructUpdateStream
+        .stream
+        .listen((_) => _computeNewTokens());
+
     _computeNewTokens();
   }
 
@@ -114,17 +126,21 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
   @override
   void dispose() {
     TokensUtil.instance.clearNewTokenCache();
+    _analyticsSubscription.cancel();
     super.dispose();
   }
 
   String _vocabKey(Vocab v) => "${widget.targetId}-${v.lemma}";
 
   void _computeNewTokens() {
-    _newTokens = TokensUtil.instance.getNewTokens(
+    final newTokens = TokensUtil.instance.getNewTokens(
       _newTokensCacheKey,
       widget.vocab.map((v) => v.asToken()).toList(),
       widget.activityLangCode,
     );
+    if (mounted && newTokens.length != _newTokens.length) {
+      setState(() => _newTokens = newTokens);
+    }
   }
 
   void _selectVocab(Vocab vocab, {bool isNew = false}) {
@@ -142,7 +158,6 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
       langCode: widget.langCode,
     );
     _computeNewTokens();
-    if (mounted) setState(() {});
   }
 
   void _showWordCard(Vocab vocab) {
@@ -182,7 +197,7 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
 
           return _VocabChip(
             v: v,
-            isUsed: widget.usedVocab.contains(v.lemma.toLowerCase()),
+            isUsed: widget.usedVocab?.contains(v.lemma.toLowerCase()) ?? false,
             isNew: isNew,
             isSelected: _selectedVocab == v,
             onTap: () => _selectVocab(v, isNew: isNew),
@@ -216,10 +231,7 @@ class _VocabChip extends StatelessWidget {
     final linkAndKey = MatrixState.pAnyState.layerLinkAndKey(target);
 
     final color = isUsed
-        ? Color.alphaBlend(
-            Theme.of(context).colorScheme.surface.withAlpha(150),
-            AppConfig.gold,
-          )
+        ? AppConfig.gold.withAlpha(50)
         : Theme.of(context).colorScheme.primary.withAlpha(20);
 
     return CompositedTransformTarget(
@@ -281,12 +293,13 @@ class _WordCardWrapperState extends State<_WordCardWrapper> {
 
   @override
   Widget build(BuildContext context) {
+    final token = PangeaTokenText(
+      content: widget.v.lemma,
+      length: widget.v.lemma.characters.length,
+      offset: 0,
+    );
     return WordZoomWidget(
-      token: PangeaTokenText(
-        content: widget.v.lemma,
-        length: widget.v.lemma.characters.length,
-        offset: 0,
-      ),
+      token: token,
       construct: ConstructIdentifier(
         lemma: widget.v.lemma,
         type: ConstructTypeEnum.vocab,
@@ -298,6 +311,7 @@ class _WordCardWrapperState extends State<_WordCardWrapper> {
         MatrixState.pAnyState.closeOverlay(widget.target);
         widget.onClose();
       },
+      enableAnalyticsNavigation: true,
     );
   }
 }

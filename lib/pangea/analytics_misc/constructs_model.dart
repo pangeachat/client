@@ -9,9 +9,8 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/morphs/morph_models.dart';
 import 'construct_type_enum.dart';
 
 class ConstructAnalyticsModel {
@@ -179,7 +178,7 @@ class OneConstructUse {
       return category ?? "Other";
     }
 
-    final MorphFeaturesAndTags morphs = defaultMorphMapping;
+    final morphs = GrammarConstructsProvider.getFeaturesAndTags();
 
     if (categoryEntry == null) {
       return morphs.guessMorphCategory(json["lemma"]);
@@ -225,8 +224,7 @@ class OneConstructUse {
 
     if (metadata.timeStamp.isAfter(DateTime(2026, 3, 16)) &&
         constructType == ConstructTypeEnum.morph &&
-        MorphFeaturesEnumExtension.fromString(category) ==
-            MorphFeaturesEnum.Unknown) {
+        MorphFeaturesEnum.fromString(category) == MorphFeaturesEnum.Unknown) {
       ErrorHandler.logError(
         e: Exception("Morph feature not found"),
         data: {

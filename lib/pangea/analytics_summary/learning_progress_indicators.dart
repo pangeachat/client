@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_init_error_indicator.dart';
 import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
@@ -45,7 +46,9 @@ class LearningProgressIndicators extends StatelessWidget {
         final userL1 = MatrixState.pangeaController.userController.userL1;
         final userL2 = MatrixState.pangeaController.userController.userL2;
 
-        final analyticsRoom = Matrix.of(context).client.analyticsRoomLocal();
+        final analyticsRoom = Matrix.of(
+          context,
+        ).client.ownAnalyticsRoomLocalByL2;
         final updater = analyticsService.updateDispatcher;
 
         return StreamBuilder(
@@ -136,45 +139,48 @@ class LearningProgressIndicators extends StatelessWidget {
                               ),
                             ],
                           ),
-                          HoverButton(
-                            onPressed: () => showDialog(
-                              context: context,
-                              builder: (c) => const SettingsLearning(),
-                              barrierDismissible: false,
-                            ),
-                            child: Row(
-                              children: [
-                                if (userL1 != null && userL2 != null)
-                                  Text(
-                                    userL1.langCodeShort.toUpperCase(),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleLarge
-                                        ?.copyWith(
-                                          fontWeight: FontWeight.bold,
-                                          color: Theme.of(
-                                            context,
-                                          ).colorScheme.primary,
-                                        ),
-                                    textScaler: TextScaler.noScaling,
-                                  ),
-                                if (userL1 != null && userL2 != null)
-                                  const Icon(Icons.chevron_right_outlined),
-                                if (userL2 != null)
-                                  Text(
-                                    userL2.langCodeShort.toUpperCase(),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleLarge
-                                        ?.copyWith(
-                                          fontWeight: FontWeight.bold,
-                                          color: Theme.of(
-                                            context,
-                                          ).colorScheme.primary,
-                                        ),
-                                    textScaler: TextScaler.noScaling,
-                                  ),
-                              ],
+                          Tooltip(
+                            message: L10n.of(context).learningSettings,
+                            child: HoverButton(
+                              onPressed: () => showDialog(
+                                context: context,
+                                builder: (c) => const SettingsLearning(),
+                                barrierDismissible: false,
+                              ),
+                              child: Row(
+                                children: [
+                                  if (userL1 != null && userL2 != null)
+                                    Text(
+                                      userL1.langCodeShort.toUpperCase(),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge
+                                          ?.copyWith(
+                                            fontWeight: FontWeight.bold,
+                                            color: Theme.of(
+                                              context,
+                                            ).colorScheme.primary,
+                                          ),
+                                      textScaler: TextScaler.noScaling,
+                                    ),
+                                  if (userL1 != null && userL2 != null)
+                                    const Icon(Icons.chevron_right_outlined),
+                                  if (userL2 != null)
+                                    Text(
+                                      userL2.langCodeShort.toUpperCase(),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge
+                                          ?.copyWith(
+                                            fontWeight: FontWeight.bold,
+                                            color: Theme.of(
+                                              context,
+                                            ).colorScheme.primary,
+                                          ),
+                                      textScaler: TextScaler.noScaling,
+                                    ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
@@ -196,58 +202,61 @@ class LearningProgressIndicators extends StatelessWidget {
                               vertical: 2.0,
                               horizontal: 4.0,
                             ),
-                            child: MouseRegion(
-                              cursor: canSelect
-                                  ? SystemMouseCursors.click
-                                  : MouseCursor.defer,
-                              child: GestureDetector(
-                                onTap: canSelect
-                                    ? () {
-                                        AnalyticsNavigationUtil.navigateToAnalytics(
-                                          context: context,
-                                          view: ProgressIndicatorEnum.level,
-                                        );
-                                      }
-                                    : null,
-                                child: FutureBuilder(
-                                  future: userL2 != null
-                                      ? analyticsService.derivedData(
-                                          userL2.langCodeShort,
-                                        )
-                                      : Future.value(
-                                          DerivedAnalyticsDataModel(),
-                                        ),
-                                  builder: (context, snapshot) {
-                                    final cached =
-                                        analyticsService.cachedDerivedData;
-                                    final data = snapshot.data ?? cached;
-                                    return Row(
-                                      spacing: 8.0,
-                                      children: [
-                                        Expanded(
-                                          child: LearningProgressBar(
-                                            height: 24.0,
-                                            loading: data == null,
-                                            progress:
-                                                data?.levelProgress ?? 0.0,
+                            child: Tooltip(
+                              message: L10n.of(context).level,
+                              child: MouseRegion(
+                                cursor: canSelect
+                                    ? SystemMouseCursors.click
+                                    : MouseCursor.defer,
+                                child: GestureDetector(
+                                  onTap: canSelect
+                                      ? () {
+                                          AnalyticsNavigationUtil.navigateToAnalytics(
+                                            context: context,
+                                            view: ProgressIndicatorEnum.level,
+                                          );
+                                        }
+                                      : null,
+                                  child: FutureBuilder(
+                                    future: userL2 != null
+                                        ? analyticsService.derivedData(
+                                            userL2.langCodeShort,
+                                          )
+                                        : Future.value(
+                                            DerivedAnalyticsDataModel(),
                                           ),
-                                        ),
-                                        if (data != null)
-                                          Text(
-                                            "⭐ ${data.level}",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleLarge
-                                                ?.copyWith(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Theme.of(
-                                                    context,
-                                                  ).colorScheme.primary,
-                                                ),
+                                    builder: (context, snapshot) {
+                                      final cached =
+                                          analyticsService.cachedDerivedData;
+                                      final data = snapshot.data ?? cached;
+                                      return Row(
+                                        spacing: 8.0,
+                                        children: [
+                                          Expanded(
+                                            child: LearningProgressBar(
+                                              height: 24.0,
+                                              loading: data == null,
+                                              progress:
+                                                  data?.levelProgress ?? 0.0,
+                                            ),
                                           ),
-                                      ],
-                                    );
-                                  },
+                                          if (data != null)
+                                            Text(
+                                              "⭐ ${data.level}",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleLarge
+                                                  ?.copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Theme.of(
+                                                      context,
+                                                    ).colorScheme.primary,
+                                                  ),
+                                            ),
+                                        ],
+                                      );
+                                    },
+                                  ),
                                 ),
                               ),
                             ),

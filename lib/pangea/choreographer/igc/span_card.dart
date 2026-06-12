@@ -11,22 +11,17 @@ import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dar
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_choice_type_enum.dart';
+import 'package:fluffychat/pangea/choreographer/igc/writing_assistance_popup.dart';
+import 'package:fluffychat/pangea/choreographer/igc/writing_asssitance_popup_manager.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_array.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SpanCard extends StatefulWidget {
-  final Choreographer choreographer;
-  final Future Function(String) onFeedbackSubmitted;
-  final VoidCallback close;
+  final WritingAssistancePopupManager controller;
 
-  const SpanCard({
-    super.key,
-    required this.choreographer,
-    required this.onFeedbackSubmitted,
-    required this.close,
-  });
+  const SpanCard({super.key, required this.controller});
 
   @override
   State<SpanCard> createState() => SpanCardState();
@@ -38,27 +33,41 @@ class SpanCardState extends State<SpanCard> {
   double? _previousOffset;
   Offset _slideFrom = const Offset(0.1, 0); // default slide from right
 
+  Choreographer get _choreographer => widget.controller.choreographer;
+
   @override
   void initState() {
     super.initState();
-    widget.choreographer.addListener(_onAssistanceStateChange);
+    _activeMatch.addListener(_onActiveMatchUpdate);
+    _choreographer.addListener(_onAssistanceStateChange);
   }
 
   @override
   void dispose() {
-    widget.choreographer.igcController.clearActiveMatch();
     scrollController.dispose();
-    widget.choreographer.removeListener(_onAssistanceStateChange);
+    _activeMatch.removeListener(_onActiveMatchUpdate);
+    _choreographer.removeListener(_onAssistanceStateChange);
     super.dispose();
   }
 
   ValueNotifier<PangeaMatchState?> get _activeMatch =>
-      widget.choreographer.igcController.activeMatch;
+      _choreographer.igcController.activeMatch;
 
-  void _onAssistanceStateChange() {
-    if (widget.choreographer.assistanceState != AssistanceStateEnum.fetched) {
-      widget.close();
+  Future<void> _onAssistanceStateChange() async {
+    if (_choreographer.assistanceState != AssistanceStateEnum.fetched) {
+      await widget.controller.close();
     }
+  }
+
+  Future<void> _onActiveMatchUpdate() async {
+    final activeMatch = _activeMatch.value;
+
+    if (activeMatch == null) {
+      await widget.controller.close();
+      return;
+    }
+
+    if (mounted) setState(() {});
   }
 
   Future<void> _onChoiceSelect(
@@ -85,10 +94,10 @@ class SpanCardState extends State<SpanCard> {
     PangeaMatchStatusEnum status,
   ) async {
     try {
-      final igc = widget.choreographer.igcController;
+      final igc = _choreographer.igcController;
       igc.updateMatchStatus(match, status);
       if (!status.isOpen) {
-        igc.hasOpenMatches ? igc.setActiveMatch() : widget.close();
+        igc.hasOpenMatches ? igc.showNextMatchToShow() : igc.clearMatchToShow();
       }
     } catch (e, s) {
       ErrorHandler.logError(
@@ -97,7 +106,7 @@ class SpanCardState extends State<SpanCard> {
         level: SentryLevel.warning,
         data: {"match": match.toJson()},
       );
-      widget.choreographer.clearMatches(e);
+      _choreographer.clearMatches(e);
       return;
     }
   }
@@ -114,34 +123,35 @@ class SpanCardState extends State<SpanCard> {
       return;
     }
 
-    await widget.onFeedbackSubmitted(resp);
+    await widget.controller.onFeedbackSubmitted(resp);
   }
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: widget.choreographer.igcController.matchUpdateStream.stream,
-      builder: (context, _) => SizedBox(
-        height: 200.0,
-        child: ValueListenableBuilder(
-          valueListenable: _activeMatch,
-          builder: (context, match, _) {
-            if (match == null) return SizedBox();
+    return WritingAssistancePopup(
+      widget.controller,
+      child: StreamBuilder(
+        stream: _choreographer.igcController.matchUpdateStream.stream,
+        builder: (context, _) {
+          final match = _activeMatch.value;
+          if (match == null) return SizedBox(height: 200.0);
 
-            final newOffset = match.updatedMatch.match.offset.toDouble();
-            if (_previousOffset != null) {
-              if (newOffset < _previousOffset!) {
-                // Moving backward → slide from left
-                _slideFrom = const Offset(-0.1, 0);
-              } else if (newOffset > _previousOffset!) {
-                // Moving forward → slide from right
-                _slideFrom = const Offset(0.1, 0);
-              }
+          final newOffset = match.updatedMatch.match.offset.toDouble();
+          if (_previousOffset != null) {
+            if (newOffset < _previousOffset!) {
+              // Moving backward → slide from left
+              _slideFrom = const Offset(-0.1, 0);
+            } else if (newOffset > _previousOffset!) {
+              // Moving forward → slide from right
+              _slideFrom = const Offset(0.1, 0);
             }
-            _previousOffset = newOffset;
-            final theme = Theme.of(context);
+          }
+          _previousOffset = newOffset;
+          final theme = Theme.of(context);
 
-            return Column(
+          return SizedBox(
+            height: 200.0,
+            child: Column(
               mainAxisSize: .min,
               children: [
                 SizedBox(
@@ -151,7 +161,7 @@ class SpanCardState extends State<SpanCard> {
                       IconButton(
                         icon: const Icon(Icons.close),
                         color: theme.iconTheme.color,
-                        onPressed: widget.close,
+                        onPressed: widget.controller.close,
                       ),
                       Expanded(
                         child: Center(
@@ -209,9 +219,9 @@ class SpanCardState extends State<SpanCard> {
                   ),
                 ),
               ],
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -259,10 +269,9 @@ class _MatchContent extends StatelessWidget {
               ),
               isOpen
                   ? ChoicesArray(
-                      isLoading: false,
                       choices: currentMatch.choices?.map((e) {
                         return Choice(
-                          text: e.value,
+                          value: e.value,
                           color: e.selected ? e.type.color : null,
                           isGold: e.type.isSuggestion,
                         );

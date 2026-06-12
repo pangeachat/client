@@ -154,12 +154,22 @@ class PangeaRepresentation {
 
     final pastedStrings = choreo?.pastedStrings ?? <String>{};
 
+    final openMatches = choreo?.openMatches ?? [];
+
     return tokensToSave
         .where(
-          (token) => !pastedStrings.any(
-            (pasted) =>
-                pasted.toLowerCase().contains(token.text.content.toLowerCase()),
-          ),
+          (token) =>
+              !pastedStrings.any(
+                (pasted) => pasted.toLowerCase().contains(
+                  token.text.content.toLowerCase(),
+                ),
+              ) &&
+              !openMatches.any(
+                (match) => match.overlapsTokenSpan(
+                  token.text.offset,
+                  token.text.length,
+                ),
+              ),
         )
         .toList();
   }

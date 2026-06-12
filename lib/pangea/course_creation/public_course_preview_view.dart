@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
+import 'package:fluffychat/pangea/course_creation/cefr_level_match.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
+import 'package:fluffychat/pangea/course_creation/course_topic_list_widget.dart';
 import 'package:fluffychat/pangea/course_creation/public_course_preview.dart';
-import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_model.dart';
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
-import 'package:fluffychat/pangea/course_settings/pin_clipper.dart';
+import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -62,6 +64,16 @@ class PublicCoursePreviewView extends StatelessWidget {
 
                 final displayname = summary.displayName ?? course.title;
 
+                final userController =
+                    MatrixState.pangeaController.userController;
+                final cefrMatch = computeCefrMatch(
+                  context: context,
+                  userLevel: userController.userCefrLevel,
+                  courseLevel: course.cefrLevel,
+                  courseLanguage: course.targetLanguage,
+                  userLanguage: userController.userL2Code,
+                );
+
                 return Column(
                   children: [
                     Expanded(
@@ -109,12 +121,29 @@ class PublicCoursePreviewView extends StatelessWidget {
                                       fontSize: descFontSize,
                                     ),
                                   ),
-                                  Row(
+                                  Wrap(
                                     spacing: 8.0,
-                                    mainAxisSize: MainAxisSize.min,
+                                    runSpacing: 8.0,
+                                    alignment: WrapAlignment.center,
                                     children: [
-                                      CourseInfoChips(
-                                        course.uuid,
+                                      CourseInfoChip(
+                                        icon: Icons.language,
+                                        text: course.targetLanguageDisplay,
+                                        fontSize: descFontSize,
+                                        iconSize: smallIconSize,
+                                      ),
+                                      CourseInfoChip(
+                                        icon: Icons.school,
+                                        text: course.cefrLevel.title(context),
+                                        fontSize: descFontSize,
+                                        iconSize: smallIconSize,
+                                        highlightColor: cefrMatch.chipColor,
+                                      ),
+                                      CourseInfoChip(
+                                        icon: Icons.location_on,
+                                        text: L10n.of(
+                                          context,
+                                        ).numModules(course.topicIds.length),
                                         fontSize: descFontSize,
                                         iconSize: smallIconSize,
                                       ),
@@ -154,102 +183,7 @@ class PublicCoursePreviewView extends StatelessWidget {
                               );
                             }
 
-                            return course.topicListComplete
-                                ? Column(
-                                    children: [
-                                      ...course.topicIds
-                                          .map((id) => course.loadedTopics[id])
-                                          .whereType<CourseTopicModel>()
-                                          .map(
-                                            (topic) => Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                    vertical: 4.0,
-                                                  ),
-                                              child: Row(
-                                                spacing: 8.0,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  ClipPath(
-                                                    clipper: PinClipper(),
-                                                    child: ImageByUrl(
-                                                      imageUrl: topic.imageUrl,
-                                                      width: 45.0,
-                                                      replacement: Container(
-                                                        width: 45.0,
-                                                        height: 45.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                              color: theme
-                                                                  .colorScheme
-                                                                  .secondary,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Flexible(
-                                                    child: Column(
-                                                      spacing: 4.0,
-                                                      mainAxisSize:
-                                                          MainAxisSize.min,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          topic.title,
-                                                          style: const TextStyle(
-                                                            fontSize:
-                                                                titleFontSize,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsGeometry.symmetric(
-                                                                vertical: 2.0,
-                                                              ),
-                                                          child: Row(
-                                                            spacing: 8.0,
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .min,
-                                                            children: [
-                                                              if (topic
-                                                                      .location !=
-                                                                  null)
-                                                                CourseInfoChip(
-                                                                  icon: Icons
-                                                                      .location_on,
-                                                                  text: topic
-                                                                      .location!,
-                                                                  fontSize:
-                                                                      descFontSize,
-                                                                  iconSize:
-                                                                      smallIconSize,
-                                                                ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Text(
-                                                          topic.description,
-                                                          style: const TextStyle(
-                                                            fontSize:
-                                                                descFontSize,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                    ],
-                                  )
-                                : Center(
-                                    child: CircularProgressIndicator.adaptive(),
-                                  );
+                            return CourseTopicList(course: course);
                           },
                         ),
                       ),
@@ -270,12 +204,22 @@ class PublicCoursePreviewView extends StatelessWidget {
                         child: Column(
                           spacing: 8.0,
                           children: [
+                            if (cefrMatch.message != null)
+                              InlineTooltip(
+                                message: cefrMatch.message!,
+                                isClosed: false,
+                                backgroundColor: cefrMatch.chipColor,
+                                icon: cefrMatch.icon,
+                              ),
                             if (summary.joinRule == JoinRules.knock) ...[
                               TextField(
                                 decoration: InputDecoration(
                                   hintText: L10n.of(context).enterCodeToJoin,
                                 ),
                                 onSubmitted: controller.joinWithCode,
+                                inputFormatters: [
+                                  LengthLimitingTextInputFormatter(10),
+                                ],
                               ),
                               Row(
                                 spacing: 8.0,

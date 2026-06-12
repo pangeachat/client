@@ -14,14 +14,12 @@ import 'package:fluffychat/pages/chat/chat_app_bar_list_tile.dart';
 import 'package:fluffychat/pages/chat/chat_app_bar_title.dart';
 import 'package:fluffychat/pages/chat/chat_event_list.dart';
 import 'package:fluffychat/pages/chat/pinned_events.dart';
+import 'package:fluffychat/pangea/activity_orchestrator/activity_stats_menu.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_finished_status_message.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_menu_button.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_session_popup_menu.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_stats_menu.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
-import 'package:fluffychat/pangea/activity_summary/load_activity_summary_widget.dart';
-import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_floating_action_button.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_input_bar.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -162,7 +160,6 @@ class ChatView extends StatelessWidget {
 
     if (controller.room.showActivityChatUI) {
       return [
-        ActivityMenuButton(controller: controller),
         ActivitySessionPopupMenu(controller.room, onLeave: controller.onLeave),
       ];
     }
@@ -600,29 +597,20 @@ class ChatView extends StatelessWidget {
                             ActivityFinishedStatusMessage(
                               controller: controller,
                             ),
-                          if (controller.room.isActivityFinished)
-                            LoadActivitySummaryWidget(room: controller.room),
                           // Pangea#
                         ],
                       ),
                     ),
                     // #Pangea
-                    ActivityStatsMenu(controller),
-                    if (controller.room.activitySummary?.summary != null)
-                      ValueListenableBuilder(
-                        valueListenable:
-                            controller.activityController.hasRainedConfetti,
-                        builder: (context, hasRained, _) {
-                          return hasRained
-                              ? const SizedBox()
-                              : StarRainWidget(
-                                  showBlast: true,
-                                  onFinished: () => controller
-                                      .activityController
-                                      .setHasRainedConfetti(true),
-                                );
-                        },
-                      ),
+                    ActivityStatsMenu(
+                      room: controller.room,
+                      visibilityNotifier:
+                          controller.activityController.showActivityDropdown,
+                      setVisibility:
+                          controller.activityController.setShowDropdown,
+                      usedVocab: controller.activityController.usedVocab,
+                      activeGoalNotifier: controller.activeGoalNotifier,
+                    ),
                     // if (controller.dragging)
                     //   Container(
                     //     color: theme.scaffoldBackgroundColor.withAlpha(230),

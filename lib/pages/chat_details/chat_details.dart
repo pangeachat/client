@@ -21,7 +21,7 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/room_summaries/room_summaries_model.dart';
-import 'package:fluffychat/pangea/room_summaries/room_summaries_repo.dart';
+import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -134,6 +134,7 @@ class ChatDetailsController extends State<ChatDetails>
       title: room.isSpace
           ? L10n.of(context).changeTheNameOfTheClass
           : L10n.of(context).changeTheNameOfTheChat,
+      maxLength: 64,
       // Pangea#
       okLabel: L10n.of(context).ok,
       cancelLabel: L10n.of(context).cancel,
@@ -390,15 +391,12 @@ class ChatDetailsController extends State<ChatDetails>
       if (room == null || !room.isSpace) return;
 
       if (mounted) setState(() => loadingCourseSummary = true);
-      final roomSummariesRepo = RoomSummariesRepo(client);
       final roomIds = room.spaceChildren
           .map((c) => c.roomId)
           .whereType<String>()
           .toList();
 
-      final roomSummariesResponse = await roomSummariesRepo.loadRoomSummaries(
-        roomIds,
-      );
+      final roomSummariesResponse = await client.loadRoomSummaries(roomIds);
       roomSummariesModel = CourseInfoSummariesModel(
         roomSummariesResponse,
         activitiesToCompleteOverride: room.teacherMode.activitiesToUnlockTopic,

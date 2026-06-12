@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/course_chats/open_roles_indicator.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -53,11 +54,20 @@ class ChatListItemSubtitle extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         );
       } else if (!room.isActivityStarted) {
-        return OpenRolesIndicator(
-          roles: room.activityPlan!.roles.values.toList(),
-          assignedRoles: room.assignedRoles?.values.toList() ?? [],
-          room: room,
-          space: room.courseParent,
+        return FutureBuilder(
+          future: room.requestParticipants(
+            [Membership.join, Membership.invite, Membership.knock],
+            false,
+            true,
+          ),
+          builder: (context, _) {
+            return OpenRolesIndicator(
+              roles: room.activityPlan!.roles.values.toList(),
+              assignedRoles: room.assignedRoles?.values.toList() ?? [],
+              room: room,
+              space: room.courseParent,
+            );
+          },
         );
       } else if (room.isActivityFinished) {
         return Text(

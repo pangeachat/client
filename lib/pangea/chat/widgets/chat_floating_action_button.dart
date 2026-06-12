@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/choreographer/choreographer_has_error_button.dart';
 
 class ChatFloatingActionButton extends StatelessWidget {
   final ChatController controller;
@@ -15,17 +14,10 @@ class ChatFloatingActionButton extends StatelessWidget {
 
     return ListenableBuilder(
       listenable: Listenable.merge([
-        controller.choreographer.errorService,
         controller.scrollController,
         controller.scrollableNotifier,
       ]),
       builder: (context, _) {
-        if (controller.choreographer.errorService.error != null) {
-          return ChoreographerHasErrorButton(
-            controller.choreographer.errorService.error!,
-            controller.choreographer,
-          );
-        }
         if (controller.scrollController.hasClients &&
             controller.scrollController.position.pixels > 0) {
           return FloatingActionButton(

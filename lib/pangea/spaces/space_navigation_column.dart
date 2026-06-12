@@ -91,73 +91,71 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
     final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
-    final navRailWidth = isColumnMode
+    // width of base navigation rail, if visible
+    final baseNaviRailWidth = isColumnMode
         ? FluffyThemes.navRailWidth
         : FluffyThemes.navRailWidth - 8.0;
 
-    final double navRailExtraWidth = widget.showNavRail ? 250.0 : 0.0;
-    final double columnWidth = isColumnMode
-        ? FluffyThemes.columnWidth + 1.0
+    // width of the real navigation rail, accounting for pages where not visible
+    final double realNaviRailWidth = widget.showNavRail
+        ? baseNaviRailWidth + 1.0
         : 0;
 
-    final double railWidth = widget.showNavRail ? navRailWidth + 1.0 : 0;
-    final double baseWidth = columnWidth + railWidth;
-    final double expandedWidth = baseWidth < navRailExtraWidth
-        ? navRailExtraWidth + railWidth
-        : baseWidth;
+    // width of the expanded section of the navigation column, if visible
+    final baseExpandedNaviWidth = 250.0;
 
-    return AnimatedContainer(
-      duration: FluffyThemes.animationDuration,
-      width: _expanded ? expandedWidth : baseWidth,
-      child: Stack(
-        children: [
-          if (isColumnMode)
-            Positioned.fill(
-              left: navRailWidth + 1.0,
-              child: Row(
+    // width of the real expanded section, accounting for pages where not visible
+    final realExpandedNaviWidth = widget.showNavRail
+        ? baseExpandedNaviWidth
+        : 0.0;
+
+    return Stack(
+      children: [
+        if (isColumnMode)
+          Positioned.fill(
+            left: realNaviRailWidth,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  clipBehavior: Clip.antiAlias,
+                  decoration: const BoxDecoration(),
+                  width: FluffyThemes.columnWidth,
+                  child: _MainView(state: widget.state),
+                ),
+                Container(width: 1.0, color: theme.dividerColor),
+              ],
+            ),
+          ),
+        if (widget.showNavRail)
+          HoverBuilder(
+            builder: (context, hovered) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                _onHoverUpdate(hovered);
+              });
+
+              return Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Container(
-                    clipBehavior: Clip.antiAlias,
-                    decoration: const BoxDecoration(),
-                    width: FluffyThemes.columnWidth,
-                    child: _MainView(state: widget.state),
+                  SpacesNavigationRail(
+                    activeSpaceId: widget.state.pathParameters['spaceid'],
+                    path: widget.state.fullPath,
+                    naviRailWidth: realNaviRailWidth,
+                    expandedSectionWidth: realExpandedNaviWidth,
+                    expanded: _expanded,
+                    collapse: () {
+                      _cancelTimer();
+                      setState(() => _expanded = false);
+                    },
+                    profile: _profile,
+                    onProfileUpdate: _updateProfile,
                   ),
-                  Container(width: 1.0, color: theme.dividerColor),
+                  Container(width: 1, color: Theme.of(context).dividerColor),
                 ],
-              ),
-            ),
-          if (widget.showNavRail)
-            HoverBuilder(
-              builder: (context, hovered) {
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  _onHoverUpdate(hovered);
-                });
-
-                return Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SpacesNavigationRail(
-                      activeSpaceId: widget.state.pathParameters['spaceid'],
-                      path: widget.state.fullPath,
-                      railWidth: _expanded
-                          ? navRailWidth + navRailExtraWidth
-                          : navRailWidth,
-                      expanded: _expanded,
-                      collapse: () {
-                        _cancelTimer();
-                        setState(() => _expanded = false);
-                      },
-                      profile: _profile,
-                      onProfileUpdate: _updateProfile,
-                    ),
-                    Container(width: 1, color: Theme.of(context).dividerColor),
-                  ],
-                );
-              },
-            ),
-        ],
-      ),
+              );
+            },
+          ),
+      ],
     );
   }
 }

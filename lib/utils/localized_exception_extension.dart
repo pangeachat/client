@@ -50,6 +50,11 @@ extension LocalizedExceptionExtension on Object {
     if (this is IdenticalLanguageException) {
       return L10n.of(context).noIdenticalLanguages;
     }
+
+    if (this is MissingLanguageException) {
+      return L10n.of(context).missingLanguageException;
+    }
+
     if (this is DeleteAccountException) {
       switch ((this as DeleteAccountException).error) {
         case DeleteAccountError.P_LIMIT_EXCEEDED:
@@ -84,7 +89,7 @@ extension LocalizedExceptionExtension on Object {
           return L10n.of(context).emailVerificationFailed;
         case MatrixError.M_BAD_STATE:
           if ((this as MatrixException).errorMessage.contains(
-            "Cannot knock user who was banned",
+            "user who was banned",
           )) {
             return L10n.of(context).cannotJoinBannedRoom;
           }
@@ -93,6 +98,13 @@ extension LocalizedExceptionExtension on Object {
           if (exceptionContext == ExceptionContext.joinRoom) {
             return L10n.of(context).unableToJoinChat;
           }
+          // #Pangea
+          if ((this as MatrixException).errorMessage.contains(
+            "No known servers",
+          )) {
+            return L10n.of(context).unableToJoinChat;
+          }
+          // Pangea#
           return (this as MatrixException).errorMessage;
       }
     }

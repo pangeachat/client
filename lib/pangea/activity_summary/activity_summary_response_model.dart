@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 class ParticipantSummaryModel {
   final String participantId;
   final String feedback;
@@ -43,6 +45,9 @@ class ActivitySummaryResponseModel {
     required this.participants,
     required this.summary,
   });
+
+  ParticipantSummaryModel? userSummary(String userId) =>
+      participants.firstWhereOrNull((p) => p.participantId == userId);
 
   factory ActivitySummaryResponseModel.fromJson(Map<String, dynamic> json) {
     return ActivitySummaryResponseModel(

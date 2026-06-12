@@ -23,9 +23,8 @@ import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
-import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
-import 'package:fluffychat/pangea/morphs/morph_models.dart';
-import 'package:fluffychat/pangea/morphs/morph_repo.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_and_tags.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/token_info_feedback/show_token_feedback_dialog.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
@@ -53,8 +52,8 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   final TextEditingController searchController = TextEditingController();
   final List<ConstructIdentifier> selectedConstructs = [];
 
-  MorphFeaturesAndTags morphs = defaultMorphMapping;
-  List<MorphFeature> features = defaultMorphMapping.displayFeatures;
+  MorphFeaturesAndTags morphs =
+      GrammarConstructsProvider.defaultFeaturesAndTags;
 
   List<ConstructUses>? vocab;
 
@@ -119,8 +118,14 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
     final blocked = update.blockedConstructs;
     if (blocked == null) return;
     vocab?.removeWhere((e) => blocked.contains(e.id));
-    if (widget.view == ConstructTypeEnum.vocab && widget.construct == null) {
-      setState(() {});
+    if (widget.view == ConstructTypeEnum.vocab) {
+      if (widget.construct == null) {
+        setState(() {});
+      }
+
+      if (blocked.contains(widget.construct)) {
+        Navigator.of(context).pop();
+      }
     }
   }
 
@@ -144,20 +149,8 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   }
 
   Future<void> _setMorphs() async {
-    try {
-      final resp = await MorphsRepo.get();
-      morphs = resp;
-      features = resp.displayFeatures;
-    } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"l2": _l2?.langCode});
-    } finally {
-      features.sort(
-        (a, b) => morphFeatureSortOrder
-            .indexOf(a.feature)
-            .compareTo(morphFeatureSortOrder.indexOf(b.feature)),
-      );
-      if (mounted) setState(() {});
-    }
+    morphs = await GrammarConstructsProvider.fetchFeaturesAndTags();
+    if (mounted) setState(() {});
   }
 
   Future<Result<void>?> blockConstructs(
@@ -256,6 +249,14 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   Widget build(BuildContext context) {
     final analyticsService = Matrix.of(context).analyticsDataService;
     return Scaffold(
+      appBar: widget.view == ConstructTypeEnum.morph && widget.construct != null
+          ? AppBar(
+              leading: IconButton(
+                onPressed: Navigator.of(context).pop,
+                icon: Icon(Icons.close),
+              ),
+            )
+          : null,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsetsGeometry.all(16.0),

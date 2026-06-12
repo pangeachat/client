@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-27 14:44:15.890030",
+    "@@last_modified": "2026-06-11 10:22:37.033359",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -2261,272 +2261,6 @@
     "l2SupportFull": "Hoàn chỉnh",
     "playAudio": "Phát",
     "stop": "Dừng",
-    "grammarCopyPOSsconj": "Liên từ phụ thuộc",
-    "grammarCopyPOSnum": "Số đếm",
-    "grammarCopyPOSverb": "Động từ",
-    "grammarCopyPOSaffix": "Tiền tố/Hậu tố",
-    "grammarCopyPOSpart": "Tiểu từ",
-    "grammarCopyPOSadj": "Tính từ",
-    "grammarCopyPOScconj": "Liên từ đẳng lập",
-    "grammarCopyPOSpunct": "Dấu câu",
-    "grammarCopyPOSadv": "Trạng từ",
-    "grammarCopyPOSaux": "Động từ phụ",
-    "grammarCopyPOSspace": "Khoảng trắng",
-    "grammarCopyPOSsym": "Ký hiệu",
-    "grammarCopyPOSdet": "Từ hạn định",
-    "grammarCopyPOSpron": "Đại từ",
-    "grammarCopyPOSadp": "Giới từ",
-    "grammarCopyPOSpropn": "Danh từ riêng",
-    "grammarCopyPOSnoun": "Danh từ",
-    "grammarCopyPOSintj": "Thán từ",
-    "grammarCopyPOSx": "Khác",
-    "grammarCopyGENDERfem": "Giống cái",
-    "grammarCopyPERSON2": "Ngôi thứ hai",
-    "grammarCopyMOODimp": "Mệnh lệnh",
-    "grammarCopyPUNCTTYPEqest": "Câu hỏi",
-    "grammarCopyASPECTperf": "Hoàn thành",
-    "grammarCopyCASEaccnom": "Trực tiếp, Chủ cách",
-    "grammarCopyCASEobl": "Bổ nghĩa",
-    "grammarCopyVOICEact": "Chủ động",
-    "grammarCopyPUNCTTYPEbrck": "Dấu ngoặc",
-    "grammarCopyNOUNTYPEart": "Mạo từ",
-    "grammarCopyNUMBERsing": "Số ít",
-    "grammarCopyGENDERmasc": "Giống đực",
-    "grammarCopyVERBTYPEmod": "Động từ khuyết thiếu",
-    "grammarCopyADVTYPEadverbial": "Trạng ngữ",
-    "grammarCopyTENSEperi": "Thì ngoại lệ (periphrastic)",
-    "grammarCopyNUMFORMdigit": "Chữ số",
-    "grammarCopyNOUNTYPEnot_proper": "Không phải danh từ riêng",
-    "grammarCopyNUMTYPEcard": "Số đếm gốc",
-    "grammarCopyNOUNTYPEprop": "Danh từ riêng",
-    "grammarCopyPUNCTTYPEdash": "Dấu gạch ngang",
-    "grammarCopyPUNCTTYPEyes": "Dấu chấp nhận/đồng ý",
-    "grammarCopyPUNCTTYPEsemi": "Dấu chấm phẩy",
-    "grammarCopyPUNCTTYPEcomm": "Dấu phẩy",
-    "grammarCopyMOODcnd": "Giả định",
-    "grammarCopyCASEacc": "Trực tiếp",
-    "grammarCopyPARTTYPEpart": "Thể phân từ",
-    "grammarCopyTENSEpast": "Quá khứ",
-    "grammarCopyDEGREEsup": "Cấp cao nhất (so sánh)",
-    "grammarCopyPUNCTTYPEcolo": "Dấu hai chấm",
-    "grammarCopyPERSON3": "Ngôi thứ ba",
-    "grammarCopyNUMBERplur": "Số nhiều",
-    "grammarCopyPRONTYPEnpr": "Danh từ riêng",
-    "grammarCopyPRONTYPEinterrogative": "Nghi vấn",
-    "grammarCopyPOLITEinfm": "Không trang trọng",
-    "grammarCopyADVTYPEtim": "Thời gian",
-    "grammarCopyPOLARITYneg": "Phủ định",
-    "grammarCopyNUMTYPEtot": "Tổng thể",
-    "grammarCopyADVTYPEadnomial": "Bổ nghĩa danh từ",
-    "grammarCopyASPECTprog": "Đang diễn ra",
-    "grammarCopyMOODsub": "Giả định (subjunctive)",
-    "grammarCopyVERBFORMcomplementive": "Bổ trợ",
-    "grammarCopyCASEnom": "Chủ cách",
-    "grammarCopyTENSEfut": "Tương lai",
-    "grammarCopyCASEdat": "Gián tiếp",
-    "grammarCopyTENSEpres": "Hiện tại",
-    "grammarCopyGENDERneut": "Trung tính",
-    "grammarCopyPRONTYPErel": "Quan hệ",
-    "grammarCopyVERBFORMfinalEnding": "Kết thúc cuối",
-    "grammarCopyPRONTYPEdem": "Chỉ định",
-    "grammarCopyPREPCASEpre": "Cách giới từ",
-    "grammarCopyVERBFORMfin": "Chia ngôi",
-    "grammarCopyDEGREEpos": "Bình thường (so sánh)",
-    "grammarCopyPUNCTTYPEquot": "Dấu ngoặc kép",
-    "grammarCopyVERBFORMger": "Danh động từ (gerund)",
-    "grammarCopyVOICEpass": "Bị động",
-    "grammarCopyCASEgen": "Sở hữu",
-    "grammarCopyTENSEprs": "Hiện tại",
-    "grammarCopyDEFINITEdef": "Xác định",
-    "grammarCopyNUMTYPEord": "Số thứ tự",
-    "grammarCopyCASEins": "Cách công cụ",
-    "grammarCopyVERBFORMinf": "Động từ nguyên mẫu",
-    "grammarCopyNUMFORMlong": "Dạng chữ dài",
-    "grammarCopyCASEloc": "Cách địa điểm",
-    "grammarCopyMOODind": "Trần thuật",
-    "grammarCopyDEGREEcmp": "So sánh hơn",
-    "grammarCopyCASErelativeCase": "Liên hệ",
-    "grammarCopyPUNCTTYPEexcl": "Câu cảm thán",
-    "grammarCopyPERSON1": "Ngôi thứ nhất",
-    "grammarCopyPUNCTSIDEini": "Bắt đầu",
-    "grammarCopyGENDERperson": "Giống người",
-    "grammarCopyFOREIGNyes": "Nước ngoài",
-    "grammarCopyVOICEvoice": "Thể động",
-    "grammarCopyVERBTYPEverbType": "Loại động từ",
-    "grammarCopyPOSSpass": "Sở hữu",
-    "grammarCopyPREPCASEprepCase": "Giới từ",
-    "grammarCopyNUMTYPEnumType": "Kiểu số",
-    "grammarCopyNOUNTYPEnounType": "Loại danh từ",
-    "grammarCopyREFLEXreflex": "Phản thân",
-    "grammarCopyPRONTYPEpronType": "Loại đại từ",
-    "grammarCopyPUNCTSIDEpunctSide": "Vị trí dấu câu",
-    "grammarCopyVERBFORMverbForm": "Hình thái động từ",
-    "grammarCopyGENDERgender": "Giống",
-    "grammarCopyMOODmood": "Lối",
-    "grammarCopyASPECTaspect": "Thể",
-    "grammarCopyPUNCTTYPEpunctType": "Loại dấu câu",
-    "grammarCopyTENSEtense": "Thì",
-    "grammarCopyDEGREEdegree": "Mức so sánh",
-    "grammarCopyPOLITEpolite": "Mức độ trang trọng",
-    "grammarCopyADVTYPEadvType": "Loại trạng từ",
-    "grammarCopyNUMFORMnumber": "Dạng chữ số",
-    "grammarCopyCONJTYPEconjType": "Loại liên từ",
-    "grammarCopyPOLARITYpolarity": "Phủ định/KD",
-    "grammarCopyCASEcase": "Cách",
-    "grammarCopyDEFINITEdefinite": "Tính xác định",
-    "grammarCopyNUMFORMnumForm": "Dạng số",
-    "grammarCopyPRONTYPEadn": "Đại từ thuộc tính",
-    "grammarCopyVOCvoc": "Cách hô gọi",
-    "grammarCopyCMPLcmpl": "Liên kết (complementizer)",
-    "grammarCopyADVadv": "Trạng từ",
-    "grammarCopyMOODjus": "Mệnh lệnh nhẹ (jussive)",
-    "grammarCopyGENDERcom": "Giống chung",
-    "grammarCopyREFLEXrflx": "Phản thân",
-    "grammarCopyPARTTYPEpar": "Phân từ",
-    "grammarCopySPCspc": "Cụ thể",
-    "grammarCopyTENSEpqp": "Quá khứ hoàn thành",
-    "grammarCopyREFLEXref": "Phản thân",
-    "grammarCopyPUNCTTYPEnshrt": "Dạng ngắn",
-    "grammarCopyNUMBERdual": "Số đôi",
-    "grammarCopyNUMFORMlng": "Dài",
-    "grammarCopyVOICEmid": "Trung động",
-    "grammarCopyINTRELintRel": "Nghi vấn, Quan hệ",
-    "grammarCopyINTint": "Nghi vấn",
-    "grammarCopyVOICEcaus": "Khiến khiến",
-    "grammarCopyUnknown": "Không rõ",
-    "grammarCopyEVIDENTevident": "Chứng tỏ",
-    "grammarCopyNUMFORMnumberPsor": "Số lượng sở hữu",
-    "grammarCopyASPECThab": "Thói quen",
-    "grammarCopyCASEabl": "Cách tách ra (ablative)",
-    "grammarCopyCASEall": "Cách hướng đến (allative)",
-    "grammarCopyCASEess": "Cách trạng thái (essive)",
-    "grammarCopyCASEtra": "Cách chuyển đổi (translative)",
-    "grammarCopyCASEequ": "Cách ngang bằng (equative)",
-    "grammarCopyCASEdis": "Cách phân bổ (distributive)",
-    "grammarCopyCASEabs": "Cách tuyệt đối (absolutive)",
-    "grammarCopyCASEerg": "Cách chủ thể (ergative)",
-    "grammarCopyCASEcau": "Cách nguyên nhân (causal)",
-    "grammarCopyCASEben": "Cách lợi ích (benefactive)",
-    "grammarCopyCASEtem": "Cách thời gian (temporal)",
-    "grammarCopyCONJTYPEcoord": "Liên từ đẳng lập",
-    "grammarCopyDEFINITEcons": "Trạng thái kết hợp",
-    "grammarCopyDEGREEabs": "Bậc tuyệt đối",
-    "grammarCopyEVIDENTfh": "Evidentiality thực tế",
-    "grammarCopyEVIDENTnfh": "Evidentiality phi thực tế",
-    "grammarCopyMOODopt": "Cầu mong (optative)",
-    "grammarCopyMOODadm": "Cảm thán (admirative)",
-    "grammarCopyMOODdes": "Mong muốn (desiderative)",
-    "grammarCopyMOODnec": "Cần thiết (necessitative)",
-    "grammarCopyMOODpot": "Khả năng (potential)",
-    "grammarCopyMOODprp": "Đề xuất (propositive)",
-    "grammarCopyMOODqot": "Trích dẫn (quotative)",
-    "grammarCopyNUMFORMword": "Dạng chữ viết",
-    "grammarCopyNUMFORMroman": "Chữ số La Mã",
-    "grammarCopyNUMFORMletter": "Chữ cái",
-    "grammarCopyNUMTYPEmult": "Bội số",
-    "grammarCopyNUMTYPEfrac": "Phân số",
-    "grammarCopyNUMTYPEsets": "Tập hợp",
-    "grammarCopyNUMTYPErange": "Khoảng",
-    "grammarCopyNUMTYPEdist": "Phân phối",
-    "grammarCopyNUMBERtri": "Số tam",
-    "grammarCopyNUMBERpauc": "Số ít nhiều (paucal)",
-    "grammarCopyNUMBERgrpa": "Paucal mở rộng",
-    "grammarCopyNUMBERgrpl": "Số nhiều mở rộng",
-    "grammarCopyNUMBERinv": "Nghịch đảo",
-    "grammarCopyPERSON0": "Ngôi thứ 0",
-    "grammarCopyPERSON4": "Ngôi thứ 4",
-    "grammarCopyPOLITEform": "Trang trọng",
-    "grammarCopyPOLITEelev": "Tôn kính",
-    "grammarCopyPOLITEhumb": "Khiêm nhường",
-    "grammarCopyPRONTYPEemp": "Nhấn mạnh",
-    "grammarCopyPRONTYPEexc": "Cảm thán",
-    "grammarCopyPRONTYPErcp": "Tương hỗ",
-    "grammarCopyPRONTYPEintRelPronType": "Nghi vấn - quan hệ",
-    "grammarCopyTENSEaor": "Aorist",
-    "grammarCopyTENSEeps": "Suy đoán",
-    "grammarCopyTENSEprosp": "Tương lai gần",
-    "grammarCopyVERBFORMpart": "Phân từ",
-    "grammarCopyVERBFORMconv": "Liên động từ (converb)",
-    "grammarCopyVERBFORMvnoun": "Danh động từ",
-    "grammarCopyVOICEantip": "Phản tác (antipassive)",
-    "grammarCopyVOICEcauVoice": "Thể sai khiến",
-    "grammarCopyVOICedir": "Trực tiếp",
-    "grammarCopyVOICEinvVoice": "Nghịch đảo",
-    "grammarCopyVOICErcpVoice": "Tương hỗ",
-    "grammarCopyPOS": "Từ loại",
-    "grammarCopyGENDER": "Giống",
-    "grammarCopyPERSON": "Ngôi",
-    "grammarCopyMOOD": "Lối/Thái",
-    "grammarCopyPUNCTTYPE": "Loại dấu câu",
-    "grammarCopyASPECT": "Thể động từ",
-    "grammarCopyCASE": "Cách",
-    "grammarCopyVOICE": "Thể",
-    "grammarCopyNOUNTYPE": "Loại danh từ",
-    "grammarCopyVERBTYPE": "Loại động từ",
-    "grammarCopyADVTYPE": "Loại trạng từ",
-    "grammarCopyNUMFORM": "Dạng số",
-    "grammarCopyNUMTYPE": "Loại số",
-    "grammarCopyNUMBER": "Số lượng",
-    "grammarCopyDEFINITE": "Tính xác định",
-    "grammarCopyDEGREE": "Mức so sánh",
-    "grammarCopyEVIDENT": "Evidentiality",
-    "grammarCopyFOREIGN": "Ngoại ngữ",
-    "grammarCopyPOLARITY": "Phủ định/KD",
-    "grammarCopyPOLITE": "Mức trang trọng",
-    "grammarCopyPREPCASE": "Giới từ",
-    "grammarCopyPRONTYPE": "Loại đại từ",
-    "grammarCopyPUNCTSIDE": "Vị trí dấu",
-    "grammarCopyREFLEX": "Phản thân",
-    "grammarCopyTENSE": "Thì",
-    "grammarCopyVERBFORM": "Hình thái động từ",
-    "grammarCopyCONJTYPE": "Loại liên từ",
-    "grammarCopySPC": "Tính cụ thể",
-    "grammarCopyPARTTYPE": "Loại phân từ",
-    "grammarCopyINTREL": "Nghi vấn - quan hệ",
-    "grammarCopyUNKNOWN": "Không rõ",
-    "grammarCopyNUMBERPSOR": "Số lượng chủ sở hữu",
-    "grammarCopyPOSS": "Sở hữu",
-    "grammarCopyASPECTimp": "Không hoàn thành",
-    "grammarCopyCASEvoc": "Cách hô gọi",
-    "grammarCopyCASEcom": "Cách đi kèm (comitative)",
-    "grammarCopyCASEpar": "Cách chia phần (partitive)",
-    "grammarCopyCASEadv": "Cách trạng từ",
-    "grammarCopyCASEref": "Cách tham chiếu",
-    "grammarCopyCASErel": "Cách quan hệ",
-    "grammarCopyCASEsub": "Cách dưới (subessive)",
-    "grammarCopyCASEsup": "Cách trên (superessive)",
-    "grammarCopyCASEaccdat": "Cách trực tiếp-gián tiếp",
-    "grammarCopyCASEpre": "Cách giới từ",
-    "grammarCopyCONJTYPEsub": "Phụ thuộc",
-    "grammarCopyCONJTYPEcmp": "So sánh",
-    "grammarCopyDEFINITEind": "Không xác định",
-    "grammarCopyMOODint": "Nghi vấn",
-    "grammarCopyNOUNTYPEcomm": "Danh từ chung",
-    "grammarCopyNUMBERPSORsing": "Chủ sở hữu số ít",
-    "grammarCopyNUMBERPSORplur": "Chủ sở hữu số nhiều",
-    "grammarCopyNUMBERPSORdual": "Chủ sở hữu số đôi",
-    "grammarCopyPOLARITYpos": "Khẳng định",
-    "grammarCopyPOSSyes": "Có sở hữu",
-    "grammarCopyPREPCASEnpr": "Phi giới từ",
-    "grammarCopyPRONTYPEprs": "Cá nhân",
-    "grammarCopyPRONTYPEint": "Nghi vấn",
-    "grammarCopyPRONTYPEtot": "Tổng quát",
-    "grammarCopyPRONTYPEneg": "Phủ định",
-    "grammarCopyPRONTYPEart": "Mạo từ",
-    "grammarCopyPRONTYPEind": "Bất định",
-    "grammarCopyPRONTYPEintrel": "Nghi vấn-quan hệ",
-    "grammarCopyPUNCTSIDEfin": "Kết thúc",
-    "grammarCopyPUNCTTYPEperi": "Chấm câu",
-    "grammarCopyREFLEXyes": "Phản thân",
-    "grammarCopyTENSEimp": "Quá khứ không hoàn thành",
-    "grammarCopyVERBFORMsup": "SuApine",
-    "grammarCopyVERBFORMadn": "Adj. Bổ nghĩa danh từ",
-    "grammarCopyVERBFORMlng": "Dạng dài",
-    "grammarCopyVERBTYPEcaus": "Động từ sai khiến",
-    "grammarCopyVOICEcau": "Thể gây khiến",
-    "grammarCopyVOICEdir": "Thể trực tiếp",
-    "grammarCopyVOICEinv": "Thể nghịch đảo",
-    "grammarCopyVOICErcp": "Thể tương hỗ",
     "other": "Khác",
     "levelShort": "LVL {level}",
     "@levelShort": {
@@ -2791,7 +2525,6 @@
             }
         }
     },
-    "grammarCopyVERBFORMaux": "Trợ động từ",
     "chatWith": "Nhóm với {displayname}",
     "@chatWith": {
         "type": "String",
@@ -3212,7 +2945,6 @@
     "commandHint_logout": "Đăng xuất khỏi thiết bị hiện tại của bạn",
     "commandHint_logoutall": "Đăng xuất khỏi tất cả các thiết bị đang hoạt động",
     "customReaction": "Phản ứng tùy chỉnh",
-    "grammarCopyVERBFORMshrt": "Ngắn",
     "constructUseCollected": "Được thu thập trong trò chuyện",
     "deleteChatDesc": "Bạn có chắc chắn muốn xóa trò chuyện này không? Nó sẽ bị xóa cho tất cả người tham gia và tất cả tin nhắn trong trò chuyện sẽ không còn khả dụng cho việc thực hành hoặc phân tích học tập.",
     "maxFifty": "Tối đa 50",
@@ -3274,10 +3006,6 @@
         "placeholders": {}
     },
     "@customReaction": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMshrt": {
         "type": "String",
         "placeholders": {}
     },
@@ -3502,7 +3230,6 @@
     "inactive": "Không hoạt động",
     "confirmRole": "Xác nhận vai trò",
     "openRoleLabel": "MỞ",
-    "joinedTheActivity": "👋 {username} đã tham gia với vai trò {role}",
     "finishedTheActivity": "🎯 {username} đã kết thúc hoạt động này",
     "activitySummaryError": "Không thể lấy tóm tắt hoạt động",
     "requestSummaries": "Yêu cầu tóm tắt",
@@ -3543,7 +3270,7 @@
     "pingParticipants": "Thông báo cho các thành viên trong khóa học",
     "playWithBot": "Chơi với Pangea Bot",
     "inviteFriends": "Mời bạn bè",
-    "waitNotDone": "Chờ tôi chưa xong!",
+    "waitNotDone": "Chờ một chút, tôi chưa xong!",
     "waitingForOthersToFinish": "Đang chờ những người khác hoàn thành...",
     "generatingSummary": "Phân tích cuộc trò chuyện và tạo kết quả",
     "findCourse": "Tìm khóa học",
@@ -3745,17 +3472,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -5522,14 +5238,8 @@
         "placeholders": {}
     },
     "introChatTitle": "Tạo trò chuyện giới thiệu",
-    "introChatDesc": "Bất kỳ ai trong không gian đều có thể đăng bài.",
     "announcementsChatTitle": "Trò chuyện thông báo",
-    "announcementsChatDesc": "Chỉ quản trị viên không gian mới có thể đăng bài.",
     "@introChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@introChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -5537,13 +5247,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "@announcementsChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "notStartedActivitiesTitle": "Phiên mở ({num})",
     "inProgressActivitiesTitle": "Đang diễn ra ({num})",
-    "completedActivitiesTitle": "Đã hoàn thành ({num})",
     "pickDifferentActivity": "Chọn một hoạt động khác",
     "inOngoingActivity": "Bạn có một hoạt động đang diễn ra!",
     "@notStartedActivitiesTitle": {
@@ -5555,14 +5260,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -5788,11 +5485,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Giọng nói của Pangea Bot",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Yêu cầu của bạn đã được gửi đến quản trị viên khóa học! Bạn sẽ được cho vào nếu họ chấp thuận.",
     "@knockDesc": {
         "type": "String",
@@ -5855,21 +5547,6 @@
     },
     "aboutMeHint": "Về tôi",
     "@aboutMeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "grammarCopyPOSidiom": "Thành ngữ",
-    "grammarCopyPOSphrasalv": "Động từ cụm",
-    "grammarCopyPOScompn": "Hợp chất",
-    "@grammarCopyPOSidiom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSphrasalv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOScompn": {
         "type": "String",
         "placeholders": {}
     },
@@ -6738,20 +6415,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "Đăng ký để mở khóa dịch thuật tương tác và kiểm tra ngữ pháp, phát âm thanh, bài tập thực hành cá nhân hóa và phân tích học tập!",
-    "emojiSelectedSnackbar": "Bạn đã đặt biểu tượng cảm xúc cho {lemma}! Chúng tôi sẽ sử dụng biểu tượng cảm xúc này để đại diện cho từ trong các bài tập thực hành trong tương lai.",
     "unlockPracticeActivities": "Mở khóa bài tập thực hành",
     "noAnalyticsActivitiesAvailable": "Wow, bạn đã hoàn thành tất cả các hoạt động có sẵn! Gửi thêm tin nhắn để mở khóa thêm bài tập thực hành.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -6963,6 +6631,283 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Nhiều tùy chọn",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Một con gấu màu vàng hoạt hình với đôi tay giơ lên trong sự phấn khích.",
+    "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Chọn từ để tìm hiểu thêm về chúng",
+    "requireAnalyticsAccessTitle": "Cần quyền truy cập phân tích để tham gia",
+    "requireAnalyticsAccessDesc": "Người tham gia phải cấp quyền truy cập vào phân tích học tập của họ để tham gia khóa học này",
+    "analyticsAccessNoticeTitle": "Cần quyền truy cập phân tích",
+    "analyticsAccessNoticeDesc": "Bằng cách tham gia khóa học này, bạn đồng ý cấp quyền truy cập cho quản trị viên vào phân tích học tập của bạn.",
+    "skipOnboardingClassCodeDesc": "Học độc lập? Đừng lo, bạn có thể:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Vui lòng chọn một vai trò đã định nghĩa sẵn bên dưới hoặc nhập mức quyền tùy chỉnh. Chọn một số nguyên giữa 0 và 100.",
+    "reportContentIssue": "Báo cáo vấn đề nội dung",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Vui lòng chọn ngôn ngữ gốc và ngôn ngữ đích hợp lệ",
+    "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "Tôi sử dụng Pangea Chat để",
+    "teach": "Dạy",
+    "courseCodeStepTitle": "Bạn có mã mời khóa học không?",
+    "courseCodeStepHint": "Nhập mã để tham gia",
+    "courseCodeStepSkip": "Tôi không có mã",
+    "joinedCourseStepTitle": "Chào mừng!",
+    "pickLanguageTeacherStepTitle": "Bạn đang dạy ngôn ngữ nào?",
+    "pickCefrLevelTeacherStepTitle": "Bạn dạy cấp độ nào?",
+    "pickCefrLevelStudentStepTitle": "Bạn đang ở cấp độ nào?",
+    "customCourseStepTitle": "Điền vào mẫu này để có một khóa học tùy chỉnh",
+    "aboutYourClass": "Về lớp học của bạn",
+    "courseCodeStepErrorMessage": "Vui lòng kiểm tra mã của bạn và thử lại",
+    "institution": "Tổ chức",
+    "courseGoals": "Mục tiêu khóa học",
+    "selectChats": "Chọn trò chuyện",
+    "plainTextFile": "Văn bản",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Đã hoàn thành ({num})",
+    "suggestion": "Chọn gợi ý tốt nhất",
+    "completeActivityButton": "Tôi đã xong!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Vui lòng giới hạn độ dài tên tối đa là 50 ký tự.",
+    "enterAName": "Vui lòng nhập một tên.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Hỗ trợ viết",
+    "viewError": "Xem lỗi",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Tải ứng dụng Pangea Chat để nhận thông báo!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Hiểu rồi!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Tiếp tục với {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Tải xuống toàn bộ lịch sử tin nhắn, bao gồm người gửi, ngày gửi, tin nhắn gốc, tin nhắn đã gửi và loại sử dụng.",
+    "analyticsDownloadDesc": "Tải xuống phân tích từ vựng và ngữ pháp cá nhân cho ngôn ngữ đã chọn.",
+    "courseAnalyticsDownloadDesc": "Tải xuống các từ gốc và cách sử dụng ngữ pháp trong ngôn ngữ đã chọn cho tất cả người tham gia khóa học với phân tích chung.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Khóa học này phù hợp với trình độ ngôn ngữ của bạn",
+    "cefrLevelBelow": "Khóa học này thấp hơn trình độ ngôn ngữ của bạn.",
+    "cefrLevelAbove": "Khóa học này cao hơn trình độ ngôn ngữ của bạn.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Giọng nói tin nhắn âm thanh của Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logo Pangea Chat",
+    "introChatDetails": "Chào bạn! Giới thiệu bản thân với những người tham gia khóa học khác, tìm bạn bè và trò chuyện ngoài các hoạt động.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Biểu tượng cảm xúc này sẽ đại diện cho \"{word}\" trong các bài tập thực hành",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Hiển thị tùy chọn nhà phát triển",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Bật tùy chọn nhà phát triển để hiển thị phân tích tải xuống và các tùy chọn thông tin chi tiết trong toàn bộ ứng dụng.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Đang chờ bot tham gia...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Nơi cho quản trị viên khóa học tạo thông báo cho người tham gia khóa học. Mặc dù tất cả mọi người đều có thể xem kênh này, chỉ có quản trị viên mới có thể gõ trong đó.",
+    "introChatDesc": "Bất kỳ ai trong khóa học đều có thể đăng bài.",
+    "announcementsChatDesc": "Chỉ có quản trị viên khóa học mới có thể đăng bài.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

@@ -7,9 +7,7 @@ import 'package:fluffychat/pangea/constructs/construct_form.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
-import 'package:fluffychat/pangea/toolbar/message_practice/message_morph_choice.dart';
 import '../../common/constants/model_keys.dart';
 import '../../lemmas/lemma.dart';
 
@@ -85,10 +83,8 @@ class PangeaToken {
     );
     final morph = json['morph'] != null
         ? (json['morph'] as Map<String, dynamic>).map(
-            (key, value) => MapEntry(
-              MorphFeaturesEnumExtension.fromString(key),
-              value as String,
-            ),
+            (key, value) =>
+                MapEntry(MorphFeaturesEnum.fromString(key), value as String),
           )
         : <MorphFeaturesEnum, String>{};
     return PangeaToken(
@@ -199,36 +195,16 @@ class PangeaToken {
   ConstructForm get vocabForm =>
       ConstructForm(form: text.content, cId: vocabConstructID);
 
-  Set<String> morphPracticeExerciseDistractors(
-    MorphFeaturesEnum morphFeature,
-    String morphTag,
-  ) {
-    final List<String> allTags = MorphsRepo.cached.getDisplayTags(
-      morphFeature.name,
-    );
-
-    final List<String> possibleDistractors = allTags
-        .where(
-          (tag) => tag.toLowerCase() != morphTag.toLowerCase() && tag != "X",
-        )
-        .toList();
-
-    possibleDistractors.shuffle();
-    return possibleDistractors.take(numberOfMorphDistractors).toSet();
-  }
-
   List<ConstructIdentifier> get morphsBasicallyEligibleForPracticeByPriority =>
-      MorphFeaturesEnumExtension.eligibleForPractice
-          .where((f) {
-            return morph.containsKey(f);
-          })
-          .map((f) {
-            return ConstructIdentifier(
+      MorphFeaturesEnum.values
+          .where((f) => morph.containsKey(f) && f.isEligibleForPractice)
+          .map(
+            (f) => ConstructIdentifier(
               lemma: getMorphTag(f)!,
               type: ConstructTypeEnum.morph,
               category: f.name,
-            );
-          })
+            ),
+          )
           .toList();
 
   bool eligibleForPractice(PracticeExerciseTypeEnum exerciseType) {

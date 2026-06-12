@@ -16,7 +16,7 @@ enum ActivitySummaryStatus {
     }
   }
 
-  bool canJoin(bool isCourseAdmin) {
+  bool canView(bool isCourseAdmin) {
     switch (this) {
       case ActivitySummaryStatus.notStarted:
         return true;

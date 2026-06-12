@@ -138,5 +138,23 @@ abstract class AppConfig {
     );
   }
 
+  static final Set<String> _allowedImageHosts = {
+    "pangea.chat",
+    "staging.pangea.chat",
+    "pangea-chat-client-assets.s3.us-east-1.amazonaws.com",
+    "api.pangea.chat",
+    "api.staging.pangea.chat",
+  };
+
+  static bool isAllowedImage(Uri imageUrl) =>
+      _allowedImageHosts.contains(imageUrl.host);
+
+  static Set<String> get allowedMimeTypes => {
+    "image/jpeg",
+    "image/jpg",
+    "image/webp",
+    "image/gif",
+    "image/png",
+  };
   // Pangea#
 }

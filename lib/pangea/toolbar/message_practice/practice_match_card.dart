@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_animation.dart';
+import 'package:fluffychat/pangea/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_choice.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
@@ -14,11 +15,13 @@ import 'package:fluffychat/pangea/toolbar/message_practice/practice_match_item.d
 class MatchActivityCard extends StatelessWidget {
   final MatchPracticeExerciseModel currentActivity;
   final PracticeController controller;
+  final AudioPlaybackSpeedController playbackSpeedController;
 
   const MatchActivityCard({
     super.key,
     required this.currentActivity,
     required this.controller,
+    required this.playbackSpeedController,
   });
 
   Widget choiceDisplayContent(
@@ -66,7 +69,10 @@ class MatchActivityCard extends StatelessWidget {
       spacing: 4.0,
       children: [
         if (mode == MessagePracticeMode.listening)
-          MessageAudioCard(messageEvent: controller.pangeaMessageEvent),
+          MessageAudioCard(
+            messageEvent: controller.pangeaMessageEvent,
+            playbackSpeedController: playbackSpeedController,
+          ),
         Wrap(
           alignment: WrapAlignment.center,
           spacing: 4.0,
@@ -96,6 +102,7 @@ class MatchActivityCard extends StatelessWidget {
                     : null,
                 controller: controller,
                 shimmer: controller.showChoiceShimmer,
+                playbackSpeedController: playbackSpeedController,
               ),
             );
           }).toList(),

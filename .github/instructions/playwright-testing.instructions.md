@@ -1,114 +1,65 @@
 ---
-applyTo: "lib/pangea/**,lib/pages/**,lib/widgets/**"
+applyTo: "e2e/**,lib/pangea/**,lib/pages/**,lib/widgets/**,.github/workflows/e2e-*.yml,.github/skills/write-e2e-test/**"
+description: "Design contracts for Playwright + axe-core testing of the Flutter web client — canvas/semantics constraints, widget testability rules, mock-mode contract, auth state, axe limits."
 ---
 
 # Playwright Testing — Flutter Web Client
 
-How to interact with the Pangea Chat Flutter web app using the Playwright MCP tools.
+> For setup, commands, and troubleshooting see [`e2e/README.md`](../../e2e/README.md). For adding coverage to a new flow, use the [`write-e2e-test` skill](../skills/write-e2e-test/SKILL.md). This doc owns the **why** and the **must-hold contracts** behind those mechanics.
 
-## Critical: Flutter Web Uses CanvasKit
+## Why the Flutter web app is different
 
-Flutter web renders to a `<canvas>` element, not DOM nodes. Standard Playwright selectors (`page.getByText()`, `page.locator()`) **will not find Flutter widgets**. You must:
+The client renders to a single `<canvas>` element via CanvasKit, not DOM nodes. Standard Playwright selectors (`getByText`, `locator(css)`) cannot find anything. Playwright interacts through Flutter's **semantics tree** — an ARIA-shaped projection of the widget tree, populated from `tooltip:`, `Semantics(label:)`, and text children. Tests reach widgets via `page.getByRole(role, { name })`; pixels remain opaque.
 
-1. **Enable accessibility** — Click the "Enable accessibility" button that Flutter overlays on the page. This activates the semantics tree, which exposes widget labels to Playwright's accessibility snapshot.
-2. **Use `browser_snapshot`** — After enabling accessibility, use `browser_snapshot` to see the semantic tree. This returns ARIA labels and roles that map to Flutter widget `Semantics` / `Tooltip` / button labels.
-3. **Use `browser_click` with `ref`** — Click elements by their `ref` from the snapshot, not by CSS selectors.
-4. **Use `browser_type` with `ref`** — Type into text fields by their `ref` from the snapshot.
-5. **Use `browser_take_screenshot`** — When the semantic tree is insufficient (e.g. visual layout issues, canvas rendering bugs), take a screenshot to see what's actually on screen.
+The semantics tree is initially **disabled** for performance. Flutter exposes an off-screen `flt-semantics-placeholder` element that must be clicked to enable it. The shared fixture at [`e2e/fixtures.ts`](../../e2e/fixtures.ts) handles this — every spec must import `{ test, expect }` from `../fixtures`, never from `@playwright/test`, or the activation step is skipped and the run sees an empty tree.
 
-### Enable Accessibility (First Step After Navigation)
+## Widget testability — non-negotiable
 
-Flutter's "Enable accessibility" button is placed **off-screen** by default and is often unreachable via normal click due to scroll/viewport issues. **Use `browser_run_code` to force-enable it via JavaScript:**
+Every widget that participates in a tested flow must surface a stable, accessible name. The rules below are **contracts on the Dart code**, not Playwright invariants — violating them breaks both automated tests and screen-reader users in the same way.
 
-```js
-async (page) => {
-  // Flutter places the semantics placeholder off-screen. Force-click it via JS.
-  await page.evaluate(() => {
-    const btn = document.querySelector('flt-semantics-placeholder')
-      || document.querySelector('[aria-label="Enable accessibility"]');
-    if (btn) btn.click();
-  });
-}
-```
+- **`IconButton` requires `tooltip:`.** No tooltip → no accessible name → unfindable.
+- **`GestureDetector` / `InkWell` used as a button** must be wrapped in `Semantics(label: '...', button: true, child: ...)`. Bare gesture detectors are invisible to the accessibility tree.
+- **Decorative images** declare `excludeFromSemantics: true`. **Meaningful images** declare `semanticLabel: '...'`. Default-shaped images leak as unlabelled `role=img` violations.
 
-Then wait 2–3 seconds and take a snapshot — you should now see Flutter widget labels.
+Pangea-specific code outside `lib/pangea/` requires `// #Pangea` / `// Pangea#` markers around any semantic-fix changes; inside `lib/pangea/`, markers are not required (the whole tree is ours).
 
-**Do not** try to find and click the button via `browser_snapshot` + `browser_click` — the button is intentionally positioned outside the viewport and Playwright cannot scroll to it reliably.
+## Bypassing paid backend calls — `mock=true`
 
-## Login Flow
+The choreographer supports a per-request `mock` field. When set, the handler runs its full path — auth, CMS, metering, audits, retries — but every paid third-party call (OpenAI, Anthropic, Vertex chat, embeddings, image-gen, Google TTS, Whisper / Google STT, Deepgram) is swapped for a canned, schema-shaped response. This is what makes Playwright runs economically feasible against the real backend.
 
-### Prerequisites
+Contract (full version at [`pangeachat/.github/instructions/testing.instructions.md` § Mocking paid third-party calls](https://github.com/pangeachat/.github/blob/main/.github/instructions/testing.instructions.md#mocking-paid-third-party-calls)):
 
-- Flutter web app running locally (e.g. `flutter run -d chrome` on some port)
-- Staging test credentials from `client/.env` (see [matrix-auth.instructions.md](matrix-auth.instructions.md))
+- **The flag does not auto-propagate.** Add `mock=true` on the client's choreo request classes when the Playwright run wants mocked responses; the choreo handler honours the field but the client never sets it implicitly.
+- **Set `MOCK_LLM_LATENCY_OVERRIDE_S=0`** in the Playwright env. The default profile mimics real-LLM latency for load testing, which would make Playwright runs unnecessarily slow.
+- **Mocked responses are deterministic but obviously bogus** — WA returns one double-spaced edit, image-gen returns `mock.pangea.chat/transparent-1x1.png`. Assert on shape, not content.
+- **If a route triggers a 500 error code under `mock=true`, the handler likely lacks a registered mock producer.** The mock-LLM registry's `default_structured_mock(schema)` falls through to `schema()`, which fails for any schema with required fields lacking Pydantic defaults. Check `app/handlers/<h>/mock.py` in `pangeachat/2-step-choreographer`; if absent, file a bug there (`#2485` is the canonical example). The fix is a small per-handler module; do not work around it on the client side.
 
-### Step-by-Step Login
+## Auth state persistence
 
-1. **Navigate** to the app URL (e.g. `http://localhost:<port>`)
-2. **Enable accessibility** (see above)
-3. **Snapshot** — you should see "Start" and "Login to my account" buttons
-4. **Click "Login to my account"** → navigates to `/home/login`
-5. **Snapshot** — you should see "Sign in with Apple", "Sign in with Google", "Email" options
-6. **Click "Email"** → navigates to `/home/login/email`
-7. **Snapshot** — you should see "Username or Email" and "Password" text fields, and a "Login" button
-8. **Type** the username (just the localpart, e.g. `wykuji`, not the full `@wykuji:staging.pangea.chat`) into the username field
-9. **Type** the password into the password field
-10. **Click "Login"** button
-11. **Wait** 5–10 seconds for sync to complete
-12. **Snapshot** — you should now be on the chat list (`/rooms`)
+Flutter's Matrix client stores session tokens in **IndexedDB**, not cookies or localStorage. The auth-setup spec at [`e2e/auth.setup.ts`](../../e2e/auth.setup.ts) saves state with `storageState({ path, indexedDB: true })`; specs that omit `indexedDB: true` cannot restore the session, even though a default Playwright `storageState()` looks correct on paper. This is the single most common cause of "tests pass alone, fail in the suite."
 
-### Navigate to a Room
+Specs that want to start unauthenticated reset to `test.use({ storageState: { cookies: [], origins: [] } })`.
 
-After login, navigate to a specific room by URL:
+## Credential delivery
 
-```
-http://localhost:<port>/#/rooms/<room_id>
-```
+The shared test account is `staging_automated_tests`. Specs read `TEST_MATRIX_USERNAME` / `TEST_MATRIX_PASSWORD` from `process.env`. Single source of truth: AWS Secrets Manager at `/staging/test-user/matrix-credentials`.
 
-Or find the room in the chat list via snapshot and click it.
+- **CI**: GitHub OIDC → `AWS_ROLE_ARN_STAGING` → `aws-actions/aws-secretsmanager-get-secrets` with `parse-json-secrets: true` populates the env vars. No GitHub-secret mirror.
+- **Local**: engineers export the same env vars into `client/.env` (gitignored). See [`e2e/README.md`](../../e2e/README.md) for the SSO-fetch command.
 
-## Route Map
+The OIDC role's IAM grant lives in `devops/terraform/staging/iam/github-oidc/`.
 
-| Route | What You'll See |
-|---|---|
-| `/#/home` | Landing page: logo, "Start", "Login to my account" |
-| `/#/home/login` | Login options: Apple, Google, Email |
-| `/#/home/login/email` | Username + Password form |
-| `/#/rooms` | Chat list (requires auth) |
-| `/#/rooms/<room_id>` | Chat room with message input |
+## What axe can't check
 
-## Interacting With Chat
+The a11y suite at [`e2e/scripts/a11y.spec.ts`](../../e2e/scripts/a11y.spec.ts) runs WCAG 2.1 AA audits via `@axe-core/playwright`, scoped to `flt-semantics-host`. **Color contrast** and **visual layout** assertions are not possible — axe cannot inspect pixels inside `<canvas>`. Compensate with screenshot diffs for visual regressions; do not allowlist contrast violations to suppress them.
 
-Once in a room:
+Axe assertions are **zero-tolerance**: `violations.toHaveLength(0)`. Fix the widget. Allowlisting is a permanent product debt, not a workaround.
 
-1. **Snapshot** to find the text input field and other UI elements
-2. **Type** a message into the input field
-3. **Wait** for writing assistance to trigger (debounce ~1.5s after typing stops)
-4. **Snapshot** to see the assistance ring, highlighted text, and any span cards
-5. **Click** highlighted text to open the span card
-6. **Screenshot** to visually inspect the ring segments, highlight colors, and span card layout
+## Diff-triggered CI
 
-### What to Look For
+[`e2e/trigger-map.json`](../../e2e/trigger-map.json) maps Dart-source glob patterns to spec files. On a per-deploy run, only the specs whose triggers match the changed files run; the full suite runs nightly. Adding a new spec without wiring `trigger-map.json` means the spec never runs in pre-deploy CI — every new spec must declare its triggers.
 
-| Element | Semantic Label / Visual Cue |
-|---|---|
-| Text input | Input field in the bottom bar |
-| Assistance ring | Pangea logo icon with colored ring segments |
-| Send button | Right-most button in input bar |
-| Span card | Overlay popup with category title, bot face, choices |
-| Highlighted text | Background color behind matched text in the input |
+## Future Work
 
-## Tips
-
-- **Snapshots are better than screenshots** for finding interactive elements and their `ref` IDs.
-- **Screenshots are better than snapshots** for verifying visual styling (colors, layout, animations).
-- **Wait between actions** — Flutter web can be slow, especially during initial load and sync. Use `browser_wait_for` with 2–5 second delays after navigation or login.
-- **Hash routing** — all Flutter routes use `/#/` prefix. Direct navigation works.
-- **Session is ephemeral** — the Playwright browser doesn't share the user's Chrome session. You must log in each time.
-
-## Limitations
-
-- SSO login (Apple/Google) cannot be automated — use email/password login only.
-- CanvasKit rendering means pixel-level visual assertions are screenshot-based, not DOM-based.
-- Some widgets may not have semantic labels — file a bug if a key interaction point is invisible to the accessibility snapshot.
-- Animations (ring spin, card transitions) won't appear in snapshots — use screenshots or video for those.
+- [pangeachat/2-step-choreographer#2230](https://github.com/pangeachat/2-step-choreographer/issues/2230) — original tracking issue for the `mock=true` Playwright bypass (closed).
+- [pangeachat/2-step-choreographer#2485](https://github.com/pangeachat/2-step-choreographer/issues/2485) — canonical example of a missing per-handler mock producer; resolved by `pangeachat/2-step-choreographer#2486`.

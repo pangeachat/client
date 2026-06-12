@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/analytics_practice/grammar_match_target_genera
 import 'package:fluffychat/pangea/analytics_practice/vocab_audio_target_generator.dart';
 import 'package:fluffychat/pangea/analytics_practice/vocab_meaning_target_generator.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class InsufficientDataException implements Exception {}
@@ -15,7 +16,8 @@ class InsufficientDataException implements Exception {}
 class AnalyticsPracticeSessionRepo {
   static Future<AnalyticsPracticeSessionModel> get(
     ConstructTypeEnum type,
-    String language,
+    LanguageModel userL1,
+    LanguageModel userL2,
   ) async {
     if (MatrixState.pangeaController.subscriptionController.isSubscribed ==
         false) {
@@ -27,7 +29,7 @@ class AnalyticsPracticeSessionRepo {
         MatrixState.pangeaController.matrixState.analyticsDataService;
 
     final vocabConstructs = await analytics
-        .getAggregatedConstructs(ConstructTypeEnum.vocab, language)
+        .getAggregatedConstructs(ConstructTypeEnum.vocab, userL2.langCodeShort)
         .then((map) => map.values.toList());
 
     if (type == ConstructTypeEnum.vocab) {
@@ -57,7 +59,10 @@ class AnalyticsPracticeSessionRepo {
 
       if (targets.length < AnalyticsPracticeConstants.targetsToGenerate) {
         final morphConstructs = await analytics
-            .getAggregatedConstructs(ConstructTypeEnum.morph, language)
+            .getAggregatedConstructs(
+              ConstructTypeEnum.morph,
+              userL2.langCodeShort,
+            )
             .then((map) => map.values.toList());
         final morphs = await GrammarMatchTargetGenerator.get(morphConstructs);
         final remainingCount =

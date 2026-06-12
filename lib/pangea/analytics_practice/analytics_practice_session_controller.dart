@@ -80,10 +80,10 @@ class PracticeSessionController {
       sessionError = null;
       session = null;
 
-      final l2 =
-          MatrixState.pangeaController.userController.userL2?.langCodeShort;
-      if (l2 == null) throw Exception('User L2 language not set');
-      session = await AnalyticsPracticeSessionRepo.get(type, l2);
+      final l1 = MatrixState.pangeaController.userController.userL1;
+      final l2 = MatrixState.pangeaController.userController.userL2;
+      if (l1 == null || l2 == null) throw Exception('Languages not set');
+      session = await AnalyticsPracticeSessionRepo.get(type, l1, l2);
     } catch (e, s) {
       if (e is! UnsubscribedException && e is! InsufficientDataException) {
         ErrorHandler.logError(e: e, s: s, data: {});

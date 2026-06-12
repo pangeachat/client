@@ -25,6 +25,7 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_file_extension.dart';
@@ -204,7 +205,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
               .first
               .then((_) async {
                 // #Pangea
-                MatrixState.pangeaController.handleLoginStateChange(
+                await MatrixState.pangeaController.handleLoginStateChange(
                   LoginState.loggedIn,
                   _loginClientCandidate!.userID,
                   context,
@@ -229,9 +230,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                 // FluffyChatApp.router.go('/backup');
                 final isL2Set =
                     await pangeaController.userController.isUserL2Set;
-                FluffyChatApp.router.go(
-                  isL2Set ? '/rooms' : '/registration/create',
-                );
+                FluffyChatApp.router.go(isL2Set ? '/rooms' : '/registration');
                 // Pangea#
               });
     // #Pangea
@@ -360,11 +359,14 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   StreamSubscription? _languageListener;
   Future<void> _setLanguageListener() async {
     await pangeaController.userController.initialize();
+    GrammarConstructsProvider.fetchFeaturesAndTags();
+
     _languageListener?.cancel();
     _languageListener = pangeaController.userController.languageStream.stream
         .listen((update) {
           _setAppLanguage();
           analyticsDataService.updateService.onUpdateLanguages(update);
+          GrammarConstructsProvider.fetchFeaturesAndTags();
         });
   }
 
@@ -426,7 +428,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       state,
     ) async {
       // #Pangea
-      MatrixState.pangeaController.handleLoginStateChange(
+      await MatrixState.pangeaController.handleLoginStateChange(
         state,
         c.userID,
         context,
@@ -459,7 +461,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // );
         if (state == LoginState.loggedIn) {
           final isL2Set = await pangeaController.userController.isUserL2Set;
-          FluffyChatApp.router.go(isL2Set ? '/rooms' : '/registration/create');
+          FluffyChatApp.router.go(isL2Set ? '/rooms' : '/registration');
         } else {
           FluffyChatApp.router.go('/home');
         }

@@ -10,12 +10,13 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
-import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart';
+import 'package:fluffychat/pangea/bot/bot_client_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/notifications/notifications_client_extension.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
@@ -65,7 +66,9 @@ class PangeaController {
     userController.reinitialize().then((_) {
       final l1 = userController.profile.userSettings.sourceLanguage;
       Provider.of<LocaleProvider>(context, listen: false).setLocale(l1);
+      GrammarConstructsProvider.fetchFeaturesAndTags();
     });
+
     subscriptionController.reinitialize();
 
     if (userID != null) {
@@ -119,25 +122,28 @@ class PangeaController {
     Provider.of<LocaleProvider>(context, listen: false).setLocale(null);
   }
 
-  void handleLoginStateChange(
+  Future<void> handleLoginStateChange(
     LoginState state,
     String? userID,
     BuildContext context,
-  ) {
+  ) async {
     switch (state) {
       case LoginState.loggedOut:
       case LoginState.softLoggedOut:
+        GoogleAnalytics.cancelPendingLogin();
         _onLogout(context);
+        await GoogleAnalytics.analyticsUserUpdate(null);
         break;
       case LoginState.loggedIn:
-        _onLogin(context, userID);
+        await GoogleAnalytics.analyticsUserUpdate(userID);
+        GoogleAnalytics.login();
+        await _onLogin(context, userID);
         break;
     }
 
     Sentry.configureScope(
       (scope) => scope.setUser(SentryUser(id: userID, name: userID)),
     );
-    GoogleAnalytics.analyticsUserUpdate(userID);
   }
 
   void _registerSubscriptions() {
@@ -162,7 +168,13 @@ class PangeaController {
 
   Future<void> _clearCache({List<String> exclude = const []}) async {
     final List<Future<void>> futures = [];
+
     for (final key in _storageKeys) {
+      if (exclude.contains(key)) continue;
+      futures.add(GetStorage(key).erase());
+    }
+
+    for (final key in _storageKeyRegistry) {
       if (exclude.contains(key)) continue;
       futures.add(GetStorage(key).erase());
     }
@@ -172,7 +184,6 @@ class PangeaController {
 
   Future<void> _initAnalytics() async {
     await GetStorage.init("activity_analytics_storage");
-
     matrixState.client.updateAnalyticsRoomJoinRules();
     matrixState.client.addAnalyticsRoomsToSpaces();
   }
@@ -191,6 +202,7 @@ class PangeaController {
       'course_location_media_storage',
       'course_location_storage',
       'course_media_storage',
+      'grammar_constructs_storage',
     ];
 
     // only clear course data if the base language has changed
@@ -208,6 +220,10 @@ class PangeaController {
     );
     await userController.updatePublicProfile();
   }
+
+  void registerStorageKey(String key) => _storageKeyRegistry.add(key);
+
+  final Set<String> _storageKeyRegistry = {};
 
   static final List<String> _storageKeys = [
     'mode_list_storage',

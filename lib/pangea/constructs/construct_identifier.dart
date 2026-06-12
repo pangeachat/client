@@ -100,7 +100,13 @@ class ConstructIdentifier {
     return "$lemma:${type.string}-$category".toLowerCase();
   }
 
+  String get escapedString => "\\$string\\";
+
   static ConstructIdentifier? fromString(String s) {
+    if (s.startsWith('\\') && s.endsWith('\\')) {
+      s = s.substring(1, s.length - 1);
+    }
+
     final parts = s.split(':');
     if (parts.length != 2) return null;
     final lemma = parts[0];
@@ -161,8 +167,7 @@ class ConstructIdentifier {
   String? get userSetEmoji => _userLemmaInfo.emojis?.firstOrNull;
 
   UserSetLemmaInfo get _userLemmaInfo =>
-      MatrixState.pangeaController.matrixState.client
-          .analyticsRoomLocal()
+      MatrixState.pangeaController.matrixState.client.ownAnalyticsRoomLocalByL2
           ?.getUserSetLemmaInfo(this) ??
       UserSetLemmaInfo();
 
@@ -199,7 +204,7 @@ class ConstructIdentifier {
 
   bool get isInvalid =>
       (type == ConstructTypeEnum.morph &&
-          MorphFeaturesEnumExtension.fromString(category) ==
+          MorphFeaturesEnum.fromString(category) ==
               MorphFeaturesEnum.Unknown) ||
       category == 'other' ||
       lemma.isEmpty;

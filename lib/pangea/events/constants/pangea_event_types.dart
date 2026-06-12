@@ -1,7 +1,8 @@
 class PangeaEventTypes {
   static const construct = "pangea.construct";
   static const userSetLemmaInfo = "p.user_lemma_info";
-  static const userChosenEmoji = "p.emoji";
+  static const activityRoomIds = "pangea.activity_room_ids";
+  static const analyticsStatus = "pangea.analytics.status";
 
   static const tokens = "pangea.tokens";
   static const choreoRecord = "pangea.record";
@@ -16,6 +17,9 @@ class PangeaEventTypes {
   static const activityRole = "pangea.activity_roles";
   static const activitySummary = "pangea.activity_summary";
 
+  static const orchestratorOutput = "pangea.orchestrator_output";
+  static const orchestratorAwardedGoals = "pangea.orchestrator_awarded_goals";
+
   static const report = 'm.report';
   static const textToSpeechRule = "p.rule.text_to_speech";
   static const analyticsInviteRule = "p.rule.analytics_invite";
@@ -26,7 +30,6 @@ class PangeaEventTypes {
 
   /// Profile information related to a user's analytics
   static const profileAnalytics = "pangea.analytics_profile";
-  static const activityRoomIds = "pangea.activity_room_ids";
 
   /// Relates to course plans
   static const coursePlan = "pangea.course_plan";
@@ -34,6 +37,7 @@ class PangeaEventTypes {
   static const courseUser = "p.course_user";
   static const teacherMode = "pangea.teacher_mode";
   static const courseChatList = "pangea.course_chat_list";
+  static const courseSettings = "pangea.course_settings";
 
   static const analyticsSettings = "pangea.analytics_settings";
 
@@ -42,4 +46,8 @@ class PangeaEventTypes {
 
   static const knockedRooms = 'org.pangea.knocked_rooms';
   static const notificationSettings = 'org.pangea.notification_settings';
+
+  static const accessNoticeShown = 'org.pangea.analytics_access_notice_shown';
+
+  static const firstBotDMMessage = "pangea_first_bot_dm_message";
 }

@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_init_error_indicator.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
@@ -34,7 +35,7 @@ class ActivityArchive extends StatelessWidget {
         final analyticsService = Matrix.of(context).analyticsDataService;
         final Room? analyticsRoom = Matrix.of(
           context,
-        ).client.analyticsRoomLocal();
+        ).client.ownAnalyticsRoomLocalByL2;
         final archive = analyticsRoom?.archivedActivities ?? [];
         final selectedRoomId = GoRouterState.of(
           context,
@@ -133,8 +134,11 @@ class AnalyticsActivityItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final objective = room.activityPlan?.learningObjective ?? '';
-    final cefrLevel = room.activitySummary?.summary?.participants
+    final activity = room.activityPlan;
+    final title = activity?.title ?? '';
+    final objective = activity?.learningObjective ?? '';
+
+    final cefrLevel = room.activitySummaryByL1?.summary?.participants
         .firstWhereOrNull((p) => p.participantId == room.client.userID)
         ?.cefrLevel;
 
@@ -160,11 +164,20 @@ class AnalyticsActivityItem extends StatelessWidget {
               ),
             ),
           ),
-          title: Text(
-            objective,
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(fontSize: 12.0),
+          title: Text(title, maxLines: 1, overflow: TextOverflow.ellipsis),
+          subtitle: Row(
+            crossAxisAlignment: .start,
+            mainAxisAlignment: .center,
+            children: [
+              Expanded(
+                child: Text(
+                  objective,
+                  style: TextStyle(color: theme.colorScheme.onSurfaceVariant),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
           ),
           trailing: cefrLevel != null
               ? Padding(

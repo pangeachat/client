@@ -11,7 +11,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/audio/multi_platform_audio_player.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
@@ -20,12 +20,14 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/utils/report_message.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_controller.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_enum.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_model.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 enum SelectMode {
@@ -161,6 +163,8 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
   MatrixState? matrix;
 
+  final ValueNotifier<bool> _shimmerTranslateButton = ValueNotifier(false);
+
   @override
   void initState() {
     super.initState();
@@ -181,6 +185,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
         }
       });
     } else {
+      _shimmerTranslateButton.value = true;
       _tutorialSub = widget
           .controller
           .tutorialOverlayController
@@ -211,6 +216,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     _playerStateSub?.cancel();
     _isPlayingNotifier.dispose();
     controller.playTokenNotifier.removeListener(_playToken);
+    _shimmerTranslateButton.dispose();
     super.dispose();
   }
 
@@ -224,11 +230,14 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       messageEvent.eventId == widget.controller.refreshEventID;
 
   void _startSelectModeTutorial() {
+    _shimmerTranslateButton.value = false;
+
     final translateTarget = SelectMode.translate.buttonTarget;
     final audioTarget = SelectMode.audio.buttonTarget;
     final msgTarget = widget.overlayController.overlayMessageKey;
     final tokenTarget = widget.controller.tutorialTokenTargetKey;
     if (tokenTarget == null) {
+      _shimmerTranslateButton.value = true;
       return;
     }
 
@@ -243,6 +252,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                 widget.controller.tutorialToken!.text,
               );
               await Future.delayed(Duration(milliseconds: 2500));
+              _shimmerTranslateButton.value = true;
             },
           ),
           TutorialStepData(
@@ -331,9 +341,14 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   }
 
   Future<void> modeDisabled() async {
-    final target = controller.messageEvent.originalSent?.langCode;
-    final l1 =
-        MatrixState.pangeaController.userController.userL1?.langCodeShort;
+    final targetLangCode = controller.messageEvent.originalSent?.langCode;
+    LanguageModel? targetLang;
+    if (targetLangCode != null) {
+      targetLang = PLanguageStore.byLangCode(targetLangCode);
+    }
+
+    final l1 = MatrixState.pangeaController.userController.userL1;
+
     final messenger = ScaffoldMessenger.of(context);
     messenger.hideCurrentSnackBar();
     messenger.showSnackBar(
@@ -344,7 +359,8 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
             style: TextStyle(color: Theme.of(context).colorScheme.surface),
             children: [
               TextSpan(text: L10n.of(context).modeDisabled),
-              if (target != null && target != l1) ...[
+              if (targetLang != null &&
+                  targetLang.langCodeShort != l1?.langCodeShort) ...[
                 const TextSpan(text: ' '),
                 WidgetSpan(
                   alignment: PlaceholderAlignment.baseline,
@@ -352,7 +368,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                   child: InkWell(
                     onTap: () {
                       messenger.hideCurrentSnackBar();
-                      widget.controller.updateLanguageOnMismatch(target);
+                      widget.controller.updateLanguageOnMismatch(targetLang!);
                     },
                     child: Text(
                       L10n.of(context).clickToUpdateTargetLanguage,
@@ -510,74 +526,91 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                 alignment: Alignment.center,
                 child: Tooltip(
                   message: mode.tooltip(context),
-                  child: ListenableBuilder(
-                    listenable: Listenable.merge([
-                      controller.selectedMode,
-                      controller.modeStateNotifier(mode),
-                    ]),
-                    builder: (context, _) {
-                      final selectedMode = controller.selectedMode.value;
-                      final target = MatrixState.pAnyState.layerLinkAndKey(
-                        mode.buttonTarget,
-                      );
-                      return Opacity(
-                        opacity: enabled ? 1.0 : 0.75,
-                        child: CompositedTransformTarget(
-                          link: target.link,
-                          child: PressableButton(
-                            key: target.key,
-                            borderRadius: BorderRadius.circular(20),
-                            depressed: mode == selectedMode || !enabled,
-                            color: theme.colorScheme.primaryContainer,
-                            onPressed: enabled
-                                ? () => updateMode(mode)
-                                : modeDisabled,
-                            playSound: enabled && mode != SelectMode.audio,
-                            colorFactor: theme.brightness == Brightness.light
-                                ? 0.55
-                                : 0.3,
-                            builder: (context, depressed, shadowColor) =>
-                                ShimmerBackground(
-                                  enabled:
-                                      !InstructionsEnum
-                                          .shimmerTranslation
-                                          .isToggledOff &&
-                                      mode == SelectMode.translate &&
-                                      enabled,
-                                  borderRadius: BorderRadius.circular(100),
-                                  maxOpacity: 0.6,
-                                  child: AnimatedContainer(
-                                    duration: FluffyThemes.animationDuration,
-                                    height: buttonSize,
-                                    width: buttonSize,
-                                    decoration: BoxDecoration(
-                                      color: depressed
-                                          ? shadowColor
-                                          : theme.colorScheme.primaryContainer,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: ValueListenableBuilder(
-                                      valueListenable: _isPlayingNotifier,
-                                      builder: (context, playing, _) =>
-                                          _SelectModeButtonIcon(
-                                            mode: mode,
-                                            loading:
-                                                controller.isLoading &&
-                                                mode == selectedMode,
-                                            playing:
-                                                mode == SelectMode.audio &&
-                                                playing,
-                                            color: theme
-                                                .colorScheme
-                                                .onPrimaryContainer,
-                                          ),
-                                    ),
+                  child: Semantics(
+                    enabled: enabled,
+                    child: ListenableBuilder(
+                      listenable: Listenable.merge([
+                        controller.selectedMode,
+                        controller.modeStateNotifier(mode),
+                      ]),
+                      builder: (context, _) {
+                        final selectedMode = controller.selectedMode.value;
+                        final target = MatrixState.pAnyState.layerLinkAndKey(
+                          mode.buttonTarget,
+                        );
+                        return Opacity(
+                          opacity: enabled ? 1.0 : 0.75,
+                          child: CompositedTransformTarget(
+                            link: target.link,
+                            child: PressableButton(
+                              key: target.key,
+                              borderRadius: BorderRadius.circular(20),
+                              depressed: mode == selectedMode || !enabled,
+                              color: theme.colorScheme.primaryContainer,
+                              onPressed: enabled
+                                  ? () => updateMode(mode)
+                                  : modeDisabled,
+                              playSound: enabled && mode != SelectMode.audio,
+                              colorFactor: theme.brightness == Brightness.light
+                                  ? 0.55
+                                  : 0.3,
+                              builder: (context, depressed, shadowColor) {
+                                final canShimmer =
+                                    !InstructionsEnum
+                                        .shimmerTranslation
+                                        .isToggledOff &&
+                                    mode == SelectMode.translate &&
+                                    enabled;
+
+                                final content = AnimatedContainer(
+                                  duration: FluffyThemes.animationDuration,
+                                  height: buttonSize,
+                                  width: buttonSize,
+                                  decoration: BoxDecoration(
+                                    color: depressed
+                                        ? shadowColor
+                                        : theme.colorScheme.primaryContainer,
+                                    shape: BoxShape.circle,
                                   ),
-                                ),
+                                  child: ValueListenableBuilder(
+                                    valueListenable: _isPlayingNotifier,
+                                    builder: (context, playing, _) =>
+                                        _SelectModeButtonIcon(
+                                          mode: mode,
+                                          loading:
+                                              controller.isLoading &&
+                                              mode == selectedMode,
+                                          playing:
+                                              mode == SelectMode.audio &&
+                                              playing,
+                                          color: theme
+                                              .colorScheme
+                                              .onPrimaryContainer,
+                                        ),
+                                  ),
+                                );
+
+                                return canShimmer
+                                    ? ValueListenableBuilder(
+                                        valueListenable:
+                                            _shimmerTranslateButton,
+                                        builder: (context, shimmer, child) =>
+                                            ShimmerBackground(
+                                              enabled: shimmer,
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                              maxOpacity: 0.6,
+                                              child: child!,
+                                            ),
+                                        child: content,
+                                      )
+                                    : content;
+                              },
+                            ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
                 ),
               );
@@ -667,7 +700,7 @@ class _MoreButton extends StatelessWidget {
       case MessageActions.reply:
         return events.length == 1 &&
             controller.room.canSendDefaultMessages &&
-            !controller.room.hasArchivedActivity;
+            !controller.room.isActivityFinished;
       case MessageActions.edit:
         return controller.canEditSelectedEvents &&
             !events.first.isActivityMessage &&
@@ -686,7 +719,8 @@ class _MoreButton extends StatelessWidget {
       case MessageActions.forward:
       case MessageActions.report:
       case MessageActions.info:
-        return events.length == 1;
+        return events.length == 1 &&
+            MatrixState.pangeaController.userController.showDeveloperOptions;
       case MessageActions.deleteOnError:
       case MessageActions.sendAgain:
         return false;

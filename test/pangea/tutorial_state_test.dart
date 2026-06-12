@@ -1,13 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/pangea/onboarding/tutorial_enum.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_model.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_overlay_controller.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_state_transition_events.dart';
-import 'package:fluffychat/pangea/onboarding/tutorial_step_model.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_enum.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_model.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_overlay_controller.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_state_transition_events.dart';
+import 'package:fluffychat/pangea/tutorials/tutorial_step_model.dart';
 
 // Sequences used across tests.
-// readingAssistance: 1 step  |  selectModeButtons: 3 steps  |  writingAssistance: 1 step
+// readingAssistance: 1 step  |  selectModeButtons: 4 steps  |  writingAssistance: 1 step
 const _single = [TutorialEnum.readingAssistance];
 const _multiStep = [TutorialEnum.selectModeButtons];
 const _full = [
@@ -22,7 +22,7 @@ ReadingAssistantTutorialModel _readingModel() =>
     ReadingAssistantTutorialModel(data: [_stepData()]);
 
 SelectModeButtonsTutorialModel _selectModel() =>
-    SelectModeButtonsTutorialModel(data: List.generate(3, (_) => _stepData()));
+    SelectModeButtonsTutorialModel(data: List.generate(4, (_) => _stepData()));
 
 void main() {
   group('TutorialOverlayStateMachine', () {
@@ -179,19 +179,20 @@ void main() {
       );
 
       test(
-        'goes back to last step (index 2) of a 3-step previous tutorial',
+        'goes back to last step (index 2) of a 4-step previous tutorial',
         () {
           final sm = TutorialOverlayStateMachine(_full);
           // Advance through selectModeButtons into writingAssistance
           sm.dispatch(const ForwardTutorialEvent()); // → selectModeButtons
           sm.dispatch(const ForwardTutorialEvent()); // step 1
           sm.dispatch(const ForwardTutorialEvent()); // step 2
+          sm.dispatch(const ForwardTutorialEvent()); // step 3
           sm.dispatch(
             const ForwardTutorialEvent(),
           ); // → writingAssistance (index 2)
           sm.dispatch(const BackTutorialEvent()); // ← selectModeButtons step 2
           expect(sm.model.tutorialIndex, 1);
-          expect(sm.model.stepIndex, 2);
+          expect(sm.model.stepIndex, 3);
         },
       );
 
@@ -246,10 +247,9 @@ void main() {
         ); // → selectModeButtons (index 1)
         sm.dispatch(const ForwardTutorialEvent()); // step 1
         sm.dispatch(const ForwardTutorialEvent()); // step 2
-        sm.dispatch(
-          const ForwardTutorialEvent(),
-        ); // → writingAssistance (index 2)
-        expect(sm.completedStepsOffset, 4); // 1 + 3
+        sm.dispatch(const ForwardTutorialEvent()); // step 3
+        sm.dispatch(const ForwardTutorialEvent()); // → writingAssistance
+        expect(sm.completedStepsOffset, 5); // 1 + 4
       });
 
       test('returns 0 when tutorialIndex is negative', () {
@@ -272,8 +272,8 @@ void main() {
       });
 
       test('returns sum of all step counts for full sequence', () {
-        // 1 + 3 + 1 = 5
-        expect(TutorialOverlayStateMachine(_full).totalStepsInSequence, 5);
+        // 1 + 4 + 1 = 6
+        expect(TutorialOverlayStateMachine(_full).totalStepsInSequence, 6);
       });
     });
 

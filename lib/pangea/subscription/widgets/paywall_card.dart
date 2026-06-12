@@ -10,11 +10,16 @@ import 'package:fluffychat/widgets/matrix.dart';
 class PaywallCard extends StatelessWidget {
   const PaywallCard({super.key});
 
-  static Future<void> show(BuildContext context, String targetId) async {
-    if (!MatrixState
-        .pangeaController
-        .subscriptionController
-        .shouldShowPaywall) {
+  static Future<void> show(
+    BuildContext context,
+    String targetId, {
+    bool force = false,
+  }) async {
+    if (!force &&
+        !MatrixState
+            .pangeaController
+            .subscriptionController
+            .shouldShowPaywall) {
       return;
     }
 

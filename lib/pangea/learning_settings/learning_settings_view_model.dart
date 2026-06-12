@@ -75,6 +75,9 @@ class LearningSettingsViewModel extends ChangeNotifier {
 
   bool get publicProfile => _updatedProfile.userSettings.publicProfile ?? false;
 
+  bool get showDeveloperOptions =>
+      _updatedProfile.toolSettings.showDeveloperOptions;
+
   bool getToolSetting(ToolSetting toolSetting) {
     final toolSettings = _updatedProfile.toolSettings;
     switch (toolSetting) {
@@ -224,5 +227,14 @@ class LearningSettingsViewModel extends ChangeNotifier {
     _textDebounce = Timer(const Duration(milliseconds: 500), () {
       _updateProfile(updated);
     });
+  }
+
+  void setShowDeveloperOptions(bool value) {
+    final updated = _updatedProfile.copyWith(
+      toolSettings: _updatedProfile.toolSettings.copyWith(
+        showDeveloperOptions: value,
+      ),
+    );
+    _updateProfile(updated);
   }
 }

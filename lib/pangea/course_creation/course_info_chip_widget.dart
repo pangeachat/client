@@ -10,6 +10,7 @@ class CourseInfoChip extends StatelessWidget {
   final double? fontSize;
   final double? iconSize;
   final EdgeInsets? padding;
+  final Color? highlightColor;
 
   const CourseInfoChip({
     super.key,
@@ -18,20 +19,35 @@ class CourseInfoChip extends StatelessWidget {
     required this.fontSize,
     required this.iconSize,
     this.padding,
+    this.highlightColor,
   });
 
   @override
   Widget build(BuildContext context) {
+    final row = Row(
+      spacing: 4.0,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, size: iconSize),
+        Text(text, style: TextStyle(fontSize: fontSize)),
+      ],
+    );
+
     return Padding(
       padding: padding ?? EdgeInsets.zero,
-      child: Row(
-        spacing: 4.0,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: iconSize),
-          Text(text, style: TextStyle(fontSize: fontSize)),
-        ],
-      ),
+      child: highlightColor == null
+          ? row
+          : Container(
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+              decoration: BoxDecoration(
+                color: Color.alphaBlend(
+                  Theme.of(context).colorScheme.surface.withAlpha(70),
+                  highlightColor!,
+                ),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: row,
+            ),
     );
   }
 }
@@ -79,7 +95,6 @@ class CourseInfoChipsState extends State<CourseInfoChips>
     return Wrap(
       spacing: 8.0,
       runSpacing: 8.0,
-      alignment: WrapAlignment.center,
       children: [
         CourseInfoChip(
           icon: Icons.language,
@@ -90,7 +105,7 @@ class CourseInfoChipsState extends State<CourseInfoChips>
         ),
         CourseInfoChip(
           icon: Icons.school,
-          text: course!.cefrLevel.string,
+          text: course!.cefrLevel.title(context),
           fontSize: widget.fontSize,
           iconSize: widget.iconSize,
           padding: widget.padding,

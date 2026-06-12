@@ -5,13 +5,15 @@ import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_downloads/analytics_dowload_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class DownloadAnalyticsButton extends StatelessWidget {
   const DownloadAnalyticsButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    if (!kIsWeb) {
+    if (!kIsWeb ||
+        !MatrixState.pangeaController.userController.showDeveloperOptions) {
       return const SizedBox.shrink();
     }
 

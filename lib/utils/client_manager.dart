@@ -141,10 +141,13 @@ abstract class ClientManager {
         PangeaEventTypes.activityRole,
         PangeaEventTypes.activitySummary,
         PangeaEventTypes.activityRoomIds,
+        PangeaEventTypes.analyticsStatus,
         PangeaEventTypes.coursePlan,
         PangeaEventTypes.teacherMode,
         PangeaEventTypes.courseChatList,
         PangeaEventTypes.analyticsSettings,
+        PangeaEventTypes.courseSettings,
+        PangeaEventTypes.orchestratorAwardedGoals,
         // Pangea#
       },
       logLevel: kReleaseMode ? Level.warning : Level.verbose,

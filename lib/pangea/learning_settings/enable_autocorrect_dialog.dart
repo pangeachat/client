@@ -7,42 +7,54 @@ import 'package:app_settings/app_settings.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 
 class EnableAutocorrectDialog extends StatelessWidget {
   const EnableAutocorrectDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
-    String title;
-    String? steps;
-    String? description;
-    String buttonText;
-    VoidCallback buttonAction;
-
     if (kIsWeb) {
-      title = L10n.of(context).autocorrectNotAvailable; // Default
-      buttonText = L10n.of(context).ok;
-      buttonAction = Navigator.of(context).pop;
-    } else if (Platform.isIOS) {
-      title = L10n.of(context).enableAutocorrectPopupTitle;
-      steps = L10n.of(context).enableAutocorrectPopupSteps;
-      description = L10n.of(context).enableAutocorrectPopupDescription;
-      buttonText = L10n.of(context).settings;
-      buttonAction = AppSettings.openAppSettings;
-    } else {
-      title = L10n.of(context).downloadGboardTitle;
-      steps = L10n.of(context).downloadGboardSteps;
-      description = L10n.of(context).downloadGboardDescription;
-      buttonText = L10n.of(context).downloadGboard;
-      buttonAction = () {
-        launchUrl(
-          Uri.parse(
-            'https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin',
-          ),
-        );
-      };
+      return WebEnableAutocorrectDialog();
     }
 
+    if (Platform.isIOS) {
+      return IOSEnableAutocorrectDialog();
+    }
+
+    return AndroidEnableAutocorrectDialog();
+  }
+}
+
+class WebEnableAutocorrectDialog extends StatelessWidget {
+  const WebEnableAutocorrectDialog({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog.adaptive(
+      title: Text(L10n.of(context).notAvailable),
+      content: SingleChildScrollView(
+        child: Column(
+          spacing: 8.0,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [Text(L10n.of(context).autocorrectNotAvailable)],
+        ),
+      ),
+      actions: [
+        AdaptiveDialogAction(
+          onPressed: () => Navigator.of(context).pop(false),
+          child: Text(L10n.of(context).close),
+        ),
+      ],
+    );
+  }
+}
+
+class IOSEnableAutocorrectDialog extends StatelessWidget {
+  const IOSEnableAutocorrectDialog({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return AlertDialog.adaptive(
       title: Text(L10n.of(context).enableAutocorrectWarning),
       content: SingleChildScrollView(
@@ -50,20 +62,69 @@ class EnableAutocorrectDialog extends StatelessWidget {
           spacing: 8.0,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(title),
-            if (steps != null) Text(steps, textAlign: TextAlign.start),
-            if (description != null) Text(description),
+            Text(L10n.of(context).enableAutocorrectPopupTitle),
+            Text(
+              L10n.of(context).enableAutocorrectPopupSteps,
+              textAlign: TextAlign.start,
+            ),
+            Text(L10n.of(context).enableAutocorrectPopupDescription),
           ],
         ),
       ),
       actions: [
-        TextButton(
+        AdaptiveDialogAction(
+          onPressed: () => Navigator.of(context).pop(true),
           child: Text(L10n.of(context).close),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
         ),
-        TextButton(onPressed: buttonAction, child: Text(buttonText)),
+        AdaptiveDialogAction(
+          onPressed: () {
+            AppSettings.openAppSettings();
+            Navigator.of(context).pop(true);
+          },
+          child: Text(L10n.of(context).settings),
+        ),
+      ],
+    );
+  }
+}
+
+class AndroidEnableAutocorrectDialog extends StatelessWidget {
+  const AndroidEnableAutocorrectDialog({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog.adaptive(
+      title: Text(L10n.of(context).enableAutocorrectWarning),
+      content: SingleChildScrollView(
+        child: Column(
+          spacing: 8.0,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(L10n.of(context).downloadGboardTitle),
+            Text(
+              L10n.of(context).downloadGboardSteps,
+              textAlign: TextAlign.start,
+            ),
+            Text(L10n.of(context).downloadGboardDescription),
+          ],
+        ),
+      ),
+      actions: [
+        AdaptiveDialogAction(
+          onPressed: () => Navigator.of(context).pop(true),
+          child: Text(L10n.of(context).close),
+        ),
+        AdaptiveDialogAction(
+          onPressed: () {
+            launchUrl(
+              Uri.parse(
+                'https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin',
+              ),
+            );
+            Navigator.of(context).pop(true);
+          },
+          child: Text(L10n.of(context).downloadGboard),
+        ),
       ],
     );
   }

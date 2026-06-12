@@ -27,7 +27,7 @@ String normalizeString(String input, String languageCode) {
     );
 
     // Step 5: Normalize whitespace (collapse multiple spaces, trim)
-    return normalized.replaceAll(RegExp(r'\s+'), '').trim();
+    return normalized.replaceAll(RegExp(r'\s+'), ' ').trim();
   } catch (e, s) {
     ErrorHandler.logError(e: e, s: s, data: {'input': input});
     return input;
@@ -39,9 +39,9 @@ String _applyLanguageSpecificNormalization(String text, String languageCode) {
   // Apply normalization based on provided language code
   switch (languageCode) {
     case 'de': // German
-      String normalized = removeDiacritics(text);
       // Handle German ß -> ss conversion
-      normalized = normalized.replaceAll('ß', 'ss');
+      String normalized = text.replaceAll('ß', 'ss');
+      normalized = removeDiacritics(normalized);
       return normalized;
 
     case 'da': // Danish

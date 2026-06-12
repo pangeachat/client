@@ -7,7 +7,6 @@ class ActivityRoleModel {
   final String? role;
   DateTime? finishedAt;
   DateTime? archivedAt;
-  bool dismissedGoalTooltip;
 
   ActivityRoleModel({
     required this.id,
@@ -15,7 +14,6 @@ class ActivityRoleModel {
     this.role,
     this.finishedAt,
     this.archivedAt,
-    this.dismissedGoalTooltip = false,
   });
 
   bool get isFinished => finishedAt != null;
@@ -23,15 +21,11 @@ class ActivityRoleModel {
   bool get isArchived => archivedAt != null;
 
   String? stateEventMessage(String displayName, L10n l10n) {
-    if (isArchived) {
-      return null;
-    }
-
     if (isFinished) {
       return l10n.finishedTheActivity(displayName);
+    } else {
+      return null;
     }
-
-    return l10n.joinedTheActivity(displayName, role ?? l10n.participant);
   }
 
   factory ActivityRoleModel.fromJson(Map<String, dynamic> json) {
@@ -43,7 +37,6 @@ class ActivityRoleModel {
       role: json['role'] as String?,
       finishedAt: finishedEntry != null ? DateTime.parse(finishedEntry) : null,
       archivedAt: archivedEntry != null ? DateTime.parse(archivedEntry) : null,
-      dismissedGoalTooltip: json['dismissed_goal_tooltip'] as bool? ?? false,
     );
   }
 
@@ -54,7 +47,6 @@ class ActivityRoleModel {
       'role': role,
       'finished_at': finishedAt?.toIso8601String(),
       'archived_at': archivedAt?.toIso8601String(),
-      'dismissed_goal_tooltip': dismissedGoalTooltip,
     };
   }
 

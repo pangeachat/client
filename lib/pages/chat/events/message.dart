@@ -10,6 +10,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/pangea_message_reactions.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_roles_event_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_summary_widget.dart';
@@ -335,7 +336,7 @@ class Message extends StatelessWidget {
         // direction: AppSettings.swipeRightToLeftToReply.value
         //     ? SwipeDirection.endToStart
         //     : SwipeDirection.startToEnd,
-        direction: event.room.hasArchivedActivity
+        direction: event.room.isActivityFinished
             ? SwipeDirection.none
             : AppSettings.swipeRightToLeftToReply.value
             ? SwipeDirection.endToStart
@@ -1137,6 +1138,7 @@ class Message extends StatelessWidget {
                               'message_reactions_${event.eventId}',
                             )
                             .key,
+                        enabled: !event.room.isActivityFinished,
                       ),
                     ),
               // Pangea#

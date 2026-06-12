@@ -10,20 +10,21 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/pangea/chat_list/widgets/public_room_bottom_sheet.dart';
-import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_view.dart';
 import 'package:fluffychat/pangea/course_chats/course_default_chats_enum.dart';
+import 'package:fluffychat/pangea/course_chats/default_chats_room_extension.dart';
 import 'package:fluffychat/pangea/course_chats/extended_space_rooms_chunk.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
-import 'package:fluffychat/pangea/room_summaries/room_summaries_repo.dart';
 import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -50,7 +51,10 @@ class CourseChats extends StatefulWidget {
 
 class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
   String get roomId => widget.roomId;
-  Room? get room => widget.client.getRoomById(widget.roomId);
+  Room? get space {
+    final room = widget.client.getRoomById(widget.roomId);
+    return room?.isSpace == true ? room : null;
+  }
 
   List<SpaceRoomsChunk$2>? discoveredChildren;
   StreamSubscription? _roomSubscription;
@@ -100,7 +104,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
   }
 
   Set<String> get childrenIds =>
-      room?.spaceChildren.map((c) => c.roomId).whereType<String>().toSet() ??
+      space?.spaceChildren.map((c) => c.roomId).whereType<String>().toSet() ??
       {};
 
   List<Room> get joinedRooms => Matrix.of(context).client.rooms
@@ -216,19 +220,19 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
   }
 
   Future<void> loadHierarchy({bool reload = false}) async {
-    final client = Matrix.of(context).client;
-    final room = client.getRoomById(widget.roomId);
-    if (room == null) return;
+    final space = this.space;
+    if (space == null) return;
 
     if (mounted) setState(() => isLoading = true);
 
     try {
-      await _loadHierarchy(activeSpace: room, reload: reload);
+      await _loadHierarchy(activeSpace: space, reload: reload);
 
       if (mounted) {
         final futures = [
           _loadRoomSummaries(),
-          if (room.coursePlan?.uuid != null) loadCourse(room.coursePlan!.uuid),
+          if (space.coursePlan?.uuid != null)
+            loadCourse(space.coursePlan!.uuid),
         ];
         await Future.wait(futures);
         if (mounted) {
@@ -254,18 +258,15 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
 
   Future<void> _loadRoomSummaries() async {
     final client = Matrix.of(context).client;
-    final room = client.getRoomById(widget.roomId);
-    if (room == null) return;
+    final space = this.space;
+    if (space == null) return;
 
-    final roomIds = room.spaceChildren
+    final roomIds = space.spaceChildren
         .map((c) => c.roomId)
         .whereType<String>()
         .toList();
 
-    final roomSummariesRepo = RoomSummariesRepo(client);
-    final roomSummariesResponse = await roomSummariesRepo.loadRoomSummaries(
-      roomIds,
-    );
+    final roomSummariesResponse = await client.loadRoomSummaries(roomIds);
     _roomSummaries = roomSummariesResponse;
   }
 
@@ -484,20 +485,26 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
   }
 
   void joinChildRoom(SpaceRoomsChunk$2 item) async {
-    final space = widget.client.getRoomById(widget.roomId);
-    final roomId = await PublicRoomBottomSheet.show(
+    final space = this.space;
+    final joinResp = await PublicRoomBottomSheet.show(
       context: context,
       chunk: item,
       via: space?.spaceChildren
           .firstWhereOrNull((child) => child.roomId == item.roomId)
           ?.via,
     );
-    if (mounted && roomId != null) {
+    if (joinResp == null) return;
+
+    final room = widget.client.getRoomById(joinResp.roomId);
+    if (room == null) return;
+
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+    final joinedRoomId = await handler.handle(context);
+    if (mounted && joinedRoomId != null) {
       setState(() {
         discoveredChildren?.remove(item);
       });
-
-      NavigationUtil.goToSpaceRoute(roomId, [], context);
+      NavigationUtil.goToSpaceRoute(joinedRoomId, [], context);
     }
   }
 
@@ -518,9 +525,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
 
     await widget.client.joinRoom(
       roomId,
-      via: widget.client
-          .getRoomById(widget.roomId)
-          ?.spaceChildren
+      via: space?.spaceChildren
           .firstWhereOrNull((child) => child.roomId == roomId)
           ?.via,
     );
@@ -656,36 +661,30 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
   }
 
   bool showDefaultChatCreation(CourseDefaultChatsEnum type) {
-    if (room == null || !room!.isRoomAdmin) return false;
-    return !room!.dismissedDefaultChat(type) && !room!.hasDefaultChat(type);
+    if (space == null || !space!.isRoomAdmin) return false;
+    return !space!.dismissedDefaultChat(type) && !space!.hasDefaultChat(type);
   }
 
   Future<void> dismissDefaultChatCreation(CourseDefaultChatsEnum type) async {
-    if (room == null) {
+    if (space == null) {
       throw Exception("Room is null");
     }
 
-    final settings = switch (type) {
-      CourseDefaultChatsEnum.introductions =>
-        room!.courseChatsSettings.copyWith(dismissedIntroChat: true),
-      CourseDefaultChatsEnum.announcements =>
-        room!.courseChatsSettings.copyWith(dismissedAnnouncementsChat: true),
-    };
-    await room!.setCourseChatsSettings(settings);
+    await space!.dismissDefaultChatCreation(type);
   }
 
   Future<void> createDefaultChat(CourseDefaultChatsEnum type) async {
-    if (room == null) {
+    if (space == null) {
       throw Exception("Room is null");
     }
 
-    final roomId = await room!.addDefaultChat(
+    final roomId = await space!.addDefaultChat(
       type: type,
       name: type.title(L10n.of(context)),
     );
 
     GoogleAnalytics.createChat(roomId);
-    final classCode = room!.joinCode;
+    final classCode = space!.joinCode;
     if (classCode != null) {
       GoogleAnalytics.addParent(roomId, classCode);
     }

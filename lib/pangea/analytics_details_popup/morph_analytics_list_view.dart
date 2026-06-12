@@ -13,7 +13,8 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
-import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_and_tags.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -55,20 +56,17 @@ class MorphAnalyticsListView extends StatelessWidget {
               // Morph feature boxes
               SliverList(
                 delegate: SliverChildBuilderDelegate((context, index) {
-                  final feature = controller.features[index];
-                  return feature.displayTags.isNotEmpty && l2 != null
+                  final feature = controller.morphs.features[index];
+                  return feature.tags.isNotEmpty && l2 != null
                       ? Padding(
                           padding: const EdgeInsets.only(bottom: 16.0),
                           child: MorphFeatureBox(
-                            morphFeature: feature.feature,
-                            allTags: controller.morphs
-                                .getDisplayTags(feature.feature)
-                                .toSet(),
+                            featureTags: feature,
                             language: l2,
                           ),
                         )
                       : const SizedBox.shrink();
-                }, childCount: controller.features.length),
+                }, childCount: controller.morphs.features.length),
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 75.0)),
             ],
@@ -80,25 +78,25 @@ class MorphAnalyticsListView extends StatelessWidget {
 }
 
 class MorphFeatureBox extends StatelessWidget {
-  final String morphFeature;
-  final Set<String> allTags;
+  final MorphFeatureTags featureTags;
   final String language;
 
   const MorphFeatureBox({
     super.key,
-    required this.morphFeature,
-    required this.allTags,
+    required this.featureTags,
     required this.language,
   });
-
-  MorphFeaturesEnum get feature =>
-      MorphFeaturesEnumExtension.fromString(morphFeature);
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    final feature = featureTags.feature;
+    final tags = featureTags.tags;
+
+    final featureEnum = MorphFeaturesEnum.fromString(feature.value);
     final analyticsService = Matrix.of(context).analyticsDataService;
+
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
@@ -118,12 +116,16 @@ class MorphFeatureBox extends StatelessWidget {
               SizedBox(
                 height: 30.0,
                 width: 30.0,
-                child: MorphIcon(morphFeature: feature, morphTag: null),
+                child: MorphIcon(feature: featureEnum),
               ),
-              Text(
-                feature.getDisplayCopy(context),
-                style: theme.textTheme.bodyLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
+              Flexible(
+                child: Text(
+                  feature.title,
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ],
@@ -137,18 +139,18 @@ class MorphFeatureBox extends StatelessWidget {
                   alignment: WrapAlignment.center,
                   spacing: 16.0,
                   runSpacing: 16.0,
-                  children: allTags.map((morphTag) {
+                  children: tags.map((morphTag) {
                     final id = ConstructIdentifier(
-                      lemma: morphTag,
+                      lemma: morphTag.value,
                       type: ConstructTypeEnum.morph,
-                      category: morphFeature,
+                      category: feature.value,
                     );
 
                     return FutureBuilder(
                       future: analyticsService.getConstructUse(id, language),
                       builder: (context, snapshot) => MorphTagChip(
-                        morphFeature: morphFeature,
-                        morphTag: morphTag,
+                        feature: featureEnum,
+                        tag: morphTag,
                         constructAnalytics: snapshot.data,
                         onTap: () {
                           AnalyticsNavigationUtil.navigateToAnalytics(
@@ -171,21 +173,18 @@ class MorphFeatureBox extends StatelessWidget {
 }
 
 class MorphTagChip extends StatelessWidget {
-  final String morphFeature;
-  final String morphTag;
+  final MorphFeaturesEnum feature;
+  final GrammarTag tag;
   final ConstructUses? constructAnalytics;
   final VoidCallback? onTap;
 
   const MorphTagChip({
     super.key,
-    required this.morphFeature,
-    required this.morphTag,
+    required this.feature,
+    required this.tag,
     required this.constructAnalytics,
     this.onTap,
   });
-
-  MorphFeaturesEnum get feature =>
-      MorphFeaturesEnumExtension.fromString(morphFeature);
 
   @override
   Widget build(BuildContext context) {
@@ -232,8 +231,8 @@ class MorphTagChip extends StatelessWidget {
                         ),
                         padding: const EdgeInsets.all(4),
                         child: MorphIcon(
-                          morphFeature: feature,
-                          morphTag: morphTag,
+                          feature: feature,
+                          tag: tag.value,
                           size: Size(16.0, 16.0),
                         ),
                       )
@@ -245,12 +244,7 @@ class MorphTagChip extends StatelessWidget {
 
                 Flexible(
                   child: Text(
-                    getGrammarCopy(
-                          category: morphFeature,
-                          lemma: morphTag,
-                          context: context,
-                        ) ??
-                        morphTag,
+                    tag.title,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: theme.brightness == Brightness.dark

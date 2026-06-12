@@ -8,9 +8,8 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/room_details_buttons.dart';
-import 'package:fluffychat/pangea/chat_settings/utils/delete_room.dart';
+import 'package:fluffychat/pangea/chat_settings/utils/delete_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -116,18 +115,20 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
         title: l10n.download,
         icon: const Icon(Icons.download_outlined, size: 30.0),
         onPressed: () => widget.controller.downloadChatAction(room.id, context),
-        visible: kIsWeb,
+        visible:
+            kIsWeb &&
+            MatrixState.pangeaController.userController.showDeveloperOptions,
         enabled: room.ownPowerLevel >= 50,
         showInMainView: false,
       ),
-      ButtonDetails(
-        title: l10n.chatCapacity,
-        icon: const Icon(Icons.reduce_capacity, size: 30.0),
-        onPressed: widget.controller.setRoomCapacity,
-        visible: !room.showActivityChatUI && !room.isDirectChat,
-        enabled: room.canSendDefaultStates,
-        showInMainView: false,
-      ),
+      // ButtonDetails(
+      //   title: l10n.chatCapacity,
+      //   icon: const Icon(Icons.reduce_capacity, size: 30.0),
+      //   onPressed: widget.controller.setRoomCapacity,
+      //   visible: !room.showActivityChatUI && !room.isDirectChat,
+      //   enabled: room.canSendDefaultStates,
+      //   showInMainView: false,
+      // ),
       ButtonDetails(
         title: l10n.leave,
         icon: const Icon(Icons.logout_outlined, size: 30.0),

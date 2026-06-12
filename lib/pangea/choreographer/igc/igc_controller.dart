@@ -86,35 +86,44 @@ class IgcController {
     _currentText = null;
     _lastRequest = null;
     _lastResponse = null;
-    _matches.clear();
+    clearMatches();
     MatrixState.pAnyState.closeAllOverlays();
   }
 
-  void clearMatches() => _matches.clear();
+  void clearMatches() {
+    _matches.clear();
+    clearMatchToShow();
+  }
 
   void clearCurrentText() => _currentText = null;
 
-  void setActiveMatch({PangeaMatchState? match}) {
-    if (match != null) {
-      final isValidMatch = _matches.any((m) => m == match);
-
-      if (!isValidMatch) {
-        throw "setActiveMatch called with invalid match";
-      }
+  /// Set the active match to the provided [match], if valid
+  void setMatchToShow(PangeaMatchState match) {
+    if (!_matches.any((m) => m == match)) {
+      throw "showMatch called with invalid match";
     }
 
-    if (_matches.isEmpty) {
-      throw "setActiveMatch called without open matches";
+    _setActiveMatch(match);
+  }
+
+  /// Set the active match to the next valid match, if present
+  void showNextMatchToShow() {
+    final match = openMatches.firstOrNull ?? _matches.firstOrNull;
+    if (match == null) {
+      throw "Show next match called without next valid match";
     }
 
-    match ??= openMatches.firstOrNull ?? _matches.first;
-    if (match.updatedMatch.status == PangeaMatchStatusEnum.open) {
-      updateMatchStatus(match, PangeaMatchStatusEnum.viewed);
+    _setActiveMatch(match);
+  }
+
+  void clearMatchToShow() => _setActiveMatch(null);
+
+  void _setActiveMatch(PangeaMatchState? match) {
+    if (match?.updatedMatch.status == PangeaMatchStatusEnum.open) {
+      updateMatchStatus(match!, PangeaMatchStatusEnum.viewed);
     }
     _activeMatch.value = match;
   }
-
-  void clearActiveMatch() => _activeMatch.value = null;
 
   PangeaMatchState? getMatchByOffset(int offset) => matches.firstWhereOrNull(
     (match) => match.updatedMatch.match.isOffsetInMatchSpan(offset),

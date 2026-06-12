@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
+import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
 import 'package:fluffychat/pangea/user/public_profile_model.dart';
@@ -308,7 +309,7 @@ class UserController {
     baseLanguage ??= userL1;
     if (targetLanguage == null || publicProfile == null) return;
 
-    final analyticsRoom = client.analyticsRoomLocal(targetLanguage);
+    final analyticsRoom = client.ownAnalyticsRoomLocal(lang: targetLanguage);
 
     if (publicProfile!.analytics.targetLanguage == targetLanguage &&
         publicProfile!.analytics.baseLanguage == baseLanguage &&
@@ -375,7 +376,7 @@ class UserController {
     publicProfile!.analytics.addXPOffset(
       targetLanguage,
       offset,
-      client.analyticsRoomLocal(targetLanguage)?.id,
+      client.ownAnalyticsRoomLocal(lang: targetLanguage)?.id,
     );
     await _savePublicProfileUpdate(
       PangeaEventTypes.profileAnalytics,
@@ -482,7 +483,13 @@ class UserController {
         : langModel;
   }
 
+  LanguageLevelTypeEnum? get userCefrLevel => profile.userSettings.cefrLevel;
+
+  DateTime? get createdAt => profile.userSettings.createdAt;
+
   String? get voice => profile.userSettings.voice;
+
+  bool get showDeveloperOptions => profile.toolSettings.showDeveloperOptions;
 
   bool get languagesSet =>
       userL1Code != null &&

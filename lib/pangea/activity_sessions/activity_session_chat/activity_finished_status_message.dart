@@ -5,7 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
@@ -51,80 +53,96 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
     }
   }
 
-  ActivitySummaryModel? get summary => controller.room.activitySummary;
+  ActivitySummaryModel? get summary => controller.room.activitySummaryByL1;
 
   bool get _enableArchive =>
       summary?.summary != null || summary?.hasError == true;
 
   @override
   Widget build(BuildContext context) {
-    if (!controller.room.hasCompletedRole ||
-        controller.room.hasArchivedActivity) {
+    if (!controller.room.hasCompletedRole) {
       return const SizedBox.shrink();
     }
 
     final theme = Theme.of(context);
+
     final isSubscribed =
         MatrixState.pangeaController.subscriptionController.isSubscribed !=
         false;
 
-    return Container(
-      padding: const EdgeInsets.all(12.0),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        border: Border(top: BorderSide(color: theme.dividerColor)),
-      ),
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 400),
-          child: Column(
-            spacing: 12.0,
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              AnimatedSize(
-                duration: FluffyThemes.animationDuration,
-                alignment: Alignment.topCenter,
-                child: _SummarySection(
-                  controller: controller,
-                  isSubscribed: isSubscribed,
+    final l1 = MatrixState.pangeaController.userController.userL1Code;
+
+    final finished = controller.room.isActivityFinished;
+    final archived = controller.room.hasArchivedActivity;
+    final summary = controller.room.activitySummaryByL1;
+
+    final hasContent =
+        !finished || !archived || (summary != null && summary.summary == null);
+
+    return AnimatedSize(
+      alignment: Alignment.bottomCenter,
+      duration: FluffyThemes.animationDuration,
+      child: hasContent
+          ? Container(
+              padding: const EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.surface,
+                border: Border(top: BorderSide(color: theme.dividerColor)),
+              ),
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 400),
+                  child: Column(
+                    spacing: 12.0,
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      if (finished) ...[
+                        if (summary != null)
+                          _SummarySection(
+                            summary: summary,
+                            isSubscribed: isSubscribed,
+                            fetchSummaries: l1 != null
+                                ? () => controller.room.fetchSummaries(l1)
+                                : null,
+                          ),
+                        if (!archived)
+                          _ArchiveSection(
+                            enabled: _enableArchive,
+                            onArchive: () => _onArchive(context),
+                          ),
+                      ] else
+                        _WaitSection(
+                          onContinue: controller.room.continueActivity,
+                        ),
+                    ],
+                  ),
                 ),
               ),
-              if (controller.room.isActivityFinished &&
-                  !controller.room.hasArchivedActivity)
-                _ArchiveSection(
-                  enabled: _enableArchive,
-                  onArchive: () => _onArchive(context),
-                ),
-              if (!controller.room.isActivityFinished)
-                _WaitSection(onContinue: controller.room.continueActivity),
-            ],
-          ),
-        ),
-      ),
+            )
+          : SizedBox(),
     );
   }
 }
 
 class _SummarySection extends StatelessWidget {
-  final ChatController controller;
   final bool isSubscribed;
+  final ActivitySummaryModel summary;
+  final Future<void> Function()? fetchSummaries;
 
-  const _SummarySection({required this.controller, required this.isSubscribed});
-
-  ActivitySummaryModel? get summary => controller.room.activitySummary;
+  const _SummarySection({
+    required this.isSubscribed,
+    required this.summary,
+    required this.fetchSummaries,
+  });
 
   @override
   Widget build(BuildContext context) {
-    if (!controller.room.isActivityFinished) {
+    if (summary.summary != null) {
       return const SizedBox.shrink();
     }
 
-    if (summary?.summary != null) {
-      return const SizedBox.shrink();
-    }
-
-    if (summary?.isLoading ?? false) {
+    if (summary.isLoading) {
       return Column(
         spacing: 12,
         children: [
@@ -153,7 +171,7 @@ class _SummarySection extends StatelessWidget {
       );
     }
 
-    if (summary?.hasError ?? false) {
+    if (summary.hasError) {
       return Column(
         spacing: 8,
         children: [
@@ -171,7 +189,7 @@ class _SummarySection extends StatelessWidget {
             ],
           ),
           TextButton(
-            onPressed: controller.room.fetchSummaries,
+            onPressed: fetchSummaries,
             child: Text(L10n.of(context).requestSummaries),
           ),
         ],
@@ -245,9 +263,13 @@ class _WaitSection extends StatelessWidget {
           onPressed: onContinue,
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            foregroundColor: theme.colorScheme.onSurface,
+            foregroundColor: theme.colorScheme.primary,
             backgroundColor: theme.colorScheme.surface,
-            side: BorderSide(color: theme.colorScheme.primaryContainer),
+            side: BorderSide(
+              color: theme.brightness == Brightness.light
+                  ? theme.colorScheme.primary.withAlpha(120)
+                  : theme.colorScheme.primaryContainer,
+            ),
           ),
           child: Text(
             L10n.of(context).waitNotDone,

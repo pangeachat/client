@@ -412,12 +412,17 @@ class InputBar extends StatelessWidget {
       MatrixState.pangeaController.subscriptionController.subscriptionStatus;
 
   String _defaultHintText(BuildContext context) {
+    final l10n = L10n.of(context);
     return MatrixState.pangeaController.userController.languagesSet
-        ? L10n.of(context).writeAMessageLangCodes(
-            MatrixState.pangeaController.userController.userL1!.displayName,
-            MatrixState.pangeaController.userController.userL2!.displayName,
+        ? l10n.writeAMessageLangCodes(
+            MatrixState.pangeaController.userController.userL1!.getDisplayName(
+              l10n,
+            ),
+            MatrixState.pangeaController.userController.userL2!.getDisplayName(
+              l10n,
+            ),
           )
-        : L10n.of(context).writeAMessage;
+        : l10n.writeAMessage;
   }
 
   void _onInputTap(BuildContext context) {

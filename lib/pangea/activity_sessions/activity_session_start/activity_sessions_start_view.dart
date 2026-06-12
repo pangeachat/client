@@ -1,83 +1,25 @@
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/activity_feedback/activity_feedback_repo.dart';
-import 'package:fluffychat/pangea/activity_feedback/activity_feedback_request.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_summary_widget.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_bottom_content.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_button_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_state_controller.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
-import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
-import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
-import 'package:fluffychat/pangea/course_chats/open_roles_indicator.dart';
-import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/room_summaries/activity_sessions_status_model.dart';
-import 'package:fluffychat/pangea/room_summaries/activity_summary_status_enum.dart';
-import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
 
 class ActivitySessionStartView extends StatelessWidget {
-  final ActivitySessionStartController controller;
-  const ActivitySessionStartView(this.controller, {super.key});
+  final ActivitySessionStartState controller;
+  final ActivitySessionStateController sessionController;
 
-  Future<void> _submitActivityFeedback(BuildContext context) async {
-    final feedback = await showDialog<String?>(
-      context: context,
-      builder: (context) {
-        return FeedbackDialog(
-          title: L10n.of(context).feedbackTitle,
-          onSubmit: (feedback) {
-            Navigator.of(context).pop(feedback);
-          },
-        );
-      },
-    );
-
-    if (feedback == null || feedback.isEmpty) {
-      return;
-    }
-
-    final resp = await showFutureLoadingDialog(
-      context: context,
-      future: () => ActivityFeedbackRepo.submitFeedback(
-        ActivityFeedbackRequest(
-          activityId: controller.widget.activityId,
-          feedbackText: feedback,
-          userId: Matrix.of(context).client.userID!,
-          userL1: MatrixState.pangeaController.userController.userL1Code!,
-          userL2: MatrixState.pangeaController.userController.userL2Code!,
-        ),
-      ),
-    );
-
-    if (resp.isError) {
-      return;
-    }
-
-    CourseActivityRepo.setSentFeedback(
-      controller.widget.activityId,
-      MatrixState.pangeaController.userController.userL1Code!,
-    );
-
-    await showDialog(
-      context: context,
-      builder: (context) {
-        return FeedbackResponseDialog(
-          title: L10n.of(context).feedbackTitle,
-          feedback: resp.result!.userFriendlyResponse,
-          description: L10n.of(context).feedbackRespDesc,
-        );
-      },
-    );
-  }
+  const ActivitySessionStartView(
+    this.controller, {
+    super.key,
+    required this.sessionController,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -86,14 +28,15 @@ class ActivitySessionStartView extends StatelessWidget {
           .where((update) => update.roomId == controller.widget.roomId)
           .rateLimit(const Duration(seconds: 1)),
       builder: (context, snapshot) {
+        final activity = controller.activity;
         return Scaffold(
           appBar: AppBar(
             leadingWidth: 52.0,
-            title: controller.activity == null
+            title: activity == null
                 ? null
                 : Center(
                     child: Text(
-                      controller.activity!.title,
+                      activity.title,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
@@ -114,14 +57,14 @@ class ActivitySessionStartView extends StatelessWidget {
             actions: [
               IconButton(
                 icon: const Icon(Icons.flag_outlined),
-                onPressed: () => _submitActivityFeedback(context),
+                onPressed: controller.submitActivityFeedback,
               ),
             ],
           ),
           body: SafeArea(
             child: controller.loading
                 ? const Center(child: CircularProgressIndicator.adaptive())
-                : controller.error != null
+                : controller.error != null || activity == null
                 ? Center(
                     child: ErrorIndicator(
                       message: L10n.of(context).activityNotFound,
@@ -138,168 +81,37 @@ class ActivitySessionStartView extends StatelessWidget {
                             child: Column(
                               children: [
                                 ActivitySummary(
-                                  activity: controller.activity!,
+                                  activity: activity,
                                   room: controller.activityRoom,
                                   course: controller.courseParent,
                                   showInstructions: controller.showInstructions,
                                   toggleInstructions:
                                       controller.toggleInstructions,
-                                  onTapParticipant: controller.selectRole,
+                                  onTapParticipant:
+                                      sessionController.selectRole,
                                   isParticipantSelected:
-                                      controller.isParticipantSelected,
+                                      sessionController.isRoleSelected,
                                   isParticipantShimmering:
-                                      controller.isParticipantShimmering,
+                                      sessionController.isRoleShimmering,
                                   canSelectParticipant:
-                                      controller.canSelectParticipant,
+                                      sessionController.canSelectRole,
                                   assignedRoles: controller.assignedRoles,
                                 ),
-                                if (controller.courseParent != null &&
-                                    controller.state == SessionState.notStarted)
-                                  _ActivityStatuses(
-                                    statuses: controller.activityStatuses,
-                                    course: controller.courseParent!,
-                                    onTap: controller.joinActivityByRoomId,
-                                  ),
+                                ActivitySessionBottomContent(sessionController),
                               ],
                             ),
                           ),
                         ),
                       ),
-                      ActivitySessionButtonWidget(controller: controller),
+                      ActivitySessionButtons(
+                        controller: controller,
+                        sessionController: sessionController,
+                      ),
                     ],
                   ),
           ),
         );
       },
-    );
-  }
-}
-
-class _ActivityStatuses extends StatelessWidget {
-  final ActivitySessionsStatusModel statuses;
-  final Room course;
-  final Function(String) onTap;
-
-  const _ActivityStatuses({
-    required this.statuses,
-    required this.course,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: const BoxConstraints(
-        maxWidth: FluffyThemes.columnWidth * 1.5,
-      ),
-      child: Column(
-        children: [
-          ...ActivitySummaryStatus.values.map((status) {
-            final roomSummaries = statuses.getSessionsByStatus(status);
-            if (roomSummaries.isEmpty) {
-              return const SizedBox.shrink();
-            }
-
-            return _ActivitySummaryStatusSection(
-              status: status,
-              roomSummaries: roomSummaries,
-              course: course,
-              onTap: onTap,
-            );
-          }),
-        ],
-      ),
-    );
-  }
-}
-
-class _ActivitySummaryStatusSection extends StatelessWidget {
-  final ActivitySummaryStatus status;
-  final Map<String, RoomSummaryResponse> roomSummaries;
-
-  final Room course;
-  final Function(String) onTap;
-
-  const _ActivitySummaryStatusSection({
-    required this.status,
-    required this.roomSummaries,
-    required this.course,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsetsGeometry.symmetric(
-        horizontal: 20.0,
-        vertical: 16.0,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              status.label(L10n.of(context), roomSummaries.length),
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          ...roomSummaries.entries.map((e) {
-            return _ActivitySessionListTile(
-              roomSummary: e.value,
-              status: status,
-              course: course,
-              onTap: () => onTap(e.key),
-            );
-          }),
-        ],
-      ),
-    );
-  }
-}
-
-class _ActivitySessionListTile extends StatelessWidget {
-  final RoomSummaryResponse roomSummary;
-  final ActivitySummaryStatus status;
-
-  final Room course;
-  final VoidCallback onTap;
-
-  const _ActivitySessionListTile({
-    required this.roomSummary,
-    required this.status,
-    required this.course,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final activityPlan = roomSummary.activityPlan;
-
-    // If activity is completed, show all roles, even for users who have left the
-    // room (like the bot). Otherwise, show only joined users with roles
-    final activityRoles = status == ActivitySummaryStatus.completed
-        ? (roomSummary.activityRoles?.roles ?? {})
-        : roomSummary.joinedUsersWithRoles;
-
-    return ListTile(
-      title: OpenRolesIndicator(
-        roles: (activityPlan?.roles.values ?? [])
-            .sorted((a, b) => a.id.compareTo(b.id))
-            .toList(),
-        assignedRoles: activityRoles.values.toList(),
-        size: 40.0,
-        spacing: 8.0,
-        space: course,
-        onUserTap: (user, context) {
-          showMemberActionsPopupMenu(context: context, user: user);
-        },
-      ),
-      trailing: course.isRoomAdmin ? const Icon(Icons.arrow_forward) : null,
-      onTap: status.canJoin(course.isRoomAdmin) ? onTap : null,
     );
   }
 }

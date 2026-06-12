@@ -6,12 +6,13 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_access_extension.dart';
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_creation/public_course_preview_view.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
-import 'package:fluffychat/pangea/room_summaries/room_summaries_repo.dart';
 import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -66,10 +67,9 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       });
 
       final roomIds = [roomID];
-      final roomSummariesRepo = RoomSummariesRepo(Matrix.of(context).client);
-      final roomSummariesResponse = await roomSummariesRepo.loadRoomSummaries(
-        roomIds,
-      );
+      final roomSummariesResponse = await Matrix.of(
+        context,
+      ).client.loadRoomSummaries(roomIds);
 
       final roomSummary = roomSummariesResponse[roomID];
       if (roomSummary == null) {
@@ -115,18 +115,25 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       return;
     }
 
+    final client = Matrix.of(context).client;
     final result = await SpaceCodeController.joinSpaceWithCode(
       code,
       context: context,
-      client: Matrix.of(context).client,
+      client: client,
     );
-    final roomId = result.result;
-    if (roomId != null) {
-      final room = Matrix.of(context).client.getRoomById(roomId);
-      room?.isSpace ?? true
-          ? context.go('/rooms/spaces/$roomId/details')
-          : context.go('/rooms/$roomId');
-    }
+    final joinResp = result.result;
+    if (joinResp == null) return;
+
+    final room = client.getRoomById(joinResp.roomId);
+    if (room == null) return;
+
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+    final joinedRoomId = await handler.handle(context);
+    if (joinedRoomId == null) return;
+
+    room.isSpace
+        ? context.go('/rooms/spaces/$joinedRoomId/details')
+        : context.go('/rooms/$joinedRoomId');
   }
 
   Future<void> joinCourse() async {
@@ -146,43 +153,47 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
     }
 
     final knock = roomSummary?.joinRule == JoinRules.knock;
-    final resp = await showFutureLoadingDialog(
+    if (knock) {
+      await showFutureLoadingDialog(
+        context: context,
+        future: () async {
+          try {
+            await client.knockAndRecordRoom(widget.roomID!);
+          } catch (e, s) {
+            ErrorHandler.logError(e: e, s: s, data: {'roomID': widget.roomID});
+            rethrow;
+          }
+        },
+      );
+      await showOkAlertDialog(
+        context: context,
+        title: L10n.of(context).youHaveKnocked,
+        message: L10n.of(context).knockDesc,
+      );
+      return;
+    }
+
+    final accessCheckResp = await showFutureLoadingDialog<JoinResponse>(
       context: context,
-      future: () async {
-        String roomId;
-        try {
-          roomId = knock
-              ? await client.knockAndRecordRoom(widget.roomID!)
-              : await client.joinRoom(widget.roomID!);
-        } catch (e, s) {
-          ErrorHandler.logError(e: e, s: s, data: {'roomID': widget.roomID});
-          rethrow;
-        }
-
-        Room? room = client.getRoomById(roomId);
-        if (!knock && room?.membership != Membership.join) {
-          await client.waitForRoomInSync(roomId, join: true);
-          room = client.getRoomById(roomId);
-        }
-
-        if (knock) return;
-        if (room == null) {
-          ErrorHandler.logError(
-            e: Exception("Failed to load joined room in public course preview"),
-            data: {'roomID': widget.roomID},
-          );
-          throw Exception("Failed to join room");
-        }
-        context.go("/rooms/spaces/$roomId/details");
-      },
+      future: () => client.joinRoomWithAccessCheck(widget.roomID!),
     );
+    final joinResp = accessCheckResp.result;
+    if (joinResp == null) return;
 
-    if (!knock || resp.isError) return;
-    await showOkAlertDialog(
-      context: context,
-      title: L10n.of(context).youHaveKnocked,
-      message: L10n.of(context).knockDesc,
-    );
+    final room = client.getRoomById(joinResp.roomId);
+    if (room == null) return;
+
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+    final joinedRoomId = await handler.handle(context);
+    if (joinedRoomId == null) {
+      ErrorHandler.logError(
+        e: Exception("Failed to fetch roomID in public course preview"),
+        data: {'roomID': widget.roomID},
+      );
+      throw Exception("Failed to fetch roomID");
+    }
+
+    context.go("/rooms/spaces/$joinedRoomId/details");
   }
 
   @override

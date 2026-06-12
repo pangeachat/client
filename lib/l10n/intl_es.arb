@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-04-27 14:43:12.615213",
+    "@@last_modified": "2026-06-11 10:21:06.512929",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -3592,272 +3592,6 @@
     "tooManyRequest": "Demasiadas solicitudes, por favor inténtelo más tarde.",
     "playAudio": "Jugar",
     "stop": "Stop",
-    "grammarCopyUnknown": "Desconocido",
-    "grammarCopyPOSsconj": "Conjunción subordinante",
-    "grammarCopyPOSnum": "Número",
-    "grammarCopyPOSverb": "Verbo",
-    "grammarCopyPOSaffix": "Coloque",
-    "grammarCopyPOSpart": "Partículas",
-    "grammarCopyPOSadj": "Adjetivo",
-    "grammarCopyPOScconj": "Conjunción de coordinación",
-    "grammarCopyPOSpunct": "Puntuación",
-    "grammarCopyPOSadv": "Adverbio",
-    "grammarCopyPOSaux": "Auxiliar",
-    "grammarCopyPOSspace": "Espacio",
-    "grammarCopyPOSsym": "Símbolo",
-    "grammarCopyPOSdet": "Determinante",
-    "grammarCopyPOSpron": "Pronombre",
-    "grammarCopyPOSadp": "Adposición",
-    "grammarCopyPOSpropn": "Nombre propio",
-    "grammarCopyPOSnoun": "Sustantivo",
-    "grammarCopyPOSintj": "Interjección",
-    "grammarCopyPOSx": "Otros",
-    "grammarCopyGENDERfem": "Femenino",
-    "grammarCopyPERSON2": "Segunda persona",
-    "grammarCopyMOODimp": "Imperativo",
-    "grammarCopyPUNCTTYPEqest": "Pregunta",
-    "grammarCopyASPECTperf": "Perfecto",
-    "grammarCopyCASEaccnom": "Acusativo, Nominativo",
-    "grammarCopyCASEobl": "Oblicuo",
-    "grammarCopyVOICEact": "Activo",
-    "grammarCopyPUNCTTYPEbrck": "Soporte",
-    "grammarCopyNOUNTYPEart": "Artículo",
-    "grammarCopyNUMBERsing": "Singular",
-    "grammarCopyGENDERmasc": "Hombre",
-    "grammarCopyVERBTYPEmod": "Modal",
-    "grammarCopyADVTYPEadverbial": "Adverbial",
-    "grammarCopyTENSEperi": "Perifrástico",
-    "grammarCopyNUMFORMdigit": "Dígitos",
-    "grammarCopyNOUNTYPEnot_proper": "No procede",
-    "grammarCopyNUMTYPEcard": "Cardenal",
-    "grammarCopyNOUNTYPEprop": "Adecuado",
-    "grammarCopyPUNCTTYPEdash": "Dash",
-    "grammarCopyPUNCTTYPEyes": "Sí",
-    "grammarCopyPUNCTTYPEsemi": "Punto y coma",
-    "grammarCopyPUNCTTYPEcomm": "Coma",
-    "grammarCopyMOODcnd": "Condicional",
-    "grammarCopyCASEacc": "Acusativo",
-    "grammarCopyPARTTYPEpart": "Partitivo",
-    "grammarCopyTENSEpast": "Anterior",
-    "grammarCopyDEGREEsup": "Superlativo",
-    "grammarCopyPUNCTTYPEcolo": "Colon",
-    "grammarCopyPERSON3": "Tercera persona",
-    "grammarCopyNUMBERplur": "Plural",
-    "grammarCopyPRONTYPEnpr": "Nombre propio",
-    "grammarCopyPRONTYPEinterrogative": "Preguntas",
-    "grammarCopyPOLITEinfm": "Informal",
-    "grammarCopyADVTYPEtim": "Tiempo",
-    "grammarCopyPOLARITYneg": "Negativo",
-    "grammarCopyNUMTYPEtot": "Total",
-    "grammarCopyADVTYPEadnomial": "Adnominal",
-    "grammarCopyASPECTprog": "Progresiva",
-    "grammarCopyMOODsub": "Subjuntivo",
-    "grammarCopyVERBFORMcomplementive": "Complementive",
-    "grammarCopyCASEnom": "Nominativo",
-    "grammarCopyTENSEfut": "Futuro",
-    "grammarCopyCASEdat": "Dativo",
-    "grammarCopyTENSEpres": "Presente",
-    "grammarCopyGENDERneut": "Esterilizar",
-    "grammarCopyPRONTYPErel": "Relativa",
-    "grammarCopyVERBFORMfinalEnding": "Final",
-    "grammarCopyPRONTYPEdem": "Demostrativo",
-    "grammarCopyPREPCASEpre": "Preposicional",
-    "grammarCopyVERBFORMfin": "Finito",
-    "grammarCopyDEGREEpos": "Positivo",
-    "grammarCopyPUNCTTYPEquot": "Presupuesto",
-    "grammarCopyVERBFORMger": "Redondo",
-    "grammarCopyVOICEpass": "Pasivo",
-    "grammarCopyCASEgen": "Genitivo",
-    "grammarCopyTENSEprs": "Presente",
-    "grammarCopyDEFINITEdef": "Definitivo",
-    "grammarCopyNUMTYPEord": "Ordinal",
-    "grammarCopyCASEins": "Instrumental",
-    "grammarCopyVERBFORMinf": "Infinitivo",
-    "grammarCopyNUMFORMlong": "Largo",
-    "grammarCopyCASEloc": "Locativo",
-    "grammarCopyMOODind": "Indicativo",
-    "grammarCopyDEGREEcmp": "Comparativa",
-    "grammarCopyCASErelativeCase": "Relativa",
-    "grammarCopyPUNCTTYPEexcl": "Exclamativo",
-    "grammarCopyPERSON1": "En primera persona",
-    "grammarCopyPUNCTSIDEini": "Inicial",
-    "grammarCopyGENDERperson": "Persona",
-    "grammarCopyFOREIGNyes": "Extranjero",
-    "grammarCopyVOICEvoice": "Voz",
-    "grammarCopyVERBTYPEverbType": "Verbo",
-    "grammarCopyPOSSpass": "Posesivo",
-    "grammarCopyPREPCASEprepCase": "Preposicional",
-    "grammarCopyNUMTYPEnumType": "Numeral",
-    "grammarCopyNOUNTYPEnounType": "Sustantivo",
-    "grammarCopyREFLEXreflex": "Reflexivo",
-    "grammarCopyPRONTYPEpronType": "Pronombre",
-    "grammarCopyPUNCTSIDEpunctSide": "Puntuación Lado",
-    "grammarCopyVERBFORMverbForm": "Verbo",
-    "grammarCopyGENDERgender": "Género",
-    "grammarCopyMOODmood": "Estado de ánimo",
-    "grammarCopyASPECTaspect": "Aspecto",
-    "grammarCopyPUNCTTYPEpunctType": "Puntuación",
-    "grammarCopyTENSEtense": "Tense",
-    "grammarCopyDEGREEdegree": "Titulación",
-    "grammarCopyPOLITEpolite": "Cortesía",
-    "grammarCopyADVTYPEadvType": "Adverbio",
-    "grammarCopyNUMFORMnumber": "Número",
-    "grammarCopyCONJTYPEconjType": "Conjunción",
-    "grammarCopyPOLARITYpolarity": "Polaridad",
-    "grammarCopyCASEcase": "Caso",
-    "grammarCopyDEFINITEdefinite": "Definitividad",
-    "grammarCopyNUMFORMnumForm": "Numeral",
-    "grammarCopyPRONTYPEadn": "Adnominal",
-    "grammarCopyVOCvoc": "Vocativo",
-    "grammarCopyCMPLcmpl": "Complementizer",
-    "grammarCopyADVadv": "Adverbial",
-    "grammarCopyMOODjus": "Jussive",
-    "grammarCopyGENDERcom": "Común",
-    "grammarCopyREFLEXrflx": "Reflexivo",
-    "grammarCopyPARTTYPEpar": "Partitivo",
-    "grammarCopySPCspc": "Específico",
-    "grammarCopyTENSEpqp": "Pluperfect",
-    "grammarCopyREFLEXref": "Reflexivo",
-    "grammarCopyPUNCTTYPEnshrt": "Corto",
-    "grammarCopyNUMBERdual": "Doble",
-    "grammarCopyNUMFORMlng": "Largo",
-    "grammarCopyVOICEmid": "Medio",
-    "grammarCopyINTRELintRel": "Interrogativo, relativo",
-    "grammarCopyINTint": "Preguntas",
-    "grammarCopyVOICEcaus": "Causa",
-    "grammarCopyEVIDENTevident": "Evidencialidad",
-    "grammarCopyNUMFORMnumberPsor": "Número del poseedor",
-    "grammarCopyASPECThab": "Habitual",
-    "grammarCopyCASEabl": "Ablativo",
-    "grammarCopyCASEall": "Allative",
-    "grammarCopyCASEess": "Essive",
-    "grammarCopyCASEtra": "Translativo",
-    "grammarCopyCASEequ": "Ecuativo",
-    "grammarCopyCASEdis": "Distributivo",
-    "grammarCopyCASEabs": "Absolutivo",
-    "grammarCopyCASEerg": "Ergativa",
-    "grammarCopyCASEcau": "Causal",
-    "grammarCopyCASEben": "Benefactive",
-    "grammarCopyCASEtem": "Temporal",
-    "grammarCopyCONJTYPEcoord": "Coordinación",
-    "grammarCopyDEFINITEcons": "Construir el Estado",
-    "grammarCopyDEGREEabs": "Grado absoluto",
-    "grammarCopyEVIDENTfh": "Evidencialidad de los hechos",
-    "grammarCopyEVIDENTnfh": "Evidencialidad no factual",
-    "grammarCopyMOODopt": "Optativo",
-    "grammarCopyMOODadm": "Admirable",
-    "grammarCopyMOODdes": "Desiderativo",
-    "grammarCopyMOODnec": "Necesidades",
-    "grammarCopyMOODpot": "Posible",
-    "grammarCopyMOODprp": "Propositivo",
-    "grammarCopyMOODqot": "Cita",
-    "grammarCopyNUMFORMword": "Forma verbal",
-    "grammarCopyNUMFORMroman": "Número romano",
-    "grammarCopyNUMFORMletter": "Formulario de carta",
-    "grammarCopyNUMTYPEmult": "Multiplicativo",
-    "grammarCopyNUMTYPEfrac": "Fraccional",
-    "grammarCopyNUMTYPEsets": "Establecer",
-    "grammarCopyNUMTYPErange": "Gama",
-    "grammarCopyNUMTYPEdist": "Distributivo",
-    "grammarCopyNUMBERtri": "Ensayo",
-    "grammarCopyNUMBERpauc": "Paucal",
-    "grammarCopyNUMBERgrpa": "Gran Paucal",
-    "grammarCopyNUMBERgrpl": "Mayor Plural",
-    "grammarCopyNUMBERinv": "Inversa",
-    "grammarCopyPERSON0": "Cero",
-    "grammarCopyPERSON4": "Cuarto",
-    "grammarCopyPOLITEform": "Formal",
-    "grammarCopyPOLITEelev": "Elevado",
-    "grammarCopyPOLITEhumb": "Humilde",
-    "grammarCopyPRONTYPEemp": "Enfático",
-    "grammarCopyPRONTYPEexc": "Exclamativo",
-    "grammarCopyPRONTYPErcp": "Reciprocal",
-    "grammarCopyPRONTYPEintRelPronType": "Interrogativo-Relativo",
-    "grammarCopyTENSEaor": "aoristo",
-    "grammarCopyTENSEeps": "Epistémica",
-    "grammarCopyTENSEprosp": "Prospectiva",
-    "grammarCopyVERBFORMpart": "Participio",
-    "grammarCopyVERBFORMconv": "Converb",
-    "grammarCopyVERBFORMvnoun": "Sustantivo verbal",
-    "grammarCopyVOICEantip": "Antipasivo",
-    "grammarCopyVOICEcauVoice": "Causa",
-    "grammarCopyVOICedir": "Directo",
-    "grammarCopyVOICEinvVoice": "Inversa",
-    "grammarCopyVOICErcpVoice": "Reciprocal",
-    "grammarCopyPOS": "Parte de la oración",
-    "grammarCopyGENDER": "Género",
-    "grammarCopyPERSON": "Persona",
-    "grammarCopyMOOD": "Estado de ánimo",
-    "grammarCopyPUNCTTYPE": "Tipo de puntuación",
-    "grammarCopyASPECT": "Aspecto",
-    "grammarCopyCASE": "Caso",
-    "grammarCopyVOICE": "Voz",
-    "grammarCopyNOUNTYPE": "Tipo de sustantivo",
-    "grammarCopyVERBTYPE": "Tipo de verbo",
-    "grammarCopyADVTYPE": "Tipo de adverbio",
-    "grammarCopyNUMFORM": "Forma numérica",
-    "grammarCopyNUMTYPE": "Tipo de número",
-    "grammarCopyNUMBER": "Número",
-    "grammarCopyDEFINITE": "Definitividad",
-    "grammarCopyDEGREE": "Titulación",
-    "grammarCopyEVIDENT": "Evidencialidad",
-    "grammarCopyFOREIGN": "Extranjero",
-    "grammarCopyPOLARITY": "Polaridad",
-    "grammarCopyPOLITE": "Cortesía",
-    "grammarCopyPREPCASE": "Caso preposicional",
-    "grammarCopyPRONTYPE": "Tipo de pronombre",
-    "grammarCopyPUNCTSIDE": "Puntuación Lado",
-    "grammarCopyREFLEX": "Reflexivo",
-    "grammarCopyTENSE": "Tense",
-    "grammarCopyVERBFORM": "Forma verbal",
-    "grammarCopyCONJTYPE": "Tipo de conjunción",
-    "grammarCopySPC": "Especificidad",
-    "grammarCopyPARTTYPE": "Tipo Partitivo",
-    "grammarCopyINTREL": "Interrogativo-Relativo",
-    "grammarCopyUNKNOWN": "Desconocido",
-    "grammarCopyNUMBERPSOR": "Número del poseedor",
-    "grammarCopyPOSS": "Posesivo",
-    "grammarCopyASPECTimp": "Aspecto imperfectivo",
-    "grammarCopyCASEvoc": "Vocativo",
-    "grammarCopyCASEcom": "Comitative",
-    "grammarCopyCASEpar": "Partitivo",
-    "grammarCopyCASEadv": "Adverbial",
-    "grammarCopyCASEref": "Referencial",
-    "grammarCopyCASErel": "Relativa",
-    "grammarCopyCASEsub": "Subesivo",
-    "grammarCopyCASEsup": "Superessive",
-    "grammarCopyCASEaccdat": "Acusativo-dativo",
-    "grammarCopyCASEpre": "Preposicional",
-    "grammarCopyCONJTYPEsub": "Subordinación",
-    "grammarCopyCONJTYPEcmp": "Comparativa",
-    "grammarCopyDEFINITEind": "Indefinido",
-    "grammarCopyMOODint": "Modo interrogativo",
-    "grammarCopyNOUNTYPEcomm": "Sustantivo común",
-    "grammarCopyNUMBERPSORsing": "Singular del poseedor",
-    "grammarCopyNUMBERPSORplur": "Plural del poseedor",
-    "grammarCopyNUMBERPSORdual": "Doble del poseedor",
-    "grammarCopyPOLARITYpos": "Polaridad positiva",
-    "grammarCopyPOSSyes": "Posesivo",
-    "grammarCopyPREPCASEnpr": "No preposicional",
-    "grammarCopyPRONTYPEprs": "Personal",
-    "grammarCopyPRONTYPEint": "Preguntas",
-    "grammarCopyPRONTYPEtot": "Total",
-    "grammarCopyPRONTYPEneg": "Negativo",
-    "grammarCopyPRONTYPEart": "Artículo",
-    "grammarCopyPRONTYPEind": "Indefinido",
-    "grammarCopyPRONTYPEintrel": "Interrogativo-Relativo",
-    "grammarCopyPUNCTSIDEfin": "Puntuación final",
-    "grammarCopyPUNCTTYPEperi": "Periodo",
-    "grammarCopyREFLEXyes": "Reflexivo",
-    "grammarCopyTENSEimp": "Imperfect",
-    "grammarCopyVERBFORMsup": "SuApine",
-    "grammarCopyVERBFORMadn": "Adnominal",
-    "grammarCopyVERBFORMlng": "Largo",
-    "grammarCopyVERBTYPEcaus": "Verbo causativo",
-    "grammarCopyVOICEcau": "Causa",
-    "grammarCopyVOICEdir": "Directo",
-    "grammarCopyVOICEinv": "Inversa",
-    "grammarCopyVOICErcp": "Reciprocal",
     "other": "Otros",
     "noCapacityLimit": "Sin límite de capacidad",
     "downloadGroupText": "Descargar texto del grupo",
@@ -3874,7 +3608,6 @@
             }
         }
     },
-    "grammarCopyVERBFORMaux": "Auxiliar",
     "levelShort": "NIV {level}",
     "@levelShort": {
         "type": "String",
@@ -4363,7 +4096,6 @@
         "placeholders": {}
     },
     "chatCapacitySetTooLow": "La capacidad de chat debe ser al menos {count}.",
-    "grammarCopyVERBFORMshrt": "Corto",
     "constructUseCollected": "Recopilado en chat",
     "deleteChatDesc": "¿Estás seguro de que deseas eliminar este chat? Se eliminará para todos los participantes y todos los mensajes dentro del chat ya no estarán disponibles para práctica o análisis de aprendizaje.",
     "deleteSpaceDesc": "El espacio y cualquier chat y/o subespacio seleccionado se eliminarán para todos los participantes y todos los mensajes dentro del chat ya no estarán disponibles para práctica o análisis de aprendizaje. Esta acción no se puede deshacer.",
@@ -4421,10 +4153,6 @@
                 "type": "int"
             }
         }
-    },
-    "@grammarCopyVERBFORMshrt": {
-        "type": "String",
-        "placeholders": {}
     },
     "@constructUseCollected": {
         "type": "String",
@@ -4661,7 +4389,6 @@
     "inactive": "Inactivo",
     "confirmRole": "Confirmar rol",
     "openRoleLabel": "ABIERTO",
-    "joinedTheActivity": "👋 {username} se unió como {role}",
     "finishedTheActivity": "🎯 {username} finalizó esta actividad",
     "activitySummaryError": "Resúmenes de actividades no disponibles",
     "requestSummaries": "Solicitar resúmenes",
@@ -4860,17 +4587,6 @@
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -6636,14 +6352,8 @@
         "placeholders": {}
     },
     "introChatTitle": "Crear Chat de Introducciones",
-    "introChatDesc": "Cualquiera en el espacio puede publicar.",
     "announcementsChatTitle": "Chat de Anuncios",
-    "announcementsChatDesc": "Solo el administrador del espacio puede publicar.",
     "@introChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@introChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -6651,14 +6361,9 @@
         "type": "String",
         "placeholders": {}
     },
-    "@announcementsChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "notStartedActivitiesTitle": "Sesiones abiertas ({num})",
     "pickDifferentActivity": "Elige una actividad diferente",
     "inProgressActivitiesTitle": "Sucedió ahora ({num})",
-    "completedActivitiesTitle": "Hecho ({num})",
     "inOngoingActivity": "¡Tienes una actividad en curso!",
     "@notStartedActivitiesTitle": {
         "type": "String",
@@ -6669,14 +6374,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -6902,11 +6599,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Voz del bot Pangea",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "¡Tu solicitud ha sido enviada al administrador del curso! Te dejarán entrar si la aprueban.",
     "@knockDesc": {
         "type": "String",
@@ -6969,21 +6661,6 @@
     },
     "aboutMeHint": "Acerca de mí",
     "@aboutMeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "grammarCopyPOSidiom": "Modismo",
-    "grammarCopyPOSphrasalv": "Verbo Frasal",
-    "grammarCopyPOScompn": "Compuesto",
-    "@grammarCopyPOSidiom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSphrasalv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOScompn": {
         "type": "String",
         "placeholders": {}
     },
@@ -7749,20 +7426,11 @@
         "placeholders": {}
     },
     "subscribedToUnlockTools": "¡Suscríbete para desbloquear la traducción interactiva y la verificación gramatical, la reproducción de audio, ejercicios de práctica personalizados y análisis de aprendizaje!",
-    "emojiSelectedSnackbar": "¡Has establecido el emoji para {lemma}! Usaremos este emoji para representar la palabra en los ejercicios de práctica de ahora en adelante.",
     "unlockPracticeActivities": "Desbloquear ejercicios de práctica",
     "noAnalyticsActivitiesAvailable": "¡Vaya, has completado todas las actividades disponibles! Envía más mensajes para desbloquear más ejercicios de práctica.",
     "@subscribedToUnlockTools": {
         "type": "String",
         "placeholders": {}
-    },
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
     },
     "@unlockPracticeActivities": {
         "type": "String",
@@ -7974,6 +7642,283 @@
         "placeholders": {}
     },
     "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Más opciones",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bearImageDescription": "Un oso amarillo caricaturesco con los brazos levantados en emoción.",
+    "@bearImageDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Selecciona palabras para aprender más sobre ellas",
+    "requireAnalyticsAccessTitle": "Requiere acceso a análisis para unirse",
+    "requireAnalyticsAccessDesc": "Los participantes deben otorgar acceso a sus análisis de aprendizaje para unirse a este curso",
+    "analyticsAccessNoticeTitle": "Acceso a Análisis Requerido",
+    "analyticsAccessNoticeDesc": "Al unirte a este curso, aceptas otorgar a los administradores acceso a tus análisis de aprendizaje.",
+    "skipOnboardingClassCodeDesc": "¿Aprendiendo de forma independiente? No te preocupes, puedes:",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@skipOnboardingClassCodeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Por favor, elige un rol predefinido a continuación o ingresa un nivel de permiso personalizado. Elige un número entero entre 0 y 100.",
+    "reportContentIssue": "Reportar problema de contenido",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Por favor, elija idiomas base y de destino válidos",
+    "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "Uso Pangea Chat para",
+    "teach": "Enseñar",
+    "courseCodeStepTitle": "¿Tienes un código de invitación para el curso?",
+    "courseCodeStepHint": "Ingresa el código para unirte",
+    "courseCodeStepSkip": "No tengo un código",
+    "joinedCourseStepTitle": "¡Bienvenido!",
+    "pickLanguageTeacherStepTitle": "¿Qué idioma estás enseñando?",
+    "pickCefrLevelTeacherStepTitle": "¿Qué nivel enseñas?",
+    "pickCefrLevelStudentStepTitle": "¿Qué nivel eres?",
+    "customCourseStepTitle": "Completa este formulario para obtener un curso personalizado",
+    "aboutYourClass": "Acerca de tu clase",
+    "courseCodeStepErrorMessage": "Por favor, verifica tu código y vuelve a intentarlo",
+    "institution": "Institución",
+    "courseGoals": "Objetivos del curso",
+    "selectChats": "Seleccionar chats",
+    "plainTextFile": "Texto",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@aboutYourClass": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Terminado ({num})",
+    "suggestion": "Elige la mejor sugerencia",
+    "completeActivityButton": "¡He terminado!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Por favor, limite la longitud del nombre a 50 caracteres o menos.",
+    "enterAName": "Por favor, introduzca un nombre.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Asistencia de escritura",
+    "viewError": "Ver error",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "¡Obtén la aplicación Pangea Chat para recibir notificaciones!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "¡Entendido!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Continuar con {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Descarga el historial completo de mensajes, incluyendo el remitente, la fecha de envío, el mensaje original, el mensaje enviado y el tipo de uso.",
+    "analyticsDownloadDesc": "Descarga análisis de vocabulario y gramática personal para el idioma seleccionado.",
+    "courseAnalyticsDownloadDesc": "Descarga el lema y el uso de la gramática en el idioma seleccionado para todos los participantes del curso con análisis compartidos.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Este curso coincide con tu nivel de idioma",
+    "cefrLevelBelow": "Este curso está por debajo de tu nivel de idioma.",
+    "cefrLevelAbove": "Este curso está por encima de tu nivel de idioma.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Voz del mensaje de audio del bot Pangea",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pangeaChatLogo": "Logo de Pangea Chat",
+    "introChatDetails": "¡Di hola! Preséntate a tus compañeros participantes del curso, encuentra amigos y chatea fuera de las actividades.",
+    "@pangeaChatLogo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Este emoji ahora representará \"{word}\" en los ejercicios prácticos",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Mostrar opciones de desarrollador",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Activa las opciones de desarrollador para mostrar análisis de descargas y opciones de información detallada en toda la aplicación.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Esperando a que el bot se una...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Un lugar para que los administradores del curso creen anuncios para los participantes del curso. Aunque todos pueden ver este canal, solo los administradores pueden escribir en él.",
+    "introChatDesc": "Cualquiera en el curso puede publicar.",
+    "announcementsChatDesc": "Solo los administradores del curso pueden publicar.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
         "type": "String",
         "placeholders": {}
     }

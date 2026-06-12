@@ -7,7 +7,10 @@ import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 
 extension UserLemmaInfoExtension on Room {
   UserSetLemmaInfo getUserSetLemmaInfo(ConstructIdentifier cId) {
-    final state = getState(PangeaEventTypes.userSetLemmaInfo, cId.string);
+    final state =
+        getState(PangeaEventTypes.userSetLemmaInfo, cId.string) ??
+        getState(PangeaEventTypes.userSetLemmaInfo, cId.escapedString);
+
     if (state == null) return UserSetLemmaInfo();
     try {
       return UserSetLemmaInfo.fromJson(state.content);
@@ -25,11 +28,6 @@ extension UserLemmaInfoExtension on Room {
     }
   }
 
-  String? constructEmoji(ConstructIdentifier cId) {
-    final info = getUserSetLemmaInfo(cId);
-    return info.emojis?.firstOrNull;
-  }
-
   Future<void> setUserSetLemmaInfo(
     ConstructIdentifier cId,
     UserSetLemmaInfo info,
@@ -41,7 +39,7 @@ extension UserLemmaInfoExtension on Room {
     client.setRoomStateWithKey(
       id,
       PangeaEventTypes.userSetLemmaInfo,
-      cId.string,
+      cId.escapedString,
       info.toJson(),
     );
     await syncFuture.timeout(const Duration(seconds: 10));

@@ -11,6 +11,7 @@ import 'package:matrix/matrix.dart' hide Result;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/join_codes/knock_with_code_extension.dart';
@@ -21,7 +22,7 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 class NotFoundException implements Exception {}
 
 class SpaceCodeController {
-  static Completer<Result<String>>? _joinCompleter;
+  static Completer<Result<JoinResponse>>? _joinCompleter;
 
   static StreamController spaceCodeStream = StreamController.broadcast();
 
@@ -30,7 +31,7 @@ class SpaceCodeController {
     spaceCodeStream.add(code);
   }
 
-  static Future<Result<String>> joinCachedSpaceCode({
+  static Future<Result<JoinResponse>> joinCachedSpaceCode({
     required BuildContext context,
     required Client client,
     String? notFoundError,
@@ -50,31 +51,27 @@ class SpaceCodeController {
     );
   }
 
-  static Future<Result<String>> joinSpaceWithCode(
+  static Future<Result<JoinResponse>> joinSpaceWithCode(
     String spaceCode, {
-    required BuildContext context,
     required Client client,
     String? notFoundError,
+    BuildContext? context,
     bool showLoading = true,
   }) async {
     try {
       if (_joinCompleter != null) return _joinCompleter!.future;
-      _joinCompleter = Completer<Result<String>>();
+      _joinCompleter = Completer<Result<JoinResponse>>();
       await SpaceCodeRepo.setRecentCode(spaceCode);
 
       // TODO this should throw error if failed
-      final roomId = showLoading
+      final roomId = showLoading && context != null
           ? await _joinSpaceWithCodeWithLoading(
               spaceCode,
               context: context,
               client: client,
               notFoundError: notFoundError,
             )
-          : await _joinSpaceWithCodeWithoutLoading(
-              spaceCode,
-              context: context,
-              client: client,
-            );
+          : await _joinSpaceWithCodeWithoutLoading(spaceCode, client: client);
 
       GoogleAnalytics.joinClass(spaceCode);
       final result = Result.value(roomId);
@@ -83,7 +80,7 @@ class SpaceCodeController {
     } catch (e, s) {
       _joinCompleter?.complete(Result.error(e, s));
       ErrorHandler.logError(e: e, s: s, data: {"spaceCode": spaceCode});
-      if (e is StreamedResponse && e.statusCode == 429) {
+      if (e is StreamedResponse && e.statusCode == 429 && context != null) {
         await showDialog(
           context: context,
           builder: (context) => const TooManyRequestsDialog(),
@@ -95,7 +92,7 @@ class SpaceCodeController {
     }
   }
 
-  static Future<String> _joinSpaceWithCodeWithLoading(
+  static Future<JoinResponse> _joinSpaceWithCodeWithLoading(
     String spaceCode, {
     required BuildContext context,
     required Client client,
@@ -103,11 +100,7 @@ class SpaceCodeController {
   }) async {
     final resp = await showFutureLoadingDialog(
       context: context,
-      future: () => _joinSpaceWithCodeWithoutLoading(
-        spaceCode,
-        context: context,
-        client: client,
-      ),
+      future: () => _joinSpaceWithCodeWithoutLoading(spaceCode, client: client),
       onError: (e, s) => notFoundError ?? L10n.of(context).unableToFindRoom,
       showError: (err) => err is! StreamedResponse || err.statusCode != 429,
     );
@@ -116,9 +109,8 @@ class SpaceCodeController {
     return resp.result!;
   }
 
-  static Future<String> _joinSpaceWithCodeWithoutLoading(
+  static Future<JoinResponse> _joinSpaceWithCodeWithoutLoading(
     String spaceCode, {
-    required BuildContext context,
     required Client client,
   }) async {
     final knockResp = await _knockSpace(spaceCode, client);
@@ -140,7 +132,7 @@ class SpaceCodeController {
   /// Step 2. Join the space. If the user has already joined a room with the code, return that room early.
   /// If they are in a room without the membership 'join', try to join that room. If no already joined rooms
   /// are found, join the first room in the list of rooms to join.
-  static Future<String> _joinSpace(
+  static Future<JoinResponse> _joinSpace(
     KnockSpaceResponse resp,
     Client client,
   ) async {
@@ -154,7 +146,10 @@ class SpaceCodeController {
       for (final roomId in alreadyJoined) {
         final room = client.getRoomById(roomId);
         if (room?.membership == Membership.join) {
-          return roomId;
+          return JoinResponse(
+            roomId: roomId,
+            shouldShowNotice: room!.shouldShowAnalyticsAccessNotice,
+          );
         } else if (room != null) {
           roomIdToJoin = roomId;
         }
@@ -165,7 +160,7 @@ class SpaceCodeController {
         throw NotFoundException();
       }
 
-      await client.joinRoomById(roomIdToJoin);
+      final joinResp = await client.joinRoomByIdWithAccessCheck(roomIdToJoin);
       Room? room = client.getRoomById(roomIdToJoin);
 
       if (room == null) {
@@ -192,7 +187,7 @@ class SpaceCodeController {
         await room.requestParticipants();
       }
 
-      return roomIdToJoin;
+      return joinResp;
     } catch (e) {
       Sentry.addBreadcrumb(
         Breadcrumb(data: {"knockSpaceResponse": resp.toJson()}),

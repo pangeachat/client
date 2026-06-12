@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:async/async.dart';
-import 'package:matrix/matrix_api_lite/utils/logs.dart';
+import 'package:matrix/matrix.dart' hide Result;
 
+import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_controller.dart';
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
@@ -27,9 +28,11 @@ import 'choreographer_error_controller.dart';
 
 class Choreographer extends ChangeNotifier {
   final FocusNode inputFocus;
+  final Room room;
 
   late final PangeaTextController textController;
   late final IgcController igcController;
+  late final OrchestratorController orchestratorController;
   late final ChoreographerErrorController errorService;
 
   ChoreoRecordModel? _choreoRecord;
@@ -47,8 +50,9 @@ class Choreographer extends ChangeNotifier {
   StreamSubscription? _languageSub;
   StreamSubscription? _settingsUpdateSub;
   StreamSubscription? _updatedMatchSub;
+  StreamSubscription? _suggestionSub;
 
-  Choreographer(this.inputFocus) {
+  Choreographer({required this.inputFocus, required this.room}) {
     _initialize();
   }
 
@@ -76,7 +80,7 @@ class Choreographer extends ChangeNotifier {
 
     igcController = IgcController(
       (e) {
-        errorService.setErrorAndLock(ChoreoError(e));
+        errorService.setError(ChoreoError(e));
         _lastIgcError = DateTime.now();
         _igcErrorBackoff *= 2;
       },
@@ -85,13 +89,15 @@ class Choreographer extends ChangeNotifier {
       },
     );
 
+    orchestratorController = OrchestratorController(room: room);
+
     _languageSub ??= MatrixState
         .pangeaController
         .userController
         .languageStream
         .stream
         .listen((update) {
-          clear();
+          clearWritingAssistance();
         });
 
     _settingsUpdateSub ??= MatrixState
@@ -106,18 +112,24 @@ class Choreographer extends ChangeNotifier {
     _updatedMatchSub ??= igcController.matchUpdateStream.stream.listen(
       _onUpdateMatch,
     );
+
+    _suggestionSub ??= orchestratorController.suggestionStream.stream.listen(
+      _onUpdateSuggestion,
+    );
   }
 
-  void clear() {
+  void clearWritingAssistance() {
     _lastChecked = null;
     _isFetching.value = false;
     _choreoRecord = null;
     igcController.clear();
     _resetDebounceTimer();
+    errorService.unblockWritingAssistance();
+    notifyListeners();
+  }
 
-    // error service's notification will trigger choreo notification,
-    // so don't make a redundant call to notifyListeners here
-    errorService.resetError();
+  void clearSuggestions() {
+    orchestratorController.clearSuggestionState();
   }
 
   @override
@@ -128,9 +140,11 @@ class Choreographer extends ChangeNotifier {
     _languageSub?.cancel();
     _settingsUpdateSub?.cancel();
     _updatedMatchSub?.cancel();
+    _suggestionSub?.cancel();
     _debounceTimer?.cancel();
 
     igcController.dispose();
+    orchestratorController.dispose();
     errorService.dispose();
     textController.dispose();
     _isFetching.dispose();
@@ -173,16 +187,22 @@ class Choreographer extends ChangeNotifier {
       notifyListeners();
     }
 
+    if (textController.editType != EditTypeEnum.suggestion &&
+        orchestratorController.hasAcceptedSuggestion) {
+      orchestratorController.resetSuggestionState();
+      textController.editType = EditTypeEnum.keyboard;
+    }
+
     // if the user cleared the text, reset everything
     if (textController.editType == EditTypeEnum.keyboard &&
         _lastChecked != null &&
         _lastChecked!.isNotEmpty &&
         textController.text.isEmpty) {
-      clear();
+      clearWritingAssistance();
     }
 
     _lastChecked = textController.text;
-    if (errorService.isError) return;
+    if (errorService.blockWritingAssistance) return;
     if (textController.editType == EditTypeEnum.keyboard) {
       if (igcController.currentText != null) {
         igcController.clear();
@@ -235,9 +255,6 @@ class Choreographer extends ChangeNotifier {
     }
 
     _resetDebounceTimer();
-    _startLoading();
-
-    await igcController.getIGCTextData(textController.text, []);
 
     // init choreo record to record the original text before any matches are applied
     _choreoRecord ??= ChoreoRecordModel(
@@ -246,30 +263,30 @@ class Choreographer extends ChangeNotifier {
       openMatches: [],
     );
 
-    if (igcController.openNormalizationMatches.isNotEmpty) {
-      await igcController.acceptNormalizationMatches();
-    } else {
-      // trigger a re-render of the text field to show IGC matches
-      textController.setSystemText(textController.text, EditTypeEnum.igc);
-    }
-
-    _stopLoading();
+    errorService.clear();
+    await _runWritingAssistance();
   }
 
   /// Re-runs IGC with user feedback and updates the UI.
-  Future<bool> rerunWithFeedback(String feedbackText) async {
-    MatrixState.pAnyState.closeAllOverlays();
+  Future<void> rerunWithFeedback(String feedbackText) async {
     igcController.clearMatches();
     igcController.clearCurrentText();
+    MatrixState.pAnyState.closeAllOverlays();
+    await _runWritingAssistance(feedbackText: feedbackText);
+  }
 
+  Future<void> _runWritingAssistance({String? feedbackText}) async {
     _startLoading();
-    final success = await igcController.rerunWithFeedback(feedbackText);
-    if (success && igcController.openNormalizationMatches.isNotEmpty) {
+
+    feedbackText != null
+        ? await igcController.rerunWithFeedback(feedbackText)
+        : await igcController.getIGCTextData(textController.text, []);
+
+    if (igcController.openNormalizationMatches.isNotEmpty) {
       await igcController.acceptNormalizationMatches();
     }
-    _stopLoading();
 
-    return success;
+    _stopLoading();
   }
 
   Future<PangeaMessageContentModel> getMessageContent(String message) async {
@@ -307,6 +324,13 @@ class Choreographer extends ChangeNotifier {
       tokensResp = res.isValue ? res.result : null;
     }
 
+    // Snapshot any IGC matches that were detected but not resolved by the user
+    // (neither accepted nor automatically corrected).
+    final openMatchesList = igcController.openMatches
+        .map((m) => m.updatedMatch)
+        .toList();
+    _record.openMatches.addAll(openMatchesList);
+
     return PangeaMessageContentModel(
       message: message,
       choreo: _record,
@@ -343,6 +367,18 @@ class Choreographer extends ChangeNotifier {
     }
 
     inputFocus.requestFocus();
+    notifyListeners();
+  }
+
+  void _onUpdateSuggestion(ActiveSuggestionModel? suggestion) {
+    final acceptedChoice = suggestion?.acceptedChoice;
+    if (acceptedChoice != null) {
+      textController.setSystemText(
+        acceptedChoice.text,
+        EditTypeEnum.suggestion,
+      );
+      inputFocus.requestFocus();
+    }
     notifyListeners();
   }
 }

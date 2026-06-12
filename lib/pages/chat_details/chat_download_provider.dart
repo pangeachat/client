@@ -3,50 +3,78 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/download/download_dialog.dart';
 import 'package:fluffychat/pangea/download/download_room_extension.dart';
 import 'package:fluffychat/pangea/download/download_type_enum.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 mixin ChatDownloadProvider {
-  void downloadChatAction(String roomId, BuildContext context) async {
+  Future<void> downloadChatAction(String roomId, BuildContext context) async {
     final Room? room = Matrix.of(context).client.getRoomById(roomId);
     if (room == null) return;
 
-    final type = await showModalActionPopup(
+    await showDialog(
       context: context,
-      title: L10n.of(context).downloadGroupText,
-      actions: [
-        AdaptiveModalAction(
-          value: DownloadType.csv,
-          label: L10n.of(context).downloadCSVFile,
-        ),
-        AdaptiveModalAction(
-          value: DownloadType.txt,
-          label: L10n.of(context).downloadTxtFile,
-        ),
-        AdaptiveModalAction(
-          value: DownloadType.xlsx,
-          label: L10n.of(context).downloadXLSXFile,
-        ),
-      ],
+      builder: (context) => ChatDownloadDialog(room: room),
     );
-    if (type == null) return;
+  }
+}
 
+class ChatDownloadDialog extends StatefulWidget {
+  final Room room;
+  const ChatDownloadDialog({required this.room, super.key});
+
+  @override
+  ChatDownloadDialogState createState() => ChatDownloadDialogState();
+}
+
+class ChatDownloadDialogState extends State<ChatDownloadDialog> {
+  bool _downloading = false;
+  bool _downloaded = false;
+  String? _error;
+  DownloadType _downloadType = DownloadType.csv;
+
+  void _setDownloadType(DownloadType type) {
+    if (_downloadType == type) return;
+    setState(() => _downloadType = type);
+  }
+
+  Future<void> _download() async {
     try {
-      await room.download(type, context);
+      setState(() {
+        _downloading = true;
+        _downloaded = false;
+        _error = null;
+      });
+      await widget.room.download(_downloadType, context);
     } on EmptyChatException {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(L10n.of(context).emptyChatDownloadWarning)),
-      );
+      _error = L10n.of(context).emptyChatDownloadWarning;
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            "${L10n.of(context).oopsSomethingWentWrong} ${L10n.of(context).errorPleaseRefresh}",
-          ),
-        ),
-      );
+      _error = L10n.of(context).errorPleaseRefresh;
+    } finally {
+      setState(() {
+        _downloading = false;
+        _downloaded = true;
+      });
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return DownloadDialog(
+      downloading: _downloading,
+      downloaded: _downloaded,
+      enableDownload: !_downloading,
+      selectedDownloadType: _downloadType,
+      downloadableTypes: [
+        DownloadType.csv,
+        DownloadType.xlsx,
+        DownloadType.txt,
+      ],
+      setDownloadType: _setDownloadType,
+      download: _download,
+      description: L10n.of(context).chatDownloadDesc,
+      error: _error,
+    );
   }
 }

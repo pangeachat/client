@@ -208,10 +208,7 @@ class CourseInvitePageController extends State<CourseInvitePage>
                                 return CircleAvatar(
                                   radius: avatarSize / 2,
                                   backgroundColor: AppConfig.gold.withAlpha(80),
-                                  child: const Icon(
-                                    Icons.question_mark,
-                                    size: 20.0,
-                                  ),
+                                  child: const Icon(Icons.person, size: 20.0),
                                 );
                               }),
                               const Icon(Icons.more_horiz, size: 24.0),

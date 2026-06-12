@@ -176,9 +176,7 @@ class PracticeController with ChangeNotifier {
       activity,
     );
 
-    final targetId =
-        "message-token-${token.text.uniqueKey}-${pangeaMessageEvent.eventId}";
-
+    final targetId = token.practiceModeTargetKey(pangeaMessageEvent.eventId);
     final updateService = MatrixState
         .pangeaController
         .matrixState
