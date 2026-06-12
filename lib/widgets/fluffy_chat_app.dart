@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/routes.dart';
+import 'package:fluffychat/pangea/navigation/legacy_redirects.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -43,6 +44,8 @@ class FluffyChatApp extends StatelessWidget {
     routes: AppRoutes.routes,
     // #Pangea
     observers: [GoogleAnalytics.getAnalyticsObserver()],
+    // Permanent shims from pre-world_v2 /rooms/... section paths.
+    redirect: (context, state) => LegacyRedirects.handle(state.uri),
     // Pangea#
     debugLogDiagnostics: true,
   );

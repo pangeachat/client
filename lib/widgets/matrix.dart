@@ -20,6 +20,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/navigation/route_paths.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
@@ -226,7 +227,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                 // FluffyChatApp.router.go('/backup');
                 final isL2Set =
                     await pangeaController.userController.isUserL2Set;
-                FluffyChatApp.router.go(isL2Set ? '/rooms' : '/registration');
+                FluffyChatApp.router.go(isL2Set ? PRoutes.world : '/registration');
                 // Pangea#
               });
     // #Pangea
@@ -269,7 +270,16 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   String? get activeRoomId {
     final route = FluffyChatApp.router.routeInformationProvider.value.uri.path;
-    if (!route.startsWith('/rooms/')) return null;
+    // #Pangea
+    // world_v2: open chats also live under /courses/:spaceid/:roomid and
+    // /analytics/activities/:roomid.
+    if (!route.startsWith('/rooms/') &&
+        !route.startsWith('/courses/') &&
+        !route.startsWith('/analytics/activities/')) {
+      return null;
+    }
+    // if (!route.startsWith('/rooms/')) return null;
+    // Pangea#
     // #Pangea
     // return route.split('/')[2];
     return FluffyChatApp.router.state.pathParameters['roomid'];
@@ -448,7 +458,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         );
 
         if (state != LoginState.loggedIn) {
-          FluffyChatApp.router.go('/rooms');
+          FluffyChatApp.router.go(PRoutes.world);
         }
       } else {
         // #Pangea
@@ -457,7 +467,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // );
         if (state == LoginState.loggedIn) {
           final isL2Set = await pangeaController.userController.isUserL2Set;
-          FluffyChatApp.router.go(isL2Set ? '/rooms' : '/registration');
+          FluffyChatApp.router.go(isL2Set ? PRoutes.world : '/registration');
         } else {
           FluffyChatApp.router.go('/home');
         }

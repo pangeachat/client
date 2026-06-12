@@ -9,11 +9,11 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
+import 'package:fluffychat/pangea/activity_sessions/launch_activity_session.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_state_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_sessions_start_view.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
@@ -133,9 +133,10 @@ class SelectRoleSessionController extends State<SelectRoleSession>
     } else {
       final resp = await showFutureLoadingDialog(
         context: context,
-        future: () => widget.course!.launchActivityRoom(
+        future: () => Matrix.of(context).client.launchActivitySession(
           activity,
           activity.roles[selectedRoleId],
+          primarySpace: widget.course,
         ),
       );
 

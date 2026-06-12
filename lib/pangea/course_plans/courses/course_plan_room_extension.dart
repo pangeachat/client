@@ -1,23 +1,15 @@
 import 'dart:async';
 
-import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
-import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/activity_sessions/launch_activity_session.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/pangea/course_settings/teacher_mode_model.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
-import 'package:fluffychat/pangea/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 
 extension CoursePlanRoomExtension on Room {
   CoursePlanEvent? get coursePlan {
@@ -71,65 +63,7 @@ extension CoursePlanRoomExtension on Room {
   Future<String> launchActivityRoom(
     ActivityPlanModel activity,
     ActivityRole? role,
-  ) async {
-    final roomID = await client.createPangeaRoom(
-      client.createRoom(
-        creationContent: {
-          'type': "${PangeaRoomTypes.activitySession}:${activity.activityId}",
-        },
-        visibility: sdk.Visibility.private,
-        name: activity.title,
-        topic: activity.description,
-        initialState: [
-          StateEvent(
-            type: PangeaEventTypes.activityPlan,
-            content: activity.toJson(),
-          ),
-          if (activity.imageURL != null)
-            StateEvent(
-              type: EventTypes.RoomAvatar,
-              content: {'url': activity.imageURL!.toString()},
-            ),
-          if (role != null)
-            StateEvent(
-              type: PangeaEventTypes.activityRole,
-              content: ActivityRolesModel({
-                role.id: ActivityRoleModel(
-                  id: role.id,
-                  userId: client.userID!,
-                  role: role.name,
-                ),
-              }).toJson(),
-            ),
-          await client.generateCustomJoinRules(
-            JoinRules.knockRestricted,
-            allowRoomId: id,
-          ),
-        ],
-        powerLevelContentOverride: RoomDefaults.defaultPowerLevelsContent,
-      ),
-    );
-
-    try {
-      await addToSpace(roomID);
-      if (pangeaSpaceParents.isEmpty) {
-        await client.waitForRoomInSync(roomID).timeout(Duration(seconds: 10));
-      }
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'roomId': roomID},
-        level: e is TimeoutException ? SentryLevel.warning : SentryLevel.error,
-      );
-
-      if (e is! TimeoutException) {
-        rethrow;
-      }
-    }
-
-    return roomID;
-  }
+  ) => client.launchActivitySession(activity, role, primarySpace: this);
 
   TeacherModeModel get teacherMode {
     final state = getState(PangeaEventTypes.teacherMode);

@@ -8,6 +8,7 @@ extension JoinRuleExtension on Client {
   Future<StateEvent> generateCustomJoinRules(
     JoinRules joinRule, {
     String? allowRoomId,
+    List<String>? allowRoomIds,
   }) async {
     String? joinCode;
     try {
@@ -16,12 +17,16 @@ extension JoinRuleExtension on Client {
       ErrorHandler.logError(e: e, s: s, data: {'joinRule': joinRule});
     }
 
+    final allRoomIds = {
+      ?allowRoomId,
+      ...?allowRoomIds,
+    };
     final customJoinRules = CustomJoinRulesModel(
       joinRule: joinRule,
-      allow: allowRoomId != null
-          ? [
-              {'type': 'm.room_membership', 'room_id': allowRoomId},
-            ]
+      allow: allRoomIds.isNotEmpty
+          ? allRoomIds
+                .map((id) => {'type': 'm.room_membership', 'room_id': id})
+                .toList()
           : null,
       accessCode: joinCode,
     );

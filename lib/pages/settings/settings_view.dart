@@ -204,45 +204,45 @@ class SettingsView extends StatelessWidget {
                       leading: const Icon(Icons.language_outlined),
                       title: Text(L10n.of(context).learningSettings),
                       tileColor:
-                          activeRoute.startsWith('/rooms/settings/learning')
+                          activeRoute.startsWith('/settings/learning')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
-                      onTap: () => context.go('/rooms/settings/learning'),
+                      onTap: () => context.go('/settings/learning'),
                     ),
                     // Pangea#
                     ListTile(
                       leading: const Icon(Icons.format_paint_outlined),
                       title: Text(L10n.of(context).changeTheme),
-                      tileColor: activeRoute.startsWith('/rooms/settings/style')
+                      tileColor: activeRoute.startsWith('/settings/style')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
-                      onTap: () => context.go('/rooms/settings/style'),
+                      onTap: () => context.go('/settings/style'),
                     ),
                     ListTile(
                       leading: const Icon(Icons.notifications_outlined),
                       title: Text(L10n.of(context).notifications),
                       tileColor:
                           activeRoute.startsWith(
-                            '/rooms/settings/notifications',
+                            '/settings/notifications',
                           )
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
-                      onTap: () => context.go('/rooms/settings/notifications'),
+                      onTap: () => context.go('/settings/notifications'),
                     ),
                     ListTile(
                       leading: const Icon(Icons.devices_outlined),
                       title: Text(L10n.of(context).devices),
-                      onTap: () => context.go('/rooms/settings/devices'),
+                      onTap: () => context.go('/settings/devices'),
                       tileColor:
-                          activeRoute.startsWith('/rooms/settings/devices')
+                          activeRoute.startsWith('/settings/devices')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
                     ),
                     ListTile(
                       leading: const Icon(Icons.forum_outlined),
                       title: Text(L10n.of(context).chat),
-                      onTap: () => context.go('/rooms/settings/chat'),
-                      tileColor: activeRoute.startsWith('/rooms/settings/chat')
+                      onTap: () => context.go('/settings/chat'),
+                      tileColor: activeRoute.startsWith('/settings/chat')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
                     ),
@@ -250,9 +250,9 @@ class SettingsView extends StatelessWidget {
                     ListTile(
                       leading: const Icon(Icons.account_circle_outlined),
                       title: Text(L10n.of(context).subscriptionManagement),
-                      onTap: () => context.go('/rooms/settings/subscription'),
+                      onTap: () => context.go('/settings/subscription'),
                       tileColor:
-                          activeRoute.startsWith('/rooms/settings/subscription')
+                          activeRoute.startsWith('/settings/subscription')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
                     ),
@@ -260,9 +260,9 @@ class SettingsView extends StatelessWidget {
                     ListTile(
                       leading: const Icon(Icons.shield_outlined),
                       title: Text(L10n.of(context).security),
-                      onTap: () => context.go('/rooms/settings/security'),
+                      onTap: () => context.go('/settings/security'),
                       tileColor:
-                          activeRoute.startsWith('/rooms/settings/security')
+                          activeRoute.startsWith('/settings/security')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
                     ),
@@ -334,9 +334,9 @@ class SettingsView extends StatelessWidget {
                     //           'homeserver',
                     //     ),
                     //   ),
-                    //   onTap: () => context.go('/rooms/settings/homeserver'),
+                    //   onTap: () => context.go('/settings/homeserver'),
                     //   tileColor:
-                    //       activeRoute.startsWith('/rooms/settings/homeserver')
+                    //       activeRoute.startsWith('/settings/homeserver')
                     //       ? theme.colorScheme.surfaceContainerHigh
                     //       : null,
                     // ),

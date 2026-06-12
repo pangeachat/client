@@ -94,7 +94,7 @@ class SelectedCourseController extends State<SelectedCourse>
         .then((spaceId) => completer.complete(spaceId))
         .catchError((error) => completer.completeError(error));
 
-    context.go("/rooms/course/own/${widget.courseId}/invite", extra: completer);
+    context.go("/courses/own/${widget.courseId}/invite", extra: completer);
   }
 
   Future<void> addCourseToSpace(CoursePlanModel course) async {

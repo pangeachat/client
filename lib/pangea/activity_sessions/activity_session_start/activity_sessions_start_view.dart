@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+
+import 'package:fluffychat/pangea/navigation/route_paths.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_summary_widget.dart';
@@ -50,7 +53,14 @@ class ActivitySessionStartView extends StatelessWidget {
               child: Center(
                 child: IconButton(
                   icon: const Icon(Icons.close),
-                  onPressed: () => Navigator.of(context).pop(),
+                  // #Pangea
+                  // On the first-class activity route this page is the
+                  // bottom of the stack; popping would leave an empty
+                  // navigator. Fall back to the home map.
+                  onPressed: () => Navigator.of(context).canPop()
+                      ? Navigator.of(context).pop()
+                      : GoRouter.of(context).go(PRoutes.world),
+                  // Pangea#
                 ),
               ),
             ),

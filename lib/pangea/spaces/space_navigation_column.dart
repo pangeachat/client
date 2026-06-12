@@ -2,11 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pages/settings/settings.dart';
@@ -14,7 +12,8 @@ import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popu
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_page/activity_archive.dart';
 import 'package:fluffychat/pangea/analytics_summary/level_analytics_details_content.dart';
-import 'package:fluffychat/pangea/spaces/space_constants.dart';
+import 'package:fluffychat/pangea/course_plans/find_course_page.dart';
+import 'package:fluffychat/pangea/navigation/app_section.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/navigation_rail.dart';
 import '../../widgets/matrix.dart';
@@ -167,53 +166,52 @@ class _MainView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final path = state.fullPath;
-    if (path == null) {
-      return ChatList(
-        activeChat: state.pathParameters['roomid'],
-        activeSpace: state.pathParameters['spaceid'],
-      );
-    }
+    // world_v2: the left column is decided by the active section (exact
+    // path segments via AppSection), with sub-views chosen by segment
+    // inspection — never substring matching on the full path.
+    final uri = state.uri;
+    final segments = uri.pathSegments;
+    final section = AppSection.fromUri(uri);
 
-    if (path.contains("analytics")) {
-      if (path.contains("analytics/level")) {
-        return const LevelAnalyticsDetailsContent();
-      } else if (path.contains("analytics/activities")) {
-        return const ActivityArchive();
-      } else if (path.contains("analytics/${ConstructTypeEnum.morph.string}")) {
+    switch (section) {
+      case AppSection.analytics:
+        final sub = segments.length > 1 ? segments[1] : null;
+        final practice = segments.contains('practice');
+        if (sub == 'level') return const LevelAnalyticsDetailsContent();
+        if (sub == 'activities') return const ActivityArchive();
+        if (sub == ConstructTypeEnum.morph.string) {
+          return ConstructAnalyticsView(
+            view: ConstructTypeEnum.morph,
+            showPracticeButton: !practice,
+          );
+        }
         return ConstructAnalyticsView(
-          view: ConstructTypeEnum.morph,
-          showPracticeButton: !path.contains("practice"),
+          view: ConstructTypeEnum.vocab,
+          showPracticeButton: !practice,
         );
-      }
-      return ConstructAnalyticsView(
-        view: ConstructTypeEnum.vocab,
-        showPracticeButton: !path.contains("practice"),
-      );
-    }
 
-    if (path.contains("settings")) {
-      return Settings(key: state.pageKey);
-    }
+      case AppSection.settings:
+        return Settings(key: state.pageKey);
 
-    if (path.contains('course')) {
-      return Center(
-        child: SizedBox(
-          width: 250.0,
-          child: CachedNetworkImage(
-            imageUrl:
-                "${AppConfig.assetsBaseURL}/${SpaceConstants.sideBearFileName}",
-            errorWidget: (context, url, error) => const SizedBox(),
-            placeholder: (context, url) =>
-                const Center(child: CircularProgressIndicator.adaptive()),
-          ),
-        ),
-      );
-    }
+      case AppSection.courses:
+        // Find/browse flows show the course list in the left column; a
+        // joined course (`/courses/:spaceid`) shows the chat list scoped
+        // to that space until the course-outline relayout lands.
+        if (AppSection.activeSpaceId(uri) == null &&
+            !segments.contains('addcourse')) {
+          return const FindCoursePage();
+        }
+        return ChatList(
+          activeChat: state.pathParameters['roomid'],
+          activeSpace: state.pathParameters['spaceid'],
+        );
 
-    return ChatList(
-      activeChat: state.pathParameters['roomid'],
-      activeSpace: state.pathParameters['spaceid'],
-    );
+      case AppSection.profile:
+      case AppSection.chats:
+        return ChatList(
+          activeChat: state.pathParameters['roomid'],
+          activeSpace: state.pathParameters['spaceid'],
+        );
+    }
   }
 }

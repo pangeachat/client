@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/pangea/navigation/route_paths.dart';
+
 class NavigationUtil {
   static void goToSpaceRoute(
     String? goalRoomID,
@@ -18,23 +20,22 @@ class NavigationUtil {
           '?${queryParams.entries.map((e) => '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}').join('&')}';
     }
 
-    if (currentRouteSegments.length > 1 &&
-        currentRouteSegments[0] == 'rooms' &&
-        currentRouteSegments[1] == 'spaces' &&
+    if (currentRouteSegments.isNotEmpty &&
+        currentRouteSegments[0] == 'courses' &&
         currentRoute.pathParameters.containsKey('spaceid')) {
       final spaceId = currentRoute.pathParameters['spaceid']!;
       if (goalRoomID == null) {
-        context.go('/rooms/spaces/$spaceId$queryString', extra: extra);
+        context.go('${PRoutes.course(spaceId)}$queryString', extra: extra);
         return;
       }
 
       if (spaceId == goalRoomID) {
         if (goalSubroute.isEmpty) {
-          context.go('/rooms/spaces/$spaceId$queryString', extra: extra);
+          context.go('${PRoutes.course(spaceId)}$queryString', extra: extra);
           return;
         }
         context.go(
-          '/rooms/spaces/$spaceId/${goalSubroute.join('/')}$queryString',
+          '${PRoutes.course(spaceId)}/${goalSubroute.join('/')}$queryString',
           extra: extra,
         );
         return;
@@ -42,21 +43,21 @@ class NavigationUtil {
 
       if (goalSubroute.isEmpty) {
         context.go(
-          '/rooms/spaces/$spaceId/$goalRoomID$queryString',
+          '${PRoutes.course(spaceId)}/$goalRoomID$queryString',
           extra: extra,
         );
         return;
       }
 
       context.go(
-        '/rooms/spaces/$spaceId/$goalRoomID/${goalSubroute.join('/')}$queryString',
+        '${PRoutes.course(spaceId)}/$goalRoomID/${goalSubroute.join('/')}$queryString',
         extra: extra,
       );
       return;
     }
 
     if (goalRoomID == null) {
-      context.go('/rooms$queryString', extra: extra);
+      context.go('${PRoutes.world}$queryString', extra: extra);
       return;
     }
 

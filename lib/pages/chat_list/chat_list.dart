@@ -10,6 +10,7 @@ import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
+import 'package:fluffychat/pangea/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_view.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_preview/activity_session_preview_client_extension.dart';
@@ -122,9 +123,9 @@ class ChatListController extends State<ChatList>
   // void clearActiveSpace() => setState(() {
   //   _activeSpaceId = null;
   // });
-  void clearActiveSpace() => context.go("/rooms");
+  void clearActiveSpace() => context.go(PRoutes.world);
   void setActiveSpace(String spaceId) =>
-      context.go("/rooms/spaces/$spaceId/details");
+      context.go(PRoutes.course(spaceId));
   // Pangea#
 
   void onChatTap(Room room) async {
@@ -203,7 +204,7 @@ class ChatListController extends State<ChatList>
           return;
         case InviteAction.block:
           final userId = inviteEvent?.senderId;
-          context.go('/rooms/settings/security/ignorelist', extra: userId);
+          context.go('/settings/security/ignorelist', extra: userId);
           return;
       }
       if (!mounted) return;
@@ -963,7 +964,7 @@ class ChatListController extends State<ChatList>
   //         room.client.userID!,
   //       );
   //       context.go(
-  //         '/rooms/settings/security/ignorelist',
+  //         '/settings/security/ignorelist',
   //         extra: inviteEvent?.senderId,
   //       );
   //     case ChatContextAction.leave:

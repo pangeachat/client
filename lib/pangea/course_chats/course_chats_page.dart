@@ -444,7 +444,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
             return;
           case InviteAction.block:
             final userId = inviteEvent?.senderId;
-            context.go('/rooms/settings/security/ignorelist', extra: userId);
+            context.go('/settings/security/ignorelist', extra: userId);
             return;
         }
         if (!mounted) return;

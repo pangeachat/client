@@ -15,6 +15,8 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/pangea/navigation/app_section.dart';
+import 'package:fluffychat/pangea/navigation/route_paths.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SpacesNavigationRail extends StatelessWidget {
@@ -55,7 +57,7 @@ class SpacesNavigationRail extends StatelessWidget {
     final membership = room?.membership;
 
     if (!{Membership.invite, Membership.leave}.contains(membership)) {
-      context.go("/rooms/spaces/$roomId/details");
+      context.go(PRoutes.course(roomId));
       return;
     }
 
@@ -71,7 +73,7 @@ class SpacesNavigationRail extends StatelessWidget {
     final joinedRoomId = await handler.handle(context);
     if (joinedRoomId == null) return;
 
-    context.go("/rooms/spaces/$joinedRoomId/details");
+    context.go(PRoutes.course(joinedRoomId));
     return;
   }
   // Pangea#
@@ -79,13 +81,21 @@ class SpacesNavigationRail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final client = Matrix.of(context).client;
-    final isSettings = GoRouter.of(
-      context,
-    ).routeInformationProvider.value.uri.path.startsWith('/rooms/settings');
     // #Pangea
-    final isUserHome = path?.contains('user_home') ?? false;
-    final isAnalytics = path?.contains('analytics') ?? false;
-    final isCourse = path?.contains('course') ?? false;
+    // world_v2: exact section resolution via AppSection — no substring
+    // matching on paths.
+    final section = AppSection.fromUri(
+      GoRouter.of(context).routeInformationProvider.value.uri,
+    );
+    final isSettings = section == AppSection.settings;
+    final isUserHome = section == AppSection.profile;
+    final isAnalytics = section == AppSection.analytics;
+    final isCourse =
+        section == AppSection.courses &&
+        AppSection.activeSpaceId(
+              GoRouter.of(context).routeInformationProvider.value.uri,
+            ) ==
+            null;
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
     // return StreamBuilder(
@@ -130,7 +140,7 @@ class SpacesNavigationRail extends StatelessWidget {
                             isSelected: isUserHome,
                             onTap: () {
                               collapse();
-                              context.go('/rooms/user_home');
+                              context.go(PRoutes.profile);
                             },
                             backgroundColor: Colors.transparent,
                             icon: FutureBuilder<Profile>(
@@ -222,7 +232,7 @@ class SpacesNavigationRail extends StatelessWidget {
                             selectedIcon: const Icon(Icons.forum),
                             onTap: () {
                               collapse();
-                              context.go("/rooms");
+                              context.go(PRoutes.world);
                             },
                             toolTip: L10n.of(context).allChats,
                             unreadBadgeFilter: (room) =>
@@ -249,7 +259,7 @@ class SpacesNavigationRail extends StatelessWidget {
                             isSelected: isCourse,
                             onTap: () {
                               collapse();
-                              context.go('/rooms/course');
+                              context.go(PRoutes.courses);
                             },
                             icon: ClipPath(
                               clipper: MapClipper(),
@@ -357,7 +367,7 @@ class SpacesNavigationRail extends StatelessWidget {
                       // Pangea#
                       isSelected: isSettings,
                       // #Pangea
-                      // onTap: () => context.go('/rooms/settings'),
+                      // onTap: () => context.go(PRoutes.settings),
                       // icon: const Padding(
                       //   padding: EdgeInsets.all(10.0),
                       //   child: Icon(Icons.settings_outlined),
@@ -368,7 +378,7 @@ class SpacesNavigationRail extends StatelessWidget {
                       // ),
                       onTap: () {
                         collapse();
-                        context.go('/rooms/settings');
+                        context.go(PRoutes.settings);
                       },
                       icon: const Icon(Icons.settings_outlined),
                       selectedIcon: const Icon(Icons.settings),

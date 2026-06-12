@@ -230,7 +230,7 @@ void chatContextMenuAction(
         room.client.userID!,
       );
       context.go(
-        '/rooms/settings/security/ignorelist',
+        '/settings/security/ignorelist',
         extra: inviteEvent?.senderId,
       );
     case ChatContextAction.leave:
