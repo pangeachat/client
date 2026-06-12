@@ -14,21 +14,29 @@ class IGCRequestModel with BaseRequestModel {
   final String userId;
   final List<PreviousMessage> prevMessages;
   final List<LLMFeedbackModel<IGCResponseModel>> feedback;
+  final bool? mock;
+  final String? cefr;
+  final String? l1;
+  final String? l2;
 
   @override
-  String get userCefr => MatrixState
-      .pangeaController
-      .userController
-      .profile
-      .userSettings
-      .cefrLevel
-      .string;
+  String get userCefr =>
+      cefr ??
+      MatrixState
+          .pangeaController
+          .userController
+          .profile
+          .userSettings
+          .cefrLevel
+          .string;
 
   @override
-  String get userL1 => MatrixState.pangeaController.userController.userL1Code!;
+  String get userL1 =>
+      l1 ?? MatrixState.pangeaController.userController.userL1Code!;
 
   @override
-  String get userL2 => MatrixState.pangeaController.userController.userL2Code!;
+  String get userL2 =>
+      l2 ?? MatrixState.pangeaController.userController.userL2Code!;
 
   const IGCRequestModel({
     required this.fullText,
@@ -37,6 +45,10 @@ class IGCRequestModel with BaseRequestModel {
     required this.userId,
     required this.prevMessages,
     this.feedback = const [],
+    this.mock,
+    this.cefr,
+    this.l1,
+    this.l2,
   });
 
   /// Creates a copy of this request with optional feedback.
@@ -49,6 +61,7 @@ class IGCRequestModel with BaseRequestModel {
     userId: userId,
     prevMessages: prevMessages,
     feedback: newFeedback,
+    mock: mock,
   );
 
   Map<String, dynamic> toJson() {
@@ -62,6 +75,7 @@ class IGCRequestModel with BaseRequestModel {
       ChoreoConstants.prevMessages: jsonEncode(
         prevMessages.map((x) => x.toJson()).toList(),
       ),
+      if (mock != null) ModelKey.mock: mock,
     };
     if (feedback.isNotEmpty) {
       json[ChoreoConstants.feedback] = feedback.map((f) => f.toJson()).toList();

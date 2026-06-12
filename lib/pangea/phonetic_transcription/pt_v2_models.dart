@@ -50,12 +50,14 @@ class PTRequest {
   final String langCode;
   final String userL1;
   final String userL2;
+  final bool? mock;
 
   const PTRequest({
     required this.surface,
     required this.langCode,
     required this.userL1,
     required this.userL2,
+    this.mock,
   });
 
   factory PTRequest.fromJson(Map<String, dynamic> json) {
@@ -72,6 +74,7 @@ class PTRequest {
     ModelKey.langCode: langCode,
     ModelKey.userL1: userL1,
     ModelKey.userL2: userL2,
+    if (mock != null) ModelKey.mock: mock,
   };
 
   /// Cache key excludes userL2 (doesn't affect pronunciation).

@@ -64,6 +64,7 @@ class ActivitySummaryRequestModel {
   final ActivityRolesModel? roleState;
   final List<ActivitySummaryResultsMessage> activityResults;
   final List<ContentFeedbackModel> contentFeedback;
+  final bool? mock;
 
   /// Calling viewer's L1 from their profile. Drives the language of the
   /// group `summary`; serves as fallback for participants missing from
@@ -77,6 +78,7 @@ class ActivitySummaryRequestModel {
     required this.contentFeedback,
     this.roleState,
     this.langCode,
+    this.mock,
   });
 
   Map<String, dynamic> toJson() {
@@ -84,8 +86,9 @@ class ActivitySummaryRequestModel {
       'activity': activity.toJson(),
       'activity_results': activityResults.map((e) => e.toJson()).toList(),
       'content_feedback': contentFeedback.map((e) => e.toJson()).toList(),
-      'role_state': roleState?.toJson() ?? {},
+      'role_state': roleState?.toJson() ?? {'roles': {}},
       if (langCode != null) 'viewer_l1': langCode,
+      if (mock != null) ModelKey.mock: mock,
     };
   }
 }

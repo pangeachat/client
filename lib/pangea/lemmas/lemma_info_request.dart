@@ -13,6 +13,7 @@ class LemmaInfoRequest {
   final Map<String, dynamic> messageInfo;
 
   List<LemmaInfoResponse> feedback;
+  bool? mock;
 
   LemmaInfoRequest({
     required String partOfSpeech,
@@ -21,6 +22,7 @@ class LemmaInfoRequest {
     required this.lemma,
     required this.messageInfo,
     this.feedback = const [],
+    this.mock,
   }) : partOfSpeech = partOfSpeech.toLowerCase(),
        lemmaLang = lemmaLang.toLowerCase();
 
@@ -32,6 +34,7 @@ class LemmaInfoRequest {
       ModelKey.userL1: userL1,
       'feedback': feedback.map((e) => e.toJson()).toList(),
       'message_info': messageInfo,
+      if (mock != null) ModelKey.mock: mock,
     };
   }
 

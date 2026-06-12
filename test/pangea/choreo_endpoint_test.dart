@@ -1,42 +1,65 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
-import 'package:fluffychat/pangea/authentication/p_login.dart';
-import 'package:fluffychat/pangea/authentication/store_login_method_repo.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/common/network/requests.dart';
-import 'package:fluffychat/pangea/common/network/urls.dart';
-import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
-import 'package:fluffychat/utils/client_manager.dart';
-import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http/http.dart';
-import 'package:integration_test/common.dart' hide Response;
-import 'package:integration_test/integration_test.dart';
-import 'package:matrix/matrix.dart';
 import 'package:http/src/response.dart';
-import 'package:path/path.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../integration_test/users.dart';
+import 'package:fluffychat/pangea/activity_feedback/activity_feedback_request.dart';
+import 'package:fluffychat/pangea/activity_feedback/activity_feedback_response.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_media_enum.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_plan_request.dart';
+import 'package:fluffychat/pangea/activity_summary/activity_summary_request_model.dart';
+import 'package:fluffychat/pangea/activity_summary/activity_summary_response_model.dart';
+import 'package:fluffychat/pangea/choreographer/igc/igc_request_model.dart';
+import 'package:fluffychat/pangea/choreographer/igc/igc_response_model.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
+import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_translation_request.dart';
+import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_translation_response.dart';
+import 'package:fluffychat/pangea/custom_courses/custom_course_request_model.dart';
+import 'package:fluffychat/pangea/custom_courses/custom_course_response_model.dart';
+import 'package:fluffychat/pangea/events/repo/language_detection_request.dart';
+import 'package:fluffychat/pangea/events/repo/language_detection_response.dart';
+import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
+import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_request.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
+import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
+import 'package:fluffychat/pangea/speech_to_text/speech_to_text_request_model.dart';
+import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
+import 'package:fluffychat/pangea/text_to_speech/text_to_speech_request_model.dart';
+import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
+import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
+import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_response.dart';
+import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
+import 'package:fluffychat/pangea/translation/full_text_translation_response_model.dart';
 
-void main() async {
+void main() {
   String authToken = "";
-  String apiKey = "e6fa9fa97031ba0c852efe78457922f278a2fbc109752fe18e465337699e9873";
+  String userID = "";
+  const apiKey =
+      "e6fa9fa97031ba0c852efe78457922f278a2fbc109752fe18e465337699e9873";
+  const choreoApi = "https://api.staging.pangea.chat/choreo";
 
   setUpAll(() {
     return Future(() async {
+      // Load environmental variables
+      dotenv.testLoad(fileInput: File('.env').readAsStringSync());
+      assert(Environment.testUsername != null);
+      assert(Environment.testPassword != null);
+
       // Send login request
-      String url = "https://matrix.staging.pangea.chat/_matrix/client/v3/login";
+      const url = "https://matrix.staging.pangea.chat/_matrix/client/v3/login";
 
       final Map<String, dynamic> reqJSON = {
-        "identifier": {
-          "type": "m.id.user",
-          "user": "anotheraccount", // playwright todo
-        },
-        "password": "aaaaaa", // playwright todo
+        "identifier": {"type": "m.id.user", "user": Environment.testUsername},
+        "password": Environment.testPassword,
         "type": "m.login.password",
       };
 
@@ -47,50 +70,389 @@ void main() async {
         utf8.decode(res.bodyBytes).toString(),
       );
 
-      authToken += json["access_token"];
+      assert(json["access_token"] != null);
+      assert(json["user_id"] != null);
+      authToken = json["access_token"];
+      userID = json["user_id"];
     });
   });
 
-  test("Other test", () async {
-    debugPrint("a1 " + apiKey);
-    debugPrint("a2 " + authToken);
-  });
+  group("Choreo endpoint tests", () {
+    test("Tokenize endpoint test", () async {
+      // Send mock request
+      final Map<String, dynamic> request = TokensRequestModel(
+        fullText: "message",
+        senderL1: "en",
+        senderL2: "es",
+        mock: true,
+      ).toJson();
+      final Requests req = Requests(
+        choreoApiKey: apiKey,
+        accessToken: authToken,
+      );
+      final Response res = await req.post(
+        url: "$choreoApi/tokenize",
+        // url: PApiUrls.tokenize,
+        body: request,
+      );
 
-  test("Tokenize endpoint test", () async {
-    try {
-    // Retrieve mock request json
-    final filePath = 'lib/pangea/tokens/mock_tokenize_request.json';
-    final mockFile = await File(filePath).readAsString();
-    debugPrint("a2 $mockFile");
-    final Map<String, dynamic> reqJSON = jsonDecode(mockFile);
+      assert(res.statusCode == 200);
+      final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+      TokensResponseModel.fromJson(json);
+    });
 
-    // Send mock request
-    String url = "https://api.staging.pangea.chat/choreo/tokenize";
+    test("Language detection endpoint test", () async {
+      // Send mock request
+      final Map<String, dynamic> request = LanguageDetectionRequest(
+        text: 'text',
+        senderl1: 'en',
+        senderl2: 'es',
+        mock: true,
+      ).toJson();
 
-    Request req = Request('post', Uri.parse(url));
+      final Requests req = Requests(
+        choreoApiKey: apiKey,
+        accessToken: authToken,
+      );
+      final Response res = await req.post(
+        url: "$choreoApi/language_detection",
+        body: request,
+      );
 
-    req.headers["Authorization"] = authToken;
-    req.headers["api_key"] = apiKey;
+      // Ensure mock response is valid and compatible with response model
+      assert(res.statusCode == 200);
+      final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+      LanguageDetectionResponse.fromJson(json);
+    });
 
-    // playwright todo
-    
-    final Response res = await req.post(url: url, body: reqJSON);
+    test("Grammar correction endpoint test", () async {
+      try {
+        // Send mock request
+        final Map<String, dynamic> request = IGCRequestModel(
+          fullText: 'llamo',
+          enableIGC: true,
+          enableIT: true,
+          userId: userID,
+          prevMessages: [],
+          mock: true,
+          cefr: 'a1',
+          l1: 'en',
+          l2: 'es',
+        ).toJson();
 
+        final Requests req = Requests(
+          choreoApiKey: apiKey,
+          accessToken: authToken,
+        );
+        final Response res = await req.post(
+          url: "$choreoApi/grammar_v2",
+          body: request,
+        );
 
-    // final Requests req = Requests(
-    //   accessToken: authToken,
-    //   choreoApiKey: apiKey,
-    // );
-    // final Response res = await req.post(url: PApiUrls.tokenize, body: reqJSON);
+        // Ensure mock response is valid and compatible with response model
+        assert(res.statusCode == 200);
+        final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+        IGCResponseModel.fromJson(json);
+      } catch (e) {
+        throw Exception(e.toString());
+      }
+    });
 
-    // // Assert that received response is valid
-    //   final Map<String, dynamic> json = jsonDecode(
-    //     utf8.decode(res.bodyBytes).toString(),
-    //   );
-    //   assert(res.statusCode == 200);
-    //   TokensResponseModel.fromJson(json);
-    } catch (_) {
-      throw Exception();
-    }
+    test("Direct translation endpoint test", () async {
+      // Send mock request
+      final Map<String, dynamic> request = FullTextTranslationRequestModel(
+        text: 'por favor',
+        tgtLang: 'en',
+        userL1: 'en',
+        userL2: 'es',
+        mock: true,
+      ).toJson();
+
+      final Requests req = Requests(
+        choreoApiKey: apiKey,
+        accessToken: authToken,
+      );
+      final Response res = await req.post(
+        url: "$choreoApi/translation/direct",
+        body: request,
+      );
+
+      // Ensure mock response is valid and compatible with response model
+      assert(res.statusCode == 200);
+      final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+      FullTextTranslationResponseModel.fromJson(json);
+    });
+
+    test("Text to speech endpoint test", () async {
+      // Send mock request
+      final Map<String, dynamic> request = TextToSpeechRequestModel(
+        text: '',
+        langCode: '',
+        userL1: '',
+        userL2: '',
+        tokens: [],
+        mock: true,
+      ).toJson();
+
+      final Requests req = Requests(
+        choreoApiKey: apiKey,
+        accessToken: authToken,
+      );
+      final Response res = await req.post(
+        url: "$choreoApi/text_to_speech",
+        body: request,
+      );
+
+      // Ensure mock response is valid and compatible with response model
+      assert(res.statusCode == 200);
+      final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+      TextToSpeechResponseModel.fromJson(json);
+    });
+
+    test("Speech to text endpoint test", () async {
+      // Send mock request
+      final Map<String, dynamic> request = SpeechToTextRequestModel(
+        audioContent: Uint8List(1),
+        config: SpeechToTextAudioConfigModel(
+          encoding: AudioEncodingEnum.amr,
+          userL1: 'en',
+          userL2: 'es',
+        ),
+        mock: true,
+      ).toJson();
+
+      final Requests req = Requests(
+        choreoApiKey: apiKey,
+        accessToken: authToken,
+      );
+      final Response res = await req.post(
+        url: "$choreoApi/speech_to_text",
+        body: request,
+      );
+
+      // Ensure mock response is valid and compatible with response model
+      assert(res.statusCode == 200);
+      final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+      SpeechToTextResponseModel.fromJson(json);
+    });
+
+    test("Phonetic transcription endpoint test", () async {
+      // Send mock request
+      final Map<String, dynamic> request = PTRequest(
+        surface: '行',
+        langCode: 'zh',
+        userL1: 'en',
+        userL2: 'zh',
+        mock: true,
+      ).toJson();
+
+      final Requests req = Requests(
+        choreoApiKey: apiKey,
+        accessToken: authToken,
+      );
+      final Response res = await req.post(
+        url: "$choreoApi/phonetic_transcription_v2",
+        body: request,
+      );
+
+      // Ensure mock response is valid and compatible with response model
+      assert(res.statusCode == 200);
+      final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+      PTResponse.fromJson(json);
+    });
+
+    test("Lemma dictionary endpoint test", () async {
+      // Send mock request
+      final Map<String, dynamic> request = LemmaInfoRequest(
+        lemma: 'ahora',
+        userL1: 'en',
+        lemmaLang: 'es',
+        partOfSpeech: 'adv',
+        messageInfo: {},
+        mock: true,
+      ).toJson();
+
+      final Requests req = Requests(
+        choreoApiKey: apiKey,
+        accessToken: authToken,
+      );
+      final Response res = await req.post(
+        url: "$choreoApi/lemma_definition",
+        body: request,
+      );
+
+      // Ensure mock response is valid and compatible with response model
+      assert(res.statusCode == 200);
+      final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+      LemmaInfoResponse.fromJson(json);
+    });
+
+    test("Activity summary endpoint test", () async {
+      // Send mock request
+      final Map<String, dynamic> request = ActivitySummaryRequestModel(
+        activity: ActivityPlanModel(
+          req: ActivityPlanRequest(
+            topic: '',
+            mode: '',
+            objective: '',
+            media: MediaEnum.nan,
+            cefrLevel: LanguageLevelTypeEnum.a2,
+            languageOfInstructions: 'en',
+            targetLanguage: 'es',
+            numberOfParticipants: 2,
+          ),
+          title: '',
+          learningObjective: '',
+          instructions: '',
+          vocab: [],
+          activityId: '',
+        ),
+        activityResults: [],
+        contentFeedback: [],
+        mock: true,
+      ).toJson();
+
+      final Requests req = Requests(
+        choreoApiKey: apiKey,
+        accessToken: authToken,
+      );
+      final Response res = await req.post(
+        url: "$choreoApi/activity_summary",
+        body: request,
+      );
+
+      // Ensure mock response is valid and compatible with response model
+      assert(res.statusCode == 200);
+      final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+      ActivitySummaryResponseModel.fromJson(json);
+    });
+
+    test("Activity feedback endpoint test", () async {
+      // Send mock request
+      final Map<String, dynamic> request = ActivityFeedbackRequest(
+        activityId: "eb9c0280-f9bd-4552-8ba7-02d6b1376b14",
+        feedbackText: "test",
+        userId: userID,
+        userL1: "en",
+        userL2: "es",
+        mock: true,
+      ).toJson();
+
+      final Requests req = Requests(
+        choreoApiKey: apiKey,
+        accessToken: authToken,
+      );
+      final Response res = await req.post(
+        url: "$choreoApi/activity_plan/feedback",
+        body: request,
+      );
+
+      // Ensure mock response is valid and compatible with response model
+      assert(res.statusCode == 200);
+      final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+      ActivityFeedbackResponse.fromJson(json);
+    });
+
+    test("Token feedback endpoint test", () async {
+      // Send mock request
+      final Map<String, dynamic> request = TokenInfoFeedbackRequest(
+        data: TokenInfoFeedbackRequestData(
+          userId: userID,
+          detectedLanguage: "es",
+          tokens: [],
+          selectedToken: 0,
+          lemmaInfo: LemmaInfoResponse(emoji: [], meaning: ""),
+          wordCardL1: "",
+        ),
+        userFeedback: "",
+        mock: true,
+      ).toJson();
+
+      final Requests req = Requests(
+        choreoApiKey: apiKey,
+        accessToken: authToken,
+      );
+      final Response res = await req.post(
+        url: "$choreoApi/token/feedback_v2",
+        body: request,
+      );
+
+      // Ensure mock response is valid and compatible with response model
+      assert(res.statusCode == 200);
+      final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+      TokenInfoFeedbackResponse.fromJson(json);
+    });
+
+    test("Grammar construct endpoint test", () async {
+      // Send mock request
+      final Map<String, dynamic> request = GrammarConstructsRequest(
+        targetLanguage: "es",
+        userL1: "en",
+        mock: true,
+      ).toJson();
+
+      final Requests req = Requests(
+        choreoApiKey: apiKey,
+        accessToken: authToken,
+      );
+      final Response res = await req.post(
+        url: "$choreoApi/grammar_constructs",
+        body: request,
+      );
+
+      // Ensure mock response is valid and compatible with response model
+      assert(res.statusCode == 200);
+      final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+      GrammarConstructsResponse.fromJson(json);
+    });
+
+    test("Localize topic endpoint test", () async {
+      // Send mock request
+      final Map<String, dynamic> request = TranslateTopicRequest(
+        topicIds: [],
+        l1: "en",
+        mock: true,
+      ).toJson();
+
+      final Requests req = Requests(
+        choreoApiKey: apiKey,
+        accessToken: authToken,
+      );
+      final Response res = await req.post(
+        url: "$choreoApi/topics/localize",
+        body: request,
+      );
+
+      // Ensure mock response is valid and compatible with response model
+      assert(res.statusCode == 200);
+      final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+      TranslateTopicResponse.fromJson(json);
+    });
+
+    test("Custom course endpoint test", () async {
+      // Send mock request
+      final Map<String, dynamic> request = CustomCourseRequestModel(
+        name: "test",
+        languagePair: "English -> Spanish",
+        languageLevel: LanguageLevelTypeEnum.a1,
+        institution: "school",
+        goals: "test",
+        mock: true,
+      ).toJson();
+
+      final Requests req = Requests(
+        choreoApiKey: apiKey,
+        accessToken: authToken,
+      );
+      final Response res = await req.post(
+        url: "$choreoApi/courses/request",
+        body: request,
+      );
+
+      // Ensure mock response is valid and compatible with response model
+      assert(res.statusCode == 200);
+      final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+      CustomCourseResponseModel.fromJson(json);
+    });
   });
 }

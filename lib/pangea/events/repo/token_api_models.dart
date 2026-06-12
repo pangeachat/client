@@ -24,11 +24,14 @@ class TokensRequestModel {
   /// pos/mporph tags and whether lemmas are eligible to marked as "save_vocab=true"
   String senderL2;
 
+  bool? mock;
+
   TokensRequestModel({
     required this.fullText,
     required this.senderL1,
     required this.senderL2,
     this.langCode,
+    this.mock,
   });
 
   Map<String, dynamic> toJson() => {
@@ -36,6 +39,7 @@ class TokensRequestModel {
     ModelKey.userL1: senderL1,
     ModelKey.userL2: senderL2,
     ModelKey.langCode: langCode ?? LanguageKeys.unknownLanguage,
+    if (mock != null) ModelKey.mock: mock,
   };
 
   // override equals and hashcode
