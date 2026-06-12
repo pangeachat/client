@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
 
+import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/subscription/repo/subscription_management_repo.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/change_subscription.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';

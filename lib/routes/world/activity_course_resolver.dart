@@ -1,10 +1,10 @@
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_repo.dart';
-import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_translation_request.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
-import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
+import 'package:fluffychat/features/course_plans/course_topics/course_topic_repo.dart';
+import 'package:fluffychat/features/course_plans/course_topics/course_topic_translation_request.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plans_repo.dart';
+import 'package:fluffychat/features/course_plans/courses/get_localized_courses_request.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Resolves which of the user's joined course spaces an activity belongs

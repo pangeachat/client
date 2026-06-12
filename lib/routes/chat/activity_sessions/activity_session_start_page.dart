@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_feedback_repo.dart';
+import 'package:fluffychat/features/activity_sessions/activity_feedback_request.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/course_plans/course_activities/course_activity_repo.dart';
+import 'package:fluffychat/features/course_plans/course_activities/course_activity_translation_request.dart';
+import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
+import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/activity_feedback/activity_feedback_repo.dart';
-import 'package:fluffychat/pangea/activity_feedback/activity_feedback_request.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
-import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
-import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_request.dart';
-import 'package:fluffychat/pangea/room_summaries/room_summaries_model.dart';
-import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';

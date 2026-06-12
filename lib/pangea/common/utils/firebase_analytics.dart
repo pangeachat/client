@@ -5,12 +5,12 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import 'package:fluffychat/pangea/bot/bot_target_event_name_enum.dart';
+import 'package:fluffychat/features/bot/bot_target_event_name_enum.dart';
+import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
-import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
-import 'package:fluffychat/pangea/tutorials/tutorial_enum.dart';
+import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_buttons.dart';
 import '../../../config/firebase_options.dart';
 
 // PageRoute import

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/languages/language_display_name_postfix_widget.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/languages/language_display_name_postfix_widget.dart';
-import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/routes/courses/course_plan_filter_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 

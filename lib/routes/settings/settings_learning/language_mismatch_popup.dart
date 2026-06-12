@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/bot/utils/bot_style.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/common/widgets/card_header.dart';
-import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 

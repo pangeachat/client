@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/user/user_constants.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
-import 'package:fluffychat/pangea/user/user_constants.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_tiles.dart';
 import 'package:fluffychat/routes/settings/settings_learning/settings_learning.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';

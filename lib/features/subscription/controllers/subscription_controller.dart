@@ -1,0 +1,386 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
+import 'package:collection/collection.dart';
+import 'package:http/http.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+
+import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/subscription/models/base_subscription_info.dart';
+import 'package:fluffychat/features/subscription/models/mobile_subscriptions.dart';
+import 'package:fluffychat/features/subscription/models/web_subscriptions.dart';
+import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
+import 'package:fluffychat/features/subscription/repo/subscription_repo.dart';
+import 'package:fluffychat/features/subscription/utils/subscription_app_id.dart';
+import 'package:fluffychat/features/subscription/widgets/subscription_paywall.dart';
+import 'package:fluffychat/features/user/user_controller.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
+import 'package:fluffychat/pangea/common/network/urls.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+
+enum SubscriptionStatus {
+  loading,
+  subscribed,
+  dimissedPaywall,
+  shouldShowPaywall,
+}
+
+class SubscriptionController with ChangeNotifier {
+  late PangeaController _pangeaController;
+
+  CurrentSubscriptionInfo? currentSubscriptionInfo;
+  AvailableSubscriptionsInfo? availableSubscriptionInfo;
+
+  final ValueNotifier<bool> subscriptionNotifier = ValueNotifier<bool>(false);
+
+  SubscriptionController(PangeaController pangeaController) : super() {
+    _pangeaController = pangeaController;
+  }
+
+  UserController get _userController => _pangeaController.userController;
+  String? get _userID => _pangeaController.matrixState.client.userID;
+
+  bool? get isSubscribed {
+    if (!initCompleter.isCompleted) return null;
+
+    final bool hasSubscription =
+        currentSubscriptionInfo?.currentSubscriptionId != null;
+
+    return hasSubscription || _userController.inTrialWindow();
+  }
+
+  bool _isInitializing = false;
+  Completer<void> initCompleter = Completer<void>();
+
+  Future<void> initialize() async {
+    if (_userID == null || !_pangeaController.matrixState.client.isLogged()) {
+      debugPrint(
+        "Attempted to initalize subscription information with null userId",
+      );
+      return;
+    }
+
+    if (initCompleter.isCompleted) return;
+    if (_isInitializing) {
+      await initCompleter.future;
+      return;
+    }
+    _isInitializing = true;
+    await _initialize();
+    _isInitializing = false;
+    if (!initCompleter.isCompleted) {
+      initCompleter.complete();
+    }
+  }
+
+  Future<void> reinitialize() async {
+    initCompleter = Completer<void>();
+    _isInitializing = false;
+    await initialize();
+  }
+
+  Future<void> _initialize() async {
+    try {
+      await _pangeaController.userController.initCompleter.future;
+
+      availableSubscriptionInfo = AvailableSubscriptionsInfo();
+      await availableSubscriptionInfo!.setAvailableSubscriptions();
+
+      currentSubscriptionInfo = kIsWeb
+          ? WebSubscriptionInfo(
+              userID: _userID!,
+              availableSubscriptionInfo: availableSubscriptionInfo!,
+            )
+          : MobileSubscriptionInfo(
+              userID: _userID!,
+              availableSubscriptionInfo: availableSubscriptionInfo!,
+            );
+
+      await currentSubscriptionInfo!.configure();
+      await currentSubscriptionInfo!.setCurrentSubscription();
+
+      if (currentSubscriptionInfo!.currentSubscriptionId == null &&
+          _pangeaController.userController.inTrialWindow()) {
+        await activateNewUserTrial();
+      }
+
+      if (!kIsWeb) {
+        Purchases.addCustomerInfoUpdateListener((CustomerInfo info) async {
+          final bool? wasSubscribed = isSubscribed;
+          await updateCustomerInfo();
+          if (wasSubscribed == false && isSubscribed == true) {
+            subscriptionNotifier.value = true;
+          }
+        });
+      } else {
+        if (SubscriptionManagementRepo.getBeganWebPayment()) {
+          await SubscriptionManagementRepo.removeBeganWebPayment();
+          if (isSubscribed == true) {
+            subscriptionNotifier.value = true;
+          }
+        }
+      }
+      notifyListeners();
+    } catch (e, s) {
+      debugPrint("Failed to initialize subscription controller");
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "availableSubscriptionInfo": availableSubscriptionInfo?.toJson(
+            validate: false,
+          ),
+        },
+      );
+
+      if (currentSubscriptionInfo?.currentSubscriptionId == null) {
+        currentSubscriptionInfo ??= kIsWeb
+            ? WebSubscriptionInfo(
+                userID: _userID!,
+                availableSubscriptionInfo:
+                    availableSubscriptionInfo ?? AvailableSubscriptionsInfo(),
+              )
+            : MobileSubscriptionInfo(
+                userID: _userID!,
+                availableSubscriptionInfo:
+                    availableSubscriptionInfo ?? AvailableSubscriptionsInfo(),
+              );
+
+        currentSubscriptionInfo!.currentSubscriptionId =
+            AppConfig.errorSubscriptionId;
+      }
+    }
+  }
+
+  Future<void> submitSubscriptionChange(
+    SubscriptionDetails? selectedSubscription,
+    BuildContext context, {
+    bool isPromo = false,
+  }) async {
+    if (selectedSubscription != null) {
+      if (selectedSubscription.isTrial) {
+        try {
+          await activateNewUserTrial();
+        } catch (e) {
+          debugPrint("Failed to initialize trial subscription");
+        }
+        return;
+      }
+
+      if (kIsWeb) {
+        if (selectedSubscription.duration == null) {
+          ErrorHandler.logError(
+            m: "Tried to subscribe to web SubscriptionDetails with Null duration",
+            s: StackTrace.current,
+            data: {"selectedSubscription": selectedSubscription.toJson()},
+          );
+          return;
+        }
+        final String paymentLink = await getPaymentLink(
+          selectedSubscription.duration!,
+          isPromo: isPromo,
+        );
+        await SubscriptionManagementRepo.setBeganWebPayment();
+        launchUrlString(paymentLink, webOnlyWindowName: "_self");
+        return;
+      }
+      if (selectedSubscription.package == null) {
+        final offerings = await Purchases.getOfferings();
+        ErrorHandler.logError(
+          m: "Tried to subscribe to SubscriptionDetails with Null revenuecat Package",
+          s: StackTrace.current,
+          data: {
+            "selectedSubscription": selectedSubscription.toJson(),
+            "offerings": offerings.toJson(),
+          },
+        );
+        return;
+      }
+
+      GoogleAnalytics.beginPurchaseSubscription(selectedSubscription, context);
+      await Purchases.purchasePackage(selectedSubscription.package!);
+      GoogleAnalytics.updateUserSubscriptionStatus(true);
+    }
+  }
+
+  Future<void> activateNewUserTrial() async {
+    if (await SubscriptionRepo.activateFreeTrial()) {
+      await updateCustomerInfo();
+    }
+  }
+
+  Future<void> updateCustomerInfo() async {
+    await currentSubscriptionInfo?.setCurrentSubscription();
+    notifyListeners();
+  }
+
+  /// if the user is subscribed, returns subscribed
+  /// if the user has dismissed the paywall, returns dismissed
+  SubscriptionStatus get subscriptionStatus {
+    if (isSubscribed == null) {
+      return SubscriptionStatus.loading;
+    }
+
+    return isSubscribed!
+        ? SubscriptionStatus.subscribed
+        : shouldShowPaywall
+        ? SubscriptionStatus.shouldShowPaywall
+        : SubscriptionStatus.dimissedPaywall;
+  }
+
+  /// whether or not the paywall should be shown
+  bool get shouldShowPaywall {
+    final dismissed = SubscriptionManagementRepo.getDismissedPaywall();
+    return initCompleter.isCompleted && isSubscribed == false && !dismissed;
+  }
+
+  Future<void> showPaywall(BuildContext context) async {
+    try {
+      if (!initCompleter.isCompleted) {
+        await initialize();
+      }
+      if (availableSubscriptionInfo?.availableSubscriptions.isEmpty ?? true) {
+        return;
+      }
+      if (isSubscribed == null || isSubscribed!) return;
+
+      MatrixState.pAnyState.closeAllOverlays();
+      await showModalBottomSheet(
+        isScrollControlled: true,
+        useRootNavigator: !PlatformInfos.isMobile,
+        clipBehavior: Clip.hardEdge,
+        context: context,
+        constraints: BoxConstraints(
+          maxHeight: PlatformInfos.isMobile
+              ? MediaQuery.heightOf(context) - 50
+              : 600,
+        ),
+        builder: (_) {
+          return SubscriptionPaywall(pangeaController: _pangeaController);
+        },
+      );
+      await SubscriptionManagementRepo.setDismissedPaywall();
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "availableSubscriptionInfo": availableSubscriptionInfo?.toJson(
+            validate: false,
+          ),
+        },
+      );
+    }
+  }
+
+  Future<String> getPaymentLink(
+    SubscriptionDuration duration, {
+    bool isPromo = false,
+  }) async {
+    final Requests req = Requests(
+      choreoApiKey: Environment.choreoApiKey,
+      accessToken: _pangeaController.userController.accessToken,
+    );
+    final String reqUrl = Uri.encodeFull(
+      "${PApiUrls.paymentLink}?duration=${duration.value}&redeem=$isPromo",
+    );
+    final Response res = await req.get(url: reqUrl);
+    final json = jsonDecode(res.body);
+    String paymentLink = json["link"]["url"];
+
+    final String? email = await _userController.userEmail;
+    if (email != null) {
+      paymentLink += "?prefilled_email=${Uri.encodeComponent(email)}";
+    }
+    return paymentLink;
+  }
+
+  String? get defaultManagementURL => currentSubscriptionInfo
+      ?.currentSubscription
+      ?.defaultManagementURL(availableSubscriptionInfo?.appIds);
+}
+
+enum SubscriptionDuration { month, year }
+
+extension SubscriptionDurationExtension on SubscriptionDuration {
+  String get value => this == SubscriptionDuration.month ? "month" : "year";
+}
+
+class SubscriptionDetails {
+  final double price;
+  final SubscriptionDuration? duration;
+  final String? appId;
+  final String id;
+  final bool isVisible;
+  Package? package;
+  String? localizedPrice;
+
+  SubscriptionDetails({
+    required this.price,
+    required this.id,
+    this.duration,
+    this.package,
+    this.appId,
+    this.isVisible = true,
+  });
+
+  bool get isTrial => appId == "trial";
+
+  String displayPrice(BuildContext context) => isTrial || price <= 0
+      ? L10n.of(context).freeTrial
+      : localizedPrice ?? "\$${price.toStringAsFixed(2)}";
+
+  String displayName(BuildContext context) {
+    if (isTrial) {
+      return L10n.of(context).oneWeekTrial;
+    }
+    switch (duration) {
+      case (SubscriptionDuration.month):
+        return L10n.of(context).monthlySubscription;
+      case (SubscriptionDuration.year):
+        return L10n.of(context).yearlySubscription;
+      default:
+        return L10n.of(context).defaultSubscription;
+    }
+  }
+
+  String? defaultManagementURL(SubscriptionAppIds? appIds) {
+    return appId == appIds?.androidId
+        ? AppConfig.googlePlayMangementUrl
+        : appId == appIds?.appleId
+        ? AppConfig.appleMangementUrl
+        : Environment.stripeManagementUrl;
+  }
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['price'] = price;
+    data['id'] = id;
+    data['duration'] = duration?.value;
+    data['appId'] = appId;
+    data['is_visible'] = isVisible;
+    return data;
+  }
+
+  factory SubscriptionDetails.fromJson(Map<String, dynamic> json) {
+    return SubscriptionDetails(
+      price: json['price'],
+      duration: SubscriptionDuration.values.firstWhereOrNull(
+        (duration) => duration.value == json['duration'],
+      ),
+      id: json['id'],
+      appId: json['appId'],
+      isVisible: json['is_visible'] ?? true,
+    );
+  }
+}

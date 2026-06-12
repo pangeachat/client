@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/pangea/bot/bot_client_extension.dart';
-import 'package:fluffychat/pangea/bot/bot_options_model.dart';
-import 'package:fluffychat/pangea/user/user_model.dart';
+import 'package:fluffychat/features/bot/bot_client_extension.dart';
+import 'package:fluffychat/features/bot/bot_options_model.dart';
+import 'package:fluffychat/features/user/user_model.dart';
 import 'package:fluffychat/routes/settings/settings_learning/gender_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 

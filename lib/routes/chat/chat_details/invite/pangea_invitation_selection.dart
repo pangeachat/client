@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
+import 'package:fluffychat/features/user/user_search_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
-import 'package:fluffychat/pangea/user/user_search_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection_view.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';

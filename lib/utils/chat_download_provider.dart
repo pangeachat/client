@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/download/download_dialog.dart';
+import 'package:fluffychat/features/download/download_room_extension.dart';
+import 'package:fluffychat/features/download/download_type_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/download/download_dialog.dart';
-import 'package:fluffychat/pangea/download/download_room_extension.dart';
-import 'package:fluffychat/pangea/download/download_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 mixin ChatDownloadProvider {

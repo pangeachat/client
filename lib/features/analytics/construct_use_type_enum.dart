@@ -1,0 +1,538 @@
+// ignore_for_file: deprecated_member_use_from_same_package
+
+import 'package:flutter/material.dart';
+
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_analytics/space_analytics_summary_enum.dart';
+import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_type_enum.dart';
+
+enum ConstructUseTypeEnum {
+  /// produced in chat by user, igc was run, and we've judged it to be a correct use
+  wa,
+
+  /// produced during IGC
+  @Deprecated(
+    'Use corIGC/incIGC/ignIGC instead. Kept for backward compat with stored events.',
+  )
+  ga,
+
+  /// produced during IT
+  @Deprecated(
+    'Use corIt/incIt/ignIt instead. Kept for backward compat with stored events.',
+  )
+  ta,
+
+  /// produced in chat by user and igc was not run
+  unk,
+
+  /// produced in voice message
+  pvm,
+
+  /// interactive translation activity
+  corIt,
+  ignIt,
+  incIt,
+
+  /// interactive grammar checking activity
+  corIGC,
+  incIGC,
+  ignIGC,
+
+  /// word meaning practice exercise
+  corPA,
+  ignPA,
+  incPA,
+
+  /// applies to target lemma in word-focus listening activity
+  corWL,
+  incWL,
+  ignWL,
+
+  /// applies to the form of the lemma in a hidden word listening activity
+  corHWL,
+  incHWL,
+  ignHWL,
+
+  /// lemma id activity
+  corL,
+  incL,
+  ignL,
+
+  /// morph id activity
+  corM,
+  incM,
+  ignM,
+
+  /// emoji activity
+  /// No correct/incorrect/ignored distinction is made
+  /// User can select any emoji
+  em,
+
+  /// message meaning activity
+  corMM,
+  incMM,
+  ignMM,
+
+  /// lemma collected by clicking on it
+  click,
+
+  /// Bonus XP, ignored by level analytics page
+  bonus,
+
+  /// not defined, likely a new construct introduced by choreo and not yet classified by an old version of the client
+  nan,
+
+  // vocab lemma definition activity
+  corLM,
+  incLM,
+
+  // vocab lemma audio activity
+  corLA,
+  incLA,
+
+  // grammar category activity
+  corGC,
+  incGC,
+
+  // grammar error activity
+  corGE,
+  incGE,
+}
+
+extension ConstructUseTypeExtension on ConstructUseTypeEnum {
+  String get string => toString().split('.').last;
+
+  String description(BuildContext context) {
+    switch (this) {
+      case ConstructUseTypeEnum.wa:
+        return L10n.of(context).constructUseWaDesc;
+      case ConstructUseTypeEnum.ga:
+        return L10n.of(context).constructUseGaDesc;
+      case ConstructUseTypeEnum.ta:
+        return L10n.of(context).constructUseTaDesc;
+      case ConstructUseTypeEnum.unk:
+        return L10n.of(context).constructUseUnkDesc;
+      case ConstructUseTypeEnum.corIt:
+        return L10n.of(context).constructUseCorITDesc;
+      case ConstructUseTypeEnum.ignIt:
+        return L10n.of(context).constructUseIgnITDesc;
+      case ConstructUseTypeEnum.incIt:
+        return L10n.of(context).constructUseIncITDesc;
+      case ConstructUseTypeEnum.ignIGC:
+        return L10n.of(context).constructUseIgnIGCDesc;
+      case ConstructUseTypeEnum.corIGC:
+        return L10n.of(context).constructUseCorIGCDesc;
+      case ConstructUseTypeEnum.incIGC:
+        return L10n.of(context).constructUseIncIGCDesc;
+      case ConstructUseTypeEnum.corPA:
+        return L10n.of(context).constructUseCorPADesc;
+      case ConstructUseTypeEnum.ignPA:
+        return L10n.of(context).constructUseIgnPADesc;
+      case ConstructUseTypeEnum.incPA:
+        return L10n.of(context).constructUseIncPADesc;
+      case ConstructUseTypeEnum.corWL:
+        return L10n.of(context).constructUseCorWLDesc;
+      case ConstructUseTypeEnum.incWL:
+        return L10n.of(context).constructUseIncWLDesc;
+      case ConstructUseTypeEnum.ignWL:
+        return L10n.of(context).constructUseIngWLDesc;
+      case ConstructUseTypeEnum.corHWL:
+        return L10n.of(context).constructUseCorHWLDesc;
+      case ConstructUseTypeEnum.incHWL:
+        return L10n.of(context).constructUseIncHWLDesc;
+      case ConstructUseTypeEnum.ignHWL:
+        return L10n.of(context).constructUseIgnHWLDesc;
+      case ConstructUseTypeEnum.corL:
+        return L10n.of(context).constructUseCorLDesc;
+      case ConstructUseTypeEnum.incL:
+        return L10n.of(context).constructUseIncLDesc;
+      case ConstructUseTypeEnum.ignL:
+        return L10n.of(context).constructUseIgnLDesc;
+      case ConstructUseTypeEnum.corM:
+        return L10n.of(context).constructUseCorMDesc;
+      case ConstructUseTypeEnum.incM:
+        return L10n.of(context).constructUseIncMDesc;
+      case ConstructUseTypeEnum.ignM:
+        return L10n.of(context).constructUseIgnMDesc;
+      case ConstructUseTypeEnum.em:
+        return L10n.of(context).constructUseEmojiDesc;
+      case ConstructUseTypeEnum.pvm:
+        return L10n.of(context).constructUsePvmDesc;
+      case ConstructUseTypeEnum.corMM:
+        return L10n.of(context).constructUseCorMmDesc;
+      case ConstructUseTypeEnum.incMM:
+        return L10n.of(context).constructUseIncMmDesc;
+      case ConstructUseTypeEnum.ignMM:
+        return L10n.of(context).constructUseIgnMmDesc;
+      case ConstructUseTypeEnum.click:
+        return L10n.of(context).constructUseCollected;
+      case ConstructUseTypeEnum.bonus:
+        return L10n.of(context).constructUseBonus;
+      case ConstructUseTypeEnum.nan:
+        return L10n.of(context).constructUseNanDesc;
+      case ConstructUseTypeEnum.corLM:
+        return L10n.of(context).constructUseCorLMDesc;
+      case ConstructUseTypeEnum.incLM:
+        return L10n.of(context).constructUseIncLMDesc;
+      case ConstructUseTypeEnum.corLA:
+        return L10n.of(context).constructUseCorLADesc;
+      case ConstructUseTypeEnum.incLA:
+        return L10n.of(context).constructUseIncLADesc;
+      case ConstructUseTypeEnum.corGC:
+        return L10n.of(context).constructUseCorGCDesc;
+      case ConstructUseTypeEnum.incGC:
+        return L10n.of(context).constructUseIncGCDesc;
+      case ConstructUseTypeEnum.corGE:
+        return L10n.of(context).constructUseCorGEDesc;
+      case ConstructUseTypeEnum.incGE:
+        return L10n.of(context).constructUseIncGEDesc;
+    }
+  }
+
+  IconData get icon {
+    switch (this) {
+      case ConstructUseTypeEnum.wa:
+        return Icons.thumb_up_sharp;
+      case ConstructUseTypeEnum.corIt:
+      case ConstructUseTypeEnum.incIt:
+      case ConstructUseTypeEnum.ignIt:
+      case ConstructUseTypeEnum.ta:
+        return Icons.translate;
+      case ConstructUseTypeEnum.ignIGC:
+      case ConstructUseTypeEnum.incIGC:
+      case ConstructUseTypeEnum.corIGC:
+      case ConstructUseTypeEnum.ga:
+        return Icons.spellcheck;
+      case ConstructUseTypeEnum.corPA:
+      case ConstructUseTypeEnum.incPA:
+      case ConstructUseTypeEnum.ignPA:
+      case ConstructUseTypeEnum.corLM:
+      case ConstructUseTypeEnum.incLM:
+        return PracticeExerciseTypeEnum.wordMeaning.icon;
+      case ConstructUseTypeEnum.ignWL:
+      case ConstructUseTypeEnum.incWL:
+      case ConstructUseTypeEnum.corWL:
+      case ConstructUseTypeEnum.corLA:
+      case ConstructUseTypeEnum.incLA:
+        return PracticeExerciseTypeEnum.wordFocusListening.icon;
+      case ConstructUseTypeEnum.incHWL:
+      case ConstructUseTypeEnum.ignHWL:
+      case ConstructUseTypeEnum.corHWL:
+        return PracticeExerciseTypeEnum.hiddenWordListening.icon;
+      case ConstructUseTypeEnum.corL:
+      case ConstructUseTypeEnum.incL:
+      case ConstructUseTypeEnum.ignL:
+        return PracticeExerciseTypeEnum.lemmaId.icon;
+      case ConstructUseTypeEnum.corM:
+      case ConstructUseTypeEnum.incM:
+      case ConstructUseTypeEnum.ignM:
+      case ConstructUseTypeEnum.corGC:
+      case ConstructUseTypeEnum.incGC:
+      case ConstructUseTypeEnum.corGE:
+      case ConstructUseTypeEnum.incGE:
+        return PracticeExerciseTypeEnum.morphId.icon;
+      case ConstructUseTypeEnum.em:
+        return PracticeExerciseTypeEnum.emoji.icon;
+      case ConstructUseTypeEnum.corMM:
+      case ConstructUseTypeEnum.incMM:
+      case ConstructUseTypeEnum.ignMM:
+        return PracticeExerciseTypeEnum.messageMeaning.icon;
+      case ConstructUseTypeEnum.pvm:
+        return Icons.mic;
+      case ConstructUseTypeEnum.unk:
+      case ConstructUseTypeEnum.nan:
+        return Icons.help;
+      case ConstructUseTypeEnum.click:
+        return Icons.format_color_text;
+      case ConstructUseTypeEnum.bonus:
+        return Icons.star;
+    }
+  }
+
+  /// Returns the point value for the construct use type
+  /// This is used to calculate the both the total points for a user and per construct
+  /// Users get slightly negative points for incorrect uses to encourage them to be more careful
+  /// They get the most points for direct uses without help.
+  /// They get a small amount of points for correct uses in interactions.
+  /// Practice exercises get a moderate amount of points.
+  int get pointValue {
+    switch (this) {
+      case ConstructUseTypeEnum.corPA:
+      case ConstructUseTypeEnum.corWL:
+      case ConstructUseTypeEnum.corM:
+      case ConstructUseTypeEnum.corLM:
+      case ConstructUseTypeEnum.corLA:
+      case ConstructUseTypeEnum.corGC:
+      case ConstructUseTypeEnum.corGE:
+        return 5;
+
+      case ConstructUseTypeEnum.pvm:
+        return 4;
+
+      case ConstructUseTypeEnum.wa:
+      case ConstructUseTypeEnum.corHWL:
+      case ConstructUseTypeEnum.em:
+        return 3;
+
+      case ConstructUseTypeEnum.corIGC:
+      case ConstructUseTypeEnum.corL:
+      case ConstructUseTypeEnum.click:
+        return 2;
+
+      case ConstructUseTypeEnum.corIt:
+      case ConstructUseTypeEnum.corMM:
+      case ConstructUseTypeEnum.bonus:
+        return 1;
+
+      case ConstructUseTypeEnum.ignIt:
+      case ConstructUseTypeEnum.ignIGC:
+      case ConstructUseTypeEnum.ignPA:
+      case ConstructUseTypeEnum.ignWL:
+      case ConstructUseTypeEnum.ignHWL:
+      case ConstructUseTypeEnum.ignL:
+      case ConstructUseTypeEnum.ignM:
+      case ConstructUseTypeEnum.ignMM:
+      case ConstructUseTypeEnum.unk:
+      case ConstructUseTypeEnum.nan:
+      case ConstructUseTypeEnum.ga:
+      case ConstructUseTypeEnum.ta:
+        return 0;
+
+      case ConstructUseTypeEnum.incMM:
+      case ConstructUseTypeEnum.incIt:
+      case ConstructUseTypeEnum.incIGC:
+      case ConstructUseTypeEnum.incM:
+      case ConstructUseTypeEnum.incLM:
+      case ConstructUseTypeEnum.incLA:
+      case ConstructUseTypeEnum.incGC:
+      case ConstructUseTypeEnum.incGE:
+        return -1;
+
+      case ConstructUseTypeEnum.incPA:
+      case ConstructUseTypeEnum.incWL:
+      case ConstructUseTypeEnum.incHWL:
+      case ConstructUseTypeEnum.incL:
+        return -2;
+    }
+  }
+
+  bool get sentByUser {
+    switch (this) {
+      case ConstructUseTypeEnum.wa:
+      case ConstructUseTypeEnum.ga:
+      case ConstructUseTypeEnum.ta:
+      case ConstructUseTypeEnum.unk:
+      case ConstructUseTypeEnum.corIt:
+      case ConstructUseTypeEnum.ignIt:
+      case ConstructUseTypeEnum.incIt:
+      case ConstructUseTypeEnum.corIGC:
+      case ConstructUseTypeEnum.incIGC:
+      case ConstructUseTypeEnum.ignIGC:
+      case ConstructUseTypeEnum.pvm:
+        return true;
+
+      case ConstructUseTypeEnum.corPA:
+      case ConstructUseTypeEnum.ignPA:
+      case ConstructUseTypeEnum.incPA:
+      case ConstructUseTypeEnum.corWL:
+      case ConstructUseTypeEnum.incWL:
+      case ConstructUseTypeEnum.ignWL:
+      case ConstructUseTypeEnum.corHWL:
+      case ConstructUseTypeEnum.incHWL:
+      case ConstructUseTypeEnum.ignHWL:
+      case ConstructUseTypeEnum.corL:
+      case ConstructUseTypeEnum.incL:
+      case ConstructUseTypeEnum.ignL:
+      case ConstructUseTypeEnum.corM:
+      case ConstructUseTypeEnum.incM:
+      case ConstructUseTypeEnum.ignM:
+      case ConstructUseTypeEnum.corMM:
+      case ConstructUseTypeEnum.incMM:
+      case ConstructUseTypeEnum.ignMM:
+      case ConstructUseTypeEnum.em:
+      case ConstructUseTypeEnum.click:
+      case ConstructUseTypeEnum.nan:
+      case ConstructUseTypeEnum.corLM:
+      case ConstructUseTypeEnum.incLM:
+      case ConstructUseTypeEnum.corLA:
+      case ConstructUseTypeEnum.incLA:
+      case ConstructUseTypeEnum.bonus:
+      case ConstructUseTypeEnum.corGC:
+      case ConstructUseTypeEnum.incGC:
+      case ConstructUseTypeEnum.corGE:
+      case ConstructUseTypeEnum.incGE:
+        return false;
+    }
+  }
+
+  /// Categorize construct use types as writing, reading, speaking, hearing, and other
+  LearningSkillsEnum get skillsEnumType {
+    switch (this) {
+      case ConstructUseTypeEnum.wa:
+      case ConstructUseTypeEnum.ga:
+      case ConstructUseTypeEnum.ta:
+      case ConstructUseTypeEnum.unk:
+      case ConstructUseTypeEnum.corIt:
+      case ConstructUseTypeEnum.ignIt:
+      case ConstructUseTypeEnum.incIt:
+      case ConstructUseTypeEnum.corIGC:
+      case ConstructUseTypeEnum.ignIGC:
+      case ConstructUseTypeEnum.incIGC:
+        return LearningSkillsEnum.writing;
+      case ConstructUseTypeEnum.corWL:
+      case ConstructUseTypeEnum.ignWL:
+      case ConstructUseTypeEnum.incWL:
+      case ConstructUseTypeEnum.corHWL:
+      case ConstructUseTypeEnum.ignHWL:
+      case ConstructUseTypeEnum.incHWL:
+      case ConstructUseTypeEnum.corLA:
+      case ConstructUseTypeEnum.incLA:
+        return LearningSkillsEnum.hearing;
+      case ConstructUseTypeEnum.corPA:
+      case ConstructUseTypeEnum.ignPA:
+      case ConstructUseTypeEnum.incPA:
+      case ConstructUseTypeEnum.corL:
+      case ConstructUseTypeEnum.ignL:
+      case ConstructUseTypeEnum.incL:
+      case ConstructUseTypeEnum.corM:
+      case ConstructUseTypeEnum.ignM:
+      case ConstructUseTypeEnum.incM:
+      case ConstructUseTypeEnum.corMM:
+      case ConstructUseTypeEnum.incMM:
+      case ConstructUseTypeEnum.ignMM:
+      case ConstructUseTypeEnum.em:
+      case ConstructUseTypeEnum.click:
+      case ConstructUseTypeEnum.corLM:
+      case ConstructUseTypeEnum.incLM:
+      case ConstructUseTypeEnum.corGC:
+      case ConstructUseTypeEnum.incGC:
+      case ConstructUseTypeEnum.corGE:
+      case ConstructUseTypeEnum.incGE:
+        return LearningSkillsEnum.reading;
+      case ConstructUseTypeEnum.pvm:
+        return LearningSkillsEnum.speaking;
+      case ConstructUseTypeEnum.bonus:
+      case ConstructUseTypeEnum.nan:
+        return LearningSkillsEnum.other;
+    }
+  }
+
+  SpaceAnalyticsSummaryEnum? get summaryEnumType {
+    switch (this) {
+      case ConstructUseTypeEnum.wa:
+      case ConstructUseTypeEnum.ga:
+      case ConstructUseTypeEnum.ta:
+      case ConstructUseTypeEnum.unk:
+      case ConstructUseTypeEnum.pvm:
+        return SpaceAnalyticsSummaryEnum.numWordsTyped;
+
+      case ConstructUseTypeEnum.corIt:
+      case ConstructUseTypeEnum.corPA:
+      case ConstructUseTypeEnum.corIGC:
+      case ConstructUseTypeEnum.corWL:
+      case ConstructUseTypeEnum.corHWL:
+      case ConstructUseTypeEnum.corL:
+      case ConstructUseTypeEnum.corM:
+      case ConstructUseTypeEnum.em:
+      case ConstructUseTypeEnum.corMM:
+      case ConstructUseTypeEnum.corLM:
+      case ConstructUseTypeEnum.corLA:
+      case ConstructUseTypeEnum.corGC:
+      case ConstructUseTypeEnum.corGE:
+        return SpaceAnalyticsSummaryEnum.numChoicesCorrect;
+
+      case ConstructUseTypeEnum.incIt:
+      case ConstructUseTypeEnum.incIGC:
+      case ConstructUseTypeEnum.incPA:
+      case ConstructUseTypeEnum.incWL:
+      case ConstructUseTypeEnum.incHWL:
+      case ConstructUseTypeEnum.incL:
+      case ConstructUseTypeEnum.incM:
+      case ConstructUseTypeEnum.incMM:
+      case ConstructUseTypeEnum.incLM:
+      case ConstructUseTypeEnum.incLA:
+      case ConstructUseTypeEnum.incGC:
+      case ConstructUseTypeEnum.incGE:
+        return SpaceAnalyticsSummaryEnum.numChoicesIncorrect;
+
+      case ConstructUseTypeEnum.ignIt:
+      case ConstructUseTypeEnum.ignPA:
+      case ConstructUseTypeEnum.ignIGC:
+      case ConstructUseTypeEnum.ignWL:
+      case ConstructUseTypeEnum.ignHWL:
+      case ConstructUseTypeEnum.ignL:
+      case ConstructUseTypeEnum.ignM:
+      case ConstructUseTypeEnum.ignMM:
+      case ConstructUseTypeEnum.click:
+      case ConstructUseTypeEnum.bonus:
+      case ConstructUseTypeEnum.nan:
+        return null;
+    }
+  }
+
+  /// Whether this use type represents direct chat production.
+  bool get isChatUse {
+    switch (this) {
+      case ConstructUseTypeEnum.wa:
+      case ConstructUseTypeEnum.ga:
+      case ConstructUseTypeEnum.ta:
+      case ConstructUseTypeEnum.corIt:
+      case ConstructUseTypeEnum.incIt:
+      case ConstructUseTypeEnum.ignIt:
+      case ConstructUseTypeEnum.corIGC:
+      case ConstructUseTypeEnum.incIGC:
+      case ConstructUseTypeEnum.ignIGC:
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  /// Whether this chat use involved assistance (IGC or IT).
+  bool get isAssistedChatUse {
+    switch (this) {
+      case ConstructUseTypeEnum.ga:
+      case ConstructUseTypeEnum.ta:
+      case ConstructUseTypeEnum.corIt:
+      case ConstructUseTypeEnum.incIt:
+      case ConstructUseTypeEnum.ignIt:
+      case ConstructUseTypeEnum.corIGC:
+      case ConstructUseTypeEnum.incIGC:
+      case ConstructUseTypeEnum.ignIGC:
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  /// Whether this is an incorrect answer in any practice exercise.
+  bool get isIncorrectPractice {
+    switch (this) {
+      case ConstructUseTypeEnum.incPA:
+      case ConstructUseTypeEnum.incWL:
+      case ConstructUseTypeEnum.incHWL:
+      case ConstructUseTypeEnum.incL:
+      case ConstructUseTypeEnum.incM:
+      case ConstructUseTypeEnum.incMM:
+      case ConstructUseTypeEnum.incIt:
+      case ConstructUseTypeEnum.incIGC:
+      case ConstructUseTypeEnum.incLM:
+      case ConstructUseTypeEnum.incLA:
+      case ConstructUseTypeEnum.incGC:
+      case ConstructUseTypeEnum.incGE:
+        return true;
+      default:
+        return false;
+    }
+  }
+}
+
+class ConstructUseTypeUtil {
+  static ConstructUseTypeEnum fromString(String value) {
+    return ConstructUseTypeEnum.values.firstWhere(
+      (e) => e.string == value,
+      orElse: () => ConstructUseTypeEnum.nan,
+    );
+  }
+}

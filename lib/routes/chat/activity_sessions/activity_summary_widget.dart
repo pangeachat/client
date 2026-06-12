@@ -1,0 +1,180 @@
+// ignore_for_file: implementation_imports
+
+import 'dart:math';
+
+import 'package:flutter/material.dart';
+
+import 'package:matrix/matrix.dart';
+
+import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_list.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
+import 'package:fluffychat/widgets/url_image_widget.dart';
+
+class ActivitySummary extends StatelessWidget {
+  final ActivityPlanModel activity;
+  final Room? room;
+  final Room? course;
+  final Map<String, ActivityRoleModel> assignedRoles;
+
+  final bool showInstructions;
+  final VoidCallback toggleInstructions;
+
+  final Function(String)? onTapParticipant;
+  final bool Function(String)? canSelectParticipant;
+  final bool Function(String)? isParticipantSelected;
+  final bool Function(String)? isParticipantShimmering;
+  final double Function(ActivityRoleModel?)? getParticipantOpacity;
+
+  final ValueNotifier<Set<String>>? usedVocab;
+
+  final bool inChat;
+
+  const ActivitySummary({
+    super.key,
+    required this.activity,
+    required this.showInstructions,
+    required this.toggleInstructions,
+    required this.assignedRoles,
+    this.usedVocab,
+    this.onTapParticipant,
+    this.canSelectParticipant,
+    this.isParticipantSelected,
+    this.isParticipantShimmering,
+    this.getParticipantOpacity,
+    this.room,
+    this.course,
+    this.inChat = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Center(
+      child: Container(
+        padding: const EdgeInsets.all(12.0),
+        constraints: const BoxConstraints(
+          maxWidth: FluffyThemes.columnWidth * 1.5,
+        ),
+        child: Column(
+          spacing: 4.0,
+          children: [
+            (!inChat || !AppConfig.useActivityImageAsChatBackground)
+                ? LayoutBuilder(
+                    builder: (context, constraints) {
+                      return ImageByUrl(
+                        imageUrl: activity.imageURL,
+                        width: min(
+                          constraints.maxWidth,
+                          MediaQuery.sizeOf(context).height * 0.5,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      );
+                    },
+                  )
+                : const SizedBox.shrink(),
+            ActivityParticipantList(
+              activity: activity,
+              room: room,
+              assignedRoles: assignedRoles,
+              course: course,
+              onTap: onTapParticipant,
+              canSelect: canSelectParticipant,
+              isSelected: isParticipantSelected,
+              isShimmering: isParticipantShimmering,
+              getOpacity: getParticipantOpacity,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: theme.colorScheme.surface.withAlpha(180),
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: .start,
+                spacing: 16.0,
+                children: [
+                  Text(
+                    activity.description,
+                    style: TextStyle(fontSize: AppConfig.messageFontSize),
+                  ),
+                  const Divider(height: 1),
+                  ActivityVocabWidget(
+                    key: ValueKey("activity-summary-${activity.activityId}"),
+                    vocab: activity.vocab,
+                    langCode: activity.req.targetLanguage,
+                    targetId: "activity-summary-vocab",
+                    activityLangCode: activity.req.targetLanguage,
+                    usedVocab: usedVocab,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class InlineEllipsisText extends StatelessWidget {
+  final String text;
+  final int? maxLines;
+  final TextStyle? style;
+  final WidgetSpan trailing;
+  final double trailingWidth;
+
+  const InlineEllipsisText({
+    super.key,
+    required this.text,
+    required this.trailing,
+    required this.trailingWidth,
+    this.maxLines,
+    this.style,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final effectiveStyle = style ?? DefaultTextStyle.of(context).style;
+    final span = TextSpan(text: text, style: effectiveStyle);
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final tp = TextPainter(
+          text: span,
+          maxLines: maxLines,
+          textDirection: TextDirection.ltr,
+          ellipsis: '…',
+        );
+
+        tp.layout(maxWidth: constraints.maxWidth);
+        String truncated = text;
+        if (tp.didExceedMaxLines && maxLines != null) {
+          // Find cutoff point where text fits
+          final pos = tp.getPositionForOffset(
+            Offset(
+              constraints.maxWidth - trailingWidth,
+              tp.preferredLineHeight * maxLines!,
+            ),
+          );
+          final endIndex = tp.getOffsetBefore(pos.offset) ?? text.length;
+          truncated = '${text.substring(0, endIndex).trimRight()}…';
+        }
+
+        tp.dispose();
+        return RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(text: truncated, style: effectiveStyle),
+              trailing, // always visible
+            ],
+          ),
+          maxLines: maxLines,
+          overflow: TextOverflow.clip, // prevent extra wrapping
+        );
+      },
+    );
+  }
+}

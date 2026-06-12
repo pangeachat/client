@@ -4,7 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 class PermissionsListTile extends StatelessWidget {
   final String permissionKey;

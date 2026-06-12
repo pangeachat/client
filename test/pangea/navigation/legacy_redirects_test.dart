@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/pangea/navigation/legacy_redirects.dart';
+import 'package:fluffychat/features/navigation/legacy_redirects.dart';
 
 void main() {
   String? resolve(String location) =>

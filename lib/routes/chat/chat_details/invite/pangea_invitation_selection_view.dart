@@ -5,11 +5,10 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/course_plans/map_clipper.dart';
+import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
+import 'package:fluffychat/features/join_codes/share_room_button.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
-import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
-import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
-import 'package:fluffychat/pangea/join_codes/share_room_button.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/room_settings_constants.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
@@ -18,7 +17,8 @@ import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
+import 'package:fluffychat/widgets/users/level_display_name.dart';
+import 'package:fluffychat/widgets/users/member_actions_popup_menu_button.dart';
 
 class PangeaInvitationSelectionView extends StatelessWidget {
   final PangeaInvitationSelectionController controller;

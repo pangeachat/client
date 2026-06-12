@@ -1,5 +1,5 @@
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/course_code_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/joined_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';

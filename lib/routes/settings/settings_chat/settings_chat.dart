@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/user/style_settings_repo.dart';
+import 'package:fluffychat/routes/settings/settings_style/style_settings_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'settings_chat_view.dart';
 

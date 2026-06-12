@@ -6,8 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/user/user_search_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/user/user_search_extension.dart';
 import 'package:fluffychat/routes/new_private_chat/new_private_chat_view.dart';
 import 'package:fluffychat/routes/new_private_chat/qr_scanner_modal.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';

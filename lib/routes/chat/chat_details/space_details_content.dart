@@ -7,17 +7,16 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/analytics_access/course_settings_extension.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/course_plans/courses/get_localized_courses_request.dart';
+import 'package:fluffychat/features/course_plans/map_clipper.dart';
+import 'package:fluffychat/features/instructions/instructions_enum.dart';
+import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
+import 'package:fluffychat/features/join_codes/share_room_button.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_access/course_settings_extension.dart';
-import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicators.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
-import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
-import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
-import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
-import 'package:fluffychat/pangea/join_codes/share_room_button.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_settings.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_space_dialog.dart';
@@ -30,10 +29,11 @@ import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
+import 'package:fluffychat/widgets/analytics_summary/learning_progress_indicators.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import '../../../pangea/course_plans/courses/course_plans_repo.dart';
+import '../../../features/course_plans/courses/course_plans_repo.dart';
 
 enum SpaceSettingsTabs {
   chat,

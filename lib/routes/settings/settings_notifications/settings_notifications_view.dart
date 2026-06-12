@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/notifications/notifications_client_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/notifications/notifications_client_extension.dart';
 import 'package:fluffychat/routes/settings/settings_notifications/push_rule_extensions.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import '../../../utils/localized_exception_extension.dart';

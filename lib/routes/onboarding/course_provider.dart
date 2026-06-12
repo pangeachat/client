@@ -1,14 +1,14 @@
 import 'package:async/async.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
-import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
-import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
-import 'package:fluffychat/pangea/custom_courses/custom_course_repo.dart';
-import 'package:fluffychat/pangea/custom_courses/custom_course_request_model.dart';
-import 'package:fluffychat/pangea/custom_courses/custom_course_response_model.dart';
-import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
-import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plans_repo.dart';
+import 'package:fluffychat/features/course_plans/courses/get_localized_courses_request.dart';
+import 'package:fluffychat/features/join_codes/space_code_controller.dart';
+import 'package:fluffychat/features/join_codes/space_code_repo.dart';
+import 'package:fluffychat/routes/onboarding/custom_course_repo.dart';
+import 'package:fluffychat/routes/onboarding/custom_course_request_model.dart';
+import 'package:fluffychat/routes/onboarding/custom_course_response_model.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_client_extension.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';

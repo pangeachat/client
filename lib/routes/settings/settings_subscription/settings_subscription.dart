@@ -7,13 +7,13 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
+import 'package:fluffychat/features/subscription/utils/subscription_app_id.dart';
+import 'package:fluffychat/features/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
-import 'package:fluffychat/pangea/subscription/repo/subscription_management_repo.dart';
-import 'package:fluffychat/pangea/subscription/utils/subscription_app_id.dart';
-import 'package:fluffychat/pangea/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription_view.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 

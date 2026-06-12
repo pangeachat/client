@@ -1,13 +1,13 @@
 import 'package:latlong2/latlong.dart';
 
+import 'package:fluffychat/features/course_plans/course_activities/course_activity_repo.dart';
+import 'package:fluffychat/features/course_plans/course_activities/course_activity_translation_request.dart';
+import 'package:fluffychat/features/course_plans/course_topics/course_topic_repo.dart';
+import 'package:fluffychat/features/course_plans/course_topics/course_topic_translation_request.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plans_repo.dart';
+import 'package:fluffychat/features/course_plans/courses/get_localized_courses_request.dart';
+import 'package:fluffychat/features/course_plans/payload_client/payload_client.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
-import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_request.dart';
-import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_repo.dart';
-import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_translation_request.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
-import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
-import 'package:fluffychat/pangea/payload_client/payload_client.dart';
 import 'package:fluffychat/routes/world/world_locations_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 

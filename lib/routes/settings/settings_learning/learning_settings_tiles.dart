@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/routes/chat/chat_details/language_level_dropdown.dart';
 import 'package:fluffychat/routes/settings/settings_learning/country_picker_tile.dart';
 import 'package:fluffychat/routes/settings/settings_learning/enable_autocorrect_dialog.dart';

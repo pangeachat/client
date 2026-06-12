@@ -1,7 +1,7 @@
 import 'package:characters/characters.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/pangea/tokens/grapheme_offset_index.dart';
+import 'package:fluffychat/routes/chat/events/tokens/grapheme_offset_index.dart';
 
 /// Exhaustive unit tests for [GraphemeOffsetIndex].
 ///

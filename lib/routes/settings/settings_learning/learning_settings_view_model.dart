@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 
 import 'package:country_picker/country_picker.dart';
 
-import 'package:fluffychat/pangea/instructions/instruction_settings.dart';
-import 'package:fluffychat/pangea/languages/language_model.dart';
-import 'package:fluffychat/pangea/languages/language_service.dart';
-import 'package:fluffychat/pangea/languages/p_language_store.dart';
-import 'package:fluffychat/pangea/user/user_model.dart';
+import 'package:fluffychat/features/instructions/instruction_settings.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/languages/language_service.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/user/user_model.dart';
 import 'package:fluffychat/routes/settings/settings_learning/gender_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';

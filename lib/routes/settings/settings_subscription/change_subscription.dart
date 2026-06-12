@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
-import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 

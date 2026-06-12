@@ -7,8 +7,8 @@ import 'package:matrix/matrix.dart';
 import 'package:mime/mime.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/authentication/p_logout.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/authentication/p_logout.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';

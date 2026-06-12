@@ -1,4 +1,4 @@
-import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
 
 class OnboardingNavigationButtonState {
   final bool enabled;

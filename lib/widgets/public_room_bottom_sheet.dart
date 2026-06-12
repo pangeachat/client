@@ -5,11 +5,11 @@ import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
+import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
+import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_rooms_chunk_extension.dart';
-import 'package:fluffychat/pangea/join_codes/knocked_rooms_extension.dart';
-import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';

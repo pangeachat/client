@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
-import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
-import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/routes/onboarding/account_updater.dart';
 import 'package:fluffychat/routes/onboarding/avatar_provider.dart';
 import 'package:fluffychat/routes/onboarding/course_provider.dart';

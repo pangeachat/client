@@ -4,13 +4,13 @@ import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/bot/bot_client_extension.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
+import 'package:fluffychat/features/instructions/instructions_enum.dart';
+import 'package:fluffychat/features/support/support_client_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/bot/bot_client_extension.dart';
-import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
-import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
-import 'package:fluffychat/pangea/support/support_client_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';

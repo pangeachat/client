@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pangea/analytics_access/join_room_analytics_access_extension.dart';
-import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
-import 'package:fluffychat/pangea/join_codes/knocked_rooms_extension.dart';
-import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
+import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
+import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
+import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/routes/chat_list/room_invite_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';

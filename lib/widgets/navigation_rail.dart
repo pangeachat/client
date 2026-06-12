@@ -5,13 +5,13 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/course_plans/map_clipper.dart';
+import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_access/join_room_analytics_consent_handler.dart';
-import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
-import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/navigation/app_section.dart';
-import 'package:fluffychat/pangea/navigation/route_paths.dart';
+import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';

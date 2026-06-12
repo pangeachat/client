@@ -1,5 +1,5 @@
 import 'package:fluffychat/widgets/matrix.dart';
-import '../../pangea/user/user_model.dart' show Profile;
+import '../../features/user/user_model.dart' show Profile;
 
 abstract class AccountUpdater {
   Future<void> updateProfile(Profile Function(Profile) update);

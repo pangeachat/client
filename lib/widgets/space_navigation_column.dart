@@ -6,10 +6,10 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/navigation/app_section.dart';
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
-import 'package:fluffychat/routes/analytics/analytics_details_popup.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
 import 'package:fluffychat/routes/analytics/level/level_analytics_details_content.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/courses/find_course_page.dart';

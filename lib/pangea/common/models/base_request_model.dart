@@ -1,5 +1,5 @@
+import 'package:fluffychat/features/user/user_constants.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
-import 'package:fluffychat/pangea/user/user_constants.dart';
 import 'package:fluffychat/routes/settings/settings_learning/gender_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 

@@ -6,13 +6,13 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/toolbar/layout/reading_assistance_mode_enum.dart';
-import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
+import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/poll.dart';
+import 'package:fluffychat/routes/chat/toolbar/layout/reading_assistance_mode_enum.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/routes/chat/video_player.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';

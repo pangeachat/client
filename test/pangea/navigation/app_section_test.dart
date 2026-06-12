@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/pangea/navigation/app_section.dart';
+import 'package:fluffychat/features/navigation/app_section.dart';
 
 void main() {
   AppSection from(String location) => AppSection.fromUri(Uri.parse(location));

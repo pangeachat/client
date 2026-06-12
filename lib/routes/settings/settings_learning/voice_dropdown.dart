@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
+import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/dropdown_text_button.dart';
-import 'package:fluffychat/pangea/languages/language_model.dart';
 
 class VoiceDropdown extends StatelessWidget {
   final String? value;

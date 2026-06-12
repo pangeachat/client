@@ -5,18 +5,18 @@ import 'package:excel/excel.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/analytics/construct_use_model.dart';
+import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
+import 'package:fluffychat/features/analytics_data/analytics_settings_extension.dart';
+import 'package:fluffychat/features/download/download_dialog.dart';
+import 'package:fluffychat/features/download/download_file_util.dart';
+import 'package:fluffychat/features/download/download_type_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_downloads/space_analytics_summary_enum.dart';
-import 'package:fluffychat/pangea/analytics_downloads/space_analytics_summary_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/saved_analytics_extension.dart';
-import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/download/download_dialog.dart';
-import 'package:fluffychat/pangea/download/download_file_util.dart';
-import 'package:fluffychat/pangea/download/download_type_enum.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_analytics/space_analytics_summary_enum.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_analytics/space_analytics_summary_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class DownloadAnalyticsDialog extends StatefulWidget {

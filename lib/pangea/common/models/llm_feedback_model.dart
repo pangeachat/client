@@ -1,4 +1,4 @@
-import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
+import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
 
 /// Generic feedback schema matching the backend's LLMFeedbackSchema.
 /// Used for providing user corrections to LLM-generated content.

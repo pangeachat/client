@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 
 class CourseInfoChip extends StatelessWidget {
   final IconData icon;

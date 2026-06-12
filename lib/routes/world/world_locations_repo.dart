@@ -1,6 +1,6 @@
+import 'package:fluffychat/features/course_plans/payload_client/models/course_plan/cms_course_plan_topic_location.dart';
+import 'package:fluffychat/features/course_plans/payload_client/payload_client.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_topic_location.dart';
-import 'package:fluffychat/pangea/payload_client/payload_client.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Read-only access to course topic locations for the world map.

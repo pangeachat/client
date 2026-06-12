@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 
 extension OnboardingClientExtension on Client {
   Future<String> getCourseIdByRoomId(String roomId) async {

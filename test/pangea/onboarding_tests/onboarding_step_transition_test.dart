@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
-import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_result.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/course_code_onboarding_step.dart';

@@ -9,13 +9,13 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/pangea/audio/multi_platform_audio_player.dart';
-import 'package:fluffychat/pangea/events/audio_playback_speed_controller.dart';
-import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
+import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
 import 'package:fluffychat/utils/file_description.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/event_extension.dart';
+import 'package:fluffychat/utils/multi_platform_audio_player.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import '../../widgets/matrix.dart';
 

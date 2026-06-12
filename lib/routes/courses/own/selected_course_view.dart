@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/course_plans/map_clipper.dart';
+import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
-import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
-import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/routes/courses/cefr_level_match.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 import 'package:fluffychat/routes/courses/course_topic_list_widget.dart';

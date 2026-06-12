@@ -8,7 +8,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
+import 'package:fluffychat/widgets/users/member_actions_popup_menu_button.dart';
 
 class TopicParticipantList extends StatelessWidget {
   final Room room;

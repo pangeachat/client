@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 
-import 'package:fluffychat/pangea/events/models/content_feedback.dart';
+import 'package:fluffychat/routes/chat/events/models/content_feedback.dart';
 
 class LemmaInfoResponse implements JsonSerializable {
   final List<String> emoji;

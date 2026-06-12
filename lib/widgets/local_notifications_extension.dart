@@ -12,12 +12,12 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/features/join_codes/knock_notification_utils.dart';
+import 'package:fluffychat/features/notifications/enable_notifications_dialog.dart';
+import 'package:fluffychat/features/notifications/notifications_request_repo.dart';
+import 'package:fluffychat/features/notifications/suggest_mobile_dialog.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/join_codes/knock_notification_utils.dart';
-import 'package:fluffychat/pangea/notifications/enable_notifications_dialog.dart';
-import 'package:fluffychat/pangea/notifications/notifications_request_repo.dart';
-import 'package:fluffychat/pangea/notifications/suggest_mobile_dialog.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/push_helper.dart';

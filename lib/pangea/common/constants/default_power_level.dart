@@ -1,4 +1,4 @@
-import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 class RoomDefaults {
   static Map<String, dynamic> get defaultPowerLevelsContent => {

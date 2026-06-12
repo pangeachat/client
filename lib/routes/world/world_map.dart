@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_topic_location.dart';
+import 'package:fluffychat/features/course_plans/payload_client/models/course_plan/cms_course_plan_topic_location.dart';
 import 'package:fluffychat/routes/world/world_activities_repo.dart';
 import 'package:fluffychat/routes/world/world_camera_state.dart';
 import 'package:fluffychat/routes/world/world_locations_repo.dart';
