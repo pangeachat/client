@@ -7,8 +7,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:universal_html/html.dart' as webfile;
 
-import 'package:fluffychat/pages/chat/recording_view_model.dart';
 import 'package:fluffychat/pangea/download/download_type_enum.dart';
+import 'package:fluffychat/routes/chat/recording_view_model.dart';
 
 class DownloadUtil {
   static Future<void> downloadFile(

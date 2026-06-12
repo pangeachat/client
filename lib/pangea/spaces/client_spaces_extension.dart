@@ -1,7 +1,7 @@
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
-import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
+import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
+import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 
 extension SpacesClientExtension on Client {

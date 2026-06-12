@@ -12,7 +12,7 @@ import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selectio
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/join_codes/share_room_button.dart';
-import 'package:fluffychat/pangea/navigation/navigation_util.dart';
+import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';

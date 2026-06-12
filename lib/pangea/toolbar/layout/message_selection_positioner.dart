@@ -8,8 +8,6 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pages/chat/events/reaction_listener.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -20,6 +18,8 @@ import 'package:fluffychat/pangea/toolbar/layout/reading_assistance_mode_enum.da
 import 'package:fluffychat/pangea/toolbar/message_practice/reading_assistance_input_bar.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_card_switcher.dart';
+import 'package:fluffychat/routes/chat/chat.dart';
+import 'package:fluffychat/routes/chat/reaction_listener.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 

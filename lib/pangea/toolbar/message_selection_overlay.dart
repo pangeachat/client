@@ -9,7 +9,6 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -26,6 +25,7 @@ import 'package:fluffychat/pangea/toolbar/layout/message_selection_positioner.da
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_controller.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_controller.dart';
+import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Controls data at the top level of the toolbar (mainly token / toolbar mode selection)

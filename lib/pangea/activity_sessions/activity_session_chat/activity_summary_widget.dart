@@ -12,7 +12,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_participant_list.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_vocab_widget.dart';
-import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
+import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class ActivitySummary extends StatelessWidget {
   final ActivityPlanModel activity;

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
-import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
+import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class ActivitySuggestionCard extends StatelessWidget {
   final ActivityPlanModel activity;

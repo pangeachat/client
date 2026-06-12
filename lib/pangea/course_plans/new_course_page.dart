@@ -9,7 +9,6 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_language_filter.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_filter.dart';
@@ -23,6 +22,7 @@ import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart'
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class NewCoursePage extends StatefulWidget {
   final String route;

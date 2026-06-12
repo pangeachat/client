@@ -14,8 +14,8 @@ import 'package:fluffychat/pangea/activity_sessions/activity_session_start/bot_j
 import 'package:fluffychat/pangea/bot/bot_room_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
+import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class ConfirmedRoleSession extends StatefulWidget {

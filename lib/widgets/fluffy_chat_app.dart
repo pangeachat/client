@@ -8,12 +8,12 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/routes.dart';
-import 'package:fluffychat/pangea/navigation/legacy_redirects.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
+import 'package:fluffychat/pangea/navigation/legacy_redirects.dart';
 import 'package:fluffychat/widgets/app_lock.dart';
 import 'package:fluffychat/widgets/theme_builder.dart';
 import '../utils/custom_scroll_behaviour.dart';

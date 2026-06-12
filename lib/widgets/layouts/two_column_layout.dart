@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/pangea/spaces/space_navigation_column.dart';
+import 'package:fluffychat/widgets/space_navigation_column.dart';
 
 class TwoColumnLayout extends StatelessWidget {
   // #Pangea

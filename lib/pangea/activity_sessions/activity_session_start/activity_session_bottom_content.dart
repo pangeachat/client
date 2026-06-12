@@ -9,10 +9,10 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_state_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/not_started_session_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/course_chats/open_roles_indicator.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/room_summaries/activity_summary_status_enum.dart';
 import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
+import 'package:fluffychat/routes/chat_list/open_roles_indicator.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
 

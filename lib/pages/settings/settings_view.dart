@@ -203,8 +203,7 @@ class SettingsView extends StatelessWidget {
                     ListTile(
                       leading: const Icon(Icons.language_outlined),
                       title: Text(L10n.of(context).learningSettings),
-                      tileColor:
-                          activeRoute.startsWith('/settings/learning')
+                      tileColor: activeRoute.startsWith('/settings/learning')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
                       onTap: () => context.go('/settings/learning'),
@@ -222,9 +221,7 @@ class SettingsView extends StatelessWidget {
                       leading: const Icon(Icons.notifications_outlined),
                       title: Text(L10n.of(context).notifications),
                       tileColor:
-                          activeRoute.startsWith(
-                            '/settings/notifications',
-                          )
+                          activeRoute.startsWith('/settings/notifications')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
                       onTap: () => context.go('/settings/notifications'),
@@ -233,8 +230,7 @@ class SettingsView extends StatelessWidget {
                       leading: const Icon(Icons.devices_outlined),
                       title: Text(L10n.of(context).devices),
                       onTap: () => context.go('/settings/devices'),
-                      tileColor:
-                          activeRoute.startsWith('/settings/devices')
+                      tileColor: activeRoute.startsWith('/settings/devices')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
                     ),
@@ -261,8 +257,7 @@ class SettingsView extends StatelessWidget {
                       leading: const Icon(Icons.shield_outlined),
                       title: Text(L10n.of(context).security),
                       onTap: () => context.go('/settings/security'),
-                      tileColor:
-                          activeRoute.startsWith('/settings/security')
+                      tileColor: activeRoute.startsWith('/settings/security')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
                     ),

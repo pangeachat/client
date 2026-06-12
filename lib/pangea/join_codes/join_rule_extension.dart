@@ -17,10 +17,7 @@ extension JoinRuleExtension on Client {
       ErrorHandler.logError(e: e, s: s, data: {'joinRule': joinRule});
     }
 
-    final allRoomIds = {
-      ?allowRoomId,
-      ...?allowRoomIds,
-    };
+    final allRoomIds = {?allowRoomId, ...?allowRoomIds};
     final customJoinRules = CustomJoinRulesModel(
       joinRule: joinRule,
       allow: allRoomIds.isNotEmpty

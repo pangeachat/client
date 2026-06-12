@@ -9,7 +9,6 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
-import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
@@ -18,6 +17,7 @@ import 'package:fluffychat/pangea/course_settings/topic_activities_list.dart';
 import 'package:fluffychat/pangea/course_settings/topic_participant_list.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class CourseSettings extends StatefulWidget {
   final String roomId;

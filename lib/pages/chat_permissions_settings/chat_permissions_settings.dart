@@ -7,7 +7,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_permissions_settings/chat_permissions_settings_view.dart';
-import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
+import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';

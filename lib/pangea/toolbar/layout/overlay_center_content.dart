@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pages/chat/events/pangea_message_reactions.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/toolbar/layout/measure_render_box.dart';
 import 'package:fluffychat/pangea/toolbar/layout/overlay_message.dart';
 import 'package:fluffychat/pangea/toolbar/layout/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
+import 'package:fluffychat/routes/chat/chat.dart';
+import 'package:fluffychat/routes/chat/pangea_message_reactions.dart';
 
 class OverlayCenterContent extends StatelessWidget {
   final Event event;

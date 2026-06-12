@@ -15,7 +15,6 @@ import 'package:fluffychat/pangea/chat_settings/pages/room_details_buttons.dart'
 import 'package:fluffychat/pangea/chat_settings/pages/room_participants_widget.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/space_details_button_row.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/delete_space_dialog.dart';
-import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
@@ -27,6 +26,7 @@ import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart'
 import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/join_codes/share_room_button.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
+import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';

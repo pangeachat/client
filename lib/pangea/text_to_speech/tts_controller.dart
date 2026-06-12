@@ -10,7 +10,6 @@ import 'package:flutter_tts/flutter_tts.dart' as flutter_tts;
 import 'package:just_audio/just_audio.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/audio/multi_platform_audio_player.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/utils/strip_emojis.dart';
@@ -22,6 +21,7 @@ import 'package:fluffychat/pangea/text_to_speech/text_to_speech_repo.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_request_model.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_routing.dart';
+import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 

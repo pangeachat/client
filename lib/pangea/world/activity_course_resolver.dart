@@ -49,16 +49,13 @@ class ActivityCourseResolver {
     if (planIdByTopicId.isEmpty) return [];
 
     final topics = await CourseTopicRepo.get(
-      TranslateTopicRequest(
-        topicIds: planIdByTopicId.keys.toList(),
-        l1: l1,
-      ),
+      TranslateTopicRequest(topicIds: planIdByTopicId.keys.toList(), l1: l1),
       'activity_course_resolver',
     );
 
     final matchingPlanIds = <String>{};
     for (final topic in topics.topics.values) {
-        if (topic.activityIds.contains(activityId)) {
+      if (topic.activityIds.contains(activityId)) {
         matchingPlanIds.add(planIdByTopicId[topic.uuid]!);
       }
     }

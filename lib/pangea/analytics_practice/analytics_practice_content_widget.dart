@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
-import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_message_widget.dart';
 import 'package:fluffychat/pangea/analytics_practice/grammar_error_example_widget.dart';
 import 'package:fluffychat/pangea/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
+import 'package:fluffychat/routes/chat/audio_player.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class AnalyticsPracticeExerciseContent extends StatelessWidget {

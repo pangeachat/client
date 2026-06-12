@@ -5,7 +5,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
-import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_creation/cefr_level_match.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_topic_list_widget.dart';
@@ -16,6 +15,7 @@ import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class PublicCoursePreviewView extends StatelessWidget {
   final PublicCoursePreviewController controller;

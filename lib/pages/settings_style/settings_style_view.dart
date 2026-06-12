@@ -7,7 +7,7 @@ import 'package:dynamic_color/dynamic_color.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/chat/widgets/style_example_message.dart';
+import 'package:fluffychat/routes/chat/style_example_message.dart';
 import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/utils/color_value.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';

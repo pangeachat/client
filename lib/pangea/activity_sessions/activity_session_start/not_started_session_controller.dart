@@ -14,9 +14,9 @@ import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activ
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_sessions_start_view.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/room_summaries/activity_sessions_status_model.dart';
 import 'package:fluffychat/pangea/room_summaries/room_summaries_model.dart';
+import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 

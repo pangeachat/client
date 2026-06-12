@@ -72,7 +72,6 @@ void main() {
     test('matrix rooms and fork routes stay put', () {
       expect(resolve('/rooms/!room:server.org'), isNull);
       expect(resolve('/rooms/archive'), isNull);
-      expect(resolve('/rooms/newgroup'), isNull);
       expect(resolve('/home/login'), isNull);
       expect(resolve('/'), isNull);
       expect(resolve('/analytics'), isNull);

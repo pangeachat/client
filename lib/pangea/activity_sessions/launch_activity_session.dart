@@ -1,17 +1,17 @@
 import 'dart:async';
 
-import 'package:matrix/matrix.dart';
 import 'package:matrix/matrix.dart' as sdk;
+import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
-import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
-import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
+import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_room_types.dart';
+import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/world/activity_course_resolver.dart';

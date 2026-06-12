@@ -72,7 +72,8 @@ class _WorldMapState extends State<WorldMap> {
     return FlutterMap(
       mapController: widget.controller,
       options: MapOptions(
-        initialCenter: widget.initialCenter ??
+        initialCenter:
+            widget.initialCenter ??
             WorldCameraState.lastCenter ??
             const LatLng(20, 0),
         initialZoom: widget.initialZoom ?? WorldCameraState.lastZoom ?? 3,
@@ -81,10 +82,7 @@ class _WorldMapState extends State<WorldMap> {
         minZoom: 2,
         maxZoom: 18,
         cameraConstraint: CameraConstraint.contain(
-          bounds: LatLngBounds(
-            const LatLng(-85, -180),
-            const LatLng(85, 180),
-          ),
+          bounds: LatLngBounds(const LatLng(-85, -180), const LatLng(85, 180)),
         ),
         interactionOptions: const InteractionOptions(
           flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
@@ -156,10 +154,7 @@ class _WorldMapState extends State<WorldMap> {
         ),
         RichAttributionWidget(
           attributions: [
-            TextSourceAttribution(
-              'OpenStreetMap contributors',
-              onTap: () {},
-            ),
+            TextSourceAttribution('OpenStreetMap contributors', onTap: () {}),
           ],
         ),
       ],

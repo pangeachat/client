@@ -28,11 +28,7 @@ enum AppSection {
   ),
 
   /// Courses — find/browse, plus joined courses at `/courses/:spaceid`.
-  courses(
-    rootPath: PRoutes.courses,
-    icon: Icons.add,
-    selectedIcon: Icons.add,
-  ),
+  courses(rootPath: PRoutes.courses, icon: Icons.add, selectedIcon: Icons.add),
 
   /// Profile (formerly user_home). Root: `/profile`.
   profile(
@@ -59,8 +55,7 @@ enum AppSection {
   final IconData selectedIcon;
 
   /// First path segment owned by this section ('' for [chats]).
-  String get _segment =>
-      rootPath == '/' ? '' : rootPath.substring(1);
+  String get _segment => rootPath == '/' ? '' : rootPath.substring(1);
 
   /// Resolve the active section from a location.
   ///

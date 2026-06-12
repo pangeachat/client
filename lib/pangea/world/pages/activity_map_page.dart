@@ -7,7 +7,6 @@ import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pangea/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
@@ -15,6 +14,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_request.dart';
 import 'package:fluffychat/pangea/course_settings/activity_suggestion_card.dart';
+import 'package:fluffychat/pangea/navigation/route_paths.dart';
 import 'package:fluffychat/pangea/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/pangea/world/activity_course_resolver.dart';
@@ -79,8 +79,7 @@ class _ActivityMapPageState extends State<ActivityMapPage> {
 
   Future<void> _load() async {
     try {
-      final l1 =
-          MatrixState.pangeaController.userController.userL1Code ?? 'en';
+      final l1 = MatrixState.pangeaController.userController.userL1Code ?? 'en';
       final activitiesResp = await CourseActivityRepo.get(
         TranslateActivityRequest(activityIds: [widget.activityId], l1: l1),
         widget.activityId,
@@ -213,74 +212,74 @@ class _ActivityMapPageState extends State<ActivityMapPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-            Stack(
-              children: [
-                ActivitySuggestionCard(
-                  activity: _activity!,
-                  width: cardWidth,
-                  height: cardHeight,
-                  fontSize: 20.0,
-                  fontSizeSmall: 12.0,
-                  iconSize: 12.0,
-                ),
-                if (_complete)
-                  Container(
+              Stack(
+                children: [
+                  ActivitySuggestionCard(
+                    activity: _activity!,
                     width: cardWidth,
                     height: cardHeight,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.0),
-                      color: theme.colorScheme.surface.withAlpha(180),
-                    ),
-                    child: Center(
-                      child: SvgPicture.asset(
-                        "assets/pangea/check.svg",
-                        width: 48.0,
-                        height: 48.0,
+                    fontSize: 20.0,
+                    fontSizeSmall: 12.0,
+                    iconSize: 12.0,
+                  ),
+                  if (_complete)
+                    Container(
+                      width: cardWidth,
+                      height: cardHeight,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12.0),
+                        color: theme.colorScheme.surface.withAlpha(180),
+                      ),
+                      child: Center(
+                        child: SvgPicture.asset(
+                          "assets/pangea/check.svg",
+                          width: 48.0,
+                          height: 48.0,
+                        ),
                       ),
                     ),
-                  ),
-              ],
-            ),
-            if (_locationName != null)
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      Icons.location_pin,
-                      size: 16,
-                      color: theme.colorScheme.primary,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(_locationName!, style: theme.textTheme.bodySmall),
-                  ],
-                ),
+                ],
               ),
-            const SizedBox(height: 12.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButton(
-                  onPressed: () => context.go(PRoutes.world),
-                  child: const Icon(Icons.close),
+              if (_locationName != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.location_pin,
+                        size: 16,
+                        color: theme.colorScheme.primary,
+                      ),
+                      const SizedBox(width: 4),
+                      Text(_locationName!, style: theme.textTheme.bodySmall),
+                    ],
+                  ),
                 ),
-                FilledButton.icon(
-                  icon: const Icon(Icons.open_in_full, size: 16),
-                  label: Text(L10n.of(context).details),
-                  onPressed: _matchingSpaces.isNotEmpty
-                      ? () => setState(() => _expanded = true)
-                      : () => ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              'Join the course for "${_activity!.title}" to play it!',
+              const SizedBox(height: 12.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    onPressed: () => context.go(PRoutes.world),
+                    child: const Icon(Icons.close),
+                  ),
+                  FilledButton.icon(
+                    icon: const Icon(Icons.open_in_full, size: 16),
+                    label: Text(L10n.of(context).details),
+                    onPressed: _matchingSpaces.isNotEmpty
+                        ? () => setState(() => _expanded = true)
+                        : () => ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Join the course for "${_activity!.title}" to play it!',
+                              ),
                             ),
                           ),
-                        ),
-                ),
-              ],
-            ),
-          ],
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

@@ -7,7 +7,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_state_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_sessions_start_view.dart';
-import 'package:fluffychat/pangea/navigation/navigation_util.dart';
+import 'package:fluffychat/utils/navigation_util.dart';
 
 class FullSession extends StatefulWidget {
   final Room? course;

@@ -10,7 +10,6 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/audio/multi_platform_audio_player.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -28,6 +27,7 @@ import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_control
 import 'package:fluffychat/pangea/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/pangea/tutorials/tutorial_model.dart';
 import 'package:fluffychat/pangea/tutorials/tutorial_step_model.dart';
+import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 enum SelectMode {

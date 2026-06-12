@@ -27,11 +27,14 @@ abstract class LegacyRedirects {
       // the old public-preview catch-all gets a literal prefix so it can
       // never collide with `/courses/:spaceid`.
       ['course'] => const ['courses'],
-      ['course', 'private', ...final tail] =>
-          ['courses', 'private', ...tail],
+      ['course', 'private', ...final tail] => ['courses', 'private', ...tail],
       ['course', 'own', ...final tail] => ['courses', 'own', ...tail],
-      ['course', final roomId, ...final tail] =>
-          ['courses', 'preview', roomId, ...tail],
+      ['course', final roomId, ...final tail] => [
+        'courses',
+        'preview',
+        roomId,
+        ...tail,
+      ],
 
       // Joined course spaces: `/rooms/spaces/:spaceid/...` →
       // `/courses/:spaceid/...`.

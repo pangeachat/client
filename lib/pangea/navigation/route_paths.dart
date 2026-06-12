@@ -46,6 +46,5 @@ abstract class PRoutes {
   static final RegExp _uuidRegExp = RegExp('^$uuidPattern\$');
 
   /// Whether [segment] is a world-object id rather than a literal route.
-  static bool isWorldObjectId(String segment) =>
-      _uuidRegExp.hasMatch(segment);
+  static bool isWorldObjectId(String segment) => _uuidRegExp.hasMatch(segment);
 }

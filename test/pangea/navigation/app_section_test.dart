@@ -21,10 +21,7 @@ void main() {
     });
 
     test('first-class world objects select chats (world surface)', () {
-      expect(
-        from('/32ad3c08-e501-41c5-b544-0875026090ed'),
-        AppSection.chats,
-      );
+      expect(from('/32ad3c08-e501-41c5-b544-0875026090ed'), AppSection.chats);
     });
 
     test('exact segments only — no substring leakage', () {

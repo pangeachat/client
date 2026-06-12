@@ -7,7 +7,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/settings/settings.dart';
-import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -15,6 +14,7 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class EditCourse extends StatefulWidget {
   final String roomId;

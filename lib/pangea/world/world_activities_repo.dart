@@ -1,5 +1,6 @@
 import 'package:latlong2/latlong.dart';
 
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_request.dart';
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_repo.dart';
@@ -7,7 +8,6 @@ import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_transl
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
 import 'package:fluffychat/pangea/payload_client/payload_client.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/world/world_locations_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -114,10 +114,7 @@ class WorldActivitiesRepo {
           .where(coordsById.containsKey)
           .map((id) => coordsById[id]!)
           .first;
-      final center = LatLng(
-        location.coordinates![1],
-        location.coordinates![0],
-      );
+      final center = LatLng(location.coordinates![1], location.coordinates![0]);
       final placeable = topic.activityIds
           .where(activitiesResp.plans.containsKey)
           .toList();
@@ -125,7 +122,11 @@ class WorldActivitiesRepo {
         final plan = activitiesResp.plans[placeable[i]]!;
         // Ring of ~25km around the location; single activities sit on it
         // too so the location pin itself stays visible underneath.
-        final point = distance.offset(center, 25000, (360 / placeable.length) * i);
+        final point = distance.offset(
+          center,
+          25000,
+          (360 / placeable.length) * i,
+        );
         pins.add(
           WorldActivityPin(
             activityId: placeable[i],

@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'package:fluffychat/pangea/navigation/route_paths.dart';
 
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/pangea/navigation/route_paths.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../controllers/pangea_controller.dart';
 

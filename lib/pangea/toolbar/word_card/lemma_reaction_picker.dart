@@ -7,7 +7,6 @@ import 'package:matrix/matrix.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pages/chat/events/reaction_listener.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/lemma_emoji_setter_mixin.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
@@ -15,6 +14,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
+import 'package:fluffychat/routes/chat/reaction_listener.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
