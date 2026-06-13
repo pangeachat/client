@@ -17,7 +17,6 @@ import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/chat_list/course_default_chats_enum.dart';
 import 'package:fluffychat/routes/chat_list/unjoined_chat_list_item.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
-import 'package:fluffychat/widgets/analytics_summary/learning_progress_indicators.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class CourseChatsView extends StatelessWidget {
@@ -74,7 +73,6 @@ class CourseChatsView extends StatelessWidget {
                         spacing: 12.0,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          LearningProgressIndicators(),
                           Icon(Icons.chat_bubble_outline, size: 30.0),
                           SizedBox(height: 12.0),
                         ],

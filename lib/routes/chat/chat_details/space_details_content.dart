@@ -29,7 +29,6 @@ import 'package:fluffychat/routes/courses/course_objectives/course_objectives_vi
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
-import 'package:fluffychat/widgets/analytics_summary/learning_progress_indicators.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -308,7 +307,6 @@ class SpaceDetailsContent extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (!isColumnMode) const LearningProgressIndicators(),
         Row(
           crossAxisAlignment: isColumnMode
               ? CrossAxisAlignment.start

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
-import 'package:fluffychat/widgets/analytics_summary/learning_progress_indicators.dart';
 
 class PangeaChatListHeader extends StatelessWidget
     implements PreferredSizeWidget {
@@ -28,7 +27,6 @@ class PangeaChatListHeader extends StatelessWidget
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              const LearningProgressIndicators(),
               AnimatedSize(
                 duration: FluffyThemes.animationDuration,
                 child: showSearch
