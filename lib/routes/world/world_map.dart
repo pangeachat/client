@@ -26,11 +26,18 @@ class WorldMap extends StatefulWidget {
   /// Optional controller so parents can move the camera after build.
   final MapController? controller;
 
+  /// Logical-pixel width of the nav-rail + left-column overlay the shell
+  /// draws *on top* of this full-bleed map. A course camera-fit adds it as
+  /// left padding so the fitted content lands in the uncovered area to the
+  /// right of the overlay instead of behind it. 0 when nothing overlays it.
+  final double leftOverlayWidth;
+
   const WorldMap({
     super.key,
     this.initialCenter,
     this.initialZoom,
     this.controller,
+    this.leftOverlayWidth = 0.0,
   });
 
   @override
@@ -120,7 +127,14 @@ class _WorldMapState extends State<WorldMap> {
         _controller.fitCamera(
           CameraFit.bounds(
             bounds: LatLngBounds.fromPoints(points),
-            padding: const EdgeInsets.all(64.0),
+            // Inset the left edge by the overlay width so the course fits in
+            // the area the left column doesn't cover, not behind it.
+            padding: EdgeInsets.fromLTRB(
+              widget.leftOverlayWidth + 64.0,
+              64.0,
+              64.0,
+              64.0,
+            ),
             maxZoom: 12.0,
           ),
         );
@@ -145,11 +159,20 @@ class _WorldMapState extends State<WorldMap> {
         // so no external camera-state restore is needed.
         initialCenter: widget.initialCenter ?? const LatLng(20, 0),
         initialZoom: widget.initialZoom ?? 3,
-        minZoom: 2,
+        // minZoom 3 (not 2): containLatitude rejects a move when the
+        // constrained latitude band is shorter than the viewport, and the
+        // ±90 band is only ~1024px tall at z2 — that would freeze *all*
+        // panning on windows taller than ~1024px (common when maximized).
+        // z3 gives a ~2048px band, clearing any realistic viewport.
+        minZoom: 3,
         maxZoom: 18,
-        cameraConstraint: CameraConstraint.contain(
-          bounds: LatLngBounds(const LatLng(-85, -180), const LatLng(85, 180)),
-        ),
+        // Clamp latitude only — leaving longitude free so the user can pan
+        // east-west and the world wraps seamlessly ("rotate the world
+        // around"). Epsg3857 replicates longitude, so tiles and markers
+        // repeat across world copies automatically. A longitude-bounded
+        // `contain`/`containCenter` pins the camera when zoomed out and hides
+        // content behind the left column with no way to pan it out.
+        cameraConstraint: const CameraConstraint.containLatitude(90, -90),
         interactionOptions: const InteractionOptions(
           flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
         ),

@@ -154,7 +154,14 @@ class TwoColumnLayout extends StatelessWidget {
             // Persistent world map — the base layer everything overlays.
             // Built once; section pages (the transparent EmptyPage canvas)
             // and detail panels render on top of this single instance.
-            Positioned.fill(child: WorldMap(key: _persistentWorldMapKey)),
+            Positioned.fill(
+              child: WorldMap(
+                key: _persistentWorldMapKey,
+                // The rail + left column overlay the map; a course camera-fit
+                // pads by this so its pins land clear of the overlay.
+                leftOverlayWidth: columnWidth,
+              ),
+            ),
             // The route canvas, as one stable child so the sideView Navigator
             // never remounts when the canvas mode changes (route/chat state is
             // preserved). Three modes (world_v2):
