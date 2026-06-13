@@ -241,6 +241,9 @@ class NewCoursePageState extends State<NewCoursePage> {
         leading: spaceId == null
             ? IconButton(
                 icon: const Icon(Icons.arrow_back),
+                // Accessible name (world_v2 testability contract: every
+                // IconButton needs a tooltip → semantics label).
+                tooltip: MaterialLocalizations.of(context).backButtonTooltip,
                 onPressed: () => context.go('/courses'),
               )
             : null,
