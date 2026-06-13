@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
@@ -7,7 +9,6 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
-import 'package:fluffychat/widgets/layouts/map_canvas_scope.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mobile_bottom_nav.dart';
 import 'package:fluffychat/widgets/space_navigation_column.dart';
@@ -17,6 +18,58 @@ import 'package:fluffychat/widgets/space_navigation_column.dart';
 /// pins — even if this shell page is rebuilt or remounted across
 /// navigation, so sections open *over* the map instead of refreshing it.
 final GlobalKey _persistentWorldMapKey = GlobalKey(debugLabel: 'worldMap');
+
+/// Max width of an opaque detail panel (chat, vocab, …); the map peeks in
+/// the remaining canvas on wider screens (world_v2 detail contract).
+const double _detailMaxWidth = 720.0;
+
+/// Route patterns whose canvas is the transparent map hole ([EmptyPage]) in
+/// column mode — the section roots and the analytics groupings. The
+/// persistent map shows through and the section's content lives in the left
+/// column. Matched against [GoRouterState.fullPath] (the matched *leaf*
+/// pattern), so a detail route stacked under an EmptyPage parent (e.g.
+/// `/rooms/:roomid` under `/rooms`) is correctly read as a detail — not the
+/// map — even though go_router keeps the parent's EmptyPage page mounted.
+const Set<String> _mapCanvasPaths = {
+  '/',
+  '/chats',
+  '/rooms',
+  '/courses',
+  '/courses/:spaceid',
+  '/courses/:spaceid/details',
+  '/analytics',
+  '/analytics/morph',
+  '/analytics/vocab',
+  '/analytics/activities',
+  '/analytics/level',
+  '/settings',
+  '/profile',
+};
+
+/// How the current route's canvas relates to the persistent map.
+enum _CanvasMode {
+  /// Paints nothing; the persistent map shows through (section roots).
+  map,
+
+  /// Opaque content capped at [_detailMaxWidth]; the map peeks alongside.
+  detail,
+
+  /// Opaque content that fills the canvas — it hosts its own map surface
+  /// (the activity page, `/<uuid>`).
+  fullBleed,
+}
+
+_CanvasMode _canvasMode(GoRouterState state, bool isColumnMode) {
+  final fullPath = state.fullPath ?? '/';
+  // World is always the map; the other section roots are the map only in
+  // column mode (narrow shows their content full-screen instead).
+  if (fullPath == '/' || (isColumnMode && _mapCanvasPaths.contains(fullPath))) {
+    return _CanvasMode.map;
+  }
+  // The activity page is its own full-bleed map surface, so it fills.
+  if (fullPath.startsWith('/:activityId')) return _CanvasMode.fullBleed;
+  return _CanvasMode.detail;
+}
 
 class TwoColumnLayout extends StatelessWidget {
   // #Pangea
@@ -65,6 +118,11 @@ class TwoColumnLayout extends StatelessWidget {
             ? (FluffyThemes.columnWidth + 1.0)
             : 0.0);
     final showBottomNav = !isColumnMode && showNavRail;
+    final canvasMode = _canvasMode(state, isColumnMode);
+    final detailWidth = math.min(
+      _detailMaxWidth,
+      MediaQuery.sizeOf(context).width - columnWidth,
+    );
 
     // Scope the persistent map to the active course (world_v2 context). A
     // joined course (`/courses/:spaceid`) scopes the map to that course's
@@ -97,20 +155,24 @@ class TwoColumnLayout extends StatelessWidget {
             // Built once; section pages (the transparent EmptyPage canvas)
             // and detail panels render on top of this single instance.
             Positioned.fill(child: WorldMap(key: _persistentWorldMapKey)),
-            Positioned.fill(
+            // The route canvas, as one stable child so the sideView Navigator
+            // never remounts when the canvas mode changes (route/chat state is
+            // preserved). Three modes (world_v2):
+            //  • map → off the layout/hit-test tree (Offstage) so pan/zoom/tap
+            //    reach the persistent map below. The sideView is go_router's
+            //    nested Navigator/Overlay, which would otherwise absorb
+            //    gestures even though the leaf (EmptyPage) paints nothing.
+            //  • detail → capped at ~720px next to the left column, so the map
+            //    peeks in the remainder on wide screens.
+            //  • fullBleed → fills (the activity page hosts its own map).
+            Positioned(
               left: columnWidth,
-              // When the canvas is the transparent map hole (EmptyPage), the
-              // sideView is go_router's nested Navigator/Overlay — which
-              // absorbs pointer events even when its leaf is transparent.
-              // Take it fully off the layout/hit-test tree so pan/zoom/tap
-              // reach the map below; opaque detail pages stay onstage and
-              // cover the map. The Navigator's route state is preserved.
-              child: ValueListenableBuilder<int>(
-                valueListenable: MapCanvasScope.listenable,
-                builder: (context, mapCanvasCount, child) => Offstage(
-                  offstage: mapCanvasCount > 0,
-                  child: child,
-                ),
+              top: 0,
+              bottom: 0,
+              right: canvasMode == _CanvasMode.detail ? null : 0,
+              width: canvasMode == _CanvasMode.detail ? detailWidth : null,
+              child: Offstage(
+                offstage: canvasMode == _CanvasMode.map,
                 child: ClipRRect(child: sideView),
               ),
             ),
