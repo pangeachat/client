@@ -1,10 +1,21 @@
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+
 class GetLocalizedCoursesRequest {
   final List<String> coursePlanIds;
   final String l1;
+  final bool? mock;
 
-  GetLocalizedCoursesRequest({required this.coursePlanIds, required this.l1});
+  GetLocalizedCoursesRequest({
+    required this.coursePlanIds,
+    required this.l1,
+    this.mock,
+  });
 
-  Map<String, dynamic> toJson() => {"course_plan_ids": coursePlanIds, "l1": l1};
+  Map<String, dynamic> toJson() => {
+    "course_plan_ids": coursePlanIds,
+    "l1": l1,
+    if (mock != null) ModelKey.mock: mock,
+  };
 
   factory GetLocalizedCoursesRequest.fromJson(Map<String, dynamic> json) {
     return GetLocalizedCoursesRequest(

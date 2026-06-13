@@ -1,3 +1,4 @@
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 
 class CustomCourseRequestModel {
@@ -7,6 +8,7 @@ class CustomCourseRequestModel {
   final String institution;
   final String goals;
   final String? notes;
+  final bool? mock;
 
   const CustomCourseRequestModel({
     required this.name,
@@ -14,6 +16,7 @@ class CustomCourseRequestModel {
     required this.languageLevel,
     required this.institution,
     required this.goals,
+    this.mock,
     this.notes,
   });
 
@@ -27,5 +30,6 @@ class CustomCourseRequestModel {
     "institution": institution,
     "goals": goals,
     "notes": notes,
+    if (mock != null) ModelKey.mock: mock,
   };
 }

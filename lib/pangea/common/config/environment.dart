@@ -21,6 +21,10 @@ class Environment {
         "Frontend URL NOT FOUND";
   }
 
+  static String? get testUsername => dotenv.env["TEST_MATRIX_USERNAME"];
+
+  static String? get testPassword => dotenv.env["TEST_MATRIX_PASSWORD"];
+
   static String get synapseURL {
     return appConfigOverride?.synapseURL ??
         dotenv.env['SYNAPSE_URL'] ??

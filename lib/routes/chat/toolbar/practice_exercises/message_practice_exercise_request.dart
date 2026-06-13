@@ -78,6 +78,7 @@ class MessagePracticeExerciseRequest {
   final GrammarErrorRequestInfo? grammarErrorInfo;
   final ExampleMessageInfo? exampleMessage;
   final AudioExampleMessage? audioExampleMessage;
+  final bool? mock;
 
   MessagePracticeExerciseRequest({
     required this.userL1,
@@ -87,6 +88,7 @@ class MessagePracticeExerciseRequest {
     this.grammarErrorInfo,
     this.exampleMessage,
     this.audioExampleMessage,
+    this.mock,
   }) {
     if (target.tokens.isEmpty) {
       throw Exception('Target tokens must not be empty');
@@ -102,6 +104,7 @@ class MessagePracticeExerciseRequest {
       'target_type': target.exerciseType.name,
       'target_morph_feature': target.morphFeature,
       'grammar_error_info': grammarErrorInfo?.toJson(),
+      if (mock != null) ModelKey.mock: mock,
     };
   }
 

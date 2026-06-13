@@ -13,6 +13,7 @@ class FullTextTranslationRequestModel {
   final int? offset;
   final int? length;
   final List<LLMFeedbackModel<FullTextTranslationResponseModel>>? feedback;
+  final bool? mock;
 
   const FullTextTranslationRequestModel({
     required this.text,
@@ -24,6 +25,7 @@ class FullTextTranslationRequestModel {
     this.offset,
     this.length,
     this.feedback,
+    this.mock,
   });
 
   Map<String, dynamic> toJson() => {
@@ -37,6 +39,7 @@ class FullTextTranslationRequestModel {
     ModelKey.length: length,
     if (feedback != null)
       ChoreoConstants.feedback: feedback!.map((f) => f.toJson()).toList(),
+    if (mock != null) ModelKey.mock: mock,
   };
 
   String get storageKey =>
