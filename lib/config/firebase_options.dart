@@ -51,24 +51,24 @@ class DefaultFirebaseOptions {
   // ---- platform getters ----
 
   static FirebaseOptions get web => _fromEnvOrDefault(
-        Environment.googleAnalyticsFirebaseOptionsBase64,
-        _defaultWeb,
-      );
+    Environment.googleAnalyticsFirebaseOptionsBase64,
+    _defaultWeb,
+  );
 
   static FirebaseOptions get android => _fromEnvOrDefault(
-        Environment.googleAnalyticsFirebaseOptionsBase64,
-        _defaultAndroid,
-      );
+    Environment.googleAnalyticsFirebaseOptionsBase64,
+    _defaultAndroid,
+  );
 
   static FirebaseOptions get ios => _fromEnvOrDefault(
-        Environment.googleAnalyticsFirebaseOptionsBase64,
-        _defaultIos,
-      );
+    Environment.googleAnalyticsFirebaseOptionsBase64,
+    _defaultIos,
+  );
 
   static FirebaseOptions get macos => _fromEnvOrDefault(
-        Environment.googleAnalyticsFirebaseOptionsBase64,
-        _defaultMacos,
-      );
+    Environment.googleAnalyticsFirebaseOptionsBase64,
+    _defaultMacos,
+  );
 
   // ---- defaults ----
 
