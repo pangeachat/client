@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/widgets/layouts/map_canvas_scope.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mobile_bottom_nav.dart';
 import 'package:fluffychat/widgets/space_navigation_column.dart';
 
@@ -62,6 +65,21 @@ class TwoColumnLayout extends StatelessWidget {
             ? (FluffyThemes.columnWidth + 1.0)
             : 0.0);
     final showBottomNav = !isColumnMode && showNavRail;
+
+    // Scope the persistent map to the active course (world_v2 context). A
+    // joined course (`/courses/:spaceid`) scopes the map to that course's
+    // content; everything else shows the whole world. Set post-frame — the
+    // map listens and calls setState, which can't run during this build.
+    final activeSpaceId = AppSection.activeSpaceId(state.uri);
+    final coursePlanId = activeSpaceId == null
+        ? null
+        : Matrix.of(context).client.getRoomById(activeSpaceId)?.coursePlan?.uuid;
+    final MapContext mapContext = coursePlanId == null
+        ? const WorldMapContext()
+        : CourseMapContext(coursePlanId);
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => MapContextController.set(mapContext),
+    );
     // Pangea#
     return ScaffoldMessenger(
       child: Scaffold(

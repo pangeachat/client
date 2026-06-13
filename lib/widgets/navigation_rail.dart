@@ -9,7 +9,6 @@ import 'package:fluffychat/features/analytics_access/join_room_analytics_consent
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
-import 'package:fluffychat/routes/courses/add_course_menu.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
@@ -143,6 +142,13 @@ class SpacesNavigationRail extends StatelessWidget {
     final isAnalytics = section == AppSection.analytics;
     final isChats = section == AppSection.chats;
     final isWorld = section == AppSection.world;
+    // The Add-course / find-course flow: courses section, no active space.
+    final isCourseFind =
+        section == AppSection.courses &&
+        AppSection.activeSpaceId(
+              GoRouter.of(context).routeInformationProvider.value.uri,
+            ) ==
+            null;
     // The Avatar slot merges profile + settings (world_v2).
     final isAvatar = isUserHome || isSettings;
     final isColumnMode = FluffyThemes.isColumnMode(context);
@@ -275,36 +281,36 @@ class SpacesNavigationRail extends StatelessWidget {
                           naviRailWidth: naviRailWidth,
                           expandedSectionWidth: expandedSectionWidth,
                         ),
-                        // Add course — opens a popover menu, not a page.
-                        Builder(
-                          builder: (itemContext) => NaviRailItem(
-                            backgroundColor: Colors.transparent,
-                            borderRadius: BorderRadius.circular(0),
-                            isSelected: false,
-                            onTap: () {
-                              collapse();
-                              showAddCourseMenu(itemContext);
-                            },
-                            icon: ClipPath(
-                              clipper: MapClipper(),
-                              child: Container(
-                                width:
-                                    naviRailWidth -
-                                    (isColumnMode ? 32.0 : 24.0),
-                                height:
-                                    naviRailWidth -
-                                    (isColumnMode ? 32.0 : 24.0),
-                                color: Theme.of(
-                                  context,
-                                ).colorScheme.surfaceContainerHigh,
-                                child: const Icon(Icons.add),
-                              ),
+                        // Add course — the find/add-course section in the
+                        // left column (same as the other sections), not a
+                        // popover. world_v2.
+                        NaviRailItem(
+                          backgroundColor: Colors.transparent,
+                          borderRadius: BorderRadius.circular(0),
+                          isSelected: isCourseFind,
+                          onTap: () {
+                            collapse();
+                            context.go(PRoutes.courses);
+                          },
+                          icon: ClipPath(
+                            clipper: MapClipper(),
+                            child: Container(
+                              width:
+                                  naviRailWidth - (isColumnMode ? 32.0 : 24.0),
+                              height:
+                                  naviRailWidth - (isColumnMode ? 32.0 : 24.0),
+                              color: isCourseFind
+                                  ? Theme.of(context).colorScheme.primaryContainer
+                                  : Theme.of(
+                                      context,
+                                    ).colorScheme.surfaceContainerHigh,
+                              child: const Icon(Icons.add),
                             ),
-                            toolTip: L10n.of(context).addCourse,
-                            expanded: expanded,
-                            naviRailWidth: naviRailWidth,
-                            expandedSectionWidth: expandedSectionWidth,
                           ),
+                          toolTip: L10n.of(context).addCourse,
+                          expanded: expanded,
+                          naviRailWidth: naviRailWidth,
+                          expandedSectionWidth: expandedSectionWidth,
                         ),
                       ],
                     ),
