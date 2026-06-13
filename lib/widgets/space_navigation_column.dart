@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/course_plans/new_course_page.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
@@ -207,6 +208,15 @@ class _MainView extends StatelessWidget {
       case AppSection.courses:
         // Find/browse flows show the course list in the left column.
         final spaceId = AppSection.activeSpaceId(uri);
+        // "Start my own" — the plan list in the left column over the map, so
+        // a selected plan's activities can show on the map (world_v2).
+        if (spaceId == null && segments.contains('own')) {
+          return NewCoursePage(
+            route: 'rooms',
+            initialLanguageCode: uri.queryParameters['lang'],
+            showAll: uri.queryParameters['showAll'] == 'true',
+          );
+        }
         if (spaceId == null && !segments.contains('addcourse')) {
           return const FindCoursePage();
         }

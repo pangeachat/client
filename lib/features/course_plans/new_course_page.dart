@@ -17,6 +17,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 import 'package:fluffychat/routes/courses/course_language_filter.dart';
+import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -235,11 +236,28 @@ class NewCoursePageState extends State<NewCoursePage> {
     final spaceId = widget.spaceId;
     return Scaffold(
       appBar: AppBar(
+        // In the world_v2 left column the back/close lead back to browse and
+        // out to the map; the add-to-space context keeps the default back.
+        leading: spaceId == null
+            ? IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () => context.go('/courses'),
+              )
+            : null,
         title: Text(
           spaceId != null
               ? L10n.of(context).addCoursePlan
               : L10n.of(context).startOwn,
         ),
+        actions: spaceId == null
+            ? [
+                IconButton(
+                  icon: const Icon(Icons.close),
+                  tooltip: L10n.of(context).close,
+                  onPressed: () => context.go('/'),
+                ),
+              ]
+            : null,
       ),
       body: SafeArea(
         child: Center(
@@ -353,6 +371,9 @@ class NewCoursePageState extends State<NewCoursePage> {
                             );
                           }
                           final course = courses[index];
+                          // Tapping the card scopes the map to this plan's
+                          // activities (world_v2); the Create button starts
+                          // the course.
                           return Material(
                             type: MaterialType.transparency,
                             child: Padding(
@@ -360,7 +381,9 @@ class NewCoursePageState extends State<NewCoursePage> {
                                 vertical: 4.0,
                               ),
                               child: InkWell(
-                                onTap: () => _onSelect(course),
+                                onTap: () => MapContextController.set(
+                                  CourseMapContext(course.uuid),
+                                ),
                                 borderRadius: BorderRadius.circular(12.0),
                                 child: Container(
                                   padding: const EdgeInsets.all(12.0),
@@ -370,49 +393,60 @@ class NewCoursePageState extends State<NewCoursePage> {
                                       color: theme.colorScheme.primary,
                                     ),
                                   ),
-                                  child: Column(
-                                    spacing: 4.0,
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                  child: Row(
+                                    spacing: 12.0,
                                     children: [
-                                      Row(
-                                        spacing: 8.0,
-                                        children: [
-                                          SizedBox(
-                                            width: 58.0,
-                                            height: 58.0,
-                                            child: ImageByUrl(
-                                              imageUrl: course.imageUrl,
-                                              width: 58.0,
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                              replacement: Avatar(
-                                                name: course.title,
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                                size: 58.0,
-                                              ),
-                                            ),
+                                      SizedBox(
+                                        width: 48.0,
+                                        height: 48.0,
+                                        child: ImageByUrl(
+                                          imageUrl: course.imageUrl,
+                                          width: 48.0,
+                                          borderRadius: BorderRadius.circular(
+                                            10.0,
                                           ),
-                                          Flexible(
-                                            child: Text(
+                                          replacement: Avatar(
+                                            name: course.title,
+                                            borderRadius: BorderRadius.circular(
+                                              10.0,
+                                            ),
+                                            size: 48.0,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          spacing: 6.0,
+                                          mainAxisSize: MainAxisSize.min,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
                                               course.title,
                                               style: theme.textTheme.bodyLarge,
                                               maxLines: 2,
                                               overflow: TextOverflow.ellipsis,
                                             ),
-                                          ),
-                                        ],
+                                            CourseInfoChips(
+                                              course.uuid,
+                                              iconSize: 12.0,
+                                              fontSize: 12.0,
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                      CourseInfoChips(
-                                        course.uuid,
-                                        iconSize: 12.0,
-                                        fontSize: 12.0,
-                                      ),
-                                      Text(
-                                        course.description,
-                                        style: theme.textTheme.bodyMedium,
+                                      FilledButton(
+                                        onPressed: () => _onSelect(course),
+                                        style: FilledButton.styleFrom(
+                                          backgroundColor: theme
+                                              .colorScheme
+                                              .primaryContainer,
+                                          foregroundColor: theme
+                                              .colorScheme
+                                              .onPrimaryContainer,
+                                          visualDensity: VisualDensity.compact,
+                                        ),
+                                        child: Text(L10n.of(context).create),
                                       ),
                                     ],
                                   ),

@@ -489,15 +489,21 @@ abstract class AppRoutes {
             ),
             GoRoute(
               path: 'own',
+              // world_v2: the "Start my own" plan list lives in the left
+              // column over the persistent map (column mode), so the course's
+              // activities show on the map; narrow mode is full-screen.
               pageBuilder: (context, state) {
                 return defaultPageBuilder(
                   context,
                   state,
-                  NewCoursePage(
-                    route: 'rooms',
-                    initialLanguageCode: state.uri.queryParameters['lang'],
-                    showAll: state.uri.queryParameters['showAll'] == 'true',
-                  ),
+                  FluffyThemes.isColumnMode(context)
+                      ? const EmptyPage()
+                      : NewCoursePage(
+                          route: 'rooms',
+                          initialLanguageCode: state.uri.queryParameters['lang'],
+                          showAll:
+                              state.uri.queryParameters['showAll'] == 'true',
+                        ),
                 );
               },
               routes: [

@@ -4579,6 +4579,7 @@
     "knockAccepted": "Your join request was accepted! You can now enter the course.",
     "@knockAccepted": {},
     "findCourse": "Find a course",
+    "browsePublicCourses": "Browse public courses",
     "publicInviteDescChat": "Search for users to invite them to this chat.",
     "publicInviteDescSpace": "Search for users to invite them to this space.",
     "useActivityImageAsChatBackground": "Use activity image as chat background",

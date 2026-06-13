@@ -20,6 +20,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 import 'package:fluffychat/routes/courses/course_language_filter.dart';
+import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -321,7 +322,16 @@ class FindCoursePageView extends StatelessWidget {
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text(L10n.of(context).findCourse)),
+      appBar: AppBar(
+        title: Text(L10n.of(context).browsePublicCourses),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.close),
+            tooltip: L10n.of(context).close,
+            onPressed: () => context.go('/'),
+          ),
+        ],
+      ),
       body: MaxWidthBody(
         showBorder: false,
         withScrolling: false,
@@ -523,7 +533,9 @@ class _PublicCourseTile extends StatelessWidget {
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
-          onTap: () => _navigateToCoursePage(context),
+          // Tapping the card scopes the map to this course's activities
+          // (world_v2); the Knock/Join button below opens the join flow.
+          onTap: () => MapContextController.set(CourseMapContext(courseId)),
           borderRadius: BorderRadius.circular(12.0),
           child: Container(
             padding: const EdgeInsets.all(12.0),
