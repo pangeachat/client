@@ -200,6 +200,16 @@ class SettingsView extends StatelessWidget {
                     //     onChanged: controller.firstRunBootstrapAction,
                     //   ),
                     // Divider(color: theme.dividerColor),
+                    // world_v2: the Avatar surface merges profile + settings;
+                    // the full profile editor lives at /profile/edit.
+                    ListTile(
+                      leading: const Icon(Icons.account_circle_outlined),
+                      title: Text(L10n.of(context).editProfile),
+                      tileColor: activeRoute.startsWith('/profile/edit')
+                          ? theme.colorScheme.surfaceContainerHigh
+                          : null,
+                      onTap: () => context.go('/profile/edit'),
+                    ),
                     ListTile(
                       leading: const Icon(Icons.language_outlined),
                       title: Text(L10n.of(context).learningSettings),

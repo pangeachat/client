@@ -4668,6 +4668,7 @@
     "suggestedVocab": "Suggested vocab",
     "myGender": "My gender",
     "profile": "Profile",
+    "editProfile": "Edit profile",
     "notificationDeviceSubtitle": "View and manage devices that send you push notifications.",
     "notificationRuleDM": "Direct Message",
     "notificationRuleDMDescription": "Notifies the user about messages in direct message rooms.",

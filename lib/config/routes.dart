@@ -987,11 +987,27 @@ abstract class AppRoutes {
           ],
           redirect: loggedOutRedirect,
         ),
+        // Avatar surface (world_v2): profile + settings merged. /profile
+        // renders the same menu as /settings (profile header + settings
+        // list); the full profile editor moves to /profile/edit.
         GoRoute(
           path: '/profile',
           redirect: loggedOutRedirect,
-          pageBuilder: (context, state) =>
-              defaultPageBuilder(context, state, UserHomePage()),
+          pageBuilder: (context, state) => defaultPageBuilder(
+            context,
+            state,
+            FluffyThemes.isColumnMode(context)
+                ? const EmptyPage()
+                : const Settings(),
+          ),
+          routes: [
+            GoRoute(
+              path: 'edit',
+              redirect: loggedOutRedirect,
+              pageBuilder: (context, state) =>
+                  defaultPageBuilder(context, state, UserHomePage()),
+            ),
+          ],
         ),
         // Pangea#
         // #Pangea

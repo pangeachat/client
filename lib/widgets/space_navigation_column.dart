@@ -194,7 +194,11 @@ class _MainView extends StatelessWidget {
           showPracticeButton: !practice,
         );
 
+      // Avatar surface (world_v2): profile + settings share the merged
+      // menu in the left column. /profile/edit shows the editor in the
+      // canvas while this menu stays in the column.
       case AppSection.settings:
+      case AppSection.profile:
         return Settings(key: state.pageKey);
 
       case AppSection.courses:
@@ -215,7 +219,6 @@ class _MainView extends StatelessWidget {
         // column is skipped by SpaceNavigationColumn for this section.)
         return const SizedBox.shrink();
 
-      case AppSection.profile:
       case AppSection.chats:
         return ChatList(
           activeChat: state.pathParameters['roomid'],
