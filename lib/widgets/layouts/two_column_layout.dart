@@ -4,8 +4,15 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/widgets/mobile_bottom_nav.dart';
 import 'package:fluffychat/widgets/space_navigation_column.dart';
+
+/// One persistent world-map element for the whole app shell (world_v2 map
+/// architecture). The GlobalKey preserves the map's State — tiles, camera,
+/// pins — even if this shell page is rebuilt or remounted across
+/// navigation, so sections open *over* the map instead of refreshing it.
+final GlobalKey _persistentWorldMapKey = GlobalKey(debugLabel: 'worldMap');
 
 class TwoColumnLayout extends StatelessWidget {
   // #Pangea
@@ -67,6 +74,10 @@ class TwoColumnLayout extends StatelessWidget {
           // Pangea#
           children: [
             // #Pangea
+            // Persistent world map — the base layer everything overlays.
+            // Built once; section pages (the transparent EmptyPage canvas)
+            // and detail panels render on top of this single instance.
+            Positioned.fill(child: WorldMap(key: _persistentWorldMapKey)),
             Positioned.fill(
               left: columnWidth,
               child: ClipRRect(child: sideView),

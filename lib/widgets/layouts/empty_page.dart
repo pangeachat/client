@@ -1,47 +1,15 @@
-// #Pangea
-// import 'dart:math';
-// Pangea#
-
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/routes/world/world_map.dart';
-
-// #Pangea
-// import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
-// Pangea#
-
+/// The map-canvas hole (world_v2). Section roots use this as their canvas:
+/// it is fully transparent and lets pointer events through, so the single
+/// persistent [WorldMap] hosted by the app shell ([TwoColumnLayout]) shows
+/// and stays interactive underneath. The map is NOT built here anymore —
+/// rendering it per route is what used to remount it on every navigation.
 class EmptyPage extends StatelessWidget {
-  // #Pangea
-  // static const double _width = 400;
-  // Pangea#
   const EmptyPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    // #Pangea
-    // final width = min(MediaQuery.sizeOf(context).width, EmptyPage._width) / 2;
-    // final theme = Theme.of(context);
-    // Pangea#
-    return Scaffold(
-      // Add invisible appbar to make status bar on Android tablets bright.
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-      ),
-      extendBodyBehindAppBar: true,
-      // #Pangea
-      body: const WorldMap(),
-      // body: Container(
-      //   alignment: Alignment.center,
-      //   child: Image.asset(
-      //     'assets/logo_transparent.png',
-      //     color: theme.colorScheme.surfaceContainerHigh,
-      //     width: width,
-      //     height: width,
-      //     filterQuality: FilterQuality.medium,
-      //   ),
-      // ),
-      // Pangea#
-    );
+    return const IgnorePointer(child: SizedBox.expand());
   }
 }

@@ -7,11 +7,12 @@ import 'package:latlong2/latlong.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/course_plans/payload_client/models/course_plan/cms_course_plan_topic_location.dart';
 import 'package:fluffychat/routes/world/world_activities_repo.dart';
-import 'package:fluffychat/routes/world/world_camera_state.dart';
 import 'package:fluffychat/routes/world/world_locations_repo.dart';
 
-/// Full-bleed world map shown on the home surface (right column when no
-/// chat is selected). First slice of the Pangea World designs; star
+/// The world map. In world_v2 a single instance is hosted persistently by
+/// the app shell ([TwoColumnLayout]) as the base layer every section
+/// overlays — built once and never remounted on navigation, so tiles,
+/// camera, and pins are preserved as you move around the nav. Star
 /// progress and travel mechanics land on top of this later.
 class WorldMap extends StatefulWidget {
   /// Optional camera override, e.g. to center on an activity's location.
@@ -39,6 +40,10 @@ class _WorldMapState extends State<WorldMap> {
   @override
   void initState() {
     super.initState();
+    // Invariant: the shell owns a single persistent instance, so this runs
+    // once per app session — section navigation overlays the map, never
+    // remounts it. (Verified live: a clear-console → navigate sweep logs
+    // zero new mounts.)
     _loadLocations();
     _loadActivities();
   }
@@ -72,13 +77,10 @@ class _WorldMapState extends State<WorldMap> {
     return FlutterMap(
       mapController: widget.controller,
       options: MapOptions(
-        initialCenter:
-            widget.initialCenter ??
-            WorldCameraState.lastCenter ??
-            const LatLng(20, 0),
-        initialZoom: widget.initialZoom ?? WorldCameraState.lastZoom ?? 3,
-        onPositionChanged: (camera, hasGesture) =>
-            WorldCameraState.remember(camera.center, camera.zoom),
+        // The persistent instance keeps its own camera across navigation,
+        // so no external camera-state restore is needed.
+        initialCenter: widget.initialCenter ?? const LatLng(20, 0),
+        initialZoom: widget.initialZoom ?? 3,
         minZoom: 2,
         maxZoom: 18,
         cameraConstraint: CameraConstraint.contain(
