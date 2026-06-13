@@ -61,25 +61,10 @@ class CourseChatsView extends StatelessWidget {
                   discoveredSessions.length +
                   9,
               itemBuilder: (context, i) {
-                // courses chats title
+                // Chats-tab title slot. The progress header moved to
+                // Analytics; the standalone chat-bubble icon was redundant
+                // with the Chats tab itself — both removed (world_v2).
                 if (i == 0) {
-                  if (isColumnMode) {
-                    return const Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 4.0,
-                        horizontal: 8.0,
-                      ),
-                      child: Column(
-                        spacing: 12.0,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.chat_bubble_outline, size: 30.0),
-                          SizedBox(height: 12.0),
-                        ],
-                      ),
-                    );
-                  }
-
                   return const SizedBox();
                 }
                 i--;
