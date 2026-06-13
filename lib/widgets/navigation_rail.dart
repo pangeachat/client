@@ -9,6 +9,7 @@ import 'package:fluffychat/features/analytics_access/join_room_analytics_consent
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/routes/courses/add_course_menu.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
@@ -76,6 +77,56 @@ class SpacesNavigationRail extends StatelessWidget {
     context.go(PRoutes.course(joinedRoomId));
     return;
   }
+
+  /// A joined course space rail item (avatar + invite badge, map-clipped).
+  Widget _spaceItem(BuildContext context, Room space) {
+    final displayname = space.getLocalizedDisplayname(
+      MatrixLocals(L10n.of(context)),
+    );
+    final spaceChildrenIds = space.spaceChildren
+        .map((c) => c.roomId)
+        .toSet();
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+    return NaviRailItem(
+      toolTip: displayname,
+      isSelected: activeSpaceId == space.id,
+      backgroundColor: Colors.transparent,
+      borderRadius: BorderRadius.circular(0),
+      onTap: () => _onTapSpace(context, space.id),
+      unreadBadgeFilter: (room) => spaceChildrenIds.contains(room.id),
+      icon: b.Badge(
+        showBadge: space.membership == Membership.invite,
+        badgeStyle: b.BadgeStyle(
+          badgeColor: Theme.of(context).colorScheme.error,
+          elevation: 4,
+          borderSide: BorderSide.none,
+          padding: const EdgeInsetsGeometry.all(0),
+        ),
+        badgeContent: Icon(
+          Icons.error_outline,
+          color: Theme.of(context).colorScheme.onPrimary,
+          size: 16,
+        ),
+        position: b.BadgePosition.topEnd(top: -5, end: -7),
+        child: ClipPath(
+          clipper: MapClipper(),
+          child: Avatar(
+            mxContent: space.avatar,
+            name: displayname,
+            border: BorderSide(
+              width: 1,
+              color: Theme.of(context).dividerColor,
+            ),
+            borderRadius: BorderRadius.circular(0),
+            size: naviRailWidth - (isColumnMode ? 32.0 : 24.0),
+          ),
+        ),
+      ),
+      expanded: expanded,
+      naviRailWidth: naviRailWidth,
+      expandedSectionWidth: expandedSectionWidth,
+    );
+  }
   // Pangea#
 
   @override
@@ -90,12 +141,10 @@ class SpacesNavigationRail extends StatelessWidget {
     final isSettings = section == AppSection.settings;
     final isUserHome = section == AppSection.profile;
     final isAnalytics = section == AppSection.analytics;
-    final isCourse =
-        section == AppSection.courses &&
-        AppSection.activeSpaceId(
-              GoRouter.of(context).routeInformationProvider.value.uri,
-            ) ==
-            null;
+    final isChats = section == AppSection.chats;
+    final isWorld = section == AppSection.world;
+    // The Avatar slot merges profile + settings (world_v2).
+    final isAvatar = isUserHome || isSettings;
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
     // return StreamBuilder(
@@ -121,145 +170,120 @@ class SpacesNavigationRail extends StatelessWidget {
                   : naviRailWidth,
               duration: FluffyThemes.animationDuration,
               // Pangea#
+              // world_v2 rail order (top→bottom): Avatar (profile+settings) ·
+              // joined spaces · Chats · Analytics · World · Add-course.
+              // Settings folds into the Avatar surface — no bottom slot.
               child: Column(
                 // #Pangea
                 crossAxisAlignment: CrossAxisAlignment.start,
                 // Pangea#
                 children: [
                   Expanded(
-                    child: ListView.builder(
+                    child: ListView(
                       scrollDirection: Axis.vertical,
-                      // #Pangea
-                      // itemCount: allSpaces.length + 2,
-                      itemCount: allSpaces.length + 4,
-                      // Pangea#
-                      itemBuilder: (context, i) {
-                        // #Pangea
-                        if (i == 0) {
-                          return NaviRailItem(
-                            isSelected: isUserHome,
-                            onTap: () {
-                              collapse();
-                              context.go(PRoutes.profile);
-                            },
-                            backgroundColor: Colors.transparent,
-                            icon: FutureBuilder<Profile>(
-                              // #Pangea
-                              initialData: profile,
-                              // Pangea#
-                              future: client.fetchOwnProfile(),
-                              // #Pangea
-                              // builder: (context, snapshot) => Stack(
-                              builder: (context, snapshot) {
-                                if (snapshot.data?.avatarUrl != null &&
-                                    snapshot.data?.avatarUrl !=
-                                        profile?.avatarUrl) {
-                                  WidgetsBinding.instance.addPostFrameCallback(
-                                    (_) => onProfileUpdate(snapshot.data!),
-                                  );
-                                }
-                                return Stack(
-                                  // Pangea#
-                                  alignment: Alignment.center,
-                                  children: [
-                                    Material(
-                                      color: Colors.transparent,
-                                      borderRadius: BorderRadius.circular(99),
-                                      child: Avatar(
-                                        mxContent: snapshot.data?.avatarUrl,
-                                        name:
-                                            snapshot.data?.displayName ??
-                                            client.userID!.localpart,
-                                        size:
-                                            naviRailWidth -
-                                            (isColumnMode ? 32.0 : 24.0),
-                                      ),
-                                    ),
-                                  ],
+                      children: [
+                        // Avatar — profile + settings.
+                        NaviRailItem(
+                          isSelected: isAvatar,
+                          onTap: () {
+                            collapse();
+                            context.go(PRoutes.profile);
+                          },
+                          backgroundColor: Colors.transparent,
+                          icon: FutureBuilder<Profile>(
+                            initialData: profile,
+                            future: client.fetchOwnProfile(),
+                            builder: (context, snapshot) {
+                              if (snapshot.data?.avatarUrl != null &&
+                                  snapshot.data?.avatarUrl !=
+                                      profile?.avatarUrl) {
+                                WidgetsBinding.instance.addPostFrameCallback(
+                                  (_) => onProfileUpdate(snapshot.data!),
                                 );
-                              },
-                            ),
-                            toolTip: L10n.of(context).home,
-                            // #Pangea
-                            expanded: expanded,
-                            naviRailWidth: naviRailWidth,
-                            expandedSectionWidth: expandedSectionWidth,
-                            // Pangea#
-                          );
-                        }
-                        i--;
-                        if (i == 0) {
-                          return NaviRailItem(
-                            isSelected: isAnalytics,
-                            icon: const Icon(Icons.analytics_outlined),
-                            selectedIcon: const Icon(Icons.analytics),
-                            onTap: () {
-                              collapse();
-                              AnalyticsNavigationUtil.navigateToAnalytics(
-                                context: context,
+                              }
+                              return Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  Material(
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(99),
+                                    child: Avatar(
+                                      mxContent: snapshot.data?.avatarUrl,
+                                      name:
+                                          snapshot.data?.displayName ??
+                                          client.userID!.localpart,
+                                      size:
+                                          naviRailWidth -
+                                          (isColumnMode ? 32.0 : 24.0),
+                                    ),
+                                  ),
+                                ],
                               );
                             },
-                            toolTip: L10n.of(context).learningAnalytics,
-                            expanded: expanded,
-                            naviRailWidth: naviRailWidth,
-                            expandedSectionWidth: expandedSectionWidth,
-                          );
-                        }
-                        i--;
-                        // Pangea#
-                        if (i == 0) {
-                          return NaviRailItem(
-                            // #Pangea
-                            // isSelected: activeSpaceId == null && !isSettings,
-                            isSelected:
-                                activeSpaceId == null &&
-                                !isSettings &&
-                                !isAnalytics &&
-                                !isUserHome &&
-                                !isCourse,
-                            // onTap: onGoToChats,
-                            // icon: const Padding(
-                            //   padding: EdgeInsets.all(10.0),
-                            //   child: Icon(Icons.forum_outlined),
-                            // ),
-                            // selectedIcon: const Padding(
-                            //   padding: EdgeInsets.all(10.0),
-                            //   child: Icon(Icons.forum),
-                            // ),
-                            // toolTip: L10n.of(context).chats,
-                            // unreadBadgeFilter: (room) => true,
-                            icon: const Icon(Icons.forum_outlined),
-                            selectedIcon: const Icon(Icons.forum),
-                            onTap: () {
-                              collapse();
-                              context.go(PRoutes.world);
-                            },
-                            toolTip: L10n.of(context).allChats,
-                            unreadBadgeFilter: (room) =>
-                                room.firstSpaceParent == null,
-                            expanded: expanded,
-                            naviRailWidth: naviRailWidth,
-                            expandedSectionWidth: expandedSectionWidth,
-                            // Pangea#
-                          );
-                        }
-                        i--;
-                        if (i == allSpaces.length) {
-                          return NaviRailItem(
-                            // #Pangea
-                            // isSelected: false,
-                            // onTap: () => context.go('/rooms/newspace'),
-                            // icon: const Padding(
-                            //   padding: EdgeInsets.all(8.0),
-                            //   child: Icon(Icons.add),
-                            // ),
-                            // toolTip: L10n.of(context).createNewSpace,
+                          ),
+                          toolTip: L10n.of(context).home,
+                          expanded: expanded,
+                          naviRailWidth: naviRailWidth,
+                          expandedSectionWidth: expandedSectionWidth,
+                        ),
+                        // Joined course spaces.
+                        for (final space in allSpaces)
+                          _spaceItem(context, space),
+                        // Chats.
+                        NaviRailItem(
+                          isSelected: isChats,
+                          icon: const Icon(Icons.forum_outlined),
+                          selectedIcon: const Icon(Icons.forum),
+                          onTap: () {
+                            collapse();
+                            context.go(PRoutes.chats);
+                          },
+                          toolTip: L10n.of(context).allChats,
+                          unreadBadgeFilter: (room) =>
+                              room.firstSpaceParent == null,
+                          expanded: expanded,
+                          naviRailWidth: naviRailWidth,
+                          expandedSectionWidth: expandedSectionWidth,
+                        ),
+                        // Analytics.
+                        NaviRailItem(
+                          isSelected: isAnalytics,
+                          icon: const Icon(Icons.analytics_outlined),
+                          selectedIcon: const Icon(Icons.analytics),
+                          onTap: () {
+                            collapse();
+                            AnalyticsNavigationUtil.navigateToAnalytics(
+                              context: context,
+                            );
+                          },
+                          toolTip: L10n.of(context).learningAnalytics,
+                          expanded: expanded,
+                          naviRailWidth: naviRailWidth,
+                          expandedSectionWidth: expandedSectionWidth,
+                        ),
+                        // World map home.
+                        NaviRailItem(
+                          isSelected: isWorld,
+                          icon: const Icon(Icons.public_outlined),
+                          selectedIcon: const Icon(Icons.public),
+                          onTap: () {
+                            collapse();
+                            context.go(PRoutes.world);
+                          },
+                          toolTip: L10n.of(context).world,
+                          expanded: expanded,
+                          naviRailWidth: naviRailWidth,
+                          expandedSectionWidth: expandedSectionWidth,
+                        ),
+                        // Add course — opens a popover menu, not a page.
+                        Builder(
+                          builder: (itemContext) => NaviRailItem(
                             backgroundColor: Colors.transparent,
                             borderRadius: BorderRadius.circular(0),
-                            isSelected: isCourse,
+                            isSelected: false,
                             onTap: () {
                               collapse();
-                              context.go(PRoutes.courses);
+                              showAddCourseMenu(itemContext);
                             },
                             icon: ClipPath(
                               clipper: MapClipper(),
@@ -270,13 +294,9 @@ class SpacesNavigationRail extends StatelessWidget {
                                 height:
                                     naviRailWidth -
                                     (isColumnMode ? 32.0 : 24.0),
-                                color: isCourse
-                                    ? Theme.of(
-                                        context,
-                                      ).colorScheme.primaryContainer
-                                    : Theme.of(
-                                        context,
-                                      ).colorScheme.surfaceContainerHigh,
+                                color: Theme.of(
+                                  context,
+                                ).colorScheme.surfaceContainerHigh,
                                 child: const Icon(Icons.add),
                               ),
                             ),
@@ -284,109 +304,9 @@ class SpacesNavigationRail extends StatelessWidget {
                             expanded: expanded,
                             naviRailWidth: naviRailWidth,
                             expandedSectionWidth: expandedSectionWidth,
-                            // Pangea#
-                          );
-                        }
-                        final space = allSpaces[i];
-                        final displayname = allSpaces[i]
-                            .getLocalizedDisplayname(
-                              MatrixLocals(L10n.of(context)),
-                            );
-                        final spaceChildrenIds = space.spaceChildren
-                            .map((c) => c.roomId)
-                            .toSet();
-                        return NaviRailItem(
-                          toolTip: displayname,
-                          isSelected: activeSpaceId == space.id,
-                          // #Pangea
-                          backgroundColor: Colors.transparent,
-                          borderRadius: BorderRadius.circular(0),
-                          // onTap: () => onGoToSpaceId(allSpaces[i].id),
-                          onTap: () => _onTapSpace(context, allSpaces[i].id),
-                          // Pangea#
-                          unreadBadgeFilter: (room) =>
-                              spaceChildrenIds.contains(room.id),
-                          // #Pangea
-                          // icon: Avatar(
-                          //   mxContent: allSpaces[i].avatar,
-                          //   name: displayname,
-                          //   border: BorderSide(
-                          //     width: 1,
-                          //     color: Theme.of(context).dividerColor,
-                          //   ),
-                          //   borderRadius: BorderRadius.circular(
-                          //     AppConfig.borderRadius / 2,
-                          //   ),
-                          // ),
-                          icon: b.Badge(
-                            showBadge:
-                                allSpaces[i].membership == Membership.invite,
-                            badgeStyle: b.BadgeStyle(
-                              badgeColor: Theme.of(context).colorScheme.error,
-                              elevation: 4,
-                              borderSide: BorderSide.none,
-                              padding: const EdgeInsetsGeometry.all(0),
-                            ),
-                            badgeContent: Icon(
-                              Icons.error_outline,
-                              color: Theme.of(context).colorScheme.onPrimary,
-                              size: 16,
-                            ),
-                            position: b.BadgePosition.topEnd(top: -5, end: -7),
-                            child: ClipPath(
-                              clipper: MapClipper(),
-                              child: Avatar(
-                                mxContent: allSpaces[i].avatar,
-                                name: displayname,
-                                border: BorderSide(
-                                  width: 1,
-                                  color: Theme.of(context).dividerColor,
-                                ),
-                                borderRadius: BorderRadius.circular(0),
-                                size:
-                                    naviRailWidth -
-                                    (isColumnMode ? 32.0 : 24.0),
-                              ),
-                            ),
                           ),
-                          expanded: expanded,
-                          naviRailWidth: naviRailWidth,
-                          expandedSectionWidth: expandedSectionWidth,
-                          // Pangea#
-                        );
-                      },
-                    ),
-                  ),
-                  // #Pangea
-                  // NaviRailItem(
-                  SizedBox(
-                    width: expanded
-                        ? naviRailWidth + expandedSectionWidth
-                        : naviRailWidth,
-                    child: NaviRailItem(
-                      // Pangea#
-                      isSelected: isSettings,
-                      // #Pangea
-                      // onTap: () => context.go(PRoutes.settings),
-                      // icon: const Padding(
-                      //   padding: EdgeInsets.all(10.0),
-                      //   child: Icon(Icons.settings_outlined),
-                      // ),
-                      // selectedIcon: const Padding(
-                      //   padding: EdgeInsets.all(10.0),
-                      //   child: Icon(Icons.settings),
-                      // ),
-                      onTap: () {
-                        collapse();
-                        context.go(PRoutes.settings);
-                      },
-                      icon: const Icon(Icons.settings_outlined),
-                      selectedIcon: const Icon(Icons.settings),
-                      expanded: expanded,
-                      naviRailWidth: naviRailWidth,
-                      expandedSectionWidth: expandedSectionWidth,
-                      // Pangea#
-                      toolTip: L10n.of(context).settings,
+                        ),
+                      ],
                     ),
                   ),
                 ],

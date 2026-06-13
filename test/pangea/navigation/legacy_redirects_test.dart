@@ -7,8 +7,8 @@ void main() {
       LegacyRedirects.resolve(Uri.parse(location));
 
   group('LegacyRedirects', () {
-    test('old chats root maps to world home', () {
-      expect(resolve('/rooms'), '/');
+    test('old chats root maps to the chats list', () {
+      expect(resolve('/rooms'), '/chats');
     });
 
     test('sections are lifted to first-class roots', () {

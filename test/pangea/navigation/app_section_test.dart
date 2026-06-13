@@ -6,8 +6,9 @@ void main() {
   AppSection from(String location) => AppSection.fromUri(Uri.parse(location));
 
   group('AppSection.fromUri', () {
-    test('world home and matrix rooms select chats', () {
-      expect(from('/'), AppSection.chats);
+    test('root selects world; matrix rooms select chats', () {
+      expect(from('/'), AppSection.world);
+      expect(from('/chats'), AppSection.chats);
       expect(from('/rooms/!abc:server.org'), AppSection.chats);
     });
 
@@ -20,8 +21,8 @@ void main() {
       expect(from('/profile'), AppSection.profile);
     });
 
-    test('first-class world objects select chats (world surface)', () {
-      expect(from('/32ad3c08-e501-41c5-b544-0875026090ed'), AppSection.chats);
+    test('first-class world objects select world (render over the map)', () {
+      expect(from('/32ad3c08-e501-41c5-b544-0875026090ed'), AppSection.world);
     });
 
     test('exact segments only — no substring leakage', () {

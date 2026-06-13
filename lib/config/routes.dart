@@ -230,10 +230,19 @@ abstract class AppRoutes {
       ),
       routes: [
         // #Pangea
-        // World home (world_v2): the app opens onto the map. Chats are the
-        // default section; ChatList renders in the left column / narrow mode.
+        // World home (world_v2): the app opens onto the map, in both
+        // column and narrow mode. Chats are their own section at /chats.
         GoRoute(
           path: '/',
+          redirect: loggedOutRedirect,
+          pageBuilder: (context, state) =>
+              defaultPageBuilder(context, state, const EmptyPage()),
+        ),
+        // Chats section (world_v2): the chat list. In column mode the map
+        // is the canvas and ChatList renders in the left column; in narrow
+        // mode ChatList is the full screen.
+        GoRoute(
+          path: '/chats',
           redirect: loggedOutRedirect,
           pageBuilder: (context, state) => defaultPageBuilder(
             context,

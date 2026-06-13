@@ -15,8 +15,9 @@ abstract class LegacyRedirects {
 
     final rest = segments.sublist(1);
     final List<String>? target = switch (rest) {
-      // `/rooms` — the old chats/world root.
-      [] => const [],
+      // `/rooms` — the old chats root. Chats now live at `/chats`; the
+      // world map is `/`.
+      [] => const ['chats'],
 
       // Renamed sections.
       ['user_home', ...final tail] => ['profile', ...tail],
@@ -60,7 +61,7 @@ abstract class LegacyRedirects {
     return resolved;
   }
 
-  /// Guard: `/rooms` exact maps to the world home.
-  // (Handled by the `[] => const []` arm above; '/' + join('') == '/'.)
-  static String get worldHome => PRoutes.world;
+  /// Guard: bare `/rooms` maps to the chats list.
+  // (Handled by the `[] => const ['chats']` arm above.)
+  static String get chatsHome => PRoutes.chats;
 }

@@ -89,6 +89,10 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
+    // World is the full-bleed map: no left column. Every other section
+    // overlays its list/detail card over the map in the left column.
+    final showLeftColumn =
+        AppSection.fromUri(widget.state.uri) != AppSection.world;
 
     // width of base navigation rail, if visible
     final baseNaviRailWidth = isColumnMode
@@ -110,7 +114,7 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
 
     return Stack(
       children: [
-        if (isColumnMode)
+        if (isColumnMode && showLeftColumn)
           Positioned.fill(
             left: realNaviRailWidth,
             child: Row(
@@ -205,6 +209,11 @@ class _MainView extends StatelessWidget {
           activeChat: state.pathParameters['roomid'],
           activeSpace: state.pathParameters['spaceid'],
         );
+
+      case AppSection.world:
+        // The world map is the full-bleed canvas; no left column. (The
+        // column is skipped by SpaceNavigationColumn for this section.)
+        return const SizedBox.shrink();
 
       case AppSection.profile:
       case AppSection.chats:

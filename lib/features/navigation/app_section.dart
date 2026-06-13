@@ -13,9 +13,18 @@ import 'package:fluffychat/features/navigation/route_paths.dart';
 /// a location under `/courses/:spaceid` means "a course is the active
 /// section" and [AppSection.fromUri] returns [courses].
 enum AppSection {
-  /// World home + chats. Root: `/`.
-  chats(
+  /// World map home. Root: `/`. The app opens onto the world; first-class
+  /// world objects (`/<uuid>`) render over this surface.
+  world(
     rootPath: PRoutes.world,
+    icon: Icons.public_outlined,
+    selectedIcon: Icons.public,
+  ),
+
+  /// Chats — the chat list. Root: `/chats`. Matrix rooms (`/rooms/...`)
+  /// belong to this surface too.
+  chats(
+    rootPath: PRoutes.chats,
     icon: Icons.forum_outlined,
     selectedIcon: Icons.forum,
   ),
@@ -54,24 +63,25 @@ enum AppSection {
   final IconData icon;
   final IconData selectedIcon;
 
-  /// First path segment owned by this section ('' for [chats]).
+  /// First path segment owned by this section ('' for [world]).
   String get _segment => rootPath == '/' ? '' : rootPath.substring(1);
 
   /// Resolve the active section from a location.
   ///
-  /// `/rooms/...` (Matrix rooms) and first-class world-object URLs both
-  /// belong to the chats/world surface. Unknown segments default to
-  /// [chats] so the nav always has a sane selection.
+  /// `/rooms/...` (Matrix rooms) belong to the [chats] surface.
+  /// First-class world-object URLs (`/<uuid>`) render over the map, so
+  /// they select [world]. Unknown segments default to [world] — the app's
+  /// home — so the nav always has a sane selection.
   static AppSection fromUri(Uri uri) {
     final segments = uri.pathSegments;
-    if (segments.isEmpty) return AppSection.chats;
+    if (segments.isEmpty) return AppSection.world;
     final first = segments.first;
     if (first == 'rooms') return AppSection.chats;
-    if (PRoutes.isWorldObjectId(first)) return AppSection.chats;
+    if (PRoutes.isWorldObjectId(first)) return AppSection.world;
     for (final section in AppSection.values) {
       if (section._segment == first) return section;
     }
-    return AppSection.chats;
+    return AppSection.world;
   }
 
   /// The space id when a joined course is active (`/courses/:spaceid`),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/widgets/space_navigation_column.dart';
 
 class TwoColumnLayout extends StatelessWidget {
@@ -40,9 +41,15 @@ class TwoColumnLayout extends StatelessWidget {
       }
     }
 
+    // World is the full-bleed map: the canvas extends under where the left
+    // column would be (only the rail offsets it).
+    final showLeftColumn =
+        AppSection.fromUri(state.uri) != AppSection.world;
     final columnWidth =
         (showNavRail ? (FluffyThemes.navRailWidth + 1.0) : 0.0) +
-        (isColumnMode ? (FluffyThemes.columnWidth + 1.0) : 0.0);
+        (isColumnMode && showLeftColumn
+            ? (FluffyThemes.columnWidth + 1.0)
+            : 0.0);
     // Pangea#
     return ScaffoldMessenger(
       child: Scaffold(

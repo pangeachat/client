@@ -123,7 +123,7 @@ class ChatListController extends State<ChatList>
   // void clearActiveSpace() => setState(() {
   //   _activeSpaceId = null;
   // });
-  void clearActiveSpace() => context.go(PRoutes.world);
+  void clearActiveSpace() => context.go(PRoutes.chats);
   void setActiveSpace(String spaceId) => context.go(PRoutes.course(spaceId));
   // Pangea#
 

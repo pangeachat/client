@@ -4261,6 +4261,10 @@
         "placeholders": {}
     },
     "addCourse": "Add a course",
+    "world": "World",
+    "addCourseStartMyOwn": "Start my own",
+    "addCourseEnterCode": "Enter code for private course",
+    "addCourseBrowsePublic": "Browse public courses",
     "joinPublicCourse": "Join public course",
     "vocabLevelsDesc": "This is where vocab words will go once you’ve leveled them up!",
     "activityAnalyticsTooltipBody": "These are your saved activities for review and practice.",

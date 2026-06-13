@@ -7,8 +7,12 @@
 ///
 /// Design doc: `.github/vision/world_v2.md` (workspace root repo).
 abstract class PRoutes {
-  /// World home — the app opens onto the map. Chats section root.
+  /// World home — the app opens onto the map. World section root.
   static const String world = '/';
+
+  /// Chats section root — the chat list. The world map (`/`) and chats
+  /// are distinct sections in world_v2.
+  static const String chats = '/chats';
 
   /// Learning analytics section root.
   static const String analytics = '/analytics';
