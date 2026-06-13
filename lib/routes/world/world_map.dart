@@ -225,11 +225,20 @@ class _WorldMapState extends State<WorldMap> {
     });
   }
 
-  /// Open the activity's first-class page (the full session start flow).
-  /// Reached only from the preview popup's "Details" button — an explicit
-  /// action, not the pin tap.
+  /// Open the activity detail in-place, preserving the current route (course
+  /// stays selected, map stays put) via the `?activity=<id>` param. Reached
+  /// only from the preview popup's "Details" button.
   void _openActivity(WorldActivityPin activity) {
-    context.go('/${activity.activityId}');
+    final uri = GoRouter.of(context).routeInformationProvider.value.uri;
+    context.go(
+      uri.replace(
+        queryParameters: {
+          ...uri.queryParameters,
+          'activity': activity.activityId,
+        },
+      ).toString(),
+    );
+    setState(() => _selectedActivity = null);
   }
 
   @override

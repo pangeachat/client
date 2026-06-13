@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/routes/world/activity_detail_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -132,6 +133,13 @@ class TwoColumnLayout extends StatelessWidget {
       _detailMaxWidth,
       MediaQuery.sizeOf(context).width - columnWidth,
     );
+    // world_v2: `?activity=<id>` opens the activity detail in-place over the
+    // persistent map — a capped detail (not full-bleed), course preserved,
+    // map untouched — instead of leaving for the standalone `/<id>` page.
+    final activityParam = state.uri.queryParameters['activity'];
+    final effectiveCanvasMode = activityParam != null
+        ? _CanvasMode.detail
+        : canvasMode;
 
     // Scope the persistent map to the active course (world_v2 context). A
     // joined course (`/courses/:spaceid`) scopes the map to that course's
@@ -185,11 +193,20 @@ class TwoColumnLayout extends StatelessWidget {
               left: columnWidth,
               top: 0,
               bottom: 0,
-              right: canvasMode == _CanvasMode.detail ? null : 0,
-              width: canvasMode == _CanvasMode.detail ? detailWidth : null,
+              right: effectiveCanvasMode == _CanvasMode.detail ? null : 0,
+              width: effectiveCanvasMode == _CanvasMode.detail
+                  ? detailWidth
+                  : null,
               child: Offstage(
-                offstage: canvasMode == _CanvasMode.map,
-                child: ClipRRect(child: sideView),
+                offstage: effectiveCanvasMode == _CanvasMode.map,
+                child: ClipRRect(
+                  child: activityParam != null
+                      ? ActivityDetailPanel(
+                          activityId: activityParam,
+                          parentSpaceId: activeSpaceId,
+                        )
+                      : sideView,
+                ),
               ),
             ),
             SpaceNavigationColumn(state: state, showNavRail: showNavRail),
