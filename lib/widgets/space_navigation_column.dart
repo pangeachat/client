@@ -14,7 +14,9 @@ import 'package:fluffychat/routes/analytics/construct_analytics/analytics_detail
 import 'package:fluffychat/routes/analytics/level/level_analytics_details_content.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
+import 'package:fluffychat/routes/courses/add_course_hub_view.dart';
 import 'package:fluffychat/routes/courses/find_course_page.dart';
+import 'package:fluffychat/routes/courses/private/course_code_page.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/navigation_rail.dart';
@@ -206,19 +208,30 @@ class _MainView extends StatelessWidget {
         return Settings(key: state.pageKey);
 
       case AppSection.courses:
-        // Find/browse flows show the course list in the left column.
+        // Add-course flows live in the left column over the map (world_v2),
+        // dispatched by sub-path so a selected course's activities can show.
         final spaceId = AppSection.activeSpaceId(uri);
-        // "Start my own" — the plan list in the left column over the map, so
-        // a selected plan's activities can show on the map (world_v2).
-        if (spaceId == null && segments.contains('own')) {
-          return NewCoursePage(
-            route: 'rooms',
-            initialLanguageCode: uri.queryParameters['lang'],
-            showAll: uri.queryParameters['showAll'] == 'true',
-          );
-        }
-        if (spaceId == null && !segments.contains('addcourse')) {
-          return const FindCoursePage();
+        if (spaceId == null) {
+          // "Start my own" — the plan list.
+          if (segments.contains('own')) {
+            return NewCoursePage(
+              route: 'rooms',
+              initialLanguageCode: uri.queryParameters['lang'],
+              showAll: uri.queryParameters['showAll'] == 'true',
+            );
+          }
+          // "Browse public courses" — the public-course list.
+          if (segments.contains('browse')) {
+            return const FindCoursePage();
+          }
+          // "Enter code for private course".
+          if (segments.contains('private')) {
+            return const CourseCodePage();
+          }
+          // Plain `/courses` — the "Add new course" hub card.
+          if (!segments.contains('addcourse')) {
+            return const AddCourseHubView();
+          }
         }
         // Inside a specific course chat, keep the chat list in the column.
         final roomId = state.pathParameters['roomid'];

@@ -29,6 +29,7 @@ import 'package:fluffychat/routes/chat/chat_details/permissions/chat_permissions
 import 'package:fluffychat/routes/chat/chat_details/space_analytics/space_analytics.dart';
 import 'package:fluffychat/routes/chat/chat_search/chat_search_page.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
+import 'package:fluffychat/routes/courses/add_course_hub_view.dart';
 import 'package:fluffychat/routes/courses/find_course_page.dart';
 import 'package:fluffychat/routes/courses/own/invite/course_invite_page.dart';
 import 'package:fluffychat/routes/courses/own/selected_course_page.dart';
@@ -467,25 +468,38 @@ abstract class AppRoutes {
         GoRoute(
           path: '/courses',
           redirect: loggedOutRedirect,
+          // world_v2: `/courses` is the "Add new course" hub — a card that
+          // floats over the map. In column mode the hub lives in the left
+          // column (canvas = map); narrow mode shows the card over the map.
           pageBuilder: (context, state) => defaultPageBuilder(
             context,
             state,
-            // Left column hosts the find-course list in column
-            // mode (world_v2); the canvas shows the map.
             FluffyThemes.isColumnMode(context)
                 ? const EmptyPage()
-                : const FindCoursePage(),
+                : const AddCourseHubView(),
           ),
           routes: [
             GoRoute(
               path: 'private',
-              pageBuilder: (context, state) {
-                return defaultPageBuilder(
-                  context,
-                  state,
-                  const CourseCodePage(),
-                );
-              },
+              // Enter-code panel in the left column over the map (world_v2).
+              pageBuilder: (context, state) => defaultPageBuilder(
+                context,
+                state,
+                FluffyThemes.isColumnMode(context)
+                    ? const EmptyPage()
+                    : const CourseCodePage(),
+              ),
+            ),
+            GoRoute(
+              path: 'browse',
+              // Browse-public-courses list in the left column over the map.
+              pageBuilder: (context, state) => defaultPageBuilder(
+                context,
+                state,
+                FluffyThemes.isColumnMode(context)
+                    ? const EmptyPage()
+                    : const FindCoursePage(),
+              ),
             ),
             GoRoute(
               path: 'own',

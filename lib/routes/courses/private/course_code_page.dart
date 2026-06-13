@@ -66,7 +66,22 @@ class CourseCodePageState extends State<CourseCodePage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(title: Text(L10n.of(context).joinWithCode)),
+      appBar: AppBar(
+        // world_v2: back returns to the Add-course hub, close to the map.
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+          onPressed: () => context.go('/courses'),
+        ),
+        title: Text(L10n.of(context).joinWithCode),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.close),
+            tooltip: L10n.of(context).close,
+            onPressed: () => context.go('/'),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Center(
           child: Container(

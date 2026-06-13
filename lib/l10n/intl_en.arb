@@ -4261,6 +4261,7 @@
         "placeholders": {}
     },
     "addCourse": "Add a course",
+    "addNewCourse": "Add new course",
     "world": "World",
     "addCourseStartMyOwn": "Start my own",
     "addCourseEnterCode": "Enter code for private course",

@@ -36,6 +36,8 @@ const Set<String> _mapCanvasPaths = {
   '/rooms',
   '/courses',
   '/courses/own',
+  '/courses/browse',
+  '/courses/private',
   '/courses/:spaceid',
   '/courses/:spaceid/details',
   '/analytics',

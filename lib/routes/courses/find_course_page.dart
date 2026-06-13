@@ -323,6 +323,11 @@ class FindCoursePageView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+          onPressed: () => context.go('/courses'),
+        ),
         title: Text(L10n.of(context).browsePublicCourses),
         actions: [
           IconButton(

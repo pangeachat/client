@@ -195,7 +195,7 @@ Future<void> _showSpaceSwitcherSheet(BuildContext context) {
             title: Text(L10n.of(sheetContext).addCourseBrowsePublic),
             onTap: () {
               Navigator.of(sheetContext).pop();
-              sheetContext.go(PRoutes.courses);
+              sheetContext.go('${PRoutes.courses}/browse');
             },
           ),
         ],
