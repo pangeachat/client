@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
+import 'package:fluffychat/widgets/layouts/map_canvas_scope.dart';
 import 'package:fluffychat/widgets/mobile_bottom_nav.dart';
 import 'package:fluffychat/widgets/space_navigation_column.dart';
 
@@ -80,7 +81,20 @@ class TwoColumnLayout extends StatelessWidget {
             Positioned.fill(child: WorldMap(key: _persistentWorldMapKey)),
             Positioned.fill(
               left: columnWidth,
-              child: ClipRRect(child: sideView),
+              // When the canvas is the transparent map hole (EmptyPage), the
+              // sideView is go_router's nested Navigator/Overlay — which
+              // absorbs pointer events even when its leaf is transparent.
+              // Take it fully off the layout/hit-test tree so pan/zoom/tap
+              // reach the map below; opaque detail pages stay onstage and
+              // cover the map. The Navigator's route state is preserved.
+              child: ValueListenableBuilder<int>(
+                valueListenable: MapCanvasScope.listenable,
+                builder: (context, mapCanvasCount, child) => Offstage(
+                  offstage: mapCanvasCount > 0,
+                  child: child,
+                ),
+                child: ClipRRect(child: sideView),
+              ),
             ),
             SpaceNavigationColumn(state: state, showNavRail: showNavRail),
             // Container(width: 1.0, color: theme.dividerColor),
