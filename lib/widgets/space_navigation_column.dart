@@ -131,7 +131,9 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
               ],
             ),
           ),
-        if (widget.showNavRail)
+        // world_v2: the vertical rail is column-mode only; narrow screens
+        // use the bottom nav (rendered by TwoColumnLayout).
+        if (isColumnMode && widget.showNavRail)
           HoverBuilder(
             builder: (context, hovered) {
               WidgetsBinding.instance.addPostFrameCallback((_) {

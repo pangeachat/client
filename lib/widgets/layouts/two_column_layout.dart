@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/widgets/mobile_bottom_nav.dart';
 import 'package:fluffychat/widgets/space_navigation_column.dart';
 
 class TwoColumnLayout extends StatelessWidget {
@@ -45,15 +46,21 @@ class TwoColumnLayout extends StatelessWidget {
     // column would be (only the rail offsets it).
     final showLeftColumn =
         AppSection.fromUri(state.uri) != AppSection.world;
+    // world_v2: the rail is vertical-left in column mode and a bottom bar
+    // in narrow mode, so it only offsets the canvas in column mode.
     final columnWidth =
-        (showNavRail ? (FluffyThemes.navRailWidth + 1.0) : 0.0) +
+        (isColumnMode && showNavRail ? (FluffyThemes.navRailWidth + 1.0) : 0.0) +
         (isColumnMode && showLeftColumn
             ? (FluffyThemes.columnWidth + 1.0)
             : 0.0);
+    final showBottomNav = !isColumnMode && showNavRail;
     // Pangea#
     return ScaffoldMessenger(
       child: Scaffold(
         // #Pangea
+        bottomNavigationBar: showBottomNav
+            ? MobileBottomNav(state: state)
+            : null,
         // body: Row(
         body: Stack(
           fit: StackFit.expand,
