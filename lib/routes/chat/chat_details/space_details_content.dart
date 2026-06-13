@@ -101,6 +101,9 @@ class SpaceDetailsContent extends StatelessWidget {
         onPressed: () => setSelectedTab(SpaceSettingsTabs.analytics, context),
         enabled: room.isRoomAdmin,
         tab: SpaceSettingsTabs.analytics,
+        // world_v2: the card has 4 primary tabs (chats / course plan /
+        // participants / more); course stats live inside More for admins.
+        showInMainView: false,
       ),
       ButtonDetails(
         title: l10n.invite,
