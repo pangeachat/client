@@ -1,5 +1,6 @@
 import 'package:latlong2/latlong.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/course_plans/course_activities/course_activity_repo.dart';
 import 'package:fluffychat/features/course_plans/course_activities/course_activity_translation_request.dart';
 import 'package:fluffychat/features/course_plans/course_topics/course_topic_repo.dart';
@@ -24,12 +25,17 @@ class WorldActivityPin {
   /// course space an activity session should launch under.
   final String coursePlanId;
 
+  /// The full localized activity plan — carried so the map can render a
+  /// preview popup (title, image, etc.) on tap without a re-fetch.
+  final ActivityPlanModel plan;
+
   const WorldActivityPin({
     required this.activityId,
     required this.title,
     required this.locationName,
     required this.point,
     required this.coursePlanId,
+    required this.plan,
   });
 }
 
@@ -134,6 +140,7 @@ class WorldActivitiesRepo {
             locationName: location.name,
             point: point,
             coursePlanId: coursePlanId,
+            plan: plan,
           ),
         );
       }
