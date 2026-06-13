@@ -1,14 +1,66 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/course_plans/payload_client/models/course_plan/cms_course_plan_topic_location.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_activities_repo.dart';
 import 'package:fluffychat/routes/world/world_locations_repo.dart';
+import 'package:fluffychat/utils/stream_extension.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+
+/// How many of an activity's goals the current user has collected, across all
+/// of their sessions of it. Drives the pin's star colour on the world map.
+enum _GoalTier { none, some, all }
+
+/// Pin star colour for a goal tier: gray = none collected, bronze = some,
+/// gold = all (world_v2 progress affordance).
+Color _starColor(_GoalTier tier) {
+  switch (tier) {
+    case _GoalTier.all:
+      return AppConfig.gold;
+    case _GoalTier.some:
+      return const Color(0xFFCD7F32); // bronze
+    case _GoalTier.none:
+      return Colors.grey;
+  }
+}
+
+/// Build `activityId -> best goal tier` from the user's own activity-session
+/// rooms. Per session, the tier is measured against *the user's own role's*
+/// goals ("by that particular user"): collected via the
+/// `orchestrator_awarded_goals` room state. Activities the user hasn't started
+/// (or that have no goals) are absent → they default to [_GoalTier.none]
+/// (gray). Multiple sessions of one activity keep the highest tier reached.
+Map<String, _GoalTier> _userGoalTiers(Client client) {
+  final tiers = <String, _GoalTier>{};
+  for (final room in client.rooms) {
+    final activityId = room.activityId;
+    if (activityId == null) continue;
+    final role = room.ownRole;
+    if (role == null) continue;
+    final total = role.allGoals.length;
+    if (total == 0) continue;
+    final collected = room.ownCompletedGoals.length;
+    final tier = collected <= 0
+        ? _GoalTier.none
+        : (collected >= total ? _GoalTier.all : _GoalTier.some);
+    final existing = tiers[activityId];
+    if (existing == null || tier.index > existing.index) {
+      tiers[activityId] = tier;
+    }
+  }
+  return tiers;
+}
 
 /// The world map. In world_v2 a single instance is hosted persistently by
 /// the app shell ([TwoColumnLayout]) as the base layer every section
@@ -51,6 +103,9 @@ class _WorldMapState extends State<WorldMap> {
   List<CmsCoursePlanTopicLocation> _locations = [];
   List<WorldActivityPin> _activities = [];
 
+  Client? _client;
+  StreamSubscription<dynamic>? _syncSub;
+
   @override
   void initState() {
     super.initState();
@@ -63,7 +118,25 @@ class _WorldMapState extends State<WorldMap> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Recolour activity pins when the user collects a goal (room state sync).
+    final client = Matrix.of(context).client;
+    if (_client != client) {
+      _client = client;
+      _syncSub?.cancel();
+      _syncSub = client.onSync.stream
+          .where((s) => s.hasRoomUpdate)
+          .rateLimit(const Duration(seconds: 2))
+          .listen((_) {
+            if (mounted) setState(() {});
+          });
+    }
+  }
+
+  @override
   void dispose() {
+    _syncSub?.cancel();
     MapContextController.notifier.removeListener(_onContextChange);
     super.dispose();
   }
@@ -152,6 +225,8 @@ class _WorldMapState extends State<WorldMap> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    // Per-activity goal progress for the logged-in user (gray/bronze/gold).
+    final goalTiers = _userGoalTiers(Matrix.of(context).client);
     return FlutterMap(
       mapController: _controller,
       options: MapOptions(
@@ -222,7 +297,9 @@ class _WorldMapState extends State<WorldMap> {
                       onTap: () => _openActivity(activity),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: AppConfig.gold,
+                          color: _starColor(
+                            goalTiers[activity.activityId] ?? _GoalTier.none,
+                          ),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 2),
                           boxShadow: const [
