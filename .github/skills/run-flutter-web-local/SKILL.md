@@ -12,18 +12,23 @@ description: >-
 
 The client runs as `flutter run -d web-server --web-port=8090` and is viewed in an **external** Chrome (the Claude-in-Chrome extension), not a Flutter-launched Chrome. That combination has three failure modes we hit repeatedly. This skill is the procedure that avoids all three. The broader stack (Synapse, Choreographer, CMS, bot) is managed by the `pangea-local-setup` control plane (`local-dev/pangea`); this is specifically the Flutter-restart nuance the control plane does **not** solve.
 
-## The three traps (diagnosed empirically)
+## The traps (diagnosed empirically)
 
-1. **`r` (hot reload) cannot apply structural changes.** Adding an enum value (e.g. a new `AppSection`), changing the GoRouter route tree, adding a new top-level file, or touching a `const`/generic is NOT hot-reloadable. Sending `r` after such a change silently no-ops — the app keeps running the OLD code and looks "stuck" or wrong. Most of our "it hung" incidents are really "`r` couldn't apply an enum/route change."
-2. **`R` (hot restart) over `-d web-server` is a landmine with an external browser.** `R` waits for the browser's Dart debug (DWDS) websocket to ack the restart. With an external Chrome whose connection has gone stale (it was connected to a previous/killed `flutter run`, or the tab slept), `R` gets `0/1 responses`, times out after **15s, and the timeout KILLS the `flutter run` process** — leaving port 8090 dead. This is the classic "I pressed restart and now nothing loads."
+**The root cause behind hot reload/restart pain: both `r` AND `R` over `-d web-server` need a live DWDS (Dart debug) websocket to the browser. With an *external* Chrome (the extension), that connection is frequently stale — it was attached to a previous/killed `flutter run`, or the tab slept — so both time out with `received 0/1 responses`. So in this setup, hot reload/restart is unreliable by default; the clean restart is the reliable path for ANY change.**
+
+1. **`r` (hot reload) fails two ways.** (a) It cannot apply **structural changes** — a new enum value (e.g. a new `AppSection`), a GoRouter route-tree change, a new top-level file, a `const`/generic — those silently no-op and the app keeps running OLD code (looks "stuck"/wrong). (b) Even for a perfectly valid non-structural change, it **times out on a stale DWDS connection** (`Hot reload failed: TimeoutException … received 0/1 responses`, ~10s) and the change simply doesn't land. `r`'s timeout is non-destructive — the server stays up — but you're left thinking "my change didn't apply."
+2. **`R` (hot restart) is a landmine — same DWDS dependency, worse outcome.** On a stale external-browser connection `R` gets the same `0/1 responses`, times out (~15s), **and the timeout KILLS the `flutter run` process** — port 8090 goes dead. This is the classic "I pressed restart and now nothing loads."
 3. **`kill -9` of the `flutter run` parent orphans its compiler.** `flutter run` spawns a `frontend_server`/`dartaot` child. `kill -9 <parent>` (or `kill` followed too quickly by `-9`) leaves that child running. Orphaned compilers pile up, hold the build lock under `.dart_tool/`, and starve CPU — so the NEXT `flutter run` hangs or goes cold. This is the "lots of background dart processes" pile.
+
+Tell-tale for a stale-DWDS timeout (either `r` or `R`): `grep "received 0/1 responses" /tmp/flutter_run_8090.log`. When you see it, stop retrying `r`/`R` — do a clean restart.
 
 ## The procedure
 
 ### Reflecting a code change in the browser
 
-- **Non-structural change** (widget body, style, string, method body): `printf 'r' > /tmp/f8090` then reload the browser tab. ~5–10s.
-- **Structural change** (enum value, route tree, new file, `const`, top-level decl) OR anything `r` didn't pick up: **do a clean restart** (below). Do NOT reach for `R` in this setup — see trap #2.
+**Default to the clean restart (below) for ANY change.** It's ~10–20s warm and always works. In the external-Chrome setup, `r`/`R` are unreliable (stale-DWDS `0/1` timeout) so they're not worth the gamble most of the time.
+
+`r` (hot reload) is only worth trying when **both** hold: the change is non-structural (widget body, style, string, method body — NOT an enum/route/new-file/`const`) **and** you have just reloaded the browser tab so its DWDS connection is fresh. Then `printf 'r' > /tmp/f8090`, reload the browser. If it stalls ~10s or the log shows `received 0/1 responses`, the change did NOT land — stop and do a clean restart. Never reach for `R` here (trap #2: its timeout kills the server).
 
 ### Clean restart (the reliable path, ~10–20s warm)
 
@@ -44,7 +49,7 @@ A warm incremental build is ~10–20s. If it takes minutes, a zombie compiler is
 ### Never do
 
 - **Never `kill -9` the `flutter run` pid** to stop it — orphans the compiler. Use `q` via the fifo. If `q` won't take (wedged), kill the whole **process group**, not the pid: `kill -- -$(ps -o pgid= -p <pid> | tr -d ' ')`.
-- **Never send `R`** to a `flutter run` whose browser tab isn't freshly connected — the 15s timeout kills the server. In the external-Chrome setup, prefer a clean restart over `R` entirely.
+- **Never send `R`** in the external-Chrome setup — on a stale DWDS connection its timeout kills the server. Prefer a clean restart over `R` entirely. (`r` on a stale connection just fails harmlessly, but it still didn't apply your change — clean restart.)
 - **Never `flutter clean`** just to pick up a code change — it forces a cold build (minutes).
 
 ## The fifo control channel
