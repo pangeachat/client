@@ -47,4 +47,9 @@ class EndpointTestEnv {
 
   static String? get testUsername => dotenv.env['TEST_MATRIX_USERNAME'];
   static String? get testPassword => dotenv.env['TEST_MATRIX_PASSWORD'];
+
+  /// A course-plan-activity id that exists in the target CMS, for endpoints that
+  /// fetch an activity (e.g. activity_plan/feedback). Environment-specific — set
+  /// it to a real id in the environment `.env` points at. Null → those tests skip.
+  static String? get testActivityId => dotenv.env['TEST_ACTIVITY_ID'];
 }

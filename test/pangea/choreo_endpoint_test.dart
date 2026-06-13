@@ -331,9 +331,17 @@ void main() {
     });
 
     test("Activity feedback endpoint test", () async {
+      // This endpoint fetches the activity from CMS before the LLM call, so it
+      // needs a real activity id in the target environment (mock=true replaces
+      // only the LLM call, not the CMS fetch). Set TEST_ACTIVITY_ID in .env.
+      final activityId = EndpointTestEnv.testActivityId;
+      if (activityId == null) {
+        markTestSkipped('Set TEST_ACTIVITY_ID to a course-plan-activity id');
+        return;
+      }
       // Send mock request
       final Map<String, dynamic> request = ActivityFeedbackRequest(
-        activityId: "eb9c0280-f9bd-4552-8ba7-02d6b1376b14",
+        activityId: activityId,
         feedbackText: "test",
         userId: userID,
         userL1: "en",
