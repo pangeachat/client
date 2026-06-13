@@ -34,7 +34,6 @@ const Set<String> _mapCanvasPaths = {
   '/',
   '/chats',
   '/rooms',
-  '/courses',
   '/courses/own',
   '/courses/browse',
   '/courses/private',
@@ -69,8 +68,12 @@ _CanvasMode _canvasMode(GoRouterState state, bool isColumnMode) {
   if (fullPath == '/' || (isColumnMode && _mapCanvasPaths.contains(fullPath))) {
     return _CanvasMode.map;
   }
-  // The activity page is its own full-bleed map surface, so it fills.
-  if (fullPath.startsWith('/:activityId')) return _CanvasMode.fullBleed;
+  // Full-bleed surfaces that float over the live map (only their own content
+  // absorbs taps): the activity page hosts its own map; the "Add new course"
+  // hub is a card floating over the persistent map.
+  if (fullPath == '/courses' || fullPath.startsWith('/:activityId')) {
+    return _CanvasMode.fullBleed;
+  }
   return _CanvasMode.detail;
 }
 
@@ -110,9 +113,12 @@ class TwoColumnLayout extends StatelessWidget {
     }
 
     // World is the full-bleed map: the canvas extends under where the left
-    // column would be (only the rail offsets it).
+    // column would be (only the rail offsets it). The "Add new course" hub
+    // (`/courses`) is likewise a card floating over the full-bleed map — no
+    // left column, so no divider and the map stays pannable around it.
     final showLeftColumn =
-        AppSection.fromUri(state.uri) != AppSection.world;
+        AppSection.fromUri(state.uri) != AppSection.world &&
+        state.fullPath != '/courses';
     // world_v2: the rail is vertical-left in column mode and a bottom bar
     // in narrow mode, so it only offsets the canvas in column mode.
     final columnWidth =

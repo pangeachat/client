@@ -469,15 +469,10 @@ abstract class AppRoutes {
           path: '/courses',
           redirect: loggedOutRedirect,
           // world_v2: `/courses` is the "Add new course" hub — a card that
-          // floats over the map. In column mode the hub lives in the left
-          // column (canvas = map); narrow mode shows the card over the map.
-          pageBuilder: (context, state) => defaultPageBuilder(
-            context,
-            state,
-            FluffyThemes.isColumnMode(context)
-                ? const EmptyPage()
-                : const AddCourseHubView(),
-          ),
+          // floats over the full-bleed map (only the card absorbs taps), so
+          // the map stays pannable around it.
+          pageBuilder: (context, state) =>
+              defaultPageBuilder(context, state, const AddCourseHubView()),
           routes: [
             GoRoute(
               path: 'private',

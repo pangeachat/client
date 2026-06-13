@@ -14,7 +14,6 @@ import 'package:fluffychat/routes/analytics/construct_analytics/analytics_detail
 import 'package:fluffychat/routes/analytics/level/level_analytics_details_content.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
-import 'package:fluffychat/routes/courses/add_course_hub_view.dart';
 import 'package:fluffychat/routes/courses/find_course_page.dart';
 import 'package:fluffychat/routes/courses/private/course_code_page.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
@@ -93,10 +92,13 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
-    // World is the full-bleed map: no left column. Every other section
-    // overlays its list/detail card over the map in the left column.
+    // World is the full-bleed map: no left column. The "Add new course" hub
+    // (`/courses`) is likewise a card floating over the full-bleed map (no
+    // left column). Every other section overlays its list/detail card over
+    // the map in the left column. (Kept in sync with TwoColumnLayout.)
     final showLeftColumn =
-        AppSection.fromUri(widget.state.uri) != AppSection.world;
+        AppSection.fromUri(widget.state.uri) != AppSection.world &&
+        widget.state.fullPath != '/courses';
 
     // width of base navigation rail, if visible
     final baseNaviRailWidth = isColumnMode
@@ -228,10 +230,9 @@ class _MainView extends StatelessWidget {
           if (segments.contains('private')) {
             return const CourseCodePage();
           }
-          // Plain `/courses` — the "Add new course" hub card.
-          if (!segments.contains('addcourse')) {
-            return const AddCourseHubView();
-          }
+          // Plain `/courses` (the "Add new course" hub) has no left column —
+          // it is a card floating over the full-bleed map, handled by the
+          // canvas, so it never reaches this branch.
         }
         // Inside a specific course chat, keep the chat list in the column.
         final roomId = state.pathParameters['roomid'];

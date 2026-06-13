@@ -17,15 +17,18 @@ class AddCourseHubView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Fill the column height (card pinned to the top) without painting a
-    // background, so the map stays visible — and tappable — around the card.
+    // Float the card at the top-left over the full-bleed map. Everything
+    // outside the card is left empty so taps/drags fall through to the map —
+    // only the card itself is interactive.
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: const [_AddCourseCard()],
+      child: Align(
+        alignment: Alignment.topLeft,
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 360.0),
+            child: const _AddCourseCard(),
+          ),
         ),
       ),
     );
