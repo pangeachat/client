@@ -1,11 +1,16 @@
 ---
-description: "Running and RESTARTING the Flutter web client locally without the recurring hang. Read before you kill/restart the dev server or expect code changes to show up in the browser."
-applyTo: "lib/**,web/**,assets/**"
+name: run-flutter-web-local
+description: >-
+  Running and RESTARTING the Flutter web client locally without the recurring hang.
+  Use before you kill/restart the local dev server, when a code change isn't showing
+  up in the browser, when port 8090 is dead, or when stray flutter/dart compilers
+  have piled up. Covers the fifo control channel, clean-restart procedure, zombie
+  recovery, and the local `.env`/Synapse-URL check.
 ---
 
 # Local Flutter web dev — the restart procedure
 
-The client runs as `flutter run -d web-server --web-port=8090` and is viewed in an **external** Chrome (the Claude-in-Chrome extension), not a Flutter-launched Chrome. That combination has three failure modes we hit repeatedly. This doc is the procedure that avoids all three. The broader stack (Synapse, Choreographer, CMS, bot) is managed by the `pangea-local-setup` control plane (`local-dev/pangea`); this doc is specifically the Flutter-restart nuance the control plane does **not** solve.
+The client runs as `flutter run -d web-server --web-port=8090` and is viewed in an **external** Chrome (the Claude-in-Chrome extension), not a Flutter-launched Chrome. That combination has three failure modes we hit repeatedly. This skill is the procedure that avoids all three. The broader stack (Synapse, Choreographer, CMS, bot) is managed by the `pangea-local-setup` control plane (`local-dev/pangea`); this is specifically the Flutter-restart nuance the control plane does **not** solve.
 
 ## The three traps (diagnosed empirically)
 

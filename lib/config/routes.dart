@@ -546,13 +546,18 @@ abstract class AppRoutes {
             ),
             GoRoute(
               path: ':spaceid',
+              // world_v2: the course card lives in the left column over the
+              // persistent map (column mode); narrow mode shows the card
+              // full-screen.
               pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
-                ChatDetails(
-                  roomId: state.pathParameters['spaceid']!,
-                  activeTab: state.uri.queryParameters['tab'],
-                ),
+                FluffyThemes.isColumnMode(context)
+                    ? const EmptyPage()
+                    : ChatDetails(
+                        roomId: state.pathParameters['spaceid']!,
+                        activeTab: state.uri.queryParameters['tab'],
+                      ),
               ),
               redirect: loggedOutRedirect,
               routes: [

@@ -12,7 +12,7 @@ import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
 import 'package:fluffychat/routes/analytics/level/level_analytics_details_content.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
-import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
+import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/courses/find_course_page.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -218,10 +218,14 @@ class _MainView extends StatelessWidget {
         if (roomId != null || space == null) {
           return ChatList(activeChat: roomId, activeSpace: spaceId);
         }
-        // A joined course root: the location-grouped objective outline
-        // (world_v2). The course detail/chat canvas relayout is its own
-        // design pass (world_v2 open decision: course root layout).
-        return CourseObjectivesView(space: space);
+        // A joined course root (world_v2): the course card lives in the
+        // left column over the map — the same 4-tab detail the app already
+        // has (chats / course plan / participants / more), now with the
+        // course-plan tab grouped by learning objective.
+        return ChatDetails(
+          roomId: space.id,
+          activeTab: uri.queryParameters['tab'],
+        );
 
       case AppSection.world:
         // The world map is the full-bleed canvas; no left column. (The

@@ -18,7 +18,6 @@ import 'package:fluffychat/features/join_codes/share_room_button.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
-import 'package:fluffychat/routes/chat/chat_details/course_settings.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_space_dialog.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_participants_widget.dart';
@@ -26,6 +25,7 @@ import 'package:fluffychat/routes/chat/chat_details/space_analytics/space_analyt
 import 'package:fluffychat/routes/chat/chat_details/space_details_button_row.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
+import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
@@ -78,7 +78,8 @@ class SpaceDetailsContent extends StatelessWidget {
         title: l10n.chats,
         icon: const Icon(Icons.chat_bubble_outline, size: 30.0),
         onPressed: () => setSelectedTab(SpaceSettingsTabs.chat, context),
-        visible: !FluffyThemes.isColumnMode(context),
+        // world_v2: the course card lives in the left column, so the Chats
+        // tab belongs in the card in both column and narrow mode.
         tab: SpaceSettingsTabs.chat,
       ),
       ButtonDetails(
@@ -388,9 +389,13 @@ class SpaceDetailsContent extends StatelessWidget {
                     client: room.client,
                   );
                 case SpaceSettingsTabs.course:
-                  return CourseSettings(
-                    controller: controller,
-                    roomId: room.id,
+                  // world_v2: the course plan is a sequence of learning
+                  // objectives, each satisfied by interchangeable activities
+                  // (no longer grouped by city).
+                  return CourseObjectivesList(
+                    room: room,
+                    hasCompletedActivity:
+                        controller.roomSummariesModel.hasCompletedActivity,
                   );
                 case SpaceSettingsTabs.participants:
                   return SingleChildScrollView(
