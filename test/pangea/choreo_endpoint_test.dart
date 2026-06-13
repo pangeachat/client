@@ -1,10 +1,10 @@
 import 'dart:convert';
-import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/src/response.dart';
+
+import 'endpoint_test_env.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_feedback_request.dart';
 import 'package:fluffychat/features/activity_sessions/activity_feedback_response.dart';
@@ -15,7 +15,6 @@ import 'package:fluffychat/features/activity_sessions/activity_summary_request_m
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/igc_request_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/igc_response_model.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/features/course_plans/course_topics/course_topic_translation_request.dart';
 import 'package:fluffychat/features/course_plans/course_topics/course_topic_translation_response.dart';
@@ -43,30 +42,28 @@ import 'package:fluffychat/routes/chat/events/translation/full_text_translation_
 void main() {
   String authToken = "";
   String userID = "";
-  String apiKey =
-      "e6fa9fa97031ba0c852efe78457922f278a2fbc109752fe18e465337699e9873";
-  const choreoApi = "https://api.staging.pangea.chat/choreo";
-
-  // TODO: Use environmental variables instead of hardcoded strings
-  // apiKey -> Environment.choreoApiKey
-  // loginUrl -> "${Environment.synapseURL}/_matrix/client/v3/login"
-  // "$choreoApi/endpoint" -> PApiUrls.endpoint
+  // Resolved in setUpAll from the shared endpoint-test env (the .env layer), so
+  // this test points at the same environment as the synapse/cms endpoint tests.
+  late String apiKey;
+  late String choreoApi;
 
   setUpAll(() {
     return Future(() async {
-      // Load environmental variables
-      dotenv.testLoad(fileInput: File('.env').readAsStringSync());
-      assert(Environment.testUsername != null);
-      assert(Environment.testPassword != null);
-      apiKey = Environment.choreoApiKey;
+      EndpointTestEnv.load();
+      assert(EndpointTestEnv.testUsername != null);
+      assert(EndpointTestEnv.testPassword != null);
+      apiKey = EndpointTestEnv.choreoApiKey;
+      choreoApi = "${EndpointTestEnv.choreoApi}/choreo";
 
       // Send login request
-      const loginUrl =
-          "https://matrix.staging.pangea.chat/_matrix/client/v3/login";
+      final loginUrl = "${EndpointTestEnv.synapseUrl}/_matrix/client/v3/login";
 
       final Map<String, dynamic> reqJSON = {
-        "identifier": {"type": "m.id.user", "user": Environment.testUsername},
-        "password": Environment.testPassword,
+        "identifier": {
+          "type": "m.id.user",
+          "user": EndpointTestEnv.testUsername,
+        },
+        "password": EndpointTestEnv.testPassword,
         "type": "m.login.password",
       };
 

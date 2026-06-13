@@ -1,17 +1,17 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/join_codes/knock_with_code_extension.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 
+import 'endpoint_test_env.dart';
+
 /// Synapse endpoint tests — exercise the client's real calls to the Matrix
-/// homeserver (`Requests` + the client's `KnockSpaceResponse` model) against a
-/// live Synapse at `Environment.synapseURL` (local stack by default; set
-/// `SYNAPSE_URL` in `client/.env` to point elsewhere).
+/// homeserver (`Requests` + the client's `KnockSpaceResponse` model) against the
+/// live Synapse at `EndpointTestEnv.synapseUrl` (the `SYNAPSE_URL` from
+/// `client/.env`; keep it pointed at the same environment as choreo/cms).
 ///
 /// Unlike `choreo_endpoint_test.dart`, these hit an **internal** service with no
 /// paid third-party API, so there is no `mock: true` — the calls run for real.
@@ -30,11 +30,8 @@ void main() {
   late String synapse;
 
   setUpAll(() {
-    dotenv.testLoad(fileInput: File('.env').readAsStringSync());
-    // Read SYNAPSE_URL straight from .env rather than Environment.synapseURL:
-    // that getter reaches through appConfigOverride -> GetStorage, which isn't
-    // initialised in a plain `flutter test` and throws.
-    synapse = dotenv.env['SYNAPSE_URL'] ?? 'http://localhost:8008';
+    EndpointTestEnv.load();
+    synapse = EndpointTestEnv.synapseUrl;
   });
 
   Future<({String token, String userId})> login(
@@ -97,8 +94,8 @@ void main() {
 
   group('Synapse endpoint tests', () {
     test('login returns an access token', () async {
-      final user = Environment.testUsername;
-      final password = Environment.testPassword;
+      final user = EndpointTestEnv.testUsername;
+      final password = EndpointTestEnv.testPassword;
       if (user == null || password == null) {
         markTestSkipped('Set TEST_MATRIX_USERNAME / TEST_MATRIX_PASSWORD');
         return;
@@ -110,8 +107,8 @@ void main() {
 
     test('knock_with_code joins the test user to a course by code', () async {
       final code = dotenv.env['TEST_COURSE_CODE'];
-      final user = Environment.testUsername;
-      final password = Environment.testPassword;
+      final user = EndpointTestEnv.testUsername;
+      final password = EndpointTestEnv.testPassword;
       if (code == null || user == null || password == null) {
         markTestSkipped('Set TEST_COURSE_CODE + TEST_MATRIX_USERNAME/PASSWORD');
         return;
