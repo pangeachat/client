@@ -59,9 +59,17 @@ Every choreographer endpoint accessed by client has an individual unit test. Emu
 Env vars required (add to `client/.env` or export before running): 
 - `TEST_MATRIX_USERNAME` / `TEST_MATRIX_PASSWORD` — staging test account (same as browser specs)
 
+### Endpoint tests — `synapse_endpoint_test.dart`, `cms_endpoint_test.dart`
+
+Same idea as the choreo endpoint tests, for the other two backends the client calls — they drive the real client call layer (`Requests`, `LanguageRepo`, the `KnockSpaceResponse` model) against a live Synapse / Payload CMS at the `SYNAPSE_URL` / `CMS_API` from `.env`, so the same file runs against the local stack or staging.
+
+The contract that differs from choreo: Synapse and CMS are **internal** services with no paid third-party API, so there is **no `mock: true`** — the calls run for real. Choreo needs the mock seam only because it reaches paid LLMs. These need a reachable server, so they are local-only / not a hard PR gate; tests skip (not fail) when their env vars are absent.
+
+`synapse_endpoint_test.dart` also doubles as a local seeding tool: with `TEST_COURSE_CODE` + `SEED_USERS` set in `.env`, its seed test registers (best-effort) and joins several learners to a course via the real `knock_with_code` call, so you can see a multi-user course locally. Creating brand-new accounts still needs the operator path (`register_new_matrix_user`) when open registration is off.
+
 ## Current State
 
-- **Unit tests**: Dart tests in `test/` and `test/pangea/` — model parsing, schema validation, data transforms, choreographer endpoint tests.
+- **Unit tests**: Dart tests in `test/` and `test/pangea/` — model parsing, schema validation, data transforms, and choreo/synapse/cms endpoint tests.
 - **Integration tests**:
   - **Playwright browser** (`e2e/scripts/`): Login flow + axe-core WCAG 2.1 AA. Runs post-deploy, nightly, and on manual dispatch. See [playwright-testing.instructions.md](playwright-testing.instructions.md) and [`e2e/README.md`](../../e2e/README.md).
   - **Flutter** (`integration_test/app_test.dart`): Matrix login/logout/nav only, not in CI, no choreo coverage.
