@@ -12,6 +12,7 @@ import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
 import 'package:fluffychat/routes/analytics/level/level_analytics_details_content.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
+import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/find_course_page.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -202,17 +203,23 @@ class _MainView extends StatelessWidget {
         return Settings(key: state.pageKey);
 
       case AppSection.courses:
-        // Find/browse flows show the course list in the left column; a
-        // joined course (`/courses/:spaceid`) shows the chat list scoped
-        // to that space until the course-outline relayout lands.
-        if (AppSection.activeSpaceId(uri) == null &&
-            !segments.contains('addcourse')) {
+        // Find/browse flows show the course list in the left column.
+        final spaceId = AppSection.activeSpaceId(uri);
+        if (spaceId == null && !segments.contains('addcourse')) {
           return const FindCoursePage();
         }
-        return ChatList(
-          activeChat: state.pathParameters['roomid'],
-          activeSpace: state.pathParameters['spaceid'],
-        );
+        // Inside a specific course chat, keep the chat list in the column.
+        final roomId = state.pathParameters['roomid'];
+        final space = spaceId != null
+            ? Matrix.of(context).client.getRoomById(spaceId)
+            : null;
+        if (roomId != null || space == null) {
+          return ChatList(activeChat: roomId, activeSpace: spaceId);
+        }
+        // A joined course root: the location-grouped objective outline
+        // (world_v2). The course detail/chat canvas relayout is its own
+        // design pass (world_v2 open decision: course root layout).
+        return CourseObjectivesView(space: space);
 
       case AppSection.world:
         // The world map is the full-bleed canvas; no left column. (The

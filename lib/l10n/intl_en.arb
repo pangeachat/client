@@ -4771,6 +4771,15 @@
     "enableNotificationsDesc": "Allow notifications for Pangea Chat and stay connected with your language buddies!",
     "enableNotifications": "Allow notifications",
     "noActivitiesFound": "No activities available for this topic.",
+    "numObjectives": "{count} objectives",
+    "@numObjectives": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
     "cannotIgnoreYourself": "You cannot block yourself",
     "blockUsernameHint": "Block username",
     "errorTryAgainSoon": "Writing assistance is taking a bit longer than expected. Try again in a second!",
