@@ -29,8 +29,8 @@ The choreographer supports a per-request `mock` field. When set, the handler run
 
 Contract (full version at [`pangeachat/.github/instructions/testing.instructions.md` § Mocking paid third-party calls](https://github.com/pangeachat/.github/blob/main/.github/instructions/testing.instructions.md#mocking-paid-third-party-calls)):
 
-- **The flag does not auto-propagate.** Add `mock=true` on the client's choreo request classes when the Playwright run wants mocked responses; the choreo handler honours the field but the client never sets it implicitly.
-- **Set `MOCK_LLM_LATENCY_OVERRIDE_S=0`** in the Playwright env. The default profile mimics real-LLM latency for load testing, which would make Playwright runs unnecessarily slow.
+- **The flag does not auto-propagate.** Add `mock=true` on the client's choreo requests when the Playwright run wants mocked responses.
+- **Send ``mock_llm_latency_override_s=0`** in Playwright choreo requests. The default profile mimics real-LLM latency for load testing, which would make Playwright runs unnecessarily slow.
 - **Mocked responses are deterministic but obviously bogus** — WA returns one double-spaced edit, image-gen returns `mock.pangea.chat/transparent-1x1.png`. Assert on shape, not content.
 - **If a route triggers a 500 error code under `mock=true`, the handler likely lacks a registered mock producer.** The mock-LLM registry's `default_structured_mock(schema)` falls through to `schema()`, which fails for any schema with required fields lacking Pydantic defaults. Check `app/handlers/<h>/mock.py` in `pangeachat/2-step-choreographer`; if absent, file a bug there (`#2485` is the canonical example). The fix is a small per-handler module; do not work around it on the client side.
 
@@ -58,8 +58,3 @@ Axe assertions are **zero-tolerance**: `violations.toHaveLength(0)`. Fix the wid
 ## Diff-triggered CI
 
 [`e2e/trigger-map.json`](../../e2e/trigger-map.json) maps Dart-source glob patterns to spec files. On a per-deploy run, only the specs whose triggers match the changed files run; the full suite runs nightly. Adding a new spec without wiring `trigger-map.json` means the spec never runs in pre-deploy CI — every new spec must declare its triggers.
-
-## Future Work
-
-- [pangeachat/2-step-choreographer#2230](https://github.com/pangeachat/2-step-choreographer/issues/2230) — original tracking issue for the `mock=true` Playwright bypass (closed).
-- [pangeachat/2-step-choreographer#2485](https://github.com/pangeachat/2-step-choreographer/issues/2485) — canonical example of a missing per-handler mock producer; resolved by `pangeachat/2-step-choreographer#2486`.
