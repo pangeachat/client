@@ -6,24 +6,18 @@ import 'package:async/async.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/features/course_plans/courses/get_localized_courses_request.dart';
 import 'package:fluffychat/features/course_plans/courses/get_localized_courses_response.dart';
-import 'package:fluffychat/features/instructions/instructions_enum.dart';
-import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
-import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
-import 'package:fluffychat/routes/courses/course_language_filter.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
@@ -319,7 +313,6 @@ class FindCoursePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isColumnMode = FluffyThemes.isColumnMode(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -346,92 +339,6 @@ class FindCoursePageView extends StatelessWidget {
           child: Column(
             spacing: 16.0,
             children: [
-              InstructionsInlineTooltip(
-                instructionsEnum: InstructionsEnum.courseDescription,
-              ),
-              TextField(
-                controller: controller.searchController,
-                textInputAction: TextInputAction.search,
-                onChanged: controller.onSearchEnter,
-                decoration: InputDecoration(
-                  filled: !isColumnMode,
-                  fillColor: isColumnMode
-                      ? null
-                      : theme.colorScheme.secondaryContainer,
-                  border: OutlineInputBorder(
-                    borderSide: isColumnMode
-                        ? const BorderSide()
-                        : BorderSide.none,
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                  contentPadding: const EdgeInsets.fromLTRB(0, 0, 20.0, 0),
-                  hintText: L10n.of(context).findCourse,
-                  hintStyle: TextStyle(
-                    color: theme.colorScheme.onPrimaryContainer,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 16.0,
-                  ),
-                  floatingLabelBehavior: FloatingLabelBehavior.never,
-                  prefixIcon: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.search_outlined,
-                      color: theme.colorScheme.onPrimaryContainer,
-                    ),
-                  ),
-                ),
-              ),
-              LayoutBuilder(
-                builder: (context, constrained) {
-                  return Row(
-                    spacing: 12.0,
-                    children: [
-                      Expanded(
-                        child: ValueListenableBuilder(
-                          valueListenable: controller.targetLanguageFilter,
-                          builder: (context, lang, _) => CourseLanguageFilter(
-                            value: lang,
-                            onChanged: controller.setTargetLanguageFilter,
-                          ),
-                        ),
-                      ),
-                      if (constrained.maxWidth >= 500) ...[
-                        TextButton(
-                          onPressed: controller.startNewCourse,
-                          child: Row(
-                            spacing: 8.0,
-                            children: [
-                              const Icon(Icons.add),
-                              Text(L10n.of(context).newCourse),
-                            ],
-                          ),
-                        ),
-                        TextButton(
-                          child: Row(
-                            spacing: 8.0,
-                            children: [
-                              const Icon(Icons.join_full),
-                              Text(L10n.of(context).joinWithCode),
-                            ],
-                          ),
-                          onPressed: () => context.go("/rooms/course/private"),
-                        ),
-                      ] else ...[
-                        IconButton(
-                          icon: Icon(Icons.add),
-                          tooltip: L10n.of(context).newCourse,
-                          onPressed: controller.startNewCourse,
-                        ),
-                        IconButton(
-                          icon: Icon(Icons.join_full),
-                          tooltip: L10n.of(context).joinWithCode,
-                          onPressed: () => context.go("/rooms/course/private"),
-                        ),
-                      ],
-                    ],
-                  );
-                },
-              ),
               ListenableBuilder(
                 listenable: Listenable.merge([
                   controller.visibleCourses,
@@ -525,113 +432,155 @@ class _PublicCourseTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isColumnMode = FluffyThemes.isColumnMode(context);
     final space = chunk.room;
     final courseId = chunk.courseId;
+    final course = this.course;
     final displayname =
         space.name ?? space.canonicalAlias ?? L10n.of(context).emptyChat;
+    final isKnock = space.joinRule == JoinRules.knock.name;
 
     return Padding(
-      padding: isColumnMode
-          ? const EdgeInsets.only(bottom: 32.0)
-          : const EdgeInsets.only(bottom: 16.0),
+      padding: const EdgeInsets.only(bottom: 10.0),
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
           // Tapping the card scopes the map to this course's activities
-          // (world_v2); the Knock/Join button below opens the join flow.
+          // (world_v2); the Knock/Join pill opens the join flow.
           onTap: () => MapContextController.set(CourseMapContext(courseId)),
           borderRadius: BorderRadius.circular(12.0),
           child: Container(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(10.0),
             decoration: BoxDecoration(
+              color: theme.colorScheme.surfaceContainerLow,
               borderRadius: BorderRadius.circular(12.0),
-              border: Border.all(color: theme.colorScheme.primary),
+              border: Border.all(color: theme.colorScheme.outlineVariant),
             ),
-            child: Column(
-              spacing: 4.0,
-              mainAxisSize: MainAxisSize.min,
+            child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  spacing: 8.0,
-                  children: [
-                    ImageByUrl(
-                      imageUrl: space.avatarUrl,
-                      width: 58.0,
-                      borderRadius: BorderRadius.circular(10.0),
-                      replacement: Avatar(
-                        name: displayname,
-                        borderRadius: BorderRadius.circular(10.0),
-                        size: 58.0,
-                      ),
-                    ),
-                    Flexible(
-                      child: Column(
-                        spacing: 0.0,
+                ImageByUrl(
+                  imageUrl: space.avatarUrl,
+                  width: 44.0,
+                  borderRadius: BorderRadius.circular(10.0),
+                  replacement: Avatar(
+                    name: displayname,
+                    borderRadius: BorderRadius.circular(10.0),
+                    size: 44.0,
+                  ),
+                ),
+                const SizedBox(width: 10.0),
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            displayname,
-                            style: theme.textTheme.bodyLarge,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          Row(
-                            spacing: 4.0,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(Icons.group, size: 16.0),
-                              Text(
-                                L10n.of(
-                                  context,
-                                ).countParticipants(space.numJoinedMembers),
-                                style: theme.textTheme.bodyMedium,
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 2.0),
+                              child: Text(
+                                displayname,
+                                style: theme.textTheme.titleSmall?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
                               ),
-                            ],
+                            ),
+                          ),
+                          const SizedBox(width: 8.0),
+                          FilledButton.tonal(
+                            onPressed: () => _navigateToCoursePage(context),
+                            style: FilledButton.styleFrom(
+                              backgroundColor:
+                                  theme.colorScheme.primaryContainer,
+                              foregroundColor:
+                                  theme.colorScheme.onPrimaryContainer,
+                              visualDensity: VisualDensity.compact,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16.0,
+                              ),
+                              minimumSize: const Size(0, 32),
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                            ),
+                            child: Text(
+                              isKnock
+                                  ? L10n.of(context).knock
+                                  : L10n.of(context).join,
+                            ),
                           ),
                         ],
                       ),
-                    ),
-                  ],
-                ),
-                if (course != null) ...[
-                  CourseInfoChips(courseId, iconSize: 12.0, fontSize: 12.0),
-                  Text(
-                    course!.description,
-                    style: theme.textTheme.bodyMedium,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
-                const SizedBox(height: 12.0),
-                HoverBuilder(
-                  builder: (context, hovered) => ElevatedButton(
-                    onPressed: () => _navigateToCoursePage(context),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: theme.colorScheme.primaryContainer
-                          .withAlpha(hovered ? 255 : 200),
-                      foregroundColor: theme.colorScheme.onPrimaryContainer,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          space.joinRule == JoinRules.knock.name
-                              ? L10n.of(context).knock
-                              : L10n.of(context).join,
+                      const SizedBox(height: 8.0),
+                      if (course != null)
+                        Wrap(
+                          spacing: 6.0,
+                          runSpacing: 6.0,
+                          children: [
+                            _chip(
+                              context,
+                              Icons.language,
+                              course.targetLanguage
+                                  .split('-')
+                                  .first
+                                  .toUpperCase(),
+                            ),
+                            _chip(
+                              context,
+                              Icons.group,
+                              '${space.numJoinedMembers}',
+                            ),
+                            _chip(
+                              context,
+                              Icons.location_on,
+                              '${course.topicIds.length}',
+                            ),
+                            _chip(
+                              context,
+                              Icons.school,
+                              course.cefrLevel.string.replaceFirst(
+                                'PREA1',
+                                'PRE-A1',
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _chip(BuildContext context, IconData icon, String text) {
+    final theme = Theme.of(context);
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerHighest,
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 13.0, color: theme.colorScheme.onSurfaceVariant),
+          const SizedBox(width: 4.0),
+          Text(
+            text,
+            style: theme.textTheme.labelSmall?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
+          ),
+        ],
       ),
     );
   }
