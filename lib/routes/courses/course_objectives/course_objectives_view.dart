@@ -6,7 +6,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_repo.dart';
@@ -148,8 +147,24 @@ class _ObjectiveSection extends StatelessWidget {
               return MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
-                  onTap: () =>
-                      context.go(PRoutes.worldObject(ref.activityId)),
+                  // Open the activity in-place over the course (the `?activity=`
+                  // detail panel) instead of navigating to the standalone
+                  // `/<activityId>` page, so the course context is preserved.
+                  onTap: () {
+                    final uri = GoRouter.of(
+                      context,
+                    ).routeInformationProvider.value.uri;
+                    context.go(
+                      uri
+                          .replace(
+                            queryParameters: {
+                              ...uri.queryParameters,
+                              'activity': ref.activityId,
+                            },
+                          )
+                          .toString(),
+                    );
+                  },
                   child: Stack(
                     children: [
                       ActivitySuggestionCard(

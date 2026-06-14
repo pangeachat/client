@@ -21,7 +21,9 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class NotStartedSession extends StatefulWidget {
-  final Room course;
+  /// The course the activity is launched from, when there is one. Null for a
+  /// standalone activity (you no longer need to be in a course to play).
+  final Room? course;
   final String activityId;
   final ActivityPlanModel? activity;
   final ActivitySessionSummariesModel summaries;
@@ -45,9 +47,9 @@ class NotStartedSession extends StatefulWidget {
 class NotStartedSessionController extends State<NotStartedSession>
     implements ActivitySessionStateController {
   String? get joinedActivityRoomId =>
-      widget.course.activeActivityRoomId(widget.activityId);
+      widget.course?.activeActivityRoomId(widget.activityId);
 
-  Room get course => widget.course;
+  Room? get course => widget.course;
 
   @override
   String? get descriptionText =>
@@ -71,7 +73,11 @@ class NotStartedSessionController extends State<NotStartedSession>
       widget.summaries.activitySessionStatuses;
 
   Future<int> get neededCourseParticipants async {
-    final courseParticipants = await widget.course.requestParticipants(
+    // No course: the session launches standalone (the bot fills in), so no
+    // extra course participants are required.
+    final course = widget.course;
+    if (course == null) return 0;
+    final courseParticipants = await course.requestParticipants(
       const [Membership.join, Membership.invite, Membership.knock],
       false,
       true,
@@ -97,17 +103,26 @@ class NotStartedSessionController extends State<NotStartedSession>
 
   void startNewActivity() {
     widget.scrollController.jumpTo(0);
+    final course = widget.course;
+    // With a course, launch scoped to it; otherwise launch the activity
+    // standalone via its first-class route.
     context.go(
-      "/rooms/spaces/${widget.course.id}/activity/${widget.activityId}?launch=true",
+      course != null
+          ? "/rooms/spaces/${course.id}/activity/${widget.activityId}?launch=true"
+          : "/${widget.activityId}?launch=true",
     );
   }
 
   void goToCourse() {
-    context.push("/rooms/spaces/${widget.course.id}/details?tab=course");
+    final course = widget.course;
+    if (course == null) return;
+    context.push("/rooms/spaces/${course.id}/details?tab=course");
   }
 
   void inviteToCourse() {
-    context.push("/rooms/spaces/${widget.course.id}/invite");
+    final course = widget.course;
+    if (course == null) return;
+    context.push("/rooms/spaces/${course.id}/invite");
   }
 
   Future<void> joinExistingSession() async {
@@ -130,9 +145,9 @@ class NotStartedSessionController extends State<NotStartedSession>
     String? joinedSessionId;
     for (final sessionId in sessionIds) {
       try {
-        await widget.course.client.joinRoom(
+        await Matrix.of(context).client.joinRoom(
           sessionId,
-          via: widget.course.spaceChildren
+          via: widget.course?.spaceChildren
               .firstWhereOrNull((child) => child.roomId == sessionId)
               ?.via,
         );
@@ -148,9 +163,9 @@ class NotStartedSessionController extends State<NotStartedSession>
       throw Exception("Failed to join any existing session");
     }
 
-    final room = widget.course.client.getRoomById(joinedSessionId);
+    final room = Matrix.of(context).client.getRoomById(joinedSessionId);
     if (room == null || room.membership != Membership.join) {
-      await widget.course.client.waitForRoomInSync(joinedSessionId, join: true);
+      await Matrix.of(context).client.waitForRoomInSync(joinedSessionId, join: true);
     }
 
     return joinedSessionId;
@@ -166,16 +181,16 @@ class NotStartedSessionController extends State<NotStartedSession>
     final resp = await showFutureLoadingDialog(
       context: context,
       future: () async {
-        await widget.course.client.joinRoom(
+        await Matrix.of(context).client.joinRoom(
           roomId,
-          via: widget.course.spaceChildren
+          via: widget.course?.spaceChildren
               .firstWhereOrNull((child) => child.roomId == roomId)
               ?.via,
         );
 
-        final room = widget.course.client.getRoomById(roomId);
+        final room = Matrix.of(context).client.getRoomById(roomId);
         if (room == null || room.membership != Membership.join) {
-          await widget.course.client.waitForRoomInSync(roomId, join: true);
+          await Matrix.of(context).client.waitForRoomInSync(roomId, join: true);
         }
       },
     );

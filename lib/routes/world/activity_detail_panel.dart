@@ -9,23 +9,32 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_
 import 'package:fluffychat/routes/world/activity_course_resolver.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-/// Activity detail, opened in-place over the persistent map via the
-/// `?activity=<id>` query param (world_v2). It renders the activity session
-/// start flow as a capped detail panel — it does NOT remount the map or leave
-/// the current course; closing just drops the query param.
+/// Activity detail, rendered as a capped detail panel over the persistent map
+/// (world_v2). Two entry points share it: in-place via the `?activity=<id>`
+/// query param over another route (e.g. a course), and the first-class
+/// `/<activityId>` route. Either way it renders the activity session start
+/// flow — it never remounts a second map. Closing drops the `?activity` param
+/// (returning to the underlying route) or, on the standalone route, returns to
+/// the world map.
 ///
 /// The parent course is the active course space when one is selected;
-/// otherwise the first joined course whose plan includes the activity.
+/// otherwise the first joined course whose plan includes the activity (or none
+/// — you no longer need a course to play).
 class ActivityDetailPanel extends StatefulWidget {
   final String activityId;
 
   /// The selected course space, if the detail was opened from within a course.
   final String? parentSpaceId;
 
+  /// Begin launching a session immediately (the first-class `?launch=true`
+  /// flow) instead of showing the not-started start screen.
+  final bool launch;
+
   const ActivityDetailPanel({
     super.key,
     required this.activityId,
     this.parentSpaceId,
+    this.launch = false,
   });
 
   @override
@@ -84,6 +93,12 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
 
   void _close() {
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
+    // In-place (`?activity=`): drop the param to return to the underlying
+    // route. Standalone (`/<activityId>`): no param to drop, so go to World.
+    if (!uri.queryParameters.containsKey('activity')) {
+      context.go('/');
+      return;
+    }
     final params = Map<String, String>.from(uri.queryParameters)
       ..remove('activity');
     context.go(
@@ -91,50 +106,65 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
     );
   }
 
+  /// Back returns toward the course: pop history if there's something to pop,
+  /// otherwise just drop the `?activity` param. Either way the course context
+  /// stays — this never leaves for the standalone activity page.
+  void _back() {
+    if (context.canPop()) {
+      context.pop();
+    } else {
+      _close();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final closeButton = Positioned(
-      top: 8,
-      right: 8,
-      child: IconButton.filledTonal(
-        tooltip: L10n.of(context).close,
-        icon: const Icon(Icons.close),
-        onPressed: _close,
-      ),
-    );
-
-    Widget body;
-    if (_loading) {
-      body = const Center(child: CircularProgressIndicator.adaptive());
-    } else if (_parentId == null) {
-      // Activity isn't in a course the learner has joined.
-      body = Center(
-        child: Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            spacing: 12.0,
-            children: [
-              const Icon(Icons.school_outlined, size: 40),
-              Text(
-                L10n.of(context).joinTheCourseToPlay,
-                textAlign: TextAlign.center,
-                style: theme.textTheme.bodyLarge,
-              ),
-            ],
-          ),
-        ),
-      );
-    } else {
-      body = ActivitySessionStartPage(
+    // Once resolved, render the activity — with or without a parent course.
+    // You no longer need to be in a course to do an activity, so a null parent
+    // is fine; the session launches standalone. The activity view brings its
+    // own AppBar (the back/X nav row when embedded), so it renders directly.
+    if (!_loading) {
+      return ActivitySessionStartPage(
         activityId: widget.activityId,
         parentId: _parentId,
+        launch: widget.launch,
       );
     }
 
+    // While resolving, a minimal back/close row over a spinner.
     return Scaffold(
-      body: Stack(children: [body, closeButton]),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 4.0,
+                vertical: 4.0,
+              ),
+              child: Row(
+                children: [
+                  IconButton(
+                    tooltip: MaterialLocalizations.of(
+                      context,
+                    ).backButtonTooltip,
+                    icon: const Icon(Icons.arrow_back),
+                    onPressed: _back,
+                  ),
+                  const Spacer(),
+                  IconButton(
+                    tooltip: L10n.of(context).close,
+                    icon: const Icon(Icons.close),
+                    onPressed: _close,
+                  ),
+                ],
+              ),
+            ),
+            const Expanded(
+              child: Center(child: CircularProgressIndicator.adaptive()),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

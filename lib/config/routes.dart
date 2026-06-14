@@ -56,7 +56,7 @@ import 'package:fluffychat/routes/settings/settings_security/settings_password/s
 import 'package:fluffychat/routes/settings/settings_security/settings_security.dart';
 import 'package:fluffychat/routes/settings/settings_style/settings_style.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription.dart';
-import 'package:fluffychat/routes/world/activity_map_page.dart';
+import 'package:fluffychat/routes/world/activity_detail_panel.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/config_viewer.dart';
@@ -1041,7 +1041,7 @@ abstract class AppRoutes {
           pageBuilder: (context, state) => defaultPageBuilder(
             context,
             state,
-            ActivityMapPage(
+            ActivityDetailPanel(
               activityId: state.pathParameters['activityId']!,
               launch: state.uri.queryParameters['launch'] == 'true',
             ),

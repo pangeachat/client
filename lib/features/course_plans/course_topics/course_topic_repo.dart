@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:math' as math;
 
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
@@ -15,6 +16,12 @@ class CourseTopicRepo {
   static final Map<String, Completer<TranslateTopicResponse>> _cache = {};
   static final GetStorage _storage = GetStorage('course_topic_storage');
 
+  /// The `topics/localize` endpoint rejects large id batches (it queries the
+  /// CMS by id in the request URL, which overflows past ~80 ids and 500s), so
+  /// uncached ids are fanned out in chunks of this size and merged. Small
+  /// requests (a single course's handful of topics) stay one request.
+  static const int _maxLocalizeBatch = 50;
+
   static Future<TranslateTopicResponse> get(
     TranslateTopicRequest request,
     String batchId,
@@ -26,10 +33,17 @@ class CourseTopicRepo {
         .where((uuid) => !topics.containsKey(uuid))
         .toList();
 
-    if (toFetch.isNotEmpty) {
+    final multiChunk = toFetch.length > _maxLocalizeBatch;
+    for (var i = 0; i < toFetch.length; i += _maxLocalizeBatch) {
+      final chunk = toFetch.sublist(
+        i,
+        math.min(i + _maxLocalizeBatch, toFetch.length),
+      );
       final fetchedTopics = await _fetch(
-        TranslateTopicRequest(topicIds: toFetch, l1: request.l1),
-        batchId,
+        TranslateTopicRequest(topicIds: chunk, l1: request.l1),
+        // Distinct per-chunk keys so the in-flight de-dup stays correct when
+        // a request spans several chunks.
+        multiChunk ? '$batchId#$i' : batchId,
       );
       topics.addAll(fetchedTopics.topics);
       await _setCached(fetchedTopics, request.l1);

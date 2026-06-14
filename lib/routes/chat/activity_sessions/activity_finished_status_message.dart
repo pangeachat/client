@@ -22,8 +22,10 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
 
   void _onArchive(BuildContext context) {
     _archiveToAnalytics();
+    // A standalone activity has no course to return to — go home instead.
+    final course = controller.room.courseParent;
     context.go(
-      "/rooms/spaces/${controller.room.courseParent!.id}/details?tab=course",
+      course != null ? "/rooms/spaces/${course.id}/details?tab=course" : "/",
     );
   }
 

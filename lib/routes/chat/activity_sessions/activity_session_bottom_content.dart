@@ -38,6 +38,10 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Existing sessions to join only live inside a course; a standalone
+    // activity has none to list.
+    final course = controller.course;
+    if (course == null) return const SizedBox.shrink();
     return ConstrainedBox(
       constraints: const BoxConstraints(
         maxWidth: FluffyThemes.columnWidth * 1.5,
@@ -45,7 +49,7 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
       child: Column(
         children: [
           ...ActivitySummaryStatus.values
-              .where((s) => s.canView(controller.course.isRoomAdmin))
+              .where((s) => s.canView(course.isRoomAdmin))
               .map((status) {
                 final roomSummaries = controller.activityStatuses
                     .getSessionsByStatus(status);
@@ -57,7 +61,7 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
                 return _ActivitySummaryStatusSection(
                   status: status,
                   roomSummaries: roomSummaries,
-                  course: controller.course,
+                  course: course,
                   onTap: controller.joinActivityByRoomId,
                 );
               }),
@@ -259,6 +263,7 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                       ),
                     ),
                     IconButton(
+                      tooltip: L10n.of(context).next,
                       icon: Icon(Icons.arrow_forward),
                       onPressed: onTap,
                     ),

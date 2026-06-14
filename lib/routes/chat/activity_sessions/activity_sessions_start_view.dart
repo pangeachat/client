@@ -32,6 +32,23 @@ class ActivitySessionStartView extends StatelessWidget {
           .rateLimit(const Duration(seconds: 1)),
       builder: (context, snapshot) {
         final activity = controller.activity;
+        // #Pangea
+        // Opened in-place over a course via `?activity=<id>` (not the standalone
+        // `/<activityId>` route): the AppBar IS the nav row — back returns to
+        // the course, X closes, both just drop the param so the course stays.
+        final uri = GoRouter.of(context).routeInformationProvider.value.uri;
+        final embedded = uri.queryParameters['activity'] != null;
+        void returnToCourse() {
+          final params = Map<String, String>.from(uri.queryParameters)
+            ..remove('activity');
+          GoRouter.of(context).go(
+            params.isEmpty
+                ? uri.path
+                : uri.replace(queryParameters: params).toString(),
+          );
+        }
+
+        // Pangea#
         return Scaffold(
           appBar: AppBar(
             leadingWidth: 52.0,
@@ -51,24 +68,42 @@ class ActivitySessionStartView extends StatelessWidget {
             leading: Padding(
               padding: const EdgeInsets.only(left: 12.0),
               child: Center(
-                child: IconButton(
-                  icon: const Icon(Icons.close),
-                  // #Pangea
-                  // On the first-class activity route this page is the
-                  // bottom of the stack; popping would leave an empty
-                  // navigator. Fall back to the home map.
-                  onPressed: () => Navigator.of(context).canPop()
-                      ? Navigator.of(context).pop()
-                      : GoRouter.of(context).go(PRoutes.world),
-                  // Pangea#
-                ),
+                // #Pangea
+                child: embedded
+                    ? IconButton(
+                        tooltip: MaterialLocalizations.of(
+                          context,
+                        ).backButtonTooltip,
+                        icon: const Icon(Icons.arrow_back),
+                        onPressed: returnToCourse,
+                      )
+                    : IconButton(
+                        tooltip: L10n.of(context).close,
+                        icon: const Icon(Icons.close),
+                        // On the first-class activity route this page is the
+                        // bottom of the stack; popping would leave an empty
+                        // navigator. Fall back to the home map.
+                        onPressed: () => Navigator.of(context).canPop()
+                            ? Navigator.of(context).pop()
+                            : GoRouter.of(context).go(PRoutes.world),
+                      ),
+                // Pangea#
               ),
             ),
             actions: [
               IconButton(
+                tooltip: L10n.of(context).feedbackButton,
                 icon: const Icon(Icons.flag_outlined),
                 onPressed: controller.submitActivityFeedback,
               ),
+              // #Pangea
+              if (embedded)
+                IconButton(
+                  tooltip: L10n.of(context).close,
+                  icon: const Icon(Icons.close),
+                  onPressed: returnToCourse,
+                ),
+              // Pangea#
             ],
           ),
           body: SafeArea(

@@ -12,6 +12,7 @@ import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
+import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -188,6 +189,32 @@ class SpacesNavigationRail extends StatelessWidget {
                     child: ListView(
                       scrollDirection: Axis.vertical,
                       children: [
+                        // World map home — the Pangea brand mark, at the top of
+                        // the rail. Chromeless and avatar-sized; the left
+                        // indicator bar conveys selection. Brand purple when
+                        // active, muted when not.
+                        NaviRailItem(
+                          isSelected: isWorld,
+                          backgroundColor: Colors.transparent,
+                          icon: PangeaLogoSvg(
+                            width: naviRailWidth - (isColumnMode ? 32.0 : 24.0),
+                            forceColor: Theme.of(
+                              context,
+                            ).colorScheme.onSurfaceVariant,
+                          ),
+                          selectedIcon: PangeaLogoSvg(
+                            width: naviRailWidth - (isColumnMode ? 32.0 : 24.0),
+                            forceColor: Theme.of(context).colorScheme.primary,
+                          ),
+                          onTap: () {
+                            collapse();
+                            context.go(PRoutes.world);
+                          },
+                          toolTip: L10n.of(context).world,
+                          expanded: expanded,
+                          naviRailWidth: naviRailWidth,
+                          expandedSectionWidth: expandedSectionWidth,
+                        ),
                         // Avatar — profile + settings.
                         NaviRailItem(
                           isSelected: isAvatar,
@@ -263,20 +290,6 @@ class SpacesNavigationRail extends StatelessWidget {
                             );
                           },
                           toolTip: L10n.of(context).learningAnalytics,
-                          expanded: expanded,
-                          naviRailWidth: naviRailWidth,
-                          expandedSectionWidth: expandedSectionWidth,
-                        ),
-                        // World map home.
-                        NaviRailItem(
-                          isSelected: isWorld,
-                          icon: const Icon(Icons.public_outlined),
-                          selectedIcon: const Icon(Icons.public),
-                          onTap: () {
-                            collapse();
-                            context.go(PRoutes.world);
-                          },
-                          toolTip: L10n.of(context).world,
                           expanded: expanded,
                           naviRailWidth: naviRailWidth,
                           expandedSectionWidth: expandedSectionWidth,

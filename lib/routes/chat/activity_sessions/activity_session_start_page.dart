@@ -300,7 +300,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
         return FullSession(course: course, controller: this);
       case SessionState.notStarted:
         return NotStartedSession(
-          course: course!,
+          course: course,
           activity: activity,
           activityId: widget.activityId,
           summaries: _roomSummariesModel,

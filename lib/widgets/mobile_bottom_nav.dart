@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/pangea_icon_button.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -35,12 +36,10 @@ class MobileBottomNav extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _NavButton(
-                icon: Icons.public_outlined,
-                selectedIcon: Icons.public,
+              PangeaIconButton(
                 selected: section == AppSection.world,
                 tooltip: L10n.of(context).world,
-                onTap: () => context.go(PRoutes.world),
+                onPressed: () => context.go(PRoutes.world),
               ),
               _NavButton(
                 icon: Icons.forum_outlined,

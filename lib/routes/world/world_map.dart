@@ -10,13 +10,11 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
-import 'package:fluffychat/features/course_plans/payload_client/models/course_plan/cms_course_plan_topic_location.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_activities_repo.dart';
-import 'package:fluffychat/routes/world/world_locations_repo.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -86,12 +84,18 @@ class WorldMap extends StatefulWidget {
   /// right of the overlay instead of behind it. 0 when nothing overlays it.
   final double leftOverlayWidth;
 
+  /// When set, the map centers this activity within the exposed canvas (the
+  /// area the left column and detail panel don't cover) instead of fitting the
+  /// whole course — e.g. while its `?activity=` detail panel is open.
+  final String? focusedActivityId;
+
   const WorldMap({
     super.key,
     this.initialCenter,
     this.initialZoom,
     this.controller,
     this.leftOverlayWidth = 0.0,
+    this.focusedActivityId,
   });
 
   @override
@@ -102,7 +106,6 @@ class _WorldMapState extends State<WorldMap> {
   final MapController _ownController = MapController();
   MapController get _controller => widget.controller ?? _ownController;
 
-  List<CmsCoursePlanTopicLocation> _locations = [];
   List<WorldActivityPin> _activities = [];
 
   /// The pin whose preview popup is open (tapping a star selects it; tapping
@@ -119,7 +122,6 @@ class _WorldMapState extends State<WorldMap> {
     // Invariant: the shell owns a single persistent instance, so this runs
     // once per app session — section navigation overlays the map, never
     // remounts it.
-    _loadLocations();
     _loadActivities();
     MapContextController.notifier.addListener(_onContextChange);
   }
@@ -142,6 +144,18 @@ class _WorldMapState extends State<WorldMap> {
   }
 
   @override
+  void didUpdateWidget(covariant WorldMap oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // Re-center when the focused activity changes or the exposed canvas
+    // resizes (a panel opened/closed), so the selection stays centered in the
+    // visible map area rather than behind a panel.
+    if (oldWidget.focusedActivityId != widget.focusedActivityId ||
+        oldWidget.leftOverlayWidth != widget.leftOverlayWidth) {
+      _fitToContext();
+    }
+  }
+
+  @override
   void dispose() {
     _syncSub?.cancel();
     MapContextController.notifier.removeListener(_onContextChange);
@@ -152,15 +166,6 @@ class _WorldMapState extends State<WorldMap> {
     // Close any open preview when the map re-scopes (e.g. entering a course).
     if (mounted) setState(() => _selectedActivity = null);
     _fitToContext();
-  }
-
-  Future<void> _loadLocations() async {
-    try {
-      final locations = await WorldLocationsRepo.mappableLocations();
-      if (mounted) setState(() => _locations = locations);
-    } catch (_) {
-      // Map stays usable without pins; Sentry catches repo errors.
-    }
   }
 
   Future<void> _loadActivities() async {
@@ -188,39 +193,60 @@ class _WorldMapState extends State<WorldMap> {
     return _activities;
   }
 
-  /// Location pins are global; hidden when scoped to a course so the course's
-  /// own activities read clearly.
-  List<CmsCoursePlanTopicLocation> get _visibleLocations =>
-      MapContextController.notifier.value is CourseMapContext
-      ? const []
-      : _locations;
-
-  /// When the scope becomes a course, fit the camera to that course's pins
-  /// so the learner sees its content. Returning to World keeps the current
-  /// view (all content reappears) rather than yanking the camera.
+  /// Centers the current selection within the *exposed* canvas — the map area
+  /// the left column and detail panel don't cover. A specifically-focused
+  /// activity centers on itself (keeping the current zoom); a course fits all
+  /// its activities. Returning to World keeps the current view rather than
+  /// yanking the camera.
   void _fitToContext() {
-    if (MapContextController.notifier.value is! CourseMapContext) return;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      final points = _visibleActivities.map((a) => a.point).toList();
-      if (points.isEmpty) return;
       try {
+        // Inset the left edge by the overlay so content lands in the uncovered
+        // area to the right of the column/panel, not behind it.
+        final padding = EdgeInsets.fromLTRB(
+          widget.leftOverlayWidth + 64.0,
+          64.0,
+          64.0,
+          64.0,
+        );
+
+        // A specifically selected activity centers on itself, at the current
+        // zoom, within the exposed canvas.
+        final focusedId = widget.focusedActivityId;
+        if (focusedId != null) {
+          WorldActivityPin? pin;
+          for (final a in _activities) {
+            if (a.activityId == focusedId) {
+              pin = a;
+              break;
+            }
+          }
+          if (pin != null) {
+            _controller.fitCamera(
+              CameraFit.coordinates(
+                coordinates: [pin.point],
+                padding: padding,
+                maxZoom: _controller.camera.zoom,
+              ),
+            );
+            return;
+          }
+        }
+
+        // Otherwise a course context fits all of its activities.
+        if (MapContextController.notifier.value is! CourseMapContext) return;
+        final points = _visibleActivities.map((a) => a.point).toList();
+        if (points.isEmpty) return;
         _controller.fitCamera(
           CameraFit.bounds(
             bounds: LatLngBounds.fromPoints(points),
-            // Inset the left edge by the overlay width so the course fits in
-            // the area the left column doesn't cover, not behind it.
-            padding: EdgeInsets.fromLTRB(
-              widget.leftOverlayWidth + 64.0,
-              64.0,
-              64.0,
-              64.0,
-            ),
+            padding: padding,
             maxZoom: 12.0,
           ),
         );
       } catch (_) {
-        // Controller not attached yet; the next change will refit.
+        // Controller/camera not ready yet; the next change will refit.
       }
     });
   }
@@ -243,7 +269,6 @@ class _WorldMapState extends State<WorldMap> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     // Per-activity goal progress for the logged-in user (gray/bronze/gold).
     final goalTiers = _userGoalTiers(Matrix.of(context).client);
     // Place the preview above the pin, but flip it below when the pin is too
@@ -294,33 +319,8 @@ class _WorldMapState extends State<WorldMap> {
           urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
           userAgentPackageName: 'com.talktolearn.chat',
         ),
-        MarkerLayer(
-          markers: _visibleLocations
-              .map(
-                (location) => Marker(
-                  // CMS stores [longitude, latitude].
-                  point: LatLng(
-                    location.coordinates![1],
-                    location.coordinates![0],
-                  ),
-                  width: 44,
-                  height: 44,
-                  alignment: Alignment.topCenter,
-                  child: Tooltip(
-                    message: location.name,
-                    child: Icon(
-                      Icons.location_pin,
-                      size: 40,
-                      color: theme.colorScheme.primary,
-                      shadows: const [
-                        Shadow(blurRadius: 6, color: Colors.black45),
-                      ],
-                    ),
-                  ),
-                ),
-              )
-              .toList(),
-        ),
+        // world_v2: the map surfaces activities, not topic locations — only
+        // activity pins are drawn (no topic/location markers).
         MarkerLayer(
           markers: _visibleActivities
               .map(

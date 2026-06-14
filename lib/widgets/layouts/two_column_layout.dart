@@ -57,8 +57,8 @@ enum _CanvasMode {
   /// Opaque content capped at [_detailMaxWidth]; the map peeks alongside.
   detail,
 
-  /// Opaque content that fills the canvas — it hosts its own map surface
-  /// (the activity page, `/<uuid>`).
+  /// Opaque content that fills the canvas — the "Add new course" hub
+  /// (`/courses`), a card floating over the persistent map.
   fullBleed,
 }
 
@@ -69,10 +69,10 @@ _CanvasMode _canvasMode(GoRouterState state, bool isColumnMode) {
   if (fullPath == '/' || (isColumnMode && _mapCanvasPaths.contains(fullPath))) {
     return _CanvasMode.map;
   }
-  // Full-bleed surfaces that float over the live map (only their own content
-  // absorbs taps): the activity page hosts its own map; the "Add new course"
-  // hub is a card floating over the persistent map.
-  if (fullPath == '/courses' || fullPath.startsWith('/:activityId')) {
+  // The "Add new course" hub is a card floating over the persistent map; its
+  // own content absorbs taps. The activity routes (`/<uuid>` and `?activity=`)
+  // are capped detail panels over the same map, not full-bleed.
+  if (fullPath == '/courses') {
     return _CanvasMode.fullBleed;
   }
   return _CanvasMode.detail;
@@ -137,6 +137,10 @@ class TwoColumnLayout extends StatelessWidget {
     // persistent map — a capped detail (not full-bleed), course preserved,
     // map untouched — instead of leaving for the standalone `/<id>` page.
     final activityParam = state.uri.queryParameters['activity'];
+    // The activity to center on the persistent map: the in-place `?activity=`
+    // param, or the standalone `/<activityId>` route's path param.
+    final focusedActivityId =
+        activityParam ?? state.pathParameters['activityId'];
     final effectiveCanvasMode = activityParam != null
         ? _CanvasMode.detail
         : canvasMode;
@@ -174,9 +178,18 @@ class TwoColumnLayout extends StatelessWidget {
             Positioned.fill(
               child: WorldMap(
                 key: _persistentWorldMapKey,
-                // The rail + left column overlay the map; a course camera-fit
-                // pads by this so its pins land clear of the overlay.
-                leftOverlayWidth: columnWidth,
+                // The rail + left column — and the detail panel, when one is
+                // open — overlay the map; a camera-fit pads by this so the
+                // selection lands centered in the exposed canvas, not behind
+                // an overlay.
+                leftOverlayWidth:
+                    columnWidth +
+                    (effectiveCanvasMode == _CanvasMode.detail
+                        ? detailWidth
+                        : 0.0),
+                // While an activity is shown (in-place or the standalone
+                // route), center it within the exposed canvas.
+                focusedActivityId: focusedActivityId,
               ),
             ),
             // The route canvas, as one stable child so the sideView Navigator

@@ -147,7 +147,16 @@ class NaviRailItem extends StatelessWidget {
                               ),
                               child: Container(
                                 alignment: Alignment.center,
-                                decoration: BoxDecoration(
+                                margin: EdgeInsets.symmetric(
+                                  horizontal: isColumnMode ? 16.0 : 12.0,
+                                  vertical: isColumnMode ? 8.0 : 6.0,
+                                ),
+                                // Material + InkWell give the item real Material
+                                // interaction states — hover overlay, pressed
+                                // ripple, focus. The InkWell's own borderRadius
+                                // bounds the ripple; no Material clip, so angular
+                                // icons (e.g. the Pangea mark) aren't cut.
+                                child: Material(
                                   color:
                                       backgroundColor ??
                                       (isSelected
@@ -156,32 +165,15 @@ class NaviRailItem extends StatelessWidget {
                                                 .colorScheme
                                                 .surfaceContainerHigh),
                                   borderRadius: borderRadius,
-                                ),
-                                margin: EdgeInsets.symmetric(
-                                  horizontal: isColumnMode ? 16.0 : 12.0,
-                                  vertical: isColumnMode ? 8.0 : 6.0,
-                                ),
-                                child: TooltipVisibility(
-                                  visible: !expanded,
-                                  // Pangea#
-                                  child: Tooltip(
-                                    message: toolTip,
-                                    child: InkWell(
-                                      borderRadius: borderRadius,
-                                      // #Pangea
-                                      // onTap: onTap,
-                                      child: icon,
-                                      // child: unreadBadgeFilter == null
-                                      //     ? icon
-                                      //     : UnreadRoomsBadge(
-                                      //         filter: unreadBadgeFilter,
-                                      //         badgePosition: BadgePosition.topEnd(
-                                      //           top: -12,
-                                      //           end: -8,
-                                      //         ),
-                                      //         child: icon,
-                                      //       ),
-                                      // Pangea#
+                                  child: TooltipVisibility(
+                                    visible: !expanded,
+                                    child: Tooltip(
+                                      message: toolTip,
+                                      child: InkWell(
+                                        borderRadius: borderRadius,
+                                        onTap: onTap,
+                                        child: icon,
+                                      ),
                                     ),
                                   ),
                                 ),
