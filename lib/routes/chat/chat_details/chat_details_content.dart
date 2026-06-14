@@ -147,6 +147,7 @@ class ChatDetailsContent extends StatelessWidget {
                       right: 4,
                       top: 4,
                       child: IconButton(
+                        tooltip: L10n.of(context).edit,
                         onPressed: controller.setTopicAction,
                         icon: const Icon(Icons.edit_outlined),
                       ),

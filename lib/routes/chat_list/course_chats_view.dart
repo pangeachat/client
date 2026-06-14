@@ -255,6 +255,7 @@ class _DefaultChatCreationTile extends StatelessWidget {
       title: Text(type.creationTitle(l10n)),
       subtitle: Text(type.creationDesc(l10n)),
       trailing: IconButton(
+        tooltip: l10n.dismiss,
         icon: const Icon(Icons.close),
         onPressed: () => showFutureLoadingDialog(
           context: context,

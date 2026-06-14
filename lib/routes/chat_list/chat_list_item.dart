@@ -423,6 +423,9 @@ class ChatListItem extends StatelessWidget {
                           )
                         : null
                   : IconButton(
+                      // #Pangea
+                      tooltip: L10n.of(context).delete,
+                      // Pangea#
                       icon: const Icon(Icons.delete_outlined),
                       onPressed: onForget,
                     ),

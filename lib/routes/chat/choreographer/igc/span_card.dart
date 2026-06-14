@@ -159,6 +159,7 @@ class SpanCardState extends State<SpanCard> {
                   child: Row(
                     children: [
                       IconButton(
+                        tooltip: L10n.of(context).close,
                         icon: const Icon(Icons.close),
                         color: theme.iconTheme.color,
                         onPressed: widget.controller.close,
@@ -183,6 +184,7 @@ class SpanCardState extends State<SpanCard> {
                         ),
                       ),
                       IconButton(
+                        tooltip: L10n.of(context).feedbackButton,
                         icon: const Icon(Icons.flag_outlined),
                         color: theme.iconTheme.color,
                         onPressed: _showFeedbackDialog,
@@ -314,6 +316,7 @@ class _MatchContent extends StatelessWidget {
                           ),
                         ),
                         IconButton(
+                          tooltip: L10n.of(context).undo,
                           icon: const Icon(Symbols.undo),
                           onPressed: () =>
                               onUpdateMatch(match, PangeaMatchStatusEnum.undo),

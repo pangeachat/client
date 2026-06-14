@@ -82,6 +82,7 @@ mixin LemmaEmojiSetter {
               ),
             ),
             IconButton(
+              tooltip: L10n.of(context).close,
               icon: const Icon(Icons.close),
               color: theme.colorScheme.surface,
               onPressed: () => messenger.hideCurrentSnackBar(),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
+
 class AutocorrectPopup extends StatelessWidget {
   final String originalText;
   final VoidCallback onUndo;
@@ -25,7 +27,14 @@ class AutocorrectPopup extends StatelessWidget {
           spacing: 8.0,
           children: [
             Text(originalText),
-            InkWell(onTap: onUndo, child: const Icon(Icons.replay, size: 12)),
+            Semantics(
+              button: true,
+              label: L10n.of(context).undo,
+              child: InkWell(
+                onTap: onUndo,
+                child: const Icon(Icons.replay, size: 12),
+              ),
+            ),
           ],
         ),
       ),

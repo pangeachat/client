@@ -73,6 +73,7 @@ class DownloadDialog extends StatelessWidget {
                     ),
                   ),
                   IconButton(
+                    tooltip: L10n.of(context).close,
                     icon: const Icon(Icons.close),
                     onPressed: () => Navigator.of(context).pop(),
                   ),

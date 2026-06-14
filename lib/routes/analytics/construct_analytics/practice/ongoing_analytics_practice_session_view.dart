@@ -54,6 +54,7 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                       return Align(
                         alignment: Alignment.centerRight,
                         child: IconButton(
+                          tooltip: L10n.of(context).feedbackButton,
                           icon: Icon(Icons.flag_outlined),
                           onPressed: enabled
                               ? () => controller.flagExercise(exercise)

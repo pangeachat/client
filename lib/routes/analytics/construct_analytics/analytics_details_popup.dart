@@ -252,6 +252,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
       appBar: widget.view == ConstructTypeEnum.morph && widget.construct != null
           ? AppBar(
               leading: IconButton(
+                tooltip: L10n.of(context).close,
                 onPressed: Navigator.of(context).pop,
                 icon: Icon(Icons.close),
               ),

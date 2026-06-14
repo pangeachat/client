@@ -88,6 +88,7 @@ class RegistrationEmailPopup extends StatelessWidget {
               top: 4,
               right: 4,
               child: IconButton(
+                tooltip: L10n.of(context).close,
                 icon: const Icon(Icons.close, size: 18),
                 splashRadius: 18,
                 onPressed: () => Navigator.of(context).pop(),

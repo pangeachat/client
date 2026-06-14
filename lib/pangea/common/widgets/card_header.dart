@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/bot/utils/bot_style.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../../features/bot/widgets/bot_face_svg.dart';
 
@@ -30,6 +31,7 @@ class CardHeader extends StatelessWidget {
           ),
         ),
         IconButton(
+          tooltip: L10n.of(context).close,
           icon: const Icon(Icons.close_outlined),
           onPressed: MatrixState.pAnyState.closeOverlay,
         ),

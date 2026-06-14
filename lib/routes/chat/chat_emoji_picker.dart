@@ -59,15 +59,19 @@ class ChatEmojiPicker extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       color: theme.colorScheme.surfaceContainer,
                                     ),
-                                    child: InkWell(
-                                      onTap: showSearchView,
-                                      child: Row(
-                                        children: [
-                                          const Padding(
-                                            padding: EdgeInsets.all(12.0),
-                                            child: Icon(Icons.search),
-                                          ),
-                                        ],
+                                    child: Semantics(
+                                      button: true,
+                                      label: L10n.of(context).search,
+                                      child: InkWell(
+                                        onTap: showSearchView,
+                                        child: Row(
+                                          children: [
+                                            const Padding(
+                                              padding: EdgeInsets.all(12.0),
+                                              child: Icon(Icons.search),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),

@@ -34,6 +34,7 @@ class PangeaEmojiSearchViewState extends SearchViewState {
               Row(
                 children: [
                   IconButton(
+                    tooltip: MaterialLocalizations.of(context).backButtonTooltip,
                     onPressed: () {
                       widget.showEmojiView();
                     },

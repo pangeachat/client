@@ -102,6 +102,7 @@ class EventInfoDialog extends StatelessWidget {
             title: Text('${L10n.of(context).sourceCode}:'),
             //#Pangea
             trailing: IconButton(
+              tooltip: L10n.of(context).copy,
               icon: const Icon(Icons.copy),
               onPressed: () {
                 Clipboard.setData(ClipboardData(text: prettyJson(event)));

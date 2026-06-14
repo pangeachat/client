@@ -92,6 +92,7 @@ class NewPrivateChatView extends StatelessWidget {
                   suffixIcon: controller.controller.text.isEmpty
                       ? null
                       : IconButton(
+                          tooltip: L10n.of(context).clear,
                           icon: const Icon(Icons.clear_outlined),
                           onPressed: () {
                             controller.controller.clear();

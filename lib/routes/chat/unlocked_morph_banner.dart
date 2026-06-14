@@ -140,6 +140,7 @@ class UnlockedMorphBannerState extends State<UnlockedMorphBanner> {
                             height: 32.0,
                             child: Center(
                               child: IconButton(
+                                tooltip: L10n.of(context).details,
                                 icon: const Icon(Icons.info_outline),
                                 style: IconButton.styleFrom(
                                   padding: const EdgeInsets.all(4.0),
@@ -157,6 +158,7 @@ class UnlockedMorphBannerState extends State<UnlockedMorphBanner> {
                       child: Tooltip(
                         message: L10n.of(context).close,
                         child: IconButton(
+                          tooltip: L10n.of(context).close,
                           icon: const Icon(Icons.close),
                           style: IconButton.styleFrom(
                             padding: const EdgeInsets.all(4.0),

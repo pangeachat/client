@@ -313,6 +313,7 @@ class SettingsStyleView extends StatelessWidget {
                       trailing: accountConfig.wallpaperUrl == null
                           ? null
                           : IconButton(
+                              tooltip: L10n.of(context).delete,
                               icon: const Icon(Icons.delete_outlined),
                               color: theme.colorScheme.error,
                               onPressed: controller.deleteChatWallpaper,

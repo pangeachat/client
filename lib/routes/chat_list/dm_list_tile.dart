@@ -88,6 +88,7 @@ class DMListTileState extends State<DMListTile> {
                   ),
                 ),
                 trailing: IconButton(
+                  tooltip: L10n.of(context).dismiss,
                   icon: const Icon(Icons.close),
                   onPressed: () =>
                       InstructionsEnum.dismissSupportChat.setToggledOff(true),

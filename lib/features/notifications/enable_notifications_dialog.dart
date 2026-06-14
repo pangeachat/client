@@ -110,6 +110,7 @@ class EnableNotificationsDialog extends StatelessWidget {
               top: 4,
               right: 4,
               child: IconButton(
+                tooltip: L10n.of(context).close,
                 icon: const Icon(Icons.close),
                 onPressed: () => Navigator.of(
                   context,

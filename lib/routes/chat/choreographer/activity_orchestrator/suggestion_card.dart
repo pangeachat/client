@@ -76,6 +76,7 @@ class SuggestionCardState extends State<SuggestionCard> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
+                  tooltip: L10n.of(context).close,
                   icon: const Icon(Icons.close),
                   color: theme.iconTheme.color,
                   onPressed: _close,

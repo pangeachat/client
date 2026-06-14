@@ -6,6 +6,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/word_audio_button.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
@@ -103,6 +104,7 @@ class WordZoomWidget extends StatelessWidget {
                         children: [
                           onClose != null
                               ? IconButton(
+                                  tooltip: L10n.of(context).close,
                                   color: Theme.of(context).iconTheme.color,
                                   icon: const Icon(Icons.close),
                                   onPressed: onClose,

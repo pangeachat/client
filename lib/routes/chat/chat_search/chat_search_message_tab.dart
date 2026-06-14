@@ -155,6 +155,7 @@ class _MessageSearchResultListTile extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
       ),
       trailing: IconButton(
+        tooltip: L10n.of(context).open,
         icon: const Icon(Icons.chevron_right_outlined),
         // #Pangea
         // onPressed: () => context.go(

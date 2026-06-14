@@ -40,6 +40,15 @@ void main() async {
     Logs().e('Failed to load .env file', e);
   }
 
+  // Force the accessibility semantics tree on when ENABLE_SEMANTICS=true, so
+  // automation / assistive tech can drive the canvas-rendered UI by role+name
+  // instead of screenshots. Off by default (semantics has a perf cost). The
+  // handle is intentionally never disposed, keeping semantics on for the app's
+  // lifetime. See playwright-testing.instructions.md.
+  if (Environment.enableSemantics) {
+    WidgetsBinding.instance.ensureSemantics();
+  }
+
   await Future.wait([
     ErrorHandler.initialize(),
     PLanguageStore.initialize(),

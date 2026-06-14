@@ -183,6 +183,7 @@ class EmotesSettingsView extends StatelessWidget {
                     suffixIcon: attributionUrl == null
                         ? null
                         : IconButton(
+                            tooltip: L10n.of(context).open,
                             icon: const Icon(Icons.link_outlined),
                             onPressed: () => UrlLauncher(
                               context,

@@ -103,6 +103,7 @@ class _StartPollBottomSheetState extends State<StartPollBottomSheet> {
                   suffixIcon: _answers.length == 2
                       ? null
                       : IconButton(
+                          tooltip: L10n.of(context).delete,
                           icon: const Icon(Icons.cancel_outlined),
                           onPressed: () => setState(() {
                             _answers.remove(answerController..dispose());

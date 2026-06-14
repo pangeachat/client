@@ -184,6 +184,7 @@ class InlineTooltipState extends State<InlineTooltip>
                     ),
                   ),
                   IconButton(
+                    tooltip: L10n.of(context).close,
                     padding: const EdgeInsets.only(left: 6.0),
                     constraints: const BoxConstraints(),
                     icon: Icon(

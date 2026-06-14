@@ -59,6 +59,7 @@ class SSODialogState extends State<SSODialog> {
             Align(
               alignment: Alignment.topRight,
               child: IconButton(
+                tooltip: L10n.of(context).close,
                 onPressed: Navigator.of(context).pop,
                 icon: const Icon(Icons.close),
               ),

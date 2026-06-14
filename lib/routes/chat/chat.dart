@@ -3009,6 +3009,9 @@ class ChatController extends State<ChatPageWithRoom>
                       child: ChatDetails(
                         roomId: roomId,
                         embeddedCloseButton: IconButton(
+                          // #Pangea
+                          tooltip: L10n.of(context).close,
+                          // Pangea#
                           icon: const Icon(Icons.close),
                           onPressed: toggleDisplayChatDetailsColumn,
                         ),

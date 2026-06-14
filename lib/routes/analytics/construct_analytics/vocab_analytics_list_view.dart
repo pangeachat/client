@@ -165,6 +165,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                 height: 56, // matches IconButton touch target
                 child: Center(
                   child: IconButton(
+                    tooltip: L10n.of(context).search,
                     icon: const Icon(Icons.search_outlined),
                     onPressed: controller.toggleSearching,
                   ),
@@ -217,6 +218,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                           ),
                         ),
                         IconButton(
+                          tooltip: L10n.of(context).close,
                           icon: const Icon(Icons.close),
                           onPressed: controller.toggleSearching,
                         ),
@@ -231,6 +233,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                           mainAxisSize: .min,
                           children: [
                             IconButton(
+                              tooltip: L10n.of(context).deselectAll,
                               onPressed: controller.clearSelectedConstructs,
                               icon: const Icon(Icons.close),
                             ),
@@ -241,6 +244,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                           ],
                         ),
                         IconButton(
+                          tooltip: L10n.of(context).block,
                           onPressed: controller.blockSelectedConstructs,
                           icon: Icon(Icons.delete_outline),
                           color: Theme.of(context).colorScheme.error,

@@ -111,6 +111,7 @@ class _ShareScaffoldDialogState extends State<ShareScaffoldDialog> {
                 ),
                 floatingLabelBehavior: FloatingLabelBehavior.never,
                 prefixIcon: IconButton(
+                  tooltip: L10n.of(context).search,
                   onPressed: () {},
                   icon: Icon(
                     Icons.search_outlined,

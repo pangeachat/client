@@ -124,6 +124,7 @@ class _LevelUpBannerState extends State<LevelUpBanner> {
                   child: Tooltip(
                     message: L10n.of(context).close,
                     child: IconButton(
+                      tooltip: L10n.of(context).close,
                       icon: const Icon(Icons.close),
                       style: IconButton.styleFrom(
                         padding: const EdgeInsets.all(4.0),

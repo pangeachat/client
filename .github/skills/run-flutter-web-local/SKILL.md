@@ -90,6 +90,10 @@ curl -s http://localhost:8090/.env | grep -E "SYNAPSE_URL|HOME_SERVER|CHOREO_API
 
 `local-dev/pangea env` (the control plane) regenerates these to localhost via `lib/gen-env.sh`; after running it, rebuild Flutter (clean restart) so the new `.env` is served.
 
+### Driving the app by semantics (Chrome extension)
+
+The app renders to `<canvas>`, so the Chrome extension can only operate it by role+name once Flutter's accessibility semantics tree is on — otherwise it falls back to screenshots and positional clicks. Add `ENABLE_SEMANTICS=true` to `client/.env` and clean-restart to force the tree on from startup. Off by default (semantics has a perf cost). See [`playwright-testing.instructions.md`](../../instructions/playwright-testing.instructions.md) for the full contract.
+
 ## Login
 
 `@learner` / `learnerpass` against the local Synapse (`local.pangea.chat`).

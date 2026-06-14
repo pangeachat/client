@@ -75,6 +75,7 @@ class MessageUnsubscribedCard extends StatelessWidget {
                   children: [
                     onClose != null
                         ? IconButton(
+                            tooltip: L10n.of(context).close,
                             color: theme.iconTheme.color,
                             icon: const Icon(Icons.close),
                             onPressed: onClose,

@@ -30,6 +30,7 @@ class SettingsLearningView extends StatelessWidget {
               title: Text(L10n.of(context).learningSettings),
               leading: controller.widget.isDialog
                   ? IconButton(
+                      tooltip: L10n.of(context).close,
                       icon: const Icon(Icons.close),
                       onPressed: controller.onSettingsClose,
                     )

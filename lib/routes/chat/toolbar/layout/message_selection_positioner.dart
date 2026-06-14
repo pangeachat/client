@@ -532,6 +532,7 @@ class MessageReactionPicker extends StatelessWidget {
             children: [
               ...AppConfig.defaultReactions.map(
                 (emoji) => IconButton(
+                  tooltip: emoji,
                   padding: EdgeInsets.zero,
                   icon: Center(
                     child: Opacity(

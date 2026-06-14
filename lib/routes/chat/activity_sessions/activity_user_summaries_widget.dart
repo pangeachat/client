@@ -71,6 +71,7 @@ class ActivityUserSummaries extends StatelessWidget {
             right: 18.0,
             top: 18.0,
             child: IconButton(
+              tooltip: L10n.of(context).feedbackButton,
               icon: const Icon(Icons.flag_outlined),
               onPressed: () =>
                   controller.activityController.submitSummaryFeedback(context),
