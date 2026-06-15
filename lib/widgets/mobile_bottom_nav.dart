@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_icon_button.dart';
@@ -22,8 +23,8 @@ class MobileBottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final section = AppSection.fromUri(state.uri);
-    final activeSpaceId = AppSection.activeSpaceId(state.uri);
+    final section = sectionFor(state);
+    final activeSpaceId = activeSpaceIdFor(state);
     final theme = Theme.of(context);
 
     return Material(

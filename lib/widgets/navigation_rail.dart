@@ -8,6 +8,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -21,11 +22,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/navi_rail_item.dart';
 
 class SpacesNavigationRail extends StatelessWidget {
+  // #Pangea
+  final GoRouterState state;
+  // Pangea#
   final String? activeSpaceId;
   // #Pangea
   // final void Function() onGoToChats;
   // final void Function(String) onGoToSpaceId;
-  final String? path;
   final double naviRailWidth;
   final double expandedSectionWidth;
   final bool expanded;
@@ -35,11 +38,13 @@ class SpacesNavigationRail extends StatelessWidget {
   // Pangea#
 
   const SpacesNavigationRail({
+    // #Pangea
+    required this.state,
+    // Pangea#
     required this.activeSpaceId,
     // #Pangea
     // required this.onGoToChats,
     // required this.onGoToSpaceId,
-    required this.path,
     required this.naviRailWidth,
     required this.expandedSectionWidth,
     required this.collapse,
@@ -133,11 +138,9 @@ class SpacesNavigationRail extends StatelessWidget {
   Widget build(BuildContext context) {
     final client = Matrix.of(context).client;
     // #Pangea
-    // world_v2: exact section resolution via AppSection — no substring
-    // matching on paths.
-    final section = AppSection.fromUri(
-      GoRouter.of(context).routeInformationProvider.value.uri,
-    );
+    // world_v2: section + active space from route_facts (the single resolver),
+    // using the shell's state so the rail can't disagree with the shell.
+    final section = sectionFor(state);
     final isSettings = section == AppSection.settings;
     final isUserHome = section == AppSection.profile;
     final isAnalytics = section == AppSection.analytics;
@@ -145,11 +148,7 @@ class SpacesNavigationRail extends StatelessWidget {
     final isWorld = section == AppSection.world;
     // The Add-course / find-course flow: courses section, no active space.
     final isCourseFind =
-        section == AppSection.courses &&
-        AppSection.activeSpaceId(
-              GoRouter.of(context).routeInformationProvider.value.uri,
-            ) ==
-            null;
+        section == AppSection.courses && activeSpaceId == null;
     // The Avatar slot merges profile + settings (world_v2).
     final isAvatar = isUserHome || isSettings;
     final isColumnMode = FluffyThemes.isColumnMode(context);

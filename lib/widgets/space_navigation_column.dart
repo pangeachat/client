@@ -9,6 +9,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/course_plans/new_course_page.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
 import 'package:fluffychat/routes/analytics/level/level_analytics_details_content.dart';
@@ -93,12 +94,10 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
     final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
     // World is the full-bleed map: no left column. The "Add new course" hub
-    // (`/courses`) is likewise a card floating over the full-bleed map (no
-    // left column). Every other section overlays its list/detail card over
-    // the map in the left column. (Kept in sync with TwoColumnLayout.)
-    final showLeftColumn =
-        AppSection.fromUri(widget.state.uri) != AppSection.world &&
-        widget.state.fullPath != '/courses';
+    // (`/courses`) is likewise a card floating over the full-bleed map. Every
+    // other section overlays its list/detail card in the left column. Decided
+    // by route_facts (the single source shared with TwoColumnLayout).
+    final showLeft = showLeftColumn(widget.state);
 
     // width of base navigation rail, if visible
     final baseNaviRailWidth = isColumnMode
@@ -120,7 +119,7 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
 
     return Stack(
       children: [
-        if (isColumnMode && showLeftColumn)
+        if (isColumnMode && showLeft)
           Positioned.fill(
             left: realNaviRailWidth,
             child: Row(
@@ -149,8 +148,8 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SpacesNavigationRail(
-                    activeSpaceId: widget.state.pathParameters['spaceid'],
-                    path: widget.state.fullPath,
+                    state: widget.state,
+                    activeSpaceId: activeSpaceIdFor(widget.state),
                     naviRailWidth: realNaviRailWidth,
                     expandedSectionWidth: realExpandedNaviWidth,
                     expanded: _expanded,
@@ -178,12 +177,12 @@ class _MainView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // world_v2: the left column is decided by the active section (exact
-    // path segments via AppSection), with sub-views chosen by segment
+    // world_v2: the left column is decided by the active section (from
+    // route_facts, the single resolver), with sub-views chosen by segment
     // inspection — never substring matching on the full path.
     final uri = state.uri;
     final segments = uri.pathSegments;
-    final section = AppSection.fromUri(uri);
+    final section = sectionFor(state);
 
     switch (section) {
       case AppSection.analytics:
@@ -212,7 +211,7 @@ class _MainView extends StatelessWidget {
       case AppSection.courses:
         // Add-course flows live in the left column over the map (world_v2),
         // dispatched by sub-path so a selected course's activities can show.
-        final spaceId = AppSection.activeSpaceId(uri);
+        final spaceId = activeSpaceIdFor(state);
         if (spaceId == null) {
           // "Start my own" — the plan list.
           if (segments.contains('own')) {
