@@ -10,11 +10,10 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
-import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
+import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
-import 'package:fluffychat/routes/world/world_activities_repo.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -41,6 +40,9 @@ Color _starColor(_GoalTier tier) {
 /// `orchestrator_awarded_goals` room state. Activities the user hasn't started
 /// (or that have no goals) are absent → they default to [_GoalTier.none]
 /// (gray). Multiple sessions of one activity keep the highest tier reached.
+///
+/// This is the "completion data, stored in Matrix and automatically synced"
+/// that colours the pins before any click — no CMS read needed for it.
 Map<String, _GoalTier> _userGoalTiers(Client client) {
   final tiers = <String, _GoalTier>{};
   for (final room in client.rooms) {
@@ -68,8 +70,9 @@ Map<String, _GoalTier> _userGoalTiers(Client client) {
 /// camera, and pins are preserved as you move around the nav.
 ///
 /// Its content is scoped by [MapContextController]: World shows all pins; a
-/// selected course shows only that course's content and the camera refits
-/// to it. Star progress and travel mechanics land on top of this later.
+/// selected course shows only that quest's activities and the camera refits
+/// to it. Pins are thin (id, title, point); a tap fetches the full plan and
+/// opens the activity. Star colour reflects Matrix-synced goal progress.
 class WorldMap extends StatefulWidget {
   /// Optional camera override, e.g. to center on an activity's location.
   final LatLng? initialCenter;
@@ -106,12 +109,9 @@ class _WorldMapState extends State<WorldMap> {
   final MapController _ownController = MapController();
   MapController get _controller => widget.controller ?? _ownController;
 
-  List<WorldActivityPin> _activities = [];
-
-  /// The pin whose preview popup is open (tapping a star selects it; tapping
-  /// the map background or the popup's close clears it). Stays on the
-  /// persistent map — no navigation, no second map.
-  WorldActivityPin? _selectedActivity;
+  /// The activity pins currently shown — the active context's set (the whole
+  /// world, or a selected quest's activities). Thin: id, title, point.
+  List<QuestActivityCard> _pins = [];
 
   Client? _client;
   StreamSubscription<dynamic>? _syncSub;
@@ -122,7 +122,7 @@ class _WorldMapState extends State<WorldMap> {
     // Invariant: the shell owns a single persistent instance, so this runs
     // once per app session — section navigation overlays the map, never
     // remounts it.
-    _loadActivities();
+    _loadForContext();
     MapContextController.notifier.addListener(_onContextChange);
   }
 
@@ -163,34 +163,25 @@ class _WorldMapState extends State<WorldMap> {
   }
 
   void _onContextChange() {
-    // Close any open preview when the map re-scopes (e.g. entering a course).
-    if (mounted) setState(() => _selectedActivity = null);
-    _fitToContext();
+    // Reload pins for the new scope (world <-> a selected quest), then refit.
+    _loadForContext();
   }
 
-  Future<void> _loadActivities() async {
+  /// Load the pins for the active map context: a selected course shows that
+  /// quest's activities; World shows all placed activities.
+  Future<void> _loadForContext() async {
+    final mapContext = MapContextController.notifier.value;
     try {
-      final activities = await WorldActivitiesRepo.activityPins();
-      if (mounted) {
-        setState(() => _activities = activities);
-        // If a course context was already set before the pins loaded, fit
-        // to it now that we have its activities.
-        _fitToContext();
-      }
+      final pins = mapContext is CourseMapContext
+          ? await QuestRepo.questPins(mapContext.coursePlanId)
+          : await QuestRepo.mapActivities();
+      if (!mounted) return;
+      setState(() => _pins = pins);
+      // If a context was set before the pins loaded, fit now that we have them.
+      _fitToContext();
     } catch (_) {
       // Map stays usable without activity pins.
     }
-  }
-
-  /// Pins for the active context: a course shows only its own activities.
-  List<WorldActivityPin> get _visibleActivities {
-    final context = MapContextController.notifier.value;
-    if (context is CourseMapContext) {
-      return _activities
-          .where((a) => a.coursePlanId == context.coursePlanId)
-          .toList();
-    }
-    return _activities;
   }
 
   /// Centers the current selection within the *exposed* canvas — the map area
@@ -215,17 +206,17 @@ class _WorldMapState extends State<WorldMap> {
         // zoom, within the exposed canvas.
         final focusedId = widget.focusedActivityId;
         if (focusedId != null) {
-          WorldActivityPin? pin;
-          for (final a in _activities) {
-            if (a.activityId == focusedId) {
-              pin = a;
+          LatLng? point;
+          for (final card in _pins) {
+            if (card.activityId == focusedId) {
+              point = card.point;
               break;
             }
           }
-          if (pin != null) {
+          if (point != null) {
             _controller.fitCamera(
               CameraFit.coordinates(
-                coordinates: [pin.point],
+                coordinates: [point],
                 padding: padding,
                 maxZoom: _controller.camera.zoom,
               ),
@@ -236,7 +227,7 @@ class _WorldMapState extends State<WorldMap> {
 
         // Otherwise a course context fits all of its activities.
         if (MapContextController.notifier.value is! CourseMapContext) return;
-        final points = _visibleActivities.map((a) => a.point).toList();
+        final points = _pins.map((c) => c.point).whereType<LatLng>().toList();
         if (points.isEmpty) return;
         _controller.fitCamera(
           CameraFit.bounds(
@@ -252,37 +243,28 @@ class _WorldMapState extends State<WorldMap> {
   }
 
   /// Open the activity detail in-place, preserving the current route (course
-  /// stays selected, map stays put) via the `?activity=<id>` param. Reached
-  /// only from the preview popup's "Details" button.
-  void _openActivity(WorldActivityPin activity) {
+  /// stays selected, map stays put) via the `?activity=<id>` param. The detail
+  /// panel fetches the full plan on open.
+  void _openActivity(QuestActivityCard card) {
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
     context.go(
       uri.replace(
         queryParameters: {
           ...uri.queryParameters,
-          'activity': activity.activityId,
+          'activity': card.activityId,
         },
       ).toString(),
     );
-    setState(() => _selectedActivity = null);
   }
 
   @override
   Widget build(BuildContext context) {
     // Per-activity goal progress for the logged-in user (gray/bronze/gold).
     final goalTiers = _userGoalTiers(Matrix.of(context).client);
-    // Place the preview above the pin, but flip it below when the pin is too
-    // near the top to fit (edge-aware, no map move).
-    bool popupAbove = true;
-    final selected = _selectedActivity;
-    if (selected != null) {
-      try {
-        popupAbove =
-            _controller.camera.latLngToScreenOffset(selected.point).dy > 360.0;
-      } catch (_) {
-        // Camera not ready yet; default to above.
-      }
-    }
+    // world-map-tiles Phase 1: free hosted tiles switched by app theme —
+    // OpenStreetMap (light) / CartoDB Dark Matter (dark).
+    final dark = Theme.of(context).brightness == Brightness.dark;
+    final retina = dark && MediaQuery.devicePixelRatioOf(context) > 1.0;
     return FlutterMap(
       mapController: _controller,
       options: MapOptions(
@@ -307,36 +289,42 @@ class _WorldMapState extends State<WorldMap> {
         interactionOptions: const InteractionOptions(
           flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
         ),
-        // Tap empty map → dismiss any open activity preview.
-        onTap: (_, _) {
-          if (_selectedActivity != null) {
-            setState(() => _selectedActivity = null);
-          }
-        },
       ),
       children: [
+        // Base tiles, switched by app theme: OpenStreetMap (light) / CartoDB
+        // Dark Matter (dark). Retina (@2x) keeps the dark basemap's small
+        // labels sharp; CartoDB serves @2x, light (OSM) stays 1x. Brighter,
+        // on-brand labels are a vector-tile job (see world-map-tiles doc) — on
+        // raster, lifting just the labels needs a second tile layer, which
+        // doubles tile requests, so it is not worth it here.
         TileLayer(
-          urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+          urlTemplate: dark
+              ? 'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+              : 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+          retinaMode: retina,
           userAgentPackageName: 'com.talktolearn.chat',
         ),
-        // world_v2: the map surfaces activities, not topic locations — only
-        // activity pins are drawn (no topic/location markers).
+        // world_v2: the map surfaces activities as star pins coloured by the
+        // user's goal progress. A pin is the whole affordance — tapping it
+        // opens the activity (which fetches its plan); there is no preview
+        // popup.
         MarkerLayer(
-          markers: _visibleActivities
-              .map(
-                (activity) => Marker(
-                  point: activity.point,
+          markers: _pins
+              .map((card) {
+                final point = card.point;
+                if (point == null) return null;
+                return Marker(
+                  point: point,
                   width: 36,
                   height: 36,
                   child: Tooltip(
-                    message: '${activity.title}\n${activity.locationName}',
+                    message: card.title,
                     child: GestureDetector(
-                      onTap: () =>
-                          setState(() => _selectedActivity = activity),
+                      onTap: () => _openActivity(card),
                       child: Container(
                         decoration: BoxDecoration(
                           color: _starColor(
-                            goalTiers[activity.activityId] ?? _GoalTier.none,
+                            goalTiers[card.activityId] ?? _GoalTier.none,
                           ),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 2),
@@ -352,134 +340,17 @@ class _WorldMapState extends State<WorldMap> {
                       ),
                     ),
                   ),
-                ),
-              )
+                );
+              })
+              .whereType<Marker>()
               .toList(),
         ),
-        // Preview popup for the tapped activity — a marker so it stays glued
-        // to its pin as the map moves. No navigation; the persistent map and
-        // the surrounding view stay put.
-        if (_selectedActivity != null &&
-            _visibleActivities.contains(_selectedActivity))
-          MarkerLayer(
-            markers: [
-              Marker(
-                point: _selectedActivity!.point,
-                width: 230,
-                height: 400,
-                // Float the card above the pin (or below near the top edge),
-                // so the location stays visible.
-                alignment: popupAbove
-                    ? Alignment.topCenter
-                    : Alignment.bottomCenter,
-                child: _ActivityPreviewPopup(
-                  activity: _selectedActivity!,
-                  below: !popupAbove,
-                  onClose: () => setState(() => _selectedActivity = null),
-                  onDetails: () => _openActivity(_selectedActivity!),
-                ),
-              ),
-            ],
-          ),
         RichAttributionWidget(
           attributions: [
             TextSourceAttribution('OpenStreetMap contributors', onTap: () {}),
+            if (dark) TextSourceAttribution('CARTO', onTap: () {}),
           ],
         ),
-      ],
-    );
-  }
-}
-
-/// In-map preview popup for a tapped activity pin. Renders the same activity
-/// card the full activity page uses, plus location and a "Details" action,
-/// without leaving the current view.
-class _ActivityPreviewPopup extends StatelessWidget {
-  final WorldActivityPin activity;
-  final bool below;
-  final VoidCallback onClose;
-  final VoidCallback onDetails;
-
-  const _ActivityPreviewPopup({
-    required this.activity,
-    required this.onClose,
-    required this.onDetails,
-    this.below = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        // Gap sits between the card and the pin — on top when the card hangs
-        // below the pin, on the bottom when it floats above.
-        if (below) const SizedBox(height: 14.0),
-        Material(
-          elevation: 8,
-          borderRadius: BorderRadius.circular(16.0),
-          color: theme.colorScheme.surface,
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ActivitySuggestionCard(
-                  activity: activity.plan,
-                  width: 180.0,
-                  height: 262.0,
-                  fontSize: 16.0,
-                  fontSizeSmall: 11.0,
-                  iconSize: 11.0,
-                ),
-                if (activity.locationName.isNotEmpty)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 6.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.location_pin,
-                          size: 14,
-                          color: theme.colorScheme.primary,
-                        ),
-                        const SizedBox(width: 4),
-                        Flexible(
-                          child: Text(
-                            activity.locationName,
-                            style: theme.textTheme.bodySmall,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                const SizedBox(height: 6.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.close),
-                      tooltip: L10n.of(context).close,
-                      visualDensity: VisualDensity.compact,
-                      onPressed: onClose,
-                    ),
-                    FilledButton.icon(
-                      icon: const Icon(Icons.open_in_full, size: 14),
-                      label: Text(L10n.of(context).details),
-                      style: FilledButton.styleFrom(
-                        visualDensity: VisualDensity.compact,
-                      ),
-                      onPressed: onDetails,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-        if (!below) const SizedBox(height: 14.0),
       ],
     );
   }
