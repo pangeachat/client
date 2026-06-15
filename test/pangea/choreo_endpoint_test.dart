@@ -1,8 +1,6 @@
 import 'dart:convert';
-import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/src/response.dart';
 
@@ -15,7 +13,6 @@ import 'package:fluffychat/pangea/activity_summary/activity_summary_request_mode
 import 'package:fluffychat/pangea/activity_summary/activity_summary_response_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/igc_request_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/igc_response_model.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_translation_request.dart';
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_translation_response.dart';
@@ -54,24 +51,17 @@ void main() {
 
   setUpAll(() {
     return Future(() async {
-      // Load environmental variables
-      dotenv.testLoad(fileInput: File('.env').readAsStringSync());
-      assert(
-        Environment.testUsername != null && Environment.testPassword != null,
-      );
-      assert(
-        Environment.testUsername!.isNotEmpty &&
-            Environment.testPassword!.isNotEmpty,
-      );
-      apiKey = Environment.choreoApiKey;
+      const testUsername = String.fromEnvironment("TEST_MATRIX_USERNAME");
+      const testPassword = String.fromEnvironment("TEST_MATRIX_PASSWORD");
+      assert(testUsername.isNotEmpty && testPassword.isNotEmpty);
 
       // Send login request
       const loginUrl =
           "https://matrix.staging.pangea.chat/_matrix/client/v3/login";
 
       final Map<String, dynamic> reqJSON = {
-        "identifier": {"type": "m.id.user", "user": Environment.testUsername},
-        "password": Environment.testPassword,
+        "identifier": {"type": "m.id.user", "user": testUsername},
+        "password": testPassword,
         "type": "m.login.password",
       };
 
@@ -98,6 +88,7 @@ void main() {
         senderL2: "es",
         mock: true,
       ).toJson();
+
       final Requests req = Requests(
         choreoApiKey: apiKey,
         accessToken: authToken,

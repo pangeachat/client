@@ -31,11 +31,8 @@ jobs:
       - name: Add Firebase Messaging
         run: ./scripts/add-firebase-messaging.sh
       - run: flutter analyze
-      - name: Make .env file
-        run: |
-          echo "TEST_MATRIX_USERNAME=${{ vars.TEST_MATRIX_USERNAME }}" > .env
-          echo "TEST_MATRIX_PASSWORD=${{ vars.TEST_MATRIX_PASSWORD }}" >> .env
-      - run: flutter test
+      - run: flutter test --dart-define=TEST_MATRIX_USERNAME=${{ vars.TEST_MATRIX_USERNAME }} --dart-define=TEST_MATRIX_PASSWORD=${{ vars.TEST_MATRIX_PASSWORD }}
+      
 
   build_debug_apk:
     runs-on: ubuntu-latest
