@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-11 10:21:38.905124",
+    "@@last_modified": "2026-06-15 09:46:22.378274",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9822,6 +9822,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Tegevuse toimingud",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

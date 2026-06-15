@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-11 10:22:00.564097",
+    "@@last_modified": "2026-06-15 09:46:31.713998",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9955,6 +9955,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "活動操作",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

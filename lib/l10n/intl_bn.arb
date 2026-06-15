@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-11 10:22:47.276584",
+    "@@last_modified": "2026-06-15 09:46:42.455662",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10540,6 +10540,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "কার্যকলাপের কার্যক্রম",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }
