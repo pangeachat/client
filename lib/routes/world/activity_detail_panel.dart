@@ -26,6 +26,10 @@ class ActivityDetailPanel extends StatefulWidget {
   /// The selected course space, if the detail was opened from within a course.
   final String? parentSpaceId;
 
+  /// An existing session room to join (the `?roomid=` of the canonical open),
+  /// when re-entering an in-progress session rather than starting fresh.
+  final String? roomId;
+
   /// Begin launching a session immediately (the first-class `?launch=true`
   /// flow) instead of showing the not-started start screen.
   final bool launch;
@@ -34,6 +38,7 @@ class ActivityDetailPanel extends StatefulWidget {
     super.key,
     required this.activityId,
     this.parentSpaceId,
+    this.roomId,
     this.launch = false,
   });
 
@@ -93,14 +98,17 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
 
   void _close() {
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
-    // In-place (`?activity=`): drop the param to return to the underlying
-    // route. Standalone (`/<activityId>`): no param to drop, so go to World.
+    // In-place (`?activity=`): drop the overlay params (activity/roomid/launch)
+    // to return to the underlying route, preserving everything else (e.g.
+    // `tab`). Standalone (`/<activityId>`): no overlay param, so go to World.
     if (!uri.queryParameters.containsKey('activity')) {
       context.go('/');
       return;
     }
     final params = Map<String, String>.from(uri.queryParameters)
-      ..remove('activity');
+      ..remove('activity')
+      ..remove('roomid')
+      ..remove('launch');
     context.go(
       params.isEmpty ? uri.path : uri.replace(queryParameters: params).toString(),
     );
@@ -127,6 +135,7 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
       return ActivitySessionStartPage(
         activityId: widget.activityId,
         parentId: _parentId,
+        roomId: widget.roomId,
         launch: widget.launch,
       );
     }

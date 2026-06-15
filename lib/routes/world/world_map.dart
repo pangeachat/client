@@ -12,6 +12,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -92,10 +93,12 @@ class WorldMap extends StatefulWidget {
   /// right of the overlay instead of behind it. 0 when nothing overlays it.
   final double leftOverlayWidth;
 
-  /// When set, the map centers this activity within the exposed canvas (the
-  /// area the left column and detail panel don't cover) instead of fitting the
-  /// whole course — e.g. while its `?activity=` detail panel is open.
-  final String? focusedActivityId;
+  /// When set, the map brings this target into the exposed canvas (the area the
+  /// left column and detail panel don't cover) instead of fitting the whole
+  /// course — e.g. while an activity's `?activity=` detail panel is open. The
+  /// focus kind is open: add a [MapFocus] subclass and one arm in
+  /// [_WorldMapState._focusPoint] to focus new content (a location, an object).
+  final MapFocus? focus;
 
   const WorldMap({
     super.key,
@@ -103,7 +106,7 @@ class WorldMap extends StatefulWidget {
     this.initialZoom,
     this.controller,
     this.leftOverlayWidth = 0.0,
-    this.focusedActivityId,
+    this.focus,
   });
 
   @override
@@ -167,7 +170,7 @@ class _WorldMapState extends State<WorldMap> {
     // Re-center when the focused activity changes or the exposed canvas
     // resizes (a panel opened/closed), so the selection stays centered in the
     // visible map area rather than behind a panel.
-    if (oldWidget.focusedActivityId != widget.focusedActivityId ||
+    if (oldWidget.focus != widget.focus ||
         oldWidget.leftOverlayWidth != widget.leftOverlayWidth) {
       _fitToContext();
     }
@@ -240,9 +243,24 @@ class _WorldMapState extends State<WorldMap> {
     });
   }
 
+  /// Resolve a [MapFocus] to a map coordinate, or null if not resolvable yet.
+  /// Exhaustive over the sealed [MapFocus]: adding a focus kind makes this a
+  /// compile error until its arm is added — that is the extension seam.
+  LatLng? _focusPoint(MapFocus? focus) {
+    switch (focus) {
+      case null:
+        return null;
+      case ActivityFocus(:final activityId):
+        for (final card in _pins) {
+          if (card.activityId == activityId) return card.point;
+        }
+        return null;
+    }
+  }
+
   /// Centers the current selection within the *exposed* canvas — the map area
   /// the left column and detail panel don't cover. A specifically-focused
-  /// activity centers on itself (keeping the current zoom); a course fits all
+  /// target centers on itself (keeping the current zoom); a course fits all
   /// its activities. Returning to World keeps the current view rather than
   /// yanking the camera.
   void _fitToContext() {
@@ -258,27 +276,19 @@ class _WorldMapState extends State<WorldMap> {
           64.0,
         );
 
-        // A specifically selected activity centers on itself, at the current
-        // zoom, within the exposed canvas.
-        final focusedId = widget.focusedActivityId;
-        if (focusedId != null) {
-          LatLng? point;
-          for (final card in _pins) {
-            if (card.activityId == focusedId) {
-              point = card.point;
-              break;
-            }
-          }
-          if (point != null) {
-            _controller.fitCamera(
-              CameraFit.coordinates(
-                coordinates: [point],
-                padding: padding,
-                maxZoom: _controller.camera.zoom,
-              ),
-            );
-            return;
-          }
+        // A specific focus target is brought into the exposed canvas at the
+        // current zoom. Today that is an activity (centered on its pin); new
+        // focus kinds resolve in [_focusPoint].
+        final point = _focusPoint(widget.focus);
+        if (point != null) {
+          _controller.fitCamera(
+            CameraFit.coordinates(
+              coordinates: [point],
+              padding: padding,
+              maxZoom: _controller.camera.zoom,
+            ),
+          );
+          return;
         }
 
         // Otherwise a course context fits all of its activities.

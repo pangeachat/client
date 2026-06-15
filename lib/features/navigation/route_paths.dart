@@ -41,6 +41,29 @@ abstract class PRoutes {
   /// First-class world object (activity for now) — `/<uuid>`.
   static String worldObject(String id) => '/$id';
 
+  /// Open an activity in its course — the canonical in-course overlay over the
+  /// persistent map (`/courses/:spaceid?activity=:id`). [tab] preserves the
+  /// underlying course tab, [roomId] joins an existing session room, [launch]
+  /// skips the lobby. This is the single producer of the in-course open shape.
+  static String activity(
+    String spaceId,
+    String activityId, {
+    String? roomId,
+    bool launch = false,
+    String? tab,
+  }) {
+    final params = <String>['activity=$activityId'];
+    if (tab != null) params.add('tab=$tab');
+    if (roomId != null) params.add('roomid=$roomId');
+    if (launch) params.add('launch=true');
+    return '${course(spaceId)}?${params.join('&')}';
+  }
+
+  /// Open an activity with no course context — the shareable first-class uuid
+  /// (`/<uuid>`). [launch] skips the lobby.
+  static String activityStandalone(String activityId, {bool launch = false}) =>
+      launch ? '${worldObject(activityId)}?launch=true' : worldObject(activityId);
+
   /// Inline go_router parameter regex used by first-class world-object
   /// routes so they can never shadow literal routes like [analytics].
   static const String uuidPattern =

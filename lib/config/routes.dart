@@ -9,6 +9,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/course_plans/new_course_page.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
@@ -18,7 +19,6 @@ import 'package:fluffychat/routes/analytics/construct_analytics/analytics_detail
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_page.dart';
 import 'package:fluffychat/routes/analytics/level/level_analytics_details_content.dart';
 import 'package:fluffychat/routes/archive/archive.dart';
-import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/chat_details/access/chat_access_settings_controller.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
@@ -248,12 +248,14 @@ abstract class AppRoutes {
           pageBuilder: (context, state) => defaultPageBuilder(
             context,
             state,
-            FluffyThemes.isColumnMode(context)
-                ? const EmptyPage()
-                : ChatList(
-                    activeChat: state.pathParameters['roomid'],
-                    activeSpace: state.uri.queryParameters['spaceId'],
-                  ),
+            canvasPage(
+              context,
+              state,
+              ChatList(
+                activeChat: state.pathParameters['roomid'],
+                activeSpace: state.uri.queryParameters['spaceId'],
+              ),
+            ),
           ),
         ),
         // Pangea#
@@ -263,26 +265,14 @@ abstract class AppRoutes {
           pageBuilder: (context, state) => defaultPageBuilder(
             context,
             state,
-            FluffyThemes.isColumnMode(context)
-                // #Pangea
-                // The world map home surface (EmptyPage) replaces the
-                // side bear as the first slice of the world designs.
-                // ? Center(
-                //     child: Semantics(
-                //       label: L10n.of(context).bearImageDescription,
-                //       child: CachedNetworkImage(
-                //         width: 250.0,
-                //         imageUrl:
-                //             "${AppConfig.assetsBaseURL}/${SpaceConstants.sideBearFileName}",
-                //       ),
-                //     ),
-                //   )
-                // Pangea#
-                ? const EmptyPage()
-                : ChatList(
-                    activeChat: state.pathParameters['roomid'],
-                    activeSpace: state.uri.queryParameters['spaceId'],
-                  ),
+            canvasPage(
+              context,
+              state,
+              ChatList(
+                activeChat: state.pathParameters['roomid'],
+                activeSpace: state.uri.queryParameters['spaceId'],
+              ),
+            ),
           ),
           routes: [
             GoRoute(
@@ -480,9 +470,7 @@ abstract class AppRoutes {
               pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
-                FluffyThemes.isColumnMode(context)
-                    ? const EmptyPage()
-                    : const CourseCodePage(),
+                canvasPage(context, state, const CourseCodePage()),
               ),
             ),
             GoRoute(
@@ -491,9 +479,7 @@ abstract class AppRoutes {
               pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
-                FluffyThemes.isColumnMode(context)
-                    ? const EmptyPage()
-                    : const FindCoursePage(),
+                canvasPage(context, state, const FindCoursePage()),
               ),
             ),
             GoRoute(
@@ -505,14 +491,15 @@ abstract class AppRoutes {
                 return defaultPageBuilder(
                   context,
                   state,
-                  FluffyThemes.isColumnMode(context)
-                      ? const EmptyPage()
-                      : NewCoursePage(
-                          route: 'rooms',
-                          initialLanguageCode: state.uri.queryParameters['lang'],
-                          showAll:
-                              state.uri.queryParameters['showAll'] == 'true',
-                        ),
+                  canvasPage(
+                    context,
+                    state,
+                    NewCoursePage(
+                      route: 'rooms',
+                      initialLanguageCode: state.uri.queryParameters['lang'],
+                      showAll: state.uri.queryParameters['showAll'] == 'true',
+                    ),
+                  ),
                 );
               },
               routes: [
@@ -567,12 +554,14 @@ abstract class AppRoutes {
               pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
-                FluffyThemes.isColumnMode(context)
-                    ? const EmptyPage()
-                    : ChatDetails(
-                        roomId: state.pathParameters['spaceid']!,
-                        activeTab: state.uri.queryParameters['tab'],
-                      ),
+                canvasPage(
+                  context,
+                  state,
+                  ChatDetails(
+                    roomId: state.pathParameters['spaceid']!,
+                    activeTab: state.uri.queryParameters['tab'],
+                  ),
+                ),
               ),
               redirect: loggedOutRedirect,
               routes: [
@@ -621,20 +610,6 @@ abstract class AppRoutes {
                       redirect: loggedOutRedirect,
                     ),
                   ],
-                ),
-                GoRoute(
-                  path: 'activity/:activityid',
-                  pageBuilder: (context, state) => defaultPageBuilder(
-                    context,
-                    state,
-                    ActivitySessionStartPage(
-                      activityId: state.pathParameters['activityid']!,
-                      roomId: state.uri.queryParameters['roomid'],
-                      parentId: state.pathParameters['spaceid']!,
-                      launch: state.uri.queryParameters['launch'] == 'true',
-                    ),
-                  ),
-                  redirect: loggedOutRedirect,
                 ),
                 GoRoute(
                   path: ':roomid',
@@ -707,12 +682,14 @@ abstract class AppRoutes {
           pageBuilder: (context, state) => defaultPageBuilder(
             context,
             state,
-            FluffyThemes.isColumnMode(context)
-                ? const EmptyPage()
-                : const ConstructAnalyticsView(
-                    view: ConstructTypeEnum.vocab,
-                    showPracticeButton: true,
-                  ),
+            canvasPage(
+              context,
+              state,
+              const ConstructAnalyticsView(
+                view: ConstructTypeEnum.vocab,
+                showPracticeButton: true,
+              ),
+            ),
           ),
           routes: [
             GoRoute(
@@ -720,12 +697,14 @@ abstract class AppRoutes {
               pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
-                FluffyThemes.isColumnMode(context)
-                    ? const EmptyPage()
-                    : const ConstructAnalyticsView(
-                        view: ConstructTypeEnum.morph,
-                        showPracticeButton: true,
-                      ),
+                canvasPage(
+                  context,
+                  state,
+                  const ConstructAnalyticsView(
+                    view: ConstructTypeEnum.morph,
+                    showPracticeButton: true,
+                  ),
+                ),
               ),
               redirect: loggedOutRedirect,
               routes: [
@@ -763,12 +742,14 @@ abstract class AppRoutes {
               pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
-                FluffyThemes.isColumnMode(context)
-                    ? const EmptyPage()
-                    : const ConstructAnalyticsView(
-                        view: ConstructTypeEnum.vocab,
-                        showPracticeButton: true,
-                      ),
+                canvasPage(
+                  context,
+                  state,
+                  const ConstructAnalyticsView(
+                    view: ConstructTypeEnum.vocab,
+                    showPracticeButton: true,
+                  ),
+                ),
               ),
               redirect: loggedOutRedirect,
               routes: [
@@ -823,9 +804,7 @@ abstract class AppRoutes {
               pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
-                FluffyThemes.isColumnMode(context)
-                    ? const EmptyPage()
-                    : const ActivityArchive(),
+                canvasPage(context, state, const ActivityArchive()),
               ),
               redirect: loggedOutRedirect,
               routes: [
@@ -856,9 +835,7 @@ abstract class AppRoutes {
               pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
-                FluffyThemes.isColumnMode(context)
-                    ? const EmptyPage()
-                    : const LevelAnalyticsDetailsContent(),
+                canvasPage(context, state, const LevelAnalyticsDetailsContent()),
               ),
               redirect: loggedOutRedirect,
             ),
@@ -869,9 +846,7 @@ abstract class AppRoutes {
           pageBuilder: (context, state) => defaultPageBuilder(
             context,
             state,
-            FluffyThemes.isColumnMode(context)
-                ? const EmptyPage()
-                : const Settings(),
+            canvasPage(context, state, const Settings()),
           ),
           routes: [
             GoRoute(
@@ -1016,9 +991,7 @@ abstract class AppRoutes {
           pageBuilder: (context, state) => defaultPageBuilder(
             context,
             state,
-            FluffyThemes.isColumnMode(context)
-                ? const EmptyPage()
-                : const Settings(),
+            canvasPage(context, state, const Settings()),
           ),
           routes: [
             GoRoute(
@@ -1043,6 +1016,7 @@ abstract class AppRoutes {
             state,
             ActivityDetailPanel(
               activityId: state.pathParameters['activityId']!,
+              roomId: state.uri.queryParameters['roomid'],
               launch: state.uri.queryParameters['launch'] == 'true',
             ),
           ),
@@ -1094,6 +1068,20 @@ abstract class AppRoutes {
     //         child: child,
     //       );
   ) => noTransitionPageBuilder(context, state, child);
+  // Pangea#
+
+  // #Pangea
+  /// A section root's content: the map hole ([EmptyPage]) when this route
+  /// renders as a hole in the current mode, else its [content]. The single
+  /// source for the canvas decision is [isMapHole] in route_facts.dart, shared
+  /// with the shell layout, so the page builder and the layout can't drift.
+  static Widget canvasPage(
+    BuildContext context,
+    GoRouterState state,
+    Widget content,
+  ) => isMapHole(state.fullPath, FluffyThemes.isColumnMode(context))
+      ? const EmptyPage()
+      : content;
   // Pangea#
 
   // #Pangea
