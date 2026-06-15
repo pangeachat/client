@@ -33,8 +33,8 @@ jobs:
       - run: flutter analyze
       - name: Make .env file
         run: |
-          echo "TEST_MATRIX_USERNAME=${{ vars.TEST_MATRIX_USERNAME }}" > .env
-          echo "TEST_MATRIX_PASSWORD=${{ vars.TEST_MATRIX_PASSWORD }}" >> .env
+          echo "TEST_MATRIX_USERNAME=${{ secrets.TEST_MATRIX_USERNAME }}" > .env
+          echo "TEST_MATRIX_PASSWORD=${{ secrets.TEST_MATRIX_PASSWORD }}" >> .env
       - run: flutter test
 
   build_debug_apk:
