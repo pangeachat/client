@@ -99,6 +99,8 @@ Each subdirectory is a self-contained feature module. This doc provides the full
 
 ## Courses & Spaces
 
+> **Note (v1 / pre-reorg):** This subsection maps the pre-reorg `lib/pangea/course_plans/*` tree and the v1 course→topic→activity model. Both are superseded — the code moved to `lib/features/` + `lib/routes/` (see [world-v2-implementation.instructions.md](world-v2-implementation.instructions.md)) and the model is now Quests → Learning Objectives (Missions) → Activities‑v2.
+
 | Module | Purpose | Key Files |
 |---|---|---|
 | `spaces/` | Matrix Spaces extensions | `client_spaces_extension.dart`, `space_navigation_column.dart` |

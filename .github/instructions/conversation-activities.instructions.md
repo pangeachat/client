@@ -4,6 +4,8 @@ applyTo: "lib/pangea/activity_planner/**,lib/pangea/activity_sessions/**,lib/pan
 
 # Activity System
 
+> **Note (v3 update pending):** The activity-room lifecycle below is current, but this doc still frames activities as belonging to a "course" with topic-derived context. Under v3, activities are `activities-v2` rows linked many-to-many to **Learning Objectives** via `learningObjectiveRefs` (not owned by a course/topic). See the cross-repo [activities](https://github.com/pangeachat/.github/blob/main/.github/instructions/activities.instructions.md) and [v3](https://github.com/pangeachat/.github/blob/main/.github/instructions/courses-and-activities-v3.instructions.md) specs.
+
 Activities are how Pangea Chat turns passive chatting into deliberate language learning. Activities are designed according best practices in task-based language teaching and second language acquisition research, with a focus on maximizing engagement and learning outcomes while minimizing friction.
 
 ## Problem
