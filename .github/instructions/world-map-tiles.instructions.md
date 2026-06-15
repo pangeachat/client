@@ -9,7 +9,7 @@ The world map's base tiles are both a cost surface (providers bill per request o
 
 ## Phase 1 — Free hosted tiles (current)
 
-Free hosted raster tiles, switched by the app theme: **OpenStreetMap** standard for light, **CartoDB Dark Matter** for dark. Rationale: zero cost and zero setup at our current scale (~100 MAU). Limits we accept for now: raw public tiles aren't sanctioned for a commercial product at scale, and free tiers cap somewhere in the low hundreds of active map users — fine today, not for the growth runway. The tile URLs (and later max zoom and bounds) come from [client bootstrap config](../../../.github/.github/instructions/client-bootstrap-config.instructions.md), so the source can be swapped without a client release; tiles are still fetched client → provider CDN, never proxied through a backend.
+Free hosted raster tiles, switched by the app theme: **OpenStreetMap** standard for light, **CartoDB Dark Matter** for dark. Rationale: zero cost and zero setup at our current scale (~100 MAU). Limits we accept for now: raw public tiles aren't sanctioned for a commercial product at scale, and free tiers cap somewhere in the low hundreds of active map users — fine today, not for the growth runway. Tiles are fetched directly from the provider CDN, never proxied through a backend.
 
 ## Phase 2 — Self-host
 
