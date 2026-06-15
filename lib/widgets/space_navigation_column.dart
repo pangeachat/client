@@ -149,7 +149,7 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
                 children: [
                   SpacesNavigationRail(
                     state: widget.state,
-                    activeSpaceId: activeSpaceIdFor(widget.state),
+                    activeSpaceId: activeSpaceIdFor(widget.state.uri),
                     naviRailWidth: realNaviRailWidth,
                     expandedSectionWidth: realExpandedNaviWidth,
                     expanded: _expanded,
@@ -182,7 +182,7 @@ class _MainView extends StatelessWidget {
     // inspection — never substring matching on the full path.
     final uri = state.uri;
     final segments = uri.pathSegments;
-    final section = sectionFor(state);
+    final section = sectionFor(uri);
 
     switch (section) {
       case AppSection.analytics:
@@ -211,7 +211,7 @@ class _MainView extends StatelessWidget {
       case AppSection.courses:
         // Add-course flows live in the left column over the map (world_v2),
         // dispatched by sub-path so a selected course's activities can show.
-        final spaceId = activeSpaceIdFor(state);
+        final spaceId = activeSpaceIdFor(uri);
         if (spaceId == null) {
           // "Start my own" — the plan list.
           if (segments.contains('own')) {

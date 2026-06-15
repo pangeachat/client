@@ -11,7 +11,9 @@ import 'package:fluffychat/features/navigation/route_paths.dart';
 /// (one entry per joined space on wide screens; a single switcher slot on
 /// narrow screens), so it lives alongside — not inside — this enum:
 /// a location under `/courses/:spaceid` means "a course is the active
-/// section" and [AppSection.fromUri] returns [courses].
+/// section" and `route_facts.sectionFor` returns [courses]. Resolution of a
+/// location to a section/space lives in route_facts.dart (the single source);
+/// this enum is just the section identities (root path, icons).
 enum AppSection {
   /// World map home. Root: `/`. The app opens onto the world; first-class
   /// world objects (`/<uuid>`) render over this surface.
@@ -62,35 +64,4 @@ enum AppSection {
   final String rootPath;
   final IconData icon;
   final IconData selectedIcon;
-
-  /// First path segment owned by this section ('' for [world]).
-  String get _segment => rootPath == '/' ? '' : rootPath.substring(1);
-
-  /// Resolve the active section from a location.
-  ///
-  /// `/rooms/...` (Matrix rooms) belong to the [chats] surface.
-  /// First-class world-object URLs (`/<uuid>`) render over the map, so
-  /// they select [world]. Unknown segments default to [world] — the app's
-  /// home — so the nav always has a sane selection.
-  static AppSection fromUri(Uri uri) {
-    final segments = uri.pathSegments;
-    if (segments.isEmpty) return AppSection.world;
-    final first = segments.first;
-    if (first == 'rooms') return AppSection.chats;
-    if (PRoutes.isWorldObjectId(first)) return AppSection.world;
-    for (final section in AppSection.values) {
-      if (section._segment == first) return section;
-    }
-    return AppSection.world;
-  }
-
-  /// The space id when a joined course is active (`/courses/:spaceid`),
-  /// else null. Literal subroutes of `/courses` (find/create flows) are
-  /// not space ids — Matrix room ids start with `!`.
-  static String? activeSpaceId(Uri uri) {
-    final segments = uri.pathSegments;
-    if (segments.length < 2 || segments.first != 'courses') return null;
-    final second = segments[1];
-    return second.startsWith('!') ? second : null;
-  }
 }

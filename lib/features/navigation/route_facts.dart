@@ -93,8 +93,8 @@ CanvasMode canvasFor(GoRouterState state, bool isColumnMode) {
 /// world-object uuids render over the map (world). Unknown → world (a sane
 /// nav highlight); the canvas is decided by [canvasFor], not the section, so an
 /// unrecognized detail route never flips the shell to the world map.
-AppSection sectionFor(GoRouterState state) {
-  final segments = state.uri.pathSegments;
+AppSection sectionFor(Uri uri) {
+  final segments = uri.pathSegments;
   if (segments.isEmpty) return AppSection.world;
   final first = segments.first;
   if (first == 'rooms') return AppSection.chats;
@@ -110,8 +110,8 @@ AppSection sectionFor(GoRouterState state) {
 /// subroutes (`preview`/`own`/`browse`/`private`) are not space ids — Matrix
 /// space ids start with `!`. Gated this way, a course-room id or a literal
 /// segment can never masquerade as the active space.
-String? activeSpaceIdFor(GoRouterState state) {
-  final segments = state.uri.pathSegments;
+String? activeSpaceIdFor(Uri uri) {
+  final segments = uri.pathSegments;
   if (segments.length < 2 || segments.first != 'courses') return null;
   final second = segments[1];
   return second.startsWith('!') ? second : null;
@@ -146,7 +146,7 @@ MapFocus? mapFocusFor(GoRouterState state) {
 /// Whether the left column (the section card over the map) is shown. World and
 /// the add-course hub have no left column.
 bool showLeftColumn(GoRouterState state) =>
-    sectionFor(state) != AppSection.world &&
+    sectionFor(state.uri) != AppSection.world &&
     state.fullPath != _fullBleedRoute;
 
 /// Whether the navigation rail (column mode) / bottom nav (narrow mode) shows.

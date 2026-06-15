@@ -140,7 +140,7 @@ class SpacesNavigationRail extends StatelessWidget {
     // #Pangea
     // world_v2: section + active space from route_facts (the single resolver),
     // using the shell's state so the rail can't disagree with the shell.
-    final section = sectionFor(state);
+    final section = sectionFor(state.uri);
     final isSettings = section == AppSection.settings;
     final isUserHome = section == AppSection.profile;
     final isAnalytics = section == AppSection.analytics;

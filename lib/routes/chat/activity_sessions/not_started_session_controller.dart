@@ -10,6 +10,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_repo.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/room_summaries/activity_sessions_status_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -108,8 +109,8 @@ class NotStartedSessionController extends State<NotStartedSession>
     // standalone via its first-class route.
     context.go(
       course != null
-          ? "/rooms/spaces/${course.id}/activity/${widget.activityId}?launch=true"
-          : "/${widget.activityId}?launch=true",
+          ? PRoutes.activity(course.id, widget.activityId, launch: true)
+          : PRoutes.activityStandalone(widget.activityId, launch: true),
     );
   }
 

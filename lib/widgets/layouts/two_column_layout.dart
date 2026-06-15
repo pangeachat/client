@@ -76,7 +76,7 @@ class TwoColumnLayout extends StatelessWidget {
         : available;
 
     final activity = activityFor(state);
-    final activeSpaceId = activeSpaceIdFor(state);
+    final activeSpaceId = activeSpaceIdFor(state.uri);
 
     // Scope the persistent map to the active course (world_v2 context). A joined
     // course scopes the map to that course's content; everything else shows the

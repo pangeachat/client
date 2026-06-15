@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/course_topics/course_topic_model.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
@@ -167,7 +168,11 @@ class TopicActivitiesListState extends State<TopicActivitiesList> {
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
                         onTap: () => context.go(
-                          "/rooms/spaces/${widget.room.id}/activity/${activityEntry.key}?tab=course",
+                          PRoutes.activity(
+                            widget.room.id,
+                            activityEntry.key,
+                            tab: 'course',
+                          ),
                         ),
                         child: Stack(
                           children: [

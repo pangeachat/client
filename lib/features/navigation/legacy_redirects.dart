@@ -14,6 +14,27 @@ abstract class LegacyRedirects {
     if (segments.isEmpty || segments.first != 'rooms') return null;
 
     final rest = segments.sublist(1);
+
+    // The retired nested activity route `/rooms/spaces/:spaceid/activity/:id`
+    // (old push notifications, bookmarks) → the canonical in-course overlay
+    // `/courses/:spaceid?activity=:id`, preserving roomid/launch/tab. The space
+    // id is kept so the activity opens in its course even for a user who has
+    // not yet joined it. Must precede the generic `spaces` arm below, which
+    // would otherwise rebuild the deleted nested path.
+    if (rest.length >= 4 && rest[0] == 'spaces' && rest[2] == 'activity') {
+      final query = <String, String>{
+        'activity': rest[3],
+        ...uri.queryParameters,
+      };
+      final qs = query.entries
+          .map(
+            (e) =>
+                '${Uri.encodeQueryComponent(e.key)}=${Uri.encodeQueryComponent(e.value)}',
+          )
+          .join('&');
+      return '/courses/${Uri.encodeComponent(rest[1])}?$qs';
+    }
+
     final List<String>? target = switch (rest) {
       // `/rooms` — the old chats root. Chats now live at `/chats`; the
       // world map is `/`.

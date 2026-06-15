@@ -40,12 +40,23 @@ void main() {
       final id = Uri.encodeComponent('!s:server.org');
       expect(resolve('/rooms/spaces/!s:server.org'), '/courses/$id');
       expect(
-        resolve('/rooms/spaces/!s:server.org/activity/aaa'),
-        '/courses/$id/activity/aaa',
-      );
-      expect(
         resolve('/rooms/spaces/!s:server.org/details'),
         '/courses/$id/details',
+      );
+    });
+
+    test('retired nested activity route maps to the in-course overlay', () {
+      final id = Uri.encodeComponent('!s:server.org');
+      // The space id stays in the path so the activity opens in its course
+      // even for a user who has not yet joined it.
+      expect(
+        resolve('/rooms/spaces/!s:server.org/activity/aaa'),
+        '/courses/$id?activity=aaa',
+      );
+      final room = Uri.encodeQueryComponent('!r:x');
+      expect(
+        resolve('/rooms/spaces/!s:server.org/activity/aaa?roomid=!r:x'),
+        '/courses/$id?activity=aaa&roomid=$room',
       );
     });
 
@@ -61,7 +72,7 @@ void main() {
       final id = Uri.encodeComponent('!s:x');
       expect(
         resolve('/rooms/spaces/!s:x/activity/a?launch=true'),
-        '/courses/$id/activity/a?launch=true',
+        '/courses/$id?activity=a&launch=true',
       );
       expect(
         resolve('/rooms/spaces/!s:x/details?tab=course'),

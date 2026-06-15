@@ -132,7 +132,7 @@ class NotificationTapUtil {
       }
 
       router.go(
-        '${PRoutes.course(roomId)}/activity/$activityId?roomid=$sessionRoomId',
+        PRoutes.activity(roomId, activityId, roomId: sessionRoomId),
       );
       return;
     } catch (err, s) {

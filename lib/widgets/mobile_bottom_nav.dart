@@ -23,8 +23,8 @@ class MobileBottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final section = sectionFor(state);
-    final activeSpaceId = activeSpaceIdFor(state);
+    final section = sectionFor(state.uri);
+    final activeSpaceId = activeSpaceIdFor(state.uri);
     final theme = Theme.of(context);
 
     return Material(
