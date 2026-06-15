@@ -10,6 +10,7 @@ import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/routes/world/activity_detail_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
+import 'package:fluffychat/widgets/layouts/mobile_course_sheet.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mobile_bottom_nav.dart';
 import 'package:fluffychat/widgets/space_navigation_column.dart';
@@ -129,10 +130,15 @@ class TwoColumnLayout extends StatelessWidget {
             : 0.0);
     final showBottomNav = !isColumnMode && showNavRail;
     final canvasMode = _canvasMode(state, isColumnMode);
-    final detailWidth = math.min(
-      _detailMaxWidth,
-      MediaQuery.sizeOf(context).width - columnWidth,
-    );
+    // The detail is capped at [_detailMaxWidth] only in column mode, where the
+    // map is meant to peek alongside it. In single-column (mobile) mode there
+    // is nothing alongside, so the detail fills to the column-mode breakpoint —
+    // otherwise a viewport between _detailMaxWidth and the breakpoint leaves a
+    // thin strip of map showing on the side (the "weird gap").
+    final available = MediaQuery.sizeOf(context).width - columnWidth;
+    final detailWidth = isColumnMode
+        ? math.min(_detailMaxWidth, available)
+        : available;
     // world_v2: `?activity=<id>` opens the activity detail in-place over the
     // persistent map — a capped detail (not full-bleed), course preserved,
     // map untouched — instead of leaving for the standalone `/<id>` page.
@@ -159,6 +165,21 @@ class TwoColumnLayout extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => MapContextController.set(mapContext),
     );
+    // world_v2 mobile: a joined course on a narrow screen rides in a draggable
+    // bottom sheet over the persistent (course-scoped) map instead of a
+    // full-screen panel that hides it. The detail (sideView) moves into the
+    // sheet; the map shows above the sheet's peek.
+    final isMobileCourse =
+        !isColumnMode &&
+        activeSpaceId != null &&
+        activityParam == null &&
+        effectiveCanvasMode == _CanvasMode.detail;
+    final canvasChild = activityParam != null
+        ? ActivityDetailPanel(
+            activityId: activityParam,
+            parentSpaceId: activeSpaceId,
+          )
+        : sideView;
     // Pangea#
     return ScaffoldMessenger(
       child: Scaffold(
@@ -184,7 +205,8 @@ class TwoColumnLayout extends StatelessWidget {
                 // an overlay.
                 leftOverlayWidth:
                     columnWidth +
-                    (effectiveCanvasMode == _CanvasMode.detail
+                    (effectiveCanvasMode == _CanvasMode.detail &&
+                            !isMobileCourse
                         ? detailWidth
                         : 0.0),
                 // While an activity is shown (in-place or the standalone
@@ -211,17 +233,19 @@ class TwoColumnLayout extends StatelessWidget {
                   ? detailWidth
                   : null,
               child: Offstage(
-                offstage: effectiveCanvasMode == _CanvasMode.map,
+                offstage:
+                    effectiveCanvasMode == _CanvasMode.map || isMobileCourse,
                 child: ClipRRect(
-                  child: activityParam != null
-                      ? ActivityDetailPanel(
-                          activityId: activityParam,
-                          parentSpaceId: activeSpaceId,
-                        )
-                      : sideView,
+                  child: isMobileCourse
+                      ? const SizedBox.shrink()
+                      : canvasChild,
                 ),
               ),
             ),
+            // world_v2 mobile course: the detail rides a draggable sheet over
+            // the course-scoped persistent map (peek = handle + title + tabs).
+            if (isMobileCourse)
+              Positioned.fill(child: MobileCourseSheet(child: canvasChild)),
             SpaceNavigationColumn(state: state, showNavRail: showNavRail),
             // Container(width: 1.0, color: theme.dividerColor),
             // Expanded(child: ClipRRect(child: sideView)),
