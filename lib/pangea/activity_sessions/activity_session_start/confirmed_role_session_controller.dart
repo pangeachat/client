@@ -38,7 +38,7 @@ class ConfirmedRoleSession extends StatefulWidget {
 }
 
 class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
-    implements ActivitySessionStateController {
+    with ActivitySessionStateController {
   ConfirmedRoleSessionController();
 
   Timer? _pingCooldown;

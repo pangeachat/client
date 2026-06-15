@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_settings_language_icon.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
@@ -26,6 +28,11 @@ class ActivityParticipantIndicator extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final BorderRadius? borderRadius;
 
+  // When non-null, the card renders in stars mode (role name + star icons)
+  // instead of the default avatar/username mode.
+  final List<ActivityRoleGoal>? goals;
+  final Set<String>? completedGoalIds;
+
   const ActivityParticipantIndicator({
     super.key,
     required this.name,
@@ -39,6 +46,8 @@ class ActivityParticipantIndicator extends StatelessWidget {
     this.opacity = 1.0,
     this.padding,
     this.borderRadius,
+    this.goals,
+    this.completedGoalIds,
   });
 
   @override
@@ -110,35 +119,64 @@ class ActivityParticipantIndicator extends StatelessWidget {
                       ],
                     ),
                     height: 125.0,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          name,
-                          style: const TextStyle(fontSize: 12.0),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.center,
-                        ),
-                        avatar,
-                        Text(
-                          userId?.localpart ?? L10n.of(context).openRoleLabel,
-                          style: TextStyle(
-                            fontSize: 12.0,
-                            color:
-                                (Theme.of(context).brightness ==
-                                    Brightness.light
-                                ? (userId?.localpart?.darkColor ??
-                                      theme.colorScheme.primary)
-                                : (userId?.localpart?.lightColorText ??
-                                      theme.colorScheme.primary)),
+                    child: goals != null
+                        ? Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                name,
+                                style: const TextStyle(fontSize: 12.0),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: goals!.map((g) {
+                                  final done =
+                                      completedGoalIds?.contains(g.id) ?? false;
+                                  return Icon(
+                                    done ? Icons.star : Icons.star_border,
+                                    size: 22.0,
+                                    color: done
+                                        ? (theme.brightness == Brightness.light
+                                            ? AppConfig.gold
+                                            : AppConfig.goldLight)
+                                        : null,
+                                  );
+                                }).toList(),
+                              ),
+                            ],
+                          )
+                        : Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                name,
+                                style: const TextStyle(fontSize: 12.0),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                              ),
+                              avatar,
+                              Text(
+                                userId?.localpart ??
+                                    L10n.of(context).openRoleLabel,
+                                style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: (Theme.of(context).brightness ==
+                                          Brightness.light
+                                      ? (userId?.localpart?.darkColor ??
+                                          theme.colorScheme.primary)
+                                      : (userId?.localpart?.lightColorText ??
+                                          theme.colorScheme.primary)),
+                                ),
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
                           ),
-                          textAlign: TextAlign.center,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ),
                   ),
                 ),
               );

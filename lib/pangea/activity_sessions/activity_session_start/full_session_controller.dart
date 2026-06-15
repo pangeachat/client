@@ -23,7 +23,7 @@ class FullSession extends StatefulWidget {
 }
 
 class FullSessionController extends State<FullSession>
-    implements ActivitySessionStateController {
+    with ActivitySessionStateController {
   @override
   String get descriptionText => L10n.of(context).sessionFull;
 

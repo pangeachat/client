@@ -264,6 +264,11 @@ class ActivitySessionStartView extends StatelessWidget {
                                                 .isRoleSelected,
                                             isShimmering: sessionController
                                                 .isRoleShimmering,
+                                            showStarsCard: sessionController
+                                                .showStarsCard,
+                                            completedGoalsForRole:
+                                                sessionController
+                                                    .completedGoalIdsForRole,
                                           ),
                                         ),
                                       ),

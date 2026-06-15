@@ -43,7 +43,7 @@ class NotStartedSession extends StatefulWidget {
 }
 
 class NotStartedSessionController extends State<NotStartedSession>
-    implements ActivitySessionStateController {
+    with ActivitySessionStateController {
   String? get joinedActivityRoomId =>
       widget.course.activeActivityRoomId(widget.activityId);
 
@@ -64,6 +64,18 @@ class NotStartedSessionController extends State<NotStartedSession>
 
   @override
   void selectRole(String id) {}
+
+  @override
+  bool showStarsCard(String id) => true;
+
+  @override
+  Set<String> completedGoalIdsForRole(String id) =>
+      ActivitySessionStateController.scanCompletedGoalIds(
+        activityId: widget.activityId,
+        activity: widget.activity,
+        roleId: id,
+        rooms: Matrix.of(context).client.rooms,
+      );
 
   bool get canJoinExistingSession => widget.summaries.openSessions.isNotEmpty;
 
