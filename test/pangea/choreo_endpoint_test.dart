@@ -57,11 +57,10 @@ void main() {
       // Load environmental variables
       dotenv.testLoad(fileInput: File('.env').readAsStringSync());
       assert(
-        Environment.testUsername != null &&
-            Environment.testUsername!.isNotEmpty,
+        Environment.testUsername != null && Environment.testPassword != null,
       );
       assert(
-        Environment.testPassword != null &&
+        Environment.testUsername!.isNotEmpty &&
             Environment.testPassword!.isNotEmpty,
       );
       apiKey = Environment.choreoApiKey;
