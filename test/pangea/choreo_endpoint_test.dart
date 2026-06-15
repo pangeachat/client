@@ -40,7 +40,7 @@ import 'package:fluffychat/pangea/translation/full_text_translation_response_mod
 void main() {
   String authToken = "";
   String userID = "";
-  String apiKey =
+  final apiKey =
       "e6fa9fa97031ba0c852efe78457922f278a2fbc109752fe18e465337699e9873";
   const choreoApi = "https://api.staging.pangea.chat/choreo";
 
