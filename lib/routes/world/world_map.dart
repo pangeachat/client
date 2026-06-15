@@ -6,12 +6,16 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
+import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -71,8 +75,9 @@ Map<String, _GoalTier> _userGoalTiers(Client client) {
 ///
 /// Its content is scoped by [MapContextController]: World shows all pins; a
 /// selected course shows only that quest's activities and the camera refits
-/// to it. Pins are thin (id, title, point); a tap fetches the full plan and
-/// opens the activity. Star colour reflects Matrix-synced goal progress.
+/// to it. Pins are thin (id, title, point); tapping one opens a preview card
+/// in place — its thin title shows immediately while the full plan loads
+/// behind a shimmer. Star colour reflects Matrix-synced goal progress.
 class WorldMap extends StatefulWidget {
   /// Optional camera override, e.g. to center on an activity's location.
   final LatLng? initialCenter;
@@ -112,6 +117,19 @@ class _WorldMapState extends State<WorldMap> {
   /// The activity pins currently shown — the active context's set (the whole
   /// world, or a selected quest's activities). Thin: id, title, point.
   List<QuestActivityCard> _pins = [];
+
+  /// The pin whose preview popup is open (tapping a star selects it; tapping
+  /// the map background or the popup's close clears it). Stays on the
+  /// persistent map — no navigation, no second map.
+  QuestActivityCard? _selectedActivity;
+
+  /// The selected activity's full plan, fetched lazily on tap. Null while the
+  /// fetch is in flight (the preview shows a shimmer) and when none is open.
+  ActivityPlanModel? _selectedPlan;
+
+  /// True while the selected activity's full plan is loading (drives the
+  /// shimmer vs. the loaded card in the preview).
+  bool _planLoading = false;
 
   Client? _client;
   StreamSubscription<dynamic>? _syncSub;
@@ -163,7 +181,15 @@ class _WorldMapState extends State<WorldMap> {
   }
 
   void _onContextChange() {
-    // Reload pins for the new scope (world <-> a selected quest), then refit.
+    // Close any open preview when the map re-scopes (e.g. entering a course),
+    // then reload pins for the new scope and refit.
+    if (mounted) {
+      setState(() {
+        _selectedActivity = null;
+        _selectedPlan = null;
+        _planLoading = false;
+      });
+    }
     _loadForContext();
   }
 
@@ -182,6 +208,36 @@ class _WorldMapState extends State<WorldMap> {
     } catch (_) {
       // Map stays usable without activity pins.
     }
+  }
+
+  /// Open the preview for [card] immediately, then fetch its full plan in the
+  /// background (the preview shimmers until it arrives).
+  Future<void> _selectActivity(QuestActivityCard card) async {
+    setState(() {
+      _selectedActivity = card;
+      _selectedPlan = null;
+      _planLoading = true;
+    });
+    try {
+      final plan = await QuestRepo.activity(card.activityId);
+      if (!mounted || _selectedActivity?.activityId != card.activityId) return;
+      setState(() {
+        _selectedPlan = plan;
+        _planLoading = false;
+      });
+    } catch (_) {
+      if (mounted && _selectedActivity?.activityId == card.activityId) {
+        setState(() => _planLoading = false);
+      }
+    }
+  }
+
+  void _clearSelection() {
+    setState(() {
+      _selectedActivity = null;
+      _selectedPlan = null;
+      _planLoading = false;
+    });
   }
 
   /// Centers the current selection within the *exposed* canvas — the map area
@@ -244,7 +300,7 @@ class _WorldMapState extends State<WorldMap> {
 
   /// Open the activity detail in-place, preserving the current route (course
   /// stays selected, map stays put) via the `?activity=<id>` param. The detail
-  /// panel fetches the full plan on open.
+  /// panel fetches the full plan on open. Reached from the preview's "Details".
   void _openActivity(QuestActivityCard card) {
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
     context.go(
@@ -255,6 +311,7 @@ class _WorldMapState extends State<WorldMap> {
         },
       ).toString(),
     );
+    _clearSelection();
   }
 
   @override
@@ -265,6 +322,24 @@ class _WorldMapState extends State<WorldMap> {
     // OpenStreetMap (light) / CartoDB Dark Matter (dark).
     final dark = Theme.of(context).brightness == Brightness.dark;
     final retina = dark && MediaQuery.devicePixelRatioOf(context) > 1.0;
+
+    // Place the preview above the pin, but flip it below when the pin is too
+    // near the top to fit (edge-aware, no map move).
+    final selected = _selectedActivity;
+    final selectedVisible =
+        selected != null &&
+        selected.point != null &&
+        _pins.any((c) => c.activityId == selected.activityId);
+    bool popupAbove = true;
+    if (selectedVisible) {
+      try {
+        popupAbove =
+            _controller.camera.latLngToScreenOffset(selected.point!).dy > 360.0;
+      } catch (_) {
+        // Camera not ready yet; default to above.
+      }
+    }
+
     return FlutterMap(
       mapController: _controller,
       options: MapOptions(
@@ -289,6 +364,10 @@ class _WorldMapState extends State<WorldMap> {
         interactionOptions: const InteractionOptions(
           flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
         ),
+        // Tap empty map → dismiss any open activity preview.
+        onTap: (_, _) {
+          if (_selectedActivity != null) _clearSelection();
+        },
       ),
       children: [
         // Base tiles, switched by app theme: OpenStreetMap (light) / CartoDB
@@ -305,9 +384,8 @@ class _WorldMapState extends State<WorldMap> {
           userAgentPackageName: 'com.talktolearn.chat',
         ),
         // world_v2: the map surfaces activities as star pins coloured by the
-        // user's goal progress. A pin is the whole affordance — tapping it
-        // opens the activity (which fetches its plan); there is no preview
-        // popup.
+        // user's goal progress. Tapping a pin opens an in-place preview (no
+        // navigation, no second map).
         MarkerLayer(
           markers: _pins
               .map((card) {
@@ -320,7 +398,7 @@ class _WorldMapState extends State<WorldMap> {
                   child: Tooltip(
                     message: card.title,
                     child: GestureDetector(
-                      onTap: () => _openActivity(card),
+                      onTap: () => _selectActivity(card),
                       child: Container(
                         decoration: BoxDecoration(
                           color: _starColor(
@@ -345,6 +423,30 @@ class _WorldMapState extends State<WorldMap> {
               .whereType<Marker>()
               .toList(),
         ),
+        // Preview popup for the tapped activity — a marker so it stays glued to
+        // its pin as the map moves. Opens immediately with the thin title; the
+        // full plan loads behind a shimmer. No navigation; the map stays put.
+        if (selectedVisible)
+          MarkerLayer(
+            markers: [
+              Marker(
+                point: selected.point!,
+                width: 230,
+                height: 400,
+                alignment: popupAbove
+                    ? Alignment.topCenter
+                    : Alignment.bottomCenter,
+                child: _ActivityPreviewPopup(
+                  card: selected,
+                  plan: _selectedPlan,
+                  loading: _planLoading,
+                  below: !popupAbove,
+                  onClose: _clearSelection,
+                  onDetails: () => _openActivity(selected),
+                ),
+              ),
+            ],
+          ),
         RichAttributionWidget(
           attributions: [
             TextSourceAttribution('OpenStreetMap contributors', onTap: () {}),
@@ -352,6 +454,160 @@ class _WorldMapState extends State<WorldMap> {
           ],
         ),
       ],
+    );
+  }
+}
+
+/// In-map preview popup for a tapped activity pin. Opens immediately: the
+/// activity card renders the moment the full plan is available, and shows a
+/// shimmer skeleton (with the title we already have from the pin) while it
+/// loads. Plus a "Details" action — all without leaving the current view.
+class _ActivityPreviewPopup extends StatelessWidget {
+  final QuestActivityCard card;
+  final ActivityPlanModel? plan;
+  final bool loading;
+  final bool below;
+  final VoidCallback onClose;
+  final VoidCallback onDetails;
+
+  const _ActivityPreviewPopup({
+    required this.card,
+    required this.plan,
+    required this.loading,
+    required this.onClose,
+    required this.onDetails,
+    this.below = false,
+  });
+
+  static const double _cardWidth = 180.0;
+  static const double _cardHeight = 262.0;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final activity = plan;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // Gap sits between the card and the pin — on top when the card hangs
+        // below the pin, on the bottom when it floats above.
+        if (below) const SizedBox(height: 14.0),
+        Material(
+          elevation: 8,
+          borderRadius: BorderRadius.circular(16.0),
+          color: theme.colorScheme.surface,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  width: _cardWidth,
+                  height: _cardHeight,
+                  child: activity != null
+                      ? ActivitySuggestionCard(
+                          activity: activity,
+                          width: _cardWidth,
+                          height: _cardHeight,
+                          fontSize: 16.0,
+                          fontSizeSmall: 11.0,
+                          iconSize: 11.0,
+                        )
+                      : _PreviewSkeleton(title: card.title, loading: loading),
+                ),
+                const SizedBox(height: 6.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.close),
+                      tooltip: L10n.of(context).close,
+                      visualDensity: VisualDensity.compact,
+                      onPressed: onClose,
+                    ),
+                    FilledButton.icon(
+                      icon: const Icon(Icons.open_in_full, size: 14),
+                      label: Text(L10n.of(context).details),
+                      style: FilledButton.styleFrom(
+                        visualDensity: VisualDensity.compact,
+                      ),
+                      onPressed: onDetails,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+        if (!below) const SizedBox(height: 14.0),
+      ],
+    );
+  }
+}
+
+/// Card-shaped placeholder shown while the full plan loads: the real title
+/// (known from the pin) over a shimmering image block + meta line, matching
+/// the [ActivitySuggestionCard] layout so the swap-in is seamless. When
+/// [loading] is false but no plan arrived, it just holds the title (no
+/// shimmer) rather than spinning forever.
+class _PreviewSkeleton extends StatelessWidget {
+  final String title;
+  final bool loading;
+
+  const _PreviewSkeleton({required this.title, required this.loading});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    Widget block(double width, double height) {
+      final box = Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surfaceContainerHighest,
+          borderRadius: BorderRadius.circular(6.0),
+        ),
+      );
+      if (!loading) return box;
+      return Shimmer.fromColors(
+        baseColor: theme.colorScheme.surfaceContainerHigh,
+        highlightColor: theme.colorScheme.surfaceBright,
+        child: box,
+      );
+    }
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12.0),
+      child: Container(
+        color: theme.colorScheme.surfaceContainer,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            block(_ActivityPreviewPopup._cardWidth, 150.0),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 6.0,
+                  vertical: 6.0,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontSize: 16.0),
+                    ),
+                    block(90.0, 12.0),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
