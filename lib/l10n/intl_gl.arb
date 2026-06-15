@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-06-11 10:21:07.916943",
+    "@@last_modified": "2026-06-15 09:46:10.483078",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9825,6 +9825,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Accións de actividade",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

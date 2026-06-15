@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-06-11 10:21:21.095944",
+    "@@last_modified": "2026-06-15 09:46:15.511796",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10941,6 +10941,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Akcie aktivity",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

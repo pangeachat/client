@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-11 10:22:48.835374",
+    "@@last_modified": "2026-06-15 09:46:43.253786",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9937,6 +9937,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "عملیات فعالیت",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

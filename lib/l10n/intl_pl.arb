@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-06-11 10:22:51.670585",
+    "@@last_modified": "2026-06-15 09:46:43.970039",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9934,6 +9934,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Akcje aktywności",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

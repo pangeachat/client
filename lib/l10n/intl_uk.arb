@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-11 10:21:48.096913",
+    "@@last_modified": "2026-06-15 09:46:26.045252",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9825,6 +9825,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Дії активності",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

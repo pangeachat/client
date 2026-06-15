@@ -4848,5 +4848,6 @@
     "waitingForBotToJoinActivity": "Waiting for bot to join...",
     "announcementsChatDetails": "A place for course admins to create announcements for course participants. While all may view this channel, only admins can type in it.",
     "introChatDesc": "Anyone in the course can post.",
-    "announcementsChatDesc": "Only course admins can post."
+    "announcementsChatDesc": "Only course admins can post.",
+    "activityActions": "Activity actions"
 }
