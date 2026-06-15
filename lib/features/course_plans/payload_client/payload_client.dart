@@ -72,6 +72,7 @@ class PayloadClient {
     Map<String, dynamic>? where,
     Map<String, dynamic>? select,
     String? sort,
+    int? depth,
   }) async {
     final Map<String, dynamic> queryParams = {};
 
@@ -80,6 +81,7 @@ class PayloadClient {
     if (where != null && where.isNotEmpty) queryParams['where'] = where;
     if (select != null && select.isNotEmpty) queryParams['select'] = select;
     if (sort != null) queryParams['sort'] = sort;
+    if (depth != null) queryParams['depth'] = depth.toString();
 
     final endpoint =
         '$basePath/$collection${queryParams.isNotEmpty ? '?${queryStringify(queryParams)}' : ''}';
@@ -100,9 +102,13 @@ class PayloadClient {
   Future<T> findById<T>(
     String collection,
     String id,
-    T Function(Map<String, dynamic>) fromJson,
-  ) async {
-    final endpoint = '$basePath/$collection/$id';
+    T Function(Map<String, dynamic>) fromJson, {
+    int? depth,
+  }) async {
+    final query = depth != null
+        ? '?${queryStringify({'depth': depth.toString()})}'
+        : '';
+    final endpoint = '$basePath/$collection/$id$query';
     final response = await _get(endpoint);
     if (response.statusCode >= 400) {
       throw Exception(

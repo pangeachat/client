@@ -6,9 +6,9 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
-import 'package:fluffychat/routes/courses/course_objectives/course_objectives_repo.dart';
 
 /// The Activities / Course-plan tab of a selected course (world_v2): the
 /// course's learning objectives, each with the activities that satisfy it.
@@ -33,7 +33,7 @@ class CourseObjectivesList extends StatefulWidget {
 }
 
 class _CourseObjectivesListState extends State<CourseObjectivesList> {
-  late Future<List<CourseObjectiveGroup>> _groupsFuture;
+  late Future<List<QuestObjectiveGroup>> _groupsFuture;
 
   @override
   void initState() {
@@ -49,15 +49,19 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     }
   }
 
-  Future<List<CourseObjectiveGroup>> _load() async {
-    final coursePlanId = widget.room.coursePlan?.uuid;
-    if (coursePlanId == null) return [];
-    return CourseObjectivesRepo.objectiveGroups(coursePlanId);
+  Future<List<QuestObjectiveGroup>> _load() async {
+    // world_v2 → v3: the course space's coursePlan.uuid now points at a
+    // quest-plans id. The outline (Missions + their activities) comes from the
+    // v3 quest read layer; the v1 course-plans/topics fan-out is retired.
+    final questId = widget.room.coursePlan?.uuid;
+    if (questId == null) return [];
+    final outline = await QuestRepo.outline(questId);
+    return outline.groups;
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<CourseObjectiveGroup>>(
+    return FutureBuilder<List<QuestObjectiveGroup>>(
       future: _groupsFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState != ConnectionState.done) {
@@ -94,7 +98,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
 class _ObjectiveSection extends StatelessWidget {
   final int index;
-  final CourseObjectiveGroup group;
+  final QuestObjectiveGroup group;
   final Room room;
   final bool Function(String userId, String activityId) hasCompletedActivity;
 
@@ -124,7 +128,7 @@ class _ObjectiveSection extends StatelessWidget {
             const SizedBox(width: 12.0),
             Expanded(
               child: Text(
-                group.objective,
+                group.objective.objective,
                 style: const TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.w600,
