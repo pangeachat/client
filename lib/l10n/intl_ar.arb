@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-06-11 10:22:11.955223",
+    "@@last_modified": "2026-06-15 09:46:34.852119",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10165,6 +10165,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "إجراءات النشاط",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

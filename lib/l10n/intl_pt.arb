@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-11 10:21:37.548465",
+    "@@last_modified": "2026-06-15 09:46:21.654829",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10943,6 +10943,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Ações de atividade",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

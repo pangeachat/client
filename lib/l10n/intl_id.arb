@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-11 10:21:17.391522",
+    "@@last_modified": "2026-06-15 09:46:14.281527",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9922,6 +9922,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Tindakan aktivitas",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }
