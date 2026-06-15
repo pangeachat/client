@@ -56,8 +56,14 @@ void main() {
     return Future(() async {
       // Load environmental variables
       dotenv.testLoad(fileInput: File('.env').readAsStringSync());
-      assert(Environment.testUsername != null && Environment.testUsername!.isNotEmpty);
-      assert(Environment.testPassword != null && Environment.testPassword!.isNotEmpty);
+      assert(
+        Environment.testUsername != null &&
+            Environment.testUsername!.isNotEmpty,
+      );
+      assert(
+        Environment.testPassword != null &&
+            Environment.testPassword!.isNotEmpty,
+      );
       apiKey = Environment.choreoApiKey;
 
       // Send login request
