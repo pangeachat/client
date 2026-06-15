@@ -57,29 +57,10 @@ class ActivityParticipantList extends StatelessWidget {
           spacing: 12.0,
           mainAxisSize: MainAxisSize.min,
           children: [
-            LayoutBuilder(
-              builder: (context, constraints) {
-                const minItemWidth = 125.0;
-
-                final rows =
-                    (availableRoles.length /
-                            (constraints.maxWidth / minItemWidth))
-                        .ceil();
-
-                final entriesPerRow = (availableRoles.length / rows).ceil();
-
-                return Column(
-                  spacing: 8.0,
-                  children: List.generate(rows, (rowIndex) {
-                    final entries = availableRoles
-                        .skip(rowIndex * entriesPerRow)
-                        .take(entriesPerRow)
-                        .toList();
-
-                    return Row(
-                      spacing: 8.0,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: entries.map((availableRole) {
+            Row(
+              spacing: 8.0,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: availableRoles.map((availableRole) {
                         final selected = isSelected != null
                             ? isSelected!(availableRole.id)
                             : false;
@@ -137,10 +118,6 @@ class ActivityParticipantList extends StatelessWidget {
                           ),
                         );
                       }).toList(),
-                    );
-                  }),
-                );
-              },
             ),
             Wrap(
               alignment: WrapAlignment.center,

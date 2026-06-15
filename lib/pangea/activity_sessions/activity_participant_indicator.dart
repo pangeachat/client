@@ -130,8 +130,10 @@ class ActivityParticipantIndicator extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.center,
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                              Wrap(
+                                alignment: WrapAlignment.center,
+                                spacing: 2.0,
+                                runSpacing: 4.0,
                                 children: goals!.map((g) {
                                   final done =
                                       completedGoalIds?.contains(g.id) ?? false;
@@ -140,8 +142,8 @@ class ActivityParticipantIndicator extends StatelessWidget {
                                     size: 22.0,
                                     color: done
                                         ? (theme.brightness == Brightness.light
-                                            ? AppConfig.gold
-                                            : AppConfig.goldLight)
+                                              ? AppConfig.gold
+                                              : AppConfig.goldLight)
                                         : null,
                                   );
                                 }).toList(),
@@ -164,12 +166,13 @@ class ActivityParticipantIndicator extends StatelessWidget {
                                     L10n.of(context).openRoleLabel,
                                 style: TextStyle(
                                   fontSize: 12.0,
-                                  color: (Theme.of(context).brightness ==
+                                  color:
+                                      (Theme.of(context).brightness ==
                                           Brightness.light
                                       ? (userId?.localpart?.darkColor ??
-                                          theme.colorScheme.primary)
+                                            theme.colorScheme.primary)
                                       : (userId?.localpart?.lightColorText ??
-                                          theme.colorScheme.primary)),
+                                            theme.colorScheme.primary)),
                                 ),
                                 textAlign: TextAlign.center,
                                 maxLines: 1,

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/activity_orchestrator/goal_status_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_state_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/confirmed_role_session_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/full_session_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/not_started_session_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/select_role_session_controller.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 
 class ActivitySessionButtons extends StatelessWidget {
   final ActivitySessionStartState controller;
@@ -24,15 +24,6 @@ class ActivitySessionButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final description = sessionController.descriptionText;
-
-    final goals = sessionController is SelectRoleSessionController
-        ? (sessionController as SelectRoleSessionController).selectedRoleGoals
-        : null;
-
-    final completedGoalIds = sessionController is SelectRoleSessionController
-        ? (sessionController as SelectRoleSessionController)
-              .selectedRoleCompletedGoalIds
-        : const <String>{};
 
     return AnimatedSize(
       alignment: Alignment.bottomCenter,
@@ -62,18 +53,6 @@ class ActivitySessionButtons extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                         textAlign: TextAlign.center,
-                      ),
-                    if (goals != null && goals.isNotEmpty)
-                      Column(
-                        spacing: 12.0,
-                        children: goals
-                            .map(
-                              (goal) => GoalStatusWidget(
-                                goal: goal,
-                                complete: completedGoalIds.contains(goal.id),
-                              ),
-                            )
-                            .toList(),
                       ),
                     _SessionCTAButtons(sessionController),
                   ],
@@ -177,7 +156,10 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hasActiveSession = controller.canJoinExistingSession;
+    // Sub-pages show a single Back button.
+    if (controller.subPage != NotStartedSubPage.main) {
+      return _CTAButton(L10n.of(context).back, controller.goToMainPage);
+    }
 
     return FutureBuilder(
       future: controller.neededCourseParticipants,
@@ -212,16 +194,17 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
                 controller.goToJoinedActivity,
               ),
             ] else ...[
-              _CTAButton(
-                hasActiveSession
-                    ? L10n.of(context).startNewSession
-                    : L10n.of(context).start,
-                controller.startNewActivity,
-              ),
-              if (hasActiveSession)
+              _CTAButton(L10n.of(context).start, controller.startNewActivity),
+              if (controller.openSessionCount > 0)
                 _CTAButton(
-                  L10n.of(context).joinOpenSession,
-                  controller.joinExistingSession,
+                  '${L10n.of(context).joinOpenSession} (${controller.openSessionCount})',
+                  controller.goToJoinPage,
+                ),
+              if (controller.course.isRoomAdmin &&
+                  controller.hasCurrentOrFinishedSessions)
+                _CTAButton(
+                  '${L10n.of(context).viewCurrentOrFinished} (${controller.currentOrFinishedSessionCount})',
+                  controller.goToViewPage,
                 ),
             ],
           ],

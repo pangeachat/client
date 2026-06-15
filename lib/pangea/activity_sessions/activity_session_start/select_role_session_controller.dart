@@ -71,10 +71,10 @@ class SelectRoleSessionController extends State<SelectRoleSession>
           ? L10n.of(context).chooseRole
           : L10n.of(context).chooseRoleToParticipate;
     }
-    // Return null when role is selected - button widget will show goals
     return null;
   }
 
+  @override
   List<ActivityRoleGoal>? get selectedRoleGoals {
     if (_selectedRoleId == null) return null;
     return widget.activity?.roles[_selectedRoleId]?.allGoals;
@@ -89,6 +89,7 @@ class SelectRoleSessionController extends State<SelectRoleSession>
         rooms: Matrix.of(context).client.rooms,
       );
 
+  @override
   Set<String> get selectedRoleCompletedGoalIds {
     final id = _selectedRoleId;
     if (id == null) return {};
@@ -96,7 +97,11 @@ class SelectRoleSessionController extends State<SelectRoleSession>
   }
 
   @override
-  bool showStarsCard(String id) => !_confirmed && !isRoleSelected(id);
+  bool showStarsCard(String id) {
+    if (_confirmed || isRoleSelected(id)) return false;
+    final assigned = activityRoom?.assignedRoles ?? widget.summary?.joinedUsersWithRoles ?? {};
+    return !assigned.containsKey(id);
+  }
 
   @override
   bool isRoleShimmering(String id) =>
@@ -107,26 +112,13 @@ class SelectRoleSessionController extends State<SelectRoleSession>
 
   @override
   bool canSelectRole(String id) {
-    final activity = widget.activity;
-    if (activity == null) return false;
-
-    final availableRoles = activity.roles;
-    final assignedRoles =
-        activityRoom?.assignedRoles ??
-        widget.summary?.joinedUsersWithRoles ??
-        {};
-
-    final unassignedIds = availableRoles.keys
-        .where((id) => !assignedRoles.containsKey(id))
-        .toList();
-
-    return unassignedIds.contains(id);
+    if (widget.activity == null) return false;
+    return !widget.controller.assignedRoles.containsKey(id);
   }
 
   @override
   void selectRole(String id) {
-    if (_selectedRoleId == id) return;
-    if (mounted) setState(() => _selectedRoleId = id);
+    if (mounted) setState(() => _selectedRoleId = _selectedRoleId == id ? null : id);
   }
 
   Future<void> confirmRoleSelection() async {

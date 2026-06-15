@@ -293,6 +293,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
         return ConfirmedRoleSession(
           room: activityRoom!,
           activityId: widget.activityId,
+          activity: activity,
           course: course,
           controller: this,
         );

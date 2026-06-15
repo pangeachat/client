@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
@@ -17,11 +18,13 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class ConfirmedRoleSession extends StatefulWidget {
   final Room room;
   final Room? course;
   final String activityId;
+  final ActivityPlanModel? activity;
   final ActivitySessionStartState controller;
 
   const ConfirmedRoleSession({
@@ -30,6 +33,7 @@ class ConfirmedRoleSession extends StatefulWidget {
     required this.activityId,
     required this.controller,
     this.course,
+    this.activity,
   });
 
   @override
@@ -58,16 +62,29 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
       L10n.of(context).waitingToFillRole(widget.room.numRemainingRoles);
 
   @override
+  bool get goalsStartCollapsed => true;
+
+  @override
+  List<ActivityRoleGoal>? get selectedRoleGoals {
+    final roleId = widget.room.ownRoleState?.id;
+    if (roleId == null) return null;
+    return widget.activity?.roles[roleId]?.allGoals;
+  }
+
+  @override
+  Set<String> get selectedRoleCompletedGoalIds {
+    final roleId = widget.room.ownRoleState?.id;
+    if (roleId == null) return {};
+    return ActivitySessionStateController.scanCompletedGoalIds(
+      activityId: widget.activityId,
+      activity: widget.activity,
+      roleId: roleId,
+      rooms: Matrix.of(context).client.rooms,
+    );
+  }
+
+  @override
   bool isRoleSelected(String id) => widget.room.ownRoleState?.id == id;
-
-  @override
-  bool isRoleShimmering(String id) => false;
-
-  @override
-  bool canSelectRole(String id) => false;
-
-  @override
-  void selectRole(String id) {}
 
   Future<bool> get canPingParticipants async {
     final course = widget.course;

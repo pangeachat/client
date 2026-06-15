@@ -36,31 +36,43 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
   final NotStartedSessionController controller;
   const _NotStartedSessionBottomContent(this.controller);
 
+  List<ActivitySummaryStatus> get _visibleStatuses {
+    switch (controller.subPage) {
+      case NotStartedSubPage.join:
+        return [ActivitySummaryStatus.notStarted];
+      case NotStartedSubPage.view:
+        return [
+          ActivitySummaryStatus.inProgress,
+          ActivitySummaryStatus.completed,
+        ];
+      case NotStartedSubPage.main:
+        return [];
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (_visibleStatuses.isEmpty) return const SizedBox.shrink();
+
     return ConstrainedBox(
       constraints: const BoxConstraints(
         maxWidth: FluffyThemes.columnWidth * 1.5,
       ),
       child: Column(
         children: [
-          ...ActivitySummaryStatus.values
-              .where((s) => s.canView(controller.course.isRoomAdmin))
-              .map((status) {
-                final roomSummaries = controller.activityStatuses
-                    .getSessionsByStatus(status);
+          ..._visibleStatuses.map((status) {
+            final roomSummaries =
+                controller.activityStatuses.getSessionsByStatus(status);
 
-                if (roomSummaries.isEmpty) {
-                  return const SizedBox.shrink();
-                }
+            if (roomSummaries.isEmpty) return const SizedBox.shrink();
 
-                return _ActivitySummaryStatusSection(
-                  status: status,
-                  roomSummaries: roomSummaries,
-                  course: controller.course,
-                  onTap: controller.joinActivityByRoomId,
-                );
-              }),
+            return _ActivitySummaryStatusSection(
+              status: status,
+              roomSummaries: roomSummaries,
+              course: controller.course,
+              onTap: controller.joinActivityByRoomId,
+            );
+          }),
         ],
       ),
     );

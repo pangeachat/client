@@ -16,9 +16,12 @@ import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/room_summaries/activity_sessions_status_model.dart';
+import 'package:fluffychat/pangea/room_summaries/activity_summary_status_enum.dart';
 import 'package:fluffychat/pangea/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+enum NotStartedSubPage { main, join, view }
 
 class NotStartedSession extends StatefulWidget {
   final Room course;
@@ -44,6 +47,14 @@ class NotStartedSession extends StatefulWidget {
 
 class NotStartedSessionController extends State<NotStartedSession>
     with ActivitySessionStateController {
+  NotStartedSubPage _subPage = NotStartedSubPage.main;
+
+  NotStartedSubPage get subPage => _subPage;
+
+  void goToJoinPage() => setState(() => _subPage = NotStartedSubPage.join);
+  void goToViewPage() => setState(() => _subPage = NotStartedSubPage.view);
+  void goToMainPage() => setState(() => _subPage = NotStartedSubPage.main);
+
   String? get joinedActivityRoomId =>
       widget.course.activeActivityRoomId(widget.activityId);
 
@@ -69,6 +80,9 @@ class NotStartedSessionController extends State<NotStartedSession>
   bool showStarsCard(String id) => true;
 
   @override
+  double get roleCardOpacity => 0.7;
+
+  @override
   Set<String> completedGoalIdsForRole(String id) =>
       ActivitySessionStateController.scanCompletedGoalIds(
         activityId: widget.activityId,
@@ -77,10 +91,32 @@ class NotStartedSessionController extends State<NotStartedSession>
         rooms: Matrix.of(context).client.rooms,
       );
 
-  bool get canJoinExistingSession => widget.summaries.openSessions.isNotEmpty;
+  @override
+  bool get showRoleCards => _subPage == NotStartedSubPage.main;
+
+  @override
+  bool get showDescriptionSection => _subPage == NotStartedSubPage.main;
+
+  int get openSessionCount => widget.summaries.openSessions.length;
 
   ActivitySessionsStatusModel get activityStatuses =>
       widget.summaries.activitySessionStatuses;
+
+  bool get hasCurrentOrFinishedSessions =>
+      activityStatuses
+          .getSessionsByStatus(ActivitySummaryStatus.inProgress)
+          .isNotEmpty ||
+      activityStatuses
+          .getSessionsByStatus(ActivitySummaryStatus.completed)
+          .isNotEmpty;
+
+  int get currentOrFinishedSessionCount =>
+      activityStatuses
+          .getSessionsByStatus(ActivitySummaryStatus.inProgress)
+          .length +
+      activityStatuses
+          .getSessionsByStatus(ActivitySummaryStatus.completed)
+          .length;
 
   Future<int> get neededCourseParticipants async {
     final courseParticipants = await widget.course.requestParticipants(
@@ -120,52 +156,6 @@ class NotStartedSessionController extends State<NotStartedSession>
 
   void inviteToCourse() {
     context.push("/rooms/spaces/${widget.course.id}/invite");
-  }
-
-  Future<void> joinExistingSession() async {
-    final resp = await showFutureLoadingDialog(
-      context: context,
-      future: _joinExistingSession,
-    );
-
-    if (!resp.isError) {
-      NavigationUtil.goToSpaceRoute(resp.result, [], context);
-    }
-  }
-
-  Future<String> _joinExistingSession() async {
-    if (!canJoinExistingSession) {
-      throw Exception("No existing session to join");
-    }
-
-    final sessionIds = widget.summaries.openSessions;
-    String? joinedSessionId;
-    for (final sessionId in sessionIds) {
-      try {
-        await widget.course.client.joinRoom(
-          sessionId,
-          via: widget.course.spaceChildren
-              .firstWhereOrNull((child) => child.roomId == sessionId)
-              ?.via,
-        );
-        joinedSessionId = sessionId;
-        break;
-      } catch (_) {
-        // try next session
-        continue;
-      }
-    }
-
-    if (joinedSessionId == null) {
-      throw Exception("Failed to join any existing session");
-    }
-
-    final room = widget.course.client.getRoomById(joinedSessionId);
-    if (room == null || room.membership != Membership.join) {
-      await widget.course.client.waitForRoomInSync(joinedSessionId, join: true);
-    }
-
-    return joinedSessionId;
   }
 
   Future<void> joinActivityByRoomId(String roomId) async {

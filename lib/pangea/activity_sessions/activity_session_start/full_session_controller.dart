@@ -29,18 +29,6 @@ class FullSessionController extends State<FullSession>
 
   Room? get course => widget.course;
 
-  @override
-  bool isRoleSelected(String id) => false;
-
-  @override
-  bool isRoleShimmering(String id) => false;
-
-  @override
-  bool canSelectRole(String id) => false;
-
-  @override
-  void selectRole(String id) {}
-
   void returnFromFullSession() {
     final course = widget.course;
     if (course != null) {

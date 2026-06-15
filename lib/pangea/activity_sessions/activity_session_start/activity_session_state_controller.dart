@@ -8,17 +8,29 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 mixin ActivitySessionStateController {
   String? get descriptionText;
 
-  bool isRoleSelected(String id);
+  bool isRoleSelected(String id) => false;
 
-  bool isRoleShimmering(String id);
+  bool isRoleShimmering(String id) => false;
 
-  bool canSelectRole(String id);
+  bool canSelectRole(String id) => false;
 
-  void selectRole(String id);
+  void selectRole(String id) {}
 
   bool showStarsCard(String id) => false;
 
+  double get roleCardOpacity => 1.0;
+
+  bool get goalsStartCollapsed => false;
+
+  bool get showRoleCards => true;
+
+  bool get showDescriptionSection => true;
+
   Set<String> completedGoalIdsForRole(String id) => {};
+
+  List<ActivityRoleGoal>? get selectedRoleGoals => null;
+
+  Set<String> get selectedRoleCompletedGoalIds => {};
 
   static Set<String> scanCompletedGoalIds({
     required String? activityId,
