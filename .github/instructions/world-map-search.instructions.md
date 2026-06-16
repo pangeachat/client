@@ -17,8 +17,8 @@ current viewport, colored by my progress.** Derived only from signals that
 already exist on `UserController` — no new capture:
 
 - **L2** = `userController.userL2Code` → the bbox `l2` param (server-side equality). Null → omit (all languages) so the map is never empty.
-- **CEFR band** = at-or-below `userController.userCefrLevel` (e.g. B1 → A1/A2/B1). v1 applies the band **client-side** over the bounded viewport result; null → no CEFR filter.
-- **Viewport** = the current camera bounds (the bbox), not the world.
+- **CEFR band** = at-or-below `userController.userCefrLevel` (e.g. B1 → A1/A2/B1). v1 applies the band **client-side** over the result; null → no CEFR filter.
+- **Viewport** = **deferred in v1.** The `/v2/activities/bbox` endpoint accepts the camera bounds but does **not** narrow by them yet (Payload can't range-filter the `coordinates` point field); it returns all *placed* activities matching L2/CEFR. The client still sends the camera bounds and re-fetches on pan/zoom so the wire contract is ready for real viewport narrowing — see [Query boundary](#query-boundary). At current catalog size, rendering every placed pin (clustered) is fine.
 - **Progress** = unchanged pin coloring (`_userGoalTiers` gray/bronze/gold from Matrix state) — reflected, never filtered out.
 
 The personalized default is the **initial filter state**, not a hard gate:
@@ -52,16 +52,30 @@ World pins route through the **existing choreographer `GET /v2/activities/bbox`*
 (viewport + `l2` + `l1`), replacing `QuestRepo.mapActivities`' whole-library
 500-row load. A thin `ActivityMapRepo.bboxPins({bounds, l2, l1, limit})` calls it
 via `PApiUrls`/`Requests`. `CourseMapContext` stays on `QuestRepo.questPins`
-(already quest-bounded). Every fetch is viewport-scoped and debounced on
+(already quest-bounded). The client sends the camera bounds and debounces on
 pan/zoom, capped by the endpoint `limit`. Routing through choreo (not a
 client-direct CMS query) keeps a stable wire contract behind which the impl can
-later swap the lat/lng range scan for a PostGIS GiST `&&` query with no client
-change.
+later add the PostGIS GiST `&&` viewport query with no client change.
 
-**Truncation:** if a dense viewport hits `limit`, show a "zoom in to see more"
+**Viewport narrowing is deferred (FUTURE WORK).** The endpoint accepts the
+bbox but uses it only as a "placed" gate today: it returns every placed
+activity matching L2/CEFR, ignoring the box. Payload's `where` rejects range
+filters on the `coordinates` point field's `.0`/`.1` sub-paths (400), and the
+catalog is small enough that returning all placed pins is fine. Real viewport
+narrowing needs a custom cms endpoint issuing
+`ST_MakeEnvelope(min_lng,min_lat,max_lng,max_lat,4326) && coordinates` against
+the GiST index on `res_plan_coordinates` (migration `20260614_134313`). The
+choreo `discover_activity_cards` bbox branch and the
+`/v2/activities/bbox` docstring carry the matching inline note. File the
+density trigger in
+[scaling-watchlist](../../../.github/.github/instructions/scaling-watchlist.instructions.md).
+
+**Truncation:** with no viewport narrowing, the full placed-pin set (per L2)
+is capped by `limit`; if it hits the cap, show a "more activities than shown"
 signal rather than over-fetch — and note that v1's client-side CEFR band sits
-*after* the server cap, so under density it can drop in-band pins. This is
-acceptable at current catalog size; the server-side CEFR band (above) removes it.
+*after* the server cap, so it can drop in-band pins. This is acceptable at
+current catalog size; the server-side CEFR band (above) and viewport narrowing
+(FUTURE WORK) both relieve it.
 File the scale triggers in [scaling-watchlist](../../../.github/.github/instructions/scaling-watchlist.instructions.md).
 
 ## Clustering
@@ -72,9 +86,9 @@ popup, `MapFocus` fly-to, and progress coloring are preserved.
 
 ## Phasing
 
-- **v1:** personalized bbox default (L2 + client CEFR band + viewport), current-view content search, filter chips (L2 re-fetch / CEFR band / completion), clustering, debounced pan-zoom re-fetch, reset-to-defaults + empty-state.
+- **v1:** personalized default (L2 + client CEFR band; **no** server-side viewport narrowing — all placed pins returned, clustered), current-view content search, filter chips (L2 re-fetch / CEFR band / completion), clustering, debounced pan-zoom re-fetch (contract-ready for viewport narrowing), reset-to-defaults + empty-state.
 - **Phase 2:** theme + per-LO-completion filters (add `learningObjectiveRefs` + theme to the bbox card + an LO-id join param); server-side CEFR band; generalize the pin into a sealed `MapItem {kind, point, facets}` so locations join the same pipeline.
-- **Phase 3:** captured `interests` feeding interest-based defaults; PostGIS GiST endpoint behind the bbox contract when density triggers it; users-as-content (opt-in location).
+- **Phase 3:** captured `interests` feeding interest-based defaults; **PostGIS GiST viewport endpoint** behind the stable bbox contract when density triggers it (the deferred FUTURE WORK from [Query boundary](#query-boundary)); users-as-content (opt-in location).
 
 ## Key files
 
