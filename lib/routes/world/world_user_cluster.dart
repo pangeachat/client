@@ -10,9 +10,10 @@ import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
-import 'package:fluffychat/routes/world/analytics_panel_controller.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -112,12 +113,16 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
     });
   }
 
-  /// Open the right-docked analytics panel on [tab]'s summary. App-state, not a
-  /// route, so it survives left-content navigation (see
-  /// [AnalyticsPanelController]). Switching trackers lands on the new tab's
-  /// summary (any open construct detail is cleared by `open`).
-  void _openAnalytics(AnalyticsPanelTab tab) =>
-      AnalyticsPanelController.open(tab);
+  /// Open the right-docked analytics panel on [tab]'s summary by writing the
+  /// `?right=analytics:<tab>` token (the URL is the source of truth for open
+  /// panels). `setRight` replaces the whole right list, so switching trackers
+  /// lands on the new tab's summary and drops any open construct detail.
+  void _openAnalytics(AnalyticsPanelTab tab) => context.go(
+        WorkspaceNav.setRight(
+          GoRouterState.of(context).uri,
+          [PanelToken('analytics', tab.name)],
+        ),
+      );
 
   void _openProfile() => context.go(PRoutes.profile);
 

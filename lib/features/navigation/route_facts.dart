@@ -1,6 +1,8 @@
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/features/navigation/panel_registry.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 
@@ -50,10 +52,9 @@ class ActivityFocus extends MapFocus {
 //   class ObjectFocus  extends MapFocus { final String objectId; ... }
 // Add the subclass, then one arm to the map's focus switch. Nothing else.
 
-/// The learning-analytics view the top-right cluster opens in the right-docked
-/// panel. The panel is **app-state, not a route** ([AnalyticsPanelController]):
-/// it's a persistent personal companion, so navigating the left content must
-/// not close it. See `world-user-cluster.instructions.md`.
+/// The learning-analytics metric the top-right cluster opens as a right-column
+/// panel. Each maps to a `?right=analytics:<name>` token in the workspace URL
+/// (the single source of truth for open panels). See `routing.instructions.md`.
 enum AnalyticsPanelTab { sessions, grammar, vocab }
 
 /// Section roots that render as a map hole **in column mode** (their content
@@ -177,4 +178,49 @@ bool showNavRail(GoRouterState state, bool isColumnMode) {
     return state.fullPath?.endsWith(':spaceid') ?? false;
   }
   return false;
+}
+
+/// The maximum panels honored per URL list; extra tokens are dropped to guard a
+/// hand-crafted or runaway URL. Tune against a realistic worst case.
+const int _maxPanelsPerList = 6;
+
+/// The open panels named by the workspace URL: the ordered `left=` and `right=`
+/// lists. The URL is the single source of truth for which panels are open and
+/// in what order. Unknown types, wrong-column tokens, and duplicate
+/// (type, param) pairs are dropped, so a hand-edited URL degrades to a valid
+/// subset rather than crashing — duplicate room ids would otherwise collide as
+/// duplicate widget keys. See `routing.instructions.md`.
+({List<PanelToken> left, List<PanelToken> right}) parseOpenPanels(Uri uri) =>
+    (left: _parsePanelList(uri, 'left'), right: _parsePanelList(uri, 'right'));
+
+List<PanelToken> _parsePanelList(Uri uri, String key) {
+  // Read the raw query, not uri.queryParameters: the latter percent-decodes,
+  // which would turn an encoded construct's %2C back into a delimiter comma and
+  // shatter the token. Split the still-encoded value first, decode per token
+  // (in PanelToken.parse). This deliberately diverges from every other consumer
+  // here, which reads the decoded queryParameters — do not "fix" it back.
+  final query = uri.query;
+  if (query.isEmpty) return const [];
+  String? encodedList;
+  for (final part in query.split('&')) {
+    if (part.startsWith('$key=')) {
+      encodedList = part.substring(key.length + 1);
+      break;
+    }
+  }
+  if (encodedList == null || encodedList.isEmpty) return const [];
+
+  final column = key == 'left' ? PanelColumn.left : PanelColumn.right;
+  final seen = <String>{};
+  final tokens = <PanelToken>[];
+  for (final element in encodedList.split(',')) {
+    final token = PanelToken.parse(element);
+    if (token == null) continue;
+    final def = PanelRegistry.defFor(token.type);
+    if (def == null || def.column != column) continue;
+    if (!seen.add('${token.type}:${token.param ?? ''}')) continue;
+    tokens.add(token);
+    if (tokens.length >= _maxPanelsPerList) break;
+  }
+  return tokens;
 }

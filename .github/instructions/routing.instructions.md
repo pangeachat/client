@@ -1,96 +1,103 @@
 ---
-applyTo: "lib/config/routes.dart,lib/features/navigation/**,lib/widgets/layouts/**,lib/widgets/space_navigation_column.dart,lib/widgets/navigation_rail.dart,lib/widgets/mobile_bottom_nav.dart"
-description: "Client routing design guide — persistent-map shell, route_facts single source, canvas-once, one activity-open, and how to add a route."
+applyTo: "lib/config/routes.dart,lib/features/navigation/**,lib/widgets/layouts/**,lib/widgets/space_navigation_column.dart,lib/widgets/navigation_rail.dart,lib/widgets/mobile_bottom_nav.dart,lib/routes/world/**"
+description: "Client routing & workspace design — the URL is the single source of truth for an ordered set of panels over a persistent map: columns by role, one shared-width budget, one live session at a time."
 ---
 
-# Client Routing
+# Client Routing & Workspace
 
-The world_v2 routing model in one page. For the visual layout contract (map
-peeks, detail width, mobile sheet) see [layout.instructions.md](layout.instructions.md);
-for cross-repo/external links see [deep-linking.instructions.md](../../../.github/.github/instructions/deep-linking.instructions.md).
+The app is a **workspace of open panels over one persistent map**, and the **URL
+is the single source of truth for which panels are open and in what order**. A
+shared link reopens exactly what the sender saw and a refresh restores it, because
+there is no second app-state store to drift from the URL. For cross-repo/external
+link shapes see [deep-linking.instructions.md](../../../.github/.github/instructions/deep-linking.instructions.md).
 
-## The model
+## The map is the backdrop
 
-There is **one persistent `WorldMap`** for the whole app (a `GlobalKey` in
-`TwoColumnLayout` keeps its State across navigation). Every section renders
-*over* that map. A route's **canvas** ([CanvasMode]) says how:
+One map stays mounted for the whole app and never remounts, always full width
+behind everything. Panels float over it as overlays, so the *visible* map is
+whatever they don't cover: it grows as panels close and shrinks as they open. The
+camera biases its focal content (a location, a course region, an activity) into
+the uncovered area rather than the geometric center.
 
-- **mapHole** — paints nothing; the map shows through (section roots, column mode).
-- **detail** — opaque panel capped at ~720px; the map peeks beside it.
-- **fullBleed** — opaque content fills the canvas (the add-course hub).
+## The URL is the workspace
 
-The map is never remounted; sections do not own their own map.
+The URL carries two ordered panel lists, a **left** list and a **right** list;
+order is left-to-right placement. Everything the shell renders is derived from that
+one place, so the page builders and the chrome (rail, bottom nav) cannot disagree
+about what is open. Internal navigation builds these URLs through the canonical
+route builders; external, push, and `matrix.to` links are rewritten inbound to
+canonical workspace URLs and are never emitted internally.
 
-## One source: `route_facts.dart`
+## Panels are independent
 
-Every routing/layout fact is derived in `lib/features/navigation/route_facts.dart`
-— a module of small pure functions. The shell layout, the `routes.dart` page
-builders, the left column, the rail, and the bottom nav all call these instead
-of re-deriving from path segments, so they cannot disagree:
+Each open surface — the chat list, a live chat, a course, settings, the analytics
+summary, a vocab or grammar detail, a completed-activity review — is its own panel
+with its own close. Closing one leaves the rest open, and navigating changes which
+panel is focused instead of tearing down what is already open, so a learner can
+close the chat list but keep the chat, or move to the world and keep the chat.
 
-- `canvasFor(state, isColumnMode)` / `isMapHole(fullPath, isColumnMode)` — the canvas decision.
-- `sectionFor(uri)` / `activeSpaceIdFor(uri)` — section + active course space.
-- `activityFor(state)` / `mapFocusFor(state)` — the open activity and what the map focuses.
-- `showLeftColumn(state)` / `showNavRail(state, isColumnMode)` — chrome visibility.
+## Two columns, taken by role
 
-`sectionFor`/`activeSpaceIdFor`/`isMapHole` take primitives (`Uri`, `String`) so
-they are unit-tested directly (`test/pangea/navigation/route_facts_test.dart`).
-There is **no** `RouteContext` object, `PRouteId` enum, or parallel canvas Set —
-the functions are the single definition.
+A panel's side is decided by its **role**, not its content:
 
-### Resolution rules (the bugs this fixes)
+- **Left** — navigation and social surfaces (chat list, a live room, a course,
+  settings). Justified to the left edge.
+- **Right** — personal learning and review (analytics summary, a vocab or grammar
+  detail, a completed-activity review). Justified to the right edge, so a summary
+  rests at the edge and its detail opens to the left of it.
 
-- `activeSpaceIdFor` returns a space **only** for `/courses/!spaceid` (Matrix
-  space ids start with `!`), so a `preview`/`own`/`browse` literal or a
-  course-room id can never masquerade as the active space.
-- A nested course room (`/courses/:spaceid/:roomid`) resolves to the **courses**
-  section (not chats).
-- Unknown routes resolve to `world` for the *nav highlight* only — the canvas is
-  decided by `canvasFor`, never the section, so an unrecognized detail route
-  never flips the shell to the map.
+Because role decides the side, the same room can be open on the left as a live
+conversation and on the right as a completed-activity review at the same time.
 
-## Canvas declared once
+## One shared width
 
-Section-root page builders in `routes.dart` wrap their content in
-`AppRoutes.canvasPage(context, state, content)`, which returns the map hole
-(`EmptyPage`) or the content by calling `isMapHole`. The shell reads the same
-`canvasFor`, so the page builder and the layout agree by construction. `/` is
-always the map (both modes); the map-hole route set lives once in
-`_mapHoleColumnRoutes` in route_facts.dart.
+Both columns draw from a single shared width:
 
-## Navigation: `PRoutes` only
+- Each panel grows greedily to a **maximum — about 720 by default, overridable per
+  panel — because most content reads poorly much wider**. Width no panel takes
+  stays uncovered map.
+- When the open panels want more than fits, they **compress toward per-panel
+  floors** (opaque content like a chat or a detail has a real minimum; the map
+  absorbs the slack as the backdrop), and only then does the **lowest-priority
+  panel collapse to a peek or tab**. There is no full-screen takeover.
+- **Width is the only canvas concept.** An empty center is the absence of a panel;
+  a bounded panel is the default; a full-bleed surface is a panel that raises its
+  maximum to the viewport; and a surface that must hold the screen alone marks
+  itself **exclusive**, collapsing the others while it is open (an in-progress
+  activity is the main example).
+- **Narrow screens are the degenerate case of the same rule**, not a separate
+  layout: the chrome swaps (the side rail becomes bottom navigation, the left inset
+  goes to zero) and the focused column's top panel seats full while the rest peek.
 
-Build world_v2 route strings with the `PRoutes` builders
-(`PRoutes.course`, `PRoutes.activity`, `PRoutes.activityStandalone`, …) — never
-hardcode `context.go('/courses/...')`. Fork-owned `/rooms/...` navigation is
-left as upstream ships it (those routes are unchanged). `LegacyRedirects` is
-**inbound-only**: it rewrites old/external shapes (incl. the retired nested
-activity route) to canonical ones; no internal code emits legacy shapes.
+## One live session at a time
 
-## One activity-open mechanism
+At most one **live** chat or activity session is open at once. The Matrix room
+timeline is shared rather than reference-counted, so two live views of a room
+overwrite each other. A **read-only review** of a completed session opens no
+timeline, so it may coexist with a live session and with a review of a different
+room. Opening a new live session replaces the current one. *(Future: give a room
+its own session state by folding the choreographer controller into the chat
+controller, which would lift this limit.)*
 
-An activity opens as an in-place overlay over the persistent map
-(`/courses/:spaceid?activity=:id`, optional `&roomid=` / `&launch=`), or via the
-shareable standalone `/<uuid>` route — both build `ActivityDetailPanel`, the
-sole route-path constructor of `ActivitySessionStartPage`. The old nested
-`/courses/:spaceid/activity/:id` route is **deleted** (inbound-redirect only).
-The non-route in-room mount (`chat_view` → `ActivitySessionStartPage`) is
-unchanged.
+## The cluster is the right column's entry point
 
-## Map focus is extensible
+A persistent cluster pinned to the top-right of the map opens the right column: the
+user's avatar ringed by experience progress and level, their target-language flag,
+and trackers for completed sessions, grammar, and vocabulary. Tapping a tracker
+opens that metric as a right-column panel, and its detail blooms to the left. The
+cluster stays pinned above the panels, because it is the anchor the right column
+justifies against.
 
-`WorldMap` takes a `MapFocus?` (sealed). Today only `ActivityFocus` exists;
-focusing new content (a location, a course region, a world object) is a new
-`MapFocus` subclass plus one arm in `WorldMap._focusPoint` — the `switch` is
-exhaustive, so the compiler flags the missing arm. Nothing else in routing
-changes.
+## History follows the workspace
 
-## How to add a route
+The URL holds the workspace, so the back button, shared links, and reload all move
+through the same state: opening a panel is a forward step and closing it a step
+back, while refocusing, reordering, or an automatic collapse replace the current
+entry rather than adding history.
 
-1. Add the `GoRoute` in `routes.dart`. If it's a section root that should show
-   the map in column mode, wrap its content in `canvasPage(...)` and add its
-   `fullPath` to `_mapHoleColumnRoutes` in route_facts.dart.
-2. Navigate to it via a `PRoutes` builder (add one if needed).
-3. If `sectionFor`/`activeSpaceIdFor` need to recognize it, extend them and
-   cover it in `route_facts_test.dart`.
-4. If externally linkable, follow [deep-linking.instructions.md](../../../.github/.github/instructions/deep-linking.instructions.md).
+## Adding a panel
+
+A new surface is a registry entry, not a new route tree: declare its column (which
+fixes its role and justification), its minimum and maximum width, its collapse
+priority, and whether it is exclusive. The parser, the width allocator, and the
+chrome pick it up from there.

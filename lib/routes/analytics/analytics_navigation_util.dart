@@ -6,10 +6,11 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
-import 'package:fluffychat/routes/world/analytics_panel_controller.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 
@@ -20,15 +21,27 @@ class AnalyticsNavigationUtil {
     ConstructIdentifier? construct,
     String? activityRoomId,
   }) async {
-    // world_v2: when the right-docked analytics panel is open (the top-right
-    // cluster), drilling into an item uses the new layout instead of the old
-    // `/rooms/analytics/...` pages — vocab/grammar open a detail card to the
-    // LEFT of the pinned summary (set on [AnalyticsPanelController], not the
-    // URL, so it survives navigation), and an activity opens its session chat
-    // in the left zone. See world-user-cluster.instructions.md.
-    if (AnalyticsPanelController.isOpen) {
+    // world_v2: when a right-docked analytics panel is open (a `?right=` token
+    // in the URL), drilling into an item rewrites the workspace URL instead of
+    // using the old `/rooms/analytics/...` pages — vocab/grammar bloom a detail
+    // card to the LEFT of the pinned summary, and a completed activity opens a
+    // read-only review panel beside it. See routing.instructions.md.
+    final uri = GoRouterState.of(context).uri;
+    final right = parseOpenPanels(uri).right;
+    final panelOpen = right.any(
+      (t) => const {'analytics', 'vocab', 'grammar', 'review'}.contains(t.type),
+    );
+    if (panelOpen) {
       if (view == ProgressIndicatorEnum.activities) {
-        if (activityRoomId != null) context.go(PRoutes.room(activityRoomId));
+        if (activityRoomId != null) {
+          context.go(
+            WorkspaceNav.openRight(
+              uri,
+              PanelToken('review', shortRoomId(activityRoomId)),
+              atStart: true,
+            ),
+          );
+        }
         return;
       }
       if (construct != null &&
@@ -36,11 +49,15 @@ class AnalyticsNavigationUtil {
             ProgressIndicatorEnum.wordsUsed,
             ProgressIndicatorEnum.morphsUsed,
           }.contains(view)) {
-        AnalyticsPanelController.openConstruct(
-          view == ProgressIndicatorEnum.wordsUsed
-              ? AnalyticsPanelTab.vocab
-              : AnalyticsPanelTab.grammar,
-          construct,
+        context.go(
+          WorkspaceNav.openRight(
+            uri,
+            PanelToken(
+              view == ProgressIndicatorEnum.wordsUsed ? 'vocab' : 'grammar',
+              jsonEncode(construct.toJson()),
+            ),
+            atStart: true,
+          ),
         );
       }
       // Other in-panel taps (no construct, level, etc.) are no-ops — the

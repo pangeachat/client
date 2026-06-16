@@ -1,17 +1,20 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/routes/world/activity_detail_panel.dart';
-import 'package:fluffychat/routes/world/analytics_panel_controller.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
-import 'package:fluffychat/routes/world/world_analytics_panel.dart';
+import 'package:fluffychat/routes/world/workspace_right_panel.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
 import 'package:fluffychat/widgets/layouts/mobile_course_sheet.dart';
+import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
 import 'package:fluffychat/widgets/layouts/shell_layout.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mobile_bottom_nav.dart';
@@ -27,15 +30,14 @@ final GlobalKey _persistentWorldMapKey = GlobalKey(debugLabel: 'worldMap');
 /// shell rebuilds, like the persistent map — so it does not re-fetch on nav.
 final GlobalKey _userClusterKey = GlobalKey(debugLabel: 'worldUserCluster');
 
-/// All shell zone widths (detail cap, analytics card, cluster gutter, …) live in
-/// [ShellLayout] — the single budget that tiles them without overlap.
-
 /// The shell: a single persistent [WorldMap] with the active section overlaid.
-/// Every routing/layout fact comes from `route_facts.dart` (the single source),
-/// so this layout, the page builders in `routes.dart`, the left column, the
-/// rail, and the bottom nav can't disagree. The canvas relates to the map in
-/// one of three ways ([CanvasMode]): a map hole (the map shows through), a
-/// capped detail panel (the map peeks alongside), or full-bleed content.
+/// Every routing/layout fact comes from `route_facts.dart` (the single source).
+/// Right-column panels (analytics, a vocab/grammar detail, a completed-activity
+/// review) are named by the URL's `?right=` list and positioned by
+/// [PanelAllocator] — one shared width budget so panels and the route-driven
+/// center detail tile without overlap. The left column + center detail are
+/// still route-driven and fed in as the fixed left inset. See
+/// `routing.instructions.md`.
 class TwoColumnLayout extends StatelessWidget {
   // #Pangea
   final GoRouterState state;
@@ -52,74 +54,61 @@ class TwoColumnLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // #Pangea
-    // The right-docked analytics panel is app-state ([AnalyticsPanelController]),
-    // not a URL param, so the shell subscribes to it here — navigating the left
-    // content (rail, a chat, a course, a map pin) never closes the panel.
-    return ValueListenableBuilder<AnalyticsPanelState?>(
-      valueListenable: AnalyticsPanelController.notifier,
-      builder: (context, panelState, _) => _buildShell(context, panelState),
-    );
-    // Pangea#
-  }
-
-  // #Pangea
-  Widget _buildShell(BuildContext context, AnalyticsPanelState? panelState) {
     final isColumnMode = FluffyThemes.isColumnMode(context);
     final navRail = showNavRail(state, isColumnMode);
     final leftColumn = showLeftColumn(state);
 
     // world_v2: the rail is vertical-left in column mode and a bottom bar in
-    // narrow mode, so it only offsets the canvas in column mode.
+    // narrow mode, so it only offsets the canvas in column mode. This route-
+    // driven left inset is fed to the allocator as fixed chrome until the left
+    // column is itself URL-driven.
     final columnWidth =
         (isColumnMode && navRail ? (FluffyThemes.navRailWidth + 1.0) : 0.0) +
-        (isColumnMode && leftColumn
-            ? (FluffyThemes.columnWidth + 1.0)
-            : 0.0);
+        (isColumnMode && leftColumn ? (FluffyThemes.columnWidth + 1.0) : 0.0);
     final showBottomNav = !isColumnMode && navRail;
 
     // The effective canvas (an open activity overlay already resolves to a
     // detail panel inside [canvasFor]).
     final canvas = canvasFor(state, isColumnMode);
-
     final activity = activityFor(state);
     final activeSpaceId = activeSpaceIdFor(state.uri);
 
-    // The right-docked analytics panel (the top-right cluster's trackers), from
-    // app-state. A vocab/grammar detail card blooms to the LEFT of the summary,
-    // so the right zone holds two cards and is twice as wide.
-    final analyticsTab = panelState?.tab;
-    final analyticsConstruct = panelState?.construct;
-    final analyticsDetailOpen =
-        analyticsConstruct != null &&
-        analyticsTab != null &&
-        analyticsTab != AnalyticsPanelTab.sessions;
+    final viewport = MediaQuery.sizeOf(context).width;
+
+    // Right-column panels from the URL — the single source of truth for what's
+    // open. Every token parsed here has a valid right-column def (the parser
+    // dropped unknown/wrong-column tokens), so the lookup is non-null.
+    final rightTokens = parseOpenPanels(state.uri).right;
+    final rightDefs = [
+      for (final token in rightTokens) PanelRegistry.defFor(token.type)!,
+    ];
+    final layout = PanelAllocator.allocate(
+      viewport: viewport,
+      isColumnMode: isColumnMode,
+      left: const [],
+      right: rightDefs,
+      railWidth: columnWidth,
+    );
 
     // The map shows behind as a map hole (full) or — in column mode — alongside
-    // a detail; this gates the cluster and the panel's tile-vs-overlay budget.
+    // a detail; this gates the cluster.
     final mapVisible =
         canvas == CanvasMode.mapHole ||
         (isColumnMode && canvas == CanvasMode.detail);
 
-    // Single layout authority: ONE width budget tiles every floating zone (left
-    // column, center detail, right panel, cluster gutter) so they can't overlap.
-    // The panel hides on a full-bleed canvas (the add-course hub fills it); its
-    // open-state survives in the controller, so it returns on leaving.
-    final panelOpen = analyticsTab != null && canvas != CanvasMode.fullBleed;
-    final layout = ShellLayout.resolve(
-      viewport: MediaQuery.sizeOf(context).width,
-      isColumnMode: isColumnMode,
-      leftInset: columnWidth,
-      canvas: canvas,
-      panelOpen: panelOpen,
-      panelDetailOpen: analyticsDetailOpen,
-      mapVisible: mapVisible,
-    );
+    // Bound the route-driven center detail by the right-covered width so it can
+    // never slide under a right panel (the non-overlap guarantee).
+    final detailWidth = canvas == CanvasMode.detail
+        ? math.min(
+            ShellLayout.detailMax,
+            math.max(0.0, viewport - columnWidth - layout.mapRightOverlay),
+          )
+        : null;
+    final mapLeftOverlay =
+        columnWidth + (canvas == CanvasMode.detail ? (detailWidth ?? 0.0) : 0.0);
 
-    // Scope the persistent map to the active course (world_v2 context). A joined
-    // course scopes the map to that course's content; everything else shows the
-    // whole world. Set post-frame — the map listens and calls setState, which
-    // can't run during this build.
+    // Scope the persistent map to the active course (world_v2 context). Set
+    // post-frame — the map listens and calls setState, which can't run now.
     final coursePlanId = activeSpaceId == null
         ? null
         : Matrix.of(context).client.getRoomById(activeSpaceId)?.coursePlan?.uuid;
@@ -131,17 +120,14 @@ class TwoColumnLayout extends StatelessWidget {
     );
 
     // world_v2 mobile: a joined course on a narrow screen rides in a draggable
-    // bottom sheet over the persistent (course-scoped) map instead of a
-    // full-screen panel that hides it. The detail (sideView) moves into the
-    // sheet; the map shows above the sheet's peek.
+    // bottom sheet over the persistent (course-scoped) map.
     final isMobileCourse =
         !isColumnMode &&
         activeSpaceId != null &&
         activity == null &&
         canvas == CanvasMode.detail;
 
-    // `?activity=<id>` opens the activity detail in-place over the persistent
-    // map — a capped detail (not full-bleed), course preserved, map untouched.
+    // `?activity=<id>` opens the activity detail in-place over the map.
     final canvasChild = activity != null
         ? ActivityDetailPanel(
             activityId: activity.id,
@@ -150,48 +136,37 @@ class TwoColumnLayout extends StatelessWidget {
             launch: activity.launch,
           )
         : sideView;
-    // Pangea#
+
     return ScaffoldMessenger(
       child: Scaffold(
-        // #Pangea
         bottomNavigationBar: showBottomNav
             ? MobileBottomNav(state: state)
             : null,
         body: Stack(
           fit: StackFit.expand,
-          // Pangea#
           children: [
-            // #Pangea
-            // Persistent world map — the base layer everything overlays. Built
-            // once; section pages (the transparent EmptyPage canvas) and detail
-            // panels render on top of this single instance.
+            // Persistent world map — the base layer everything overlays.
             Positioned.fill(
               child: WorldMap(
                 key: _persistentWorldMapKey,
-                // The overlays (rail + column + detail on the left, the docked
-                // panel on the right) pad the camera so a course fit lands in the
-                // exposed area — both insets come from the one layout budget.
-                leftOverlayWidth: layout.mapLeftOverlay,
+                // Overlays pad the camera so a course fit lands in the exposed
+                // area: left = rail + column + detail; right = the panel zone.
+                leftOverlayWidth: mapLeftOverlay,
                 rightOverlayWidth: layout.mapRightOverlay,
-                // What the map brings into the exposed canvas (today: the open
-                // activity). Extend via a new [MapFocus] kind in route_facts.
                 focus: mapFocusFor(state),
               ),
             ),
             // The route canvas, as one stable child so the sideView Navigator
-            // never remounts when the canvas mode changes. Three modes:
-            //  • mapHole → off the hit-test tree (Offstage) so pan/zoom/tap
-            //    reach the persistent map below.
-            //  • detail → capped at ~720px next to the left column, map peeks.
+            // never remounts when the canvas mode changes:
+            //  • mapHole → Offstage so pan/zoom/tap reach the map below.
+            //  • detail → capped, bounded by the right panel zone; map peeks.
             //  • fullBleed → fills (the activity page hosts its own map).
             Positioned(
               left: columnWidth,
               top: 0,
               bottom: 0,
               right: canvas == CanvasMode.detail ? null : 0,
-              // Bounded by the layout budget so it can never slide under the
-              // docked panel; the map peeks beyond it.
-              width: canvas == CanvasMode.detail ? layout.detailWidth : null,
+              width: canvas == CanvasMode.detail ? detailWidth : null,
               child: Offstage(
                 offstage: canvas == CanvasMode.mapHole || isMobileCourse,
                 child: ClipRRect(
@@ -201,47 +176,38 @@ class TwoColumnLayout extends StatelessWidget {
                 ),
               ),
             ),
-            // world_v2 mobile course: the detail rides a draggable sheet over
-            // the course-scoped persistent map (peek = handle + title + tabs).
             if (isMobileCourse)
               Positioned.fill(child: MobileCourseSheet(child: canvasChild)),
             SpaceNavigationColumn(state: state, showNavRail: navRail),
-            // The right-docked analytics panel, opened by the top-right cluster
-            // (app-state). Sized by [ShellLayout]: a docked card that tiles
-            // beside the content (cluster in the gutter), or a full-bleed
-            // Slide-Over when there's no room / on narrow — so it can never
-            // accidentally overlap the detail.
-            if (analyticsTab != null &&
-                layout.analyticsMode != AnalyticsPanelMode.none)
-              Positioned(
-                top: 0,
-                bottom: 0,
-                left: layout.analyticsMode == AnalyticsPanelMode.fullBleed
-                    ? layout.leftInset
-                    : null,
-                right: layout.analyticsMode == AnalyticsPanelMode.dockedCard
-                    ? ShellLayout.clusterGutter
-                    : 0,
-                width: layout.analyticsMode == AnalyticsPanelMode.dockedCard
-                    ? layout.analyticsZoneWidth
-                    : null,
-                child: WorldAnalyticsPanel(
-                  tab: analyticsTab,
-                  construct: analyticsConstruct,
-                  fullBleed:
-                      layout.analyticsMode == AnalyticsPanelMode.fullBleed,
+            // Right-column panels (analytics summary, a vocab/grammar detail, a
+            // completed-activity review) from `?right=`, each placed at its
+            // allocator slot. The slots tile and never overlap by construction;
+            // a collapsed slot renders as a peek the user can tap to re-expand.
+            for (var i = 0; i < rightTokens.length; i++)
+              if (layout.right[i].vis != PanelVis.hidden)
+                Positioned(
+                  top: 0,
+                  bottom: 0,
+                  left: layout.right[i].left,
+                  width: layout.right[i].width,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    child: WorkspaceRightPanel(
+                      token: rightTokens[i],
+                      currentUri: state.uri,
+                      peek: layout.right[i].vis == PanelVis.peek,
+                    ),
+                  ),
                 ),
-              ),
-            // The persistent top-right user cluster — painted last so it sits in
-            // the gutter beside the panel (Figma). Hidden behind a full-bleed
-            // panel; shown only where the map is the backdrop.
-            if (layout.clusterVisible)
+            // The persistent top-right user cluster — the right column's entry
+            // point. It sits in the gutter the allocator reserves beside the
+            // panels; hidden on a full-bleed canvas or behind a narrow panel.
+            if (mapVisible && layout.clusterVisible)
               Positioned(
                 top: 12 + MediaQuery.viewPaddingOf(context).top,
                 right: 12 + MediaQuery.viewPaddingOf(context).right,
                 child: WorldUserCluster(key: _userClusterKey),
               ),
-            // Pangea#
           ],
         ),
       ),
