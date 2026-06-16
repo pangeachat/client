@@ -13,8 +13,19 @@ class QuestActivityCard {
   final List<double>? coordinates;
 
   /// Learning-objective ids this activity satisfies; lets the repo group cards
-  /// under the quest's objectives without a second read.
+  /// under the quest's objectives without a second read. Empty for pins read
+  /// via the choreographer bbox endpoint (its card drops refs — see
+  /// world-map-search.instructions.md; the theme/per-LO filters that need refs
+  /// are Phase 2).
   final List<String> learningObjectiveRefs;
+
+  /// Content-search + CEFR-filter fields, populated only for World map pins read
+  /// via the bbox endpoint (the projected CMS pin read leaves them null). Used
+  /// by the map search box (title/description/learningObjective) and the CEFR
+  /// filter chip.
+  final String? description;
+  final String? learningObjective;
+  final String? cefr;
 
   const QuestActivityCard({
     required this.activityId,
@@ -22,7 +33,20 @@ class QuestActivityCard {
     required this.l2,
     required this.coordinates,
     required this.learningObjectiveRefs,
+    this.description,
+    this.learningObjective,
+    this.cefr,
   });
+
+  /// True when [query] matches the activity's searchable text (title +
+  /// description + learning objective), case-insensitive. Empty query matches.
+  bool matchesQuery(String query) {
+    final q = query.trim().toLowerCase();
+    if (q.isEmpty) return true;
+    return title.toLowerCase().contains(q) ||
+        (description?.toLowerCase().contains(q) ?? false) ||
+        (learningObjective?.toLowerCase().contains(q) ?? false);
+  }
 
   /// `(lat, lng)` for flutter_map, or null when unplaced.
   LatLng? get point => (coordinates != null && coordinates!.length == 2)
@@ -45,6 +69,24 @@ class QuestActivityCard {
       learningObjectiveRefs: refs
           .map((e) => e is Map ? e['id'] as String : e as String)
           .toList(),
+    );
+  }
+
+  /// Parse a choreographer `ActivityCard` (the `GET /v2/activities/bbox` shape):
+  /// a flat card carrying content-search text + cefr, but no LO refs.
+  factory QuestActivityCard.fromBboxCard(Map<String, dynamic> json) {
+    final coords = json['coordinates'];
+    return QuestActivityCard(
+      activityId: json['activity_id'] as String,
+      title: (json['title'] ?? '') as String,
+      l2: (json['l2'] ?? '') as String,
+      coordinates: coords is List
+          ? coords.map((e) => (e as num).toDouble()).toList()
+          : null,
+      learningObjectiveRefs: const [],
+      description: json['description'] as String?,
+      learningObjective: json['learning_objective'] as String?,
+      cefr: json['cefr_level'] as String?,
     );
   }
 }

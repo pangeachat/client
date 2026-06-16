@@ -54,6 +54,11 @@ class PApiUrls {
   static String activityFeedback =
       "${PApiUrls._choreoEndpoint}/activity_plan/feedback";
 
+  /// Thin activity map pins within a viewport bbox (world_v2 map search).
+  /// Query: min_lat, min_lng, max_lat, max_lng, l2?, cefr_level?, l1?, limit?.
+  static String activitiesBbox =
+      "${PApiUrls._choreoEndpoint}/v2/activities/bbox";
+
   static String tokenFeedback = "${PApiUrls._choreoEndpoint}/token/feedback";
   static String tokenFeedbackV2 =
       "${PApiUrls._choreoEndpoint}/token/feedback_v2";
