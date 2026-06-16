@@ -46,8 +46,9 @@ abstract class ActivitySessionStateController {
     for (final room in rooms) {
       if (room.activityId != activityId) continue;
       if (room.ownRoleState?.id != roleId) continue;
+      final awarded = room.orchestratorAwardedGoals;
       completed.addAll(
-        room.orchestratorAwardedGoals.goalIds.where(roleGoalIds.contains),
+        roleGoalIds.where((id) => awarded.isGoalCompletedForRole(roleId, id)),
       );
     }
     return completed;
