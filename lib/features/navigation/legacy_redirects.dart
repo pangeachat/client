@@ -1,3 +1,4 @@
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 
 /// Permanent redirect shims from pre-world_v2 `/rooms/...` section paths
@@ -74,12 +75,16 @@ abstract class LegacyRedirects {
     return uri.hasQuery ? '$path?${uri.query}' : path;
   }
 
-  /// go_router top-level redirect signature adapter.
+  /// go_router top-level redirect signature adapter. After any legacy rewrite,
+  /// strip the home server_name from room ids so URLs display as bare
+  /// localparts (`/rooms/!abc` not `/rooms/!abc:home`), regardless of how the
+  /// location was built. The read side re-attaches the domain (see
+  /// room_id_url.dart), so this is display-only.
   static String? handle(Uri uri) {
-    final resolved = resolve(uri);
+    final candidate = resolve(uri) ?? uri.toString();
+    final shortened = shortenHomeRoomIdsInUrl(candidate);
     // Never redirect to the location we are already at.
-    if (resolved == null || resolved == uri.toString()) return null;
-    return resolved;
+    return shortened == uri.toString() ? null : shortened;
   }
 
   /// Guard: bare `/rooms` maps to the chats list.

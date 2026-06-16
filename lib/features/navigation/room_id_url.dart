@@ -45,3 +45,18 @@ String fullRoomId(String segment, {String? domain}) {
   final d = domain ?? _homeDomain;
   return d == null ? segment : '$segment:$d';
 }
+
+/// Strip the home server_name from every `!localpart:home` room id in a URL
+/// string (path and query), leaving foreign-homeserver ids intact. Applied by
+/// the router redirect so room URLs display as bare localparts regardless of how
+/// they were built — including upstream/fork navigation we don't route through
+/// [PRoutes]. Keeps upstream files untouched (clean cherry-picks). [domain]
+/// overrides the home domain (for tests).
+String shortenHomeRoomIdsInUrl(String location, {String? domain}) {
+  final d = domain ?? _homeDomain;
+  if (d == null) return location;
+  return location.replaceAllMapped(
+    RegExp('(![^:/?&#]+):${RegExp.escape(d)}'),
+    (m) => m.group(1)!,
+  );
+}

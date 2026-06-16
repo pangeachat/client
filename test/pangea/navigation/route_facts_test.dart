@@ -99,5 +99,29 @@ void main() {
       expect(shortRoomId('!x:local.pangea.chat'), '!x:local.pangea.chat');
       expect(fullRoomId('!x'), '!x');
     });
+
+    test('shortenHomeRoomIdsInUrl strips home domain across path + query', () {
+      const d = 'local.pangea.chat';
+      expect(
+        shortenHomeRoomIdsInUrl('/rooms/!abc:local.pangea.chat', domain: d),
+        '/rooms/!abc',
+      );
+      expect(
+        shortenHomeRoomIdsInUrl('/rooms/!abc:local.pangea.chat/details', domain: d),
+        '/rooms/!abc/details',
+      );
+      expect(
+        shortenHomeRoomIdsInUrl(
+          '/courses/!s:local.pangea.chat?activity=x&roomid=!r:local.pangea.chat',
+          domain: d,
+        ),
+        '/courses/!s?activity=x&roomid=!r',
+      );
+      // Foreign-homeserver ids keep their domain (federation-safe).
+      expect(
+        shortenHomeRoomIdsInUrl('/rooms/!abc:matrix.org', domain: d),
+        '/rooms/!abc:matrix.org',
+      );
+    });
   });
 }
