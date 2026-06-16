@@ -26,8 +26,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 class ActivityChatController {
   final String userID;
   final Room room;
+  final FocusNode inputFocus;
 
-  ActivityChatController({required this.userID, required this.room}) {
+  ActivityChatController({
+    required this.userID,
+    required this.room,
+    required this.inputFocus,
+  }) {
     init();
   }
 
@@ -125,6 +130,7 @@ class ActivityChatController {
   void setShowDropdown(bool value) {
     if (!_disposed) {
       showActivityDropdown.value = value;
+      if (value) inputFocus.unfocus();
     }
   }
 

@@ -878,6 +878,7 @@ class ChatController extends State<ChatPageWithRoom>
     activityController = ActivityChatController(
       userID: Matrix.of(context).client.userID!,
       room: room,
+      inputFocus: inputFocus,
     );
 
     activityController.confettiNotifier.addListener(_activityConfettiListener);
