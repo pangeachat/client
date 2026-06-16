@@ -156,7 +156,8 @@ class WorldMap extends StatefulWidget {
   State<WorldMap> createState() => _WorldMapState();
 }
 
-class _WorldMapState extends State<WorldMap> {
+class _WorldMapState extends State<WorldMap>
+    with SingleTickerProviderStateMixin {
   final MapController _ownController = MapController();
   MapController get _controller => widget.controller ?? _ownController;
 
@@ -192,6 +193,22 @@ class _WorldMapState extends State<WorldMap> {
   bool _loadingPins = false;
   Timer? _refetchDebounce;
 
+  /// Debounce for context-driven camera fits: when you click through courses,
+  /// the camera waits until you've settled (~2s) before gliding, rather than
+  /// snapping on every hop. Re-armed on each request; only the last fires.
+  Timer? _fitDebounce;
+  static const Duration _fitSettleDelay = Duration(seconds: 2);
+
+  /// Drives the smooth camera glide (center + zoom tween) instead of an instant
+  /// `fitCamera` snap. Retargets cleanly if a new fit lands mid-flight.
+  AnimationController? _camAnim;
+  CurvedAnimation? _camCurve;
+  LatLng? _camStart;
+  LatLng? _camTarget;
+  double _camStartZoom = 0;
+  double _camTargetZoom = 0;
+  static const Duration _camGlideDuration = Duration(milliseconds: 600);
+
   /// Cached per-activity goal tier + completion, recomputed on room sync (not
   /// per frame) so the O(rooms) scan doesn't run every build.
   Map<String, _GoalTier> _goalTiers = {};
@@ -206,6 +223,9 @@ class _WorldMapState extends State<WorldMap> {
     // Invariant: the shell owns a single persistent instance, so this runs
     // once per app session — section navigation overlays the map, never
     // remounts it.
+    _camAnim = AnimationController(vsync: this, duration: _camGlideDuration)
+      ..addListener(_onCamGlideTick);
+    _camCurve = CurvedAnimation(parent: _camAnim!, curve: Curves.easeInOut);
     _loadForContext();
     MapContextController.notifier.addListener(_onContextChange);
   }
@@ -271,13 +291,18 @@ class _WorldMapState extends State<WorldMap> {
   void dispose() {
     _syncSub?.cancel();
     _refetchDebounce?.cancel();
+    _fitDebounce?.cancel();
+    _camCurve?.dispose();
+    _camAnim?.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
     super.dispose();
   }
 
   void _onContextChange() {
     // Close any open preview when the map re-scopes (e.g. entering a course),
-    // then reload pins for the new scope and refit.
+    // then reload pins for the new scope and refit. The camera fit is debounced
+    // so clicking through courses doesn't snap the camera on every hop — it
+    // glides only after you've settled on one.
     if (mounted) {
       setState(() {
         _selectedActivity = null;
@@ -285,7 +310,7 @@ class _WorldMapState extends State<WorldMap> {
         _planLoading = false;
       });
     }
-    _loadForContext();
+    _loadForContext(debounceFit: true);
   }
 
   /// Load the pins for the active map context. A selected course shows that
@@ -293,14 +318,14 @@ class _WorldMapState extends State<WorldMap> {
   /// viewport-bounded set via the bbox endpoint — that needs camera bounds, so
   /// the World load runs from [_loadWorldPins] (here when the camera is ready,
   /// and from onMapReady / onPositionChanged).
-  Future<void> _loadForContext() async {
+  Future<void> _loadForContext({bool debounceFit = false}) async {
     final mapContext = MapContextController.notifier.value;
     if (mapContext is CourseMapContext) {
       try {
         final pins = await QuestRepo.questPins(mapContext.coursePlanId);
         if (!mounted) return;
         setState(() => _pins = pins);
-        _fitToContext();
+        _fitToContext(debounce: debounceFit);
       } catch (_) {
         // Map stays usable without activity pins.
       }
@@ -407,11 +432,13 @@ class _WorldMapState extends State<WorldMap> {
   }
 
   /// Fly to a search result and open its preview (the Maps-style result tap).
+  /// A deliberate tap glides immediately and wins over any pending context fit.
   void _flyTo(QuestActivityCard card) {
     final point = card.point;
     if (point != null) {
+      _fitDebounce?.cancel();
       try {
-        _controller.fitCamera(
+        _animateFit(
           CameraFit.coordinates(
             coordinates: [point],
             padding: EdgeInsets.fromLTRB(
@@ -477,8 +504,21 @@ class _WorldMapState extends State<WorldMap> {
   /// the left column and detail panel don't cover. A specifically-focused
   /// target centers on itself (keeping the current zoom); a course fits all
   /// its activities. Returning to World keeps the current view rather than
-  /// yanking the camera.
-  void _fitToContext() {
+  /// yanking the camera. The move is an animated glide ([_animateFit]).
+  ///
+  /// [debounce]: when re-scoping by clicking through courses, wait until the
+  /// user settles (~2s) before gliding, so the camera doesn't snap on every hop.
+  /// Direct moves (a panel opening, a search-result tap) pass `false`.
+  void _fitToContext({bool debounce = false}) {
+    _fitDebounce?.cancel();
+    if (!debounce) {
+      _runFitToContext();
+      return;
+    }
+    _fitDebounce = Timer(_fitSettleDelay, _runFitToContext);
+  }
+
+  void _runFitToContext() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       try {
@@ -496,7 +536,7 @@ class _WorldMapState extends State<WorldMap> {
         // focus kinds resolve in [_focusPoint].
         final point = _focusPoint(widget.focus);
         if (point != null) {
-          _controller.fitCamera(
+          _animateFit(
             CameraFit.coordinates(
               coordinates: [point],
               padding: padding,
@@ -510,7 +550,7 @@ class _WorldMapState extends State<WorldMap> {
         if (MapContextController.notifier.value is! CourseMapContext) return;
         final points = _pins.map((c) => c.point).whereType<LatLng>().toList();
         if (points.isEmpty) return;
-        _controller.fitCamera(
+        _animateFit(
           CameraFit.bounds(
             bounds: LatLngBounds.fromPoints(points),
             padding: padding,
@@ -521,6 +561,49 @@ class _WorldMapState extends State<WorldMap> {
         // Controller/camera not ready yet; the next change will refit.
       }
     });
+  }
+
+  /// Glide the camera to where [fit] would place it (instead of snapping via
+  /// `fitCamera`). [CameraFit.fit] resolves the target center+zoom without
+  /// moving; we tween to it.
+  void _animateFit(CameraFit fit) {
+    final target = fit.fit(_controller.camera);
+    _animateCameraTo(target.center, target.zoom);
+  }
+
+  /// Tween the camera center + zoom over [_camGlideDuration]. Re-targets cleanly
+  /// if called mid-flight (the glide restarts from the current position).
+  void _animateCameraTo(LatLng center, double zoom) {
+    final anim = _camAnim;
+    if (anim == null || !mounted) {
+      try {
+        _controller.move(center, zoom);
+      } catch (_) {}
+      return;
+    }
+    _camStart = _controller.camera.center;
+    _camStartZoom = _controller.camera.zoom;
+    _camTarget = center;
+    _camTargetZoom = zoom;
+    anim
+      ..reset()
+      ..forward();
+  }
+
+  void _onCamGlideTick() {
+    final start = _camStart;
+    final end = _camTarget;
+    final curve = _camCurve;
+    if (start == null || end == null || curve == null) return;
+    final t = curve.value;
+    final lat = start.latitude + (end.latitude - start.latitude) * t;
+    final lng = start.longitude + (end.longitude - start.longitude) * t;
+    final zoom = _camStartZoom + (_camTargetZoom - _camStartZoom) * t;
+    try {
+      _controller.move(LatLng(lat, lng), zoom);
+    } catch (_) {
+      // Camera not ready / disposed mid-tick.
+    }
   }
 
   /// Open the activity detail in-place, preserving the current route (course
