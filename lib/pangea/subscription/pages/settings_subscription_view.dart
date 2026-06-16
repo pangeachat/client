@@ -18,8 +18,7 @@ class SettingsSubscriptionView extends StatelessWidget {
         SubscriptionManagementRepo.getClickedCancelSubscription();
 
     final hasFreeTrial = controller.hasFreeTrial;
-    final sub = controller.subscriptionController;
-    final showGatedContent = sub.showSubscriptionGatedContent;
+    final showGatedContent = controller.showGatedContent;
 
     return Scaffold(
       appBar: AppBar(
@@ -31,7 +30,7 @@ class SettingsSubscriptionView extends StatelessWidget {
         child: MaxWidthBody(
           child: Column(
             children: [
-              if (sub.loading)
+              if (controller.loading)
                 const Center(child: CircularProgressIndicator.adaptive())
               else if (showGatedContent && !controller.showManagementOptions)
                 ManagementNotAvailableWarning(controller: controller)
@@ -119,8 +118,7 @@ class SettingsSubscriptionView extends StatelessWidget {
                 ),
               ],
               if (hasFreeTrial) ...[Divider(), SizedBox(height: 16.0)],
-              if (!showGatedContent || hasFreeTrial)
-                ChangeSubscription(controller: controller),
+              if (!showGatedContent || hasFreeTrial) ChangeSubscription(),
             ],
           ),
         ),

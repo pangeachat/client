@@ -2,16 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
-import 'package:fluffychat/pangea/subscription/models/subscription_details.dart';
 import 'package:fluffychat/pangea/subscription/models/subscription_state.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription_view.dart';
 import 'package:fluffychat/pangea/subscription/repo/subscription_management_repo.dart';
@@ -31,9 +28,7 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
   final SubscriptionController subscriptionController =
       MatrixState.pangeaController.subscriptionController;
 
-  SubscriptionDetails? selectedSubscription;
-  bool loading = false;
-  String? userEmail;
+  String? _userEmail;
 
   @override
   void initState() {
@@ -50,7 +45,7 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
 
     MatrixState.pangeaController.userController.userEmail.then((email) {
       if (mounted) {
-        setState(() => userEmail = email);
+        setState(() => _userEmail = email);
       }
     });
     super.initState();
@@ -72,8 +67,10 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
     super.didChangeAppLifecycleState(state);
   }
 
-  List<SubscriptionDetails> get availableSubscriptions =>
-      subscriptionController.availableSubscriptions;
+  bool get loading => subscriptionController.loading;
+
+  bool get showGatedContent =>
+      subscriptionController.showSubscriptionGatedContent;
 
   bool get hasFreeTrial =>
       subscriptionController.hasPromotionalSubscription &&
@@ -81,10 +78,6 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
 
   bool get currentSubscriptionAvailable =>
       subscriptionController.subscription != null;
-
-  bool get currentSubscriptionIsTrial =>
-      currentSubscriptionAvailable &&
-      (subscriptionController.subscription?.isTrial ?? false);
 
   bool get isLifetimeSubscription =>
       subscriptionController.hasPromotionalSubscription &&
@@ -133,15 +126,17 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
     _ => null,
   };
 
-  DateTime? get unsubscribeDetectedAt => switch (subscriptionController.state) {
-    SubscriptionActive(unsubscribeDetectedAt: final detected) => detected,
-    _ => null,
-  };
+  DateTime? get _unsubscribeDetectedAt =>
+      switch (subscriptionController.state) {
+        SubscriptionActive(unsubscribeDetectedAt: final detected) => detected,
+        _ => null,
+      };
 
   DateTime? get subscriptionEndDate =>
-      unsubscribeDetectedAt == null ? null : expirationDate;
+      _unsubscribeDetectedAt == null ? null : expirationDate;
 
   void _onSubscriptionUpdate() => setState(() {});
+
   void _onSubscribe() => showSubscribedSnackbar(context);
 
   Future<void> _refreshSubscription() async {
@@ -170,29 +165,6 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
     if (DateTime.now().difference(clickedCancel).inMinutes >= 10) {
       SubscriptionManagementRepo.removeClickedCancelSubscription();
       if (mounted) setState(() {});
-    }
-  }
-
-  Future<void> submitChange(SubscriptionDetails subscription) async {
-    setState(() => loading = true);
-    try {
-      await subscriptionController.submitSubscriptionChange(
-        subscription,
-        context,
-      );
-    } catch (e, s) {
-      if (e is PlatformException &&
-          e.message?.contains("Purchase was cancelled") == true) {
-        return;
-      }
-
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"subscription_id": subscription.id},
-      );
-    } finally {
-      if (mounted) setState(() => loading = false);
     }
   }
 
@@ -231,8 +203,8 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
 
   Future<Uri?> launchMangementUrl(ManagementOption option) async {
     String managementUrl = Environment.stripeManagementUrl;
-    if (userEmail != null) {
-      managementUrl += "?prefilled_email=${Uri.encodeComponent(userEmail!)}";
+    if (_userEmail != null) {
+      managementUrl += "?prefilled_email=${Uri.encodeComponent(_userEmail!)}";
     }
     final String? purchaseAppId = subscriptionController.subscription?.appId;
     if (purchaseAppId == null) return null;
@@ -264,17 +236,6 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
         return uri;
     }
   }
-
-  void selectSubscription(SubscriptionDetails? subscription) {
-    if (selectedSubscription == subscription) {
-      setState(() => selectedSubscription = null);
-      return;
-    }
-    setState(() => selectedSubscription = subscription);
-  }
-
-  bool isCurrentSubscription(SubscriptionDetails subscription) =>
-      subscriptionController.subscription == subscription;
 
   @override
   Widget build(BuildContext context) => SettingsSubscriptionView(this);

@@ -47,7 +47,7 @@ class SubscriptionController with ChangeNotifier {
   bool get loading => _state is SubscriptionLoading;
 
   bool get showSubscriptionGatedContent => switch (_state) {
-    SubscriptionInactive() => _inTrialWindow,
+    SubscriptionInactive() => inTrialWindow,
     _ => true,
   };
 
@@ -59,7 +59,7 @@ class SubscriptionController with ChangeNotifier {
           : SubscriptionStatus.dimissedPaywall,
   };
 
-  bool get _inTrialWindow =>
+  bool get inTrialWindow =>
       MatrixState.pangeaController.userController.inTrialWindow();
 
   bool get shouldShowPaywall => switch (_state) {
@@ -142,7 +142,7 @@ class SubscriptionController with ChangeNotifier {
       await _setAvailableSubscriptions();
       await updateCurrentSubscription();
 
-      if (_subscriptionId == null && _inTrialWindow) {
+      if (_subscriptionId == null && inTrialWindow) {
         await activateNewUserTrial();
       }
 
