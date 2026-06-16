@@ -88,7 +88,7 @@ class _ActivitySummaryStatusSection extends StatelessWidget {
         vertical: 16.0,
       ),
       child: Column(
-        spacing: status == ActivitySummaryStatus.completed ? 12.0 : 0,
+        spacing: 12.0,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
