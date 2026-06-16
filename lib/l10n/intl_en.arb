@@ -4885,5 +4885,13 @@
     "waitingForBotToJoinActivity": "Waiting for bot to join...",
     "announcementsChatDetails": "A place for course admins to create announcements for course participants. While all may view this channel, only admins can type in it.",
     "introChatDesc": "Anyone in the course can post.",
-    "announcementsChatDesc": "Only course admins can post."
+    "announcementsChatDesc": "Only course admins can post.",
+    "mapSearchHint": "Search activities",
+    "mapSearchNoResults": "No matches in view",
+    "mapFilterAllLanguages": "All languages",
+    "mapFilterNotStarted": "Not started",
+    "mapFilterInProgress": "In progress",
+    "mapFilterCompleted": "Completed",
+    "mapFilterReset": "Reset",
+    "mapEmptyInView": "Nothing here at your level or language. Widen your filters or zoom out."
 }
