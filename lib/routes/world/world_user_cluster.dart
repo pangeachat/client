@@ -12,6 +12,7 @@ import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/routes/world/analytics_panel_controller.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -111,17 +112,12 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
     });
   }
 
-  /// Open the right-docked analytics panel over the current route, preserving
-  /// every other param (mirrors the `?activity=` open). Drops any open detail
-  /// (`?construct`) so switching trackers always lands on the new tab's summary
-  /// — a leftover construct could otherwise render under a mismatched tab.
-  void _openAnalytics(AnalyticsPanelTab tab) {
-    final uri = GoRouter.of(context).routeInformationProvider.value.uri;
-    final params = Map<String, String>.from(uri.queryParameters)
-      ..['analytics'] = tab.queryValue
-      ..remove('construct');
-    context.go(uri.replace(queryParameters: params).toString());
-  }
+  /// Open the right-docked analytics panel on [tab]'s summary. App-state, not a
+  /// route, so it survives left-content navigation (see
+  /// [AnalyticsPanelController]). Switching trackers lands on the new tab's
+  /// summary (any open construct detail is cleared by `open`).
+  void _openAnalytics(AnalyticsPanelTab tab) =>
+      AnalyticsPanelController.open(tab);
 
   void _openProfile() => context.go(PRoutes.profile);
 

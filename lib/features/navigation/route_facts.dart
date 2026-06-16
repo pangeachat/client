@@ -1,8 +1,5 @@
-import 'dart:convert';
-
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
@@ -53,46 +50,11 @@ class ActivityFocus extends MapFocus {
 //   class ObjectFocus  extends MapFocus { final String objectId; ... }
 // Add the subclass, then one arm to the map's focus switch. Nothing else.
 
-/// The learning-analytics view the top-right cluster opens, docked on the right
-/// over the map via the `?analytics=<tab>` query param. A right-side overlay
-/// (parallel to the left-anchored `?activity=` detail), so it coexists with the
-/// map-hole world view rather than consuming the canvas. See
-/// `world-user-cluster.instructions.md`.
-enum AnalyticsPanelTab {
-  sessions,
-  grammar,
-  vocab;
-
-  String get queryValue => name;
-
-  static AnalyticsPanelTab? fromQuery(String? value) {
-    for (final tab in AnalyticsPanelTab.values) {
-      if (tab.name == value) return tab;
-    }
-    return null;
-  }
-}
-
-/// The analytics panel an open route addresses (`?analytics=<tab>`), else null.
-AnalyticsPanelTab? analyticsFor(GoRouterState state) =>
-    AnalyticsPanelTab.fromQuery(state.uri.queryParameters['analytics']);
-
-/// The vocab/grammar construct whose **detail** is open inside the analytics
-/// panel (`?construct=<json>`), else null. The detail renders as a card to the
-/// LEFT of the pinned summary; the summary stays put. See
-/// `world-user-cluster.instructions.md`. Activities have no construct — their
-/// "detail" is the session chat room, opened in the left zone instead.
-ConstructIdentifier? analyticsConstructFor(GoRouterState state) {
-  final raw = state.uri.queryParameters['construct'];
-  if (raw == null || raw.isEmpty) return null;
-  try {
-    return ConstructIdentifier.fromJson(
-      jsonDecode(raw) as Map<String, dynamic>,
-    );
-  } catch (_) {
-    return null;
-  }
-}
+/// The learning-analytics view the top-right cluster opens in the right-docked
+/// panel. The panel is **app-state, not a route** ([AnalyticsPanelController]):
+/// it's a persistent personal companion, so navigating the left content must
+/// not close it. See `world-user-cluster.instructions.md`.
+enum AnalyticsPanelTab { sessions, grammar, vocab }
 
 /// Section roots that render as a map hole **in column mode** (their content
 /// moves to the left column). In narrow mode they fill the screen instead.

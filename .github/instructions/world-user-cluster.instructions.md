@@ -52,13 +52,22 @@ Use `derivedData` (local, from totalXP) for level — **not** the public-profile
 `AnalyticsProfileModel.level`, which can lag. The Sessions count must match what
 the `sessions` panel shows (both `archivedActivities`).
 
-## Routing — `?analytics=<tab>` overlay
+## State — the panel is app-state, not a route
 
-`AnalyticsPanelTab { vocab, grammar, sessions }` lives in `route_facts.dart`.
+`AnalyticsPanelTab { vocab, grammar, sessions }` lives in `route_facts.dart`; the
+open panel (tab + optional construct detail) lives in **`AnalyticsPanelController`**
+— a `ValueNotifier<AnalyticsPanelState?>`, **deliberately not in the URL**.
 
-- `analyticsFor(GoRouterState)` → `AnalyticsPanelTab?` from `?analytics=`.
-- Opening preserves the underlying route: `context.go(uri + {analytics: tab})`.
-  Closing drops only `analytics` (mirrors `ActivityDetailPanel._close`).
+- **Why not a query param.** A `?analytics=`/`?construct=` overlay is dropped by
+  every left-side `context.go(...)` (nav rail, a chat, a course, a map pin) that
+  doesn't carry it forward — so clicking anything on the left closed the panel.
+  The panel is a *persistent personal companion* (interact with your stuff while
+  you work), so it's app-state that navigation never touches. (The activity
+  detail stays URL-routed — a focused task, fine to drop on nav.)
+- The shell subscribes via `ValueListenableBuilder` on
+  `AnalyticsPanelController.notifier`; the cluster opens it (`open(tab)`); the
+  panel's close button calls `close()`. Trade-off: the panel is not
+  URL-deep-linkable (fine for a transient overlay).
 - **Independent overlay, not a `canvasFor` change.** The activity detail is
   *left-anchored* (after the column); the Figma analytics card is *right-anchored*
   over the map. So the panel is a separate right-docked `Positioned` child in the
@@ -84,39 +93,52 @@ the RTL "personal stuff" pattern: the anchor (cluster + summary) is on the right
 so detail blooms left into the open canvas. No deeper drill (one detail level).
 
 - **One chokepoint.** All three item clicks funnel through
-  `AnalyticsNavigationUtil.navigateToAnalytics`. When `?analytics=` is present
-  (we're in the panel) it branches to the new system instead of the old
-  `/rooms/analytics/...` pages: vocab/grammar add `?construct=<json>` (the
-  selected `ConstructIdentifier`); an **activity opens its session chat** via
-  `PRoutes.room` (the activity "detail" *is* a chat → left-zone content).
-  Outside the panel (chat word-cards, banners) the old behavior is untouched.
-- `analyticsConstructFor(state)` decodes `?construct=`. The panel renders the
-  detail as `ConstructAnalyticsView(view: <tab's type>, construct: id,
-  embedded: true)` (reuses `VocabDetailsView`/`MorphDetailsView`; the embedded
-  flag also suppresses that view's internal close AppBar). The summary card is a
-  second `ConstructAnalyticsView`/`ActivityArchive` with no construct.
-- The detail card's header has a **back** arrow that drops only `?construct`
-  (return to summary); the summary's **close** drops `?analytics` (+`construct`).
-- Switching trackers (`WorldUserCluster._openAnalytics`) drops `?construct` so a
-  leftover detail never renders under a mismatched tab.
+  `AnalyticsNavigationUtil.navigateToAnalytics`. When `AnalyticsPanelController.isOpen`
+  it branches to the new system instead of the old `/rooms/analytics/...` pages:
+  vocab/grammar call `openConstruct(tab, id)` (sets the tab + the selected
+  `ConstructIdentifier` on the controller); an **activity opens its session
+  chat** via `PRoutes.room` (the activity "detail" *is* a chat → left-zone
+  content). Outside the panel (chat word-cards, banners) the old behavior is
+  untouched.
+- The panel renders the detail as `ConstructAnalyticsView(view: <tab's type>,
+  construct: id, embedded: true)` (reuses `VocabDetailsView`/`MorphDetailsView`;
+  the embedded flag also suppresses that view's internal close AppBar). The
+  summary card is a second `ConstructAnalyticsView`/`ActivityArchive` with no
+  construct.
+- The detail card's header has a **back** arrow → `clearConstruct()` (return to
+  summary); the summary's **close** → `close()` (whole panel). Switching trackers
+  (`open(tab)`) clears any open construct so a leftover detail never renders under
+  a mismatched tab.
 - The right zone widens to two cards when a detail is open
-  (`_analyticsPanelMaxWidth * 2 + gap`); narrow mode shows one card and the
+  (`analyticsCardMax * 2 + gap`); a full-bleed panel shows one card and the
   detail's back returns to the summary.
 
-## Shell mounting (`two_column_layout.dart`)
+## Shell layout — one budget, no overlap (`ShellLayout`)
 
-Add two `Positioned` children **after** `SpaceNavigationColumn` (z-order on top
-of the map): `… , WorldAnalyticsPanel (when open), WorldUserCluster`.
+The shell has a **single layout authority**: `ShellLayout.resolve(...)` (pure,
+unit-tested — `shell_layout_test.dart`) computes one width budget that tiles
+every floating zone over the persistent map so they **cannot overlap by
+construction**. `TwoColumnLayout` reads it and places its `Positioned` children;
+no zone computes its own width anymore. (The old bug: each zone — detail, panel —
+sized itself independently and they collided; the detail didn't reserve the
+panel's footprint.)
 
-- Cluster: `Positioned(top: 12 + safeTop, right: 12 + safeRight)`, a **vertical**
-  column (avatar over a vertical trackers pill). Hidden on a `fullBleed` canvas,
-  and (narrow mode) while the panel is open.
-- Panel (column mode): a right-docked card **inset from the right edge by
-  `_clusterGutter` (~88px)** so the vertical cluster sits in that gutter *beside*
-  the panel — over the map — instead of covering the page (Figma `12731-427330`:
-  the cards leave a right gutter for the cluster; the map shows below it). Card
-  `width = min(488, available − gutter)`; the zone holds two cards when a detail
-  is open. Narrow mode → full-bleed page (`right: 0`), cluster hidden.
+- Inputs: viewport, column/narrow, the left inset (rail + column), the canvas
+  mode, and the open panel. Outputs: `leftInset`, `rightInset`, `detailWidth`
+  (**bounded by both insets**, so the detail can't slide under the panel),
+  `analyticsMode`, `clusterVisible`, and the map's left/right camera padding.
+- **Tokens live in `ShellLayout`** (`detailMax` 720, `analyticsCardMax` 488,
+  `clusterGutter` 88, `minCenter` 360) — the single source for these widths.
+- **`AnalyticsPanelMode`** decides how the panel renders:
+  - `dockedCard` — inset from the right by `clusterGutter`; the detail is bounded
+    to its left and the vertical cluster sits in the gutter beside it (Figma
+    `12731-427330`). Two cards when a construct detail is open.
+  - `fullBleed` — a Slide-Over covering the content area, used on narrow screens
+    **and** in column mode when there's no room to tile (an opaque center would
+    drop below `minCenter`); the cluster hides.
+  - `none` — closed, or suppressed on a full-bleed canvas (the add-course hub).
+- Cluster: `Positioned(top:12+safe, right:12+safe)`, a vertical column (avatar
+  over the trackers pill), shown only when `ShellLayout.clusterVisible`.
 
 ## Theming
 
@@ -133,13 +155,16 @@ panel bg. Icons (`material_symbols_icons`): `Symbols.dictionary` (vocab),
 `worldLevelBadge` ({level}), and reuse existing `close`/analytics titles where
 present. Never hardcode UI strings.
 
-## Responsive
+## Responsive (all resolved by `ShellLayout`, never overlapping)
 
-- **Column** (`FluffyThemes.isColumnMode`): the vertical cluster sits in the
-  right gutter; the panel (one card, or detail + summary) docks to its left.
-  Both visible together (verified at 1568px and ~977px).
-- **Narrow**: pages are **full-width** and the cluster is hidden while a page is
-  open, so the vertical cluster never overlaps a full-width page.
+- **Wide column**: zones tile — `[rail | left column | center/detail | analytics
+  card | cluster gutter]`. The detail is bounded by the right inset; the vertical
+  cluster sits in the gutter beside the card.
+- **Tight column** (opaque center can't keep `minCenter` next to the panel, e.g.
+  a course chat + panel below ~1350px): the panel becomes a **full-bleed
+  Slide-Over** over the content; cluster hides. No overlap.
+- **Narrow**: pages are full-width; the panel is a full-bleed Slide-Over; the
+  cluster hides while it's open.
 
 ## Testing
 

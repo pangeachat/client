@@ -2,35 +2,40 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
-
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
-
-/// Max width of a single analytics card (summary or detail) in column mode.
-const double _cardMaxWidth = 488.0;
+import 'package:fluffychat/routes/world/analytics_panel_controller.dart';
+import 'package:fluffychat/widgets/layouts/shell_layout.dart';
 
 /// The learning-analytics overlay docked on the right over the persistent map
-/// (world_v2), opened by the top-right cluster's trackers via `?analytics=<tab>`.
-/// The summary card is pinned on the right; when a vocab/grammar item is opened
-/// (`?construct=`), its **detail** card blooms to the LEFT of the summary (the
-/// summary never moves) — the RTL "personal stuff" pattern. Hosts the existing
-/// analytics widgets unchanged. Closing the detail drops `?construct`; closing
-/// the panel drops `?analytics` (+ `?construct`). The close/back affordances sit
+/// (world_v2), opened by the top-right cluster's trackers. Driven by
+/// [AnalyticsPanelController] (app-state, not the URL) so left-content
+/// navigation never closes it. The summary card is pinned on the right; when a
+/// vocab/grammar item is opened, its **detail** card blooms to the LEFT of the
+/// summary (the summary never moves) — the RTL "personal stuff" pattern. Hosts
+/// the existing analytics widgets unchanged. The close/back affordances sit
 /// top-left so they never collide with the cluster pinned top-right.
 class WorldAnalyticsPanel extends StatelessWidget {
   final AnalyticsPanelTab tab;
 
-  /// The vocab/grammar construct whose detail is open, if any (`?construct=`).
+  /// The vocab/grammar construct whose detail is open, if any.
   final ConstructIdentifier? construct;
 
-  const WorldAnalyticsPanel({super.key, required this.tab, this.construct});
+  /// Render full-bleed (Slide-Over) rather than as a docked card — the shell's
+  /// [ShellLayout] decides this (narrow screens, or no room to tile).
+  final bool fullBleed;
+
+  const WorldAnalyticsPanel({
+    super.key,
+    required this.tab,
+    this.construct,
+    this.fullBleed = false,
+  });
 
   ConstructTypeEnum? get _detailType {
     switch (tab) {
@@ -45,24 +50,9 @@ class WorldAnalyticsPanel extends StatelessWidget {
 
   bool get _detailOpen => construct != null && _detailType != null;
 
-  /// Drop the given query params; if none remain, fall back to the bare path.
-  void _drop(BuildContext context, List<String> keys) {
-    final uri = GoRouter.of(context).routeInformationProvider.value.uri;
-    final params = Map<String, String>.from(uri.queryParameters);
-    for (final k in keys) {
-      params.remove(k);
-    }
-    if (params.isEmpty) {
-      context.go(uri.path.isEmpty ? '/' : uri.path);
-      return;
-    }
-    context.go(uri.replace(queryParameters: params).toString());
-  }
+  void _closePanel() => AnalyticsPanelController.close();
 
-  void _closePanel(BuildContext context) =>
-      _drop(context, ['analytics', 'construct']);
-
-  void _closeDetail(BuildContext context) => _drop(context, ['construct']);
+  void _closeDetail() => AnalyticsPanelController.clearConstruct();
 
   String _summaryTitle(BuildContext context) {
     final l10n = L10n.of(context);
@@ -141,14 +131,13 @@ class WorldAnalyticsPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isColumn = FluffyThemes.isColumnMode(context);
 
     final summaryBody = _body(
       header: _header(
         context,
         icon: Icons.close,
         tooltip: L10n.of(context).close,
-        onPressed: () => _closePanel(context),
+        onPressed: _closePanel,
         title: _summaryTitle(context),
       ),
       child: _summaryContent(),
@@ -160,29 +149,31 @@ class WorldAnalyticsPanel extends StatelessWidget {
               context,
               icon: Icons.arrow_back,
               tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-              onPressed: () => _closeDetail(context),
+              onPressed: _closeDetail,
               title: construct!.lemma,
             ),
             child: _detailContent(),
           )
         : null;
 
-    if (!isColumn) {
-      // Narrow: one card full-bleed. The detail (when open) replaces the
-      // summary; its back arrow returns to the summary.
+    if (fullBleed) {
+      // No room to tile (or narrow): one card fills the content area as a
+      // Slide-Over. The detail (when open) replaces the summary; its back arrow
+      // returns to the summary.
       return Material(
         color: theme.colorScheme.surface,
         child: SafeArea(child: detailBody ?? summaryBody),
       );
     }
 
-    // Column mode: cards float over the map. Summary pinned right; the detail
-    // blooms to its left into the open canvas.
+    // Docked: cards float over the map. Summary pinned right; the detail blooms
+    // to its left into the open canvas.
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 12, 12, 12),
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final summaryW = math.min(_cardMaxWidth, constraints.maxWidth);
+          final summaryW =
+              math.min(ShellLayout.analyticsCardMax, constraints.maxWidth);
           return Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
