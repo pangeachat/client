@@ -120,6 +120,7 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
           child: widget.roomsChunks.isNotEmpty
               ? Column(
                   spacing: 8.0,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     SizedBox(),
                     if (selectableRooms.length > 1) ...[
@@ -141,7 +142,7 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
                       ),
                       Divider(height: 1),
                     ],
-                    Expanded(
+                    Flexible(
                       child: SingleChildScrollView(
                         child: Column(
                           spacing: 8.0,

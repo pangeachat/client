@@ -49,10 +49,8 @@ jobs:
           ./scripts/add-firebase-messaging.sh
       - name: Update env files to selected environment
         run: |
-          rm .env
-          rm assets/.env
-          echo "$WEB_APP_ENV" >> .env
-          cp .env assets/.env
+          rm -f .env
+          echo "$WEB_APP_ENV" > .env
           touch assets/envs.json
           echo "$ENV_OVERRIDES" >> assets/envs.json
       - name: Apply .env patch

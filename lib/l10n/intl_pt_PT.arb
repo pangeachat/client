@@ -2776,7 +2776,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-06-11 10:21:58.943480",
+    "@@last_modified": "2026-06-15 09:46:30.878986",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10901,6 +10901,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Ações de atividade",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

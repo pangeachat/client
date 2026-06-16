@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-06-11 10:21:28.324305",
+    "@@last_modified": "2026-06-15 09:46:17.006808",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10309,6 +10309,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Akcije aktivnosti",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

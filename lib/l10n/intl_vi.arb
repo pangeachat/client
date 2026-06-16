@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-11 10:22:37.033359",
+    "@@last_modified": "2026-06-15 09:46:38.131460",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6908,6 +6908,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Hành động hoạt động",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

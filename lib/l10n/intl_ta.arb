@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-11 10:22:40.199990",
+    "@@last_modified": "2026-06-15 09:46:38.844798",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9941,6 +9941,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "செயல்பாட்டு நடவடிக்கைகள்",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }
