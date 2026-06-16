@@ -43,10 +43,13 @@ class _UserHomePageState extends State<UserHomePage> {
   @override
   void initState() {
     super.initState();
+
     _viewModel = LearningSettingsViewModel(
       MatrixState.pangeaController.userController.profile,
       onUpdateProfile: _updateProfile,
     );
+
+    _aboutTextController.text = _viewModel.about ?? '';
   }
 
   @override

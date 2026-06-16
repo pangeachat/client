@@ -1,17 +1,13 @@
 diff --git a/pubspec.yaml b/pubspec.yaml
-index d57765b2f..6b4bec0d4 100644
+index b8c9ed9e7..719897df7 100644
 --- a/pubspec.yaml
 +++ b/pubspec.yaml
-@@ -168,10 +168,8 @@ flutter:
-   assets:
-     - assets/
-     # #Pangea
--    # uncomment this to enable mobile builds
--    # causes error with github actions
+@@ -162,7 +162,7 @@ flutter:
+     # It must stay commented on main: .env is gitignored, and a declared but
+     # missing asset fails the build. Web doesn't bundle .env at all — it is
+     # fetched from the web root at runtime (see lib/pangea/common/config/env_loader.dart).
 -    # - .env
--    # - assets/.env
 +    - .env
-+    - assets/.env
      - assets/pangea/
      - assets/pangea/bot_faces/
      # Pangea#

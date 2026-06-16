@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-11 10:23:04.790142",
+    "@@last_modified": "2026-06-15 09:46:49.938147",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10839,6 +10839,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Действия активности",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

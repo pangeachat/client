@@ -80,7 +80,11 @@ class CourseInfoSummariesModel extends RoomSummariesModel {
   ) {
     final Map<String, List<User>> topicUserMap = {};
     for (final user in users) {
-      if (user.id == BotName.byEnvironment) continue;
+      if (user.id == BotName.byEnvironment ||
+          user.membership != Membership.join) {
+        continue;
+      }
+
       final topicId = currentTopicIdByUser(user.id, course);
       if (topicId != null) {
         topicUserMap.putIfAbsent(topicId, () => []).add(user);

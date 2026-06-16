@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-06-11 10:22:44.758053",
+    "@@last_modified": "2026-06-15 09:46:41.744196",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9825,6 +9825,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "活动操作",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

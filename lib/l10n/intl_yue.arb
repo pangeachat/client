@@ -1406,7 +1406,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-06-11 10:21:44.203850",
+    "@@last_modified": "2026-06-15 09:46:24.607991",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10956,6 +10956,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "活動行動",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

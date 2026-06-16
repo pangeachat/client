@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-11 10:23:09.636774",
+    "@@last_modified": "2026-06-15 09:46:51.550200",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10948,6 +10948,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Akcije aktivnosti",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

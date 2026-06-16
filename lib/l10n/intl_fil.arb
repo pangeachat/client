@@ -2257,7 +2257,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-06-11 10:22:03.955712",
+    "@@last_modified": "2026-06-15 09:46:33.535019",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10844,6 +10844,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Mga aksyon sa aktibidad",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

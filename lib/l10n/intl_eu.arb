@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-11 10:21:36.182405",
+    "@@last_modified": "2026-06-15 09:46:21.110425",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9825,6 +9825,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Jarduera ekintzak",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

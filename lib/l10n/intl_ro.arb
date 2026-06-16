@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-11 10:21:19.420261",
+    "@@last_modified": "2026-06-15 09:46:14.951393",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10650,6 +10650,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Acțiuni de activitate",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

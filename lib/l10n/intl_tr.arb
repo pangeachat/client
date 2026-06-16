@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-11 10:22:31.311340",
+    "@@last_modified": "2026-06-15 09:46:35.572217",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10156,6 +10156,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Etkinlik eylemleri",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }

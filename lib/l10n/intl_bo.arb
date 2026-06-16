@@ -3193,7 +3193,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-11 10:22:43.183213",
+    "@@last_modified": "2026-06-15 09:46:40.576610",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9497,6 +9497,11 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Aktioner för aktivitet",
+    "@activityActions": {
         "type": "String",
         "placeholders": {}
     }
