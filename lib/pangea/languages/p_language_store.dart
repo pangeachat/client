@@ -120,9 +120,13 @@ class PLanguageStore {
   static LanguageModel? byLangCode(String langCode) =>
       _langList.firstWhereOrNull((element) => element.langCode == langCode);
 
-  static bool hasLocalizedVariants(String langCodeShort) => _langList.any(
-    (lang) => lang.isLocalized && lang.langCodeShort == langCodeShort,
-  );
+  static bool hasLocalizedVariants(String displayName, String langCodeShort) =>
+      _langList.any(
+        (lang) =>
+            lang.isLocalized &&
+            lang.langCodeShort == langCodeShort &&
+            lang.displayName.contains(displayName),
+      );
 }
 
 class _MyShared {
