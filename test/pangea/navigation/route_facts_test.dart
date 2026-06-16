@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 
 void main() {
@@ -67,6 +68,36 @@ void main() {
       expect(isMapHole('/courses', true), isFalse); // full-bleed
       expect(isMapHole('/courses/:spaceid/:roomid', true), isFalse); // detail
       expect(isMapHole('/rooms/:roomid', true), isFalse); // detail
+    });
+  });
+
+  group('shortRoomId / fullRoomId (URL display)', () {
+    const domain = 'local.pangea.chat';
+
+    test('round-trips a home-domain id to a bare localpart', () {
+      const full = '!GLEFhPQklmQQYWYiWc:local.pangea.chat';
+      final short = shortRoomId(full, domain: domain);
+      expect(short, '!GLEFhPQklmQQYWYiWc');
+      expect(fullRoomId(short, domain: domain), full);
+    });
+
+    test('leaves foreign-homeserver ids untouched (federation-safe)', () {
+      const foreign = '!abc:matrix.org';
+      expect(shortRoomId(foreign, domain: domain), foreign);
+      expect(fullRoomId(foreign, domain: domain), foreign);
+    });
+
+    test('fullRoomId is a no-op on an id that already carries a domain', () {
+      expect(
+        fullRoomId('!x:local.pangea.chat', domain: domain),
+        '!x:local.pangea.chat',
+      );
+    });
+
+    test('helpers degrade gracefully when the home domain is unknown', () {
+      // Pre-login / no global: ids pass through unchanged rather than throwing.
+      expect(shortRoomId('!x:local.pangea.chat'), '!x:local.pangea.chat');
+      expect(fullRoomId('!x'), '!x');
     });
   });
 }

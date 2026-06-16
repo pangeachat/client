@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/routes/chat/chat_details/permissions/chat_permissions_settings_view.dart';
@@ -26,7 +27,8 @@ class ChatPermissionsSettingsController extends State<ChatPermissionsSettings> {
   // String? get roomId => GoRouterState.of(context).pathParameters['roomid'];
   String? get roomId {
     final pathParameters = GoRouterState.of(context).pathParameters;
-    return pathParameters['roomid'] ?? pathParameters['spaceid'];
+    final id = pathParameters['roomid'] ?? pathParameters['spaceid'];
+    return id == null ? null : fullRoomId(id);
   }
 
   // Pangea#

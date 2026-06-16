@@ -1,3 +1,5 @@
+import 'package:fluffychat/features/navigation/room_id_url.dart';
+
 /// Canonical route paths for Pangea-owned surfaces (world_v2).
 ///
 /// All navigation goes through these constants and builders — never
@@ -6,6 +8,9 @@
 /// push-notification and matrix.to deep-link handling stay untouched.
 ///
 /// Design doc: `.github/vision/world_v2.md` (workspace root repo).
+///
+/// Room/space ids ride world_v2 URLs as bare localparts (the home server_name
+/// is stripped here and re-attached on read — see room_id_url.dart).
 abstract class PRoutes {
   /// World home — the app opens onto the map. World section root.
   static const String world = '/';
@@ -32,11 +37,11 @@ abstract class PRoutes {
 
   // ---- builders -------------------------------------------------------
 
-  /// One joined course (a Matrix space) — `/courses/:spaceid`.
-  static String course(String spaceId) => '$courses/$spaceId';
+  /// One joined course (a Matrix space) — `/courses/:spaceid` (bare localpart).
+  static String course(String spaceId) => '$courses/${shortRoomId(spaceId)}';
 
-  /// A chat room — `/rooms/:roomid`.
-  static String room(String roomId) => '$rooms/$roomId';
+  /// A chat room — `/rooms/:roomid` (bare localpart).
+  static String room(String roomId) => '$rooms/${shortRoomId(roomId)}';
 
   /// First-class world object (activity for now) — `/<uuid>`.
   static String worldObject(String id) => '/$id';
@@ -54,7 +59,7 @@ abstract class PRoutes {
   }) {
     final params = <String>['activity=$activityId'];
     if (tab != null) params.add('tab=$tab');
-    if (roomId != null) params.add('roomid=$roomId');
+    if (roomId != null) params.add('roomid=${shortRoomId(roomId)}');
     if (launch) params.add('launch=true');
     return '${course(spaceId)}?${params.join('&')}';
   }

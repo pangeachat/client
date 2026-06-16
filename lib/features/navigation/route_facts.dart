@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 
 /// World_v2 routing facts — the single place navigation/layout decisions are
@@ -114,12 +115,16 @@ String? activeSpaceIdFor(Uri uri) {
   final segments = uri.pathSegments;
   if (segments.length < 2 || segments.first != 'courses') return null;
   final second = segments[1];
-  return second.startsWith('!') ? second : null;
+  // URLs carry a bare localpart; re-attach the home server_name for callers
+  // that hit the Matrix client.
+  return second.startsWith('!') ? fullRoomId(second) : null;
 }
 
 /// The active chat/course room id, if the route addresses one.
-String? activeRoomIdFor(GoRouterState state) =>
-    state.pathParameters['roomid'];
+String? activeRoomIdFor(GoRouterState state) {
+  final roomId = state.pathParameters['roomid'];
+  return roomId == null ? null : fullRoomId(roomId);
+}
 
 /// The activity an open route addresses: the in-course overlay (`?activity=`)
 /// or the standalone uuid route (`/:activityId`). Carries the optional session
@@ -128,9 +133,10 @@ String? activeRoomIdFor(GoRouterState state) =>
   final id =
       state.uri.queryParameters['activity'] ?? state.pathParameters['activityId'];
   if (id == null || id.isEmpty) return null;
+  final roomId = state.uri.queryParameters['roomid'];
   return (
     id: id,
-    roomId: state.uri.queryParameters['roomid'],
+    roomId: roomId == null ? null : fullRoomId(roomId),
     launch: state.uri.queryParameters['launch'] == 'true',
   );
 }

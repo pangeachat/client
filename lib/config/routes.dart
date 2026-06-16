@@ -9,6 +9,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/course_plans/new_course_page.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
@@ -286,7 +287,7 @@ abstract class AppRoutes {
                     context,
                     state,
                     ChatPage(
-                      roomId: state.pathParameters['roomid']!,
+                      roomId: fullRoomId(state.pathParameters['roomid']!),
                       eventId: state.uri.queryParameters['event'],
                     ),
                   ),
@@ -333,7 +334,7 @@ abstract class AppRoutes {
                   context,
                   state,
                   ChatPage(
-                    roomId: state.pathParameters['roomid']!,
+                    roomId: fullRoomId(state.pathParameters['roomid']!),
                     shareItems: shareItems,
                     eventId: state.uri.queryParameters['event'],
                   ),
@@ -346,7 +347,7 @@ abstract class AppRoutes {
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    ChatSearchPage(roomId: state.pathParameters['roomid']!),
+                    ChatSearchPage(roomId: fullRoomId(state.pathParameters['roomid']!)),
                   ),
                   redirect: loggedOutRedirect,
                 ),
@@ -368,10 +369,10 @@ abstract class AppRoutes {
                     state,
                     // #Pangea
                     // InvitationSelection(
-                    //   roomId: state.pathParameters['roomid']!,
+                    //   roomId: fullRoomId(state.pathParameters['roomid']!),
                     // ),
                     PangeaInvitationSelection(
-                      roomId: state.pathParameters['roomid']!,
+                      roomId: fullRoomId(state.pathParameters['roomid']!),
                       initialFilter: state.uri.queryParameters['filter'] != null
                           ? InvitationFilter.fromString(
                               state.uri.queryParameters['filter']!,
@@ -387,7 +388,7 @@ abstract class AppRoutes {
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    ChatDetails(roomId: state.pathParameters['roomid']!),
+                    ChatDetails(roomId: fullRoomId(state.pathParameters['roomid']!)),
                   ),
                   // #Pangea
                   routes: roomDetailsRoutes('roomid'),
@@ -398,7 +399,7 @@ abstract class AppRoutes {
                   //       context,
                   //       state,
                   //       ChatAccessSettings(
-                  //         roomId: state.pathParameters['roomid']!,
+                  //         roomId: fullRoomId(state.pathParameters['roomid']!),
                   //       ),
                   //     ),
                   //     redirect: loggedOutRedirect,
@@ -409,7 +410,7 @@ abstract class AppRoutes {
                   //       context,
                   //       state,
                   //       ChatMembersPage(
-                  //         roomId: state.pathParameters['roomid']!,
+                  //         roomId: fullRoomId(state.pathParameters['roomid']!),
                   //       ),
                   //     ),
                   //     redirect: loggedOutRedirect,
@@ -429,7 +430,7 @@ abstract class AppRoutes {
                   //       context,
                   //       state,
                   //       InvitationSelection(
-                  //         roomId: state.pathParameters['roomid']!,
+                  //         roomId: fullRoomId(state.pathParameters['roomid']!),
                   //       ),
                   //     ),
                   //     redirect: loggedOutRedirect,
@@ -541,7 +542,7 @@ abstract class AppRoutes {
                   context,
                   state,
                   PublicCoursePreview(
-                    roomID: state.pathParameters['courseroomid']!,
+                    roomID: fullRoomId(state.pathParameters['courseroomid']!),
                   ),
                 );
               },
@@ -558,7 +559,7 @@ abstract class AppRoutes {
                   context,
                   state,
                   ChatDetails(
-                    roomId: state.pathParameters['spaceid']!,
+                    roomId: fullRoomId(state.pathParameters['spaceid']!),
                     activeTab: state.uri.queryParameters['tab'],
                   ),
                 ),
@@ -591,7 +592,7 @@ abstract class AppRoutes {
                     state,
                     NewCoursePage(
                       route: 'rooms',
-                      spaceId: state.pathParameters['spaceid']!,
+                      spaceId: fullRoomId(state.pathParameters['spaceid']!),
                     ),
                   ),
                   redirect: loggedOutRedirect,
@@ -604,7 +605,7 @@ abstract class AppRoutes {
                         SelectedCourse(
                           state.pathParameters['courseId']!,
                           SelectedCourseMode.addToSpace,
-                          spaceId: state.pathParameters['spaceid']!,
+                          spaceId: fullRoomId(state.pathParameters['spaceid']!),
                         ),
                       ),
                       redirect: loggedOutRedirect,
@@ -626,7 +627,7 @@ abstract class AppRoutes {
                       context,
                       state,
                       ChatPage(
-                        roomId: state.pathParameters['roomid']!,
+                        roomId: fullRoomId(state.pathParameters['roomid']!),
                         shareItems: shareItems,
                         eventId: state.uri.queryParameters['event'],
                       ),
@@ -639,7 +640,7 @@ abstract class AppRoutes {
                       pageBuilder: (context, state) => defaultPageBuilder(
                         context,
                         state,
-                        ChatSearchPage(roomId: state.pathParameters['roomid']!),
+                        ChatSearchPage(roomId: fullRoomId(state.pathParameters['roomid']!)),
                       ),
                       redirect: loggedOutRedirect,
                     ),
@@ -649,7 +650,7 @@ abstract class AppRoutes {
                         context,
                         state,
                         PangeaInvitationSelection(
-                          roomId: state.pathParameters['roomid']!,
+                          roomId: fullRoomId(state.pathParameters['roomid']!),
                           initialFilter:
                               state.uri.queryParameters['filter'] != null
                               ? InvitationFilter.fromString(
@@ -665,7 +666,7 @@ abstract class AppRoutes {
                       pageBuilder: (context, state) => defaultPageBuilder(
                         context,
                         state,
-                        ChatDetails(roomId: state.pathParameters['roomid']!),
+                        ChatDetails(roomId: fullRoomId(state.pathParameters['roomid']!)),
                       ),
                       routes: roomDetailsRoutes('roomid'),
                       redirect: loggedOutRedirect,
@@ -814,7 +815,7 @@ abstract class AppRoutes {
                     context,
                     state,
                     ChatPage(
-                      roomId: state.pathParameters['roomid']!,
+                      roomId: fullRoomId(state.pathParameters['roomid']!),
                       eventId: state.uri.queryParameters['event'],
                       backButton: BackButton(
                         onPressed: () {
@@ -1092,7 +1093,7 @@ abstract class AppRoutes {
       pageBuilder: (context, state) => defaultPageBuilder(
         context,
         state,
-        EditCourse(roomId: state.pathParameters[roomKey]!),
+        EditCourse(roomId: fullRoomId(state.pathParameters[roomKey]!)),
       ),
     ),
     GoRoute(
@@ -1101,7 +1102,7 @@ abstract class AppRoutes {
       pageBuilder: (context, state) => defaultPageBuilder(
         context,
         state,
-        SpaceAnalytics(roomId: state.pathParameters[roomKey]!),
+        SpaceAnalytics(roomId: fullRoomId(state.pathParameters[roomKey]!)),
       ),
     ),
     GoRoute(
@@ -1109,7 +1110,7 @@ abstract class AppRoutes {
       pageBuilder: (context, state) => defaultPageBuilder(
         context,
         state,
-        ChatAccessSettings(roomId: state.pathParameters[roomKey]!),
+        ChatAccessSettings(roomId: fullRoomId(state.pathParameters[roomKey]!)),
       ),
       redirect: loggedOutRedirect,
     ),
@@ -1125,7 +1126,7 @@ abstract class AppRoutes {
         context,
         state,
         PangeaInvitationSelection(
-          roomId: state.pathParameters[roomKey]!,
+          roomId: fullRoomId(state.pathParameters[roomKey]!),
           initialFilter: state.uri.queryParameters['filter'] != null
               ? InvitationFilter.fromString(
                   state.uri.queryParameters['filter']!,
@@ -1140,7 +1141,7 @@ abstract class AppRoutes {
       pageBuilder: (context, state) => defaultPageBuilder(
         context,
         state,
-        EmotesSettings(roomId: state.pathParameters[roomKey]!),
+        EmotesSettings(roomId: fullRoomId(state.pathParameters[roomKey]!)),
       ),
       redirect: loggedOutRedirect,
     ),
@@ -1149,7 +1150,7 @@ abstract class AppRoutes {
       pageBuilder: (context, state) => defaultPageBuilder(
         context,
         state,
-        EmotesSettings(roomId: state.pathParameters[roomKey]!),
+        EmotesSettings(roomId: fullRoomId(state.pathParameters[roomKey]!)),
       ),
       redirect: loggedOutRedirect,
     ),

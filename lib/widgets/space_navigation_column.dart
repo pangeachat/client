@@ -234,7 +234,7 @@ class _MainView extends StatelessWidget {
           // canvas, so it never reaches this branch.
         }
         // Inside a specific course chat, keep the chat list in the column.
-        final roomId = state.pathParameters['roomid'];
+        final roomId = activeRoomIdFor(state);
         final space = spaceId != null
             ? Matrix.of(context).client.getRoomById(spaceId)
             : null;
@@ -257,8 +257,8 @@ class _MainView extends StatelessWidget {
 
       case AppSection.chats:
         return ChatList(
-          activeChat: state.pathParameters['roomid'],
-          activeSpace: state.pathParameters['spaceid'],
+          activeChat: activeRoomIdFor(state),
+          activeSpace: activeSpaceIdFor(state.uri),
         );
     }
   }

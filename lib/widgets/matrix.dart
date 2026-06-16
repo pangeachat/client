@@ -279,7 +279,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // Pangea#
     // #Pangea
     // return route.split('/')[2];
-    return FluffyChatApp.router.state.pathParameters['roomid'];
+    // world_v2 URLs carry a bare localpart; re-attach the home server_name so
+    // this matches full event room ids (e.g. notification suppression).
+    final roomId = FluffyChatApp.router.state.pathParameters['roomid'];
+    if (roomId == null || roomId.contains(':')) return roomId;
+    final userId = client.userID;
+    final sep = userId?.indexOf(':') ?? -1;
+    return sep == -1 ? roomId : '$roomId:${userId!.substring(sep + 1)}';
     // Pangea#
   }
 

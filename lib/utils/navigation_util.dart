@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 
 class NavigationUtil {
@@ -23,7 +24,7 @@ class NavigationUtil {
     if (currentRouteSegments.isNotEmpty &&
         currentRouteSegments[0] == 'courses' &&
         currentRoute.pathParameters.containsKey('spaceid')) {
-      final spaceId = currentRoute.pathParameters['spaceid']!;
+      final spaceId = fullRoomId(currentRoute.pathParameters['spaceid']!);
       if (goalRoomID == null) {
         context.go('${PRoutes.course(spaceId)}$queryString', extra: extra);
         return;
