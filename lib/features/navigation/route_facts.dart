@@ -50,6 +50,30 @@ class ActivityFocus extends MapFocus {
 //   class ObjectFocus  extends MapFocus { final String objectId; ... }
 // Add the subclass, then one arm to the map's focus switch. Nothing else.
 
+/// The learning-analytics view the top-right cluster opens, docked on the right
+/// over the map via the `?analytics=<tab>` query param. A right-side overlay
+/// (parallel to the left-anchored `?activity=` detail), so it coexists with the
+/// map-hole world view rather than consuming the canvas. See
+/// `world-user-cluster.instructions.md`.
+enum AnalyticsPanelTab {
+  sessions,
+  grammar,
+  vocab;
+
+  String get queryValue => name;
+
+  static AnalyticsPanelTab? fromQuery(String? value) {
+    for (final tab in AnalyticsPanelTab.values) {
+      if (tab.name == value) return tab;
+    }
+    return null;
+  }
+}
+
+/// The analytics panel an open route addresses (`?analytics=<tab>`), else null.
+AnalyticsPanelTab? analyticsFor(GoRouterState state) =>
+    AnalyticsPanelTab.fromQuery(state.uri.queryParameters['analytics']);
+
 /// Section roots that render as a map hole **in column mode** (their content
 /// moves to the left column). In narrow mode they fill the screen instead.
 /// `/` is always the map and is handled separately. This is the single source

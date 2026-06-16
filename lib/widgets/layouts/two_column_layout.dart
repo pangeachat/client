@@ -9,7 +9,9 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/routes/world/activity_detail_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
+import 'package:fluffychat/routes/world/world_analytics_panel.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
+import 'package:fluffychat/routes/world/world_user_cluster.dart';
 import 'package:fluffychat/widgets/layouts/mobile_course_sheet.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mobile_bottom_nav.dart';
@@ -21,9 +23,20 @@ import 'package:fluffychat/widgets/space_navigation_column.dart';
 /// so sections open *over* the map instead of refreshing it.
 final GlobalKey _persistentWorldMapKey = GlobalKey(debugLabel: 'worldMap');
 
+/// Preserves the top-right cluster's State (counts, level, stream subs) across
+/// shell rebuilds, like the persistent map — so it does not re-fetch on nav.
+final GlobalKey _userClusterKey = GlobalKey(debugLabel: 'worldUserCluster');
+
 /// Max width of an opaque detail panel (chat, vocab, …); the map peeks in the
 /// remaining canvas on wider screens (world_v2 detail contract).
 const double _detailMaxWidth = 720.0;
+
+/// Max width of the right-docked analytics panel over the map (world_v2).
+const double _analyticsPanelMaxWidth = 488.0;
+
+/// Gap kept between a left-anchored detail and the right-docked analytics panel
+/// when both are open in column mode, so the detail never slides under it.
+const double _analyticsPanelGap = 16.0;
 
 /// The shell: a single persistent [WorldMap] with the active section overlaid.
 /// Every routing/layout fact comes from `route_facts.dart` (the single source),
@@ -65,18 +78,43 @@ class TwoColumnLayout extends StatelessWidget {
     // detail panel inside [canvasFor]).
     final canvas = canvasFor(state, isColumnMode);
 
+    final available = MediaQuery.sizeOf(context).width - columnWidth;
+
+    final activity = activityFor(state);
+    final activeSpaceId = activeSpaceIdFor(state.uri);
+
+    // `?analytics=<tab>` opens a right-docked analytics overlay (the top-right
+    // cluster's trackers). A right-anchored sibling of the map — it does not
+    // consume the canvas slot, so it coexists with the map-hole world view.
+    final analyticsTab = analyticsFor(state);
+    final analyticsPanelWidth = isColumnMode
+        ? math.min(_analyticsPanelMaxWidth, available)
+        : MediaQuery.sizeOf(context).width;
+
     // The detail is capped at [_detailMaxWidth] only in column mode, where the
     // map is meant to peek alongside it. In single-column (mobile) mode there is
     // nothing alongside, so the detail fills to the column-mode breakpoint —
     // otherwise a viewport between _detailMaxWidth and the breakpoint leaves a
-    // thin strip of map showing on the side (the "weird gap").
-    final available = MediaQuery.sizeOf(context).width - columnWidth;
-    final detailWidth = isColumnMode
-        ? math.min(_detailMaxWidth, available)
+    // thin strip of map showing on the side (the "weird gap"). When the
+    // right-docked analytics panel is also open in column mode, the detail must
+    // not slide under it (the panel paints on top), so it caps to the space the
+    // panel leaves.
+    final detailAvailable = isColumnMode && analyticsTab != null
+        ? math.max(0.0, available - analyticsPanelWidth - _analyticsPanelGap)
         : available;
-
-    final activity = activityFor(state);
-    final activeSpaceId = activeSpaceIdFor(state.uri);
+    final detailWidth = isColumnMode
+        ? math.min(_detailMaxWidth, detailAvailable)
+        : available;
+    // The cluster is part of the map, so show it only where the map is actually
+    // visible: as a map hole (full), or — in column mode — peeking alongside a
+    // detail. Not on a full-bleed canvas, not behind a full-screen mobile detail
+    // (a chat room/course), and not when the panel is open in narrow mode (it
+    // would collide with the panel).
+    final mapVisible =
+        canvas == CanvasMode.mapHole ||
+        (isColumnMode && canvas == CanvasMode.detail);
+    final showUserCluster =
+        mapVisible && !(analyticsTab != null && !isColumnMode);
 
     // Scope the persistent map to the active course (world_v2 context). A joined
     // course scopes the map to that course's content; everything else shows the
@@ -138,6 +176,11 @@ class TwoColumnLayout extends StatelessWidget {
                     (canvas == CanvasMode.detail && !isMobileCourse
                         ? detailWidth
                         : 0.0),
+                // A right-docked analytics panel pads the camera from the right
+                // so a course fit lands in the area the panel doesn't cover.
+                rightOverlayWidth: analyticsTab != null && isColumnMode
+                    ? analyticsPanelWidth
+                    : 0.0,
                 // What the map brings into the exposed canvas (today: the open
                 // activity). Extend via a new [MapFocus] kind in route_facts.
                 focus: mapFocusFor(state),
@@ -169,6 +212,25 @@ class TwoColumnLayout extends StatelessWidget {
             if (isMobileCourse)
               Positioned.fill(child: MobileCourseSheet(child: canvasChild)),
             SpaceNavigationColumn(state: state, showNavRail: navRail),
+            // The right-docked analytics overlay (`?analytics=`), opened by the
+            // top-right cluster. Right-anchored over the map; mutually visible
+            // with the left column/detail on wide screens, full-bleed on narrow.
+            if (analyticsTab != null)
+              Positioned(
+                top: 0,
+                bottom: 0,
+                right: 0,
+                width: analyticsPanelWidth,
+                child: WorldAnalyticsPanel(tab: analyticsTab),
+              ),
+            // The persistent top-right user cluster — painted last so it sits
+            // over the analytics panel's top-right corner (Figma).
+            if (showUserCluster)
+              Positioned(
+                top: 12 + MediaQuery.viewPaddingOf(context).top,
+                right: 12 + MediaQuery.viewPaddingOf(context).right,
+                child: WorldUserCluster(key: _userClusterKey),
+              ),
             // Pangea#
           ],
         ),

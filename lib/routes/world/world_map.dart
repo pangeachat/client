@@ -130,6 +130,11 @@ class WorldMap extends StatefulWidget {
   /// right of the overlay instead of behind it. 0 when nothing overlays it.
   final double leftOverlayWidth;
 
+  /// Logical-pixel width of a right-docked overlay (the analytics panel). A
+  /// course camera-fit adds it as right padding so the fitted content lands in
+  /// the uncovered area to the left of the panel. 0 when nothing docks right.
+  final double rightOverlayWidth;
+
   /// When set, the map brings this target into the exposed canvas (the area the
   /// left column and detail panel don't cover) instead of fitting the whole
   /// course — e.g. while an activity's `?activity=` detail panel is open. The
@@ -143,6 +148,7 @@ class WorldMap extends StatefulWidget {
     this.initialZoom,
     this.controller,
     this.leftOverlayWidth = 0.0,
+    this.rightOverlayWidth = 0.0,
     this.focus,
   });
 
@@ -255,7 +261,8 @@ class _WorldMapState extends State<WorldMap> {
     // resizes (a panel opened/closed), so the selection stays centered in the
     // visible map area rather than behind a panel.
     if (oldWidget.focus != widget.focus ||
-        oldWidget.leftOverlayWidth != widget.leftOverlayWidth) {
+        oldWidget.leftOverlayWidth != widget.leftOverlayWidth ||
+        oldWidget.rightOverlayWidth != widget.rightOverlayWidth) {
       _fitToContext();
     }
   }
@@ -410,7 +417,7 @@ class _WorldMapState extends State<WorldMap> {
             padding: EdgeInsets.fromLTRB(
               widget.leftOverlayWidth + 64,
               64,
-              64,
+              widget.rightOverlayWidth + 64,
               64,
             ),
             maxZoom: 13,
@@ -480,7 +487,7 @@ class _WorldMapState extends State<WorldMap> {
         final padding = EdgeInsets.fromLTRB(
           widget.leftOverlayWidth + 64.0,
           64.0,
-          64.0,
+          widget.rightOverlayWidth + 64.0,
           64.0,
         );
 
