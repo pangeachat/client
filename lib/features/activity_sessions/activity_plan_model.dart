@@ -59,9 +59,17 @@ class ActivityPlanModel {
         title.hashCode,
       ).nextInt(placeholderImages.length)];
 
-  Uri? get imageURL => _imageURL != null
-      ? Uri.tryParse("${Environment.cmsApi}$_imageURL")
-      : Uri.tryParse(randomPlaceholder);
+  Uri? get imageURL {
+    final u = _imageURL;
+    if (u == null) return Uri.tryParse(randomPlaceholder);
+    // The choreo image_url is absolute now (it points at the shared
+    // content CDN, e.g. https://content.pangea.chat/...). Old payloads
+    // returned a CMS-relative path that needed Environment.cmsApi
+    // prepended; that branch stays as a backwards-compat fallback for
+    // any cached responses that pre-date the image-cdn cutover.
+    final isAbsolute = u.startsWith('http://') || u.startsWith('https://');
+    return Uri.tryParse(isAbsolute ? u : "${Environment.cmsApi}$u");
+  }
 
   Map<String, ActivityRole> get roles {
     if (_roles != null) return _roles;
