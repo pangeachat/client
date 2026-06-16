@@ -42,14 +42,28 @@ class ConfirmedRoleSession extends StatefulWidget {
 }
 
 class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
-    with ActivitySessionStateController {
+    implements ActivitySessionStateController {
   ConfirmedRoleSessionController();
 
   Timer? _pingCooldown;
+  Map<String, Set<String>> _completedGoalIdsCache = {};
+  StreamSubscription? _roomStateSubscription;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _roomStateSubscription ??= Matrix.of(context).client.onRoomState.stream
+        .listen((_) {
+          if (mounted) {
+            setState(() => _completedGoalIdsCache = {});
+          }
+        });
+  }
 
   @override
   void dispose() {
     _pingCooldown?.cancel();
+    _roomStateSubscription?.cancel();
     super.dispose();
   }
 
@@ -75,16 +89,44 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   Set<String> get selectedRoleCompletedGoalIds {
     final roleId = widget.room.ownRoleState?.id;
     if (roleId == null) return {};
-    return ActivitySessionStateController.scanCompletedGoalIds(
-      activityId: widget.activityId,
-      activity: widget.activity,
-      roleId: roleId,
-      rooms: Matrix.of(context).client.rooms,
-    );
+    if (_completedGoalIdsCache.containsKey(roleId)) {
+      return _completedGoalIdsCache[roleId]!;
+    }
+    return _completedGoalIdsCache[roleId] =
+        ActivitySessionStateController.scanCompletedGoalIds(
+          activityId: widget.activityId,
+          activity: widget.activity,
+          roleId: roleId,
+          rooms: Matrix.of(context).client.rooms,
+        );
   }
 
   @override
   bool isRoleSelected(String id) => widget.room.ownRoleState?.id == id;
+
+  @override
+  bool isRoleShimmering(String id) => false;
+
+  @override
+  bool canSelectRole(String id) => false;
+
+  @override
+  void selectRole(String id) {}
+
+  @override
+  bool showStarsCard(String id) => false;
+
+  @override
+  double get roleCardOpacity => 1.0;
+
+  @override
+  bool get showRoleCards => true;
+
+  @override
+  bool get showDescriptionSection => true;
+
+  @override
+  Set<String> completedGoalIdsForRole(String id) => {};
 
   Future<bool> get canPingParticipants async {
     final course = widget.course;

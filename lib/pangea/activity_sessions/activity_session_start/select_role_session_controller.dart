@@ -41,9 +41,26 @@ class SelectRoleSession extends StatefulWidget {
 }
 
 class SelectRoleSessionController extends State<SelectRoleSession>
-    with ActivitySessionStateController {
+    implements ActivitySessionStateController {
   String? _selectedRoleId;
   bool _confirmed = false;
+  Map<String, Set<String>> _completedGoalIdsCache = {};
+  StreamSubscription? _roomStateSubscription;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _roomStateSubscription ??= Matrix.of(context).client.onRoomState.stream
+        .listen((_) {
+          if (mounted) setState(() => _completedGoalIdsCache = {});
+        });
+  }
+
+  @override
+  void dispose() {
+    _roomStateSubscription?.cancel();
+    super.dispose();
+  }
 
   @override
   void didUpdateWidget(covariant SelectRoleSession oldWidget) {
@@ -52,6 +69,7 @@ class SelectRoleSessionController extends State<SelectRoleSession>
       setState(() {
         _selectedRoleId = null;
         _confirmed = false;
+        _completedGoalIdsCache = {};
       });
     }
   }
@@ -81,13 +99,16 @@ class SelectRoleSessionController extends State<SelectRoleSession>
   }
 
   @override
-  Set<String> completedGoalIdsForRole(String id) =>
-      ActivitySessionStateController.scanCompletedGoalIds(
-        activityId: widget.activity?.activityId,
-        activity: widget.activity,
-        roleId: id,
-        rooms: Matrix.of(context).client.rooms,
-      );
+  Set<String> completedGoalIdsForRole(String id) {
+    if (_completedGoalIdsCache.containsKey(id)) return _completedGoalIdsCache[id]!;
+    return _completedGoalIdsCache[id] =
+        ActivitySessionStateController.scanCompletedGoalIds(
+          activityId: widget.activity?.activityId,
+          activity: widget.activity,
+          roleId: id,
+          rooms: Matrix.of(context).client.rooms,
+        );
+  }
 
   @override
   Set<String> get selectedRoleCompletedGoalIds {
@@ -99,7 +120,10 @@ class SelectRoleSessionController extends State<SelectRoleSession>
   @override
   bool showStarsCard(String id) {
     if (_confirmed || isRoleSelected(id)) return false;
-    final assigned = activityRoom?.assignedRoles ?? widget.summary?.joinedUsersWithRoles ?? {};
+    final assigned =
+        activityRoom?.assignedRoles ??
+        widget.summary?.joinedUsersWithRoles ??
+        {};
     return !assigned.containsKey(id);
   }
 
@@ -118,8 +142,24 @@ class SelectRoleSessionController extends State<SelectRoleSession>
 
   @override
   void selectRole(String id) {
-    if (mounted) setState(() => _selectedRoleId = _selectedRoleId == id ? null : id);
+    if (mounted) {
+      setState(() {
+        _selectedRoleId = _selectedRoleId == id ? null : id;
+      });
+    }
   }
+
+  @override
+  double get roleCardOpacity => 1.0;
+
+  @override
+  bool get goalsStartCollapsed => false;
+
+  @override
+  bool get showRoleCards => true;
+
+  @override
+  bool get showDescriptionSection => true;
 
   Future<void> confirmRoleSelection() async {
     setState(() => _confirmed = true);

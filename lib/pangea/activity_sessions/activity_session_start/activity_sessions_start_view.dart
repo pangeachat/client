@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_orchestrator/goal_status_widget.dart';
@@ -12,7 +14,6 @@ import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class ActivitySessionStartView extends StatelessWidget {
   final ActivitySessionStartState controller;

@@ -46,8 +46,27 @@ class NotStartedSession extends StatefulWidget {
 }
 
 class NotStartedSessionController extends State<NotStartedSession>
-    with ActivitySessionStateController {
+    implements ActivitySessionStateController {
   NotStartedSubPage _subPage = NotStartedSubPage.main;
+  Map<String, Set<String>> _completedGoalIdsCache = {};
+  StreamSubscription? _roomStateSubscription;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _roomStateSubscription ??= Matrix.of(context).client.onRoomState.stream
+        .listen((_) {
+          if (mounted) {
+            setState(() => _completedGoalIdsCache = {});
+          }
+        });
+  }
+
+  @override
+  void dispose() {
+    _roomStateSubscription?.cancel();
+    super.dispose();
+  }
 
   NotStartedSubPage get subPage => _subPage;
 
@@ -83,19 +102,33 @@ class NotStartedSessionController extends State<NotStartedSession>
   double get roleCardOpacity => 0.7;
 
   @override
-  Set<String> completedGoalIdsForRole(String id) =>
-      ActivitySessionStateController.scanCompletedGoalIds(
-        activityId: widget.activityId,
-        activity: widget.activity,
-        roleId: id,
-        rooms: Matrix.of(context).client.rooms,
-      );
+  bool get goalsStartCollapsed => false;
+
+  @override
+  Set<String> completedGoalIdsForRole(String id) {
+    if (_completedGoalIdsCache.containsKey(id)) {
+      return _completedGoalIdsCache[id]!;
+    }
+    return _completedGoalIdsCache[id] =
+        ActivitySessionStateController.scanCompletedGoalIds(
+          activityId: widget.activityId,
+          activity: widget.activity,
+          roleId: id,
+          rooms: Matrix.of(context).client.rooms,
+        );
+  }
 
   @override
   bool get showRoleCards => _subPage == NotStartedSubPage.main;
 
   @override
   bool get showDescriptionSection => _subPage == NotStartedSubPage.main;
+
+  @override
+  List<ActivityRoleGoal>? get selectedRoleGoals => null;
+
+  @override
+  Set<String> get selectedRoleCompletedGoalIds => {};
 
   int get openSessionCount => widget.summaries.openSessions.length;
 
