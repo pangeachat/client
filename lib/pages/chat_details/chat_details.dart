@@ -396,7 +396,11 @@ class ChatDetailsController extends State<ChatDetails>
           .whereType<String>()
           .toList();
 
-      final roomSummariesResponse = await client.loadRoomSummaries(roomIds);
+      final roomSummariesResponse = await client.loadRoomSummaries(
+        roomIds,
+        l1Code: MatrixState.pangeaController.userController.userL1Code,
+      );
+
       roomSummariesModel = CourseInfoSummariesModel(
         roomSummariesResponse,
         activitiesToCompleteOverride: room.teacherMode.activitiesToUnlockTopic,

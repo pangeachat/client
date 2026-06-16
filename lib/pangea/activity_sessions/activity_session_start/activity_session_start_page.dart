@@ -161,9 +161,12 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     }
 
     if (roomIds.isEmpty) return;
-    final roomSummariesResponse = await Matrix.of(
-      context,
-    ).client.loadRoomSummaries(roomIds.toList());
+    final roomSummariesResponse = await Matrix.of(context).client
+        .loadRoomSummaries(
+          roomIds.toList(),
+          l1Code: MatrixState.pangeaController.userController.userL1Code,
+        );
+
     _roomSummariesModel = ActivitySessionSummariesModel(
       roomSummariesResponse,
       activityId: widget.activityId,
