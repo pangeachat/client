@@ -87,8 +87,20 @@ class TwoColumnLayout extends StatelessWidget {
     // cluster's trackers). A right-anchored sibling of the map — it does not
     // consume the canvas slot, so it coexists with the map-hole world view.
     final analyticsTab = analyticsFor(state);
+    final analyticsConstruct = analyticsConstructFor(state);
+    // A vocab/grammar detail card blooms to the LEFT of the summary, so the
+    // right zone holds two cards (detail + summary) and is twice as wide.
+    final analyticsDetailOpen =
+        analyticsConstruct != null &&
+        analyticsTab != null &&
+        analyticsTab != AnalyticsPanelTab.sessions;
     final analyticsPanelWidth = isColumnMode
-        ? math.min(_analyticsPanelMaxWidth, available)
+        ? math.min(
+            analyticsDetailOpen
+                ? _analyticsPanelMaxWidth * 2 + _analyticsPanelGap
+                : _analyticsPanelMaxWidth,
+            available,
+          )
         : MediaQuery.sizeOf(context).width;
 
     // The detail is capped at [_detailMaxWidth] only in column mode, where the
@@ -221,7 +233,10 @@ class TwoColumnLayout extends StatelessWidget {
                 bottom: 0,
                 right: 0,
                 width: analyticsPanelWidth,
-                child: WorldAnalyticsPanel(tab: analyticsTab),
+                child: WorldAnalyticsPanel(
+                  tab: analyticsTab,
+                  construct: analyticsConstruct,
+                ),
               ),
             // The persistent top-right user cluster — painted last so it sits
             // over the analytics panel's top-right corner (Figma).

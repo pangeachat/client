@@ -112,11 +112,14 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
   }
 
   /// Open the right-docked analytics panel over the current route, preserving
-  /// every other param (mirrors the `?activity=` open).
+  /// every other param (mirrors the `?activity=` open). Drops any open detail
+  /// (`?construct`) so switching trackers always lands on the new tab's summary
+  /// — a leftover construct could otherwise render under a mismatched tab.
   void _openAnalytics(AnalyticsPanelTab tab) {
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
     final params = Map<String, String>.from(uri.queryParameters)
-      ..['analytics'] = tab.queryValue;
+      ..['analytics'] = tab.queryValue
+      ..remove('construct');
     context.go(uri.replace(queryParameters: params).toString());
   }
 

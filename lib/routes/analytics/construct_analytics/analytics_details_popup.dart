@@ -256,7 +256,10 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   Widget build(BuildContext context) {
     final analyticsService = Matrix.of(context).analyticsDataService;
     return Scaffold(
-      appBar: widget.view == ConstructTypeEnum.morph && widget.construct != null
+      appBar:
+          widget.view == ConstructTypeEnum.morph &&
+              widget.construct != null &&
+              !widget.embedded
           ? AppBar(
               leading: IconButton(
                 tooltip: L10n.of(context).close,

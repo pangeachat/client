@@ -76,6 +76,33 @@ the `sessions` panel shows (both `archivedActivities`).
   course camera-fit pads for the right panel; the right fit padding becomes
   `rightOverlayWidth + 64`.
 
+## Drilling in — detail card LEFT of the pinned summary
+
+Clicking a vocab word or grammar concept opens its **detail as a card to the
+LEFT of the summary**; the summary never moves (Figma `12722-158370`). This is
+the RTL "personal stuff" pattern: the anchor (cluster + summary) is on the right,
+so detail blooms left into the open canvas. No deeper drill (one detail level).
+
+- **One chokepoint.** All three item clicks funnel through
+  `AnalyticsNavigationUtil.navigateToAnalytics`. When `?analytics=` is present
+  (we're in the panel) it branches to the new system instead of the old
+  `/rooms/analytics/...` pages: vocab/grammar add `?construct=<json>` (the
+  selected `ConstructIdentifier`); an **activity opens its session chat** via
+  `PRoutes.room` (the activity "detail" *is* a chat → left-zone content).
+  Outside the panel (chat word-cards, banners) the old behavior is untouched.
+- `analyticsConstructFor(state)` decodes `?construct=`. The panel renders the
+  detail as `ConstructAnalyticsView(view: <tab's type>, construct: id,
+  embedded: true)` (reuses `VocabDetailsView`/`MorphDetailsView`; the embedded
+  flag also suppresses that view's internal close AppBar). The summary card is a
+  second `ConstructAnalyticsView`/`ActivityArchive` with no construct.
+- The detail card's header has a **back** arrow that drops only `?construct`
+  (return to summary); the summary's **close** drops `?analytics` (+`construct`).
+- Switching trackers (`WorldUserCluster._openAnalytics`) drops `?construct` so a
+  leftover detail never renders under a mismatched tab.
+- The right zone widens to two cards when a detail is open
+  (`_analyticsPanelMaxWidth * 2 + gap`); narrow mode shows one card and the
+  detail's back returns to the summary.
+
 ## Shell mounting (`two_column_layout.dart`)
 
 Add two `Positioned` children **after** `SpaceNavigationColumn` (z-order on top

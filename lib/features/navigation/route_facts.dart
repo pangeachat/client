@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
@@ -73,6 +76,23 @@ enum AnalyticsPanelTab {
 /// The analytics panel an open route addresses (`?analytics=<tab>`), else null.
 AnalyticsPanelTab? analyticsFor(GoRouterState state) =>
     AnalyticsPanelTab.fromQuery(state.uri.queryParameters['analytics']);
+
+/// The vocab/grammar construct whose **detail** is open inside the analytics
+/// panel (`?construct=<json>`), else null. The detail renders as a card to the
+/// LEFT of the pinned summary; the summary stays put. See
+/// `world-user-cluster.instructions.md`. Activities have no construct — their
+/// "detail" is the session chat room, opened in the left zone instead.
+ConstructIdentifier? analyticsConstructFor(GoRouterState state) {
+  final raw = state.uri.queryParameters['construct'];
+  if (raw == null || raw.isEmpty) return null;
+  try {
+    return ConstructIdentifier.fromJson(
+      jsonDecode(raw) as Map<String, dynamic>,
+    );
+  } catch (_) {
+    return null;
+  }
+}
 
 /// Section roots that render as a map hole **in column mode** (their content
 /// moves to the left column). In narrow mode they fill the screen instead.
