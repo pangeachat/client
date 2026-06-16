@@ -10,7 +10,7 @@ import 'package:fluffychat/pangea/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/pangea/subscription/utils/subscription_status_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../choreographer.dart';
 import 'edit_type_enum.dart';
@@ -88,7 +88,7 @@ class PangeaTextController extends TextEditingController {
     required bool withComposing,
   }) {
     final subscription =
-        MatrixState.pangeaController.subscriptionController.subscriptionStatus;
+        MatrixState.pangeaController.subscriptionController.paywallStatus;
 
     if (subscription == SubscriptionStatus.shouldShowPaywall) {
       return _buildPaywallSpan(style);

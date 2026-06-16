@@ -255,7 +255,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       await analyticsService.reinitialize();
     }
     try {
-      await _analyticsController.waitForAnalytics();
+      await _analyticsController.waitForAnalytics(
+        Matrix.of(context).client.userID,
+      );
       await _sessionController.startSession(widget.type);
       if (mounted) setState(() {});
 

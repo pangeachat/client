@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
-import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -16,20 +15,15 @@ class ChangeSubscription extends StatelessWidget {
 
   final PangeaController pangeaController = MatrixState.pangeaController;
 
-  List<SubscriptionDetails> get subscriptions =>
-      pangeaController
-          .subscriptionController
-          .availableSubscriptionInfo
-          ?.availableSubscriptions ??
-      [];
-
   bool get inTrialWindow => pangeaController.userController.inTrialWindow();
 
   String get formattedDate => DateFormat.yMMMd().format(DateTime.now());
 
   @override
   Widget build(BuildContext context) {
-    if (!controller.subscriptionsAvailable) {
+    final subscriptions = controller.availableSubscriptions;
+
+    if (subscriptions.isEmpty) {
       return const Center(
         child: Padding(
           padding: EdgeInsets.all(16.0),

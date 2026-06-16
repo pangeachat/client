@@ -1,5 +1,3 @@
-// Flutter imports:
-
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
@@ -19,13 +17,9 @@ class SettingsSubscriptionView extends StatelessWidget {
     final clickedCancelDate =
         SubscriptionManagementRepo.getClickedCancelSubscription();
 
-    final isSubscribed = controller.subscriptionController.isSubscribed;
-    final hasFreeTrial =
-        controller
-            .subscriptionController
-            .currentSubscriptionInfo
-            ?.isFreeTrial ==
-        true;
+    final hasFreeTrial = controller.hasFreeTrial;
+    final sub = controller.subscriptionController;
+    final showGatedContent = sub.showSubscriptionGatedContent;
 
     return Scaffold(
       appBar: AppBar(
@@ -37,11 +31,12 @@ class SettingsSubscriptionView extends StatelessWidget {
         child: MaxWidthBody(
           child: Column(
             children: [
-              if (isSubscribed == null)
+              if (sub.loading)
                 const Center(child: CircularProgressIndicator.adaptive())
-              else if (isSubscribed && !controller.showManagementOptions)
+              else if (showGatedContent && !controller.showManagementOptions)
                 ManagementNotAvailableWarning(controller: controller)
-              else if (isSubscribed && controller.showManagementOptions) ...[
+              else if (showGatedContent &&
+                  controller.showManagementOptions) ...[
                 if (controller.currentSubscriptionAvailable)
                   ListTile(
                     title: Text(L10n.of(context).currentSubscription),
@@ -124,7 +119,7 @@ class SettingsSubscriptionView extends StatelessWidget {
                 ),
               ],
               if (hasFreeTrial) ...[Divider(), SizedBox(height: 16.0)],
-              if (isSubscribed == false || hasFreeTrial)
+              if (!showGatedContent || hasFreeTrial)
                 ChangeSubscription(controller: controller),
             ],
           ),
@@ -139,37 +134,34 @@ class ManagementNotAvailableWarning extends StatelessWidget {
 
   const ManagementNotAvailableWarning({required this.controller, super.key});
 
+  String getWarningText(BuildContext context) {
+    if (controller.currentSubscriptionIsPromotional) {
+      if (controller.isLifetimeSubscription) {
+        return L10n.of(context).promotionalSubscriptionDesc;
+      }
+
+      final DateFormat formatter = DateFormat('yyyy-MM-dd');
+      return L10n.of(
+        context,
+      ).trialExpiration(formatter.format(controller.expirationDate!));
+    }
+    if (controller.currentSubscriptionAvailable) {
+      String warningText = L10n.of(context).subsciptionPlatformTooltip;
+      if (controller.purchasePlatformDisplayName != null) {
+        warningText +=
+            "\n${L10n.of(context).originalSubscriptionPlatform(controller.purchasePlatformDisplayName!)}";
+      }
+      return warningText;
+    }
+    return L10n.of(context).subscriptionManagementUnavailable;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final currentSubscriptionInfo =
-        controller.subscriptionController.currentSubscriptionInfo;
-
-    String getWarningText() {
-      if (controller.currentSubscriptionIsPromotional) {
-        if (currentSubscriptionInfo?.isLifetimeSubscription ?? false) {
-          return L10n.of(context).promotionalSubscriptionDesc;
-        }
-
-        final DateFormat formatter = DateFormat('yyyy-MM-dd');
-        return L10n.of(context).trialExpiration(
-          formatter.format(currentSubscriptionInfo!.expirationDate!),
-        );
-      }
-      if (controller.currentSubscriptionAvailable) {
-        String warningText = L10n.of(context).subsciptionPlatformTooltip;
-        if (controller.purchasePlatformDisplayName != null) {
-          warningText +=
-              "\n${L10n.of(context).originalSubscriptionPlatform(controller.purchasePlatformDisplayName!)}";
-        }
-        return warningText;
-      }
-      return L10n.of(context).subscriptionManagementUnavailable;
-    }
-
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(20),
-        child: Text(getWarningText(), textAlign: TextAlign.center),
+        child: Text(getWarningText(context), textAlign: TextAlign.center),
       ),
     );
   }

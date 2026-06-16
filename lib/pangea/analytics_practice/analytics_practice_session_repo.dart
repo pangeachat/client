@@ -19,8 +19,10 @@ class AnalyticsPracticeSessionRepo {
     LanguageModel userL1,
     LanguageModel userL2,
   ) async {
-    if (MatrixState.pangeaController.subscriptionController.isSubscribed ==
-        false) {
+    if (!MatrixState
+        .pangeaController
+        .subscriptionController
+        .showSubscriptionGatedContent) {
       throw UnsubscribedException();
     }
 

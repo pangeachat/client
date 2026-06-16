@@ -13,7 +13,7 @@ import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dar
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/common/widgets/shrinkable_text.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
-import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/pangea/subscription/utils/subscription_status_enum.dart';
 import 'package:fluffychat/pangea/subscription/widgets/paywall_card.dart';
 import 'package:fluffychat/utils/markdown_context_builder.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
@@ -408,8 +408,8 @@ class InputBar extends StatelessWidget {
   }
 
   // #Pangea
-  SubscriptionStatus get _subscriptionStatus =>
-      MatrixState.pangeaController.subscriptionController.subscriptionStatus;
+  SubscriptionStatus get _paywallStatus =>
+      MatrixState.pangeaController.subscriptionController.paywallStatus;
 
   String _defaultHintText(BuildContext context) {
     final l10n = L10n.of(context);
@@ -441,7 +441,7 @@ class InputBar extends StatelessWidget {
   }
 
   bool _shouldShowPaywall(BuildContext context) {
-    if (_subscriptionStatus == SubscriptionStatus.shouldShowPaywall) {
+    if (_paywallStatus == SubscriptionStatus.shouldShowPaywall) {
       PaywallCard.show(context, ChoreoConstants.inputTransformTargetKey);
       return true;
     }

@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
-import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/pangea/subscription/models/subscription_details.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class SubscriptionOptions extends StatelessWidget {
-  final PangeaController pangeaController;
-  const SubscriptionOptions({super.key, required this.pangeaController});
+  final List<SubscriptionDetails> availableSubscriptions;
+  const SubscriptionOptions({super.key, required this.availableSubscriptions});
 
   @override
   Widget build(BuildContext context) {
@@ -17,25 +17,22 @@ class SubscriptionOptions extends StatelessWidget {
       alignment: WrapAlignment.center,
       direction: Axis.horizontal,
       spacing: 10,
-      children: pangeaController.userController.inTrialWindow()
+      children: MatrixState.pangeaController.userController.inTrialWindow()
           ? [
               SubscriptionCard(
-                onTap: () => pangeaController.subscriptionController
+                onTap: () => MatrixState.pangeaController.subscriptionController
                     .activateNewUserTrial(),
                 title: L10n.of(context).freeTrial,
                 description: L10n.of(context).freeTrialDesc,
                 buttonText: L10n.of(context).activateTrial,
               ),
             ]
-          : pangeaController
-                .subscriptionController
-                .availableSubscriptionInfo!
-                .availableSubscriptions
+          : availableSubscriptions
                 .map(
                   (subscription) => SubscriptionCard(
                     subscription: subscription,
                     onTap: () {
-                      pangeaController.subscriptionController
+                      MatrixState.pangeaController.subscriptionController
                           .submitSubscriptionChange(subscription, context);
                     },
                     title: subscription.displayName(context),
