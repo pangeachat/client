@@ -12,7 +12,6 @@ import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -143,7 +142,6 @@ class SpacesNavigationRail extends StatelessWidget {
     final section = sectionFor(state.uri);
     final isSettings = section == AppSection.settings;
     final isUserHome = section == AppSection.profile;
-    final isAnalytics = section == AppSection.analytics;
     final isChats = section == AppSection.chats;
     final isWorld = section == AppSection.world;
     // The Add-course / find-course flow: courses section, no active space.
@@ -277,22 +275,9 @@ class SpacesNavigationRail extends StatelessWidget {
                           naviRailWidth: naviRailWidth,
                           expandedSectionWidth: expandedSectionWidth,
                         ),
-                        // Analytics.
-                        NaviRailItem(
-                          isSelected: isAnalytics,
-                          icon: const Icon(Icons.analytics_outlined),
-                          selectedIcon: const Icon(Icons.analytics),
-                          onTap: () {
-                            collapse();
-                            AnalyticsNavigationUtil.navigateToAnalytics(
-                              context: context,
-                            );
-                          },
-                          toolTip: L10n.of(context).learningAnalytics,
-                          expanded: expanded,
-                          naviRailWidth: naviRailWidth,
-                          expandedSectionWidth: expandedSectionWidth,
-                        ),
+                        // Analytics is no longer a rail section — it opens from
+                        // the world map's top-right cluster trackers as a
+                        // right-docked panel. See world-user-cluster.instructions.md.
                         // Add course — the find/add-course section in the
                         // left column (same as the other sections), not a
                         // popover. world_v2.

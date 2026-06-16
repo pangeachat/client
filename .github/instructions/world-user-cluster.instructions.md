@@ -64,10 +64,14 @@ the `sessions` panel shows (both `archivedActivities`).
   over the map. So the panel is a separate right-docked `Positioned` child in the
   shell — it does not consume the canvas slot. This is lower-risk than reworking
   `canvasFor`, and it coexists with the map-hole world view (the common case).
-- The existing left-column `/analytics/*` **section routes are untouched** (the
-  nav-rail analytics button still uses them). The cluster trackers are a *second,
-  right-docked* entry point. Unifying the two is deliberate future work — see
-  Follow-ups.
+- The cluster trackers are now the **primary** analytics entry point. The old
+  left-column **analytics nav-rail button is removed** (`navigation_rail.dart`).
+  The `/analytics/*` section routes still exist (deep-links + the mobile bottom
+  nav), but to avoid the old left-column presentation appearing inside the new
+  panel, the hosted views (`ConstructAnalyticsView`, `ActivityArchive`) take an
+  `embedded` flag that **hides the cross-metric `LearningProgressIndicators`
+  header** (its tabs navigate to the section routes). Metric switching is the
+  cluster's job. The panel passes `embedded: true`.
 - `WorldMap` gains `rightOverlayWidth` (parallel to `leftOverlayWidth`) so a
   course camera-fit pads for the right panel; the right fit padding becomes
   `rightOverlayWidth + 64`.
@@ -118,7 +122,12 @@ present. Never hardcode UI strings.
 
 ## Follow-ups (not in v1)
 
-- Unify the nav-rail `/analytics/*` left-column routes with the right-docked
-  overlay (one analytics presentation).
+- The `/analytics/*` section routes still exist for deep-links + the mobile
+  bottom nav (which still has an analytics button). Decide whether to also route
+  those through the right-docked overlay, or retire them once the cluster is the
+  sole entry point everywhere.
+- Avoid the residual double-state where a section route (`/analytics/morph`) and
+  the `?analytics=` overlay can both be in the URL at once (only reachable now by
+  hand-crafted/legacy links, since the in-panel tabs are hidden).
 - Figma "search + download" affordances on the vocab card header.
 - Animate the ring / panel slide-in; level-up flourish on the badge.

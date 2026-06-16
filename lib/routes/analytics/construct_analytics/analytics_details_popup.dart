@@ -38,11 +38,18 @@ class ConstructAnalyticsView extends StatefulWidget {
     required this.view,
     this.construct,
     this.showPracticeButton = false,
+    this.embedded = false,
   });
 
   final ConstructTypeEnum view;
   final ConstructIdentifier? construct;
   final bool showPracticeButton;
+
+  /// When hosted inside the world map's right-docked analytics panel, hide the
+  /// cross-metric [LearningProgressIndicators] header — its tabs navigate to the
+  /// old left-column section routes, and metric switching is the job of the
+  /// top-right cluster. See world-user-cluster.instructions.md.
+  final bool embedded;
 
   @override
   ConstructAnalyticsViewState createState() => ConstructAnalyticsViewState();
@@ -264,7 +271,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (widget.construct == null)
+              if (widget.construct == null && !widget.embedded)
                 LearningProgressIndicators(selected: widget.view.indicator),
               Expanded(
                 child: analyticsService.isInitializing

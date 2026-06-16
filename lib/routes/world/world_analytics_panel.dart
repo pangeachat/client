@@ -45,11 +45,17 @@ class WorldAnalyticsPanel extends StatelessWidget {
   Widget _content() {
     switch (tab) {
       case AnalyticsPanelTab.vocab:
-        return const ConstructAnalyticsView(view: ConstructTypeEnum.vocab);
+        return const ConstructAnalyticsView(
+          view: ConstructTypeEnum.vocab,
+          embedded: true,
+        );
       case AnalyticsPanelTab.grammar:
-        return const ConstructAnalyticsView(view: ConstructTypeEnum.morph);
+        return const ConstructAnalyticsView(
+          view: ConstructTypeEnum.morph,
+          embedded: true,
+        );
       case AnalyticsPanelTab.sessions:
-        return const ActivityArchive();
+        return const ActivityArchive(embedded: true);
     }
   }
 

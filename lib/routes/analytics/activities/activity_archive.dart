@@ -23,7 +23,11 @@ import '../../../config/themes.dart';
 import '../../../widgets/avatar.dart';
 
 class ActivityArchive extends StatelessWidget {
-  const ActivityArchive({super.key});
+  /// When hosted inside the world map's right-docked analytics panel, hide the
+  /// cross-metric [LearningProgressIndicators] header (its tabs navigate to the
+  /// old left-column section routes). See world-user-cluster.instructions.md.
+  final bool embedded;
+  const ActivityArchive({super.key, this.embedded = false});
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +51,10 @@ class ActivityArchive extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const LearningProgressIndicators(
-                    selected: ProgressIndicatorEnum.activities,
-                  ),
+                  if (!embedded)
+                    const LearningProgressIndicators(
+                      selected: ProgressIndicatorEnum.activities,
+                    ),
                   Expanded(
                     child: analyticsService.hasInitError
                         ? AnalyticsInitErrorIndicator(
