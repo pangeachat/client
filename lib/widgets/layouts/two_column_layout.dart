@@ -38,6 +38,13 @@ const double _analyticsPanelMaxWidth = 488.0;
 /// when both are open in column mode, so the detail never slides under it.
 const double _analyticsPanelGap = 16.0;
 
+/// Right gutter reserved (column mode) for the vertical top-right user cluster
+/// (avatar + trackers, ~70px wide at right:12). The analytics panel is inset by
+/// this so the vertical cluster sits beside it — over the map — instead of
+/// covering the page, matching the design. On narrow screens the page is
+/// full-width and the cluster is hidden while it's open, so no gutter is needed.
+const double _clusterGutter = 88.0;
+
 /// The shell: a single persistent [WorldMap] with the active section overlaid.
 /// Every routing/layout fact comes from `route_facts.dart` (the single source),
 /// so this layout, the page builders in `routes.dart`, the left column, the
@@ -99,7 +106,8 @@ class TwoColumnLayout extends StatelessWidget {
             analyticsDetailOpen
                 ? _analyticsPanelMaxWidth * 2 + _analyticsPanelGap
                 : _analyticsPanelMaxWidth,
-            available,
+            // Leave a right gutter for the vertical cluster beside the panel.
+            available - _clusterGutter,
           )
         : MediaQuery.sizeOf(context).width;
 
@@ -191,7 +199,7 @@ class TwoColumnLayout extends StatelessWidget {
                 // A right-docked analytics panel pads the camera from the right
                 // so a course fit lands in the area the panel doesn't cover.
                 rightOverlayWidth: analyticsTab != null && isColumnMode
-                    ? analyticsPanelWidth
+                    ? analyticsPanelWidth + _clusterGutter
                     : 0.0,
                 // What the map brings into the exposed canvas (today: the open
                 // activity). Extend via a new [MapFocus] kind in route_facts.
@@ -231,7 +239,9 @@ class TwoColumnLayout extends StatelessWidget {
               Positioned(
                 top: 0,
                 bottom: 0,
-                right: 0,
+                // Column mode: inset from the right edge so the vertical cluster
+                // sits in the gutter beside the panel. Narrow: full-width page.
+                right: isColumnMode ? _clusterGutter : 0,
                 width: analyticsPanelWidth,
                 child: WorldAnalyticsPanel(
                   tab: analyticsTab,

@@ -106,16 +106,17 @@ so detail blooms left into the open canvas. No deeper drill (one detail level).
 ## Shell mounting (`two_column_layout.dart`)
 
 Add two `Positioned` children **after** `SpaceNavigationColumn` (z-order on top
-of the map). Order: `… , WorldAnalyticsPanel (when open), WorldUserCluster` — the
-cluster paints over the panel's top-right corner (Figma).
+of the map): `… , WorldAnalyticsPanel (when open), WorldUserCluster`.
 
-- Cluster: `Positioned(top: 12 + safeTop, right: 12 + safeRight)`. Hidden when
-  the canvas is `fullBleed` (the add-course hub / a standalone activity hosts its
-  own map) and when the panel is open in **narrow** mode (it would collide with
-  the panel's own close button).
-- Panel: column mode → right-docked card, `width = min(488, available)`, inset
-  with margin + rounded corners + surface bg (Figma). Narrow mode → full-bleed
-  over the map (its hosted view brings its own Scaffold/close affordance).
+- Cluster: `Positioned(top: 12 + safeTop, right: 12 + safeRight)`, a **vertical**
+  column (avatar over a vertical trackers pill). Hidden on a `fullBleed` canvas,
+  and (narrow mode) while the panel is open.
+- Panel (column mode): a right-docked card **inset from the right edge by
+  `_clusterGutter` (~88px)** so the vertical cluster sits in that gutter *beside*
+  the panel — over the map — instead of covering the page (Figma `12731-427330`:
+  the cards leave a right gutter for the cluster; the map shows below it). Card
+  `width = min(488, available − gutter)`; the zone holds two cards when a detail
+  is open. Narrow mode → full-bleed page (`right: 0`), cluster hidden.
 
 ## Theming
 
@@ -134,10 +135,11 @@ present. Never hardcode UI strings.
 
 ## Responsive
 
-- **Column** (`FluffyThemes.isColumnMode`): cluster top-right; panel right-docked
-  card. Both visible together.
-- **Narrow**: cluster top-right (scaled), tappable; panel full-bleed; cluster
-  hidden while the panel is open.
+- **Column** (`FluffyThemes.isColumnMode`): the vertical cluster sits in the
+  right gutter; the panel (one card, or detail + summary) docks to its left.
+  Both visible together (verified at 1568px and ~977px).
+- **Narrow**: pages are **full-width** and the cluster is hidden while a page is
+  open, so the vertical cluster never overlaps a full-width page.
 
 ## Testing
 

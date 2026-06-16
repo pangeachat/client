@@ -128,6 +128,10 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
   @override
   Widget build(BuildContext context) {
     final l2 = MatrixState.pangeaController.userController.userL2;
+    // Vertical cluster (avatar on top, trackers below). It lives in a right
+    // gutter beside the right-docked analytics panel (the panel is inset to
+    // leave room), so the vertical pill never covers the page — matching the
+    // design. See world-user-cluster.instructions.md.
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
