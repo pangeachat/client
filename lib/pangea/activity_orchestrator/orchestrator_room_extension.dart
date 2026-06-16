@@ -5,6 +5,7 @@ import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_awarded_goa
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 
 extension OrchestratorRoomExtension on Room {
@@ -60,13 +61,15 @@ extension OrchestratorRoomExtension on Room {
         .toList();
   }
 
-  // Every occupant earns their own role's goals — the bot included — so
-  // there is no bot exemption here anymore.
   bool get haveAllRolesCompletedAllGoals {
     final roles = activityPlan?.roles;
     final assignedRoles = activityRoles?.roles;
     if (roles == null || assignedRoles == null) return false;
 
-    return roles.values.every((r) => hasCompletedGoalsByRoleId(r.id));
+    return roles.values.every((r) {
+      final assigned = assignedRoles[r.id];
+      if (assigned?.userId == BotName.byEnvironment) return true;
+      return hasCompletedGoalsByRoleId(r.id);
+    });
   }
 }
