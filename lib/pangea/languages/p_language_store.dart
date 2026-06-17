@@ -120,8 +120,11 @@ class PLanguageStore {
   static LanguageModel? byLangCode(String langCode) =>
       _langList.firstWhereOrNull((element) => element.langCode == langCode);
 
-  static bool hasDisplayNameVariant(String displayName) => _langList.any(
-    (lang) => lang.isLocalized && lang.displayName.contains(displayName),
+  static bool hasDisplayNameVariant(String langCodeShort) => _langList.any(
+    (lang) =>
+        lang.isLocalized &&
+        lang.langCodeShort == langCodeShort &&
+        lang.displayName.contains('('),
   );
 }
 
