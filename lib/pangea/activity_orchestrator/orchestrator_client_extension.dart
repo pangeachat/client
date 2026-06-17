@@ -10,7 +10,6 @@ extension OrchestratorClientExtension on Client {
     required String? activityId,
     required ActivityPlanModel? activity,
     required String roleId,
-    required List<Room> rooms,
   }) {
     if (activityId == null) return {};
     final role = activity?.roles[roleId];

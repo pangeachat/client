@@ -94,11 +94,11 @@ class SelectRoleSessionController extends State<SelectRoleSession>
 
   @override
   Set<String> completedGoalIdsForRole(String id) => _goalsHandler.scan(
-        id,
-        context,
-        activityId: widget.activity?.activityId,
-        activity: widget.activity,
-      );
+    id,
+    Matrix.of(context).client,
+    activityId: widget.activity?.activityId,
+    activity: widget.activity,
+  );
 
   @override
   Set<String> get selectedRoleCompletedGoalIds {

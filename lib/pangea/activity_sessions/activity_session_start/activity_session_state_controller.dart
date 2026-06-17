@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_client_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
@@ -62,16 +64,15 @@ class GoalsSubscriptionHandler {
 
   Set<String> scan(
     String id,
-    BuildContext context, {
+    Client client, {
     required String? activityId,
     required ActivityPlanModel? activity,
   }) {
     if (_cache.containsKey(id)) return _cache[id]!;
-    return _cache[id] = Matrix.of(context).client.scanCompletedGoalIds(
+    return _cache[id] = client.scanCompletedGoalIds(
       activityId: activityId,
       activity: activity,
       roleId: id,
-      rooms: Matrix.of(context).client.rooms,
     );
   }
 }

@@ -18,6 +18,7 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class ConfirmedRoleSession extends StatefulWidget {
   final Room room;
@@ -82,7 +83,7 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
     if (roleId == null) return {};
     return _goalsHandler.scan(
       roleId,
-      context,
+      Matrix.of(context).client,
       activityId: widget.activityId,
       activity: widget.activity,
     );

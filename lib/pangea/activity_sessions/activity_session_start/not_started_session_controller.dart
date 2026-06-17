@@ -116,11 +116,11 @@ class NotStartedSessionController extends State<NotStartedSession>
 
   @override
   Set<String> completedGoalIdsForRole(String id) => _goalsHandler.scan(
-        id,
-        context,
-        activityId: widget.activityId,
-        activity: widget.activity,
-      );
+    id,
+    Matrix.of(context).client,
+    activityId: widget.activityId,
+    activity: widget.activity,
+  );
 
   @override
   bool get showRoleCards => _subPage == NotStartedSubPage.main;
