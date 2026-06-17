@@ -59,9 +59,12 @@ class ActivityPlanModel {
         title.hashCode,
       ).nextInt(placeholderImages.length)];
 
-  Uri? get imageURL => _imageURL != null
-      ? Uri.tryParse("${Environment.cmsApi}$_imageURL")
-      : Uri.tryParse(randomPlaceholder);
+  Uri? get imageURL {
+    final u = _imageURL;
+    if (u == null) return Uri.tryParse(randomPlaceholder);
+    final isAbsolute = u.startsWith('http://') || u.startsWith('https://');
+    return Uri.tryParse(isAbsolute ? u : "${Environment.cmsApi}$u");
+  }
 
   Map<String, ActivityRole> get roles {
     if (_roles != null) return _roles;
