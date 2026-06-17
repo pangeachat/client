@@ -31,7 +31,7 @@ integration_test/
   app_test.dart              # Existing FluffyChat integration tests
   patrol/
     common.dart              # Shared login helper
-    login_logout_test.dart   # Basic login validation
+    login_logout_test.dart   # Basic login and logout validation
     send_message_test.dart
     permissions_test.dart    # Native permission dialogs
     ...

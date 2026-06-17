@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http/src/response.dart';
+import 'package:http/http.dart' as http;
 
 import 'package:fluffychat/pangea/activity_feedback/activity_feedback_request.dart';
 import 'package:fluffychat/pangea/activity_feedback/activity_feedback_response.dart';
@@ -65,7 +65,10 @@ void main() {
         "type": "m.login.password",
       };
 
-      final Response res = await Requests().post(url: loginUrl, body: reqJSON);
+      final http.Response res = await Requests().post(
+        url: loginUrl,
+        body: reqJSON,
+      );
 
       // Save received access token
       final Map<String, dynamic> json = jsonDecode(
@@ -93,7 +96,7 @@ void main() {
         choreoApiKey: apiKey,
         accessToken: authToken,
       );
-      final Response res = await req.post(
+      final http.Response res = await req.post(
         url: "$choreoApi/tokenize",
         body: request,
       );
@@ -116,12 +119,12 @@ void main() {
         choreoApiKey: apiKey,
         accessToken: authToken,
       );
-      final Response res = await req.post(
+      final http.Response res = await req.post(
         url: "$choreoApi/language_detection",
         body: request,
       );
 
-      // Ensure mock response is valid and compatible with response model
+      // Ensure mock http.Response is valid and compatible with http.Response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       LanguageDetectionResponse.fromJson(json);
@@ -146,12 +149,12 @@ void main() {
           choreoApiKey: apiKey,
           accessToken: authToken,
         );
-        final Response res = await req.post(
+        final http.Response res = await req.post(
           url: "$choreoApi/grammar_v2",
           body: request,
         );
 
-        // Ensure mock response is valid and compatible with response model
+        // Ensure mock http.Response is valid and compatible with http.Response model
         assert(res.statusCode == 200);
         final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
         IGCResponseModel.fromJson(json);
@@ -174,12 +177,12 @@ void main() {
         choreoApiKey: apiKey,
         accessToken: authToken,
       );
-      final Response res = await req.post(
+      final http.Response res = await req.post(
         url: "$choreoApi/translation/direct",
         body: request,
       );
 
-      // Ensure mock response is valid and compatible with response model
+      // Ensure mock http.Response is valid and compatible with http.Response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       FullTextTranslationResponseModel.fromJson(json);
@@ -200,12 +203,12 @@ void main() {
         choreoApiKey: apiKey,
         accessToken: authToken,
       );
-      final Response res = await req.post(
+      final http.Response res = await req.post(
         url: "$choreoApi/text_to_speech",
         body: request,
       );
 
-      // Ensure mock response is valid and compatible with response model
+      // Ensure mock http.Response is valid and compatible with http.Response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       TextToSpeechResponseModel.fromJson(json);
@@ -227,12 +230,12 @@ void main() {
         choreoApiKey: apiKey,
         accessToken: authToken,
       );
-      final Response res = await req.post(
+      final http.Response res = await req.post(
         url: "$choreoApi/speech_to_text",
         body: request,
       );
 
-      // Ensure mock response is valid and compatible with response model
+      // Ensure mock http.Response is valid and compatible with http.Response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       SpeechToTextResponseModel.fromJson(json);
@@ -252,12 +255,12 @@ void main() {
         choreoApiKey: apiKey,
         accessToken: authToken,
       );
-      final Response res = await req.post(
+      final http.Response res = await req.post(
         url: "$choreoApi/phonetic_transcription_v2",
         body: request,
       );
 
-      // Ensure mock response is valid and compatible with response model
+      // Ensure mock http.Response is valid and compatible with http.Response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       PTResponse.fromJson(json);
@@ -278,12 +281,12 @@ void main() {
         choreoApiKey: apiKey,
         accessToken: authToken,
       );
-      final Response res = await req.post(
+      final http.Response res = await req.post(
         url: "$choreoApi/lemma_definition",
         body: request,
       );
 
-      // Ensure mock response is valid and compatible with response model
+      // Ensure mock http.Response is valid and compatible with http.Response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       LemmaInfoResponse.fromJson(json);
@@ -318,12 +321,12 @@ void main() {
         choreoApiKey: apiKey,
         accessToken: authToken,
       );
-      final Response res = await req.post(
+      final http.Response res = await req.post(
         url: "$choreoApi/activity_summary",
         body: request,
       );
 
-      // Ensure mock response is valid and compatible with response model
+      // Ensure mock http.Response is valid and compatible with http.Response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       ActivitySummaryResponseModel.fromJson(json);
@@ -344,12 +347,12 @@ void main() {
         choreoApiKey: apiKey,
         accessToken: authToken,
       );
-      final Response res = await req.post(
+      final http.Response res = await req.post(
         url: "$choreoApi/activity_plan/feedback",
         body: request,
       );
 
-      // Ensure mock response is valid and compatible with response model
+      // Ensure mock http.Response is valid and compatible with http.Response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       ActivityFeedbackResponse.fromJson(json);
@@ -374,12 +377,12 @@ void main() {
         choreoApiKey: apiKey,
         accessToken: authToken,
       );
-      final Response res = await req.post(
+      final http.Response res = await req.post(
         url: "$choreoApi/token/feedback_v2",
         body: request,
       );
 
-      // Ensure mock response is valid and compatible with response model
+      // Ensure mock http.Response is valid and compatible with http.Response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       TokenInfoFeedbackResponse.fromJson(json);
@@ -397,12 +400,12 @@ void main() {
         choreoApiKey: apiKey,
         accessToken: authToken,
       );
-      final Response res = await req.post(
+      final http.Response res = await req.post(
         url: "$choreoApi/grammar_constructs",
         body: request,
       );
 
-      // Ensure mock response is valid and compatible with response model
+      // Ensure mock http.Response is valid and compatible with http.Response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       GrammarConstructsResponse.fromJson(json);
@@ -420,12 +423,12 @@ void main() {
         choreoApiKey: apiKey,
         accessToken: authToken,
       );
-      final Response res = await req.post(
+      final http.Response res = await req.post(
         url: "$choreoApi/topics/localize",
         body: request,
       );
 
-      // Ensure mock response is valid and compatible with response model
+      // Ensure mock http.Response is valid and compatible with http.Response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       TranslateTopicResponse.fromJson(json);
@@ -446,12 +449,12 @@ void main() {
         choreoApiKey: apiKey,
         accessToken: authToken,
       );
-      final Response res = await req.post(
+      final http.Response res = await req.post(
         url: "$choreoApi/courses/request",
         body: request,
       );
 
-      // Ensure mock response is valid and compatible with response model
+      // Ensure mock http.Response is valid and compatible with http.Response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       CustomCourseResponseModel.fromJson(json);
