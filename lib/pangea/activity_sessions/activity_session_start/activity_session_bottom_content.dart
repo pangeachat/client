@@ -9,12 +9,10 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_state_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/not_started_session_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/course_chats/open_roles_indicator.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/room_summaries/activity_summary_status_enum.dart';
 import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
 
 class ActivitySessionBottomContent extends StatelessWidget {
   final ActivitySessionStateController controller;
@@ -90,7 +88,7 @@ class _ActivitySummaryStatusSection extends StatelessWidget {
         vertical: 16.0,
       ),
       child: Column(
-        spacing: status == ActivitySummaryStatus.completed ? 12.0 : 0,
+        spacing: 12.0,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
@@ -102,23 +100,13 @@ class _ActivitySummaryStatusSection extends StatelessWidget {
               ),
             ),
           ),
-          if (status == ActivitySummaryStatus.completed)
-            ...roomSummaries.entries.map((e) {
-              return _ActivitySessionDetailsTile(
-                roomSummary: e.value,
-                course: course,
-                onTap: () => onTap(e.key),
-              );
-            })
-          else
-            ...roomSummaries.entries.map((e) {
-              return _ActivitySessionListTile(
-                roomSummary: e.value,
-                status: status,
-                course: course,
-                onTap: () => onTap(e.key),
-              );
-            }),
+          ...roomSummaries.entries.map((e) {
+            return _ActivitySessionDetailsTile(
+              roomSummary: e.value,
+              course: course,
+              onTap: () => onTap(e.key),
+            );
+          }),
         ],
       ),
     );
@@ -289,39 +277,42 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                           final superlative =
                               userSummary?.superlatives.firstOrNull;
 
-                          return Opacity(
-                            opacity: role == null ? 0.5 : 1,
-                            child: Column(
-                              spacing: 6.0,
-                              children: [
-                                Text(
-                                  displayName,
-                                  style: const TextStyle(fontSize: 12.0),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.center,
-                                ),
-                                Avatar(
-                                  mxContent: user?.avatarUrl,
-                                  name: userId.localpart,
-                                  size: 60.0,
-                                  userId: userId,
-                                ),
-                                if (userSummary != null)
+                          return ConstrainedBox(
+                            constraints: BoxConstraints(maxWidth: 90.0),
+                            child: Opacity(
+                              opacity: role == null ? 0.5 : 1,
+                              child: Column(
+                                spacing: 6.0,
+                                children: [
                                   Text(
-                                    userSummary.cefrLevel,
+                                    displayName,
                                     style: const TextStyle(fontSize: 12.0),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                if (superlative != null)
-                                  Text(
-                                    superlative,
-                                    style: const TextStyle(fontSize: 12.0),
-                                    maxLines: 2,
+                                    maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.center,
                                   ),
-                              ],
+                                  Avatar(
+                                    mxContent: user?.avatarUrl,
+                                    name: userId.localpart,
+                                    size: 60.0,
+                                    userId: userId,
+                                  ),
+                                  if (userSummary != null)
+                                    Text(
+                                      userSummary.cefrLevel,
+                                      style: const TextStyle(fontSize: 12.0),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  if (superlative != null)
+                                    Text(
+                                      superlative,
+                                      style: const TextStyle(fontSize: 12.0),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                ],
+                              ),
                             ),
                           );
                         }),
@@ -335,49 +326,6 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _ActivitySessionListTile extends StatelessWidget {
-  final RoomSummaryResponse roomSummary;
-  final ActivitySummaryStatus status;
-
-  final Room course;
-  final VoidCallback onTap;
-
-  const _ActivitySessionListTile({
-    required this.roomSummary,
-    required this.status,
-    required this.course,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final activityPlan = roomSummary.activityPlan;
-
-    // If activity is completed, show all roles, even for users who have left the
-    // room (like the bot). Otherwise, show only joined users with roles
-    final activityRoles = status == ActivitySummaryStatus.completed
-        ? (roomSummary.activityRoles?.roles ?? {})
-        : roomSummary.joinedUsersWithRoles;
-
-    return ListTile(
-      title: OpenRolesIndicator(
-        roles: (activityPlan?.roles.values ?? [])
-            .sorted((a, b) => a.id.compareTo(b.id))
-            .toList(),
-        assignedRoles: activityRoles.values.toList(),
-        size: 40.0,
-        spacing: 8.0,
-        space: course,
-        onUserTap: (user, context) {
-          showMemberActionsPopupMenu(context: context, user: user);
-        },
-      ),
-      trailing: course.isRoomAdmin ? const Icon(Icons.arrow_forward) : null,
-      onTap: onTap,
     );
   }
 }

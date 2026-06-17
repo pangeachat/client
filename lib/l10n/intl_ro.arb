@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-15 09:46:14.951393",
+    "@@last_modified": "2026-06-17 10:51:06.452652",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10655,6 +10655,41 @@
     },
     "activityActions": "Acțiuni de activitate",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Funcții Pro",
+    "pronunciationTools": "Instrumente de pronunție",
+    "audioTranscription": "Transcriere audio AI",
+    "visualLearnerSupport": "Suport pentru învățarea vizuală",
+    "instantWritingTranslation": "Traducere instantanee a scrisului",
+    "personalizedPracticeExercises": "Exerciții de practică personalizate",
+    "vocabularyFlashcards": "Carduri de vocabular",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
         "type": "String",
         "placeholders": {}
     }

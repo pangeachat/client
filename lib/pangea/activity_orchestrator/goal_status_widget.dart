@@ -41,19 +41,22 @@ class GoalStatusWidget extends StatelessWidget {
       );
     }
 
-    return Row(
-      spacing: 12.0,
-      children: [
-        icon,
-        Flexible(
-          child: Text(
-            goal.description,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+    return SizedBox(
+      height: 55.0,
+      child: Row(
+        spacing: 12.0,
+        children: [
+          icon,
+          Flexible(
+            child: Text(
+              goal.description,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

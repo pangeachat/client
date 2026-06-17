@@ -6,6 +6,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_box.dart';
+import 'package:fluffychat/pangea/subscription/widgets/subscription_paywall.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class _DecorativeStar extends StatelessWidget {
@@ -147,8 +148,9 @@ class UnsubscribedPracticePage extends StatelessWidget {
               borderRadius: BorderRadius.circular(36),
               color: primaryColor,
               onPressed: () {
-                MatrixState.pangeaController.subscriptionController.showPaywall(
+                SubscriptionPaywall.show(
                   context,
+                  userID: Matrix.of(context).client.userID,
                 );
               },
               builder: (context, depressed, shadowColor) => Container(

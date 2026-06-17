@@ -174,11 +174,19 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
         ),
         //     Column(
         Column(
-          spacing: 12.0,
           children: [
-            TextButton(
-              onPressed: widget.skip,
-              child: Text(L10n.of(context).courseCodeStepSkip),
+            ValueListenableBuilder(
+              valueListenable: _showCodeInput,
+              builder: (context, showInput, _) {
+                if (!showInput) return SizedBox();
+                return Padding(
+                  padding: EdgeInsetsGeometry.only(bottom: 12.0),
+                  child: TextButton(
+                    onPressed: widget.skip,
+                    child: Text(L10n.of(context).courseCodeStepSkip),
+                  ),
+                );
+              },
             ),
             ElevatedButton(
               onPressed: _step.enableGoForward ? widget.forward : null,

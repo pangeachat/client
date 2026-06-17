@@ -29,11 +29,14 @@ enum TutorialEnum {
   });
 
   bool get globallyEnabled {
-    final subscribed =
-        MatrixState.pangeaController.subscriptionController.isSubscribed !=
-        false;
+    if (!MatrixState
+        .pangeaController
+        .subscriptionController
+        .showSubscriptionGatedContent) {
+      return false;
+    }
 
-    return subscribed && !_hasBeenSeen && stepProgress < stepCount;
+    return !_hasBeenSeen && stepProgress < stepCount;
   }
 
   bool locallyEnabled(String? currentRoute) {

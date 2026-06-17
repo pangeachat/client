@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/pangea/subscription/models/subscription_details.dart';
 import 'package:fluffychat/pangea/subscription/utils/subscription_app_id.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/network/urls.dart';

@@ -54,7 +54,10 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
             },
           );
 
-      await MatrixState.pangeaController.subscriptionController.reinitialize();
+      final userID = Matrix.of(context).client.userID;
+      await MatrixState.pangeaController.subscriptionController.reinitialize(
+        userID,
+      );
       context.go('/onboarding');
     } catch (err, s) {
       ErrorHandler.logError(e: err, s: s, data: {});

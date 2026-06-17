@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-15 09:46:31.713998",
+    "@@last_modified": "2026-06-17 10:52:01.230850",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9960,6 +9960,41 @@
     },
     "activityActions": "活動操作",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "專業功能",
+    "pronunciationTools": "發音工具",
+    "audioTranscription": "AI 音頻轉錄",
+    "visualLearnerSupport": "視覺學習者支持",
+    "instantWritingTranslation": "即時寫作翻譯",
+    "personalizedPracticeExercises": "個性化練習題",
+    "vocabularyFlashcards": "詞彙閃卡",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
         "type": "String",
         "placeholders": {}
     }

@@ -12,7 +12,6 @@ import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_room_extens
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_vocab_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -101,12 +100,14 @@ class ActivityStatsMenu extends StatelessWidget {
         : AppConfig.goldLight;
 
     final isColumnMode = FluffyThemes.isColumnMode(context);
-    final activity = room.activityPlan;
 
     return ValueListenableBuilder(
       valueListenable: activeGoalNotifier,
       builder: (context, activeGoal, _) {
-        final remainingGoals = _remainingGoals(activeGoal?.id);
+        final visibleGoal = activeGoal ?? room.ownRole?.allGoals.lastOrNull;
+        if (visibleGoal == null) return SizedBox();
+        final remainingGoals = _remainingGoals(visibleGoal.id);
+
         return ValueListenableBuilder(
           valueListenable: visibilityNotifier,
           builder: (context, showDropdown, child) {
@@ -131,115 +132,81 @@ class ActivityStatsMenu extends StatelessWidget {
                             ),
                             color: theme.colorScheme.surface,
                           ),
-                          child: activeGoal != null
-                              ? AnimatedSwitcher(
-                                  duration: FluffyThemes.animationDuration,
-                                  transitionBuilder: (child, animation) {
-                                    final isCurrent =
-                                        child.key == ValueKey(activeGoal.id);
+                          child: AnimatedSwitcher(
+                            duration: FluffyThemes.animationDuration,
+                            transitionBuilder: (child, animation) {
+                              final isCurrent =
+                                  child.key == ValueKey(visibleGoal.id);
 
-                                    return ClipRect(
-                                      child: AnimatedBuilder(
-                                        animation: animation,
-                                        child: child,
-                                        builder: (context, child) {
-                                          final offset = isCurrent
-                                              // New item: 1 -> 0
-                                              ? Offset(0, 1 - animation.value)
-                                              // Old item: 0 -> -1
-                                              : Offset(0, animation.value - 1);
+                              return ClipRect(
+                                child: AnimatedBuilder(
+                                  animation: animation,
+                                  child: child,
+                                  builder: (context, child) {
+                                    final offset = isCurrent
+                                        // New item: 1 -> 0
+                                        ? Offset(0, 1 - animation.value)
+                                        // Old item: 0 -> -1
+                                        : Offset(0, animation.value - 1);
 
-                                          return FractionalTranslation(
-                                            translation: offset,
-                                            child: child,
-                                          );
-                                        },
-                                      ),
+                                    return FractionalTranslation(
+                                      translation: offset,
+                                      child: child,
                                     );
                                   },
-                                  layoutBuilder:
-                                      (currentChild, previousChildren) {
-                                        return Stack(
-                                          alignment: Alignment.centerLeft,
-                                          children: [
-                                            ...previousChildren,
-                                            ?currentChild,
-                                          ],
-                                        );
-                                      },
-                                  child: Row(
-                                    key: ValueKey(activeGoal.id),
-                                    children: [
-                                      Expanded(
-                                        child: GoalStatusWidget(
-                                          goal: activeGoal,
-                                          complete: room.isOwnGoalCompleted(
-                                            activeGoal.id,
-                                          ),
-                                          starTarget:
-                                              ActivitySessionConstants.goalMenuStarTargetId(
-                                                activeGoal.id,
-                                              ),
-                                        ),
-                                      ),
-                                      if (_showDoneButtonHint && !showDropdown)
-                                        InkWell(
-                                          onTap: () =>
-                                              _finishActivityForMe(context),
-                                          child: Container(
-                                            padding: EdgeInsets.symmetric(
-                                              vertical: 6.0,
-                                              horizontal: 12.0,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: goldColor,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                    AppConfig.borderRadius,
-                                                  ),
-                                            ),
-                                            child: Text(
-                                              L10n.of(
-                                                context,
-                                              ).completeActivityButton,
-                                              style:
-                                                  theme.brightness ==
-                                                      Brightness.light
-                                                  ? null
-                                                  : TextStyle(
-                                                      color: theme
-                                                          .colorScheme
-                                                          .surface,
-                                                    ),
-                                            ),
-                                          ),
-                                        ),
-                                    ],
-                                  ),
-                                )
-                              : Row(
-                                  children: [
-                                    Expanded(
-                                      child: Text(
-                                        L10n.of(context).activityActions,
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: const TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                    IconButton(
-                                      icon: Icon(
-                                        showDropdown
-                                            ? Icons.keyboard_arrow_up
-                                            : Icons.keyboard_arrow_down,
-                                      ),
-                                      onPressed: _toggleVisibility,
-                                    ),
-                                  ],
                                 ),
+                              );
+                            },
+                            layoutBuilder: (currentChild, previousChildren) {
+                              return Stack(
+                                alignment: Alignment.centerLeft,
+                                children: [...previousChildren, ?currentChild],
+                              );
+                            },
+                            child: Row(
+                              key: ValueKey(visibleGoal.id),
+                              children: [
+                                Expanded(
+                                  child: GoalStatusWidget(
+                                    goal: visibleGoal,
+                                    complete: room.isOwnGoalCompleted(
+                                      visibleGoal.id,
+                                    ),
+                                    starTarget:
+                                        ActivitySessionConstants.goalMenuStarTargetId(
+                                          visibleGoal.id,
+                                        ),
+                                  ),
+                                ),
+                                if (_showDoneButtonHint && !showDropdown)
+                                  InkWell(
+                                    onTap: () => _finishActivityForMe(context),
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: 6.0,
+                                        horizontal: 12.0,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: goldColor,
+                                        borderRadius: BorderRadius.circular(
+                                          AppConfig.borderRadius,
+                                        ),
+                                      ),
+                                      child: Text(
+                                        L10n.of(context).completeActivityButton,
+                                        style:
+                                            theme.brightness == Brightness.light
+                                            ? null
+                                            : TextStyle(
+                                                color:
+                                                    theme.colorScheme.surface,
+                                              ),
+                                      ),
+                                    ),
+                                  ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                       ClipRect(
@@ -280,14 +247,20 @@ class ActivityStatsMenu extends StatelessWidget {
                   child: Container(
                     width: double.infinity,
                     color: theme.colorScheme.surface,
-                    padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 24.0),
+                    padding: EdgeInsets.fromLTRB(
+                      12.0,
+                      remainingGoals.isEmpty ? 12.0 : 0.0,
+                      12.0,
+                      _showWaitNotDone || _showEndForMe || _showEndForAll
+                          ? 16.0
+                          : 0,
+                    ),
                     child: Column(
-                      spacing: 16.0,
+                      spacing: 12.0,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         if (remainingGoals.isNotEmpty)
                           Column(
-                            spacing: 16.0,
                             children: remainingGoals
                                 .map(
                                   (g) => GoalStatusWidget(
@@ -296,17 +269,6 @@ class ActivityStatsMenu extends StatelessWidget {
                                   ),
                                 )
                                 .toList(),
-                          ),
-                        if (activity != null)
-                          ActivityVocabWidget(
-                            key: ValueKey(
-                              "activity-stats-menu-${activity.activityId}",
-                            ),
-                            vocab: activity.vocab,
-                            langCode: activity.req.targetLanguage,
-                            targetId: "activity-stats-menu-vocab",
-                            usedVocab: usedVocab,
-                            activityLangCode: activity.req.targetLanguage,
                           ),
                         if (_showWaitNotDone)
                           ElevatedButton(

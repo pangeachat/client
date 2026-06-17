@@ -78,12 +78,14 @@ class WordZoomWidget extends StatelessWidget {
       _showNewWordOverlay(context);
     });
 
-    final bool? subscribed =
-        MatrixState.pangeaController.subscriptionController.isSubscribed;
     final showTranscript =
         MatrixState.pangeaController.userController.showTranscription;
 
-    final Widget content = subscribed != null && !subscribed
+    final Widget content =
+        !MatrixState
+            .pangeaController
+            .subscriptionController
+            .showSubscriptionGatedContent
         ? MessageUnsubscribedCard(token: token, onClose: onClose)
         : Stack(
             children: [

@@ -65,9 +65,9 @@ class AnalyticsPracticeAnalyticsController {
     return analyticsService.getConstructUse(construct, language);
   }
 
-  Future<void> waitForAnalytics() async {
+  Future<void> waitForAnalytics(String? userID) async {
     if (!analyticsService.initCompleter.isCompleted) {
-      MatrixState.pangeaController.initControllers();
+      MatrixState.pangeaController.initControllers(userID);
       await analyticsService.initCompleter.future;
     }
     if (analyticsService.initError != null) {

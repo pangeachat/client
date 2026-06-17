@@ -9,33 +9,18 @@ import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class StarRainWidget extends StatefulWidget {
-  final bool showBlast;
-  final Duration rainDuration;
-  final Duration blastDuration;
-  final VoidCallback? onFinished;
-  final String? overlayKey;
+  final String overlayKey;
 
-  const StarRainWidget({
-    super.key,
-    this.overlayKey,
-    this.showBlast = true,
-    this.rainDuration = const Duration(seconds: 8),
-    this.blastDuration = const Duration(seconds: 1),
-    this.onFinished,
-  });
+  const StarRainWidget({super.key, required this.overlayKey});
 
-  static void show(
-    BuildContext context,
-    String overlayKey, {
-    bool showBlast = false,
-  }) {
+  static void show(BuildContext context, String overlayKey) {
     OverlayUtil.showOverlay(
       context: context,
       position: OverlayPositionEnum.centered,
       closePrevOverlay: false,
       canPop: false,
       overlayKey: overlayKey,
-      child: StarRainWidget(overlayKey: overlayKey, showBlast: showBlast),
+      child: StarRainWidget(overlayKey: overlayKey),
       ignorePointer: true,
     );
   }
@@ -47,21 +32,25 @@ class StarRainWidget extends StatefulWidget {
 class _StarRainWidgetState extends State<StarRainWidget> {
   late ConfettiController _blastController;
   late ConfettiController _rainController;
+
   int numParticles = 2;
   double _fadeOpacity = 1.0;
+
+  final rainDuration = const Duration(seconds: 8);
+  final blastDuration = const Duration(seconds: 1);
+  final opacityDuration = const Duration(milliseconds: 800);
 
   @override
   void initState() {
     super.initState();
-    _blastController = ConfettiController(duration: widget.blastDuration);
-    _rainController = ConfettiController(duration: widget.rainDuration);
+    _blastController = ConfettiController(duration: blastDuration);
+    _rainController = ConfettiController(duration: rainDuration);
 
-    if (widget.showBlast) {
-      _blastController.play();
-    }
+    _blastController.play();
     _rainController.play();
 
     Future.delayed(const Duration(seconds: 4), () {
+      if (!mounted) return;
       if (_rainController.state == ConfettiControllerState.playing) {
         setState(() {
           numParticles = 1;
@@ -70,18 +59,13 @@ class _StarRainWidgetState extends State<StarRainWidget> {
     });
 
     _fadeOpacity = 1.0;
-    Future.delayed(widget.rainDuration, () async {
-      if (mounted) {
-        setState(() {
-          _fadeOpacity = 0.0;
-        });
-      }
-      await Future.delayed(const Duration(milliseconds: 800));
-      if (widget.overlayKey != null) {
-        MatrixState.pAnyState.closeOverlay(widget.overlayKey);
-      }
+    Future.delayed(rainDuration, () async {
+      if (!mounted) return;
 
-      widget.onFinished?.call();
+      setState(() => _fadeOpacity = 0.0);
+      await Future.delayed(opacityDuration);
+      MatrixState.pAnyState.closeOverlay(widget.overlayKey);
+
       if (mounted) {
         _blastController.stop();
         _rainController.stop();
@@ -96,13 +80,40 @@ class _StarRainWidgetState extends State<StarRainWidget> {
     super.dispose();
   }
 
+  Path drawStar(Size size) {
+    double degToRad(double deg) => deg * (pi / 180.0);
+
+    const numberOfPoints = 5;
+    final halfWidth = size.width / 2;
+    final externalRadius = halfWidth;
+    final internalRadius = halfWidth / 2.5;
+    final degreesPerStep = degToRad(360 / numberOfPoints);
+    final halfDegreesPerStep = degreesPerStep / 2;
+    final path = Path();
+    final fullAngle = degToRad(360);
+    path.moveTo(size.width, halfWidth);
+
+    for (double step = 0; step < fullAngle; step += degreesPerStep) {
+      path.lineTo(
+        halfWidth + externalRadius * cos(step),
+        halfWidth + externalRadius * sin(step),
+      );
+      path.lineTo(
+        halfWidth + internalRadius * cos(step + halfDegreesPerStep),
+        halfWidth + internalRadius * sin(step + halfDegreesPerStep),
+      );
+    }
+    path.close();
+    return path;
+  }
+
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
       ignoring: true,
       child: AnimatedOpacity(
         opacity: _fadeOpacity,
-        duration: const Duration(milliseconds: 800),
+        duration: opacityDuration,
         child: LayoutBuilder(
           builder: (context, constaints) {
             final quarterWidth = constaints.maxWidth / 4;
@@ -161,31 +172,4 @@ class _StarRainWidgetState extends State<StarRainWidget> {
       ),
     );
   }
-}
-
-Path drawStar(Size size) {
-  double degToRad(double deg) => deg * (pi / 180.0);
-
-  const numberOfPoints = 5;
-  final halfWidth = size.width / 2;
-  final externalRadius = halfWidth;
-  final internalRadius = halfWidth / 2.5;
-  final degreesPerStep = degToRad(360 / numberOfPoints);
-  final halfDegreesPerStep = degreesPerStep / 2;
-  final path = Path();
-  final fullAngle = degToRad(360);
-  path.moveTo(size.width, halfWidth);
-
-  for (double step = 0; step < fullAngle; step += degreesPerStep) {
-    path.lineTo(
-      halfWidth + externalRadius * cos(step),
-      halfWidth + externalRadius * sin(step),
-    );
-    path.lineTo(
-      halfWidth + internalRadius * cos(step + halfDegreesPerStep),
-      halfWidth + internalRadius * sin(step + halfDegreesPerStep),
-    );
-  }
-  path.close();
-  return path;
 }
