@@ -256,7 +256,7 @@ class ActivityStatsMenu extends StatelessWidget {
                           : 0,
                     ),
                     child: Column(
-                      spacing: 16.0,
+                      spacing: 12.0,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         if (remainingGoals.isNotEmpty)
