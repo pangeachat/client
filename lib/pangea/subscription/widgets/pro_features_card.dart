@@ -43,7 +43,9 @@ class ProFeaturesCard extends StatelessWidget {
       title: L10n.of(context).proFeatures,
       frameColor: gold,
       backgroundColor: theme.colorScheme.surface,
-      foregroundColor: theme.colorScheme.surface,
+      foregroundColor: theme.brightness == Brightness.light
+          ? theme.colorScheme.onSurface
+          : theme.colorScheme.surface,
       child: Column(
         spacing: 12.0,
         crossAxisAlignment: CrossAxisAlignment.start,
