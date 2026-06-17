@@ -65,9 +65,6 @@ enum AnalyticsPanelTab { sessions, grammar, vocab }
 const Set<String> _mapHoleColumnRoutes = {
   '/chats',
   '/rooms',
-  '/courses/own',
-  '/courses/browse',
-  '/courses/private',
   '/courses/:spaceid',
   '/courses/:spaceid/details',
   '/analytics',

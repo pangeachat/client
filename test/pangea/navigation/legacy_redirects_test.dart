@@ -19,6 +19,19 @@ void main() {
       expect(resolve('/rooms/user_home'), '/profile');
     });
 
+    test('settings/profile paths become the right-column settings token', () {
+      // world_v2: the settings/profile tree is a right-column panel, so a
+      // direct /settings or /profile location is rewritten to its token.
+      expect(resolve('/settings'), '/?right=settings');
+      expect(resolve('/settings/learning'), '/?right=settings:learning');
+      expect(
+        resolve('/settings/security/password'),
+        '/?right=settings:security%2Fpassword',
+      );
+      expect(resolve('/profile'), '/?right=settings');
+      expect(resolve('/profile/edit'), '/?right=settings:profile%2Fedit');
+    });
+
     test('find/create course flows keep literal names', () {
       expect(resolve('/rooms/course'), '/courses');
       expect(resolve('/rooms/course/private'), '/courses/private');
@@ -80,16 +93,38 @@ void main() {
       );
     });
 
+    test('section roots become token-driven', () {
+      // chats and a course keep their path and gain their left token.
+      expect(resolve('/chats'), '/chats?left=chats');
+      expect(resolve('/chats?left=chats'), isNull); // already token-driven
+      expect(resolve('/courses/!s'), '/courses/!s?left=course');
+      expect(resolve('/courses/!s?left=course'), isNull);
+      // the add-course wizard's first step becomes the addcourse token,
+      // preserving the flow's query; deeper steps stay route-driven.
+      expect(resolve('/courses/own'), '/?left=addcourse:own');
+      expect(
+        resolve('/courses/own?showAll=true'),
+        '/?left=addcourse:own&showAll=true',
+      );
+      expect(resolve('/courses/browse'), '/?left=addcourse:browse');
+      expect(resolve('/courses/private'), '/?left=addcourse:private');
+      expect(resolve('/courses/own/plan-1'), isNull); // deeper step stays
+      // analytics collapses to its right-column summary token, level included.
+      expect(resolve('/analytics'), '/?right=analytics:vocab');
+      expect(resolve('/analytics/morph'), '/?right=analytics:grammar');
+      expect(resolve('/analytics/activities'), '/?right=analytics:sessions');
+      expect(resolve('/analytics/level'), '/?right=analytics:level');
+    });
+
     test('matrix rooms and fork routes stay put', () {
       expect(resolve('/rooms/!room:server.org'), isNull);
       expect(resolve('/rooms/archive'), isNull);
       expect(resolve('/home/login'), isNull);
       expect(resolve('/'), isNull);
-      expect(resolve('/analytics'), isNull);
     });
 
     test('handle() never redirects to the current location', () {
-      expect(LegacyRedirects.handle(Uri.parse('/analytics')), isNull);
+      expect(LegacyRedirects.handle(Uri.parse('/')), isNull);
     });
   });
 }

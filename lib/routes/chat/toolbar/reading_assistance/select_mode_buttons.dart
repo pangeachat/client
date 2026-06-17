@@ -275,7 +275,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
           ),
         ],
       ),
-      currentRoute: widget.controller.currentRoutePath,
+      isFocused: widget.controller.isFocused,
     );
   }
 

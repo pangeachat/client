@@ -277,13 +277,17 @@ class _WorldMapState extends State<WorldMap>
   @override
   void didUpdateWidget(covariant WorldMap oldWidget) {
     super.didUpdateWidget(oldWidget);
-    // Re-center when the focused activity changes or the exposed canvas
-    // resizes (a panel opened/closed), so the selection stays centered in the
-    // visible map area rather than behind a panel.
-    if (oldWidget.focus != widget.focus ||
-        oldWidget.leftOverlayWidth != widget.leftOverlayWidth ||
-        oldWidget.rightOverlayWidth != widget.rightOverlayWidth) {
+    // Re-center when the focused activity changes or the exposed canvas resizes
+    // (a panel opened/closed), so the selection stays in the visible map area.
+    // A focus change is a deliberate target move (an activity opened) and glides
+    // immediately; an overlay-width change is layout-driven (panels opening or
+    // closing), so it debounces — rapid open/close coalesces into one settled
+    // glide instead of jerking on every step. See routing.instructions.md.
+    if (oldWidget.focus != widget.focus) {
       _fitToContext();
+    } else if (oldWidget.leftOverlayWidth != widget.leftOverlayWidth ||
+        oldWidget.rightOverlayWidth != widget.rightOverlayWidth) {
+      _fitToContext(debounce: true);
     }
   }
 

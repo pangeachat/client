@@ -6,22 +6,17 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/analytics/construct_type_enum.dart';
-import 'package:fluffychat/features/course_plans/new_course_page.dart';
-import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
-import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
-import 'package:fluffychat/routes/analytics/level/level_analytics_details_content.dart';
-import 'package:fluffychat/routes/chat_list/chat_list.dart';
-import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
-import 'package:fluffychat/routes/courses/find_course_page.dart';
-import 'package:fluffychat/routes/courses/private/course_code_page.dart';
-import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/navigation_rail.dart';
 import 'matrix.dart';
 
+/// The left chrome of the world_v2 shell: just the floating navigation rail.
+/// Every section's content is now a URL-token panel rendered by the shell's
+/// allocator (see [TwoColumnLayout]) — including the add-course wizard's first
+/// step (the `addcourse` token). The route-driven `_MainView` left card is
+/// retired, so this widget draws only the rail, in column mode (narrow screens
+/// use the bottom nav). See `routing.instructions.md`.
 class SpaceNavigationColumn extends StatefulWidget {
   final GoRouterState state;
   final bool showNavRail;
@@ -91,175 +86,35 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
-    // World is the full-bleed map: no left column. The "Add new course" hub
-    // (`/courses`) is likewise a card floating over the full-bleed map. Every
-    // other section overlays its list/detail card in the left column. Decided
-    // by route_facts (the single source shared with TwoColumnLayout).
-    final showLeft = showLeftColumn(widget.state);
+    // The vertical rail is column-mode only; narrow screens use the bottom nav.
+    if (!isColumnMode || !widget.showNavRail) return const SizedBox.shrink();
 
-    // width of base navigation rail, if visible
-    final baseNaviRailWidth = isColumnMode
-        ? FluffyThemes.navRailWidth
-        : FluffyThemes.navRailWidth - 8.0;
+    final realNaviRailWidth = FluffyThemes.navRailWidth + 1.0;
+    const realExpandedNaviWidth = 250.0;
 
-    // width of the real navigation rail, accounting for pages where not visible
-    final double realNaviRailWidth = widget.showNavRail
-        ? baseNaviRailWidth + 1.0
-        : 0;
+    return HoverBuilder(
+      builder: (context, hovered) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _onHoverUpdate(hovered);
+        });
 
-    // width of the expanded section of the navigation column, if visible
-    final baseExpandedNaviWidth = 250.0;
-
-    // width of the real expanded section, accounting for pages where not visible
-    final realExpandedNaviWidth = widget.showNavRail
-        ? baseExpandedNaviWidth
-        : 0.0;
-
-    return Stack(
-      children: [
-        if (isColumnMode && showLeft)
-          Positioned.fill(
-            left: realNaviRailWidth,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  clipBehavior: Clip.antiAlias,
-                  decoration: const BoxDecoration(),
-                  width: FluffyThemes.columnWidth,
-                  child: _MainView(state: widget.state),
-                ),
-                Container(width: 1.0, color: theme.dividerColor),
-              ],
-            ),
-          ),
-        // world_v2: the vertical rail is column-mode only; narrow screens
-        // use the bottom nav (rendered by TwoColumnLayout).
-        if (isColumnMode && widget.showNavRail)
-          HoverBuilder(
-            builder: (context, hovered) {
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                _onHoverUpdate(hovered);
-              });
-
-              return Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SpacesNavigationRail(
-                    state: widget.state,
-                    activeSpaceId: activeSpaceIdFor(widget.state.uri),
-                    naviRailWidth: realNaviRailWidth,
-                    expandedSectionWidth: realExpandedNaviWidth,
-                    expanded: _expanded,
-                    collapse: () {
-                      _cancelTimer();
-                      setState(() => _expanded = false);
-                    },
-                    profile: _profile,
-                    onProfileUpdate: _updateProfile,
-                  ),
-                  Container(width: 1, color: Theme.of(context).dividerColor),
-                ],
-              );
-            },
-          ),
-      ],
+        // The rail floats as a content-height bar over the map, matching the
+        // card panels (no full-height divider).
+        return SpacesNavigationRail(
+          state: widget.state,
+          activeSpaceId: activeSpaceIdFor(widget.state.uri),
+          naviRailWidth: realNaviRailWidth,
+          expandedSectionWidth: realExpandedNaviWidth,
+          expanded: _expanded,
+          collapse: () {
+            _cancelTimer();
+            setState(() => _expanded = false);
+          },
+          profile: _profile,
+          onProfileUpdate: _updateProfile,
+        );
+      },
     );
-  }
-}
-
-class _MainView extends StatelessWidget {
-  final GoRouterState state;
-
-  const _MainView({required this.state});
-
-  @override
-  Widget build(BuildContext context) {
-    // world_v2: the left column is decided by the active section (from
-    // route_facts, the single resolver), with sub-views chosen by segment
-    // inspection — never substring matching on the full path.
-    final uri = state.uri;
-    final segments = uri.pathSegments;
-    final section = sectionFor(uri);
-
-    switch (section) {
-      case AppSection.analytics:
-        final sub = segments.length > 1 ? segments[1] : null;
-        final practice = segments.contains('practice');
-        if (sub == 'level') return const LevelAnalyticsDetailsContent();
-        if (sub == 'activities') return const ActivityArchive();
-        if (sub == ConstructTypeEnum.morph.string) {
-          return ConstructAnalyticsView(
-            view: ConstructTypeEnum.morph,
-            showPracticeButton: !practice,
-          );
-        }
-        return ConstructAnalyticsView(
-          view: ConstructTypeEnum.vocab,
-          showPracticeButton: !practice,
-        );
-
-      // Avatar surface (world_v2): profile + settings share the merged
-      // menu in the left column. /profile/edit shows the editor in the
-      // canvas while this menu stays in the column.
-      case AppSection.settings:
-      case AppSection.profile:
-        return Settings(key: state.pageKey);
-
-      case AppSection.courses:
-        // Add-course flows live in the left column over the map (world_v2),
-        // dispatched by sub-path so a selected course's activities can show.
-        final spaceId = activeSpaceIdFor(uri);
-        if (spaceId == null) {
-          // "Start my own" — the plan list.
-          if (segments.contains('own')) {
-            return NewCoursePage(
-              route: 'rooms',
-              initialLanguageCode: uri.queryParameters['lang'],
-              showAll: uri.queryParameters['showAll'] == 'true',
-            );
-          }
-          // "Browse public courses" — the public-course list.
-          if (segments.contains('browse')) {
-            return const FindCoursePage();
-          }
-          // "Enter code for private course".
-          if (segments.contains('private')) {
-            return const CourseCodePage();
-          }
-          // Plain `/courses` (the "Add new course" hub) has no left column —
-          // it is a card floating over the full-bleed map, handled by the
-          // canvas, so it never reaches this branch.
-        }
-        // Inside a specific course chat, keep the chat list in the column.
-        final roomId = activeRoomIdFor(state);
-        final space = spaceId != null
-            ? Matrix.of(context).client.getRoomById(spaceId)
-            : null;
-        if (roomId != null || space == null) {
-          return ChatList(activeChat: roomId, activeSpace: spaceId);
-        }
-        // A joined course root (world_v2): the course card lives in the
-        // left column over the map — the same 4-tab detail the app already
-        // has (chats / course plan / participants / more), now with the
-        // course-plan tab grouped by learning objective.
-        return ChatDetails(
-          roomId: space.id,
-          activeTab: uri.queryParameters['tab'],
-        );
-
-      case AppSection.world:
-        // The world map is the full-bleed canvas; no left column. (The
-        // column is skipped by SpaceNavigationColumn for this section.)
-        return const SizedBox.shrink();
-
-      case AppSection.chats:
-        return ChatList(
-          activeChat: activeRoomIdFor(state),
-          activeSpace: activeSpaceIdFor(state.uri),
-        );
-    }
   }
 }

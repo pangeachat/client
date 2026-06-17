@@ -1,3 +1,4 @@
+import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 
@@ -12,6 +13,62 @@ abstract class LegacyRedirects {
   /// Map an incoming location to its world_v2 equivalent, or null.
   static String? resolve(Uri uri) {
     final segments = uri.pathSegments;
+
+    // world_v2: the profile + settings tree is a right-column panel, not a
+    // route. Rewrite any /settings or /profile location to the canonical
+    // `settings` token so deep links, bookmarks, and the retired route-driven
+    // render all land on the panel. The token param is the sub-page (a
+    // profile/* path keeps its `profile/` prefix so `/profile/edit` is
+    // distinguishable). See `routing.instructions.md`.
+    if (segments.isNotEmpty &&
+        (segments.first == 'settings' || segments.first == 'profile')) {
+      final sub = segments.first == 'profile'
+          ? (segments.length > 1
+              ? 'profile/${segments.sublist(1).join('/')}'
+              : '')
+          : segments.sublist(1).join('/');
+      final token =
+          sub.isEmpty ? const PanelToken('settings') : PanelToken('settings', sub);
+      return '/?right=${token.encode()}';
+    }
+
+    // world_v2: section roots are token-driven so the route-driven `_MainView`
+    // fallback is never needed. Chats and a course keep their path (it carries
+    // the nav highlight and, for a course, the space id) and gain their left
+    // token if missing; analytics collapses to its right-column summary token
+    // (it is not a rail section). These fire only when the token is absent, so
+    // they never loop. See `routing.instructions.md`.
+    if (segments.length == 1 && segments.first == 'chats') {
+      return _ensureLeftToken(uri, 'chats');
+    }
+    if (segments.length == 2 &&
+        segments.first == 'courses' &&
+        segments[1].startsWith('!')) {
+      return _ensureLeftToken(uri, 'course');
+    }
+    // The add-course wizard's first step renders as a left-column panel; rewrite
+    // its literal path to the `addcourse` token, preserving the flow's query
+    // (lang/showAll). Deeper steps (/courses/own/:courseid …) stay route-driven.
+    if (segments.length == 2 &&
+        segments.first == 'courses' &&
+        const {'own', 'browse', 'private'}.contains(segments[1])) {
+      final token = PanelToken('addcourse', segments[1]).encode();
+      return uri.query.isEmpty ? '/?left=$token' : '/?left=$token&${uri.query}';
+    }
+    if (segments.isNotEmpty && segments.first == 'analytics') {
+      // Each analytics metric maps to its right-column summary tab. An unknown
+      // sub (a future route-driven view) is left alone so it still renders.
+      const tabs = {
+        '': 'vocab',
+        'vocab': 'vocab',
+        'morph': 'grammar',
+        'activities': 'sessions',
+        'level': 'level',
+      };
+      final tab = tabs[segments.length > 1 ? segments[1] : ''];
+      return tab == null ? null : '/?right=${PanelToken('analytics', tab).encode()}';
+    }
+
     if (segments.isEmpty || segments.first != 'rooms') return null;
 
     final rest = segments.sublist(1);
@@ -73,6 +130,27 @@ abstract class LegacyRedirects {
     // characters survive the rewrite intact.
     final path = '/${target.map(Uri.encodeComponent).join('/')}';
     return uri.hasQuery ? '$path?${uri.query}' : path;
+  }
+
+  /// Add a bare `left=<type>` token to [uri], preserving the path and every
+  /// other query param, but only when no token of that type is already present
+  /// (so it never loops on the redirect re-run). Returns null when nothing
+  /// needs adding.
+  static String? _ensureLeftToken(Uri uri, String type) {
+    final parts = uri.query.isEmpty ? <String>[] : uri.query.split('&');
+    final idx =
+        parts.indexWhere((p) => p == 'left' || p.startsWith('left='));
+    if (idx >= 0) {
+      final eq = parts[idx].indexOf('=');
+      final value = eq >= 0 ? parts[idx].substring(eq + 1) : '';
+      final present =
+          value.split(',').any((e) => e == type || e.startsWith('$type:'));
+      if (present) return null;
+      parts[idx] = 'left=${value.isEmpty ? type : '$value,$type'}';
+    } else {
+      parts.add('left=$type');
+    }
+    return '${uri.path}?${parts.join('&')}';
   }
 
   /// go_router top-level redirect signature adapter. After any legacy rewrite,

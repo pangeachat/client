@@ -6,10 +6,14 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/routes/world/activity_detail_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
+import 'package:fluffychat/routes/world/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/workspace_right_panel.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
@@ -29,6 +33,27 @@ final GlobalKey _persistentWorldMapKey = GlobalKey(debugLabel: 'worldMap');
 /// Preserves the top-right cluster's State (counts, level, stream subs) across
 /// shell rebuilds, like the persistent map — so it does not re-fetch on nav.
 final GlobalKey _userClusterKey = GlobalKey(debugLabel: 'worldUserCluster');
+
+/// Per-room GlobalKeys for left-column chat panels, keyed by room id **only**
+/// (never eventId, unlike `chat.dart`'s `ChatPageWithRoom` key). A live room's
+/// `ChatController` — its timeline, choreographer, and subscriptions — survives
+/// a slot *reposition* as the `?left=` list grows or shrinks (a sibling panel
+/// opens/closes), because the shell reparents the same element rather than
+/// remounting it. Keyed by room means navigating to a *different* room remounts
+/// (correct: new timeline), while moving the *same* room repositions.
+///
+/// Exception: if the allocator collapses this room to a peek under extreme width
+/// pressure (room is the highest-priority left panel, so this needs ~4 left + ~4
+/// right panels open near the column-mode floor), [WorkspaceLeftPanel] renders a
+/// chevron stripe instead of the `ChatPage`, so the subtree is torn down and the
+/// session re-fetches on re-expand. The GlobalKey can't preserve a subtree that
+/// isn't built. This is an accepted corner-case trade-off, not the common path.
+/// See `routing.instructions.md`.
+final Map<String, GlobalKey> _leftRoomKeys = {};
+GlobalKey _roomKeyFor(String roomId) => _leftRoomKeys.putIfAbsent(
+      roomId,
+      () => GlobalKey(debugLabel: 'leftRoom:$roomId'),
+    );
 
 /// The shell: a single persistent [WorldMap] with the active section overlaid.
 /// Every routing/layout fact comes from `route_facts.dart` (the single source).
@@ -56,15 +81,34 @@ class TwoColumnLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     final isColumnMode = FluffyThemes.isColumnMode(context);
     final navRail = showNavRail(state, isColumnMode);
-    final leftColumn = showLeftColumn(state);
+
+    // Left-column panels named by the URL's `?left=` list — the same token
+    // model as the right column. Every section is token-driven now (the
+    // route-driven `_MainView` left card was retired), so the left column is
+    // entirely the allocator's; the only fixed left inset is the nav rail.
+    final leftTokens = parseOpenPanels(state.uri).left;
+    final leftDefs = [
+      for (final token in leftTokens) PanelRegistry.defFor(token.type)!,
+    ];
+    final hasLeftTokens = leftTokens.isNotEmpty;
+
+    // The single live room panel, if any — the focus signal a room's
+    // ChatController listens to instead of the router (one-live-session rule, so
+    // the first room token is the live one). Published post-frame below.
+    String? focusedLeftToken;
+    for (final token in leftTokens) {
+      if (token.type == 'room') {
+        focusedLeftToken = token.encode();
+        break;
+      }
+    }
 
     // world_v2: the rail is vertical-left in column mode and a bottom bar in
-    // narrow mode, so it only offsets the canvas in column mode. This route-
-    // driven left inset is fed to the allocator as fixed chrome until the left
-    // column is itself URL-driven.
-    final columnWidth =
-        (isColumnMode && navRail ? (FluffyThemes.navRailWidth + 1.0) : 0.0) +
-        (isColumnMode && leftColumn ? (FluffyThemes.columnWidth + 1.0) : 0.0);
+    // narrow mode, so it only offsets the canvas in column mode. The left inset
+    // is just the rail now — there is no route-driven left card to reserve for.
+    final railWidth =
+        isColumnMode && navRail ? (FluffyThemes.navRailWidth + 1.0) : 0.0;
+    final columnWidth = railWidth;
     final showBottomNav = !isColumnMode && navRail;
 
     // The effective canvas (an open activity overlay already resolves to a
@@ -85,7 +129,7 @@ class TwoColumnLayout extends StatelessWidget {
     final layout = PanelAllocator.allocate(
       viewport: viewport,
       isColumnMode: isColumnMode,
-      left: const [],
+      left: leftDefs,
       right: rightDefs,
       railWidth: columnWidth,
     );
@@ -96,16 +140,23 @@ class TwoColumnLayout extends StatelessWidget {
         canvas == CanvasMode.mapHole ||
         (isColumnMode && canvas == CanvasMode.detail);
 
-    // Bound the route-driven center detail by the right-covered width so it can
-    // never slide under a right panel (the non-overlap guarantee).
+    // Where the left column ends. With `?left=` panels the allocator computes
+    // it (the right edge of the last left panel, `leftCovered`); otherwise it's
+    // the fixed chrome inset. The center detail tile and the map's left camera
+    // padding both begin here so neither can slide under a left panel.
+    final leftInset = hasLeftTokens ? layout.mapLeftOverlay : columnWidth;
+
+    // Bound the route-driven center detail by the left inset and the right-
+    // covered width so it can never slide under a panel (the non-overlap
+    // guarantee).
     final detailWidth = canvas == CanvasMode.detail
         ? math.min(
             ShellLayout.detailMax,
-            math.max(0.0, viewport - columnWidth - layout.mapRightOverlay),
+            math.max(0.0, viewport - leftInset - layout.mapRightOverlay),
           )
         : null;
     final mapLeftOverlay =
-        columnWidth + (canvas == CanvasMode.detail ? (detailWidth ?? 0.0) : 0.0);
+        leftInset + (canvas == CanvasMode.detail ? (detailWidth ?? 0.0) : 0.0);
 
     // Scope the persistent map to the active course (world_v2 context). Set
     // post-frame — the map listens and calls setState, which can't run now.
@@ -115,9 +166,10 @@ class TwoColumnLayout extends StatelessWidget {
     final MapContext mapContext = coursePlanId == null
         ? const WorldMapContext()
         : CourseMapContext(coursePlanId);
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => MapContextController.set(mapContext),
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      MapContextController.set(mapContext);
+      PanelFocusController.instance.set(focusedLeftToken);
+    });
 
     // world_v2 mobile: a joined course on a narrow screen rides in a draggable
     // bottom sheet over the persistent (course-scoped) map.
@@ -162,7 +214,7 @@ class TwoColumnLayout extends StatelessWidget {
             //  • detail → capped, bounded by the right panel zone; map peeks.
             //  • fullBleed → fills (the activity page hosts its own map).
             Positioned(
-              left: columnWidth,
+              left: leftInset,
               top: 0,
               bottom: 0,
               right: canvas == CanvasMode.detail ? null : 0,
@@ -179,6 +231,31 @@ class TwoColumnLayout extends StatelessWidget {
             if (isMobileCourse)
               Positioned.fill(child: MobileCourseSheet(child: canvasChild)),
             SpaceNavigationColumn(state: state, showNavRail: navRail),
+            // Left-column panels (the chat list, a live room, a course, the
+            // settings/profile menu) from `?left=`, each at its allocator slot
+            // and rendered as a rounded card over the map, matching the right
+            // column (margin via the Padding here, card chrome in
+            // WorkspaceLeftPanel). Keyed by token so opening/closing a sibling
+            // panel doesn't shift indices and remount this one; a `room` panel
+            // additionally carries a roomId GlobalKey so its ChatController
+            // repositions rather than remounts when the slot moves.
+            for (var i = 0; i < leftTokens.length; i++)
+              if (layout.left[i].vis != PanelVis.hidden)
+                Positioned(
+                  key: ValueKey(leftTokens[i].encode()),
+                  top: 0,
+                  bottom: 0,
+                  left: layout.left[i].left,
+                  width: layout.left[i].width,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 12, 8, 12),
+                    child: _leftPanel(
+                      leftTokens[i],
+                      state.uri,
+                      peek: layout.left[i].vis == PanelVis.peek,
+                    ),
+                  ),
+                ),
             // Right-column panels (analytics summary, a vocab/grammar detail, a
             // completed-activity review) from `?right=`, each placed at its
             // allocator slot. The slots tile and never overlap by construction;
@@ -186,6 +263,11 @@ class TwoColumnLayout extends StatelessWidget {
             for (var i = 0; i < rightTokens.length; i++)
               if (layout.right[i].vis != PanelVis.hidden)
                 Positioned(
+                  // Keyed by token so a left-column open/close (which shifts
+                  // sibling indices in this Stack) reconciles the right panel by
+                  // identity, not position — otherwise its stateful content
+                  // (analytics, a detail) would remount and re-fetch.
+                  key: ValueKey(rightTokens[i].encode()),
                   top: 0,
                   bottom: 0,
                   left: layout.right[i].left,
@@ -212,5 +294,21 @@ class TwoColumnLayout extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  /// Builds one left-column panel for [token]. A `room` panel is wrapped in a
+  /// roomId-keyed [GlobalKey] so the same [ChatController] is reparented (not
+  /// remounted) when its slot moves; other left surfaces are cheap to rebuild
+  /// and key by position.
+  Widget _leftPanel(PanelToken token, Uri uri, {required bool peek}) {
+    final panel =
+        WorkspaceLeftPanel(token: token, currentUri: uri, peek: peek);
+    if (token.type == 'room') {
+      return KeyedSubtree(
+        key: _roomKeyFor(fullRoomId(token.param ?? '')),
+        child: panel,
+      );
+    }
+    return panel;
   }
 }

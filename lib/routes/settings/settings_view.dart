@@ -7,6 +7,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
@@ -208,7 +209,12 @@ class SettingsView extends StatelessWidget {
                       tileColor: activeRoute.startsWith('/profile/edit')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
-                      onTap: () => context.go('/profile/edit'),
+                      onTap: () => context.go(
+                        WorkspaceNav.openSettings(
+                          GoRouterState.of(context).uri,
+                          page: 'profile/edit',
+                        ),
+                      ),
                     ),
                     ListTile(
                       leading: const Icon(Icons.language_outlined),
@@ -216,7 +222,12 @@ class SettingsView extends StatelessWidget {
                       tileColor: activeRoute.startsWith('/settings/learning')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
-                      onTap: () => context.go('/settings/learning'),
+                      onTap: () => context.go(
+                        WorkspaceNav.openSettings(
+                          GoRouterState.of(context).uri,
+                          page: 'learning',
+                        ),
+                      ),
                     ),
                     // Pangea#
                     ListTile(
@@ -225,7 +236,12 @@ class SettingsView extends StatelessWidget {
                       tileColor: activeRoute.startsWith('/settings/style')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
-                      onTap: () => context.go('/settings/style'),
+                      onTap: () => context.go(
+                        WorkspaceNav.openSettings(
+                          GoRouterState.of(context).uri,
+                          page: 'style',
+                        ),
+                      ),
                     ),
                     ListTile(
                       leading: const Icon(Icons.notifications_outlined),
@@ -234,12 +250,22 @@ class SettingsView extends StatelessWidget {
                           activeRoute.startsWith('/settings/notifications')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
-                      onTap: () => context.go('/settings/notifications'),
+                      onTap: () => context.go(
+                        WorkspaceNav.openSettings(
+                          GoRouterState.of(context).uri,
+                          page: 'notifications',
+                        ),
+                      ),
                     ),
                     ListTile(
                       leading: const Icon(Icons.devices_outlined),
                       title: Text(L10n.of(context).devices),
-                      onTap: () => context.go('/settings/devices'),
+                      onTap: () => context.go(
+                        WorkspaceNav.openSettings(
+                          GoRouterState.of(context).uri,
+                          page: 'devices',
+                        ),
+                      ),
                       tileColor: activeRoute.startsWith('/settings/devices')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
@@ -247,7 +273,12 @@ class SettingsView extends StatelessWidget {
                     ListTile(
                       leading: const Icon(Icons.forum_outlined),
                       title: Text(L10n.of(context).chat),
-                      onTap: () => context.go('/settings/chat'),
+                      onTap: () => context.go(
+                        WorkspaceNav.openSettings(
+                          GoRouterState.of(context).uri,
+                          page: 'chat',
+                        ),
+                      ),
                       tileColor: activeRoute.startsWith('/settings/chat')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
@@ -256,7 +287,12 @@ class SettingsView extends StatelessWidget {
                     ListTile(
                       leading: const Icon(Icons.account_circle_outlined),
                       title: Text(L10n.of(context).subscriptionManagement),
-                      onTap: () => context.go('/settings/subscription'),
+                      onTap: () => context.go(
+                        WorkspaceNav.openSettings(
+                          GoRouterState.of(context).uri,
+                          page: 'subscription',
+                        ),
+                      ),
                       tileColor:
                           activeRoute.startsWith('/settings/subscription')
                           ? theme.colorScheme.surfaceContainerHigh
@@ -266,7 +302,12 @@ class SettingsView extends StatelessWidget {
                     ListTile(
                       leading: const Icon(Icons.shield_outlined),
                       title: Text(L10n.of(context).security),
-                      onTap: () => context.go('/settings/security'),
+                      onTap: () => context.go(
+                        WorkspaceNav.openSettings(
+                          GoRouterState.of(context).uri,
+                          page: 'security',
+                        ),
+                      ),
                       tileColor: activeRoute.startsWith('/settings/security')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,

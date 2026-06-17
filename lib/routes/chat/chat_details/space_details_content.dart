@@ -15,6 +15,8 @@ import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/share_room_button.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
@@ -67,7 +69,17 @@ class SpaceDetailsContent extends StatelessWidget {
   }
 
   void setSelectedTab(SpaceSettingsTabs tab, BuildContext context) {
-    context.go('/rooms/spaces/${room.id}/details?tab=${tab.name}');
+    // Switching tabs re-opens the course token with the new tab in its param —
+    // a same-path query mutation that preserves any open right panel (e.g. the
+    // analytics panel) by construction, instead of the old path nav that
+    // dropped it. The course panel decodes the tab back out. See
+    // routing.instructions.md.
+    context.go(
+      WorkspaceNav.openCourse(
+        GoRouterState.of(context).uri,
+        PanelToken('course', tab.name),
+      ),
+    );
   }
 
   List<ButtonDetails> _buttons(BuildContext context) {
@@ -307,6 +319,17 @@ class SpaceDetailsContent extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
+        // world_v2: a space has no AppBar (PangeaRoomDetailsView passes null for
+        // spaces), so the left-panel close control — an X on desktop, a back
+        // arrow on mobile — rides at the leading edge of the card header,
+        // matching the right column's leading close affordance. Dropping it
+        // would leave the course card with no way to close. See
+        // routing.instructions.md.
+        if (controller.widget.embeddedCloseButton != null)
+          Align(
+            alignment: AlignmentDirectional.centerStart,
+            child: controller.widget.embeddedCloseButton,
+          ),
         Row(
           crossAxisAlignment: isColumnMode
               ? CrossAxisAlignment.start

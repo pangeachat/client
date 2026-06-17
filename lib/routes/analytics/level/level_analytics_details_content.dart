@@ -15,7 +15,13 @@ import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.da
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LevelAnalyticsDetailsContent extends StatelessWidget {
-  const LevelAnalyticsDetailsContent({super.key});
+  /// When hosted inside the world map's right-docked analytics panel, hide the
+  /// cross-metric [LearningProgressIndicators] header — the panel card already
+  /// carries the title and close control, and the metric switcher belongs to the
+  /// cluster, not the docked tab. Mirrors `ConstructAnalyticsView.embedded`.
+  final bool embedded;
+
+  const LevelAnalyticsDetailsContent({super.key, this.embedded = false});
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +40,11 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
             builder: (context, _) {
               return Column(
                 children: [
-                  const LearningProgressIndicators(
-                    selected: ProgressIndicatorEnum.level,
-                    canSelect: false,
-                  ),
+                  if (!embedded)
+                    const LearningProgressIndicators(
+                      selected: ProgressIndicatorEnum.level,
+                      canSelect: false,
+                    ),
                   FutureBuilder(
                     future: language != null
                         ? analyticsService.derivedData(language)

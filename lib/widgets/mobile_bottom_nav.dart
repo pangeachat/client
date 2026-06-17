@@ -4,8 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_icon_button.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
@@ -40,14 +42,21 @@ class MobileBottomNav extends StatelessWidget {
               PangeaIconButton(
                 selected: section == AppSection.world,
                 tooltip: L10n.of(context).world,
-                onPressed: () => context.go(PRoutes.world),
+                // World is home: clear every panel and reveal the full map.
+                onPressed: () => context.go(WorkspaceNav.clearAll()),
               ),
               _NavButton(
                 icon: Icons.forum_outlined,
                 selectedIcon: Icons.forum,
                 selected: section == AppSection.chats,
                 tooltip: L10n.of(context).allChats,
-                onTap: () => context.go(PRoutes.chats),
+                onTap: () => context.go(
+                  WorkspaceNav.setSection(
+                    state.uri,
+                    PRoutes.chats,
+                    const PanelToken('chats'),
+                  ),
+                ),
               ),
               _NavButton(
                 icon: Icons.analytics_outlined,
@@ -61,11 +70,13 @@ class MobileBottomNav extends StatelessWidget {
               _NavButton(
                 icon: Icons.account_circle_outlined,
                 selectedIcon: Icons.account_circle,
-                selected:
-                    section == AppSection.profile ||
-                    section == AppSection.settings,
+                // world_v2: profile + settings is a right-column panel, so it's
+                // "selected" when a settings token is open, not by section.
+                selected: parseOpenPanels(
+                  state.uri,
+                ).right.any((t) => t.type == 'settings'),
                 tooltip: L10n.of(context).profile,
-                onTap: () => context.go(PRoutes.profile),
+                onTap: () => context.go(WorkspaceNav.openSettings(state.uri)),
               ),
             ],
           ),
@@ -140,6 +151,7 @@ class _SpaceSwitcherButton extends StatelessWidget {
 
 Future<void> _showSpaceSwitcherSheet(BuildContext context) {
   final client = Matrix.of(context).client;
+  final uri = GoRouterState.of(context).uri;
   final spaces = client.rooms
       .where((r) => r.isSpace && r.membership == Membership.join)
       .toList();
@@ -168,7 +180,13 @@ Future<void> _showSpaceSwitcherSheet(BuildContext context) {
               ),
               onTap: () {
                 Navigator.of(sheetContext).pop();
-                sheetContext.go(PRoutes.course(space.id));
+                sheetContext.go(
+                  WorkspaceNav.setSection(
+                    uri,
+                    PRoutes.course(space.id),
+                    const PanelToken('course'),
+                  ),
+                );
               },
             ),
           const Divider(height: 1),

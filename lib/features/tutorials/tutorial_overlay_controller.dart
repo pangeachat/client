@@ -262,11 +262,12 @@ class TutorialOverlayController {
   void launchTutorial({
     required BuildContext context,
     required TutorialModel tutorial,
-    required String? currentRoute,
+    required bool isFocused,
   }) {
-    if (!tutorial.tutorialType.locallyEnabled(currentRoute)) {
+    if (!tutorial.tutorialType.locallyEnabled(isFocused)) {
       Logs().w(
-        "Tutorial ${tutorial.tutorialType} is not locally enabled for route $currentRoute",
+        "Tutorial ${tutorial.tutorialType} is not locally enabled "
+        "(chat panel not focused)",
       );
       return;
     }

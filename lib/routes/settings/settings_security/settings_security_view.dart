@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/beautify_string_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -78,8 +79,12 @@ class SettingsSecurityView extends StatelessWidget {
                         Matrix.of(context).client.ignoredUsers.length,
                       ),
                     ),
-                    onTap: () =>
-                        context.go('/rooms/settings/security/ignorelist'),
+                    onTap: () => context.go(
+                      WorkspaceNav.openSettings(
+                        GoRouterState.of(context).uri,
+                        page: 'security/ignorelist',
+                      ),
+                    ),
                   ),
                   if (Matrix.of(context).client.encryption != null) ...{
                     if (PlatformInfos.isMobile)
@@ -152,7 +157,12 @@ class SettingsSecurityView extends StatelessWidget {
                       leading: const Icon(Icons.mail_outline_rounded),
                       trailing: const Icon(Icons.chevron_right_outlined),
                       title: Text(L10n.of(context).changeEmail),
-                      onTap: () => context.go('/rooms/settings/security/3pid'),
+                      onTap: () => context.go(
+                        WorkspaceNav.openSettings(
+                          GoRouterState.of(context).uri,
+                          page: 'security/3pid',
+                        ),
+                      ),
                     ),
                   // Pangea#
                   if (capabilities?.mChangePassword?.enabled != false ||
@@ -161,8 +171,12 @@ class SettingsSecurityView extends StatelessWidget {
                       leading: const Icon(Icons.password_outlined),
                       trailing: const Icon(Icons.chevron_right_outlined),
                       title: Text(L10n.of(context).changePassword),
-                      onTap: () =>
-                          context.go('/rooms/settings/security/password'),
+                      onTap: () => context.go(
+                        WorkspaceNav.openSettings(
+                          GoRouterState.of(context).uri,
+                          page: 'security/password',
+                        ),
+                      ),
                     ),
                   ListTile(
                     iconColor: Colors.orange,

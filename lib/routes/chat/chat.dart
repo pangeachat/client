@@ -36,6 +36,9 @@ import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/language_service.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/navigation/panel_focus.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/subscription/widgets/paywall_card.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
@@ -122,6 +125,13 @@ class _TimelineUpdateNotifier extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+/// Serializes [ChatController._getTimeline] across every chat controller. A
+/// focus swap can suspend the outgoing room and load the incoming room in the
+/// same frame; running two `room.getTimeline` calls at once is unsafe because
+/// `getTimeline` overwrites the shared `room.timeline`. Each controller awaits
+/// any in-flight load before starting its own. See `routing.instructions.md`.
+Completer<void>? _getTimelineGate;
 // Pangea#
 
 class ChatPage extends StatelessWidget {
@@ -243,6 +253,16 @@ class ChatController extends State<ChatPageWithRoom>
   late Client sendingClient;
 
   Timeline? timeline;
+
+  /// True while this room's timeline subscriptions are cancelled but the
+  /// controller stays mounted (the panel lost focus without being removed). On
+  /// refocus the timeline is reloaded. See [_suspendTimeline]/[_resumeTimeline].
+  bool _timelineSuspended = false;
+
+  /// True while a [_getTimeline] load is in flight (including waiting on the
+  /// serialization gate), so [_resumeTimeline] won't queue a duplicate load on
+  /// top of the initial one when focus is published just after mount.
+  bool _timelineLoading = false;
 
   String? activeThreadId;
 
@@ -543,6 +563,14 @@ class ChatController extends State<ChatPageWithRoom>
         ? lastEventThreadId ?? room.fullyRead
         : '';
     WidgetsBinding.instance.addObserver(this);
+    // #Pangea
+    // Learn "am I the focused left panel" from the shell's focus signal instead
+    // of subscribing to every route change (which used to tear the chat down on
+    // unrelated left-navigation). Registered on the global singleton, so no
+    // BuildContext is needed and it can't double-subscribe via
+    // didChangeDependencies.
+    PanelFocusController.instance.addListener(_onFocusChanged);
+    // Pangea#
     _tryLoadTimeline();
     // #Pangea
     _pangeaInit();
@@ -754,7 +782,7 @@ class ChatController extends State<ChatPageWithRoom>
           ),
         ],
       ),
-      currentRoute: _router.state.path,
+      isFocused: isFocused,
     );
   }
 
@@ -769,7 +797,7 @@ class ChatController extends State<ChatPageWithRoom>
           ),
         ],
       ),
-      currentRoute: _router.state.path,
+      isFocused: isFocused,
     );
   }
 
@@ -811,7 +839,20 @@ class ChatController extends State<ChatPageWithRoom>
     activeGoalNotifier.value = room.currentGoal;
   }
 
-  String? get currentRoutePath => _router.state.path;
+  /// This room panel's canonical `?left=` token (`room:<shortRoomId>`), matching
+  /// what the shell publishes via [PanelFocusController] and what nav builds.
+  String get _myToken => PanelToken('room', shortRoomId(room.id)).encode();
+
+  /// Whether this chat is the focused/active surface right now. Primary signal:
+  /// my room token is the live `?left=` panel. Until navigation is fully
+  /// `?left=`-driven (Phase 3+), a chat still opens as the route-driven center
+  /// detail with no token, so fall back to the legacy route match; `_router`
+  /// and this fallback retire once that migration completes.
+  bool get isFocused {
+    final focused = PanelFocusController.instance.focusedLeftToken;
+    if (focused != null) return focused == _myToken;
+    return _router.state.path == ':roomid';
+  }
 
   bool get _canLaunchTutorialSequence {
     if (tutorialOverlayController.state.hasCompletedSequence) {
@@ -1015,6 +1056,32 @@ class ChatController extends State<ChatPageWithRoom>
   // Pangea#
 
   Future<void> _getTimeline({String? eventContextId}) async {
+    _timelineLoading = true;
+    try {
+      // Serialize with any other controller's in-flight load (see
+      // _getTimelineGate): a focus swap must not run two getTimeline calls at
+      // once, since getTimeline overwrites the shared room.timeline.
+      while (_getTimelineGate != null) {
+        await _getTimelineGate!.future;
+      }
+      final gate = _getTimelineGate = Completer<void>();
+      try {
+        await _getTimelineInner(eventContextId: eventContextId);
+      } finally {
+        _getTimelineGate = null;
+        gate.complete();
+      }
+    } finally {
+      _timelineLoading = false;
+    }
+  }
+
+  Future<void> _getTimelineInner({String? eventContextId}) async {
+    // May resume here after an unbounded wait on the gate; bail if this
+    // controller was disposed meanwhile so we don't touch a defunct context.
+    if (!mounted) return;
+    // Subscriptions are (re)attached below, so this room is no longer suspended.
+    _timelineSuspended = false;
     await Matrix.of(context).client.roomsLoading;
     await Matrix.of(context).client.accountDataLoading;
     if (eventContextId != null &&
@@ -1174,6 +1241,7 @@ class ChatController extends State<ChatPageWithRoom>
     _tokensSubscription?.cancel();
     _readingAssistanceTutorialSubscription?.cancel();
     _bannerController.dispose();
+    PanelFocusController.instance.removeListener(_onFocusChanged);
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     scrollController.dispose();
     inputFocus.dispose();
@@ -1194,8 +1262,15 @@ class ChatController extends State<ChatPageWithRoom>
   void didChangeDependencies() {
     super.didChangeDependencies();
     _router = GoRouter.of(context);
-    _router.routeInformationProvider.addListener(_onRouteChanged);
-    if (room.isSpace && _router.state.path == ":roomid") {
+    // Transient UI teardown (stop media, close overlays) stays bound to route
+    // changes — it must fire even in the legacy route-driven flow, where no
+    // ?left= token exists so the focus signal never changes. Timeline focus is
+    // handled separately by _onFocusChanged via PanelFocusController. _router is
+    // also read for the legacy fallback in [isFocused].
+    _router.routeInformationProvider
+      ..removeListener(_onRouteChanged)
+      ..addListener(_onRouteChanged);
+    if (room.isSpace && isFocused) {
       ErrorHandler.logError(
         e: "Space chat opened",
         s: StackTrace.current,
@@ -1205,12 +1280,51 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
+  /// Transient UI teardown on navigation, matching the pre-decoupling behavior:
+  /// stop in-progress media and close this chat's overlays whenever the route
+  /// changes. Bound to the router (not focus) so it also fires in the legacy
+  /// route-driven flow — e.g. opening a chat subroute (search/details/invite)
+  /// that keeps this controller mounted underneath — where no ?left= token
+  /// exists and the focus signal therefore never changes.
   void _onRouteChanged() {
+    if (!mounted) return;
     if (!stopMediaStream.isClosed) {
       stopMediaStream.add(null);
     }
     MatrixState.pAnyState.closeOverlay("star-rain-${widget.room.id}");
     MatrixState.pAnyState.closeAllOverlays();
+  }
+
+  /// Timeline lifecycle follows panel focus (the URL-driven left column): resume
+  /// when this room becomes the live panel, suspend when another panel takes
+  /// over while we stay mounted. In the legacy route-driven flow no focus signal
+  /// is published, so this never fires and the timeline simply stays loaded (as
+  /// before); [_onRouteChanged] handles transient teardown there instead.
+  void _onFocusChanged() {
+    if (!mounted) return;
+    if (isFocused) {
+      _resumeTimeline();
+    } else {
+      _suspendTimeline();
+    }
+  }
+
+  /// Cancel timeline subscriptions but keep the [timeline] object and this
+  /// controller mounted, so a refocus can resume without losing draft/scroll.
+  void _suspendTimeline() {
+    if (timeline == null || _timelineSuspended) return;
+    timeline?.cancelSubscriptions();
+    _timelineSuspended = true;
+  }
+
+  /// Reload the timeline on (re)focus if it was never loaded or was suspended.
+  /// `room.getTimeline` overwrites `room.timeline`, so a full reload is the safe
+  /// way to re-attach `onUpdate` after a suspend. Skips when a load is already
+  /// in flight, so the post-mount focus publish can't double-load.
+  void _resumeTimeline() {
+    if (_timelineLoading) return;
+    if (timeline != null && !_timelineSuspended) return;
+    loadTimelineFuture = _getTimeline();
   }
 
   // TextEditingController sendController = TextEditingController();
@@ -2492,7 +2606,7 @@ class ChatController extends State<ChatPageWithRoom>
 
       await Future.delayed(delay);
 
-      if (_router.state.path != ':roomid') {
+      if (!isFocused) {
         // The user has navigated away from the chat,
         // so we don't want to show the overlay.
         return;

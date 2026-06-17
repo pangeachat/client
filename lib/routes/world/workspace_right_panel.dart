@@ -8,12 +8,12 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
-import 'package:fluffychat/routes/world/completed_activity_review_panel.dart';
+import 'package:fluffychat/routes/analytics/level/level_analytics_details_content.dart';
+import 'package:fluffychat/routes/world/settings_panel.dart';
 
 /// Renders one right-column panel token as a rounded card floating over the map.
 /// The header carries the close (a summary/review) or back (a detail blooming
@@ -72,6 +72,25 @@ class WorkspaceRightPanel extends StatelessWidget {
       case 'analytics':
         final (title, child) = _analytics(l10n, token.param);
         return _card(context, icon: Icons.close, title: title, child: child);
+      case 'settings':
+      case 'profile':
+        // The whole profile + settings tree in one right-column panel. The menu
+        // is the top level (close X); a sub-page is a push (back arrow pops one
+        // level). Identity is the token param. See routing.instructions.md.
+        final page = token.param;
+        final isMenu = page == null || page.isEmpty;
+        return _card(
+          context,
+          icon: isMenu ? Icons.close : Icons.arrow_back,
+          tooltip: isMenu
+              ? l10n.close
+              : MaterialLocalizations.of(context).backButtonTooltip,
+          title: isMenu ? l10n.settings : '',
+          onLeading: isMenu
+              ? null
+              : () => context.go(WorkspaceNav.settingsBack(currentUri, page)),
+          child: SettingsPanel(subPath: page),
+        );
       case 'vocab':
       case 'grammar':
         final construct = _construct;
@@ -88,17 +107,17 @@ class WorkspaceRightPanel extends StatelessWidget {
             embedded: true,
           ),
         );
-      case 'review':
+      default:
+        // A registered right-panel type whose builder was retired (e.g. a stale
+        // `review:` URL from before a completed activity opened as its own
+        // chat). Degrade to a closeable placeholder so it can never become a
+        // width-reserving, close-less ghost. See routing.instructions.md.
         return _card(
           context,
           icon: Icons.close,
-          title: l10n.activities,
-          child: CompletedActivityReviewPanel(
-            roomId: fullRoomId(token.param ?? ''),
-          ),
+          title: l10n.oopsSomethingWentWrong,
+          child: const SizedBox.shrink(),
         );
-      default:
-        return const SizedBox.shrink();
     }
   }
 
@@ -114,6 +133,8 @@ class WorkspaceRightPanel extends StatelessWidget {
         );
       case 'sessions':
         return (l10n.activities, const ActivityArchive(embedded: true));
+      case 'level':
+        return (l10n.level, const LevelAnalyticsDetailsContent(embedded: true));
       case 'vocab':
       default:
         return (
@@ -132,6 +153,7 @@ class WorkspaceRightPanel extends StatelessWidget {
     required String title,
     required Widget child,
     String? tooltip,
+    VoidCallback? onLeading,
   }) {
     return Material(
       color: Theme.of(context).colorScheme.surface,
@@ -147,7 +169,7 @@ class WorkspaceRightPanel extends StatelessWidget {
                 IconButton(
                   tooltip: tooltip ?? L10n.of(context).close,
                   icon: Icon(icon),
-                  onPressed: () => _close(context),
+                  onPressed: onLeading ?? () => _close(context),
                 ),
                 const SizedBox(width: 4),
                 Expanded(

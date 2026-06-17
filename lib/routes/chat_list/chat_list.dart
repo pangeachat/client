@@ -18,7 +18,11 @@ import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -32,7 +36,6 @@ import 'package:fluffychat/routes/invite_user/user_invite_link_repo.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
-import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/show_scaffold_dialog.dart';
 import 'package:fluffychat/utils/show_update_snackbar.dart';
@@ -123,8 +126,24 @@ class ChatListController extends State<ChatList>
   // void clearActiveSpace() => setState(() {
   //   _activeSpaceId = null;
   // });
-  void clearActiveSpace() => context.go(PRoutes.chats);
-  void setActiveSpace(String spaceId) => context.go(PRoutes.course(spaceId));
+  // Section navigation: go to the section's path (so `activeSpaceIdFor` reads
+  // the spaceid and the rail/map stay in sync) while keeping the live room and
+  // any right panel. The section is a left token so it coexists with the room.
+  // See routing.instructions.md.
+  void clearActiveSpace() => context.go(
+    WorkspaceNav.setSection(
+      GoRouterState.of(context).uri,
+      PRoutes.chats,
+      const PanelToken('chats'),
+    ),
+  );
+  void setActiveSpace(String spaceId) => context.go(
+    WorkspaceNav.setSection(
+      GoRouterState.of(context).uri,
+      PRoutes.course(spaceId),
+      const PanelToken('course'),
+    ),
+  );
   // Pangea#
 
   void onChatTap(Room room) async {
@@ -241,8 +260,26 @@ class ChatListController extends State<ChatList>
     }
 
     // #Pangea
-    // context.go('/rooms/${room.id}');
-    NavigationUtil.goToSpaceRoute(room.id, [], context);
+    // Open the chat as a left room panel: one live session (drops any other
+    // room), preserves an open right panel, and keeps the chat list / course
+    // beside it. If the list is still the legacy path-driven _MainView (no left
+    // token yet), seed a `chats` token first so tapping a chat doesn't tear the
+    // list down. See routing.instructions.md ("panels are independent").
+    var uri = GoRouterState.of(context).uri;
+    final hasSection = parseOpenPanels(uri).left.any(
+      (t) => t.type == 'chats' || t.type == 'course',
+    );
+    if (!hasSection) {
+      uri = Uri.parse(
+        WorkspaceNav.openLeft(uri, const PanelToken('chats'), atStart: true),
+      );
+    }
+    context.go(
+      WorkspaceNav.openExclusiveLeftRoom(
+        uri,
+        PanelToken('room', shortRoomId(room.id)),
+      ),
+    );
     // Pangea#
   }
 

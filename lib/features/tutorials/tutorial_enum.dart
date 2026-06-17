@@ -5,26 +5,21 @@ enum TutorialEnum {
   readingAssistance(
     stepCount: 1,
     showNavigationButtons: false,
-    route: ':roomid',
   ),
   writingAssistance(
     stepCount: 1,
     showNavigationButtons: false,
-    route: ':roomid',
   ),
   selectModeButtons(
     stepCount: 4,
     showNavigationButtons: false,
-    route: ':roomid',
   );
 
   final int stepCount;
-  final String route;
   final bool showNavigationButtons;
 
   const TutorialEnum({
     required this.stepCount,
-    required this.route,
     this.showNavigationButtons = true,
   });
 
@@ -36,8 +31,10 @@ enum TutorialEnum {
     return subscribed && !_hasBeenSeen && stepProgress < stepCount;
   }
 
-  bool locallyEnabled(String? currentRoute) {
-    return currentRoute == route;
+  /// Whether this tutorial may run on the current surface. Every tutorial is
+  /// chat-scoped, so the gate is simply whether the chat panel is focused.
+  bool locallyEnabled(bool isFocused) {
+    return isFocused;
   }
 
   InstructionsEnum get _instructionsEnum => switch (this) {

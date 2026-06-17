@@ -46,6 +46,12 @@ nohup sh -c 'flutter run -d web-server --web-port=8090 --web-hostname=0.0.0.0 < 
 
 A warm incremental build is ~10–20s. If it takes minutes, a zombie compiler is competing or `.dart_tool` went cold — see Recovery.
 
+### After a restart: reload via one fresh tab
+
+Reflecting the new build in the **external** Chrome is its own trap. A hard reload of the existing tab races the dev-server boot (you get the old bundle or a blank canvas), and a CDP screenshot against a mid-boot tab can wedge the connection. The reliable move is to open a **fresh** MCP tab on `http://localhost:8090/` after the banner appears — a new tab always pulls the new bundle.
+
+Fresh tabs pile up fast, so **close the prior tab(s)** — keep exactly one working tab. List with `tabs_context_mcp`, open with `tabs_create_mcp`, then `navigate` the new tab, and only **after** that `tabs_close_mcp` the old ids. Order matters: do NOT close the old tab in the same `browser_batch` *before* the navigate — closing it drops the group's active-tab reference and the next `navigate` fails with "not in the same group". Close as a separate step after the fresh tab is driving. (Closing the group's last tab removes the group; that's fine — the next `tabs_context_mcp {createIfEmpty:true}` starts a fresh one.)
+
 ### Never do
 
 - **Never `kill -9` the `flutter run` pid** to stop it — orphans the compiler. Use `q` via the fifo. If `q` won't take (wedged), kill the whole **process group**, not the pid: `kill -- -$(ps -o pgid= -p <pid> | tr -d ' ')`.

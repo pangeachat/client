@@ -12,8 +12,8 @@ import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -124,7 +124,22 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
         ),
       );
 
-  void _openProfile() => context.go(PRoutes.profile);
+  /// Open the profile + settings panel on the right (its menu), keeping any
+  /// other open panels — world_v2 moved settings/profile to the right column.
+  void _openProfile() => context.go(
+        WorkspaceNav.openSettings(GoRouterState.of(context).uri),
+      );
+
+  /// The avatar's gold level badge opens the level analytics tab on the right
+  /// (the avatar body opens settings). setRight replaces the right list, so it
+  /// behaves like the other analytics tabs. (A future redesign splits the badge
+  /// into its own more-obviously-tappable element.) See routing.instructions.md.
+  void _openLevel() => context.go(
+        WorkspaceNav.setRight(
+          GoRouterState.of(context).uri,
+          [const PanelToken('analytics', 'level')],
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -144,6 +159,7 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
           name: _displayName,
           flagEmoji: l2?.localeEmoji,
           onTap: _openProfile,
+          onLevelTap: _openLevel,
         ),
         const SizedBox(height: 8),
         _TrackerPill(
@@ -165,6 +181,7 @@ class _LeveledAvatar extends StatelessWidget {
   final String? name;
   final String? flagEmoji;
   final VoidCallback onTap;
+  final VoidCallback onLevelTap;
 
   const _LeveledAvatar({
     required this.level,
@@ -173,6 +190,7 @@ class _LeveledAvatar extends StatelessWidget {
     required this.name,
     required this.flagEmoji,
     required this.onTap,
+    required this.onLevelTap,
   });
 
   static const double _avatarSize = 56.0;
@@ -228,17 +246,32 @@ class _LeveledAvatar extends StatelessWidget {
                     ),
                   ),
                 ),
+              // The gold level badge is its own tap target (opens the level
+              // analytics tab); as the last Stack child it wins the hit test
+              // over the avatar's GestureDetector in the overlap. See
+              // routing.instructions.md.
               Positioned(
                 bottom: 0,
-                child: _Badge(
-                  background: AppConfig.gold,
-                  child: Text(
-                    '$level',
-                    style: const TextStyle(
-                      fontSize: 12,
-                      height: 1.1,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: onLevelTap,
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Semantics(
+                      button: true,
+                      label: L10n.of(context).level,
+                      child: _Badge(
+                        background: AppConfig.gold,
+                        child: Text(
+                          '$level',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            height: 1.1,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),

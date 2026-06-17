@@ -69,4 +69,236 @@ void main() {
       expect(parseOpenPanels(u(loc)).right, [const PanelToken('analytics', 'grammar')]);
     });
   });
+
+  group('openExclusiveLeftRoom (one live session)', () {
+    test('opening a room drops any other room but keeps chats/course', () {
+      var loc = WorkspaceNav.setLeft(
+        u('/chats'),
+        const [PanelToken('chats'), PanelToken('room', '!a')],
+      );
+      loc = WorkspaceNav.openExclusiveLeftRoom(
+        u(loc),
+        const PanelToken('room', '!b'),
+      );
+      final left = parseOpenPanels(u(loc)).left;
+      expect(
+        left.where((t) => t.type == 'room').map((t) => t.param).toList(),
+        ['!b'],
+      );
+      expect(left.any((t) => t.type == 'chats'), isTrue);
+    });
+
+    test('preserves an open right panel by construction', () {
+      final loc = WorkspaceNav.openExclusiveLeftRoom(
+        u('/chats?right=analytics:vocab'),
+        const PanelToken('room', '!a'),
+      );
+      expect(
+        parseOpenPanels(u(loc)).right,
+        [const PanelToken('analytics', 'vocab')],
+      );
+    });
+  });
+
+  group('openCourse (open / switch tab)', () {
+    test('switching tabs replaces the course token rather than stacking', () {
+      // The course id lives in the path; the token param is just the tab.
+      var loc = WorkspaceNav.openCourse(
+        u('/courses/!s'),
+        const PanelToken('course', 'chat'),
+      );
+      loc = WorkspaceNav.openCourse(
+        u(loc),
+        const PanelToken('course', 'participants'),
+      );
+      final courses =
+          parseOpenPanels(u(loc)).left.where((t) => t.type == 'course').toList();
+      expect(courses.length, 1);
+      expect(courses.single.param, 'participants');
+    });
+
+    test('keeps a live room beside the course (a course can scope a room)', () {
+      var loc = WorkspaceNav.openExclusiveLeftRoom(
+        u('/chats'),
+        const PanelToken('room', '!a'),
+      );
+      loc = WorkspaceNav.openCourse(u(loc), const PanelToken('course', '!s'));
+      final left = parseOpenPanels(u(loc)).left;
+      expect(left.any((t) => t.type == 'room'), isTrue);
+      expect(left.any((t) => t.type == 'course'), isTrue);
+    });
+  });
+
+  group('openExclusiveRightDetail (one construct detail at a time)', () {
+    test('a new construct detail replaces the prior one, keeping the summary', () {
+      var loc = WorkspaceNav.openRight(u('/'), const PanelToken('analytics', 'vocab'));
+      loc = WorkspaceNav.openExclusiveRightDetail(u(loc), const PanelToken('vocab', 'hablar'));
+      loc = WorkspaceNav.openExclusiveRightDetail(u(loc), const PanelToken('grammar', 'verb'));
+      final right = parseOpenPanels(u(loc)).right;
+      // exactly one construct detail, blooming left of its kept summary
+      expect(right.where((t) => t.type == 'vocab' || t.type == 'grammar').length, 1);
+      expect(right.first, const PanelToken('grammar', 'verb')); // detail at the edge-left
+      expect(right.any((t) => t.type == 'analytics'), isTrue); // summary kept
+    });
+  });
+
+  group('setLeft / clearLeft', () {
+    test('setLeft replaces the whole left list, preserving right', () {
+      var loc = WorkspaceNav.setLeft(
+        u('/chats?right=analytics:vocab'),
+        const [PanelToken('room', '!a'), PanelToken('chats')],
+      );
+      loc = WorkspaceNav.setLeft(u(loc), const [PanelToken('course')]);
+      expect(parseOpenPanels(u(loc)).left, [const PanelToken('course')]);
+      expect(
+        parseOpenPanels(u(loc)).right,
+        [const PanelToken('analytics', 'vocab')],
+      );
+    });
+
+    test('clearLeft empties the left list but keeps right', () {
+      final loc = WorkspaceNav.clearLeft(
+        u('/chats?left=chats&right=analytics:vocab'),
+      );
+      expect(parseOpenPanels(u(loc)).left, isEmpty);
+      expect(
+        parseOpenPanels(u(loc)).right,
+        [const PanelToken('analytics', 'vocab')],
+      );
+    });
+  });
+
+  group('closeSection (close a path-addressable section panel)', () {
+    test('closing a course returns to the world map and keeps room + right', () {
+      final loc = WorkspaceNav.closeSection(
+        u('/courses/!s?left=course,room:!a&right=analytics:vocab'),
+        const PanelToken('course'),
+      );
+      final parsed = u(loc);
+      expect(parsed.path, '/'); // off the /courses/:id path so no route card
+      final lists = parseOpenPanels(parsed);
+      expect(lists.left, [const PanelToken('room', '!a')]); // room kept
+      expect(lists.left.any((t) => t.type == 'course'), isFalse);
+      expect(lists.right, [const PanelToken('analytics', 'vocab')]); // kept
+    });
+
+    test('closing the only panel lands on a bare world path', () {
+      final loc = WorkspaceNav.closeSection(
+        u('/courses/!s?left=course'),
+        const PanelToken('course'),
+      );
+      expect(loc, '/');
+    });
+  });
+
+  group('preserveOpenPanels carries the right list, not the left', () {
+    test('a section navigation keeps the right panel but drops the left', () {
+      // Seed the remembered URL with both lists, then navigate to a new path
+      // that names no panels (a bare section nav).
+      WorkspaceNav.preserveOpenPanels(
+        u('/chats?left=chats,room:!a&right=analytics:vocab'),
+      );
+      final result = WorkspaceNav.preserveOpenPanels(u('/profile'));
+      expect(result, isNotNull);
+      final parsed = u(result!);
+      expect(parsed.path, '/profile');
+      expect(
+        parseOpenPanels(parsed).right,
+        [const PanelToken('analytics', 'vocab')],
+      );
+      expect(parseOpenPanels(parsed).left, isEmpty);
+    });
+  });
+
+  group('clearAll (World/home clears the whole workspace)', () {
+    test('returns the bare world map path', () {
+      expect(WorkspaceNav.clearAll(), '/');
+    });
+
+    test('preserveOpenPanels does not carry companions onto bare home', () {
+      // Seed a remembered URL with an open right panel, then go home.
+      WorkspaceNav.preserveOpenPanels(
+        u('/chats?left=chats&right=analytics:vocab'),
+      );
+      // Bare home is accepted as-is (null) — not rewritten to re-attach right=.
+      expect(WorkspaceNav.preserveOpenPanels(u('/')), isNull);
+    });
+  });
+
+  group('openSettings / settingsBack (the right-column settings panel)', () {
+    test('opens the menu as a right token, keeping other right panels', () {
+      final loc = WorkspaceNav.openSettings(u('/?right=analytics:vocab'));
+      final right = parseOpenPanels(u(loc)).right;
+      expect(right.any((t) => t.type == 'settings' && t.param == null), isTrue);
+      expect(right.any((t) => t.type == 'analytics'), isTrue);
+    });
+
+    test('opening a page replaces the settings token param (a push)', () {
+      var loc = WorkspaceNav.openSettings(u('/'), page: 'security');
+      loc = WorkspaceNav.openSettings(u(loc), page: 'security/password');
+      final settings = parseOpenPanels(u(loc))
+          .right
+          .where((t) => t.type == 'settings')
+          .toList();
+      expect(settings.length, 1);
+      expect(settings.single.param, 'security/password'); // slash survives
+    });
+
+    test('settingsBack pops one level; a top-level page returns to the menu', () {
+      final toSecurity = WorkspaceNav.settingsBack(
+        u(WorkspaceNav.openSettings(u('/'), page: 'security/password')),
+        'security/password',
+      );
+      expect(
+        parseOpenPanels(u(toSecurity)).right.single.param,
+        'security',
+      );
+      final toMenu = WorkspaceNav.settingsBack(
+        u(WorkspaceNav.openSettings(u('/'), page: 'learning')),
+        'learning',
+      );
+      expect(parseOpenPanels(u(toMenu)).right.single.param, isNull);
+    });
+  });
+
+  group('setSection (move between sections, keep the live chat)', () {
+    test('moving to the world keeps the live room and the right column', () {
+      final world = WorkspaceNav.setSection(
+        u('/chats?left=chats,room:!a&right=analytics:vocab'),
+        '/',
+        null,
+      );
+      expect(u(world).path, '/');
+      final lists = parseOpenPanels(u(world));
+      expect(lists.left, [const PanelToken('room', '!a')]); // room kept, no section
+      expect(lists.right, [const PanelToken('analytics', 'vocab')]); // kept
+    });
+
+    test('sets the new section in front of the kept room', () {
+      final chats = WorkspaceNav.setSection(
+        u('/?left=room:!a&right=analytics:vocab'),
+        '/chats',
+        const PanelToken('chats'),
+      );
+      expect(u(chats).path, '/chats');
+      expect(
+        parseOpenPanels(u(chats)).left,
+        [const PanelToken('chats'), const PanelToken('room', '!a')],
+      );
+    });
+
+    test('keepRoom:false drops the room (focused full-bleed flow)', () {
+      final hub = WorkspaceNav.setSection(
+        u('/chats?left=chats,room:!a&right=analytics:vocab'),
+        '/courses',
+        null,
+        keepRoom: false,
+      );
+      expect(parseOpenPanels(u(hub)).left, isEmpty);
+      expect(
+        parseOpenPanels(u(hub)).right,
+        [const PanelToken('analytics', 'vocab')],
+      );
+    });
+  });
 }

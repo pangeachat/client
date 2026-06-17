@@ -8,8 +8,10 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
@@ -57,12 +59,19 @@ class SpacesNavigationRail extends StatelessWidget {
   // #Pangea
   Future<void> _onTapSpace(BuildContext context, String roomId) async {
     collapse();
+    final uri = GoRouterState.of(context).uri;
     final client = Matrix.of(context).client;
     final room = client.getRoomById(roomId);
     final membership = room?.membership;
 
     if (!{Membership.invite, Membership.leave}.contains(membership)) {
-      context.go(PRoutes.course(roomId));
+      context.go(
+        WorkspaceNav.setSection(
+          uri,
+          PRoutes.course(roomId),
+          const PanelToken('course'),
+        ),
+      );
       return;
     }
 
@@ -78,7 +87,13 @@ class SpacesNavigationRail extends StatelessWidget {
     final joinedRoomId = await handler.handle(context);
     if (joinedRoomId == null) return;
 
-    context.go(PRoutes.course(joinedRoomId));
+    context.go(
+      WorkspaceNav.setSection(
+        uri,
+        PRoutes.course(joinedRoomId),
+        const PanelToken('course'),
+      ),
+    );
     return;
   }
 
@@ -140,15 +155,11 @@ class SpacesNavigationRail extends StatelessWidget {
     // world_v2: section + active space from route_facts (the single resolver),
     // using the shell's state so the rail can't disagree with the shell.
     final section = sectionFor(state.uri);
-    final isSettings = section == AppSection.settings;
-    final isUserHome = section == AppSection.profile;
     final isChats = section == AppSection.chats;
     final isWorld = section == AppSection.world;
     // The Add-course / find-course flow: courses section, no active space.
     final isCourseFind =
         section == AppSection.courses && activeSpaceId == null;
-    // The Avatar slot merges profile + settings (world_v2).
-    final isAvatar = isUserHome || isSettings;
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
     // return StreamBuilder(
@@ -174,16 +185,20 @@ class SpacesNavigationRail extends StatelessWidget {
                   : naviRailWidth,
               duration: FluffyThemes.animationDuration,
               // Pangea#
-              // world_v2 rail order (top→bottom): Avatar (profile+settings) ·
-              // joined spaces · Chats · Analytics · World · Add-course.
-              // Settings folds into the Avatar surface — no bottom slot.
+              // world_v2 rail order (top→bottom): World · joined spaces ·
+              // Chats · Add-course. (Profile/settings is no longer a rail slot.)
               child: Column(
                 // #Pangea
+                // Size the rail to its items — a floating bar over the map, not
+                // the full screen height; it still scrolls if the joined-spaces
+                // list overflows the viewport.
+                mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 // Pangea#
                 children: [
-                  Expanded(
+                  Flexible(
                     child: ListView(
+                      shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       children: [
                         // World map home — the Pangea brand mark, at the top of
@@ -205,53 +220,11 @@ class SpacesNavigationRail extends StatelessWidget {
                           ),
                           onTap: () {
                             collapse();
-                            context.go(PRoutes.world);
+                            // World is home: clear every panel (both columns)
+                            // and reveal the full map. See routing.instructions.md.
+                            context.go(WorkspaceNav.clearAll());
                           },
                           toolTip: L10n.of(context).world,
-                          expanded: expanded,
-                          naviRailWidth: naviRailWidth,
-                          expandedSectionWidth: expandedSectionWidth,
-                        ),
-                        // Avatar — profile + settings.
-                        NaviRailItem(
-                          isSelected: isAvatar,
-                          onTap: () {
-                            collapse();
-                            context.go(PRoutes.profile);
-                          },
-                          backgroundColor: Colors.transparent,
-                          icon: FutureBuilder<Profile>(
-                            initialData: profile,
-                            future: client.fetchOwnProfile(),
-                            builder: (context, snapshot) {
-                              if (snapshot.data?.avatarUrl != null &&
-                                  snapshot.data?.avatarUrl !=
-                                      profile?.avatarUrl) {
-                                WidgetsBinding.instance.addPostFrameCallback(
-                                  (_) => onProfileUpdate(snapshot.data!),
-                                );
-                              }
-                              return Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  Material(
-                                    color: Colors.transparent,
-                                    borderRadius: BorderRadius.circular(99),
-                                    child: Avatar(
-                                      mxContent: snapshot.data?.avatarUrl,
-                                      name:
-                                          snapshot.data?.displayName ??
-                                          client.userID!.localpart,
-                                      size:
-                                          naviRailWidth -
-                                          (isColumnMode ? 32.0 : 24.0),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
-                          toolTip: L10n.of(context).home,
                           expanded: expanded,
                           naviRailWidth: naviRailWidth,
                           expandedSectionWidth: expandedSectionWidth,
@@ -266,7 +239,13 @@ class SpacesNavigationRail extends StatelessWidget {
                           selectedIcon: const Icon(Icons.forum),
                           onTap: () {
                             collapse();
-                            context.go(PRoutes.chats);
+                            context.go(
+                              WorkspaceNav.setSection(
+                                state.uri,
+                                PRoutes.chats,
+                                const PanelToken('chats'),
+                              ),
+                            );
                           },
                           toolTip: L10n.of(context).allChats,
                           unreadBadgeFilter: (room) =>
@@ -287,7 +266,16 @@ class SpacesNavigationRail extends StatelessWidget {
                           isSelected: isCourseFind,
                           onTap: () {
                             collapse();
-                            context.go(PRoutes.courses);
+                            // The add-course hub is a focused full-bleed flow:
+                            // no section panel, and no chat floating over it.
+                            context.go(
+                              WorkspaceNav.setSection(
+                                state.uri,
+                                PRoutes.courses,
+                                null,
+                                keepRoom: false,
+                              ),
+                            );
                           },
                           icon: ClipPath(
                             clipper: MapClipper(),
