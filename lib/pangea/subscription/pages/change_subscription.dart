@@ -141,7 +141,7 @@ class ChangeSubscriptionState extends State<ChangeSubscription> {
                                             Expanded(
                                               flex: 2,
                                               child: Text(
-                                                "${subscription.displayPrice(context)}/${subscription.duration?.value}",
+                                                "${subscription.displayPrice(context)}/${subscription.duration?.name}",
                                                 style: const TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                 ),

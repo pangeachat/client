@@ -7,14 +7,14 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/subscription/repo/payment_history_response.dart';
+import 'package:fluffychat/pangea/subscription/repo/billing_portal_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class PaymentHistoryCacheEntry {
-  final Future<Result<PaymentHistoryResponse>> future;
+class BillingPortalCacheEntry {
+  final Future<Result<BillingPortalResponse>> future;
   final DateTime timestamp;
 
-  const PaymentHistoryCacheEntry({
+  const BillingPortalCacheEntry({
     required this.future,
     required this.timestamp,
   });
@@ -25,10 +25,10 @@ class PaymentHistoryCacheEntry {
       timestamp.isBefore(DateTime.now().subtract(_cacheDuration));
 }
 
-class PaymentHistoryRepo {
-  static final Map<String, PaymentHistoryCacheEntry> _cache = {};
+class BillingPortalRepo {
+  static final Map<String, BillingPortalCacheEntry> _cache = {};
 
-  static Future<Result<PaymentHistoryResponse>> get(String userID) async {
+  static Future<Result<BillingPortalResponse>> get(String userID) async {
     final cached = _cache[userID];
     if (cached != null) {
       if (cached.isExpired) {
@@ -39,23 +39,21 @@ class PaymentHistoryRepo {
     }
 
     final future = _fetch();
-
-    _cache[userID] = PaymentHistoryCacheEntry(
+    _cache[userID] = BillingPortalCacheEntry(
       future: future,
       timestamp: DateTime.now(),
     );
-
     final result = await future;
     return result;
   }
 
-  static Future<Result<PaymentHistoryResponse>> _fetch() async {
+  static Future<Result<BillingPortalResponse>> _fetch() async {
     try {
       final Requests req = Requests(
         accessToken: MatrixState.pangeaController.userController.accessToken,
         choreoApiKey: Environment.choreoApiKey,
       );
-      final Response res = await req.get(url: PApiUrls.paymentHistory);
+      final Response res = await req.get(url: PApiUrls.billingPortal);
 
       if (res.statusCode != 200) {
         throw res;
@@ -65,7 +63,7 @@ class PaymentHistoryRepo {
         utf8.decode(res.bodyBytes).toString(),
       );
 
-      final response = PaymentHistoryResponse.fromJson(json);
+      final response = BillingPortalResponse.fromJson(json);
       return Result.value(response);
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {});

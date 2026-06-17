@@ -90,4 +90,7 @@ class PApiUrls {
       "${PApiUrls._subscriptionEndpoint}/validate_promo_code";
 
   static String paymentHistory = "${PApiUrls._subscriptionEndpoint}/history";
+
+  static String billingPortal =
+      "${PApiUrls._subscriptionEndpoint}/billing_portal";
 }

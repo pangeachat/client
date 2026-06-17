@@ -35,7 +35,7 @@ class PaymentLinkRepo {
         accessToken: MatrixState.pangeaController.userController.accessToken,
       );
       final String reqUrl = Uri.encodeFull(
-        "${PApiUrls.paymentLink}?duration=${request.duration.value}&redeem=${request.isPromo}",
+        "${PApiUrls.paymentLink}?duration=${request.duration.name}&redeem=${request.isPromo}",
       );
       final Response res = await req.get(url: reqUrl);
       final json = jsonDecode(res.body);
