@@ -42,13 +42,11 @@ final GlobalKey _userClusterKey = GlobalKey(debugLabel: 'worldUserCluster');
 /// remounting it. Keyed by room means navigating to a *different* room remounts
 /// (correct: new timeline), while moving the *same* room repositions.
 ///
-/// Exception: if the allocator collapses this room to a peek under extreme width
-/// pressure (room is the highest-priority left panel, so this needs ~4 left + ~4
-/// right panels open near the column-mode floor), [WorkspaceLeftPanel] renders a
-/// chevron stripe instead of the `ChatPage`, so the subtree is torn down and the
-/// session re-fetches on re-expand. The GlobalKey can't preserve a subtree that
-/// isn't built. This is an accepted corner-case trade-off, not the common path.
-/// See `routing.instructions.md`.
+/// A `room` is the highest-priority panel in either column, and the allocator
+/// folds the *lowest*-priority panel away first — so a live room is never the one
+/// folded out of the layout (its lower-priority siblings, the chat list or a
+/// course, fold first) and is always the focus in single-column mode. The session
+/// therefore survives every relayout, fold included. See `routing.instructions.md`.
 final Map<String, GlobalKey> _leftRoomKeys = {};
 GlobalKey _roomKeyFor(String roomId) => _leftRoomKeys.putIfAbsent(
       roomId,
@@ -249,17 +247,14 @@ class TwoColumnLayout extends StatelessWidget {
                   width: layout.left[i].width,
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(8, 12, 8, 12),
-                    child: _leftPanel(
-                      leftTokens[i],
-                      state.uri,
-                      peek: layout.left[i].vis == PanelVis.peek,
-                    ),
+                    child: _leftPanel(leftTokens[i], state.uri),
                   ),
                 ),
             // Right-column panels (analytics summary, a vocab/grammar detail, a
             // completed-activity review) from `?right=`, each placed at its
             // allocator slot. The slots tile and never overlap by construction;
-            // a collapsed slot renders as a peek the user can tap to re-expand.
+            // a folded slot is `hidden` (not drawn), its content one back-step
+            // away on the higher-priority sibling that stayed.
             for (var i = 0; i < rightTokens.length; i++)
               if (layout.right[i].vis != PanelVis.hidden)
                 Positioned(
@@ -277,7 +272,6 @@ class TwoColumnLayout extends StatelessWidget {
                     child: WorkspaceRightPanel(
                       token: rightTokens[i],
                       currentUri: state.uri,
-                      peek: layout.right[i].vis == PanelVis.peek,
                     ),
                   ),
                 ),
@@ -300,9 +294,8 @@ class TwoColumnLayout extends StatelessWidget {
   /// roomId-keyed [GlobalKey] so the same [ChatController] is reparented (not
   /// remounted) when its slot moves; other left surfaces are cheap to rebuild
   /// and key by position.
-  Widget _leftPanel(PanelToken token, Uri uri, {required bool peek}) {
-    final panel =
-        WorkspaceLeftPanel(token: token, currentUri: uri, peek: peek);
+  Widget _leftPanel(PanelToken token, Uri uri) {
+    final panel = WorkspaceLeftPanel(token: token, currentUri: uri);
     if (token.type == 'room') {
       return KeyedSubtree(
         key: _roomKeyFor(fullRoomId(token.param ?? '')),

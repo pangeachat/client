@@ -73,17 +73,29 @@ void main() {
       expectNoOverlap(l);
     });
 
-    test('the lowest-priority panel collapses to a peek only when floors '
-        "can't all be met", () {
-      // Three right panels (min 360 each) cannot meet floors in this budget.
+    test('the lowest-priority panel folds away (not drawn) when reasonable '
+        "mins can't all be met", () {
+      // Three right panels can't all honor their reasonable-min in this budget,
+      // so the lowest-priority one folds out of the layout entirely (no stripe).
       final l = run(viewport: 1161, right: ['review', 'vocab', 'analytics']);
-      final peeks = l.right.where((s) => s.vis == PanelVis.peek).toList();
-      expect(peeks.length, 1);
+      final folded = l.right.where((s) => s.vis == PanelVis.hidden).toList();
+      expect(folded.length, 1);
       // analytics has the lowest priority (40 < vocab 50 < review 70).
-      expect(l.right[2].vis, PanelVis.peek);
+      expect(l.right[2].vis, PanelVis.hidden);
       expect(l.right[0].vis, PanelVis.full);
       expect(l.right[1].vis, PanelVis.full);
-      expect(peeks.single.width, PanelAllocator.peekWidth);
+      expect(folded.single.width, 0); // folded slots carry no width
+      expectNoOverlap(l);
+    });
+
+    test('a master/detail pair folds to one panel below its reasonable-min', () {
+      // A live chat (room) beside the chat list, on a viewport too narrow to
+      // honor both reasonable-mins (480 + 340 + chrome): the lower-priority list
+      // folds away and the room — highest priority — keeps the column and its
+      // session. Closing the room reveals the list (back-to-master).
+      final l = run(viewport: 900, left: ['chats', 'room']);
+      expect(l.left[1].vis, PanelVis.full); // room (priority 80) stays
+      expect(l.left[0].vis, PanelVis.hidden); // chats (priority 30) folds
       expectNoOverlap(l);
     });
   });

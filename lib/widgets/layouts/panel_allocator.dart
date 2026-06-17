@@ -6,14 +6,13 @@ import 'package:fluffychat/features/navigation/panel_registry.dart';
 
 /// How a panel renders for the resolved layout.
 enum PanelVis {
-  /// Sized between its min and ideal width.
+  /// Sized between its hard min and ideal width.
   full,
 
-  /// Collapsed to a thin stripe/tab because there was no room to seat it.
-  peek,
-
-  /// Not shown (an exclusive panel is holding the screen, or narrow mode seats
-  /// only the focused panel).
+  /// Not drawn. Either an exclusive panel holds the screen, the column **folded**
+  /// this panel away (its content is one back-step away on the higher-priority
+  /// sibling that stayed), or narrow mode seats only the focused panel. There is
+  /// no peek stripe — fold replaces it. See `routing.instructions.md`.
   hidden,
 }
 
@@ -64,15 +63,13 @@ class WorkspaceLayout {
 /// `ShellLayout.resolve` single-panel-per-side budget with a shared-width
 /// allocator over N panels per column. Both columns draw from one budget: each
 /// panel grows greedily to its ideal (the map fills whatever is left), and when
-/// they can't all fit, they compress toward their per-panel floors and only then
-/// does the lowest-priority panel collapse to a peek — never a full-screen
-/// takeover. Pure + unit-tested. See `routing.instructions.md`.
+/// they can't all fit, they compress toward their reasonable-min and only then
+/// **fold** — the lowest-priority panel drops out of the layout (not drawn, no
+/// stripe; its content one back-step away on the sibling that stayed), never a
+/// full-screen takeover. Pure + unit-tested. See `routing.instructions.md`.
 abstract class PanelAllocator {
   /// Right margin reserved for the cluster beside the right column.
   static const double clusterGutter = 88.0;
-
-  /// Width of a collapsed panel's stripe/tab.
-  static const double peekWidth = 44.0;
 
   /// Gap between two adjacent panels in the same column.
   static const double panelGap = 16.0;
@@ -145,31 +142,43 @@ abstract class PanelAllocator {
 
     final gutter = right.isNotEmpty ? clusterGutter : 0.0;
     final content = math.max(0.0, viewport - railWidth - gutter);
-    final gapTotal = math.max(0, left.length - 1) * panelGap +
-        math.max(0, right.length - 1) * panelGap;
 
-    // Collapse the lowest-priority full panel to a peek until the rest can meet
-    // their minimums within the budget (the map is the backdrop, not a panel, so
-    // it isn't sized here — it simply shows wherever the panels leave room).
-    final peeked = <_Entry>{};
-    while (true) {
-      final fulls = all.where((e) => !peeked.contains(e)).toList();
-      final needMin = fulls.fold(0.0, (s, e) => s + e.def.minWidth) +
-          peeked.length * peekWidth +
-          gapTotal;
-      if (needMin <= content || fulls.isEmpty) break;
-      fulls.sort((a, b) => a.def.priority.compareTo(b.def.priority));
-      peeked.add(fulls.first);
+    // One gap between adjacent panels within each column, for whatever set is
+    // actually shown.
+    double gapsFor(Iterable<_Entry> vis) {
+      final l = vis.where((e) => e.column == PanelColumn.left).length;
+      final r = vis.where((e) => e.column == PanelColumn.right).length;
+      return (math.max(0, l - 1) + math.max(0, r - 1)) * panelGap;
     }
 
-    // Size the full panels: ideals if they fit, else compress toward mins by
-    // distributing the available surplus across each panel's headroom.
-    final fulls = all.where((e) => !peeked.contains(e)).toList();
-    final avail =
-        math.max(0.0, content - peeked.length * peekWidth - gapTotal);
+    // Fold the lowest-priority panel away until the rest fit at their reasonable
+    // min (the comfort floor). A fold neither peeks to a stripe nor reserves
+    // width — the panel is simply not drawn, its content one back-step away on
+    // the higher-priority sibling that stays (the detail keeps the column; its
+    // master is a pop behind, reached by closing the detail). Highest priority
+    // folds last, so a live `room` (top of the left column) is never folded away
+    // and keeps its session. The map is the backdrop, not a panel, so it isn't
+    // sized here — it shows wherever the panels leave room. See
+    // `routing.instructions.md`.
+    final folded = <_Entry>{};
+    while (true) {
+      final vis = all.where((e) => !folded.contains(e)).toList();
+      if (vis.length <= 1) break;
+      final needReasonable =
+          vis.fold(0.0, (s, e) => s + e.def.reasonableMin) + gapsFor(vis);
+      if (needReasonable <= content) break;
+      vis.sort((a, b) => a.def.priority.compareTo(b.def.priority));
+      folded.add(vis.first);
+    }
+
+    // Size the surviving panels: ideals if they fit, else compress toward their
+    // hard mins by distributing the surplus across each panel's headroom.
+    final fulls = all.where((e) => !folded.contains(e)).toList();
+    final avail = math.max(0.0, content - gapsFor(fulls));
     final sumIdeal = fulls.fold(0.0, (s, e) => s + e.def.idealWidth);
     final sumMin = fulls.fold(0.0, (s, e) => s + e.def.minWidth);
-    final headroom = fulls.fold(0.0, (s, e) => s + (e.def.idealWidth - e.def.minWidth));
+    final headroom =
+        fulls.fold(0.0, (s, e) => s + (e.def.idealWidth - e.def.minWidth));
     final widths = <_Entry, double>{};
     for (final e in fulls) {
       if (sumIdeal <= avail || headroom <= 0) {
@@ -180,37 +189,35 @@ abstract class PanelAllocator {
             (e.def.idealWidth - e.def.minWidth) / headroom * surplus;
       }
     }
-    for (final e in peeked) {
-      widths[e] = peekWidth;
-    }
 
     double widthOf(_Entry e) => widths[e] ?? 0.0;
-    PanelVis visOf(_Entry e) => peeked.contains(e) ? PanelVis.peek : PanelVis.full;
 
     // Position: left column fills from the rail rightward; right column is
-    // right-justified (its group ends at viewport - gutter), order preserved.
+    // right-justified (its group ends at viewport - gutter). Folded panels are
+    // skipped — not drawn, no gap reserved — order otherwise preserved.
     final placement = <_Entry, PanelSlot>{};
     var x = railWidth;
-    for (final e in all.where((e) => e.column == PanelColumn.left)) {
-      placement[e] = PanelSlot(left: x, width: widthOf(e), vis: visOf(e));
+    for (final e in fulls.where((e) => e.column == PanelColumn.left)) {
+      placement[e] = PanelSlot(left: x, width: widthOf(e), vis: PanelVis.full);
       x += widthOf(e) + panelGap;
     }
-    final leftCovered = left.isEmpty ? railWidth : x - panelGap;
+    final hasLeft = fulls.any((e) => e.column == PanelColumn.left);
+    final leftCovered = hasLeft ? x - panelGap : railWidth;
 
-    final rights = all.where((e) => e.column == PanelColumn.right).toList();
+    final rights = fulls.where((e) => e.column == PanelColumn.right).toList();
     final rightTotal = rights.fold(0.0, (s, e) => s + widthOf(e)) +
         math.max(0, rights.length - 1) * panelGap;
     var rx = viewport - gutter - rightTotal;
     final rightStart = rx;
     for (final e in rights) {
-      placement[e] = PanelSlot(left: rx, width: widthOf(e), vis: visOf(e));
+      placement[e] = PanelSlot(left: rx, width: widthOf(e), vis: PanelVis.full);
       rx += widthOf(e) + panelGap;
     }
 
     return _build(left, right, railWidth,
         clusterVisible: true,
         mapLeftOverlay: leftCovered,
-        mapRightOverlay: right.isEmpty ? 0.0 : viewport - rightStart,
+        mapRightOverlay: rights.isEmpty ? 0.0 : viewport - rightStart,
         slot: (e) => placement[e] ?? hidden());
   }
 

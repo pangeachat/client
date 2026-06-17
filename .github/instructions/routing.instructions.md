@@ -91,10 +91,11 @@ widths** so the allocator can place and degrade it predictably:
 
 When the open panels want more than fits, they compress from max toward their
 reasonable min and the map absorbs the slack. Past that point there is exactly one
-degrade move: **fold**. A column's two panels collapse into one — the detail's
-content moves *inside* the master as a pushed page (back arrow to return) instead of
-sitting beside it — so the pair now costs one panel's width. Folding never discards
-a panel; its content is one pop away, and because it pushes rather than tears down,
+degrade move: **fold**. A column's two panels collapse into one: the **detail**
+(the higher-priority panel) keeps the column, and its **master** folds behind it —
+not drawn, one back-step away, revealed by closing the detail — so the pair now
+costs one panel's width. Folding never discards a panel (both stay in the URL, so
+widening unfolds back to two), and because the surviving panel is never torn down,
 a folded live chat keeps its session.
 
 Each column folds independently, so the widest the workspace ever needs is one
@@ -130,9 +131,10 @@ code's `Panel*` types; it is the industry "pane"):
   password, a chat → its members, a settings menu → a page beyond the budget: all
   pushes.
 - **Fold / unfold** — the width-driven version of a push: when the budget can no
-  longer honor min widths, a column's second panel **folds** into the first (its
-  content becomes a pushed page) and **unfolds** back to two panels when width
-  returns. A fold is a push the layout performs instead of the user.
+  longer honor reasonable-min widths, a column's **lower-priority** panel (the
+  master) **folds** behind its detail — not drawn, one back-step away — and
+  **unfolds** back to two panels when width returns. A fold is a push the layout
+  performs instead of the user.
 
 **Opening is a fit test, not a depth count.** A surface opens a new panel when the
 column is under its two-panel budget *and* the budget can grant the newcomer its
@@ -242,10 +244,10 @@ with no width floor — get crushed to an overflowing sliver (the live overflow 
 The plan retires the path as a render source and moves settings/profile to the
 right column.
 
-1. **Width primitives (additive, low risk).** [reasonable-min width: done] Add the
-   reasonable-min width to the registry, plus — still to do — the fold degrade state
-   and a per-panel push/pop stack (a back-arrow navigator) generalized from the
-   existing analytics list↔detail swap.
+1. **Width primitives (additive, low risk).** [done] The reasonable-min width is on
+   every registry entry and is the allocator's fold trigger. The per-panel push/pop
+   stack is the panel's own back arrow rewriting its token's param (settings menu↔page,
+   analytics summary↔detail) — a full in-panel Navigator was not needed.
 2. **Tokens are the sole source — `_MainView` is deleted. [done]** Chats, a course,
    analytics (incl. level), profile/settings, and the add-course wizard's first step
    (`addcourse:own`/`browse`/`private`) are all token-driven, with inbound redirects
@@ -259,9 +261,13 @@ right column.
    leaf); menu rows open the page as a push; the dead `/rooms/settings/...` links and
    the security leaves are token-driven; the learning-settings unsaved-changes guard
    is preserved. This fixed the overflow bug.
-4. **Fold under width pressure.** [to do] Wire the allocator's fold step so a
-   column's two panels collapse to one (the detail pushed onto the master) below min
-   width, and set the two-column breakpoint at one folded panel per column plus
-   chrome — below it, single-column mode. This replaces the old peek/hidden states.
+4. **Fold under width pressure.** [done] The allocator folds the lowest-priority
+   panel out of the layout (marked `hidden`, not drawn, no stripe) until the rest fit
+   at their reasonable-min, so a column's master/detail pair collapses to one panel —
+   the detail (higher priority) keeps the column and its session, the master one
+   back-step away (closing the detail reveals it). Both tokens stay in the URL, so
+   widening unfolds back to two panels. The width-based `isColumnMode` threshold drives
+   the single-column floor (rail → bottom nav, left inset → 0, focused panel only).
+   This replaced the peek stripe; `PanelVis` is now just `full` / `hidden`.
 
 Each step ships independently and leaves the app green.

@@ -8,7 +8,9 @@ enum PanelColumn { left, right }
 class PanelDef {
   final PanelColumn column;
 
-  /// The hard floor: below this the panel must yield (fold, then peer-hide).
+  /// The hard floor used when sizing the panels that survived folding: a panel
+  /// compresses no narrower than this. (Folding happens earlier, at
+  /// [reasonableMin].)
   final double minWidth;
 
   /// The narrowest *comfortable* width. Compressing below this is the signal to

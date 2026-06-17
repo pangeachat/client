@@ -26,15 +26,10 @@ class WorkspaceRightPanel extends StatelessWidget {
   /// The current URL, so close/back can rewrite the `right=` list off it.
   final Uri currentUri;
 
-  /// Collapsed to a thin tappable stripe (the allocator ran out of room).
-  /// Tapping re-opens it at full width.
-  final bool peek;
-
   const WorkspaceRightPanel({
     super.key,
     required this.token,
     required this.currentUri,
-    this.peek = false,
   });
 
   ConstructIdentifier? get _construct {
@@ -53,20 +48,6 @@ class WorkspaceRightPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
-
-    if (peek) {
-      return Material(
-        color: Theme.of(context).colorScheme.surface,
-        elevation: 4,
-        borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: () =>
-              context.go(WorkspaceNav.openRight(currentUri, token)),
-          child: const Center(child: Icon(Icons.chevron_left)),
-        ),
-      );
-    }
 
     switch (token.type) {
       case 'analytics':

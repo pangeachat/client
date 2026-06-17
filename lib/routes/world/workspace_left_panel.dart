@@ -17,49 +17,29 @@ import 'package:fluffychat/routes/world/add_course_panel.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Renders one left-column panel token (the chat list, a live room, a course,
-/// or settings) for the URL `?left=` list, mirroring [WorkspaceRightPanel].
-/// Each panel floats as a rounded, elevated card over the map (the shell adds
-/// the surrounding margin), and its close control is an X on desktop / a back
-/// arrow on mobile. The shell wraps a `room` panel in a roomId-keyed GlobalKey
-/// so its ChatController repositions rather than remounts when the slot moves.
-///
-/// Peek caveat: when the allocator collapses this panel to a peek, [build]
-/// returns a chevron stripe in place of the panel body, so a `room`'s
-/// ChatController is torn down (the GlobalKey can't preserve an unbuilt
-/// subtree). That only happens under extreme width pressure — room is the
-/// highest-priority left panel and peeks last — so re-fetch on re-expand is an
-/// accepted corner-case trade-off. See `routing.instructions.md`.
+/// or the add-course wizard) for the URL `?left=` list, mirroring
+/// [WorkspaceRightPanel]. Each panel floats as a rounded, elevated card over the
+/// map (the shell adds the surrounding margin), and its close control is an X on
+/// desktop / a back arrow on mobile. The shell wraps a `room` panel in a
+/// roomId-keyed GlobalKey so its ChatController repositions rather than remounts
+/// when the slot moves. Under width pressure the allocator *folds* lower-priority
+/// panels away (not drawn); a folded panel's content is one back-step away on the
+/// sibling that stayed, so there is no in-panel stripe to render here. See
+/// `routing.instructions.md`.
 class WorkspaceLeftPanel extends StatelessWidget {
   final PanelToken token;
 
-  /// The current URL, so a peek can re-expand by mutating the `left=` list.
+  /// The current URL, so a close/back can rewrite the `left=` list off it.
   final Uri currentUri;
-
-  /// Collapsed to a thin tappable stripe (the allocator ran out of room).
-  final bool peek;
 
   const WorkspaceLeftPanel({
     super.key,
     required this.token,
     required this.currentUri,
-    this.peek = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    if (peek) {
-      return Material(
-        color: Theme.of(context).colorScheme.surface,
-        elevation: 4,
-        borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: () => context.go(WorkspaceNav.openLeft(currentUri, token)),
-          child: const Center(child: Icon(Icons.chevron_right)),
-        ),
-      );
-    }
-
     // Float as a rounded, elevated card over the map (matching the right
     // column). The contained surface clips to the rounded corners; the shell
     // supplies the surrounding margin.
