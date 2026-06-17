@@ -14,7 +14,6 @@ class IGCRequestModel with BaseRequestModel {
   final String userId;
   final List<PreviousMessage> prevMessages;
   final List<LLMFeedbackModel<IGCResponseModel>> feedback;
-  final bool? mock;
   final String? cefr;
   final String? l1;
   final String? l2;
@@ -45,7 +44,6 @@ class IGCRequestModel with BaseRequestModel {
     required this.userId,
     required this.prevMessages,
     this.feedback = const [],
-    this.mock,
     this.cefr,
     this.l1,
     this.l2,
@@ -61,7 +59,6 @@ class IGCRequestModel with BaseRequestModel {
     userId: userId,
     prevMessages: prevMessages,
     feedback: newFeedback,
-    mock: mock,
   );
 
   Map<String, dynamic> toJson() {
@@ -75,7 +72,6 @@ class IGCRequestModel with BaseRequestModel {
       ChoreoConstants.prevMessages: jsonEncode(
         prevMessages.map((x) => x.toJson()).toList(),
       ),
-      if (mock != null) ModelKey.mock: mock,
     };
     if (feedback.isNotEmpty) {
       json[ChoreoConstants.feedback] = feedback.map((f) => f.toJson()).toList();

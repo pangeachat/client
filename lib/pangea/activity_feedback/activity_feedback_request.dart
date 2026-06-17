@@ -6,7 +6,6 @@ class ActivityFeedbackRequest {
   final String userId;
   final String userL1;
   final String userL2;
-  final bool? mock;
 
   ActivityFeedbackRequest({
     required this.activityId,
@@ -14,7 +13,6 @@ class ActivityFeedbackRequest {
     required this.userId,
     required this.userL1,
     required this.userL2,
-    this.mock,
   });
 
   Map<String, dynamic> toJson() {
@@ -24,7 +22,6 @@ class ActivityFeedbackRequest {
       ModelKey.userId: userId,
       ModelKey.userL1: userL1,
       ModelKey.userL2: userL2,
-      if (mock != null) ModelKey.mock: mock,
     };
   }
 

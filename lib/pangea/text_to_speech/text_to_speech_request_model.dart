@@ -11,7 +11,6 @@ class TextToSpeechRequestModel {
   String? voice;
   String? ttsPhoneme;
   double speakingRate;
-  bool? mock;
 
   TextToSpeechRequestModel({
     required this.text,
@@ -22,7 +21,6 @@ class TextToSpeechRequestModel {
     this.voice,
     this.ttsPhoneme,
     this.speakingRate = 0.85,
-    this.mock,
   });
 
   Map<String, dynamic> toJson() => {
@@ -34,7 +32,6 @@ class TextToSpeechRequestModel {
     'voice': voice,
     if (ttsPhoneme != null) 'tts_phoneme': ttsPhoneme,
     'speaking_rate': speakingRate,
-    if (mock != null) ModelKey.mock: mock,
   };
 
   @override

@@ -89,8 +89,9 @@ void main() {
         fullText: "message",
         senderL1: "en",
         senderL2: "es",
-        mock: true,
       ).toJson();
+      request['mock'] = true;
+      request['mock'] = true;
 
       final Requests req = Requests(
         choreoApiKey: apiKey,
@@ -112,8 +113,8 @@ void main() {
         text: 'text',
         senderl1: 'en',
         senderl2: 'es',
-        mock: true,
       ).toJson();
+      request['mock'] = true;
 
       final Requests req = Requests(
         choreoApiKey: apiKey,
@@ -124,7 +125,7 @@ void main() {
         body: request,
       );
 
-      // Ensure mock http.Response is valid and compatible with http.Response model
+      // Ensure mock response is valid and compatible with response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       LanguageDetectionResponse.fromJson(json);
@@ -139,7 +140,6 @@ void main() {
           enableIT: true,
           userId: userID,
           prevMessages: [],
-          mock: true,
           cefr: 'a1',
           l1: 'en',
           l2: 'es',
@@ -170,8 +170,8 @@ void main() {
         tgtLang: 'en',
         userL1: 'en',
         userL2: 'es',
-        mock: true,
       ).toJson();
+      request['mock'] = true;
 
       final Requests req = Requests(
         choreoApiKey: apiKey,
@@ -182,7 +182,7 @@ void main() {
         body: request,
       );
 
-      // Ensure mock http.Response is valid and compatible with http.Response model
+      // Ensure mock response is valid and compatible with response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       FullTextTranslationResponseModel.fromJson(json);
@@ -196,8 +196,8 @@ void main() {
         userL1: '',
         userL2: '',
         tokens: [],
-        mock: true,
       ).toJson();
+      request['mock'] = true;
 
       final Requests req = Requests(
         choreoApiKey: apiKey,
@@ -208,7 +208,7 @@ void main() {
         body: request,
       );
 
-      // Ensure mock http.Response is valid and compatible with http.Response model
+      // Ensure mock response is valid and compatible with response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       TextToSpeechResponseModel.fromJson(json);
@@ -223,8 +223,8 @@ void main() {
           userL1: 'en',
           userL2: 'es',
         ),
-        mock: true,
       ).toJson();
+      request['mock'] = true;
 
       final Requests req = Requests(
         choreoApiKey: apiKey,
@@ -235,7 +235,7 @@ void main() {
         body: request,
       );
 
-      // Ensure mock http.Response is valid and compatible with http.Response model
+      // Ensure mock response is valid and compatible with response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       SpeechToTextResponseModel.fromJson(json);
@@ -248,8 +248,8 @@ void main() {
         langCode: 'zh',
         userL1: 'en',
         userL2: 'zh',
-        mock: true,
       ).toJson();
+      request['mock'] = true;
 
       final Requests req = Requests(
         choreoApiKey: apiKey,
@@ -260,7 +260,7 @@ void main() {
         body: request,
       );
 
-      // Ensure mock http.Response is valid and compatible with http.Response model
+      // Ensure mock response is valid and compatible with response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       PTResponse.fromJson(json);
@@ -274,8 +274,8 @@ void main() {
         lemmaLang: 'es',
         partOfSpeech: 'adv',
         messageInfo: {},
-        mock: true,
       ).toJson();
+      request['mock'] = true;
 
       final Requests req = Requests(
         choreoApiKey: apiKey,
@@ -286,7 +286,7 @@ void main() {
         body: request,
       );
 
-      // Ensure mock http.Response is valid and compatible with http.Response model
+      // Ensure mock response is valid and compatible with response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       LemmaInfoResponse.fromJson(json);
@@ -314,8 +314,8 @@ void main() {
         ),
         activityResults: [],
         contentFeedback: [],
-        mock: true,
       ).toJson();
+      request['mock'] = true;
 
       final Requests req = Requests(
         choreoApiKey: apiKey,
@@ -326,7 +326,7 @@ void main() {
         body: request,
       );
 
-      // Ensure mock http.Response is valid and compatible with http.Response model
+      // Ensure mock response is valid and compatible with response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       ActivitySummaryResponseModel.fromJson(json);
@@ -340,8 +340,8 @@ void main() {
         userId: userID,
         userL1: "en",
         userL2: "es",
-        mock: true,
       ).toJson();
+      request['mock'] = true;
 
       final Requests req = Requests(
         choreoApiKey: apiKey,
@@ -352,7 +352,7 @@ void main() {
         body: request,
       );
 
-      // Ensure mock http.Response is valid and compatible with http.Response model
+      // Ensure mock response is valid and compatible with response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       ActivityFeedbackResponse.fromJson(json);
@@ -370,8 +370,8 @@ void main() {
           wordCardL1: "",
         ),
         userFeedback: "",
-        mock: true,
       ).toJson();
+      request['mock'] = true;
 
       final Requests req = Requests(
         choreoApiKey: apiKey,
@@ -382,7 +382,7 @@ void main() {
         body: request,
       );
 
-      // Ensure mock http.Response is valid and compatible with http.Response model
+      // Ensure mock response is valid and compatible with response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       TokenInfoFeedbackResponse.fromJson(json);
@@ -393,8 +393,8 @@ void main() {
       final Map<String, dynamic> request = GrammarConstructsRequest(
         targetLanguage: "es",
         userL1: "en",
-        mock: true,
       ).toJson();
+      request['mock'] = true;
 
       final Requests req = Requests(
         choreoApiKey: apiKey,
@@ -405,7 +405,7 @@ void main() {
         body: request,
       );
 
-      // Ensure mock http.Response is valid and compatible with http.Response model
+      // Ensure mock response is valid and compatible with response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       GrammarConstructsResponse.fromJson(json);
@@ -416,8 +416,8 @@ void main() {
       final Map<String, dynamic> request = TranslateTopicRequest(
         topicIds: [],
         l1: "en",
-        mock: true,
       ).toJson();
+      request['mock'] = true;
 
       final Requests req = Requests(
         choreoApiKey: apiKey,
@@ -428,7 +428,7 @@ void main() {
         body: request,
       );
 
-      // Ensure mock http.Response is valid and compatible with http.Response model
+      // Ensure mock response is valid and compatible with response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       TranslateTopicResponse.fromJson(json);
@@ -442,8 +442,8 @@ void main() {
         languageLevel: LanguageLevelTypeEnum.a1,
         institution: "school",
         goals: "test",
-        mock: true,
       ).toJson();
+      request['mock'] = true;
 
       final Requests req = Requests(
         choreoApiKey: apiKey,
@@ -454,7 +454,7 @@ void main() {
         body: request,
       );
 
-      // Ensure mock http.Response is valid and compatible with http.Response model
+      // Ensure mock response is valid and compatible with response model
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       CustomCourseResponseModel.fromJson(json);

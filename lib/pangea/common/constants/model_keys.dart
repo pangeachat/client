@@ -7,7 +7,6 @@ class ModelKey {
   static const String langCode = 'lang_code';
   // some old analytics rooms have langCode instead of lang_code in the room creation content
   static const String oldLangCode = 'langCode';
-  static const String mock = 'mock';
 
   static const String fullText = 'full_text';
   static const String tokens = 'tokens';

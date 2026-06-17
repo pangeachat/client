@@ -11,19 +11,16 @@ class SpeechToTextRequestModel {
   final Uint8List audioContent;
   final SpeechToTextAudioConfigModel config;
   final Event? audioEvent;
-  final bool? mock;
 
   SpeechToTextRequestModel({
     required this.audioContent,
     required this.config,
     this.audioEvent,
-    this.mock,
   });
 
   Map<String, dynamic> toJson() => {
     "config": config.toJson(),
     "audio_content": base64Encode(audioContent),
-    if (mock != null) ModelKey.mock: mock,
   };
 
   @override

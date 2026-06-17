@@ -59,13 +59,8 @@ class TokenInfoFeedbackRequestData {
 class TokenInfoFeedbackRequest {
   final TokenInfoFeedbackRequestData data;
   final String userFeedback;
-  final bool? mock;
 
-  TokenInfoFeedbackRequest({
-    required this.data,
-    required this.userFeedback,
-    this.mock,
-  });
+  TokenInfoFeedbackRequest({required this.data, required this.userFeedback});
 
   Map<String, dynamic> toJson() {
     return {
@@ -80,7 +75,6 @@ class TokenInfoFeedbackRequest {
       'pt_response': data.ptResponse?.toJson(),
       'user_feedback': userFeedback,
       'word_card_l1': data.wordCardL1,
-      if (mock != null) ModelKey.mock: mock,
     };
   }
 
