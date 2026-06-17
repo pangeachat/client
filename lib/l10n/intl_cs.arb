@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-06-15 09:46:26.878148",
+    "@@last_modified": "2026-06-17 10:10:20.546372",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -7542,7 +7542,6 @@
     "bhoDisplayName": "Bhojpuri",
     "bikDisplayName": "Bikol",
     "bmDisplayName": "Bambara",
-    "bnDisplayName": "Bengálština",
     "bnBDDisplayName": "Bengálština (Bangladéš)",
     "bnINDisplayName": "Bengálština (Indie)",
     "brDisplayName": "Bretonština",
@@ -7897,10 +7896,6 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10384,6 +10379,11 @@
     },
     "activityActions": "Akce aktivity",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bnDisplayName": "Bengálština",
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

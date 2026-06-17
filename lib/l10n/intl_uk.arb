@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-15 09:46:26.045252",
+    "@@last_modified": "2026-06-17 10:10:19.845034",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -7212,7 +7212,6 @@
     "bhoDisplayName": "Бходжпурі",
     "bikDisplayName": "Біколь",
     "bmDisplayName": "Бамбара",
-    "bnDisplayName": "Бенгальська",
     "bnBDDisplayName": "Бенгальська (Бангладеш)",
     "bnINDisplayName": "Бенгальська (Індія)",
     "brDisplayName": "Бретонська",
@@ -7567,10 +7566,6 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -9830,6 +9825,11 @@
     },
     "activityActions": "Дії активності",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bnDisplayName": "Бенгальська",
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

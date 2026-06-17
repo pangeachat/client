@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-15 09:46:47.983205",
+    "@@last_modified": "2026-06-17 10:10:41.343752",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -7842,7 +7842,6 @@
     "bhoDisplayName": "ボージュプリー語",
     "bikDisplayName": "ビコール語",
     "bmDisplayName": "バンバラ語",
-    "bnDisplayName": "ベンガル語",
     "bnBDDisplayName": "ベンガル語（バングラデシュ）",
     "bnINDisplayName": "ベンガル語（インド）",
     "brDisplayName": "ブルトン語",
@@ -8197,10 +8196,6 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10698,6 +10693,11 @@
     },
     "activityActions": "アクティビティアクション",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bnDisplayName": "ベンガル語",
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

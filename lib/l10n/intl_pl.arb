@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-06-15 09:46:43.970039",
+    "@@last_modified": "2026-06-17 10:10:38.580551",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -7093,7 +7093,6 @@
     "bhoDisplayName": "Bhojpuri",
     "bikDisplayName": "Bikol",
     "bmDisplayName": "Bambara",
-    "bnDisplayName": "Bengalski",
     "bnBDDisplayName": "Bengalski (Bangladesz)",
     "bnINDisplayName": "Bengalski (Indie)",
     "brDisplayName": "Bretoński",
@@ -7448,10 +7447,6 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -9939,6 +9934,11 @@
     },
     "activityActions": "Akcje aktywności",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bnDisplayName": "Bengalski",
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

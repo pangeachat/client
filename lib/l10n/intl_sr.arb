@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-15 09:46:51.550200",
+    "@@last_modified": "2026-06-17 10:10:45.543534",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -8097,7 +8097,6 @@
     "bhoDisplayName": "Bhojpuri",
     "bikDisplayName": "Bikol",
     "bmDisplayName": "Bambara",
-    "bnDisplayName": "Bengalski",
     "bnBDDisplayName": "Bengalski (Bangladeš)",
     "bnINDisplayName": "Bengalski (Indija)",
     "brDisplayName": "Breton",
@@ -8452,10 +8451,6 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10953,6 +10948,11 @@
     },
     "activityActions": "Akcije aktivnosti",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bnDisplayName": "Bengalski",
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

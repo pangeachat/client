@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-15 09:46:49.300567",
+    "@@last_modified": "2026-06-17 10:10:43.084221",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -8093,7 +8093,6 @@
     "bhoDisplayName": "Bhojpuri",
     "bikDisplayName": "Bikol",
     "bmDisplayName": "Bambara",
-    "bnDisplayName": "Bengala",
     "bnBDDisplayName": "Bengala (Bangladeŝo)",
     "bnINDisplayName": "Bengala (Hindio)",
     "brDisplayName": "Bretona",
@@ -8448,10 +8447,6 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10949,6 +10944,11 @@
     },
     "activityActions": "Aktivaj agoj",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bnDisplayName": "Bengala",
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

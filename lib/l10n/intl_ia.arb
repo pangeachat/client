@@ -1505,7 +1505,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-06-15 09:46:19.003523",
+    "@@last_modified": "2026-06-17 10:10:09.188109",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8084,7 +8084,6 @@
     "bhoDisplayName": "Бходжпури",
     "bikDisplayName": "Бикол",
     "bmDisplayName": "Бамбар",
-    "bnDisplayName": "Bengali",
     "bnBDDisplayName": "Bengali (Bangladesh)",
     "bnINDisplayName": "Bengali (India)",
     "brDisplayName": "Breton",
@@ -8439,10 +8438,6 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10940,6 +10935,11 @@
     },
     "activityActions": "Ações de atividade",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bnDisplayName": "Bengali",
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

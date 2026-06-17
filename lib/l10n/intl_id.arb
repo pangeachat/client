@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-15 09:46:14.281527",
+    "@@last_modified": "2026-06-17 10:10:03.559148",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -7101,7 +7101,6 @@
     "bhoDisplayName": "Bhojpuri",
     "bikDisplayName": "Bikol",
     "bmDisplayName": "Bambara",
-    "bnDisplayName": "Bengali",
     "bnBDDisplayName": "Bengali (Bangladesh)",
     "bnINDisplayName": "Bengali (India)",
     "brDisplayName": "Breton",
@@ -7456,10 +7455,6 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -9927,6 +9922,11 @@
     },
     "activityActions": "Tindakan aktivitas",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bnDisplayName": "Bengali",
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

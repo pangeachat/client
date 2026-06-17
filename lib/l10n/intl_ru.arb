@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-15 09:46:49.938147",
+    "@@last_modified": "2026-06-17 10:10:44.009050",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -8157,7 +8157,6 @@
     "bhoDisplayName": "Бходжпури",
     "bikDisplayName": "Бикол",
     "bmDisplayName": "Бамбару",
-    "bnDisplayName": "Бенгальский",
     "bnBDDisplayName": "Бенгальский (Бангладеш)",
     "bnINDisplayName": "Бенгальский (Индия)",
     "brDisplayName": "Бретонский",
@@ -8512,10 +8511,6 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10844,6 +10839,11 @@
     },
     "activityActions": "Действия активности",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bnDisplayName": "Бенгальский",
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

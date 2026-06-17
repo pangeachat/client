@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-15 09:46:42.455662",
+    "@@last_modified": "2026-06-17 10:10:36.637587",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -7689,7 +7689,6 @@
     "bhoDisplayName": "ভোজপুরি",
     "bikDisplayName": "বিকোল",
     "bmDisplayName": "বাম্বারা",
-    "bnDisplayName": "বাংলা",
     "bnBDDisplayName": "বাংলা (বাংলাদেশ)",
     "bnINDisplayName": "বাংলা (ভারত)",
     "brDisplayName": "ব্রেটন",
@@ -8044,10 +8043,6 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10545,6 +10540,11 @@
     },
     "activityActions": "কার্যকলাপের কার্যক্রম",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bnDisplayName": "বাংলা",
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

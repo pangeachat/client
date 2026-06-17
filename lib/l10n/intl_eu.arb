@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-15 09:46:21.110425",
+    "@@last_modified": "2026-06-17 10:10:11.033692",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -7212,7 +7212,6 @@
     "bhoDisplayName": "Bhojpuri",
     "bikDisplayName": "Bikol",
     "bmDisplayName": "Bambara",
-    "bnDisplayName": "Bengali",
     "bnBDDisplayName": "Bengali (Bangladesh)",
     "bnINDisplayName": "Bengali (India)",
     "brDisplayName": "Bretoia",
@@ -7567,10 +7566,6 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -9830,6 +9825,11 @@
     },
     "activityActions": "Jarduera ekintzak",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bnDisplayName": "Bengalera",
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

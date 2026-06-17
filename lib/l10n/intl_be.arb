@@ -3933,7 +3933,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-06-15 09:46:28.540750",
+    "@@last_modified": "2026-06-17 10:10:22.306616",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -7212,7 +7212,6 @@
     "bhoDisplayName": "Бходжпуры",
     "bikDisplayName": "Бікал",
     "bmDisplayName": "Бамбара",
-    "bnDisplayName": "Бенгальская",
     "bnBDDisplayName": "Бенгальская (Бангладэш)",
     "bnINDisplayName": "Бенгальская (Індыя)",
     "brDisplayName": "Брэтонская",
@@ -7567,10 +7566,6 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -9844,6 +9839,11 @@
     },
     "activityActions": "Дзеянні актыўнасці",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bnDisplayName": "Бенгальская",
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

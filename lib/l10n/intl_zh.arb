@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-06-15 09:46:41.744196",
+    "@@last_modified": "2026-06-17 10:10:35.918029",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -7212,7 +7212,6 @@
     "bhoDisplayName": "博杰普尔语",
     "bikDisplayName": "比科尔语",
     "bmDisplayName": "班巴拉语",
-    "bnDisplayName": "孟加拉语",
     "bnBDDisplayName": "孟加拉语（孟加拉国）",
     "bnINDisplayName": "孟加拉语（印度）",
     "brDisplayName": "布列塔尼语",
@@ -7567,10 +7566,6 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -9830,6 +9825,11 @@
     },
     "activityActions": "活动操作",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "bnDisplayName": "孟加拉语",
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }
