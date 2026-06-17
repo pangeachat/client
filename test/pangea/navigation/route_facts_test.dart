@@ -33,21 +33,32 @@ void main() {
     test('exact segments only — no substring leakage', () {
       expect(section('/courses/analytics-course-name'), AppSection.courses);
     });
+
+    test('an active ?m=course filter selects courses (path is /)', () {
+      // world_v2: a course is a map filter, so it selects the Courses section
+      // even though the path is the world map and panels are independent.
+      expect(section('/?m=course:!s:x'), AppSection.courses);
+      expect(section('/?left=room:!r&m=course:!s:x'), AppSection.courses);
+    });
   });
 
-  group('activeSpaceIdFor', () {
-    test('joined course spaces are detected (root, detail, overlay, room)', () {
-      expect(space('/courses/!s:x'), '!s:x');
-      expect(space('/courses/!s:x/details'), '!s:x');
-      expect(space('/courses/!s:x?activity=a'), '!s:x');
-      expect(space('/courses/!s:x/!room:x'), '!s:x');
+  group('activeSpaceIdFor (course is the ?m= map filter, not the path)', () {
+    test('reads the course filter from ?m=, anywhere in the query', () {
+      expect(space('/?m=course:!s:x'), '!s:x');
+      expect(space('/?m=course:%21abc'), '!abc'); // an encoded param decodes
+      // independent of the path and of which panels happen to be open
+      expect(
+        space('/?left=room:!r&m=course:!s:x&right=analytics:vocab'),
+        '!s:x',
+      );
     });
 
-    test('literal course flows and preview are not space ids', () {
-      expect(space('/courses/own'), isNull);
-      expect(space('/courses'), isNull);
-      // preview's room id must never masquerade as the active space.
-      expect(space('/courses/preview/!r:x'), isNull);
+    test('no course filter → null (world map)', () {
+      expect(space('/'), isNull);
+      expect(space('/?left=room:!r'), isNull); // a room token is not a course
+      expect(space('/?m=region:europe'), isNull); // a non-course filter
+      // the legacy path no longer carries the space id (it redirects to ?m=).
+      expect(space('/courses/!s:x'), isNull);
     });
   });
 

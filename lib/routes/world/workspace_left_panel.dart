@@ -63,9 +63,9 @@ class WorkspaceLeftPanel extends StatelessWidget {
         // page carries its own header/close. See routing.instructions.md.
         return AddCoursePanel(subPath: token.param, currentUri: currentUri);
       case 'course':
-        // The course's identity is the path (`/courses/:spaceid`, read via
-        // activeSpaceIdFor) — the single source of truth, not duplicated into
-        // the token. The token carries only the active tab. See
+        // The course's identity is the `?m=course:<id>` map filter (read via
+        // activeSpaceIdFor), not the token — the token carries only the active
+        // tab. A course is a map filter independent of its panel. See
         // routing.instructions.md.
         final spaceId = activeSpaceIdFor(currentUri);
         if (spaceId == null) return const SizedBox.shrink();

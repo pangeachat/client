@@ -26,15 +26,30 @@ re-aiming on every intermediate step and jerking. A deliberate user move (a sear
 result, a tapped pin) glides immediately; only the layout-driven re-framing waits
 to settle.
 
+**What the map shows is a filter, not a panel.** The map's scope rides in its own
+query param, **`?m=`** — a comma-separated list of typed filter values, parsed like
+the panel lists but kept separate because it is map state, not an open panel. Today
+the only value is `course:<spaceid>`: it scopes the persistent map to one course
+(its activities as pins) and, being just a filter, is independent of which panels
+are open. A **course is, in large part, another map filter** — entering one sets
+`?m=course:<id>` *and* opens the `course` panel (`?left=course`); the panel's space
+id is read from the filter, never duplicated into the token. A course room is then
+an ordinary `room` token over the course-filtered map (so closing the room reveals
+the course, and the filter never depends on the panel set). `activeSpaceIdFor`
+reads the `m` filter; leaving the course (closing its panel) clears `m` and the map
+returns to world scope. New filter dimensions (region, language, activity kind)
+slot into the same `m` list without touching the panel model.
+
 ## The URL is the workspace
 
 The URL carries two ordered panel lists, a **left** list and a **right** list;
 order is left-to-right placement. The **tokens are the sole source of what
-renders** — nothing draws from the path. A panel's identity rides in its token (a
-course carries its space id, an activity its id), the map's scope and focus ride
-in tokens too, and the path itself collapses to `/`. The page builders and the
-chrome (rail, bottom nav) all derive from the one token list, so they cannot
-disagree about what is open.
+renders** — nothing draws from the path. A panel's identity rides in its token (an
+activity its id; a `course` panel reads its space id from the `?m=` map filter, not
+the token), the map's scope rides in the separate `?m=` filter (above), and the
+path itself collapses to `/`. The page builders and the chrome (rail, bottom nav)
+all derive from the one token list (plus the `m` filter for the active course), so
+they cannot disagree about what is open.
 
 Paths survive only as an **inbound shape**, never a render source: external, push,
 and `matrix.to` links — and the deliberately upstream `/rooms/:roomid` — are
@@ -153,9 +168,9 @@ behaves the same on mobile and desktop.
 | Surface | Opens from | Column | As |
 |---|---|---|---|
 | World map (home) | app root, World rail | the backdrop | always mounted; the World button clears every panel |
-| Course | a space in the rail, a map pin | left | open panel (master) |
+| Course | a space in the rail, a map pin | left + `?m=` filter | sets `?m=course:<id>` (map scope) **and** opens the `course` panel (master); tabs ride in the token param |
 | Chat list | the rail | left | open panel (master) |
-| Live chat / session | a chat-list row, an activity launch | left | open panel (detail); one live at a time |
+| Live chat / session | a chat-list row, an activity launch, **a course room row** | left | open panel (detail); one live at a time. A course room rides over the course filter (`?m=course:<id>` stays) so closing it reveals the course |
 | Chat members / settings | the chat header | the chat panel | push |
 | Analytics (vocab / grammar / sessions) | a top-right cluster tracker | right | open panel (master) |
 | Level | the avatar's level badge | right | open panel (an analytics tab) |
@@ -269,5 +284,15 @@ right column.
    widening unfolds back to two panels. The width-based `isColumnMode` threshold drives
    the single-column floor (rail → bottom nav, left inset → 0, focused panel only).
    This replaced the peek stripe; `PanelVis` is now just `full` / `hidden`.
+5. **Course off the path → `?m=` map filter.** [done] A joined course is the
+   `?m=course:<id>` map filter (read by `activeSpaceIdFor`) plus a `course` panel,
+   not a `/courses/:spaceid` route. Inbound redirects rewrite the legacy bare course
+   path (preserving any `?activity=`/query) and the course-room path
+   (`/courses/:spaceid/:roomid` → `&left=course,room:<roomid>`) to the workspace
+   form; `goToSpaceRoute` opens an in-course room as a `room` token over the filter.
+   [to do] The deeper course-management paths (`details/edit`, `invite`, `analytics`,
+   `addcourse/:courseId`, and room sub-routes like `/search`) stay route-driven for
+   now — their 3rd path segment is a literal, not a `!room`, so the room redirect
+   skips them; converting them to in-panel pushes is a later step.
 
 Each step ships independently and leaves the app green.

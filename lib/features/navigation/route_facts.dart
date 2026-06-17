@@ -99,6 +99,10 @@ CanvasMode canvasFor(GoRouterState state, bool isColumnMode) {
 /// nav highlight); the canvas is decided by [canvasFor], not the section, so an
 /// unrecognized detail route never flips the shell to the world map.
 AppSection sectionFor(Uri uri) {
+  // world_v2: a course is a map filter (`?m=course:<id>`), not a path, so an
+  // active course filter selects the Courses section regardless of the (always
+  // `/`) path. See `routing.instructions.md`.
+  if (activeSpaceIdFor(uri) != null) return AppSection.courses;
   final segments = uri.pathSegments;
   if (segments.isEmpty) return AppSection.world;
   final first = segments.first;
@@ -111,17 +115,42 @@ AppSection sectionFor(Uri uri) {
   return AppSection.world;
 }
 
-/// The active course space id (`/courses/:spaceid`), else null. Literal
-/// subroutes (`preview`/`own`/`browse`/`private`) are not space ids — Matrix
-/// space ids start with `!`. Gated this way, a course-room id or a literal
-/// segment can never masquerade as the active space.
+/// The map-filter values from `?m=` — a comma list of typed tokens (today only
+/// `course:<spaceid>`) that scope the persistent world map. Read raw (not the
+/// percent-decoded `queryParameters`) and PanelToken-parsed, mirroring
+/// [parseOpenPanels]: a course is a *map filter*, independent of which panels
+/// are open and of the path (always `/`). See `routing.instructions.md`.
+List<PanelToken> mapFiltersFor(Uri uri) {
+  final query = uri.query;
+  if (query.isEmpty) return const [];
+  String? encoded;
+  for (final part in query.split('&')) {
+    if (part.startsWith('m=')) {
+      encoded = part.substring(2);
+      break;
+    }
+  }
+  if (encoded == null || encoded.isEmpty) return const [];
+  final tokens = <PanelToken>[];
+  for (final element in encoded.split(',')) {
+    final token = PanelToken.parse(element);
+    if (token != null) tokens.add(token);
+  }
+  return tokens;
+}
+
+/// The active course space id (the `course:<spaceid>` map filter), else null.
+/// world_v2: a course is a map filter (`?m=course:<id>`) over the persistent
+/// map, independent of the panel tokens — *not* a `/courses/:spaceid` route.
+/// URLs carry a bare localpart; re-attach the home server_name for callers that
+/// hit the Matrix client. See `routing.instructions.md`.
 String? activeSpaceIdFor(Uri uri) {
-  final segments = uri.pathSegments;
-  if (segments.length < 2 || segments.first != 'courses') return null;
-  final second = segments[1];
-  // URLs carry a bare localpart; re-attach the home server_name for callers
-  // that hit the Matrix client.
-  return second.startsWith('!') ? fullRoomId(second) : null;
+  for (final filter in mapFiltersFor(uri)) {
+    if (filter.type == 'course' && (filter.param?.isNotEmpty ?? false)) {
+      return fullRoomId(filter.param!);
+    }
+  }
+  return null;
 }
 
 /// The active chat/course room id, if the route addresses one.

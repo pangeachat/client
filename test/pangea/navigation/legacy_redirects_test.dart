@@ -94,11 +94,14 @@ void main() {
     });
 
     test('section roots become token-driven', () {
-      // chats and a course keep their path and gain their left token.
+      // chats keeps its path and gains its left token.
       expect(resolve('/chats'), '/chats?left=chats');
       expect(resolve('/chats?left=chats'), isNull); // already token-driven
-      expect(resolve('/courses/!s'), '/courses/!s?left=course');
-      expect(resolve('/courses/!s?left=course'), isNull);
+      // world_v2: a course is a ?m= map filter + a left course panel, NOT a
+      // path. The bare course path (with or without an existing course token)
+      // maps off the path to the filter + panel form.
+      expect(resolve('/courses/!s'), '/?m=course:!s&left=course');
+      expect(resolve('/courses/!s?left=course'), '/?m=course:!s&left=course');
       // the add-course wizard's first step becomes the addcourse token,
       // preserving the flow's query; deeper steps stay route-driven.
       expect(resolve('/courses/own'), '/?left=addcourse:own');
@@ -114,6 +117,36 @@ void main() {
       expect(resolve('/analytics/morph'), '/?right=analytics:grammar');
       expect(resolve('/analytics/activities'), '/?right=analytics:sessions');
       expect(resolve('/analytics/level'), '/?right=analytics:level');
+    });
+
+    test('a course is a ?m= map filter + panels, not a path', () {
+      // A room inside a course rides as a left `room` token beside the course
+      // panel; the course stays the map filter.
+      expect(
+        resolve('/courses/!s/!room'),
+        '/?m=course:!s&left=course,room:!room',
+      );
+      // The in-course activity overlay: the path collapses to the filter, the
+      // ?activity= (and any other) query is preserved.
+      expect(
+        resolve('/courses/!s?activity=a'),
+        '/?m=course:!s&left=course&activity=a',
+      );
+      // An open right column carries through the rewrite untouched.
+      expect(
+        resolve('/courses/!s?right=analytics:vocab'),
+        '/?m=course:!s&left=course&right=analytics:vocab',
+      );
+      // Deeper management paths (3rd segment is a literal, not a !room) stay
+      // route-driven — not caught by the course-room arm.
+      expect(resolve('/courses/!s/details'), isNull);
+      // The /rooms/spaces chain reaches the same form in two hops (router
+      // re-runs the redirect): first to /courses/…, then to the filter form.
+      expect(resolve('/rooms/spaces/!s/!room'), '/courses/!s/!room');
+      expect(
+        resolve(resolve('/rooms/spaces/!s/!room')!),
+        '/?m=course:!s&left=course,room:!room',
+      );
     });
 
     test('matrix rooms and fork routes stay put', () {

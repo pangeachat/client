@@ -41,10 +41,24 @@ abstract class LegacyRedirects {
     if (segments.length == 1 && segments.first == 'chats') {
       return _ensureLeftToken(uri, 'chats');
     }
+    // world_v2: a joined course is a map filter (`?m=course:<id>`) over the
+    // world map plus a left `course` panel — not a `/courses/:spaceid` route.
+    // The bare course path (and any query it carries, e.g. ?activity=) maps to
+    // the filter + course panel; a course room (`/courses/:spaceid/:roomid`)
+    // adds the room as a left token beside the course (closing it reveals the
+    // course again). Deeper management paths (`details/…`, `addcourse/…`, whose
+    // 3rd segment is a literal, not a `!room`) are left route-driven. See
+    // `routing.instructions.md`.
     if (segments.length == 2 &&
         segments.first == 'courses' &&
         segments[1].startsWith('!')) {
-      return _ensureLeftToken(uri, 'course');
+      return _toCourseWorkspace(uri, segments[1], null);
+    }
+    if (segments.length == 3 &&
+        segments.first == 'courses' &&
+        segments[1].startsWith('!') &&
+        segments[2].startsWith('!')) {
+      return _toCourseWorkspace(uri, segments[1], segments[2]);
     }
     // The add-course wizard's first step renders as a left-column panel; rewrite
     // its literal path to the `addcourse` token, preserving the flow's query
@@ -130,6 +144,44 @@ abstract class LegacyRedirects {
     // characters survive the rewrite intact.
     final path = '/${target.map(Uri.encodeComponent).join('/')}';
     return uri.hasQuery ? '$path?${uri.query}' : path;
+  }
+
+  /// Rewrite a legacy course path to the world_v2 workspace form: the course as
+  /// a `?m=course:<spaceid>` map filter plus a left `course` panel, with [room]
+  /// (when present) added as the live `room` token beside it. Any other query
+  /// the legacy URL carried (`activity=`, `event=`, an existing `right=`/`left=`)
+  /// is preserved; the path becomes the world map `/`. Idempotent: the result
+  /// has no `courses` path segment, so the course arms never re-fire.
+  static String _toCourseWorkspace(Uri uri, String space, String? room) {
+    final parts = uri.query.isEmpty ? <String>[] : uri.query.split('&');
+
+    // Lift out any existing left list (keep tokens already there) and drop any
+    // prior `m=` so the course filter can be set cleanly.
+    var leftValue = '';
+    final li = parts.indexWhere((p) => p == 'left' || p.startsWith('left='));
+    if (li >= 0) {
+      final eq = parts[li].indexOf('=');
+      leftValue = eq >= 0 ? parts[li].substring(eq + 1) : '';
+      parts.removeAt(li);
+    }
+    parts.removeWhere((p) => p == 'm' || p.startsWith('m='));
+
+    final left = leftValue.split(',').where((e) => e.isNotEmpty).toList();
+    if (!left.any((e) => e == 'course' || e.startsWith('course:'))) {
+      left.insert(0, 'course');
+    }
+    if (room != null) {
+      // One live room: drop any other room token, then seat this one.
+      left.removeWhere((e) => e == 'room' || e.startsWith('room:'));
+      left.add(PanelToken('room', room).encode());
+    }
+
+    final query = <String>[
+      'm=${PanelToken('course', space).encode()}',
+      'left=${left.join(',')}',
+      ...parts,
+    ];
+    return '/?${query.join('&')}';
   }
 
   /// Add a bare `left=<type>` token to [uri], preserving the path and every

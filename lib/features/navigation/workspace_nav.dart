@@ -102,10 +102,11 @@ abstract class WorkspaceNav {
       });
 
   /// Open (or re-tab) a `course` panel at the left edge, replacing any existing
-  /// course token. The course's identity is the path (`/courses/:spaceid`, read
-  /// via activeSpaceIdFor) — not duplicated into the token; the token's param is
-  /// just the active tab, so switching tabs is opening the course token with a
-  /// new tab. A live room and the chat list are kept (a course can scope a room).
+  /// course token. The course's identity is the `?m=course:<id>` map filter
+  /// (read via activeSpaceIdFor), not the token — the token's param is just the
+  /// active tab, so switching tabs is opening the course token with a new tab
+  /// (the `m` filter is preserved by `_mutate`). A live room and the chat list
+  /// are kept (a course can scope a room). See `routing.instructions.md`.
   static String openCourse(Uri current, PanelToken token) =>
       _mutate(current, 'left', (tokens) {
         final next = tokens.where((t) => t.type != 'course').toList();
@@ -166,15 +167,13 @@ abstract class WorkspaceNav {
   static String closeLeft(Uri current, PanelToken token) =>
       _mutate(current, 'left', (tokens) => _remove(tokens, token));
 
-  /// Close a *section* left panel (a course, the chat list, settings). Unlike a
-  /// `room` — which exists only as a token over some other path — a section is
-  /// also addressable by its own path (`/courses/:id`, `/chats`, `/settings`),
-  /// and the route-driven card (`SpaceNavigationColumn._MainView`) re-renders it
-  /// from that path the instant the token is gone. So dropping the token is not
-  /// enough: closing a section panel also returns to the world map path, while
-  /// keeping every *other* left panel (a course-scoped live room) and the whole
-  /// right column — so closing a course reveals the map without tearing down the
-  /// rest ("move to the world"; see `routing.instructions.md`).
+  /// Close a *section* left panel (a course, the chat list, the add-course
+  /// wizard). Returns to the world map path `/` and drops every non-panel query
+  /// param — in particular a course's `?m=course:<id>` map filter — while
+  /// keeping every *other* left panel and the whole right column. So closing a
+  /// course exits its map filter and reveals the world without tearing down the
+  /// rest ("move to the world"). A `room` is only ever a token, so it just drops
+  /// its own token via [closeLeft]. See `routing.instructions.md`.
   static String closeSection(Uri current, PanelToken token) {
     final lists = parseOpenPanels(current);
     final left = lists.left.where((t) => t != token).toList();
