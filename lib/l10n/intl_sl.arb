@@ -1962,7 +1962,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-06-17 10:10:17.575388",
+    "@@last_modified": "2026-06-15 09:46:23.903615",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8090,6 +8090,7 @@
     "bhoDisplayName": "Bhojpuri",
     "bikDisplayName": "Bikol",
     "bmDisplayName": "Bambara",
+    "bnDisplayName": "Bengalščina",
     "bnBDDisplayName": "Bengalščina (Bangladeš)",
     "bnINDisplayName": "Bengalščina (Indija)",
     "brDisplayName": "Bretonščina",
@@ -8444,6 +8445,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10941,11 +10946,6 @@
     },
     "activityActions": "Dejavnosti",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "Bengalščina",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

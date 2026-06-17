@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-17 10:10:08.433977",
+    "@@last_modified": "2026-06-15 09:46:18.267993",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -8053,6 +8053,7 @@
     "bhoDisplayName": "בהוג'פורי",
     "bikDisplayName": "ביקול",
     "bmDisplayName": "במברה",
+    "bnDisplayName": "בנגלית",
     "bnBDDisplayName": "בנגלית (בנגלדש)",
     "bnINDisplayName": "בנגלית (הודו)",
     "brDisplayName": "ברטונית",
@@ -8407,6 +8408,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10904,11 +10909,6 @@
     },
     "activityActions": "פעולות פעילות",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "בנגאלי",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

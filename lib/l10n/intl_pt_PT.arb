@@ -2776,7 +2776,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-06-17 10:10:24.759254",
+    "@@last_modified": "2026-06-15 09:46:30.878986",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8045,6 +8045,7 @@
     "bhoDisplayName": "Bhojpuri",
     "bikDisplayName": "Bikol",
     "bmDisplayName": "Bambara",
+    "bnDisplayName": "Bengali",
     "bnBDDisplayName": "Bengali (Bangladesh)",
     "bnINDisplayName": "Bengali (Índia)",
     "brDisplayName": "Bretão",
@@ -8399,6 +8400,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10901,11 +10906,6 @@
     },
     "activityActions": "Ações de atividade",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "Bengali",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

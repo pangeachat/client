@@ -3245,7 +3245,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-06-17 10:10:31.716872",
+    "@@last_modified": "2026-06-15 09:46:37.152751",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7860,6 +7860,7 @@
     "bhoDisplayName": "Bhojpuri",
     "bikDisplayName": "Bikol",
     "bmDisplayName": "Bambara",
+    "bnDisplayName": "Bengalų",
     "bnBDDisplayName": "Bengalų (Bangladešas)",
     "bnINDisplayName": "Bengalų (Indija)",
     "brDisplayName": "Bretonų",
@@ -8214,6 +8215,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10711,11 +10716,6 @@
     },
     "activityActions": "Veiklos veiksmai",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "Bengalų",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

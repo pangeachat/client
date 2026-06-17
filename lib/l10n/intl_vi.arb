@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-17 10:10:32.621744",
+    "@@last_modified": "2026-06-15 09:46:38.131460",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -4057,6 +4057,7 @@
     "bhoDisplayName": "Bhojpuri",
     "bikDisplayName": "Bikol",
     "bmDisplayName": "Bambara",
+    "bnDisplayName": "Bengali",
     "bnBDDisplayName": "Bengali (Bangladesh)",
     "bnINDisplayName": "Bengali (Ấn Độ)",
     "brDisplayName": "Breton",
@@ -4411,6 +4412,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -6908,11 +6913,6 @@
     },
     "activityActions": "Hành động hoạt động",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "Bengali",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

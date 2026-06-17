@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-17 10:10:29.767922",
+    "@@last_modified": "2026-06-15 09:46:35.572217",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -7305,6 +7305,7 @@
     "bhoDisplayName": "Bhojpuri",
     "bikDisplayName": "Bikol",
     "bmDisplayName": "Bambara",
+    "bnDisplayName": "Bengalce",
     "bnBDDisplayName": "Bengalce (Bangladeş)",
     "bnINDisplayName": "Bengalce (Hindistan)",
     "brDisplayName": "Bretonca",
@@ -7659,6 +7660,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10156,11 +10161,6 @@
     },
     "activityActions": "Etkinlik eylemleri",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "Bengalce",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

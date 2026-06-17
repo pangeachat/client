@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-06-17 10:10:28.925831",
+    "@@last_modified": "2026-06-15 09:46:34.852119",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -7314,6 +7314,7 @@
     "bhoDisplayName": "بوجبوري",
     "bikDisplayName": "بيكول",
     "bmDisplayName": "بامبارا",
+    "bnDisplayName": "البنغالية",
     "bnBDDisplayName": "البنغالية (بنغلاديش)",
     "bnINDisplayName": "البنغالية (الهند)",
     "brDisplayName": "البريتونية",
@@ -7668,6 +7669,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10165,11 +10170,6 @@
     },
     "activityActions": "إجراءات النشاط",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "البنغالية",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

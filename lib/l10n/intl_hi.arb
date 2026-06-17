@@ -3377,7 +3377,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-06-17 10:10:42.271768",
+    "@@last_modified": "2026-06-15 09:46:48.604736",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7693,6 +7693,7 @@
     "bhoDisplayName": "भोजपुरी",
     "bikDisplayName": "बिकोल",
     "bmDisplayName": "बाम्बारा",
+    "bnDisplayName": "বাংলা",
     "bnBDDisplayName": "বাংলা (বাংলাদেশ)",
     "bnINDisplayName": "বাংলা (ভারত)",
     "brDisplayName": "ব্রেটন",
@@ -8047,6 +8048,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10544,11 +10549,6 @@
     },
     "activityActions": "गतिविधि क्रियाएँ",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "बंगाली",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

@@ -2098,7 +2098,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-06-17 10:10:44.824857",
+    "@@last_modified": "2026-06-15 09:46:50.641090",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8042,6 +8042,7 @@
     "bhoDisplayName": "ბოჰპური",
     "bikDisplayName": "ბიკოლური",
     "bmDisplayName": "ბამბარა",
+    "bnDisplayName": "ბანგლა",
     "bnBDDisplayName": "ბენგალური (ბანგლადეში)",
     "bnINDisplayName": "ბენგალური (ინდოეთი)",
     "brDisplayName": "ბრეტონი",
@@ -8396,6 +8397,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10893,11 +10898,6 @@
     },
     "activityActions": "აქტივობის მოქმედებები",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "ბენგალური",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

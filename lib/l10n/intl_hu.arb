@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-06-17 10:10:02.626569",
+    "@@last_modified": "2026-06-15 09:46:13.264921",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -7101,6 +7101,7 @@
     "bhoDisplayName": "Bhojpuri",
     "bikDisplayName": "Bikol",
     "bmDisplayName": "Bambara",
+    "bnDisplayName": "Bengáli",
     "bnBDDisplayName": "Bengáli (Banglades)",
     "bnINDisplayName": "Bengáli (India)",
     "brDisplayName": "Breton",
@@ -7455,6 +7456,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -9952,11 +9957,6 @@
     },
     "activityActions": "Tevékenységi műveletek",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "Bengáli",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-17 10:09:58.466979",
+    "@@last_modified": "2026-06-15 09:46:08.737538",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -7191,6 +7191,7 @@
     "bhoDisplayName": "보지푸리어",
     "bikDisplayName": "비콜어",
     "bmDisplayName": "밤바라어",
+    "bnDisplayName": "벵골어",
     "bnBDDisplayName": "벵골어 (방글라데시)",
     "bnINDisplayName": "벵골어 (인도)",
     "brDisplayName": "브르타뉴어",
@@ -7545,6 +7546,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10042,11 +10047,6 @@
     },
     "activityActions": "활동 작업",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "벵골어",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

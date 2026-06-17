@@ -3193,7 +3193,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-17 10:10:34.981039",
+    "@@last_modified": "2026-06-15 09:46:40.576610",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8559,6 +8559,7 @@
     "bhoDisplayName": "བྷོཇ་པུ་རི",
     "bikDisplayName": "བི་ཀོལ",
     "bmDisplayName": "བམ་བ་ར",
+    "bnDisplayName": "བང་ལ",
     "bnBDDisplayName": "བང་ལ (བངྒ་ལ་དེཤ)",
     "bnINDisplayName": "བང་ལ (རྒྱ་གར)",
     "brDisplayName": "བྲེ་ཏོན",
@@ -9501,11 +9502,6 @@
     },
     "activityActions": "Aktioner för aktivitet",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "বাঙালি",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

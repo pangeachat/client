@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-17 10:10:37.352176",
+    "@@last_modified": "2026-06-15 09:46:43.253786",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -7091,6 +7091,7 @@
     "bhoDisplayName": "بوجپوری",
     "bikDisplayName": "بیکول",
     "bmDisplayName": "بامبارا",
+    "bnDisplayName": "بنگالی",
     "bnBDDisplayName": "بنگالی (بنگلادش)",
     "bnINDisplayName": "بنگالی (هند)",
     "brDisplayName": "برتون",
@@ -7445,6 +7446,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -9937,11 +9942,6 @@
     },
     "activityActions": "عملیات فعالیت",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "بنگالی",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

@@ -3771,7 +3771,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-06-17 10:10:40.428787",
+    "@@last_modified": "2026-06-15 09:46:45.383462",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -8023,6 +8023,7 @@
     "bhoDisplayName": "Μποχτζπούρι",
     "bikDisplayName": "Μπικολ",
     "bmDisplayName": "Μπαμπάρα",
+    "bnDisplayName": "Μπενγκάλι",
     "bnBDDisplayName": "Μπενγκάλι (Μπαγκλαντές)",
     "bnINDisplayName": "Μπενγκάλι (Ινδία)",
     "brDisplayName": "Βρετονικά",
@@ -8377,6 +8378,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10874,11 +10879,6 @@
     },
     "activityActions": "Ενέργειες δραστηριότητας",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "Βεγγαλικά",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

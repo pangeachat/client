@@ -1477,7 +1477,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-06-17 10:10:01.822332",
+    "@@last_modified": "2026-06-15 09:46:12.316161",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -8068,6 +8068,7 @@
     "bhoDisplayName": "Bhojpuri",
     "bikDisplayName": "Bikol",
     "bmDisplayName": "Bambara",
+    "bnDisplayName": "Bengali",
     "bnBDDisplayName": "Bengali (Bangladesh)",
     "bnINDisplayName": "Bengali (Indien)",
     "brDisplayName": "Breton",
@@ -8422,6 +8423,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10919,11 +10924,6 @@
     },
     "activityActions": "Aktivitets handlinger",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "Bengali",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

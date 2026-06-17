@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-17 10:10:33.355011",
+    "@@last_modified": "2026-06-15 09:46:38.844798",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -7100,6 +7100,7 @@
     "bhoDisplayName": "போஜ்பூரி",
     "bikDisplayName": "பிகோல்",
     "bmDisplayName": "பம்பரா",
+    "bnDisplayName": "பெங்காலி",
     "bnBDDisplayName": "பெங்காலி (பங்காளா)",
     "bnINDisplayName": "பெங்காலி (இந்தியா)",
     "brDisplayName": "பிரெட்டான்",
@@ -7454,6 +7455,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -9941,11 +9946,6 @@
     },
     "activityActions": "செயல்பாட்டு நடவடிக்கைகள்",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "பெங்காலி",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-17 10:10:39.383880",
+    "@@last_modified": "2026-06-15 09:46:44.579578",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -7561,6 +7561,7 @@
     "bhoDisplayName": "Bhojpuri",
     "bikDisplayName": "Bikol",
     "bmDisplayName": "Bambara",
+    "bnDisplayName": "Bengali",
     "bnBDDisplayName": "Bengali (Bangladesh)",
     "bnINDisplayName": "Bengali (Indien)",
     "brDisplayName": "Breton",
@@ -7915,6 +7916,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10412,11 +10417,6 @@
     },
     "activityActions": "Aktivitetsåtgärder",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "Bengali",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

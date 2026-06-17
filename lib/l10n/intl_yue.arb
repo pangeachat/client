@@ -1406,7 +1406,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-06-17 10:10:18.408429",
+    "@@last_modified": "2026-06-15 09:46:24.607991",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -8100,6 +8100,7 @@
     "bhoDisplayName": "博傑普里語",
     "bikDisplayName": "比科爾語",
     "bmDisplayName": "班巴拉語",
+    "bnDisplayName": "孟加拉語",
     "bnBDDisplayName": "孟加拉語（孟加拉）",
     "bnINDisplayName": "孟加拉語（印度）",
     "brDisplayName": "布列塔尼語",
@@ -8454,6 +8455,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10956,11 +10961,6 @@
     },
     "activityActions": "活動行動",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "孟加拉語",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

@@ -3377,7 +3377,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-06-17 10:10:23.941302",
+    "@@last_modified": "2026-06-15 09:46:30.236342",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7693,6 +7693,7 @@
     "bhoDisplayName": "โบชปุรี",
     "bikDisplayName": "บิโคล",
     "bmDisplayName": "บัมบารา",
+    "bnDisplayName": "เบงกาลี",
     "bnBDDisplayName": "เบงกาลี (บังกลาเทศ)",
     "bnINDisplayName": "เบงกาลี (อินเดีย)",
     "brDisplayName": "เบรอตง",
@@ -8047,6 +8048,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -10544,11 +10549,6 @@
     },
     "activityActions": "การกระทำกิจกรรม",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "เบงกาลี",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

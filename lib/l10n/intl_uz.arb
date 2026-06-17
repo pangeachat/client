@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-06-17 10:10:26.477857",
+    "@@last_modified": "2026-06-15 09:46:32.909143",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -4008,6 +4008,7 @@
     "bhoDisplayName": "Bhojpuri",
     "bikDisplayName": "Bikol",
     "bmDisplayName": "Bambara",
+    "bnDisplayName": "Bengali",
     "bnBDDisplayName": "Bengali (Bangladesh)",
     "bnINDisplayName": "Bengali (Hindiston)",
     "brDisplayName": "Breton",
@@ -7718,6 +7719,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@bnDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@bnBDDisplayName": {
         "type": "String",
         "placeholders": {}
@@ -9829,11 +9834,6 @@
     },
     "activityActions": "Faoliyat harakatlari",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "Bengalcha",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }

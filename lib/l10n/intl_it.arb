@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-17 10:10:19.118043",
+    "@@last_modified": "2026-06-15 09:46:25.415906",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -7105,6 +7105,7 @@
     "bhoDisplayName": "Bhojpuri",
     "bikDisplayName": "Bikol",
     "bmDisplayName": "Bambara",
+    "bnDisplayName": "Bengalese",
     "bnBDDisplayName": "Bengalese (Bangladesh)",
     "bnINDisplayName": "Bengalese (India)",
     "brDisplayName": "Bretone",
@@ -7459,6 +7460,10 @@
         "placeholders": {}
     },
     "@bmDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -9916,11 +9921,6 @@
     },
     "activityActions": "Azioni di attività",
     "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "bnDisplayName": "Bengalese",
-    "@bnDisplayName": {
         "type": "String",
         "placeholders": {}
     }
