@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:collection/collection.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
@@ -250,17 +251,28 @@ class SubscriptionController with ChangeNotifier {
     SubscriptionDetails selectedSubscription,
     BuildContext context,
   ) async {
-    if (selectedSubscription.isTrial) {
-      try {
+    try {
+      if (selectedSubscription.isTrial) {
         await activateNewUserTrial();
-      } catch (e, s) {
-        ErrorHandler.logError(e: e, s: s, data: selectedSubscription.toJson());
+        return;
       }
-      return;
-    }
 
-    GoogleAnalytics.beginPurchaseSubscription(selectedSubscription, context);
-    await _manager.submitSubscriptionChange(selectedSubscription);
+      GoogleAnalytics.beginPurchaseSubscription(selectedSubscription, context);
+      await _manager.submitSubscriptionChange(selectedSubscription);
+    } catch (e, s) {
+      if (e is PlatformException &&
+          e.message?.contains("Purchase was cancelled") == true) {
+        return;
+      }
+
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"subscription_id": selectedSubscription.id},
+      );
+
+      rethrow;
+    }
   }
 
   Future<void> activateNewUserTrial() async {
@@ -270,9 +282,7 @@ class SubscriptionController with ChangeNotifier {
   }
 
   Future<void> updateCurrentSubscription() async {
-    final updated = await _manager.getCurrentSubscriptionInfo();
-    if (updated == _state) return;
-    _state = updated;
+    _state = await _manager.getCurrentSubscriptionInfo();
     notifyListeners();
   }
 }

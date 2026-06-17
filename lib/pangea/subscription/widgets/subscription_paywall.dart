@@ -6,6 +6,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/subscription/models/subscription_details.dart';
 import 'package:fluffychat/pangea/subscription/repo/subscription_management_repo.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SubscriptionPaywall extends StatelessWidget {
@@ -95,9 +96,12 @@ class SubscriptionPaywall extends StatelessWidget {
                             .map(
                               (subscription) => SubscriptionCard(
                                 subscription: subscription,
-                                onTap: () => sub.submitSubscriptionChange(
-                                  subscription,
-                                  context,
+                                onTap: () => showFutureLoadingDialog(
+                                  context: context,
+                                  future: () => sub.submitSubscriptionChange(
+                                    subscription,
+                                    context,
+                                  ),
                                 ),
                                 title: subscription.displayName(context),
                                 enabled: !subscription.isTrial,

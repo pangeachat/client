@@ -1,12 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:intl/intl.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/subscription/models/subscription_details.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -54,17 +52,6 @@ class ChangeSubscriptionState extends State<ChangeSubscription> {
       await _subscriptionController.submitSubscriptionChange(
         subscription,
         context,
-      );
-    } catch (e, s) {
-      if (e is PlatformException &&
-          e.message?.contains("Purchase was cancelled") == true) {
-        return;
-      }
-
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"subscription_id": subscription.id},
       );
     } finally {
       if (mounted) setState(() => _loading = false);
