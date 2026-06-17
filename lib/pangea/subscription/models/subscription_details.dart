@@ -67,7 +67,7 @@ class SubscriptionDetails {
     final data = <String, dynamic>{};
     data['price'] = price;
     data['id'] = id;
-    data['duration'] = duration?.value;
+    data['duration'] = duration?.name;
     data['appId'] = appId;
     data['is_visible'] = isVisible;
     return data;
@@ -77,7 +77,7 @@ class SubscriptionDetails {
     return SubscriptionDetails(
       price: json['price'],
       duration: SubscriptionDuration.values.firstWhereOrNull(
-        (duration) => duration.value == json['duration'],
+        (duration) => duration.name == json['duration'],
       ),
       id: json['id'],
       appId: json['appId'],
