@@ -8,7 +8,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:fluffychat/pangea/bot/bot_target_event_name_enum.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
-import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/pangea/subscription/models/subscription_details.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
 import 'package:fluffychat/pangea/tutorials/tutorial_enum.dart';
 import '../../../config/firebase_options.dart';
@@ -211,15 +211,11 @@ class GoogleAnalytics {
         "currency": "USD",
         'value': details.price,
         'transaction_id': details.id,
-        'items': [
-          {
-            'item_id': details.package!.identifier,
-            'item_name': details.displayName(context),
-            'price': details.price,
-            'item_category': "subscription",
-            'quantity': 1,
-          },
-        ],
+        if (details.package != null) 'item_id': details.package!.identifier,
+        'item_name': details.displayName(context),
+        'price': details.price,
+        'item_category': "subscription",
+        'quantity': 1,
       },
     );
   }

@@ -574,9 +574,9 @@ class ChatListController extends State<ChatList>
     MatrixState.pangeaController.subscriptionController.subscriptionNotifier
         .addListener(_onSubscribe);
 
-    MatrixState.pangeaController.initControllers();
-
     final client = Matrix.of(context).client;
+    MatrixState.pangeaController.initControllers(client.userID);
+
     _joinCachedSpaceCode(client);
     _startDMWithCachedUserId(client);
     _handlePendingCourseAnalyticsAccessRequests(client);

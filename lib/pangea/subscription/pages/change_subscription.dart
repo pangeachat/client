@@ -5,31 +5,63 @@ import 'package:intl/intl.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
-import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
+import 'package:fluffychat/pangea/subscription/models/subscription_details.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class ChangeSubscription extends StatelessWidget {
-  final SubscriptionManagementController controller;
-  ChangeSubscription({required this.controller, super.key});
+class ChangeSubscription extends StatefulWidget {
+  const ChangeSubscription({super.key});
 
-  final PangeaController pangeaController = MatrixState.pangeaController;
+  @override
+  ChangeSubscriptionState createState() => ChangeSubscriptionState();
+}
 
-  List<SubscriptionDetails> get subscriptions =>
-      pangeaController
-          .subscriptionController
-          .availableSubscriptionInfo
-          ?.availableSubscriptions ??
-      [];
+class ChangeSubscriptionState extends State<ChangeSubscription> {
+  SubscriptionDetails? _selectedSubscription;
+  bool _loading = false;
 
-  bool get inTrialWindow => pangeaController.userController.inTrialWindow();
+  SubscriptionController get _subscriptionController =>
+      MatrixState.pangeaController.subscriptionController;
 
-  String get formattedDate => DateFormat.yMMMd().format(DateTime.now());
+  List<SubscriptionDetails> get _availableSubscriptions =>
+      _subscriptionController.availableSubscriptions;
+
+  String get _formattedDate => DateFormat.yMMMd().format(DateTime.now());
+
+  bool _isSelected(SubscriptionDetails subscription) =>
+      _selectedSubscription?.id == subscription.id;
+
+  bool _isCurrentSubscription(SubscriptionDetails subscription) =>
+      _subscriptionController.subscription == subscription;
+
+  bool _isEnabled(SubscriptionDetails subscription) =>
+      (!subscription.isTrial || _subscriptionController.inTrialWindow) &&
+      !_isCurrentSubscription(subscription);
+
+  void _selectSubscription(SubscriptionDetails? subscription) {
+    setState(() {
+      _selectedSubscription = _selectedSubscription == subscription
+          ? null
+          : subscription;
+    });
+  }
+
+  Future<void> _submitChange(SubscriptionDetails subscription) async {
+    setState(() => _loading = true);
+    try {
+      await _subscriptionController.submitSubscriptionChange(
+        subscription,
+        context,
+      );
+    } finally {
+      if (mounted) setState(() => _loading = false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    if (!controller.subscriptionsAvailable) {
+    final subscriptions = _availableSubscriptions;
+    if (subscriptions.isEmpty) {
       return const Center(
         child: Padding(
           padding: EdgeInsets.all(16.0),
@@ -47,8 +79,9 @@ class ChangeSubscription extends StatelessWidget {
         ),
         Column(
           children: [
-            for (final subscription in subscriptions)
-              DecoratedBox(
+            ...subscriptions.map((subscription) {
+              final selected = _isSelected(subscription);
+              return DecoratedBox(
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
@@ -62,19 +95,16 @@ class ChangeSubscription extends StatelessWidget {
                     ListTile(
                       title: Text(subscription.displayName(context)),
                       trailing: Icon(
-                        controller.selectedSubscription?.id != subscription.id
+                        selected
                             ? Icons.keyboard_arrow_right_outlined
                             : Icons.keyboard_arrow_down_outlined,
                       ),
-                      enabled:
-                          (!subscription.isTrial || inTrialWindow) &&
-                          !controller.isCurrentSubscription(subscription),
-                      onTap: () => controller.selectSubscription(subscription),
+                      enabled: _isEnabled(subscription),
+                      onTap: () => _selectSubscription(subscription),
                     ),
                     AnimatedSize(
                       duration: FluffyThemes.animationDuration,
-                      child:
-                          controller.selectedSubscription?.id != subscription.id
+                      child: _selectedSubscription?.id != subscription.id
                           ? const SizedBox()
                           : Column(
                               children: [
@@ -104,7 +134,7 @@ class ChangeSubscription extends StatelessWidget {
                                                 L10n.of(
                                                   context,
                                                 ).paidSubscriptionStarts(
-                                                  formattedDate,
+                                                  _formattedDate,
                                                 ),
                                               ),
                                             ),
@@ -139,9 +169,9 @@ class ChangeSubscription extends StatelessWidget {
                                       ),
                                       const SizedBox(height: 20.0),
                                       ElevatedButton(
-                                        onPressed: () => controller
-                                            .submitChange(subscription),
-                                        child: controller.loading
+                                        onPressed: () =>
+                                            _submitChange(subscription),
+                                        child: _loading
                                             ? const LinearProgressIndicator()
                                             : Row(
                                                 mainAxisAlignment:
@@ -165,7 +195,8 @@ class ChangeSubscription extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
+              );
+            }),
           ],
         ),
         if (kIsWeb)

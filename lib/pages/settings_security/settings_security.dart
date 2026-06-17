@@ -52,9 +52,8 @@ class SettingsSecurityController extends State<SettingsSecurity> {
     // #Pangea
     final subscriptionController =
         MatrixState.pangeaController.subscriptionController;
-    if (subscriptionController.currentSubscriptionInfo?.isPaidSubscription ==
-            true &&
-        subscriptionController.defaultManagementURL != null) {
+    final managementURL = subscriptionController.defaultManagementURL;
+    if (subscriptionController.hasPaidSubscription && managementURL != null) {
       final resp = await showOkCancelAlertDialog(
         useRootNavigator: false,
         context: context,
@@ -64,10 +63,7 @@ class SettingsSecurityController extends State<SettingsSecurity> {
         cancelLabel: L10n.of(context).continueText,
       );
       if (resp == OkCancelResult.ok) {
-        launchUrlString(
-          subscriptionController.defaultManagementURL!,
-          mode: LaunchMode.externalApplication,
-        );
+        launchUrlString(managementURL, mode: LaunchMode.externalApplication);
         return;
       }
     }

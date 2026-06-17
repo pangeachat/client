@@ -120,8 +120,10 @@ class TokensUtil {
 
   Set<PangeaTokenText> getNewTokensByEvent(PangeaMessageEvent event) {
     if (!event.eventId.isValidMatrixId ||
-        (MatrixState.pangeaController.subscriptionController.isSubscribed ==
-            false) ||
+        (!MatrixState
+            .pangeaController
+            .subscriptionController
+            .showSubscriptionGatedContent) ||
         MatrixState
             .pangeaController
             .matrixState

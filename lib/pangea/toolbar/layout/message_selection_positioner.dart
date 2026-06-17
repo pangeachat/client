@@ -370,8 +370,10 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   void launchPractice(ReadingAssistanceMode mode) {
-    if (MatrixState.pangeaController.subscriptionController.isSubscribed ==
-        false) {
+    if (!MatrixState
+        .pangeaController
+        .subscriptionController
+        .showSubscriptionGatedContent) {
       return;
     }
 

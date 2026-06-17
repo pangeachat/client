@@ -20,7 +20,7 @@ import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart'
 import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
 import 'package:fluffychat/pangea/events/repo/tokens_repo.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
-import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/pangea/subscription/utils/subscription_status_enum.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../widgets/matrix.dart';
@@ -221,7 +221,7 @@ class Choreographer extends ChangeNotifier {
   Future<void> requestWritingAssistance({bool manual = false}) async {
     if (assistanceState != AssistanceStateEnum.notFetched) return;
     final SubscriptionStatus canSendStatus =
-        MatrixState.pangeaController.subscriptionController.subscriptionStatus;
+        MatrixState.pangeaController.subscriptionController.paywallStatus;
 
     if (canSendStatus != SubscriptionStatus.subscribed) {
       Logs().w("User is not subscribed to a plan that allows IGC");

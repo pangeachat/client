@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-15 09:46:29.634706",
+    "@@last_modified": "2026-06-17 10:51:54.103063",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9981,6 +9981,41 @@
     },
     "activityActions": "Accions d'activitat",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Funcions Pro",
+    "pronunciationTools": "Eines de pronunciació",
+    "audioTranscription": "Transcripció d'àudio AI",
+    "visualLearnerSupport": "Suport per a aprenents visuals",
+    "instantWritingTranslation": "Traducció instantània de textos",
+    "personalizedPracticeExercises": "Exercicis de pràctica personalitzats",
+    "vocabularyFlashcards": "Targetes de vocabulari",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
         "type": "String",
         "placeholders": {}
     }
