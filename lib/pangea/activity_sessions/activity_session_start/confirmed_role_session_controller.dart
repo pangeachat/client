@@ -18,7 +18,6 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class ConfirmedRoleSession extends StatefulWidget {
   final Room room;
@@ -43,27 +42,19 @@ class ConfirmedRoleSession extends StatefulWidget {
 
 class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
     implements ActivitySessionStateController {
-  ConfirmedRoleSessionController();
-
   Timer? _pingCooldown;
-  Map<String, Set<String>> _completedGoalIdsCache = {};
-  StreamSubscription? _roomStateSubscription;
+  final _goalsHandler = GoalsSubscriptionHandler();
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _roomStateSubscription ??= Matrix.of(context).client.onRoomState.stream
-        .listen((_) {
-          if (mounted) {
-            setState(() => _completedGoalIdsCache = {});
-          }
-        });
+    _goalsHandler.init(widget.room.id, context, setState, () => mounted);
   }
 
   @override
   void dispose() {
     _pingCooldown?.cancel();
-    _roomStateSubscription?.cancel();
+    _goalsHandler.cancel();
     super.dispose();
   }
 
@@ -89,16 +80,12 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   Set<String> get selectedRoleCompletedGoalIds {
     final roleId = widget.room.ownRoleState?.id;
     if (roleId == null) return {};
-    if (_completedGoalIdsCache.containsKey(roleId)) {
-      return _completedGoalIdsCache[roleId]!;
-    }
-    return _completedGoalIdsCache[roleId] =
-        ActivitySessionStateController.scanCompletedGoalIds(
-          activityId: widget.activityId,
-          activity: widget.activity,
-          roleId: roleId,
-          rooms: Matrix.of(context).client.rooms,
-        );
+    return _goalsHandler.scan(
+      roleId,
+      context,
+      activityId: widget.activityId,
+      activity: widget.activity,
+    );
   }
 
   @override

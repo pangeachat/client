@@ -33,23 +33,9 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
   final NotStartedSessionController controller;
   const _NotStartedSessionBottomContent(this.controller);
 
-  List<ActivitySummaryStatus> get _visibleStatuses {
-    switch (controller.subPage) {
-      case NotStartedSubPage.join:
-        return [ActivitySummaryStatus.notStarted];
-      case NotStartedSubPage.view:
-        return [
-          ActivitySummaryStatus.inProgress,
-          ActivitySummaryStatus.completed,
-        ];
-      case NotStartedSubPage.main:
-        return [];
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    if (_visibleStatuses.isEmpty) return const SizedBox.shrink();
+    if (controller.subPage.visibleStatuses.isEmpty) return const SizedBox.shrink();
 
     return ConstrainedBox(
       constraints: const BoxConstraints(
@@ -57,7 +43,7 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
       ),
       child: Column(
         children: [
-          ..._visibleStatuses.map((status) {
+          ...controller.subPage.visibleStatuses.map((status) {
             final roomSummaries = controller.activityStatuses
                 .getSessionsByStatus(status);
 

@@ -1,9 +1,11 @@
-import 'package:matrix/matrix.dart';
+import 'dart:async';
 
-import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:flutter/material.dart';
+
+import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_client_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 abstract class ActivitySessionStateController {
   String? get descriptionText;
@@ -31,26 +33,45 @@ abstract class ActivitySessionStateController {
   List<ActivityRoleGoal>? get selectedRoleGoals;
 
   Set<String> get selectedRoleCompletedGoalIds;
+}
 
-  static Set<String> scanCompletedGoalIds({
+class GoalsSubscriptionHandler {
+  final Map<String, Set<String>> _cache = {};
+  StreamSubscription? _subscription;
+
+  void init(
+    String? roomId,
+    BuildContext context,
+    StateSetter setState,
+    bool Function() isMounted,
+  ) {
+    _subscription ??= Matrix.of(context).client.onRoomState.stream
+        .where(
+          (u) =>
+              u.roomId == roomId &&
+              u.state.type == PangeaEventTypes.orchestratorAwardedGoals,
+        )
+        .listen((_) {
+          if (isMounted()) setState(() => _cache.clear());
+        });
+  }
+
+  void cancel() => _subscription?.cancel();
+
+  void clearCache() => _cache.clear();
+
+  Set<String> scan(
+    String id,
+    BuildContext context, {
     required String? activityId,
     required ActivityPlanModel? activity,
-    required String roleId,
-    required List<Room> rooms,
   }) {
-    if (activityId == null) return {};
-    final role = activity?.roles[roleId];
-    if (role == null) return {};
-    final roleGoalIds = role.allGoals.map((g) => g.id).toSet();
-    final completed = <String>{};
-    for (final room in rooms) {
-      if (room.activityId != activityId) continue;
-      if (room.ownRoleState?.id != roleId) continue;
-      final awarded = room.orchestratorAwardedGoals;
-      completed.addAll(
-        roleGoalIds.where((id) => awarded.isGoalCompletedForRole(roleId, id)),
-      );
-    }
-    return completed;
+    if (_cache.containsKey(id)) return _cache[id]!;
+    return _cache[id] = Matrix.of(context).client.scanCompletedGoalIds(
+      activityId: activityId,
+      activity: activity,
+      roleId: id,
+      rooms: Matrix.of(context).client.rooms,
+    );
   }
 }

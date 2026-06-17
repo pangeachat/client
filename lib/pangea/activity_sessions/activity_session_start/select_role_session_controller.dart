@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -44,21 +42,17 @@ class SelectRoleSessionController extends State<SelectRoleSession>
     implements ActivitySessionStateController {
   String? _selectedRoleId;
   bool _confirmed = false;
-  Map<String, Set<String>> _completedGoalIdsCache = {};
-  StreamSubscription? _roomStateSubscription;
+  final _goalsHandler = GoalsSubscriptionHandler();
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _roomStateSubscription ??= Matrix.of(context).client.onRoomState.stream
-        .listen((_) {
-          if (mounted) setState(() => _completedGoalIdsCache = {});
-        });
+    _goalsHandler.init(widget.roomId, context, setState, () => mounted);
   }
 
   @override
   void dispose() {
-    _roomStateSubscription?.cancel();
+    _goalsHandler.cancel();
     super.dispose();
   }
 
@@ -69,7 +63,7 @@ class SelectRoleSessionController extends State<SelectRoleSession>
       setState(() {
         _selectedRoleId = null;
         _confirmed = false;
-        _completedGoalIdsCache = {};
+        _goalsHandler.clearCache();
       });
     }
   }
@@ -99,16 +93,12 @@ class SelectRoleSessionController extends State<SelectRoleSession>
   }
 
   @override
-  Set<String> completedGoalIdsForRole(String id) {
-    if (_completedGoalIdsCache.containsKey(id)) return _completedGoalIdsCache[id]!;
-    return _completedGoalIdsCache[id] =
-        ActivitySessionStateController.scanCompletedGoalIds(
-          activityId: widget.activity?.activityId,
-          activity: widget.activity,
-          roleId: id,
-          rooms: Matrix.of(context).client.rooms,
-        );
-  }
+  Set<String> completedGoalIdsForRole(String id) => _goalsHandler.scan(
+        id,
+        context,
+        activityId: widget.activity?.activityId,
+        activity: widget.activity,
+      );
 
   @override
   Set<String> get selectedRoleCompletedGoalIds {
