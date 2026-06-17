@@ -15,6 +15,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
+import 'package:fluffychat/routes/world/workspace_dock.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -163,7 +164,10 @@ class SpacesNavigationRail extends StatelessWidget {
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
     // return StreamBuilder(
-    return Material(
+    // world_v2: the rail floats over the persistent map in the shared dock pill
+    // (rounded, surface, elevated, outline-bordered) — the same chrome as the
+    // top-right cluster, one source of truth. See workspace_dock.dart.
+    return WorkspaceDock(
       child: SafeArea(
         child: StreamBuilder(
           // Pangea#

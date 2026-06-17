@@ -106,7 +106,11 @@ class TwoColumnLayout extends StatelessWidget {
     // is just the rail now — there is no route-driven left card to reserve for.
     final railWidth =
         isColumnMode && navRail ? (FluffyThemes.navRailWidth + 1.0) : 0.0;
-    final columnWidth = railWidth;
+    // The rail floats over the map in its dock pill (like the top-right
+    // cluster), inset by [railMargin] on each side; reserve that margin so left
+    // panels and the map's camera padding clear the floating pill.
+    const railMargin = 12.0;
+    final columnWidth = railWidth == 0 ? 0.0 : railWidth + railMargin * 2;
     final showBottomNav = !isColumnMode && navRail;
 
     // The effective canvas (an open activity overlay already resolves to a
@@ -236,7 +240,11 @@ class TwoColumnLayout extends StatelessWidget {
             // it left at its natural size so the map stays full-bleed behind it.
             Align(
               alignment: Alignment.topLeft,
-              child: SpaceNavigationColumn(state: state, showNavRail: navRail),
+              child: Padding(
+                padding: const EdgeInsets.all(railMargin),
+                child:
+                    SpaceNavigationColumn(state: state, showNavRail: navRail),
+              ),
             ),
             // Left-column panels (the chat list, a live room, a course, the
             // settings/profile menu) from `?left=`, each at its allocator slot

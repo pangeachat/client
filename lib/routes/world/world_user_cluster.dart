@@ -14,6 +14,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/world/workspace_dock.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -371,43 +372,31 @@ class _TrackerPill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Material(
-      color: theme.colorScheme.surface,
-      elevation: 2,
-      shadowColor: Colors.black26,
-      borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-          border: Border.all(
-            color: theme.colorScheme.outlineVariant,
-            width: 1,
+    // Shared dock chrome (matches the left nav rail). See workspace_dock.dart.
+    return WorkspaceDock(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _TrackerButton(
+            indicator: ProgressIndicatorEnum.activities,
+            count: sessions,
+            isFirst: true,
+            onTap: () => onTap(AnalyticsPanelTab.sessions),
           ),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _TrackerButton(
-              indicator: ProgressIndicatorEnum.activities,
-              count: sessions,
-              isFirst: true,
-              onTap: () => onTap(AnalyticsPanelTab.sessions),
-            ),
-            _divider(theme),
-            _TrackerButton(
-              indicator: ProgressIndicatorEnum.morphsUsed,
-              count: grammar,
-              onTap: () => onTap(AnalyticsPanelTab.grammar),
-            ),
-            _divider(theme),
-            _TrackerButton(
-              indicator: ProgressIndicatorEnum.wordsUsed,
-              count: vocab,
-              isLast: true,
-              onTap: () => onTap(AnalyticsPanelTab.vocab),
-            ),
-          ],
-        ),
+          _divider(theme),
+          _TrackerButton(
+            indicator: ProgressIndicatorEnum.morphsUsed,
+            count: grammar,
+            onTap: () => onTap(AnalyticsPanelTab.grammar),
+          ),
+          _divider(theme),
+          _TrackerButton(
+            indicator: ProgressIndicatorEnum.wordsUsed,
+            count: vocab,
+            isLast: true,
+            onTap: () => onTap(AnalyticsPanelTab.vocab),
+          ),
+        ],
       ),
     );
   }

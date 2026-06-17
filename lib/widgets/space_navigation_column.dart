@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
@@ -7,7 +5,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/navigation_rail.dart';
 import 'matrix.dart';
 
@@ -31,9 +28,6 @@ class SpaceNavigationColumn extends StatefulWidget {
 }
 
 class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
-  bool _hovered = false;
-  bool _expanded = false;
-  Timer? _timer;
   Profile? _profile;
 
   @override
@@ -56,65 +50,26 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
     }
   }
 
-  void _onHoverUpdate(bool hovered) {
-    if (hovered == _hovered) return;
-    _hovered = hovered;
-    _cancelTimer();
-
-    if (hovered) {
-      _timer = Timer(const Duration(milliseconds: 200), () {
-        if (_hovered && mounted) {
-          setState(() => _expanded = true);
-        }
-        _cancelTimer();
-      });
-    } else {
-      setState(() => _expanded = false);
-    }
-  }
-
-  void _cancelTimer() {
-    _timer?.cancel();
-    _timer = null;
-  }
-
-  @override
-  void dispose() {
-    _cancelTimer();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final isColumnMode = FluffyThemes.isColumnMode(context);
     // The vertical rail is column-mode only; narrow screens use the bottom nav.
     if (!isColumnMode || !widget.showNavRail) return const SizedBox.shrink();
 
-    final realNaviRailWidth = FluffyThemes.navRailWidth + 1.0;
-    const realExpandedNaviWidth = 250.0;
-
-    return HoverBuilder(
-      builder: (context, hovered) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          _onHoverUpdate(hovered);
-        });
-
-        // The rail floats as a content-height bar over the map, matching the
-        // card panels (no full-height divider).
-        return SpacesNavigationRail(
-          state: widget.state,
-          activeSpaceId: activeSpaceIdFor(widget.state.uri),
-          naviRailWidth: realNaviRailWidth,
-          expandedSectionWidth: realExpandedNaviWidth,
-          expanded: _expanded,
-          collapse: () {
-            _cancelTimer();
-            setState(() => _expanded = false);
-          },
-          profile: _profile,
-          onProfileUpdate: _updateProfile,
-        );
-      },
+    // world_v2: the rail no longer hover-expands — it stays a narrow pill that
+    // floats over the map (in the shared WorkspaceDock chrome). Section/course
+    // names surface via item tooltips, and joined courses also appear as tiles
+    // on the add-course page, so the expand-to-show-names interaction is retired.
+    // See `routing.instructions.md`.
+    return SpacesNavigationRail(
+      state: widget.state,
+      activeSpaceId: activeSpaceIdFor(widget.state.uri),
+      naviRailWidth: FluffyThemes.navRailWidth + 1.0,
+      expandedSectionWidth: 0,
+      expanded: false,
+      collapse: () {},
+      profile: _profile,
+      onProfileUpdate: _updateProfile,
     );
   }
 }
