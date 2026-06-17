@@ -1149,6 +1149,8 @@ class ChatListController extends State<ChatList>
     for (final courseId in pending) {
       final course = client.getRoomById(courseId);
       if (course == null || !course.isSpace) continue;
+      if (JoinRoomAnalyticsConsentHandler.currentRoomId == courseId) continue;
+
       final handler = JoinRoomAnalyticsConsentHandler(
         JoinResponse(
           roomId: course.id,
