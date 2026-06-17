@@ -215,6 +215,14 @@ instead of flipping or reloading. Two things protect this and must hold:
   unchanged value so an identical re-publish never re-fits the camera. (The
   layout-driven re-framing is debounced so this stays smooth — see *The map is the
   backdrop*.)
+- **Floating chrome sizes to its content, never the Stack.** The shell `Stack` is
+  `StackFit.expand`, which forces a *non-positioned* child to full size. A chrome
+  widget with an opaque root (the nav rail's `Material`, a card's surface) would
+  then paint over the whole map below it — the map lays out full-size but is hidden
+  (a real bug: the rail covered the map on web; mobile was fine only because the
+  rail is `SizedBox.shrink` there). Wrap any floating chrome (rail, overlays) in an
+  `Align`/`Positioned` so it sizes to its content and the map stays full-bleed
+  behind it.
 
 ## The cluster is the right column's entry point
 

@@ -228,7 +228,16 @@ class TwoColumnLayout extends StatelessWidget {
             ),
             if (isMobileCourse)
               Positioned.fill(child: MobileCourseSheet(child: canvasChild)),
-            SpaceNavigationColumn(state: state, showNavRail: navRail),
+            // The rail must size to its content, NOT fill the Stack: this Stack
+            // is StackFit.expand, which forces non-positioned children to full
+            // size — and the rail's root (opaque-canvas) Material would then
+            // paint over the entire persistent map below it (blank map; mobile
+            // was fine because the rail is `SizedBox.shrink` there). Align tops
+            // it left at its natural size so the map stays full-bleed behind it.
+            Align(
+              alignment: Alignment.topLeft,
+              child: SpaceNavigationColumn(state: state, showNavRail: navRail),
+            ),
             // Left-column panels (the chat list, a live room, a course, the
             // settings/profile menu) from `?left=`, each at its allocator slot
             // and rendered as a rounded card over the map, matching the right
