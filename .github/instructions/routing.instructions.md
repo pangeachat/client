@@ -223,6 +223,12 @@ instead of flipping or reloading. Two things protect this and must hold:
   rail is `SizedBox.shrink` there). Wrap any floating chrome (rail, overlays) in an
   `Align`/`Positioned` so it sizes to its content and the map stays full-bleed
   behind it.
+- **One dock chrome for both edges.** The left nav rail and the top-right cluster
+  share a single `WorkspaceDock` pill (surface, elevation, `AppConfig.borderRadius`,
+  outline border, clipped to the rounded corners) — one source of truth so the two
+  edges always match. The rail does **not** hover-expand; it stays a narrow pill
+  (section/course names come from item tooltips and the add-course page's course
+  tiles), so the dock can size to its icons.
 
 ## The cluster is the right column's entry point
 

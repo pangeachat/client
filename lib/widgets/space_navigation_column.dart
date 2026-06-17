@@ -65,7 +65,10 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
       state: widget.state,
       activeSpaceId: activeSpaceIdFor(widget.state.uri),
       naviRailWidth: FluffyThemes.navRailWidth + 1.0,
-      expandedSectionWidth: 0,
+      // The label section the items reserve and slide off-screen when collapsed.
+      // `expanded` is always false now, so the label stays hidden; it just needs
+      // room so the item's label Text isn't squeezed to a 0-width overflow.
+      expandedSectionWidth: 250,
       expanded: false,
       collapse: () {},
       profile: _profile,
