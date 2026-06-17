@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-06-15 09:46:32.909143",
+    "@@last_modified": "2026-06-17 10:52:03.635118",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9834,6 +9834,41 @@
     },
     "activityActions": "Faoliyat harakatlari",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Pro xususiyatlar",
+    "pronunciationTools": "Talaffuz vositalari",
+    "audioTranscription": "AI audio transkriptsiyasi",
+    "visualLearnerSupport": "Vizual o'quvchilarni qo'llab-quvvatlash",
+    "instantWritingTranslation": "Zudlik bilan yozuv tarjimasi",
+    "personalizedPracticeExercises": "Shaxsiylashtirilgan mashq vazifalari",
+    "vocabularyFlashcards": "Lug'at kartochkalari",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
         "type": "String",
         "placeholders": {}
     }

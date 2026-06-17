@@ -3913,7 +3913,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-06-15 09:46:11.156788",
+    "@@last_modified": "2026-06-17 10:50:57.841907",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9879,6 +9879,41 @@
     },
     "activityActions": "Toimintatoimet",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Pro-ominaisuudet",
+    "pronunciationTools": "Äänteentunnistustyökalut",
+    "audioTranscription": "AI-äänitallennus",
+    "visualLearnerSupport": "Visuaalisen oppijan tuki",
+    "instantWritingTranslation": "Välitön kirjoitustulkkaus",
+    "personalizedPracticeExercises": "Personoidut harjoitustehtävät",
+    "vocabularyFlashcards": "Sanastokortit",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
         "type": "String",
         "placeholders": {}
     }

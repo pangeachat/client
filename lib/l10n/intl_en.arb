@@ -4849,5 +4849,12 @@
     "announcementsChatDetails": "A place for course admins to create announcements for course participants. While all may view this channel, only admins can type in it.",
     "introChatDesc": "Anyone in the course can post.",
     "announcementsChatDesc": "Only course admins can post.",
-    "activityActions": "Activity actions"
+    "activityActions": "Activity actions",
+    "proFeatures": "Pro features",
+    "pronunciationTools": "Pronunciation tools",
+    "audioTranscription": "AI audio transcription",
+    "visualLearnerSupport": "Visual learner support",
+    "instantWritingTranslation": "Instant writing translation",
+    "personalizedPracticeExercises": "Personalized practice exercises",
+    "vocabularyFlashcards": "Vocabulary flashcards"
 }

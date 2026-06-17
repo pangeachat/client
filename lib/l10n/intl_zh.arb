@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-06-15 09:46:41.744196",
+    "@@last_modified": "2026-06-17 10:52:32.663652",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9830,6 +9830,41 @@
     },
     "activityActions": "活动操作",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "专业功能",
+    "pronunciationTools": "发音工具",
+    "audioTranscription": "AI音频转录",
+    "visualLearnerSupport": "视觉学习者支持",
+    "instantWritingTranslation": "即时写作翻译",
+    "personalizedPracticeExercises": "个性化练习",
+    "vocabularyFlashcards": "词汇闪卡",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
         "type": "String",
         "placeholders": {}
     }

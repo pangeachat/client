@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-06-15 09:46:13.264921",
+    "@@last_modified": "2026-06-17 10:51:02.620226",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9957,6 +9957,41 @@
     },
     "activityActions": "Tevékenységi műveletek",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Pro funkciók",
+    "pronunciationTools": "Kiejtési eszközök",
+    "audioTranscription": "AI hangátírás",
+    "visualLearnerSupport": "Vizuális tanulók támogatása",
+    "instantWritingTranslation": "Azonnali írásbeli fordítás",
+    "personalizedPracticeExercises": "Személyre szabott gyakorlófeladatok",
+    "vocabularyFlashcards": "Szókincs flashcardok",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
         "type": "String",
         "placeholders": {}
     }

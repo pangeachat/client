@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-15 09:46:47.983205",
+    "@@last_modified": "2026-06-17 10:52:44.955906",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10698,6 +10698,41 @@
     },
     "activityActions": "アクティビティアクション",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "プロ機能",
+    "pronunciationTools": "発音ツール",
+    "audioTranscription": "AI音声転写",
+    "visualLearnerSupport": "視覚学習者サポート",
+    "instantWritingTranslation": "即時書き込み翻訳",
+    "personalizedPracticeExercises": "パーソナライズされた練習問題",
+    "vocabularyFlashcards": "語彙フラッシュカード",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-15 09:46:38.844798",
+    "@@last_modified": "2026-06-17 10:52:27.039026",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9946,6 +9946,41 @@
     },
     "activityActions": "செயல்பாட்டு நடவடிக்கைகள்",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "ப்ரோ அம்சங்கள்",
+    "pronunciationTools": "உச்சரிப்பு கருவிகள்",
+    "audioTranscription": "ஏ.ஐ. ஒலிப்பதிவு",
+    "visualLearnerSupport": "காணொளி கற்றல் ஆதரவு",
+    "instantWritingTranslation": "உடனடி எழுத்து மொழிபெயர்ப்பு",
+    "personalizedPracticeExercises": "தனிப்பயனாக்கப்பட்ட பயிற்சி பயிற்சிகள்",
+    "vocabularyFlashcards": "வார்த்தை ஃபிளாஷ்கார்டுகள்",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
         "type": "String",
         "placeholders": {}
     }
