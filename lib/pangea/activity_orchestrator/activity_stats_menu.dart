@@ -247,14 +247,20 @@ class ActivityStatsMenu extends StatelessWidget {
                   child: Container(
                     width: double.infinity,
                     color: theme.colorScheme.surface,
-                    padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 24.0),
+                    padding: EdgeInsets.fromLTRB(
+                      12.0,
+                      remainingGoals.isEmpty ? 12.0 : 0.0,
+                      12.0,
+                      _showWaitNotDone || _showEndForMe || _showEndForAll
+                          ? 16.0
+                          : 0,
+                    ),
                     child: Column(
                       spacing: 16.0,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         if (remainingGoals.isNotEmpty)
                           Column(
-                            spacing: 16.0,
                             children: remainingGoals
                                 .map(
                                   (g) => GoalStatusWidget(
