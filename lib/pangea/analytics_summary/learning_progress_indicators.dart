@@ -87,7 +87,8 @@ class LearningProgressIndicators extends StatelessWidget {
                                   child: ProgressIndicatorBadge(
                                     indicator: c.indicator,
                                     loading: analyticsService.isInitializing,
-                                    points: analyticsService.numConstructs(c),
+                                    points: analyticsService
+                                        .uniqueConstructsByType(c),
                                   ),
                                 ),
                               ),

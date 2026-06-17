@@ -5,7 +5,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 
 extension AnalyticsSettingsRoomExtension on Room {
-  AnalyticsSettingsModel get analyticsSettings {
+  AnalyticsSettingsModel get _analyticsSettings {
     final event = getState(PangeaEventTypes.analyticsSettings);
     if (event == null) {
       return const AnalyticsSettingsModel(blockedConstructs: {});
@@ -14,14 +14,23 @@ extension AnalyticsSettingsRoomExtension on Room {
   }
 
   Set<ConstructIdentifier> get blockedConstructs =>
-      analyticsSettings.blockedConstructs;
+      _analyticsSettings.blockedConstructs;
 
-  Future<void> setAnalyticsSettings(AnalyticsSettingsModel settings) async {
+  Future<void> _setAnalyticsSettings(AnalyticsSettingsModel settings) async {
     await client.setRoomStateWithKey(
       id,
       PangeaEventTypes.analyticsSettings,
       "",
       settings.toJson(),
+    );
+  }
+
+  Future<void> addBlockedConstructs(Set<ConstructIdentifier> blocked) async {
+    final current = blockedConstructs;
+    final updated = {...current, ...blocked};
+    if (current.length == updated.length) return;
+    await _setAnalyticsSettings(
+      _analyticsSettings.copyWith(blockedConstructs: updated),
     );
   }
 }

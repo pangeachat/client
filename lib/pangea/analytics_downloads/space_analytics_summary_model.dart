@@ -109,7 +109,7 @@ class SpaceAnalyticsSummaryModel {
     final ConstructMergeTable mergeTable = ConstructMergeTable();
 
     for (final e in events) {
-      mergeTable.addConstructsByUses(e.content.uses, blockedConstructs);
+      mergeTable.addConstructsByUses(e.content.uses);
 
       for (final use in e.content.uses) {
         final id = use.identifier;

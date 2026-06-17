@@ -223,9 +223,8 @@ class AnalyticsDataService {
       language,
     );
 
-    final blocked = blockedConstructs;
-    _mergeTable.addConstructs(vocab, blocked);
-    _mergeTable.addConstructs(morph, blocked);
+    _mergeTable.addConstructs(vocab);
+    _mergeTable.addConstructs(morph);
   }
 
   Future<void> reinitialize() async {
@@ -275,17 +274,17 @@ class AnalyticsDataService {
   Future<void> _ensureInitialized() =>
       initCompleter.isCompleted ? Future.value() : initCompleter.future;
 
-  int numConstructs(ConstructTypeEnum type) =>
-      _mergeTable.uniqueConstructsByType(type);
-
   bool hasUsedConstruct(ConstructIdentifier id) =>
       _mergeTable.constructUsed(id);
 
   bool isConstructBlocked(ConstructIdentifier id) =>
       blockedConstructs.contains(id);
 
-  int uniqueConstructsByType(ConstructTypeEnum type) =>
-      _mergeTable.uniqueConstructsByType(type);
+  int uniqueConstructsByType(ConstructTypeEnum type) {
+    final constructIds = _mergeTable.uniqueConstructsByType(type);
+    final blocked = blockedConstructs;
+    return constructIds.where((c) => !blocked.contains(c)).length;
+  }
 
   Set<ConstructIdentifier> get blockedConstructs {
     final analyticsRoom =
@@ -370,8 +369,7 @@ class AnalyticsDataService {
     String language,
   ) async {
     await _ensureInitialized();
-    final blocked = blockedConstructs;
-    final ids = _mergeTable.groupedIds(_mergeTable.resolve(id), blocked);
+    final ids = _mergeTable.groupedIds(_mergeTable.resolve(id));
     if (ids.isEmpty) {
       return ConstructUses(
         uses: [],
@@ -393,7 +391,7 @@ class AnalyticsDataService {
     final blocked = blockedConstructs;
     for (final id in ids) {
       if (blocked.contains(id)) continue;
-      request[id] = _mergeTable.groupedIds(_mergeTable.resolve(id), blocked);
+      request[id] = _mergeTable.groupedIds(_mergeTable.resolve(id));
     }
 
     return _analyticsClientGetter.database.getConstructUses(request, language);
@@ -486,12 +484,11 @@ class AnalyticsDataService {
     _invalidateCaches();
     await _ensureInitialized();
 
-    final blocked = blockedConstructs;
     final newUnusedConstructs = updateIds
         .where((id) => !hasUsedConstruct(id))
         .toSet();
 
-    _mergeTable.addConstructsByUses(addedConstructs, blocked);
+    _mergeTable.addConstructsByUses(addedConstructs);
     await _analyticsClientGetter.database.updateLocalAnalytics(
       addedConstructs,
       language,
@@ -588,9 +585,8 @@ class AnalyticsDataService {
     String language,
   ) async {
     _invalidateCaches();
-    final blocked = blockedConstructs;
     for (final event in events) {
-      _mergeTable.addConstructsByUses(event.content.uses, blocked);
+      _mergeTable.addConstructsByUses(event.content.uses);
     }
     await _analyticsClientGetter.database.updateServerAnalytics(
       events,

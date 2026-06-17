@@ -317,7 +317,7 @@ class _PracticeButton extends StatelessWidget {
       );
     }
 
-    final count = analyticsService.numConstructs(view);
+    final count = analyticsService.uniqueConstructsByType(view);
     final enabled = count >= 10;
 
     return FloatingActionButton.extended(
