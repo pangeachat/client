@@ -284,11 +284,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     await _analyticsController.addSessionAnalytics(bonus, _l2!.langCodeShort);
 
     AnalyticsPractice.bypassExitConfirmation = true;
-    StarRainWidget.show(
-      context,
-      "completed-activity-star-rain",
-      showBlast: true,
-    );
+    StarRainWidget.show(context, "completed-activity-star-rain");
   }
 
   Future<void> _continueSession() async {

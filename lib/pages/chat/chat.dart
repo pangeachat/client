@@ -783,11 +783,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _activityConfettiListener() {
     if (activityController.confettiNotifier.value) {
-      StarRainWidget.show(
-        context,
-        "star-rain-${widget.room.id}",
-        showBlast: true,
-      );
+      StarRainWidget.show(context, "star-rain-${widget.room.id}");
     }
   }
 
