@@ -91,7 +91,6 @@ void main() {
         senderL2: "es",
       ).toJson();
       request['mock'] = true;
-      request['mock'] = true;
 
       final Requests req = Requests(
         choreoApiKey: apiKey,
