@@ -139,8 +139,7 @@ class VocabDetailsView extends StatelessWidget {
                               color: Theme.of(context).colorScheme.error,
                             ),
                           ),
-                          onTap: () =>
-                              controller.blockConstructs([constructId]),
+                          onTap: () => controller.blockConstructs([construct]),
                         ),
                       ],
                     ),

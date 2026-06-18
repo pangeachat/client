@@ -18,6 +18,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
+import 'package:fluffychat/pangea/analytics_settings/analytics_settings_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
@@ -277,18 +278,18 @@ class AnalyticsDataService {
   bool hasUsedConstruct(ConstructIdentifier id) =>
       _mergeTable.constructUsed(id);
 
-  bool isConstructBlocked(ConstructIdentifier id) =>
-      blockedConstructs.contains(id);
-
   int uniqueConstructsByType(ConstructTypeEnum type) {
     final constructIds = _mergeTable.uniqueConstructsByType(type);
     final blocked = blockedConstructs;
-    return constructIds.where((c) => !blocked.contains(c)).length;
+    return constructIds.where((c) => !blocked.containsKey(c)).length;
   }
 
-  Set<ConstructIdentifier> get blockedConstructs {
+  Map<ConstructIdentifier, BlockedConstruct> get blockedConstructs {
+    if (_analyticsClient == null) return {};
+
     final analyticsRoom =
         _analyticsClientGetter.client.ownAnalyticsRoomLocalByL2;
+
     return analyticsRoom?.blockedConstructs ?? {};
   }
 
@@ -336,7 +337,7 @@ class AnalyticsDataService {
 
     final Map<ConstructIdentifier, DateTime?> cappedLastUseCache = {};
     for (final use in uses) {
-      if (blocked.contains(use.identifier)) continue;
+      if (blocked.containsKey(use.identifier)) continue;
       if (use.identifier.isInvalid) continue;
 
       if (!cappedLastUseCache.containsKey(use.identifier)) {
@@ -390,7 +391,7 @@ class AnalyticsDataService {
     final Map<ConstructIdentifier, List<ConstructIdentifier>> request = {};
     final blocked = blockedConstructs;
     for (final id in ids) {
-      if (blocked.contains(id)) continue;
+      if (blocked.containsKey(id)) continue;
       request[id] = _mergeTable.groupedIds(_mergeTable.resolve(id));
     }
 
@@ -415,7 +416,7 @@ class AnalyticsDataService {
       final existing = cleaned[canonical];
       if (existing != null) {
         existing.merge(entry);
-      } else if (!blocked.contains(canonical) && !canonical.isInvalid) {
+      } else if (!blocked.containsKey(canonical) && !canonical.isInvalid) {
         cleaned[canonical] = entry;
       }
     }
@@ -435,7 +436,7 @@ class AnalyticsDataService {
         .where(
           (c) =>
               c.constructType == type &&
-              !blocked.contains(c.identifier) &&
+              !blocked.containsKey(c.identifier) &&
               c.identifier.category != 'other',
         )
         .toList();

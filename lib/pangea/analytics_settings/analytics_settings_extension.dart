@@ -10,10 +10,15 @@ extension AnalyticsSettingsRoomExtension on Room {
     if (event == null) {
       return const AnalyticsSettingsModel(blockedConstructs: {});
     }
-    return AnalyticsSettingsModel.fromJson(event.content);
+
+    try {
+      return AnalyticsSettingsModel.fromJson(event.content);
+    } catch (_) {
+      return AnalyticsSettingsModel(blockedConstructs: {});
+    }
   }
 
-  Set<ConstructIdentifier> get blockedConstructs =>
+  Map<ConstructIdentifier, BlockedConstruct> get blockedConstructs =>
       _analyticsSettings.blockedConstructs;
 
   Future<void> _setAnalyticsSettings(AnalyticsSettingsModel settings) async {
@@ -25,7 +30,9 @@ extension AnalyticsSettingsRoomExtension on Room {
     );
   }
 
-  Future<void> addBlockedConstructs(Set<ConstructIdentifier> blocked) async {
+  Future<void> addBlockedConstructs(
+    Map<ConstructIdentifier, BlockedConstruct> blocked,
+  ) async {
     final current = blockedConstructs;
     final updated = {...current, ...blocked};
     if (current.length == updated.length) return;

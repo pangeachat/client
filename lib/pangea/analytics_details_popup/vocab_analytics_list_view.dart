@@ -304,7 +304,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                         return VocabAnalyticsListTile(
                           onTap: controller.selectMode
                               ? () => controller.toggleSelectedConstruct(
-                                  vocabItem.id,
+                                  vocabItem,
                                 )
                               : () {
                                   TtsController.tryToSpeak(
@@ -322,7 +322,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                                   );
                                 },
                           onLongPress: () {
-                            controller.toggleSelectedConstruct(vocabItem.id);
+                            controller.toggleSelectedConstruct(vocabItem);
                           },
                           constructId: vocabItem.id,
                           textColor:
@@ -332,9 +332,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                           level: vocabItem.lemmaCategory,
                           selected:
                               vocabItem.id == selectedConstruct ||
-                              controller.selectedConstructs.contains(
-                                vocabItem.id,
-                              ),
+                              controller.selectedConstructs.contains(vocabItem),
                         );
                       }, childCount: sortedFilteredVocab.length),
                     ),

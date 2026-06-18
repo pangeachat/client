@@ -94,8 +94,11 @@ class TokensUtil {
     if (!messageInUserL2) return {};
 
     final Set<PangeaTokenText> newTokens = {};
+
     final analyticsService =
         MatrixState.pangeaController.matrixState.analyticsDataService;
+
+    final blocked = analyticsService.blockedConstructs;
 
     for (final token in tokens) {
       final cId = token.vocabConstructID;
@@ -103,8 +106,7 @@ class TokensUtil {
         continue;
       }
 
-      if (analyticsService.hasUsedConstruct(cId) ||
-          analyticsService.isConstructBlocked(cId)) {
+      if (analyticsService.hasUsedConstruct(cId) || blocked.containsKey(cId)) {
         continue;
       }
 

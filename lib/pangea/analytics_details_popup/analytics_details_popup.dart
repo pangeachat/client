@@ -50,7 +50,7 @@ class ConstructAnalyticsView extends StatefulWidget {
 
 class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   final TextEditingController searchController = TextEditingController();
-  final List<ConstructIdentifier> selectedConstructs = [];
+  final List<ConstructUses> selectedConstructs = [];
 
   MorphFeaturesAndTags morphs =
       GrammarConstructsProvider.defaultFeaturesAndTags;
@@ -153,9 +153,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
     if (mounted) setState(() {});
   }
 
-  Future<Result<void>?> blockConstructs(
-    List<ConstructIdentifier> constructs,
-  ) async {
+  Future<Result<void>?> blockConstructs(List<ConstructUses> constructs) async {
     final resp = await showOkCancelAlertDialog(
       context: context,
       title: L10n.of(context).areYouSure,
@@ -200,7 +198,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
     });
   }
 
-  void toggleSelectedConstruct(ConstructIdentifier construct) {
+  void toggleSelectedConstruct(ConstructUses construct) {
     setState(() {
       if (selectedConstructs.contains(construct)) {
         selectedConstructs.remove(construct);

@@ -11,6 +11,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/analytics_settings/analytics_settings_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 
 class SpaceAnalyticsSummaryModel {
@@ -93,7 +94,7 @@ class SpaceAnalyticsSummaryModel {
   static SpaceAnalyticsSummaryModel fromEvents(
     String username,
     List<ConstructAnalyticsEvent> events,
-    Set<ConstructIdentifier> blockedConstructs,
+    Map<ConstructIdentifier, BlockedConstruct> blockedConstructs,
     int numCompletedActivities,
   ) {
     int numWordsTyped = 0;
@@ -113,7 +114,7 @@ class SpaceAnalyticsSummaryModel {
 
       for (final use in e.content.uses) {
         final id = use.identifier;
-        if (blockedConstructs.contains(id)) continue;
+        if (blockedConstructs.containsKey(id)) continue;
 
         allUses.add(use);
 
