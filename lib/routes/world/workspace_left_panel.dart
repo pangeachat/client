@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/navigation/close_affordance.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -32,10 +33,16 @@ class WorkspaceLeftPanel extends StatelessWidget {
   /// The current URL, so a close/back can rewrite the `left=` list off it.
   final Uri currentUri;
 
+  /// From the allocator: this panel is the surviving detail over a folded
+  /// master, so closing it reveals that master → its control is `←` not `X`.
+  /// See `close_affordance`.
+  final bool foldedOver;
+
   const WorkspaceLeftPanel({
     super.key,
     required this.token,
     required this.currentUri,
+    this.foldedOver = false,
   });
 
   @override
@@ -100,13 +107,23 @@ class WorkspaceLeftPanel extends StatelessWidget {
               ? WorkspaceNav.closeLeft(currentUri, token)
               : WorkspaceNav.closeSection(currentUri, token),
         );
-    return isColumnMode
-        ? IconButton(
+    // Centralized affordance (close_affordance.dart): `←` when closing reveals a
+    // master that was behind us — a width-fold ([foldedOver]) or a narrow single
+    // pane with a sibling behind it; otherwise `X` dismisses to the map. Left
+    // panels host no pushed pages yet (those arrive with the course/room push
+    // migration), so isPushedPage is false here.
+    final hasSibling = parseOpenPanels(currentUri).left.length > 1;
+    final aff = CloseAffordance.of(
+      isPushedPage: false,
+      revealsMaster: foldedOver || (!isColumnMode && hasSibling),
+    );
+    return aff.showBack
+        ? BackButton(onPressed: close)
+        : IconButton(
             icon: const Icon(Icons.close),
             tooltip: L10n.of(context).close,
             onPressed: close,
-          )
-        : BackButton(onPressed: close);
+          );
   }
 
   Widget _room(BuildContext context, bool isColumnMode) {

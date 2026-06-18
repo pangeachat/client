@@ -7,6 +7,8 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/navigation/close_affordance.dart';
+import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -26,10 +28,15 @@ class WorkspaceRightPanel extends StatelessWidget {
   /// The current URL, so close/back can rewrite the `right=` list off it.
   final Uri currentUri;
 
+  /// From the allocator: this panel is the surviving detail over a folded
+  /// master, so its close becomes `←` (reveal the master). See `close_affordance`.
+  final bool foldedOver;
+
   const WorkspaceRightPanel({
     super.key,
     required this.token,
     required this.currentUri,
+    this.foldedOver = false,
   });
 
   ConstructIdentifier? get _construct {
@@ -49,38 +56,47 @@ class WorkspaceRightPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
 
+    // Centralized close affordance (see close_affordance.dart). A `pushable`
+    // panel with a page param is a push (`←` pops one page level via popPage); a
+    // folded detail reveals its master (`←`); everything else dismisses (`X`).
+    final page = token.param;
+    final pushable = PanelRegistry.defFor(token.type)?.pushable ?? false;
+    final isPushed = pushable && page != null && page.isNotEmpty;
+    final aff =
+        CloseAffordance.of(isPushedPage: isPushed, revealsMaster: foldedOver);
+    final leadingIcon = aff.showBack ? Icons.arrow_back : Icons.close;
+    final leadingTooltip = aff.showBack
+        ? MaterialLocalizations.of(context).backButtonTooltip
+        : l10n.close;
+    final onLeading = aff.showBack && isPushed
+        ? () => context.go(WorkspaceNav.popPage(currentUri, token.type, page))
+        : () => _close(context);
+
+    Widget card(String title, Widget child) => _card(
+          context,
+          icon: leadingIcon,
+          tooltip: leadingTooltip,
+          onLeading: onLeading,
+          title: title,
+          child: child,
+        );
+
     switch (token.type) {
       case 'analytics':
         final (title, child) = _analytics(l10n, token.param);
-        return _card(context, icon: Icons.close, title: title, child: child);
+        return card(title, child);
       case 'settings':
       case 'profile':
-        // The whole profile + settings tree in one right-column panel. The menu
-        // is the top level (close X); a sub-page is a push (back arrow pops one
-        // level). Identity is the token param. See routing.instructions.md.
-        final page = token.param;
+        // The whole profile + settings tree in one right-column panel; identity
+        // is the token param (menu = root → X; a sub-page = push → ← pops).
         final isMenu = page == null || page.isEmpty;
-        return _card(
-          context,
-          icon: isMenu ? Icons.close : Icons.arrow_back,
-          tooltip: isMenu
-              ? l10n.close
-              : MaterialLocalizations.of(context).backButtonTooltip,
-          title: isMenu ? l10n.settings : '',
-          onLeading: isMenu
-              ? null
-              : () => context.go(WorkspaceNav.settingsBack(currentUri, page)),
-          child: SettingsPanel(subPath: page),
-        );
+        return card(isMenu ? l10n.settings : '', SettingsPanel(subPath: page));
       case 'vocab':
       case 'grammar':
         final construct = _construct;
-        return _card(
-          context,
-          icon: Icons.arrow_back,
-          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-          title: construct?.lemma ?? '',
-          child: ConstructAnalyticsView(
+        return card(
+          construct?.lemma ?? '',
+          ConstructAnalyticsView(
             view: token.type == 'vocab'
                 ? ConstructTypeEnum.vocab
                 : ConstructTypeEnum.morph,
@@ -90,15 +106,9 @@ class WorkspaceRightPanel extends StatelessWidget {
         );
       default:
         // A registered right-panel type whose builder was retired (e.g. a stale
-        // `review:` URL from before a completed activity opened as its own
-        // chat). Degrade to a closeable placeholder so it can never become a
-        // width-reserving, close-less ghost. See routing.instructions.md.
-        return _card(
-          context,
-          icon: Icons.close,
-          title: l10n.oopsSomethingWentWrong,
-          child: const SizedBox.shrink(),
-        );
+        // `review:` URL). Degrade to a closeable placeholder so it can never
+        // become a width-reserving, close-less ghost.
+        return card(l10n.oopsSomethingWentWrong, const SizedBox.shrink());
     }
   }
 

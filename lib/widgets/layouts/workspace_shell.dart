@@ -269,7 +269,11 @@ class WorkspaceShell extends StatelessWidget {
                   width: layout.left[i].width,
                   child: Padding(
                     padding: panelCardInset,
-                    child: _leftPanel(leftTokens[i], state.uri),
+                    child: _leftPanel(
+                      leftTokens[i],
+                      state.uri,
+                      layout.left[i].foldedOver,
+                    ),
                   ),
                 ),
             // Right-column panels (analytics summary, a vocab/grammar detail, a
@@ -294,6 +298,7 @@ class WorkspaceShell extends StatelessWidget {
                     child: WorkspaceRightPanel(
                       token: rightTokens[i],
                       currentUri: state.uri,
+                      foldedOver: layout.right[i].foldedOver,
                     ),
                   ),
                 ),
@@ -316,8 +321,12 @@ class WorkspaceShell extends StatelessWidget {
   /// roomId-keyed [GlobalKey] so the same [ChatController] is reparented (not
   /// remounted) when its slot moves; other left surfaces are cheap to rebuild
   /// and key by position.
-  Widget _leftPanel(PanelToken token, Uri uri) {
-    final panel = WorkspaceLeftPanel(token: token, currentUri: uri);
+  Widget _leftPanel(PanelToken token, Uri uri, bool foldedOver) {
+    final panel = WorkspaceLeftPanel(
+      token: token,
+      currentUri: uri,
+      foldedOver: foldedOver,
+    );
     if (token.type == 'room') {
       return KeyedSubtree(
         key: _roomKeyFor(fullRoomId(token.param ?? '')),
