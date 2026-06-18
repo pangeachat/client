@@ -61,63 +61,61 @@ class ActivityParticipantList extends StatelessWidget {
               spacing: 8.0,
               mainAxisAlignment: MainAxisAlignment.center,
               children: availableRoles.map((availableRole) {
-                        final selected = isSelected != null
-                            ? isSelected!(availableRole.id)
-                            : false;
+                final selected = isSelected != null
+                    ? isSelected!(availableRole.id)
+                    : false;
 
-                        final assignedRole =
-                            assignedRoles[availableRole.id] ??
-                            (selected
-                                ? ActivityRoleModel(
-                                    id: availableRole.id,
-                                    userId: Matrix.of(context).client.userID!,
-                                    role: availableRole.name,
-                                  )
-                                : null);
+                final assignedRole =
+                    assignedRoles[availableRole.id] ??
+                    (selected
+                        ? ActivityRoleModel(
+                            id: availableRole.id,
+                            userId: Matrix.of(context).client.userID!,
+                            role: availableRole.name,
+                          )
+                        : null);
 
-                        final User? user =
-                            participants.participants.firstWhereOrNull(
-                              (u) => u.id == assignedRole?.userId,
-                            ) ??
-                            course?.getParticipants().firstWhereOrNull(
-                              (u) => u.id == assignedRole?.userId,
-                            );
+                final User? user =
+                    participants.participants.firstWhereOrNull(
+                      (u) => u.id == assignedRole?.userId,
+                    ) ??
+                    course?.getParticipants().firstWhereOrNull(
+                      (u) => u.id == assignedRole?.userId,
+                    );
 
-                        final selectable = canSelect != null
-                            ? canSelect!(availableRole.id)
-                            : true;
+                final selectable = canSelect != null
+                    ? canSelect!(availableRole.id)
+                    : true;
 
-                        final shimmering = isShimmering != null
-                            ? isShimmering!(availableRole.id)
-                            : false;
+                final shimmering = isShimmering != null
+                    ? isShimmering!(availableRole.id)
+                    : false;
 
-                        final starsMode = showStarsCard != null &&
-                            showStarsCard!(availableRole.id);
+                final starsMode =
+                    showStarsCard != null && showStarsCard!(availableRole.id);
 
-                        return Expanded(
-                          child: ActivityParticipantIndicator(
-                            name: availableRole.name,
-                            userId: assignedRole?.userId,
-                            opacity: getOpacity != null
-                                ? getOpacity!(assignedRole)
-                                : 1.0,
-                            user: user,
-                            onTap: onTap != null && selectable
-                                ? () => onTap!(availableRole.id)
-                                : null,
-                            selected: selected,
-                            selectable: selectable,
-                            shimmer: shimmering,
-                            room: room,
-                            goals: starsMode
-                                ? availableRole.allGoals
-                                : null,
-                            completedGoalIds: starsMode
-                                ? completedGoalsForRole?.call(availableRole.id)
-                                : null,
-                          ),
-                        );
-                      }).toList(),
+                return Expanded(
+                  child: ActivityParticipantIndicator(
+                    name: availableRole.name,
+                    userId: assignedRole?.userId,
+                    opacity: getOpacity != null
+                        ? getOpacity!(assignedRole)
+                        : 1.0,
+                    user: user,
+                    onTap: onTap != null && selectable
+                        ? () => onTap!(availableRole.id)
+                        : null,
+                    selected: selected,
+                    selectable: selectable,
+                    shimmer: shimmering,
+                    room: room,
+                    goals: starsMode ? availableRole.allGoals : null,
+                    completedGoalIds: starsMode
+                        ? completedGoalsForRole?.call(availableRole.id)
+                        : null,
+                  ),
+                );
+              }).toList(),
             ),
             Wrap(
               alignment: WrapAlignment.center,
