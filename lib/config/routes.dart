@@ -62,7 +62,7 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
-import 'package:fluffychat/widgets/layouts/two_column_layout.dart';
+import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/log_view.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 
@@ -217,7 +217,7 @@ abstract class AppRoutes {
         // #Pangea
         // FluffyThemes.isColumnMode(context) &&
         //         state.fullPath?.startsWith('/rooms/settings') == false
-        //     ? TwoColumnLayout(
+        //     ? WorkspaceShell(
         //         mainView: ChatList(
         //           activeChat: state.pathParameters['roomid'],
         //           activeSpace: state.uri.queryParameters['spaceId'],
@@ -227,7 +227,7 @@ abstract class AppRoutes {
         //         sideView: child,
         //       )
         //     : child,
-        TwoColumnLayout(state: state, sideView: child),
+        WorkspaceShell(state: state, sideView: child),
         // Pangea#
       ),
       routes: [
@@ -310,7 +310,7 @@ abstract class AppRoutes {
             //     context,
             //     state,
             //     FluffyThemes.isColumnMode(context)
-            //         ? TwoColumnLayout(
+            //         ? WorkspaceShell(
             //             mainView: Settings(key: state.pageKey),
             //             sideView: child,
             //           )

@@ -59,20 +59,24 @@ class WorkspaceLayout {
   });
 }
 
-/// The world_v2 shell's single layout authority. Replaces the old
-/// `ShellLayout.resolve` single-panel-per-side budget with a shared-width
-/// allocator over N panels per column. Both columns draw from one budget: each
-/// panel grows greedily to its ideal (the map fills whatever is left), and when
-/// they can't all fit, they compress toward their reasonable-min and only then
-/// **fold** — the lowest-priority panel drops out of the layout (not drawn, no
-/// stripe; its content one back-step away on the sibling that stayed), never a
-/// full-screen takeover. Pure + unit-tested. See `routing.instructions.md`.
+/// The world_v2 shell's single layout authority — a shared-width allocator over
+/// N panels per column (it superseded the old single-panel-per-side budget).
+/// Both columns draw from one budget: each panel grows greedily to its ideal
+/// (the map fills whatever is left), and when they can't all fit, they compress
+/// toward their reasonable-min and only then **fold** — the lowest-priority
+/// panel drops out of the layout (not drawn, no stripe; its content one
+/// back-step away on the sibling that stayed), never a full-screen takeover.
+/// Pure + unit-tested. See `routing.instructions.md`.
 abstract class PanelAllocator {
   /// Right margin reserved for the cluster beside the right column.
   static const double clusterGutter = 88.0;
 
   /// Gap between two adjacent panels in the same column.
   static const double panelGap = 16.0;
+
+  /// Max width of an opaque detail/canvas (chat, course) — the map peeks beyond.
+  /// The route-driven center detail caps to this.
+  static const double detailMax = 720.0;
 
   /// Default nav-rail width in column mode (caller may override).
   static const double defaultRailWidth = 73.0;

@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 /// The single live left-column panel's focus signal.
 ///
-/// The shell ([TwoColumnLayout]) sets [focusedLeftToken] from the URL's `?left=`
+/// The shell ([WorkspaceShell]) sets [focusedLeftToken] from the URL's `?left=`
 /// head every frame; a focusable left surface (today only a room's
 /// `ChatController`) listens and compares against its own encoded token to learn
 /// "am I the focused panel right now" without reading the router. This replaces

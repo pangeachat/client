@@ -19,7 +19,6 @@ import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
 import 'package:fluffychat/widgets/layouts/mobile_course_sheet.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
-import 'package:fluffychat/widgets/layouts/shell_layout.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mobile_bottom_nav.dart';
 import 'package:fluffychat/widgets/space_navigation_column.dart';
@@ -53,21 +52,22 @@ GlobalKey _roomKeyFor(String roomId) => _leftRoomKeys.putIfAbsent(
       () => GlobalKey(debugLabel: 'leftRoom:$roomId'),
     );
 
-/// The shell: a single persistent [WorldMap] with the active section overlaid.
-/// Every routing/layout fact comes from `route_facts.dart` (the single source).
-/// Right-column panels (analytics, a vocab/grammar detail, a completed-activity
-/// review) are named by the URL's `?right=` list and positioned by
-/// [PanelAllocator] — one shared width budget so panels and the route-driven
-/// center detail tile without overlap. The left column + center detail are
-/// still route-driven and fed in as the fixed left inset. See
-/// `routing.instructions.md`.
-class TwoColumnLayout extends StatelessWidget {
+/// The world_v2 workspace shell: a single persistent [WorldMap] with the open
+/// panels overlaid. Not "two columns" — it owns the map backdrop, the nav rail,
+/// the top-right cluster, the center canvas/detail, AND both panel columns. Every
+/// routing/layout fact comes from `route_facts.dart` (the single source).
+/// Left- and right-column panels (the chat list, a room, a course; analytics, a
+/// vocab/grammar detail, a completed-activity review) are named by the URL's
+/// `?left=`/`?right=` lists and positioned by [PanelAllocator] — one shared
+/// width budget so panels and the route-driven center detail tile without
+/// overlap. See `routing.instructions.md`.
+class WorkspaceShell extends StatelessWidget {
   // #Pangea
   final GoRouterState state;
   // Pangea#
   final Widget sideView;
 
-  const TwoColumnLayout({
+  const WorkspaceShell({
     super.key,
     // #Pangea
     required this.state,
@@ -106,11 +106,16 @@ class TwoColumnLayout extends StatelessWidget {
     // is just the rail now — there is no route-driven left card to reserve for.
     final railWidth =
         isColumnMode && navRail ? (FluffyThemes.navRailWidth + 1.0) : 0.0;
-    // The rail floats over the map in its dock pill (like the top-right
-    // cluster), inset by [railMargin] on each side; reserve that margin so left
-    // panels and the map's camera padding clear the floating pill.
-    const railMargin = 12.0;
-    final columnWidth = railWidth == 0 ? 0.0 : railWidth + railMargin * 2;
+    // One shared margin for every floating chrome edge (the rail pill and the
+    // top-right cluster), so they inset from the viewport identically. The rail
+    // floats over the map in its dock pill, inset by [chromeMargin] on each
+    // side; reserve that margin so left panels and the camera padding clear it.
+    const chromeMargin = 12.0;
+    // One shared inset for the panel cards in BOTH columns, so a left card and a
+    // right card sit identically within their allocator slots (the columns used
+    // to differ — 8px left vs 0px right). Vertical matches [chromeMargin].
+    const panelCardInset = EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0);
+    final columnWidth = railWidth == 0 ? 0.0 : railWidth + chromeMargin * 2;
     final showBottomNav = !isColumnMode && navRail;
 
     // The effective canvas (an open activity overlay already resolves to a
@@ -153,7 +158,7 @@ class TwoColumnLayout extends StatelessWidget {
     // guarantee).
     final detailWidth = canvas == CanvasMode.detail
         ? math.min(
-            ShellLayout.detailMax,
+            PanelAllocator.detailMax,
             math.max(0.0, viewport - leftInset - layout.mapRightOverlay),
           )
         : null;
@@ -241,7 +246,7 @@ class TwoColumnLayout extends StatelessWidget {
             Align(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: const EdgeInsets.all(railMargin),
+                padding: const EdgeInsets.all(chromeMargin),
                 child:
                     SpaceNavigationColumn(state: state, showNavRail: navRail),
               ),
@@ -263,7 +268,7 @@ class TwoColumnLayout extends StatelessWidget {
                   left: layout.left[i].left,
                   width: layout.left[i].width,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 12, 8, 12),
+                    padding: panelCardInset,
                     child: _leftPanel(leftTokens[i], state.uri),
                   ),
                 ),
@@ -285,7 +290,7 @@ class TwoColumnLayout extends StatelessWidget {
                   left: layout.right[i].left,
                   width: layout.right[i].width,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    padding: panelCardInset,
                     child: WorkspaceRightPanel(
                       token: rightTokens[i],
                       currentUri: state.uri,
@@ -297,8 +302,8 @@ class TwoColumnLayout extends StatelessWidget {
             // panels; hidden on a full-bleed canvas or behind a narrow panel.
             if (mapVisible && layout.clusterVisible)
               Positioned(
-                top: 12 + MediaQuery.viewPaddingOf(context).top,
-                right: 12 + MediaQuery.viewPaddingOf(context).right,
+                top: chromeMargin + MediaQuery.viewPaddingOf(context).top,
+                right: chromeMargin + MediaQuery.viewPaddingOf(context).right,
                 child: WorldUserCluster(key: _userClusterKey),
               ),
           ],

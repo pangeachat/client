@@ -107,7 +107,7 @@ Set<LanguageLevelTypeEnum> _bandAtOrBelow(LanguageLevelTypeEnum? level) {
 }
 
 /// The world map. In world_v2 a single instance is hosted persistently by
-/// the app shell ([TwoColumnLayout]) as the base layer every section
+/// the app shell ([WorkspaceShell]) as the base layer every section
 /// overlays — built once and never remounted on navigation, so tiles,
 /// camera, and pins are preserved as you move around the nav.
 ///

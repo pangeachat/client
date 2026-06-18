@@ -10,7 +10,7 @@ import 'matrix.dart';
 
 /// The left chrome of the world_v2 shell: just the floating navigation rail.
 /// Every section's content is now a URL-token panel rendered by the shell's
-/// allocator (see [TwoColumnLayout]) — including the add-course wizard's first
+/// allocator (see [WorkspaceShell]) — including the add-course wizard's first
 /// step (the `addcourse` token). The route-driven `_MainView` left card is
 /// retired, so this widget draws only the rail, in column mode (narrow screens
 /// use the bottom nav). See `routing.instructions.md`.

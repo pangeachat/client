@@ -97,12 +97,10 @@ class ActivitySessionStartView extends StatelessWidget {
                 onPressed: controller.submitActivityFeedback,
               ),
               // #Pangea
-              if (embedded)
-                IconButton(
-                  tooltip: L10n.of(context).close,
-                  icon: const Icon(Icons.close),
-                  onPressed: returnToCourse,
-                ),
+              // When embedded over a course (?activity=), the leading
+              // back-arrow already closes the session toward the course — a
+              // trailing X would be a redundant second control for the same
+              // gesture (one close control per panel; see routing.instructions.md).
               // Pangea#
             ],
           ),
