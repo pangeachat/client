@@ -19,9 +19,11 @@ import 'package:fluffychat/routes/chat/chat_details/edit_course/edit_course.dart
 import 'package:fluffychat/routes/chat/chat_details/emotes/settings_emotes.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/permissions/chat_permissions_settings.dart';
+import 'package:fluffychat/routes/chat/chat_search/chat_search_page.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/world/add_course_panel.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 
 /// Renders one left-column panel token (the chat list, a live room, a course,
 /// or the add-course wizard) for the URL `?left=` list, mirroring
@@ -44,11 +46,18 @@ class WorkspaceLeftPanel extends StatelessWidget {
   /// See `close_affordance`.
   final bool foldedOver;
 
+  /// Items being shared into a chat, carried on the navigation's `extra` (they
+  /// cannot ride the URL). The shell forwards them here so a `room` token opened
+  /// by the share sheet pre-fills its composer, replacing the retired
+  /// `/rooms/:roomid` route that read `state.extra`. See `routing.instructions.md`.
+  final List<ShareItem>? shareItems;
+
   const WorkspaceLeftPanel({
     super.key,
     required this.token,
     required this.currentUri,
     this.foldedOver = false,
+    this.shareItems,
   });
 
   @override
@@ -106,10 +115,10 @@ class WorkspaceLeftPanel extends StatelessWidget {
     }
   }
 
-  /// The course-token params that are pushed MANAGEMENT pages (vs card tabs):
-  /// each renders its own admin surface inside the course slot. Kept in one
-  /// place so the renderer and the close affordance agree on what is a push.
-  static const _courseManagementPages = {
+  /// The management sub-page params reachable as a PUSH on a course or room
+  /// token (`course:<page>` flat, or `room:<id>/details/<page>` nested). Kept in
+  /// one place so the renderer and the close affordance agree on what is a push.
+  static const _managementPages = {
     'edit',
     'invite',
     'access',
@@ -118,79 +127,99 @@ class WorkspaceLeftPanel extends StatelessWidget {
     'addcourse',
   };
 
-  /// True when the course token's param is a pushed management page (its first
-  /// segment is in [_courseManagementPages]) rather than a card tab. Such a
-  /// page's close is `←` back to the card, not `X` to the map.
-  bool get _isCourseManagementPage {
+  /// True when this panel's param is a pushed sub-page (not the bare panel / a
+  /// card tab): a `course:<management>` flat push, or a `room`/`session` token
+  /// carrying a `<roomid>/<sub>` path. Such a page's close is `←` back one level
+  /// (popPage), not `X` to the map. See `close_affordance`.
+  bool get _isPushedSubPage {
     final page = token.param;
-    return token.type == 'course' &&
-        page != null &&
-        _courseManagementPages.contains(page.split('/').first);
+    if (page == null) return false;
+    if (token.type == 'course') {
+      return _managementPages.contains(page.split('/').first);
+    }
+    if (token.type == 'room' || token.type == 'session') {
+      // The bare room id has no `/`; any `/` is a pushed sub-page beyond it.
+      return page.contains('/');
+    }
+    return false;
   }
 
-  /// Render a pushed course management page (edit/invite/access/permissions/
-  /// emotes/addcourse) for [spaceId], or null when the course param is a card
-  /// tab. Each hosted page takes the panel's `←`-back-to-card control in place
-  /// of its own route-pop back. The deeper add-a-plan step
-  /// (`addcourse/<courseId>`) stays route-driven (a Completer flow). See
-  /// `routing.instructions.md`.
-  Widget? _courseManagementPage(
-    BuildContext context,
-    String spaceId,
-    bool isColumnMode,
+  /// The widget for a management sub-page [name] on [roomId] (a course/space or a
+  /// room), with the panel's `←` [back] control in place of the widget's own
+  /// route-pop. Null for an unknown name. Shared by the course card
+  /// (`course:<page>`) and the room panel (`room:<id>/details/<page>`).
+  Widget? _managementWidget(
+    String roomId,
+    String name,
+    Widget back,
   ) {
-    if (!_isCourseManagementPage) return null;
-    final page = token.param!;
-    final back = _closeButton(context, isColumnMode);
-    switch (page.split('/').first) {
+    switch (name) {
       case 'edit':
-        return EditCourse(roomId: spaceId, embeddedCloseButton: back);
+        return EditCourse(roomId: roomId, embeddedCloseButton: back);
       case 'invite':
         final filter = currentUri.queryParameters['filter'];
         return PangeaInvitationSelection(
-          roomId: spaceId,
+          roomId: roomId,
           initialFilter:
               filter != null ? InvitationFilter.fromString(filter) : null,
           embeddedCloseButton: back,
         );
       case 'access':
-        return ChatAccessSettings(roomId: spaceId, embeddedCloseButton: back);
+        return ChatAccessSettings(roomId: roomId, embeddedCloseButton: back);
       case 'permissions':
         return ChatPermissionsSettings(
-          roomId: spaceId,
+          roomId: roomId,
           embeddedCloseButton: back,
         );
       case 'emotes':
-        return EmotesSettings(roomId: spaceId, embeddedCloseButton: back);
+        return EmotesSettings(roomId: roomId, embeddedCloseButton: back);
       case 'addcourse':
         return NewCoursePage(
           route: 'rooms',
-          spaceId: spaceId,
+          spaceId: roomId,
           embeddedCloseButton: back,
         );
     }
     return null;
   }
 
-  /// The panel's close control: an X on desktop (matching the right column), a
-  /// back arrow on mobile where a panel fills the screen. Both drop this token
-  /// from `?left=`, closing the panel and leaving the rest of the workspace
-  /// open (panels are independent — see `routing.instructions.md`).
+  /// Render a pushed course management page for [spaceId], or null when the
+  /// course param is a card tab (chat/course/participants/analytics). The deeper
+  /// add-a-plan step (`addcourse/<courseId>`) stays route-driven (a Completer
+  /// flow). See `routing.instructions.md`.
+  Widget? _courseManagementPage(
+    BuildContext context,
+    String spaceId,
+    bool isColumnMode,
+  ) {
+    if (token.type != 'course') return null;
+    final page = token.param;
+    if (page == null || !_managementPages.contains(page.split('/').first)) {
+      return null;
+    }
+    return _managementWidget(
+      spaceId,
+      page.split('/').first,
+      _closeButton(context, isColumnMode),
+    );
+  }
+
+  /// The panel's close control. A pushed sub-page ([_isPushedSubPage]) backs out
+  /// ONE level via popPage (a course management page → the card; a room sub-page
+  /// → the chat). Otherwise the centralized [CloseAffordance] decides `←` (reveal
+  /// a folded/sibling master) vs `X` (dismiss to the map). See
+  /// `close_affordance` / `routing.instructions.md`.
   Widget _closeButton(BuildContext context, bool isColumnMode) {
-    // A pushed course management page (`course:edit`, …) backs out ONE level to
-    // the card (popPage), not a dismiss-to-map — there is always a card behind
-    // it. See `close_affordance` / `routing.instructions.md`.
-    if (_isCourseManagementPage) {
-      final page = token.param!;
+    final page = token.param;
+    if (_isPushedSubPage && page != null) {
       return BackButton(
         onPressed: () =>
-            context.go(WorkspaceNav.popPage(currentUri, 'course', page)),
+            context.go(WorkspaceNav.popPage(currentUri, token.type, page)),
       );
     }
-    // A `room` is a token-only panel, so dropping its token closes it. A
-    // section panel (a course) is also addressable by its path, so closing it
-    // must return to the world map or the route-driven card re-renders it —
-    // see WorkspaceNav.closeSection / routing.instructions.md.
+    // A `room`/`session` is a token-only panel, so dropping its token closes it.
+    // A section panel (a course) is also addressable by its map filter, so
+    // closing it returns to the world map. See WorkspaceNav.closeSection.
     void close() => context.go(
           token.type == 'room' || token.type == 'session'
               ? WorkspaceNav.closeLeft(currentUri, token)
@@ -213,8 +242,18 @@ class WorkspaceLeftPanel extends StatelessWidget {
           );
   }
 
+  /// A live room (or a locked `session` review) and its pushed sub-pages. The
+  /// param is `<roomid>` (the chat), `<roomid>/search`, `<roomid>/invite`,
+  /// `<roomid>/details`, or `<roomid>/details/<management>` — the bare id is the
+  /// chat; a `/`-suffix is a sub-page push rendered with the panel's
+  /// `←`-back-to-chat control, mirroring the old `/rooms/:roomid/<page>` tree.
+  /// See `routing.instructions.md`.
   Widget _room(BuildContext context, bool isColumnMode) {
-    final roomId = fullRoomId(token.param ?? '');
+    final param = token.param ?? '';
+    final slash = param.indexOf('/');
+    final bareId = slash < 0 ? param : param.substring(0, slash);
+    final sub = slash < 0 ? '' : param.substring(slash + 1);
+    final roomId = fullRoomId(bareId);
     final room = Matrix.of(context).client.getRoomById(roomId);
     // A space has no timeline, so it must never render as a chat — drop to a
     // graceful empty state instead of spinning up a ChatController on it.
@@ -229,9 +268,49 @@ class WorkspaceLeftPanel extends StatelessWidget {
         ),
       );
     }
+    final back = _closeButton(context, isColumnMode);
+    if (sub.isNotEmpty) {
+      final page = _roomSubPage(context, roomId, sub, back);
+      if (page != null) return page;
+    }
+    // The chat: thread the jump-to-message `?event=` (rides the URL) and any
+    // shared items (ride the navigation `extra`) the retired route used to read.
     return ChatPage(
       roomId: roomId,
-      backButton: _closeButton(context, isColumnMode),
+      eventId: currentUri.queryParameters['event'],
+      shareItems: shareItems,
+      backButton: back,
     );
+  }
+
+  /// The widget for a room sub-page push (`search`, `invite`, `details`, or
+  /// `details/<management>`), or null to fall back to the chat. Mirrors the old
+  /// `/rooms/:roomid/<page>` route tree as in-panel pushes.
+  Widget? _roomSubPage(
+    BuildContext context,
+    String roomId,
+    String sub,
+    Widget back,
+  ) {
+    switch (sub.split('/').first) {
+      case 'search':
+        return ChatSearchPage(roomId: roomId, embeddedCloseButton: back);
+      case 'invite':
+        final filter = currentUri.queryParameters['filter'];
+        return PangeaInvitationSelection(
+          roomId: roomId,
+          initialFilter:
+              filter != null ? InvitationFilter.fromString(filter) : null,
+          embeddedCloseButton: back,
+        );
+      case 'details':
+        final rest =
+            sub.contains('/') ? sub.substring(sub.indexOf('/') + 1) : '';
+        if (rest.isEmpty) {
+          return ChatDetails(roomId: roomId, embeddedCloseButton: back);
+        }
+        return _managementWidget(roomId, rest.split('/').first, back);
+    }
+    return null;
   }
 }

@@ -7,7 +7,17 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class ChatSearchPage extends StatefulWidget {
   final String roomId;
-  const ChatSearchPage({required this.roomId, super.key});
+
+  /// world_v2: when hosted as a `room:<id>/search` push inside the workspace,
+  /// the panel supplies its leading `←` back-to-chat affordance in place of the
+  /// route-pop [BackButton]. See `routing.instructions.md`.
+  final Widget? embeddedCloseButton;
+
+  const ChatSearchPage({
+    required this.roomId,
+    super.key,
+    this.embeddedCloseButton,
+  });
 
   @override
   ChatSearchController createState() => ChatSearchController();

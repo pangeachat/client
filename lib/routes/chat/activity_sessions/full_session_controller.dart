@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
@@ -44,7 +45,15 @@ class FullSessionController extends State<FullSession>
   void returnFromFullSession() {
     final course = widget.course;
     if (course != null) {
-      context.push("/rooms/spaces/${course.id}/details?tab=course");
+      // world_v2: switch the workspace to this course's card on the course-plan
+      // tab (a token nav, not a stacked route push). See routing.instructions.md.
+      context.go(
+        WorkspaceNav.openCourseFilter(
+          GoRouterState.of(context).uri,
+          course.id,
+          tab: 'course',
+        ),
+      );
     } else {
       NavigationUtil.goToSpaceRoute(null, [], context);
     }

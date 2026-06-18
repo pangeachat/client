@@ -63,11 +63,18 @@ abstract class LegacyRedirects {
         segments[1].startsWith('!')) {
       return _toCourseWorkspace(uri, segments[1], null);
     }
-    if (segments.length == 3 &&
+    if (segments.length >= 3 &&
         segments.first == 'courses' &&
         segments[1].startsWith('!') &&
         segments[2].startsWith('!')) {
-      return _toCourseWorkspace(uri, segments[1], segments[2]);
+      // A room inside a course, optionally on a sub-page (search / details /
+      // details/<management> / invite): the course stays the map filter; the
+      // room rides as a left `room:<id>/<sub>` push beside it. See
+      // `routing.instructions.md`.
+      final roomParam = segments.length == 3
+          ? segments[2]
+          : '${segments[2]}/${segments.sublist(3).join('/')}';
+      return _toCourseWorkspace(uri, segments[1], roomParam);
     }
     // Deep course-management pages are FLAT pushes on the `course` token:
     // /courses/:spaceid/<page> → ?m=course:spaceid&left=course:<page> (edit,
@@ -137,6 +144,18 @@ abstract class LegacyRedirects {
       return '/courses/${Uri.encodeComponent(rest[1])}?$qs';
     }
 
+    // world_v2: a bare room and its sub-pages render as a `room` token over the
+    // world map — not a `/rooms/:roomid` route. A room id starts with `!`; the
+    // sub-page tail (search / details / details/<management> / invite) rides the
+    // token param, and `?event=`/`?body=`/`?filter=` survive. This is the
+    // inbound contract for matrix.to / push / share links we don't control;
+    // literal fork segments (`archive`, `newprivatechat`, …) don't start with
+    // `!`, so they fall through to the switch and stay route-driven. See
+    // `routing.instructions.md`.
+    if (rest.isNotEmpty && rest.first.startsWith('!')) {
+      return _toRoomToken(uri, rest.first, rest.sublist(1));
+    }
+
     final List<String>? target = switch (rest) {
       // `/rooms` — the old chats root. Chats now live at `/chats`; the
       // world map is `/`.
@@ -174,6 +193,27 @@ abstract class LegacyRedirects {
     // characters survive the rewrite intact.
     final path = '/${target.map(Uri.encodeComponent).join('/')}';
     return uri.hasQuery ? '$path?${uri.query}' : path;
+  }
+
+  /// Rewrite a bare-room legacy path (`/rooms/:roomid[/sub]`) to a `room`
+  /// token over the world map (`/?left=room:id[/sub]`). The sub-page tail
+  /// (search / details / details/management / invite) rides the token param;
+  /// every other query (`event`, `body`, `filter`, an open `right=`) is kept,
+  /// while any prior `left=`/`m=` is dropped (this navigation IS the room). The
+  /// result has no `/rooms` path segment, so it never re-fires.
+  static String _toRoomToken(Uri uri, String roomId, List<String> tail) {
+    final param = tail.isEmpty ? roomId : '$roomId/${tail.join('/')}';
+    final parts = <String>['left=${PanelToken('room', param).encode()}'];
+    for (final p in (uri.query.isEmpty ? <String>[] : uri.query.split('&'))) {
+      if (p == 'left' ||
+          p.startsWith('left=') ||
+          p == 'm' ||
+          p.startsWith('m=')) {
+        continue;
+      }
+      parts.add(p);
+    }
+    return '${PRoutes.world}?${parts.join('&')}';
   }
 
   /// Rewrite a legacy course path to the world_v2 workspace form: the course as

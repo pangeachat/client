@@ -5,9 +5,13 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 
+/// world_v2: everything is a token over the world map (`/`). This is the single
+/// funnel the app uses to focus a room, a room sub-page, a course, or a course
+/// management page — it builds the token URL and `context.go`s it. There are no
+/// `/rooms/...` or `/courses/...` render paths anymore; inbound legacy paths are
+/// rewritten to tokens by `legacy_redirects`. See `routing.instructions.md`.
 class NavigationUtil {
   static void goToSpaceRoute(
     String? goalRoomID,
@@ -16,76 +20,85 @@ class NavigationUtil {
     Object? extra,
     Map<String, String>? queryParams,
   }) {
-    final currentRoute = GoRouterState.of(context);
-    final uri = currentRoute.uri;
-    String queryString = '';
-    if (queryParams != null && queryParams.isNotEmpty) {
-      queryString =
-          '?${queryParams.entries.map((e) => '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}').join('&')}';
-    }
-
-    // world_v2: a course is the `?m=course:<id>` map filter, not a path. When a
-    // course filter is active, open a room within it as a left `room` token
-    // beside the course panel — preserving the filter and the right column, with
-    // the single-live-room rule (see WorkspaceNav.openExclusiveLeftRoom). The
-    // course root, the space itself, or a deeper sub-route fall back to the
-    // legacy `/courses/:spaceid/...` form, which the router redirects into the
-    // workspace (and keeps room sub-routes route-driven). See
-    // `routing.instructions.md`.
+    final uri = GoRouterState.of(context).uri;
     final activeSpaceId = activeSpaceIdFor(uri);
-    if (activeSpaceId != null) {
-      final opensRoom = goalRoomID != null &&
-          goalRoomID != activeSpaceId &&
-          goalSubroute.isEmpty &&
-          (queryParams == null || queryParams.isEmpty);
-      if (opensRoom) {
-        context.go(
-          WorkspaceNav.openExclusiveLeftRoom(
-            uri,
-            PanelToken('room', shortRoomId(goalRoomID)),
-          ),
-          extra: extra,
-        );
-        return;
-      }
-      // A management page on the course ITSELF is a flat push on the course
-      // token (course:edit, course:invite, …) — no path, no redirect bounce;
-      // any caller query rides as a one-shot the panel reads. A deeper room
-      // sub-page or the bare course root stays on the legacy path (redirected)
-      // until the room push migration. See `routing.instructions.md`.
-      final onCourseItself = goalRoomID == null || goalRoomID == activeSpaceId;
-      if (onCourseItself && goalSubroute.isNotEmpty) {
-        final loc = WorkspaceNav.pushPage(uri, 'course', goalSubroute.join('/'));
-        context.go(
-          queryString.isEmpty
-              ? loc
-              : '$loc${loc.contains('?') ? '&' : '?'}${queryString.substring(1)}',
-          extra: extra,
-        );
-        return;
-      }
-      final base = PRoutes.course(activeSpaceId);
-      final roomTail = (goalRoomID == null || goalRoomID == activeSpaceId)
-          ? ''
-          : '/$goalRoomID';
-      final subTail = goalSubroute.isEmpty ? '' : '/${goalSubroute.join('/')}';
-      context.go('$base$roomTail$subTail$queryString', extra: extra);
-      return;
-    }
+    final sub = goalSubroute.join('/');
 
+    // No room target. A bare call exits the chat: re-show the active course card
+    // if a course is open, else clear to the world map. A sub-route with an
+    // active course is a management page push on that course.
     if (goalRoomID == null) {
-      context.go('${PRoutes.world}$queryString', extra: extra);
+      if (activeSpaceId != null) {
+        context.go(
+          sub.isEmpty
+              ? WorkspaceNav.openCourse(uri, const PanelToken('course'))
+              : _appendQuery(
+                  WorkspaceNav.pushPage(uri, 'course', sub),
+                  queryParams,
+                ),
+          extra: extra,
+        );
+      } else {
+        context.go(_appendQuery(WorkspaceNav.clearAll(), queryParams),
+            extra: extra);
+      }
       return;
     }
 
-    if (goalSubroute.isEmpty) {
-      context.go('/rooms/$goalRoomID$queryString', extra: extra);
+    // The active course SPACE itself: re-show its card, or push a management
+    // page (course:edit / invite / …) — a flat push on the course token.
+    if (activeSpaceId != null && goalRoomID == activeSpaceId) {
+      context.go(
+        sub.isEmpty
+            ? WorkspaceNav.openCourse(uri, const PanelToken('course'))
+            : _appendQuery(
+                WorkspaceNav.pushPage(uri, 'course', sub),
+                queryParams,
+              ),
+        extra: extra,
+      );
       return;
     }
 
+    // A specific room (a live chat, or a room within the active course). The
+    // bare room is the single live left panel (openExclusiveLeftRoom keeps the
+    // course filter + the right column, drops any other room). A sub-page
+    // (search / details / invite / details/<management>) is a push on the room
+    // token (`room:<id>/<sub>`). Any query (event/body/filter) rides alongside;
+    // shared items ride `extra`, which the shell forwards to the room.
+    final shortId = shortRoomId(goalRoomID);
+    if (sub.isEmpty) {
+      // The bare room is the single live left panel (one live room rule), even
+      // when a one-shot query (event/body) rides along — the query gates
+      // nothing here, only the sub-page does.
+      context.go(
+        _appendQuery(
+          WorkspaceNav.openExclusiveLeftRoom(uri, PanelToken('room', shortId)),
+          queryParams,
+        ),
+        extra: extra,
+      );
+      return;
+    }
     context.go(
-      '/rooms/$goalRoomID/${goalSubroute.join('/')}$queryString',
+      _appendQuery(
+        WorkspaceNav.pushPage(uri, 'room', '$shortId/$sub'),
+        queryParams,
+      ),
       extra: extra,
     );
+  }
+
+  /// Append [queryParams] to an already-built token location (which may already
+  /// carry a `?left=`/`?m=` query), choosing `?` or `&` as needed.
+  static String _appendQuery(String loc, Map<String, String>? queryParams) {
+    if (queryParams == null || queryParams.isEmpty) return loc;
+    final q = queryParams.entries
+        .map(
+          (e) =>
+              '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}',
+        )
+        .join('&');
+    return '$loc${loc.contains('?') ? '&' : '?'}$q';
   }
 }

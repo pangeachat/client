@@ -11,6 +11,7 @@ import 'package:fluffychat/features/activity_sessions/activity_session_preview_r
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/activity_sessions_status_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -117,7 +118,15 @@ class NotStartedSessionController extends State<NotStartedSession>
   void goToCourse() {
     final course = widget.course;
     if (course == null) return;
-    context.push("/rooms/spaces/${course.id}/details?tab=course");
+    // world_v2: token nav to the course card's course-plan tab (no stacked
+    // route push). See routing.instructions.md.
+    context.go(
+      WorkspaceNav.openCourseFilter(
+        GoRouterState.of(context).uri,
+        course.id,
+        tab: 'course',
+      ),
+    );
   }
 
   void inviteToCourse() {

@@ -78,10 +78,13 @@ void main() {
     });
 
     test('section roots are map holes in column mode only', () {
+      // world_v2: the still-route-driven section roots. The `/rooms` and
+      // `/courses/:spaceid` render routes are deleted (rooms/courses are tokens
+      // now), so they are no longer in the map-hole set.
       expect(isMapHole('/chats', true), isTrue);
       expect(isMapHole('/chats', false), isFalse);
-      expect(isMapHole('/courses/:spaceid', true), isTrue);
       expect(isMapHole('/analytics/morph', true), isTrue);
+      expect(isMapHole('/settings', true), isTrue);
     });
 
     test('the add-course hub and detail routes are not map holes', () {

@@ -1,5 +1,6 @@
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 
@@ -146,6 +147,35 @@ abstract class WorkspaceNav {
           return next;
         },
       );
+
+  /// Switch the workspace to course [spaceId]: set the `?m=course:<id>` map
+  /// filter AND a `course` left panel (at [tab] in its param if given),
+  /// replacing any prior course filter/token. Keeps the chat list, the right
+  /// column, and every other query. This is the token-native "open this course
+  /// from anywhere" used when navigating to a course outside its current filter
+  /// (joins, activity-session returns) — the tab must ride the token param, so a
+  /// bare `?tab=` query cannot express it. See `routing.instructions.md`.
+  static String openCourseFilter(Uri current, String spaceId, {String? tab}) {
+    final lists = parseOpenPanels(current);
+    final left = <PanelToken>[
+      PanelToken('course', tab),
+      ...lists.left.where((t) => t.type != 'course'),
+    ];
+    final parts = current.query.isEmpty ? <String>[] : current.query.split('&');
+    parts.removeWhere(
+      (p) =>
+          p == 'm' ||
+          p.startsWith('m=') ||
+          p == 'left' ||
+          p.startsWith('left='),
+    );
+    final query = <String>[
+      'm=${PanelToken('course', shortRoomId(spaceId)).encode()}',
+      'left=${left.map((t) => t.encode()).join(',')}',
+      ...parts,
+    ];
+    return '${PRoutes.world}?${query.join('&')}';
+  }
 
   /// Open (or re-tab) a `course` panel at the left edge, replacing any existing
   /// course token. The course's identity is the `?m=course:<id>` map filter

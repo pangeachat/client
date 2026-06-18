@@ -164,9 +164,43 @@ void main() {
       );
     });
 
-    test('matrix rooms and fork routes stay put', () {
-      expect(resolve('/rooms/!room:server.org'), isNull);
+    test('a bare room and its sub-pages become a room token over the map', () {
+      // world_v2: no `/rooms/:roomid` render route — it rewrites to a `room`
+      // token. The sub-page tail rides the token param; query survives.
+      expect(resolve('/rooms/!room:server.org'),
+          '/?left=room:!room%3Aserver.org');
+      expect(resolve('/rooms/!abc'), '/?left=room:!abc');
+      expect(resolve('/rooms/!abc/search'), '/?left=room:!abc%2Fsearch');
+      expect(resolve('/rooms/!abc/details'), '/?left=room:!abc%2Fdetails');
+      expect(
+        resolve('/rooms/!abc/details/permissions'),
+        '/?left=room:!abc%2Fdetails%2Fpermissions',
+      );
+      // The invite-filter and jump-to-message queries are preserved.
+      expect(
+        resolve('/rooms/!abc/invite?filter=knocking'),
+        '/?left=room:!abc%2Finvite&filter=knocking',
+      );
+      expect(resolve('/rooms/!abc?event=abc'), '/?left=room:!abc&event=abc');
+      // Idempotent: the token form has no `/rooms` segment, so it never re-fires.
+      expect(resolve('/?left=room:!abc'), isNull);
+    });
+
+    test('a room inside a course rides as a room push beside the course', () {
+      expect(
+        resolve('/courses/!s/!room/search'),
+        '/?m=course:!s&left=course,room:!room%2Fsearch',
+      );
+      expect(
+        resolve('/courses/!s/!room/details/permissions'),
+        '/?m=course:!s&left=course,room:!room%2Fdetails%2Fpermissions',
+      );
+    });
+
+    test('fork routes stay put', () {
+      // Literal fork segments don't start with `!`, so they fall through.
       expect(resolve('/rooms/archive'), isNull);
+      expect(resolve('/rooms/newprivatechat'), isNull);
       expect(resolve('/home/login'), isNull);
       expect(resolve('/'), isNull);
     });

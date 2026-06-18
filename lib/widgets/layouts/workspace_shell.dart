@@ -21,6 +21,7 @@ import 'package:fluffychat/widgets/layouts/mobile_course_sheet.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mobile_bottom_nav.dart';
+import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 import 'package:fluffychat/widgets/space_navigation_column.dart';
 
 /// One persistent world-map element for the whole app shell (world_v2 map
@@ -322,14 +323,30 @@ class WorkspaceShell extends StatelessWidget {
   /// remounted) when its slot moves; other left surfaces are cheap to rebuild
   /// and key by position.
   Widget _leftPanel(PanelToken token, Uri uri, bool foldedOver) {
+    // Forward any shared items (carried on the navigation `extra`, not the URL)
+    // to a `room` token — the share sheet opens its target as the sole live
+    // room, so the extra belongs to whichever room renders. See
+    // `routing.instructions.md`.
+    final shareItems =
+        token.type == 'room' && state.extra is List<ShareItem>
+        ? state.extra as List<ShareItem>
+        : null;
     final panel = WorkspaceLeftPanel(
       token: token,
       currentUri: uri,
       foldedOver: foldedOver,
+      shareItems: shareItems,
     );
     if (token.type == 'room') {
+      // The room token's param is `<roomid>` or `<roomid>/<subpage>`; the
+      // GlobalKey is keyed by the bare room id only, so pushing a sub-page
+      // (search/details/…) repositions the same ChatController rather than
+      // remounting it. See `routing.instructions.md`.
+      final param = token.param ?? '';
+      final slash = param.indexOf('/');
+      final bareId = slash < 0 ? param : param.substring(0, slash);
       return KeyedSubtree(
-        key: _roomKeyFor(fullRoomId(token.param ?? '')),
+        key: _roomKeyFor(fullRoomId(bareId)),
         child: panel,
       );
     }

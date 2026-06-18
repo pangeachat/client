@@ -64,9 +64,6 @@ enum AnalyticsPanelTab { sessions, grammar, vocab }
 /// both read it, so the page builder and the layout can't drift.
 const Set<String> _mapHoleColumnRoutes = {
   '/chats',
-  '/rooms',
-  '/courses/:spaceid',
-  '/courses/:spaceid/details',
   '/analytics',
   '/analytics/morph',
   '/analytics/vocab',
@@ -255,7 +252,15 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
     if (token == null) continue;
     final def = PanelRegistry.defFor(token.type);
     if (def == null || def.column != column) continue;
-    if (!seen.add('${token.type}:${token.param ?? ''}')) continue;
+    // A `room`/`session` token's IDENTITY is its bare room id; the rest of the
+    // param is a pushed sub-page (`<id>/search`, `<id>/details/…`). Dedup on the
+    // bare id so a hand-edited URL with two sub-pages of the same room degrades
+    // to one panel rather than colliding on the room's GlobalKey. Other panels
+    // dedup on the whole (type, param). See `routing.instructions.md`.
+    final identity = (token.type == 'room' || token.type == 'session')
+        ? '${token.type}:${(token.param ?? '').split('/').first}'
+        : '${token.type}:${token.param ?? ''}';
+    if (!seen.add(identity)) continue;
     tokens.add(token);
     if (tokens.length >= _maxPanelsPerList) break;
   }
