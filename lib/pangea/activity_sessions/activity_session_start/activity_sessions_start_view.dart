@@ -84,7 +84,6 @@ class ActivitySessionStartView extends StatelessWidget {
                           child: Column(
                             children: [
                               Stack(
-                                clipBehavior: Clip.none,
                                 children: [
                                   SizedBox(
                                     height: 350.0,
@@ -114,12 +113,12 @@ class ActivitySessionStartView extends StatelessWidget {
                                     ),
                                   ),
                                   Positioned.fill(
-                                    top: 300.0,
+                                    top: 275.0,
                                     child: Container(
                                       decoration: BoxDecoration(
                                         gradient: LinearGradient(
                                           begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter,
+                                          end: Alignment.center,
                                           colors: [
                                             theme.colorScheme.surface.withAlpha(
                                               0,
@@ -132,41 +131,39 @@ class ActivitySessionStartView extends StatelessWidget {
                                   ),
                                   if (sessionController.showRoleCards)
                                     Positioned(
-                                      top: 250.0,
+                                      bottom: 0,
                                       left: 0,
                                       right: 0,
                                       child: Center(
-                                        child: ConstrainedBox(
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 16.0,
+                                          ),
                                           constraints: const BoxConstraints(
                                             maxWidth: 600.0,
                                           ),
-                                          child: Padding(
-                                            padding: EdgeInsets.symmetric(
-                                              horizontal: 16.0,
-                                            ),
-                                            child: Opacity(
-                                              opacity: sessionController
-                                                  .roleCardOpacity,
-                                              child: ActivityParticipantList(
-                                                activity: activity,
-                                                room: controller.activityRoom,
-                                                assignedRoles:
-                                                    controller.assignedRoles,
-                                                course: controller.courseParent,
-                                                onTap: sessionController
-                                                    .selectRole,
-                                                canSelect: sessionController
-                                                    .canSelectRole,
-                                                isSelected: sessionController
-                                                    .isRoleSelected,
-                                                isShimmering: sessionController
-                                                    .isRoleShimmering,
-                                                showStarsCard: sessionController
-                                                    .showStarsCard,
-                                                completedGoalsForRole:
-                                                    sessionController
-                                                        .completedGoalIdsForRole,
-                                              ),
+                                          child: Opacity(
+                                            opacity: sessionController
+                                                .roleCardOpacity,
+                                            child: ActivityParticipantList(
+                                              activity: activity,
+                                              room: controller.activityRoom,
+                                              assignedRoles:
+                                                  controller.assignedRoles,
+                                              course: controller.courseParent,
+                                              onTap:
+                                                  sessionController.selectRole,
+                                              canSelect: sessionController
+                                                  .canSelectRole,
+                                              isSelected: sessionController
+                                                  .isRoleSelected,
+                                              isShimmering: sessionController
+                                                  .isRoleShimmering,
+                                              showStarsCard: sessionController
+                                                  .showStarsCard,
+                                              completedGoalsForRole:
+                                                  sessionController
+                                                      .completedGoalIdsForRole,
                                             ),
                                           ),
                                         ),
@@ -189,41 +186,39 @@ class ActivitySessionStartView extends StatelessWidget {
                               ),
                               if (sessionController.showDescriptionSection)
                                 Center(
-                                  child: ConstrainedBox(
+                                  child: Container(
                                     constraints: const BoxConstraints(
                                       maxWidth: 600.0,
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                        16.0,
-                                        50.0,
-                                        16.0,
-                                        0.0,
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        spacing: 12.0,
-                                        children: [
-                                          Text(
-                                            activity.description,
-                                            style: theme.textTheme.bodyLarge,
-                                          ),
-                                          if (activity.vocab.isNotEmpty)
-                                            ActivityVocabWidget(
-                                              key: ValueKey(
-                                                'activity-start-vocab-${activity.activityId}',
-                                              ),
-                                              vocab: activity.vocab,
-                                              langCode:
-                                                  activity.req.targetLanguage,
-                                              targetId: 'activity-start-vocab',
-                                              usedVocab: null,
-                                              activityLangCode:
-                                                  activity.req.targetLanguage,
+                                    padding: const EdgeInsets.fromLTRB(
+                                      16.0,
+                                      50.0,
+                                      16.0,
+                                      0.0,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      spacing: 12.0,
+                                      children: [
+                                        Text(
+                                          activity.description,
+                                          style: theme.textTheme.bodyLarge,
+                                        ),
+                                        if (activity.vocab.isNotEmpty)
+                                          ActivityVocabWidget(
+                                            key: ValueKey(
+                                              'activity-start-vocab-${activity.activityId}',
                                             ),
-                                        ],
-                                      ),
+                                            vocab: activity.vocab,
+                                            langCode:
+                                                activity.req.targetLanguage,
+                                            targetId: 'activity-start-vocab',
+                                            usedVocab: null,
+                                            activityLangCode:
+                                                activity.req.targetLanguage,
+                                          ),
+                                      ],
                                     ),
                                   ),
                                 ),

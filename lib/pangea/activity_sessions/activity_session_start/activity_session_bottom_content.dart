@@ -35,8 +35,9 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (controller.subPage.visibleStatuses.isEmpty)
+    if (controller.subPage.visibleStatuses.isEmpty) {
       return const SizedBox.shrink();
+    }
 
     return ConstrainedBox(
       constraints: const BoxConstraints(
