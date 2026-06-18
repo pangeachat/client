@@ -96,7 +96,18 @@ void main() {
       final l = run(viewport: 900, left: ['chats', 'room']);
       expect(l.left[1].vis, PanelVis.full); // room (priority 80) stays
       expect(l.left[0].vis, PanelVis.hidden); // chats (priority 30) folds
+      // The surviving room is "folded over" its master → its close is a `←`.
+      expect(l.left[1].foldedOver, isTrue);
       expectNoOverlap(l);
+    });
+
+    test('coexisting (unfolded) panels are NOT foldedOver — their close is X', () {
+      // Wide enough for chat list + room to both stay full: neither folds, so
+      // neither is folded-over (closing either reveals the map, not a master).
+      final l = run(viewport: 1920, left: ['chats', 'room']);
+      expect(l.left[0].vis, PanelVis.full);
+      expect(l.left[1].vis, PanelVis.full);
+      expect(l.left.every((s) => !s.foldedOver), isTrue);
     });
   });
 

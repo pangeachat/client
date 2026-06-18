@@ -24,7 +24,20 @@ class PanelSlot {
   final double width;
   final PanelVis vis;
 
-  const PanelSlot({required this.left, required this.width, required this.vis});
+  /// True when this (full) panel is the **surviving detail over a folded
+  /// master** — a sibling in the same column was folded away under width
+  /// pressure, so closing this panel reveals it (a back-step). The close
+  /// affordance reads this to show `←` instead of `X`. Only set in column mode;
+  /// narrow mode's single-pane back-step is decided from the breakpoint, not
+  /// here. See `world-v2-architecture`.
+  final bool foldedOver;
+
+  const PanelSlot({
+    required this.left,
+    required this.width,
+    required this.vis,
+    this.foldedOver = false,
+  });
 }
 
 /// The resolved workspace layout: a slot per open panel (parallel to the input
@@ -199,10 +212,17 @@ abstract class PanelAllocator {
     // Position: left column fills from the rail rightward; right column is
     // right-justified (its group ends at viewport - gutter). Folded panels are
     // skipped — not drawn, no gap reserved — order otherwise preserved.
+    // A surviving panel is "folded over" when its column lost a sibling to the
+    // fold above — closing it reveals that folded master (a back-step), so its
+    // close control becomes `←`. See `world-v2-architecture`.
+    final foldedLeft = folded.any((e) => e.column == PanelColumn.left);
+    final foldedRight = folded.any((e) => e.column == PanelColumn.right);
+
     final placement = <_Entry, PanelSlot>{};
     var x = railWidth;
     for (final e in fulls.where((e) => e.column == PanelColumn.left)) {
-      placement[e] = PanelSlot(left: x, width: widthOf(e), vis: PanelVis.full);
+      placement[e] = PanelSlot(
+          left: x, width: widthOf(e), vis: PanelVis.full, foldedOver: foldedLeft);
       x += widthOf(e) + panelGap;
     }
     final hasLeft = fulls.any((e) => e.column == PanelColumn.left);
@@ -214,7 +234,8 @@ abstract class PanelAllocator {
     var rx = viewport - gutter - rightTotal;
     final rightStart = rx;
     for (final e in rights) {
-      placement[e] = PanelSlot(left: rx, width: widthOf(e), vis: PanelVis.full);
+      placement[e] = PanelSlot(
+          left: rx, width: widthOf(e), vis: PanelVis.full, foldedOver: foldedRight);
       rx += widthOf(e) + panelGap;
     }
 
