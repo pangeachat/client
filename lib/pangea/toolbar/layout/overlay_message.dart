@@ -93,7 +93,7 @@ class OverlayMessage extends StatelessWidget {
     final textColor = event.isActivityMessage
         ? ThemeData.light().colorScheme.onPrimary
         : ownMessage
-        ? ThemeData.dark().colorScheme.onPrimary
+        ? theme.colorScheme.onPrimary
         : theme.colorScheme.onSurface;
 
     final linkColor = theme.brightness == Brightness.light
@@ -120,10 +120,7 @@ class OverlayMessage extends StatelessWidget {
     if (ownMessage) {
       color = displayEvent.status.isError
           ? Colors.redAccent
-          : Color.alphaBlend(
-              Colors.white.withAlpha(180),
-              ThemeData.dark().colorScheme.primary,
-            );
+          : theme.colorScheme.primary;
     }
 
     if (event.isActivityMessage) {

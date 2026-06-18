@@ -226,7 +226,7 @@ class Message extends StatelessWidget {
     //     ? theme.onBubbleColor
     //     : theme.colorScheme.onSurface;
     final textColor = ownMessage
-        ? ThemeData.dark().colorScheme.onPrimary
+        ? theme.colorScheme.onPrimary
         : theme.colorScheme.onSurface;
 
     // final linkColor = ownMessage
@@ -279,10 +279,7 @@ class Message extends StatelessWidget {
       //     : theme.bubbleColor;
       color = displayEvent.status.isError
           ? Colors.redAccent
-          : Color.alphaBlend(
-              Colors.white.withAlpha(180),
-              ThemeData.dark().colorScheme.primary,
-            );
+          : theme.colorScheme.primary;
       // Pangea#
     }
 
