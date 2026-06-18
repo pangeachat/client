@@ -3771,7 +3771,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-06-15 09:46:45.383462",
+    "@@last_modified": "2026-06-18 09:35:49.167319",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10879,6 +10879,51 @@
     },
     "activityActions": "Ενέργειες δραστηριότητας",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Επαγγελματικά χαρακτηριστικά",
+    "pronunciationTools": "Εργαλεία προφοράς",
+    "audioTranscription": "Αυτόματη μεταγραφή ήχου",
+    "visualLearnerSupport": "Υποστήριξη οπτικών μαθητών",
+    "instantWritingTranslation": "Άμεση μετάφραση γραπτού κειμένου",
+    "personalizedPracticeExercises": "Προσωποποιημένες ασκήσεις πρακτικής",
+    "vocabularyFlashcards": "Κάρτες λεξιλογίου",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Πίσω",
+    "viewCurrentOrFinished": "Δείτε τρέχον ή ολοκληρωμένο",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

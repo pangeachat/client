@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-15 09:46:26.045252",
+    "@@last_modified": "2026-06-18 09:34:29.720478",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9830,6 +9830,51 @@
     },
     "activityActions": "Дії активності",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Професійні функції",
+    "pronunciationTools": "Інструменти вимови",
+    "audioTranscription": "AI транскрипція аудіо",
+    "visualLearnerSupport": "Підтримка візуальних учнів",
+    "instantWritingTranslation": "Миттєвий переклад письма",
+    "personalizedPracticeExercises": "Персоналізовані практичні вправи",
+    "vocabularyFlashcards": "Флеш-картки з словниковим запасом",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Назад",
+    "viewCurrentOrFinished": "Переглянути поточні або завершені",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

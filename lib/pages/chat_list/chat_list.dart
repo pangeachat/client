@@ -574,9 +574,9 @@ class ChatListController extends State<ChatList>
     MatrixState.pangeaController.subscriptionController.subscriptionNotifier
         .addListener(_onSubscribe);
 
-    MatrixState.pangeaController.initControllers();
-
     final client = Matrix.of(context).client;
+    MatrixState.pangeaController.initControllers(client.userID);
+
     _joinCachedSpaceCode(client);
     _startDMWithCachedUserId(client);
     _handlePendingCourseAnalyticsAccessRequests(client);
@@ -1149,6 +1149,8 @@ class ChatListController extends State<ChatList>
     for (final courseId in pending) {
       final course = client.getRoomById(courseId);
       if (course == null || !course.isSpace) continue;
+      if (JoinRoomAnalyticsConsentHandler.currentRoomId == courseId) continue;
+
       final handler = JoinRoomAnalyticsConsentHandler(
         JoinResponse(
           roomId: course.id,

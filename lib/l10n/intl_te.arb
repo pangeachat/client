@@ -1467,7 +1467,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-06-15 09:46:36.298340",
+    "@@last_modified": "2026-06-18 09:35:34.098122",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -8098,7 +8098,7 @@
     "bhoDisplayName": "భోజ్‌పురి",
     "bikDisplayName": "బికోల్",
     "bmDisplayName": "బాంబారా",
-    "bnDisplayName": "బంగ్లా",
+    "bnDisplayName": "బెంగాలీ",
     "bnBDDisplayName": "బెంగాలీ (బంగ్లాదేశ్)",
     "bnINDisplayName": "బెంగాలీ (భారతదేశం)",
     "brDisplayName": "బ్రెటన్",
@@ -10954,6 +10954,51 @@
     },
     "activityActions": "చర్యల చర్యలు",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "ప్రో ఫీచర్లు",
+    "pronunciationTools": "ఉచ్చారణ సాధనాలు",
+    "audioTranscription": "ఏఐ ఆడియో ట్రాన్స్క్రిప్షన్",
+    "visualLearnerSupport": "దృశ్య విద్యార్థి మద్దతు",
+    "instantWritingTranslation": "తక్షణ రచన అనువాదం",
+    "personalizedPracticeExercises": "వ్యక్తిగత ప్రాక్టీస్ వ్యాయామాలు",
+    "vocabularyFlashcards": "పదకోశ ఫ్లాష్‌కార్డులు",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "తిరిగి",
+    "viewCurrentOrFinished": "ప్రస్తుత లేదా ముగిసినది చూడండి",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

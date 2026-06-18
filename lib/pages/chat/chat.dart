@@ -555,8 +555,9 @@ class ChatController extends State<ChatPageWithRoom>
 
   // #Pangea
   void _onLevelUp(LevelUpdate update) {
-    final isSubscribed = pangeaController.subscriptionController.isSubscribed;
-    if (isSubscribed == false) return;
+    if (!pangeaController.subscriptionController.showSubscriptionGatedContent) {
+      return;
+    }
 
     final overlayKey = "level_up_notification";
     _bannerController.addBanner((Completer<void> completer) {
@@ -782,11 +783,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _activityConfettiListener() {
     if (activityController.confettiNotifier.value) {
-      StarRainWidget.show(
-        context,
-        "star-rain-${widget.room.id}",
-        showBlast: true,
-      );
+      StarRainWidget.show(context, "star-rain-${widget.room.id}");
     }
   }
 

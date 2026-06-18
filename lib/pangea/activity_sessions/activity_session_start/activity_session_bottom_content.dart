@@ -9,7 +9,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_state_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/not_started_session_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/room_summaries/activity_summary_status_enum.dart';
 import 'package:fluffychat/pangea/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -36,29 +35,27 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (controller.subPage.visibleStatuses.isEmpty) return const SizedBox.shrink();
+
     return ConstrainedBox(
       constraints: const BoxConstraints(
         maxWidth: FluffyThemes.columnWidth * 1.5,
       ),
       child: Column(
         children: [
-          ...ActivitySummaryStatus.values
-              .where((s) => s.canView(controller.course.isRoomAdmin))
-              .map((status) {
-                final roomSummaries = controller.activityStatuses
-                    .getSessionsByStatus(status);
+          ...controller.subPage.visibleStatuses.map((status) {
+            final roomSummaries = controller.activityStatuses
+                .getSessionsByStatus(status);
 
-                if (roomSummaries.isEmpty) {
-                  return const SizedBox.shrink();
-                }
+            if (roomSummaries.isEmpty) return const SizedBox.shrink();
 
-                return _ActivitySummaryStatusSection(
-                  status: status,
-                  roomSummaries: roomSummaries,
-                  course: controller.course,
-                  onTap: controller.joinActivityByRoomId,
-                );
-              }),
+            return _ActivitySummaryStatusSection(
+              status: status,
+              roomSummaries: roomSummaries,
+              course: controller.course,
+              onTap: controller.joinActivityByRoomId,
+            );
+          }),
         ],
       ),
     );

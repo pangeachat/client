@@ -42,7 +42,7 @@ class LanguageConstants {
     {"language_code": "bho", "language_name": "Bhojpuri", "l2_support": "na"},
     {"language_code": "bik", "language_name": "Bikol", "l2_support": "na"},
     {"language_code": "bm", "language_name": "Bambara", "l2_support": "na"},
-    {"language_code": "bn", "language_name": "Bangla", "l2_support": "beta"},
+    {"language_code": "bn", "language_name": "Bengali", "l2_support": "beta"},
     {
       "language_code": "bn-BD",
       "language_name": "Bengali (Bangladesh)",

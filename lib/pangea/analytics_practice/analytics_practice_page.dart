@@ -255,7 +255,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       await analyticsService.reinitialize();
     }
     try {
-      await _analyticsController.waitForAnalytics();
+      await _analyticsController.waitForAnalytics(
+        Matrix.of(context).client.userID,
+      );
       await _sessionController.startSession(widget.type);
       if (mounted) setState(() {});
 
@@ -282,11 +284,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     await _analyticsController.addSessionAnalytics(bonus, _l2!.langCodeShort);
 
     AnalyticsPractice.bypassExitConfirmation = true;
-    StarRainWidget.show(
-      context,
-      "completed-activity-star-rain",
-      showBlast: true,
-    );
+    StarRainWidget.show(context, "completed-activity-star-rain");
   }
 
   Future<void> _continueSession() async {

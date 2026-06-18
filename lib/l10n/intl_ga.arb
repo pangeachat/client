@@ -3948,7 +3948,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-06-15 09:46:52.262458",
+    "@@last_modified": "2026-06-18 09:35:56.036456",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9841,6 +9841,51 @@
     },
     "activityActions": "Gníomhartha gníomhaíochta",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Gnéithe pro",
+    "pronunciationTools": "Uirlisí fuaime",
+    "audioTranscription": "Trascríobhadh fuaime AI",
+    "visualLearnerSupport": "Tacaíocht do learners amhairc",
+    "instantWritingTranslation": "Aistriúchán scríbhneoireachta láithreach",
+    "personalizedPracticeExercises": "Cleachtaí cleachtais pearsanta",
+    "vocabularyFlashcards": "Cártaí cuimhneachta foclóra",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Ar ais",
+    "viewCurrentOrFinished": "Féach ar an reatha nó ar an críochnaithe",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

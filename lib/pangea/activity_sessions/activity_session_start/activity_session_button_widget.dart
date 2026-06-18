@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_session_start/confi
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/full_session_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/not_started_session_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/select_role_session_controller.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 
 class ActivitySessionButtons extends StatelessWidget {
   final ActivitySessionStartState controller;
@@ -23,6 +24,7 @@ class ActivitySessionButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final description = sessionController.descriptionText;
+
     return AnimatedSize(
       alignment: Alignment.bottomCenter,
       duration: FluffyThemes.animationDuration,
@@ -154,7 +156,10 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hasActiveSession = controller.canJoinExistingSession;
+    // Sub-pages show a single Back button.
+    if (controller.subPage != NotStartedSubPage.main) {
+      return _CTAButton(L10n.of(context).back, controller.goToMainPage);
+    }
 
     return FutureBuilder(
       future: controller.neededCourseParticipants,
@@ -189,16 +194,17 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
                 controller.goToJoinedActivity,
               ),
             ] else ...[
-              _CTAButton(
-                hasActiveSession
-                    ? L10n.of(context).startNewSession
-                    : L10n.of(context).start,
-                controller.startNewActivity,
-              ),
-              if (hasActiveSession)
+              _CTAButton(L10n.of(context).start, controller.startNewActivity),
+              if (controller.openSessionCount > 0)
                 _CTAButton(
-                  L10n.of(context).joinOpenSession,
-                  controller.joinExistingSession,
+                  '${L10n.of(context).joinOpenSession} (${controller.openSessionCount})',
+                  controller.goToJoinPage,
+                ),
+              if (controller.course.isRoomAdmin &&
+                  controller.hasCurrentOrFinishedSessions)
+                _CTAButton(
+                  '${L10n.of(context).viewCurrentOrFinished} (${controller.currentOrFinishedSessionCount})',
+                  controller.goToViewPage,
                 ),
             ],
           ],

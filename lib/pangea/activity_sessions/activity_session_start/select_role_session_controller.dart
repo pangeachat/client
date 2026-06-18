@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -43,12 +41,30 @@ class SelectRoleSession extends StatefulWidget {
 class SelectRoleSessionController extends State<SelectRoleSession>
     implements ActivitySessionStateController {
   String? _selectedRoleId;
+  bool _confirmed = false;
+  final _goalsHandler = GoalsSubscriptionHandler();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _goalsHandler.init(widget.roomId, context, setState, () => mounted);
+  }
+
+  @override
+  void dispose() {
+    _goalsHandler.cancel();
+    super.dispose();
+  }
 
   @override
   void didUpdateWidget(covariant SelectRoleSession oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.roomId != widget.roomId) {
-      setState(() => _selectedRoleId = null);
+      setState(() {
+        _selectedRoleId = null;
+        _confirmed = false;
+        _goalsHandler.clearCache();
+      });
     }
   }
 
@@ -61,14 +77,44 @@ class SelectRoleSessionController extends State<SelectRoleSession>
       widget.activity?.roles[_selectedRoleId] != null;
 
   @override
-  String get descriptionText {
+  String? get descriptionText {
     if (_selectedRoleId == null) {
       return activityRoom?.isRoomAdmin ?? false
           ? L10n.of(context).chooseRole
           : L10n.of(context).chooseRoleToParticipate;
     }
+    return null;
+  }
 
-    return widget.activity?.roles[_selectedRoleId]?.goal ?? "";
+  @override
+  List<ActivityRoleGoal>? get selectedRoleGoals {
+    if (_selectedRoleId == null) return null;
+    return widget.activity?.roles[_selectedRoleId]?.allGoals;
+  }
+
+  @override
+  Set<String> completedGoalIdsForRole(String id) => _goalsHandler.scan(
+    id,
+    Matrix.of(context).client,
+    activityId: widget.activity?.activityId,
+    activity: widget.activity,
+  );
+
+  @override
+  Set<String> get selectedRoleCompletedGoalIds {
+    final id = _selectedRoleId;
+    if (id == null) return {};
+    return completedGoalIdsForRole(id);
+  }
+
+  @override
+  bool showStarsCard(String id) {
+    if (_confirmed || isRoleSelected(id)) return false;
+    final assigned =
+        activityRoom?.assignedRoles ??
+        widget.summary?.joinedUsersWithRoles ??
+        {};
+    return !assigned.containsKey(id);
   }
 
   @override
@@ -80,29 +126,33 @@ class SelectRoleSessionController extends State<SelectRoleSession>
 
   @override
   bool canSelectRole(String id) {
-    final activity = widget.activity;
-    if (activity == null) return false;
-
-    final availableRoles = activity.roles;
-    final assignedRoles =
-        activityRoom?.assignedRoles ??
-        widget.summary?.joinedUsersWithRoles ??
-        {};
-
-    final unassignedIds = availableRoles.keys
-        .where((id) => !assignedRoles.containsKey(id))
-        .toList();
-
-    return unassignedIds.contains(id);
+    if (widget.activity == null) return false;
+    return !widget.controller.assignedRoles.containsKey(id);
   }
 
   @override
   void selectRole(String id) {
-    if (_selectedRoleId == id) return;
-    if (mounted) setState(() => _selectedRoleId = id);
+    if (mounted) {
+      setState(() {
+        _selectedRoleId = _selectedRoleId == id ? null : id;
+      });
+    }
   }
 
+  @override
+  double get roleCardOpacity => 1.0;
+
+  @override
+  bool get goalsStartCollapsed => false;
+
+  @override
+  bool get showRoleCards => true;
+
+  @override
+  bool get showDescriptionSection => true;
+
   Future<void> confirmRoleSelection() async {
+    setState(() => _confirmed = true);
     final activity = widget.activity;
     if (activity == null) {
       ErrorHandler.logError(
