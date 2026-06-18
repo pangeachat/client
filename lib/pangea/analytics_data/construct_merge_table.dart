@@ -7,23 +7,14 @@ class ConstructMergeTable {
   Map<String, Set<ConstructIdentifier>> lemmaTypeGroups = {};
   final Map<ConstructIdentifier, ConstructIdentifier> caseInsensitive = {};
 
-  void addConstructs(
-    List<ConstructUses> constructs,
-    Set<ConstructIdentifier> exclude,
-  ) {
-    addConstructsByUses(
-      constructs.expand((c) => c.cappedUses).toList(),
-      exclude,
-    );
+  void addConstructs(List<ConstructUses> constructs) {
+    addConstructsByUses(constructs.expand((c) => c.cappedUses).toList());
   }
 
-  void addConstructsByUses(
-    List<OneConstructUse> uses,
-    Set<ConstructIdentifier> exclude,
-  ) {
+  void addConstructsByUses(List<OneConstructUse> uses) {
     for (final use in uses) {
       final id = use.identifier;
-      if (exclude.contains(id) || id.isInvalid) continue;
+      if (id.isInvalid) continue;
 
       final composite = id.compositeKey;
       (lemmaTypeGroups[composite] ??= {}).add(id);
@@ -31,7 +22,7 @@ class ConstructMergeTable {
 
     for (final use in uses) {
       final id = use.identifier;
-      if (exclude.contains(id) || id.isInvalid) continue;
+      if (id.isInvalid) continue;
 
       final group = lemmaTypeGroups[id.compositeKey];
       if (group == null) continue;
@@ -64,12 +55,9 @@ class ConstructMergeTable {
     return caseInsensitive[key] ?? key;
   }
 
-  List<ConstructIdentifier> groupedIds(
-    ConstructIdentifier id,
-    Set<ConstructIdentifier> exclude,
-  ) {
+  List<ConstructIdentifier> groupedIds(ConstructIdentifier id) {
     final keys = <ConstructIdentifier>[];
-    if (exclude.contains(id) || id.isInvalid) {
+    if (id.isInvalid) {
       return keys;
     }
 
@@ -78,15 +66,13 @@ class ConstructMergeTable {
     // if this key maps to a different case variant, include that as well
     final differentCase = caseInsensitive[id];
     if (differentCase != null && differentCase != id) {
-      if (!exclude.contains(differentCase)) {
-        keys.add(differentCase);
-      }
+      keys.add(differentCase);
     }
 
     return keys;
   }
 
-  int uniqueConstructsByType(ConstructTypeEnum type) {
+  Set<ConstructIdentifier> uniqueConstructsByType(ConstructTypeEnum type) {
     final keys = lemmaTypeGroups.keys.where(
       (composite) => composite.endsWith('|${type.name}'),
     );
@@ -97,7 +83,7 @@ class ConstructMergeTable {
       unique.addAll(group.map((c) => resolve(c)));
     }
 
-    return unique.length;
+    return unique;
   }
 
   bool constructUsed(ConstructIdentifier id) =>

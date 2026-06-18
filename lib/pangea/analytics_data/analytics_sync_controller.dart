@@ -156,20 +156,32 @@ class AnalyticsSyncController {
     String language,
   ) async {
     for (final event in events) {
-      final current = AnalyticsSettingsModel.fromJson(event.content);
-      final prevContent =
-          event.unsigned?['prev_content'] as Map<String, Object?>?;
-      final prev = prevContent != null
-          ? AnalyticsSettingsModel.fromJson(prevContent)
-          : null;
+      Map<ConstructIdentifier, BlockedConstruct> newBlocked = {};
+      Map<ConstructIdentifier, BlockedConstruct> prevBlocked = {};
 
-      final newBlocked = current.blockedConstructs;
-      final prevBlocked = prev?.blockedConstructs ?? {};
+      try {
+        final current = AnalyticsSettingsModel.fromJson(event.content);
+        final prevContent =
+            event.unsigned?['prev_content'] as Map<String, Object?>?;
+        final prev = prevContent != null
+            ? AnalyticsSettingsModel.fromJson(prevContent)
+            : null;
 
-      final newlyBlocked = newBlocked.where((c) => !prevBlocked.contains(c));
+        newBlocked = current.blockedConstructs;
+        prevBlocked = prev?.blockedConstructs ?? {};
+      } catch (_) {
+        continue;
+      }
+
+      final Set<ConstructIdentifier> newlyBlocked = {};
+      for (final value in newBlocked.values) {
+        final prevEntry = prevBlocked[value.constructId];
+        if (prevEntry != value) newlyBlocked.add(value.constructId);
+      }
+
       if (newlyBlocked.isEmpty) continue;
       await dataService.updateDispatcher.sendBlockedConstructsUpdate(
-        newlyBlocked.toSet(),
+        newlyBlocked,
         language,
       );
     }

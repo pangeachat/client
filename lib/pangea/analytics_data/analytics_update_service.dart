@@ -8,10 +8,12 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_update_dispatcher.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/saved_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/user_lemma_info_extension.dart';
 import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
+import 'package:fluffychat/pangea/analytics_settings/analytics_settings_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -159,17 +161,21 @@ class AnalyticsUpdateService {
     await analyticsRoom.addActivityRoomIds({roomId});
   }
 
-  Future<void> blockConstructs(List<ConstructIdentifier> constructIds) async {
+  Future<void> blockConstructs(List<ConstructUses> constructs) async {
     final analyticsRoom = await _getAnalyticsRoom();
     if (analyticsRoom == null) return;
 
-    final current = analyticsRoom.analyticsSettings;
-    final blockedConstructs = current.blockedConstructs;
-    final updated = current.copyWith(
-      blockedConstructs: {...blockedConstructs, ...constructIds},
-    );
+    final Map<ConstructIdentifier, BlockedConstruct> blocked = {};
+    for (final construct in constructs) {
+      final snapshot = ConstructSnapshot(points: construct.points);
+      blocked[construct.id] = BlockedConstruct(
+        constructId: construct.id,
+        timestamp: DateTime.now(),
+        snapshot: snapshot,
+      );
+    }
 
-    await analyticsRoom.setAnalyticsSettings(updated);
+    await analyticsRoom.addBlockedConstructs(blocked);
   }
 
   Future<void> setLemmaInfo(

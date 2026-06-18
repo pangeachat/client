@@ -18,6 +18,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
+import 'package:fluffychat/pangea/analytics_settings/analytics_settings_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
@@ -223,9 +224,8 @@ class AnalyticsDataService {
       language,
     );
 
-    final blocked = blockedConstructs;
-    _mergeTable.addConstructs(vocab, blocked);
-    _mergeTable.addConstructs(morph, blocked);
+    _mergeTable.addConstructs(vocab);
+    _mergeTable.addConstructs(morph);
   }
 
   Future<void> reinitialize() async {
@@ -275,21 +275,21 @@ class AnalyticsDataService {
   Future<void> _ensureInitialized() =>
       initCompleter.isCompleted ? Future.value() : initCompleter.future;
 
-  int numConstructs(ConstructTypeEnum type) =>
-      _mergeTable.uniqueConstructsByType(type);
-
   bool hasUsedConstruct(ConstructIdentifier id) =>
       _mergeTable.constructUsed(id);
 
-  bool isConstructBlocked(ConstructIdentifier id) =>
-      blockedConstructs.contains(id);
+  int uniqueConstructsByType(ConstructTypeEnum type) {
+    final constructIds = _mergeTable.uniqueConstructsByType(type);
+    final blocked = blockedConstructs;
+    return constructIds.where((c) => !blocked.containsKey(c)).length;
+  }
 
-  int uniqueConstructsByType(ConstructTypeEnum type) =>
-      _mergeTable.uniqueConstructsByType(type);
+  Map<ConstructIdentifier, BlockedConstruct> get blockedConstructs {
+    if (_analyticsClient == null) return {};
 
-  Set<ConstructIdentifier> get blockedConstructs {
     final analyticsRoom =
         _analyticsClientGetter.client.ownAnalyticsRoomLocalByL2;
+
     return analyticsRoom?.blockedConstructs ?? {};
   }
 
@@ -337,7 +337,7 @@ class AnalyticsDataService {
 
     final Map<ConstructIdentifier, DateTime?> cappedLastUseCache = {};
     for (final use in uses) {
-      if (blocked.contains(use.identifier)) continue;
+      if (blocked.containsKey(use.identifier)) continue;
       if (use.identifier.isInvalid) continue;
 
       if (!cappedLastUseCache.containsKey(use.identifier)) {
@@ -370,8 +370,7 @@ class AnalyticsDataService {
     String language,
   ) async {
     await _ensureInitialized();
-    final blocked = blockedConstructs;
-    final ids = _mergeTable.groupedIds(_mergeTable.resolve(id), blocked);
+    final ids = _mergeTable.groupedIds(_mergeTable.resolve(id));
     if (ids.isEmpty) {
       return ConstructUses(
         uses: [],
@@ -392,8 +391,8 @@ class AnalyticsDataService {
     final Map<ConstructIdentifier, List<ConstructIdentifier>> request = {};
     final blocked = blockedConstructs;
     for (final id in ids) {
-      if (blocked.contains(id)) continue;
-      request[id] = _mergeTable.groupedIds(_mergeTable.resolve(id), blocked);
+      if (blocked.containsKey(id)) continue;
+      request[id] = _mergeTable.groupedIds(_mergeTable.resolve(id));
     }
 
     return _analyticsClientGetter.database.getConstructUses(request, language);
@@ -417,7 +416,7 @@ class AnalyticsDataService {
       final existing = cleaned[canonical];
       if (existing != null) {
         existing.merge(entry);
-      } else if (!blocked.contains(canonical) && !canonical.isInvalid) {
+      } else if (!blocked.containsKey(canonical) && !canonical.isInvalid) {
         cleaned[canonical] = entry;
       }
     }
@@ -437,7 +436,7 @@ class AnalyticsDataService {
         .where(
           (c) =>
               c.constructType == type &&
-              !blocked.contains(c.identifier) &&
+              !blocked.containsKey(c.identifier) &&
               c.identifier.category != 'other',
         )
         .toList();
@@ -486,12 +485,11 @@ class AnalyticsDataService {
     _invalidateCaches();
     await _ensureInitialized();
 
-    final blocked = blockedConstructs;
     final newUnusedConstructs = updateIds
         .where((id) => !hasUsedConstruct(id))
         .toSet();
 
-    _mergeTable.addConstructsByUses(addedConstructs, blocked);
+    _mergeTable.addConstructsByUses(addedConstructs);
     await _analyticsClientGetter.database.updateLocalAnalytics(
       addedConstructs,
       language,
@@ -588,9 +586,8 @@ class AnalyticsDataService {
     String language,
   ) async {
     _invalidateCaches();
-    final blocked = blockedConstructs;
     for (final event in events) {
-      _mergeTable.addConstructsByUses(event.content.uses, blocked);
+      _mergeTable.addConstructsByUses(event.content.uses);
     }
     await _analyticsClientGetter.database.updateServerAnalytics(
       events,
