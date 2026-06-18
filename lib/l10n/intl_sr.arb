@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-17 10:52:57.429776",
+    "@@last_modified": "2026-06-18 09:35:54.891213",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10988,6 +10988,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Nazad",
+    "viewCurrentOrFinished": "Pogledajte trenutne ili završene",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

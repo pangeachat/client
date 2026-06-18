@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-17 10:52:15.078398",
+    "@@last_modified": "2026-06-18 09:35:32.981317",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10196,6 +10196,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Geri",
+    "viewCurrentOrFinished": "Mevcut veya tamamlanmışı görüntüle",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

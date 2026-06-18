@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-17 10:52:34.831716",
+    "@@last_modified": "2026-06-18 09:35:41.482770",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10580,6 +10580,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "পিছনে",
+    "viewCurrentOrFinished": "বর্তমান বা সম্পন্ন দেখুন",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

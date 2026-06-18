@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-17 10:52:49.669199",
+    "@@last_modified": "2026-06-18 09:35:51.806388",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10984,6 +10984,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Reen",
+    "viewCurrentOrFinished": "Vidi aktualan aŭ finitan",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

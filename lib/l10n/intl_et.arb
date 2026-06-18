@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-17 10:51:27.140130",
+    "@@last_modified": "2026-06-18 09:34:25.378080",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9862,6 +9862,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Tagasi",
+    "viewCurrentOrFinished": "Vaata praeguseid või lõpetatud",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

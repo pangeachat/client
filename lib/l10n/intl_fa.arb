@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-17 10:52:36.813179",
+    "@@last_modified": "2026-06-18 09:35:42.589865",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9977,6 +9977,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "بازگشت",
+    "viewCurrentOrFinished": "مشاهده جاری یا تمام شده",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

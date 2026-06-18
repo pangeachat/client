@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-17 10:52:44.955906",
+    "@@last_modified": "2026-06-18 09:35:50.121318",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10733,6 +10733,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "戻る",
+    "viewCurrentOrFinished": "現在または終了したものを見る",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

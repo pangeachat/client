@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-17 10:51:50.298091",
+    "@@last_modified": "2026-06-18 09:35:23.890472",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9925,6 +9925,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Tilbake",
+    "viewCurrentOrFinished": "Se nåværende eller fullførte",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

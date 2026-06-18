@@ -2776,7 +2776,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-06-17 10:51:58.941042",
+    "@@last_modified": "2026-06-18 09:35:27.623475",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10941,6 +10941,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Voltar",
+    "viewCurrentOrFinished": "Ver atual ou finalizado",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

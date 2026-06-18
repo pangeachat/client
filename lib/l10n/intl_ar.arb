@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-06-17 10:52:10.445163",
+    "@@last_modified": "2026-06-18 09:35:31.891232",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10205,6 +10205,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "عودة",
+    "viewCurrentOrFinished": "عرض الحالي أو المنتهي",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

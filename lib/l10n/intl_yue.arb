@@ -1406,7 +1406,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-06-17 10:51:32.936393",
+    "@@last_modified": "2026-06-18 09:34:28.035443",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10996,6 +10996,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "返回",
+    "viewCurrentOrFinished": "查看當前或已完成",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

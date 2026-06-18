@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-17 10:51:21.568035",
+    "@@last_modified": "2026-06-18 09:34:23.757627",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9865,6 +9865,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Atzera",
+    "viewCurrentOrFinished": "Ikusi unean edo amaituta",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

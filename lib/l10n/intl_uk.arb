@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-17 10:51:45.666434",
+    "@@last_modified": "2026-06-18 09:34:29.720478",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9865,6 +9865,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Назад",
+    "viewCurrentOrFinished": "Переглянути поточні або завершені",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

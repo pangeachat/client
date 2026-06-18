@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-06-17 10:50:53.028479",
+    "@@last_modified": "2026-06-18 09:34:11.312335",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7959,6 +7959,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Atrás",
+    "viewCurrentOrFinished": "Ver actual o finalizado",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }
