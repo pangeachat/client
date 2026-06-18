@@ -69,6 +69,27 @@ abstract class LegacyRedirects {
         segments[2].startsWith('!')) {
       return _toCourseWorkspace(uri, segments[1], segments[2]);
     }
+    // Deep course-management pages are FLAT pushes on the `course` token:
+    // /courses/:spaceid/<page> → ?m=course:spaceid&left=course:<page> (edit,
+    // invite, access, permissions, emotes, addcourse). The 3rd segment is a
+    // literal page (not a `!room`, handled above). The legacy `/details` shim is
+    // stripped: bare `/details` → the card; `/details/<page>` → the page. The
+    // Completer-carrying `addcourse/:courseId` flow (4 segs, not `details`) is
+    // left route-driven, so it falls through. See `world-v2-architecture`.
+    if (segments.length == 3 &&
+        segments.first == 'courses' &&
+        segments[1].startsWith('!') &&
+        !segments[2].startsWith('!')) {
+      return segments[2] == 'details'
+          ? _toCourseWorkspace(uri, segments[1], null)
+          : _toCourseWorkspaceWithPage(uri, segments[1], segments[2]);
+    }
+    if (segments.length == 4 &&
+        segments.first == 'courses' &&
+        segments[1].startsWith('!') &&
+        segments[2] == 'details') {
+      return _toCourseWorkspaceWithPage(uri, segments[1], segments[3]);
+    }
     // The add-course wizard's first step renders as a left-column panel; rewrite
     // its literal path to the `addcourse` token, preserving the flow's query
     // (lang/showAll). Deeper steps (/courses/own/:courseid …) stay route-driven.
@@ -184,6 +205,35 @@ abstract class LegacyRedirects {
       left.removeWhere((e) => e == 'room' || e.startsWith('room:'));
       left.add(PanelToken('room', room).encode());
     }
+
+    final query = <String>[
+      'm=${PanelToken('course', space).encode()}',
+      'left=${left.join(',')}',
+      ...parts,
+    ];
+    return '/?${query.join('&')}';
+  }
+
+  /// Like [_toCourseWorkspace] but for a deep course-management PAGE: the course
+  /// token carries the page as its param (`course:<page>`, a flat push), over the
+  /// `?m=course:<space>` filter. Any prior `course`/`course:*` token is replaced
+  /// (the page IS the course panel now); other left tokens and query are kept.
+  static String _toCourseWorkspaceWithPage(Uri uri, String space, String page) {
+    final parts = uri.query.isEmpty ? <String>[] : uri.query.split('&');
+    var leftValue = '';
+    final li = parts.indexWhere((p) => p == 'left' || p.startsWith('left='));
+    if (li >= 0) {
+      final eq = parts[li].indexOf('=');
+      leftValue = eq >= 0 ? parts[li].substring(eq + 1) : '';
+      parts.removeAt(li);
+    }
+    parts.removeWhere((p) => p == 'm' || p.startsWith('m='));
+
+    final left = leftValue
+        .split(',')
+        .where((e) => e.isNotEmpty && e != 'course' && !e.startsWith('course:'))
+        .toList();
+    left.add(PanelToken('course', page).encode());
 
     final query = <String>[
       'm=${PanelToken('course', space).encode()}',
