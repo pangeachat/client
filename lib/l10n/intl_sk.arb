@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-06-17 10:51:08.335906",
+    "@@last_modified": "2026-06-18 09:34:17.410181",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10981,6 +10981,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Späť",
+    "viewCurrentOrFinished": "Zobraziť aktuálne alebo dokončené",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

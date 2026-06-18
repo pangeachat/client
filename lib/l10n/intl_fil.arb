@@ -2257,7 +2257,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-06-17 10:52:06.555887",
+    "@@last_modified": "2026-06-18 09:35:30.346598",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10884,6 +10884,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Bumalik",
+    "viewCurrentOrFinished": "Tingnan ang kasalukuyan o natapos",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

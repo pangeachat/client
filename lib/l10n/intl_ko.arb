@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-17 10:50:50.784210",
+    "@@last_modified": "2026-06-18 09:34:09.795788",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10082,6 +10082,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "뒤로",
+    "viewCurrentOrFinished": "현재 또는 완료된 보기",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

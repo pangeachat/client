@@ -3377,7 +3377,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-06-17 10:51:56.624456",
+    "@@last_modified": "2026-06-18 09:35:26.726051",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10584,6 +10584,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "กลับ",
+    "viewCurrentOrFinished": "ดูปัจจุบันหรือเสร็จสิ้น",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

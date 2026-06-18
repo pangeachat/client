@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-06-17 10:51:12.774958",
+    "@@last_modified": "2026-06-18 09:34:19.355393",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10349,6 +10349,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Natrag",
+    "viewCurrentOrFinished": "Pogledajte trenutne ili završene",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

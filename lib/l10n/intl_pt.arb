@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-17 10:51:23.964663",
+    "@@last_modified": "2026-06-18 09:34:24.479254",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10983,6 +10983,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Voltar",
+    "viewCurrentOrFinished": "Ver atual ou finalizado",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

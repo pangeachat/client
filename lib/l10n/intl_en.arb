@@ -4850,6 +4850,8 @@
     "introChatDesc": "Anyone in the course can post.",
     "announcementsChatDesc": "Only course admins can post.",
     "activityActions": "Activity actions",
+    "back": "Back",
+    "viewCurrentOrFinished": "View current or finished",
     "proFeatures": "Pro features",
     "pronunciationTools": "Pronunciation tools",
     "audioTranscription": "AI audio transcription",

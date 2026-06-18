@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-06-17 10:52:32.663652",
+    "@@last_modified": "2026-06-18 09:35:39.900236",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9865,6 +9865,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "返回",
+    "viewCurrentOrFinished": "查看当前或已完成",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

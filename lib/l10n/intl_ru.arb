@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-17 10:52:52.549644",
+    "@@last_modified": "2026-06-18 09:35:52.642076",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10879,6 +10879,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Назад",
+    "viewCurrentOrFinished": "Просмотреть текущие или завершенные",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

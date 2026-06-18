@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-17 10:51:06.452652",
+    "@@last_modified": "2026-06-18 09:34:16.330789",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10690,6 +10690,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Înapoi",
+    "viewCurrentOrFinished": "Vizualizați curent sau finalizat",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

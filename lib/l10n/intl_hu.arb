@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-06-17 10:51:02.620226",
+    "@@last_modified": "2026-06-18 09:34:14.728048",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9992,6 +9992,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Vissza",
+    "viewCurrentOrFinished": "Aktuális vagy befejezett megtekintése",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

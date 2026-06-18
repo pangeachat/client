@@ -22,6 +22,8 @@ class ActivityParticipantList extends StatelessWidget {
   final bool Function(String)? isSelected;
   final bool Function(String)? isShimmering;
   final double Function(ActivityRoleModel?)? getOpacity;
+  final bool Function(String)? showStarsCard;
+  final Set<String> Function(String)? completedGoalsForRole;
 
   const ActivityParticipantList({
     super.key,
@@ -34,6 +36,8 @@ class ActivityParticipantList extends StatelessWidget {
     this.isSelected,
     this.isShimmering,
     this.getOpacity,
+    this.showStarsCard,
+    this.completedGoalsForRole,
   });
 
   @override
@@ -53,29 +57,10 @@ class ActivityParticipantList extends StatelessWidget {
           spacing: 12.0,
           mainAxisSize: MainAxisSize.min,
           children: [
-            LayoutBuilder(
-              builder: (context, constraints) {
-                const minItemWidth = 125.0;
-
-                final rows =
-                    (availableRoles.length /
-                            (constraints.maxWidth / minItemWidth))
-                        .ceil();
-
-                final entriesPerRow = (availableRoles.length / rows).ceil();
-
-                return Column(
-                  spacing: 8.0,
-                  children: List.generate(rows, (rowIndex) {
-                    final entries = availableRoles
-                        .skip(rowIndex * entriesPerRow)
-                        .take(entriesPerRow)
-                        .toList();
-
-                    return Row(
-                      spacing: 8.0,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: entries.map((availableRole) {
+            Row(
+              spacing: 8.0,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: availableRoles.map((availableRole) {
                         final selected = isSelected != null
                             ? isSelected!(availableRole.id)
                             : false;
@@ -106,6 +91,9 @@ class ActivityParticipantList extends StatelessWidget {
                             ? isShimmering!(availableRole.id)
                             : false;
 
+                        final starsMode = showStarsCard != null &&
+                            showStarsCard!(availableRole.id);
+
                         return Expanded(
                           child: ActivityParticipantIndicator(
                             name: availableRole.name,
@@ -121,13 +109,15 @@ class ActivityParticipantList extends StatelessWidget {
                             selectable: selectable,
                             shimmer: shimmering,
                             room: room,
+                            goals: starsMode
+                                ? availableRole.allGoals
+                                : null,
+                            completedGoalIds: starsMode
+                                ? completedGoalsForRole?.call(availableRole.id)
+                                : null,
                           ),
                         );
                       }).toList(),
-                    );
-                  }),
-                );
-              },
             ),
             Wrap(
               alignment: WrapAlignment.center,

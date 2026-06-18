@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-06-17 10:53:00.798156",
+    "@@last_modified": "2026-06-18 09:35:56.873556",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10262,6 +10262,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Retour",
+    "viewCurrentOrFinished": "Voir en cours ou terminé",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

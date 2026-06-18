@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-17 10:52:24.735128",
+    "@@last_modified": "2026-06-18 09:35:35.945591",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6948,6 +6948,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Quay lại",
+    "viewCurrentOrFinished": "Xem hiện tại hoặc đã hoàn thành",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

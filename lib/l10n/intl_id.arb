@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-17 10:51:04.537936",
+    "@@last_modified": "2026-06-18 09:34:15.472313",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9962,6 +9962,16 @@
         "placeholders": {}
     },
     "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Kembali",
+    "viewCurrentOrFinished": "Lihat yang sedang berlangsung atau selesai",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }
