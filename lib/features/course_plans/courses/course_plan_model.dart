@@ -13,7 +13,35 @@ import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-/// Represents a course plan in the course planner response.
+/// A course-shape model the picker (`NewCoursePage`) and the
+/// `SelectedCourseView` detail render from. Originally written against the v1
+/// ``course-plans`` collection.
+///
+/// **v3 catalog status.** The v3 read paths (`QuestRepo.outline`,
+/// `QuestRepo.questPins`, `QuestRepo.activity`) have replaced this model's
+/// v1-only fan-out (`topicIds` → topics → locations → activities → media). The
+/// picker now also receives v3 rows via [QuestPlansRepo.searchByFilter] as
+/// **synthesized** `CoursePlanModel`s that carry id + display fields only —
+/// `topicIds` is a placeholder list (`'quest:<id>:mission:<i>'`) sized to the
+/// quest's mission count so the "N modules" chip reads correctly, and
+/// `mediaIds` is empty.
+///
+/// The v1 methods on this class — [topicListComplete], [loadedTopics],
+/// [activityIDs], [fetchTopics], [mediaListComplete], [loadedMediaUrls],
+/// [fetchMediaUrls], [imageUrl] — query the v1 cms collections directly and
+/// **do not work on quest-synthesized instances** (the placeholder topic ids
+/// never resolve). New consumers should either:
+///
+/// - go through the v3 path (`QuestRepo.outline(uuid)` for the full
+///   per-mission activity grouping; `QuestRepo.questPins(uuid)` for the world
+///   map pin list); or
+/// - read only the carrying fields below (`uuid`, `title`, `description`,
+///   `targetLanguage`, `languageOfInstructions`, `cefrLevel`) which both v1
+///   and synthesized-v3 instances populate consistently.
+///
+/// `CoursePlanProvider.loadTopics` already short-circuits when it detects a
+/// quest-synthesized model (placeholder `topicIds` starting with `quest:`),
+/// so v1 consumers running through that mixin keep working without checking.
 class CoursePlanModel {
   final String uuid;
 
@@ -93,8 +121,10 @@ class CoursePlanModel {
     };
   }
 
+  @Deprecated('v1-only. Use QuestRepo.outline(uuid) for the v3 per-mission grouping.')
   bool get topicListComplete => topicIds.length == loadedTopics.length;
 
+  @Deprecated('v1-only. Use QuestRepo.outline(uuid) for the v3 per-mission grouping.')
   Map<String, CourseTopicModel> get loadedTopics => CourseTopicRepo.getCached(
     TranslateTopicRequest(
       topicIds: topicIds,
@@ -102,9 +132,11 @@ class CoursePlanModel {
     ),
   ).topics;
 
+  @Deprecated('v1-only. Use QuestRepo.outline(uuid) and read its groups instead.')
   Set<String> get activityIDs =>
       loadedTopics.values.expand((topic) => topic.activityIds).toSet();
 
+  @Deprecated('v1-only. Quest-synthesized models do not need this; QuestRepo.outline fetches missions + activities.')
   Future<Map<String, CourseTopicModel>> fetchTopics() async {
     final resp = await CourseTopicRepo.get(
       TranslateTopicRequest(
@@ -116,14 +148,22 @@ class CoursePlanModel {
     return resp.topics;
   }
 
+  @Deprecated('v1-only. v3 quests carry no course-level media; activity media lives on `plan.media[]` and is resolved via ActivityMediaRepo.')
   bool get mediaListComplete =>
       mediaIds.length == loadedMediaUrls.mediaUrls.length;
+
+  @Deprecated('v1-only. v3 quests carry no course-level media; activity media lives on `plan.media[]` and is resolved via ActivityMediaRepo.')
   CourseMediaResponse get loadedMediaUrls => CourseMediaRepo.getCached(
     CourseInfoBatchRequest(batchId: uuid, uuids: mediaIds),
   );
+
+  @Deprecated('v1-only. v3 quests carry no course-level media; activity media lives on `plan.media[]` and is resolved via ActivityMediaRepo.')
   Future<CourseMediaResponse> fetchMediaUrls() => CourseMediaRepo.get(
     CourseInfoBatchRequest(batchId: uuid, uuids: mediaIds),
   );
+
+  /// Picker thumbnail. Returns null for v3 quest-synthesized models (no
+  /// course-level media). Card UI falls back to an avatar with initials.
   Uri? get imageUrl {
     if (loadedMediaUrls.mediaUrls.isEmpty) {
       return loadedTopics.values
