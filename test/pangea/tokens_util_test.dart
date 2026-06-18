@@ -160,7 +160,7 @@ void main() {
     });
 
     test(
-      'Bangla + supplementary-plane emoji: every word + the emoji tappable',
+      'Bengali + supplementary-plane emoji: every word + the emoji tappable',
       () {
         const transcript = 'ঠিক আছে, kelrap; আমি এখানেই আছি 😄';
         final tokens = [

@@ -9,6 +9,7 @@ import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_builder.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_disambiguation.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
+import 'package:fluffychat/pangea/subscription/widgets/subscription_paywall.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -164,10 +165,10 @@ class _PhoneticTranscriptionWidgetState
                                   context,
                                 ).subscribeToUnlockTranscriptions,
                                 onTap: () {
-                                  MatrixState
-                                      .pangeaController
-                                      .subscriptionController
-                                      .showPaywall(context);
+                                  SubscriptionPaywall.show(
+                                    context,
+                                    userID: Matrix.of(context).client.userID,
+                                  );
                                 },
                               )
                             : ErrorIndicator(

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-15 09:46:35.572217",
+    "@@last_modified": "2026-06-18 09:35:32.981317",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10161,6 +10161,51 @@
     },
     "activityActions": "Etkinlik eylemleri",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Pro özellikler",
+    "pronunciationTools": "Telaffuz araçları",
+    "audioTranscription": "Yapay zeka ses transkripsiyonu",
+    "visualLearnerSupport": "Görsel öğrenici desteği",
+    "instantWritingTranslation": "Anlık yazılı çeviri",
+    "personalizedPracticeExercises": "Kişiselleştirilmiş pratik egzersizler",
+    "vocabularyFlashcards": "Kelime kartları",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Geri",
+    "viewCurrentOrFinished": "Mevcut veya tamamlanmışı görüntüle",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

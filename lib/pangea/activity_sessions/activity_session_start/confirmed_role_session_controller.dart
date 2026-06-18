@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
@@ -17,11 +18,13 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class ConfirmedRoleSession extends StatefulWidget {
   final Room room;
   final Room? course;
   final String activityId;
+  final ActivityPlanModel? activity;
   final ActivitySessionStartState controller;
 
   const ConfirmedRoleSession({
@@ -30,6 +33,7 @@ class ConfirmedRoleSession extends StatefulWidget {
     required this.activityId,
     required this.controller,
     this.course,
+    this.activity,
   });
 
   @override
@@ -39,13 +43,19 @@ class ConfirmedRoleSession extends StatefulWidget {
 
 class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
     implements ActivitySessionStateController {
-  ConfirmedRoleSessionController();
-
   Timer? _pingCooldown;
+  final _goalsHandler = GoalsSubscriptionHandler();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _goalsHandler.init(widget.room.id, context, setState, () => mounted);
+  }
 
   @override
   void dispose() {
     _pingCooldown?.cancel();
+    _goalsHandler.cancel();
     super.dispose();
   }
 
@@ -58,6 +68,28 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
       L10n.of(context).waitingToFillRole(widget.room.numRemainingRoles);
 
   @override
+  bool get goalsStartCollapsed => true;
+
+  @override
+  List<ActivityRoleGoal>? get selectedRoleGoals {
+    final roleId = widget.room.ownRoleState?.id;
+    if (roleId == null) return null;
+    return widget.activity?.roles[roleId]?.allGoals;
+  }
+
+  @override
+  Set<String> get selectedRoleCompletedGoalIds {
+    final roleId = widget.room.ownRoleState?.id;
+    if (roleId == null) return {};
+    return _goalsHandler.scan(
+      roleId,
+      Matrix.of(context).client,
+      activityId: widget.activityId,
+      activity: widget.activity,
+    );
+  }
+
+  @override
   bool isRoleSelected(String id) => widget.room.ownRoleState?.id == id;
 
   @override
@@ -68,6 +100,21 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
 
   @override
   void selectRole(String id) {}
+
+  @override
+  bool showStarsCard(String id) => false;
+
+  @override
+  double get roleCardOpacity => 1.0;
+
+  @override
+  bool get showRoleCards => true;
+
+  @override
+  bool get showDescriptionSection => true;
+
+  @override
+  Set<String> completedGoalIdsForRole(String id) => {};
 
   Future<bool> get canPingParticipants async {
     final course = widget.course;

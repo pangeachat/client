@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-15 09:46:42.455662",
+    "@@last_modified": "2026-06-18 09:35:41.482770",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10545,6 +10545,51 @@
     },
     "activityActions": "কার্যকলাপের কার্যক্রম",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "প্রো ফিচারসমূহ",
+    "pronunciationTools": "উচ্চারণের সরঞ্জাম",
+    "audioTranscription": "এআই অডিও ট্রান্সক্রিপশন",
+    "visualLearnerSupport": "ভিজ্যুয়াল লার্নার সাপোর্ট",
+    "instantWritingTranslation": "তাত্ক্ষণিক লেখার অনুবাদ",
+    "personalizedPracticeExercises": "ব্যক্তিগতকৃত অনুশীলন কার্যক্রম",
+    "vocabularyFlashcards": "শব্দভাণ্ডার ফ্ল্যাশকার্ড",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "পিছনে",
+    "viewCurrentOrFinished": "বর্তমান বা সম্পন্ন দেখুন",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

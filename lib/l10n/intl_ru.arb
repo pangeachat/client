@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-15 09:46:49.938147",
+    "@@last_modified": "2026-06-18 09:35:52.642076",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10844,6 +10844,51 @@
     },
     "activityActions": "Действия активности",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Профессиональные функции",
+    "pronunciationTools": "Инструменты произношения",
+    "audioTranscription": "AI транскрипция аудио",
+    "visualLearnerSupport": "Поддержка визуальных учащихся",
+    "instantWritingTranslation": "Мгновенный перевод написанного",
+    "personalizedPracticeExercises": "Персонализированные практические упражнения",
+    "vocabularyFlashcards": "Карточки со словарным запасом",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Назад",
+    "viewCurrentOrFinished": "Просмотреть текущие или завершенные",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

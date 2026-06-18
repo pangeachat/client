@@ -3245,7 +3245,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-06-15 09:46:37.152751",
+    "@@last_modified": "2026-06-18 09:35:34.862247",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10716,6 +10716,51 @@
     },
     "activityActions": "Veiklos veiksmai",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Profesionalios funkcijos",
+    "pronunciationTools": "Tariamojo įrankiai",
+    "audioTranscription": "AI garso transkripcija",
+    "visualLearnerSupport": "Vizualių mokinių palaikymas",
+    "instantWritingTranslation": "Momentinė rašymo vertimas",
+    "personalizedPracticeExercises": "Pritaikyti praktikos pratimai",
+    "vocabularyFlashcards": "Žodyno kortelės",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Atgal",
+    "viewCurrentOrFinished": "Peržiūrėti dabartinius arba baigtus",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

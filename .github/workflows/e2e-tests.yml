@@ -101,12 +101,12 @@ jobs:
         run: |
           MODE="${{ steps.mode.outputs.mode }}"
           if [[ "$MODE" == "smoke" ]]; then
-            echo "files=e2e/scripts/login.spec.ts" >> $GITHUB_OUTPUT
+            echo "files=e2e/scripts/login-logout.spec.ts" >> $GITHUB_OUTPUT
           elif [[ "$MODE" == "full" ]]; then
             echo "files=e2e/scripts/" >> $GITHUB_OUTPUT
           else
             FILES=$(node e2e/select-tests.js HEAD~1)
-            echo "files=${FILES:-e2e/scripts/login.spec.ts}" >> $GITHUB_OUTPUT
+            echo "files=${FILES:-e2e/scripts/login-logout.spec.ts}" >> $GITHUB_OUTPUT
           fi
 
       - name: Run Playwright tests

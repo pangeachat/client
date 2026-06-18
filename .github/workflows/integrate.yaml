@@ -10,6 +10,7 @@ permissions:
 jobs:
   code_tests:
     runs-on: ubuntu-latest
+    environment: staging
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: ./scripts/generate-locale-config.sh
@@ -31,7 +32,8 @@ jobs:
       - name: Add Firebase Messaging
         run: ./scripts/add-firebase-messaging.sh
       - run: flutter analyze
-      - run: flutter test
+      - run: flutter test --dart-define=TEST_MATRIX_USERNAME=${{ vars.TEST_MATRIX_USERNAME }} --dart-define=TEST_MATRIX_PASSWORD=${{ vars.TEST_MATRIX_PASSWORD }}
+      
 
   build_debug_apk:
     runs-on: ubuntu-latest

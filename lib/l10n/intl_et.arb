@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-15 09:46:22.378274",
+    "@@last_modified": "2026-06-18 09:34:25.378080",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9827,6 +9827,51 @@
     },
     "activityActions": "Tegevuse toimingud",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Pro funktsioonid",
+    "pronunciationTools": "Hääldustööriistad",
+    "audioTranscription": "AI helisalvestus",
+    "visualLearnerSupport": "Visuaalse õppija tugi",
+    "instantWritingTranslation": "Kohene kirjutamise tõlge",
+    "personalizedPracticeExercises": "Isikupärastatud harjutused",
+    "vocabularyFlashcards": "Sõnavara mälukaardid",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Tagasi",
+    "viewCurrentOrFinished": "Vaata praeguseid või lõpetatud",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

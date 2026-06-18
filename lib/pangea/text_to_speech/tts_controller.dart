@@ -367,9 +367,11 @@ class TtsController {
         langCode,
         isWeb: kIsWeb,
       );
-      final isSubscribed =
-          MatrixState.pangeaController.subscriptionController.isSubscribed ==
-          true;
+
+      final isSubscribed = MatrixState
+          .pangeaController
+          .subscriptionController
+          .showSubscriptionGatedContent;
 
       // Routing gate (see word-text-to-speech.instructions.md): a phoneme
       // override needs backend; else device when it has a known-good voice;

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-06-15 09:46:17.006808",
+    "@@last_modified": "2026-06-18 09:34:19.355393",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10314,6 +10314,51 @@
     },
     "activityActions": "Akcije aktivnosti",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Pro značajke",
+    "pronunciationTools": "Alati za izgovor",
+    "audioTranscription": "AI transkripcija zvuka",
+    "visualLearnerSupport": "Podrška za vizualne učenike",
+    "instantWritingTranslation": "Instantna prijevod pisanja",
+    "personalizedPracticeExercises": "Personalizirane vježbe",
+    "vocabularyFlashcards": "Rječničke kartice",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Natrag",
+    "viewCurrentOrFinished": "Pogledajte trenutne ili završene",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

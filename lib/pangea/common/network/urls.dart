@@ -85,4 +85,12 @@ class PApiUrls {
       "${PApiUrls._subscriptionEndpoint}/free_trial";
 
   static String rcSubscription = PApiUrls._subscriptionEndpoint;
+
+  static String validatePromoCode =
+      "${PApiUrls._subscriptionEndpoint}/validate_promo_code";
+
+  static String paymentHistory = "${PApiUrls._subscriptionEndpoint}/history";
+
+  static String billingPortal =
+      "${PApiUrls._subscriptionEndpoint}/billing_portal";
 }

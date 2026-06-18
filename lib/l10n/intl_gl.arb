@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-06-15 09:46:10.483078",
+    "@@last_modified": "2026-06-18 09:34:12.150605",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9830,6 +9830,51 @@
     },
     "activityActions": "Accións de actividade",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Funcións Pro",
+    "pronunciationTools": "Ferramentas de pronunciación",
+    "audioTranscription": "Transcrición de audio por IA",
+    "visualLearnerSupport": "Soporte para aprendices visuais",
+    "instantWritingTranslation": "Traducción instantánea de escritura",
+    "personalizedPracticeExercises": "Exercicios de práctica personalizados",
+    "vocabularyFlashcards": "Tarxetas de vocabulario",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Volver",
+    "viewCurrentOrFinished": "Ver actual ou rematado",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

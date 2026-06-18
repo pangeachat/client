@@ -4,10 +4,13 @@
       "lib/pangea/login/**",
       "lib/pages/login/**",
       "lib/config/routes.dart",
+      "lib/widgets/matrix.dart",
+      "lib/pages/settings/**",
+      "lib/pangea/login/**",
       "lib/widgets/matrix.dart"
     ],
-    "web": "e2e/scripts/login.spec.ts",
-    "mobile": "integration_test/patrol/login_test.dart"
+    "web": "e2e/scripts/login-logout.spec.ts",
+    "mobile": "integration_test/patrol/login_logout_test.dart"
   },
   "course-chat-navigation": {
     "globs": [
@@ -37,15 +40,6 @@
       "lib/pangea/analytics_misc/**"
     ],
     "web": "e2e/scripts/analytics.spec.ts",
-    "mobile": null
-  },
-  "logout": {
-    "globs": [
-      "lib/pages/settings/**",
-      "lib/pangea/login/**",
-      "lib/widgets/matrix.dart"
-    ],
-    "web": "e2e/scripts/logout.spec.ts",
     "mobile": null
   },
   "permissions": {

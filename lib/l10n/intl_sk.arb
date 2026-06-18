@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-06-15 09:46:15.511796",
+    "@@last_modified": "2026-06-18 09:34:17.410181",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10946,6 +10946,51 @@
     },
     "activityActions": "Akcie aktivity",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Profesionálne funkcie",
+    "pronunciationTools": "Nástroje na výslovnosť",
+    "audioTranscription": "AI prepis zvuku",
+    "visualLearnerSupport": "Podpora vizuálnych žiakov",
+    "instantWritingTranslation": "Okamžitý preklad písania",
+    "personalizedPracticeExercises": "Personalizované cvičenia",
+    "vocabularyFlashcards": "Slovné kartičky",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Späť",
+    "viewCurrentOrFinished": "Zobraziť aktuálne alebo dokončené",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

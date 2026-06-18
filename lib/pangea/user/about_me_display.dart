@@ -24,13 +24,19 @@ class AboutMeDisplay extends StatelessWidget {
         ),
         builder: (context, snapshot) => snapshot.data?.about == null
             ? const SizedBox.shrink()
-            : Padding(
+            : Container(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
-                  snapshot.data!.about!,
-                  style: TextStyle(fontSize: textSize),
-                  maxLines: 10,
-                  overflow: TextOverflow.ellipsis,
+                constraints: BoxConstraints(maxHeight: 100),
+                child: SingleChildScrollView(
+                  child: Row(
+                    children: [
+                      Text(
+                        snapshot.data!.about!,
+                        style: TextStyle(fontSize: textSize),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
                 ),
               ),
       ),

@@ -3193,7 +3193,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-15 09:46:40.576610",
+    "@@last_modified": "2026-06-18 09:35:39.019351",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9502,6 +9502,51 @@
     },
     "activityActions": "Aktioner för aktivitet",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Pro features",
+    "pronunciationTools": "Tukang sebutan",
+    "audioTranscription": "Transkripsi audio AI",
+    "visualLearnerSupport": "Dukungan pembelajar visual",
+    "instantWritingTranslation": "Terjemahan tulisan instan",
+    "personalizedPracticeExercises": "Latihan praktik yang dipersonalisasi",
+    "vocabularyFlashcards": "Kartu flash kosakata",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Geri",
+    "viewCurrentOrFinished": "Mezkur ya da tamamlanmışı görüntüle",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

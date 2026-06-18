@@ -139,7 +139,7 @@ void main() {
     },
   );
 
-  testWidgets('Bangla + emoji: tapping the emoji fires the emoji token', (
+  testWidgets('Bengali + emoji: tapping the emoji fires the emoji token', (
     tester,
   ) async {
     const transcript = 'আমি এখানেই আছি 😄';
