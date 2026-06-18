@@ -10,7 +10,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/routes/courses/cefr_level_match.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
-import 'package:fluffychat/routes/courses/course_topic_list_widget.dart';
+import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/preview/public_course_preview.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -183,7 +183,13 @@ class PublicCoursePreviewView extends StatelessWidget {
                               );
                             }
 
-                            return CourseTopicList(course: course);
+                            // world_v2: render the plan from the v3 quest
+                            // outline (read-only preview, no room). shrinkWrap:
+                            // embedded in the page's outer scroll view.
+                            return CourseObjectivesList(
+                              questId: course.uuid,
+                              shrinkWrap: true,
+                            );
                           },
                         ),
                       ),

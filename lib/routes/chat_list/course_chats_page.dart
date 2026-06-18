@@ -128,7 +128,9 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     if (discoveredChildren == null) return {};
     final Map<String, List<ExtendedSpaceRoomsChunk>> sessionsMap = {};
 
-    final validIDs = course?.activityIDs ?? {};
+    // world_v2: the discovered children are already scoped to this course
+    // space, so any activity-session room here is a course activity — there is
+    // no v1 course-plan activity-id set to filter against anymore.
     for (final chunk in discoveredChildren!) {
       if (chunk.roomType?.startsWith(PangeaRoomTypes.activitySession) != true) {
         continue;
@@ -143,10 +145,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
       final roles = summary.activityRoles;
       final users = summary.joinedUsersWithRoles;
 
-      if (activity == null ||
-          roles == null ||
-          users.isEmpty ||
-          !validIDs.contains(activity.activityId)) {
+      if (activity == null || roles == null || users.isEmpty) {
         continue;
       }
 
@@ -236,9 +235,6 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
             loadCourse(space.coursePlan!.uuid),
         ];
         await Future.wait(futures);
-        if (mounted) {
-          await loadTopics();
-        }
       }
     } catch (e, s) {
       Logs().w('Unable to load hierarchy', e, s);

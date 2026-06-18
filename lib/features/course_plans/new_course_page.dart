@@ -10,7 +10,6 @@ import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/course_plans/courses/course_filter.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_client_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
-import 'package:fluffychat/features/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
@@ -149,41 +148,24 @@ class NewCoursePageState extends State<NewCoursePage> {
 
   Future<void> _fetchAndAppend(int generation) async {
     try {
-      // Fan v1 course-plans and v3 quest-plans in parallel — same filter,
-      // same page. The picker model is [CoursePlanModel]; v3 rows are
-      // adapted by [QuestPlansRepo] into synthesized [CoursePlanModel]s
-      // so the existing card / chip / detail UI renders both transparently.
-      // A quest's id (its uuid) is shared with the room's
-      // `pangea.course_plan` state event, which is how the Course Plan
-      // tab + world map already light up after room creation.
-      final coursesFuture = CoursePlansRepo.searchByFilter(
+      // world_v2: the picker lists v3 quest-plans only — the v1 course-plans
+      // collection is retired. [QuestPlansRepo] adapts each quest into a
+      // synthesized [CoursePlanModel] so the existing card / chip / detail UI
+      // renders it; the quest's uuid is shared with the room's
+      // `pangea.course_plan` state event, lighting up the Course Plan tab and
+      // world map after creation.
+      final questsResp = await QuestPlansRepo.searchByFilter(
         filter: _filter,
         page: _currentPage,
       );
-      final questsFuture = QuestPlansRepo.searchByFilter(
-        filter: _filter,
-        page: _currentPage,
-      );
-      final coursesResp = await coursesFuture;
-      final questsResp = await questsFuture;
       if (!mounted || _loadGeneration != generation) return;
-      final merged = [
-        ...coursesResp.coursePlans.values,
-        ...questsResp.quests,
-      ];
-      // De-dupe by uuid so a row that ever ends up in both collections
-      // (id-spaces are shared) only shows once.
-      final byUuid = <String, CoursePlanModel>{};
-      for (final c in merged) {
-        byUuid.putIfAbsent(c.uuid, () => c);
-      }
-      final sortedCoursePlans = byUuid.values.toList().sorted(
+      final sorted = questsResp.quests.sorted(
         (a, b) => LanguageLevelTypeEnum.values
             .indexOf(a.cefrLevel)
             .compareTo(LanguageLevelTypeEnum.values.indexOf(b.cefrLevel)),
       );
-      _accumulatedCourses = [..._accumulatedCourses, ...sortedCoursePlans];
-      _fullyLoaded = !coursesResp.hasNextPage && !questsResp.hasNextPage;
+      _accumulatedCourses = [..._accumulatedCourses, ...sorted];
+      _fullyLoaded = !questsResp.hasNextPage;
       _currentPage++;
       _courses.value = Result.value(_accumulatedCourses);
     } catch (e, s) {

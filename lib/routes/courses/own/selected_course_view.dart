@@ -6,7 +6,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/routes/courses/cefr_level_match.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
-import 'package:fluffychat/routes/courses/course_topic_list_widget.dart';
+import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/own/selected_course_page.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -155,7 +155,14 @@ class SelectedCourseView extends StatelessWidget {
                                 );
                               }
 
-                              return CourseTopicList(course: course);
+                              // world_v2: all courses are v3 quests — render the
+                              // plan from the quest outline (no room yet, so a
+                              // read-only preview). shrinkWrap: this sits inside
+                              // the page's outer ListView. See routing.instructions.md.
+                              return CourseObjectivesList(
+                                questId: course.uuid,
+                                shrinkWrap: true,
+                              );
                             },
                           ),
                         ),

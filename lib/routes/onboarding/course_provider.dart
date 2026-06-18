@@ -2,9 +2,8 @@ import 'package:async/async.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
-import 'package:fluffychat/features/course_plans/courses/course_plans_repo.dart';
-import 'package:fluffychat/features/course_plans/courses/get_localized_courses_request.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
+import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/routes/onboarding/custom_course_repo.dart';
 import 'package:fluffychat/routes/onboarding/custom_course_request_model.dart';
@@ -50,11 +49,11 @@ class ClientCourseProvider implements CourseProvider {
   @override
   Future<CoursePlanModel> getCourseByRoomId(String roomId) async {
     final courseId = await client.getCourseIdByRoomId(roomId);
-    final request = GetLocalizedCoursesRequest(
-      coursePlanIds: [courseId],
-      l1: "en",
-    );
-    return CoursePlansRepo.get(request);
+    final quest = await QuestPlansRepo.get(courseId);
+    if (quest == null) {
+      throw Exception('No quest plan found for course $courseId');
+    }
+    return quest;
   }
 
   @override

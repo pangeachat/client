@@ -9,7 +9,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/course_settings_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/course_plans/courses/get_localized_courses_request.dart';
+import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
@@ -33,8 +33,6 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/matrix.dart';
-import '../../../features/course_plans/courses/course_plans_repo.dart';
 
 enum SpaceSettingsTabs {
   chat,
@@ -182,20 +180,15 @@ class SpaceDetailsContent extends StatelessWidget {
         icon: const Icon(Icons.lock_open_outlined, size: 30.0),
         onPressed: () async {
           int minActivities = 0;
-          final l1 = MatrixState.pangeaController.userController.userL1Code;
-          if (room.coursePlan != null && l1 != null) {
-            final request = GetLocalizedCoursesRequest(
-              coursePlanIds: [room.coursePlan!.uuid],
-              l1: l1,
-            );
-
+          if (room.coursePlan != null) {
+            // world_v2: the cap is the fewest activities in any mission of the
+            // v3 quest outline (replaces the v1 per-topic activity count).
             final resp = await showFutureLoadingDialog(
               context: context,
               future: () async {
-                final course = await CoursePlansRepo.get(request);
-                await course.fetchTopics();
-                return course.loadedTopics.values
-                    .map((t) => t.activityIds.length)
+                final outline = await QuestRepo.outline(room.coursePlan!.uuid);
+                return outline.groups
+                    .map((g) => g.activities.length)
                     .min;
               },
               showError: (e) => false,

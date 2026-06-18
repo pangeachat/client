@@ -5,12 +5,10 @@ import 'package:fluffychat/features/analytics_access/access_notice_extension.dar
 import 'package:fluffychat/features/analytics_access/course_settings_extension.dart';
 import 'package:fluffychat/features/analytics_access/grant_analytics_access_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/course_plans/courses/course_plans_repo.dart';
-import 'package:fluffychat/features/course_plans/courses/get_localized_courses_request.dart';
+import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class JoinResponse {
   final String roomId;
@@ -78,38 +76,20 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
     return room;
   }
 
-  Future<LanguageModel?> _getCourseLanguage(
-    String courseId,
-    String langCode,
-  ) async {
-    final request = GetLocalizedCoursesRequest(
-      coursePlanIds: [courseId],
-      l1: langCode,
-    );
-    final course = await CoursePlansRepo.get(request);
-    final targetLanguage = course.targetLanguage;
-    return PLanguageStore.byLangCode(targetLanguage);
+  Future<LanguageModel?> _getCourseLanguage(String courseId) async {
+    final course = await QuestPlansRepo.get(courseId);
+    final targetLanguage = course?.targetLanguage;
+    return targetLanguage == null
+        ? null
+        : PLanguageStore.byLangCode(targetLanguage);
   }
 
   Future<Map<String, LanguageModel?>> _getCourseLanguages(
     List<String> courseIds,
-    String langCode,
   ) async {
-    final request = GetLocalizedCoursesRequest(
-      coursePlanIds: courseIds,
-      l1: langCode,
-    );
-    final resp = await CoursePlansRepo.search(request);
-    final coursePlans = resp.coursePlans;
-    final Map<String, LanguageModel?> output = {};
+    final output = <String, LanguageModel?>{};
     for (final courseId in courseIds) {
-      final plan = coursePlans[courseId];
-      final targetLanguage = plan?.targetLanguage;
-      LanguageModel? languageModel;
-      if (targetLanguage != null) {
-        languageModel = PLanguageStore.byLangCode(targetLanguage);
-      }
-      output[courseId] = languageModel;
+      output[courseId] = await _getCourseLanguage(courseId);
     }
     return output;
   }
@@ -131,9 +111,7 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
         return;
       }
 
-      final userL1 =
-          MatrixState.pangeaController.userController.userL1Code ?? 'en';
-      final languageModel = await _getCourseLanguage(courseId, userL1);
+      final languageModel = await _getCourseLanguage(courseId);
       if (languageModel == null) {
         ErrorHandler.logError(
           e: "Failed to derive language model from course target language",
@@ -167,12 +145,8 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
             .map((r) => MapEntry(r.id, r.coursePlan!.uuid)),
       );
 
-      final userL1 =
-          MatrixState.pangeaController.userController.userL1Code ?? 'en';
-
       final languages = await _getCourseLanguages(
         roomIdToCourseId.values.toList(),
-        userL1,
       );
 
       final grantFutures = <Future>[];

@@ -8,9 +8,7 @@ import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
-import 'package:fluffychat/features/course_plans/courses/course_plans_repo.dart';
-import 'package:fluffychat/features/course_plans/courses/get_localized_courses_request.dart';
-import 'package:fluffychat/features/course_plans/courses/get_localized_courses_response.dart';
+import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -253,7 +251,7 @@ class FindCoursePageState extends State<FindCoursePage> {
       return;
     }
 
-    final searchResult = coursePlansResult.result!.coursePlans;
+    final searchResult = coursePlansResult.result!;
     for (final entry in searchResult.entries) {
       coursePlans[entry.key] = entry.value;
     }
@@ -271,17 +269,17 @@ class FindCoursePageState extends State<FindCoursePage> {
     }
   }
 
-  Future<Result<GetLocalizedCoursesResponse>> _requestCoursePlans(
+  Future<Result<Map<String, CoursePlanModel>>> _requestCoursePlans(
     List<String> courseIds,
   ) async {
     try {
-      final resp = await CoursePlansRepo.search(
-        GetLocalizedCoursesRequest(
-          coursePlanIds: courseIds,
-          l1: MatrixState.pangeaController.userController.userL1Code!,
-        ),
-      );
-      return Result.value(resp);
+      // world_v2: resolve each public-course id from the v3 quest-plans layer.
+      final plans = <String, CoursePlanModel>{};
+      for (final id in courseIds) {
+        final quest = await QuestPlansRepo.get(id);
+        if (quest != null) plans[id] = quest;
+      }
+      return Result.value(plans);
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'courseIds': courseIds});
       return Result.error(e);

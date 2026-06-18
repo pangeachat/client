@@ -77,7 +77,16 @@ class WorkspaceLeftPanel extends StatelessWidget {
   Widget _surface(BuildContext context, bool isColumnMode) {
     switch (token.type) {
       case 'chats':
-        return ChatList(activeChat: null, activeSpace: null);
+        // The chat list has no header of its own; give the panel a "Chats"
+        // title + close control at the top, matching the right column's card
+        // chrome. The X dismisses the list to the map (← when it folds over a
+        // sibling on narrow). See routing.instructions.md.
+        return Column(
+          children: [
+            _panelHeader(context, isColumnMode, L10n.of(context).chats),
+            Expanded(child: ChatList(activeChat: null, activeSpace: null)),
+          ],
+        );
       case 'room':
       // A completed-activity-session review renders as its actual locked chat,
       // identical to a live room (the lock is room-state, not token, driven).
@@ -201,6 +210,32 @@ class WorkspaceLeftPanel extends StatelessWidget {
       spaceId,
       page.split('/').first,
       _closeButton(context, isColumnMode),
+    );
+  }
+
+  /// A panel header row — the close/back control at the leading edge plus a
+  /// [title] — for section panels (the chat list) that carry no header of their
+  /// own, mirroring the right column's card chrome.
+  Widget _panelHeader(BuildContext context, bool isColumnMode, String title) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(4, 4, 4, 0),
+      child: Row(
+        children: [
+          _closeButton(context, isColumnMode),
+          const SizedBox(width: 4),
+          Expanded(
+            child: Text(
+              title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium
+                  ?.copyWith(fontWeight: FontWeight.w600),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

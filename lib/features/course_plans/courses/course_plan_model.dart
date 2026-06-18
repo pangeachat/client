@@ -1,17 +1,7 @@
-import 'package:collection/collection.dart';
-
-import 'package:fluffychat/features/course_plans/course_info_batch_request.dart';
-import 'package:fluffychat/features/course_plans/course_media/course_media_repo.dart';
-import 'package:fluffychat/features/course_plans/course_media/course_media_response.dart';
-import 'package:fluffychat/features/course_plans/course_topics/course_topic_model.dart';
-import 'package:fluffychat/features/course_plans/course_topics/course_topic_repo.dart';
-import 'package:fluffychat/features/course_plans/course_topics/course_topic_translation_request.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
-import 'package:fluffychat/pangea/common/network/media_url.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 /// A course-shape model the picker (`NewCoursePage`) and the
 /// `SelectedCourseView` detail render from. Originally written against the v1
@@ -121,56 +111,7 @@ class CoursePlanModel {
     };
   }
 
-  @Deprecated('v1-only. Use QuestRepo.outline(uuid) for the v3 per-mission grouping.')
-  bool get topicListComplete => topicIds.length == loadedTopics.length;
-
-  @Deprecated('v1-only. Use QuestRepo.outline(uuid) for the v3 per-mission grouping.')
-  Map<String, CourseTopicModel> get loadedTopics => CourseTopicRepo.getCached(
-    TranslateTopicRequest(
-      topicIds: topicIds,
-      l1: MatrixState.pangeaController.userController.userL1Code!,
-    ),
-  ).topics;
-
-  @Deprecated('v1-only. Use QuestRepo.outline(uuid) and read its groups instead.')
-  Set<String> get activityIDs =>
-      loadedTopics.values.expand((topic) => topic.activityIds).toSet();
-
-  @Deprecated('v1-only. Quest-synthesized models do not need this; QuestRepo.outline fetches missions + activities.')
-  Future<Map<String, CourseTopicModel>> fetchTopics() async {
-    final resp = await CourseTopicRepo.get(
-      TranslateTopicRequest(
-        topicIds: topicIds,
-        l1: MatrixState.pangeaController.userController.userL1Code!,
-      ),
-      uuid,
-    );
-    return resp.topics;
-  }
-
-  @Deprecated('v1-only. v3 quests carry no course-level media; activity media lives on `plan.media[]` and is resolved via ActivityMediaRepo.')
-  bool get mediaListComplete =>
-      mediaIds.length == loadedMediaUrls.mediaUrls.length;
-
-  @Deprecated('v1-only. v3 quests carry no course-level media; activity media lives on `plan.media[]` and is resolved via ActivityMediaRepo.')
-  CourseMediaResponse get loadedMediaUrls => CourseMediaRepo.getCached(
-    CourseInfoBatchRequest(batchId: uuid, uuids: mediaIds),
-  );
-
-  @Deprecated('v1-only. v3 quests carry no course-level media; activity media lives on `plan.media[]` and is resolved via ActivityMediaRepo.')
-  Future<CourseMediaResponse> fetchMediaUrls() => CourseMediaRepo.get(
-    CourseInfoBatchRequest(batchId: uuid, uuids: mediaIds),
-  );
-
-  /// Picker thumbnail. Returns null for v3 quest-synthesized models (no
-  /// course-level media). Card UI falls back to an avatar with initials.
-  Uri? get imageUrl {
-    if (loadedMediaUrls.mediaUrls.isEmpty) {
-      return loadedTopics.values
-          .lastWhereOrNull((topic) => topic.imageUrl != null)
-          ?.imageUrl;
-    }
-    final media = loadedMediaUrls.mediaUrls.first;
-    return resolveMediaUrl(media.mediumUrl ?? media.url);
-  }
+  /// Picker thumbnail. world_v2: courses are v3 quests with no course-level
+  /// media, so this is null and the card UI falls back to a letter avatar.
+  Uri? get imageUrl => null;
 }

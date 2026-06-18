@@ -16,8 +16,6 @@ import 'package:fluffychat/features/activity_sessions/activity_summary_response_
 import 'package:fluffychat/routes/chat/choreographer/igc/igc_request_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/igc_response_model.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
-import 'package:fluffychat/features/course_plans/course_topics/course_topic_translation_request.dart';
-import 'package:fluffychat/features/course_plans/course_topics/course_topic_translation_response.dart';
 import 'package:fluffychat/routes/onboarding/custom_course_request_model.dart';
 import 'package:fluffychat/routes/onboarding/custom_course_response_model.dart';
 import 'package:fluffychat/routes/chat/events/repo/language_detection_request.dart';
@@ -415,29 +413,6 @@ void main() {
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       GrammarConstructsResponse.fromJson(json);
-    });
-
-    test("Localize topic endpoint test", () async {
-      // Send mock request
-      final Map<String, dynamic> request = TranslateTopicRequest(
-        topicIds: [],
-        l1: "en",
-        mock: true,
-      ).toJson();
-
-      final Requests req = Requests(
-        choreoApiKey: apiKey,
-        accessToken: authToken,
-      );
-      final Response res = await req.post(
-        url: "$choreoApi/topics/localize",
-        body: request,
-      );
-
-      // Ensure mock response is valid and compatible with response model
-      assert(res.statusCode == 200);
-      final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
-      TranslateTopicResponse.fromJson(json);
     });
 
     test("Custom course endpoint test", () async {

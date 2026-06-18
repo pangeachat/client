@@ -9,7 +9,6 @@ import 'package:fluffychat/features/activity_sessions/activity_feedback_request.
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
-import 'package:fluffychat/features/course_plans/course_activities/course_activity_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
@@ -214,11 +213,6 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     if (resp.isError) {
       return;
     }
-
-    CourseActivityRepo.setSentFeedback(
-      widget.activityId,
-      MatrixState.pangeaController.userController.userL1Code!,
-    );
 
     await showDialog(
       context: context,

@@ -13,7 +13,7 @@
 /// forbids storing bytes) and an optional [thumbnailUrl].
 ///
 /// See `.github/.github/instructions/activities.instructions.md` (canonical
-/// media model) and `conversation-activities.instructions.md`.
+/// media model) and `activities.instructions.md`.
 class ActivityMediaBlock {
   /// `image` | `audio` | `video` | `youtube`.
   final String blockType;

@@ -370,7 +370,6 @@ class ChatDetailsController extends State<ChatDetails>
       setState(() {
         course = null;
         loadingCourse = false;
-        loadingTopics = false;
         loadingCourseInfo = false;
       });
       return;
@@ -378,9 +377,6 @@ class ChatDetailsController extends State<ChatDetails>
 
     if (mounted) setState(() => loadingCourseInfo = true);
     await loadCourse(room.coursePlan!.uuid);
-    if (course != null && mounted) {
-      await loadTopics();
-    }
     if (mounted) setState(() => loadingCourseInfo = false);
   }
 

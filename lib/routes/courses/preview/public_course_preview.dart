@@ -95,7 +95,7 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
     }
 
     if (roomSummary?.coursePlan != null) {
-      await loadCourse(roomSummary!.coursePlan!.uuid).then((_) => loadTopics());
+      await loadCourse(roomSummary!.coursePlan!.uuid);
     } else {
       ErrorHandler.logError(
         e: Exception("No course plan found in room summary"),

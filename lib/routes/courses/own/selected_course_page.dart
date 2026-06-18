@@ -35,14 +35,14 @@ class SelectedCourseController extends State<SelectedCourse>
   @override
   initState() {
     super.initState();
-    loadCourse(widget.courseId).then((_) => loadTopics());
+    loadCourse(widget.courseId);
   }
 
   @override
   void didUpdateWidget(covariant SelectedCourse oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.courseId != widget.courseId) {
-      loadCourse(widget.courseId).then((_) => loadTopics());
+      loadCourse(widget.courseId);
     }
   }
 

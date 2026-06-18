@@ -16,15 +16,32 @@ import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dar
 /// options. Objectives have no icons yet — a placeholder stands in.
 /// Tapping an activity opens it as a first-class world object (`/<uuid>`).
 class CourseObjectivesList extends StatefulWidget {
-  final Room room;
+  /// The course room, when shown inside a JOINED course (the card's Course Plan
+  /// tab). Null in a PREVIEW of an unjoined plan (SelectedCourse), where
+  /// [questId] is supplied directly and there is no completion / in-room
+  /// activity context.
+  final Room? room;
+
+  /// The v3 quest id whose outline to render. Defaults to the room's
+  /// `coursePlan.uuid` when [room] is given; required when [room] is null.
+  final String? questId;
 
   /// Per-activity completion, e.g. `controller.roomSummariesModel
-  /// .hasCompletedActivity`.
-  final bool Function(String userId, String activityId) hasCompletedActivity;
+  /// .hasCompletedActivity`. Null in a preview → no completion overlay.
+  final bool Function(String userId, String activityId)? hasCompletedActivity;
+
+  /// Shrink-wrap the objective list instead of filling/scrolling its own
+  /// viewport. Set true when embedded inside another scroll view (the
+  /// SelectedCourse / preview pages place this inside an outer `ListView`);
+  /// leave false when given a bounded slot (the card's Course Plan tab uses an
+  /// `Expanded`).
+  final bool shrinkWrap;
 
   const CourseObjectivesList({
-    required this.room,
-    required this.hasCompletedActivity,
+    this.room,
+    this.questId,
+    this.hasCompletedActivity,
+    this.shrinkWrap = false,
     super.key,
   });
 
@@ -35,6 +52,8 @@ class CourseObjectivesList extends StatefulWidget {
 class _CourseObjectivesListState extends State<CourseObjectivesList> {
   late Future<List<QuestObjectiveGroup>> _groupsFuture;
 
+  String? get _questId => widget.questId ?? widget.room?.coursePlan?.uuid;
+
   @override
   void initState() {
     super.initState();
@@ -44,16 +63,18 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   @override
   void didUpdateWidget(covariant CourseObjectivesList oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.room.id != widget.room.id) {
+    if (oldWidget.questId != widget.questId ||
+        oldWidget.room?.id != widget.room?.id) {
       _groupsFuture = _load();
     }
   }
 
   Future<List<QuestObjectiveGroup>> _load() async {
-    // world_v2 → v3: the course space's coursePlan.uuid now points at a
-    // quest-plans id. The outline (Missions + their activities) comes from the
-    // v3 quest read layer; the v1 course-plans/topics fan-out is retired.
-    final questId = widget.room.coursePlan?.uuid;
+    // world_v2 → v3: the course space's coursePlan.uuid (or the previewed
+    // plan's uuid) points at a quest-plans id. The outline (Missions + their
+    // activities) comes from the v3 quest read layer; the v1
+    // course-plans/topics fan-out is retired.
+    final questId = _questId;
     if (questId == null) return [];
     final outline = await QuestRepo.outline(questId);
     return outline.groups;
@@ -82,6 +103,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
         }
         return ListView.separated(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
+          shrinkWrap: widget.shrinkWrap,
+          physics: widget.shrinkWrap
+              ? const NeverScrollableScrollPhysics()
+              : null,
           itemCount: groups.length,
           separatorBuilder: (_, _) => const SizedBox(height: 24.0),
           itemBuilder: (context, i) => _ObjectiveSection(
@@ -99,8 +124,12 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 class _ObjectiveSection extends StatelessWidget {
   final int index;
   final QuestObjectiveGroup group;
-  final Room room;
-  final bool Function(String userId, String activityId) hasCompletedActivity;
+
+  /// Null in a preview (unjoined plan): no completion overlay, and tapping an
+  /// activity opens it standalone rather than as an in-course `?activity=`
+  /// overlay.
+  final Room? room;
+  final bool Function(String userId, String activityId)? hasCompletedActivity;
 
   const _ObjectiveSection({
     required this.index,
@@ -115,7 +144,7 @@ class _ObjectiveSection extends StatelessWidget {
     final isColumnMode = FluffyThemes.isColumnMode(context);
     final cardWidth = isColumnMode ? 160.0 : 120.0;
     final cardHeight = isColumnMode ? 280.0 : 200.0;
-    final userId = room.client.userID!;
+    final userId = room?.client.userID;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -147,14 +176,20 @@ class _ObjectiveSection extends StatelessWidget {
             separatorBuilder: (_, _) => const SizedBox(width: 16.0),
             itemBuilder: (context, i) {
               final ref = group.activities[i];
-              final complete = hasCompletedActivity(userId, ref.activityId);
+              final complete = userId != null &&
+                  (hasCompletedActivity?.call(userId, ref.activityId) ?? false);
               return MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
-                  // Open the activity in-place over the course (the `?activity=`
-                  // detail panel) instead of navigating to the standalone
-                  // `/<activityId>` page, so the course context is preserved.
+                  // In a joined course, open the activity in-place over the
+                  // course (the `?activity=` detail panel) so the course context
+                  // is preserved. In a preview (no room), open it as a
+                  // standalone world object (`/<activityId>`).
                   onTap: () {
+                    if (room == null) {
+                      context.go('/${ref.activityId}');
+                      return;
+                    }
                     final uri = GoRouter.of(
                       context,
                     ).routeInformationProvider.value.uri;
