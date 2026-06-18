@@ -14,6 +14,7 @@ class ActivitySessionConstants {
   static const String activityPlanInstructions = 'instructions';
   static const String activityPlanVocab = 'vocab';
   static const String activityPlanImageURL = 'image_url';
+  static const String activityPlanMedia = 'media';
   static const String activityId = 'activity_id';
   static const String activityPlanEndAt = 'end_at';
 

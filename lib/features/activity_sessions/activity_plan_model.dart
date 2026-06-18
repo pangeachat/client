@@ -3,10 +3,13 @@ import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
+
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/network/media_url.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
@@ -22,6 +25,14 @@ class ActivityPlanModel {
   final String instructions;
   final List<Vocab> vocab;
   final String? _imageURL;
+
+  /// Ordered stimulus media (carousel) — the v2/v3 model. A single image is a
+  /// list of length one; empty means no media (→ placeholder). Upload-kind
+  /// blocks must be resolved (`ActivityMediaRepo`) before their URLs render.
+  /// The legacy `image_url` single-image path leaves this empty and populates
+  /// [_imageURL] instead.
+  final List<ActivityMediaBlock> media;
+
   final DateTime? endAt;
   final Duration? duration;
   final Map<String, ActivityRole>? _roles;
@@ -39,6 +50,7 @@ class ActivityPlanModel {
     required this.activityId,
     Map<String, ActivityRole>? roles,
     String? imageURL,
+    this.media = const [],
     this.endAt,
     this.duration,
     this.isDeprecatedModel = false,
@@ -47,6 +59,25 @@ class ActivityPlanModel {
            : description,
        _roles = roles,
        _imageURL = imageURL;
+
+  /// This plan with its media list replaced (used after `ActivityMediaRepo`
+  /// resolution attaches CDN URLs to the blocks).
+  ActivityPlanModel withMedia(List<ActivityMediaBlock> media) =>
+      ActivityPlanModel(
+        req: req,
+        title: title,
+        description: description,
+        learningObjective: learningObjective,
+        instructions: instructions,
+        vocab: vocab,
+        activityId: activityId,
+        roles: _roles,
+        imageURL: _imageURL,
+        media: media,
+        endAt: endAt,
+        duration: duration,
+        isDeprecatedModel: isDeprecatedModel,
+      );
 
   List<String> get placeholderImages => [
     "${AppConfig.assetsBaseURL}/Space%20template%202.png",
@@ -59,11 +90,23 @@ class ActivityPlanModel {
         title.hashCode,
       ).nextInt(placeholderImages.length)];
 
+  /// First image block in the media carousel, if any (the "hero").
+  ActivityMediaBlock? get heroImage =>
+      media.firstWhereOrNull((b) => b.isImage);
+
+  /// The hero image to render today (the carousel is a follow-up). Resolution
+  /// order: the first resolved image block in the v2/v3 `media` list → the
+  /// legacy single `image_url` (the choreo `/activity_plan/localize` path) →
+  /// a deterministic placeholder when the activity genuinely has no image.
+  ///
+  /// image-cdn cutover: both the resolved media URL and the legacy `image_url`
+  /// are absolute CDN urls used as-is; `resolveMediaUrl` prepends the CMS origin
+  /// only for legacy relative paths. See media_url.dart and
+  /// `.github/.github/instructions/activities.instructions.md`.
   Uri? get imageURL {
-    final u = _imageURL;
-    if (u == null) return Uri.tryParse(randomPlaceholder);
-    final isAbsolute = u.startsWith('http://') || u.startsWith('https://');
-    return Uri.tryParse(isAbsolute ? u : "${Environment.cmsApi}$u");
+    final heroUrl = heroImage?.displayUrl();
+    if (heroUrl != null) return Uri.tryParse(heroUrl);
+    return resolveMediaUrl(_imageURL) ?? Uri.tryParse(randomPlaceholder);
   }
 
   Map<String, ActivityRole> get roles {
@@ -104,6 +147,15 @@ class ActivityPlanModel {
 
     return ActivityPlanModel(
       imageURL: json[ActivitySessionConstants.activityPlanImageURL],
+      media:
+          (json[ActivitySessionConstants.activityPlanMedia] as List?)
+              ?.whereType<Map>()
+              .map(
+                (e) =>
+                    ActivityMediaBlock.fromJson(Map<String, dynamic>.from(e)),
+              )
+              .toList() ??
+          const [],
       instructions: json[ActivitySessionConstants.activityPlanInstructions],
       req: req,
       title: json[ActivitySessionConstants.activityPlanTitle],
@@ -137,6 +189,9 @@ class ActivityPlanModel {
     return {
       ActivitySessionConstants.activityId: activityId,
       ActivitySessionConstants.activityPlanImageURL: _imageURL,
+      ActivitySessionConstants.activityPlanMedia: media
+          .map((block) => block.toJson())
+          .toList(),
       ActivitySessionConstants.activityPlanInstructions: instructions,
       ActivitySessionConstants.activityPlanRequest: req.toJson(),
       ActivitySessionConstants.activityPlanTitle: title,

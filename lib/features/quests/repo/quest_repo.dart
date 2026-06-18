@@ -1,3 +1,5 @@
+import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
+import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/course_plans/payload_client/payload_client.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
@@ -69,6 +71,39 @@ class QuestRepo {
     accessToken: MatrixState.pangeaController.userController.accessToken,
   );
 
+  /// Resolve every plan's media `upload_id`s to CDN URLs in ONE batched read,
+  /// returning the plans with resolved media. `upload_id` is plain text on
+  /// `activities-v2` (not a relationship), so a depth read never hydrates the
+  /// URL — this second `media`-collection read is the contract. See
+  /// `.github/.github/instructions/activities.instructions.md`.
+  static Future<List<ActivityPlanModel>> _withResolvedMedia(
+    List<ActivityPlanModel> plans,
+  ) async {
+    final ids = plans
+        .expand((p) => p.media)
+        .map((b) => b.uploadId)
+        .whereType<String>()
+        .toSet()
+        .toList();
+    if (ids.isEmpty) return plans;
+    final resolved = await ActivityMediaRepo.resolve(ids);
+    return plans.map((p) => p.withMedia(_applyResolved(p.media, resolved))).toList();
+  }
+
+  static List<ActivityMediaBlock> _applyResolved(
+    List<ActivityMediaBlock> media,
+    Map<String, ResolvedMedia> resolved,
+  ) => media.map((block) {
+    final r = block.uploadId == null ? null : resolved[block.uploadId];
+    return r == null
+        ? block
+        : block.copyWithResolved(
+            resolvedUrl: r.url,
+            resolvedThumbnailUrl: r.thumbnailUrl,
+            resolvedMediumUrl: r.mediumUrl,
+          );
+  }).toList();
+
   /// `where` matching any activity that satisfies one of [loIds] at [l2].
   static Map<String, dynamic> _loAtL2Where(List<String> loIds, String l2) => {
     'and': [
@@ -122,7 +157,7 @@ class QuestRepo {
       limit: 200,
       depth: 0,
     );
-    return resp.docs
+    final entries = resp.docs
         .map(
           (doc) => (
             plan: activityPlanFromV2(doc),
@@ -132,6 +167,14 @@ class QuestRepo {
           ),
         )
         .toList();
+    // Resolve all plans' media upload_ids → CDN URLs in one batched read.
+    final resolved = await _withResolvedMedia(
+      entries.map((e) => e.plan).toList(),
+    );
+    return [
+      for (var i = 0; i < entries.length; i++)
+        (plan: resolved[i], refs: entries[i].refs),
+    ];
   }
 
   /// The full outline: quest + objective groups (LOs in order, each with its
@@ -185,7 +228,10 @@ class QuestRepo {
       depth: 0,
     );
     if (resp.docs.isEmpty) return null;
-    return activityPlanFromV2(resp.docs.first);
+    final resolved = await _withResolvedMedia([
+      activityPlanFromV2(resp.docs.first),
+    ]);
+    return resolved.first;
   }
 
   /// Thin map pins for a single quest — its LOs' activities at its L2, with

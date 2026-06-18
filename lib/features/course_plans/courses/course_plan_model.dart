@@ -8,7 +8,7 @@ import 'package:fluffychat/features/course_plans/course_topics/course_topic_repo
 import 'package:fluffychat/features/course_plans/course_topics/course_topic_translation_request.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/network/media_url.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -131,7 +131,6 @@ class CoursePlanModel {
           ?.imageUrl;
     }
     final media = loadedMediaUrls.mediaUrls.first;
-    final bestUrl = media.mediumUrl ?? media.url;
-    return Uri.tryParse("${Environment.cmsApi}$bestUrl");
+    return resolveMediaUrl(media.mediumUrl ?? media.url);
   }
 }

@@ -1,3 +1,4 @@
+import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
@@ -9,6 +10,11 @@ import 'package:fluffychat/routes/settings/settings_learning/language_level_type
 /// roles/goals shape than the legacy choreo activity payload: roles carry a
 /// logical `role_id`, and goals live in a plan-level `goals` array linked back
 /// to roles by `role_ids`. v3 has no separate `instructions` field.
+///
+/// The stimulus media (`res.plan.media`) is the polymorphic block list carried
+/// through verbatim; its `upload_id`s are raw (unresolved) here. The caller
+/// resolves them to CDN URLs via `ActivityMediaRepo` before rendering —
+/// `imageURL` shows a placeholder until then.
 ActivityPlanModel activityPlanFromV2(Map<String, dynamic> doc) {
   final plan =
       ((doc['res'] as Map?)?['plan'] as Map?)?.cast<String, dynamic>() ??
@@ -53,6 +59,11 @@ ActivityPlanModel activityPlanFromV2(Map<String, dynamic> doc) {
       )
       .toList();
 
+  final media = (plan['media'] as List? ?? const [])
+      .whereType<Map>()
+      .map((b) => ActivityMediaBlock.fromCmsBlock(b.cast<String, dynamic>()))
+      .toList();
+
   final cefr = (plan['cefr_level'] ?? req['cefr_level']) as String?;
   final l2 = (plan['l2'] ?? req['target_language'] ?? '') as String;
 
@@ -77,6 +88,7 @@ ActivityPlanModel activityPlanFromV2(Map<String, dynamic> doc) {
     learningObjective: (plan['learning_objective'] ?? '') as String,
     instructions: '', // v3 activities carry no separate instructions field
     vocab: vocab,
+    media: media,
     roles: roles.isEmpty ? null : roles,
   );
 }

@@ -55,6 +55,17 @@ Optionally, users can review past activities in their activity history, which su
 
 An activity is "started" when all role slots are filled. It's "finished" when all non-bot participants have marked themselves done or left. "Archived" means the user has dismissed it from their active view.
 
+## Stimulus media (carousel)
+
+An activity's stimulus is a **carousel** of polymorphic media, not a single image — a lone image is just a list of length one. The model and contract mirror the cross-repo [activities.instructions.md → Media resolution & rendering](https://github.com/pangeachat/.github/blob/main/.github/instructions/activities.instructions.md); the client pieces:
+
+- **Model.** [`ActivityMediaBlock`](../../lib/features/activity_sessions/activity_media_block.dart) is one carousel item, discriminated on `blockType` (`image`/`audio`/`video`/`youtube`). Upload kinds carry a raw `uploadId` (a cms `media` doc id); `youtube` carries a `url`. `ActivityPlanModel.media` is the ordered list. The legacy single `image_url` (the choreo `POST /activity_plan/localize` path) still populates `_imageURL` as a fallback.
+- **Read + resolve.** The v3 path is `QuestRepo.activity` → [`activityPlanFromV2`](../../lib/features/quests/repo/activity_v2_mapper.dart) (carries `res.plan.media` through, ids unresolved) → `QuestRepo._withResolvedMedia` → [`ActivityMediaRepo`](../../lib/features/activity_sessions/activity_media_repo.dart). `uploadId` is plain text on `activities-v2` (not a relationship), so no `depth` hydrates it; `ActivityMediaRepo` batch-reads the cms `media` collection (`where[id][in]=…`, mirrors `CourseMediaRepo`) for `{ url, sizes }` and attaches resolved URLs to the blocks. Every mapper call site must resolve, or its images show the placeholder.
+- **Render.** `ActivityPlanModel.imageURL` is the hero: first **resolved** image block → legacy `image_url` → a deterministic placeholder, and the placeholder appears **only** when there is no image at all (empty `media` and no legacy url). Today `ImageByUrl` renders just that hero (detail screen, map preview card, suggestion/template cards); the full polymorphic carousel (image + video + youtube + audio players — `carousel_slider` and `video_player` are already in `pubspec`) is a follow-up. `ActivityMediaBlock.displayUrl(width)` picks the size variant (thumbnail 256 / medium 512 / original).
+- **Web CORS gotcha.** `ImageByUrl` uses `CachedNetworkImage` with `ImageRenderMethodForWeb.HttpGet`, which byte-fetches over XHR — so a cross-origin image host **must** send `Access-Control-Allow-Origin` or the web build shows a blank box (mobile is unaffected). `content.pangea.chat` is allowlisted in `AppConfig.isAllowedImage`; the CDN-side CORS header is a devops concern (image-cdn CloudFront `response_headers_policy`).
+
+The bug this replaced: the v2 mapper dropped `res.plan.media` entirely, so `imageURL` was always null and every v3 activity rendered `randomPlaceholder` even when it had a real image.
+
 ## Future Work
 *Last updated: 2026-02-15*
 

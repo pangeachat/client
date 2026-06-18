@@ -7,7 +7,7 @@ import 'package:fluffychat/features/course_plans/course_info_batch_request.dart'
 import 'package:fluffychat/features/course_plans/course_locations/course_location_media_repo.dart';
 import 'package:fluffychat/features/course_plans/course_locations/course_location_repo.dart';
 import 'package:fluffychat/features/course_plans/course_locations/course_location_response.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/network/media_url.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Represents a topic in the course planner response.
@@ -76,7 +76,7 @@ class CourseTopicModel {
 
   Uri? get imageUrl => loadedLocationMediaIds.isEmpty
       ? null
-      : Uri.tryParse("${Environment.cmsApi}${loadedLocationMediaIds.first}");
+      : resolveMediaUrl(loadedLocationMediaIds.first);
 
   bool get activityListComplete =>
       activityIds.length == loadedActivities.length;

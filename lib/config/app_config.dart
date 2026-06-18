@@ -153,6 +153,10 @@ abstract class AppConfig {
     "pangea-chat-client-assets.s3.us-east-1.amazonaws.com",
     "api.pangea.chat",
     "api.staging.pangea.chat",
+    // Media CDN (image-cdn consolidation): activity/course/topic images are now
+    // served from here. Without this, ImageByUrl rejects every CDN image and
+    // shows a placeholder. See devops image-cdn.instructions.md.
+    "content.pangea.chat",
   };
 
   static bool isAllowedImage(Uri imageUrl) =>
