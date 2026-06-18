@@ -84,7 +84,7 @@ class ActivitySummaryRequestModel {
       'activity': activity.toJson(),
       'activity_results': activityResults.map((e) => e.toJson()).toList(),
       'content_feedback': contentFeedback.map((e) => e.toJson()).toList(),
-      'role_state': roleState?.toJson() ?? {},
+      'role_state': roleState?.toJson() ?? {'roles': {}},
       if (langCode != null) 'viewer_l1': langCode,
     };
   }
