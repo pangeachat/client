@@ -211,20 +211,18 @@ class ActivityStatsMenu extends StatelessWidget {
                           ),
                         ),
                       ),
-                      ClipRect(
-                        child: AnimatedAlign(
-                          duration: FluffyThemes.animationDuration,
-                          curve: Curves.easeInOut,
-                          heightFactor: showDropdown ? 1.0 : 0.0,
-                          alignment: Alignment.topCenter,
-                          child: GestureDetector(
-                            onPanUpdate: (details) {
-                              if (details.delta.dy < -2) {
-                                setVisibility(false);
-                              }
-                            },
-                            child: child,
-                          ),
+                      AnimatedAlign(
+                        duration: FluffyThemes.animationDuration,
+                        curve: Curves.easeInOut,
+                        heightFactor: showDropdown ? 1.0 : 0.0,
+                        alignment: Alignment.topCenter,
+                        child: GestureDetector(
+                          onPanUpdate: (details) {
+                            if (details.delta.dy < -2) {
+                              setVisibility(false);
+                            }
+                          },
+                          child: child,
                         ),
                       ),
                     ],
