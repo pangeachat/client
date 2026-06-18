@@ -57,6 +57,10 @@ class WorkspaceLeftPanel extends StatelessWidget {
       case 'chats':
         return ChatList(activeChat: null, activeSpace: null);
       case 'room':
+      // A completed-activity-session review renders as its actual locked chat,
+      // identical to a live room (the lock is room-state, not token, driven).
+      // Its distinct type only carries detail-slot exclusivity in the nav layer.
+      case 'session':
         return _room(context, isColumnMode);
       case 'addcourse':
         // The add-course wizard's first step (own/browse/private); each hosted
@@ -92,7 +96,7 @@ class WorkspaceLeftPanel extends StatelessWidget {
     // must return to the world map or the route-driven card re-renders it —
     // see WorkspaceNav.closeSection / routing.instructions.md.
     void close() => context.go(
-          token.type == 'room'
+          token.type == 'room' || token.type == 'session'
               ? WorkspaceNav.closeLeft(currentUri, token)
               : WorkspaceNav.closeSection(currentUri, token),
         );

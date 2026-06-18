@@ -62,6 +62,20 @@ abstract class PanelRegistry {
       idealWidth: 720,
       priority: 80,
     ),
+    // A completed-activity-session **review** opened from the analytics sessions
+    // list — the actual (locked) chat, rendered exactly like a `room`. It is a
+    // distinct type so it can carry detail-slot semantics a live `room` must
+    // not: a session shares the single "detail" slot with the right-column
+    // vocab/grammar details (opening any one closes the others), while a live
+    // chat stays independent. Same widths/priority as `room` (it IS a chat).
+    // See routing.instructions.md.
+    'session': PanelDef(
+      column: PanelColumn.left,
+      minWidth: 360,
+      reasonableMinWidth: 480,
+      idealWidth: 720,
+      priority: 80,
+    ),
     'course': PanelDef(
       column: PanelColumn.left,
       minWidth: 360,

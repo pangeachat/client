@@ -174,7 +174,7 @@ behaves the same on mobile and desktop.
 | Chat members / settings | the chat header | the chat panel | push |
 | Analytics (vocab / grammar / sessions) | a top-right cluster tracker | right | open panel (master) |
 | Level | the avatar's level badge | right | open panel (an analytics tab) |
-| A construct detail | tapping a vocab/grammar item | right | open panel (detail), left of its summary; **one at a time** — a new detail replaces the open one (the right-column mirror of one-live-session); folds in under pressure |
+| A construct detail | tapping a vocab/grammar item | right | open panel (detail), left of its summary; **one detail at a time, across both columns** — a vocab detail, a grammar detail, and a completed-activity `session` review share ONE slot, so opening any one closes the other two (a live `room` chat is independent and stays open); folds in under pressure |
 | Profile + settings menu | the top-right cluster avatar | right | open panel (master) |
 | A settings page (learning, style, security, …) | a settings-menu row | right | open panel (detail), or pushed onto the menu when folded |
 | A settings leaf (password, blocked users, emotes, …) | within its settings page | the settings panel | push |
@@ -183,15 +183,25 @@ behaves the same on mobile and desktop.
 
 ## One live session at a time
 
-At most one **live** chat or activity session is open at once. The Matrix room
-timeline is shared rather than reference-counted, so two live views of a room
-overwrite each other. A completed activity session opens as its **actual chat**,
-locked from new messages — the real timeline, with the wrap-up summary posted in
-it as a message, not a separate summary card — so it is a live view too and obeys
-the same rule: opening a new session replaces the current one. *(Future: give a
-room its own session state by folding the choreographer controller into the chat
-controller, which would lift this limit and could let a completed session open as
-a coexisting read-only review.)*
+At most one **live view** is open at once. The Matrix room timeline is shared
+rather than reference-counted, so two live views of a room overwrite each other.
+A live chat (`room` token) and a completed-activity review (`session` token) both
+render that one live view, so opening either drops the other.
+
+A completed activity session opens as its **actual chat**, locked from new
+messages — the real timeline, with the wrap-up summary posted in it as a message,
+not a separate summary card. It uses a distinct **`session`** token (not `room`),
+rendered identically (the lock is room-state, not token, driven), for one reason:
+a `session` belongs to the single **detail slot** shared with the right-column
+vocab/grammar details, so opening a construct detail closes an open session and
+vice versa (one detail at a time across columns — see the construct-detail row
+above), whereas a live `room` chat is independent of that slot and coexists with
+an open detail. `openExclusiveSession` / `openConstructDetail` in `workspace_nav`
+enforce this; `openExclusiveLeftRoom` (a live chat) drops room+session but leaves
+the right column untouched. *(Future: give a room its own session state by folding
+the choreographer controller into the chat controller, which would lift the
+one-live-view limit and could let a completed session open as a coexisting
+read-only review.)*
 
 ## The map never rebuilds
 

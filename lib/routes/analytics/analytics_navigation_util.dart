@@ -31,13 +31,15 @@ class AnalyticsNavigationUtil {
 
     // A completed activity session is a real (locked) chat whose summary is
     // posted as a message in its own timeline (not a separate card). Open the
-    // actual session as a left room panel; openExclusiveLeftRoom keeps the
-    // analytics panel docked on the right (one live session).
+    // actual session as a left `session` panel: it shares the single detail slot
+    // with the right-column vocab/grammar details, so opening it closes any open
+    // construct detail (one detail at a time across columns). See
+    // routing.instructions.md.
     if (view == ProgressIndicatorEnum.activities && activityRoomId != null) {
       context.go(
-        WorkspaceNav.openExclusiveLeftRoom(
+        WorkspaceNav.openExclusiveSession(
           uri,
-          PanelToken('room', shortRoomId(activityRoomId)),
+          PanelToken('session', shortRoomId(activityRoomId)),
         ),
       );
       return;
@@ -51,10 +53,11 @@ class AnalyticsNavigationUtil {
       _ => 'vocab',
     };
 
-    // A vocab/grammar construct blooms a detail card to the LEFT of its summary
-    // (atStart). With a panel already docked we add just the detail; from a cold
-    // start we seat the detail and its summary together — both token writes, no
-    // legacy `/rooms/analytics/...` route. See routing.instructions.md.
+    // A vocab/grammar construct blooms a detail card to the LEFT of its summary.
+    // `openConstructDetail` is the single detail slot: it replaces any open
+    // vocab/grammar detail AND closes an open activity-`session` review (one
+    // detail at a time across columns), seating the summary too on a cold start.
+    // See routing.instructions.md.
     if (construct != null &&
         const {
           ProgressIndicatorEnum.wordsUsed,
@@ -64,11 +67,7 @@ class AnalyticsNavigationUtil {
         view == ProgressIndicatorEnum.wordsUsed ? 'vocab' : 'grammar',
         jsonEncode(construct.toJson()),
       );
-      context.go(
-        panelOpen
-            ? WorkspaceNav.openExclusiveRightDetail(uri, detail)
-            : WorkspaceNav.setRight(uri, [detail, PanelToken('analytics', tab)]),
-      );
+      context.go(WorkspaceNav.openConstructDetail(uri, detail, tab));
       return;
     }
 

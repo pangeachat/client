@@ -72,34 +72,65 @@ abstract class WorkspaceNav {
   static String openLeft(Uri current, PanelToken token, {bool atStart = false}) =>
       _mutate(current, 'left', (tokens) => _add(tokens, token, atStart));
 
-  /// Open a live room panel, enforcing the one-live-session rule: any *other*
-  /// `room` token in the left list is dropped first, because the Matrix room
-  /// timeline is shared and two live views would overwrite each other (see
-  /// `routing.instructions.md`). Other left surfaces — the chat list, a course
-  /// (which scopes the room), settings — are kept and stay to the *left* of the
-  /// room (the room is appended), so a list-then-chat master/detail reads left
-  /// to right.
+  /// Open a live room panel, enforcing the one-live-view rule: any *other*
+  /// `room` **or `session`** token in the left list is dropped first, because the
+  /// Matrix room timeline is shared and two live views would overwrite each
+  /// other (see `routing.instructions.md`). The right column is left untouched —
+  /// a live chat is independent of the right-column detail slot, so opening one
+  /// does NOT close an open vocab/grammar detail. Other left surfaces (the chat
+  /// list, a course that scopes the room) are kept, to the *left* of the room.
   static String openExclusiveLeftRoom(Uri current, PanelToken token) =>
       _mutate(current, 'left', (tokens) {
-        final next = tokens.where((t) => t.type != 'room').toList();
+        final next = tokens
+            .where((t) => t.type != 'room' && t.type != 'session')
+            .toList();
         next.add(token);
         return next;
       });
 
-  /// Open a vocab/grammar construct detail on the right, replacing any construct
-  /// detail already open — one detail at a time, the right-column mirror of
-  /// [openExclusiveLeftRoom]. The detail seats at the left edge of the right
-  /// group (in front of its pinned `analytics` summary, which is kept), so the
-  /// summary stays at the edge and its detail blooms to its left. See
-  /// `routing.instructions.md`.
-  static String openExclusiveRightDetail(Uri current, PanelToken token) =>
-      _mutate(current, 'right', (tokens) {
-        final next = tokens
-            .where((t) => t.type != 'vocab' && t.type != 'grammar')
-            .toList();
-        next.insert(0, token);
-        return next;
-      });
+  /// Open a completed-activity-`session` review (the locked chat) on the left.
+  /// Unlike a live `room`, a session belongs to the single **detail slot**: it
+  /// drops any open vocab/grammar detail on the right, and a construct detail
+  /// drops it (one detail at a time across both columns —
+  /// [openConstructDetail]). It also obeys one-live-view, so any other
+  /// room/session drops. See `routing.instructions.md`.
+  static String openExclusiveSession(Uri current, PanelToken token) =>
+      _mutateBoth(
+        current,
+        (left) => [
+          ...left.where((t) => t.type != 'room' && t.type != 'session'),
+          token,
+        ],
+        (right) =>
+            right.where((t) => t.type != 'vocab' && t.type != 'grammar').toList(),
+      );
+
+  /// Open a vocab/grammar construct detail — the single **detail slot** across
+  /// both columns. Drops any other construct detail (vocab/grammar) AND any open
+  /// activity-`session` review on the left, so at most one of vocab / grammar /
+  /// session shows at a time. The detail seats at the left edge of the right
+  /// group, in front of the pinned `analytics` summary (kept, or seated at
+  /// [summaryTab] from a cold start), so the summary rests at the edge and its
+  /// detail blooms to its left. See `routing.instructions.md`.
+  static String openConstructDetail(
+    Uri current,
+    PanelToken detail,
+    String summaryTab,
+  ) =>
+      _mutateBoth(
+        current,
+        (left) => left.where((t) => t.type != 'session').toList(),
+        (right) {
+          final next = right
+              .where((t) => t.type != 'vocab' && t.type != 'grammar')
+              .toList();
+          next.insert(0, detail);
+          if (!next.any((t) => t.type == 'analytics')) {
+            next.add(PanelToken('analytics', summaryTab));
+          }
+          return next;
+        },
+      );
 
   /// Open (or re-tab) a `course` panel at the left edge, replacing any existing
   /// course token. The course's identity is the `?m=course:<id>` map filter
@@ -250,6 +281,36 @@ abstract class WorkspaceNav {
     parts.removeWhere((p) => p == key || p.startsWith('$key='));
     if (next.isNotEmpty) {
       parts.add('$key=${next.map((t) => t.encode()).join(',')}');
+    }
+    final query = parts.join('&');
+    return query.isEmpty ? current.path : '${current.path}?$query';
+  }
+
+  /// Like [_mutate] but rewrites BOTH the `left` and `right` lists in one go,
+  /// for cross-column moves (the shared detail slot: a left `session` and a
+  /// right vocab/grammar detail are mutually exclusive). Every other query param
+  /// (notably the `m` map filter) is preserved verbatim.
+  static String _mutateBoth(
+    Uri current,
+    List<PanelToken> Function(List<PanelToken>) leftTransform,
+    List<PanelToken> Function(List<PanelToken>) rightTransform,
+  ) {
+    final lists = parseOpenPanels(current);
+    final left = leftTransform(lists.left);
+    final right = rightTransform(lists.right);
+    final parts = current.query.isEmpty ? <String>[] : current.query.split('&');
+    parts.removeWhere(
+      (p) =>
+          p == 'left' ||
+          p.startsWith('left=') ||
+          p == 'right' ||
+          p.startsWith('right='),
+    );
+    if (left.isNotEmpty) {
+      parts.add('left=${left.map((t) => t.encode()).join(',')}');
+    }
+    if (right.isNotEmpty) {
+      parts.add('right=${right.map((t) => t.encode()).join(',')}');
     }
     final query = parts.join('&');
     return query.isEmpty ? current.path : '${current.path}?$query';

@@ -129,16 +129,71 @@ void main() {
     });
   });
 
-  group('openExclusiveRightDetail (one construct detail at a time)', () {
+  group('openConstructDetail (one detail at a time, across columns)', () {
     test('a new construct detail replaces the prior one, keeping the summary', () {
       var loc = WorkspaceNav.openRight(u('/'), const PanelToken('analytics', 'vocab'));
-      loc = WorkspaceNav.openExclusiveRightDetail(u(loc), const PanelToken('vocab', 'hablar'));
-      loc = WorkspaceNav.openExclusiveRightDetail(u(loc), const PanelToken('grammar', 'verb'));
+      loc = WorkspaceNav.openConstructDetail(
+          u(loc), const PanelToken('vocab', 'hablar'), 'vocab');
+      loc = WorkspaceNav.openConstructDetail(
+          u(loc), const PanelToken('grammar', 'verb'), 'grammar');
       final right = parseOpenPanels(u(loc)).right;
       // exactly one construct detail, blooming left of its kept summary
       expect(right.where((t) => t.type == 'vocab' || t.type == 'grammar').length, 1);
       expect(right.first, const PanelToken('grammar', 'verb')); // detail at the edge-left
       expect(right.any((t) => t.type == 'analytics'), isTrue); // summary kept
+    });
+
+    test('cold start seats the detail AND its summary together', () {
+      final loc = WorkspaceNav.openConstructDetail(
+          u('/'), const PanelToken('vocab', 'hablar'), 'vocab');
+      final right = parseOpenPanels(u(loc)).right;
+      expect(right.map((t) => t.type), ['vocab', 'analytics']);
+      expect(right.last.param, 'vocab'); // the seated summary's tab
+    });
+
+    test('opening a construct detail closes an open activity session', () {
+      // session (left) + a vocab detail open: drilling a new construct drops the
+      // session — one detail at a time across columns.
+      var loc = WorkspaceNav.openExclusiveSession(
+          u('/'), const PanelToken('session', '!s'));
+      loc = WorkspaceNav.openConstructDetail(
+          u(loc), const PanelToken('vocab', 'hablar'), 'vocab');
+      final lists = parseOpenPanels(u(loc));
+      expect(lists.left.any((t) => t.type == 'session'), isFalse); // session gone
+      expect(lists.right.first, const PanelToken('vocab', 'hablar'));
+    });
+
+    test('a live room chat is NOT closed by opening a construct detail', () {
+      var loc = WorkspaceNav.openExclusiveLeftRoom(
+          u('/'), const PanelToken('room', '!live'));
+      loc = WorkspaceNav.openConstructDetail(
+          u(loc), const PanelToken('vocab', 'hablar'), 'vocab');
+      final lists = parseOpenPanels(u(loc));
+      expect(lists.left.any((t) => t.type == 'room'), isTrue); // chat survives
+      expect(lists.right.first, const PanelToken('vocab', 'hablar'));
+    });
+  });
+
+  group('openExclusiveSession (the session shares the detail slot)', () {
+    test('opening a session drops an open vocab/grammar detail', () {
+      var loc = WorkspaceNav.openConstructDetail(
+          u('/'), const PanelToken('vocab', 'hablar'), 'vocab');
+      loc = WorkspaceNav.openExclusiveSession(
+          u(loc), const PanelToken('session', '!s'));
+      final lists = parseOpenPanels(u(loc));
+      expect(lists.right.any((t) => t.type == 'vocab' || t.type == 'grammar'),
+          isFalse); // construct detail gone
+      expect(lists.left.any((t) => t.type == 'session'), isTrue);
+    });
+
+    test('a session drops another room/session (one live view)', () {
+      var loc = WorkspaceNav.openExclusiveLeftRoom(
+          u('/'), const PanelToken('room', '!live'));
+      loc = WorkspaceNav.openExclusiveSession(
+          u(loc), const PanelToken('session', '!s'));
+      final left = parseOpenPanels(u(loc)).left;
+      expect(left.where((t) => t.type == 'room' || t.type == 'session').length, 1);
+      expect(left.single, const PanelToken('session', '!s'));
     });
   });
 
