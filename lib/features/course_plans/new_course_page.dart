@@ -11,6 +11,7 @@ import 'package:fluffychat/features/course_plans/courses/course_filter.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_client_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plans_repo.dart';
+import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -141,18 +142,41 @@ class NewCoursePageState extends State<NewCoursePage> {
 
   Future<void> _fetchAndAppend(int generation) async {
     try {
-      final resp = await CoursePlansRepo.searchByFilter(
+      // Fan v1 course-plans and v3 quest-plans in parallel — same filter,
+      // same page. The picker model is [CoursePlanModel]; v3 rows are
+      // adapted by [QuestPlansRepo] into synthesized [CoursePlanModel]s
+      // so the existing card / chip / detail UI renders both transparently.
+      // A quest's id (its uuid) is shared with the room's
+      // `pangea.course_plan` state event, which is how the Course Plan
+      // tab + world map already light up after room creation.
+      final coursesFuture = CoursePlansRepo.searchByFilter(
         filter: _filter,
         page: _currentPage,
       );
+      final questsFuture = QuestPlansRepo.searchByFilter(
+        filter: _filter,
+        page: _currentPage,
+      );
+      final coursesResp = await coursesFuture;
+      final questsResp = await questsFuture;
       if (!mounted || _loadGeneration != generation) return;
-      final sortedCoursePlans = resp.coursePlans.values.toList().sorted(
+      final merged = [
+        ...coursesResp.coursePlans.values,
+        ...questsResp.quests,
+      ];
+      // De-dupe by uuid so a row that ever ends up in both collections
+      // (id-spaces are shared) only shows once.
+      final byUuid = <String, CoursePlanModel>{};
+      for (final c in merged) {
+        byUuid.putIfAbsent(c.uuid, () => c);
+      }
+      final sortedCoursePlans = byUuid.values.toList().sorted(
         (a, b) => LanguageLevelTypeEnum.values
             .indexOf(a.cefrLevel)
             .compareTo(LanguageLevelTypeEnum.values.indexOf(b.cefrLevel)),
       );
       _accumulatedCourses = [..._accumulatedCourses, ...sortedCoursePlans];
-      _fullyLoaded = !resp.hasNextPage;
+      _fullyLoaded = !coursesResp.hasNextPage && !questsResp.hasNextPage;
       _currentPage++;
       _courses.value = Result.value(_accumulatedCourses);
     } catch (e, s) {
