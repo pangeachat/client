@@ -21,7 +21,17 @@ import 'settings_emotes_view.dart';
 
 class EmotesSettings extends StatefulWidget {
   final String? roomId;
-  const EmotesSettings({required this.roomId, super.key});
+
+  /// world_v2: the host course panel's leading affordance (`←` back to the
+  /// card) for the `course:emotes` push, replacing the route-pop [BackButton].
+  /// See `routing.instructions.md`.
+  final Widget? embeddedCloseButton;
+
+  const EmotesSettings({
+    required this.roomId,
+    super.key,
+    this.embeddedCloseButton,
+  });
 
   @override
   EmotesSettingsController createState() => EmotesSettingsController();

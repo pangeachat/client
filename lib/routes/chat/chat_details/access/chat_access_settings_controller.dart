@@ -15,7 +15,17 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class ChatAccessSettings extends StatefulWidget {
   final String roomId;
-  const ChatAccessSettings({required this.roomId, super.key});
+
+  /// world_v2: the host course panel's leading affordance (`←` back to the
+  /// card) for the `course:access` push, replacing the route-pop [BackButton].
+  /// See `routing.instructions.md`.
+  final Widget? embeddedCloseButton;
+
+  const ChatAccessSettings({
+    required this.roomId,
+    super.key,
+    this.embeddedCloseButton,
+  });
 
   @override
   State<ChatAccessSettings> createState() => ChatAccessSettingsController();

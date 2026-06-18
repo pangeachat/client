@@ -16,7 +16,9 @@ class PangeaChatAccessSettingsPageView extends StatelessWidget {
     final room = controller.room;
     return Scaffold(
       appBar: AppBar(
-        leading: const Center(child: BackButton()),
+        leading: Center(
+          child: controller.widget.embeddedCloseButton ?? const BackButton(),
+        ),
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

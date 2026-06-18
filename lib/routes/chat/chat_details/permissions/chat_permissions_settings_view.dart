@@ -20,7 +20,9 @@ class ChatPermissionsSettingsView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: const Center(child: BackButton()),
+        leading: Center(
+          child: controller.widget.embeddedCloseButton ?? const BackButton(),
+        ),
         // #Pangea
         // title: Text(L10n.of(context).chatPermissions),
         title: Text(L10n.of(context).permissions),

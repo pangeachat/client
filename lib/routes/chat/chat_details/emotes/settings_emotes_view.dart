@@ -44,6 +44,13 @@ class EmotesSettingsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: !controller.showSave,
+        // world_v2: when hosted as a `course:emotes` push, the panel supplies
+        // the leading `←` back to the card (the save-mode cancel button keeps
+        // priority). See `routing.instructions.md`.
+        leading:
+            !controller.showSave && controller.widget.embeddedCloseButton != null
+            ? Center(child: controller.widget.embeddedCloseButton)
+            : null,
         title: controller.showSave
             ? TextButton(
                 onPressed: controller.resetAction,

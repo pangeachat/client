@@ -432,5 +432,21 @@ void main() {
       final right = parseOpenPanels(u(loc)).right.map((t) => t.type).toSet();
       expect(right.containsAll({'analytics', 'settingspage'}), isTrue);
     });
+
+    test('a course management page pushes onto the course token, keeping the '
+        'map filter; back pops to the bare card', () {
+      // The course workspace: a `?m=course:<id>` map filter + a left course
+      // panel. A management button (Edit, Invite, …) is a flat push.
+      const base = '/?m=course:!s&left=course';
+      var loc = WorkspaceNav.pushPage(u(base), 'course', 'edit');
+      expect(parseOpenPanels(u(loc)).left.single,
+          const PanelToken('course', 'edit'));
+      // The course identity (the map filter) survives the push.
+      expect(activeSpaceIdFor(u(loc)), '!s');
+      // Back pops one page level — to the bare course card, filter intact.
+      loc = WorkspaceNav.popPage(u(loc), 'course', 'edit');
+      expect(parseOpenPanels(u(loc)).left.single, const PanelToken('course'));
+      expect(activeSpaceIdFor(u(loc)), '!s');
+    });
   });
 }

@@ -48,6 +48,22 @@ class NavigationUtil {
         );
         return;
       }
+      // A management page on the course ITSELF is a flat push on the course
+      // token (course:edit, course:invite, …) — no path, no redirect bounce;
+      // any caller query rides as a one-shot the panel reads. A deeper room
+      // sub-page or the bare course root stays on the legacy path (redirected)
+      // until the room push migration. See `routing.instructions.md`.
+      final onCourseItself = goalRoomID == null || goalRoomID == activeSpaceId;
+      if (onCourseItself && goalSubroute.isNotEmpty) {
+        final loc = WorkspaceNav.pushPage(uri, 'course', goalSubroute.join('/'));
+        context.go(
+          queryString.isEmpty
+              ? loc
+              : '$loc${loc.contains('?') ? '&' : '?'}${queryString.substring(1)}',
+          extra: extra,
+        );
+        return;
+      }
       final base = PRoutes.course(activeSpaceId);
       final roomTail = (goalRoomID == null || goalRoomID == activeSpaceId)
           ? ''

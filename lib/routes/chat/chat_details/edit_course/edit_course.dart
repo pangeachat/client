@@ -18,7 +18,14 @@ import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class EditCourse extends StatefulWidget {
   final String roomId;
-  const EditCourse({super.key, required this.roomId});
+
+  /// world_v2: when this page is hosted inside the course panel (as a
+  /// `course:edit` push) rather than a route, the panel supplies its leading
+  /// affordance — `←` back to the course card — in place of the default
+  /// route-pop [BackButton]. See `routing.instructions.md`.
+  final Widget? embeddedCloseButton;
+
+  const EditCourse({super.key, required this.roomId, this.embeddedCloseButton});
 
   @override
   EditCourseController createState() => EditCourseController();
@@ -169,7 +176,9 @@ class EditCourseController extends State<EditCourse> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Center(child: BackButton()),
+        leading: Center(
+          child: widget.embeddedCloseButton ?? const BackButton(),
+        ),
         title: Text(L10n.of(context).editing),
       ),
       body: StreamBuilder(

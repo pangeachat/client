@@ -67,7 +67,9 @@ class PangeaInvitationSelectionView extends StatelessWidget {
     final joinCode = room.joinCode;
     return Scaffold(
       appBar: AppBar(
-        leading: const Center(child: BackButton()),
+        leading: Center(
+          child: controller.widget.embeddedCloseButton ?? const BackButton(),
+        ),
         titleSpacing: 0,
         title: Text(L10n.of(context).inviteContact),
       ),

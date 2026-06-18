@@ -82,6 +82,14 @@ class SpaceDetailsContent extends StatelessWidget {
     );
   }
 
+  /// Push a course management page onto the course token (`course:<page>`) — a
+  /// flat in-panel push that keeps the `?m=` filter and the rest of the
+  /// workspace, with no legacy path/redirect bounce. The panel renders the page
+  /// with a `←`-back-to-card control. See `routing.instructions.md`.
+  void _pushCoursePage(BuildContext context, String page) => context.go(
+        WorkspaceNav.pushPage(GoRouterState.of(context).uri, 'course', page),
+      );
+
   List<ButtonDetails> _buttons(BuildContext context) {
     final L10n l10n = L10n.of(context);
     return [
@@ -125,7 +133,14 @@ class SpaceDetailsContent extends StatelessWidget {
           if (room.getParticipants([Membership.knock]).isEmpty) {
             filter = room.pangeaSpaceParents.isNotEmpty ? 'space' : 'contacts';
           }
-          context.go('/rooms/spaces/${room.id}/details/invite?filter=$filter');
+          // world_v2: a flat push on the course token (course:invite), carrying
+          // the initial contact filter as a query the panel reads once.
+          final loc = WorkspaceNav.pushPage(
+            GoRouterState.of(context).uri,
+            'course',
+            'invite',
+          );
+          context.go('$loc${loc.contains('?') ? '&' : '?'}filter=$filter');
         },
         enabled: room.canInvite,
         showInMainView: false,
@@ -134,7 +149,7 @@ class SpaceDetailsContent extends StatelessWidget {
         title: l10n.editCourse,
         description: l10n.editCourseDesc,
         icon: const Icon(Icons.edit_outlined, size: 30.0),
-        onPressed: () => context.go('/rooms/spaces/${room.id}/details/edit'),
+        onPressed: () => _pushCoursePage(context, 'edit'),
         enabled: room.isRoomAdmin,
         showInMainView: false,
       ),
@@ -142,8 +157,7 @@ class SpaceDetailsContent extends StatelessWidget {
         title: L10n.of(context).changeCourse,
         description: L10n.of(context).changeCourseDesc,
         icon: const Icon(Icons.assignment_outlined, size: 30.0),
-        onPressed: () =>
-            context.go('/rooms/spaces/${controller.roomId}/addcourse'),
+        onPressed: () => _pushCoursePage(context, 'addcourse'),
         enabled: room.isRoomAdmin,
         showInMainView: false,
       ),
@@ -252,8 +266,7 @@ class SpaceDetailsContent extends StatelessWidget {
         title: l10n.permissions,
         description: l10n.permissionsDesc,
         icon: const Icon(Icons.edit_attributes_outlined, size: 30.0),
-        onPressed: () =>
-            context.go('/rooms/spaces/${room.id}/details/permissions'),
+        onPressed: () => _pushCoursePage(context, 'permissions'),
         enabled: room.isRoomAdmin,
         showInMainView: false,
       ),
@@ -261,7 +274,7 @@ class SpaceDetailsContent extends StatelessWidget {
         title: l10n.access,
         description: l10n.accessDesc,
         icon: const Icon(Icons.shield_outlined, size: 30.0),
-        onPressed: () => context.go('/rooms/spaces/${room.id}/details/access'),
+        onPressed: () => _pushCoursePage(context, 'access'),
         enabled: room.isRoomAdmin && room.spaceParents.isEmpty,
         showInMainView: false,
       ),

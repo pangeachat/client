@@ -15,7 +15,24 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/permission_slider_dialog.dart';
 
 class ChatPermissionsSettings extends StatefulWidget {
-  const ChatPermissionsSettings({super.key});
+  // #Pangea
+  /// world_v2: the room/space this page edits. Supplied explicitly when hosted
+  /// inside the course panel (a `course:permissions` push), where the path is
+  /// always `/` and carries no route params. Null falls back to the legacy
+  /// path-param lookup for any remaining route-driven entry. See
+  /// `routing.instructions.md`.
+  final String? roomId;
+
+  /// The host course panel's leading affordance (`←` back to the card) for the
+  /// `course:permissions` push, replacing the route-pop [BackButton].
+  final Widget? embeddedCloseButton;
+
+  const ChatPermissionsSettings({
+    super.key,
+    this.roomId,
+    this.embeddedCloseButton,
+  });
+  // Pangea#
 
   @override
   ChatPermissionsSettingsController createState() =>
@@ -26,6 +43,7 @@ class ChatPermissionsSettingsController extends State<ChatPermissionsSettings> {
   // #Pangea
   // String? get roomId => GoRouterState.of(context).pathParameters['roomid'];
   String? get roomId {
+    if (widget.roomId != null) return widget.roomId;
     final pathParameters = GoRouterState.of(context).pathParameters;
     final id = pathParameters['roomid'] ?? pathParameters['spaceid'];
     return id == null ? null : fullRoomId(id);

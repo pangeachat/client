@@ -32,6 +32,12 @@ class NewCoursePage extends StatefulWidget {
   final String? initialLanguageCode;
   final bool showAll;
 
+  /// world_v2: when this page is the change-course step hosted inside an
+  /// existing course panel (a `course:addcourse` push, `spaceId != null`), the
+  /// panel supplies its leading `←` back to the card — the route-driven
+  /// add-to-space context otherwise has no back. See `routing.instructions.md`.
+  final Widget? embeddedCloseButton;
+
   const NewCoursePage({
     super.key,
     required this.route,
@@ -39,6 +45,7 @@ class NewCoursePage extends StatefulWidget {
     this.showFilters = true,
     this.initialLanguageCode,
     this.showAll = false,
+    this.embeddedCloseButton,
   });
 
   @override
@@ -237,7 +244,8 @@ class NewCoursePageState extends State<NewCoursePage> {
     return Scaffold(
       appBar: AppBar(
         // In the world_v2 left column the back/close lead back to browse and
-        // out to the map; the add-to-space context keeps the default back.
+        // out to the map; the add-to-space context (a `course:addcourse` push)
+        // takes its `←` back-to-card from the host panel.
         leading: spaceId == null
             ? IconButton(
                 icon: const Icon(Icons.arrow_back),
@@ -246,7 +254,7 @@ class NewCoursePageState extends State<NewCoursePage> {
                 tooltip: MaterialLocalizations.of(context).backButtonTooltip,
                 onPressed: () => context.go('/courses'),
               )
-            : null,
+            : widget.embeddedCloseButton,
         title: Text(
           spaceId != null
               ? L10n.of(context).addCoursePlan
