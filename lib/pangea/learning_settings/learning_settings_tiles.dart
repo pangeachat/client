@@ -275,7 +275,10 @@ class _LearningSettingsExpansionTile extends StatelessWidget {
           leading: const Icon(Icons.lightbulb),
           title: Text(L10n.of(context).resetInstructionTooltipsTitle),
           subtitle: Text(L10n.of(context).resetInstructionTooltipsDesc),
-          onTap: viewModel.resetInstructionTooltips,
+          onTap: viewModel.resetInstructions
+              ? null
+              : viewModel.resetInstructionTooltips,
+          selected: viewModel.resetInstructions,
         ),
         SizedBox(height: 8.0),
       ],
