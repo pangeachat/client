@@ -243,10 +243,12 @@ class SpacesNavigationRail extends StatelessWidget {
                           selectedIcon: const Icon(Icons.forum),
                           onTap: () {
                             collapse();
+                            // Token-only: the chats list is a left `chats` token
+                            // over the world path `/` (no legacy `/chats` path).
                             context.go(
                               WorkspaceNav.setSection(
                                 state.uri,
-                                PRoutes.chats,
+                                PRoutes.world,
                                 const PanelToken('chats'),
                               ),
                             );
@@ -270,13 +272,15 @@ class SpacesNavigationRail extends StatelessWidget {
                           isSelected: isCourseFind,
                           onTap: () {
                             collapse();
-                            // The add-course hub is a focused full-bleed flow:
-                            // no section panel, and no chat floating over it.
+                            // Token-only: the add-course hub is a bare
+                            // `addcourse` left token over the world path `/`
+                            // (no legacy `/courses` path). keepRoom:false keeps
+                            // it a focused flow with no chat floating over it.
                             context.go(
                               WorkspaceNav.setSection(
                                 state.uri,
-                                PRoutes.courses,
-                                null,
+                                PRoutes.world,
+                                const PanelToken('addcourse'),
                                 keepRoom: false,
                               ),
                             );

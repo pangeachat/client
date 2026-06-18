@@ -32,14 +32,20 @@ abstract class LegacyRedirects {
       return '/?right=${token.encode()}';
     }
 
-    // world_v2: section roots are token-driven so the route-driven `_MainView`
-    // fallback is never needed. Chats and a course keep their path (it carries
-    // the nav highlight and, for a course, the space id) and gain their left
-    // token if missing; analytics collapses to its right-column summary token
-    // (it is not a rail section). These fire only when the token is absent, so
-    // they never loop. See `routing.instructions.md`.
+    // world_v2: section roots are token-driven and the path always collapses to
+    // `/` — section identity rides in the left token (read by `sectionFor`), not
+    // the path. The legacy `/chats` list and the bare `/courses` add-course hub
+    // each become a left token over `/`; analytics collapses to its right-column
+    // summary token. These re-resolve to null once at `/` (no path segment to
+    // match), so they never loop. See `routing.instructions.md`.
     if (segments.length == 1 && segments.first == 'chats') {
-      return _ensureLeftToken(uri, 'chats');
+      return _toRootWithLeftToken(uri, 'chats');
+    }
+    // The bare `/courses` add-course hub → a bare `addcourse` left token (the
+    // hub chooser; its steps are `addcourse:own` etc.). Length-1 so it never
+    // collides with the `/courses/:spaceid` or `/courses/own` arms below.
+    if (segments.length == 1 && segments.first == 'courses') {
+      return _toRootWithLeftToken(uri, 'addcourse');
     }
     // world_v2: a joined course is a map filter (`?m=course:<id>`) over the
     // world map plus a left `course` panel — not a `/courses/:spaceid` route.
@@ -184,11 +190,12 @@ abstract class LegacyRedirects {
     return '/?${query.join('&')}';
   }
 
-  /// Add a bare `left=<type>` token to [uri], preserving the path and every
-  /// other query param, but only when no token of that type is already present
-  /// (so it never loops on the redirect re-run). Returns null when nothing
-  /// needs adding.
-  static String? _ensureLeftToken(Uri uri, String type) {
+  /// Rewrite a legacy section root to the world path `/` with a `left=<type>`
+  /// token, adding the token if absent and **dropping the legacy path** (the
+  /// path always collapses to `/`; section identity rides in the token, read by
+  /// `sectionFor`). Every other query param is preserved. Idempotent: the result
+  /// has no path segment, so the section arms never re-fire (no loop).
+  static String _toRootWithLeftToken(Uri uri, String type) {
     final parts = uri.query.isEmpty ? <String>[] : uri.query.split('&');
     final idx =
         parts.indexWhere((p) => p == 'left' || p.startsWith('left='));
@@ -197,12 +204,15 @@ abstract class LegacyRedirects {
       final value = eq >= 0 ? parts[idx].substring(eq + 1) : '';
       final present =
           value.split(',').any((e) => e == type || e.startsWith('$type:'));
-      if (present) return null;
-      parts[idx] = 'left=${value.isEmpty ? type : '$value,$type'}';
+      if (!present) {
+        parts[idx] = 'left=${value.isEmpty ? type : '$value,$type'}';
+      }
     } else {
       parts.add('left=$type');
     }
-    return '${uri.path}?${parts.join('&')}';
+    return parts.isEmpty
+        ? PRoutes.world
+        : '${PRoutes.world}?${parts.join('&')}';
   }
 
   /// go_router top-level redirect signature adapter. After any legacy rewrite,

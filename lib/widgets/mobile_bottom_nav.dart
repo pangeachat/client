@@ -53,7 +53,7 @@ class MobileBottomNav extends StatelessWidget {
                 onTap: () => context.go(
                   WorkspaceNav.setSection(
                     state.uri,
-                    PRoutes.chats,
+                    PRoutes.world,
                     const PanelToken('chats'),
                   ),
                 ),

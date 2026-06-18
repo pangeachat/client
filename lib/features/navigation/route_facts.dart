@@ -103,6 +103,17 @@ AppSection sectionFor(Uri uri) {
   // active course filter selects the Courses section regardless of the (always
   // `/`) path. See `routing.instructions.md`.
   if (activeSpaceIdFor(uri) != null) return AppSection.courses;
+  // world_v2: section identity rides in the left tokens, not the path (which
+  // collapses to `/`). The chat list / a live room → Chats; the add-course
+  // hub/wizard token → Courses. This keeps the rail highlight correct with a
+  // bare `/` path. See `routing.instructions.md`.
+  final left = parseOpenPanels(uri).left;
+  if (left.any((t) => t.type == 'chats' || t.type == 'room')) {
+    return AppSection.chats;
+  }
+  if (left.any((t) => t.type == 'addcourse')) return AppSection.courses;
+  // Legacy inbound paths (pre-collapse bookmarks / deep links) still resolve
+  // here until the router redirect rewrites them to tokens.
   final segments = uri.pathSegments;
   if (segments.isEmpty) return AppSection.world;
   final first = segments.first;

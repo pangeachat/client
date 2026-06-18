@@ -94,9 +94,14 @@ void main() {
     });
 
     test('section roots become token-driven', () {
-      // chats keeps its path and gains its left token.
-      expect(resolve('/chats'), '/chats?left=chats');
-      expect(resolve('/chats?left=chats'), isNull); // already token-driven
+      // chats collapses to the world path `/` with its left token — the legacy
+      // `/chats` path is dropped (section identity rides in the token).
+      expect(resolve('/chats'), '/?left=chats');
+      expect(resolve('/chats?left=chats'), '/?left=chats'); // path still collapses
+      expect(resolve('/?left=chats'), isNull); // already token-driven at /
+      // the bare `/courses` add-course hub → a bare `addcourse` token at `/`.
+      expect(resolve('/courses'), '/?left=addcourse');
+      expect(resolve('/?left=addcourse'), isNull);
       // world_v2: a course is a ?m= map filter + a left course panel, NOT a
       // path. The bare course path (with or without an existing course token)
       // maps off the path to the filter + panel form.

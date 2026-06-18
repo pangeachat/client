@@ -133,7 +133,7 @@ class ChatListController extends State<ChatList>
   void clearActiveSpace() => context.go(
     WorkspaceNav.setSection(
       GoRouterState.of(context).uri,
-      PRoutes.chats,
+      PRoutes.world,
       const PanelToken('chats'),
     ),
   );

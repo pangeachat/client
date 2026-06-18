@@ -40,6 +40,15 @@ void main() {
       expect(section('/?m=course:!s:x'), AppSection.courses);
       expect(section('/?left=room:!r&m=course:!s:x'), AppSection.courses);
     });
+
+    test('section identity rides in the left token at the world path /', () {
+      // The path collapses to `/`; the rail highlight derives from the token.
+      expect(section('/?left=chats'), AppSection.chats);
+      expect(section('/?left=chats,room:!a'), AppSection.chats);
+      expect(section('/?left=room:!a'), AppSection.chats); // a lone live chat
+      expect(section('/?left=addcourse'), AppSection.courses); // the hub
+      expect(section('/?left=addcourse:own'), AppSection.courses); // a step
+    });
   });
 
   group('activeSpaceIdFor (course is the ?m= map filter, not the path)', () {
