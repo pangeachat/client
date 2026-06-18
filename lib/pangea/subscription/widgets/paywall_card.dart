@@ -5,6 +5,7 @@ import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/card_header.dart';
 import 'package:fluffychat/pangea/subscription/repo/subscription_management_repo.dart';
+import 'package:fluffychat/pangea/subscription/widgets/subscription_paywall.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PaywallCard extends StatelessWidget {
@@ -51,8 +52,10 @@ class PaywallCard extends StatelessWidget {
               width: double.infinity,
               child: TextButton(
                 onPressed: () {
-                  MatrixState.pangeaController.subscriptionController
-                      .showPaywall(context);
+                  SubscriptionPaywall.show(
+                    context,
+                    userID: Matrix.of(context).client.userID,
+                  );
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: Theme.of(

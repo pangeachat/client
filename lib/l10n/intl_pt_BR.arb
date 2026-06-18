@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-15 09:46:19.821011",
+    "@@last_modified": "2026-06-17 10:51:19.794081",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9830,6 +9830,41 @@
     },
     "activityActions": "Ações de atividade",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Recursos Pro",
+    "pronunciationTools": "Ferramentas de pronúncia",
+    "audioTranscription": "Transcrição de áudio com IA",
+    "visualLearnerSupport": "Apoio para aprendizes visuais",
+    "instantWritingTranslation": "Tradução instantânea de escrita",
+    "personalizedPracticeExercises": "Exercícios de prática personalizados",
+    "vocabularyFlashcards": "Flashcards de vocabulário",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
         "type": "String",
         "placeholders": {}
     }

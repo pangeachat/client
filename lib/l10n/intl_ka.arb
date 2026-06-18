@@ -2098,7 +2098,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-06-15 09:46:50.641090",
+    "@@last_modified": "2026-06-17 10:52:54.580068",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8042,7 +8042,7 @@
     "bhoDisplayName": "ბოჰპური",
     "bikDisplayName": "ბიკოლური",
     "bmDisplayName": "ბამბარა",
-    "bnDisplayName": "ბანგლა",
+    "bnDisplayName": "ბენგალური",
     "bnBDDisplayName": "ბენგალური (ბანგლადეში)",
     "bnINDisplayName": "ბენგალური (ინდოეთი)",
     "brDisplayName": "ბრეტონი",
@@ -10898,6 +10898,41 @@
     },
     "activityActions": "აქტივობის მოქმედებები",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "პროფესიონალური ფუნქციები",
+    "pronunciationTools": "გამოთქმის ინსტრუმენტები",
+    "audioTranscription": "AI აუდიო ტრანსკრიფცია",
+    "visualLearnerSupport": "ვიზუალური სწავლების მხარდაჭერა",
+    "instantWritingTranslation": "მყისიერი წერის თარგმანი",
+    "personalizedPracticeExercises": "პერსონალიზებული სავარჯიშოები",
+    "vocabularyFlashcards": "სიტყვების ფლეშკარტები",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
         "type": "String",
         "placeholders": {}
     }

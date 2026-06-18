@@ -1477,7 +1477,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-06-15 09:46:12.316161",
+    "@@last_modified": "2026-06-17 10:50:59.796534",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10924,6 +10924,41 @@
     },
     "activityActions": "Aktivitets handlinger",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Pro funktioner",
+    "pronunciationTools": "Udtale værktøjer",
+    "audioTranscription": "AI lydtranskription",
+    "visualLearnerSupport": "Visuel læringsstøtte",
+    "instantWritingTranslation": "Øjeblikkelig skrivetranslation",
+    "personalizedPracticeExercises": "Personlige øvelser",
+    "vocabularyFlashcards": "Ordforråd flashcards",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
         "type": "String",
         "placeholders": {}
     }

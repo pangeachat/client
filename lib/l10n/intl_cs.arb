@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-06-15 09:46:26.878148",
+    "@@last_modified": "2026-06-17 10:51:47.644966",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10384,6 +10384,41 @@
     },
     "activityActions": "Akce aktivity",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Pro funkce",
+    "pronunciationTools": "Nástroje pro výslovnost",
+    "audioTranscription": "AI přepis zvuku",
+    "visualLearnerSupport": "Podpora vizuálních učitelů",
+    "instantWritingTranslation": "Okamžitý překlad psaní",
+    "personalizedPracticeExercises": "Personalizované cvičení",
+    "vocabularyFlashcards": "Slovníkové kartičky",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
         "type": "String",
         "placeholders": {}
     }
