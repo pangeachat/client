@@ -28,6 +28,29 @@ class PanelDef {
   /// An exclusive panel collapses the others while it is open (immersive).
   final bool exclusive;
 
+  /// Mutual-exclusion groups: opening this panel as a DETAIL drops every other
+  /// open token that shares ANY of these groups, across BOTH columns. The
+  /// generalized [WorkspaceNav.openDetail] reads this instead of hand-coding
+  /// per-type drop lists. Groups in use:
+  ///  - `liveView` — at most one live Matrix timeline (`room`, `session`).
+  ///  - `detail` — at most one "zoom" detail across columns (`vocab`, `grammar`,
+  ///    `session`). A `session` is in BOTH (it's a live chat AND a detail).
+  /// Masters (a list/menu/summary/course card) declare no group; they are
+  /// replaced via [WorkspaceNav.openMaster], not by detail exclusivity.
+  final Set<String> exclusiveGroups;
+
+  /// Whether this panel hosts deeper pages in its own token param (a *push*):
+  /// settings (menu → page → leaf), a course (card → details/invite/analytics),
+  /// a room (chat → members/search/invite). Non-pushable panels have no param
+  /// depth beyond their identity.
+  final bool pushable;
+
+  /// Whether this panel is **map content** — a selection on the world map (a
+  /// course, an activity, the add-course flow). On narrow screens map content
+  /// renders as a Google-Maps bottom sheet (pin peek → draggable sheet); other
+  /// details render as a full-screen push. See `world-v2-architecture`.
+  final bool mapContent;
+
   const PanelDef({
     required this.column,
     required this.minWidth,
@@ -35,6 +58,9 @@ class PanelDef {
     required this.priority,
     this.reasonableMinWidth,
     this.exclusive = false,
+    this.exclusiveGroups = const {},
+    this.pushable = false,
+    this.mapContent = false,
   });
 
   /// The comfort floor the fold trigger uses: an explicit [reasonableMinWidth],
@@ -61,6 +87,8 @@ abstract class PanelRegistry {
       reasonableMinWidth: 480,
       idealWidth: 720,
       priority: 80,
+      exclusiveGroups: {'liveView'},
+      pushable: true, // chat → members / search / invite
     ),
     // A completed-activity-session **review** opened from the analytics sessions
     // list — the actual (locked) chat, rendered exactly like a `room`. It is a
@@ -75,6 +103,9 @@ abstract class PanelRegistry {
       reasonableMinWidth: 480,
       idealWidth: 720,
       priority: 80,
+      // A session is BOTH a live timeline (one at a time with `room`) AND a
+      // "zoom" detail (one at a time with vocab/grammar, across columns).
+      exclusiveGroups: {'liveView', 'detail'},
     ),
     'course': PanelDef(
       column: PanelColumn.left,
@@ -82,6 +113,8 @@ abstract class PanelRegistry {
       reasonableMinWidth: 480,
       idealWidth: 720,
       priority: 60,
+      pushable: true, // course card → details / invite / analytics / edit
+      mapContent: true, // selecting a course scopes the map (mobile: bottom sheet)
     ),
     // The add-course wizard's first step (own/browse/private), hosted as a
     // left-column panel instead of the route-driven card. See
@@ -92,6 +125,8 @@ abstract class PanelRegistry {
       reasonableMinWidth: 440,
       idealWidth: 600,
       priority: 45,
+      pushable: true, // hub → own / browse / private steps
+      mapContent: true, // the add-course flow is a map bottom sheet on mobile
     ),
     // Right — personal review and account surfaces.
     // settings + profile are one right-column panel (world_v2); the active
@@ -103,6 +138,7 @@ abstract class PanelRegistry {
       reasonableMinWidth: 440,
       idealWidth: 600,
       priority: 50,
+      pushable: true, // menu → page → leaf
     ),
     'profile': PanelDef(
       column: PanelColumn.right,
@@ -110,6 +146,7 @@ abstract class PanelRegistry {
       reasonableMinWidth: 440,
       idealWidth: 600,
       priority: 50,
+      pushable: true,
     ),
     'analytics': PanelDef(
       column: PanelColumn.right,
@@ -124,6 +161,7 @@ abstract class PanelRegistry {
       reasonableMinWidth: 420,
       idealWidth: 488,
       priority: 50,
+      exclusiveGroups: {'detail'},
     ),
     'grammar': PanelDef(
       column: PanelColumn.right,
@@ -131,6 +169,7 @@ abstract class PanelRegistry {
       reasonableMinWidth: 420,
       idealWidth: 488,
       priority: 50,
+      exclusiveGroups: {'detail'},
     ),
     'review': PanelDef(
       column: PanelColumn.right,

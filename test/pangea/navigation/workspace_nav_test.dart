@@ -356,4 +356,54 @@ void main() {
       );
     });
   });
+
+  group('openDetail (generic, registry-driven exclusive groups)', () {
+    test('a left room drops other room/session (liveView) but keeps the right', () {
+      var loc = WorkspaceNav.openConstructDetail(
+          u('/'), const PanelToken('vocab', 'a'), 'vocab');
+      loc = WorkspaceNav.openExclusiveLeftRoom(
+          u(loc), const PanelToken('room', '!a'));
+      loc = WorkspaceNav.openDetail(u(loc), const PanelToken('room', '!b'));
+      final lists = parseOpenPanels(u(loc));
+      expect(lists.left.where((t) => t.type == 'room').map((t) => t.param), ['!b']);
+      // vocab is `detail`, room is `liveView` — no shared group, so it survives.
+      expect(lists.right.any((t) => t.type == 'vocab'), isTrue);
+    });
+
+    test('a session (liveView+detail) drops both a room AND a vocab detail', () {
+      var loc = WorkspaceNav.openConstructDetail(
+          u('/'), const PanelToken('vocab', 'a'), 'vocab');
+      loc = WorkspaceNav.openExclusiveLeftRoom(
+          u(loc), const PanelToken('room', '!a'));
+      loc = WorkspaceNav.openDetail(u(loc), const PanelToken('session', '!s'));
+      final lists = parseOpenPanels(u(loc));
+      expect(lists.left.where((t) => t.type == 'room'), isEmpty);
+      expect(lists.left.single, const PanelToken('session', '!s'));
+      expect(lists.right.any((t) => t.type == 'vocab' || t.type == 'grammar'),
+          isFalse);
+    });
+  });
+
+  group('pushPage / popPage (generic param push on a pushable panel)', () {
+    test('push deepens the param; pop returns one level then to the root', () {
+      var loc = WorkspaceNav.pushPage(u('/'), 'settings', 'security');
+      expect(parseOpenPanels(u(loc)).right.single,
+          const PanelToken('settings', 'security'));
+      loc = WorkspaceNav.pushPage(u(loc), 'settings', 'security/password');
+      expect(parseOpenPanels(u(loc)).right.single,
+          const PanelToken('settings', 'security/password'));
+      loc = WorkspaceNav.popPage(u(loc), 'settings', 'security/password');
+      expect(parseOpenPanels(u(loc)).right.single,
+          const PanelToken('settings', 'security'));
+      loc = WorkspaceNav.popPage(u(loc), 'settings', 'security');
+      expect(parseOpenPanels(u(loc)).right.single, const PanelToken('settings'));
+    });
+
+    test('pushing keeps other panels in the column', () {
+      var loc = WorkspaceNav.openRight(u('/'), const PanelToken('analytics', 'vocab'));
+      loc = WorkspaceNav.pushPage(u(loc), 'settings', 'learning');
+      final right = parseOpenPanels(u(loc)).right.map((t) => t.type).toSet();
+      expect(right.containsAll({'analytics', 'settings'}), isTrue);
+    });
+  });
 }

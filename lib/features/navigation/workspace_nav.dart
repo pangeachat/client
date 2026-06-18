@@ -1,3 +1,4 @@
+import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
@@ -72,46 +73,61 @@ abstract class WorkspaceNav {
   static String openLeft(Uri current, PanelToken token, {bool atStart = false}) =>
       _mutate(current, 'left', (tokens) => _add(tokens, token, atStart));
 
-  /// Open a live room panel, enforcing the one-live-view rule: any *other*
-  /// `room` **or `session`** token in the left list is dropped first, because the
-  /// Matrix room timeline is shared and two live views would overwrite each
-  /// other (see `routing.instructions.md`). The right column is left untouched —
-  /// a live chat is independent of the right-column detail slot, so opening one
-  /// does NOT close an open vocab/grammar detail. Other left surfaces (the chat
-  /// list, a course that scopes the room) are kept, to the *left* of the room.
+  /// Open (or replace) a DETAIL panel, enforcing the registry's exclusive groups
+  /// across BOTH columns: any open token sharing an `exclusiveGroup` with [token]
+  /// is dropped (one live view; one "zoom" detail across columns — see
+  /// [PanelDef.exclusiveGroups]). The token seats in its own column — a right
+  /// detail blooms at the front (left of its master); a left detail appends
+  /// (after the list/course it details). This is the one generalized detail
+  /// open; the named helpers below delegate to it. See `world-v2-architecture`.
+  static String openDetail(Uri current, PanelToken token) {
+    final col = PanelRegistry.defFor(token.type)?.column ?? PanelColumn.left;
+    return _mutateBoth(
+      current,
+      (left) => _placeDetail(left, token, PanelColumn.left, col),
+      (right) => _placeDetail(right, token, PanelColumn.right, col),
+    );
+  }
+
+  /// Drop conflicts (and the token itself, for dedup) from one column's list,
+  /// then seat [token] only if it belongs to [thisCol] (front for right, end for
+  /// left). The other column just sheds conflicts.
+  static List<PanelToken> _placeDetail(
+    List<PanelToken> tokens,
+    PanelToken token,
+    PanelColumn thisCol,
+    PanelColumn tokenCol,
+  ) {
+    final next =
+        tokens.where((t) => t != token && !_conflicts(token, t)).toList();
+    if (thisCol == tokenCol) {
+      thisCol == PanelColumn.right ? next.insert(0, token) : next.add(token);
+    }
+    return next;
+  }
+
+  /// True when [a] and [b] share any exclusive group (per the registry).
+  static bool _conflicts(PanelToken a, PanelToken b) {
+    final ga = PanelRegistry.defFor(a.type)?.exclusiveGroups ?? const <String>{};
+    final gb = PanelRegistry.defFor(b.type)?.exclusiveGroups ?? const <String>{};
+    return ga.any(gb.contains);
+  }
+
+  /// A live room (chat) is a left detail in the `liveView` group, so opening one
+  /// drops any other room/session and leaves the right column untouched.
   static String openExclusiveLeftRoom(Uri current, PanelToken token) =>
-      _mutate(current, 'left', (tokens) {
-        final next = tokens
-            .where((t) => t.type != 'room' && t.type != 'session')
-            .toList();
-        next.add(token);
-        return next;
-      });
+      openDetail(current, token);
 
-  /// Open a completed-activity-`session` review (the locked chat) on the left.
-  /// Unlike a live `room`, a session belongs to the single **detail slot**: it
-  /// drops any open vocab/grammar detail on the right, and a construct detail
-  /// drops it (one detail at a time across both columns —
-  /// [openConstructDetail]). It also obeys one-live-view, so any other
-  /// room/session drops. See `routing.instructions.md`.
+  /// A completed-activity `session` review is a left detail in BOTH `liveView`
+  /// and `detail`, so opening it drops any other room/session AND any
+  /// vocab/grammar detail (one detail across columns).
   static String openExclusiveSession(Uri current, PanelToken token) =>
-      _mutateBoth(
-        current,
-        (left) => [
-          ...left.where((t) => t.type != 'room' && t.type != 'session'),
-          token,
-        ],
-        (right) =>
-            right.where((t) => t.type != 'vocab' && t.type != 'grammar').toList(),
-      );
+      openDetail(current, token);
 
-  /// Open a vocab/grammar construct detail — the single **detail slot** across
-  /// both columns. Drops any other construct detail (vocab/grammar) AND any open
-  /// activity-`session` review on the left, so at most one of vocab / grammar /
-  /// session shows at a time. The detail seats at the left edge of the right
-  /// group, in front of the pinned `analytics` summary (kept, or seated at
-  /// [summaryTab] from a cold start), so the summary rests at the edge and its
-  /// detail blooms to its left. See `routing.instructions.md`.
+  /// Open a vocab/grammar construct detail (the `detail` group): drops the other
+  /// construct detail and any `session`, seats the detail at the front of the
+  /// right group, and ensures its pinned `analytics` summary master exists
+  /// (seated at [summaryTab] from a cold start). See `world-v2-architecture`.
   static String openConstructDetail(
     Uri current,
     PanelToken detail,
@@ -119,11 +135,10 @@ abstract class WorkspaceNav {
   ) =>
       _mutateBoth(
         current,
-        (left) => left.where((t) => t.type != 'session').toList(),
+        (left) => left.where((t) => !_conflicts(detail, t)).toList(),
         (right) {
-          final next = right
-              .where((t) => t.type != 'vocab' && t.type != 'grammar')
-              .toList();
+          final next =
+              right.where((t) => t != detail && !_conflicts(detail, t)).toList();
           next.insert(0, detail);
           if (!next.any((t) => t.type == 'analytics')) {
             next.add(PanelToken('analytics', summaryTab));
@@ -224,31 +239,39 @@ abstract class WorkspaceNav {
   static String setRight(Uri current, List<PanelToken> tokens) =>
       _mutate(current, 'right', (_) => tokens);
 
-  /// Open the profile + settings panel on the right at [page] (a sub-page id
-  /// like `learning` or `security/password`; null/empty is the menu). The whole
-  /// settings tree is one right-column panel whose param is the active page, so
-  /// navigating to a sub-page is opening the `settings` token with a new param
-  /// (a *push*) — the existing `settings` token is replaced, not stacked. Other
-  /// right panels are kept. See `routing.instructions.md`.
-  static String openSettings(Uri current, {String? page}) =>
-      _mutate(current, 'right', (tokens) {
-        final next = tokens.where((t) => t.type != 'settings').toList();
-        next.add(
-          page == null || page.isEmpty
-              ? const PanelToken('settings')
-              : PanelToken('settings', page),
-        );
-        return next;
-      });
+  /// Push a deeper page into a `pushable` panel's own token param (the panel's
+  /// param IS its page path): settings menu→page→leaf, a course card→details/
+  /// invite, a room→members/search. Replaces that panel's token with the
+  /// deeper-page token, keeping every other panel. A null/empty [page] is the
+  /// panel's root. See `world-v2-architecture`.
+  static String pushPage(Uri current, String type, String? page) {
+    final col =
+        PanelRegistry.defFor(type)?.column == PanelColumn.right ? 'right' : 'left';
+    return _mutate(current, col, (tokens) {
+      final next = tokens.where((t) => t.type != type).toList();
+      next.add(
+        page == null || page.isEmpty ? PanelToken(type) : PanelToken(type, page),
+      );
+      return next;
+    });
+  }
 
-  /// Pop one level of settings depth (the panel's back arrow): a `security/x`
-  /// sub-page returns to `security`, and any top-level sub-page returns to the
-  /// menu. Closing the menu itself drops the token (see [closeRight]).
-  static String settingsBack(Uri current, String page) {
+  /// Pop one page level off a pushable panel (its back arrow): a `a/b` page
+  /// returns to `a`; a top-level page returns to the panel's root.
+  static String popPage(Uri current, String type, String page) {
     final parent =
         page.contains('/') ? page.substring(0, page.lastIndexOf('/')) : '';
-    return openSettings(current, page: parent.isEmpty ? null : parent);
+    return pushPage(current, type, parent.isEmpty ? null : parent);
   }
+
+  /// The profile + settings panel on the right at [page] (null/empty is the
+  /// menu). A thin wrapper over the generalized [pushPage]/[popPage]; the
+  /// settings tree is one pushable right panel whose param is the active page.
+  static String openSettings(Uri current, {String? page}) =>
+      pushPage(current, 'settings', page);
+
+  static String settingsBack(Uri current, String page) =>
+      popPage(current, 'settings', page);
 
   static List<PanelToken> _add(
     List<PanelToken> tokens,
