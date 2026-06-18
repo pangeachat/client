@@ -97,11 +97,14 @@ enum ConstructUseTypeEnum {
 
   // grammar error activity
   corGE,
-  incGE,
-}
+  incGE;
 
-extension ConstructUseTypeExtension on ConstructUseTypeEnum {
-  String get string => toString().split('.').last;
+  static ConstructUseTypeEnum fromString(String value) {
+    return ConstructUseTypeEnum.values.firstWhere(
+      (e) => e.name == value,
+      orElse: () => ConstructUseTypeEnum.nan,
+    );
+  }
 
   String description(BuildContext context) {
     switch (this) {
@@ -525,14 +528,5 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       default:
         return false;
     }
-  }
-}
-
-class ConstructUseTypeUtil {
-  static ConstructUseTypeEnum fromString(String value) {
-    return ConstructUseTypeEnum.values.firstWhere(
-      (e) => e.string == value,
-      orElse: () => ConstructUseTypeEnum.nan,
-    );
   }
 }
