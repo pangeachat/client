@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/tokens/collectable_tokens_mixin.dart';
 import 'package:fluffychat/pangea/tokens/token_rendering_util.dart';
 import 'package:fluffychat/pangea/tokens/tokens_util.dart';
@@ -146,6 +147,7 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
   void _selectVocab(Vocab vocab, {bool isNew = false}) {
     setState(() => _selectedVocab = vocab);
     if (isNew) _onSelectNewVocab(vocab);
+    TtsController.tryToSpeak(vocab.lemma, langCode: widget.langCode);
     _showWordCard(vocab);
   }
 
