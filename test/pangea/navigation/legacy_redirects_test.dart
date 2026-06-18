@@ -19,17 +19,19 @@ void main() {
       expect(resolve('/rooms/user_home'), '/profile');
     });
 
-    test('settings/profile paths become the right-column settings token', () {
-      // world_v2: the settings/profile tree is a right-column panel, so a
-      // direct /settings or /profile location is rewritten to its token.
+    test('settings/profile paths become menu master + page detail tokens', () {
+      // world_v2 master/detail: the menu is the `settings` master; a sub-page
+      // opens beside it as a `settingspage` detail (page first, menu kept).
       expect(resolve('/settings'), '/?right=settings');
-      expect(resolve('/settings/learning'), '/?right=settings:learning');
+      expect(resolve('/settings/learning'),
+          '/?right=settingspage:learning,settings');
       expect(
         resolve('/settings/security/password'),
-        '/?right=settings:security%2Fpassword',
+        '/?right=settingspage:security%2Fpassword,settings',
       );
       expect(resolve('/profile'), '/?right=settings');
-      expect(resolve('/profile/edit'), '/?right=settings:profile%2Fedit');
+      expect(resolve('/profile/edit'),
+          '/?right=settingspage:profile%2Fedit,settings');
     });
 
     test('find/create course flows keep literal names', () {

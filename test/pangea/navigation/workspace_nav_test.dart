@@ -288,31 +288,57 @@ void main() {
       expect(right.any((t) => t.type == 'analytics'), isTrue);
     });
 
-    test('opening a page replaces the settings token param (a push)', () {
-      var loc = WorkspaceNav.openSettings(u('/'), page: 'security');
-      loc = WorkspaceNav.openSettings(u(loc), page: 'security/password');
-      final settings = parseOpenPanels(u(loc))
-          .right
-          .where((t) => t.type == 'settings')
-          .toList();
-      expect(settings.length, 1);
-      expect(settings.single.param, 'security/password'); // slash survives
+    test('opening a page seats it as a detail BESIDE the menu master', () {
+      final loc = WorkspaceNav.openSettings(u('/'), page: 'learning');
+      final right = parseOpenPanels(u(loc)).right;
+      // page detail blooms at the front; the menu master is kept behind it.
+      expect(right.map((t) => t.type), ['settingspage', 'settings']);
+      expect(right.first.param, 'learning');
     });
 
-    test('settingsBack pops one level; a top-level page returns to the menu', () {
+    test('opening another page replaces the page detail (one at a time)', () {
+      var loc = WorkspaceNav.openSettings(u('/'), page: 'security');
+      loc = WorkspaceNav.openSettings(u(loc), page: 'security/password');
+      final pages = parseOpenPanels(u(loc))
+          .right
+          .where((t) => t.type == 'settingspage')
+          .toList();
+      expect(pages.length, 1);
+      expect(pages.single.param, 'security/password'); // slash survives
+      expect(parseOpenPanels(u(loc)).right.any((t) => t.type == 'settings'),
+          isTrue); // menu still there
+    });
+
+    test('settingsBack: a leaf pops to its parent page; a top-level page '
+        'returns to the menu (drops the page detail)', () {
       final toSecurity = WorkspaceNav.settingsBack(
         u(WorkspaceNav.openSettings(u('/'), page: 'security/password')),
         'security/password',
       );
       expect(
-        parseOpenPanels(u(toSecurity)).right.single.param,
+        parseOpenPanels(u(toSecurity))
+            .right
+            .firstWhere((t) => t.type == 'settingspage')
+            .param,
         'security',
       );
       final toMenu = WorkspaceNav.settingsBack(
         u(WorkspaceNav.openSettings(u('/'), page: 'learning')),
         'learning',
       );
-      expect(parseOpenPanels(u(toMenu)).right.single.param, isNull);
+      final right = parseOpenPanels(u(toMenu)).right;
+      expect(right.any((t) => t.type == 'settingspage'), isFalse); // page gone
+      expect(right.single.type, 'settings'); // menu remains
+    });
+
+    test('closeSettings drops the menu AND its page, keeps the rest', () {
+      var loc = WorkspaceNav.openRight(u('/'), const PanelToken('analytics', 'vocab'));
+      loc = WorkspaceNav.openSettings(u(loc), page: 'learning');
+      loc = WorkspaceNav.closeSettings(u(loc));
+      final right = parseOpenPanels(u(loc)).right;
+      expect(right.any((t) => t.type == 'settings' || t.type == 'settingspage'),
+          isFalse);
+      expect(right.single, const PanelToken('analytics', 'vocab'));
     });
   });
 
@@ -386,24 +412,25 @@ void main() {
 
   group('pushPage / popPage (generic param push on a pushable panel)', () {
     test('push deepens the param; pop returns one level then to the root', () {
-      var loc = WorkspaceNav.pushPage(u('/'), 'settings', 'security');
+      var loc = WorkspaceNav.pushPage(u('/'), 'settingspage', 'security');
       expect(parseOpenPanels(u(loc)).right.single,
-          const PanelToken('settings', 'security'));
-      loc = WorkspaceNav.pushPage(u(loc), 'settings', 'security/password');
+          const PanelToken('settingspage', 'security'));
+      loc = WorkspaceNav.pushPage(u(loc), 'settingspage', 'security/password');
       expect(parseOpenPanels(u(loc)).right.single,
-          const PanelToken('settings', 'security/password'));
-      loc = WorkspaceNav.popPage(u(loc), 'settings', 'security/password');
+          const PanelToken('settingspage', 'security/password'));
+      loc = WorkspaceNav.popPage(u(loc), 'settingspage', 'security/password');
       expect(parseOpenPanels(u(loc)).right.single,
-          const PanelToken('settings', 'security'));
-      loc = WorkspaceNav.popPage(u(loc), 'settings', 'security');
-      expect(parseOpenPanels(u(loc)).right.single, const PanelToken('settings'));
+          const PanelToken('settingspage', 'security'));
+      loc = WorkspaceNav.popPage(u(loc), 'settingspage', 'security');
+      expect(
+          parseOpenPanels(u(loc)).right.single, const PanelToken('settingspage'));
     });
 
     test('pushing keeps other panels in the column', () {
       var loc = WorkspaceNav.openRight(u('/'), const PanelToken('analytics', 'vocab'));
-      loc = WorkspaceNav.pushPage(u(loc), 'settings', 'learning');
+      loc = WorkspaceNav.pushPage(u(loc), 'settingspage', 'learning');
       final right = parseOpenPanels(u(loc)).right.map((t) => t.type).toSet();
-      expect(right.containsAll({'analytics', 'settings'}), isTrue);
+      expect(right.containsAll({'analytics', 'settingspage'}), isTrue);
     });
   });
 }

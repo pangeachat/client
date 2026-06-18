@@ -264,14 +264,55 @@ abstract class WorkspaceNav {
     return pushPage(current, type, parent.isEmpty ? null : parent);
   }
 
-  /// The profile + settings panel on the right at [page] (null/empty is the
-  /// menu). A thin wrapper over the generalized [pushPage]/[popPage]; the
-  /// settings tree is one pushable right panel whose param is the active page.
-  static String openSettings(Uri current, {String? page}) =>
-      pushPage(current, 'settings', page);
+  /// Open the settings/profile MENU as the right-column master (page null/empty),
+  /// or a settings PAGE as its detail beside the menu. A page blooms at the front
+  /// of the right group with the `settings` menu master kept (or seated) behind
+  /// it — so they coexist when width allows and fold to a push when not. A
+  /// `/`-path page is a leaf (its own back pops it). See `world-v2-architecture`.
+  static String openSettings(Uri current, {String? page}) {
+    if (page == null || page.isEmpty) {
+      return _mutate(current, 'right', (tokens) {
+        final next = tokens
+            .where((t) => t.type != 'settings' && t.type != 'settingspage')
+            .toList();
+        next.add(const PanelToken('settings'));
+        return next;
+      });
+    }
+    final detail = PanelToken('settingspage', page);
+    return _mutate(current, 'right', (tokens) {
+      final next = tokens.where((t) => t.type != 'settingspage').toList();
+      next.insert(0, detail);
+      if (!next.any((t) => t.type == 'settings')) {
+        next.add(const PanelToken('settings'));
+      }
+      return next;
+    });
+  }
 
-  static String settingsBack(Uri current, String page) =>
-      popPage(current, 'settings', page);
+  /// Close the whole settings/profile panel — the menu master AND its open page
+  /// detail — keeping the rest of the right column. Closing the master drops its
+  /// detail (it has no meaning without the menu).
+  static String closeSettings(Uri current) => _mutate(
+        current,
+        'right',
+        (tokens) => tokens
+            .where((t) =>
+                t.type != 'settings' &&
+                t.type != 'profile' &&
+                t.type != 'settingspage')
+            .toList(),
+      );
+
+  /// The settings panel's back: a leaf (`a/b`) pops to its parent page; a
+  /// top-level page returns to the menu (drops the page detail, menu remains).
+  static String settingsBack(Uri current, String page) {
+    if (page.contains('/')) {
+      return openSettings(
+          current, page: page.substring(0, page.lastIndexOf('/')));
+    }
+    return closeRight(current, PanelToken('settingspage', page));
+  }
 
   static List<PanelToken> _add(
     List<PanelToken> tokens,

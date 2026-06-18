@@ -132,20 +132,35 @@ abstract class PanelRegistry {
     // settings + profile are one right-column panel (world_v2); the active
     // settings sub-page is the `settings` token's param. See
     // routing.instructions.md.
+    // The settings/profile MENU — a right-column master. A selected page opens
+    // beside it as a `settingspage` detail (coexist when width allows, fold to a
+    // push when not). Priority below the page so the menu folds first under
+    // pressure (the page keeps the column, the menu one back-step away).
     'settings': PanelDef(
       column: PanelColumn.right,
       minWidth: 360,
       reasonableMinWidth: 440,
-      idealWidth: 600,
-      priority: 50,
-      pushable: true, // menu → page → leaf
+      idealWidth: 520,
+      priority: 40,
     ),
     'profile': PanelDef(
       column: PanelColumn.right,
       minWidth: 360,
       reasonableMinWidth: 440,
+      idealWidth: 520,
+      priority: 40,
+    ),
+    // A settings/profile PAGE (learning, style, security, …) — the menu's
+    // detail. Its param is the full page path; a `/`-path is a leaf reached by a
+    // push (the page's own back pops it). One page at a time (its own exclusive
+    // group), pushable for leaves. See `world-v2-architecture`.
+    'settingspage': PanelDef(
+      column: PanelColumn.right,
+      minWidth: 360,
+      reasonableMinWidth: 440,
       idealWidth: 600,
-      priority: 50,
+      priority: 55,
+      exclusiveGroups: {'settingsdetail'},
       pushable: true,
     ),
     'analytics': PanelDef(

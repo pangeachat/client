@@ -27,9 +27,12 @@ abstract class LegacyRedirects {
               ? 'profile/${segments.sublist(1).join('/')}'
               : '')
           : segments.sublist(1).join('/');
-      final token =
-          sub.isEmpty ? const PanelToken('settings') : PanelToken('settings', sub);
-      return '/?right=${token.encode()}';
+      // world_v2 master/detail: the menu is the `settings` master; a sub-page
+      // opens beside it as a `settingspage` detail (front of the right group,
+      // menu kept). A bare /settings or /profile is just the menu.
+      final menu = const PanelToken('settings').encode();
+      if (sub.isEmpty) return '/?right=$menu';
+      return '/?right=${PanelToken('settingspage', sub).encode()},$menu';
     }
 
     // world_v2: section roots are token-driven and the path always collapses to

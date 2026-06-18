@@ -57,11 +57,12 @@ class WorkspaceRightPanel extends StatelessWidget {
     final l10n = L10n.of(context);
 
     // Centralized close affordance (see close_affordance.dart). A `pushable`
-    // panel with a page param is a push (`←` pops one page level via popPage); a
-    // folded detail reveals its master (`←`); everything else dismisses (`X`).
+    // detail whose param is a `/`-path is at a LEAF (`←` pops one page level via
+    // popPage); a folded detail reveals its master (`←`); everything else
+    // dismisses (`X`).
     final page = token.param;
     final pushable = PanelRegistry.defFor(token.type)?.pushable ?? false;
-    final isPushed = pushable && page != null && page.isNotEmpty;
+    final isPushed = pushable && page != null && page.contains('/');
     final aff =
         CloseAffordance.of(isPushedPage: isPushed, revealsMaster: foldedOver);
     final leadingIcon = aff.showBack ? Icons.arrow_back : Icons.close;
@@ -72,11 +73,12 @@ class WorkspaceRightPanel extends StatelessWidget {
         ? () => context.go(WorkspaceNav.popPage(currentUri, token.type, page))
         : () => _close(context);
 
-    Widget card(String title, Widget child) => _card(
+    Widget card(String title, Widget child, {VoidCallback? onLeadingOverride}) =>
+        _card(
           context,
           icon: leadingIcon,
           tooltip: leadingTooltip,
-          onLeading: onLeading,
+          onLeading: onLeadingOverride ?? onLeading,
           title: title,
           child: child,
         );
@@ -87,10 +89,20 @@ class WorkspaceRightPanel extends StatelessWidget {
         return card(title, child);
       case 'settings':
       case 'profile':
-        // The whole profile + settings tree in one right-column panel; identity
-        // is the token param (menu = root → X; a sub-page = push → ← pops).
-        final isMenu = page == null || page.isEmpty;
-        return card(isMenu ? l10n.settings : '', SettingsPanel(subPath: page));
+        // The settings/profile MENU master. Closing it drops its open page too
+        // (the page has no meaning without the menu). The page opens beside it
+        // as a `settingspage` detail (below).
+        return card(
+          l10n.settings,
+          const SettingsPanel(),
+          onLeadingOverride: () =>
+              context.go(WorkspaceNav.closeSettings(currentUri)),
+        );
+      case 'settingspage':
+        // The menu's detail: a settings/profile page. A top-level page's close
+        // reveals the menu (X coexisting, ← folded); a `/`-leaf pushes, so ←
+        // pops to its parent page (handled by [onLeading]).
+        return card('', SettingsPanel(subPath: page));
       case 'vocab':
       case 'grammar':
         final construct = _construct;
