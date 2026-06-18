@@ -54,6 +54,8 @@ class ActivityStatsMenu extends StatelessWidget {
   bool get _showEndForAll =>
       !_activityComplete && room.isRoomAdmin && !_isTwoPersonBotActivity;
 
+  bool get _showAnyButton => !_activityComplete && room.hasPickedRole;
+
   bool get _showDoneButtonHint => _showEndForMe && room.hasCompletedOwnGoals;
 
   List<ActivityRoleGoal> get _goals => room.ownRole?.allGoals ?? [];
@@ -249,11 +251,9 @@ class ActivityStatsMenu extends StatelessWidget {
                     color: theme.colorScheme.surface,
                     padding: EdgeInsets.fromLTRB(
                       12.0,
-                      remainingGoals.isEmpty ? 12.0 : 0.0,
+                      remainingGoals.isEmpty && _showAnyButton ? 12.0 : 0.0,
                       12.0,
-                      _showWaitNotDone || _showEndForMe || _showEndForAll
-                          ? 16.0
-                          : 0,
+                      _showAnyButton ? 16.0 : 0,
                     ),
                     child: Column(
                       spacing: 12.0,
@@ -263,9 +263,12 @@ class ActivityStatsMenu extends StatelessWidget {
                           Column(
                             children: remainingGoals
                                 .map(
-                                  (g) => GoalStatusWidget(
-                                    goal: g,
-                                    complete: room.isOwnGoalCompleted(g.id),
+                                  (g) => SizedBox(
+                                    height: 55.0,
+                                    child: GoalStatusWidget(
+                                      goal: g,
+                                      complete: room.isOwnGoalCompleted(g.id),
+                                    ),
                                   ),
                                 )
                                 .toList(),
