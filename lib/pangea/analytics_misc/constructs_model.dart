@@ -3,8 +3,6 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -101,11 +99,11 @@ class OneConstructUse {
   factory OneConstructUse.fromJson(Map<String, dynamic> json) {
     debugger(when: kDebugMode && json['constructType'] == null);
 
-    final ConstructTypeEnum constructType = json['constructType'] != null
+    final constructType = json['constructType'] != null
         ? ConstructTypeEnum.fromString(json['constructType'])
         : ConstructTypeEnum.vocab;
 
-    final useType = ConstructUseTypeUtil.fromString(json['useType']);
+    final useType = ConstructUseTypeEnum.fromString(json['useType']);
 
     return OneConstructUse(
       useType: useType,
@@ -124,7 +122,7 @@ class OneConstructUse {
   }
 
   Map<String, dynamic> toJson() => {
-    'useType': useType.string,
+    'useType': useType.name,
     'chatId': metadata.roomId,
     'timeStamp': metadata.timeStamp.toIso8601String(),
     'form': form,
@@ -168,46 +166,23 @@ class OneConstructUse {
     ConstructTypeEnum constructType,
   ) {
     final categoryEntry = json['cat'] ?? json['categories'];
-
-    if (constructType == ConstructTypeEnum.vocab) {
-      final String? category = categoryEntry is String
-          ? categoryEntry
-          : categoryEntry is List && categoryEntry.isNotEmpty
-          ? categoryEntry.first
-          : null;
-      return category ?? "Other";
-    }
-
-    final morphs = GrammarConstructsProvider.getFeaturesAndTags();
-
-    if (categoryEntry == null) {
-      return morphs.guessMorphCategory(json["lemma"]);
-    }
-
-    if ((categoryEntry is List)) {
-      if (categoryEntry.isEmpty) {
-        return morphs.guessMorphCategory(json["lemma"]);
-      }
-      return categoryEntry.first;
-    } else if (categoryEntry is String) {
+    if (categoryEntry is String) {
       return categoryEntry;
     }
 
-    debugPrint(
-      "Category entry is not a list or string -${json['cat'] ?? json['categories']}-",
-    );
-    return morphs.guessMorphCategory(json["lemma"]);
-  }
+    if (constructType == ConstructTypeEnum.vocab) {
+      final category = categoryEntry is List ? categoryEntry.firstOrNull : null;
+      return category ?? "Other";
+    }
 
-  Room? getRoom(Client client) {
-    if (metadata.roomId == null) return null;
-    return client.getRoomById(metadata.roomId!);
-  }
+    final lemma = json["lemma"];
+    final morphs = GrammarConstructsProvider.getFeaturesAndTags();
 
-  Future<Event?> getEvent(Client client) async {
-    final Room? room = getRoom(client);
-    if (room == null || metadata.eventId == null) return null;
-    return room.getEventById(metadata.eventId!);
+    if (categoryEntry is List && categoryEntry.isNotEmpty) {
+      return categoryEntry.first;
+    }
+
+    return morphs.guessMorphCategory(lemma);
   }
 
   Color pointValueColor(BuildContext context) {
@@ -215,45 +190,21 @@ class OneConstructUse {
     return xp > 0 ? AppConfig.gold : Colors.red;
   }
 
-  ConstructIdentifier get identifier {
-    final id = ConstructIdentifier(
-      lemma: lemma,
-      type: constructType,
-      category: category,
-    );
-
-    if (metadata.timeStamp.isAfter(DateTime(2026, 3, 16)) &&
-        constructType == ConstructTypeEnum.morph &&
-        MorphFeaturesEnum.fromString(category) == MorphFeaturesEnum.Unknown) {
-      ErrorHandler.logError(
-        e: Exception("Morph feature not found"),
-        data: {
-          "category": category,
-          "lemma": lemma,
-          "type": constructType,
-          "metadata": metadata.toJson(),
-        },
-      );
-    }
-
-    return id;
-  }
+  ConstructIdentifier get identifier => ConstructIdentifier(
+    lemma: lemma,
+    type: constructType,
+    category: category,
+  );
 }
 
 class ConstructUseMetaData {
-  String? eventId;
-  String? roomId;
-  DateTime timeStamp;
+  final String? eventId;
+  final String? roomId;
+  final DateTime timeStamp;
 
   ConstructUseMetaData({
     required this.roomId,
     required this.timeStamp,
     this.eventId,
   });
-
-  Map<String, dynamic> toJson() => {
-    'eventID': eventId,
-    'roomID': roomId,
-    'timestamp': timeStamp.toIso8601String(),
-  };
 }

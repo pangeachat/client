@@ -1,6 +1,5 @@
 import 'package:collection/collection.dart';
 
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/morphs/default_grammar_constructs_response.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
 
@@ -97,17 +96,21 @@ class MorphFeaturesAndTags {
   }
 
   String guessMorphCategory(String morphLemma) {
-    for (final featureTags in _features) {
-      if (featureTags.tags.any((t) => t.value == morphLemma)) {
-        return featureTags.feature.value;
-      }
-    }
-    ErrorHandler.logError(
-      m: "Morph construct lemma $morphLemma not found in morph categories and labels",
-      data: {"morphLemma": morphLemma},
-    );
-    return "Other";
+    final cached = _morphCategoriesCache[morphLemma];
+    if (cached != null) return cached;
+
+    final guess =
+        _features
+            .firstWhereOrNull((f) => f.tags.any((t) => t.value == morphLemma))
+            ?.feature
+            .value ??
+        "Other";
+
+    _morphCategoriesCache[morphLemma] = guess;
+    return guess;
   }
+
+  static final Map<String, String> _morphCategoriesCache = {};
 }
 
 class MorphFeatureTags {
