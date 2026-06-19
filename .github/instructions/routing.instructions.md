@@ -216,6 +216,19 @@ content; an in-course chat or an activity opened from the course instead takes t
 screen as its own panel / immersive surface. On a wide screen the same course is
 an ordinary left panel beside the map.
 
+**Tapping a map pin** opens its preview as a bottom sheet on a narrow screen
+(the wide screen keeps the preview popup glued to the pin). The map owns that
+transient selection, so it signals the shell (via a small controller) to hide the
+bottom nav while the sheet is up, and the shell clears the selection when a
+full-screen panel later covers the map (so the sheet doesn't linger).
+
+**The narrow bottom nav is only the section switcher** — World, Chats, and the
+course switcher (Analytics and Profile are reached from the cluster, not here). It
+shows only at a section root: the bare map, the chat list, or the courses list. A
+focused detail (a chat, a settings/analytics/construct page, a session) hides it,
+and a bottom sheet (a course, a tapped pin) replaces it. So the bar is present
+only when you are choosing *where* to go, never while you are *in* something.
+
 ## How each surface opens
 
 One entry point is canonical per surface, on every form factor, so the same tap

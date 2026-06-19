@@ -128,7 +128,6 @@ class WorkspaceShell extends StatelessWidget {
     // side; reserve that margin so left panels and the camera padding clear it.
     const chromeMargin = 12.0;
     final columnWidth = railWidth == 0 ? 0.0 : railWidth + chromeMargin * 2;
-    final showBottomNav = !isColumnMode && navRail;
 
     // The effective canvas (an open activity overlay already resolves to a
     // detail panel inside [canvasFor]).
@@ -197,6 +196,36 @@ class WorkspaceShell extends StatelessWidget {
     }
     final isMobileCourse = mobileCourseIndex != null;
 
+    // The narrow bottom nav is only the section switcher (World / Chats /
+    // Courses), so it shows only at a "section-root" level: the bare map (no
+    // focused panel), the chat list, or the courses list. Any focused DETAIL (a
+    // chat, a settings/analytics/vocab page, a session) hides it — you back out
+    // via the panel's own control — and a bottom SHEET (a course, or a tapped
+    // pin) replaces it outright (the course case falls out here since `course`
+    // isn't a section-root type; the pin case is handled by the MapPinController
+    // listener on the bar below). See `routing.instructions.md`.
+    String? focusedNarrowType;
+    if (!isColumnMode) {
+      for (var i = 0; i < leftTokens.length; i++) {
+        if (layout.left[i].vis == PanelVis.full) {
+          focusedNarrowType = leftTokens[i].type;
+          break;
+        }
+      }
+      if (focusedNarrowType == null) {
+        for (var i = 0; i < rightTokens.length; i++) {
+          if (layout.right[i].vis == PanelVis.full) {
+            focusedNarrowType = rightTokens[i].type;
+            break;
+          }
+        }
+      }
+    }
+    final atSectionRoot = focusedNarrowType == null ||
+        focusedNarrowType == 'chats' ||
+        focusedNarrowType == 'addcourse';
+    final showBottomNav = !isColumnMode && navRail && atSectionRoot;
+
     // The map shows behind as a map hole (full) or — in column mode — alongside
     // a detail; this gates the cluster.
     final mapVisible =
@@ -241,9 +270,17 @@ class WorkspaceShell extends StatelessWidget {
     final MapContext mapContext = coursePlanId == null
         ? const WorldMapContext()
         : CourseMapContext(coursePlanId);
+    // A full-screen panel on a narrow screen covers the map, so dismiss any
+    // lingering map-pin preview — otherwise its [MapPinController] flag would keep
+    // the bottom nav hidden at a section root (chats / courses list). A course
+    // SHEET leaves the map visible above it, so it does not clear the pin. The
+    // map clears its own selection in response. See `routing.instructions.md`.
+    final mapCoveredByPanel =
+        !isColumnMode && focusedNarrowType != null && !isMobileCourse;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       MapContextController.set(mapContext);
       PanelFocusController.instance.set(focusedLeftToken);
+      if (mapCoveredByPanel) MapPinController.set(false);
     });
 
     // `?activity=<id>` opens the activity detail in-place over the map.
@@ -258,8 +295,17 @@ class WorkspaceShell extends StatelessWidget {
 
     return ScaffoldMessenger(
       child: Scaffold(
+        // At a section-root level the bottom nav shows — unless a map-pin preview
+        // sheet is open over the map, which replaces it (the map owns that
+        // selection, so a notifier carries the signal up here). See
+        // `routing.instructions.md`.
         bottomNavigationBar: showBottomNav
-            ? MobileBottomNav(state: state)
+            ? ValueListenableBuilder<bool>(
+                valueListenable: MapPinController.notifier,
+                builder: (context, pinSheetOpen, child) =>
+                    pinSheetOpen ? const SizedBox.shrink() : child!,
+                child: MobileBottomNav(state: state),
+              )
             : null,
         body: Stack(
           fit: StackFit.expand,

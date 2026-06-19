@@ -10,15 +10,16 @@ import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_icon_button.dart';
-import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-/// Mobile bottom navigation (world_v2). The wide rail collapses to a bottom
-/// bar on narrow screens: World · Chats · Analytics · Avatar · Add, plus a
-/// selected-space switcher slot that opens a sheet of joined courses.
-/// Section roots show the bar; details push over it.
+/// Mobile bottom navigation (world_v2) — the section switcher only: **World**,
+/// **Chats**, and a course-switcher slot (a sheet of joined courses). Analytics
+/// and Profile are reached from the top-right cluster, not here. The shell shows
+/// this bar only at a section root (the map, the chat list, the courses list);
+/// a focused detail hides it, and a bottom sheet (a course, a tapped pin)
+/// replaces it. See `routing.instructions.md`.
 class MobileBottomNav extends StatelessWidget {
   final GoRouterState state;
   const MobileBottomNav({required this.state, super.key});
@@ -60,32 +61,11 @@ class MobileBottomNav extends StatelessWidget {
                   ),
                 ),
               ),
-              _NavButton(
-                icon: Icons.analytics_outlined,
-                selectedIcon: Icons.analytics,
-                // world_v2: analytics is a right-column token (the path stays
-                // `/`), never an AppSection, so highlight by the open token —
-                // mirroring the avatar button and AnalyticsNavigationUtil's own
-                // panel-open check — not by section (which was always false).
-                selected: parseOpenPanels(state.uri).right.any(
-                  (t) => const {'analytics', 'vocab', 'grammar'}.contains(t.type),
-                ),
-                tooltip: L10n.of(context).learningAnalytics,
-                onTap: () =>
-                    AnalyticsNavigationUtil.navigateToAnalytics(context: context),
-              ),
+              // Analytics and Profile are reached from the top-right cluster (its
+              // trackers / avatar), not the bottom nav — the bar is only the
+              // section switcher (World / Chats / Courses). See
+              // routing.instructions.md.
               _SpaceSwitcherButton(activeSpaceId: activeSpaceId),
-              _NavButton(
-                icon: Icons.account_circle_outlined,
-                selectedIcon: Icons.account_circle,
-                // world_v2: profile + settings is a right-column panel, so it's
-                // "selected" when a settings token is open, not by section.
-                selected: parseOpenPanels(
-                  state.uri,
-                ).right.any((t) => t.type == 'settings'),
-                tooltip: L10n.of(context).profile,
-                onTap: () => context.go(WorkspaceNav.openSettings(state.uri)),
-              ),
             ],
           ),
         ),

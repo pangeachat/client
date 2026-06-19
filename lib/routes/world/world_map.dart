@@ -10,6 +10,7 @@ import 'package:matrix/matrix.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
@@ -232,6 +233,7 @@ class _WorldMapState extends State<WorldMap>
     _camCurve = CurvedAnimation(parent: _camAnim!, curve: Curves.easeInOut);
     _loadForContext();
     MapContextController.notifier.addListener(_onContextChange);
+    MapPinController.notifier.addListener(_onPinControllerChange);
   }
 
   @override
@@ -303,7 +305,29 @@ class _WorldMapState extends State<WorldMap>
     _camCurve?.dispose();
     _camAnim?.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
+    MapPinController.notifier.removeListener(_onPinControllerChange);
+    // Reset the process-global so a pin selected at teardown (e.g. logging out
+    // with a pin sheet up) can't strand a stale `true` that would hide the bottom
+    // nav at the bare map on the next mount. See `routing.instructions.md`.
+    MapPinController.set(false);
     super.dispose();
+  }
+
+  /// The shell sets [MapPinController] false when the map is covered by a
+  /// full-screen panel on a narrow screen (navigating to a section/detail), so a
+  /// tapped-pin preview doesn't linger and keep the bottom nav hidden. Mirror
+  /// that here — drop our own selection when the controller is cleared by anyone
+  /// else. Guarded so our own clears (which also set it false) don't loop.
+  void _onPinControllerChange() {
+    if (!MapPinController.notifier.value &&
+        _selectedActivity != null &&
+        mounted) {
+      setState(() {
+        _selectedActivity = null;
+        _selectedPlan = null;
+        _planLoading = false;
+      });
+    }
   }
 
   void _onContextChange() {
@@ -317,6 +341,7 @@ class _WorldMapState extends State<WorldMap>
         _selectedPlan = null;
         _planLoading = false;
       });
+      MapPinController.set(false);
     }
     _loadForContext(debounceFit: true);
   }
@@ -466,6 +491,9 @@ class _WorldMapState extends State<WorldMap>
   /// Open the preview for [card] immediately, then fetch its full plan in the
   /// background (the preview shimmers until it arrives).
   Future<void> _selectActivity(QuestActivityCard card) async {
+    // Signal the shell that a pin preview is open, so on a narrow screen it hides
+    // the bottom nav while the preview rides in a bottom sheet (below).
+    MapPinController.set(true);
     setState(() {
       _selectedActivity = card;
       _selectedPlan = null;
@@ -491,6 +519,7 @@ class _WorldMapState extends State<WorldMap>
       _selectedPlan = null;
       _planLoading = false;
     });
+    MapPinController.set(false);
   }
 
   /// Resolve a [MapFocus] to a map coordinate, or null if not resolvable yet.
@@ -669,6 +698,9 @@ class _WorldMapState extends State<WorldMap>
     // search/filters (World only; a course shows its set as-is).
     final visible = _visiblePins;
 
+    // On a narrow screen the pin preview rides in a bottom sheet (below) rather
+    // than a popup glued to the pin; the glued popup is the wide-screen form.
+    final narrow = !FluffyThemes.isColumnMode(context);
     // Place the preview above the pin, but flip it below when the pin is too
     // near the top to fit (edge-aware, no map move).
     final selected = _selectedActivity;
@@ -677,7 +709,7 @@ class _WorldMapState extends State<WorldMap>
         selected.point != null &&
         visible.any((c) => c.activityId == selected.activityId);
     bool popupAbove = true;
-    if (selectedVisible) {
+    if (selectedVisible && !narrow) {
       try {
         popupAbove =
             _controller.camera.latLngToScreenOffset(selected.point!).dy > 360.0;
@@ -790,7 +822,8 @@ class _WorldMapState extends State<WorldMap>
         // Preview popup for the tapped activity — a marker so it stays glued to
         // its pin as the map moves. Opens immediately with the thin title; the
         // full plan loads behind a shimmer. No navigation; the map stays put.
-        if (selectedVisible)
+        // Wide-screen only: on narrow the preview rides in a bottom sheet (below).
+        if (selectedVisible && !narrow)
           MarkerLayer(
             markers: [
               Marker(
@@ -820,8 +853,31 @@ class _WorldMapState extends State<WorldMap>
       ],
     );
 
+    // On a narrow screen a selected pin's preview is a bottom sheet anchored to
+    // the bottom edge over the map (the shell hides the bottom nav while it's
+    // up). It does not require the pin to stay on-screen (unlike the glued
+    // popup), so it survives a pan. Shown over both the world and a course map.
+    final pinSheet = (narrow && selected != null)
+        ? Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: _PinPreviewSheet(
+              card: selected,
+              plan: _selectedPlan,
+              loading: _planLoading,
+              onClose: _clearSelection,
+              onDetails: () => _openActivity(selected),
+            ),
+          )
+        : null;
+
     // World gets the search + filter overlay; a course shows its plain map.
-    if (!_isWorld) return map;
+    // Both get the narrow pin sheet when one is selected.
+    if (!_isWorld) {
+      if (pinSheet == null) return map;
+      return Stack(children: [Positioned.fill(child: map), pinSheet]);
+    }
     final l2 = MatrixState.pangeaController.userController.userL2Code;
     return Stack(
       children: [
@@ -847,6 +903,7 @@ class _WorldMapState extends State<WorldMap>
             emptyInView: !_loadingPins && visible.isEmpty,
           ),
         ),
+        ?pinSheet,
       ],
     );
   }
@@ -935,6 +992,92 @@ class _ActivityPreviewPopup extends StatelessWidget {
         ),
         if (!below) const SizedBox(height: 14.0),
       ],
+    );
+  }
+}
+
+/// The narrow-screen form of a tapped pin's preview: a bottom sheet anchored to
+/// the screen's bottom edge over the map (vs the wide-screen [_ActivityPreviewPopup]
+/// glued to the pin). Same content — the activity card (shimmer skeleton while
+/// the plan loads) plus close / Details — so tapping Details opens the activity
+/// and close dismisses to the bare map. See `routing.instructions.md`.
+class _PinPreviewSheet extends StatelessWidget {
+  final QuestActivityCard card;
+  final ActivityPlanModel? plan;
+  final bool loading;
+  final VoidCallback onClose;
+  final VoidCallback onDetails;
+
+  const _PinPreviewSheet({
+    required this.card,
+    required this.plan,
+    required this.loading,
+    required this.onClose,
+    required this.onDetails,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final activity = plan;
+    return Material(
+      elevation: 8,
+      color: theme.colorScheme.surface,
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(20.0)),
+      clipBehavior: Clip.antiAlias,
+      child: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 12.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Grab handle, matching the course sheet.
+              Container(
+                width: 36.0,
+                height: 4.0,
+                margin: const EdgeInsets.only(bottom: 12.0),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.onSurfaceVariant.withValues(
+                    alpha: 0.4,
+                  ),
+                  borderRadius: BorderRadius.circular(2.0),
+                ),
+              ),
+              SizedBox(
+                width: _ActivityPreviewPopup._cardWidth,
+                height: _ActivityPreviewPopup._cardHeight,
+                child: activity != null
+                    ? ActivitySuggestionCard(
+                        activity: activity,
+                        width: _ActivityPreviewPopup._cardWidth,
+                        height: _ActivityPreviewPopup._cardHeight,
+                        fontSize: 16.0,
+                        fontSizeSmall: 11.0,
+                        iconSize: 11.0,
+                      )
+                    : _PreviewSkeleton(title: card.title, loading: loading),
+              ),
+              const SizedBox(height: 8.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.close),
+                    tooltip: L10n.of(context).close,
+                    onPressed: onClose,
+                  ),
+                  FilledButton.icon(
+                    icon: const Icon(Icons.open_in_full, size: 16),
+                    label: Text(L10n.of(context).details),
+                    onPressed: onDetails,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
