@@ -1,6 +1,7 @@
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/utils/base_request.dart';
 
-class LanguageDetectionRequest {
+class LanguageDetectionRequest extends BaseRequest {
   final String text;
   final String? senderl1;
   final String? senderl2;
@@ -13,6 +14,10 @@ class LanguageDetectionRequest {
     this.mock,
   });
 
+  @override
+  String get storageKey => '$text|$senderl1|$senderl2';
+
+  @override
   Map<String, dynamic> toJson() {
     return {
       ModelKey.fullText: text,

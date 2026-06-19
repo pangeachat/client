@@ -1,7 +1,8 @@
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/utils/base_response.dart';
 import 'package:fluffychat/routes/chat/events/models/language_detection_model.dart';
 
-class LanguageDetectionResponse {
+class LanguageDetectionResponse extends BaseResponse {
   List<LanguageDetectionModel> detections;
   String fullText;
 
@@ -18,6 +19,7 @@ class LanguageDetectionResponse {
     );
   }
 
+  @override
   Map<String, dynamic> toJson() {
     return {
       'detections': detections.map((e) => e.toJson()).toList(),

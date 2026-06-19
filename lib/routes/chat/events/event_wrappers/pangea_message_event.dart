@@ -520,8 +520,7 @@ class PangeaMessageEvent {
 
   Future<String?> requestRepresentationByDetectedLanguage() async {
     LanguageDetectionResponse? resp;
-    final result = await LanguageDetectionRepo.get(
-      MatrixState.pangeaController.userController.accessToken,
+    final result = await LanguageDetectionRepo.instance.get(
       LanguageDetectionRequest(
         text: _latestEdit.body,
         senderl1: _l1Code,
