@@ -60,8 +60,9 @@ int relevanceBand(
 
 bool _cefrAtOrBelow(String? cefr, LanguageLevelTypeEnum? userCefr) {
   if (userCefr == null) return true; // no CEFR set → no narrowing
-  if (cefr == null || cefr.isEmpty)
+  if (cefr == null || cefr.isEmpty) {
     return true; // unknown level → don't exclude
+  }
   return LanguageLevelTypeEnum.fromString(cefr).storageInt <=
       userCefr.storageInt;
 }
