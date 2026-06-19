@@ -839,18 +839,22 @@ class ChatController extends State<ChatPageWithRoom>
     activeGoalNotifier.value = room.currentGoal;
   }
 
-  /// This room panel's canonical `?left=` token (`room:<shortRoomId>`), matching
-  /// what the shell publishes via [PanelFocusController] and what nav builds.
-  String get _myToken => PanelToken('room', shortRoomId(room.id)).encode();
-
-  /// Whether this chat is the focused/active surface right now. Primary signal:
-  /// my room token is the live `?left=` panel. Until navigation is fully
-  /// `?left=`-driven (Phase 3+), a chat still opens as the route-driven center
-  /// detail with no token, so fall back to the legacy route match; `_router`
-  /// and this fallback retire once that migration completes.
+  /// Whether this chat is the focused/active surface right now. The shell
+  /// publishes the one live left panel's token via [PanelFocusController] — a
+  /// `room:` OR a `session:` token — and this matches by **bare room id**, so a
+  /// completed-activity `session` review (a `session` token over its analytics
+  /// list) is focused exactly like a live `room` chat; matching the full token
+  /// type instead would leave a session permanently unfocused (frozen timeline,
+  /// dead reading-assistance toolbar). Until navigation is fully `?left=`-driven
+  /// (Phase 3+), a chat may still open as the route-driven center detail with no
+  /// token, so fall back to the legacy route match; `_router` and this fallback
+  /// retire once that migration completes. See `panel_focus.dart`.
   bool get isFocused {
     final focused = PanelFocusController.instance.focusedLeftToken;
-    if (focused != null) return focused == _myToken;
+    if (focused != null) {
+      final focusedRoomId = PanelToken.parse(focused)?.param?.split('/').first;
+      return focusedRoomId != null && focusedRoomId == shortRoomId(room.id);
+    }
     return _router.state.path == ':roomid';
   }
 

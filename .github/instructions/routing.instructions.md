@@ -133,13 +133,17 @@ open (an in-progress activity is the main example).
 **Single-column mode is the floor**, not a separate layout: below the two-column
 breakpoint (narrow screens; phones always) the chrome swaps — the side rail becomes
 bottom navigation, the left inset goes to zero — and only one panel shows: the
-active **leaf** of the tree (a panel no open panel names as parent), so a child
-always shows over its parent and the parent is the back target. Among independent
-open panels with no parent/child tie, the highest-priority one shows. The others
-stay in the URL, reopened from the persistent chrome (the rail or bottom nav for a
-section, the cluster for analytics), so nothing is lost, just not drawn at once.
-Every master/detail flow is already folded here: one panel, navigated with a back
-arrow.
+**most-recently-opened** one, so opening a panel always brings it forward (a child
+opened over its parent, or a right-column panel opened over a live chat). This is
+ephemeral view state, not part of the shareable URL — so on a cold link or a
+refresh (no recency to consult) the shown panel falls back to the active **leaf**
+of the tree (a panel no open panel names as parent, so a child shows over its
+parent; ties broken by priority). Plain priority alone is *not* enough here: a
+live chat out-ranks most panels, so a freshly-opened settings/analytics panel
+would silently lose to it — hence the recency signal. The others stay in the URL,
+reopened from the persistent chrome (the rail or bottom nav for a section, the
+cluster for analytics), so nothing is lost, just not drawn at once. Every
+master/detail flow is already folded here: one panel, navigated with a back arrow.
 
 ## Opening, pushing, and folding
 

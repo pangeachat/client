@@ -11,12 +11,14 @@ void main() {
     bool isColumnMode = true,
     List<String> left = const [],
     List<String> right = const [],
+    int? focusHint,
   }) =>
       PanelAllocator.allocate(
         viewport: viewport,
         isColumnMode: isColumnMode,
         left: left.map(def).toList(),
         right: right.map(def).toList(),
+        focusHint: focusHint,
       );
 
   // No two full panels may overlap — the core invariant.
@@ -185,8 +187,9 @@ void main() {
     });
 
     test('among independent leaves the highest priority wins (cold link)', () {
-      // room (no open chats parent) + analytics (no open child) are both leaves;
-      // with no tree relation to break the tie, priority decides: room 80 > 40.
+      // No focusHint (a cold deep link / refresh): fall back to the tree. room
+      // (no open chats parent) + analytics (no open child) are both leaves; with
+      // no tree relation to break the tie, priority decides: room 80 > 40.
       final l = run(
           viewport: 400,
           isColumnMode: false,
@@ -194,6 +197,34 @@ void main() {
           right: ['analytics']);
       expect(l.left.single.vis, PanelVis.full); // room
       expect(l.right.single.vis, PanelVis.hidden); // analytics
+    });
+
+    test('focusHint (most-recently-opened) overrides priority and the leaf rule',
+        () {
+      // The regression guard for "open a panel over a chat = visible no-op":
+      // entries are [room, analytics] (merged left..right), room out-ranks
+      // analytics (80 > 40) and analytics is a leaf too — but the user just
+      // opened analytics, so focusHint=1 must seat it over the room.
+      final l = run(
+        viewport: 400,
+        isColumnMode: false,
+        left: ['room'],
+        right: ['analytics'],
+        focusHint: 1,
+      );
+      expect(l.right.single.vis, PanelVis.full); // analytics (just opened)
+      expect(l.left.single.vis, PanelVis.hidden); // room, despite priority 80
+
+      // Opening the room last focuses it instead.
+      final l2 = run(
+        viewport: 400,
+        isColumnMode: false,
+        left: ['room'],
+        right: ['analytics'],
+        focusHint: 0,
+      );
+      expect(l2.left.single.vis, PanelVis.full);
+      expect(l2.right.single.vis, PanelVis.hidden);
     });
   });
 

@@ -210,11 +210,11 @@ class WorkspaceLeftPanel extends StatelessWidget {
             context.go(WorkspaceNav.popPage(currentUri, token.type, page)),
       );
     }
-    // On a narrow single pane the coursepage sits over its `course` card (and
-    // any other open panel), so closing it reveals what's behind → `←`; if it is
-    // somehow the last panel, `X` dismisses to the map.
+    // On a narrow single pane the coursepage sits over its `course` card (its
+    // tree parent), so closing it returns to the card → `←`; if the card is gone
+    // (an orphan, normally dropped at parse), `X` dismisses to the map.
     final revealsMaster =
-        foldedOver || (!isColumnMode && openPanelCount(currentUri) > 1);
+        foldedOver || (!isColumnMode && parentIsOpen(currentUri, token));
     final aff =
         CloseAffordance.of(isPushedPage: false, revealsMaster: revealsMaster);
     return aff.showBack
@@ -273,15 +273,16 @@ class WorkspaceLeftPanel extends StatelessWidget {
               ? WorkspaceNav.closeLeft(currentUri, token)
               : WorkspaceNav.closeSection(currentUri, token),
         );
-    // Centralized affordance (close_affordance.dart): `←` when closing reveals a
-    // panel that was behind us — a width-fold ([foldedOver]) or a narrow single
-    // pane with another panel open behind it (counted across both columns, since
-    // the focused leaf can sit over a right-column master); otherwise `X`
-    // dismisses to the map.
+    // Centralized affordance (close_affordance.dart): `←` when closing returns to
+    // a master that was behind us — a width-fold ([foldedOver]) or, on a narrow
+    // single pane, this leaf's navigation-tree PARENT being open behind it
+    // (possibly in the other column, e.g. a left session over the right analytics
+    // list). An independent panel (no open parent) gets `X` so it dismisses to the
+    // map in one tap, rather than a misleading `←` to something unrelated.
     final aff = CloseAffordance.of(
       isPushedPage: false,
       revealsMaster:
-          foldedOver || (!isColumnMode && openPanelCount(currentUri) > 1),
+          foldedOver || (!isColumnMode && parentIsOpen(currentUri, token)),
     );
     return aff.showBack
         ? BackButton(onPressed: close)

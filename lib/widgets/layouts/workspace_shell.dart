@@ -62,9 +62,17 @@ GlobalKey _roomKeyFor(String roomId) => _leftRoomKeys.putIfAbsent(
 /// vocab/grammar detail, a completed-activity review) are named by the URL's
 /// `?left=`/`?right=` lists and positioned by [PanelAllocator] — one shared
 /// width budget so panels and the route-driven center detail tile without
-/// overlap. The narrow (single-pane) focus is the active **leaf** of the
-/// navigation tree, computed by the allocator from the registry's parent links —
-/// no shell-side recency state. See `routing.instructions.md`.
+/// overlap. See `routing.instructions.md`.
+///
+/// Pane recency for the narrow (single-pane) focus: the visible compact pane is
+/// the most-recently-opened one (the back-stack top), per Material 3 / Flutter
+/// adaptive guidance — NOT raw priority, which made opening a low-priority panel
+/// over a live room a visible no-op. The allocator falls back to the navigation
+/// tree's leaf rule when there is no recency (a cold link). Ephemeral view state,
+/// deliberately OUTSIDE the URL: a width change must not reshuffle panes or add
+/// history. See `routing.instructions.md`.
+final List<String> _paneRecency = <String>[];
+
 class WorkspaceShell extends StatelessWidget {
   // #Pangea
   final GoRouterState state;
@@ -94,12 +102,16 @@ class WorkspaceShell extends StatelessWidget {
     ];
     final hasLeftTokens = leftTokens.isNotEmpty;
 
-    // The single live room panel, if any — the focus signal a room's
-    // ChatController listens to instead of the router (one-live-session rule, so
-    // the first room token is the live one). Published post-frame below.
+    // The single live left chat panel, if any — the focus signal a chat's
+    // ChatController listens to instead of the router. By the one-live-view rule
+    // a `room` and a `session` are mutually exclusive, so the first room-or-session
+    // token is the live one; publish it (a `session` review is a real timeline
+    // too, so it must be focusable exactly like a `room`). ChatController matches
+    // by bare room id, so either token type focuses correctly. Published
+    // post-frame below.
     String? focusedLeftToken;
     for (final token in leftTokens) {
-      if (token.type == 'room') {
+      if (token.type == 'room' || token.type == 'session') {
         focusedLeftToken = token.encode();
         break;
       }
@@ -134,12 +146,34 @@ class WorkspaceShell extends StatelessWidget {
       for (final token in rightTokens) PanelRegistry.defFor(token.type)!,
     ];
 
+    // Narrow focus = the most-recently-opened panel (back-stack top). Sync the
+    // recency list against the open tokens: append newly-opened ids (in list
+    // order), prune closed ones; the merged [left…, right…] id order matches the
+    // allocator's entry order, so the focus index maps straight through. The sync
+    // is idempotent for an unchanged token set, so a width change never
+    // reshuffles panes or adds history. Ephemeral view state, deliberately OUTSIDE
+    // the URL (a shared link / refresh has no recency and the allocator falls back
+    // to the tree's leaf rule). Only consulted in narrow mode. See
+    // `routing.instructions.md`.
+    final paneIds = [
+      for (final t in leftTokens) t.encode(),
+      for (final t in rightTokens) t.encode(),
+    ];
+    _paneRecency.removeWhere((id) => !paneIds.contains(id));
+    for (final id in paneIds) {
+      if (!_paneRecency.contains(id)) _paneRecency.add(id);
+    }
+    final focusHint = (!isColumnMode && _paneRecency.isNotEmpty)
+        ? paneIds.indexOf(_paneRecency.last)
+        : null;
+
     final layout = PanelAllocator.allocate(
       viewport: viewport,
       isColumnMode: isColumnMode,
       left: leftDefs,
       right: rightDefs,
       railWidth: columnWidth,
+      focusHint: focusHint,
     );
 
     // The map shows behind as a map hole (full) or — in column mode — alongside
@@ -152,7 +186,14 @@ class WorkspaceShell extends StatelessWidget {
     // it (the right edge of the last left panel, `leftCovered`); otherwise it's
     // the fixed chrome inset. The center detail tile and the map's left camera
     // padding both begin here so neither can slide under a left panel.
-    final leftInset = hasLeftTokens ? layout.mapLeftOverlay : columnWidth;
+    // A full-bleed canvas (an in-progress activity) is the immersive/exclusive
+    // surface: it fills the content area and its panels are not drawn (below), so
+    // the inset is just the chrome (the desktop rail; zero on narrow) — never a
+    // left-panel width, which would offset the activity and leave a `left=course`
+    // card covering it. See `routing.instructions.md`.
+    final leftInset = canvas == CanvasMode.fullBleed
+        ? columnWidth
+        : (hasLeftTokens ? layout.mapLeftOverlay : columnWidth);
 
     // Bound the route-driven center detail by the left inset and the right-
     // covered width so it can never slide under a panel (the non-overlap
@@ -264,43 +305,48 @@ class WorkspaceShell extends StatelessWidget {
             // shift indices and remount this one; a `room` panel additionally
             // carries a roomId GlobalKey so its ChatController repositions rather
             // than remounts when the slot moves.
-            for (var i = 0; i < leftTokens.length; i++)
-              if (layout.left[i].vis != PanelVis.hidden)
-                Positioned(
-                  key: ValueKey(leftTokens[i].encode()),
-                  top: 0,
-                  bottom: 0,
-                  left: layout.left[i].left,
-                  width: layout.left[i].width,
-                  child: _leftPanel(
-                    leftTokens[i],
-                    state.uri,
-                    layout.left[i].foldedOver,
+            // A full-bleed activity is exclusive — its panels are not drawn, so a
+            // `left=course` card can't cover it (the regression a bottom-nav-only
+            // fix left behind). See `routing.instructions.md`.
+            if (canvas != CanvasMode.fullBleed)
+              for (var i = 0; i < leftTokens.length; i++)
+                if (layout.left[i].vis != PanelVis.hidden)
+                  Positioned(
+                    key: ValueKey(leftTokens[i].encode()),
+                    top: 0,
+                    bottom: 0,
+                    left: layout.left[i].left,
+                    width: layout.left[i].width,
+                    child: _leftPanel(
+                      leftTokens[i],
+                      state.uri,
+                      layout.left[i].foldedOver,
+                    ),
                   ),
-                ),
             // Right-column panels (analytics summary, a vocab/grammar detail, a
             // completed-activity review) from `?right=`, each placed at its
             // allocator slot. The slots tile and never overlap by construction;
             // a folded slot is `hidden` (not drawn), its content one back-step
             // away on the higher-priority sibling that stayed.
-            for (var i = 0; i < rightTokens.length; i++)
-              if (layout.right[i].vis != PanelVis.hidden)
-                Positioned(
-                  // Keyed by token so a left-column open/close (which shifts
-                  // sibling indices in this Stack) reconciles the right panel by
-                  // identity, not position — otherwise its stateful content
-                  // (analytics, a detail) would remount and re-fetch.
-                  key: ValueKey(rightTokens[i].encode()),
-                  top: 0,
-                  bottom: 0,
-                  left: layout.right[i].left,
-                  width: layout.right[i].width,
-                  child: WorkspaceRightPanel(
-                    token: rightTokens[i],
-                    currentUri: state.uri,
-                    foldedOver: layout.right[i].foldedOver,
+            if (canvas != CanvasMode.fullBleed)
+              for (var i = 0; i < rightTokens.length; i++)
+                if (layout.right[i].vis != PanelVis.hidden)
+                  Positioned(
+                    // Keyed by token so a left-column open/close (which shifts
+                    // sibling indices in this Stack) reconciles the right panel by
+                    // identity, not position — otherwise its stateful content
+                    // (analytics, a detail) would remount and re-fetch.
+                    key: ValueKey(rightTokens[i].encode()),
+                    top: 0,
+                    bottom: 0,
+                    left: layout.right[i].left,
+                    width: layout.right[i].width,
+                    child: WorkspaceRightPanel(
+                      token: rightTokens[i],
+                      currentUri: state.uri,
+                      foldedOver: layout.right[i].foldedOver,
+                    ),
                   ),
-                ),
             // The persistent top-right user cluster — the right column's entry
             // point. It sits in the gutter the allocator reserves beside the
             // panels; hidden on a full-bleed canvas or behind a narrow panel.

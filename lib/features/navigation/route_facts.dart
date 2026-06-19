@@ -65,13 +65,16 @@ enum AnalyticsPanelTab { sessions, grammar, vocab }
 bool isMapHole(String? fullPath) => fullPath == PRoutes.world;
 
 /// The effective canvas for the current route's sideView. An open activity
-/// overlay (`?activity=` over the map, or the `/<uuid>` route) is a bounded
-/// `detail`; the world root `/` is a map hole (sideView offstage, full map
-/// shows); everything else still reached by a real route — a course-wizard step,
-/// a public-course preview, a chat archive — is a bounded `detail` with the map
-/// peeking beside it.
+/// (`?activity=` over the map, or the `/<uuid>` route) is **full-bleed**: an
+/// in-progress activity is the immersive/exclusive surface, so it fills the
+/// content area and the shell suppresses the panels + bottom nav rather than
+/// letting a `left=course` card cover it or a stray tap abandon it. The world
+/// root `/` is a map hole (sideView offstage, full map shows); everything else
+/// still reached by a real route — a course-wizard step, a public-course
+/// preview, a chat archive — is a bounded `detail` with the map peeking beside
+/// it. See `routing.instructions.md`.
 CanvasMode canvasFor(GoRouterState state, bool isColumnMode) {
-  if (activityFor(state) != null) return CanvasMode.detail;
+  if (activityFor(state) != null) return CanvasMode.fullBleed;
   if (isMapHole(state.fullPath)) return CanvasMode.mapHole;
   return CanvasMode.detail;
 }
@@ -180,6 +183,11 @@ MapFocus? mapFocusFor(GoRouterState state) {
 /// deep detail views (a room/space leaf, a construct drilldown).
 bool showNavRail(GoRouterState state, bool isColumnMode) {
   if (isColumnMode) return true;
+  // An in-progress activity is immersive: on a narrow screen the bottom nav is
+  // suppressed so a stray tap (World/Chats/Avatar) can't abandon the activity
+  // mid-task — the design marks an activity the exclusive surface, and it carries
+  // its own exit. See `routing.instructions.md`.
+  if (activityFor(state) != null) return false;
   final roomId = state.pathParameters['roomid'];
   final spaceId = state.pathParameters['spaceid'];
   if (roomId == null && spaceId == null) {
@@ -206,15 +214,22 @@ const int _maxPanelsPerList = 6;
 ({List<PanelToken> left, List<PanelToken> right}) parseOpenPanels(Uri uri) =>
     (left: _parsePanelList(uri, 'left'), right: _parsePanelList(uri, 'right'));
 
-/// The number of open panels across BOTH columns. The close affordance reads
-/// this on a narrow single pane: only the focused leaf is drawn, so closing it
-/// reveals another open panel (a back-step `←`) when more than one is open, or
-/// the bare map (a dismiss `X`) when it is the last one. The tree decides WHICH
-/// panel is the leaf; this only asks whether anything is behind it. See
-/// `close_affordance.dart`.
-int openPanelCount(Uri uri) {
+/// Whether [token]'s navigation-tree parent (per the registry) is currently open
+/// in either column. The close affordance reads this on a narrow single pane:
+/// only the focused leaf is drawn, so closing it returns to its **parent** (`←`,
+/// a genuine back-step) when that parent sits behind it, versus dismissing to the
+/// bare map (`X`) when it is an independent panel whose parent is not open.
+/// Reading the same parent tree the allocator's leaf rule uses keeps the
+/// affordance and the focus consistent — a raw "is any other panel open" count
+/// would wrongly show `←` over an unrelated panel and drop one-tap dismiss. The
+/// parent may be in the other column (a left `session` over the right `analytics`
+/// list). See `close_affordance.dart` / `panel_registry.dart`.
+bool parentIsOpen(Uri uri, PanelToken token) {
+  final parentType = PanelRegistry.defFor(token.type)?.parent;
+  if (parentType == null) return false;
   final lists = parseOpenPanels(uri);
-  return lists.left.length + lists.right.length;
+  return lists.left.any((t) => t.type == parentType) ||
+      lists.right.any((t) => t.type == parentType);
 }
 
 List<PanelToken> _parsePanelList(Uri uri, String key) {
@@ -266,6 +281,15 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
   // analytics master (the `detail` group already excludes vocab/grammar details).
   if (column == PanelColumn.right && tokens.any((t) => t.type == 'practice')) {
     tokens.removeWhere((t) => t.type == 'analytics');
+  }
+  // A `course` card and a `coursepage` management page read their space id from
+  // the `?m=course:<id>` map filter, not the token, so without that filter they
+  // have nothing to render — a blank, close-less card a hand-edited or stale URL
+  // could strand the user on (especially on a narrow single pane). Drop them when
+  // no course is scoped, mirroring closeSection / openCourseFilter, which already
+  // shed a dependent coursepage. See `routing.instructions.md`.
+  if (column == PanelColumn.left && activeSpaceIdFor(uri) == null) {
+    tokens.removeWhere((t) => t.type == 'course' || t.type == 'coursepage');
   }
   return tokens;
 }

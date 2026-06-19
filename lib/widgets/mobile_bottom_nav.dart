@@ -63,7 +63,13 @@ class MobileBottomNav extends StatelessWidget {
               _NavButton(
                 icon: Icons.analytics_outlined,
                 selectedIcon: Icons.analytics,
-                selected: section == AppSection.analytics,
+                // world_v2: analytics is a right-column token (the path stays
+                // `/`), never an AppSection, so highlight by the open token —
+                // mirroring the avatar button and AnalyticsNavigationUtil's own
+                // panel-open check — not by section (which was always false).
+                selected: parseOpenPanels(state.uri).right.any(
+                  (t) => const {'analytics', 'vocab', 'grammar'}.contains(t.type),
+                ),
                 tooltip: L10n.of(context).learningAnalytics,
                 onTap: () =>
                     AnalyticsNavigationUtil.navigateToAnalytics(context: context),

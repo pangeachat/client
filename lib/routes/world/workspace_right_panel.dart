@@ -62,15 +62,15 @@ class WorkspaceRightPanel extends StatelessWidget {
 
     // Centralized close affordance (see close_affordance.dart). A `pushable`
     // detail whose param is a `/`-path is at a page LEAF (`←` pops one page level
-    // via popPage). Closing reveals a master behind it (`←`) when this panel is a
-    // width-folded detail OR — on a narrow single pane, where only the focused
-    // leaf is drawn — when another panel is open behind it; everything else
-    // dismisses to the map (`X`).
+    // via popPage). Closing returns to a master behind it (`←`) when this panel is
+    // a width-folded detail OR — on a narrow single pane, where only the focused
+    // leaf is drawn — when this leaf's navigation-tree parent is open behind it;
+    // an independent panel (no open parent) dismisses to the map (`X`).
     final page = token.param;
     final pushable = PanelRegistry.defFor(token.type)?.pushable ?? false;
     final isPushed = pushable && page != null && page.contains('/');
     final revealsMaster = foldedOver ||
-        (!FluffyThemes.isColumnMode(context) && openPanelCount(currentUri) > 1);
+        (!FluffyThemes.isColumnMode(context) && parentIsOpen(currentUri, token));
     final aff =
         CloseAffordance.of(isPushedPage: isPushed, revealsMaster: revealsMaster);
     final leadingIcon = aff.showBack ? Icons.arrow_back : Icons.close;

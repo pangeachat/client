@@ -99,4 +99,23 @@ void main() {
       expect(r.map((t) => t.type).toList(), ['practice']);
     });
   });
+
+  group('orphan course/coursepage tokens (no map filter)', () {
+    test('a course token with no ?m= is dropped (would render blank)', () {
+      // course/coursepage read their space from ?m=course:<id>; without it they
+      // have nothing to render, so a hand-edited / stale URL degrades to the map.
+      expect(left('/?left=course'), isEmpty);
+      expect(left('/?left=coursepage:invite'), isEmpty);
+    });
+
+    test('a course token WITH its ?m= filter survives', () {
+      final l = left('/?m=course:!s&left=course');
+      expect(l.map((t) => t.type).toList(), ['course']);
+    });
+
+    test('a coursepage survives when its course filter is present', () {
+      final l = left('/?m=course:!s&left=course,coursepage:invite');
+      expect(l.map((t) => t.type).toList(), ['course', 'coursepage']);
+    });
+  });
 }

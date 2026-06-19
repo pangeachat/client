@@ -79,9 +79,11 @@ class WorkspaceLayout {
 /// toward their reasonable-min and only then **fold** — a **parent** (master)
 /// drops out of the layout behind its **child** (detail), which keeps the column
 /// (not drawn, no stripe; the parent one back-step away), never a full-screen
-/// takeover. Folding and narrow-mode focus both read the registry's explicit
-/// parent/child/sibling tree ([PanelDef.parent]); there is no separate recency
-/// or priority heuristic. Pure + unit-tested. See `routing.instructions.md`.
+/// takeover. Folding reads the registry's explicit parent/child/sibling tree
+/// ([PanelDef.parent]). Narrow-mode focus seats the most-recently-opened panel
+/// ([focusHint]) and falls back to the active leaf of that same tree when there
+/// is no recency (a cold deep link). Pure + unit-tested. See
+/// `routing.instructions.md`.
 abstract class PanelAllocator {
   /// Right margin reserved for the cluster beside the right column.
   static const double clusterGutter = 88.0;
@@ -102,6 +104,7 @@ abstract class PanelAllocator {
     required List<PanelDef> left,
     required List<PanelDef> right,
     double railWidth = defaultRailWidth,
+    int? focusHint,
   }) {
     // Combined view with stable identity (column + index in its column).
     final all = <_Entry>[
@@ -129,15 +132,18 @@ abstract class PanelAllocator {
               : hidden());
     }
 
-    // ---- narrow: seat ONE panel — the active **leaf**: an open panel that no
-    // other open panel details (no open child names it as `parent`). A child is
-    // therefore always shown over its parent (the parent is the back target,
-    // reached by closing the child), straight from the navigation tree — no
-    // recency state needed. Among independent leaves (a cold deep link or a
-    // resized multi-panel URL, with no tree relation to break the tie) the
-    // highest-priority one wins. The bottom nav / cluster switch to the others.
-    // The leaf link is read across BOTH columns, so a left `session` is focusable
-    // over its right-column `analytics` list. See `routing.instructions.md`.
+    // ---- narrow: seat ONE panel — the **most-recently-opened** one ([focusHint],
+    // the back-stack top) so opening a panel always brings it forward, per
+    // Material 3 / Flutter adaptive guidance. When there is no recency to consult
+    // — a cold deep link or a refresh, where focusHint is null — fall back to the
+    // active **leaf**: an open panel that no other open panel details (no open
+    // child names it as `parent`), so a child shows over its parent (the parent is
+    // the back target), tie-broken by priority among independent leaves. The leaf
+    // link is read across BOTH columns, so a left `session` is focusable over its
+    // right-column `analytics` list. The bottom nav / cluster switch to the
+    // others. (Pure priority alone is wrong here: it would keep a high-priority
+    // live `room` on top of a panel the user just opened — a visible no-op.) See
+    // `routing.instructions.md`.
     if (!isColumnMode) {
       if (all.isEmpty) {
         return _build(left, right, 0,
@@ -146,11 +152,16 @@ abstract class PanelAllocator {
             mapRightOverlay: 0,
             slot: (_) => hidden());
       }
-      final leaves =
-          all.where((e) => !all.any((c) => c.def.parent == e.def.type)).toList();
-      final pool = leaves.isEmpty ? all : leaves;
-      final focus = pool
-          .reduce((a, b) => b.def.priority > a.def.priority ? b : a);
+      final _Entry focus;
+      if (focusHint != null && focusHint >= 0 && focusHint < all.length) {
+        focus = all[focusHint];
+      } else {
+        final leaves = all
+            .where((e) => !all.any((c) => c.def.parent == e.def.type))
+            .toList();
+        final pool = leaves.isEmpty ? all : leaves;
+        focus = pool.reduce((a, b) => b.def.priority > a.def.priority ? b : a);
+      }
       return _build(left, right, 0,
           clusterVisible: false,
           mapLeftOverlay: viewport,

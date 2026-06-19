@@ -102,9 +102,10 @@ void main() {
 
   group('openCourse (open / switch tab)', () {
     test('switching tabs replaces the course token rather than stacking', () {
-      // The course id lives in the path; the token param is just the tab.
+      // The course id lives in the `?m=course:` map filter; the token param is
+      // just the tab (a bare course token with no filter is dropped at parse).
       var loc = WorkspaceNav.openCourse(
-        u('/courses/!s'),
+        u('/?m=course:!s'),
         const PanelToken('course', 'chat'),
       );
       loc = WorkspaceNav.openCourse(
@@ -118,11 +119,13 @@ void main() {
     });
 
     test('keeps a live room beside the course (a course can scope a room)', () {
+      // A course-scoped room: the `?m=course:` filter is set, the room is live,
+      // and opening the course card keeps the room beside it.
       var loc = WorkspaceNav.openExclusiveLeftRoom(
-        u('/chats'),
+        u('/?m=course:!s'),
         const PanelToken('room', '!a'),
       );
-      loc = WorkspaceNav.openCourse(u(loc), const PanelToken('course', '!s'));
+      loc = WorkspaceNav.openCourse(u(loc), const PanelToken('course'));
       final left = parseOpenPanels(u(loc)).left;
       expect(left.any((t) => t.type == 'room'), isTrue);
       expect(left.any((t) => t.type == 'course'), isTrue);
@@ -203,8 +206,10 @@ void main() {
         u('/chats?right=analytics:vocab'),
         const [PanelToken('room', '!a'), PanelToken('chats')],
       );
-      loc = WorkspaceNav.setLeft(u(loc), const [PanelToken('course')]);
-      expect(parseOpenPanels(u(loc)).left, [const PanelToken('course')]);
+      // Replace with a filter-independent left root (a bare course would be
+      // dropped at parse for lacking its `?m=course:` filter).
+      loc = WorkspaceNav.setLeft(u(loc), const [PanelToken('addcourse')]);
+      expect(parseOpenPanels(u(loc)).left, [const PanelToken('addcourse')]);
       expect(
         parseOpenPanels(u(loc)).right,
         [const PanelToken('analytics', 'vocab')],
