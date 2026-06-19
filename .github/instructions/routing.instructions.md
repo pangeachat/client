@@ -166,9 +166,12 @@ One vocabulary covers how content opens (the noun is **panel**, the industry
 
 ### The navigation tree: parent, child, sibling
 
-Every surface declares where it sits in one explicit tree (in the panel
-registry), and the parser, the fold, and the single-column focus all read that
-one structure — there is no separate priority or recency system to drift from it:
+Every surface declares where it sits in one explicit tree, in the
+[panel registry](../../lib/features/navigation/panel_registry.dart) — the
+authoritative per-panel mapping of each type's parent and the slots its siblings
+share. The parser, the fold, and the single-column focus all read that one
+structure, so there is no separate priority or recency system to drift from it
+(this section is the model and examples; the registry is the full list):
 
 - A **child** declares its **parent** (the master it details). A child opens
   beside its parent when width allows and otherwise **stacks** on it (the parent
