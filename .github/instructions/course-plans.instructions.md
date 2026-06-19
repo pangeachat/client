@@ -9,7 +9,7 @@ applyTo: "lib/pangea/course_plans/**,lib/pangea/course_creation/**,lib/pangea/co
 Client-side loading, caching, and display of localized course content (plans, topics, activities, locations, media).
 
 - **Choreo design doc**: [course-localization.instructions.md](../../../2-step-choreographer/.github/instructions/course-localization.instructions.md)
-- **Activity system**: [conversation-activities.instructions.md](conversation-activities.instructions.md)
+- **Activity system**: [activities.instructions.md](activities.instructions.md)
 
 ---
 

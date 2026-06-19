@@ -14,6 +14,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -441,7 +442,14 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
             return;
           case InviteAction.block:
             final userId = inviteEvent?.senderId;
-            context.go('/settings/security/ignorelist', extra: userId);
+            context.go(
+              WorkspaceNav.openSettings(
+                GoRouterState.of(context).uri,
+                page: userId == null
+                    ? 'security/ignorelist'
+                    : 'security/ignorelist/$userId',
+              ),
+            );
             return;
         }
         if (!mounted) return;

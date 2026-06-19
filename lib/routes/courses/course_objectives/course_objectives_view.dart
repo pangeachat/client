@@ -181,10 +181,13 @@ class _ObjectiveSection extends StatelessWidget {
               return MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
-                  // In a joined course, open the activity in-place over the
-                  // course (the `?activity=` detail panel) so the course context
-                  // is preserved. In a preview (no room), open it as a
-                  // standalone world object (`/<activityId>`).
+                  // In a preview (no room), open the activity as a standalone
+                  // world object (`/<activityId>`). In a joined course, open it
+                  // as the focused detail over the map: DROP the `left=course`
+                  // card (so it isn't left blank beside the activity) but keep
+                  // the `?m=course:` filter, so the map stays course-scoped and
+                  // zooms to this activity (`mapFocusFor` → `ActivityFocus`).
+                  // Back returns to the course card.
                   onTap: () {
                     if (room == null) {
                       context.go('/${ref.activityId}');
@@ -193,16 +196,36 @@ class _ObjectiveSection extends StatelessWidget {
                     final uri = GoRouter.of(
                       context,
                     ).routeInformationProvider.value.uri;
-                    context.go(
-                      uri
-                          .replace(
-                            queryParameters: {
-                              ...uri.queryParameters,
-                              'activity': ref.activityId,
-                            },
-                          )
-                          .toString(),
-                    );
+                    // Rebuild the query from the RAW parts, not
+                    // uri.replace(queryParameters:) — the latter re-encodes the
+                    // already-encoded `m=course:!id` filter (`:`→`%3A`, `!`→`%21`),
+                    // which the raw-query parser then mis-reads, de-scoping the
+                    // map and blanking the course panel. Keep `m=` (course scope)
+                    // verbatim and add the activity. Drop the `left=course` card
+                    // AND the `right=` review surface: an activity is an
+                    // immersive task, so it REPLACES other panels rather than
+                    // stacking on them — backing out returns to the course map,
+                    // never a stale vocab/analytics page. See routing.instructions.md.
+                    final parts = uri.query.isEmpty
+                        ? <String>[]
+                        : uri.query.split('&');
+                    parts.removeWhere((p) =>
+                        p == 'left' ||
+                        p.startsWith('left=') ||
+                        p == 'right' ||
+                        p.startsWith('right=') ||
+                        p == 'activity' ||
+                        p.startsWith('activity=') ||
+                        p == 'autoplay' ||
+                        p.startsWith('autoplay='));
+                    parts.add('activity=${ref.activityId}');
+                    // Tapping a video card opens the plan with that video
+                    // autostarting (muted) — see the carousel.
+                    if (ref.plan.heroBlock?.isVideo == true ||
+                        ref.plan.heroBlock?.isYoutube == true) {
+                      parts.add('autoplay=0');
+                    }
+                    context.go('/?${parts.join('&')}');
                   },
                   child: Stack(
                     children: [
