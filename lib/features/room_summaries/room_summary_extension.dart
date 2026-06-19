@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
@@ -173,7 +174,12 @@ class RoomSummaryResponse {
     final planEntry =
         json[PangeaEventTypes.activityPlan]?["default"]?["content"];
     ActivityPlanModel? plan;
-    if (planEntry != null && planEntry is Map<String, dynamic>) {
+    // v3 rooms store a thin { activity_id, version_id } reference (no `req`);
+    // only an embedded plan can be parsed here. References are resolved lazily
+    // by consumers, so the summary's plan stays null. See
+    // activities.instructions.md.
+    if (planEntry is Map<String, dynamic> &&
+        planEntry[ActivitySessionConstants.activityPlanRequest] != null) {
       plan = ActivityPlanModel.fromJson(planEntry);
     }
 
