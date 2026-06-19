@@ -257,12 +257,28 @@ abstract class WorkspaceNav {
       ?section,
       if (keepRoom) ...lists.left.where((t) => t.type == 'room'),
     ];
+    // Carry the map filter forward: scope (`?m=`) is independent of panels and
+    // changes only when a new focus is chosen (a course) or reset by the World
+    // control — never by switching sections (see routing.instructions.md). A
+    // course-path destination resets it cleanly in the redirect, which drops any
+    // carried `m=` before setting the new course's.
     final parts = <String>[
+      ?_mapFilter(current),
       if (left.isNotEmpty) 'left=${left.map((t) => t.encode()).join(',')}',
       if (lists.right.isNotEmpty)
         'right=${lists.right.map((t) => t.encode()).join(',')}',
     ];
     return parts.isEmpty ? path : '$path?${parts.join('&')}';
+  }
+
+  /// The raw `m=…` map-filter segment of [current]'s query, or null. The filter
+  /// is scope state, independent of which panels are open, so the section/close
+  /// helpers carry it forward verbatim. See `routing.instructions.md`.
+  static String? _mapFilter(Uri current) {
+    for (final p in current.query.split('&')) {
+      if (p == 'm' || p.startsWith('m=')) return p;
+    }
+    return null;
   }
 
   /// Drop the whole `left` list (e.g. navigating to the world map, which has no
@@ -287,24 +303,24 @@ abstract class WorkspaceNav {
       _mutate(current, 'left', (tokens) => _remove(tokens, token));
 
   /// Close a *section* left panel (a course, the chat list, the add-course
-  /// wizard). Returns to the world map path `/` and drops every non-panel query
-  /// param — in particular a course's `?m=course:<id>` map filter — while
-  /// keeping every *other* left panel and the whole right column. So closing a
-  /// course exits its map filter and reveals the world without tearing down the
-  /// rest ("move to the world"). A `room` is only ever a token, so it just drops
-  /// its own token via [closeLeft]. See `routing.instructions.md`.
+  /// wizard), dropping its token while **keeping the map filter** and the rest of
+  /// the workspace. Closing a course card therefore leaves `?m=course:<id>` in
+  /// place — the map stays course-scoped (its pins visible) with the card gone;
+  /// scope is reset only by the World control or by choosing a different course,
+  /// never by closing a panel (see `routing.instructions.md`). A `room` is only
+  /// ever a token, so it just drops its own token via [closeLeft].
   static String closeSection(Uri current, PanelToken token) {
     final lists = parseOpenPanels(current);
-    // A course's management page (`coursepage`) reads its space from the
-    // `?m=course:<id>` filter this close clears, so left on its own it renders
-    // blank with no close control — drop it together with the course card
-    // (mirrors closeSettings dropping settingspage). See routing.instructions.md.
+    // A course's management page (`coursepage`) is the card's detail, so closing
+    // the card drops it too (it has no master to return to) — mirrors
+    // closeSettings dropping settingspage. See routing.instructions.md.
     final dropDependentCoursePage = token.type == 'course';
     final left = lists.left
         .where((t) =>
             t != token && !(dropDependentCoursePage && t.type == 'coursepage'))
         .toList();
     final parts = <String>[
+      ?_mapFilter(current),
       if (left.isNotEmpty) 'left=${left.map((t) => t.encode()).join(',')}',
       if (lists.right.isNotEmpty)
         'right=${lists.right.map((t) => t.encode()).join(',')}',

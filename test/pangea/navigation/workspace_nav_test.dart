@@ -228,24 +228,36 @@ void main() {
     });
   });
 
-  group('closeSection (close a path-addressable section panel)', () {
-    test('closing a course returns to the world map and keeps room + right', () {
+  group('closeSection (drop a section panel, keep the map filter)', () {
+    test('closing a course card keeps its ?m= filter, the room, and the right',
+        () {
       final loc = WorkspaceNav.closeSection(
-        u('/courses/!s?left=course,room:!a&right=analytics:vocab'),
+        u('/?m=course:!s&left=course,room:!a&right=analytics:vocab'),
         const PanelToken('course'),
       );
-      final parsed = u(loc);
-      expect(parsed.path, '/'); // off the /courses/:id path so no route card
-      final lists = parseOpenPanels(parsed);
-      expect(lists.left, [const PanelToken('room', '!a')]); // room kept
-      expect(lists.left.any((t) => t.type == 'course'), isFalse);
+      // Scope is independent of panels: the map stays course-scoped (filter
+      // survives), the card is gone, the room and right column are kept.
+      expect(loc.contains('m=course'), isTrue);
+      final lists = parseOpenPanels(u(loc));
+      expect(lists.left.any((t) => t.type == 'course'), isFalse); // card dropped
+      expect(lists.left.any((t) => t.type == 'room'), isTrue); // room kept
       expect(lists.right, [const PanelToken('analytics', 'vocab')]); // kept
     });
 
-    test('closing the only panel lands on a bare world path', () {
+    test('closing the course card alone keeps the scoped map, not bare world',
+        () {
       final loc = WorkspaceNav.closeSection(
-        u('/courses/!s?left=course'),
+        u('/?m=course:!s&left=course'),
         const PanelToken('course'),
+      );
+      expect(loc.contains('m=course'), isTrue); // scope survives the close
+      expect(parseOpenPanels(u(loc)).left, isEmpty); // no panels, just the filter
+    });
+
+    test('closing a section with no filter lands on a bare world path', () {
+      final loc = WorkspaceNav.closeSection(
+        u('/?left=chats'),
+        const PanelToken('chats'),
       );
       expect(loc, '/');
     });
@@ -385,6 +397,21 @@ void main() {
         parseOpenPanels(u(hub)).right,
         [const PanelToken('analytics', 'vocab')],
       );
+    });
+
+    test('carries the map filter forward (scope survives a section switch)', () {
+      // Switching to a non-map section (chats) keeps the course scope — only a
+      // new focus (a course) or the World control changes `?m=`.
+      final chats = WorkspaceNav.setSection(
+        u('/?m=course:!s&left=course&right=analytics:vocab'),
+        '/',
+        const PanelToken('chats'),
+        keepRoom: false,
+      );
+      expect(chats.contains('m=course'), isTrue);
+      final lists = parseOpenPanels(u(chats));
+      expect(lists.left, [const PanelToken('chats')]); // section replaced left
+      expect(lists.right, [const PanelToken('analytics', 'vocab')]); // kept
     });
   });
 

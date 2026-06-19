@@ -56,10 +56,12 @@ dropping its token: there is no second, path-driven copy to leave standing.
 
 One map stays mounted for the whole app and never remounts, always full width
 behind everything. Panels float over it as overlays, so the *visible* map is
-whatever they don't cover: it grows as panels close and shrinks as they open. The
-**World** control is the home of this backdrop: it clears every open panel in one
-history step — so the back button restores them — to reveal the full map at world
-scope. The camera biases its focal content (a location, a course region, an activity) into
+whatever they don't cover: it grows as panels close and shrinks as they open —
+**closing panels is how you get a clear look at the map**, and it never changes the
+map's scope (next paragraph). The **World** control is the one deliberate full
+reset: it clears every open panel *and* returns the map to world scope in one
+history step (so the back button restores both). The camera biases its focal
+content (a location, a course region, an activity) into
 the uncovered area rather than the geometric center. Because that uncovered area
 shifts every time a panel opens or closes, the camera **debounces**: it settles to
 the new framing in one smooth glide once the layout stops changing, rather than
@@ -71,15 +73,21 @@ to settle.
 query param, **`?m=`** — a comma-separated list of typed filter values, parsed like
 the panel lists but kept separate because it is map state, not an open panel. Today
 the only value is `course:<spaceid>`: it scopes the persistent map to one course
-(its activities as pins) and, being just a filter, is independent of which panels
-are open. A **course is, in large part, another map filter** — entering one sets
-`?m=course:<id>` *and* opens the `course` panel (`?left=course`); the panel's space
-id is read from the filter, never duplicated into the token. A course room is then
-an ordinary `room` token over the course-filtered map (so closing the room reveals
-the course, and the filter never depends on the panel set). The active course's
-space id is read from the `m` filter; leaving the course (closing its panel) clears
-`m` and the map returns to world scope. New filter dimensions (region, language,
-activity kind) slot into the same `m` list without touching the panel model.
+(its activities as pins). A **course is, in large part, another map filter** —
+entering one sets `?m=course:<id>` *and* opens the `course` panel (`?left=course`);
+the panel's space id is read from the filter, never duplicated into the token. A
+course room is then an ordinary `room` token over the course-filtered map.
+
+**Scope is independent of panels, and persists across panel operations.** The
+`?m=` filter is *not* tied to any panel: opening, closing, and switching panels
+(including closing the course card itself, or moving to Chats/Settings) all leave
+it untouched — closing panels is precisely how you clear the view to see the
+scoped map. The scope changes only when you choose a new map **focus** (entering a
+different course sets/replaces `?m=`) or do the one explicit reset (the **World**
+control returns to world scope). So closing the course card leaves the map
+course-scoped with the card gone, and the filter never depends on which panels
+happen to be open. New filter dimensions (region, language, activity kind) slot
+into the same `m` list without touching the panel model.
 
 ### The map never rebuilds
 
@@ -138,15 +146,18 @@ section from the **left nav rail** (chats, a course, the courses list)
 beside them — clicking around the rail swaps what's on the left instead of piling
 panels up — while the right-column companions (analytics, a detail) stay open.
 The one deliberate clear-everything is the **World/home** button, which closes
-all panels at once. (Opening a course from a map pin or a Courses-list tile is
-navigating within your content, not a rail section switch, so it keeps an open
-chat and swaps only the course.)
+all panels *and* resets the map to world scope — the single place scope is reset;
+closing panels otherwise leaves the map's scope intact (see *The map is the
+backdrop*). (Opening a course from a map pin or a Courses-list tile is navigating
+within your content, not a rail section switch, so it keeps an open chat and swaps
+only the course.)
 
 Closing a panel drops its token and nothing else, because the token is the only
 place it lives. The close control is an **X** on desktop (matching the right
 column) and a **back arrow** on a narrow screen where the panel fills the view.
-Closing the last panel reveals the bare map. A back arrow that appears *inside* a
-panel is a different gesture (a push, below), not a close.
+Closing the last panel reveals the map at its current scope — a course's map if
+one is filtered, the world otherwise. A back arrow that appears *inside* a panel is
+a different gesture (a push, below), not a close.
 
 ### The navigation tree: parent, child, sibling
 
@@ -296,7 +307,7 @@ behaves the same on mobile and desktop.
 
 | Surface | Opens from | Column | As |
 |---|---|---|---|
-| World map (home) | app root, World rail | the backdrop | always mounted; the World button clears every panel |
+| World map (home) | app root, World rail | the backdrop | always mounted; the World button clears every panel **and** resets the map to world scope (the one scope reset) |
 | Course | a space in the rail, a map pin | left + `?m=` filter | sets `?m=course:<id>` (map scope) **and** opens the `course` panel (master); tabs ride in the token param |
 | A course management page (invite, edit, access, permissions, change-course) | the course card's More menu | left | open panel (detail) **beside the card**, or pushed onto the card when folded — the same fit test as a settings page (a `coursepage` token; the card is its master). NOT a push that replaces the card |
 | Chat list | the rail | left | open panel (master) |
