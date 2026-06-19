@@ -325,7 +325,7 @@ behaves the same on mobile and desktop.
 | Learning settings (shortcut) | the cluster's **language flag** | right | opens the learning-settings page directly — the flag doubles as a shortcut to it |
 | A settings leaf (password, blocked users, emotes, …) | within its settings page | the settings panel | push |
 | Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — a flat list of joined-course tiles (image, name, participants, level, modules), with the add-course options (start-my-own / browse / enter-code) below |
-| Activity plan / preview | a course's activity list, a map pin | map content | over the map (a left-column detail; a bottom sheet on mobile), camera on the activity's pin, current scope kept — like a course. **Start** launches the session, which runs as a chat room (one live view) |
+| Activity plan / preview | a course's activity list, a map pin | map content | over the map (a left-column detail; a bottom sheet on mobile), camera on the activity's pin, current scope kept — like a course. Opened from a course it is the course's **child**: its back arrow reopens the course card (reconstructed from the kept `?m=course:` scope); opened from a world pin, back returns to the map. **Start** launches the session, which runs as a chat room (one live view) |
 
 ### One live session at a time
 

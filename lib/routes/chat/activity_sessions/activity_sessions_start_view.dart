@@ -38,26 +38,33 @@ class ActivitySessionStartView extends StatelessWidget {
         // the course, X closes, both just drop the param so the course stays.
         final uri = GoRouter.of(context).routeInformationProvider.value.uri;
         final embedded = uri.queryParameters['activity'] != null;
+        // The activity plan is the course's CHILD (opened from its activity
+        // list): its back-step reveals the parent — the course CARD. Drop the
+        // activity overlay and, when a course is still scoped, reopen `left=course`
+        // over the kept `?m=course:` filter (the parent is reconstructed from the
+        // surviving scope, since the plan replaced the card to take the left
+        // primary). When no course is scoped (opened from a world pin) the
+        // back-step is just the map. Rebuild from the RAW query so the
+        // `?m=course:` filter isn't re-encoded (`uri.replace(queryParameters:)`
+        // turns `:`→`%3A`, which the raw-query parser can't read — the course
+        // de-scopes and the reopened card, now an orphan, is dropped, landing on
+        // the bare map). See `routing.instructions.md`.
         void returnToCourse() {
-          final params = Map<String, String>.from(uri.queryParameters)
-            ..remove('activity')
-            ..remove('roomid')
-            ..remove('launch')
-            ..remove('autoplay');
-          // Back from an in-course activity reopens the course CARD (the panel),
-          // not just the bare course-scoped map — restore `left=course` over the
-          // kept `?m=course:` filter when nothing else holds the left column.
-          final m = params['m'];
-          if (m != null &&
-              m.startsWith('course:') &&
-              (params['left']?.isEmpty ?? true)) {
-            params['left'] = 'course';
-          }
-          GoRouter.of(context).go(
-            params.isEmpty
-                ? uri.path
-                : uri.replace(queryParameters: params).toString(),
-          );
+          final parts = uri.query.isEmpty ? <String>[] : uri.query.split('&');
+          parts.removeWhere((p) =>
+              p == 'activity' ||
+              p.startsWith('activity=') ||
+              p == 'roomid' ||
+              p.startsWith('roomid=') ||
+              p == 'launch' ||
+              p.startsWith('launch=') ||
+              p == 'autoplay' ||
+              p.startsWith('autoplay='));
+          final scoped = parts.any((p) => p.startsWith('m=course:'));
+          final hasLeft =
+              parts.any((p) => p == 'left' || p.startsWith('left='));
+          if (scoped && !hasLeft) parts.add('left=course');
+          GoRouter.of(context).go(parts.isEmpty ? '/' : '/?${parts.join('&')}');
         }
 
         // Pangea#
