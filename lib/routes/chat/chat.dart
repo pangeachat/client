@@ -76,6 +76,7 @@ import 'package:fluffychat/routes/chat/choreographer/writing_assistance_room_ext
 import 'package:fluffychat/routes/chat/event_info_dialog.dart';
 import 'package:fluffychat/routes/chat/event_too_large_dialog.dart';
 import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
@@ -234,6 +235,7 @@ class ChatController extends State<ChatPageWithRoom>
   StreamSubscription? _goBackTutorialSubscription;
 
   StreamSubscription? _goalCompletionSubscription;
+  StreamSubscription? _activityRolesSubscription;
   late final ValueNotifier<ActivityRoleGoal?> activeGoalNotifier;
 
   /// The event used to start the reading-assistance tutorial. Stored so the
@@ -815,6 +817,11 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
+  void _activityRolesListener() {
+    if (activeGoalNotifier.value != null || room.currentGoal == null) return;
+    activeGoalNotifier.value = room.currentGoal;
+  }
+
   Future<void> _goalCompletionListener(Set<ActivityRoleGoal> goals) async {
     if (goals.isEmpty) return;
 
@@ -915,6 +922,7 @@ class ChatController extends State<ChatPageWithRoom>
     activityController = ActivityChatController(
       userID: Matrix.of(context).client.userID!,
       room: room,
+      inputFocus: inputFocus,
     );
 
     activityController.confettiNotifier.addListener(_activityConfettiListener);
@@ -932,6 +940,15 @@ class ChatController extends State<ChatPageWithRoom>
         .goalCompletionStream
         .stream
         .listen(_goalCompletionListener);
+
+    _activityRolesSubscription?.cancel();
+    _activityRolesSubscription = room.client.onRoomState.stream
+        .where(
+          (event) =>
+              event.roomId == room.id &&
+              event.state.type == PangeaEventTypes.activityRole,
+        )
+        .listen((_) => _activityRolesListener());
 
     tutorialOverlayController = TutorialOverlayController(
       TutorialSequences.chatTutorialSequence,
@@ -1255,6 +1272,7 @@ class ChatController extends State<ChatPageWithRoom>
     _forwardTutorialSubscription?.cancel();
     _goBackTutorialSubscription?.cancel();
     _goalCompletionSubscription?.cancel();
+    _activityRolesSubscription?.cancel();
     tutorialOverlayController.dispose();
     activeGoalNotifier.dispose();
     //Pangea#

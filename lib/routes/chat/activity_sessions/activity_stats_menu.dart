@@ -106,7 +106,12 @@ class ActivityStatsMenu extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: activeGoalNotifier,
       builder: (context, activeGoal, _) {
-        final remainingGoals = _remainingGoals(activeGoal?.id);
+        // Show the live goal, or fall back to the last goal when none is active,
+        // so the current-goal header doesn't vanish. (Our branch had regressed
+        // this to gate the whole header on `activeGoal != null`; main always
+        // shows a goal via this fallback. See the main↔branch reconciliation.)
+        final visibleGoal = activeGoal ?? room.ownRole?.allGoals.lastOrNull;
+        final remainingGoals = _remainingGoals(visibleGoal?.id);
         return ValueListenableBuilder(
           valueListenable: visibilityNotifier,
           builder: (context, showDropdown, child) {
@@ -120,7 +125,7 @@ class ActivityStatsMenu extends StatelessWidget {
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      if (activeGoal != null)
+                      if (visibleGoal != null)
                         InkWell(
                           onTap: _toggleVisibility,
                           child: Container(
@@ -136,7 +141,7 @@ class ActivityStatsMenu extends StatelessWidget {
                               duration: FluffyThemes.animationDuration,
                               transitionBuilder: (child, animation) {
                                 final isCurrent =
-                                    child.key == ValueKey(activeGoal.id);
+                                    child.key == ValueKey(visibleGoal.id);
 
                                 return ClipRect(
                                   child: AnimatedBuilder(
@@ -167,17 +172,17 @@ class ActivityStatsMenu extends StatelessWidget {
                                 );
                               },
                               child: Row(
-                                key: ValueKey(activeGoal.id),
+                                key: ValueKey(visibleGoal.id),
                                 children: [
                                   Expanded(
                                     child: GoalStatusWidget(
-                                      goal: activeGoal,
+                                      goal: visibleGoal,
                                       complete: room.isOwnGoalCompleted(
-                                        activeGoal.id,
+                                        visibleGoal.id,
                                       ),
                                       starTarget:
                                           ActivitySessionConstants.goalMenuStarTargetId(
-                                            activeGoal.id,
+                                            visibleGoal.id,
                                           ),
                                     ),
                                   ),
@@ -217,6 +222,7 @@ class ActivityStatsMenu extends StatelessWidget {
                           ),
                         ),
                       ClipRect(
+                        clipBehavior: Clip.antiAlias,
                         child: AnimatedAlign(
                           duration: FluffyThemes.animationDuration,
                           curve: Curves.easeInOut,

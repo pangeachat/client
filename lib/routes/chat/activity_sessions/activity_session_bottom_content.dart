@@ -294,39 +294,42 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                           final superlative =
                               userSummary?.superlatives.firstOrNull;
 
-                          return Opacity(
-                            opacity: role == null ? 0.5 : 1,
-                            child: Column(
-                              spacing: 6.0,
-                              children: [
-                                Text(
-                                  displayName,
-                                  style: const TextStyle(fontSize: 12.0),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.center,
-                                ),
-                                Avatar(
-                                  mxContent: user?.avatarUrl,
-                                  name: userId.localpart,
-                                  size: 60.0,
-                                  userId: userId,
-                                ),
-                                if (userSummary != null)
+                          return ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 90.0),
+                            child: Opacity(
+                              opacity: role == null ? 0.5 : 1,
+                              child: Column(
+                                spacing: 6.0,
+                                children: [
                                   Text(
-                                    userSummary.cefrLevel,
+                                    displayName,
                                     style: const TextStyle(fontSize: 12.0),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                if (superlative != null)
-                                  Text(
-                                    superlative,
-                                    style: const TextStyle(fontSize: 12.0),
-                                    maxLines: 2,
+                                    maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.center,
                                   ),
-                              ],
+                                  Avatar(
+                                    mxContent: user?.avatarUrl,
+                                    name: userId.localpart,
+                                    size: 60.0,
+                                    userId: userId,
+                                  ),
+                                  if (userSummary != null)
+                                    Text(
+                                      userSummary.cefrLevel,
+                                      style: const TextStyle(fontSize: 12.0),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  if (superlative != null)
+                                    Text(
+                                      superlative,
+                                      style: const TextStyle(fontSize: 12.0),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                ],
+                              ),
                             ),
                           );
                         }),

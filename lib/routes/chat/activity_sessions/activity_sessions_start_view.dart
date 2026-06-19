@@ -173,6 +173,21 @@ class ActivitySessionStartView extends StatelessWidget {
                                   canSelectParticipant:
                                       sessionController.canSelectRole,
                                   assignedRoles: controller.assignedRoles,
+                                  showStarsCard:
+                                      sessionController.showStarsCard,
+                                  completedGoalsForRole:
+                                      sessionController.completedGoalIdsForRole,
+                                  roleCardOpacity:
+                                      sessionController.roleCardOpacity,
+                                  showRoleCards:
+                                      sessionController.showRoleCards,
+                                  showDescriptionSection:
+                                      sessionController.showDescriptionSection,
+                                  goals: sessionController.selectedRoleGoals,
+                                  completedGoalIds: sessionController
+                                      .selectedRoleCompletedGoalIds,
+                                  goalsStartCollapsed:
+                                      sessionController.goalsStartCollapsed,
                                 ),
                                 ActivitySessionBottomContent(sessionController),
                               ],

@@ -48,6 +48,20 @@ class NotStartedSession extends StatefulWidget {
 
 class NotStartedSessionController extends State<NotStartedSession>
     implements ActivitySessionStateController {
+  final _goalsHandler = GoalsSubscriptionHandler();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _goalsHandler.init(widget.course?.id, context, setState, () => mounted);
+  }
+
+  @override
+  void dispose() {
+    _goalsHandler.cancel();
+    super.dispose();
+  }
+
   String? get joinedActivityRoomId =>
       widget.course?.activeActivityRoomId(widget.activityId);
 
@@ -68,6 +82,39 @@ class NotStartedSessionController extends State<NotStartedSession>
 
   @override
   void selectRole(String id) {}
+
+  @override
+  bool showStarsCard(String id) => true;
+
+  @override
+  double get roleCardOpacity => 0.7;
+
+  @override
+  bool get goalsStartCollapsed => false;
+
+  @override
+  Set<String> completedGoalIdsForRole(String id) => _goalsHandler.scan(
+    id,
+    Matrix.of(context).client,
+    activityId: widget.activityId,
+    activity: widget.activity,
+  );
+
+  // world_v2: the join/view subpage navigation (NotStartedSubPage) was dropped
+  // in favor of inline join/list controls (joinExistingSession /
+  // joinActivityByRoomId + ActivitySessionBottomContent). Role cards and the
+  // description are always shown on the single page.
+  @override
+  bool get showRoleCards => true;
+
+  @override
+  bool get showDescriptionSection => true;
+
+  @override
+  List<ActivityRoleGoal>? get selectedRoleGoals => null;
+
+  @override
+  Set<String> get selectedRoleCompletedGoalIds => {};
 
   bool get canJoinExistingSession => widget.summaries.openSessions.isNotEmpty;
 

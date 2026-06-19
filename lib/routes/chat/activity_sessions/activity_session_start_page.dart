@@ -282,6 +282,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
           room: activityRoom!,
           activityId: widget.activityId,
           course: course,
+          activity: activity,
           controller: this,
         );
       case SessionState.selectedSessionFull:

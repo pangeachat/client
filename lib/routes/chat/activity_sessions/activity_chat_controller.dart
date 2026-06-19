@@ -27,7 +27,15 @@ class ActivityChatController {
   final String userID;
   final Room room;
 
-  ActivityChatController({required this.userID, required this.room}) {
+  /// The chat input's focus node, so opening the activity dropdown can dismiss
+  /// the keyboard (restored to parity with main).
+  final FocusNode inputFocus;
+
+  ActivityChatController({
+    required this.userID,
+    required this.room,
+    required this.inputFocus,
+  }) {
     init();
   }
 
@@ -124,6 +132,7 @@ class ActivityChatController {
 
   void setShowDropdown(bool value) {
     if (!_disposed) {
+      if (value) inputFocus.unfocus();
       showActivityDropdown.value = value;
     }
   }

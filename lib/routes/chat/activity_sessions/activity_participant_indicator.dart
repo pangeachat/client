@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_settings_language_icon.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -26,6 +28,11 @@ class ActivityParticipantIndicator extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final BorderRadius? borderRadius;
 
+  // When non-null, the card renders in stars mode (role name + star icons)
+  // instead of the default avatar/username mode.
+  final List<ActivityRoleGoal>? goals;
+  final Set<String>? completedGoalIds;
+
   const ActivityParticipantIndicator({
     super.key,
     required this.name,
@@ -39,6 +46,8 @@ class ActivityParticipantIndicator extends StatelessWidget {
     this.opacity = 1.0,
     this.padding,
     this.borderRadius,
+    this.goals,
+    this.completedGoalIds,
   });
 
   @override
@@ -86,7 +95,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
               return Opacity(
                 opacity: opacity,
                 child: ShimmerBackground(
-                  enabled: shimmer,
+                  enabled: shimmer && !hovered,
                   borderRadius: borderRadius,
                   child: Container(
                     alignment: Alignment.center,
@@ -100,38 +109,77 @@ class ActivityParticipantIndicator extends StatelessWidget {
                       borderRadius: borderRadius,
                       color: (hovered || selected) && selectable
                           ? theme.colorScheme.surfaceContainerHighest
-                          : theme.colorScheme.surface.withAlpha(130),
-                    ),
-                    height: 125.0,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        avatar,
-                        Text(
-                          name,
-                          style: const TextStyle(fontSize: 12.0),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.center,
-                        ),
-                        Text(
-                          userId?.localpart ?? L10n.of(context).openRoleLabel,
-                          style: TextStyle(
-                            fontSize: 12.0,
-                            color:
-                                (Theme.of(context).brightness ==
-                                    Brightness.light
-                                ? (userId?.localpart?.darkColor ??
-                                      theme.colorScheme.primary)
-                                : (userId?.localpart?.lightColorText ??
-                                      theme.colorScheme.primary)),
-                          ),
-                          textAlign: TextAlign.center,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
+                          : theme.colorScheme.surfaceContainerLow,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withAlpha(25),
+                          blurRadius: 4.0,
+                          offset: const Offset(0, 2),
                         ),
                       ],
                     ),
+                    height: 125.0,
+                    child: goals != null
+                        ? Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                name,
+                                style: const TextStyle(fontSize: 12.0),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                              ),
+                              Wrap(
+                                alignment: WrapAlignment.center,
+                                spacing: 2.0,
+                                runSpacing: 4.0,
+                                children: goals!.map((g) {
+                                  final done =
+                                      completedGoalIds?.contains(g.id) ?? false;
+                                  return Icon(
+                                    done ? Icons.star : Icons.star_border,
+                                    size: 22.0,
+                                    color: done
+                                        ? (theme.brightness == Brightness.light
+                                              ? AppConfig.gold
+                                              : AppConfig.goldLight)
+                                        : null,
+                                  );
+                                }).toList(),
+                              ),
+                            ],
+                          )
+                        : Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                name,
+                                style: const TextStyle(fontSize: 12.0),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                              ),
+                              avatar,
+                              Text(
+                                userId?.localpart ??
+                                    L10n.of(context).openRoleLabel,
+                                style: TextStyle(
+                                  fontSize: 12.0,
+                                  color:
+                                      (Theme.of(context).brightness ==
+                                          Brightness.light
+                                      ? (userId?.localpart?.darkColor ??
+                                            theme.colorScheme.primary)
+                                      : (userId?.localpart?.lightColorText ??
+                                            theme.colorScheme.primary)),
+                                ),
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
                   ),
                 ),
               );

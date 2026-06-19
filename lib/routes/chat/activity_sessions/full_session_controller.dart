@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
@@ -41,6 +42,30 @@ class FullSessionController extends State<FullSession>
 
   @override
   void selectRole(String id) {}
+
+  @override
+  bool showStarsCard(String id) => false;
+
+  @override
+  double get roleCardOpacity => 1.0;
+
+  @override
+  bool get goalsStartCollapsed => false;
+
+  @override
+  bool get showRoleCards => true;
+
+  @override
+  bool get showDescriptionSection => true;
+
+  @override
+  Set<String> completedGoalIdsForRole(String id) => {};
+
+  @override
+  List<ActivityRoleGoal>? get selectedRoleGoals => null;
+
+  @override
+  Set<String> get selectedRoleCompletedGoalIds => {};
 
   void returnFromFullSession() {
     final course = widget.course;
