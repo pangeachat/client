@@ -54,11 +54,29 @@ class ActivityMediaBlock {
   bool get isAudio => blockType == 'audio';
   bool get isVideo => blockType == 'video';
 
+  /// The 11-character YouTube video id parsed from [url] (watch / youtu.be /
+  /// embed / shorts forms), or null. Used to derive a poster when a `youtube`
+  /// block carries no explicit [thumbnailUrl].
+  String? get youtubeId {
+    final u = url;
+    if (u == null) return null;
+    return RegExp(
+      r'(?:youtu\.be/|youtube\.com/(?:watch\?(?:.*&)?v=|embed/|shorts/|v/))([A-Za-z0-9_-]{11})',
+    ).firstMatch(u)?.group(1);
+  }
+
+  /// YouTube's own poster image for [youtubeId], or null when the id can't be
+  /// parsed — so a thumbnail-less `youtube` block still shows a real poster
+  /// instead of falling back to the (non-image) watch URL.
+  String? get youtubeThumbnailUrl => youtubeId != null
+      ? 'https://img.youtube.com/vi/$youtubeId/hqdefault.jpg'
+      : null;
+
   /// The best displayable image URL for a render at [width] px, or null when
   /// the block is non-visual or not yet resolved. Picks the smallest size
   /// variant that covers [width]: thumbnail (256) ≤ medium (512) ≤ original.
   String? displayUrl([double width = 1024]) {
-    if (isYoutube) return thumbnailUrl ?? url;
+    if (isYoutube) return thumbnailUrl ?? youtubeThumbnailUrl;
     if (resolvedUrl == null) return null;
     if (width <= 256 && resolvedThumbnailUrl != null) return resolvedThumbnailUrl;
     if (width <= 512 && resolvedMediumUrl != null) return resolvedMediumUrl;

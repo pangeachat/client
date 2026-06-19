@@ -94,6 +94,19 @@ class ActivityPlanModel {
   ActivityMediaBlock? get heroImage =>
       media.firstWhereOrNull((b) => b.isImage);
 
+  /// First media block of any kind — the compact-surface "hero". Cards, list
+  /// tiles, and map pins show this block standing in for the whole carousel,
+  /// with a play badge when it is a video. Contrast [heroImage], which skips to
+  /// the first *image* (used by the single-image paths: chat background, room
+  /// avatar).
+  ActivityMediaBlock? get heroBlock => media.firstOrNull;
+
+  /// Whether the activity has any video or YouTube block — media that plays.
+  /// The live session shows the inline carousel (so it can be played) only for
+  /// these, and suppresses the blurred background image in that case;
+  /// image-only activities keep the background. See activities.instructions.md.
+  bool get hasPlayableMedia => media.any((b) => b.isVideo || b.isYoutube);
+
   /// The hero image to render today (the carousel is a follow-up). Resolution
   /// order: the first resolved image block in the v2/v3 `media` list → the
   /// legacy single `image_url` (the choreo `/activity_plan/localize` path) →

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_media_play_badge.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class ActivitySuggestionCard extends StatelessWidget {
@@ -30,6 +31,12 @@ class ActivitySuggestionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final hero = activity.heroBlock;
+    final heroIsVideo = hero != null && (hero.isVideo || hero.isYoutube);
+    final heroDisplayUrl = hero?.displayUrl(width);
+    final heroUrl = heroDisplayUrl != null
+        ? Uri.tryParse(heroDisplayUrl)
+        : activity.imageURL;
     return SizedBox(
       height: height,
       width: width,
@@ -41,11 +48,18 @@ class ActivitySuggestionCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ImageByUrl(
-                imageUrl: activity.imageURL,
-                width: width,
-                borderRadius: const BorderRadius.all(Radius.zero),
-                replacement: SizedBox(height: width),
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  ImageByUrl(
+                    imageUrl: heroUrl,
+                    width: width,
+                    borderRadius: const BorderRadius.all(Radius.zero),
+                    replacement: SizedBox(height: width),
+                  ),
+                  if (heroIsVideo)
+                    ActivityMediaPlayBadge(size: (iconSize ?? 12.0) * 2.0),
+                ],
               ),
               Expanded(
                 child: Padding(

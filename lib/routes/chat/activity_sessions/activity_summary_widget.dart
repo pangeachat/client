@@ -1,18 +1,17 @@
 // ignore_for_file: implementation_imports
 
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_media_carousel.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_list.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
-import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class ActivitySummary extends StatelessWidget {
   final ActivityPlanModel activity;
@@ -53,6 +52,13 @@ class ActivitySummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    // Deep-link autostart: a video card opens the plan with `?autoplay=<index>`.
+    // Only the plan page (not the in-session render) honors it.
+    final autoplayParam =
+        GoRouterState.of(context).uri.queryParameters['autoplay'];
+    final autoplayIndex = (inChat || autoplayParam == null)
+        ? null
+        : int.tryParse(autoplayParam);
     return Center(
       child: Container(
         padding: const EdgeInsets.all(12.0),
@@ -62,18 +68,14 @@ class ActivitySummary extends StatelessWidget {
         child: Column(
           spacing: 4.0,
           children: [
-            (!inChat || !AppConfig.useActivityImageAsChatBackground)
-                ? LayoutBuilder(
-                    builder: (context, constraints) {
-                      return ImageByUrl(
-                        imageUrl: activity.imageURL,
-                        width: min(
-                          constraints.maxWidth,
-                          MediaQuery.sizeOf(context).height * 0.5,
-                        ),
-                        borderRadius: BorderRadius.circular(20),
-                      );
-                    },
+            (!inChat ||
+                    !AppConfig.useActivityImageAsChatBackground ||
+                    activity.hasPlayableMedia)
+                ? ActivityMediaCarousel(
+                    media: activity.media,
+                    fallbackImageUrl: activity.imageURL,
+                    borderRadius: BorderRadius.circular(20),
+                    autoplayIndex: autoplayIndex,
                   )
                 : const SizedBox.shrink(),
             ActivityParticipantList(

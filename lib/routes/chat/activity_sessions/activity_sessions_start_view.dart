@@ -40,7 +40,19 @@ class ActivitySessionStartView extends StatelessWidget {
         final embedded = uri.queryParameters['activity'] != null;
         void returnToCourse() {
           final params = Map<String, String>.from(uri.queryParameters)
-            ..remove('activity');
+            ..remove('activity')
+            ..remove('roomid')
+            ..remove('launch')
+            ..remove('autoplay');
+          // Back from an in-course activity reopens the course CARD (the panel),
+          // not just the bare course-scoped map — restore `left=course` over the
+          // kept `?m=course:` filter when nothing else holds the left column.
+          final m = params['m'];
+          if (m != null &&
+              m.startsWith('course:') &&
+              (params['left']?.isEmpty ?? true)) {
+            params['left'] = 'course';
+          }
           GoRouter.of(context).go(
             params.isEmpty
                 ? uri.path

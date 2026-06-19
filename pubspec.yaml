@@ -127,6 +127,7 @@ dependencies:
   flutter_tts: ^4.2.0
   animated_flip_counter: ^0.3.4
   meta: ^1.17.0
+  youtube_player_iframe: ^6.0.2
   xml: ^6.6.1
   flutter_map_marker_cluster: ^8.2.2
   # Pangea#
