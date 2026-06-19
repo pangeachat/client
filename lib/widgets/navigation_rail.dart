@@ -71,6 +71,9 @@ class SpacesNavigationRail extends StatelessWidget {
           uri,
           PRoutes.course(roomId),
           const PanelToken('course'),
+          // A left-nav click replaces the open left panels rather than stacking
+          // beside them (drop any open room/section). See routing.instructions.md.
+          keepRoom: false,
         ),
       );
       return;
@@ -93,6 +96,7 @@ class SpacesNavigationRail extends StatelessWidget {
         uri,
         PRoutes.course(joinedRoomId),
         const PanelToken('course'),
+        keepRoom: false,
       ),
     );
     return;
@@ -189,8 +193,9 @@ class SpacesNavigationRail extends StatelessWidget {
                   : naviRailWidth,
               duration: FluffyThemes.animationDuration,
               // Pangea#
-              // world_v2 rail order (top→bottom): World · joined spaces ·
-              // Chats · Add-course. (Profile/settings is no longer a rail slot.)
+              // world_v2 rail order (top→bottom): World · Chats · Courses ·
+              // joined spaces. (Profile/settings is no longer a rail slot;
+              // analytics opens from the top-right cluster.)
               child: Column(
                 // #Pangea
                 // Size the rail to its items — a floating bar over the map, not
@@ -205,8 +210,8 @@ class SpacesNavigationRail extends StatelessWidget {
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       children: [
-                        // World map home — the Pangea brand mark, at the top of
-                        // the rail. Chromeless and avatar-sized; the left
+                        // 1. World map home — the Pangea brand mark, at the top
+                        // of the rail. Chromeless and avatar-sized; the left
                         // indicator bar conveys selection. Brand purple when
                         // active, muted when not.
                         NaviRailItem(
@@ -233,14 +238,21 @@ class SpacesNavigationRail extends StatelessWidget {
                           naviRailWidth: naviRailWidth,
                           expandedSectionWidth: expandedSectionWidth,
                         ),
-                        // Joined course spaces.
-                        for (final space in allSpaces)
-                          _spaceItem(context, space),
-                        // Chats.
+                        // 2. Chats — the chat list. Chromeless (no box fill) and
+                        // icon-sized to match the brand mark / course avatars
+                        // (it used to render tiny on the default surface fill);
+                        // the left indicator bar conveys selection.
                         NaviRailItem(
                           isSelected: isChats,
-                          icon: const Icon(Icons.forum_outlined),
-                          selectedIcon: const Icon(Icons.forum),
+                          backgroundColor: Colors.transparent,
+                          icon: Icon(
+                            Icons.forum_outlined,
+                            size: naviRailWidth - (isColumnMode ? 40.0 : 32.0),
+                          ),
+                          selectedIcon: Icon(
+                            Icons.forum,
+                            size: naviRailWidth - (isColumnMode ? 40.0 : 32.0),
+                          ),
                           onTap: () {
                             collapse();
                             // Token-only: the chats list is a left `chats` token
@@ -250,6 +262,8 @@ class SpacesNavigationRail extends StatelessWidget {
                                 state.uri,
                                 PRoutes.world,
                                 const PanelToken('chats'),
+                                // Replace open left panels rather than stack.
+                                keepRoom: false,
                               ),
                             );
                           },
@@ -260,22 +274,25 @@ class SpacesNavigationRail extends StatelessWidget {
                           naviRailWidth: naviRailWidth,
                           expandedSectionWidth: expandedSectionWidth,
                         ),
-                        // Analytics is no longer a rail section — it opens from
-                        // the world map's top-right cluster trackers as a
-                        // right-docked panel. See world-user-cluster.instructions.md.
-                        // Add course — the find/add-course section in the
-                        // left column (same as the other sections), not a
-                        // popover. world_v2.
+                        // 3. Courses — opens the Courses panel (the courses
+                        // you're in + add-course options) as a bare `addcourse`
+                        // left token. The Material map icon; chromeless, the bar
+                        // conveys selection. keepRoom:false keeps it a focused
+                        // flow with no chat floating over it. (Analytics is not a
+                        // rail section — it opens from the top-right cluster.)
                         NaviRailItem(
-                          backgroundColor: Colors.transparent,
-                          borderRadius: BorderRadius.circular(0),
                           isSelected: isCourseFind,
+                          backgroundColor: Colors.transparent,
+                          icon: Icon(
+                            Icons.map_outlined,
+                            size: naviRailWidth - (isColumnMode ? 40.0 : 32.0),
+                          ),
+                          selectedIcon: Icon(
+                            Icons.map,
+                            size: naviRailWidth - (isColumnMode ? 40.0 : 32.0),
+                          ),
                           onTap: () {
                             collapse();
-                            // Token-only: the add-course hub is a bare
-                            // `addcourse` left token over the world path `/`
-                            // (no legacy `/courses` path). keepRoom:false keeps
-                            // it a focused flow with no chat floating over it.
                             context.go(
                               WorkspaceNav.setSection(
                                 state.uri,
@@ -285,26 +302,14 @@ class SpacesNavigationRail extends StatelessWidget {
                               ),
                             );
                           },
-                          icon: ClipPath(
-                            clipper: MapClipper(),
-                            child: Container(
-                              width:
-                                  naviRailWidth - (isColumnMode ? 32.0 : 24.0),
-                              height:
-                                  naviRailWidth - (isColumnMode ? 32.0 : 24.0),
-                              color: isCourseFind
-                                  ? Theme.of(context).colorScheme.primaryContainer
-                                  : Theme.of(
-                                      context,
-                                    ).colorScheme.surfaceContainerHigh,
-                              child: const Icon(Icons.add),
-                            ),
-                          ),
-                          toolTip: L10n.of(context).addCourse,
+                          toolTip: L10n.of(context).courses,
                           expanded: expanded,
                           naviRailWidth: naviRailWidth,
                           expandedSectionWidth: expandedSectionWidth,
                         ),
+                        // 4. The course spaces you're in.
+                        for (final space in allSpaces)
+                          _spaceItem(context, space),
                       ],
                     ),
                   ),

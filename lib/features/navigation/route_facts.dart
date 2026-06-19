@@ -57,37 +57,22 @@ class ActivityFocus extends MapFocus {
 /// (the single source of truth for open panels). See `routing.instructions.md`.
 enum AnalyticsPanelTab { sessions, grammar, vocab }
 
-/// Section roots that render as a map hole **in column mode** (their content
-/// moves to the left column). In narrow mode they fill the screen instead.
-/// `/` is always the map and is handled separately. This is the single source
-/// for the canvas decision; `routes.dart` (`canvasPage`) and the shell layout
-/// both read it, so the page builder and the layout can't drift.
-const Set<String> _mapHoleColumnRoutes = {
-  '/chats',
-  '/analytics',
-  '/analytics/morph',
-  '/analytics/vocab',
-  '/analytics/activities',
-  '/analytics/level',
-  '/settings',
-  '/profile',
-};
+/// Whether [fullPath] renders as the map hole — the persistent world map shows
+/// through with nothing drawn over it. world_v2: only the world root `/` is a
+/// map hole now. Every section moved to a token panel rendered by the shell, so
+/// its old path renders nothing (and the section paths redirect to tokens before
+/// matching anyway). The shell reads this via [canvasFor].
+bool isMapHole(String? fullPath) => fullPath == PRoutes.world;
 
-/// The add-course hub: a card that floats over the full-bleed map.
-const String _fullBleedRoute = '/courses';
-
-/// Whether [fullPath] renders as the map hole right now (the page builder uses
-/// this to choose `EmptyPage` vs its content). `/` is always the map.
-bool isMapHole(String? fullPath, bool isColumnMode) =>
-    fullPath == PRoutes.world ||
-    (isColumnMode && _mapHoleColumnRoutes.contains(fullPath));
-
-/// The effective canvas for the current route. An open activity overlay always
-/// renders as a detail panel; otherwise it follows the route's declared canvas.
+/// The effective canvas for the current route's sideView. An open activity
+/// overlay (`?activity=` over the map, or the `/<uuid>` route) is a bounded
+/// `detail`; the world root `/` is a map hole (sideView offstage, full map
+/// shows); everything else still reached by a real route — a course-wizard step,
+/// a public-course preview, a chat archive — is a bounded `detail` with the map
+/// peeking beside it.
 CanvasMode canvasFor(GoRouterState state, bool isColumnMode) {
   if (activityFor(state) != null) return CanvasMode.detail;
-  if (isMapHole(state.fullPath, isColumnMode)) return CanvasMode.mapHole;
-  if (state.fullPath == _fullBleedRoute) return CanvasMode.fullBleed;
+  if (isMapHole(state.fullPath)) return CanvasMode.mapHole;
   return CanvasMode.detail;
 }
 
@@ -190,12 +175,6 @@ MapFocus? mapFocusFor(GoRouterState state) {
   return null;
 }
 
-/// Whether the left column (the section card over the map) is shown. World and
-/// the add-course hub have no left column.
-bool showLeftColumn(GoRouterState state) =>
-    sectionFor(state.uri) != AppSection.world &&
-    state.fullPath != _fullBleedRoute;
-
 /// Whether the navigation rail (column mode) / bottom nav (narrow mode) shows.
 /// In column mode it is always present; in narrow mode it is suppressed on
 /// deep detail views (a room/space leaf, a construct drilldown).
@@ -227,6 +206,17 @@ const int _maxPanelsPerList = 6;
 ({List<PanelToken> left, List<PanelToken> right}) parseOpenPanels(Uri uri) =>
     (left: _parsePanelList(uri, 'left'), right: _parsePanelList(uri, 'right'));
 
+/// The number of open panels across BOTH columns. The close affordance reads
+/// this on a narrow single pane: only the focused leaf is drawn, so closing it
+/// reveals another open panel (a back-step `←`) when more than one is open, or
+/// the bare map (a dismiss `X`) when it is the last one. The tree decides WHICH
+/// panel is the leaf; this only asks whether anything is behind it. See
+/// `close_affordance.dart`.
+int openPanelCount(Uri uri) {
+  final lists = parseOpenPanels(uri);
+  return lists.left.length + lists.right.length;
+}
+
 List<PanelToken> _parsePanelList(Uri uri, String key) {
   // Read the raw query, not uri.queryParameters: the latter percent-decodes,
   // which would turn an encoded construct's %2C back into a delimiter comma and
@@ -246,6 +236,7 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
 
   final column = key == 'left' ? PanelColumn.left : PanelColumn.right;
   final seen = <String>{};
+  final usedGroups = <String>{};
   final tokens = <PanelToken>[];
   for (final element in encodedList.split(',')) {
     final token = PanelToken.parse(element);
@@ -261,8 +252,20 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
         ? '${token.type}:${(token.param ?? '').split('/').first}'
         : '${token.type}:${token.param ?? ''}';
     if (!seen.add(identity)) continue;
+    // Siblings can't coexist: at most one token per sibling group survives in a
+    // column (first wins). Without this a hand-edited / deep-link URL could
+    // render two panels the nav helpers would never open together — e.g.
+    // right=vocab:x,grammar:y (both in the `detail` group), or room+session
+    // (both `liveView`). See panel_registry.dart.
+    if (def.siblingGroups.any(usedGroups.contains)) continue;
+    usedGroups.addAll(def.siblingGroups);
     tokens.add(token);
     if (tokens.length >= _maxPanelsPerList) break;
+  }
+  // Practice takes over the analytics surface, so it never coexists with the
+  // analytics master (the `detail` group already excludes vocab/grammar details).
+  if (column == PanelColumn.right && tokens.any((t) => t.type == 'practice')) {
+    tokens.removeWhere((t) => t.type == 'analytics');
   }
   return tokens;
 }

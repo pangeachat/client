@@ -55,6 +55,8 @@ class MobileBottomNav extends StatelessWidget {
                     state.uri,
                     PRoutes.world,
                     const PanelToken('chats'),
+                    // A nav click replaces the open panels rather than stacking.
+                    keepRoom: false,
                   ),
                 ),
               ),
@@ -185,6 +187,7 @@ Future<void> _showSpaceSwitcherSheet(BuildContext context) {
                     uri,
                     PRoutes.course(space.id),
                     const PanelToken('course'),
+                    keepRoom: false,
                   ),
                 );
               },

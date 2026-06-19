@@ -13,6 +13,7 @@ import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/routes/world/activity_detail_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
+import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/workspace_right_panel.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
@@ -42,10 +43,10 @@ final GlobalKey _userClusterKey = GlobalKey(debugLabel: 'worldUserCluster');
 /// remounting it. Keyed by room means navigating to a *different* room remounts
 /// (correct: new timeline), while moving the *same* room repositions.
 ///
-/// A `room` is the highest-priority panel in either column, and the allocator
-/// folds the *lowest*-priority panel away first — so a live room is never the one
-/// folded out of the layout (its lower-priority siblings, the chat list or a
-/// course, fold first) and is always the focus in single-column mode. The session
+/// A `room` is a **child** in the navigation tree (the chat list's detail), and
+/// the allocator only ever folds a **parent** behind its child — so a live room
+/// is never folded out of the layout (its master, the chat list, folds first)
+/// and, being the leaf, is the focus in single-column mode. The session
 /// therefore survives every relayout, fold included. See `routing.instructions.md`.
 final Map<String, GlobalKey> _leftRoomKeys = {};
 GlobalKey _roomKeyFor(String roomId) => _leftRoomKeys.putIfAbsent(
@@ -61,7 +62,9 @@ GlobalKey _roomKeyFor(String roomId) => _leftRoomKeys.putIfAbsent(
 /// vocab/grammar detail, a completed-activity review) are named by the URL's
 /// `?left=`/`?right=` lists and positioned by [PanelAllocator] — one shared
 /// width budget so panels and the route-driven center detail tile without
-/// overlap. See `routing.instructions.md`.
+/// overlap. The narrow (single-pane) focus is the active **leaf** of the
+/// navigation tree, computed by the allocator from the registry's parent links —
+/// no shell-side recency state. See `routing.instructions.md`.
 class WorkspaceShell extends StatelessWidget {
   // #Pangea
   final GoRouterState state;
@@ -112,10 +115,6 @@ class WorkspaceShell extends StatelessWidget {
     // floats over the map in its dock pill, inset by [chromeMargin] on each
     // side; reserve that margin so left panels and the camera padding clear it.
     const chromeMargin = 12.0;
-    // One shared inset for the panel cards in BOTH columns, so a left card and a
-    // right card sit identically within their allocator slots (the columns used
-    // to differ — 8px left vs 0px right). Vertical matches [chromeMargin].
-    const panelCardInset = EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0);
     final columnWidth = railWidth == 0 ? 0.0 : railWidth + chromeMargin * 2;
     final showBottomNav = !isColumnMode && navRail;
 
@@ -134,6 +133,7 @@ class WorkspaceShell extends StatelessWidget {
     final rightDefs = [
       for (final token in rightTokens) PanelRegistry.defFor(token.type)!,
     ];
+
     final layout = PanelAllocator.allocate(
       viewport: viewport,
       isColumnMode: isColumnMode,
@@ -229,11 +229,15 @@ class WorkspaceShell extends StatelessWidget {
               width: canvas == CanvasMode.detail ? detailWidth : null,
               child: Offstage(
                 offstage: canvas == CanvasMode.mapHole || isMobileCourse,
-                child: ClipRRect(
-                  child: isMobileCourse
-                      ? const SizedBox.shrink()
-                      : canvasChild,
-                ),
+                // The center detail (an activity, a course-wizard step, a
+                // public-course preview) gets the SAME floating-card chrome as
+                // the column panels — rounded, elevated, same margin — via the
+                // shared [PanelCard]. A full-bleed canvas fills bare.
+                child: isMobileCourse
+                    ? const SizedBox.shrink()
+                    : canvas == CanvasMode.detail
+                        ? PanelCard(child: canvasChild)
+                        : canvasChild,
               ),
             ),
             if (isMobileCourse)
@@ -253,13 +257,13 @@ class WorkspaceShell extends StatelessWidget {
               ),
             ),
             // Left-column panels (the chat list, a live room, a course, the
-            // settings/profile menu) from `?left=`, each at its allocator slot
-            // and rendered as a rounded card over the map, matching the right
-            // column (margin via the Padding here, card chrome in
-            // WorkspaceLeftPanel). Keyed by token so opening/closing a sibling
-            // panel doesn't shift indices and remount this one; a `room` panel
-            // additionally carries a roomId GlobalKey so its ChatController
-            // repositions rather than remounts when the slot moves.
+            // settings/profile menu) from `?left=`, each at its allocator slot.
+            // The floating-card chrome AND margin live in [PanelCard] (inside
+            // WorkspaceLeftPanel), shared with the right column and the center
+            // detail. Keyed by token so opening/closing a sibling panel doesn't
+            // shift indices and remount this one; a `room` panel additionally
+            // carries a roomId GlobalKey so its ChatController repositions rather
+            // than remounts when the slot moves.
             for (var i = 0; i < leftTokens.length; i++)
               if (layout.left[i].vis != PanelVis.hidden)
                 Positioned(
@@ -268,13 +272,10 @@ class WorkspaceShell extends StatelessWidget {
                   bottom: 0,
                   left: layout.left[i].left,
                   width: layout.left[i].width,
-                  child: Padding(
-                    padding: panelCardInset,
-                    child: _leftPanel(
-                      leftTokens[i],
-                      state.uri,
-                      layout.left[i].foldedOver,
-                    ),
+                  child: _leftPanel(
+                    leftTokens[i],
+                    state.uri,
+                    layout.left[i].foldedOver,
                   ),
                 ),
             // Right-column panels (analytics summary, a vocab/grammar detail, a
@@ -294,13 +295,10 @@ class WorkspaceShell extends StatelessWidget {
                   bottom: 0,
                   left: layout.right[i].left,
                   width: layout.right[i].width,
-                  child: Padding(
-                    padding: panelCardInset,
-                    child: WorkspaceRightPanel(
-                      token: rightTokens[i],
-                      currentUri: state.uri,
-                      foldedOver: layout.right[i].foldedOver,
-                    ),
+                  child: WorkspaceRightPanel(
+                    token: rightTokens[i],
+                    currentUri: state.uri,
+                    foldedOver: layout.right[i].foldedOver,
                   ),
                 ),
             // The persistent top-right user cluster — the right column's entry

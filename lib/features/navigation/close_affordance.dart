@@ -2,7 +2,7 @@
 /// ONCE from its open-mode — never hardcoded per panel. This is the single
 /// authority the column hosts and the map sheets read.
 ///
-/// The rule (see `world-v2-architecture` → Centralized close affordance, and the
+/// The rule (see `routing.instructions.md` → Centralized close affordance, and the
 /// Figma mobile sheets where a root shows `X` only and a pushed step shows
 /// `←` + `X`):
 ///

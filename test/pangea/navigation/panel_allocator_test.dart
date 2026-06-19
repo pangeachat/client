@@ -73,29 +73,29 @@ void main() {
       expectNoOverlap(l);
     });
 
-    test('the lowest-priority panel folds away (not drawn) when reasonable '
+    test('the parent (master) folds away (not drawn) when reasonable '
         "mins can't all be met", () {
-      // Three right panels can't all honor their reasonable-min in this budget,
-      // so the lowest-priority one folds out of the layout entirely (no stripe).
+      // Three right panels can't all honor their reasonable-min in this budget.
+      // vocab's parent is analytics, so under pressure analytics (the master)
+      // folds behind vocab (its detail); review is an unrelated root and stays.
       final l = run(viewport: 1161, right: ['review', 'vocab', 'analytics']);
       final folded = l.right.where((s) => s.vis == PanelVis.hidden).toList();
       expect(folded.length, 1);
-      // analytics has the lowest priority (40 < vocab 50 < review 70).
-      expect(l.right[2].vis, PanelVis.hidden);
-      expect(l.right[0].vis, PanelVis.full);
-      expect(l.right[1].vis, PanelVis.full);
+      expect(l.right[2].vis, PanelVis.hidden); // analytics (vocab's parent) folds
+      expect(l.right[0].vis, PanelVis.full); // review
+      expect(l.right[1].vis, PanelVis.full); // vocab keeps the column
       expect(folded.single.width, 0); // folded slots carry no width
       expectNoOverlap(l);
     });
 
     test('a master/detail pair folds to one panel below its reasonable-min', () {
       // A live chat (room) beside the chat list, on a viewport too narrow to
-      // honor both reasonable-mins (480 + 340 + chrome): the lower-priority list
-      // folds away and the room — highest priority — keeps the column and its
-      // session. Closing the room reveals the list (back-to-master).
+      // honor both reasonable-mins (480 + 340 + chrome): room's parent is chats,
+      // so the chat list (master) folds away and the room (its detail) keeps the
+      // column and its session. Closing the room reveals the list (back-to-master).
       final l = run(viewport: 900, left: ['chats', 'room']);
-      expect(l.left[1].vis, PanelVis.full); // room (priority 80) stays
-      expect(l.left[0].vis, PanelVis.hidden); // chats (priority 30) folds
+      expect(l.left[1].vis, PanelVis.full); // room (chats's detail) stays
+      expect(l.left[0].vis, PanelVis.hidden); // chats (room's parent) folds
       // The surviving room is "folded over" its master → its close is a `←`.
       expect(l.left[1].foldedOver, isTrue);
       expectNoOverlap(l);
@@ -133,6 +133,82 @@ void main() {
       final l = run(viewport: 400, isColumnMode: false);
       expect(l.clusterVisible, isTrue);
       expect(l.mapLeftOverlay, 0);
+    });
+
+    test('seats the active leaf — a child shows over its open parent', () {
+      // chats (parent) + room (its child) open: the room is the leaf (chats is
+      // its parent), so the room shows and the list folds behind it — straight
+      // from the tree, no recency.
+      final l = run(viewport: 400, isColumnMode: false, left: ['chats', 'room']);
+      expect(l.left[1].vis, PanelVis.full); // room (leaf)
+      expect(l.left[0].vis, PanelVis.hidden); // chats (room's parent)
+    });
+
+    test('a child shows over its parent even across columns (session)', () {
+      // session's parent is the right-column analytics list; with both open the
+      // session is the leaf and is focusable over its list.
+      final l = run(
+          viewport: 400,
+          isColumnMode: false,
+          left: ['session'],
+          right: ['analytics']);
+      expect(l.left.single.vis, PanelVis.full); // session (leaf)
+      expect(l.right.single.vis, PanelVis.hidden); // analytics (session's parent)
+    });
+
+    test('a child wins focus over a higher-priority open parent', () {
+      // A synthetic parent with HIGHER priority than its child: the leaf rule
+      // still seats the child, proving focus is the tree (leaf), not priority.
+      const parent = PanelDef(
+        type: 'p',
+        column: PanelColumn.left,
+        minWidth: 360,
+        idealWidth: 720,
+        priority: 99,
+      );
+      const child = PanelDef(
+        type: 'c',
+        column: PanelColumn.left,
+        parent: 'p',
+        minWidth: 360,
+        idealWidth: 720,
+        priority: 10,
+      );
+      final l = PanelAllocator.allocate(
+        viewport: 400,
+        isColumnMode: false,
+        left: [parent, child],
+        right: const [],
+      );
+      expect(l.left[1].vis, PanelVis.full); // child, despite priority 10
+      expect(l.left[0].vis, PanelVis.hidden); // parent, despite priority 99
+    });
+
+    test('among independent leaves the highest priority wins (cold link)', () {
+      // room (no open chats parent) + analytics (no open child) are both leaves;
+      // with no tree relation to break the tie, priority decides: room 80 > 40.
+      final l = run(
+          viewport: 400,
+          isColumnMode: false,
+          left: ['room'],
+          right: ['analytics']);
+      expect(l.left.single.vis, PanelVis.full); // room
+      expect(l.right.single.vis, PanelVis.hidden); // analytics
+    });
+  });
+
+  group('registry integrity', () {
+    test('every def.type matches its map key', () {
+      PanelRegistry.defs.forEach((key, d) => expect(d.type, key));
+    });
+
+    test('every parent names a known type', () {
+      for (final d in PanelRegistry.defs.values) {
+        if (d.parent != null) {
+          expect(PanelRegistry.defs.containsKey(d.parent), isTrue,
+              reason: '${d.type} → unknown parent ${d.parent}');
+        }
+      }
     });
   });
 

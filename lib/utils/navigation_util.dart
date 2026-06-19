@@ -26,14 +26,15 @@ class NavigationUtil {
 
     // No room target. A bare call exits the chat: re-show the active course card
     // if a course is open, else clear to the world map. A sub-route with an
-    // active course is a management page push on that course.
+    // active course opens that management page as a `coursepage` detail beside
+    // the card.
     if (goalRoomID == null) {
       if (activeSpaceId != null) {
         context.go(
           sub.isEmpty
               ? WorkspaceNav.openCourse(uri, const PanelToken('course'))
               : _appendQuery(
-                  WorkspaceNav.pushPage(uri, 'course', sub),
+                  WorkspaceNav.openCoursePage(uri, sub),
                   queryParams,
                 ),
           extra: extra,
@@ -45,14 +46,14 @@ class NavigationUtil {
       return;
     }
 
-    // The active course SPACE itself: re-show its card, or push a management
-    // page (course:edit / invite / …) — a flat push on the course token.
+    // The active course SPACE itself: re-show its card, or open a management
+    // page (invite / edit / …) as a `coursepage` detail beside the card.
     if (activeSpaceId != null && goalRoomID == activeSpaceId) {
       context.go(
         sub.isEmpty
             ? WorkspaceNav.openCourse(uri, const PanelToken('course'))
             : _appendQuery(
-                WorkspaceNav.pushPage(uri, 'course', sub),
+                WorkspaceNav.openCoursePage(uri, sub),
                 queryParams,
               ),
         extra: extra,
@@ -70,10 +71,17 @@ class NavigationUtil {
     if (sub.isEmpty) {
       // The bare room is the single live left panel (one live room rule), even
       // when a one-shot query (event/body) rides along — the query gates
-      // nothing here, only the sub-page does.
+      // nothing here, only the sub-page does. Entering a room also clears any
+      // activity-plan overlay (`?activity=`/`roomid`/`launch`/`autoplay`): when
+      // you START a session from an activity plan, the session room REPLACES the
+      // plan panel rather than opening beside it. (A no-op for non-activity room
+      // opens, where those params aren't set.) See routing.instructions.md.
       context.go(
         _appendQuery(
-          WorkspaceNav.openExclusiveLeftRoom(uri, PanelToken('room', shortId)),
+          WorkspaceNav.openExclusiveLeftRoom(
+            _stripActivityOverlay(uri),
+            PanelToken('room', shortId),
+          ),
           queryParams,
         ),
         extra: extra,
@@ -87,6 +95,20 @@ class NavigationUtil {
       ),
       extra: extra,
     );
+  }
+
+  /// Drop the activity-plan overlay params (`activity`/`roomid`/`launch`/
+  /// `autoplay`) from [uri], keeping every other query part **raw** (so the
+  /// PanelToken-encoded `m=`/`left=` values aren't re-encoded). Used when
+  /// entering a room so a started session replaces the plan overlay.
+  static Uri _stripActivityOverlay(Uri uri) {
+    if (uri.query.isEmpty) return uri;
+    const drop = {'activity', 'roomid', 'launch', 'autoplay'};
+    final kept = uri.query
+        .split('&')
+        .where((p) => !drop.contains(p.split('=').first))
+        .toList();
+    return uri.replace(query: kept.isEmpty ? null : kept.join('&'));
   }
 
   /// Append [queryParams] to an already-built token location (which may already

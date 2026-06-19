@@ -144,16 +144,19 @@ void main() {
         resolve('/courses/!s?right=analytics:vocab'),
         '/?m=course:!s&left=course&right=analytics:vocab',
       );
-      // Deep course-management pages are FLAT pushes on the course token; the
-      // legacy /details shim is stripped (bare → the card, /details/<page> →
-      // the page). The Completer-carrying add-a-plan flow stays route-driven.
+      // Deep course-management pages open beside the card as a `coursepage`
+      // detail (card master kept); the legacy /details shim is stripped (bare →
+      // the card, /details/<page> → the page). The Completer-carrying add-a-plan
+      // flow stays route-driven.
       expect(resolve('/courses/!s/details'), '/?m=course:!s&left=course');
-      expect(resolve('/courses/!s/edit'), '/?m=course:!s&left=course:edit');
-      expect(resolve('/courses/!s/invite'), '/?m=course:!s&left=course:invite');
-      expect(
-          resolve('/courses/!s/details/edit'), '/?m=course:!s&left=course:edit');
+      expect(resolve('/courses/!s/edit'),
+          '/?m=course:!s&left=course,coursepage:edit');
+      expect(resolve('/courses/!s/invite'),
+          '/?m=course:!s&left=course,coursepage:invite');
+      expect(resolve('/courses/!s/details/edit'),
+          '/?m=course:!s&left=course,coursepage:edit');
       expect(resolve('/courses/!s/addcourse'),
-          '/?m=course:!s&left=course:addcourse');
+          '/?m=course:!s&left=course,coursepage:addcourse');
       expect(resolve('/courses/!s/addcourse/plan-1'), isNull); // route-driven
       // The /rooms/spaces chain reaches the same form in two hops (router
       // re-runs the redirect): first to /courses/…, then to the filter form.

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/new_course_page.dart';
 import 'package:fluffychat/features/navigation/close_affordance.dart';
@@ -22,6 +21,8 @@ import 'package:fluffychat/routes/chat/chat_details/permissions/chat_permissions
 import 'package:fluffychat/routes/chat/chat_search/chat_search_page.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/world/add_course_panel.dart';
+import 'package:fluffychat/routes/world/courses_panel_view.dart';
+import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 
@@ -62,14 +63,9 @@ class WorkspaceLeftPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Float as a rounded, elevated card over the map (matching the right
-    // column). The contained surface clips to the rounded corners; the shell
-    // supplies the surrounding margin.
-    return Material(
-      color: Theme.of(context).colorScheme.surface,
-      elevation: 4,
-      borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-      clipBehavior: Clip.antiAlias,
+    // The shared floating-card chrome (rounded, elevated, margin) every panel
+    // uses — see [PanelCard].
+    return PanelCard(
       child: _surface(context, FluffyThemes.isColumnMode(context)),
     );
   }
@@ -94,28 +90,50 @@ class WorkspaceLeftPanel extends StatelessWidget {
       case 'session':
         return _room(context, isColumnMode);
       case 'addcourse':
-        // The add-course wizard's first step (own/browse/private); each hosted
-        // page carries its own header/close. See routing.instructions.md.
+        // A bare token is the **Courses** panel — the courses you're in, listed
+        // as tiles, with the add-course options below. It gets the panel's own
+        // "Courses" header + close (like the chats list). The wizard steps
+        // (own/browse/private) carry their own header/close. See
+        // routing.instructions.md.
+        if (token.param == null) {
+          return Column(
+            children: [
+              _panelHeader(context, isColumnMode, L10n.of(context).courses),
+              const Expanded(child: CoursesPanelView()),
+            ],
+          );
+        }
         return AddCoursePanel(subPath: token.param, currentUri: currentUri);
       case 'course':
-        // The course's identity is the `?m=course:<id>` map filter (read via
-        // activeSpaceIdFor), not the token — the token's param is either the
-        // active card tab (chat/course/participants/analytics) OR a pushed
-        // management page (edit/invite/access/permissions/emotes/addcourse). A
-        // course is a map filter independent of its panel. See
-        // routing.instructions.md.
+        // The course card. Its identity is the `?m=course:<id>` map filter
+        // (read via activeSpaceIdFor), not the token — the token's param is the
+        // active card tab (chat/course/participants/analytics). A management
+        // page is a separate `coursepage` detail beside the card (below), not a
+        // push on this token. See routing.instructions.md.
         final spaceId = activeSpaceIdFor(currentUri);
         if (spaceId == null) return const SizedBox.shrink();
-        // A management page is a flat push on the course token; it renders its
-        // own surface with the panel's `←`-back-to-card affordance. Everything
-        // else is the card at the named tab.
-        final management = _courseManagementPage(context, spaceId, isColumnMode);
-        if (management != null) return management;
         return ChatDetails(
           roomId: spaceId,
           activeTab: token.param,
           embeddedCloseButton: _closeButton(context, isColumnMode),
         );
+      case 'coursepage':
+        // The course card's management DETAIL (invite / edit / access /
+        // permissions / emotes / change-course): opens beside the card when
+        // width allows and folds to a push under pressure, mirroring settings
+        // menu→page. The space comes from the `?m=course:<id>` filter; the token
+        // param is the page id. See routing.instructions.md.
+        final courseSpaceId = activeSpaceIdFor(currentUri);
+        final page = token.param;
+        if (courseSpaceId == null || page == null) {
+          return const SizedBox.shrink();
+        }
+        return _managementWidget(
+              courseSpaceId,
+              page.split('/').first,
+              _coursePageClose(context, isColumnMode, page),
+            ) ??
+            const SizedBox.shrink();
       default:
         // settings/profile moved to the right column (world_v2); a stale
         // `left=settings` token is dropped by the parser (wrong column), so it
@@ -124,28 +142,14 @@ class WorkspaceLeftPanel extends StatelessWidget {
     }
   }
 
-  /// The management sub-page params reachable as a PUSH on a course or room
-  /// token (`course:<page>` flat, or `room:<id>/details/<page>` nested). Kept in
-  /// one place so the renderer and the close affordance agree on what is a push.
-  static const _managementPages = {
-    'edit',
-    'invite',
-    'access',
-    'permissions',
-    'emotes',
-    'addcourse',
-  };
-
   /// True when this panel's param is a pushed sub-page (not the bare panel / a
-  /// card tab): a `course:<management>` flat push, or a `room`/`session` token
-  /// carrying a `<roomid>/<sub>` path. Such a page's close is `←` back one level
-  /// (popPage), not `X` to the map. See `close_affordance`.
+  /// card tab): a `room`/`session` token carrying a `<roomid>/<sub>` path. Such
+  /// a page's close is `←` back one level (popPage), not `X` to the map. (A
+  /// course-management page is its own `coursepage` detail with its own close,
+  /// not a push on the room/course token.) See `close_affordance`.
   bool get _isPushedSubPage {
     final page = token.param;
     if (page == null) return false;
-    if (token.type == 'course') {
-      return _managementPages.contains(page.split('/').first);
-    }
     if (token.type == 'room' || token.type == 'session') {
       // The bare room id has no `/`; any `/` is a pushed sub-page beyond it.
       return page.contains('/');
@@ -192,25 +196,34 @@ class WorkspaceLeftPanel extends StatelessWidget {
     return null;
   }
 
-  /// Render a pushed course management page for [spaceId], or null when the
-  /// course param is a card tab (chat/course/participants/analytics). The deeper
-  /// add-a-plan step (`addcourse/<courseId>`) stays route-driven (a Completer
-  /// flow). See `routing.instructions.md`.
-  Widget? _courseManagementPage(
-    BuildContext context,
-    String spaceId,
-    bool isColumnMode,
-  ) {
-    if (token.type != 'course') return null;
-    final page = token.param;
-    if (page == null || !_managementPages.contains(page.split('/').first)) {
-      return null;
+  /// The close control for a `coursepage` management detail, mirroring the right
+  /// column's `settingspage`: a `/`-leaf pops one page level (`←`); a folded
+  /// detail (or a narrow single pane with the card behind it) reveals the card
+  /// (`←`); otherwise `X` drops the page, leaving the card beside it. See
+  /// `close_affordance`.
+  Widget _coursePageClose(BuildContext context, bool isColumnMode, String page) {
+    void dismiss() => context.go(WorkspaceNav.closeLeft(currentUri, token));
+    final isPushed = page.contains('/');
+    if (isPushed) {
+      return BackButton(
+        onPressed: () =>
+            context.go(WorkspaceNav.popPage(currentUri, token.type, page)),
+      );
     }
-    return _managementWidget(
-      spaceId,
-      page.split('/').first,
-      _closeButton(context, isColumnMode),
-    );
+    // On a narrow single pane the coursepage sits over its `course` card (and
+    // any other open panel), so closing it reveals what's behind → `←`; if it is
+    // somehow the last panel, `X` dismisses to the map.
+    final revealsMaster =
+        foldedOver || (!isColumnMode && openPanelCount(currentUri) > 1);
+    final aff =
+        CloseAffordance.of(isPushedPage: false, revealsMaster: revealsMaster);
+    return aff.showBack
+        ? BackButton(onPressed: dismiss)
+        : IconButton(
+            icon: const Icon(Icons.close),
+            tooltip: L10n.of(context).close,
+            onPressed: dismiss,
+          );
   }
 
   /// A panel header row — the close/back control at the leading edge plus a
@@ -261,12 +274,14 @@ class WorkspaceLeftPanel extends StatelessWidget {
               : WorkspaceNav.closeSection(currentUri, token),
         );
     // Centralized affordance (close_affordance.dart): `←` when closing reveals a
-    // master that was behind us — a width-fold ([foldedOver]) or a narrow single
-    // pane with a sibling behind it; otherwise `X` dismisses to the map.
-    final hasSibling = parseOpenPanels(currentUri).left.length > 1;
+    // panel that was behind us — a width-fold ([foldedOver]) or a narrow single
+    // pane with another panel open behind it (counted across both columns, since
+    // the focused leaf can sit over a right-column master); otherwise `X`
+    // dismisses to the map.
     final aff = CloseAffordance.of(
       isPushedPage: false,
-      revealsMaster: foldedOver || (!isColumnMode && hasSibling),
+      revealsMaster:
+          foldedOver || (!isColumnMode && openPanelCount(currentUri) > 1),
     );
     return aff.showBack
         ? BackButton(onPressed: close)

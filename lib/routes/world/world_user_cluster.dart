@@ -1,8 +1,6 @@
-import 'dart:async';
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -10,23 +8,25 @@ import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/world/workspace_dock.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// The persistent top-right cluster over the world map (world_v2): the user's
-/// avatar wrapped in a circular XP ring with a gold level badge and L2 flag,
-/// plus a vertical pill of three tappable trackers — completed Sessions (top),
-/// Grammar (middle), Vocabulary (bottom). Tapping a tracker opens that metric's
-/// analytics docked on the right (`?analytics=<tab>`); the avatar opens
-/// `/profile`. All data is already client-side (see
-/// `world-user-cluster.instructions.md`); the cluster listens to the analytics
-/// update streams so counts/level/XP stay live.
+/// avatar wrapped in a clockwise XP ring (gray track that fills gold toward the
+/// next level), a gold "powerups" pill of three tappable trackers (Sessions /
+/// Grammar / Vocabulary) with the level medal overhanging its base, and the
+/// active L2 flag below. Tapping a tracker opens that metric's analytics docked
+/// on the right; the avatar opens profile/settings; the level medal opens the
+/// level tab; the flag opens learning settings. All data is client-side (see
+/// analytics-system.instructions.md); the cluster listens to the analytics
+/// update streams so counts/level/XP stay live. Look follows Figma
+/// `AvatarLangFlags` (12935:46894). See routing.instructions.md.
 class WorldUserCluster extends StatefulWidget {
   const WorldUserCluster({super.key});
 
@@ -35,41 +35,16 @@ class WorldUserCluster extends StatefulWidget {
 }
 
 class _WorldUserClusterState extends State<WorldUserCluster> {
-  StreamSubscription<dynamic>? _constructSub;
-  StreamSubscription<dynamic>? _activitySub;
-  bool _wired = false;
-
-  int _level = 1;
-  double _progress = 0.0;
-  int _vocab = 0;
-  int _grammar = 0;
-  int _sessions = 0;
-
+  bool _profileLoaded = false;
   Uri? _avatarUrl;
   String? _displayName;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (_wired) return;
-    _wired = true;
-    final dispatcher =
-        Matrix.of(context).analyticsDataService.updateDispatcher;
-    _constructSub = dispatcher.constructUpdateStream.stream.listen(
-      (_) => _refresh(),
-    );
-    _activitySub = dispatcher.activityAnalyticsStream.stream.listen(
-      (_) => _refresh(),
-    );
+    if (_profileLoaded) return;
+    _profileLoaded = true;
     _loadProfile();
-    _refresh();
-  }
-
-  @override
-  void dispose() {
-    _constructSub?.cancel();
-    _activitySub?.cancel();
-    super.dispose();
   }
 
   Future<void> _loadProfile() async {
@@ -83,35 +58,6 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
     } catch (_) {
       // Avatar falls back to the initial; not worth surfacing.
     }
-  }
-
-  Future<void> _refresh() async {
-    final service = Matrix.of(context).analyticsDataService;
-    final client = Matrix.of(context).client;
-    final l2 = MatrixState.pangeaController.userController.userL2;
-    if (l2 == null) return;
-    if (service.isInitializing) {
-      try {
-        await service.initCompleter.future;
-      } catch (_) {}
-    }
-    if (!mounted) return;
-    DerivedAnalyticsDataModel? derived;
-    try {
-      derived = await service.derivedData(l2.langCodeShort);
-    } catch (_) {}
-    if (!mounted) return;
-    setState(() {
-      _level = derived?.level ?? _level;
-      _progress = (derived?.levelProgress ?? _progress).clamp(0.0, 1.0);
-      _vocab = service.numConstructs(ConstructTypeEnum.vocab);
-      _grammar = service.numConstructs(ConstructTypeEnum.morph);
-      // Use the same filtered accessor the sessions panel (ActivityArchive)
-      // renders — `archivedActivities` drops uncached + left/banned rooms — so
-      // the badge count always matches the list the panel shows.
-      _sessions =
-          client.ownAnalyticsRoomLocalByL2?.archivedActivities.length ?? 0;
-    });
   }
 
   /// Open the right-docked analytics panel on [tab]'s summary by writing the
@@ -131,10 +77,7 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
         WorkspaceNav.openSettings(GoRouterState.of(context).uri),
       );
 
-  /// The avatar's gold level badge opens the level analytics tab on the right
-  /// (the avatar body opens settings). setRight replaces the right list, so it
-  /// behaves like the other analytics tabs. (A future redesign splits the badge
-  /// into its own more-obviously-tappable element.) See routing.instructions.md.
+  /// The level medal opens the level analytics tab on the right.
   void _openLevel() => context.go(
         WorkspaceNav.setRight(
           GoRouterState.of(context).uri,
@@ -142,324 +85,504 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
         ),
       );
 
+  /// The L2 flag opens the learning settings page on the right directly.
+  void _openLearningSettings() => context.go(
+        WorkspaceNav.openSettings(
+          GoRouterState.of(context).uri,
+          page: 'learning',
+        ),
+      );
+
   @override
   Widget build(BuildContext context) {
-    final l2 = MatrixState.pangeaController.userController.userL2;
-    // Vertical cluster (avatar on top, trackers below). It lives in a right
+    final service = Matrix.of(context).analyticsDataService;
+    final client = Matrix.of(context).client;
+    final dispatcher = service.updateDispatcher;
+    // Rebuild on the analytics update streams (and language changes) and read
+    // the stats INSIDE the builders — the pattern LearningProgressIndicators
+    // uses. A manual didChangeDependencies subscription missed the init-time
+    // updates the service fires on hot, no-replay broadcast streams (they land
+    // before the listener attaches on a cold load), leaving the cluster showing
+    // stale/zero stats until the next live update. A StreamBuilder subscribes
+    // during build — before init completes — so it catches them, and reads
+    // numConstructs/derivedData fresh on every rebuild. See
+    // analytics-system.instructions.md.
+    return StreamBuilder(
+      stream: MatrixState.pangeaController.userController.languageStream.stream,
+      builder: (context, _) {
+        final l2 = MatrixState.pangeaController.userController.userL2;
+        return StreamBuilder(
+          stream: dispatcher.constructUpdateStream.stream,
+          builder: (context, _) {
+            return StreamBuilder(
+              stream: dispatcher.activityAnalyticsStream.stream,
+              builder: (context, _) {
+                final vocab = service.numConstructs(ConstructTypeEnum.vocab);
+                final grammar = service.numConstructs(ConstructTypeEnum.morph);
+                // Same filtered accessor the sessions panel (ActivityArchive)
+                // renders, so the count matches that list.
+                final sessions = client
+                        .ownAnalyticsRoomLocalByL2?.archivedActivities.length ??
+                    0;
+                return FutureBuilder<DerivedAnalyticsDataModel>(
+                  future: l2 != null
+                      ? service.derivedData(l2.langCodeShort)
+                      : Future.value(DerivedAnalyticsDataModel()),
+                  builder: (context, snapshot) {
+                    final derived = snapshot.data ?? service.cachedDerivedData;
+                    final level = derived?.level ?? 1;
+                    // Fraction toward the next level — the XP ring fill; resets
+                    // at each level-up.
+                    final progress =
+                        (derived?.levelProgress ?? 0.0).clamp(0.0, 1.0);
+                    return _cluster(
+                      l2: l2,
+                      level: level,
+                      progress: progress,
+                      vocab: vocab,
+                      grammar: grammar,
+                      sessions: sessions,
+                    );
+                  },
+                );
+              },
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Widget _cluster({
+    required LanguageModel? l2,
+    required int level,
+    required double progress,
+    required int vocab,
+    required int grammar,
+    required int sessions,
+  }) {
+    // Vertical cluster (avatar · powerups pill · flag). It lives in a right
     // gutter beside the right-docked analytics panel (the panel is inset to
-    // leave room), so the vertical pill never covers the page — matching the
-    // design. See world-user-cluster.instructions.md.
+    // leave room), so the cluster never covers the page — matching the design.
+    // See routing.instructions.md.
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        _LeveledAvatar(
-          level: _level,
-          progress: _progress,
+        _Avatar(
           avatarUrl: _avatarUrl,
           name: _displayName,
-          flagEmoji: l2?.localeEmoji,
           onTap: _openProfile,
-          onLevelTap: _openLevel,
         ),
         const SizedBox(height: 8),
-        _TrackerPill(
-          sessions: _sessions,
-          grammar: _grammar,
-          vocab: _vocab,
+        _PowerupsPill(
+          level: level,
+          progress: progress,
+          sessions: sessions,
+          grammar: grammar,
+          vocab: vocab,
           onTap: _openAnalytics,
+          onLevelTap: _openLevel,
+        ),
+        if (l2 != null)
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: _LanguageFlag(language: l2, onTap: _openLearningSettings),
+          ),
+      ],
+    );
+  }
+}
+
+/// The circular user avatar at the top of the cluster. Opens profile/settings.
+class _Avatar extends StatelessWidget {
+  final Uri? avatarUrl;
+  final String? name;
+  final VoidCallback onTap;
+
+  const _Avatar({
+    required this.avatarUrl,
+    required this.name,
+    required this.onTap,
+  });
+
+  static const double _size = 56.0;
+
+  @override
+  Widget build(BuildContext context) {
+    final label = L10n.of(context).account;
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: Tooltip(
+        message: label,
+        child: Semantics(
+          button: true,
+          label: label,
+          excludeSemantics: true,
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: onTap,
+            child: Avatar(
+              mxContent: avatarUrl,
+              name: name,
+              size: _size,
+              showPresence: false,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Paints the cluster's XP border: a gray rounded-rect track around the powerups
+/// pill, with a gold stroke that fills **clockwise from the bottom-center** (where
+/// the level medal sits) for [progress] (0–1) of the way to the next level,
+/// arriving back at the medal at 1.0. The path starts and ends at the bottom
+/// center so a sub-path extracted from its start grows out from under the badge.
+class _XpBorderPainter extends CustomPainter {
+  final double progress;
+  final Color trackColor;
+  final Color progressColor;
+  final double stroke;
+  final double radius;
+
+  _XpBorderPainter({
+    required this.progress,
+    required this.trackColor,
+    required this.progressColor,
+    required this.stroke,
+    required this.radius,
+  });
+
+  Path _border(Size size) {
+    final r = Rect.fromLTRB(
+      stroke / 2,
+      stroke / 2,
+      size.width - stroke / 2,
+      size.height - stroke / 2,
+    );
+    final rad = radius;
+    final cx = r.center.dx;
+    final arc = Radius.circular(rad);
+    return Path()
+      ..moveTo(cx, r.bottom)
+      ..lineTo(r.left + rad, r.bottom)
+      ..arcToPoint(Offset(r.left, r.bottom - rad), radius: arc, clockwise: true)
+      ..lineTo(r.left, r.top + rad)
+      ..arcToPoint(Offset(r.left + rad, r.top), radius: arc, clockwise: true)
+      ..lineTo(r.right - rad, r.top)
+      ..arcToPoint(Offset(r.right, r.top + rad), radius: arc, clockwise: true)
+      ..lineTo(r.right, r.bottom - rad)
+      ..arcToPoint(Offset(r.right - rad, r.bottom), radius: arc, clockwise: true)
+      ..lineTo(cx, r.bottom);
+  }
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final path = _border(size);
+    canvas.drawPath(
+      path,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = stroke
+        ..color = trackColor,
+    );
+
+    final p = progress.clamp(0.0, 1.0);
+    if (p <= 0) return;
+    final metric = path.computeMetrics().first;
+    canvas.drawPath(
+      metric.extractPath(0, metric.length * p),
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = stroke
+        ..strokeCap = StrokeCap.round
+        ..color = progressColor,
+    );
+  }
+
+  @override
+  bool shouldRepaint(_XpBorderPainter old) =>
+      old.progress != progress ||
+      old.progressColor != progressColor ||
+      old.trackColor != trackColor ||
+      old.stroke != stroke ||
+      old.radius != radius;
+}
+
+/// The gold "powerups" pill: a white inner stack of the three trackers with the
+/// level medal overhanging its base. Follows Figma `AvatarLangFlags`.
+class _PowerupsPill extends StatelessWidget {
+  final int level;
+  final double progress;
+  final int sessions;
+  final int grammar;
+  final int vocab;
+  final void Function(AnalyticsPanelTab) onTap;
+  final VoidCallback onLevelTap;
+
+  const _PowerupsPill({
+    required this.level,
+    required this.progress,
+    required this.sessions,
+    required this.grammar,
+    required this.vocab,
+    required this.onTap,
+    required this.onLevelTap,
+  });
+
+  static const double _xpStroke = 5.0;
+  static const double _xpInset = 3.0;
+  static const double _innerRadius = 20.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      clipBehavior: Clip.none,
+      alignment: Alignment.bottomCenter,
+      children: [
+        // The pill's frame IS the XP ring: a gray track that fills gold clockwise
+        // from the bottom-center (where the level medal sits) toward the next
+        // level. The trackers sit on a white field inside it; there is no solid
+        // gold fill — the only gold is the XP progress.
+        CustomPaint(
+          painter: _XpBorderPainter(
+            progress: progress,
+            trackColor: const Color(0xFFBCC2CC),
+            progressColor: AppConfig.gold,
+            stroke: _xpStroke,
+            radius: _innerRadius + _xpInset + _xpStroke / 2,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(_xpInset + _xpStroke),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(_innerRadius),
+              ),
+              clipBehavior: Clip.antiAlias,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _TrackerButton(
+                    indicator: ProgressIndicatorEnum.activities,
+                    count: sessions,
+                    onTap: () => onTap(AnalyticsPanelTab.sessions),
+                  ),
+                  _TrackerButton(
+                    indicator: ProgressIndicatorEnum.morphsUsed,
+                    count: grammar,
+                    onTap: () => onTap(AnalyticsPanelTab.grammar),
+                  ),
+                  _TrackerButton(
+                    indicator: ProgressIndicatorEnum.wordsUsed,
+                    count: vocab,
+                    onTap: () => onTap(AnalyticsPanelTab.vocab),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          bottom: -18,
+          child: _LevelMedal(level: level, onTap: onLevelTap),
         ),
       ],
     );
   }
 }
 
-/// Circular avatar + gold XP ring + level badge + L2 flag badge.
-class _LeveledAvatar extends StatelessWidget {
-  final int level;
-  final double progress;
-  final Uri? avatarUrl;
-  final String? name;
-  final String? flagEmoji;
-  final VoidCallback onTap;
-  final VoidCallback onLevelTap;
-
-  const _LeveledAvatar({
-    required this.level,
-    required this.progress,
-    required this.avatarUrl,
-    required this.name,
-    required this.flagEmoji,
-    required this.onTap,
-    required this.onLevelTap,
-  });
-
-  static const double _avatarSize = 56.0;
-  static const double _stroke = 4.0;
-  static const double _gap = 3.0;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    const ringDiameter = _avatarSize + 2 * (_stroke + _gap);
-    return GestureDetector(
-      onTap: onTap,
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: SizedBox(
-          width: ringDiameter,
-          height: ringDiameter + 6,
-          child: Stack(
-            clipBehavior: Clip.none,
-            alignment: Alignment.topCenter,
-            children: [
-              SizedBox(
-                width: ringDiameter,
-                height: ringDiameter,
-                child: CustomPaint(
-                  painter: _XpRingPainter(
-                    progress: progress,
-                    trackColor: AppConfig.goldLight.withValues(alpha: 0.35),
-                    progressColor: AppConfig.gold,
-                    stroke: _stroke,
-                  ),
-                ),
-              ),
-              Positioned(
-                top: _stroke + _gap,
-                child: Avatar(
-                  mxContent: avatarUrl,
-                  name: name,
-                  size: _avatarSize,
-                  onTap: onTap,
-                  showPresence: false,
-                ),
-              ),
-              if (flagEmoji != null && flagEmoji!.isNotEmpty)
-                Positioned(
-                  top: 0,
-                  left: 0,
-                  child: _Badge(
-                    background: theme.colorScheme.surface,
-                    child: Text(
-                      flagEmoji!,
-                      style: const TextStyle(fontSize: 12, height: 1.1),
-                    ),
-                  ),
-                ),
-              // The gold level badge is its own tap target (opens the level
-              // analytics tab); as the last Stack child it wins the hit test
-              // over the avatar's GestureDetector in the overlap. See
-              // routing.instructions.md.
-              Positioned(
-                bottom: 0,
-                child: GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: onLevelTap,
-                  child: MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child: Semantics(
-                      button: true,
-                      label: L10n.of(context).level,
-                      child: _Badge(
-                        background: AppConfig.gold,
-                        child: Text(
-                          '$level',
-                          style: const TextStyle(
-                            fontSize: 12,
-                            height: 1.1,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-/// A small circular badge (flag or level) with a white outline.
-class _Badge extends StatelessWidget {
-  final Color background;
-  final Widget child;
-  const _Badge({required this.background, required this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      constraints: const BoxConstraints(minWidth: 22, minHeight: 22),
-      padding: const EdgeInsets.symmetric(horizontal: 4),
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: background,
-        shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.circular(11),
-        border: Border.all(color: Colors.white, width: 2),
-      ),
-      child: child,
-    );
-  }
-}
-
-class _XpRingPainter extends CustomPainter {
-  final double progress;
-  final Color trackColor;
-  final Color progressColor;
-  final double stroke;
-
-  _XpRingPainter({
-    required this.progress,
-    required this.trackColor,
-    required this.progressColor,
-    required this.stroke,
-  });
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final center = Offset(size.width / 2, size.height / 2);
-    final radius = (math.min(size.width, size.height) - stroke) / 2;
-    final track = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = stroke
-      ..color = trackColor;
-    canvas.drawCircle(center, radius, track);
-
-    final sweep = progress.clamp(0.0, 1.0) * 2 * math.pi;
-    if (sweep <= 0) return;
-    final arc = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = stroke
-      ..strokeCap = StrokeCap.round
-      ..color = progressColor;
-    canvas.drawArc(
-      Rect.fromCircle(center: center, radius: radius),
-      -math.pi / 2,
-      sweep,
-      false,
-      arc,
-    );
-  }
-
-  @override
-  bool shouldRepaint(_XpRingPainter old) =>
-      old.progress != progress ||
-      old.progressColor != progressColor ||
-      old.trackColor != trackColor ||
-      old.stroke != stroke;
-}
-
-/// Vertical pill of three tappable trackers: Sessions, Grammar, Vocabulary.
-class _TrackerPill extends StatelessWidget {
-  final int sessions;
-  final int grammar;
-  final int vocab;
-  final void Function(AnalyticsPanelTab) onTap;
-
-  const _TrackerPill({
-    required this.sessions,
-    required this.grammar,
-    required this.vocab,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    // Shared dock chrome (matches the left nav rail). See workspace_dock.dart.
-    return WorkspaceDock(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _TrackerButton(
-            indicator: ProgressIndicatorEnum.activities,
-            count: sessions,
-            isFirst: true,
-            onTap: () => onTap(AnalyticsPanelTab.sessions),
-          ),
-          _divider(theme),
-          _TrackerButton(
-            indicator: ProgressIndicatorEnum.morphsUsed,
-            count: grammar,
-            onTap: () => onTap(AnalyticsPanelTab.grammar),
-          ),
-          _divider(theme),
-          _TrackerButton(
-            indicator: ProgressIndicatorEnum.wordsUsed,
-            count: vocab,
-            isLast: true,
-            onTap: () => onTap(AnalyticsPanelTab.vocab),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _divider(ThemeData theme) => Container(
-    height: 1,
-    width: 28,
-    color: theme.colorScheme.outlineVariant.withValues(alpha: 0.5),
-  );
-}
-
+/// One tracker in the powerups pill: a dark icon over its count, on the white
+/// inner field. Tapping opens that metric's analytics tab.
 class _TrackerButton extends StatelessWidget {
   final ProgressIndicatorEnum indicator;
   final int count;
-  final bool isFirst;
-  final bool isLast;
   final VoidCallback onTap;
 
   const _TrackerButton({
     required this.indicator,
     required this.count,
     required this.onTap,
-    this.isFirst = false,
-    this.isLast = false,
   });
+
+  // The white inner field is a fixed colour (not theme-driven), so its content
+  // is a fixed dark — matches Figma `--text`/icon-default on white.
+  static const Color _ink = Color(0xFF1E1E1E);
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final radius = Radius.circular(AppConfig.borderRadius);
     return Tooltip(
       message: indicator.tooltip(context),
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.vertical(
-          top: isFirst ? radius : Radius.zero,
-          bottom: isLast ? radius : Radius.zero,
-        ),
+        borderRadius: BorderRadius.circular(14),
         child: Semantics(
           button: true,
           label: '${indicator.tooltip(context)}: $count',
           excludeSemantics: true,
-          child: Container(
-            width: 44,
-            padding: const EdgeInsets.symmetric(vertical: 6),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(
-                  indicator.icon,
-                  size: 18,
-                  color: theme.colorScheme.primary,
-                ),
-                const SizedBox(height: 2),
+                Icon(indicator.icon, size: 24, color: _ink),
+                const SizedBox(height: 3),
                 Text(
                   '$count',
-                  style: theme.textTheme.labelMedium?.copyWith(
+                  style: const TextStyle(
+                    fontSize: 16,
+                    height: 1.1,
                     fontWeight: FontWeight.w600,
+                    color: _ink,
                   ),
                 ),
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The gold level shield overhanging the powerups pill (opens the level tab).
+class _LevelMedal extends StatelessWidget {
+  final int level;
+  final VoidCallback onTap;
+
+  const _LevelMedal({required this.level, required this.onTap});
+
+  // The outer shield shape from Figma (icon/warning-secondary fill #F3C141 ==
+  // AppConfig.goldMedal); the level number is overlaid.
+  static const String _shieldSvg =
+      '<svg viewBox="0 0 24.6667 28.875" xmlns="http://www.w3.org/2000/svg">'
+      '<path d="M4.33333 28.875V17.5656L0 10.3125L6.16667 0H18.5L24.6667 '
+      '10.3125L20.3333 17.5656V28.875L12.3333 26.125L4.33333 28.875Z" '
+      'fill="#F3C141"/></svg>';
+
+  @override
+  Widget build(BuildContext context) {
+    final label = '${L10n.of(context).level} $level';
+    return Tooltip(
+      message: label,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: onTap,
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: Semantics(
+            button: true,
+            label: label,
+            excludeSemantics: true,
+            child: SizedBox(
+              width: 38,
+              height: 44,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  SvgPicture.string(
+                    _shieldSvg,
+                    width: 38,
+                    height: 44,
+                    fit: BoxFit.contain,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 5),
+                    child: Text(
+                      '$level',
+                      style: const TextStyle(
+                        fontSize: 17,
+                        height: 1.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The active L2 indicator below the powerups pill (Figma `Flags`). Shows the
+/// language's flag SVG ([LanguageModel.svgUrl]) when it has a usable locale
+/// (e.g. `es-ES` → Spanish flag); otherwise the uppercased language code (e.g.
+/// `es` → `ES`), since a bare code is ambiguous across regional variants and
+/// has no single flag. Gated on [LanguageModel.shouldShowFlag], the same rule
+/// the language pickers use. Tapping it opens the learning settings page.
+class _LanguageFlag extends StatelessWidget {
+  final LanguageModel language;
+  final VoidCallback onTap;
+
+  const _LanguageFlag({required this.language, required this.onTap});
+
+  static const double _w = 52.0;
+  static const double _h = 36.0;
+  static const double _radius = 6.0;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: Tooltip(
+        message: l10n.learningSettings,
+        child: Semantics(
+          button: true,
+          label: '${language.getDisplayName(l10n)}, ${l10n.learningSettings}',
+          excludeSemantics: true,
+          // Opaque so the whole chip is tappable — not just the painted glyphs
+          // / flag pixels (a transparent-interior box defers the hit test).
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: onTap,
+            child: _flagOrCode(context),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _flagOrCode(BuildContext context) {
+    if (language.shouldShowFlag) {
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(_radius),
+        child: SvgPicture.network(
+          language.svgUrl.toString(),
+          width: _w,
+          height: _h,
+          fit: BoxFit.cover,
+          errorBuilder: (ctx, _, _) => _code(ctx),
+          placeholderBuilder: (_) => const SizedBox(width: _w, height: _h),
+        ),
+      );
+    }
+    return _code(context);
+  }
+
+  Widget _code(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      width: _w,
+      height: _h,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: theme.colorScheme.primary,
+        borderRadius: BorderRadius.circular(_radius),
+      ),
+      child: Text(
+        language.langCodeShort.toUpperCase(),
+        style: TextStyle(
+          color: theme.colorScheme.onPrimary,
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+          height: 1.0,
         ),
       ),
     );

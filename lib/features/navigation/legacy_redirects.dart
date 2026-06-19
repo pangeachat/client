@@ -82,7 +82,7 @@ abstract class LegacyRedirects {
     // literal page (not a `!room`, handled above). The legacy `/details` shim is
     // stripped: bare `/details` → the card; `/details/<page>` → the page. The
     // Completer-carrying `addcourse/:courseId` flow (4 segs, not `details`) is
-    // left route-driven, so it falls through. See `world-v2-architecture`.
+    // left route-driven, so it falls through. See `routing.instructions.md`.
     if (segments.length == 3 &&
         segments.first == 'courses' &&
         segments[1].startsWith('!') &&
@@ -255,9 +255,11 @@ abstract class LegacyRedirects {
   }
 
   /// Like [_toCourseWorkspace] but for a deep course-management PAGE: the course
-  /// token carries the page as its param (`course:<page>`, a flat push), over the
-  /// `?m=course:<space>` filter. Any prior `course`/`course:*` token is replaced
-  /// (the page IS the course panel now); other left tokens and query are kept.
+  /// card stays the `course` master and the page opens beside it as a
+  /// `coursepage` detail (`left=course,coursepage:<page>`), over the
+  /// `?m=course:<space>` filter — the same master/detail the in-app buttons
+  /// produce, so a deep link lands identically. Any prior `coursepage` token is
+  /// replaced; other left tokens and query are kept. See `routing.instructions.md`.
   static String _toCourseWorkspaceWithPage(Uri uri, String space, String page) {
     final parts = uri.query.isEmpty ? <String>[] : uri.query.split('&');
     var leftValue = '';
@@ -271,9 +273,13 @@ abstract class LegacyRedirects {
 
     final left = leftValue
         .split(',')
-        .where((e) => e.isNotEmpty && e != 'course' && !e.startsWith('course:'))
+        .where((e) =>
+            e.isNotEmpty && e != 'coursepage' && !e.startsWith('coursepage:'))
         .toList();
-    left.add(PanelToken('course', page).encode());
+    if (!left.any((e) => e == 'course' || e.startsWith('course:'))) {
+      left.insert(0, 'course');
+    }
+    left.add(PanelToken('coursepage', page).encode());
 
     final query = <String>[
       'm=${PanelToken('course', space).encode()}',

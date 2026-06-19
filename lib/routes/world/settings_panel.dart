@@ -29,6 +29,17 @@ class SettingsPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // The ignore-list can open pre-seeded with a user to block (from a chat's
+    // context menu or a profile dialog). The seed rides the token param as a
+    // 3rd segment — `security/ignorelist/<userid>` — restoring the seed the old
+    // route dropped (a redirect can't carry `extra:`). See routing.instructions.md.
+    final sub = subPath;
+    if (sub != null && sub.startsWith('security/ignorelist')) {
+      final parts = sub.split('/');
+      return SettingsIgnoreList(
+        initialUserId: parts.length > 2 ? parts.sublist(2).join('/') : null,
+      );
+    }
     switch (subPath) {
       case null:
       case '':
@@ -51,8 +62,6 @@ class SettingsPanel extends StatelessWidget {
         return const SettingsSecurity();
       case 'security/password':
         return const SettingsPassword();
-      case 'security/ignorelist':
-        return const SettingsIgnoreList();
       case 'security/3pid':
         return const Settings3Pid();
       case 'profile/edit':

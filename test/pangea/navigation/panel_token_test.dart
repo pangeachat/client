@@ -10,13 +10,13 @@ void main() {
   group('PanelToken.parse / encode', () {
     test('bare type and type:param', () {
       expect(PanelToken.parse('chats'), const PanelToken('chats'));
-      expect(PanelToken.parse('review:!abc'), const PanelToken('review', '!abc'));
+      expect(PanelToken.parse('room:!abc'), const PanelToken('room', '!abc'));
     });
 
     test('only the first colon splits, so room ids survive', () {
       // A full id rides the URL percent-encoded; after decode the colon is back.
-      final t = PanelToken.parse('review:!abc%3Ahome.server');
-      expect(t, const PanelToken('review', '!abc:home.server'));
+      final t = PanelToken.parse('room:!abc%3Ahome.server');
+      expect(t, const PanelToken('room', '!abc:home.server'));
     });
 
     test('malformed types are rejected', () {
@@ -38,15 +38,15 @@ void main() {
   group('parseOpenPanels', () {
     test('empty / missing lists', () {
       expect(right('/chats'), isEmpty);
-      expect(left('/chats?right=review:!a'), isEmpty);
+      expect(left('/chats?right=analytics:vocab'), isEmpty);
       expect(right('/'), isEmpty);
     });
 
     test('order is preserved across the comma list', () {
-      final r = right('/chats?right=analytics:vocab,review:!def');
-      expect(r.map((t) => t.type).toList(), ['analytics', 'review']);
+      final r = right('/chats?right=analytics:vocab,settingspage:style');
+      expect(r.map((t) => t.type).toList(), ['analytics', 'settingspage']);
       expect(r[0].param, 'vocab');
-      expect(r[1].param, '!def');
+      expect(r[1].param, 'style');
     });
 
     test('an encoded comma inside a param does NOT split the list', () {
@@ -60,21 +60,43 @@ void main() {
 
     test('wrong-column tokens are dropped', () {
       expect(right('/chats?right=room:!a'), isEmpty); // room is a left panel
-      expect(left('/chats?left=review:!a'), isEmpty); // review is a right panel
+      expect(left('/chats?left=analytics:vocab'),
+          isEmpty); // analytics is a right panel
     });
 
     test('unknown types are dropped', () {
-      expect(right('/chats?right=bogus:x,review:!a').map((t) => t.type), ['review']);
+      expect(right('/chats?right=bogus:x,analytics:vocab').map((t) => t.type),
+          ['analytics']);
     });
 
     test('duplicate (type, param) pairs are deduped (no duplicate keys)', () {
-      final r = right('/chats?right=review:!a,review:!a');
+      final r = right('/chats?right=analytics:vocab,analytics:vocab');
       expect(r.length, 1);
     });
 
     test('the per-list cap drops the overflow', () {
-      final many = List.generate(8, (i) => 'review:!r$i').join(',');
+      // analytics has no sibling group, so distinct params all survive to the cap.
+      final many = List.generate(8, (i) => 'analytics:t$i').join(',');
       expect(right('/chats?right=$many').length, 6);
+    });
+  });
+
+  group('parseOpenPanels sibling exclusion', () {
+    test('at most one token per sibling group survives (first wins)', () {
+      // vocab + grammar both belong to the `detail` group.
+      final r = right('/chats?right=vocab:a,grammar:b');
+      expect(r.map((t) => t.type).toList(), ['vocab']);
+    });
+
+    test('room + session collapse to one live view (liveView group)', () {
+      final l = left('/chats?left=room:!a,session:!b');
+      expect(l.length, 1);
+      expect(l.single.type, 'room');
+    });
+
+    test('practice takes over the analytics surface (no analytics beside it)', () {
+      final r = right('/chats?right=practice:vocab,analytics:vocab');
+      expect(r.map((t) => t.type).toList(), ['practice']);
     });
   });
 }

@@ -63,12 +63,16 @@ dropping its token: there is no second, path-driven copy to leave standing.
 
 Each open surface — the chat list, a live chat, a course, a settings page, the
 analytics summary, a vocab or grammar detail — is its own panel with its own
-close. Closing one leaves the rest open, and navigating changes which panel is
-focused instead of tearing down what is already open, so a learner can close the
-chat list but keep the chat, or close a course to widen the map while the chat
-stays open. Section navigation keeps the right-column companions (analytics, a
-detail) open; the only deliberate clear-everything is the **World/home** button,
-which closes all panels at once.
+close, and closing one leaves the rest open (close the chat list but keep the
+chat; close a course to widen the map while the chat stays open). Selecting a
+section from the **left nav rail** (chats, a course, the courses list)
+**replaces** the open left-column panels with that section rather than stacking
+beside them — clicking around the rail swaps what's on the left instead of piling
+panels up — while the right-column companions (analytics, a detail) stay open.
+The one deliberate clear-everything is the **World/home** button, which closes
+all panels at once. (Opening a course from a map pin or a Courses-list tile is
+navigating within your content, not a rail section switch, so it keeps an open
+chat and swaps only the course.)
 
 Closing a panel drops its token and nothing else, because the token is the only
 place it lives. The close control is an **X** on desktop (matching the right
@@ -88,9 +92,9 @@ A panel's side is decided by its **role**, not its content:
 
 Because role decides the side, a live chat can stay open on the left while the
 learner opens analytics or settings on the right at the same time. Profile and
-settings are personal account surfaces, so they belong on the right; they were
-historically rendered in the left/route-driven column, which is what the migration
-plan below corrects.
+settings are personal account surfaces, so they belong on the right (they were
+once route-driven in the left column; now they are a right-column `settings`
+master with each page opening beside it as a `settingspage` detail).
 
 ## One shared width
 
@@ -106,12 +110,13 @@ widths** so the allocator can place and degrade it predictably:
 
 When the open panels want more than fits, they compress from max toward their
 reasonable min and the map absorbs the slack. Past that point there is exactly one
-degrade move: **fold**. A column's two panels collapse into one: the **detail**
-(the higher-priority panel) keeps the column, and its **master** folds behind it —
-not drawn, one back-step away, revealed by closing the detail — so the pair now
-costs one panel's width. Folding never discards a panel (both stay in the URL, so
-widening unfolds back to two), and because the surviving panel is never torn down,
-a folded live chat keeps its session.
+degrade move: **fold**. A column's two panels collapse into one: the **child**
+(detail) keeps the column, and its **parent** (master) folds behind it — not
+drawn, one back-step away, revealed by closing the child — so the pair now costs
+one panel's width (the parent/child/sibling tree below is what decides which is
+which). Folding never discards a panel (both stay in the URL, so widening unfolds
+back to two), and because the surviving panel is never torn down, a folded live
+chat keeps its session.
 
 Each column folds independently, so the widest the workspace ever needs is one
 folded panel per column. The **two-column breakpoint is defined by exactly that**:
@@ -127,11 +132,14 @@ open (an in-progress activity is the main example).
 
 **Single-column mode is the floor**, not a separate layout: below the two-column
 breakpoint (narrow screens; phones always) the chrome swaps — the side rail becomes
-bottom navigation, the left inset goes to zero — and only the focused panel shows.
-The others stay in the URL, reopened from the persistent chrome (the rail or bottom
-nav for a section, the cluster for analytics), so nothing is lost, just not drawn at
-once. Every master/detail flow is already folded here: one panel, navigated with a
-back arrow.
+bottom navigation, the left inset goes to zero — and only one panel shows: the
+active **leaf** of the tree (a panel no open panel names as parent), so a child
+always shows over its parent and the parent is the back target. Among independent
+open panels with no parent/child tie, the highest-priority one shows. The others
+stay in the URL, reopened from the persistent chrome (the rail or bottom nav for a
+section, the cluster for analytics), so nothing is lost, just not drawn at once.
+Every master/detail flow is already folded here: one panel, navigated with a back
+arrow.
 
 ## Opening, pushing, and folding
 
@@ -146,10 +154,34 @@ code's `Panel*` types; it is the industry "pane"):
   password, a chat → its members, a settings menu → a page beyond the budget: all
   pushes.
 - **Fold / unfold** — the width-driven version of a push: when the budget can no
-  longer honor reasonable-min widths, a column's **lower-priority** panel (the
-  master) **folds** behind its detail — not drawn, one back-step away — and
-  **unfolds** back to two panels when width returns. A fold is a push the layout
-  performs instead of the user.
+  longer honor reasonable-min widths, a column's **parent** (master) **folds**
+  behind its **child** (detail) — not drawn, one back-step away — and **unfolds**
+  back to two panels when width returns. A fold is a push the layout performs
+  instead of the user.
+
+### The navigation tree: parent, child, sibling
+
+Every surface declares where it sits in one explicit tree (in the panel
+registry), and the parser, the fold, and the single-column focus all read that
+one structure — there is no separate priority or recency system to drift from it:
+
+- A **child** declares its **parent** (the master it details). A child opens
+  beside its parent when width allows and otherwise **stacks** on it (the parent
+  folds behind the child). A `room` is the `chats` list's child; a settings page
+  is the settings menu's child; a vocab/grammar detail is the analytics summary's
+  child. A parent with no parent of its own is a **root** (a section master).
+- **Siblings** are children that share one slot: they **can't coexist**, so
+  opening one replaces the others. Vocab and grammar are siblings (one construct
+  detail at a time); a live `room` and a `session` review are siblings (one live
+  view). This is why grammar replaces vocab rather than stacking on it.
+
+Most trees are two generations (chat list → chat; analytics → a construct
+detail). A deeper level — security → change-password — is a **push within** the
+child's own panel (its token param), not a third panel, so the panel-level tree
+stays parent → child. **Priority is only a tiebreak** between independent trees
+(which master folds first when several pairs are all under pressure; which leaf
+is focused when independent panels are open). A child never folds and always
+wins focus over its own parent regardless of priority.
 
 **Opening is a fit test, not a depth count.** A surface opens a new panel when the
 column is under its two-panel budget *and* the budget can grant the newcomer its
@@ -160,6 +192,16 @@ history step and a pop is a step back; a width-driven fold/unfold *replaces* the
 current entry, because an automatic relayout is not something the user should have
 to "undo".
 
+This is the rule for **every page that opens off a master**, and the two trees
+that have one work identically: a **settings page** off the settings menu and a
+**course management page** (invite, edit, access, change-course) off the course
+card both open as a coexisting *detail* beside their master when width allows, and
+fold to a push only under pressure. A detail page should never *replace* its master
+outright — the master stays one step away (beside it, or folded behind it on a
+narrow screen), so closing the page reveals the menu / card it came from. (A
+regular chat's own members/search are the exception: they push *within* the chat,
+because they belong to that one timeline, not beside it.)
+
 ## How each surface opens
 
 One entry point is canonical per surface, on every form factor, so the same tap
@@ -169,16 +211,19 @@ behaves the same on mobile and desktop.
 |---|---|---|---|
 | World map (home) | app root, World rail | the backdrop | always mounted; the World button clears every panel |
 | Course | a space in the rail, a map pin | left + `?m=` filter | sets `?m=course:<id>` (map scope) **and** opens the `course` panel (master); tabs ride in the token param |
+| A course management page (invite, edit, access, permissions, change-course) | the course card's More menu | left | open panel (detail) **beside the card**, or pushed onto the card when folded — the same fit test as a settings page (a `coursepage` token; the card is its master). NOT a push that replaces the card |
 | Chat list | the rail | left | open panel (master) |
 | Live chat / session | a chat-list row, an activity launch, **a course room row** | left | open panel (detail); one live at a time. A course room rides over the course filter (`?m=course:<id>` stays) so closing it reveals the course |
-| Chat members / settings | the chat header | the chat panel | push |
+| Chat members / settings (a regular chat) | the chat header | the chat panel | push (members/search live *within* the chat, not beside it) |
 | Analytics (vocab / grammar / sessions) | a top-right cluster tracker | right | open panel (master) |
-| Level | the avatar's level badge | right | open panel (an analytics tab) |
+| Level | the **level medal** on the powerups pill | right | open panel (an analytics tab) |
 | A construct detail | tapping a vocab/grammar item | right | open panel (detail), left of its summary; **one detail at a time, across both columns** — a vocab detail, a grammar detail, and a completed-activity `session` review share ONE slot, so opening any one closes the other two (a live `room` chat is independent and stays open); folds in under pressure |
+| Practice session | the **Practice** button on the vocab/grammar analytics panel | right | open panel that **takes over the analytics surface** — see below. A normal bounded panel, NOT a route or fullscreen; its close confirms when a session is mid-progress |
 | Profile + settings menu | the top-right cluster avatar | right | open panel (master) |
-| A settings page (learning, style, security, …) | a settings-menu row | right | open panel (detail), or pushed onto the menu when folded |
+| A settings page (learning, style, security, …) | a settings-menu row | right | open panel (detail) beside the menu, or pushed onto the menu when folded — same fit test as a course management page |
+| Learning settings (shortcut) | the cluster's **language flag** | right | opens the learning-settings page directly — the flag doubles as a shortcut to it |
 | A settings leaf (password, blocked users, emotes, …) | within its settings page | the settings panel | push |
-| Add-course wizard (start-my-own / browse / enter-code) | the rail "+" → hub | left | open panel (a step is the token param); deeper steps stay route-driven |
+| Courses (your courses + add a course) | the **Courses** rail icon (Material map) | left | open panel — a flat list of joined-course tiles (image, name, participants, level, modules), with the add-course options (start-my-own / browse / enter-code) below; each option opens its step as the token param, deeper steps stay route-driven. Replaced the old float-over-the-map hub card that double-wrapped a card inside the panel |
 | An in-progress activity | a course / the map | full-bleed | exclusive |
 
 ## One live session at a time
@@ -202,6 +247,28 @@ the right column untouched. *(Future: give a room its own session state by foldi
 the choreographer controller into the chat controller, which would lift the
 one-live-view limit and could let a completed session open as a coexisting
 read-only review.)*
+
+## Practice takes over the analytics surface
+
+Practice (the vocab/grammar exercise flow) is a **right-column panel like any
+other** — a `practice` token, a normal bounded card, **not a route and not
+fullscreen**. What makes it special is exclusivity: a practice session **takes
+the place of the analytics surface**. Opening it (the Practice button on the
+vocab/grammar analytics panel, via `openPractice`) closes the `analytics` master
+and any open vocab/grammar detail, and **while a session is active those cannot
+be viewed beside it** — practice shares the single cross-column **detail slot**
+(the same slot as the vocab/grammar details and a `session` review), so opening
+any construct detail or a session closes practice and vice versa, and tapping the
+cluster's analytics replaces the whole right column. So you are either *browsing*
+your analytics (the master, optionally with one detail bloomed beside it) or *in*
+a practice session — never both. This is an "immersive" scope, but only over the
+analytics surface; a live chat on the left is independent and stays open.
+
+Closing practice **confirms first when a session is mid-progress** (unsaved
+exercise progress) — the panel's close reads `AnalyticsPractice
+.bypassExitConfirmation`, which the session flips once it completes or errors. The
+guard covers the explicit close; abandoning practice by opening analytics from the
+cluster does not prompt (that path just replaces the right column).
 
 ## The map never rebuilds
 
@@ -233,25 +300,38 @@ instead of flipping or reloading. Two things protect this and must hold:
   rail is `SizedBox.shrink` there). Wrap any floating chrome (rail, overlays) in an
   `Align`/`Positioned` so it sizes to its content and the map stays full-bleed
   behind it.
-- **One dock chrome for both edges.** The left nav rail and the top-right cluster
-  share a single `WorkspaceDock` pill (surface, elevation, `AppConfig.borderRadius`,
-  outline border, clipped to the rounded corners) — one source of truth so the two
-  edges always match. The rail does **not** hover-expand; it stays a narrow pill
-  (section/course names come from item tooltips and the add-course page's course
-  tiles), so the dock can size to its icons.
+- **The left rail is a floating dock pill.** The left nav rail floats as a
+  `WorkspaceDock` pill (surface, elevation, `AppConfig.borderRadius`, outline
+  border, clipped corners). It does **not** hover-expand; it stays a narrow pill
+  (section/course names come from item tooltips and the Courses page's tiles), so
+  the dock sizes to its icons. Order, top to bottom: **World** (home), **Chats**,
+  **Courses** (the Material map icon, opening the courses list + add options),
+  then an avatar per course you're in. The top-right cluster is its **own** gold
+  "powerups" visual (next section), so the two edges no longer share one chrome —
+  reuse shared constants (gold palette, radius), not one widget.
 
 ## The cluster is the right column's entry point
 
-A persistent cluster pinned to the top-right of the map opens the right column: the
-user's avatar ringed by experience progress and level, their target-language flag,
-and trackers for completed sessions, grammar, and vocabulary. Tapping a tracker
-opens that metric as a right-column panel, and its detail blooms to the left;
-tapping the **avatar** opens the profile + settings master, and the **level badge**
-on the avatar opens the Level analytics tab (level is analytics, reached from the
-badge rather than a tracker — a temporary placement until the badge becomes its own
-element). The
-cluster stays pinned above the panels, because it is the anchor the right column
-justifies against.
+A persistent cluster pinned to the top-right of the map opens the right column. It
+has its own gold **"powerups" visual** (Figma `AvatarLangFlags`), top to bottom:
+the user's **avatar** wrapped in an XP ring (a gray track that fills gold clockwise
+toward the next level, resetting on level-up); a gold **powerups pill** of three
+trackers — completed **Sessions**, **Grammar**, **Vocabulary** — with the **level
+medal** overhanging its base; and the active L2 **flag** below.
+
+Each element is a labeled control (tooltip + semantic button label, since the map
+is a canvas and gets no implicit labels): a **tracker** opens that metric as a
+right-column panel (its detail blooms to the left); the **avatar** opens the
+profile + settings master; the **level medal** opens the Level analytics tab (level
+is analytics, reached from the medal — a placement that holds until level becomes
+its own surface); the **flag** is a shortcut to the learning-settings page. The flag
+shows the language's flag image, or its uppercased **language code** when the
+language has no single regional flag (bare `es` is ambiguous across regions;
+`es-ES` resolves to one). The cluster stays pinned above the panels, because it is
+the anchor the right column justifies against. Its live counts/level/XP come from
+the analytics streams — see
+[analytics-system.instructions.md](analytics-system.instructions.md) for how a UI
+surface reads them without missing the load-time update.
 
 ## History follows the workspace
 
@@ -263,60 +343,11 @@ automatic fold/unfold *replace* the current entry rather than adding history.
 ## Adding a panel
 
 A new surface is a registry entry, not a new route tree: declare its column (which
-fixes its role and justification), its three widths (max, reasonable min, hard
-min), its collapse priority, whether it is exclusive, and whether it opens its
-detail as a panel or pushes it. The parser, the width allocator, and the chrome
-pick it up from there. A settings or profile page is just a right-column entry
-whose deeper levels are reached by a push.
-
-## Migration plan (temporary — remove when complete)
-
-> Transitional only. Delete this section once the token-only model and the
-> settings/profile move have landed; the sections above are the durable design.
-> This records the order that keeps the app shippable between steps.
-
-Today two systems coexist: the token lists *and* a legacy route-driven card
-(`_MainView`) that renders a section from the path when no token names it. That
-dual source is why closing a section has to bounce to `/` (drop the token *and*
-leave the path), and why settings pages — rendered as a route-driven center detail
-with no width floor — get crushed to an overflowing sliver (the live overflow bug).
-The plan retires the path as a render source and moves settings/profile to the
-right column.
-
-1. **Width primitives (additive, low risk).** [done] The reasonable-min width is on
-   every registry entry and is the allocator's fold trigger. The per-panel push/pop
-   stack is the panel's own back arrow rewriting its token's param (settings menu↔page,
-   analytics summary↔detail) — a full in-panel Navigator was not needed.
-2. **Tokens are the sole source — `_MainView` is deleted. [done]** Chats, a course,
-   analytics (incl. level), profile/settings, and the add-course wizard's first step
-   (`addcourse:own`/`browse`/`private`) are all token-driven, with inbound redirects
-   rewriting their legacy paths at the router (and `/rooms/:roomid` kept as an inbound
-   shape). The route-driven `_MainView` left card is gone; closing a section drops its
-   token. The wizard's first step is a left-column **panel host** (the proven
-   card pattern) — not a full-bleed canvas, which rendered blank. Its deeper steps
-   (`/courses/own/:courseid` …) stay route-driven detail.
-3. **Settings and profile move right.** [done] Profile + every settings page is a
-   right-column panel in the shared card chrome (close X, or a back arrow on a pushed
-   leaf); menu rows open the page as a push; the dead `/rooms/settings/...` links and
-   the security leaves are token-driven; the learning-settings unsaved-changes guard
-   is preserved. This fixed the overflow bug.
-4. **Fold under width pressure.** [done] The allocator folds the lowest-priority
-   panel out of the layout (marked `hidden`, not drawn, no stripe) until the rest fit
-   at their reasonable-min, so a column's master/detail pair collapses to one panel —
-   the detail (higher priority) keeps the column and its session, the master one
-   back-step away (closing the detail reveals it). Both tokens stay in the URL, so
-   widening unfolds back to two panels. The width-based `isColumnMode` threshold drives
-   the single-column floor (rail → bottom nav, left inset → 0, focused panel only).
-   This replaced the peek stripe; `PanelVis` is now just `full` / `hidden`.
-5. **Course off the path → `?m=` map filter.** [done] A joined course is the
-   `?m=course:<id>` map filter (read by `activeSpaceIdFor`) plus a `course` panel,
-   not a `/courses/:spaceid` route. Inbound redirects rewrite the legacy bare course
-   path (preserving any `?activity=`/query) and the course-room path
-   (`/courses/:spaceid/:roomid` → `&left=course,room:<roomid>`) to the workspace
-   form; `goToSpaceRoute` opens an in-course room as a `room` token over the filter.
-   [to do] The deeper course-management paths (`details/edit`, `invite`, `analytics`,
-   `addcourse/:courseId`, and room sub-routes like `/search`) stay route-driven for
-   now — their 3rd path segment is a literal, not a `!room`, so the room redirect
-   skips them; converting them to in-panel pushes is a later step.
-
-Each step ships independently and leaves the app green.
+fixes its role and justification), its place in the navigation tree (its **parent**
+type, or none for a root; any **sibling groups** it shares a slot with), its three
+widths (max, reasonable min, hard min), its tiebreak priority, whether it is
+exclusive, and whether it opens its detail as a panel or pushes it. The parser, the
+width allocator (fold), and the single-column focus all read the parent/sibling
+links, so a correct tree placement is what makes a surface fold and focus right. A
+settings or profile page is just a right-column entry whose parent is the settings
+menu and whose deeper levels are reached by a push.

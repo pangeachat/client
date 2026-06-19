@@ -71,26 +71,21 @@ void main() {
     });
   });
 
-  group('isMapHole', () {
-    test('world is always the map hole, in both modes', () {
-      expect(isMapHole('/', false), isTrue);
-      expect(isMapHole('/', true), isTrue);
+  group('isMapHole (world_v2: only the world root is a map hole)', () {
+    test('the world root is the map hole', () {
+      expect(isMapHole('/'), isTrue);
     });
 
-    test('section roots are map holes in column mode only', () {
-      // world_v2: the still-route-driven section roots. The `/rooms` and
-      // `/courses/:spaceid` render routes are deleted (rooms/courses are tokens
-      // now), so they are no longer in the map-hole set.
-      expect(isMapHole('/chats', true), isTrue);
-      expect(isMapHole('/chats', false), isFalse);
-      expect(isMapHole('/analytics/morph', true), isTrue);
-      expect(isMapHole('/settings', true), isTrue);
-    });
-
-    test('the add-course hub and detail routes are not map holes', () {
-      expect(isMapHole('/courses', true), isFalse); // full-bleed
-      expect(isMapHole('/courses/:spaceid/:roomid', true), isFalse); // detail
-      expect(isMapHole('/rooms/:roomid', true), isFalse); // detail
+    test('every other route renders content, never a hole', () {
+      // Every section is a token panel now — there are no /chats, /settings,
+      // /analytics, or /profile render routes — so no path but `/` is a hole.
+      // The remaining real routes are bounded details or full-bleed.
+      expect(isMapHole('/settings'), isFalse);
+      expect(isMapHole('/analytics/morph'), isFalse);
+      expect(isMapHole('/courses'), isFalse);
+      expect(isMapHole('/practice/vocab'), isFalse);
+      expect(isMapHole('/rooms/archive/abc'), isFalse);
+      expect(isMapHole(null), isFalse);
     });
   });
 

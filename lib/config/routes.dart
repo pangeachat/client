@@ -1,29 +1,14 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/analytics/construct_identifier.dart';
-import 'package:fluffychat/features/analytics/construct_type_enum.dart';
-import 'package:fluffychat/features/course_plans/new_course_page.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
-import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
-import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
-import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
-import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
-import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_page.dart';
-import 'package:fluffychat/routes/analytics/level/level_analytics_details_content.dart';
 import 'package:fluffychat/routes/archive/archive.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
-import 'package:fluffychat/routes/chat/chat_details/emotes/settings_emotes.dart';
-import 'package:fluffychat/routes/chat_list/chat_list.dart';
-import 'package:fluffychat/routes/courses/add_course_hub_view.dart';
 import 'package:fluffychat/routes/courses/own/invite/course_invite_page.dart';
 import 'package:fluffychat/routes/courses/own/selected_course_page.dart';
 import 'package:fluffychat/routes/courses/preview/public_course_preview.dart';
@@ -34,84 +19,37 @@ import 'package:fluffychat/routes/invite_user/user_invite_link_page.dart';
 import 'package:fluffychat/routes/join_with_link/join_with_link_page.dart';
 import 'package:fluffychat/routes/new_private_chat/new_private_chat.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_page.dart';
-import 'package:fluffychat/routes/profile/user_home_page.dart';
 import 'package:fluffychat/routes/registration/create_pangea_account_page.dart';
-import 'package:fluffychat/routes/settings/settings.dart';
-import 'package:fluffychat/routes/settings/settings_chat/settings_chat.dart';
-import 'package:fluffychat/routes/settings/settings_device/device_settings.dart';
-import 'package:fluffychat/routes/settings/settings_homeserver/settings_homeserver.dart';
-import 'package:fluffychat/routes/settings/settings_learning/settings_learning.dart';
-import 'package:fluffychat/routes/settings/settings_notifications/settings_notifications.dart';
-import 'package:fluffychat/routes/settings/settings_security/settings_3pid/settings_3pid.dart';
-import 'package:fluffychat/routes/settings/settings_security/settings_ignore_list/settings_ignore_list.dart';
-import 'package:fluffychat/routes/settings/settings_security/settings_password/settings_password.dart';
-import 'package:fluffychat/routes/settings/settings_security/settings_security.dart';
-import 'package:fluffychat/routes/settings/settings_style/settings_style.dart';
-import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription.dart';
 import 'package:fluffychat/routes/world/activity_detail_panel.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
-import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
 import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/log_view.dart';
 
-// #Pangea
-// import 'package:fluffychat/config/app_config.dart';
-// Pangea#
-// #Pangea
-// import 'package:fluffychat/widgets/matrix.dart';
-// Pangea#
-// #Pangea
-// import 'package:cached_network_image/cached_network_image.dart';
-// Pangea#
-
 abstract class AppRoutes {
   static FutureOr<String?> loggedInRedirect(
     BuildContext context,
     GoRouterState state,
-    // #Pangea
-    // ) => Matrix.of(context).widget.clients.any((client) => client.isLogged())
-    //     ? '/rooms'
-    //     : null;
   ) => PAuthGaurd.homeRedirect(context, state);
-  // Pangea#
 
   static FutureOr<String?> loggedOutRedirect(
     BuildContext context,
     GoRouterState state,
-    // #Pangea
-    // ) => Matrix.of(context).widget.clients.any((client) => client.isLogged())
-    //     ? null
-    //     : '/home';
   ) => PAuthGaurd.roomsRedirect(context, state);
-  // Pangea#
 
   AppRoutes();
 
   static final List<RouteBase> routes = [
     GoRoute(
       path: '/home',
-      pageBuilder: (context, state) => defaultPageBuilder(
-        context,
-        state,
-        // #Pangea
-        // const HomeserverPicker(addMultiAccount: false),
-        const LoginOrSignupView(),
-        // Pangea#
-      ),
+      pageBuilder: (context, state) =>
+          defaultPageBuilder(context, state, const LoginOrSignupView()),
       redirect: loggedInRedirect,
       routes: [
         GoRoute(
           path: 'login',
-          pageBuilder: (context, state) => defaultPageBuilder(
-            context,
-            state,
-            // #Pangea
-            // Login(client: state.extra as Client),
-            const Login(),
-            // Pangea#
-          ),
+          pageBuilder: (context, state) =>
+              defaultPageBuilder(context, state, const Login()),
           redirect: loggedInRedirect,
           // #Pangea
           routes: [
@@ -204,21 +142,7 @@ abstract class AppRoutes {
       pageBuilder: (context, state, child) => noTransitionPageBuilder(
         context,
         state,
-        // #Pangea
-        // FluffyThemes.isColumnMode(context) &&
-        //         state.fullPath?.startsWith('/rooms/settings') == false
-        //     ? WorkspaceShell(
-        //         mainView: ChatList(
-        //           activeChat: state.pathParameters['roomid'],
-        //           activeSpace: state.uri.queryParameters['spaceId'],
-        //           displayNavigationRail:
-        //               state.path?.startsWith('/rooms/settings') != true,
-        //         ),
-        //         sideView: child,
-        //       )
-        //     : child,
         WorkspaceShell(state: state, sideView: child),
-        // Pangea#
       ),
       routes: [
         // #Pangea
@@ -230,41 +154,17 @@ abstract class AppRoutes {
           pageBuilder: (context, state) =>
               defaultPageBuilder(context, state, const EmptyPage()),
         ),
-        // Chats section (world_v2): the chat list. In column mode the map
-        // is the canvas and ChatList renders in the left column; in narrow
-        // mode ChatList is the full screen.
-        GoRoute(
-          path: '/chats',
-          redirect: loggedOutRedirect,
-          pageBuilder: (context, state) => defaultPageBuilder(
-            context,
-            state,
-            canvasPage(
-              context,
-              state,
-              ChatList(
-                activeChat: state.pathParameters['roomid'],
-                activeSpace: state.uri.queryParameters['spaceId'],
-              ),
-            ),
-          ),
-        ),
+        // world_v2: there is no `/chats` render route — the chat list is the
+        // `left=chats` token over `/`, rendered by the shell. The legacy
+        // `/chats` / `/rooms` paths redirect to that token (legacy_redirects).
         // Pangea#
         GoRoute(
           path: '/rooms',
           redirect: loggedOutRedirect,
-          pageBuilder: (context, state) => defaultPageBuilder(
-            context,
-            state,
-            canvasPage(
-              context,
-              state,
-              ChatList(
-                activeChat: state.pathParameters['roomid'],
-                activeSpace: state.uri.queryParameters['spaceId'],
-              ),
-            ),
-          ),
+          // Bare `/rooms` redirects to the `left=chats` token before it renders;
+          // this parent survives only to host archive / newprivatechat.
+          pageBuilder: (context, state) =>
+              defaultPageBuilder(context, state, const EmptyPage()),
           routes: [
             GoRoute(
               path: 'archive',
@@ -292,23 +192,6 @@ abstract class AppRoutes {
                   defaultPageBuilder(context, state, const NewPrivateChat()),
               redirect: loggedOutRedirect,
             ),
-            // #Pangea
-            // Pangea#
-            // #Pangea
-            // ShellRoute(
-            //   pageBuilder: (context, state, child) => defaultPageBuilder(
-            //     context,
-            //     state,
-            //     FluffyThemes.isColumnMode(context)
-            //         ? WorkspaceShell(
-            //             mainView: Settings(key: state.pageKey),
-            //             sideView: child,
-            //           )
-            //         : child,
-            //   ),
-            //   routes: [
-            // Pangea#
-            // Pangea#
           ],
         ),
         // #Pangea
@@ -318,32 +201,19 @@ abstract class AppRoutes {
         GoRoute(
           path: '/courses',
           redirect: loggedOutRedirect,
-          // world_v2: `/courses` is the "Add new course" hub — a card that
-          // floats over the full-bleed map (only the card absorbs taps), so
-          // the map stays pannable around it.
+          // world_v2: the add-course hub + its own/browse/private steps are the
+          // `addcourse` left token (rendered by AddCoursePanel); bare `/courses`
+          // and `/courses/own` redirect to those tokens before rendering. This
+          // tree survives only to host the route-driven Completer wizard
+          // (own/:courseid[/invite], :spaceid/addcourse/:courseId — a Completer
+          // can't ride a token URL) and the public-course preview.
           pageBuilder: (context, state) =>
-              defaultPageBuilder(context, state, const AddCourseHubView()),
+              defaultPageBuilder(context, state, const EmptyPage()),
           routes: [
             GoRoute(
               path: 'own',
-              // world_v2: the "Start my own" plan list lives in the left
-              // column over the persistent map (column mode), so the course's
-              // activities show on the map; narrow mode is full-screen.
-              pageBuilder: (context, state) {
-                return defaultPageBuilder(
-                  context,
-                  state,
-                  canvasPage(
-                    context,
-                    state,
-                    NewCoursePage(
-                      route: 'rooms',
-                      initialLanguageCode: state.uri.queryParameters['lang'],
-                      showAll: state.uri.queryParameters['showAll'] == 'true',
-                    ),
-                  ),
-                );
-              },
+              pageBuilder: (context, state) =>
+                  defaultPageBuilder(context, state, const EmptyPage()),
               routes: [
                 GoRoute(
                   path: ':courseid',
@@ -423,332 +293,27 @@ abstract class AppRoutes {
             ),
           ],
         ),
-        GoRoute(
-          path: '/analytics',
-          redirect: loggedOutRedirect,
-          pageBuilder: (context, state) => defaultPageBuilder(
-            context,
-            state,
-            canvasPage(
-              context,
-              state,
-              const ConstructAnalyticsView(
-                view: ConstructTypeEnum.vocab,
-                showPracticeButton: true,
-              ),
-            ),
-          ),
-          routes: [
-            GoRoute(
-              path: ConstructTypeEnum.morph.string,
-              pageBuilder: (context, state) => defaultPageBuilder(
-                context,
-                state,
-                canvasPage(
-                  context,
-                  state,
-                  const ConstructAnalyticsView(
-                    view: ConstructTypeEnum.morph,
-                    showPracticeButton: true,
-                  ),
-                ),
-              ),
-              redirect: loggedOutRedirect,
-              routes: [
-                GoRoute(
-                  path: 'practice',
-                  pageBuilder: (context, state) {
-                    return defaultPageBuilder(
-                      context,
-                      state,
-                      const AnalyticsPractice(type: ConstructTypeEnum.morph),
-                    );
-                  },
-                ),
-                GoRoute(
-                  path: ':construct',
-                  pageBuilder: (context, state) {
-                    final construct = ConstructIdentifier.fromJson(
-                      jsonDecode(state.pathParameters['construct']!),
-                    );
-
-                    return defaultPageBuilder(
-                      context,
-                      state,
-                      ConstructAnalyticsView(
-                        construct: construct,
-                        view: ConstructTypeEnum.morph,
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
-            GoRoute(
-              path: ConstructTypeEnum.vocab.string,
-              pageBuilder: (context, state) => defaultPageBuilder(
-                context,
-                state,
-                canvasPage(
-                  context,
-                  state,
-                  const ConstructAnalyticsView(
-                    view: ConstructTypeEnum.vocab,
-                    showPracticeButton: true,
-                  ),
-                ),
-              ),
-              redirect: loggedOutRedirect,
-              routes: [
-                GoRoute(
-                  path: 'practice',
-                  pageBuilder: (context, state) {
-                    return defaultPageBuilder(
-                      context,
-                      state,
-                      const AnalyticsPractice(type: ConstructTypeEnum.vocab),
-                    );
-                  },
-                  onExit: (context, state) async {
-                    // Check if bypass flag was set before navigation
-                    if (AnalyticsPractice.bypassExitConfirmation) {
-                      AnalyticsPractice.bypassExitConfirmation = false;
-                      return true;
-                    }
-
-                    final result = await showOkCancelAlertDialog(
-                      useRootNavigator: false,
-                      context: context,
-                      title: L10n.of(context).areYouSure,
-                      okLabel: L10n.of(context).yes,
-                      cancelLabel: L10n.of(context).cancel,
-                      message: L10n.of(context).exitPractice,
-                    );
-
-                    return result == OkCancelResult.ok;
-                  },
-                ),
-                GoRoute(
-                  path: ':construct',
-                  pageBuilder: (context, state) {
-                    final construct = ConstructIdentifier.fromJson(
-                      jsonDecode(state.pathParameters['construct']!),
-                    );
-                    return defaultPageBuilder(
-                      context,
-                      state,
-                      ConstructAnalyticsView(
-                        construct: construct,
-                        view: ConstructTypeEnum.vocab,
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
-            GoRoute(
-              path: 'activities',
-              pageBuilder: (context, state) => defaultPageBuilder(
-                context,
-                state,
-                canvasPage(context, state, const ActivityArchive()),
-              ),
-              redirect: loggedOutRedirect,
-              routes: [
-                GoRoute(
-                  path: ':roomid',
-                  pageBuilder: (context, state) => defaultPageBuilder(
-                    context,
-                    state,
-                    ChatPage(
-                      roomId: fullRoomId(state.pathParameters['roomid']!),
-                      eventId: state.uri.queryParameters['event'],
-                      backButton: BackButton(
-                        onPressed: () {
-                          AnalyticsNavigationUtil.navigateToAnalytics(
-                            context: context,
-                            view: ProgressIndicatorEnum.activities,
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                  redirect: loggedOutRedirect,
-                ),
-              ],
-            ),
-            GoRoute(
-              path: 'level',
-              pageBuilder: (context, state) => defaultPageBuilder(
-                context,
-                state,
-                canvasPage(context, state, const LevelAnalyticsDetailsContent()),
-              ),
-              redirect: loggedOutRedirect,
-            ),
-          ],
-        ),
-        GoRoute(
-          path: '/settings',
-          pageBuilder: (context, state) => defaultPageBuilder(
-            context,
-            state,
-            canvasPage(context, state, const Settings()),
-          ),
-          routes: [
-            GoRoute(
-              path: 'notifications',
-              pageBuilder: (context, state) => defaultPageBuilder(
-                context,
-                state,
-                const SettingsNotifications(),
-              ),
-              redirect: loggedOutRedirect,
-            ),
-            GoRoute(
-              path: 'style',
-              pageBuilder: (context, state) =>
-                  defaultPageBuilder(context, state, const SettingsStyle()),
-              redirect: loggedOutRedirect,
-            ),
-            GoRoute(
-              path: 'devices',
-              pageBuilder: (context, state) =>
-                  defaultPageBuilder(context, state, const DevicesSettings()),
-              redirect: loggedOutRedirect,
-            ),
-            GoRoute(
-              path: 'chat',
-              pageBuilder: (context, state) =>
-                  defaultPageBuilder(context, state, const SettingsChat()),
-              routes: [
-                GoRoute(
-                  path: 'emotes',
-                  pageBuilder: (context, state) => defaultPageBuilder(
-                    context,
-                    state,
-                    EmotesSettings(roomId: state.pathParameters['roomid']),
-                  ),
-                ),
-              ],
-              redirect: loggedOutRedirect,
-            ),
-            // #Pangea
-            // GoRoute(
-            //   path: 'addaccount',
-            //   redirect: loggedOutRedirect,
-            //   pageBuilder: (context, state) => defaultPageBuilder(
-            //     context,
-            //     state,
-            //     const HomeserverPicker(addMultiAccount: true),
-            //   ),
-            //   routes: [
-            //     GoRoute(
-            //       path: 'login',
-            //       pageBuilder: (context, state) => defaultPageBuilder(
-            //         context,
-            //         state,
-            //         Login(client: state.extra as Client),
-            //       ),
-            //       redirect: loggedOutRedirect,
-            //     ),
-            //   ],
-            // ),
-            // Pangea#
-            GoRoute(
-              path: 'homeserver',
-              pageBuilder: (context, state) {
-                return defaultPageBuilder(
-                  context,
-                  state,
-                  const SettingsHomeserver(),
-                );
-              },
-              redirect: loggedOutRedirect,
-            ),
-            GoRoute(
-              path: 'security',
-              redirect: loggedOutRedirect,
-              pageBuilder: (context, state) =>
-                  defaultPageBuilder(context, state, const SettingsSecurity()),
-              routes: [
-                GoRoute(
-                  path: 'password',
-                  pageBuilder: (context, state) {
-                    return defaultPageBuilder(
-                      context,
-                      state,
-                      const SettingsPassword(),
-                    );
-                  },
-                  redirect: loggedOutRedirect,
-                ),
-                GoRoute(
-                  path: 'ignorelist',
-                  pageBuilder: (context, state) {
-                    return defaultPageBuilder(
-                      context,
-                      state,
-                      SettingsIgnoreList(
-                        initialUserId: state.extra?.toString(),
-                      ),
-                    );
-                  },
-                  redirect: loggedOutRedirect,
-                ),
-                GoRoute(
-                  path: '3pid',
-                  pageBuilder: (context, state) =>
-                      defaultPageBuilder(context, state, const Settings3Pid()),
-                  redirect: loggedOutRedirect,
-                ),
-              ],
-            ),
-            // #Pangea
-            GoRoute(
-              path: 'learning',
-              pageBuilder: (context, state) => defaultPageBuilder(
-                context,
-                state,
-                const SettingsLearning(isDialog: false),
-              ),
-              redirect: loggedOutRedirect,
-              onExit: (context, state) =>
-                  SettingsLearningController.handleExit(context),
-            ),
-            GoRoute(
-              path: 'subscription',
-              pageBuilder: (context, state) => defaultPageBuilder(
-                context,
-                state,
-                const SubscriptionManagement(),
-              ),
-              redirect: loggedOutRedirect,
-            ),
-            // Pangea#
-          ],
-          redirect: loggedOutRedirect,
-        ),
-        // Avatar surface (world_v2): profile + settings merged. /profile
-        // renders the same menu as /settings (profile header + settings
-        // list); the full profile editor moves to /profile/edit.
-        GoRoute(
-          path: '/profile',
-          redirect: loggedOutRedirect,
-          pageBuilder: (context, state) => defaultPageBuilder(
-            context,
-            state,
-            canvasPage(context, state, const Settings()),
-          ),
-          routes: [
-            GoRoute(
-              path: 'edit',
-              redirect: loggedOutRedirect,
-              pageBuilder: (context, state) =>
-                  defaultPageBuilder(context, state, UserHomePage()),
-            ),
-          ],
-        ),
+        // world_v2: there is no `/analytics` render route tree. Analytics is
+        // entirely token-driven — the cluster opens `right=analytics:<tab>`, a
+        // vocab/grammar item blooms a `right=vocab`/`grammar` detail, a completed
+        // activity opens a `left=session` chat, and the Practice button opens a
+        // `right=practice:<type>` panel (all via AnalyticsNavigationUtil /
+        // WorkspaceNav). Legacy `/analytics[/...]` deep links redirect to those
+        // tokens (legacy_redirects).
+        // Pangea#
+        // world_v2: there is no `/settings` render route tree. Profile +
+        // settings are the `right=settings` master with each page opening as a
+        // `right=settingspage:<page>` detail (rendered by the shell, via
+        // WorkspaceNav.openSettings). The learning unsaved-changes guard lives
+        // in the page; the security leaves (password/ignorelist/3pid) and
+        // chat/emotes are token sub-pages. Legacy `/settings[/...]` deep links
+        // redirect to those tokens (legacy_redirects).
+        // Pangea#
+        // world_v2: there is no `/profile` render route — the avatar surface
+        // (profile + settings merged) is the `right=settings` token, and the
+        // profile editor is the `settingspage:profile/edit` detail, both
+        // rendered by the shell. Legacy `/profile[/edit]` redirects to those
+        // tokens (legacy_redirects).
         // Pangea#
         // #Pangea
         // First-class activity URLs: /<activityId> (UUID). Declared after
@@ -806,29 +371,5 @@ abstract class AppRoutes {
     BuildContext context,
     GoRouterState state,
     Widget child,
-    // #Pangea
-    // ) => FluffyThemes.isColumnMode(context)
-    //     ? noTransitionPageBuilder(context, state, child)
-    //     : MaterialPage(
-    //         key: state.pageKey,
-    //         restorationId: state.pageKey.value,
-    //         child: child,
-    //       );
   ) => noTransitionPageBuilder(context, state, child);
-  // Pangea#
-
-  // #Pangea
-  /// A section root's content: the map hole ([EmptyPage]) when this route
-  /// renders as a hole in the current mode, else its [content]. The single
-  /// source for the canvas decision is [isMapHole] in route_facts.dart, shared
-  /// with the shell layout, so the page builder and the layout can't drift.
-  static Widget canvasPage(
-    BuildContext context,
-    GoRouterState state,
-    Widget content,
-  ) => isMapHole(state.fullPath, FluffyThemes.isColumnMode(context))
-      ? const EmptyPage()
-      : content;
-  // Pangea#
-
 }

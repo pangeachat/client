@@ -29,7 +29,7 @@ class PanelSlot {
   /// pressure, so closing this panel reveals it (a back-step). The close
   /// affordance reads this to show `←` instead of `X`. Only set in column mode;
   /// narrow mode's single-pane back-step is decided from the breakpoint, not
-  /// here. See `world-v2-architecture`.
+  /// here. See `routing.instructions.md`.
   final bool foldedOver;
 
   const PanelSlot({
@@ -76,10 +76,12 @@ class WorkspaceLayout {
 /// N panels per column (it superseded the old single-panel-per-side budget).
 /// Both columns draw from one budget: each panel grows greedily to its ideal
 /// (the map fills whatever is left), and when they can't all fit, they compress
-/// toward their reasonable-min and only then **fold** — the lowest-priority
-/// panel drops out of the layout (not drawn, no stripe; its content one
-/// back-step away on the sibling that stayed), never a full-screen takeover.
-/// Pure + unit-tested. See `routing.instructions.md`.
+/// toward their reasonable-min and only then **fold** — a **parent** (master)
+/// drops out of the layout behind its **child** (detail), which keeps the column
+/// (not drawn, no stripe; the parent one back-step away), never a full-screen
+/// takeover. Folding and narrow-mode focus both read the registry's explicit
+/// parent/child/sibling tree ([PanelDef.parent]); there is no separate recency
+/// or priority heuristic. Pure + unit-tested. See `routing.instructions.md`.
 abstract class PanelAllocator {
   /// Right margin reserved for the cluster beside the right column.
   static const double clusterGutter = 88.0;
@@ -127,7 +129,15 @@ abstract class PanelAllocator {
               : hidden());
     }
 
-    // ---- narrow: seat the highest-priority panel; bottom nav switches -------
+    // ---- narrow: seat ONE panel — the active **leaf**: an open panel that no
+    // other open panel details (no open child names it as `parent`). A child is
+    // therefore always shown over its parent (the parent is the back target,
+    // reached by closing the child), straight from the navigation tree — no
+    // recency state needed. Among independent leaves (a cold deep link or a
+    // resized multi-panel URL, with no tree relation to break the tie) the
+    // highest-priority one wins. The bottom nav / cluster switch to the others.
+    // The leaf link is read across BOTH columns, so a left `session` is focusable
+    // over its right-column `analytics` list. See `routing.instructions.md`.
     if (!isColumnMode) {
       if (all.isEmpty) {
         return _build(left, right, 0,
@@ -136,9 +146,11 @@ abstract class PanelAllocator {
             mapRightOverlay: 0,
             slot: (_) => hidden());
       }
-      final focus = (all.toList()
-            ..sort((a, b) => b.def.priority.compareTo(a.def.priority)))
-          .first;
+      final leaves =
+          all.where((e) => !all.any((c) => c.def.parent == e.def.type)).toList();
+      final pool = leaves.isEmpty ? all : leaves;
+      final focus = pool
+          .reduce((a, b) => b.def.priority > a.def.priority ? b : a);
       return _build(left, right, 0,
           clusterVisible: false,
           mapLeftOverlay: viewport,
@@ -168,15 +180,19 @@ abstract class PanelAllocator {
       return (math.max(0, l - 1) + math.max(0, r - 1)) * panelGap;
     }
 
-    // Fold the lowest-priority panel away until the rest fit at their reasonable
-    // min (the comfort floor). A fold neither peeks to a stripe nor reserves
-    // width — the panel is simply not drawn, its content one back-step away on
-    // the higher-priority sibling that stays (the detail keeps the column; its
-    // master is a pop behind, reached by closing the detail). Highest priority
-    // folds last, so a live `room` (top of the left column) is never folded away
-    // and keeps its session. The map is the backdrop, not a panel, so it isn't
-    // sized here — it shows wherever the panels leave room. See
-    // `routing.instructions.md`.
+    // Fold a **parent** behind its **child** until the rest fit at their
+    // reasonable min (the comfort floor). A fold neither peeks to a stripe nor
+    // reserves width — the parent is simply not drawn, its content one back-step
+    // away on the child that keeps the column (the detail keeps the column; its
+    // master is a pop behind, reached by closing the detail). Only a parent whose
+    // child is also visible in the SAME column is foldable: folding is
+    // per-column, and a folded panel is reached by closing its child, so a panel
+    // with no same-column child to keep the column never folds — it compresses
+    // toward its hard min instead. A child is never folded, so a live `room` (the
+    // chat list's detail) keeps its session, and a lone right panel (the
+    // analytics summary) is never sacrificed to left-column overflow. The map is
+    // the backdrop, not a panel, so it isn't sized here — it shows wherever the
+    // panels leave room. See `routing.instructions.md`.
     final folded = <_Entry>{};
     while (true) {
       final vis = all.where((e) => !folded.contains(e)).toList();
@@ -184,8 +200,16 @@ abstract class PanelAllocator {
       final needReasonable =
           vis.fold(0.0, (s, e) => s + e.def.reasonableMin) + gapsFor(vis);
       if (needReasonable <= content) break;
-      vis.sort((a, b) => a.def.priority.compareTo(b.def.priority));
-      folded.add(vis.first);
+      final foldable = vis
+          .where((parent) => vis.any((child) =>
+              child.column == parent.column &&
+              child.def.parent == parent.def.type))
+          .toList();
+      if (foldable.isEmpty) break;
+      // Among independent master/detail pairs all under pressure, fold the
+      // lowest-priority master first (a cross-tree tiebreak).
+      foldable.sort((a, b) => a.def.priority.compareTo(b.def.priority));
+      folded.add(foldable.first);
     }
 
     // Size the surviving panels: ideals if they fit, else compress toward their
@@ -212,17 +236,23 @@ abstract class PanelAllocator {
     // Position: left column fills from the rail rightward; right column is
     // right-justified (its group ends at viewport - gutter). Folded panels are
     // skipped — not drawn, no gap reserved — order otherwise preserved.
-    // A surviving panel is "folded over" when its column lost a sibling to the
-    // fold above — closing it reveals that folded master (a back-step), so its
-    // close control becomes `←`. See `world-v2-architecture`.
-    final foldedLeft = folded.any((e) => e.column == PanelColumn.left);
-    final foldedRight = folded.any((e) => e.column == PanelColumn.right);
+    // A surviving panel is "folded over" when its own PARENT (same column) was
+    // folded away above — closing it reveals that folded master (a back-step),
+    // so its close control becomes `←`. Read straight off the explicit parent
+    // link, so only the child whose master folded gets the back arrow; an
+    // independent panel (a live room with no folded master) keeps a normal close.
+    // See `close_affordance.dart` / `routing.instructions.md`.
+    bool isFoldedOver(_Entry e) => folded
+        .any((f) => f.column == e.column && f.def.type == e.def.parent);
 
     final placement = <_Entry, PanelSlot>{};
     var x = railWidth;
     for (final e in fulls.where((e) => e.column == PanelColumn.left)) {
       placement[e] = PanelSlot(
-          left: x, width: widthOf(e), vis: PanelVis.full, foldedOver: foldedLeft);
+          left: x,
+          width: widthOf(e),
+          vis: PanelVis.full,
+          foldedOver: isFoldedOver(e));
       x += widthOf(e) + panelGap;
     }
     final hasLeft = fulls.any((e) => e.column == PanelColumn.left);
@@ -235,7 +265,10 @@ abstract class PanelAllocator {
     final rightStart = rx;
     for (final e in rights) {
       placement[e] = PanelSlot(
-          left: rx, width: widthOf(e), vis: PanelVis.full, foldedOver: foldedRight);
+          left: rx,
+          width: widthOf(e),
+          vis: PanelVis.full,
+          foldedOver: isFoldedOver(e));
       rx += widthOf(e) + panelGap;
     }
 

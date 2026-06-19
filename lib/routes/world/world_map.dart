@@ -199,6 +199,10 @@ class _WorldMapState extends State<WorldMap>
   Timer? _fitDebounce;
   static const Duration _fitSettleDelay = Duration(seconds: 2);
 
+  /// The zoom the camera glides to when an activity is focused (opened) — close
+  /// enough to read it as "this specific spot" (neighborhood/building level).
+  static const double _focusZoom = 16.0;
+
   /// Drives the smooth camera glide (center + zoom tween) instead of an instant
   /// `fitCamera` snap. Retargets cleanly if a new fit lands mid-flight.
   AnimationController? _camAnim;
@@ -535,16 +539,20 @@ class _WorldMapState extends State<WorldMap>
           64.0,
         );
 
-        // A specific focus target is brought into the exposed canvas at the
-        // current zoom. Today that is an activity (centered on its pin); new
-        // focus kinds resolve in [_focusPoint].
+        // A specific focus target is zoomed IN on within the exposed canvas:
+        // opening an activity glides the camera down to its pin at a close
+        // (neighborhood/building) zoom, never zooming out past where we already
+        // are. Today that is an activity; new focus kinds resolve in
+        // [_focusPoint].
         final point = _focusPoint(widget.focus);
         if (point != null) {
           _animateFit(
             CameraFit.coordinates(
               coordinates: [point],
               padding: padding,
-              maxZoom: _controller.camera.zoom,
+              maxZoom: _controller.camera.zoom > _focusZoom
+                  ? _controller.camera.zoom
+                  : _focusZoom,
             ),
           );
           return;

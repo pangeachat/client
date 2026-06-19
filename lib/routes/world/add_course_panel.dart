@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/course_plans/new_course_page.dart';
-import 'package:fluffychat/routes/courses/add_course_hub_view.dart';
 import 'package:fluffychat/routes/courses/find_course_page.dart';
 import 'package:fluffychat/routes/courses/private/course_code_page.dart';
+import 'package:fluffychat/routes/world/courses_panel_view.dart';
 
 /// The body of the left-column **add-course panel** (world_v2): the add-course
 /// wizard, hosted as a URL-token panel instead of the retired route-driven
@@ -37,9 +37,10 @@ class AddCoursePanel extends StatelessWidget {
           showAll: currentUri.queryParameters['showAll'] == 'true',
         );
       default:
-        // A bare `addcourse` token (the rail "+") is the hub chooser; its
-        // options navigate to the `own`/`browse`/`private` step tokens.
-        return const AddCourseHubView();
+        // A bare `addcourse` token is the Courses panel. It is normally
+        // rendered by the panel host with a "Courses" header + close; this is a
+        // headerless fallback for any direct use. See CoursesPanelView.
+        return const CoursesPanelView();
     }
   }
 }

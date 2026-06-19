@@ -74,13 +74,14 @@ abstract class WorkspaceNav {
   static String openLeft(Uri current, PanelToken token, {bool atStart = false}) =>
       _mutate(current, 'left', (tokens) => _add(tokens, token, atStart));
 
-  /// Open (or replace) a DETAIL panel, enforcing the registry's exclusive groups
-  /// across BOTH columns: any open token sharing an `exclusiveGroup` with [token]
-  /// is dropped (one live view; one "zoom" detail across columns — see
-  /// [PanelDef.exclusiveGroups]). The token seats in its own column — a right
-  /// detail blooms at the front (left of its master); a left detail appends
-  /// (after the list/course it details). This is the one generalized detail
-  /// open; the named helpers below delegate to it. See `world-v2-architecture`.
+  /// Open (or replace) a DETAIL panel, enforcing the registry's **sibling**
+  /// groups across BOTH columns: any open token that shares a sibling group with
+  /// [token] is dropped (siblings can't coexist — one live view; one "zoom"
+  /// detail across columns; see [PanelDef.siblingGroups]). The token seats in its
+  /// own column — a right detail blooms at the front (left of its master); a left
+  /// detail appends (after the list/course it details). This is the one
+  /// generalized detail open; the named helpers below delegate to it. See
+  /// `routing.instructions.md`.
   static String openDetail(Uri current, PanelToken token) {
     final col = PanelRegistry.defFor(token.type)?.column ?? PanelColumn.left;
     return _mutateBoth(
@@ -90,9 +91,9 @@ abstract class WorkspaceNav {
     );
   }
 
-  /// Drop conflicts (and the token itself, for dedup) from one column's list,
+  /// Drop siblings (and the token itself, for dedup) from one column's list,
   /// then seat [token] only if it belongs to [thisCol] (front for right, end for
-  /// left). The other column just sheds conflicts.
+  /// left). The other column just sheds siblings.
   static List<PanelToken> _placeDetail(
     List<PanelToken> tokens,
     PanelToken token,
@@ -100,17 +101,18 @@ abstract class WorkspaceNav {
     PanelColumn tokenCol,
   ) {
     final next =
-        tokens.where((t) => t != token && !_conflicts(token, t)).toList();
+        tokens.where((t) => t != token && !_areSiblings(token, t)).toList();
     if (thisCol == tokenCol) {
       thisCol == PanelColumn.right ? next.insert(0, token) : next.add(token);
     }
     return next;
   }
 
-  /// True when [a] and [b] share any exclusive group (per the registry).
-  static bool _conflicts(PanelToken a, PanelToken b) {
-    final ga = PanelRegistry.defFor(a.type)?.exclusiveGroups ?? const <String>{};
-    final gb = PanelRegistry.defFor(b.type)?.exclusiveGroups ?? const <String>{};
+  /// True when [a] and [b] are **siblings** — they share any sibling group (per
+  /// the registry), so they can't coexist and one replaces the other.
+  static bool _areSiblings(PanelToken a, PanelToken b) {
+    final ga = PanelRegistry.defFor(a.type)?.siblingGroups ?? const <String>{};
+    final gb = PanelRegistry.defFor(b.type)?.siblingGroups ?? const <String>{};
     return ga.any(gb.contains);
   }
 
@@ -128,7 +130,7 @@ abstract class WorkspaceNav {
   /// Open a vocab/grammar construct detail (the `detail` group): drops the other
   /// construct detail and any `session`, seats the detail at the front of the
   /// right group, and ensures its pinned `analytics` summary master exists
-  /// (seated at [summaryTab] from a cold start). See `world-v2-architecture`.
+  /// (seated at [summaryTab] from a cold start). See `routing.instructions.md`.
   static String openConstructDetail(
     Uri current,
     PanelToken detail,
@@ -136,14 +138,39 @@ abstract class WorkspaceNav {
   ) =>
       _mutateBoth(
         current,
-        (left) => left.where((t) => !_conflicts(detail, t)).toList(),
+        (left) => left.where((t) => !_areSiblings(detail, t)).toList(),
         (right) {
           final next =
-              right.where((t) => t != detail && !_conflicts(detail, t)).toList();
+              right.where((t) => t != detail && !_areSiblings(detail, t)).toList();
           next.insert(0, detail);
           if (!next.any((t) => t.type == 'analytics')) {
             next.add(PanelToken('analytics', summaryTab));
           }
+          return next;
+        },
+      );
+
+  /// Open a practice session as a right-column panel that **takes over the
+  /// analytics surface**: it clears the analytics master and any vocab/grammar
+  /// detail on the right (and a left `session` review — practice shares the one
+  /// "detail" slot across columns), then seats `practice:<type>` at the front.
+  /// While practice is open no vocab/grammar list or detail can be viewed —
+  /// opening one drops practice (the registry `detail` group), and tapping the
+  /// cluster's analytics replaces the whole right column. Practice is a normal
+  /// bounded panel, not a route or a fullscreen surface. See
+  /// `routing.instructions.md`.
+  static String openPractice(Uri current, String type) => _mutateBoth(
+        current,
+        (left) => left.where((t) => t.type != 'session').toList(),
+        (right) {
+          final next = right
+              .where((t) =>
+                  t.type != 'analytics' &&
+                  t.type != 'vocab' &&
+                  t.type != 'grammar' &&
+                  t.type != 'practice')
+              .toList();
+          next.insert(0, PanelToken('practice', type));
           return next;
         },
       );
@@ -159,7 +186,12 @@ abstract class WorkspaceNav {
     final lists = parseOpenPanels(current);
     final left = <PanelToken>[
       PanelToken('course', tab),
-      ...lists.left.where((t) => t.type != 'course'),
+      // Drop any prior course token, the Courses launcher (`addcourse`), and a
+      // stale management page (`coursepage`) — picking a specific course replaces
+      // the launcher rather than stacking beside it, and a coursepage left from
+      // the previous course would silently re-target the new one.
+      ...lists.left.where((t) =>
+          t.type != 'course' && t.type != 'addcourse' && t.type != 'coursepage'),
     ];
     final parts = current.query.isEmpty ? <String>[] : current.query.split('&');
     parts.removeWhere(
@@ -189,6 +221,17 @@ abstract class WorkspaceNav {
         next.insert(0, token);
         return next;
       });
+
+  /// Open a course-management page (invite / edit / access / permissions /
+  /// emotes / change-course) as the course card's DETAIL — a `coursepage` panel
+  /// beside the `course` master that coexists when width allows and folds to a
+  /// push when not, mirroring settings menu→page ([openSettings]). The card's
+  /// space rides in the `?m=course:<id>` filter (preserved here), so the page
+  /// param is just the page id. One management page at a time (the registry
+  /// `coursepage` exclusive group drops any prior one). See
+  /// `routing.instructions.md`.
+  static String openCoursePage(Uri current, String page) =>
+      openDetail(current, PanelToken('coursepage', page));
 
   /// Replace the whole `left` list (e.g. tapping a top-level section: Chats,
   /// the avatar/profile). The `right` list and other query params are preserved.
@@ -252,7 +295,15 @@ abstract class WorkspaceNav {
   /// its own token via [closeLeft]. See `routing.instructions.md`.
   static String closeSection(Uri current, PanelToken token) {
     final lists = parseOpenPanels(current);
-    final left = lists.left.where((t) => t != token).toList();
+    // A course's management page (`coursepage`) reads its space from the
+    // `?m=course:<id>` filter this close clears, so left on its own it renders
+    // blank with no close control — drop it together with the course card
+    // (mirrors closeSettings dropping settingspage). See routing.instructions.md.
+    final dropDependentCoursePage = token.type == 'course';
+    final left = lists.left
+        .where((t) =>
+            t != token && !(dropDependentCoursePage && t.type == 'coursepage'))
+        .toList();
     final parts = <String>[
       if (left.isNotEmpty) 'left=${left.map((t) => t.encode()).join(',')}',
       if (lists.right.isNotEmpty)
@@ -273,7 +324,7 @@ abstract class WorkspaceNav {
   /// param IS its page path): settings menu→page→leaf, a course card→details/
   /// invite, a room→members/search. Replaces that panel's token with the
   /// deeper-page token, keeping every other panel. A null/empty [page] is the
-  /// panel's root. See `world-v2-architecture`.
+  /// panel's root. See `routing.instructions.md`.
   static String pushPage(Uri current, String type, String? page) {
     final col =
         PanelRegistry.defFor(type)?.column == PanelColumn.right ? 'right' : 'left';
@@ -298,7 +349,7 @@ abstract class WorkspaceNav {
   /// or a settings PAGE as its detail beside the menu. A page blooms at the front
   /// of the right group with the `settings` menu master kept (or seated) behind
   /// it — so they coexist when width allows and fold to a push when not. A
-  /// `/`-path page is a leaf (its own back pops it). See `world-v2-architecture`.
+  /// `/`-path page is a leaf (its own back pops it). See `routing.instructions.md`.
   static String openSettings(Uri current, {String? page}) {
     if (page == null || page.isEmpty) {
       return _mutate(current, 'right', (tokens) {
