@@ -9,7 +9,7 @@ import 'package:fluffychat/features/activity_sessions/activity_feedback_request.
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
-import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -173,7 +173,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     // v3: read the canonical activities-v2 plan directly (fetched on open, per
     // the thin-list/full-on-open contract). Localization is choreo's concern,
     // consumed later when this read swaps to a choreo endpoint.
-    final plan = await QuestRepo.activity(widget.activityId);
+    final plan = await ActivityPlanRepo.instance.getPlan(widget.activityId);
     if (plan == null) {
       throw Exception("Activity not found");
     }

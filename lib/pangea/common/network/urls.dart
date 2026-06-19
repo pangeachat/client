@@ -54,6 +54,13 @@ class PApiUrls {
   static String activityFeedback =
       "${PApiUrls._choreoEndpoint}/activity_plan/feedback";
 
+  /// Single localized read path for a full activity plan, by id.
+  /// `GET /choreo/v2/activity/{activity_id}?l1=<viewer_l1>` — translate-on-miss
+  /// persists the row (not paywalled). The canonical client read; replaces the
+  /// direct CMS query. See activities.instructions.md.
+  static String activityById(String activityId) =>
+      "${PApiUrls._choreoEndpoint}/v2/activity/$activityId";
+
   /// Thin activity map pins within a viewport bbox (world_v2 map search).
   /// Query: min_lat, min_lng, max_lat, max_lng, l2?, cefr_level?, l1?, limit?.
   static String activitiesBbox =

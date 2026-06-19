@@ -208,31 +208,8 @@ class QuestRepo {
     return QuestOutline(quest: quest, groups: groups);
   }
 
-  /// The full plan for a single activity (canonical row), for opening a
-  /// session. Null when no canonical activity matches.
-  static Future<ActivityPlanModel?> activity(String activityId) async {
-    final resp = await _client().find<Map<String, dynamic>>(
-      _activities,
-      (json) => json,
-      where: {
-        'and': [
-          {
-            'res.plan.activity_id': {'equals': activityId},
-          },
-          {
-            'req.source_request_hash': {'exists': false},
-          },
-        ],
-      },
-      limit: 1,
-      depth: 0,
-    );
-    if (resp.docs.isEmpty) return null;
-    final resolved = await _withResolvedMedia([
-      activityPlanFromV2(resp.docs.first),
-    ]);
-    return resolved.first;
-  }
+  // The single-activity read moved to ActivityPlanRepo (choreo GET /v2/activity,
+  // cached via BaseRepo) — see activity_plan_repo.dart.
 
   /// Thin map pins for a single quest — its LOs' activities at its L2, with
   /// coordinates (one read after resolving the quest's LO ids).

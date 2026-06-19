@@ -47,7 +47,7 @@ class ChatListItemSubtitle extends StatelessWidget {
   Widget build(BuildContext context) {
     if (room.showActivityChatUI) {
       // Reference plan may not be hydrated yet; fall back to empty content (the
-      // list rebuilds on sync once ActivityPlanCache fills it in).
+      // list rebuilds on sync once ActivityPlanRepo fills it in).
       final activity = room.activityPlan;
       if (room.hasArchivedActivity) {
         return Text(

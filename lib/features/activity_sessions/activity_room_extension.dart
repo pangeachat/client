@@ -1,8 +1,8 @@
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/activity_sessions/activity_plan_cache.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -15,8 +15,8 @@ extension ActivityRoomExtension on Room {
   ///
   /// v3 rooms store a thin `{ activity_id, version_id }` reference in
   /// `pangea.activity_plan` and the plan body stays canonical in CMS, so a
-  /// reference is hydrated through [ActivityPlanCache] (async): this returns
-  /// null until the plan lands, then `ActivityPlanCache` notifies its listeners
+  /// reference is hydrated through [ActivityPlanRepo] (async): this returns
+  /// null until the plan lands, then `ActivityPlanRepo` notifies its listeners
   /// to rebuild. Legacy rooms embed the full plan in state and parse inline.
   ActivityPlanModel? get activityPlan {
     final stateEvent = getState(PangeaEventTypes.activityPlan);
@@ -27,8 +27,8 @@ extension ActivityRoomExtension on Room {
     if (content[ActivitySessionConstants.activityPlanRequest] == null) {
       final referenceId = _referencePlanActivityId(content);
       if (referenceId == null) return null;
-      ActivityPlanCache.instance.ensure(referenceId);
-      return ActivityPlanCache.instance.cached(referenceId);
+      ActivityPlanRepo.instance.ensure(referenceId);
+      return ActivityPlanRepo.instance.cachedPlan(referenceId);
     }
 
     try {
