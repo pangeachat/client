@@ -10,7 +10,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// World-map pins for a viewport, via the choreographer bbox endpoint
 /// (`GET /v2/activities/bbox`). Always viewport-bounded — never the whole
 /// library. CEFR band, completion, and free-text search are applied client-side
-/// over the returned set in v1. See world-map-search.instructions.md.
+/// over the returned set in v1. See world-map.instructions.md.
 class ActivityMapRepo {
   /// Thin pins whose coordinates fall within [bounds], optionally scoped to a
   /// target language [l2]. [l1] is passed only for pin-text localization.

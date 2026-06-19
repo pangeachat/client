@@ -16,8 +16,10 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
@@ -27,20 +29,19 @@ import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orche
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
+import 'package:fluffychat/routes/world/world_map_large_card.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// The colour a pin reads as for its [ActivityPinState] (see
-/// world-map.instructions.md): locked gray, unlocked purple, completed gold,
-/// joinable green.
+/// world-map.instructions.md): locked gray, unlocked purple, joinable green.
+/// Completion is not a colour — it renders as the inner gold fill in [_stateDot].
 Color _stateColor(ActivityPinState state) {
   switch (state) {
     case ActivityPinState.joinable:
       return const Color(0xFF34A853); // green — an open session to join
-    case ActivityPinState.completed:
-      return AppConfig.gold;
     case ActivityPinState.unlocked:
       return const Color(0xFF7B61FF); // purple — available, not started
     case ActivityPinState.locked:
@@ -48,40 +49,96 @@ Color _stateColor(ActivityPinState state) {
   }
 }
 
+/// The state-coloured pin body with the progress fill: an outer [state]-coloured
+/// disc, an inner gold disc whose radius scales with [fill] (0..1 — stars earned
+/// toward the activity's total), and an optional [glyph] on top. The fill is
+/// linear in radius (`r = innerRadius·fill`), so a full activity reads as a solid
+/// gold centre while a fresh one shows none. Design: world-map.instructions.md.
+Widget _stateDot({
+  required ActivityPinState state,
+  required double diameter,
+  required double borderWidth,
+  double fill = 0,
+  Widget? glyph,
+}) {
+  final inner = (diameter - 2 * borderWidth) * fill.clamp(0.0, 1.0);
+  return Container(
+    width: diameter,
+    height: diameter,
+    decoration: BoxDecoration(
+      color: _stateColor(state),
+      shape: BoxShape.circle,
+      border: Border.all(color: Colors.white, width: borderWidth),
+      boxShadow: const [BoxShadow(blurRadius: 3, color: Colors.black38)],
+    ),
+    child: Stack(
+      alignment: Alignment.center,
+      children: [
+        if (inner > 0)
+          Container(
+            width: inner,
+            height: inner,
+            decoration: const BoxDecoration(
+              color: AppConfig.gold,
+              shape: BoxShape.circle,
+            ),
+          ),
+        ?glyph,
+      ],
+    ),
+  );
+}
+
 /// Derive each activity's live [PinSignals] from the user's Matrix rooms: the
-/// highest-wins state on the `locked < unlocked < completed < joinable` ladder,
-/// plus a 0..1 recency for the newest open session and the pinged flag.
+/// highest-wins colour state on the `locked < unlocked < joinable` ladder, a
+/// 0..1 completion fraction (stars earned toward the activity's total), recency
+/// for the newest open session, and the pinged flag. Also returns the learner's
+/// star total per activity (max across their sessions of it) for the
+/// progression gate.
 ///
 /// State derives from sessions the client can see locally: the user's own
-/// sessions give completed/unlocked, and any visible session with a free role
-/// the user isn't bound to gives joinable. Open sessions by strangers are not in
+/// sessions give unlocked, and any visible session with a free role the user
+/// isn't bound to gives joinable. Open sessions by strangers are not in
 /// `client.rooms`, so map-wide open-session discovery needs a backend endpoint
-/// (see world-map.instructions.md) — joined-course sessions are the reachable
-/// case today. `locked` needs progression rules not on the client yet.
-Map<String, PinSignals> _deriveActivitySignals(
+/// (see world-map.instructions.md). `locked` is layered on at render time from
+/// the progression gate (quests.instructions.md): it depends on the pin's
+/// objective refs, which aren't in room state, so it can't be resolved here.
+({Map<String, PinSignals> signals, Map<String, int> stars})
+_deriveActivitySignals(
   Client client, {
   required Set<String> pingedActivityIds,
 }) {
   final stateById = <String, ActivityPinState>{};
   final newestOpenMs = <String, int>{};
+  final fractionById = <String, double>{};
+  final starsById = <String, int>{};
   for (final room in client.rooms) {
     final activityId = room.activityId;
     if (activityId == null) continue;
+    // The learner's own progress in this session (a role they hold): stars =
+    // collected goals; fraction = collected / the role's total goals. Keep the
+    // best across multiple sessions of the same activity.
+    final role = room.ownRole;
+    if (role != null) {
+      final collected = room.ownCompletedGoals.length;
+      if (collected > (starsById[activityId] ?? 0)) {
+        starsById[activityId] = collected;
+      }
+      final total = role.allGoals.length;
+      final frac = total > 0 ? (collected / total).clamp(0.0, 1.0) : 0.0;
+      if (frac > (fractionById[activityId] ?? 0)) {
+        fractionById[activityId] = frac;
+      }
+    }
+    // Colour state: a free role the user hasn't taken → joinable; else holding a
+    // role → unlocked (completion shows as the fill, not a separate state).
     ActivityPinState? state;
     if (room.numRemainingRoles > 0 && room.ownRoleState == null) {
-      // An open session with a free role the user hasn't taken → joinable.
       state = ActivityPinState.joinable;
       final ms = room.lastEvent?.originServerTs.millisecondsSinceEpoch ?? 0;
       if (ms > (newestOpenMs[activityId] ?? 0)) newestOpenMs[activityId] = ms;
-    } else {
-      final role = room.ownRole;
-      if (role != null) {
-        final total = role.allGoals.length;
-        final collected = room.ownCompletedGoals.length;
-        state = (total > 0 && collected >= total)
-            ? ActivityPinState.completed
-            : ActivityPinState.unlocked;
-      }
+    } else if (role != null) {
+      state = ActivityPinState.unlocked;
     }
     if (state == null) continue;
     final existing = stateById[activityId];
@@ -99,11 +156,12 @@ Map<String, PinSignals> _deriveActivitySignals(
     final recency = (1.0 - age / windowMs).clamp(0.0, 1.0);
     signals[id] = PinSignals(
       state: state,
+      completionFraction: fractionById[id] ?? 0,
       pinged: pingedActivityIds.contains(id),
       recency: recency,
     );
   });
-  return signals;
+  return (signals: signals, stars: starsById);
 }
 
 /// Per-activity completion for the logged-in user, from their session rooms:
@@ -246,10 +304,13 @@ class _WorldMapState extends State<WorldMap>
   double _camTargetZoom = 0;
   static const Duration _camGlideDuration = Duration(milliseconds: 600);
 
-  /// Cached per-activity live signals (state + recency + pinged) and completion,
-  /// recomputed on room sync (not per frame) so the O(rooms) scan doesn't run
-  /// every build. [_completion] still backs the completion filter chip.
+  /// Cached per-activity live signals (state + fill + recency + pinged),
+  /// completion, and the learner's star total per activity, recomputed on room
+  /// sync (not per frame) so the O(rooms) scan doesn't run every build.
+  /// [_completion] backs the completion filter chip; [_userStars] feeds the
+  /// progression gate built each frame in [build].
   Map<String, PinSignals> _signals = {};
+  Map<String, int> _userStars = {};
   Map<String, MapCompletionFilter> _completion = {};
 
   /// Learning-objective ids across the learner's joined courses, for relevance
@@ -289,6 +350,12 @@ class _WorldMapState extends State<WorldMap>
         setState(() => _largeRotationIndex++);
       }
     });
+    // Rebuild when a featured large card's full plan hydrates (image + goals).
+    ActivityPlanRepo.instance.addListener(_onPlanHydrate);
+  }
+
+  void _onPlanHydrate() {
+    if (mounted) setState(() {});
   }
 
   @override
@@ -327,35 +394,48 @@ class _WorldMapState extends State<WorldMap>
   void _recomputeProgress() {
     final client = _client;
     if (client == null) return;
-    final signals = _deriveActivitySignals(
+    final derived = _deriveActivitySignals(
       client,
       pingedActivityIds: _pingedActivityIds,
     );
     final completion = _userCompletion(client);
     if (!mounted) {
-      _signals = signals;
+      _signals = derived.signals;
+      _userStars = derived.stars;
       _completion = completion;
       return;
     }
     setState(() {
-      _signals = signals;
+      _signals = derived.signals;
+      _userStars = derived.stars;
       _completion = completion;
     });
   }
 
-  /// Rebuild the joined-course objective set (a few quest reads), then re-rank.
+  /// Rebuild the joined-course outlines (a few quest reads), reading each
+  /// course's teacher override for the stars-to-unlock threshold, then re-rank.
   Future<void> _rebuildObjectiveCache(Client client) async {
-    final uuids = client.rooms
+    final courseRooms = client.rooms
         .where(
           (r) =>
               r.isSpace &&
               r.membership == Membership.join &&
               r.coursePlan != null,
         )
-        .map((r) => r.coursePlan!.uuid)
         .toList();
-    await _objectiveCache.rebuild(uuids);
-    if (mounted) setState(() {}); // re-rank with the loaded objective set
+    final uuids = courseRooms.map((r) => r.coursePlan!.uuid).toList();
+    final thresholds = <String, int>{
+      for (final r in courseRooms)
+        r.coursePlan!.uuid:
+            r.teacherMode.starsToUnlockObjective ??
+            kDefaultStarsToUnlockObjective,
+    };
+    await _objectiveCache.rebuild(
+      uuids,
+      starsToUnlockOf: (uuid) =>
+          thresholds[uuid] ?? kDefaultStarsToUnlockObjective,
+    );
+    if (mounted) setState(() {}); // re-rank with the loaded outlines
   }
 
   /// Best-effort pinged detection: scan joined course spaces' recent messages
@@ -389,7 +469,10 @@ class _WorldMapState extends State<WorldMap>
     }
     _pingedActivityIds = pinged;
     setState(() {
-      _signals = _deriveActivitySignals(client, pingedActivityIds: pinged);
+      _signals = _deriveActivitySignals(
+        client,
+        pingedActivityIds: pinged,
+      ).signals;
     });
   }
 
@@ -420,6 +503,7 @@ class _WorldMapState extends State<WorldMap>
     _camAnim?.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
     MapPinController.notifier.removeListener(_onPinControllerChange);
+    ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
     // Reset the process-global so a pin selected at teardown (e.g. logging out
     // with a pin sheet up) can't strand a stale `true` that would hide the bottom
     // nav at the bare map on the next mount. See `routing.instructions.md`.
@@ -817,11 +901,13 @@ class _WorldMapState extends State<WorldMap>
     );
   }
 
-  /// Small tier: a plain state-coloured dot (the long tail). No glyph.
+  /// Small tier: a plain state-coloured dot (the long tail), with the gold
+  /// progress fill. No glyph.
   Marker _smallDotMarker(
     QuestActivityCard card,
     LatLng point,
     ActivityPinState state,
+    double fill,
   ) {
     return Marker(
       point: point,
@@ -831,26 +917,25 @@ class _WorldMapState extends State<WorldMap>
         message: card.title,
         child: GestureDetector(
           onTap: () => _selectActivity(card),
-          child: Container(
-            decoration: BoxDecoration(
-              color: _stateColor(state),
-              shape: BoxShape.circle,
-              border: Border.all(color: Colors.white, width: 1.5),
-              boxShadow: const [BoxShadow(blurRadius: 3, color: Colors.black38)],
-            ),
+          child: _stateDot(
+            state: state,
+            diameter: 18,
+            borderWidth: 1.5,
+            fill: fill,
           ),
         ),
       ),
     );
   }
 
-  /// Mid tier: a state-coloured pin with an activity glyph; a star for
-  /// completed, and a hand badge when the open session has been pinged.
+  /// Mid tier: a state-coloured pin with an activity glyph and the gold progress
+  /// fill, plus a hand badge when the open session has been pinged.
   Marker _midPinMarker(
     QuestActivityCard card,
     LatLng point,
     ActivityPinState state,
     bool pinged,
+    double fill,
   ) {
     return Marker(
       point: point,
@@ -864,21 +949,13 @@ class _WorldMapState extends State<WorldMap>
             clipBehavior: Clip.none,
             alignment: Alignment.center,
             children: [
-              Container(
-                width: 36,
-                height: 36,
-                decoration: BoxDecoration(
-                  color: _stateColor(state),
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white, width: 2),
-                  boxShadow: const [
-                    BoxShadow(blurRadius: 4, color: Colors.black38),
-                  ],
-                ),
-                child: Icon(
-                  state == ActivityPinState.completed
-                      ? Icons.star
-                      : Icons.chat_bubble_outline,
+              _stateDot(
+                state: state,
+                diameter: 36,
+                borderWidth: 2,
+                fill: fill,
+                glyph: const Icon(
+                  Icons.chat_bubble_outline,
                   size: 18,
                   color: Colors.white,
                 ),
@@ -907,81 +984,67 @@ class _WorldMapState extends State<WorldMap>
     );
   }
 
-  /// Large tier: a compact featured card for an open joinable session, anchored
-  /// on the pin. Rich content (image, participants) is a follow-up; v1 shows the
-  /// title and a join affordance. TODO(world-map): localize the label.
+  /// The newest open joinable session for [activityId]: its joined non-bot
+  /// participants (for the avatar stack) and its open-role count (the "?" slots).
+  /// Empty when no such session is in the user's reachable rooms.
+  ({List<LargeCardParticipant> participants, int openSlots}) _joinableInfo(
+    Client client,
+    String activityId,
+  ) {
+    Room? best;
+    for (final r in client.rooms) {
+      if (r.activityId != activityId) continue;
+      if (!(r.numRemainingRoles > 0 && r.ownRoleState == null)) continue;
+      final ms = r.lastEvent?.originServerTs.millisecondsSinceEpoch ?? 0;
+      final bestMs = best?.lastEvent?.originServerTs.millisecondsSinceEpoch ?? 0;
+      if (best == null || ms > bestMs) best = r;
+    }
+    if (best == null) return (participants: const [], openSlots: 0);
+    final participants = best
+        .getParticipants()
+        .where(
+          (u) => u.membership == Membership.join && u.id != BotName.byEnvironment,
+        )
+        .map<LargeCardParticipant>(
+          (u) => (avatar: u.avatarUrl, name: u.calcDisplayname()),
+        )
+        .toList();
+    return (participants: participants, openSlots: best.numRemainingRoles);
+  }
+
+  /// Large tier: the rich featured card (Figma `… Large`). The full plan (image +
+  /// goal total) hydrates on demand for the few featured activities; the
+  /// joinable form also shows the session's participants. See
+  /// [WorldMapLargeCard] and world-map.instructions.md.
   Marker _largeCardMarker(
     QuestActivityCard card,
     LatLng point,
     ActivityPinState state,
     bool pinged,
   ) {
+    final client = _client;
+    // Hydrate the full plan for this featured card (no-op once cached); the
+    // repo listener rebuilds the map when it lands.
+    ActivityPlanRepo.instance.ensure(card.activityId);
+    final plan = ActivityPlanRepo.instance.cachedPlan(card.activityId);
+    final joinable = state == ActivityPinState.joinable;
+    final info = (joinable && client != null)
+        ? _joinableInfo(client, card.activityId)
+        : (participants: const <LargeCardParticipant>[], openSlots: 0);
     return Marker(
       point: point,
-      width: 220,
-      height: 92,
+      width: 260,
+      height: joinable ? 180 : 120,
       alignment: Alignment.topCenter,
-      child: GestureDetector(
+      child: WorldMapLargeCard(
+        card: card,
+        state: state,
+        pinged: pinged,
+        plan: plan,
+        starsEarned: _userStars[card.activityId] ?? 0,
+        participants: info.participants,
+        openSlots: info.openSlots,
         onTap: () => _selectActivity(card),
-        child: Material(
-          elevation: 6,
-          borderRadius: BorderRadius.circular(12),
-          color: Colors.white,
-          child: Container(
-            width: 220,
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: _stateColor(state), width: 2),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      pinged ? Icons.back_hand : Icons.group,
-                      size: 16,
-                      color: _stateColor(state),
-                    ),
-                    const SizedBox(width: 6),
-                    Expanded(
-                      child: Text(
-                        card.title,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 13,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: _stateColor(state),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Text(
-                    'Join open session',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
       ),
     );
   }
@@ -1003,7 +1066,28 @@ class _WorldMapState extends State<WorldMap>
     final desktop = !narrow;
     // Rank the in-view pins into tiers (per-view budgets). Filter to the camera
     // bounds when available so promotion reflects what the learner is looking at.
-    final signals = _signals;
+    // Apply the learning-objective progression gate: a pin whose objectives are
+    // all locked (gated, none unlocked) reads locked, unless it already has an
+    // open joinable session. Built per frame from the loaded outlines + stars
+    // (both cheap) so a star award or course change re-gates on the next build.
+    final gate = buildLoGate(
+      outlines: _objectiveCache.outlines,
+      starsByActivity: _userStars,
+    );
+    final signals = <String, PinSignals>{};
+    for (final card in visible) {
+      final base = _signals[card.activityId] ?? const PinSignals();
+      signals[card.activityId] =
+          (base.state != ActivityPinState.joinable &&
+              gate.isPinLocked(card.learningObjectiveRefs))
+          ? PinSignals(
+              state: ActivityPinState.locked,
+              completionFraction: base.completionFraction,
+              pinged: base.pinged,
+              recency: base.recency,
+            )
+          : base;
+    }
     List<QuestActivityCard> inView = visible;
     try {
       final bounds = _controller.camera.visibleBounds;
@@ -1044,6 +1128,13 @@ class _WorldMapState extends State<WorldMap>
     ActivityPinState stateOf(String id) =>
         signals[id]?.state ?? ActivityPinState.unlocked;
     bool pingedOf(String id) => signals[id]?.pinged ?? false;
+    // The progress fill renders only on unlocked pins (the unlocked→finished
+    // gradation); joinable and locked carry no fill.
+    double fillOf(String id) {
+      final s = signals[id];
+      if (s == null || s.state != ActivityPinState.unlocked) return 0;
+      return s.completionFraction;
+    }
     final clusterStateByPoint = <LatLng, ActivityPinState>{
       for (final c in visible)
         if (c.point != null) c.point!: stateOf(c.activityId),
@@ -1141,8 +1232,14 @@ class _WorldMapState extends State<WorldMap>
                           point,
                           state,
                           pingedOf(card.activityId),
+                          fillOf(card.activityId),
                         )
-                      : _smallDotMarker(card, point, state);
+                      : _smallDotMarker(
+                          card,
+                          point,
+                          state,
+                          fillOf(card.activityId),
+                        );
                 })
                 .whereType<Marker>()
                 .toList(),

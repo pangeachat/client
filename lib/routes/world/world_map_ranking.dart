@@ -1,34 +1,41 @@
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 
-/// The displayed state of a world-map activity pin. Resolved highest-wins from
-/// the ladder below (see world-map.instructions.md). `locked` is defined for
-/// completeness but not produced yet — it needs client-hydrated progression
-/// rules, so a not-yet-started activity reads as `unlocked` for now.
-enum ActivityPinState { locked, unlocked, completed, joinable }
+/// The displayed colour-state of a world-map activity pin, resolved highest-wins
+/// from the ladder `locked < unlocked < joinable` (enum order; see
+/// world-map.instructions.md). Completion is no longer a state — it renders as a
+/// progress fill carried by [PinSignals.completionFraction], orthogonal to the
+/// colour, so finished work stays visible without hiding the next thing to do.
+enum ActivityPinState { locked, unlocked, joinable }
 
 /// The visual weight a pin renders at, assigned by the ranking + state gate.
 enum PinTier { small, mid, large }
 
 /// Live signals for one activity, derived from Matrix room state (not on the
-/// pin card): its resolved [state], whether an open session has been [pinged]
-/// to the course, and a 0..1 [recency] (newest open session first).
+/// pin card): its resolved [state], a 0..1 [completionFraction] (stars earned
+/// toward the activity's total, drawn as the inner fill), whether an open
+/// session has been [pinged] to the course, and a 0..1 [recency] (newest open
+/// session first).
 class PinSignals {
   final ActivityPinState state;
+  final double completionFraction;
   final bool pinged;
   final double recency;
   const PinSignals({
     this.state = ActivityPinState.unlocked,
+    this.completionFraction = 0,
     this.pinged = false,
     this.recency = 0,
   });
 }
 
 /// The ranking outcome for the pins currently in view. [largePool] is the
-/// ordered set of joinable activities eligible for the large featured card — the
-/// display shows up to its budget at a time and rotates through the rest, and
-/// any pool member not currently featured renders at mid weight. [midIds] are
-/// the non-joinable activities promoted to mid weight; everything else is small.
+/// ordered set of activities eligible for the large featured card — open
+/// joinable sessions and in-course unlocked activities (joinable featured
+/// first). The display shows up to its budget at a time and rotates through the
+/// rest, and any pool member not currently featured renders at mid weight.
+/// [midIds] are the other unlocked activities promoted to mid weight; everything
+/// else is small.
 class RankingResult {
   final List<String> largePool;
   final Set<String> midIds;
@@ -76,13 +83,17 @@ class _Scored {
   final QuestActivityCard pin;
   final double score;
   final ActivityPinState state;
-  const _Scored(this.pin, this.score, this.state);
+  final double fraction;
+  final int band;
+  const _Scored(this.pin, this.score, this.state, this.fraction, this.band);
 }
 
 /// Rank the pins currently in view into the large pool and the mid set (the
 /// caller filters to the active viewport and re-runs this on pan/zoom, so the
-/// budgets are per-view). State acts as a hard gate: only joinable pins reach
-/// the large pool; completed and locked are forced small (never promoted);
+/// budgets are per-view). State + relevance gate prominence: joinable sessions
+/// and in-course unlocked activities (joined-course objective, not finished)
+/// reach the large pool, joinable first; locked pins and finished activities
+/// (full progress fill) are forced small (never promoted); the remaining
 /// unlocked pins compete for the mid budget by score, with a per-objective
 /// diversity cap so one objective can't monopolize the featured set.
 RankingResult rankPins({
@@ -104,21 +115,38 @@ RankingResult rankPins({
       joinedObjectiveIds: joinedObjectiveIds,
     );
     final s = sig(p.activityId);
-    return _Scored(p, pinScore(band, s), s.state);
+    return _Scored(p, pinScore(band, s), s.state, s.completionFraction, band);
   }).toList()..sort((a, b) => b.score.compareTo(a.score));
 
-  final largePool = scored
-      .where((e) => e.state == ActivityPinState.joinable)
-      .map((e) => e.pin.activityId)
-      .toList();
+  // The large pool: open joinable sessions and in-course unlocked activities
+  // (joined-course objective `band 3`, not yet finished). Joinable is featured
+  // first — joining a live session is the goal; within each, higher score wins.
+  final largePool =
+      scored.where((e) {
+        if (e.state == ActivityPinState.joinable) return true;
+        return e.state == ActivityPinState.unlocked &&
+            e.band >= 3 &&
+            e.fraction < 1.0;
+      }).toList()..sort((a, b) {
+        final aJoin = a.state == ActivityPinState.joinable ? 0 : 1;
+        final bJoin = b.state == ActivityPinState.joinable ? 0 : 1;
+        if (aJoin != bJoin) return aJoin - bJoin;
+        return b.score.compareTo(a.score);
+      });
+  final largeIds = largePool.map((e) => e.pin.activityId).toList();
+  final largeSet = largeIds.toSet();
 
   final midIds = <String>{};
   final perKey = <String, int>{};
   for (final e in scored) {
     if (midIds.length >= midBudget) break;
-    // Only unlocked pins compete for mid: joinable lives in largePool;
-    // completed and locked are forced small.
+    // Only not-yet-finished unlocked pins compete for mid: joinable lives in
+    // largePool; locked pins and finished activities are forced small.
     if (e.state != ActivityPinState.unlocked) continue;
+    if (e.fraction >= 1.0) continue;
+    // A large-pool member (in-course unlocked) not currently featured already
+    // renders mid via the pool, so it doesn't also consume the mid budget.
+    if (largeSet.contains(e.pin.activityId)) continue;
     final key = e.pin.learningObjectiveRefs.isNotEmpty
         ? e.pin.learningObjectiveRefs.first
         : null;
@@ -130,5 +158,5 @@ RankingResult rankPins({
     midIds.add(e.pin.activityId);
   }
 
-  return RankingResult(largePool: largePool, midIds: midIds);
+  return RankingResult(largePool: largeIds, midIds: midIds);
 }

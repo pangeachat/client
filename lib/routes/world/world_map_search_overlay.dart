@@ -12,7 +12,7 @@ enum MapCompletionFilter { notStarted, inProgress, completed }
 /// Presentational: the map owns the pin set, the filter state, and the
 /// filtering — this renders the bar/chips/results and reports user intent via
 /// callbacks. World-only (the shell hides it elsewhere). See
-/// world-map-search.instructions.md.
+/// world-map.instructions.md.
 class WorldMapSearchOverlay extends StatefulWidget {
   final String query;
   final ValueChanged<String> onQueryChanged;

@@ -21,12 +21,14 @@ The map is the canvas the whole app sits on; every other surface is a panel over
 
 ## The personalized default
 
-Before any search or filter, the map shows **my L2, at or below my CEFR, in the current viewport, colored by my progress** — derived from signals the app already holds about the learner, with no new data capture. This default is the *initial* state, not a gate:
+Before any search or filter, the map shows **my L2, at or below my CEFR, in the current viewport, colored by state with my progress shown** — derived from signals the app already holds about the learner, with no new data capture. This default is the *initial* state, not a gate:
 
 - Filters and search refine it; a one-tap **reset** returns to it.
 - When the view is empty, offer a **widen** affordance (all languages, or zoom out) so personalization never dead-ends.
 
 ## Pin display: small, mid, large
+
+Figma Designs: https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=12912-348899&t=ShPrG23Jo4zaTu2O-4
 
 The map holds far more than it should ever show at full weight, so every item renders at one of three visual weights and only a few earn the heavy ones. The counts are an **attention budget** that scales with the visible map size; fewer is always better than crowding. The visual treatment is the [pin-tier frame](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=12912-348899).
 
@@ -34,20 +36,21 @@ The map holds far more than it should ever show at full weight, so every item re
 |---|---|---|
 | **Small dot** | many (the long tail) | a plain dot — an available item, no detail until interacted with |
 | **Mid pin** | ~5–10, by viewport size | a pin with an activity-type glyph; where strong matches and open sessions get promoted |
-| **Large card** | 1–3 only | the featured callout, **reserved for open joinable sessions** (see below): a full preview card shown right on the map — image, title, type, level match, who is already in the session and its open slots, join affordance. Renders on the map only where there is horizontal room (desktop / column mode); on a narrow screen these same top-ranked joinable sessions render as mid pins and open the preview sheet on tap |
+| **Large card** | 1–3 only | the featured callout, for **in-course unlocked activities and open joinable sessions** (see below): a full preview card shown right on the map — image, title, type, level match, and a **row of stars** for the learner's progress. The joinable form also shows who is already in the session, its open slots, and a join affordance. Renders only where there is horizontal room (desktop / column mode); on a narrow screen these render as mid pins and open the preview sheet on tap |
 
-A pin's **state** is carried by color (and, for two states, a glyph) at every tier — the component is `Activity pin v3` in the frame above:
+A pin's **state** is carried by color at every tier — the component is `Activity pin v3` in the frame above:
 
 | State | Reads as | Meaning |
 |---|---|---|
-| **Locked** | gray | not yet available, behind progression |
-| **Unlocked** | purple | available, not started |
-| **Completed** | gold, with a star | the learner has finished it |
+| **Locked** | gray | the learning objective behind it isn't unlocked yet (the progression gate lives in [quests.instructions.md](quests.instructions.md)) |
+| **Unlocked** | purple | available to play |
 | **Joinable** | green | an open session is live and joinable right now |
 
-A **pinged** modifier (a hand glyph) marks an open session whose host has pinged the course to gather players (mechanics in [activities.instructions.md](activities.instructions.md)). When several states apply to one item, the highest on the priority ladder wins the displayed color — a completed activity with a live session shows as joinable, green, to pull the learner back. Which items earn the scarce mid and large slots is the [Priority matrix](#priority-matrix) below.
+**Progress is a fill, not a state.** A learner's progress in an activity is the stars earned toward its total (a star is one awarded activity goal — [activities.instructions.md](activities.instructions.md)). It renders by tier: on the **small and mid pins** as an **inner yellow dot whose radius grows with that fraction**, and on the **large card** as a **row of stars**. Empty means freshly unlocked, full means finished. Progress is orthogonal to the color state: it never recolors the pin and never hides it, so a finished activity stays on the map as a normal pin — the learner sees their trail without it crowding out the next thing to do. This replaces the earlier discrete "completed" state (a separate gold pin).
 
-**What ships first.** Unlocked, completed, and joinable are all derivable from Matrix room state, so they ship together. **Locked** is the course-progression gate: a learning objective unlocks once the learner earns 10 stars in the previous objective in the course sequence. That gating is not instantiated in the v3 model yet (it carried over conceptually from the old Topics model), so no pin reads as locked today and a not-yet-started activity simply shows as unlocked until it lands. A ping leaves no persistent room state, so **pinged** is detected best-effort by scanning recent course-space messages for the host's ping — a proxy whose efficacy we watch before investing in a persistent ping signal.
+A **pinged** modifier (a hand glyph) marks an open session whose host has pinged the course to gather players (mechanics in [activities.instructions.md](activities.instructions.md)). When more than one state applies to one item, the highest on the priority ladder wins the displayed color — a finished activity with a live session shows as joinable, green, to pull the learner back. Which items earn the scarce mid and large slots is the [Priority matrix](#priority-matrix) below.
+
+**What ships.** Locked, unlocked, and joinable, plus the progress fill, are all derived from Matrix room state the client already holds: the progression gate (a learning objective unlocks once the previous one has at least 10 stars, teacher-overridable) is resolved client-side per [quests.instructions.md](quests.instructions.md), so locked pins render today. A ping leaves no persistent room state, so **pinged** is detected best-effort by scanning recent course-space messages for the host's ping — a proxy whose efficacy we watch before investing in a persistent ping signal.
 
 The preview card that the large tier shows proactively is the *same* card that opens on demand when a learner taps a smaller pin (a bottom sheet on mobile — see [routing.instructions.md](routing.instructions.md)). **Grouping** is separate from the tiers: where pins would overlap they collapse into a count bubble — the `Grouped` variant, itself state-colored — that de-overlaps the map and expands on zoom or tap.
 
@@ -55,13 +58,13 @@ The preview card that the large tier shows proactively is the *same* card that o
 
 What an item is, and how prominent it becomes, is decided by several factors rather than one, so we don't collapse them into a single grid. They split the way modern feeds split ranking: hard **eligibility** rules first, a tunable **score** second, a **diversity** pass last.
 
-**State — the dominant axis, a gate (not a score).** An item can match several states at once; the highest on the ladder `locked < unlocked < completed < joinable` is the one displayed, and it caps the item's prominence:
+**State — the dominant axis, a gate (not a score).** An item can match more than one state; the highest on the ladder `locked < unlocked < joinable` is the one displayed, and it caps the item's prominence:
 
-- **Joinable** dominates and is the only state eligible for the **large** card — joining a live session is the goal (see [What the map is for](#what-the-map-is-for)).
-- **Completed** always renders **smallest**: shown so the map stays lived-in, never re-pushed.
+- **Joinable** sessions and **in-course unlocked** activities are the states eligible for the **large** card — a live session to join, or the learner's next in-course activity with its star progress. Joinable is featured first: joining a live session is the goal (see [What the map is for](#what-the-map-is-for)).
 - **Locked** is shown dimmed for a full world and legible progression, never promoted.
+- **A finished activity** (its progress fill is full) is forced to the **smallest** tier: it stays on the map so the trail is visible, but never takes a mid or large slot meant for the next thing to do.
 
-State is a gate rather than a weighted term because these are hard rules: no relevance score should lift a locked or completed item into the spotlight.
+State is a gate rather than a weighted term because these are hard rules: no relevance score should lift a locked or already-finished item into the spotlight.
 
 **Relevance — the ranking axis, a weighted score.** Among the items a tier's state gate allows, relevance decides which win the scarce slots. Starting score:
 
@@ -105,4 +108,4 @@ Map content is fetched through a **stable server contract** (the choreographer),
 
 ## Future Work
 
-File GitHub issues for these and link them here (use the `update-future-work` skill). Deferred design threads: carrying learning-objective refs on the world-map pin (the bbox card projects them, the client parses them) and a cached joined-course objective set, both needed for relevance banding; a backend endpoint for **map-wide open-session discovery**, since the client can only see open sessions in the learner's joined courses — surfacing strangers' joinable sessions across the map (the core preference-open-sessions goal) needs the choreographer to expose them; the **locked** pin state, once the course-progression gate exists (a learning objective unlocks at 10 stars in the previous objective in the course sequence); evaluating the **best-effort pinged detection** (recent course-space message scan) before adding a persistent ping signal; a generalized map-item pipeline for non-activity content; users-as-content (opt-in location); world-feed social items as a content source; server-side viewport narrowing and CEFR banding.
+File GitHub issues for these and link them here (use the `update-future-work` skill). Deferred design threads: carrying learning-objective refs on the world-map pin (the bbox card projects them, the client parses them) and a cached joined-course objective set, both needed for relevance banding; a backend endpoint for **map-wide open-session discovery**, since the client can only see open sessions in the learner's joined courses — surfacing strangers' joinable sessions across the map (the core preference-open-sessions goal) needs the choreographer to expose them; evaluating the **best-effort pinged detection** (recent course-space message scan) before adding a persistent ping signal; a generalized map-item pipeline for non-activity content; users-as-content (opt-in location); world-feed social items as a content source; server-side viewport narrowing and CEFR banding.
