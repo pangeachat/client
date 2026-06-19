@@ -14,16 +14,16 @@ import 'package:fluffychat/features/navigation/route_paths.dart';
 /// See `routing.instructions.md` for the model and `deep-linking.instructions.md`
 /// for the cross-repo contract.
 
-/// How a route's canvas relates to the persistent world map.
+/// How a route's canvas relates to the persistent world map. Two modes today:
+/// the map shows through, or a bounded detail sits over it with the map peeking.
+/// (There is no full-screen takeover — even an activity plan is a bounded detail
+/// / a mobile sheet; see `routing.instructions.md`.)
 enum CanvasMode {
   /// Paints nothing; the persistent map shows through (section roots).
   mapHole,
 
   /// Opaque panel capped at the detail width; the map peeks alongside.
   detail,
-
-  /// Opaque content that fills the canvas (the add-course hub).
-  fullBleed,
 }
 
 /// A target the map should bring into the exposed canvas. Sealed so adding a
@@ -65,16 +65,18 @@ enum AnalyticsPanelTab { sessions, grammar, vocab }
 bool isMapHole(String? fullPath) => fullPath == PRoutes.world;
 
 /// The effective canvas for the current route's sideView. An open activity
-/// (`?activity=` over the map, or the `/<uuid>` route) is **full-bleed**: an
-/// in-progress activity is the immersive/exclusive surface, so it fills the
-/// content area and the shell suppresses the panels + bottom nav rather than
-/// letting a `left=course` card cover it or a stray tap abandon it. The world
-/// root `/` is a map hole (sideView offstage, full map shows); everything else
-/// still reached by a real route — a course-wizard step, a public-course
-/// preview, a chat archive — is a bounded `detail` with the map peeking beside
-/// it. See `routing.instructions.md`.
+/// (`?activity=` over the map, or the `/<uuid>` route) is the **plan/preview**
+/// page — **map content**, like a course: a bounded `detail` with the map peeking
+/// beside it (desktop) / a bottom sheet (narrow, handled by the shell), camera
+/// focused on the activity's pin. (Starting it launches the session, which runs
+/// as an ordinary chat room — there is no separate full-bleed activity surface.)
+/// The world root `/` is a map hole (sideView offstage, full map shows); the
+/// activity check comes first so an activity over the world map is still a detail,
+/// not a hole. Everything else reached by a real route — a course-wizard step, a
+/// public-course preview, a chat archive — is also a bounded `detail`. See
+/// `routing.instructions.md`.
 CanvasMode canvasFor(GoRouterState state, bool isColumnMode) {
-  if (activityFor(state) != null) return CanvasMode.fullBleed;
+  if (activityFor(state) != null) return CanvasMode.detail;
   if (isMapHole(state.fullPath)) return CanvasMode.mapHole;
   return CanvasMode.detail;
 }

@@ -652,14 +652,23 @@ class _WorldMapState extends State<WorldMap>
   /// panel fetches the full plan on open. Reached from the preview's "Details".
   void _openActivity(QuestActivityCard card) {
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
-    context.go(
-      uri.replace(
-        queryParameters: {
-          ...uri.queryParameters,
-          'activity': card.activityId,
-        },
-      ).toString(),
-    );
+    // Open the activity plan as map content over the (scoped) map. Rebuild from
+    // the RAW query so the `?m=course:` filter isn't re-encoded (`uri.replace`
+    // would turn `:`→`%3A` and de-scope the map), drop the left/right panels (the
+    // plan replaces the left-primary surface), and add `activity=`. Keep `m=` and
+    // any other params. See `routing.instructions.md`.
+    final parts = uri.query.isEmpty ? <String>[] : uri.query.split('&');
+    parts.removeWhere((p) =>
+        p == 'left' ||
+        p.startsWith('left=') ||
+        p == 'right' ||
+        p.startsWith('right=') ||
+        p == 'activity' ||
+        p.startsWith('activity=') ||
+        p == 'autoplay' ||
+        p.startsWith('autoplay='));
+    parts.add('activity=${card.activityId}');
+    context.go('/?${parts.join('&')}');
     _clearSelection();
   }
 

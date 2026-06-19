@@ -256,8 +256,9 @@ breakpoint cover every width — there is no peek stripe and no separate hidden 
 There is no full-screen takeover. **Width is the only canvas concept:** an empty
 center is the absence of a panel; a bounded panel is the default; a full-bleed
 surface is a panel that raises its max to the viewport; and a surface that must
-hold the screen alone marks itself **exclusive**, collapsing the others while it is
-open (an in-progress activity is the main example).
+hold the screen alone could mark itself **exclusive**, collapsing the others —
+though no surface needs that today (an in-progress activity, once the intended
+example, now runs as an ordinary chat room rather than an immersive takeover).
 
 ### Single-column (narrow and mobile) mode
 
@@ -276,14 +277,16 @@ reopened from the persistent chrome (the rail or bottom nav for a section, the
 cluster for analytics), so nothing is lost, just not drawn at once. Every
 master/detail flow is already folded here: one panel, navigated with a back arrow.
 
-**Map content folds to a bottom sheet on a narrow screen.** A panel that is *map
-content* (a **course**, or the add-course flow) renders, when it is the focused
-narrow panel, as a draggable bottom sheet over the scoped map rather than a
-full-screen panel — the Google-Maps "map + sheet" pattern — so the map (a course's
-activity pins) stays visible above it, with the cluster floating top-right.
-Dragging the sheet up reveals the full content; an in-course chat or an activity
-opened from the course instead takes the screen as its own panel / immersive
-surface. On a wide screen the same course is an ordinary left panel beside the map.
+**Map content folds to a bottom sheet on a narrow screen.** A surface that is *map
+content* — a **course**, an **activity plan/preview**, or the add-course flow —
+renders, when it is the focused narrow surface, as a draggable bottom sheet over
+the (scoped) map rather than a full-screen page — the Google-Maps "map + sheet"
+pattern — so the map (a course's activity pins, or the activity's own pin) stays
+visible above it, with the cluster floating top-right. Dragging the sheet up
+reveals the full content. On a wide screen the same content is a bounded panel
+beside the map (a course as a left panel; an activity plan as a center detail, the
+map peeking). Starting an activity from its plan launches the session, which then
+runs as an ordinary chat room — a live left-column chat, not map content.
 
 **Tapping a map pin** opens its preview as a bottom sheet on a narrow screen
 (the wide screen keeps the preview popup glued to the pin). The map owns that
@@ -322,7 +325,7 @@ behaves the same on mobile and desktop.
 | Learning settings (shortcut) | the cluster's **language flag** | right | opens the learning-settings page directly — the flag doubles as a shortcut to it |
 | A settings leaf (password, blocked users, emotes, …) | within its settings page | the settings panel | push |
 | Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — a flat list of joined-course tiles (image, name, participants, level, modules), with the add-course options (start-my-own / browse / enter-code) below |
-| An in-progress activity | a course / the map | full-bleed | exclusive |
+| Activity plan / preview | a course's activity list, a map pin | map content | over the map (a left-column detail; a bottom sheet on mobile), camera on the activity's pin, current scope kept — like a course. **Start** launches the session, which runs as a chat room (one live view) |
 
 ### One live session at a time
 
