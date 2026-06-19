@@ -35,9 +35,10 @@ are open. A **course is, in large part, another map filter** — entering one se
 `?m=course:<id>` *and* opens the `course` panel (`?left=course`); the panel's space
 id is read from the filter, never duplicated into the token. A course room is then
 an ordinary `room` token over the course-filtered map (so closing the room reveals
-the course, and the filter never depends on the panel set). `activeSpaceIdFor`
-reads the `m` filter; leaving the course (closing its panel) clears `m` and the map
-returns to world scope. New filter dimensions (region, language, activity kind)
+the course, and the filter never depends on the panel set). The active course's
+space id is read from the `m` filter; leaving the course (closing its panel) clears
+`m` and the map returns to world scope. New filter dimensions (region, language,
+activity kind)
 slot into the same `m` list without touching the panel model.
 
 ## The URL is the workspace
@@ -147,8 +148,8 @@ master/detail flow is already folded here: one panel, navigated with a back arro
 
 ## Opening, pushing, and folding
 
-One vocabulary covers how content opens (the noun stays **panel**, matching the
-code's `Panel*` types; it is the industry "pane"):
+One vocabulary covers how content opens (the noun is **panel**, the industry
+"pane"):
 
 - **Open a panel** — add a coexisting panel. Each column holds **up to two panels**
   (a master and its detail), left and right independently, so the workspace shows up
@@ -207,8 +208,8 @@ regular chat's own members/search are the exception: they push *within* the chat
 because they belong to that one timeline, not beside it.)
 
 **Map content folds to a bottom sheet on a narrow screen.** A panel that is *map
-content* (marked `mapContent` in the registry — a **course**, and the add-course
-flow) renders, when it is the focused narrow panel, as a draggable bottom sheet
+content* (a **course**, or the add-course flow) renders, when it is the focused
+narrow panel, as a draggable bottom sheet
 over the scoped map rather than a full-screen panel — the Google-Maps "map +
 sheet" pattern — so the map (a course's activity pins) stays visible above it,
 with the cluster floating top-right. Dragging the sheet up reveals the full
@@ -218,9 +219,9 @@ an ordinary left panel beside the map.
 
 **Tapping a map pin** opens its preview as a bottom sheet on a narrow screen
 (the wide screen keeps the preview popup glued to the pin). The map owns that
-transient selection, so it signals the shell (via a small controller) to hide the
-bottom nav while the sheet is up, and the shell clears the selection when a
-full-screen panel later covers the map (so the sheet doesn't linger).
+transient selection, so it tells the shell to hide the bottom nav while the sheet
+is up, and the shell clears the selection when a full-screen panel later covers the
+map (so the sheet doesn't linger).
 
 **The narrow bottom nav is only the section switcher** — World, Chats, and the
 course switcher (Analytics and Profile are reached from the cluster, not here). It
@@ -250,7 +251,7 @@ behaves the same on mobile and desktop.
 | A settings page (learning, style, security, …) | a settings-menu row | right | open panel (detail) beside the menu, or pushed onto the menu when folded — same fit test as a course management page |
 | Learning settings (shortcut) | the cluster's **language flag** | right | opens the learning-settings page directly — the flag doubles as a shortcut to it |
 | A settings leaf (password, blocked users, emotes, …) | within its settings page | the settings panel | push |
-| Courses (your courses + add a course) | the **Courses** rail icon (Material map) | left | open panel — a flat list of joined-course tiles (image, name, participants, level, modules), with the add-course options (start-my-own / browse / enter-code) below; each option opens its step as the token param, deeper steps stay route-driven. Replaced the old float-over-the-map hub card that double-wrapped a card inside the panel |
+| Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — a flat list of joined-course tiles (image, name, participants, level, modules), with the add-course options (start-my-own / browse / enter-code) below |
 | An in-progress activity | a course / the map | full-bleed | exclusive |
 
 ## One live session at a time
@@ -268,9 +269,10 @@ a `session` belongs to the single **detail slot** shared with the right-column
 vocab/grammar details, so opening a construct detail closes an open session and
 vice versa (one detail at a time across columns — see the construct-detail row
 above), whereas a live `room` chat is independent of that slot and coexists with
-an open detail. `openExclusiveSession` / `openConstructDetail` in `workspace_nav`
-enforce this; `openExclusiveLeftRoom` (a live chat) drops room+session but leaves
-the right column untouched. *(Future: give a room its own session state by folding
+an open detail. So opening a session or a construct detail claims that shared slot
+(closing whatever held it), while opening a live chat drops any room/session but
+leaves the right column untouched. *(Future: give a room its own session state by
+folding
 the choreographer controller into the chat controller, which would lift the
 one-live-view limit and could let a completed session open as a coexisting
 read-only review.)*
@@ -281,8 +283,8 @@ Practice (the vocab/grammar exercise flow) is a **right-column panel like any
 other** — a `practice` token, a normal bounded card, **not a route and not
 fullscreen**. What makes it special is exclusivity: a practice session **takes
 the place of the analytics surface**. Opening it (the Practice button on the
-vocab/grammar analytics panel, via `openPractice`) closes the `analytics` master
-and any open vocab/grammar detail, and **while a session is active those cannot
+vocab/grammar analytics panel) closes the analytics master and any open
+vocab/grammar detail, and **while a session is active those cannot
 be viewed beside it** — practice shares the single cross-column **detail slot**
 (the same slot as the vocab/grammar details and a `session` review), so opening
 any construct detail or a session closes practice and vice versa, and tapping the
@@ -292,16 +294,15 @@ a practice session — never both. This is an "immersive" scope, but only over t
 analytics surface; a live chat on the left is independent and stays open.
 
 Closing practice **confirms first when a session is mid-progress** (unsaved
-exercise progress) — the panel's close reads `AnalyticsPractice
-.bypassExitConfirmation`, which the session flips once it completes or errors. The
+exercise progress); a session that has completed or errored doesn't re-prompt. The
 guard covers the explicit close; abandoning practice by opening analytics from the
 cluster does not prompt (that path just replaces the right column).
 
 ## The map never rebuilds
 
 The map is one widget, mounted once for the session and preserved across every
-navigation by a single stable key, so its tiles, camera, and pins survive while
-panels come and go. **Navigating must never rebuild it** — only change what it
+navigation, so its tiles, camera, and pins survive while panels come and go.
+**Navigating must never rebuild it** — only change what it
 *shows*: its scope (world vs. a course region), its focus (a located activity), and
 the camera padding that keeps focal content in the uncovered area. Because those
 inputs ride in tokens, and inbound paths are rewritten to tokens before the shell
@@ -319,28 +320,22 @@ instead of flipping or reloading. Two things protect this and must hold:
   unchanged value so an identical re-publish never re-fits the camera. (The
   layout-driven re-framing is debounced so this stays smooth — see *The map is the
   backdrop*.)
-- **Floating chrome sizes to its content, never the Stack.** The shell `Stack` is
-  `StackFit.expand`, which forces a *non-positioned* child to full size. A chrome
-  widget with an opaque root (the nav rail's `Material`, a card's surface) would
-  then paint over the whole map below it — the map lays out full-size but is hidden
-  (a real bug: the rail covered the map on web; mobile was fine only because the
-  rail is `SizedBox.shrink` there). Wrap any floating chrome (rail, overlays) in an
-  `Align`/`Positioned` so it sizes to its content and the map stays full-bleed
-  behind it.
-- **The left rail is a floating dock pill.** The left nav rail floats as a
-  `WorkspaceDock` pill (surface, elevation, `AppConfig.borderRadius`, outline
-  border, clipped corners). It does **not** hover-expand; it stays a narrow pill
-  (section/course names come from item tooltips and the Courses page's tiles), so
-  the dock sizes to its icons. Order, top to bottom: **World** (home), **Chats**,
-  **Courses** (the Material map icon, opening the courses list + add options),
-  then an avatar per course you're in. The top-right cluster is its **own** gold
-  "powerups" visual (next section), so the two edges no longer share one chrome —
-  reuse shared constants (gold palette, radius), not one widget.
+- **Floating chrome must size to its own content, not fill the shell.** The map
+  is the base layer everything overlays, so a piece of floating chrome (the rail,
+  an overlay) that stretches to the full shell paints its opaque surface over the
+  entire map and hides it — a real bug we hit on web. Keep each overlay bounded to
+  what it actually draws so the map stays full-bleed behind it.
+- **The left rail is a floating dock, not a full-height sidebar.** It floats over
+  the map and stays icon-width — it does **not** hover-expand, because section and
+  course names live in tooltips and the Courses page rather than an expanded rail.
+  Top to bottom: **World** (home), **Chats**, **Courses**, then one avatar per
+  joined course. It is deliberately a separate visual from the top-right cluster
+  (next section), not one shared chrome.
 
 ## The cluster is the right column's entry point
 
 A persistent cluster pinned to the top-right of the map opens the right column. It
-has its own gold **"powerups" visual** (Figma `AvatarLangFlags`), top to bottom:
+has its own gold **"powerups" visual** (per Figma), top to bottom:
 the user's **avatar** wrapped in an XP ring (a gray track that fills gold clockwise
 toward the next level, resetting on level-up); a gold **powerups pill** of three
 trackers — completed **Sessions**, **Grammar**, **Vocabulary** — with the **level
