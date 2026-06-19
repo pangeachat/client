@@ -176,6 +176,27 @@ class WorkspaceShell extends StatelessWidget {
       focusHint: focusHint,
     );
 
+    // world_v2 mobile: a joined COURSE on a narrow screen rides in a draggable
+    // bottom sheet over the (course-scoped) map — the Google-Maps "map + sheet"
+    // pattern — instead of a full-screen panel. Active when the focused narrow
+    // panel is the `course` card (an in-course `room` or an activity shows itself
+    // instead; switching course tabs still focuses the card). The course content
+    // is hosted bare in the sheet, and the normal left-panel loop skips this index
+    // (below) so the course is not also drawn full-screen behind the sheet — the
+    // double-render the old `canvas == detail` predicate (always false for a
+    // course on `/`) never guarded. See `routing.instructions.md`.
+    int? mobileCourseIndex;
+    if (!isColumnMode && activity == null && activeSpaceId != null) {
+      for (var i = 0; i < leftTokens.length; i++) {
+        if (leftTokens[i].type == 'course' &&
+            layout.left[i].vis == PanelVis.full) {
+          mobileCourseIndex = i;
+          break;
+        }
+      }
+    }
+    final isMobileCourse = mobileCourseIndex != null;
+
     // The map shows behind as a map hole (full) or — in column mode — alongside
     // a detail; this gates the cluster.
     final mapVisible =
@@ -193,7 +214,12 @@ class WorkspaceShell extends StatelessWidget {
     // card covering it. See `routing.instructions.md`.
     final leftInset = canvas == CanvasMode.fullBleed
         ? columnWidth
-        : (hasLeftTokens ? layout.mapLeftOverlay : columnWidth);
+        : isMobileCourse
+            // The course rides in a bottom sheet over the full map, not a left
+            // panel — so the camera uses the whole width (the sheet covers the
+            // bottom, which the map's left/right overlays don't model).
+            ? 0.0
+            : (hasLeftTokens ? layout.mapLeftOverlay : columnWidth);
 
     // Bound the route-driven center detail by the left inset and the right-
     // covered width so it can never slide under a panel (the non-overlap
@@ -219,14 +245,6 @@ class WorkspaceShell extends StatelessWidget {
       MapContextController.set(mapContext);
       PanelFocusController.instance.set(focusedLeftToken);
     });
-
-    // world_v2 mobile: a joined course on a narrow screen rides in a draggable
-    // bottom sheet over the persistent (course-scoped) map.
-    final isMobileCourse =
-        !isColumnMode &&
-        activeSpaceId != null &&
-        activity == null &&
-        canvas == CanvasMode.detail;
 
     // `?activity=<id>` opens the activity detail in-place over the map.
     final canvasChild = activity != null
@@ -269,20 +287,32 @@ class WorkspaceShell extends StatelessWidget {
               right: canvas == CanvasMode.detail ? null : 0,
               width: canvas == CanvasMode.detail ? detailWidth : null,
               child: Offstage(
-                offstage: canvas == CanvasMode.mapHole || isMobileCourse,
-                // The center detail (an activity, a course-wizard step, a
-                // public-course preview) gets the SAME floating-card chrome as
-                // the column panels — rounded, elevated, same margin — via the
-                // shared [PanelCard]. A full-bleed canvas fills bare.
-                child: isMobileCourse
-                    ? const SizedBox.shrink()
-                    : canvas == CanvasMode.detail
-                        ? PanelCard(child: canvasChild)
-                        : canvasChild,
+                // A map hole shows the full map through (a narrow course is a map
+                // hole too — its content rides in the bottom sheet below, not
+                // here). Otherwise the center detail (a course-wizard step, a
+                // public-course preview) gets the same floating-card chrome as the
+                // column panels via [PanelCard]; a full-bleed canvas fills bare.
+                offstage: canvas == CanvasMode.mapHole,
+                child: canvas == CanvasMode.detail
+                    ? PanelCard(child: canvasChild)
+                    : canvasChild,
               ),
             ),
-            if (isMobileCourse)
-              Positioned.fill(child: MobileCourseSheet(child: canvasChild)),
+            // A narrow course rides in a draggable bottom sheet over the
+            // course-scoped map (Google-Maps "map + sheet"). The course content is
+            // the same WorkspaceLeftPanel surface, hosted [bare] (the sheet is the
+            // card). The left-panel loop below skips this index so it is not also
+            // drawn full-screen. See `routing.instructions.md`.
+            if (mobileCourseIndex != null)
+              Positioned.fill(
+                child: MobileCourseSheet(
+                  child: WorkspaceLeftPanel(
+                    token: leftTokens[mobileCourseIndex],
+                    currentUri: state.uri,
+                    bare: true,
+                  ),
+                ),
+              ),
             // The rail must size to its content, NOT fill the Stack: this Stack
             // is StackFit.expand, which forces non-positioned children to full
             // size — and the rail's root (opaque-canvas) Material would then
@@ -310,7 +340,10 @@ class WorkspaceShell extends StatelessWidget {
             // fix left behind). See `routing.instructions.md`.
             if (canvas != CanvasMode.fullBleed)
               for (var i = 0; i < leftTokens.length; i++)
-                if (layout.left[i].vis != PanelVis.hidden)
+                // Skip a narrow course card — it renders in the bottom sheet
+                // above, not as a full-screen left panel (no double-render).
+                if (i != mobileCourseIndex &&
+                    layout.left[i].vis != PanelVis.hidden)
                   Positioned(
                     key: ValueKey(leftTokens[i].encode()),
                     top: 0,
@@ -350,7 +383,10 @@ class WorkspaceShell extends StatelessWidget {
             // The persistent top-right user cluster — the right column's entry
             // point. It sits in the gutter the allocator reserves beside the
             // panels; hidden on a full-bleed canvas or behind a narrow panel.
-            if (mapVisible && layout.clusterVisible)
+            // Shown over a narrow course sheet too (the map is visible above the
+            // sheet, so the floating cluster reads as Maps-style chrome and keeps
+            // analytics reachable).
+            if ((mapVisible && layout.clusterVisible) || isMobileCourse)
               Positioned(
                 top: chromeMargin + MediaQuery.viewPaddingOf(context).top,
                 right: chromeMargin + MediaQuery.viewPaddingOf(context).right,

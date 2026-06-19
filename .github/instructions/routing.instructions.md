@@ -206,6 +206,16 @@ narrow screen), so closing the page reveals the menu / card it came from. (A
 regular chat's own members/search are the exception: they push *within* the chat,
 because they belong to that one timeline, not beside it.)
 
+**Map content folds to a bottom sheet on a narrow screen.** A panel that is *map
+content* (marked `mapContent` in the registry — a **course**, and the add-course
+flow) renders, when it is the focused narrow panel, as a draggable bottom sheet
+over the scoped map rather than a full-screen panel — the Google-Maps "map +
+sheet" pattern — so the map (a course's activity pins) stays visible above it,
+with the cluster floating top-right. Dragging the sheet up reveals the full
+content; an in-course chat or an activity opened from the course instead takes the
+screen as its own panel / immersive surface. On a wide screen the same course is
+an ordinary left panel beside the map.
+
 ## How each surface opens
 
 One entry point is canonical per surface, on every form factor, so the same tap

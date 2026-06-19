@@ -25,8 +25,10 @@ class _MobileCourseSheetState extends State<MobileCourseSheet> {
   final DraggableScrollableController _controller =
       DraggableScrollableController();
 
-  /// Collapsed height: enough for the handle + course title + tab row.
-  static const double _peekHeight = 172.0;
+  /// Collapsed height: enough for the handle + the course header (title, the
+  /// language/level/modules metadata row, and the tab row beneath it). Sized to
+  /// clear that header so the peek doesn't overflow it; drag up for the body.
+  static const double _peekHeight = 240.0;
 
   static const Duration _snapDuration = Duration(milliseconds: 240);
 

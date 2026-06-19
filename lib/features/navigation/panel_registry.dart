@@ -87,9 +87,11 @@ class PanelDef {
   final bool pushable;
 
   /// Whether this panel is **map content** — a selection on the world map (a
-  /// course, an activity, the add-course flow). On narrow screens map content
-  /// renders as a Google-Maps bottom sheet (pin peek → draggable sheet); other
-  /// details render as a full-screen push. See `routing.instructions.md`.
+  /// course, the add-course flow). On a narrow screen map content is meant to
+  /// render as a Google-Maps bottom sheet over the (scoped) map rather than a
+  /// full-screen panel; today the shell wires the **course** to that sheet
+  /// (`MobileCourseSheet`), and the add-course flow still renders as a normal
+  /// panel (same pattern to follow). See `routing.instructions.md`.
   final bool mapContent;
 
   const PanelDef({

@@ -53,21 +53,28 @@ class WorkspaceLeftPanel extends StatelessWidget {
   /// `/rooms/:roomid` route that read `state.extra`. See `routing.instructions.md`.
   final List<ShareItem>? shareItems;
 
+  /// Render the panel's surface WITHOUT the floating [PanelCard] chrome — used
+  /// when this panel is hosted inside another card-like container that already
+  /// supplies the surface (the narrow [MobileCourseSheet], which wraps a course
+  /// in a draggable bottom sheet). Avoids a card-inside-a-card. See
+  /// `routing.instructions.md`.
+  final bool bare;
+
   const WorkspaceLeftPanel({
     super.key,
     required this.token,
     required this.currentUri,
     this.foldedOver = false,
     this.shareItems,
+    this.bare = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    final surface = _surface(context, FluffyThemes.isColumnMode(context));
     // The shared floating-card chrome (rounded, elevated, margin) every panel
-    // uses — see [PanelCard].
-    return PanelCard(
-      child: _surface(context, FluffyThemes.isColumnMode(context)),
-    );
+    // uses — see [PanelCard]. Skipped when [bare] (the host supplies the surface).
+    return bare ? surface : PanelCard(child: surface);
   }
 
   Widget _surface(BuildContext context, bool isColumnMode) {
