@@ -30,6 +30,20 @@ path itself collapses to `/`. The page builders and the chrome (rail, bottom nav
 all derive from the one token list (plus the `m` filter for the active course), so
 they cannot disagree about what is open.
 
+A few examples — the path is always `/`, the lists are comma-separated
+`type:param` tokens, and `?m=` is the separate map filter:
+
+- `/` — the bare world map, nothing open.
+- `/?left=chats,room:!abc` — the chat list with that chat open beside it (left
+  column, in order: the list, then the live room).
+- `/?m=course:!s&left=course&right=analytics:vocab` — inside a course: the `?m=`
+  filter scopes the map, the course card sits on the left, the vocabulary
+  analytics summary on the right.
+- `/?right=settingspage:learning,settings` — the settings menu (`settings`) with
+  the Learning page (`settingspage:learning`) open beside it. The detail comes
+  *before* its master in the right list because the right column is justified to
+  the edge — the master rests at the edge, the detail blooms to its left.
+
 Paths survive only as an **inbound shape**, never a render source: external, push,
 and `matrix.to` links — and the deliberately upstream `/rooms/:roomid` — are
 rewritten to canonical token URLs at the router redirect *before* anything
