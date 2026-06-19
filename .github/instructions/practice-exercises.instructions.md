@@ -71,12 +71,12 @@ The current scoring only considers **recency** and **content-word status**. It i
 
 | Tier | Who goes here | Practice priority |
 |---|---|---|
-| **Suppressed** | Lemmas whose most recent chat use is `wa` (without assistance) AND no subsequent incorrect practice | **0** — skip entirely |
-| **Active** | Lemmas encountered through `ta` (interactive translation) or `ga` (writing assistance), OR lemmas with a recent incorrect practice answer (`incXX`) | **High** — prioritize these |
+| **Suppressed** | Lemmas whose most recent chat use is `wa` (writing assistance ran, message correct) or `unk` (no writing assistance run) AND no subsequent incorrect practice | **0** — skip entirely |
+| **Active** | Lemmas encountered through `ta` (interactive translation) or `ga` (grammar correction / IGC), OR lemmas with a recent incorrect practice answer (`incXX`) | **High** — prioritize these |
 | **Maintenance** | Everything else — correctly practiced but aging | **Normal** — standard recency-based |
 
 **Tier transitions:**
-- A `wa` use → moves to Suppressed (user knows this word)
+- A `wa` or `unk` use → moves to Suppressed (user produced the word correctly, no help needed)
 - A `ta` or `ga` use → moves to Active (user needed help)
 - An incorrect practice answer → moves to Active (user struggled)
 - N consecutive correct practice answers → Active → Maintenance (learning is sticking)
@@ -84,15 +84,15 @@ The current scoring only considers **recency** and **content-word status**. It i
 
 **Within each tier**, the existing scoring formula applies: `daysSinceLastUsed × (isContentWord ? 10 : 7)`. Active-tier words get an additional multiplier (e.g., ×2) so they always appear before maintenance words of similar age.
 
-**Key principle**: Words used through interactive translation and writing assistance should be practiced **much more** than `wa` words. A `wa` word should only re-enter practice if the user later gets it wrong.
+**Key principle**: Words the user needed help with (interactive translation or grammar correction) should be practiced **much more** than words they already produce correctly (`wa`/`unk`). Such a word should only re-enter practice if the user later gets it wrong.
 
 **Example scenario:**
-1. User types "gato" correctly without assistance → `wa` → Suppressed. Won't appear in practice.
+1. User types "gato" correctly with no correction needed → `unk` (or `wa` if writing assistance ran and passed) → Suppressed. Won't appear in practice.
 2. User uses IT to translate "mariposa" → `ta` → Active. High priority for practice.
 3. User practices "mariposa" and gets it wrong → `incLM` → stays Active, priority boosted.
 4. User practices "mariposa" correctly 3 times → Active → Maintenance.
 5. Two weeks pass with no interaction → Maintenance, but high recency score → likely to appear.
-6. User later misspells "gato" and writing assistance corrects it → `ga` → moves from Suppressed back to Active.
+6. User later misspells "gato" and it's corrected during grammar checking → `ga` → moves from Suppressed back to Active.
 
 ### ⚠️ Grammar Error Practice: Missing Message Data
 
