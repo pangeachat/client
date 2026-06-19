@@ -6,7 +6,7 @@ applyTo: "lib/pangea/practice_activities/**,lib/pangea/analytics_practice/**,lib
 
 Practice exercises are multiple-choice exercises that reinforce vocabulary and grammar from real conversations. There are no disconnected flashcard decks — every practice item traces back to a message the user sent or received.
 
-For **conversation activities**, see [conversation-activities.instructions.md](conversation-activities.instructions.md).
+For **conversation activities**, see [activities.instructions.md](activities.instructions.md).
 
 ## Terminology
 

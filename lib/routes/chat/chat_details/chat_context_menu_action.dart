@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_room_extension.dart';
@@ -229,7 +230,15 @@ void chatContextMenuAction(
         EventTypes.RoomMember,
         room.client.userID!,
       );
-      context.go('/settings/security/ignorelist', extra: inviteEvent?.senderId);
+      final blockUser = inviteEvent?.senderId;
+      context.go(
+        WorkspaceNav.openSettings(
+          GoRouterState.of(context).uri,
+          page: blockUser == null
+              ? 'security/ignorelist'
+              : 'security/ignorelist/$blockUser',
+        ),
+      );
     case ChatContextAction.leave:
       final confirmed = await showOkCancelAlertDialog(
         context: outerContext,

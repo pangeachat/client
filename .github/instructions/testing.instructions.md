@@ -17,8 +17,8 @@ Follows the [cross-repo testing strategy](../../../.github/instructions/testing.
 
 ```
 test/
-  *.dart                        # Upstream fluffychat tests — DO NOT MOVE (merge conflicts)
-  utils/                        # Upstream test helpers — DO NOT MOVE
+  *.dart                        # FluffyChat base tests — leave in place (base layer)
+  utils/                        # FluffyChat base test helpers — leave in place
   pangea/                       # All Pangea unit/widget tests — safe to reorganize
     onboarding_tests/           # Example: feature-grouped subdir
     choreo_endpoint_test.dart   # Confirm client and choreo endpoint compatibility
@@ -39,7 +39,7 @@ e2e/
 
 **Adding new browser specs** (`e2e/scripts/`): subdirectories are fine, Playwright recurses. Update `trigger-map.json`.
 
-**Adding new Pangea unit tests**: `test/pangea/`. Feature subdirectories are fine — `flutter test` recurses. Don't add files to `test/` root (upstream owns that layer).
+**Adding new Pangea unit tests**: `test/pangea/`. Feature subdirectories are fine — `flutter test` recurses. Don't add files to `test/` root (FluffyChat base layer; keep Pangea tests under `test/pangea/` so they stay greppable as ours).
 
 ## Where choreo/CMS tests live
 

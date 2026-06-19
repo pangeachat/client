@@ -222,7 +222,14 @@ class ChatListController extends State<ChatList>
           return;
         case InviteAction.block:
           final userId = inviteEvent?.senderId;
-          context.go('/settings/security/ignorelist', extra: userId);
+          context.go(
+            WorkspaceNav.openSettings(
+              GoRouterState.of(context).uri,
+              page: userId == null
+                  ? 'security/ignorelist'
+                  : 'security/ignorelist/$userId',
+            ),
+          );
           return;
       }
       if (!mounted) return;

@@ -25,7 +25,7 @@ class SettingsLearningView extends StatelessWidget {
         final dialogContent = SafeArea(
           child: Scaffold(
             appBar: AppBar(
-              automaticallyImplyLeading: !controller.widget.isDialog,
+              automaticallyImplyLeading: false,
               centerTitle: true,
               title: Text(L10n.of(context).learningSettings),
               leading: controller.widget.isDialog

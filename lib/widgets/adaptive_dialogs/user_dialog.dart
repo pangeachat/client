@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
@@ -270,10 +271,13 @@ class UserDialog extends StatelessWidget {
               borderRadius: AdaptiveDialogAction.centerRadius,
               onPressed: () {
                 final router = GoRouter.of(context);
+                final uri = GoRouterState.of(context).uri;
                 Navigator.of(context).pop();
                 router.go(
-                  '/settings/security/ignorelist',
-                  extra: profile.userId,
+                  WorkspaceNav.openSettings(
+                    uri,
+                    page: 'security/ignorelist/${profile.userId}',
+                  ),
                 );
               },
               child: Text(

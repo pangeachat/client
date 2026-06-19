@@ -16,7 +16,7 @@ class DevicesSettingsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: !FluffyThemes.isColumnMode(context),
+        automaticallyImplyLeading: false,
         centerTitle: FluffyThemes.isColumnMode(context),
         title: Text(L10n.of(context).devices),
       ),

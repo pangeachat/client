@@ -19,7 +19,7 @@ class SettingsChatView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(L10n.of(context).chat),
-        automaticallyImplyLeading: !FluffyThemes.isColumnMode(context),
+        automaticallyImplyLeading: false,
         centerTitle: FluffyThemes.isColumnMode(context),
       ),
       body: ListTileTheme(

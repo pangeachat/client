@@ -395,7 +395,8 @@ class ChatView extends StatelessWidget {
                     // Only use activity image as chat background if enabled in AppConfig
                     if (controller.room.activityPlan != null &&
                         controller.room.activityPlan!.imageURL != null &&
-                        AppConfig.useActivityImageAsChatBackground)
+                        AppConfig.useActivityImageAsChatBackground &&
+                        !controller.room.activityPlan!.hasPlayableMedia)
                       Opacity(
                         opacity: 0.25,
                         child: ImageFiltered(

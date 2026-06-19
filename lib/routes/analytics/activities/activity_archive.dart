@@ -25,7 +25,7 @@ import '../../../widgets/avatar.dart';
 class ActivityArchive extends StatelessWidget {
   /// When hosted inside the world map's right-docked analytics panel, hide the
   /// cross-metric [LearningProgressIndicators] header (its tabs navigate to the
-  /// old left-column section routes). See world-user-cluster.instructions.md.
+  /// old left-column section routes). See routing.instructions.md.
   final bool embedded;
   const ActivityArchive({super.key, this.embedded = false});
 

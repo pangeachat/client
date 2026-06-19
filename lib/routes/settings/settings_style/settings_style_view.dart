@@ -28,7 +28,7 @@ class SettingsStyleView extends StatelessWidget {
     final client = Matrix.of(context).client;
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: !FluffyThemes.isColumnMode(context),
+        automaticallyImplyLeading: false,
         centerTitle: FluffyThemes.isColumnMode(context),
         title: Text(L10n.of(context).changeTheme),
       ),

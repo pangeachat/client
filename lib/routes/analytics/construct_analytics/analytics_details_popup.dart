@@ -11,6 +11,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -48,7 +49,7 @@ class ConstructAnalyticsView extends StatefulWidget {
   /// When hosted inside the world map's right-docked analytics panel, hide the
   /// cross-metric [LearningProgressIndicators] header — its tabs navigate to the
   /// old left-column section routes, and metric switching is the job of the
-  /// top-right cluster. See world-user-cluster.instructions.md.
+  /// top-right cluster. See routing.instructions.md.
   final bool embedded;
 
   @override
@@ -333,7 +334,15 @@ class _PracticeButton extends StatelessWidget {
 
     return FloatingActionButton.extended(
       onPressed: enabled
-          ? () => context.go("/rooms/analytics/${view.name}/practice")
+          // world_v2: practice opens as a right-column `practice:<type>` panel
+          // that takes over the analytics surface (it is not a route). See
+          // routing.instructions.md.
+          ? () => context.go(
+              WorkspaceNav.openPractice(
+                GoRouterState.of(context).uri,
+                view.string,
+              ),
+            )
           : () => _showSnackbar(context, L10n.of(context).notEnoughToPractice),
       backgroundColor: enabled
           ? null

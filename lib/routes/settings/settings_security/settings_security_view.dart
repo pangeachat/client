@@ -27,7 +27,7 @@ class SettingsSecurityView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(L10n.of(context).security),
-        automaticallyImplyLeading: !FluffyThemes.isColumnMode(context),
+        automaticallyImplyLeading: false,
         centerTitle: FluffyThemes.isColumnMode(context),
       ),
       body: ListTileTheme(

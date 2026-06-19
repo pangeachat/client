@@ -46,7 +46,7 @@ The toolbar offers several assistance modes. Which ones appear depends on the me
 | ---------------------- | -------------------------------------------------------------------------------- | ---------------------------------------- |
 | **Audio**              | Full sentence TTS with word-by-word highlighting (like a karaoke bar)            | Text messages in user's L2               |
 | **Translate**          | Full L1 translation appears below the message                                    | Text messages in L2 or unknown languages |
-| **Practice**           | Transitions to practice mode (see conversation-activities doc)                           | Text messages in user's L2               |
+| **Practice**           | Transitions to practice mode (see activities doc)                           | Text messages in user's L2               |
 | **Emoji**              | Emoji picker appears for each word — user can assign personal emoji associations | Text messages in user's L2               |
 | **Speech Translation** | Shows STT transcript + translation for audio messages                            | Audio messages not in user's L1          |
 | **Regenerate**         | Re-tokenizes the message (for when tokenization looks wrong)                     | Optional, when enabled                   |
