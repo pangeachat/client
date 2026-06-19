@@ -2712,8 +2712,7 @@ class ChatController extends State<ChatPageWithRoom>
   Future<async.Result<SpeechToTextResponseModel>> _getVoiceMessageTranscript(
     MatrixAudioFile file,
   ) async {
-    return SpeechToTextRepo.get(
-      MatrixState.pangeaController.userController.accessToken,
+    return SpeechToTextRepo.instance.get(
       SpeechToTextRequestModel(
         audioContent: file.bytes,
         config: SpeechToTextAudioConfigModel(

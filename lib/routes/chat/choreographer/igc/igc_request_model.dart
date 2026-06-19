@@ -3,11 +3,12 @@ import 'dart:convert';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/models/base_request_model.dart';
 import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
+import 'package:fluffychat/pangea/common/utils/base_request.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/igc_response_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class IGCRequestModel with BaseRequestModel {
+class IGCRequestModel extends BaseRequest with BaseRequestModel {
   final String fullText;
   final bool enableIT;
   final bool enableIGC;
@@ -38,7 +39,7 @@ class IGCRequestModel with BaseRequestModel {
   String get userL2 =>
       l2 ?? MatrixState.pangeaController.userController.userL2Code!;
 
-  const IGCRequestModel({
+  IGCRequestModel({
     required this.fullText,
     required this.enableIGC,
     required this.enableIT,
@@ -64,6 +65,14 @@ class IGCRequestModel with BaseRequestModel {
     mock: mock,
   );
 
+  /// Content-based cache key mirroring the fields that distinguish requests
+  /// in [==]/[hashCode]: trimmed input, languages, the IT/IGC toggles, user,
+  /// and a hash of any feedback content.
+  @override
+  String get storageKey =>
+      '${fullText.trim()}|$userL1|$userL2|$enableIT|$enableIGC|$userId|$_feedbackHash';
+
+  @override
   Map<String, dynamic> toJson() {
     final json = {
       ModelKey.fullText: fullText,
@@ -94,6 +103,7 @@ class IGCRequestModel with BaseRequestModel {
         userL1 == other.userL1 &&
         userL2 == other.userL2 &&
         enableIT == other.enableIT &&
+        enableIGC == other.enableIGC &&
         userId == other.userId &&
         _feedbackHash == other._feedbackHash;
   }

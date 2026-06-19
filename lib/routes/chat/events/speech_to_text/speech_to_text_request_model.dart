@@ -5,9 +5,10 @@ import 'package:flutter/foundation.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/utils/base_request.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';
 
-class SpeechToTextRequestModel {
+class SpeechToTextRequestModel extends BaseRequest {
   final Uint8List audioContent;
   final SpeechToTextAudioConfigModel config;
   final Event? audioEvent;
@@ -20,6 +21,16 @@ class SpeechToTextRequestModel {
     this.mock,
   });
 
+  @override
+  String get storageKey {
+    final bytesSample = audioContent.length > 10
+        ? audioContent.sublist(0, 10)
+        : audioContent;
+    return '${audioContent.length}|${base64Encode(bytesSample)}|'
+        '${jsonEncode(config.toJson())}';
+  }
+
+  @override
   Map<String, dynamic> toJson() => {
     "config": config.toJson(),
     "audio_content": base64Encode(audioContent),

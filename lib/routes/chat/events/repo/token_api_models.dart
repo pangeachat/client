@@ -1,10 +1,15 @@
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/utils/base_request.dart';
+import 'package:fluffychat/pangea/common/utils/base_response.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
 import 'package:fluffychat/routes/chat/events/models/language_detection_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 
-class TokensRequestModel {
+class TokensRequestModel extends BaseRequest {
   /// the text to be tokenized
   String fullText;
 
@@ -34,6 +39,10 @@ class TokensRequestModel {
     this.mock,
   });
 
+  @override
+  String get storageKey => '$fullText|$senderL1|$senderL2';
+
+  @override
   Map<String, dynamic> toJson() => {
     ModelKey.fullText: fullText,
     ModelKey.userL1: senderL1,
@@ -57,7 +66,7 @@ class TokensRequestModel {
   int get hashCode => fullText.hashCode ^ senderL1.hashCode ^ senderL2.hashCode;
 }
 
-class TokensResponseModel {
+class TokensResponseModel extends BaseResponse {
   List<PangeaToken> tokens;
   String lang;
   List<LanguageDetectionModel> detections;
@@ -68,20 +77,38 @@ class TokensResponseModel {
     required this.detections,
   });
 
-  factory TokensResponseModel.fromJson(Map<String, dynamic> json) =>
-      TokensResponseModel(
-        tokens: (json[ModelKey.tokens] as Iterable)
-            .map<PangeaToken>(
-              (e) => PangeaToken.fromJson(e as Map<String, dynamic>),
-            )
-            .toList()
-            .cast<PangeaToken>(),
-        lang: json[ChoreoConstants.lang],
-        detections: (json[ChoreoConstants.allDetections] as Iterable)
-            .map<LanguageDetectionModel>(
-              (e) => LanguageDetectionModel.fromJson(e as Map<String, dynamic>),
-            )
-            .toList()
-            .cast<LanguageDetectionModel>(),
+  factory TokensResponseModel.fromJson(Map<String, dynamic> json) {
+    final response = TokensResponseModel(
+      tokens: (json[ModelKey.tokens] as Iterable)
+          .map<PangeaToken>(
+            (e) => PangeaToken.fromJson(e as Map<String, dynamic>),
+          )
+          .toList()
+          .cast<PangeaToken>(),
+      lang: json[ChoreoConstants.lang],
+      detections: (json[ChoreoConstants.allDetections] as Iterable)
+          .map<LanguageDetectionModel>(
+            (e) => LanguageDetectionModel.fromJson(e as Map<String, dynamic>),
+          )
+          .toList()
+          .cast<LanguageDetectionModel>(),
+    );
+
+    if (response.tokens.any((t) => t.pos == 'other')) {
+      ErrorHandler.logError(
+        e: Exception('Received token with pos "other"'),
+        data: {"response": json},
+        level: SentryLevel.warning,
       );
+    }
+
+    return response;
+  }
+
+  @override
+  Map<String, dynamic> toJson() => {
+    ModelKey.tokens: tokens.map((t) => t.toJson()).toList(),
+    ChoreoConstants.lang: lang,
+    ChoreoConstants.allDetections: detections.map((d) => d.toJson()).toList(),
+  };
 }

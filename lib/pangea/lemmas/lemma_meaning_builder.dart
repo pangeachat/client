@@ -83,10 +83,7 @@ class LemmaMeaningBuilderState extends State<LemmaMeaningBuilder> {
     final int version = ++_loadVersion;
 
     _loader.value = const AsyncState.loading();
-    final result = await LemmaInfoRepo.get(
-      MatrixState.pangeaController.userController.accessToken,
-      _request,
-    );
+    final result = await LemmaInfoRepo.instance.get(_request);
 
     // Ignore if a newer load started after this one
     if (!mounted || version != _loadVersion) return;

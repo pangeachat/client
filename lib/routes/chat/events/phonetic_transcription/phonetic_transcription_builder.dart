@@ -87,10 +87,7 @@ class PhoneticTranscriptionBuilderState
 
   Future<void> _load() async {
     _loader.value = const AsyncState.loading();
-    final resp = await PTV2Repo.get(
-      MatrixState.pangeaController.userController.accessToken,
-      _request,
-    );
+    final resp = await PTV2Repo.instance.get(_request);
 
     if (!mounted) return;
     resp.isError

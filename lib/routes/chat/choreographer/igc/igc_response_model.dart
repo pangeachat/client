@@ -1,8 +1,9 @@
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/utils/base_response.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_model.dart';
 
-class IGCResponseModel {
+class IGCResponseModel extends BaseResponse {
   final String originalInput;
   final String? fullTextCorrection;
   final List<PangeaMatch> matches;
@@ -51,6 +52,7 @@ class IGCResponseModel {
     );
   }
 
+  @override
   Map<String, dynamic> toJson() => {
     "original_input": originalInput,
     "full_text_correction": fullTextCorrection,

@@ -1,11 +1,12 @@
+import 'package:fluffychat/pangea/common/utils/base_response.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
 
-class FullTextTranslationResponseModel {
+class FullTextTranslationResponseModel extends BaseResponse {
   final List<String> translations;
   final String translation;
   final String source;
 
-  const FullTextTranslationResponseModel({
+  FullTextTranslationResponseModel({
     required this.translation,
     required this.translations,
     required this.source,
@@ -22,6 +23,7 @@ class FullTextTranslationResponseModel {
     );
   }
 
+  @override
   Map<String, dynamic> toJson() => {
     'translation': translation,
     'translations': translations,

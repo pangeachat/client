@@ -317,10 +317,7 @@ class IgcController {
     _lastRequest = request;
 
     final res =
-        await IgcRepo.get(
-          MatrixState.pangeaController.userController.accessToken,
-          request,
-        ).timeout(
+        await IgcRepo.instance.get(request).timeout(
           const Duration(seconds: 10),
           onTimeout: () {
             return Result.error(

@@ -1,8 +1,9 @@
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/utils/base_request.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 
-class TextToSpeechRequestModel {
+class TextToSpeechRequestModel extends BaseRequest {
   String text;
   String langCode;
   String userL1;
@@ -25,6 +26,10 @@ class TextToSpeechRequestModel {
     this.mock,
   });
 
+  @override
+  String get storageKey => '$text|$langCode|$voice|$ttsPhoneme';
+
+  @override
   Map<String, dynamic> toJson() => {
     ChoreoConstants.text: text,
     ModelKey.langCode: langCode,

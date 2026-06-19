@@ -299,8 +299,7 @@ class Choreographer extends ChangeNotifier {
         l2LangCode != null &&
         !_backoffRequest(_lastTokensError, _tokenErrorBackoff)) {
       final res =
-          await TokensRepo.get(
-            MatrixState.pangeaController.userController.accessToken,
+          await TokensRepo.instance.get(
             TokensRequestModel(
               fullText: message,
               senderL1: l1LangCode,

@@ -165,8 +165,7 @@ class RepresentationEvent {
 
   Future<Result<List<PangeaToken>>> requestTokens() async {
     if (tokens != null) return Result.value(tokens!);
-    final res = await TokensRepo.get(
-      MatrixState.pangeaController.userController.accessToken,
+    final res = await TokensRepo.instance.get(
       TokensRequestModel(
         fullText: text,
         langCode: langCode,

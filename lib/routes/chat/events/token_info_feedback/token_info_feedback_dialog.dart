@@ -119,7 +119,7 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
   Future<void> _updateLemmaInfo(
     PangeaToken token,
     LemmaInfoResponse response,
-  ) => LemmaInfoRepo.set(
+  ) => LemmaInfoRepo.instance.setCached(
     token.vocabConstructID.lemmaInfoRequest(event?.event.content ?? {}),
     response,
   );
@@ -128,7 +128,7 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
     // Use the original request from the feedback data to write to v2 cache
     final ptRequest = requestData.ptRequest;
     if (ptRequest == null) return;
-    await PTV2Repo.set(ptRequest, response);
+    await PTV2Repo.instance.setCached(ptRequest, response);
   }
 
   @override

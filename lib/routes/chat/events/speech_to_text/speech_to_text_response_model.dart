@@ -4,10 +4,11 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/utils/base_response.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 
-class SpeechToTextResponseModel {
+class SpeechToTextResponseModel extends BaseResponse {
   final List<SpeechToTextResult> results;
 
   SpeechToTextResponseModel({required this.results});
@@ -28,6 +29,7 @@ class SpeechToTextResponseModel {
     );
   }
 
+  @override
   Map<String, dynamic> toJson() => {
     "results": results.map((e) => e.toJson()).toList(),
   };

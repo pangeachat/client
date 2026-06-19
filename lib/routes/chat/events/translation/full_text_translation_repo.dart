@@ -1,106 +1,35 @@
-//Question for Jordan - is this for an individual token or could it be a span?
+import 'package:http/http.dart' show Response;
 
-import 'dart:async';
-import 'dart:convert';
-
-import 'package:async/async.dart';
-import 'package:http/http.dart';
-
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
+import 'package:fluffychat/pangea/common/network/urls.dart';
+import 'package:fluffychat/pangea/common/utils/base_repo.dart';
 import 'package:fluffychat/routes/chat/events/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/routes/chat/events/translation/full_text_translation_response_model.dart';
-import '../../../../pangea/common/config/environment.dart';
-import '../../../../pangea/common/network/requests.dart';
-import '../../../../pangea/common/network/urls.dart';
 
-class _TranslateCacheItem {
-  final Future<FullTextTranslationResponseModel> response;
-  final DateTime timestamp;
-
-  const _TranslateCacheItem({required this.response, required this.timestamp});
-}
-
-class FullTextTranslationRepo {
-  static final Map<String, _TranslateCacheItem> _cache = {};
-  static const Duration _cacheDuration = Duration(minutes: 10);
-
-  static Future<Result<FullTextTranslationResponseModel>> get(
-    String accessToken,
-    FullTextTranslationRequestModel request,
-  ) {
-    final cached = _getCached(request);
-    if (cached != null) {
-      return _getResult(request, cached);
-    }
-
-    final future = _fetch(accessToken, request);
-    _setCached(request, future);
-    return _getResult(request, future);
-  }
-
-  static Future<FullTextTranslationResponseModel> _fetch(
-    String accessToken,
-    FullTextTranslationRequestModel request,
-  ) async {
-    final Requests req = Requests(
-      choreoApiKey: Environment.choreoApiKey,
-      accessToken: accessToken,
-    );
-
-    final Response res = await req.post(
-      url: PApiUrls.simpleTranslation,
-      body: request.toJson(),
-    );
-
-    if (res.statusCode != 200) {
-      throw Exception(
-        'Failed to translate text: ${res.statusCode} ${res.reasonPhrase}',
+/// In-memory cached full-text translation (`POST /simple_translation`).
+/// `persist: false` — short-lived per-message translations aren't worth keeping
+/// across restarts.
+class FullTextTranslationRepo
+    extends
+        BaseRepo<
+          FullTextTranslationRequestModel,
+          FullTextTranslationResponseModel
+        > {
+  FullTextTranslationRepo._internal()
+    : super(
+        boxName: 'full_text_translation',
+        responseFromJson: FullTextTranslationResponseModel.fromJson,
+        cacheDuration: const Duration(minutes: 10),
+        persist: false,
       );
-    }
 
-    return FullTextTranslationResponseModel.fromJson(
-      jsonDecode(utf8.decode(res.bodyBytes)),
-    );
-  }
+  static final FullTextTranslationRepo _instance =
+      FullTextTranslationRepo._internal();
+  static FullTextTranslationRepo get instance => _instance;
 
-  static Future<Result<FullTextTranslationResponseModel>> _getResult(
+  @override
+  Future<Response> fetch(
+    Requests req,
     FullTextTranslationRequestModel request,
-    Future<FullTextTranslationResponseModel> future,
-  ) async {
-    try {
-      final res = await future;
-      return Result.value(res);
-    } catch (e, s) {
-      _cache.remove(request.storageKey);
-      if (e is UnsubscribedException) {
-        return Result.error(e);
-      } else if (e is ChoreoException) {
-        ErrorHandler.logError(e: e.errorMessage, s: s, data: request.toJson());
-      } else {
-        ErrorHandler.logError(e: e, s: s, data: request.toJson());
-      }
-      return Result.error(e);
-    }
-  }
-
-  static Future<FullTextTranslationResponseModel>? _getCached(
-    FullTextTranslationRequestModel request,
-  ) {
-    final cacheKeys = [..._cache.keys];
-    for (final key in cacheKeys) {
-      if (DateTime.now().difference(_cache[key]!.timestamp) >= _cacheDuration) {
-        _cache.remove(key);
-      }
-    }
-
-    return _cache[request.storageKey]?.response;
-  }
-
-  static void _setCached(
-    FullTextTranslationRequestModel request,
-    Future<FullTextTranslationResponseModel> response,
-  ) => _cache[request.storageKey] = _TranslateCacheItem(
-    response: response,
-    timestamp: DateTime.now(),
-  );
+  ) => req.post(url: PApiUrls.simpleTranslation, body: request.toJson());
 }

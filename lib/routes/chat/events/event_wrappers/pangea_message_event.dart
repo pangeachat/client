@@ -401,10 +401,7 @@ class PangeaMessageEvent {
       voice: voice,
     );
 
-    final result = await TextToSpeechRepo.get(
-      MatrixState.pangeaController.userController.accessToken,
-      request,
-    );
+    final result = await TextToSpeechRepo.instance.get(request);
 
     if (result.error != null) {
       throw Exception("Error getting text to speech: ${result.error}");
@@ -463,8 +460,7 @@ class PangeaMessageEvent {
     }
 
     final matrixFile = await _event.downloadAndDecryptAttachment();
-    final result = await SpeechToTextRepo.get(
-      MatrixState.pangeaController.userController.accessToken,
+    final result = await SpeechToTextRepo.instance.get(
       SpeechToTextRequestModel(
         audioContent: matrixFile.bytes,
         audioEvent: _event,
@@ -495,8 +491,7 @@ class PangeaMessageEvent {
     if (local != null) return local.translation;
 
     final stt = await requestSpeechToText(l1Code, l2Code);
-    final res = await FullTextTranslationRepo.get(
-      MatrixState.pangeaController.userController.accessToken,
+    final res = await FullTextTranslationRepo.instance.get(
       FullTextTranslationRequestModel(
         text: stt.transcript.text,
         tgtLang: l1Code,
@@ -588,8 +583,7 @@ class PangeaMessageEvent {
         : (originalSent?.langCode ?? _l2Code!);
 
     final text = includedIT ? originalWrittenContent : messageDisplayText;
-    final resp = await FullTextTranslationRepo.get(
-      MatrixState.pangeaController.userController.accessToken,
+    final resp = await FullTextTranslationRepo.instance.get(
       FullTextTranslationRequestModel(
         text: text,
         srcLang: srcLang,
@@ -623,8 +617,7 @@ class PangeaMessageEvent {
   }) async {
     _representations = null;
 
-    final res = await FullTextTranslationRepo.get(
-      MatrixState.pangeaController.userController.accessToken,
+    final res = await FullTextTranslationRepo.instance.get(
       FullTextTranslationRequestModel(
         text: text,
         srcLang: sourceLang,

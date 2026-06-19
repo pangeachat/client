@@ -202,7 +202,7 @@ class AnalyticsPracticeDataService {
 
       final res = await cId.getLemmaInfo({});
       if (res.isError) {
-        LemmaInfoRepo.clearCache(cId.lemmaInfoRequest({}));
+        await LemmaInfoRepo.instance.invalidate(cId.lemmaInfoRequest({}));
         throw Exception("Failed to fetch lemma info for id $id");
       }
 

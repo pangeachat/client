@@ -6,6 +6,8 @@
 library;
 
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/utils/base_request.dart';
+import 'package:fluffychat/pangea/common/utils/base_response.dart';
 
 class Pronunciation {
   final String transcription;
@@ -45,14 +47,14 @@ class Pronunciation {
       transcription.hashCode ^ ttsPhoneme.hashCode ^ udConditions.hashCode;
 }
 
-class PTRequest {
+class PTRequest extends BaseRequest {
   final String surface;
   final String langCode;
   final String userL1;
   final String userL2;
   final bool? mock;
 
-  const PTRequest({
+  PTRequest({
     required this.surface,
     required this.langCode,
     required this.userL1,
@@ -69,6 +71,7 @@ class PTRequest {
     );
   }
 
+  @override
   Map<String, dynamic> toJson() => {
     'surface': surface,
     ModelKey.langCode: langCode,
@@ -78,7 +81,8 @@ class PTRequest {
   };
 
   /// Cache key excludes userL2 (doesn't affect pronunciation).
-  String get cacheKey => '$surface|$langCode|$userL1';
+  @override
+  String get storageKey => '$surface|$langCode|$userL1';
 
   @override
   bool operator ==(Object other) =>
@@ -94,10 +98,10 @@ class PTRequest {
       surface.hashCode ^ langCode.hashCode ^ userL1.hashCode ^ userL2.hashCode;
 }
 
-class PTResponse {
+class PTResponse extends BaseResponse {
   final List<Pronunciation> pronunciations;
 
-  const PTResponse({required this.pronunciations});
+  PTResponse({required this.pronunciations});
 
   factory PTResponse.fromJson(Map<String, dynamic> json) {
     return PTResponse(
@@ -107,6 +111,7 @@ class PTResponse {
     );
   }
 
+  @override
   Map<String, dynamic> toJson() => {
     'pronunciations': pronunciations.map((p) => p.toJson()).toList(),
   };

@@ -3,9 +3,10 @@ import 'package:collection/collection.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/utils/base_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 
-class LemmaInfoRequest {
+class LemmaInfoRequest extends BaseRequest {
   final String lemma;
   final String partOfSpeech;
   final String lemmaLang;
@@ -26,6 +27,7 @@ class LemmaInfoRequest {
   }) : partOfSpeech = partOfSpeech.toLowerCase(),
        lemmaLang = lemmaLang.toLowerCase();
 
+  @override
   Map<String, dynamic> toJson() {
     return {
       'lemma': lemma,
@@ -55,6 +57,7 @@ class LemmaInfoRequest {
       const ListEquality().hash(feedback) ^
       userL1.hashCode;
 
+  @override
   String get storageKey {
     return 'l:$lemma,p:$partOfSpeech,lang:$lemmaLang,l1:$userL1';
   }

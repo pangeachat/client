@@ -159,10 +159,7 @@ class ConstructIdentifier {
   /// [lemmmaLang] if not set, assumed to be userL2
   Future<Result<LemmaInfoResponse>> getLemmaInfo(
     Map<String, dynamic> messageInfo,
-  ) => LemmaInfoRepo.get(
-    MatrixState.pangeaController.userController.accessToken,
-    lemmaInfoRequest(messageInfo),
-  );
+  ) => LemmaInfoRepo.instance.get(lemmaInfoRequest(messageInfo));
 
   String? get userSetEmoji => _userLemmaInfo.emojis?.firstOrNull;
 

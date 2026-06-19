@@ -16,6 +16,7 @@ import 'package:fluffychat/pangea/common/utils/strip_emojis.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/phonetic_transcription/pt_v2_disambiguation.dart';
+import 'package:fluffychat/routes/chat/events/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/routes/chat/events/phonetic_transcription/pt_v2_repo.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_repo.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_request_model.dart';
@@ -226,10 +227,15 @@ class TtsController {
     final userL1 = MatrixState.pangeaController.userController.userL1Code;
     if (userL1 == null) return null;
 
-    final ptResponse = PTV2Repo.getCachedResponse(
-      request.text,
-      request.langCode,
-      userL1,
+    final ptResponse = PTV2Repo.instance.getCached(
+      PTRequest(
+        surface: request.text,
+        langCode: request.langCode,
+        userL1: userL1,
+        // userL2 is excluded from the cache key, so any value resolves the same
+        // entry.
+        userL2: userL1,
+      ),
     );
     _log(
       '_resolveTtsPhonemeFromCache: text="${request.text}" lang=${request.langCode} cached=${ptResponse != null} count=${ptResponse?.pronunciations.length ?? 0} pos=${request.pos} morph=${request.morph}',
@@ -506,10 +512,9 @@ class TtsController {
 
     loadingChoreoStream.add(true);
     try {
-      final result = await TextToSpeechRepo.get(
-        MatrixState.pangeaController.userController.accessToken,
-        _request(text, langCode, tokens, ttsPhoneme),
-      ).timeout(timeout);
+      final result = await TextToSpeechRepo.instance
+          .get(_request(text, langCode, tokens, ttsPhoneme))
+          .timeout(timeout);
       if (result.isError) {
         _log('Choreo TTS API call failed: ${result.error}', tid);
         return false;

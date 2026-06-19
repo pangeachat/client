@@ -1,8 +1,9 @@
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/utils/base_response.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 
-class TextToSpeechResponseModel {
+class TextToSpeechResponseModel extends BaseResponse {
   String audioContent;
   String mimeType;
   int durationMillis;
@@ -31,6 +32,7 @@ class TextToSpeechResponseModel {
         ),
       );
 
+  @override
   Map<String, dynamic> toJson() => {
     "audio_content": audioContent,
     "mime_type": mimeType,
