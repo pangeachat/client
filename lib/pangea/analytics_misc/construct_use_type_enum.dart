@@ -8,7 +8,8 @@ import 'package:fluffychat/pangea/analytics_misc/learning_skills_enum.dart';
 import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
 
 enum ConstructUseTypeEnum {
-  /// produced in chat by user, igc was run, and we've judged it to be a correct use
+  /// writing assistance ran and the user's message was correct
+  /// (produced in chat by the user, igc ran, and we judged it a correct use)
   wa,
 
   /// produced during IGC

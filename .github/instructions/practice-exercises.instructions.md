@@ -133,7 +133,7 @@ Each activity type maps to specific [`ConstructUseTypeEnum`](../../lib/pangea/an
 1. [`AnalyticsPracticeSessionRepo.get(type, language)`](../../lib/pangea/analytics_practice/analytics_practice_session_repo.dart) builds a session:
    - **Vocab**: fetches the user's weakest lemmas (by spaced-repetition score), splits ~50/50 between `lemmaAudio` (needs example messages with audio) and `lemmaMeaning` targets
    - **Grammar**: fetches recent grammar errors first (`grammarError` targets), then fills remaining slots with weak morph features (`grammarCategory` targets)
-   - Session size: 10 exercises + 5 error buffer (constants in [`AnalyticsPracticeConstants`](../../lib/pangea/analytics_practice/analytics_practice_constants.dart))
+   - Session size: 10 exercises shown, plus a 5-item error buffer (15 targets generated — `targetsToGenerate`; constants in [`AnalyticsPracticeConstants`](../../lib/pangea/analytics_practice/analytics_practice_constants.dart)). The "~10" entry-point sessions above are this same 10 shown.
 2. [`AnalyticsPracticeState`](../../lib/pangea/analytics_practice/analytics_practice_page.dart) manages the session UI — progress bar, timer, activity queue, hints
 3. For each target, a [`MessageActivityRequest`](../../lib/pangea/practice_activities/message_activity_request.dart) is sent to the appropriate generator
 4. The generator returns a [`PracticeActivityModel`](../../lib/pangea/practice_activities/practice_activity_model.dart) subclass with choices and answers
