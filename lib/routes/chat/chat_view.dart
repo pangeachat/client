@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_cache.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -193,6 +194,16 @@ class ChatView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // In-session activity surfaces read room.activityPlan, which for a v3
+    // reference room hydrates asynchronously (ActivityPlanCache). Rebuild the
+    // subtree when the plan lands so it isn't blank until an unrelated sync.
+    return ListenableBuilder(
+      listenable: ActivityPlanCache.instance,
+      builder: (context, _) => _buildContent(context),
+    );
+  }
+
+  Widget _buildContent(BuildContext context) {
     final theme = Theme.of(context);
     if (controller.room.membership == Membership.invite) {
       showFutureLoadingDialog(

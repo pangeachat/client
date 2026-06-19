@@ -82,6 +82,10 @@ ActivityPlanModel activityPlanFromV2(Map<String, dynamic> doc) {
 
   return ActivityPlanModel(
     activityId: (plan['activity_id'] ?? doc['id']) as String,
+    // `version_id` is the choreo fetch's pinned Payload version; `updatedAt` is
+    // the canonical row's version stamp for direct CMS reads. Either pins the
+    // session at launch (activities.instructions.md).
+    versionId: (doc['version_id'] ?? doc['updatedAt']) as String?,
     req: request,
     title: (plan['title'] ?? '') as String,
     description: plan['description'] as String?,

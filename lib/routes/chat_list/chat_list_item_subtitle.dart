@@ -46,9 +46,12 @@ class ChatListItemSubtitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (room.showActivityChatUI) {
+      // Reference plan may not be hydrated yet; fall back to empty content (the
+      // list rebuilds on sync once ActivityPlanCache fills it in).
+      final activity = room.activityPlan;
       if (room.hasArchivedActivity) {
         return Text(
-          room.activityPlan!.learningObjective,
+          activity?.learningObjective ?? '',
           style: style,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
@@ -62,7 +65,7 @@ class ChatListItemSubtitle extends StatelessWidget {
           ),
           builder: (context, _) {
             return OpenRolesIndicator(
-              roles: room.activityPlan!.roles.values.toList(),
+              roles: activity?.roles.values.toList() ?? [],
               assignedRoles: room.assignedRoles?.values.toList() ?? [],
               room: room,
               space: room.courseParent,

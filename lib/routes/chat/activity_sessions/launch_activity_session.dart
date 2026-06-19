@@ -7,6 +7,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -61,9 +62,19 @@ extension LaunchActivitySession on Client {
         name: activity.title,
         topic: activity.description,
         initialState: [
+          // Thin reference, not the embedded plan: the body stays canonical in
+          // CMS and is fetched live per-viewer. Pin the version at creation so
+          // scoring is stable against later owner edits. See
+          // activities.instructions.md.
           StateEvent(
             type: PangeaEventTypes.activityPlan,
-            content: activity.toJson(),
+            content: {
+              ActivitySessionConstants.activityId: activity.activityId,
+              if (activity.versionId != null)
+                ActivitySessionConstants.versionId: activity.versionId,
+              if (primarySpace != null)
+                ActivitySessionConstants.sourceCourseId: primarySpace.id,
+            },
           ),
           if (activity.imageURL != null)
             StateEvent(

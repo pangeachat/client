@@ -123,9 +123,13 @@ class ButtonControlledCarouselView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final room = controller.room;
+    // Reference plan may not be hydrated yet; the surface rebuilds once it
+    // lands (ActivityPlanCache).
+    final activity = room.activityPlan;
+    if (activity == null) return const SizedBox.shrink();
     final superlatives = room.activitySummaryByL1?.analytics
         ?.generateSuperlatives();
-    final availableRoles = room.activityPlan!.roles;
+    final availableRoles = activity.roles;
     final assignedRoles = room.assignedRoles ?? {};
     final userSummaries = summary.participants
         .where(

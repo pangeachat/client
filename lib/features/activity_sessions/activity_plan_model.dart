@@ -18,6 +18,13 @@ import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dar
 class ActivityPlanModel {
   final String activityId;
 
+  /// The pinned Payload version this plan was read at, when known. Sessions
+  /// pin `(activity_id, version_id)` into `pangea.activity_plan` room state at
+  /// creation so scoring stays stable against later owner edits; the in-room
+  /// read passes it back as `?version=`. Null for legacy embedded rooms and
+  /// for card/lobby reads that don't pin. See activities.instructions.md.
+  final String? versionId;
+
   final ActivityPlanRequest req;
   final String title;
   final String description;
@@ -48,6 +55,7 @@ class ActivityPlanModel {
     required this.instructions,
     required this.vocab,
     required this.activityId,
+    this.versionId,
     Map<String, ActivityRole>? roles,
     String? imageURL,
     this.media = const [],
@@ -71,6 +79,7 @@ class ActivityPlanModel {
         instructions: instructions,
         vocab: vocab,
         activityId: activityId,
+        versionId: versionId,
         roles: _roles,
         imageURL: _imageURL,
         media: media,
@@ -194,6 +203,7 @@ class ActivityPlanModel {
           : null,
       roles: roles,
       activityId: activityId,
+      versionId: json[ActivitySessionConstants.versionId] as String?,
       isDeprecatedModel: json["bookmark_id"] != null,
     );
   }
@@ -201,6 +211,7 @@ class ActivityPlanModel {
   Map<String, dynamic> toJson() {
     return {
       ActivitySessionConstants.activityId: activityId,
+      ActivitySessionConstants.versionId: versionId,
       ActivitySessionConstants.activityPlanImageURL: _imageURL,
       ActivitySessionConstants.activityPlanMedia: media
           .map((block) => block.toJson())

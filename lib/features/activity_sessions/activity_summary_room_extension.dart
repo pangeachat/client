@@ -1,5 +1,7 @@
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_plan_cache.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_analytics_model.dart';
@@ -52,6 +54,7 @@ extension ActivitySummaryRoomExtension on Room {
   ActivitySummaryRequestModel _constructSummaryRequest(
     List<PangeaMessageEvent> messageEvents,
     String langCode, {
+    required ActivityPlanModel activity,
     String? feedback,
   }) {
     final List<ActivitySummaryResultsMessage> messages = [];
@@ -98,7 +101,7 @@ extension ActivitySummaryRoomExtension on Room {
     }
 
     return ActivitySummaryRequestModel(
-      activity: activityPlan!,
+      activity: activity,
       activityResults: messages,
       contentFeedback: contentFeedback,
       roleState: activityRoles,
@@ -153,9 +156,18 @@ extension ActivitySummaryRoomExtension on Room {
       msgtypes: [MessageTypes.Text, MessageTypes.Audio],
     );
 
+    // The plan body is canonical in CMS (reference-only room state); resolve it
+    // before building the request rather than assuming it is hydrated.
+    final activity =
+        activityPlan ?? await ActivityPlanCache.instance.hydrate(activityId ?? '');
+    if (activity == null) {
+      await _stopRequestingActivitySummaryOnError(null, langCode);
+      return;
+    }
     final req = _constructSummaryRequest(
       messageEvents,
       langCode,
+      activity: activity,
       feedback: feedback,
     );
     final analytics = _constrctSummaryAnalyticsModel(messageEvents, langCode);
