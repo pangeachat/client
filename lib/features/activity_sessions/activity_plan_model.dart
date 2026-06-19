@@ -131,20 +131,12 @@ class ActivityPlanModel {
     return resolveMediaUrl(_imageURL) ?? Uri.tryParse(randomPlaceholder);
   }
 
-  Map<String, ActivityRole> get roles {
-    if (_roles != null) return _roles;
-    final defaultRoles = <String, ActivityRole>{};
-    for (int i = 0; i < req.numberOfParticipants; i++) {
-      defaultRoles['role_$i'] = ActivityRole(
-        id: 'role_$i',
-        name: 'Participant',
-        goal: learningObjective,
-        goals: [],
-        avatarUrl: null,
-      );
-    }
-    return defaultRoles;
-  }
+  /// Roles come from the CMS activity, the single source of truth for role ids.
+  /// We never mint placeholder roles: a minted `role_$i` id diverges from the
+  /// CMS role id the bot/orchestrator use, so the learner's pick silently fails
+  /// to match and no goals are ever awarded. A plan with no roles is a bug that
+  /// must surface (the parse sites log it loudly) — return empty, not fakes.
+  Map<String, ActivityRole> get roles => _roles ?? const {};
 
   factory ActivityPlanModel.fromJson(Map<String, dynamic> json) {
     final req = ActivityPlanRequest.fromJson(

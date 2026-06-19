@@ -2,6 +2,7 @@ import 'package:fluffychat/features/activity_sessions/activity_media_block.dart'
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 
 /// Maps an `activities-v2` CMS document to the client's [ActivityPlanModel].
@@ -36,7 +37,13 @@ ActivityPlanModel activityPlanFromV2(Map<String, dynamic> doc) {
         )
         .map(
           (g) => ActivityRoleGoal(
-            id: g['id'] as String,
+            // `id` is the CMS goals array-row id. The choreo schema declares it
+            // optional (null on goals minted before ids were surfaced, and on
+            // some canonical rows), so it can arrive null — don't hard-cast to
+            // String or the whole plan parse throws and the map goes red. Fall
+            // back to the goal text, which is stable and distinct within a role,
+            // so goal-completion keying still works the same way per session.
+            id: (g['id'] ?? g['goal'] ?? '') as String,
             description: (g['goal'] ?? '') as String,
           ),
         )
@@ -63,6 +70,20 @@ ActivityPlanModel activityPlanFromV2(Map<String, dynamic> doc) {
       .whereType<Map>()
       .map((b) => ActivityMediaBlock.fromCmsBlock(b.cast<String, dynamic>()))
       .toList();
+
+  // Roles are the CMS source of truth for role ids; an empty set means the
+  // session can't run and would otherwise be papered over with minted roles
+  // whose ids diverge from the bot's. Surface it loudly instead.
+  if (roles.isEmpty) {
+    ErrorHandler.logError(
+      e: "v3 activity plan has no roles — session cannot map the learner's role",
+      data: {
+        'activityId': plan['activity_id'],
+        'title': plan['title'],
+        'rawRoles': plan['roles'],
+      },
+    );
+  }
 
   final cefr = (plan['cefr_level'] ?? req['cefr_level']) as String?;
   final l2 = (plan['l2'] ?? req['target_language'] ?? '') as String;

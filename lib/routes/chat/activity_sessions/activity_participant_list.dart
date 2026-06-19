@@ -61,12 +61,19 @@ class ActivityParticipantList extends StatelessWidget {
               builder: (context, constraints) {
                 const minItemWidth = 125.0;
 
-                final rows =
-                    (availableRoles.length /
+                // A roleless plan is a content bug (logged loudly upstream in
+                // activity_v2_mapper). Guard the layout math so it degrades to
+                // an empty grid instead of crashing the whole canvas: with no
+                // roles, rows == 0 and `length / rows` is 0/0 == NaN, and
+                // NaN.ceil() throws "Unsupported operation: NaN".
+                final rows = availableRoles.isEmpty
+                    ? 0
+                    : (availableRoles.length /
                             (constraints.maxWidth / minItemWidth))
                         .ceil();
 
-                final entriesPerRow = (availableRoles.length / rows).ceil();
+                final entriesPerRow =
+                    rows == 0 ? 0 : (availableRoles.length / rows).ceil();
 
                 return Column(
                   spacing: 8.0,
