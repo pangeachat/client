@@ -13,10 +13,9 @@ class QuestActivityCard {
   final List<double>? coordinates;
 
   /// Learning-objective ids this activity satisfies; lets the repo group cards
-  /// under the quest's objectives without a second read. Empty for pins read
-  /// via the choreographer bbox endpoint (its card drops refs — see
-  /// world-map-search.instructions.md; the theme/per-LO filters that need refs
-  /// are Phase 2).
+  /// under the quest's objectives without a second read, and lets the world map
+  /// compute relevance banding. Carried by both the CMS pin read and the
+  /// choreographer bbox card. See world-map.instructions.md.
   final List<String> learningObjectiveRefs;
 
   /// Content-search + CEFR-filter fields, populated only for World map pins read
@@ -73,9 +72,11 @@ class QuestActivityCard {
   }
 
   /// Parse a choreographer `ActivityCard` (the `GET /v2/activities/bbox` shape):
-  /// a flat card carrying content-search text + cefr, but no LO refs.
+  /// a flat card carrying content-search text, cefr, and the LO refs (a flat list
+  /// of ids) the map needs for relevance banding.
   factory QuestActivityCard.fromBboxCard(Map<String, dynamic> json) {
     final coords = json['coordinates'];
+    final refs = (json['learning_objective_refs'] as List?) ?? const [];
     return QuestActivityCard(
       activityId: json['activity_id'] as String,
       title: (json['title'] ?? '') as String,
@@ -83,7 +84,9 @@ class QuestActivityCard {
       coordinates: coords is List
           ? coords.map((e) => (e as num).toDouble()).toList()
           : null,
-      learningObjectiveRefs: const [],
+      learningObjectiveRefs: refs
+          .map((e) => e is Map ? e['id'] as String : e as String)
+          .toList(),
       description: json['description'] as String?,
       learningObjective: json['learning_objective'] as String?,
       cefr: json['cefr_level'] as String?,
