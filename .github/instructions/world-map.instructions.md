@@ -47,7 +47,7 @@ A pin's **state** is carried by color (and, for two states, a glyph) at every ti
 
 A **pinged** modifier (a hand glyph) marks an open session whose host has pinged the course to gather players (mechanics in [activities.instructions.md](activities.instructions.md)). When several states apply to one item, the highest on the priority ladder wins the displayed color — a completed activity with a live session shows as joinable, green, to pull the learner back. Which items earn the scarce mid and large slots is the [Priority matrix](#priority-matrix) below.
 
-**What ships first.** Unlocked, completed, and joinable are all derivable from Matrix room state, so they ship together; **locked** needs progression rules that aren't on the client yet, so until that lands a not-yet-started activity simply shows as unlocked. A ping leaves no persistent room state, so **pinged** is detected best-effort by scanning recent course-space messages for the host's ping — a proxy whose efficacy we watch before investing in a persistent ping signal.
+**What ships first.** Unlocked, completed, and joinable are all derivable from Matrix room state, so they ship together. **Locked** is the course-progression gate: a learning objective unlocks once the learner earns 10 stars in the previous objective in the course sequence. That gating is not instantiated in the v3 model yet (it carried over conceptually from the old Topics model), so no pin reads as locked today and a not-yet-started activity simply shows as unlocked until it lands. A ping leaves no persistent room state, so **pinged** is detected best-effort by scanning recent course-space messages for the host's ping — a proxy whose efficacy we watch before investing in a persistent ping signal.
 
 The preview card that the large tier shows proactively is the *same* card that opens on demand when a learner taps a smaller pin (a bottom sheet on mobile — see [routing.instructions.md](routing.instructions.md)). **Grouping** is separate from the tiers: where pins would overlap they collapse into a count bubble — the `Grouped` variant, itself state-colored — that de-overlaps the map and expands on zoom or tap.
 
@@ -69,7 +69,7 @@ State is a gate rather than a weighted term because these are hard rules: no rel
 
 - **relevance_band** — the dominant term: joined-course objective `3` > level-appropriate L2 objective `2` > in my L2 `1` > global `0`.
 - **pinged** `0/1` — the open session's host is recruiting ([activities.instructions.md](activities.instructions.md)).
-- **recency** `0–1` — newest first, decaying with age (for a session, time since it opened).
+- **recency** `0–1` — newest first, a linear falloff over the last day (for a session, time since it opened).
 
 The boosts sum to at most `0.9`, under one band step, so they only **reorder within a band** — a joined-course item always outranks a level-appropriate one. That preserves the strict priority above while giving one comparable number to fill slots with and to feed a future model. The remaining `0.1` of headroom is held for a **social-proof / urgency** term (a nearly-full session) once that signal exists.
 
@@ -103,10 +103,6 @@ Design intent: a change to *which* items exist widens or narrows the working set
 
 Map content is fetched through a **stable server contract** (the choreographer), not direct client-to-CMS queries, so the display and interaction design here is insulated from how the server narrows results. The catalog is currently small enough to return all placed items (clustered) and apply the CEFR band on the client; true viewport-narrowing and server-side CEFR banding are deferred until density warrants them. The returned working set is capped at a limit; when more items match than the cap, the map **signals that more exist** rather than over-fetching, and zooming or filtering narrows toward what fits. Track the density triggers in [scaling-watchlist](../../../.github/.github/instructions/scaling-watchlist.instructions.md).
 
-## Open questions
-
-- The **recency** decay shape and half-life.
-
 ## Future Work
 
-File GitHub issues for these and link them here (use the `update-future-work` skill). Deferred design threads: carrying learning-objective refs on the world-map pin (the bbox card projects them, the client parses them) and a cached joined-course objective set, both needed for relevance banding; the **locked** pin state, once client-hydrated progression rules exist; evaluating the **best-effort pinged detection** (recent course-space message scan) before adding a persistent ping signal; a generalized map-item pipeline for non-activity content; users-as-content (opt-in location); world-feed social items as a content source; server-side viewport narrowing and CEFR banding.
+File GitHub issues for these and link them here (use the `update-future-work` skill). Deferred design threads: carrying learning-objective refs on the world-map pin (the bbox card projects them, the client parses them) and a cached joined-course objective set, both needed for relevance banding; a backend endpoint for **map-wide open-session discovery**, since the client can only see open sessions in the learner's joined courses — surfacing strangers' joinable sessions across the map (the core preference-open-sessions goal) needs the choreographer to expose them; the **locked** pin state, once the course-progression gate exists (a learning objective unlocks at 10 stars in the previous objective in the course sequence); evaluating the **best-effort pinged detection** (recent course-space message scan) before adding a persistent ping signal; a generalized map-item pipeline for non-activity content; users-as-content (opt-in location); world-feed social items as a content source; server-side viewport narrowing and CEFR banding.
