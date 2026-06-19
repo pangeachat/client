@@ -33,23 +33,28 @@ class ActivitySessionStartView extends StatelessWidget {
       builder: (context, snapshot) {
         final activity = controller.activity;
         // #Pangea
-        // Opened in-place over a course via `?activity=<id>` (not the standalone
-        // `/<activityId>` route): the AppBar IS the nav row — back returns to
-        // the course, X closes, both just drop the param so the course stays.
+        // The activity plan's close depends on whether a course is still scoped
+        // (`?m=course:`) — the plan's contextual parent. Opened from the course
+        // card's activity list, the scope survives (the card dropped its own
+        // `left=course` but kept the filter), so the plan is the card's child and
+        // its control is a back-arrow that reopens the card. Opened from a map pin,
+        // the pin handler drops the scope, so the plan is parentless and its
+        // control is an X that dismisses to the map. The standalone `/<activityId>`
+        // route (not embedded) pops or falls back to the world map. No entry flag
+        // is needed: surviving scope IS the discriminator. See
+        // `routing.instructions.md`.
         final uri = GoRouter.of(context).routeInformationProvider.value.uri;
         final embedded = uri.queryParameters['activity'] != null;
-        // The activity plan is the course's CHILD (opened from its activity
-        // list): its back-step reveals the parent — the course CARD. Drop the
-        // activity overlay and, when a course is still scoped, reopen `left=course`
-        // over the kept `?m=course:` filter (the parent is reconstructed from the
-        // surviving scope, since the plan replaced the card to take the left
-        // primary). When no course is scoped (opened from a world pin) the
-        // back-step is just the map. Rebuild from the RAW query so the
-        // `?m=course:` filter isn't re-encoded (`uri.replace(queryParameters:)`
-        // turns `:`→`%3A`, which the raw-query parser can't read — the course
-        // de-scopes and the reopened card, now an orphan, is dropped, landing on
-        // the bare map). See `routing.instructions.md`.
-        void returnToCourse() {
+        final courseScoped =
+            uri.queryParameters['m']?.startsWith('course:') ?? false;
+
+        // Drop the activity overlay, keeping `?m=` and the rest of the query
+        // verbatim — rebuilt from the RAW query so the `?m=course:` filter isn't
+        // re-encoded (`uri.replace(queryParameters:)` turns `:`→`%3A`, which the
+        // raw-query parser can't read, de-scoping the map and orphan-dropping any
+        // reopened card). [reopenCard] additionally restores `left=course` over the
+        // surviving scope (the parent card, reconstructed from the scope).
+        String overlayDropped({required bool reopenCard}) {
           final parts = uri.query.isEmpty ? <String>[] : uri.query.split('&');
           parts.removeWhere((p) =>
               p == 'activity' ||
@@ -63,8 +68,8 @@ class ActivitySessionStartView extends StatelessWidget {
           final scoped = parts.any((p) => p.startsWith('m=course:'));
           final hasLeft =
               parts.any((p) => p == 'left' || p.startsWith('left='));
-          if (scoped && !hasLeft) parts.add('left=course');
-          GoRouter.of(context).go(parts.isEmpty ? '/' : '/?${parts.join('&')}');
+          if (reopenCard && scoped && !hasLeft) parts.add('left=course');
+          return parts.isEmpty ? '/' : '/?${parts.join('&')}';
         }
 
         // Pangea#
@@ -88,24 +93,34 @@ class ActivitySessionStartView extends StatelessWidget {
               padding: const EdgeInsets.only(left: 12.0),
               child: Center(
                 // #Pangea
-                child: embedded
+                child: (embedded && courseScoped)
+                    // Course still scoped → back-arrow reopens the course card.
                     ? IconButton(
                         tooltip: MaterialLocalizations.of(
                           context,
                         ).backButtonTooltip,
                         icon: const Icon(Icons.arrow_back),
-                        onPressed: returnToCourse,
+                        onPressed: () => GoRouter.of(context)
+                            .go(overlayDropped(reopenCard: true)),
                       )
-                    : IconButton(
-                        tooltip: L10n.of(context).close,
-                        icon: const Icon(Icons.close),
-                        // On the first-class activity route this page is the
+                    : embedded
+                        // Unscoped (pin entry) → X dismisses to the map.
+                        ? IconButton(
+                            tooltip: L10n.of(context).close,
+                            icon: const Icon(Icons.close),
+                            onPressed: () => GoRouter.of(context)
+                                .go(overlayDropped(reopenCard: false)),
+                          )
+                        // Standalone `/<activityId>` route: this page is the
                         // bottom of the stack; popping would leave an empty
-                        // navigator. Fall back to the home map.
-                        onPressed: () => Navigator.of(context).canPop()
-                            ? Navigator.of(context).pop()
-                            : GoRouter.of(context).go(PRoutes.world),
-                      ),
+                        // navigator, so fall back to the home map.
+                        : IconButton(
+                            tooltip: L10n.of(context).close,
+                            icon: const Icon(Icons.close),
+                            onPressed: () => Navigator.of(context).canPop()
+                                ? Navigator.of(context).pop()
+                                : GoRouter.of(context).go(PRoutes.world),
+                          ),
                 // Pangea#
               ),
             ),

@@ -652,23 +652,28 @@ class _WorldMapState extends State<WorldMap>
   /// panel fetches the full plan on open. Reached from the preview's "Details".
   void _openActivity(QuestActivityCard card) {
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
-    // Open the activity plan as map content over the (scoped) map. Rebuild from
-    // the RAW query so the `?m=course:` filter isn't re-encoded (`uri.replace`
-    // would turn `:`→`%3A` and de-scope the map), drop the left/right panels (the
-    // plan replaces the left-primary surface), and add `activity=`. Keep `m=` and
-    // any other params. See `routing.instructions.md`.
+    // Open the activity plan as map content. Pin entry is UNSCOPED: drop the
+    // `?m=course:` filter along with the left/right panels (the plan replaces the
+    // left-primary surface) and add `activity=`. The absence of course scope is
+    // what makes this a parentless overlay — its close is an X to the map, not a
+    // back-arrow to a course card (a course-list tap keeps the scope and so gets
+    // the back-arrow). The map still focuses the activity's pin via the
+    // `activity=` param (`mapFocusFor` → `ActivityFocus`), independent of scope.
+    // See `routing.instructions.md`.
     final parts = uri.query.isEmpty ? <String>[] : uri.query.split('&');
     parts.removeWhere((p) =>
         p == 'left' ||
         p.startsWith('left=') ||
         p == 'right' ||
         p.startsWith('right=') ||
+        p == 'm' ||
+        p.startsWith('m=') ||
         p == 'activity' ||
         p.startsWith('activity=') ||
         p == 'autoplay' ||
         p.startsWith('autoplay='));
     parts.add('activity=${card.activityId}');
-    context.go('/?${parts.join('&')}');
+    context.go(parts.isEmpty ? '/' : '/?${parts.join('&')}');
     _clearSelection();
   }
 

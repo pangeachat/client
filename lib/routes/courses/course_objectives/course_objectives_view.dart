@@ -184,10 +184,13 @@ class _ObjectiveSection extends StatelessWidget {
                   // In a preview (no room), open the activity as a standalone
                   // world object (`/<activityId>`). In a joined course, open it
                   // as the focused detail over the map: DROP the `left=course`
-                  // card (so it isn't left blank beside the activity) but keep
-                  // the `?m=course:` filter, so the map stays course-scoped and
-                  // zooms to this activity (`mapFocusFor` → `ActivityFocus`).
-                  // Back returns to the course card.
+                  // card (so it isn't left blank beside the activity) but KEEP
+                  // the `?m=course:` filter. That surviving course scope is what
+                  // marks this plan as the card's child: its close is a back-arrow
+                  // that reopens the card (a pin-opened plan drops the scope and so
+                  // closes with an X). The map stays course-scoped and zooms to
+                  // this activity (`mapFocusFor` → `ActivityFocus`). See
+                  // routing.instructions.md.
                   onTap: () {
                     if (room == null) {
                       context.go('/${ref.activityId}');

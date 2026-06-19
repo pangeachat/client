@@ -325,7 +325,7 @@ behaves the same on mobile and desktop.
 | Learning settings (shortcut) | the cluster's **language flag** | right | opens the learning-settings page directly — the flag doubles as a shortcut to it |
 | A settings leaf (password, blocked users, emotes, …) | within its settings page | the settings panel | push |
 | Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — a flat list of joined-course tiles (image, name, participants, level, modules), with the add-course options (start-my-own / browse / enter-code) below |
-| Activity plan / preview | a course's activity list, a map pin | map content | over the map (a left-column detail; a bottom sheet on mobile), camera on the activity's pin, current scope kept — like a course. Opened from a course it is the course's **child**: its back arrow reopens the course card (reconstructed from the kept `?m=course:` scope); opened from a world pin, back returns to the map. **Start** launches the session, which runs as a chat room (one live view) |
+| Activity plan / preview | a course's activity list, a map pin | map content | over the map (a left-column detail; a bottom sheet on mobile), camera on the activity's pin — like a course. Its close follows the **course scope** (`?m=course:`), its contextual parent: opened from the course's activity list the scope survives (the card dropped `left=course` but kept the filter), so the plan is the card's **child** and closes with a back-arrow that reopens the card; opened from a map pin the pin handler drops the scope, so the plan is parentless and closes with an **X** to the map. No entry flag is needed: surviving scope is the discriminator. **Start** launches the session, which runs as a chat room (one live view) |
 
 ### One live session at a time
 
@@ -374,14 +374,7 @@ cluster does not prompt (that path just replaces the right column).
 
 ### The navigation rail
 
-The left nav rail is a **floating dock, not a full-height sidebar.** It floats over
-the map and stays icon-width — it does **not** hover-expand, because section and
-course names live in tooltips and the Courses page rather than an expanded rail.
-Top to bottom: **World** (home), **Chats**, **Courses**, then one avatar per
-joined course. It is deliberately a separate visual from the top-right cluster
-(next section), not one shared chrome. Selecting a section from it *replaces* the
-open left-column panels (see *Panels are independent*); on a narrow screen the rail
-becomes the bottom nav (see *Single-column mode*).
+Pinned to the top-left of the map on web and a bottom nav on mobile. Top to bottom (or left to right): **World** (home), **Chats**, **Courses**, then one avatar per joined course. Selecting a section from it *replaces* the open left-column panels (see *Panels are independent*); on a narrow screen the rail becomes the bottom nav (see *Single-column mode*).
 
 ### The cluster is the right column's entry point
 
