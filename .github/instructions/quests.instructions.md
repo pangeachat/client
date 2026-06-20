@@ -1,32 +1,35 @@
 ---
 applyTo: "lib/features/quests/**"
-description: "Client quest model and the learning-objective progression gate — ordered LO sequence, satisfied = ≥10 stars (teacher-overridable), client-side star rollup, and where the gate is consumed."
+description: "Client-side progression gate — the one shared resolver for 'is this LO/activity locked?', its inputs (joined-course Mission sequences + per-Mission star rollup), fail-open behavior, and the surfaces that read it."
 ---
 
 # Quests & Learning-Objective Progression (Client)
 
-A **Quest** is the learner's ordered journey through **Learning Objectives** (learner-facing label: **Missions**). The client reads a quest's ordered LO sequence from the CMS `quest-plans` collection; the cross-repo content model and the meaning of *satisfied* live in [`courses-and-activities-v3`](../../../.github/.github/instructions/courses-and-activities-v3.instructions.md) and choreo [`learning-objectives`](../../../2-step-choreographer/.github/instructions/learning-objectives.instructions.md). This doc owns only the **client-side progression gate** — how the app decides an LO is locked or unlocked — which the [world map](world-map.instructions.md) consumes to colour pins.
+A **Quest** is the learner's ordered journey through **Learning Objectives** (learner-facing label: **Missions**). The cross-repo model — what a Mission is and the progression & **locking rule** (a Mission unlocks once the previous is satisfied at ≥ a star threshold; an **activity is locked iff every Mission it carries is gated and none is unlocked**; no gated Mission ⇒ never locked) — lives in the org doc [`quests-and-learning-objectives`](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md). This doc owns the **client-side resolver**: how the app computes that rule at render time from data it already holds, and which surfaces read it.
 
-## The progression gate
+## One shared gate
 
-The sequence is a single straight line, advanced one LO at a time. An LO is **unlocked** when it is the first in the sequence, or when the **previous LO is satisfied**; otherwise it is **locked**.
+"Is this LO (and its activities) locked?" is asked by many surfaces, so it is resolved **once** into a single shared gate, never re-derived per surface (re-deriving invites two surfaces drifting on the same question). The gate is built from two inputs the client already holds:
 
-- **Satisfied = the learner has earned at least 10 stars in the LO** — the cross-repo threshold defined in choreo [`learning-objectives`](../../../2-step-choreographer/.github/instructions/learning-objectives.instructions.md). A **star** is one orchestrator-awarded activity goal (the same award the activity session shows; mechanics in [activities.instructions.md](activities.instructions.md)).
-- **An LO's star total is summed across all of the LO's activities** for the learner, not per single activity — a learner can satisfy one LO across several different conversations, which is the bucket-grain intent of a Mission.
-- **Teacher-overridable per course.** A teacher in teacher mode may raise or lower the threshold from 10; the override travels in course-space room state, exactly as the v1 topic gate's `activitiesToUnlockTopic` did. This is the same unlock mechanism as the retired Topics model, with stars replacing the old completed-activity count.
-- **No sequence ⇒ never gated.** An activity reached outside a quest sequence (a standalone or purely global map pin with no course progression behind it) is always unlocked; locking only applies within a quest's ordered LOs.
+- **The ordered Mission sequences** of the learner's joined courses — each course's quest outline (ordered LO ids + the activities under each), cached and rebuilt on course join/leave.
+- **The per-Mission star rollup** — a **star** is one orchestrator-awarded activity goal, read from awarded-goal state on the learner's own session rooms and summed per Mission across all its activities. No server-side progression endpoint is needed: every session that earned a star is a room the client can read. (Same collectible pattern as vocab/grammar — see [analytics-system.instructions.md](analytics-system.instructions.md).)
 
-## Computed client-side, no new endpoint
+From those the gate resolves which Missions are unlocked vs gated, and answers `isLocked(activity)` by the activity-inheritance rule in the org doc.
 
-The gate is resolved on the client from Matrix room state the app already holds — awarded-goal state on the learner's activity-session rooms, rolled up per LO. Stars are the learner's own awards, so every session that earned one is a room the client can read; no server-side progression endpoint is required. The star tracker shares the vocab/grammar collectible pattern (see [analytics-system.instructions.md](analytics-system.instructions.md)).
+**Fail open.** A surface that asks before the gate is built treats content as **unlocked** rather than blocking it, so a cold open (e.g. an activity link opened without visiting the map first) never strands the learner behind a gate we simply haven't computed yet. Locking is a guard, not a wall.
 
 ## Consumed by
 
-The [world map](world-map.instructions.md) is the gate's display surface today: locked LOs render their pins gray, unlocked pins purple, and per-activity star progress shows as a fill (see that doc's pin-display section). Other quest surfaces (the course/quest view, the activity start page) read the same gate as they are rebuilt for v3.
+Every surface that gates on progression reads the *same* shared gate, so the answer is consistent and computed once:
+
+- the [world map](world-map.instructions.md) — locked pins render gray, unlocked purple, per-activity star progress as a fill (see its pin-display section);
+- the **activity start page** — a locked activity's plan opens **read-only**: Start is disabled and shows the unlock reason, rather than launching a session behind the gate;
+- the course/quest list and the powerups cluster, as they are built for v3.
+
+The teacher-overridable threshold and the no-sequence-⇒-never-gated rule are part of the cross-repo rule (org doc); this doc only resolves them from local state.
 
 ## Future Work
 
 File GitHub issues for these and link them here (use the `update-future-work` skill).
 
-- Cross-quest LO sequencing — a course space may hold more than one quest and LOs are shared across quests; resolving "the previous LO" when an LO sits in several sequences at different positions is deferred until multi-quest courses ship.
-- A persisted per-LO star total (server-side rollup) once reading every session room client-side becomes too costly at catalog scale.
+- A persisted per-Mission star total (server-side rollup) once reading every session room client-side becomes too costly at catalog scale.
