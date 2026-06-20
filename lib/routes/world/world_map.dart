@@ -8,11 +8,9 @@ import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
-import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
@@ -23,8 +21,6 @@ import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
-import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
@@ -256,18 +252,12 @@ class _WorldMapState extends State<WorldMap>
   /// world, or a selected quest's activities). Thin: id, title, point.
   List<QuestActivityCard> _pins = [];
 
-  /// The pin whose preview popup is open (tapping a star selects it; tapping
-  /// the map background or the popup's close clears it). Stays on the
-  /// persistent map — no navigation, no second map.
-  QuestActivityCard? _selectedActivity;
-
-  /// The selected activity's full plan, fetched lazily on tap. Null while the
-  /// fetch is in flight (the preview shows a shimmer) and when none is open.
-  ActivityPlanModel? _selectedPlan;
-
-  /// True while the selected activity's full plan is loading (drives the
-  /// shimmer vs. the loaded card in the preview).
-  bool _planLoading = false;
+  /// The activity a learner tapped to expand to its large card in place: a
+  /// small/mid pin promotes to the large tier on tap, and the large card then
+  /// taps through to the plan page. Null when nothing is promoted; tapping the
+  /// empty map clears it. Stays on the persistent map — no navigation, no second
+  /// map, no preview popup.
+  String? _promotedActivityId;
 
   Client? _client;
   StreamSubscription<dynamic>? _syncSub;
@@ -518,13 +508,9 @@ class _WorldMapState extends State<WorldMap>
   /// else. Guarded so our own clears (which also set it false) don't loop.
   void _onPinControllerChange() {
     if (!MapPinController.notifier.value &&
-        _selectedActivity != null &&
+        _promotedActivityId != null &&
         mounted) {
-      setState(() {
-        _selectedActivity = null;
-        _selectedPlan = null;
-        _planLoading = false;
-      });
+      _collapse();
     }
   }
 
@@ -534,11 +520,7 @@ class _WorldMapState extends State<WorldMap>
     // so clicking through courses doesn't snap the camera on every hop — it
     // glides only after you've settled on one.
     if (mounted) {
-      setState(() {
-        _selectedActivity = null;
-        _selectedPlan = null;
-        _planLoading = false;
-      });
+      setState(() => _promotedActivityId = null);
       MapPinController.set(false);
     }
     _loadForContext(debounceFit: true);
@@ -683,41 +665,21 @@ class _WorldMapState extends State<WorldMap>
         );
       } catch (_) {}
     }
-    _selectActivity(card);
+    _promoteToLarge(card);
   }
 
-  /// Open the preview for [card] immediately, then fetch its full plan in the
-  /// background (the preview shimmers until it arrives).
-  Future<void> _selectActivity(QuestActivityCard card) async {
-    // Signal the shell that a pin preview is open, so on a narrow screen it hides
-    // the bottom nav while the preview rides in a bottom sheet (below).
-    MapPinController.set(true);
-    setState(() {
-      _selectedActivity = card;
-      _selectedPlan = null;
-      _planLoading = true;
-    });
-    try {
-      final plan = await ActivityPlanRepo.instance.getPlan(card.activityId);
-      if (!mounted || _selectedActivity?.activityId != card.activityId) return;
-      setState(() {
-        _selectedPlan = plan;
-        _planLoading = false;
-      });
-    } catch (_) {
-      if (mounted && _selectedActivity?.activityId == card.activityId) {
-        setState(() => _planLoading = false);
-      }
-    }
+  /// Promote [card] to its large card in place: a small/mid pin expands to the
+  /// large tier on tap (the large card then taps through to the plan page). The
+  /// large marker hydrates the full plan itself (image + star total), so this
+  /// only flips the tier. No navigation, no preview popup.
+  void _promoteToLarge(QuestActivityCard card) {
+    setState(() => _promotedActivityId = card.activityId);
+    ActivityPlanRepo.instance.ensure(card.activityId);
   }
 
-  void _clearSelection() {
-    setState(() {
-      _selectedActivity = null;
-      _selectedPlan = null;
-      _planLoading = false;
-    });
-    MapPinController.set(false);
+  void _collapse() {
+    if (_promotedActivityId == null) return;
+    setState(() => _promotedActivityId = null);
   }
 
   /// Resolve a [MapFocus] to a map coordinate, or null if not resolvable yet.
@@ -872,7 +834,7 @@ class _WorldMapState extends State<WorldMap>
         p.startsWith('autoplay='));
     parts.add('activity=${card.activityId}');
     context.go(parts.isEmpty ? '/' : '/?${parts.join('&')}');
-    _clearSelection();
+    _collapse();
   }
 
   /// The clustered-pins bubble (Google-Maps grouping), coloured by the cluster's
@@ -916,7 +878,7 @@ class _WorldMapState extends State<WorldMap>
       child: Tooltip(
         message: card.title,
         child: GestureDetector(
-          onTap: () => _selectActivity(card),
+          onTap: () => _promoteToLarge(card),
           child: _stateDot(
             state: state,
             diameter: 18,
@@ -944,7 +906,7 @@ class _WorldMapState extends State<WorldMap>
       child: Tooltip(
         message: card.title,
         child: GestureDetector(
-          onTap: () => _selectActivity(card),
+          onTap: () => _promoteToLarge(card),
           child: Stack(
             clipBehavior: Clip.none,
             alignment: Alignment.center,
@@ -1034,17 +996,24 @@ class _WorldMapState extends State<WorldMap>
     return Marker(
       point: point,
       width: 260,
-      height: joinable ? 180 : 120,
+      // The inner Align lets the card hug its own content (each state is a
+      // different height: locked has no star row, completed adds an action row,
+      // joinable adds the avatar row). Height here is only a ceiling so the
+      // tallest variant isn't clipped; shorter cards don't stretch to fill it.
+      height: joinable ? 184 : 150,
       alignment: Alignment.topCenter,
-      child: WorldMapLargeCard(
-        card: card,
-        state: state,
-        pinged: pinged,
-        plan: plan,
-        starsEarned: _userStars[card.activityId] ?? 0,
-        participants: info.participants,
-        openSlots: info.openSlots,
-        onTap: () => _selectActivity(card),
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: WorldMapLargeCard(
+          card: card,
+          state: state,
+          pinged: pinged,
+          plan: plan,
+          starsEarned: _userStars[card.activityId] ?? 0,
+          participants: info.participants,
+          openSlots: info.openSlots,
+          onTap: () => _openActivity(card),
+        ),
       ),
     );
   }
@@ -1060,8 +1029,8 @@ class _WorldMapState extends State<WorldMap>
     // search/filters (World only; a course shows its set as-is).
     final visible = _visiblePins;
 
-    // On a narrow screen the pin preview rides in a bottom sheet (below) rather
-    // than a popup glued to the pin; the glued popup is the wide-screen form.
+    // Auto-featured large cards render only where there is horizontal room
+    // (desktop / column mode); a promoted card renders at any width.
     final narrow = !FluffyThemes.isColumnMode(context);
     final desktop = !narrow;
     // Rank the in-view pins into tiers (per-view budgets). Filter to the camera
@@ -1119,6 +1088,8 @@ class _WorldMapState extends State<WorldMap>
       }
     }
     PinTier tierOf(String id) {
+      // A tapped small/mid pin is promoted to its large card in place.
+      if (id == _promotedActivityId) return PinTier.large;
       if (largeWindow.contains(id)) return PinTier.large;
       if (ranking.largePool.contains(id) || ranking.midIds.contains(id)) {
         return PinTier.mid;
@@ -1139,23 +1110,6 @@ class _WorldMapState extends State<WorldMap>
       for (final c in visible)
         if (c.point != null) c.point!: stateOf(c.activityId),
     };
-    // Place the preview above the pin, but flip it below when the pin is too
-    // near the top to fit (edge-aware, no map move).
-    final selected = _selectedActivity;
-    final selectedVisible =
-        selected != null &&
-        selected.point != null &&
-        visible.any((c) => c.activityId == selected.activityId);
-    bool popupAbove = true;
-    if (selectedVisible && !narrow) {
-      try {
-        popupAbove =
-            _controller.camera.latLngToScreenOffset(selected.point!).dy > 360.0;
-      } catch (_) {
-        // Camera not ready yet; default to above.
-      }
-    }
-
     final map = FlutterMap(
       mapController: _controller,
       options: MapOptions(
@@ -1180,9 +1134,9 @@ class _WorldMapState extends State<WorldMap>
         interactionOptions: const InteractionOptions(
           flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
         ),
-        // Tap empty map → dismiss any open activity preview.
+        // Tap empty map → collapse a promoted large card back to its pin.
         onTap: (_, _) {
-          if (_selectedActivity != null) _clearSelection();
+          if (_promotedActivityId != null) _collapse();
         },
         // World pins are viewport-bounded: load once the camera is ready, then
         // re-load (debounced) as the user pans/zooms. Course pins are
@@ -1255,50 +1209,24 @@ class _WorldMapState extends State<WorldMap>
             },
           ),
         ),
-        // The 1–3 large featured cards (desktop): unclustered, always visible.
-        if (desktop)
-          MarkerLayer(
-            markers: visible
-                .where(
-                  (c) =>
-                      c.point != null &&
-                      tierOf(c.activityId) == PinTier.large,
-                )
-                .map(
-                  (card) => _largeCardMarker(
-                    card,
-                    card.point!,
-                    stateOf(card.activityId),
-                    pingedOf(card.activityId),
-                  ),
-                )
-                .toList(),
-          ),
-        // Preview popup for the tapped activity — a marker so it stays glued to
-        // its pin as the map moves. Opens immediately with the thin title; the
-        // full plan loads behind a shimmer. No navigation; the map stays put.
-        // Wide-screen only: on narrow the preview rides in a bottom sheet (below).
-        if (selectedVisible && !narrow)
-          MarkerLayer(
-            markers: [
-              Marker(
-                point: selected.point!,
-                width: 230,
-                height: 400,
-                alignment: popupAbove
-                    ? Alignment.topCenter
-                    : Alignment.bottomCenter,
-                child: _ActivityPreviewPopup(
-                  card: selected,
-                  plan: _selectedPlan,
-                  loading: _planLoading,
-                  below: !popupAbove,
-                  onClose: _clearSelection,
-                  onDetails: () => _openActivity(selected),
+        // Large cards (unclustered, always visible): the 1–3 auto-featured cards
+        // on desktop plus any pin promoted by a tap. tierOf gates the auto pool
+        // to desktop, so on a narrow screen only a promoted card is large here.
+        MarkerLayer(
+          markers: visible
+              .where(
+                (c) => c.point != null && tierOf(c.activityId) == PinTier.large,
+              )
+              .map(
+                (card) => _largeCardMarker(
+                  card,
+                  card.point!,
+                  stateOf(card.activityId),
+                  pingedOf(card.activityId),
                 ),
-              ),
-            ],
-          ),
+              )
+              .toList(),
+        ),
         RichAttributionWidget(
           attributions: [
             TextSourceAttribution('OpenStreetMap contributors', onTap: () {}),
@@ -1308,31 +1236,8 @@ class _WorldMapState extends State<WorldMap>
       ],
     );
 
-    // On a narrow screen a selected pin's preview is a bottom sheet anchored to
-    // the bottom edge over the map (the shell hides the bottom nav while it's
-    // up). It does not require the pin to stay on-screen (unlike the glued
-    // popup), so it survives a pan. Shown over both the world and a course map.
-    final pinSheet = (narrow && selected != null)
-        ? Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: _PinPreviewSheet(
-              card: selected,
-              plan: _selectedPlan,
-              loading: _planLoading,
-              onClose: _clearSelection,
-              onDetails: () => _openActivity(selected),
-            ),
-          )
-        : null;
-
     // World gets the search + filter overlay; a course shows its plain map.
-    // Both get the narrow pin sheet when one is selected.
-    if (!_isWorld) {
-      if (pinSheet == null) return map;
-      return Stack(children: [Positioned.fill(child: map), pinSheet]);
-    }
+    if (!_isWorld) return map;
     final l2 = MatrixState.pangeaController.userController.userL2Code;
     return Stack(
       children: [
@@ -1358,248 +1263,7 @@ class _WorldMapState extends State<WorldMap>
             emptyInView: !_loadingPins && visible.isEmpty,
           ),
         ),
-        ?pinSheet,
       ],
-    );
-  }
-}
-
-/// In-map preview popup for a tapped activity pin. Opens immediately: the
-/// activity card renders the moment the full plan is available, and shows a
-/// shimmer skeleton (with the title we already have from the pin) while it
-/// loads. Plus a "Details" action — all without leaving the current view.
-class _ActivityPreviewPopup extends StatelessWidget {
-  final QuestActivityCard card;
-  final ActivityPlanModel? plan;
-  final bool loading;
-  final bool below;
-  final VoidCallback onClose;
-  final VoidCallback onDetails;
-
-  const _ActivityPreviewPopup({
-    required this.card,
-    required this.plan,
-    required this.loading,
-    required this.onClose,
-    required this.onDetails,
-    this.below = false,
-  });
-
-  static const double _cardWidth = 180.0;
-  static const double _cardHeight = 262.0;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final activity = plan;
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        // Gap sits between the card and the pin — on top when the card hangs
-        // below the pin, on the bottom when it floats above.
-        if (below) const SizedBox(height: 14.0),
-        Material(
-          elevation: 8,
-          borderRadius: BorderRadius.circular(16.0),
-          color: theme.colorScheme.surface,
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  width: _cardWidth,
-                  height: _cardHeight,
-                  child: activity != null
-                      ? ActivitySuggestionCard(
-                          activity: activity,
-                          width: _cardWidth,
-                          height: _cardHeight,
-                          fontSize: 16.0,
-                          fontSizeSmall: 11.0,
-                          iconSize: 11.0,
-                        )
-                      : _PreviewSkeleton(title: card.title, loading: loading),
-                ),
-                const SizedBox(height: 6.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.close),
-                      tooltip: L10n.of(context).close,
-                      visualDensity: VisualDensity.compact,
-                      onPressed: onClose,
-                    ),
-                    FilledButton.icon(
-                      icon: const Icon(Icons.open_in_full, size: 14),
-                      label: Text(L10n.of(context).details),
-                      style: FilledButton.styleFrom(
-                        visualDensity: VisualDensity.compact,
-                      ),
-                      onPressed: onDetails,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-        if (!below) const SizedBox(height: 14.0),
-      ],
-    );
-  }
-}
-
-/// The narrow-screen form of a tapped pin's preview: a bottom sheet anchored to
-/// the screen's bottom edge over the map (vs the wide-screen [_ActivityPreviewPopup]
-/// glued to the pin). Same content — the activity card (shimmer skeleton while
-/// the plan loads) plus close / Details — so tapping Details opens the activity
-/// and close dismisses to the bare map. See `routing.instructions.md`.
-class _PinPreviewSheet extends StatelessWidget {
-  final QuestActivityCard card;
-  final ActivityPlanModel? plan;
-  final bool loading;
-  final VoidCallback onClose;
-  final VoidCallback onDetails;
-
-  const _PinPreviewSheet({
-    required this.card,
-    required this.plan,
-    required this.loading,
-    required this.onClose,
-    required this.onDetails,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final activity = plan;
-    return Material(
-      elevation: 8,
-      color: theme.colorScheme.surface,
-      borderRadius: const BorderRadius.vertical(top: Radius.circular(20.0)),
-      clipBehavior: Clip.antiAlias,
-      child: SafeArea(
-        top: false,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 12.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // Grab handle, matching the course sheet.
-              Container(
-                width: 36.0,
-                height: 4.0,
-                margin: const EdgeInsets.only(bottom: 12.0),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.onSurfaceVariant.withValues(
-                    alpha: 0.4,
-                  ),
-                  borderRadius: BorderRadius.circular(2.0),
-                ),
-              ),
-              SizedBox(
-                width: _ActivityPreviewPopup._cardWidth,
-                height: _ActivityPreviewPopup._cardHeight,
-                child: activity != null
-                    ? ActivitySuggestionCard(
-                        activity: activity,
-                        width: _ActivityPreviewPopup._cardWidth,
-                        height: _ActivityPreviewPopup._cardHeight,
-                        fontSize: 16.0,
-                        fontSizeSmall: 11.0,
-                        iconSize: 11.0,
-                      )
-                    : _PreviewSkeleton(title: card.title, loading: loading),
-              ),
-              const SizedBox(height: 8.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.close),
-                    tooltip: L10n.of(context).close,
-                    onPressed: onClose,
-                  ),
-                  FilledButton.icon(
-                    icon: const Icon(Icons.open_in_full, size: 16),
-                    label: Text(L10n.of(context).details),
-                    onPressed: onDetails,
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-/// Card-shaped placeholder shown while the full plan loads: the real title
-/// (known from the pin) over a shimmering image block + meta line, matching
-/// the [ActivitySuggestionCard] layout so the swap-in is seamless. When
-/// [loading] is false but no plan arrived, it just holds the title (no
-/// shimmer) rather than spinning forever.
-class _PreviewSkeleton extends StatelessWidget {
-  final String title;
-  final bool loading;
-
-  const _PreviewSkeleton({required this.title, required this.loading});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    Widget block(double width, double height) {
-      final box = Container(
-        width: width,
-        height: height,
-        decoration: BoxDecoration(
-          color: theme.colorScheme.surfaceContainerHighest,
-          borderRadius: BorderRadius.circular(6.0),
-        ),
-      );
-      if (!loading) return box;
-      return Shimmer.fromColors(
-        baseColor: theme.colorScheme.surfaceContainerHigh,
-        highlightColor: theme.colorScheme.surfaceBright,
-        child: box,
-      );
-    }
-
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(12.0),
-      child: Container(
-        color: theme.colorScheme.surfaceContainer,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            block(_ActivityPreviewPopup._cardWidth, 150.0),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 6.0,
-                  vertical: 6.0,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      title,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 16.0),
-                    ),
-                    block(90.0, 12.0),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

@@ -15,7 +15,7 @@ The map is the canvas the whole app sits on; every other surface is a panel over
 
 ## What appears on the map
 
-- **Today: located activities and their open sessions.** Geography lives on the activity (its coordinates), not on the course or quest — see the content model in [courses-and-activities-v3](../../../.github/.github/instructions/courses-and-activities-v3.instructions.md). The preferenced unit is an open **session**: a live, joinable instance of an activity.
+- **Today: located activities and their open sessions.** Geography lives on the activity (its coordinates), not on the course or quest — see the content model in [quests-and-learning-objectives](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md). The preferenced unit is an open **session**: a live, joinable instance of an activity.
 - **Designed to generalize.** A map item is a located thing with facets, so new content types can join the same default → search → filter → display pipeline without a redesign: places and locations, opt-in users-as-content, and curated social items from the (future, supply-side) [world-feed](../../../.github/.github/instructions/world-feed.instructions.md).
 - **A course scope narrows the candidate set.** Under the `?m=course:` map-scope token (see [routing.instructions.md](routing.instructions.md)) the map shows just that course's activities; the unscoped world view is the personalized default below. The content, ranking, and display pipeline is identical either way — the scope only changes which items compete.
 
@@ -36,7 +36,7 @@ The map holds far more than it should ever show at full weight, so every item re
 |---|---|---|
 | **Small dot** | many (the long tail) | a plain dot — an available item, no detail until interacted with |
 | **Mid pin** | ~5–10, by viewport size | a pin with an activity-type glyph; where strong matches and open sessions get promoted |
-| **Large card** | 1–3 only | the featured callout, for **in-course unlocked activities and open joinable sessions** (see below): a full preview card shown right on the map — image, title, type, level match, and a **row of stars** for the learner's progress. The joinable form also shows who is already in the session, its open slots, and a join affordance. Renders only where there is horizontal room (desktop / column mode); on a narrow screen these render as mid pins and open the preview sheet on tap |
+| **Large card** | 1–3 only | the featured callout, for **in-course unlocked activities and open joinable sessions** (see below): a full preview card shown right on the map — image, title, type, level match, and a **row of stars** for the learner's progress. The joinable form also shows who is already in the session, its open slots, and a join affordance. **Auto-featured** only where there is horizontal room (desktop / column mode); but the same card is the on-demand detail any pin expands to on tap (see [Interaction](#interaction) below), so a promoted card renders on a narrow screen too |
 
 A pin's **state** is carried by color at every tier — the component is `Activity pin v3` in the frame above:
 
@@ -52,7 +52,14 @@ A **pinged** modifier (a hand glyph) marks an open session whose host has pinged
 
 **What ships.** Locked, unlocked, and joinable, plus the progress fill, are all derived from Matrix room state the client already holds: the progression gate (a learning objective unlocks once the previous one has at least 10 stars, teacher-overridable) is resolved client-side per [quests.instructions.md](quests.instructions.md), so locked pins render today. A ping leaves no persistent room state, so **pinged** is detected best-effort by scanning recent course-space messages for the host's ping — a proxy whose efficacy we watch before investing in a persistent ping signal.
 
-The preview card that the large tier shows proactively is the *same* card that opens on demand when a learner taps a smaller pin (a bottom sheet on mobile — see [routing.instructions.md](routing.instructions.md)). **Grouping** is separate from the tiers: where pins would overlap they collapse into a count bubble — the `Grouped` variant, itself state-colored — that de-overlaps the map and expands on zoom or tap.
+### Interaction
+
+**Tap promotes, tap again opens.** There is no separate preview popup. Tapping a small or mid pin **promotes it to its large card in place**; tapping a large card (auto-featured or promoted) **opens the activity's plan page**; tapping the empty map collapses a promoted card (see [routing.instructions.md](routing.instructions.md) for how this rides the workspace and folds on a narrow screen). Because the large card is now the on-demand detail for *any* pin, it renders all four states, not just the two it is auto-featured for:
+
+- **Locked** — grayed, a lock over the thumbnail, an empty star row, and an **unlock-requirement line**; its plan page opens read-only, with start gated until the objective unlocks.
+- **Completed** (a full star row) — keeps its unlocked color per the fill-not-state rule, adds a **Completed** marker and **Play again / Review**; its plan page offers replay or review.
+
+**Grouping** is separate from the tiers: where pins would overlap they collapse into a count bubble — the `Grouped` variant, itself state-colored — that de-overlaps the map and expands on zoom or tap.
 
 ## Priority matrix
 
@@ -61,8 +68,8 @@ What an item is, and how prominent it becomes, is decided by several factors rat
 **State — the dominant axis, a gate (not a score).** An item can match more than one state; the highest on the ladder `locked < unlocked < joinable` is the one displayed, and it caps the item's prominence:
 
 - **Joinable** sessions and **in-course unlocked** activities are the states eligible for the **large** card — a live session to join, or the learner's next in-course activity with its star progress. Joinable is featured first: joining a live session is the goal (see [What the map is for](#what-the-map-is-for)).
-- **Locked** is shown dimmed for a full world and legible progression, never promoted.
-- **A finished activity** (its progress fill is full) is forced to the **smallest** tier: it stays on the map so the trail is visible, but never takes a mid or large slot meant for the next thing to do.
+- **Locked** is shown dimmed for a full world and legible progression, never *auto*-promoted — though tapping a locked pin still expands its grayed large card to preview what's ahead.
+- **A finished activity** (its progress fill is full) is forced to the **smallest** tier for *auto*-featuring: it stays on the map so the trail is visible, but never takes a mid or large slot meant for the next thing to do — tapping it still expands its completed large card (replay / review).
 
 State is a gate rather than a weighted term because these are hard rules: no relevance score should lift a locked or already-finished item into the spotlight.
 

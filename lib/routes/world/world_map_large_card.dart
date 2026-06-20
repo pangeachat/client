@@ -13,12 +13,16 @@ import 'package:fluffychat/widgets/avatar.dart';
 /// needs, decoupled from the Matrix SDK type.
 typedef LargeCardParticipant = ({Uri? avatar, String name});
 
-/// The large featured map card (Figma `… Large`). Two forms share one layout:
-/// an **in-course unlocked** activity and an **open joinable session**; the
-/// joinable form adds the participant avatar stack and its open slots. Progress
-/// is the row of stars (earned / the activity's total). The full [plan] carries
-/// the image and goal total and is null while it hydrates, so the card degrades
-/// to a skeleton until it lands. Design: world-map.instructions.md.
+/// The large featured map card (Figma `… Large`). One layout, four state skins:
+/// **unlocked** (purple, star progress), **joinable** (green, + participant
+/// avatars and open slots), **locked** (gray, lock + unlock-requirement line),
+/// and **completed** (full star row + a Completed marker and Play-again /
+/// Review). Completion is a fill, not a state — a completed card is an unlocked
+/// one whose [starsEarned] has reached the total — so it keeps the unlocked
+/// color (see world-map.instructions.md). The full [plan] carries the image and
+/// goal total and is null while it hydrates, so the card degrades to a skeleton
+/// until it lands. Tapping the card opens the activity's plan page; the map owns
+/// that ([onTap]).
 class WorldMapLargeCard extends StatelessWidget {
   final QuestActivityCard card;
   final ActivityPinState state;
@@ -41,9 +45,22 @@ class WorldMapLargeCard extends StatelessWidget {
     this.openSlots = 0,
   });
 
-  Color get _accent => state == ActivityPinState.joinable
-      ? const Color(0xFF34A853) // green
-      : const Color(0xFF7B61FF); // purple
+  static const Color _green = Color(0xFF34A853);
+  static const Color _purple = Color(0xFF7B61FF);
+  static const Color _gray = Color(0xFFB4B2A9);
+  static const Color _grayText = Color(0xFF5F5E5A);
+  static const Color _completedGreen = Color(0xFF3B6D11);
+
+  Color get _accent {
+    switch (state) {
+      case ActivityPinState.joinable:
+        return _green;
+      case ActivityPinState.locked:
+        return _gray;
+      case ActivityPinState.unlocked:
+        return _purple;
+    }
+  }
 
   /// The most-goal role's goal count stands in for the activity's star total: a
   /// learner plays one role, and the richest role bounds the progress bar.
@@ -55,9 +72,19 @@ class WorldMapLargeCard extends StatelessWidget {
         .fold(0, (a, b) => b > a ? b : a);
   }
 
+  /// Completion is a full star row on an unlocked pin (not a separate state). A
+  /// pin with a live session reads joinable, not completed, so the learner is
+  /// pulled back to play.
+  bool get _completed =>
+      state == ActivityPinState.unlocked &&
+      _starsTotal > 0 &&
+      starsEarned >= _starsTotal;
+
   @override
   Widget build(BuildContext context) {
     final joinable = state == ActivityPinState.joinable;
+    final locked = state == ActivityPinState.locked;
+    final completed = _completed;
     return GestureDetector(
       onTap: onTap,
       child: Material(
@@ -75,9 +102,21 @@ class WorldMapLargeCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _header(context),
-              const SizedBox(height: 8),
-              _starRow(),
+              _header(context, locked: locked, completed: completed),
+              // A locked activity has no progress, so no star row — and dropping
+              // it keeps the card from overflowing when the requirement wraps.
+              if (!locked) ...[
+                const SizedBox(height: 8),
+                _starRow(),
+              ],
+              if (locked) ...[
+                const SizedBox(height: 8),
+                _lockedRequirement(),
+              ],
+              if (completed) ...[
+                const SizedBox(height: 8),
+                _completedActions(),
+              ],
               if (joinable && (participants.isNotEmpty || openSlots > 0)) ...[
                 const SizedBox(height: 8),
                 _participantRow(),
@@ -89,11 +128,15 @@ class WorldMapLargeCard extends StatelessWidget {
     );
   }
 
-  Widget _header(BuildContext context) {
+  Widget _header(
+    BuildContext context, {
+    required bool locked,
+    required bool completed,
+  }) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _thumbnail(),
+        _thumbnail(locked: locked),
         const SizedBox(width: 8),
         Expanded(
           child: Column(
@@ -103,13 +146,14 @@ class WorldMapLargeCard extends StatelessWidget {
                 card.title,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
+                style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 13,
+                  color: locked ? _grayText : null,
                 ),
               ),
               const SizedBox(height: 4),
-              _typeChip(),
+              _typeChip(locked: locked, completed: completed),
             ],
           ),
         ),
@@ -119,9 +163,9 @@ class WorldMapLargeCard extends StatelessWidget {
     );
   }
 
-  Widget _thumbnail() {
+  Widget _thumbnail({bool locked = false}) {
     final url = plan?.imageURL;
-    return ClipRRect(
+    final image = ClipRRect(
       borderRadius: BorderRadius.circular(8),
       child: SizedBox(
         width: 48,
@@ -135,33 +179,45 @@ class WorldMapLargeCard extends StatelessWidget {
             : _thumbPlaceholder(),
       ),
     );
+    if (!locked) return image;
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Opacity(opacity: 0.5, child: image),
+        const Icon(Icons.lock, size: 20, color: _grayText),
+      ],
+    );
   }
 
   Widget _thumbPlaceholder() => Container(color: Colors.black12);
 
-  // All v3 activities are conversations today; surfaced as the type chip.
+  // All v3 activities are conversations today; surfaced as the type chip, unless
+  // the activity is completed (a Completed marker takes the chip's place).
   // TODO(world-map): localize and read the real activity type once modeled.
-  Widget _typeChip() {
+  Widget _typeChip({required bool locked, required bool completed}) {
+    final Color fg = completed
+        ? _completedGreen
+        : (locked ? _grayText : _accent);
+    final IconData icon = completed
+        ? Icons.check_circle_outline
+        : (pinged ? Icons.back_hand : Icons.chat_bubble_outline);
+    final String label = completed ? 'Completed' : 'Conversation';
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       decoration: BoxDecoration(
-        color: _accent.withValues(alpha: 0.12),
+        color: fg.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            pinged ? Icons.back_hand : Icons.chat_bubble_outline,
-            size: 12,
-            color: _accent,
-          ),
+          Icon(icon, size: 12, color: fg),
           const SizedBox(width: 4),
           Text(
-            'Conversation',
+            label,
             style: TextStyle(
               fontSize: 11,
-              color: _accent,
+              color: fg,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -206,6 +262,66 @@ class WorldMapLargeCard extends StatelessWidget {
             color: i < earned ? AppConfig.gold : Colors.black26,
           ),
       ],
+    );
+  }
+
+  // The activity behind a locked pin can't be started yet; its plan page opens
+  // read-only. The card states why.
+  // TODO(world-map): name the specific gating objective + star threshold.
+  Widget _lockedRequirement() {
+    return const Row(
+      children: [
+        Icon(Icons.lock, size: 13, color: _grayText),
+        SizedBox(width: 6),
+        Expanded(
+          child: Text(
+            'Finish the previous mission to unlock',
+            style: TextStyle(fontSize: 11, color: _grayText),
+          ),
+        ),
+      ],
+    );
+  }
+
+  // Indicators of what the plan page offers a finished activity; the card itself
+  // taps through to that page (it does not act on these inline).
+  Widget _completedActions() {
+    return Row(
+      children: [
+        _actionPill(Icons.refresh, 'Play again', _purple, const Color(0xFFCECBF6)),
+        const SizedBox(width: 6),
+        _actionPill(
+          Icons.visibility_outlined,
+          'Review',
+          _grayText,
+          const Color(0xFFD3D1C7),
+        ),
+      ],
+    );
+  }
+
+  Widget _actionPill(IconData icon, String label, Color fg, Color border) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+      decoration: BoxDecoration(
+        border: Border.all(color: border),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 13, color: fg),
+          const SizedBox(width: 4),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+              color: fg,
+            ),
+          ),
+        ],
+      ),
     );
   }
 

@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
-import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -108,8 +111,17 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
     // numConstructs/derivedData fresh on every rebuild. See
     // analytics-system.instructions.md.
     return StreamBuilder(
-      stream: MatrixState.pangeaController.userController.languageStream.stream,
+      // Stars are not an analytics construct — they're orchestrator-awarded
+      // goals living in each activity room's state — so rebuild on that state
+      // changing too, to keep the stars total live as goals complete.
+      stream: client.onRoomState.stream.where(
+        (e) => e.state.type == PangeaEventTypes.orchestratorAwardedGoals,
+      ),
       builder: (context, _) {
+        return StreamBuilder(
+          stream:
+              MatrixState.pangeaController.userController.languageStream.stream,
+          builder: (context, _) {
         final l2 = MatrixState.pangeaController.userController.userL2;
         return StreamBuilder(
           stream: dispatcher.constructUpdateStream.stream,
@@ -119,11 +131,9 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
               builder: (context, _) {
                 final vocab = service.numConstructs(ConstructTypeEnum.vocab);
                 final grammar = service.numConstructs(ConstructTypeEnum.morph);
-                // Same filtered accessor the sessions panel (ActivityArchive)
-                // renders, so the count matches that list.
-                final sessions = client
-                        .ownAnalyticsRoomLocalByL2?.archivedActivities.length ??
-                    0;
+                // Total stars the learner has earned across their activity
+                // sessions (best per activity, matching the per-pin star fill).
+                final stars = _totalStars(client);
                 return FutureBuilder<DerivedAnalyticsDataModel>(
                   future: l2 != null
                       ? service.derivedData(l2.langCodeShort)
@@ -141,7 +151,7 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
                       progress: progress,
                       vocab: vocab,
                       grammar: grammar,
-                      sessions: sessions,
+                      stars: stars,
                     );
                   },
                 );
@@ -151,6 +161,27 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
         );
       },
     );
+      },
+    );
+  }
+
+  /// Total stars = orchestrator-awarded goals across the learner's activity
+  /// sessions, taking the best per activity so multiple sessions of one
+  /// activity don't multiply its stars (matches the map's per-pin fill). Reads
+  /// each room's awarded-goals state and the learner's role assignment — no
+  /// activity plan needed, so it works for rooms whose plan hasn't hydrated.
+  int _totalStars(Client client) {
+    final byActivity = <String, int>{};
+    for (final room in client.rooms) {
+      final activityId = room.activityId;
+      final roleId = room.ownRoleState?.id;
+      if (activityId == null || roleId == null) continue;
+      final earned = room.orchestratorAwardedGoals.awards[roleId]?.length ?? 0;
+      if (earned > (byActivity[activityId] ?? 0)) {
+        byActivity[activityId] = earned;
+      }
+    }
+    return byActivity.values.fold<int>(0, (a, b) => a + b);
   }
 
   Widget _cluster({
@@ -159,7 +190,7 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
     required double progress,
     required int vocab,
     required int grammar,
-    required int sessions,
+    required int stars,
   }) {
     // Vertical cluster (avatar · powerups pill · flag). It lives in a right
     // gutter beside the right-docked analytics panel (the panel is inset to
@@ -178,7 +209,7 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
         _PowerupsPill(
           level: level,
           progress: progress,
-          sessions: sessions,
+          stars: stars,
           grammar: grammar,
           vocab: vocab,
           onTap: _openAnalytics,
@@ -316,7 +347,7 @@ class _XpBorderPainter extends CustomPainter {
 class _PowerupsPill extends StatelessWidget {
   final int level;
   final double progress;
-  final int sessions;
+  final int stars;
   final int grammar;
   final int vocab;
   final void Function(AnalyticsPanelTab) onTap;
@@ -325,7 +356,7 @@ class _PowerupsPill extends StatelessWidget {
   const _PowerupsPill({
     required this.level,
     required this.progress,
-    required this.sessions,
+    required this.stars,
     required this.grammar,
     required this.vocab,
     required this.onTap,
@@ -366,8 +397,8 @@ class _PowerupsPill extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   _TrackerButton(
-                    indicator: ProgressIndicatorEnum.activities,
-                    count: sessions,
+                    indicator: ProgressIndicatorEnum.stars,
+                    count: stars,
                     onTap: () => onTap(AnalyticsPanelTab.sessions),
                   ),
                   _TrackerButton(

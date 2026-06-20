@@ -278,7 +278,7 @@ cluster for analytics), so nothing is lost, just not drawn at once. Every
 master/detail flow is already folded here: one panel, navigated with a back arrow.
 
 **Map content folds to a bottom sheet on a narrow screen.** A surface that is *map
-content* — a **course**, an **activity plan/preview**, or the add-course flow —
+content* — a **course**, an **activity plan**, or the add-course flow —
 renders, when it is the focused narrow surface, as a draggable bottom sheet over
 the (scoped) map rather than a full-screen page — the Google-Maps "map + sheet"
 pattern — so the map (a course's activity pins, or the activity's own pin) stays
@@ -288,17 +288,18 @@ beside the map (a course as a left panel; an activity plan as a center detail, t
 map peeking). Starting an activity from its plan launches the session, which then
 runs as an ordinary chat room — a live left-column chat, not map content.
 
-**Tapping a map pin** opens its preview as a bottom sheet on a narrow screen
-(the wide screen keeps the preview popup glued to the pin). The map owns that
-transient selection, so it tells the shell to hide the bottom nav while the sheet
-is up, and the shell clears the selection when a full-screen panel later covers the
-map (so the sheet doesn't linger).
+**Tapping a map pin promotes it; there is no preview popup.** Tapping a small or
+mid pin expands it to its **large card in place** (over the map, the bottom nav
+still showing — it is a pin, not a sheet); tapping a large card, whether
+auto-featured or just promoted, opens the activity's **plan page**. Tapping the
+empty map collapses a promoted card. The large-card design, including its locked
+and completed states, lives in [world-map.instructions.md](world-map.instructions.md).
 
 **The narrow bottom nav is only the section switcher** — World, Chats, and the
 course switcher (Analytics and Profile are reached from the cluster, not here). It
 shows only at a section root: the bare map, the chat list, or the courses list. A
 focused detail (a chat, a settings/analytics/construct page, a session) hides it,
-and a bottom sheet (a course, a tapped pin) replaces it. So the bar is present
+and a bottom sheet (a course, an activity plan) replaces it. So the bar is present
 only when you are choosing *where* to go, never while you are *in* something.
 
 ## The surfaces
@@ -316,7 +317,7 @@ behaves the same on mobile and desktop.
 | Chat list | the rail | left | open panel (master) |
 | Live chat / session | a chat-list row, an activity launch, **a course room row** | left | open panel (detail); one live at a time. A course room rides over the course filter (`?m=course:<id>` stays) so closing it reveals the course |
 | Chat members / settings (a regular chat) | the chat header | the chat panel | push (members/search live *within* the chat, not beside it) |
-| Analytics (vocab / grammar / sessions) | a top-right cluster tracker | right | open panel (master) |
+| Analytics (vocab / grammar / sessions) | a top-right cluster tracker (the **Stars** tracker opens the sessions panel) | right | open panel (master) |
 | Level | the **level medal** on the powerups pill | right | open panel (an analytics tab) |
 | A construct detail | tapping a vocab/grammar item | right | open panel (detail), left of its summary; **one detail at a time, across both columns** — a vocab detail, a grammar detail, and a completed-activity `session` review share ONE slot, so opening any one closes the other two (a live `room` chat is independent and stays open); folds in under pressure |
 | Practice session | the **Practice** button on the vocab/grammar analytics panel | right | open panel that **takes over the analytics surface** — see below. A normal bounded panel, NOT a route or fullscreen; its close confirms when a session is mid-progress |
@@ -325,7 +326,7 @@ behaves the same on mobile and desktop.
 | Learning settings (shortcut) | the cluster's **language flag** | right | opens the learning-settings page directly — the flag doubles as a shortcut to it |
 | A settings leaf (password, blocked users, emotes, …) | within its settings page | the settings panel | push |
 | Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — a flat list of joined-course tiles (image, name, participants, level, modules), with the add-course options (start-my-own / browse / enter-code) below |
-| Activity plan / preview | a course's activity list, a map pin | map content | over the map (a left-column detail; a bottom sheet on mobile), camera on the activity's pin — like a course. Its close follows the **course scope** (`?m=course:`), its contextual parent: opened from the course's activity list the scope survives (the card dropped `left=course` but kept the filter), so the plan is the card's **child** and closes with a back-arrow that reopens the card; opened from a map pin the pin handler drops the scope, so the plan is parentless and closes with an **X** to the map. No entry flag is needed: surviving scope is the discriminator. **Start** launches the session, which runs as a chat room (one live view) |
+| Activity plan | a course's activity list, a large pin card (tap) | map content | over the map (a left-column detail; a bottom sheet on mobile), camera on the activity's pin — like a course. Its close follows the **course scope** (`?m=course:`), its contextual parent: opened from the course's activity list the scope survives (the card dropped `left=course` but kept the filter), so the plan is the card's **child** and closes with a back-arrow that reopens the card; opened from a map pin the pin handler drops the scope, so the plan is parentless and closes with an **X** to the map. No entry flag is needed: surviving scope is the discriminator. **Start** launches the session, which runs as a chat room (one live view) |
 
 ### One live session at a time
 
@@ -382,8 +383,10 @@ A persistent cluster pinned to the top-right of the map opens the right column. 
 has its own gold **"powerups" visual** (per Figma), top to bottom:
 the user's **avatar** wrapped in an XP ring (a gray track that fills gold clockwise
 toward the next level, resetting on level-up); a gold **powerups pill** of three
-trackers — completed **Sessions**, **Grammar**, **Vocabulary** — with the **level
-medal** overhanging its base; and the active L2 **flag** below.
+trackers — total **Stars** earned, **Grammar**, **Vocabulary** — with the **level
+medal** overhanging its base; and the active L2 **flag** below. The Stars count is
+the learner's stars summed across activities, best per activity (a replay doesn't
+multiply it), so it agrees with the per-pin fill on the map.
 
 Each element is a labeled control (tooltip + semantic button label, since the map
 is a canvas and gets no implicit labels): a **tracker** opens that metric as a
@@ -394,10 +397,13 @@ its own surface); the **flag** is a shortcut to the learning-settings page. The 
 shows the language's flag image, or its uppercased **language code** when the
 language has no single regional flag (bare `es` is ambiguous across regions;
 `es-ES` resolves to one). The cluster stays pinned above the panels, because it is
-the anchor the right column justifies against. Its live counts/level/XP come from
-the analytics streams — see
+the anchor the right column justifies against. Its live vocab/grammar counts and
+level/XP come from the analytics streams — see
 [analytics-system.instructions.md](analytics-system.instructions.md) for how a UI
-surface reads them without missing the load-time update.
+surface reads them without missing the load-time update. The **Stars** count comes
+instead from the learner's awarded-goal room state (the same source as the
+[quest LO gate](quests.instructions.md), not the analytics streams), so the cluster
+also rebuilds on that room-state stream as goals are awarded.
 
 ## Cross-cutting
 

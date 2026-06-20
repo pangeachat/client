@@ -9,7 +9,8 @@ enum ProgressIndicatorEnum {
   level,
   wordsUsed,
   morphsUsed,
-  activities;
+  activities,
+  stars;
 
   static ProgressIndicatorEnum? fromString(String value) {
     switch (value) {
@@ -36,6 +37,8 @@ enum ProgressIndicatorEnum {
         return Icons.star;
       case ProgressIndicatorEnum.activities:
         return Icons.radar;
+      case ProgressIndicatorEnum.stars:
+        return Icons.star;
     }
   }
 
@@ -56,6 +59,8 @@ enum ProgressIndicatorEnum {
         return L10n.of(context).grammar;
       case ProgressIndicatorEnum.activities:
         return L10n.of(context).activities;
+      case ProgressIndicatorEnum.stars:
+        return L10n.of(context).stars;
     }
   }
 
@@ -80,6 +85,8 @@ enum ProgressIndicatorEnum {
         return ConstructTypeEnum.morph.name;
       case activities:
         return 'activities';
+      case stars:
+        return 'stars';
     }
   }
 }
