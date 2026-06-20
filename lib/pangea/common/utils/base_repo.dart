@@ -78,11 +78,20 @@ abstract class BaseRepo<
   /// (deduplicating concurrent calls for the same key) and caches the result.
   /// The fetch deadline is the repo-level [timeout], so concurrent callers
   /// share one well-defined timeout.
-  Future<Result<TResponse>> get(TRequest request) async {
+  /// [forceRefresh] skips the cache READ and fetches fresh, then overwrites the
+  /// cache. The existing cached value is left in place until the fresh response
+  /// lands (via [setCached]), so a concurrent [getCached] keeps returning the
+  /// stale value rather than null — stale-while-revalidate, no loading flicker.
+  Future<Result<TResponse>> get(
+    TRequest request, {
+    bool forceRefresh = false,
+  }) async {
     await _storageInit;
-    final cached = getCached(request);
-    if (cached != null) {
-      return Result.value(cached);
+    if (!forceRefresh) {
+      final cached = getCached(request);
+      if (cached != null) {
+        return Result.value(cached);
+      }
     }
 
     final key = request.storageKey;

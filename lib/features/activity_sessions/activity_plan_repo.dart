@@ -47,6 +47,7 @@ class ActivityPlanRepo
 
   final Map<String, ActivityPlanModel> _resolved = {};
   final Set<String> _hydrating = {};
+  final Set<String> _revalidated = {};
 
   @override
   Future<Response> fetch(Requests req, ActivityPlanFetchRequest request) {
@@ -64,9 +65,15 @@ class ActivityPlanRepo
 
   /// The plan for [activityId], localized to [l1] (viewer L1 by default), with
   /// media resolved. Cached (TTL + in-flight dedup); null on fetch failure.
-  Future<ActivityPlanModel?> getPlan(String activityId, {String? l1}) async {
+  /// [forceRefresh] re-fetches past the TTL (the cache survives until the fresh
+  /// plan lands).
+  Future<ActivityPlanModel?> getPlan(
+    String activityId, {
+    String? l1,
+    bool forceRefresh = false,
+  }) async {
     final request = _request(activityId, l1);
-    final result = await get(request);
+    final result = await get(request, forceRefresh: forceRefresh);
     final response = result.result;
     if (response == null) return null;
 
@@ -92,11 +99,24 @@ class ActivityPlanRepo
 
   /// Fire-and-forget hydration for the synchronous getter. No-op when a
   /// resolved plan is present or a fetch is already in flight.
-  void ensure(String activityId, {String? l1}) {
+  ///
+  /// [revalidate] re-fetches the latest localized plan once per (activity, l1)
+  /// per app session, even if a cached plan exists. The cache keys on the
+  /// canonical version, which a re-translation does NOT bump, so without this a
+  /// localized-content change (re-translation / cascade) never reaches a client
+  /// holding a cached plan until the TTL lapses. Used on session open so the
+  /// learner sees current goal text / role names; the world map intentionally
+  /// does NOT revalidate (one fetch per visible pin would be a fetch storm).
+  /// Stale-while-revalidate: [cachedPlan] keeps serving the old plan until the
+  /// fresh one lands, so there is no loading flicker.
+  void ensure(String activityId, {String? l1, bool revalidate = false}) {
     final key = _request(activityId, l1).storageKey;
-    if (_resolved.containsKey(key) || _hydrating.contains(key)) return;
+    if (_hydrating.contains(key)) return;
+    final doRevalidate = revalidate && _revalidated.add(key);
+    if (!doRevalidate && _resolved.containsKey(key)) return;
     _hydrating.add(key);
-    getPlan(activityId, l1: l1).whenComplete(() => _hydrating.remove(key));
+    getPlan(activityId, l1: l1, forceRefresh: doRevalidate)
+        .whenComplete(() => _hydrating.remove(key));
   }
 
   Future<ActivityPlanModel> _withResolvedMedia(ActivityPlanModel plan) async {

@@ -20,6 +20,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
@@ -933,6 +934,17 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     activeGoalNotifier = ValueNotifier(room.currentGoal);
+
+    // Re-fetch the localized activity plan once on session open. The plan cache
+    // keys on the canonical version, which a re-translation does NOT bump, so a
+    // client holding a cached plan would otherwise never see updated goal text /
+    // role names until the TTL lapses. Scoped to room open (not the per-getter
+    // read, which the world map calls for every room) and stale-while-revalidate
+    // so the visible plan never flickers.
+    final activitySessionId = room.activityId;
+    if (activitySessionId != null) {
+      ActivityPlanRepo.instance.ensure(activitySessionId, revalidate: true);
+    }
 
     _goalCompletionSubscription?.cancel();
     _goalCompletionSubscription = choreographer
