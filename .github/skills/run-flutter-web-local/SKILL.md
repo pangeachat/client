@@ -96,10 +96,29 @@ curl -s http://localhost:8090/.env | grep -E "SYNAPSE_URL|HOME_SERVER|CHOREO_API
 
 `local-dev/pangea env` (the control plane) regenerates these to localhost via `lib/gen-env.sh`; after running it, rebuild Flutter (clean restart) so the new `.env` is served.
 
+### Switching environments (local ↔ staging)
+
+Run the local client against **staging** backends — a fast way to smoke-test a build against real staging data + the staging bot without bringing up the full local stack — by flipping the routing keys in `client/.env` and clean-restarting. Back up first (`.env` is gitignored, so there's no git safety net):
+
+```bash
+cp client/.env /tmp/client.env.bak     # restore with: cp /tmp/client.env.bak client/.env
+```
+
+Only three keys differ (`CMS_API` stays `https://api.staging.pangea.chat` either way; `CHOREO_API_KEY` is identical in both):
+
+| Key | Local stack | Staging |
+|---|---|---|
+| `SYNAPSE_URL` | `http://localhost:8008` | `matrix.staging.pangea.chat` |
+| `CHOREO_API`  | `http://localhost:8002` | `https://api.staging.pangea.chat` |
+| `HOME_SERVER` | `local.pangea.chat` | `staging.pangea.chat` *(or omit — it derives from `SYNAPSE_URL`: scheme stripped, leading `matrix.` dropped)* |
+
+Source of truth for the staging values is the deployed client itself: `curl -s https://app.staging.pangea.chat/.env`. After editing, clean-restart and open a **fresh tab** — the dev server caches `/.env` per process, so a reload alone won't switch. Changing the homeserver invalidates the current session, so the app drops to the onboarding/login screen — sign in with the matching account (see Login). **Never point a local build at production.**
+
 ### Driving the app by semantics (Chrome extension)
 
 The app renders to `<canvas>`, so the Chrome extension can only operate it by role+name once Flutter's accessibility semantics tree is on — otherwise it falls back to screenshots and positional clicks. Add `ENABLE_SEMANTICS=true` to `client/.env` and clean-restart to force the tree on from startup. Off by default (semantics has a perf cost). See [`playwright-testing.instructions.md`](../../instructions/playwright-testing.instructions.md) for the full contract.
 
 ## Login
 
-`@learner` / `learnerpass` against the local Synapse (`local.pangea.chat`).
+- **Local** (`local.pangea.chat`): `@learner` / `learnerpass`.
+- **Staging** (`staging.pangea.chat`): the shared `staging_automated_tests` account — credentials in `client/.env` (`TEST_MATRIX_USERNAME` / `TEST_MATRIX_PASSWORD`) or AWS Secrets Manager. See [matrix-auth.instructions.md](../../instructions/matrix-auth.instructions.md).
