@@ -3377,7 +3377,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-06-11 10:21:57.509324",
+    "@@last_modified": "2026-06-18 09:35:26.726051",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7693,7 +7693,7 @@
     "bhoDisplayName": "โบชปุรี",
     "bikDisplayName": "บิโคล",
     "bmDisplayName": "บัมบารา",
-    "bnDisplayName": "บังกลา",
+    "bnDisplayName": "เบงกาลี",
     "bnBDDisplayName": "เบงกาลี (บังกลาเทศ)",
     "bnINDisplayName": "เบงกาลี (อินเดีย)",
     "brDisplayName": "เบรอตง",
@@ -10544,6 +10544,56 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "การกระทำกิจกรรม",
+    "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "ฟีเจอร์ระดับโปร",
+    "pronunciationTools": "เครื่องมือการออกเสียง",
+    "audioTranscription": "การถอดเสียง AI",
+    "visualLearnerSupport": "การสนับสนุนผู้เรียนแบบมองเห็น",
+    "instantWritingTranslation": "การแปลการเขียนทันที",
+    "personalizedPracticeExercises": "แบบฝึกหัดการฝึกฝนที่ปรับให้เหมาะสม",
+    "vocabularyFlashcards": "แฟลชการ์ดคำศัพท์",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "กลับ",
+    "viewCurrentOrFinished": "ดูปัจจุบันหรือเสร็จสิ้น",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

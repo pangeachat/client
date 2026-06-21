@@ -13,24 +13,36 @@ class JoinRoomAnalyticsConsentHandler {
 
   const JoinRoomAnalyticsConsentHandler(this.joinResponse, this.room);
 
+  static String? _currentRoomId;
+
+  static String? get currentRoomId => _currentRoomId;
+
   /// Show the user access consent dialog (if not already shown for this course),
   /// leaves room and return null if rejected, grants access and return roomId if accepted
   Future<String?> handle(BuildContext context) async {
     final roomId = room.id;
     final client = room.client;
 
-    if (!client.acceptedAccessNotice(roomId)) {
-      await client.setAccessNoticePending(roomId);
-    }
+    _currentRoomId = roomId;
 
-    final acceptedAccessRequest = await _showNotice(context);
-    if (!acceptedAccessRequest) {
-      return null;
-    }
+    try {
+      if (!client.acceptedAccessNotice(roomId)) {
+        await client.setAccessNoticePending(roomId);
+      }
 
-    await client.setAccessNoticeAccepted(roomId);
-    await _grantAccess();
-    return roomId;
+      final acceptedAccessRequest = await _showNotice(context);
+      if (!acceptedAccessRequest) {
+        return null;
+      }
+
+      await client.setAccessNoticeAccepted(roomId);
+      await _grantAccess();
+      return roomId;
+    } catch (e) {
+      rethrow;
+    } finally {
+      _currentRoomId = null;
+    }
   }
 
   /// Returns false if user was shown the dialog and rejected it, meaning they left the room

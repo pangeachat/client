@@ -24,7 +24,7 @@ Related:
 
 | Component             | File                                                                      | Role                                                                                                    | Status                                        |
 | --------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| **Deterministic CI**  | `.github/workflows/e2e-tests.yml`                                         | Runs Playwright on every deploy, nightly, and manual dispatch. Includes flow tests and axe-core audits. | ✅ Login + a11y specs pass. More specs needed |
+| **Deterministic CI**  | `.github/workflows/e2e-tests.yml`                                         | Runs Playwright on every deploy, nightly, and manual dispatch. Includes flow tests and axe-core audits. | ✅ All specs pass. |
 | **Guided authoring**  | `.github/skills/write-e2e-test/SKILL.md`                                  | 9-step procedure for writing a new spec with Copilot (semantics audit → spec → trigger-map).            | ✅ Exists. Not yet used beyond login          |
 | **Cloud agent**       | `.github/agents/e2e-tester.md`                                            | Copilot coding agent — assigned issues to write or fix specs via Playwright MCP, opens a PR.            | ✅ Profile exists. Untested                   |
 | **Agent environment** | `.github/workflows/copilot-setup-steps.yml`                               | Installs Node + Playwright in the Copilot coding agent's sandbox.                                       | ✅                                            |
@@ -38,7 +38,7 @@ All test types (flow specs and axe-core audits) run through the same workflow an
 
 | Mode      | Trigger                      | What runs                                |
 | --------- | ---------------------------- | ---------------------------------------- |
-| **Smoke** | Manual                       | `login` only                             |
+| **Smoke** | Manual                       | `login-logout` only                      |
 | **Diff**  | After `Main Deploy Workflow` | Scripts matching changed files + `login` |
 | **Full**  | Nightly (6am UTC) / manual   | All scripts                              |
 

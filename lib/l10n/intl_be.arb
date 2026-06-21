@@ -3933,7 +3933,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-06-11 10:21:54.029514",
+    "@@last_modified": "2026-06-18 09:35:24.976054",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9839,6 +9839,56 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Дзеянні актыўнасці",
+    "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Прафесійныя функцыі",
+    "pronunciationTools": "Інструменты вымаўлення",
+    "audioTranscription": "Аўдыё транскрыпцыя AI",
+    "visualLearnerSupport": "Падтрымка візуальных вучняў",
+    "instantWritingTranslation": "Мгненная пераклад пісьма",
+    "personalizedPracticeExercises": "Персаналізаваныя практыкаванні",
+    "vocabularyFlashcards": "Слоўнікавыя карткі",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Назад",
+    "viewCurrentOrFinished": "Праглядзець бягучыя або завершаныя",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

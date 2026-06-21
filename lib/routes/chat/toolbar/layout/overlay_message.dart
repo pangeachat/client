@@ -20,6 +20,7 @@ import 'package:fluffychat/routes/chat/toolbar/layout/reading_assistance_mode_en
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_buttons.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_controller.dart';
+import 'package:fluffychat/features/subscription/widgets/subscription_paywall.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/file_description.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -145,9 +146,6 @@ class OverlayMessage extends StatelessWidget {
             event.numberEmotes > 0 &&
             event.numberEmotes <= 3);
 
-    final isSubscribed =
-        MatrixState.pangeaController.subscriptionController.isSubscribed;
-
     final selectModeController = overlayController.selectModeController;
 
     final content = Container(
@@ -256,6 +254,11 @@ class OverlayMessage extends StatelessWidget {
 
     final style = AppConfig.messageTextStyle(event, textColor);
 
+    final showGatedContent = MatrixState
+        .pangeaController
+        .subscriptionController
+        .showSubscriptionGatedContent;
+
     return Material(
       key: MatrixState.pAnyState.layerLinkAndKey(overlayKey).key,
       type: MaterialType.transparency,
@@ -278,7 +281,7 @@ class OverlayMessage extends StatelessWidget {
                 enabled:
                     event.messageType == MessageTypes.Audio &&
                     !event.redacted &&
-                    isSubscribed != false,
+                    showGatedContent,
                 maxWidth: maxWidth,
                 style: style,
                 eventId: event.eventId,
@@ -354,12 +357,15 @@ class _MessageSelectModeContent extends StatelessWidget {
         }
 
         final sub = MatrixState.pangeaController.subscriptionController;
-        if (sub.isSubscribed == false) {
+        if (!sub.showSubscriptionGatedContent) {
           return Padding(
             padding: const EdgeInsets.all(12.0),
             child: ErrorIndicator(
               message: L10n.of(context).subscribeReadingAssistance,
-              onTap: () => sub.showPaywall(context),
+              onTap: () => SubscriptionPaywall.show(
+                context,
+                userID: Matrix.of(context).client.userID,
+              ),
               style: style,
             ),
           );

@@ -24,11 +24,14 @@ enum TutorialEnum {
   });
 
   bool get globallyEnabled {
-    final subscribed =
-        MatrixState.pangeaController.subscriptionController.isSubscribed !=
-        false;
+    if (!MatrixState
+        .pangeaController
+        .subscriptionController
+        .showSubscriptionGatedContent) {
+      return false;
+    }
 
-    return subscribed && !_hasBeenSeen && stepProgress < stepCount;
+    return !_hasBeenSeen && stepProgress < stepCount;
   }
 
   /// Whether this tutorial may run on the current surface. Every tutorial is

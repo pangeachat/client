@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-11 10:21:55.509684",
+    "@@last_modified": "2026-06-18 09:35:25.710040",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9976,6 +9976,56 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Accions d'activitat",
+    "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Funcions Pro",
+    "pronunciationTools": "Eines de pronunciació",
+    "audioTranscription": "Transcripció d'àudio AI",
+    "visualLearnerSupport": "Suport per a aprenents visuals",
+    "instantWritingTranslation": "Traducció instantània de textos",
+    "personalizedPracticeExercises": "Exercicis de pràctica personalitzats",
+    "vocabularyFlashcards": "Targetes de vocabulari",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Enrere",
+    "viewCurrentOrFinished": "Veure actual o acabat",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

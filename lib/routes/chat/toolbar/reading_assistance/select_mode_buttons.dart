@@ -718,6 +718,7 @@ class _MoreButton extends StatelessWidget {
         return controller.canPinSelectedEvents && isPinned;
       case MessageActions.forward:
       case MessageActions.report:
+        return events.length == 1;
       case MessageActions.info:
         return events.length == 1 &&
             MatrixState.pangeaController.userController.showDeveloperOptions;

@@ -1,32 +1,9 @@
 import 'package:get_storage/get_storage.dart';
 
-import 'package:fluffychat/features/subscription/models/base_subscription_info.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 
 class SubscriptionManagementRepo {
   static final GetStorage _cache = GetStorage("subscription_storage");
-
-  static AvailableSubscriptionsInfo? getAvailableSubscriptionsInfo() {
-    try {
-      final entry = _cache.read(PLocalKey.availableSubscriptionInfo);
-      if (entry == null) return null;
-      final info = AvailableSubscriptionsInfo.fromJson(entry);
-      if (info.isExpired) {
-        _cache.remove(PLocalKey.availableSubscriptionInfo);
-        return null;
-      }
-      return info;
-    } catch (e) {
-      _cache.remove(PLocalKey.availableSubscriptionInfo);
-      return null;
-    }
-  }
-
-  static Future<void> setAvailableSubscriptionsInfo(
-    AvailableSubscriptionsInfo info,
-  ) async {
-    await _cache.write(PLocalKey.availableSubscriptionInfo, info.toJson());
-  }
 
   static bool getBeganWebPayment() {
     return _cache.read(PLocalKey.beganWebPayment) ?? false;

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-11 10:21:30.278953",
+    "@@last_modified": "2026-06-18 09:34:20.152416",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10904,6 +10904,56 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "פעולות פעילות",
+    "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "תכונות פרו",
+    "pronunciationTools": "כלי הגייה",
+    "audioTranscription": "תמלול אודיו בעזרת AI",
+    "visualLearnerSupport": "תמיכה בלומדים חזותיים",
+    "instantWritingTranslation": "תרגום כתיבה מיידי",
+    "personalizedPracticeExercises": "תרגילים מותאמים אישית",
+    "vocabularyFlashcards": "כרטיסיות אוצר מילים",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "חזרה",
+    "viewCurrentOrFinished": "צפה בהווה או בהסתיים",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

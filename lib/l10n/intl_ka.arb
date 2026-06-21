@@ -2098,7 +2098,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-06-11 10:23:07.755948",
+    "@@last_modified": "2026-06-18 09:35:53.870844",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8042,7 +8042,7 @@
     "bhoDisplayName": "ბოჰპური",
     "bikDisplayName": "ბიკოლური",
     "bmDisplayName": "ბამბარა",
-    "bnDisplayName": "ბანგლა",
+    "bnDisplayName": "ბენგალური",
     "bnBDDisplayName": "ბენგალური (ბანგლადეში)",
     "bnINDisplayName": "ბენგალური (ინდოეთი)",
     "brDisplayName": "ბრეტონი",
@@ -10893,6 +10893,56 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "აქტივობის მოქმედებები",
+    "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "პროფესიონალური ფუნქციები",
+    "pronunciationTools": "გამოთქმის ინსტრუმენტები",
+    "audioTranscription": "AI აუდიო ტრანსკრიფცია",
+    "visualLearnerSupport": "ვიზუალური სწავლების მხარდაჭერა",
+    "instantWritingTranslation": "მყისიერი წერის თარგმანი",
+    "personalizedPracticeExercises": "პერსონალიზებული სავარჯიშოები",
+    "vocabularyFlashcards": "სიტყვების ფლეშკარტები",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "უკან",
+    "viewCurrentOrFinished": "მიმდინარე ან დასრულებული ნახვა",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

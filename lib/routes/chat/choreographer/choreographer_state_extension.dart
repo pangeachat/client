@@ -4,10 +4,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 extension ChoregrapherStateExtension on Choreographer {
   AssistanceStateEnum get assistanceState {
-    final isSubscribed =
-        MatrixState.pangeaController.subscriptionController.isSubscribed;
+    if (!MatrixState
+        .pangeaController
+        .subscriptionController
+        .showSubscriptionGatedContent) {
+      return AssistanceStateEnum.noSub;
+    }
 
-    if (isSubscribed == false) return AssistanceStateEnum.noSub;
     if (currentText.trim().isEmpty) {
       if (orchestratorController.activeSuggestion != null) {
         return AssistanceStateEnum.suggesting;

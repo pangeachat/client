@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-11 10:22:41.332008",
+    "@@last_modified": "2026-06-18 09:35:37.820513",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9825,6 +9825,56 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Activiteitenacties",
+    "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Pro-functies",
+    "pronunciationTools": "Uitspraaktools",
+    "audioTranscription": "AI-audiotranscriptie",
+    "visualLearnerSupport": "Ondersteuning voor visuele leerlingen",
+    "instantWritingTranslation": "Directe vertaling van schrijven",
+    "personalizedPracticeExercises": "Gepersonaliseerde oefenopdrachten",
+    "vocabularyFlashcards": "Woordenkaartjes",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Terug",
+    "viewCurrentOrFinished": "Bekijk huidige of voltooide",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

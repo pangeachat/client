@@ -221,11 +221,14 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         morph: selectedToken!.morph.map((k, v) => MapEntry(k.name, v)),
       );
     }
-    if (MatrixState.pangeaController.subscriptionController.isSubscribed ==
-        false) {
+    if (!MatrixState
+        .pangeaController
+        .subscriptionController
+        .showSubscriptionGatedContent) {
       setState(() {});
       return;
     }
+
     if (!mounted) return;
     if (selectedToken != null && isNewToken(selectedToken!)) {
       _onSelectNewToken(selectedToken!);

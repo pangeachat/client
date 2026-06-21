@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-11 10:21:36.182405",
+    "@@last_modified": "2026-06-18 09:34:23.757627",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9825,6 +9825,56 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Jarduera ekintzak",
+    "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Pro funtzioak",
+    "pronunciationTools": "Ahotsaren tresnak",
+    "audioTranscription": "AI audio transkripzioa",
+    "visualLearnerSupport": "Ikusizko ikaslearen laguntza",
+    "instantWritingTranslation": "Idazketa itzulpen instantanea",
+    "personalizedPracticeExercises": "Pertsonalizatutako praktika ariketak",
+    "vocabularyFlashcards": "Hiztegi flashcards",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Atzera",
+    "viewCurrentOrFinished": "Ikusi unean edo amaituta",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

@@ -264,7 +264,10 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
         .whereType<String>()
         .toList();
 
-    final roomSummariesResponse = await client.loadRoomSummaries(roomIds);
+    final roomSummariesResponse = await client.loadRoomSummaries(
+      roomIds,
+      l1Code: MatrixState.pangeaController.userController.userL1Code,
+    );
     _roomSummaries = roomSummariesResponse;
   }
 

@@ -8,7 +8,8 @@ import 'package:fluffychat/routes/chat/chat_details/space_analytics/space_analyt
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_type_enum.dart';
 
 enum ConstructUseTypeEnum {
-  /// produced in chat by user, igc was run, and we've judged it to be a correct use
+  /// writing assistance ran and the user's message was correct
+  /// (produced in chat by the user, igc ran, and we judged it a correct use)
   wa,
 
   /// produced during IGC
@@ -97,11 +98,14 @@ enum ConstructUseTypeEnum {
 
   // grammar error activity
   corGE,
-  incGE,
-}
+  incGE;
 
-extension ConstructUseTypeExtension on ConstructUseTypeEnum {
-  String get string => toString().split('.').last;
+  static ConstructUseTypeEnum fromString(String value) {
+    return ConstructUseTypeEnum.values.firstWhere(
+      (e) => e.name == value,
+      orElse: () => ConstructUseTypeEnum.nan,
+    );
+  }
 
   String description(BuildContext context) {
     switch (this) {
@@ -525,14 +529,5 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       default:
         return false;
     }
-  }
-}
-
-class ConstructUseTypeUtil {
-  static ConstructUseTypeEnum fromString(String value) {
-    return ConstructUseTypeEnum.values.firstWhere(
-      (e) => e.string == value,
-      orElse: () => ConstructUseTypeEnum.nan,
-    );
   }
 }

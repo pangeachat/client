@@ -2,19 +2,17 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
-import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
-import 'package:fluffychat/features/subscription/utils/subscription_app_id.dart';
-import 'package:fluffychat/features/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/features/subscription/models/subscription_state.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription_view.dart';
+import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
+import 'package:fluffychat/features/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SubscriptionManagement extends StatefulWidget {
@@ -30,25 +28,24 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
   final SubscriptionController subscriptionController =
       MatrixState.pangeaController.subscriptionController;
 
-  SubscriptionDetails? selectedSubscription;
-  bool loading = false;
-  String? userEmail;
+  String? _userEmail;
 
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
     _refreshSubscription();
 
-    if (!subscriptionController.initCompleter.isCompleted) {
-      subscriptionController.initialize().then((_) => setState(() {}));
-    }
+    subscriptionController
+        .initialize(Matrix.of(context).client.userID!)
+        .then((_) => setState(() {}));
 
     subscriptionController.addListener(_onSubscriptionUpdate);
     subscriptionController.subscriptionNotifier.addListener(_onSubscribe);
-    subscriptionController.updateCustomerInfo();
+    subscriptionController.updateCurrentSubscription();
+
     MatrixState.pangeaController.userController.userEmail.then((email) {
       if (mounted) {
-        setState(() => userEmail = email);
+        setState(() => _userEmail = email);
       }
     });
     super.initState();
@@ -70,66 +67,76 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
     super.didChangeAppLifecycleState(state);
   }
 
-  bool get subscriptionsAvailable =>
-      subscriptionController
-          .availableSubscriptionInfo
-          ?.availableSubscriptions
-          .isNotEmpty ??
-      false;
+  bool get loading => subscriptionController.loading;
+
+  bool get showGatedContent =>
+      subscriptionController.showSubscriptionGatedContent;
+
+  bool get hasFreeTrial =>
+      subscriptionController.hasPromotionalSubscription &&
+      subscriptionController.subscription?.appId == "trial";
 
   bool get currentSubscriptionAvailable =>
-      subscriptionController.isSubscribed != null &&
-      subscriptionController.isSubscribed! &&
-      subscriptionController.currentSubscriptionInfo?.currentSubscription !=
-          null;
+      subscriptionController.subscription != null;
 
-  bool get currentSubscriptionIsTrial =>
-      currentSubscriptionAvailable &&
-      (subscriptionController
-              .currentSubscriptionInfo
-              ?.currentSubscription
-              ?.isTrial ??
-          false);
+  bool get isLifetimeSubscription =>
+      subscriptionController.hasPromotionalSubscription &&
+      expirationDate != null &&
+      expirationDate!.isAfter(DateTime(2100));
 
-  String? get purchasePlatformDisplayName => subscriptionController
-      .currentSubscriptionInfo
-      ?.purchasePlatformDisplayName;
+  String? get purchasePlatformDisplayName {
+    final appId = subscriptionController.subscription?.appId;
+    if (appId == null) return null;
+    return subscriptionController.appIds?.appDisplayName(appId);
+  }
 
   bool get currentSubscriptionIsPromotional =>
-      subscriptionController
-          .currentSubscriptionInfo
-          ?.currentSubscriptionIsPromotional ??
-      false;
+      subscriptionController.hasPromotionalSubscription;
 
   String get currentSubscriptionTitle =>
-      subscriptionController.currentSubscriptionInfo?.currentSubscription
-          ?.displayName(context) ??
-      "";
+      subscriptionController.subscription?.displayName(context) ?? "";
 
   String get currentSubscriptionPrice =>
-      subscriptionController.currentSubscriptionInfo?.currentSubscription
-          ?.displayPrice(context) ??
-      "";
+      subscriptionController.subscription?.displayPrice(context) ?? "";
 
   bool get showManagementOptions {
     if (!currentSubscriptionAvailable) {
       return false;
     }
-    if (subscriptionController.currentSubscriptionInfo!.purchasedOnWeb) {
+
+    final subscription = subscriptionController.subscription;
+    final appIds = subscriptionController.appIds;
+    final purchasedOnWeb =
+        (subscription != null && appIds != null) &&
+        (subscription.appId == appIds.stripeId);
+
+    if (purchasedOnWeb) {
       return true;
     }
-    return subscriptionController
-        .currentSubscriptionInfo!
-        .currentPlatformMatchesPurchasePlatform;
+
+    final currentPlatformMatchesPurchasePlatform =
+        (subscription != null && appIds != null) &&
+        (subscription.appId == appIds.currentAppId);
+
+    return currentPlatformMatchesPurchasePlatform;
   }
 
-  DateTime? get expirationDate =>
-      subscriptionController.currentSubscriptionInfo?.expirationDate;
+  DateTime? get expirationDate => switch (subscriptionController.state) {
+    SubscriptionActive(expirationDate: final exp) => exp,
+    _ => null,
+  };
+
+  DateTime? get _unsubscribeDetectedAt =>
+      switch (subscriptionController.state) {
+        SubscriptionActive(unsubscribeDetectedAt: final detected) => detected,
+        _ => null,
+      };
 
   DateTime? get subscriptionEndDate =>
-      subscriptionController.currentSubscriptionInfo?.subscriptionEndDate;
+      _unsubscribeDetectedAt == null ? null : expirationDate;
 
   void _onSubscriptionUpdate() => setState(() {});
+
   void _onSubscribe() => showSubscribedSnackbar(context);
 
   Future<void> _refreshSubscription() async {
@@ -141,9 +148,11 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
         SubscriptionManagementRepo.getClickedCancelSubscription();
     if (clickedCancel == null) return;
 
-    await subscriptionController.reinitialize();
-    final newEndDate =
-        subscriptionController.currentSubscriptionInfo?.subscriptionEndDate;
+    await subscriptionController.reinitialize(
+      Matrix.of(context).client.userID!,
+    );
+
+    final newEndDate = subscriptionEndDate;
 
     if (prevEndDate != newEndDate) {
       SubscriptionManagementRepo.removeClickedCancelSubscription();
@@ -156,33 +165,6 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
     if (DateTime.now().difference(clickedCancel).inMinutes >= 10) {
       SubscriptionManagementRepo.removeClickedCancelSubscription();
       if (mounted) setState(() {});
-    }
-  }
-
-  Future<void> submitChange(
-    SubscriptionDetails subscription, {
-    bool isPromo = false,
-  }) async {
-    setState(() => loading = true);
-    try {
-      await subscriptionController.submitSubscriptionChange(
-        subscription,
-        context,
-        isPromo: isPromo,
-      );
-    } catch (e, s) {
-      if (e is PlatformException &&
-          e.message?.contains("Purchase was cancelled") == true) {
-        return;
-      }
-
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"subscription_id": subscription.id, "is_promo": isPromo},
-      );
-    } finally {
-      if (mounted) setState(() => loading = false);
     }
   }
 
@@ -221,17 +203,13 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
 
   Future<Uri?> launchMangementUrl(ManagementOption option) async {
     String managementUrl = Environment.stripeManagementUrl;
-    if (userEmail != null) {
-      managementUrl += "?prefilled_email=${Uri.encodeComponent(userEmail!)}";
+    if (_userEmail != null) {
+      managementUrl += "?prefilled_email=${Uri.encodeComponent(_userEmail!)}";
     }
-    final String? purchaseAppId = subscriptionController
-        .currentSubscriptionInfo
-        ?.currentSubscription
-        ?.appId;
+    final String? purchaseAppId = subscriptionController.subscription?.appId;
     if (purchaseAppId == null) return null;
 
-    final SubscriptionAppIds? appIds =
-        subscriptionController.availableSubscriptionInfo!.appIds;
+    final appIds = subscriptionController.appIds;
 
     if (purchaseAppId == appIds?.stripeId) {
       final uri = Uri.parse(managementUrl);
@@ -258,18 +236,6 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
         return uri;
     }
   }
-
-  void selectSubscription(SubscriptionDetails? subscription) {
-    if (selectedSubscription == subscription) {
-      setState(() => selectedSubscription = null);
-      return;
-    }
-    setState(() => selectedSubscription = subscription);
-  }
-
-  bool isCurrentSubscription(SubscriptionDetails subscription) =>
-      subscriptionController.currentSubscriptionInfo?.currentSubscription ==
-      subscription;
 
   @override
   Widget build(BuildContext context) => SettingsSubscriptionView(this);

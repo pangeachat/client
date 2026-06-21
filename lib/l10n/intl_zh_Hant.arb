@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-11 10:22:00.564097",
+    "@@last_modified": "2026-06-18 09:35:28.477521",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9955,6 +9955,56 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "活動操作",
+    "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "專業功能",
+    "pronunciationTools": "發音工具",
+    "audioTranscription": "AI 音頻轉錄",
+    "visualLearnerSupport": "視覺學習者支持",
+    "instantWritingTranslation": "即時寫作翻譯",
+    "personalizedPracticeExercises": "個性化練習題",
+    "vocabularyFlashcards": "詞彙閃卡",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "返回",
+    "viewCurrentOrFinished": "查看當前或已完成",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

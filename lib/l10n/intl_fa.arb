@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-11 10:22:48.835374",
+    "@@last_modified": "2026-06-18 09:35:42.589865",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9937,6 +9937,56 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "عملیات فعالیت",
+    "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "ویژگی‌های حرفه‌ای",
+    "pronunciationTools": "ابزارهای تلفظ",
+    "audioTranscription": "تبدیل صوت به متن با هوش مصنوعی",
+    "visualLearnerSupport": "پشتیبانی از یادگیرندگان بصری",
+    "instantWritingTranslation": "ترجمه فوری نوشتار",
+    "personalizedPracticeExercises": "تمرینات شخصی‌سازی شده",
+    "vocabularyFlashcards": "کارت‌های واژگان",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "بازگشت",
+    "viewCurrentOrFinished": "مشاهده جاری یا تمام شده",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

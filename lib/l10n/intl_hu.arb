@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-06-11 10:21:15.724203",
+    "@@last_modified": "2026-06-18 09:34:14.728048",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9952,6 +9952,56 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Tevékenységi műveletek",
+    "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Pro funkciók",
+    "pronunciationTools": "Kiejtési eszközök",
+    "audioTranscription": "AI hangátírás",
+    "visualLearnerSupport": "Vizuális tanulók támogatása",
+    "instantWritingTranslation": "Azonnali írásbeli fordítás",
+    "personalizedPracticeExercises": "Személyre szabott gyakorlófeladatok",
+    "vocabularyFlashcards": "Szókincs flashcardok",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Vissza",
+    "viewCurrentOrFinished": "Aktuális vagy befejezett megtekintése",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

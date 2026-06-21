@@ -15,7 +15,10 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart'
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 extension RoomSummaryExtension on Api {
-  Future<RoomSummariesResponse> getRoomSummaries(List<String> roomIds) async {
+  Future<RoomSummariesResponse> getRoomSummaries(
+    List<String> roomIds, {
+    required String? l1Code,
+  }) async {
     final requestUri = Uri(
       path: '/_synapse/client/unstable/org.pangea/room_preview',
       queryParameters: {'rooms': roomIds.join(",")},
@@ -32,17 +35,18 @@ extension RoomSummaryExtension on Api {
       );
     }
     final json = jsonDecode(responseString);
-    return RoomSummariesResponse.fromJson(json);
+    return RoomSummariesResponse.fromJson(json, l1Code: l1Code);
   }
 }
 
 extension RoomSummaryRequest on Client {
   Future<Map<String, RoomSummaryResponse>> loadRoomSummaries(
-    List<String> roomIds,
-  ) async {
+    List<String> roomIds, {
+    required String? l1Code,
+  }) async {
     final batches = _batchRoomIdRequests(roomIds);
     final responses = await Future.wait(
-      batches.map((b) => getRoomSummaries(b)),
+      batches.map((b) => getRoomSummaries(b, l1Code: l1Code)),
     );
     return {for (final r in responses) ...r.summaries};
   }
@@ -61,11 +65,14 @@ class RoomSummariesResponse {
 
   RoomSummariesResponse({required this.summaries});
 
-  factory RoomSummariesResponse.fromJson(Map<String, dynamic> json) {
+  factory RoomSummariesResponse.fromJson(
+    Map<String, dynamic> json, {
+    required String? l1Code,
+  }) {
     final summaries = <String, RoomSummaryResponse>{};
     json["rooms"].forEach((key, value) {
       if (value.isNotEmpty) {
-        summaries[key] = RoomSummaryResponse.fromJson(value);
+        summaries[key] = RoomSummaryResponse.fromJson(value, l1Code: l1Code);
       }
     });
     return RoomSummariesResponse(summaries: summaries);
@@ -170,7 +177,10 @@ class RoomSummaryResponse {
       ) ==
       true;
 
-  factory RoomSummaryResponse.fromJson(Map<String, dynamic> json) {
+  factory RoomSummaryResponse.fromJson(
+    Map<String, dynamic> json, {
+    required String? l1Code,
+  }) {
     final planEntry =
         json[PangeaEventTypes.activityPlan]?["default"]?["content"];
     ActivityPlanModel? plan;
@@ -190,11 +200,20 @@ class RoomSummaryResponse {
       roles = ActivityRolesModel.fromJson(rolesEntry);
     }
 
-    final summaryEntry =
-        json[PangeaEventTypes.activitySummary]?["default"]?["content"];
+    final summaryEntry = json[PangeaEventTypes.activitySummary];
+    final legacySummaryEntry = summaryEntry?["default"]?["content"];
+    final currentSummaryEntry = summaryEntry?[l1Code]?["content"];
+
     ActivitySummaryModel? summary;
-    if (summaryEntry != null && summaryEntry is Map<String, dynamic>) {
-      summary = ActivitySummaryModel.fromJson(summaryEntry);
+    if (legacySummaryEntry != null &&
+        legacySummaryEntry is Map<String, dynamic>) {
+      summary = ActivitySummaryModel.fromJson(legacySummaryEntry);
+    }
+
+    if (summary == null &&
+        currentSummaryEntry != null &&
+        currentSummaryEntry is Map<String, dynamic>) {
+      summary = ActivitySummaryModel.fromJson(currentSummaryEntry);
     }
 
     final coursePlanEntry =

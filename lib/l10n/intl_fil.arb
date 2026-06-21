@@ -2257,7 +2257,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-06-11 10:22:03.955712",
+    "@@last_modified": "2026-06-18 09:35:30.346598",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10844,6 +10844,56 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Mga aksyon sa aktibidad",
+    "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Mga pro na tampok",
+    "pronunciationTools": "Mga kasangkapan sa pagbigkas",
+    "audioTranscription": "AI na transkripsyon ng audio",
+    "visualLearnerSupport": "Suporta para sa mga visual na mag-aaral",
+    "instantWritingTranslation": "Agad na pagsasalin ng pagsusulat",
+    "personalizedPracticeExercises": "Naka-personalize na mga ehersisyo sa pagsasanay",
+    "vocabularyFlashcards": "Mga flashcard ng bokabularyo",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Bumalik",
+    "viewCurrentOrFinished": "Tingnan ang kasalukuyan o natapos",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-11 10:22:54.534315",
+    "@@last_modified": "2026-06-18 09:35:44.610610",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10412,6 +10412,56 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Aktivitetsåtgärder",
+    "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Pro-funktioner",
+    "pronunciationTools": "Uttalsverktyg",
+    "audioTranscription": "AI ljudtranskription",
+    "visualLearnerSupport": "Stöd för visuella inlärare",
+    "instantWritingTranslation": "Omedelbar skrivöversättning",
+    "personalizedPracticeExercises": "Personliga övningar",
+    "vocabularyFlashcards": "Ordförråds flashcards",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Tillbaka",
+    "viewCurrentOrFinished": "Visa nuvarande eller avslutade",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

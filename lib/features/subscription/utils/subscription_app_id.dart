@@ -2,6 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
+
 class SubscriptionAppIds {
   String? stripeId;
   String? androidId;
@@ -35,6 +38,14 @@ class SubscriptionAppIds {
     data['android_id'] = androidId;
     data['apple_id'] = appleId;
     return data;
+  }
+
+  String? defaultManagementURL(String appId) {
+    return appId == androidId
+        ? AppConfig.googlePlayMangementUrl
+        : appId == appleId
+        ? AppConfig.appleMangementUrl
+        : Environment.stripeManagementUrl;
   }
 }
 

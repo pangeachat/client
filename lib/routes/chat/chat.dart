@@ -53,6 +53,13 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
+import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
+import 'package:fluffychat/routes/chat/events/models/representation_content_model.dart';
+import 'package:fluffychat/routes/chat/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_controller.dart';
@@ -76,13 +83,6 @@ import 'package:fluffychat/routes/chat/choreographer/text_editing/pangea_text_co
 import 'package:fluffychat/routes/chat/choreographer/writing_assistance_room_extension.dart';
 import 'package:fluffychat/routes/chat/event_info_dialog.dart';
 import 'package:fluffychat/routes/chat/event_too_large_dialog.dart';
-import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
-import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
-import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
-import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
-import 'package:fluffychat/routes/chat/events/models/representation_content_model.dart';
-import 'package:fluffychat/routes/chat/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
@@ -237,6 +237,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   StreamSubscription? _goalCompletionSubscription;
   StreamSubscription? _activityRolesSubscription;
+
   late final ValueNotifier<ActivityRoleGoal?> activeGoalNotifier;
 
   /// The event used to start the reading-assistance tutorial. Stored so the
@@ -583,8 +584,9 @@ class ChatController extends State<ChatPageWithRoom>
 
   // #Pangea
   void _onLevelUp(LevelUpdate update) {
-    final isSubscribed = pangeaController.subscriptionController.isSubscribed;
-    if (isSubscribed == false) return;
+    if (!pangeaController.subscriptionController.showSubscriptionGatedContent) {
+      return;
+    }
 
     final overlayKey = "level_up_notification";
     _bannerController.addBanner((Completer<void> completer) {
@@ -810,11 +812,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _activityConfettiListener() {
     if (activityController.confettiNotifier.value) {
-      StarRainWidget.show(
-        context,
-        "star-rain-${widget.room.id}",
-        showBlast: true,
-      );
+      StarRainWidget.show(context, "star-rain-${widget.room.id}");
     }
   }
 

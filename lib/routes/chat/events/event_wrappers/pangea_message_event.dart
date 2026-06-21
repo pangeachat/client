@@ -84,14 +84,7 @@ class PangeaMessageEvent {
   String? get _l1Code =>
       MatrixState.pangeaController.userController.userL1?.langCode;
 
-  Event? _latestEditCache;
-  Event get _latestEdit => _latestEditCache ??=
-      _event
-          .aggregatedEvents(timeline, RelationshipTypes.edit)
-          //sort by event.originServerTs to get the most recent first
-          .sorted((a, b) => b.originServerTs.compareTo(a.originServerTs))
-          .firstOrNull ??
-      _event;
+  Event get _latestEdit => _event.getDisplayEvent(timeline);
 
   // get audio events that are related to this event
   Set<Event> get ttsEvents => _latestEdit
@@ -286,7 +279,6 @@ class PangeaMessageEvent {
       : TextDirection.ltr;
 
   void updateLatestEdit() {
-    _latestEditCache = null;
     _representations = null;
   }
 

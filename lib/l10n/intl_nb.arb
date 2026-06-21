@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-11 10:21:51.454856",
+    "@@last_modified": "2026-06-18 09:35:23.890472",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9885,6 +9885,56 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "Aktivitetshandlinger",
+    "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Pro-funksjoner",
+    "pronunciationTools": "Uttaleverktøy",
+    "audioTranscription": "AI lydtranskripsjon",
+    "visualLearnerSupport": "Støtte for visuelle lærere",
+    "instantWritingTranslation": "Umiddelbar skriving oversettelse",
+    "personalizedPracticeExercises": "Personlige øvelser",
+    "vocabularyFlashcards": "Ordforråd flashkort",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Tilbake",
+    "viewCurrentOrFinished": "Se nåværende eller fullførte",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

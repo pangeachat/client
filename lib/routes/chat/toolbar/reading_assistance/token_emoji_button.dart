@@ -26,8 +26,10 @@ class TokenEmojiButton extends StatelessWidget with LemmaEmojiSetter {
     this.enabled = true,
   });
 
-  bool get _canShow =>
-      MatrixState.pangeaController.subscriptionController.isSubscribed != false;
+  bool get _canShow => MatrixState
+      .pangeaController
+      .subscriptionController
+      .showSubscriptionGatedContent;
 
   @override
   Widget build(BuildContext context) {

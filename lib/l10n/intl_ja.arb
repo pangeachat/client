@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-11 10:22:59.480581",
+    "@@last_modified": "2026-06-18 09:35:50.121318",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -7842,7 +7842,7 @@
     "bhoDisplayName": "ボージュプリー語",
     "bikDisplayName": "ビコール語",
     "bmDisplayName": "バンバラ語",
-    "bnDisplayName": "バングラ",
+    "bnDisplayName": "ベンガル語",
     "bnBDDisplayName": "ベンガル語（バングラデシュ）",
     "bnINDisplayName": "ベンガル語（インド）",
     "brDisplayName": "ブルトン語",
@@ -10693,6 +10693,56 @@
         "placeholders": {}
     },
     "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "activityActions": "アクティビティアクション",
+    "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "プロ機能",
+    "pronunciationTools": "発音ツール",
+    "audioTranscription": "AI音声転写",
+    "visualLearnerSupport": "視覚学習者サポート",
+    "instantWritingTranslation": "即時書き込み翻訳",
+    "personalizedPracticeExercises": "パーソナライズされた練習問題",
+    "vocabularyFlashcards": "語彙フラッシュカード",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "戻る",
+    "viewCurrentOrFinished": "現在または終了したものを見る",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

@@ -250,7 +250,7 @@ extension AnalyticsClientExtension on Client {
     }
 
     try {
-      final event = await room.getEventById(use.metadata.eventId!);
+      Event? event = await room.getEventById(use.metadata.eventId!);
       if (event == null) {
         ErrorHandler.logError(
           e: "Event not found for construct use",
@@ -258,6 +258,15 @@ extension AnalyticsClientExtension on Client {
           data: use.toJson(),
         );
         return null;
+      }
+
+      if (event.relationshipType == RelationshipTypes.edit) {
+        final parentId = event.relationshipEventId;
+        if (parentId != null) {
+          final parentEvent = await room.getEventById(parentId);
+          if (parentEvent == null) return null;
+          event = parentEvent;
+        }
       }
 
       final timeline = await room.getTimeline();

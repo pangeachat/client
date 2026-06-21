@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:async/async.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
-import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_controller.dart';
 import 'package:fluffychat/routes/chat/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
@@ -22,6 +21,7 @@ import 'package:fluffychat/routes/chat/events/repo/token_api_models.dart';
 import 'package:fluffychat/routes/chat/events/repo/tokens_repo.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
+import 'package:fluffychat/features/subscription/utils/subscription_status_enum.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../../widgets/matrix.dart';
 import 'choreographer_error_controller.dart';
@@ -221,7 +221,7 @@ class Choreographer extends ChangeNotifier {
   Future<void> requestWritingAssistance({bool manual = false}) async {
     if (assistanceState != AssistanceStateEnum.notFetched) return;
     final SubscriptionStatus canSendStatus =
-        MatrixState.pangeaController.subscriptionController.subscriptionStatus;
+        MatrixState.pangeaController.subscriptionController.paywallStatus;
 
     if (canSendStatus != SubscriptionStatus.subscribed) {
       Logs().w("User is not subscribed to a plan that allows IGC");

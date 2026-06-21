@@ -148,6 +148,7 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
     setState(() => _selectedVocab = vocab);
     TtsController.tryToSpeak(vocab.lemma, langCode: widget.langCode);
     if (isNew) _onSelectNewVocab(vocab);
+    TtsController.tryToSpeak(vocab.lemma, langCode: widget.langCode);
     _showWordCard(vocab);
   }
 

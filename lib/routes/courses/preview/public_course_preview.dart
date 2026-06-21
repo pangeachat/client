@@ -67,9 +67,11 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       });
 
       final roomIds = [roomID];
-      final roomSummariesResponse = await Matrix.of(
-        context,
-      ).client.loadRoomSummaries(roomIds);
+      final roomSummariesResponse = await Matrix.of(context).client
+          .loadRoomSummaries(
+            roomIds,
+            l1Code: MatrixState.pangeaController.userController.userL1Code,
+          );
 
       final roomSummary = roomSummariesResponse[roomID];
       if (roomSummary == null) {

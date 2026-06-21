@@ -22,6 +22,7 @@ class LearningSettingsViewModel extends ChangeNotifier {
     _updatedProfile = profile;
   }
 
+  bool _resetInstructions = false;
   Timer? _textDebounce;
 
   @override
@@ -38,6 +39,8 @@ class LearningSettingsViewModel extends ChangeNotifier {
   bool get hasIdenticalLanguages =>
       selectedSourceLanguage?.langCodeShort ==
       selectedTargetLanguage?.langCodeShort;
+
+  bool get resetInstructions => _resetInstructions;
 
   LanguageModel? get selectedSourceLanguage {
     return _selectedBaseLanguage ?? LanguageService.systemLanguage;
@@ -146,6 +149,7 @@ class LearningSettingsViewModel extends ChangeNotifier {
     final updated = _updatedProfile.copyWith(
       instructionSettings: InstructionSettings(),
     );
+    _resetInstructions = true;
     _updateProfile(updated);
   }
 

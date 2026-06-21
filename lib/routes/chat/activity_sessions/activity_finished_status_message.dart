@@ -13,6 +13,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
+import 'package:fluffychat/features/subscription/widgets/subscription_paywall.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityFinishedStatusMessage extends StatelessWidget {
@@ -68,10 +69,6 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
 
     final theme = Theme.of(context);
 
-    final isSubscribed =
-        MatrixState.pangeaController.subscriptionController.isSubscribed !=
-        false;
-
     final l1 = MatrixState.pangeaController.userController.userL1Code;
 
     final finished = controller.room.isActivityFinished;
@@ -103,7 +100,6 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
                         if (summary != null)
                           _SummarySection(
                             summary: summary,
-                            isSubscribed: isSubscribed,
                             fetchSummaries: l1 != null
                                 ? () => controller.room.fetchSummaries(l1)
                                 : null,
@@ -128,15 +124,10 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
 }
 
 class _SummarySection extends StatelessWidget {
-  final bool isSubscribed;
   final ActivitySummaryModel summary;
   final Future<void> Function()? fetchSummaries;
 
-  const _SummarySection({
-    required this.isSubscribed,
-    required this.summary,
-    required this.fetchSummaries,
-  });
+  const _SummarySection({required this.summary, required this.fetchSummaries});
 
   @override
   Widget build(BuildContext context) {
@@ -162,12 +153,16 @@ class _SummarySection extends StatelessWidget {
       );
     }
 
-    if (!isSubscribed) {
+    if (!MatrixState
+        .pangeaController
+        .subscriptionController
+        .showSubscriptionGatedContent) {
       return ErrorIndicator(
         message: L10n.of(context).subscribeToUnlockActivitySummaries,
         onTap: () {
-          MatrixState.pangeaController.subscriptionController.showPaywall(
+          SubscriptionPaywall.show(
             context,
+            userID: Matrix.of(context).client.userID,
           );
         },
       );
