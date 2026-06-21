@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:async/async.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
+import 'package:fluffychat/features/subscription/utils/subscription_status_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_controller.dart';
 import 'package:fluffychat/routes/chat/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
@@ -21,7 +22,6 @@ import 'package:fluffychat/routes/chat/events/repo/token_api_models.dart';
 import 'package:fluffychat/routes/chat/events/repo/tokens_repo.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
-import 'package:fluffychat/features/subscription/utils/subscription_status_enum.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../../widgets/matrix.dart';
 import 'choreographer_error_controller.dart';
@@ -298,14 +298,15 @@ class Choreographer extends ChangeNotifier {
     if (l1LangCode != null &&
         l2LangCode != null &&
         !_backoffRequest(_lastTokensError, _tokenErrorBackoff)) {
-      final res =
-          await TokensRepo.instance.get(
+      final res = await TokensRepo.instance
+          .get(
             TokensRequestModel(
               fullText: message,
               senderL1: l1LangCode,
               senderL2: l2LangCode,
             ),
-          ).timeout(
+          )
+          .timeout(
             const Duration(seconds: 10),
             onTimeout: () {
               return Result.error("Token request timed out");

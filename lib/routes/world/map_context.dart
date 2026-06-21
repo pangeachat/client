@@ -34,8 +34,9 @@ class CourseMapContext extends MapContext {
 
 /// App-wide singleton the shell writes and the persistent map reads.
 abstract class MapContextController {
-  static final ValueNotifier<MapContext> notifier =
-      ValueNotifier<MapContext>(const WorldMapContext());
+  static final ValueNotifier<MapContext> notifier = ValueNotifier<MapContext>(
+    const WorldMapContext(),
+  );
 
   static void set(MapContext context) {
     if (notifier.value != context) notifier.value = context;

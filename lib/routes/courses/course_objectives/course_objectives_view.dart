@@ -176,7 +176,8 @@ class _ObjectiveSection extends StatelessWidget {
             separatorBuilder: (_, _) => const SizedBox(width: 16.0),
             itemBuilder: (context, i) {
               final ref = group.activities[i];
-              final complete = userId != null &&
+              final complete =
+                  userId != null &&
                   (hasCompletedActivity?.call(userId, ref.activityId) ?? false);
               return MouseRegion(
                 cursor: SystemMouseCursors.click,
@@ -212,15 +213,17 @@ class _ObjectiveSection extends StatelessWidget {
                     final parts = uri.query.isEmpty
                         ? <String>[]
                         : uri.query.split('&');
-                    parts.removeWhere((p) =>
-                        p == 'left' ||
-                        p.startsWith('left=') ||
-                        p == 'right' ||
-                        p.startsWith('right=') ||
-                        p == 'activity' ||
-                        p.startsWith('activity=') ||
-                        p == 'autoplay' ||
-                        p.startsWith('autoplay='));
+                    parts.removeWhere(
+                      (p) =>
+                          p == 'left' ||
+                          p.startsWith('left=') ||
+                          p == 'right' ||
+                          p.startsWith('right=') ||
+                          p == 'activity' ||
+                          p.startsWith('activity=') ||
+                          p == 'autoplay' ||
+                          p.startsWith('autoplay='),
+                    );
                     parts.add('activity=${ref.activityId}');
                     // Tapping a video card opens the plan with that video
                     // autostarting (muted) — see the carousel.

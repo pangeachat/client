@@ -78,7 +78,9 @@ class ActivityMediaBlock {
   String? displayUrl([double width = 1024]) {
     if (isYoutube) return thumbnailUrl ?? youtubeThumbnailUrl;
     if (resolvedUrl == null) return null;
-    if (width <= 256 && resolvedThumbnailUrl != null) return resolvedThumbnailUrl;
+    if (width <= 256 && resolvedThumbnailUrl != null) {
+      return resolvedThumbnailUrl;
+    }
     if (width <= 512 && resolvedMediumUrl != null) return resolvedMediumUrl;
     return resolvedMediumUrl ?? resolvedUrl;
   }
@@ -147,5 +149,8 @@ class ActivityMediaBlock {
 
   @override
   int get hashCode =>
-      blockType.hashCode ^ uploadId.hashCode ^ url.hashCode ^ resolvedUrl.hashCode;
+      blockType.hashCode ^
+      uploadId.hashCode ^
+      url.hashCode ^
+      resolvedUrl.hashCode;
 }

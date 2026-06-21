@@ -123,10 +123,7 @@ void main() {
   });
 
   group('LoProgressionGate.isPinLocked', () {
-    const gate = LoProgressionGate(
-      unlocked: {'lo1'},
-      gated: {'lo1', 'lo2'},
-    );
+    const gate = LoProgressionGate(unlocked: {'lo1'}, gated: {'lo1', 'lo2'});
 
     test('a pin whose only objective is locked reads locked', () {
       expect(gate.isPinLocked(['lo2']), isTrue);

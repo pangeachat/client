@@ -27,10 +27,9 @@ void main() {
 
     test('keeps each course outline ordered for the gate', () async {
       final cache = JoinedObjectiveCache();
-      await cache.rebuild(
-        ['c1'],
-        outlineOf: (u) async => _outline(['lo-1', 'lo-2', 'lo-3']),
-      );
+      await cache.rebuild([
+        'c1',
+      ], outlineOf: (u) async => _outline(['lo-1', 'lo-2', 'lo-3']));
       expect(cache.outlines.single.orderedLoIds, ['lo-1', 'lo-2', 'lo-3']);
     });
 
@@ -47,7 +46,10 @@ void main() {
     test('defaults the threshold when no override is given', () async {
       final cache = JoinedObjectiveCache();
       await cache.rebuild(['c1'], outlineOf: (u) async => _outline(['lo-a']));
-      expect(cache.outlines.single.starsToUnlock, kDefaultStarsToUnlockObjective);
+      expect(
+        cache.outlines.single.starsToUnlock,
+        kDefaultStarsToUnlockObjective,
+      );
     });
 
     test('skips a course that fails to resolve, keeping the rest', () async {

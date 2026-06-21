@@ -1,8 +1,8 @@
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:fluffychat/config/setting_keys.dart';
 import 'app_config.dart';
 
 abstract class FluffyThemes {
@@ -12,9 +12,11 @@ abstract class FluffyThemes {
 
   static const double navRailWidth = 80.0;
 
-  static bool isColumnModeByWidth(double width) => width > columnWidth * 2 + navRailWidth;
+  static bool isColumnModeByWidth(double width) =>
+      width > columnWidth * 2 + navRailWidth;
 
-  static bool isColumnMode(BuildContext context) => isColumnModeByWidth(MediaQuery.sizeOf(context).width);
+  static bool isColumnMode(BuildContext context) =>
+      isColumnModeByWidth(MediaQuery.sizeOf(context).width);
 
   static bool isThreeColumnMode(BuildContext context) =>
       MediaQuery.sizeOf(context).width > FluffyThemes.columnWidth * 3.5;
@@ -35,7 +37,11 @@ abstract class FluffyThemes {
   static const Duration animationDuration = Duration(milliseconds: 250);
   static const Curve animationCurve = Curves.easeInOut;
 
-  static ThemeData buildTheme(BuildContext context, Brightness brightness, [Color? seed]) {
+  static ThemeData buildTheme(
+    BuildContext context,
+    Brightness brightness, [
+    Color? seed,
+  ]) {
     final colorScheme = ColorScheme.fromSeed(
       brightness: brightness,
       seedColor: seed ?? Color(AppSettings.colorSchemeSeedInt.value),
@@ -46,40 +52,55 @@ abstract class FluffyThemes {
       useMaterial3: true,
       brightness: brightness,
       colorScheme: colorScheme,
-      dividerColor: brightness == Brightness.dark ? colorScheme.surfaceContainerHighest : colorScheme.surfaceContainer,
+      dividerColor: brightness == Brightness.dark
+          ? colorScheme.surfaceContainerHighest
+          : colorScheme.surfaceContainer,
       popupMenuTheme: PopupMenuThemeData(
         color: colorScheme.surfaceContainerLow,
         iconColor: colorScheme.onSurface,
         textStyle: TextStyle(color: colorScheme.onSurface),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppConfig.borderRadius / 2)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppConfig.borderRadius / 2),
+        ),
       ),
       segmentedButtonTheme: SegmentedButtonThemeData(
-        style: SegmentedButton.styleFrom(iconColor: colorScheme.onSurface, disabledIconColor: colorScheme.onSurface),
+        style: SegmentedButton.styleFrom(
+          iconColor: colorScheme.onSurface,
+          disabledIconColor: colorScheme.onSurface,
+        ),
       ),
       textSelectionTheme: TextSelectionThemeData(
         selectionColor: colorScheme.onSurface.withAlpha(128),
         selectionHandleColor: colorScheme.secondary,
       ),
       inputDecorationTheme: InputDecorationTheme(
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(AppConfig.borderRadius)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+        ),
         contentPadding: const EdgeInsets.all(12),
       ),
       chipTheme: ChipThemeData(
         showCheckmark: false,
         backgroundColor: colorScheme.surfaceContainer,
         side: BorderSide.none,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppConfig.borderRadius)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+        ),
       ),
       appBarTheme: AppBarTheme(
         toolbarHeight: isColumnMode ? 72 : 56,
-        shadowColor: isColumnMode ? colorScheme.surfaceContainer.withAlpha(128) : null,
+        shadowColor: isColumnMode
+            ? colorScheme.surfaceContainer.withAlpha(128)
+            : null,
         // #Pangea
         // surfaceTintColor: isColumnMode ? colorScheme.surface : null,
         // backgroundColor: isColumnMode ? colorScheme.surface : null,
         surfaceTintColor: colorScheme.surface,
         backgroundColor: colorScheme.surface,
         // Pangea#
-        actionsPadding: isColumnMode ? const EdgeInsets.symmetric(horizontal: 16.0) : null,
+        actionsPadding: isColumnMode
+            ? const EdgeInsets.symmetric(horizontal: 16.0)
+            : null,
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           statusBarIconBrightness: brightness.reversed,
@@ -119,22 +140,31 @@ abstract class FluffyThemes {
         ),
       ),
       // #Pangea
-      cupertinoOverrideTheme: const CupertinoThemeData(textTheme: CupertinoTextThemeData()),
+      cupertinoOverrideTheme: const CupertinoThemeData(
+        textTheme: CupertinoTextThemeData(),
+      ),
       // Pangea#
     );
   }
 }
 
 extension on Brightness {
-  Brightness get reversed => this == Brightness.dark ? Brightness.light : Brightness.dark;
+  Brightness get reversed =>
+      this == Brightness.dark ? Brightness.light : Brightness.dark;
 }
 
 extension BubbleColorTheme on ThemeData {
-  Color get bubbleColor => brightness == Brightness.light ? colorScheme.primary : colorScheme.primaryContainer;
+  Color get bubbleColor => brightness == Brightness.light
+      ? colorScheme.primary
+      : colorScheme.primaryContainer;
 
-  Color get onBubbleColor => brightness == Brightness.light ? colorScheme.onPrimary : colorScheme.onPrimaryContainer;
+  Color get onBubbleColor => brightness == Brightness.light
+      ? colorScheme.onPrimary
+      : colorScheme.onPrimaryContainer;
 
   Color get secondaryBubbleColor => HSLColor.fromColor(
-    brightness == Brightness.light ? colorScheme.tertiary : colorScheme.tertiaryContainer,
+    brightness == Brightness.light
+        ? colorScheme.tertiary
+        : colorScheme.tertiaryContainer,
   ).withSaturation(0.5).toColor();
 }

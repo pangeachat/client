@@ -1,4 +1,3 @@
-
 import 'package:fluffychat/features/room_summaries/activity_sessions_status_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 

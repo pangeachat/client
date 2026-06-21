@@ -9,8 +9,8 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
-import 'package:fluffychat/pangea/common/network/media_url.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/network/media_url.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
@@ -100,8 +100,7 @@ class ActivityPlanModel {
       ).nextInt(placeholderImages.length)];
 
   /// First image block in the media carousel, if any (the "hero").
-  ActivityMediaBlock? get heroImage =>
-      media.firstWhereOrNull((b) => b.isImage);
+  ActivityMediaBlock? get heroImage => media.firstWhereOrNull((b) => b.isImage);
 
   /// First media block of any kind — the compact-surface "hero". Cards, list
   /// tiles, and map pins show this block standing in for the whole carousel,

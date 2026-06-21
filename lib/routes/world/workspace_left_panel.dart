@@ -168,11 +168,7 @@ class WorkspaceLeftPanel extends StatelessWidget {
   /// room), with the panel's `←` [back] control in place of the widget's own
   /// route-pop. Null for an unknown name. Shared by the course card
   /// (`course:<page>`) and the room panel (`room:<id>/details/<page>`).
-  Widget? _managementWidget(
-    String roomId,
-    String name,
-    Widget back,
-  ) {
+  Widget? _managementWidget(String roomId, String name, Widget back) {
     switch (name) {
       case 'edit':
         return EditCourse(roomId: roomId, embeddedCloseButton: back);
@@ -180,8 +176,9 @@ class WorkspaceLeftPanel extends StatelessWidget {
         final filter = currentUri.queryParameters['filter'];
         return PangeaInvitationSelection(
           roomId: roomId,
-          initialFilter:
-              filter != null ? InvitationFilter.fromString(filter) : null,
+          initialFilter: filter != null
+              ? InvitationFilter.fromString(filter)
+              : null,
           embeddedCloseButton: back,
         );
       case 'access':
@@ -208,7 +205,11 @@ class WorkspaceLeftPanel extends StatelessWidget {
   /// detail (or a narrow single pane with the card behind it) reveals the card
   /// (`←`); otherwise `X` drops the page, leaving the card beside it. See
   /// `close_affordance`.
-  Widget _coursePageClose(BuildContext context, bool isColumnMode, String page) {
+  Widget _coursePageClose(
+    BuildContext context,
+    bool isColumnMode,
+    String page,
+  ) {
     void dismiss() => context.go(WorkspaceNav.closeLeft(currentUri, token));
     final isPushed = page.contains('/');
     if (isPushed) {
@@ -222,8 +223,10 @@ class WorkspaceLeftPanel extends StatelessWidget {
     // (an orphan, normally dropped at parse), `X` dismisses to the map.
     final revealsMaster =
         foldedOver || (!isColumnMode && parentIsOpen(currentUri, token));
-    final aff =
-        CloseAffordance.of(isPushedPage: false, revealsMaster: revealsMaster);
+    final aff = CloseAffordance.of(
+      isPushedPage: false,
+      revealsMaster: revealsMaster,
+    );
     return aff.showBack
         ? BackButton(onPressed: dismiss)
         : IconButton(
@@ -248,10 +251,9 @@ class WorkspaceLeftPanel extends StatelessWidget {
               title,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium
-                  ?.copyWith(fontWeight: FontWeight.w600),
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
             ),
           ),
         ],
@@ -276,10 +278,10 @@ class WorkspaceLeftPanel extends StatelessWidget {
     // A section panel (a course) is also addressable by its map filter, so
     // closing it returns to the world map. See WorkspaceNav.closeSection.
     void close() => context.go(
-          token.type == 'room' || token.type == 'session'
-              ? WorkspaceNav.closeLeft(currentUri, token)
-              : WorkspaceNav.closeSection(currentUri, token),
-        );
+      token.type == 'room' || token.type == 'session'
+          ? WorkspaceNav.closeLeft(currentUri, token)
+          : WorkspaceNav.closeSection(currentUri, token),
+    );
     // Centralized affordance (close_affordance.dart): `←` when closing returns to
     // a master that was behind us — a width-fold ([foldedOver]) or, on a narrow
     // single pane, this leaf's navigation-tree PARENT being open behind it
@@ -357,13 +359,15 @@ class WorkspaceLeftPanel extends StatelessWidget {
         final filter = currentUri.queryParameters['filter'];
         return PangeaInvitationSelection(
           roomId: roomId,
-          initialFilter:
-              filter != null ? InvitationFilter.fromString(filter) : null,
+          initialFilter: filter != null
+              ? InvitationFilter.fromString(filter)
+              : null,
           embeddedCloseButton: back,
         );
       case 'details':
-        final rest =
-            sub.contains('/') ? sub.substring(sub.indexOf('/') + 1) : '';
+        final rest = sub.contains('/')
+            ? sub.substring(sub.indexOf('/') + 1)
+            : '';
         if (rest.isEmpty) {
           return ChatDetails(roomId: roomId, embeddedCloseButton: back);
         }

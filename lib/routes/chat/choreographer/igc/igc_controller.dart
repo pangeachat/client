@@ -316,8 +316,9 @@ class IgcController {
     _isFetching = true;
     _lastRequest = request;
 
-    final res =
-        await IgcRepo.instance.get(request).timeout(
+    final res = await IgcRepo.instance
+        .get(request)
+        .timeout(
           const Duration(seconds: 10),
           onTimeout: () {
             return Result.error(

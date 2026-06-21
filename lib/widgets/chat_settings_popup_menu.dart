@@ -33,11 +33,10 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
     super.dispose();
   }
 
-  void goToEmoteSettings() => NavigationUtil.goToSpaceRoute(
-        widget.room.id,
-        ['details', 'emotes'],
-        context,
-      );
+  void goToEmoteSettings() => NavigationUtil.goToSpaceRoute(widget.room.id, [
+    'details',
+    'emotes',
+  ], context);
 
   @override
   Widget build(BuildContext context) {
@@ -99,11 +98,9 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
                 _showChatDetails();
                 break;
               case ChatPopupMenuActions.search:
-                NavigationUtil.goToSpaceRoute(
-                  widget.room.id,
-                  ['search'],
-                  context,
-                );
+                NavigationUtil.goToSpaceRoute(widget.room.id, [
+                  'search',
+                ], context);
                 break;
               case ChatPopupMenuActions.emote:
                 goToEmoteSettings();

@@ -50,7 +50,9 @@ class QuestPlansRepo {
     }
     if (filter.languageOfInstructions != null) {
       clauses.add({
-        'req.target_l1': {'equals': filter.languageOfInstructions!.langCodeShort},
+        'req.target_l1': {
+          'equals': filter.languageOfInstructions!.langCodeShort,
+        },
       });
     }
     if (filter.cefrLevel != null) {
@@ -140,9 +142,11 @@ class QuestPlansRepo {
       cefrLevel: LanguageLevelTypeEnum.fromString(targetCefr),
       topicIds: placeholderTopicIds,
       mediaIds: const [],
-      createdAt: DateTime.tryParse(json['createdAt'] as String? ?? '') ??
+      createdAt:
+          DateTime.tryParse(json['createdAt'] as String? ?? '') ??
           DateTime.now(),
-      updatedAt: DateTime.tryParse(json['updatedAt'] as String? ?? '') ??
+      updatedAt:
+          DateTime.tryParse(json['updatedAt'] as String? ?? '') ??
           DateTime.now(),
     );
   }

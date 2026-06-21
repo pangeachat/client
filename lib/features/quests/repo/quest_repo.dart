@@ -87,7 +87,9 @@ class QuestRepo {
         .toList();
     if (ids.isEmpty) return plans;
     final resolved = await ActivityMediaRepo.resolve(ids);
-    return plans.map((p) => p.withMedia(_applyResolved(p.media, resolved))).toList();
+    return plans
+        .map((p) => p.withMedia(_applyResolved(p.media, resolved)))
+        .toList();
   }
 
   static List<ActivityMediaBlock> _applyResolved(
@@ -124,8 +126,11 @@ class QuestRepo {
   /// The quest with its ordered Learning Objective ids (one read). LO text is
   /// NOT populated by depth (Payload leaves the relationship-in-array a bare
   /// id), so [learningObjectives] resolves it in a separate batch read.
-  static Future<QuestPlan> quest(String questId) =>
-      _client().findById(_questPlans, questId, (json) => QuestPlan.fromJson(json));
+  static Future<QuestPlan> quest(String questId) => _client().findById(
+    _questPlans,
+    questId,
+    (json) => QuestPlan.fromJson(json),
+  );
 
   /// The full Learning Objectives for [ids], resolved in one batched read.
   static Future<Map<String, LearningObjective>> learningObjectives(

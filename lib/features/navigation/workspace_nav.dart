@@ -39,7 +39,9 @@ abstract class WorkspaceNav {
       _lastResolvedUri = destination;
       return null;
     }
-    final namesPanels = destination.query.split('&').any(
+    final namesPanels = destination.query
+        .split('&')
+        .any(
           (p) =>
               p == 'right' ||
               p == 'left' ||
@@ -71,8 +73,11 @@ abstract class WorkspaceNav {
 
   /// Add [token] to the `left` list (deduped). [atStart] places it at the left
   /// edge of the column rather than the inside.
-  static String openLeft(Uri current, PanelToken token, {bool atStart = false}) =>
-      _mutate(current, 'left', (tokens) => _add(tokens, token, atStart));
+  static String openLeft(
+    Uri current,
+    PanelToken token, {
+    bool atStart = false,
+  }) => _mutate(current, 'left', (tokens) => _add(tokens, token, atStart));
 
   /// Open (or replace) a DETAIL panel, enforcing the registry's **sibling**
   /// groups across BOTH columns: any open token that shares a sibling group with
@@ -100,8 +105,9 @@ abstract class WorkspaceNav {
     PanelColumn thisCol,
     PanelColumn tokenCol,
   ) {
-    final next =
-        tokens.where((t) => t != token && !_areSiblings(token, t)).toList();
+    final next = tokens
+        .where((t) => t != token && !_areSiblings(token, t))
+        .toList();
     if (thisCol == tokenCol) {
       thisCol == PanelColumn.right ? next.insert(0, token) : next.add(token);
     }
@@ -135,20 +141,20 @@ abstract class WorkspaceNav {
     Uri current,
     PanelToken detail,
     String summaryTab,
-  ) =>
-      _mutateBoth(
-        current,
-        (left) => left.where((t) => !_areSiblings(detail, t)).toList(),
-        (right) {
-          final next =
-              right.where((t) => t != detail && !_areSiblings(detail, t)).toList();
-          next.insert(0, detail);
-          if (!next.any((t) => t.type == 'analytics')) {
-            next.add(PanelToken('analytics', summaryTab));
-          }
-          return next;
-        },
-      );
+  ) => _mutateBoth(
+    current,
+    (left) => left.where((t) => !_areSiblings(detail, t)).toList(),
+    (right) {
+      final next = right
+          .where((t) => t != detail && !_areSiblings(detail, t))
+          .toList();
+      next.insert(0, detail);
+      if (!next.any((t) => t.type == 'analytics')) {
+        next.add(PanelToken('analytics', summaryTab));
+      }
+      return next;
+    },
+  );
 
   /// Open a practice session as a right-column panel that **takes over the
   /// analytics surface**: it clears the analytics master and any vocab/grammar
@@ -160,20 +166,22 @@ abstract class WorkspaceNav {
   /// bounded panel, not a route or a fullscreen surface. See
   /// `routing.instructions.md`.
   static String openPractice(Uri current, String type) => _mutateBoth(
-        current,
-        (left) => left.where((t) => t.type != 'session').toList(),
-        (right) {
-          final next = right
-              .where((t) =>
-                  t.type != 'analytics' &&
-                  t.type != 'vocab' &&
-                  t.type != 'grammar' &&
-                  t.type != 'practice')
-              .toList();
-          next.insert(0, PanelToken('practice', type));
-          return next;
-        },
-      );
+    current,
+    (left) => left.where((t) => t.type != 'session').toList(),
+    (right) {
+      final next = right
+          .where(
+            (t) =>
+                t.type != 'analytics' &&
+                t.type != 'vocab' &&
+                t.type != 'grammar' &&
+                t.type != 'practice',
+          )
+          .toList();
+      next.insert(0, PanelToken('practice', type));
+      return next;
+    },
+  );
 
   /// Switch the workspace to course [spaceId]: set the `?m=course:<id>` map
   /// filter AND a `course` left panel (at [tab] in its param if given),
@@ -190,8 +198,12 @@ abstract class WorkspaceNav {
       // stale management page (`coursepage`) — picking a specific course replaces
       // the launcher rather than stacking beside it, and a coursepage left from
       // the previous course would silently re-target the new one.
-      ...lists.left.where((t) =>
-          t.type != 'course' && t.type != 'addcourse' && t.type != 'coursepage'),
+      ...lists.left.where(
+        (t) =>
+            t.type != 'course' &&
+            t.type != 'addcourse' &&
+            t.type != 'coursepage',
+      ),
     ];
     final parts = current.query.isEmpty ? <String>[] : current.query.split('&');
     parts.removeWhere(
@@ -295,9 +307,11 @@ abstract class WorkspaceNav {
 
   /// Add [token] to the `right` list (deduped). [atStart] places it to the left
   /// of the rest — a detail blooming left of its summary.
-  static String openRight(Uri current, PanelToken token,
-          {bool atStart = false}) =>
-      _mutate(current, 'right', (tokens) => _add(tokens, token, atStart));
+  static String openRight(
+    Uri current,
+    PanelToken token, {
+    bool atStart = false,
+  }) => _mutate(current, 'right', (tokens) => _add(tokens, token, atStart));
 
   static String closeLeft(Uri current, PanelToken token) =>
       _mutate(current, 'left', (tokens) => _remove(tokens, token));
@@ -316,8 +330,11 @@ abstract class WorkspaceNav {
     // closeSettings dropping settingspage. See routing.instructions.md.
     final dropDependentCoursePage = token.type == 'course';
     final left = lists.left
-        .where((t) =>
-            t != token && !(dropDependentCoursePage && t.type == 'coursepage'))
+        .where(
+          (t) =>
+              t != token &&
+              !(dropDependentCoursePage && t.type == 'coursepage'),
+        )
         .toList();
     final parts = <String>[
       ?_mapFilter(current),
@@ -325,7 +342,9 @@ abstract class WorkspaceNav {
       if (lists.right.isNotEmpty)
         'right=${lists.right.map((t) => t.encode()).join(',')}',
     ];
-    return parts.isEmpty ? PRoutes.world : '${PRoutes.world}?${parts.join('&')}';
+    return parts.isEmpty
+        ? PRoutes.world
+        : '${PRoutes.world}?${parts.join('&')}';
   }
 
   static String closeRight(Uri current, PanelToken token) =>
@@ -342,12 +361,15 @@ abstract class WorkspaceNav {
   /// deeper-page token, keeping every other panel. A null/empty [page] is the
   /// panel's root. See `routing.instructions.md`.
   static String pushPage(Uri current, String type, String? page) {
-    final col =
-        PanelRegistry.defFor(type)?.column == PanelColumn.right ? 'right' : 'left';
+    final col = PanelRegistry.defFor(type)?.column == PanelColumn.right
+        ? 'right'
+        : 'left';
     return _mutate(current, col, (tokens) {
       final next = tokens.where((t) => t.type != type).toList();
       next.add(
-        page == null || page.isEmpty ? PanelToken(type) : PanelToken(type, page),
+        page == null || page.isEmpty
+            ? PanelToken(type)
+            : PanelToken(type, page),
       );
       return next;
     });
@@ -356,8 +378,9 @@ abstract class WorkspaceNav {
   /// Pop one page level off a pushable panel (its back arrow): a `a/b` page
   /// returns to `a`; a top-level page returns to the panel's root.
   static String popPage(Uri current, String type, String page) {
-    final parent =
-        page.contains('/') ? page.substring(0, page.lastIndexOf('/')) : '';
+    final parent = page.contains('/')
+        ? page.substring(0, page.lastIndexOf('/'))
+        : '';
     return pushPage(current, type, parent.isEmpty ? null : parent);
   }
 
@@ -391,22 +414,26 @@ abstract class WorkspaceNav {
   /// detail — keeping the rest of the right column. Closing the master drops its
   /// detail (it has no meaning without the menu).
   static String closeSettings(Uri current) => _mutate(
-        current,
-        'right',
-        (tokens) => tokens
-            .where((t) =>
-                t.type != 'settings' &&
-                t.type != 'profile' &&
-                t.type != 'settingspage')
-            .toList(),
-      );
+    current,
+    'right',
+    (tokens) => tokens
+        .where(
+          (t) =>
+              t.type != 'settings' &&
+              t.type != 'profile' &&
+              t.type != 'settingspage',
+        )
+        .toList(),
+  );
 
   /// The settings panel's back: a leaf (`a/b`) pops to its parent page; a
   /// top-level page returns to the menu (drops the page detail, menu remains).
   static String settingsBack(Uri current, String page) {
     if (page.contains('/')) {
       return openSettings(
-          current, page: page.substring(0, page.lastIndexOf('/')));
+        current,
+        page: page.substring(0, page.lastIndexOf('/')),
+      );
     }
     return closeRight(current, PanelToken('settingspage', page));
   }

@@ -48,7 +48,8 @@ class EmotesSettingsView extends StatelessWidget {
         // the leading `←` back to the card (the save-mode cancel button keeps
         // priority). See `routing.instructions.md`.
         leading:
-            !controller.showSave && controller.widget.embeddedCloseButton != null
+            !controller.showSave &&
+                controller.widget.embeddedCloseButton != null
             ? Center(child: controller.widget.embeddedCloseButton)
             : null,
         title: controller.showSave

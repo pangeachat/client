@@ -222,7 +222,9 @@ class NotStartedSessionController extends State<NotStartedSession>
 
     final room = Matrix.of(context).client.getRoomById(joinedSessionId);
     if (room == null || room.membership != Membership.join) {
-      await Matrix.of(context).client.waitForRoomInSync(joinedSessionId, join: true);
+      await Matrix.of(
+        context,
+      ).client.waitForRoomInSync(joinedSessionId, join: true);
     }
 
     return joinedSessionId;

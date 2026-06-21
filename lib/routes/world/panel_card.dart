@@ -17,20 +17,22 @@ class PanelCard extends StatelessWidget {
   /// The margin every panel insets from its allocator slot (and the gap between
   /// adjacent panels is two of these horizontal insets — see [PanelAllocator]'s
   /// `panelGap`). Vertical matches the shell's chrome margin.
-  static const EdgeInsets margin =
-      EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0);
+  static const EdgeInsets margin = EdgeInsets.symmetric(
+    horizontal: 8.0,
+    vertical: 12.0,
+  );
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: margin,
-        child: Material(
-          color: Theme.of(context).colorScheme.surface,
-          elevation: 4,
-          borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-          // Clip the contained surface (a chat, a Scaffold, a card body) to the
-          // rounded corners.
-          clipBehavior: Clip.antiAlias,
-          child: child,
-        ),
-      );
+    padding: margin,
+    child: Material(
+      color: Theme.of(context).colorScheme.surface,
+      elevation: 4,
+      borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+      // Clip the contained surface (a chat, a Scaffold, a card body) to the
+      // rounded corners.
+      clipBehavior: Clip.antiAlias,
+      child: child,
+    ),
+  );
 }

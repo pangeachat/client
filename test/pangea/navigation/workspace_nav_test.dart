@@ -9,8 +9,13 @@ void main() {
 
   group('openRight / closeRight', () {
     test('adds a token and round-trips back through the parser', () {
-      final loc = WorkspaceNav.openRight(u('/chats'), const PanelToken('analytics', '!def'));
-      expect(parseOpenPanels(u(loc)).right, [const PanelToken('analytics', '!def')]);
+      final loc = WorkspaceNav.openRight(
+        u('/chats'),
+        const PanelToken('analytics', '!def'),
+      );
+      expect(parseOpenPanels(u(loc)).right, [
+        const PanelToken('analytics', '!def'),
+      ]);
     });
 
     test('an encoded construct survives the add → URL → parse round-trip', () {
@@ -20,27 +25,45 @@ void main() {
     });
 
     test('atStart blooms a detail to the left of an existing summary', () {
-      var loc = WorkspaceNav.openRight(u('/chats'), const PanelToken('analytics', 'vocab'));
+      var loc = WorkspaceNav.openRight(
+        u('/chats'),
+        const PanelToken('analytics', 'vocab'),
+      );
       loc = WorkspaceNav.openRight(
         u(loc),
         const PanelToken('vocab', 'hablar'),
         atStart: true,
       );
-      expect(parseOpenPanels(u(loc)).right.map((t) => t.type), ['vocab', 'analytics']);
+      expect(parseOpenPanels(u(loc)).right.map((t) => t.type), [
+        'vocab',
+        'analytics',
+      ]);
     });
 
     test('adding an existing token is idempotent (deduped)', () {
-      var loc = WorkspaceNav.openRight(u('/chats'), const PanelToken('analytics', '!a'));
+      var loc = WorkspaceNav.openRight(
+        u('/chats'),
+        const PanelToken('analytics', '!a'),
+      );
       loc = WorkspaceNav.openRight(u(loc), const PanelToken('analytics', '!a'));
       expect(parseOpenPanels(u(loc)).right.length, 1);
     });
 
-    test('close removes the token; the key disappears when the list empties', () {
-      final opened = WorkspaceNav.openRight(u('/chats'), const PanelToken('analytics', '!a'));
-      final closed = WorkspaceNav.closeRight(u(opened), const PanelToken('analytics', '!a'));
-      expect(parseOpenPanels(u(closed)).right, isEmpty);
-      expect(closed, '/chats'); // no dangling ?right=
-    });
+    test(
+      'close removes the token; the key disappears when the list empties',
+      () {
+        final opened = WorkspaceNav.openRight(
+          u('/chats'),
+          const PanelToken('analytics', '!a'),
+        );
+        final closed = WorkspaceNav.closeRight(
+          u(opened),
+          const PanelToken('analytics', '!a'),
+        );
+        expect(parseOpenPanels(u(closed)).right, isEmpty);
+        expect(closed, '/chats'); // no dangling ?right=
+      },
+    );
   });
 
   group('preserves the rest of the URL', () {
@@ -51,40 +74,55 @@ void main() {
       );
       final parsed = u(loc);
       expect(parsed.queryParameters['activity'], 'abc');
-      expect(parseOpenPanels(parsed).right, [const PanelToken('analytics', 'sessions')]);
+      expect(parseOpenPanels(parsed).right, [
+        const PanelToken('analytics', 'sessions'),
+      ]);
       expect(parsed.path, '/courses/!s');
     });
 
     test('the path is preserved', () {
-      final loc = WorkspaceNav.openRight(u('/rooms/!abc'), const PanelToken('analytics', '!def'));
+      final loc = WorkspaceNav.openRight(
+        u('/rooms/!abc'),
+        const PanelToken('analytics', '!def'),
+      );
       expect(u(loc).path, '/rooms/!abc');
     });
   });
 
   group('setRight replaces the whole list (metric switch)', () {
     test('drops the old analytics/detail tokens and seats one summary', () {
-      var loc = WorkspaceNav.openRight(u('/chats'), const PanelToken('analytics', 'vocab'));
-      loc = WorkspaceNav.openRight(u(loc), const PanelToken('vocab', 'hablar'), atStart: true);
-      loc = WorkspaceNav.setRight(u(loc), [const PanelToken('analytics', 'grammar')]);
-      expect(parseOpenPanels(u(loc)).right, [const PanelToken('analytics', 'grammar')]);
+      var loc = WorkspaceNav.openRight(
+        u('/chats'),
+        const PanelToken('analytics', 'vocab'),
+      );
+      loc = WorkspaceNav.openRight(
+        u(loc),
+        const PanelToken('vocab', 'hablar'),
+        atStart: true,
+      );
+      loc = WorkspaceNav.setRight(u(loc), [
+        const PanelToken('analytics', 'grammar'),
+      ]);
+      expect(parseOpenPanels(u(loc)).right, [
+        const PanelToken('analytics', 'grammar'),
+      ]);
     });
   });
 
   group('openExclusiveLeftRoom (one live session)', () {
     test('opening a room drops any other room but keeps chats/course', () {
-      var loc = WorkspaceNav.setLeft(
-        u('/chats'),
-        const [PanelToken('chats'), PanelToken('room', '!a')],
-      );
+      var loc = WorkspaceNav.setLeft(u('/chats'), const [
+        PanelToken('chats'),
+        PanelToken('room', '!a'),
+      ]);
       loc = WorkspaceNav.openExclusiveLeftRoom(
         u(loc),
         const PanelToken('room', '!b'),
       );
       final left = parseOpenPanels(u(loc)).left;
-      expect(
-        left.where((t) => t.type == 'room').map((t) => t.param).toList(),
-        ['!b'],
-      );
+      expect(left.where((t) => t.type == 'room').map((t) => t.param).toList(), [
+        '!b',
+      ]);
       expect(left.any((t) => t.type == 'chats'), isTrue);
     });
 
@@ -93,10 +131,9 @@ void main() {
         u('/chats?right=analytics:vocab'),
         const PanelToken('room', '!a'),
       );
-      expect(
-        parseOpenPanels(u(loc)).right,
-        [const PanelToken('analytics', 'vocab')],
-      );
+      expect(parseOpenPanels(u(loc)).right, [
+        const PanelToken('analytics', 'vocab'),
+      ]);
     });
   });
 
@@ -112,8 +149,9 @@ void main() {
         u(loc),
         const PanelToken('course', 'participants'),
       );
-      final courses =
-          parseOpenPanels(u(loc)).left.where((t) => t.type == 'course').toList();
+      final courses = parseOpenPanels(
+        u(loc),
+      ).left.where((t) => t.type == 'course').toList();
       expect(courses.length, 1);
       expect(courses.single.param, 'participants');
     });
@@ -133,22 +171,43 @@ void main() {
   });
 
   group('openConstructDetail (one detail at a time, across columns)', () {
-    test('a new construct detail replaces the prior one, keeping the summary', () {
-      var loc = WorkspaceNav.openRight(u('/'), const PanelToken('analytics', 'vocab'));
-      loc = WorkspaceNav.openConstructDetail(
-          u(loc), const PanelToken('vocab', 'hablar'), 'vocab');
-      loc = WorkspaceNav.openConstructDetail(
-          u(loc), const PanelToken('grammar', 'verb'), 'grammar');
-      final right = parseOpenPanels(u(loc)).right;
-      // exactly one construct detail, blooming left of its kept summary
-      expect(right.where((t) => t.type == 'vocab' || t.type == 'grammar').length, 1);
-      expect(right.first, const PanelToken('grammar', 'verb')); // detail at the edge-left
-      expect(right.any((t) => t.type == 'analytics'), isTrue); // summary kept
-    });
+    test(
+      'a new construct detail replaces the prior one, keeping the summary',
+      () {
+        var loc = WorkspaceNav.openRight(
+          u('/'),
+          const PanelToken('analytics', 'vocab'),
+        );
+        loc = WorkspaceNav.openConstructDetail(
+          u(loc),
+          const PanelToken('vocab', 'hablar'),
+          'vocab',
+        );
+        loc = WorkspaceNav.openConstructDetail(
+          u(loc),
+          const PanelToken('grammar', 'verb'),
+          'grammar',
+        );
+        final right = parseOpenPanels(u(loc)).right;
+        // exactly one construct detail, blooming left of its kept summary
+        expect(
+          right.where((t) => t.type == 'vocab' || t.type == 'grammar').length,
+          1,
+        );
+        expect(
+          right.first,
+          const PanelToken('grammar', 'verb'),
+        ); // detail at the edge-left
+        expect(right.any((t) => t.type == 'analytics'), isTrue); // summary kept
+      },
+    );
 
     test('cold start seats the detail AND its summary together', () {
       final loc = WorkspaceNav.openConstructDetail(
-          u('/'), const PanelToken('vocab', 'hablar'), 'vocab');
+        u('/'),
+        const PanelToken('vocab', 'hablar'),
+        'vocab',
+      );
       final right = parseOpenPanels(u(loc)).right;
       expect(right.map((t) => t.type), ['vocab', 'analytics']);
       expect(right.last.param, 'vocab'); // the seated summary's tab
@@ -158,19 +217,32 @@ void main() {
       // session (left) + a vocab detail open: drilling a new construct drops the
       // session — one detail at a time across columns.
       var loc = WorkspaceNav.openExclusiveSession(
-          u('/'), const PanelToken('session', '!s'));
+        u('/'),
+        const PanelToken('session', '!s'),
+      );
       loc = WorkspaceNav.openConstructDetail(
-          u(loc), const PanelToken('vocab', 'hablar'), 'vocab');
+        u(loc),
+        const PanelToken('vocab', 'hablar'),
+        'vocab',
+      );
       final lists = parseOpenPanels(u(loc));
-      expect(lists.left.any((t) => t.type == 'session'), isFalse); // session gone
+      expect(
+        lists.left.any((t) => t.type == 'session'),
+        isFalse,
+      ); // session gone
       expect(lists.right.first, const PanelToken('vocab', 'hablar'));
     });
 
     test('a live room chat is NOT closed by opening a construct detail', () {
       var loc = WorkspaceNav.openExclusiveLeftRoom(
-          u('/'), const PanelToken('room', '!live'));
+        u('/'),
+        const PanelToken('room', '!live'),
+      );
       loc = WorkspaceNav.openConstructDetail(
-          u(loc), const PanelToken('vocab', 'hablar'), 'vocab');
+        u(loc),
+        const PanelToken('vocab', 'hablar'),
+        'vocab',
+      );
       final lists = parseOpenPanels(u(loc));
       expect(lists.left.any((t) => t.type == 'room'), isTrue); // chat survives
       expect(lists.right.first, const PanelToken('vocab', 'hablar'));
@@ -180,40 +252,53 @@ void main() {
   group('openExclusiveSession (the session shares the detail slot)', () {
     test('opening a session drops an open vocab/grammar detail', () {
       var loc = WorkspaceNav.openConstructDetail(
-          u('/'), const PanelToken('vocab', 'hablar'), 'vocab');
+        u('/'),
+        const PanelToken('vocab', 'hablar'),
+        'vocab',
+      );
       loc = WorkspaceNav.openExclusiveSession(
-          u(loc), const PanelToken('session', '!s'));
+        u(loc),
+        const PanelToken('session', '!s'),
+      );
       final lists = parseOpenPanels(u(loc));
-      expect(lists.right.any((t) => t.type == 'vocab' || t.type == 'grammar'),
-          isFalse); // construct detail gone
+      expect(
+        lists.right.any((t) => t.type == 'vocab' || t.type == 'grammar'),
+        isFalse,
+      ); // construct detail gone
       expect(lists.left.any((t) => t.type == 'session'), isTrue);
     });
 
     test('a session drops another room/session (one live view)', () {
       var loc = WorkspaceNav.openExclusiveLeftRoom(
-          u('/'), const PanelToken('room', '!live'));
+        u('/'),
+        const PanelToken('room', '!live'),
+      );
       loc = WorkspaceNav.openExclusiveSession(
-          u(loc), const PanelToken('session', '!s'));
+        u(loc),
+        const PanelToken('session', '!s'),
+      );
       final left = parseOpenPanels(u(loc)).left;
-      expect(left.where((t) => t.type == 'room' || t.type == 'session').length, 1);
+      expect(
+        left.where((t) => t.type == 'room' || t.type == 'session').length,
+        1,
+      );
       expect(left.single, const PanelToken('session', '!s'));
     });
   });
 
   group('setLeft / clearLeft', () {
     test('setLeft replaces the whole left list, preserving right', () {
-      var loc = WorkspaceNav.setLeft(
-        u('/chats?right=analytics:vocab'),
-        const [PanelToken('room', '!a'), PanelToken('chats')],
-      );
+      var loc = WorkspaceNav.setLeft(u('/chats?right=analytics:vocab'), const [
+        PanelToken('room', '!a'),
+        PanelToken('chats'),
+      ]);
       // Replace with a filter-independent left root (a bare course would be
       // dropped at parse for lacking its `?m=course:` filter).
       loc = WorkspaceNav.setLeft(u(loc), const [PanelToken('addcourse')]);
       expect(parseOpenPanels(u(loc)).left, [const PanelToken('addcourse')]);
-      expect(
-        parseOpenPanels(u(loc)).right,
-        [const PanelToken('analytics', 'vocab')],
-      );
+      expect(parseOpenPanels(u(loc)).right, [
+        const PanelToken('analytics', 'vocab'),
+      ]);
     });
 
     test('clearLeft empties the left list but keeps right', () {
@@ -221,38 +306,47 @@ void main() {
         u('/chats?left=chats&right=analytics:vocab'),
       );
       expect(parseOpenPanels(u(loc)).left, isEmpty);
-      expect(
-        parseOpenPanels(u(loc)).right,
-        [const PanelToken('analytics', 'vocab')],
-      );
+      expect(parseOpenPanels(u(loc)).right, [
+        const PanelToken('analytics', 'vocab'),
+      ]);
     });
   });
 
   group('closeSection (drop a section panel, keep the map filter)', () {
-    test('closing a course card keeps its ?m= filter, the room, and the right',
-        () {
-      final loc = WorkspaceNav.closeSection(
-        u('/?m=course:!s&left=course,room:!a&right=analytics:vocab'),
-        const PanelToken('course'),
-      );
-      // Scope is independent of panels: the map stays course-scoped (filter
-      // survives), the card is gone, the room and right column are kept.
-      expect(loc.contains('m=course'), isTrue);
-      final lists = parseOpenPanels(u(loc));
-      expect(lists.left.any((t) => t.type == 'course'), isFalse); // card dropped
-      expect(lists.left.any((t) => t.type == 'room'), isTrue); // room kept
-      expect(lists.right, [const PanelToken('analytics', 'vocab')]); // kept
-    });
+    test(
+      'closing a course card keeps its ?m= filter, the room, and the right',
+      () {
+        final loc = WorkspaceNav.closeSection(
+          u('/?m=course:!s&left=course,room:!a&right=analytics:vocab'),
+          const PanelToken('course'),
+        );
+        // Scope is independent of panels: the map stays course-scoped (filter
+        // survives), the card is gone, the room and right column are kept.
+        expect(loc.contains('m=course'), isTrue);
+        final lists = parseOpenPanels(u(loc));
+        expect(
+          lists.left.any((t) => t.type == 'course'),
+          isFalse,
+        ); // card dropped
+        expect(lists.left.any((t) => t.type == 'room'), isTrue); // room kept
+        expect(lists.right, [const PanelToken('analytics', 'vocab')]); // kept
+      },
+    );
 
-    test('closing the course card alone keeps the scoped map, not bare world',
-        () {
-      final loc = WorkspaceNav.closeSection(
-        u('/?m=course:!s&left=course'),
-        const PanelToken('course'),
-      );
-      expect(loc.contains('m=course'), isTrue); // scope survives the close
-      expect(parseOpenPanels(u(loc)).left, isEmpty); // no panels, just the filter
-    });
+    test(
+      'closing the course card alone keeps the scoped map, not bare world',
+      () {
+        final loc = WorkspaceNav.closeSection(
+          u('/?m=course:!s&left=course'),
+          const PanelToken('course'),
+        );
+        expect(loc.contains('m=course'), isTrue); // scope survives the close
+        expect(
+          parseOpenPanels(u(loc)).left,
+          isEmpty,
+        ); // no panels, just the filter
+      },
+    );
 
     test('closing a section with no filter lands on a bare world path', () {
       final loc = WorkspaceNav.closeSection(
@@ -274,10 +368,9 @@ void main() {
       expect(result, isNotNull);
       final parsed = u(result!);
       expect(parsed.path, '/profile');
-      expect(
-        parseOpenPanels(parsed).right,
-        [const PanelToken('analytics', 'vocab')],
-      );
+      expect(parseOpenPanels(parsed).right, [
+        const PanelToken('analytics', 'vocab'),
+      ]);
       expect(parseOpenPanels(parsed).left, isEmpty);
     });
   });
@@ -316,14 +409,15 @@ void main() {
     test('opening another page replaces the page detail (one at a time)', () {
       var loc = WorkspaceNav.openSettings(u('/'), page: 'security');
       loc = WorkspaceNav.openSettings(u(loc), page: 'security/password');
-      final pages = parseOpenPanels(u(loc))
-          .right
-          .where((t) => t.type == 'settingspage')
-          .toList();
+      final pages = parseOpenPanels(
+        u(loc),
+      ).right.where((t) => t.type == 'settingspage').toList();
       expect(pages.length, 1);
       expect(pages.single.param, 'security/password'); // slash survives
-      expect(parseOpenPanels(u(loc)).right.any((t) => t.type == 'settings'),
-          isTrue); // menu still there
+      expect(
+        parseOpenPanels(u(loc)).right.any((t) => t.type == 'settings'),
+        isTrue,
+      ); // menu still there
     });
 
     test('settingsBack: a leaf pops to its parent page; a top-level page '
@@ -333,10 +427,9 @@ void main() {
         'security/password',
       );
       expect(
-        parseOpenPanels(u(toSecurity))
-            .right
-            .firstWhere((t) => t.type == 'settingspage')
-            .param,
+        parseOpenPanels(
+          u(toSecurity),
+        ).right.firstWhere((t) => t.type == 'settingspage').param,
         'security',
       );
       final toMenu = WorkspaceNav.settingsBack(
@@ -349,12 +442,17 @@ void main() {
     });
 
     test('closeSettings drops the menu AND its page, keeps the rest', () {
-      var loc = WorkspaceNav.openRight(u('/'), const PanelToken('analytics', 'vocab'));
+      var loc = WorkspaceNav.openRight(
+        u('/'),
+        const PanelToken('analytics', 'vocab'),
+      );
       loc = WorkspaceNav.openSettings(u(loc), page: 'learning');
       loc = WorkspaceNav.closeSettings(u(loc));
       final right = parseOpenPanels(u(loc)).right;
-      expect(right.any((t) => t.type == 'settings' || t.type == 'settingspage'),
-          isFalse);
+      expect(
+        right.any((t) => t.type == 'settings' || t.type == 'settingspage'),
+        isFalse,
+      );
       expect(right.single, const PanelToken('analytics', 'vocab'));
     });
   });
@@ -368,7 +466,9 @@ void main() {
       );
       expect(u(world).path, '/');
       final lists = parseOpenPanels(u(world));
-      expect(lists.left, [const PanelToken('room', '!a')]); // room kept, no section
+      expect(lists.left, [
+        const PanelToken('room', '!a'),
+      ]); // room kept, no section
       expect(lists.right, [const PanelToken('analytics', 'vocab')]); // kept
     });
 
@@ -379,10 +479,10 @@ void main() {
         const PanelToken('chats'),
       );
       expect(u(chats).path, '/chats');
-      expect(
-        parseOpenPanels(u(chats)).left,
-        [const PanelToken('chats'), const PanelToken('room', '!a')],
-      );
+      expect(parseOpenPanels(u(chats)).left, [
+        const PanelToken('chats'),
+        const PanelToken('room', '!a'),
+      ]);
     });
 
     test('keepRoom:false drops the room (focused full-bleed flow)', () {
@@ -393,10 +493,9 @@ void main() {
         keepRoom: false,
       );
       expect(parseOpenPanels(u(hub)).left, isEmpty);
-      expect(
-        parseOpenPanels(u(hub)).right,
-        [const PanelToken('analytics', 'vocab')],
-      );
+      expect(parseOpenPanels(u(hub)).right, [
+        const PanelToken('analytics', 'vocab'),
+      ]);
     });
 
     test('carries the map filter forward (scope survives a section switch)', () {
@@ -416,50 +515,84 @@ void main() {
   });
 
   group('openDetail (generic, registry-driven exclusive groups)', () {
-    test('a left room drops other room/session (liveView) but keeps the right', () {
-      var loc = WorkspaceNav.openConstructDetail(
-          u('/'), const PanelToken('vocab', 'a'), 'vocab');
-      loc = WorkspaceNav.openExclusiveLeftRoom(
-          u(loc), const PanelToken('room', '!a'));
-      loc = WorkspaceNav.openDetail(u(loc), const PanelToken('room', '!b'));
-      final lists = parseOpenPanels(u(loc));
-      expect(lists.left.where((t) => t.type == 'room').map((t) => t.param), ['!b']);
-      // vocab is `detail`, room is `liveView` — no shared group, so it survives.
-      expect(lists.right.any((t) => t.type == 'vocab'), isTrue);
-    });
+    test(
+      'a left room drops other room/session (liveView) but keeps the right',
+      () {
+        var loc = WorkspaceNav.openConstructDetail(
+          u('/'),
+          const PanelToken('vocab', 'a'),
+          'vocab',
+        );
+        loc = WorkspaceNav.openExclusiveLeftRoom(
+          u(loc),
+          const PanelToken('room', '!a'),
+        );
+        loc = WorkspaceNav.openDetail(u(loc), const PanelToken('room', '!b'));
+        final lists = parseOpenPanels(u(loc));
+        expect(lists.left.where((t) => t.type == 'room').map((t) => t.param), [
+          '!b',
+        ]);
+        // vocab is `detail`, room is `liveView` — no shared group, so it survives.
+        expect(lists.right.any((t) => t.type == 'vocab'), isTrue);
+      },
+    );
 
-    test('a session (liveView+detail) drops both a room AND a vocab detail', () {
-      var loc = WorkspaceNav.openConstructDetail(
-          u('/'), const PanelToken('vocab', 'a'), 'vocab');
-      loc = WorkspaceNav.openExclusiveLeftRoom(
-          u(loc), const PanelToken('room', '!a'));
-      loc = WorkspaceNav.openDetail(u(loc), const PanelToken('session', '!s'));
-      final lists = parseOpenPanels(u(loc));
-      expect(lists.left.where((t) => t.type == 'room'), isEmpty);
-      expect(lists.left.single, const PanelToken('session', '!s'));
-      expect(lists.right.any((t) => t.type == 'vocab' || t.type == 'grammar'),
-          isFalse);
-    });
+    test(
+      'a session (liveView+detail) drops both a room AND a vocab detail',
+      () {
+        var loc = WorkspaceNav.openConstructDetail(
+          u('/'),
+          const PanelToken('vocab', 'a'),
+          'vocab',
+        );
+        loc = WorkspaceNav.openExclusiveLeftRoom(
+          u(loc),
+          const PanelToken('room', '!a'),
+        );
+        loc = WorkspaceNav.openDetail(
+          u(loc),
+          const PanelToken('session', '!s'),
+        );
+        final lists = parseOpenPanels(u(loc));
+        expect(lists.left.where((t) => t.type == 'room'), isEmpty);
+        expect(lists.left.single, const PanelToken('session', '!s'));
+        expect(
+          lists.right.any((t) => t.type == 'vocab' || t.type == 'grammar'),
+          isFalse,
+        );
+      },
+    );
   });
 
   group('pushPage / popPage (generic param push on a pushable panel)', () {
     test('push deepens the param; pop returns one level then to the root', () {
       var loc = WorkspaceNav.pushPage(u('/'), 'settingspage', 'security');
-      expect(parseOpenPanels(u(loc)).right.single,
-          const PanelToken('settingspage', 'security'));
+      expect(
+        parseOpenPanels(u(loc)).right.single,
+        const PanelToken('settingspage', 'security'),
+      );
       loc = WorkspaceNav.pushPage(u(loc), 'settingspage', 'security/password');
-      expect(parseOpenPanels(u(loc)).right.single,
-          const PanelToken('settingspage', 'security/password'));
+      expect(
+        parseOpenPanels(u(loc)).right.single,
+        const PanelToken('settingspage', 'security/password'),
+      );
       loc = WorkspaceNav.popPage(u(loc), 'settingspage', 'security/password');
-      expect(parseOpenPanels(u(loc)).right.single,
-          const PanelToken('settingspage', 'security'));
+      expect(
+        parseOpenPanels(u(loc)).right.single,
+        const PanelToken('settingspage', 'security'),
+      );
       loc = WorkspaceNav.popPage(u(loc), 'settingspage', 'security');
       expect(
-          parseOpenPanels(u(loc)).right.single, const PanelToken('settingspage'));
+        parseOpenPanels(u(loc)).right.single,
+        const PanelToken('settingspage'),
+      );
     });
 
     test('pushing keeps other panels in the column', () {
-      var loc = WorkspaceNav.openRight(u('/'), const PanelToken('analytics', 'vocab'));
+      var loc = WorkspaceNav.openRight(
+        u('/'),
+        const PanelToken('analytics', 'vocab'),
+      );
       loc = WorkspaceNav.pushPage(u(loc), 'settingspage', 'learning');
       final right = parseOpenPanels(u(loc)).right.map((t) => t.type).toSet();
       expect(right.containsAll({'analytics', 'settingspage'}), isTrue);
@@ -479,11 +612,17 @@ void main() {
       expect(activeSpaceIdFor(u(loc)), '!s');
       // Opening a different management page replaces the first (one at a time).
       loc = WorkspaceNav.openCoursePage(u(loc), 'invite');
-      expect(parseOpenPanels(u(loc)).left.where((t) => t.type == 'coursepage').single,
-          const PanelToken('coursepage', 'invite'));
+      expect(
+        parseOpenPanels(
+          u(loc),
+        ).left.where((t) => t.type == 'coursepage').single,
+        const PanelToken('coursepage', 'invite'),
+      );
       // Closing the management detail drops it, leaving the card and filter.
       loc = WorkspaceNav.closeLeft(
-          u(loc), const PanelToken('coursepage', 'invite'));
+        u(loc),
+        const PanelToken('coursepage', 'invite'),
+      );
       expect(parseOpenPanels(u(loc)).left.single, const PanelToken('course'));
       expect(activeSpaceIdFor(u(loc)), '!s');
     });
@@ -503,17 +642,25 @@ void main() {
       expect(lists.left.map((t) => t.type), ['room']);
     });
 
-    test('opening a construct detail closes practice (one detail across columns)',
-        () {
-      final practice = WorkspaceNav.openPractice(u('/'), 'vocab');
-      expect(parseOpenPanels(u(practice)).right.single,
-          const PanelToken('practice', 'vocab'));
-      const vocab = PanelToken('vocab', '{"l":"x"}');
-      final loc = WorkspaceNav.openConstructDetail(u(practice), vocab, 'vocab');
-      final right = parseOpenPanels(u(loc)).right;
-      // practice is gone; the vocab detail + its analytics master are seated.
-      expect(right.any((t) => t.type == 'practice'), isFalse);
-      expect(right.map((t) => t.type).toSet(), {'vocab', 'analytics'});
-    });
+    test(
+      'opening a construct detail closes practice (one detail across columns)',
+      () {
+        final practice = WorkspaceNav.openPractice(u('/'), 'vocab');
+        expect(
+          parseOpenPanels(u(practice)).right.single,
+          const PanelToken('practice', 'vocab'),
+        );
+        const vocab = PanelToken('vocab', '{"l":"x"}');
+        final loc = WorkspaceNav.openConstructDetail(
+          u(practice),
+          vocab,
+          'vocab',
+        );
+        final right = parseOpenPanels(u(loc)).right;
+        // practice is gone; the vocab detail + its analytics master are seated.
+        expect(right.any((t) => t.type == 'practice'), isFalse);
+        expect(right.map((t) => t.type).toSet(), {'vocab', 'analytics'});
+      },
+    );
   });
 }

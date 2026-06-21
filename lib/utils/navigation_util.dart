@@ -41,8 +41,10 @@ class NavigationUtil {
           extra: extra,
         );
       } else {
-        context.go(_appendQuery(WorkspaceNav.clearAll(), queryParams),
-            extra: extra);
+        context.go(
+          _appendQuery(WorkspaceNav.clearAll(), queryParams),
+          extra: extra,
+        );
       }
       return;
     }
@@ -53,10 +55,7 @@ class NavigationUtil {
       context.go(
         sub.isEmpty
             ? WorkspaceNav.openCourse(uri, const PanelToken('course'))
-            : _appendQuery(
-                WorkspaceNav.openCoursePage(uri, sub),
-                queryParams,
-              ),
+            : _appendQuery(WorkspaceNav.openCoursePage(uri, sub), queryParams),
         extra: extra,
       );
       return;
@@ -120,9 +119,9 @@ class NavigationUtil {
     final kept = uri.query.isEmpty
         ? const <String>[]
         : uri.query
-            .split('&')
-            .where((p) => !drop.contains(p.split('=').first))
-            .toList();
+              .split('&')
+              .where((p) => !drop.contains(p.split('=').first))
+              .toList();
     return uri.replace(path: path, query: kept.isEmpty ? '' : kept.join('&'));
   }
 

@@ -121,16 +121,16 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
   /// A square, clipped media cell — used for the single/empty (un-navigable)
   /// case.
   Widget _cell(Widget child, double size) => ClipRRect(
-        borderRadius: widget.borderRadius,
-        child: SizedBox(width: size, height: size, child: child),
-      );
+    borderRadius: widget.borderRadius,
+    child: SizedBox(width: size, height: size, child: child),
+  );
 
   Widget _fallback(double size) => ImageByUrl(
-        imageUrl: widget.fallbackImageUrl,
-        width: size,
-        borderRadius: BorderRadius.zero,
-        replacement: SizedBox(height: size),
-      );
+    imageUrl: widget.fallbackImageUrl,
+    width: size,
+    borderRadius: BorderRadius.zero,
+    replacement: SizedBox(height: size),
+  );
 
   Widget _buildPage(ActivityMediaBlock block, int index, double size) {
     if (block.isImage) {
@@ -153,7 +153,9 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
               autoPlay: true,
               muted: muted,
             );
-      return Center(child: AspectRatio(aspectRatio: 16 / 9, child: player));
+      return Center(
+        child: AspectRatio(aspectRatio: 16 / 9, child: player),
+      );
     }
 
     // thumbnail + play badge — tap to play (with sound)
@@ -183,21 +185,20 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
   }
 
   Widget _dots(int count) => Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          for (var i = 0; i < count; i++)
-            Container(
-              width: 8,
-              height: 8,
-              margin: const EdgeInsets.symmetric(horizontal: 3),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Theme.of(context)
-                    .colorScheme
-                    .primary
-                    .withValues(alpha: i == _page ? 1.0 : 0.3),
-              ),
-            ),
-        ],
-      );
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      for (var i = 0; i < count; i++)
+        Container(
+          width: 8,
+          height: 8,
+          margin: const EdgeInsets.symmetric(horizontal: 3),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Theme.of(
+              context,
+            ).colorScheme.primary.withValues(alpha: i == _page ? 1.0 : 0.3),
+          ),
+        ),
+    ],
+  );
 }

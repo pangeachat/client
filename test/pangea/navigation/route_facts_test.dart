@@ -27,7 +27,10 @@ void main() {
     });
 
     test('first-class world objects (uuid) select world', () {
-      expect(section('/32ad3c08-e501-41c5-b544-0875026090ed'), AppSection.world);
+      expect(
+        section('/32ad3c08-e501-41c5-b544-0875026090ed'),
+        AppSection.world,
+      );
     });
 
     test('exact segments only — no substring leakage', () {
@@ -125,7 +128,10 @@ void main() {
         '/rooms/!abc',
       );
       expect(
-        shortenHomeRoomIdsInUrl('/rooms/!abc:local.pangea.chat/details', domain: d),
+        shortenHomeRoomIdsInUrl(
+          '/rooms/!abc:local.pangea.chat/details',
+          domain: d,
+        ),
         '/rooms/!abc/details',
       );
       expect(

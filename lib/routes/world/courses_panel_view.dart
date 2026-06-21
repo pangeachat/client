@@ -31,22 +31,25 @@ class CoursesPanelView extends StatelessWidget {
           .where((s) => s.hasRoomUpdate)
           .rateLimit(const Duration(seconds: 1)),
       builder: (context, _) {
-        final courses = client.rooms
-            .where(
-              (r) =>
-                  r.isSpace &&
-                  r.membership == Membership.join &&
-                  r.coursePlan != null,
-            )
-            .toList()
-          ..sort(
-            (a, b) => a
-                .getLocalizedDisplayname(MatrixLocals(l10n))
-                .toLowerCase()
-                .compareTo(
-                  b.getLocalizedDisplayname(MatrixLocals(l10n)).toLowerCase(),
-                ),
-          );
+        final courses =
+            client.rooms
+                .where(
+                  (r) =>
+                      r.isSpace &&
+                      r.membership == Membership.join &&
+                      r.coursePlan != null,
+                )
+                .toList()
+              ..sort(
+                (a, b) => a
+                    .getLocalizedDisplayname(MatrixLocals(l10n))
+                    .toLowerCase()
+                    .compareTo(
+                      b
+                          .getLocalizedDisplayname(MatrixLocals(l10n))
+                          .toLowerCase(),
+                    ),
+              );
 
         return ListView(
           padding: const EdgeInsets.fromLTRB(12.0, 4.0, 12.0, 16.0),
@@ -67,7 +70,9 @@ class CoursesPanelView extends StatelessWidget {
             // "Add new course" section divider + the add options.
             Row(
               children: [
-                Expanded(child: Divider(color: theme.colorScheme.outlineVariant)),
+                Expanded(
+                  child: Divider(color: theme.colorScheme.outlineVariant),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12.0),
                   child: Text(
@@ -77,7 +82,9 @@ class CoursesPanelView extends StatelessWidget {
                     ),
                   ),
                 ),
-                Expanded(child: Divider(color: theme.colorScheme.outlineVariant)),
+                Expanded(
+                  child: Divider(color: theme.colorScheme.outlineVariant),
+                ),
               ],
             ),
             const SizedBox(height: 12.0),

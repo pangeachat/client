@@ -50,9 +50,9 @@ final GlobalKey _userClusterKey = GlobalKey(debugLabel: 'worldUserCluster');
 /// therefore survives every relayout, fold included. See `routing.instructions.md`.
 final Map<String, GlobalKey> _leftRoomKeys = {};
 GlobalKey _roomKeyFor(String roomId) => _leftRoomKeys.putIfAbsent(
-      roomId,
-      () => GlobalKey(debugLabel: 'leftRoom:$roomId'),
-    );
+  roomId,
+  () => GlobalKey(debugLabel: 'leftRoom:$roomId'),
+);
 
 /// The world_v2 workspace shell: a single persistent [WorldMap] with the open
 /// panels overlaid. Not "two columns" — it owns the map backdrop, the nav rail,
@@ -120,8 +120,9 @@ class WorkspaceShell extends StatelessWidget {
     // world_v2: the rail is vertical-left in column mode and a bottom bar in
     // narrow mode, so it only offsets the canvas in column mode. The left inset
     // is just the rail now — there is no route-driven left card to reserve for.
-    final railWidth =
-        isColumnMode && navRail ? (FluffyThemes.navRailWidth + 1.0) : 0.0;
+    final railWidth = isColumnMode && navRail
+        ? (FluffyThemes.navRailWidth + 1.0)
+        : 0.0;
     // One shared margin for every floating chrome edge (the rail pill and the
     // top-right cluster), so they inset from the viewport identically. The rail
     // floats over the map in its dock pill, inset by [chromeMargin] on each
@@ -228,7 +229,8 @@ class WorkspaceShell extends StatelessWidget {
         }
       }
     }
-    final atSectionRoot = focusedNarrowType == null ||
+    final atSectionRoot =
+        focusedNarrowType == null ||
         focusedNarrowType == 'chats' ||
         focusedNarrowType == 'addcourse';
     final showBottomNav = !isColumnMode && navRail && atSectionRoot;
@@ -263,13 +265,16 @@ class WorkspaceShell extends StatelessWidget {
         : null;
     final mapLeftOverlay = (isMobileCourse || isMobileActivity)
         ? 0.0
-        : leftInset + (canvas == CanvasMode.detail ? (detailWidth ?? 0.0) : 0.0);
+        : leftInset +
+              (canvas == CanvasMode.detail ? (detailWidth ?? 0.0) : 0.0);
 
     // Scope the persistent map to the active course (world_v2 context). Set
     // post-frame — the map listens and calls setState, which can't run now.
     final coursePlanId = activeSpaceId == null
         ? null
-        : Matrix.of(context).client.getRoomById(activeSpaceId)?.coursePlan?.uuid;
+        : Matrix.of(
+            context,
+          ).client.getRoomById(activeSpaceId)?.coursePlan?.uuid;
     final MapContext mapContext = coursePlanId == null
         ? const WorldMapContext()
         : CourseMapContext(coursePlanId);
@@ -377,8 +382,10 @@ class WorkspaceShell extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: Padding(
                 padding: const EdgeInsets.all(chromeMargin),
-                child:
-                    SpaceNavigationColumn(state: state, showNavRail: navRail),
+                child: SpaceNavigationColumn(
+                  state: state,
+                  showNavRail: navRail,
+                ),
               ),
             ),
             // Left-column panels (the chat list, a live room, a course, the
@@ -458,8 +465,7 @@ class WorkspaceShell extends StatelessWidget {
     // to a `room` token — the share sheet opens its target as the sole live
     // room, so the extra belongs to whichever room renders. See
     // `routing.instructions.md`.
-    final shareItems =
-        token.type == 'room' && state.extra is List<ShareItem>
+    final shareItems = token.type == 'room' && state.extra is List<ShareItem>
         ? state.extra as List<ShareItem>
         : null;
     final panel = WorkspaceLeftPanel(
@@ -476,10 +482,7 @@ class WorkspaceShell extends StatelessWidget {
       final param = token.param ?? '';
       final slash = param.indexOf('/');
       final bareId = slash < 0 ? param : param.substring(0, slash);
-      return KeyedSubtree(
-        key: _roomKeyFor(fullRoomId(bareId)),
-        child: panel,
-      );
+      return KeyedSubtree(key: _roomKeyFor(fullRoomId(bareId)), child: panel);
     }
     return panel;
   }

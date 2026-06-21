@@ -30,8 +30,7 @@ class ActivityPlanFetchResponse extends BaseResponse {
   });
 
   factory ActivityPlanFetchResponse.fromJson(Map<String, dynamic> json) {
-    final rawPlan =
-        (json['plan'] as Map?)?.cast<String, dynamic>() ?? const {};
+    final rawPlan = (json['plan'] as Map?)?.cast<String, dynamic>() ?? const {};
     return ActivityPlanFetchResponse(
       rawPlan: rawPlan,
       l1: json['l1'] as String?,

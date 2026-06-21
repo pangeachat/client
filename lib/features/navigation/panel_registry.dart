@@ -176,7 +176,8 @@ abstract class PanelRegistry {
       reasonableMinWidth: 480,
       idealWidth: 720,
       priority: 60,
-      mapContent: true, // selecting a course scopes the map (mobile: bottom sheet)
+      mapContent:
+          true, // selecting a course scopes the map (mobile: bottom sheet)
     ),
     // A course-management page (invite, edit, access, permissions, emotes,
     // change-course) — the course card's DETAIL (child of `course`): it opens

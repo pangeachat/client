@@ -107,7 +107,9 @@ AppSection sectionFor(Uri uri) {
   if (first == 'rooms') return AppSection.chats;
   if (PRoutes.isWorldObjectId(first)) return AppSection.world;
   for (final section in AppSection.values) {
-    final segment = section.rootPath == '/' ? '' : section.rootPath.substring(1);
+    final segment = section.rootPath == '/'
+        ? ''
+        : section.rootPath.substring(1);
     if (segment == first) return section;
   }
   return AppSection.world;
@@ -162,7 +164,8 @@ String? activeRoomIdFor(GoRouterState state) {
 /// `roomid` and `launch` flag that the canonical open uses.
 ({String id, String? roomId, bool launch})? activityFor(GoRouterState state) {
   final id =
-      state.uri.queryParameters['activity'] ?? state.pathParameters['activityId'];
+      state.uri.queryParameters['activity'] ??
+      state.pathParameters['activityId'];
   if (id == null || id.isEmpty) return null;
   final roomId = state.uri.queryParameters['roomid'];
   return (

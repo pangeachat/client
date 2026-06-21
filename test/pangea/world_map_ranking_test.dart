@@ -122,28 +122,33 @@ void main() {
       expect(result.midIds, {'open'});
     });
 
-    test('in-course unlocked activities join the large pool, joinable first', () {
-      final pins = [
-        _card('lesson', refs: ['loJoined']), // in-course unlocked
-        _card('live', refs: ['loJoined']), // joinable
-      ];
-      final result = rankPins(
-        inViewPins: pins,
-        userL2: userL2,
-        userCefr: userCefr,
-        joinedObjectiveIds: {'loJoined'},
-        signals: {
-          'lesson': const PinSignals(state: ActivityPinState.unlocked),
-          'live': const PinSignals(state: ActivityPinState.joinable),
-        },
-      );
-      expect(result.largePool, ['live', 'lesson']); // joinable featured first
-      expect(result.midIds, isEmpty); // a large-pool member isn't also mid
-    });
+    test(
+      'in-course unlocked activities join the large pool, joinable first',
+      () {
+        final pins = [
+          _card('lesson', refs: ['loJoined']), // in-course unlocked
+          _card('live', refs: ['loJoined']), // joinable
+        ];
+        final result = rankPins(
+          inViewPins: pins,
+          userL2: userL2,
+          userCefr: userCefr,
+          joinedObjectiveIds: {'loJoined'},
+          signals: {
+            'lesson': const PinSignals(state: ActivityPinState.unlocked),
+            'live': const PinSignals(state: ActivityPinState.joinable),
+          },
+        );
+        expect(result.largePool, ['live', 'lesson']); // joinable featured first
+        expect(result.midIds, isEmpty); // a large-pool member isn't also mid
+      },
+    );
 
     test('a finished in-course activity is not featured large', () {
       final result = rankPins(
-        inViewPins: [_card('done', refs: ['loJoined'])],
+        inViewPins: [
+          _card('done', refs: ['loJoined']),
+        ],
         userL2: userL2,
         userCefr: userCefr,
         joinedObjectiveIds: {'loJoined'},
@@ -157,17 +162,22 @@ void main() {
       expect(result.largePool, isEmpty);
     });
 
-    test('a level-appropriate (not in-course) unlocked stays mid, not large', () {
-      final result = rankPins(
-        inViewPins: [_card('lvl', refs: ['loX'])], // band 2, not joined
-        userL2: userL2,
-        userCefr: userCefr,
-        joinedObjectiveIds: const {},
-        signals: {'lvl': const PinSignals(state: ActivityPinState.unlocked)},
-      );
-      expect(result.largePool, isEmpty);
-      expect(result.midIds, {'lvl'});
-    });
+    test(
+      'a level-appropriate (not in-course) unlocked stays mid, not large',
+      () {
+        final result = rankPins(
+          inViewPins: [
+            _card('lvl', refs: ['loX']),
+          ], // band 2, not joined
+          userL2: userL2,
+          userCefr: userCefr,
+          joinedObjectiveIds: const {},
+          signals: {'lvl': const PinSignals(state: ActivityPinState.unlocked)},
+        );
+        expect(result.largePool, isEmpty);
+        expect(result.midIds, {'lvl'});
+      },
+    );
 
     test('diversity caps how many of one objective fill mid', () {
       final pins = [

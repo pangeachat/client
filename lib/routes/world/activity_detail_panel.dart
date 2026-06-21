@@ -91,7 +91,11 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
         _loading = false;
       });
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {'activityId': widget.activityId});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'activityId': widget.activityId},
+      );
       if (mounted) setState(() => _loading = false);
     }
   }
@@ -110,7 +114,9 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
       ..remove('roomid')
       ..remove('launch');
     context.go(
-      params.isEmpty ? uri.path : uri.replace(queryParameters: params).toString(),
+      params.isEmpty
+          ? uri.path
+          : uri.replace(queryParameters: params).toString(),
     );
   }
 

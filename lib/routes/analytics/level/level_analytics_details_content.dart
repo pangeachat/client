@@ -8,9 +8,9 @@ import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/widgets/analytics_summary/learning_progress_indicators.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
-import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LevelAnalyticsDetailsContent extends StatelessWidget {

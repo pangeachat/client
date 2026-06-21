@@ -1,10 +1,10 @@
 import 'package:collection/collection.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/features/subscription/models/subscription_details.dart';
 import 'package:fluffychat/features/subscription/models/subscription_info_manager.dart';
 import 'package:fluffychat/features/subscription/models/subscription_state.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 class MobileSubscriptionInfoManager implements SubscriptionInfoManager {
   @override

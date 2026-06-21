@@ -23,15 +23,19 @@ void main() {
       // world_v2 master/detail: the menu is the `settings` master; a sub-page
       // opens beside it as a `settingspage` detail (page first, menu kept).
       expect(resolve('/settings'), '/?right=settings');
-      expect(resolve('/settings/learning'),
-          '/?right=settingspage:learning,settings');
+      expect(
+        resolve('/settings/learning'),
+        '/?right=settingspage:learning,settings',
+      );
       expect(
         resolve('/settings/security/password'),
         '/?right=settingspage:security%2Fpassword,settings',
       );
       expect(resolve('/profile'), '/?right=settings');
-      expect(resolve('/profile/edit'),
-          '/?right=settingspage:profile%2Fedit,settings');
+      expect(
+        resolve('/profile/edit'),
+        '/?right=settingspage:profile%2Fedit,settings',
+      );
     });
 
     test('find/create course flows keep literal names', () {
@@ -99,7 +103,10 @@ void main() {
       // chats collapses to the world path `/` with its left token — the legacy
       // `/chats` path is dropped (section identity rides in the token).
       expect(resolve('/chats'), '/?left=chats');
-      expect(resolve('/chats?left=chats'), '/?left=chats'); // path still collapses
+      expect(
+        resolve('/chats?left=chats'),
+        '/?left=chats',
+      ); // path still collapses
       expect(resolve('/?left=chats'), isNull); // already token-driven at /
       // the bare `/courses` add-course hub → a bare `addcourse` token at `/`.
       expect(resolve('/courses'), '/?left=addcourse');
@@ -149,14 +156,22 @@ void main() {
       // the card, /details/<page> → the page). The Completer-carrying add-a-plan
       // flow stays route-driven.
       expect(resolve('/courses/!s/details'), '/?m=course:!s&left=course');
-      expect(resolve('/courses/!s/edit'),
-          '/?m=course:!s&left=course,coursepage:edit');
-      expect(resolve('/courses/!s/invite'),
-          '/?m=course:!s&left=course,coursepage:invite');
-      expect(resolve('/courses/!s/details/edit'),
-          '/?m=course:!s&left=course,coursepage:edit');
-      expect(resolve('/courses/!s/addcourse'),
-          '/?m=course:!s&left=course,coursepage:addcourse');
+      expect(
+        resolve('/courses/!s/edit'),
+        '/?m=course:!s&left=course,coursepage:edit',
+      );
+      expect(
+        resolve('/courses/!s/invite'),
+        '/?m=course:!s&left=course,coursepage:invite',
+      );
+      expect(
+        resolve('/courses/!s/details/edit'),
+        '/?m=course:!s&left=course,coursepage:edit',
+      );
+      expect(
+        resolve('/courses/!s/addcourse'),
+        '/?m=course:!s&left=course,coursepage:addcourse',
+      );
       expect(resolve('/courses/!s/addcourse/plan-1'), isNull); // route-driven
       // The /rooms/spaces chain reaches the same form in two hops (router
       // re-runs the redirect): first to /courses/…, then to the filter form.
@@ -170,8 +185,10 @@ void main() {
     test('a bare room and its sub-pages become a room token over the map', () {
       // world_v2: no `/rooms/:roomid` render route — it rewrites to a `room`
       // token. The sub-page tail rides the token param; query survives.
-      expect(resolve('/rooms/!room:server.org'),
-          '/?left=room:!room%3Aserver.org');
+      expect(
+        resolve('/rooms/!room:server.org'),
+        '/?left=room:!room%3Aserver.org',
+      );
       expect(resolve('/rooms/!abc'), '/?left=room:!abc');
       expect(resolve('/rooms/!abc/search'), '/?left=room:!abc%2Fsearch');
       expect(resolve('/rooms/!abc/details'), '/?left=room:!abc%2Fdetails');

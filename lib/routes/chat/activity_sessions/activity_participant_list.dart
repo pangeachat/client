@@ -69,11 +69,12 @@ class ActivityParticipantList extends StatelessWidget {
                 final rows = availableRoles.isEmpty
                     ? 0
                     : (availableRoles.length /
-                            (constraints.maxWidth / minItemWidth))
-                        .ceil();
+                              (constraints.maxWidth / minItemWidth))
+                          .ceil();
 
-                final entriesPerRow =
-                    rows == 0 ? 0 : (availableRoles.length / rows).ceil();
+                final entriesPerRow = rows == 0
+                    ? 0
+                    : (availableRoles.length / rows).ceil();
 
                 return Column(
                   spacing: 8.0,

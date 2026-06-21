@@ -131,9 +131,7 @@ class NotificationTapUtil {
         return;
       }
 
-      router.go(
-        PRoutes.activity(roomId, activityId, roomId: sessionRoomId),
-      );
+      router.go(PRoutes.activity(roomId, activityId, roomId: sessionRoomId));
       return;
     } catch (err, s) {
       ErrorHandler.logError(e: err, s: s, data: {'roomId': sessionRoomId});

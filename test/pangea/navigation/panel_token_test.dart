@@ -60,13 +60,16 @@ void main() {
 
     test('wrong-column tokens are dropped', () {
       expect(right('/chats?right=room:!a'), isEmpty); // room is a left panel
-      expect(left('/chats?left=analytics:vocab'),
-          isEmpty); // analytics is a right panel
+      expect(
+        left('/chats?left=analytics:vocab'),
+        isEmpty,
+      ); // analytics is a right panel
     });
 
     test('unknown types are dropped', () {
-      expect(right('/chats?right=bogus:x,analytics:vocab').map((t) => t.type),
-          ['analytics']);
+      expect(right('/chats?right=bogus:x,analytics:vocab').map((t) => t.type), [
+        'analytics',
+      ]);
     });
 
     test('duplicate (type, param) pairs are deduped (no duplicate keys)', () {
@@ -94,10 +97,13 @@ void main() {
       expect(l.single.type, 'room');
     });
 
-    test('practice takes over the analytics surface (no analytics beside it)', () {
-      final r = right('/chats?right=practice:vocab,analytics:vocab');
-      expect(r.map((t) => t.type).toList(), ['practice']);
-    });
+    test(
+      'practice takes over the analytics surface (no analytics beside it)',
+      () {
+        final r = right('/chats?right=practice:vocab,analytics:vocab');
+        expect(r.map((t) => t.type).toList(), ['practice']);
+      },
+    );
   });
 
   group('orphan course/coursepage tokens (no map filter)', () {

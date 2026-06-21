@@ -24,8 +24,8 @@ abstract class LegacyRedirects {
         (segments.first == 'settings' || segments.first == 'profile')) {
       final sub = segments.first == 'profile'
           ? (segments.length > 1
-              ? 'profile/${segments.sublist(1).join('/')}'
-              : '')
+                ? 'profile/${segments.sublist(1).join('/')}'
+                : '')
           : segments.sublist(1).join('/');
       // world_v2 master/detail: the menu is the `settings` master; a sub-page
       // opens beside it as a `settingspage` detail (front of the right group,
@@ -117,7 +117,9 @@ abstract class LegacyRedirects {
         'level': 'level',
       };
       final tab = tabs[segments.length > 1 ? segments[1] : ''];
-      return tab == null ? null : '/?right=${PanelToken('analytics', tab).encode()}';
+      return tab == null
+          ? null
+          : '/?right=${PanelToken('analytics', tab).encode()}';
     }
 
     if (segments.isEmpty || segments.first != 'rooms') return null;
@@ -273,8 +275,10 @@ abstract class LegacyRedirects {
 
     final left = leftValue
         .split(',')
-        .where((e) =>
-            e.isNotEmpty && e != 'coursepage' && !e.startsWith('coursepage:'))
+        .where(
+          (e) =>
+              e.isNotEmpty && e != 'coursepage' && !e.startsWith('coursepage:'),
+        )
         .toList();
     if (!left.any((e) => e == 'course' || e.startsWith('course:'))) {
       left.insert(0, 'course');
@@ -296,13 +300,13 @@ abstract class LegacyRedirects {
   /// has no path segment, so the section arms never re-fire (no loop).
   static String _toRootWithLeftToken(Uri uri, String type) {
     final parts = uri.query.isEmpty ? <String>[] : uri.query.split('&');
-    final idx =
-        parts.indexWhere((p) => p == 'left' || p.startsWith('left='));
+    final idx = parts.indexWhere((p) => p == 'left' || p.startsWith('left='));
     if (idx >= 0) {
       final eq = parts[idx].indexOf('=');
       final value = eq >= 0 ? parts[idx].substring(eq + 1) : '';
-      final present =
-          value.split(',').any((e) => e == type || e.startsWith('$type:'));
+      final present = value
+          .split(',')
+          .any((e) => e == type || e.startsWith('$type:'));
       if (!present) {
         parts[idx] = 'left=${value.isEmpty ? type : '$value,$type'}';
       }

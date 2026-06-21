@@ -67,7 +67,9 @@ abstract class PRoutes {
   /// Open an activity with no course context — the shareable first-class uuid
   /// (`/<uuid>`). [launch] skips the lobby.
   static String activityStandalone(String activityId, {bool launch = false}) =>
-      launch ? '${worldObject(activityId)}?launch=true' : worldObject(activityId);
+      launch
+      ? '${worldObject(activityId)}?launch=true'
+      : worldObject(activityId);
 
   /// Inline go_router parameter regex used by first-class world-object
   /// routes so they can never shadow literal routes like [analytics].

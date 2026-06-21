@@ -32,9 +32,7 @@ ActivityPlanModel activityPlanFromV2(Map<String, dynamic> doc) {
     final role = (r as Map).cast<String, dynamic>();
     final roleId = (role['role_id'] ?? role['id']) as String;
     final goals = planGoals
-        .where(
-          (g) => (g['role_ids'] as List? ?? const []).contains(roleId),
-        )
+        .where((g) => (g['role_ids'] as List? ?? const []).contains(roleId))
         .map(
           (g) => ActivityRoleGoal(
             // `id` is the CMS goals array-row id. The choreo schema declares it

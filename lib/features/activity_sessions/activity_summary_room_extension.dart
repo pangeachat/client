@@ -1,7 +1,7 @@
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_analytics_model.dart';
@@ -159,7 +159,8 @@ extension ActivitySummaryRoomExtension on Room {
     // The plan body is canonical in CMS (reference-only room state); resolve it
     // before building the request rather than assuming it is hydrated.
     final activity =
-        activityPlan ?? await ActivityPlanRepo.instance.getPlan(activityId ?? '');
+        activityPlan ??
+        await ActivityPlanRepo.instance.getPlan(activityId ?? '');
     if (activity == null) {
       await _stopRequestingActivitySummaryOnError(null, langCode);
       return;

@@ -51,9 +51,9 @@ class ActivityPlanRepo
 
   @override
   Future<Response> fetch(Requests req, ActivityPlanFetchRequest request) {
-    final uri = Uri.parse(PApiUrls.activityById(request.activityId)).replace(
-      queryParameters: {if (request.l1.isNotEmpty) 'l1': request.l1},
-    );
+    final uri = Uri.parse(
+      PApiUrls.activityById(request.activityId),
+    ).replace(queryParameters: {if (request.l1.isNotEmpty) 'l1': request.l1});
     return req.get(url: uri.toString());
   }
 
@@ -115,8 +115,11 @@ class ActivityPlanRepo
     final doRevalidate = revalidate && _revalidated.add(key);
     if (!doRevalidate && _resolved.containsKey(key)) return;
     _hydrating.add(key);
-    getPlan(activityId, l1: l1, forceRefresh: doRevalidate)
-        .whenComplete(() => _hydrating.remove(key));
+    getPlan(
+      activityId,
+      l1: l1,
+      forceRefresh: doRevalidate,
+    ).whenComplete(() => _hydrating.remove(key));
   }
 
   Future<ActivityPlanModel> _withResolvedMedia(ActivityPlanModel plan) async {

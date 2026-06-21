@@ -9,7 +9,6 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/course_settings_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
@@ -17,6 +16,7 @@ import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/share_room_button.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
@@ -85,8 +85,8 @@ class SpaceDetailsContent extends StatelessWidget {
   /// when width allows and folds to a push when not, keeping the `?m=` filter
   /// and the rest of the workspace. See `routing.instructions.md`.
   void _openCoursePage(BuildContext context, String page) => context.go(
-        WorkspaceNav.openCoursePage(GoRouterState.of(context).uri, page),
-      );
+    WorkspaceNav.openCoursePage(GoRouterState.of(context).uri, page),
+  );
 
   List<ButtonDetails> _buttons(BuildContext context) {
     final L10n l10n = L10n.of(context);
@@ -186,9 +186,7 @@ class SpaceDetailsContent extends StatelessWidget {
               context: context,
               future: () async {
                 final outline = await QuestRepo.outline(room.coursePlan!.uuid);
-                return outline.groups
-                    .map((g) => g.activities.length)
-                    .min;
+                return outline.groups.map((g) => g.activities.length).min;
               },
               showError: (e) => false,
             );

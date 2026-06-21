@@ -273,9 +273,9 @@ class ChatListController extends State<ChatList>
     // token yet), seed a `chats` token first so tapping a chat doesn't tear the
     // list down. See routing.instructions.md ("panels are independent").
     var uri = GoRouterState.of(context).uri;
-    final hasSection = parseOpenPanels(uri).left.any(
-      (t) => t.type == 'chats' || t.type == 'course',
-    );
+    final hasSection = parseOpenPanels(
+      uri,
+    ).left.any((t) => t.type == 'chats' || t.type == 'course');
     if (!hasSection) {
       uri = Uri.parse(
         WorkspaceNav.openLeft(uri, const PanelToken('chats'), atStart: true),

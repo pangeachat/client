@@ -2,18 +2,9 @@ import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 enum TutorialEnum {
-  readingAssistance(
-    stepCount: 1,
-    showNavigationButtons: false,
-  ),
-  writingAssistance(
-    stepCount: 1,
-    showNavigationButtons: false,
-  ),
-  selectModeButtons(
-    stepCount: 4,
-    showNavigationButtons: false,
-  );
+  readingAssistance(stepCount: 1, showNavigationButtons: false),
+  writingAssistance(stepCount: 1, showNavigationButtons: false),
+  selectModeButtons(stepCount: 4, showNavigationButtons: false);
 
   final int stepCount;
   final bool showNavigationButtons;

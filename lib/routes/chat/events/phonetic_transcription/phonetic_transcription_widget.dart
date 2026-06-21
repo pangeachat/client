@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/subscription/widgets/subscription_paywall.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/widgets/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
-import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/routes/chat/events/phonetic_transcription/phonetic_transcription_builder.dart';
 import 'package:fluffychat/routes/chat/events/phonetic_transcription/pt_v2_disambiguation.dart';
 import 'package:fluffychat/routes/chat/events/phonetic_transcription/pt_v2_models.dart';
-import 'package:fluffychat/features/subscription/widgets/subscription_paywall.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/text_loading_shimmer.dart';
 
 class PhoneticTranscriptionWidget extends StatefulWidget {
   final String text;

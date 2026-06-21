@@ -525,9 +525,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     );
     final roomId = chunk.chunk.roomId;
     if (!hasRole) {
-      context.go(
-        PRoutes.activity(widget.roomId, activityId, roomId: roomId),
-      );
+      context.go(PRoutes.activity(widget.roomId, activityId, roomId: roomId));
       return;
     }
 

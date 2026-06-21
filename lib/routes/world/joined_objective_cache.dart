@@ -62,9 +62,7 @@ class JoinedObjectiveCache {
       orderedLoIds: outline.quest.learningObjectiveIds,
       activityIdsByLo: {
         for (final group in outline.groups)
-          group.objective.id: group.activities
-              .map((a) => a.activityId)
-              .toSet(),
+          group.objective.id: group.activities.map((a) => a.activityId).toSet(),
       },
     );
   }

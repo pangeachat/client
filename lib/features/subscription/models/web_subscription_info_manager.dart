@@ -1,6 +1,5 @@
 import 'package:url_launcher/url_launcher_string.dart';
 
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/features/subscription/models/subscription_details.dart';
 import 'package:fluffychat/features/subscription/models/subscription_info_manager.dart';
 import 'package:fluffychat/features/subscription/models/subscription_state.dart';
@@ -8,6 +7,7 @@ import 'package:fluffychat/features/subscription/repo/payment_link_repo.dart';
 import 'package:fluffychat/features/subscription/repo/payment_link_request.dart';
 import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
 import 'package:fluffychat/features/subscription/repo/subscription_repo.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class WebSubscriptionInfoManager implements SubscriptionInfoManager {

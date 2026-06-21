@@ -69,10 +69,14 @@ class WorkspaceRightPanel extends StatelessWidget {
     final page = token.param;
     final pushable = PanelRegistry.defFor(token.type)?.pushable ?? false;
     final isPushed = pushable && page != null && page.contains('/');
-    final revealsMaster = foldedOver ||
-        (!FluffyThemes.isColumnMode(context) && parentIsOpen(currentUri, token));
-    final aff =
-        CloseAffordance.of(isPushedPage: isPushed, revealsMaster: revealsMaster);
+    final revealsMaster =
+        foldedOver ||
+        (!FluffyThemes.isColumnMode(context) &&
+            parentIsOpen(currentUri, token));
+    final aff = CloseAffordance.of(
+      isPushedPage: isPushed,
+      revealsMaster: revealsMaster,
+    );
     final leadingIcon = aff.showBack ? Icons.arrow_back : Icons.close;
     final leadingTooltip = aff.showBack
         ? MaterialLocalizations.of(context).backButtonTooltip
@@ -81,15 +85,18 @@ class WorkspaceRightPanel extends StatelessWidget {
         ? () => context.go(WorkspaceNav.popPage(currentUri, token.type, page))
         : () => _close(context);
 
-    Widget card(String title, Widget child, {VoidCallback? onLeadingOverride}) =>
-        _card(
-          context,
-          icon: leadingIcon,
-          tooltip: leadingTooltip,
-          onLeading: onLeadingOverride ?? onLeading,
-          title: title,
-          child: child,
-        );
+    Widget card(
+      String title,
+      Widget child, {
+      VoidCallback? onLeadingOverride,
+    }) => _card(
+      context,
+      icon: leadingIcon,
+      tooltip: leadingTooltip,
+      onLeading: onLeadingOverride ?? onLeading,
+      title: title,
+      child: child,
+    );
 
     switch (token.type) {
       case 'analytics':
@@ -218,10 +225,9 @@ class WorkspaceRightPanel extends StatelessWidget {
                     title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium
-                        ?.copyWith(fontWeight: FontWeight.w600),
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ],

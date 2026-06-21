@@ -108,7 +108,8 @@ abstract class PanelAllocator {
   }) {
     // Combined view with stable identity (column + index in its column).
     final all = <_Entry>[
-      for (var i = 0; i < left.length; i++) _Entry(PanelColumn.left, i, left[i]),
+      for (var i = 0; i < left.length; i++)
+        _Entry(PanelColumn.left, i, left[i]),
       for (var i = 0; i < right.length; i++)
         _Entry(PanelColumn.right, i, right[i]),
     ];
@@ -123,13 +124,17 @@ abstract class PanelAllocator {
       final winner = exclusive.first;
       final rail = isColumnMode ? railWidth : 0.0;
       final width = math.max(0.0, viewport - rail);
-      return _build(left, right, rail,
-          clusterVisible: false,
-          mapLeftOverlay: viewport,
-          mapRightOverlay: 0,
-          slot: (e) => e == winner
-              ? PanelSlot(left: rail, width: width, vis: PanelVis.full)
-              : hidden());
+      return _build(
+        left,
+        right,
+        rail,
+        clusterVisible: false,
+        mapLeftOverlay: viewport,
+        mapRightOverlay: 0,
+        slot: (e) => e == winner
+            ? PanelSlot(left: rail, width: width, vis: PanelVis.full)
+            : hidden(),
+      );
     }
 
     // ---- narrow: seat ONE panel — the **most-recently-opened** one ([focusHint],
@@ -146,11 +151,15 @@ abstract class PanelAllocator {
     // `routing.instructions.md`.
     if (!isColumnMode) {
       if (all.isEmpty) {
-        return _build(left, right, 0,
-            clusterVisible: true,
-            mapLeftOverlay: 0,
-            mapRightOverlay: 0,
-            slot: (_) => hidden());
+        return _build(
+          left,
+          right,
+          0,
+          clusterVisible: true,
+          mapLeftOverlay: 0,
+          mapRightOverlay: 0,
+          slot: (_) => hidden(),
+        );
       }
       final _Entry focus;
       if (focusHint != null && focusHint >= 0 && focusHint < all.length) {
@@ -162,22 +171,30 @@ abstract class PanelAllocator {
         final pool = leaves.isEmpty ? all : leaves;
         focus = pool.reduce((a, b) => b.def.priority > a.def.priority ? b : a);
       }
-      return _build(left, right, 0,
-          clusterVisible: false,
-          mapLeftOverlay: viewport,
-          mapRightOverlay: 0,
-          slot: (e) => e == focus
-              ? PanelSlot(left: 0, width: viewport, vis: PanelVis.full)
-              : hidden());
+      return _build(
+        left,
+        right,
+        0,
+        clusterVisible: false,
+        mapLeftOverlay: viewport,
+        mapRightOverlay: 0,
+        slot: (e) => e == focus
+            ? PanelSlot(left: 0, width: viewport, vis: PanelVis.full)
+            : hidden(),
+      );
     }
 
     // ---- column mode: shared-width budget across both columns ---------------
     if (all.isEmpty) {
-      return _build(left, right, railWidth,
-          clusterVisible: true,
-          mapLeftOverlay: railWidth,
-          mapRightOverlay: 0,
-          slot: (_) => hidden());
+      return _build(
+        left,
+        right,
+        railWidth,
+        clusterVisible: true,
+        mapLeftOverlay: railWidth,
+        mapRightOverlay: 0,
+        slot: (_) => hidden(),
+      );
     }
 
     final gutter = right.isNotEmpty ? clusterGutter : 0.0;
@@ -212,9 +229,13 @@ abstract class PanelAllocator {
           vis.fold(0.0, (s, e) => s + e.def.reasonableMin) + gapsFor(vis);
       if (needReasonable <= content) break;
       final foldable = vis
-          .where((parent) => vis.any((child) =>
-              child.column == parent.column &&
-              child.def.parent == parent.def.type))
+          .where(
+            (parent) => vis.any(
+              (child) =>
+                  child.column == parent.column &&
+                  child.def.parent == parent.def.type,
+            ),
+          )
           .toList();
       if (foldable.isEmpty) break;
       // Among independent master/detail pairs all under pressure, fold the
@@ -229,15 +250,18 @@ abstract class PanelAllocator {
     final avail = math.max(0.0, content - gapsFor(fulls));
     final sumIdeal = fulls.fold(0.0, (s, e) => s + e.def.idealWidth);
     final sumMin = fulls.fold(0.0, (s, e) => s + e.def.minWidth);
-    final headroom =
-        fulls.fold(0.0, (s, e) => s + (e.def.idealWidth - e.def.minWidth));
+    final headroom = fulls.fold(
+      0.0,
+      (s, e) => s + (e.def.idealWidth - e.def.minWidth),
+    );
     final widths = <_Entry, double>{};
     for (final e in fulls) {
       if (sumIdeal <= avail || headroom <= 0) {
         widths[e] = e.def.idealWidth;
       } else {
         final surplus = math.max(0.0, avail - sumMin);
-        widths[e] = e.def.minWidth +
+        widths[e] =
+            e.def.minWidth +
             (e.def.idealWidth - e.def.minWidth) / headroom * surplus;
       }
     }
@@ -253,41 +277,48 @@ abstract class PanelAllocator {
     // link, so only the child whose master folded gets the back arrow; an
     // independent panel (a live room with no folded master) keeps a normal close.
     // See `close_affordance.dart` / `routing.instructions.md`.
-    bool isFoldedOver(_Entry e) => folded
-        .any((f) => f.column == e.column && f.def.type == e.def.parent);
+    bool isFoldedOver(_Entry e) =>
+        folded.any((f) => f.column == e.column && f.def.type == e.def.parent);
 
     final placement = <_Entry, PanelSlot>{};
     var x = railWidth;
     for (final e in fulls.where((e) => e.column == PanelColumn.left)) {
       placement[e] = PanelSlot(
-          left: x,
-          width: widthOf(e),
-          vis: PanelVis.full,
-          foldedOver: isFoldedOver(e));
+        left: x,
+        width: widthOf(e),
+        vis: PanelVis.full,
+        foldedOver: isFoldedOver(e),
+      );
       x += widthOf(e) + panelGap;
     }
     final hasLeft = fulls.any((e) => e.column == PanelColumn.left);
     final leftCovered = hasLeft ? x - panelGap : railWidth;
 
     final rights = fulls.where((e) => e.column == PanelColumn.right).toList();
-    final rightTotal = rights.fold(0.0, (s, e) => s + widthOf(e)) +
+    final rightTotal =
+        rights.fold(0.0, (s, e) => s + widthOf(e)) +
         math.max(0, rights.length - 1) * panelGap;
     var rx = viewport - gutter - rightTotal;
     final rightStart = rx;
     for (final e in rights) {
       placement[e] = PanelSlot(
-          left: rx,
-          width: widthOf(e),
-          vis: PanelVis.full,
-          foldedOver: isFoldedOver(e));
+        left: rx,
+        width: widthOf(e),
+        vis: PanelVis.full,
+        foldedOver: isFoldedOver(e),
+      );
       rx += widthOf(e) + panelGap;
     }
 
-    return _build(left, right, railWidth,
-        clusterVisible: true,
-        mapLeftOverlay: leftCovered,
-        mapRightOverlay: rights.isEmpty ? 0.0 : viewport - rightStart,
-        slot: (e) => placement[e] ?? hidden());
+    return _build(
+      left,
+      right,
+      railWidth,
+      clusterVisible: true,
+      mapLeftOverlay: leftCovered,
+      mapRightOverlay: rights.isEmpty ? 0.0 : viewport - rightStart,
+      slot: (e) => placement[e] ?? hidden(),
+    );
   }
 
   static WorkspaceLayout _build(
@@ -302,11 +333,11 @@ abstract class PanelAllocator {
     return WorkspaceLayout(
       left: [
         for (var i = 0; i < left.length; i++)
-          slot(_Entry(PanelColumn.left, i, left[i]))
+          slot(_Entry(PanelColumn.left, i, left[i])),
       ],
       right: [
         for (var i = 0; i < right.length; i++)
-          slot(_Entry(PanelColumn.right, i, right[i]))
+          slot(_Entry(PanelColumn.right, i, right[i])),
       ],
       railWidth: railWidth,
       clusterVisible: clusterVisible,

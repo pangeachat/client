@@ -36,9 +36,8 @@ class CloseAffordance {
   factory CloseAffordance.of({
     required bool isPushedPage,
     required bool revealsMaster,
-  }) =>
-      CloseAffordance(
-        showBack: isPushedPage || revealsMaster,
-        showClose: isPushedPage || !revealsMaster,
-      );
+  }) => CloseAffordance(
+    showBack: isPushedPage || revealsMaster,
+    showClose: isPushedPage || !revealsMaster,
+  );
 }

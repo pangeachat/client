@@ -56,18 +56,21 @@ class ActivitySessionStartView extends StatelessWidget {
         // surviving scope (the parent card, reconstructed from the scope).
         String overlayDropped({required bool reopenCard}) {
           final parts = uri.query.isEmpty ? <String>[] : uri.query.split('&');
-          parts.removeWhere((p) =>
-              p == 'activity' ||
-              p.startsWith('activity=') ||
-              p == 'roomid' ||
-              p.startsWith('roomid=') ||
-              p == 'launch' ||
-              p.startsWith('launch=') ||
-              p == 'autoplay' ||
-              p.startsWith('autoplay='));
+          parts.removeWhere(
+            (p) =>
+                p == 'activity' ||
+                p.startsWith('activity=') ||
+                p == 'roomid' ||
+                p.startsWith('roomid=') ||
+                p == 'launch' ||
+                p.startsWith('launch=') ||
+                p == 'autoplay' ||
+                p.startsWith('autoplay='),
+          );
           final scoped = parts.any((p) => p.startsWith('m=course:'));
-          final hasLeft =
-              parts.any((p) => p == 'left' || p.startsWith('left='));
+          final hasLeft = parts.any(
+            (p) => p == 'left' || p.startsWith('left='),
+          );
           if (reopenCard && scoped && !hasLeft) parts.add('left=course');
           return parts.isEmpty ? '/' : '/?${parts.join('&')}';
         }
@@ -100,27 +103,29 @@ class ActivitySessionStartView extends StatelessWidget {
                           context,
                         ).backButtonTooltip,
                         icon: const Icon(Icons.arrow_back),
-                        onPressed: () => GoRouter.of(context)
-                            .go(overlayDropped(reopenCard: true)),
+                        onPressed: () => GoRouter.of(
+                          context,
+                        ).go(overlayDropped(reopenCard: true)),
                       )
                     : embedded
-                        // Unscoped (pin entry) → X dismisses to the map.
-                        ? IconButton(
-                            tooltip: L10n.of(context).close,
-                            icon: const Icon(Icons.close),
-                            onPressed: () => GoRouter.of(context)
-                                .go(overlayDropped(reopenCard: false)),
-                          )
-                        // Standalone `/<activityId>` route: this page is the
-                        // bottom of the stack; popping would leave an empty
-                        // navigator, so fall back to the home map.
-                        : IconButton(
-                            tooltip: L10n.of(context).close,
-                            icon: const Icon(Icons.close),
-                            onPressed: () => Navigator.of(context).canPop()
-                                ? Navigator.of(context).pop()
-                                : GoRouter.of(context).go(PRoutes.world),
-                          ),
+                    // Unscoped (pin entry) → X dismisses to the map.
+                    ? IconButton(
+                        tooltip: L10n.of(context).close,
+                        icon: const Icon(Icons.close),
+                        onPressed: () => GoRouter.of(
+                          context,
+                        ).go(overlayDropped(reopenCard: false)),
+                      )
+                    // Standalone `/<activityId>` route: this page is the
+                    // bottom of the stack; popping would leave an empty
+                    // navigator, so fall back to the home map.
+                    : IconButton(
+                        tooltip: L10n.of(context).close,
+                        icon: const Icon(Icons.close),
+                        onPressed: () => Navigator.of(context).canPop()
+                            ? Navigator.of(context).pop()
+                            : GoRouter.of(context).go(PRoutes.world),
+                      ),
                 // Pangea#
               ),
             ),

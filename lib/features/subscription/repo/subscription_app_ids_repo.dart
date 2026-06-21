@@ -4,11 +4,11 @@ import 'package:async/async.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 
+import 'package:fluffychat/features/subscription/utils/subscription_app_id.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/features/subscription/utils/subscription_app_id.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 

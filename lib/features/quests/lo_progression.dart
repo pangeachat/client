@@ -31,8 +31,10 @@ class LoProgressionGate {
 
   const LoProgressionGate({required this.unlocked, required this.gated});
 
-  static const LoProgressionGate empty =
-      LoProgressionGate(unlocked: {}, gated: {});
+  static const LoProgressionGate empty = LoProgressionGate(
+    unlocked: {},
+    gated: {},
+  );
 
   /// A pin is locked when it carries at least one gated objective and none of
   /// its objectives is unlocked. A pin with no gated objective — a standalone or

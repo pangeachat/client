@@ -43,7 +43,8 @@ class QuestPlan {
       targetCefr: req['target_cefr'] as String?,
       sequence: rawSeq
           .map(
-            (e) => QuestObjectiveStep.fromJson((e as Map).cast<String, dynamic>()),
+            (e) =>
+                QuestObjectiveStep.fromJson((e as Map).cast<String, dynamic>()),
           )
           .toList(),
     );

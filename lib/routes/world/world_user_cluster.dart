@@ -68,33 +68,27 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
   /// panels). `setRight` replaces the whole right list, so switching trackers
   /// lands on the new tab's summary and drops any open construct detail.
   void _openAnalytics(AnalyticsPanelTab tab) => context.go(
-        WorkspaceNav.setRight(
-          GoRouterState.of(context).uri,
-          [PanelToken('analytics', tab.name)],
-        ),
-      );
+    WorkspaceNav.setRight(GoRouterState.of(context).uri, [
+      PanelToken('analytics', tab.name),
+    ]),
+  );
 
   /// Open the profile + settings panel on the right (its menu), keeping any
   /// other open panels — world_v2 moved settings/profile to the right column.
-  void _openProfile() => context.go(
-        WorkspaceNav.openSettings(GoRouterState.of(context).uri),
-      );
+  void _openProfile() =>
+      context.go(WorkspaceNav.openSettings(GoRouterState.of(context).uri));
 
   /// The level medal opens the level analytics tab on the right.
   void _openLevel() => context.go(
-        WorkspaceNav.setRight(
-          GoRouterState.of(context).uri,
-          [const PanelToken('analytics', 'level')],
-        ),
-      );
+    WorkspaceNav.setRight(GoRouterState.of(context).uri, [
+      const PanelToken('analytics', 'level'),
+    ]),
+  );
 
   /// The L2 flag opens the learning settings page on the right directly.
   void _openLearningSettings() => context.go(
-        WorkspaceNav.openSettings(
-          GoRouterState.of(context).uri,
-          page: 'learning',
-        ),
-      );
+    WorkspaceNav.openSettings(GoRouterState.of(context).uri, page: 'learning'),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -122,36 +116,45 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
           stream:
               MatrixState.pangeaController.userController.languageStream.stream,
           builder: (context, _) {
-        final l2 = MatrixState.pangeaController.userController.userL2;
-        return StreamBuilder(
-          stream: dispatcher.constructUpdateStream.stream,
-          builder: (context, _) {
+            final l2 = MatrixState.pangeaController.userController.userL2;
             return StreamBuilder(
-              stream: dispatcher.activityAnalyticsStream.stream,
+              stream: dispatcher.constructUpdateStream.stream,
               builder: (context, _) {
-                final vocab = service.numConstructs(ConstructTypeEnum.vocab);
-                final grammar = service.numConstructs(ConstructTypeEnum.morph);
-                // Total stars the learner has earned across their activity
-                // sessions (best per activity, matching the per-pin star fill).
-                final stars = _totalStars(client);
-                return FutureBuilder<DerivedAnalyticsDataModel>(
-                  future: l2 != null
-                      ? service.derivedData(l2.langCodeShort)
-                      : Future.value(DerivedAnalyticsDataModel()),
-                  builder: (context, snapshot) {
-                    final derived = snapshot.data ?? service.cachedDerivedData;
-                    final level = derived?.level ?? 1;
-                    // Fraction toward the next level — the XP ring fill; resets
-                    // at each level-up.
-                    final progress =
-                        (derived?.levelProgress ?? 0.0).clamp(0.0, 1.0);
-                    return _cluster(
-                      l2: l2,
-                      level: level,
-                      progress: progress,
-                      vocab: vocab,
-                      grammar: grammar,
-                      stars: stars,
+                return StreamBuilder(
+                  stream: dispatcher.activityAnalyticsStream.stream,
+                  builder: (context, _) {
+                    final vocab = service.numConstructs(
+                      ConstructTypeEnum.vocab,
+                    );
+                    final grammar = service.numConstructs(
+                      ConstructTypeEnum.morph,
+                    );
+                    // Total stars the learner has earned across their activity
+                    // sessions (best per activity, matching the per-pin star fill).
+                    final stars = _totalStars(client);
+                    return FutureBuilder<DerivedAnalyticsDataModel>(
+                      future: l2 != null
+                          ? service.derivedData(l2.langCodeShort)
+                          : Future.value(DerivedAnalyticsDataModel()),
+                      builder: (context, snapshot) {
+                        final derived =
+                            snapshot.data ?? service.cachedDerivedData;
+                        final level = derived?.level ?? 1;
+                        // Fraction toward the next level — the XP ring fill; resets
+                        // at each level-up.
+                        final progress = (derived?.levelProgress ?? 0.0).clamp(
+                          0.0,
+                          1.0,
+                        );
+                        return _cluster(
+                          l2: l2,
+                          level: level,
+                          progress: progress,
+                          vocab: vocab,
+                          grammar: grammar,
+                          stars: stars,
+                        );
+                      },
                     );
                   },
                 );
@@ -159,8 +162,6 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
             );
           },
         );
-      },
-    );
       },
     );
   }
@@ -200,11 +201,7 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        _Avatar(
-          avatarUrl: _avatarUrl,
-          name: _displayName,
-          onTap: _openProfile,
-        ),
+        _Avatar(avatarUrl: _avatarUrl, name: _displayName, onTap: _openProfile),
         const SizedBox(height: 8),
         _PowerupsPill(
           level: level,
@@ -305,7 +302,11 @@ class _XpBorderPainter extends CustomPainter {
       ..lineTo(r.right - rad, r.top)
       ..arcToPoint(Offset(r.right, r.top + rad), radius: arc, clockwise: true)
       ..lineTo(r.right, r.bottom - rad)
-      ..arcToPoint(Offset(r.right - rad, r.bottom), radius: arc, clockwise: true)
+      ..arcToPoint(
+        Offset(r.right - rad, r.bottom),
+        radius: arc,
+        clockwise: true,
+      )
       ..lineTo(cx, r.bottom);
   }
 

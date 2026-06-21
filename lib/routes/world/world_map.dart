@@ -11,9 +11,9 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -318,8 +318,7 @@ class _WorldMapState extends State<WorldMap>
   int _largePoolSize = 0; // set in build; gates the rotation tick
   static const int _largeBudget = 3;
 
-  bool get _isWorld =>
-      MapContextController.notifier.value is! CourseMapContext;
+  bool get _isWorld => MapContextController.notifier.value is! CourseMapContext;
 
   @override
   void initState() {
@@ -821,17 +820,19 @@ class _WorldMapState extends State<WorldMap>
     // `activity=` param (`mapFocusFor` → `ActivityFocus`), independent of scope.
     // See `routing.instructions.md`.
     final parts = uri.query.isEmpty ? <String>[] : uri.query.split('&');
-    parts.removeWhere((p) =>
-        p == 'left' ||
-        p.startsWith('left=') ||
-        p == 'right' ||
-        p.startsWith('right=') ||
-        p == 'm' ||
-        p.startsWith('m=') ||
-        p == 'activity' ||
-        p.startsWith('activity=') ||
-        p == 'autoplay' ||
-        p.startsWith('autoplay='));
+    parts.removeWhere(
+      (p) =>
+          p == 'left' ||
+          p.startsWith('left=') ||
+          p == 'right' ||
+          p.startsWith('right=') ||
+          p == 'm' ||
+          p.startsWith('m=') ||
+          p == 'activity' ||
+          p.startsWith('activity=') ||
+          p == 'autoplay' ||
+          p.startsWith('autoplay='),
+    );
     parts.add('activity=${card.activityId}');
     context.go(parts.isEmpty ? '/' : '/?${parts.join('&')}');
     _collapse();
@@ -958,14 +959,16 @@ class _WorldMapState extends State<WorldMap>
       if (r.activityId != activityId) continue;
       if (!(r.numRemainingRoles > 0 && r.ownRoleState == null)) continue;
       final ms = r.lastEvent?.originServerTs.millisecondsSinceEpoch ?? 0;
-      final bestMs = best?.lastEvent?.originServerTs.millisecondsSinceEpoch ?? 0;
+      final bestMs =
+          best?.lastEvent?.originServerTs.millisecondsSinceEpoch ?? 0;
       if (best == null || ms > bestMs) best = r;
     }
     if (best == null) return (participants: const [], openSlots: 0);
     final participants = best
         .getParticipants()
         .where(
-          (u) => u.membership == Membership.join && u.id != BotName.byEnvironment,
+          (u) =>
+              u.membership == Membership.join && u.id != BotName.byEnvironment,
         )
         .map<LargeCardParticipant>(
           (u) => (avatar: u.avatarUrl, name: u.calcDisplayname()),
@@ -1096,6 +1099,7 @@ class _WorldMapState extends State<WorldMap>
       }
       return PinTier.small;
     }
+
     ActivityPinState stateOf(String id) =>
         signals[id]?.state ?? ActivityPinState.unlocked;
     bool pingedOf(String id) => signals[id]?.pinged ?? false;
@@ -1106,6 +1110,7 @@ class _WorldMapState extends State<WorldMap>
       if (s == null || s.state != ActivityPinState.unlocked) return 0;
       return s.completionFraction;
     }
+
     final clusterStateByPoint = <LatLng, ActivityPinState>{
       for (final c in visible)
         if (c.point != null) c.point!: stateOf(c.activityId),

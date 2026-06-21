@@ -107,9 +107,7 @@ class SpacesNavigationRail extends StatelessWidget {
     final displayname = space.getLocalizedDisplayname(
       MatrixLocals(L10n.of(context)),
     );
-    final spaceChildrenIds = space.spaceChildren
-        .map((c) => c.roomId)
-        .toSet();
+    final spaceChildrenIds = space.spaceChildren.map((c) => c.roomId).toSet();
     final isColumnMode = FluffyThemes.isColumnMode(context);
     return NaviRailItem(
       toolTip: displayname,
@@ -137,10 +135,7 @@ class SpacesNavigationRail extends StatelessWidget {
           child: Avatar(
             mxContent: space.avatar,
             name: displayname,
-            border: BorderSide(
-              width: 1,
-              color: Theme.of(context).dividerColor,
-            ),
+            border: BorderSide(width: 1, color: Theme.of(context).dividerColor),
             borderRadius: BorderRadius.circular(0),
             size: naviRailWidth - (isColumnMode ? 32.0 : 24.0),
           ),
@@ -163,8 +158,7 @@ class SpacesNavigationRail extends StatelessWidget {
     final isChats = section == AppSection.chats;
     final isWorld = section == AppSection.world;
     // The Add-course / find-course flow: courses section, no active space.
-    final isCourseFind =
-        section == AppSection.courses && activeSpaceId == null;
+    final isCourseFind = section == AppSection.courses && activeSpaceId == null;
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
     // return StreamBuilder(

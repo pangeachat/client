@@ -80,8 +80,9 @@ class ActivitySummary extends StatelessWidget {
     final theme = Theme.of(context);
     // Deep-link autostart: a video card opens the plan with `?autoplay=<index>`.
     // Only the plan page (not the in-session render) honors it.
-    final autoplayParam =
-        GoRouterState.of(context).uri.queryParameters['autoplay'];
+    final autoplayParam = GoRouterState.of(
+      context,
+    ).uri.queryParameters['autoplay'];
     final autoplayIndex = (inChat || autoplayParam == null)
         ? null
         : int.tryParse(autoplayParam);

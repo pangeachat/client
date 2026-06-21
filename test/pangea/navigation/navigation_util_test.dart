@@ -33,15 +33,17 @@ void main() {
       expect(stripped.pathSegments, isEmpty);
     });
 
-    test('drops the in-course `?activity=` overlay params, keeps m=/left= raw',
-        () {
-      final stripped = NavigationUtil.stripActivityOverlay(
-        u('/?m=course:!s&left=course&activity=$activityId&launch=true'),
-      );
-      expect(stripped.path, '/');
-      // m= and left= survive verbatim (raw, not re-encoded); activity/launch go.
-      expect(stripped.query, 'm=course:!s&left=course');
-    });
+    test(
+      'drops the in-course `?activity=` overlay params, keeps m=/left= raw',
+      () {
+        final stripped = NavigationUtil.stripActivityOverlay(
+          u('/?m=course:!s&left=course&activity=$activityId&launch=true'),
+        );
+        expect(stripped.path, '/');
+        // m= and left= survive verbatim (raw, not re-encoded); activity/launch go.
+        expect(stripped.query, 'm=course:!s&left=course');
+      },
+    );
 
     test('drops a continue roomid param', () {
       final stripped = NavigationUtil.stripActivityOverlay(
@@ -58,16 +60,20 @@ void main() {
   });
 
   group('session replaces plan (end to end through the room funnel)', () {
-    test('from a map pin: room seats on `/` with no plan path left standing',
-        () {
-      final loc = WorkspaceNav.openExclusiveLeftRoom(
-        NavigationUtil.stripActivityOverlay(u('/$activityId?launch=true')),
-        const PanelToken('room', '!abc'),
-      );
-      final result = u(loc);
-      expect(result.pathSegments, isEmpty, reason: 'no `/<uuid>` plan path');
-      expect(parseOpenPanels(result).left, [const PanelToken('room', '!abc')]);
-    });
+    test(
+      'from a map pin: room seats on `/` with no plan path left standing',
+      () {
+        final loc = WorkspaceNav.openExclusiveLeftRoom(
+          NavigationUtil.stripActivityOverlay(u('/$activityId?launch=true')),
+          const PanelToken('room', '!abc'),
+        );
+        final result = u(loc);
+        expect(result.pathSegments, isEmpty, reason: 'no `/<uuid>` plan path');
+        expect(parseOpenPanels(result).left, [
+          const PanelToken('room', '!abc'),
+        ]);
+      },
+    );
 
     test('from a course: room replaces the plan, course filter survives', () {
       final loc = WorkspaceNav.openExclusiveLeftRoom(
@@ -80,10 +86,10 @@ void main() {
       expect(result.path, '/');
       expect(result.query.contains('activity='), isFalse);
       expect(result.query.contains('m=course:!s'), isTrue);
-      expect(
-        parseOpenPanels(result).left,
-        [const PanelToken('course'), const PanelToken('room', '!abc')],
-      );
+      expect(parseOpenPanels(result).left, [
+        const PanelToken('course'),
+        const PanelToken('room', '!abc'),
+      ]);
     });
   });
 }

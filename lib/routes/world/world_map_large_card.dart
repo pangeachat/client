@@ -105,14 +105,8 @@ class WorldMapLargeCard extends StatelessWidget {
               _header(context, locked: locked, completed: completed),
               // A locked activity has no progress, so no star row — and dropping
               // it keeps the card from overflowing when the requirement wraps.
-              if (!locked) ...[
-                const SizedBox(height: 8),
-                _starRow(),
-              ],
-              if (locked) ...[
-                const SizedBox(height: 8),
-                _lockedRequirement(),
-              ],
+              if (!locked) ...[const SizedBox(height: 8), _starRow()],
+              if (locked) ...[const SizedBox(height: 8), _lockedRequirement()],
               if (completed) ...[
                 const SizedBox(height: 8),
                 _completedActions(),
@@ -288,7 +282,12 @@ class WorldMapLargeCard extends StatelessWidget {
   Widget _completedActions() {
     return Row(
       children: [
-        _actionPill(Icons.refresh, 'Play again', _purple, const Color(0xFFCECBF6)),
+        _actionPill(
+          Icons.refresh,
+          'Play again',
+          _purple,
+          const Color(0xFFCECBF6),
+        ),
         const SizedBox(width: 6),
         _actionPill(
           Icons.visibility_outlined,

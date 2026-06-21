@@ -13,17 +13,23 @@ void main() {
       expect(a.showBack, isFalse);
     });
 
-    test('a folded detail (reveals its master) shows back only — X redundant', () {
-      final a = of(reveals: true);
-      expect(a.showBack, isTrue);
-      expect(a.showClose, isFalse);
-    });
+    test(
+      'a folded detail (reveals its master) shows back only — X redundant',
+      () {
+        final a = of(reveals: true);
+        expect(a.showBack, isTrue);
+        expect(a.showClose, isFalse);
+      },
+    );
 
-    test('a pushed page / wizard step shows BOTH (← pops a level, X dismisses)', () {
-      final a = of(pushed: true);
-      expect(a.showBack, isTrue);
-      expect(a.showClose, isTrue);
-    });
+    test(
+      'a pushed page / wizard step shows BOTH (← pops a level, X dismisses)',
+      () {
+        final a = of(pushed: true);
+        expect(a.showBack, isTrue);
+        expect(a.showClose, isTrue);
+      },
+    );
 
     test('pushed AND folded still shows both (push dominates)', () {
       final a = of(pushed: true, reveals: true);

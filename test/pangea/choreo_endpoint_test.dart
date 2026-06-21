@@ -4,8 +4,6 @@ import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/src/response.dart';
 
-import 'endpoint_test_env.dart';
-
 import 'package:fluffychat/features/activity_sessions/activity_feedback_request.dart';
 import 'package:fluffychat/features/activity_sessions/activity_feedback_response.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
@@ -13,20 +11,17 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_request_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
-import 'package:fluffychat/routes/chat/choreographer/igc/igc_request_model.dart';
-import 'package:fluffychat/routes/chat/choreographer/igc/igc_response_model.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
-import 'package:fluffychat/routes/onboarding/custom_course_request_model.dart';
-import 'package:fluffychat/routes/onboarding/custom_course_response_model.dart';
-import 'package:fluffychat/routes/chat/events/repo/language_detection_request.dart';
-import 'package:fluffychat/routes/chat/events/repo/language_detection_response.dart';
-import 'package:fluffychat/routes/chat/events/repo/token_api_models.dart';
-import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_request.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/igc_request_model.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/igc_response_model.dart';
 import 'package:fluffychat/routes/chat/events/phonetic_transcription/pt_v2_models.dart';
+import 'package:fluffychat/routes/chat/events/repo/language_detection_request.dart';
+import 'package:fluffychat/routes/chat/events/repo/language_detection_response.dart';
+import 'package:fluffychat/routes/chat/events/repo/token_api_models.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
@@ -36,6 +31,10 @@ import 'package:fluffychat/routes/chat/events/token_info_feedback/token_info_fee
 import 'package:fluffychat/routes/chat/events/token_info_feedback/token_info_feedback_response.dart';
 import 'package:fluffychat/routes/chat/events/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/routes/chat/events/translation/full_text_translation_response_model.dart';
+import 'package:fluffychat/routes/onboarding/custom_course_request_model.dart';
+import 'package:fluffychat/routes/onboarding/custom_course_response_model.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import 'endpoint_test_env.dart';
 
 void main() {
   String authToken = "";

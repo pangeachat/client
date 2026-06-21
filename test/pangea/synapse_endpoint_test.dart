@@ -5,7 +5,6 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/join_codes/knock_with_code_extension.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
-
 import 'endpoint_test_env.dart';
 
 /// Synapse endpoint tests — exercise the client's real calls to the Matrix
@@ -48,7 +47,10 @@ void main() {
     );
     expect(res.statusCode, 200, reason: 'login failed for $user');
     final json = jsonDecode(utf8.decode(res.bodyBytes)) as Map<String, dynamic>;
-    return (token: json['access_token'] as String, userId: json['user_id'] as String);
+    return (
+      token: json['access_token'] as String,
+      userId: json['user_id'] as String,
+    );
   }
 
   /// Best-effort registration via the dummy flow. Swallows all errors: the
@@ -85,10 +87,9 @@ void main() {
   }
 
   Future<void> acceptInvite(String token, String roomId) async {
-    final res = await Requests(accessToken: token).post(
-      url: '$synapse/_matrix/client/v3/rooms/$roomId/join',
-      body: {},
-    );
+    final res = await Requests(
+      accessToken: token,
+    ).post(url: '$synapse/_matrix/client/v3/rooms/$roomId/join', body: {});
     expect(res.statusCode, 200, reason: 'join $roomId failed');
   }
 
