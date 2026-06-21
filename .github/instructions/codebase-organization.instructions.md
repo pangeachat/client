@@ -11,7 +11,7 @@ This client began as a fork of [krille-chan/fluffychat](https://github.com/krill
 
 | Dir | Role | Examples |
 | --- | --- | --- |
-| `lib/routes/` | Pages and on-screen UI, organized by nav section (GoRouter destinations). Screens, views, controllers, and route-local widgets live here. `chat/` also houses `choreographer/` and `events/`. | [`routes/courses/find_course_page.dart`](../../lib/routes/courses/find_course_page.dart), [`routes/world/activity_map_page.dart`](../../lib/routes/world/activity_map_page.dart), [`routes/chat/events/constants/pangea_event_types.dart`](../../lib/routes/chat/events/constants/pangea_event_types.dart) |
+| `lib/routes/` | Pages and on-screen UI, organized by nav section (GoRouter destinations). Screens, views, controllers, and route-local widgets live here. `chat/` also houses `choreographer/` and `events/`. | [`routes/courses/find_course_page.dart`](../../lib/routes/courses/find_course_page.dart), [`routes/world/world_map.dart`](../../lib/routes/world/world_map.dart), [`routes/chat/events/constants/pangea_event_types.dart`](../../lib/routes/chat/events/constants/pangea_event_types.dart) |
 | `lib/features/` | Per-domain data and logic: models, repos, Matrix Room/Client `*_extension.dart`, services, constants, enums. Mostly data, with a few in-domain UI primitives (see split rule). | [`features/course_plans/courses/course_plans_repo.dart`](../../lib/features/course_plans/courses/course_plans_repo.dart), [`features/languages/language_repo.dart`](../../lib/features/languages/language_repo.dart), [`features/navigation/route_paths.dart`](../../lib/features/navigation/route_paths.dart) |
 | `lib/pangea/` | Shared Pangea infra and common widgets used across features: network layer, `PangeaController`, common widgets, cross-cutting Matrix extensions, plus a few shared-infra domains (lemmas, morphs). | [`pangea/common/network/urls.dart`](../../lib/pangea/common/network/urls.dart), [`pangea/common/controllers/pangea_controller.dart`](../../lib/pangea/common/controllers/pangea_controller.dart), [`pangea/extensions/pangea_room_extension.dart`](../../lib/pangea/extensions/pangea_room_extension.dart) |
 | `lib/widgets/` | FluffyChat base plus general app chrome not tied to one route: root state, nav rail, mobile bottom nav, avatar, dialogs, layouts. Many carry `// #Pangea` edits. | [`widgets/matrix.dart`](../../lib/widgets/matrix.dart) (`MatrixState` root state), [`widgets/navigation_rail.dart`](../../lib/widgets/navigation_rail.dart), [`widgets/avatar.dart`](../../lib/widgets/avatar.dart) |
@@ -20,7 +20,7 @@ This client began as a fork of [krille-chan/fluffychat](https://github.com/krill
 
 ## The features ↔ routes Split
 
-The dominant pattern: domain **data/logic** goes in `lib/features/<domain>/`; on-screen **UI** goes in `lib/routes/<nav_section>/`. Course plans illustrate it: data in [`features/course_plans/courses/`](../../lib/features/course_plans/courses/) (repo, model, room extension), screens in [`routes/courses/`](../../lib/routes/courses/) (`find_course_page.dart`, `add_course_hub_view.dart`).
+The dominant pattern: domain **data/logic** goes in `lib/features/<domain>/`; on-screen **UI** goes in `lib/routes/<nav_section>/`. Course plans illustrate it: data in [`features/course_plans/courses/`](../../lib/features/course_plans/courses/) (repo, model, room extension), screens in [`routes/courses/`](../../lib/routes/courses/) (`find_course_page.dart`, `add_course_options.dart`).
 
 The rule is real but imperfectly enforced. A few feature dirs hold UI today (`features/subscription/widgets/`, `features/bot/widgets/`, `features/tutorials/*_widget.dart`). Keep new **full-screen pages** in `lib/routes/`. A widget may stay in a feature dir only if it is a small in-domain primitive reused across multiple routes; anything that is a screen belongs in `lib/routes/` so the nav taxonomy stays the place to find UI.
 
@@ -53,7 +53,6 @@ Shared-widget tie-breaker: a reusable Pangea-branded widget could plausibly land
 
 ## Known Cruft (Being Cleaned Up)
 
-- **`lib/pages_v2/`** is a stale empty scaffold (zero `.dart` files). New pages go in `lib/routes/`, not here.
 - **`lib/pangea/design_system/`** (and `tokens/`) hold no source. The "design tokens" home is not real code yet; do not route shared widgets there.
 
 ## Future Work

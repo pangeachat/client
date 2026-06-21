@@ -329,8 +329,4 @@ abstract class LegacyRedirects {
     // Never redirect to the location we are already at.
     return shortened == uri.toString() ? null : shortened;
   }
-
-  /// Guard: bare `/rooms` maps to the chats list.
-  // (Handled by the `[] => const ['chats']` arm above.)
-  static String get chatsHome => PRoutes.chats;
 }

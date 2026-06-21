@@ -8,9 +8,13 @@ import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orche
 /// = goals the learner has collected in a role they hold, kept as the best
 /// across multiple sessions of the same activity.
 ///
-/// This is the same computation `world_map._deriveActivitySignals` feeds into
-/// the progression gate; kept here so other surfaces (e.g. the activity start
-/// page) gate identically — the gate is "resolved once" (quests.instructions.md).
+/// Used by the activity start page (`not_started_session_controller`) to feed the
+/// progression gate. NOTE: the world map does NOT call this helper — it derives
+/// the same per-activity star counts independently in
+/// `world_map._deriveActivitySignals` and `_userCompletion`. So the two are
+/// parallel implementations of the one rule (quests.instructions.md), not a
+/// single shared source; keep them in sync, or route the map through this
+/// function, until they're unified.
 Map<String, int> userStarsByActivity(Client client) {
   final stars = <String, int>{};
   for (final room in client.rooms) {
