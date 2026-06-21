@@ -156,6 +156,22 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     final hasActiveSession = controller.canJoinExistingSession;
 
+    // Gated by course progression (same gate the world map applies to pins):
+    // Start is disabled and shows the unlock reason. Reuses the locked-card
+    // wording in world_map_large_card.dart.
+    if (controller.isLocked) {
+      return Column(
+        spacing: 16.0,
+        children: [
+          const Text(
+            'Finish the previous mission to unlock',
+            textAlign: TextAlign.center,
+          ),
+          _CTAButton(L10n.of(context).start, null),
+        ],
+      );
+    }
+
     return FutureBuilder(
       future: controller.neededCourseParticipants,
       builder: (context, snapshot) {
