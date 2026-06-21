@@ -182,10 +182,51 @@ class QuestRepo {
     ];
   }
 
+  /// Process-lifetime cache of resolved outlines, keyed by quest id, so
+  /// switching back to a course's plan doesn't re-spin. In-memory (not
+  /// GetStorage) because [QuestOutline] carries session-scoped media CDN URLs —
+  /// same reasoning as `ActivityPlanRepo`'s in-memory resolve cache.
+  static final Map<String, QuestOutline> _outlineCache = {};
+  static final Map<String, Future<QuestOutline>> _outlineInflight = {};
+
   /// The full outline: quest + objective groups (LOs in order, each with its
-  /// matching activities). Three reads — the quest, then the LO-text batch and
-  /// the activities query in parallel.
-  static Future<QuestOutline> outline(String questId) async {
+  /// matching activities). Cached per quest id; concurrent calls for the same
+  /// quest share one in-flight read. Pass [forceRefresh] to bypass the cache.
+  static Future<QuestOutline> outline(
+    String questId, {
+    bool forceRefresh = false,
+  }) {
+    if (!forceRefresh) {
+      final cached = _outlineCache[questId];
+      if (cached != null) return Future.value(cached);
+      final inflight = _outlineInflight[questId];
+      if (inflight != null) return inflight;
+    }
+    final future = _buildOutline(questId)
+        .then((outline) {
+          _outlineCache[questId] = outline;
+          return outline;
+        })
+        .whenComplete(() => _outlineInflight.remove(questId));
+    _outlineInflight[questId] = future;
+    return future;
+  }
+
+  /// Drop the cached outline for [questId] (e.g. after a course edit).
+  static void invalidateOutline(String questId) {
+    _outlineCache.remove(questId);
+    _outlineInflight.remove(questId);
+  }
+
+  /// Drop all cached outlines (e.g. on logout / account switch).
+  static void clearOutlineCache() {
+    _outlineCache.clear();
+    _outlineInflight.clear();
+  }
+
+  /// Build a fresh outline — three reads (the quest, then the LO-text batch and
+  /// the activities query in parallel). Uncached; callers use [outline].
+  static Future<QuestOutline> _buildOutline(String questId) async {
     final quest = await QuestRepo.quest(questId);
 
     // LO text and activities both depend only on the quest — run in parallel.
