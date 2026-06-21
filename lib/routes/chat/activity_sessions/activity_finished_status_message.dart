@@ -8,6 +8,7 @@ import 'package:fluffychat/features/activity_sessions/activity_room_extension.da
 import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/subscription/widgets/subscription_paywall.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -26,7 +27,13 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
     // A standalone activity has no course to return to — go home instead.
     final course = controller.room.courseParent;
     context.go(
-      course != null ? "/rooms/spaces/${course.id}/details?tab=course" : "/",
+      course != null
+          ? WorkspaceNav.openCourseFilter(
+              GoRouterState.of(context).uri,
+              course.id,
+              tab: 'course',
+            )
+          : "/",
     );
   }
 

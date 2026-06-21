@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart' as sdk;
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -119,7 +120,13 @@ class SelectedCourseController extends State<SelectedCourse>
     }
 
     if (!mounted) return;
-    context.go("/rooms/spaces/${space.id}/details?tab=course");
+    context.go(
+      WorkspaceNav.openCourseFilter(
+        GoRouterState.of(context).uri,
+        space.id,
+        tab: 'course',
+      ),
+    );
   }
 
   @override
