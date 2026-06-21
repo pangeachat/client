@@ -21,6 +21,7 @@ import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
@@ -878,13 +879,18 @@ class _WorldMapState extends State<WorldMap>
       height: 18,
       child: Tooltip(
         message: card.title,
-        child: GestureDetector(
-          onTap: () => _promoteToLarge(card),
-          child: _stateDot(
-            state: state,
-            diameter: 18,
-            borderWidth: 1.5,
-            fill: fill,
+        child: Semantics(
+          button: true,
+          label: card.title,
+          excludeSemantics: true,
+          child: GestureDetector(
+            onTap: () => _promoteToLarge(card),
+            child: _stateDot(
+              state: state,
+              diameter: 18,
+              borderWidth: 1.5,
+              fill: fill,
+            ),
           ),
         ),
       ),
@@ -906,41 +912,46 @@ class _WorldMapState extends State<WorldMap>
       height: 44,
       child: Tooltip(
         message: card.title,
-        child: GestureDetector(
-          onTap: () => _promoteToLarge(card),
-          child: Stack(
-            clipBehavior: Clip.none,
-            alignment: Alignment.center,
-            children: [
-              _stateDot(
-                state: state,
-                diameter: 36,
-                borderWidth: 2,
-                fill: fill,
-                glyph: const Icon(
-                  Icons.chat_bubble_outline,
-                  size: 18,
-                  color: Colors.white,
-                ),
-              ),
-              if (pinged)
-                Positioned(
-                  top: -2,
-                  right: -2,
-                  child: Container(
-                    padding: const EdgeInsets.all(2),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.back_hand,
-                      size: 12,
-                      color: Color(0xFF34A853),
-                    ),
+        child: Semantics(
+          button: true,
+          label: card.title,
+          excludeSemantics: true,
+          child: GestureDetector(
+            onTap: () => _promoteToLarge(card),
+            child: Stack(
+              clipBehavior: Clip.none,
+              alignment: Alignment.center,
+              children: [
+                _stateDot(
+                  state: state,
+                  diameter: 36,
+                  borderWidth: 2,
+                  fill: fill,
+                  glyph: const Icon(
+                    Icons.chat_bubble_outline,
+                    size: 18,
+                    color: Colors.white,
                   ),
                 ),
-            ],
+                if (pinged)
+                  Positioned(
+                    top: -2,
+                    right: -2,
+                    child: Container(
+                      padding: const EdgeInsets.all(2),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.back_hand,
+                        size: 12,
+                        color: Color(0xFF34A853),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
           ),
         ),
       ),
@@ -1210,7 +1221,12 @@ class _WorldMapState extends State<WorldMap>
                 final s = clusterStateByPoint[m.point];
                 if (s != null && s.index > dominant.index) dominant = s;
               }
-              return _clusterBubble(context, markers.length, dominant);
+              return Semantics(
+                button: true,
+                label: '${markers.length} ${L10n.of(context).activities}',
+                excludeSemantics: true,
+                child: _clusterBubble(context, markers.length, dominant),
+              );
             },
           ),
         ),
