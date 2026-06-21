@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
@@ -51,6 +52,7 @@ class CourseObjectivesList extends StatefulWidget {
 
 class _CourseObjectivesListState extends State<CourseObjectivesList> {
   late Future<List<QuestObjectiveGroup>> _groupsFuture;
+  final ScrollController _scrollController = ScrollController();
 
   String? get _questId => widget.questId ?? widget.room?.coursePlan?.uuid;
 
@@ -58,6 +60,34 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   void initState() {
     super.initState();
     _groupsFuture = _load();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  /// Claim vertical mouse-wheel events for this list before flutter_map does.
+  /// The list floats in a PanelCard over the persistent world map; flutter_map
+  /// registers every vertical wheel with the shared PointerSignalResolver for
+  /// scroll-zoom, and the per-module activity rows are HORIZONTAL lists that
+  /// don't consume a vertical wheel (dx == 0) — so without this the wheel falls
+  /// through to the map and the panel can only be scrolled by keyboard.
+  /// Registering first (this Listener sits above the map in the panel) wins the
+  /// resolver and drives our own controller. See routing.instructions.md.
+  void _claimVerticalScroll(PointerSignalEvent event) {
+    if (event is! PointerScrollEvent || event.scrollDelta.dy == 0) return;
+    if (!_scrollController.hasClients) return;
+    GestureBinding.instance.pointerSignalResolver.register(event, (resolved) {
+      resolved as PointerScrollEvent;
+      final position = _scrollController.position;
+      final target = (_scrollController.offset + resolved.scrollDelta.dy).clamp(
+        position.minScrollExtent,
+        position.maxScrollExtent,
+      );
+      _scrollController.jumpTo(target);
+    });
   }
 
   @override
@@ -101,7 +131,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
             ),
           );
         }
-        return ListView.separated(
+        final list = ListView.separated(
+          controller: widget.shrinkWrap ? null : _scrollController,
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           shrinkWrap: widget.shrinkWrap,
           physics: widget.shrinkWrap
@@ -116,6 +147,12 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
             hasCompletedActivity: widget.hasCompletedActivity,
           ),
         );
+        // In a preview the list is embedded in an outer scroll view (shrinkWrap)
+        // with no map behind it; only the standalone panel list must claim the
+        // wheel from the map.
+        return widget.shrinkWrap
+            ? list
+            : Listener(onPointerSignal: _claimVerticalScroll, child: list);
       },
     );
   }
