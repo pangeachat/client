@@ -103,7 +103,6 @@ class WorkspaceRightPanel extends StatelessWidget {
         final (title, child) = _analytics(l10n, token.param);
         return card(title, child);
       case 'settings':
-      case 'profile':
         // The settings/profile MENU master. Closing it drops its open page too
         // (the page has no meaning without the menu). The page opens beside it
         // as a `settingspage` detail (below).

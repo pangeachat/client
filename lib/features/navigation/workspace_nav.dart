@@ -417,12 +417,7 @@ abstract class WorkspaceNav {
     current,
     'right',
     (tokens) => tokens
-        .where(
-          (t) =>
-              t.type != 'settings' &&
-              t.type != 'profile' &&
-              t.type != 'settingspage',
-        )
+        .where((t) => t.type != 'settings' && t.type != 'settingspage')
         .toList(),
   );
 

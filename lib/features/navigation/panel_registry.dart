@@ -226,14 +226,6 @@ abstract class PanelRegistry {
       idealWidth: 520,
       priority: 40,
     ),
-    'profile': PanelDef(
-      type: 'profile',
-      column: PanelColumn.right,
-      minWidth: 360,
-      reasonableMinWidth: 440,
-      idealWidth: 520,
-      priority: 40,
-    ),
     // A settings/profile PAGE (learning, style, security, …) — the menu's DETAIL
     // (child of `settings`). Its param is the full page path; a `/`-path is a
     // leaf reached by a push within this panel (the page's own back pops it). One
