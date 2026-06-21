@@ -81,6 +81,10 @@ jobs:
         run: |
           touch build/web/.env
           echo "$WEB_APP_ENV" >> build/web/.env
+          # Staging only: force the Flutter accessibility (semantics) tree on so
+          # automated and assistive-tech testing can read the canvas. NOT set on
+          # production (release.yaml), where semantics stays on-demand per user.
+          echo "ENABLE_SEMANTICS=true" >> build/web/.env
           touch build/web/assets/envs.json
           echo "$ENV_OVERRIDES" >> build/web/assets/envs.json
           mkdir -p build/web/.well-known

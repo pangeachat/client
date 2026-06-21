@@ -116,7 +116,7 @@ Source of truth for the staging values is the deployed client itself: `curl -s h
 
 ### Driving the app by semantics (Chrome extension)
 
-The app renders to `<canvas>`, so the Chrome extension can only operate it by role+name once Flutter's accessibility semantics tree is on — otherwise it falls back to screenshots and positional clicks. Add `ENABLE_SEMANTICS=true` to `client/.env` and clean-restart to force the tree on from startup. Off by default (semantics has a perf cost). See [`playwright-testing.instructions.md`](../../instructions/playwright-testing.instructions.md) for the full contract.
+The app renders to `<canvas>`, so the Chrome extension can only operate it by role+name once Flutter's accessibility semantics tree is on — otherwise it falls back to screenshots and positional clicks. Add `ENABLE_SEMANTICS=true` to `client/.env` and clean-restart to force the tree on from startup. Off by default locally (semantics has a perf cost). **Staging** deploys force it on (`main_deploy.yaml` stamps `ENABLE_SEMANTICS=true` into the served `/.env`), so `app.staging.pangea.chat` is driveable by role+name too; **production** leaves it off (on-demand per assistive-tech user). See [`playwright-testing.instructions.md`](../../instructions/playwright-testing.instructions.md) for the full contract.
 
 ## Login
 
