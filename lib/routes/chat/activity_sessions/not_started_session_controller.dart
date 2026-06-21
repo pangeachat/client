@@ -175,14 +175,7 @@ class NotStartedSessionController extends State<NotStartedSession>
     final client = Matrix.of(context).client;
     try {
       final outline = await QuestRepo.outline(uuid);
-      final courseLo = CourseLoOutline(
-        orderedLoIds: outline.quest.learningObjectiveIds,
-        activityIdsByLo: {
-          for (final group in outline.groups)
-            group.objective.id: group.activities
-                .map((a) => a.activityId)
-                .toSet(),
-        },
+      final courseLo = outline.toCourseLoOutline(
         starsToUnlock:
             course.teacherMode.starsToUnlockObjective ??
             kDefaultStarsToUnlockObjective,
