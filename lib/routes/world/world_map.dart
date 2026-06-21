@@ -879,6 +879,9 @@ class _WorldMapState extends State<WorldMap>
       height: 18,
       child: Tooltip(
         message: card.title,
+        // Semantics below names the pin; exclude the Tooltip so the title isn't
+        // announced twice ("<title> <title>"). See accessibility.instructions.md.
+        excludeFromSemantics: true,
         child: Semantics(
           button: true,
           label: card.title,
@@ -912,6 +915,9 @@ class _WorldMapState extends State<WorldMap>
       height: 44,
       child: Tooltip(
         message: card.title,
+        // Semantics below names the pin; exclude the Tooltip so the title isn't
+        // announced twice ("<title> <title>").
+        excludeFromSemantics: true,
         child: Semantics(
           button: true,
           label: card.title,

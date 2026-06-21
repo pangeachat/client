@@ -243,6 +243,10 @@ class _Avatar extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: Tooltip(
         message: label,
+        // The Semantics below already names this control; without this the
+        // Tooltip's own message is announced too, doubling the accessible name
+        // ("Account Account"). See accessibility.instructions.md.
+        excludeFromSemantics: true,
         child: Semantics(
           button: true,
           label: label,
@@ -447,6 +451,9 @@ class _TrackerButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Tooltip(
       message: indicator.tooltip(context),
+      // The Semantics below carries the full "<stat>: <count>" name; exclude the
+      // Tooltip so it isn't announced twice ("Stars Stars: 0").
+      excludeFromSemantics: true,
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(14),
@@ -499,6 +506,8 @@ class _LevelMedal extends StatelessWidget {
     final label = '${L10n.of(context).level} $level';
     return Tooltip(
       message: label,
+      // Semantics below names this; exclude the Tooltip to avoid "Level 2 Level 2".
+      excludeFromSemantics: true,
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: onTap,
@@ -565,6 +574,9 @@ class _LanguageFlag extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: Tooltip(
         message: l10n.learningSettings,
+        // Semantics below names this (language + settings); exclude the Tooltip
+        // so its message isn't appended again.
+        excludeFromSemantics: true,
         child: Semantics(
           button: true,
           label: '${language.getDisplayName(l10n)}, ${l10n.learningSettings}',
