@@ -1,3 +1,4 @@
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
 
 class JoinedCourseOnboardingStep extends OnboardingStep {
@@ -11,7 +12,12 @@ class JoinedCourseOnboardingStep extends OnboardingStep {
   String get stepDestination {
     final roomId = state.joinedRoomId;
     if (roomId == null) return "/rooms";
-    return "/rooms/spaces/$roomId";
+    // world_v2: a joined course is `/courses/<bareLocalpart>` (PRoutes.course),
+    // not the retired `/rooms/spaces/:spaceid` shape. Passing the FULL room id
+    // through the legacy redirect mis-parses it (the same break as the course
+    // chooser fix) and dead-ends onboarding. PRoutes.course bares the id so the
+    // redirect resolves to the course workspace.
+    return PRoutes.course(roomId);
   }
 
   @override
