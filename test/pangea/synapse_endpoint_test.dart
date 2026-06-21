@@ -26,6 +26,15 @@ import 'endpoint_test_env.dart';
 /// then run: flutter test test/pangea/synapse_endpoint_test.dart
 /// Tests that lack their required env vars skip rather than fail.
 void main() {
+  if (!EndpointTestEnv.available) {
+    test(
+      'synapse endpoint suite is local-only',
+      () {},
+      skip: 'requires client/.env',
+    );
+    return;
+  }
+
   late String synapse;
 
   setUpAll(() {

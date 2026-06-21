@@ -37,6 +37,15 @@ import 'package:fluffychat/routes/settings/settings_learning/language_level_type
 import 'endpoint_test_env.dart';
 
 void main() {
+  if (!EndpointTestEnv.available) {
+    test(
+      'choreo endpoint suite is local-only',
+      () {},
+      skip: 'requires client/.env',
+    );
+    return;
+  }
+
   String authToken = "";
   String userID = "";
   // Resolved in setUpAll from the shared endpoint-test env (the .env layer), so

@@ -14,6 +14,15 @@ import 'package:fluffychat/features/languages/language_repo.dart';
 /// CMS, so local-only, not a PR gate — see testing.instructions.md. Confirms the
 /// CMS responses still parse into the client's models.
 void main() {
+  if (!File('.env').existsSync()) {
+    test(
+      'cms endpoint suite is local-only',
+      () {},
+      skip: 'requires client/.env',
+    );
+    return;
+  }
+
   setUpAll(() {
     dotenv.testLoad(fileInput: File('.env').readAsStringSync());
   });

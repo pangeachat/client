@@ -17,6 +17,12 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 class EndpointTestEnv {
   static bool _loaded = false;
 
+  /// Whether `client/.env` exists. The endpoint suites are local-only (they hit
+  /// a live Synapse/choreo/CMS), so on CI — where there is no `.env` — each
+  /// suite skips itself instead of crashing in `setUpAll`. See
+  /// `testing.instructions.md`.
+  static bool get available => File('.env').existsSync();
+
   static void load() {
     if (_loaded) return;
     dotenv.testLoad(fileInput: File('.env').readAsStringSync());
