@@ -19,24 +19,24 @@ import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/languages/locale_provider.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/languages/locale_provider.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_file_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/uia_request_manager.dart';
-import 'package:fluffychat/utils/voip_plugin.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../config/setting_keys.dart';
-import '../pages/key_verification/key_verification_dialog.dart';
+import '../routes/settings/settings_device/key_verification_dialog.dart';
 import '../utils/account_bundles.dart';
 import '../utils/background_push.dart';
 import 'local_notifications_extension.dart';
@@ -115,8 +115,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
   // Pangea#
 
-  VoipPlugin? voipPlugin;
-
   bool get isMultiAccount => widget.clients.length > 1;
 
   int getClientIndexByMatrixId(String matrixId) =>
@@ -134,8 +132,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     final i = widget.clients.indexWhere((c) => c == cl);
     if (i != -1) {
       _activeClient = i;
-      // TODO: Multi-client VoiP support
-      createVoipPlugin();
     } else {
       Logs().w('Tried to set an unknown client ${cl!.userID} as active');
     }
@@ -226,7 +222,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                 // FluffyChatApp.router.go('/backup');
                 final isL2Set =
                     await pangeaController.userController.isUserL2Set;
-                FluffyChatApp.router.go(isL2Set ? '/rooms' : '/registration');
+                FluffyChatApp.router.go(
+                  isL2Set ? PRoutes.world : '/registration',
+                );
                 // Pangea#
               });
     // #Pangea
@@ -269,10 +267,25 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   String? get activeRoomId {
     final route = FluffyChatApp.router.routeInformationProvider.value.uri.path;
-    if (!route.startsWith('/rooms/')) return null;
+    // #Pangea
+    // world_v2: open chats also live under /courses/:spaceid/:roomid and
+    // /analytics/activities/:roomid.
+    if (!route.startsWith('/rooms/') &&
+        !route.startsWith('/courses/') &&
+        !route.startsWith('/analytics/activities/')) {
+      return null;
+    }
+    // if (!route.startsWith('/rooms/')) return null;
+    // Pangea#
     // #Pangea
     // return route.split('/')[2];
-    return FluffyChatApp.router.state.pathParameters['roomid'];
+    // world_v2 URLs carry a bare localpart; re-attach the home server_name so
+    // this matches full event room ids (e.g. notification suppression).
+    final roomId = FluffyChatApp.router.state.pathParameters['roomid'];
+    if (roomId == null || roomId.contains(':')) return roomId;
+    final userId = client.userID;
+    final sep = userId?.indexOf(':') ?? -1;
+    return sep == -1 ? roomId : '$roomId:${userId!.substring(sep + 1)}';
     // Pangea#
   }
 
@@ -448,7 +461,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         );
 
         if (state != LoginState.loggedIn) {
-          FluffyChatApp.router.go('/rooms');
+          FluffyChatApp.router.go(PRoutes.world);
         }
       } else {
         // #Pangea
@@ -457,7 +470,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // );
         if (state == LoginState.loggedIn) {
           final isL2Set = await pangeaController.userController.isUserL2Set;
-          FluffyChatApp.router.go(isL2Set ? '/rooms' : '/registration');
+          FluffyChatApp.router.go(isL2Set ? PRoutes.world : '/registration');
         } else {
           FluffyChatApp.router.go('/home');
         }
@@ -531,16 +544,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         },
       );
     }
-
-    createVoipPlugin();
-  }
-
-  void createVoipPlugin() async {
-    if (AppSettings.experimentalVoip.value) {
-      voipPlugin = null;
-      return;
-    }
-    voipPlugin = VoipPlugin(this);
   }
 
   @override

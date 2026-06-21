@@ -66,7 +66,7 @@ Write the result to `.workspace/unused-keys.json`.
 
 ### Step 1.3 — Exclude FluffyChat upstream keys
 
-This app is a fork of `krille-chan/fluffychat`. Keys that exist in FluffyChat's upstream `intl_en.arb` must be kept even if unused in Pangea code, to avoid merge conflicts on future upstream merges.
+This app began as a fork of `krille-chan/fluffychat`. We rarely merge upstream now, but keys that exist in FluffyChat's upstream `intl_en.arb` are still kept even if unused in Pangea code — they belong to base widgets we haven't audited, and preserving them keeps the occasional upstream cherry-pick low-friction.
 
 ```sh
 python3 << 'PYEOF'

@@ -7,12 +7,12 @@ import 'package:http/http.dart';
 import 'package:matrix/encryption.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/authentication/delete_account_exception.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pages/chat/recording_view_model.dart';
-import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
-import 'package:fluffychat/pangea/authentication/delete_account_exception.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
-import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_repo.dart';
+import 'package:fluffychat/routes/chat/recording_view_model.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 import 'package:fluffychat/utils/other_party_can_receive.dart';
 import 'uia_request_manager.dart';
 

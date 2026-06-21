@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/pangea/languages/l2_support_enum.dart';
-import 'package:fluffychat/pangea/languages/language_constants.dart';
-import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/features/languages/l2_support_enum.dart';
+import 'package:fluffychat/features/languages/language_constants.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
 
 void main() {
   group('LanguageModel.fromJson', () {

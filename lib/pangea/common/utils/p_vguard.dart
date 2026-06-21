@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../controllers/pangea_controller.dart';
 
@@ -17,7 +18,7 @@ class PAuthGaurd {
     GoRouterState state,
   ) async {
     if (pController == null) {
-      return Matrix.of(context).client.isLogged() ? '/rooms' : null;
+      return Matrix.of(context).client.isLogged() ? PRoutes.world : null;
     }
 
     final isLogged = Matrix.of(
@@ -28,7 +29,7 @@ class PAuthGaurd {
     // If user hasn't set their L2,
     // and their URL doesn’t include ‘course,’ redirect
     final bool hasSetL2 = await pController!.userController.isUserL2Set;
-    return !hasSetL2 ? '/registration' : '/rooms';
+    return !hasSetL2 ? '/registration' : PRoutes.world;
   }
 
   /// Redirect for /rooms routes

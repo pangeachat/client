@@ -97,6 +97,7 @@ class _LockScreenState extends State<LockScreen> {
                       errorText: _errorText,
                       hintText: '****',
                       suffix: IconButton(
+                        tooltip: L10n.of(context).unlock,
                         icon: const Icon(Icons.lock_open_outlined),
                         onPressed: () => tryUnlock(_textEditingController.text),
                       ),

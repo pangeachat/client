@@ -99,7 +99,7 @@ Failed-run screenshots land in `test-results/`.
 
 1. **Env var loading**: `playwright.config.ts` reads `client/.env` with a lightweight `fs`-based parser (no `dotenv` dependency). Shell env vars take precedence.
 2. **`BASE_URL` resolution**: shell env → `client/.env` → default `http://localhost:8080`.
-3. **Setup project**: the config runs `auth.setup.ts` first (login + save session with `storageState({ indexedDB: true })`), then every spec reuses that session and the shared fixture auto-enables Flutter's semantics tree.
+3. **Setup project**: the config runs `auth.setup.ts` first (login + save session with `storageState({ indexedDB: true })`), then every spec reuses that session and the shared fixture enables Flutter's semantics tree — it clicks the off-screen placeholder only if the build hasn't already enabled it. A build with `ENABLE_SEMANTICS=true` forces the tree on from startup (see [`playwright-testing.instructions.md`](../.github/instructions/playwright-testing.instructions.md)), making the placeholder click unnecessary.
 4. **Mock backend calls**: configure the client to send `mock=true` and `mock_llm_latency_override_s=0` on choreo requests. See [`playwright-testing.instructions.md` § Bypassing paid backend calls](../.github/instructions/playwright-testing.instructions.md#bypassing-paid-backend-calls---mocktrue) for the full contract.
 
 ## CI integration

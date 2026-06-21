@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
-import 'package:fluffychat/pangea/tokens/underline_text_widget.dart';
+import 'package:fluffychat/routes/chat/events/tokens/underline_text_widget.dart';
 
 class GrammarConstructExample extends StatelessWidget {
   final GrammarTag tag;

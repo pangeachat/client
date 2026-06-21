@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/pangea/tutorials/tutorial_enum.dart';
-import 'package:fluffychat/pangea/tutorials/tutorial_model.dart';
-import 'package:fluffychat/pangea/tutorials/tutorial_overlay_controller.dart';
-import 'package:fluffychat/pangea/tutorials/tutorial_state_transition_events.dart';
-import 'package:fluffychat/pangea/tutorials/tutorial_step_model.dart';
+import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
+import 'package:fluffychat/features/tutorials/tutorial_model.dart';
+import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
+import 'package:fluffychat/features/tutorials/tutorial_state_transition_events.dart';
+import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 
 // Sequences used across tests.
 // readingAssistance: 1 step  |  selectModeButtons: 4 steps  |  writingAssistance: 1 step
