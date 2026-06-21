@@ -77,7 +77,8 @@ class PanelDef {
   ///    `session`, `practice`). A `session` is in BOTH (it's a live chat AND a
   ///    detail).
   /// Roots (a list/menu/summary/course card) declare no group; they are replaced
-  /// via [WorkspaceNav.openMaster], not by sibling exclusivity.
+  /// by the master-opening helpers (e.g. [WorkspaceNav.setSection]), not by
+  /// sibling exclusivity.
   final Set<String> siblingGroups;
 
   /// Whether this panel hosts deeper pages in its own token param (a *push*):
