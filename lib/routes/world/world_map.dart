@@ -21,6 +21,7 @@ import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/features/quests/user_stars.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
@@ -108,7 +109,6 @@ _deriveActivitySignals(
   final stateById = <String, ActivityPinState>{};
   final newestOpenMs = <String, int>{};
   final fractionById = <String, double>{};
-  final starsById = <String, int>{};
   for (final room in client.rooms) {
     final activityId = room.activityId;
     if (activityId == null) continue;
@@ -118,9 +118,6 @@ _deriveActivitySignals(
     final role = room.ownRole;
     if (role != null) {
       final collected = room.ownCompletedGoals.length;
-      if (collected > (starsById[activityId] ?? 0)) {
-        starsById[activityId] = collected;
-      }
       final total = role.allGoals.length;
       final frac = total > 0 ? (collected / total).clamp(0.0, 1.0) : 0.0;
       if (frac > (fractionById[activityId] ?? 0)) {
@@ -158,7 +155,9 @@ _deriveActivitySignals(
       recency: recency,
     );
   });
-  return (signals: signals, stars: starsById);
+  // Per-activity stars come from the one shared computation, so the map's
+  // progression gate and the activity start page can't drift (see user_stars.dart).
+  return (signals: signals, stars: userStarsByActivity(client));
 }
 
 /// Per-activity completion for the logged-in user, from their session rooms:

@@ -8,13 +8,14 @@ import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orche
 /// = goals the learner has collected in a role they hold, kept as the best
 /// across multiple sessions of the same activity.
 ///
-/// Used by the activity start page (`not_started_session_controller`) to feed the
-/// progression gate. NOTE: the world map does NOT call this helper — it derives
-/// the same per-activity star counts independently in
-/// `world_map._deriveActivitySignals` and `_userCompletion`. So the two are
-/// parallel implementations of the one rule (quests.instructions.md), not a
-/// single shared source; keep them in sync, or route the map through this
-/// function, until they're unified.
+/// The single source for progression-gate stars: the activity start page
+/// (`not_started_session_controller`) and the world map
+/// (`world_map._deriveActivitySignals`) both feed the gate from this function, so
+/// their lock state cannot drift (quests.instructions.md). The top-right cluster's
+/// running total (`world_user_cluster._totalStars`) is computed separately, from
+/// `orchestratorAwardedGoals`, because it must work before the activity plan
+/// hydrates (this function needs `ownRole`, which needs the plan); keep that one
+/// in sync if the star rule changes.
 Map<String, int> userStarsByActivity(Client client) {
   final stars = <String, int>{};
   for (final room in client.rooms) {
