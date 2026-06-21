@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_indicator.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
@@ -129,8 +130,12 @@ class CourseChatsView extends StatelessWidget {
                           title: Text(L10n.of(context).whatNow),
                           subtitle: Text(L10n.of(context).chooseNextActivity),
                           trailing: const Icon(Icons.arrow_forward),
-                          onTap: () => context.pushReplacement(
-                            "/rooms/spaces/${room.id}/details?tab=course",
+                          onTap: () => context.go(
+                            WorkspaceNav.openCourseFilter(
+                              GoRouterState.of(context).uri,
+                              room.id,
+                              tab: 'course',
+                            ),
                           ),
                         )
                       : const SizedBox();
