@@ -10,6 +10,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -261,7 +262,17 @@ class CourseInvitePageController extends State<CourseInvitePage>
                           future: getSpaceId,
                         );
                         if (mounted && !resp.isError) {
-                          context.go("/rooms/spaces/${resp.result}/invite");
+                          // world_v2: token nav, not the legacy /rooms/spaces
+                          // path. go_router runs the legacy redirect once, but
+                          // that path needs two passes to reach its token form,
+                          // so it stranded on a blank /courses/:id page (#7082).
+                          context.go(
+                            WorkspaceNav.openCoursePageFor(
+                              GoRouterState.of(context).uri,
+                              resp.result!,
+                              'invite',
+                            ),
+                          );
                         }
                       },
                       style: ElevatedButton.styleFrom(
@@ -284,7 +295,14 @@ class CourseInvitePageController extends State<CourseInvitePage>
                           future: getSpaceId,
                         );
                         if (mounted && !resp.isError) {
-                          context.go("/rooms/spaces/${resp.result}");
+                          // world_v2: token nav to the course card (see #7082).
+                          context.go(
+                            WorkspaceNav.openCourseFilter(
+                              GoRouterState.of(context).uri,
+                              resp.result!,
+                              tab: 'course',
+                            ),
+                          );
                         }
                       },
                       style: ElevatedButton.styleFrom(
