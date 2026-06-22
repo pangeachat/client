@@ -9,7 +9,10 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_client_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -39,6 +42,29 @@ class CourseInvitePageController extends State<CourseInvitePage>
   void initState() {
     super.initState();
     loadCourse(widget.courseId);
+    // The invite route is single-use: the creation completer only rides in
+    // state.extra during the live wizard. On a reload / browser-back onto
+    // /courses/own/:courseid/invite the completer is null; if there is also no
+    // already-created space for this plan, the page is a dead end (both buttons
+    // would error), so redirect to the start-my-own list instead of stranding.
+    // (When a space DOES exist, getSpaceId resolves it and the page works.)
+    if (widget.courseCreationCompleter == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        final existing = Matrix.of(
+          context,
+        ).client.getRoomByCourseId(widget.courseId);
+        if (existing != null) return;
+        context.go(
+          WorkspaceNav.setSection(
+            GoRouterState.of(context).uri,
+            PRoutes.world,
+            const PanelToken('addcourse', 'own'),
+            keepRoom: false,
+          ),
+        );
+      });
+    }
   }
 
   @override
@@ -50,10 +76,21 @@ class CourseInvitePageController extends State<CourseInvitePage>
   }
 
   Future<String> getSpaceId() async {
-    if (widget.courseCreationCompleter == null) {
-      throw Exception("No course creation completer provided");
+    final completer = widget.courseCreationCompleter;
+    if (completer == null) {
+      // No live creation completer (reload / back). The route param is the
+      // course PLAN uuid; the created space carries it in its coursePlan state
+      // event, so resolve the already-created space rather than throwing. A
+      // room matched this way already has that state, so no sync wait is needed.
+      // (initState redirects away when no such room exists; this throw is a
+      // belt-and-suspenders for that race.)
+      final room = Matrix.of(context).client.getRoomByCourseId(widget.courseId);
+      if (room == null) {
+        throw Exception("No course room for plan ${widget.courseId}");
+      }
+      return room.id;
     }
-    final spaceId = await widget.courseCreationCompleter!.future;
+    final spaceId = await completer.future;
     final room = Matrix.of(context).client.getRoomById(spaceId);
     if (room == null || room.coursePlan == null) {
       await Matrix.of(context).client.onRoomState.stream

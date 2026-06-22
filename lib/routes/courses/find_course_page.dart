@@ -9,6 +9,9 @@ import 'package:matrix/matrix.dart' hide Result;
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -287,12 +290,20 @@ class FindCoursePageState extends State<FindCoursePage> {
   }
 
   void startNewCourse() {
-    String route = "/rooms/course/own";
+    // world_v2: open the start-my-own list as an `addcourse:own` left panel over
+    // the map. setSection already emits a `?left=…` query, so the lang/showAll
+    // filter rides alongside with `&`.
+    String route = WorkspaceNav.setSection(
+      GoRouterState.of(context).uri,
+      PRoutes.world,
+      const PanelToken('addcourse', 'own'),
+      keepRoom: false,
+    );
     final targetLanguage = targetLanguageFilter.value?.langCode;
     if (targetLanguage != null) {
-      route += "?lang=${Uri.encodeComponent(targetLanguage)}";
+      route += "&lang=${Uri.encodeComponent(targetLanguage)}";
     } else {
-      route += "?showAll=true";
+      route += "&showAll=true";
     }
     context.go(route);
   }

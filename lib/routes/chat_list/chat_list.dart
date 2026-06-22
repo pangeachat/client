@@ -36,6 +36,7 @@ import 'package:fluffychat/routes/invite_user/user_invite_link_repo.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
+import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/show_scaffold_dialog.dart';
 import 'package:fluffychat/utils/show_update_snackbar.dart';
@@ -472,7 +473,9 @@ class ChatListController extends State<ChatList>
   void editSpace(BuildContext context, String spaceId) async {
     await Matrix.of(context).client.getRoomById(spaceId)!.postLoad();
     if (mounted) {
-      context.push('/rooms/$spaceId/details');
+      context.go(
+        WorkspaceNav.openCourseFilter(GoRouterState.of(context).uri, spaceId),
+      );
     }
   }
 
@@ -693,7 +696,12 @@ class ChatListController extends State<ChatList>
       final joinedRoomId = await handler.handle(context);
       if (joinedRoomId == null) continue;
 
-      context.go("/rooms/spaces/$joinedRoomId/details");
+      context.go(
+        WorkspaceNav.openCourseFilter(
+          GoRouterState.of(context).uri,
+          joinedRoomId,
+        ),
+      );
     }
   }
 
@@ -744,7 +752,12 @@ class ChatListController extends State<ChatList>
         final joinedRoomId = await handler.handle(context);
         if (joinedRoomId == null) continue;
 
-        context.go("/rooms/spaces/$joinedRoomId/details");
+        context.go(
+          WorkspaceNav.openCourseFilter(
+            GoRouterState.of(context).uri,
+            joinedRoomId,
+          ),
+        );
       }
     }
   }
@@ -1166,8 +1179,13 @@ class ChatListController extends State<ChatList>
     if (joinedRoomId == null) return;
 
     room.isSpace
-        ? context.go('/rooms/spaces/$joinedRoomId/details')
-        : context.go('/rooms/$joinedRoomId');
+        ? context.go(
+            WorkspaceNav.openCourseFilter(
+              GoRouterState.of(context).uri,
+              joinedRoomId,
+            ),
+          )
+        : NavigationUtil.goToSpaceRoute(joinedRoomId, const [], context);
   }
 
   Future<void> _startDMWithCachedUserId(Client client) async {
@@ -1182,7 +1200,7 @@ class ChatListController extends State<ChatList>
     if (!mounted) return;
     final roomId = resp.result;
     if (roomId != null) {
-      context.go('/rooms/$roomId');
+      NavigationUtil.goToSpaceRoute(roomId, const [], context);
     }
   }
 

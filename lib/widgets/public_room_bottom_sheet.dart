@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_rooms_chunk_extension.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
@@ -42,7 +43,9 @@ class PublicRoomBottomSheet extends StatefulWidget {
     );
 
     if (room != null && room.membership == Membership.join) {
-      context.go("/rooms/spaces/${room.id}/details");
+      context.go(
+        WorkspaceNav.openCourseFilter(GoRouterState.of(context).uri, room.id),
+      );
       return null;
     }
 
