@@ -64,6 +64,12 @@ class SettingsPanel extends StatelessWidget {
         return const SettingsPassword();
       case 'security/3pid':
         return const Settings3Pid();
+      case 'profile':
+      // A bare `profile` detail (e.g. the legacy `/settings/profile` path, which
+      // the redirect maps to `settingspage:profile`) is the profile itself, NOT
+      // the menu: without this it fell through to `default → Settings()`, which
+      // re-rendered the menu a second time beside the always-present `settings`
+      // master — the "duplicate settings menu" bug. See routing.instructions.md.
       case 'profile/edit':
         return UserHomePage();
       default:

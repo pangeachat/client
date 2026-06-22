@@ -56,14 +56,6 @@ class JoinedObjectiveCache {
     _ids = {for (final o in next) ...o.orderedLoIds};
   }
 
-  static Future<CourseLoOutline> _outlineFromQuest(String uuid) async {
-    final outline = await QuestRepo.outline(uuid);
-    return CourseLoOutline(
-      orderedLoIds: outline.quest.learningObjectiveIds,
-      activityIdsByLo: {
-        for (final group in outline.groups)
-          group.objective.id: group.activities.map((a) => a.activityId).toSet(),
-      },
-    );
-  }
+  static Future<CourseLoOutline> _outlineFromQuest(String uuid) async =>
+      (await QuestRepo.outline(uuid)).toCourseLoOutline();
 }

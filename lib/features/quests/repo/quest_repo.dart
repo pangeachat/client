@@ -2,6 +2,7 @@ import 'package:fluffychat/features/activity_sessions/activity_media_block.dart'
 import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/course_plans/payload_client/payload_client.dart';
+import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
@@ -34,6 +35,22 @@ class QuestOutline {
   final QuestPlan quest;
   final List<QuestObjectiveGroup> groups;
   const QuestOutline({required this.quest, required this.groups});
+
+  /// Project this outline into the pure [CourseLoOutline] the progression gate
+  /// consumes: the quest's ordered objective ids, and per objective the set of
+  /// activity ids that satisfy it. [starsToUnlock] carries the course's teacher
+  /// override (defaults to the standard threshold). The single home for this
+  /// mapping — the joined-course cache and the activity-session lock both use it.
+  CourseLoOutline toCourseLoOutline({
+    int starsToUnlock = kDefaultStarsToUnlockObjective,
+  }) => CourseLoOutline(
+    orderedLoIds: quest.learningObjectiveIds,
+    activityIdsByLo: {
+      for (final group in groups)
+        group.objective.id: group.activities.map((a) => a.activityId).toSet(),
+    },
+    starsToUnlock: starsToUnlock,
+  );
 }
 
 /// v3 read layer for quests / learning-objectives / activities-v2.
