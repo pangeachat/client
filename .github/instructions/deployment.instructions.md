@@ -32,6 +32,19 @@ The root `.env` is the **single config source** on every platform. There is no t
 - **Native**: `.env` is a bundled asset, but the pubspec declaration stays commented on `main` because a declared-but-missing asset fails the build and `.env` is gitignored. CI writes the file and applies [`enable_mobile_env.patch`](../../scripts/enable_mobile_env.patch) to uncomment it. If the pubspec asset block changes, regenerate the patch or mobile builds break at `git apply`.
 - **Env switcher** (staging builds): `envs.json` / `appConfigOverride` overlays whatever dotenv loaded; it is independent of where the file came from.
 
+The GitHub Actions environment variable `WEB_APP_ENV` is the source for generated `.env` files in deploy workflows. It should include the runtime web Firebase analytics config as `GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64`, with a base64-encoded Firebase options JSON value for the target environment.
+
+## CI Secrets
+
+Mobile Firebase messaging setup uses GitHub Actions secrets:
+
+| Secret | Destination |
+|--------|-------------|
+| `GOOGLE_SERVICES_JSON` | `android/app/google-services.json` |
+| `GOOGLE_SERVICES_PLIST` | `ios/Runner/GoogleService-Info.plist` |
+
+Both values are base64-encoded file contents. Run [`configure-firebase-messaging.sh`](../../scripts/configure-firebase-messaging.sh) to set up the environment.
+
 ## Production Hotfix Process
 
 When a bug must be fixed on production before the next full sync from `main`:

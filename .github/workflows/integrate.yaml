@@ -30,7 +30,10 @@ jobs:
         run: dart run license_checker check-licenses -c licenses.yaml --problematic
       - run: flutter analyze
       - name: Add Firebase Messaging
-        run: ./scripts/add-firebase-messaging.sh
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+          GOOGLE_SERVICES_PLIST: ${{ secrets.GOOGLE_SERVICES_PLIST }}
+        run: ./scripts/configure-firebase-messaging.sh
       - run: flutter analyze
       - run: flutter test
 
@@ -51,9 +54,9 @@ jobs:
       - uses: ./.github/actions/free_up_space
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
       - name: Add Firebase Messaging
-        run: |
-          echo '${{secrets.GOOGLE_SERVICES_JSON}}' | base64 -d > android/app/google-services.json
-          ./scripts/add-firebase-messaging.sh
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: ./scripts/configure-firebase-messaging.sh
       - run: flutter build apk --debug --target-platform android-arm # Pangea change, only build arm to decrease size & time
 
   build_debug_web:
@@ -109,8 +112,8 @@ jobs:
       - run: brew install sqlcipher
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
       - name: Add Firebase Messaging
-        run: |
-          echo '${{secrets.GOOGLE_SERVICES_PLIST}}' | base64 -d > ios/Runner/GoogleService-Info.plist
-          ./scripts/add-firebase-messaging.sh
+        env:
+          GOOGLE_SERVICES_PLIST: ${{ secrets.GOOGLE_SERVICES_PLIST }}
+        run: ./scripts/configure-firebase-messaging.sh
       - run: flutter pub get
       - run: flutter build ios --no-codesign
