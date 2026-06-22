@@ -67,6 +67,14 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
 
   List<ConstructUses>? vocab;
 
+  /// True until the first vocab+grammar fetch (`_setAnalyticsData`) completes.
+  /// `analyticsService.isInitializing` only covers the underlying service sync;
+  /// the per-type aggregation runs after that, so without this flag the panel
+  /// renders an empty list before the data lands and looks like "no data"
+  /// rather than "loading" (#7078). Stays false across later stream-driven
+  /// refreshes so they update in place instead of flashing a spinner.
+  bool loadingAnalytics = true;
+
   bool isSearching = false;
   FocusNode searchFocusNode = FocusNode();
   ConstructLevelEnum? selectedConstructLevel;
@@ -110,10 +118,16 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
         data: {"view": widget.view, "construct": widget.construct},
         level: SentryLevel.warning,
       );
+      if (mounted && loadingAnalytics) {
+        setState(() => loadingAnalytics = false);
+      }
       return;
     }
     final future = <Future>[_setMorphs(), _setVocab(l2.langCodeShort)];
     await Future.wait(future);
+    if (mounted && loadingAnalytics) {
+      setState(() => loadingAnalytics = false);
+    }
   }
 
   void _onConstructUpdate(AnalyticsStreamUpdate update) {
@@ -294,7 +308,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
               if (widget.construct == null && !widget.embedded)
                 LearningProgressIndicators(selected: widget.view.indicator),
               Expanded(
-                child: analyticsService.isInitializing
+                child: analyticsService.isInitializing || loadingAnalytics
                     ? Center(child: CircularProgressIndicator.adaptive())
                     : widget.view == ConstructTypeEnum.morph
                     ? widget.construct == null
