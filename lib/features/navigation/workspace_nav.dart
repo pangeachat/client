@@ -386,16 +386,35 @@ abstract class WorkspaceNav {
     return pushPage(current, type, parent.isEmpty ? null : parent);
   }
 
+  /// The analytics-family right panels: the analytics summary, its vocab/grammar
+  /// details, and the practice/activity-review surfaces. Opening Settings drops
+  /// these so the right column shows one feature at a time — mirroring how
+  /// opening analytics replaces the right column and drops Settings (#7109).
+  static const Set<String> _analyticsRightPanels = {
+    'analytics',
+    'vocab',
+    'grammar',
+    'practice',
+    'review',
+  };
+
   /// Open the settings/profile MENU as the right-column master (page null/empty),
   /// or a settings PAGE as its detail beside the menu. A page blooms at the front
   /// of the right group with the `settings` menu master kept (or seated) behind
   /// it — so they coexist when width allows and fold to a push when not. A
-  /// `/`-path page is a leaf (its own back pops it). See `routing.instructions.md`.
+  /// `/`-path page is a leaf (its own back pops it). Opening Settings also drops
+  /// any open analytics-family panel so the two don't clutter the right column
+  /// together (#7109). See `routing.instructions.md`.
   static String openSettings(Uri current, {String? page}) {
     if (page == null || page.isEmpty) {
       return _mutate(current, 'right', (tokens) {
         final next = tokens
-            .where((t) => t.type != 'settings' && t.type != 'settingspage')
+            .where(
+              (t) =>
+                  t.type != 'settings' &&
+                  t.type != 'settingspage' &&
+                  !_analyticsRightPanels.contains(t.type),
+            )
             .toList();
         next.add(const PanelToken('settings'));
         return next;
@@ -403,7 +422,13 @@ abstract class WorkspaceNav {
     }
     final detail = PanelToken('settingspage', page);
     return _mutate(current, 'right', (tokens) {
-      final next = tokens.where((t) => t.type != 'settingspage').toList();
+      final next = tokens
+          .where(
+            (t) =>
+                t.type != 'settingspage' &&
+                !_analyticsRightPanels.contains(t.type),
+          )
+          .toList();
       next.insert(0, detail);
       if (!next.any((t) => t.type == 'settings')) {
         next.add(const PanelToken('settings'));

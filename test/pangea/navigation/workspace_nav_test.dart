@@ -391,11 +391,25 @@ void main() {
   });
 
   group('openSettings / settingsBack (the right-column settings panel)', () {
-    test('opens the menu as a right token, keeping other right panels', () {
+    test('opens the menu and drops the open analytics panel (#7109)', () {
       final loc = WorkspaceNav.openSettings(u('/?right=analytics:vocab'));
       final right = parseOpenPanels(u(loc)).right;
       expect(right.any((t) => t.type == 'settings' && t.param == null), isTrue);
-      expect(right.any((t) => t.type == 'analytics'), isTrue);
+      // Opening Settings closes the analytics panel — symmetric with opening
+      // analytics replacing the right column — so they don't clutter it (#7109).
+      expect(right.any((t) => t.type == 'analytics'), isFalse);
+    });
+
+    test('opening a settings page drops open vocab/grammar/analytics '
+        'details (#7109)', () {
+      final loc = WorkspaceNav.openSettings(
+        u('/?right=vocab:abc,grammar:def,analytics:vocab'),
+        page: 'learning',
+      );
+      final right = parseOpenPanels(u(loc)).right;
+      // Only the settings page + its menu master remain; the analytics family
+      // is gone.
+      expect(right.map((t) => t.type), ['settingspage', 'settings']);
     });
 
     test('opening a page seats it as a detail BESIDE the menu master', () {
@@ -442,18 +456,22 @@ void main() {
     });
 
     test('closeSettings drops the menu AND its page, keeps the rest', () {
-      var loc = WorkspaceNav.openRight(
-        u('/'),
-        const PanelToken('analytics', 'vocab'),
+      // Analytics can no longer coexist with settings (opening settings drops
+      // it, #7109), so "the rest" is a left panel. closeSettings clears the
+      // right settings panel and leaves the left column intact.
+      var loc = WorkspaceNav.openSettings(
+        u('/?left=room:!a'),
+        page: 'learning',
       );
-      loc = WorkspaceNav.openSettings(u(loc), page: 'learning');
       loc = WorkspaceNav.closeSettings(u(loc));
-      final right = parseOpenPanels(u(loc)).right;
+      final panels = parseOpenPanels(u(loc));
       expect(
-        right.any((t) => t.type == 'settings' || t.type == 'settingspage'),
+        panels.right.any(
+          (t) => t.type == 'settings' || t.type == 'settingspage',
+        ),
         isFalse,
       );
-      expect(right.single, const PanelToken('analytics', 'vocab'));
+      expect(panels.left.single, const PanelToken('room', '!a'));
     });
   });
 
