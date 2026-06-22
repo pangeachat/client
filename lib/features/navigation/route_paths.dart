@@ -15,9 +15,18 @@ abstract class PRoutes {
   /// World home — the app opens onto the map. World section root.
   static const String world = '/';
 
-  /// Chats section root — the chat list. The world map (`/`) and chats
-  /// are distinct sections in world_v2.
+  /// Legacy chats section path. world_v2 has **no live `/chats` route** — the
+  /// chat list is the `chats` left token over the world map ([chatsList]) — so
+  /// the router redirects `/chats` (and the bare `/rooms` home) there. Kept only
+  /// as the section's legacy-path identity (sibling to [analytics] / [settings],
+  /// matched by `route_facts.sectionFor`); do NOT navigate to it. To open the
+  /// chat list, use [chatsList].
   static const String chats = '/chats';
+
+  /// The chat list as a live world_v2 location: the world map with the chats
+  /// panel open (`/?left=chats`). The canonical "go to chats" target; [chats]
+  /// and the bare `/rooms` legacy paths redirect here.
+  static const String chatsList = '/?left=chats';
 
   /// Learning analytics section root.
   static const String analytics = '/analytics';

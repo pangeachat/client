@@ -12,6 +12,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_client_exte
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -331,7 +332,8 @@ class NewCoursePageState extends State<NewCoursePage> {
                                         style: theme.textTheme.bodyLarge,
                                       ),
                                       ElevatedButton(
-                                        onPressed: () => context.go('/rooms'),
+                                        onPressed: () =>
+                                            context.go(PRoutes.chatsList),
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor: theme
                                               .colorScheme

@@ -12,7 +12,7 @@ class JoinedCourseOnboardingStep extends OnboardingStep {
   @override
   String get stepDestination {
     final roomId = state.joinedRoomId;
-    if (roomId == null) return "/rooms";
+    if (roomId == null) return PRoutes.chatsList;
     // world_v2: a joined course is `/courses/<bareLocalpart>` (PRoutes.course),
     // not the retired `/rooms/spaces/:spaceid` shape. Passing the FULL room id
     // through the legacy redirect mis-parses it (the same break as the course
