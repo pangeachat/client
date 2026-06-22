@@ -610,6 +610,20 @@ class WorldMapController extends State<WorldMap>
     setState(() => _promotedActivityId = null);
   }
 
+  /// Glide back to the whole-world view (the initial camera). Pins, clusters,
+  /// and search only ever zoom the camera IN, so this is the one explicit
+  /// "zoom out to everything" affordance (#7086). Camera-only: the course scope
+  /// and open panels are untouched.
+  void resetToWorld() => _animateCameraTo(const LatLng(20, 0), 3.0);
+
+  /// Step the zoom by [delta] levels around the current center, clamped to the
+  /// map's range — backs the on-map +/- buttons, since a tap/search only ever
+  /// zooms IN (#7086).
+  void zoomBy(double delta) => _animateCameraTo(
+    mapController.camera.center,
+    (mapController.camera.zoom + delta).clamp(3.0, 18.0).toDouble(),
+  );
+
   /// Resolve a [MapFocus] to a map coordinate, or null if not resolvable yet.
   /// Exhaustive over the sealed [MapFocus]: adding a focus kind makes this a
   /// compile error until its arm is added — that is the extension seam.
