@@ -95,6 +95,48 @@ class _PinRender {
   });
 }
 
+/// The on-map zoom controls (#7086): a small bottom-right stack with a World
+/// reset (the one obvious "zoom out to everything", since pins/clusters/search
+/// only ever zoom the camera IN) and +/- zoom steps. Camera-only — it never
+/// changes the open panels or the course scope.
+class _MapZoomControls extends StatelessWidget {
+  final WorldMapController controller;
+
+  const _MapZoomControls({required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
+    final theme = Theme.of(context);
+    return Material(
+      elevation: 2.0,
+      color: theme.colorScheme.surface,
+      borderRadius: BorderRadius.circular(8.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IconButton(
+            icon: const Icon(Icons.public),
+            tooltip: l10n.world,
+            onPressed: controller.resetToWorld,
+          ),
+          Divider(height: 1.0, color: theme.colorScheme.outlineVariant),
+          IconButton(
+            icon: const Icon(Icons.add),
+            tooltip: l10n.zoomIn,
+            onPressed: () => controller.zoomBy(1),
+          ),
+          IconButton(
+            icon: const Icon(Icons.remove),
+            tooltip: l10n.zoomOut,
+            onPressed: () => controller.zoomBy(-1),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 /// The stateless render of the persistent world map, driven by its
 /// [WorldMapController]. It reads the controller's cached signals / stars /
 /// pins, applies the per-frame progression gate + relevance ranking to pick each
@@ -171,6 +213,11 @@ class WorldMapView extends StatelessWidget {
         // unclustered in the layer above so they're always visible.
         MarkerClusterLayerWidget(
           options: MarkerClusterLayerOptions(
+            // No convex-hull "zoom polygon" on cluster tap: the package default
+            // draws a bright-green (0xFF00FF00) hull with a yellow border during
+            // the zoom animation, which flashed between areas while loading
+            // (#7068). The map uses a smooth camera glide, not the hull metaphor.
+            showPolygon: false,
             maxClusterRadius: 48,
             size: const Size(40, 40),
             padding: const EdgeInsets.all(50),
@@ -204,8 +251,26 @@ class WorldMapView extends StatelessWidget {
       ],
     );
 
-    // World gets the search + filter overlay; a course shows its plain map.
-    if (!controller.isWorld) return map;
+    // The on-map zoom-out / World control (#7086): pins, clusters, and search
+    // only zoom the camera IN, so this is the way back out. Bottom-right, clear
+    // of the right column and above the attribution; shown on both the world map
+    // and a course map.
+    final controls = Positioned(
+      right: controller.widget.rightOverlayWidth + 12,
+      bottom: 28,
+      child: _MapZoomControls(controller: controller),
+    );
+
+    // A course shows its plain map (plus the controls); the world map adds the
+    // search + filter overlay.
+    if (!controller.isWorld) {
+      return Stack(
+        children: [
+          Positioned.fill(child: map),
+          controls,
+        ],
+      );
+    }
     final l2 = MatrixState.pangeaController.userController.userL2Code;
     return Stack(
       children: [
@@ -231,6 +296,7 @@ class WorldMapView extends StatelessWidget {
             emptyInView: !controller.loadingPins && render.visible.isEmpty,
           ),
         ),
+        controls,
       ],
     );
   }
