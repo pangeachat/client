@@ -12,11 +12,10 @@ import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orche
 /// (`not_started_session_controller`) and the world map
 /// (`world_map_signals.deriveActivitySignals`) both feed the gate from this
 /// function, so their lock state cannot drift (quests.instructions.md). The
-/// top-right cluster's
-/// running total (`world_user_cluster._totalStars`) is computed separately, from
-/// `orchestratorAwardedGoals`, because it must work before the activity plan
-/// hydrates (this function needs `ownRole`, which needs the plan); keep that one
-/// in sync if the star rule changes.
+/// top-right cluster's running total (`world_user_cluster._totalStars`) is
+/// computed separately, from `orchestratorAwardedGoals`, because it must work
+/// before the activity plan hydrates (this function needs `ownRole`, which needs
+/// the plan); keep that one in sync if the star rule changes.
 Map<String, int> userStarsByActivity(Client client) {
   final stars = <String, int>{};
   for (final room in client.rooms) {
