@@ -227,7 +227,14 @@ void chatContextMenuAction(
       onChatTap.call();
       return;
     case ChatContextAction.goToSpace:
-      outerContext.go("/rooms/spaces/${space!.id}/details");
+      // world_v2: token nav to the course card (sets ?m=course:<id>&left=course),
+      // not the legacy /rooms/spaces path.
+      outerContext.go(
+        WorkspaceNav.openCourseFilter(
+          GoRouterState.of(outerContext).uri,
+          space!.id,
+        ),
+      );
       return;
     case ChatContextAction.favorite:
       await showFutureLoadingDialog(

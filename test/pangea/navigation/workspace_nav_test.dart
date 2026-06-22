@@ -626,6 +626,37 @@ void main() {
       expect(parseOpenPanels(u(loc)).left.single, const PanelToken('course'));
       expect(activeSpaceIdFor(u(loc)), '!s');
     });
+
+    test(
+      'openCoursePageFor opens a management page from ANYWHERE — setting the '
+      'target space scope even from the bare map or a different course',
+      () {
+        // From the bare world map (no course scope at all).
+        var loc = WorkspaceNav.openCoursePageFor(u('/'), '!target', 'invite');
+        expect(activeSpaceIdFor(u(loc)), '!target');
+        expect(parseOpenPanels(u(loc)).left.map((t) => t.type).toList(), [
+          'course',
+          'coursepage',
+        ]);
+        expect(
+          parseOpenPanels(u(loc)).left.last,
+          const PanelToken('coursepage', 'invite'),
+        );
+        // From a DIFFERENT course — the scope is replaced with the target's.
+        loc = WorkspaceNav.openCoursePageFor(
+          u('/?m=course:!other&left=course'),
+          '!target',
+          'edit',
+        );
+        expect(activeSpaceIdFor(u(loc)), '!target');
+        expect(
+          parseOpenPanels(
+            u(loc),
+          ).left.where((t) => t.type == 'coursepage').single,
+          const PanelToken('coursepage', 'edit'),
+        );
+      },
+    );
   });
 
   group('openPractice (takes over the analytics surface)', () {

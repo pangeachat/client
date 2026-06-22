@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 void showSubscribedSnackbar(BuildContext context) {
@@ -22,7 +23,12 @@ void showSubscribedSnackbar(BuildContext context) {
           text: L10n.of(context).clickToManageSubscription,
           style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
           recognizer: TapGestureRecognizer()
-            ..onTap = () => context.go('/rooms/settings/subscription'),
+            ..onTap = () => context.go(
+              WorkspaceNav.openSettings(
+                GoRouterState.of(context).uri,
+                page: 'subscription',
+              ),
+            ),
         ),
       ],
     ),

@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -109,9 +110,18 @@ class KnockingUsersIndicatorState extends State<KnockingUsersIndicator> {
                       ),
                     ],
                   ),
-                  onTap: () => context.push(
-                    "/rooms/spaces/${widget.room.id}/details/invite?filter=knock",
-                  ),
+                  onTap: () {
+                    // world_v2: token nav to the course's invite page scoped to
+                    // this space, carrying the knock filter the panel reads once.
+                    final loc = WorkspaceNav.openCoursePageFor(
+                      GoRouterState.of(context).uri,
+                      widget.room.id,
+                      'invite',
+                    );
+                    context.go(
+                      '$loc${loc.contains('?') ? '&' : '?'}filter=knock',
+                    );
+                  },
                 ),
               ),
             ),

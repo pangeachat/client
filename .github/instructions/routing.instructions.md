@@ -52,6 +52,29 @@ Internal navigation only ever emits token URLs. This single-source rule is why a
 shared link reopens exactly what the sender saw, and why closing a panel is just
 dropping its token: there is no second, path-driven copy to leave standing.
 
+### Navigate by token, never by path
+
+Internal navigation MUST go through the `WorkspaceNav` token helpers (or the
+token-producing `PRoutes` builders) — `setSection`, `openSettings`,
+`openCourseFilter`, `openCoursePage[For]`, `openConstructDetail`, `closeLeft`,
+`PRoutes.chatsList`, `PRoutes.world`, etc. **Do NOT `context.go`/`push` to a
+section/room/course PATH** (`/chats`, `/rooms/settings/...`, `/courses/:id/...`).
+Those paths exist ONLY as **legacy redirect shims** for inbound links we don't
+control (push, `matrix.to`, old bookmarks), which `LegacyRedirects` rewrites to
+tokens before anything renders. A `/…` literal inside a `.go(...)` is a smell: the
+redirect would just bounce it to a token — a wasted hop, and exactly how the
+dead-`/chats` bug (#7067) happened.
+
+The only legitimate path destinations, all declared in `routes.dart`: the
+deliberately-upstream `/rooms/:roomid` room shape (kept verbatim for push /
+`matrix.to`); the pre-login + utility routes (`/home`, `/onboarding`,
+`/registration`, `/logs`, `/configs`); the route-driven Completer flows that can't
+ride a token URL (`/courses/own/:courseid[/invite]`, `/courses/:spaceid/addcourse/:courseId`);
+the public-course preview; and the first-class `/:activityId`. Everything else is a
+token. `PRoutes`'s `chats`/`analytics`/`settings`/`profile`/`rooms` constants are
+**legacy section paths** — redirect sources and `sectionFor` identities, never
+navigation targets.
+
 ### The map is the backdrop
 
 One map stays mounted for the whole app and never remounts, always full width

@@ -12,7 +12,9 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_client_exte
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -233,7 +235,14 @@ class NewCoursePageState extends State<NewCoursePage> {
       );
     } else if (action == 1) {
       if (existingRoom.isSpace) {
-        context.go('/rooms/spaces/${existingRoom.id}');
+        // world_v2: token nav to the existing course card (sets the map filter +
+        // course panel), not the legacy /rooms/spaces path.
+        context.go(
+          WorkspaceNav.openCourseFilter(
+            GoRouterState.of(context).uri,
+            existingRoom.id,
+          ),
+        );
       } else {
         ErrorHandler.logError(
           e: "Existing course room is not a space",
@@ -259,7 +268,16 @@ class NewCoursePageState extends State<NewCoursePage> {
                 // Accessible name (world_v2 testability contract: every
                 // IconButton needs a tooltip → semantics label).
                 tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-                onPressed: () => context.go('/courses'),
+                // world_v2: the add-course hub is the `addcourse` left token over
+                // the world map, not a `/courses` route.
+                onPressed: () => context.go(
+                  WorkspaceNav.setSection(
+                    GoRouterState.of(context).uri,
+                    PRoutes.world,
+                    const PanelToken('addcourse'),
+                    keepRoom: false,
+                  ),
+                ),
               )
             : widget.embeddedCloseButton,
         title: Text(
