@@ -8,6 +8,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -126,6 +127,24 @@ extension LaunchActivitySession on Client {
         level: e is TimeoutException ? SentryLevel.warning : SentryLevel.error,
       );
       if (e is! TimeoutException) rethrow;
+    }
+
+    // Auto-invite the bot so it is present in every session from the start, but
+    // it stays idle (no role, no messages) until the user makes an explicit
+    // choice on the start page — "play with bot" or "invite a friend" — which
+    // writes pangea.activity_started. That marker is the bot's gate to claim a
+    // role, so the choice page is never bypassed. Bot adapts live thereafter:
+    // participant while alone with one human, silent moderator once a second
+    // human joins (#2595, #7027). Best-effort — must not fail session creation.
+    try {
+      await getRoomById(roomID)?.invite(BotName.byEnvironment);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'roomId': roomID},
+        level: SentryLevel.warning,
+      );
     }
 
     return roomID;

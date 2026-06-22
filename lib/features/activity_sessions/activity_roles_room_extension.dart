@@ -57,6 +57,11 @@ extension ActivityRolesRoomExtension on Room {
 
   bool get isActivityStarted =>
       isActivityFinished ||
+      // Sticky once the user has made the start-page choice (#7027): keeps the
+      // timeline shown even in the brief window when a role opens up (e.g. a
+      // second human leaves) before the bot re-claims it, so the choice page
+      // is never re-surfaced mid-session.
+      getState(PangeaEventTypes.activityStarted) != null ||
       (activityPlan?.roles.length ?? 0) - (assignedRoles?.length ?? 0) <= 0;
 
   bool get isActivityFinished {
