@@ -23,6 +23,7 @@ import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/world/add_course_panel.dart';
 import 'package:fluffychat/routes/world/courses_panel_view.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
+import 'package:fluffychat/routes/world/panel_header.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 
@@ -237,29 +238,11 @@ class WorkspaceLeftPanel extends StatelessWidget {
   }
 
   /// A panel header row — the close/back control at the leading edge plus a
-  /// [title] — for section panels (the chat list) that carry no header of their
-  /// own, mirroring the right column's card chrome.
-  Widget _panelHeader(BuildContext context, bool isColumnMode, String title) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(4, 4, 4, 0),
-      child: Row(
-        children: [
-          _closeButton(context, isColumnMode),
-          const SizedBox(width: 4),
-          Expanded(
-            child: Text(
-              title,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(
-                context,
-              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  /// [title] — for section panels (the chat list, the Courses list) that carry no
+  /// header of their own. The chrome is the shared [PanelHeader]; this column
+  /// supplies its own [_closeButton] as the leading control.
+  Widget _panelHeader(BuildContext context, bool isColumnMode, String title) =>
+      PanelHeader(leading: _closeButton(context, isColumnMode), title: title);
 
   /// The panel's close control. A pushed sub-page ([_isPushedSubPage]) backs out
   /// ONE level via popPage (a course management page → the card; a room sub-page
