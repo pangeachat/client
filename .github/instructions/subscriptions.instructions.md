@@ -4,6 +4,8 @@ applyTo: "lib/pangea/subscription/**"
 
 # Subscription Module — Client
 
+> **Target design is v2 (web-only purchases)** — see [subscriptions-v2.instructions.md](subscriptions-v2.instructions.md). This doc describes current production behavior; new payment work should build toward v2.
+
 Client-side subscription UI, platform branching, and payment flows. For the cross-repo architecture (service roles, price configuration, entitlement flow), see [subscriptions.instructions.md](../../../.github/instructions/subscriptions.instructions.md).
 
 ## Platform Branching
@@ -70,6 +72,8 @@ Key env values in the root `.env` (single config source — see [deployment.inst
 | `STRIPE_MANAGEMENT_LINK` | URL for Stripe billing portal (subscription management on web) |
 
 ## Discount Codes on Mobile
+
+> **Superseded by [subscriptions-v2.instructions.md](subscriptions-v2.instructions.md)** — v2 removes native IAP entirely. This section records the pre-v2 analysis and current production behavior only.
 
 Stripe promo codes (from conferences, LCB promotions, Google Form webhooks) only work at Stripe Checkout — they cannot be applied to native App Store / Play Store purchases. This is a known friction point.
 
