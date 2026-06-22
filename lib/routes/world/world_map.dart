@@ -169,8 +169,7 @@ class WorldMapController extends State<WorldMap>
   /// animates it.
   MapController get mapController => widget.controller ?? _ownController;
 
-  bool get isWorld =>
-      MapContextController.notifier.value is! CourseMapContext;
+  bool get isWorld => MapContextController.notifier.value is! CourseMapContext;
   String? get promotedActivityId => _promotedActivityId;
   Client? get client => _client;
   bool get loadingPins => _loadingPins;

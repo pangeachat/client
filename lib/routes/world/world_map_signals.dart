@@ -29,10 +29,7 @@ import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 /// the progression gate (quests.instructions.md): it depends on the pin's
 /// objective refs, which aren't in room state, so it can't be resolved here.
 ({Map<String, PinSignals> signals, Map<String, int> stars})
-deriveActivitySignals(
-  Client client, {
-  required Set<String> pingedActivityIds,
-}) {
+deriveActivitySignals(Client client, {required Set<String> pingedActivityIds}) {
   final stateById = <String, ActivityPinState>{};
   final newestOpenMs = <String, int>{};
   final fractionById = <String, double>{};
