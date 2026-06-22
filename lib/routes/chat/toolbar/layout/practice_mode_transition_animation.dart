@@ -55,8 +55,6 @@ class PracticeModeTransitionAnimationState
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final columnWidth = widget.controller.columnWidth;
-
       final startOffset = Offset(
         widget.controller.ownMessage
             ? widget.controller.messageRightOffset!
@@ -65,7 +63,7 @@ class PracticeModeTransitionAnimationState
       );
 
       final endOffset = Offset(
-        _centerMessageOffset!.dx - columnWidth,
+        _centerMessageOffset!.dx,
         _centerMessageOffset!.dy,
       );
 
@@ -173,11 +171,7 @@ class CenteredMessage extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(
-                    width:
-                        controller.screenSize!.width - controller.columnWidth,
-                    height: 20.0,
-                  ),
+                  SizedBox(width: controller.screenSize!.width, height: 20.0),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.0),
                     child: OverlayCenterContent(
