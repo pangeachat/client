@@ -618,11 +618,18 @@ class WorldMapController extends State<WorldMap>
 
   /// Step the zoom by [delta] levels around the current center, clamped to the
   /// map's range — backs the on-map +/- buttons, since a tap/search only ever
-  /// zooms IN (#7086).
-  void zoomBy(double delta) => _animateCameraTo(
-    mapController.camera.center,
-    (mapController.camera.zoom + delta).clamp(3.0, 18.0).toDouble(),
-  );
+  /// zooms IN (#7086). Accumulates toward the in-flight glide target (not the
+  /// mid-glide live zoom), so rapid clicks each advance a full level instead of
+  /// under-shooting, and snaps to integer levels so the steps land crisply.
+  void zoomBy(double delta) {
+    final base = (_camAnim?.isAnimating ?? false)
+        ? _camTargetZoom
+        : mapController.camera.zoom;
+    _animateCameraTo(
+      mapController.camera.center,
+      (base + delta).clamp(3.0, 18.0).roundToDouble(),
+    );
+  }
 
   /// Resolve a [MapFocus] to a map coordinate, or null if not resolvable yet.
   /// Exhaustive over the sealed [MapFocus]: adding a focus kind makes this a
