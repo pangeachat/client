@@ -1,0 +1,28 @@
+import 'package:http/http.dart' show Response;
+
+import 'package:fluffychat/pangea/common/network/requests.dart';
+import 'package:fluffychat/pangea/common/network/urls.dart';
+import 'package:fluffychat/pangea/common/utils/base_repo.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
+
+/// In-memory cached speech-to-text (`POST /speech_to_text`).
+/// `persist: false` — short-lived per-message transcripts aren't worth keeping
+/// across restarts.
+class SpeechToTextRepo
+    extends BaseRepo<SpeechToTextRequestModel, SpeechToTextResponseModel> {
+  SpeechToTextRepo._internal()
+    : super(
+        boxName: 'speech_to_text',
+        responseFromJson: SpeechToTextResponseModel.fromJson,
+        cacheDuration: const Duration(minutes: 10),
+        persist: false,
+      );
+
+  static final SpeechToTextRepo _instance = SpeechToTextRepo._internal();
+  static SpeechToTextRepo get instance => _instance;
+
+  @override
+  Future<Response> fetch(Requests req, SpeechToTextRequestModel request) =>
+      req.post(url: PApiUrls.speechToText, body: request.toJson());
+}

@@ -12,12 +12,12 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/languages/locale_provider.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/common/config/env_loader.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
-import 'package:fluffychat/pangea/languages/locale_provider.dart';
-import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/notification_background_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -38,6 +38,15 @@ void main() async {
     await EnvLoader.load();
   } catch (e) {
     Logs().e('Failed to load .env file', e);
+  }
+
+  // Force the accessibility semantics tree on when ENABLE_SEMANTICS=true, so
+  // automation / assistive tech can drive the canvas-rendered UI by role+name
+  // instead of screenshots. Off by default (semantics has a perf cost). The
+  // handle is intentionally never disposed, keeping semantics on for the app's
+  // lifetime. See playwright-testing.instructions.md.
+  if (Environment.enableSemantics) {
+    WidgetsBinding.instance.ensureSemantics();
   }
 
   await Future.wait([

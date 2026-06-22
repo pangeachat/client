@@ -1,6 +1,6 @@
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
 
-import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_repo.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_request.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';

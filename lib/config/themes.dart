@@ -10,10 +10,7 @@ abstract class FluffyThemes {
 
   static const double maxTimelineWidth = columnWidth * 2;
 
-  // #Pangea
-  // static const double navRailWidth = 80.0;
-  static const double navRailWidth = 72.0;
-  // Pangea#
+  static const double navRailWidth = 80.0;
 
   static bool isColumnModeByWidth(double width) =>
       width > columnWidth * 2 + navRailWidth;
@@ -149,37 +146,6 @@ abstract class FluffyThemes {
       // Pangea#
     );
   }
-
-  // #Pangea
-  // TextTheme scaleTextTheme(TextTheme base, Size size) {
-  //   debugPrint("scaling text theme based on width ${size.width}");
-  //   double factor = 1.0;
-  //   if (size.width < 400) {
-  //     factor = 0.7;
-  //   } else if (size.width < 600) {
-  //     factor = 1.25;
-  //   } else if (size.width > 400) {
-  //     factor = 1.1;
-  //   }
-  //   return base.copyWith(
-  //     displayLarge: base.displayLarge?.copyWith(fontSize: base.displayLarge!.fontSize! * factor),
-  //     displayMedium: base.displayMedium?.copyWith(fontSize: base.displayMedium!.fontSize! * factor),
-  //     displaySmall: base.displaySmall?.copyWith(fontSize: base.displaySmall!.fontSize! * factor),
-  //     headlineLarge: base.headlineLarge?.copyWith(fontSize: base.headlineLarge!.fontSize! * factor),
-  //     headlineMedium: base.headlineMedium?.copyWith(fontSize: base.headlineMedium!.fontSize! * factor),
-  //     headlineSmall: base.headlineSmall?.copyWith(fontSize: base.headlineSmall!.fontSize! * factor),
-  //     titleLarge: base.titleLarge?.copyWith(fontSize: base.titleLarge!.fontSize! * factor),
-  //     titleMedium: base.titleMedium?.copyWith(fontSize: base.titleMedium!.fontSize! * factor),
-  //     titleSmall: base.titleSmall?.copyWith(fontSize: base.titleSmall!.fontSize! * factor),
-  //     bodyLarge: base.bodyLarge?.copyWith(fontSize: base.bodyLarge!.fontSize! * factor),
-  //     bodyMedium: base.bodyMedium?.copyWith(fontSize: base.bodyMedium!.fontSize! * factor),
-  //     bodySmall: base.bodySmall?.copyWith(fontSize: base.bodySmall!.fontSize! * factor),
-  //     labelLarge: base.labelLarge?.copyWith(fontSize: base.labelLarge!.fontSize! * factor),
-  //     labelMedium: base.labelMedium?.copyWith(fontSize: base.labelMedium!.fontSize! * factor),
-  //     labelSmall: base.labelSmall?.copyWith(fontSize: base.labelSmall!.fontSize! * factor),
-  //   );
-  // }
-  // Pangea#
 }
 
 extension on Brightness {

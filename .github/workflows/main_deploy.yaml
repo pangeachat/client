@@ -81,6 +81,10 @@ jobs:
         run: |
           touch build/web/.env
           echo "$WEB_APP_ENV" >> build/web/.env
+          # Staging only: force the Flutter accessibility (semantics) tree on so
+          # automated and assistive-tech testing can read the canvas. NOT set on
+          # production (release.yaml), where semantics stays on-demand per user.
+          echo "ENABLE_SEMANTICS=true" >> build/web/.env
           touch build/web/assets/envs.json
           echo "$ENV_OVERRIDES" >> build/web/assets/envs.json
           mkdir -p build/web/.well-known
@@ -104,6 +108,7 @@ jobs:
           aws s3 sync ./build/web s3://$WEBAPP_S3_BUCKET \
             --cache-control "public, max-age=31536000, immutable" \
             --exclude "index.html" \
+            --exclude ".env" \
             --exclude "main.dart.js" \
             --exclude "*.part.js" \
             --exclude "flutter.js" \
@@ -134,11 +139,12 @@ jobs:
             --cache-control "no-cache, must-revalidate"
 
           # =========================
-          # 4. FLUTTER RUNTIME ENTRY FILES
+          # 4. FLUTTER RUNTIME ENTRY FILES + .env (config must propagate every deploy)
           # Must always stay fresh
           # =========================
           RUNTIME_FILES=(
             "index.html"
+            ".env"
             "main.dart.js"
             "flutter.js"
             "flutter_bootstrap.js"

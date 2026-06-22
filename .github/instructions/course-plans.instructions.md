@@ -4,10 +4,12 @@ applyTo: "lib/pangea/course_plans/**,lib/pangea/course_creation/**,lib/pangea/co
 
 # Course Plans — Client Design
 
+> **⚠️ DEPRECATED — v1 (Courses → Topics → Activities).** Superseded by the v3 **Quest → Learning Objective (learner label "Mission") → Activity‑v2** model — see the cross-repo [Quests & Learning Objectives](https://github.com/pangeachat/.github/blob/main/.github/instructions/quests-and-learning-objectives.instructions.md) spec. The course‑plan / topic model and the heavy localize fan-out described here are being retired; do not build new work against this doc.
+
 Client-side loading, caching, and display of localized course content (plans, topics, activities, locations, media).
 
 - **Choreo design doc**: [course-localization.instructions.md](../../../2-step-choreographer/.github/instructions/course-localization.instructions.md)
-- **Activity system**: [conversation-activities.instructions.md](conversation-activities.instructions.md)
+- **Activity system**: [activities.instructions.md](activities.instructions.md)
 
 ---
 

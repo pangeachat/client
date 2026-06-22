@@ -12,10 +12,13 @@
 ## Quick Reference
 
 ### Project Structure
-- `lib/pages/`, `lib/widgets/`, `lib/utils/`, `lib/config/` — FluffyChat base code
-- `lib/pangea/` — **All Pangea language-learning code** (~30 feature modules)
+See [codebase-organization.instructions.md](instructions/codebase-organization.instructions.md) for the full map and the Placement Decision Tree. In brief:
+- `lib/routes/` — on-screen UI, by nav section (GoRouter destinations)
+- `lib/features/` — per-domain data and logic (models, repos, services)
+- `lib/pangea/` — shared Pangea infra and common widgets
+- `lib/widgets/`, `lib/utils/`, `lib/config/` — FluffyChat base code (edited in place)
 - `pangea_packages/` — Shared isolate packages
-- Pangea modifications in FluffyChat files marked with `// #Pangea` ... `// Pangea#`
+- Pangea modifications in FluffyChat base files marked with `// #Pangea` ... `// Pangea#`
 
 ### Key Files
 - **Entry point**: `lib/main.dart`
@@ -25,8 +28,8 @@
 - **API URLs**: `lib/pangea/common/network/urls.dart`
 - **HTTP client**: `lib/pangea/common/network/requests.dart`
 - **Environment**: `lib/pangea/common/config/environment.dart` (reads `.env` / `config.sample.json`)
-- **Event types**: `lib/pangea/events/constants/pangea_event_types.dart`
-- **Choreographer**: `lib/pangea/choreographer/choreographer.dart`
+- **Event types**: `lib/routes/chat/events/constants/pangea_event_types.dart`
+- **Choreographer**: `lib/routes/chat/choreographer/choreographer.dart`
 
 ### Conventions
 - Package imports use `package:fluffychat/...`

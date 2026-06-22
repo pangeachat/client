@@ -1,0 +1,152 @@
+/// Phonetic Transcription v2 models.
+///
+/// Maps to choreo endpoint `POST /choreo/phonetic_transcription_v2`.
+/// Request: [PTRequest] with surface, langCode, userL1, userL2.
+/// Response: [PTResponse] with a list of [Pronunciation]s.
+library;
+
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/utils/base_request.dart';
+import 'package:fluffychat/pangea/common/utils/base_response.dart';
+
+class Pronunciation {
+  final String transcription;
+  final String ttsPhoneme;
+  final String? udConditions;
+
+  const Pronunciation({
+    required this.transcription,
+    required this.ttsPhoneme,
+    this.udConditions,
+  });
+
+  factory Pronunciation.fromJson(Map<String, dynamic> json) {
+    return Pronunciation(
+      transcription: json['transcription'] as String,
+      ttsPhoneme: json['tts_phoneme'] as String,
+      udConditions: json['ud_conditions'] as String?,
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+    'transcription': transcription,
+    'tts_phoneme': ttsPhoneme,
+    'ud_conditions': udConditions,
+  };
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Pronunciation &&
+          transcription == other.transcription &&
+          ttsPhoneme == other.ttsPhoneme &&
+          udConditions == other.udConditions;
+
+  @override
+  int get hashCode =>
+      transcription.hashCode ^ ttsPhoneme.hashCode ^ udConditions.hashCode;
+}
+
+class PTRequest extends BaseRequest {
+  final String surface;
+  final String langCode;
+  final String userL1;
+  final String userL2;
+  final bool? mock;
+
+  PTRequest({
+    required this.surface,
+    required this.langCode,
+    required this.userL1,
+    required this.userL2,
+    this.mock,
+  });
+
+  factory PTRequest.fromJson(Map<String, dynamic> json) {
+    return PTRequest(
+      surface: json['surface'] as String,
+      langCode: json[ModelKey.langCode] as String,
+      userL1: json[ModelKey.userL1] as String,
+      userL2: json[ModelKey.userL2] as String,
+    );
+  }
+
+  @override
+  Map<String, dynamic> toJson() => {
+    'surface': surface,
+    ModelKey.langCode: langCode,
+    ModelKey.userL1: userL1,
+    ModelKey.userL2: userL2,
+    if (mock != null) ModelKey.mock: mock,
+  };
+
+  /// Cache key excludes userL2 (doesn't affect pronunciation).
+  @override
+  String get storageKey => '$surface|$langCode|$userL1';
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PTRequest &&
+          surface == other.surface &&
+          langCode == other.langCode &&
+          userL1 == other.userL1 &&
+          userL2 == other.userL2;
+
+  @override
+  int get hashCode =>
+      surface.hashCode ^ langCode.hashCode ^ userL1.hashCode ^ userL2.hashCode;
+}
+
+class PTResponse extends BaseResponse {
+  final List<Pronunciation> pronunciations;
+
+  PTResponse({required this.pronunciations});
+
+  factory PTResponse.fromJson(Map<String, dynamic> json) {
+    return PTResponse(
+      pronunciations: (json['pronunciations'] as List)
+          .map((e) => Pronunciation.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
+
+  @override
+  Map<String, dynamic> toJson() => {
+    'pronunciations': pronunciations.map((p) => p.toJson()).toList(),
+  };
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PTResponse &&
+          const _PronunciationListEquality().equals(
+            pronunciations,
+            other.pronunciations,
+          );
+
+  @override
+  int get hashCode => const _PronunciationListEquality().hash(pronunciations);
+}
+
+// ignore: unintended_html_in_doc_comment
+/// Deep equality for List<Pronunciation>.
+class _PronunciationListEquality {
+  const _PronunciationListEquality();
+
+  bool equals(List<Pronunciation> a, List<Pronunciation> b) {
+    if (a.length != b.length) return false;
+    for (int i = 0; i < a.length; i++) {
+      if (a[i] != b[i]) return false;
+    }
+    return true;
+  }
+
+  int hash(List<Pronunciation> list) {
+    int result = 0;
+    for (final p in list) {
+      result ^= p.hashCode;
+    }
+    return result;
+  }
+}

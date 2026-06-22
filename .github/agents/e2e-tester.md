@@ -10,7 +10,7 @@ You are an E2E testing specialist for a Flutter web app at app.staging.pangea.ch
 ## Context
 
 - The app renders to `<canvas>`. Playwright can only interact with Flutter's **semantics tree** (ARIA roles).
-- Semantics must be enabled on each page load. The shared fixture in `client/e2e/fixtures.ts` handles this automatically — it uses `dispatchEvent("click")` on the off-screen accessibility placeholder button, then waits 3 seconds for the tree to populate.
+- Semantics must be enabled on each page load. The shared fixture in `client/e2e/fixtures.ts` handles this automatically — it clicks the off-screen accessibility placeholder (via `dispatchEvent("click")`) only when the build hasn't already enabled semantics, then waits for the tree to populate. (A build with `ENABLE_SEMANTICS=true` forces the tree on from startup, so the placeholder is absent; staging runs without it, so the placeholder path is the active one.)
 - Test flows are documented in `client/e2e/web-and-accessibility-next-steps.md`.
 - Deterministic test files live in `client/e2e/scripts/*.spec.ts`.
 - Accessibility audits live in `client/e2e/scripts/a11y.spec.ts` (axe-core, WCAG 2.1 AA). When fixing semantics for a flow, also verify the corresponding a11y audit passes.

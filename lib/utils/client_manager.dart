@@ -12,8 +12,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/setting_keys.dart';
-import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
-import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/utils/custom_http_client.dart';
 import 'package:fluffychat/utils/init_with_restore.dart';
 import 'package:fluffychat/utils/platform_infos.dart';

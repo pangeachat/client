@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'matrix.dart';
@@ -31,8 +33,10 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
     super.dispose();
   }
 
-  void goToEmoteSettings() =>
-      context.push('/rooms/${widget.room.id}/details/emotes');
+  void goToEmoteSettings() => NavigationUtil.goToSpaceRoute(widget.room.id, [
+    'details',
+    'emotes',
+  ], context);
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +98,9 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
                 _showChatDetails();
                 break;
               case ChatPopupMenuActions.search:
-                context.go('/rooms/${widget.room.id}/search');
+                NavigationUtil.goToSpaceRoute(widget.room.id, [
+                  'search',
+                ], context);
                 break;
               case ChatPopupMenuActions.emote:
                 goToEmoteSettings();
@@ -171,10 +177,20 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
   }
 
   void _showChatDetails() {
-    if (GoRouterState.of(context).uri.path.endsWith('/details')) {
-      context.go('/rooms/${widget.room.id}');
-    } else {
-      context.go('/rooms/${widget.room.id}/details');
-    }
+    // world_v2: toggle the room's `details` sub-page. If the live room token is
+    // already on `/details`, pop back to the chat; otherwise push details. The
+    // path is always `/`, so the state lives in the room token's param. See
+    // routing.instructions.md.
+    final left = parseOpenPanels(GoRouterState.of(context).uri).left;
+    final onDetails = left.any(
+      (t) =>
+          (t.type == 'room' || t.type == 'session') &&
+          (t.param ?? '').split('/').contains('details'),
+    );
+    NavigationUtil.goToSpaceRoute(
+      widget.room.id,
+      onDetails ? const [] : const ['details'],
+      context,
+    );
   }
 }

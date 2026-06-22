@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/pangea/text_to_speech/tts_routing.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_routing.dart';
 
 // Unit tests for the pure device-vs-backend routing logic.
 // Design: client/.github/instructions/word-text-to-speech.instructions.md

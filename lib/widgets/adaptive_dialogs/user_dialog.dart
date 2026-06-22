@@ -5,17 +5,18 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
-import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
-import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/user/about_me_display.dart';
-import 'package:fluffychat/pangea/user/country_display.dart';
+import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/presence_builder.dart';
+import 'package:fluffychat/widgets/users/about_me_display.dart';
+import 'package:fluffychat/widgets/users/country_display.dart';
+import 'package:fluffychat/widgets/users/level_display_name.dart';
 import '../future_loading_dialog.dart';
 import '../hover_builder.dart';
 import '../matrix.dart';
@@ -270,10 +271,13 @@ class UserDialog extends StatelessWidget {
               borderRadius: AdaptiveDialogAction.centerRadius,
               onPressed: () {
                 final router = GoRouter.of(context);
+                final uri = GoRouterState.of(context).uri;
                 Navigator.of(context).pop();
                 router.go(
-                  '/rooms/settings/security/ignorelist',
-                  extra: profile.userId,
+                  WorkspaceNav.openSettings(
+                    uri,
+                    page: 'security/ignorelist/${profile.userId}',
+                  ),
                 );
               },
               child: Text(
