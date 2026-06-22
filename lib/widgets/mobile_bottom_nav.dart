@@ -117,21 +117,26 @@ class _SpaceSwitcherButton extends StatelessWidget {
         : null;
     final theme = Theme.of(context);
 
-    return InkWell(
-      borderRadius: BorderRadius.circular(99),
-      onTap: () => _showSpaceSwitcherSheet(context),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: active != null
-            ? Avatar(
-                mxContent: active.avatar,
-                name: active.getLocalizedDisplayname(
-                  MatrixLocals(L10n.of(context)),
-                ),
-                size: 32,
-                borderRadius: BorderRadius.circular(8),
-              )
-            : Icon(Icons.school_outlined, color: theme.colorScheme.outline),
+    return Tooltip(
+      message: active != null
+          ? active.getLocalizedDisplayname(MatrixLocals(L10n.of(context)))
+          : L10n.of(context).courses,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(99),
+        onTap: () => _showSpaceSwitcherSheet(context),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: active != null
+              ? Avatar(
+                  mxContent: active.avatar,
+                  name: active.getLocalizedDisplayname(
+                    MatrixLocals(L10n.of(context)),
+                  ),
+                  size: 32,
+                  borderRadius: BorderRadius.circular(8),
+                )
+              : Icon(Icons.map_outlined, color: theme.colorScheme.outline),
+        ),
       ),
     );
   }
