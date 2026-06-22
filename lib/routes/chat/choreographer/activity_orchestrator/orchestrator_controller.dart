@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:collection/collection.dart';
+import 'package:flutter/foundation.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
@@ -108,14 +109,12 @@ class OrchestratorController {
   Future<void> _onOrchestratorOutputEvent(MatrixEvent event) async {
     try {
       final output = OrchestratorOutput.fromJson(event.content);
+
       final roleId = room.ownRole?.id;
       if (roleId == null) {
         _log("User does not have roleID in room ${room.id}");
         return;
       }
-
-      final roleSuggestion = output.suggestionsByRoleId(roleId).firstOrNull;
-      if (roleSuggestion == null) return;
 
       if (_activeSuggestion != null) {
         _log(
@@ -124,25 +123,73 @@ class OrchestratorController {
         return;
       }
 
+      // The orchestrator output is sent by the bot, so its sender identifies the
+      // bot for excluding bot messages (e.g. a participant-mode reply) and the
+      // bot's own role.
+      final botUserId = event.senderId;
       final timeline = await room.getTimeline();
-      final userLatestMessage = timeline.events.firstWhereOrNull(
+      final latestHumanMessage = timeline.events.firstWhereOrNull(
         (e) =>
-            e.senderId == room.client.userID &&
             e.type == EventTypes.Message &&
-            e.isVisibleInGui,
+            e.isVisibleInGui &&
+            e.senderId != botUserId,
       );
+      final humanRoleCount =
+          room.assignedRoles?.values
+              .map((r) => r.userId)
+              .where((userId) => userId != botUserId)
+              .toSet()
+              .length ??
+          0;
 
-      if (output.basedOnEventId != userLatestMessage?.eventId) {
-        _log(
-          "Received orchestrator output event but it is based on event ${output.basedOnEventId} which is different from user's latest message ${userLatestMessage?.eventId}, ignoring",
-        );
-        return;
-      }
+      final suggestion = suggestionToShow(
+        output: output,
+        ownRoleId: roleId,
+        currentUserId: room.client.userID,
+        latestHumanMessageEventId: latestHumanMessage?.eventId,
+        latestHumanMessageSenderId: latestHumanMessage?.senderId,
+        humanRoleCount: humanRoleCount,
+      );
+      if (suggestion == null) return;
 
-      _setActiveSuggestion(ActiveSuggestionModel(suggestion: roleSuggestion));
+      _setActiveSuggestion(ActiveSuggestionModel(suggestion: suggestion));
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: event.content);
     }
+  }
+
+  /// Pure turn-based decision: the suggestion bucket (if any) to show the
+  /// current user for an orchestrator output, or null if they should not be
+  /// prompted. Extracted from [_onOrchestratorOutputEvent] for unit testing.
+  ///
+  /// The orchestrator broadcasts a single event (triggered by whoever spoke
+  /// last) carrying a bucket per role; the recommendation goes to the responder,
+  /// not the speaker:
+  /// - multi-human (>= 2 human roles): prompt the user who did NOT send the
+  ///   latest human message — after A's message B is prompted; after B's, A.
+  /// - single-human (participant mode, bot holds a role): prompt the lone human
+  ///   right after their own message.
+  /// Stale outputs — not based on the latest human message — are dropped.
+  @visibleForTesting
+  static OrchestratorRoleSuggestions? suggestionToShow({
+    required OrchestratorOutput output,
+    required String ownRoleId,
+    required String? currentUserId,
+    required String? latestHumanMessageEventId,
+    required String? latestHumanMessageSenderId,
+    required int humanRoleCount,
+  }) {
+    final roleSuggestion = output.suggestionsByRoleId(ownRoleId).firstOrNull;
+    if (roleSuggestion == null) return null;
+
+    if (output.basedOnEventId != latestHumanMessageEventId) return null;
+
+    final isMultiHumanActivity = humanRoleCount >= 2;
+    final currentUserSpokeLast = latestHumanMessageSenderId == currentUserId;
+    final shouldPrompt = isMultiHumanActivity
+        ? !currentUserSpokeLast
+        : currentUserSpokeLast;
+    return shouldPrompt ? roleSuggestion : null;
   }
 
   void _setGoalCompletionSubscription() {
