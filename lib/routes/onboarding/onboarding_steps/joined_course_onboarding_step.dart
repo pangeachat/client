@@ -1,4 +1,5 @@
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/free_trial_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
 
 class JoinedCourseOnboardingStep extends OnboardingStep {
@@ -21,8 +22,21 @@ class JoinedCourseOnboardingStep extends OnboardingStep {
   }
 
   @override
-  Future<OnboardingStep?> execute() async => null;
+  Future<OnboardingStep?> execute() async =>
+      state.trialInfoProvider.shouldShowTrialPage
+      ? FreeTrialOnboardingStep(
+          client: client,
+          state: state,
+          maxRemainingSteps: maxRemainingSteps,
+        )
+      : null;
 
   @override
-  OnboardingStep? skip() => null;
+  OnboardingStep? skip() => state.trialInfoProvider.shouldShowTrialPage
+      ? FreeTrialOnboardingStep(
+          client: client,
+          state: state,
+          maxRemainingSteps: maxRemainingSteps,
+        )
+      : null;
 }

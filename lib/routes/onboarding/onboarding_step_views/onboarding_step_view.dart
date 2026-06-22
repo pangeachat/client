@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/course_code_step_view.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/custom_course_step_view.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/free_trial_step_view.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/joined_course_step_view.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/pick_cefr_level_step_view.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/pick_language_step_view.dart';
@@ -9,6 +10,7 @@ import 'package:fluffychat/routes/onboarding/onboarding_step_views/profile_setup
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/user_type_step_view.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/course_code_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/free_trial_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/joined_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/pick_cefr_level_onboarding_step.dart';
@@ -105,6 +107,10 @@ class OnboardingStepView extends StatelessWidget {
         forward: forward,
         skip: skip,
       );
+    }
+
+    if (step is FreeTrialOnboardingStep) {
+      return FreeTrialStepView(forward: forward);
     }
 
     return SizedBox();

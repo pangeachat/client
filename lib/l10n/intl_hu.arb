@@ -9960,17 +9960,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Pro funkciók",
     "pronunciationTools": "Kiejtési eszközök",
     "audioTranscription": "AI hangátírás",
     "visualLearnerSupport": "Vizuális tanulók támogatása",
     "instantWritingTranslation": "Azonnali írásbeli fordítás",
     "personalizedPracticeExercises": "Személyre szabott gyakorlófeladatok",
     "vocabularyFlashcards": "Szókincs flashcardok",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

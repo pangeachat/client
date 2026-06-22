@@ -10719,17 +10719,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Profesionalios funkcijos",
     "pronunciationTools": "Tariamojo įrankiai",
     "audioTranscription": "AI garso transkripcija",
     "visualLearnerSupport": "Vizualių mokinių palaikymas",
     "instantWritingTranslation": "Momentinė rašymo vertimas",
     "personalizedPracticeExercises": "Pritaikyti praktikos pratimai",
     "vocabularyFlashcards": "Žodyno kortelės",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

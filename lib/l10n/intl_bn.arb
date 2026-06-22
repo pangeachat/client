@@ -10548,17 +10548,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "প্রো ফিচারসমূহ",
     "pronunciationTools": "উচ্চারণের সরঞ্জাম",
     "audioTranscription": "এআই অডিও ট্রান্সক্রিপশন",
     "visualLearnerSupport": "ভিজ্যুয়াল লার্নার সাপোর্ট",
     "instantWritingTranslation": "তাত্ক্ষণিক লেখার অনুবাদ",
     "personalizedPracticeExercises": "ব্যক্তিগতকৃত অনুশীলন কার্যক্রম",
     "vocabularyFlashcards": "শব্দভাণ্ডার ফ্ল্যাশকার্ড",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

@@ -9949,17 +9949,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "ப்ரோ அம்சங்கள்",
     "pronunciationTools": "உச்சரிப்பு கருவிகள்",
     "audioTranscription": "ஏ.ஐ. ஒலிப்பதிவு",
     "visualLearnerSupport": "காணொளி கற்றல் ஆதரவு",
     "instantWritingTranslation": "உடனடி எழுத்து மொழிபெயர்ப்பு",
     "personalizedPracticeExercises": "தனிப்பயனாக்கப்பட்ட பயிற்சி பயிற்சிகள்",
     "vocabularyFlashcards": "வார்த்தை ஃபிளாஷ்கார்டுகள்",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

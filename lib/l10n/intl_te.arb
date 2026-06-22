@@ -10957,17 +10957,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "ప్రో ఫీచర్లు",
     "pronunciationTools": "ఉచ్చారణ సాధనాలు",
     "audioTranscription": "ఏఐ ఆడియో ట్రాన్స్క్రిప్షన్",
     "visualLearnerSupport": "దృశ్య విద్యార్థి మద్దతు",
     "instantWritingTranslation": "తక్షణ రచన అనువాదం",
     "personalizedPracticeExercises": "వ్యక్తిగత ప్రాక్టీస్ వ్యాయామాలు",
     "vocabularyFlashcards": "పదకోశ ఫ్లాష్‌కార్డులు",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

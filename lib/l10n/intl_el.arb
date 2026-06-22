@@ -10882,17 +10882,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Επαγγελματικά χαρακτηριστικά",
     "pronunciationTools": "Εργαλεία προφοράς",
     "audioTranscription": "Αυτόματη μεταγραφή ήχου",
     "visualLearnerSupport": "Υποστήριξη οπτικών μαθητών",
     "instantWritingTranslation": "Άμεση μετάφραση γραπτού κειμένου",
     "personalizedPracticeExercises": "Προσωποποιημένες ασκήσεις πρακτικής",
     "vocabularyFlashcards": "Κάρτες λεξιλογίου",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

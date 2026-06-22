@@ -6916,17 +6916,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Tính năng Pro",
     "pronunciationTools": "Công cụ phát âm",
     "audioTranscription": "Chuyển đổi âm thanh AI",
     "visualLearnerSupport": "Hỗ trợ người học trực quan",
     "instantWritingTranslation": "Dịch viết ngay lập tức",
     "personalizedPracticeExercises": "Bài tập thực hành cá nhân hóa",
     "vocabularyFlashcards": "Thẻ từ vựng",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

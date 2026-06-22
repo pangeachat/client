@@ -9833,17 +9833,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Професійні функції",
     "pronunciationTools": "Інструменти вимови",
     "audioTranscription": "AI транскрипція аудіо",
     "visualLearnerSupport": "Підтримка візуальних учнів",
     "instantWritingTranslation": "Миттєвий переклад письма",
     "personalizedPracticeExercises": "Персоналізовані практичні вправи",
     "vocabularyFlashcards": "Флеш-картки з словниковим запасом",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

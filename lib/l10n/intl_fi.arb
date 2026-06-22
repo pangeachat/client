@@ -9882,17 +9882,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Pro-ominaisuudet",
     "pronunciationTools": "Äänteentunnistustyökalut",
     "audioTranscription": "AI-äänitallennus",
     "visualLearnerSupport": "Visuaalisen oppijan tuki",
     "instantWritingTranslation": "Välitön kirjoitustulkkaus",
     "personalizedPracticeExercises": "Personoidut harjoitustehtävät",
     "vocabularyFlashcards": "Sanastokortit",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

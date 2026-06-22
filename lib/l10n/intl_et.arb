@@ -9830,17 +9830,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Pro funktsioonid",
     "pronunciationTools": "Hääldustööriistad",
     "audioTranscription": "AI helisalvestus",
     "visualLearnerSupport": "Visuaalse õppija tugi",
     "instantWritingTranslation": "Kohene kirjutamise tõlge",
     "personalizedPracticeExercises": "Isikupärastatud harjutused",
     "vocabularyFlashcards": "Sõnavara mälukaardid",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

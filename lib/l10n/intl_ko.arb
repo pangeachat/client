@@ -10050,17 +10050,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "프로 기능",
     "pronunciationTools": "발음 도구",
     "audioTranscription": "AI 오디오 전사",
     "visualLearnerSupport": "시각 학습자 지원",
     "instantWritingTranslation": "즉각적인 글쓰기 번역",
     "personalizedPracticeExercises": "개인화된 연습 문제",
     "vocabularyFlashcards": "어휘 플래시카드",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

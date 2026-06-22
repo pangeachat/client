@@ -10964,17 +10964,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "專業功能",
     "pronunciationTools": "發音工具",
     "audioTranscription": "AI 音頻轉錄",
     "visualLearnerSupport": "視覺學習者支持",
     "instantWritingTranslation": "即時寫作翻譯",
     "personalizedPracticeExercises": "個性化練習題",
     "vocabularyFlashcards": "詞彙閃卡",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

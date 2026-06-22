@@ -10387,17 +10387,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Pro funkce",
     "pronunciationTools": "Nástroje pro výslovnost",
     "audioTranscription": "AI přepis zvuku",
     "visualLearnerSupport": "Podpora vizuálních učitelů",
     "instantWritingTranslation": "Okamžitý překlad psaní",
     "personalizedPracticeExercises": "Personalizované cvičení",
     "vocabularyFlashcards": "Slovníkové kartičky",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}
