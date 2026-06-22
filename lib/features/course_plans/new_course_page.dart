@@ -13,6 +13,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart'
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
@@ -186,7 +187,7 @@ class NewCoursePageState extends State<NewCoursePage> {
     if (existingRoom == null || widget.spaceId != null) {
       context.go(
         widget.spaceId != null
-            ? '/rooms/spaces/${widget.spaceId}/addcourse/${course.uuid}'
+            ? '/courses/${shortRoomId(widget.spaceId!)}/addcourse/${course.uuid}'
             : '/${widget.route}/course/own/${course.uuid}',
       );
       return;
@@ -230,7 +231,7 @@ class NewCoursePageState extends State<NewCoursePage> {
     if (action == 0) {
       context.go(
         widget.spaceId != null
-            ? '/rooms/spaces/${widget.spaceId}/addcourse/${course.uuid}'
+            ? '/courses/${shortRoomId(widget.spaceId!)}/addcourse/${course.uuid}'
             : '/${widget.route}/course/own/${course.uuid}',
       );
     } else if (action == 1) {

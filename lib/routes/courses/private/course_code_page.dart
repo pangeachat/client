@@ -7,8 +7,10 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
+import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -58,8 +60,13 @@ class CourseCodePageState extends State<CourseCodePage> {
     if (joinedRoomId == null) return;
 
     room.isSpace
-        ? context.go('/rooms/spaces/$joinedRoomId/details')
-        : context.go('/rooms/$joinedRoomId');
+        ? context.go(
+            WorkspaceNav.openCourseFilter(
+              GoRouterState.of(context).uri,
+              joinedRoomId,
+            ),
+          )
+        : NavigationUtil.goToSpaceRoute(joinedRoomId, const [], context);
   }
 
   @override

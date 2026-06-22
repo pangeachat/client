@@ -485,7 +485,9 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     }
 
     if (room.isSpace) {
-      context.go("/rooms/spaces/${room.id}/details");
+      context.go(
+        WorkspaceNav.openCourseFilter(GoRouterState.of(context).uri, room.id),
+      );
       return;
     }
 
@@ -545,7 +547,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
       throw Exception("Failed to join room");
     }
 
-    context.go("/rooms/spaces/${widget.roomId}/$roomId");
+    NavigationUtil.goToSpaceRoute(roomId, const [], context);
   }
 
   bool _includeSpaceChild(Room space, SpaceRoomsChunk$2 hierarchyMember) {
@@ -695,7 +697,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
       GoogleAnalytics.addParent(roomId, classCode);
     }
 
-    context.go('/rooms/spaces/${widget.roomId}/$roomId');
+    NavigationUtil.goToSpaceRoute(roomId, const [], context);
   }
 
   @override
