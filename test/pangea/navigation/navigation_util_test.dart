@@ -92,4 +92,48 @@ void main() {
       ]);
     });
   });
+
+  /// Guards #7099: the chat-details UI (participants tab, button row) addresses
+  /// course-space management screens with a room-style `details/<page>`
+  /// subroute, but a course has no `details` coursepage. Before the fix this
+  /// produced the unhandled token `coursepage:details/invite`, which the left
+  /// panel rendered as an empty, un-closable `SizedBox.shrink()`.
+  /// [NavigationUtil.coursePageFor] normalizes the subroute so the coursepage
+  /// is one the renderer actually handles.
+  group('coursePageFor (room-style subroute → course page)', () {
+    test('details/<page> drops the room-only `details` segment', () {
+      expect(NavigationUtil.coursePageFor('details/invite'), 'invite');
+      expect(
+        NavigationUtil.coursePageFor('details/permissions'),
+        'permissions',
+      );
+    });
+
+    test('bare `details` maps to the card (empty page)', () {
+      expect(NavigationUtil.coursePageFor('details'), '');
+    });
+
+    test('an already-bare course page passes through unchanged', () {
+      expect(NavigationUtil.coursePageFor('invite'), 'invite');
+      expect(NavigationUtil.coursePageFor('edit'), 'edit');
+      expect(NavigationUtil.coursePageFor(''), '');
+    });
+
+    test(
+      'end to end: a participants-tab invite seats a renderable coursepage',
+      () {
+        // The participants tab calls goToSpaceRoute(space, ['details','invite']);
+        // through the course-space branch that is openCoursePage(.., 'invite').
+        final loc = WorkspaceNav.openCoursePage(
+          u('/?m=course:!s&left=course'),
+          NavigationUtil.coursePageFor('details/invite'),
+        );
+        final coursepage = parseOpenPanels(
+          u(loc),
+        ).left.where((t) => t.type == 'coursepage').single;
+        // The renderable token — NOT the blank `coursepage:details/invite`.
+        expect(coursepage, const PanelToken('coursepage', 'invite'));
+      },
+    );
+  });
 }
