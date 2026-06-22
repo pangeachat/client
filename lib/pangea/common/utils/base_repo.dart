@@ -45,29 +45,53 @@ abstract class BaseRepo<
   TResponse extends BaseResponse
 > {
   final Map<String, Future<Result<TResponse>>> _inflightCache = {};
-  final GetStorage _storage;
   final Duration cacheDuration;
+  final Duration timeout;
   final TResponse Function(Map<String, dynamic>) responseFromJson;
 
-  late Future<bool> _storageInit;
+  /// When false the cache is in-memory only (dropped on app restart). Use it
+  /// for volatile data that should not survive a restart, or where persisting
+  /// would risk stale entries. Default persists to disk via GetStorage.
+  final bool persist;
+
+  final GetStorage? _storage;
+  final Map<String, RepoCacheItem<TResponse>> _memoryCache = {};
+
+  late final Future<bool> _storageInit;
 
   BaseRepo({
     required String boxName,
     required this.responseFromJson,
     required this.cacheDuration,
-  }) : _storage = GetStorage(boxName) {
-    _storageInit = GetStorage.init(boxName);
-    MatrixState.pangeaController.registerStorageKey(boxName);
+    this.persist = true,
+    this.timeout = const Duration(seconds: 60),
+  }) : _storage = persist ? GetStorage(boxName) : null {
+    if (persist) {
+      _storageInit = GetStorage.init(boxName);
+      MatrixState.pangeaController.registerStorageKey(boxName);
+    } else {
+      _storageInit = Future.value(true);
+    }
   }
 
+  /// Fetch [request], cached: a fresh cached value when present, else fetches
+  /// (deduplicating concurrent calls for the same key) and caches the result.
+  /// The fetch deadline is the repo-level [timeout], so concurrent callers
+  /// share one well-defined timeout.
+  /// [forceRefresh] skips the cache READ and fetches fresh, then overwrites the
+  /// cache. The existing cached value is left in place until the fresh response
+  /// lands (via [setCached]), so a concurrent [getCached] keeps returning the
+  /// stale value rather than null — stale-while-revalidate, no loading flicker.
   Future<Result<TResponse>> get(
     TRequest request, {
-    Duration timeout = const Duration(seconds: 60),
+    bool forceRefresh = false,
   }) async {
     await _storageInit;
-    final cached = getCached(request);
-    if (cached != null) {
-      return Result.value(cached);
+    if (!forceRefresh) {
+      final cached = getCached(request);
+      if (cached != null) {
+        return Result.value(cached);
+      }
     }
 
     final key = request.storageKey;
@@ -76,7 +100,7 @@ abstract class BaseRepo<
       return inflight;
     }
 
-    final future = _fetch(request, timeout: timeout);
+    final future = _fetch(request);
     _inflightCache[key] = future;
     final result = await future;
 
@@ -91,10 +115,7 @@ abstract class BaseRepo<
 
   Future<Response> fetch(Requests req, TRequest request);
 
-  Future<Result<TResponse>> _fetch(
-    TRequest request, {
-    Duration timeout = const Duration(seconds: 60),
-  }) async {
+  Future<Result<TResponse>> _fetch(TRequest request) async {
     try {
       final Requests req = Requests(
         accessToken: MatrixState.pangeaController.userController.accessToken,
@@ -128,34 +149,66 @@ abstract class BaseRepo<
   }
 
   Future<void> setCached(TRequest request, TResponse response) async {
-    final key = request.storageKey;
-    final value = RepoCacheItem<TResponse>(
+    final item = RepoCacheItem<TResponse>(
       timestamp: DateTime.now(),
       response: response,
     );
-    await _storage.write(key, value.toJson());
+    if (persist) {
+      await _storage!.write(request.storageKey, item.toJson());
+    } else {
+      _memoryCache[request.storageKey] = item;
+    }
   }
 
   TResponse? getCached(TRequest request) {
     final key = request.storageKey;
-    final entry = _storage.read(key);
-    if (entry == null) return null;
 
+    if (!persist) {
+      final item = _memoryCache[key];
+      if (item == null) return null;
+      if (item.isExpired(cacheDuration)) {
+        _memoryCache.remove(key);
+        return null;
+      }
+      return item.response;
+    }
+
+    final entry = _storage!.read(key);
+    if (entry == null) return null;
     try {
-      final RepoCacheItem<TResponse> value = RepoCacheItem<TResponse>.fromJson(
+      final value = RepoCacheItem<TResponse>.fromJson(
         entry,
         responseFromJson: responseFromJson,
       );
-
       if (value.isExpired(cacheDuration)) {
         _storage.remove(key);
         return null;
       }
-
       return value.response;
     } catch (_) {
       _storage.remove(key);
       return null;
     }
+  }
+
+  /// Drop the cached entry for [request] (e.g. after it changed server-side) so
+  /// the next [get] refetches. Also clears any in-flight fetch for that key.
+  Future<void> invalidate(TRequest request) async {
+    await _storageInit;
+    final key = request.storageKey;
+    _inflightCache.remove(key);
+    if (persist) {
+      await _storage!.remove(key);
+    } else {
+      _memoryCache.remove(key);
+    }
+  }
+
+  /// Drop the entire cache.
+  Future<void> clearCache() async {
+    await _storageInit;
+    _inflightCache.clear();
+    _memoryCache.clear();
+    if (persist) await _storage!.erase();
   }
 }

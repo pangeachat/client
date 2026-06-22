@@ -15,11 +15,25 @@ class Environment {
   static bool get isStagingEnvironment =>
       dotenv.env["ENVIRONMENT"] == "staging";
 
+  /// Force Flutter's accessibility semantics tree always-on (opt-in).
+  ///
+  /// Flutter keeps semantics off until an assistive tech is detected or the
+  /// off-screen placeholder is activated. With this on, the tree is populated
+  /// from startup, so automation and assistive tech can drive the
+  /// canvas-rendered UI by role+name instead of screenshots. Off by default —
+  /// it carries Flutter's semantics perf cost, so it is never enabled in
+  /// production. See `playwright-testing.instructions.md`.
+  static bool get enableSemantics => dotenv.env["ENABLE_SEMANTICS"] == "true";
+
   static String get frontendURL {
     return appConfigOverride?.frontendURL ??
         dotenv.env["FRONTEND_URL"] ??
         "Frontend URL NOT FOUND";
   }
+
+  static String? get testUsername => dotenv.env["TEST_MATRIX_USERNAME"];
+
+  static String? get testPassword => dotenv.env["TEST_MATRIX_PASSWORD"];
 
   static String get synapseURL {
     return appConfigOverride?.synapseURL ??

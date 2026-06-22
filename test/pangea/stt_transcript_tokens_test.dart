@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
-import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
-import 'package:fluffychat/pangea/tokens/stt_transcript_tokens.dart';
-import 'package:fluffychat/pangea/tokens/tokens_util.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
+import 'package:fluffychat/routes/chat/events/tokens/stt_transcript_tokens.dart';
+import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
 
 /// Widget-level coverage for [SttTranscriptTokens].
 ///
@@ -139,7 +139,7 @@ void main() {
     },
   );
 
-  testWidgets('Bangla + emoji: tapping the emoji fires the emoji token', (
+  testWidgets('Bengali + emoji: tapping the emoji fires the emoji token', (
     tester,
   ) async {
     const transcript = 'আমি এখানেই আছি 😄';

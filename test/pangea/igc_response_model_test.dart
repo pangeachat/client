@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
-import 'package:fluffychat/pangea/choreographer/igc/igc_response_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/igc_response_model.dart';
 
 void main() {
   group('IGCResponseModel.fromJson', () {

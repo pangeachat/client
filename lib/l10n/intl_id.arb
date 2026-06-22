@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-15 09:46:14.281527",
+    "@@last_modified": "2026-06-18 09:34:15.472313",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9927,6 +9927,51 @@
     },
     "activityActions": "Tindakan aktivitas",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Fitur Pro",
+    "pronunciationTools": "Alat pengucapan",
+    "audioTranscription": "Transkripsi audio AI",
+    "visualLearnerSupport": "Dukungan pembelajar visual",
+    "instantWritingTranslation": "Terjemahan tulisan instan",
+    "personalizedPracticeExercises": "Latihan praktik yang dipersonalisasi",
+    "vocabularyFlashcards": "Kartu flash kosakata",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Kembali",
+    "viewCurrentOrFinished": "Lihat yang sedang berlangsung atau selesai",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

@@ -1962,7 +1962,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-06-15 09:46:23.903615",
+    "@@last_modified": "2026-06-18 09:34:27.092267",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10946,6 +10946,51 @@
     },
     "activityActions": "Dejavnosti",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Pro funkcije",
+    "pronunciationTools": "Orodja za izgovor",
+    "audioTranscription": "AI transkripcija zvoka",
+    "visualLearnerSupport": "Podpora vizualnim učencem",
+    "instantWritingTranslation": "Takojšnji prevod pisanja",
+    "personalizedPracticeExercises": "Personalizirane vaje",
+    "vocabularyFlashcards": "Besedišče na karticah",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Nazaj",
+    "viewCurrentOrFinished": "Ogled trenutnih ali končanih",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

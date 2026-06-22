@@ -74,13 +74,23 @@ jobs:
 
       - uses: actions/setup-node@v5
         with:
-          node-version: lts/*
+          # Pin to Node 22 LTS. node-version: lts/* now resolves to the Node 24
+          # line, and Node 24.16.0+ has a stream-destruction regression
+          # (nodejs/node#63495) that deadlocks Playwright 1.58.2's bundled yauzl
+          # while extracting the browser archive: the download reaches 100%, then
+          # the unzip never settles and this step hangs to the job timeout
+          # (microsoft/playwright#41000). Node 22 predates the regression.
+          # Durable fix: bump @playwright/test to >=1.60.0, then drop this pin.
+          node-version: "22"
 
       - name: Install dependencies
         run: npm ci
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
+        # Fail fast instead of silently burning the 30-min job budget if a
+        # browser install ever hangs again (normally finishes in seconds).
+        timeout-minutes: 10
 
       - name: Determine test mode
         id: mode
@@ -101,12 +111,12 @@ jobs:
         run: |
           MODE="${{ steps.mode.outputs.mode }}"
           if [[ "$MODE" == "smoke" ]]; then
-            echo "files=e2e/scripts/login.spec.ts" >> $GITHUB_OUTPUT
+            echo "files=e2e/scripts/login-logout.spec.ts" >> $GITHUB_OUTPUT
           elif [[ "$MODE" == "full" ]]; then
             echo "files=e2e/scripts/" >> $GITHUB_OUTPUT
           else
             FILES=$(node e2e/select-tests.js HEAD~1)
-            echo "files=${FILES:-e2e/scripts/login.spec.ts}" >> $GITHUB_OUTPUT
+            echo "files=${FILES:-e2e/scripts/login-logout.spec.ts}" >> $GITHUB_OUTPUT
           fi
 
       - name: Run Playwright tests

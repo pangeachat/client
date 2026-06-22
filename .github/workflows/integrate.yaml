@@ -11,6 +11,7 @@ jobs:
   code_tests:
     environment: staging
     runs-on: ubuntu-latest
+    environment: staging
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: ./scripts/generate-locale-config.sh
@@ -35,7 +36,8 @@ jobs:
           GOOGLE_SERVICES_PLIST: ${{ secrets.GOOGLE_SERVICES_PLIST }}
         run: ./scripts/configure-firebase-messaging.sh
       - run: flutter analyze
-      - run: flutter test
+      - run: flutter test --dart-define=TEST_MATRIX_USERNAME=${{ vars.TEST_MATRIX_USERNAME }} --dart-define=TEST_MATRIX_PASSWORD=${{ vars.TEST_MATRIX_PASSWORD }}
+      
 
   build_debug_apk:
     environment: staging

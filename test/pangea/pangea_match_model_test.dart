@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/pangea/choreographer/igc/pangea_match_model.dart';
-import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_model.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_status_enum.dart';
 
 void main() {
   group('PangeaMatch.fromJson', () {

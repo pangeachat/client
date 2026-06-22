@@ -1,0 +1,92 @@
+import 'package:flutter/material.dart';
+
+import 'package:material_symbols_icons/symbols.dart';
+
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+
+enum ProgressIndicatorEnum {
+  level,
+  wordsUsed,
+  morphsUsed,
+  activities,
+  stars;
+
+  static ProgressIndicatorEnum? fromString(String value) {
+    switch (value) {
+      case 'vocab':
+        return ProgressIndicatorEnum.wordsUsed;
+      case 'morph':
+        return ProgressIndicatorEnum.morphsUsed;
+      case 'level':
+        return ProgressIndicatorEnum.level;
+      case 'activities':
+        return ProgressIndicatorEnum.activities;
+      default:
+        return null;
+    }
+  }
+
+  IconData get icon {
+    switch (this) {
+      case ProgressIndicatorEnum.wordsUsed:
+        return Symbols.dictionary;
+      case ProgressIndicatorEnum.morphsUsed:
+        return Symbols.toys_and_games;
+      case ProgressIndicatorEnum.level:
+        return Icons.star;
+      case ProgressIndicatorEnum.activities:
+        return Icons.radar;
+      case ProgressIndicatorEnum.stars:
+        return Icons.star;
+    }
+  }
+
+  static bool isDarkMode(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.dark;
+
+  Color color(BuildContext context) {
+    return Theme.of(context).colorScheme.primary;
+  }
+
+  String tooltip(BuildContext context) {
+    switch (this) {
+      case ProgressIndicatorEnum.wordsUsed:
+        return L10n.of(context).vocab;
+      case ProgressIndicatorEnum.level:
+        return L10n.of(context).level;
+      case ProgressIndicatorEnum.morphsUsed:
+        return L10n.of(context).grammar;
+      case ProgressIndicatorEnum.activities:
+        return L10n.of(context).activities;
+      case ProgressIndicatorEnum.stars:
+        return L10n.of(context).stars;
+    }
+  }
+
+  ConstructTypeEnum get constructType {
+    switch (this) {
+      case ProgressIndicatorEnum.wordsUsed:
+        return ConstructTypeEnum.vocab;
+      case ProgressIndicatorEnum.morphsUsed:
+        return ConstructTypeEnum.morph;
+      default:
+        return ConstructTypeEnum.vocab;
+    }
+  }
+
+  String get route {
+    switch (this) {
+      case level:
+        return 'level';
+      case wordsUsed:
+        return ConstructTypeEnum.vocab.name;
+      case morphsUsed:
+        return ConstructTypeEnum.morph.name;
+      case activities:
+        return 'activities';
+      case stars:
+        return 'stars';
+    }
+  }
+}

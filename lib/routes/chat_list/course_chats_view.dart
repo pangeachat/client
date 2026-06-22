@@ -1,0 +1,276 @@
+import 'package:flutter/material.dart';
+
+import 'package:go_router/go_router.dart';
+import 'package:material_symbols_icons/symbols.dart';
+import 'package:matrix/matrix.dart' as sdk;
+import 'package:matrix/matrix.dart';
+
+import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/spaces/knocking_users_indicator.dart';
+import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_analytics/analytics_request_indicator.dart';
+import 'package:fluffychat/routes/chat_list/activity_template_chat_list_item.dart';
+import 'package:fluffychat/routes/chat_list/chat_list_item.dart';
+import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
+import 'package:fluffychat/routes/chat_list/course_default_chats_enum.dart';
+import 'package:fluffychat/routes/chat_list/unjoined_chat_list_item.dart';
+import 'package:fluffychat/utils/stream_extension.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
+
+class CourseChatsView extends StatelessWidget {
+  final CourseChatsController controller;
+  const CourseChatsView(this.controller, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final room = controller.space;
+    if (room == null) {
+      return const Center(child: Icon(Icons.search_outlined, size: 80));
+    }
+
+    return StreamBuilder(
+      stream: room.client.onSync.stream
+          .where((s) => s.hasRoomUpdate)
+          .rateLimit(const Duration(seconds: 1)),
+      builder: (context, snapshot) {
+        final joinedChats = controller.joinedChats;
+        final joinedSessions = controller.joinedActivities();
+
+        final discoveredGroupChats = controller.discoveredGroupChats;
+        final discoveredSessions = controller
+            .discoveredActivities()
+            .entries
+            .toList();
+
+        final isColumnMode = FluffyThemes.isColumnMode(context);
+        final keyboardInset = MediaQuery.viewInsetsOf(context).bottom;
+        return SafeArea(
+          child: Padding(
+            padding: isColumnMode
+                ? const EdgeInsets.only(top: 12.0, left: 8.0, right: 8.0)
+                : const EdgeInsets.all(0.0),
+            child: ListView.builder(
+              padding: EdgeInsets.only(bottom: keyboardInset + 8.0),
+              shrinkWrap: true,
+              itemCount:
+                  joinedChats.length +
+                  joinedSessions.length +
+                  discoveredGroupChats.length +
+                  discoveredSessions.length +
+                  9,
+              itemBuilder: (context, i) {
+                // Chats-tab title slot. The progress header moved to
+                // Analytics; the standalone chat-bubble icon was redundant
+                // with the Chats tab itself — both removed (world_v2).
+                if (i == 0) {
+                  return const SizedBox();
+                }
+                i--;
+
+                if (i == 0) {
+                  return KnockingUsersIndicator(room: room);
+                }
+                i--;
+
+                if (i == 0) {
+                  return AnalyticsRequestIndicator(room: room);
+                }
+                i--;
+
+                if (i == 0) {
+                  return _DefaultChatCreationTile(
+                    type: CourseDefaultChatsEnum.introductions,
+                    controller: controller,
+                  );
+                }
+                i--;
+
+                if (i == 0) {
+                  return _DefaultChatCreationTile(
+                    type: CourseDefaultChatsEnum.announcements,
+                    controller: controller,
+                  );
+                }
+                i--;
+
+                // joined group chats
+                if (i < joinedChats.length) {
+                  final joinedRoom = joinedChats[i];
+                  return ChatListItem(
+                    joinedRoom,
+                    onTap: () => controller.onChatTap(joinedRoom),
+                    onLongPress: (c) => chatContextMenuAction(
+                      joinedRoom,
+                      c,
+                      context,
+                      () => controller.onChatTap(joinedRoom),
+                    ),
+                    activeChat: controller.widget.activeChat == joinedRoom.id,
+                  );
+                }
+                i -= joinedChats.length;
+
+                // unjoined group chats
+                if (i < discoveredGroupChats.length) {
+                  return UnjoinedChatListItem(
+                    chunk: discoveredGroupChats[i],
+                    onTap: () =>
+                        controller.joinChildRoom(discoveredGroupChats[i]),
+                  );
+                }
+                i -= discoveredGroupChats.length;
+
+                if (i == 0) {
+                  return joinedSessions.isEmpty && discoveredSessions.isEmpty
+                      ? ListTile(
+                          leading: const Icon(Icons.map_outlined),
+                          title: Text(L10n.of(context).whatNow),
+                          subtitle: Text(L10n.of(context).chooseNextActivity),
+                          trailing: const Icon(Icons.arrow_forward),
+                          onTap: () => context.go(
+                            WorkspaceNav.openCourseFilter(
+                              GoRouterState.of(context).uri,
+                              room.id,
+                              tab: 'course',
+                            ),
+                          ),
+                        )
+                      : const SizedBox();
+                }
+                i--;
+
+                if (i == 0) {
+                  return joinedSessions.isEmpty
+                      ? const SizedBox()
+                      : Padding(
+                          padding: const EdgeInsets.only(
+                            top: 20.0,
+                            bottom: 4.0,
+                          ),
+                          child: Text(
+                            L10n.of(context).myActivities,
+                            style: const TextStyle(fontSize: 12.0),
+                            textAlign: TextAlign.center,
+                          ),
+                        );
+                }
+                i--;
+
+                // joined activity sessions
+                if (i < joinedSessions.length) {
+                  final joinedRoom = joinedSessions[i];
+                  return ChatListItem(
+                    joinedRoom,
+                    onTap: () => controller.onChatTap(joinedRoom),
+                    onLongPress: (c) => chatContextMenuAction(
+                      joinedRoom,
+                      c,
+                      context,
+                      () => controller.onChatTap(joinedRoom),
+                    ),
+                    activeChat: controller.widget.activeChat == joinedRoom.id,
+                    borderRadius: BorderRadius.circular(
+                      AppConfig.borderRadius / 2,
+                    ),
+                  );
+                }
+                i -= joinedSessions.length;
+
+                if (i == 0) {
+                  return discoveredSessions.isEmpty
+                      ? const SizedBox()
+                      : Padding(
+                          padding: const EdgeInsets.only(
+                            top: 20.0,
+                            bottom: 4.0,
+                          ),
+                          child: Text(
+                            L10n.of(context).openToJoin,
+                            style: const TextStyle(fontSize: 12.0),
+                            textAlign: TextAlign.center,
+                          ),
+                        );
+                }
+                i--;
+
+                // unjoined activity sessions
+                if (i < discoveredSessions.length) {
+                  final activity = discoveredSessions[i].key;
+                  final sessions = discoveredSessions[i].value;
+                  return ActivityTemplateChatListItem(
+                    space: room,
+                    sessions: sessions,
+                    joinActivity: (e) => controller.joinActivity(activity, e),
+                  );
+                }
+                i -= discoveredSessions.length;
+
+                if (controller.noMoreRooms) {
+                  return const SizedBox();
+                }
+
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12.0,
+                    vertical: 2.0,
+                  ),
+                  child: TextButton(
+                    onPressed: controller.isLoading
+                        ? null
+                        : controller.loadHierarchy,
+                    child: controller.isLoading
+                        ? LinearProgressIndicator(
+                            borderRadius: BorderRadius.circular(
+                              AppConfig.borderRadius,
+                            ),
+                          )
+                        : Text(L10n.of(context).loadMore),
+                  ),
+                );
+              },
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _DefaultChatCreationTile extends StatelessWidget {
+  final CourseDefaultChatsEnum type;
+  final CourseChatsController controller;
+
+  const _DefaultChatCreationTile({
+    required this.type,
+    required this.controller,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (!controller.showDefaultChatCreation(type)) {
+      return const SizedBox();
+    }
+
+    final l10n = L10n.of(context);
+    return ListTile(
+      leading: const Icon(Symbols.chat_add_on),
+      title: Text(type.creationTitle(l10n)),
+      subtitle: Text(type.creationDesc(l10n)),
+      trailing: IconButton(
+        tooltip: l10n.dismiss,
+        icon: const Icon(Icons.close),
+        onPressed: () => showFutureLoadingDialog(
+          context: context,
+          future: () => controller.dismissDefaultChatCreation(type),
+        ),
+      ),
+      onTap: () => showFutureLoadingDialog(
+        context: context,
+        future: () => controller.createDefaultChat(type),
+      ),
+    );
+  }
+}

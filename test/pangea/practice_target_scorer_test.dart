@@ -2,13 +2,13 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/practice_tier_enum.dart';
-import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/practice_exercises/practice_exercise_type_enum.dart';
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/analytics/construct_use_model.dart';
+import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
+import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_tier_enum.dart';
+import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_type_enum.dart';
 
 /// Helper to create a [OneConstructUse] with minimal required fields.
 OneConstructUse _makeUse(

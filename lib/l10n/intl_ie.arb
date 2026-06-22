@@ -3377,7 +3377,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-06-15 09:46:16.433247",
+    "@@last_modified": "2026-06-18 09:34:18.121248",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10549,6 +10549,51 @@
     },
     "activityActions": "Gníomhachtaí gníomh",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Pro featurer",
+    "pronunciationTools": "Uttalstól",
+    "audioTranscription": "AI hljóðritun",
+    "visualLearnerSupport": "Stuðningur við sjónræna námsmenn",
+    "instantWritingTranslation": "Strax skrifa þýðingu",
+    "personalizedPracticeExercises": "Sérsniðnar æfingar",
+    "vocabularyFlashcards": "Orðaforði flashcards",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Ar ais",
+    "viewCurrentOrFinished": "Féach ar an reatha nó ar an críochnaithe",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

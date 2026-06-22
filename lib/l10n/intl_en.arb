@@ -495,6 +495,7 @@
     },
     "clearArchive": "Clear archive",
     "@clearArchive": {},
+    "joinTheCourseToPlay": "Join a course that includes this activity to play it.",
     "close": "Close",
     "@close": {
         "type": "String",
@@ -1683,6 +1684,26 @@
     },
     "reportMessage": "Report message",
     "@reportMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "undo": "Undo",
+    "@undo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "unlock": "Unlock",
+    "@unlock": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "zoomIn": "Zoom in",
+    "@zoomIn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "zoomOut": "Zoom out",
+    "@zoomOut": {
         "type": "String",
         "placeholders": {}
     },
@@ -3975,6 +3996,7 @@
     "introductions": "Introductions",
     "announcements": "Announcements",
     "activities": "Activities",
+    "stars": "Stars",
     "access": "Access",
     "howSpaceCanBeFound": "How this course can be found",
     "private": "Private",
@@ -4261,6 +4283,11 @@
         "placeholders": {}
     },
     "addCourse": "Add a course",
+    "addNewCourse": "Add new course",
+    "world": "World",
+    "addCourseStartMyOwn": "Start my own",
+    "addCourseEnterCode": "Enter code for private course",
+    "addCourseBrowsePublic": "Browse public courses",
     "joinPublicCourse": "Join public course",
     "vocabLevelsDesc": "This is where vocab words will go once you’ve leveled them up!",
     "activityAnalyticsTooltipBody": "These are your saved activities for review and practice.",
@@ -4303,7 +4330,7 @@
     "bhoDisplayName": "Bhojpuri",
     "bikDisplayName": "Bikol",
     "bmDisplayName": "Bambara",
-    "bnDisplayName": "Bangla",
+    "bnDisplayName": "Bengali",
     "bnBDDisplayName": "Bengali (Bangladesh)",
     "bnINDisplayName": "Bengali (India)",
     "brDisplayName": "Breton",
@@ -4575,6 +4602,7 @@
     "knockAccepted": "Your join request was accepted! You can now enter the course.",
     "@knockAccepted": {},
     "findCourse": "Find a course",
+    "browsePublicCourses": "Browse public courses",
     "publicInviteDescChat": "Search for users to invite them to this chat.",
     "publicInviteDescSpace": "Search for users to invite them to this space.",
     "useActivityImageAsChatBackground": "Use activity image as chat background",
@@ -4664,6 +4692,7 @@
     "suggestedVocab": "Suggested vocab",
     "myGender": "My gender",
     "profile": "Profile",
+    "editProfile": "Edit profile",
     "notificationDeviceSubtitle": "View and manage devices that send you push notifications.",
     "notificationRuleDM": "Direct Message",
     "notificationRuleDMDescription": "Notifies the user about messages in direct message rooms.",
@@ -4766,6 +4795,15 @@
     "enableNotificationsDesc": "Allow notifications for Pangea Chat and stay connected with your language buddies!",
     "enableNotifications": "Allow notifications",
     "noActivitiesFound": "No activities available for this topic.",
+    "numObjectives": "{count} objectives",
+    "@numObjectives": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
     "cannotIgnoreYourself": "You cannot block yourself",
     "blockUsernameHint": "Block username",
     "errorTryAgainSoon": "Writing assistance is taking a bit longer than expected. Try again in a second!",
@@ -4849,5 +4887,26 @@
     "announcementsChatDetails": "A place for course admins to create announcements for course participants. While all may view this channel, only admins can type in it.",
     "introChatDesc": "Anyone in the course can post.",
     "announcementsChatDesc": "Only course admins can post.",
-    "activityActions": "Activity actions"
+    "mapSearchHint": "Search activities",
+    "mapSearchNoResults": "No matches in view",
+    "mapFilterAllLanguages": "All languages",
+    "mapFilterNotStarted": "Not started",
+    "mapFilterInProgress": "In progress",
+    "mapFilterCompleted": "Completed",
+    "mapFilterReset": "Reset",
+    "activityTypeConversation": "Conversation",
+    "lockedMissionRequirement": "Finish the previous mission to unlock",
+    "playAgain": "Play again",
+    "reviewActivity": "Review",
+    "mapEmptyInView": "Nothing here at your level or language. Widen your filters or zoom out.",
+    "activityActions": "Activity actions",
+    "back": "Back",
+    "viewCurrentOrFinished": "View current or finished",
+    "proFeatures": "Pro features",
+    "pronunciationTools": "Pronunciation tools",
+    "audioTranscription": "AI audio transcription",
+    "visualLearnerSupport": "Visual learner support",
+    "instantWritingTranslation": "Instant writing translation",
+    "personalizedPracticeExercises": "Personalized practice exercises",
+    "vocabularyFlashcards": "Vocabulary flashcards"
 }

@@ -41,6 +41,12 @@ extension ChildrenAndParentsRoomExtension on Room {
     await _trySetSpaceChild(roomId, suggested: suggested);
   }
 
+  /// Add [roomId] as a child of this space WITHOUT removing it from its
+  /// other space parents. Used when one activity session is shared into
+  /// several course spaces at once.
+  Future<void> addSpaceChildKeepingParents(String roomId, {bool? suggested}) =>
+      _trySetSpaceChild(roomId, suggested: suggested);
+
   Future<void> _trySetSpaceChild(
     String roomId, {
     bool? suggested,

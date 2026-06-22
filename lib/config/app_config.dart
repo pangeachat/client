@@ -116,6 +116,12 @@ abstract class AppConfig {
   static const int overlayAnimationDuration = 250;
   static const Color gold = Color.fromARGB(255, 253, 191, 1);
   static const Color goldLight = Color.fromARGB(255, 254, 223, 73);
+  // The "powerups" gold palette for the right-nav cluster (Figma
+  // AvatarLangFlags). See the cluster section of routing.instructions.md.
+  static const Color goldPill = Color(0xFFFDCE47); // powerups pill background
+  static const Color goldMedal = Color(0xFFF3C141); // level shield fill
+  static const Color goldMedalText = Color(0xFFC29B32); // level number
+  static const Color goldPale = Color(0xFFFCF2D0); // shield inner field
   static const Color success = Color(0xFF33D057);
   static const Color error = Colors.red;
   static const Color warning = Color.fromARGB(255, 210, 124, 12);
@@ -153,6 +159,15 @@ abstract class AppConfig {
     "pangea-chat-client-assets.s3.us-east-1.amazonaws.com",
     "api.pangea.chat",
     "api.staging.pangea.chat",
+    // Media CDN (image-cdn consolidation): activity/course/topic images are now
+    // served from here. Without this, ImageByUrl rejects every CDN image and
+    // shows a placeholder. See devops image-cdn.instructions.md.
+    "content.pangea.chat",
+    // YouTube poster thumbnails for activity `youtube` media blocks. Both hosts
+    // send `Access-Control-Allow-Origin: *`, so ImageByUrl's web XHR fetch works
+    // (no auth, no platform-view needed).
+    "img.youtube.com",
+    "i.ytimg.com",
   };
 
   static bool isAllowedImage(Uri imageUrl) =>

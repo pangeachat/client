@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-06-15 09:46:23.122842",
+    "@@last_modified": "2026-06-18 09:34:26.216503",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9809,6 +9809,51 @@
     },
     "activityActions": "Aktivitätsaktionen",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Pro-Funktionen",
+    "pronunciationTools": "Aussprachewerkzeuge",
+    "audioTranscription": "KI-Audio-Transkription",
+    "visualLearnerSupport": "Unterstützung für visuelle Lernende",
+    "instantWritingTranslation": "Sofortige Schreibübersetzung",
+    "personalizedPracticeExercises": "Personalisierte Übungsaufgaben",
+    "vocabularyFlashcards": "Wortschatzkarten",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Zurück",
+    "viewCurrentOrFinished": "Aktuelle oder abgeschlossene anzeigen",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

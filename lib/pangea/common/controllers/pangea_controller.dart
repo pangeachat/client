@@ -9,20 +9,20 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
-import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
-import 'package:fluffychat/pangea/bot/bot_client_extension.dart';
+import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
+import 'package:fluffychat/features/bot/bot_client_extension.dart';
+import 'package:fluffychat/features/languages/locale_provider.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/notifications/notifications_client_extension.dart';
+import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/features/user/pangea_push_rules_extension.dart';
+import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/languages/locale_provider.dart';
-import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
-import 'package:fluffychat/pangea/notifications/notifications_client_extension.dart';
-import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
-import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
-import 'package:fluffychat/pangea/user/pangea_push_rules_extension.dart';
-import 'package:fluffychat/pangea/user/style_settings_repo.dart';
-import 'package:fluffychat/pangea/user/user_controller.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/routes/settings/settings_style/style_settings_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../utils/firebase_analytics.dart';
 
@@ -43,7 +43,7 @@ class PangeaController {
 
   PangeaController({required this.matrixState}) {
     userController = UserController();
-    subscriptionController = SubscriptionController(this);
+    subscriptionController = SubscriptionController();
     PAuthGaurd.pController = this;
     _registerSubscriptions();
   }
@@ -52,15 +52,15 @@ class PangeaController {
   /// While many of these functions are asynchronous, they are not awaited here,
   /// because of order of execution does not matter,
   /// and running them at the same times speeds them up.
-  void initControllers() {
+  void initControllers(String? userID) {
     _initAnalytics();
-    subscriptionController.initialize();
+    subscriptionController.initialize(userID);
     matrixState.client.setPangeaPushRules();
     TtsController.setAvailableLanguages();
   }
 
   Future<void> _onLogin(BuildContext context, String? userID) async {
-    initControllers();
+    initControllers(userID);
     _registerSubscriptions();
 
     userController.reinitialize().then((_) {
@@ -69,7 +69,7 @@ class PangeaController {
       GrammarConstructsProvider.fetchFeaturesAndTags();
     });
 
-    subscriptionController.reinitialize();
+    subscriptionController.reinitialize(userID);
 
     if (userID != null) {
       StyleSettingsRepo.settings(userID).then((settings) {
@@ -254,5 +254,7 @@ class PangeaController {
     'phonetic_transcription_storage',
     'phonetic_transcription_v2_storage',
     'notifications_request_storage',
+    'subscription_app_ids_storage',
+    'all_products_storage',
   ];
 }

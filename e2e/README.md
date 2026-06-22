@@ -12,7 +12,7 @@ e2e/
   trigger-map.json         # Maps file globs → spec files for diff-based CI selection
   select-tests.js          # Diff-based test selector
   scripts/
-    login.spec.ts          # Login flow
+    login-logout.spec.ts          # Login and logout flow
     a11y.spec.ts           # Accessibility audits (axe-core, WCAG 2.1 AA)
 ```
 
@@ -78,7 +78,7 @@ npx playwright test --config e2e/playwright.config.ts
 npx playwright test e2e/scripts/a11y.spec.ts --config e2e/playwright.config.ts
 
 # Single spec
-npx playwright test e2e/scripts/login.spec.ts --config e2e/playwright.config.ts
+npx playwright test e2e/scripts/login-logout.spec.ts --config e2e/playwright.config.ts
 
 # Against deployed staging (no local Flutter needed)
 BASE_URL=https://app.staging.pangea.chat npx playwright test --config e2e/playwright.config.ts
@@ -87,7 +87,7 @@ BASE_URL=https://app.staging.pangea.chat npx playwright test --config e2e/playwr
 npx playwright test --config e2e/playwright.config.ts -g "should display landing page"
 
 # Headed with the Playwright Inspector
-PWDEBUG=1 npx playwright test e2e/scripts/login.spec.ts --config e2e/playwright.config.ts
+PWDEBUG=1 npx playwright test e2e/scripts/login-logout.spec.ts --config e2e/playwright.config.ts
 
 # View the last run's report
 npx playwright show-report
@@ -99,8 +99,8 @@ Failed-run screenshots land in `test-results/`.
 
 1. **Env var loading**: `playwright.config.ts` reads `client/.env` with a lightweight `fs`-based parser (no `dotenv` dependency). Shell env vars take precedence.
 2. **`BASE_URL` resolution**: shell env → `client/.env` → default `http://localhost:8080`.
-3. **Setup project**: the config runs `auth.setup.ts` first (login + save session with `storageState({ indexedDB: true })`), then every spec reuses that session and the shared fixture auto-enables Flutter's semantics tree.
-4. **Mock backend calls**: set `MOCK_LLM_LATENCY_OVERRIDE_S=0` and configure the client to send `mock=true` on choreo requests. See [`playwright-testing.instructions.md` § Bypassing paid backend calls](../.github/instructions/playwright-testing.instructions.md#bypassing-paid-backend-calls---mocktrue) for the full contract.
+3. **Setup project**: the config runs `auth.setup.ts` first (login + save session with `storageState({ indexedDB: true })`), then every spec reuses that session and the shared fixture enables Flutter's semantics tree — it clicks the off-screen placeholder only if the build hasn't already enabled it. A build with `ENABLE_SEMANTICS=true` forces the tree on from startup (see [`playwright-testing.instructions.md`](../.github/instructions/playwright-testing.instructions.md)), making the placeholder click unnecessary.
+4. **Mock backend calls**: configure the client to send `mock=true` and `mock_llm_latency_override_s=0` on choreo requests. See [`playwright-testing.instructions.md` § Bypassing paid backend calls](../.github/instructions/playwright-testing.instructions.md#bypassing-paid-backend-calls---mocktrue) for the full contract.
 
 ## CI integration
 

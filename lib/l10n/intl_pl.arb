@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-06-15 09:46:43.970039",
+    "@@last_modified": "2026-06-18 09:35:43.631577",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9939,6 +9939,51 @@
     },
     "activityActions": "Akcje aktywności",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Funkcje Pro",
+    "pronunciationTools": "Narzędzia do wymowy",
+    "audioTranscription": "Transkrypcja audio AI",
+    "visualLearnerSupport": "Wsparcie dla uczniów wzrokowych",
+    "instantWritingTranslation": "Natychmiastowe tłumaczenie pisemne",
+    "personalizedPracticeExercises": "Spersonalizowane ćwiczenia praktyczne",
+    "vocabularyFlashcards": "Fiszki słownikowe",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Wstecz",
+    "viewCurrentOrFinished": "Zobacz bieżące lub zakończone",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-15 09:46:38.131460",
+    "@@last_modified": "2026-06-18 09:35:35.945591",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6913,6 +6913,51 @@
     },
     "activityActions": "Hành động hoạt động",
     "@activityActions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "proFeatures": "Tính năng Pro",
+    "pronunciationTools": "Công cụ phát âm",
+    "audioTranscription": "Chuyển đổi âm thanh AI",
+    "visualLearnerSupport": "Hỗ trợ người học trực quan",
+    "instantWritingTranslation": "Dịch viết ngay lập tức",
+    "personalizedPracticeExercises": "Bài tập thực hành cá nhân hóa",
+    "vocabularyFlashcards": "Thẻ từ vựng",
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Quay lại",
+    "viewCurrentOrFinished": "Xem hiện tại hoặc đã hoàn thành",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
         "type": "String",
         "placeholders": {}
     }

@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
+import 'package:fluffychat/widgets/text_loading_shimmer.dart';
 
 class MorphMeaningWidget extends StatefulWidget {
   final String feature;

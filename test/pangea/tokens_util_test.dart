@@ -1,10 +1,10 @@
 import 'package:characters/characters.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
-import 'package:fluffychat/pangea/tokens/tokens_util.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
 
 /// Exhaustive tests for [TokensUtil.getGlobalTokenPositions], the function
 /// whose mixed-unit indexing caused issue #1963.
@@ -160,7 +160,7 @@ void main() {
     });
 
     test(
-      'Bangla + supplementary-plane emoji: every word + the emoji tappable',
+      'Bengali + supplementary-plane emoji: every word + the emoji tappable',
       () {
         const transcript = 'ঠিক আছে, kelrap; আমি এখানেই আছি 😄';
         final tokens = [
