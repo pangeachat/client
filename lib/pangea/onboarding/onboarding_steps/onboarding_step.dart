@@ -16,6 +16,8 @@ abstract class OnboardingStep {
 
   bool get enableGoForward => true;
 
+  bool get customView => false;
+
   String get stepDestination => "/rooms";
 
   String nextStepText(L10n l10n) => l10n.next;

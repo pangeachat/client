@@ -9847,17 +9847,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Прафесійныя функцыі",
     "pronunciationTools": "Інструменты вымаўлення",
     "audioTranscription": "Аўдыё транскрыпцыя AI",
     "visualLearnerSupport": "Падтрымка візуальных вучняў",
     "instantWritingTranslation": "Мгненная пераклад пісьма",
     "personalizedPracticeExercises": "Персаналізаваныя практыкаванні",
     "vocabularyFlashcards": "Слоўнікавыя карткі",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

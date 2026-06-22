@@ -10317,17 +10317,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Pro značajke",
     "pronunciationTools": "Alati za izgovor",
     "audioTranscription": "AI transkripcija zvuka",
     "visualLearnerSupport": "Podrška za vizualne učenike",
     "instantWritingTranslation": "Instantna prijevod pisanja",
     "personalizedPracticeExercises": "Personalizirane vježbe",
     "vocabularyFlashcards": "Rječničke kartice",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

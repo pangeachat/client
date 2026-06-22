@@ -9844,17 +9844,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Gnéithe pro",
     "pronunciationTools": "Uirlisí fuaime",
     "audioTranscription": "Trascríobhadh fuaime AI",
     "visualLearnerSupport": "Tacaíocht do learners amhairc",
     "instantWritingTranslation": "Aistriúchán scríbhneoireachta láithreach",
     "personalizedPracticeExercises": "Cleachtaí cleachtais pearsanta",
     "vocabularyFlashcards": "Cártaí cuimhneachta foclóra",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

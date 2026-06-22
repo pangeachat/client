@@ -13,6 +13,7 @@ import 'package:fluffychat/pangea/onboarding/onboarding_state_controller.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_step_views/onboarding_step_view.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
+import 'package:fluffychat/pangea/onboarding/trial_info_provider.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class Onboarding extends StatefulWidget {
@@ -38,10 +39,16 @@ class OnboardingController extends State<Onboarding> {
   void initState() {
     super.initState();
     final client = Matrix.of(context).client;
+
     _state = OnboardingStateController(
       accountUpdater: UserAccountUpdater(),
       courseProvider: ClientCourseProvider(client: client),
       avatarProvider: RandomAvatarProvider(),
+      trialInfoProvider: ClientTrialInfoProvider(
+        client: client,
+        inTrialWindow: MatrixState.pangeaController.userController
+            .inTrialWindow(),
+      ),
     );
 
     final initialStep = ProfileSetupOnboardingStep(
@@ -100,56 +107,61 @@ class OnboardingController extends State<Onboarding> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 450),
-          child: Row(
-            children: [
-              ValueListenableBuilder(
-                valueListenable: _step,
-                builder: (context, step, _) => _navigation.hasPrevStep
-                    ? BackButton(onPressed: _back)
-                    : const SizedBox(width: 40.0),
-              ),
-              Expanded(
-                child: ValueListenableBuilder(
-                  valueListenable: _step,
-                  builder: (context, step, _) => AnimatedProgressBar(
-                    height: 25.0,
-                    widthPercent: _navigation.progress,
+    return ValueListenableBuilder(
+      valueListenable: _step,
+      builder: (context, step, _) {
+        final content = ListenableBuilder(
+          listenable: Listenable.merge([_error, _loading]),
+          builder: (context, _) {
+            return OnboardingStepView(
+              step: step,
+              updateNavigationButton: _updateNavigationButton,
+              error: _error.value,
+              loading: _loading.value,
+              hasNextStep: _navigation.hasNextStep,
+              forward: _forward,
+              skip: _skip,
+            );
+          },
+        );
+
+        if (step.customView) {
+          return content;
+        }
+
+        return Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            title: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 450),
+              child: Row(
+                children: [
+                  _navigation.hasPrevStep
+                      ? BackButton(onPressed: _back)
+                      : const SizedBox(width: 40.0),
+                  Expanded(
+                    child: AnimatedProgressBar(
+                      height: 25.0,
+                      widthPercent: _navigation.progress,
+                    ),
                   ),
-                ),
+                  const SizedBox(width: 40.0),
+                ],
               ),
-              const SizedBox(width: 40.0),
-            ],
+            ),
+            automaticallyImplyLeading: false,
           ),
-        ),
-        automaticallyImplyLeading: false,
-      ),
-      body: SafeArea(
-        child: Center(
-          child: Container(
-            width: 350.0,
-            padding: EdgeInsets.symmetric(vertical: 48.0),
-            child: ListenableBuilder(
-              listenable: Listenable.merge([_step, _error, _loading]),
-              builder: (context, _) {
-                return OnboardingStepView(
-                  step: _step.value,
-                  updateNavigationButton: _updateNavigationButton,
-                  error: _error.value,
-                  loading: _loading.value,
-                  hasNextStep: _navigation.hasNextStep,
-                  forward: _forward,
-                  skip: _skip,
-                );
-              },
+          body: SafeArea(
+            child: Center(
+              child: Container(
+                width: 350.0,
+                padding: EdgeInsets.symmetric(vertical: 48.0),
+                child: content,
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

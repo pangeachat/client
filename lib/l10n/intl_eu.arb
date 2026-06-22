@@ -9833,17 +9833,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Pro funtzioak",
     "pronunciationTools": "Ahotsaren tresnak",
     "audioTranscription": "AI audio transkripzioa",
     "visualLearnerSupport": "Ikusizko ikaslearen laguntza",
     "instantWritingTranslation": "Idazketa itzulpen instantanea",
     "personalizedPracticeExercises": "Pertsonalizatutako praktika ariketak",
     "vocabularyFlashcards": "Hiztegi flashcards",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

@@ -6,6 +6,7 @@ import 'package:fluffychat/pangea/onboarding/course_provider.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_state_controller.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
+import 'package:fluffychat/pangea/onboarding/trial_info_provider.dart';
 
 OnboardingStep getInitialOnboardingStep(Client client) {
   return ProfileSetupOnboardingStep(
@@ -14,6 +15,7 @@ OnboardingStep getInitialOnboardingStep(Client client) {
       accountUpdater: MockAccountUpdater(),
       courseProvider: MockCourseProvider(),
       avatarProvider: MockAvatarProvider(),
+      trialInfoProvider: MockTrialInfoProvider(),
     ),
     maxRemainingSteps: 5,
   );

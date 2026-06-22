@@ -6,6 +6,7 @@ import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dar
 import 'package:fluffychat/pangea/onboarding/account_updater.dart';
 import 'package:fluffychat/pangea/onboarding/avatar_provider.dart';
 import 'package:fluffychat/pangea/onboarding/course_provider.dart';
+import 'package:fluffychat/pangea/onboarding/trial_info_provider.dart';
 import 'package:fluffychat/pangea/onboarding/user_type_enum.dart';
 
 class AvatarInfo {
@@ -19,11 +20,13 @@ class OnboardingStateController {
   final AccountUpdater accountUpdater;
   final CourseProvider courseProvider;
   final AvatarProvider avatarProvider;
+  final TrialInfoProvider trialInfoProvider;
 
   OnboardingStateController({
     required this.accountUpdater,
     required this.courseProvider,
     required this.avatarProvider,
+    required this.trialInfoProvider,
   });
 
   AvatarInfo? _avatarInfo;

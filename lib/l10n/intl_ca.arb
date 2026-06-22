@@ -9984,17 +9984,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Funcions Pro",
     "pronunciationTools": "Eines de pronunciació",
     "audioTranscription": "Transcripció d'àudio AI",
     "visualLearnerSupport": "Suport per a aprenents visuals",
     "instantWritingTranslation": "Traducció instantània de textos",
     "personalizedPracticeExercises": "Exercicis de pràctica personalitzats",
     "vocabularyFlashcards": "Targetes de vocabulari",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

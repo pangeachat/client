@@ -50,4 +50,6 @@ class PangeaEventTypes {
   static const accessNoticeShown = 'org.pangea.analytics_access_notice_shown';
 
   static const firstBotDMMessage = "pangea_first_bot_dm_message";
+
+  static const onboardingSettings = "org.pangea.onboarding_settings";
 }

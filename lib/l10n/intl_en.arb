@@ -4852,11 +4852,17 @@
     "activityActions": "Activity actions",
     "back": "Back",
     "viewCurrentOrFinished": "View current or finished",
-    "proFeatures": "Pro features",
     "pronunciationTools": "Pronunciation tools",
     "audioTranscription": "AI audio transcription",
     "visualLearnerSupport": "Visual learner support",
     "instantWritingTranslation": "Instant writing translation",
     "personalizedPracticeExercises": "Personalized practice exercises",
-    "vocabularyFlashcards": "Vocabulary flashcards"
+    "vocabularyFlashcards": "Vocabulary flashcards",
+    "welcomeToPangeaChat": "Welcome to Pangea Chat",
+    "claimTrial": "Claim your trial",
+    "thanksForSigningUp": "Thank for signing up! Here's",
+    "sevenDaysFree": "7 DAYS FREE",
+    "manageTrialInSettings": "Manage your trial anytime in\nSubscription Settings",
+    "noCreditCardRequired": "No credit card required.",
+    "proFeatures": "PRO"
 }

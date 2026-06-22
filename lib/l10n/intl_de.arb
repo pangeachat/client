@@ -9812,17 +9812,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Pro-Funktionen",
     "pronunciationTools": "Aussprachewerkzeuge",
     "audioTranscription": "KI-Audio-Transkription",
     "visualLearnerSupport": "Unterstützung für visuelle Lernende",
     "instantWritingTranslation": "Sofortige Schreibübersetzung",
     "personalizedPracticeExercises": "Personalisierte Übungsaufgaben",
     "vocabularyFlashcards": "Wortschatzkarten",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

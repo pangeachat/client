@@ -9893,17 +9893,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Pro-funksjoner",
     "pronunciationTools": "Uttaleverktøy",
     "audioTranscription": "AI lydtranskripsjon",
     "visualLearnerSupport": "Støtte for visuelle lærere",
     "instantWritingTranslation": "Umiddelbar skriving oversettelse",
     "personalizedPracticeExercises": "Personlige øvelser",
     "vocabularyFlashcards": "Ordforråd flashkort",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

@@ -10701,17 +10701,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "プロ機能",
     "pronunciationTools": "発音ツール",
     "audioTranscription": "AI音声転写",
     "visualLearnerSupport": "視覚学習者サポート",
     "instantWritingTranslation": "即時書き込み翻訳",
     "personalizedPracticeExercises": "パーソナライズされた練習問題",
     "vocabularyFlashcards": "語彙フラッシュカード",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

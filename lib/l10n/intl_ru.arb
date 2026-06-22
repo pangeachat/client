@@ -10847,17 +10847,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Профессиональные функции",
     "pronunciationTools": "Инструменты произношения",
     "audioTranscription": "AI транскрипция аудио",
     "visualLearnerSupport": "Поддержка визуальных учащихся",
     "instantWritingTranslation": "Мгновенный перевод написанного",
     "personalizedPracticeExercises": "Персонализированные практические упражнения",
     "vocabularyFlashcards": "Карточки со словарным запасом",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}
