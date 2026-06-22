@@ -3,18 +3,20 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start_view.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/bot_join_error_dialog.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -145,15 +147,25 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   }
 
   Future<void> inviteFriends() async {
-    // Mark the activity started (the start-page gate, #7027): the bot engages —
-    // playing the open role until the friend joins, then stepping back to silent
-    // moderator — and the start page won't re-surface mid-session.
-    await widget.room.client.setRoomStateWithKey(
-      widget.room.id,
-      PangeaEventTypes.activityStarted,
-      "",
-      {},
-    );
+    // Mark the activity started (the start-page gate, #7027) so the bot engages:
+    // it plays the open role until the friend joins, then steps back to silent
+    // moderator, and the start page won't re-surface mid-session. Best-effort: a
+    // failed marker write must not block navigating to the invite page.
+    try {
+      await widget.room.client.setRoomStateWithKey(
+        widget.room.id,
+        PangeaEventTypes.activityStarted,
+        "",
+        {},
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'roomId': widget.room.id},
+        level: SentryLevel.warning,
+      );
+    }
     if (!mounted) return;
     NavigationUtil.goToSpaceRoute(widget.room.id, ['invite'], context);
   }

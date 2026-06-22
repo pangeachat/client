@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
+
+import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';

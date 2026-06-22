@@ -131,13 +131,22 @@ extension LaunchActivitySession on Client {
 
     // Auto-invite the bot so it is present in every session from the start, but
     // it stays idle (no role, no messages) until the user makes an explicit
-    // choice on the start page — "play with bot" or "invite a friend" — which
+    // choice on the start page ("play with bot" or "invite a friend"), which
     // writes pangea.activity_started. That marker is the bot's gate to claim a
-    // role, so the choice page is never bypassed. Bot adapts live thereafter:
+    // role, so the choice page is never bypassed. The bot adapts live thereafter:
     // participant while alone with one human, silent moderator once a second
-    // human joins (#2595, #7027). Best-effort — must not fail session creation.
+    // human joins (#2595, #7027). Best-effort: must not fail session creation.
     try {
-      await getRoomById(roomID)?.invite(BotName.byEnvironment);
+      final botRoom = getRoomById(roomID);
+      if (botRoom == null) {
+        ErrorHandler.logError(
+          m: 'Auto-invite skipped: activity room not found after sync',
+          data: {'roomId': roomID},
+          level: SentryLevel.warning,
+        );
+      } else {
+        await botRoom.invite(BotName.byEnvironment);
+      }
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
