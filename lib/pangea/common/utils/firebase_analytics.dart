@@ -6,7 +6,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import 'package:fluffychat/pangea/bot/bot_target_event_name_enum.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
@@ -46,17 +45,6 @@ class GoogleAnalytics {
     analytics = FirebaseAnalytics.instanceFor(app: app);
     // Client is not automatically set on web
     await _setClientVersion();
-
-    if (Environment.analyticsDebugEnabled) {
-      // Note: Doesnt currently work on Web
-      try {
-        await analytics?.setDefaultEventParameters({
-          "traffic_type": "internal",
-        });
-      } catch (_) {
-        // i guess were on web and have it enabled anyway
-      }
-    }
 
     debugPrint("Firebase App Name: ${app.name}");
     debugPrint("Firebase App Options:");
@@ -107,17 +95,9 @@ class GoogleAnalytics {
   }
 
   static void logEvent(String name, {Map<String, Object>? parameters}) {
-    // Add params when possible, web doesnt automatically add as of mar/09/2026
-    final finalParameters = Environment.analyticsDebugEnabled && kIsWeb
-        ? {...?parameters, "traffic_type": "internal"}
-        : parameters;
-
     debugPrint("event: $name - parameters: $parameters");
 
-    // Only actually send to sentry if were not in debug mode or dev mode is on
-    if (!kDebugMode || Environment.analyticsDebugEnabled) {
-      analytics?.logEvent(name: name, parameters: finalParameters);
-    }
+    analytics?.logEvent(name: name, parameters: parameters);
   }
 
   static void prepareLogin(String method) {
