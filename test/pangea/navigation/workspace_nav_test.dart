@@ -512,6 +512,25 @@ void main() {
       expect(lists.left, [const PanelToken('chats')]); // section replaced left
       expect(lists.right, [const PanelToken('analytics', 'vocab')]); // kept
     });
+
+    test('back from the route-driven course detail lands on the plan list '
+        '(#7090)', () {
+      // The course detail is route-driven (`/courses/own/:courseid`), so its
+      // parent segments render a blank EmptyPage. Its back navigates to the
+      // start-my-own plan list token over the world map rather than popping to
+      // that blank parent — even though the current URL is the legacy path.
+      final planList = WorkspaceNav.setSection(
+        u('/courses/own/abc-123'),
+        '/',
+        const PanelToken('addcourse', 'own'),
+        keepRoom: false,
+      );
+      expect(u(planList).path, '/');
+      expect(parseOpenPanels(u(planList)).left, [
+        const PanelToken('addcourse', 'own'),
+      ]);
+      expect(parseOpenPanels(u(planList)).right, isEmpty);
+    });
   });
 
   group('openDetail (generic, registry-driven exclusive groups)', () {

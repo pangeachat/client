@@ -42,7 +42,17 @@ class SelectedCourseView extends StatelessWidget {
           );
 
     return Scaffold(
-      appBar: AppBar(title: Text(controller.title)),
+      appBar: AppBar(
+        // world_v2: explicit token-based back. The auto-implied back would pop
+        // to the route-driven parent's blank EmptyPage (#7090); controller.back
+        // returns to the plan list / course card instead.
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+          onPressed: controller.back,
+        ),
+        title: Text(controller.title),
+      ),
       body: SafeArea(
         child: Container(
           alignment: Alignment.topCenter,
