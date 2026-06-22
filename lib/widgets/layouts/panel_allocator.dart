@@ -208,19 +208,31 @@ abstract class PanelAllocator {
       return (math.max(0, l - 1) + math.max(0, r - 1)) * panelGap;
     }
 
-    // Fold a **parent** behind its **child** until the rest fit at their
-    // reasonable min (the comfort floor). A fold neither peeks to a stripe nor
-    // reserves width — the parent is simply not drawn, its content one back-step
-    // away on the child that keeps the column (the detail keeps the column; its
-    // master is a pop behind, reached by closing the detail). Only a parent whose
-    // child is also visible in the SAME column is foldable: folding is
-    // per-column, and a folded panel is reached by closing its child, so a panel
-    // with no same-column child to keep the column never folds — it compresses
-    // toward its hard min instead. A child is never folded, so a live `room` (the
-    // chat list's detail) keeps its session, and a lone right panel (the
-    // analytics summary) is never sacrificed to left-column overflow. The map is
-    // the backdrop, not a panel, so it isn't sized here — it shows wherever the
-    // panels leave room. See `routing.instructions.md`.
+    // Relieve width pressure until the survivors fit their reasonable min (the
+    // comfort floor), or — failing that — at least their hard min so the two
+    // columns never overlap. Two tiers:
+    //
+    // Tier 1 — **fold a parent behind its same-column child**: the parent is
+    // simply not drawn (no stripe, no reserved width), its content one back-step
+    // away on the child that keeps the column (reached by closing the detail).
+    // Per-column, lowest-priority master first. A child is never folded, so a
+    // live `room` (the chat list's detail) keeps its session.
+    //
+    // Tier 2 — **collapse for left↔right parity** (#7088): when no same-column
+    // parent-fold is available AND the survivors' hard mins would overflow (the
+    // columns would otherwise overlap), collapse the lowest-priority panel across
+    // BOTH columns — but never the just-opened ([focusHint]) panel, so opening a
+    // panel is never a visible no-op. A collapsed panel is hidden entirely
+    // (reopened from the cluster, not a back-step). So a lone right summary (the
+    // analytics list) now yields to a higher-priority left panel instead of being
+    // overlapped, and symmetrically a low-priority left panel yields to the
+    // right. Tier 2 fires only on real overlap, so layouts that merely compress
+    // toward their mins are unchanged. The map is the backdrop, not a panel, so
+    // it isn't sized here. See `routing.instructions.md`.
+    final focusEntry =
+        (focusHint != null && focusHint >= 0 && focusHint < all.length)
+        ? all[focusHint]
+        : null;
     final folded = <_Entry>{};
     while (true) {
       final vis = all.where((e) => !folded.contains(e)).toList();
@@ -228,6 +240,7 @@ abstract class PanelAllocator {
       final needReasonable =
           vis.fold(0.0, (s, e) => s + e.def.reasonableMin) + gapsFor(vis);
       if (needReasonable <= content) break;
+      // Tier 1: fold a parent behind its same-column child.
       final foldable = vis
           .where(
             (parent) => vis.any(
@@ -237,11 +250,22 @@ abstract class PanelAllocator {
             ),
           )
           .toList();
-      if (foldable.isEmpty) break;
-      // Among independent master/detail pairs all under pressure, fold the
-      // lowest-priority master first (a cross-tree tiebreak).
-      foldable.sort((a, b) => a.def.priority.compareTo(b.def.priority));
-      folded.add(foldable.first);
+      if (foldable.isNotEmpty) {
+        // Among independent master/detail pairs all under pressure, fold the
+        // lowest-priority master first (a cross-tree tiebreak).
+        foldable.sort((a, b) => a.def.priority.compareTo(b.def.priority));
+        folded.add(foldable.first);
+        continue;
+      }
+      // Tier 2: no parent-fold left. Only collapse when the hard mins would
+      // actually overflow (panels would overlap); otherwise let them compress.
+      final needMin =
+          vis.fold(0.0, (s, e) => s + e.def.minWidth) + gapsFor(vis);
+      if (needMin <= content) break;
+      final collapsible = vis.where((e) => e != focusEntry).toList();
+      if (collapsible.isEmpty) break;
+      collapsible.sort((a, b) => a.def.priority.compareTo(b.def.priority));
+      folded.add(collapsible.first);
     }
 
     // Size the surviving panels: ideals if they fit, else compress toward their
