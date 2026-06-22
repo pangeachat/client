@@ -10,6 +10,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
@@ -692,22 +693,16 @@ class WorldMapController extends State<WorldMap>
     // the back-arrow). The map still focuses the activity's pin via the
     // `activity=` param (`mapFocusFor` → `ActivityFocus`), independent of scope.
     // See `routing.instructions.md`.
-    final parts = uri.query.isEmpty ? <String>[] : uri.query.split('&');
-    parts.removeWhere(
-      (p) =>
-          p == 'left' ||
-          p.startsWith('left=') ||
-          p == 'right' ||
-          p.startsWith('right=') ||
-          p == 'm' ||
-          p.startsWith('m=') ||
-          p == 'activity' ||
-          p.startsWith('activity=') ||
-          p == 'autoplay' ||
-          p.startsWith('autoplay='),
-    );
+    final parts = WorkspaceQuery.parts(uri.query);
+    WorkspaceQuery.removeKeys(parts, {
+      'left',
+      'right',
+      'm',
+      'activity',
+      'autoplay',
+    });
     parts.add('activity=${card.activityId}');
-    context.go(parts.isEmpty ? '/' : '/?${parts.join('&')}');
+    context.go(WorkspaceQuery.location('/', parts));
     collapse();
   }
 

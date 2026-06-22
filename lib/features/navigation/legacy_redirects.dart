@@ -206,16 +206,11 @@ abstract class LegacyRedirects {
   /// result has no `/rooms` path segment, so it never re-fires.
   static String _toRoomToken(Uri uri, String roomId, List<String> tail) {
     final param = tail.isEmpty ? roomId : '$roomId/${tail.join('/')}';
-    final parts = <String>['left=${PanelToken('room', param).encode()}'];
-    for (final p in (WorkspaceQuery.parts(uri.query))) {
-      if (p == 'left' ||
-          p.startsWith('left=') ||
-          p == 'm' ||
-          p.startsWith('m=')) {
-        continue;
-      }
-      parts.add(p);
-    }
+    // Keep every prior query EXCEPT a previous left list / course filter (this
+    // navigation IS the room), and seat the new room token first.
+    final kept = WorkspaceQuery.parts(uri.query);
+    WorkspaceQuery.removeKeys(kept, {'left', 'm'});
+    final parts = ['left=${PanelToken('room', param).encode()}', ...kept];
     return '${PRoutes.world}?${parts.join('&')}';
   }
 
@@ -228,16 +223,10 @@ abstract class LegacyRedirects {
   static String _toCourseWorkspace(Uri uri, String space, String? room) {
     final parts = WorkspaceQuery.parts(uri.query);
 
-    // Lift out any existing left list (keep tokens already there) and drop any
-    // prior `m=` so the course filter can be set cleanly.
-    var leftValue = '';
-    final li = parts.indexWhere((p) => p == 'left' || p.startsWith('left='));
-    if (li >= 0) {
-      final eq = parts[li].indexOf('=');
-      leftValue = eq >= 0 ? parts[li].substring(eq + 1) : '';
-      parts.removeAt(li);
-    }
-    WorkspaceQuery.removeKeys(parts, {'m'});
+    // Lift out any existing left list (keep tokens already there) and drop the
+    // prior `left=`/`m=` so the course filter + left can be rebuilt cleanly.
+    final leftValue = WorkspaceQuery.valueOf(uri.query, 'left') ?? '';
+    WorkspaceQuery.removeKeys(parts, {'left', 'm'});
 
     final left = leftValue.split(',').where((e) => e.isNotEmpty).toList();
     if (!left.any((e) => e == 'course' || e.startsWith('course:'))) {
@@ -265,14 +254,8 @@ abstract class LegacyRedirects {
   /// replaced; other left tokens and query are kept. See `routing.instructions.md`.
   static String _toCourseWorkspaceWithPage(Uri uri, String space, String page) {
     final parts = WorkspaceQuery.parts(uri.query);
-    var leftValue = '';
-    final li = parts.indexWhere((p) => p == 'left' || p.startsWith('left='));
-    if (li >= 0) {
-      final eq = parts[li].indexOf('=');
-      leftValue = eq >= 0 ? parts[li].substring(eq + 1) : '';
-      parts.removeAt(li);
-    }
-    WorkspaceQuery.removeKeys(parts, {'m'});
+    final leftValue = WorkspaceQuery.valueOf(uri.query, 'left') ?? '';
+    WorkspaceQuery.removeKeys(parts, {'left', 'm'});
 
     final left = leftValue
         .split(',')
@@ -301,6 +284,9 @@ abstract class LegacyRedirects {
   /// has no path segment, so the section arms never re-fire (no loop).
   static String _toRootWithLeftToken(Uri uri, String type) {
     final parts = WorkspaceQuery.parts(uri.query);
+    // Hand-rolled (not valueOf/removeKeys): this upserts [type] INTO the existing
+    // left list IN PLACE, preserving the param's position. The drop-and-append
+    // helpers would move `left=` to the end of the query. See WorkspaceQuery.
     final idx = parts.indexWhere((p) => p == 'left' || p.startsWith('left='));
     if (idx >= 0) {
       final eq = parts[idx].indexOf('=');

@@ -14,6 +14,20 @@ abstract class WorkspaceQuery {
   static List<String> parts(String query) =>
       query.isEmpty ? <String>[] : query.split('&');
 
+  /// The value of the first `key=value` segment in [query] whose key is [key],
+  /// or null when [key] is absent; a bare `key` flag (no `=`) yields `''`. The
+  /// value is returned verbatim (still percent-encoded), like the segments
+  /// [parts] keeps. Read-only — pair with [removeKeys] when you also drop it.
+  static String? valueOf(String query, String key) {
+    for (final p in parts(query)) {
+      final eq = p.indexOf('=');
+      if ((eq < 0 ? p : p.substring(0, eq)) == key) {
+        return eq < 0 ? '' : p.substring(eq + 1);
+      }
+    }
+    return null;
+  }
+
   /// Drop in place every segment whose key is in [keys] — a bare `key` flag or a
   /// `key=value` pair. The key is the text before the first `=`, so `key=` never
   /// matches a different key that merely shares a prefix (`left` vs `leftish`).
