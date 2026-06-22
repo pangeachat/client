@@ -452,8 +452,9 @@ class _ShellLayout {
     // is idempotent for an unchanged token set, so a width change never
     // reshuffles panes or adds history. Ephemeral view state, deliberately OUTSIDE
     // the URL (a shared link / refresh has no recency and the allocator falls back
-    // to the tree's leaf rule). Only consulted in narrow mode. See
-    // `routing.instructions.md`.
+    // to the tree's leaf rule). Consulted in narrow mode (which pane to seat) and
+    // in column mode (the just-opened pane is protected from a left↔right parity
+    // collapse, #7088). See `routing.instructions.md`.
     final paneIds = [
       for (final t in leftTokens) t.encode(),
       for (final t in rightTokens) t.encode(),
@@ -462,7 +463,7 @@ class _ShellLayout {
     for (final id in paneIds) {
       if (!_paneRecency.contains(id)) _paneRecency.add(id);
     }
-    final focusHint = (!isColumnMode && _paneRecency.isNotEmpty)
+    final focusHint = _paneRecency.isNotEmpty
         ? paneIds.indexOf(_paneRecency.last)
         : null;
 
