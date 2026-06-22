@@ -23,8 +23,9 @@ enum AppSection {
     selectedIcon: Icons.public,
   ),
 
-  /// Chats — the chat list. Root: `/chats`. Matrix rooms (`/rooms/...`)
-  /// belong to this surface too.
+  /// Chats — the chat list. Legacy root `/chats` (redirected to the `chats`
+  /// token; the live location is `PRoutes.chatsList`). Matrix rooms
+  /// (`/rooms/...`) belong to this surface too.
   chats(
     rootPath: PRoutes.chats,
     icon: Icons.forum_outlined,

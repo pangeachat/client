@@ -15,6 +15,7 @@ import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dar
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/share_room_button.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -296,7 +297,7 @@ class SpaceDetailsContent extends StatelessWidget {
             future: room.leaveSpace,
           );
           if (!resp.isError) {
-            context.go("/rooms");
+            context.go(PRoutes.chatsList);
           }
         },
         enabled: room.membership == Membership.join,

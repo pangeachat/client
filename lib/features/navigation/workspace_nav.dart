@@ -240,6 +240,15 @@ abstract class WorkspaceNav {
   static String openCoursePage(Uri current, String page) =>
       openDetail(current, PanelToken('coursepage', page));
 
+  /// Open course [spaceId]'s management [page] (invite / edit / …) from
+  /// ANYWHERE: set the `?m=course:<id>` scope + `course` card, then the
+  /// `coursepage:<page>` detail beside it. Same shape as [openCoursePage] on the
+  /// already-scoped course — use this when the target course may not be the
+  /// current filter (e.g. inviting knocking users from a space tile, or from an
+  /// activity session). See `routing.instructions.md`.
+  static String openCoursePageFor(Uri current, String spaceId, String page) =>
+      openCoursePage(Uri.parse(openCourseFilter(current, spaceId)), page);
+
   /// Replace the whole `left` list (e.g. tapping a top-level section: Chats,
   /// the avatar/profile). The `right` list and other query params are preserved.
   static String setLeft(Uri current, List<PanelToken> tokens) =>
