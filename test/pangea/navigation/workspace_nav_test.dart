@@ -284,6 +284,20 @@ void main() {
       );
       expect(left.single, const PanelToken('session', '!s'));
     });
+
+    test('opening a session from Stars closes the open course card (#7106)', () {
+      // A saved activity opened from the Stars archive takes over the left
+      // column: the open course card closes (so the review isn't rendered behind
+      // it) while the map scope is kept.
+      final loc = WorkspaceNav.openExclusiveSession(
+        u('/?m=course:!s&left=course'),
+        const PanelToken('session', '!a'),
+      );
+      final left = parseOpenPanels(u(loc)).left;
+      expect(left.any((t) => t.type == 'course'), isFalse); // card closed
+      expect(left.singleWhere((t) => t.type == 'session').param, '!a');
+      expect(loc.contains('m=course'), isTrue); // map scope preserved
+    });
   });
 
   group('setLeft / clearLeft', () {
@@ -354,6 +368,23 @@ void main() {
         const PanelToken('chats'),
       );
       expect(loc, '/');
+    });
+
+    test('closing the course keeps a launching activity overlay (#7111)', () {
+      // A launching/running activity lives in the ?activity= overlay (the center
+      // canvas, independent of the course card); closing the course must not
+      // drop it.
+      final loc = WorkspaceNav.closeSection(
+        u('/?m=course:!s&left=course&activity=act-1&launch=true'),
+        const PanelToken('course'),
+      );
+      expect(loc.contains('activity=act-1'), isTrue); // overlay preserved
+      expect(loc.contains('launch=true'), isTrue);
+      expect(loc.contains('m=course'), isTrue); // scope kept
+      expect(
+        parseOpenPanels(u(loc)).left.any((t) => t.type == 'course'),
+        isFalse,
+      ); // card gone
     });
   });
 

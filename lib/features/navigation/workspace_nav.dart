@@ -128,11 +128,29 @@ abstract class WorkspaceNav {
   static String openExclusiveLeftRoom(Uri current, PanelToken token) =>
       openDetail(current, token);
 
-  /// A completed-activity `session` review is a left detail in BOTH `liveView`
-  /// and `detail`, so opening it drops any other room/session AND any
-  /// vocab/grammar detail (one detail across columns).
+  /// A completed-activity `session` review (opened from the Stars archive) is a
+  /// left detail in BOTH `liveView` and `detail`, so opening it drops any other
+  /// room/session AND any vocab/grammar detail (one detail across columns). It
+  /// ALSO drops the open `course` card and its `coursepage` so the review isn't
+  /// rendered behind a still-open course window (#7106) — the Stars archive is
+  /// this helper's only caller, and a live in-course session opens via
+  /// [openExclusiveLeftRoom] (+ [openCourseFilter]) instead, so the course is
+  /// only dropped on the Stars path. (Not a shared sibling group: that would
+  /// evict the course on every room/vocab/grammar/practice open too.)
   static String openExclusiveSession(Uri current, PanelToken token) =>
-      openDetail(current, token);
+      _mutateBoth(current, (left) {
+        final next = left
+            .where(
+              (t) =>
+                  t != token &&
+                  !_areSiblings(token, t) &&
+                  t.type != 'course' &&
+                  t.type != 'coursepage',
+            )
+            .toList();
+        next.add(token);
+        return next;
+      }, (right) => right.where((t) => !_areSiblings(token, t)).toList());
 
   /// Open a vocab/grammar construct detail (the `detail` group): drops the other
   /// construct detail and any `session`, seats the detail at the front of the
@@ -340,11 +358,20 @@ abstract class WorkspaceNav {
               !(dropDependentCoursePage && t.type == 'coursepage'),
         )
         .toList();
+    // Preserve unrelated one-shot query the way closeLeft/_mutate already do —
+    // recompute only m/left/right and carry the rest forward. Critically this
+    // keeps `?activity=`/`?launch=`/`?roomid=` (a launching or running activity
+    // renders as the center canvas, independent of the course card), so closing
+    // the course no longer unmounts/aborts the activity (#7111). The map filter
+    // (`?m=`) is re-added below, so drop it from the carried set to avoid a dupe.
+    final rest = WorkspaceQuery.parts(current.query);
+    WorkspaceQuery.removeKeys(rest, {'m', 'left', 'right'});
     final parts = <String>[
       ?_mapFilter(current),
       if (left.isNotEmpty) 'left=${left.map((t) => t.encode()).join(',')}',
       if (lists.right.isNotEmpty)
         'right=${lists.right.map((t) => t.encode()).join(',')}',
+      ...rest,
     ];
     return WorkspaceQuery.location(PRoutes.world, parts);
   }
