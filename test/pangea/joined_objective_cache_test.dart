@@ -52,18 +52,26 @@ void main() {
       );
     });
 
-    test('skips a course that fails to resolve, keeping the rest', () async {
-      final cache = JoinedObjectiveCache();
-      await cache.rebuild(
-        ['ok', 'bad'],
-        outlineOf: (u) async {
-          if (u == 'bad') throw Exception('boom');
-          return _outline(['lo-a']);
-        },
-      );
-      expect(cache.ids, {'lo-a'});
-      expect(cache.outlines.length, 1);
-    });
+    test(
+      'skips a course that fails to resolve, reporting it via onError',
+      () async {
+        final cache = JoinedObjectiveCache();
+        final failed = <String>[];
+        await cache.rebuild(
+          ['ok', 'bad'],
+          outlineOf: (u) async {
+            if (u == 'bad') throw Exception('boom');
+            return _outline(['lo-a']);
+          },
+          onError: (uuid, e, s) => failed.add(uuid),
+        );
+        expect(cache.ids, {'lo-a'});
+        expect(cache.outlines.length, 1);
+        // The failure is surfaced, not swallowed (a silently-empty cache is the
+        // exact failure mode this guards against).
+        expect(failed, ['bad']);
+      },
+    );
 
     test('is empty with no joined courses', () async {
       final cache = JoinedObjectiveCache();
