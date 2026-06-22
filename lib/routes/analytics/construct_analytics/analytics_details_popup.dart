@@ -31,7 +31,6 @@ import 'package:fluffychat/routes/chat/events/token_info_feedback/show_token_fee
 import 'package:fluffychat/routes/chat/events/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
-import 'package:fluffychat/widgets/analytics_summary/learning_progress_indicators.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -41,18 +40,11 @@ class ConstructAnalyticsView extends StatefulWidget {
     required this.view,
     this.construct,
     this.showPracticeButton = false,
-    this.embedded = false,
   });
 
   final ConstructTypeEnum view;
   final ConstructIdentifier? construct;
   final bool showPracticeButton;
-
-  /// When hosted inside the world map's right-docked analytics panel, hide the
-  /// cross-metric [LearningProgressIndicators] header — its tabs navigate to the
-  /// old left-column section routes, and metric switching is the job of the
-  /// top-right cluster. See routing.instructions.md.
-  final bool embedded;
 
   @override
   ConstructAnalyticsViewState createState() => ConstructAnalyticsViewState();
@@ -273,26 +265,12 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   Widget build(BuildContext context) {
     final analyticsService = Matrix.of(context).analyticsDataService;
     return Scaffold(
-      appBar:
-          widget.view == ConstructTypeEnum.morph &&
-              widget.construct != null &&
-              !widget.embedded
-          ? AppBar(
-              leading: IconButton(
-                tooltip: L10n.of(context).close,
-                onPressed: _close,
-                icon: Icon(Icons.close),
-              ),
-            )
-          : null,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsetsGeometry.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (widget.construct == null && !widget.embedded)
-                LearningProgressIndicators(selected: widget.view.indicator),
               Expanded(
                 child: analyticsService.isInitializing
                     ? Center(child: CircularProgressIndicator.adaptive())

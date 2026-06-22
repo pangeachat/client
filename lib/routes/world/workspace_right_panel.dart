@@ -128,7 +128,6 @@ class WorkspaceRightPanel extends StatelessWidget {
                 ? ConstructTypeEnum.vocab
                 : ConstructTypeEnum.morph,
             construct: construct,
-            embedded: true,
           ),
         );
       case 'practice':
@@ -175,7 +174,6 @@ class WorkspaceRightPanel extends StatelessWidget {
           l10n.grammar,
           const ConstructAnalyticsView(
             view: ConstructTypeEnum.morph,
-            embedded: true,
             // The Practice FAB (→ /practice/morph). Without this the panel had
             // no way to reach practice — the entry point the world_v2 migration
             // dropped. See routing.instructions.md.
@@ -192,7 +190,6 @@ class WorkspaceRightPanel extends StatelessWidget {
           l10n.vocab,
           const ConstructAnalyticsView(
             view: ConstructTypeEnum.vocab,
-            embedded: true,
             showPracticeButton: true, // the Practice FAB (→ /practice/vocab)
           ),
         );
