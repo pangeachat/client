@@ -96,38 +96,46 @@ void main() {
     });
   });
 
-  group('OrchestratorController.suggestionToShow — single human (participant)', () {
-    test('lone human is prompted right after their own message', () {
-      final output = outputWithBothRoles(eventA);
-      final result = OrchestratorController.suggestionToShow(
-        output: output,
-        ownRoleId: roleA,
-        currentUserId: userA,
-        latestHumanMessageEventId: eventA,
-        latestHumanMessageSenderId: userA, // the lone human spoke last
-        humanRoleCount: 1,
-      );
-      expect(result, isNotNull);
-      expect(result!.roleId, roleA);
-    });
+  group(
+    'OrchestratorController.suggestionToShow — single human (participant)',
+    () {
+      test('lone human is prompted right after their own message', () {
+        final output = outputWithBothRoles(eventA);
+        final result = OrchestratorController.suggestionToShow(
+          output: output,
+          ownRoleId: roleA,
+          currentUserId: userA,
+          latestHumanMessageEventId: eventA,
+          latestHumanMessageSenderId: userA, // the lone human spoke last
+          humanRoleCount: 1,
+        );
+        expect(result, isNotNull);
+        expect(result!.roleId, roleA);
+      });
 
-    test('not prompted when the latest message is not the current user\'s', () {
-      final output = outputWithBothRoles(eventB);
-      final result = OrchestratorController.suggestionToShow(
-        output: output,
-        ownRoleId: roleA,
-        currentUserId: userA,
-        latestHumanMessageEventId: eventB,
-        latestHumanMessageSenderId: userB,
-        humanRoleCount: 1,
+      test(
+        'not prompted when the latest message is not the current user\'s',
+        () {
+          final output = outputWithBothRoles(eventB);
+          final result = OrchestratorController.suggestionToShow(
+            output: output,
+            ownRoleId: roleA,
+            currentUserId: userA,
+            latestHumanMessageEventId: eventB,
+            latestHumanMessageSenderId: userB,
+            humanRoleCount: 1,
+          );
+          expect(result, isNull);
+        },
       );
-      expect(result, isNull);
-    });
-  });
+    },
+  );
 
   group('OrchestratorController.suggestionToShow — guards', () {
     test('stale output (not based on latest human message) is dropped', () {
-      final output = outputWithBothRoles(eventA); // computed from an older event
+      final output = outputWithBothRoles(
+        eventA,
+      ); // computed from an older event
       final result = OrchestratorController.suggestionToShow(
         output: output,
         ownRoleId: roleB,
