@@ -418,9 +418,7 @@ class NewCoursePageState extends State<NewCoursePage> {
                                 vertical: 4.0,
                               ),
                               child: InkWell(
-                                onTap: () => MapContextController.set(
-                                  CourseMapContext(course.uuid),
-                                ),
+                                onTap: () => _onSelect(course),
                                 borderRadius: BorderRadius.circular(12.0),
                                 child: Container(
                                   padding: const EdgeInsets.all(12.0),
@@ -471,19 +469,6 @@ class NewCoursePageState extends State<NewCoursePage> {
                                             ),
                                           ],
                                         ),
-                                      ),
-                                      FilledButton(
-                                        onPressed: () => _onSelect(course),
-                                        style: FilledButton.styleFrom(
-                                          backgroundColor: theme
-                                              .colorScheme
-                                              .primaryContainer,
-                                          foregroundColor: theme
-                                              .colorScheme
-                                              .onPrimaryContainer,
-                                          visualDensity: VisualDensity.compact,
-                                        ),
-                                        child: Text(L10n.of(context).create),
                                       ),
                                     ],
                                   ),
