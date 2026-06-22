@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
@@ -254,20 +255,13 @@ class _ObjectiveSection extends StatelessWidget {
                     // immersive task, so it REPLACES other panels rather than
                     // stacking on them — backing out returns to the course map,
                     // never a stale vocab/analytics page. See routing.instructions.md.
-                    final parts = uri.query.isEmpty
-                        ? <String>[]
-                        : uri.query.split('&');
-                    parts.removeWhere(
-                      (p) =>
-                          p == 'left' ||
-                          p.startsWith('left=') ||
-                          p == 'right' ||
-                          p.startsWith('right=') ||
-                          p == 'activity' ||
-                          p.startsWith('activity=') ||
-                          p == 'autoplay' ||
-                          p.startsWith('autoplay='),
-                    );
+                    final parts = WorkspaceQuery.parts(uri.query);
+                    WorkspaceQuery.removeKeys(parts, {
+                      'left',
+                      'right',
+                      'activity',
+                      'autoplay',
+                    });
                     parts.add('activity=${ref.activityId}');
                     // Tapping a video card opens the plan with that video
                     // autostarting (muted) — see the carousel.
@@ -275,7 +269,7 @@ class _ObjectiveSection extends StatelessWidget {
                         ref.plan.heroBlock?.isYoutube == true) {
                       parts.add('autoplay=0');
                     }
-                    context.go('/?${parts.join('&')}');
+                    context.go(WorkspaceQuery.location('/', parts));
                   },
                   child: Stack(
                     children: [

@@ -1,6 +1,7 @@
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_query.dart';
 
 /// Permanent redirect shims from pre-world_v2 `/rooms/...` section paths
 /// to their first-class roots, so bookmarks, cached join intents, and
@@ -206,7 +207,7 @@ abstract class LegacyRedirects {
   static String _toRoomToken(Uri uri, String roomId, List<String> tail) {
     final param = tail.isEmpty ? roomId : '$roomId/${tail.join('/')}';
     final parts = <String>['left=${PanelToken('room', param).encode()}'];
-    for (final p in (uri.query.isEmpty ? <String>[] : uri.query.split('&'))) {
+    for (final p in (WorkspaceQuery.parts(uri.query))) {
       if (p == 'left' ||
           p.startsWith('left=') ||
           p == 'm' ||
@@ -225,7 +226,7 @@ abstract class LegacyRedirects {
   /// is preserved; the path becomes the world map `/`. Idempotent: the result
   /// has no `courses` path segment, so the course arms never re-fire.
   static String _toCourseWorkspace(Uri uri, String space, String? room) {
-    final parts = uri.query.isEmpty ? <String>[] : uri.query.split('&');
+    final parts = WorkspaceQuery.parts(uri.query);
 
     // Lift out any existing left list (keep tokens already there) and drop any
     // prior `m=` so the course filter can be set cleanly.
@@ -236,7 +237,7 @@ abstract class LegacyRedirects {
       leftValue = eq >= 0 ? parts[li].substring(eq + 1) : '';
       parts.removeAt(li);
     }
-    parts.removeWhere((p) => p == 'm' || p.startsWith('m='));
+    WorkspaceQuery.removeKeys(parts, {'m'});
 
     final left = leftValue.split(',').where((e) => e.isNotEmpty).toList();
     if (!left.any((e) => e == 'course' || e.startsWith('course:'))) {
@@ -263,7 +264,7 @@ abstract class LegacyRedirects {
   /// produce, so a deep link lands identically. Any prior `coursepage` token is
   /// replaced; other left tokens and query are kept. See `routing.instructions.md`.
   static String _toCourseWorkspaceWithPage(Uri uri, String space, String page) {
-    final parts = uri.query.isEmpty ? <String>[] : uri.query.split('&');
+    final parts = WorkspaceQuery.parts(uri.query);
     var leftValue = '';
     final li = parts.indexWhere((p) => p == 'left' || p.startsWith('left='));
     if (li >= 0) {
@@ -271,7 +272,7 @@ abstract class LegacyRedirects {
       leftValue = eq >= 0 ? parts[li].substring(eq + 1) : '';
       parts.removeAt(li);
     }
-    parts.removeWhere((p) => p == 'm' || p.startsWith('m='));
+    WorkspaceQuery.removeKeys(parts, {'m'});
 
     final left = leftValue
         .split(',')
@@ -299,7 +300,7 @@ abstract class LegacyRedirects {
   /// `sectionFor`). Every other query param is preserved. Idempotent: the result
   /// has no path segment, so the section arms never re-fire (no loop).
   static String _toRootWithLeftToken(Uri uri, String type) {
-    final parts = uri.query.isEmpty ? <String>[] : uri.query.split('&');
+    final parts = WorkspaceQuery.parts(uri.query);
     final idx = parts.indexWhere((p) => p == 'left' || p.startsWith('left='));
     if (idx >= 0) {
       final eq = parts[idx].indexOf('=');
@@ -313,9 +314,7 @@ abstract class LegacyRedirects {
     } else {
       parts.add('left=$type');
     }
-    return parts.isEmpty
-        ? PRoutes.world
-        : '${PRoutes.world}?${parts.join('&')}';
+    return WorkspaceQuery.location(PRoutes.world, parts);
   }
 
   /// go_router top-level redirect signature adapter. After any legacy rewrite,
