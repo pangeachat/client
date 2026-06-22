@@ -859,7 +859,8 @@ class ChatController extends State<ChatPageWithRoom>
     final focused = PanelFocusController.instance.focusedLeftToken;
     if (focused != null) {
       final focusedRoomId = PanelToken.parse(focused)?.param?.split('/').first;
-      return focusedRoomId != null && focusedRoomId == shortRoomId(room.id);
+      return focusedRoomId != null &&
+          shortRoomId(focusedRoomId) == shortRoomId(room.id);
     }
     return _router.state.path == ':roomid';
   }

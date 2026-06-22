@@ -25,12 +25,6 @@ enum TutorialEnum {
     return !_hasBeenSeen && stepProgress < stepCount;
   }
 
-  /// Whether this tutorial may run on the current surface. Every tutorial is
-  /// chat-scoped, so the gate is simply whether the chat panel is focused.
-  bool locallyEnabled(bool isFocused) {
-    return isFocused;
-  }
-
   InstructionsEnum get _instructionsEnum => switch (this) {
     TutorialEnum.readingAssistance =>
       InstructionsEnum.readingAssistanceTutorial,

@@ -264,11 +264,8 @@ class TutorialOverlayController {
     required TutorialModel tutorial,
     required bool isFocused,
   }) {
-    if (!tutorial.tutorialType.locallyEnabled(isFocused)) {
-      Logs().w(
-        "Tutorial ${tutorial.tutorialType} is not locally enabled "
-        "(chat panel not focused)",
-      );
+    if (!isFocused) {
+      Logs().w("Tutorial ${tutorial.tutorialType} is not locally enabled");
       return;
     }
 
