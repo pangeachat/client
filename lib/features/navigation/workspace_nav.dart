@@ -3,6 +3,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_query.dart';
 
 /// Builds workspace location strings by adding or removing panel tokens on the
 /// current URL, preserving the path and every other query param. The URL is the
@@ -205,20 +206,14 @@ abstract class WorkspaceNav {
             t.type != 'coursepage',
       ),
     ];
-    final parts = current.query.isEmpty ? <String>[] : current.query.split('&');
-    parts.removeWhere(
-      (p) =>
-          p == 'm' ||
-          p.startsWith('m=') ||
-          p == 'left' ||
-          p.startsWith('left='),
-    );
+    final parts = WorkspaceQuery.parts(current.query);
+    WorkspaceQuery.removeKeys(parts, {'m', 'left'});
     final query = <String>[
       'm=${PanelToken('course', shortRoomId(spaceId)).encode()}',
       'left=${left.map((t) => t.encode()).join(',')}',
       ...parts,
     ];
-    return '${PRoutes.world}?${query.join('&')}';
+    return WorkspaceQuery.location(PRoutes.world, query);
   }
 
   /// Open (or re-tab) a `course` panel at the left edge, replacing any existing
@@ -244,6 +239,15 @@ abstract class WorkspaceNav {
   /// `routing.instructions.md`.
   static String openCoursePage(Uri current, String page) =>
       openDetail(current, PanelToken('coursepage', page));
+
+  /// Open course [spaceId]'s management [page] (invite / edit / …) from
+  /// ANYWHERE: set the `?m=course:<id>` scope + `course` card, then the
+  /// `coursepage:<page>` detail beside it. Same shape as [openCoursePage] on the
+  /// already-scoped course — use this when the target course may not be the
+  /// current filter (e.g. inviting knocking users from a space tile, or from an
+  /// activity session). See `routing.instructions.md`.
+  static String openCoursePageFor(Uri current, String spaceId, String page) =>
+      openCoursePage(Uri.parse(openCourseFilter(current, spaceId)), page);
 
   /// Replace the whole `left` list (e.g. tapping a top-level section: Chats,
   /// the avatar/profile). The `right` list and other query params are preserved.
@@ -280,7 +284,7 @@ abstract class WorkspaceNav {
       if (lists.right.isNotEmpty)
         'right=${lists.right.map((t) => t.encode()).join(',')}',
     ];
-    return parts.isEmpty ? path : '$path?${parts.join('&')}';
+    return WorkspaceQuery.location(path, parts);
   }
 
   /// The raw `m=…` map-filter segment of [current]'s query, or null. The filter
@@ -342,9 +346,7 @@ abstract class WorkspaceNav {
       if (lists.right.isNotEmpty)
         'right=${lists.right.map((t) => t.encode()).join(',')}',
     ];
-    return parts.isEmpty
-        ? PRoutes.world
-        : '${PRoutes.world}?${parts.join('&')}';
+    return WorkspaceQuery.location(PRoutes.world, parts);
   }
 
   static String closeRight(Uri current, PanelToken token) =>
@@ -417,12 +419,7 @@ abstract class WorkspaceNav {
     current,
     'right',
     (tokens) => tokens
-        .where(
-          (t) =>
-              t.type != 'settings' &&
-              t.type != 'profile' &&
-              t.type != 'settingspage',
-        )
+        .where((t) => t.type != 'settings' && t.type != 'settingspage')
         .toList(),
   );
 
@@ -465,13 +462,12 @@ abstract class WorkspaceNav {
 
     // Keep every other query param exactly as it appears (raw), and replace only
     // this key's segment with the freshly encoded token list.
-    final parts = current.query.isEmpty ? <String>[] : current.query.split('&');
-    parts.removeWhere((p) => p == key || p.startsWith('$key='));
+    final parts = WorkspaceQuery.parts(current.query);
+    WorkspaceQuery.removeKeys(parts, {key});
     if (next.isNotEmpty) {
       parts.add('$key=${next.map((t) => t.encode()).join(',')}');
     }
-    final query = parts.join('&');
-    return query.isEmpty ? current.path : '${current.path}?$query';
+    return WorkspaceQuery.location(current.path, parts);
   }
 
   /// Like [_mutate] but rewrites BOTH the `left` and `right` lists in one go,
@@ -486,21 +482,14 @@ abstract class WorkspaceNav {
     final lists = parseOpenPanels(current);
     final left = leftTransform(lists.left);
     final right = rightTransform(lists.right);
-    final parts = current.query.isEmpty ? <String>[] : current.query.split('&');
-    parts.removeWhere(
-      (p) =>
-          p == 'left' ||
-          p.startsWith('left=') ||
-          p == 'right' ||
-          p.startsWith('right='),
-    );
+    final parts = WorkspaceQuery.parts(current.query);
+    WorkspaceQuery.removeKeys(parts, {'left', 'right'});
     if (left.isNotEmpty) {
       parts.add('left=${left.map((t) => t.encode()).join(',')}');
     }
     if (right.isNotEmpty) {
       parts.add('right=${right.map((t) => t.encode()).join(',')}');
     }
-    final query = parts.join('&');
-    return query.isEmpty ? current.path : '${current.path}?$query';
+    return WorkspaceQuery.location(current.path, parts);
   }
 }

@@ -14,6 +14,7 @@ import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -28,6 +29,7 @@ import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/routes/chat/events/token_info_feedback/show_token_feedback_dialog.dart';
 import 'package:fluffychat/routes/chat/events/token_info_feedback/token_info_feedback_request.dart';
+import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/analytics_summary/learning_progress_indicators.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -64,6 +66,14 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
       GrammarConstructsProvider.defaultFeaturesAndTags;
 
   List<ConstructUses>? vocab;
+
+  /// True until the first vocab+grammar fetch (`_setAnalyticsData`) completes.
+  /// `analyticsService.isInitializing` only covers the underlying service sync;
+  /// the per-type aggregation runs after that, so without this flag the panel
+  /// renders an empty list before the data lands and looks like "no data"
+  /// rather than "loading" (#7078). Stays false across later stream-driven
+  /// refreshes so they update in place instead of flashing a spinner.
+  bool loadingAnalytics = true;
 
   bool isSearching = false;
   FocusNode searchFocusNode = FocusNode();
@@ -108,10 +118,16 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
         data: {"view": widget.view, "construct": widget.construct},
         level: SentryLevel.warning,
       );
+      if (mounted && loadingAnalytics) {
+        setState(() => loadingAnalytics = false);
+      }
       return;
     }
     final future = <Future>[_setMorphs(), _setVocab(l2.langCodeShort)];
     await Future.wait(future);
+    if (mounted && loadingAnalytics) {
+      setState(() => loadingAnalytics = false);
+    }
   }
 
   void _onConstructUpdate(AnalyticsStreamUpdate update) {
@@ -121,6 +137,20 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
       _setAnalyticsData();
     }
   }
+
+  /// Close this construct detail. As a dialog it pops; as the world_v2 right-
+  /// column token there is nothing to pop to, so fall back to the analytics
+  /// summary for this construct type instead of dead-ending on the loading page
+  /// (#7076).
+  void _close() => NavigationUtil.popOrGo(
+    context,
+    WorkspaceNav.setRight(GoRouterState.of(context).uri, [
+      PanelToken(
+        'analytics',
+        widget.view == ConstructTypeEnum.vocab ? 'vocab' : 'grammar',
+      ),
+    ]),
+  );
 
   void _onBlockConstruct(AnalyticsStreamUpdate update) {
     final blocked = update.blockedConstructs;
@@ -132,7 +162,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
       }
 
       if (blocked.contains(widget.construct)) {
-        Navigator.of(context).pop();
+        _close();
       }
     }
   }
@@ -264,7 +294,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
           ? AppBar(
               leading: IconButton(
                 tooltip: L10n.of(context).close,
-                onPressed: Navigator.of(context).pop,
+                onPressed: _close,
                 icon: Icon(Icons.close),
               ),
             )
@@ -278,7 +308,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
               if (widget.construct == null && !widget.embedded)
                 LearningProgressIndicators(selected: widget.view.indicator),
               Expanded(
-                child: analyticsService.isInitializing
+                child: analyticsService.isInitializing || loadingAnalytics
                     ? Center(child: CircularProgressIndicator.adaptive())
                     : widget.view == ConstructTypeEnum.morph
                     ? widget.construct == null

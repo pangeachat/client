@@ -26,12 +26,17 @@ class JoinedObjectiveCache {
   /// Rebuild from the joined courses' quest outlines. [outlineOf] resolves a
   /// course-plan uuid to its outline (defaults to the v3 quest read layer);
   /// [starsToUnlockOf] supplies the per-course teacher override (defaults to the
-  /// standard threshold). A course that fails to resolve is skipped rather than
-  /// failing the whole set, so one bad course can't blank the banding or gate.
+  /// standard threshold). A course that fails to resolve is skipped (rather than
+  /// failing the whole set) and reported to [onError] — it must NOT be swallowed
+  /// silently: a dropped course contributes no objective ids, and a fully empty
+  /// cache blanks relevance banding and fail-opens the progression gate with no
+  /// visible signal. [onError] is injectable so the rebuild stays unit-testable
+  /// without Matrix, the network, or Sentry.
   Future<void> rebuild(
     List<String> courseUuids, {
     Future<CourseLoOutline> Function(String uuid)? outlineOf,
     int Function(String uuid)? starsToUnlockOf,
+    void Function(String uuid, Object error, StackTrace stack)? onError,
   }) async {
     final resolve = outlineOf ?? _outlineFromQuest;
     final next = <CourseLoOutline>[];
@@ -47,8 +52,11 @@ class JoinedObjectiveCache {
                   starsToUnlockOf?.call(uuid) ?? kDefaultStarsToUnlockObjective,
             ),
           );
-        } catch (_) {
-          // Skip a course that won't resolve; the rest still band and gate.
+        } catch (e, s) {
+          // Skip a course that won't resolve; the rest still band and gate. But
+          // report it — a silently-empty cache is exactly how banding and the
+          // gate go dark unnoticed.
+          onError?.call(uuid, e, s);
         }
       }),
     );
@@ -56,14 +64,6 @@ class JoinedObjectiveCache {
     _ids = {for (final o in next) ...o.orderedLoIds};
   }
 
-  static Future<CourseLoOutline> _outlineFromQuest(String uuid) async {
-    final outline = await QuestRepo.outline(uuid);
-    return CourseLoOutline(
-      orderedLoIds: outline.quest.learningObjectiveIds,
-      activityIdsByLo: {
-        for (final group in outline.groups)
-          group.objective.id: group.activities.map((a) => a.activityId).toSet(),
-      },
-    );
-  }
+  static Future<CourseLoOutline> _outlineFromQuest(String uuid) async =>
+      (await QuestRepo.outline(uuid)).toCourseLoOutline();
 }

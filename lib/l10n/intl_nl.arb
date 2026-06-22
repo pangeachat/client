@@ -9833,17 +9833,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Pro-functies",
     "pronunciationTools": "Uitspraaktools",
     "audioTranscription": "AI-audiotranscriptie",
     "visualLearnerSupport": "Ondersteuning voor visuele leerlingen",
     "instantWritingTranslation": "Directe vertaling van schrijven",
     "personalizedPracticeExercises": "Gepersonaliseerde oefenopdrachten",
     "vocabularyFlashcards": "Woordenkaartjes",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

@@ -7,8 +7,10 @@ void main() {
       LegacyRedirects.resolve(Uri.parse(location));
 
   group('LegacyRedirects', () {
-    test('old chats root maps to the chats list', () {
-      expect(resolve('/rooms'), '/chats');
+    test('old chats root maps straight to the chats list (one hop)', () {
+      // #7067: /rooms previously resolved to the dead `/chats` literal and only
+      // then re-redirected; it now lands on the chats token directly.
+      expect(resolve('/rooms'), '/?left=chats');
     });
 
     test('sections are lifted to first-class roots', () {

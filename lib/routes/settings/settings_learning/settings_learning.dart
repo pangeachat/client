@@ -2,9 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_learning/settings_learning_view.dart';
+import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -84,11 +88,20 @@ class SettingsLearningController extends State<SettingsLearning> {
     super.dispose();
   }
 
+  /// Close the learning-settings surface. As a dialog it pops; as the world_v2
+  /// settings panel there is nothing on the stack to pop to, so it navigates back
+  /// to the settings menu via its token instead of dead-ending on the loading
+  /// page (#7076).
+  void _closeSettings() => NavigationUtil.popOrGo(
+    context,
+    WorkspaceNav.settingsBack(GoRouterState.of(context).uri, 'learning'),
+  );
+
   // if the settings have been changed, show a dialog the user wants to exit without saving
   // if the settings have not been changed, just close the settings page
   Future<void> onSettingsClose() async {
     if (!viewModel.haveSettingsChanged) {
-      Navigator.of(context).pop();
+      _closeSettings();
       return;
     }
 
@@ -99,7 +112,7 @@ class SettingsLearningController extends State<SettingsLearning> {
       context: context,
     );
 
-    resp == OkCancelResult.ok ? await submit() : Navigator.of(context).pop();
+    resp == OkCancelResult.ok ? await submit() : _closeSettings();
   }
 
   // Saves settings without navigating. Returns true if save succeeded.
@@ -130,7 +143,7 @@ class SettingsLearningController extends State<SettingsLearning> {
 
   Future<void> submit() async {
     if (await _saveChanges(context)) {
-      Navigator.of(context).pop();
+      _closeSettings();
     }
   }
 

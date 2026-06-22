@@ -512,6 +512,25 @@ void main() {
       expect(lists.left, [const PanelToken('chats')]); // section replaced left
       expect(lists.right, [const PanelToken('analytics', 'vocab')]); // kept
     });
+
+    test('back from the route-driven course detail lands on the plan list '
+        '(#7090)', () {
+      // The course detail is route-driven (`/courses/own/:courseid`), so its
+      // parent segments render a blank EmptyPage. Its back navigates to the
+      // start-my-own plan list token over the world map rather than popping to
+      // that blank parent — even though the current URL is the legacy path.
+      final planList = WorkspaceNav.setSection(
+        u('/courses/own/abc-123'),
+        '/',
+        const PanelToken('addcourse', 'own'),
+        keepRoom: false,
+      );
+      expect(u(planList).path, '/');
+      expect(parseOpenPanels(u(planList)).left, [
+        const PanelToken('addcourse', 'own'),
+      ]);
+      expect(parseOpenPanels(u(planList)).right, isEmpty);
+    });
   });
 
   group('openDetail (generic, registry-driven exclusive groups)', () {
@@ -626,6 +645,37 @@ void main() {
       expect(parseOpenPanels(u(loc)).left.single, const PanelToken('course'));
       expect(activeSpaceIdFor(u(loc)), '!s');
     });
+
+    test(
+      'openCoursePageFor opens a management page from ANYWHERE — setting the '
+      'target space scope even from the bare map or a different course',
+      () {
+        // From the bare world map (no course scope at all).
+        var loc = WorkspaceNav.openCoursePageFor(u('/'), '!target', 'invite');
+        expect(activeSpaceIdFor(u(loc)), '!target');
+        expect(parseOpenPanels(u(loc)).left.map((t) => t.type).toList(), [
+          'course',
+          'coursepage',
+        ]);
+        expect(
+          parseOpenPanels(u(loc)).left.last,
+          const PanelToken('coursepage', 'invite'),
+        );
+        // From a DIFFERENT course — the scope is replaced with the target's.
+        loc = WorkspaceNav.openCoursePageFor(
+          u('/?m=course:!other&left=course'),
+          '!target',
+          'edit',
+        );
+        expect(activeSpaceIdFor(u(loc)), '!target');
+        expect(
+          parseOpenPanels(
+            u(loc),
+          ).left.where((t) => t.type == 'coursepage').single,
+          const PanelToken('coursepage', 'edit'),
+        );
+      },
+    );
   });
 
   group('openPractice (takes over the analytics surface)', () {

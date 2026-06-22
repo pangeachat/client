@@ -6,6 +6,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 
@@ -106,10 +107,13 @@ class WorldMapLargeCard extends StatelessWidget {
               // A locked activity has no progress, so no star row — and dropping
               // it keeps the card from overflowing when the requirement wraps.
               if (!locked) ...[const SizedBox(height: 8), _starRow()],
-              if (locked) ...[const SizedBox(height: 8), _lockedRequirement()],
+              if (locked) ...[
+                const SizedBox(height: 8),
+                _lockedRequirement(context),
+              ],
               if (completed) ...[
                 const SizedBox(height: 8),
-                _completedActions(),
+                _completedActions(context),
               ],
               if (joinable && (participants.isNotEmpty || openSlots > 0)) ...[
                 const SizedBox(height: 8),
@@ -147,7 +151,7 @@ class WorldMapLargeCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 4),
-              _typeChip(locked: locked, completed: completed),
+              _typeChip(context, locked: locked, completed: completed),
             ],
           ),
         ),
@@ -187,15 +191,22 @@ class WorldMapLargeCard extends StatelessWidget {
 
   // All v3 activities are conversations today; surfaced as the type chip, unless
   // the activity is completed (a Completed marker takes the chip's place).
-  // TODO(world-map): localize and read the real activity type once modeled.
-  Widget _typeChip({required bool locked, required bool completed}) {
+  // TODO(world-map): read the real activity type once modeled.
+  Widget _typeChip(
+    BuildContext context, {
+    required bool locked,
+    required bool completed,
+  }) {
+    final l10n = L10n.of(context);
     final Color fg = completed
         ? _completedGreen
         : (locked ? _grayText : _accent);
     final IconData icon = completed
         ? Icons.check_circle_outline
         : (pinged ? Icons.back_hand : Icons.chat_bubble_outline);
-    final String label = completed ? 'Completed' : 'Conversation';
+    final String label = completed
+        ? l10n.mapFilterCompleted
+        : l10n.activityTypeConversation;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       decoration: BoxDecoration(
@@ -262,15 +273,15 @@ class WorldMapLargeCard extends StatelessWidget {
   // The activity behind a locked pin can't be started yet; its plan page opens
   // read-only. The card states why.
   // TODO(world-map): name the specific gating objective + star threshold.
-  Widget _lockedRequirement() {
-    return const Row(
+  Widget _lockedRequirement(BuildContext context) {
+    return Row(
       children: [
-        Icon(Icons.lock, size: 13, color: _grayText),
-        SizedBox(width: 6),
+        const Icon(Icons.lock, size: 13, color: _grayText),
+        const SizedBox(width: 6),
         Expanded(
           child: Text(
-            'Finish the previous mission to unlock',
-            style: TextStyle(fontSize: 11, color: _grayText),
+            L10n.of(context).lockedMissionRequirement,
+            style: const TextStyle(fontSize: 11, color: _grayText),
           ),
         ),
       ],
@@ -279,19 +290,20 @@ class WorldMapLargeCard extends StatelessWidget {
 
   // Indicators of what the plan page offers a finished activity; the card itself
   // taps through to that page (it does not act on these inline).
-  Widget _completedActions() {
+  Widget _completedActions(BuildContext context) {
+    final l10n = L10n.of(context);
     return Row(
       children: [
         _actionPill(
           Icons.refresh,
-          'Play again',
+          l10n.playAgain,
           _purple,
           const Color(0xFFCECBF6),
         ),
         const SizedBox(width: 6),
         _actionPill(
           Icons.visibility_outlined,
-          'Review',
+          l10n.reviewActivity,
           _grayText,
           const Color(0xFFD3D1C7),
         ),

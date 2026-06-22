@@ -1,4 +1,5 @@
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/free_trial_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
 
 class JoinedCourseOnboardingStep extends OnboardingStep {
@@ -11,7 +12,7 @@ class JoinedCourseOnboardingStep extends OnboardingStep {
   @override
   String get stepDestination {
     final roomId = state.joinedRoomId;
-    if (roomId == null) return "/rooms";
+    if (roomId == null) return PRoutes.chatsList;
     // world_v2: a joined course is `/courses/<bareLocalpart>` (PRoutes.course),
     // not the retired `/rooms/spaces/:spaceid` shape. Passing the FULL room id
     // through the legacy redirect mis-parses it (the same break as the course
@@ -21,8 +22,21 @@ class JoinedCourseOnboardingStep extends OnboardingStep {
   }
 
   @override
-  Future<OnboardingStep?> execute() async => null;
+  Future<OnboardingStep?> execute() async =>
+      state.trialInfoProvider.shouldShowTrialPage
+      ? FreeTrialOnboardingStep(
+          client: client,
+          state: state,
+          maxRemainingSteps: maxRemainingSteps,
+        )
+      : null;
 
   @override
-  OnboardingStep? skip() => null;
+  OnboardingStep? skip() => state.trialInfoProvider.shouldShowTrialPage
+      ? FreeTrialOnboardingStep(
+          client: client,
+          state: state,
+          maxRemainingSteps: maxRemainingSteps,
+        )
+      : null;
 }

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_bottom_content.dart';
@@ -55,24 +56,19 @@ class ActivitySessionStartView extends StatelessWidget {
         // reopened card). [reopenCard] additionally restores `left=course` over the
         // surviving scope (the parent card, reconstructed from the scope).
         String overlayDropped({required bool reopenCard}) {
-          final parts = uri.query.isEmpty ? <String>[] : uri.query.split('&');
-          parts.removeWhere(
-            (p) =>
-                p == 'activity' ||
-                p.startsWith('activity=') ||
-                p == 'roomid' ||
-                p.startsWith('roomid=') ||
-                p == 'launch' ||
-                p.startsWith('launch=') ||
-                p == 'autoplay' ||
-                p.startsWith('autoplay='),
-          );
+          final parts = WorkspaceQuery.parts(uri.query);
+          WorkspaceQuery.removeKeys(parts, {
+            'activity',
+            'roomid',
+            'launch',
+            'autoplay',
+          });
           final scoped = parts.any((p) => p.startsWith('m=course:'));
           final hasLeft = parts.any(
             (p) => p == 'left' || p.startsWith('left='),
           );
           if (reopenCard && scoped && !hasLeft) parts.add('left=course');
-          return parts.isEmpty ? '/' : '/?${parts.join('&')}';
+          return WorkspaceQuery.location('/', parts);
         }
 
         // Pangea#

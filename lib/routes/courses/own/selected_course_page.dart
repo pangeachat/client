@@ -8,6 +8,8 @@ import 'package:matrix/matrix.dart' as sdk;
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
@@ -44,6 +46,32 @@ class SelectedCourseController extends State<SelectedCourse>
     super.didUpdateWidget(oldWidget);
     if (oldWidget.courseId != widget.courseId) {
       loadCourse(widget.courseId);
+    }
+  }
+
+  /// world_v2: the course detail is route-driven (`/courses/own/:courseid` and
+  /// `/courses/:spaceid/addcourse/:courseId`) because the launch/add Completer
+  /// can't ride a token URL, so the parent `/courses…` segments render a blank
+  /// `EmptyPage`. A plain `Navigator.pop()` surfaces that blank page (#7090).
+  /// Navigate back to where the detail was opened from instead: the start-my-own
+  /// plan list (`addcourse:own` over the world map) for launch, or the target
+  /// course card for add-to-space.
+  void back() {
+    final uri = GoRouterState.of(context).uri;
+    switch (widget.mode) {
+      case SelectedCourseMode.launch:
+        context.go(
+          WorkspaceNav.setSection(
+            uri,
+            PRoutes.world,
+            const PanelToken('addcourse', 'own'),
+            keepRoom: false,
+          ),
+        );
+      case SelectedCourseMode.addToSpace:
+        context.go(
+          WorkspaceNav.openCourseFilter(uri, widget.spaceId!, tab: 'course'),
+        );
     }
   }
 

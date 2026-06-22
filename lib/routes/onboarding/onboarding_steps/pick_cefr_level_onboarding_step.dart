@@ -1,4 +1,5 @@
 import 'package:fluffychat/routes/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/free_trial_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
@@ -32,7 +33,14 @@ class PickCefrLevelOnboardingStep extends OnboardingStep {
     });
 
     return switch (type) {
-      UserType.student => null,
+      UserType.student =>
+        state.trialInfoProvider.shouldShowTrialPage
+            ? FreeTrialOnboardingStep(
+                client: client,
+                state: state,
+                maxRemainingSteps: maxRemainingSteps,
+              )
+            : null,
       UserType.teacher => CustomCourseOnboardingStep(
         client: client,
         state: state,

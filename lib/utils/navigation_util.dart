@@ -14,6 +14,21 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 /// `/rooms/...` or `/courses/...` render paths anymore; inbound legacy paths are
 /// rewritten to tokens by `legacy_redirects`. See `routing.instructions.md`.
 class NavigationUtil {
+  /// Close the current surface without dead-ending. A real pushed route or
+  /// dialog pops normally; but a world_v2 token panel (a settings page, an
+  /// analytics detail) has nothing on the navigator stack to pop to, so a bare
+  /// `Navigator.pop()` falls out of the shell to the initial route and renders
+  /// the loading page (#7076). When there is nothing to pop, navigate to
+  /// [fallback] — a token location — instead. See `routing.instructions.md`.
+  static void popOrGo(BuildContext context, String fallback) {
+    final navigator = Navigator.of(context);
+    if (navigator.canPop()) {
+      navigator.pop();
+    } else {
+      GoRouter.of(context).go(fallback);
+    }
+  }
+
   static void goToSpaceRoute(
     String? goalRoomID,
     List<String> goalSubroute,

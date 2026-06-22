@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
@@ -68,21 +69,22 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     super.dispose();
   }
 
-  /// Claim vertical mouse-wheel events for this list before flutter_map does.
-  /// The list floats in a PanelCard over the persistent world map; flutter_map
-  /// registers every vertical wheel with the shared PointerSignalResolver for
-  /// scroll-zoom, and the per-module activity rows are HORIZONTAL lists that
-  /// don't consume a vertical wheel (dx == 0) — so without this the wheel falls
-  /// through to the map and the panel can only be scrolled by keyboard.
-  /// Registering first (this Listener sits above the map in the panel) wins the
-  /// resolver and drives our own controller. See routing.instructions.md.
+  /// Scroll this list from a vertical mouse wheel anywhere over the panel —
+  /// including the gaps between cards and the objective headers. Those areas are
+  /// hit-transparent, so without an OPAQUE listener the wheel falls straight
+  /// through this floating panel to the persistent world map below and zooms it,
+  /// while the list (whose own Scrollable only captures a wheel landing on a
+  /// card) never moves. Registering on the shared [PointerSignalResolver] yields
+  /// to the list's native Scrollable when the wheel IS over a card (it registers
+  /// first, being deeper in the tree) and only drives the controller for the
+  /// fall-through areas — so there is no double-scroll. See routing.instructions.md.
   void _claimVerticalScroll(PointerSignalEvent event) {
     if (event is! PointerScrollEvent || event.scrollDelta.dy == 0) return;
     if (!_scrollController.hasClients) return;
     GestureBinding.instance.pointerSignalResolver.register(event, (resolved) {
       resolved as PointerScrollEvent;
       final position = _scrollController.position;
-      final target = (_scrollController.offset + resolved.scrollDelta.dy).clamp(
+      final target = (position.pixels + resolved.scrollDelta.dy).clamp(
         position.minScrollExtent,
         position.maxScrollExtent,
       );
@@ -148,11 +150,17 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
           ),
         );
         // In a preview the list is embedded in an outer scroll view (shrinkWrap)
-        // with no map behind it; only the standalone panel list must claim the
-        // wheel from the map.
-        return widget.shrinkWrap
-            ? list
-            : Listener(onPointerSignal: _claimVerticalScroll, child: list);
+        // with no map behind it, so a wheel can't leak — return it bare. The
+        // standalone course-card panel floats over the map, so capture the wheel
+        // OPAQUELY across the whole panel: the gaps between cards and the
+        // objective headers are hit-transparent, and a wheel there would zoom the
+        // map instead of scrolling the list. See [_claimVerticalScroll].
+        if (widget.shrinkWrap) return list;
+        return Listener(
+          behavior: HitTestBehavior.opaque,
+          onPointerSignal: _claimVerticalScroll,
+          child: list,
+        );
       },
     );
   }
@@ -247,20 +255,13 @@ class _ObjectiveSection extends StatelessWidget {
                     // immersive task, so it REPLACES other panels rather than
                     // stacking on them — backing out returns to the course map,
                     // never a stale vocab/analytics page. See routing.instructions.md.
-                    final parts = uri.query.isEmpty
-                        ? <String>[]
-                        : uri.query.split('&');
-                    parts.removeWhere(
-                      (p) =>
-                          p == 'left' ||
-                          p.startsWith('left=') ||
-                          p == 'right' ||
-                          p.startsWith('right=') ||
-                          p == 'activity' ||
-                          p.startsWith('activity=') ||
-                          p == 'autoplay' ||
-                          p.startsWith('autoplay='),
-                    );
+                    final parts = WorkspaceQuery.parts(uri.query);
+                    WorkspaceQuery.removeKeys(parts, {
+                      'left',
+                      'right',
+                      'activity',
+                      'autoplay',
+                    });
                     parts.add('activity=${ref.activityId}');
                     // Tapping a video card opens the plan with that video
                     // autostarting (muted) — see the carousel.
@@ -268,7 +269,7 @@ class _ObjectiveSection extends StatelessWidget {
                         ref.plan.heroBlock?.isYoutube == true) {
                       parts.add('autoplay=0');
                     }
-                    context.go('/?${parts.join('&')}');
+                    context.go(WorkspaceQuery.location('/', parts));
                   },
                   child: Stack(
                     children: [

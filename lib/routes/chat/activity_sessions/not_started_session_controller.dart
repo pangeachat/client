@@ -175,14 +175,7 @@ class NotStartedSessionController extends State<NotStartedSession>
     final client = Matrix.of(context).client;
     try {
       final outline = await QuestRepo.outline(uuid);
-      final courseLo = CourseLoOutline(
-        orderedLoIds: outline.quest.learningObjectiveIds,
-        activityIdsByLo: {
-          for (final group in outline.groups)
-            group.objective.id: group.activities
-                .map((a) => a.activityId)
-                .toSet(),
-        },
+      final courseLo = outline.toCourseLoOutline(
         starsToUnlock:
             course.teacherMode.starsToUnlockObjective ??
             kDefaultStarsToUnlockObjective,
@@ -235,7 +228,14 @@ class NotStartedSessionController extends State<NotStartedSession>
   void inviteToCourse() {
     final course = widget.course;
     if (course == null) return;
-    context.push("/rooms/spaces/${course.id}/invite");
+    // world_v2: token nav to the course's invite page (no stacked route push).
+    context.go(
+      WorkspaceNav.openCoursePageFor(
+        GoRouterState.of(context).uri,
+        course.id,
+        'invite',
+      ),
+    );
   }
 
   Future<void> joinExistingSession() async {

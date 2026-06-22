@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_room_extension.dart';
@@ -50,7 +51,7 @@ class DeleteSpaceDialog extends StatefulWidget {
     );
 
     if (!result.isError) {
-      context.go("/rooms");
+      context.go(PRoutes.chatsList);
     }
   }
 

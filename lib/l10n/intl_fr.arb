@@ -10230,17 +10230,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Fonctionnalités Pro",
     "pronunciationTools": "Outils de prononciation",
     "audioTranscription": "Transcription audio IA",
     "visualLearnerSupport": "Soutien aux apprenants visuels",
     "instantWritingTranslation": "Traduction instantanée de l'écriture",
     "personalizedPracticeExercises": "Exercices de pratique personnalisés",
     "vocabularyFlashcards": "Cartes mémoire de vocabulaire",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

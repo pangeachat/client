@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/notifications/notifications_client_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -256,7 +257,12 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
                 child: InkWell(
                   onTap: () {
                     messenger!.hideCurrentSnackBar();
-                    context.go("/rooms/settings/security/3pid");
+                    context.go(
+                      WorkspaceNav.openSettings(
+                        GoRouterState.of(context).uri,
+                        page: 'security/3pid',
+                      ),
+                    );
                   },
                   child: Text(
                     L10n.of(context).clickToAddEmail,

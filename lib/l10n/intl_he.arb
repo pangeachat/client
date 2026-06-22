@@ -10912,17 +10912,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "תכונות פרו",
     "pronunciationTools": "כלי הגייה",
     "audioTranscription": "תמלול אודיו בעזרת AI",
     "visualLearnerSupport": "תמיכה בלומדים חזותיים",
     "instantWritingTranslation": "תרגום כתיבה מיידי",
     "personalizedPracticeExercises": "תרגילים מותאמים אישית",
     "vocabularyFlashcards": "כרטיסיות אוצר מילים",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

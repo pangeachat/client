@@ -18,6 +18,7 @@ import 'package:fluffychat/routes/analytics/construct_analytics/analytics_detail
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_page.dart';
 import 'package:fluffychat/routes/analytics/level/level_analytics_details_content.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
+import 'package:fluffychat/routes/world/panel_header.dart';
 import 'package:fluffychat/routes/world/settings_panel.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 
@@ -103,7 +104,6 @@ class WorkspaceRightPanel extends StatelessWidget {
         final (title, child) = _analytics(l10n, token.param);
         return card(title, child);
       case 'settings':
-      case 'profile':
         // The settings/profile MENU master. Closing it drops its open page too
         // (the page has no meaning without the menu). The page opens beside it
         // as a `settingspage` detail (below).
@@ -210,28 +210,13 @@ class WorkspaceRightPanel extends StatelessWidget {
     return PanelCard(
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(4, 4, 4, 0),
-            child: Row(
-              children: [
-                IconButton(
-                  tooltip: tooltip ?? L10n.of(context).close,
-                  icon: Icon(icon),
-                  onPressed: onLeading ?? () => _close(context),
-                ),
-                const SizedBox(width: 4),
-                Expanded(
-                  child: Text(
-                    title,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ],
+          PanelHeader(
+            leading: IconButton(
+              tooltip: tooltip ?? L10n.of(context).close,
+              icon: Icon(icon),
+              onPressed: onLeading ?? () => _close(context),
             ),
+            title: title,
           ),
           Expanded(child: child),
         ],

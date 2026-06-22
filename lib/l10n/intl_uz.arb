@@ -9837,17 +9837,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Pro xususiyatlar",
     "pronunciationTools": "Talaffuz vositalari",
     "audioTranscription": "AI audio transkriptsiyasi",
     "visualLearnerSupport": "Vizual o'quvchilarni qo'llab-quvvatlash",
     "instantWritingTranslation": "Zudlik bilan yozuv tarjimasi",
     "personalizedPracticeExercises": "Shaxsiylashtirilgan mashq vazifalari",
     "vocabularyFlashcards": "Lug'at kartochkalari",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}
