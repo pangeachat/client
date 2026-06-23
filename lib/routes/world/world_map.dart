@@ -6,6 +6,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
+import 'package:vector_map_tiles/vector_map_tiles.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
@@ -88,6 +89,15 @@ class WorldMap extends StatefulWidget {
 class WorldMapController extends State<WorldMap>
     with SingleTickerProviderStateMixin {
   final MapController _ownController = MapController();
+
+  /// #7077: the OpenFreeMap dark vector style, loaded ONCE. A single Style read
+  /// fans out to the tilejson, glyphs, and sprite; the dark base layer
+  /// FutureBuilds on this and falls back to the CartoDB raster until it resolves
+  /// (or if it errors), so dark mode is never blank. `late final` so it is
+  /// created on first access only — i.e. only in dark mode.
+  late final Future<Style> darkMapStyle = StyleReader(
+    uri: 'https://tiles.openfreemap.org/styles/dark',
+  ).read();
 
   /// The activity pins currently shown — the active context's set (the whole
   /// world, or a selected quest's activities). Thin: id, title, point.

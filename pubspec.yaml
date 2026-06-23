@@ -41,6 +41,11 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_map: ^8.2.2
+  # #7077: OpenFreeMap vector tiles for the dark basemap (single request, client-
+  # side label/water styling). Pinned EXACT (prerelease) — a caret could resolve
+  # up into 10.x betas that need Flutter's main channel + Impeller (useless on
+  # CanvasKit web). 9.0.0-beta.9 targets flutter_map ^8.1.1, which our ^8.2.2 meets.
+  vector_map_tiles: 9.0.0-beta.9
   flutter_new_badger: ^1.1.1
   flutter_secure_storage: ^9.2.4
   flutter_shortcuts_new: ^2.0.0

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:vector_map_tiles/vector_map_tiles.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -197,16 +198,39 @@ class WorldMapView extends StatelessWidget {
         onPositionChanged: (_, _) => controller.handleMapPositionChanged(),
       ),
       children: [
-        // Base tiles, switched by app theme: OpenStreetMap (light) / CartoDB
-        // Dark Matter (dark). Retina (@2x) keeps the dark basemap's small
-        // labels sharp; CartoDB serves @2x, light (OSM) stays 1x.
-        TileLayer(
-          urlTemplate: dark
-              ? 'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-              : 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-          retinaMode: retina,
-          userAgentPackageName: 'com.talktolearn.chat',
-        ),
+        // Base map. LIGHT is Phase-1 OSM raster (already legible, zero client
+        // CPU). DARK is Phase-2 OpenFreeMap VECTOR (#7077): one styled source so
+        // the label contrast + water are ours, no second request. The vector
+        // style loads async; until it resolves — and if it ever errors — we fall
+        // back to the CartoDB raster so dark mode is never blank. layerMode
+        // defaults to raster (each vector tile is rasterized once and blitted),
+        // which keeps the per-frame cost off the UI thread on CanvasKit web.
+        if (dark)
+          FutureBuilder<Style>(
+            future: controller.darkMapStyle,
+            builder: (context, snapshot) {
+              final style = snapshot.data;
+              if (style == null) {
+                return TileLayer(
+                  urlTemplate:
+                      'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+                  retinaMode: retina,
+                  userAgentPackageName: 'com.talktolearn.chat',
+                );
+              }
+              return VectorTileLayer(
+                theme: style.theme,
+                sprites: style.sprites,
+                tileProviders: style.providers,
+                maximumZoom: 18,
+              );
+            },
+          )
+        else
+          TileLayer(
+            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            userAgentPackageName: 'com.talktolearn.chat',
+          ),
         // world_v2: activity pins by relevance tier + state. Small dots (the
         // long tail) and mid pins (promoted matches) are clustered for
         // Google-Maps de-overlap; the 1–3 large featured cards render
@@ -260,7 +284,8 @@ class WorldMapView extends StatelessWidget {
         RichAttributionWidget(
           attributions: [
             TextSourceAttribution('OpenStreetMap contributors', onTap: () {}),
-            if (dark) TextSourceAttribution('CARTO', onTap: () {}),
+            // Dark uses OpenFreeMap vector tiles (OpenMapTiles schema) — #7077.
+            if (dark) TextSourceAttribution('OpenMapTiles', onTap: () {}),
           ],
         ),
       ],
