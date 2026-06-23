@@ -30,9 +30,16 @@ The choreographer supports a per-request `mock` field. When set, the handler run
 Contract (full version at [`pangeachat/.github/instructions/testing.instructions.md` § Mocking paid third-party calls](https://github.com/pangeachat/.github/blob/main/.github/instructions/testing.instructions.md#mocking-paid-third-party-calls)):
 
 - **The flag does not auto-propagate.** Add `mock=true` on the client's choreo requests when the Playwright run wants mocked responses.
-- **Send ``mock_llm_latency_override_s=0`** in Playwright choreo requests. The default profile mimics real-LLM latency for load testing, which would make Playwright runs unnecessarily slow.
+- **Mock latency is a choreo environment variable, not a request field.** The default mock profile mimics real-LLM latency for load testing; the staging/test deployment zeroes it via the env knob so Playwright runs aren't needlessly slow. There is no per-request latency-override field for the client to send.
 - **Mocked responses are deterministic but obviously bogus** — WA returns one double-spaced edit, image-gen returns `mock.pangea.chat/transparent-1x1.png`. Assert on shape, not content.
 - **If a route triggers a 500 error code under `mock=true`, the handler likely lacks a registered mock producer.** The mock-LLM registry's `default_structured_mock(schema)` falls through to `schema()`, which fails for any schema with required fields lacking Pydantic defaults. Check `app/handlers/<h>/mock.py` in `pangeachat/2-step-choreographer`; if absent, file a bug there (`#2485` is the canonical example). The fix is a small per-handler module; do not work around it on the client side.
+
+### Activity reads are not mockable
+
+`mock=true` only swaps paid LLM calls inside a handler — it does not intercept an activity **read**. The version pin is server-minted on the live read/lobby path (see [`pangeachat/.github` activities doc](https://github.com/pangeachat/.github/blob/main/.github/instructions/activities.instructions.md)), so a mocked read returns no real pin and exercises nothing. Cover the pin and goal-slug contracts through one of two paths instead:
+
+- **Mock activity *generation*** — generation is a handler, so it mocks. Its mock must emit a deterministic goals pool (the same fixed goals every run), so goal-slug derivation and star attribution are assertable against known values rather than per-run noise.
+- **Seeded CMS rows** — pre-seed versioned activity rows so a real read mints a real pin. Include a seeded fixture pinned to a version past the 20-version eviction cap, so the degraded fallback path (render latest, scoring suppresses awards) has coverage and isn't only exercised in production.
 
 ## Auth state persistence
 
