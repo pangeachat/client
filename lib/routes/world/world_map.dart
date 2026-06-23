@@ -170,7 +170,7 @@ class WorldMapController extends State<WorldMap>
 
   /// Size of the featured (joinable) pool, recorded by [WorldMapView] each build;
   /// the rotation tick only advances when it exceeds [largeBudget].
-  int largePoolSize = 0;
+  int _largePoolSize = 0;
 
   /// How many large featured cards show at once (desktop).
   static const int largeBudget = 3;
@@ -211,7 +211,7 @@ class WorldMapController extends State<WorldMap>
     // Rotate the large featured slots when more joinable activities qualify than
     // the budget, so each gets airtime (world-map.instructions.md).
     _rotationTimer = Timer.periodic(const Duration(seconds: 5), (_) {
-      if (mounted && largePoolSize > largeBudget) {
+      if (mounted && _largePoolSize > largeBudget) {
         setState(() => _largeRotationIndex++);
       }
     });
@@ -281,6 +281,8 @@ class WorldMapController extends State<WorldMap>
       _completion = completion;
     });
   }
+
+  void setLargePoolSize(int update) => _largePoolSize = update;
 
   /// The learner's joined course spaces (a space they belong to that carries a
   /// course plan) — the source set for the objective cache + relevance banding.
@@ -561,15 +563,18 @@ class WorldMapController extends State<WorldMap>
     });
   }
 
-  void resetFilters() {
-    final wasWidened = !_l2Only;
+  void resetFilters({bool l2Only = true}) {
+    final toggleL2Only = _l2Only != l2Only;
     setState(() {
       _query = '';
       _completionFilter.clear();
       _cefrFilter = {..._defaultCefr};
-      _l2Only = true;
+      _l2Only = l2Only;
     });
-    if (wasWidened) loadWorldPins(); // L2 narrowed again → re-fetch
+
+    if (toggleL2Only) {
+      loadWorldPins(); // L2 narrowed again → re-fetch
+    }
   }
 
   /// Fly to a search result and open its preview (the Maps-style result tap).

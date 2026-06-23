@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 
@@ -6,10 +9,55 @@ import 'package:fluffychat/routes/settings/settings_learning/language_level_type
 /// world-map.instructions.md). Completion is no longer a state — it renders as a
 /// progress fill carried by [PinSignals.completionFraction], orthogonal to the
 /// colour, so finished work stays visible without hiding the next thing to do.
-enum ActivityPinState { locked, unlocked, joinable }
+enum ActivityPinState {
+  locked,
+  unlocked,
+  joinable;
+
+  /// The colour a pin reads as for its [ActivityPinState] (see
+  /// world-map.instructions.md): locked gray, unlocked purple, joinable green.
+  /// Completion is not a colour — it renders as the inner gold fill in [_stateDot].
+  Color get color {
+    switch (this) {
+      case ActivityPinState.joinable:
+        return const Color(0xFF34A853); // green — an open session to join
+      case ActivityPinState.unlocked:
+        return const Color(0xFF7B61FF); // purple — available, not started
+      case ActivityPinState.locked:
+        return Colors.grey;
+    }
+  }
+
+  Color get accent {
+    switch (this) {
+      case ActivityPinState.joinable:
+        return AppConfig.green;
+      case ActivityPinState.locked:
+        return AppConfig.gray;
+      case ActivityPinState.unlocked:
+        return AppConfig.purple;
+    }
+  }
+}
 
 /// The visual weight a pin renders at, assigned by the ranking + state gate.
-enum PinTier { small, mid, large }
+enum PinTier {
+  small,
+  mid,
+  large;
+
+  double dotHeight(ActivityPinState state) => switch (this) {
+    PinTier.small => 18.0,
+    PinTier.mid => 44.0,
+    PinTier.large => state == ActivityPinState.joinable ? 184.0 : 150.0,
+  };
+
+  double get dotWidth => switch (this) {
+    PinTier.small => 18.0,
+    PinTier.mid => 44.0,
+    PinTier.large => 260.0,
+  };
+}
 
 /// Live signals for one activity, derived from Matrix room state (not on the
 /// pin card): its resolved [state], a 0..1 [completionFraction] (stars earned

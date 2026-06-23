@@ -2,11 +2,9 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/quests/user_stars.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
-import 'package:fluffychat/routes/world/world_map_large_card.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 
@@ -183,36 +181,6 @@ Map<String, MapCompletionFilter> reduceCompletion(
     }
   }
   return m;
-}
-
-/// The newest open joinable session for [activityId]: its joined non-bot
-/// participants (for the avatar stack) and its open-role count (the "?" slots).
-/// Empty when no such session is in the user's reachable rooms. A Matrix reducer
-/// (reads participants), so it lives beside the other room derivations rather
-/// than in the stateless view.
-({List<LargeCardParticipant> participants, int openSlots}) joinableInfo(
-  Client client,
-  String activityId,
-) {
-  Room? best;
-  for (final r in client.rooms) {
-    if (r.activityId != activityId) continue;
-    if (!(r.numRemainingRoles > 0 && r.ownRoleState == null)) continue;
-    final ms = r.lastEvent?.originServerTs.millisecondsSinceEpoch ?? 0;
-    final bestMs = best?.lastEvent?.originServerTs.millisecondsSinceEpoch ?? 0;
-    if (best == null || ms > bestMs) best = r;
-  }
-  if (best == null) return (participants: const [], openSlots: 0);
-  final participants = best
-      .getParticipants()
-      .where(
-        (u) => u.membership == Membership.join && u.id != BotName.byEnvironment,
-      )
-      .map<LargeCardParticipant>(
-        (u) => (avatar: u.avatarUrl, name: u.calcDisplayname()),
-      )
-      .toList();
-  return (participants: participants, openSlots: best.numRemainingRoles);
 }
 
 /// CEFR levels at or below [level] — the personalized default band (attainable
