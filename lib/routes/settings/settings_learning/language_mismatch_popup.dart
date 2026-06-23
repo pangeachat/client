@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/bot/utils/bot_style.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/overlay/overlay.dart';
+import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/card_header.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -24,6 +26,30 @@ class LanguageMismatchPopup extends StatelessWidget {
     required this.targetLanguage,
     required this.onConfirm,
   });
+
+  static void show({
+    required BuildContext context,
+    required String targetId,
+    required String message,
+    required LanguageModel targetLanguage,
+    required VoidCallback onConfirm,
+  }) {
+    OverlayUtil.showPositionedCard(
+      context: context,
+      cardToShow: LanguageMismatchPopup(
+        message: message,
+        overlayId: 'language_mismatch_popup',
+        onConfirm: onConfirm,
+        targetLanguage: targetLanguage,
+      ),
+      displayDetails: PositionedOverlayDisplayDetails(
+        maxHeight: 325,
+        maxWidth: 325,
+        transformTargetId: targetId,
+        overlayKey: 'language_mismatch_popup',
+      ),
+    );
+  }
 
   Future<void> _updateLanguage() async {
     await MatrixState.pangeaController.userController.updateProfile((profile) {
