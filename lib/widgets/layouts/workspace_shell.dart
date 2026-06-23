@@ -64,6 +64,96 @@ GlobalKey _roomKeyFor(String roomId) => _leftRoomKeys.putIfAbsent(
 /// [_ShellLayout.resolve]. See `routing.instructions.md`.
 final List<String> _paneRecency = <String>[];
 
+/// The stable recency identity of an open panel — its *family instance*, not its
+/// current page. Navigating WITHIN a panel changes the token string but must NOT
+/// change which panel is the recency focus (a within-panel move is a push on the
+/// panel's own stack, not a fresh open; see `routing.instructions.md`), so the
+/// key deliberately ignores the parts of the token that a within-panel
+/// navigation rewrites:
+///
+///  - The family is the **root of the navigation tree** ([PanelDef.parent]
+///    chain): a `settingspage` detail keys as its `settings` master, a
+///    `vocab`/`grammar` construct as its `analytics` summary, a `coursepage` as
+///    its `course` card — so opening/paging a detail off a master keeps the
+///    master's recency slot instead of demoting an unrelated open popup.
+///  - The instance is the family root's **identity**: a `room`/`session` is
+///    keyed by its bare room id (the `<id>/subpage` push is stripped, mirroring
+///    the URL parser's dedup), so two different rooms stay distinct while a
+///    room → members push keeps one slot. A singleton family (settings,
+///    analytics, course — whose live identity is the `?m=` filter, not the tab
+///    param) keys on the root type alone, so a tab/page switch reuses its slot.
+///
+/// This is the one fix point for #7104 ("open tabs switching places"): the
+/// allocator's Tier-2 collapse and narrow-mode focus both read the recency-derived
+/// `focusHint`, so keying recency on stable identity stops a within-panel
+/// navigation from stealing focus and evicting the other column's popup.
+String _recencyKey(PanelToken token) {
+  // Walk to the navigation-tree root so a detail inherits its master's slot.
+  var def = PanelRegistry.defFor(token.type);
+  var rootType = token.type;
+  // Bounded by the registry depth (two generations today); guard against a
+  // malformed cyclic/self parent just in case.
+  final seen = <String>{rootType};
+  while (def?.parent != null && seen.add(def!.parent!)) {
+    rootType = def.parent!;
+    def = PanelRegistry.defFor(rootType);
+  }
+  // A room/session instance is its bare room id; the rest is a pushed sub-page.
+  // A `room` keeps its OWN type as the root (its parent `chats` is the list, a
+  // separate panel), so this branch is reached with the original type.
+  if (token.type == 'room' || token.type == 'session') {
+    final bareId = (token.param ?? '').split('/').first;
+    return '${token.type}:$bareId';
+  }
+  // Every other family (settings/analytics/course/chats/addcourse/practice/
+  // review) is a singleton per column: key on the root type, so paging or
+  // tab-switching within it reuses the one slot.
+  return rootType;
+}
+
+/// Sync the back-stack [recency] against the currently open [allTokens] (merged
+/// `[left…, right…]`, the allocator's entry order) and return the allocator
+/// `focusHint` index, or null when nothing is open.
+///
+/// Recency is keyed on STABLE panel identity ([_recencyKey]) — the panel-family
+/// instance, not the per-page token string — so navigating WITHIN a panel (a
+/// settings menu → page, a room → members, a course tab switch, a vocab detail
+/// off the analytics summary) reuses the panel's existing slot instead of
+/// jumping to most-recent. Without this, navigating inside one popup stole the
+/// back-stack top from an unrelated open popup, and the column-mode Tier-2
+/// collapse then evicted that OTHER popup — so the two appeared to swap columns
+/// (#7104). A genuinely new panel (a different room, the first detail of a
+/// family) still mints a new key and is promoted as the user expects.
+///
+/// The recency-top key can match more than one open pane (a master and its
+/// detail share a key, e.g. `course` + `coursepage`, `settings` + `settingspage`);
+/// resolve to the **leaf** — the pane no other open pane names as parent — so the
+/// just-opened detail wins focus over its master regardless of list order (a left
+/// detail appends after its master; a right detail front-inserts). This mirrors
+/// the allocator's own leaf rule. Mutates [recency] in place. Pure and
+/// allocator-free so it is unit-tested directly. See `routing.instructions.md`.
+@visibleForTesting
+int? recencyFocusHint(List<PanelToken> allTokens, List<String> recency) {
+  final paneKeys = [for (final t in allTokens) _recencyKey(t)];
+  recency.removeWhere((id) => !paneKeys.contains(id));
+  for (final id in paneKeys) {
+    if (!recency.contains(id)) recency.add(id);
+  }
+  if (recency.isEmpty) return null;
+  final topKey = recency.last;
+  final matches = <int>[
+    for (var i = 0; i < paneKeys.length; i++)
+      if (paneKeys[i] == topKey) i,
+  ];
+  if (matches.isEmpty) return null;
+  return matches.firstWhere(
+    (i) => !allTokens.any(
+      (t) => PanelRegistry.defFor(t.type)?.parent == allTokens[i].type,
+    ),
+    orElse: () => matches.last,
+  );
+}
+
 /// The world_v2 workspace shell: a single persistent [WorldMap] with the open
 /// panels overlaid. Not "two columns" — it owns the map backdrop, the nav rail,
 /// the top-right cluster, the center canvas/detail, AND both panel columns. Every
@@ -446,26 +536,24 @@ class _ShellLayout {
     ];
 
     // Narrow focus = the most-recently-opened panel (back-stack top). Sync the
-    // recency list against the open tokens: append newly-opened ids (in list
-    // order), prune closed ones; the merged [left…, right…] id order matches the
+    // recency list against the open panels: append newly-opened keys (in list
+    // order), prune closed ones; the merged [left…, right…] order matches the
     // allocator's entry order, so the focus index maps straight through. The sync
-    // is idempotent for an unchanged token set, so a width change never
+    // is idempotent for an unchanged panel set, so a width change never
     // reshuffles panes or adds history. Ephemeral view state, deliberately OUTSIDE
     // the URL (a shared link / refresh has no recency and the allocator falls back
     // to the tree's leaf rule). Consulted in narrow mode (which pane to seat) and
     // in column mode (the just-opened pane is protected from a left↔right parity
     // collapse, #7088). See `routing.instructions.md`.
-    final paneIds = [
-      for (final t in leftTokens) t.encode(),
-      for (final t in rightTokens) t.encode(),
-    ];
-    _paneRecency.removeWhere((id) => !paneIds.contains(id));
-    for (final id in paneIds) {
-      if (!_paneRecency.contains(id)) _paneRecency.add(id);
-    }
-    final focusHint = _paneRecency.isNotEmpty
-        ? paneIds.indexOf(_paneRecency.last)
-        : null;
+    //
+    // The whole rule — STABLE-identity keying ([_recencyKey]) plus leaf
+    // resolution of the recency-top key — lives in [recencyFocusHint], extracted
+    // so it is unit-tested against real allocator input (#7104). It mutates
+    // [_paneRecency] in place (the shared back-stack) and returns the focus index.
+    final focusHint = recencyFocusHint([
+      ...leftTokens,
+      ...rightTokens,
+    ], _paneRecency);
 
     final layout = PanelAllocator.allocate(
       viewport: viewport,
