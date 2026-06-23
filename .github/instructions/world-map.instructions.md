@@ -55,7 +55,7 @@ A **pinged** modifier (a hand glyph) marks an open session whose host has pinged
 
 **Tap promotes, tap again opens.** There is no separate preview popup. Tapping a small or mid pin **promotes it to its large card in place**; tapping a large card (auto-featured or promoted) **opens the activity's plan page**; tapping the empty map collapses a promoted card (see [routing.instructions.md](routing.instructions.md) for how this rides the workspace and folds on a narrow screen). The plan page opens directly into play — nothing is gated — and a **finished** activity (a full star row) keeps its color per the fill-not-state rule, adding a **Completed** marker and **Play again / Review**.
 
-**Grouping** is separate from the tiers: where pins would overlap they collapse into a count bubble — the `Grouped` variant, itself state-colored — that de-overlaps the map and expands on zoom or tap.
+**Grouping** de-overlaps the map but is subordinate to the tiers: tier fill runs first, so any item that earns a **mid or large** slot renders at that weight even inside a dense area — it breaks out of the cluster rather than hiding in it. Only the leftover **small** dots that would overlap collapse into a count bubble — the `Grouped` variant, itself state-colored — which expands on zoom or tap. So a cluster only ever hides long-tail items; a high-ranked activity is always visible at its earned weight, never swallowed by the bubble it sits within.
 
 ## Priority matrix
 
