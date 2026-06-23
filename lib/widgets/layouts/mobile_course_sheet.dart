@@ -97,33 +97,44 @@ class _MobileCourseSheetState extends State<MobileCourseSheet> {
           elevation: 8.0,
           borderRadius: const BorderRadius.vertical(top: Radius.circular(20.0)),
           clipBehavior: Clip.antiAlias,
-          child: Column(
-            children: [
+          // The content must be a scroll view bound to the sheet's
+          // [scrollController]: a DraggableScrollableController only ATTACHES
+          // once a scrollable consumes that controller. A plain Column never
+          // attaches it, so `isAttached` stays false and every animateTo/jumpTo
+          // silently no-ops — the handle looked live but did nothing (#7102).
+          // Scrolling is disabled here on purpose: the handle drives resize and
+          // the course detail scrolls on its own controllers, so this outer view
+          // must only serve to attach the controller, never scroll-to-resize.
+          child: CustomScrollView(
+            controller: scrollController,
+            physics: const NeverScrollableScrollPhysics(),
+            slivers: [
               // Grab handle: drag to resize, tap to toggle peek/full. Exposed to
               // assistive tech as a single named button that runs the toggle
               // (the drag is pointer-only); without this the bare GestureDetector
-              // is an unnamed actionable element (axe `aria-command-name`).
-              Semantics(
-                button: true,
-                label: L10n.of(context).resizeCoursePanel,
-                onTap: _toggle,
-                child: ExcludeSemantics(
-                  child: GestureDetector(
-                    behavior: HitTestBehavior.opaque,
-                    onTap: _toggle,
-                    onVerticalDragUpdate: _onDrag,
-                    onVerticalDragEnd: _onDragEnd,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: Center(
-                        child: Container(
-                          width: 36.0,
-                          height: 4.0,
-                          decoration: BoxDecoration(
-                            color: theme.colorScheme.onSurfaceVariant.withValues(
-                              alpha: 0.4,
+              // is an unnamed actionable element (axe `aria-command-name`, #7128).
+              SliverToBoxAdapter(
+                child: Semantics(
+                  button: true,
+                  label: L10n.of(context).resizeCoursePanel,
+                  onTap: _toggle,
+                  child: ExcludeSemantics(
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: _toggle,
+                      onVerticalDragUpdate: _onDrag,
+                      onVerticalDragEnd: _onDragEnd,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10.0),
+                        child: Center(
+                          child: Container(
+                            width: 36.0,
+                            height: 4.0,
+                            decoration: BoxDecoration(
+                              color: theme.colorScheme.onSurfaceVariant
+                                  .withValues(alpha: 0.4),
+                              borderRadius: BorderRadius.circular(2.0),
                             ),
-                            borderRadius: BorderRadius.circular(2.0),
                           ),
                         ),
                       ),
@@ -131,7 +142,10 @@ class _MobileCourseSheetState extends State<MobileCourseSheet> {
                   ),
                 ),
               ),
-              Expanded(
+              // The course detail fills the rest of the sheet (as the old
+              // Expanded did) and scrolls internally on its own controllers.
+              SliverFillRemaining(
+                hasScrollBody: true,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: widget.child,
