@@ -13,6 +13,7 @@ import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -139,7 +140,7 @@ class WorldMapController extends State<WorldMap>
   /// completion, and the learner's star total per activity, recomputed on room
   /// sync (not per frame) so the O(rooms) scan doesn't run every build.
   /// [_completion] backs the completion filter chip; [_userStars] feeds the
-  /// progression gate built each frame in [WorldMapView].
+  /// progression resolver's per-Mission star rollup ([_resolveProgression]).
   Map<String, PinSignals> _signals = {};
   Map<String, int> _userStars = {};
   Map<String, MapCompletionFilter> _completion = {};
@@ -163,17 +164,21 @@ class WorldMapController extends State<WorldMap>
   /// joined course-space messages). Folded into [_signals].
   Set<String> _pingedActivityIds = {};
 
-  /// Rotates which joinable activities occupy the large featured slots when more
-  /// than the budget qualify (every 5s; see world-map.instructions.md).
-  Timer? _rotationTimer;
-  int _largeRotationIndex = 0;
+  /// The shared next-Mission resolution the relevance band ranks toward, resolved
+  /// from the objective cache's outlines + [_userStars]. Recomputed where its
+  /// inputs change — the objective cache rebuilds (course join/leave) and user
+  /// stars change on room sync — NOT per frame. See world-map.instructions.md.
+  ProgressionResolution _progression = ProgressionResolution.empty;
 
-  /// Size of the featured (joinable) pool, recorded by [WorldMapView] each build;
-  /// the rotation tick only advances when it exceeds [largeBudget].
-  int _largePoolSize = 0;
+  /// The viewed course's outline when the map is scoped to a course the learner
+  /// has NOT joined: a course-scoped map ranks toward that course's next Mission
+  /// even before joining (Will's decision). Null on the world view or when the
+  /// scoped course is already a joined course (its outline is in the cache).
+  CourseLoOutline? _scopedCourseOutline;
 
-  /// How many large featured cards show at once (desktop).
-  static const int largeBudget = 3;
+  /// The course-plan id [_scopedCourseOutline] was resolved for, so a re-scope to
+  /// the same course doesn't re-fetch and a re-scope away clears it.
+  String? _scopedCourseOutlineId;
 
   // ---- View-facing accessors (read by WorldMapView) -------------------------
 
@@ -190,7 +195,10 @@ class WorldMapController extends State<WorldMap>
   Map<String, int> get userStars => _userStars;
   Map<String, MapCompletionFilter> get completion => _completion;
   JoinedObjectiveCache get objectiveCache => _objectiveCache;
-  int get largeRotationIndex => _largeRotationIndex;
+
+  /// The shared next-Mission resolution the relevance band ranks toward. Cached
+  /// (recomputed on its inputs changing, not per frame); the view reads it.
+  ProgressionResolution get progression => _progression;
   String get query => _query;
   bool get l2Only => _l2Only;
   Set<LanguageLevelTypeEnum> get cefrFilter => _cefrFilter;
@@ -208,13 +216,6 @@ class WorldMapController extends State<WorldMap>
     _loadForContext();
     MapContextController.notifier.addListener(_onContextChange);
     MapPinController.notifier.addListener(_onPinControllerChange);
-    // Rotate the large featured slots when more joinable activities qualify than
-    // the budget, so each gets airtime (world-map.instructions.md).
-    _rotationTimer = Timer.periodic(const Duration(seconds: 5), (_) {
-      if (mounted && _largePoolSize > largeBudget) {
-        setState(() => _largeRotationIndex++);
-      }
-    });
     // Rebuild when a featured large card's full plan hydrates (image + goals).
     ActivityPlanRepo.instance.addListener(_onPlanHydrate);
   }
@@ -273,16 +274,29 @@ class WorldMapController extends State<WorldMap>
       _signals = derived.signals;
       _userStars = derived.stars;
       _completion = completion;
+      _resolveProgression();
       return;
     }
     setState(() {
       _signals = derived.signals;
       _userStars = derived.stars;
       _completion = completion;
+      _resolveProgression();
     });
   }
 
-  void setLargePoolSize(int update) => _largePoolSize = update;
+  /// Re-resolve the cached [_progression] from the objective cache's outlines (+
+  /// any course-scoped outline) and the learner's current per-activity stars.
+  /// Called where the inputs change — stars on room sync, the objective cache on
+  /// course join/leave, and a course re-scope — never per frame.
+  void _resolveProgression() {
+    _progression = _objectiveCache.resolution(
+      _userStars,
+      extraOutlines: _scopedCourseOutline == null
+          ? const []
+          : [_scopedCourseOutline!],
+    );
+  }
 
   /// The learner's joined course spaces (a space they belong to that carries a
   /// course plan) — the source set for the objective cache + relevance banding.
@@ -324,7 +338,8 @@ class WorldMapController extends State<WorldMap>
         ),
       );
       _objectiveCacheUuids = uuids.toSet();
-      if (mounted) setState(() {}); // re-rank with the loaded outlines
+      _resolveProgression(); // re-resolve the band with the loaded outlines
+      if (mounted) setState(() {}); // re-rank
     } finally {
       _objectiveCacheRebuilding = false;
     }
@@ -406,7 +421,6 @@ class WorldMapController extends State<WorldMap>
   @override
   void dispose() {
     _syncSub?.cancel();
-    _rotationTimer?.cancel();
     _refetchDebounce?.cancel();
     _fitDebounce?.cancel();
     _camCurve?.dispose();
@@ -454,6 +468,7 @@ class WorldMapController extends State<WorldMap>
   Future<void> _loadForContext({bool debounceFit = false}) async {
     final mapContext = MapContextController.notifier.value;
     if (mapContext is CourseMapContext) {
+      _ensureScopedCourseOutline(mapContext.coursePlanId);
       try {
         final pins = await QuestRepo.questPins(mapContext.coursePlanId);
         if (!mounted) return;
@@ -464,7 +479,43 @@ class WorldMapController extends State<WorldMap>
       }
       return;
     }
+    // World view: drop any course-scoped outline so the band ranks on the
+    // learner's joined quests only.
+    if (_scopedCourseOutline != null || _scopedCourseOutlineId != null) {
+      _scopedCourseOutline = null;
+      _scopedCourseOutlineId = null;
+      _resolveProgression();
+    }
     loadWorldPins();
+  }
+
+  /// Resolve the viewed course's outline for a course-scoped map so the band
+  /// ranks toward that course's next Mission even before the learner joins it
+  /// (Will's decision). Skipped when the course is already a joined course (its
+  /// outline is in the objective cache) or already resolved for this scope.
+  Future<void> _ensureScopedCourseOutline(String coursePlanId) async {
+    if (_scopedCourseOutlineId == coursePlanId) return;
+    _scopedCourseOutlineId = coursePlanId;
+    _scopedCourseOutline = null;
+    if (_objectiveCacheUuids.contains(coursePlanId)) {
+      _resolveProgression(); // joined: the cache already carries it
+      return;
+    }
+    try {
+      final outline = (await QuestRepo.outline(
+        coursePlanId,
+      )).toCourseLoOutline();
+      // A re-scope may have raced ahead; only apply if still the active scope.
+      if (_scopedCourseOutlineId != coursePlanId) return;
+      _scopedCourseOutline = outline;
+    } catch (_) {
+      // Fail soft: the band falls back to the joined-quest resolution.
+    }
+    if (!mounted) {
+      _resolveProgression();
+      return;
+    }
+    setState(_resolveProgression);
   }
 
   /// World pins for the current viewport, personalized to the user's language

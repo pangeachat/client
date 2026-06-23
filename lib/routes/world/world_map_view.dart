@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import 'package:flutter_map/flutter_map.dart';
@@ -9,7 +7,6 @@ import 'package:latlong2/latlong.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
-import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
@@ -55,8 +52,8 @@ class _PinRenderer {
           if (c.point != null) c.point!: stateOf(c.activityId),
       };
 
-  // The progress fill renders only on unlocked pins (the unlocked→finished
-  // gradation); joinable and locked carry no fill.
+  // The progress fill is the activity's completion fraction at every colour
+  // state — orthogonal to the colour, never hiding the pin (#7186).
   double fillOf(String id) => activityIdToFill[id] ?? 0;
 
   ActivityPinState stateOf(String id) =>
@@ -69,11 +66,12 @@ class _PinRenderer {
 
 /// The stateless render of the persistent world map, driven by its
 /// [WorldMapController]. It reads the controller's cached signals / stars /
-/// pins, applies the per-frame progression gate + relevance ranking to pick each
-/// pin's tier (small dot / mid pin / large featured card), and lays the pins,
-/// clusters, basemap tiles, and (World only) the search-filter overlay over the
-/// map. All interaction routes back to the controller (tap a pin → promote, tap
-/// a card → open the activity, filter → reload). See world-map.instructions.md.
+/// pins / progression, applies the per-frame single-score relevance ranking to
+/// pick each pin's tier (small dot / mid pin / large featured card), and lays
+/// the pins, clusters, basemap tiles, and (World only) the search-filter overlay
+/// over the map. All interaction routes back to the controller (tap a pin →
+/// promote, tap a card → open the activity, filter → reload). No pin is ever
+/// locked (#7186). See world-map.instructions.md.
 class WorldMapView extends StatelessWidget {
   final WorldMapController controller;
 
@@ -81,54 +79,29 @@ class WorldMapView extends StatelessWidget {
 
   /// Resolve the per-frame pin draw model: the visible set, and for each pin its
   /// tier / colour-state / pinged / fill, plus the cluster dominant-state lookup.
-  /// Applies the progression gate (a pin whose objectives are all locked reads
-  /// locked, unless it already has an open joinable session) and the relevance
-  /// ranking that assigns tiers, both rebuilt each frame from the controller's
-  /// cached signals + stars so a star award re-gates next build. Records the
-  /// featured-pool size on the controller for its rotation timer. See
+  /// Applies the single-score relevance ranking that assigns tiers (a static
+  /// top-N large set + a mid set), rebuilt each frame from the controller's
+  /// cached signals + progression so a star award re-ranks next build. See
   /// world-map.instructions.md.
   _PinRenderer _resolvePinRender(BuildContext context) {
     final visible = controller.visiblePins;
-    final signals = _getSignals(visible);
+    // No lock layering: the controller's signals pass through unchanged — nothing
+    // is ever locked now, progression only ranks (#7186).
+    final signals = controller.signals;
     final ranking = _getRankings(visible: visible, signals: signals);
 
-    final largePool = ranking.largePool;
-    final largeWindow = _getLargeWindow(context: context, largePool: largePool);
-
-    // Record the pool size so the controller's rotation timer knows whether
-    // there are more featured candidates than the budget (and should rotate).
-    controller.setLargePoolSize(largePool.length);
+    // The static large set (top of the score, no rotation) is auto-featured only
+    // where there is horizontal room (desktop / column mode); a tap-promoted pin
+    // renders large at any width.
+    final desktop = FluffyThemes.isColumnMode(context);
+    final largeIds = desktop ? ranking.largeIds.toSet() : <String>{};
 
     return _createPinRenderer(
       visible: visible,
       signals: signals,
-      largeWindow: largeWindow,
-      largeIds: largePool.toSet(),
+      largeIds: largeIds,
       mediumIds: ranking.midIds,
     );
-  }
-
-  Map<String, PinSignals> _getSignals(List<QuestActivityCard> visible) {
-    final gate = buildLoGate(
-      outlines: controller.objectiveCache.outlines,
-      starsByActivity: controller.userStars,
-    );
-
-    final signals = <String, PinSignals>{};
-    for (final card in visible) {
-      final base = controller.signals[card.activityId] ?? const PinSignals();
-      signals[card.activityId] =
-          (base.state != ActivityPinState.joinable &&
-              gate.isPinLocked(card.learningObjectiveRefs))
-          ? PinSignals(
-              state: ActivityPinState.locked,
-              completionFraction: base.completionFraction,
-              pinged: base.pinged,
-              recency: base.recency,
-            )
-          : base;
-    }
-    return signals;
   }
 
   RankingResult _getRankings({
@@ -152,38 +125,14 @@ class WorldMapView extends StatelessWidget {
       inViewPins: inView,
       userL2: user.userL2Code,
       userCefr: user.userCefrLevel,
-      joinedObjectiveIds: controller.objectiveCache.ids,
+      progression: controller.progression,
       signals: signals,
     );
-  }
-
-  Set<String> _getLargeWindow({
-    required BuildContext context,
-    required List<String> largePool,
-  }) {
-    // Auto-featured large cards render only where there is horizontal room
-    // (desktop / column mode); a promoted card renders at any width.
-    final desktop = FluffyThemes.isColumnMode(context);
-
-    // The large featured cards (desktop only): a rotating window over the
-    // joinable pool; pool members not currently featured render at mid weight.
-    final largeWindow = <String>{};
-    if (desktop && largePool.isNotEmpty) {
-      final n = min(WorldMapController.largeBudget, largePool.length);
-      for (int i = 0; i < n; i++) {
-        largeWindow.add(
-          largePool[(controller.largeRotationIndex + i) % largePool.length],
-        );
-      }
-    }
-
-    return largeWindow;
   }
 
   _PinRenderer _createPinRenderer({
     required List<QuestActivityCard> visible,
     required Map<String, PinSignals> signals,
-    required Set<String> largeWindow,
     required Set<String> largeIds,
     required Set<String> mediumIds,
   }) {
@@ -195,19 +144,20 @@ class WorldMapView extends StatelessWidget {
     final Map<String, double> fills = {};
 
     for (final id in activityIds) {
-      tiers[id] =
-          id == controller.promotedActivityId || largeWindow.contains(id)
+      // A tap-promoted pin is large at any width; otherwise the static large set
+      // (desktop only) is large, the mid set is mid, the rest are small.
+      tiers[id] = id == controller.promotedActivityId || largeIds.contains(id)
           ? PinTier.large
-          : largeIds.contains(id) || mediumIds.contains(id)
+          : mediumIds.contains(id)
           ? PinTier.mid
           : PinTier.small;
 
       final signal = signals[id];
       states[id] = signal?.state ?? ActivityPinState.unlocked;
       pings[id] = signal?.pinged ?? false;
-      fills[id] = signal == null || signal.state == ActivityPinState.unlocked
-          ? 0
-          : signal.completionFraction;
+      // The progress fill is the completion fraction at every state (orthogonal
+      // to the colour) — a finished pin shows a full fill, never a separate state.
+      fills[id] = signal?.completionFraction ?? 0;
     }
 
     return _PinRenderer(
@@ -375,8 +325,8 @@ class WorldMapView extends StatelessWidget {
             markers: _clusterMarkers(render),
             builder: (context, markers) {
               // Colour the bubble by the cluster's dominant (highest-ladder)
-              // state.
-              var dominant = ActivityPinState.locked;
+              // state — unlocked unless any member has a joinable open session.
+              var dominant = ActivityPinState.unlocked;
               for (final m in markers) {
                 final s = clusterStateByPoint[m.point];
                 if (s != null && s.index > dominant.index) dominant = s;

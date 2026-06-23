@@ -46,19 +46,18 @@ typedef ActivityCompletionFacts = ({
 const int _recencyWindowMs = 24 * 60 * 60 * 1000;
 
 /// Derive each activity's live [PinSignals] from the user's Matrix rooms: the
-/// highest-wins colour state on the `locked < unlocked < joinable` ladder, a
-/// 0..1 completion fraction (stars earned toward the activity's total), recency
-/// for the newest open session, and the pinged flag. Also returns the learner's
-/// star total per activity (max across their sessions of it) for the
-/// progression gate.
+/// highest-wins colour state on the `unlocked < joinable` ladder, a 0..1
+/// completion fraction (stars earned toward the activity's total), recency for
+/// the newest open session, and the pinged flag. Also returns the learner's star
+/// total per activity (max across their sessions of it) for the progression
+/// resolver's per-Mission star rollup.
 ///
 /// State derives from sessions the client can see locally: the user's own
 /// sessions give unlocked, and any visible session with a free role the user
 /// isn't bound to gives joinable. Open sessions by strangers are not in
 /// `client.rooms`, so map-wide open-session discovery needs a backend endpoint
-/// (see world-map.instructions.md). `locked` is layered on at render time from
-/// the progression gate (quests.instructions.md): it depends on the pin's
-/// objective refs, which aren't in room state, so it can't be resolved here.
+/// (see world-map.instructions.md). Nothing is ever locked — progression only
+/// ranks, never gates (#7186, quests.instructions.md).
 ({Map<String, PinSignals> signals, Map<String, int> stars})
 deriveActivitySignals(Client client, {required Set<String> pingedActivityIds}) {
   final facts = <ActivitySessionFacts>[];
@@ -92,8 +91,8 @@ deriveActivitySignals(Client client, {required Set<String> pingedActivityIds}) {
 
 /// The pure pin-signal rule over per-room [facts]: for each activity keep the
 /// best completion fraction (a role the user holds), the highest colour state on
-/// the `locked < unlocked < joinable` ladder, and the recency of its newest open
-/// session (decaying linearly to 0 over [_recencyWindowMs] from [nowMs]).
+/// the `unlocked < joinable` ladder, and the recency of its newest open session
+/// (decaying linearly to 0 over [_recencyWindowMs] from [nowMs]).
 Map<String, PinSignals> reduceActivitySignals(
   Iterable<ActivitySessionFacts> facts, {
   required Set<String> pingedActivityIds,

@@ -1,6 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
@@ -18,189 +20,281 @@ QuestActivityCard _card(
   cefr: cefr,
 );
 
+/// A one-quest progression whose anchor (next) Mission is [anchor], built so the
+/// band ranks an activity carrying [anchor] at gradient 1.0 (no stars earned).
+ProgressionResolution _progressionWithAnchor(String anchor) =>
+    resolveProgression(
+      outlines: [
+        CourseLoOutline(
+          orderedLoIds: [anchor],
+          activityIdsByLo: {
+            anchor: const {'someActivity'},
+          },
+        ),
+      ],
+      starsByActivity: const {},
+    );
+
 void main() {
   const userL2 = 'es';
   final userCefr = LanguageLevelTypeEnum.b1; // storageInt 3
 
-  int band(QuestActivityCard c, {Set<String> joined = const {}}) =>
-      relevanceBand(
-        c,
-        userL2: userL2,
-        userCefr: userCefr,
-        joinedObjectiveIds: joined,
-      );
+  double band(
+    QuestActivityCard c, {
+    ProgressionResolution progression = ProgressionResolution.empty,
+  }) => relevanceBand(
+    c,
+    userL2: userL2,
+    userCefr: userCefr,
+    progression: progression,
+  );
 
   group('relevanceBand', () {
-    test('joined-course objective is band 3', () {
-      expect(band(_card('a', refs: ['lo1']), joined: {'lo1'}), 3);
+    test('an anchor-Mission activity gets the in-quest gradient (1.0)', () {
+      final p = _progressionWithAnchor('lo1');
+      expect(band(_card('a', refs: ['lo1']), progression: p), 1.0);
     });
 
-    test('level-appropriate L2 objective is band 2', () {
-      expect(band(_card('b', cefr: 'A2', refs: ['x'])), 2);
+    test('a level-appropriate in-L2 objective-bearing pin is band 1.0', () {
+      // No in-quest gradient (empty progression) → the level-fit floor.
+      expect(band(_card('b', cefr: 'A2', refs: ['x'])), 1.0);
     });
 
-    test('above-level L2 objective falls to band 1', () {
-      expect(band(_card('c', cefr: 'C2', refs: ['x'])), 1);
+    test('an above-level in-L2 pin falls to the 0.5 floor', () {
+      expect(band(_card('c', cefr: 'C2', refs: ['x'])), 0.5);
     });
 
-    test('in-L2 with no objective is band 1', () {
-      expect(band(_card('d', refs: const [])), 1);
+    test('an in-L2 pin with no objective is the 0.5 floor', () {
+      expect(band(_card('d', refs: const [])), 0.5);
     });
 
     test('a different L2 is global, band 0', () {
       expect(band(_card('e', l2: 'fr', refs: ['x'])), 0);
     });
 
+    test('an accumulating multi-quest gradient outranks the level-fit floor', () {
+      // An activity carrying both quests' anchors accumulates to 2.0, above the
+      // 1.0 objective-bearing level-fit floor a non-quest pin tops out at.
+      final p = resolveProgression(
+        outlines: [
+          CourseLoOutline(
+            orderedLoIds: ['q1'],
+            activityIdsByLo: {
+              'q1': const {'x'},
+            },
+          ),
+          CourseLoOutline(
+            orderedLoIds: ['q2'],
+            activityIdsByLo: {
+              'q2': const {'y'},
+            },
+          ),
+        ],
+        starsByActivity: const {},
+      );
+      final inQuest = band(_card('f', refs: ['q1', 'q2']), progression: p);
+      final floor = band(_card('g', refs: ['other']), progression: p);
+      expect(inQuest, 2.0);
+      expect(floor, 1.0);
+      expect(inQuest, greaterThan(floor));
+    });
+
     test('with no user L2 set, nothing is foreign (not band 0)', () {
       final b = relevanceBand(
-        _card('f', l2: 'fr', refs: const []),
+        _card('h', l2: 'fr', refs: const []),
         userL2: null,
         userCefr: userCefr,
-        joinedObjectiveIds: const {},
+        progression: ProgressionResolution.empty,
       );
       expect(b, isNot(0));
     });
   });
 
-  group('pinScore', () {
-    test('adds the pinged and recency boosts to the band', () {
-      expect(pinScore(3, const PinSignals(pinged: true, recency: 1.0)), 3.9);
-      expect(pinScore(2, const PinSignals(pinged: false, recency: 0.0)), 2.0);
+  group('pinScore — each term in isolation', () {
+    test('joinable contributes 3', () {
+      final score = pinScore(
+        band: 0,
+        s: const PinSignals(state: ActivityPinState.joinable),
+      );
+      expect(score, 3);
     });
 
-    test('boosts never cross a band step', () {
-      final lowerBandMax = pinScore(
-        2,
-        const PinSignals(pinged: true, recency: 1.0),
-      );
-      final higherBandMin = pinScore(3, const PinSignals());
-      expect(lowerBandMax, lessThan(higherBandMin));
+    test('the band is added verbatim', () {
+      final score = pinScore(band: 1.5, s: const PinSignals());
+      expect(score, 1.5);
     });
+
+    test('pinged contributes 0.6', () {
+      final score = pinScore(band: 0, s: const PinSignals(pinged: true));
+      expect(score, closeTo(0.6, 1e-9));
+    });
+
+    test('recency contributes 0.3 at full recency', () {
+      final score = pinScore(band: 0, s: const PinSignals(recency: 1.0));
+      expect(score, closeTo(0.3, 1e-9));
+    });
+
+    test('a finished activity subtracts 0.5', () {
+      final score = pinScore(
+        band: 0,
+        s: const PinSignals(completionFraction: 1.0),
+      );
+      expect(score, closeTo(-0.5, 1e-9));
+    });
+
+    test('a partial fill does not subtract', () {
+      final score = pinScore(
+        band: 0,
+        s: const PinSignals(completionFraction: 0.9),
+      );
+      expect(score, 0);
+    });
+  });
+
+  group('pinScore — joinable dominates', () {
+    test(
+      'a joinable band-0 pin outscores a saturated, pinged, recent non-joinable',
+      () {
+        final joinable = pinScore(
+          band: 0,
+          s: const PinSignals(state: ActivityPinState.joinable),
+        );
+        final loaded = pinScore(
+          band: kBandCeiling, // 2.0, the saturated band
+          s: const PinSignals(pinged: true, recency: 1.0),
+        );
+        // 3.0 vs 2.0 + 0.6 + 0.3 = 2.9 — joining a live session always wins.
+        expect(joinable, greaterThan(loaded));
+      },
+    );
   });
 
   RankingResult rank(
     List<QuestActivityCard> pins,
     Map<String, PinSignals> signals, {
+    ProgressionResolution progression = ProgressionResolution.empty,
+    int largeBudget = 3,
     int midBudget = 10,
     int maxPerDiversityKey = 2,
   }) => rankPins(
     inViewPins: pins,
     userL2: userL2,
     userCefr: userCefr,
-    joinedObjectiveIds: const {},
+    progression: progression,
     signals: signals,
+    largeBudget: largeBudget,
     midBudget: midBudget,
     maxPerDiversityKey: maxPerDiversityKey,
   );
 
-  group('rankPins', () {
-    test('large pool is the joinable pins ordered by score', () {
-      final pins = [_card('quiet'), _card('pinged')];
-      final result = rank(pins, {
-        'quiet': const PinSignals(state: ActivityPinState.joinable),
-        'pinged': const PinSignals(
-          state: ActivityPinState.joinable,
-          pinged: true,
-        ),
-      });
-      expect(result.largePool, ['pinged', 'quiet']);
-      expect(result.midIds, isEmpty);
+  group('rankPins — large/mid fill by score', () {
+    test('the highest-scoring pins fill large, the next fill mid', () {
+      final pins = [
+        _card('live', refs: ['a']), // joinable → top
+        _card('lvl', refs: ['b']), // band 1.0
+        _card('floor', refs: const []), // band 0.5
+      ];
+      final result = rank(
+        pins,
+        {
+          'live': const PinSignals(state: ActivityPinState.joinable),
+          'lvl': const PinSignals(),
+          'floor': const PinSignals(),
+        },
+        largeBudget: 1,
+        midBudget: 10,
+      );
+      expect(result.largeIds, ['live']); // top of the score
+      expect(result.midIds, {'lvl', 'floor'}); // the rest, by score
     });
 
-    test('locked pins and finished activities are never promoted', () {
-      final pins = [_card('done'), _card('locked'), _card('open')];
-      final result = rank(pins, {
-        // A finished activity is unlocked with a full progress fill.
-        'done': const PinSignals(
-          state: ActivityPinState.unlocked,
-          completionFraction: 1.0,
-        ),
-        'locked': const PinSignals(state: ActivityPinState.locked),
-        'open': const PinSignals(state: ActivityPinState.unlocked),
-      });
-      expect(result.largePool, isEmpty);
-      expect(result.midIds, {'open'});
+    test('the large budget caps the large set; overflow drops to mid', () {
+      final pins = [
+        _card('a', refs: ['k1']),
+        _card('b', refs: ['k2']),
+        _card('c', refs: ['k3']),
+      ];
+      final result = rank(
+        pins,
+        {for (final p in pins) p.activityId: const PinSignals()},
+        largeBudget: 2,
+        midBudget: 10,
+      );
+      expect(result.largeIds.length, 2);
+      expect(result.midIds.length, 1);
     });
 
+    test('the mid budget bounds the mid set', () {
+      final pins = [
+        _card('a', refs: ['k1']),
+        _card('b', refs: ['k2']),
+        _card('c', refs: ['k3']),
+      ];
+      final result = rank(
+        pins,
+        {for (final p in pins) p.activityId: const PinSignals()},
+        largeBudget: 0,
+        midBudget: 2,
+      );
+      expect(result.largeIds, isEmpty);
+      expect(result.midIds.length, 2);
+    });
+  });
+
+  group('rankPins — diversity', () {
     test(
-      'in-course unlocked activities join the large pool, joinable first',
+      'a per-objective cap stops one objective monopolising the featured set',
       () {
         final pins = [
-          _card('lesson', refs: ['loJoined']), // in-course unlocked
-          _card('live', refs: ['loJoined']), // joinable
+          _card('a', refs: ['loX']),
+          _card('b', refs: ['loX']),
+          _card('c', refs: ['loX']),
         ];
-        final result = rankPins(
-          inViewPins: pins,
-          userL2: userL2,
-          userCefr: userCefr,
-          joinedObjectiveIds: {'loJoined'},
-          signals: {
-            'lesson': const PinSignals(state: ActivityPinState.unlocked),
-            'live': const PinSignals(state: ActivityPinState.joinable),
-          },
+        final result = rank(
+          pins,
+          {for (final p in pins) p.activityId: const PinSignals()},
+          largeBudget: 3,
+          midBudget: 10,
+          maxPerDiversityKey: 2,
         );
-        expect(result.largePool, ['live', 'lesson']); // joinable featured first
-        expect(result.midIds, isEmpty); // a large-pool member isn't also mid
+        // Only 2 of the same-objective pins are featured (large+mid combined).
+        final featured = {...result.largeIds, ...result.midIds};
+        expect(featured.length, 2);
       },
     );
+  });
 
-    test('a finished in-course activity is not featured large', () {
-      final result = rankPins(
-        inViewPins: [
-          _card('done', refs: ['loJoined']),
-        ],
-        userL2: userL2,
-        userCefr: userCefr,
-        joinedObjectiveIds: {'loJoined'},
-        signals: {
-          'done': const PinSignals(
-            state: ActivityPinState.unlocked,
-            completionFraction: 1.0,
-          ),
+  group('rankPins — finished is demoted, not excluded', () {
+    test('a finished pin still appears, behind an unfinished peer', () {
+      final pins = [
+        _card('done', refs: ['k1']),
+        _card('fresh', refs: ['k2']),
+      ];
+      final result = rank(
+        pins,
+        {
+          'done': const PinSignals(completionFraction: 1.0), // -0.5
+          'fresh': const PinSignals(), // band 0.5 floor
         },
+        largeBudget: 1,
+        midBudget: 10,
       );
-      expect(result.largePool, isEmpty);
+      // Both are present; the fresher one takes the single large slot.
+      expect(result.largeIds, ['fresh']);
+      expect(result.midIds, contains('done')); // present, just demoted
     });
 
-    test(
-      'a level-appropriate (not in-course) unlocked stays mid, not large',
-      () {
-        final result = rankPins(
-          inViewPins: [
-            _card('lvl', refs: ['loX']),
-          ], // band 2, not joined
-          userL2: userL2,
-          userCefr: userCefr,
-          joinedObjectiveIds: const {},
-          signals: {'lvl': const PinSignals(state: ActivityPinState.unlocked)},
-        );
-        expect(result.largePool, isEmpty);
-        expect(result.midIds, {'lvl'});
-      },
-    );
-
-    test('diversity caps how many of one objective fill mid', () {
-      final pins = [
-        _card('a', refs: ['loX']),
-        _card('b', refs: ['loX']),
-        _card('c', refs: ['loX']),
-      ];
-      final result = rank(pins, {
-        for (final p in pins) p.activityId: const PinSignals(),
-      }, maxPerDiversityKey: 2);
-      expect(result.midIds.length, 2);
-    });
-
-    test('mid budget bounds the mid set', () {
-      final pins = [
-        _card('a', refs: ['l1']),
-        _card('b', refs: ['l2']),
-        _card('c', refs: ['l3']),
-      ];
-      final result = rank(pins, {
-        for (final p in pins) p.activityId: const PinSignals(),
-      }, midBudget: 2);
-      expect(result.midIds.length, 2);
+    test('a finished pin is featured when nothing better competes', () {
+      final result = rank(
+        [
+          _card('done', refs: ['k1']),
+        ],
+        {'done': const PinSignals(completionFraction: 1.0)},
+        largeBudget: 1,
+        midBudget: 10,
+      );
+      // No gate excludes it — it earns the slot when it is all there is.
+      expect(result.largeIds, ['done']);
     });
   });
 }
