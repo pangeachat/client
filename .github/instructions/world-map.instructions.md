@@ -21,9 +21,9 @@ The map is the canvas the whole app sits on; every other surface is a panel over
 
 ## The personalized default
 
-Before any search or filter, the map shows **my L2, at or below my CEFR, in the current viewport, colored by state with my progress shown** — derived from signals the app already holds about the learner, with no new data capture. This default is the *initial* state, not a gate:
+Before any search or filter, the map shows **my L2, at or below my CEFR, in the current viewport, colored by state with my progress shown** — derived from signals the app already holds about the learner, with no new data capture. This is not a separate code path: it is just the [filters](#filters) pre-seeded (L2, CEFR, joined quests), the *initial* state and not a gate:
 
-- Filters and search refine it; a one-tap **reset** returns to it.
+- Changing or clearing those filters and searching refine it; a one-tap **reset** returns to it.
 - When the view is empty, offer a **widen** affordance (all languages, or zoom out) so personalization never dead-ends.
 
 ## Pin display: small, mid, large
@@ -36,64 +36,54 @@ The map holds far more than it should ever show at full weight, so every item re
 |---|---|---|
 | **Small dot** | many (the long tail) | a plain dot — an available item, no detail until interacted with |
 | **Mid pin** | ~5–10, by viewport size | a pin with an activity-type glyph; where strong matches and open sessions get promoted |
-| **Large card** | 1–3 only | the featured callout, for **in-course unlocked activities and open joinable sessions** (see below): a full preview card shown right on the map — image, title, type, level match, and a **row of stars** for the learner's progress. The joinable form also shows who is already in the session, its open slots, and a join affordance. **Auto-featured** only where there is horizontal room (desktop / column mode); but the same card is the on-demand detail any pin expands to on tap (see [Interaction](#interaction) below), so a promoted card renders on a narrow screen too |
+| **Large card** | 1–3 only | the featured callout — simply the top of the score ([Priority matrix](#priority-matrix) below), no separate eligibility: a full preview card shown right on the map — image, title, type, level match, and a **row of stars** for the learner's progress. A live **joinable** session almost always wins it (joinable is the heaviest score term), and shows who is already in the session, its open slots, and a join affordance; when nothing is live, the learner's next-Mission frontier activity earns the slot instead. **Auto-featured** only where there is horizontal room (desktop / column mode); but the same card is the on-demand detail any pin expands to on tap (see [Interaction](#interaction) below), so a promoted card renders on a narrow screen too |
 
-A pin's **state** is carried by color at every tier — the component is `Activity pin v3` in the frame above:
+A pin's **state** is carried by color at every tier — the component is `Activity pin v3` in the frame above. There is no locked state: every activity is always playable, so progression only ever *ranks* content, never gates it (the [Priority matrix](#priority-matrix) and [quests.instructions.md](quests.instructions.md)). Two colors remain:
 
 | State | Reads as | Meaning |
 |---|---|---|
-| **Locked** | gray | the learning objective behind it isn't unlocked yet (the progression gate lives in [quests.instructions.md](quests.instructions.md)) |
-| **Unlocked** | purple | available to play |
+| **Available** | purple | playable — the default for every pin |
 | **Joinable** | green | an open session is live and joinable right now |
 
-**Progress is a fill, not a state.** A learner's progress in an activity is the stars earned toward its total (a star is one awarded activity goal — [activities.instructions.md](activities.instructions.md)). It renders by tier: on the **small and mid pins** as an **inner yellow dot whose radius grows with that fraction**, and on the **large card** as a **row of stars**. Empty means freshly unlocked, full means finished. Progress is orthogonal to the color state: it never recolors the pin and never hides it, so a finished activity stays on the map as a normal pin — the learner sees their trail without it crowding out the next thing to do. This replaces the earlier discrete "completed" state (a separate gold pin).
+**Progress is a fill, not a state.** A learner's progress in an activity is the stars earned toward its total (a star is one awarded activity goal — [activities.instructions.md](activities.instructions.md)). It renders by tier: on the **small and mid pins** as an **inner yellow dot whose radius grows with that fraction**, and on the **large card** as a **row of stars**. Empty means untouched, full means finished. Progress is orthogonal to the color state: it never recolors the pin and never hides it, so a finished activity stays on the map as a normal pin — the learner sees their trail without it crowding out the next thing to do. This replaces the earlier discrete "completed" state (a separate gold pin).
 
-A **pinged** modifier (a hand glyph) marks an open session whose host has pinged the course to gather players (mechanics in [activities.instructions.md](activities.instructions.md)). When more than one state applies to one item, the highest on the priority ladder wins the displayed color — a finished activity with a live session shows as joinable, green, to pull the learner back. Which items earn the scarce mid and large slots is the [Priority matrix](#priority-matrix) below.
+A **pinged** modifier (a hand glyph) marks an open session whose host has pinged the course to gather players (mechanics in [activities.instructions.md](activities.instructions.md)). Joinable wins the displayed color when both apply — a finished activity with a live session shows as joinable, green, to pull the learner back. Which items earn the scarce mid and large slots is the [Priority matrix](#priority-matrix) below.
 
-**What ships.** Locked, unlocked, and joinable, plus the progress fill, are all derived from Matrix room state the client already holds: the progression gate (a learning objective unlocks once the previous one has at least 10 stars, teacher-overridable) is resolved client-side per [quests.instructions.md](quests.instructions.md), so locked pins render today. A ping leaves no persistent room state, so **pinged** is detected best-effort by scanning recent course-space messages for the host's ping — a proxy whose efficacy we watch before investing in a persistent ping signal.
+**What ships.** Both colors plus the progress fill are derived from Matrix room state the client already holds. Progression itself is now purely a ranking input: the client resolves each quest's **next Mission** per [quests.instructions.md](quests.instructions.md) and the Priority matrix preferences activities in it — no pin is ever grayed out or blocked. A ping leaves no persistent room state, so **pinged** is detected best-effort by scanning recent course-space messages for the host's ping — a proxy whose efficacy we watch before investing in a persistent ping signal.
 
 ### Interaction
 
-**Tap promotes, tap again opens.** There is no separate preview popup. Tapping a small or mid pin **promotes it to its large card in place**; tapping a large card (auto-featured or promoted) **opens the activity's plan page**; tapping the empty map collapses a promoted card (see [routing.instructions.md](routing.instructions.md) for how this rides the workspace and folds on a narrow screen). Because the large card is now the on-demand detail for *any* pin, it renders all four states, not just the two it is auto-featured for:
-
-- **Locked** — grayed, a lock over the thumbnail, an empty star row, and an **unlock-requirement line**; its plan page opens read-only, with start gated until the objective unlocks.
-- **Completed** (a full star row) — keeps its unlocked color per the fill-not-state rule, adds a **Completed** marker and **Play again / Review**; its plan page offers replay or review.
+**Tap promotes, tap again opens.** There is no separate preview popup. Tapping a small or mid pin **promotes it to its large card in place**; tapping a large card (auto-featured or promoted) **opens the activity's plan page**; tapping the empty map collapses a promoted card (see [routing.instructions.md](routing.instructions.md) for how this rides the workspace and folds on a narrow screen). The plan page opens directly into play — nothing is gated — and a **finished** activity (a full star row) keeps its color per the fill-not-state rule, adding a **Completed** marker and **Play again / Review**.
 
 **Grouping** is separate from the tiers: where pins would overlap they collapse into a count bubble — the `Grouped` variant, itself state-colored — that de-overlaps the map and expands on zoom or tap.
 
 ## Priority matrix
 
-What an item is, and how prominent it becomes, is decided by several factors rather than one, so we don't collapse them into a single grid. They split the way modern feeds split ranking: hard **eligibility** rules first, a tunable **score** second, a **diversity** pass last.
+Every item is ranked by **one weighted score** — there is no eligibility gate. Nothing is locked, and joinable is not a separate stage but the heaviest term, so the whole "what's allowed, then what ranks" split collapses into a single number that fills the tiers. Starting score:
 
-**State — the dominant axis, a gate (not a score).** An item can match more than one state; the highest on the ladder `locked < unlocked < joinable` is the one displayed, and it caps the item's prominence:
+`score = 3·joinable + relevance_band + 0.6·pinged + 0.3·recency − 0.5·finished`
 
-- **Joinable** sessions and **in-course unlocked** activities are the states eligible for the **large** card — a live session to join, or the learner's next in-course activity with its star progress. Joinable is featured first: joining a live session is the goal (see [What the map is for](#what-the-map-is-for)).
-- **Locked** is shown dimmed for a full world and legible progression, never *auto*-promoted — though tapping a locked pin still expands its grayed large card to preview what's ahead.
-- **A finished activity** (its progress fill is full) is forced to the **smallest** tier for *auto*-featuring: it stays on the map so the trail is visible, but never takes a mid or large slot meant for the next thing to do — tapping it still expands its completed large card (replay / review).
-
-State is a gate rather than a weighted term because these are hard rules: no relevance score should lift a locked or already-finished item into the spotlight.
-
-**Relevance — the ranking axis, a weighted score.** Among the items a tier's state gate allows, relevance decides which win the scarce slots. Starting score:
-
-`score = relevance_band + 0.6·pinged + 0.3·recency`
-
-- **relevance_band** — the dominant term: joined-course objective `3` > level-appropriate L2 objective `2` > in my L2 `1` > global `0`.
+- **joinable** `0/1` — an open, live session the learner can join right now. Weighted heaviest because joining someone's live session is the map's whole point (see [What the map is for](#what-the-map-is-for)); a live session normally takes the large card, but a strong next-Mission item still wins it when nothing is live, which is why joinable is a weight and not a gate.
+- **relevance_band** `0–2` — the next-Mission gradient, below.
 - **pinged** `0/1` — the open session's host is recruiting ([activities.instructions.md](activities.instructions.md)).
 - **recency** `0–1` — newest first, a linear falloff over the last day (for a session, time since it opened).
+- **finished** `0/1` — the learner has a full star row on *this activity*; it demotes so a done activity stays on the map (the trail) without taking a slot meant for the next thing to do. This is activity-level completion, distinct from Mission satisfaction in the band.
 
-The boosts sum to at most `0.9`, under one band step, so they only **reorder within a band** — a joined-course item always outranks a level-appropriate one. That preserves the strict priority above while giving one comparable number to fill slots with and to feed a future model. The remaining `0.1` of headroom is held for a **social-proof / urgency** term (a nearly-full session) once that signal exists.
+**Relevance is a next-Mission gradient.** For each quest in scope (the learner's joined courses by default, or whatever the quest filter selects), the client finds the quest's **anchor Mission** — the Mission the learner most needs next — and scores activities by how close their Missions sit to it. The anchor is the **first Mission in quest order whose star total is below the satisfaction threshold**; once every Mission is satisfied, the anchor becomes the **lowest-star Mission**, so a completed quest keeps pointing the learner at their weakest area instead of going flat. An activity's band value rises to the top of the band when it carries the anchor Mission and **decays smoothly** for Missions further along the quest; already-satisfied Missions sit near the floor. An activity carrying several Missions across several in-scope quests takes its **best** (highest) such value. Outside any quest there is no anchor, so an activity scores on plain level/L2 fit — the same ranking, just without a frontier to pull toward. The anchor and star rollup are resolved by the shared client resolver in [quests.instructions.md](quests.instructions.md).
 
-**The data the bands need** is nearly all already on the pin: its **level** (CEFR) and **L2** travel today, and activities already link their learning-objectives in the CMS — the only gap is that the world-map pin's working-set card *drops* those objective refs in transport, so it must carry them (the choreographer bbox card projects them; the client parses them). The learner's **joined-course objective set** is resolved on the client from the courses they belong to and cached, refreshed on course join or leave rather than per re-rank. No new content model, endpoint, or CMS field is required.
+**The data the band needs** is nearly all already on the pin: its **level** (CEFR) and **L2** travel today, and activities already link their learning-objectives in the CMS — the only gap is that the world-map pin's working-set card *drops* those Mission refs in transport, so it must carry them (the choreographer bbox card projects them; the client parses them). The learner's in-scope quests and per-Mission star rollup come from the shared resolver, cached and refreshed on course join or leave rather than per re-rank. No new content model, endpoint, or CMS field is required.
 
-**The pipeline, borrowed from feed ranking.** Instagram- and TikTok-style feeds retrieve a candidate set, score it, then re-rank for diversity; the map mirrors that:
+**The bbox is the one always-on filter, and tiers are assigned over its survivors.** The current map viewport is a constant member of the [filter set](#filters) — never removable, continuously changing as the learner pans and zooms — and the tier budgets (large 1–3, mid ~5–10) are filled from the in-bbox candidate set against those **fixed counts**. So promotion is emergent from zoom with no change to any item's score: zoomed far out, many candidates compete for the same few slots and a low-score activity renders as a small dot (or, past the working-set cap, not at all — see [Scale boundary](#scale-boundary)); zoomed in, the field thins and that same activity naturally earns a mid or large slot. The bbox only decides membership; the single score then ranks the survivors.
 
-1. **Candidates** — the personalized, in-view, filtered set.
-2. **Score** — the formula above, under the state gate's size ceiling.
-3. **Fill, with diversity** — fill large (1–3, joinable-only) then mid (~5–10) from the top of the score, avoiding a featured set that is all one course, objective, or cluster. When more joinable items qualify for large than its budget (the common case: several joined-course sessions live at once), the large slots **rotate through them, about every 5 seconds**, so each gets airtime; with three or fewer they stay static.
+**The pipeline.** Like a feed, the map retrieves a candidate set, scores it, then re-ranks for diversity:
 
-**The pipeline is recomputed for the active viewport.** The candidate set is what's in the current bbox and the budgets are per-view, so panning or zooming re-ranks and re-fills the tiers: the featured cards are always the best things where the learner is *currently looking*, and the bar to be featured rises as a wider view brings more candidates into competition. Re-ranking is debounced on pan and zoom (as the working-set re-fetch already is), and tier assignment is kept stable enough between nearby frames that a small pan does not reshuffle the cards. This runs client-side over the loaded set even while server-side viewport narrowing is deferred (see [Scale boundary](#scale-boundary)).
+1. **Candidates** — the filtered set inside the current bbox.
+2. **Score** — the single formula above.
+3. **Fill, with diversity** — fill large (1–3) then mid (~5–10) from the top of the score, avoiding a featured set that is all one course, Mission, or cluster. When more items tie for large than its budget (the common case: several joinable sessions live at once), the large slots **rotate through them, about every 5 seconds**, so each gets airtime; with three or fewer they stay static.
 
-**Weights are levers, learned later.** The weights are hand-set starting points, tuned by observation: at our scale there isn't the engagement data to learn them from, and hand-set weights stay predictable and editable here — raising `pinged` pushes the map harder toward live, social practice. A learned value-model — predicting join / complete / return — is the upgrade once the data exists. **Interests** become a term once captured (not tracked today).
+Re-ranking is debounced on pan and zoom (as the working-set re-fetch already is), and tier assignment is kept stable enough between nearby frames that a small pan does not reshuffle the cards. This runs client-side over the loaded set even while server-side viewport narrowing is deferred (see [Scale boundary](#scale-boundary)).
+
+**Weights are levers, learned later.** The weights are hand-set starting points, tuned by observation: at our scale there isn't the engagement data to learn them from, and hand-set weights stay predictable and editable here — raising `joinable` or `pinged` pushes the map harder toward live, social practice; deepening the band's decay sharpens the pull toward the next Mission. A learned value-model — predicting join / complete / return — is the upgrade once the data exists. **Interests** become a term once captured (not tracked today).
 
 ## Search
 
@@ -101,13 +91,15 @@ Search matches content in the relevant view — title, description, and learning
 
 ## Filters
 
-Filters refine or widen the working set from the personalized default:
+Filters are the single mechanism that defines the candidate set; the [Priority matrix](#priority-matrix) then ranks within it. The set is:
 
-- **Target language (L2)** and **CEFR** — the spine of the default, changeable to explore beyond it.
-- **Completion state** — new / in-progress / done, so a learner can find fresh content or resume.
-- **Theme / Mission completion, and interests** — later, once the content model carries them and a captured-interests signal exists. Interests are a deliberate captured preference, never proxied from free text.
+- **Viewport (lat/long bbox)** — the one **constant** filter: always applied, never removable, driven by the map camera. Its role in tiering is in the Priority matrix above.
+- **Selected quests**, **target language (L2)**, **CEFR level**, and **a set of Missions** — optional, all-via-a-dropdown. Selecting a quest also sets the next-Mission anchor that the band ranks toward.
+- **Free text** — typed in the search bar ([Search](#search)).
 
-Design intent: a change to *which* items exist widens or narrows the working set (a re-query); a change that only hides already-loaded items refines in place. Keep the cheap, indexed dimensions as set-changers and the rest as in-view refinements so the map stays responsive.
+The optional filters are seeded from the personalized default (my L2, my CEFR, my joined quests) and a one-tap **reset** restores them; each active one shows below the search bar as an **X-able pill**. This replaces the always-on toggles that previously sat under the bar. **Completion state, theme, and interests** come later, once the content model carries them and a captured-interests signal exists; interests are a deliberate captured preference, never proxied from free text.
+
+Design intent: a change to *which* items exist widens or narrows the candidate set (a re-query); a change that only hides already-loaded items refines in place. Keep the cheap, indexed dimensions as set-changers and the rest as in-view refinements so the map stays responsive.
 
 ## Scale boundary
 
