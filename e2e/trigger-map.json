@@ -60,6 +60,7 @@
       "lib/routes/chat_list/**",
       "lib/routes/home/**",
       "lib/routes/settings/**",
+      "lib/routes/profile/**",
       "e2e/scripts/a11y.spec.ts"
     ],
     "web": "e2e/scripts/a11y.spec.ts",

@@ -115,6 +115,17 @@ test.describe("Accessibility (axe-core)", () => {
       const violations = await auditPage(page);
       expect(violations, formatViolations(violations)).toHaveLength(0);
     });
+
+    test("profile page has no a11y violations", async ({ page }) => {
+      await gotoSurface(
+        page,
+        "/#/?right=settingspage:profile,settings",
+        // The profile shows the account's Matrix id; the CI account is fixed.
+        page.getByRole("button", { name: /staging_automated_tests/ }).first(),
+      );
+      const violations = await auditPage(page);
+      expect(violations, formatViolations(violations)).toHaveLength(0);
+    });
   });
 });
 
