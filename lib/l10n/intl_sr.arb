@@ -10956,17 +10956,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Pro funkcije",
     "pronunciationTools": "Alati za izgovor",
     "audioTranscription": "AI transkripcija zvuka",
     "visualLearnerSupport": "Podrška za vizuelne učenike",
     "instantWritingTranslation": "Instantna prevodna pisanja",
     "personalizedPracticeExercises": "Personalizovane vežbe",
     "vocabularyFlashcards": "Rečničke kartice",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

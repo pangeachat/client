@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
+import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class MxcImageViewer extends StatelessWidget {
   final Uri mxContent;

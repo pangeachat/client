@@ -11,18 +11,20 @@ class OverlayListEntry {
   final String? key;
   final bool canPop;
   final bool blockOverlay;
+  final bool rootOverlay;
 
   OverlayListEntry(
     this.entry, {
     this.key,
     this.canPop = true,
     this.blockOverlay = false,
+    this.rootOverlay = false,
   });
 }
 
 class PangeaAnyState {
   final Map<String, LayerLinkAndKey> _layerLinkAndKeys = {};
-  List<OverlayListEntry> entries = [];
+  final List<OverlayListEntry> entries = [];
 
   LayerLinkAndKey layerLinkAndKey(
     String transformTargetId, [
@@ -66,16 +68,22 @@ class PangeaAnyState {
       return false;
     }
 
+    final rootEntry = entries.firstWhereOrNull((e) => e.rootOverlay);
+
     entries.add(
       OverlayListEntry(
         entry,
         key: overlayKey,
         canPop: canPop,
         blockOverlay: blockOverlay,
+        rootOverlay: rootOverlay,
       ),
     );
 
-    Overlay.of(context, rootOverlay: rootOverlay).insert(entry);
+    Overlay.of(
+      context,
+      rootOverlay: rootOverlay,
+    ).insert(entry, below: rootEntry?.entry);
 
     return true;
   }

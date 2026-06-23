@@ -10852,17 +10852,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Mga pro na tampok",
     "pronunciationTools": "Mga kasangkapan sa pagbigkas",
     "audioTranscription": "AI na transkripsyon ng audio",
     "visualLearnerSupport": "Suporta para sa mga visual na mag-aaral",
     "instantWritingTranslation": "Agad na pagsasalin ng pagsusulat",
     "personalizedPracticeExercises": "Naka-personalize na mga ehersisyo sa pagsasanay",
     "vocabularyFlashcards": "Mga flashcard ng bokabularyo",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

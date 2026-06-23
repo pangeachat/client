@@ -10,9 +10,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluffychat/config/routes.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/languages/locale_provider.dart';
+import 'package:fluffychat/features/navigation/legacy_redirects.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
-import 'package:fluffychat/pangea/languages/locale_provider.dart';
 import 'package:fluffychat/widgets/app_lock.dart';
 import 'package:fluffychat/widgets/theme_builder.dart';
 import '../utils/custom_scroll_behaviour.dart';
@@ -43,6 +45,15 @@ class FluffyChatApp extends StatelessWidget {
     routes: AppRoutes.routes,
     // #Pangea
     observers: [GoogleAnalytics.getAnalyticsObserver()],
+    redirect: (context, state) {
+      // Permanent shims from pre-world_v2 /rooms/... paths first (on a redirect
+      // the re-run handles panels). Otherwise keep open `?right=`/`?left=`
+      // panels across a left-side navigation so they aren't dropped by a bare
+      // context.go — the panels are the URL's, persistent across nav.
+      final legacy = LegacyRedirects.handle(state.uri);
+      if (legacy != null) return legacy;
+      return WorkspaceNav.preserveOpenPanels(state.uri);
+    },
     // Pangea#
     debugLogDiagnostics: true,
   );

@@ -10552,17 +10552,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Pro featurer",
     "pronunciationTools": "Uttalstól",
     "audioTranscription": "AI hljóðritun",
     "visualLearnerSupport": "Stuðningur við sjónræna námsmenn",
     "instantWritingTranslation": "Strax skrifa þýðingu",
     "personalizedPracticeExercises": "Sérsniðnar æfingar",
     "vocabularyFlashcards": "Orðaforði flashcards",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

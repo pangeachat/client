@@ -5,7 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
 
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
-import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 
 extension PublicCourseExtension on Api {
   Future<PublicCoursesResponse> getPublicCourses({

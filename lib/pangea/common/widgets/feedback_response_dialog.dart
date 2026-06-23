@@ -2,7 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
+import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 
 class FeedbackResponseDialog extends StatelessWidget {
   final String title;
@@ -36,6 +37,7 @@ class FeedbackResponseDialog extends StatelessWidget {
                 child: Row(
                   children: [
                     IconButton(
+                      tooltip: L10n.of(context).close,
                       icon: const Icon(Icons.close),
                       onPressed: () => Navigator.of(context).pop(),
                     ),

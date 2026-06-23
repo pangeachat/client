@@ -1,9 +1,9 @@
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/events/constants/message_constants.dart';
-import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extension.dart';
 
 extension VisibleInGuiExtension on List<Event> {

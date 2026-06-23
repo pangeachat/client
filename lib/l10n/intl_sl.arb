@@ -10949,17 +10949,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Pro funkcije",
     "pronunciationTools": "Orodja za izgovor",
     "audioTranscription": "AI transkripcija zvoka",
     "visualLearnerSupport": "Podpora vizualnim učencem",
     "instantWritingTranslation": "Takojšnji prevod pisanja",
     "personalizedPracticeExercises": "Personalizirane vaje",
     "vocabularyFlashcards": "Besedišče na karticah",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

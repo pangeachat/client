@@ -10658,17 +10658,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Funcții Pro",
     "pronunciationTools": "Instrumente de pronunție",
     "audioTranscription": "Transcriere audio AI",
     "visualLearnerSupport": "Suport pentru învățarea vizuală",
     "instantWritingTranslation": "Traducere instantanee a scrisului",
     "personalizedPracticeExercises": "Exerciții de practică personalizate",
     "vocabularyFlashcards": "Carduri de vocabular",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

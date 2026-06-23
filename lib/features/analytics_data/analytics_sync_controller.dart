@@ -1,0 +1,216 @@
+import 'dart:async';
+
+import 'package:matrix/matrix.dart';
+
+import 'package:fluffychat/features/analytics/analytics_constants.dart';
+import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
+import 'package:fluffychat/features/analytics/constructs_event.dart';
+import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/analytics_data/analytics_settings_model.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+
+enum _AnalyticsUpdateEvent {
+  constructAnalytics,
+  activityAnalytics,
+  lemmaInfo,
+  blockedConstruct;
+
+  String get eventType {
+    switch (this) {
+      case _AnalyticsUpdateEvent.constructAnalytics:
+        return PangeaEventTypes.construct;
+      case _AnalyticsUpdateEvent.activityAnalytics:
+        return PangeaEventTypes.activityRoomIds;
+      case _AnalyticsUpdateEvent.lemmaInfo:
+        return PangeaEventTypes.userSetLemmaInfo;
+      case _AnalyticsUpdateEvent.blockedConstruct:
+        return PangeaEventTypes.analyticsSettings;
+    }
+  }
+}
+
+class AnalyticsSyncController {
+  final Client client;
+  final AnalyticsDataService dataService;
+
+  StreamSubscription? _subscription;
+
+  AnalyticsSyncController({required this.client, required this.dataService});
+
+  LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
+
+  void start() {
+    _subscription ??= client.onSync.stream.listen(_onSync);
+  }
+
+  void dispose() {
+    _subscription?.cancel();
+    _subscription = null;
+  }
+
+  Future<void> _onSync(SyncUpdate update) async {
+    final analyticsRoom = _getAnalyticsRoom();
+    final l2 = _l2;
+    if (analyticsRoom == null || l2 == null) return;
+
+    final roomUpdates = update.rooms?.join?[analyticsRoom.id]?.timeline?.events;
+    if (roomUpdates == null) return;
+
+    for (final type in _AnalyticsUpdateEvent.values) {
+      await _dispatchSyncEvents(
+        type,
+        roomUpdates,
+        analyticsRoom,
+        l2.langCodeShort,
+      );
+    }
+  }
+
+  Future<void> _dispatchSyncEvents(
+    _AnalyticsUpdateEvent type,
+    List<MatrixEvent> events,
+    Room analyticsRoom,
+    String language,
+  ) async {
+    final updates = events
+        .where((e) => e.type == type.eventType && e.senderId == client.userID)
+        .toList();
+
+    switch (type) {
+      case _AnalyticsUpdateEvent.constructAnalytics:
+        await _onConstructEvents(updates, analyticsRoom, language);
+        break;
+      case _AnalyticsUpdateEvent.activityAnalytics:
+        _onActivityEvents(updates);
+        break;
+      case _AnalyticsUpdateEvent.lemmaInfo:
+        _onLemmaInfoEvents(updates);
+        break;
+      case _AnalyticsUpdateEvent.blockedConstruct:
+        await _onBlockedConstructEvents(updates, language);
+        break;
+    }
+  }
+
+  Future<void> _onConstructEvents(
+    List<MatrixEvent> events,
+    Room analyticsRoom,
+    String language,
+  ) async {
+    final constructEvents = events
+        .map(
+          (e) => ConstructAnalyticsEvent(
+            event: Event.fromMatrixEvent(e, analyticsRoom),
+          ),
+        )
+        .where((e) => e.event.status == EventStatus.synced)
+        .toList();
+
+    if (constructEvents.isEmpty) return;
+    await dataService.updateDispatcher.sendServerAnalyticsUpdate(
+      constructEvents,
+      language,
+    );
+  }
+
+  void _onActivityEvents(List<MatrixEvent> events) {
+    for (final event in events) {
+      if (event.content[AnalyticsConstants.roomIds] is! List) continue;
+      final roomIds = List<String>.from(
+        event.content[AnalyticsConstants.roomIds]! as List,
+      );
+      final prevContent =
+          event.unsigned?['prev_content'] as Map<String, Object?>?;
+      final prevRoomIds =
+          prevContent != null && prevContent[AnalyticsConstants.roomIds] is List
+          ? List<String>.from(prevContent[AnalyticsConstants.roomIds] as List)
+          : [];
+      final newRoomIds = roomIds
+          .where((id) => !prevRoomIds.contains(id))
+          .toList();
+
+      if (newRoomIds.isNotEmpty) {
+        dataService.updateDispatcher.sendActivityAnalyticsUpdate(null);
+      }
+    }
+  }
+
+  void _onLemmaInfoEvents(List<MatrixEvent> events) {
+    for (final event in events) {
+      if (event.stateKey == null) continue;
+      final cID = ConstructIdentifier.fromString(event.stateKey!);
+      if (cID == null) continue;
+
+      final update = UserSetLemmaInfo.fromJson(event.content);
+      dataService.updateDispatcher.sendLemmaInfoUpdate(cID, update);
+    }
+  }
+
+  Future<void> _onBlockedConstructEvents(
+    List<MatrixEvent> events,
+    String language,
+  ) async {
+    for (final event in events) {
+      final current = AnalyticsSettingsModel.fromJson(event.content);
+      final prevContent =
+          event.unsigned?['prev_content'] as Map<String, Object?>?;
+      final prev = prevContent != null
+          ? AnalyticsSettingsModel.fromJson(prevContent)
+          : null;
+
+      final newBlocked = current.blockedConstructs;
+      final prevBlocked = prev?.blockedConstructs ?? {};
+
+      final newlyBlocked = newBlocked.where((c) => !prevBlocked.contains(c));
+      if (newlyBlocked.isEmpty) continue;
+      await dataService.updateDispatcher.sendBlockedConstructsUpdate(
+        newlyBlocked.toSet(),
+        language,
+      );
+    }
+  }
+
+  Future<void> waitForSync(String analyticsRoomId) async {
+    await client.onSync.stream.firstWhere((update) {
+      final roomUpdate = update.rooms?.join?[analyticsRoomId];
+      if (roomUpdate == null) return false;
+
+      final hasAnalyticsEvent =
+          roomUpdate.timeline?.events?.any(
+            (e) =>
+                e.type == PangeaEventTypes.construct &&
+                e.senderId == client.userID,
+          ) ??
+          false;
+
+      return hasAnalyticsEvent;
+    });
+  }
+
+  Future<void> bulkUpdate(String language) async {
+    final analyticsRoom = _getAnalyticsRoom();
+    if (analyticsRoom == null) return;
+
+    final lastUpdated = await dataService.getLastUpdatedAnalytics(language);
+
+    final events = await analyticsRoom.getAnalyticsEvents(
+      userId: client.userID!,
+      since: lastUpdated,
+    );
+
+    if (events == null || events.isEmpty) return;
+
+    await dataService.updateServerAnalytics(events, language);
+  }
+
+  Room? _getAnalyticsRoom() {
+    final l2 = _l2;
+    if (l2 == null) return null;
+    return client.ownAnalyticsRoomLocal(lang: l2);
+  }
+}

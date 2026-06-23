@@ -7927,17 +7927,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Funciones Pro",
     "pronunciationTools": "Herramientas de pronunciación",
     "audioTranscription": "Transcripción de audio con IA",
     "visualLearnerSupport": "Soporte para aprendices visuales",
     "instantWritingTranslation": "Traducción instantánea de escritura",
     "personalizedPracticeExercises": "Ejercicios de práctica personalizados",
     "vocabularyFlashcards": "Tarjetas de vocabulario",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

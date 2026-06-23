@@ -1,0 +1,200 @@
+import 'package:flutter_test/flutter_test.dart';
+
+import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
+import 'package:fluffychat/routes/world/world_map_signals.dart';
+
+const int _dayMs = 24 * 60 * 60 * 1000;
+
+ActivitySessionFacts _session(
+  String activityId, {
+  bool holdsRole = false,
+  int collectedGoals = 0,
+  int totalGoals = 0,
+  bool joinable = false,
+  int lastEventMs = 0,
+}) => (
+  activityId: activityId,
+  holdsRole: holdsRole,
+  collectedGoals: collectedGoals,
+  totalGoals: totalGoals,
+  joinable: joinable,
+  lastEventMs: lastEventMs,
+);
+
+ActivityCompletionFacts _completion(
+  String activityId, {
+  required int totalGoals,
+  required int collectedGoals,
+}) => (
+  activityId: activityId,
+  totalGoals: totalGoals,
+  collectedGoals: collectedGoals,
+);
+
+void main() {
+  group('reduceActivitySignals', () {
+    test('a held role reads unlocked with the collected/total fraction', () {
+      final s = reduceActivitySignals(
+        [_session('a', holdsRole: true, collectedGoals: 3, totalGoals: 4)],
+        pingedActivityIds: const {},
+        nowMs: 0,
+      );
+      expect(s['a']!.state, ActivityPinState.unlocked);
+      expect(s['a']!.completionFraction, closeTo(0.75, 1e-9));
+    });
+
+    test('keeps the BEST fraction across sessions of the same activity', () {
+      final s = reduceActivitySignals(
+        [
+          _session('a', holdsRole: true, collectedGoals: 1, totalGoals: 4),
+          _session('a', holdsRole: true, collectedGoals: 3, totalGoals: 4),
+        ],
+        pingedActivityIds: const {},
+        nowMs: 0,
+      );
+      expect(s['a']!.completionFraction, closeTo(0.75, 1e-9));
+    });
+
+    test('total 0 yields 0 fraction (no divide-by-zero)', () {
+      final s = reduceActivitySignals(
+        [_session('a', holdsRole: true, collectedGoals: 0, totalGoals: 0)],
+        pingedActivityIds: const {},
+        nowMs: 0,
+      );
+      expect(s['a']!.completionFraction, 0);
+    });
+
+    test(
+      'joinable beats unlocked on the colour ladder, fraction preserved',
+      () {
+        final s = reduceActivitySignals(
+          [
+            // one session where the user holds a role (unlocked, half done)…
+            _session('a', holdsRole: true, collectedGoals: 1, totalGoals: 2),
+            // …and another, open, session of the same activity (joinable)
+            _session('a', joinable: true, lastEventMs: _dayMs),
+          ],
+          pingedActivityIds: const {},
+          nowMs: _dayMs,
+        );
+        expect(s['a']!.state, ActivityPinState.joinable);
+        expect(s['a']!.completionFraction, closeTo(0.5, 1e-9));
+      },
+    );
+
+    test('recency decays linearly from the newest open session over 24h', () {
+      final fresh = reduceActivitySignals(
+        [_session('a', joinable: true, lastEventMs: _dayMs)],
+        pingedActivityIds: const {},
+        nowMs: _dayMs, // age 0
+      );
+      expect(fresh['a']!.recency, closeTo(1.0, 1e-9));
+
+      final half = reduceActivitySignals(
+        [_session('a', joinable: true, lastEventMs: _dayMs ~/ 2)],
+        pingedActivityIds: const {},
+        nowMs: _dayMs, // age 12h
+      );
+      expect(half['a']!.recency, closeTo(0.5, 1e-9));
+
+      final stale = reduceActivitySignals(
+        [_session('a', joinable: true, lastEventMs: _dayMs)],
+        pingedActivityIds: const {},
+        nowMs: _dayMs * 3, // age 48h → clamped to 0
+      );
+      expect(stale['a']!.recency, 0);
+    });
+
+    test('the newest open session wins for recency', () {
+      final s = reduceActivitySignals(
+        [
+          _session('a', joinable: true, lastEventMs: 1),
+          _session('a', joinable: true, lastEventMs: _dayMs),
+        ],
+        pingedActivityIds: const {},
+        nowMs: _dayMs,
+      );
+      expect(s['a']!.recency, closeTo(1.0, 1e-9));
+    });
+
+    test('pinged flag comes from pingedActivityIds', () {
+      final s = reduceActivitySignals(
+        [
+          _session('a', joinable: true, lastEventMs: _dayMs),
+          _session('b', joinable: true, lastEventMs: _dayMs),
+        ],
+        pingedActivityIds: const {'a'},
+        nowMs: _dayMs,
+      );
+      expect(s['a']!.pinged, isTrue);
+      expect(s['b']!.pinged, isFalse);
+    });
+
+    test(
+      'a room with neither a held role nor a free slot contributes nothing',
+      () {
+        final s = reduceActivitySignals(
+          [_session('a')],
+          pingedActivityIds: const {},
+          nowMs: 0,
+        );
+        expect(s, isEmpty);
+      },
+    );
+  });
+
+  group('reduceCompletion', () {
+    test('all goals collected is completed', () {
+      final m = reduceCompletion([
+        _completion('a', totalGoals: 3, collectedGoals: 3),
+      ]);
+      expect(m['a'], MapCompletionFilter.completed);
+    });
+
+    test('some goals collected is in-progress', () {
+      final m = reduceCompletion([
+        _completion('a', totalGoals: 3, collectedGoals: 1),
+      ]);
+      expect(m['a'], MapCompletionFilter.inProgress);
+    });
+
+    test('total 0 is in-progress, never completed', () {
+      final m = reduceCompletion([
+        _completion('a', totalGoals: 0, collectedGoals: 0),
+      ]);
+      expect(m['a'], MapCompletionFilter.inProgress);
+    });
+
+    test('the highest status across sessions wins', () {
+      final m = reduceCompletion([
+        _completion('a', totalGoals: 3, collectedGoals: 1), // inProgress
+        _completion('a', totalGoals: 3, collectedGoals: 3), // completed
+      ]);
+      expect(m['a'], MapCompletionFilter.completed);
+    });
+  });
+
+  group('bandAtOrBelow', () {
+    test('null level includes every CEFR level', () {
+      expect(bandAtOrBelow(null), LanguageLevelTypeEnum.values.toSet());
+    });
+
+    test('a level includes itself and everything below, nothing above', () {
+      final band = bandAtOrBelow(LanguageLevelTypeEnum.b1);
+      expect(
+        band,
+        containsAll([
+          LanguageLevelTypeEnum.preA1,
+          LanguageLevelTypeEnum.a1,
+          LanguageLevelTypeEnum.a2,
+          LanguageLevelTypeEnum.b1,
+        ]),
+      );
+      expect(band, isNot(contains(LanguageLevelTypeEnum.b2)));
+      expect(band, isNot(contains(LanguageLevelTypeEnum.c1)));
+      expect(band, isNot(contains(LanguageLevelTypeEnum.c2)));
+    });
+  });
+}

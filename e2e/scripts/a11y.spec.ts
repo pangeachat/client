@@ -10,11 +10,9 @@ import { expect, test } from "../fixtures";
  * coverage. Scoped to the semantics overlay (<flt-semantics-host>)
  * since Flutter's <canvas> is opaque to axe.
  *
- * Triggers:
- * - lib/pangea/login/**
- * - lib/pages/login/**
- * - lib/pangea/chat_list/**
- * - lib/pages/chat_list/**
+ * Triggers (world_v2): see e2e/trigger-map.json for the authoritative globs.
+ * - lib/routes/world/**, lib/features/navigation/**, lib/widgets/layouts/**
+ * - lib/routes/chat_list/**, lib/routes/home/login/**
  * - e2e/scripts/a11y.spec.ts
  */
 
@@ -29,6 +27,23 @@ async function auditPage(page: import("@playwright/test").Page) {
     .analyze();
 
   return results.violations;
+}
+
+/**
+ * Reach an authenticated world_v2 surface and prove it rendered before auditing.
+ * The home is a canvas map; flutter_map defers its semantics tree until a pointer
+ * event, so we wake it, then wait for a surface-specific control. Auditing before
+ * the surface is in the tree would report zero violations vacuously.
+ */
+async function gotoSurface(
+  page: import("@playwright/test").Page,
+  hash: string,
+  sentinel: import("@playwright/test").Locator,
+) {
+  await page.goto(hash);
+  await page.mouse.move(640, 400);
+  await page.mouse.wheel(0, -500);
+  await expect(sentinel).toBeVisible({ timeout: 90_000 });
 }
 
 test.describe("Accessibility (axe-core)", () => {
@@ -63,22 +78,51 @@ test.describe("Accessibility (axe-core)", () => {
     });
   });
 
-  test.describe("Authenticated pages", () => {
-    // Debug mode needs extra time to restore IndexedDB session + sync Matrix
+  test.describe("Authenticated world_v2 surfaces", () => {
+    // Re-attach the saved auth state; the parent describe forces logged-out.
+    test.use({
+      storageState: path.join(__dirname, "..", ".auth", "user.json"),
+    });
+    // Login + IndexedDB session restore + Matrix sync need extra time.
     test.setTimeout(120_000);
 
-    test("chat list has no a11y violations", async ({ page }) => {
-      try {
-        // Auth fixture loads saved state → lands on /rooms or /home
-        await expect(page.getByRole("button", { name: intl.home })).toBeVisible({
-          timeout: 90000,
-        });
-      } catch (error) {
-        // If button was not found, the language might not be english
-        console.error('Locator timeout exceeded:', error.message);
-        console.log('Check that the account L1 is english.')
-      }
+    test("world map has no a11y violations", async ({ page }) => {
+      await gotoSurface(
+        page,
+        "/#/",
+        page.getByRole("textbox", { name: intl.mapSearchHint }),
+      );
+      const violations = await auditPage(page);
+      expect(violations, formatViolations(violations)).toHaveLength(0);
+    });
 
+    test("chat list has no a11y violations", async ({ page }) => {
+      await gotoSurface(
+        page,
+        "/#/?left=chats",
+        page.getByRole("button", { name: intl.chatWithSupport }).first(),
+      );
+      const violations = await auditPage(page);
+      expect(violations, formatViolations(violations)).toHaveLength(0);
+    });
+
+    test("settings panel has no a11y violations", async ({ page }) => {
+      await gotoSurface(
+        page,
+        "/#/?right=settings",
+        page.getByRole("button", { name: intl.learningSettings }).first(),
+      );
+      const violations = await auditPage(page);
+      expect(violations, formatViolations(violations)).toHaveLength(0);
+    });
+
+    test("profile page has no a11y violations", async ({ page }) => {
+      await gotoSurface(
+        page,
+        "/#/?right=settingspage:profile,settings",
+        // The profile shows the account's Matrix id; the CI account is fixed.
+        page.getByRole("button", { name: /staging_automated_tests/ }).first(),
+      );
       const violations = await auditPage(page);
       expect(violations, formatViolations(violations)).toHaveLength(0);
     });

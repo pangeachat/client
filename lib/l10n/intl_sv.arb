@@ -10420,17 +10420,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Pro-funktioner",
     "pronunciationTools": "Uttalsverktyg",
     "audioTranscription": "AI ljudtranskription",
     "visualLearnerSupport": "Stöd för visuella inlärare",
     "instantWritingTranslation": "Omedelbar skrivöversättning",
     "personalizedPracticeExercises": "Personliga övningar",
     "vocabularyFlashcards": "Ordförråds flashcards",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

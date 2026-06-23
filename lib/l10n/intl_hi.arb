@@ -10552,17 +10552,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "प्रो सुविधाएँ",
     "pronunciationTools": "उच्चारण उपकरण",
     "audioTranscription": "एआई ऑडियो ट्रांसक्रिप्शन",
     "visualLearnerSupport": "दृश्य शिक्षार्थी समर्थन",
     "instantWritingTranslation": "तत्काल लेखन अनुवाद",
     "personalizedPracticeExercises": "व्यक्तिगत अभ्यास व्यायाम",
     "vocabularyFlashcards": "शब्दावली फ्लैशकार्ड",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

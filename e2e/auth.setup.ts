@@ -47,9 +47,14 @@ test("authenticate", async ({ page }) => {
   await expect(loginButton).toBeEnabled();
   await loginButton.click();
 
-  // Wait for chat list to load (URL should contain /rooms)
-  // Login involves a Matrix server round-trip, so give it ample time
-  await expect(page).toHaveURL("#/rooms", { timeout: 120000 });
+  // Login involves a Matrix server round-trip, so give it ample time. On
+  // world_v2 a successful login lands on the world map (PRoutes.world = '/'),
+  // not the retired v1 '#/rooms'. Wait until the app leaves the login flow,
+  // which means the Matrix session is established.
+  await expect(page).not.toHaveURL(/\/login/, { timeout: 120000 });
+  // Let the post-login navigation and the IndexedDB session write settle before
+  // capturing storage state.
+  await page.waitForTimeout(3000);
 
   // Save authentication state (indexedDB: true captures Flutter/Matrix
   // session tokens stored in IndexedDB, not just cookies + localStorage)

@@ -6,8 +6,11 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -60,7 +63,16 @@ class _ShareScaffoldDialogState extends State<ShareScaffoldDialog> {
     while (context.canPop()) {
       context.pop();
     }
-    context.go('/rooms/$roomId', extra: widget.items);
+    // world_v2: open the target as the single live `room` token over the map.
+    // The shared items ride the navigation `extra` (they cannot be expressed in
+    // the URL); the shell forwards them to the room. See `routing.instructions.md`.
+    context.go(
+      WorkspaceNav.openExclusiveLeftRoom(
+        GoRouterState.of(context).uri,
+        PanelToken('room', shortRoomId(roomId)),
+      ),
+      extra: widget.items,
+    );
   }
 
   @override
@@ -111,6 +123,7 @@ class _ShareScaffoldDialogState extends State<ShareScaffoldDialog> {
                 ),
                 floatingLabelBehavior: FloatingLabelBehavior.never,
                 prefixIcon: IconButton(
+                  tooltip: L10n.of(context).search,
                   onPressed: () {},
                   icon: Icon(
                     Icons.search_outlined,

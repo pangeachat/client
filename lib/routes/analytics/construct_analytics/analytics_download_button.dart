@@ -1,0 +1,29 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
+import 'package:material_symbols_icons/symbols.dart';
+
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/analytics_dowload_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+
+class DownloadAnalyticsButton extends StatelessWidget {
+  const DownloadAnalyticsButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    if (!kIsWeb ||
+        !MatrixState.pangeaController.userController.showDeveloperOptions) {
+      return const SizedBox.shrink();
+    }
+
+    return IconButton(
+      tooltip: L10n.of(context).download,
+      icon: const Icon(Symbols.download),
+      onPressed: () => showDialog<AnalyticsDownloadDialog>(
+        context: context,
+        builder: (context) => const AnalyticsDownloadDialog(),
+      ),
+    );
+  }
+}

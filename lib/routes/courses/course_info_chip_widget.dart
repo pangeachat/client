@@ -1,0 +1,123 @@
+import 'package:flutter/material.dart';
+
+import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+
+class CourseInfoChip extends StatelessWidget {
+  final IconData icon;
+  final String text;
+
+  final double? fontSize;
+  final double? iconSize;
+  final EdgeInsets? padding;
+  final Color? highlightColor;
+
+  const CourseInfoChip({
+    super.key,
+    required this.icon,
+    required this.text,
+    required this.fontSize,
+    required this.iconSize,
+    this.padding,
+    this.highlightColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final row = Row(
+      spacing: 4.0,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, size: iconSize),
+        Text(text, style: TextStyle(fontSize: fontSize)),
+      ],
+    );
+
+    return Padding(
+      padding: padding ?? EdgeInsets.zero,
+      child: highlightColor == null
+          ? row
+          : Container(
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+              decoration: BoxDecoration(
+                color: Color.alphaBlend(
+                  Theme.of(context).colorScheme.surface.withAlpha(70),
+                  highlightColor!,
+                ),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: row,
+            ),
+    );
+  }
+}
+
+class CourseInfoChips extends StatefulWidget {
+  final String courseId;
+  final double? fontSize;
+  final double? iconSize;
+  final EdgeInsets? padding;
+
+  const CourseInfoChips(
+    this.courseId, {
+    super.key,
+    this.fontSize,
+    this.iconSize,
+    this.padding,
+  });
+
+  @override
+  State<CourseInfoChips> createState() => CourseInfoChipsState();
+}
+
+class CourseInfoChipsState extends State<CourseInfoChips>
+    with CoursePlanProvider {
+  @override
+  void initState() {
+    super.initState();
+    loadCourse(widget.courseId);
+  }
+
+  @override
+  void didUpdateWidget(covariant CourseInfoChips oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.courseId != widget.courseId) {
+      loadCourse(widget.courseId);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (course == null) {
+      return const SizedBox.shrink();
+    }
+
+    return Wrap(
+      spacing: 8.0,
+      runSpacing: 8.0,
+      children: [
+        CourseInfoChip(
+          icon: Icons.language,
+          text: course!.targetLanguageDisplay,
+          fontSize: widget.fontSize,
+          iconSize: widget.iconSize,
+          padding: widget.padding,
+        ),
+        CourseInfoChip(
+          icon: Icons.school,
+          text: course!.cefrLevel.title(context),
+          fontSize: widget.fontSize,
+          iconSize: widget.iconSize,
+          padding: widget.padding,
+        ),
+        CourseInfoChip(
+          icon: Icons.location_on,
+          text: L10n.of(context).numModules(course!.topicIds.length),
+          fontSize: widget.fontSize,
+          iconSize: widget.iconSize,
+          padding: widget.padding,
+        ),
+      ],
+    );
+  }
+}

@@ -10552,17 +10552,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "ฟีเจอร์ระดับโปร",
     "pronunciationTools": "เครื่องมือการออกเสียง",
     "audioTranscription": "การถอดเสียง AI",
     "visualLearnerSupport": "การสนับสนุนผู้เรียนแบบมองเห็น",
     "instantWritingTranslation": "การแปลการเขียนทันที",
     "personalizedPracticeExercises": "แบบฝึกหัดการฝึกฝนที่ปรับให้เหมาะสม",
     "vocabularyFlashcards": "แฟลชการ์ดคำศัพท์",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

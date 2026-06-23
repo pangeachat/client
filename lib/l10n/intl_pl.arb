@@ -9942,17 +9942,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Funkcje Pro",
     "pronunciationTools": "Narzędzia do wymowy",
     "audioTranscription": "Transkrypcja audio AI",
     "visualLearnerSupport": "Wsparcie dla uczniów wzrokowych",
     "instantWritingTranslation": "Natychmiastowe tłumaczenie pisemne",
     "personalizedPracticeExercises": "Spersonalizowane ćwiczenia praktyczne",
     "vocabularyFlashcards": "Fiszki słownikowe",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

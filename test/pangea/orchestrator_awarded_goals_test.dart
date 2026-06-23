@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_awarded_goals.dart';
-import 'package:fluffychat/pangea/activity_orchestrator/orchestrator_output.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_awarded_goals.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_output.dart';
 
 void main() {
   group('OrchestratorAwardedGoals', () {

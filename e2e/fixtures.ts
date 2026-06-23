@@ -24,12 +24,18 @@ export const test = base.extend({
     // Navigate to the app and wait for Flutter to render
     await page.goto("/");
 
-    // Enable Flutter semantics tree.
-    // Flutter positions flt-semantics-placeholder off-screen, so Playwright's
-    // click() cannot reach it even with force:true. Use dispatchEvent instead.
-    await page
-      .getByRole("button", { name: "Enable accessibility" })
-      .dispatchEvent("click", { timeout: 15000 });
+    // Enable Flutter's semantics tree. When the app is built with
+    // ENABLE_SEMANTICS=true it is already on (the placeholder is absent), so
+    // this is skipped. Otherwise click the off-screen "Enable accessibility"
+    // placeholder; dispatchEvent is required because the element sits off-screen
+    // and .click() (even force:true) cannot reach it.
+    // See playwright-testing.instructions.md.
+    const enableButton = page.getByRole("button", {
+      name: "Enable accessibility",
+    });
+    if (await enableButton.count()) {
+      await enableButton.dispatchEvent("click", { timeout: 15000 });
+    }
 
     // Wait for semantics tree to populate after enabling
     await page.waitForTimeout(3000);

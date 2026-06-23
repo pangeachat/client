@@ -10949,17 +10949,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Profesionálne funkcie",
     "pronunciationTools": "Nástroje na výslovnosť",
     "audioTranscription": "AI prepis zvuku",
     "visualLearnerSupport": "Podpora vizuálnych žiakov",
     "instantWritingTranslation": "Okamžitý preklad písania",
     "personalizedPracticeExercises": "Personalizované cvičenia",
     "vocabularyFlashcards": "Slovné kartičky",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

@@ -1,0 +1,101 @@
+import 'package:flutter/material.dart';
+
+import 'package:fluffychat/features/analytics_data/analytics_init_error_indicator.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
+import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_page.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_repo.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/completed_analytics_practice_exercises_view.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/insufficient_data_indicator.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/ongoing_analytics_practice_session_view.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_timer_widget.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/unsubscribed_practice_page.dart';
+import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
+import 'package:fluffychat/widgets/animated_progress_bar.dart';
+import 'package:fluffychat/widgets/layouts/max_width_body.dart';
+
+class AnalyticsPracticeView extends StatelessWidget {
+  final AnalyticsPracticeState controller;
+
+  const AnalyticsPracticeView(this.controller, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final session = controller.session.session;
+    const loading = Center(
+      child: SizedBox(
+        width: 24,
+        height: 24,
+        child: CircularProgressIndicator.adaptive(),
+      ),
+    );
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          spacing: 8.0,
+          children: [
+            Expanded(
+              child: ValueListenableBuilder(
+                valueListenable: controller.progress,
+                builder: (context, progress, _) => AnimatedProgressBar(
+                  height: 20.0,
+                  widthPercent: progress,
+                  barColor: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+            ),
+            ValueListenableBuilder(
+              valueListenable: controller.practiceExerciseState,
+              builder: (context, state, _) => PracticeTimerWidget(
+                key: ValueKey(session?.startedAt ?? DateTime(0)),
+                initialSeconds: session?.state.elapsedSeconds ?? 0,
+                onTimeUpdate: controller.session.updateElapsedTime,
+                isRunning:
+                    session?.isComplete != true &&
+                    state is AsyncLoaded<MultipleChoicePracticeExerciseModel>,
+              ),
+            ),
+          ],
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: MaxWidthBody(
+          withScrolling: false,
+          showBorder: false,
+          padding: EdgeInsets.only(left: 32.0, right: 32.0),
+          addVerticalPadding: false,
+          child: Builder(
+            builder: (context) {
+              final error = controller.session.sessionError;
+              if (error != null) {
+                if (error is InsufficientDataException) {
+                  return InsufficientDataIndicator();
+                }
+
+                return error is UnsubscribedException
+                    ? const UnsubscribedPracticePage()
+                    : AnalyticsInitErrorIndicator(
+                        reinitialize: controller.startSession,
+                      );
+              }
+
+              final session = controller.session.session;
+              if (session != null) {
+                return session.isComplete && !session.loadFailed
+                    ? CompletedAnalyticsPracticeExercisesView(
+                        session: session,
+                        launchSession: controller.startSession,
+                        levelProgress: controller.levelProgress,
+                      )
+                    : OngoingAnalyticsPracticeSessionView(controller);
+              }
+
+              return loading;
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -9833,17 +9833,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "专业功能",
     "pronunciationTools": "发音工具",
     "audioTranscription": "AI音频转录",
     "visualLearnerSupport": "视觉学习者支持",
     "instantWritingTranslation": "即时写作翻译",
     "personalizedPracticeExercises": "个性化练习",
     "vocabularyFlashcards": "词汇闪卡",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

@@ -10927,17 +10927,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Pro funktioner",
     "pronunciationTools": "Udtale værktøjer",
     "audioTranscription": "AI lydtranskription",
     "visualLearnerSupport": "Visuel læringsstøtte",
     "instantWritingTranslation": "Øjeblikkelig skrivetranslation",
     "personalizedPracticeExercises": "Personlige øvelser",
     "vocabularyFlashcards": "Ordforråd flashcards",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
-import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/replacement_type_enum.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/span_data_model.dart';
 
 void main() {
   test(
