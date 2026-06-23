@@ -12,6 +12,9 @@ import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_init_error_indicator.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/widgets/analytics_summary/learning_progress_indicators.dart';
@@ -82,8 +85,14 @@ class ActivityArchive extends StatelessWidget {
                                             style: ElevatedButton.styleFrom(
                                               padding: EdgeInsets.zero,
                                             ),
-                                            onPressed: () =>
-                                                context.go("/rooms/course"),
+                                            onPressed: () => context.go(
+                                              WorkspaceNav.setSection(
+                                                GoRouterState.of(context).uri,
+                                                PRoutes.world,
+                                                const PanelToken('addcourse'),
+                                                keepRoom: false,
+                                              ),
+                                            ),
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,

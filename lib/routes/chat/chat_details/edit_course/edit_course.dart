@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/utils/file_selector.dart';
+import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -113,8 +117,18 @@ class EditCourseController extends State<EditCourse> {
       );
     }
 
-    if (!resp.isError) {
-      Navigator.of(context).pop();
+    if (!resp.isError && mounted) {
+      // world_v2: this is the `coursepage:edit` token panel, not a route. A bare
+      // Navigator.pop() has nothing to pop to in the shell and falls out to a
+      // blank page (#7096/#7076); close the edit panel back to the course card,
+      // which then shows the saved title/description.
+      NavigationUtil.popOrGo(
+        context,
+        WorkspaceNav.closeLeft(
+          GoRouterState.of(context).uri,
+          const PanelToken('coursepage', 'edit'),
+        ),
+      );
     }
   }
 

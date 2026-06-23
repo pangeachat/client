@@ -228,7 +228,14 @@ class NotStartedSessionController extends State<NotStartedSession>
   void inviteToCourse() {
     final course = widget.course;
     if (course == null) return;
-    context.push("/rooms/spaces/${course.id}/invite");
+    // world_v2: token nav to the course's invite page (no stacked route push).
+    context.go(
+      WorkspaceNav.openCoursePageFor(
+        GoRouterState.of(context).uri,
+        course.id,
+        'invite',
+      ),
+    );
   }
 
   Future<void> joinExistingSession() async {

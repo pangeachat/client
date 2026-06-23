@@ -284,6 +284,20 @@ void main() {
       );
       expect(left.single, const PanelToken('session', '!s'));
     });
+
+    test('opening a session from Stars closes the open course card (#7106)', () {
+      // A saved activity opened from the Stars archive takes over the left
+      // column: the open course card closes (so the review isn't rendered behind
+      // it) while the map scope is kept.
+      final loc = WorkspaceNav.openExclusiveSession(
+        u('/?m=course:!s&left=course'),
+        const PanelToken('session', '!a'),
+      );
+      final left = parseOpenPanels(u(loc)).left;
+      expect(left.any((t) => t.type == 'course'), isFalse); // card closed
+      expect(left.singleWhere((t) => t.type == 'session').param, '!a');
+      expect(loc.contains('m=course'), isTrue); // map scope preserved
+    });
   });
 
   group('setLeft / clearLeft', () {
@@ -355,6 +369,23 @@ void main() {
       );
       expect(loc, '/');
     });
+
+    test('closing the course keeps a launching activity overlay (#7111)', () {
+      // A launching/running activity lives in the ?activity= overlay (the center
+      // canvas, independent of the course card); closing the course must not
+      // drop it.
+      final loc = WorkspaceNav.closeSection(
+        u('/?m=course:!s&left=course&activity=act-1&launch=true'),
+        const PanelToken('course'),
+      );
+      expect(loc.contains('activity=act-1'), isTrue); // overlay preserved
+      expect(loc.contains('launch=true'), isTrue);
+      expect(loc.contains('m=course'), isTrue); // scope kept
+      expect(
+        parseOpenPanels(u(loc)).left.any((t) => t.type == 'course'),
+        isFalse,
+      ); // card gone
+    });
   });
 
   group('preserveOpenPanels carries the right list, not the left', () {
@@ -391,11 +422,25 @@ void main() {
   });
 
   group('openSettings / settingsBack (the right-column settings panel)', () {
-    test('opens the menu as a right token, keeping other right panels', () {
+    test('opens the menu and drops the open analytics panel (#7109)', () {
       final loc = WorkspaceNav.openSettings(u('/?right=analytics:vocab'));
       final right = parseOpenPanels(u(loc)).right;
       expect(right.any((t) => t.type == 'settings' && t.param == null), isTrue);
-      expect(right.any((t) => t.type == 'analytics'), isTrue);
+      // Opening Settings closes the analytics panel — symmetric with opening
+      // analytics replacing the right column — so they don't clutter it (#7109).
+      expect(right.any((t) => t.type == 'analytics'), isFalse);
+    });
+
+    test('opening a settings page drops open vocab/grammar/analytics '
+        'details (#7109)', () {
+      final loc = WorkspaceNav.openSettings(
+        u('/?right=vocab:abc,grammar:def,analytics:vocab'),
+        page: 'learning',
+      );
+      final right = parseOpenPanels(u(loc)).right;
+      // Only the settings page + its menu master remain; the analytics family
+      // is gone.
+      expect(right.map((t) => t.type), ['settingspage', 'settings']);
     });
 
     test('opening a page seats it as a detail BESIDE the menu master', () {
@@ -442,18 +487,22 @@ void main() {
     });
 
     test('closeSettings drops the menu AND its page, keeps the rest', () {
-      var loc = WorkspaceNav.openRight(
-        u('/'),
-        const PanelToken('analytics', 'vocab'),
+      // Analytics can no longer coexist with settings (opening settings drops
+      // it, #7109), so "the rest" is a left panel. closeSettings clears the
+      // right settings panel and leaves the left column intact.
+      var loc = WorkspaceNav.openSettings(
+        u('/?left=room:!a'),
+        page: 'learning',
       );
-      loc = WorkspaceNav.openSettings(u(loc), page: 'learning');
       loc = WorkspaceNav.closeSettings(u(loc));
-      final right = parseOpenPanels(u(loc)).right;
+      final panels = parseOpenPanels(u(loc));
       expect(
-        right.any((t) => t.type == 'settings' || t.type == 'settingspage'),
+        panels.right.any(
+          (t) => t.type == 'settings' || t.type == 'settingspage',
+        ),
         isFalse,
       );
-      expect(right.single, const PanelToken('analytics', 'vocab'));
+      expect(panels.left.single, const PanelToken('room', '!a'));
     });
   });
 
@@ -511,6 +560,25 @@ void main() {
       final lists = parseOpenPanels(u(chats));
       expect(lists.left, [const PanelToken('chats')]); // section replaced left
       expect(lists.right, [const PanelToken('analytics', 'vocab')]); // kept
+    });
+
+    test('back from the route-driven course detail lands on the plan list '
+        '(#7090)', () {
+      // The course detail is route-driven (`/courses/own/:courseid`), so its
+      // parent segments render a blank EmptyPage. Its back navigates to the
+      // start-my-own plan list token over the world map rather than popping to
+      // that blank parent — even though the current URL is the legacy path.
+      final planList = WorkspaceNav.setSection(
+        u('/courses/own/abc-123'),
+        '/',
+        const PanelToken('addcourse', 'own'),
+        keepRoom: false,
+      );
+      expect(u(planList).path, '/');
+      expect(parseOpenPanels(u(planList)).left, [
+        const PanelToken('addcourse', 'own'),
+      ]);
+      expect(parseOpenPanels(u(planList)).right, isEmpty);
     });
   });
 
@@ -626,6 +694,37 @@ void main() {
       expect(parseOpenPanels(u(loc)).left.single, const PanelToken('course'));
       expect(activeSpaceIdFor(u(loc)), '!s');
     });
+
+    test(
+      'openCoursePageFor opens a management page from ANYWHERE — setting the '
+      'target space scope even from the bare map or a different course',
+      () {
+        // From the bare world map (no course scope at all).
+        var loc = WorkspaceNav.openCoursePageFor(u('/'), '!target', 'invite');
+        expect(activeSpaceIdFor(u(loc)), '!target');
+        expect(parseOpenPanels(u(loc)).left.map((t) => t.type).toList(), [
+          'course',
+          'coursepage',
+        ]);
+        expect(
+          parseOpenPanels(u(loc)).left.last,
+          const PanelToken('coursepage', 'invite'),
+        );
+        // From a DIFFERENT course — the scope is replaced with the target's.
+        loc = WorkspaceNav.openCoursePageFor(
+          u('/?m=course:!other&left=course'),
+          '!target',
+          'edit',
+        );
+        expect(activeSpaceIdFor(u(loc)), '!target');
+        expect(
+          parseOpenPanels(
+            u(loc),
+          ).left.where((t) => t.type == 'coursepage').single,
+          const PanelToken('coursepage', 'edit'),
+        );
+      },
+    );
   });
 
   group('openPractice (takes over the analytics surface)', () {

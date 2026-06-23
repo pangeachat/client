@@ -24,7 +24,10 @@ class AddCourseOptions extends StatelessWidget {
         _HubButton(
           icon: Icons.auto_stories_outlined,
           label: l10n.addCourseStartMyOwn,
-          onTap: () => context.go('${PRoutes.courses}/own?showAll=true'),
+          // No showAll: the plan list defaults to the user's target language
+          // (the filter still lets them widen to all). showAll=true here would
+          // suppress that default and list every language (#7081).
+          onTap: () => context.go('${PRoutes.courses}/own'),
         ),
         const SizedBox(height: 8.0),
         _HubButton(

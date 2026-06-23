@@ -5,6 +5,7 @@ import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/routes/onboarding/account_updater.dart';
 import 'package:fluffychat/routes/onboarding/avatar_provider.dart';
 import 'package:fluffychat/routes/onboarding/course_provider.dart';
+import 'package:fluffychat/routes/onboarding/trial_info_provider.dart';
 import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 
@@ -19,11 +20,13 @@ class OnboardingStateController {
   final AccountUpdater accountUpdater;
   final CourseProvider courseProvider;
   final AvatarProvider avatarProvider;
+  final TrialInfoProvider trialInfoProvider;
 
   OnboardingStateController({
     required this.accountUpdater,
     required this.courseProvider,
     required this.avatarProvider,
+    required this.trialInfoProvider,
   });
 
   AvatarInfo? _avatarInfo;

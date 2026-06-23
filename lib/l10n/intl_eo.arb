@@ -10952,17 +10952,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Pro funkcioj",
     "pronunciationTools": "Prononcaj iloj",
     "audioTranscription": "AI aŭdtranskribo",
     "visualLearnerSupport": "Subteno por vizualaj lernantoj",
     "instantWritingTranslation": "Instantan skriban tradukon",
     "personalizedPracticeExercises": "Personigitaj praktikaj ekzercoj",
     "vocabularyFlashcards": "Vortprovaj kartoj",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

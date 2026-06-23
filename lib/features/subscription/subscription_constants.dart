@@ -1,3 +1,3 @@
 class SubscriptionConstants {
-  static const String starBackground = "Background+Star.png";
+  static const String starBackground = "Background+Star+with+characters.png";
 }

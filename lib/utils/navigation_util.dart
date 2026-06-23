@@ -14,6 +14,21 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 /// `/rooms/...` or `/courses/...` render paths anymore; inbound legacy paths are
 /// rewritten to tokens by `legacy_redirects`. See `routing.instructions.md`.
 class NavigationUtil {
+  /// Close the current surface without dead-ending. A real pushed route or
+  /// dialog pops normally; but a world_v2 token panel (a settings page, an
+  /// analytics detail) has nothing on the navigator stack to pop to, so a bare
+  /// `Navigator.pop()` falls out of the shell to the initial route and renders
+  /// the loading page (#7076). When there is nothing to pop, navigate to
+  /// [fallback] — a token location — instead. See `routing.instructions.md`.
+  static void popOrGo(BuildContext context, String fallback) {
+    final navigator = Navigator.of(context);
+    if (navigator.canPop()) {
+      navigator.pop();
+    } else {
+      GoRouter.of(context).go(fallback);
+    }
+  }
+
   static void goToSpaceRoute(
     String? goalRoomID,
     List<String> goalSubroute,
@@ -31,11 +46,12 @@ class NavigationUtil {
     // the card.
     if (goalRoomID == null) {
       if (activeSpaceId != null) {
+        final coursePage = coursePageFor(sub);
         context.go(
-          sub.isEmpty
+          coursePage.isEmpty
               ? WorkspaceNav.openCourse(uri, const PanelToken('course'))
               : _appendQuery(
-                  WorkspaceNav.openCoursePage(uri, sub),
+                  WorkspaceNav.openCoursePage(uri, coursePage),
                   queryParams,
                 ),
           extra: extra,
@@ -50,12 +66,18 @@ class NavigationUtil {
     }
 
     // The active course SPACE itself: re-show its card, or open a management
-    // page (invite / edit / …) as a `coursepage` detail beside the card.
+    // page (invite / edit / …) as a `coursepage` detail beside the card. The
+    // shared chat-details UI addresses these with a room-style `details/<page>`
+    // subroute, so normalize to the course's bare page (see coursePageFor).
     if (activeSpaceId != null && goalRoomID == activeSpaceId) {
+      final coursePage = coursePageFor(sub);
       context.go(
-        sub.isEmpty
+        coursePage.isEmpty
             ? WorkspaceNav.openCourse(uri, const PanelToken('course'))
-            : _appendQuery(WorkspaceNav.openCoursePage(uri, sub), queryParams),
+            : _appendQuery(
+                WorkspaceNav.openCoursePage(uri, coursePage),
+                queryParams,
+              ),
         extra: extra,
       );
       return;
@@ -136,5 +158,22 @@ class NavigationUtil {
         )
         .join('&');
     return '$loc${loc.contains('?') ? '&' : '?'}$q';
+  }
+
+  /// Normalizes a room-style chat-details subroute to its course `coursepage`.
+  ///
+  /// The chat-details UI is shared between rooms and the course space and
+  /// addresses management screens with a room-style `details/<page>` path (e.g.
+  /// the participants tab invites via `['details', 'invite']`). A course has no
+  /// `details` coursepage — that role is the card itself — so `details` maps to
+  /// `''` (show the card) and `details/<page>` to the bare `<page>` coursepage.
+  /// Any other subroute is already a bare coursepage and passes through.
+  /// Without this, `details/invite` became the unhandled token
+  /// `coursepage:details/invite`, rendering an empty, un-closable panel (#7099).
+  @visibleForTesting
+  static String coursePageFor(String sub) {
+    if (sub == 'details') return '';
+    if (sub.startsWith('details/')) return sub.substring('details/'.length);
+    return sub;
   }
 }

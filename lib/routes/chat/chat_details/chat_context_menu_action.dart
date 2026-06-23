@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -226,7 +227,14 @@ void chatContextMenuAction(
       onChatTap.call();
       return;
     case ChatContextAction.goToSpace:
-      outerContext.go("/rooms/spaces/${space!.id}/details");
+      // world_v2: token nav to the course card (sets ?m=course:<id>&left=course),
+      // not the legacy /rooms/spaces path.
+      outerContext.go(
+        WorkspaceNav.openCourseFilter(
+          GoRouterState.of(outerContext).uri,
+          space!.id,
+        ),
+      );
       return;
     case ChatContextAction.favorite:
       await showFutureLoadingDialog(
@@ -290,7 +298,7 @@ void chatContextMenuAction(
 
       if (!resp.isError) {
         isSpace
-            ? context.go('/rooms')
+            ? context.go(PRoutes.chatsList)
             : NavigationUtil.goToSpaceRoute(null, [], outerContext);
       }
 

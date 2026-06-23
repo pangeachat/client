@@ -9924,17 +9924,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Funzionalità Pro",
     "pronunciationTools": "Strumenti di pronuncia",
     "audioTranscription": "Trascrizione audio AI",
     "visualLearnerSupport": "Supporto per apprendenti visivi",
     "instantWritingTranslation": "Traduzione istantanea della scrittura",
     "personalizedPracticeExercises": "Esercizi di pratica personalizzati",
     "vocabularyFlashcards": "Flashcard di vocabolario",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

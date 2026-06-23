@@ -128,11 +128,29 @@ abstract class WorkspaceNav {
   static String openExclusiveLeftRoom(Uri current, PanelToken token) =>
       openDetail(current, token);
 
-  /// A completed-activity `session` review is a left detail in BOTH `liveView`
-  /// and `detail`, so opening it drops any other room/session AND any
-  /// vocab/grammar detail (one detail across columns).
+  /// A completed-activity `session` review (opened from the Stars archive) is a
+  /// left detail in BOTH `liveView` and `detail`, so opening it drops any other
+  /// room/session AND any vocab/grammar detail (one detail across columns). It
+  /// ALSO drops the open `course` card and its `coursepage` so the review isn't
+  /// rendered behind a still-open course window (#7106) — the Stars archive is
+  /// this helper's only caller, and a live in-course session opens via
+  /// [openExclusiveLeftRoom] (+ [openCourseFilter]) instead, so the course is
+  /// only dropped on the Stars path. (Not a shared sibling group: that would
+  /// evict the course on every room/vocab/grammar/practice open too.)
   static String openExclusiveSession(Uri current, PanelToken token) =>
-      openDetail(current, token);
+      _mutateBoth(current, (left) {
+        final next = left
+            .where(
+              (t) =>
+                  t != token &&
+                  !_areSiblings(token, t) &&
+                  t.type != 'course' &&
+                  t.type != 'coursepage',
+            )
+            .toList();
+        next.add(token);
+        return next;
+      }, (right) => right.where((t) => !_areSiblings(token, t)).toList());
 
   /// Open a vocab/grammar construct detail (the `detail` group): drops the other
   /// construct detail and any `session`, seats the detail at the front of the
@@ -240,6 +258,15 @@ abstract class WorkspaceNav {
   static String openCoursePage(Uri current, String page) =>
       openDetail(current, PanelToken('coursepage', page));
 
+  /// Open course [spaceId]'s management [page] (invite / edit / …) from
+  /// ANYWHERE: set the `?m=course:<id>` scope + `course` card, then the
+  /// `coursepage:<page>` detail beside it. Same shape as [openCoursePage] on the
+  /// already-scoped course — use this when the target course may not be the
+  /// current filter (e.g. inviting knocking users from a space tile, or from an
+  /// activity session). See `routing.instructions.md`.
+  static String openCoursePageFor(Uri current, String spaceId, String page) =>
+      openCoursePage(Uri.parse(openCourseFilter(current, spaceId)), page);
+
   /// Replace the whole `left` list (e.g. tapping a top-level section: Chats,
   /// the avatar/profile). The `right` list and other query params are preserved.
   static String setLeft(Uri current, List<PanelToken> tokens) =>
@@ -331,11 +358,20 @@ abstract class WorkspaceNav {
               !(dropDependentCoursePage && t.type == 'coursepage'),
         )
         .toList();
+    // Preserve unrelated one-shot query the way closeLeft/_mutate already do —
+    // recompute only m/left/right and carry the rest forward. Critically this
+    // keeps `?activity=`/`?launch=`/`?roomid=` (a launching or running activity
+    // renders as the center canvas, independent of the course card), so closing
+    // the course no longer unmounts/aborts the activity (#7111). The map filter
+    // (`?m=`) is re-added below, so drop it from the carried set to avoid a dupe.
+    final rest = WorkspaceQuery.parts(current.query);
+    WorkspaceQuery.removeKeys(rest, {'m', 'left', 'right'});
     final parts = <String>[
       ?_mapFilter(current),
       if (left.isNotEmpty) 'left=${left.map((t) => t.encode()).join(',')}',
       if (lists.right.isNotEmpty)
         'right=${lists.right.map((t) => t.encode()).join(',')}',
+      ...rest,
     ];
     return WorkspaceQuery.location(PRoutes.world, parts);
   }
@@ -377,16 +413,35 @@ abstract class WorkspaceNav {
     return pushPage(current, type, parent.isEmpty ? null : parent);
   }
 
+  /// The analytics-family right panels: the analytics summary, its vocab/grammar
+  /// details, and the practice/activity-review surfaces. Opening Settings drops
+  /// these so the right column shows one feature at a time — mirroring how
+  /// opening analytics replaces the right column and drops Settings (#7109).
+  static const Set<String> _analyticsRightPanels = {
+    'analytics',
+    'vocab',
+    'grammar',
+    'practice',
+    'review',
+  };
+
   /// Open the settings/profile MENU as the right-column master (page null/empty),
   /// or a settings PAGE as its detail beside the menu. A page blooms at the front
   /// of the right group with the `settings` menu master kept (or seated) behind
   /// it — so they coexist when width allows and fold to a push when not. A
-  /// `/`-path page is a leaf (its own back pops it). See `routing.instructions.md`.
+  /// `/`-path page is a leaf (its own back pops it). Opening Settings also drops
+  /// any open analytics-family panel so the two don't clutter the right column
+  /// together (#7109). See `routing.instructions.md`.
   static String openSettings(Uri current, {String? page}) {
     if (page == null || page.isEmpty) {
       return _mutate(current, 'right', (tokens) {
         final next = tokens
-            .where((t) => t.type != 'settings' && t.type != 'settingspage')
+            .where(
+              (t) =>
+                  t.type != 'settings' &&
+                  t.type != 'settingspage' &&
+                  !_analyticsRightPanels.contains(t.type),
+            )
             .toList();
         next.add(const PanelToken('settings'));
         return next;
@@ -394,7 +449,13 @@ abstract class WorkspaceNav {
     }
     final detail = PanelToken('settingspage', page);
     return _mutate(current, 'right', (tokens) {
-      final next = tokens.where((t) => t.type != 'settingspage').toList();
+      final next = tokens
+          .where(
+            (t) =>
+                t.type != 'settingspage' &&
+                !_analyticsRightPanels.contains(t.type),
+          )
+          .toList();
       next.insert(0, detail);
       if (!next.any((t) => t.type == 'settings')) {
         next.add(const PanelToken('settings'));

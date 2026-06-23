@@ -146,33 +146,25 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
       );
     }
 
-    // While resolving, a minimal back/close row over a spinner.
+    // While resolving, a minimal close row over a spinner. ONE control only,
+    // matching the loaded start view's rule (activity_sessions_start_view.dart):
+    // a back-arrow when the activity is still course-scoped (`?m=course:` over
+    // `?activity=`), so it returns toward the course; an X otherwise (a map pin /
+    // standalone), so it dismisses to the map. Rendering both ← and X here was a
+    // redundant pair that did the same thing in the pin case (#7115).
+    final uri = GoRouter.of(context).routeInformationProvider.value.uri;
+    final embedded = uri.queryParameters['activity'] != null;
+    final courseScoped =
+        uri.queryParameters['m']?.startsWith('course:') ?? false;
+    final showBack = embedded && courseScoped;
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 4.0,
-                vertical: 4.0,
-              ),
-              child: Row(
-                children: [
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).backButtonTooltip,
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: _back,
-                  ),
-                  const Spacer(),
-                  IconButton(
-                    tooltip: L10n.of(context).close,
-                    icon: const Icon(Icons.close),
-                    onPressed: _close,
-                  ),
-                ],
-              ),
+            ActivityLoadingHeader(
+              showBack: showBack,
+              onBack: _back,
+              onClose: _close,
             ),
             const Expanded(
               child: Center(child: CircularProgressIndicator.adaptive()),
@@ -182,4 +174,42 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
       ),
     );
   }
+}
+
+/// The single close control shown over the activity-resolve spinner. Exactly ONE
+/// control, mirroring the loaded start view's rule (activity_sessions_start_view
+/// and routing.instructions.md → one close affordance per panel): a back-arrow
+/// when [showBack] (the activity is still course-scoped, so it returns toward the
+/// course), an X otherwise (a map pin / standalone, so it dismisses to the map).
+/// Rendering both ← and X here was a redundant pair doing the same thing (#7115).
+class ActivityLoadingHeader extends StatelessWidget {
+  final bool showBack;
+  final VoidCallback onBack;
+  final VoidCallback onClose;
+
+  const ActivityLoadingHeader({
+    super.key,
+    required this.showBack,
+    required this.onBack,
+    required this.onClose,
+  });
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
+    child: Align(
+      alignment: Alignment.centerLeft,
+      child: showBack
+          ? IconButton(
+              tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+              icon: const Icon(Icons.arrow_back),
+              onPressed: onBack,
+            )
+          : IconButton(
+              tooltip: L10n.of(context).close,
+              icon: const Icon(Icons.close),
+              onPressed: onClose,
+            ),
+    ),
+  );
 }

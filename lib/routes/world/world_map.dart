@@ -15,6 +15,7 @@ import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
@@ -144,8 +145,19 @@ class WorldMapController extends State<WorldMap>
   Map<String, MapCompletionFilter> _completion = {};
 
   /// Learning-objective ids across the learner's joined courses, for relevance
-  /// banding. Rebuilt async on course join/leave.
+  /// banding. Rebuilt async on course join/leave (see [_maybeRebuildObjectiveCache]).
   final JoinedObjectiveCache _objectiveCache = JoinedObjectiveCache();
+
+  /// The joined-course uuids [_objectiveCache] was last (re)built from. The
+  /// initial build happens on client-set, but the joined-course rooms (or their
+  /// outlines) may not be ready yet; tracking the set lets the sync listener
+  /// rebuild when it changes — or when a prior build resolved nothing — instead
+  /// of the banding + gate staying blank for the whole session.
+  Set<String> _objectiveCacheUuids = const {};
+
+  /// Guards against overlapping objective-cache rebuilds (and stops a
+  /// persistently-failing course from rebuilding on every single sync).
+  bool _objectiveCacheRebuilding = false;
 
   /// Activity ids with a recently-pinged open session (best-effort, scanned from
   /// joined course-space messages). Folded into [_signals].
@@ -220,9 +232,12 @@ class WorldMapController extends State<WorldMap>
     if (_client != client) {
       _client = client;
       _recomputeProgress();
-      // The objective set and pinged scan do network/timeline work, so they run
-      // once on client set (not every sync). Joining a course mid-session
-      // refreshes them on the next remount — acceptable staleness for now.
+      // First build of the objective cache. It can come back empty if the
+      // joined-course rooms / their outlines aren't ready yet — the sync listener
+      // below rebuilds it when the joined-course set changes (or a prior build
+      // resolved nothing), so banding + the gate recover within the session
+      // instead of staying blank until a remount (which never happens for this
+      // persistent map). The pinged scan does one-shot timeline work.
       _rebuildObjectiveCache(client);
       _recomputePinged(client);
       _syncSub?.cancel();
@@ -230,7 +245,9 @@ class WorldMapController extends State<WorldMap>
           .where((s) => s.hasRoomUpdate)
           .rateLimit(const Duration(seconds: 2))
           .listen((_) {
-            if (mounted) _recomputeProgress();
+            if (!mounted) return;
+            _recomputeProgress();
+            _maybeRebuildObjectiveCache(client);
           });
     }
     // Personalized default: my CEFR band (at/below my level). Applied once the
@@ -265,30 +282,68 @@ class WorldMapController extends State<WorldMap>
     });
   }
 
+  /// The learner's joined course spaces (a space they belong to that carries a
+  /// course plan) — the source set for the objective cache + relevance banding.
+  List<Room> _joinedCourseRooms(Client client) => client.rooms
+      .where(
+        (r) =>
+            r.isSpace &&
+            r.membership == Membership.join &&
+            r.coursePlan != null,
+      )
+      .toList();
+
   /// Rebuild the joined-course outlines (a few quest reads), reading each
   /// course's teacher override for the stars-to-unlock threshold, then re-rank.
+  /// Guarded so overlapping syncs don't stack rebuilds. A course whose outline
+  /// fails to resolve is logged (not silently dropped): an empty cache means no
+  /// relevance banding and a fail-open gate, which is otherwise invisible.
   Future<void> _rebuildObjectiveCache(Client client) async {
-    final courseRooms = client.rooms
-        .where(
-          (r) =>
-              r.isSpace &&
-              r.membership == Membership.join &&
-              r.coursePlan != null,
-        )
-        .toList();
-    final uuids = courseRooms.map((r) => r.coursePlan!.uuid).toList();
-    final thresholds = <String, int>{
-      for (final r in courseRooms)
-        r.coursePlan!.uuid:
-            r.teacherMode.starsToUnlockObjective ??
-            kDefaultStarsToUnlockObjective,
-    };
-    await _objectiveCache.rebuild(
-      uuids,
-      starsToUnlockOf: (uuid) =>
-          thresholds[uuid] ?? kDefaultStarsToUnlockObjective,
-    );
-    if (mounted) setState(() {}); // re-rank with the loaded outlines
+    if (_objectiveCacheRebuilding) return;
+    _objectiveCacheRebuilding = true;
+    try {
+      final courseRooms = _joinedCourseRooms(client);
+      final uuids = courseRooms.map((r) => r.coursePlan!.uuid).toList();
+      final thresholds = <String, int>{
+        for (final r in courseRooms)
+          r.coursePlan!.uuid:
+              r.teacherMode.starsToUnlockObjective ??
+              kDefaultStarsToUnlockObjective,
+      };
+      await _objectiveCache.rebuild(
+        uuids,
+        starsToUnlockOf: (uuid) =>
+            thresholds[uuid] ?? kDefaultStarsToUnlockObjective,
+        onError: (uuid, e, s) => ErrorHandler.logError(
+          e: e,
+          s: s,
+          m: 'JoinedObjectiveCache: course outline failed to resolve',
+          data: {'courseUuid': uuid},
+        ),
+      );
+      _objectiveCacheUuids = uuids.toSet();
+      if (mounted) setState(() {}); // re-rank with the loaded outlines
+    } finally {
+      _objectiveCacheRebuilding = false;
+    }
+  }
+
+  /// Rebuild the objective cache when the joined-course set has changed since the
+  /// last build, or when it resolved nothing while courses exist (the rooms or
+  /// their outlines weren't ready at the initial build, or a read transiently
+  /// failed). Idempotent for an unchanged, already-populated set, so it's safe on
+  /// every sync; the in-flight guard keeps a persistently-failing course from
+  /// rebuilding more than once at a time, and it self-heals once the data is fixed.
+  void _maybeRebuildObjectiveCache(Client client) {
+    if (_objectiveCacheRebuilding) return;
+    final uuids = _joinedCourseRooms(
+      client,
+    ).map((r) => r.coursePlan!.uuid).toSet();
+    final setChanged =
+        uuids.length != _objectiveCacheUuids.length ||
+        !uuids.containsAll(_objectiveCacheUuids);
+    final emptyButHasCourses = _objectiveCache.ids.isEmpty && uuids.isNotEmpty;
+    if (setChanged || emptyButHasCourses) _rebuildObjectiveCache(client);
   }
 
   /// Best-effort pinged detection: scan joined course spaces' recent messages
@@ -545,14 +600,43 @@ class WorldMapController extends State<WorldMap>
   /// large tier on tap (the large card then taps through to the plan page). The
   /// large marker hydrates the full plan itself (image + star total), so this
   /// only flips the tier. No navigation, no preview popup.
-  void promoteToLarge(QuestActivityCard card) {
-    setState(() => _promotedActivityId = card.activityId);
-    ActivityPlanRepo.instance.ensure(card.activityId);
+  void promoteToLarge(QuestActivityCard card) =>
+      promoteToLargeById(card.activityId);
+
+  /// As [promoteToLarge] but by id. The clustered small/mid markers route their
+  /// tap here via the cluster layer's `onMarkerTap`: the marker-cluster package
+  /// intercepts marker taps, so a marker's own `onTap` never fires for a pointer
+  /// (it only centered the camera, the #7072 symptom). The tapped marker carries
+  /// its activity id as its key, which is all promotion needs.
+  void promoteToLargeById(String activityId) {
+    setState(() => _promotedActivityId = activityId);
+    ActivityPlanRepo.instance.ensure(activityId);
   }
 
   void collapse() {
     if (_promotedActivityId == null) return;
     setState(() => _promotedActivityId = null);
+  }
+
+  /// Glide back to the whole-world view (the initial camera). Pins, clusters,
+  /// and search only ever zoom the camera IN, so this is the one explicit
+  /// "zoom out to everything" affordance (#7086). Camera-only: the course scope
+  /// and open panels are untouched.
+  void resetToWorld() => _animateCameraTo(const LatLng(20, 0), 3.0);
+
+  /// Step the zoom by [delta] levels around the current center, clamped to the
+  /// map's range — backs the on-map +/- buttons, since a tap/search only ever
+  /// zooms IN (#7086). Accumulates toward the in-flight glide target (not the
+  /// mid-glide live zoom), so rapid clicks each advance a full level instead of
+  /// under-shooting, and snaps to integer levels so the steps land crisply.
+  void zoomBy(double delta) {
+    final base = (_camAnim?.isAnimating ?? false)
+        ? _camTargetZoom
+        : mapController.camera.zoom;
+    _animateCameraTo(
+      mapController.camera.center,
+      (base + delta).clamp(3.0, 18.0).roundToDouble(),
+    );
   }
 
   /// Resolve a [MapFocus] to a map coordinate, or null if not resolvable yet.

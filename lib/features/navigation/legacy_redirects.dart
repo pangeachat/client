@@ -159,11 +159,13 @@ abstract class LegacyRedirects {
       return _toRoomToken(uri, rest.first, rest.sublist(1));
     }
 
-    final List<String>? target = switch (rest) {
-      // `/rooms` — the old chats root. Chats now live at `/chats`; the
-      // world map is `/`.
-      [] => const ['chats'],
+    // Bare `/rooms` was the old chats home. world_v2 has no `/chats` route — the
+    // chat list is the `chats` left token over the world map — so map it straight
+    // there in one hop. The earlier `/rooms` → `/chats` → `/?left=chats` chain
+    // briefly emitted the dead `/chats` literal (the bug in #7067).
+    if (rest.isEmpty) return _toRootWithLeftToken(uri, 'chats');
 
+    final List<String>? target = switch (rest) {
       // Renamed sections.
       ['user_home', ...final tail] => ['profile', ...tail],
       ['analytics', ...final tail] => ['analytics', ...tail],

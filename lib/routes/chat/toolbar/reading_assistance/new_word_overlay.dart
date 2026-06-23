@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:material_symbols_icons/symbols.dart';
 
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/features/overlay/overlay.dart';
+import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -17,14 +18,16 @@ class NewWordOverlay extends StatefulWidget {
   }) {
     OverlayUtil.showOverlay(
       context: context,
-      closePrevOverlay: false,
-      ignorePointer: true,
-      canPop: false,
-      offset: const Offset(0, 45),
-      targetAnchor: Alignment.center,
-      overlayKey: overlayKey,
-      transformTargetId: target,
       child: NewWordOverlay(overlayKey: overlayKey),
+      displayDetails: TransformOverlayDisplayDetails(
+        closePrevOverlay: false,
+        ignorePointer: true,
+        canPop: false,
+        offset: const Offset(0, 45),
+        targetAnchor: Alignment.center,
+        overlayKey: overlayKey,
+        transformTargetId: target,
+      ),
     );
   }
 

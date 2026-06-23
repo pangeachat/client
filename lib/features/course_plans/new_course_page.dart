@@ -12,13 +12,16 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_client_exte
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 import 'package:fluffychat/routes/courses/course_language_filter.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
-import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -183,7 +186,7 @@ class NewCoursePageState extends State<NewCoursePage> {
     if (existingRoom == null || widget.spaceId != null) {
       context.go(
         widget.spaceId != null
-            ? '/rooms/spaces/${widget.spaceId}/addcourse/${course.uuid}'
+            ? '/courses/${shortRoomId(widget.spaceId!)}/addcourse/${course.uuid}'
             : '/${widget.route}/course/own/${course.uuid}',
       );
       return;
@@ -227,12 +230,19 @@ class NewCoursePageState extends State<NewCoursePage> {
     if (action == 0) {
       context.go(
         widget.spaceId != null
-            ? '/rooms/spaces/${widget.spaceId}/addcourse/${course.uuid}'
+            ? '/courses/${shortRoomId(widget.spaceId!)}/addcourse/${course.uuid}'
             : '/${widget.route}/course/own/${course.uuid}',
       );
     } else if (action == 1) {
       if (existingRoom.isSpace) {
-        context.go('/rooms/spaces/${existingRoom.id}');
+        // world_v2: token nav to the existing course card (sets the map filter +
+        // course panel), not the legacy /rooms/spaces path.
+        context.go(
+          WorkspaceNav.openCourseFilter(
+            GoRouterState.of(context).uri,
+            existingRoom.id,
+          ),
+        );
       } else {
         ErrorHandler.logError(
           e: "Existing course room is not a space",
@@ -258,7 +268,16 @@ class NewCoursePageState extends State<NewCoursePage> {
                 // Accessible name (world_v2 testability contract: every
                 // IconButton needs a tooltip → semantics label).
                 tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-                onPressed: () => context.go('/courses'),
+                // world_v2: the add-course hub is the `addcourse` left token over
+                // the world map, not a `/courses` route.
+                onPressed: () => context.go(
+                  WorkspaceNav.setSection(
+                    GoRouterState.of(context).uri,
+                    PRoutes.world,
+                    const PanelToken('addcourse'),
+                    keepRoom: false,
+                  ),
+                ),
               )
             : widget.embeddedCloseButton,
         title: Text(
@@ -279,6 +298,7 @@ class NewCoursePageState extends State<NewCoursePage> {
       body: SafeArea(
         child: Center(
           child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
             constraints: const BoxConstraints(maxWidth: 450),
             child: Column(
               children: [
@@ -331,7 +351,8 @@ class NewCoursePageState extends State<NewCoursePage> {
                                         style: theme.textTheme.bodyLarge,
                                       ),
                                       ElevatedButton(
-                                        onPressed: () => context.go('/rooms'),
+                                        onPressed: () =>
+                                            context.go(PRoutes.chatsList),
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor: theme
                                               .colorScheme
@@ -398,9 +419,7 @@ class NewCoursePageState extends State<NewCoursePage> {
                                 vertical: 4.0,
                               ),
                               child: InkWell(
-                                onTap: () => MapContextController.set(
-                                  CourseMapContext(course.uuid),
-                                ),
+                                onTap: () => _onSelect(course),
                                 borderRadius: BorderRadius.circular(12.0),
                                 child: Container(
                                   padding: const EdgeInsets.all(12.0),
@@ -451,19 +470,6 @@ class NewCoursePageState extends State<NewCoursePage> {
                                             ),
                                           ],
                                         ),
-                                      ),
-                                      FilledButton(
-                                        onPressed: () => _onSelect(course),
-                                        style: FilledButton.styleFrom(
-                                          backgroundColor: theme
-                                              .colorScheme
-                                              .primaryContainer,
-                                          foregroundColor: theme
-                                              .colorScheme
-                                              .onPrimaryContainer,
-                                          visualDensity: VisualDensity.compact,
-                                        ),
-                                        child: Text(L10n.of(context).create),
                                       ),
                                     ],
                                   ),

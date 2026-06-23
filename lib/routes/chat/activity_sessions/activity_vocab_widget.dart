@@ -8,8 +8,9 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/overlay/overlay.dart';
+import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_details_row.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
@@ -166,7 +167,6 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
   void _showWordCard(Vocab vocab) {
     final target = _vocabKey(vocab);
     OverlayUtil.showPositionedCard(
-      overlayKey: target,
       context: context,
       cardToShow: _WordCardWrapper(
         v: vocab,
@@ -178,11 +178,14 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
           });
         },
       ),
-      transformTargetId: target,
-      closePrevOverlay: false,
-      addBorder: false,
-      maxWidth: AppConfig.toolbarMinWidth,
-      maxHeight: AppConfig.toolbarMaxHeight,
+      displayDetails: PositionedOverlayDisplayDetails(
+        overlayKey: target,
+        transformTargetId: target,
+        closePrevOverlay: false,
+        addBorder: false,
+        maxWidth: AppConfig.toolbarMinWidth,
+        maxHeight: AppConfig.toolbarMaxHeight,
+      ),
     );
   }
 

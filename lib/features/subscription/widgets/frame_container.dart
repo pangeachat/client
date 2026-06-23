@@ -10,7 +10,9 @@ class FrameContainer extends StatelessWidget {
 
   final double borderWidth;
   final double borderRadius;
+
   final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry titlePadding;
 
   const FrameContainer({
     super.key,
@@ -22,6 +24,10 @@ class FrameContainer extends StatelessWidget {
     this.borderWidth = 3,
     this.borderRadius = 24,
     this.padding = const EdgeInsets.all(24),
+    this.titlePadding = const EdgeInsets.symmetric(
+      horizontal: 20,
+      vertical: 12,
+    ),
   });
 
   @override
@@ -40,7 +46,7 @@ class FrameContainer extends StatelessWidget {
             Container(
               width: double.infinity,
               color: frameColor,
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              padding: titlePadding,
               child: Text(
                 title,
                 textAlign: TextAlign.center,

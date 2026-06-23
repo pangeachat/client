@@ -142,7 +142,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     }
   }
 
-  bool _tooltipHasBottomOverflow(String? stepKey, Size? tooltipSize) {
+  bool _tooltipHasBottomOverflow(Size? tooltipSize) {
     final screenHeight = MediaQuery.sizeOf(context).height;
     final pos = _lastTargetOffset ?? Offset.zero;
     final targetSize = _lastTargetSize ?? Size.zero;
@@ -152,18 +152,18 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     return tooltipOffset > screenHeight;
   }
 
-  bool _tooltipHasTopOverflow(String? stepKey, Size? tooltipSize) {
+  bool _tooltipHasTopOverflow(Size? tooltipSize) {
     final pos = _lastTargetOffset ?? Offset.zero;
     final tip = _tooltipSize(tooltipSize);
     final tooltipOffset = pos.dy - tip.height - (_tooltipPadding * 2);
     return tooltipOffset < 0;
   }
 
-  bool _showAbove(String? stepKey, Size? tooltipSize) =>
-      !_tooltipHasTopOverflow(stepKey, tooltipSize) ||
-      _tooltipHasBottomOverflow(stepKey, tooltipSize);
+  bool _showAbove(Size? tooltipSize) =>
+      !_tooltipHasTopOverflow(tooltipSize) ||
+      _tooltipHasBottomOverflow(tooltipSize);
 
-  double? _tooltipHorizontalOffset(String? stepKey, Size? tooltipSize) {
+  double? _tooltipHorizontalOffset(Size? tooltipSize) {
     final size = _lastTargetSize;
     final pos = _lastTargetOffset;
 
@@ -240,7 +240,6 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     final stepIndex = model.stepIndex;
     final step = tutorial?.step(stepIndex, L10n.of(context));
 
-    final stepKey = tutorial?.targetKeyAt(widget.model.stepIndex);
     final stepSize = tutorial?.tooltipSizeAt(stepIndex);
 
     final showNavigation =
@@ -249,7 +248,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     final size = _lastTargetSize;
     final holeWidth = (size?.width ?? 0.0) + (step?.style.padding ?? 0) * 2;
     final holeHeight = (size?.height ?? 0.0) + (step?.style.padding ?? 0) * 2;
-    final showAbove = _showAbove(stepKey, stepSize);
+    final showAbove = _showAbove(stepSize);
 
     // Don't render tooltip until target position is known to avoid
     // "flying" animation from top-left corner (where Offset.zero defaults to)
@@ -323,7 +322,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
                     ? Alignment.bottomCenter
                     : Alignment.topCenter,
                 offset: Offset(
-                  _tooltipHorizontalOffset(stepKey, stepSize) ?? 0,
+                  _tooltipHorizontalOffset(stepSize) ?? 0,
                   showAbove
                       ? -_tooltipPadding
                       : _tooltipPadding, // gap between target and tooltip

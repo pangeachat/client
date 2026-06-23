@@ -10901,17 +10901,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "პროფესიონალური ფუნქციები",
     "pronunciationTools": "გამოთქმის ინსტრუმენტები",
     "audioTranscription": "AI აუდიო ტრანსკრიფცია",
     "visualLearnerSupport": "ვიზუალური სწავლების მხარდაჭერა",
     "instantWritingTranslation": "მყისიერი წერის თარგმანი",
     "personalizedPracticeExercises": "პერსონალიზებული სავარჯიშოები",
     "vocabularyFlashcards": "სიტყვების ფლეშკარტები",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

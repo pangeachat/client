@@ -30,7 +30,27 @@ class _ProFeatureInfo {
 }
 
 class ProFeaturesCard extends StatelessWidget {
-  const ProFeaturesCard({super.key});
+  final double borderWidth;
+  final Color? frameColor;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
+  final double borderRadius;
+  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry titlePadding;
+
+  const ProFeaturesCard({
+    super.key,
+    this.borderWidth = 3.0,
+    this.frameColor,
+    this.backgroundColor,
+    this.foregroundColor,
+    this.borderRadius = 24.0,
+    this.padding = const EdgeInsets.all(24),
+    this.titlePadding = const EdgeInsets.symmetric(
+      horizontal: 20,
+      vertical: 12,
+    ),
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +61,16 @@ class ProFeaturesCard extends StatelessWidget {
 
     return FrameContainer(
       title: L10n.of(context).proFeatures,
-      frameColor: gold,
-      backgroundColor: theme.colorScheme.surface,
-      foregroundColor: theme.brightness == Brightness.light
-          ? theme.colorScheme.onSurface
-          : theme.colorScheme.surface,
+      frameColor: frameColor ?? gold,
+      borderWidth: borderWidth,
+      padding: padding,
+      titlePadding: titlePadding,
+      backgroundColor: backgroundColor ?? theme.colorScheme.surface,
+      foregroundColor:
+          foregroundColor ??
+          (theme.brightness == Brightness.light
+              ? theme.colorScheme.onSurface
+              : theme.colorScheme.surface),
       child: Column(
         spacing: 12.0,
         crossAxisAlignment: CrossAxisAlignment.start,

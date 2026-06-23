@@ -9833,17 +9833,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Recursos Pro",
     "pronunciationTools": "Ferramentas de pronúncia",
     "audioTranscription": "Transcrição de áudio com IA",
     "visualLearnerSupport": "Apoio para aprendizes visuais",
     "instantWritingTranslation": "Tradução instantânea de escrita",
     "personalizedPracticeExercises": "Exercícios de prática personalizados",
     "vocabularyFlashcards": "Flashcards de vocabulário",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

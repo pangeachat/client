@@ -1,4 +1,5 @@
 import 'package:fluffychat/routes/onboarding/custom_course_request_model.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/free_trial_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
 
 class CustomCourseOnboardingStep extends OnboardingStep {
@@ -57,6 +58,14 @@ class CustomCourseOnboardingStep extends OnboardingStep {
     final resp = await state.courseProvider.requestCustomCourse(request);
     if (resp.isError) {
       throw resp.asError!;
+    }
+
+    if (state.trialInfoProvider.shouldShowTrialPage) {
+      return FreeTrialOnboardingStep(
+        client: client,
+        state: state,
+        maxRemainingSteps: maxRemainingSteps,
+      );
     }
 
     return null;

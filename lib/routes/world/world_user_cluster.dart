@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
+import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
@@ -123,6 +124,15 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
                 return StreamBuilder(
                   stream: dispatcher.activityAnalyticsStream.stream,
                   builder: (context, _) {
+                    // While the analytics database is still loading, shimmer the
+                    // whole cluster rather than flash zeros — this distinguishes
+                    // "loading" from a loaded-but-empty learner (#7078). The
+                    // construct/activity update streams above (and the derivedData
+                    // future below) rebuild this when init completes, flipping
+                    // isInitializing false. See analytics-system.instructions.md.
+                    if (service.isInitializing) {
+                      return WorldUserClusterShimmer(showFlag: l2 != null);
+                    }
                     final vocab = service.numConstructs(
                       ConstructTypeEnum.vocab,
                     );
@@ -218,6 +228,50 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
             child: _LanguageFlag(language: l2, onTap: _openLearningSettings),
           ),
       ],
+    );
+  }
+}
+
+/// The cluster's loading state (#7078): a shimmer skeleton in the cluster's
+/// shape — the avatar circle, the powerups pill, and (when an L2 is set) the
+/// language flag — shown while the analytics database is still loading, so the
+/// main view reads as "loading" instead of flashing zeros. [showFlag] mirrors
+/// the live cluster, which only draws the flag when an L2 is set, so the
+/// skeleton footprint matches and the layout does not jump on load.
+@visibleForTesting
+class WorldUserClusterShimmer extends StatelessWidget {
+  final bool showFlag;
+
+  const WorldUserClusterShimmer({super.key, required this.showFlag});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final base = scheme.surfaceContainerHighest;
+    Widget box(double w, double h, double radius) => Container(
+      width: w,
+      height: h,
+      decoration: BoxDecoration(
+        color: base,
+        borderRadius: BorderRadius.circular(radius),
+      ),
+    );
+    return Shimmer.fromColors(
+      baseColor: base,
+      highlightColor: scheme.surface,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          box(56, 56, 28), // avatar circle
+          const SizedBox(height: 8),
+          box(72, 200, 28), // powerups pill (3 trackers + level medal)
+          if (showFlag)
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: box(52, 36, 6), // language flag
+            ),
+        ],
+      ),
     );
   }
 }

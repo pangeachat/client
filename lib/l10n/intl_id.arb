@@ -9930,17 +9930,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Fitur Pro",
     "pronunciationTools": "Alat pengucapan",
     "audioTranscription": "Transkripsi audio AI",
     "visualLearnerSupport": "Dukungan pembelajar visual",
     "instantWritingTranslation": "Terjemahan tulisan instan",
     "personalizedPracticeExercises": "Latihan praktik yang dipersonalisasi",
     "vocabularyFlashcards": "Kartu flash kosakata",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}

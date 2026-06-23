@@ -125,6 +125,93 @@ void main() {
     );
   });
 
+  group('left↔right parity collapse (#7088)', () {
+    test(
+      'a lone right summary yields (collapses) instead of being overlapped',
+      () {
+        // course + room (independent left panels) + the analytics summary can't
+        // all honor their hard mins in this column-mode budget, and analytics
+        // has no same-column child to fold behind. It is the lowest priority
+        // (analytics 40 < course 60 < room 80), so it collapses to make room
+        // rather than being overlapped by the left column.
+        final l = run(
+          viewport: 1200,
+          left: ['course', 'room'],
+          right: ['analytics'],
+        );
+        expect(l.right.single.vis, PanelVis.hidden); // analytics yields
+        expect(l.left[0].vis, PanelVis.full); // course
+        expect(l.left[1].vis, PanelVis.full); // room
+        expectNoOverlap(l);
+      },
+    );
+
+    test('the collapse is symmetric across columns (parity)', () {
+      const lo = PanelDef(
+        type: 'lo',
+        column: PanelColumn.left,
+        minWidth: 360,
+        idealWidth: 720,
+        priority: 20,
+      );
+      const hi = PanelDef(
+        type: 'hi',
+        column: PanelColumn.left,
+        minWidth: 360,
+        idealWidth: 720,
+        priority: 80,
+      );
+      // Two independent panels, one per column, on a budget too tight for both
+      // hard mins: the LOWER-priority one collapses regardless of its column.
+      final rightLo = PanelAllocator.allocate(
+        viewport: 850,
+        isColumnMode: true,
+        left: [hi],
+        right: [lo],
+      );
+      expect(rightLo.right.single.vis, PanelVis.hidden); // lo (right) yields
+      expect(rightLo.left.single.vis, PanelVis.full); // hi (left) stays
+
+      final leftLo = PanelAllocator.allocate(
+        viewport: 850,
+        isColumnMode: true,
+        left: [lo],
+        right: [hi],
+      );
+      expect(leftLo.left.single.vis, PanelVis.hidden); // lo (left) yields
+      expect(leftLo.right.single.vis, PanelVis.full); // hi (right) stays
+    });
+
+    test('the just-opened (focus) panel is never the one collapsed', () {
+      const lo = PanelDef(
+        type: 'lo',
+        column: PanelColumn.left,
+        minWidth: 360,
+        idealWidth: 720,
+        priority: 20,
+      );
+      const hi = PanelDef(
+        type: 'hi',
+        column: PanelColumn.left,
+        minWidth: 360,
+        idealWidth: 720,
+        priority: 80,
+      );
+      // all = [hi(left,0), lo(right,1)]; the user just opened lo (focusHint=1).
+      // Even though lo is the lower priority, it must survive — the higher-
+      // priority hi yields, so opening lo is not a visible no-op.
+      final l = PanelAllocator.allocate(
+        viewport: 850,
+        isColumnMode: true,
+        left: [hi],
+        right: [lo],
+        focusHint: 1,
+      );
+      expect(l.right.single.vis, PanelVis.full); // lo kept (focused)
+      expect(l.left.single.vis, PanelVis.hidden); // hi yields despite priority
+    });
+  });
+
   group('non-overlap holds across viewports', () {
     test('chat + summary never overlap from tight to wide', () {
       for (final viewport in [900.0, 1100.0, 1334.0, 1600.0, 1920.0]) {

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/bot/utils/bot_style.dart';
+import 'package:fluffychat/features/overlay/overlay.dart';
+import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
 import 'package:fluffychat/features/subscription/widgets/subscription_paywall.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/card_header.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -28,9 +29,12 @@ class PaywallCard extends StatelessWidget {
     OverlayUtil.showPositionedCard(
       context: context,
       cardToShow: const PaywallCard(),
-      maxHeight: 325,
-      maxWidth: 325,
-      transformTargetId: targetId,
+      displayDetails: PositionedOverlayDisplayDetails(
+        overlayKey: "paywall_card_overlay",
+        maxHeight: 325,
+        maxWidth: 325,
+        transformTargetId: targetId,
+      ),
     );
   }
 

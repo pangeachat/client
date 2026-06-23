@@ -162,29 +162,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     null,
   );
 
-  /// The chat's left edge in the selection overlay's coordinate space — i.e.
-  /// the amount to subtract from a message's screen-global offset so its copy
-  /// lands directly over the original.
-  ///
-  /// world_v2 renders the room as a full-height panel in the root shell
-  /// [Stack], so the selection overlay (a `Positioned.fill` in the nearest
-  /// [Overlay]) now spans the whole viewport and message render boxes are
-  /// already in that frame — the edge is the overlay's own global left (≈0).
-  /// We read it from the live overlay render box rather than the retired
-  /// nav-rail + column constant, so the math follows the [PanelAllocator] if
-  /// the chat is ever inset again. Falls back to 0 (the full-screen frame) if
-  /// the box isn't laid out yet.
-  double get columnWidth => _runWithLogging<double>(
-    () {
-      final overlayBox =
-          Overlay.maybeOf(context)?.context.findRenderObject() as RenderBox?;
-      if (overlayBox == null || !overlayBox.hasSize) return 0.0;
-      return overlayBox.localToGlobal(Offset.zero).dx;
-    },
-    "Error resolving chat left edge for message overlay",
-    0.0,
-  );
-
   double get _toolbarMaxWidth {
     const double messageMargin = 16.0;
     // widget.event.isActivityMessage ? 0 : Avatar.defaultSize + 16 + 8;
@@ -196,7 +173,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     double? maxWidth;
 
     if (screenSize != null) {
-      final chatViewWidth = screenSize!.width - columnWidth;
+      final chatViewWidth = screenSize!.width;
       maxWidth = chatViewWidth - (2 * _horizontalPadding) - messageMargin;
     }
 
@@ -278,7 +255,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     }
 
     if (ownMessage) return null;
-    return max(offset.dx - columnWidth, 0);
+    return max(offset.dx, 0);
   }
 
   double? get messageRightOffset {
@@ -416,7 +393,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
               SizedBox(
                 width:
                     screenSize!.width -
-                    columnWidth -
                     (showDetails ? FluffyThemes.columnWidth : 0),
                 height: _screenHeight!,
                 child: Stack(

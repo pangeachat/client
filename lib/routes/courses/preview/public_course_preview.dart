@@ -10,10 +10,12 @@ import 'package:fluffychat/features/analytics_access/join_room_analytics_consent
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/courses/preview/public_course_preview_view.dart';
+import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -134,8 +136,13 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
     if (joinedRoomId == null) return;
 
     room.isSpace
-        ? context.go('/rooms/spaces/$joinedRoomId/details')
-        : context.go('/rooms/$joinedRoomId');
+        ? context.go(
+            WorkspaceNav.openCourseFilter(
+              GoRouterState.of(context).uri,
+              joinedRoomId,
+            ),
+          )
+        : NavigationUtil.goToSpaceRoute(joinedRoomId, const [], context);
   }
 
   Future<void> joinCourse() async {
@@ -149,7 +156,9 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
     final r = client.getRoomById(roomID!);
     if (r != null && r.membership == Membership.join) {
       if (mounted) {
-        context.go("/rooms/spaces/${r.id}/details");
+        context.go(
+          WorkspaceNav.openCourseFilter(GoRouterState.of(context).uri, r.id),
+        );
       }
       return;
     }
@@ -195,7 +204,12 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       throw Exception("Failed to fetch roomID");
     }
 
-    context.go("/rooms/spaces/$joinedRoomId/details");
+    context.go(
+      WorkspaceNav.openCourseFilter(
+        GoRouterState.of(context).uri,
+        joinedRoomId,
+      ),
+    );
   }
 
   @override

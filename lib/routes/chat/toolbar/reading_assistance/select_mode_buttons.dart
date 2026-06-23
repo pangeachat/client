@@ -251,7 +251,8 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
               widget.overlayController.updateSelectedSpan(
                 widget.controller.tutorialToken!.text,
               );
-              await Future.delayed(Duration(milliseconds: 2500));
+              await Future.delayed(Duration(milliseconds: 4000));
+              widget.overlayController.updateSelectedSpan(null);
               _shimmerTranslateButton.value = true;
             },
           ),
@@ -259,7 +260,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
             targetKey: translateTarget,
             onTap: () async {
               await updateMode(SelectMode.translate);
-              await Future.delayed(Duration(milliseconds: 2500));
+              await Future.delayed(Duration(milliseconds: 4000));
             },
           ),
           TutorialStepData(

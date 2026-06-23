@@ -9833,17 +9833,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "proFeatures": "Pro funkcijas",
     "pronunciationTools": "Izruna rīki",
     "audioTranscription": "AI audio transkripcija",
     "visualLearnerSupport": "Vizuālo mācīšanās atbalsts",
     "instantWritingTranslation": "Instantā rakstīšanas tulkošana",
     "personalizedPracticeExercises": "Personalizēti praktiskie uzdevumi",
     "vocabularyFlashcards": "Vārdu krājuma kartītes",
-    "@proFeatures": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pronunciationTools": {
         "type": "String",
         "placeholders": {}
