@@ -465,6 +465,33 @@ void main() {
       ); // menu still there
     });
 
+    test('the profile editor is a single-segment leaf, so its back returns to '
+        'the menu in one step — not via a phantom profile parent (#7147)', () {
+      // The Settings menu opens the editor as `profile`, NOT `profile/edit`.
+      // Both render the same editor, so a nested `profile/edit` leaf made the
+      // back arrow popPage to an identical-looking `profile` page first,
+      // forcing a second click. A single-segment param has no `/`, so the
+      // panel treats its back as a plain close that reveals the menu in one
+      // step.
+      final opened = WorkspaceNav.openSettings(u('/'), page: 'profile');
+      final page = parseOpenPanels(
+        u(opened),
+      ).right.firstWhere((t) => t.type == 'settingspage');
+      expect(page.param, 'profile'); // single segment, not 'profile/edit'
+      expect(
+        page.param!.contains('/'),
+        isFalse,
+      ); // back is a close, not popPage
+      // One close drops the page and lands on the menu.
+      final back = WorkspaceNav.closeRight(
+        u(opened),
+        const PanelToken('settingspage', 'profile'),
+      );
+      final right = parseOpenPanels(u(back)).right;
+      expect(right.any((t) => t.type == 'settingspage'), isFalse); // page gone
+      expect(right.single.type, 'settings'); // menu remains, one step
+    });
+
     test('settingsBack: a leaf pops to its parent page; a top-level page '
         'returns to the menu (drops the page detail)', () {
       final toSecurity = WorkspaceNav.settingsBack(
