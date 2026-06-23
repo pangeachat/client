@@ -17,11 +17,11 @@ class PangeaEventTypes {
   static const activityRole = "pangea.activity_roles";
   static const activitySummary = "pangea.activity_summary";
 
-  /// Written once when the user makes the explicit choice on the activity start
-  /// page ("play with bot" or "invite a friend"). Its presence gates the bot
-  /// into claiming a role, and makes [isActivityStarted] sticky so the start
-  /// page is never bypassed nor re-shown mid-session. See issue #7027.
-  static const activityStarted = "pangea.activity_started";
+  /// Written once by the room admin when they choose "play with bot", marking
+  /// the bot as a deliberate activity participant. Its presence is the bot's gate
+  /// to claim a role; without it the bot stays idle or moderates silently. Admin-
+  /// only and written in one place, so no write-permission risk. See issue #7027.
+  static const botParticipant = "pangea.bot_participant";
 
   static const orchestratorOutput = "pangea.orchestrator_output";
   static const orchestratorAwardedGoals = "pangea.orchestrator_awarded_goals";

@@ -130,12 +130,11 @@ extension LaunchActivitySession on Client {
     }
 
     // Auto-invite the bot so it is present in every session from the start, but
-    // it stays idle (no role, no messages) until the user makes an explicit
-    // choice on the start page ("play with bot" or "invite a friend"), which
-    // writes pangea.activity_started. That marker is the bot's gate to claim a
-    // role, so the choice page is never bypassed. The bot adapts live thereafter:
-    // participant while alone with one human, silent moderator once a second
-    // human joins (#2595, #7027). Best-effort: must not fail session creation.
+    // it stays idle (no role, no messages) until the room admin chooses "play
+    // with bot", which writes pangea.bot_participant. That marker is the bot's
+    // gate to claim a role. On the "invite a friend" path no marker is written,
+    // so the seat stays open for the friend and the bot is a silent moderator
+    // once they join (#2595, #7027). Best-effort: must not fail session creation.
     try {
       final botRoom = getRoomById(roomID);
       if (botRoom == null) {

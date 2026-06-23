@@ -247,7 +247,7 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
         // on "bot not in room" would always hide it. This CTA block only renders
         // on the start page (while !isActivityStarted, where the bot holds no
         // role), so always offer the choice: "play with bot" writes the
-        // activity_started marker and the bot claims the open role (#7027).
+        // bot_participant marker and the bot claims the open role (#7027).
         if (controller.showInviteOptions)
           Padding(
             padding: EdgeInsetsGeometry.only(bottom: 16.0),

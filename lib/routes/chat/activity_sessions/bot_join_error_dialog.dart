@@ -41,20 +41,20 @@ class PlayWithBotLoadingDialogState extends State<PlayWithBotLoadingDialog> {
         .first;
 
     try {
-      // Trigger the start-page gate (#7027): the bot is auto-invited at room
-      // creation but stays idle until this marker lands; writing it makes the
-      // bot claim the open role and start playing. Re-invite defensively in case
-      // the auto-invite never landed — harmless if the bot is already joined.
+      // Mark the bot as a participant (#7027): the bot is auto-invited at room
+      // creation but stays idle until this marker lands; writing it makes the bot
+      // claim the open role and start playing. Re-invite defensively in case the
+      // auto-invite never landed (harmless if the bot is already joined).
       await widget.room.client.setRoomStateWithKey(
         widget.room.id,
-        PangeaEventTypes.activityStarted,
+        PangeaEventTypes.botParticipant,
         "",
         {},
       );
       try {
         await widget.room.invite(BotName.byEnvironment);
       } catch (_) {
-        // Bot already in the room (the expected case) — nothing to do.
+        // Bot already in the room (the expected case); nothing to do.
       }
       await future.timeout(const Duration(seconds: 5));
       Navigator.of(context).pop();

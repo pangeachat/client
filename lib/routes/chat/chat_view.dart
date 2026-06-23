@@ -241,14 +241,7 @@ class ChatView extends StatelessWidget {
           builder: (BuildContext context, snapshot) {
             // #Pangea
             if (controller.room.isActivitySession &&
-                (!controller.room.isActivityStarted ||
-                    // A user who has joined but not yet picked a role must still
-                    // get the role-selection page even once the activity is
-                    // "started" — e.g. an invited friend taking the seat the bot
-                    // vacated. Users who already hold a role keep the timeline,
-                    // so there is no flash during role handovers (#7027).
-                    (!controller.room.hasPickedRole &&
-                        controller.room.numRemainingRoles > 0))) {
+                !controller.room.isActivityStarted) {
               return ActivitySessionStartPage(
                 activityId: controller.room.activityId!,
                 roomId: controller.roomId,
