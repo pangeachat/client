@@ -234,6 +234,22 @@ abstract class PanelAllocator {
         ? all[focusHint]
         : null;
     final folded = <_Entry>{};
+    // Always-single-window details (the settings page) fold their same-column
+    // master UNCONDITIONALLY — before any width-driven folding — so the menu +
+    // page read as one window (the page with a back that reveals the menu), like
+    // the narrow layout, instead of opening a redundant second side panel when
+    // there's room (#7145). Width-driven folding below then proceeds over the
+    // remainder. Scoped per def flag, so analytics/course master+detail pairs
+    // still coexist when width allows.
+    for (final detail in all) {
+      if (!detail.def.foldsParentAlways) continue;
+      for (final parent in all) {
+        if (parent.column == detail.column &&
+            parent.def.type == detail.def.parent) {
+          folded.add(parent);
+        }
+      }
+    }
     while (true) {
       final vis = all.where((e) => !folded.contains(e)).toList();
       if (vis.length <= 1) break;

@@ -125,6 +125,39 @@ void main() {
     );
   });
 
+  group('always-single-window details fold their master unconditionally '
+      '(#7145)', () {
+    test('the settings page always folds the menu behind it — one window, '
+        'even when both would fit', () {
+      // openSettings seats the page in front of the menu: [settingspage,
+      // settings]. The page is flagged foldsParentAlways, so the menu folds
+      // behind it BEFORE any width pressure — even on a wide viewport where
+      // both reasonable-mins fit. The result reads as one window (the page)
+      // with a back that reveals the menu, like the narrow layout, never a
+      // redundant second side tab.
+      final l = run(viewport: 1920, right: ['settingspage', 'settings']);
+      expect(l.right[0].vis, PanelVis.full); // settingspage holds the column
+      expect(l.right[1].vis, PanelVis.hidden); // settings menu folds behind it
+      expect(l.right[1].width, 0); // folded slots carry no width
+      // The surviving page is folded-over its master → its close is a `←` back.
+      expect(l.right[0].foldedOver, isTrue);
+      expectNoOverlap(l);
+    });
+
+    test('an ordinary master/detail pair (analytics + vocab) still coexists '
+        'when width allows — the fold is scoped to flagged details', () {
+      // Same wide viewport: vocab is analytics's detail but NOT
+      // foldsParentAlways, so with room for both reasonable-mins they tile
+      // side by side and neither is folded-over (closing either reveals the
+      // map, not a master).
+      final l = run(viewport: 1920, right: ['vocab', 'analytics']);
+      expect(l.right[0].vis, PanelVis.full); // vocab
+      expect(l.right[1].vis, PanelVis.full); // analytics
+      expect(l.right.every((s) => !s.foldedOver), isTrue);
+      expectNoOverlap(l);
+    });
+  });
+
   group('left↔right parity collapse (#7088)', () {
     test(
       'a lone right summary yields (collapses) instead of being overlapped',
