@@ -7,7 +7,6 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -144,9 +143,10 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
     return false;
   }
 
-  Future<bool> get isBotRoomMember => widget.room.botIsInRoom;
-
   void inviteFriends() {
+    // No marker is written here: the bot is auto-invited and stays idle, leaving
+    // the open seat for the friend. When they join (2 humans) the bot is a silent
+    // moderator. Only "play with bot" marks the bot as a participant (#7027).
     NavigationUtil.goToSpaceRoute(widget.room.id, ['invite'], context);
   }
 
