@@ -22,7 +22,6 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 import 'package:fluffychat/routes/courses/course_language_filter.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
-import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';

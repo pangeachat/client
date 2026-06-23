@@ -118,7 +118,9 @@ class SettingsView extends StatelessWidget {
                                         // Names the icon-only button for assistive
                                         // tech (otherwise an unnamed control / axe
                                         // `aria-command-name`).
-                                        tooltip: L10n.of(context).changeYourAvatar,
+                                        tooltip: L10n.of(
+                                          context,
+                                        ).changeYourAvatar,
                                         onPressed: controller.setAvatarAction,
                                         heroTag: null,
                                         child: const Icon(
