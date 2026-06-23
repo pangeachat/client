@@ -26,7 +26,7 @@ class ClientTrialInfoProvider implements TrialInfoProvider {
 
 class MockTrialInfoProvider implements TrialInfoProvider {
   @override
-  bool get shouldShowTrialPage => true;
+  bool get shouldShowTrialPage => false;
 
   @override
   Future<void> setShowedTrialPage() async {}
