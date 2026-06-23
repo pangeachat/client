@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_security/settings_password/settings_password_view.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
+import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SettingsPassword extends StatefulWidget {
@@ -61,7 +63,20 @@ class SettingsPasswordController extends State<SettingsPassword> {
       scaffoldMessenger.showSnackBar(
         SnackBar(content: Text(L10n.of(context).passwordHasBeenChanged)),
       );
-      if (mounted) context.pop();
+      // world_v2: this is the `settingspage:security/password` token panel, not
+      // a route. A bare context.pop() has nothing on the navigator stack to pop
+      // to and falls out of the shell to the blank loading page (#7076); fall
+      // back to the Security page (the parent). As a real pushed route popOrGo
+      // still pops normally.
+      if (mounted) {
+        NavigationUtil.popOrGo(
+          context,
+          WorkspaceNav.settingsBack(
+            GoRouterState.of(context).uri,
+            'security/password',
+          ),
+        );
+      }
     } catch (e) {
       setState(() {
         newPassword2Error = e.toLocalizedString(
