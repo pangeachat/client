@@ -12,6 +12,17 @@ import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 
+/// The objective groups that should render: those with at least one activity.
+/// An activity-less objective would otherwise show a header over a fixed-height
+/// activity-card row that is all empty space, so it is dropped (#7114). Null
+/// (still loading / no data) maps to an empty list.
+@visibleForTesting
+List<QuestObjectiveGroup> objectiveGroupsWithActivities(
+  List<QuestObjectiveGroup>? groups,
+) => (groups ?? const <QuestObjectiveGroup>[])
+    .where((g) => g.activities.isNotEmpty)
+    .toList();
+
 /// The Activities / Course-plan tab of a selected course (world_v2): the
 /// course's learning objectives, each with the activities that satisfy it.
 /// Objectives are the unlockable unit; activities are interchangeable
@@ -120,7 +131,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
         if (snapshot.connectionState != ConnectionState.done) {
           return const Center(child: CircularProgressIndicator.adaptive());
         }
-        final groups = snapshot.data ?? const [];
+        // Activity-less objectives are dropped (see [objectiveGroupsWithActivities],
+        // #7114). Filtering before the empty check means an outline that is ALL
+        // activity-less still falls through to the "no activities" message.
+        final groups = objectiveGroupsWithActivities(snapshot.data);
         if (groups.isEmpty) {
           return Center(
             child: Padding(
