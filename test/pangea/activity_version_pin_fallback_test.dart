@@ -19,23 +19,26 @@ void main() {
   };
 
   group('version-pin fallback threading', () {
-    test('fetch response parses fallback fields and carries them to the model', () {
-      final resp = ActivityPlanFetchResponse.fromJson({
-        'plan': rawPlan(),
-        'l1': 'fr',
-        'version_id': 'v1',
-        'used_fallback_version': true,
-        'fallback_cause': 'version_evicted',
-      });
-      expect(resp.usedFallbackVersion, isTrue);
-      expect(resp.fallbackCause, 'version_evicted');
+    test(
+      'fetch response parses fallback fields and carries them to the model',
+      () {
+        final resp = ActivityPlanFetchResponse.fromJson({
+          'plan': rawPlan(),
+          'l1': 'fr',
+          'version_id': 'v1',
+          'used_fallback_version': true,
+          'fallback_cause': 'version_evicted',
+        });
+        expect(resp.usedFallbackVersion, isTrue);
+        expect(resp.fallbackCause, 'version_evicted');
 
-      final plan = resp.plan;
-      expect(plan.usedFallbackVersion, isTrue);
-      expect(plan.fallbackCause, 'version_evicted');
-      // version_pin_honored is derived as !usedFallbackVersion at the call site.
-      expect(!plan.usedFallbackVersion, isFalse);
-    });
+        final plan = resp.plan;
+        expect(plan.usedFallbackVersion, isTrue);
+        expect(plan.fallbackCause, 'version_evicted');
+        // version_pin_honored is derived as !usedFallbackVersion at the call site.
+        expect(!plan.usedFallbackVersion, isFalse);
+      },
+    );
 
     test('clean pin hit defaults to honored with no cause', () {
       final resp = ActivityPlanFetchResponse.fromJson({

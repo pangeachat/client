@@ -208,8 +208,7 @@ class ActivityPlanModel {
       versionId: json[ActivitySessionConstants.versionId] as String?,
       usedFallbackVersion:
           json[ActivitySessionConstants.usedFallbackVersion] == true,
-      fallbackCause:
-          json[ActivitySessionConstants.fallbackCause] as String?,
+      fallbackCause: json[ActivitySessionConstants.fallbackCause] as String?,
       isDeprecatedModel: json["bookmark_id"] != null,
     );
   }
