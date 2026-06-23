@@ -496,6 +496,7 @@
     "clearArchive": "Clear archive",
     "@clearArchive": {},
     "joinTheCourseToPlay": "Join a course that includes this activity to play it.",
+    "resizeCoursePanel": "Resize course panel",
     "close": "Close",
     "@close": {
         "type": "String",

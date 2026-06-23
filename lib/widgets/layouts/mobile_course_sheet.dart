@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
+
 /// Mobile course view: the persistent world map shows through underneath, and
 /// the course detail rides in a draggable bottom sheet over it (the Maps-style
 /// "map + expandable panel" pattern). Two rest positions:
@@ -97,23 +99,33 @@ class _MobileCourseSheetState extends State<MobileCourseSheet> {
           clipBehavior: Clip.antiAlias,
           child: Column(
             children: [
-              // Grab handle: drag to resize, tap to toggle peek/full.
-              GestureDetector(
-                behavior: HitTestBehavior.opaque,
+              // Grab handle: drag to resize, tap to toggle peek/full. Exposed to
+              // assistive tech as a single named button that runs the toggle
+              // (the drag is pointer-only); without this the bare GestureDetector
+              // is an unnamed actionable element (axe `aria-command-name`).
+              Semantics(
+                button: true,
+                label: L10n.of(context).resizeCoursePanel,
                 onTap: _toggle,
-                onVerticalDragUpdate: _onDrag,
-                onVerticalDragEnd: _onDragEnd,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: Center(
-                    child: Container(
-                      width: 36.0,
-                      height: 4.0,
-                      decoration: BoxDecoration(
-                        color: theme.colorScheme.onSurfaceVariant.withValues(
-                          alpha: 0.4,
+                child: ExcludeSemantics(
+                  child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: _toggle,
+                    onVerticalDragUpdate: _onDrag,
+                    onVerticalDragEnd: _onDragEnd,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: Center(
+                        child: Container(
+                          width: 36.0,
+                          height: 4.0,
+                          decoration: BoxDecoration(
+                            color: theme.colorScheme.onSurfaceVariant.withValues(
+                              alpha: 0.4,
+                            ),
+                            borderRadius: BorderRadius.circular(2.0),
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(2.0),
                       ),
                     ),
                   ),
