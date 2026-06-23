@@ -221,6 +221,21 @@ class WorldMapView extends StatelessWidget {
             maxClusterRadius: 48,
             size: const Size(40, 40),
             padding: const EdgeInsets.all(50),
+            // The cluster package intercepts marker taps and routes them to
+            // `onMarkerTap` — a marker's own child `onTap` never fires for a
+            // pointer. Without this, a small/mid pin tap only ran
+            // `centerMarkerOnClick`, so it recentered the camera and did nothing
+            // else (#7072). Per the world-map design ("tap promotes, tap again
+            // opens"), promote the tapped pin to its large card in place; a group
+            // bubble still zooms to de-cluster (`zoomToBoundsOnClick`). The pin
+            // carries its activity id as its key. Promote in place, no recenter.
+            centerMarkerOnClick: false,
+            onMarkerTap: (marker) {
+              final key = marker.key;
+              if (key is ValueKey<String>) {
+                controller.promoteToLargeById(key.value);
+              }
+            },
             markers: _clusterMarkers(render),
             builder: (context, markers) {
               // Colour the bubble by the cluster's dominant (highest-ladder)
@@ -481,6 +496,8 @@ class WorldMapView extends StatelessWidget {
     double fill,
   ) {
     return Marker(
+      // Carries the activity id for the cluster layer's onMarkerTap (#7072).
+      key: ValueKey(card.activityId),
       point: point,
       width: 18,
       height: 18,
@@ -517,6 +534,8 @@ class WorldMapView extends StatelessWidget {
     double fill,
   ) {
     return Marker(
+      // Carries the activity id for the cluster layer's onMarkerTap (#7072).
+      key: ValueKey(card.activityId),
       point: point,
       width: 44,
       height: 44,

@@ -600,9 +600,17 @@ class WorldMapController extends State<WorldMap>
   /// large tier on tap (the large card then taps through to the plan page). The
   /// large marker hydrates the full plan itself (image + star total), so this
   /// only flips the tier. No navigation, no preview popup.
-  void promoteToLarge(QuestActivityCard card) {
-    setState(() => _promotedActivityId = card.activityId);
-    ActivityPlanRepo.instance.ensure(card.activityId);
+  void promoteToLarge(QuestActivityCard card) =>
+      promoteToLargeById(card.activityId);
+
+  /// As [promoteToLarge] but by id. The clustered small/mid markers route their
+  /// tap here via the cluster layer's `onMarkerTap`: the marker-cluster package
+  /// intercepts marker taps, so a marker's own `onTap` never fires for a pointer
+  /// (it only centered the camera, the #7072 symptom). The tapped marker carries
+  /// its activity id as its key, which is all promotion needs.
+  void promoteToLargeById(String activityId) {
+    setState(() => _promotedActivityId = activityId);
+    ActivityPlanRepo.instance.ensure(activityId);
   }
 
   void collapse() {
