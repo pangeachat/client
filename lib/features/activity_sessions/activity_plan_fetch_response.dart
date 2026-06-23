@@ -17,6 +17,9 @@ class ActivityPlanFetchResponse extends BaseResponse {
   // True when the pinned version was unavailable (evicted) and the latest was
   // served instead. Distinct from [usedFallback] (an L1-translation miss).
   final bool usedFallbackVersion;
+  // Why the read degraded (e.g. version_evicted, l1_missing); null on a clean
+  // pin hit. Carried into the model for the `fallback_cause` analytics dimension.
+  final String? fallbackCause;
 
   ActivityPlanFetchResponse({
     required this.rawPlan,
@@ -24,6 +27,7 @@ class ActivityPlanFetchResponse extends BaseResponse {
     this.versionId,
     this.usedFallback = false,
     this.usedFallbackVersion = false,
+    this.fallbackCause,
   });
 
   /// The plan body mapped into the client model (media `upload_id`s unresolved).
@@ -31,6 +35,8 @@ class ActivityPlanFetchResponse extends BaseResponse {
     'res': {'plan': rawPlan},
     'req': {'user_l1': l1},
     'version_id': versionId,
+    'used_fallback_version': usedFallbackVersion,
+    'fallback_cause': fallbackCause,
   });
 
   factory ActivityPlanFetchResponse.fromJson(Map<String, dynamic> json) {
@@ -41,6 +47,7 @@ class ActivityPlanFetchResponse extends BaseResponse {
       versionId: json['version_id'] as String?,
       usedFallback: json['used_fallback'] == true,
       usedFallbackVersion: json['used_fallback_version'] == true,
+      fallbackCause: json['fallback_cause'] as String?,
     );
   }
 
@@ -51,5 +58,6 @@ class ActivityPlanFetchResponse extends BaseResponse {
     'version_id': versionId,
     'used_fallback': usedFallback,
     'used_fallback_version': usedFallbackVersion,
+    'fallback_cause': fallbackCause,
   };
 }

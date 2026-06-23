@@ -220,17 +220,37 @@ class GoogleAnalytics {
     );
   }
 
-  static void startActivity(String activityId, String roomId) {
+  static void startActivity(
+    String activityId,
+    String roomId, {
+    bool? versionPinHonored,
+    String? fallbackCause,
+  }) {
     logEvent(
       'start_activity',
-      parameters: {'activity_id': activityId, 'room_id': roomId},
+      parameters: {
+        'activity_id': activityId,
+        'room_id': roomId,
+        'version_pin_honored': ?versionPinHonored,
+        'fallback_cause': ?fallbackCause,
+      },
     );
   }
 
-  static void completeActivity(String activityId, String roomId) {
+  static void completeActivity(
+    String activityId,
+    String roomId, {
+    bool? versionPinHonored,
+    String? fallbackCause,
+  }) {
     logEvent(
       'complete_activity',
-      parameters: {'activity_id': activityId, 'room_id': roomId},
+      parameters: {
+        'activity_id': activityId,
+        'room_id': roomId,
+        'version_pin_honored': ?versionPinHonored,
+        'fallback_cause': ?fallbackCause,
+      },
     );
   }
 

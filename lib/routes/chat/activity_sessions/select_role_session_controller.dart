@@ -216,7 +216,12 @@ class SelectRoleSessionController extends State<SelectRoleSession>
       }
     }
 
-    GoogleAnalytics.startActivity(activity.activityId, widget.roomId ?? '');
+    GoogleAnalytics.startActivity(
+      activity.activityId,
+      widget.roomId ?? '',
+      versionPinHonored: !activity.usedFallbackVersion,
+      fallbackCause: activity.fallbackCause,
+    );
   }
 
   Future<void> _joinActivity() async {
