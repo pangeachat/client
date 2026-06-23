@@ -949,7 +949,14 @@ class ChatController extends State<ChatPageWithRoom>
     // so the visible plan never flickers.
     final activitySessionId = room.activityId;
     if (activitySessionId != null) {
-      ActivityPlanRepo.instance.ensure(activitySessionId, revalidate: true);
+      // Revalidate pinned to the session's version: this refreshes the
+      // re-translation of the pinned version (goal text / role names) without
+      // pulling newer canonical content into a live pinned session.
+      ActivityPlanRepo.instance.ensure(
+        activitySessionId,
+        version: room.pinnedActivityVersionId,
+        revalidate: true,
+      );
     }
 
     _goalCompletionSubscription?.cancel();

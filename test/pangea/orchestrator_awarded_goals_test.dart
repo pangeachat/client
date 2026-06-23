@@ -45,6 +45,47 @@ void main() {
       expect(reparsed.isGoalCompletedForRole('guest', 'order_dish'), isTrue);
       expect(reparsed.isGoalCompletedForRole('host', 'order_dish'), isFalse);
     });
+
+    test('matches on goal_slug, with legacy id fallback', () {
+      // The bot now awards on the content-derived slug.
+      final slugAwarded = OrchestratorAwardedGoals.fromJson({
+        'awards': {
+          'guest': ['content-slug-1'],
+        },
+      });
+      expect(
+        slugAwarded.isGoalCompletedForRole(
+          'guest',
+          'cms-id-1',
+          goalSlug: 'content-slug-1',
+        ),
+        isTrue,
+      );
+      // A goal whose slug was not awarded is not complete.
+      expect(
+        slugAwarded.isGoalCompletedForRole(
+          'guest',
+          'other-id',
+          goalSlug: 'other-slug',
+        ),
+        isFalse,
+      );
+      // Migration fallback: an award still keyed on the old Payload id renders
+      // when the goal carries a slug the bot hasn't re-awarded yet.
+      final idAwarded = OrchestratorAwardedGoals.fromJson({
+        'awards': {
+          'guest': ['cms-id-1'],
+        },
+      });
+      expect(
+        idAwarded.isGoalCompletedForRole(
+          'guest',
+          'cms-id-1',
+          goalSlug: 'content-slug-1',
+        ),
+        isTrue,
+      );
+    });
   });
 
   group('OrchestratorOutput goal_completion', () {

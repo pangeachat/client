@@ -18,9 +18,20 @@ class OrchestratorAwardedGoals {
     this.legacyFlatGoalIds = const [],
   });
 
-  bool isGoalCompletedForRole(String roleId, String goalId) =>
-      (awards[roleId]?.contains(goalId) ?? false) ||
-      legacyFlatGoalIds.contains(goalId);
+  /// Whether [roleId] has completed the goal. Matches on [goalSlug] first —
+  /// the bot now awards on the content-derived slug, which survives owner
+  /// edits — then falls back to the Payload [goalId] so awards written before
+  /// the slug cutover still render during the migration window.
+  bool isGoalCompletedForRole(String roleId, String goalId, {String? goalSlug}) {
+    final roleAwards = awards[roleId];
+    if (goalSlug != null &&
+        ((roleAwards?.contains(goalSlug) ?? false) ||
+            legacyFlatGoalIds.contains(goalSlug))) {
+      return true;
+    }
+    return (roleAwards?.contains(goalId) ?? false) ||
+        legacyFlatGoalIds.contains(goalId);
+  }
 
   static OrchestratorAwardedGoals fromJson(Map<String, dynamic> json) {
     if (json["awards"] == null && json["goal_ids"] != null) {

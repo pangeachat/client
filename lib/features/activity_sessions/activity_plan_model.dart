@@ -367,22 +367,40 @@ class ActivityRole {
 
 class ActivityRoleGoal {
   final String id;
+  // Content-derived award identity from the choreo plan. The bot awards stars
+  // on this (the Payload `id` re-mints on every edit), so star rendering keys
+  // on it with an `id` fallback during the migration window. Null on
+  // legacy/unmigrated goals.
+  final String? goalSlug;
   final String description;
 
-  const ActivityRoleGoal({required this.id, required this.description});
+  const ActivityRoleGoal({
+    required this.id,
+    required this.description,
+    this.goalSlug,
+  });
 
-  Map<String, dynamic> toJson() => {"id": id, "description": description};
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    if (goalSlug != null) "goal_slug": goalSlug,
+    "description": description,
+  };
 
   factory ActivityRoleGoal.fromJson(Map<String, dynamic> json) =>
-      ActivityRoleGoal(id: json["id"], description: json["description"]);
+      ActivityRoleGoal(
+        id: json["id"],
+        goalSlug: json["goal_slug"] as String?,
+        description: json["description"],
+      );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ActivityRoleGoal &&
           id == other.id &&
+          goalSlug == other.goalSlug &&
           description == other.description;
 
   @override
-  int get hashCode => id.hashCode ^ description.hashCode;
+  int get hashCode => id.hashCode ^ goalSlug.hashCode ^ description.hashCode;
 }

@@ -179,6 +179,7 @@ class ActivityStatsMenu extends StatelessWidget {
                                       goal: visibleGoal,
                                       complete: room.isOwnGoalCompleted(
                                         visibleGoal.id,
+                                        goalSlug: visibleGoal.goalSlug,
                                       ),
                                       starTarget:
                                           ActivitySessionConstants.goalMenuStarTargetId(
@@ -272,7 +273,10 @@ class ActivityStatsMenu extends StatelessWidget {
                                 .map(
                                   (g) => GoalStatusWidget(
                                     goal: g,
-                                    complete: room.isOwnGoalCompleted(g.id),
+                                    complete: room.isOwnGoalCompleted(
+                                      g.id,
+                                      goalSlug: g.goalSlug,
+                                    ),
                                   ),
                                 )
                                 .toList(),

@@ -42,6 +42,9 @@ ActivityPlanModel activityPlanFromV2(Map<String, dynamic> doc) {
             // back to the goal text, which is stable and distinct within a role,
             // so goal-completion keying still works the same way per session.
             id: (g['id'] ?? g['goal'] ?? '') as String,
+            // Content-derived award identity; the bot awards on this so stars
+            // survive owner edits. Null on legacy/unmigrated goals.
+            goalSlug: g['goal_slug'] as String?,
             description: (g['goal'] ?? '') as String,
           ),
         )

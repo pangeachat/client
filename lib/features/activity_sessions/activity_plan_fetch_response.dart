@@ -14,12 +14,16 @@ class ActivityPlanFetchResponse extends BaseResponse {
   final String? l1;
   final String? versionId;
   final bool usedFallback;
+  // True when the pinned version was unavailable (evicted) and the latest was
+  // served instead. Distinct from [usedFallback] (an L1-translation miss).
+  final bool usedFallbackVersion;
 
   ActivityPlanFetchResponse({
     required this.rawPlan,
     this.l1,
     this.versionId,
     this.usedFallback = false,
+    this.usedFallbackVersion = false,
   });
 
   /// The plan body mapped into the client model (media `upload_id`s unresolved).
@@ -36,6 +40,7 @@ class ActivityPlanFetchResponse extends BaseResponse {
       l1: json['l1'] as String?,
       versionId: json['version_id'] as String?,
       usedFallback: json['used_fallback'] == true,
+      usedFallbackVersion: json['used_fallback_version'] == true,
     );
   }
 
@@ -45,5 +50,6 @@ class ActivityPlanFetchResponse extends BaseResponse {
     'l1': l1,
     'version_id': versionId,
     'used_fallback': usedFallback,
+    'used_fallback_version': usedFallbackVersion,
   };
 }
