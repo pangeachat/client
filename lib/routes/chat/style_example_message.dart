@@ -57,16 +57,13 @@ class _StyleExampleMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyle = TextStyle(
-      color: ThemeData.dark().colorScheme.onPrimary,
+      color: Theme.of(context).colorScheme.onPrimary,
       fontSize: AppConfig.messageFontSize * AppSettings.fontSizeFactor.value,
     );
     return Container(
       constraints: BoxConstraints(maxWidth: FluffyThemes.maxTimelineWidth),
       decoration: BoxDecoration(
-        color: Color.alphaBlend(
-          Colors.white.withAlpha(180),
-          ThemeData.dark().colorScheme.primary,
-        ),
+        color: Theme.of(context).colorScheme.primary,
         borderRadius: BorderRadius.circular(AppConfig.borderRadius),
       ),
       child: Padding(
@@ -78,8 +75,9 @@ class _StyleExampleMessage extends StatelessWidget {
                 child: UnderlineText(
                   text: 'Hello',
                   style: textStyle,
-                  underlineColor: ThemeData.dark().colorScheme.primaryContainer
-                      .withAlpha(200),
+                  underlineColor: Theme.of(
+                    context,
+                  ).colorScheme.primaryContainer.withAlpha(200),
                 ),
               ),
               WidgetSpan(
