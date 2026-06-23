@@ -6,18 +6,21 @@ import 'package:fluffychat/features/overlay/widget_boundaries_model.dart';
 class CenteredOverlayWidget extends StatelessWidget {
   final Widget child;
   final BuildContext outerContext;
+  final bool useParentBoundaries;
 
   const CenteredOverlayWidget({
     super.key,
     required this.child,
     required this.outerContext,
+    required this.useParentBoundaries,
   });
 
   @override
   Widget build(BuildContext context) {
-    final boundingBox =
-        OverlayUtil.getBoundingBox(outerContext) ??
-        WidgetBoundaries.defaultBoundaries;
+    WidgetBoundaries boundingBox = WidgetBoundaries.defaultBoundaries;
+    if (useParentBoundaries) {
+      boundingBox = OverlayUtil.getBoundingBox(outerContext) ?? boundingBox;
+    }
 
     return Positioned(
       top: boundingBox.top,

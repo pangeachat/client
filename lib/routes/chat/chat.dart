@@ -2642,6 +2642,7 @@ class ChatController extends State<ChatPageWithRoom>
         displayDetails: CenteredOverlayDisplayDetails(
           overlayKey: "button_message_backdrop",
           bypassBlockingOverlays: bypassBlockingOverlays,
+          useParentBoundaries: false,
         ),
       );
 
@@ -2661,6 +2662,7 @@ class ChatController extends State<ChatPageWithRoom>
           backgroundColor: Colors.black,
           overlayKey: "message_toolbar_overlay",
           bypassBlockingOverlays: bypassBlockingOverlays,
+          useParentBoundaries: false,
         ),
       );
     } else {
@@ -2673,6 +2675,7 @@ class ChatController extends State<ChatPageWithRoom>
           backgroundColor: Colors.black,
           overlayKey: "message_toolbar_overlay",
           bypassBlockingOverlays: bypassBlockingOverlays,
+          useParentBoundaries: false,
         ),
       );
     }
