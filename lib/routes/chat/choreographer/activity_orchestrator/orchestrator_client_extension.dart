@@ -20,7 +20,11 @@ extension OrchestratorClientExtension on Client {
       if (room.ownRoleState?.id != roleId) continue;
       final awarded = room.orchestratorAwardedGoals;
       for (final g in role.allGoals) {
-        if (awarded.isGoalCompletedForRole(roleId, g.id, goalSlug: g.goalSlug)) {
+        if (awarded.isGoalCompletedForRole(
+          roleId,
+          g.id,
+          goalSlug: g.goalSlug,
+        )) {
           completed.add(g.id);
         }
       }

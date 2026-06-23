@@ -100,7 +100,11 @@ class ActivityPlanRepo
   /// [getPlan] has run, else the raw (TTL-checked) cached plan, else null — in
   /// which case the caller should [ensure]. Drops the resolved entry when the
   /// underlying TTL'd cache has expired so it can't outlive it.
-  ActivityPlanModel? cachedPlan(String activityId, {String? l1, String? version}) {
+  ActivityPlanModel? cachedPlan(
+    String activityId, {
+    String? l1,
+    String? version,
+  }) {
     final request = _request(activityId, l1, version: version);
     final raw = getCached(request);
     if (raw == null) {

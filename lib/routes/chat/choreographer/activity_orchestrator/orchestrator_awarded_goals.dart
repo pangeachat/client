@@ -22,7 +22,11 @@ class OrchestratorAwardedGoals {
   /// the bot now awards on the content-derived slug, which survives owner
   /// edits — then falls back to the Payload [goalId] so awards written before
   /// the slug cutover still render during the migration window.
-  bool isGoalCompletedForRole(String roleId, String goalId, {String? goalSlug}) {
+  bool isGoalCompletedForRole(
+    String roleId,
+    String goalId, {
+    String? goalSlug,
+  }) {
     final roleAwards = awards[roleId];
     if (goalSlug != null &&
         ((roleAwards?.contains(goalSlug) ?? false) ||
