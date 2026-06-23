@@ -19,6 +19,9 @@ enum SettingsPageEnum {
 
 extension SettingsPageEnumExtension on SettingsPageEnum {
   static SettingsPageEnum fromString(String? path) {
+    if (path != null && path.contains('security/ignorelist')) {
+      return SettingsPageEnum.ignore;
+    }
     switch (path) {
       case 'learning':
         return SettingsPageEnum.learning;
@@ -36,8 +39,6 @@ extension SettingsPageEnumExtension on SettingsPageEnum {
         return SettingsPageEnum.security;
       case 'security/password':
         return SettingsPageEnum.password;
-      case 'security/ignorelist':
-        return SettingsPageEnum.ignore;
       case 'security/3pid':
         return SettingsPageEnum.email;
       case 'profile':
