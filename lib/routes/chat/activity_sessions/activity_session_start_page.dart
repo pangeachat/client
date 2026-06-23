@@ -127,7 +127,12 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
         loading = true;
         error = null;
       });
-      await Future.wait([_loadSummary(), _loadActivity()]);
+      // Gate `loading` on the bounded activity fetch ALONE, so the page always
+      // resolves to the activity or the not-found error. The room summaries are
+      // non-essential to that render and their fetch can stall, so they load as
+      // a self-catching side-effect (below) that must never wedge the spinner
+      // (#7085, #7159).
+      await _loadActivity();
     } catch (e, s) {
       error = e;
       ErrorHandler.logError(
@@ -144,9 +149,14 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
         setState(() => loading = false);
       }
     }
+    // Refresh summary-derived UI (member counts, role availability) when it
+    // lands; never awaited, so a slow or stalled summary fetch cannot block the
+    // activity-or-error render.
+    if (mounted) unawaited(_loadSummary());
   }
 
   Future<void> _loadSummary() async {
+    if (!mounted) return;
     final Set<String> roomIds = {};
     if (widget.roomId != null) {
       roomIds.add(widget.roomId!);
@@ -160,16 +170,30 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     }
 
     if (roomIds.isEmpty) return;
-    final roomSummariesResponse = await Matrix.of(context).client
-        .loadRoomSummaries(
-          roomIds.toList(),
-          l1Code: MatrixState.pangeaController.userController.userL1Code,
+    try {
+      final roomSummariesResponse = await Matrix.of(context).client
+          .loadRoomSummaries(
+            roomIds.toList(),
+            l1Code: MatrixState.pangeaController.userController.userL1Code,
+          )
+          .timeout(const Duration(seconds: 30));
+      if (!mounted) return;
+      setState(() {
+        _roomSummariesModel = ActivitySessionSummariesModel(
+          roomSummariesResponse,
+          activityId: widget.activityId,
         );
-
-    _roomSummariesModel = ActivitySessionSummariesModel(
-      roomSummariesResponse,
-      activityId: widget.activityId,
-    );
+      });
+    } catch (e, s) {
+      // Summaries are non-essential (member counts / role availability); a slow
+      // or stalled /room_preview must not block or fail the activity render, so
+      // degrade to the empty model initialized in initState (#7085, #7159).
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"activityId": widget.activityId},
+      );
+    }
   }
 
   Future<void> _loadActivity() async {
