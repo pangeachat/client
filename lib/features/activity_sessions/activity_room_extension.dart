@@ -31,7 +31,10 @@ extension ActivityRoomExtension on Room {
       if (referenceId == null) return null;
       final version = content[ActivitySessionConstants.versionId] as String?;
       ActivityPlanRepo.instance.ensure(referenceId, version: version);
-      return ActivityPlanRepo.instance.cachedPlan(referenceId, version: version);
+      return ActivityPlanRepo.instance.cachedPlan(
+        referenceId,
+        version: version,
+      );
     }
 
     try {
@@ -49,8 +52,10 @@ extension ActivityRoomExtension on Room {
   /// The content-signature this session pinned at creation (from the
   /// `pangea.activity_plan` state event), or null for a legacy/embedded room.
   String? get pinnedActivityVersionId =>
-      getState(PangeaEventTypes.activityPlan)?.content[ActivitySessionConstants
-          .versionId] as String?;
+      getState(
+            PangeaEventTypes.activityPlan,
+          )?.content[ActivitySessionConstants.versionId]
+          as String?;
 
   /// activity_id of a reference plan: the room-type suffix
   /// (`PangeaRoomTypes.activitySession:<activity_id>`) is authoritative, with
