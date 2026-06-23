@@ -207,7 +207,10 @@ class SettingsStyleView extends StatelessWidget {
                               ),
                             ),
                           // #Pangea
-                          StyleExampleMessage(),
+                          // Decorative style preview; its toolbar buttons are
+                          // disabled demos, so keep the whole preview out of the
+                          // semantics tree (axe `aria-command-name` otherwise).
+                          ExcludeSemantics(child: StyleExampleMessage()),
                           // Column(
                           //   mainAxisSize: .min,
                           //   children: [

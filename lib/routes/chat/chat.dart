@@ -40,6 +40,10 @@ import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/overlay/layer_link_and_key.dart';
+import 'package:fluffychat/features/overlay/overlay.dart';
+import 'package:fluffychat/features/overlay/overlay_display_details.dart';
+import 'package:fluffychat/features/overlay/transparent_backdrop.dart';
 import 'package:fluffychat/features/subscription/widgets/paywall_card.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
@@ -48,11 +52,8 @@ import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
-import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
-import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_controller.dart';
@@ -591,7 +592,6 @@ class ChatController extends State<ChatPageWithRoom>
     final overlayKey = "level_up_notification";
     _bannerController.addBanner((Completer<void> completer) {
       final success = OverlayUtil.showOverlay(
-        overlayKey: overlayKey,
         context: context,
         child: LevelUpBanner(
           level: update.newLevel,
@@ -599,11 +599,12 @@ class ChatController extends State<ChatPageWithRoom>
           closeCompleter: completer,
           overlayKey: overlayKey,
         ),
-        transformTargetId: '',
-        position: OverlayPositionEnum.top,
-        backDropToDismiss: false,
-        closePrevOverlay: false,
-        canPop: false,
+        displayDetails: TopOverlayDisplayDetails(
+          overlayKey: overlayKey,
+          backDropToDismiss: false,
+          closePrevOverlay: false,
+          canPop: false,
+        ),
       );
 
       if (!success) {
@@ -623,18 +624,18 @@ class ChatController extends State<ChatPageWithRoom>
       final overlayKey = "${construct.string}_snackbar";
       _bannerController.addBanner((Completer<void> completer) {
         final success = OverlayUtil.showOverlay(
-          overlayKey: overlayKey,
           context: context,
           child: UnlockedMorphBanner(
             construct: construct,
             closeCompleter: completer,
             overlayKey: overlayKey,
           ),
-          transformTargetId: "",
-          position: OverlayPositionEnum.top,
-          backDropToDismiss: false,
-          closePrevOverlay: false,
-          canPop: false,
+          displayDetails: TopOverlayDisplayDetails(
+            overlayKey: overlayKey,
+            backDropToDismiss: false,
+            closePrevOverlay: false,
+            canPop: false,
+          ),
         );
 
         if (!success) {
@@ -812,6 +813,12 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _activityConfettiListener() {
     if (activityController.confettiNotifier.value) {
+      final renderBox = context.findRenderObject();
+      if (renderBox != null) {
+        final box = renderBox as RenderBox;
+        final offset = box.localToGlobal(Offset.zero);
+        Logs().w("Chat context size: ${box.size}. Offset: $offset");
+      }
       StarRainWidget.show(context, "star-rain-${widget.room.id}");
     }
   }
@@ -2632,9 +2639,10 @@ class ChatController extends State<ChatPageWithRoom>
           animateBackground: true,
           backgroundAnimationDuration: delay,
         ),
-        position: OverlayPositionEnum.centered,
-        overlayKey: "button_message_backdrop",
-        bypassBlockingOverlays: bypassBlockingOverlays,
+        displayDetails: CenteredOverlayDisplayDetails(
+          overlayKey: "button_message_backdrop",
+          bypassBlockingOverlays: bypassBlockingOverlays,
+        ),
       );
 
       await Future.delayed(delay);
@@ -2647,23 +2655,25 @@ class ChatController extends State<ChatPageWithRoom>
       OverlayUtil.showOverlay(
         context: context,
         child: overlayEntry,
-        position: OverlayPositionEnum.centered,
-        onDismiss: clearSelectedEvents,
-        blurBackground: true,
-        backgroundColor: Colors.black,
-        overlayKey: "message_toolbar_overlay",
-        bypassBlockingOverlays: bypassBlockingOverlays,
+        displayDetails: CenteredOverlayDisplayDetails(
+          onDismiss: clearSelectedEvents,
+          blurBackground: true,
+          backgroundColor: Colors.black,
+          overlayKey: "message_toolbar_overlay",
+          bypassBlockingOverlays: bypassBlockingOverlays,
+        ),
       );
     } else {
       OverlayUtil.showOverlay(
         context: context,
         child: overlayEntry,
-        position: OverlayPositionEnum.centered,
-        onDismiss: clearSelectedEvents,
-        blurBackground: true,
-        backgroundColor: Colors.black,
-        overlayKey: "message_toolbar_overlay",
-        bypassBlockingOverlays: bypassBlockingOverlays,
+        displayDetails: CenteredOverlayDisplayDetails(
+          onDismiss: clearSelectedEvents,
+          blurBackground: true,
+          backgroundColor: Colors.black,
+          overlayKey: "message_toolbar_overlay",
+          bypassBlockingOverlays: bypassBlockingOverlays,
+        ),
       );
     }
 
@@ -2788,16 +2798,18 @@ class ChatController extends State<ChatPageWithRoom>
       _spanCardOverlayController.open(
         context,
         openOverlay: (overlayKey) => OverlayUtil.showPositionedCard(
-          overlayKey: overlayKey,
           context: context,
           cardToShow: SpanCard(controller: _spanCardOverlayController),
-          maxHeight: 325,
-          maxWidth: 325,
-          transformTargetId: ChoreoConstants.inputTransformTargetKey,
-          ignorePointer: true,
-          isScrollable: false,
-          targetAnchor: Alignment.topCenter,
-          followerAnchor: Alignment.bottomCenter,
+          displayDetails: PositionedOverlayDisplayDetails(
+            overlayKey: overlayKey,
+            maxHeight: 325,
+            maxWidth: 325,
+            transformTargetId: ChoreoConstants.inputTransformTargetKey,
+            ignorePointer: true,
+            isScrollable: false,
+            targetAnchor: Alignment.topCenter,
+            followerAnchor: Alignment.bottomCenter,
+          ),
         ),
       );
     }
@@ -2813,17 +2825,19 @@ class ChatController extends State<ChatPageWithRoom>
     _spanCardOverlayController.open(
       context,
       openOverlay: (overlayKey) => OverlayUtil.showOverlay(
-        overlayKey: overlayKey,
         context: context,
         child: SuggestionCard(
           overlayKey: overlayKey,
           controller: choreographer.orchestratorController,
           popupManager: _spanCardOverlayController,
         ),
-        transformTargetId: ChoreoConstants.inputTransformTargetKey,
-        ignorePointer: true,
-        targetAnchor: Alignment.topCenter,
-        followerAnchor: Alignment.bottomCenter,
+        displayDetails: TransformOverlayDisplayDetails(
+          overlayKey: overlayKey,
+          transformTargetId: ChoreoConstants.inputTransformTargetKey,
+          ignorePointer: true,
+          targetAnchor: Alignment.topCenter,
+          followerAnchor: Alignment.bottomCenter,
+        ),
       ),
     );
   }
@@ -2941,7 +2955,7 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     LanguageMismatchRepo.setRoom(roomId);
-    OverlayUtil.showLanguageMismatchPopup(
+    LanguageMismatchPopup.show(
       context: context,
       targetId: ChoreoConstants.inputTransformTargetKey,
       message: L10n.of(context).languageMismatchDesc,
@@ -3003,10 +3017,12 @@ class ChatController extends State<ChatPageWithRoom>
       cardToShow: const DisableLanguageToolsPopup(
         overlayId: 'disable_language_tools_popup',
       ),
-      maxHeight: 325,
-      maxWidth: 325,
-      transformTargetId: ChoreoConstants.inputTransformTargetKey,
-      overlayKey: 'disable_language_tools_popup',
+      displayDetails: PositionedOverlayDisplayDetails(
+        maxHeight: 325,
+        maxWidth: 325,
+        transformTargetId: ChoreoConstants.inputTransformTargetKey,
+        overlayKey: 'disable_language_tools_popup',
+      ),
     );
   }
 
@@ -3029,9 +3045,6 @@ class ChatController extends State<ChatPageWithRoom>
     );
 
     OverlayUtil.showOverlay(
-      overlayKey: "msg_analytics_feedback_$eventId",
-      followerAnchor: Alignment.bottomRight,
-      targetAnchor: Alignment.topRight,
       context: context,
       child: MessageAnalyticsFeedback(
         newGrammarConstructs: newGrammarConstructs,
@@ -3040,9 +3053,14 @@ class ChatController extends State<ChatPageWithRoom>
           "msg_analytics_feedback_$eventId",
         ),
       ),
-      transformTargetId: eventId,
-      ignorePointer: true,
-      closePrevOverlay: false,
+      displayDetails: TransformOverlayDisplayDetails(
+        overlayKey: "msg_analytics_feedback_$eventId",
+        transformTargetId: eventId,
+        ignorePointer: true,
+        closePrevOverlay: false,
+        followerAnchor: Alignment.bottomRight,
+        targetAnchor: Alignment.topRight,
+      ),
     );
   }
 

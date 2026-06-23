@@ -2,14 +2,13 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import '../../../widgets/matrix.dart';
+import '../../widgets/matrix.dart';
 
 class TransparentBackdrop extends StatelessWidget {
   final Color? backgroundColor;
   final VoidCallback? onDismiss;
   final bool blurBackground;
 
-  /// New
   final bool animateBackground;
   final Duration backgroundAnimationDuration;
 

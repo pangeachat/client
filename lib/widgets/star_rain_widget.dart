@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/features/overlay/overlay.dart';
+import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class StarRainWidget extends StatefulWidget {
@@ -16,12 +17,13 @@ class StarRainWidget extends StatefulWidget {
   static void show(BuildContext context, String overlayKey) {
     OverlayUtil.showOverlay(
       context: context,
-      position: OverlayPositionEnum.centered,
-      closePrevOverlay: false,
-      canPop: false,
-      overlayKey: overlayKey,
       child: StarRainWidget(overlayKey: overlayKey),
-      ignorePointer: true,
+      displayDetails: CenteredOverlayDisplayDetails(
+        closePrevOverlay: false,
+        canPop: false,
+        overlayKey: overlayKey,
+        ignorePointer: true,
+      ),
     );
   }
 

@@ -11,7 +11,6 @@ import 'package:just_audio/just_audio.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/languages/language_constants.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/utils/strip_emojis.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
@@ -21,6 +20,7 @@ import 'package:fluffychat/routes/chat/events/phonetic_transcription/pt_v2_repo.
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_repo.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_request_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_response_model.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_disabled_popup.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_routing.dart';
 import 'package:fluffychat/utils/multi_platform_audio_player.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -444,7 +444,7 @@ class TtsController {
         );
       }
     } else if (targetID != null && context != null) {
-      OverlayUtil.showTTSDisabledPopup(context, targetID);
+      TtsDisabledPopup.show(context, targetID);
     }
 
     onStop?.call();

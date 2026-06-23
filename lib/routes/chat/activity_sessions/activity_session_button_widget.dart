@@ -243,18 +243,18 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
           ),
           SizedBox(height: 16.0),
         ],
+        // The bot is now auto-invited and present from creation, so gating this
+        // on "bot not in room" would always hide it. This CTA block only renders
+        // on the start page (while !isActivityStarted, where the bot holds no
+        // role), so always offer the choice: "play with bot" writes the
+        // bot_participant marker and the bot claims the open role (#7027).
         if (controller.showInviteOptions)
-          FutureBuilder(
-            future: controller.isBotRoomMember,
-            builder: (context, snapshot) => snapshot.data == false
-                ? Padding(
-                    padding: EdgeInsetsGeometry.only(bottom: 16.0),
-                    child: _CTAButton(
-                      L10n.of(context).playWithBot,
-                      controller.playWithBot,
-                    ),
-                  )
-                : SizedBox.shrink(),
+          Padding(
+            padding: EdgeInsetsGeometry.only(bottom: 16.0),
+            child: _CTAButton(
+              L10n.of(context).playWithBot,
+              controller.playWithBot,
+            ),
           ),
         if (controller.showInviteOptions)
           _CTAButton(L10n.of(context).inviteFriends, controller.inviteFriends),

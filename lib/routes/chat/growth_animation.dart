@@ -2,7 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
+import 'package:fluffychat/features/overlay/overlay.dart';
+import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Tracks active growth animations for offset calculation
@@ -34,6 +37,28 @@ class GrowthAnimation extends StatefulWidget {
     required this.targetID,
     required this.level,
   });
+
+  static void show(
+    BuildContext context,
+    String targetId,
+    ConstructLevelEnum level,
+    ConstructIdentifier constructId,
+  ) {
+    final overlayKey = "${targetId}_growth_${constructId.string}";
+    OverlayUtil.showOverlay(
+      context: context,
+      child: GrowthAnimation(targetID: overlayKey, level: level),
+      displayDetails: TransformOverlayDisplayDetails(
+        overlayKey: overlayKey,
+        followerAnchor: Alignment.topCenter,
+        targetAnchor: Alignment.topCenter,
+        transformTargetId: targetId,
+        closePrevOverlay: false,
+        backDropToDismiss: false,
+        ignorePointer: true,
+      ),
+    );
+  }
 
   @override
   State<GrowthAnimation> createState() => _GrowthAnimationState();
