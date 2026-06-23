@@ -76,43 +76,53 @@ class DMListTileState extends State<DMListTile> {
             child: Material(
               borderRadius: BorderRadius.circular(AppConfig.borderRadius),
               clipBehavior: Clip.hardEdge,
-              child: ListTile(
-                contentPadding: EdgeInsets.only(left: 16, right: 16),
-                leading: Container(
-                  alignment: Alignment.center,
-                  height: Avatar.defaultSize,
-                  width: Avatar.defaultSize,
-                  child: const Icon(
-                    Symbols.chat_add_on,
-                    size: Avatar.defaultSize - 16,
+              // The dismiss button sits beside the tappable tile, not inside it.
+              // A focusable control nested inside another focusable control is an
+              // axe `nested-interactive` violation and a screen-reader trap.
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ListTile(
+                      contentPadding: EdgeInsets.only(left: 16, right: 16),
+                      leading: Container(
+                        alignment: Alignment.center,
+                        height: Avatar.defaultSize,
+                        width: Avatar.defaultSize,
+                        child: const Icon(
+                          Symbols.chat_add_on,
+                          size: Avatar.defaultSize - 16,
+                        ),
+                      ),
+                      title: Text(L10n.of(context).chatWithSupport),
+                      subtitle: Text(L10n.of(context).supportSubtitle),
+                      onTap: _loading
+                          ? null
+                          : () async {
+                              setState(() => _loading = true);
+                              try {
+                                final resp =
+                                    await showFutureLoadingDialog<String>(
+                                      context: context,
+                                      future: Matrix.of(
+                                        context,
+                                      ).client.startChatWithSupport,
+                                    );
+                                if (!mounted) return;
+                                if (resp.isError) return;
+                                context.go('/rooms/${resp.result}');
+                              } finally {
+                                if (mounted) setState(() => _loading = false);
+                              }
+                            },
+                    ),
                   ),
-                ),
-                trailing: IconButton(
-                  tooltip: L10n.of(context).dismiss,
-                  icon: const Icon(Icons.close),
-                  onPressed: () =>
-                      InstructionsEnum.dismissSupportChat.setToggledOff(true),
-                ),
-                title: Text(L10n.of(context).chatWithSupport),
-                subtitle: Text(L10n.of(context).supportSubtitle),
-                onTap: _loading
-                    ? null
-                    : () async {
-                        setState(() => _loading = true);
-                        try {
-                          final resp = await showFutureLoadingDialog<String>(
-                            context: context,
-                            future: Matrix.of(
-                              context,
-                            ).client.startChatWithSupport,
-                          );
-                          if (!mounted) return;
-                          if (resp.isError) return;
-                          context.go('/rooms/${resp.result}');
-                        } finally {
-                          if (mounted) setState(() => _loading = false);
-                        }
-                      },
+                  IconButton(
+                    tooltip: L10n.of(context).dismiss,
+                    icon: const Icon(Icons.close),
+                    onPressed: () =>
+                        InstructionsEnum.dismissSupportChat.setToggledOff(true),
+                  ),
+                ],
               ),
             ),
           ),
