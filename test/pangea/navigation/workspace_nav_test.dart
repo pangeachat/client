@@ -24,6 +24,26 @@ void main() {
       expect(parseOpenPanels(u(loc)).right.single, token);
     });
 
+    test('a browser-normalized construct param (literal commas inside braces) '
+        'survives the cold-boot parse — selection not shattered (#7079)', () {
+      // On a refresh/cold boot the browser normalizes the fragment in
+      // window.location, decoding the encoded construct param's %2C back to
+      // literal commas inside literal braces (it keeps %22 for the quotes). A
+      // naive comma split would shatter the token mid-JSON, jsonDecode would
+      // fail, and the construct detail would fall back to the summary grid.
+      // Brace-aware splitting keeps the param whole.
+      final uri = u(
+        '/?right=vocab:{%22lemma%22:%22campus%22,%22type%22:%22vocab%22,'
+        '%22cat%22:%22noun%22},analytics:vocab',
+      );
+      final right = parseOpenPanels(uri).right;
+      expect(right.map((t) => t.type), ['vocab', 'analytics']);
+      expect(
+        right.first.param,
+        '{"lemma":"campus","type":"vocab","cat":"noun"}',
+      );
+    });
+
     test('atStart blooms a detail to the left of an existing summary', () {
       var loc = WorkspaceNav.openRight(
         u('/chats'),
