@@ -256,6 +256,9 @@ class _UserHomePageState extends State<UserHomePage> {
                               right: 0,
                               child: FloatingActionButton.small(
                                 elevation: 2,
+                                // Names the icon-only button for assistive tech
+                                // (otherwise axe `aria-command-name`).
+                                tooltip: L10n.of(context).changeYourAvatar,
                                 onPressed: _setAvatarAction,
                                 heroTag: null,
                                 child: const Icon(Icons.camera_alt_outlined),
