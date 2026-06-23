@@ -46,23 +46,6 @@ class WorldMapLargeCard extends StatelessWidget {
     this.openSlots = 0,
   });
 
-  static const Color _green = Color(0xFF34A853);
-  static const Color _purple = Color(0xFF7B61FF);
-  static const Color _gray = Color(0xFFB4B2A9);
-  static const Color _grayText = Color(0xFF5F5E5A);
-  static const Color _completedGreen = Color(0xFF3B6D11);
-
-  Color get _accent {
-    switch (state) {
-      case ActivityPinState.joinable:
-        return _green;
-      case ActivityPinState.locked:
-        return _gray;
-      case ActivityPinState.unlocked:
-        return _purple;
-    }
-  }
-
   /// The most-goal role's goal count stands in for the activity's star total: a
   /// learner plays one role, and the richest role bounds the progress bar.
   int get _starsTotal {
@@ -97,7 +80,7 @@ class WorldMapLargeCard extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: _accent, width: 2),
+            border: Border.all(color: state.accent, width: 2),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -147,7 +130,7 @@ class WorldMapLargeCard extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 13,
-                  color: locked ? _grayText : null,
+                  color: locked ? AppConfig.grayText : null,
                 ),
               ),
               const SizedBox(height: 4),
@@ -182,7 +165,7 @@ class WorldMapLargeCard extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Opacity(opacity: 0.5, child: image),
-        const Icon(Icons.lock, size: 20, color: _grayText),
+        const Icon(Icons.lock, size: 20, color: AppConfig.grayText),
       ],
     );
   }
@@ -199,8 +182,8 @@ class WorldMapLargeCard extends StatelessWidget {
   }) {
     final l10n = L10n.of(context);
     final Color fg = completed
-        ? _completedGreen
-        : (locked ? _grayText : _accent);
+        ? AppConfig.completedGreen
+        : (locked ? AppConfig.grayText : state.accent);
     final IconData icon = completed
         ? Icons.check_circle_outline
         : (pinged ? Icons.back_hand : Icons.chat_bubble_outline);
@@ -276,12 +259,12 @@ class WorldMapLargeCard extends StatelessWidget {
   Widget _lockedRequirement(BuildContext context) {
     return Row(
       children: [
-        const Icon(Icons.lock, size: 13, color: _grayText),
+        const Icon(Icons.lock, size: 13, color: AppConfig.grayText),
         const SizedBox(width: 6),
         Expanded(
           child: Text(
             L10n.of(context).lockedMissionRequirement,
-            style: const TextStyle(fontSize: 11, color: _grayText),
+            style: const TextStyle(fontSize: 11, color: AppConfig.grayText),
           ),
         ),
       ],
@@ -297,14 +280,14 @@ class WorldMapLargeCard extends StatelessWidget {
         _actionPill(
           Icons.refresh,
           l10n.playAgain,
-          _purple,
+          AppConfig.purple,
           const Color(0xFFCECBF6),
         ),
         const SizedBox(width: 6),
         _actionPill(
           Icons.visibility_outlined,
           l10n.reviewActivity,
-          _grayText,
+          AppConfig.grayText,
           const Color(0xFFD3D1C7),
         ),
       ],

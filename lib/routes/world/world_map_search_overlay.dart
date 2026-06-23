@@ -22,6 +22,7 @@ class WorldMapSearchOverlay extends StatefulWidget {
   final bool l2Only;
   final String? l2Label;
   final VoidCallback onToggleL2;
+  final VoidCallback onWidenSearch;
 
   /// CEFR band: [selectedCefr] is the active level set (default = at/below the
   /// user's level); toggling a chip adds/removes a level.
@@ -52,6 +53,7 @@ class WorldMapSearchOverlay extends StatefulWidget {
     required this.l2Only,
     required this.l2Label,
     required this.onToggleL2,
+    required this.onWidenSearch,
     required this.selectedCefr,
     required this.onToggleCefr,
     required this.selectedCompletion,
@@ -244,8 +246,8 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
                   if (widget.l2Only && widget.l2Label != null)
                     FilledButton.tonalIcon(
                       icon: const Icon(Icons.translate, size: 16),
-                      label: Text(l10n.mapFilterAllLanguages),
-                      onPressed: widget.onToggleL2,
+                      label: Text(l10n.widenSearch),
+                      onPressed: widget.onWidenSearch,
                     ),
                 ],
               ),
