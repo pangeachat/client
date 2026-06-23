@@ -30,11 +30,13 @@ class SettingsSubscriptionView extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        title: Text(L10n.of(context).subscriptionManagement),
-      ),
+      // #Pangea
+      // appBar: AppBar(
+      //   automaticallyImplyLeading: false,
+      //   centerTitle: true,
+      //   title: Text(L10n.of(context).subscriptionManagement),
+      // ),
+      // Pangea#
       body: Stack(
         fit: StackFit.expand,
         children: [

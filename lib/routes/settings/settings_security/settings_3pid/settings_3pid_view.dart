@@ -19,21 +19,20 @@ class Settings3PidView extends StatelessWidget {
 
     controller.request ??= Matrix.of(context).client.getAccount3PIDs();
     return Scaffold(
-      appBar: AppBar(
-        // No own leading/back — the workspace panel card owns close/back.
-        automaticallyImplyLeading: false,
-        // #Pangea
-        // title: Text(L10n.of(context).passwordRecovery),
-        title: Text(L10n.of(context).changeEmail),
-        // Pangea#
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.add_outlined),
-            onPressed: controller.add3PidAction,
-            tooltip: L10n.of(context).addEmail,
-          ),
-        ],
-      ),
+      // #Pangea
+      // appBar: AppBar(
+      //   // No own leading/back — the workspace panel card owns close/back.
+      //   automaticallyImplyLeading: false,
+      //   title: Text(L10n.of(context).passwordRecovery),
+      //   actions: [
+      //     IconButton(
+      //       icon: const Icon(Icons.add_outlined),
+      //       onPressed: controller.add3PidAction,
+      //       tooltip: L10n.of(context).addEmail,
+      //     ),
+      //   ],
+      // ),
+      // Pangea#
       body: MaxWidthBody(
         withScrolling: false,
         child: FutureBuilder<List<ThirdPartyIdentifier>?>(

@@ -212,10 +212,12 @@ class _UserHomePageState extends State<UserHomePage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(L10n.of(context).home),
-      ),
+      // #Pangea
+      // appBar: AppBar(
+      //   automaticallyImplyLeading: false,
+      //   title: Text(L10n.of(context).home),
+      // ),
+      // Pangea#
       body: MaxWidthBody(
         child: Column(
           children: [

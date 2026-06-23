@@ -19,6 +19,7 @@ import 'package:fluffychat/routes/analytics/construct_analytics/practice/analyti
 import 'package:fluffychat/routes/analytics/level/level_analytics_details_content.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
+import 'package:fluffychat/routes/world/settings_page_enum.dart';
 import 'package:fluffychat/routes/world/settings_panel.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 
@@ -114,10 +115,9 @@ class WorkspaceRightPanel extends StatelessWidget {
               context.go(WorkspaceNav.closeSettings(currentUri)),
         );
       case 'settingspage':
-        // The menu's detail: a settings/profile page. A top-level page's close
-        // reveals the menu (X coexisting, ← folded); a `/`-leaf pushes, so ←
-        // pops to its parent page (handled by [onLeading]).
-        return card('', SettingsPanel(subPath: page));
+        // Pages opened from the settings menu
+        final title = SettingsPageEnumExtension.fromString(page).title(l10n);
+        return card(title, SettingsPanel(subPath: page));
       case 'vocab':
       case 'grammar':
         final construct = _construct;
