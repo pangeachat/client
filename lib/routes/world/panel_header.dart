@@ -22,8 +22,9 @@ class PanelHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final iconSize = IconTheme.of(context).size ?? 24;
     return Padding(
-      padding: const EdgeInsets.fromLTRB(4, 4, 4, 0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
       child: Row(
         children: [
           leading,
@@ -33,11 +34,11 @@ class PanelHeader extends StatelessWidget {
               title,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(
-                context,
-              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
+          SizedBox(width: 20 + iconSize),
         ],
       ),
     );
