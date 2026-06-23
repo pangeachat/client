@@ -105,6 +105,16 @@ test.describe("Accessibility (axe-core)", () => {
       const violations = await auditPage(page);
       expect(violations, formatViolations(violations)).toHaveLength(0);
     });
+
+    test("settings panel has no a11y violations", async ({ page }) => {
+      await gotoSurface(
+        page,
+        "/#/?right=settings",
+        page.getByRole("button", { name: intl.learningSettings }).first(),
+      );
+      const violations = await auditPage(page);
+      expect(violations, formatViolations(violations)).toHaveLength(0);
+    });
   });
 });
 
