@@ -48,6 +48,9 @@ class ChatAppBarTitle extends StatelessWidget {
                 : NavigationUtil.goToSpaceRoute(room.id, ['details'], context),
       // Pangea#
       child: Row(
+        // #Pangea
+        mainAxisAlignment: MainAxisAlignment.center,
+        // Pangea#
         children: [
           Hero(
             tag: 'content_banner',
@@ -63,7 +66,10 @@ class ChatAppBarTitle extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 12),
-          Expanded(
+          // #Pangea
+          // Expanded(
+          Flexible(
+            // Pangea#
             child: Column(
               crossAxisAlignment: .start,
               children: [
@@ -71,7 +77,9 @@ class ChatAppBarTitle extends StatelessWidget {
                   room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(fontSize: 16),
+                  // #Pangea
+                  // style: const TextStyle(fontSize: 16),
+                  // Pangea#
                 ),
                 StreamBuilder(
                   stream: room.client.onSyncStatus.stream,
