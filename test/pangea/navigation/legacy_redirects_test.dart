@@ -34,10 +34,10 @@ void main() {
         '/?right=settingspage:security%2Fpassword,settings',
       );
       expect(resolve('/profile'), '/?right=settings');
-      expect(
-        resolve('/profile/edit'),
-        '/?right=settingspage:profile%2Fedit,settings',
-      );
+      // The profile editor collapses to the single-segment `profile` page, so a
+      // legacy `/profile/edit` link opens the editor with a one-click back to
+      // the menu, not a nested `profile/edit` leaf (#7147).
+      expect(resolve('/profile/edit'), '/?right=settingspage:profile,settings');
     });
 
     test('find/create course flows keep literal names', () {
