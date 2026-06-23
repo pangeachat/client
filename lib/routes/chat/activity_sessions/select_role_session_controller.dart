@@ -169,6 +169,10 @@ class SelectRoleSessionController extends State<SelectRoleSession>
   }
 
   Future<void> confirmRoleSelection() async {
+    // Idempotency guard: a fast double-tap (before the loading dialog mounts)
+    // would otherwise create two session rooms with two independent version
+    // pins. The `_confirmed` flag was set here but never read.
+    if (_confirmed) return;
     setState(() => _confirmed = true);
     final activity = widget.activity;
     if (activity == null) {

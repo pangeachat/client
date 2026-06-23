@@ -51,17 +51,29 @@ class ActivityPlanRepo
 
   @override
   Future<Response> fetch(Requests req, ActivityPlanFetchRequest request) {
-    final uri = Uri.parse(
-      PApiUrls.activityById(request.activityId),
-    ).replace(queryParameters: {if (request.l1.isNotEmpty) 'l1': request.l1});
+    final uri = Uri.parse(PApiUrls.activityById(request.activityId)).replace(
+      queryParameters: {
+        if (request.l1.isNotEmpty) 'l1': request.l1,
+        // The session's pinned content-signature; omitted for discovery reads,
+        // which want the latest.
+        if (request.version != null) 'version': request.version!,
+      },
+    );
     return req.get(url: uri.toString());
   }
 
   String get _viewerL1 =>
       MatrixState.pangeaController.userController.userL1Code ?? 'en';
 
-  ActivityPlanFetchRequest _request(String activityId, String? l1) =>
-      ActivityPlanFetchRequest(activityId: activityId, l1: l1 ?? _viewerL1);
+  ActivityPlanFetchRequest _request(
+    String activityId,
+    String? l1, {
+    String? version,
+  }) => ActivityPlanFetchRequest(
+    activityId: activityId,
+    l1: l1 ?? _viewerL1,
+    version: version,
+  );
 
   /// The plan for [activityId], localized to [l1] (viewer L1 by default), with
   /// media resolved. Cached (TTL + in-flight dedup); null on fetch failure.
@@ -70,9 +82,10 @@ class ActivityPlanRepo
   Future<ActivityPlanModel?> getPlan(
     String activityId, {
     String? l1,
+    String? version,
     bool forceRefresh = false,
   }) async {
-    final request = _request(activityId, l1);
+    final request = _request(activityId, l1, version: version);
     final result = await get(request, forceRefresh: forceRefresh);
     final response = result.result;
     if (response == null) return null;
@@ -87,8 +100,8 @@ class ActivityPlanRepo
   /// [getPlan] has run, else the raw (TTL-checked) cached plan, else null — in
   /// which case the caller should [ensure]. Drops the resolved entry when the
   /// underlying TTL'd cache has expired so it can't outlive it.
-  ActivityPlanModel? cachedPlan(String activityId, {String? l1}) {
-    final request = _request(activityId, l1);
+  ActivityPlanModel? cachedPlan(String activityId, {String? l1, String? version}) {
+    final request = _request(activityId, l1, version: version);
     final raw = getCached(request);
     if (raw == null) {
       _resolved.remove(request.storageKey);
@@ -109,8 +122,13 @@ class ActivityPlanRepo
   /// does NOT revalidate (one fetch per visible pin would be a fetch storm).
   /// Stale-while-revalidate: [cachedPlan] keeps serving the old plan until the
   /// fresh one lands, so there is no loading flicker.
-  void ensure(String activityId, {String? l1, bool revalidate = false}) {
-    final key = _request(activityId, l1).storageKey;
+  void ensure(
+    String activityId, {
+    String? l1,
+    String? version,
+    bool revalidate = false,
+  }) {
+    final key = _request(activityId, l1, version: version).storageKey;
     if (_hydrating.contains(key)) return;
     final doRevalidate = revalidate && _revalidated.add(key);
     if (!doRevalidate && _resolved.containsKey(key)) return;
@@ -118,6 +136,7 @@ class ActivityPlanRepo
     getPlan(
       activityId,
       l1: l1,
+      version: version,
       forceRefresh: doRevalidate,
     ).whenComplete(() => _hydrating.remove(key));
   }

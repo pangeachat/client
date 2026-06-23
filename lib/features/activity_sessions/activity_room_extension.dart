@@ -23,12 +23,15 @@ extension ActivityRoomExtension on Room {
     if (stateEvent == null) return null;
     final content = stateEvent.content;
 
-    // Reference shape carries no embedded plan body (no `req`); hydrate it.
+    // Reference shape carries no embedded plan body (no `req`); hydrate it,
+    // pinned to the version this session was started on so an owner edit can't
+    // change the rendered plan mid-session.
     if (content[ActivitySessionConstants.activityPlanRequest] == null) {
       final referenceId = _referencePlanActivityId(content);
       if (referenceId == null) return null;
-      ActivityPlanRepo.instance.ensure(referenceId);
-      return ActivityPlanRepo.instance.cachedPlan(referenceId);
+      final version = content[ActivitySessionConstants.versionId] as String?;
+      ActivityPlanRepo.instance.ensure(referenceId, version: version);
+      return ActivityPlanRepo.instance.cachedPlan(referenceId, version: version);
     }
 
     try {
@@ -42,6 +45,12 @@ extension ActivityRoomExtension on Room {
       return null;
     }
   }
+
+  /// The content-signature this session pinned at creation (from the
+  /// `pangea.activity_plan` state event), or null for a legacy/embedded room.
+  String? get pinnedActivityVersionId =>
+      getState(PangeaEventTypes.activityPlan)?.content[ActivitySessionConstants
+          .versionId] as String?;
 
   /// activity_id of a reference plan: the room-type suffix
   /// (`PangeaRoomTypes.activitySession:<activity_id>`) is authoritative, with

@@ -26,14 +26,22 @@ extension OrchestratorRoomExtension on Room {
 
     final awarded = orchestratorAwardedGoals;
     return goals.firstWhereOrNull(
-      (g) => !awarded.isGoalCompletedForRole(ownRole.id, g.id),
+      (g) => !awarded.isGoalCompletedForRole(
+        ownRole.id,
+        g.id,
+        goalSlug: g.goalSlug,
+      ),
     );
   }
 
-  bool isOwnGoalCompleted(String id) {
+  bool isOwnGoalCompleted(String id, {String? goalSlug}) {
     final ownRole = this.ownRole;
     if (ownRole == null) return false;
-    return orchestratorAwardedGoals.isGoalCompletedForRole(ownRole.id, id);
+    return orchestratorAwardedGoals.isGoalCompletedForRole(
+      ownRole.id,
+      id,
+      goalSlug: goalSlug,
+    );
   }
 
   bool get hasCompletedOwnGoals {
@@ -47,7 +55,9 @@ extension OrchestratorRoomExtension on Room {
     if (role == null) return false;
     final goals = role.allGoals;
     final awarded = orchestratorAwardedGoals;
-    return goals.every((g) => awarded.isGoalCompletedForRole(roleId, g.id));
+    return goals.every(
+      (g) => awarded.isGoalCompletedForRole(roleId, g.id, goalSlug: g.goalSlug),
+    );
   }
 
   List<ActivityRoleGoal> get ownCompletedGoals {
@@ -57,7 +67,13 @@ extension OrchestratorRoomExtension on Room {
     final ownGoals = ownRole.allGoals;
     final awarded = orchestratorAwardedGoals;
     return ownGoals
-        .where((g) => awarded.isGoalCompletedForRole(ownRole.id, g.id))
+        .where(
+          (g) => awarded.isGoalCompletedForRole(
+            ownRole.id,
+            g.id,
+            goalSlug: g.goalSlug,
+          ),
+        )
         .toList();
   }
 
