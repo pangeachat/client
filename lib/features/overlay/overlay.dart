@@ -17,9 +17,6 @@ class OverlayUtil {
   static WidgetBoundaries? getBoundingBox(BuildContext context) {
     try {
       final renderBox = context.findRenderObject() as RenderBox?;
-      debugPrint(
-        "RENDERBOX: $renderBox. HAS SIZE: ${renderBox?.hasSize}, CONTEXT: $context",
-      );
       if (renderBox == null || !renderBox.hasSize) return null;
 
       final size = renderBox.size;
@@ -30,16 +27,13 @@ class OverlayUtil {
       final bottom = screenSize.height - (top + size.height);
       final right = screenSize.width - (left + size.width);
 
-      debugPrint("SIZE: $size, OFFSET: $offset");
-
       return WidgetBoundaries(
         left: left,
         right: right,
         top: top,
         bottom: bottom,
       );
-    } catch (e, s) {
-      debugPrint("ERROR GETTING BOUNDING BOX: $e\n$s");
+    } catch (_) {
       return null;
     }
   }
@@ -81,14 +75,22 @@ class OverlayUtil {
                   offset: offset ?? Offset.zero,
                   child: child,
                 ),
-              CenteredOverlayDisplayDetails() => CenteredOverlayWidget(
-                outerContext: context,
-                child: child,
-              ),
-              TopOverlayDisplayDetails() => TopOverlayWidget(
-                outerContext: context,
-                child: child,
-              ),
+              CenteredOverlayDisplayDetails(
+                useParentBoundaries: final useParentBoundaries,
+              ) =>
+                CenteredOverlayWidget(
+                  outerContext: context,
+                  useParentBoundaries: useParentBoundaries,
+                  child: child,
+                ),
+              TopOverlayDisplayDetails(
+                useParentBoundaries: final useParentBoundaries,
+              ) =>
+                TopOverlayWidget(
+                  outerContext: context,
+                  useParentBoundaries: useParentBoundaries,
+                  child: child,
+                ),
             },
           ],
         ),
