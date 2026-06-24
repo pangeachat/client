@@ -123,11 +123,18 @@ class LoginLoadingDialogState extends State<LoginLoadingDialog> {
           crossAxisAlignment: .center,
           children: [
             exception != null
-                ? Text(
-                    exception is MatrixException
-                        ? exception.errorMessage
-                        : exception.toLocalizedString(context),
+                // #Pangea: announce the login error to screen readers when it
+                // replaces the spinner in the still-open dialog (WCAG 4.1.3,
+                // #7203).
+                ? Semantics(
+                    liveRegion: true,
+                    child: Text(
+                      exception is MatrixException
+                          ? exception.errorMessage
+                          : exception.toLocalizedString(context),
+                    ),
                   )
+                // Pangea#
                 : ValueListenableBuilder<InitState?>(
                     valueListenable: _initState,
                     builder: (context, initState, child) =>

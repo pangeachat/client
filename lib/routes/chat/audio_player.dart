@@ -17,6 +17,7 @@ import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/event_extension.dart';
 import 'package:fluffychat/utils/multi_platform_audio_player.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import '../../widgets/matrix.dart';
 
 class AudioPlayerWidget extends StatefulWidget {
@@ -255,9 +256,10 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     } catch (e, s) {
       Logs().v('Could not download audio file', e, s);
       if (!mounted) rethrow;
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
+        SnackBar(content: Text(e.toLocalizedString(context))),
+        assertive: true,
+      );
       rethrow;
     }
     if (!context.mounted) return;

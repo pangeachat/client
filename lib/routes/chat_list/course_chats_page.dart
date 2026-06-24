@@ -31,6 +31,7 @@ import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/public_room_bottom_sheet.dart';
@@ -240,11 +241,12 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     } catch (e, s) {
       Logs().w('Unable to load hierarchy', e, s);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
+        ScaffoldMessenger.of(context).showSnackBarAnnounced(
           SnackBar(
             content: Text(e.toLocalizedString(context)),
             showCloseIcon: true,
           ),
+          assertive: true,
         );
       }
     } finally {
@@ -473,8 +475,9 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     }
 
     if (room.membership == Membership.ban) {
-      ScaffoldMessenger.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).youHaveBeenBannedFromThisChat)),
+        assertive: true,
       );
       return;
     }

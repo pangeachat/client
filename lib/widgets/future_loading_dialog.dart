@@ -210,17 +210,23 @@ class LoadingDialogState<T> extends State<LoadingDialog> {
               const SizedBox(width: 20),
             ],
             Expanded(
-              child: Text(
-                titleLabel,
-                maxLines: 4,
-                // #Pangea
-                // textAlign: exception == null ? TextAlign.left : null,
-                textAlign: exception == null && _successMessage == null
-                    ? TextAlign.left
-                    : null,
-                // Pangea#
-                overflow: TextOverflow.ellipsis,
+              // #Pangea: a live region so the settled result (error or success)
+              // is announced to screen readers; the loading state is already
+              // read when the dialog opens, so the region only flips on once
+              // there is a result (WCAG 4.1.3, #7203).
+              child: Semantics(
+                liveRegion: exception != null || _successMessage != null,
+                child: Text(
+                  titleLabel,
+                  maxLines: 4,
+                  // textAlign: exception == null ? TextAlign.left : null,
+                  textAlign: exception == null && _successMessage == null
+                      ? TextAlign.left
+                      : null,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
+              // Pangea#
             ),
           ],
         ),

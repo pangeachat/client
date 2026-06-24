@@ -28,6 +28,7 @@ import 'package:fluffychat/routes/chat/events/utils/report_message.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_controller.dart';
 import 'package:fluffychat/utils/multi_platform_audio_player.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 enum SelectMode {
@@ -331,7 +332,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       if (!InstructionsEnum.emojiToolbarMode.isToggledOff) {
         InstructionsEnum.emojiToolbarMode.setToggledOff(true);
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        ScaffoldMessenger.of(context).showSnackBar(
+        ScaffoldMessenger.of(context).showSnackBarAnnounced(
           SnackBar(
             content: Text(L10n.of(context).emojiToolbarInstruction),
             showCloseIcon: true,
@@ -352,7 +353,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
     final messenger = ScaffoldMessenger.of(context);
     messenger.hideCurrentSnackBar();
-    messenger.showSnackBar(
+    messenger.showSnackBarAnnounced(
       SnackBar(
         content: RichText(
           textAlign: TextAlign.center,

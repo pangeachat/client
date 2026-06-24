@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 
 class ErrorReporter {
   final BuildContext? context;
@@ -29,7 +30,7 @@ class ErrorReporter {
     try {
       // Attempt to retrieve the L10n instance using the current context
       final L10n l10n = L10n.of(context!);
-      ScaffoldMessenger.of(context!).showSnackBar(
+      ScaffoldMessenger.of(context!).showSnackBarAnnounced(
         SnackBar(
           content: Text(
             l10n.oopsSomethingWentWrong, // Use the non-null L10n instance to get the error message
@@ -38,6 +39,7 @@ class ErrorReporter {
           showCloseIcon: true,
           // Pangea#
         ),
+        assertive: true,
       );
     } catch (err) {
       debugPrint("Failed to show error snackbar.");

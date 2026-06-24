@@ -33,6 +33,7 @@ import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_file_extension.dar
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/uia_request_manager.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../config/setting_keys.dart';
@@ -456,7 +457,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         ScaffoldMessenger.of(
           FluffyChatApp.router.routerDelegate.navigatorKey.currentContext ??
               context,
-        ).showSnackBar(
+        ).showSnackBarAnnounced(
           SnackBar(content: Text(L10n.of(context).oneClientLoggedOut)),
         );
 

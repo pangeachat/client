@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/add_widget_tile_view.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 
 class AddWidgetTile extends StatefulWidget {
   final Room room;
@@ -74,8 +75,9 @@ class AddWidgetTileState extends State<AddWidgetTile> {
       widget.room.addWidget(matrixWidget);
       Navigator.of(context).pop();
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).errorAddingWidget)),
+        assertive: true,
       );
     }
   }

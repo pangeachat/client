@@ -14,6 +14,7 @@ import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../widgets/adaptive_dialogs/user_dialog.dart';
 
@@ -78,10 +79,11 @@ class NewPrivateChatController extends State<NewPrivateChat> {
     if (PlatformInfos.isAndroid) {
       final info = await DeviceInfoPlugin().androidInfo;
       if (info.version.sdkInt < 21) {
-        ScaffoldMessenger.of(context).showSnackBar(
+        ScaffoldMessenger.of(context).showSnackBarAnnounced(
           SnackBar(
             content: Text(L10n.of(context).unsupportedAndroidVersionLong),
           ),
+          assertive: true,
         );
         return;
       }
@@ -98,9 +100,9 @@ class NewPrivateChatController extends State<NewPrivateChat> {
     await Clipboard.setData(
       ClipboardData(text: Matrix.of(context).client.userID!),
     );
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(L10n.of(context).copiedToClipboard)));
+    ScaffoldMessenger.of(context).showSnackBarAnnounced(
+      SnackBar(content: Text(L10n.of(context).copiedToClipboard)),
+    );
   }
 
   void openUserModal(Profile profile) =>

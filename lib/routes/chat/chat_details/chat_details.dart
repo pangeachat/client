@@ -27,6 +27,7 @@ import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/local_notifications_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -146,7 +147,7 @@ class ChatDetailsController extends State<ChatDetails>
       future: () => room.setName(input),
     );
     if (success.error == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).displaynameHasBeenChanged)),
       );
     }
@@ -289,7 +290,7 @@ class ChatDetailsController extends State<ChatDetails>
       future: () => room.updateRoomCapacity(newCapacity),
     );
     if (success.error == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).chatCapacityHasBeenChanged)),
       );
       setState(() {});
