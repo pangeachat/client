@@ -101,6 +101,9 @@ class ProfileBottomSheet extends StatelessWidget {
                   padding: const EdgeInsets.all(12),
                   child: FloatingActionButton.extended(
                     onPressed: () => _startDirectChat(context),
+                    // #Pangea
+                    tooltip: L10n.of(context).newChat,
+                    // Pangea#
                     label: Text(L10n.of(context).newChat),
                     icon: const Icon(Icons.send_outlined),
                   ),

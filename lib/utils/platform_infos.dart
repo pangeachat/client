@@ -101,6 +101,9 @@ abstract class PlatformInfos {
         width: 64,
         height: 64,
         filterQuality: FilterQuality.medium,
+        // #Pangea
+        excludeFromSemantics: true,
+        // Pangea#
       ),
       applicationName: AppSettings.applicationName.value,
     );

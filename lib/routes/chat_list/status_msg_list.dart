@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -201,6 +202,7 @@ class PresenceAvatar extends StatelessWidget {
                                     height: 24,
                                     child: FloatingActionButton.small(
                                       heroTag: null,
+                                      tooltip: L10n.of(context).setStatus,
                                       onPressed: () => onTap(
                                         profile ??
                                             Profile(userId: presence.userid),

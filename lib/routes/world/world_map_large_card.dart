@@ -107,7 +107,7 @@ class WorldMapLargeCard extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _thumbnail(),
+        _thumbnail(context),
         const SizedBox(width: 8),
         Expanded(
           child: Column(
@@ -133,7 +133,7 @@ class WorldMapLargeCard extends StatelessWidget {
     );
   }
 
-  Widget _thumbnail() {
+  Widget _thumbnail(BuildContext context) {
     final url = plan?.imageURL;
     return ClipRRect(
       borderRadius: BorderRadius.circular(8),
@@ -144,6 +144,7 @@ class WorldMapLargeCard extends StatelessWidget {
             ? Image.network(
                 url.toString(),
                 fit: BoxFit.cover,
+                semanticLabel: L10n.of(context).activityPhoto,
                 errorBuilder: (context, _, _) => _thumbPlaceholder(),
               )
             : _thumbPlaceholder(),
