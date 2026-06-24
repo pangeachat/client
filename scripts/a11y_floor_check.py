@@ -88,7 +88,7 @@ def sites(diff_base):
     if diff_base is not None:
         for path, lines in diff_added(diff_base).items():
             try:
-                src = open(path, encoding="utf-8").read().splitlines()
+                src = open(path, encoding="utf-8", errors="ignore").read().splitlines()
             except OSError:
                 continue
             for ln in sorted(lines):
@@ -130,7 +130,10 @@ def main():
     print(
         "Add the affordance above, or (rarely, for a real false positive such as an "
         "image inside an ancestor ExcludeSemantics) put `// a11y-ignore: <reason>` on "
-        "the constructor line.\nContracts: .github/instructions/accessibility.instructions.md"
+        "the constructor line.\n"
+        f"Note: the argument scan stops after {WINDOW} lines, so an affordance further "
+        "down a very long constructor can also need the ignore hatch.\n"
+        "Contracts: .github/instructions/accessibility.instructions.md"
     )
     return 1
 

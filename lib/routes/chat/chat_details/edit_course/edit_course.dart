@@ -227,7 +227,9 @@ class EditCourseController extends State<EditCourse> {
                                                 width: 200.0,
                                                 height: 200.0,
                                                 fit: BoxFit.cover,
-                                                semanticLabel: 'Course image',
+                                                semanticLabel: L10n.of(
+                                                  context,
+                                                ).courseImage,
                                               )
                                             : ImageByUrl(
                                                 imageUrl: _room?.avatar,

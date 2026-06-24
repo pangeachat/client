@@ -27,6 +27,10 @@ class MxcImage extends StatefulWidget {
   final String? cacheKey;
   final Client? client;
   final BorderRadius borderRadius;
+  // #Pangea
+  final String? semanticLabel;
+  final bool excludeFromSemantics;
+  // Pangea#
 
   const MxcImage({
     this.uri,
@@ -44,6 +48,10 @@ class MxcImage extends StatefulWidget {
     this.cacheKey,
     this.client,
     this.borderRadius = BorderRadius.zero,
+    // #Pangea
+    this.semanticLabel,
+    this.excludeFromSemantics = false,
+    // Pangea#
     super.key,
   });
 
@@ -177,7 +185,10 @@ class _MxcImageState extends State<MxcImage> {
                 width: widget.width,
                 height: widget.height,
                 fit: widget.fit,
-                excludeFromSemantics: true,
+                // #Pangea
+                semanticLabel: widget.semanticLabel,
+                excludeFromSemantics: widget.excludeFromSemantics,
+                // Pangea#
                 filterQuality: widget.isThumbnail
                     ? FilterQuality.low
                     : FilterQuality.medium,

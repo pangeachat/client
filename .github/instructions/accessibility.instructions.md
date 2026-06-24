@@ -32,12 +32,17 @@ Beyond axe, two **deterministic** structural checks also gate the build (no pixe
 
 axe only sees the surfaces it renders. A complementary **source check** — [`scripts/a11y_floor_check.py`](../../scripts/a11y_floor_check.py), a job in [`integrate.yaml`](../workflows/integrate.yaml) — scans the whole `lib/` tree and **fails the build** if any interactive control or image is missing an accessible name or an explicit decorative marker. It covers every control in the codebase the moment it is written, not just the ~8 audited surfaces, which is how this class of gap (a button on an un-audited screen) is caught now. It proves a name is *present*, not that it is *good*: the manual passes still validate real screen-reader output. Genuine false positives (for example an image inside an ancestor `ExcludeSemantics`) take `// a11y-ignore: <reason>` on the constructor line — prefer adding the affordance.
 
-## Naming contracts (what the gate enforces)
+## Naming contracts
 
-Author these as you build. The source gate checks the first three; the rest are caught by axe or the manual passes.
+Author these as you build.
+
+**Enforced by the source gate** ([`a11y_floor_check.py`](../../scripts/a11y_floor_check.py)):
 
 - **`IconButton` / `FloatingActionButton`** → `tooltip:` (its accessible name). Reuse an existing `L10n` key where one fits.
 - **`Image.*`** → `semanticLabel:` if it conveys information, or `excludeFromSemantics: true` if decorative (placeholder, blurhash, background, redundant logo).
+
+**Not gated, caught by axe or the manual passes** (apply them anyway):
+
 - **Bare `GestureDetector` / `InkWell` acting as a button** → wrap in `Semantics(label: ..., button: true)`, or use a real button widget.
 - **Decorative or redundant interactive image** → `ExcludeSemantics` / `excludeFromSemantics: true` so it isn't double-announced.
 

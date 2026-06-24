@@ -246,7 +246,7 @@ class _EmojiImportPreviewState extends State<_EmojiImportPreview> {
                   widget.entry.key.content,
                   height: 64,
                   width: 64,
-                  semanticLabel: 'Emote preview: ${widget.entry.key.name}',
+                  semanticLabel: L10n.of(context).emotePreview(widget.entry.key.name),
                   errorBuilder: (context, e, s) {
                     WidgetsBinding.instance.addPostFrameCallback(
                       (_) => _setRenderError(),

@@ -28,12 +28,16 @@ jobs:
   open-review-issue:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v7
+      - uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
         with:
           script: |
             const inputs = context.payload.inputs || {};
-            const kind = inputs.kind
-              || (context.payload.schedule === '0 9 1 1,4,7,10 *' ? 'quarterly' : 'monthly');
+            // Quarter-start months (Jan/Apr/Jul/Oct) get the manual review; other
+            // months get the tool-assisted triage. Derived from the run month so it
+            // survives any cron reformatting; both crons fire on the 1st, so the
+            // month alone is the discriminator.
+            const month = new Date().getUTCMonth() + 1;
+            const kind = inputs.kind || ([1, 4, 7, 10].includes(month) ? 'quarterly' : 'monthly');
             const date = new Date().toISOString().slice(0, 10);
             const { owner, repo } = context.repo;
 

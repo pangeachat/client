@@ -183,7 +183,8 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
                                         ? Image.memory(
                                             avatarBytes,
                                             fit: BoxFit.cover,
-                                            semanticLabel: 'Avatar preview',
+                                            semanticLabel:
+                                                L10n.of(context).avatarPreview,
                                           )
                                         : SizedBox(),
                                   ),

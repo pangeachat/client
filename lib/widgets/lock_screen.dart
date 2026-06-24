@@ -82,7 +82,9 @@ class _LockScreenState extends State<LockScreen> {
                     child: Image.asset(
                       'assets/info-logo.png',
                       width: 256,
+                      // #Pangea
                       excludeFromSemantics: true,
+                      // Pangea#
                     ),
                   ),
                   TextField(
