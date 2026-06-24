@@ -25,6 +25,13 @@ class ActivityPlanModel {
   /// for card/lobby reads that don't pin. See activities.instructions.md.
   final String? versionId;
 
+  /// Pin-resolution outcome at the time this plan was last read, parallel to
+  /// [versionId]. True when the pinned version was evicted and the latest was
+  /// served (scoring fails closed); [fallbackCause] says why it degraded. Drive
+  /// the `version_pin_honored` analytics dimension off `!usedFallbackVersion`.
+  final bool usedFallbackVersion;
+  final String? fallbackCause;
+
   final ActivityPlanRequest req;
   final String title;
   final String description;
@@ -56,6 +63,8 @@ class ActivityPlanModel {
     required this.vocab,
     required this.activityId,
     this.versionId,
+    this.usedFallbackVersion = false,
+    this.fallbackCause,
     Map<String, ActivityRole>? roles,
     String? imageURL,
     this.media = const [],
@@ -80,6 +89,8 @@ class ActivityPlanModel {
         vocab: vocab,
         activityId: activityId,
         versionId: versionId,
+        usedFallbackVersion: usedFallbackVersion,
+        fallbackCause: fallbackCause,
         roles: _roles,
         imageURL: _imageURL,
         media: media,
@@ -195,6 +206,9 @@ class ActivityPlanModel {
       roles: roles,
       activityId: activityId,
       versionId: json[ActivitySessionConstants.versionId] as String?,
+      usedFallbackVersion:
+          json[ActivitySessionConstants.usedFallbackVersion] == true,
+      fallbackCause: json[ActivitySessionConstants.fallbackCause] as String?,
       isDeprecatedModel: json["bookmark_id"] != null,
     );
   }
@@ -203,6 +217,8 @@ class ActivityPlanModel {
     return {
       ActivitySessionConstants.activityId: activityId,
       ActivitySessionConstants.versionId: versionId,
+      ActivitySessionConstants.usedFallbackVersion: usedFallbackVersion,
+      ActivitySessionConstants.fallbackCause: fallbackCause,
       ActivitySessionConstants.activityPlanImageURL: _imageURL,
       ActivitySessionConstants.activityPlanMedia: media
           .map((block) => block.toJson())

@@ -108,6 +108,10 @@ ActivityPlanModel activityPlanFromV2(Map<String, dynamic> doc) {
     // the canonical row's version stamp for direct CMS reads. Either pins the
     // session at launch (activities.instructions.md).
     versionId: (doc['version_id'] ?? doc['updatedAt']) as String?,
+    // Pin-resolution outcome from the fetch (top-level, like version_id).
+    // Absent for direct CMS reads → defaults to "honored".
+    usedFallbackVersion: doc['used_fallback_version'] == true,
+    fallbackCause: doc['fallback_cause'] as String?,
     req: request,
     title: (plan['title'] ?? '') as String,
     description: plan['description'] as String?,
