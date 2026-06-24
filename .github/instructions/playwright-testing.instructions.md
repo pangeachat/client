@@ -25,7 +25,7 @@ Pangea-specific code outside `lib/pangea/` requires `// #Pangea` / `// Pangea#` 
 
 ## Bypassing paid backend calls — `mock=true`
 
-The choreographer supports a per-request `mock` field. When set, the handler runs its full path — auth, CMS, metering, audits, retries — but every paid third-party call (OpenAI, Anthropic, Vertex chat, embeddings, image-gen, Google TTS, Whisper / Google STT, Deepgram) is swapped for a canned, schema-shaped response. This is what makes Playwright runs economically feasible against the real backend.
+The choreographer supports a per-request `mock` field. When set, the handler runs its full path — auth, CMS, metering, audits, retries — but every paid third-party call (OpenAI, Anthropic, embeddings, image-gen, Google TTS, Whisper / Google STT, Deepgram) is swapped for a canned, schema-shaped response. This is what makes Playwright runs economically feasible against the real backend.
 
 Contract (full version at [`pangeachat/.github/instructions/testing.instructions.md` § Mocking paid third-party calls](https://github.com/pangeachat/.github/blob/main/.github/instructions/testing.instructions.md#mocking-paid-third-party-calls)):
 
