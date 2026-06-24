@@ -12,14 +12,12 @@ class _OverlayListEntry {
   final String? key;
   final bool canPop;
   final bool blockOverlay;
-  final bool rootOverlay;
 
   _OverlayListEntry(
     this.entry, {
     this.key,
     this.canPop = true,
     this.blockOverlay = false,
-    this.rootOverlay = false,
   });
 }
 
@@ -69,22 +67,16 @@ class PangeaAnyState {
       return false;
     }
 
-    final rootEntry = _entries.firstWhereOrNull((e) => e.rootOverlay);
-
     _entries.add(
       _OverlayListEntry(
         entry,
         key: overlayKey,
         canPop: canPop,
         blockOverlay: blockOverlay,
-        rootOverlay: rootOverlay,
       ),
     );
 
-    Overlay.of(
-      context,
-      rootOverlay: rootOverlay,
-    ).insert(entry, below: rootEntry?.entry);
+    Overlay.of(context, rootOverlay: rootOverlay).insert(entry);
 
     return true;
   }
