@@ -25,13 +25,6 @@ class SettingsSecurityView extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
-      // #Pangea
-      // appBar: AppBar(
-      //   title: Text(L10n.of(context).security),
-      //   automaticallyImplyLeading: false,
-      //   centerTitle: FluffyThemes.isColumnMode(context),
-      // ),
-      // Pangea#
       body: ListTileTheme(
         iconColor: theme.colorScheme.onSurface,
         child: MaxWidthBody(

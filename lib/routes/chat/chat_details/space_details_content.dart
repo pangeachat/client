@@ -340,10 +340,8 @@ class SpaceDetailsContent extends StatelessWidget {
               : CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // #Pangea
             if (room.joinCode != null)
               SizedBox(width: 16 + (IconTheme.of(context).size ?? 24)),
-            // Pangea#
             Flexible(
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -371,16 +369,8 @@ class SpaceDetailsContent extends StatelessWidget {
                           displayname,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          // #Pangea
-                          // style: TextStyle(
-                          // fontSize: isColumnMode ? 32.0 : 16.0,
-                          // fontWeight: isColumnMode
-                          //     ? FontWeight.normal
-                          //     : FontWeight.bold,
-                          //   ),
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
-                        // Pangea#
                         if (room.coursePlan != null)
                           CourseInfoChips(
                             room.coursePlan!.uuid,

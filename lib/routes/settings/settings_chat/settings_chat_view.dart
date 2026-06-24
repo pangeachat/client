@@ -17,13 +17,6 @@ class SettingsChatView extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
-      // #Pangea
-      // appBar: AppBar(
-      //   title: Text(L10n.of(context).chat),
-      //   automaticallyImplyLeading: false,
-      //   centerTitle: FluffyThemes.isColumnMode(context),
-      // ),
-      // Pangea#
       body: ListTileTheme(
         iconColor: theme.textTheme.bodyLarge!.color,
         child: MaxWidthBody(
