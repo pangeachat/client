@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/features/overlay/overlay.dart';
+import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class GoalStarAnimation extends StatefulWidget {
@@ -31,17 +32,18 @@ class GoalStarAnimation extends StatefulWidget {
   }) {
     OverlayUtil.showOverlay(
       context: context,
-      position: OverlayPositionEnum.centered,
-      closePrevOverlay: false,
-      canPop: false,
-      overlayKey: overlayKey,
       child: GoalStarAnimation(
         overlayKey: overlayKey,
         startTarget: startTarget,
         endTarget: endTarget,
         onClose: onClose,
       ),
-      ignorePointer: true,
+      displayDetails: CenteredOverlayDisplayDetails(
+        ignorePointer: true,
+        closePrevOverlay: false,
+        canPop: false,
+        overlayKey: overlayKey,
+      ),
     );
   }
 }

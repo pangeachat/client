@@ -4,16 +4,17 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/overlay/layer_link_and_key.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
-class OverlayListEntry {
+class _OverlayListEntry {
   final OverlayEntry entry;
   final String? key;
   final bool canPop;
   final bool blockOverlay;
   final bool rootOverlay;
 
-  OverlayListEntry(
+  _OverlayListEntry(
     this.entry, {
     this.key,
     this.canPop = true,
@@ -24,7 +25,7 @@ class OverlayListEntry {
 
 class PangeaAnyState {
   final Map<String, LayerLinkAndKey> _layerLinkAndKeys = {};
-  final List<OverlayListEntry> entries = [];
+  final List<_OverlayListEntry> _entries = [];
 
   LayerLinkAndKey layerLinkAndKey(
     String transformTargetId, [
@@ -53,7 +54,7 @@ class PangeaAnyState {
     bool rootOverlay = false,
     bool bypassBlockingOverlays = false,
   }) {
-    final blockingOverlays = entries.where((e) => e.blockOverlay).toList();
+    final blockingOverlays = _entries.where((e) => e.blockOverlay).toList();
     if (blockingOverlays.isNotEmpty && !bypassBlockingOverlays) {
       Logs().w(
         "Cannot open overlay, another overlay is blocking the view: "
@@ -63,15 +64,15 @@ class PangeaAnyState {
     }
 
     if (overlayKey != null &&
-        entries.any((element) => element.key == overlayKey)) {
+        _entries.any((element) => element.key == overlayKey)) {
       Logs().w("Overlay with key $overlayKey already open");
       return false;
     }
 
-    final rootEntry = entries.firstWhereOrNull((e) => e.rootOverlay);
+    final rootEntry = _entries.firstWhereOrNull((e) => e.rootOverlay);
 
-    entries.add(
-      OverlayListEntry(
+    _entries.add(
+      _OverlayListEntry(
         entry,
         key: overlayKey,
         canPop: canPop,
@@ -79,6 +80,8 @@ class PangeaAnyState {
         rootOverlay: rootOverlay,
       ),
     );
+
+    debugPrint("OPENING OVERLAY. ROOT OVERLAY: $rootOverlay");
 
     Overlay.of(
       context,
@@ -90,8 +93,8 @@ class PangeaAnyState {
 
   void closeOverlay([String? overlayKey]) {
     final entry = overlayKey != null
-        ? entries.firstWhereOrNull((element) => element.key == overlayKey)
-        : entries.lastWhereOrNull((element) => element.canPop);
+        ? _entries.firstWhereOrNull((element) => element.key == overlayKey)
+        : _entries.lastWhereOrNull((element) => element.canPop);
 
     if (entry != null) {
       try {
@@ -100,12 +103,12 @@ class PangeaAnyState {
       } catch (err, s) {
         ErrorHandler.logError(e: err, s: s, data: {"overlay": entry});
       }
-      entries.remove(entry);
+      _entries.remove(entry);
     }
   }
 
   void closeAllOverlays({RegExp? filter, force = false}) {
-    List<OverlayListEntry> shouldRemove = List.from(entries);
+    List<_OverlayListEntry> shouldRemove = List.from(_entries);
     if (!force) {
       shouldRemove = shouldRemove.where((element) => element.canPop).toList();
     }
@@ -126,7 +129,7 @@ class PangeaAnyState {
         ErrorHandler.logError(e: err, s: s, data: {"overlay": shouldRemove[i]});
       }
 
-      entries.remove(shouldRemove[i]);
+      _entries.remove(shouldRemove[i]);
     }
   }
 
@@ -138,7 +141,7 @@ class PangeaAnyState {
   }
 
   bool isOverlayOpen({RegExp? regex, String? overlayKey}) {
-    return entries.any(
+    return _entries.any(
       (element) =>
           element.key != null &&
           (regex?.hasMatch(element.key!) == true || element.key == overlayKey),
@@ -146,40 +149,11 @@ class PangeaAnyState {
   }
 
   List<String> getMatchingOverlayKeys(RegExp regex) {
-    return entries
+    return _entries
         .where((e) => e.key != null)
         .where((element) => regex.hasMatch(element.key!))
         .map((e) => e.key)
         .whereType<String>()
         .toList();
   }
-}
-
-class LayerLinkAndKey {
-  late LabeledGlobalKey key;
-  late LayerLink link;
-  String transformTargetId;
-
-  LayerLinkAndKey(this.transformTargetId) {
-    key = LabeledGlobalKey(transformTargetId);
-    link = LayerLink();
-  }
-
-  Map<String, dynamic> toJson() => {
-    "key": key.toString(),
-    "link": link.toString(),
-    "transformTargetId": transformTargetId,
-  };
-
-  @override
-  operator ==(Object other) =>
-      identical(this, other) ||
-      other is LayerLinkAndKey &&
-          runtimeType == other.runtimeType &&
-          key == other.key &&
-          link == other.link &&
-          transformTargetId == other.transformTargetId;
-
-  @override
-  int get hashCode => key.hashCode ^ link.hashCode ^ transformTargetId.hashCode;
 }

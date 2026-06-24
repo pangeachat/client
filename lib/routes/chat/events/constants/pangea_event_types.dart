@@ -17,6 +17,12 @@ class PangeaEventTypes {
   static const activityRole = "pangea.activity_roles";
   static const activitySummary = "pangea.activity_summary";
 
+  /// Written once by the room admin when they choose "play with bot", marking
+  /// the bot as a deliberate activity participant. Its presence is the bot's gate
+  /// to claim a role; without it the bot stays idle or moderates silently. Admin-
+  /// only and written in one place, so no write-permission risk. See issue #7027.
+  static const botParticipant = "pangea.bot_participant";
+
   static const orchestratorOutput = "pangea.orchestrator_output";
   static const orchestratorAwardedGoals = "pangea.orchestrator_awarded_goals";
 

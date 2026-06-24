@@ -1,7 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/features/overlay/overlay.dart';
+import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/autocorrect_popup.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -33,7 +34,10 @@ class AutocorrectSpan extends WidgetSpan {
                            originalText: originalText,
                            onUndo: onUndo,
                          ),
-                         transformTargetId: transformTargetId,
+                         displayDetails: TransformOverlayDisplayDetails(
+                           overlayKey: "autocorrect_span_$transformTargetId",
+                           transformTargetId: transformTargetId,
+                         ),
                        );
                      },
                  ),

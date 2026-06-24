@@ -210,8 +210,8 @@ class WorkspaceShell extends StatelessWidget {
             if (l.mobileCourseIndex != null) _mobileCourseSheet(l),
             if (l.isMobileActivity) _mobileActivitySheet(l),
             _navRailLayer(l),
-            ..._leftPanelLayers(l),
-            ..._rightPanelLayers(l),
+            ..._leftPanelLayers(context, l),
+            ..._rightPanelLayers(context, l),
             if ((l.mapVisible && l.allocation.clusterVisible) ||
                 l.isMobileCourse ||
                 l.isMobileActivity)
@@ -299,7 +299,7 @@ class WorkspaceShell extends StatelessWidget {
   /// Keyed by token so opening/closing a sibling panel doesn't shift indices and
   /// remount this one; a `room` panel additionally carries a roomId GlobalKey so
   /// its ChatController repositions rather than remounts when the slot moves.
-  List<Widget> _leftPanelLayers(_ShellLayout l) => [
+  List<Widget> _leftPanelLayers(BuildContext context, _ShellLayout l) => [
     for (var i = 0; i < l.leftTokens.length; i++)
       // Skip a narrow course card — it renders in the bottom sheet above, not as
       // a full-screen left panel (no double-render).
@@ -307,7 +307,12 @@ class WorkspaceShell extends StatelessWidget {
           l.allocation.left[i].vis != PanelVis.hidden)
         Positioned(
           key: ValueKey(l.leftTokens[i].encode()),
-          top: 0,
+          // Respect the top safe-area inset so the panel's close/back control
+          // isn't cut off under the system top bar (#7143). PanelCard's own 12px
+          // top margin equals the cluster's chromeMargin, so this aligns the
+          // panel content with the safe-area-respecting top-right cluster. No-op
+          // where there is no top inset (desktop/web).
+          top: MediaQuery.viewPaddingOf(context).top,
           bottom: 0,
           left: l.allocation.left[i].left,
           width: l.allocation.left[i].width,
@@ -324,7 +329,7 @@ class WorkspaceShell extends StatelessWidget {
   /// slot. The slots tile and never overlap by construction; a folded slot is
   /// `hidden` (not drawn), its content one back-step away on the higher-priority
   /// sibling that stayed.
-  List<Widget> _rightPanelLayers(_ShellLayout l) => [
+  List<Widget> _rightPanelLayers(BuildContext context, _ShellLayout l) => [
     for (var i = 0; i < l.rightTokens.length; i++)
       if (l.allocation.right[i].vis != PanelVis.hidden)
         Positioned(
@@ -333,7 +338,9 @@ class WorkspaceShell extends StatelessWidget {
           // position — otherwise its stateful content (analytics, a detail) would
           // remount and re-fetch.
           key: ValueKey(l.rightTokens[i].encode()),
-          top: 0,
+          // Respect the top safe-area inset so the close/back control clears the
+          // system top bar (#7143); aligns with the cluster (see _leftPanelLayers).
+          top: MediaQuery.viewPaddingOf(context).top,
           bottom: 0,
           left: l.allocation.right[i].left,
           width: l.allocation.right[i].width,

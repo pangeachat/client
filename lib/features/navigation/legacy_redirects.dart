@@ -18,15 +18,16 @@ abstract class LegacyRedirects {
     // world_v2: the profile + settings tree is a right-column panel, not a
     // route. Rewrite any /settings or /profile location to the canonical
     // `settings` token so deep links, bookmarks, and the retired route-driven
-    // render all land on the panel. The token param is the sub-page (a
-    // profile/* path keeps its `profile/` prefix so `/profile/edit` is
-    // distinguishable). See `routing.instructions.md`.
+    // render all land on the panel. The token param is the sub-page. The
+    // profile editor collapses to the single-segment `profile` page: a legacy
+    // `/profile/edit` link opens the same editor, so it must not become a
+    // nested `profile/edit` leaf whose back arrow pops to an identical-looking
+    // `profile` page first, needing two clicks (#7147). See
+    // `routing.instructions.md`.
     if (segments.isNotEmpty &&
         (segments.first == 'settings' || segments.first == 'profile')) {
       final sub = segments.first == 'profile'
-          ? (segments.length > 1
-                ? 'profile/${segments.sublist(1).join('/')}'
-                : '')
+          ? (segments.length > 1 ? 'profile' : '')
           : segments.sublist(1).join('/');
       // world_v2 master/detail: the menu is the `settings` master; a sub-page
       // opens beside it as a `settingspage` detail (front of the right group,

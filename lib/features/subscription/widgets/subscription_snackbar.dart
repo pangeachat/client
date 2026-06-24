@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 
 void showSubscribedSnackbar(BuildContext context) {
   final Widget text = RichText(
@@ -33,5 +34,5 @@ void showSubscribedSnackbar(BuildContext context) {
       ],
     ),
   );
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: text));
+  ScaffoldMessenger.of(context).showSnackBarAnnounced(SnackBar(content: text));
 }

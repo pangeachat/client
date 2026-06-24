@@ -95,6 +95,14 @@ class PanelDef {
   /// panel (same pattern to follow). See `routing.instructions.md`.
   final bool mapContent;
 
+  /// When this panel opens as a DETAIL, its same-column master always folds
+  /// behind it so the two read as ONE window — the detail with a back that
+  /// reveals the master — regardless of width, instead of coexisting side by
+  /// side when there's room. Set on the settings page so it behaves like the
+  /// narrow layout everywhere (#7145). Distinct from width-driven folding, which
+  /// only kicks in under width pressure; this folds the master unconditionally.
+  final bool foldsParentAlways;
+
   const PanelDef({
     required this.column,
     required this.minWidth,
@@ -107,6 +115,7 @@ class PanelDef {
     this.siblingGroups = const {},
     this.pushable = false,
     this.mapContent = false,
+    this.foldsParentAlways = false,
   });
 
   /// The comfort floor the fold trigger uses: an explicit [reasonableMinWidth],
@@ -237,10 +246,17 @@ abstract class PanelRegistry {
       parent: 'settings',
       minWidth: 360,
       reasonableMinWidth: 440,
-      idealWidth: 600,
+      // Match the `settings` menu width: a page replaces the folded menu in the
+      // same slot (foldsParentAlways), so an unequal ideal made the panel resize
+      // and the close/back icon jump when drilling in or out (#7146).
+      idealWidth: 520,
       priority: 55,
       siblingGroups: {'settingsdetail'},
       pushable: true,
+      // The settings menu + page are ONE window: the menu always folds behind
+      // the page (a back reveals it), like narrow, instead of opening a second
+      // side panel when there's room (#7145).
+      foldsParentAlways: true,
     ),
     // The analytics summary — a right-column root master. Its details are a
     // `vocab`/`grammar` construct detail and (cross-column) a `session` review.

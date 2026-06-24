@@ -17,7 +17,11 @@ import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/event_extension.dart';
 import 'package:fluffychat/utils/multi_platform_audio_player.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import '../../widgets/matrix.dart';
+
+// #Pangea
+// Pangea#
 
 class AudioPlayerWidget extends StatefulWidget {
   final Color color;
@@ -255,9 +259,12 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     } catch (e, s) {
       Logs().v('Could not download audio file', e, s);
       if (!mounted) rethrow;
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
+      // #Pangea
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
+        SnackBar(content: Text(e.toLocalizedString(context))),
+        assertive: true,
+      );
+      // Pangea#
       rethrow;
     }
     if (!context.mounted) return;

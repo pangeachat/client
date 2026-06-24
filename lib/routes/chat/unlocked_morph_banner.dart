@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
+import 'package:fluffychat/features/overlay/overlay.dart';
+import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
@@ -46,18 +47,20 @@ class UnlockedMorphBannerState extends State<UnlockedMorphBanner> {
     final feature = MorphFeaturesEnum.fromString(widget.construct.category);
     final tag = widget.construct.lemma;
     OverlayUtil.showOverlay(
-      overlayKey: "${widget.construct.string}_points",
-      followerAnchor: Alignment.topCenter,
-      targetAnchor: Alignment.topCenter,
       context: context,
       child: IconRain(
         addStars: true,
         icon: MorphIcon(size: const Size(8, 8), feature: feature, tag: tag),
       ),
-      transformTargetId: "${widget.construct.string}_notification",
-      closePrevOverlay: false,
-      backDropToDismiss: false,
-      ignorePointer: true,
+      displayDetails: TransformOverlayDisplayDetails(
+        overlayKey: "${widget.construct.string}_points",
+        followerAnchor: Alignment.topCenter,
+        targetAnchor: Alignment.topCenter,
+        transformTargetId: "${widget.construct.string}_notification",
+        closePrevOverlay: false,
+        backDropToDismiss: false,
+        ignorePointer: true,
+      ),
     );
   }
 

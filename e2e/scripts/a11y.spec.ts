@@ -126,6 +126,29 @@ test.describe("Accessibility (axe-core)", () => {
       const violations = await auditPage(page);
       expect(violations, formatViolations(violations)).toHaveLength(0);
     });
+
+    // Settings sub-pages that render without learning data (account-independent).
+    // The data-rich surfaces (analytics, practice, courses, chat rooms) need a
+    // seeded QA account and are tracked as a coverage gap, not audited vacuously.
+    test("settings learning page has no a11y violations", async ({ page }) => {
+      await gotoSurface(
+        page,
+        "/#/?right=settingspage:learning,settings",
+        page.getByRole("button", { name: intl.iWantToLearn }).first(),
+      );
+      const violations = await auditPage(page);
+      expect(violations, formatViolations(violations)).toHaveLength(0);
+    });
+
+    test("settings security page has no a11y violations", async ({ page }) => {
+      await gotoSurface(
+        page,
+        "/#/?right=settingspage:security,settings",
+        page.getByRole("textbox", { name: intl.yourPublicKey }).first(),
+      );
+      const violations = await auditPage(page);
+      expect(violations, formatViolations(violations)).toHaveLength(0);
+    });
   });
 });
 

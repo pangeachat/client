@@ -40,6 +40,10 @@ import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/overlay/layer_link_and_key.dart';
+import 'package:fluffychat/features/overlay/overlay.dart';
+import 'package:fluffychat/features/overlay/overlay_display_details.dart';
+import 'package:fluffychat/features/overlay/transparent_backdrop.dart';
 import 'package:fluffychat/features/subscription/widgets/paywall_card.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
@@ -48,11 +52,8 @@ import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
-import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
-import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_controller.dart';
@@ -113,6 +114,7 @@ import 'package:fluffychat/utils/show_scaffold_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
@@ -120,6 +122,9 @@ import 'package:fluffychat/widgets/star_rain_widget.dart';
 import '../../utils/localized_exception_extension.dart';
 import 'send_file_dialog.dart';
 import 'send_location_dialog.dart';
+
+// #Pangea
+// Pangea#
 
 // #Pangea
 class _TimelineUpdateNotifier extends ChangeNotifier {
@@ -461,7 +466,8 @@ class ChatController extends State<ChatPageWithRoom>
     if (shareItems == null || shareItems.isEmpty) return;
     if (!room.otherPartyCanReceiveMessages) {
       final theme = Theme.of(context);
-      ScaffoldMessenger.of(context).showSnackBar(
+      // #Pangea
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(
           backgroundColor: theme.colorScheme.errorContainer,
           closeIconColor: theme.colorScheme.onErrorContainer,
@@ -471,7 +477,9 @@ class ChatController extends State<ChatPageWithRoom>
           ),
           showCloseIcon: true,
         ),
+        assertive: true,
       );
+      // Pangea#
       return;
     }
     for (final item in shareItems) {
@@ -591,7 +599,6 @@ class ChatController extends State<ChatPageWithRoom>
     final overlayKey = "level_up_notification";
     _bannerController.addBanner((Completer<void> completer) {
       final success = OverlayUtil.showOverlay(
-        overlayKey: overlayKey,
         context: context,
         child: LevelUpBanner(
           level: update.newLevel,
@@ -599,11 +606,12 @@ class ChatController extends State<ChatPageWithRoom>
           closeCompleter: completer,
           overlayKey: overlayKey,
         ),
-        transformTargetId: '',
-        position: OverlayPositionEnum.top,
-        backDropToDismiss: false,
-        closePrevOverlay: false,
-        canPop: false,
+        displayDetails: TopOverlayDisplayDetails(
+          overlayKey: overlayKey,
+          backDropToDismiss: false,
+          closePrevOverlay: false,
+          canPop: false,
+        ),
       );
 
       if (!success) {
@@ -623,18 +631,18 @@ class ChatController extends State<ChatPageWithRoom>
       final overlayKey = "${construct.string}_snackbar";
       _bannerController.addBanner((Completer<void> completer) {
         final success = OverlayUtil.showOverlay(
-          overlayKey: overlayKey,
           context: context,
           child: UnlockedMorphBanner(
             construct: construct,
             closeCompleter: completer,
             overlayKey: overlayKey,
           ),
-          transformTargetId: "",
-          position: OverlayPositionEnum.top,
-          backDropToDismiss: false,
-          closePrevOverlay: false,
-          canPop: false,
+          displayDetails: TopOverlayDisplayDetails(
+            overlayKey: overlayKey,
+            backDropToDismiss: false,
+            closePrevOverlay: false,
+            canPop: false,
+          ),
         );
 
         if (!success) {
@@ -812,6 +820,12 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _activityConfettiListener() {
     if (activityController.confettiNotifier.value) {
+      final renderBox = context.findRenderObject();
+      if (renderBox != null) {
+        final box = renderBox as RenderBox;
+        final offset = box.localToGlobal(Offset.zero);
+        Logs().w("Chat context size: ${box.size}. Offset: $offset");
+      }
       StarRainWidget.show(context, "star-rain-${widget.room.id}");
     }
   }
@@ -942,7 +956,14 @@ class ChatController extends State<ChatPageWithRoom>
     // so the visible plan never flickers.
     final activitySessionId = room.activityId;
     if (activitySessionId != null) {
-      ActivityPlanRepo.instance.ensure(activitySessionId, revalidate: true);
+      // Revalidate pinned to the session's version: this refreshes the
+      // re-translation of the pinned version (goal text / role names) without
+      // pulling newer canonical content into a live pinned session.
+      ActivityPlanRepo.instance.ensure(
+        activitySessionId,
+        version: room.pinnedActivityVersionId,
+        revalidate: true,
+      );
     }
 
     _goalCompletionSubscription?.cancel();
@@ -1721,9 +1742,12 @@ class ChatController extends State<ChatPageWithRoom>
             data: {'roomId': roomId, 'file': file.name},
           );
           // Pangea#
-          scaffoldMessenger.showSnackBar(
+          // #Pangea
+          scaffoldMessenger.showSnackBarAnnounced(
             SnackBar(content: Text((e as Object).toLocalizedString(context))),
+            assertive: true,
           );
+          // Pangea#
           return null;
         });
     // #Pangea
@@ -1856,9 +1880,11 @@ class ChatController extends State<ChatPageWithRoom>
     // });
     clearSelectedEvents();
     // Pangea#
-    ScaffoldMessenger.of(context).showSnackBar(
+    // #Pangea
+    ScaffoldMessenger.of(context).showSnackBarAnnounced(
       SnackBar(content: Text(L10n.of(context).contentHasBeenReported)),
     );
+    // Pangea#
   }
 
   void deleteErrorEventsAction() async {
@@ -2632,9 +2658,11 @@ class ChatController extends State<ChatPageWithRoom>
           animateBackground: true,
           backgroundAnimationDuration: delay,
         ),
-        position: OverlayPositionEnum.centered,
-        overlayKey: "button_message_backdrop",
-        bypassBlockingOverlays: bypassBlockingOverlays,
+        displayDetails: CenteredOverlayDisplayDetails(
+          overlayKey: "button_message_backdrop",
+          bypassBlockingOverlays: bypassBlockingOverlays,
+          useParentBoundaries: false,
+        ),
       );
 
       await Future.delayed(delay);
@@ -2647,23 +2675,27 @@ class ChatController extends State<ChatPageWithRoom>
       OverlayUtil.showOverlay(
         context: context,
         child: overlayEntry,
-        position: OverlayPositionEnum.centered,
-        onDismiss: clearSelectedEvents,
-        blurBackground: true,
-        backgroundColor: Colors.black,
-        overlayKey: "message_toolbar_overlay",
-        bypassBlockingOverlays: bypassBlockingOverlays,
+        displayDetails: CenteredOverlayDisplayDetails(
+          onDismiss: clearSelectedEvents,
+          blurBackground: true,
+          backgroundColor: Colors.black,
+          overlayKey: "message_toolbar_overlay",
+          bypassBlockingOverlays: bypassBlockingOverlays,
+          useParentBoundaries: false,
+        ),
       );
     } else {
       OverlayUtil.showOverlay(
         context: context,
         child: overlayEntry,
-        position: OverlayPositionEnum.centered,
-        onDismiss: clearSelectedEvents,
-        blurBackground: true,
-        backgroundColor: Colors.black,
-        overlayKey: "message_toolbar_overlay",
-        bypassBlockingOverlays: bypassBlockingOverlays,
+        displayDetails: CenteredOverlayDisplayDetails(
+          onDismiss: clearSelectedEvents,
+          blurBackground: true,
+          backgroundColor: Colors.black,
+          overlayKey: "message_toolbar_overlay",
+          bypassBlockingOverlays: bypassBlockingOverlays,
+          useParentBoundaries: false,
+        ),
       );
     }
 
@@ -2788,16 +2820,18 @@ class ChatController extends State<ChatPageWithRoom>
       _spanCardOverlayController.open(
         context,
         openOverlay: (overlayKey) => OverlayUtil.showPositionedCard(
-          overlayKey: overlayKey,
           context: context,
           cardToShow: SpanCard(controller: _spanCardOverlayController),
-          maxHeight: 325,
-          maxWidth: 325,
-          transformTargetId: ChoreoConstants.inputTransformTargetKey,
-          ignorePointer: true,
-          isScrollable: false,
-          targetAnchor: Alignment.topCenter,
-          followerAnchor: Alignment.bottomCenter,
+          displayDetails: PositionedOverlayDisplayDetails(
+            overlayKey: overlayKey,
+            maxHeight: 325,
+            maxWidth: 325,
+            transformTargetId: ChoreoConstants.inputTransformTargetKey,
+            ignorePointer: true,
+            isScrollable: false,
+            targetAnchor: Alignment.topCenter,
+            followerAnchor: Alignment.bottomCenter,
+          ),
         ),
       );
     }
@@ -2813,17 +2847,19 @@ class ChatController extends State<ChatPageWithRoom>
     _spanCardOverlayController.open(
       context,
       openOverlay: (overlayKey) => OverlayUtil.showOverlay(
-        overlayKey: overlayKey,
         context: context,
         child: SuggestionCard(
           overlayKey: overlayKey,
           controller: choreographer.orchestratorController,
           popupManager: _spanCardOverlayController,
         ),
-        transformTargetId: ChoreoConstants.inputTransformTargetKey,
-        ignorePointer: true,
-        targetAnchor: Alignment.topCenter,
-        followerAnchor: Alignment.bottomCenter,
+        displayDetails: TransformOverlayDisplayDetails(
+          overlayKey: overlayKey,
+          transformTargetId: ChoreoConstants.inputTransformTargetKey,
+          ignorePointer: true,
+          targetAnchor: Alignment.topCenter,
+          followerAnchor: Alignment.bottomCenter,
+        ),
       ),
     );
   }
@@ -2851,13 +2887,16 @@ class ChatController extends State<ChatPageWithRoom>
 
     if (assistanceState == AssistanceStateEnum.error) {
       final error = choreographer.errorService.error!;
-      ScaffoldMessenger.of(context).showSnackBar(
+      // #Pangea
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(
           duration: const Duration(seconds: 5),
           showCloseIcon: true,
           content: Text(error.toLocalizedString(context)),
         ),
+        assertive: true,
       );
+      // Pangea#
       choreographer.errorService.clear();
       return;
     }
@@ -2941,7 +2980,7 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     LanguageMismatchRepo.setRoom(roomId);
-    OverlayUtil.showLanguageMismatchPopup(
+    LanguageMismatchPopup.show(
       context: context,
       targetId: ChoreoConstants.inputTransformTargetKey,
       message: L10n.of(context).languageMismatchDesc,
@@ -2981,7 +3020,8 @@ class ChatController extends State<ChatPageWithRoom>
     if (resp.isError) return;
     if (mounted) {
       messenger.hideCurrentSnackBar();
-      messenger.showSnackBar(
+      // #Pangea
+      messenger.showSnackBarAnnounced(
         SnackBar(
           content: Text(
             L10n.of(context).languageUpdated,
@@ -2989,6 +3029,7 @@ class ChatController extends State<ChatPageWithRoom>
           ),
         ),
       );
+      // Pangea#
     }
   }
 
@@ -3003,10 +3044,12 @@ class ChatController extends State<ChatPageWithRoom>
       cardToShow: const DisableLanguageToolsPopup(
         overlayId: 'disable_language_tools_popup',
       ),
-      maxHeight: 325,
-      maxWidth: 325,
-      transformTargetId: ChoreoConstants.inputTransformTargetKey,
-      overlayKey: 'disable_language_tools_popup',
+      displayDetails: PositionedOverlayDisplayDetails(
+        maxHeight: 325,
+        maxWidth: 325,
+        transformTargetId: ChoreoConstants.inputTransformTargetKey,
+        overlayKey: 'disable_language_tools_popup',
+      ),
     );
   }
 
@@ -3029,9 +3072,6 @@ class ChatController extends State<ChatPageWithRoom>
     );
 
     OverlayUtil.showOverlay(
-      overlayKey: "msg_analytics_feedback_$eventId",
-      followerAnchor: Alignment.bottomRight,
-      targetAnchor: Alignment.topRight,
       context: context,
       child: MessageAnalyticsFeedback(
         newGrammarConstructs: newGrammarConstructs,
@@ -3040,9 +3080,14 @@ class ChatController extends State<ChatPageWithRoom>
           "msg_analytics_feedback_$eventId",
         ),
       ),
-      transformTargetId: eventId,
-      ignorePointer: true,
-      closePrevOverlay: false,
+      displayDetails: TransformOverlayDisplayDetails(
+        overlayKey: "msg_analytics_feedback_$eventId",
+        transformTargetId: eventId,
+        ignorePointer: true,
+        closePrevOverlay: false,
+        followerAnchor: Alignment.bottomRight,
+        targetAnchor: Alignment.topRight,
+      ),
     );
   }
 

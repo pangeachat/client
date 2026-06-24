@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
@@ -14,6 +18,29 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_
 import 'package:fluffychat/routes/chat/activity_sessions/activity_summary_widget.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+/// The location that closes a non-embedded activity plan opened as a room/
+/// session token (the chat list / a left panel): it drops ONLY that token, so
+/// the rest of the workspace — notably the chat list — survives. Closing an
+/// activity (e.g. one stuck on an "activity not found" error) must not also
+/// clear the chat list (#7156). Returns null when no such token is open — the
+/// standalone `/<activityId>` route — so the caller pops or falls back to home.
+@visibleForTesting
+String? activityRoomCloseLocation(Uri uri, String? roomId) {
+  if (roomId == null || roomId.isEmpty) return null;
+  final localpart = shortRoomId(roomId);
+  bool matches(PanelToken t) =>
+      (t.type == 'room' || t.type == 'session') &&
+      (t.param ?? '').split('/').first == localpart;
+  final panels = parseOpenPanels(uri);
+  for (final t in panels.left) {
+    if (matches(t)) return WorkspaceNav.closeLeft(uri, t);
+  }
+  for (final t in panels.right) {
+    if (matches(t)) return WorkspaceNav.closeRight(uri, t);
+  }
+  return null;
+}
 
 class ActivitySessionStartView extends StatelessWidget {
   final ActivitySessionStartState controller;
@@ -112,15 +139,27 @@ class ActivitySessionStartView extends StatelessWidget {
                           context,
                         ).go(overlayDropped(reopenCard: false)),
                       )
-                    // Standalone `/<activityId>` route: this page is the
-                    // bottom of the stack; popping would leave an empty
-                    // navigator, so fall back to the home map.
+                    // Opened as a room/session token (the chat list / a left
+                    // panel): drop ONLY that token so the rest of the workspace
+                    // — notably the chat list — survives (#7156). The standalone
+                    // `/<activityId>` route has no such token: it is the bottom
+                    // of the stack, so pop, or fall back to the home map.
                     : IconButton(
                         tooltip: L10n.of(context).close,
                         icon: const Icon(Icons.close),
-                        onPressed: () => Navigator.of(context).canPop()
-                            ? Navigator.of(context).pop()
-                            : GoRouter.of(context).go(PRoutes.world),
+                        onPressed: () {
+                          final close = activityRoomCloseLocation(
+                            uri,
+                            controller.widget.roomId,
+                          );
+                          if (close != null) {
+                            GoRouter.of(context).go(close);
+                          } else if (Navigator.of(context).canPop()) {
+                            Navigator.of(context).pop();
+                          } else {
+                            GoRouter.of(context).go(PRoutes.world);
+                          }
+                        },
                       ),
                 // Pangea#
               ),

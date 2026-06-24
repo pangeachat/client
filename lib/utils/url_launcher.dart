@@ -10,10 +10,14 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/public_room_bottom_sheet.dart';
 import 'platform_infos.dart';
+
+// #Pangea
+// Pangea#
 
 class UrlLauncher {
   /// The url to open.
@@ -37,9 +41,12 @@ class UrlLauncher {
     final uri = Uri.tryParse(url!);
     if (uri == null) {
       // we can't open this thing
-      ScaffoldMessenger.of(context).showSnackBar(
+      // #Pangea
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).cantOpenUri(url!))),
+        assertive: true,
       );
+      // Pangea#
       return;
     }
 
@@ -91,9 +98,12 @@ class UrlLauncher {
       return;
     }
     if (uri.host.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
+      // #Pangea
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).cantOpenUri(url!))),
+        assertive: true,
       );
+      // Pangea#
       return;
     }
     // okay, we have either an http or an https URI.

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/bot/utils/bot_style.dart';
+import 'package:fluffychat/features/overlay/overlay.dart';
+import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PointsGainedAnimation extends StatefulWidget {
@@ -17,6 +19,23 @@ class PointsGainedAnimation extends StatefulWidget {
     required this.targetID,
     this.invert = false,
   });
+
+  static void show(String targetId, int points, BuildContext context) {
+    OverlayUtil.showOverlay(
+      context: context,
+      child: PointsGainedAnimation(points: points, targetID: targetId),
+      displayDetails: TransformOverlayDisplayDetails(
+        overlayKey: "${targetId}_points",
+        followerAnchor: Alignment.bottomCenter,
+        targetAnchor: Alignment.bottomCenter,
+        transformTargetId: targetId,
+        closePrevOverlay: false,
+        backDropToDismiss: false,
+        ignorePointer: true,
+        canPop: false,
+      ),
+    );
+  }
 
   @override
   PointsGainedAnimationState createState() => PointsGainedAnimationState();

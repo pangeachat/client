@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
-import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
@@ -19,7 +16,6 @@ import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/routes/chat/toolbar/word_card/word_zoom_widget.dart';
-import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -94,12 +90,9 @@ class VocabDetailsView extends StatelessWidget {
                       MatrixState.pangeaController.userController.userL2Code!,
                   construct: constructId,
                   pos: constructId.category,
-                  onClose: () => NavigationUtil.popOrGo(
-                    context,
-                    WorkspaceNav.setRight(GoRouterState.of(context).uri, const [
-                      PanelToken('analytics', 'vocab'),
-                    ]),
-                  ),
+                  // No own close button: the panel header already supplies the
+                  // single page X. Passing onClose here drew a redundant second
+                  // X inside the word card (#7169).
                   onFlagTokenInfo:
                       (
                         LemmaInfoResponse lemmaInfo,

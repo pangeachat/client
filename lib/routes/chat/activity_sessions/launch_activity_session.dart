@@ -8,6 +8,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -126,6 +127,32 @@ extension LaunchActivitySession on Client {
         level: e is TimeoutException ? SentryLevel.warning : SentryLevel.error,
       );
       if (e is! TimeoutException) rethrow;
+    }
+
+    // Auto-invite the bot so it is present in every session from the start, but
+    // it stays idle (no role, no messages) until the room admin chooses "play
+    // with bot", which writes pangea.bot_participant. That marker is the bot's
+    // gate to claim a role. On the "invite a friend" path no marker is written,
+    // so the seat stays open for the friend and the bot is a silent moderator
+    // once they join (#2595, #7027). Best-effort: must not fail session creation.
+    try {
+      final botRoom = getRoomById(roomID);
+      if (botRoom == null) {
+        ErrorHandler.logError(
+          m: 'Auto-invite skipped: activity room not found after sync',
+          data: {'roomId': roomID},
+          level: SentryLevel.warning,
+        );
+      } else {
+        await botRoom.invite(BotName.byEnvironment);
+      }
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'roomId': roomID},
+        level: SentryLevel.warning,
+      );
     }
 
     return roomID;

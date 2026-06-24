@@ -6,6 +6,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class RoomCapacityButton extends StatefulWidget {
@@ -85,7 +86,7 @@ class RoomCapacityButtonState extends State<RoomCapacityButton> {
       future: () => widget.room.updateRoomCapacity(newCapacity),
     );
     if (success.error == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).chatCapacityHasBeenChanged)),
       );
       setState(() {});

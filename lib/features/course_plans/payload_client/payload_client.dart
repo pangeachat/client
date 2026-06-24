@@ -10,7 +10,21 @@ class PayloadClient {
   final String accessToken;
   final String basePath = "/cms/api";
 
-  PayloadClient({required this.baseUrl, required this.accessToken});
+  /// Optional injected HTTP client (tests pass a MockClient to drive timeouts).
+  /// Null in production so reads use the package's top-level helper — a
+  /// PayloadClient is created per call, so there is no client to leak.
+  final http.Client? _httpClient;
+
+  /// How long a read may take before it is treated as a stalled connection and
+  /// throws. Overridable so a test can assert the bound without a real wait.
+  final Duration readTimeout;
+
+  PayloadClient({
+    required this.baseUrl,
+    required this.accessToken,
+    http.Client? httpClient,
+    this.readTimeout = const Duration(seconds: 30),
+  }) : _httpClient = httpClient;
 
   Map<String, String> get _headers {
     final headers = {
@@ -24,7 +38,15 @@ class PayloadClient {
   /// Generic GET request
   Future<http.Response> _get(String endpoint) async {
     final url = Uri.parse('$baseUrl$endpoint');
-    final response = await http.get(url, headers: _headers);
+    // Bound the read: a stalled connection (opened but never completing) must
+    // throw instead of hanging the caller forever. Un-timed CMS reads here left
+    // activity/course resolvers spinning with no error and no activity (#7085,
+    // #7159, #7080); on timeout the caller's existing error handling takes over.
+    final client = _httpClient;
+    final request = client == null
+        ? http.get(url, headers: _headers)
+        : client.get(url, headers: _headers);
+    final response = await request.timeout(readTimeout);
     return response;
   }
 
