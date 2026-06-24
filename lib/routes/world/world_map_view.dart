@@ -258,8 +258,8 @@ class WorldMapView extends StatelessWidget {
         // ±90 band is only ~1024px tall at z2 — that would freeze *all*
         // panning on windows taller than ~1024px (common when maximized).
         // z3 gives a ~2048px band, clearing any realistic viewport.
-        minZoom: 3,
-        maxZoom: 18,
+        minZoom: WorldMapController.minZoom,
+        maxZoom: WorldMapController.maxZoom,
         // Clamp latitude only — leaving longitude free so the user can pan
         // east-west and the world wraps seamlessly ("rotate the world
         // around"). Epsg3857 replicates longitude, so tiles and markers
@@ -419,6 +419,16 @@ class _MapZoomControls extends StatelessWidget {
 
   const _MapZoomControls({required this.controller});
 
+  /// The live camera zoom, or null before the map is laid out (reading the
+  /// camera throws until then) — null leaves both step buttons enabled.
+  double? _currentZoom() {
+    try {
+      return controller.mapController.camera.zoom;
+    } catch (_) {
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
@@ -427,26 +437,39 @@ class _MapZoomControls extends StatelessWidget {
       elevation: 2.0,
       color: theme.colorScheme.surface,
       borderRadius: BorderRadius.circular(8.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IconButton(
-            icon: const Icon(Icons.public),
-            tooltip: l10n.world,
-            onPressed: controller.resetToWorld,
-          ),
-          Divider(height: 1.0, color: theme.colorScheme.outlineVariant),
-          IconButton(
-            icon: const Icon(Icons.add),
-            tooltip: l10n.zoomIn,
-            onPressed: () => controller.zoomBy(1),
-          ),
-          IconButton(
-            icon: const Icon(Icons.remove),
-            tooltip: l10n.zoomOut,
-            onPressed: () => controller.zoomBy(-1),
-          ),
-        ],
+      // Re-evaluate the +/- enabled state as the camera zooms (pinch, scroll,
+      // or the glide) so each button greys out at its limit (#7171). Scoped to
+      // this small stack via the map event stream rather than a full-view
+      // rebuild; the World reset stays enabled (it re-centers, not just zooms).
+      child: StreamBuilder(
+        stream: controller.mapController.mapEventStream,
+        builder: (context, _) {
+          final zoom = _currentZoom();
+          final canZoomIn = zoom == null || WorldMapController.canZoomIn(zoom);
+          final canZoomOut =
+              zoom == null || WorldMapController.canZoomOut(zoom);
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton(
+                icon: const Icon(Icons.public),
+                tooltip: l10n.world,
+                onPressed: controller.resetToWorld,
+              ),
+              Divider(height: 1.0, color: theme.colorScheme.outlineVariant),
+              IconButton(
+                icon: const Icon(Icons.add),
+                tooltip: l10n.zoomIn,
+                onPressed: canZoomIn ? () => controller.zoomBy(1) : null,
+              ),
+              IconButton(
+                icon: const Icon(Icons.remove),
+                tooltip: l10n.zoomOut,
+                onPressed: canZoomOut ? () => controller.zoomBy(-1) : null,
+              ),
+            ],
+          );
+        },
       ),
     );
   }
