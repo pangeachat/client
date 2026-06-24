@@ -31,4 +31,18 @@ extension OrchestratorClientExtension on Client {
     }
     return completed;
   }
+
+  int get totalStarsEarned {
+    final byActivity = <String, int>{};
+    for (final room in rooms) {
+      final activityId = room.activityId;
+      final roleId = room.ownRoleState?.id;
+      if (activityId == null || roleId == null) continue;
+      final earned = room.orchestratorAwardedGoals.awards[roleId]?.length ?? 0;
+      if (earned > (byActivity[activityId] ?? 0)) {
+        byActivity[activityId] = earned;
+      }
+    }
+    return byActivity.values.fold<int>(0, (a, b) => a + b);
+  }
 }
