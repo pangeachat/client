@@ -21,6 +21,7 @@ import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
 import 'package:fluffychat/routes/world/settings_panel.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 /// Renders one right-column panel token as a rounded card floating over the map.
 /// The header carries the close (a summary/review) or back (a detail blooming
@@ -136,12 +137,21 @@ class WorkspaceRightPanel extends StatelessWidget {
         // confirms before abandoning an in-progress session (unsaved progress);
         // the confirm is skipped once the session completes/errors (the widget
         // flips `bypassExitConfirmation`). See routing.instructions.md.
+        final constructType = token.param == ConstructTypeEnum.morph.string
+            ? ConstructTypeEnum.morph
+            : ConstructTypeEnum.vocab;
+
         return card(
           l10n.practice,
-          AnalyticsPractice(
-            type: token.param == ConstructTypeEnum.morph.string
-                ? ConstructTypeEnum.morph
-                : ConstructTypeEnum.vocab,
+          Navigator(
+            key: MatrixState.pAnyState
+                .layerLinkAndKey(
+                  "${constructType.name}_analytics_practice_page",
+                )
+                .key,
+            onGenerateRoute: (_) => MaterialPageRoute(
+              builder: (_) => AnalyticsPractice(type: constructType),
+            ),
           ),
           onLeadingOverride: () async {
             if (!AnalyticsPractice.bypassExitConfirmation) {
