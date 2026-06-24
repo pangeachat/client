@@ -194,6 +194,10 @@ class _Avatar extends StatelessWidget {
           button: true,
           label: label,
           excludeSemantics: true,
+          // Expose the tap on the announced node so screen-reader users can
+          // activate it (e.g. open Settings); GestureDetector alone leaves the
+          // button unactivatable via assistive tech. See issue #7185.
+          onTap: onTap,
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: onTap,
@@ -475,6 +479,8 @@ class _LevelMedal extends StatelessWidget {
             button: true,
             label: label,
             excludeSemantics: true,
+            // Expose the tap on the announced node for assistive tech (#7185).
+            onTap: onTap,
             child: SizedBox(
               width: 38,
               height: 44,
@@ -560,6 +566,8 @@ class _LanguageFlag extends StatelessWidget {
           button: true,
           label: '${language.getDisplayName(l10n)}, ${l10n.learningSettings}',
           excludeSemantics: true,
+          // Expose the tap on the announced node for assistive tech (#7185).
+          onTap: onTap,
           // Opaque so the whole chip is tappable — not just the painted glyphs
           // / flag pixels (a transparent-interior box defers the hit test).
           child: GestureDetector(
