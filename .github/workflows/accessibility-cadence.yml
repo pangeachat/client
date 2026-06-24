@@ -1,0 +1,100 @@
+name: Accessibility review cadence
+
+# Opens the recurring accessibility review issues so the cadence described in the
+# ACR's "Accessibility assurance process" actually happens, instead of depending
+# on someone remembering. Monthly = tool-assisted triage of what CI cannot gate;
+# quarterly = a human assistive-technology pass. Results fold back into the ACR
+# via the security repo's update-vpat watcher.
+#
+# To avoid two issues in the same month, the monthly cron skips the four
+# quarter-start months, which the quarterly cron covers.
+
+on:
+  schedule:
+    - cron: "0 9 1 2,3,5,6,8,9,11,12 *" # monthly (non-quarter months), 1st @ 09:00 UTC
+    - cron: "0 9 1 1,4,7,10 *" # quarterly, 1st of Jan/Apr/Jul/Oct @ 09:00 UTC
+  workflow_dispatch:
+    inputs:
+      kind:
+        description: Which review issue to open
+        type: choice
+        options: [monthly, quarterly]
+        default: monthly
+
+permissions:
+  issues: write
+
+jobs:
+  open-review-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        with:
+          script: |
+            const inputs = context.payload.inputs || {};
+            // Quarter-start months (Jan/Apr/Jul/Oct) get the manual review; other
+            // months get the tool-assisted triage. Derived from the run month so it
+            // survives any cron reformatting; both crons fire on the 1st, so the
+            // month alone is the discriminator.
+            const month = new Date().getUTCMonth() + 1;
+            const kind = inputs.kind || ([1, 4, 7, 10].includes(month) ? 'quarterly' : 'monthly');
+            const date = new Date().toISOString().slice(0, 10);
+            const { owner, repo } = context.repo;
+
+            const titles = {
+              monthly: `Accessibility: monthly tool-assisted triage (${date})`,
+              quarterly: `Accessibility: quarterly manual AT review (${date})`,
+            };
+            const bodies = {
+              monthly: [
+                'Monthly tool-assisted accessibility triage. Covers what the CI gates cannot:',
+                '',
+                '- [ ] Contrast over imagery (text and controls layered on photos or gradients)',
+                '- [ ] Focus order and focus visibility across primary journeys',
+                '- [ ] Motion and animation (nothing essential conveyed by motion alone)',
+                '- [ ] Screen-reader-proxy navigation of the semantics tree',
+                '',
+                'How: run the `agents-supplement-axe` triage (security repo `update-vpat` skill),',
+                'seeded by the latest CI contrast candidates (`test-results/contrast-candidates.json`).',
+                'Record findings here. Confirmed issues become client a11y fixes; the summary folds',
+                'into the ACR via the update-vpat watcher.',
+                '',
+                '_Part of the standing accessibility assurance process (see the ACR). Opened automatically._',
+              ].join('\n'),
+              quarterly: [
+                'Quarterly manual assistive-technology accessibility review. A human pass with real AT:',
+                '',
+                '- [ ] Screen reader (VoiceOver and/or NVDA) across landing, login, world map, chat list, a chat room, settings, profile, analytics',
+                '- [ ] Keyboard-only operation end to end (reach, activate, no traps, visible focus)',
+                '- [ ] Contrast and 200% zoom / reflow pass',
+                '- [ ] Mobile web',
+                '',
+                'Record results per surface (what works, what does not). Confirmed issues become client',
+                'a11y fixes; the ratings update the ACR (WCAG 2.1 AA) via the update-vpat watcher.',
+                '',
+                '_Part of the standing accessibility assurance process (see the ACR). Opened automatically; assigned to the QA team._',
+              ].join('\n'),
+            };
+            // QA team for the manual pass. Editable; assignment is non-fatal if a
+            // handle is wrong or lacks access (the issue still opens).
+            const assignees = { monthly: [], quarterly: ['tigtoggle', 'kelrap'] };
+
+            // Ensure the label exists (non-fatal).
+            try {
+              await github.rest.issues.getLabel({ owner, repo, name: 'accessibility' });
+            } catch {
+              try {
+                await github.rest.issues.createLabel({ owner, repo, name: 'accessibility', color: '0e8a16', description: 'Accessibility' });
+              } catch (e) { core.warning(`label create failed (non-fatal): ${e.message}`); }
+            }
+
+            const issue = await github.rest.issues.create({
+              owner, repo, title: titles[kind], body: bodies[kind], labels: ['accessibility'],
+            });
+            core.info(`Opened #${issue.data.number}: ${issue.data.html_url}`);
+
+            if (assignees[kind].length) {
+              try {
+                await github.rest.issues.addAssignees({ owner, repo, issue_number: issue.data.number, assignees: assignees[kind] });
+              } catch (e) { core.warning(`assignee add failed (non-fatal): ${e.message}`); }
+            }

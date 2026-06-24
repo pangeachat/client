@@ -318,11 +318,18 @@ class WorkspaceLeftPanel extends StatelessWidget {
     }
     // The chat: thread the jump-to-message `?event=` (rides the URL) and any
     // shared items (ride the navigation `extra`) the retired route used to read.
-    return ChatPage(
-      roomId: roomId,
-      eventId: currentUri.queryParameters['event'],
-      shareItems: shareItems,
-      backButton: back,
+    return Navigator(
+      key: MatrixState.pAnyState
+          .layerLinkAndKey("chat_page_with_room_$roomId")
+          .key,
+      onGenerateRoute: (_) => MaterialPageRoute(
+        builder: (_) => ChatPage(
+          roomId: roomId,
+          eventId: currentUri.queryParameters['event'],
+          shareItems: shareItems,
+          backButton: back,
+        ),
+      ),
     );
   }
 

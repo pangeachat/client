@@ -1,33 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/features/overlay/overlay.dart';
-import 'package:fluffychat/features/overlay/widget_boundaries_model.dart';
-
 class CenteredOverlayWidget extends StatelessWidget {
   final Widget child;
-  final BuildContext outerContext;
-  final bool useParentBoundaries;
 
-  const CenteredOverlayWidget({
-    super.key,
-    required this.child,
-    required this.outerContext,
-    required this.useParentBoundaries,
-  });
+  const CenteredOverlayWidget({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
-    WidgetBoundaries boundingBox = WidgetBoundaries.defaultBoundaries;
-    if (useParentBoundaries) {
-      boundingBox = OverlayUtil.getBoundingBox(outerContext) ?? boundingBox;
-    }
-
-    return Positioned(
-      top: boundingBox.top,
-      right: boundingBox.right,
-      left: boundingBox.left,
-      bottom: boundingBox.bottom,
-      child: child,
-    );
+    return Positioned(top: 0, right: 0, left: 0, bottom: 0, child: child);
   }
 }

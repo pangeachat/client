@@ -144,6 +144,7 @@ class ChatEmojiPicker extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: FloatingActionButton(
                       onPressed: controller.hideEmojiPicker,
+                      tooltip: L10n.of(context).close,
                       shape: const CircleBorder(),
                       mini: true,
                       child: const Icon(Icons.close),
