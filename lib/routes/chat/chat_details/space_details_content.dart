@@ -329,19 +329,29 @@ class SpaceDetailsContent extends StatelessWidget {
         // matching the right column's leading close affordance. Dropping it
         // would leave the course card with no way to close. See
         // routing.instructions.md.
-        if (controller.widget.embeddedCloseButton != null)
-          Align(
-            alignment: AlignmentDirectional.centerStart,
-            child: controller.widget.embeddedCloseButton,
-          ),
         Row(
-          crossAxisAlignment: isColumnMode
-              ? CrossAxisAlignment.start
-              : CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: .center,
           children: [
+            if (controller.widget.embeddedCloseButton != null)
+              controller.widget.embeddedCloseButton!,
+            SizedBox(),
             if (room.joinCode != null)
-              SizedBox(width: 16 + (IconTheme.of(context).size ?? 24)),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ShareRoomButton(
+                  room: room,
+                  tooltip: L10n.of(context).shareCourse,
+                  child: const Icon(Icons.share_outlined),
+                ),
+              ),
+          ],
+        ),
+        SizedBox(height: 8),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
             Flexible(
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -383,15 +393,6 @@ class SpaceDetailsContent extends StatelessWidget {
                 ],
               ),
             ),
-            if (room.joinCode != null)
-              Padding(
-                padding: const EdgeInsets.only(left: 16.0),
-                child: ShareRoomButton(
-                  room: room,
-                  tooltip: L10n.of(context).shareCourse,
-                  child: const Icon(Icons.share_outlined),
-                ),
-              ),
           ],
         ),
         SizedBox(height: isColumnMode ? 24.0 : 12.0),
