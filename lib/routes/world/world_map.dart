@@ -90,6 +90,18 @@ class WorldMapController extends State<WorldMap>
     with SingleTickerProviderStateMixin {
   final MapController _ownController = MapController();
 
+  /// The camera zoom range — the single source for FlutterMap's MapOptions, the
+  /// +/- step clamp in [zoomBy], the World reset in [resetToWorld], and the
+  /// on-map control disabled states (#7171). minZoom 3 is the whole world.
+  static const double minZoom = 3.0;
+  static const double maxZoom = 18.0;
+
+  /// Whether a zoom-in / zoom-out step would still change the camera, i.e. the
+  /// on-map + / - button should be enabled. At a limit the matching button is
+  /// disabled so it can't no-op (#7171).
+  static bool canZoomIn(double zoom) => zoom < maxZoom;
+  static bool canZoomOut(double zoom) => zoom > minZoom;
+
   /// The activity pins currently shown — the active context's set (the whole
   /// world, or a selected quest's activities). Thin: id, title, point.
   List<QuestActivityCard> _pins = [];
@@ -678,7 +690,7 @@ class WorldMapController extends State<WorldMap>
   /// and search only ever zoom the camera IN, so this is the one explicit
   /// "zoom out to everything" affordance (#7086). Camera-only: the course scope
   /// and open panels are untouched.
-  void resetToWorld() => _animateCameraTo(const LatLng(20, 0), 3.0);
+  void resetToWorld() => _animateCameraTo(const LatLng(20, 0), minZoom);
 
   /// Step the zoom by [delta] levels around the current center, clamped to the
   /// map's range — backs the on-map +/- buttons, since a tap/search only ever
@@ -691,7 +703,7 @@ class WorldMapController extends State<WorldMap>
         : mapController.camera.zoom;
     _animateCameraTo(
       mapController.camera.center,
-      (base + delta).clamp(3.0, 18.0).roundToDouble(),
+      (base + delta).clamp(minZoom, maxZoom).roundToDouble(),
     );
   }
 
