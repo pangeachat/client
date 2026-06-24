@@ -437,6 +437,7 @@ class ChatView extends StatelessWidget {
                                 : Image.network(
                                     controller.room.activityPlan!.imageURL
                                         .toString(),
+                                    excludeFromSemantics: true,
                                     fit: BoxFit.cover,
                                     height: MediaQuery.sizeOf(context).height,
                                     width: MediaQuery.sizeOf(context).width,

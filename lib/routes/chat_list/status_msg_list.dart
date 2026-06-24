@@ -201,6 +201,7 @@ class PresenceAvatar extends StatelessWidget {
                                     height: 24,
                                     child: FloatingActionButton.small(
                                       heroTag: null,
+                                      tooltip: 'Set status',
                                       onPressed: () => onTap(
                                         profile ??
                                             Profile(userId: presence.userid),

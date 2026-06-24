@@ -177,6 +177,7 @@ class _MxcImageState extends State<MxcImage> {
                 width: widget.width,
                 height: widget.height,
                 fit: widget.fit,
+                excludeFromSemantics: true,
                 filterQuality: widget.isThumbnail
                     ? FilterQuality.low
                     : FilterQuality.medium,

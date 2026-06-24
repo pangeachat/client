@@ -144,6 +144,7 @@ class WorldMapLargeCard extends StatelessWidget {
             ? Image.network(
                 url.toString(),
                 fit: BoxFit.cover,
+                semanticLabel: 'Activity photo',
                 errorBuilder: (context, _, _) => _thumbPlaceholder(),
               )
             : _thumbPlaceholder(),

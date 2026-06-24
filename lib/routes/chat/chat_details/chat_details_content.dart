@@ -65,6 +65,7 @@ class ChatDetailsContent extends StatelessWidget {
                             child: FloatingActionButton.small(
                               onPressed: controller.setAvatarAction,
                               heroTag: null,
+                              tooltip: L10n.of(context).editRoomAvatar,
                               child: const Icon(Icons.camera_alt_outlined),
                             ),
                           ),

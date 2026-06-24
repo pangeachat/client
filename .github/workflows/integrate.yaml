@@ -37,7 +37,18 @@ jobs:
         run: ./scripts/configure-firebase-messaging.sh
       - run: flutter analyze
       - run: flutter test --dart-define=TEST_MATRIX_USERNAME=${{ vars.TEST_MATRIX_USERNAME }} --dart-define=TEST_MATRIX_PASSWORD=${{ vars.TEST_MATRIX_PASSWORD }}
-      
+
+
+  # Source-level accessibility gate: every interactive control and image in lib/
+  # must carry an accessible name (tooltip / semanticLabel) or be explicitly
+  # marked decorative (excludeFromSemantics). Catches naming gaps anywhere in the
+  # codebase, not only on the surfaces axe-core renders. Pure Python, no Flutter.
+  accessibility_floor_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - name: Accessible names floor-check
+        run: python3 scripts/a11y_floor_check.py
 
   build_debug_apk:
     environment: staging

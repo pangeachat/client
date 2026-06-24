@@ -227,6 +227,7 @@ class EditCourseController extends State<EditCourse> {
                                                 width: 200.0,
                                                 height: 200.0,
                                                 fit: BoxFit.cover,
+                                                semanticLabel: 'Course image',
                                               )
                                             : ImageByUrl(
                                                 imageUrl: _room?.avatar,
@@ -248,6 +249,9 @@ class EditCourseController extends State<EditCourse> {
                                         right: 0,
                                         child: FloatingActionButton.small(
                                           onPressed: _setAvatarAction,
+                                          tooltip: L10n.of(
+                                            context,
+                                          ).editRoomAvatar,
                                           child: const Icon(
                                             Icons.camera_alt_outlined,
                                           ),

@@ -278,6 +278,7 @@ class SendFileDialogState extends State<SendFileDialog> {
                                     }
                                     return Image.memory(
                                       bytes,
+                                      semanticLabel: L10n.of(context).image,
                                       height: 256,
                                       width: widget.files.length == 1
                                           ? 256 - 36

@@ -101,6 +101,7 @@ abstract class PlatformInfos {
         width: 64,
         height: 64,
         filterQuality: FilterQuality.medium,
+        excludeFromSemantics: true,
       ),
       applicationName: AppSettings.applicationName.value,
     );

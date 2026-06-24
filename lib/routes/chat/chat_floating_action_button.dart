@@ -22,6 +22,7 @@ class ChatFloatingActionButton extends StatelessWidget {
             controller.scrollController.position.pixels > 0) {
           return FloatingActionButton(
             onPressed: controller.scrollDown,
+            tooltip: 'Scroll to bottom',
             heroTag: null,
             mini: true,
             child: const Icon(Icons.arrow_downward_outlined),

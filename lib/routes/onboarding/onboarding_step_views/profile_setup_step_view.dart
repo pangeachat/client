@@ -183,6 +183,7 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
                                         ? Image.memory(
                                             avatarBytes,
                                             fit: BoxFit.cover,
+                                            semanticLabel: 'Avatar preview',
                                           )
                                         : SizedBox(),
                                   ),
@@ -191,6 +192,7 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
                                   right: 0,
                                   bottom: 0,
                                   child: IconButton.filled(
+                                    tooltip: L10n.of(context).changeYourAvatar,
                                     icon: Icon(Icons.file_upload_outlined),
                                     onPressed: _uploadAvatarImage,
                                     style: IconButton.styleFrom(

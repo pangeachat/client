@@ -67,6 +67,7 @@ class _BlurHashState extends State<BlurHash> {
           fit: widget.fit,
           width: widget.width,
           height: widget.height,
+          excludeFromSemantics: true,
         );
       },
     );
