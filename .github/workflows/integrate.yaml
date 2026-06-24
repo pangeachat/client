@@ -9,7 +9,6 @@ permissions:
 
 jobs:
   code_tests:
-    environment: staging
     runs-on: ubuntu-latest
     environment: staging
     steps:
