@@ -197,10 +197,25 @@ String? activeSpaceIdFor(Uri uri) {
   return null;
 }
 
-/// The active chat/course room id, if the route addresses one.
+/// The open room id from the world_v2 panel tokens (a `room:` token in the
+/// `left=` / `right=` lists), or null. This is the chat the list highlights as
+/// active (#7208).
+String? activeRoomIdFromPanels(Uri uri) {
+  final panels = parseOpenPanels(uri);
+  for (final token in [...panels.left, ...panels.right]) {
+    if (token.type == 'room' && token.param != null) {
+      return fullRoomId(token.param!);
+    }
+  }
+  return null;
+}
+
+/// The active chat/course room id, if the route addresses one — the legacy
+/// `/rooms/:roomid` path param, or the world_v2 open `room:` panel token.
 String? activeRoomIdFor(GoRouterState state) {
   final roomId = state.pathParameters['roomid'];
-  return roomId == null ? null : fullRoomId(roomId);
+  if (roomId != null) return fullRoomId(roomId);
+  return activeRoomIdFromPanels(state.uri);
 }
 
 /// The activity an open route addresses: the in-course overlay (`?activity=`)
