@@ -2,29 +2,25 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 
-/// The displayed colour-state of a world-map activity pin, resolved highest-wins
-/// from the ladder `locked < unlocked < joinable` (enum order; see
-/// world-map.instructions.md). Completion is no longer a state — it renders as a
-/// progress fill carried by [PinSignals.completionFraction], orthogonal to the
-/// colour, so finished work stays visible without hiding the next thing to do.
+/// The displayed colour-state of a world-map activity pin. There is no locked
+/// state: progression only ranks, never gates (#7186). Completion is not a
+/// state either — it renders as a progress fill carried by
+/// [PinSignals.completionFraction], orthogonal to the colour. See
+/// world-map.instructions.md.
 enum ActivityPinState {
-  locked,
   unlocked,
   joinable;
 
-  /// The colour a pin reads as for its [ActivityPinState] (see
-  /// world-map.instructions.md): locked gray, unlocked purple, joinable green.
-  /// Completion is not a colour — it renders as the inner gold fill in [_stateDot].
+  /// unlocked = purple (available), joinable = green (an open session to join).
   Color get color {
     switch (this) {
       case ActivityPinState.joinable:
-        return const Color(0xFF34A853); // green — an open session to join
+        return const Color(0xFF34A853);
       case ActivityPinState.unlocked:
-        return const Color(0xFF7B61FF); // purple — available, not started
-      case ActivityPinState.locked:
-        return Colors.grey;
+        return const Color(0xFF7B61FF);
     }
   }
 
@@ -32,15 +28,13 @@ enum ActivityPinState {
     switch (this) {
       case ActivityPinState.joinable:
         return AppConfig.green;
-      case ActivityPinState.locked:
-        return AppConfig.gray;
       case ActivityPinState.unlocked:
         return AppConfig.purple;
     }
   }
 }
 
-/// The visual weight a pin renders at, assigned by the ranking + state gate.
+/// The visual weight a pin renders at, filled from the top of the score.
 enum PinTier {
   small,
   mid,
@@ -59,11 +53,11 @@ enum PinTier {
   };
 }
 
-/// Live signals for one activity, derived from Matrix room state (not on the
-/// pin card): its resolved [state], a 0..1 [completionFraction] (stars earned
-/// toward the activity's total, drawn as the inner fill), whether an open
-/// session has been [pinged] to the course, and a 0..1 [recency] (newest open
-/// session first).
+/// Live signals for one activity, derived from Matrix room state: its colour
+/// [state], a 0..1 [completionFraction] (stars earned toward the activity's
+/// total, drawn as the inner fill; a full row demotes via the score but never
+/// hides the pin), whether an open session has been [pinged], and a 0..1
+/// [recency] (newest open session first).
 class PinSignals {
   final ActivityPinState state;
   final double completionFraction;
@@ -77,79 +71,70 @@ class PinSignals {
   });
 }
 
-/// The ranking outcome for the pins currently in view. [largePool] is the
-/// ordered set of activities eligible for the large featured card — open
-/// joinable sessions and in-course unlocked activities (joinable featured
-/// first). The display shows up to its budget at a time and rotates through the
-/// rest, and any pool member not currently featured renders at mid weight.
-/// [midIds] are the other unlocked activities promoted to mid weight; everything
-/// else is small.
+/// The ranking outcome for the pins currently in view: the [largeIds] featured
+/// at large weight (top of the score, capped at the large budget) and [midIds]
+/// at mid weight; everything else is small. No rotation — a static top-N.
 class RankingResult {
-  final List<String> largePool;
+  final List<String> largeIds;
   final Set<String> midIds;
-  const RankingResult({required this.largePool, required this.midIds});
+  const RankingResult({required this.largeIds, required this.midIds});
 }
 
-/// The relevance band for a pin (the dominant, well-separated term in the
-/// score): joined-course objective `3` > level-appropriate L2 objective `2` >
-/// in-L2 `1` > global `0`. See the Priority matrix in world-map.instructions.md.
-int relevanceBand(
+/// The relevance band (0..2) for a pin: the next-Mission gradient when the pin
+/// sits in one of the learner's in-scope quests, else a plain L2/level-fit floor
+/// kept below the in-quest gradient (foreign 0, in-L2 level-appropriate
+/// objective-bearing 1.0, other in-L2 0.5). See world-map.instructions.md.
+double relevanceBand(
   QuestActivityCard pin, {
   required String? userL2,
   required LanguageLevelTypeEnum? userCefr,
-  required Set<String> joinedObjectiveIds,
+  required ProgressionResolution progression,
 }) {
-  // A joined-course objective wins outright (these are in the user's L2 anyway).
-  if (joinedObjectiveIds.isNotEmpty &&
-      pin.learningObjectiveRefs.any(joinedObjectiveIds.contains)) {
-    return 3;
-  }
-  // Not in my L2 → global. (When the user has no L2 set, nothing is "foreign".)
+  final gradient = progression.missionGradient(pin.learningObjectiveRefs);
+  if (gradient > 0) return gradient;
   final isGlobal = userL2 != null && pin.l2.isNotEmpty && pin.l2 != userL2;
   if (isGlobal) return 0;
-  // In my L2: level-appropriate + objective-bearing earns band 2, else band 1.
   final levelOk = _cefrAtOrBelow(pin.cefr, userCefr);
-  if (levelOk && pin.learningObjectiveRefs.isNotEmpty) return 2;
-  return 1;
+  if (levelOk && pin.learningObjectiveRefs.isNotEmpty) return 1.0;
+  return 0.5;
 }
 
 bool _cefrAtOrBelow(String? cefr, LanguageLevelTypeEnum? userCefr) {
-  if (userCefr == null) return true; // no CEFR set → no narrowing
-  if (cefr == null || cefr.isEmpty) {
-    return true; // unknown level → don't exclude
-  }
+  if (userCefr == null) return true;
+  if (cefr == null || cefr.isEmpty) return true;
   return LanguageLevelTypeEnum.fromString(cefr).storageInt <=
       userCefr.storageInt;
 }
 
-/// score = relevance_band + 0.6·pinged + 0.3·recency. The boosts sum to at most
-/// 0.9 (< one band step), so they only reorder within a band.
-double pinScore(int band, PinSignals s) =>
-    band + 0.6 * (s.pinged ? 1 : 0) + 0.3 * s.recency.clamp(0.0, 1.0);
+/// score = 3*joinable + relevance_band + 0.6*pinged + 0.3*recency - 0.5*finished.
+/// Joinable is the heaviest term (joining a live session is the map's goal); a
+/// finished activity (full star row) demotes but stays visible.
+double pinScore({required double band, required PinSignals s}) =>
+    3 * (s.state == ActivityPinState.joinable ? 1 : 0) +
+    band +
+    0.6 * (s.pinged ? 1 : 0) +
+    0.3 * s.recency.clamp(0.0, 1.0) -
+    0.5 * (s.completionFraction >= 1.0 ? 1 : 0);
 
 class _Scored {
   final QuestActivityCard pin;
   final double score;
-  final ActivityPinState state;
-  final double fraction;
-  final int band;
-  const _Scored(this.pin, this.score, this.state, this.fraction, this.band);
+  const _Scored(this.pin, this.score);
 }
 
-/// Rank the pins currently in view into the large pool and the mid set (the
-/// caller filters to the active viewport and re-runs this on pan/zoom, so the
-/// budgets are per-view). State + relevance gate prominence: joinable sessions
-/// and in-course unlocked activities (joined-course objective, not finished)
-/// reach the large pool, joinable first; locked pins and finished activities
-/// (full progress fill) are forced small (never promoted); the remaining
-/// unlocked pins compete for the mid budget by score, with a per-objective
-/// diversity cap so one objective can't monopolize the featured set.
+/// Rank the in-view pins into a static large set (top by score, up to
+/// [largeBudget]) and a mid set (next, up to [midBudget]), with a per-objective
+/// diversity cap across both so one objective can't monopolise the featured set.
+/// Every pin competes — no state/lock gate; a finished pin is demoted by its
+/// score, not excluded. The caller filters to the active viewport and re-runs on
+/// pan/zoom, so the budgets are per-view.
 RankingResult rankPins({
   required List<QuestActivityCard> inViewPins,
   required String? userL2,
   required LanguageLevelTypeEnum? userCefr,
-  required Set<String> joinedObjectiveIds,
+  required ProgressionResolution progression,
   required Map<String, PinSignals> signals,
+  int largeBudget = 3,
   int midBudget = 10,
   int maxPerDiversityKey = 2,
 }) {
@@ -160,51 +145,26 @@ RankingResult rankPins({
       p,
       userL2: userL2,
       userCefr: userCefr,
-      joinedObjectiveIds: joinedObjectiveIds,
+      progression: progression,
     );
-    final s = sig(p.activityId);
-    return _Scored(p, pinScore(band, s), s.state, s.completionFraction, band);
+    return _Scored(p, pinScore(band: band, s: sig(p.activityId)));
   }).toList()..sort((a, b) => b.score.compareTo(a.score));
 
-  // The large pool: open joinable sessions and in-course unlocked activities
-  // (joined-course objective `band 3`, not yet finished). Joinable is featured
-  // first — joining a live session is the goal; within each, higher score wins.
-  final largePool =
-      scored.where((e) {
-        if (e.state == ActivityPinState.joinable) return true;
-        return e.state == ActivityPinState.unlocked &&
-            e.band >= 3 &&
-            e.fraction < 1.0;
-      }).toList()..sort((a, b) {
-        final aJoin = a.state == ActivityPinState.joinable ? 0 : 1;
-        final bJoin = b.state == ActivityPinState.joinable ? 0 : 1;
-        if (aJoin != bJoin) return aJoin - bJoin;
-        return b.score.compareTo(a.score);
-      });
-  final largeIds = largePool.map((e) => e.pin.activityId).toList();
-  final largeSet = largeIds.toSet();
-
+  final largeIds = <String>[];
   final midIds = <String>{};
   final perKey = <String, int>{};
   for (final e in scored) {
-    if (midIds.length >= midBudget) break;
-    // Only not-yet-finished unlocked pins compete for mid: joinable lives in
-    // largePool; locked pins and finished activities are forced small.
-    if (e.state != ActivityPinState.unlocked) continue;
-    if (e.fraction >= 1.0) continue;
-    // A large-pool member (in-course unlocked) not currently featured already
-    // renders mid via the pool, so it doesn't also consume the mid budget.
-    if (largeSet.contains(e.pin.activityId)) continue;
-    final key = e.pin.learningObjectiveRefs.isNotEmpty
-        ? e.pin.learningObjectiveRefs.first
-        : null;
-    if (key != null) {
-      final count = perKey[key] ?? 0;
-      if (count >= maxPerDiversityKey) continue;
-      perKey[key] = count + 1;
+    if (largeIds.length >= largeBudget && midIds.length >= midBudget) break;
+    final refs = e.pin.learningObjectiveRefs;
+    final key = refs.isNotEmpty ? refs.first : null;
+    if (key != null && (perKey[key] ?? 0) >= maxPerDiversityKey) continue;
+    if (largeIds.length < largeBudget) {
+      largeIds.add(e.pin.activityId);
+    } else {
+      midIds.add(e.pin.activityId);
     }
-    midIds.add(e.pin.activityId);
+    if (key != null) perKey[key] = (perKey[key] ?? 0) + 1;
   }
 
-  return RankingResult(largePool: largeIds, midIds: midIds);
+  return RankingResult(largeIds: largeIds, midIds: midIds);
 }
