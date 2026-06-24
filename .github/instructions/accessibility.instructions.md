@@ -38,7 +38,7 @@ Author these as you build.
 
 **Enforced by the source gate** ([`a11y_floor_check.py`](../../scripts/a11y_floor_check.py)):
 
-- **`IconButton` / `FloatingActionButton`** → `tooltip:` (its accessible name). Reuse an existing `L10n` key where one fits.
+- **`IconButton` / `FloatingActionButton`** → `tooltip:` (its accessible name). Reuse an existing `L10n` key where one fits. Exception: a `FloatingActionButton.extended` already has a visible `label:` that is its name, so do **not** add a tooltip there — it double-reads. (The floor-check accepts `tooltip:` *or* `label:`.)
 - **`Image.*`** → `semanticLabel:` if it conveys information, or `excludeFromSemantics: true` if decorative (placeholder, blurhash, background, redundant logo).
 
 **Not gated, caught by axe or the manual passes** (apply them anyway):

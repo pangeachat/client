@@ -328,7 +328,6 @@ class _PracticeButton extends StatelessWidget {
     final analyticsService = Matrix.of(context).analyticsDataService;
     if (analyticsService.isInitializing) {
       return FloatingActionButton.extended(
-        tooltip: L10n.of(context).practice,
         onPressed: () =>
             _showSnackbar(context, L10n.of(context).loadingPleaseWait),
         label: Text(view.practiceButtonText(context)),
@@ -343,7 +342,6 @@ class _PracticeButton extends StatelessWidget {
     final enabled = count >= 10;
 
     return FloatingActionButton.extended(
-      tooltip: L10n.of(context).practice,
       onPressed: enabled
           // world_v2: practice opens as a right-column `practice:<type>` panel
           // that takes over the analytics surface (it is not a route). See
