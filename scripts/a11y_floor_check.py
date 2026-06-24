@@ -31,8 +31,12 @@ CHECKS = [
         # FloatingActionButton(, .small(, .extended(, etc. NOT `.styleFrom(`
         # (a ButtonStyle builder, not a widget).
         re.compile(r"\b(IconButton|FloatingActionButton)(\.(?!styleFrom)\w+)?\("),
-        ["tooltip:"],
-        "IconButton/FloatingActionButton needs a `tooltip:` (its accessible name).",
+        # `tooltip:` names an icon-only button. A `FloatingActionButton.extended`
+        # carries a visible `label:` which is already its accessible name, so a
+        # tooltip there is redundant (and double-reads); accept either.
+        ["tooltip:", "label:"],
+        "IconButton/FloatingActionButton needs a `tooltip:` (its accessible name), "
+        "or a visible `label:` for an extended FAB.",
     ),
     (
         re.compile(r"\bImage\.(network|asset|file|memory)\("),
