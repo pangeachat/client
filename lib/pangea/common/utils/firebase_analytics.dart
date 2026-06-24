@@ -8,6 +8,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:fluffychat/features/bot/bot_target_event_name_enum.dart';
 import 'package:fluffychat/features/subscription/models/subscription_details.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_buttons.dart';
 import '../../../config/firebase_options.dart';
@@ -31,6 +32,20 @@ class GoogleAnalytics {
           TargetPlatform.android,
           TargetPlatform.iOS,
         }.contains(defaultTargetPlatform);
+    // Web/desktop reads the Firebase analytics config from the env
+    // (GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64), which is only set in deploy
+    // builds. Local dev has none, so skip analytics init rather than crash
+    // startup on the null-assert in DefaultFirebaseOptions.currentPlatform.
+    // analytics stays null and every call site already uses analytics?.
+    final webFirebaseOptions = Environment.googleAnalyticsFirebaseOptionsBase64;
+    if (!isNativeMobile &&
+        (webFirebaseOptions == null || webFirebaseOptions.isEmpty)) {
+      debugPrint(
+        'Skipping Firebase analytics init: no '
+        'GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64 configured.',
+      );
+      return;
+    }
     final FirebaseApp app;
     if (isNativeMobile) {
       app = Firebase.apps.isNotEmpty
@@ -272,12 +287,16 @@ class GoogleAnalytics {
     );
   }
 
-  static FirebaseAnalyticsObserver getAnalyticsObserver() {
+  static FirebaseAnalyticsObserver? getAnalyticsObserver() {
+    // analytics is null when Firebase init was skipped (no env config, e.g.
+    // local dev). Return null so the router simply runs without the observer
+    // rather than failing to build. See initialize().
+    final analytics = GoogleAnalytics.analytics;
     if (analytics == null) {
-      throw Exception("Firebase Analytics not initialized");
+      return null;
     }
     return FirebaseAnalyticsObserver(
-      analytics: analytics!,
+      analytics: analytics,
       nameExtractor: (settings) {
         final name = settings.name?.trim();
         if (name == null || name.isEmpty) {
