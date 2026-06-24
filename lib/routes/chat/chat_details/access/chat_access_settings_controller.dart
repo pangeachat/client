@@ -14,6 +14,9 @@ import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+// #Pangea
+// Pangea#
+
 class ChatAccessSettings extends StatefulWidget {
   final String roomId;
 
@@ -116,10 +119,12 @@ class ChatAccessSettingsController extends State<ChatAccessSettings> {
     } catch (e, s) {
       Logs().w('Unable to change join rules', e, s);
       if (mounted) {
+        // #Pangea
         ScaffoldMessenger.of(context).showSnackBarAnnounced(
           SnackBar(content: Text(e.toLocalizedString(context))),
           assertive: true,
         );
+        // Pangea#
       }
     } finally {
       if (mounted) {
@@ -141,10 +146,12 @@ class ChatAccessSettingsController extends State<ChatAccessSettings> {
     } catch (e, s) {
       Logs().w('Unable to change history visibility', e, s);
       if (mounted) {
+        // #Pangea
         ScaffoldMessenger.of(context).showSnackBarAnnounced(
           SnackBar(content: Text(e.toLocalizedString(context))),
           assertive: true,
         );
+        // Pangea#
       }
     } finally {
       if (mounted) {
@@ -166,10 +173,12 @@ class ChatAccessSettingsController extends State<ChatAccessSettings> {
     } catch (e, s) {
       Logs().w('Unable to change guest access', e, s);
       if (mounted) {
+        // #Pangea
         ScaffoldMessenger.of(context).showSnackBarAnnounced(
           SnackBar(content: Text(e.toLocalizedString(context))),
           assertive: true,
         );
+        // Pangea#
       }
     } finally {
       if (mounted) {
@@ -347,10 +356,12 @@ class ChatAccessSettingsController extends State<ChatAccessSettings> {
     } catch (e, s) {
       Logs().w('Unable to change visibility', e, s);
       if (mounted) {
+        // #Pangea
         ScaffoldMessenger.of(context).showSnackBarAnnounced(
           SnackBar(content: Text(e.toLocalizedString(context))),
           assertive: true,
         );
+        // Pangea#
       }
     } finally {
       if (mounted) {

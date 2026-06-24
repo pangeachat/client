@@ -18,6 +18,9 @@ import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image_viewer.dart';
 
+// #Pangea
+// Pangea#
+
 class SettingsView extends StatelessWidget {
   final SettingsController controller;
 

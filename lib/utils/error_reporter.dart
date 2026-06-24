@@ -6,6 +6,9 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 
+// #Pangea
+// Pangea#
+
 class ErrorReporter {
   final BuildContext? context;
   final String? message;

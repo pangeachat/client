@@ -15,6 +15,9 @@ import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+// #Pangea
+// Pangea#
+
 class Login extends StatefulWidget {
   // #Pangea
   // final Client client;
@@ -357,9 +360,11 @@ class LoginController extends State<Login> {
       // Pangea#
     );
     if (success.error == null) {
+      // #Pangea
       ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).passwordHasBeenChanged)),
       );
+      // Pangea#
       usernameController.text = input;
       passwordController.text = password;
       login();

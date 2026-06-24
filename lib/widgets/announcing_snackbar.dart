@@ -38,9 +38,16 @@ extension AnnouncingScaffoldMessenger on ScaffoldMessengerState {
 /// the caller should pass an explicit `announcement`.
 String? snackBarAnnouncementText(Widget content) {
   if (content is Text) {
-    return content.data ?? content.textSpan?.toPlainText();
+    // semanticsLabel overrides the visible text for screen readers, so prefer
+    // it when present (CodeRabbit, #7203).
+    return content.semanticsLabel ??
+        content.data ??
+        content.textSpan?.toPlainText();
   }
   if (content is RichText) {
+    // toPlainText() substitutes a placeholder glyph for WidgetSpan children, so
+    // RichText carrying its label in a WidgetSpan (e.g. a tappable link) must
+    // pass an explicit announcement at the call site instead (#7203).
     return content.text.toPlainText();
   }
   return null;

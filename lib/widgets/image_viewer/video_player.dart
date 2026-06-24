@@ -18,6 +18,9 @@ import 'package:fluffychat/widgets/blur_hash.dart';
 import '../../../utils/error_reporter.dart';
 import '../mxc_image.dart';
 
+// #Pangea
+// Pangea#
+
 class EventVideoPlayer extends StatefulWidget {
   final Event event;
 
@@ -116,10 +119,12 @@ class EventVideoPlayerState extends State<EventVideoPlayer> {
         );
       });
     } on IOException catch (e) {
+      // #Pangea
       ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(e.toLocalizedString(context))),
         assertive: true,
       );
+      // Pangea#
       // #Pangea
       setState(() => _error = e);
       // Pangea#

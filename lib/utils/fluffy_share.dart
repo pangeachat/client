@@ -9,6 +9,9 @@ import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import '../widgets/matrix.dart';
 
+// #Pangea
+// Pangea#
+
 abstract class FluffyShare {
   static Future<void> share(
     String text,
@@ -26,9 +29,11 @@ abstract class FluffyShare {
       return;
     }
     await Clipboard.setData(ClipboardData(text: text));
+    // #Pangea
     ScaffoldMessenger.of(context).showSnackBarAnnounced(
       SnackBar(content: Text(L10n.of(context).copiedToClipboard)),
     );
+    // Pangea#
     return;
   }
 

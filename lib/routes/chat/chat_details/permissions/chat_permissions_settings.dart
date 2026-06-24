@@ -15,6 +15,9 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/permission_slider_dialog.dart';
 
+// #Pangea
+// Pangea#
+
 class ChatPermissionsSettings extends StatefulWidget {
   // #Pangea
   /// world_v2: the room/space this page edits. Supplied explicitly when hosted
@@ -60,10 +63,12 @@ class ChatPermissionsSettingsController extends State<ChatPermissionsSettings> {
   }) async {
     final room = Matrix.of(context).client.getRoomById(roomId!)!;
     if (!room.canSendEvent(EventTypes.RoomPowerLevels)) {
+      // #Pangea
       ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).noPermission)),
         assertive: true,
       );
+      // Pangea#
       return;
     }
     newLevel ??= await showPermissionChooser(

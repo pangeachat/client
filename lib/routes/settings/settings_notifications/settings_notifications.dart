@@ -22,6 +22,9 @@ import 'package:fluffychat/widgets/local_notifications_extension.dart';
 import '../../../widgets/matrix.dart';
 import 'settings_notifications_view.dart';
 
+// #Pangea
+// Pangea#
+
 class SettingsNotifications extends StatefulWidget {
   const SettingsNotifications({super.key});
 
@@ -107,10 +110,12 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
       // #Pangea
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       // Pangea#
+      // #Pangea
       ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(e.toLocalizedString(context))),
         assertive: true,
       );
+      // Pangea#
     } finally {
       if (mounted) {
         setState(() {
@@ -195,10 +200,12 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
           // #Pangea
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
           // Pangea#
+          // #Pangea
           ScaffoldMessenger.of(context).showSnackBarAnnounced(
             SnackBar(content: Text(e.toLocalizedString(context))),
             assertive: true,
           );
+          // Pangea#
         } finally {
           if (mounted) {
             setState(() {
@@ -286,6 +293,11 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
         duration: Duration(seconds: 15),
         showCloseIcon: true,
       ),
+      // The call to action lives in a WidgetSpan, which toPlainText() drops, so
+      // announce the full message (description + CTA) explicitly (#7203).
+      announcement:
+          '${L10n.of(context).noAddressDescription} '
+          '${L10n.of(context).clickToAddEmail}',
     );
   }
   // Pangea#

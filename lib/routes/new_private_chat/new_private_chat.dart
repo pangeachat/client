@@ -18,6 +18,9 @@ import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../widgets/adaptive_dialogs/user_dialog.dart';
 
+// #Pangea
+// Pangea#
+
 class NewPrivateChat extends StatefulWidget {
   const NewPrivateChat({super.key});
 
@@ -79,12 +82,14 @@ class NewPrivateChatController extends State<NewPrivateChat> {
     if (PlatformInfos.isAndroid) {
       final info = await DeviceInfoPlugin().androidInfo;
       if (info.version.sdkInt < 21) {
+        // #Pangea
         ScaffoldMessenger.of(context).showSnackBarAnnounced(
           SnackBar(
             content: Text(L10n.of(context).unsupportedAndroidVersionLong),
           ),
           assertive: true,
         );
+        // Pangea#
         return;
       }
     }
@@ -100,9 +105,11 @@ class NewPrivateChatController extends State<NewPrivateChat> {
     await Clipboard.setData(
       ClipboardData(text: Matrix.of(context).client.userID!),
     );
+    // #Pangea
     ScaffoldMessenger.of(context).showSnackBarAnnounced(
       SnackBar(content: Text(L10n.of(context).copiedToClipboard)),
     );
+    // Pangea#
   }
 
   void openUserModal(Profile profile) =>

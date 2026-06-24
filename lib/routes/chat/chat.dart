@@ -124,6 +124,9 @@ import 'send_file_dialog.dart';
 import 'send_location_dialog.dart';
 
 // #Pangea
+// Pangea#
+
+// #Pangea
 class _TimelineUpdateNotifier extends ChangeNotifier {
   void notify() {
     notifyListeners();
@@ -463,6 +466,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (shareItems == null || shareItems.isEmpty) return;
     if (!room.otherPartyCanReceiveMessages) {
       final theme = Theme.of(context);
+      // #Pangea
       ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(
           backgroundColor: theme.colorScheme.errorContainer,
@@ -475,6 +479,7 @@ class ChatController extends State<ChatPageWithRoom>
         ),
         assertive: true,
       );
+      // Pangea#
       return;
     }
     for (final item in shareItems) {
@@ -1737,10 +1742,12 @@ class ChatController extends State<ChatPageWithRoom>
             data: {'roomId': roomId, 'file': file.name},
           );
           // Pangea#
+          // #Pangea
           scaffoldMessenger.showSnackBarAnnounced(
             SnackBar(content: Text((e as Object).toLocalizedString(context))),
             assertive: true,
           );
+          // Pangea#
           return null;
         });
     // #Pangea
@@ -1873,9 +1880,11 @@ class ChatController extends State<ChatPageWithRoom>
     // });
     clearSelectedEvents();
     // Pangea#
+    // #Pangea
     ScaffoldMessenger.of(context).showSnackBarAnnounced(
       SnackBar(content: Text(L10n.of(context).contentHasBeenReported)),
     );
+    // Pangea#
   }
 
   void deleteErrorEventsAction() async {
@@ -2878,6 +2887,7 @@ class ChatController extends State<ChatPageWithRoom>
 
     if (assistanceState == AssistanceStateEnum.error) {
       final error = choreographer.errorService.error!;
+      // #Pangea
       ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(
           duration: const Duration(seconds: 5),
@@ -2886,6 +2896,7 @@ class ChatController extends State<ChatPageWithRoom>
         ),
         assertive: true,
       );
+      // Pangea#
       choreographer.errorService.clear();
       return;
     }
@@ -3009,6 +3020,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (resp.isError) return;
     if (mounted) {
       messenger.hideCurrentSnackBar();
+      // #Pangea
       messenger.showSnackBarAnnounced(
         SnackBar(
           content: Text(
@@ -3017,6 +3029,7 @@ class ChatController extends State<ChatPageWithRoom>
           ),
         ),
       );
+      // Pangea#
     }
   }
 

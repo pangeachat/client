@@ -78,7 +78,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     _roomSubscription?.cancel();
     _roomSubscription = widget.client.onSync.stream
         .where(_hasHierarchyUpdate)
-        .listen((update) => loadHierarchy(reload: true));
+        .listen((update) => loadHierarchy(reload: true, background: true));
   }
 
   @override
@@ -90,7 +90,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
       _roomSubscription?.cancel();
       _roomSubscription = widget.client.onSync.stream
           .where(_hasHierarchyUpdate)
-          .listen((update) => loadHierarchy(reload: true));
+          .listen((update) => loadHierarchy(reload: true, background: true));
 
       discoveredChildren = null;
       _nextBatch = null;
@@ -221,7 +221,10 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     }
   }
 
-  Future<void> loadHierarchy({bool reload = false}) async {
+  Future<void> loadHierarchy({
+    bool reload = false,
+    bool background = false,
+  }) async {
     final space = this.space;
     if (space == null) return;
 
@@ -241,13 +244,21 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     } catch (e, s) {
       Logs().w('Unable to load hierarchy', e, s);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBarAnnounced(
-          SnackBar(
-            content: Text(e.toLocalizedString(context)),
-            showCloseIcon: true,
-          ),
-          assertive: true,
+        final snackBar = SnackBar(
+          content: Text(e.toLocalizedString(context)),
+          showCloseIcon: true,
         );
+        // Background sync reloads can fire repeatedly on a flaky request, so
+        // only a foreground (user-opened/navigated) failure is announced to
+        // screen readers; background failures still show the toast but stay
+        // silent to avoid repeated announcements (#7203).
+        if (background) {
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        } else {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBarAnnounced(snackBar, assertive: true);
+        }
       }
     } finally {
       if (mounted) {

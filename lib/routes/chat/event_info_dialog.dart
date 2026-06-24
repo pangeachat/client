@@ -12,6 +12,9 @@ import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 
+// #Pangea
+// Pangea#
+
 extension EventInfoDialogExtension on Event {
   void showInfoDialog(BuildContext context) => showAdaptiveBottomSheet(
     context: context,

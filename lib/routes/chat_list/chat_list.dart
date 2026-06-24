@@ -52,6 +52,9 @@ import '../../config/setting_keys.dart';
 import '../../utils/url_launcher.dart';
 import '../../widgets/matrix.dart';
 
+// #Pangea
+// Pangea#
+
 enum PopupMenuAction {
   settings,
   invite,
@@ -252,10 +255,12 @@ class ChatListController extends State<ChatList>
     }
 
     if (room.membership == Membership.ban) {
+      // #Pangea
       ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).youHaveBeenBannedFromThisChat)),
         assertive: true,
       );
+      // Pangea#
       return;
     }
 
@@ -408,10 +413,12 @@ class ChatListController extends State<ChatList>
       );
     } catch (e, s) {
       Logs().w('Searching has crashed', e, s);
+      // #Pangea
       ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(e.toLocalizedString(context))),
         assertive: true,
       );
+      // Pangea#
     }
     if (!isSearchMode) return;
     setState(() {

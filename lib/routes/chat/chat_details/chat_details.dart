@@ -32,6 +32,9 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/local_notifications_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+// #Pangea
+// Pangea#
+
 enum AliasActions { copy, delete, setCanonical }
 
 class ChatDetails extends StatefulWidget {
@@ -147,9 +150,11 @@ class ChatDetailsController extends State<ChatDetails>
       future: () => room.setName(input),
     );
     if (success.error == null) {
+      // #Pangea
       ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).displaynameHasBeenChanged)),
       );
+      // Pangea#
     }
   }
 

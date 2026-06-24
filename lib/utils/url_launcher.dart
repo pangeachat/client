@@ -16,6 +16,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/public_room_bottom_sheet.dart';
 import 'platform_infos.dart';
 
+// #Pangea
+// Pangea#
+
 class UrlLauncher {
   /// The url to open.
   final String? url;
@@ -38,10 +41,12 @@ class UrlLauncher {
     final uri = Uri.tryParse(url!);
     if (uri == null) {
       // we can't open this thing
+      // #Pangea
       ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).cantOpenUri(url!))),
         assertive: true,
       );
+      // Pangea#
       return;
     }
 
@@ -93,10 +98,12 @@ class UrlLauncher {
       return;
     }
     if (uri.host.isEmpty) {
+      // #Pangea
       ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).cantOpenUri(url!))),
         assertive: true,
       );
+      // Pangea#
       return;
     }
     // okay, we have either an http or an https URI.

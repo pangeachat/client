@@ -17,6 +17,9 @@ import 'package:fluffychat/widgets/adaptive_dialogs/dialog_text_field.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import '../../utils/resize_video.dart';
 
+// #Pangea
+// Pangea#
+
 class SendFileDialog extends StatefulWidget {
   final Room room;
   final List<XFile> files;
@@ -124,6 +127,7 @@ class SendFileDialogState extends State<SendFileDialog> {
             milliseconds: retryAfterMs + 1000,
           );
 
+          // #Pangea
           scaffoldMessenger.showSnackBarAnnounced(
             SnackBar(
               content: Text(
@@ -132,6 +136,7 @@ class SendFileDialogState extends State<SendFileDialog> {
             ),
             assertive: true,
           );
+          // Pangea#
           await Future.delayed(retryAfterDuration);
 
           scaffoldMessenger.showLoadingSnackBar(l10n.sendingAttachment);
@@ -148,6 +153,7 @@ class SendFileDialogState extends State<SendFileDialog> {
     } catch (e) {
       scaffoldMessenger.clearSnackBars();
       final theme = Theme.of(context);
+      // #Pangea
       scaffoldMessenger.showSnackBarAnnounced(
         SnackBar(
           backgroundColor: theme.colorScheme.errorContainer,
@@ -161,6 +167,7 @@ class SendFileDialogState extends State<SendFileDialog> {
         ),
         assertive: true,
       );
+      // Pangea#
       rethrow;
     }
 

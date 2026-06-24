@@ -20,6 +20,9 @@ import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import '../../widgets/matrix.dart';
 
+// #Pangea
+// Pangea#
+
 class AudioPlayerWidget extends StatefulWidget {
   final Color color;
   final Color linkColor;
@@ -256,10 +259,12 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     } catch (e, s) {
       Logs().v('Could not download audio file', e, s);
       if (!mounted) rethrow;
+      // #Pangea
       ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(e.toLocalizedString(context))),
         assertive: true,
       );
+      // Pangea#
       rethrow;
     }
     if (!context.mounted) return;

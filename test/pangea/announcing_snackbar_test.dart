@@ -12,6 +12,15 @@ void main() {
       expect(snackBarAnnouncementText(const Text('Saved')), 'Saved');
     });
 
+    test('prefers semanticsLabel over the visible text', () {
+      expect(
+        snackBarAnnouncementText(
+          const Text('5', semanticsLabel: 'five new messages'),
+        ),
+        'five new messages',
+      );
+    });
+
     test('reads a Text built from a span', () {
       expect(
         snackBarAnnouncementText(const Text.rich(TextSpan(text: 'Copied'))),

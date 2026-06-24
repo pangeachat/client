@@ -42,6 +42,9 @@ import '../utils/account_bundles.dart';
 import '../utils/background_push.dart';
 import 'local_notifications_extension.dart';
 
+// #Pangea
+// Pangea#
+
 // import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class Matrix extends StatefulWidget {
@@ -454,12 +457,14 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // Pangea#
       }
       if (loggedInWithMultipleClients && state != LoginState.loggedIn) {
+        // #Pangea
         ScaffoldMessenger.of(
           FluffyChatApp.router.routerDelegate.navigatorKey.currentContext ??
               context,
         ).showSnackBarAnnounced(
           SnackBar(content: Text(L10n.of(context).oneClientLoggedOut)),
         );
+        // Pangea#
 
         if (state != LoginState.loggedIn) {
           FluffyChatApp.router.go(PRoutes.world);
