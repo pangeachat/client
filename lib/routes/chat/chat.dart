@@ -21,6 +21,7 @@ import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
@@ -611,6 +612,7 @@ class ChatController extends State<ChatPageWithRoom>
           backDropToDismiss: false,
           closePrevOverlay: false,
           canPop: false,
+          rootOverlay: true,
         ),
       );
 
@@ -642,6 +644,7 @@ class ChatController extends State<ChatPageWithRoom>
             backDropToDismiss: false,
             closePrevOverlay: false,
             canPop: false,
+            rootOverlay: true,
           ),
         );
 
@@ -838,17 +841,25 @@ class ChatController extends State<ChatPageWithRoom>
   Future<void> _goalCompletionListener(Set<ActivityRoleGoal> goals) async {
     if (goals.isEmpty) return;
 
+    final visibleGoal =
+        activeGoalNotifier.value ?? room.ownRole?.allGoals.lastOrNull;
+
+    if (visibleGoal == null) {
+      activeGoalNotifier.value = room.currentGoal;
+      return;
+    }
+
     final completer = Completer();
     GoalStarAnimation.show(
       context,
       overlayKey: "goal-completion-star-${widget.room.id}",
       startTarget: ChoreoConstants.inputTransformTargetKey,
-      endTarget: ActivitySessionConstants.goalMenuStarTargetId(goals.first.id),
+      endTarget: ActivitySessionConstants.goalMenuStarTargetId(visibleGoal.id),
       onClose: () => completer.complete(),
     );
 
     await completer.future.timeout(
-      Duration(seconds: 5),
+      Duration(seconds: 15),
       onTimeout: () => ErrorHandler.logError(
         e: "Goal completion star animation timeout",
         data: {},
@@ -2661,7 +2672,6 @@ class ChatController extends State<ChatPageWithRoom>
         displayDetails: CenteredOverlayDisplayDetails(
           overlayKey: "button_message_backdrop",
           bypassBlockingOverlays: bypassBlockingOverlays,
-          useParentBoundaries: false,
         ),
       );
 
@@ -2681,7 +2691,6 @@ class ChatController extends State<ChatPageWithRoom>
           backgroundColor: Colors.black,
           overlayKey: "message_toolbar_overlay",
           bypassBlockingOverlays: bypassBlockingOverlays,
-          useParentBoundaries: false,
         ),
       );
     } else {
@@ -2694,7 +2703,6 @@ class ChatController extends State<ChatPageWithRoom>
           backgroundColor: Colors.black,
           overlayKey: "message_toolbar_overlay",
           bypassBlockingOverlays: bypassBlockingOverlays,
-          useParentBoundaries: false,
         ),
       );
     }

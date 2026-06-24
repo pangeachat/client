@@ -147,6 +147,7 @@ class OverlayMessage extends StatelessWidget {
             event.numberEmotes <= 3);
 
     final selectModeController = overlayController.selectModeController;
+    final inReplyTo = event.inReplyToEventId(includingFallback: false);
 
     final content = Container(
       decoration: BoxDecoration(
@@ -158,14 +159,14 @@ class OverlayMessage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          if (event.inReplyToEventId(includingFallback: false) != null)
+          if (inReplyTo != null)
             FutureBuilder<Event?>(
               future: event.getReplyEvent(timeline),
               builder: (BuildContext context, snapshot) {
                 final replyEvent = snapshot.hasData
                     ? snapshot.data!
                     : Event(
-                        eventId: event.relationshipEventId!,
+                        eventId: inReplyTo,
                         content: {'msgtype': 'm.text', 'body': '...'},
                         senderId: "",
                         type: 'm.room.message',

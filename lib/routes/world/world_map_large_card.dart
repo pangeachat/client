@@ -14,16 +14,13 @@ import 'package:fluffychat/widgets/avatar.dart';
 /// needs, decoupled from the Matrix SDK type.
 typedef LargeCardParticipant = ({Uri? avatar, String name});
 
-/// The large featured map card (Figma `… Large`). One layout, three state skins:
-/// **unlocked** (purple, star progress), **joinable** (green, + participant
-/// avatars and open slots), and **completed** (full star row + a Completed marker
-/// and Play-again / Review). There is no locked skin — nothing is ever locked
-/// (#7186). Completion is a fill, not a state — a completed card is an unlocked
-/// one whose [starsEarned] has reached the total — so it keeps the unlocked
-/// color (see world-map.instructions.md). The full [plan] carries the image and
-/// goal total and is null while it hydrates, so the card degrades to a skeleton
-/// until it lands. Tapping the card opens the activity's plan page; the map owns
-/// that ([onTap]).
+/// The large featured map card.
+/// **unlocked** (purple, star progress)
+/// **joinable** (green, + participant avatars and open slots)
+/// **completed** (full star row + a Completed marker and Play-again / Review).
+///
+/// The full [plan] carries the image and goal total - null while it hydrates
+/// Tapping the card opens the activity's plan page.
 class WorldMapLargeCard extends StatelessWidget {
   final QuestActivityCard card;
   final ActivityPinState state;
@@ -59,113 +56,244 @@ class WorldMapLargeCard extends StatelessWidget {
   /// Completion is a full star row on an unlocked pin (not a separate state). A
   /// pin with a live session reads joinable, not completed, so the learner is
   /// pulled back to play.
-  bool get _completed =>
-      state == ActivityPinState.unlocked &&
-      _starsTotal > 0 &&
-      starsEarned >= _starsTotal;
+  bool get _completed {
+    if (state != ActivityPinState.unlocked) return false;
+    final starsTotal = _starsTotal;
+    return starsTotal > 0 && starsEarned >= starsTotal;
+  }
+
+  bool get _showParticipants =>
+      state == ActivityPinState.joinable &&
+      (participants.isNotEmpty || openSlots > 0);
 
   @override
   Widget build(BuildContext context) {
-    final joinable = state == ActivityPinState.joinable;
     final completed = _completed;
+    final total = _starsTotal;
+
+    final earned = starsEarned.clamp(0, total);
+    final shown = total > 12 ? 12 : total;
+
     return GestureDetector(
       onTap: onTap,
-      child: Material(
-        elevation: 6,
-        borderRadius: BorderRadius.circular(12),
-        color: Theme.of(context).colorScheme.surface,
-        child: Container(
-          width: 260,
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: state.accent, width: 2),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _header(context, completed: completed),
-              const SizedBox(height: 8),
-              _starRow(),
-              if (completed) ...[
-                const SizedBox(height: 8),
-                _completedActions(context),
+      // #Pangea: announce the card as a single "Activity: <title>" button so the
+      // screen reader gets context and the title is not double-read (#7185).
+      child: Semantics(
+        label: L10n.of(context).activityLabel(card.title),
+        button: true,
+        child: Material(
+          elevation: 6,
+          borderRadius: BorderRadius.circular(12),
+          color: Theme.of(context).colorScheme.surface,
+          child: Container(
+            width: 260,
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: state.accent, width: 2),
+            ),
+            child: Column(
+              spacing: 8.0,
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _Header(
+                  card: card,
+                  plan: plan,
+                  completed: completed,
+                  pinged: pinged,
+                  foregroundColor: state.accent,
+                ),
+                total == 0
+                    ? SizedBox(height: 16)
+                    : Row(
+                        children: List.generate(
+                          shown,
+                          (i) => Icon(
+                            i < earned ? Icons.star : Icons.star_border,
+                            size: 16,
+                            color: i < earned
+                                ? AppConfig.gold
+                                : AppConfig.grayText,
+                          ),
+                        ),
+                      ),
+                if (completed)
+                  Row(
+                    children: [
+                      _ActionPill(
+                        icon: Icons.refresh,
+                        label: L10n.of(context).playAgain,
+                        foregroundColor: AppConfig.purple,
+                        borderColor: const Color(0xFFCECBF6),
+                      ),
+                      const SizedBox(width: 6),
+                      _ActionPill(
+                        icon: Icons.visibility_outlined,
+                        label: L10n.of(context).reviewActivity,
+                        foregroundColor: AppConfig.grayText,
+                        borderColor: const Color(0xFFD3D1C7),
+                      ),
+                    ],
+                  ),
+                if (_showParticipants)
+                  Row(
+                    children: [
+                      for (final p in participants.take(4)) ...[
+                        Avatar(mxContent: p.avatar, name: p.name, size: 28),
+                        const SizedBox(width: 4),
+                      ],
+                      for (int i = 0; i < openSlots.clamp(0, 4); i++) ...[
+                        Container(
+                          width: 28,
+                          height: 28,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.black12,
+                          ),
+                          alignment: Alignment.center,
+                          child: const Text(
+                            '?',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black45,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                      ],
+                    ],
+                  ),
               ],
-              if (joinable && (participants.isNotEmpty || openSlots > 0)) ...[
-                const SizedBox(height: 8),
-                _participantRow(),
-              ],
-            ],
+            ),
           ),
         ),
       ),
     );
   }
+}
 
-  Widget _header(BuildContext context, {required bool completed}) {
+class _Header extends StatelessWidget {
+  final QuestActivityCard card;
+  final ActivityPlanModel? plan;
+
+  final bool completed;
+  final bool pinged;
+  final Color foregroundColor;
+
+  const _Header({
+    required this.card,
+    required this.plan,
+    required this.completed,
+    required this.pinged,
+    required this.foregroundColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final lang = PLanguageStore.byLangCode(card.l2);
+
+    final flagFallback = Text(
+      card.l2.toUpperCase(),
+      style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
+    );
+
+    final imageUrl = plan?.imageURL;
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _thumbnail(context),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: SizedBox(
+            width: 48,
+            height: 48,
+            child: imageUrl != null
+                ? Image.network(
+                    imageUrl.toString(),
+                    fit: BoxFit.cover,
+                    semanticLabel: L10n.of(context).activityPhoto,
+                    errorBuilder: (context, _, _) =>
+                        Container(color: Colors.black12),
+                  )
+                : Container(color: Colors.black12),
+          ),
+        ),
         const SizedBox(width: 8),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                card.title,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 13,
+              // #Pangea: the title is already in the card's Semantics label, so
+              // exclude the visible text to avoid a double-read (#7185).
+              ExcludeSemantics(
+                child: Text(
+                  card.title,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 13,
+                  ),
                 ),
               ),
               const SizedBox(height: 4),
-              _typeChip(context, completed: completed),
+              _TypeChip(
+                completed: completed,
+                pinged: pinged,
+                foregroundColor: foregroundColor,
+              ),
             ],
           ),
         ),
         const SizedBox(width: 6),
-        _flag(),
+        lang == null || !lang.shouldShowFlag
+            ? flagFallback
+            : ClipRRect(
+                borderRadius: BorderRadius.circular(4),
+                child: SvgPicture.network(
+                  lang.svgUrl.toString(),
+                  width: 28,
+                  height: 20,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, _, _) => flagFallback,
+                  placeholderBuilder: (_) =>
+                      const SizedBox(width: 28, height: 20),
+                ),
+              ),
       ],
     );
   }
+}
 
-  Widget _thumbnail(BuildContext context) {
-    final url = plan?.imageURL;
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
-      child: SizedBox(
-        width: 48,
-        height: 48,
-        child: url != null
-            ? Image.network(
-                url.toString(),
-                fit: BoxFit.cover,
-                semanticLabel: L10n.of(context).activityPhoto,
-                errorBuilder: (context, _, _) => _thumbPlaceholder(),
-              )
-            : _thumbPlaceholder(),
-      ),
-    );
-  }
+class _TypeChip extends StatelessWidget {
+  final bool completed;
+  final bool pinged;
+  final Color foregroundColor;
 
-  Widget _thumbPlaceholder() => Container(color: Colors.black12);
+  const _TypeChip({
+    required this.completed,
+    required this.pinged,
+    required this.foregroundColor,
+  });
 
   // All v3 activities are conversations today; surfaced as the type chip, unless
   // the activity is completed (a Completed marker takes the chip's place).
   // TODO(world-map): read the real activity type once modeled.
-  Widget _typeChip(BuildContext context, {required bool completed}) {
+  @override
+  Widget build(BuildContext context) {
     final l10n = L10n.of(context);
-    final Color fg = completed ? AppConfig.completedGreen : state.accent;
+
+    final Color fg = completed ? AppConfig.completedGreen : foregroundColor;
+
     final IconData icon = completed
         ? Icons.check_circle_outline
         : (pinged ? Icons.back_hand : Icons.chat_bubble_outline);
+
     final String label = completed
         ? l10n.mapFilterCompleted
         : l10n.activityTypeConversation;
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       decoration: BoxDecoration(
@@ -189,121 +317,44 @@ class WorldMapLargeCard extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _flag() {
-    final lang = PLanguageStore.byLangCode(card.l2);
-    final fallback = Text(
-      card.l2.toUpperCase(),
-      style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
-    );
-    if (lang == null || !lang.shouldShowFlag) return fallback;
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(4),
-      child: SvgPicture.network(
-        lang.svgUrl.toString(),
-        width: 28,
-        height: 20,
-        fit: BoxFit.cover,
-        errorBuilder: (context, _, _) => fallback,
-        placeholderBuilder: (_) => const SizedBox(width: 28, height: 20),
-      ),
-    );
-  }
+class _ActionPill extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final Color foregroundColor;
+  final Color borderColor;
 
-  Widget _starRow() {
-    final total = _starsTotal;
-    // Plan still hydrating (or no goals): leave the row's height so the card
-    // doesn't jump when the stars land.
-    if (total == 0) return const SizedBox(height: 16);
-    final earned = starsEarned.clamp(0, total);
-    final shown = total > 12 ? 12 : total;
-    return Row(
-      children: [
-        for (var i = 0; i < shown; i++)
-          Icon(
-            i < earned ? Icons.star : Icons.star_border,
-            size: 16,
-            color: i < earned ? AppConfig.gold : Colors.black26,
-          ),
-      ],
-    );
-  }
+  const _ActionPill({
+    required this.icon,
+    required this.label,
+    required this.foregroundColor,
+    required this.borderColor,
+  });
 
-  // Indicators of what the plan page offers a finished activity; the card itself
-  // taps through to that page (it does not act on these inline).
-  Widget _completedActions(BuildContext context) {
-    final l10n = L10n.of(context);
-    return Row(
-      children: [
-        _actionPill(
-          Icons.refresh,
-          l10n.playAgain,
-          AppConfig.purple,
-          const Color(0xFFCECBF6),
-        ),
-        const SizedBox(width: 6),
-        _actionPill(
-          Icons.visibility_outlined,
-          l10n.reviewActivity,
-          AppConfig.grayText,
-          const Color(0xFFD3D1C7),
-        ),
-      ],
-    );
-  }
-
-  Widget _actionPill(IconData icon, String label, Color fg, Color border) {
+  @override
+  Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
       decoration: BoxDecoration(
-        border: Border.all(color: border),
+        border: Border.all(color: borderColor),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 13, color: fg),
+          Icon(icon, size: 13, color: foregroundColor),
           const SizedBox(width: 4),
           Text(
             label,
             style: TextStyle(
               fontSize: 11,
               fontWeight: FontWeight.w600,
-              color: fg,
+              color: foregroundColor,
             ),
           ),
         ],
       ),
-    );
-  }
-
-  Widget _participantRow() {
-    return Row(
-      children: [
-        for (final p in participants.take(4)) ...[
-          Avatar(mxContent: p.avatar, name: p.name, size: 28),
-          const SizedBox(width: 4),
-        ],
-        for (var i = 0; i < openSlots.clamp(0, 4); i++) ...[
-          Container(
-            width: 28,
-            height: 28,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.black12,
-            ),
-            alignment: Alignment.center,
-            child: const Text(
-              '?',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black45,
-              ),
-            ),
-          ),
-          const SizedBox(width: 4),
-        ],
-      ],
     );
   }
 }

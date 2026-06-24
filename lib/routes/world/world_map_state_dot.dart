@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 class WorldMapDot extends StatelessWidget {
@@ -31,7 +32,7 @@ class WorldMapDot extends StatelessWidget {
       excludeFromSemantics: true,
       child: Semantics(
         button: true,
-        label: card.title,
+        label: L10n.of(context).activityLabel(card.title),
         excludeSemantics: true,
         child: GestureDetector(
           onTap: onTap,

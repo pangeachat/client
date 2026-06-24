@@ -4932,5 +4932,14 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "activityLabel": "Activity: {title}",
+    "@activityLabel": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "resetMapView": "Reset map view"
 }
