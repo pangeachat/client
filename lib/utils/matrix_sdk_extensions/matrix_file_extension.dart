@@ -6,6 +6,7 @@ import 'package:share_plus/share_plus.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/size_string.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 
 extension MatrixFileExtension on MatrixFile {
   void save(BuildContext context) async {
@@ -19,7 +20,7 @@ extension MatrixFileExtension on MatrixFile {
     );
     if (downloadPath == null) return;
 
-    scaffoldMessenger.showSnackBar(
+    scaffoldMessenger.showSnackBarAnnounced(
       SnackBar(content: Text(l10n.fileHasBeenSavedAt(downloadPath))),
     );
   }

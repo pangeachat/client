@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 
 class StartPollBottomSheet extends StatefulWidget {
   final Room room;
@@ -50,9 +51,10 @@ class _StartPollBottomSheetState extends State<StartPollBottomSheet> {
     } catch (e, s) {
       Logs().w('Unable to create poll', e, s);
       if (!mounted) return;
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
+        SnackBar(content: Text(e.toLocalizedString(context))),
+        assertive: true,
+      );
     }
   }
 

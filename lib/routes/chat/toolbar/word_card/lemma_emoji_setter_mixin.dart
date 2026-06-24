@@ -6,6 +6,7 @@ import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/vocab_analytics_list_tile.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 mixin LemmaEmojiSetter {
@@ -56,7 +57,7 @@ mixin LemmaEmojiSetter {
     final theme = Theme.of(context);
     final l10n = L10n.of(context);
 
-    messenger.showSnackBar(
+    messenger.showSnackBarAnnounced(
       SnackBar(
         showCloseIcon: false,
         padding: const EdgeInsets.all(8.0),
@@ -91,6 +92,7 @@ mixin LemmaEmojiSetter {
         ),
         duration: const Duration(seconds: 30),
       ),
+      announcement: l10n.emojiSelectedSnackbar(constructId.lemma),
     );
   }
 

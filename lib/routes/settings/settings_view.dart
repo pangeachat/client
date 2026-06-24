@@ -13,9 +13,13 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/routes/settings/support_chat_list_tile.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image_viewer.dart';
+
+// #Pangea
+// Pangea#
 
 class SettingsView extends StatelessWidget {
   final SettingsController controller;
@@ -346,7 +350,9 @@ class SettingsView extends StatelessWidget {
                                       "${snapshot.data!.version}+${snapshot.data!.buildNumber}",
                                 ),
                               );
-                              ScaffoldMessenger.of(context).showSnackBar(
+                              ScaffoldMessenger.of(
+                                context,
+                              ).showSnackBarAnnounced(
                                 SnackBar(
                                   content: Text(
                                     L10n.of(context).copiedToClipboard,

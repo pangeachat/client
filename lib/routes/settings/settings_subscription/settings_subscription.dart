@@ -13,6 +13,7 @@ import 'package:fluffychat/features/subscription/widgets/subscription_snackbar.d
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription_view.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SubscriptionManagement extends StatefulWidget {
@@ -171,7 +172,7 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
   Future<void> onClickCancelSubscription() async {
     final uri = await launchMangementUrl(ManagementOption.cancel);
     if (uri != null) {
-      ScaffoldMessenger.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(
           showCloseIcon: true,
           duration: const Duration(seconds: 30),
@@ -192,6 +193,7 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
             ],
           ),
         ),
+        announcement: L10n.of(context).managementSnackbarMessage,
       );
     }
     await SubscriptionManagementRepo.setClickedCancelSubscription();
