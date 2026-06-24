@@ -7,6 +7,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_security/settings_password/settings_password_view.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SettingsPassword extends StatefulWidget {
@@ -60,7 +61,7 @@ class SettingsPasswordController extends State<SettingsPassword> {
         newPassword1Controller.text,
         oldPassword: oldPasswordController.text,
       );
-      scaffoldMessenger.showSnackBar(
+      scaffoldMessenger.showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).passwordHasBeenChanged)),
       );
       // world_v2: this is the `settingspage:security/password` token panel, not

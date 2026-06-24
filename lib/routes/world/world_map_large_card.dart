@@ -14,11 +14,11 @@ import 'package:fluffychat/widgets/avatar.dart';
 /// needs, decoupled from the Matrix SDK type.
 typedef LargeCardParticipant = ({Uri? avatar, String name});
 
-/// The large featured map card (Figma `… Large`). One layout, four state skins:
+/// The large featured map card (Figma `… Large`). One layout, three state skins:
 /// **unlocked** (purple, star progress), **joinable** (green, + participant
-/// avatars and open slots), **locked** (gray, lock + unlock-requirement line),
-/// and **completed** (full star row + a Completed marker and Play-again /
-/// Review). Completion is a fill, not a state — a completed card is an unlocked
+/// avatars and open slots), and **completed** (full star row + a Completed marker
+/// and Play-again / Review). There is no locked skin — nothing is ever locked
+/// (#7186). Completion is a fill, not a state — a completed card is an unlocked
 /// one whose [starsEarned] has reached the total — so it keeps the unlocked
 /// color (see world-map.instructions.md). The full [plan] carries the image and
 /// goal total and is null while it hydrates, so the card degrades to a skeleton
@@ -46,23 +46,6 @@ class WorldMapLargeCard extends StatelessWidget {
     this.openSlots = 0,
   });
 
-  static const Color _green = Color(0xFF34A853);
-  static const Color _purple = Color(0xFF7B61FF);
-  static const Color _gray = Color(0xFFB4B2A9);
-  static const Color _grayText = Color(0xFF5F5E5A);
-  static const Color _completedGreen = Color(0xFF3B6D11);
-
-  Color get _accent {
-    switch (state) {
-      case ActivityPinState.joinable:
-        return _green;
-      case ActivityPinState.locked:
-        return _gray;
-      case ActivityPinState.unlocked:
-        return _purple;
-    }
-  }
-
   /// The most-goal role's goal count stands in for the activity's star total: a
   /// learner plays one role, and the richest role bounds the progress bar.
   int get _starsTotal {
@@ -84,7 +67,6 @@ class WorldMapLargeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final joinable = state == ActivityPinState.joinable;
-    final locked = state == ActivityPinState.locked;
     final completed = _completed;
     return GestureDetector(
       onTap: onTap,
@@ -97,20 +79,15 @@ class WorldMapLargeCard extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: _accent, width: 2),
+            border: Border.all(color: state.accent, width: 2),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _header(context, locked: locked, completed: completed),
-              // A locked activity has no progress, so no star row — and dropping
-              // it keeps the card from overflowing when the requirement wraps.
-              if (!locked) ...[const SizedBox(height: 8), _starRow()],
-              if (locked) ...[
-                const SizedBox(height: 8),
-                _lockedRequirement(context),
-              ],
+              _header(context, completed: completed),
+              const SizedBox(height: 8),
+              _starRow(),
               if (completed) ...[
                 const SizedBox(height: 8),
                 _completedActions(context),
@@ -126,15 +103,11 @@ class WorldMapLargeCard extends StatelessWidget {
     );
   }
 
-  Widget _header(
-    BuildContext context, {
-    required bool locked,
-    required bool completed,
-  }) {
+  Widget _header(BuildContext context, {required bool completed}) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _thumbnail(locked: locked),
+        _thumbnail(),
         const SizedBox(width: 8),
         Expanded(
           child: Column(
@@ -144,14 +117,13 @@ class WorldMapLargeCard extends StatelessWidget {
                 card.title,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 13,
-                  color: locked ? _grayText : null,
                 ),
               ),
               const SizedBox(height: 4),
-              _typeChip(context, locked: locked, completed: completed),
+              _typeChip(context, completed: completed),
             ],
           ),
         ),
@@ -161,9 +133,9 @@ class WorldMapLargeCard extends StatelessWidget {
     );
   }
 
-  Widget _thumbnail({bool locked = false}) {
+  Widget _thumbnail() {
     final url = plan?.imageURL;
-    final image = ClipRRect(
+    return ClipRRect(
       borderRadius: BorderRadius.circular(8),
       child: SizedBox(
         width: 48,
@@ -177,14 +149,6 @@ class WorldMapLargeCard extends StatelessWidget {
             : _thumbPlaceholder(),
       ),
     );
-    if (!locked) return image;
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Opacity(opacity: 0.5, child: image),
-        const Icon(Icons.lock, size: 20, color: _grayText),
-      ],
-    );
   }
 
   Widget _thumbPlaceholder() => Container(color: Colors.black12);
@@ -192,15 +156,9 @@ class WorldMapLargeCard extends StatelessWidget {
   // All v3 activities are conversations today; surfaced as the type chip, unless
   // the activity is completed (a Completed marker takes the chip's place).
   // TODO(world-map): read the real activity type once modeled.
-  Widget _typeChip(
-    BuildContext context, {
-    required bool locked,
-    required bool completed,
-  }) {
+  Widget _typeChip(BuildContext context, {required bool completed}) {
     final l10n = L10n.of(context);
-    final Color fg = completed
-        ? _completedGreen
-        : (locked ? _grayText : _accent);
+    final Color fg = completed ? AppConfig.completedGreen : state.accent;
     final IconData icon = completed
         ? Icons.check_circle_outline
         : (pinged ? Icons.back_hand : Icons.chat_bubble_outline);
@@ -270,24 +228,6 @@ class WorldMapLargeCard extends StatelessWidget {
     );
   }
 
-  // The activity behind a locked pin can't be started yet; its plan page opens
-  // read-only. The card states why.
-  // TODO(world-map): name the specific gating objective + star threshold.
-  Widget _lockedRequirement(BuildContext context) {
-    return Row(
-      children: [
-        const Icon(Icons.lock, size: 13, color: _grayText),
-        const SizedBox(width: 6),
-        Expanded(
-          child: Text(
-            L10n.of(context).lockedMissionRequirement,
-            style: const TextStyle(fontSize: 11, color: _grayText),
-          ),
-        ),
-      ],
-    );
-  }
-
   // Indicators of what the plan page offers a finished activity; the card itself
   // taps through to that page (it does not act on these inline).
   Widget _completedActions(BuildContext context) {
@@ -297,14 +237,14 @@ class WorldMapLargeCard extends StatelessWidget {
         _actionPill(
           Icons.refresh,
           l10n.playAgain,
-          _purple,
+          AppConfig.purple,
           const Color(0xFFCECBF6),
         ),
         const SizedBox(width: 6),
         _actionPill(
           Icons.visibility_outlined,
           l10n.reviewActivity,
-          _grayText,
+          AppConfig.grayText,
           const Color(0xFFD3D1C7),
         ),
       ],

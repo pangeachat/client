@@ -408,67 +408,75 @@ class ChatView extends StatelessWidget {
                         controller.room.activityPlan!.imageURL != null &&
                         AppConfig.useActivityImageAsChatBackground &&
                         !controller.room.activityPlan!.hasPlayableMedia)
-                      Opacity(
-                        opacity: 0.25,
-                        child: ImageFiltered(
-                          imageFilter: ui.ImageFilter.blur(
-                            sigmaX: accountConfig.wallpaperBlur ?? 0.0,
-                            sigmaY: accountConfig.wallpaperBlur ?? 0.0,
+                      ExcludeSemantics(
+                        // #Pangea: decorative blurred chat background, not content. // Pangea#
+                        child: Opacity(
+                          opacity: 0.25,
+                          child: ImageFiltered(
+                            imageFilter: ui.ImageFilter.blur(
+                              sigmaX: accountConfig.wallpaperBlur ?? 0.0,
+                              sigmaY: accountConfig.wallpaperBlur ?? 0.0,
+                            ),
+                            child:
+                                controller.room.activityPlan!.imageURL!
+                                    .toString()
+                                    .startsWith('mxc')
+                                ? MxcImage(
+                                    uri:
+                                        controller.room.activityPlan!.imageURL!,
+                                    fit: BoxFit.cover,
+                                    height: MediaQuery.sizeOf(context).height,
+                                    width: MediaQuery.sizeOf(context).width,
+                                    cacheKey: controller
+                                        .room
+                                        .activityPlan!
+                                        .imageURL
+                                        .toString(),
+                                    isThumbnail: false,
+                                  )
+                                : Image.network(
+                                    controller.room.activityPlan!.imageURL
+                                        .toString(),
+                                    fit: BoxFit.cover,
+                                    height: MediaQuery.sizeOf(context).height,
+                                    width: MediaQuery.sizeOf(context).width,
+                                    headers:
+                                        controller.room.activityPlan!.imageURL
+                                            .toString()
+                                            .contains(Environment.cmsApi)
+                                        ? {
+                                            'Authorization':
+                                                'Bearer ${MatrixState.pangeaController.userController.accessToken}',
+                                          }
+                                        : null,
+                                    errorBuilder:
+                                        (context, error, stackTrace) =>
+                                            Container(),
+                                  ),
                           ),
-                          child:
-                              controller.room.activityPlan!.imageURL!
-                                  .toString()
-                                  .startsWith('mxc')
-                              ? MxcImage(
-                                  uri: controller.room.activityPlan!.imageURL!,
-                                  fit: BoxFit.cover,
-                                  height: MediaQuery.sizeOf(context).height,
-                                  width: MediaQuery.sizeOf(context).width,
-                                  cacheKey: controller
-                                      .room
-                                      .activityPlan!
-                                      .imageURL
-                                      .toString(),
-                                  isThumbnail: false,
-                                )
-                              : Image.network(
-                                  controller.room.activityPlan!.imageURL
-                                      .toString(),
-                                  fit: BoxFit.cover,
-                                  height: MediaQuery.sizeOf(context).height,
-                                  width: MediaQuery.sizeOf(context).width,
-                                  headers:
-                                      controller.room.activityPlan!.imageURL
-                                          .toString()
-                                          .contains(Environment.cmsApi)
-                                      ? {
-                                          'Authorization':
-                                              'Bearer ${MatrixState.pangeaController.userController.accessToken}',
-                                        }
-                                      : null,
-                                  errorBuilder: (context, error, stackTrace) =>
-                                      Container(),
-                                ),
                         ),
                       )
                     // If not enabled, fall through to default wallpaper logic
                     else if (accountConfig.wallpaperUrl != null)
                       // Pangea#
-                      Opacity(
-                        opacity: accountConfig.wallpaperOpacity ?? 0.5,
-                        child: ImageFiltered(
-                          imageFilter: ui.ImageFilter.blur(
-                            sigmaX: accountConfig.wallpaperBlur ?? 0.0,
-                            sigmaY: accountConfig.wallpaperBlur ?? 0.0,
-                          ),
-                          child: MxcImage(
-                            cacheKey: accountConfig.wallpaperUrl.toString(),
-                            uri: accountConfig.wallpaperUrl,
-                            fit: BoxFit.cover,
-                            height: MediaQuery.sizeOf(context).height,
-                            width: MediaQuery.sizeOf(context).width,
-                            isThumbnail: false,
-                            placeholder: (_) => Container(),
+                      ExcludeSemantics(
+                        // #Pangea: decorative blurred wallpaper, not content. // Pangea#
+                        child: Opacity(
+                          opacity: accountConfig.wallpaperOpacity ?? 0.5,
+                          child: ImageFiltered(
+                            imageFilter: ui.ImageFilter.blur(
+                              sigmaX: accountConfig.wallpaperBlur ?? 0.0,
+                              sigmaY: accountConfig.wallpaperBlur ?? 0.0,
+                            ),
+                            child: MxcImage(
+                              cacheKey: accountConfig.wallpaperUrl.toString(),
+                              uri: accountConfig.wallpaperUrl,
+                              fit: BoxFit.cover,
+                              height: MediaQuery.sizeOf(context).height,
+                              width: MediaQuery.sizeOf(context).width,
+                              isThumbnail: false,
+                              placeholder: (_) => Container(),
+                            ),
                           ),
                         ),
                       ),

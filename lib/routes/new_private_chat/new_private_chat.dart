@@ -14,8 +14,12 @@ import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../widgets/adaptive_dialogs/user_dialog.dart';
+
+// #Pangea
+// Pangea#
 
 class NewPrivateChat extends StatefulWidget {
   const NewPrivateChat({super.key});
@@ -78,11 +82,14 @@ class NewPrivateChatController extends State<NewPrivateChat> {
     if (PlatformInfos.isAndroid) {
       final info = await DeviceInfoPlugin().androidInfo;
       if (info.version.sdkInt < 21) {
-        ScaffoldMessenger.of(context).showSnackBar(
+        // #Pangea
+        ScaffoldMessenger.of(context).showSnackBarAnnounced(
           SnackBar(
             content: Text(L10n.of(context).unsupportedAndroidVersionLong),
           ),
+          assertive: true,
         );
+        // Pangea#
         return;
       }
     }
@@ -98,9 +105,11 @@ class NewPrivateChatController extends State<NewPrivateChat> {
     await Clipboard.setData(
       ClipboardData(text: Matrix.of(context).client.userID!),
     );
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(L10n.of(context).copiedToClipboard)));
+    // #Pangea
+    ScaffoldMessenger.of(context).showSnackBarAnnounced(
+      SnackBar(content: Text(L10n.of(context).copiedToClipboard)),
+    );
+    // Pangea#
   }
 
   void openUserModal(Profile profile) =>

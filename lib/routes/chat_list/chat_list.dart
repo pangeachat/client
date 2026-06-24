@@ -44,12 +44,16 @@ import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart'
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 import '../../../utils/account_bundles.dart';
 import '../../config/setting_keys.dart';
 import '../../utils/url_launcher.dart';
 import '../../widgets/matrix.dart';
+
+// #Pangea
+// Pangea#
 
 enum PopupMenuAction {
   settings,
@@ -251,9 +255,12 @@ class ChatListController extends State<ChatList>
     }
 
     if (room.membership == Membership.ban) {
-      ScaffoldMessenger.of(context).showSnackBar(
+      // #Pangea
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).youHaveBeenBannedFromThisChat)),
+        assertive: true,
       );
+      // Pangea#
       return;
     }
 
@@ -406,9 +413,12 @@ class ChatListController extends State<ChatList>
       );
     } catch (e, s) {
       Logs().w('Searching has crashed', e, s);
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
+      // #Pangea
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
+        SnackBar(content: Text(e.toLocalizedString(context))),
+        assertive: true,
+      );
+      // Pangea#
     }
     if (!isSearchMode) return;
     setState(() {

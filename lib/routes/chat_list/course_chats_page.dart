@@ -31,6 +31,7 @@ import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/public_room_bottom_sheet.dart';
@@ -77,7 +78,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     _roomSubscription?.cancel();
     _roomSubscription = widget.client.onSync.stream
         .where(_hasHierarchyUpdate)
-        .listen((update) => loadHierarchy(reload: true));
+        .listen((update) => loadHierarchy(reload: true, background: true));
   }
 
   @override
@@ -89,7 +90,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
       _roomSubscription?.cancel();
       _roomSubscription = widget.client.onSync.stream
           .where(_hasHierarchyUpdate)
-          .listen((update) => loadHierarchy(reload: true));
+          .listen((update) => loadHierarchy(reload: true, background: true));
 
       discoveredChildren = null;
       _nextBatch = null;
@@ -220,7 +221,10 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     }
   }
 
-  Future<void> loadHierarchy({bool reload = false}) async {
+  Future<void> loadHierarchy({
+    bool reload = false,
+    bool background = false,
+  }) async {
     final space = this.space;
     if (space == null) return;
 
@@ -240,12 +244,21 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     } catch (e, s) {
       Logs().w('Unable to load hierarchy', e, s);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(e.toLocalizedString(context)),
-            showCloseIcon: true,
-          ),
+        final snackBar = SnackBar(
+          content: Text(e.toLocalizedString(context)),
+          showCloseIcon: true,
         );
+        // Background sync reloads can fire repeatedly on a flaky request, so
+        // only a foreground (user-opened/navigated) failure is announced to
+        // screen readers; background failures still show the toast but stay
+        // silent to avoid repeated announcements (#7203).
+        if (background) {
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        } else {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBarAnnounced(snackBar, assertive: true);
+        }
       }
     } finally {
       if (mounted) {
@@ -473,8 +486,9 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     }
 
     if (room.membership == Membership.ban) {
-      ScaffoldMessenger.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).youHaveBeenBannedFromThisChat)),
+        assertive: true,
       );
       return;
     }

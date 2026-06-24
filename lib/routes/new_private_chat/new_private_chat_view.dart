@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/new_private_chat/new_private_chat.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -26,7 +28,12 @@ class NewPrivateChatView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         scrolledUnderElevation: 0,
-        leading: const Center(child: BackButton()),
+        // world_v2: this legacy path route is reached via `go` from the
+        // chat-list token, so a plain pop lands on a blank panel. Send back to
+        // the chat list explicitly (#7170).
+        leading: Center(
+          child: BackButton(onPressed: () => context.go(PRoutes.chatsList)),
+        ),
         // #Pangea
         title: Text(L10n.of(context).newDirectMessage),
         // title: Text(L10n.of(context).newChat),

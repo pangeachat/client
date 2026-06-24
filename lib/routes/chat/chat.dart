@@ -114,6 +114,7 @@ import 'package:fluffychat/utils/show_scaffold_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
@@ -121,6 +122,9 @@ import 'package:fluffychat/widgets/star_rain_widget.dart';
 import '../../utils/localized_exception_extension.dart';
 import 'send_file_dialog.dart';
 import 'send_location_dialog.dart';
+
+// #Pangea
+// Pangea#
 
 // #Pangea
 class _TimelineUpdateNotifier extends ChangeNotifier {
@@ -462,7 +466,8 @@ class ChatController extends State<ChatPageWithRoom>
     if (shareItems == null || shareItems.isEmpty) return;
     if (!room.otherPartyCanReceiveMessages) {
       final theme = Theme.of(context);
-      ScaffoldMessenger.of(context).showSnackBar(
+      // #Pangea
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(
           backgroundColor: theme.colorScheme.errorContainer,
           closeIconColor: theme.colorScheme.onErrorContainer,
@@ -472,7 +477,9 @@ class ChatController extends State<ChatPageWithRoom>
           ),
           showCloseIcon: true,
         ),
+        assertive: true,
       );
+      // Pangea#
       return;
     }
     for (final item in shareItems) {
@@ -949,7 +956,14 @@ class ChatController extends State<ChatPageWithRoom>
     // so the visible plan never flickers.
     final activitySessionId = room.activityId;
     if (activitySessionId != null) {
-      ActivityPlanRepo.instance.ensure(activitySessionId, revalidate: true);
+      // Revalidate pinned to the session's version: this refreshes the
+      // re-translation of the pinned version (goal text / role names) without
+      // pulling newer canonical content into a live pinned session.
+      ActivityPlanRepo.instance.ensure(
+        activitySessionId,
+        version: room.pinnedActivityVersionId,
+        revalidate: true,
+      );
     }
 
     _goalCompletionSubscription?.cancel();
@@ -1728,9 +1742,12 @@ class ChatController extends State<ChatPageWithRoom>
             data: {'roomId': roomId, 'file': file.name},
           );
           // Pangea#
-          scaffoldMessenger.showSnackBar(
+          // #Pangea
+          scaffoldMessenger.showSnackBarAnnounced(
             SnackBar(content: Text((e as Object).toLocalizedString(context))),
+            assertive: true,
           );
+          // Pangea#
           return null;
         });
     // #Pangea
@@ -1863,9 +1880,11 @@ class ChatController extends State<ChatPageWithRoom>
     // });
     clearSelectedEvents();
     // Pangea#
-    ScaffoldMessenger.of(context).showSnackBar(
+    // #Pangea
+    ScaffoldMessenger.of(context).showSnackBarAnnounced(
       SnackBar(content: Text(L10n.of(context).contentHasBeenReported)),
     );
+    // Pangea#
   }
 
   void deleteErrorEventsAction() async {
@@ -2642,6 +2661,7 @@ class ChatController extends State<ChatPageWithRoom>
         displayDetails: CenteredOverlayDisplayDetails(
           overlayKey: "button_message_backdrop",
           bypassBlockingOverlays: bypassBlockingOverlays,
+          useParentBoundaries: false,
         ),
       );
 
@@ -2661,6 +2681,7 @@ class ChatController extends State<ChatPageWithRoom>
           backgroundColor: Colors.black,
           overlayKey: "message_toolbar_overlay",
           bypassBlockingOverlays: bypassBlockingOverlays,
+          useParentBoundaries: false,
         ),
       );
     } else {
@@ -2673,6 +2694,7 @@ class ChatController extends State<ChatPageWithRoom>
           backgroundColor: Colors.black,
           overlayKey: "message_toolbar_overlay",
           bypassBlockingOverlays: bypassBlockingOverlays,
+          useParentBoundaries: false,
         ),
       );
     }
@@ -2865,13 +2887,16 @@ class ChatController extends State<ChatPageWithRoom>
 
     if (assistanceState == AssistanceStateEnum.error) {
       final error = choreographer.errorService.error!;
-      ScaffoldMessenger.of(context).showSnackBar(
+      // #Pangea
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(
           duration: const Duration(seconds: 5),
           showCloseIcon: true,
           content: Text(error.toLocalizedString(context)),
         ),
+        assertive: true,
       );
+      // Pangea#
       choreographer.errorService.clear();
       return;
     }
@@ -2995,7 +3020,8 @@ class ChatController extends State<ChatPageWithRoom>
     if (resp.isError) return;
     if (mounted) {
       messenger.hideCurrentSnackBar();
-      messenger.showSnackBar(
+      // #Pangea
+      messenger.showSnackBarAnnounced(
         SnackBar(
           content: Text(
             L10n.of(context).languageUpdated,
@@ -3003,6 +3029,7 @@ class ChatController extends State<ChatPageWithRoom>
           ),
         ),
       );
+      // Pangea#
     }
   }
 

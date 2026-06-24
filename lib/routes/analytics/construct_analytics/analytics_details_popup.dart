@@ -31,6 +31,7 @@ import 'package:fluffychat/routes/chat/events/token_info_feedback/show_token_fee
 import 'package:fluffychat/routes/chat/events/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -317,7 +318,7 @@ class _PracticeButton extends StatelessWidget {
 
   void _showSnackbar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    ScaffoldMessenger.of(context).showSnackBar(
+    ScaffoldMessenger.of(context).showSnackBarAnnounced(
       SnackBar(content: Text(message), behavior: SnackBarBehavior.floating),
     );
   }

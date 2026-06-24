@@ -42,6 +42,9 @@ ActivityPlanModel activityPlanFromV2(Map<String, dynamic> doc) {
             // back to the goal text, which is stable and distinct within a role,
             // so goal-completion keying still works the same way per session.
             id: (g['id'] ?? g['goal'] ?? '') as String,
+            // Content-derived award identity; the bot awards on this so stars
+            // survive owner edits. Null on legacy/unmigrated goals.
+            goalSlug: g['goal_slug'] as String?,
             description: (g['goal'] ?? '') as String,
           ),
         )
@@ -105,6 +108,10 @@ ActivityPlanModel activityPlanFromV2(Map<String, dynamic> doc) {
     // the canonical row's version stamp for direct CMS reads. Either pins the
     // session at launch (activities.instructions.md).
     versionId: (doc['version_id'] ?? doc['updatedAt']) as String?,
+    // Pin-resolution outcome from the fetch (top-level, like version_id).
+    // Absent for direct CMS reads → defaults to "honored".
+    usedFallbackVersion: doc['used_fallback_version'] == true,
+    fallbackCause: doc['fallback_cause'] as String?,
     req: request,
     title: (plan['title'] ?? '') as String,
     description: plan['description'] as String?,
