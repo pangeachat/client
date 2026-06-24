@@ -144,6 +144,18 @@ void main() {
       expectNoOverlap(l);
     });
 
+    test('the page holds the column at the same width the menu had — no '
+        'resize or close/back jump when drilling in (#7146)', () {
+      // The page replaces the folded menu in the same slot, so the two must be
+      // the same width. An unequal ideal (520 menu vs 600 page) resized the
+      // panel and shifted the leading close/back icon when opening a sub-page.
+      final menuOnly = run(viewport: 1920, right: ['settings']);
+      final withPage = run(viewport: 1920, right: ['settingspage', 'settings']);
+      expect(withPage.right[0].width, menuOnly.right.single.width);
+      // Guard the defs directly so they can't silently drift apart again.
+      expect(def('settingspage').idealWidth, def('settings').idealWidth);
+    });
+
     test('an ordinary master/detail pair (analytics + vocab) still coexists '
         'when width allows — the fold is scoped to flagged details', () {
       // Same wide viewport: vocab is analytics's detail but NOT
