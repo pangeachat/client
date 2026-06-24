@@ -4,16 +4,16 @@ import 'dart:convert';
 
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 
+import 'package:fluffychat/pangea/common/config/environment.dart';
+
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
-import 'package:fluffychat/pangea/common/config/environment.dart';
 
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return 
-        fromBase64(Environment.googleAnalyticsFirebaseOptionsBase64!);
+      return fromBase64(Environment.googleAnalyticsFirebaseOptionsBase64!);
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.windows:
