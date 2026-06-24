@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -105,16 +104,12 @@ class GoalStarAnimationState extends State<GoalStarAnimation>
     final startSize = startRenderBox.size;
     final endSize = endRenderBox.size;
 
-    final columnWidth = FluffyThemes.isColumnMode(context)
-        ? (FluffyThemes.columnWidth + FluffyThemes.navRailWidth + 2.0)
-        : 0.0;
-
     final from = Offset(
-      startOffset.dx + startSize.width / 2 - columnWidth,
+      startOffset.dx + startSize.width / 2,
       startOffset.dy + startSize.height / 2,
     );
     final to = Offset(
-      endOffset.dx + endSize.width / 2 - columnWidth,
+      endOffset.dx + endSize.width / 2,
       endOffset.dy + endSize.height,
     );
 

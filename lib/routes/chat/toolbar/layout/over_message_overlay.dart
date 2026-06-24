@@ -79,9 +79,7 @@ class OverMessageOverlay extends StatelessWidget {
                 AnimatedContainer(
                   duration: FluffyThemes.animationDuration,
                   height: max(0, controller.spaceBelowContent),
-                  width:
-                      controller.screenSize!.width -
-                      (controller.showDetails ? FluffyThemes.columnWidth : 0),
+                  width: controller.parentWidth,
                 ),
               ],
             ),

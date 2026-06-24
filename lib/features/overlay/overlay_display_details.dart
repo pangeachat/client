@@ -84,11 +84,7 @@ class TransformOverlayDisplayDetails extends OverlayDisplayDetails {
 }
 
 class CenteredOverlayDisplayDetails extends OverlayDisplayDetails {
-  final bool useParentBoundaries;
-
   const CenteredOverlayDisplayDetails({
-    this.useParentBoundaries = true,
-
     required super.overlayKey,
     super.borderColor,
     super.backgroundColor,
@@ -104,11 +100,7 @@ class CenteredOverlayDisplayDetails extends OverlayDisplayDetails {
 }
 
 class TopOverlayDisplayDetails extends OverlayDisplayDetails {
-  final bool useParentBoundaries;
-
   const TopOverlayDisplayDetails({
-    this.useParentBoundaries = true,
-
     required super.overlayKey,
     super.borderColor,
     super.backgroundColor,
