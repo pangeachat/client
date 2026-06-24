@@ -331,6 +331,7 @@ class FindCoursePageView extends StatelessWidget {
           onPressed: () => context.go('/courses'),
         ),
         title: Text(L10n.of(context).browsePublicCourses),
+        centerTitle: false,
         actions: [
           IconButton(
             icon: const Icon(Icons.close),

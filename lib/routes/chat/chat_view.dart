@@ -321,7 +321,7 @@ class ChatView extends StatelessWidget {
                         ),
                         // Pangea#
                       ),
-                titleSpacing: FluffyThemes.isColumnMode(context) ? 24 : 0,
+                titleSpacing: 0,
                 title: ChatAppBarTitle(controller),
                 actions: _appBarActions(context),
                 bottom: PreferredSize(

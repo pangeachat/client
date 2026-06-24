@@ -72,6 +72,7 @@ class PangeaInvitationSelectionView extends StatelessWidget {
         ),
         titleSpacing: 0,
         title: Text(L10n.of(context).inviteContact),
+        centerTitle: false,
       ),
       body: MaxWidthBody(
         maxWidth: 800.0,

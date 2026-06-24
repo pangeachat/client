@@ -48,7 +48,6 @@ class ChatAppBarTitle extends StatelessWidget {
                 : NavigationUtil.goToSpaceRoute(room.id, ['details'], context),
       // Pangea#
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Hero(
             tag: 'content_banner',
