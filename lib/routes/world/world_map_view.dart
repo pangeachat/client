@@ -453,7 +453,7 @@ class _MapZoomControls extends StatelessWidget {
             children: [
               IconButton(
                 icon: const Icon(Icons.public),
-                tooltip: l10n.world,
+                tooltip: l10n.resetMapView,
                 onPressed: controller.resetToWorld,
               ),
               Divider(height: 1.0, color: theme.colorScheme.outlineVariant),

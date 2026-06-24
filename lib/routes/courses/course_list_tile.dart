@@ -58,11 +58,13 @@ class CourseListTile extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Avatar(
-                  mxContent: space.avatar,
-                  name: displayname,
-                  size: 44.0,
-                  borderRadius: BorderRadius.circular(10.0),
+                ExcludeSemantics(
+                  child: Avatar(
+                    mxContent: space.avatar,
+                    name: displayname,
+                    size: 44.0,
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                 ),
                 const SizedBox(width: 10.0),
                 Expanded(
@@ -70,12 +72,14 @@ class CourseListTile extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        displayname,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: theme.textTheme.titleSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
+                      ExcludeSemantics(
+                        child: Text(
+                          displayname,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: theme.textTheme.titleSmall?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 8.0),

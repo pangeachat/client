@@ -132,12 +132,19 @@ class SpacesNavigationRail extends StatelessWidget {
         position: b.BadgePosition.topEnd(top: -5, end: -7),
         child: ClipPath(
           clipper: MapClipper(),
-          child: Avatar(
-            mxContent: space.avatar,
-            name: displayname,
-            border: BorderSide(width: 1, color: Theme.of(context).dividerColor),
-            borderRadius: BorderRadius.circular(0),
-            size: naviRailWidth - (isColumnMode ? 32.0 : 24.0),
+          // The course name is already announced by NaviRailItem's toolTip, so
+          // exclude the avatar's own name label to avoid a double-read (#7185).
+          child: ExcludeSemantics(
+            child: Avatar(
+              mxContent: space.avatar,
+              name: displayname,
+              border: BorderSide(
+                width: 1,
+                color: Theme.of(context).dividerColor,
+              ),
+              borderRadius: BorderRadius.circular(0),
+              size: naviRailWidth - (isColumnMode ? 32.0 : 24.0),
+            ),
           ),
         ),
       ),
@@ -211,16 +218,26 @@ class SpacesNavigationRail extends StatelessWidget {
                         NaviRailItem(
                           isSelected: isWorld,
                           backgroundColor: Colors.transparent,
-                          icon: PangeaLogoSvg(
-                            width: naviRailWidth - (isColumnMode ? 32.0 : 24.0),
-                            forceColor: Theme.of(
-                              context,
-                            ).colorScheme.onSurfaceVariant,
+                          // #Pangea
+                          // Exclude the logo's semanticsLabel so VoiceOver reads
+                          // only the button tooltip ("world"), not the logo name.
+                          icon: ExcludeSemantics(
+                            child: PangeaLogoSvg(
+                              width:
+                                  naviRailWidth - (isColumnMode ? 32.0 : 24.0),
+                              forceColor: Theme.of(
+                                context,
+                              ).colorScheme.onSurfaceVariant,
+                            ),
                           ),
-                          selectedIcon: PangeaLogoSvg(
-                            width: naviRailWidth - (isColumnMode ? 32.0 : 24.0),
-                            forceColor: Theme.of(context).colorScheme.primary,
+                          selectedIcon: ExcludeSemantics(
+                            child: PangeaLogoSvg(
+                              width:
+                                  naviRailWidth - (isColumnMode ? 32.0 : 24.0),
+                              forceColor: Theme.of(context).colorScheme.primary,
+                            ),
                           ),
+                          // Pangea#
                           onTap: () {
                             collapse();
                             // World is home: clear every panel (both columns)
