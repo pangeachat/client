@@ -111,6 +111,7 @@ BASE_URL=https://app.staging.pangea.chat npx playwright test --config e2e/playwr
 
 - **Device testing**: `flutter run` on physical device or emulator for full app flows
 - **Playwright MCP**: Interactive browser exploration of the Flutter web build via Playwright MCP tools. Uses accessibility snapshots (`browser_snapshot`) to interact with Flutter's CanvasKit-rendered UI. Useful for authoring new specs and debugging semantics gaps. See [playwright-testing.instructions.md](playwright-testing.instructions.md) for the MCP interaction guide (login flow, navigation, accessibility enabling, tips)
+- **Agent browser QA**: An AI agent drives the live web client through the Claude-in-Chrome extension (not scripted Playwright, not Playwright MCP) for exploratory bug-finding against local or staging. The canvas semantics-tree wake recipe and round structure live in the [`agent-browser-qa`](../skills/agent-browser-qa/SKILL.md) skill; local env / staging switch via [`run-flutter-web-local`](../skills/run-flutter-web-local/SKILL.md).
 
 ## Future Work
 
