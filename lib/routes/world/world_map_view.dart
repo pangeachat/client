@@ -356,11 +356,14 @@ class WorldMapView extends StatelessWidget {
     );
 
     // The on-map zoom-out / World control (#7086): pins, clusters, and search
-    // only zoom the camera IN, so this is the way back out. Bottom-right, clear
-    // of the right column and above the attribution; shown on both the world map
-    // and a course map.
+    // only zoom the camera IN, so this is the way back out. Pinned to the
+    // viewport bottom-right and kept there when a right panel opens (#7166): the
+    // 88px cluster gutter reserved beside the right column leaves room, so the
+    // controls no longer slide left with the panel. (rightOverlayWidth still pads
+    // the camera fit in world_map.dart so focal content lands in the uncovered
+    // area; only this on-map chrome stays fixed.) Shown on world and course maps.
     final controls = Positioned(
-      right: controller.widget.rightOverlayWidth + 12,
+      right: 12,
       bottom: 28,
       child: _MapZoomControls(controller: controller),
     );
