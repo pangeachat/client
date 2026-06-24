@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:async/async.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
-import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -15,7 +13,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -40,8 +38,9 @@ class WorldUserCluster extends StatefulWidget {
 
 class _WorldUserClusterState extends State<WorldUserCluster> {
   bool _profileLoaded = false;
-  Uri? _avatarUrl;
-  String? _displayName;
+
+  final ValueNotifier<Uri?> _avatarUrl = ValueNotifier(null);
+  final ValueNotifier<String?> _displayName = ValueNotifier(null);
 
   @override
   void didChangeDependencies() {
@@ -51,14 +50,19 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
     _loadProfile();
   }
 
+  @override
+  void dispose() {
+    _avatarUrl.dispose();
+    _displayName.dispose();
+    super.dispose();
+  }
+
   Future<void> _loadProfile() async {
     try {
       final profile = await Matrix.of(context).client.fetchOwnProfile();
       if (!mounted) return;
-      setState(() {
-        _avatarUrl = profile.avatarUrl;
-        _displayName = profile.displayName;
-      });
+      _avatarUrl.value = profile.avatarUrl;
+      _displayName.value = profile.displayName;
     } catch (_) {
       // Avatar falls back to the initial; not worth surfacing.
     }
@@ -96,182 +100,67 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
     final service = Matrix.of(context).analyticsDataService;
     final client = Matrix.of(context).client;
     final dispatcher = service.updateDispatcher;
-    // Rebuild on the analytics update streams (and language changes) and read
-    // the stats INSIDE the builders — the pattern LearningProgressIndicators
-    // uses. A manual didChangeDependencies subscription missed the init-time
-    // updates the service fires on hot, no-replay broadcast streams (they land
-    // before the listener attaches on a cold load), leaving the cluster showing
-    // stale/zero stats until the next live update. A StreamBuilder subscribes
-    // during build — before init completes — so it catches them, and reads
-    // numConstructs/derivedData fresh on every rebuild. See
-    // analytics-system.instructions.md.
+
     return StreamBuilder(
-      // Stars are not an analytics construct — they're orchestrator-awarded
-      // goals living in each activity room's state — so rebuild on that state
-      // changing too, to keep the stars total live as goals complete.
-      stream: client.onRoomState.stream.where(
-        (e) => e.state.type == PangeaEventTypes.orchestratorAwardedGoals,
-      ),
+      stream: StreamGroup.merge([
+        client.onRoomState.stream.where(
+          (e) => e.state.type == PangeaEventTypes.orchestratorAwardedGoals,
+        ),
+        MatrixState.pangeaController.userController.languageStream.stream,
+        dispatcher.constructUpdateStream.stream,
+        dispatcher.activityAnalyticsStream.stream,
+      ]),
       builder: (context, _) {
-        return StreamBuilder(
-          stream:
-              MatrixState.pangeaController.userController.languageStream.stream,
-          builder: (context, _) {
-            final l2 = MatrixState.pangeaController.userController.userL2;
-            return StreamBuilder(
-              stream: dispatcher.constructUpdateStream.stream,
-              builder: (context, _) {
-                return StreamBuilder(
-                  stream: dispatcher.activityAnalyticsStream.stream,
-                  builder: (context, _) {
-                    // While the analytics database is still loading, shimmer the
-                    // whole cluster rather than flash zeros — this distinguishes
-                    // "loading" from a loaded-but-empty learner (#7078). The
-                    // construct/activity update streams above (and the derivedData
-                    // future below) rebuild this when init completes, flipping
-                    // isInitializing false. See analytics-system.instructions.md.
-                    if (service.isInitializing) {
-                      return WorldUserClusterShimmer(showFlag: l2 != null);
-                    }
-                    final vocab = service.numConstructs(
-                      ConstructTypeEnum.vocab,
-                    );
-                    final grammar = service.numConstructs(
-                      ConstructTypeEnum.morph,
-                    );
-                    // Total stars the learner has earned across their activity
-                    // sessions (best per activity, matching the per-pin star fill).
-                    final stars = _totalStars(client);
-                    return FutureBuilder<DerivedAnalyticsDataModel>(
-                      future: l2 != null
-                          ? service.derivedData(l2.langCodeShort)
-                          : Future.value(DerivedAnalyticsDataModel()),
-                      builder: (context, snapshot) {
-                        final derived =
-                            snapshot.data ?? service.cachedDerivedData;
-                        final level = derived?.level ?? 1;
-                        // Fraction toward the next level — the XP ring fill; resets
-                        // at each level-up.
-                        final progress = (derived?.levelProgress ?? 0.0).clamp(
-                          0.0,
-                          1.0,
-                        );
-                        return _cluster(
-                          l2: l2,
-                          level: level,
-                          progress: progress,
-                          vocab: vocab,
-                          grammar: grammar,
-                          stars: stars,
-                        );
-                      },
-                    );
-                  },
-                );
-              },
+        final l2 = MatrixState.pangeaController.userController.userL2;
+
+        final vocab = service.numConstructs(ConstructTypeEnum.vocab);
+        final grammar = service.numConstructs(ConstructTypeEnum.morph);
+        final earnedActivityStars = client.totalStarsEarned;
+
+        return FutureBuilder<DerivedAnalyticsDataModel>(
+          future: l2 != null
+              ? service.derivedData(l2.langCodeShort)
+              : Future.value(DerivedAnalyticsDataModel()),
+          builder: (context, snapshot) {
+            final derived = snapshot.data ?? service.cachedDerivedData;
+            final level = derived?.level ?? 1;
+            final progress = (derived?.levelProgress ?? 0.0).clamp(0.0, 1.0);
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ListenableBuilder(
+                  listenable: Listenable.merge([_avatarUrl, _displayName]),
+                  builder: (context, _) => _Avatar(
+                    avatarUrl: _avatarUrl.value,
+                    name: _displayName.value,
+                    onTap: _openProfile,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                _PowerupsPill(
+                  level: level,
+                  progress: progress,
+                  stars: earnedActivityStars,
+                  grammar: grammar,
+                  vocab: vocab,
+                  onTap: _openAnalytics,
+                  onLevelTap: _openLevel,
+                  loading: service.isInitializing,
+                ),
+                if (l2 != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: _LanguageFlag(
+                      language: l2,
+                      onTap: _openLearningSettings,
+                    ),
+                  ),
+              ],
             );
           },
         );
       },
-    );
-  }
-
-  /// Total stars = orchestrator-awarded goals across the learner's activity
-  /// sessions, taking the best per activity so multiple sessions of one
-  /// activity don't multiply its stars (matches the map's per-pin fill). Reads
-  /// each room's awarded-goals state and the learner's role assignment — no
-  /// activity plan needed, so it works for rooms whose plan hasn't hydrated.
-  int _totalStars(Client client) {
-    final byActivity = <String, int>{};
-    for (final room in client.rooms) {
-      final activityId = room.activityId;
-      final roleId = room.ownRoleState?.id;
-      if (activityId == null || roleId == null) continue;
-      final earned = room.orchestratorAwardedGoals.awards[roleId]?.length ?? 0;
-      if (earned > (byActivity[activityId] ?? 0)) {
-        byActivity[activityId] = earned;
-      }
-    }
-    return byActivity.values.fold<int>(0, (a, b) => a + b);
-  }
-
-  Widget _cluster({
-    required LanguageModel? l2,
-    required int level,
-    required double progress,
-    required int vocab,
-    required int grammar,
-    required int stars,
-  }) {
-    // Vertical cluster (avatar · powerups pill · flag). It lives in a right
-    // gutter beside the right-docked analytics panel (the panel is inset to
-    // leave room), so the cluster never covers the page — matching the design.
-    // See routing.instructions.md.
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        _Avatar(avatarUrl: _avatarUrl, name: _displayName, onTap: _openProfile),
-        const SizedBox(height: 8),
-        _PowerupsPill(
-          level: level,
-          progress: progress,
-          stars: stars,
-          grammar: grammar,
-          vocab: vocab,
-          onTap: _openAnalytics,
-          onLevelTap: _openLevel,
-        ),
-        if (l2 != null)
-          Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: _LanguageFlag(language: l2, onTap: _openLearningSettings),
-          ),
-      ],
-    );
-  }
-}
-
-/// The cluster's loading state (#7078): a shimmer skeleton in the cluster's
-/// shape — the avatar circle, the powerups pill, and (when an L2 is set) the
-/// language flag — shown while the analytics database is still loading, so the
-/// main view reads as "loading" instead of flashing zeros. [showFlag] mirrors
-/// the live cluster, which only draws the flag when an L2 is set, so the
-/// skeleton footprint matches and the layout does not jump on load.
-@visibleForTesting
-class WorldUserClusterShimmer extends StatelessWidget {
-  final bool showFlag;
-
-  const WorldUserClusterShimmer({super.key, required this.showFlag});
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final base = scheme.surfaceContainerHighest;
-    Widget box(double w, double h, double radius) => Container(
-      width: w,
-      height: h,
-      decoration: BoxDecoration(
-        color: base,
-        borderRadius: BorderRadius.circular(radius),
-      ),
-    );
-    return Shimmer.fromColors(
-      baseColor: base,
-      highlightColor: scheme.surface,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          box(56, 56, 28), // avatar circle
-          const SizedBox(height: 8),
-          box(72, 200, 28), // powerups pill (3 trackers + level medal)
-          if (showFlag)
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: box(52, 36, 6), // language flag
-            ),
-        ],
-      ),
     );
   }
 }
@@ -411,6 +300,7 @@ class _PowerupsPill extends StatelessWidget {
   final int vocab;
   final void Function(AnalyticsPanelTab) onTap;
   final VoidCallback onLevelTap;
+  final bool loading;
 
   const _PowerupsPill({
     required this.level,
@@ -420,6 +310,7 @@ class _PowerupsPill extends StatelessWidget {
     required this.vocab,
     required this.onTap,
     required this.onLevelTap,
+    required this.loading,
   });
 
   static const double _xpStroke = 5.0;
@@ -428,59 +319,72 @@ class _PowerupsPill extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
+    final content = Stack(
       alignment: Alignment.bottomCenter,
       children: [
         // The pill's frame IS the XP ring: a gray track that fills gold clockwise
         // from the bottom-center (where the level medal sits) toward the next
         // level. The trackers sit on a white field inside it; there is no solid
         // gold fill — the only gold is the XP progress.
-        CustomPaint(
-          painter: _XpBorderPainter(
-            progress: progress,
-            trackColor: const Color(0xFFBCC2CC),
-            progressColor: AppConfig.gold,
-            stroke: _xpStroke,
-            radius: _innerRadius + _xpInset + _xpStroke / 2,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(_xpInset + _xpStroke),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(_innerRadius),
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CustomPaint(
+              painter: _XpBorderPainter(
+                progress: progress,
+                trackColor: const Color(0xFFBCC2CC),
+                progressColor: AppConfig.gold,
+                stroke: _xpStroke,
+                radius: _innerRadius + _xpInset + _xpStroke / 2,
               ),
-              clipBehavior: Clip.antiAlias,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  _TrackerButton(
-                    indicator: ProgressIndicatorEnum.stars,
-                    count: stars,
-                    onTap: () => onTap(AnalyticsPanelTab.sessions),
+              child: Padding(
+                padding: const EdgeInsets.all(_xpInset + _xpStroke),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(_innerRadius),
                   ),
-                  _TrackerButton(
-                    indicator: ProgressIndicatorEnum.morphsUsed,
-                    count: grammar,
-                    onTap: () => onTap(AnalyticsPanelTab.grammar),
+                  clipBehavior: Clip.antiAlias,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _TrackerButton(
+                        indicator: ProgressIndicatorEnum.stars,
+                        count: stars,
+                        onTap: () => onTap(AnalyticsPanelTab.sessions),
+                      ),
+                      _TrackerButton(
+                        indicator: ProgressIndicatorEnum.morphsUsed,
+                        count: grammar,
+                        onTap: () => onTap(AnalyticsPanelTab.grammar),
+                      ),
+                      _TrackerButton(
+                        indicator: ProgressIndicatorEnum.wordsUsed,
+                        count: vocab,
+                        onTap: () => onTap(AnalyticsPanelTab.vocab),
+                      ),
+                    ],
                   ),
-                  _TrackerButton(
-                    indicator: ProgressIndicatorEnum.wordsUsed,
-                    count: vocab,
-                    onTap: () => onTap(AnalyticsPanelTab.vocab),
-                  ),
-                ],
+                ),
               ),
             ),
-          ),
+            SizedBox(height: 18),
+          ],
         ),
         Positioned(
-          bottom: -18,
+          bottom: 0,
           child: _LevelMedal(level: level, onTap: onLevelTap),
         ),
       ],
     );
+
+    return loading
+        ? Shimmer.fromColors(
+            baseColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+            highlightColor: Theme.of(context).colorScheme.surface,
+            child: content,
+          )
+        : content;
   }
 }
 
@@ -624,6 +528,27 @@ class _LanguageFlag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
+    final theme = Theme.of(context);
+
+    final codeWidget = Container(
+      width: _w,
+      height: _h,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: theme.colorScheme.primary,
+        borderRadius: BorderRadius.circular(_radius),
+      ),
+      child: Text(
+        language.langCodeShort.toUpperCase(),
+        style: TextStyle(
+          color: theme.colorScheme.onPrimary,
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+          height: 1.0,
+        ),
+      ),
+    );
+
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: Tooltip(
@@ -640,47 +565,21 @@ class _LanguageFlag extends StatelessWidget {
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: onTap,
-            child: _flagOrCode(context),
+            child: language.shouldShowFlag
+                ? ClipRRect(
+                    borderRadius: BorderRadius.circular(_radius),
+                    child: SvgPicture.network(
+                      language.svgUrl.toString(),
+                      width: _w,
+                      height: _h,
+                      fit: BoxFit.cover,
+                      errorBuilder: (ctx, _, _) => codeWidget,
+                      placeholderBuilder: (_) =>
+                          const SizedBox(width: _w, height: _h),
+                    ),
+                  )
+                : codeWidget,
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _flagOrCode(BuildContext context) {
-    if (language.shouldShowFlag) {
-      return ClipRRect(
-        borderRadius: BorderRadius.circular(_radius),
-        child: SvgPicture.network(
-          language.svgUrl.toString(),
-          width: _w,
-          height: _h,
-          fit: BoxFit.cover,
-          errorBuilder: (ctx, _, _) => _code(ctx),
-          placeholderBuilder: (_) => const SizedBox(width: _w, height: _h),
-        ),
-      );
-    }
-    return _code(context);
-  }
-
-  Widget _code(BuildContext context) {
-    final theme = Theme.of(context);
-    return Container(
-      width: _w,
-      height: _h,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: theme.colorScheme.primary,
-        borderRadius: BorderRadius.circular(_radius),
-      ),
-      child: Text(
-        language.langCodeShort.toUpperCase(),
-        style: TextStyle(
-          color: theme.colorScheme.onPrimary,
-          fontSize: 18,
-          fontWeight: FontWeight.w700,
-          height: 1.0,
         ),
       ),
     );
