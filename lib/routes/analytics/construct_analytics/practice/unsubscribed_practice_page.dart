@@ -38,10 +38,9 @@ class UnsubscribedPracticePage extends StatelessWidget {
         ? Colors.white.withAlpha(50)
         : Colors.black.withAlpha(50);
     final primaryColor = theme.colorScheme.primary;
-    final exampleMessageColor = Color.alphaBlend(
-      ThemeData.dark().colorScheme.primary,
-      Colors.white,
-    ).withAlpha(50);
+    final exampleMessageColor = Theme.of(
+      context,
+    ).colorScheme.primary.withAlpha(50);
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
     return Column(

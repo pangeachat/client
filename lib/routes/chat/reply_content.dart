@@ -110,7 +110,7 @@ class ReplyContent extends StatelessWidget {
                     //     ? theme.colorScheme.onTertiary
                     //     : theme.colorScheme.onSurface,
                     color: ownMessage
-                        ? ThemeData.dark().colorScheme.onPrimary
+                        ? theme.colorScheme.onPrimary
                         : theme.colorScheme.onSurface,
                     // Pangea#
                     fontSize: fontSize,

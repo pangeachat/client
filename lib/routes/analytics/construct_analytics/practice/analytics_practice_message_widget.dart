@@ -20,16 +20,13 @@ class AnalyticsPracticeExerciseExampleMessage extends StatelessWidget {
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
-            color: Color.alphaBlend(
-              Colors.white.withAlpha(180),
-              ThemeData.dark().colorScheme.primary,
-            ),
+            color: Theme.of(context).colorScheme.primary,
             borderRadius: BorderRadius.circular(16),
           ),
           child: RichText(
             text: TextSpan(
               style: TextStyle(
-                color: Theme.of(context).colorScheme.onPrimaryFixed,
+                color: Theme.of(context).colorScheme.onPrimary,
                 fontSize:
                     AppSettings.fontSizeFactor.value *
                     AppConfig.messageFontSize,

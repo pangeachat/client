@@ -70,10 +70,7 @@ class GrammarErrorExampleWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
-        color: Color.alphaBlend(
-          Colors.white.withAlpha(180),
-          ThemeData.dark().colorScheme.primary,
-        ),
+        color: Theme.of(context).colorScheme.primary,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
@@ -82,7 +79,7 @@ class GrammarErrorExampleWidget extends StatelessWidget {
           RichText(
             text: TextSpan(
               style: TextStyle(
-                color: Theme.of(context).colorScheme.onPrimaryFixed,
+                color: Theme.of(context).colorScheme.onPrimary,
                 fontSize:
                     AppSettings.fontSizeFactor.value *
                     AppConfig.messageFontSize,
@@ -96,7 +93,9 @@ class GrammarErrorExampleWidget extends StatelessWidget {
                     width: (errorLength * 8).toDouble(),
                     padding: const EdgeInsets.only(bottom: 2.0),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primary,
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.primaryContainer.withAlpha(200),
                     ),
                   ),
                 ),
@@ -117,7 +116,7 @@ class GrammarErrorExampleWidget extends StatelessWidget {
                       Text(
                         analyticsPracticeExercise.translation,
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.onPrimaryFixed,
+                          color: Theme.of(context).colorScheme.onPrimary,
                           fontSize:
                               AppSettings.fontSizeFactor.value *
                               AppConfig.messageFontSize,
