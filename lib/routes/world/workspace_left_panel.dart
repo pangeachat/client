@@ -88,7 +88,14 @@ class WorkspaceLeftPanel extends StatelessWidget {
         return Column(
           children: [
             _panelHeader(context, isColumnMode, L10n.of(context).chats),
-            Expanded(child: ChatList(activeChat: null, activeSpace: null)),
+            Expanded(
+              child: ChatList(
+                // Highlight the open room in the list (#7208): derive it from
+                // the `room:` panel token, not the legacy path param.
+                activeChat: activeRoomIdFor(GoRouterState.of(context)),
+                activeSpace: null,
+              ),
+            ),
           ],
         );
       case 'room':
