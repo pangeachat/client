@@ -2661,7 +2661,10 @@ class ChatController extends State<ChatPageWithRoom>
         displayDetails: CenteredOverlayDisplayDetails(
           overlayKey: "button_message_backdrop",
           bypassBlockingOverlays: bypassBlockingOverlays,
-          useParentBoundaries: false,
+          // #7157: the pre-toolbar backdrop is a plain backdrop, so bound both it
+          // and the auto-dismiss backdrop to the chat panel.
+          useParentBoundaries: true,
+          boundBackdropToParent: true,
         ),
       );
 
@@ -2682,6 +2685,8 @@ class ChatController extends State<ChatPageWithRoom>
           overlayKey: "message_toolbar_overlay",
           bypassBlockingOverlays: bypassBlockingOverlays,
           useParentBoundaries: false,
+          // #7157: dim only the chat panel, not the whole screen.
+          boundBackdropToParent: true,
         ),
       );
     } else {
@@ -2695,6 +2700,8 @@ class ChatController extends State<ChatPageWithRoom>
           overlayKey: "message_toolbar_overlay",
           bypassBlockingOverlays: bypassBlockingOverlays,
           useParentBoundaries: false,
+          // #7157: dim only the chat panel, not the whole screen.
+          boundBackdropToParent: true,
         ),
       );
     }

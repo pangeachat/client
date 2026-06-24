@@ -171,7 +171,9 @@ class CenteredMessage extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(width: controller.screenSize!.width, height: 20.0),
+                  // #7157: fill the panel-bounded parent (was screen width) so
+                  // the message centers within the chat panel, not the screen.
+                  const SizedBox(width: double.infinity, height: 20.0),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.0),
                     child: OverlayCenterContent(

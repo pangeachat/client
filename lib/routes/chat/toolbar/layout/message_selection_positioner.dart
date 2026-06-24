@@ -9,6 +9,8 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/features/overlay/overlay.dart';
+import 'package:fluffychat/features/overlay/widget_boundaries_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
@@ -155,6 +157,14 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     "Error getting media query size",
     null,
   );
+
+  /// The chat panel's rect as insets from the screen edges. In world_v2 the chat
+  /// is a panel over the map, so the practice overlay (centered message, input
+  /// bar, instruction) must lay out within this rect, not the whole screen
+  /// (#7157). On a full-screen chat the insets are ~0, so behaviour is unchanged.
+  WidgetBoundaries get _panelBounds =>
+      OverlayUtil.getBoundingBox(widget.chatController.context) ??
+      WidgetBoundaries.defaultBoundaries;
 
   EdgeInsets? get screenPadding => _runWithLogging<EdgeInsets?>(
     () => MediaQuery.paddingOf(context),
@@ -423,15 +433,25 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                     ),
                     if (readingAssistanceMode ==
                         ReadingAssistanceMode.practiceMode) ...[
-                      CenteredMessage(controller: this),
+                      // #7157: center the message within the chat panel, not the
+                      // whole screen. The transition reads this widget's real
+                      // position, so it follows automatically.
+                      Positioned(
+                        top: 0,
+                        bottom: 0,
+                        left: _panelBounds.left,
+                        right: _panelBounds.right,
+                        child: CenteredMessage(controller: this),
+                      ),
                       PracticeModeTransitionAnimation(
                         targetId:
                             "overlay_center_message_${widget.event.eventId}",
                         controller: this,
                       ),
                       Positioned(
-                        left: 0,
-                        right: 0,
+                        // #7157: span the chat panel, not the whole screen.
+                        left: _panelBounds.left,
+                        right: _panelBounds.right,
                         bottom: 20,
                         child: ReadingAssistanceInputBar(
                           widget.overlayController.practiceController,
@@ -447,8 +467,9 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                                 _ => 80,
                               }
                             : 0,
-                        left: 0,
-                        right: 0,
+                        // #7157: span the chat panel, not the whole screen.
+                        left: _panelBounds.left,
+                        right: _panelBounds.right,
                         child: ListenableBuilder(
                           listenable:
                               widget.overlayController.practiceController,

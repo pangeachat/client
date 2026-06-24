@@ -38,6 +38,33 @@ class OverlayUtil {
     }
   }
 
+  /// The dismiss backdrop. Confined to the opening context's rect when
+  /// [OverlayDisplayDetails.boundBackdropToParent] is set (so a chat toolbar
+  /// overlay dims only its panel, not the whole screen — #7157); otherwise it
+  /// fills the screen as before.
+  static Widget _backdrop(
+    BuildContext context,
+    OverlayDisplayDetails displayDetails,
+  ) {
+    final WidgetBoundaries bounds = displayDetails.boundBackdropToParent
+        ? (getBoundingBox(context) ?? WidgetBoundaries.defaultBoundaries)
+        : WidgetBoundaries.defaultBoundaries;
+    return Positioned(
+      top: bounds.top,
+      bottom: bounds.bottom,
+      left: bounds.left,
+      right: bounds.right,
+      child: IgnorePointer(
+        ignoring: displayDetails.ignorePointer,
+        child: TransparentBackdrop(
+          backgroundColor: displayDetails.backgroundColor,
+          onDismiss: displayDetails.onDismiss,
+          blurBackground: displayDetails.blurBackground,
+        ),
+      ),
+    );
+  }
+
   static bool showOverlay({
     required BuildContext context,
     required Widget child,
@@ -52,14 +79,7 @@ class OverlayUtil {
         builder: (_) => Stack(
           children: [
             if (displayDetails.backDropToDismiss)
-              IgnorePointer(
-                ignoring: displayDetails.ignorePointer,
-                child: TransparentBackdrop(
-                  backgroundColor: displayDetails.backgroundColor,
-                  onDismiss: displayDetails.onDismiss,
-                  blurBackground: displayDetails.blurBackground,
-                ),
-              ),
+              _backdrop(context, displayDetails),
             switch (displayDetails) {
               TransformOverlayDisplayDetails(
                 transformTargetId: final targetId,

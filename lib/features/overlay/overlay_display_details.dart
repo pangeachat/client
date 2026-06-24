@@ -15,6 +15,12 @@ sealed class OverlayDisplayDetails {
   final bool ignorePointer;
   final bool canPop;
 
+  /// Confine the dismiss backdrop (and so the dimming) to the rect of the
+  /// context that opened the overlay, instead of the whole screen. Lets a chat
+  /// toolbar overlay dim only its panel in world_v2 (#7157). Default false keeps
+  /// the historical full-screen backdrop.
+  final bool boundBackdropToParent;
+
   final VoidCallback? onDismiss;
 
   const OverlayDisplayDetails({
@@ -28,6 +34,7 @@ sealed class OverlayDisplayDetails {
     this.closePrevOverlay = true,
     this.ignorePointer = false,
     this.canPop = true,
+    this.boundBackdropToParent = false,
     this.onDismiss,
   });
 }
@@ -99,6 +106,7 @@ class CenteredOverlayDisplayDetails extends OverlayDisplayDetails {
     super.closePrevOverlay = true,
     super.ignorePointer = false,
     super.canPop = true,
+    super.boundBackdropToParent = false,
     super.onDismiss,
   });
 }
