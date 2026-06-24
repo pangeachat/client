@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -145,43 +144,12 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   bool get ownMessage =>
       widget.event.senderId == widget.event.room.client.userID;
 
-  bool get showDetails =>
-      AppSettings.displayChatDetailsColumn.value &&
-      FluffyThemes.isThreeColumnMode(context) &&
-      widget.chatController.room.membership == Membership.join;
-
-  Size? get screenSize => _runWithLogging<Size?>(
-    () => MediaQuery.sizeOf(context),
-    "Error getting media query size",
-    null,
-  );
-
-  EdgeInsets? get screenPadding => _runWithLogging<EdgeInsets?>(
-    () => MediaQuery.paddingOf(context),
-    "Error getting media query padding",
-    null,
-  );
-
   double get _toolbarMaxWidth {
-    const double messageMargin = 16.0;
-    // widget.event.isActivityMessage ? 0 : Avatar.defaultSize + 16 + 8;
-    final bool showingDetails = widget.chatController.displayChatDetailsColumn;
-    final double totalMaxWidth =
-        FluffyThemes.maxTimelineWidth -
-        (showingDetails ? FluffyThemes.columnWidth : 0) -
-        messageMargin;
-    double? maxWidth;
+    const messageMargin = 16.0;
+    final totalPadding = messageMargin + (2 * _horizontalPadding);
 
-    if (screenSize != null) {
-      final chatViewWidth = screenSize!.width;
-      maxWidth = chatViewWidth - (2 * _horizontalPadding) - messageMargin;
-    }
-
-    if (maxWidth == null || maxWidth > totalMaxWidth) {
-      maxWidth = totalMaxWidth;
-    }
-
-    return maxWidth;
+    final parentWidth = _parentRenderBox?.size.width ?? 300.0;
+    return parentWidth - totalPadding;
   }
 
   Size get _defaultMessageSize => const Size(FluffyThemes.columnWidth / 2, 100);
@@ -202,32 +170,56 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     null,
   );
 
-  Size? get _overlayMessageSize => _overlayMessageRenderBox?.size;
-
-  Offset? get overlayMessageOffset {
-    if (_overlayMessageRenderBox == null ||
-        !_overlayMessageRenderBox!.hasSize) {
-      return null;
-    }
-    return _runWithLogging(
-      () => _overlayMessageRenderBox?.localToGlobal(Offset.zero),
-      "Error getting overlay message offset",
-      null,
-    );
-  }
-
   RenderBox? get _messageRenderBox => _runWithLogging<RenderBox?>(
     () => MatrixState.pAnyState.getRenderBox(widget.event.eventId),
     "Error getting message render box",
     null,
   );
 
-  Offset? get _originalMessageOffset {
-    if (_messageRenderBox == null || !_messageRenderBox!.hasSize) {
-      return null;
-    }
+  RenderBox? get _parentRenderBox => _runWithLogging<RenderBox?>(
+    () {
+      final overlay = Overlay.of(context);
+      final renderBox = overlay.context.findRenderObject() as RenderBox?;
+      if (renderBox == null || !renderBox.hasSize) return null;
+      return renderBox;
+    },
+    "Error getting message render box",
+    null,
+  );
+
+  double? get parentWidth => _parentRenderBox?.size.width;
+
+  double? get parentHeight => _parentRenderBox?.size.height;
+
+  Size? get _overlayMessageSize => _overlayMessageRenderBox?.size;
+
+  Offset? get overlayMessageOffset {
+    final overlayMessageRenderBox = _overlayMessageRenderBox;
+    if (overlayMessageRenderBox == null) return null;
+
+    final parentRenderBox = _parentRenderBox;
+    if (parentRenderBox == null) return null;
+
     return _runWithLogging(
-      () => _messageRenderBox?.localToGlobal(Offset.zero),
+      () => parentRenderBox.globalToLocal(
+        overlayMessageRenderBox.localToGlobal(Offset.zero),
+      ),
+      "Error getting overlay message offset",
+      null,
+    );
+  }
+
+  Offset? get _originalMessageOffset {
+    final messageRenderBox = _messageRenderBox;
+    if (messageRenderBox == null) return null;
+
+    final parentRenderBox = _parentRenderBox;
+    if (parentRenderBox == null) return null;
+
+    return _runWithLogging(
+      () => parentRenderBox.globalToLocal(
+        messageRenderBox.localToGlobal(Offset.zero),
+      ),
       "Error getting message offset",
       null,
     );
@@ -235,12 +227,13 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   /// The size of the message in the chat list (as opposed to the expanded size in the center overlay)
   Size get originalMessageSize {
-    if (_messageRenderBox == null || !_messageRenderBox!.hasSize) {
+    final messageRenderBox = _messageRenderBox;
+    if (messageRenderBox == null) {
       return _defaultMessageSize;
     }
 
     return _runWithLogging(
-      () => _messageRenderBox?.size,
+      () => messageRenderBox.size,
       "Error getting message size",
       _defaultMessageSize,
     );
@@ -259,17 +252,15 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   double? get messageRightOffset {
-    if (screenSize == null || !ownMessage) return null;
+    final parentWidth = this.parentWidth;
+    if (parentWidth == null || !ownMessage) return null;
 
     final offset = _originalMessageOffset;
     if (offset == null) {
       return 8.0;
     }
 
-    return screenSize!.width -
-        offset.dx -
-        originalMessageSize.width -
-        (showDetails ? FluffyThemes.columnWidth : 0);
+    return parentWidth - offset.dx - originalMessageSize.width;
   }
 
   Alignment get messageAlignment {
@@ -293,32 +284,20 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         4.0;
   }
 
-  double? get _wordCardLeftOffset {
-    if (ownMessage) return null;
-    if (widget.overlayController.selectedToken != null &&
-        screenSize != null &&
-        (screenSize!.width < _toolbarMaxWidth + messageLeftOffset!)) {
-      return screenSize!.width - _toolbarMaxWidth - 8.0;
-    }
-    return messageLeftOffset;
-  }
-
   double get _fullContentHeight {
     return _contentHeight + overheadContentHeight;
   }
 
-  double? get _screenHeight {
-    if (screenSize == null || screenPadding == null) return null;
-    return screenSize!.height - screenPadding!.bottom - screenPadding!.top;
-  }
-
   bool get shouldScroll {
-    if (_screenHeight == null) return false;
-    return _fullContentHeight > _screenHeight!;
+    final parentHeight = this.parentHeight;
+    if (parentHeight == null) return false;
+    return _fullContentHeight > parentHeight;
   }
 
   bool get _hasFooterOverflow {
-    if (_screenHeight == null) return false;
+    final parentHeight = this.parentHeight;
+    if (parentHeight == null) return false;
+
     final offset = _originalMessageOffset;
     if (offset == null) return false;
 
@@ -329,13 +308,12 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         AppConfig.toolbarMenuHeight +
         4.0;
 
-    return bottomOffset >
-        (_screenHeight! + MediaQuery.paddingOf(context).bottom);
+    return bottomOffset > parentHeight;
   }
 
   double get spaceBelowContent {
-    if (shouldScroll) return 0;
-    if (_hasFooterOverflow) return 0;
+    if (shouldScroll || _hasFooterOverflow) return 0;
+
     final offset = _originalMessageOffset;
     if (offset == null) return 300;
 
@@ -343,15 +321,15 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     final originalContentHeight =
         messageHeight + _reactionsHeight + AppConfig.toolbarMenuHeight + 8.0;
 
-    final screenHeight = screenSize!.height - screenPadding!.bottom;
+    final parentHeight = this.parentHeight;
+    if (parentHeight == null) return 300;
 
-    double boxHeight = screenHeight - offset.dy - originalContentHeight;
+    double boxHeight = parentHeight - offset.dy - originalContentHeight;
 
-    final neededSpace =
-        boxHeight + _fullContentHeight + screenPadding!.top + 4.0;
+    final neededSpace = boxHeight + _fullContentHeight + 4.0;
 
-    if (neededSpace > screenHeight) {
-      boxHeight = screenHeight - _fullContentHeight - screenPadding!.top - 4.0;
+    if (neededSpace > parentHeight) {
+      boxHeight = parentHeight - _fullContentHeight - 4.0;
     }
 
     return boxHeight;
@@ -380,106 +358,97 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   @override
   Widget build(BuildContext context) {
-    if (_messageRenderBox == null || screenSize == null) {
+    final parentRendexBox = _parentRenderBox;
+    if (_messageRenderBox == null || parentRendexBox == null) {
       return const SizedBox.shrink();
     }
 
     widget.overlayController.maxWidth = _toolbarMaxWidth;
     return SafeArea(
-      child: Row(
+      child: Column(
         children: [
-          Column(
-            children: [
-              SizedBox(
-                width:
-                    screenSize!.width -
-                    (showDetails ? FluffyThemes.columnWidth : 0),
-                height: _screenHeight!,
-                child: Stack(
-                  alignment: ownMessage
-                      ? Alignment.centerRight
-                      : Alignment.centerLeft,
-                  children: [
-                    ValueListenableBuilder(
-                      valueListenable: _startedTransition,
-                      builder: (context, started, _) {
-                        return !started
-                            ? OverMessageOverlay(controller: this)
-                            : const SizedBox();
-                      },
-                    ),
-                    ValueListenableBuilder(
-                      valueListenable: _startedTransition,
-                      builder: (context, started, _) {
-                        return !started && shouldScroll
-                            ? Positioned(
-                                top: 0,
-                                left: _wordCardLeftOffset,
-                                right: messageRightOffset ?? 0,
-                                child: WordCardSwitcher(controller: this),
-                              )
-                            : const SizedBox();
-                      },
-                    ),
-                    if (readingAssistanceMode ==
-                        ReadingAssistanceMode.practiceMode) ...[
-                      CenteredMessage(controller: this),
-                      PracticeModeTransitionAnimation(
-                        targetId:
-                            "overlay_center_message_${widget.event.eventId}",
-                        controller: this,
-                      ),
-                      Positioned(
-                        left: 0,
-                        right: 0,
-                        bottom: 20,
-                        child: ReadingAssistanceInputBar(
-                          widget.overlayController.practiceController,
-                          maxWidth: widget.overlayController.maxWidth,
-                          selectedToken: widget.overlayController.selectedToken,
-                        ),
-                      ),
-                      Positioned(
-                        top: FluffyThemes.isColumnMode(context)
-                            ? switch (MediaQuery.heightOf(context)) {
-                                < 700 => 0,
-                                > 900 => 160,
-                                _ => 80,
-                              }
-                            : 0,
-                        left: 0,
-                        right: 0,
-                        child: ListenableBuilder(
-                          listenable:
-                              widget.overlayController.practiceController,
-                          builder: (context, _) {
-                            final practice =
-                                widget.overlayController.practiceController;
-
-                            final practiceMode = practice.practiceMode;
-                            final instruction = practiceMode.instruction;
-                            final complete =
-                                practice.isCurrentPracticeSessionDone;
-
-                            if (instruction != null && !complete) {
-                              return InstructionsInlineTooltip(
-                                instructionsEnum: practiceMode.instruction!,
-                                padding: const EdgeInsets.all(16.0),
-                                animate: false,
-                              );
-                            }
-
-                            return const SizedBox();
-                          },
-                        ),
-                      ),
-                    ],
-                  ],
+          SizedBox(
+            width: parentRendexBox.size.width,
+            height: parentRendexBox.size.height,
+            child: Stack(
+              alignment: ownMessage
+                  ? Alignment.centerRight
+                  : Alignment.centerLeft,
+              children: [
+                ValueListenableBuilder(
+                  valueListenable: _startedTransition,
+                  builder: (context, started, _) {
+                    return !started
+                        ? OverMessageOverlay(controller: this)
+                        : const SizedBox();
+                  },
                 ),
-              ),
-            ],
+                ValueListenableBuilder(
+                  valueListenable: _startedTransition,
+                  builder: (context, started, _) {
+                    return !started && shouldScroll
+                        ? Positioned(
+                            top: 0,
+                            left: messageLeftOffset,
+                            right: messageRightOffset,
+                            child: WordCardSwitcher(controller: this),
+                          )
+                        : const SizedBox();
+                  },
+                ),
+                if (readingAssistanceMode ==
+                    ReadingAssistanceMode.practiceMode) ...[
+                  CenteredMessage(controller: this),
+                  PracticeModeTransitionAnimation(
+                    targetId: "overlay_center_message_${widget.event.eventId}",
+                    controller: this,
+                  ),
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: 20,
+                    child: ReadingAssistanceInputBar(
+                      widget.overlayController.practiceController,
+                      maxWidth: widget.overlayController.maxWidth,
+                      selectedToken: widget.overlayController.selectedToken,
+                    ),
+                  ),
+                  Positioned(
+                    top: FluffyThemes.isColumnMode(context)
+                        ? switch (MediaQuery.heightOf(context)) {
+                            < 700 => 0,
+                            > 900 => 160,
+                            _ => 80,
+                          }
+                        : 0,
+                    left: 0,
+                    right: 0,
+                    child: ListenableBuilder(
+                      listenable: widget.overlayController.practiceController,
+                      builder: (context, _) {
+                        final practice =
+                            widget.overlayController.practiceController;
+
+                        final practiceMode = practice.practiceMode;
+                        final instruction = practiceMode.instruction;
+                        final complete = practice.isCurrentPracticeSessionDone;
+
+                        if (instruction != null && !complete) {
+                          return InstructionsInlineTooltip(
+                            instructionsEnum: practiceMode.instruction!,
+                            padding: const EdgeInsets.all(16.0),
+                            animate: false,
+                          );
+                        }
+
+                        return const SizedBox();
+                      },
+                    ),
+                  ),
+                ],
+              ],
+            ),
           ),
-          if (showDetails) const SizedBox(width: FluffyThemes.columnWidth),
         ],
       ),
     );

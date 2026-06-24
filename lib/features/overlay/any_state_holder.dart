@@ -81,8 +81,6 @@ class PangeaAnyState {
       ),
     );
 
-    debugPrint("OPENING OVERLAY. ROOT OVERLAY: $rootOverlay");
-
     Overlay.of(
       context,
       rootOverlay: rootOverlay,
