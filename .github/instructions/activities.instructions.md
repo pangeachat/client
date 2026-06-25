@@ -44,6 +44,10 @@ Video is where the two surfaces differ most:
 
 That tap is the *only* time a video starts on its own, and it starts **muted, with a tap to unmute**. Muting is what lets it start at all — browsers block sound the learner didn't ask for — and it keeps the feel consistent with tap-to-play everywhere else. The request to autoplay travels with the activity's link, so reopening or sharing that link replays the same thing, the same way "skip to role selection" and "reopen this session" do.
 
+***
+
+Do not add ActivityVocabWidget to ActivityStatsMenu.
+
 ## Future Work
 *Last updated: 2026-02-15*
 
