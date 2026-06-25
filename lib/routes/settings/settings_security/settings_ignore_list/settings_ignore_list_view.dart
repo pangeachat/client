@@ -16,11 +16,6 @@ class SettingsIgnoreListView extends StatelessWidget {
 
     final client = Matrix.of(context).client;
     return Scaffold(
-      appBar: AppBar(
-        // No own leading/back — the workspace panel card owns close/back.
-        automaticallyImplyLeading: false,
-        title: Text(L10n.of(context).blockedUsers),
-      ),
       body: MaxWidthBody(
         withScrolling: false,
         child: StreamBuilder(

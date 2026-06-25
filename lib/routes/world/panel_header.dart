@@ -18,28 +18,29 @@ class PanelHeader extends StatelessWidget {
   /// its own title.
   final String title;
 
-  const PanelHeader({super.key, required this.leading, required this.title});
+  final Widget? trailing;
+
+  const PanelHeader({
+    super.key,
+    required this.leading,
+    required this.title,
+    this.trailing,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(4, 4, 4, 0),
-      child: Row(
-        children: [
-          leading,
-          const SizedBox(width: 4),
-          Expanded(
-            child: Text(
-              title,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(
-                context,
-              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
-            ),
-          ),
-        ],
+    return AppBar(
+      leading: leading,
+      title: Expanded(
+        child: Text(
+          title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
       ),
+      actions: [?trailing],
+      centerTitle: false,
     );
   }
 }

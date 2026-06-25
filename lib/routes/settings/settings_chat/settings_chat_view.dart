@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/settings_switch_list_tile.dart';
@@ -17,11 +16,6 @@ class SettingsChatView extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(L10n.of(context).chat),
-        automaticallyImplyLeading: false,
-        centerTitle: FluffyThemes.isColumnMode(context),
-      ),
       body: ListTileTheme(
         iconColor: theme.textTheme.bodyLarge!.color,
         child: MaxWidthBody(

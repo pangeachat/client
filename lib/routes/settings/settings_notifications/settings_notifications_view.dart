@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/notifications/notifications_client_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_notifications/push_rule_extensions.dart';
@@ -38,11 +37,6 @@ class SettingsNotificationsView extends StatelessWidget {
         (rules: pushRules?.underride ?? [], kind: PushRuleKind.underride),
     ];
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: FluffyThemes.isColumnMode(context),
-        title: Text(L10n.of(context).notifications),
-      ),
       body: MaxWidthBody(
         child: StreamBuilder(
           stream: Matrix.of(context).client.onSync.stream.where(

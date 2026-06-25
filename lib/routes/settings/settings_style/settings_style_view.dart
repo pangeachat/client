@@ -27,11 +27,6 @@ class SettingsStyleView extends StatelessWidget {
     const colorPickerSize = 32.0;
     final client = Matrix.of(context).client;
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: FluffyThemes.isColumnMode(context),
-        title: Text(L10n.of(context).changeTheme),
-      ),
       backgroundColor: theme.colorScheme.surface,
       body: MaxWidthBody(
         child: Column(

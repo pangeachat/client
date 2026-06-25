@@ -14,10 +14,12 @@ import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
+import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/right_panel/panel_card_with_header.dart';
 import 'package:fluffychat/routes/world/right_panel/right_panel_analytics_practice_subpage.dart';
 import 'package:fluffychat/routes/world/right_panel/right_panel_analytics_subpage.dart';
 import 'package:fluffychat/routes/world/right_panel/right_panel_settings_subpage.dart';
+import 'package:fluffychat/routes/world/settings_page_enum.dart';
 
 /// Renders one right-column panel token as a rounded card floating over the map.
 /// The header carries the close (a summary/review) or back (a detail blooming
@@ -98,15 +100,29 @@ class WorkspaceRightPanel extends StatelessWidget {
         icon: leadingIcon,
         onLeading: () => context.go(WorkspaceNav.closeSettings(currentUri)),
         tooltip: leadingTooltip,
-        child: const RightPanelSettingsSubpage(),
+        child: RightPanelSettingsSubpage(),
       ),
-      'settingspage' => PanelCardWithHeader(
-        title: '',
-        icon: leadingIcon,
-        onLeading: onLeading,
-        tooltip: leadingTooltip,
-        child: RightPanelSettingsSubpage(subPath: page),
-      ),
+      'settingspage' => () {
+        final settingsPage = SettingsPageEnum.fromString(page);
+        return settingsPage.addHeader
+            ? PanelCardWithHeader(
+                title: settingsPage.title(l10n),
+                icon: leadingIcon,
+                onLeading: onLeading,
+                tooltip: leadingTooltip,
+                child: RightPanelSettingsSubpage(subPath: page),
+              )
+            : PanelCard(
+                child: RightPanelSettingsSubpage(
+                  subPath: page,
+                  closeButton: IconButton(
+                    tooltip: leadingTooltip,
+                    icon: Icon(leadingIcon),
+                    onPressed: onLeading,
+                  ),
+                ),
+              );
+      }(),
       'vocab' || 'grammar' => PanelCardWithHeader(
         title: _construct?.lemma ?? '',
         icon: leadingIcon,

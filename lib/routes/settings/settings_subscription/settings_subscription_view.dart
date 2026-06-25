@@ -30,11 +30,6 @@ class SettingsSubscriptionView extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        title: Text(L10n.of(context).subscriptionManagement),
-      ),
       body: Stack(
         fit: StackFit.expand,
         children: [

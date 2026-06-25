@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_device/device_settings.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -15,11 +14,6 @@ class DevicesSettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: FluffyThemes.isColumnMode(context),
-        title: Text(L10n.of(context).devices),
-      ),
       body: MaxWidthBody(
         child: FutureBuilder<bool>(
           future: controller.loadUserDevices(context),

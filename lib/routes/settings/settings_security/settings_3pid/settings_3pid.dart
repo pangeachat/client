@@ -11,8 +11,9 @@ import 'settings_3pid_view.dart';
 
 class Settings3Pid extends StatefulWidget {
   static int sendAttempt = 0;
+  final Widget? closeButton;
 
-  const Settings3Pid({super.key});
+  const Settings3Pid({super.key, this.closeButton});
 
   @override
   Settings3PidController createState() => Settings3PidController();

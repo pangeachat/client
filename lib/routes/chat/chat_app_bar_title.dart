@@ -63,7 +63,7 @@ class ChatAppBarTitle extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 12),
-          Expanded(
+          Flexible(
             child: Column(
               crossAxisAlignment: .start,
               children: [
@@ -71,7 +71,6 @@ class ChatAppBarTitle extends StatelessWidget {
                   room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(fontSize: 16),
                 ),
                 StreamBuilder(
                   stream: room.client.onSyncStatus.stream,
