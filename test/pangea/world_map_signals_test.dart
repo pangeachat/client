@@ -14,7 +14,7 @@ ActivitySessionFacts _session(
   int totalGoals = 0,
   bool joinable = false,
   int lastEventMs = 0,
-}) => (
+}) => ActivitySessionFacts(
   activityId: activityId,
   holdsRole: holdsRole,
   collectedGoals: collectedGoals,
@@ -36,7 +36,7 @@ ActivityCompletionFacts _completion(
 void main() {
   group('reduceActivitySignals', () {
     test('a held role reads unlocked with the collected/total fraction', () {
-      final s = reduceActivitySignals(
+      final s = WorldMapSignalUtils.reduceActivitySignals(
         [_session('a', holdsRole: true, collectedGoals: 3, totalGoals: 4)],
         pingedActivityIds: const {},
         nowMs: 0,
@@ -46,7 +46,7 @@ void main() {
     });
 
     test('keeps the BEST fraction across sessions of the same activity', () {
-      final s = reduceActivitySignals(
+      final s = WorldMapSignalUtils.reduceActivitySignals(
         [
           _session('a', holdsRole: true, collectedGoals: 1, totalGoals: 4),
           _session('a', holdsRole: true, collectedGoals: 3, totalGoals: 4),
@@ -58,7 +58,7 @@ void main() {
     });
 
     test('total 0 yields 0 fraction (no divide-by-zero)', () {
-      final s = reduceActivitySignals(
+      final s = WorldMapSignalUtils.reduceActivitySignals(
         [_session('a', holdsRole: true, collectedGoals: 0, totalGoals: 0)],
         pingedActivityIds: const {},
         nowMs: 0,
@@ -69,7 +69,7 @@ void main() {
     test(
       'joinable beats unlocked on the colour ladder, fraction preserved',
       () {
-        final s = reduceActivitySignals(
+        final s = WorldMapSignalUtils.reduceActivitySignals(
           [
             // one session where the user holds a role (unlocked, half done)…
             _session('a', holdsRole: true, collectedGoals: 1, totalGoals: 2),
@@ -85,21 +85,21 @@ void main() {
     );
 
     test('recency decays linearly from the newest open session over 24h', () {
-      final fresh = reduceActivitySignals(
+      final fresh = WorldMapSignalUtils.reduceActivitySignals(
         [_session('a', joinable: true, lastEventMs: _dayMs)],
         pingedActivityIds: const {},
         nowMs: _dayMs, // age 0
       );
       expect(fresh['a']!.recency, closeTo(1.0, 1e-9));
 
-      final half = reduceActivitySignals(
+      final half = WorldMapSignalUtils.reduceActivitySignals(
         [_session('a', joinable: true, lastEventMs: _dayMs ~/ 2)],
         pingedActivityIds: const {},
         nowMs: _dayMs, // age 12h
       );
       expect(half['a']!.recency, closeTo(0.5, 1e-9));
 
-      final stale = reduceActivitySignals(
+      final stale = WorldMapSignalUtils.reduceActivitySignals(
         [_session('a', joinable: true, lastEventMs: _dayMs)],
         pingedActivityIds: const {},
         nowMs: _dayMs * 3, // age 48h → clamped to 0
@@ -108,7 +108,7 @@ void main() {
     });
 
     test('the newest open session wins for recency', () {
-      final s = reduceActivitySignals(
+      final s = WorldMapSignalUtils.reduceActivitySignals(
         [
           _session('a', joinable: true, lastEventMs: 1),
           _session('a', joinable: true, lastEventMs: _dayMs),
@@ -120,7 +120,7 @@ void main() {
     });
 
     test('pinged flag comes from pingedActivityIds', () {
-      final s = reduceActivitySignals(
+      final s = WorldMapSignalUtils.reduceActivitySignals(
         [
           _session('a', joinable: true, lastEventMs: _dayMs),
           _session('b', joinable: true, lastEventMs: _dayMs),
@@ -135,7 +135,7 @@ void main() {
     test(
       'a room with neither a held role nor a free slot contributes nothing',
       () {
-        final s = reduceActivitySignals(
+        final s = WorldMapSignalUtils.reduceActivitySignals(
           [_session('a')],
           pingedActivityIds: const {},
           nowMs: 0,
@@ -147,28 +147,28 @@ void main() {
 
   group('reduceCompletion', () {
     test('all goals collected is completed', () {
-      final m = reduceCompletion([
+      final m = WorldMapSignalUtils.reduceActivityCompletions([
         _completion('a', totalGoals: 3, collectedGoals: 3),
       ]);
       expect(m['a'], MapCompletionFilter.completed);
     });
 
     test('some goals collected is in-progress', () {
-      final m = reduceCompletion([
+      final m = WorldMapSignalUtils.reduceActivityCompletions([
         _completion('a', totalGoals: 3, collectedGoals: 1),
       ]);
       expect(m['a'], MapCompletionFilter.inProgress);
     });
 
     test('total 0 is in-progress, never completed', () {
-      final m = reduceCompletion([
+      final m = WorldMapSignalUtils.reduceActivityCompletions([
         _completion('a', totalGoals: 0, collectedGoals: 0),
       ]);
       expect(m['a'], MapCompletionFilter.inProgress);
     });
 
     test('the highest status across sessions wins', () {
-      final m = reduceCompletion([
+      final m = WorldMapSignalUtils.reduceActivityCompletions([
         _completion('a', totalGoals: 3, collectedGoals: 1), // inProgress
         _completion('a', totalGoals: 3, collectedGoals: 3), // completed
       ]);
@@ -178,11 +178,16 @@ void main() {
 
   group('bandAtOrBelow', () {
     test('null level includes every CEFR level', () {
-      expect(bandAtOrBelow(null), LanguageLevelTypeEnum.values.toSet());
+      expect(
+        LanguageLevelTypeEnum.bandAtOrBelow(null),
+        LanguageLevelTypeEnum.values.toSet(),
+      );
     });
 
     test('a level includes itself and everything below, nothing above', () {
-      final band = bandAtOrBelow(LanguageLevelTypeEnum.b1);
+      final band = LanguageLevelTypeEnum.bandAtOrBelow(
+        LanguageLevelTypeEnum.b1,
+      );
       expect(
         band,
         containsAll([
