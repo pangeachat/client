@@ -24,8 +24,9 @@ class RightPanelSettingsSubpage extends StatelessWidget {
   /// The settings sub-page id from the token param, e.g. `learning`,
   /// `security`, `security/password`, `profile/edit`. Null/empty is the menu.
   final String? subPath;
+  final Widget? closeButton;
 
-  const RightPanelSettingsSubpage({super.key, this.subPath});
+  const RightPanelSettingsSubpage({super.key, this.subPath, this.closeButton});
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +41,7 @@ class RightPanelSettingsSubpage extends StatelessWidget {
         initialUserId: parts.length > 2 ? parts.sublist(2).join('/') : null,
       );
     }
+
     switch (subPath) {
       case null:
       case '':
@@ -63,7 +65,7 @@ class RightPanelSettingsSubpage extends StatelessWidget {
       case 'security/password':
         return const SettingsPassword();
       case 'security/3pid':
-        return const Settings3Pid();
+        return Settings3Pid(closeButton: closeButton);
       case 'profile':
       // A bare `profile` detail (e.g. the legacy `/settings/profile` path, which
       // the redirect maps to `settingspage:profile`) is the profile itself, NOT

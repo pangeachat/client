@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/themes.dart';
-
 /// The header row shared by both workspace panel columns: a [leading]
 /// close/back control at the start, a small gap, then the panel [title].
 ///
@@ -20,29 +18,29 @@ class PanelHeader extends StatelessWidget {
   /// its own title.
   final String title;
 
-  const PanelHeader({super.key, required this.leading, required this.title});
+  final Widget? trailing;
+
+  const PanelHeader({
+    super.key,
+    required this.leading,
+    required this.title,
+    this.trailing,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: 8.0,
-        vertical: FluffyThemes.isColumnMode(context) ? 16.0 : 8.0,
+    return AppBar(
+      leading: leading,
+      title: Expanded(
+        child: Text(
+          title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
       ),
-      child: Row(
-        children: [
-          leading,
-          const SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              title,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-          ),
-        ],
-      ),
+      actions: [?trailing],
+      centerTitle: false,
     );
   }
 }

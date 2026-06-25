@@ -21,11 +21,16 @@ class Settings3PidView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: IconButton(
-          icon: const Icon(Icons.add_outlined),
-          onPressed: controller.add3PidAction,
-          tooltip: L10n.of(context).addEmail,
-        ),
+        leading: controller.widget.closeButton,
+        title: Text(L10n.of(context).changeEmail),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add_outlined),
+            onPressed: controller.add3PidAction,
+            tooltip: L10n.of(context).addEmail,
+          ),
+        ],
+        centerTitle: false,
       ),
       body: MaxWidthBody(
         withScrolling: false,

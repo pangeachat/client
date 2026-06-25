@@ -12,10 +12,8 @@ enum SettingsPageEnum {
   ignore,
   email,
   password,
-  menu,
-}
+  menu;
 
-extension SettingsPageEnumExtension on SettingsPageEnum {
   static SettingsPageEnum fromString(String? path) {
     if (path != null && path.contains('security/ignorelist')) {
       return SettingsPageEnum.ignore;
@@ -75,4 +73,9 @@ extension SettingsPageEnumExtension on SettingsPageEnum {
         return l10n.settings;
     }
   }
+
+  bool get addHeader => switch (this) {
+    SettingsPageEnum.email => false,
+    _ => true,
+  };
 }
