@@ -2,22 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CLIENT_ID</key>
-	<string>545984292675-f5p76l3h9sibsonrct7a8l9ca3c69at0.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.545984292675-f5p76l3h9sibsonrct7a8l9ca3c69at0</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCl8QZd9_PnaqJY2zLHCwlsmSWdq7hnH-U</string>
+	<string>AIzaSyAY9r7ko5P64xT_1IDiAnGMDElcQ42f0Dg</string>
 	<key>GCM_SENDER_ID</key>
-	<string>545984292675</string>
+	<string>501707239068</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.talktolearn.chat</string>
+	<string>om.talktolearn.chat</string>
 	<key>PROJECT_ID</key>
-	<string>pangea-chat-936ee</string>
+	<string>pangea-chat-staging-analytics</string>
 	<key>STORAGE_BUCKET</key>
-	<string>pangea-chat-936ee.appspot.com</string>
+	<string>pangea-chat-staging-analytics.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:545984292675:ios:1226406ecc36e056b931f6</string>
+	<string>1:501707239068:ios:8440aaa27599830b904759</string>
 </dict>
 </plist>
